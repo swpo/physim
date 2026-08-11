@@ -42,4 +42,6 @@ print(run_baseline('D0', 0, 'reference')['reward_accuracy'])"
 ./run_grid.sh google/gemini-3.5-flash D1 3
 ```
 
-`outputs/` contains the raw traces behind REPORT.md.
+Raw rollout traces live in the HF dataset
+[seanpohorence/physim-rollouts](https://huggingface.co/datasets/seanpohorence/physim-rollouts)
+(`./sync_outputs.sh pull` to fetch, `push` after new runs).
