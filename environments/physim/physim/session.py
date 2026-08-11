@@ -289,11 +289,15 @@ class PhysimSession:
         if spec.get("series"):
             if len(idx) > 6:
                 return {"error": "series observation limited to <=6 channels"}
+            maxn = spec.get("max_numbers")
+            if not isinstance(maxn, int):
+                maxn = MAX_SERIES_NUMBERS
+            maxn = int(min(max(maxn, 40), 4000))
             stride = spec.get("stride")
             if not isinstance(stride, int) or stride < 1:
-                stride = max(1, (Y.shape[0] * len(idx)) // MAX_SERIES_NUMBERS)
+                stride = max(1, (Y.shape[0] * len(idx)) // maxn)
             ds = Y[::stride]
-            while ds.shape[0] * len(idx) > MAX_SERIES_NUMBERS:
+            while ds.shape[0] * len(idx) > maxn:
                 stride *= 2
                 ds = Y[::stride]
             out["series"] = {str(c): [round(float(v), 3) for v in ds[:, c]]
