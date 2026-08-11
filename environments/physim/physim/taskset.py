@@ -43,14 +43,14 @@ Scoring: accuracy = exp(-|error| / (3*ensemble_sd)) per contract, averaged. Your
 ADVICE
 - First learn your senses: measure the noise floor (zero input), find dead/live sensors, and each sensor's response direction.
 - Then characterize the dynamics: response to steps of different sizes and signs, relaxation after release, dependence on history (path dependence / hysteresis), per-port differences.
-- Contracts include held-out regimes: strong drives followed by release, weak pushes, and long autonomous evolution. Understand state memory before answering.
+- Contracts include held-out regimes: strong drives followed by release, weak pushes, long autonomous evolution, and multi-stage sequences with long settling periods. Understand state memory and any slow drift before answering.
 - Contracts are evaluated on FRESH initial draws, not on your current world state. Use reset to study how fresh states behave (relaxation, weak pushes of both signs) before answering.
 - Budget your ticks: reserve enough exploration for release/memory behavior, not just steady states.
 - Think between commands, but always end each message with exactly one JSON command."""
 
 
 class PhysimData(vf.TaskData):
-    difficulty: Literal["D0", "D1", "D2", "D3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4"] = "D0"
     world_seed: int = 0
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
@@ -65,7 +65,7 @@ class PhysimTask(vf.Task[PhysimData, vf.State, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget)."""
     seed0: int = 0
     """First world seed; task i uses seed0 + i."""

@@ -37,6 +37,10 @@ class WorldParams:
     beta_global: float = 0.0     # weak global tie
     bias_spread: float = 0.0     # per-module bias std (heterogeneity)
     sigma: float = 0.05          # micro noise
+    lam_min: float = 1.0         # slowest module response rate (1.0 = instant)
+    lam_max: float = 1.0         # fastest module response rate
+    eps_adapt: float = 0.0       # slow adaptation rate (0 = off); timescale ~ 1/eps
+    g_adapt: float = 0.0         # adaptation feedback strength
     # --- ports ---
     n_in: int = 6
     n_out: int = 24
@@ -108,9 +112,15 @@ class World:
         self.dead_offset = rng.normal(0, 0.15, p.n_dead)
         self.chan_map = rng.permutation(p.n_out)  # position -> internal id
 
+        # per-module response rates (timescale separation motif); drawn LAST so
+        # presets with lam_min=lam_max=1 keep byte-identical wiring to older runs
+        lams = np.linspace(p.lam_min, p.lam_max, p.n_modules)
+        self.lam = rng.permutation(lams)[self.module]
+
         # persistent state
         self._noise = np.random.default_rng(np.random.SeedSequence([0xA11, self.seed]))
         self.x = 0.01 * self._noise.standard_normal(self.N)
+        self.a = np.zeros(self.N)            # slow adaptation state
         self.ticks_used = 0
         self.n_resets = 0
 
@@ -132,8 +142,11 @@ class World:
         p = self.p
         field = self.B @ np.clip(u, -1.0, 1.0)
         pre = p.J * ((1 - p.alpha) * self.x + p.alpha * self._mix(self.x))
-        pre = pre + self.block_bias + field
-        self.x = np.tanh(pre + p.sigma * self._noise.standard_normal(self.N))
+        pre = pre + self.block_bias + field - p.g_adapt * self.a
+        target = np.tanh(pre + p.sigma * self._noise.standard_normal(self.N))
+        self.x = (1.0 - self.lam) * self.x + self.lam * target
+        if p.eps_adapt > 0:
+            self.a += p.eps_adapt * (self.x - self.a)
 
     def _read(self) -> np.ndarray:
         p = self.p
@@ -171,6 +184,7 @@ class World:
         self.ticks_used += cost
         self.n_resets += 1
         self.x = 0.01 * self._noise.standard_normal(self.N)
+        self.a = np.zeros(self.N)
 
     @property
     def budget_left(self) -> int:
@@ -182,6 +196,7 @@ class World:
         w = World(self.p, self.seed)
         w._noise = np.random.default_rng(np.random.SeedSequence([0xE7A1, self.seed, noise_seed]))
         w.x = 0.01 * w._noise.standard_normal(w.N)
+        w.a = np.zeros(w.N)
         w.ticks_used = 0
         return w
 
@@ -228,6 +243,13 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=48, n_dead=8, meas_noise=0.07,
         gain_min=0.5, gain_max=1.8, p_flip=0.4, in_width=2.5, in_gain=1.0,
         max_ticks=60_000),
+    "D4": WorldParams(  # frontier: 8 modules, slow/fast timescales, opaque ports
+        L=32, J=1.40, n_modules=8, module_mix=0.55, beta_global=0.05,
+        bias_spread=0.05, sigma=0.06, lam_min=0.04, lam_max=1.0,
+        eps_adapt=0.005, g_adapt=0.55,
+        n_in=10, n_out=60, n_dead=10, meas_noise=0.08,
+        gain_min=0.4, gain_max=2.0, p_flip=0.4, in_width=2.5, in_gain=1.1,
+        max_ticks=150_000),
 }
 
 

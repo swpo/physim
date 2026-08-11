@@ -39,6 +39,7 @@ TAIL = 20          # ticks in the default observation window
 MAX_SERIES_NUMBERS = 360
 MAX_SEG_TICKS = 5_000
 ENSEMBLE = 12      # truth ensemble size per contract
+S4_SETTLE_MAX = 700  # longest slow-settle segment S4 may use
 
 
 # ---------------------------------------------------------------- protocols
@@ -142,6 +143,20 @@ def sample_contracts(world: World, rng: np.random.Generator,
             u2 = -u * rng.uniform(0.15, 0.45)
             segs.insert(1, hold(u2, int(rng.integers(30, 60))))
         contracts.append(Contract(cid, "S3", segs, pick_channel()))
+        cid += 1
+    for _ in range(n_per_stratum):          # S4: long-horizon composition
+        # multi-stage sequence: strong set -> partial counter-push on a port
+        # subset -> long settle. Tests slow modes + per-port memory jointly.
+        sgn = 1.0 if rng.random() < 0.5 else -1.0
+        u1 = np.full(n_in, sgn * rng.uniform(0.7, 1.0))
+        mask = rng.random(n_in) < 0.5
+        if not mask.any():
+            mask[rng.integers(0, n_in)] = True
+        u2 = np.where(mask, -sgn * rng.uniform(0.5, 0.9), 0.0)
+        segs = [hold(u1, int(rng.integers(80, 140))),
+                hold(u2, int(rng.integers(60, 120))),
+                hold(np.zeros(n_in), int(rng.integers(300, S4_SETTLE_MAX)))]
+        contracts.append(Contract(cid, "S4", segs, pick_channel()))
         cid += 1
     return contracts
 
