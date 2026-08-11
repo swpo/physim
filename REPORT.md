@@ -324,3 +324,28 @@ Diagnosed from failing gemini+codex traces (reward 0.000, n_answered 0):
 
 Even after the fixes, gemini-3.1-pro's conduct is unchanged (satisfices in
 ~12 turns) — that is a model finding, not an env artifact.
+
+
+---
+
+# Addendum 6 (2026-02-11): trace gallery + workspace artifact collection
+
+- **Trace gallery** at `docs/rollouts.html` (GitHub Pages): per pairing x
+  difficulty, best/median/worst rollouts rendered as lab reports — condensed
+  experiment log (every physim tool call + world response), the agent's own
+  workspace files, and per-contract truth-vs-answer tables. The standout
+  artifact: claude-fable-5's `MODEL.md` on D4 correctly identifies "6 bistable
+  relaxation-oscillator units", maps ports to units with polarities, measures
+  release schedules and mutual entrainment (period ~390-430), and ships a
+  per-contract prediction procedure — readable theory, 0.31 reward (its
+  jitter-accumulation limits are visible in the same file).
+- **Workspace artifact collection** (v0.1.3): tools-tier tasks now declare the
+  agent workspace as a verifiers artifact; `PhysimTask.finalize` collects it
+  (tar, capped, junk-excluded) into `trace.state.artifacts`, and scoring
+  extracts text files into `trace.info["physim"]["workspace"]` (durable in
+  traces.jsonl). Rollouts predating this recover files best-effort from
+  Write/Edit tool-call arguments; bash-heredoc writes in old rollouts are lost
+  — the motivating gap. Validated end-to-end: gpt-5.2+codex D0 rollout
+  scored **0.73** (new codex D0 best) and its collected `model.py` contains a
+  two-basin affine model with switching threshold and time constant — theory
+  as executable code, now preserved.

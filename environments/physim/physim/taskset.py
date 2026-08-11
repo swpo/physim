@@ -23,6 +23,48 @@ from physim.session import PhysimSession
 
 MAX_TURNS_DEFAULT = 40
 
+WORKSPACE_TEXT_EXTS = {".md", ".txt", ".py", ".json", ".csv", ".yaml", ".yml", ".toml"}
+WORKSPACE_FILE_CAP = 120_000       # chars per file
+WORKSPACE_TOTAL_CAP = 600_000      # chars per rollout
+
+
+def _extract_workspace(artifacts: dict | None) -> dict:
+    """Text files from collected workspace tars -> {path: content}, capped."""
+    if not artifacts:
+        return {}
+    import io
+    import tarfile
+    from pathlib import PurePosixPath
+
+    out: dict[str, str] = {}
+    total = 0
+    for source, blob in artifacts.items():
+        if not blob:
+            continue
+        try:
+            tar = tarfile.open(fileobj=io.BytesIO(blob))
+        except tarfile.TarError:
+            continue
+        with tar:
+            for member in tar.getmembers():
+                if not member.isfile() or member.size > 2_000_000:
+                    continue
+                if PurePosixPath(member.name).suffix.lower() not in WORKSPACE_TEXT_EXTS:
+                    continue
+                fh = tar.extractfile(member)
+                if fh is None:
+                    continue
+                try:
+                    text = fh.read().decode("utf-8", errors="replace")
+                except Exception:
+                    continue
+                text = text[:WORKSPACE_FILE_CAP]
+                if total + len(text) > WORKSPACE_TOTAL_CAP:
+                    break
+                out[member.name] = text
+                total += len(text)
+    return out
+
 SYSTEM_PROMPT = """You are a scientist studying an unknown dynamical system through a fixed interface. Nothing about the system's internal laws is documented. Everything must be discovered by experiment.
 
 INTERFACE
@@ -90,6 +132,15 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
         from physim.servers.world import PhysimToolset
         return [PhysimToolset(config.tools)]
 
+    async def finalize(self, trace: vf.Trace, runtime) -> None:
+        if self.data.tier != "tools":
+            return
+        try:
+            from verifiers.v1.utils.artifacts import collect
+            trace.state.artifacts = await collect(runtime, self.data.artifacts)
+        except Exception as e:  # collection must never fail the rollout
+            trace.info.setdefault("physim_artifact_error", str(e))
+
     async def setup(self, trace: vf.Trace, runtime) -> None:
         # Host-side state init: the tool server pulls trace.state through the
         # state channel on every call (server-side setup_task mutations would
@@ -139,6 +190,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
             "tier": "tools",
             "detail": result["detail"],
             "parse_error": result.get("parse_error"),
+            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
         }
         return float(result["reward_accuracy"])
 
@@ -246,6 +298,14 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
                     n_in=params.n_in, n_out=params.n_out,
                     tail=20, budget=params.max_ticks,
                 )
+            artifacts = []
+            if tools_tier:
+                artifacts = [vf.Artifact(
+                    source=".",
+                    exclude=["*.pyc", "__pycache__", ".git", "node_modules",
+                             ".venv", "*.tar", "*.npz"],
+                    required=False,
+                )]
             data = PhysimData(
                 idx=i,
                 name=f"physim-{self.config.difficulty}#{self.config.seed0 + i}",
@@ -256,6 +316,7 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
                 max_turns=self.config.max_turns,
                 n_per_stratum=self.config.n_per_stratum,
                 tier="tools" if tools_tier else "chat",
+                artifacts=artifacts,
             )
             task_config = self.config.task.model_copy(
                 update={"tier": self.config.tier})

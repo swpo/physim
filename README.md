@@ -23,6 +23,10 @@ ensembles that only the evaluator can run.
 - **[docs/worlds.html](https://swpo.github.io/physim/worlds.html)** — visual
   guide to the worlds (god view vs agent view, per difficulty; regenerate with
   `python -m physim.viz`).
+- **[docs/rollouts.html](https://swpo.github.io/physim/rollouts.html)** — trace
+  gallery: each agent's experiment log, the files it wrote (its instruments and
+  theories, e.g. `MODEL.md`), and contract answers vs truth (regenerate with
+  `python -m physim.traces`).
 
 ## Quickstart
 
