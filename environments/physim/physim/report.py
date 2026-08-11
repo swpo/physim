@@ -33,6 +33,7 @@ def collect_traces(outputs_glob="/Users/spoho/Documents/prime/test/physim/output
                     reward=rew, coverage=met.get("coverage"),
                     turns=met.get("turns_used"), budget=met.get("budget_used_frac"),
                     S1=met.get("acc_S1"), S2=met.get("acc_S2"), S3=met.get("acc_S3"),
+                    S4=met.get("acc_S4"),
                     replication=met.get("replication_ref"),
                 ))
     return rows
@@ -51,6 +52,7 @@ def summarize(rows):
             S1=float(np.mean([r["S1"] or 0 for r in rs])),
             S2=float(np.mean([r["S2"] or 0 for r in rs])),
             S3=float(np.mean([r["S3"] or 0 for r in rs])),
+            S4=float(np.mean([r["S4"] for r in rs if r["S4"] is not None])) if any(r["S4"] is not None for r in rs) else None,
             budget=float(np.mean([r["budget"] or 0 for r in rs])),
         ))
     return out

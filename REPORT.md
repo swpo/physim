@@ -93,3 +93,75 @@ uv pip install -e environments/physim
 .venv/bin/python -c "from physim.report import collect_traces, summarize; [print(s) for s in summarize(collect_traces())]"
 ```
 Raw per-rollout rows: `/tmp/physim_results.json`. Traces: `outputs/`.
+
+
+---
+
+# Addendum (2026-02-11, later): stronger models, longer rollouts, and the D4 frontier tier
+
+## What changed
+
+- **Turn limit is ours, not the harness's**: `--env.taskset.max_turns` (default 40).
+  Strong-model runs below used 100.
+- **New D4 preset** ("frontier"): adds two motifs to the engine —
+  per-module response rates (timescale separation, `lam ∈ [0.04, 1.0]`) and a
+  **slow adaptation state** (`a += eps*(x−a)`, feedback `−g·a`, timescale ~200
+  ticks). Consequences, verified: duration-dependent memory (same drive held
+  60 vs 400 ticks → post-release macro differs by 0.43), slow post-release
+  drift over hundreds of ticks, spontaneous relaxation oscillations
+  (bistability + fatigue), hysteresis retained. 10 in / 60 out / 10 dead,
+  150k tick budget.
+- **New S4 contract stratum** (all difficulties): multi-stage push →
+  counter-push on a port subset → 300–700-tick settle. Requires long-horizon
+  understanding. Contracts stay well-posed: cross-clone sd ≈ 0.02 on S3/S4.
+- Solvability floor on D4 is genuinely low: scripted reference 0.27,
+  an *upgraded* scripted probe with duration features 0.30, a
+  physics-informed kNN oracle (knows to integrate drive at 3 timescales) 0.21.
+  Null jumps to ~0.15 (oscillation phase makes some contracts land mid-range).
+
+## Strong-model results (null harness, 100 turns, 2 seeds; 16 contracts incl. S4)
+
+| model | D2 | D4 |
+|---|---|---|
+| anthropic/claude-opus-4.8 | 0.60 ± 0.21 | 0.18 ± 0.07 |
+| openai/gpt-5.2 | 0.46 ± 0.02 | 0.22 ± 0.06 |
+| google/gemini-3.1-pro-preview | 0.50 ± 0.28 | 0.19 ± 0.07 |
+| *scripted reference* | *0.64* | *0.27* |
+| *null* | *0.06* | *0.15* |
+
+## Findings
+
+1. **D4 does what was asked**: the best available models score 0.11–0.28 —
+   barely above the null floor, *below* the dumb scripted scientist. There is
+   now a tier where frontier models can't do well yet, with large headroom
+   (replication reference ≈ 0.93).
+2. **Long rollouts are used but not converted**: gpt-5.2 runs 58–98 turns and
+   sometimes spends 100% of the tick budget, yet S3/S4 stay near zero. The
+   bottleneck is *scientific strategy* (designing duration-controlled
+   experiments, discovering adaptation), not interaction quota. opus-4.8
+   interestingly stops early on D4 (~30 turns) — it gives up exploring rather
+   than running out.
+3. **S-strata separate models**: everyone does S2 (steady drives); S3/S4
+   (memory, slow modes) is where all models crash on D4 (0.01–0.26).
+4. High within-cell variance (seeds differ by 2–4×) — real conclusions need
+   n≥5 seeds; these are directional numbers.
+
+## Current difficulty ladder (baseline acc, 3 seeds)
+
+| | D0 | D1 | D2 | D3 | D4 |
+|---|---|---|---|---|---|
+| null | 0.04 | 0.03 | 0.06 | 0.05 | 0.15 |
+| tail | 0.46 | 0.51 | 0.44 | 0.32 | 0.22 |
+| reference | 0.70 | 0.71 | 0.64 | 0.65 | 0.27 |
+
+(D0–D3 numbers now include S4 contracts; slightly different from the first table.)
+
+## Next
+
+- n≥5 seeds on D2/D4 for a stable strong-model ranking; add kimi-k3 / glm-5.
+- Coding-harness tier so models can build duration-response curves offline
+  (separates protocol failure from scientific failure).
+- A D5 candidate: adaptation + modular timescales + tighter budget, or
+  spatially-structured inputs requiring port-geometry mapping first.
+- Consider reporting score vs. *ticks spent* curves (sample efficiency), and
+  moving outputs/ to HF datasets once they outgrow the repo.
