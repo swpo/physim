@@ -20,6 +20,9 @@ ensembles that only the evaluator can run.
   still unbeaten by any model.
 - **[environments/physim](environments/physim)** — the verifiers taskset
   (engine, session/contracts, baselines, report tooling).
+- **[docs/worlds.html](https://swpo.github.io/physim/worlds.html)** — visual
+  guide to the worlds (god view vs agent view, per difficulty; regenerate with
+  `python -m physim.viz`).
 
 ## Quickstart
 

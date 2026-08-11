@@ -18,6 +18,8 @@ dead channels. Difficulty knobs are all here + in the core params.
 
 from __future__ import annotations
 
+import os
+
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -66,7 +68,12 @@ class World:
     def __init__(self, params: WorldParams, seed: int):
         self.p = params
         self.seed = int(seed)
-        rng = np.random.default_rng(np.random.SeedSequence([0xF15, self.seed]))
+        # Optional evaluator-side salt: mixes into wiring + noise so public code
+        # + a guessed seed cannot reproduce a live world (set PHYSIM_WORLD_SALT
+        # for held-out evals; unset = reproducible published defaults).
+        salt = int(os.environ.get("PHYSIM_WORLD_SALT", "0") or "0")
+        self._salt = salt
+        rng = np.random.default_rng(np.random.SeedSequence([0xF15, self.seed, salt]))
         p = self.p
         self.N = p.L * p.L
         gx, gy = np.meshgrid(np.arange(p.L), np.arange(p.L), indexing="ij")
@@ -118,7 +125,8 @@ class World:
         self.lam = rng.permutation(lams)[self.module]
 
         # persistent state
-        self._noise = np.random.default_rng(np.random.SeedSequence([0xA11, self.seed]))
+        self._noise = np.random.default_rng(
+            np.random.SeedSequence([0xA11, self.seed, self._salt]))
         self.x = 0.01 * self._noise.standard_normal(self.N)
         self.a = np.zeros(self.N)            # slow adaptation state
         self.ticks_used = 0
@@ -194,7 +202,8 @@ class World:
     def clone_fresh(self, noise_seed: int) -> "World":
         """Same wiring/params, fresh state, independent noise stream (truth ensembles)."""
         w = World(self.p, self.seed)
-        w._noise = np.random.default_rng(np.random.SeedSequence([0xE7A1, self.seed, noise_seed]))
+        w._noise = np.random.default_rng(
+            np.random.SeedSequence([0xE7A1, self.seed, self._salt, noise_seed]))
         w.x = 0.01 * w._noise.standard_normal(w.N)
         w.a = np.zeros(w.N)
         w.ticks_used = 0

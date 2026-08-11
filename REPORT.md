@@ -230,3 +230,46 @@ scripted reference 0.27, null 0.15, replication ~0.93.
 - Give the tools tier a persistent scratch summary of experiment history in
   the prompt? (models re-discover basics each rollout)
 - HF dataset upload for outputs/ (repo now 30+ MB of traces).
+
+
+---
+
+# Addendum 3 (2026-02-11): rollout cost accounting (tools tier, D4)
+
+Per-rollout usage from `traces.jsonl` model-call records (prompt tokens are
+dominated by cached context re-reads; costs shown as cached + fresh):
+
+| pairing | seed | model calls | fresh prompt | cached prompt | completion | reasoning | wall time | reward |
+|---|---|---|---|---|---|---|---|---|
+| gpt-5.2+codex (D0) | 0 | 106 | 0.07M | 4.6M | 31k | 21k | 14 min | 0.49 |
+| gpt-5.6-sol+codex | 0 | 66 | 0.10M | 4.3M | 12k | 8k | 8 min | 0.26 |
+| gpt-5.6-sol+codex | 1 | 98 | 0.10M | 5.4M | 17k | 11k | 12 min | 0.23 |
+| opus-5+claude_code | 0 | 67 | 0.24M | 4.1M | 111k | 24k | 25 min | 0.41 |
+| opus-5+claude_code | 1 | 93 | 0.27M | 6.5M | 125k | 26k | 36 min | 0.23 |
+| fable-5+claude_code | 0 | 173 | 0.60M | 50.9M | 241k | 28k | 63 min | 0.38 |
+| fable-5+claude_code | 1 | 113 | 0.70M | 22.1M | 191k | 37k | 52 min | 0.36 |
+
+Observations: (1) 60–170 model calls per rollout; effective context stays
+manageable because raw data lives in sandbox files. (2) fable-5 reads 5–10x
+more cached context than the others (long-context strategy) and takes ~1h per
+rollout; sol is 5x cheaper per rollout at ~35% lower score. (3) Chat-tier
+rollouts (null harness) are far lighter: ~25–40 calls, <1M cached, 2–15 min.
+
+# Addendum 4: world isolation audit (MazeBench pattern check)
+
+- Engine + truth ensembles run evaluator-side only. Tools tier: the MCP world
+  server is a separate host process outside the agent's docker container
+  (reached via host.docker.internal); the agent container has no volume
+  mounts, no engine code, no physim package.
+- Tool responses expose only: tail_mean/tail_sd/series of chosen channels,
+  ticks_run, budget_left, phase, interface card, contract specs
+  (protocol + channel + stat), and answer receipts. Scoring internals
+  (mu, tau, scale, strata, per-contract detail) are computed post-rollout in
+  `Task.score` and never flow through a tool.
+- The per-rollout state channel (world snapshots) is HMAC-authenticated
+  between server and host; the agent receives only the MCP URL.
+- New: `PHYSIM_WORLD_SALT` env var mixes an evaluator-side salt into world
+  generation and noise streams, so the public engine code + a guessed seed
+  cannot reproduce a live world (unset = reproducible published defaults).
+  Residual risk accepted: local subprocess runtime (debug only) offers no
+  isolation; use docker/prime for real evals.
