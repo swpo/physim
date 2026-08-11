@@ -1,0 +1,173 @@
+10:53:08    INFO eval config:
+{
+  "env": {
+    "id": "",
+    "taskset": {
+      "id": "physim",
+      "task": {
+        "judges": [],
+        "tier": "chat",
+        "tools": {
+          "colocated": false,
+          "runtime": {
+            "type": "subprocess"
+          },
+          "url": null
+        }
+      },
+      "system_prompt": null,
+      "difficulty": "D4",
+      "tier": "tools",
+      "seed0": 0,
+      "max_turns": 40,
+      "n_per_stratum": 4
+    },
+    "timeout": {
+      "episode": null,
+      "finalize": null
+    },
+    "retries": {
+      "max_retries": 0,
+      "include": [],
+      "exclude": []
+    },
+    "max_concurrent_agents": 1,
+    "interception": {
+      "type": "elastic",
+      "multiplex": 32
+    },
+    "scientist": {
+      "harness": {
+        "id": "claude_code",
+        "env": {},
+        "forward_env": [],
+        "tool_timeout": 600.0,
+        "disabled_tools": null,
+        "skills": [],
+        "version": "2.1.223"
+      },
+      "runtime": {
+        "allow": [
+          "*"
+        ],
+        "block": [],
+        "type": "docker",
+        "image": "python:3.11-slim",
+        "workdir": "/app",
+        "cpu": null,
+        "memory": null,
+        "gpu": null,
+        "disk": null
+      },
+      "model": null,
+      "client": null,
+      "sampling": null,
+      "max_turns": null,
+      "max_input_tokens": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout": {
+        "setup": null,
+        "rollout": null,
+        "finalize": null,
+        "scoring": null
+      },
+      "retries": {
+        "max_retries": 0,
+        "include": [],
+        "exclude": []
+      }
+    }
+  },
+  "serve": {
+    "pool": {
+      "type": "elastic",
+      "max_workers": null,
+      "multiplex": 128
+    },
+    "address": "tcp://127.0.0.1:5000",
+    "max_concurrent": null
+  },
+  "legacy": {
+    "id": null,
+    "args": {},
+    "extra_env_kwargs": {}
+  },
+  "model": "anthropic/claude-opus-5",
+  "client": {
+    "base_url": "https://api.pinference.ai/api/v1",
+    "api_key_var": "PRIME_API_KEY",
+    "headers": {
+      "X-Prime-Team-ID": "cm06pkxft000nem2k4cqh38jq"
+    },
+    "type": "eval"
+  },
+  "sampling": {
+    "temperature": null,
+    "top_p": null,
+    "reasoning_effort": null,
+    "max_tokens": null
+  },
+  "num_tasks": 2,
+  "num_rollouts": 1,
+  "shuffle": false,
+  "max_concurrent": 128,
+  "verbose": false,
+  "rich": false,
+  "server": false,
+  "push": true,
+  "output_dir": null
+}
+10:53:08    INFO running 2x1 rollouts on anthropic/claude-opus-5
+10:53:08    INFO results: outputs/physim--anthropic--claude-opus-5--claude_code/30e8f2cc-a0bb-4444-8451-89f52bd6b886
+10:53:08    INFO rollout start: id=01c9c5f3b2fb475597c1c185d3df28e1 task=0 harness=claude_code runtime=docker
+10:53:08    INFO rollout start: id=fbd5e44780bf485fbc44c7da4708e9b4 task=1 harness=claude_code runtime=docker
+10:53:08    INFO interception up: url=http://127.0.0.1:63465
+10:53:08    INFO interception pool: 1 server(s), multiplex=32
+10:53:09    INFO docker: started container fbd5e44780bf485fbc44c7da4708e9b4 (image=python:3.11-slim)
+10:53:09    INFO docker: started container 01c9c5f3b2fb475597c1c185d3df28e1 (image=python:3.11-slim)
+10:53:37    INFO tool server 'physim': http://host.docker.internal:63657/mcp
+10:53:43    INFO tool server 'physim': http://host.docker.internal:63722/mcp
+11:04:54 WARNING model call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: 
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8caa5d9cc1-EWR","inference_id":"req_8eab3fb00cce4125b901c96489c79f0f"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cafe3f5f4-EWR","inference_id":"req_cffea16ca2bf4a53bc54a20b61286d56"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ca918ee23-EWR","inference_id":"req_6b33059bcfa3491f8c0921933196a596"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cadc4daac-EWR","inference_id":"req_54327d2c6ddd4ec5896f1a09e6778bed"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8caa58d123-EWR","inference_id":"req_e7b3d2259728442db5be256fcd04e7ec"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cae2af25f-EWR","inference_id":"req_e45db7086b404e6cb5c48cab2dea4c6b"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cad0d0cc8-EWR","inference_id":"req_f648bf74ded8465d900dcb3caac24174"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cc8042e7a-EWR","inference_id":"req_924e03adba8e487c932f8dce17990705"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ccb47fbf2-EWR","inference_id":"req_8e1c275a0a18472f8d97a5d6231b1c16"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cca38114c-EWR","inference_id":"req_a02725853c204c23891932cd6e4f0436"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ced8c51ba-EWR","inference_id":"req_b897d34208c245a58c83e70913f92840"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ceffc5e39-EWR","inference_id":"req_9df73ee8f7d44dfcb66366bdaa52b974"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ceea77d13-EWR","inference_id":"req_1bbff004778c436bb105ec7df72c9270"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ceeee425c-EWR","inference_id":"req_bf8ff57fa02d437080133baf8539accf"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cbf20f02b-EWR","inference_id":"req_41035d2d6fd542fa84d4efd8d1af9e74"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8cee9358c1-EWR","inference_id":"req_ccf1240153334cf7a5d2dd836e5d5dfa"}
+11:13:00 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982e8ceadd0f64-EWR","inference_id":"req_06212d985cfc49229cc7dc0eb50e998f"}
+11:13:04 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982ea4eba1ee23-EWR","inference_id":"req_894a5ec8f701477a9ad3e9a97b197bc5"}
+11:13:07 WARNING aux call failed: id=01c9c5f3b2fb475597c1c185d3df28e1 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a2982eb82b52ee23-EWR","inference_id":"req_a7d562df210f4e1f9cda3826d48d9a6a"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837745e61f5f8-EWR","inference_id":"req_fb29c117e69948e4860461f8ef623e20"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837746ee058c1-EWR","inference_id":"req_9cf3a96ca2c24e898785b859446997f8"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837746e81c34b-EWR","inference_id":"req_7367209d7c06486dab177a0d56809547"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837746e7fb886-EWR","inference_id":"req_eb36f857356d46c0b6de5378441598b0"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837746f1f74b5-EWR","inference_id":"req_b293f39babcb4f7f843551ded5309f6a"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748f16f5f8-EWR","inference_id":"req_a889da43cd2542e4932fce739c40297b"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748bc8ae4c-EWR","inference_id":"req_5640489d08f14a58aacb5f34042d6838"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748f181f03-EWR","inference_id":"req_20fbae9a253b44a880798310f32cb2c2"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748b54f580-EWR","inference_id":"req_74153e1cb5f94a39b5008a3f2e49ddab"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748d1ed73b-EWR","inference_id":"req_866ed93c46b84ed1a36b8d5fd4b95d40"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748f21ac6e-EWR","inference_id":"req_c0efe0c95c54470eaefae352e640d1fa"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748d5a2223-EWR","inference_id":"req_afe8af57daca4f0da840bea2ce667734"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748b2258af-EWR","inference_id":"req_5747d3e425574107a84264b7c0947a10"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837749b073ee0-EWR","inference_id":"req_1719e144268b4682b0c74fa325913e9b"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748f546a59-EWR","inference_id":"req_e1205ce6b2ce4eaba9997358442c224e"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837748ce40c92-EWR","inference_id":"req_16da00c071414085b02c97eaf0aa9326"}
+11:19:05 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837749de01a68-EWR","inference_id":"req_282fb5323c814fdeb28a9d068f4012d6"}
+11:19:05    INFO rollout done: id=01c9c5f3b2fb475597c1c185d3df28e1 task=0 reward=0.409 turns=67 stop=agent_completed
+11:19:08 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837849ebef5f8-EWR","inference_id":"req_6226a7009ebf4e6abbe6c51bbda610b3"}
+11:19:13 WARNING aux call failed: id=fbd5e44780bf485fbc44c7da4708e9b4 ProviderError: upstream 404: {"detail":"Not Found","request_id":"a29837a3c872f5f8-EWR","inference_id":"req_7462be0fd7164093a231023e1c142a09"}
+11:29:28    INFO rollout done: id=fbd5e44780bf485fbc44c7da4708e9b4 task=1 reward=0.227 turns=92 stop=agent_completed
+11:29:28    INFO interception down: url=http://127.0.0.1:63465
+11:29:37    INFO --push: uploaded 2 samples -> https://app.primeintellect.ai/dashboard/evaluations/r4hk6hwrzgrwb0pk7n0i5p9l

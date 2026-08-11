@@ -165,3 +165,68 @@ Raw per-rollout rows: `/tmp/physim_results.json`. Traces: `outputs/`.
   spatially-structured inputs requiring port-geometry mapping first.
 - Consider reporting score vs. *ticks spent* curves (sample efficiency), and
   moving outputs/ to HF datasets once they outgrow the repo.
+
+
+---
+
+# Addendum 2 (2026-02-11, later still): M1 coding-harness tier, frontier pairings
+
+## What was built
+
+`--env.taskset.tier tools`: the world becomes a **per-rollout MCP tool server**
+(`physim_run/reset/status/ready/answer`) launched inside the agent's own
+container; world snapshots ride verifiers' per-rollout state channel
+(`trace.state`), and scoring happens post-hoc in `PhysimTask.accuracy` from the
+recorded answers — engine and truth ensembles never enter the agent's sandbox.
+Coding harnesses (codex, claude_code) require `--env.scientist.runtime.type
+docker`. Chat tier unchanged and regression-tested.
+
+Harness pairing rule (user guidance + verified empirically): anthropic models
+run through the `claude_code` harness (bare chat-completions against
+anthropic/* return empty content on Prime Inference); OpenAI-compatible models
+pair with `codex`; anything else defaults to `codex`.
+
+## First tools-tier numbers (D4 frontier worlds, 2 seeds, docker)
+
+| model + harness | rewards (seeds) | mean | budget used |
+|---|---|---|---|
+| gpt-5.2 + codex (D0 smoke) | 0.49 | — | 0.88 |
+| gpt-5.6-sol + codex | 0.26, 0.23 | 0.24 | 0.52–0.66 |
+| claude-opus-5 + claude_code | 0.41, 0.23 | 0.32 | 0.19–0.28 |
+| claude-fable-5 + claude_code | 0.38, 0.36 | **0.37** | 0.16–0.45 |
+
+Chat-tier D4 reference points: opus-4.8/gpt-5.2/gemini-3.1-pro 0.18–0.22,
+scripted reference 0.27, null 0.15, replication ~0.93.
+
+## Findings
+
+1. **The harness helps — the frontier moved but did not fall.** Best pairing
+   (fable-5 + claude_code, 0.37) roughly doubles the chat-tier frontier and
+   clears the scripted reference (0.27), but remains far from replication
+   (~0.93). D4 stays a genuinely open tier even for the strongest current
+   setup, which is exactly the regime the benchmark wants.
+2. **The D0 smoke run shows the mechanism works**: gpt-5.2+codex spent 88% of
+   the tick budget building offline fits and hit S4=0.96 (chat tier: S4≈0.2)
+   — code + files convert budget into long-horizon accuracy when the world is
+   easy enough to model.
+3. **On D4 the models still under-spend budget** (fable 0.16–0.45) and S1
+   (weak-push relaxation, most sensitive to the adaptation dynamics) stays
+   ≤0.35 everywhere: nobody has discovered the slow fatigue variable yet.
+4. Long rollouts happen naturally in this tier (66–173 turns, ~10–25 min per
+   rollout); tick budget, not turn count, is the binding constraint now.
+
+## Operational notes
+
+- anthropic + claude_code occasionally hits transient `aux call failed: 404`
+  warnings (retries succeed); one gpt-5.2+codex rollout errored out entirely
+  (`reward=0.000` row) before a retry passed — treat single-seed tools-tier
+  numbers with care.
+- Rollouts run in `python:3.11-slim` containers; the MCP server is reached at
+  `host.docker.internal`.
+
+## Next
+
+- n>=5 seeds per pairing; add gemini-3.1-pro + codex.
+- Give the tools tier a persistent scratch summary of experiment history in
+  the prompt? (models re-discover basics each rollout)
+- HF dataset upload for outputs/ (repo now 30+ MB of traces).
