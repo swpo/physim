@@ -54,7 +54,7 @@ _SAFE_BUILTINS = {k: getattr(__builtins__, k) if not isinstance(__builtins__, di
                   else __builtins__[k]
                   for k in ("abs", "all", "any", "bool", "dict", "divmod",
                             "enumerate", "filter", "float", "int", "isinstance",
-                            "len", "list", "map", "max", "min", "pow", "print",
+                            "getattr", "hasattr", "len", "list", "map", "max", "min", "pow", "print",
                             "range", "reversed", "round", "set", "sorted", "str",
                             "sum", "tuple", "zip", "Exception", "ValueError",
                             "TypeError", "KeyError", "IndexError", "StopIteration",
@@ -66,9 +66,34 @@ def _reply(obj):
     sys.stdout.write(json.dumps(obj, separators=(",", ":")) + "\n")
     sys.stdout.flush()
 
+def _strip_allowed_imports(code):
+    # Models habitually write `import math` / `import numpy as np` even when
+    # told the modules are preloaded. Rewrite those lines to no-ops; anything
+    # else stays and fails loudly.
+    out = []
+    for line in code.splitlines():
+        s = line.strip()
+        indent = line[:len(line) - len(line.lstrip())]
+        if s in ("import math", "import numpy", "import numpy as np",
+                 "import math as math"):
+            out.append(indent + "pass")
+        elif s.startswith("from math import"):
+            names = s.split("import", 1)[1]
+            stmts = "; ".join(n.strip() + " = getattr(math, '" + n.strip() + "')"
+                              for n in names.split(",") if n.strip().isidentifier())
+            out.append(indent + (stmts or "pass"))
+        elif s.startswith("from numpy import"):
+            names = s.split("import", 1)[1]
+            stmts = "; ".join(n.strip() + " = getattr(np, '" + n.strip() + "')"
+                              for n in names.split(",") if n.strip().isidentifier())
+            out.append(indent + (stmts or "pass"))
+        else:
+            out.append(line)
+    return chr(10).join(out)
+
 def main():
     header = json.loads(sys.stdin.readline())
-    code = header["code"]
+    code = _strip_allowed_imports(header["code"])
     mode = header.get("mode", "policy")
     env = {"__builtins__": _SAFE_BUILTINS, "math": math, "np": _NP()}
     try:

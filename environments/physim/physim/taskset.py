@@ -210,6 +210,10 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
             "detail": result["detail"],
             "parse_error": result.get("parse_error"),
             "workspace": _extract_workspace(getattr(st, "artifacts", None)),
+            "prep_detail": result.get("prep_detail"),
+            "theory": {k: v for k, v in (result.get("theory") or {}).items()
+                       if k != "detail"} or None,
+            "theory_detail": (result.get("theory") or {}).get("detail"),
         }
         return float(result["reward_accuracy"])
 

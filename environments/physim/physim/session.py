@@ -335,6 +335,7 @@ class PhysimSession:
                  n_prep: int = 0):
         self.world = world
         self.phase = "explore"
+        self._contract_seed = contract_seed
         self.rng = np.random.default_rng(np.random.SeedSequence([0xC047, contract_seed]))
         self.n_per_stratum = n_per_stratum
         self.n_prep = n_prep
@@ -362,6 +363,8 @@ class PhysimSession:
         except ValueError as e:
             return {"error": f"could not parse a JSON command: {e}"}
         op = cmd.get("op")
+        if self.phase == "answer":
+            self._ensure_contracts()
         if self.phase == "answer" and op not in ("answer", "answer_prep", "submit_theory"):
             return {"error": "exploration is over; reply with the answers object",
                     "contracts": [c.spec() for c in self.contracts],
@@ -474,12 +477,19 @@ class PhysimSession:
             out["series_stride"] = stride
         return out
 
+    def _ensure_contracts(self) -> None:
+        """Idempotent, deterministic (fresh RNG from the seed each time): both
+        contract families exist whenever we are in/entering the answer phase."""
+        if not self.contracts:
+            rng = np.random.default_rng(
+                np.random.SeedSequence([0xC047, self._contract_seed]))
+            self.contracts = sample_contracts(self.world, rng, self.n_per_stratum)
+            if self.n_prep > 0:
+                self.prep_contracts = sample_prep_contracts(self.world, rng, self.n_prep)
+
     def issue_contracts(self) -> dict:
         self.phase = "answer"
-        if not self.contracts:
-            self.contracts = sample_contracts(self.world, self.rng, self.n_per_stratum)
-        if not self.prep_contracts and self.n_prep > 0:
-            self.prep_contracts = sample_prep_contracts(self.world, self.rng, self.n_prep)
+        self._ensure_contracts()
         out = {
             "phase": "answer",
             "note": ("Exploration over. Answer ALL contracts in one JSON object: "
@@ -499,8 +509,7 @@ class PhysimSession:
 
     def score(self, answer_text: str | None) -> dict:
         """Score the answer message. Returns rewards/metrics + per-contract detail."""
-        if not self.contracts:
-            self.contracts = sample_contracts(self.world, self.rng, self.n_per_stratum)
+        self._ensure_contracts()
         answers: dict[int, dict] = {}
         parse_error = None
         if answer_text:

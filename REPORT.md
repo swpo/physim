@@ -349,3 +349,55 @@ Even after the fixes, gemini-3.1-pro's conduct is unchanged (satisfices in
   scored **0.73** (new codex D0 best) and its collected `model.py` contains a
   two-basin affine model with switching threshold and time constant — theory
   as executable code, now preserved.
+
+
+---
+
+# Addendum 7 (2026-02-11): M2 + M3 shipped — policies, preparation contracts, executable theories
+
+## What shipped (v0.2.0-0.2.3)
+
+- **Policy jail** (`physim.jail`): agent code runs in a hardened subprocess
+  (restricted builtins, no imports — tolerant rewriting of `import math/numpy`
+  since models type them reflexively — curated numpy without file IO, rlimits,
+  per-tick timeouts). Escape battery passes.
+- **Closed-loop experiments**: `physim_run_policy(code, t)` — policy(t, y, mem)
+  executed tick-synchronously against the live world.
+- **Preparation contracts (M2)**: "steer a fresh draw into sensor band B, hold
+  after release" — bands placed on reachable branch values by construction;
+  scored as success rate over 5 fresh clones. `physim_answer_prep(id, code)`.
+- **Theory submission (M3)**: `physim_submit_theory(code)` — an executable
+  init/step simulator of the sensors; scored post-hoc by simulating every
+  prediction-contract protocol and comparing tail statistics on the same scale
+  as answers (report-only reward weight for now).
+- Baselines: `prep_pi` scripted P-controller — prep 1.00 on D0/D2, **0.24 on
+  D4** (slow adaptation fights naive holds): the control-depth gradient is real.
+
+## First frontier results (D2, tools tier, n_prep=3, 2 seeds)
+
+| model | prediction acc | preparation | theory acc |
+|---|---|---|---|
+| claude-fable-5 + claude_code | **0.86, 0.95** | **1.0, 1.0** | 0.0*, **0.90** |
+| gpt-5.2 + codex | 0.12, 0.78 | **1.0, 1.0** | not attempted |
+
+*seed-1 theory scored 0 for `import` usage — jail now tolerates preloaded-module
+imports (v0.2.3); the same 13KB theory would now score.
+
+Highlights:
+- fable-5 seed 0 is the best physim rollout ever recorded: prediction 0.95,
+  all three preparations 5/5 clones, and a **0.895 executable theory**
+  (per-stratum 0.84-0.93) — it modeled the world well enough to simulate it.
+- Preparation contracts are currently EASIER for frontier models than
+  prediction (both models 100% on D2 preps) — as designed for D2, where
+  branch-steering suffices; D4/D5 preps (adaptation, feedback-required
+  worlds) are where the prep_pi certifier already drops to 0.24.
+- gpt-5.2 seed 0 shows reward decomposition working: prep 1.0 with
+  prediction 0.12 — it learned to steer without learning to predict.
+
+## Bugs found by models, fixed
+
+- Session reconstruction (tool server) lost issued prep contracts ->
+  "unknown preparation contract id"; contracts are now rebuilt
+  deterministically from the seed on any answer-phase call (v0.2.1).
+- prep/theory detail now persisted into trace.info (v0.2.2).
+- Jail import tolerance (v0.2.3).
