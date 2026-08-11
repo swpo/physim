@@ -674,3 +674,21 @@ beats the reference anywhere; gpt-5-nano ~ null baseline. Full numbers:
 REPORT.md. Deferred to M1+: coding-harness tier, policy programs,
 preparation/control contracts, simulator submission, meter-certified
 generation, per-axis difficulty decomposition.
+
+
+---
+
+# v0.6 pre-note — M4 direction: deeper hierarchy ("emergent chemistry") [DISCUSSION PENDING]
+
+User proposal (2026-02-11, recorded for the M4 design discussion): current
+worlds have ~1-2 reasoning layers (grid -> modes/sources/barriers). The bold
+target is a THIRD+ layer: modes as "atoms/molecules" that interact with each
+other to form larger structures with their own effective theory — an analogue
+of chemistry emerging from what is currently more like bulk material
+(gas/metal/glass). Known blocker: lattice size (24x24 - 32x32 is too small for
+diverse interacting "species"); expect orders-of-magnitude more sites and a
+faster engine (vectorization/JAX) plus port layers that only sparsely sample.
+Design challenge: motifs whose collective modes are MOBILE and COMPOSABLE
+(localized excitations / solitons / domain-wall bound states) rather than
+pinned stripes. To discuss after M2/M3 land. Two axes going forward: making
+models do better on existing worlds, and making ever more complex worlds.

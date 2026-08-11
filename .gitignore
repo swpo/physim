@@ -5,3 +5,6 @@ __pycache__/
 *.egg-info/
 .DS_Store
 nohup.out
+
+# rollout outputs live on HF: datasets/seanpohorence/physim-rollouts (sync_outputs.sh)
+outputs/
