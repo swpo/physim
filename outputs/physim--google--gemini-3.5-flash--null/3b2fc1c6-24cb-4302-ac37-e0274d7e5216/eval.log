@@ -1,0 +1,112 @@
+22:41:23    INFO eval config:
+{
+  "env": {
+    "id": "",
+    "taskset": {
+      "id": "physim",
+      "task": {
+        "judges": []
+      },
+      "system_prompt": null,
+      "difficulty": "D3",
+      "seed0": 0,
+      "max_turns": 40,
+      "n_per_stratum": 4
+    },
+    "timeout": {
+      "episode": null,
+      "finalize": null
+    },
+    "retries": {
+      "max_retries": 0,
+      "include": [],
+      "exclude": []
+    },
+    "max_concurrent_agents": 1,
+    "interception": {
+      "type": "elastic",
+      "multiplex": 32
+    },
+    "scientist": {
+      "harness": {
+        "id": "null",
+        "env": {},
+        "forward_env": [],
+        "tool_timeout": 600.0,
+        "disabled_tools": null,
+        "skills": []
+      },
+      "runtime": {
+        "type": "subprocess"
+      },
+      "model": null,
+      "client": null,
+      "sampling": null,
+      "max_turns": null,
+      "max_input_tokens": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout": {
+        "setup": null,
+        "rollout": null,
+        "finalize": null,
+        "scoring": null
+      },
+      "retries": {
+        "max_retries": 0,
+        "include": [],
+        "exclude": []
+      }
+    }
+  },
+  "serve": {
+    "pool": {
+      "type": "elastic",
+      "max_workers": null,
+      "multiplex": 128
+    },
+    "address": "tcp://127.0.0.1:5000",
+    "max_concurrent": null
+  },
+  "legacy": {
+    "id": null,
+    "args": {},
+    "extra_env_kwargs": {}
+  },
+  "model": "google/gemini-3.5-flash",
+  "client": {
+    "base_url": "https://api.pinference.ai/api/v1",
+    "api_key_var": "PRIME_API_KEY",
+    "headers": {
+      "X-Prime-Team-ID": "cm06pkxft000nem2k4cqh38jq"
+    },
+    "type": "eval"
+  },
+  "sampling": {
+    "temperature": null,
+    "top_p": null,
+    "reasoning_effort": null,
+    "max_tokens": null
+  },
+  "num_tasks": 3,
+  "num_rollouts": 1,
+  "shuffle": false,
+  "max_concurrent": 128,
+  "verbose": false,
+  "rich": false,
+  "server": false,
+  "push": true,
+  "output_dir": null
+}
+22:41:23    INFO running 3x1 rollouts on google/gemini-3.5-flash
+22:41:23    INFO results: outputs/physim--google--gemini-3.5-flash--null/3b2fc1c6-24cb-4302-ac37-e0274d7e5216
+22:41:23    INFO rollout start: id=c1354571cc794bca876203135d196b2d task=0 harness=null runtime=subprocess
+22:41:23    INFO rollout start: id=e8472c89e5d44f80a0f644259150bc09 task=1 harness=null runtime=subprocess
+22:41:23    INFO rollout start: id=0c7012ba1ee64228a16503da6f524bc3 task=2 harness=null runtime=subprocess
+22:41:23    INFO interception up: url=http://127.0.0.1:50462
+22:41:23    INFO interception pool: 1 server(s), multiplex=32
+22:43:55    INFO rollout done: id=c1354571cc794bca876203135d196b2d task=0 reward=0.467 turns=42 stop=user_closed
+22:43:59    INFO rollout done: id=0c7012ba1ee64228a16503da6f524bc3 task=2 reward=0.000 turns=41 stop=user_closed
+22:45:32    INFO rollout done: id=e8472c89e5d44f80a0f644259150bc09 task=1 reward=0.574 turns=25 stop=user_closed
+22:45:32    INFO interception down: url=http://127.0.0.1:50462
+22:45:37    INFO --push: uploaded 3 samples -> https://app.primeintellect.ai/dashboard/evaluations/swjsmnaelmgle9bx5wjzyapa

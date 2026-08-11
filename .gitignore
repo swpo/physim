@@ -1,0 +1,7 @@
+# environments / python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+nohup.out

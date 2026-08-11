@@ -1,0 +1,112 @@
+22:56:36    INFO eval config:
+{
+  "env": {
+    "id": "",
+    "taskset": {
+      "id": "physim",
+      "task": {
+        "judges": []
+      },
+      "system_prompt": null,
+      "difficulty": "D1",
+      "seed0": 0,
+      "max_turns": 40,
+      "n_per_stratum": 4
+    },
+    "timeout": {
+      "episode": null,
+      "finalize": null
+    },
+    "retries": {
+      "max_retries": 0,
+      "include": [],
+      "exclude": []
+    },
+    "max_concurrent_agents": 1,
+    "interception": {
+      "type": "elastic",
+      "multiplex": 32
+    },
+    "scientist": {
+      "harness": {
+        "id": "null",
+        "env": {},
+        "forward_env": [],
+        "tool_timeout": 600.0,
+        "disabled_tools": null,
+        "skills": []
+      },
+      "runtime": {
+        "type": "subprocess"
+      },
+      "model": null,
+      "client": null,
+      "sampling": null,
+      "max_turns": null,
+      "max_input_tokens": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout": {
+        "setup": null,
+        "rollout": null,
+        "finalize": null,
+        "scoring": null
+      },
+      "retries": {
+        "max_retries": 0,
+        "include": [],
+        "exclude": []
+      }
+    }
+  },
+  "serve": {
+    "pool": {
+      "type": "elastic",
+      "max_workers": null,
+      "multiplex": 128
+    },
+    "address": "tcp://127.0.0.1:5000",
+    "max_concurrent": null
+  },
+  "legacy": {
+    "id": null,
+    "args": {},
+    "extra_env_kwargs": {}
+  },
+  "model": "deepseek/deepseek-v4-flash",
+  "client": {
+    "base_url": "https://api.pinference.ai/api/v1",
+    "api_key_var": "PRIME_API_KEY",
+    "headers": {
+      "X-Prime-Team-ID": "cm06pkxft000nem2k4cqh38jq"
+    },
+    "type": "eval"
+  },
+  "sampling": {
+    "temperature": null,
+    "top_p": null,
+    "reasoning_effort": null,
+    "max_tokens": null
+  },
+  "num_tasks": 3,
+  "num_rollouts": 1,
+  "shuffle": false,
+  "max_concurrent": 128,
+  "verbose": false,
+  "rich": false,
+  "server": false,
+  "push": true,
+  "output_dir": null
+}
+22:56:36    INFO running 3x1 rollouts on deepseek/deepseek-v4-flash
+22:56:36    INFO results: outputs/physim--deepseek--deepseek-v4-flash--null/3326b177-26a1-4916-8ddd-3c31fe01cbd6
+22:56:36    INFO rollout start: id=ee4317953f1442a2a4f942cd854790cb task=0 harness=null runtime=subprocess
+22:56:36    INFO rollout start: id=75ae05c39a9b4bfb9092cbb9ae4a3786 task=1 harness=null runtime=subprocess
+22:56:36    INFO rollout start: id=4ef2f86d5e594b3c95b101b928e4d7da task=2 harness=null runtime=subprocess
+22:56:36    INFO interception up: url=http://127.0.0.1:57129
+22:56:36    INFO interception pool: 1 server(s), multiplex=32
+23:20:46    INFO rollout done: id=4ef2f86d5e594b3c95b101b928e4d7da task=2 reward=0.695 turns=42 stop=user_closed
+23:31:16    INFO rollout done: id=ee4317953f1442a2a4f942cd854790cb task=0 reward=0.542 turns=42 stop=user_closed
+23:34:04    INFO rollout done: id=75ae05c39a9b4bfb9092cbb9ae4a3786 task=1 reward=0.437 turns=42 stop=user_closed
+23:34:04    INFO interception down: url=http://127.0.0.1:57129
+23:34:12    INFO --push: uploaded 3 samples -> https://app.primeintellect.ai/dashboard/evaluations/kkaa1l82s0inonm1fn1tu6o7
