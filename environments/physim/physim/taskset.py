@@ -96,6 +96,7 @@ class PhysimData(vf.TaskData):
     world_seed: int = 0
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
+    n_prep: int = 0
     tier: Literal["chat", "tools"] = "chat"
 
 
@@ -107,6 +108,9 @@ INTERFACE (MCP tools)
 - physim_status(): budget and interface info.
 - physim_ready(): end exploration, receive prediction contracts.
 - physim_answer(answers): submit [{{"id":..,"mean":..,"low":..,"high":..}}, ...]. May be revised; last submission scores.
+- physim_run_policy(code, t): closed-loop experiment — your code defines policy(t, y, mem) -> [{n_in} floats]; it runs tick-synchronously against the live system (y = current sensor readings). Use it to build feedback controllers (clamps) that hold states no open-loop input can reach. Sandboxed: math + np only, no imports/files.
+- physim_answer_prep(id, code): submit a policy for a PREPARATION contract (steer a fresh draw into a stated sensor band; verified on 5 fresh draws after release).
+- physim_submit_theory(code): OPTIONAL — submit an executable theory (init/step simulator of the sensors); scored separately after the rollout.
 - Tick budget for all experiments: {budget}. Unspent budget is not rewarded.
 
 TASK
@@ -149,6 +153,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
         st.difficulty = self.data.difficulty
         st.world_seed = self.data.world_seed
         st.n_per_stratum = self.data.n_per_stratum
+        st.n_prep = self.data.n_prep
 
     """Chat tier: scoring happens in PhysimEnv. Tools tier: the toolset records
     the last answers + world snapshot in trace.state; score() replays them."""
@@ -167,8 +172,22 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
         st = trace.state
         world = make_world(self.data.difficulty, self.data.world_seed)
         session = PhysimSession(world, contract_seed=self.data.world_seed,
-                                n_per_stratum=self.data.n_per_stratum)
+                                n_per_stratum=self.data.n_per_stratum,
+                                n_prep=self.data.n_prep)
+        session.prep_answers = dict(getattr(st, "prep_answers", {}) or {})
+        session.theory_code = getattr(st, "theory_code", "") or ""
+        if session.n_prep or session.theory_code:
+            session.issue_contracts()
         result = session.score(getattr(st, "answers_json", "") or None)
+        if "reward_preparation" in result:
+            trace.record_reward("preparation", result["reward_preparation"], 1.0)
+            trace.record_metric("prep_n", float(len(result.get("prep_detail", []))))
+        if "theory" in result:
+            th = result["theory"]
+            trace.record_reward("theory", th["theory_accuracy"], 0.0)  # report-only weight
+            trace.record_metric("theory_code_chars", float(th["code_chars"]))
+            for stratum, acc in th["per_stratum"].items():
+                trace.record_metric(f"theory_acc_{stratum}", acc)
         trace.record_metric("coverage", result["coverage"])
         trace.record_metric("replication_ref", result["replication_ref"])
         trace.record_metric("n_answered", result["n_answered"])
@@ -207,6 +226,8 @@ class PhysimConfig(vf.TasksetConfig):
     """Max agent messages before contracts are forced."""
     n_per_stratum: int = 4
     """Contracts per stratum (S1 relax / S2 interpolation / S3 memory)."""
+    n_prep: int = 0
+    """Preparation contracts (M2): submit-a-policy steering tasks. 0 = off."""
     task: PhysimTaskConfig = PhysimTaskConfig()
     """Per-task config (tier is copied from the taskset-level field)."""
 
@@ -225,7 +246,8 @@ class PhysimEnv(vf.Env[PhysimEnvConfig]):
             return
         world = make_world(data.difficulty, data.world_seed)
         session = PhysimSession(world, contract_seed=data.world_seed,
-                                n_per_stratum=data.n_per_stratum)
+                                n_per_stratum=data.n_per_stratum,
+                                n_prep=data.n_prep)
         answer_text: str | None = None
         async with agents.scientist.interaction(task) as interaction:
             segment = await interaction.turn()  # prompted task speaks first
@@ -315,6 +337,7 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
                 world_seed=self.config.seed0 + i,
                 max_turns=self.config.max_turns,
                 n_per_stratum=self.config.n_per_stratum,
+                n_prep=self.config.n_prep,
                 tier="tools" if tools_tier else "chat",
                 artifacts=artifacts,
             )

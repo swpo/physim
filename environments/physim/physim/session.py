@@ -5,7 +5,9 @@ persistent World and return compact JSON observations (context-bandwidth
 discipline: server-side reduction, capped numbers).
 
 Commands
-  {"op":"run", "segments":[SEG,...], "observe":{...}?}   advance the world
+  {"op":"run", "segments":[SEG,...], "observe":{...}?}   advance the world (open loop)
+  {"op":"run_policy", "code":"...", "t":T, "observe":{...}?}  closed loop: code defines
+        policy(t, y, mem) -> [n_in floats]; executed tick-synchronously in a jail
   {"op":"reset"}                                          fresh initial draw (costed)
   {"op":"status"}                                         budget / interface info
   {"op":"ready"}                                          end exploration -> contracts
@@ -209,16 +211,137 @@ def replication_accuracy(samples: list[float], scale: float) -> float:
     return float(np.mean(accs))
 
 
+# ---------------------------------------------------------------- prep contracts
+@dataclass
+class PrepContract:
+    id: int
+    channel: int
+    lo: float
+    hi: float
+    t_prep: int          # max ticks the policy may run
+    hold: int            # release window: predicate on tail of `hold` FREE ticks
+    clones: int = 5
+
+    def spec(self) -> dict:
+        return {
+            "id": self.id, "type": "preparation",
+            "goal": {"channel": self.channel, "band": [round(self.lo, 3), round(self.hi, 3)],
+                     "measured": f"mean over final {TAIL} ticks of a {self.hold}-tick "
+                                 "free run (all inputs 0) after your policy finishes"},
+            "policy_budget_ticks": self.t_prep,
+            "evaluation": f"policy runs from {self.clones} fresh draws; score = fraction "
+                          "of draws where the released tail lands in the band",
+            "submit": {"op": "answer_prep", "id": self.id, "code": "policy(t, y, mem)"},
+        }
+
+
+def sample_prep_contracts(world: World, rng: np.random.Generator,
+                          n: int = 4) -> list["PrepContract"]:
+    """Reachable-by-construction: drive a probe clone to each branch, read the
+    tail values of live channels, and ask for bands around those values."""
+    p = world.p
+    dead = world.true_is_dead()
+    live = [c for c in range(p.n_out) if not dead[c]]
+    targets: list[tuple[int, float]] = []
+    for sgn in (+1.0, -1.0):
+        clone = world.clone_fresh(noise_seed=777 + int(sgn > 0))
+        clone.run(np.full((120, p.n_in), sgn * 0.9))
+        Yf = clone.run(np.zeros((260, p.n_in)))
+        tail = Yf[-TAIL:].mean(0)
+        for c in live:
+            targets.append((c, float(tail[c])))
+    rng.shuffle(targets)
+    contracts = []
+    ranges = world.true_channel_range()
+    for i, (c, v) in enumerate(targets[:n]):
+        half = max(0.15 * float(ranges[c]), 0.12)
+        contracts.append(PrepContract(
+            id=100 + i, channel=c, lo=v - half, hi=v + half,
+            t_prep=int(rng.integers(250, 450)), hold=int(rng.integers(180, 300))))
+    return contracts
+
+
+def score_prep(world: World, contract: PrepContract, code: str) -> dict:
+    """Run the submitted policy on fresh clones; measure the released tail."""
+    from physim.jail import Jail, JailError
+    hits, errors, finals = 0, [], []
+    for e in range(contract.clones):
+        clone = world.clone_fresh(noise_seed=4242 + 31 * contract.id + e)
+        try:
+            with Jail(code, mode="policy") as jail:
+                clone.run_policy(jail, contract.t_prep)
+        except (JailError, RuntimeError, ValueError) as ex:
+            errors.append(f"clone {e}: {str(ex)[:120]}")
+            finals.append(None)
+            continue
+        Yf = clone.run(np.zeros((contract.hold, world.p.n_in)))
+        val = float(Yf[-TAIL:, contract.channel].mean())
+        finals.append(round(val, 4))
+        if contract.lo <= val <= contract.hi:
+            hits += 1
+    return {"success_rate": hits / contract.clones, "finals": finals,
+            "errors": errors[:3]}
+
+
+# ---------------------------------------------------------------- theory (M3)
+def score_theory(world: World, contracts: list[Contract], code: str,
+                 warmup: int = 40) -> dict:
+    """Score an executable observable-process simulator G (init/step) by
+    replaying each prediction contract's protocol through it and comparing the
+    tail statistic against the truth ensemble (same scale as answers).
+    G sees a short real warmup history (autonomous run from fresh state), then
+    must simulate the protocol on its own."""
+    from physim.jail import Jail, JailError
+    ranges = world.true_channel_range()
+    accs, detail = [], []
+    for c in contracts:
+        U = render_protocol(c.segments, world.p.n_in)
+        mu, tau, _ = truth_statistic(world, c)
+        scale = answer_scale(tau, float(ranges[c.channel]))
+        try:
+            with Jail(code, mode="simulator") as jail:
+                hist_clone = world.clone_fresh(noise_seed=9000 + c.id)
+                Yh = hist_clone.run(np.zeros((warmup, world.p.n_in)))
+                jail.sim_init([[float(v) for v in row] for row in Yh])
+                preds = []
+                for t_ in range(U.shape[0]):
+                    y = jail.sim_step([float(v) for v in U[t_]])
+                    if len(y) != world.p.n_out:
+                        raise JailError(f"step returned {len(y)} values; need {world.p.n_out}")
+                    preds.append(y)
+            pred_stat = float(np.mean([row[c.channel] for row in preds[-TAIL:]]))
+            z = abs(pred_stat - mu) / scale
+            acc = float(np.exp(-z))
+            detail.append({"id": c.id, "stratum": c.stratum, "mu": round(mu, 4),
+                           "pred": round(pred_stat, 4), "accuracy": round(acc, 4)})
+        except JailError as e:
+            acc = 0.0
+            detail.append({"id": c.id, "stratum": c.stratum, "mu": round(mu, 4),
+                           "error": str(e)[:160], "accuracy": 0.0})
+        accs.append(acc)
+    per_stratum: dict[str, list[float]] = {}
+    for d, a in zip(detail, accs):
+        per_stratum.setdefault(d["stratum"], []).append(a)
+    return {"theory_accuracy": float(np.mean(accs)) if accs else 0.0,
+            "per_stratum": {k: float(np.mean(v)) for k, v in per_stratum.items()},
+            "detail": detail, "code_chars": len(code)}
+
+
 # ---------------------------------------------------------------- session
 class PhysimSession:
     """Holds the persistent world + phase machine (explore -> answer -> done)."""
 
-    def __init__(self, world: World, contract_seed: int, n_per_stratum: int = 4):
+    def __init__(self, world: World, contract_seed: int, n_per_stratum: int = 4,
+                 n_prep: int = 0):
         self.world = world
         self.phase = "explore"
         self.rng = np.random.default_rng(np.random.SeedSequence([0xC047, contract_seed]))
         self.n_per_stratum = n_per_stratum
+        self.n_prep = n_prep
         self.contracts: list[Contract] = []
+        self.prep_contracts: list[PrepContract] = []
+        self.prep_answers: dict[int, str] = {}
+        self.theory_code: str = ""
         self.turns = 0
 
     # ---- interface description shown in the system prompt ----
@@ -239,11 +362,33 @@ class PhysimSession:
         except ValueError as e:
             return {"error": f"could not parse a JSON command: {e}"}
         op = cmd.get("op")
-        if self.phase == "answer" and op != "answer":
+        if self.phase == "answer" and op not in ("answer", "answer_prep", "submit_theory"):
             return {"error": "exploration is over; reply with the answers object",
-                    "contracts": [c.spec() for c in self.contracts]}
+                    "contracts": [c.spec() for c in self.contracts],
+                    "preparation_contracts": [c.spec() for c in self.prep_contracts]}
+        if op == "submit_theory":
+            code = cmd.get("code")
+            if not isinstance(code, str) or not code.strip():
+                return {"error": "code must define init(y_history) and step(state, a)"}
+            self.theory_code = code
+            return {"ok": True, "note": ("theory recorded; it will be scored after the "
+                                          "rollout by simulating every prediction-contract "
+                                          "protocol and comparing tail statistics")}
+        if op == "answer_prep":
+            cid = cmd.get("id")
+            code = cmd.get("code")
+            ids = {c.id for c in self.prep_contracts}
+            if cid not in ids:
+                return {"error": f"unknown preparation contract id {cid!r}; ids: {sorted(ids)}"}
+            if not isinstance(code, str) or not code.strip():
+                return {"error": "code must be a non-empty string defining policy(t, y, mem)"}
+            self.prep_answers[cid] = code
+            return {"ok": True, "recorded_policy_for": cid,
+                    "pending": sorted(ids - set(self.prep_answers))}
         if op == "run":
             return self._op_run(cmd)
+        if op == "run_policy":
+            return self._op_run_policy(cmd)
         if op == "reset":
             try:
                 self.world.fresh_sample()
@@ -273,6 +418,23 @@ class PhysimSession:
         try:
             Y = self.world.run(U)
         except RuntimeError as e:
+            return {"error": str(e), "budget_left": self.world.budget_left}
+        return self._observe(Y, cmd.get("observe") or {})
+
+    def _op_run_policy(self, cmd: dict) -> dict:
+        from physim.jail import Jail, JailError
+        code = cmd.get("code")
+        T = cmd.get("t")
+        if not isinstance(T, int) or not (1 <= T <= MAX_SEG_TICKS):
+            return {"error": f"t must be an int in [1, {MAX_SEG_TICKS}]"}
+        try:
+            with Jail(code, mode="policy") as jail:
+                Y = self.world.run_policy(jail, T)
+        except JailError as e:
+            return {"error": f"policy failed: {e}", "budget_left": self.world.budget_left}
+        except RuntimeError as e:
+            return {"error": str(e), "budget_left": self.world.budget_left}
+        except ValueError as e:
             return {"error": str(e), "budget_left": self.world.budget_left}
         return self._observe(Y, cmd.get("observe") or {})
 
@@ -316,7 +478,9 @@ class PhysimSession:
         self.phase = "answer"
         if not self.contracts:
             self.contracts = sample_contracts(self.world, self.rng, self.n_per_stratum)
-        return {
+        if not self.prep_contracts and self.n_prep > 0:
+            self.prep_contracts = sample_prep_contracts(self.world, self.rng, self.n_prep)
+        out = {
             "phase": "answer",
             "note": ("Exploration over. Answer ALL contracts in one JSON object: "
                      '{"op":"answer","answers":[{"id":0,"mean":..,"low":..,"high":..},...]}. '
@@ -325,6 +489,13 @@ class PhysimSession:
                      "covers the true ensemble mean."),
             "contracts": [c.spec() for c in self.contracts],
         }
+        if self.prep_contracts:
+            out["preparation_contracts"] = [c.spec() for c in self.prep_contracts]
+            out["note"] += (" ALSO: preparation contracts ask you to SUBMIT A POLICY "
+                            "(code defining policy(t, y, mem) -> action list) that "
+                            "steers a fresh draw into the stated band; submit each with "
+                            '{"op":"answer_prep","id":<id>,"code":"..."}.')
+        return out
 
     def score(self, answer_text: str | None) -> dict:
         """Score the answer message. Returns rewards/metrics + per-contract detail."""
@@ -356,6 +527,16 @@ class PhysimSession:
                            "replication": round(ceil, 4)})
             per_stratum.setdefault(c.stratum, []).append(s["accuracy"])
             acc_all.append(s["accuracy"]); cov_all.append(s["covered"]); ceil_all.append(ceil)
+        prep_detail, prep_rates = [], []
+        for c in self.prep_contracts:
+            code = self.prep_answers.get(c.id)
+            if code:
+                pr = score_prep(self.world, c, code)
+            else:
+                pr = {"success_rate": 0.0, "finals": [], "errors": ["no policy submitted"]}
+            prep_detail.append({"id": c.id, "channel": c.channel,
+                                "band": [c.lo, c.hi], **pr})
+            prep_rates.append(pr["success_rate"])
         result = {
             "reward_accuracy": float(np.mean(acc_all)),
             "coverage": float(np.mean(cov_all)),
@@ -365,6 +546,11 @@ class PhysimSession:
             "budget_used_frac": self.world.ticks_used / self.world.p.max_ticks,
             "detail": detail,
         }
+        if self.prep_contracts:
+            result["reward_preparation"] = float(np.mean(prep_rates))
+            result["prep_detail"] = prep_detail
+        if self.theory_code:
+            result["theory"] = score_theory(self.world, self.contracts, self.theory_code)
         if parse_error:
             result["parse_error"] = parse_error
         return result

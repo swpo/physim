@@ -142,14 +142,51 @@ class ReferenceAgent:
         return json.dumps({"op": "answer", "answers": answers})
 
 
-AGENTS = {a.name: a for a in (NullAgent(), TailAgent(), ReferenceAgent())}
+class PrepPIAgent:
+    """Certifier/floor for preparation contracts: calibrates sensor polarity via
+    global steps, then submits a P-controller policy per contract that drives
+    the target channel toward its band using all input ports."""
+
+    name = "prep_pi"
+
+    def play(self, session: PhysimSession) -> str:
+        n_in = session.world.p.n_in
+        z = [0.0] * n_in
+        # calibrate: which way does each channel move under +drive?
+        r0 = _cmd(session, {"op": "run", "segments": [{"t": 60, "u": z}]})
+        rp = _cmd(session, {"op": "run", "segments": [{"t": 60, "u": [0.8] * n_in}]})
+        rest = {int(k): v for k, v in r0["tail_mean"].items()}
+        up = {int(k): v for k, v in rp["tail_mean"].items()}
+        spec = _cmd(session, {"op": "ready", "confirm": True})
+        # prediction answers: resting means (tail-agent style)
+        answers = [{"id": c["id"], "mean": rest.get(c["predict"]["channel"], 0.0),
+                    "low": rest.get(c["predict"]["channel"], 0.0) - 0.6,
+                    "high": rest.get(c["predict"]["channel"], 0.0) + 0.6}
+                   for c in spec["contracts"]]
+        for pc in spec.get("preparation_contracts", []):
+            ch = pc["goal"]["channel"]
+            lo, hi = pc["goal"]["band"]
+            mid = (lo + hi) / 2
+            sgn = 1.0 if up.get(ch, 0.0) >= rest.get(ch, 0.0) else -1.0
+            code = f"""
+def policy(t, y, mem):
+    err = {mid} - y[{ch}]
+    drive = {sgn} * max(-1.0, min(1.0, 3.0 * err))
+    return [drive] * {n_in}
+"""
+            _cmd(session, {"op": "answer_prep", "id": pc["id"], "code": code})
+        return json.dumps({"op": "answer", "answers": answers})
+
+
+AGENTS = {a.name: a for a in (NullAgent(), TailAgent(), ReferenceAgent(), PrepPIAgent())}
 
 
 def run_baseline(difficulty: str, seed: int, agent_name: str,
-                 n_per_stratum: int = 4) -> dict[str, Any]:
+                 n_per_stratum: int = 4, n_prep: int = 0) -> dict[str, Any]:
     from physim.engine import make_world
     world = make_world(difficulty, seed)
-    session = PhysimSession(world, contract_seed=seed, n_per_stratum=n_per_stratum)
+    session = PhysimSession(world, contract_seed=seed, n_per_stratum=n_per_stratum,
+                            n_prep=n_prep)
     answer = AGENTS[agent_name].play(session)
     result = session.score(answer)
     result["agent"] = agent_name

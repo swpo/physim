@@ -54,9 +54,12 @@ class PhysimToolState(vf.State):
     difficulty: str = ""
     world_seed: int = 0
     n_per_stratum: int = 4
+    n_prep: int = 0
     snapshot: str = ""
     phase: str = "explore"
     answers_json: str = ""      # last submitted answers (evaluator scores post-hoc)
+    prep_answers: dict[int, str] = {}   # prep contract id -> policy code
+    theory_code: str = ""
     turns: int = 0
 
 
@@ -74,8 +77,11 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         if st.snapshot:
             _restore(world, st.snapshot)
         s = PhysimSession(world, contract_seed=st.world_seed,
-                          n_per_stratum=st.n_per_stratum)
+                          n_per_stratum=st.n_per_stratum,
+                          n_prep=st.n_prep)
         s.phase = st.phase or "explore"
+        s.prep_answers = dict(st.prep_answers or {})
+        s.theory_code = st.theory_code or ""
         if s.phase == "answer":
             s.contracts = s.contracts or []
         return s
@@ -83,6 +89,8 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
     def _save(self, s: PhysimSession) -> None:
         self.state.snapshot = _snapshot(s.world)
         self.state.phase = s.phase
+        self.state.prep_answers = dict(s.prep_answers)
+        self.state.theory_code = s.theory_code
         self.state.turns += 1
 
     def _dispatch(self, cmd: dict) -> str:
@@ -142,6 +150,37 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         if stride:
             obs["stride"] = int(stride)
         return self._dispatch({"op": "run", "segments": segments, "observe": obs})
+
+    @vf.tool(name="run_policy")
+    async def run_policy(self, code: str, t: int, channels: list | str = "all",
+                         series: bool = False, max_numbers: int = 360) -> str:
+        """Closed-loop experiment: your code defines policy(t, y, mem) -> list of
+        n_in floats in [-1,1]; it is executed tick-synchronously against the live
+        system for t ticks (y = current sensor readings, mem = a persistent dict).
+        Sandboxed: math and np (numpy, no file IO) available; no imports.
+        Costs t ticks of budget. Returns the same observation format as run."""
+        obs = {"channels": channels, "series": bool(series),
+               "max_numbers": int(max_numbers)}
+        return self._dispatch({"op": "run_policy", "code": code, "t": int(t),
+                               "observe": obs})
+
+    @vf.tool(name="answer_prep")
+    async def answer_prep(self, id: int, code: str) -> str:
+        """Submit a preparation-contract policy: code defining policy(t, y, mem)
+        that steers a FRESH draw of the system into the contract's band within
+        its tick budget (the band is then checked on a free run after release).
+        May be resubmitted; the last submission per contract id is scored."""
+        return self._dispatch({"op": "answer_prep", "id": int(id), "code": code})
+
+    @vf.tool(name="submit_theory")
+    async def submit_theory(self, code: str) -> str:
+        """OPTIONAL bonus: submit an executable theory of the system — code
+        defining init(y_history) -> state and step(state, a) -> (state, y_pred)
+        where a is the input vector and y_pred the predicted next sensor
+        readings (length n_out). Scored after the rollout by simulating every
+        prediction-contract protocol; adds a separate theory reward. Sandboxed
+        like run_policy (math + np, no imports/files). Resubmission replaces."""
+        return self._dispatch({"op": "submit_theory", "code": code})
 
     @vf.tool(name="reset")
     async def reset_world(self) -> str:

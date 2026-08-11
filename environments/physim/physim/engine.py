@@ -184,6 +184,25 @@ class World:
         self.ticks_used += T
         return Y
 
+    def run_policy(self, jail, T: int) -> np.ndarray:
+        """Closed-loop advance: per tick, read ports, ask the jailed policy for
+        an action, step. Returns Y [T, n_out]. Budget checked like run()."""
+        if self.ticks_used + T > self.p.max_ticks:
+            raise RuntimeError(
+                f"budget exceeded: {self.ticks_used} used + {T} requested "
+                f"> {self.p.max_ticks}")
+        Y = np.empty((T, self.p.n_out))
+        y = self._read()                      # observation before first action
+        for t in range(T):
+            a = jail.act(t, [float(v) for v in y])
+            if len(a) != self.p.n_in:
+                raise ValueError(f"policy returned {len(a)} values; need {self.p.n_in}")
+            self._step(np.asarray(a, dtype=float))
+            y = self._read()
+            Y[t] = y
+        self.ticks_used += T
+        return Y
+
     def fresh_sample(self) -> None:
         """Reset to a new draw of initial conditions (costed: 200 ticks)."""
         cost = 200
