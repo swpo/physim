@@ -60,7 +60,7 @@ class PhysimData(vf.TaskData):
 TOOLS_SYSTEM_PROMPT = """You are a scientist studying an unknown dynamical system through a fixed tool interface. Nothing about the system's internal laws is documented. Everything must be discovered by experiment.
 
 INTERFACE (MCP tools)
-- physim_run(segments, channels, series, max_numbers): advance the hidden system through an input program and observe sensors. segments = [{{"t": ticks, "u": [values]}}, ...] holds, or {{"t":.., "u_start":[..], "u_end":[..]}} ramps; values in [-1,1]; the system has {n_in} input ports and {n_out} output sensors with persistent internal state (one tick at a time, may retain memory of past inputs). Returns per-channel mean/sd over the final {tail} ticks; series=true adds downsampled traces (<=6 channels).
+- physim_run(segments, channels, series, max_numbers): advance the hidden system through an input program and observe sensors. segments = [{{"t": ticks, "u": [values]}}, ...] holds, or {{"t":.., "u_start":[..], "u_end":[..]}} ramps; values in [-1,1]; the system has {n_in} input ports and {n_out} output sensors with persistent internal state (one tick at a time, may retain memory of past inputs). Returns per-channel mean/sd over the final {tail} ticks; series=true adds downsampled traces (<=6 channels). segments MUST be a JSON array of objects, e.g. physim_run(segments=[{{"t": 100, "u": [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}], channels="all").
 - physim_reset(): fresh initial conditions (costs 200 ticks). State otherwise PERSISTS between runs.
 - physim_status(): budget and interface info.
 - physim_ready(): end exploration, receive prediction contracts.

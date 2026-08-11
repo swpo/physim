@@ -1,0 +1,157 @@
+13:09:38    INFO eval config:
+{
+  "env": {
+    "id": "",
+    "taskset": {
+      "id": "physim",
+      "task": {
+        "judges": [],
+        "tier": "chat",
+        "tools": {
+          "colocated": false,
+          "runtime": {
+            "type": "subprocess"
+          },
+          "url": null
+        }
+      },
+      "system_prompt": null,
+      "difficulty": "D4",
+      "tier": "tools",
+      "seed0": 0,
+      "max_turns": 40,
+      "n_per_stratum": 4
+    },
+    "timeout": {
+      "episode": null,
+      "finalize": null
+    },
+    "retries": {
+      "max_retries": 0,
+      "include": [],
+      "exclude": []
+    },
+    "max_concurrent_agents": 1,
+    "interception": {
+      "type": "elastic",
+      "multiplex": 32
+    },
+    "scientist": {
+      "harness": {
+        "id": "codex",
+        "env": {},
+        "forward_env": [],
+        "tool_timeout": 600.0,
+        "disabled_tools": null,
+        "skills": [],
+        "version": "0.146.1",
+        "multi_agent": false
+      },
+      "runtime": {
+        "allow": [
+          "*"
+        ],
+        "block": [],
+        "type": "docker",
+        "image": "python:3.11-slim",
+        "workdir": "/app",
+        "cpu": null,
+        "memory": null,
+        "gpu": null,
+        "disk": null
+      },
+      "model": null,
+      "client": null,
+      "sampling": null,
+      "max_turns": null,
+      "max_input_tokens": null,
+      "max_output_tokens": null,
+      "max_total_tokens": null,
+      "timeout": {
+        "setup": null,
+        "rollout": null,
+        "finalize": null,
+        "scoring": null
+      },
+      "retries": {
+        "max_retries": 0,
+        "include": [],
+        "exclude": []
+      }
+    }
+  },
+  "serve": {
+    "pool": {
+      "type": "elastic",
+      "max_workers": null,
+      "multiplex": 128
+    },
+    "address": "tcp://127.0.0.1:5000",
+    "max_concurrent": null
+  },
+  "legacy": {
+    "id": null,
+    "args": {},
+    "extra_env_kwargs": {}
+  },
+  "model": "google/gemini-3.1-pro-preview",
+  "client": {
+    "base_url": "https://api.pinference.ai/api/v1",
+    "api_key_var": "PRIME_API_KEY",
+    "headers": {
+      "X-Prime-Team-ID": "cm06pkxft000nem2k4cqh38jq"
+    },
+    "type": "eval"
+  },
+  "sampling": {
+    "temperature": null,
+    "top_p": null,
+    "reasoning_effort": null,
+    "max_tokens": null
+  },
+  "num_tasks": 5,
+  "num_rollouts": 1,
+  "shuffle": false,
+  "max_concurrent": 128,
+  "verbose": false,
+  "rich": false,
+  "server": false,
+  "push": true,
+  "output_dir": null
+}
+13:09:38    INFO running 5x1 rollouts on google/gemini-3.1-pro-preview
+13:09:38    INFO results: outputs/physim--google--gemini-3.1-pro-preview--codex/2b10a538-2cef-4cea-8e8c-0efb414322da
+13:09:38    INFO rollout start: id=b9a7d9735f6b453ead6192d322b15c3c task=0 harness=codex runtime=docker
+13:09:38    INFO rollout start: id=d123597e468844318f02442a60d3d6a9 task=1 harness=codex runtime=docker
+13:09:38    INFO rollout start: id=7f7bca8dac774ed98568ae7468bf5780 task=2 harness=codex runtime=docker
+13:09:38    INFO rollout start: id=f99b05c6b6ff4d46af56029894c5feed task=3 harness=codex runtime=docker
+13:09:38    INFO rollout start: id=0ef3857b36984e979712dd6ba14757b0 task=4 harness=codex runtime=docker
+13:09:38    INFO interception up: url=http://127.0.0.1:64871
+13:09:38    INFO interception pool: 1 server(s), multiplex=32
+13:09:39    INFO docker: started container 7f7bca8dac774ed98568ae7468bf5780 (image=python:3.11-slim)
+13:09:39    INFO docker: started container d123597e468844318f02442a60d3d6a9 (image=python:3.11-slim)
+13:09:39    INFO docker: started container f99b05c6b6ff4d46af56029894c5feed (image=python:3.11-slim)
+13:09:39    INFO docker: started container 0ef3857b36984e979712dd6ba14757b0 (image=python:3.11-slim)
+13:09:39    INFO docker: started container b9a7d9735f6b453ead6192d322b15c3c (image=python:3.11-slim)
+13:09:48    INFO codex: ensuring Codex 0.146.1 and codex-acp 1.1.10 are installed
+13:09:48    INFO codex: ensuring Codex 0.146.1 and codex-acp 1.1.10 are installed
+13:09:51    INFO codex: ensuring Codex 0.146.1 and codex-acp 1.1.10 are installed
+13:09:52    INFO codex: ensuring Codex 0.146.1 and codex-acp 1.1.10 are installed
+13:09:52    INFO codex: ensuring Codex 0.146.1 and codex-acp 1.1.10 are installed
+13:10:07    INFO tool server 'physim': http://host.docker.internal:65084/mcp
+13:10:07 WARNING Harness 'codex' does not support a separate system prompt; prepending task.system_prompt to the user prompt.
+13:10:11    INFO tool server 'physim': http://host.docker.internal:65110/mcp
+13:10:11 WARNING Harness 'codex' does not support a separate system prompt; prepending task.system_prompt to the user prompt.
+13:10:11    INFO tool server 'physim': http://host.docker.internal:65120/mcp
+13:10:12 WARNING Harness 'codex' does not support a separate system prompt; prepending task.system_prompt to the user prompt.
+13:10:12    INFO tool server 'physim': http://host.docker.internal:65114/mcp
+13:10:12 WARNING Harness 'codex' does not support a separate system prompt; prepending task.system_prompt to the user prompt.
+13:10:14    INFO tool server 'physim': http://host.docker.internal:65143/mcp
+13:10:14 WARNING Harness 'codex' does not support a separate system prompt; prepending task.system_prompt to the user prompt.
+13:11:21    INFO rollout done: id=7f7bca8dac774ed98568ae7468bf5780 task=2 reward=0.098 turns=12 stop=agent_completed
+13:11:39    INFO rollout done: id=b9a7d9735f6b453ead6192d322b15c3c task=0 reward=0.221 turns=15 stop=agent_completed
+13:11:55    INFO rollout done: id=d123597e468844318f02442a60d3d6a9 task=1 reward=0.116 turns=12 stop=agent_completed
+13:12:05    INFO rollout done: id=f99b05c6b6ff4d46af56029894c5feed task=3 reward=0.099 turns=15 stop=agent_completed
+13:12:23    INFO rollout done: id=0ef3857b36984e979712dd6ba14757b0 task=4 reward=0.130 turns=13 stop=agent_completed
+13:12:23    INFO interception down: url=http://127.0.0.1:64871
+13:12:27    INFO --push: uploaded 5 samples -> https://app.primeintellect.ai/dashboard/evaluations/oxxd6lpvru9uh712lspxnrzg

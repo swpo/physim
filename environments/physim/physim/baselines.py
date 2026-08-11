@@ -28,7 +28,7 @@ class NullAgent:
     name = "null"
 
     def play(self, session: PhysimSession) -> str:
-        spec = _cmd(session, {"op": "ready"})
+        spec = _cmd(session, {"op": "ready", "confirm": True})
         answers = [{"id": c["id"], "mean": 0.0, "low": -1.5, "high": 1.5}
                    for c in spec["contracts"]]
         return json.dumps({"op": "answer", "answers": answers})
@@ -43,7 +43,7 @@ class TailAgent:
                            "segments": [{"t": 150, "u": [0.0] * n_in}],
                            "observe": {"channels": "all"}})
         rest = {int(k): v for k, v in r["tail_mean"].items()}
-        spec = _cmd(session, {"op": "ready"})
+        spec = _cmd(session, {"op": "ready", "confirm": True})
         answers = [{"id": c["id"],
                     "mean": rest.get(c["predict"]["channel"], 0.0),
                     "low": rest.get(c["predict"]["channel"], 0.0) - 0.5,
@@ -121,7 +121,7 @@ class ReferenceAgent:
             u = list(z); u[i] = 0.5
             record([{"t": 50, "u": u}])
         # done exploring
-        spec = _cmd(session, {"op": "ready"})
+        spec = _cmd(session, {"op": "ready", "confirm": True})
         F = np.stack([f for f, _ in lib])
         answers = []
         for c in spec["contracts"]:

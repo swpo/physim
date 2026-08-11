@@ -109,6 +109,34 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         6 channels (at most max_numbers values total; optional stride).
         Returns JSON: per-channel mean/sd over the final 20 ticks, budget left,
         and the series if requested."""
+        # Some MCP clients deliver structured args as JSON strings (sometimes
+        # double-encoded, sometimes per-element); normalize aggressively.
+        def _decode(v, depth=3):
+            while isinstance(v, str) and depth > 0:
+                try:
+                    v = json.loads(v)
+                except json.JSONDecodeError:
+                    break
+                depth -= 1
+            return v
+
+        segments = _decode(segments)
+        if isinstance(segments, dict):
+            segments = [segments]
+        if isinstance(segments, list):
+            segments = [_decode(seg) for seg in segments]
+        if not (isinstance(segments, list)
+                and all(isinstance(seg, dict) for seg in segments)):
+            return json.dumps({"error": (
+                "segments must be a JSON array of objects like "
+                '[{"t": 100, "u": [0.5, 0, ...]}] — got '
+                f"{type(segments).__name__}"
+                + (f" of {type(segments[0]).__name__}" if isinstance(segments, list) and segments else ""))})
+        if isinstance(channels, str) and channels != "all":
+            try:
+                channels = json.loads(channels)
+            except json.JSONDecodeError:
+                pass
         obs = {"channels": channels, "series": bool(series),
                "max_numbers": int(max_numbers)}
         if stride:
@@ -127,9 +155,11 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         return self._dispatch({"op": "status"})
 
     @vf.tool
-    async def ready(self) -> str:
-        """End exploration and receive the prediction contracts to answer."""
-        return self._dispatch({"op": "ready"})
+    async def ready(self, confirm: bool = False) -> str:
+        """End exploration and receive the prediction contracts to answer.
+        If less than 5% of the tick budget has been used, requires confirm=true
+        (ending exploration that early is almost always an accident)."""
+        return self._dispatch({"op": "ready", "confirm": bool(confirm)})
 
     @vf.tool
     async def answer(self, answers: list) -> str:
@@ -138,13 +168,35 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         rollout ends; the last submission is scored."""
         st = self.state
         if st.phase != "answer":
-            s = self._session()
-            s.issue_contracts()
-            self._save(s)
-        st.answers_json = json.dumps({"op": "answer", "answers": answers})
-        n = len(answers) if isinstance(answers, list) else 0
-        return json.dumps({"ok": True, "received": n,
-                           "note": "answers recorded; they are scored after the rollout ends"})
+            return json.dumps({"error": (
+                "exploration is still active; call physim_ready first to "
+                "receive the contracts, then submit answers")})
+        norm = []
+        bad = 0
+        items = answers if isinstance(answers, list) else [answers]
+        for a in items:
+            if isinstance(a, str):
+                try:
+                    a = json.loads(a)
+                except json.JSONDecodeError:
+                    bad += 1
+                    continue
+            if isinstance(a, dict) and "id" in a:
+                try:
+                    norm.append({"id": int(a["id"]),
+                                 "mean": float(a.get("mean", 0.0)),
+                                 "low": float(a.get("low", a.get("mean", 0.0))),
+                                 "high": float(a.get("high", a.get("mean", 0.0)))})
+                except (TypeError, ValueError):
+                    bad += 1
+            else:
+                bad += 1
+        st.answers_json = json.dumps({"op": "answer", "answers": norm})
+        note = "answers recorded; they are scored after the rollout ends"
+        if bad:
+            note += f" ({bad} entries were malformed and dropped)"
+        return json.dumps({"ok": True, "received": len(norm), "rejected": bad,
+                           "note": note})
 
 
 if __name__ == "__main__":

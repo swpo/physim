@@ -255,6 +255,13 @@ class PhysimSession:
             return {"phase": self.phase, "budget_left": self.world.budget_left,
                     "interface": self.interface_card()}
         if op == "ready":
+            used = self.world.ticks_used / max(self.world.p.max_ticks, 1)
+            if used < 0.05 and not cmd.get("confirm"):
+                return {"error": (
+                    f"you have used only {used:.1%} of the tick budget; ending "
+                    "exploration now is almost certainly premature. Send "
+                    '{"op":"ready","confirm":true} to end anyway.'),
+                    "budget_left": self.world.budget_left}
             return self.issue_contracts()
         return {"error": f"unknown op {op!r}; ops: run, reset, status, ready"}
 

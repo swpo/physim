@@ -273,3 +273,54 @@ rollouts (null harness) are far lighter: ~25–40 calls, <1M cached, 2–15 min.
   cannot reproduce a live world (unset = reproducible published defaults).
   Residual risk accepted: local subprocess runtime (debug only) offers no
   isolation; use docker/prime for real evals.
+
+
+---
+
+# Addendum 5 (2026-02-11): n=5 D4 pairing statistics + protocol-robustness fixes
+
+## Final D4 leaderboard (tools tier, 5 seeds each, latest run per seed)
+
+| pairing | reward (mean±sd) | budget used | S1 | S2 | S3 | S4 | coverage |
+|---|---|---|---|---|---|---|---|
+| claude-fable-5 + claude_code | **0.349 ± 0.04** | 0.32 | 0.21 | 0.42 | 0.48 | 0.29 | 0.66 |
+| claude-opus-5 + claude_code | 0.324 ± 0.11 | 0.41 | 0.23 | 0.39 | 0.43 | 0.25 | 0.79 |
+| gpt-5.6-sol + codex | 0.244 ± 0.07 | 0.54 | 0.21 | 0.39 | 0.19 | 0.19 | 0.47 |
+| gemini-3.1-pro + codex | 0.194 ± 0.12 | 0.01 | 0.22 | 0.27 | 0.13 | 0.16 | 0.96 |
+| *scripted reference (5 seeds)* | *0.274 ± 0.04* | *0.11* | | | | | |
+| *tail baseline (5 seeds)* | *0.211 ± 0.04* | | | | | | |
+| *null baseline (5 seeds)* | *0.133 ± 0.05* | | | | | | |
+| *replication reference* | *~0.93* | | | | | | |
+
+Reading: fable-5 is the only pairing clearly above the scripted reference
+(0.35 vs 0.27, and the most consistent, sd 0.04). opus-5 matches it on mean but
+with 3x the variance. sol spends the most budget for less score. gemini
+barely explores (1% budget, ~12 turns) and lands at the null floor + eps; its
+0.96 coverage with bottom-rung accuracy = wide honest intervals around
+guesses. D4 remains open: best mean 0.35 vs 0.93 achievable.
+
+Budget-use vs reward across all 20 rollouts: Spearman rho=0.14 (p=0.55) —
+spending ticks does not by itself buy score; *what* you measure matters more
+than how much. (sol: most ticks, mid score; fable: moderate ticks, top score.)
+
+## Environment robustness fixes shipped during these runs (v0.1.2)
+
+Diagnosed from failing gemini+codex traces (reward 0.000, n_answered 0):
+
+1. **Tool-arg normalization**: some MCP clients deliver structured arguments
+   as JSON strings (sometimes double-encoded, sometimes per-element).
+   `physim_run.segments` and `physim_answer.answers` now decode recursively
+   and return instructive errors instead of "segment 0 must be an object"
+   loops. (Root cause of gemini's zero-scores: it fumbled the format 3-4x,
+   then gave up and answered zeros "due to constraints".)
+2. **Premature-ready guard**: `physim_ready` with <5% budget used requires
+   `confirm=true` (accidental phase transitions locked agents out of
+   exploration).
+3. **physim_answer during exploration** now errors instead of silently
+   issuing contracts.
+4. Version-bump note: the tool server installs the env package by sdist;
+   uv caches wheels by name-version, so tool-code changes REQUIRE a version
+   bump in pyproject.toml to reach the server runtime.
+
+Even after the fixes, gemini-3.1-pro's conduct is unchanged (satisfices in
+~12 turns) — that is a model finding, not an env artifact.
