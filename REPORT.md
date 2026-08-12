@@ -450,3 +450,59 @@ theory measure different skills), preparation contracts are solvable-but-
 discriminating, theory submission correlates with understanding. Next
 design lever: control-depth-graded prep strata (open-loop / feedback /
 feedback+identification) as an explicit axis, and possibly weighting theory.
+
+
+---
+
+# Addendum 9 (2026-02-12): chemistry track — first frontier runs (C0/C1)
+
+Engine v0.3.1 (unified core; snapshot fix for grayscott worlds). Runs: 2 seeds
+per pairing, n_prep=2, theory enabled, 100-turn default.
+
+| pairing | diff | prediction | preparation | theory |
+|---|---|---|---|---|
+| claude-fable-5 + claude_code | C0 | 0.95, 0.91 | 1.0, 1.0 | 0.96, 0.92 |
+| gpt-5.2 + codex | C0 | 0.82, 0.54 | 1.0, 0.75 | not submitted |
+| claude-opus-5 + claude_code | C1 | 0.96, 0.95 | 1.0, 1.0 | 0.96, 0.95 |
+| gpt-5.6-sol + codex | C1 | 0.97, 0.92 | 1.0, 1.0 | 0.82, — |
+| *baselines C0 (2 seeds)* | | *null 0.32 / tail 0.75 / ref 0.71* | | |
+
+## Findings
+
+1. **The chemistry track as configured is frontier-easy** (0.91-0.97 acc,
+   preparation saturated). Root cause: objects are STATIC between
+   perturbations and co-located sensors make tail-means quasi-constant;
+   held-out protocols mostly reproduce probed regimes. The physics is
+   richer than the contracts currently exercise (no motion, no multi-object
+   interaction probed). C-track difficulty needs: mobile objects (feed
+   gradients / drift), contracts on object COUNT changes (split/merge
+   protocols), apparatus-dependent contracts (bands only measurable by
+   moving a sensor), and tighter scales.
+2. **The apparatus went entirely undiscovered.** The best rollout (opus-5
+   C1 seed 0, 179 turns, 84% budget) explicitly classified ports 2,4,6 as
+   "inert" — ports 2 and 4 ARE the apparatus (stage + enable). Short probes
+   (~200 ticks) through empty space look like nothing; no agent ran the
+   sustained scans needed to see the stage signature. As designed, apparatus
+   discovery is HARD; to make it learnable it needs either (a) contracts that
+   require it, or (b) sensor starting positions where small moves already
+   change readings (edge-of-object placement).
+3. **The science was real despite the wrong ontology — best artifact yet.**
+   opus-5's notes.md describes "4 independent 4-sensor cells" with
+   "positive drive = slow progress along a line attractor" (= object growth),
+   "negative = threshold trigger to absorbing state T" (= object death,
+   thresholds measured per cell: 0.615/0.685/0.625), "sigma > 850: IMMUNE"
+   (= object too large to starve), and validated with held-out protocols
+   (mean |err| 0.021). It reconstructed the object inventory as "cells",
+   growth curves as "line attractors", kill thresholds, and death as an
+   absorbing state — chemistry rediscovered in alien coordinates, without
+   any spatial ontology. Its executable theory scored 0.96.
+4. gpt-5.2 (C0) lagged (0.54-0.82): its fits treated S3/S4 kill-release
+   contracts poorly (S3 0.30-0.53) — it never characterized object death.
+
+## Verdict
+
+Mechanically the track works end-to-end (contracts, preps, theory, artifact
+collection, gallery). Scientifically the frontier models validated the
+substrate but exposed the contract suite as too shallow for the physics.
+C2+ design queue: object motion, count-change contracts, apparatus-forced
+measurement, GS-aware scripted scientist, tighter answer scales.

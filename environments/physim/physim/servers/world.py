@@ -32,19 +32,38 @@ from physim.session import PhysimSession
 def _snapshot(world: World) -> str:
     buf = io.BytesIO()
     rng_state = json.dumps(world._noise.bit_generator.state).encode()
-    np.savez_compressed(
-        buf, x=world.x, a=world.a,
+    arrays = dict(
         ticks=np.array([world.ticks_used, world.n_resets]),
         rng=np.frombuffer(rng_state, dtype=np.uint8),
     )
+    if world.p.reaction == "grayscott":
+        arrays.update(U=world.U, V=world.V)
+    else:
+        arrays.update(x=world.x, a=world.a)
+    if world.app_pos is not None:
+        arrays.update(app_pos=world.app_pos,
+                      app_gain=world.app_gain_mult,
+                      app_en=world.app_enabled.astype(np.uint8),
+                      app_acc=getattr(world, "_app_enable_acc",
+                                      np.zeros(len(world.app_enabled))))
+    np.savez_compressed(buf, **arrays)
     return base64.b64encode(buf.getvalue()).decode()
 
 
 def _restore(world: World, snap: str) -> None:
     buf = io.BytesIO(base64.b64decode(snap))
     z = np.load(buf)
-    world.x = z["x"]
-    world.a = z["a"]
+    if world.p.reaction == "grayscott":
+        world.U = z["U"]
+        world.V = z["V"]
+    else:
+        world.x = z["x"]
+        world.a = z["a"]
+    if "app_pos" in z.files and world.app_pos is not None:
+        world.app_pos = z["app_pos"]
+        world.app_gain_mult = z["app_gain"]
+        world.app_enabled = z["app_en"].astype(bool)
+        world._app_enable_acc = z["app_acc"]
     world.ticks_used = int(z["ticks"][0])
     world.n_resets = int(z["ticks"][1])
     world._noise.bit_generator.state = json.loads(bytes(z["rng"]).decode())
