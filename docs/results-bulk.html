@@ -1,0 +1,110 @@
+<!doctype html><html><head><meta charset='utf-8'/><title>physim results — bulk-matter track</title>
+<style>
+body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+       max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+h1 { font-size: 25px; } h2 { font-size: 20px; margin-top: 36px;
+     border-bottom: 2px solid #eee; padding-bottom: 6px; }
+h3 { font-size: 16px; margin-top: 24px; }
+table { border-collapse: collapse; font-size: 13.5px; margin: 10px 0; }
+td, th { border: 1px solid #d0d7de; padding: 4px 10px; text-align: center; }
+th { background: #f6f8fa; }
+td.l, th.l { text-align: left; }
+.note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+        border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.good { color: #1a7f37; font-weight: 600; } .bad { color: #cf222e; }
+.meta { color: #57606a; font-size: 13px; }
+code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+nav { font-size: 14px; margin-bottom: 18px; }
+nav a { margin-right: 14px; }
+</style>
+</head><body><nav>
+<a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
+<a href="results-bulk.html">bulk-matter track</a> ·
+<a href="results-chemistry.html">chemistry track</a> ·
+<a href="worlds.html">the worlds</a> · <a href="rollouts.html">rollout gallery</a> ·
+<a href="https://github.com/swpo/physim">github</a> ·
+<a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
+</nav>
+<h1>Results — bulk-matter track (D0–D4)</h1>
+<p class="note">Worlds: modular tanh lattices — collective bistability,
+hysteresis, per-region timescales, slow fatigue (D4). One collective switch per
+region; the agent must calibrate scrambled sensors, find the switches, map
+thresholds and memory. <a href="worlds.html">World guide.</a></p>
+
+<h2>1. Difficulty tracks ability (chat tier, M0 grid)</h2>
+<table>
+<tr><th class="l">model (null harness)</th><th>D0</th><th>D1</th><th>D2</th><th>D3</th></tr>
+<tr><td class="l">google/gemini-3.5-flash</td><td>0.72</td><td>0.58</td><td>0.54</td><td>0.35</td></tr>
+<tr><td class="l">deepseek/deepseek-v4-flash</td><td>0.64</td><td>0.56</td><td>0.52</td><td>0.38</td></tr>
+<tr><td class="l">openai/gpt-5-nano</td><td>0.12</td><td>0.11</td><td>0.13</td><td>0.04</td></tr>
+<tr><td class="l meta">scripted reference</td><td class="meta">0.72</td><td class="meta">0.72</td><td class="meta">0.65</td><td class="meta">0.67</td></tr>
+</table>
+<p>Pooled difficulty↔reward Spearman ρ=−0.50 (p=0.003, n=32 rollouts).
+gpt-5-nano sits at the null floor everywhere — mostly protocol failure,
+which motivated the coding-harness tier.</p>
+
+<h2>2. The D4 frontier (tools tier, 5 seeds)</h2>
+<table>
+<tr><th class="l">pairing</th><th>prediction</th><th>budget used</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.349 ± 0.04</b></td><td>0.32</td></tr>
+<tr><td class="l">claude-opus-5 + claude_code</td><td>0.324 ± 0.11</td><td>0.41</td></tr>
+<tr><td class="l">gpt-5.6-sol + codex</td><td>0.244 ± 0.07</td><td>0.54</td></tr>
+<tr><td class="l">gemini-3.1-pro + codex</td><td>0.194 ± 0.12</td><td>0.01</td></tr>
+<tr><td class="l meta">scripted reference / tail / null</td><td class="meta">0.274 / 0.211 / 0.133</td><td class="meta">0.11 / — / —</td></tr>
+</table>
+<ul>
+<li><b>Budget spent ≠ score</b>: Spearman ρ=0.14 (p=0.55) across 20 rollouts —
+what you measure beats how much. sol burns the most ticks for mid scores.</li>
+<li><b>Everyone fails the same stratum</b>: S1 (weak-push relaxation, the most
+sensitive probe of the slow fatigue variable) ≤0.5 for all pairings. Nobody
+has characterized the adaptation dynamics.</li>
+<li><b>Conduct differences</b>: gemini classifies the task as low-value and
+answers after ~12 turns / 1% budget with honest-but-useless wide intervals
+(coverage 0.96, accuracy ~null). fable runs 60–180-turn research programs.</li>
+</ul>
+
+<h2>3. Preparation and theory (M2/M3 grid, D4, 3 seeds, n_prep=3)</h2>
+<table>
+<tr><th class="l">pairing</th><th>prediction</th><th>preparation</th><th>theory</th></tr>
+<tr><td class="l">claude-fable-5</td><td>0.305</td><td><b>0.73</b></td><td>0.29 (3/3 submitted)</td></tr>
+<tr><td class="l">claude-opus-5</td><td>0.269</td><td>0.67</td><td>0.31 (2/3)</td></tr>
+<tr><td class="l">gpt-5.2</td><td>0.219</td><td>0.47</td><td>0/3 submitted</td></tr>
+<tr><td class="l">gpt-5.6-sol</td><td>0.214</td><td>0.51</td><td>0.21 (1/3)</td></tr>
+<tr><td class="l meta">prep_pi certifier / null</td><td class="meta">0.34 / 0.145</td><td class="meta">0.24 / 0.0</td><td class="meta">—</td></tr>
+</table>
+<ul>
+<li><b>Preparation ≫ prediction</b>: steering a system you cannot yet predict
+is easier than predicting it (feedback forgives model error). Models beat the
+scripted controller on preparation while staying near-floor on prediction.</li>
+<li><b>Prep outcomes are bimodal</b> (20/36 policies hit 5/5 clones, 13 hit
+0/5, only 8% flaky): the 5-clone scoring measures understanding, not luck.</li>
+<li><b>Failure audit</b>: every 0/5 contract was solvable; one required
+inverted-sign feedback (naive P-control latches the wrong branch) — models
+failed exactly where control depth crosses from open-loop to
+feedback-with-identification.</li>
+<li><b>Theory tracks prediction</b> (r=0.72, n=6). Anthropic agents submit
+theories; codex agents skip the optional tool entirely.</li>
+</ul>
+
+<h2>4. Best artifacts</h2>
+<ul>
+<li>fable-5's D4 <code>MODEL.md</code>: identifies "6 bistable
+relaxation-oscillator units", maps ports→units with polarities, measures
+release schedules and mutual entrainment (period ~390–430), ships a
+per-contract prediction procedure — and its own failure mode ("jitter grows
+~2%/cycle") explains its S4 losses. <a href="rollouts.html">Gallery.</a></li>
+<li>gpt-5.2's D0 <code>model.py</code>: two-basin affine model with switching
+threshold and time constant; S4=0.96 where chat-tier models got ~0.2 —
+the coding harness converts budget into long-horizon accuracy.</li>
+</ul>
+
+<h2>5. Cost accounting (tools tier, D4)</h2>
+<table>
+<tr><th class="l">pairing</th><th>model calls</th><th>cached prompt</th><th>completion</th><th>wall time</th></tr>
+<tr><td class="l">gpt-5.6-sol + codex</td><td>66–98</td><td>4–5M</td><td>12–17k</td><td>8–12 min</td></tr>
+<tr><td class="l">claude-opus-5 + claude_code</td><td>67–93</td><td>4–6.5M</td><td>111–125k</td><td>25–36 min</td></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>113–173</td><td><b>22–51M</b></td><td>191–241k</td><td>~1 h</td></tr>
+</table>
+<p>fable's edge rides a 5–10× cached-context bill and hour-long rollouts —
+a long-context research strategy the others don't attempt.</p>
+<p class='meta'>Generated by <code>python -m physim.results</code>; numbers from <a href='https://github.com/swpo/physim/blob/main/REPORT.md'>REPORT.md</a> (the running lab log with full methodology).</p></body></html>

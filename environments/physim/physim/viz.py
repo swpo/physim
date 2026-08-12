@@ -279,6 +279,11 @@ HTML_HEAD = """<!doctype html>
  td, th {{ border: 1px solid #d0d7de; padding: 4px 10px; text-align: center; }}
  code {{ background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}}
 </style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;">
+<a href="index.html">home</a> · <a href="results.html">results</a> ·
+<a href="worlds.html"><b>the worlds</b></a> ·
+<a href="rollouts.html">rollout gallery</a> ·
+<a href="https://github.com/swpo/physim">github</a></nav>
 <h1>physim worlds — a visual guide</h1>
 <p>Each physim task drops an agent into a procedurally generated world with
 <b>hidden laws</b> behind an <b>anonymous port interface</b>: it can set input

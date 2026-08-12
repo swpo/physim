@@ -1,0 +1,90 @@
+<!doctype html><html><head><meta charset='utf-8'/><title>physim results</title>
+<style>
+body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+       max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+h1 { font-size: 25px; } h2 { font-size: 20px; margin-top: 36px;
+     border-bottom: 2px solid #eee; padding-bottom: 6px; }
+h3 { font-size: 16px; margin-top: 24px; }
+table { border-collapse: collapse; font-size: 13.5px; margin: 10px 0; }
+td, th { border: 1px solid #d0d7de; padding: 4px 10px; text-align: center; }
+th { background: #f6f8fa; }
+td.l, th.l { text-align: left; }
+.note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+        border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.good { color: #1a7f37; font-weight: 600; } .bad { color: #cf222e; }
+.meta { color: #57606a; font-size: 13px; }
+code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+nav { font-size: 14px; margin-bottom: 18px; }
+nav a { margin-right: 14px; }
+</style>
+</head><body><nav>
+<a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
+<a href="results-bulk.html">bulk-matter track</a> ·
+<a href="results-chemistry.html">chemistry track</a> ·
+<a href="worlds.html">the worlds</a> · <a href="rollouts.html">rollout gallery</a> ·
+<a href="https://github.com/swpo/physim">github</a> ·
+<a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
+</nav>
+<h1>physim — results</h1>
+<p class="note">physim asks: <b>can AI agents do science?</b> Each task is a
+procedurally generated world with hidden laws behind an anonymous port
+interface. Agents explore under a tick budget, then are scored on
+<b>prediction</b> (held-out protocols on fresh world copies),
+<b>preparation</b> (submit control policies that steer the world into target
+states), and optionally an <b>executable theory</b> (a simulator of the
+sensors, replayed against ground truth). Two world tracks exist:
+the <a href="results-bulk.html">bulk-matter track</a> (D0–D4) and the
+<a href="results-chemistry.html">chemistry track</a> (C0–C1).</p>
+
+<h2>Headline results (2026-02)</h2>
+<table>
+<tr><th class="l">claim</th><th class="l">evidence</th></tr>
+<tr><td class="l">Difficulty tracks model ability</td>
+<td class="l">reward falls monotonically D0→D4 for every competent model;
+pooled Spearman ρ=−0.50 (p=0.003) on the first grid</td></tr>
+<tr><td class="l">The frontier is <b>unsaturated</b> on hard worlds</td>
+<td class="l">best D4 pairing (claude-fable-5 + claude_code): 0.35 prediction
+vs 0.93 replication ceiling; S1 (slow-adaptation stratum) ≤0.5 for all models</td></tr>
+<tr><td class="l">Preparation ≫ prediction at the frontier</td>
+<td class="l">on D4, fable-5 steers worlds at 0.73 success while predicting
+them at 0.305 — control forgives model error; scripted PI baseline manages 0.24</td></tr>
+<tr><td class="l">Executable theories track understanding</td>
+<td class="l">theory score correlates with prediction accuracy (r=0.72);
+best D2 theory scored 0.895, best C1 theory 0.96</td></tr>
+<tr><td class="l">Agents rediscover real structure in alien coordinates</td>
+<td class="l">claude-opus-5 on chemistry world C1: "cells" (=objects), "line
+attractors" (=growth), "trigger → absorbing state" (=death, thresholds
+measured), "immune above σ≈850" (=too big to kill); held-out validation
+mean |err| 0.021 — <a href="rollouts.html">read it in the gallery</a></td></tr>
+<tr><td class="l">Harness matters; models differ in <i>conduct</i>, not just skill</td>
+<td class="l">coding harness doubles chat-tier scores (budget → offline fits);
+gemini-3.1-pro satisfices (~12 turns, 1% budget) where fable runs 60–180-turn
+research programs</td></tr>
+</table>
+
+<h2>Current leaderboard snapshots</h2>
+<h3>Bulk-matter frontier (D4, tools tier, 5 seeds, prediction reward)</h3>
+<table>
+<tr><th class="l">pairing</th><th>prediction</th><th>preparation*</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.349 ± 0.04</b></td><td><b>0.73</b></td></tr>
+<tr><td class="l">claude-opus-5 + claude_code</td><td>0.324 ± 0.11</td><td>0.67</td></tr>
+<tr><td class="l">gpt-5.6-sol + codex</td><td>0.244 ± 0.07</td><td>0.51</td></tr>
+<tr><td class="l">gemini-3.1-pro + codex</td><td>0.194 ± 0.12</td><td>0.47†</td></tr>
+<tr><td class="l meta">scripted reference / null</td><td class="meta">0.274 / 0.133</td><td class="meta">0.24 / 0.0</td></tr>
+<tr><td class="l meta">replication ceiling</td><td class="meta">~0.93</td><td class="meta">—</td></tr>
+</table>
+<p class="meta">*preparation from the 3-seed n_prep grid; †gpt-5.2 value (gemini not run with preps).</p>
+
+<h3>Chemistry track (C0/C1, tools tier, 2 seeds — frontier-easy as configured)</h3>
+<table>
+<tr><th class="l">pairing</th><th>track</th><th>prediction</th><th>preparation</th><th>theory</th></tr>
+<tr><td class="l">gpt-5.6-sol + codex</td><td>C1</td><td>0.97, 0.92</td><td>1.0</td><td>0.82</td></tr>
+<tr><td class="l">claude-opus-5 + claude_code</td><td>C1</td><td>0.96, 0.95</td><td>1.0</td><td>0.96, 0.95</td></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>C0</td><td>0.95, 0.91</td><td>1.0</td><td>0.96, 0.92</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>C0</td><td>0.82, 0.54</td><td>1.0, 0.75</td><td>—</td></tr>
+<tr><td class="l meta">tail / null baselines (C0)</td><td class="meta"></td><td class="meta">0.75 / 0.32</td><td class="meta">—</td><td class="meta">—</td></tr>
+</table>
+<p class="meta">C2 hardening queued: mobile objects, object-count contracts,
+apparatus-forced measurement. See the <a href="results-chemistry.html">chemistry
+page</a> for why these worlds saturated.</p>
+<p class='meta'>Generated by <code>python -m physim.results</code>; numbers from <a href='https://github.com/swpo/physim/blob/main/REPORT.md'>REPORT.md</a> (the running lab log with full methodology).</p></body></html>

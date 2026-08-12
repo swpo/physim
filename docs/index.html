@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"/>
+<title>physim — science benchmark for AI agents</title>
+<style>
+body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+       max-width: 900px; margin: 32px auto; padding: 0 16px; color: #1a1a1a; }
+h1 { font-size: 28px; margin-bottom: 4px; }
+.tag { color: #57606a; font-size: 15px; margin-bottom: 24px; }
+.card { border: 1px solid #d0d7de; border-radius: 8px; padding: 14px 18px;
+        margin: 12px 0; }
+.card h2 { margin: 0 0 6px; font-size: 18px; }
+.card p { margin: 4px 0; font-size: 14px; color: #333; }
+a { text-decoration: none; } a:hover { text-decoration: underline; }
+.meta { color: #57606a; font-size: 13px; margin-top: 22px; }
+</style></head><body>
+<h1>physim</h1>
+<p class="tag">Can AI agents do science? Procedurally generated universes with
+hidden laws behind anonymous interfaces — agents explore, experiment, build
+instruments, and are scored on prediction, state preparation, and executable
+theories.</p>
+
+<div class="card"><h2><a href="results.html">📊 Results</a></h2>
+<p>Headline findings and leaderboards, split by world track:
+<a href="results-bulk.html">bulk-matter (D0–D4)</a> ·
+<a href="results-chemistry.html">chemistry (C0–C1)</a>.</p></div>
+
+<div class="card"><h2><a href="worlds.html">🌍 The worlds</a></h2>
+<p>Plain-language guide to how the simulated universes work — layout and
+rules, the idea behind the design, what agents can see and do — with god-view
+vs agent-view visualizations of every difficulty preset.</p></div>
+
+<div class="card"><h2><a href="rollouts.html">🔬 Rollout gallery</a></h2>
+<p>What the agents actually did: narrative experiment logs with timeline
+figures, the files each agent wrote (its instruments and theories), and
+contract answers vs ground truth.</p></div>
+
+<div class="card"><h2><a href="https://github.com/swpo/physim">💻 Code</a></h2>
+<p>The verifiers taskset, engine, and docs generators.
+Raw rollout traces: <a href="https://huggingface.co/datasets/seanpohorence/physim-rollouts">
+HF dataset</a>. Full running lab log:
+<a href="https://github.com/swpo/physim/blob/main/REPORT.md">REPORT.md</a>.</p></div>
+
+<p class="meta">Built on <a href="https://github.com/PrimeIntellect-ai/verifiers">
+Prime Intellect verifiers</a>.</p>
+</body></html>

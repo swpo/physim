@@ -3,6 +3,9 @@
 A benchmark for **doing science in simulated universes**, built on
 [Prime Intellect verifiers](https://github.com/PrimeIntellect-ai/verifiers).
 
+**Site: [swpo.github.io/physim](https://swpo.github.io/physim/)** — results
+(per-track), world guide, and the rollout gallery.
+
 Each task drops an agent into a procedurally generated world with **hidden
 laws** behind an **anonymous port interface** (input ports in, noisy unnamed
 sensors out — no vocabulary, no documented semantics). The agent must learn to
