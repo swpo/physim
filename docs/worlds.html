@@ -31,6 +31,122 @@ semi-independent regions, response-speed differences, and (D4) a slow fatigue
 variable. The agent's job: discover all of this by experiment, then predict
 held-out protocols.</div>
 
+
+<h2 id="how-it-works">How these worlds work — the full picture</h2>
+
+<h3>1. The layout and the rules</h3>
+<p>Under the hood, every world is a <b>grid of simple units</b> — think of a
+24×24 sheet of tiny magnetic cells (hundreds to ~1,000 cells depending on
+difficulty). Each cell holds one number between −1 and +1, its <i>activation</i>
+x. Time advances in discrete <b>ticks</b>, and at every tick each cell updates
+by the same local rule:</p>
+<pre>new x  =  tanh( J · (mix of my own x and my neighbours' x)
+              + my region's bias
+              + the input field at my location
+              − fatigue · a )   + small noise</pre>
+<p>Every ingredient matters for what an agent experiences:</p>
+<ul>
+<li><b>tanh</b> squashes activations toward −1 or +1 — each cell "wants" to
+saturate rather than sit in between.</li>
+<li><b>J (coupling)</b> pulls a cell toward the average of its neighbours. When
+J&nbsp;&gt;&nbsp;~1.15, agreement is self-reinforcing: whole regions lock into
+the same sign. This single knob is what creates all the interesting collective
+behaviour — the grid stops acting like independent cells and starts acting like
+a <i>material</i>.</li>
+<li><b>Regions (modules)</b>: the grid is cut into vertical stripes. Neighbour
+links do not cross stripe boundaries; stripes are coupled only weakly (through
+a shared mean, if at all). So each stripe is its own quasi-independent magnet
+that can point up or down on its own.</li>
+<li><b>Response speed (D4)</b>: each region has its own update rate λ — some
+regions react to change in ~20 ticks, others take 25× longer.</li>
+<li><b>Fatigue (D4)</b>: a second, slow variable <code>a</code> in every cell
+integrates recent activation (timescale ~200 ticks) and pushes back against it.
+A region held "up" for a long time builds up fatigue and, when released,
+rebounds — even oscillates on its own. This makes <i>how long</i> you drive the
+system matter, not just how hard.</li>
+<li><b>Noise</b>: every update includes a small random kick, and every re-run
+of the same experiment draws fresh noise — like a real lab, repetition gives
+statistically similar but never identical results.</li>
+</ul>
+<p>Because of the coupling, each region behaves like a switch with memory
+(physicists: a ferromagnet below its critical temperature). Push it hard enough
+positive and it snaps to its +1 branch <i>and stays there when you let go</i>;
+same for negative. Between the two switching thresholds there is a bistable
+zone where the region's current state depends on its history — that is the
+<b>hysteresis loop</b> in the plots below. The pattern of branch states across
+regions is the world's effective long-term memory.</p>
+
+<h3>2. The idea: why the worlds are built this way</h3>
+<p>The benchmark asks one question: <b>can an agent do science?</b> Not recall
+science — do it. That requires a world where:</p>
+<ul>
+<li><b>There are real laws to find, at the right level.</b> The cell-update rule
+above is the "microphysics", and it is deliberately impossible to read off from
+the outside (sensors are too coarse, too noisy, too few). But the coupling
+guarantees that a small number of <b>collective</b> quantities — one branch
+state per region — obey simple, discoverable laws: switching thresholds,
+hysteresis, relaxation schedules, fatigue rebound. Exactly like real physics,
+the useful theory lives at a coarser level than the mechanism; the agent must
+find the level itself. Nothing in the interface hints that "regions" exist,
+how many there are, or which sensor watches which.</li>
+<li><b>Observation is an achievement, not a given.</b> Sensors are anonymous,
+scrambled, biased, sometimes dead. Before any physics can start, the agent has
+to calibrate its own senses — find the noise floor, identify dead channels,
+work out polarities and groupings. We think of it as "learning to use your
+hands before building instruments".</li>
+<li><b>Experiments cost.</b> A tick budget forces choices: sweep slowly or probe
+many ports? Long releases (to see fatigue) or many repetitions (to beat noise)?
+Strategy, not stamina, is what separates agents.</li>
+<li><b>The test is out-of-sample by construction.</b> After exploration, the
+world poses <i>contracts</i> on fresh copies of itself (same laws, new random
+start). Memorised trajectories are useless; only laws transfer.</li>
+</ul>
+<p>The difficulty ladder D0→D4 then turns four independent screws: sensor
+opacity (dead channels, inverted signs, gain spread, noise), number of regions
+(1 → 8 collective degrees of freedom), law depth (fast/slow regions, fatigue),
+and budget pressure. D0 is a tutorial magnet; D4 is a slow, moody, multi-region
+material where the best current AI agents score ~0.3 of the achievable 1.0.</p>
+
+<h3>3. What the agent can see and do</h3>
+<p>The agent never sees the grid, the regions, the wiring, or any panel marked
+"god view" on this page. Its entire universe is:</p>
+<ul>
+<li><b>6–10 input ports</b> ("dials"). Each port projects a smooth,
+invisible field onto one patch of the grid — the agent does not know where, or
+which cells. It sets the dials tick by tick, each in [−1, +1].</li>
+<li><b>24–60 output sensors</b> ("gauges"). Each live sensor reads the
+average activation of one small random patch, then multiplies it by a random
+gain (possibly negative — the sensor may be installed "upside down"), adds a
+random offset and fresh noise per tick. Several gauges are dead: pure noise
+around a constant. Channel order is shuffled; nothing is labelled.</li>
+<li><b>Actions</b> (through a fixed tool interface, no other access):
+  <ul>
+  <li><code>run(program)</code> — hold or ramp the dials over chosen durations;
+  world evolves; get back per-sensor summaries (means/sds over the final ticks,
+  optionally downsampled traces). State persists between runs.</li>
+  <li><code>run_policy(code)</code> — submit a small program that reads the
+  gauges each tick and sets the dials in response, executed inside the world
+  loop: closed-loop control, for holding states that no fixed input can reach.</li>
+  <li><code>reset()</code> — fresh random initial state, same laws (costs
+  budget).</li>
+  <li><code>ready()</code> → receive contracts; <code>answer(...)</code>,
+  <code>answer_prep(policy)</code>, <code>submit_theory(simulator)</code>.</li>
+  </ul></li>
+<li><b>Scoring</b>, all on fresh world-copies the agent never touched:
+  <b>prediction</b> contracts ("under this input schedule, what will sensor 23
+  average at the end?" — scored by closeness relative to the world's own
+  run-to-run spread), <b>preparation</b> contracts ("get sensor 12 into this
+  band and make it stay after you let go" — a policy, scored on 5 fresh
+  copies), and optionally an <b>executable theory</b> (a simulator of the
+  sensors, scored by replaying every contract protocol through it).</li>
+</ul>
+<p class="meta">Everything an agent can access runs in a separate process from
+the world engine; hidden state, wiring, and ground-truth ensembles never cross
+that boundary. Worlds are procedurally generated from a seed (plus an optional
+evaluator-side salt, so public code cannot reproduce a live evaluation world).</p>
+
+<h2>The difficulty ladder, world by world</h2>
+
 <h2>D0 — 1 module(s), 6 inputs / 24 sensors (0 dead)</h2>
 <p class="note">Clean senses, one collective mode. 6 inputs, 24 well-behaved sensors, low noise. The tutorial world: find polarities, find the switch, map the loop.</p>
 <p class="meta">lattice 24×24 · coupling J=1.35 · micro noise σ=0.04 · sensor noise 0.02 · sign-flip prob 0.0 · tick budget 80,000</p>
