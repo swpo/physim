@@ -401,3 +401,52 @@ Highlights:
   deterministically from the seed on any answer-phase call (v0.2.1).
 - prep/theory detail now persisted into trace.info (v0.2.2).
 - Jail import tolerance (v0.2.3).
+
+
+---
+
+# Addendum 8 (2026-02-11): D4 grid with preparation + theory (M2/M3 at the frontier)
+
+Grid: 4 pairings x 3 seeds, D4, n_prep=3, theory enabled. Baselines on the
+same seeds: null acc 0.145 / prep 0.0; prep_pi acc 0.34 / prep 0.24.
+
+| pairing | prediction | preparation | theory |
+|---|---|---|---|
+| claude-fable-5 + claude_code | **0.305** | **0.73** | 0.29 (3/3 submitted) |
+| claude-opus-5 + claude_code | 0.269 | 0.67 | 0.31 (2/3) |
+| gpt-5.2 + codex | 0.219 | 0.47 | 0/3 submitted |
+| gpt-5.6-sol + codex | 0.214 | 0.51 | 0.21 (1/3) |
+
+## Findings
+
+1. **Preparation >> prediction on D4** for frontier models (fable 0.73 vs
+   0.305): steering a system you cannot yet predict is easier than predicting
+   it — consistent with control theory (feedback forgives model error) and
+   with the gpt-5.2 D2 result. The scripted prep_pi manages only 0.24, so
+   models now clearly beat the certifier on preparation while remaining
+   ~1.5-2x above null on prediction.
+2. **Per-contract profile**: of 36 attempted preps, 20 hit 5/5 clones, 3 were
+   flaky (0<rate<1 — only 8%: policies mostly either work robustly or fail
+   flat), 13 scored 0.
+3. **Solvability audit of the failures** (seed-2 sample): every zero-rate
+   contract IS solvable — one by doing nothing, one by pin-and-release, and
+   one (ch58) ONLY by feedback control with the correct sign, where naive
+   P-control latches the wrong branch (+0.99) and inverted-sign P-control
+   scores 5/5 (measured feedthrough sign inversion). Models failed exactly
+   where control depth crosses from open-loop to feedback-with-
+   identification. The task discriminates the intended skill.
+4. **Theory tracks prediction** (r=0.72, n=6): the executable-simulator score
+   is measuring the same understanding as contract accuracy, on ~1/3 of
+   attempts models simply don't submit a theory (gpt-5.2: zero submissions —
+   codex agents treat optional tools as skippable; worth a nudge or a weight).
+5. Adaptation rebound remains the wall: fable's best D4 prediction is 0.37
+   vs its 0.95 on D2; S1 stays <=0.5 everywhere. D4 is unsaturated on all
+   three rewards.
+
+## Environment verdict
+
+M2/M3 mechanics behave at the frontier: rewards decompose (prep vs pred vs
+theory measure different skills), preparation contracts are solvable-but-
+discriminating, theory submission correlates with understanding. Next
+design lever: control-depth-graded prep strata (open-loop / feedback /
+feedback+identification) as an explicit axis, and possibly weighting theory.
