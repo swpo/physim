@@ -774,3 +774,51 @@ laboratory-real emergent objects. All pure numpy, same engine shape.
 5. Keep D0-D4 as-is (bulk-matter track) and add M4 worlds as a NEW FAMILY
    (e.g. C0..C3, "chemistry track")? Recommended: yes — families share the
    port layer, session, contracts, jail unchanged.
+
+
+---
+
+# v0.6 addendum 2 — unification: one lattice-field template, two regimes (not two families)
+
+User question: is the chemistry direction orthogonal to the single-field worlds
+or a generalization? Answer (verified numerically): **a generalization.** Both
+existing and proposed worlds are instances of one update template — a
+multi-channel lattice field theory:
+
+    x ∈ R^{L×L×C}            (C = number of field channels/components)
+    x_{t+1} = x_t + dt · [ S(x) + R(x) + B(u) ] + σξ
+
+    S = per-channel stencil term (diffusion / neighbor averaging; C×C mixing allowed)
+    R = pointwise nonlinear reaction (couples channels AT a site)
+    B = input-port fields (bump kernels, per channel)
+
+| world | C | S | R | regime |
+|---|---|---|---|---|
+| D0-D3 tanh lattice | 1 | neighbor avg | tanh saturation − x | bistable bulk (magnet) |
+| D4 (+adaptation)   | 2 (x, a) | neighbor avg on x only | tanh(...−g·a); a integrates x | bulk + slow feedback (fatigue) |
+| C-track Gray-Scott | 2 (U, V) | true Laplacian, per-channel D | −UV², +UV², feed/kill linear terms | localized objects ("chemistry") |
+
+Checks: recasting the tanh map as x + dt·R(x, x̄) reproduces the original
+trajectory exactly (a map is a flow with dt=1); D4's adaptation variable is
+already a second channel of the same template; Gray-Scott is the C=2 flow with
+a cubic cross-channel reaction.
+
+Physics reading (user's tensor-field intuition): this IS lattice field theory
+with a multi-component field — components/"tensor indices" without the
+transformation-property bookkeeping (no symmetry constraints tying components
+together, which we don't need yet). What distinguishes "bulk material" from
+"chemistry" is NOT the template but the REGIME: single-channel saturating
+reactions give coarsening/bistability (domains collapse -> bulk switches);
+two channels with activator-inhibitor structure + separated diffusion scales
+(Dv/Du, timescale ratio) stabilize finite objects. Emergence class is a
+property of (C, R structure, D ratios) — i.e., of parameters, not of code.
+
+Engineering consequence: ONE engine core
+(channels, stencil, reaction registry, port layer, noise) with families as
+parameter presets. The existing D-track becomes the C=1 (and C=2-with-
+adaptation) corner of the space; the chemistry track is another corner; the
+generator (M4 proper) samples motifs WITHIN this template and the certifier
+measures which emergence class a sample lands in (bulk / objects / patterns /
+chaos). The difficulty axes gain one fundamental dial: C and reaction
+structure. Supporting both tracks is then not "two systems" but two certified
+regions of one parameter space.
