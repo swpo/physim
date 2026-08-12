@@ -822,3 +822,71 @@ measures which emergence class a sample lands in (bulk / objects / patterns /
 chaos). The difficulty axes gain one fundamental dial: C and reaction
 structure. Supporting both tracks is then not "two systems" but two certified
 regions of one parameter space.
+
+
+---
+
+# v0.7 addendum — configurable apparatus: sensors as part of the physical world [ADOPTED direction]
+
+User proposal: sensors need not be fixed. Some INPUT ports, rather than
+coupling into the fields, adjust sensor properties (position, sampled channel,
+gain/width, on/off). Nothing in the interface distinguishes field ports from
+apparatus ports — discovering which inputs move the apparatus (vs the world)
+is part of the science, and mechanics must not leak world structure (channels,
+grid) explicitly.
+
+## Probes (2026-02-12): the idea works and is discoverable
+
+Built a Gray-Scott world with 1 field port (feed bump) + 1 apparatus port
+(sensor y-translation stage), indistinguishable at the interface:
+
+1. **Discoverability signature**: field ports act like FORCES (reading shifts
+   while driven, relaxes back on release); apparatus ports act like STAGES /
+   integrators (effect persists after release, reverses under opposite drive).
+   base=+0.039: field port during/after = +0.041/+0.039 (reverts); apparatus
+   port during/after = +0.004/+0.001 (persists), reverse drive returns to
+   +0.039. Clean, learnable, and ontology-neutral — exactly the "learn your
+   hands" layer, now with movable hands.
+2. **Solves sparse sensing as microscopy**: a slow scan (drive apparatus port,
+   record readings) localized 2 distant spots as intensity peaks (0.26) that
+   the fixed sensor could never see (baseline 0.04). Sensor mobility converts
+   "too few sensors" from a wall into an instrument-design problem: scanning
+   (slow, thorough) vs parking (fast, local) is a real experimental tradeoff
+   with budget consequences.
+
+## Design decisions (proposed)
+
+- Apparatus state lives in the WORLD (part of S_hidden): sensor positions,
+  channel selectors, gains, and enable bits evolve under the same tick loop,
+  driven by designated input ports through per-world random wiring (which
+  port, which sensor, which property, what rate, possibly with inertia/limits
+  — apparatus has its own crude dynamics, like real stages/optics).
+- Interface UNCHANGED in shape: still n_in ports in, n_out channels out. A
+  disabled sensor reads noise around a constant (indistinguishable from the
+  existing dead channels — dead channels retroactively become "sensors parked
+  off/nowhere", a nice unification).
+- Add/remove sensors: implement as ENABLE/DISABLE of a fixed maximal sensor
+  bank (n_out constant). Full add/remove with changing output shape is
+  deferred — variable-width Y complicates contracts, baselines, and traces
+  for little scientific gain over enable/park semantics. Revisit if needed.
+- Difficulty dial: fraction of apparatus ports, apparatus rate/inertia, and
+  whether key regions are reachable only by moving sensors. T0 worlds can
+  ship with all-fixed sensors (current behavior = special case).
+- Contracts: prediction/preparation unchanged (raw port terms). New optional
+  stratum later: "apparatus contracts" (e.g., configure sensing so channel k
+  tracks statistic S under held-out drive) — measures instrument-building
+  directly.
+- Certifier: scripted scientist gains a stage-detection pass (integrator
+  signature) and a scan primitive; worlds must be solvable WITH apparatus use
+  (certifier budget includes scanning cost).
+
+## Engine refactor consequence (with v0.6 unification)
+
+One core with three coupled blocks per tick:
+    fields  x ∈ R^{L×L×C}: x += dt·[S(x) + R(x) + B(u_field)] + noise
+    apparatus a_s (per sensor: pos, channel-mix, gain, enabled):
+              a_s += A(a_s, u_apparatus)   (stage dynamics, rate-limited)
+    readout Y = sense(x, a_s) + meas-noise
+D0-D4 = C=1/2 presets with frozen apparatus; C-track = Gray-Scott presets;
+apparatus fraction a new axis. This refactor supersedes "fixed port layer"
+assumptions in v0.1-v0.5 texts.
