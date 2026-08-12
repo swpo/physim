@@ -692,3 +692,85 @@ Design challenge: motifs whose collective modes are MOBILE and COMPOSABLE
 (localized excitations / solitons / domain-wall bound states) rather than
 pinned stripes. To discuss after M2/M3 land. Two axes going forward: making
 models do better on existing worlds, and making ever more complex worlds.
+
+
+---
+
+# v0.6 addendum — M4 design thoughts: from bulk materials to "chemistry" [DRAFT for discussion]
+
+## Reading of the goal (from user's framing)
+
+Current worlds have ~2 reasoning layers: cells -> regional switches (modes).
+The modes are PINNED (stripe geometry fixes them in place); their "interactions"
+are weak couplings we wire by hand. M4's target is a third, EMERGENT layer:
+collective objects that are (i) localized, (ii) persistent, (iii) MOBILE,
+(iv) interacting — so that "species", "bonds", "reactions" become discoverable
+regularities with their own effective theory, none of it hand-authored.
+
+## Probe results (2026-02-12, this session): the substrate exists
+
+Tested Gray-Scott reaction-diffusion (2 fields, 4 params) as candidate core:
+
+1. **Atoms**: at F=0.030, k=0.066 a seeded spot neither dies nor replicates —
+   a stable localized object (~45-70 cells across, lives >=12k ticks).
+2. **Pair force**: two spots REPEL and equilibrate at a preferred separation
+   (~20-21 cells from any initial 6-16) — a measurable pair potential.
+3. **Mobility**: a gentle feed gradient (dF/dy ~ 1e-4) drags a spot at
+   ~0.6 cells/kilotick — spots are steerable objects, not pinned domains.
+4. **Reactions**: crowded 3-spot configs relax to 2 (annihilation); at
+   k<=0.064 spots self-replicate (division); at k>=0.068 they die (decay).
+   Regime boundaries = reaction thermodynamics, controllable by global knobs.
+5. Contrast probe: the CURRENT tanh-lattice bistable family cannot do this —
+   implanted domains always collapse (curvature-driven), which is exactly why
+   D0-D4 feel like bulk materials.
+
+So: Gray-Scott-class dynamics (or generalizations: multi-species GS, or
+FitzHugh-Nagumo with lateral inhibition) is a credible M4 substrate with
+laboratory-real emergent objects. All pure numpy, same engine shape.
+
+## Design sketch (three-layer hierarchy)
+
+- Layer 0 (hidden micro): U,V fields on LxL grid, L~96-192 (vs 24-32 today).
+  Alien-ized: rescaled/warped kinetics per instance so textbook Gray-Scott
+  parameters don't transfer literally.
+- Layer 1 (emergent objects): spots/stripes/worms — the "atoms". Their
+  existence, size, count are NOT exposed; agents must invent blob detection
+  from sparse sensors, as today they invent branch-state tracking.
+- Layer 2 (emergent interactions): pair repulsion with preferred spacing,
+  binding/cluster geometry, division/decay/annihilation rates as functions
+  of the global knobs (feed/kill analogues) and local fields. The "chemical
+  theory" = species inventory + interaction laws + reaction conditions.
+- Ports: inputs = localized feed/kill perturbations (chemostats + optical
+  tweezers analogue: gradients can DRAG spots). Outputs = the usual anonymous
+  noisy patch sensors — which now sample a scene of moving objects, so
+  sensor readings fluctuate as spots wander through patches (the agent must
+  infer objects from correlated transits — genuinely harder observation).
+- Contracts (ontology-neutral as ever, but now probing layer-2 physics):
+  prediction under held-out feed/kill schedules; preparation ("create/park a
+  stable object whose signature sits in channel-band X"; "split it"); control
+  ("hold the population signature in band under disturbance"). The certifier
+  gains a blob-tracking reference scientist.
+
+## Open questions for discussion
+
+1. **Sensing scale**: with L~128 and ~40-80 patch sensors, most of the world
+   is unobserved; moving objects cross sensors intermittently. Is that the
+   intended difficulty (real microscopy has the same problem) or do we add a
+   coarse "wide-field" channel (cheap, blurry global average) as a T0 aid?
+2. **Species diversity**: single GS gives one species (+size variants). Real
+   chemistry needs >=2 species with distinct interactions. Options: two
+   coupled GS systems (4 fields), spatially varying kinetics, or particle
+   types via parameter islands. How much diversity is enough for v1 of M4?
+3. **Timescales/budget**: spot dynamics live at 1k-10k ticks. Budgets likely
+   x10 current values; engine is fine (still numpy conv ops) but context/
+   observation economics need rethink (agents will need server-side reduction
+   more than ever — maybe object-level derived instruments become the natural
+   define_instrument revival).
+4. **Certification**: what is the closure meter for layer 2? Proposal: the
+   certifier runs a scripted blob tracker; a world passes if (a) objects
+   persist, (b) pair-distance distribution has a stable mode, (c) reaction
+   rates are reproducible functions of knobs — i.e., the "chemistry" is
+   lawful enough to be discoverable within budget.
+5. Keep D0-D4 as-is (bulk-matter track) and add M4 worlds as a NEW FAMILY
+   (e.g. C0..C3, "chemistry track")? Recommended: yes — families share the
+   port layer, session, contracts, jail unchanged.
