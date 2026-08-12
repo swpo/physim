@@ -180,6 +180,60 @@ def panel_adaptation(w: World) -> str:
     return img(fig_to_b64(fig), "adaptation dynamics")
 
 
+def panel_gs_objects(w: World) -> str:
+    """God view for chemistry worlds: V field with objects, ports, sensors."""
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.1))
+    fig.subplots_adjust(wspace=0.12, top=0.82)
+    im = axes[0].imshow(w.V, cmap="magma", interpolation="nearest")
+    axes[0].set_title("substance V — bright blobs are the objects", fontsize=8)
+    axes[0].scatter(w.centers_in[:, 1], w.centers_in[:, 0], marker="*", s=80,
+                    c="cyan", edgecolors="black", linewidths=0.5, label="input ports")
+    axes[0].set_xticks([]); axes[0].set_yticks([])
+    axes[1].imshow(w.V, cmap="gray", alpha=0.6, interpolation="nearest")
+    n_live = w.p.n_out - w.p.n_dead
+    pos = w.app_pos if w.app_pos is not None else w.centers_out
+    axes[1].scatter(pos[:, 1], pos[:, 0], s=30, c="#2ca02c", label="sensors")
+    movable = [s for (prop, s) in w.app_port_map.values() if prop == "move"]         if w.app_port_map else []
+    if movable:
+        axes[1].scatter(pos[movable, 1], pos[movable, 0], s=90, facecolors="none",
+                        edgecolors="#d62728", linewidths=1.5, label="movable (stage)")
+    axes[1].set_title("sensor placement (half near objects, half decoys)", fontsize=8)
+    axes[1].legend(loc="upper right", fontsize=6)
+    axes[1].set_xticks([]); axes[1].set_yticks([])
+    fig.suptitle("GOD VIEW — living chemistry: localized objects, ports, sensors",
+                 y=1.02, fontsize=9)
+    return img(fig_to_b64(fig), "gray-scott objects")
+
+
+def panel_gs_dynamics(w: World) -> str:
+    """Kill / regrow under a targeted port drive + a sensor's view of it."""
+    import numpy as np
+    n_in = w.p.n_in
+    frames = [("initial", w.V.copy())]
+    U = np.zeros((300, n_in)); U[:, 0] = -1.0
+    Y1 = w.run(U)
+    frames.append(("port 0 driven −1 for 300t (feed starved)", w.V.copy()))
+    Y2 = w.run(np.zeros((400, n_in)))
+    frames.append(("400t after release", w.V.copy()))
+    fig, axes = plt.subplots(1, 4, figsize=(9.2, 2.5))
+    fig.subplots_adjust(wspace=0.15, top=0.80)
+    for ax, (title, V) in zip(axes[:3], frames):
+        ax.imshow(V, cmap="magma", vmin=0, vmax=0.4, interpolation="nearest")
+        ax.set_title(title, fontsize=7.5)
+        ax.set_xticks([]); ax.set_yticks([])
+    Y = np.concatenate([Y1, Y2])
+    delta = np.abs(Y[-20:].mean(0) - Y[:20].mean(0))
+    hot = list(np.argsort(-delta)[:3])
+    for c in hot:
+        axes[3].plot(Y[:, c], lw=0.7, label=f"ch{c}")
+    axes[3].axvline(300, color="black", ls="--", lw=0.8)
+    axes[3].set_title("what nearby sensors read", fontsize=7.5)
+    axes[3].legend(fontsize=6)
+    fig.suptitle("GOD VIEW + AGENT VIEW — a reaction: starving a region kills its object",
+                 y=1.04, fontsize=9)
+    return img(fig_to_b64(fig), "gray-scott reaction")
+
+
 def preset_notes(name: str) -> str:
     return {
         "D0": "Clean senses, one collective mode. 6 inputs, 24 well-behaved sensors, "
@@ -194,6 +248,17 @@ def preset_notes(name: str) -> str:
               "slow fatigue variable (~200-tick memory) that turns the world into a "
               "slow relaxation oscillator. Duration of drive matters; states drift "
               "for hundreds of ticks after release. Best current agents: ~0.2–0.4.",
+        "C0": "Chemistry track opens: a two-substance reaction world where the "
+              "stable structures are LOCALIZED OBJECTS (self-sustaining spots), "
+              "not system-wide switches. Ports perturb the local feed rate: the "
+              "right drive can starve an object to death or fatten it. Sensors "
+              "are fixed; half sit near objects, half watch empty background.",
+        "C1": "Chemistry + microscopy: bigger world, and SOME input ports secretly "
+              "move a sensor (a translation stage) or toggle one, instead of "
+              "touching the world. Stage ports integrate (effects persist after "
+              "release and reverse under opposite drive) — discovering which "
+              "ports are apparatus is part of the science. Scanning a movable "
+              "sensor across the world is how you find distant objects.",
     }[name]
 
 
@@ -237,11 +302,16 @@ EXPLAINER = """
 <h2 id="how-it-works">How these worlds work — the full picture</h2>
 
 <h3>1. The layout and the rules</h3>
-<p>Under the hood, every world is a <b>grid of simple units</b> — think of a
-{L}×{L} sheet of tiny magnetic cells (hundreds to ~1,000 cells depending on
-difficulty). Each cell holds one number between −1 and +1, its <i>activation</i>
-x. Time advances in discrete <b>ticks</b>, and at every tick each cell updates
-by the same local rule:</p>
+<p>Under the hood, every world is a <b>grid of simple units</b> (from 24×24 up
+to 96×96 cells). Each cell holds one or two numbers — its <i>field values</i> —
+and time advances in discrete <b>ticks</b>: at every tick each cell updates by
+the same local rule. There are two rule families, giving two very different
+kinds of world (the two "tracks" below); both are instances of one template
+(a multi-channel lattice field theory: diffusion/mixing + a pointwise
+nonlinear reaction + the input fields + noise).</p>
+
+<p><b>Track 1 — bulk matter (worlds D0–D4).</b> One field per cell, updated
+as:</p>
 <pre>new x  =  tanh( J · (mix of my own x and my neighbours' x)
               + my region's bias
               + the input field at my location
@@ -278,6 +348,30 @@ zone where the region's current state depends on its history — that is the
 <b>hysteresis loop</b> in the plots below. The pattern of branch states across
 regions is the world's effective long-term memory.</p>
 
+<p><b>Track 2 — chemistry (worlds C0, C1, …).</b> Two fields per cell: a
+<i>food</i> concentration U and a <i>substance</i> concentration V. Food drips
+in everywhere at a feed rate, the substance consumes food autocatalytically
+(V grows where V already is and food remains) and decays at a kill rate.
+Out of these three processes come <b>self-sustaining localized objects</b>: a
+spot of V is a little metabolism that eats the food arriving by diffusion, and
+its own halo of depleted food stops it from growing and pushes other spots
+away. The objects are the "atoms" of these worlds: they persist indefinitely,
+repel each other to a preferred spacing, can be dragged by feed gradients,
+starve to death if the local feed is suppressed, and split if it is raised.
+None of this is programmed — it all emerges from the two-field rule, and the
+agent's job is to discover the objects and their laws through the sensors.</p>
+
+<p><b>The apparatus twist (C1 and up).</b> In higher chemistry worlds, some
+input ports do not touch the world at all — they secretly operate the
+<i>measurement apparatus</i>: one moves a sensor across the grid like a
+microscope stage, another can enable or disable a sensor. Nothing labels these
+ports. They are discoverable by their signature: a field port acts like a
+<i>force</i> (its effect fades after release), an apparatus port acts like a
+<i>stage</i> (its effect persists and reverses under opposite drive). Learning
+to operate — and then exploit — one's own instruments becomes part of the
+science: scanning a movable sensor across the world is how an agent can find
+objects its fixed sensors never see.</p>
+
 <h3>2. The idea: why the worlds are built this way</h3>
 <p>The benchmark asks one question: <b>can an agent do science?</b> Not recall
 science — do it. That requires a world where:</p>
@@ -303,19 +397,25 @@ Strategy, not stamina, is what separates agents.</li>
 world poses <i>contracts</i> on fresh copies of itself (same laws, new random
 start). Memorised trajectories are useless; only laws transfer.</li>
 </ul>
-<p>The difficulty ladder D0→D4 then turns four independent screws: sensor
-opacity (dead channels, inverted signs, gain spread, noise), number of regions
-(1 → 8 collective degrees of freedom), law depth (fast/slow regions, fatigue),
-and budget pressure. D0 is a tutorial magnet; D4 is a slow, moody, multi-region
-material where the best current AI agents score ~0.3 of the achievable 1.0.</p>
+<p>The difficulty ladders then turn independent screws. Bulk track D0→D4:
+sensor opacity (dead channels, inverted signs, gain spread, noise), number of
+regions (1 → 8 collective degrees of freedom), law depth (fast/slow regions,
+fatigue), and budget pressure — D0 is a tutorial magnet; D4 is a slow, moody,
+multi-region material where the best current AI agents score ~0.3 of the
+achievable 1.0. Chemistry track C0→C1: from fixed sensors watching a few
+objects to bigger worlds where part of the sensing apparatus itself must be
+discovered and operated.</p>
 
 <h3>3. What the agent can see and do</h3>
 <p>The agent never sees the grid, the regions, the wiring, or any panel marked
 "god view" on this page. Its entire universe is:</p>
 <ul>
-<li><b>{n_in_range} input ports</b> ("dials"). Each port projects a smooth,
-invisible field onto one patch of the grid — the agent does not know where, or
-which cells. It sets the dials tick by tick, each in [−1, +1].</li>
+<li><b>{n_in_range} input ports</b> ("dials"). Each port either projects a
+smooth, invisible field onto one patch of the grid (a force on the world:
+magnetic-field-like in the bulk track, feed-rate-like in the chemistry track)
+— or, in apparatus worlds, secretly operates a sensor instead. The agent does
+not know which is which, or where anything points. It sets the dials tick by
+tick, each in [−1, +1].</li>
 <li><b>{n_out_range} output sensors</b> ("gauges"). Each live sensor reads the
 average activation of one small random patch, then multiplies it by a random
 gain (possibly negative — the sensor may be installed "upside down"), adds a
@@ -363,18 +463,34 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        parts.append(f"<h2>{name} — {p.n_modules} module(s), "
-                     f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
+        if p.reaction == "grayscott":
+            parts.append(f"<h2>{name} — chemistry track, "
+                         f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead"
+                         + (f", {p.n_apparatus} apparatus ports" if p.n_apparatus else "")
+                         + ")</h2>")
+        else:
+            parts.append(f"<h2>{name} — {p.n_modules} module(s), "
+                         f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
-                     f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
-                     f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
-        parts.append('<div class="panel">' + panel_wiring(make_world(name, 0)) + "</div>")
-        parts.append('<div class="panel">' + panel_micro_snapshots(make_world(name, 0)) + "</div>")
-        parts.append('<div class="panel">' + panel_hysteresis(make_world(name, 0)) + "</div>")
-        parts.append('<div class="panel">' + panel_agent_timeseries(make_world(name, 0)) + "</div>")
-        if p.eps_adapt > 0:
-            parts.append('<div class="panel">' + panel_adaptation(make_world(name, 0)) + "</div>")
+        if p.reaction == "grayscott":
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · feed F≈{p.gs_F} · '
+                         f'kill k≈{p.gs_k} (alien-warped per instance) · '
+                         f'sensor noise {p.meas_noise} · sign-flip prob {p.p_flip} · '
+                         f'tick budget {p.max_ticks:,}</p>')
+        else:
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
+                         f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
+                         f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
+        if p.reaction == "grayscott":
+            parts.append('<div class="panel">' + panel_gs_objects(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_gs_dynamics(make_world(name, 0)) + "</div>")
+        else:
+            parts.append('<div class="panel">' + panel_wiring(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_micro_snapshots(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_hysteresis(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_agent_timeseries(make_world(name, 0)) + "</div>")
+            if p.eps_adapt > 0:
+                parts.append('<div class="panel">' + panel_adaptation(make_world(name, 0)) + "</div>")
     parts.append("""<p class="meta">Generated by <code>python -m physim.viz</code> from the real
 engine (seed 0 of each preset). God-view panels use evaluator-only accessors;
 agent-view panels use only the public interface. Scoring is described in

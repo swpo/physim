@@ -98,7 +98,11 @@ class Contract:
 
 def sample_contracts(world: World, rng: np.random.Generator,
                      n_per_stratum: int = 4) -> list[Contract]:
-    """Ontology-neutral protocol grammar, stratified (DESIGN.md v0.4)."""
+    """Ontology-neutral protocol grammar, stratified (DESIGN.md v0.4).
+    Gray-Scott worlds get object-scale protocols (longer, localized, asymmetric)
+    via the same spec shape."""
+    if getattr(world.p, "reaction", "tanh") == "grayscott":
+        return _sample_contracts_gs(world, rng, n_per_stratum)
     n_in = world.p.n_in
     dead = world.true_is_dead()
     live = [c for c in range(world.p.n_out) if not bool(dead[c])]
@@ -163,11 +167,74 @@ def sample_contracts(world: World, rng: np.random.Generator,
     return contracts
 
 
+def _sample_contracts_gs(world: World, rng: np.random.Generator,
+                         n_per_stratum: int = 4) -> list[Contract]:
+    """Chemistry-track strata: S1 autonomous drift; S2 sustained local feed
+    perturbation (single port, both signs — stall/grow/shrink objects);
+    S3 strong perturbation then long release (does the change persist?);
+    S4 two-stage push-pull with long settle (object rearrangement)."""
+    n_in = world.p.n_in
+    dead = world.true_is_dead()
+    live = [c for c in range(world.p.n_out) if not bool(dead[c])]
+    # object-adjacent sensors = internal ids 0..n_live//2-1 -> agent-visible positions
+    n_live_s = world.p.n_out - world.p.n_dead
+    hot_internal = set(range(max(1, n_live_s // 2)))
+    hot_channels = [pos for pos in live
+                    if int(world.chan_map[pos]) in hot_internal]
+    contracts: list[Contract] = []
+    cid = 0
+
+    def pick_channel() -> int:
+        pool = hot_channels if (hot_channels and rng.random() < 0.75) else live
+        return int(rng.choice(pool))
+
+    def hold(u_vec, T):
+        return {"t": int(T), "u": [round(float(x), 3) for x in u_vec]}
+
+    for _ in range(n_per_stratum):          # S1: autonomous evolution
+        contracts.append(Contract(cid, "S1",
+            [hold(np.zeros(n_in), int(rng.integers(150, 300)))], pick_channel()))
+        cid += 1
+    # ports 0..n_in//2-1 are object-adjacent by construction (evaluator knowledge;
+    # opaque to the agent) — protocols draw mostly from those so they genuinely
+    # perturb the chemistry (kill/grow/move objects), with decoy ports mixed in.
+    hot = list(range(max(1, n_in // 2)))
+    for _ in range(n_per_stratum):          # S2: sustained single-port feed shift
+        u = np.zeros(n_in)
+        port = int(rng.choice(hot)) if rng.random() < 0.8 else int(rng.integers(0, n_in))
+        u[port] = rng.choice([-1.0, 1.0]) * rng.uniform(0.7, 1.0)
+        contracts.append(Contract(cid, "S2",
+            [hold(u, int(rng.integers(250, 400)))], pick_channel()))
+        cid += 1
+    for _ in range(n_per_stratum):          # S3: kill/grow hard, release long
+        u = np.zeros(n_in)
+        port = int(rng.choice(hot))
+        u[port] = rng.choice([-1.0, 1.0])
+        contracts.append(Contract(cid, "S3",
+            [hold(u, int(rng.integers(250, 400))),
+             hold(np.zeros(n_in), int(rng.integers(300, 500)))], pick_channel()))
+        cid += 1
+    for _ in range(n_per_stratum):          # S4: two-port push-pull, long settle
+        u1 = np.zeros(n_in); u2 = np.zeros(n_in)
+        p1 = int(rng.choice(hot))
+        p2 = int(rng.choice(hot)) if len(hot) > 1 else p1
+        u1[p1] = rng.uniform(0.8, 1.0)
+        u2[p2] = -rng.uniform(0.8, 1.0)
+        contracts.append(Contract(cid, "S4",
+            [hold(u1, int(rng.integers(200, 300))),
+             hold(u2, int(rng.integers(150, 250))),
+             hold(np.zeros(n_in), int(rng.integers(400, 650)))], pick_channel()))
+        cid += 1
+    return contracts
+
+
 def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
                     ) -> tuple[float, float, list[float]]:
     """Run the contract protocol on `ensemble` fresh clones; return
     (mu, tau, samples) of the statistic."""
     U = render_protocol(contract.segments, world.p.n_in)
+    if getattr(world.p, "reaction", "tanh") == "grayscott":
+        ensemble = min(ensemble, 8)
     vals = []
     for e in range(ensemble):
         clone = world.clone_fresh(noise_seed=1000 + 97 * contract.id + e)
@@ -239,6 +306,8 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
                           n: int = 4) -> list["PrepContract"]:
     """Reachable-by-construction: drive a probe clone to each branch, read the
     tail values of live channels, and ask for bands around those values."""
+    if getattr(world.p, "reaction", "tanh") == "grayscott":
+        return _sample_prep_gs(world, rng, n)
     p = world.p
     dead = world.true_is_dead()
     live = [c for c in range(p.n_out) if not dead[c]]
@@ -258,6 +327,35 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
         contracts.append(PrepContract(
             id=100 + i, channel=c, lo=v - half, hi=v + half,
             t_prep=int(rng.integers(250, 450)), hold=int(rng.integers(180, 300))))
+    return contracts
+
+
+def _sample_prep_gs(world: World, rng: np.random.Generator,
+                    n: int = 4) -> list["PrepContract"]:
+    """GS preparation targets: states reachable by sustained single-port feed
+    perturbations (grow/shrink/kill local objects), measured after release."""
+    p = world.p
+    dead = world.true_is_dead()
+    live = [c for c in range(p.n_out) if not dead[c]]
+    targets: list[tuple[int, float]] = []
+    for probe_i in range(3):
+        clone = world.clone_fresh(noise_seed=888 + probe_i)
+        u = np.zeros(p.n_in)
+        u[probe_i % p.n_in] = 1.0 if probe_i % 2 == 0 else -1.0
+        clone.run(np.tile(u, (250, 1)))
+        Yf = clone.run(np.zeros((300, p.n_in)))
+        tail = Yf[-TAIL:].mean(0)
+        for c in live:
+            targets.append((c, float(tail[c])))
+    rng.shuffle(targets)
+    contracts = []
+    ranges = world.true_channel_range()
+    for i, (c, v) in enumerate(targets[:n]):
+        half = max(0.2 * float(ranges[c]), 0.15)
+        contracts.append(PrepContract(
+            id=100 + i, channel=c, lo=v - half, hi=v + half,
+            t_prep=int(rng.integers(350, 550)), hold=int(rng.integers(250, 400)),
+            clones=4))
     return contracts
 
 
