@@ -637,3 +637,51 @@ Results pages restructured per-track with the consolidated tables; rollout
 gallery split into rollouts-bulk.html / rollouts-chemistry.html (old URL
 redirects). sd-stat contracts now disclosed in the system prompt (grammar
 transparency; v0.4.2).
+
+
+---
+
+# Addendum 13 (2026-02-13): M4 — multi-species chemistry (C3, v0.5.0)
+
+## World
+
+`grayscott2`: two coupled reaction systems. Species A = standard stable
+spots. Species B carries a kill-rate excess (dies alone) offset by A's local
+presence — so B objects survive only stacked ON A hosts, and killing a host
+via its port cascades to the tenant (~200 ticks later). Ports are
+species-tagged (each feeds one species; hidden); sensors read hidden species
+mixtures (60% pure / 40% blended). "There are two kinds of stuff" is itself
+a discovery. Verified end-to-end through the port interface: bound pairs
+persist 8k+ ticks; far-seeded B dies; host-kill removes both.
+
+Documentation principle (DESIGN v0.9): C3's worlds.html panels describe the
+world at the SPECIES level (composite species map, binding-distance
+histogram clustering at 0, three-frame cascade sequence) — human docs climb
+the emergence ladder with the worlds; agents still see only ports.
+
+## Floors and frontier (2 seeds, n_prep=3)
+
+| | prediction | preparation | theory |
+|---|---|---|---|
+| claude-fable-5 + claude_code | **0.90, 0.89** | 1.0 | 0.78, 0.87 |
+| gpt-5.2 + codex | 0.57, 0.57 | 0.83-1.0 | not submitted |
+| tail / null / persistence | 0.60 / 0.00 / 0.69 | | |
+
+## The layer-2 closure finding
+
+fable-5 predicts C3 excellently via a LINEAR-LATENTS ontology ("sensors =
+linear readout of a few latent states"; port-groups as latents; slow
+integrators) — with zero species/host/dependency vocabulary anywhere in its
+workspace. The cascade law appears only as "long port0 drive displaced MANY
+channels." Same closure behavior as C1's apparatus miss, now one emergence
+level up: the agent compresses two-species physics into an adequate
+single-layer theory and stops. gpt-5.2's S3/S4 (cascade strata) collapse to
+0.25-0.65 — it pays for the missing ontology; fable's latents happen to
+capture the cascades functionally (S3/S4 0.80-0.96). Conduct metrics:
+port_coverage 1.0 for all four rollouts (everyone probes everything once;
+nobody re-opens anomalies).
+
+C3 verdict: mechanically sound, mid-tier at the frontier (fable 0.90 /
+gpt-5.2 0.57), and the two-layer ontology question is now measurable:
+the gap between predictive adequacy and structural discovery is the
+benchmark's sharpest lens yet.

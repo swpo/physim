@@ -291,13 +291,36 @@ outcomes are transient by design. Tracking preparations (follow the object
 with the stage) are the C3 concept.</li>
 </ul>
 
+<h2>C3 — multi-species chemistry (2026-02-13, v0.5.0)</h2>
+<p class="note">Two coupled reaction systems: species A is self-sufficient;
+species B survives only stacked on an A host, and killing a host (via its
+species-tagged port) kills its tenant — a <b>cascade law</b>. Ports feed one
+species each; sensors read hidden species mixtures. That two kinds of stuff
+exist at all is a discovery.</p>
+<table>
+<tr><th class="l">agent / baseline</th><th>prediction</th><th>preparation</th><th>theory</th></tr>
+<tr><td class="l">fable-5 + claude_code</td><td><b>0.90, 0.89</b></td><td>1.0</td><td>0.87, 0.78</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.57, 0.57</td><td>0.83–1.0</td><td>—</td></tr>
+<tr><td class="l meta">persistence / tail / null</td><td class="meta">0.69 / 0.60 / 0.00</td><td class="meta">—</td><td class="meta">—</td></tr>
+</table>
+<ul>
+<li><b>The layer-2 closure finding</b>: fable predicts C3 at 0.90 through a
+linear-latents ontology with <i>zero</i> species/host/dependency vocabulary —
+the cascade law appears in its notes only as "long port0 drive displaced MANY
+channels." Predictive adequacy without structural discovery, one emergence
+level above C1's apparatus miss. gpt-5.2 pays for the missing ontology
+exactly where the cascades live (S3/S4 as low as 0.25).</li>
+<li>Human-facing docs now describe C3 at the species level (composite maps,
+binding-distance histogram, cascade sequence) per the "description levels"
+principle — agents still see only ports.</li>
+</ul>
+
 <h2>What's next</h2>
 <ul>
-<li>C3: faster drift + tracking-grade apparatus (closed-loop microscopy);</li>
-<li>multi-species chemistry (two coupled reaction systems — distinct
-"elements" with their own interaction laws): the M4 vision;</li>
+<li>tracking-grade apparatus / closed-loop microscopy (faster drift);</li>
+<li>species-resolving contracts that pay for the two-kind ontology;</li>
 <li>a Gray-Scott-aware scripted scientist;</li>
-<li>longer-horizon traffic functionals (count-change contracts).</li>
+<li>bound-pair "molecule" dynamics (mobile multi-species complexes).</li>
 </ul>
 """
 
