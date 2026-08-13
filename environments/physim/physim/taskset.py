@@ -209,6 +209,8 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
                 _restore(w2, snap)
                 trace.record_metric("budget_used_frac",
                                     w2.ticks_used / w2.p.max_ticks)
+                for k, v in w2.conduct_metrics().items():
+                    trace.record_metric(k, v)
             except Exception:
                 pass
         trace.info["physim"] = {
@@ -292,6 +294,8 @@ class PhysimEnv(vf.Env[PhysimEnvConfig]):
             trace.record_metric("n_answered", result["n_answered"])
             trace.record_metric("budget_used_frac", result["budget_used_frac"])
             trace.record_metric("turns_used", float(session.turns))
+            for k, v in session.world.conduct_metrics().items():
+                trace.record_metric(k, v)
             for stratum, acc in result["per_stratum"].items():
                 trace.record_metric(f"acc_{stratum}", acc)
             trace.info["physim"] = {

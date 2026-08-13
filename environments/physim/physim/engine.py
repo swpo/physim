@@ -210,6 +210,7 @@ class World:
         self._init_fields()
         self.ticks_used = 0
         self.n_resets = 0
+        self.port_energy = np.zeros(p.n_in)   # cumulative |commanded drive| per port
 
     # ---------------- field initialization ----------------
     def _init_fields(self):
@@ -356,6 +357,7 @@ class World:
     # ---------------- public stepping ----------------
     def _step(self, u: np.ndarray) -> None:
         u = np.clip(np.asarray(u, dtype=float), -1.0, 1.0)
+        self.port_energy += np.abs(u)
         u = self._apparatus_step(u)
         field = self.B @ u
         if self.p.reaction == "tanh":
@@ -416,6 +418,21 @@ class World:
         return self.p.max_ticks - self.ticks_used
 
     # ---------------- evaluator-only ----------------
+    def conduct_metrics(self) -> dict:
+        """Report-only exploration-conduct summary (evaluator-side).
+        port_coverage: fraction of input ports the agent drove for >=10
+        cumulative full-drive-tick equivalents; apparatus_displacement: how far
+        any movable sensor was actually moved from its home position."""
+        out = {
+            "port_coverage": float(np.mean(self.port_energy >= 10.0)),
+            "port_energy_min": float(self.port_energy.min()),
+        }
+        if self.app_pos is not None:
+            d = np.abs(self.app_pos - self.centers_out)
+            d = np.minimum(d, self.p.L - d)
+            out["apparatus_displacement"] = float(np.hypot(d[:, 0], d[:, 1]).max())
+        return out
+
     def certify(self) -> bool:
         """Cheap generation-time health check (evaluator-side, no budget).
         Gray-Scott: object count stays in [1, 12] over a long free run."""
@@ -434,9 +451,10 @@ class World:
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
                            if k not in ("U", "V", "x", "a", "_noise",
-                                        "ticks_used", "n_resets",
+                                        "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
                                         "_app_enable_acc")})
+        w.port_energy = np.zeros(self.p.n_in)
         w._noise = np.random.default_rng(
             np.random.SeedSequence([0xE7A1, self.seed, self._salt, noise_seed]))
         if self.p.n_apparatus > 0:

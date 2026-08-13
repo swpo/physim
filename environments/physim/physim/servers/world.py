@@ -35,6 +35,7 @@ def _snapshot(world: World) -> str:
     arrays = dict(
         ticks=np.array([world.ticks_used, world.n_resets]),
         rng=np.frombuffer(rng_state, dtype=np.uint8),
+        port_energy=world.port_energy,
     )
     if world.p.reaction == "grayscott":
         arrays.update(U=world.U, V=world.V)
@@ -66,6 +67,8 @@ def _restore(world: World, snap: str) -> None:
         world._app_enable_acc = z["app_acc"]
     world.ticks_used = int(z["ticks"][0])
     world.n_resets = int(z["ticks"][1])
+    if "port_energy" in z.files:
+        world.port_energy = z["port_energy"]
     world._noise.bit_generator.state = json.loads(bytes(z["rng"]).decode())
 
 

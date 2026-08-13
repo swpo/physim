@@ -940,3 +940,37 @@ Preliminary read: (1) is working as designed — the benchmark MEASURES
 incentive-driven closure; making completeness pay via B or D is the
 principled fix; C is the most scientifically interesting tool; E is the
 control experiment. Decide after consolidation pass.
+
+
+---
+
+# v0.8 addendum — closure decision: MEASURE, don't manipulate [ADOPTED 2026-02-13]
+
+User adjudication of the v0.8 pre-note menu: keep the benchmark basic.
+Mechanisms B (anomaly-completion contracts), C (check_model self-test tool),
+and D (iterated rollouts) are REJECTED for now — each would complicate the
+environment's contract with the agent, and (B) would constitute mid-rollout
+env adaptation ("multi-turn env refinement"), i.e., a coupled agent-evaluator
+loop we deliberately avoid: contracts remain a fixed function of
+(world, seed), independent of the agent's answers. Even the prompt tweak (E)
+is held: the user's dead-sensor point is decisive — the current prompt warns
+"some sensors may be dead", so genuinely inert-LOOKING things exist by
+design; a prompt asserting "everything has a discoverable function" would be
+FALSE for dead channels and would delete the give-up-vs-persist judgment the
+benchmark currently measures. An agent that calls a stage port "constants"
+is making exactly the kind of fallible closure call real scientists make
+about noise vs signal. That the apparatus prep then costs it points IS the
+anomaly biting — scoreboard-mediated, not oracle-mediated.
+
+What shipped instead (v0.4.3): report-only CONDUCT METRICS —
+  port_coverage      fraction of input ports driven >= 10 full-drive-tick
+                     equivalents over the rollout
+  port_energy_min    exploration energy of the most-neglected port
+  apparatus_displacement  how far any movable sensor was actually moved
+No reward coupling; they quantify thoroughness so closure behavior is
+visible in results tables (e.g., fable C1: high accuracy, apparatus never
+displaced -> the "integrator" story is legible in metrics alone).
+
+Also noted: iterated-rollout research programs (D) remain interesting as a
+FUTURE separate track (persistent notebook across episodes), not as a
+modification of the base benchmark.
