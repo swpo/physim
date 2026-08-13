@@ -176,7 +176,15 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
                                 n_prep=self.data.n_prep)
         session.prep_answers = dict(getattr(st, "prep_answers", {}) or {})
         session.theory_code = getattr(st, "theory_code", "") or ""
-        if session.n_prep or session.theory_code:
+        cache = getattr(st, "contracts_cache", "") or ""
+        if cache:
+            import json as _json
+            from physim.session import Contract, PrepContract
+            session.contracts = [Contract(**d) for d in _json.loads(cache)]
+            session.prep_contracts = [
+                PrepContract(**d)
+                for d in _json.loads(getattr(st, "preps_cache", "") or "[]")]
+        elif session.n_prep or session.theory_code:
             session.issue_contracts()
         result = session.score(getattr(st, "answers_json", "") or None)
         if "reward_preparation" in result:

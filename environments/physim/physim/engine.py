@@ -216,10 +216,17 @@ class World:
                 m = (self._gx - cx) ** 2 + (self._gy - cy) ** 2 <= 3.0 ** 2
                 self.U[m] = 0.5
                 self.V[m] = 0.25
-            # settle so tasks start with formed objects (no agent budget spent)
-            zero_field = np.zeros(self.N)
-            for _ in range(1500):
-                self._gs_substep(zero_field, noisy=False)
+            # settle so tasks start with formed objects (no agent budget spent);
+            # cache the settled fields so clone_fresh / fresh_sample skip the
+            # expensive re-settle (they restart from the same formed state).
+            if not hasattr(self, "_gs_settled"):
+                zero_field = np.zeros(self.N)
+                for _ in range(1500):
+                    self._gs_substep(zero_field, noisy=False)
+                self._gs_settled = (self.U.copy(), self.V.copy())
+            else:
+                self.U = self._gs_settled[0].copy()
+                self.V = self._gs_settled[1].copy()
 
     # ---------------- tanh micro dynamics (bit-identical to legacy) ----------------
     def _mix(self, x: np.ndarray) -> np.ndarray:
@@ -382,11 +389,26 @@ class World:
 
     # ---------------- evaluator-only ----------------
     def clone_fresh(self, noise_seed: int) -> "World":
-        w = World(self.p, self.seed)
+        w = World.__new__(World)
+        w.__dict__.update({k: v for k, v in self.__dict__.items()
+                           if k not in ("U", "V", "x", "a", "_noise",
+                                        "ticks_used", "n_resets",
+                                        "app_pos", "app_gain_mult", "app_enabled",
+                                        "_app_enable_acc")})
         w._noise = np.random.default_rng(
             np.random.SeedSequence([0xE7A1, self.seed, self._salt, noise_seed]))
+        if self.p.n_apparatus > 0:
+            n_live = self.p.n_out - self.p.n_dead
+            w.app_pos = self.centers_out.copy()
+            w.app_gain_mult = np.ones(n_live)
+            w.app_enabled = np.ones(n_live, dtype=bool)
+        else:
+            w.app_pos = None
+            w.app_gain_mult = None
+            w.app_enabled = None
         w._init_fields()
         w.ticks_used = 0
+        w.n_resets = 0
         return w
 
     def true_channel_range(self) -> np.ndarray:

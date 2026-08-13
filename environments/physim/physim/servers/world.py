@@ -79,6 +79,8 @@ class PhysimToolState(vf.State):
     answers_json: str = ""      # last submitted answers (evaluator scores post-hoc)
     prep_answers: dict[int, str] = {}   # prep contract id -> policy code
     theory_code: str = ""
+    contracts_cache: str = ""   # JSON [Contract fields] — sampled once at ready()
+    preps_cache: str = ""       # JSON [PrepContract fields]
     turns: int = 0
 
 
@@ -101,8 +103,11 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         s.phase = st.phase or "explore"
         s.prep_answers = dict(st.prep_answers or {})
         s.theory_code = st.theory_code or ""
-        if s.phase == "answer":
-            s.contracts = s.contracts or []
+        if st.contracts_cache:
+            from physim.session import Contract, PrepContract
+            s.contracts = [Contract(**d) for d in json.loads(st.contracts_cache)]
+            s.prep_contracts = [PrepContract(**d)
+                                for d in json.loads(st.preps_cache or "[]")]
         return s
 
     def _save(self, s: PhysimSession) -> None:
@@ -110,6 +115,10 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
         self.state.phase = s.phase
         self.state.prep_answers = dict(s.prep_answers)
         self.state.theory_code = s.theory_code
+        if s.contracts and not self.state.contracts_cache:
+            from dataclasses import asdict
+            self.state.contracts_cache = json.dumps([asdict(c) for c in s.contracts])
+            self.state.preps_cache = json.dumps([asdict(c) for c in s.prep_contracts])
         self.state.turns += 1
 
     def _dispatch(self, cmd: dict) -> str:
