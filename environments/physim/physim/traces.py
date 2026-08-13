@@ -573,7 +573,8 @@ code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; }
 <nav style="font-size:14px;margin-bottom:18px;">
 <a href="index.html">home</a> · <a href="results.html">results</a> ·
 <a href="worlds.html">the worlds</a> ·
-<a href="rollouts.html"><b>rollout gallery</b></a> ·
+<a href="rollouts-bulk.html"><b>rollouts: bulk</b></a> ·
+<a href="rollouts-chemistry.html"><b>rollouts: chemistry</b></a> ·
 <a href="https://github.com/swpo/physim">github</a></nav>
 <h1>physim rollouts — what the agents actually did</h1>
 <p class="note">Each rollout below is reconstructed from its complete trace.
@@ -588,7 +589,8 @@ artifact-rich.</p>
 
 
 def build(out_path="docs/rollouts.html",
-          outputs_glob="outputs/*/*", max_per_pair=MAX_PER_PAIR) -> str:
+          outputs_glob="outputs/*/*", max_per_pair=MAX_PER_PAIR,
+          track: str | None = None) -> str:
     rolls = load_rollouts(outputs_glob)
     # keep only the LATEST rollout per (pair, difficulty, seed) — reruns supersede
     latest: dict[tuple, dict] = {}
@@ -597,7 +599,12 @@ def build(out_path="docs/rollouts.html",
         latest[key] = r
     groups = defaultdict(list)
     for r in latest.values():
-        groups[(r["pair"], r["info"].get("difficulty"))].append(r)
+        diff = r["info"].get("difficulty") or ""
+        if track == "bulk" and not diff.startswith("D"):
+            continue
+        if track == "chemistry" and not diff.startswith("C"):
+            continue
+        groups[(r["pair"], diff)].append(r)
     parts = [HEAD]
     for (pair, diff), rs in sorted(groups.items(),
                                    key=lambda kv: (kv[0][1] or "", kv[0][0])):
@@ -633,6 +640,9 @@ def build(out_path="docs/rollouts.html",
 
 if __name__ == "__main__":
     import sys
-    out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else "docs/rollouts.html"
     mpp = int(sys.argv[sys.argv.index("--max-per-pair") + 1]) if "--max-per-pair" in sys.argv else MAX_PER_PAIR
-    print("wrote", build(out, max_per_pair=mpp))
+    if "--out" in sys.argv:
+        print("wrote", build(sys.argv[sys.argv.index("--out") + 1], max_per_pair=mpp))
+    else:
+        print("wrote", build("docs/rollouts-bulk.html", max_per_pair=mpp, track="bulk"))
+        print("wrote", build("docs/rollouts-chemistry.html", max_per_pair=mpp, track="chemistry"))

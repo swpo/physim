@@ -35,7 +35,9 @@ NAV = """<nav>
 <a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
 <a href="results-bulk.html">bulk-matter track</a> ·
 <a href="results-chemistry.html">chemistry track</a> ·
-<a href="worlds.html">the worlds</a> · <a href="rollouts.html">rollout gallery</a> ·
+<a href="worlds.html">the worlds</a> ·
+<a href="rollouts-bulk.html">rollouts: bulk</a> ·
+<a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
 <a href="https://github.com/swpo/physim">github</a> ·
 <a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
 </nav>"""
@@ -77,6 +79,12 @@ them at 0.305 — control forgives model error; scripted PI baseline manages 0.2
 <tr><td class="l">Executable theories track understanding</td>
 <td class="l">theory score correlates with prediction accuracy (r=0.72);
 best D2 theory scored 0.895, best C1 theory 0.96</td></tr>
+<tr><td class="l">Instrument discovery is measurable — and unsolved</td>
+<td class="l">C1's apparatus-forced preparation (a band only reachable by
+finding and driving the hidden sensor-stage port) scores 0/1 for the best
+agent while ordinary preparations score 4/4; fable-5 even noticed the
+gain-apparatus channel behaving oddly ("integrator") without discovering
+sensor motion</td></tr>
 <tr><td class="l">Agents rediscover real structure in alien coordinates</td>
 <td class="l">claude-opus-5 on chemistry world C1: "cells" (=objects), "line
 attractors" (=growth), "trigger → absorbing state" (=death, thresholds
@@ -108,11 +116,14 @@ research programs</td></tr>
 <tr><td class="l">claude-opus-5 + claude_code</td><td>C1</td><td>0.96, 0.95</td><td>1.0</td><td>0.96, 0.95</td></tr>
 <tr><td class="l">claude-fable-5 + claude_code</td><td>C0</td><td>0.95, 0.91</td><td>1.0</td><td>0.96, 0.92</td></tr>
 <tr><td class="l">gpt-5.2 + codex</td><td>C0</td><td>0.82, 0.54</td><td>1.0, 0.75</td><td>—</td></tr>
+<tr><td class="l">gpt-5.2 + codex (C2, tight scales)</td><td>C2</td><td>0.82, 0.73</td><td>—*</td><td>—</td></tr>
 <tr><td class="l meta">tail / null baselines (C0)</td><td class="meta"></td><td class="meta">0.75 / 0.32</td><td class="meta">—</td><td class="meta">—</td></tr>
+<tr><td class="l meta">tail / null / persistence (C2)</td><td class="meta"></td><td class="meta">0.49 / 0.11 / 0.39</td><td class="meta">—</td><td class="meta">—</td></tr>
 </table>
-<p class="meta">C2 hardening queued: mobile objects, object-count contracts,
-apparatus-forced measurement. See the <a href="results-chemistry.html">chemistry
-page</a> for why these worlds saturated.</p>
+<p class="meta">*C2 ships no preparation contracts (objects drift; positions
+are transient by design — tracking preparations are C3 material). C0/C1
+saturated at frontier; C2 (moving chemistry, v0.4.1 tight scales) is the
+current mid-tier. See the <a href="results-chemistry.html">chemistry page</a>.</p>
 """
 
 BULK = """
@@ -248,15 +259,43 @@ excellent predictions. <a href="rollouts.html">Read it in the gallery.</a></li>
 (S3 0.30–0.53) — the discrimination the track is meant to make exists already.</li>
 </ul>
 
-<h2>What's next (C2 design queue)</h2>
+<h2>C2 — moving chemistry (2026-02-13, v0.4.0–0.4.1)</h2>
+<p class="note">Objects now <b>drift</b> (~1 cell / 20 ticks along a hidden
+direction): every sensor sees transit traffic, tail averages converge to
+traffic statistics, and half the prediction contracts ask for a channel's
+<b>fluctuation level</b> (sd) on traffic-visited channels. Generation-time
+certification skips unstable seeds (replication cascades). Answer scales
+tightened to 3%/1.5% of channel range (Gray-Scott ensembles are
+quasi-deterministic; loose scales let replication-grade answers saturate).</p>
+<table>
+<tr><th class="l">agent / baseline</th><th>prediction</th></tr>
+<tr><td class="l">gpt-5.2 + codex (tight scales)</td><td><b>0.82, 0.73</b></td></tr>
+<tr><td class="l">fable-5 + claude_code (loose scales)†</td><td>0.97</td></tr>
+<tr><td class="l meta">tail (rest-means)</td><td class="meta">0.49</td></tr>
+<tr><td class="l meta">persistence theory</td><td class="meta">0.39</td></tr>
+<tr><td class="l meta">null</td><td class="meta">0.11</td></tr>
+</table>
+<p class="meta">†before scale tightening; not comparable. Same-model
+comparison: gpt-5.2 scored 0.91–0.96 loose vs 0.73–0.82 tight — <b>scale
+calibration matters as much as world physics</b>.</p>
 <ul>
-<li>Mobile objects (standing feed gradients / drift) so readings are dynamic;</li>
-<li>object-count contracts (predict/prepare splits, kills, merges);</li>
-<li>apparatus-forced contracts (bands measurable only after repositioning a
-sensor) so instrument discovery is load-bearing;</li>
-<li>a Gray-Scott-aware scripted scientist (current reference is tanh-flavored
-and scores below the tail baseline here);</li>
-<li>tighter answer scales.</li>
+<li><b>The apparatus separation works (C1)</b>: fable-5 scored 4/4 on
+ordinary preparations and <b>0/1 on the apparatus-forced one</b> (its notes
+classify the stage port as "constants/nothing" — while separately noticing
+the gain-apparatus channel acts like an "integrator"). Finding one's own
+instruments is now a measured, unsolved skill.</li>
+<li>C2 ships no preparation contracts: with drifting objects, single-channel
+outcomes are transient by design. Tracking preparations (follow the object
+with the stage) are the C3 concept.</li>
+</ul>
+
+<h2>What's next</h2>
+<ul>
+<li>C3: faster drift + tracking-grade apparatus (closed-loop microscopy);</li>
+<li>multi-species chemistry (two coupled reaction systems — distinct
+"elements" with their own interaction laws): the M4 vision;</li>
+<li>a Gray-Scott-aware scripted scientist;</li>
+<li>longer-horizon traffic functionals (count-change contracts).</li>
 </ul>
 """
 

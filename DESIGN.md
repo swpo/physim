@@ -890,3 +890,53 @@ One core with three coupled blocks per tick:
 D0-D4 = C=1/2 presets with frozen apparatus; C-track = Gray-Scott presets;
 apparatus fraction a new axis. This refactor supersedes "fixed port layer"
 assumptions in v0.1-v0.5 texts.
+
+
+---
+
+# v0.8 pre-note — premature closure: why agents settle for wrong-but-adequate ontologies [DISCUSSION]
+
+Observation (C1/C2 frontier runs): agents stop investigating anomalies once
+their model predicts well enough. fable-5 noticed the gain-apparatus channel
+behaving strangely, named it "integrator", and moved on; the stage port stayed
+"constants/nothing" forever. opus-5 called apparatus ports "inert" after short
+probes. Nobody circles back.
+
+Analysis — three distinct causes, in increasing depth:
+1. INCENTIVE-CORRECT LAZINESS: the reward is prediction/preparation accuracy,
+   not ontological completeness. If "integrator" predicts ch20 perfectly, the
+   label is scientifically adequate FOR THE CONTRACTS ISSUED. The agents are
+   optimizing what we score. (fable C1: 0.96 accuracy while missing the stage
+   — the miss cost it exactly the apparatus prep, 1 of 5 contracts.)
+2. NO ANOMALY PRESSURE: real scientists chase anomalies because unexplained
+   residuals eventually BITE (new regimes, replication failures, referees).
+   Our contracts are drawn from a fixed grammar the agent partially infers;
+   residual anomalies rarely bite within one rollout.
+3. NO CHEAP CLOSURE TEST: an agent cannot ask "is my model complete?" —
+   there is no falsification oracle. Humans get this from peers/textbooks;
+   science-as-a-field gets it from time. One rollout has neither.
+
+Candidate mechanisms (to discuss; NOT yet adopted):
+A. Scoreboard transparency: publish per-contract stratum names + coverage in
+   the ready() response ("5 contracts will probe apparatus behavior") so
+   completeness has explicit stakes. Risk: leaks structure hints.
+B. Anomaly-completion contracts: evaluator detects channels/ports the agent
+   never characterized (from its experiment log) and issues extra contracts
+   targeting exactly those. Incentive: explore everything or lose points.
+   Risk: incentivizes shallow sweeps of everything rather than depth.
+C. Residual feedback outlet: an optional tool `check_model(predictions for
+   a NEW self-chosen protocol)` that returns pass/fail at contract tolerance
+   (limited uses; costs budget). Gives a falsification oracle without
+   leaking answers. Closest to real science (preregistered self-tests).
+D. Iterated rollouts on the SAME world (research program): contracts from
+   round k+1 concentrate where round k's answers were worst. Anomalies bite
+   across rounds. Infrastructure: notebook persistence across episodes
+   (already designed in v0; unimplemented).
+E. Simply longer budgets + a prompt line ("assume every port and channel has
+   a discoverable function; unexplained behavior is usually contract-relevant
+   later"). Cheapest; tests whether the limit is conduct or context.
+
+Preliminary read: (1) is working as designed — the benchmark MEASURES
+incentive-driven closure; making completeness pay via B or D is the
+principled fix; C is the most scientifically interesting tool; E is the
+control experiment. Decide after consolidation pass.

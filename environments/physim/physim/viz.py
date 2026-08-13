@@ -291,7 +291,8 @@ HTML_HEAD = """<!doctype html>
 <nav style="font-size:14px;margin-bottom:18px;">
 <a href="index.html">home</a> · <a href="results.html">results</a> ·
 <a href="worlds.html"><b>the worlds</b></a> ·
-<a href="rollouts.html">rollout gallery</a> ·
+<a href="rollouts-bulk.html">rollouts: bulk</a> ·
+<a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
 <a href="https://github.com/swpo/physim">github</a></nav>
 <h1>physim worlds — a visual guide</h1>
 <p>Each physim task drops an agent into a procedurally generated world with
