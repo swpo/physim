@@ -311,52 +311,122 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
     p = world.p
     dead = world.true_is_dead()
     live = [c for c in range(p.n_out) if not dead[c]]
-    targets: list[tuple[int, float]] = []
+    ranges = world.true_channel_range()
+
+    # do-nothing baseline ENSEMBLE (fresh draws can relax to different branches)
+    rest_draws = []
+    for e in range(6):
+        cl = world.clone_fresh(noise_seed=771 + e)
+        Yr = cl.run(np.zeros((420, p.n_in)))
+        rest_draws.append(Yr[-TAIL:].mean(0))
+    rest_draws = np.stack(rest_draws)
+    rest = rest_draws.mean(0)
+
+    targets: list[tuple[int, float, float]] = []   # (channel, value, |shift from rest|)
     for sgn in (+1.0, -1.0):
         clone = world.clone_fresh(noise_seed=777 + int(sgn > 0))
         clone.run(np.full((120, p.n_in), sgn * 0.9))
         Yf = clone.run(np.zeros((260, p.n_in)))
         tail = Yf[-TAIL:].mean(0)
         for c in live:
-            targets.append((c, float(tail[c])))
+            targets.append((c, float(tail[c]), abs(float(tail[c]) - float(rest[c]))))
+    # non-trivial first: bands whose resting value is far away
     rng.shuffle(targets)
-    contracts = []
-    ranges = world.true_channel_range()
-    for i, (c, v) in enumerate(targets[:n]):
+    targets.sort(key=lambda t: -t[2])
+    contracts, used = [], set()
+    for c, v, _shift in targets:
+        if len(contracts) >= n:
+            break
+        if c in used:
+            continue
         half = max(0.15 * float(ranges[c]), 0.12)
+        lo, hi = v - half, v + half
+        # do-nothing must fail on MOST draws (allow rare lucky landings)
+        p_nothing = float(np.mean((rest_draws[:, c] >= lo) & (rest_draws[:, c] <= hi)))
+        if p_nothing > 0.25:
+            continue
+        used.add(c)
         contracts.append(PrepContract(
-            id=100 + i, channel=c, lo=v - half, hi=v + half,
+            id=100 + len(contracts), channel=c, lo=lo, hi=hi,
             t_prep=int(rng.integers(250, 450)), hold=int(rng.integers(180, 300))))
-    return contracts
+    return _verified_nontrivial(world, contracts)
 
 
 def _sample_prep_gs(world: World, rng: np.random.Generator,
                     n: int = 4) -> list["PrepContract"]:
-    """GS preparation targets: states reachable by sustained single-port feed
-    perturbations (grow/shrink/kill local objects), measured after release."""
+    """GS preparation targets: post-release states reachable by strong drives on
+    object-adjacent ports (kill/grow outcomes). A candidate band is kept only if
+    the RESTING trajectory does NOT satisfy it (preparation must require action)
+    and the probe outcome is reproducible across two noise draws."""
     p = world.p
     dead = world.true_is_dead()
     live = [c for c in range(p.n_out) if not dead[c]]
-    targets: list[tuple[int, float]] = []
-    for probe_i in range(3):
-        clone = world.clone_fresh(noise_seed=888 + probe_i)
-        u = np.zeros(p.n_in)
-        u[probe_i % p.n_in] = 1.0 if probe_i % 2 == 0 else -1.0
-        clone.run(np.tile(u, (250, 1)))
-        Yf = clone.run(np.zeros((300, p.n_in)))
-        tail = Yf[-TAIL:].mean(0)
-        for c in live:
-            targets.append((c, float(tail[c])))
-    rng.shuffle(targets)
-    contracts = []
     ranges = world.true_channel_range()
-    for i, (c, v) in enumerate(targets[:n]):
-        half = max(0.2 * float(ranges[c]), 0.15)
+
+    # resting tails (do-nothing baseline) ENSEMBLE
+    rest_draws = []
+    for e in range(3):
+        cl = world.clone_fresh(noise_seed=770 + e)
+        Yr = cl.run(np.zeros((520, p.n_in)))
+        rest_draws.append(Yr[-TAIL:].mean(0))
+    rest_draws = np.stack(rest_draws)
+    rest = rest_draws.mean(0)
+
+    hot = list(range(max(1, p.n_in // 2)))     # object-adjacent by construction
+    candidates: list[tuple[int, float, float]] = []   # (channel, value, |shift|)
+    probe_i = 0
+    for port in hot:
+        for sgn in (-1.0, 1.0):
+            vals = []
+            for e in range(2):                 # reproducibility across draws
+                clone = world.clone_fresh(noise_seed=888 + 13 * probe_i + e)
+                u = np.zeros(p.n_in)
+                u[port] = sgn
+                clone.run(np.tile(u, (300, 1)))
+                Yf = clone.run(np.zeros((300, p.n_in)))
+                vals.append(Yf[-TAIL:].mean(0))
+            probe_i += 1
+            v_mean = np.mean(vals, axis=0)
+            v_spread = np.abs(vals[0] - vals[1])
+            for c in live:
+                shift = abs(float(v_mean[c]) - float(rest[c]))
+                if shift > 0.35 and v_spread[c] < 0.15:
+                    candidates.append((c, float(v_mean[c]), shift))
+
+    # prefer the largest shifts (real kill/grow outcomes), dedupe channels
+    candidates.sort(key=lambda t: -t[2])
+    contracts, used = [], set()
+    for c, v, _shift in candidates:
+        if len(contracts) >= n:
+            break
+        if c in used:
+            continue
+        half = max(0.12 * float(ranges[c]), 0.10)
+        lo, hi = v - half, v + half
+        p_nothing = float(np.mean((rest_draws[:, c] >= lo) & (rest_draws[:, c] <= hi)))
+        if p_nothing > 0.25:
+            continue                            # do-nothing must mostly fail
+        used.add(c)
         contracts.append(PrepContract(
-            id=100 + i, channel=c, lo=v - half, hi=v + half,
+            id=100 + len(contracts), channel=c, lo=lo, hi=hi,
             t_prep=int(rng.integers(350, 550)), hold=int(rng.integers(250, 400)),
             clones=4))
-    return contracts
+    return _verified_nontrivial(world, contracts)
+
+
+def _verified_nontrivial(world: World, contracts: list["PrepContract"]
+                         ) -> list["PrepContract"]:
+    """Final gate: run the ACTUAL scorer with a do-nothing policy; drop any
+    contract where doing nothing succeeds on >20% of clones. This uses the
+    same code path as scoring, so phase/oscillation effects are captured."""
+    null_code = f"def policy(t, y, mem):\n    return [0.0]*{world.p.n_in}"
+    kept = []
+    for c in contracts:
+        r = score_prep(world, c, null_code)
+        if r["success_rate"] <= 0.2:
+            c.id = 100 + len(kept)
+            kept.append(c)
+    return kept
 
 
 def score_prep(world: World, contract: PrepContract, code: str) -> dict:
