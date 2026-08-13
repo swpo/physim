@@ -56,6 +56,7 @@ class WorldParams:
     gs_warp: float = 0.0         # per-instance kinetic warp amplitude (alienization)
     gs_n_seeds: int = 3          # initial spots
     gs_steps_per_tick: int = 4   # PDE substeps per world tick (spot dynamics are slow)
+    gs_drift: float = 0.0        # V-advection speed (cells/substep): objects self-drift
     # --- ports ---
     n_in: int = 6
     n_out: int = 24
@@ -139,10 +140,17 @@ class World:
             t_along = p.gs_warp * rng.uniform(-1, 1)          # valley coordinate
             t_perp = 0.01 * p.gs_warp * rng.uniform(-1, 1)    # tiny transverse
             self.gsF = float(np.clip(p.gs_F * (1.0 + t_along), 0.0295, 0.0325))
-            self.gsk = (p.gs_k + 0.55 * (self.gsF - p.gs_F)) * (1.0 + t_perp)
+            # drift thins spots (division pressure); compensate kill rate.
+            drift_dk = 0.05 * p.gs_drift
+            self.gsk = (p.gs_k + drift_dk
+                        + 0.55 * (self.gsF - p.gs_F)) * (1.0 + t_perp)
+            n_seeds = min(p.gs_n_seeds, 5 if p.gs_drift > 0 else p.gs_n_seeds)
             self.gs_seed_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
-                                               size=(p.gs_n_seeds, 2))
+                                               size=(n_seeds, 2))
             self._gs_field_scale = 0.0   # set after port wiring (needs B)
+            # drift direction: per-world random axis-aligned-ish unit vector
+            ang = rng.uniform(0, 2 * np.pi)
+            self.gs_drift_vec = np.array([np.cos(ang), np.sin(ang)])
             # co-locate half the input bumps and half the sensors with objects
             # (detectors go where the sample is); the rest stay random decoys.
             n_target_in = max(1, p.n_in // 2)
@@ -223,6 +231,18 @@ class World:
                 zero_field = np.zeros(self.N)
                 for _ in range(1500):
                     self._gs_substep(zero_field, noisy=False)
+                # cull to <=6 objects (crowded starts cascade into replication
+                # on drifting worlds); remove smallest by V-mass, then re-settle
+                from scipy import ndimage
+                lab, n = ndimage.label(self.V > 0.15)
+                if n > 6:
+                    masses = ndimage.sum(self.V, lab, range(1, n + 1))
+                    keep = set((np.argsort(masses)[-6:] + 1).tolist())
+                    for obj_id in range(1, n + 1):
+                        if obj_id not in keep:
+                            self.V[lab == obj_id] = 0.0
+                    for _ in range(400):
+                        self._gs_substep(zero_field, noisy=False)
                 self._gs_settled = (self.U.copy(), self.V.copy())
             else:
                 self.U = self._gs_settled[0].copy()
@@ -258,8 +278,16 @@ class World:
                          + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
         uvv = self.U * self.V * self.V
         Feff = self.gsF + field_u.reshape(p.L, p.L)
-        self.U = self.U + p.gs_Du * lap(self.U) - uvv + Feff * (1 - self.U)
-        self.V = self.V + p.gs_Dv * lap(self.V) + uvv - (Feff + self.gsk) * self.V
+        newU = self.U + p.gs_Du * lap(self.U) - uvv + Feff * (1 - self.U)
+        newV = self.V + p.gs_Dv * lap(self.V) + uvv - (Feff + self.gsk) * self.V
+        if p.gs_drift > 0:
+            wx = p.gs_drift * self.gs_drift_vec[0]
+            wy = p.gs_drift * self.gs_drift_vec[1]
+            dVx = (np.roll(self.V, -1, 0) - np.roll(self.V, 1, 0)) / 2.0
+            dVy = (np.roll(self.V, -1, 1) - np.roll(self.V, 1, 1)) / 2.0
+            newV = newV - wx * dVx - wy * dVy
+        self.U = newU
+        self.V = newV
         if noisy and p.sigma > 0:
             self.V = np.clip(
                 self.V + p.sigma * 0.01 * self._noise.standard_normal((p.L, p.L)),
@@ -388,6 +416,20 @@ class World:
         return self.p.max_ticks - self.ticks_used
 
     # ---------------- evaluator-only ----------------
+    def certify(self) -> bool:
+        """Cheap generation-time health check (evaluator-side, no budget).
+        Gray-Scott: object count stays in [1, 12] over a long free run."""
+        if self.p.reaction != "grayscott":
+            return True
+        probe = self.clone_fresh(noise_seed=555)
+        from scipy import ndimage
+        for _ in range(3):
+            probe.run(np.zeros((800, self.p.n_in)))
+            n = ndimage.label(probe.V > 0.15)[1]
+            if not (1 <= n <= 12):
+                return False
+        return True
+
     def clone_fresh(self, noise_seed: int) -> "World":
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
@@ -485,6 +527,13 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=36, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=5.0, in_gain=1.0,
         patch_r=4.0, n_apparatus=2, app_rate=0.5, max_ticks=150_000),
+    "C2": WorldParams(  # moving chemistry: drifting objects + apparatus + count dynamics
+        reaction="grayscott", L=96, sigma=0.02,
+        gs_F=0.030, gs_k=0.066, gs_warp=0.06, gs_n_seeds=5, gs_steps_per_tick=4,
+        gs_drift=0.005,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=5.0, in_gain=1.0,
+        patch_r=4.0, n_apparatus=2, app_rate=0.5, max_ticks=200_000),
 }
 
 

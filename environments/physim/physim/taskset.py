@@ -92,7 +92,7 @@ ADVICE
 
 
 class PhysimData(vf.TaskData):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2"] = "D0"
     world_seed: int = 0
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
@@ -227,7 +227,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget)."""
     tier: Literal["chat", "tools"] = "chat"
     """chat: JSON-over-messages loop (PhysimEnv drives). tools: per-rollout MCP
@@ -304,6 +304,22 @@ class PhysimEnv(vf.Env[PhysimEnvConfig]):
             }
 
 
+def certified_seed(difficulty: str, seed0: int, index: int) -> int:
+    """Deterministically map task index -> the (index+1)-th certified seed at
+    or after seed0. Cheap for tanh worlds (always certified); GS worlds run a
+    short health probe per candidate."""
+    from physim.engine import make_world
+    found = -1
+    seed = seed0
+    for _ in range(200):                     # hard cap on search
+        if make_world(difficulty, seed).certify():
+            found += 1
+            if found == index:
+                return seed
+        seed += 1
+    return seed0 + index                     # fallback: uncertified
+
+
 class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
     INFINITE = True
 
@@ -346,7 +362,8 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
                 prompt=prompt,
                 system_prompt=system_prompt,
                 difficulty=self.config.difficulty,
-                world_seed=self.config.seed0 + i,
+                world_seed=certified_seed(self.config.difficulty,
+                                          self.config.seed0, i),
                 max_turns=self.config.max_turns,
                 n_per_stratum=self.config.n_per_stratum,
                 n_prep=self.config.n_prep,

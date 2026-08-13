@@ -87,11 +87,13 @@ class Contract:
     stat: str = "mean"            # statistic over last TAIL ticks
 
     def spec(self) -> dict:
+        window = (f"last_{STAT_WINDOW_LONG}_ticks" if self.stat == "sd"
+                  else f"last_{TAIL}_ticks")
         return {
             "id": self.id,
             "protocol": {"from": "fresh_state", "segments": self.segments},
             "predict": {"channel": self.channel, "stat": self.stat,
-                        "window": f"last_{TAIL}_ticks"},
+                        "window": window},
             "answer_format": {"mean": "float", "low": "float", "high": "float"},
         }
 
@@ -199,20 +201,27 @@ def _sample_contracts_gs(world: World, rng: np.random.Generator,
     # opaque to the agent) — protocols draw mostly from those so they genuinely
     # perturb the chemistry (kill/grow/move objects), with decoy ports mixed in.
     hot = list(range(max(1, n_in // 2)))
-    for _ in range(n_per_stratum):          # S2: sustained single-port feed shift
+    drifting_c = getattr(world.p, "gs_drift", 0.0) > 0
+    def stat_pick(i):
+        # on drifting worlds, alternate mean/sd so half the contracts probe
+        # traffic structure (sd) — tail means converge to traffic averages
+        return "sd" if (drifting_c and i % 2 == 1) else "mean"
+    for i in range(n_per_stratum):          # S2: sustained single-port feed shift
         u = np.zeros(n_in)
         port = int(rng.choice(hot)) if rng.random() < 0.8 else int(rng.integers(0, n_in))
         u[port] = rng.choice([-1.0, 1.0]) * rng.uniform(0.7, 1.0)
         contracts.append(Contract(cid, "S2",
-            [hold(u, int(rng.integers(250, 400)))], pick_channel()))
+            [hold(u, int(rng.integers(250, 400)))], pick_channel(),
+            stat=stat_pick(i)))
         cid += 1
-    for _ in range(n_per_stratum):          # S3: kill/grow hard, release long
+    for i in range(n_per_stratum):          # S3: kill/grow hard, release long
         u = np.zeros(n_in)
         port = int(rng.choice(hot))
         u[port] = rng.choice([-1.0, 1.0])
         contracts.append(Contract(cid, "S3",
             [hold(u, int(rng.integers(250, 400))),
-             hold(np.zeros(n_in), int(rng.integers(300, 500)))], pick_channel()))
+             hold(np.zeros(n_in), int(rng.integers(300, 500)))], pick_channel(),
+            stat=stat_pick(i)))
         cid += 1
     for _ in range(n_per_stratum):          # S4: two-port push-pull, long settle
         u1 = np.zeros(n_in); u2 = np.zeros(n_in)
@@ -225,7 +234,28 @@ def _sample_contracts_gs(world: World, rng: np.random.Generator,
              hold(u2, int(rng.integers(150, 250))),
              hold(np.zeros(n_in), int(rng.integers(400, 650)))], pick_channel()))
         cid += 1
+    if getattr(world.p, "gs_drift", 0.0) > 0:   # S5: transit variability (moving worlds)
+        for _ in range(n_per_stratum):
+            segs = [hold(np.zeros(n_in), int(rng.integers(500, 900)))]
+            if rng.random() < 0.5:               # optionally perturb first (kill/grow changes traffic)
+                u = np.zeros(n_in)
+                u[int(rng.choice(hot))] = rng.choice([-1.0, 1.0])
+                segs = [hold(u, int(rng.integers(200, 300)))] + segs
+            contracts.append(Contract(cid, "S5", segs, pick_channel(), stat="sd"))
+            cid += 1
     return contracts
+
+
+STAT_WINDOW_LONG = 200   # window for dynamic statistics (sd) on moving worlds
+
+
+def compute_stat(Y: np.ndarray, contract: "Contract") -> float:
+    """Ontology-neutral statistic of a channel's trajectory tail."""
+    c = contract.channel
+    if contract.stat == "sd":
+        w = Y[-min(STAT_WINDOW_LONG, len(Y)):, c]
+        return float(w.std())
+    return float(Y[-TAIL:, c].mean())
 
 
 def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
@@ -239,18 +269,19 @@ def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
     for e in range(ensemble):
         clone = world.clone_fresh(noise_seed=1000 + 97 * contract.id + e)
         Y = clone.run(U)
-        vals.append(float(Y[-TAIL:, contract.channel].mean()))
+        vals.append(compute_stat(Y, contract))
     v = np.asarray(vals)
     tau_floor = world.p.meas_noise / np.sqrt(TAIL)   # sd of a TAIL-tick mean read
     return float(v.mean()), float(max(v.std(), tau_floor, 1e-6)), vals
 
 
-def answer_scale(tau: float, channel_range: float) -> float:
+def answer_scale(tau: float, channel_range: float, stat: str = "mean") -> float:
     """Error tolerance: ensemble spread when the world is genuinely stochastic,
-    floored at 10% of the channel's dynamic range when it is quasi-deterministic
+    floored at a fraction of the channel's dynamic range when quasi-deterministic
     (predicting within a few % of range is 'understanding'; branch confusion
-    ~ full range still scores ~0)."""
-    return float(max(3.0 * tau, 0.1 * channel_range, 1e-3))
+    ~ full range still scores ~0). sd-statistics live on a smaller scale."""
+    frac = 0.05 if stat == "sd" else 0.1
+    return float(max(3.0 * tau, frac * channel_range, 1e-3))
 
 
 def score_answer(mu: float, scale: float, ans: dict) -> dict:
@@ -288,13 +319,21 @@ class PrepContract:
     t_prep: int          # max ticks the policy may run
     hold: int            # release window: predicate on tail of `hold` FREE ticks
     clones: int = 5
+    stat: str = "mean"   # "mean" (last TAIL ticks) or "sd" (last STAT_WINDOW_LONG)
 
     def spec(self) -> dict:
+        if self.stat == "sd":
+            measured = (f"standard deviation over the final "
+                        f"{min(STAT_WINDOW_LONG, self.hold)} ticks of a "
+                        f"{self.hold}-tick free run (all inputs 0) after your "
+                        "policy finishes")
+        else:
+            measured = (f"mean over final {TAIL} ticks of a {self.hold}-tick "
+                        "free run (all inputs 0) after your policy finishes")
         return {
             "id": self.id, "type": "preparation",
             "goal": {"channel": self.channel, "band": [round(self.lo, 3), round(self.hi, 3)],
-                     "measured": f"mean over final {TAIL} ticks of a {self.hold}-tick "
-                                 "free run (all inputs 0) after your policy finishes"},
+                     "measured": measured},
             "policy_budget_ticks": self.t_prep,
             "evaluation": f"policy runs from {self.clones} fresh draws; score = fraction "
                           "of draws where the released tail lands in the band",
@@ -373,12 +412,41 @@ def _sample_prep_gs(world: World, rng: np.random.Generator,
     rest = rest_draws.mean(0)
 
     hot = list(range(max(1, p.n_in // 2)))     # object-adjacent by construction
+
+    # apparatus-forced preparation (apparatus worlds): target a MOVABLE sensor's
+    # channel with a band around what it reads ON an object — reachable only by
+    # driving the stage (parked/resting readings stay far away).
+    app_contracts: list[PrepContract] = []
+    move_ports = [(port, tgt) for port, (prop, tgt)
+                  in (world.app_port_map or {}).items() if prop == "move"]
+    if move_ports and getattr(p, "gs_drift", 0.0) == 0:
+        port, tgt = move_ports[0]
+        chan = int(np.where(world.chan_map == tgt)[0][0])
+        clone = world.clone_fresh(noise_seed=4321)
+        objs = clone.true_objects()
+        if objs:
+            clone.app_pos[tgt] = np.array(objs[0])
+            Yon = clone.run(np.zeros((30, p.n_in)))
+            v_on = float(Yon[-TAIL:, chan].mean())
+            rest_v = float(rest[chan])
+            if abs(v_on - rest_v) > 0.5:
+                half = max(0.15 * float(ranges[chan]), 0.15)
+                app_contracts.append(PrepContract(
+                    id=190, channel=chan, lo=v_on - half, hi=v_on + half,
+                    t_prep=700, hold=30, clones=3))
+
+    drifting = getattr(p, "gs_drift", 0.0) > 0
+    if drifting:
+        # On drifting worlds single-channel outcomes fade (objects wander);
+        # v1 ships NO preparation contracts here — C2's challenge is
+        # prediction-under-motion (S5). Tracking preps are C3 material.
+        return []
     candidates: list[tuple[int, float, float]] = []   # (channel, value, |shift|)
     probe_i = 0
     for port in hot:
         for sgn in (-1.0, 1.0):
             vals = []
-            for e in range(2):                 # reproducibility across draws
+            for e in range(2):             # reproducibility across draws
                 clone = world.clone_fresh(noise_seed=888 + 13 * probe_i + e)
                 u = np.zeros(p.n_in)
                 u[port] = sgn
@@ -405,13 +473,14 @@ def _sample_prep_gs(world: World, rng: np.random.Generator,
         lo, hi = v - half, v + half
         p_nothing = float(np.mean((rest_draws[:, c] >= lo) & (rest_draws[:, c] <= hi)))
         if p_nothing > 0.25:
-            continue                            # do-nothing must mostly fail
+            continue                        # do-nothing must mostly fail
         used.add(c)
         contracts.append(PrepContract(
             id=100 + len(contracts), channel=c, lo=lo, hi=hi,
-            t_prep=int(rng.integers(350, 550)), hold=int(rng.integers(250, 400)),
-            clones=4))
-    return _verified_nontrivial(world, contracts)
+            t_prep=int(rng.integers(350, 550)),
+            hold=int(rng.integers(250, 400)),
+            clones=4, stat="mean"))
+    return _verified_nontrivial(world, contracts + app_contracts)
 
 
 def _verified_nontrivial(world: World, contracts: list["PrepContract"]
@@ -443,7 +512,11 @@ def score_prep(world: World, contract: PrepContract, code: str) -> dict:
             finals.append(None)
             continue
         Yf = clone.run(np.zeros((contract.hold, world.p.n_in)))
-        val = float(Yf[-TAIL:, contract.channel].mean())
+        if contract.stat == "sd":
+            w_ = Yf[-min(STAT_WINDOW_LONG, len(Yf)):, contract.channel]
+            val = float(w_.std())
+        else:
+            val = float(Yf[-TAIL:, contract.channel].mean())
         finals.append(round(val, 4))
         if contract.lo <= val <= contract.hi:
             hits += 1
@@ -465,7 +538,7 @@ def score_theory(world: World, contracts: list[Contract], code: str,
     for c in contracts:
         U = render_protocol(c.segments, world.p.n_in)
         mu, tau, _ = truth_statistic(world, c)
-        scale = answer_scale(tau, float(ranges[c.channel]))
+        scale = answer_scale(tau, float(ranges[c.channel]), c.stat)
         try:
             with Jail(code, mode="simulator") as jail:
                 hist_clone = world.clone_fresh(noise_seed=9000 + c.id)
@@ -477,7 +550,11 @@ def score_theory(world: World, contracts: list[Contract], code: str,
                     if len(y) != world.p.n_out:
                         raise JailError(f"step returned {len(y)} values; need {world.p.n_out}")
                     preds.append(y)
-            pred_stat = float(np.mean([row[c.channel] for row in preds[-TAIL:]]))
+            if c.stat == "sd":
+                w_ = [row[c.channel] for row in preds[-min(STAT_WINDOW_LONG, len(preds)):]]
+                pred_stat = float(np.std(np.asarray(w_)))
+            else:
+                pred_stat = float(np.mean([row[c.channel] for row in preds[-TAIL:]]))
             z = abs(pred_stat - mu) / scale
             acc = float(np.exp(-z))
             detail.append({"id": c.id, "stratum": c.stratum, "mu": round(mu, 4),
@@ -693,7 +770,7 @@ class PhysimSession:
         ranges = self.world.true_channel_range()
         for c in self.contracts:
             mu, tau, samples = truth_statistic(self.world, c)
-            scale = answer_scale(tau, float(ranges[c.channel]))
+            scale = answer_scale(tau, float(ranges[c.channel]), c.stat)
             s = score_answer(mu, scale, answers.get(c.id, {}))
             ceil = replication_accuracy(samples, scale)
             detail.append({"id": c.id, "stratum": c.stratum, "channel": c.channel,

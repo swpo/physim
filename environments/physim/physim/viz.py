@@ -258,7 +258,16 @@ def preset_notes(name: str) -> str:
               "touching the world. Stage ports integrate (effects persist after "
               "release and reverse under opposite drive) — discovering which "
               "ports are apparatus is part of the science. Scanning a movable "
-              "sensor across the world is how you find distant objects.",
+              "sensor across the world is how you find distant objects. One "
+              "preparation contract is answerable ONLY by operating the stage.",
+        "C2": "Moving chemistry: the objects DRIFT (~1 cell / 20 ticks along a "
+              "hidden direction), so every sensor sees transit traffic rather "
+              "than a fixed scene. Tail averages converge to traffic statistics; "
+              "half the prediction contracts ask for a channel's fluctuation "
+              "level (sd) — understanding requires modeling motion, not just "
+              "levels. Includes apparatus ports and occasional object "
+              "births/deaths. No preparation contracts in v1: positions are "
+              "transient by design (tracking preps are future work).",
     }[name]
 
 
