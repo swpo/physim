@@ -186,7 +186,18 @@ def _sample_contracts_gs(world: World, rng: np.random.Generator,
     contracts: list[Contract] = []
     cid = 0
 
-    def pick_channel() -> int:
+    # traffic-visited channels (for sd contracts): resting fluctuation above noise
+    traffic_channels: list[int] = []
+    if getattr(world.p, "gs_drift", 0.0) > 0:
+        probe = world.clone_fresh(noise_seed=655)
+        Yp = probe.run(np.zeros((600, world.p.n_in)))
+        sds = Yp[-STAT_WINDOW_LONG:].std(0)
+        noise_floor = float(np.median(sds[live]))
+        traffic_channels = [c for c in live if sds[c] > 3 * noise_floor]
+
+    def pick_channel(stat: str = "mean") -> int:
+        if stat == "sd" and traffic_channels:
+            return int(rng.choice(traffic_channels))
         pool = hot_channels if (hot_channels and rng.random() < 0.75) else live
         return int(rng.choice(pool))
 
@@ -210,18 +221,20 @@ def _sample_contracts_gs(world: World, rng: np.random.Generator,
         u = np.zeros(n_in)
         port = int(rng.choice(hot)) if rng.random() < 0.8 else int(rng.integers(0, n_in))
         u[port] = rng.choice([-1.0, 1.0]) * rng.uniform(0.7, 1.0)
+        st_ = stat_pick(i)
         contracts.append(Contract(cid, "S2",
-            [hold(u, int(rng.integers(250, 400)))], pick_channel(),
-            stat=stat_pick(i)))
+            [hold(u, int(rng.integers(250, 400)))], pick_channel(st_),
+            stat=st_))
         cid += 1
     for i in range(n_per_stratum):          # S3: kill/grow hard, release long
         u = np.zeros(n_in)
         port = int(rng.choice(hot))
         u[port] = rng.choice([-1.0, 1.0])
+        st_ = stat_pick(i)
         contracts.append(Contract(cid, "S3",
             [hold(u, int(rng.integers(250, 400))),
-             hold(np.zeros(n_in), int(rng.integers(300, 500)))], pick_channel(),
-            stat=stat_pick(i)))
+             hold(np.zeros(n_in), int(rng.integers(300, 500)))], pick_channel(st_),
+            stat=st_))
         cid += 1
     for _ in range(n_per_stratum):          # S4: two-port push-pull, long settle
         u1 = np.zeros(n_in); u2 = np.zeros(n_in)
@@ -241,7 +254,7 @@ def _sample_contracts_gs(world: World, rng: np.random.Generator,
                 u = np.zeros(n_in)
                 u[int(rng.choice(hot))] = rng.choice([-1.0, 1.0])
                 segs = [hold(u, int(rng.integers(200, 300)))] + segs
-            contracts.append(Contract(cid, "S5", segs, pick_channel(), stat="sd"))
+            contracts.append(Contract(cid, "S5", segs, pick_channel("sd"), stat="sd"))
             cid += 1
     return contracts
 
@@ -275,12 +288,17 @@ def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
     return float(v.mean()), float(max(v.std(), tau_floor, 1e-6)), vals
 
 
-def answer_scale(tau: float, channel_range: float, stat: str = "mean") -> float:
+def answer_scale(tau: float, channel_range: float, stat: str = "mean",
+                 reaction: str = "tanh") -> float:
     """Error tolerance: ensemble spread when the world is genuinely stochastic,
     floored at a fraction of the channel's dynamic range when quasi-deterministic
     (predicting within a few % of range is 'understanding'; branch confusion
     ~ full range still scores ~0). sd-statistics live on a smaller scale."""
     frac = 0.05 if stat == "sd" else 0.1
+    if reaction == "grayscott":
+        # GS ensembles are quasi-deterministic (shared settled start): the
+        # range floor dominates and must be tight or replication saturates.
+        frac = 0.015 if stat == "sd" else 0.03
     return float(max(3.0 * tau, frac * channel_range, 1e-3))
 
 
@@ -538,7 +556,8 @@ def score_theory(world: World, contracts: list[Contract], code: str,
     for c in contracts:
         U = render_protocol(c.segments, world.p.n_in)
         mu, tau, _ = truth_statistic(world, c)
-        scale = answer_scale(tau, float(ranges[c.channel]), c.stat)
+        scale = answer_scale(tau, float(ranges[c.channel]), c.stat,
+                             getattr(world.p, "reaction", "tanh"))
         try:
             with Jail(code, mode="simulator") as jail:
                 hist_clone = world.clone_fresh(noise_seed=9000 + c.id)
@@ -770,7 +789,8 @@ class PhysimSession:
         ranges = self.world.true_channel_range()
         for c in self.contracts:
             mu, tau, samples = truth_statistic(self.world, c)
-            scale = answer_scale(tau, float(ranges[c.channel]), c.stat)
+            scale = answer_scale(tau, float(ranges[c.channel]), c.stat,
+                             getattr(self.world.p, "reaction", "tanh"))
             s = score_answer(mu, scale, answers.get(c.id, {}))
             ceil = replication_accuracy(samples, scale)
             detail.append({"id": c.id, "stratum": c.stratum, "channel": c.channel,
