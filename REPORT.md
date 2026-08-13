@@ -506,3 +506,36 @@ collection, gallery). Scientifically the frontier models validated the
 substrate but exposed the contract suite as too shallow for the physics.
 C2+ design queue: object motion, count-change contracts, apparatus-forced
 measurement, GS-aware scripted scientist, tighter answer scales.
+
+
+---
+
+# Addendum 10 (2026-02-12): the trivial-preparation gap, closed (v0.3.2-0.3.3)
+
+Audit after the C0/C1 frontier runs found preparation contracts could be
+satisfied by DOING NOTHING: all sampled C-track preps and ~half of D-track
+preps had bands containing the do-nothing outcome (bistable worlds land
+in-band by luck; GS probes barely shifted tails). This inflates every
+preparation number reported in addenda 7-9 (models scored some preps for
+free; fable's C0/C1 prep 1.0 was partly trivial).
+
+Fixes (v0.3.2): GS prep sampler probes hot ports hard and reads outcomes
+after release, requiring reproducibility across draws; tanh sampler uses a
+6-draw resting ensemble; both rank candidates by |shift from rest| and pass a
+final gate that runs the ACTUAL scorer with a null policy (drop if do-nothing
+succeeds >20% of clones). Verified: null-policy success now 0.0-0.2 on all
+tracks; scripted single-port actions still reach 1.0 (solvable, non-trivial).
+D0 legitimately yields fewer preps (branch preparation is half-free in a
+1-module world by construction).
+
+Also fixed (v0.3.3): a C-track wedge — ready() re-sampled contracts on every
+retry (72-250s per attempt from GS clone settles + the new verification gate),
+exceeding tool-call timeouts. Contracts are now sampled once and cached in
+tool state; GS clones reuse the settled initial fields. D-track regression
+(incl. clone noise streams) stays bit-identical.
+
+Revalidation (fable-5, C1, n_prep=3): prediction 0.93, preparation 3/3 with
+genuine kill actions (bands unreachable by rest, finals well inside), theory
+0.88. The chemistry track remains frontier-easy on PREDICTION (static
+objects; a persistence THEORY still scores ~0.89 on C0) — that is the C2
+mobility work, unchanged in the queue.

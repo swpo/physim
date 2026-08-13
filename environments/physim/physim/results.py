@@ -222,7 +222,14 @@ sensors instead of touching the world. <a href="worlds.html">World guide.</a></p
 <li><b>Frontier-easy as configured.</b> Objects sit still between
 perturbations and half the sensors are co-located with them, so tail-mean
 prediction nearly reduces to constants plus perturbation responses the agents
-probed directly. The physics is richer than the contracts exercise.</li>
+probed directly. The physics is richer than the contracts exercise.
+<span class="meta">(A persistence theory — "nothing ever changes" — scores
+0.89 on C0, the honest floor for these configs.)</span></li>
+<li><b>Preparation numbers above were partly free</b>: an audit found the
+prep bands often contained the do-nothing outcome. Fixed in v0.3.2 (bands now
+require action by construction; null-policy success ≤0.2 everywhere).
+Revalidated fable-5 on C1 with honest preps: prediction 0.93,
+preparation 3/3 via genuine kill actions, theory 0.88.</li>
 <li><b>The apparatus went undiscovered.</b> The best rollout (opus-5, 179
 turns, 84% budget) classified the two apparatus ports as "inert": its ~200-tick
 probes moved a sensor through empty space and saw nothing. Instrument
