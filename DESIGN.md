@@ -974,3 +974,28 @@ displaced -> the "integrator" story is legible in metrics alone).
 Also noted: iterated-rollout research programs (D) remain interesting as a
 FUTURE separate track (persistent notebook across episodes), not as a
 modification of the base benchmark.
+
+
+---
+
+# v0.9 pre-note — description levels for humans [PRINCIPLE, adopted]
+
+User (2026-02-13): as worlds grow more complex, the human-facing description
+must move UP levels with them. A world with "proteins" (machines assembled
+from field excitations, accomplishing some function) should be described to
+humans at the machine/function level — even though the AGENT interface stays
+raw ports throughout. The current worlds.html applies one analysis template
+to all worlds; that stops scaling at M4.
+
+Adopted principle: each world family documents itself at its NATURAL EMERGENT
+level, with panels invented for that level:
+- bulk track: modules/branches/hysteresis (current panels are right);
+- chemistry track: species-colored object maps, event timelines
+  (births/deaths/transits), and for multi-species worlds: binding-distance
+  histograms, reaction inventories ("V2 spots die within ~200 ticks of their
+  V1 partner being killed"), species-sensitivity of sensors;
+- future protein-like worlds: component diagrams, function traces
+  ("what the machine does"), assembly/disassembly events.
+The god-view generator therefore grows a per-family description module
+(viz layers), mirroring how the certifier grows per-family batteries. Humans
+get the highest useful level; agents keep getting only ports.

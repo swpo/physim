@@ -57,6 +57,10 @@ class WorldParams:
     gs_n_seeds: int = 3          # initial spots
     gs_steps_per_tick: int = 4   # PDE substeps per world tick (spot dynamics are slow)
     gs_drift: float = 0.0        # V-advection speed (cells/substep): objects self-drift
+    # --- grayscott2 (two coupled species; M4) ---
+    gs2_k2_delta: float = 0.0037 # species-2 kill excess (dies alone)
+    gs2_alpha21: float = 0.010   # V1 presence lowers species-2 kill (dependency)
+    gs2_n_seeds2: int = 3        # species-2 seeds (placed near species-1 seeds + decoys)
     # --- ports ---
     n_in: int = 6
     n_out: int = 24
@@ -133,7 +137,7 @@ class World:
         if p.reaction == "tanh":
             lams = np.linspace(p.lam_min, p.lam_max, p.n_modules)
             self.lam = rng.permutation(lams)[self.module]
-        elif p.reaction == "grayscott":
+        elif p.reaction in ("grayscott", "grayscott2"):
             # alienized kinetics per instance: walk ALONG the stable-spot valley
             # (empirically k_stable(F) ~ 0.066 + 0.55*(F-0.030) near F=0.030),
             # plus a small transverse jitter that stays inside the window.
@@ -199,10 +203,20 @@ class World:
             self.app_gain_mult = None
             self.app_enabled = None
 
-        if p.reaction == "grayscott":
+        if p.reaction in ("grayscott", "grayscott2"):
             # normalize: |u|=1 on ONE port -> peak local |ΔF| = 0.012 (~40% of F)
             peak = float(self.B.max())
             self._gs_field_scale = 0.012 / max(peak, 1e-12)
+        if p.reaction == "grayscott2":
+            # species tags: each FIELD port perturbs one species's feed;
+            # each sensor reads a species-weighted mix (weights hidden).
+            srng = np.random.default_rng(np.random.SeedSequence(
+                [0x5A2, self.seed, self._salt]))
+            self.port_species = srng.integers(0, 2, p.n_in)
+            n_live_s2 = p.n_out - p.n_dead
+            wmix = srng.uniform(0, 1, n_live_s2)
+            hard = srng.random(n_live_s2) < 0.6   # 60% of sensors are species-pure
+            self.sensor_mix = np.where(hard, (wmix > 0.5).astype(float), wmix)
 
         # ---------------- persistent state ------------------------------------------
         self._noise = np.random.default_rng(
@@ -228,7 +242,24 @@ class World:
             # settle so tasks start with formed objects (no agent budget spent);
             # cache the settled fields so clone_fresh / fresh_sample skip the
             # expensive re-settle (they restart from the same formed state).
+            if self.p.reaction == "grayscott2" and not hasattr(self, "U2"):
+                pass  # initialized below with U/V
             if not hasattr(self, "_gs_settled"):
+                if self.p.reaction == "grayscott2":
+                    self.U2 = np.ones((self.p.L, self.p.L))
+                    self.V2 = np.zeros((self.p.L, self.p.L))
+                    rng2 = np.random.default_rng(np.random.SeedSequence(
+                        [0x5A3, self.seed, self._salt]))
+                    for i in range(self.p.gs2_n_seeds2):
+                        if i < len(self.gs_seed_centers) and rng2.random() < 0.7:
+                            c = self.gs_seed_centers[i] + rng2.normal(0, 2.5, 2)
+                        else:
+                            c = rng2.uniform(0.15 * self.p.L, 0.85 * self.p.L, 2)
+                        m = ((self._gx - c[0]) % self.p.L) ** 2 +                             ((self._gy - c[1]) % self.p.L) ** 2 <= 9
+                        m = (np.minimum(np.abs(self._gx - c[0]), self.p.L - np.abs(self._gx - c[0])) ** 2
+                             + np.minimum(np.abs(self._gy - c[1]), self.p.L - np.abs(self._gy - c[1])) ** 2) <= 9
+                        self.U2[m] = 0.5
+                        self.V2[m] = 0.25
                 zero_field = np.zeros(self.N)
                 for _ in range(1500):
                     self._gs_substep(zero_field, noisy=False)
@@ -244,10 +275,17 @@ class World:
                             self.V[lab == obj_id] = 0.0
                     for _ in range(400):
                         self._gs_substep(zero_field, noisy=False)
-                self._gs_settled = (self.U.copy(), self.V.copy())
+                if self.p.reaction == "grayscott2":
+                    self._gs_settled = (self.U.copy(), self.V.copy(),
+                                        self.U2.copy(), self.V2.copy())
+                else:
+                    self._gs_settled = (self.U.copy(), self.V.copy())
             else:
                 self.U = self._gs_settled[0].copy()
                 self.V = self._gs_settled[1].copy()
+                if self.p.reaction == "grayscott2":
+                    self.U2 = self._gs_settled[2].copy()
+                    self.V2 = self._gs_settled[3].copy()
 
     # ---------------- tanh micro dynamics (bit-identical to legacy) ----------------
     def _mix(self, x: np.ndarray) -> np.ndarray:
@@ -273,7 +311,8 @@ class World:
             self.a += p.eps_adapt * (self.x - self.a)
 
     # ---------------- gray-scott micro dynamics ----------------
-    def _gs_substep(self, field_u: np.ndarray, noisy: bool = True) -> None:
+    def _gs_substep(self, field_u: np.ndarray, noisy: bool = True,
+                    field_u2: np.ndarray | None = None) -> None:
         p = self.p
         lap = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
                          + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
@@ -293,6 +332,22 @@ class World:
             self.V = np.clip(
                 self.V + p.sigma * 0.01 * self._noise.standard_normal((p.L, p.L)),
                 0.0, None)
+        if p.reaction == "grayscott2":
+            V1s = (self.V + np.roll(self.V, 1, 0) + np.roll(self.V, -1, 0)
+                   + np.roll(self.V, 1, 1) + np.roll(self.V, -1, 1)) / 5.0
+            uvv2 = self.U2 * self.V2 * self.V2
+            F2eff = self.gsF + (field_u2.reshape(p.L, p.L)
+                                if field_u2 is not None else 0.0)
+            k2eff = (self.gsk + p.gs2_k2_delta
+                     - p.gs2_alpha21 * (V1s / 0.25))
+            newU2 = self.U2 + p.gs_Du * lap(self.U2) - uvv2 + F2eff * (1 - self.U2)
+            newV2 = self.V2 + p.gs_Dv * lap(self.V2) + uvv2 - (F2eff + k2eff) * self.V2
+            self.U2 = newU2
+            self.V2 = newV2
+            if noisy and p.sigma > 0:
+                self.V2 = np.clip(
+                    self.V2 + p.sigma * 0.01 * self._noise.standard_normal((p.L, p.L)),
+                    0.0, None)
 
     # ---------------- apparatus dynamics ----------------
     def _apparatus_step(self, u: np.ndarray) -> np.ndarray:
@@ -332,9 +387,24 @@ class World:
     def _read(self) -> np.ndarray:
         p = self.p
         n_live = p.n_out - p.n_dead
-        primary = self.x if p.reaction == "tanh" else (self.V.ravel() * 4.0 - 0.5)
+        if p.reaction == "tanh":
+            primary = self.x
+        elif p.reaction == "grayscott2":
+            primary = None   # per-sensor mix computed below
+        else:
+            primary = self.V.ravel() * 4.0 - 0.5
+        if p.reaction == "grayscott2":
+            s1 = self.V.ravel() * 4.0 - 0.5
+            s2 = self.V2.ravel() * 4.0 - 0.5
+            def read_patch(idx, s_i):
+                w_ = float(self.sensor_mix[s_i])
+                return (1 - w_) * s1[idx].mean() + w_ * s2[idx].mean()
+        else:
+            def read_patch(idx, s_i):
+                return primary[idx].mean()
         if self.app_pos is None:
-            raw = np.array([primary[idx].mean() for idx in self.patches])
+            raw = np.array([read_patch(idx, s_i)
+                            for s_i, idx in enumerate(self.patches)])
             gains = self.gain
             enabled = None
         else:
@@ -343,7 +413,7 @@ class World:
                 d = np.abs(self.coords - self.app_pos[s])
                 d = np.minimum(d, p.L - d)
                 m = (d ** 2).sum(1) <= p.patch_r ** 2
-                raw[s] = primary[m].mean() if m.any() else 0.0
+                raw[s] = read_patch(np.where(m)[0], s) if m.any() else 0.0
             gains = self.gain * self.app_gain_mult
             enabled = self.app_enabled
         live = gains * raw + self.offset \
@@ -362,6 +432,13 @@ class World:
         field = self.B @ u
         if self.p.reaction == "tanh":
             self._tanh_step(field)
+        elif self.p.reaction == "grayscott2":
+            u1 = u * (self.port_species == 0)
+            u2 = u * (self.port_species == 1)
+            f1 = (self.B @ u1) * self._gs_field_scale
+            f2 = (self.B @ u2) * self._gs_field_scale
+            for _ in range(self.p.gs_steps_per_tick):
+                self._gs_substep(f1, field_u2=f2)
         else:
             gs_field = field * self._gs_field_scale
             for _ in range(self.p.gs_steps_per_tick):
@@ -436,7 +513,7 @@ class World:
     def certify(self) -> bool:
         """Cheap generation-time health check (evaluator-side, no budget).
         Gray-Scott: object count stays in [1, 12] over a long free run."""
-        if self.p.reaction != "grayscott":
+        if self.p.reaction not in ("grayscott", "grayscott2"):
             return True
         probe = self.clone_fresh(noise_seed=555)
         from scipy import ndimage
@@ -445,12 +522,16 @@ class World:
             n = ndimage.label(probe.V > 0.15)[1]
             if not (1 <= n <= 12):
                 return False
+            if self.p.reaction == "grayscott2":
+                n2 = ndimage.label(probe.V2 > 0.15)[1]
+                if not (1 <= n2 <= 12):
+                    return False
         return True
 
     def clone_fresh(self, noise_seed: int) -> "World":
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
-                           if k not in ("U", "V", "x", "a", "_noise",
+                           if k not in ("U", "V", "U2", "V2", "x", "a", "_noise",
                                         "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
                                         "_app_enable_acc")})
@@ -487,17 +568,32 @@ class World:
             counts = np.bincount(self.module, minlength=self.p.n_modules)
             return mmean / np.maximum(counts, 1)
         # grayscott: object count + total mass as the macro summary
-        mask = self.V > 0.15
         from scipy import ndimage
+        mask = self.V > 0.15
         _, n = ndimage.label(mask)
+        if self.p.reaction == "grayscott2":
+            mask2 = self.V2 > 0.15
+            _, n2 = ndimage.label(mask2)
+            return np.array([float(n), float(self.V.sum()),
+                             float(n2), float(self.V2.sum())])
         return np.array([float(n), float(self.V.sum())])
 
     def true_objects(self) -> list[tuple[float, float]]:
         """Gray-Scott only: centroids of live spots (evaluator/certifier use)."""
-        if self.p.reaction != "grayscott":
+        if self.p.reaction not in ("grayscott", "grayscott2"):
             return []
         from scipy import ndimage
         mask = self.V > 0.15
+        lab, n = ndimage.label(mask)
+        return [tuple(map(float, c)) for c in
+                ndimage.center_of_mass(mask, lab, range(1, n + 1))]
+
+    def true_objects2(self) -> list[tuple[float, float]]:
+        """Species-2 object centroids (grayscott2 only; evaluator use)."""
+        if self.p.reaction != "grayscott2":
+            return []
+        from scipy import ndimage
+        mask = self.V2 > 0.15
         lab, n = ndimage.label(mask)
         return [tuple(map(float, c)) for c in
                 ndimage.center_of_mass(mask, lab, range(1, n + 1))]
@@ -552,6 +648,14 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=5.0, in_gain=1.0,
         patch_r=4.0, n_apparatus=2, app_rate=0.5, max_ticks=200_000),
+    "C3": WorldParams(  # multi-species chemistry (M4): two coupled species,
+        # species-tagged ports/sensors, dependency + cascade laws
+        reaction="grayscott2", L=96, sigma=0.02,
+        gs_F=0.030, gs_k=0.066, gs_warp=0.05, gs_n_seeds=4, gs_steps_per_tick=4,
+        gs2_k2_delta=0.0037, gs2_alpha21=0.010, gs2_n_seeds2=4,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=5.0, in_gain=1.0,
+        patch_r=4.0, n_apparatus=0, max_ticks=200_000),
 }
 
 

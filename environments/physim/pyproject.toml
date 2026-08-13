@@ -1,6 +1,6 @@
 [project]
 name = "physim"
-version = "0.4.3"
+version = "0.5.0"
 description = "physim — hidden-law world discovery: explore an anonymous-port dynamical system, then answer prediction contracts."
 requires-python = ">=3.11"
 dependencies = ["verifiers", "numpy>=1.26"]

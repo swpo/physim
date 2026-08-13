@@ -103,7 +103,7 @@ def sample_contracts(world: World, rng: np.random.Generator,
     """Ontology-neutral protocol grammar, stratified (DESIGN.md v0.4).
     Gray-Scott worlds get object-scale protocols (longer, localized, asymmetric)
     via the same spec shape."""
-    if getattr(world.p, "reaction", "tanh") == "grayscott":
+    if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         return _sample_contracts_gs(world, rng, n_per_stratum)
     n_in = world.p.n_in
     dead = world.true_is_dead()
@@ -276,7 +276,7 @@ def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
     """Run the contract protocol on `ensemble` fresh clones; return
     (mu, tau, samples) of the statistic."""
     U = render_protocol(contract.segments, world.p.n_in)
-    if getattr(world.p, "reaction", "tanh") == "grayscott":
+    if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         ensemble = min(ensemble, 8)
     vals = []
     for e in range(ensemble):
@@ -295,7 +295,7 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
     (predicting within a few % of range is 'understanding'; branch confusion
     ~ full range still scores ~0). sd-statistics live on a smaller scale."""
     frac = 0.05 if stat == "sd" else 0.1
-    if reaction == "grayscott":
+    if reaction in ("grayscott", "grayscott2"):
         # GS ensembles are quasi-deterministic (shared settled start): the
         # range floor dominates and must be tight or replication saturates.
         frac = 0.015 if stat == "sd" else 0.03
@@ -363,7 +363,7 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
                           n: int = 4) -> list["PrepContract"]:
     """Reachable-by-construction: drive a probe clone to each branch, read the
     tail values of live channels, and ask for bands around those values."""
-    if getattr(world.p, "reaction", "tanh") == "grayscott":
+    if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         return _sample_prep_gs(world, rng, n)
     p = world.p
     dead = world.true_is_dead()

@@ -234,6 +234,73 @@ def panel_gs_dynamics(w: World) -> str:
     return img(fig_to_b64(fig), "gray-scott reaction")
 
 
+def panel_gs2_species(w: World) -> str:
+    """Two-species god view: composite color map + dependency structure."""
+    import numpy as np
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.1))
+    fig.subplots_adjust(wspace=0.12, top=0.80)
+    L = w.p.L
+    rgb = np.zeros((L, L, 3))
+    rgb[..., 0] = np.clip(w.V / 0.35, 0, 1)          # species 1 -> red
+    rgb[..., 2] = np.clip(w.V2 / 0.35, 0, 1)         # species 2 -> blue
+    rgb[..., 1] = np.clip((w.V * w.V2) / 0.05, 0, 1) # overlap -> green tint
+    axes[0].imshow(rgb, interpolation="nearest")
+    axes[0].set_title("species A (red), species B (blue); bound pairs appear magenta/white",
+                      fontsize=7.5)
+    axes[0].set_xticks([]); axes[0].set_yticks([])
+    # dependency panel: distances of each B object to nearest A object
+    o1, o2 = w.true_objects(), w.true_objects2()
+    ds = []
+    for (a2, b2) in o2:
+        if o1:
+            ds.append(min(np.hypot(min(abs(a2-a1), L-abs(a2-a1)),
+                                   min(abs(b2-b1), L-abs(b2-b1))) for (a1, b1) in o1))
+    axes[1].hist(ds, bins=np.arange(0, 20, 1.5), color="#8250df", edgecolor="white")
+    axes[1].set_title("distance from each B object to nearest A object\n"
+                      "(clustering at ~0 = B lives ON A)", fontsize=7.5)
+    axes[1].set_xlabel("cells")
+    fig.suptitle("GOD VIEW — two species, one dependency law: B survives only near A",
+                 y=1.02, fontsize=9)
+    return img(fig_to_b64(fig), "two species dependency")
+
+
+def panel_gs2_cascade(w: World) -> str:
+    """The cascade law: kill an A host via its port -> bound B dies too."""
+    import numpy as np
+    L = w.p.L
+    o1, o2 = w.true_objects(), w.true_objects2()
+    bound = [(a1, b1) for (a1, b1) in o1 for (a2, b2) in o2
+             if np.hypot(min(abs(a1-a2), L-abs(a1-a2)),
+                         min(abs(b1-b2), L-abs(b1-b2))) < 4]
+    s1_ports = [i for i in range(w.p.n_in) if w.port_species[i] == 0]
+    cent = [tuple(w.coords[int(np.argmax(w.B[:, i]))]) for i in range(w.p.n_in)]
+    def tdist(p1, p2):
+        return np.hypot(min(abs(p1[0]-p2[0]), L-abs(p1[0]-p2[0])),
+                        min(abs(p1[1]-p2[1]), L-abs(p1[1]-p2[1])))
+    port = min(s1_ports,
+               key=lambda i: min((tdist(cent[i], bp) for bp in bound), default=999))
+    def rgb_of():
+        rgb = np.zeros((L, L, 3))
+        rgb[..., 0] = np.clip(w.V / 0.35, 0, 1)
+        rgb[..., 2] = np.clip(w.V2 / 0.35, 0, 1)
+        return rgb
+    frames = [("initial (bound A+B pairs)", rgb_of())]
+    U = np.zeros((500, w.p.n_in)); U[:, port] = -1.0
+    w.run(U)
+    frames.append((f"port {port} driven −1, 500t", rgb_of()))
+    w.run(np.zeros((500, w.p.n_in)))
+    frames.append(("+500t after release: pair gone", rgb_of()))
+    fig, axes = plt.subplots(1, 3, figsize=(8.6, 2.7))
+    fig.subplots_adjust(wspace=0.08, top=0.78)
+    for ax, (title, im_) in zip(axes, frames):
+        ax.imshow(im_, interpolation="nearest")
+        ax.set_title(title, fontsize=7.2)
+        ax.set_xticks([]); ax.set_yticks([])
+    fig.suptitle("GOD VIEW — the cascade law: killing a host kills its dependent",
+                 y=1.04, fontsize=9)
+    return img(fig_to_b64(fig), "cascade law")
+
+
 def preset_notes(name: str) -> str:
     return {
         "D0": "Clean senses, one collective mode. 6 inputs, 24 well-behaved sensors, "
@@ -268,6 +335,15 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "C3": "MULTI-SPECIES chemistry (two coupled reaction systems). Two kinds "
+              "of object exist: species A is self-sufficient; species B can only "
+              "survive in A's presence — B objects live stacked ON their A hosts, "
+              "and killing a host kills its tenant (a cascade law). Each input "
+              "port feeds ONE species (hidden tag); each sensor reads a hidden "
+              "species mixture. That there are two kinds of stuff at all is "
+              "itself a discovery: agents must separate the species from port "
+              "responses and sensor correlations before the dependency and "
+              "cascade laws even become visible.",
     }[name]
 
 
@@ -478,7 +554,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        if p.reaction == "grayscott":
+        if p.reaction in ("grayscott", "grayscott2"):
             parts.append(f"<h2>{name} — chemistry track, "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead"
                          + (f", {p.n_apparatus} apparatus ports" if p.n_apparatus else "")
@@ -487,7 +563,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f"<h2>{name} — {p.n_modules} module(s), "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        if p.reaction == "grayscott":
+        if p.reaction in ("grayscott", "grayscott2"):
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · feed F≈{p.gs_F} · '
                          f'kill k≈{p.gs_k} (alien-warped per instance) · '
                          f'sensor noise {p.meas_noise} · sign-flip prob {p.p_flip} · '
@@ -496,7 +572,10 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
                          f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
                          f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
-        if p.reaction == "grayscott":
+        if p.reaction == "grayscott2":
+            parts.append('<div class="panel">' + panel_gs2_species(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_gs2_cascade(make_world(name, 0)) + "</div>")
+        elif p.reaction == "grayscott":
             parts.append('<div class="panel">' + panel_gs_objects(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_gs_dynamics(make_world(name, 0)) + "</div>")
         else:

@@ -37,8 +37,10 @@ def _snapshot(world: World) -> str:
         rng=np.frombuffer(rng_state, dtype=np.uint8),
         port_energy=world.port_energy,
     )
-    if world.p.reaction == "grayscott":
+    if world.p.reaction in ("grayscott", "grayscott2"):
         arrays.update(U=world.U, V=world.V)
+        if world.p.reaction == "grayscott2":
+            arrays.update(U2=world.U2, V2=world.V2)
     else:
         arrays.update(x=world.x, a=world.a)
     if world.app_pos is not None:
@@ -54,9 +56,12 @@ def _snapshot(world: World) -> str:
 def _restore(world: World, snap: str) -> None:
     buf = io.BytesIO(base64.b64decode(snap))
     z = np.load(buf)
-    if world.p.reaction == "grayscott":
+    if world.p.reaction in ("grayscott", "grayscott2"):
         world.U = z["U"]
         world.V = z["V"]
+        if world.p.reaction == "grayscott2":
+            world.U2 = z["U2"]
+            world.V2 = z["V2"]
     else:
         world.x = z["x"]
         world.a = z["a"]
