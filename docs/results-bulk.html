@@ -75,9 +75,11 @@ answers after ~12 turns / 1% budget with honest-but-useless wide intervals
 <tr><td class="l meta">prep_pi certifier / null</td><td class="meta">0.34 / 0.145</td><td class="meta">0.24 / 0.0</td><td class="meta">—</td></tr>
 </table>
 <ul>
-<li><b>Preparation ≫ prediction</b>: steering a system you cannot yet predict
-is easier than predicting it (feedback forgives model error). Models beat the
-scripted controller on preparation while staying near-floor on prediction.</li>
+<li><b>Preparation ≫ prediction</b> — with a caveat discovered later: the
+v0.1 prep sampler let ~half of D-track bands include the do-nothing outcome.
+With honest bands (v0.3.2+), fable-5's D4 preparation drops to 0/1 (seeds
+5–6); the original 0.73 mixed real steering with trivial bands. Honest D4
+preparation is now an open problem, like D4 prediction.</li>
 <li><b>Prep outcomes are bimodal</b> (20/36 policies hit 5/5 clones, 13 hit
 0/5, only 8% flaky): the 5-clone scoring measures understanding, not luck.</li>
 <li><b>Failure audit</b>: every 0/5 contract was solvable; one required

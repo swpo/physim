@@ -596,3 +596,44 @@ exploits), not yet D4-hard. The remaining slack is the contract grammar
 levers if wanted: longer-horizon sd windows, count-change contracts phrased
 via multi-channel functionals, faster drift with tracking-grade apparatus
 (C3), and multi-species chemistry (M4 proper).
+
+
+---
+
+# Addendum 12 (2026-02-13): consolidation snapshot (post-calibration numbers)
+
+All numbers below use the HONEST samplers (v0.3.2+ preps) and TIGHT GS scales
+(v0.4.1+). Earlier addenda numbers are superseded where marked.
+
+## Cross-track frontier snapshot (fable-5 + claude_code unless noted)
+
+| world | prediction | preparation | theory | notes |
+|---|---|---|---|---|
+| D4 (seeds 5,6) | 0.27, 0.30 | **0.0** (1 issued) | 0.39, 0.15 | honest preps are HARD (0.73 in add.8 was partly trivial-band inflation) |
+| C1 (seeds 2,3) | 0.91, 0.96 | 0.8, 1.0 | 0.93, 0.96 | apparatus prep = the one miss (0/1) |
+| C2 (seeds 0,1) | 0.93, 0.75 | n/a | 0.86, 0.71 | tight scales; S3/S5 dips show motion isn't free |
+| C2 gpt-5.2+codex | 0.82, 0.73 | n/a | not submitted | |
+
+Difficulty ordering at the frontier (prediction): C0/C1 (~0.95, saturated) >
+C2 (0.73-0.93, mid) > D4 (0.27-0.35, open). The two tracks now bracket the
+frontier from both sides.
+
+## Premature-closure question (user-raised) -> DESIGN v0.8 pre-note
+
+Frontier agents settle on wrong-but-adequate ontologies (fable: stage port =
+"constants", gain-apparatus channel = "integrator"; 0.96 accuracy while
+missing the apparatus entirely). Analysis: (1) reward-correct laziness — we
+score prediction, not completeness; the miss cost exactly the apparatus
+contract; (2) no anomaly pressure within a single rollout; (3) no
+falsification oracle. Candidate mechanisms (B) anomaly-completion contracts,
+(C) a limited-use self-test tool `check_model`, (D) iterated rollouts on the
+same world, (E) longer budgets + conduct prompt. To be decided; the benchmark
+currently MEASURES closure behavior rather than correcting it, which is
+itself a finding worth reporting.
+
+## Site
+
+Results pages restructured per-track with the consolidated tables; rollout
+gallery split into rollouts-bulk.html / rollouts-chemistry.html (old URL
+redirects). sd-stat contracts now disclosed in the system prompt (grammar
+transparency; v0.4.2).

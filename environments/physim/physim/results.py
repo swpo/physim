@@ -175,9 +175,11 @@ answers after ~12 turns / 1% budget with honest-but-useless wide intervals
 <tr><td class="l meta">prep_pi certifier / null</td><td class="meta">0.34 / 0.145</td><td class="meta">0.24 / 0.0</td><td class="meta">—</td></tr>
 </table>
 <ul>
-<li><b>Preparation ≫ prediction</b>: steering a system you cannot yet predict
-is easier than predicting it (feedback forgives model error). Models beat the
-scripted controller on preparation while staying near-floor on prediction.</li>
+<li><b>Preparation ≫ prediction</b> — with a caveat discovered later: the
+v0.1 prep sampler let ~half of D-track bands include the do-nothing outcome.
+With honest bands (v0.3.2+), fable-5's D4 preparation drops to 0/1 (seeds
+5–6); the original 0.73 mixed real steering with trivial bands. Honest D4
+preparation is now an open problem, like D4 prediction.</li>
 <li><b>Prep outcomes are bimodal</b> (20/36 policies hit 5/5 clones, 13 hit
 0/5, only 8% flaky): the 5-clone scoring measures understanding, not luck.</li>
 <li><b>Failure audit</b>: every 0/5 contract was solvable; one required
@@ -269,15 +271,15 @@ tightened to 3%/1.5% of channel range (Gray-Scott ensembles are
 quasi-deterministic; loose scales let replication-grade answers saturate).</p>
 <table>
 <tr><th class="l">agent / baseline</th><th>prediction</th></tr>
-<tr><td class="l">gpt-5.2 + codex (tight scales)</td><td><b>0.82, 0.73</b></td></tr>
-<tr><td class="l">fable-5 + claude_code (loose scales)†</td><td>0.97</td></tr>
+<tr><td class="l">fable-5 + claude_code (tight scales)</td><td><b>0.93, 0.75</b></td></tr>
+<tr><td class="l">gpt-5.2 + codex (tight scales)</td><td>0.82, 0.73</td></tr>
 <tr><td class="l meta">tail (rest-means)</td><td class="meta">0.49</td></tr>
 <tr><td class="l meta">persistence theory</td><td class="meta">0.39</td></tr>
 <tr><td class="l meta">null</td><td class="meta">0.11</td></tr>
 </table>
-<p class="meta">†before scale tightening; not comparable. Same-model
-comparison: gpt-5.2 scored 0.91–0.96 loose vs 0.73–0.82 tight — <b>scale
-calibration matters as much as world physics</b>.</p>
+<p class="meta">Same-model calibration check: gpt-5.2 scored 0.91–0.96 on
+loose scales vs 0.73–0.82 tight — <b>scale calibration matters as much as
+world physics</b>. fable's theory scores: 0.86, 0.71.</p>
 <ul>
 <li><b>The apparatus separation works (C1)</b>: fable-5 scored 4/4 on
 ordinary preparations and <b>0/1 on the apparatus-forced one</b> (its notes
