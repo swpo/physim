@@ -539,3 +539,60 @@ genuine kill actions (bands unreachable by rest, finals well inside), theory
 0.88. The chemistry track remains frontier-easy on PREDICTION (static
 objects; a persistence THEORY still scores ~0.89 on C0) — that is the C2
 mobility work, unchanged in the queue.
+
+
+---
+
+# Addendum 11 (2026-02-13): C2 — moving chemistry (v0.4.0-0.4.1)
+
+## What shipped
+
+- **Object motion**: differential V-advection (gs_drift) — spots self-propel
+  coherently (~1 cell/20 ticks at 0.005) along a hidden per-world direction;
+  drift-compensated kill rate keeps counts stable; post-settle cull +
+  generation-time certify() (taskset skips unstable seeds, e.g. C2 seed 5's
+  replication cascade).
+- **Stat-aware contracts**: mean (20-tick tail) or sd (200-tick window).
+  On drifting worlds half of S2/S3 + all of S5 are sd-stat on traffic-visited
+  channels (resting fluctuation > 3x noise floor).
+- **Tight GS scales** (v0.4.1): quasi-deterministic GS ensembles made the
+  10%-range scale floor saturating (gpt-5.2 hit 0.91-0.96 on loose scales
+  with replication_ref 0.96-0.97). GS scales now 3% (mean) / 1.5% (sd) of
+  channel range.
+- **Apparatus-forced preparation (C1)**: one prep targets the MOVABLE
+  sensor's channel with a band around its on-object reading — solvable only
+  by discovering and driving the stage port (scripted scan-until-in-band
+  scores 1.0; do-nothing 0.0). On C2, preparations are absent in v1:
+  positions are transient by design (tracking preps deferred to C3).
+
+## Floors (C2 seed 0, tight scales)
+
+| baseline | accuracy |
+|---|---|
+| null | 0.11 |
+| tail (rest-means) | 0.49 |
+| persistence theory | 0.39 (S5 0.23) |
+
+## First frontier reads
+
+- gpt-5.2 + codex on C2 (tight scales): **0.73, 0.82** — above tail 0.49,
+  below the ~0.95+ replication regime; sd contracts and traffic structure
+  are doing real work. (On loose v0.4.0 scales the same setup scored
+  0.91-0.96 — scale calibration matters as much as world physics.)
+- fable-5 C2 (loose scales): 0.97 with a 0.95 executable theory; one rollout
+  died to a HarnessError (retry infra noise).
+- **C1 apparatus separation works**: fable seed 2 scored 4/4 on standard
+  preps and **0/1 on the apparatus prep** (ch23 = the movable sensor; its
+  notes classify the stage port as "constants/nothing"). Meanwhile it
+  labeled the gain-apparatus channel an "integrator" — apparatus phenomena
+  are visible to agents, but the sensor-motion ontology remains undiscovered.
+  Instrument discovery is now a measurable, currently-unsolved skill.
+
+## C2 verdict
+
+Medium tier as configured: harder than C0/C1 (motion breaks static
+exploits), not yet D4-hard. The remaining slack is the contract grammar
+(traffic statistics are learnable from modest sampling). Next hardening
+levers if wanted: longer-horizon sd windows, count-change contracts phrased
+via multi-channel functionals, faster drift with tracking-grade apparatus
+(C3), and multi-species chemistry (M4 proper).
