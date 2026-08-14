@@ -66,6 +66,15 @@ class WorldParams:
     ex_substeps: int = 5
     ex_pace_period: int = 70     # intrinsic pacemaker period (world ticks)
     ex_n_pace: int = 1           # intrinsic pacemakers
+    # --- ecology (B0: two variants + shared consumable resource) ---
+    eco_k1: float = 0.060        # variant-1 kill ("fast": grows quickly)
+    eco_k2: float = 0.0615       # variant-2 kill ("efficient": dies faster alone)
+    eco_c1: float = 0.010        # variant-1 resource consumption
+    eco_c2: float = 0.003        # variant-2 resource consumption
+    eco_R_max: float = 0.036     # resource ceiling (richness knob; selection!)
+    eco_regen: float = 0.00012   # resource regeneration rate
+    eco_DR: float = 0.05         # resource diffusion
+    eco_n_seeds: int = 2         # seeds per variant
     # --- grayscott2 (two coupled species; M4) ---
     gs2_k2_delta: float = 0.0037 # species-2 kill excess (dies alone)
     gs2_alpha21: float = 0.010   # V1 presence lowers species-2 kill (dependency)
@@ -154,6 +163,19 @@ class World:
             self.ex_pace_period = int(p.ex_pace_period * (1.0 + 0.2 * rng.uniform(-1, 1)))
             self.ex_pace_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
                                                size=(p.ex_n_pace, 2))
+        elif p.reaction == "ecology":
+            # alienize: jitter the trade-off and richness modestly (stay in the
+            # coexist-able neighborhood; certification gates the rest)
+            self.eco_k1 = p.eco_k1 * (1.0 + 0.02 * rng.uniform(-1, 1))
+            self.eco_k2 = p.eco_k2 * (1.0 + 0.02 * rng.uniform(-1, 1))
+            self.eco_c1 = p.eco_c1 * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.eco_c2 = p.eco_c2 * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.eco_R_max = p.eco_R_max * (1.0 + 0.06 * rng.uniform(-1, 1))
+            self.eco_seed_centers1 = rng.uniform(0.12 * p.L, 0.88 * p.L,
+                                                 size=(p.eco_n_seeds, 2))
+            self.eco_seed_centers2 = rng.uniform(0.12 * p.L, 0.88 * p.L,
+                                                 size=(p.eco_n_seeds, 2))
+            self._gs_field_scale = 0.0   # set after port wiring (needs B)
         elif p.reaction in ("grayscott", "grayscott2"):
             # alienized kinetics per instance: walk ALONG the stable-spot valley
             # (empirically k_stable(F) ~ 0.066 + 0.55*(F-0.030) near F=0.030),
@@ -224,9 +246,13 @@ class World:
             # normalize: |u|=1 on ONE port -> peak local |ΔF| = 0.012 (~40% of F)
             peak = float(self.B.max())
             self._gs_field_scale = 0.012 / max(peak, 1e-12)
-        if p.reaction == "grayscott2":
-            # species tags: each FIELD port perturbs one species's feed;
-            # each sensor reads a species-weighted mix (weights hidden).
+        elif p.reaction == "ecology":
+            # |u|=1 on one port -> peak local regen-rate multiplier ±0.8
+            # (fertilize/poison a region)
+            peak = float(self.B.max())
+            self._gs_field_scale = 0.8 / max(peak, 1e-12)
+        if p.reaction in ("grayscott2", "ecology"):
+            # species tags (gs2: ports feed one species) / sensor mixes (both)
             srng = np.random.default_rng(np.random.SeedSequence(
                 [0x5A2, self.seed, self._salt]))
             self.port_species = srng.integers(0, 2, p.n_in)
@@ -249,6 +275,33 @@ class World:
         if p.reaction == "tanh":
             self.x = 0.01 * self._noise.standard_normal(self.N)
             self.a = np.zeros(self.N)
+        elif p.reaction == "ecology":
+            L = p.L
+            self.U1e = np.ones((L, L)); self.V1e = np.zeros((L, L))
+            self.U2e = np.ones((L, L)); self.V2e = np.zeros((L, L))
+            self.Re = self.eco_R_max * np.ones((L, L))
+            for cs, (Uf, Vf) in ((self.eco_seed_centers1, (self.U1e, self.V1e)),
+                                 (self.eco_seed_centers2, (self.U2e, self.V2e))):
+                for c in cs:
+                    dx = np.minimum(np.abs(self._gx - c[0]), L - np.abs(self._gx - c[0]))
+                    dy = np.minimum(np.abs(self._gy - c[1]), L - np.abs(self._gy - c[1]))
+                    m = dx ** 2 + dy ** 2 <= 9
+                    Uf[m] = 0.5
+                    Vf[m] = 0.25
+            # settle to an established ecosystem (population near capacity);
+            # cache like the GS families
+            if not hasattr(self, "_eco_settled"):
+                zero = np.zeros(self.N)
+                for _ in range(6000):
+                    self._eco_substep(zero, noisy=False)
+                self._eco_settled = (self.U1e.copy(), self.V1e.copy(),
+                                     self.U2e.copy(), self.V2e.copy(),
+                                     self.Re.copy())
+            else:
+                (u1, v1, u2, v2, r_) = self._eco_settled
+                self.U1e = u1.copy(); self.V1e = v1.copy()
+                self.U2e = u2.copy(); self.V2e = v2.copy()
+                self.Re = r_.copy()
         elif p.reaction == "excitable":
             self.eu = -1.2 * np.ones((p.L, p.L))
             self.ev = -0.62 * np.ones((p.L, p.L))
@@ -375,6 +428,29 @@ class World:
                     self.V2 + p.sigma * 0.01 * self._noise.standard_normal((p.L, p.L)),
                     0.0, None)
 
+    # ---------------- ecology dynamics ----------------
+    def _eco_substep(self, field_u: np.ndarray, noisy: bool = True) -> None:
+        p = self.p
+        lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
+                          + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
+        uvv1 = self.U1e * self.V1e * self.V1e
+        uvv2 = self.U2e * self.V2e * self.V2e
+        R = self.Re
+        self.U1e = self.U1e + p.gs_Du * lapf(self.U1e) - uvv1 + R * (1 - self.U1e)
+        self.V1e = self.V1e + p.gs_Dv * lapf(self.V1e) + uvv1 - (R + self.eco_k1) * self.V1e
+        self.U2e = self.U2e + p.gs_Du * lapf(self.U2e) - uvv2 + R * (1 - self.U2e)
+        self.V2e = self.V2e + p.gs_Dv * lapf(self.V2e) + uvv2 - (R + self.eco_k2) * self.V2e
+        # resource: diffusion + regeneration (port-modulated) - consumption
+        regen_mult = 1.0 + field_u.reshape(p.L, p.L)      # ports fertilize/poison
+        regen_mult = np.clip(regen_mult, 0.0, 2.0)
+        self.Re = R + p.eco_DR * lapf(R)             + p.eco_regen * regen_mult * (self.eco_R_max - R) * self.eco_R_max * 300             - (self.eco_c1 * self.V1e + self.eco_c2 * self.V2e) * R
+        self.Re = np.clip(self.Re, 0.0, self.eco_R_max)
+        if noisy and p.sigma > 0:
+            self.V1e = np.clip(self.V1e + p.sigma * 0.01
+                               * self._noise.standard_normal((p.L, p.L)), 0.0, None)
+            self.V2e = np.clip(self.V2e + p.sigma * 0.01
+                               * self._noise.standard_normal((p.L, p.L)), 0.0, None)
+
     # ---------------- apparatus dynamics ----------------
     def _apparatus_step(self, u: np.ndarray) -> np.ndarray:
         """Apply apparatus port drives; return u with apparatus ports zeroed
@@ -417,13 +493,17 @@ class World:
             primary = self.x
         elif p.reaction == "excitable":
             primary = (self.eu.ravel() + 1.2) * 0.8 - 0.5   # rest ~ -0.5, pulse ~ +1.2
-        elif p.reaction == "grayscott2":
+        elif p.reaction in ("grayscott2", "ecology"):
             primary = None   # per-sensor mix computed below
         else:
             primary = self.V.ravel() * 4.0 - 0.5
-        if p.reaction == "grayscott2":
-            s1 = self.V.ravel() * 4.0 - 0.5
-            s2 = self.V2.ravel() * 4.0 - 0.5
+        if p.reaction in ("grayscott2", "ecology"):
+            if p.reaction == "ecology":
+                s1 = self.V1e.ravel() * 4.0 - 0.5
+                s2 = self.V2e.ravel() * 4.0 - 0.5
+            else:
+                s1 = self.V.ravel() * 4.0 - 0.5
+                s2 = self.V2.ravel() * 4.0 - 0.5
             def read_patch(idx, s_i):
                 w_ = float(self.sensor_mix[s_i])
                 return (1 - w_) * s1[idx].mean() + w_ * s2[idx].mean()
@@ -460,6 +540,10 @@ class World:
         field = self.B @ u
         if self.p.reaction == "tanh":
             self._tanh_step(field)
+        elif self.p.reaction == "ecology":
+            eco_field = field * self._gs_field_scale
+            for _ in range(self.p.gs_steps_per_tick):
+                self._eco_substep(eco_field)
         elif self.p.reaction == "excitable":
             p = self.p
             lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
@@ -560,6 +644,16 @@ class World:
     def certify(self) -> bool:
         """Cheap generation-time health check (evaluator-side, no budget).
         Gray-Scott: object count stays in [1, 12] over a long free run."""
+        if self.p.reaction == "ecology":
+            probe = self.clone_fresh(noise_seed=555)
+            from scipy import ndimage
+            for _ in range(3):
+                probe.run(np.zeros((1200, self.p.n_in)))
+                n1 = ndimage.label(probe.V1e > 0.15)[1]
+                n2 = ndimage.label(probe.V2e > 0.15)[1]
+                if not (3 <= n1 <= 90 and 3 <= n2 <= 90):
+                    return False
+            return True
         if self.p.reaction not in ("grayscott", "grayscott2"):
             return True
         probe = self.clone_fresh(noise_seed=555)
@@ -579,6 +673,7 @@ class World:
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
                            if k not in ("U", "V", "U2", "V2", "x", "a", "eu", "ev",
+                                        "U1e", "V1e", "U2e", "V2e", "Re",
                                         "_ex_t", "_noise",
                                         "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
@@ -610,6 +705,12 @@ class World:
         return self.chan_map >= n_live
 
     def true_macro(self) -> np.ndarray:
+        if self.p.reaction == "ecology":
+            from scipy import ndimage
+            n1 = ndimage.label(self.V1e > 0.15)[1]
+            n2 = ndimage.label(self.V2e > 0.15)[1]
+            return np.array([float(n1), float(n2),
+                             float(self.Re.mean() / self.eco_R_max)])
         if self.p.reaction == "excitable":
             return np.array([float((self.eu > 0).mean()), float(self.ev.mean())])
         if self.p.reaction == "tanh":
@@ -630,6 +731,12 @@ class World:
 
     def true_objects(self) -> list[tuple[float, float]]:
         """Gray-Scott only: centroids of live spots (evaluator/certifier use)."""
+        if self.p.reaction == "ecology":
+            from scipy import ndimage
+            mask = self.V1e > 0.15
+            lab, n = ndimage.label(mask)
+            return [tuple(map(float, c)) for c in
+                    ndimage.center_of_mass(mask, lab, range(1, n + 1))]
         if self.p.reaction not in ("grayscott", "grayscott2"):
             return []
         from scipy import ndimage
@@ -639,7 +746,13 @@ class World:
                 ndimage.center_of_mass(mask, lab, range(1, n + 1))]
 
     def true_objects2(self) -> list[tuple[float, float]]:
-        """Species-2 object centroids (grayscott2 only; evaluator use)."""
+        """Species-2 object centroids (grayscott2/ecology; evaluator use)."""
+        if self.p.reaction == "ecology":
+            from scipy import ndimage
+            mask = self.V2e > 0.15
+            lab, n = ndimage.label(mask)
+            return [tuple(map(float, c)) for c in
+                    ndimage.center_of_mass(mask, lab, range(1, n + 1))]
         if self.p.reaction != "grayscott2":
             return []
         from scipy import ndimage
@@ -713,6 +826,14 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=3.0, in_gain=1.0,
         patch_r=3.0, n_apparatus=0, max_ticks=200_000),
+    "B0": WorldParams(  # biology track: two organism variants + shared resource
+        # laws: carrying capacity; competition; scarcity selects the efficient
+        reaction="ecology", L=96, sigma=0.02, gs_steps_per_tick=4,
+        eco_k1=0.060, eco_k2=0.0615, eco_c1=0.010, eco_c2=0.003,
+        eco_R_max=0.036, eco_regen=0.00012, eco_DR=0.05, eco_n_seeds=2,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
+        patch_r=4.0, n_apparatus=0, max_ticks=250_000),
 }
 
 

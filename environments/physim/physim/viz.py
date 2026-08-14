@@ -365,6 +365,69 @@ def panel_ex_laws(w: World) -> str:
     return img(fig_to_b64(fig), "excitable laws")
 
 
+def panel_eco_populations(w: World) -> str:
+    """Ecology god view: species map + population/resource curves under a
+    fertilize->free->poison protocol."""
+    import numpy as np
+    from scipy import ndimage
+    L = w.p.L
+    fig, axes = plt.subplots(1, 3, figsize=(9.2, 2.8))
+    fig.subplots_adjust(wspace=0.22, top=0.78)
+    rgb = np.zeros((L, L, 3))
+    rgb[..., 0] = np.clip(w.V1e / 0.3, 0, 1)
+    rgb[..., 2] = np.clip(w.V2e / 0.3, 0, 1)
+    rgb[..., 1] = np.clip(w.Re / w.eco_R_max, 0, 1) * 0.25
+    axes[0].imshow(rgb, interpolation="nearest")
+    axes[0].set_title("fast variant (red), efficient variant (blue),\n"
+                      "resource (faint green)", fontsize=7.5)
+    axes[0].set_xticks([]); axes[0].set_yticks([])
+    # population curves under a protocol
+    hist = {"n1": [], "n2": [], "R": []}
+    protocol = ([1.0] * 12 + [0.0] * 12 + [-1.0] * 20 + [0.0] * 16)
+    for amp in protocol:
+        w.run(np.full((100, w.p.n_in), amp))
+        m = w.true_macro()
+        hist["n1"].append(m[0]); hist["n2"].append(m[1]); hist["R"].append(m[2])
+    tt = np.arange(len(protocol)) * 100
+    axes[1].plot(tt, hist["n1"], color="#d62728", lw=1.2, label="fast variant")
+    axes[1].plot(tt, hist["n2"], color="#1f77b4", lw=1.2, label="efficient variant")
+    axes[1].axvspan(0, 1200, color="green", alpha=0.08)
+    axes[1].axvspan(2400, 4400, color="red", alpha=0.08)
+    axes[1].set_title("populations: fertilize (green) → free → poison (red) → recover",
+                      fontsize=7.5)
+    axes[1].set_xlabel("ticks"); axes[1].legend(fontsize=6)
+    axes[2].plot(tt, hist["R"], color="#2ca02c", lw=1.2)
+    axes[2].set_ylim(0, 1.05)
+    axes[2].set_title("resource level (fraction of ceiling)", fontsize=7.5)
+    axes[2].set_xlabel("ticks")
+    fig.suptitle("GOD VIEW — an ecosystem: two organism variants competing for one "
+                 "regenerating resource", y=1.03, fontsize=9)
+    return img(fig_to_b64(fig), "ecology populations")
+
+
+def panel_eco_selection(w: World) -> str:
+    """The selection law: sustained scarcity drives the fast variant extinct."""
+    import numpy as np
+    hist = {"n1": [], "n2": []}
+    T_blocks = 46
+    for b in range(T_blocks):
+        amp = -1.0 if b >= 6 else 0.0
+        w.run(np.full((100, w.p.n_in), amp))
+        m = w.true_macro()
+        hist["n1"].append(m[0]); hist["n2"].append(m[1])
+    tt = np.arange(T_blocks) * 100
+    fig, ax = plt.subplots(figsize=(6.8, 2.4))
+    ax.plot(tt, hist["n1"], color="#d62728", lw=1.3, label="fast variant (greedy)")
+    ax.plot(tt, hist["n2"], color="#1f77b4", lw=1.3, label="efficient variant (frugal)")
+    ax.axvspan(600, tt[-1], color="red", alpha=0.07)
+    ax.set_xlabel("ticks"); ax.set_ylabel("population")
+    ax.legend(fontsize=7)
+    fig.suptitle("GOD VIEW — natural selection: under sustained scarcity (red span) the "
+                 "greedy variant collapses; the frugal one inherits the world",
+                 y=1.04, fontsize=9)
+    return img(fig_to_b64(fig), "selection law")
+
+
 def preset_notes(name: str) -> str:
     return {
         "D0": "Clean senses, one collective mode. 6 inputs, 24 well-behaved sensors, "
@@ -399,6 +462,17 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "B0": "BIOLOGY track opens: an ecosystem. Two organism variants compete "
+              "for one regenerating resource. The discoverable laws are "
+              "population-scale: colonies grow to a carrying capacity; the two "
+              "variants divide the world (one grows fast but consumes greedily, "
+              "the other is frugal but fragile); and under sustained scarcity — "
+              "which the agent can CREATE by driving ports negative (poisoning "
+              "resource regeneration) — the greedy variant goes extinct while "
+              "the frugal one inherits the world. Sensors read species-blind "
+              "organism density; ports fertilize or poison regions. Contracts "
+              "probe equilibrium populations, capacity shifts, post-poison "
+              "recovery, and the extinction boundary.",
         "C4": "EXCITABLE chemistry: the medium carries traveling WAVES. A hidden "
               "pacemaker emits rings of excitation; every sensor reads a periodic "
               "pulse train (phase = distance / wave speed). The compact laws: a "
@@ -629,7 +703,10 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        if p.reaction in ("grayscott", "grayscott2", "excitable"):
+        if p.reaction == "ecology":
+            parts.append(f"<h2>{name} — biology track, "
+                         f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
+        elif p.reaction in ("grayscott", "grayscott2", "excitable"):
             parts.append(f"<h2>{name} — chemistry track, "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead"
                          + (f", {p.n_apparatus} apparatus ports" if p.n_apparatus else "")
@@ -638,7 +715,12 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f"<h2>{name} — {p.n_modules} module(s), "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        if p.reaction == "excitable":
+        if p.reaction == "ecology":
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · two organism variants '
+                         f'(kill {p.eco_k1}/{p.eco_k2}, consumption {p.eco_c1}/{p.eco_c2}) · '
+                         f'resource ceiling {p.eco_R_max} (alien-warped) · '
+                         f'sensor noise {p.meas_noise} · tick budget {p.max_ticks:,}</p>')
+        elif p.reaction == "excitable":
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · excitable medium '
                          f'(FHN-class) · intrinsic pacemaker period ≈{p.ex_pace_period} ticks · '
                          f'sensor noise {p.meas_noise} · tick budget {p.max_ticks:,}</p>')
@@ -651,7 +733,10 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
                          f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
                          f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
-        if p.reaction == "excitable":
+        if p.reaction == "ecology":
+            parts.append('<div class="panel">' + panel_eco_populations(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_eco_selection(make_world(name, 0)) + "</div>")
+        elif p.reaction == "excitable":
             parts.append('<div class="panel">' + panel_ex_waves(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_ex_laws(make_world(name, 0)) + "</div>")
         elif p.reaction == "grayscott2":
