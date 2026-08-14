@@ -1068,3 +1068,38 @@ competition, selection; hardest worlds should DECOMPOSE into certified
 component sub-worlds (curriculum in our back pocket) — the multi-channel
 template + per-family certifiers already give this shape: compose reaction
 blocks, certify each layer separately.
+
+
+---
+
+# v0.12 — B0 feasibility sprint: ecology and selection emerge [2026-02-14]
+
+User greenlight: biology track. Probes (all scripted, god-view):
+
+1. **Carrying capacity**: make feed F a dynamic RESOURCE field R (regenerates
+   toward R_max, consumed by organisms: dR = DR·lap R + regen·(R_max−R) −
+   consume·R·V). Population grows 1 → ~60 then saturates; too-high consume →
+   boom-bust cycles or extinction. Logistic dynamics EMERGE from one added
+   field.
+2. **Two-species competition on one shared resource** (trade-off: sp1 fast
+   k=0.060/consume 0.010; sp2 efficient k=0.0615/consume 0.003): stable
+   coexistence ~50/42 with resource drawn to ~70%.
+3. **SELECTION — environment picks the winner**: R_max=0.040/0.036 → coexist;
+   R_max=0.032 → fast species EXTINCT, efficient species owns the world (58);
+   R_max=0.028 → both die. Competitive exclusion controlled by ONE
+   environmental knob (resource richness), which ports can perturb.
+
+B0 design (to build): reaction="ecology" — two GS variants + shared resource
+field R; ports perturb LOCAL resource regeneration (fertilize/poison
+regions) + optional variant-specific seeding; sensors read species-blind
+organism density (mixtures, as C3) + maybe resource level on some channels.
+Discoverable laws (3 sentences): populations saturate (carrying capacity);
+two kinds compete for one resource; scarcity favors the efficient kind.
+Contract grammar: population statistics (rate/sd of organism traffic) under
+held-out fertilize/starve schedules incl. EXTINCTION-boundary protocols.
+Compact oracle: 2-variable logistic ODE per species + exclusion rule —
+tiny; passes rich-vs-big by construction if frontier can't find it.
+Decomposition (curriculum property): B0 = C0 (single species, static feed)
++ eco-1 (one species + resource: carrying capacity) + eco-2 (two species:
+competition) — each certifiable alone; the training ladder is the world's
+own factorization.
