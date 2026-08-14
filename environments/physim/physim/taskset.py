@@ -97,6 +97,7 @@ class PhysimData(vf.TaskData):
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
     n_prep: int = 0
+    calibration_weight: float = 0.0
     tier: Literal["chat", "tools"] = "chat"
 
 
@@ -114,7 +115,7 @@ INTERFACE (MCP tools)
 - Tick budget for all experiments: {budget}. Unspent budget is not rewarded.
 
 TASK
-After physim_ready() you receive contracts: each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one sensor: its mean over the final {tail} ticks, or (on some worlds) its standard deviation over a ~200-tick window, or the COUNT of upward threshold crossings in that window (a pulse/event rate) — the contract says which. Score per contract: exp(-|error|/scale). Give calibrated [low,high] intervals. Unanswered contracts score 0.
+After physim_ready() you receive contracts: each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one sensor: its mean over the final {tail} ticks, or (on some worlds) its standard deviation over a ~200-tick window, or the COUNT of upward threshold crossings in that window (a pulse/event rate) — the contract says which. Score per contract: exp(-|error|/scale) for the point estimate, plus an interval score that rewards NARROW intervals that contain the truth and heavily penalizes intervals that miss it (so honest width reflects your real uncertainty). Give calibrated [low,high] intervals. Unanswered contracts score 0.
 
 STRATEGY
 You have a full coding environment: write files and scripts to record every experiment result, fit response curves offline (per-port gains, signs, time constants, saturation, hysteresis branches, drift/adaptation over hundreds of ticks), and simulate your fitted model to predict each contract protocol. Contracts include held-out regimes: weak pushes + relaxation, steady drives, strong drive + release (branch memory), and multi-stage sequences with long settling windows -- systems like this can show duration-dependent effects and slow internal drift; design experiments that measure them. Characterize both the LEVELS and the VARIABILITY of every responsive channel — some contracts ask for fluctuation (sd) rather than mean. Use the tick budget generously; reserve turns to answer ALL contracts. Call physim_answer before finishing."""
@@ -187,6 +188,8 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
         elif session.n_prep or session.theory_code:
             session.issue_contracts()
         result = session.score(getattr(st, "answers_json", "") or None)
+        trace.record_reward("calibration", result.get("reward_calibration", 0.0),
+                            float(self.data.calibration_weight))
         if "reward_preparation" in result:
             trace.record_reward("preparation", result["reward_preparation"], 1.0)
             trace.record_metric("prep_n", float(len(result.get("prep_detail", []))))
@@ -242,6 +245,8 @@ class PhysimConfig(vf.TasksetConfig):
     """Contracts per stratum (S1 relax / S2 interpolation / S3 memory)."""
     n_prep: int = 0
     """Preparation contracts (M2): submit-a-policy steering tasks. 0 = off."""
+    calibration_weight: float = 0.0
+    """Weight for the interval-calibration reward (Winkler-based). 0 = report-only."""
     task: PhysimTaskConfig = PhysimTaskConfig()
     """Per-task config (tier is copied from the taskset-level field)."""
 
@@ -289,6 +294,7 @@ class PhysimEnv(vf.Env[PhysimEnvConfig]):
 
             result = session.score(answer_text)
             trace = interaction.trace
+            trace.record_reward("calibration_chat", result.get("reward_calibration", 0.0), 0.0)
             trace.record_metric("coverage", result["coverage"])
             trace.record_metric("replication_ref", result["replication_ref"])
             trace.record_metric("n_answered", result["n_answered"])
@@ -371,6 +377,7 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
                 max_turns=self.config.max_turns,
                 n_per_stratum=self.config.n_per_stratum,
                 n_prep=self.config.n_prep,
+                calibration_weight=self.config.calibration_weight,
                 tier="tools" if tools_tier else "chat",
                 artifacts=artifacts,
             )

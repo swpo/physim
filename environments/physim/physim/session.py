@@ -377,14 +377,20 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
 
 
 def score_answer(mu: float, scale: float, ans: dict) -> dict:
-    """Accuracy in (0,1]: exp(-|err|/scale). Coverage: does mu land in [low,high]."""
+    """Accuracy in (0,1]: exp(-|err|/scale). Coverage: does mu land in [low,high].
+    Calibration: Winkler interval score (alpha=0.2) mapped through exp(-W/6*scale):
+    narrow-and-right ~1, wide-honest moderate, narrow-and-wrong ~0."""
     try:
         mean = float(ans["mean"]); low = float(ans["low"]); high = float(ans["high"])
     except (KeyError, TypeError, ValueError):
-        return {"accuracy": 0.0, "covered": 0.0, "z": None, "answered": 0.0}
+        return {"accuracy": 0.0, "covered": 0.0, "z": None, "answered": 0.0,
+                "calibration": 0.0}
     z = abs(mean - mu) / scale
-    return {"accuracy": float(np.exp(-z)), "covered": float(low <= mu <= high),
-            "z": float(z), "answered": 1.0}
+    lo, hi = (low, high) if low <= high else (high, low)
+    winkler = (hi - lo) + 10.0 * max(0.0, lo - mu) + 10.0 * max(0.0, mu - hi)
+    calib = float(np.exp(-winkler / (10.0 * scale)))
+    return {"accuracy": float(np.exp(-z)), "covered": float(lo <= mu <= hi),
+            "z": float(z), "answered": 1.0, "calibration": calib}
 
 
 def replication_accuracy(samples: list[float], scale: float) -> float:
@@ -857,7 +863,7 @@ class PhysimSession:
             except ValueError as e:
                 parse_error = str(e)
         detail, per_stratum = [], {}
-        acc_all, cov_all, ceil_all = [], [], []
+        acc_all, cov_all, ceil_all, cal_all = [], [], [], []
         ranges = self.world.true_channel_range()
         for c in self.contracts:
             mu, tau, samples = truth_statistic(self.world, c)
@@ -873,6 +879,7 @@ class PhysimSession:
                            "replication": round(ceil, 4)})
             per_stratum.setdefault(c.stratum, []).append(s["accuracy"])
             acc_all.append(s["accuracy"]); cov_all.append(s["covered"]); ceil_all.append(ceil)
+            cal_all.append(s.get("calibration", 0.0))
         prep_detail, prep_rates = [], []
         for c in self.prep_contracts:
             code = self.prep_answers.get(c.id)
@@ -885,6 +892,7 @@ class PhysimSession:
             prep_rates.append(pr["success_rate"])
         result = {
             "reward_accuracy": float(np.mean(acc_all)),
+            "reward_calibration": float(np.mean(cal_all)),
             "coverage": float(np.mean(cov_all)),
             "replication_ref": float(np.mean(ceil_all)),
             "per_stratum": {k: float(np.mean(v)) for k, v in per_stratum.items()},

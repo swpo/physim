@@ -1026,3 +1026,45 @@ Complex != complicated; rich != big.
 
 Iteration mode adopted: spend cycles inventing/certifying worlds against
 1-3 before any frontier spend.
+
+
+---
+
+# v0.11 — effort-vs-difficulty diagnostic and the calibration lever [2026-02-14]
+
+## Diagnostic (n=53 tools-tier rollouts, latest per model x world x seed)
+
+World hardness := 1 - frontier mean accuracy. Per-model Spearman(hardness, effort):
+
+| effort metric | fable-5 (n=20) | gpt-5.2 (n=14) |
+|---|---|---|
+| world ticks | +0.35 (p=.13) | -0.18 |
+| # experiments | +0.07 | -0.16 |
+| turns | -0.12 | -0.25 |
+| completion tokens | **+0.75 (p<.001)** | -0.18 |
+| workspace chars | **+0.54 (p=.015)** | -0.29 |
+| wall minutes | +0.20 | -0.47 (p=.09) |
+
+Reading: fable scales SYNTHESIS (thinking, writing) with difficulty but not
+DATA COLLECTION; gpt-5.2 works uniformly less on harder worlds; sol/opus run
+fewer experiments on hard worlds (46 vs 78; 80 vs 115). Budget use on hard
+worlds: 26-40% across all models — the stopping policy, not resources, binds.
+User's ideal property (harder -> try more) currently FAILS for experiments.
+
+## Lever adopted: pay for honest uncertainty (fixed, basic, no coupling)
+
+Intervals were previously reward-free (coverage report-only) — models could
+be narrow-and-wrong at zero cost, so extra experiments had no scoreboard
+value once a point estimate existed. New interval-calibration reward
+(Winkler, alpha=0.2, normalized exp(-W/10*scale)): narrow-right 0.91 >
+medium-right 0.74 > wide-honest 0.14 > narrow-wrong 0.03. The only path from
+wide-honest to narrow-right is REDUCING UNCERTAINTY = more/better
+experiments. Config `calibration_weight` (default 0 = report-only; A/B at
+1.0). Contracts remain a fixed function of (world, seed); nothing adapts to
+the agent.
+
+## Long-horizon direction confirmed (user): worlds -> organisms, reproduction,
+competition, selection; hardest worlds should DECOMPOSE into certified
+component sub-worlds (curriculum in our back pocket) — the multi-channel
+template + per-family certifiers already give this shape: compose reaction
+blocks, certify each layer separately.
