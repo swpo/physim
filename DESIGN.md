@@ -999,3 +999,30 @@ level, with panels invented for that level:
 The god-view generator therefore grows a per-family description module
 (viz layers), mirroring how the certifier grows per-family batteries. Humans
 get the highest useful level; agents keep getting only ports.
+
+
+---
+
+# v0.10 — the rich-vs-big criterion [ADOPTED design principle, 2026-02-13]
+
+User: the next C-track difficulty step must NOT come from scaling (more
+boundaries, more sensor noise — the D-track recipe). It must come from NOVEL
+DYNAMICS with more interesting emergent phenomena. The quality test for a
+well-designed hard world:
+
+1. EMERGENCE CHECK (a priori): scripted probes, written with god knowledge of
+   the world structure, verify the intended emergent phenomena exist and are
+   quantitatively stable (as done for hysteresis, binding, cascades).
+2. COMPACT-ORACLE EXISTENCE: there must EXIST a simple theory that solves the
+   contracts well — implemented as a small god-parameterized predictor scored
+   through the real contract pipeline. Its code size is the world's "theory
+   complexity". If only a super-complex solution scores well, the world is
+   merely BIG (representationally hard), not RICH (discovery hard).
+3. FRONTIER GAP: frontier models score well below the compact oracle.
+
+World quality metric: (oracle_score - frontier_score) subject to
+oracle_size small. Rich = high oracle score, small oracle, large gap.
+Complex != complicated; rich != big.
+
+Iteration mode adopted: spend cycles inventing/certifying worlds against
+1-3 before any frontier spend.

@@ -78,7 +78,7 @@ INTERFACE
 - Tick budget for all experiments combined: {budget}. Unspent budget is not rewarded; use it.
 
 TASK
-After exploration ends (you send "ready", or you run out of budget/turns), you receive prediction contracts. Each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one output channel — the mean over the final {tail} ticks, or on some worlds the standard deviation over a ~200-tick window (the contract says which). You answer each with a point prediction and an interval:
+After exploration ends (you send "ready", or you run out of budget/turns), you receive prediction contracts. Each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one output channel — the mean over the final {tail} ticks, or on some worlds the standard deviation over a ~200-tick window, or the count of upward threshold crossings (event rate; threshold = channel median + 1 sd) — the contract says which. You answer each with a point prediction and an interval:
   {{"op":"answer","answers":[{{"id":0,"mean":0.42,"low":0.1,"high":0.7}}, ...]}}
 Scoring: accuracy = exp(-|error| / (3*ensemble_sd)) per contract, averaged. Your interval should cover the true ensemble mean (calibration is also measured). Unanswered contracts score 0.
 
@@ -92,7 +92,7 @@ ADVICE
 
 
 class PhysimData(vf.TaskData):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4"] = "D0"
     world_seed: int = 0
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
@@ -114,7 +114,7 @@ INTERFACE (MCP tools)
 - Tick budget for all experiments: {budget}. Unspent budget is not rewarded.
 
 TASK
-After physim_ready() you receive contracts: each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one sensor: its mean over the final {tail} ticks, or (on some worlds) its standard deviation over a ~200-tick window — the contract says which. Score per contract: exp(-|error|/scale). Give calibrated [low,high] intervals. Unanswered contracts score 0.
+After physim_ready() you receive contracts: each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one sensor: its mean over the final {tail} ticks, or (on some worlds) its standard deviation over a ~200-tick window, or the COUNT of upward threshold crossings in that window (a pulse/event rate) — the contract says which. Score per contract: exp(-|error|/scale). Give calibrated [low,high] intervals. Unanswered contracts score 0.
 
 STRATEGY
 You have a full coding environment: write files and scripts to record every experiment result, fit response curves offline (per-port gains, signs, time constants, saturation, hysteresis branches, drift/adaptation over hundreds of ticks), and simulate your fitted model to predict each contract protocol. Contracts include held-out regimes: weak pushes + relaxation, steady drives, strong drive + release (branch memory), and multi-stage sequences with long settling windows -- systems like this can show duration-dependent effects and slow internal drift; design experiments that measure them. Characterize both the LEVELS and the VARIABILITY of every responsive channel — some contracts ask for fluctuation (sd) rather than mean. Use the tick budget generously; reserve turns to answer ALL contracts. Call physim_answer before finishing."""
@@ -229,7 +229,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget)."""
     tier: Literal["chat", "tools"] = "chat"
     """chat: JSON-over-messages loop (PhysimEnv drives). tools: per-rollout MCP

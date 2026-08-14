@@ -105,6 +105,8 @@ def sample_contracts(world: World, rng: np.random.Generator,
     via the same spec shape."""
     if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         return _sample_contracts_gs(world, rng, n_per_stratum)
+    if getattr(world.p, "reaction", "tanh") == "excitable":
+        return _sample_contracts_excitable(world, rng, n_per_stratum)
     n_in = world.p.n_in
     dead = world.true_is_dead()
     live = [c for c in range(world.p.n_out) if not bool(dead[c])]
@@ -268,7 +270,77 @@ def compute_stat(Y: np.ndarray, contract: "Contract") -> float:
     if contract.stat == "sd":
         w = Y[-min(STAT_WINDOW_LONG, len(Y)):, c]
         return float(w.std())
+    if contract.stat == "rate":
+        w = Y[-min(STAT_WINDOW_LONG, len(Y)):, c]
+        thr = float(np.median(w) + w.std())
+        ups = int(((w[1:] > thr) & (w[:-1] <= thr)).sum())
+        return float(ups)
     return float(Y[-TAIL:, c].mean())
+
+
+def _sample_contracts_excitable(world: World, rng: np.random.Generator,
+                                n_per_stratum: int = 4) -> list[Contract]:
+    """Wave-engaging grammar: S1 autonomous rhythm (mean+rate); S2 second
+    pacemaker via strong sustained port drive (entrainment); S3 pulse-train
+    drives at varied periods (conduction ratio / refractory block); S4
+    two-port interleaved pulse trains (collision physics)."""
+    n_in = world.p.n_in
+    dead = world.true_is_dead()
+    live = [c for c in range(world.p.n_out) if not bool(dead[c])]
+    contracts: list[Contract] = []
+    cid = 0
+
+    def pick_channel() -> int:
+        return int(rng.choice(live))
+
+    def hold(u_vec, T):
+        return {"t": int(T), "u": [round(float(x), 3) for x in u_vec]}
+
+    def pulse_train(port, period_on, period_off, reps, amp=1.0):
+        segs = []
+        for _ in range(reps):
+            u = np.zeros(n_in); u[port] = amp
+            segs.append(hold(u, period_on))
+            segs.append(hold(np.zeros(n_in), period_off))
+        return segs
+
+    for i in range(n_per_stratum):          # S1: autonomous rhythm
+        contracts.append(Contract(cid, "S1",
+            [hold(np.zeros(n_in), int(rng.integers(250, 400)))], pick_channel(),
+            stat="rate" if i % 2 else "mean"))
+        cid += 1
+    for i in range(n_per_stratum):          # S2: create a competing pacemaker
+        port = int(rng.integers(0, n_in))
+        u = np.zeros(n_in); u[port] = rng.uniform(0.8, 1.0)
+        contracts.append(Contract(cid, "S2",
+            [hold(u, int(rng.integers(300, 450)))], pick_channel(),
+            stat="rate" if i % 2 else "mean"))
+        cid += 1
+    for i in range(n_per_stratum):          # S3: pulse train at varied period
+        port = int(rng.integers(0, n_in))
+        p_on = 8
+        p_off = int(rng.integers(20, 120))
+        reps = max(3, int(360 // (p_on + p_off)))
+        segs = pulse_train(port, p_on, p_off, reps) +             [hold(np.zeros(n_in), int(rng.integers(100, 200)))]
+        contracts.append(Contract(cid, "S3", segs, pick_channel(),
+                                  stat="rate" if i % 2 else "mean"))
+        cid += 1
+    for i in range(n_per_stratum):          # S4: two-port interleaved trains
+        p1 = int(rng.integers(0, n_in)); p2 = int(rng.integers(0, n_in))
+        per1 = int(rng.integers(60, 110)); per2 = int(rng.integers(60, 110))
+        T = 420
+        segs = []
+        t = 0
+        while t < T:                        # interleave by 10-tick blocks
+            u = np.zeros(n_in)
+            if (t % per1) < 8: u[p1] = 1.0
+            if (t % per2) < 8: u[p2] = max(u[p2], 1.0) if p2 == p1 else 1.0
+            segs.append(hold(u, 10))
+            t += 10
+        contracts.append(Contract(cid, "S4", segs, pick_channel(),
+                                  stat="rate" if i % 2 else "mean"))
+        cid += 1
+    return contracts
 
 
 def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
@@ -294,6 +366,8 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
     floored at a fraction of the channel's dynamic range when quasi-deterministic
     (predicting within a few % of range is 'understanding'; branch confusion
     ~ full range still scores ~0). sd-statistics live on a smaller scale."""
+    if stat == "rate":
+        return float(max(3.0 * tau, 1.0))
     frac = 0.05 if stat == "sd" else 0.1
     if reaction in ("grayscott", "grayscott2"):
         # GS ensembles are quasi-deterministic (shared settled start): the
@@ -365,6 +439,8 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
     tail values of live channels, and ask for bands around those values."""
     if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         return _sample_prep_gs(world, rng, n)
+    if getattr(world.p, "reaction", "tanh") == "excitable":
+        return []   # v1: wave states are transient; preps deferred
     p = world.p
     dead = world.true_is_dead()
     live = [c for c in range(p.n_out) if not dead[c]]
@@ -569,11 +645,7 @@ def score_theory(world: World, contracts: list[Contract], code: str,
                     if len(y) != world.p.n_out:
                         raise JailError(f"step returned {len(y)} values; need {world.p.n_out}")
                     preds.append(y)
-            if c.stat == "sd":
-                w_ = [row[c.channel] for row in preds[-min(STAT_WINDOW_LONG, len(preds)):]]
-                pred_stat = float(np.std(np.asarray(w_)))
-            else:
-                pred_stat = float(np.mean([row[c.channel] for row in preds[-TAIL:]]))
+            pred_stat = compute_stat(np.asarray(preds), c)
             z = abs(pred_stat - mu) / scale
             acc = float(np.exp(-z))
             detail.append({"id": c.id, "stratum": c.stratum, "mu": round(mu, 4),

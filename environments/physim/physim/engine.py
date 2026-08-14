@@ -57,6 +57,15 @@ class WorldParams:
     gs_n_seeds: int = 3          # initial spots
     gs_steps_per_tick: int = 4   # PDE substeps per world tick (spot dynamics are slow)
     gs_drift: float = 0.0        # V-advection speed (cells/substep): objects self-drift
+    # --- excitable (FitzHugh-Nagumo waves; C4) ---
+    ex_Du: float = 0.9
+    ex_eps: float = 0.08
+    ex_beta: float = 0.7
+    ex_gamma: float = 0.5
+    ex_dt: float = 0.2
+    ex_substeps: int = 5
+    ex_pace_period: int = 70     # intrinsic pacemaker period (world ticks)
+    ex_n_pace: int = 1           # intrinsic pacemakers
     # --- grayscott2 (two coupled species; M4) ---
     gs2_k2_delta: float = 0.0037 # species-2 kill excess (dies alone)
     gs2_alpha21: float = 0.010   # V1 presence lowers species-2 kill (dependency)
@@ -137,6 +146,14 @@ class World:
         if p.reaction == "tanh":
             lams = np.linspace(p.lam_min, p.lam_max, p.n_modules)
             self.lam = rng.permutation(lams)[self.module]
+        elif p.reaction == "excitable":
+            # alienize: jitter wave speed (Du) and refractory scale (eps, gamma)
+            self.ex_Du = p.ex_Du * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.ex_eps = p.ex_eps * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.ex_gamma = p.ex_gamma * (1.0 + 0.1 * rng.uniform(-1, 1))
+            self.ex_pace_period = int(p.ex_pace_period * (1.0 + 0.2 * rng.uniform(-1, 1)))
+            self.ex_pace_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
+                                               size=(p.ex_n_pace, 2))
         elif p.reaction in ("grayscott", "grayscott2"):
             # alienized kinetics per instance: walk ALONG the stable-spot valley
             # (empirically k_stable(F) ~ 0.066 + 0.55*(F-0.030) near F=0.030),
@@ -232,6 +249,15 @@ class World:
         if p.reaction == "tanh":
             self.x = 0.01 * self._noise.standard_normal(self.N)
             self.a = np.zeros(self.N)
+        elif p.reaction == "excitable":
+            self.eu = -1.2 * np.ones((p.L, p.L))
+            self.ev = -0.62 * np.ones((p.L, p.L))
+            self._ex_t = 0
+            self._ex_pace_masks = []
+            for c in self.ex_pace_centers:
+                dx = np.minimum(np.abs(self._gx - c[0]), p.L - np.abs(self._gx - c[0]))
+                dy = np.minimum(np.abs(self._gy - c[1]), p.L - np.abs(self._gy - c[1]))
+                self._ex_pace_masks.append(dx ** 2 + dy ** 2 <= 9)
         else:
             self.U = np.ones((p.L, p.L))
             self.V = np.zeros((p.L, p.L))
@@ -389,6 +415,8 @@ class World:
         n_live = p.n_out - p.n_dead
         if p.reaction == "tanh":
             primary = self.x
+        elif p.reaction == "excitable":
+            primary = (self.eu.ravel() + 1.2) * 0.8 - 0.5   # rest ~ -0.5, pulse ~ +1.2
         elif p.reaction == "grayscott2":
             primary = None   # per-sensor mix computed below
         else:
@@ -432,6 +460,25 @@ class World:
         field = self.B @ u
         if self.p.reaction == "tanh":
             self._tanh_step(field)
+        elif self.p.reaction == "excitable":
+            p = self.p
+            lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
+                              + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
+            # ports inject current: scale so |u|=1 -> peak I ~ 0.8 (pulse-capable)
+            inj = (field / max(float(self.B.max()), 1e-12) * 0.8).reshape(p.L, p.L)
+            for _ in range(p.ex_substeps):
+                I = inj.copy()
+                for m in self._ex_pace_masks:
+                    if (self._ex_t % (self.ex_pace_period * p.ex_substeps)) < 8 * p.ex_substeps:
+                        I = I + np.where(m, 0.8, 0.0)
+                du = (self.eu - self.eu ** 3 / 3 - self.ev
+                      + self.ex_Du * lapf(self.eu) + I)
+                dv = self.ex_eps * (self.eu + p.ex_beta - self.ex_gamma * self.ev)
+                self.eu = self.eu + p.ex_dt * du
+                self.ev = self.ev + p.ex_dt * dv
+                self._ex_t += 1
+            if p.sigma > 0:
+                self.eu = self.eu + p.sigma * 0.02 * self._noise.standard_normal((p.L, p.L))
         elif self.p.reaction == "grayscott2":
             u1 = u * (self.port_species == 0)
             u2 = u * (self.port_species == 1)
@@ -531,7 +578,8 @@ class World:
     def clone_fresh(self, noise_seed: int) -> "World":
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
-                           if k not in ("U", "V", "U2", "V2", "x", "a", "_noise",
+                           if k not in ("U", "V", "U2", "V2", "x", "a", "eu", "ev",
+                                        "_ex_t", "_noise",
                                         "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
                                         "_app_enable_acc")})
@@ -562,6 +610,8 @@ class World:
         return self.chan_map >= n_live
 
     def true_macro(self) -> np.ndarray:
+        if self.p.reaction == "excitable":
+            return np.array([float((self.eu > 0).mean()), float(self.ev.mean())])
         if self.p.reaction == "tanh":
             mmean = np.zeros(self.p.n_modules)
             np.add.at(mmean, self.module, self.x)
@@ -656,6 +706,13 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=5.0, in_gain=1.0,
         patch_r=4.0, n_apparatus=0, max_ticks=200_000),
+    "C4": WorldParams(  # excitable chemistry: traveling waves, refractory block,
+        # pacemaker competition; ports can CREATE rhythm sources
+        reaction="excitable", L=96, sigma=0.03,
+        ex_pace_period=70, ex_n_pace=1,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=3.0, in_gain=1.0,
+        patch_r=3.0, n_apparatus=0, max_ticks=200_000),
 }
 
 

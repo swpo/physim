@@ -301,6 +301,70 @@ def panel_gs2_cascade(w: World) -> str:
     return img(fig_to_b64(fig), "cascade law")
 
 
+def panel_ex_waves(w: World) -> str:
+    """Excitable world: traveling wave frames + a sensor's pulse train."""
+    import numpy as np
+    L = w.p.L
+    frames = []
+    Y = None
+    for k in range(3):
+        w.run(np.zeros((18, w.p.n_in)))
+        frames.append((f"t+{18*(k+1)} ticks", (w.eu + 1.2) / 2.4))
+    Yl = w.run(np.zeros((250, w.p.n_in)))
+    live = np.where(~w.true_is_dead())[0]
+    sw = Yl[:, live].max(0) - Yl[:, live].min(0)
+    ch = int(live[np.argmax(sw)])
+    fig, axes = plt.subplots(1, 4, figsize=(9.0, 2.5))
+    fig.subplots_adjust(wspace=0.1, top=0.78)
+    for ax, (title, im_) in zip(axes[:3], frames):
+        ax.imshow(im_, cmap="inferno", vmin=0, vmax=1, interpolation="nearest")
+        ax.set_title(title, fontsize=7.5)
+        ax.set_xticks([]); ax.set_yticks([])
+    axes[3].plot(Yl[:, ch], lw=0.7, color="#0550ae")
+    axes[3].set_title(f"sensor ch{ch}: periodic pulses", fontsize=7.5)
+    fig.suptitle("GOD VIEW — a pacemaker emits rings of excitation; sensors see pulse trains",
+                 y=1.04, fontsize=9)
+    return img(fig_to_b64(fig), "excitable waves")
+
+
+def panel_ex_laws(w: World) -> str:
+    """The two headline laws: entrainment (faster source wins) + refractory block."""
+    import numpy as np
+    n_in = w.p.n_in
+    live = np.where(~w.true_is_dead())[0]
+    # entrainment: drive port 0 sustained -> global rhythm speeds up
+    w1 = w.clone_fresh(noise_seed=41)
+    Y0 = w1.run(np.zeros((300, n_in)))
+    U = np.zeros((300, n_in)); U[:, 0] = 1.0
+    Y1 = w1.run(U)
+    sw = Y0[:, live].max(0) - Y0[:, live].min(0)
+    ch = int(live[np.argmax(sw)])
+    fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.5))
+    fig.subplots_adjust(wspace=0.15, top=0.76)
+    axes[0].plot(np.arange(300), Y0[:, ch], lw=0.7, label="intrinsic rhythm")
+    axes[0].plot(np.arange(300, 600), Y1[:, ch], lw=0.7, label="port-0 held at +1")
+    axes[0].axvline(300, color="black", ls="--", lw=0.8)
+    axes[0].set_title("entrainment: a sustained drive creates a FASTER pacemaker\n"
+                      "that takes over the whole medium", fontsize=7.5)
+    axes[0].legend(fontsize=6)
+    # refractory block: pulse-train at short period -> skipped beats
+    w2 = w.clone_fresh(noise_seed=42)
+    segsY = []
+    for period in (100, 40):
+        U = np.zeros((400, n_in))
+        for t in range(400):
+            if (t % period) < 8:
+                U[t, 0] = 1.0
+        segsY.append(w2.run(U)[:, ch])
+    axes[1].plot(segsY[0], lw=0.7, label="drive every 100t → 1:1")
+    axes[1].plot(segsY[1], lw=0.7, alpha=0.8, label="drive every 40t → skipped beats")
+    axes[1].set_title("refractory block: drive too fast and the medium\n"
+                      "answers only every 2nd pulse", fontsize=7.5)
+    axes[1].legend(fontsize=6)
+    fig.suptitle("GOD VIEW — the compact laws an agent must find", y=1.05, fontsize=9)
+    return img(fig_to_b64(fig), "excitable laws")
+
+
 def preset_notes(name: str) -> str:
     return {
         "D0": "Clean senses, one collective mode. 6 inputs, 24 well-behaved sensors, "
@@ -335,6 +399,17 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "C4": "EXCITABLE chemistry: the medium carries traveling WAVES. A hidden "
+              "pacemaker emits rings of excitation; every sensor reads a periodic "
+              "pulse train (phase = distance / wave speed). The compact laws: a "
+              "wave speed, a refractory period (drive too fast → skipped beats, "
+              "2:1 block), and ENTRAINMENT (any faster rhythm source — including "
+              "one the agent creates with a sustained port drive — takes over "
+              "the whole medium; on collision the faster wave annihilates the "
+              "slower). Contracts ask for pulse RATES and mean levels under "
+              "held-out drive schedules: level-thinking fails completely here "
+              "(persistence theory scores 0.25). Rich, not big: a ~40-line "
+              "wave theory solves it; nothing less structural does.",
         "C3": "MULTI-SPECIES chemistry (two coupled reaction systems). Two kinds "
               "of object exist: species A is self-sufficient; species B can only "
               "survive in A's presence — B objects live stacked ON their A hosts, "
@@ -554,7 +629,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        if p.reaction in ("grayscott", "grayscott2"):
+        if p.reaction in ("grayscott", "grayscott2", "excitable"):
             parts.append(f"<h2>{name} — chemistry track, "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead"
                          + (f", {p.n_apparatus} apparatus ports" if p.n_apparatus else "")
@@ -563,7 +638,11 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f"<h2>{name} — {p.n_modules} module(s), "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        if p.reaction in ("grayscott", "grayscott2"):
+        if p.reaction == "excitable":
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · excitable medium '
+                         f'(FHN-class) · intrinsic pacemaker period ≈{p.ex_pace_period} ticks · '
+                         f'sensor noise {p.meas_noise} · tick budget {p.max_ticks:,}</p>')
+        elif p.reaction in ("grayscott", "grayscott2"):
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · feed F≈{p.gs_F} · '
                          f'kill k≈{p.gs_k} (alien-warped per instance) · '
                          f'sensor noise {p.meas_noise} · sign-flip prob {p.p_flip} · '
@@ -572,7 +651,10 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
                          f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
                          f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
-        if p.reaction == "grayscott2":
+        if p.reaction == "excitable":
+            parts.append('<div class="panel">' + panel_ex_waves(make_world(name, 0)) + "</div>")
+            parts.append('<div class="panel">' + panel_ex_laws(make_world(name, 0)) + "</div>")
+        elif p.reaction == "grayscott2":
             parts.append('<div class="panel">' + panel_gs2_species(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_gs2_cascade(make_world(name, 0)) + "</div>")
         elif p.reaction == "grayscott":

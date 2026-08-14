@@ -41,6 +41,9 @@ def _snapshot(world: World) -> str:
         arrays.update(U=world.U, V=world.V)
         if world.p.reaction == "grayscott2":
             arrays.update(U2=world.U2, V2=world.V2)
+    elif world.p.reaction == "excitable":
+        arrays.update(eu=world.eu, ev=world.ev,
+                      ext=np.array([world._ex_t]))
     else:
         arrays.update(x=world.x, a=world.a)
     if world.app_pos is not None:
@@ -62,6 +65,10 @@ def _restore(world: World, snap: str) -> None:
         if world.p.reaction == "grayscott2":
             world.U2 = z["U2"]
             world.V2 = z["V2"]
+    elif world.p.reaction == "excitable":
+        world.eu = z["eu"]
+        world.ev = z["ev"]
+        world._ex_t = int(z["ext"][0])
     else:
         world.x = z["x"]
         world.a = z["a"]
