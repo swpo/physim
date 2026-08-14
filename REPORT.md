@@ -745,3 +745,58 @@ laws fit on an index card. This is the project thesis made quantitative:
 richness (emergent laws discoverable by better science) rather than bigness
 (more parameters/noise) is what separates current AI scientists from the
 achievable.
+
+
+---
+
+# Addendum 15 (2026-02-14): effort diagnostic + calibration A/B — do models try harder on harder worlds?
+
+## Diagnostic (53 tools-tier rollouts)
+
+Question (user): as worlds get harder, do the best models run more
+experiments and synthesize more? Hardness := 1 - frontier mean accuracy.
+
+- **fable-5**: synthesis scales with hardness (completion tokens rho=+0.75
+  p<0.001; workspace chars +0.54 p=0.015) but EXPERIMENTS do not (+0.07).
+  It thinks harder, writes more theory — but does not collect more data.
+- **gpt-5.2**: every effort metric flat-to-negative with hardness (wall
+  minutes rho=-0.47): works uniformly LESS on harder worlds.
+- **sol / opus-5**: fewer experiments on hard worlds (46 vs 78; 80 vs 115).
+- Universal: hard-world budget use 26-40% — everyone stops with most fuel
+  left. The stopping policy binds, not resources.
+
+Verdict: the ideal property (harder -> try more) FAILS for data collection
+across all frontier models tested.
+
+## The basic-compatible lever: pay for honest uncertainty
+
+Intervals were reward-free; narrow-and-wrong cost nothing, so once a point
+estimate existed further experiments had no scoreboard value. Added a
+Winkler-based interval-calibration reward (fixed function of world+seed;
+nothing adapts to the agent): narrow-right 0.91 > medium-right 0.74 >
+wide-honest 0.14 > narrow-wrong 0.03. Uncertainty reduction is now the only
+path up — and honest reporting beats bluffing.
+
+## A/B on C4 (weight 0 vs 1, 2 seeds/model)
+
+| model | acc | calibration | coverage | experiments | budget |
+|---|---|---|---|---|---|
+| fable-5 w=0 | 0.21 | 0.00* | 0.12 | 86 | 24% |
+| fable-5 w=1 | 0.24 | 0.37 | 0.25 | 80 | 18% |
+| gpt-5.2 w=0 | 0.12 | 0.00* | 0.34 | 63 | 34% |
+| gpt-5.2 w=1 | 0.17 | 0.38 | 0.38 | 62 | 20% |
+
+*retro-scored as 0 (metric did not exist).
+
+Result: calibration reward improves ANSWER HONESTY (calibration, coverage,
+small accuracy gains) but does NOT change experimental effort (experiments
+and budget flat/down; n=2 caveats). Models adapt their reporting, not their
+science. Conclusion: at current capability, effort-on-hard-worlds is a model
+property, not an incentive artifact — the environment can measure it (conduct
+metrics, budget use) but not buy it with scoring. This cleanly greenlights
+the world-creation program: build past frontier-zero and let the benchmark
+wait for models that can climb it.
+
+Default: calibration_weight stays 0 (report-only) for comparability with the
+existing leaderboard; recommended 0.5+ for future training runs (honesty
+shaping).
