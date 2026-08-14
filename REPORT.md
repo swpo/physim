@@ -685,3 +685,63 @@ C3 verdict: mechanically sound, mid-tier at the frontier (fable 0.90 /
 gpt-5.2 0.57), and the two-layer ontology question is now measurable:
 the gap between predictive adequacy and structural discovery is the
 benchmark's sharpest lens yet.
+
+
+---
+
+# Addendum 14 (2026-02-14): C4 — excitable chemistry: the first rich-not-big frontier-hard world
+
+## The rich-vs-big criterion (DESIGN v0.10, user-set)
+
+A hard world must pass three tests: (1) intended emergent phenomena verified
+by god-knowledge probes; (2) a COMPACT theory exists that solves the
+contracts (else the world is merely big); (3) frontier models score far
+below that compact oracle. C4 is the first world built under and passing
+all three.
+
+## The world
+
+FitzHugh-Nagumo excitable medium: a hidden pacemaker emits traveling rings;
+sensors read periodic pulse trains. Ports inject current — a sustained drive
+CREATES a new pacemaker. Compact laws (each verified by scripted probe):
+- wave speed (~0.9 cells/tu; arrival phase = distance/speed)
+- entrainment: the faster rhythm source takes over the whole medium
+  (collision annihilation ⇒ far-field period = min over sources;
+  sustained port drive gives period 39 vs intrinsic 82)
+- refractory conduction block: 1:1 at slow drive, 2:1 at period ~110,
+  irregular Wenckebach-like zone between
+New ontology-neutral statistic for wave worlds: stat="rate" (threshold
+upcrossings per 200-tick window; threshold = channel median + 1 sd).
+Contract grammar engages the laws: S1 autonomous rhythm, S2 competing
+pacemaker, S3 pulse-train conduction, S4 two-port collision.
+
+## Rich-vs-big battery
+
+| reference | accuracy | size |
+|---|---|---|
+| null / tail / persistence | 0.09 / 0.16 / 0.25 | — |
+| entrainment-aware compact oracle | 0.76 (v1, improvable ~0.9) | ~40 lines |
+| single replication (true engine) | 0.90 | — |
+
+Deepest floors of any physim world: level-thinking is worthless against
+waves.
+
+## Frontier results (2 seeds each, tools tier)
+
+| pairing | prediction | theory |
+|---|---|---|
+| claude-fable-5 + claude_code | **0.24, 0.18** | 0.52, 0.32 |
+| gpt-5.2 + codex | 0.13, 0.12 | not submitted |
+
+The frontier is BROKEN on C4 without any scaling: 96² lattice (same as
+C1-C3), 8 ports, 40 sensors, modest noise. fable's notes contain real wave
+vocabulary ("wave, pulse, period, phase") and its seed-0 theory scores 0.52 —
+it SEES the rhythm but cannot convert to contract-grade timing/rate
+predictions. gpt-5.2 never forms the wave ontology (S2 = 0.02-0.03: the
+entrainment stratum is invisible to level-based fits).
+
+Gap summary: compact oracle 0.76+ vs best frontier 0.24 on a world whose
+laws fit on an index card. This is the project thesis made quantitative:
+richness (emergent laws discoverable by better science) rather than bigness
+(more parameters/noise) is what separates current AI scientists from the
+achievable.
