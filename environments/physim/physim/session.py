@@ -395,6 +395,16 @@ def _sample_contracts_ecology(world: World, rng: np.random.Generator,
             [hold(u, int(rng.integers(1200, 1800)))], pick_channel(),
             stat=stat_pick(i)))
         cid += 1
+    if getattr(world.p, "eco_R_warp", 0.0) > 0:   # S5: boundary crossing (B1)
+        for i in range(n_per_stratum):
+            # medium sustained tilt either direction, held very long: outcome
+            # depends on which side of the exclusion boundary the drive lands
+            amp = float(rng.choice([-0.45, -0.25, 0.25, 0.5]))
+            u = np.full(n_in, amp)
+            contracts.append(Contract(cid, "S5",
+                [hold(u, int(rng.integers(1800, 2600)))], pick_channel(),
+                stat=stat_pick(i)))
+            cid += 1
     return contracts
 
 

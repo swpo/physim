@@ -75,6 +75,7 @@ class WorldParams:
     eco_regen: float = 0.00012   # resource regeneration rate
     eco_DR: float = 0.05         # resource diffusion
     eco_n_seeds: int = 2         # seeds per variant
+    eco_R_warp: float = 0.0      # alienization half-width of eco_R_max (B1 boundary worlds)
     # --- grayscott2 (two coupled species; M4) ---
     gs2_k2_delta: float = 0.0037 # species-2 kill excess (dies alone)
     gs2_alpha21: float = 0.010   # V1 presence lowers species-2 kill (dependency)
@@ -170,7 +171,10 @@ class World:
             self.eco_k2 = p.eco_k2 * (1.0 + 0.02 * rng.uniform(-1, 1))
             self.eco_c1 = p.eco_c1 * (1.0 + 0.15 * rng.uniform(-1, 1))
             self.eco_c2 = p.eco_c2 * (1.0 + 0.15 * rng.uniform(-1, 1))
-            self.eco_R_max = p.eco_R_max * (1.0 + 0.06 * rng.uniform(-1, 1))
+            if p.eco_R_warp > 0:
+                self.eco_R_max = p.eco_R_max + p.eco_R_warp * rng.uniform(-1, 1)
+            else:
+                self.eco_R_max = p.eco_R_max * (1.0 + 0.06 * rng.uniform(-1, 1))
             self.eco_seed_centers1 = rng.uniform(0.12 * p.L, 0.88 * p.L,
                                                  size=(p.eco_n_seeds, 2))
             self.eco_seed_centers2 = rng.uniform(0.12 * p.L, 0.88 * p.L,
@@ -647,12 +651,19 @@ class World:
         if self.p.reaction == "ecology":
             probe = self.clone_fresh(noise_seed=555)
             from scipy import ndimage
+            boundary = self.p.eco_R_warp > 0
             for _ in range(3):
                 probe.run(np.zeros((1200, self.p.n_in)))
                 n1 = ndimage.label(probe.V1e > 0.15)[1]
                 n2 = ndimage.label(probe.V2e > 0.15)[1]
-                if not (3 <= n1 <= 90 and 3 <= n2 <= 90):
-                    return False
+                if boundary:
+                    # exclusion of variant 1 is legitimate physics here; require
+                    # a living ecosystem overall and variant 2 healthy
+                    if not (3 <= n2 <= 90 and n1 <= 90 and (n1 + n2) >= 5):
+                        return False
+                else:
+                    if not (3 <= n1 <= 90 and 3 <= n2 <= 90):
+                        return False
             return True
         if self.p.reaction not in ("grayscott", "grayscott2"):
             return True
@@ -831,6 +842,14 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         reaction="ecology", L=96, sigma=0.02, gs_steps_per_tick=4,
         eco_k1=0.060, eco_k2=0.0615, eco_c1=0.010, eco_c2=0.003,
         eco_R_max=0.036, eco_regen=0.00012, eco_DR=0.05, eco_n_seeds=2,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
+        patch_r=4.0, n_apparatus=0, max_ticks=250_000),
+    "B1": WorldParams(  # selection-boundary worlds: richness straddles exclusion
+        reaction="ecology", L=96, sigma=0.02, gs_steps_per_tick=4,
+        eco_k1=0.060, eco_k2=0.0615, eco_c1=0.010, eco_c2=0.003,
+        eco_R_max=0.034, eco_R_warp=0.003,   # instances span [0.031, 0.037]
+        eco_regen=0.00012, eco_DR=0.05, eco_n_seeds=2,
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
         patch_r=4.0, n_apparatus=0, max_ticks=250_000),
