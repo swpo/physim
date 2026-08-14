@@ -343,13 +343,40 @@ quantifies the project thesis: what separates current AI scientists from the
 achievable is <i>discovery</i>, not representation capacity.</li>
 </ul>
 
+<h2>B0 — the biology track opens (2026-02-14, v0.7.0)</h2>
+<p class="note">An <b>ecosystem</b>: two organism variants (greedy-fast vs
+frugal-fragile) compete for one regenerating resource. Ports fertilize or
+poison regions; sensors read species-blind organism density. Emergent laws:
+carrying capacity; coexistence under a consumption trade-off; and
+<b>natural selection</b> — sustained scarcity drives the greedy variant
+extinct while the frugal one inherits the world (verified through the port
+interface: poison 32→0). Certified 6/6 seeds.</p>
+<table>
+<tr><th class="l">agent / reference</th><th>prediction</th><th>theory</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>0.63, 0.46</td><td>0.41, 0.47</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.58, 0.46</td><td>—</td></tr>
+<tr><td class="l meta">compact ecology oracle (~50 lines)</td><td class="meta"><b>0.744</b></td><td class="meta">—</td></tr>
+<tr><td class="l meta">tail / null / persistence</td><td class="meta">0.27 / 0.18 / 0.15</td><td class="meta">—</td></tr>
+</table>
+<ul>
+<li><b>Layer-3 ontology gap</b>: no agent workspace contains ANY biological
+vocabulary (population/organism/resource/extinction) — models fit channel
+responses to drive levels and miss recovery + extinction strata (S3/S4
+0.34–0.55). Third measured rung of the closure ladder (C1 apparatus, C3
+species, B0 populations).</li>
+<li>Deepest persistence floor of any world (0.15): populations never sit
+still.</li>
+</ul>
+
 <h2>What's next</h2>
 <ul>
-<li>tracking-grade apparatus / closed-loop microscopy (faster drift);</li>
-<li>species-resolving contracts that pay for the two-kind ontology;</li>
-<li>Gray-Scott- and wave-aware scripted scientists;</li>
-<li>bound-pair "molecule" dynamics; excitable+chemistry hybrids (signals
-steering reactions — proto-biology).</li>
+<li>B1: selection-boundary worlds (richness near the exclusion threshold);
+population-resolving contracts; migration/refugia geography;</li>
+<li>tracking-grade apparatus / closed-loop microscopy;</li>
+<li>eco/wave/chemistry hybrids — signals steering ecosystems (proto-organisms
+with sensing);</li>
+<li>decomposition curriculum: B0 = C0 + carrying-capacity + competition
+sub-worlds, certified separately for training.</li>
 </ul>
 """
 

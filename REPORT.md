@@ -800,3 +800,66 @@ wait for models that can climb it.
 Default: calibration_weight stays 0 (report-only) for comparability with the
 existing leaderboard; recommended 0.5+ for future training runs (honesty
 shaping).
+
+
+---
+
+# Addendum 16 (2026-02-14): B0 — the biology track opens (v0.7.0)
+
+## World
+
+reaction="ecology": two Gray-Scott organism variants (fast/greedy k=0.060,
+c=0.010 vs efficient/frugal k=0.0615, c=0.003) competing for ONE regenerating
+resource field R; ports fertilize/poison regional resource regeneration
+(wide fields, in_width=16, so drives matter ecologically); species-blind
+density sensors. Certified 6/6 seeds (both populations 3-90 across 3x1200t
+free runs). Verified through the port interface: sustained poison drives the
+fast variant EXTINCT (32->0) while the efficient survives (the selection
+law); fertilize booms both (56/50).
+
+Emergent laws (3 sentences): populations grow to a carrying capacity; two
+variants share the world under a greedy-vs-frugal trade-off; sustained
+scarcity kills the greedy variant first — the frugal inherits the world.
+
+## Rich-vs-big battery
+
+| reference | accuracy | size |
+|---|---|---|
+| null / tail / persistence | 0.18 / 0.27 / 0.15 | — |
+| compact ecology oracle | **0.744** | ~50 lines |
+| (oracle components: equilibrium-response interpolation at 6 tilt levels,
+one calibrated recovery trajectory, horizon matching) | | |
+
+Persistence floor 0.15 is the deepest of any world (populations never sit
+still). Criteria 1+2 of the rich-vs-big test pass.
+
+## Frontier (2 seeds each, tools tier, calibration_weight=1 default-on here)
+
+| pairing | prediction | calibration | theory |
+|---|---|---|---|
+| claude-fable-5 + claude_code | 0.63, 0.46 | 0.74, 0.61 | 0.41, 0.47 |
+| gpt-5.2 + codex | 0.58, 0.46 | 0.64, 0.51 | — |
+
+Gap to compact oracle ~0.15-0.29: B0 lands mid-tier (harder than C0-C3,
+easier than C4/D4 relative to oracle).
+
+## The layer-3 ontology gap
+
+Grep of every workspace: ZERO biological vocabulary — no "population",
+"organism", "resource", "extinct", "carrying", "recover" in any agent's
+notes. The agents fit channel responses to drive levels (which earns
+S1/S2) and miss recovery dynamics and extinction boundaries (S3/S4 0.34-
+0.55) — the strata that require the population picture. Same closure
+pattern as C1 (apparatus), C3 (species): predictive adequacy without the
+generative ontology, now at the ecosystem level. The benchmark now has
+three measured rungs of the same ladder.
+
+## Notes
+
+- budget use: 7-33% (effort ceiling unchanged, as diagnosed).
+- fable seed-1 rollout used 35 turns/7% budget for 0.63 — its most
+  score-efficient rollout yet; hypothesis: B0's S1/S2 are learnable from
+  few long experiments, the rest it declined to chase.
+- worlds.html documents B0 at the population level (ecosystem map,
+  population/resource curves, the selection-collapse plot) per the
+  description-levels principle.
