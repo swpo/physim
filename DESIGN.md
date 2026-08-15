@@ -1165,3 +1165,51 @@ E4 (aspiration): open-ended-ness — multi-locus g, epistatic maps
 E-track panels will need EVOLUTIONARY descriptions: g-distribution histories
 (trait histograms over time), selection-response curves, phylogeny-like
 lineage traces if feasible — another level up the description ladder.
+
+
+---
+
+# v0.13 addendum — genotype→phenotype map shape [DECIDED after probes, 2026-02-15]
+
+User question: should g→phenotype be linear? Reality is more logit/binary
+(tree logic)?
+
+## Biology recap (user remembers correctly, with a subtlety)
+
+- MOLECULAR level: responses are typically SIGMOIDAL (Hill functions from
+  cooperative binding), often effectively BINARY (threshold traits — the
+  liability-threshold model), and regulatory cascades implement tree/boolean
+  logic (Kauffman networks). Nonlinearity is adaptive: canalization buffers
+  development against mutation/noise (robustness); switch-like responses give
+  decisive fate decisions; neutral networks store CRYPTIC variation that
+  fuels later evolvability (Hsp90 capacitance).
+- AGGREGATE-TRAIT level: Fisher's infinitesimal model — many loci of small
+  effect sum to approximately ADDITIVE (linear) trait variation; selection
+  response follows the breeder's equation R = h²S. Both descriptions are
+  right at different levels.
+
+## Probe results in OUR substrate (same protocol, three maps)
+
+| map | selection response (scarcity era) | phenomenology |
+|---|---|---|
+| linear | mean g 0.51→0.38; frugal fraction 0.10→0.82 | steady directional selection (breeder's-equation-like) |
+| sigmoid (Hill-like, steep at 0.5) | mean g 0.50→0.48; frugal frac 0.11→0.27 (slow) | selection STALLS on flat map regions: mutations there are phenotypically neutral → drift + cryptic variation; only threshold-adjacent lineages selectable → punctuated, slow |
+| binary | same stall as sigmoid | discrete phenotypes, drift-dominated genotype |
+
+The sigmoid/binary stall is not a bug — it is canalization + neutral
+networks emerging exactly as in real biology.
+
+## Decision
+
+- E0 ships the LINEAR map, justified by the infinitesimal model (g is an
+  aggregate polygenic trait, not a single gene): gives a clean discoverable
+  adaptation law and a compact quantitative-genetics oracle (dg/dt ∝
+  additive variance × selection differential).
+- SIGMOID/THRESHOLD maps become their own rung (fold into E1 as "E1-c:
+  canalized worlds"): cryptic variation + punctuated adaptation = extreme
+  temporal non-interpolability (long stasis, sudden shifts) — a hardness
+  axis no other world has; harder to certify/oracle, hence not first.
+- Tree/boolean logic arrives at E4 (multi-locus epistatic maps: (g1,g2)→
+  trait via AND/OR-like interactions; recombination on tissue merge).
+The GP-map SHAPE is thus itself a difficulty dial: linear (learnable) →
+sigmoid (cryptic/punctuated) → epistatic-boolean (rugged landscapes).
