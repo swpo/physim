@@ -66,6 +66,13 @@ class WorldParams:
     ex_substeps: int = 5
     ex_pace_period: int = 70     # intrinsic pacemaker period (world ticks)
     ex_n_pace: int = 1           # intrinsic pacemakers
+    # --- evo (E0: heritable trait field; adaptation by natural selection) ---
+    evo_mut: float = 0.03        # mutation amplitude (noise on g at growth sites)
+    evo_c_lo: float = 0.003      # consumption at g=0 (frugal end)
+    evo_c_hi: float = 0.012      # consumption at g=1 (greedy end)
+    evo_k_lo: float = 0.0585     # kill at g=1 (greedy end: lives easier)
+    evo_k_hi: float = 0.0625     # kill at g=0 (frugal end: dies faster)
+    evo_g0_spread: float = 0.35  # founder genotype spread around 0.5
     # --- ecowave (B2: waves feed the ecology; hybrid) ---
     bw_rain: float = 0.0009      # regen boost where wave is active
     bw_regen0: float = 0.000015  # base regen (too low to sustain alone)
@@ -168,6 +175,15 @@ class World:
             self.ex_pace_period = int(p.ex_pace_period * (1.0 + 0.2 * rng.uniform(-1, 1)))
             self.ex_pace_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
                                                size=(p.ex_n_pace, 2))
+        elif p.reaction == "evo":
+            self.eco_R_max = p.eco_R_max * (1.0 + 0.06 * rng.uniform(-1, 1))
+            self.evo_c_lo = p.evo_c_lo * (1.0 + 0.10 * rng.uniform(-1, 1))
+            self.evo_c_hi = p.evo_c_hi * (1.0 + 0.10 * rng.uniform(-1, 1))
+            self.eco_seed_centers1 = rng.uniform(0.12 * p.L, 0.88 * p.L,
+                                                 size=(p.eco_n_seeds, 2))
+            self.evo_founder_g = np.clip(
+                0.5 + p.evo_g0_spread * rng.uniform(-1, 1, p.eco_n_seeds), 0.05, 0.95)
+            self._gs_field_scale = 0.0
         elif p.reaction == "ecowave":
             # excitable layer alienization (reuse C4 fields)
             self.ex_Du = p.ex_Du * (1.0 + 0.15 * rng.uniform(-1, 1))
@@ -277,7 +293,10 @@ class World:
         elif p.reaction == "ecowave":
             peak = float(self.B.max())
             self._gs_field_scale = 0.8 / max(peak, 1e-12)   # current injection
-        if p.reaction in ("grayscott2", "ecology", "ecowave"):
+        elif p.reaction == "evo":
+            peak = float(self.B.max())
+            self._gs_field_scale = 0.8 / max(peak, 1e-12)   # fertilize/poison
+        if p.reaction in ("grayscott2", "ecology", "ecowave", "evo"):
             # species tags (gs2: ports feed one species) / sensor mixes (all)
             srng = np.random.default_rng(np.random.SeedSequence(
                 [0x5A2, self.seed, self._salt]))
@@ -330,6 +349,28 @@ class World:
                 self.U1e = u1.copy(); self.V1e = v1.copy()
                 self.U2e = u2.copy(); self.V2e = v2.copy()
                 self.Re = r_.copy()
+        elif p.reaction == "evo":
+            L = p.L
+            self.U1e = np.ones((L, L)); self.V1e = np.zeros((L, L))
+            self.Ge = 0.5 * np.ones((L, L))
+            self.Re = self.eco_R_max * np.ones((L, L))
+            for c, g0 in zip(self.eco_seed_centers1, self.evo_founder_g):
+                dx = np.minimum(np.abs(self._gx - c[0]), L - np.abs(self._gx - c[0]))
+                dy = np.minimum(np.abs(self._gy - c[1]), L - np.abs(self._gy - c[1]))
+                m = dx ** 2 + dy ** 2 <= 9
+                self.U1e[m] = 0.5
+                self.V1e[m] = 0.25
+                self.Ge[m] = g0
+            if not hasattr(self, "_evo_settled"):
+                zero = np.zeros(self.N)
+                for _ in range(6000):
+                    self._evo_substep(zero, noisy=False)
+                self._evo_settled = (self.U1e.copy(), self.V1e.copy(),
+                                     self.Ge.copy(), self.Re.copy())
+            else:
+                (u1, v1, g_, r_) = self._evo_settled
+                self.U1e = u1.copy(); self.V1e = v1.copy()
+                self.Ge = g_.copy(); self.Re = r_.copy()
         elif p.reaction == "ecowave":
             L = p.L
             self.eu = -1.2 * np.ones((L, L))
@@ -507,6 +548,45 @@ class World:
             self.V2e = np.clip(self.V2e + p.sigma * 0.01
                                * self._noise.standard_normal((p.L, p.L)), 0.0, None)
 
+    # ---------------- evo dynamics ----------------
+    def _evo_substep(self, field_u: np.ndarray, noisy: bool = True) -> None:
+        p = self.p
+        lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
+                          + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
+        G = self.Ge
+        c_g = self.evo_c_lo + G * (self.evo_c_hi - self.evo_c_lo)
+        k_g = p.evo_k_hi - G * (p.evo_k_hi - p.evo_k_lo)
+        uvv = self.U1e * self.V1e * self.V1e
+        R = self.Re
+        V_old = self.V1e
+        self.U1e = self.U1e + p.gs_Du * lapf(self.U1e) - uvv + R * (1 - self.U1e)
+        newV = self.V1e + p.gs_Dv * lapf(self.V1e) + uvv - (R + k_g) * self.V1e
+        regen_mult = np.clip(1.0 + field_u.reshape(p.L, p.L), 0.0, 2.0)
+        self.Re = R + p.eco_DR * lapf(R)             + p.eco_regen * regen_mult * (self.eco_R_max - R) * self.eco_R_max * 300             - c_g * self.V1e * R
+        self.Re = np.clip(self.Re, 0.0, self.eco_R_max)
+        # inheritance: newly grown tissue copies neighboring parent tissue's g
+        grow = (newV - V_old) > 1e-5
+        if grow.any():
+            Vn = (np.roll(V_old, 1, 0) + np.roll(V_old, -1, 0)
+                  + np.roll(V_old, 1, 1) + np.roll(V_old, -1, 1))
+            Gn = (np.roll(G * V_old, 1, 0) + np.roll(G * V_old, -1, 0)
+                  + np.roll(G * V_old, 1, 1) + np.roll(G * V_old, -1, 1)) / (Vn + 1e-9)
+            w_new = np.clip((newV - V_old) / (newV + 1e-9), 0, 1)
+            self.Ge = np.where(grow, (1 - w_new) * G + w_new * Gn, G)
+        self.V1e = newV
+        self._evo_tick = getattr(self, "_evo_tick", 0) + 1
+        if noisy:
+            if self._evo_tick % 400 == 0:
+                organ = self.V1e > 0.05
+                self.Ge = np.where(
+                    organ,
+                    np.clip(self.Ge + p.evo_mut * 0.1
+                            * self._noise.standard_normal((p.L, p.L)), 0, 1),
+                    self.Ge)
+            if p.sigma > 0:
+                self.V1e = np.clip(self.V1e + p.sigma * 0.01
+                                   * self._noise.standard_normal((p.L, p.L)), 0.0, None)
+
     # ---------------- ecowave dynamics ----------------
     def _ecowave_substep(self, inj: np.ndarray, noisy: bool = True) -> None:
         p = self.p
@@ -576,17 +656,20 @@ class World:
             primary = self.x
         elif p.reaction == "excitable":
             primary = (self.eu.ravel() + 1.2) * 0.8 - 0.5   # rest ~ -0.5, pulse ~ +1.2
-        elif p.reaction in ("grayscott2", "ecology", "ecowave"):
+        elif p.reaction in ("grayscott2", "ecology", "ecowave", "evo"):
             primary = None   # per-sensor mix computed below
         else:
             primary = self.V.ravel() * 4.0 - 0.5
-        if p.reaction in ("grayscott2", "ecology", "ecowave"):
+        if p.reaction in ("grayscott2", "ecology", "ecowave", "evo"):
             if p.reaction == "ecology":
                 s1 = self.V1e.ravel() * 4.0 - 0.5
                 s2 = self.V2e.ravel() * 4.0 - 0.5
             elif p.reaction == "ecowave":
                 s1 = self.V1e.ravel() * 4.0 - 0.5                 # organisms
                 s2 = (self.eu.ravel() + 1.2) * 0.8 - 0.5          # waves
+            elif p.reaction == "evo":
+                s1 = self.V1e.ravel() * 4.0 - 0.5                 # density
+                s2 = (self.Ge * self.V1e).ravel() * 6.0 - 0.5     # phenotype stain
             else:
                 s1 = self.V.ravel() * 4.0 - 0.5
                 s2 = self.V2.ravel() * 4.0 - 0.5
@@ -634,6 +717,10 @@ class World:
             inj = field * self._gs_field_scale
             for _ in range(self.p.ex_substeps):
                 self._ecowave_substep(inj)
+        elif self.p.reaction == "evo":
+            eco_field = field * self._gs_field_scale
+            for _ in range(self.p.gs_steps_per_tick):
+                self._evo_substep(eco_field)
         elif self.p.reaction == "excitable":
             p = self.p
             lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
@@ -734,7 +821,7 @@ class World:
     def certify(self) -> bool:
         """Cheap generation-time health check (evaluator-side, no budget).
         Gray-Scott: object count stays in [1, 12] over a long free run."""
-        if self.p.reaction == "ecowave":
+        if self.p.reaction in ("ecowave", "evo"):
             probe = self.clone_fresh(noise_seed=555)
             from scipy import ndimage
             for _ in range(3):
@@ -782,7 +869,8 @@ class World:
         w = World.__new__(World)
         w.__dict__.update({k: v for k, v in self.__dict__.items()
                            if k not in ("U", "V", "U2", "V2", "x", "a", "eu", "ev",
-                                        "U1e", "V1e", "U2e", "V2e", "Re",
+                                        "U1e", "V1e", "U2e", "V2e", "Re", "Ge",
+                                        "_evo_tick",
                                         "eu", "ev", "_ex_t", "_noise",
                                         "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
@@ -814,6 +902,16 @@ class World:
         return self.chan_map >= n_live
 
     def true_macro(self) -> np.ndarray:
+        if self.p.reaction == "evo":
+            from scipy import ndimage
+            lab, n1 = ndimage.label(self.V1e > 0.15)
+            gs = [float((self.Ge * self.V1e)[lab == i].sum()
+                        / max(self.V1e[lab == i].sum(), 1e-9))
+                  for i in range(1, n1 + 1)]
+            return np.array([float(n1),
+                             float(np.mean(gs)) if gs else 0.0,
+                             float(np.std(gs)) if gs else 0.0,
+                             float(self.Re.mean() / self.eco_R_max)])
         if self.p.reaction == "ecowave":
             from scipy import ndimage
             n1 = ndimage.label(self.V1e > 0.15)[1]
@@ -965,6 +1063,13 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=3.0, in_gain=1.0,
         patch_r=3.0, max_ticks=80_000),
+    "E0": WorldParams(  # evolution track: heritable trait, adaptation by selection
+        reaction="evo", L=96, sigma=0.02, gs_steps_per_tick=4,
+        eco_R_max=0.036, eco_regen=0.00010, eco_DR=0.05, eco_n_seeds=4,
+        evo_mut=0.03, evo_g0_spread=0.35,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
+        patch_r=4.0, max_ticks=300_000),
     # ---- decomposition curriculum (training ladder for B-track) ----
     "B0a": WorldParams(  # one variant + resource: carrying capacity alone
         reaction="ecology", L=96, sigma=0.02, gs_steps_per_tick=4,

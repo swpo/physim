@@ -1213,3 +1213,26 @@ networks emerging exactly as in real biology.
   trait via AND/OR-like interactions; recombination on tissue merge).
 The GP-map SHAPE is thus itself a difficulty dial: linear (learnable) →
 sigmoid (cryptic/punctuated) → epistatic-boolean (rugged landscapes).
+
+
+---
+
+# v0.13 addendum 2 — cross-level map-shape emergence [TRACKED QUESTION, 2026-02-15]
+
+User observation: micro-sigmoid may aggregate to macro-linear (central-limit
+style: many sharp switches summing to a smooth dose-response) and conversely
+smooth micro rules can compose into effectively switch-like collective
+behavior (our own bistable lattices are exactly that: tanh cells -> binary
+branch choices). The GP-map shape question therefore RECURS at every
+hierarchical level, and what we set at one level need not be what agents (or
+oracles) see at the level above.
+
+Tracking plan while building the E-track: at each rung, measure the
+EFFECTIVE aggregate map — regress population-level phenotype response on
+population-mean genotype under standardized selection pulses — and record
+its shape (linear/saturating/switch-like) next to the MICRO map we chose.
+E0 (linear micro) prediction: linear aggregate. E1-c (sigmoid micro)
+prediction: near-linear aggregate response of the POPULATION PHENOTYPE MIX
+(fraction past threshold behaves smoothly) with punctuated per-lineage
+dynamics — i.e., the user's inversion, measurable. Report these in the
+per-world battery alongside oracle size.
