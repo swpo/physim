@@ -462,6 +462,14 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "B2": "HYBRID: the excitable wave layer feeds the ecology. Each "
+              "traveling wave locally boosts resource regeneration (rain); "
+              "base regeneration alone cannot sustain life, so the population "
+              "tracks the wave rate — and pacing the medium too fast triggers "
+              "refractory conduction block, DELIVERING FEWER MEALS (a "
+              "non-monotonic trap). Ports inject current: agents can create "
+              "pacemakers, i.e., feed the world. Composed from C4 + B0a, each "
+              "separately certified.",
         "B0a": "Curriculum world: ONE organism variant + the regenerating "
                "resource. The only law is logistic growth to a carrying "
                "capacity that ports can raise (fertilize) or lower (poison). "
@@ -715,7 +723,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        if p.reaction == "ecology":
+        if p.reaction in ("ecology", "ecowave"):
             parts.append(f"<h2>{name} — biology track, "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         elif p.reaction in ("grayscott", "grayscott2", "excitable"):
@@ -727,7 +735,12 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f"<h2>{name} — {p.n_modules} module(s), "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        if p.reaction == "ecology":
+        if p.reaction == "ecowave":
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · excitable wave layer feeding '
+                         f'a single-variant ecology (rain {p.bw_rain}, base regen '
+                         f'{p.bw_regen0}) · pacemaker period ≈{p.ex_pace_period} ticks · '
+                         f'tick budget {p.max_ticks:,}</p>')
+        elif p.reaction == "ecology":
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · two organism variants '
                          f'(kill {p.eco_k1}/{p.eco_k2}, consumption {p.eco_c1}/{p.eco_c2}) · '
                          f'resource ceiling {p.eco_R_max} (alien-warped) · '
@@ -745,7 +758,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · coupling J={p.J} · '
                          f'micro noise σ={p.sigma} · sensor noise {p.meas_noise} · '
                          f'sign-flip prob {p.p_flip} · tick budget {p.max_ticks:,}</p>')
-        if p.reaction == "ecology":
+        if p.reaction == "ecology" and not p.eco_single:
             parts.append('<div class="panel">' + panel_eco_populations(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_eco_selection(make_world(name, 0)) + "</div>")
         elif p.reaction == "excitable":

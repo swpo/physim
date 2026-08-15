@@ -388,13 +388,39 @@ competition) → B0 (selection) → B1 (boundary) — each certified separately;
 the B-track decomposition ladder is ready for training experiments.</li>
 </ul>
 
+<h2>B2 — the ecowave hybrid (2026-02-14): hardness by composition</h2>
+<p class="note">Waves <b>feed</b> the ecology: wave passage boosts resource
+regeneration ("rain"); without waves the world starves. Population tracks
+wave rate — including the refractory trap: pacing the medium too fast causes
+conduction block and <i>fewer</i> meals (a non-monotonic response that
+breaks interpolation). B2 = C4 (waves) + B0a (carrying capacity), composed —
+each component separately certified.</p>
+<table>
+<tr><th class="l">agent / reference</th><th>prediction</th><th>theory</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>0.48, 0.36</td><td>0.52, 0.51</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.42, 0.29</td><td>—</td></tr>
+<tr><td class="l meta">compact hybrid oracle (~55 lines)</td><td class="meta"><b>0.795</b></td><td class="meta">—</td></tr>
+<tr><td class="l meta">tail / persistence / null</td><td class="meta">0.35 / 0.29 / 0.28</td><td class="meta">—</td></tr>
+</table>
+<ul>
+<li>fable's notes contain "wave, pulse, period, <b>rain</b>" — it perceives
+the coupling — yet the pacing stratum (S2) scores 0.04–0.31 for every model:
+nobody builds the pacing → food-delivery → carrying-capacity chain.</li>
+<li><b>The demonstrated recipe</b>: compose a non-interpolable layer (waves)
+with a smooth one (ecology) and the frontier gap returns without scaling.
+Hardness lives in coupling structure, not size.</li>
+</ul>
+
+<h2>Current track order by frontier gap</h2>
+<p>C4 (0.5–0.6) &gt; <b>B2 (0.3–0.5)</b> &gt; D4 (0.3–0.45) &gt; B0/C2/C3
+(0.1–0.3) &gt; B1/C0/C1 (≈0, saturated or interpolable).</p>
+
 <h2>What's next</h2>
 <ul>
-<li><b>B2 hybrid</b>: excitable waves triggering ecological regime shifts —
-wave timing (non-interpolable) gates population outcomes (rich): the
-planned hardness push for the biology track;</li>
+<li>B3 candidates: two variants + waves (selection whose winner depends on
+wave regime); reproduction-rate contracts; spatial refugia geography;</li>
 <li>tracking-grade apparatus / closed-loop microscopy;</li>
-<li>oracle-v3 ensemble calibration; more seeds/models on B-track.</li>
+<li>oracle ensemble calibration; n≥5 statistics on B-track and C4.</li>
 </ul>
 """
 

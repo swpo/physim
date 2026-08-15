@@ -911,3 +911,54 @@ triggering ecological regime shifts) rather than more ecology knobs.
 B0a (one variant + resource: carrying capacity alone), B0b (two variants,
 rich world: pure competition) — certified 4/4 each; B-track decomposition
 B0a -> B0b -> B0 -> B1 is live for future training use.
+
+
+---
+
+# Addendum 18 (2026-02-14): B2 — the ecowave hybrid: hardness by composition
+
+## The world (v0.7.2, reaction="ecowave")
+
+FHN wave layer + single-variant ecology, coupled through the resource: wave
+passage boosts local resource regeneration ("rain"); base regeneration alone
+cannot sustain life. Verified: population tracks wave rate (period 300 ->
+~47 organisms, 700 -> ~28, waves OFF -> extinction); fast pacing inherits
+refractory conduction block (fewer meals at higher drive rate — the
+NON-MONOTONIC response an interpolator cannot capture). Ports inject
+current: agents can create pacemakers = feed the world. Decomposition:
+B2 = C4 (waves) + B0a (carrying capacity), each separately certified — the
+hybrid is the curriculum's third rung composed of rungs one and two.
+
+## Battery
+
+floors: null 0.28 / tail 0.35 / persistence 0.29
+compact hybrid oracle (~55 lines: 5 horizon-matched condition calibrations
++ drive-signature classifier): **0.795**
+
+## Frontier (2 seeds each)
+
+| pairing | prediction | theory |
+|---|---|---|
+| claude-fable-5 + claude_code | 0.48, 0.36 | 0.52, 0.51 |
+| gpt-5.2 + codex | 0.42, 0.29 | — |
+
+Oracle gap 0.32-0.51: hard tier (second only to C4). fable's notes contain
+"wave, pulse, period, rain" (partial hybrid ontology — it SEES the rain!)
+but S2 (pacing at varied rates, the non-monotonic stratum) scores 0.04-0.31
+for everyone: nobody constructs the pacing-rate -> food-delivery -> carrying
+capacity chain. gpt-5.2 shows no wave vocabulary at all.
+
+## Iteration summary (this autonomous loop)
+
+1. B1 (boundary worlds): built, validated — revealed the SMOOTHNESS CEILING
+   (population observables interpolate; frontier 0.77-0.82 ~ oracle). Kept
+   as mid-tier; lesson recorded as design law.
+2. Curriculum presets B0a/B0b: shipped, certified.
+3. B2 (hybrid): built under the new design law (compose a non-interpolable
+   layer with the smooth one) — frontier gap restored to hard-tier without
+   any scaling. Composition of certified components is now the demonstrated
+   recipe for making rich worlds harder: hardness comes from coupling
+   structure, not size.
+
+Track order by frontier gap: C4 (0.5-0.6) > B2 (0.3-0.5) > D4 (0.3-0.45)
+> B0/C2/C3 (0.1-0.3) > B1/C0/C1 (~0).
