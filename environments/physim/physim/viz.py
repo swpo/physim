@@ -761,6 +761,8 @@ def build(out_path: str = "docs/worlds.html") -> str:
         if p.reaction == "ecology" and not p.eco_single:
             parts.append('<div class="panel">' + panel_eco_populations(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_eco_selection(make_world(name, 0)) + "</div>")
+        elif p.reaction in ("ecology", "ecowave"):
+            pass   # curriculum/hybrid worlds: note-only for now
         elif p.reaction == "excitable":
             parts.append('<div class="panel">' + panel_ex_waves(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_ex_laws(make_world(name, 0)) + "</div>")
