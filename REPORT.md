@@ -962,3 +962,60 @@ capacity chain. gpt-5.2 shows no wave vocabulary at all.
 
 Track order by frontier gap: C4 (0.5-0.6) > B2 (0.3-0.5) > D4 (0.3-0.45)
 > B0/C2/C3 (0.1-0.3) > B1/C0/C1 (~0).
+
+
+---
+
+# Addendum 19 (2026-02-15): E0 — the evolution track opens (v0.8.0)
+
+## World
+
+reaction="evo": one organism species + resource + a HERITABLE TRAIT FIELD g
+carried by tissue. Inheritance = growth-copying (daughters inherit parent
+tissue's g); mutation = small noise at growth sites; LINEAR micro GP map
+g -> (consumption, kill) per the infinitesimal-model decision (DESIGN v0.13
+addendum). Nothing selects anything explicitly — differential survival does.
+Sensors: density + PHENOTYPE-STAIN mixtures (g-weighted density, hidden
+weights). Ports fertilize/poison. Verified through ports: a 12k-tick poison
+era shifts mean genotype 0.485 -> 0.447 and the population re-expands at the
+adapted genotype (path dependence in the gene pool). Certified 5/5 seeds.
+
+## Battery
+
+floors: null 0.34 / tail 0.32 / persistence 0.40
+compact evo oracle (~60 lines: dose-classified condition calibration): 0.74
+Contract grammar: S1 equilibrium / S2 tilt / S3 selection era + recovery /
+S4 double era (the second poison hits an ADAPTED population — genetic
+memory). Era-scale protocols required MAX_SEG_TICKS 5000->8000.
+
+## Cross-level map-shape finding (user's tracked question, first datapoint)
+
+The LINEAR micro GP map aggregates to a SATURATING macro response: selection
+response per unit dose shrinks with dose (delta mean_g ~-0.05 at 2k ticks,
+no further movement by 12k) because selection depletes trait variance
+(sd_g 0.10 -> 0.03) — the breeder's equation running out of fuel. Micro
+shape != macro shape, exactly as conjectured; the aggregate map is shaped by
+the DYNAMICS OF VARIANCE, not just the pointwise map. To keep tracking per
+rung.
+
+## Frontier (2 seeds each; 1 fable rollout lost to infra HarnessError)
+
+| pairing | prediction | theory |
+|---|---|---|
+| gpt-5.2 + codex | 0.67, 0.53 | — |
+| claude-fable-5 + claude_code | 0.56 | 0.46 |
+
+Gap to oracle ~0.1-0.2 (mid-tier as configured). Notable: budget use 1-5%
+— era-scale contracts (4000-7000t) dwarf the agents' own experiments; no
+agent ran a single selection-era experiment of its own, so the S3/S4 path
+dependence was answered by extrapolating short-horizon behavior (S4 as low
+as 0.24). FOURTH ontology rung: zero evolutionary vocabulary (adapt/select/
+mutate/trait) in any workspace.
+
+## Iteration read
+
+E0's laws are discoverable but its selection signal is SLOW (10k+ ticks per
+era) relative to what agents explore voluntarily — the effort ceiling meets
+evolutionary timescales. E1 design should make selection FASTER and more
+visible (stronger trade-off, higher mutation, phenotype-stain sensors more
+distinct), or contracts even more path-dependent, before layering 2-D traits.

@@ -462,6 +462,17 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "E0": "EVOLUTION: organisms carry a heritable trait g (their "
+              "'genome'), copied to new tissue as they grow, mutating slightly "
+              "at growth sites. The trait sets each cell's consumption and "
+              "hardiness through a fixed biochemistry map — greedy and frugal "
+              "are now REGIONS OF TRAIT SPACE, not built-in kinds. Sustained "
+              "scarcity (port poison) shifts the whole population toward "
+              "frugal genotypes, and it RE-EXPANDS once adapted: natural "
+              "selection with genetic memory. Contracts probe adaptation "
+              "history: the same drive gives different answers depending on "
+              "what the population has lived through. Some sensors read a "
+              "phenotype stain (trait-weighted density) — hidden, as ever.",
         "B2": "HYBRID: the excitable wave layer feeds the ecology. Each "
               "traveling wave locally boosts resource regeneration (rain); "
               "base regeneration alone cannot sustain life, so the population "
@@ -659,6 +670,12 @@ resource ceiling near the exclusion threshold, so the world starts either
 with both variants alive or with the greedy one already gone. Long, sustained
 drives can push an instance across the boundary. Agents that never ask
 "which side am I on?" misprice every long-horizon prediction.</li>
+<li><b>Heredity and adaptation</b> (E0): organisms carry a mutable,
+heritable trait that sets their metabolism through a fixed biochemistry map.
+Greedy and frugal stop being built-in kinds and become <i>regions of trait
+space</i>; under sustained scarcity the population evolves toward frugality
+and recovers — natural selection, emergent, with the population's history
+written in its gene pool.</li>
 <li><b>Waves as weather</b> (B2, a hybrid of the chemistry and biology
 rules): the excitable-wave layer from C4 is coupled in as the <i>food
 delivery system</i> — each passing wave locally boosts resource regeneration
@@ -777,7 +794,7 @@ def build(out_path: str = "docs/worlds.html") -> str:
     for name in DIFFICULTY_PRESETS:
         p = DIFFICULTY_PRESETS[name]
         w = make_world(name, seed=0)
-        if p.reaction in ("ecology", "ecowave"):
+        if p.reaction in ("ecology", "ecowave", "evo"):
             parts.append(f"<h2>{name} — biology track, "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         elif p.reaction in ("grayscott", "grayscott2", "excitable"):
@@ -789,7 +806,12 @@ def build(out_path: str = "docs/worlds.html") -> str:
             parts.append(f"<h2>{name} — {p.n_modules} module(s), "
                          f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
         parts.append(f'<p class="note">{preset_notes(name)}</p>')
-        if p.reaction == "ecowave":
+        if p.reaction == "evo":
+            parts.append(f'<p class="meta">lattice {p.L}×{p.L} · heritable trait field '
+                         f'(mutation {p.evo_mut}, linear GP map) · resource ceiling '
+                         f'{p.eco_R_max} · sensor noise {p.meas_noise} · '
+                         f'tick budget {p.max_ticks:,}</p>')
+        elif p.reaction == "ecowave":
             parts.append(f'<p class="meta">lattice {p.L}×{p.L} · excitable wave layer feeding '
                          f'a single-variant ecology (rain {p.bw_rain}, base regen '
                          f'{p.bw_regen0}) · pacemaker period ≈{p.ex_pace_period} ticks · '
@@ -815,8 +837,8 @@ def build(out_path: str = "docs/worlds.html") -> str:
         if p.reaction == "ecology" and not p.eco_single:
             parts.append('<div class="panel">' + panel_eco_populations(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_eco_selection(make_world(name, 0)) + "</div>")
-        elif p.reaction in ("ecology", "ecowave"):
-            pass   # curriculum/hybrid worlds: note-only for now
+        elif p.reaction in ("ecology", "ecowave", "evo"):
+            pass   # curriculum/hybrid/evo worlds: note-only for now
         elif p.reaction == "excitable":
             parts.append('<div class="panel">' + panel_ex_waves(make_world(name, 0)) + "</div>")
             parts.append('<div class="panel">' + panel_ex_laws(make_world(name, 0)) + "</div>")

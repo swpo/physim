@@ -224,6 +224,33 @@ with a smooth one (ecology) and the frontier gap returns without scaling.
 Hardness lives in coupling structure, not size.</li>
 </ul>
 
+<h2>E0 — the evolution track opens (2026-02-15, v0.8.0)</h2>
+<p class="note">One species + resource + a <b>heritable trait field</b>:
+new tissue copies its parent tissue's genotype g (with mutation at growth
+sites), and g sets each cell's consumption/robustness through a fixed linear
+"biochemistry" map. Nothing selects explicitly — yet sustained scarcity
+shifts the population's genotype toward frugality and the population
+re-expands <i>at the adapted genotype</i>: natural selection, emergent,
+with genetic path dependence (a second famine meets a different population
+than the first).</p>
+<table>
+<tr><th class="l">agent / reference</th><th>prediction</th></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.67, 0.53</td></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>0.56</td></tr>
+<tr><td class="l meta">compact evo oracle (~60 lines)</td><td class="meta"><b>0.74</b></td></tr>
+<tr><td class="l meta">persistence / null / tail</td><td class="meta">0.40 / 0.34 / 0.32</td></tr>
+</table>
+<ul>
+<li><b>Fourth ontology rung</b>: no agent workspace contains any
+evolutionary vocabulary (adapt/select/mutate/trait). Budget use 1–5%:
+era-scale physics (4–7k-tick selection eras) far exceeds what agents explore
+voluntarily — no agent ran a single selection era of its own.</li>
+<li><b>Cross-level map finding</b>: the linear micro genotype→phenotype map
+aggregates to a <i>saturating</i> macro response (selection depletes trait
+variance — the breeder's equation runs out of fuel). Micro shape ≠ macro
+shape; now tracked per rung.</li>
+</ul>
+
 <h2>Current track order by frontier gap</h2>
 <p>C4 (0.5–0.6) &gt; <b>B2 (0.3–0.5)</b> &gt; D4 (0.3–0.45) &gt; B0/C2/C3
 (0.1–0.3) &gt; B1/C0/C1 (≈0, saturated or interpolable).</p>

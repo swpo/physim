@@ -138,6 +138,12 @@ resource ceiling near the exclusion threshold, so the world starts either
 with both variants alive or with the greedy one already gone. Long, sustained
 drives can push an instance across the boundary. Agents that never ask
 "which side am I on?" misprice every long-horizon prediction.</li>
+<li><b>Heredity and adaptation</b> (E0): organisms carry a mutable,
+heritable trait that sets their metabolism through a fixed biochemistry map.
+Greedy and frugal stop being built-in kinds and become <i>regions of trait
+space</i>; under sustained scarcity the population evolves toward frugality
+and recovers — natural selection, emergent, with the population's history
+written in its gene pool.</li>
 <li><b>Waves as weather</b> (B2, a hybrid of the chemistry and biology
 rules): the excitable-wave layer from C4 is coupled in as the <i>food
 delivery system</i> — each passing wave locally boosts resource regeneration
@@ -316,6 +322,9 @@ evaluator-side salt, so public code cannot reproduce a live evaluation world).</
 <h2>B2 — biology track, 8 inputs / 40 sensors (4 dead)</h2>
 <p class="note">HYBRID: the excitable wave layer feeds the ecology. Each traveling wave locally boosts resource regeneration (rain); base regeneration alone cannot sustain life, so the population tracks the wave rate — and pacing the medium too fast triggers refractory conduction block, DELIVERING FEWER MEALS (a non-monotonic trap). Ports inject current: agents can create pacemakers, i.e., feed the world. Composed from C4 + B0a, each separately certified.</p>
 <p class="meta">lattice 96×96 · excitable wave layer feeding a single-variant ecology (rain 0.0009, base regen 1.5e-05) · pacemaker period ≈70 ticks · tick budget 80,000</p>
+<h2>E0 — biology track, 8 inputs / 40 sensors (4 dead)</h2>
+<p class="note">EVOLUTION: organisms carry a heritable trait g (their 'genome'), copied to new tissue as they grow, mutating slightly at growth sites. The trait sets each cell's consumption and hardiness through a fixed biochemistry map — greedy and frugal are now REGIONS OF TRAIT SPACE, not built-in kinds. Sustained scarcity (port poison) shifts the whole population toward frugal genotypes, and it RE-EXPANDS once adapted: natural selection with genetic memory. Contracts probe adaptation history: the same drive gives different answers depending on what the population has lived through. Some sensors read a phenotype stain (trait-weighted density) — hidden, as ever.</p>
+<p class="meta">lattice 96×96 · heritable trait field (mutation 0.03, linear GP map) · resource ceiling 0.036 · sensor noise 0.05 · tick budget 300,000</p>
 <h2>B0a — biology track, 8 inputs / 40 sensors (4 dead)</h2>
 <p class="note">Curriculum world: ONE organism variant + the regenerating resource. The only law is logistic growth to a carrying capacity that ports can raise (fertilize) or lower (poison). The first rung of the biology ladder.</p>
 <p class="meta">lattice 96×96 · two organism variants (kill 0.06/0.0615, consumption 0.01/0.003) · resource ceiling 0.036 (alien-warped) · sensor noise 0.05 · tick budget 200,000</p>
