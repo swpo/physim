@@ -66,6 +66,9 @@ class WorldParams:
     ex_substeps: int = 5
     ex_pace_period: int = 70     # intrinsic pacemaker period (world ticks)
     ex_n_pace: int = 1           # intrinsic pacemakers
+    # --- ecowave (B2: waves feed the ecology; hybrid) ---
+    bw_rain: float = 0.0009      # regen boost where wave is active
+    bw_regen0: float = 0.000015  # base regen (too low to sustain alone)
     # --- ecology (B0: two variants + shared consumable resource) ---
     eco_k1: float = 0.060        # variant-1 kill ("fast": grows quickly)
     eco_k2: float = 0.0615       # variant-2 kill ("efficient": dies faster alone)
@@ -165,6 +168,21 @@ class World:
             self.ex_pace_period = int(p.ex_pace_period * (1.0 + 0.2 * rng.uniform(-1, 1)))
             self.ex_pace_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
                                                size=(p.ex_n_pace, 2))
+        elif p.reaction == "ecowave":
+            # excitable layer alienization (reuse C4 fields)
+            self.ex_Du = p.ex_Du * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.ex_eps = p.ex_eps * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.ex_gamma = p.ex_gamma * (1.0 + 0.1 * rng.uniform(-1, 1))
+            self.ex_pace_period = int(p.ex_pace_period * (1.0 + 0.2 * rng.uniform(-1, 1)))
+            self.ex_pace_centers = rng.uniform(0.15 * p.L, 0.85 * p.L,
+                                               size=(p.ex_n_pace, 2))
+            # ecology layer (single variant)
+            self.eco_k1 = p.eco_k1 * (1.0 + 0.02 * rng.uniform(-1, 1))
+            self.eco_c1 = p.eco_c1 * (1.0 + 0.15 * rng.uniform(-1, 1))
+            self.eco_R_max = p.eco_R_max * (1.0 + 0.06 * rng.uniform(-1, 1))
+            self.eco_seed_centers1 = rng.uniform(0.12 * p.L, 0.88 * p.L,
+                                                 size=(p.eco_n_seeds, 2))
+            self._gs_field_scale = 0.0
         elif p.reaction == "ecology":
             # alienize: jitter the trade-off and richness modestly (stay in the
             # coexist-able neighborhood; certification gates the rest)
@@ -256,8 +274,11 @@ class World:
             # (fertilize/poison a region)
             peak = float(self.B.max())
             self._gs_field_scale = 0.8 / max(peak, 1e-12)
-        if p.reaction in ("grayscott2", "ecology"):
-            # species tags (gs2: ports feed one species) / sensor mixes (both)
+        elif p.reaction == "ecowave":
+            peak = float(self.B.max())
+            self._gs_field_scale = 0.8 / max(peak, 1e-12)   # current injection
+        if p.reaction in ("grayscott2", "ecology", "ecowave"):
+            # species tags (gs2: ports feed one species) / sensor mixes (all)
             srng = np.random.default_rng(np.random.SeedSequence(
                 [0x5A2, self.seed, self._salt]))
             self.port_species = srng.integers(0, 2, p.n_in)
@@ -309,6 +330,34 @@ class World:
                 self.U1e = u1.copy(); self.V1e = v1.copy()
                 self.U2e = u2.copy(); self.V2e = v2.copy()
                 self.Re = r_.copy()
+        elif p.reaction == "ecowave":
+            L = p.L
+            self.eu = -1.2 * np.ones((L, L))
+            self.ev = -0.62 * np.ones((L, L))
+            self._ex_t = 0
+            self._ex_pace_masks = []
+            for c in self.ex_pace_centers:
+                dx = np.minimum(np.abs(self._gx - c[0]), L - np.abs(self._gx - c[0]))
+                dy = np.minimum(np.abs(self._gy - c[1]), L - np.abs(self._gy - c[1]))
+                self._ex_pace_masks.append(dx ** 2 + dy ** 2 <= 9)
+            self.U1e = np.ones((L, L)); self.V1e = np.zeros((L, L))
+            self.Re = self.eco_R_max * np.ones((L, L))
+            for c in self.eco_seed_centers1:
+                dx = np.minimum(np.abs(self._gx - c[0]), L - np.abs(self._gx - c[0]))
+                dy = np.minimum(np.abs(self._gy - c[1]), L - np.abs(self._gy - c[1]))
+                m = dx ** 2 + dy ** 2 <= 9
+                self.U1e[m] = 0.5
+                self.V1e[m] = 0.25
+            if not hasattr(self, "_bw_settled"):
+                zero = np.zeros(self.N)
+                for _ in range(6000):
+                    self._ecowave_substep(zero, noisy=False)
+                self._bw_settled = (self.eu.copy(), self.ev.copy(), self._ex_t,
+                                    self.U1e.copy(), self.V1e.copy(), self.Re.copy())
+            else:
+                (eu, ev, ext, u1, v1, r_) = self._bw_settled
+                self.eu = eu.copy(); self.ev = ev.copy(); self._ex_t = ext
+                self.U1e = u1.copy(); self.V1e = v1.copy(); self.Re = r_.copy()
         elif p.reaction == "excitable":
             self.eu = -1.2 * np.ones((p.L, p.L))
             self.ev = -0.62 * np.ones((p.L, p.L))
@@ -458,6 +507,33 @@ class World:
             self.V2e = np.clip(self.V2e + p.sigma * 0.01
                                * self._noise.standard_normal((p.L, p.L)), 0.0, None)
 
+    # ---------------- ecowave dynamics ----------------
+    def _ecowave_substep(self, inj: np.ndarray, noisy: bool = True) -> None:
+        p = self.p
+        lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
+                          + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
+        I = inj.reshape(p.L, p.L).copy()
+        for m in self._ex_pace_masks:
+            if (self._ex_t % (self.ex_pace_period * p.ex_substeps)) < 8 * p.ex_substeps:
+                I = I + np.where(m, 0.8, 0.0)
+        du = (self.eu - self.eu ** 3 / 3 - self.ev
+              + self.ex_Du * lapf(self.eu) + I)
+        dv = self.ex_eps * (self.eu + p.ex_beta - self.ex_gamma * self.ev)
+        self.eu = self.eu + p.ex_dt * du
+        self.ev = self.ev + p.ex_dt * dv
+        self._ex_t += 1
+        wave_active = (self.eu > 0).astype(float)
+        uvv = self.U1e * self.V1e * self.V1e
+        R = self.Re
+        self.U1e = self.U1e + p.gs_Du * lapf(self.U1e) - uvv + R * (1 - self.U1e)
+        self.V1e = self.V1e + p.gs_Dv * lapf(self.V1e) + uvv - (R + self.eco_k1) * self.V1e
+        self.Re = R + p.eco_DR * lapf(R)             + (p.bw_regen0 + p.bw_rain * wave_active)             * (self.eco_R_max - R) * self.eco_R_max * 300             - self.eco_c1 * self.V1e * R
+        self.Re = np.clip(self.Re, 0.0, self.eco_R_max)
+        if noisy and p.sigma > 0:
+            self.V1e = np.clip(self.V1e + p.sigma * 0.01
+                               * self._noise.standard_normal((p.L, p.L)), 0.0, None)
+            self.eu = self.eu + p.sigma * 0.02 * self._noise.standard_normal((p.L, p.L))
+
     # ---------------- apparatus dynamics ----------------
     def _apparatus_step(self, u: np.ndarray) -> np.ndarray:
         """Apply apparatus port drives; return u with apparatus ports zeroed
@@ -500,14 +576,17 @@ class World:
             primary = self.x
         elif p.reaction == "excitable":
             primary = (self.eu.ravel() + 1.2) * 0.8 - 0.5   # rest ~ -0.5, pulse ~ +1.2
-        elif p.reaction in ("grayscott2", "ecology"):
+        elif p.reaction in ("grayscott2", "ecology", "ecowave"):
             primary = None   # per-sensor mix computed below
         else:
             primary = self.V.ravel() * 4.0 - 0.5
-        if p.reaction in ("grayscott2", "ecology"):
+        if p.reaction in ("grayscott2", "ecology", "ecowave"):
             if p.reaction == "ecology":
                 s1 = self.V1e.ravel() * 4.0 - 0.5
                 s2 = self.V2e.ravel() * 4.0 - 0.5
+            elif p.reaction == "ecowave":
+                s1 = self.V1e.ravel() * 4.0 - 0.5                 # organisms
+                s2 = (self.eu.ravel() + 1.2) * 0.8 - 0.5          # waves
             else:
                 s1 = self.V.ravel() * 4.0 - 0.5
                 s2 = self.V2.ravel() * 4.0 - 0.5
@@ -551,6 +630,10 @@ class World:
             eco_field = field * self._gs_field_scale
             for _ in range(self.p.gs_steps_per_tick):
                 self._eco_substep(eco_field)
+        elif self.p.reaction == "ecowave":
+            inj = field * self._gs_field_scale
+            for _ in range(self.p.ex_substeps):
+                self._ecowave_substep(inj)
         elif self.p.reaction == "excitable":
             p = self.p
             lapf = lambda z: (np.roll(z, 1, 0) + np.roll(z, -1, 0)
@@ -651,6 +734,15 @@ class World:
     def certify(self) -> bool:
         """Cheap generation-time health check (evaluator-side, no budget).
         Gray-Scott: object count stays in [1, 12] over a long free run."""
+        if self.p.reaction == "ecowave":
+            probe = self.clone_fresh(noise_seed=555)
+            from scipy import ndimage
+            for _ in range(3):
+                probe.run(np.zeros((1200, self.p.n_in)))
+                n1 = ndimage.label(probe.V1e > 0.15)[1]
+                if not (3 <= n1 <= 90):
+                    return False
+            return True
         if self.p.reaction == "ecology":
             probe = self.clone_fresh(noise_seed=555)
             from scipy import ndimage
@@ -691,7 +783,7 @@ class World:
         w.__dict__.update({k: v for k, v in self.__dict__.items()
                            if k not in ("U", "V", "U2", "V2", "x", "a", "eu", "ev",
                                         "U1e", "V1e", "U2e", "V2e", "Re",
-                                        "_ex_t", "_noise",
+                                        "eu", "ev", "_ex_t", "_noise",
                                         "ticks_used", "n_resets", "port_energy",
                                         "app_pos", "app_gain_mult", "app_enabled",
                                         "_app_enable_acc")})
@@ -722,6 +814,11 @@ class World:
         return self.chan_map >= n_live
 
     def true_macro(self) -> np.ndarray:
+        if self.p.reaction == "ecowave":
+            from scipy import ndimage
+            n1 = ndimage.label(self.V1e > 0.15)[1]
+            return np.array([float(n1), float((self.eu > 0).mean()),
+                             float(self.Re.mean() / self.eco_R_max)])
         if self.p.reaction == "ecology":
             from scipy import ndimage
             n1 = ndimage.label(self.V1e > 0.15)[1]
@@ -859,6 +956,15 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
         patch_r=4.0, n_apparatus=0, max_ticks=60_000),
+    "B2": WorldParams(  # ecowave hybrid: waves are the food supply
+        reaction="ecowave", L=96, sigma=0.02,
+        ex_pace_period=70, ex_n_pace=1, ex_substeps=5,
+        eco_k1=0.060, eco_c1=0.010, eco_R_max=0.036,
+        eco_DR=0.05, eco_n_seeds=3,
+        bw_rain=0.0009, bw_regen0=0.000015,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=3.0, in_gain=1.0,
+        patch_r=3.0, max_ticks=80_000),
     # ---- decomposition curriculum (training ladder for B-track) ----
     "B0a": WorldParams(  # one variant + resource: carrying capacity alone
         reaction="ecology", L=96, sigma=0.02, gs_steps_per_tick=4,

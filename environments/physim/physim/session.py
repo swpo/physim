@@ -109,6 +109,8 @@ def sample_contracts(world: World, rng: np.random.Generator,
         return _sample_contracts_excitable(world, rng, n_per_stratum)
     if getattr(world.p, "reaction", "tanh") == "ecology":
         return _sample_contracts_ecology(world, rng, n_per_stratum)
+    if getattr(world.p, "reaction", "tanh") == "ecowave":
+        return _sample_contracts_ecowave(world, rng, n_per_stratum)
     n_in = world.p.n_in
     dead = world.true_is_dead()
     live = [c for c in range(world.p.n_out) if not bool(dead[c])]
@@ -408,6 +410,66 @@ def _sample_contracts_ecology(world: World, rng: np.random.Generator,
     return contracts
 
 
+def _sample_contracts_ecowave(world: World, rng: np.random.Generator,
+                              n_per_stratum: int = 4) -> list[Contract]:
+    """Hybrid grammar: S1 natural rhythm+ecology equilibrium; S2 extra pacing
+    via port pulse trains at varied periods (incl. refractory-blocked rates:
+    population response is NON-MONOTONIC in pacing rate); S3 wave suppression
+    (sustained negative bias raises threshold -> famine); S4 pacing then
+    release (recovery under natural rhythm)."""
+    n_in = world.p.n_in
+    dead = world.true_is_dead()
+    live = [c for c in range(world.p.n_out) if not bool(dead[c])]
+    contracts: list[Contract] = []
+    cid = 0
+
+    def pick_channel() -> int:
+        return int(rng.choice(live))
+
+    def hold(u_vec, T):
+        return {"t": int(T), "u": [round(float(x), 3) for x in u_vec]}
+
+    def pulse_train(port, p_on, p_off, reps, amp=1.0):
+        segs = []
+        for _ in range(reps):
+            u = np.zeros(n_in); u[port] = amp
+            segs.append(hold(u, p_on))
+            segs.append(hold(np.zeros(n_in), p_off))
+        return segs
+
+    def stat_pick(i):
+        return ("mean", "sd", "rate")[i % 3]
+
+    for i in range(n_per_stratum):          # S1: natural rhythm + equilibrium
+        contracts.append(Contract(cid, "S1",
+            [hold(np.zeros(n_in), int(rng.integers(400, 700)))], pick_channel(),
+            stat=stat_pick(i)))
+        cid += 1
+    for i in range(n_per_stratum):          # S2: extra pacing at varied period
+        port = int(rng.integers(0, n_in))
+        p_off = int(rng.choice([25, 50, 90, 160]))   # spans blocked & clean rates
+        reps = max(4, int(500 // (8 + p_off)))
+        segs = pulse_train(port, 8, p_off, reps) +             [hold(np.zeros(n_in), int(rng.integers(200, 400)))]
+        contracts.append(Contract(cid, "S2", segs, pick_channel(),
+                                  stat=stat_pick(i)))
+        cid += 1
+    for i in range(n_per_stratum):          # S3: wave suppression (famine)
+        u = np.full(n_in, -float(rng.uniform(0.5, 0.9)))
+        contracts.append(Contract(cid, "S3",
+            [hold(u, int(rng.integers(600, 1000)))], pick_channel(),
+            stat=stat_pick(i)))
+        cid += 1
+    for i in range(n_per_stratum):          # S4: pace then release
+        port = int(rng.integers(0, n_in))
+        p_off = int(rng.choice([40, 80]))
+        reps = max(4, int(400 // (8 + p_off)))
+        segs = pulse_train(port, 8, p_off, reps) +             [hold(np.zeros(n_in), int(rng.integers(500, 800)))]
+        contracts.append(Contract(cid, "S4", segs, pick_channel(),
+                                  stat=stat_pick(i)))
+        cid += 1
+    return contracts
+
+
 def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
                     ) -> tuple[float, float, list[float]]:
     """Run the contract protocol on `ensemble` fresh clones; return
@@ -415,7 +477,7 @@ def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
     U = render_protocol(contract.segments, world.p.n_in)
     if getattr(world.p, "reaction", "tanh") in ("grayscott", "grayscott2"):
         ensemble = min(ensemble, 8)
-    if getattr(world.p, "reaction", "tanh") == "ecology":
+    if getattr(world.p, "reaction", "tanh") in ("ecology", "ecowave"):
         ensemble = min(ensemble, 6)
     vals = []
     for e in range(ensemble):
@@ -436,7 +498,7 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
     if stat == "rate":
         return float(max(3.0 * tau, 1.0))
     frac = 0.05 if stat == "sd" else 0.1
-    if reaction in ("grayscott", "grayscott2", "ecology"):
+    if reaction in ("grayscott", "grayscott2", "ecology", "ecowave"):
         # GS ensembles are quasi-deterministic (shared settled start): the
         # range floor dominates and must be tight or replication saturates.
         frac = 0.015 if stat == "sd" else 0.03
@@ -514,7 +576,7 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
         return _sample_prep_gs(world, rng, n)
     if getattr(world.p, "reaction", "tanh") == "excitable":
         return []   # v1: wave states are transient; preps deferred
-    if getattr(world.p, "reaction", "tanh") == "ecology":
+    if getattr(world.p, "reaction", "tanh") in ("ecology", "ecowave"):
         return []   # v1: population targets need long holds; preps deferred
     p = world.p
     dead = world.true_is_dead()

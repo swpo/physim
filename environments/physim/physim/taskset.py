@@ -92,7 +92,7 @@ ADVICE
 
 
 class PhysimData(vf.TaskData):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2"] = "D0"
     world_seed: int = 0
     max_turns: int = MAX_TURNS_DEFAULT
     n_per_stratum: int = 4
@@ -232,7 +232,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget)."""
     tier: Literal["chat", "tools"] = "chat"
     """chat: JSON-over-messages loop (PhysimEnv drives). tools: per-rollout MCP
