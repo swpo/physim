@@ -1103,3 +1103,65 @@ Decomposition (curriculum property): B0 = C0 (single species, static feed)
 + eco-1 (one species + resource: carrying capacity) + eco-2 (two species:
 competition) — each certifiable alone; the training ladder is the world's
 own factorization.
+
+
+---
+
+# v0.13 — the evolution roadmap: from god-given traits to emergent adaptation
+[PLAN adopted 2026-02-15; feasibility probes PASSED]
+
+## User direction
+
+Traits (greedy/frugal) are currently god-given parameters. The ambition:
+behavior should ARISE from lower-level mechanics — like proteins giving rise
+to behavior — with reproduction + heredity + selection generating diversity
+and adaptation. Iterate toward this, not in one step.
+
+## Feasibility probes (2026-02-15, scripted, PASSED)
+
+Mechanism: a per-cell TRAIT FIELD g ∈ [0,1] ("genome") carried by organism
+tissue. The g→(consumption, kill) map is fixed physics ("biochemistry");
+behavior and fitness are NOWHERE specified. Inheritance = growth-copying
+(new tissue copies the g of the neighboring tissue that grew it — GS spot
+division then automatically transmits g to daughters). Mutation = small
+noise on g at growth sites. Results:
+- Inheritance fidelity: organism-level g coherent; population sd ~0.06-0.09
+  maintained by mutation (first attempt with tissue-averaging DESTROYED
+  diversity — locality of inheritance is essential).
+- SELECTION OBSERVED: scarcity era shifts population mean g 0.50 → 0.41
+  (frugalward), no fitness function anywhere.
+- ADAPTIVE RECOVERY: population crashes to n=10 under scarcity, then
+  re-expands to n=45 AT THE ADAPTED GENOTYPE — evolutionary rescue.
+- Directional asymmetry: returning to rich does not reverse g (relaxed
+  selection ≠ counter-selection) — realistic, and a discoverable law.
+
+## Staged plan (each stage = build + certify + oracle + frontier-validate)
+
+E0 (next build): reaction="evo" — single species + resource + trait field g.
+  Laws: everything from B0a PLUS "populations ADAPT: sustained scarcity
+  shifts the population toward frugal phenotypes; recovery follows".
+  Sensors: organism density (+ maybe g-sensitive channels: some sensors read
+  g-weighted density = "phenotype-sensitive stain"). Contracts: population
+  statistics AFTER adaptation eras (non-interpolable in time: the same
+  drive gives different outcomes depending on evolutionary history —
+  PATH DEPENDENCE, our hardness axis, now from heredity).
+  Compact oracle: logistic + one adaptation ODE for mean-g (quantitative
+  genetics: dg/dt ∝ selection differential).
+E1: trait-dependent TRADE-OFF SURFACES (g 2-D: e.g., consumption vs
+  motility). Niche differentiation: coexisting phenotype clusters =
+  emergent SPECIES (no god-given variants — B0b becomes a THEOREM).
+E2: eco-evo hybrid with waves (B2 coupling): wave-regime-dependent selection
+  — which phenotype wins depends on rain rhythm; agents must connect wave
+  physics to evolutionary outcome. Expected frontier-breaking.
+E3: reproduction bottlenecks + spatial structure (islands/corridors via
+  static resource geography): founder effects, local adaptation,
+  divergence — biogeography.
+E4 (aspiration): open-ended-ness — multi-locus g, epistatic maps
+  (g1,g2)→kinetics, recombination on tissue merge. Decomposition property
+  maintained throughout: E-track rungs each certified standalone.
+
+## Documentation principle (v0.9) extension
+
+E-track panels will need EVOLUTIONARY descriptions: g-distribution histories
+(trait histograms over time), selection-response curves, phylogeny-like
+lineage traces if feasible — another level up the description ladder.
