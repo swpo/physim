@@ -462,6 +462,18 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "B0a": "Curriculum world: ONE organism variant + the regenerating "
+               "resource. The only law is logistic growth to a carrying "
+               "capacity that ports can raise (fertilize) or lower (poison). "
+               "The first rung of the biology ladder.",
+        "B0b": "Curriculum world: two variants in a RICH world — competition "
+               "and coexistence without extinction risk. Second rung.",
+        "B1": "Selection-boundary worlds: the resource ceiling is drawn NEAR "
+              "the exclusion threshold, so each instance secretly lands on one "
+              "side — fast variant present, or already excluded. Long sustained "
+              "drives can push the ecosystem across. Contracts probe the "
+              "boundary; agents that never ask which side they are on "
+              "misprice every long-horizon prediction.",
         "B0": "BIOLOGY track opens: an ecosystem. Two organism variants compete "
               "for one regenerating resource. The discoverable laws are "
               "population-scale: colonies grow to a carrying capacity; the two "

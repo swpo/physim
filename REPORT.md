@@ -863,3 +863,51 @@ three measured rungs of the same ladder.
 - worlds.html documents B0 at the population level (ecosystem map,
   population/resource curves, the selection-collapse plot) per the
   description-levels principle.
+
+
+---
+
+# Addendum 17 (2026-02-14): B1 selection-boundary worlds + the smoothness ceiling
+
+## B1 (v0.7.1-0.7.2)
+
+Richness alienized across the exclusion threshold (R_max in [0.031, 0.037];
+boundary ~0.0335): per-instance the ecosystem lands coexist-side or
+excluded-side; certification accepts fast-variant exclusion (2/10 seeds) and
+rejects dead/reversed ecosystems. New S5 stratum: medium tilts held
+1800-2600t (boundary crossing). Compact oracle v3 (adds 2600t-horizon
+calibration): 0.726; floors null 0.26 / tail 0.26 / persistence 0.33.
+
+## Frontier
+
+| pairing | B1 @250k budget | B1 @60k budget |
+|---|---|---|
+| gpt-5.2 + codex | 0.71, 0.78 | 0.77, 0.82 |
+| claude-fable-5 + claude_code | 0.59 (+1 infra error) | 0.81 |
+
+gpt-5.2 seed 0: **0.77 with 10 experiments / 7% of a 60k budget.** The
+budget cut (250k->60k, anti-replication economics) changed nothing.
+
+## Diagnosis: the smoothness ceiling
+
+B-track observables (population densities aggregated over sensor patches)
+respond SMOOTHLY to drive amplitude — a handful of tilt levels interpolates
+the whole response surface (this is exactly how the compact oracle works,
+and the models found it too). Even near the exclusion boundary, partial port
+coverage leaves refugia; populations recolonize; outcomes stay smooth (probe:
+poison to n1=2, recovery to n1=41 — recolonization, no hysteresis). Contrast
+C4, where timing/phase observables are NOT smoothly interpolable and the
+frontier collapses to 0.12-0.24.
+
+Lesson recorded: richness (compact laws) is necessary but not sufficient for
+frontier-hardness; the observable map must also be non-interpolable
+(discontinuities, phase/timing structure, path dependence at the readout
+level). Ecology at population granularity is intrinsically smooth ->
+mid-tier. The B-track hardness push should come from HYBRIDS (e.g., waves
+triggering ecological regime shifts) rather than more ecology knobs.
+
+## Curriculum presets shipped (training ladder)
+
+B0a (one variant + resource: carrying capacity alone), B0b (two variants,
+rich world: pure competition) — certified 4/4 each; B-track decomposition
+B0a -> B0b -> B0 -> B1 is live for future training use.
