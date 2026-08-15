@@ -563,12 +563,13 @@ EXPLAINER = """
 
 <h3>1. The layout and the rules</h3>
 <p>Under the hood, every world is a <b>grid of simple units</b> (from 24×24 up
-to 96×96 cells). Each cell holds one or two numbers — its <i>field values</i> —
+to 96×96 cells). Each cell holds a few numbers — its <i>field values</i> —
 and time advances in discrete <b>ticks</b>: at every tick each cell updates by
-the same local rule. There are two rule families, giving two very different
-kinds of world (the two "tracks" below); both are instances of one template
-(a multi-channel lattice field theory: diffusion/mixing + a pointwise
-nonlinear reaction + the input fields + noise).</p>
+the same local rule. There are three world tracks, each built from a different
+rule family (and, in the hardest worlds, from <i>combinations</i> of them);
+all are instances of one template (a multi-channel lattice field theory:
+diffusion/mixing + a pointwise nonlinear reaction + the input fields +
+noise).</p>
 
 <p><b>Track 1 — bulk matter (worlds D0–D4).</b> One field per cell, updated
 as:</p>
@@ -632,6 +633,55 @@ to operate — and then exploit — one's own instruments becomes part of the
 science: scanning a movable sensor across the world is how an agent can find
 objects its fixed sensors never see.</p>
 
+<p><b>Track 3 — biology (worlds B0a, B0b, B0, B1, B2).</b> Start from the
+chemistry track's organisms — self-sustaining spots — and make their food
+supply <b>finite</b>. A third field, the <i>resource</i>, regenerates slowly
+toward a ceiling, diffuses, and is consumed wherever organisms live. That one
+change turns chemistry into ecology, and every classical population law
+emerges on its own:</p>
+<ul>
+<li><b>Carrying capacity</b> (B0a): a founder colony multiplies until
+consumption balances regeneration, then the population saturates. Push
+consumption higher and you get boom–bust cycles, then extinction — logistic
+population dynamics that nobody programmed in.</li>
+<li><b>Competition</b> (B0b): two organism <i>variants</i> share the same
+resource pool under a trade-off — one is <b>greedy</b> (grows fast, consumes
+heavily), the other <b>frugal</b> (efficient, but dies faster on its own).
+In a rich world they coexist, dividing the map between them.</li>
+<li><b>Natural selection</b> (B0): the environment picks the winner. Ports
+now <i>fertilize</i> or <i>poison</i> regional resource regeneration, so the
+agent can tilt the world. Under sustained scarcity the greedy variant
+collapses to extinction while the frugal one inherits the world — an
+extinction that persists after the poison is lifted, because the dead do not
+recolonize.</li>
+<li><b>The selection boundary</b> (B1): each instance secretly draws its
+resource ceiling near the exclusion threshold, so the world starts either
+with both variants alive or with the greedy one already gone. Long, sustained
+drives can push an instance across the boundary. Agents that never ask
+"which side am I on?" misprice every long-horizon prediction.</li>
+<li><b>Waves as weather</b> (B2, a hybrid of the chemistry and biology
+rules): the excitable-wave layer from C4 is coupled in as the <i>food
+delivery system</i> — each passing wave locally boosts resource regeneration
+("rain"), and base regeneration alone cannot sustain life. The population
+therefore tracks the wave rate, and the coupling inherits the wave layer's
+refractory trap: pace the medium too fast and conduction block makes waves
+<i>fail</i>, delivering fewer meals, not more. Ports inject current here, so
+an agent can create pacemakers — literally feeding the world by making it
+rain — but only if it first discovers what the waves are and what they do.</li>
+</ul>
+<p>Biology-track sensors read <b>organism density</b>, blind to which variant
+they are watching (some read one variant, some the other, some a mixture —
+the weights are hidden, so "there are two kinds of life here" is itself a
+discovery). Contracts ask population-scale questions over long horizons:
+equilibrium levels, how the ecosystem shifts under sustained
+fertilizing/poisoning, how it recovers after a famine pulse, and what
+survives at the extinction boundary. A caution learned from measurement:
+population aggregates respond <i>smoothly</i> to most drives (spatial
+averaging washes out discontinuities — even near-extinct colonies recolonize
+from refugia), which is why the pure-ecology worlds sit mid-tier while the
+wave-fed hybrid B2, whose food supply is gated by non-smooth wave physics,
+breaks frontier models today.</p>
+
 <h3>2. The idea: why the worlds are built this way</h3>
 <p>The benchmark asks one question: <b>can an agent do science?</b> Not recall
 science — do it. That requires a world where:</p>
@@ -662,9 +712,13 @@ sensor opacity (dead channels, inverted signs, gain spread, noise), number of
 regions (1 → 8 collective degrees of freedom), law depth (fast/slow regions,
 fatigue), and budget pressure — D0 is a tutorial magnet; D4 is a slow, moody,
 multi-region material where the best current AI agents score ~0.3 of the
-achievable 1.0. Chemistry track C0→C1: from fixed sensors watching a few
-objects to bigger worlds where part of the sensing apparatus itself must be
-discovered and operated.</p>
+achievable 1.0. Chemistry track C0→C4: from fixed sensors watching a few
+static objects, through movable apparatus and drifting objects, to the
+excitable-wave world C4 whose timing physics currently defeats every frontier
+model. Biology track B0a→B2: a curriculum by construction — carrying capacity
+alone, then competition, then selection, then the selection boundary, then
+the wave-fed hybrid — each rung a certified standalone world, so the hardest
+biology world literally decomposes into its own training ladder.</p>
 
 <h3>3. What the agent can see and do</h3>
 <p>The agent never sees the grid, the regions, the wiring, or any panel marked
