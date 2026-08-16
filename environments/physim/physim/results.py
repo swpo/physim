@@ -432,8 +432,14 @@ port-driven eras.</p>
 <tr><th class="l">reference (E1, corrected physics)</th><th>prediction</th></tr>
 <tr><td class="l meta">compact oracle (~65 lines)</td><td class="meta"><b>0.805</b></td></tr>
 <tr><td class="l meta">persistence / tail / null</td><td class="meta">0.43 / 0.35 / 0.28</td></tr>
-<tr><td class="l">frontier</td><td>running</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.57, 0.55</td></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td>0.42, 0.00†</td></tr>
 </table>
+<p class="meta">†112 productive turns, then ended its session without ever
+answering the contracts (unanswered = 0, as stated in the rules). E1 sits
+hard-tier-adjacent: oracle gap 0.23–0.38. fable's notes contain "regime" and
+"period" — the storm clock is sensed but never converted into a predictive
+theory, and no agent discovered adaptation.</p>
 <ul>
 <li><b>Fourth ontology rung</b>: no agent workspace contains any
 evolutionary vocabulary (adapt/select/mutate/trait). Budget use 1–5%:

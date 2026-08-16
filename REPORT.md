@@ -1061,3 +1061,28 @@ saturating) is DESIGNED biochemistry — both traits derive from the SAME
 gene g through fixed maps; the asymmetry is in the g->phenotype map shape,
 not in inheritance (single copy rule). Selection at storm depth 0.5 is the
 probe-verified selective sweet spot (0.2-0.35 kills indiscriminately).
+
+
+---
+
+# Addendum 21 (2026-02-15): E1 frontier + the answer-or-zero lesson
+
+## Frontier (2 seeds each, corrected physics)
+
+| pairing | prediction | notes |
+|---|---|---|
+| gpt-5.2 + codex | 0.57, 0.55 | one rollout burned 99% budget for 0.554 — effort without the storm clock |
+| claude-fable-5 + claude_code | 0.42, 0.00* | *112 productive turns, then ended session WITHOUT calling ready/answer: n_answered=0 -> 0. Its last note: "Now the highest-value data...: across-draw replication." A deadline miss, kept as scored (real science has deadlines). |
+
+Gap to compact oracle (0.805): 0.23-0.38 — E1 lands hard-tier-adjacent
+(between D4 and B2). fable's workspace shows partial storm ontology
+("regime", "period"); no agent found adaptation/selection. The hidden storm
+clock (period ~16k ticks, alienized) is the E1 analogue of C4's pacemaker —
+and like C4, models sense periodicity without converting it into a
+predictive clock.
+
+## Answer-or-zero
+
+fable's zero is legitimate under the rules (unanswered = 0, stated in the
+prompt) but flags a conduct pattern: research programs that never converge
+to answers. No env change — the scoreboard already prices it.

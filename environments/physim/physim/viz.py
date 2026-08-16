@@ -462,6 +462,14 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "E1": "STORM WORLD: the environment itself cycles — recurring famines "
+              "(hidden period, ~half the time) alternate with plenty. Because "
+              "traits are heritable (particulate inheritance: new tissue copies "
+              "its parent's genotype) and the famine depth sits at the selective "
+              "sweet spot, the population EVOLVES: it arrives already adapted "
+              "to its climate, and de-adapts/re-adapts when agents fertilize or "
+              "poison eras. Two clocks to discover: the storm cycle, and the "
+              "slower clock of the gene pool tracking it.",
         "E0": "EVOLUTION: organisms carry a heritable trait g (their "
               "'genome'), copied to new tissue as they grow, mutating slightly "
               "at growth sites. The trait sets each cell's consumption and "
