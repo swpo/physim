@@ -73,6 +73,10 @@ class WorldParams:
     evo_k_lo: float = 0.0585     # kill at g=1 (greedy end: lives easier)
     evo_k_hi: float = 0.0625     # kill at g=0 (frugal end: dies faster)
     evo_g0_spread: float = 0.35  # founder genotype spread around 0.5
+    evo_gp: str = "linear"       # GP map shape: "linear" | "asym" (saturating robustness)
+    evo_storm_depth: float = 0.0 # 0 = no storms; else regen mult during storm (E1 ~0.5)
+    evo_storm_dwell: int = 8000  # storm length (ticks)
+    evo_storm_calm: int = 8000   # calm length (ticks)
     # --- ecowave (B2: waves feed the ecology; hybrid) ---
     bw_rain: float = 0.0009      # regen boost where wave is active
     bw_regen0: float = 0.000015  # base regen (too low to sustain alone)
@@ -183,6 +187,9 @@ class World:
                                                  size=(p.eco_n_seeds, 2))
             self.evo_founder_g = np.clip(
                 0.5 + p.evo_g0_spread * rng.uniform(-1, 1, p.eco_n_seeds), 0.05, 0.95)
+            self.evo_storm_depth = p.evo_storm_depth * (1.0 + 0.1 * rng.uniform(-1, 1))                 if p.evo_storm_depth > 0 else 0.0
+            self.evo_storm_dwell = int(p.evo_storm_dwell * (1.0 + 0.2 * rng.uniform(-1, 1)))
+            self.evo_storm_calm = int(p.evo_storm_calm * (1.0 + 0.2 * rng.uniform(-1, 1)))
             self._gs_field_scale = 0.0
         elif p.reaction == "ecowave":
             # excitable layer alienization (reuse C4 fields)
@@ -555,24 +562,38 @@ class World:
                           + np.roll(z, 1, 1) + np.roll(z, -1, 1) - 4 * z)
         G = self.Ge
         c_g = self.evo_c_lo + G * (self.evo_c_hi - self.evo_c_lo)
-        k_g = p.evo_k_hi - G * (p.evo_k_hi - p.evo_k_lo)
+        if p.evo_gp == "asym":
+            # saturating robustness (designed biochemistry; see DESIGN v0.13 add.8)
+            k_g = p.evo_k_hi - (p.evo_k_hi - p.evo_k_lo)                 * np.tanh(2.5 * G) / np.tanh(2.5)
+        else:
+            k_g = p.evo_k_hi - G * (p.evo_k_hi - p.evo_k_lo)
         uvv = self.U1e * self.V1e * self.V1e
         R = self.Re
         V_old = self.V1e
         self.U1e = self.U1e + p.gs_Du * lapf(self.U1e) - uvv + R * (1 - self.U1e)
         newV = self.V1e + p.gs_Dv * lapf(self.V1e) + uvv - (R + k_g) * self.V1e
         regen_mult = np.clip(1.0 + field_u.reshape(p.L, p.L), 0.0, 2.0)
+        if self.evo_storm_depth > 0:
+            sub = p.gs_steps_per_tick
+            cyc = (self.evo_storm_dwell + self.evo_storm_calm) * sub
+            in_storm = (getattr(self, "_evo_tick", 0) % cyc) < self.evo_storm_dwell * sub
+            regen_mult = regen_mult * (self.evo_storm_depth if in_storm else 1.15)
         self.Re = R + p.eco_DR * lapf(R)             + p.eco_regen * regen_mult * (self.eco_R_max - R) * self.eco_R_max * 300             - c_g * self.V1e * R
         self.Re = np.clip(self.Re, 0.0, self.eco_R_max)
-        # inheritance: newly grown tissue copies neighboring parent tissue's g
+        # PARTICULATE inheritance (single rule, all evo worlds): fresh tissue
+        # copies the genotype of its single dominant parent neighbor. Blending
+        # (weighted averaging) destroys variance geometrically — Jenkin's 1867
+        # objection, observed in silico; see DESIGN v0.13 addendum 8.
         grow = (newV - V_old) > 1e-5
         if grow.any():
-            Vn = (np.roll(V_old, 1, 0) + np.roll(V_old, -1, 0)
-                  + np.roll(V_old, 1, 1) + np.roll(V_old, -1, 1))
-            Gn = (np.roll(G * V_old, 1, 0) + np.roll(G * V_old, -1, 0)
-                  + np.roll(G * V_old, 1, 1) + np.roll(G * V_old, -1, 1)) / (Vn + 1e-9)
-            w_new = np.clip((newV - V_old) / (newV + 1e-9), 0, 1)
-            self.Ge = np.where(grow, (1 - w_new) * G + w_new * Gn, G)
+            nV = np.stack([np.roll(V_old, 1, 0), np.roll(V_old, -1, 0),
+                           np.roll(V_old, 1, 1), np.roll(V_old, -1, 1)])
+            nG = np.stack([np.roll(G, 1, 0), np.roll(G, -1, 0),
+                           np.roll(G, 1, 1), np.roll(G, -1, 1)])
+            arg = nV.argmax(axis=0)
+            G_par = np.take_along_axis(nG, arg[None], 0)[0]
+            fresh = grow & (V_old < 0.02)
+            self.Ge = np.where(fresh, G_par, G)
         self.V1e = newV
         self._evo_tick = getattr(self, "_evo_tick", 0) + 1
         if noisy:
@@ -824,8 +845,11 @@ class World:
         if self.p.reaction in ("ecowave", "evo"):
             probe = self.clone_fresh(noise_seed=555)
             from scipy import ndimage
+            span = 1200
+            if getattr(self, "evo_storm_depth", 0.0) > 0:
+                span = (self.evo_storm_dwell + self.evo_storm_calm) // 3 + 800
             for _ in range(3):
-                probe.run(np.zeros((1200, self.p.n_in)))
+                probe.run(np.zeros((span, self.p.n_in)))
                 n1 = ndimage.label(probe.V1e > 0.15)[1]
                 if not (3 <= n1 <= 90):
                     return False
@@ -1067,6 +1091,14 @@ DIFFICULTY_PRESETS: dict[str, WorldParams] = {
         reaction="evo", L=96, sigma=0.02, gs_steps_per_tick=4,
         eco_R_max=0.036, eco_regen=0.00010, eco_DR=0.05, eco_n_seeds=4,
         evo_mut=0.03, evo_g0_spread=0.35,
+        n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
+        gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
+        patch_r=4.0, max_ticks=300_000),
+    "E1": WorldParams(  # storm world: recurring famine cycles drive evolution
+        reaction="evo", L=96, sigma=0.02, gs_steps_per_tick=4,
+        eco_R_max=0.036, eco_regen=0.00010, eco_DR=0.05, eco_n_seeds=4,
+        evo_mut=0.06, evo_g0_spread=0.35, evo_gp="asym",
+        evo_storm_depth=0.5, evo_storm_dwell=8000, evo_storm_calm=8000,
         n_in=8, n_out=40, n_dead=4, meas_noise=0.05,
         gain_min=0.6, gain_max=1.6, p_flip=0.35, in_width=16.0, in_gain=1.0,
         patch_r=4.0, max_ticks=300_000),

@@ -1019,3 +1019,45 @@ era) relative to what agents explore voluntarily — the effort ceiling meets
 evolutionary timescales. E1 design should make selection FASTER and more
 visible (stronger trade-off, higher mutation, phenotype-stain sensors more
 distinct), or contracts even more path-dependent, before layering 2-D traits.
+
+
+---
+
+# Addendum 20 (2026-02-15): E0 CORRECTED (physics fix) + E1 storm world ships (v0.9.0)
+
+## E0 correction — old results WIPED (user decision)
+
+Diagnosis (see DESIGN v0.13 addendum 8): E0-as-shipped (v0.8.0) had BLENDING
+inheritance (tissue-averaging), which destroys trait variance geometrically —
+Jenkin's 1867 objection reproduced in silico — and its reported adaptation
+(mean_g 0.485->0.447) was mostly SHELTER SURVIVORSHIP (survival~shelter
+r=0.46 vs survival~genotype r=-0.08), not genotype selection. Addendum 19's
+adaptation claims are RETRACTED. Per user decision this is a WIP benchmark:
+E0 is fixed in place (no version fork), blending-era frontier results are
+wiped from the results pages, and E0 will be re-validated on the corrected
+physics. Raw traces of the old runs remain in the HF dataset for the record.
+
+The fix (v0.9.0, single inheritance rule for all evo worlds):
+- PARTICULATE COPY inheritance: fresh tissue copies its dominant parent
+  neighbor's genotype. Variance now persists (E0 settle sd_g ~0.27!).
+- GP-map shapes: evo_gp = "linear" (E0) | "asym" (E1: saturating robustness).
+- E0 remains storm-free; its laws are variance maintenance + port-driven
+  selection eras (to be re-validated with the corrected mechanics).
+
+## E1 — the storm world (new)
+
+reaction=evo + evo_gp="asym" + storms (regen mult ~0.5, dwell ~8k, calm ~8k,
+alienized per instance). The world's own weather drives evolution: settled
+populations arrive ADAPTED (mean_g ~0.2 vs founder 0.5); fertilize eras
+de-adapt and re-adapt live. Certified 5/5 seeds.
+
+| reference | accuracy |
+|---|---|
+| null / tail / persistence | 0.28 / 0.35 / 0.43 |
+| compact oracle (~65 lines, storm-phase-aware condition calibration) | **0.805** |
+
+Design notes recorded: asymmetric GP map (consumption linear, robustness
+saturating) is DESIGNED biochemistry — both traits derive from the SAME
+gene g through fixed maps; the asymmetry is in the g->phenotype map shape,
+not in inheritance (single copy rule). Selection at storm depth 0.5 is the
+probe-verified selective sweet spot (0.2-0.35 kills indiscriminately).
