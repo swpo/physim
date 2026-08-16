@@ -1432,3 +1432,52 @@ healthy (n 12-46). THE E1-v1 physics is certified in probe form.
   copy inheritance), certification battery incl. per-cycle dg >= 0.015,
   compact oracle (quantitative genetics with variance maintenance), docs
   (evolutionary panels: g-histogram timelines), frontier validation.
+
+
+---
+
+# v0.14 pre-note — two deep design questions [DISCUSSION OPEN, 2026-02-16]
+
+## Q1 (user): can the biochemistry itself evolve? Hand-chosen GP maps cannot scale.
+
+Current state: one gene g, one inheritance rule, but the g->phenotype maps
+(linear consumption, saturating robustness) are DESIGNED. User wants a
+uniform micro-mechanism where phenotype consequences are not hard-coded.
+
+Candidate direction (to discuss, not adopted): replace designed TRADE-OFF
+CURVES with designed CONSERVATION CONSTRAINTS, and let allocation evolve.
+Concretely: the genome becomes a small vector of couplings that enter the
+SAME universal reaction template the organism already runs (uptake rate,
+storage rate, repair rate, ...) under a hard flux/energy budget
+(sum of allocations = fixed). Trade-offs then become THEOREMS of the
+conservation law (flux to uptake cannot go to repair) rather than curve
+shapes we pick. One uniform micro-law everywhere; phenotypes = measured
+behaviors of the evolved network; the GP map is COMPUTED by physics, not
+authored. Scaling story: enrich the coupling space (more network nodes),
+never author trait consequences. Certification implication: the battery must
+DISCOVER what phenotypes exist (closure-meter logic applied one level up).
+
+## Q2 (user): do sensor-statistic contracts miss higher-level science?
+Example: lipid-like fields forming CLOSED BOUNDARIES (protocell walls) —
+a topological, non-local property. A theory could ace local sensor
+predictions while never representing closedness; adding a "closedness
+sensor" would leak ontology.
+
+Probe (2026-02-16, PASSED): topology has OPERATIONAL signatures under
+intervention. Dye assay in a membrane world: inject tracer at a central
+port; closed ring -> outside sensors read 0.0 forever; ring with an 8-cell
+gap -> dye leaks, outside sensors read 0.003-0.008. Separation ~2.7e6 x.
+Closedness is decidable ENTIRELY in port/channel terms because the world's
+own transport physics computes reachability and delivers the verdict to a
+local sensor. This is also how real biology measures compartments (dye
+exclusion, gigaseal tests) — the operational definition IS the science.
+
+Implications (draft): contracts stay in port/channel language, but each
+emergent-phenomenon class needs a matching INTERVENTION-RESPONSE contract
+family whose truth depends on the phenomenon (transport assays, source
+switching, two-point response). The certifier must prove discriminability
+(closed vs open separation) exactly like the dye probe. Known limits:
+(a) phenomena with no causal path from any port (excluded by the port-
+coverage guarantee), (b) grammar narrowness — if contracts only ever ask
+tail-means under uniform drives, structure never matters; grammar must
+grow with the phenomenon ladder.
