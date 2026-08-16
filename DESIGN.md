@@ -1344,3 +1344,48 @@ find the coexistence window where sedentary AND motile clusters both persist
 (regen ports + stir/geography ports); (c) aggregate-map measurement (does
 2-D micro linearity compose to macro nonlinearity?); (d) E1-c sigmoid
 variant unchanged in plan.
+
+
+---
+
+# v0.13 addendum 7 — E1 single-variant selection + session findings [2026-02-15]
+
+Per user: ONE E1 variant to push; other ideas parked in IDEAS.md (created).
+
+## Probes this session (all scripted; none reached a certifiable window yet)
+
+1. Motility trait via diffusion: dies by dilution (addendum 6).
+2. Motility via chemotaxis (upwind advection up resource gradients):
+   raw gradient-normalized form is noise-dominated in flat regions ->
+   incoherent advection shreds colonies. Gradient-saturated form
+   (v ∝ dR/(|dR|+eps)) is VIABLE (populations persist at w_mot=0.02 across
+   oasis speeds) but motility is NEUTRAL (no selection differential: sitters
+   also survive — 4-oasis geometry leaves too much background food).
+3. Local adaptation via static geography (oases + desert at the frugal-only
+   viability edge regen=6e-5): NO divergence — desert dwellers live off
+   resource DIFFUSING from oases (source-sink dynamics) and gene flow
+   homogenizes; ecological (density) compensation buffers genotype selection.
+4. Seasonal eras (global richness cycling): 0.55 floor under-selects
+   (density compensates); 0.35 floor exterminates (E0's selection worked
+   because port poison was SPATIALLY PARTIAL — refugia were load-bearing).
+5. Seasonal mosaic (north/south alternating winters): survives, still no
+   genotype response (sd_g shrinks -> drift/homogenization dominates).
+
+## The load-bearing insight
+
+E0's demonstrated selection lives in a NARROW regime: deep suppression
+(effective regen mult ~0.2-0.4) that is SPATIALLY PARTIAL (refugia persist,
+re-seeding happens, and the survivor pool is genotype-biased). Passive
+environmental drivers so far either under-select or exterminate. Candidate
+E1-v1 definition (NEXT SESSION, sweep-first): "storm worlds" — recurring
+LOCALIZED deep-poison events (moving storm patches, mult ~0.25, dwell ~3-5k
+ticks, covering ~30-50% of the map per event) with calm gaps; this
+reproduces E0's proven differential (deep + partial + episodic) as WORLD
+physics rather than agent action. Sweep storm depth x coverage x dwell for
+(a) survival, (b) mean_g displacement >= 0.04 per storm cycle, (c) recovery.
+Contracts then probe adaptation state vs storm history.
+
+## Session discipline note
+
+No build/version bump this session: physics not yet certifiable — pattern
+held (probe -> fail -> understand -> re-scope), matching B1/B2 practice.
