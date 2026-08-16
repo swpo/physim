@@ -1271,3 +1271,35 @@ E/B tracks: more fields (predator/pathogen trophic layer), more diversity
 local adaptation), richer stains (multiple partially-informative phenotype
 channels). Difficulty from ONTOLOGICAL BREADTH + timescale inference, never
 from clock speed.
+
+
+---
+
+# v0.13 addendum 4 — port→field coupling policy [CLARIFIED with user, 2026-02-15]
+
+Question: with multiple fields, what do input ports control?
+
+Current per-family wiring (audited):
+- tanh/GS/excitable (one dynamic field): every FIELD port couples into that
+  single field (bump-shaped local forcing); apparatus ports (C1/C2) couple
+  into sensors instead.
+- grayscott2 (two species fields): each port carries a hidden SPECIES TAG —
+  it perturbs the feed of exactly ONE species (port_species ∈ {0,1});
+  discovering which ports feed which species is part of the task.
+- ecology/evo (organism fields + resource): ALL field ports couple to ONE
+  field — the RESOURCE regeneration rate (fertilize/poison). No port touches
+  organisms directly; influence on life is always mediated by the resource.
+- ecowave: all ports inject CURRENT into the wave layer; influence on the
+  ecology is mediated by wave->rain->resource.
+
+Policy going forward (E1+, multi-field worlds): each port targets ONE hidden
+(field, mode) pair drawn per world — e.g., resource-regen here, wave-current
+there, maybe a mutagen field later — with the ASSIGNMENT hidden, like
+apparatus ports. Port-target diversity becomes another discoverable layer
+("which lever moves which stratum of reality") and a difficulty dial:
+easy worlds = all ports same field; hard worlds = mixed hidden targets,
+including possible two-field mixtures (a port that both warms and stirs).
+Rationale: mirrors real experimental levers (a drug hits one pathway; a
+heater moves one field) while keeping ontology discovery central. Fully
+generalizable in the template: port coupling is a per-port vector over
+(fields x modes), currently one-hot, mixtures allowed later.
