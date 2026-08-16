@@ -1110,3 +1110,29 @@ No engine changes; two probe campaigns recorded in DESIGN v0.14.
    emergent multimodality. Candidate fixes (CRPS distributional contracts,
    assay-grammar growth, measurement-adequacy certification, prepare-tier
    assays) recorded in DESIGN; nothing built yet — discussion open.
+
+
+---
+
+# Addendum 23 (2026-02-16): CRPS distributional contracts ship (v0.10.0) + adequacy certification
+
+User picked directions 1+3 from addendum 22, as a cross-check pair.
+
+BUILT:
+- Answers accept optional quantiles {0.1,0.25,0.5,0.75,0.9}; scoring is now
+  CRPS (2x mean pinball) minus the truth ensemble's leave-one-out floor,
+  exp(-excess/scale). Deterministic limit == legacy exp(-|err|/scale)
+  (verified: point@truth 1.0, off-by-scale e^-1). Bimodal truth: point@mean
+  0.34 / point@mode 0.32 / honest distribution 1.00 — multimodality collapse
+  fixed; structure pays. Legacy point accuracy kept as report-only metric.
+- Prompts updated generically (no phenomenon named; grammar world-independent).
+- Floors spot-checked: B2 null/tail 0.32/0.42 (legacy 0.28/0.35); D4 0.24/0.22
+  (0.22/0.22). No floor inflation.
+- probes/adequacy_cert.py: A = Var_instances(mu)/mean(tau^2) on fixed
+  verbatim templates; CRPS oracle-minus-climatology gap; cross-check:
+  B2 Spearman(log A, gap) = 1.000, D2 = 0.904, C4 saturated (both measures
+  agree). CRPS validated against the auditable audit (DESIGN v0.15).
+
+Q1 follow-up recorded in IDEAS.md: parameter-search world screening
+(sample parameterizations, keep those with certified interesting phenomena;
+the R* sweep was the manual prototype).

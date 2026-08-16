@@ -29,3 +29,16 @@
 - Infra: HF gallery pagination; retro-oracles for C2/C3; n>=5 stats on hard
   tier; Environments Hub publication; RL training experiments on the
   decomposition curricula
+
+
+## Parameter-search world screening (user, 2026-02-16) — "anthropic-ish" design
+
+Instead of hand-picking emergent-economics constants (c_max, m0, m1, cap,
+storm depth...), run trials over many parameterizations and keep the ones
+that yield interesting higher-level phenomena, with the certification battery
+(regime flips / bimodality / selection displacement / adequacy ratios) as the
+objective function. We accept that we only ever ship worlds that pass the
+screen — document the screen as part of the benchmark's design provenance.
+Natural pairing: v0.14 enzyme economics (few linear prices, emergent regime
+diagrams) + this screen = scalable world search. Related: IDEAS "automated
+world search" thread.

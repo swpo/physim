@@ -560,6 +560,65 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
     return float(max(3.0 * tau, frac * channel_range, 1e-3))
 
 
+QLEVELS = (0.1, 0.25, 0.5, 0.75, 0.9)
+
+
+def _pinball(q: float, y: float, p: float) -> float:
+    return (y - q) * (p - (1.0 if y < q else 0.0))
+
+
+def _quantiles_of(ans: dict) -> dict[float, float] | None:
+    """Extract {level: value} from an answer dict; None if absent/invalid."""
+    qs = ans.get("quantiles")
+    if not isinstance(qs, dict) or not qs:
+        return None
+    out = {}
+    for k, v in qs.items():
+        try:
+            p = float(k); q = float(v)
+        except (TypeError, ValueError):
+            return None
+        if not (0.0 < p < 1.0):
+            return None
+        out[p] = q
+    return out or None
+
+
+def crps_accuracy(samples: list[float], scale: float, ans: dict) -> dict:
+    """Distributional accuracy via CRPS estimated by 2x mean pinball loss over
+    fixed quantile levels, minus the truth ensemble's leave-one-out floor.
+    Deterministic limit (all samples equal): point answers reduce to
+    exp(-|err|/scale) — the legacy score. Where the world is stochastic,
+    point answers pay E|y - q| while honest distributional answers approach
+    the floor. Multimodal knowledge (e.g. which branch/mode this instance is
+    in) is exactly what pays. Returns accuracy in (0,1] + diagnostics."""
+    y = np.asarray(samples, dtype=float)
+    if len(y) < 2:
+        return {"accuracy_crps": 0.0, "crps": None, "crps_floor": None}
+    qs = _quantiles_of(ans)
+    if qs is None:
+        try:
+            m = float(ans["mean"])
+        except (KeyError, TypeError, ValueError):
+            return {"accuracy_crps": 0.0, "crps": None, "crps_floor": None}
+        qs = {p: m for p in QLEVELS}
+    # answer CRPS (2x mean pinball over the fixed levels)
+    crps = 2.0 * float(np.mean([
+        np.mean([_pinball(qs.get(p, qs.get(0.5, 0.0)), yy, p) for yy in y])
+        for p in QLEVELS]))
+    # leave-one-out floor: predict each draw with the quantiles of the rest
+    floors = []
+    for i in range(len(y)):
+        rest = np.delete(y, i)
+        loo_qs = {p: float(np.quantile(rest, p)) for p in QLEVELS}
+        floors.append(2.0 * float(np.mean([
+            _pinball(loo_qs[p], y[i], p) for p in QLEVELS])))
+    floor = float(np.mean(floors))
+    excess = max(crps - floor, 0.0)
+    return {"accuracy_crps": float(np.exp(-excess / scale)),
+            "crps": round(crps, 5), "crps_floor": round(floor, 5)}
+
+
 def score_answer(mu: float, scale: float, ans: dict) -> dict:
     """Accuracy in (0,1]: exp(-|err|/scale). Coverage: does mu land in [low,high].
     Calibration: Winkler interval score (alpha=0.2) mapped through exp(-W/6*scale):
@@ -1048,23 +1107,29 @@ class PhysimSession:
                         answers[a["id"]] = a
             except ValueError as e:
                 parse_error = str(e)
-        detail, per_stratum = [], {}
-        acc_all, cov_all, ceil_all, cal_all = [], [], [], []
+        detail, per_stratum, per_stratum_legacy = [], {}, {}
+        acc_all, acc_legacy, cov_all, ceil_all, cal_all = [], [], [], [], []
         ranges = self.world.true_channel_range()
         for c in self.contracts:
             mu, tau, samples = truth_statistic(self.world, c)
             scale = answer_scale(tau, float(ranges[c.channel]), c.stat,
                              getattr(self.world.p, "reaction", "tanh"))
-            s = score_answer(mu, scale, answers.get(c.id, {}))
+            ans = answers.get(c.id, {})
+            s = score_answer(mu, scale, ans)
+            cs = crps_accuracy(samples, scale, ans)
             ceil = replication_accuracy(samples, scale)
             detail.append({"id": c.id, "stratum": c.stratum, "channel": c.channel,
                            "mu": round(mu, 4), "tau": round(tau, 4),
                            "scale": round(scale, 4),
                            **{k: (round(v, 4) if isinstance(v, float) else v)
                               for k, v in s.items()},
+                           **{k: (round(v, 4) if isinstance(v, float) else v)
+                              for k, v in cs.items()},
                            "replication": round(ceil, 4)})
-            per_stratum.setdefault(c.stratum, []).append(s["accuracy"])
-            acc_all.append(s["accuracy"]); cov_all.append(s["covered"]); ceil_all.append(ceil)
+            per_stratum.setdefault(c.stratum, []).append(cs["accuracy_crps"])
+            per_stratum_legacy.setdefault(c.stratum, []).append(s["accuracy"])
+            acc_all.append(cs["accuracy_crps"]); acc_legacy.append(s["accuracy"])
+            cov_all.append(s["covered"]); ceil_all.append(ceil)
             cal_all.append(s.get("calibration", 0.0))
         prep_detail, prep_rates = [], []
         for c in self.prep_contracts:
@@ -1082,6 +1147,9 @@ class PhysimSession:
             "coverage": float(np.mean(cov_all)),
             "replication_ref": float(np.mean(ceil_all)),
             "per_stratum": {k: float(np.mean(v)) for k, v in per_stratum.items()},
+            "reward_accuracy_legacy": float(np.mean(acc_legacy)),
+            "per_stratum_legacy": {k: float(np.mean(v))
+                                   for k, v in per_stratum_legacy.items()},
             "n_answered": float(np.mean([d["answered"] for d in detail])),
             "budget_used_frac": self.world.ticks_used / self.world.p.max_ticks,
             "detail": detail,

@@ -233,6 +233,15 @@ shifts the population's genotype toward frugality and the population
 re-expands <i>at the adapted genotype</i>: natural selection, emergent,
 with genetic path dependence (a second famine meets a different population
 than the first).</p>
+<p class="note"><b>Scoring note (2026-02-16, v0.10.0):</b> prediction
+scoring is now distributional (CRPS against the truth ensemble; reduces to the
+old point score on deterministic contracts). Agents may answer with quantiles;
+where a world is stochastic or has multiple regimes, honest distributions now
+outscore any point — the old scoring silently erased exactly that structure.
+Numbers on this page predate the upgrade (point-scored); floors were
+spot-checked unchanged. Measurement adequacy is now certified god-side
+(variance decomposition A = between-instance/within-instance; CRPS recovers
+it with Spearman 0.90-1.00).</p>
 <p class="note"><b>Correction (2026-02-15):</b> the first E0 release used
 blending inheritance (variance-destroying; Jenkin's 1867 objection, live) and
 its "adaptation" was mostly location-luck survivorship. The physics is fixed

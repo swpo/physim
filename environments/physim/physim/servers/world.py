@@ -265,8 +265,13 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
     @vf.tool
     async def answer(self, answers: list) -> str:
         """Submit final answers: a list of {"id": int, "mean": float, "low": float,
-        "high": float}, one per contract. May be called again to revise before the
-        rollout ends; the last submission is scored."""
+        "high": float}, one per contract. OPTIONAL: add "quantiles":
+        {"0.1": v, "0.25": v, "0.5": v, "0.75": v, "0.9": v} — scoring is a
+        proper distributional score (CRPS), so where the system is stochastic
+        or has multiple regimes, reporting your honest full distribution
+        (including spread and multimodality) scores strictly better than any
+        single point. May be called again to revise; the last submission is
+        scored."""
         st = self.state
         if st.phase != "answer":
             return json.dumps({"error": (
@@ -284,10 +289,18 @@ class PhysimToolset(vf.Toolset[vf.ToolsetConfig, PhysimToolState]):
                     continue
             if isinstance(a, dict) and "id" in a:
                 try:
-                    norm.append({"id": int(a["id"]),
-                                 "mean": float(a.get("mean", 0.0)),
-                                 "low": float(a.get("low", a.get("mean", 0.0))),
-                                 "high": float(a.get("high", a.get("mean", 0.0)))})
+                    entry = {"id": int(a["id"]),
+                             "mean": float(a.get("mean", 0.0)),
+                             "low": float(a.get("low", a.get("mean", 0.0))),
+                             "high": float(a.get("high", a.get("mean", 0.0)))}
+                    qs = a.get("quantiles")
+                    if isinstance(qs, dict) and qs:
+                        try:
+                            entry["quantiles"] = {
+                                str(float(k)): float(v) for k, v in qs.items()}
+                        except (TypeError, ValueError):
+                            pass
+                    norm.append(entry)
                 except (TypeError, ValueError):
                     bad += 1
             else:

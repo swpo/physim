@@ -1560,3 +1560,76 @@ separation ~2.7e6x). Real gap identified instead, in the CONTRACT layer:
 4. Prepare-tier is the strongest leak-free probe of emergent understanding:
    "prepare: outside dye < ε under injection era" can only be satisfied
    reliably by controlling closedness itself.
+
+
+---
+
+# v0.15 — CRPS distributional contracts + measurement-adequacy certification (2026-02-16)
+
+User direction: build (1) CRPS distributional scoring AND (3) auditable
+adequacy certification as a cross-check pair; if (1) empirically recovers
+(3)'s signal, (1) becomes the general mechanism and (3) stays the audit.
+
+## CRPS scoring (built, verified)
+
+- Answers may include "quantiles" at fixed levels {0.1, 0.25, 0.5, 0.75, 0.9}.
+  Point answers = degenerate distribution (backward compatible).
+- Score = exp(-max(QS - QS_floor, 0)/scale), QS = 2x mean pinball loss over
+  the fixed levels vs the truth ensemble; QS_floor = the ensemble's
+  leave-one-out self-score (irreducible floor; perfect distributional
+  knowledge -> accuracy ~1, not exp(-spread/scale)).
+- VERIFIED limits: deterministic truth -> exactly legacy exp(-|err|/scale)
+  (point@truth = 1.0, off-by-scale = e^-1). Bimodal truth: point@mean 0.34,
+  point@mode 0.32, honest bimodal distribution 1.00 — multimodality collapse
+  (v0.14 finding) is fixed: structure now PAYS.
+- reward_accuracy is now CRPS-based; legacy point accuracy kept as
+  report-only metric (accuracy_legacy) for leaderboard continuity.
+  Floor spot-checks: B2 null/tail 0.32/0.42 (legacy 0.28/0.35),
+  D4 0.24/0.22 (0.22/0.22) — no floor inflation.
+- Prompts (chat + tools) state the scoring honestly and generically: "where
+  the system is stochastic or has multiple regimes, an honest distribution
+  scores strictly better than any point." No ontology leak (no phenomenon is
+  named; the grammar is world-independent).
+
+## Measurement-adequacy certification (built, probes/adequacy_cert.py)
+
+Per contract template (fixed contract_seed, aligned across world seeds):
+  A = Var_instances(mu) / mean_instances(tau^2)
+A >> 1 => the contract's truth depends on the instance's phenomenon state
+(e.g. which species wins) far beyond measurement noise — the phenomenon is
+MEASURED. A ~ 1 => instance-independent law question. Auditable, god-side
+only. Cross-check: correlate A with the CRPS gap between an instance-aware
+oracle (own-seed quantiles) and climatology (cross-seed pooled quantiles);
+high Spearman rho = CRPS recovers the auditable signal.
+
+## Q1 follow-up recorded (user's screening principle)
+
+Parameter choice for emergent-economics worlds (c_max, m0, m1, cap, storm
+depth) should become a SEARCH with the phenomenon battery as objective:
+sample parameterizations, certify interestingness (regime flips, bimodality,
+selection), keep the interesting ones. The R* sweep in v0.14 was the manual
+prototype. Anthropic-flavored: we only ever observe worlds that passed the
+screen — acceptable for a benchmark, documented as such.
+
+
+### Cross-check results (2026-02-16, /tmp/adequacy_report.json)
+
+Fixed verbatim templates, 5/3/4 instances x 4-rep ensembles:
+- B2 (winner bimodality): A = 6-834, CRPS gaps 0.33-0.93, Spearman(log A,
+  gap) = 1.000. Instance-aware oracle beats climatology by up to 0.93
+  (S2-poison carrying capacity: climatology 0.068 — pooled-across-winners is
+  nearly worthless). CRPS recovers the auditable signal EXACTLY.
+- D2: A spans 0.01-8296; rho = 0.904. The two A~0.01 contracts are
+  instance-invariant equilibrium questions — adequacy cleanly flags "this
+  contract does not ask about the instance" and climatology scores 1.000
+  there, correctly.
+- C4: every contract carries instance structure (A = 477-2145 from
+  alienized wave-parameter variation; smooth, not multimodal). Gap saturates
+  0.51-0.63 with no dynamic range in log A -> rho uninformative (-0.19).
+  Both measures saturate TOGETHER: consistent.
+VERDICT: (1) validated against (3). CRPS is the general mechanism; the
+A-ratio stays as the cheap god-side audit certificate. Note: A conflates
+emergent multimodality (B2) with smooth law variation (C4) — both are
+legitimately "instance-specific truth the agent must pin down"; the
+distinction (multimodal vs smooth) is visible in the pooled histogram if
+needed, not in A.
