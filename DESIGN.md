@@ -1236,3 +1236,38 @@ prediction: near-linear aggregate response of the POPULATION PHENOTYPE MIX
 (fraction past threshold behaves smoothly) with punctuated per-lineage
 dynamics — i.e., the user's inversion, measurable. Report these in the
 per-world battery alongside oracle size.
+
+
+---
+
+# v0.13 addendum 3 — timescales are science, not friction [DECIDED with user, 2026-02-15]
+
+User pushback on the E1 note ("make selection faster/more visible"): real
+experimenters LEARN timescales by measuring local rates; the world should not
+be sped up for the observer's convenience. Probe verdict (E0, scripted):
+
+- Naive linear extrapolation of short-pulse selection rates to era scale is
+  wildly wrong (predicted mean_g -1.26 / +0.04 vs truth 0.448) — because the
+  response saturates as variance depletes.
+- BUT the saturation is measurable EARLY: rate decays across pulse lengths
+  (-1.45e-4/t at 500t -> -1.9e-5/t at 3000t) and sd_g shrinkage is visible
+  within 1500 ticks. A rate scientist measuring the DECELERATION can fit the
+  saturating law from ~2% of era-scale data.
+
+So E0's slowness is legitimate discoverable structure (the timescale + its
+saturation law), not unfairness. DECISION: do not tune timescales for agent
+convenience anywhere in the E-track. The "budget use 1-5%" observation is a
+finding about agent conduct (they don't do rate-extrapolation science), not
+a world defect.
+
+## E1 redirection: complexity you can measure, not speed
+
+E1 = 2-D trait space (consumption axis x a second axis, e.g., motility or
+wave-affinity) with niche differentiation -> EMERGENT SPECIES as phenotype
+clusters; keep timescales as they fall out of the physics. E1-c (sigmoid)
+unchanged. Additional measurable-complexity directions ratified for the
+E/B tracks: more fields (predator/pathogen trophic layer), more diversity
+(multi-modal founder genotypes), spatial structure (resource geography ->
+local adaptation), richer stains (multiple partially-informative phenotype
+channels). Difficulty from ONTOLOGICAL BREADTH + timescale inference, never
+from clock speed.
