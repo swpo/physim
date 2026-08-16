@@ -1389,3 +1389,46 @@ Contracts then probe adaptation state vs storm history.
 
 No build/version bump this session: physics not yet certifiable — pattern
 held (probe -> fail -> understand -> re-scope), matching B1/B2 practice.
+
+
+---
+
+# v0.13 addendum 8 — the blending-inheritance bug and the storm-world fix chain [2026-02-15]
+
+## Honest correction to E0
+
+Colony-level diagnosis of E0's celebrated mean_g shift (0.485->0.447 under
+poison): survival correlates with SHELTER (location luck; r=0.46), NOT
+genotype (r=-0.08). E0's "adaptation" was mostly survivorship composition.
+Deeper: paired-famine tests (symmetric bimodal colonies) show true
+g-selection EXISTS at famine mult ~0.5 (frugal beats greedy 41:19 across
+seeds) but is nearly regime-symmetric under the linear GP map (rich phases
+counter-select), and — decisively — the growth-copy inheritance as
+implemented is BLENDING inheritance (V-weighted neighbor averaging), which
+destroys variance geometrically (sd 0.03->0.007 over cycles): Jenkin's 1867
+objection to Darwin, reproduced in silico. Selection cannot act on variance
+that blending erases.
+
+## The fix chain (probes PASSED)
+
+1. COPY inheritance (particulate): fresh tissue (V_old < 0.02) copies the g
+   of its single dominant parent neighbor (argmax V), no averaging.
+   -> variance persists (sd 0.03-0.08 sustained).
+2. ASYMMETRIC GP map: c(g) linear, k(g) saturating (tanh) — famine selects
+   harder than richness counter-selects.
+3. Storms at the selective sweet spot: depth (regen mult) 0.5 — NOT 0.2-0.35
+   (indiscriminate death) — coverage ~full, dwell ~8k, calm ~8k.
+
+Result: sustained directional evolution under storm cycling — mean_g
+0.50 -> 0.36-0.39 over 90k ticks (~ -0.02 per cycle, 2 seeds), populations
+healthy (n 12-46). THE E1-v1 physics is certified in probe form.
+
+## Next session (build)
+
+- Engine: inheritance mode parameter (copy|blend) — E1 uses copy; decide
+  whether to FIX E0 (breaking its results) or version it (E0 stays blending
+  as shipped + REPORT correction; E1 = corrected physics).
+- E1 "storm world" preset (reaction=evo + storm schedule + asym GP map +
+  copy inheritance), certification battery incl. per-cycle dg >= 0.015,
+  compact oracle (quantitative genetics with variance maintenance), docs
+  (evolutionary panels: g-histogram timelines), frontier validation.
