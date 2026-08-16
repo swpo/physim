@@ -1303,3 +1303,44 @@ Rationale: mirrors real experimental levers (a drug hits one pathway; a
 heater moves one field) while keeping ontology discovery central. Fully
 generalizable in the template: port coupling is a per-port vector over
 (fields x modes), currently one-hot, mixtures allowed later.
+
+
+---
+
+# v0.13 addendum 5 — port coverage guarantee [AMENDED with user, 2026-02-15]
+
+Amendment to addendum 4: every dynamic field must be REACHABLE by at least
+one input port (a coverage guarantee), so each stratum of reality is
+probe-able in principle. Since ports are anonymous and (in theory) movable,
+what matters is coverage of the (field, mode) target set, not which port
+carries which target. Unreachable-field worlds (observability without
+controllability) are OFF the table for the standard tracks — if ever used,
+they would be an explicitly labeled variant, not a default.
+
+Certification addition: world generation asserts every field has >=1 port;
+generators sample port->target assignments under that constraint.
+
+
+---
+
+# v0.13 addendum 6 — E1 probe findings: motility needs patch turnover [IN PROGRESS, 2026-02-15]
+
+E1 (2-D traits: consumption x motility) probe results so far:
+
+1. STATIC resource geography (oases + desert): populations collapse to a
+   single sedentary oasis colony; HIGH-MOTILITY founders die by DILUTION
+   (spreading thins V below GS viability). "Sedentary wins static worlds" is
+   a theorem of this physics — motility can only pay when patches TURN OVER
+   (deplete/respawn or wander). This is textbook r/K–disperser ecology
+   emerging from the substrate, worth keeping as a documented law.
+2. First moving-oases attempt went extinct globally (tuning: constant
+   consumption too high + weakened oasis regen). The viability window for
+   "wandering oases + motility premium" needs a proper parameter sweep
+   (oasis speed x regen contrast x motility cost), certification-style.
+
+E1 therefore stays IN DESIGN. Tuning agenda for next iteration: (a) sweep to
+find the coexistence window where sedentary AND motile clusters both persist
+(niche differentiation = emergent species); (b) port coverage per addendum 5
+(regen ports + stir/geography ports); (c) aggregate-map measurement (does
+2-D micro linearity compose to macro nonlinearity?); (d) E1-c sigmoid
+variant unchanged in plan.
