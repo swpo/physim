@@ -1136,3 +1136,16 @@ BUILT:
 Q1 follow-up recorded in IDEAS.md: parameter-search world screening
 (sample parameterizations, keep those with certified interesting phenomena;
 the R* sweep was the manual prototype).
+
+
+---
+
+# Addendum 24 (2026-02-16): first frontier run under CRPS — the option gets used
+
+B2 spot-check (fable + claude_code, 2 seeds, v0.10.0): CRPS 0.53 / 0.42 vs
+legacy point accuracy 0.39 / 0.31. Both rollouts answered with quantiles on
+essentially all contracts, unprompted (beyond the one-line schema/prompt
+mention) — on the world with winner bimodality, the model immediately used
+the distributional channel. CRPS > legacy for honest point answers is the
+intended fairness fix (legacy charged agents for the world's own noise
+floor; CRPS charges only excess over it). End-to-end schema flow validated.
