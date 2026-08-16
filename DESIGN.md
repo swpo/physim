@@ -1481,3 +1481,82 @@ switching, two-point response). The certifier must prove discriminability
 coverage guarantee), (b) grammar narrowness — if contracts only ever ask
 tail-means under uniform drives, structure never matters; grammar must
 grow with the phenomenon ladder.
+
+
+## v0.14 probe results (2026-02-16): emergent GP maps are possible — the R* theorem
+
+Q1 probes (scripts /tmp/q1_probe*.py, /tmp/q1_sweep.py):
+
+1. NEGATIVE (honest): resource-depletion feedback alone does NOT bend the
+   realized-uptake curve. With c(g) linear and constant death, per-capita
+   uptake stayed linear in g (incremental slopes 0.00028/0.00023/0.00029)
+   until outright extinction at g=0.9. "The world will saturate it for us"
+   was wrong at this level.
+
+2. POSITIVE: "enzyme economics" — replace ALL authored trade-off curves with
+   linear bookkeeping + conservation:
+       income  = c_max * g * V * R      (earn ∝ enzyme ∝ substrate)
+       upkeep  = (m0 + m1 * g) * V      (enzymes cost rent, R-independent)
+       larder  E ≤ cap * V              (finite storage)
+       deficit → burn tissue (bankruptcy), V < V_floor → death
+   Then net(g) = V * (g * (c_max*R − m1) − m0) is LINEAR in g with a
+   resource-dependent slope sign. The world computes a phase boundary at
+       R* = m1 / c_max
+   and selection direction is an emergent function of where local R sits:
+   | storm regen mult | outcome (60k ticks) | who dies in storms |
+   |---|---|---|
+   | none (calm) | mean_g drifts UP 0.549→0.570 | — (greed pays when R>R*) |
+   | 0.30 (mild) | mean_g RISES 0.626→0.792 | frugal (dead g=0.316) |
+   | 0.20 (medium) | mean_g FALLS 0.667→0.584 | greedy (dead g=0.695) |
+   | 0.12 / 0.05 (deep) | extinction | everyone |
+   Both selection directions and the famine/plenty asymmetry are THEOREMS of
+   the conservation law, not authored curve shapes. The break-even genotype
+   g_crit(R) = m0/(c_max*R − m1) clips the frugal tail when R>R* and the
+   greedy tail when R<R* — a full regime diagram from one linear micro-law.
+
+   Still authored: the constants (c_max, m0, m1, cap) and the conservation
+   structure itself. Design principle adopted for the E-track roadmap:
+   AUTHOR PRICES AND CONSERVATION LAWS, NOT CURVES. Push authorship one
+   level down; let curve shapes, regime boundaries, and trade-offs be
+   computed by the world. Scaling story: genome → allocation vector over K
+   linear processes under a budget; trade-offs multiply combinatorially with
+   zero additional curve-authoring.
+
+   Known open issue for any E2 build: sustained selection at depth 0.2 eats
+   variance (sd 0.234→0.072/60k); needs mutation-selection balance, and the
+   depth window is again narrow (0.12 extinct / 0.30 inverted) — same
+   sweet-spot engineering as E1, now one level down.
+
+## v0.14 measurement-adequacy findings (Q2)
+
+Dye-assay probe passed (see pre-note): topology IS port-decidable
+operationally (closed vs open membrane: outside sensors 0.0 vs 0.003-0.008,
+separation ~2.7e6x). Real gap identified instead, in the CONTRACT layer:
+
+1. MULTIMODALITY COLLAPSE (concrete scoring flaw, fixable, no leak): truth
+   ensembles are collapsed to (μ, τ) and answers scored exp(−|pred−μ|/scale).
+   If an emergent property varies across the truth ensemble (membrane closed
+   in some draws, cracked in others), truth is BIMODAL; predicting the
+   physically-unrealizable mean outscores predicting the structure. Exactly
+   where emergence creates structure, the score erases it. Candidate fix:
+   distributional contracts scored by CRPS against the truth ensemble
+   (answer = a few quantiles or (value,weight) atoms) — stays entirely in
+   port language; structure starts to PAY. Applies today to B-track
+   competition worlds (winner bimodality), not just hypothetical membranes.
+
+2. GRAMMAR NARROWNESS: closedness only shows up under assay-like protocols
+   (localized injection + outside listening). If sampled contracts only ever
+   drive uniform tilts, the revealing protocol is never asked. Contract
+   grammar must grow with the phenomenon ladder (patch injections exist;
+   need them in contract sampling, not just free exploration).
+
+3. MEASUREMENT-ADEQUACY CERTIFICATION (new rich-vs-big leg, god-side only):
+   for each god-known emergent phenomenon, certify there EXISTS a contract
+   in the sampled family whose truth is counterfactually dependent on it
+   (flip the phenomenon with god-mode — crack the membrane — and show the
+   contract answer moves by ≫ τ). No agent-visible ontology leak: the agent
+   still sees only port-language contracts.
+
+4. Prepare-tier is the strongest leak-free probe of emergent understanding:
+   "prepare: outside dye < ε under injection era" can only be satisfied
+   reliably by controlling closedness itself.

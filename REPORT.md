@@ -1086,3 +1086,27 @@ predictive clock.
 fable's zero is legitimate under the rules (unanswered = 0, stated in the
 prompt) but flags a conduct pattern: research programs that never converge
 to answers. No env change — the scoreboard already prices it.
+
+
+---
+
+# Addendum 22 (2026-02-16): probe day — emergent GP maps (R* theorem) + measurement adequacy
+
+No engine changes; two probe campaigns recorded in DESIGN v0.14.
+
+1. Evolvable biochemistry (user Q: authored GP maps can't scale): depletion
+   feedback alone does NOT produce saturating phenotypes (negative probe).
+   But "enzyme economics" (linear income ∝ g·R, linear upkeep ∝ g, finite
+   larder, bankruptcy) yields EMERGENT bidirectional selection with a
+   world-computed critical point R* = m1/c_max: mild storms kill the frugal
+   (g rises), medium storms kill the greedy (g falls), calm drifts greedy —
+   no authored curve shapes. Principle adopted: author prices and
+   conservation laws, not curves. E2 candidate parked pending discussion.
+
+2. Measurement adequacy (user Q: do sensor contracts miss higher-level
+   science, e.g. closed membranes?): dye-assay probe shows topology is
+   port-decidable operationally (closed vs open separation ~2.7e6x). The
+   real flaw is in scoring: truth ensembles collapse to (μ,τ), erasing
+   emergent multimodality. Candidate fixes (CRPS distributional contracts,
+   assay-grammar growth, measurement-adequacy certification, prepare-tier
+   assays) recorded in DESIGN; nothing built yet — discussion open.
