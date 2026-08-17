@@ -1,0 +1,390 @@
+[
+ {
+  "stage": "tau4",
+  "id": "tau4_G0=1.5",
+  "evo": {
+   "c": 0.0075,
+   "m": 0.15,
+   "G0": 1.5
+  },
+  "seed": 0,
+  "L": 64,
+  "nticks": 400000,
+  "status": "ok",
+  "eco": {
+   "status": "ok",
+   "meanH_end": 0.17696737539134894,
+   "meanP_end": 5.156695714400278,
+   "T3": 146.89719626168224,
+   "T2": null,
+   "tau1": 7.7,
+   "sep12": null,
+   "sep23": null,
+   "spatial_cv": 0.6924590227841667,
+   "npatch_med": 11.0,
+   "G1": false,
+   "G2": false,
+   "top_fit": {
+    "model": "switch",
+    "r2": 0.64,
+    "params": {
+     "mean_dwell": 73.44859813084112,
+     "n_flips": 107
+    },
+    "all": [
+     [
+      "switch",
+      0.64
+     ],
+     [
+      "oscillator",
+      0.061
+     ],
+     [
+      "constant",
+      0.0
+     ],
+     [
+      "relaxation",
+      -0.1
+     ]
+    ]
+   },
+   "fast_amp_frac": 0.30441154420374605,
+   "ell1": null,
+   "ell2_spec": null
+  },
+  "Gstar": 0.7513279144395394,
+  "G_plateau_sd": 0.017834820185273683,
+  "G_init": 1.501680018337337,
+  "sdG_med": 0.19369454808921865,
+  "sdG_end": 0.19427680761431929,
+  "G_drift_tailwin": -0.015804245785418093,
+  "stationary": true,
+  "t_conv": 4261.0,
+  "fit4": {
+   "model": "relaxation_log",
+   "r2": 0.9488,
+   "params": {
+    "tau": 1663.9556329288623
+   }
+  },
+  "mode": "relaxation_log",
+  "tau4": 1663.9556329288623,
+  "T4": null,
+  "G_T3band_amp": 0.0056404181714771184,
+  "G_plateau_acfT": 2336.0,
+  "G_plateau_acfq": 0.19167546662577237,
+  "entrained": false,
+  "sep34": 11.327347800190118,
+  "G1_4layer": false,
+  "G2_L4": true,
+  "variance_ok": true,
+  "runtime_s": 61.8
+ },
+ {
+  "stage": "tau4",
+  "id": "tau4_G0=1.5",
+  "evo": {
+   "c": 0.0075,
+   "m": 0.15,
+   "G0": 1.5
+  },
+  "seed": 1,
+  "L": 64,
+  "nticks": 400000,
+  "status": "ok",
+  "eco": {
+   "status": "ok",
+   "meanH_end": 0.18809986791305086,
+   "meanP_end": 4.914059088639758,
+   "T3": 184.11627906976744,
+   "T2": null,
+   "tau1": 7.7,
+   "sep12": null,
+   "sep23": null,
+   "spatial_cv": 0.6892336505328363,
+   "npatch_med": 11.0,
+   "G1": false,
+   "G2": false,
+   "top_fit": {
+    "model": "switch",
+    "r2": 0.6652,
+    "params": {
+     "mean_dwell": 92.05813953488372,
+     "n_flips": 86
+    },
+    "all": [
+     [
+      "switch",
+      0.665
+     ],
+     [
+      "oscillator",
+      0.082
+     ],
+     [
+      "constant",
+      0.0
+     ],
+     [
+      "relaxation",
+      -6.166
+     ]
+    ]
+   },
+   "fast_amp_frac": 0.3674310818823662,
+   "ell1": null,
+   "ell2_spec": null
+  },
+  "Gstar": 0.7452512711778383,
+  "G_plateau_sd": 0.01985825249844515,
+  "G_init": 1.4986441241673956,
+  "sdG_med": 0.19074804286733554,
+  "sdG_end": 0.19175416512475688,
+  "G_drift_tailwin": -0.0032326694330808807,
+  "stationary": true,
+  "t_conv": 3809.5,
+  "fit4": {
+   "model": "switch",
+   "r2": 0.873,
+   "params": {
+    "mean_dwell": 5.125,
+    "n_flips": 16
+   },
+   "all": [
+    [
+     "switch",
+     0.873
+    ],
+    [
+     "relaxation",
+     0.543
+    ],
+    [
+     "oscillator",
+     0.034
+    ],
+    [
+     "constant",
+     -0.0
+    ]
+   ]
+  },
+  "mode": null,
+  "tau4": null,
+  "T4": null,
+  "G_T3band_amp": 0.006777718404001958,
+  "G_plateau_acfT": 3622.5,
+  "G_plateau_acfq": 0.17825941586900115,
+  "entrained": false,
+  "sep34": null,
+  "G1_4layer": false,
+  "G2_L4": false,
+  "variance_ok": true,
+  "runtime_s": 72.4
+ },
+ {
+  "stage": "tau4",
+  "id": "tau4_G0=1.5",
+  "evo": {
+   "c": 0.0075,
+   "m": 0.15,
+   "G0": 1.5
+  },
+  "seed": 2,
+  "L": 64,
+  "nticks": 400000,
+  "status": "ok",
+  "eco": {
+   "status": "ok",
+   "meanH_end": 0.17314773366928435,
+   "meanP_end": 4.7850940921927885,
+   "T3": 174.35555555555555,
+   "T2": null,
+   "tau1": 7.5,
+   "sep12": null,
+   "sep23": null,
+   "spatial_cv": 0.695056445053164,
+   "npatch_med": 11.0,
+   "G1": false,
+   "G2": false,
+   "top_fit": {
+    "model": "switch",
+    "r2": 0.6261,
+    "params": {
+     "mean_dwell": 87.17777777777778,
+     "n_flips": 90
+    },
+    "all": [
+     [
+      "switch",
+      0.626
+     ],
+     [
+      "oscillator",
+      0.042
+     ],
+     [
+      "constant",
+      0.0
+     ],
+     [
+      "relaxation",
+      -0.468
+     ]
+    ]
+   },
+   "fast_amp_frac": 0.35284224164101274,
+   "ell1": null,
+   "ell2_spec": null
+  },
+  "Gstar": 0.7482568975357833,
+  "G_plateau_sd": 0.023695656746345103,
+  "G_init": 1.5026600451127714,
+  "sdG_med": 0.19254511489548803,
+  "sdG_end": 0.1941330238424669,
+  "G_drift_tailwin": 0.017687326895913104,
+  "stationary": true,
+  "t_conv": 3605.0,
+  "fit4": {
+   "model": "switch",
+   "r2": 0.8435,
+   "params": {
+    "mean_dwell": 12.5,
+    "n_flips": 8
+   },
+   "all": [
+    [
+     "switch",
+     0.844
+    ],
+    [
+     "relaxation",
+     0.404
+    ],
+    [
+     "oscillator",
+     0.03
+    ],
+    [
+     "constant",
+     0.0
+    ]
+   ]
+  },
+  "mode": null,
+  "tau4": null,
+  "T4": null,
+  "G_T3band_amp": 0.0067121285645516645,
+  "G_plateau_acfT": 3799.0,
+  "G_plateau_acfq": 0.20802273077487082,
+  "entrained": false,
+  "sep34": null,
+  "G1_4layer": false,
+  "G2_L4": false,
+  "variance_ok": true,
+  "runtime_s": 73.9
+ },
+ {
+  "stage": "tau4",
+  "id": "tau4_G0=0.6",
+  "evo": {
+   "c": 0.0075,
+   "m": 0.15,
+   "G0": 0.6
+  },
+  "seed": 0,
+  "L": 64,
+  "nticks": 400000,
+  "status": "ok",
+  "eco": {
+   "status": "ok",
+   "meanH_end": 0.17696737539134894,
+   "meanP_end": 5.156695714400278,
+   "T3": 146.89719626168224,
+   "T2": null,
+   "tau1": 7.7,
+   "sep12": null,
+   "sep23": null,
+   "spatial_cv": 0.6924590227839649,
+   "npatch_med": 11.0,
+   "G1": false,
+   "G2": false,
+   "top_fit": {
+    "model": "switch",
+    "r2": 0.64,
+    "params": {
+     "mean_dwell": 73.44859813084112,
+     "n_flips": 107
+    },
+    "all": [
+     [
+      "switch",
+      0.64
+     ],
+     [
+      "oscillator",
+      0.061
+     ],
+     [
+      "constant",
+      0.0
+     ],
+     [
+      "relaxation",
+      -0.1
+     ]
+    ]
+   },
+   "fast_amp_frac": 0.3044115442034211,
+   "ell1": null,
+   "ell2_spec": null
+  },
+  "Gstar": 0.7513279144395394,
+  "G_plateau_sd": 0.0178348201852737,
+  "G_init": 0.6016418173418799,
+  "sdG_med": 0.19369454809775588,
+  "sdG_end": 0.1942768076143193,
+  "G_drift_tailwin": -0.015804245785554897,
+  "stationary": true,
+  "t_conv": 107.5,
+  "fit4": {
+   "model": "relaxation",
+   "r2": 0.8568,
+   "params": {
+    "tau": 60.85193007898056
+   },
+   "all": [
+    [
+     "relaxation",
+     0.857
+    ],
+    [
+     "switch",
+     0.763
+    ],
+    [
+     "oscillator",
+     0.063
+    ],
+    [
+     "constant",
+     -0.0
+    ]
+   ]
+  },
+  "mode": "relaxation",
+  "tau4": 60.85193007898056,
+  "T4": null,
+  "G_T3band_amp": 0.00564041817147696,
+  "G_plateau_acfT": 2336.0,
+  "G_plateau_acfq": 0.19167546662493826,
+  "entrained": false,
+  "sep34": 0.41424841064072526,
+  "G1_4layer": false,
+  "G2_L4": true,
+  "variance_ok": true,
+  "runtime_s": 78.2
+ }
+]

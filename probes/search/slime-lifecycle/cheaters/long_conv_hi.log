@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/search/slime-lifecycle/cheaters/probe_long.py", line 15, in <module>
+    out = run(params=pp, T=T, seed=seed, rec=50)
+  File "/Users/spoho/Documents/prime/test/physim/probes/search/slime-lifecycle/cheaters/slime_evo.py", line 87, in run
+    u = smooth9(rng.random((L, L)), int(p["mosaic_sm"]))
+                                        ~^^^^^^^^^^^^^
+KeyError: 'mosaic_sm'

@@ -1,0 +1,4 @@
+R=1.82 noise=2e-03: slips=5 T_med=6010.0 T_rate=7741.0 T3=1570 rho=1.234 | fits: {'sin': ('switch', 0.7132, 10), 'cos': ('switch', 0.7816, 15), 'frac': ('switch', 0.7509, 12)}
+R=1.82 noise=5e-04: slips=3 T_med=6640.0 T_rate=12069.0 T3=1626 rho=1.151 | fits: {'sin': ('switch', 0.3952, 16), 'cos': ('switch', 0.5187, 14), 'frac': ('switch', 0.4697, 14)}
+R=1.80 noise=5e-04: slips=3 T_med=7592.0 T_rate=12019.0 T3=1628 rho=1.152 | fits: {'sin': ('switch', 0.2461, 20), 'cos': ('switch', 0.6423, 10), 'frac': ('switch', 0.5454, 10)}
+R=1.85 noise=5e-04: slips=9 T_med=4101.0 T_rate=4768.0 T3=1578 rho=1.433 | fits: {'sin': ('switch', 0.8515, 19), 'cos': ('switch', 0.8394, 19), 'frac': ('switch', 0.8178, 19)}

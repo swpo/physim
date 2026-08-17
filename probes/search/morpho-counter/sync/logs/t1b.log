@@ -1,0 +1,4 @@
+kc=0e+00: rho=1.221 net=1.90 exc=1.18 slips=1 T_med=None T_rate=6169.0 locked=False
+kc=1e-03: rho=1.140 net=1.24 exc=1.15 slips=1 T_med=None T_rate=9882.0 locked=False
+kc=2e-03: rho=0.998 net=-0.02 exc=0.08 slips=0 T_med=None T_rate=667619.0 locked=True
+kc=3e-03: rho=1.003 net=0.03 exc=0.02 slips=0 T_med=None T_rate=450048.0 locked=True

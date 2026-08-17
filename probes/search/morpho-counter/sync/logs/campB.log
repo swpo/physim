@@ -1,0 +1,8 @@
+R=1.76 (400k): ok verdict=marginal slips=2 T_slip=5765.0 T_rate=18194.4543 rho=1.0915 r2=None (94s)
+R=1.80 (400k): ok verdict=slip slips=6 T_slip=3310.0 T_rate=5930.1053 rho=1.3187 r2=0.7384 (108s)
+R=1.85 (300k): ok verdict=slip slips=4 T_slip=4920.0 T_rate=5121.0367 rho=1.3887 r2=0.7802 (168s)
+R=1.92 (300k): ok verdict=slip slips=5 T_slip=4047.5 T_rate=5228.4713 rho=1.363 r2=0.8402 (156s)
+R=2.00 (250k): ok verdict=slip slips=4 T_slip=3920.0 T_rate=4453.4407 rho=1.4827 r2=0.8236 (86s)
+R=2.10 (250k): ok verdict=slip slips=6 T_slip=2830.0 T_rate=2987.7827 rho=1.6892 r2=0.8273 (45s)
+R=2.25 (250k): ok verdict=slip slips=9 T_slip=1817.5 T_rate=1964.6688 rho=2.4325 r2=0.8153 (62s)
+campB done

@@ -121,7 +121,11 @@ def init_state(p, rng):
     Wstar = Rstar / p["rho"]
     R = 0.6 * np.ones((L, L)); W = p.get("W0", Wstar) * np.ones((L, L))
     A = np.full((L, L), 0.5)
-    founder_a = np.linspace(0.06, 0.94, 12)
+    if p.get("init") == "bimodal":
+        # founder community already carries both metabolic strategies
+        founder_a = np.array([0.05, 0.95] * 6, dtype=float)
+    else:
+        founder_a = np.linspace(0.06, 0.94, 12)
     rng.shuffle(founder_a)
     for av in founder_a:
         cx, cy = rng.integers(6, L - 6, 2)

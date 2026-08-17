@@ -1,0 +1,9 @@
+G=0.5: eco st=ok top=switch/0.7278 T3=22.1 T2=None s12=None s23=None G1=False G2=False
+G=0.6: eco st=ok top=switch/0.8477 T3=None T2=22.5 s12=7.6 s23=None G1=False G2=False
+G=0.75: eco st=ok top=oscillator/0.9815 T3=140.5 T2=25.5 s12=4.7 s23=5.5 G1=False G2=True
+G=0.9: eco st=ok top=oscillator/0.9674 T3=161.0 T2=26.0 s12=5.3 s23=6.2 G1=True G2=True
+G=1.0: eco st=ok top=oscillator/0.9719 T3=166.0 T2=26.5 s12=5.7 s23=6.3 G1=True G2=True
+G=1.2: eco st=ok top=oscillator/0.9366 T3=190.0 T2=26.5 s12=6.5 s23=7.2 G1=True G2=True
+G=1.5: eco st=ok top=switch/0.7159 T3=182.8 T2=27.0 s12=6.9 s23=6.8 G1=True G2=False
+G=2.0: eco st=ok top=oscillator/0.75 T3=175.5 T2=26.0 s12=7.3 s23=6.8 G1=True G2=False
+DONE frozenG

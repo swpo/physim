@@ -81,9 +81,11 @@ def run(params=None, T=60000, seed=0, rec=50, snap_times=(), keep_fields=False):
         VK[-1] = Vtot0
     elif mode == "uniform":
         VK[:] = Vtot0 / K
-    else:  # mosaic: monoclonal patches, ~uniform bin mass overall
-        u = smooth9(rng.random((L, L)), int(p["mosaic_sm"]))
-        qs = np.quantile(u, np.linspace(0, 1, K + 1))
+    else:  # mosaic: monoclonal patches; bin weights optionally skewed
+        eta = {"mosaic": 0.0, "mosaic_lo": -6.0, "mosaic_hi": 6.0}[mode]
+        w = np.exp(eta * cbins); w = w / w.sum()
+        u = smooth9(rng.random((L, L)), int(p.get("mosaic_sm", 2)))
+        qs = np.quantile(u, np.concatenate([[0.0], np.cumsum(w)]))
         qs[0] -= 1; qs[-1] += 1
         binmap = np.clip(np.digitize(u, qs) - 1, 0, K - 1)
         for k in range(K):

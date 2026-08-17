@@ -1,0 +1,10 @@
+=== negatives: no price (c=0), heavy price, frozen mutation ===
+[neg_c=0.0_m=0.15_G0=1.0] c=0.0 m=0.15 G0=1.0: st=ok G*=0.834 tau4=None mode=None fit4=switch/0.7968 sdG=0.198 T3=215.2 ecoG1=False ecoG2=False s34=None entr=False stat=False rt=47.2s 
+[neg_c=0.0_m=0.15_G0=1.5] c=0.0 m=0.15 G0=1.5: st=ok G*=0.834 tau4=None mode=None fit4=switch/0.9115 sdG=0.2 T3=180.0 ecoG1=False ecoG2=False s34=None entr=False stat=False rt=64.0s 
+[neg_c=0.02_m=0.15_G0=1.0] c=0.02 m=0.15 G0=1.0: st=ok G*=0.708 tau4=451.0 mode=relaxation fit4=relaxation/0.9288 sdG=0.186 T3=161.5 ecoG1=False ecoG2=False s34=2.8 entr=False stat=True rt=64.8s 
+[neg_c=0.03_m=0.15_G0=1.0] c=0.03 m=0.15 G0=1.0: st=ok G*=0.68 tau4=172.0 mode=relaxation fit4=relaxation/0.9216 sdG=0.183 T3=226.9 ecoG1=False ecoG2=False s34=0.8 entr=False stat=True rt=103.3s 
+[neg_c=0.0075_m=0.02_G0=1.5] c=0.0075 m=0.02 G0=1.5: st=ok G*=1.471 tau4=None mode=None fit4=switch/0.8678 sdG=0.029 T3=171.5 ecoG1=False ecoG2=False s34=None entr=False stat=False rt=64.4s 
+[neg_c=0.0075_m=0.0_G0=1.5] c=0.0075 m=0.0 G0=1.5: st=ok G*=1.5 tau4=None mode=None fit4=constant/1.0 sdG=0.0 T3=184.8 ecoG1=True ecoG2=False s34=None entr=False stat=True rt=60.3s 
+[neg_c=0.0075_m=0.15_G0=3.0] c=0.0075 m=0.15 G0=3.0: st=ok G*=0.812 tau4=None mode=None fit4=switch/0.8178 sdG=0.206 T3=119.1 ecoG1=False ecoG2=True s34=None entr=False stat=False rt=68.6s 
+[neg_c=0.0075_m=0.15_G0=0.3] c=0.0075 m=0.15 G0=0.3: st=ok G*=0.765 tau4=99.0 mode=relaxation_log fit4=relaxation_log/0.9558 sdG=0.192 T3=186.6 ecoG1=False ecoG2=False s34=0.5 entr=False stat=True rt=76.6s 
+DONE E4

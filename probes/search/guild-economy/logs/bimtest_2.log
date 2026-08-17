@@ -1,0 +1,11 @@
+t=4000: fr_site=0.003 pur=0.919 ncell=9097
+t=8000: fr_site=0.017 pur=0.894 ncell=8967
+t=12000: fr_site=0.037 pur=0.875 ncell=8874
+t=16000: fr_site=0.057 pur=0.864 ncell=8881
+t=20000: fr_site=0.083 pur=0.857 ncell=8835
+t=24000: fr_site=0.108 pur=0.857 ncell=8829
+t=28000: fr_site=0.131 pur=0.860 ncell=8857
+t=32000: fr_site=0.158 pur=0.868 ncell=8917
+t=36000: fr_site=0.183 pur=0.880 ncell=8947
+t=40000: fr_site=0.218 pur=0.894 ncell=8943
+idx=2 done 59s

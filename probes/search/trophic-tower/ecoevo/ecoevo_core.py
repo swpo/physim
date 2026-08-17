@@ -96,7 +96,11 @@ def run_evo(raw, evo, L=64, nticks=120000, seed=0, record_fields_at=None, nblk=1
         P = np.clip(Pn, FLOOR, CAP)
         G = np.clip(Qn / np.maximum(P, FLOOR), GMIN, GMAX)
         if m > 0 and t % KMUT == 0:
-            G = np.clip(G + m * sqKdt * rng.standard_normal((L, L)), GMIN, GMAX)
+            if evo.get("logmut"):
+                G = np.clip(G * np.exp(m * sqKdt * rng.standard_normal((L, L))),
+                            GMIN, GMAX)
+            else:
+                G = np.clip(G + m * sqKdt * rng.standard_normal((L, L)), GMIN, GMAX)
         if t % 2000 == 0:
             if not (np.isfinite(H).all() and np.isfinite(P).all() and np.isfinite(G).all()):
                 rec["status"] = "unstable"; return rec

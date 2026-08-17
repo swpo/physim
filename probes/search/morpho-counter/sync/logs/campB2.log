@@ -1,0 +1,11 @@
+R=1.74 (800k): ok v=slip slips=5 T_med=13885.0 T_rate=15262.8261 rho=1.1064 alive=True/True (178s)
+R=1.76 (800k): ok v=slip slips=3 T_med=29532.5 T_rate=24346.8413 rho=1.0672 alive=True/True (122s)
+R=1.78 (600k): ok v=slip slips=3 T_med=7268.75 T_rate=18444.9213 rho=1.0907 alive=True/True (227s)
+R=1.82 (500k): ok v=slip slips=5 T_med=6010.0 T_rate=7740.9224 rho=1.2343 alive=True/True (175s)
+R=1.88 (400k): ok v=slip slips=6 T_med=2572.5 T_rate=5285.0039 rho=1.3813 alive=True/True (98s)
+R=1.96 (300k): ok v=slip slips=3 T_med=3985.0 T_rate=8622.8943 rho=1.2016 alive=True/True (48s)
+R=2.10 (300k): ok v=slip slips=6 T_med=2830.0 T_rate=3421.8667 rho=1.5807 alive=True/True (97s)
+R=2.30 (300k): ok v=slip slips=10 T_med=2580.0 T_rate=2439.7453 rho=2.1132 alive=True/True (100s)
+SYM R=0.600: v=locked slips=0 rho=0.9987
+SYM R=0.500: v=slip slips=6 rho=0.5957
+campB2 done

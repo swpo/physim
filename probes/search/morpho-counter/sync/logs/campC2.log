@@ -1,0 +1,12 @@
+   probe R=1.0500 kc=5.0e-04 -> locked (slips=0 exc=0.2306 rho=0.9935)
+   probe R=1.1000 kc=5.0e-04 -> locked (slips=0 exc=0.271 rho=0.999)
+   probe R=1.1500 kc=5.0e-04 -> locked (slips=0 exc=0.3177 rho=0.996)
+   probe R=1.2000 kc=5.0e-04 -> marginal (slips=1 exc=0.6135 rho=1.1167)
+   probe R=1.1750 kc=5.0e-04 -> locked (slips=0 exc=0.8602 rho=1.0777)
+   probe R=1.1875 kc=5.0e-04 -> locked (slips=0 exc=0.6272 rho=1.0549)
+   probe R=1.1938 kc=5.0e-04 -> locked (slips=0 exc=0.5705 rho=0.9759)
+kc=5.0e-04: R_c_upper ~ 1.1969
+   probe R=1.3000 kc=1.5e-03 -> locked (slips=0 exc=0.0824 rho=1.0008)
+   probe R=1.4500 kc=1.5e-03 -> marginal (slips=1 exc=1.0544 rho=1.1209)
+   probe R=1.3750 kc=1.5e-03 -> locked (slips=0 exc=0.0995 rho=0.9981)
+   probe R=1.4125 kc=1.5e-03 -> locked (slips=0 exc=0.9618 rho=1.0954)

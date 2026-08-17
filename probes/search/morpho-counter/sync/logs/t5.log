@@ -1,0 +1,5 @@
+R=1.88 ns=1e-03 (400k): v=slip slips=6 T_med=4265.0 T3=1563.1 sep34=2.7 top=switch r2=0.7712 flips=11 alive=True/True (51s)
+R=1.95 ns=5e-04 (400k): v=slip slips=7 T_med=4001.25 T3=1658.1 sep34=2.4 top=switch r2=0.8318 flips=13 alive=True/True (53s)
+R=2.10 ns=1e-03 (300k): v=slip slips=7 T_med=3916.25 T3=1907.5 sep34=2.1 top=switch r2=0.8217 flips=13 alive=True/True (41s)
+R=1.82 ns=2e-04 (500k): v=slip slips=8 T_med=4665.0 T3=1623.8 sep34=2.9 top=switch r2=0.8192 flips=17 alive=True/True (70s)
+R=1.88 ns=2e-04 (400k): v=slip slips=4 T_med=4462.5 T3=1699.4 sep34=2.6 top=switch r2=0.7746 flips=9 alive=True/True (57s)

@@ -1,0 +1,7 @@
+m=0.1: Gstar=0.588 sdG=0.130
+  eco: {'T3': 173.48387096774192, 'T2': None, 'tau1': 8.6, 'sep12': None, 'sep23': None, 'spatial_cv': 0.5838194432817432, 'npatch_med': 11.0, 'G1': False, 'G2': False, 'fast_amp_frac': 0.33527166939261305}
+  top: {'model': 'switch', 'r2': 0.6697, 'params': {'mean_dwell': 86.74193548387096, 'n_flips': 31}, 'all': [('switch', 0.67), ('oscillator', 0.079), ('constant', np.float64(0.0)), ('relaxation', -1.023)]}
+m=0.15: Gstar=0.741 sdG=0.192
+  eco: {'T3': 166.85714285714286, 'T2': None, 'tau1': 7.375, 'sep12': None, 'sep23': None, 'spatial_cv': 0.6947347645582544, 'npatch_med': 11.0, 'G1': False, 'G2': False, 'fast_amp_frac': 0.33888686076040353}
+  top: {'model': 'switch', 'r2': 0.6421, 'params': {'mean_dwell': 83.42857142857143, 'n_flips': 35}, 'all': [('switch', 0.642), ('oscillator', 0.152), ('constant', np.float64(0.0)), ('relaxation', -0.924)]}
+DONE diag

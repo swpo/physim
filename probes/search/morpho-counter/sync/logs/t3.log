@@ -1,0 +1,6 @@
+R=2.32 kc=4e-03 (500k): v=slip slips=8 T_med=4532.5 T_rate=5290.1623 sep34=3.0 top=switch r2=0.8405 flips=15 rho=1.4008 (65s)
+R=2.36 kc=4e-03 (400k): v=slip slips=9 T_med=3868.75 T_rate=3771.5088 sep34=2.4 top=switch r2=0.848 flips=17 rho=1.7014 (51s)
+R=2.42 kc=4e-03 (400k): v=slip slips=4 T_med=5007.5 T_rate=7594.893 sep34=3.3 top=switch r2=0.8339 flips=7 rho=1.2517 (50s)
+R=2.56 kc=8e-03 (500k): v=locked slips=0 T_med=None T_rate=5441105.6911 sep34=None top=None r2=None flips=None rho=1.0003 (63s)
+R=2.62 kc=8e-03 (400k): v=marginal slips=1 T_med=None T_rate=36333.718 sep34=None top=None r2=None flips=None rho=1.0409 (51s)
+R=2.72 kc=8e-03 (400k): v=locked slips=0 T_med=None T_rate=37058.9664 sep34=None top=None r2=None flips=None rho=1.0406 (51s)

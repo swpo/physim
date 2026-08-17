@@ -1,0 +1,17 @@
+TONGUE seed=1: v=locked slips=0 exc=0.0704 rho=1.0049 sep=7.2/17.6 PASS=True (43s)
+TONGUE seed=2: v=locked slips=0 exc=0.0734 rho=1.007 sep=6.9/18.1 PASS=True (34s)
+TONGUE seed=3: v=marginal slips=1 exc=0.9533 rho=1.0999 sep=7.2/18.7 PASS=False (32s)
+TONGUE seed=4: v=locked slips=0 exc=0.037 rho=0.9977 sep=6.0/17.3 PASS=True (28s)
+SLIP seed=1: v=slip slips=5 T_slip=4047.5 rho=1.4863 sep34=2.3 r2=0.8156 PASS=True (43s)
+SLIP seed=2: v=slip slips=9 T_slip=2341.25 rho=1.8268 sep34=1.3 r2=0.8221 PASS=False (62s)
+SLIP seed=3: v=slip slips=6 T_slip=3080.0 rho=1.4885 sep34=1.9 r2=0.8479 PASS=False (102s)
+SLIP seed=4: v=slip slips=3 T_slip=5330.0 rho=1.214 sep34=3.4 r2=0.7175 PASS=True (161s)
+TONGUE jit=0 (R=1.37 kc=2.1e-03): v=locked slips=0 PASS=True
+TONGUE jit=1 (R=1.26 kc=1.9e-03): v=locked slips=0 PASS=True
+TONGUE jit=2 (R=1.31 kc=2.2e-03): v=locked slips=0 PASS=True
+TONGUE jit=3 (R=1.32 kc=2.0e-03): v=locked slips=0 PASS=True
+SLIP jit=0 (R=2.17 kc=2.1e-03): v=slip slips=7 T_slip=3013.75 sep34=1.3 PASS=False
+SLIP jit=1 (R=2.08 kc=1.9e-03): v=slip slips=4 T_slip=7210.0 sep34=4.3 PASS=True
+SLIP jit=2 (R=2.13 kc=1.9e-03): v=slip slips=12 T_slip=1792.5 sep34=1.0 PASS=False
+SLIP jit=3 (R=1.81 kc=2.0e-03): v=slip slips=3 T_slip=2865.0 sep34=1.7 PASS=False
+g4 sync done

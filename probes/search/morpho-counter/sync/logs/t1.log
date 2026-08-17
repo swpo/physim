@@ -1,0 +1,6 @@
+kc=0e+00: T1=1248 T2=1498 rho=1.221 net=1.90 exc=1.18 slips=4 T_slip=3870.0 locked=False alive=True/True (39s)
+kc=3e-04: T1=1285 T2=1590 rho=1.309 net=2.37 exc=1.31 slips=3 T_slip=5008.0 locked=False alive=True/True (40s)
+kc=1e-03: T1=1195 T2=1430 rho=1.140 net=1.24 exc=1.15 slips=3 T_slip=2990.0 locked=False alive=True/True (40s)
+kc=3e-03: T1=1260 T2=1294 rho=1.003 net=0.03 exc=0.02 slips=0 T_slip=None locked=True alive=True/True (40s)
+kc=1e-02: T1=1294 T2=1305 rho=1.001 net=0.01 exc=0.01 slips=0 T_slip=None locked=True alive=True/True (27s)
+kc=3e-02: T1=1295 T2=1278 rho=0.999 net=-0.02 exc=0.01 slips=6 T_slip=1582.0 locked=True alive=True/True (23s)

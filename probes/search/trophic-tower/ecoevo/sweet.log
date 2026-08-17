@@ -1,0 +1,4 @@
+=== sweet-spot attempt: G*~1 via m=0.22, c=0.005, rho=0.030 ===
+[sweet sd=0] c=0.005 m=0.22 G0=1.2: st=ok G*=1.007 tau4=None mode=None fit4=switch/0.859 sdG=0.282 T3=189.1 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=58.2s ecoTop=switch/0.6261 T2=None
+[sweet sd=1] c=0.005 m=0.22 G0=1.2: st=ok G*=0.984 tau4=None mode=None fit4=switch/0.8136 sdG=0.282 T3=177.8 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=96.4s ecoTop=switch/0.6748 T2=None
+DONE sweet

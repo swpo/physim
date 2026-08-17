@@ -1,0 +1,3 @@
+settle 64s
+saved GE1_toplaw.png; fit: relaxation 0.9889 tau 3095.167526038984
+patch powerlaw: {'alpha': 1.7014607462376055, 'decades': 3.0115704435972783, 'ks': 0.18531115854402447, 'n': 457}

@@ -1,0 +1,7 @@
+[R1 rho.030 m.2] c=0.0075 m=0.2 G0=1.5: st=ok G*=0.919 tau4=None mode=None fit4=switch/0.906 sdG=0.255 T3=182.4 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=72.9s ecoTop=switch/0.6244 T2=None s12=None
+[R2 rho.030 m.25] c=0.0075 m=0.25 G0=1.5: st=ok G*=1.068 tau4=None mode=None fit4=switch/0.9016 sdG=0.316 T3=170.7 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=132.2s ecoTop=switch/0.6057 T2=None s12=None
+[R3 logmut m.15] c=0.0075 m=0.15 G0=1.5: st=ok G*=3.203 tau4=30.0 mode=relaxation_log fit4=relaxation_log/0.8901 sdG=0.471 T3=30.0 ecoG1=False ecoG2=False s34=1.0 entr=False stat=True rt=187.8s ecoTop=switch/0.6602 T2=None s12=None
+[R4 logmut m.25] c=0.0075 m=0.25 G0=1.5: st=ok G*=2.972 tau4=11.0 mode=relaxation_log fit4=relaxation_log/0.9678 sdG=0.648 T3=34.3 ecoG1=False ecoG2=False s34=0.3 entr=False stat=True rt=69.4s ecoTop=switch/0.6614 T2=None s12=None
+[R5 rho.030 m.2 up] c=0.0075 m=0.2 G0=0.6: st=ok G*=0.919 tau4=64.0 mode=relaxation fit4=relaxation/0.9763 sdG=0.255 T3=182.4 ecoG1=False ecoG2=False s34=0.4 entr=False stat=True rt=79.7s ecoTop=switch/0.6244 T2=None s12=None
+[R6 rho.030 frozen1] c=0.0075 m=0.0 G0=1.0: st=ok G*=1.0 tau4=None mode=None fit4=switch/0.4228 sdG=0.0 T3=192.5 ecoG1=True ecoG2=True s34=None entr=True stat=True rt=10.6s ecoTop=oscillator/0.9565 T2=25.5 s12=5.7
+DONE rescue

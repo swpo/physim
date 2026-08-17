@@ -1,0 +1,617 @@
+[
+ {
+  "cand": {
+   "R": 1.74,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0031658174299855,
+  "eps2": 0.0018194353045893682,
+  "seed": 1,
+  "steps": 800000,
+  "runtime_s": 177.8,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9748076923076923,
+   "flips": 106
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9850961538461539,
+   "flips": 96
+  },
+  "status": "ok",
+  "T1": 1510.0,
+  "T2": 1552.5,
+  "cyc1": 52,
+  "cyc2": 47,
+  "rho": 1.1064,
+  "net_wind": 4.9891,
+  "max_exc": 2.9888,
+  "n_slips": 5,
+  "T_slip": 13885.0,
+  "T_slip_rate": 15262.8261,
+  "span": 76147.5,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 14.2,
+  "tau2": 96.2,
+  "n_events": 114,
+  "T3": 1531.2,
+  "verdict": "slip",
+  "span_cycles": 49.7,
+  "tau4": 13885.0,
+  "top_model": "switch",
+  "top_r2": 0.2272,
+  "top_params": {
+   "mean_dwell": 2338.98,
+   "n_flips": 32
+  },
+  "sep12": 6.8,
+  "sep23": 15.9,
+  "sep34": 9.1,
+  "G1": true,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 1.76,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0031839597987411835,
+  "eps2": 0.0018090680674665816,
+  "seed": 1,
+  "steps": 800000,
+  "runtime_s": 122.2,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9820192307692308,
+   "flips": 102
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9967628205128205,
+   "flips": 94
+  },
+  "status": "ok",
+  "T1": 1563.75,
+  "T2": 1578.75,
+  "cyc1": 50,
+  "cyc2": 46,
+  "rho": 1.0672,
+  "net_wind": 3.0923,
+  "max_exc": 2.0048,
+  "n_slips": 3,
+  "T_slip": 29532.5,
+  "T_slip_rate": 24346.8413,
+  "span": 75287.5,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 13.7,
+  "tau2": 100.0,
+  "n_events": 105,
+  "T3": 1571.2,
+  "verdict": "slip",
+  "span_cycles": 47.9,
+  "tau4": 29532.5,
+  "top_model": "switch",
+  "top_r2": 0.2105,
+  "top_params": {
+   "mean_dwell": 2996.46,
+   "n_flips": 24
+  },
+  "sep12": 7.3,
+  "sep23": 15.7,
+  "sep34": 18.8,
+  "G1": true,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 1.78,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0032019993753903196,
+  "eps2": 0.0017988760535900673,
+  "seed": 1,
+  "steps": 600000,
+  "runtime_s": 227.2,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9834051724137931,
+   "flips": 76
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 1.0,
+   "flips": 69
+  },
+  "status": "ok",
+  "T1": 1572.5,
+  "T2": 1585.0,
+  "cyc1": 37,
+  "cyc2": 33,
+  "rho": 1.0907,
+  "net_wind": 2.9919,
+  "max_exc": 2.9892,
+  "n_slips": 3,
+  "T_slip": 7268.75,
+  "T_slip_rate": 18444.9213,
+  "span": 55185.0,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 11.1,
+  "tau2": 92.5,
+  "n_events": 81,
+  "T3": 1578.8,
+  "verdict": "slip",
+  "span_cycles": 35.0,
+  "tau4": 7268.8,
+  "top_model": "oscillator",
+  "top_r2": 0.2029,
+  "top_params": {
+   "period": 10785.0,
+   "q": 0.29,
+   "n_cycles": 5.12
+  },
+  "sep12": 8.3,
+  "sep23": 17.1,
+  "sep34": 4.6,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 1.82,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.00323777701517569,
+  "eps2": 0.0017789983599866424,
+  "seed": 1,
+  "steps": 500000,
+  "runtime_s": 174.9,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.981875,
+   "flips": 65
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.99671875,
+   "flips": 53
+  },
+  "status": "ok",
+  "T1": 1557.5,
+  "T2": 1582.5,
+  "cyc1": 31,
+  "cyc2": 25,
+  "rho": 1.2343,
+  "net_wind": 5.8565,
+  "max_exc": 3.6908,
+  "n_slips": 5,
+  "T_slip": 6010.0,
+  "T_slip_rate": 7740.9224,
+  "span": 45335.0,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 10.6,
+  "tau2": 92.5,
+  "n_events": 67,
+  "T3": 1570.0,
+  "verdict": "slip",
+  "span_cycles": 28.9,
+  "tau4": 6010.0,
+  "top_model": "switch",
+  "top_r2": 0.7132,
+  "top_params": {
+   "mean_dwell": 4293.0,
+   "n_flips": 10
+  },
+  "sep12": 8.7,
+  "sep23": 17.0,
+  "sep34": 3.8,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 1.88,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.003290714208192501,
+  "eps2": 0.0017503798979747345,
+  "seed": 1,
+  "steps": 400000,
+  "runtime_s": 97.5,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9756578947368421,
+   "flips": 53
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.993421052631579,
+   "flips": 38
+  },
+  "status": "ok",
+  "T1": 1537.5,
+  "T2": 1623.75,
+  "cyc1": 25,
+  "cyc2": 18,
+  "rho": 1.3813,
+  "net_wind": 6.8581,
+  "max_exc": 5.538,
+  "n_slips": 6,
+  "T_slip": 2572.5,
+  "T_slip_rate": 5285.0039,
+  "span": 36245.0,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 11.5,
+  "tau2": 86.2,
+  "n_events": 58,
+  "T3": 1580.6,
+  "verdict": "slip",
+  "span_cycles": 22.9,
+  "tau4": 2572.5,
+  "top_model": "switch",
+  "top_r2": 0.8448,
+  "top_params": {
+   "mean_dwell": 2515.0,
+   "n_flips": 12
+  },
+  "sep12": 7.5,
+  "sep23": 18.3,
+  "sep34": 1.6,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 1.96,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0033599999999999997,
+  "eps2": 0.0017142857142857142,
+  "seed": 1,
+  "steps": 300000,
+  "runtime_s": 47.6,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9850892857142857,
+   "flips": 39
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9944642857142857,
+   "flips": 32
+  },
+  "status": "ok",
+  "T1": 1556.25,
+  "T2": 1600.0,
+  "cyc1": 18,
+  "cyc2": 15,
+  "rho": 1.2016,
+  "net_wind": 2.9903,
+  "max_exc": 1.8924,
+  "n_slips": 3,
+  "T_slip": 3985.0,
+  "T_slip_rate": 8622.8943,
+  "span": 25785.0,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 17.8,
+  "tau2": 92.5,
+  "n_events": 40,
+  "T3": 1578.1,
+  "verdict": "slip",
+  "span_cycles": 16.3,
+  "tau4": 3985.0,
+  "top_model": "switch",
+  "top_r2": 0.6536,
+  "top_params": {
+   "mean_dwell": 1669.0,
+   "n_flips": 5
+  },
+  "sep12": 5.2,
+  "sep23": 17.1,
+  "sep34": 2.5,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 2.1,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0034779304190854653,
+  "eps2": 0.00165615734242165,
+  "seed": 1,
+  "steps": 300000,
+  "runtime_s": 97.3,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9708035714285714,
+   "flips": 44
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9865178571428571,
+   "flips": 27
+  },
+  "status": "ok",
+  "T1": 1402.5,
+  "T2": 1877.5,
+  "cyc1": 21,
+  "cyc2": 12,
+  "rho": 1.5807,
+  "net_wind": 6.9684,
+  "max_exc": 3.9824,
+  "n_slips": 6,
+  "T_slip": 2830.0,
+  "T_slip_rate": 3421.8667,
+  "span": 23845.0,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 14.6,
+  "tau2": 85.0,
+  "n_events": 45,
+  "T3": 1640.0,
+  "verdict": "slip",
+  "span_cycles": 14.5,
+  "tau4": 2830.0,
+  "top_model": "switch",
+  "top_r2": 0.8309,
+  "top_params": {
+   "mean_dwell": 1498.27,
+   "n_flips": 13
+  },
+  "sep12": 5.8,
+  "sep23": 19.3,
+  "sep34": 1.7,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 2.3,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.0036397802131447436,
+  "eps2": 0.0015825131361498887,
+  "seed": 1,
+  "steps": 300000,
+  "runtime_s": 99.7,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9827678571428572,
+   "flips": 44
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9933928571428572,
+   "flips": 21
+  },
+  "status": "ok",
+  "T1": 1340.0,
+  "T2": 2732.5,
+  "cyc1": 21,
+  "cyc2": 9,
+  "rho": 2.1132,
+  "net_wind": 10.0185,
+  "max_exc": 5.4553,
+  "n_slips": 10,
+  "T_slip": 2580.0,
+  "T_slip_rate": 2439.7453,
+  "span": 24442.5,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 12.3,
+  "tau2": 82.5,
+  "n_events": 44,
+  "T3": 2036.2,
+  "verdict": "slip",
+  "span_cycles": 12.0,
+  "tau4": 2580.0,
+  "top_model": "switch",
+  "top_r2": 0.8171,
+  "top_params": {
+   "mean_dwell": 1218.55,
+   "n_flips": 19
+  },
+  "sep12": 6.7,
+  "sep23": 24.7,
+  "sep34": 1.3,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 0.6,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.00185903200617956,
+  "eps2": 0.0030983866769659332,
+  "seed": 1,
+  "steps": 250000,
+  "runtime_s": 64.7,
+  "alive1": {
+   "alive": true,
+   "frac2": 1.0,
+   "flips": 29
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9864130434782609,
+   "flips": 30
+  },
+  "status": "ok",
+  "T1": 1575.0,
+  "T2": 1591.25,
+  "cyc1": 13,
+  "cyc2": 14,
+  "rho": 0.9987,
+  "net_wind": -0.0166,
+  "max_exc": 0.0854,
+  "n_slips": 0,
+  "T_slip": null,
+  "T_slip_rate": 1225201.769,
+  "span": 20360.0,
+  "locked": true,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 16.3,
+  "tau2": 90.0,
+  "n_events": 29,
+  "T3": 1583.1,
+  "verdict": "locked",
+  "span_cycles": 12.9,
+  "tau4": null,
+  "sep12": 5.5,
+  "sep23": 17.6,
+  "sep34": null,
+  "G1": true,
+  "G2": true,
+  "G5": true
+ },
+ {
+  "cand": {
+   "R": 0.5,
+   "kc": 0.002,
+   "eps_g": 0.0024
+  },
+  "eps1": 0.001697056274847714,
+  "eps2": 0.0033941125496954275,
+  "seed": 1,
+  "steps": 250000,
+  "runtime_s": 32.2,
+  "alive1": {
+   "alive": true,
+   "frac2": 0.9959782608695652,
+   "flips": 20
+  },
+  "alive2": {
+   "alive": true,
+   "frac2": 0.9769565217391304,
+   "flips": 34
+  },
+  "status": "ok",
+  "T1": 2557.5,
+  "T2": 1416.25,
+  "cyc1": 9,
+  "cyc2": 16,
+  "rho": 0.5957,
+  "net_wind": -6.1094,
+  "max_exc": 3.978,
+  "n_slips": 6,
+  "T_slip": 2337.5,
+  "T_slip_rate": 3332.9579,
+  "span": 20362.5,
+  "locked": false,
+  "dom1": [
+   5.0,
+   6.0
+  ],
+  "dom2": [
+   5.0,
+   6.0
+  ],
+  "tau1": 12.0,
+  "tau2": 91.2,
+  "n_events": 20,
+  "T3": 1986.9,
+  "verdict": "slip",
+  "span_cycles": 10.2,
+  "tau4": 2337.5,
+  "top_model": "switch",
+  "top_r2": 0.8375,
+  "top_params": {
+   "mean_dwell": 1424.09,
+   "n_flips": 11
+  },
+  "sep12": 7.6,
+  "sep23": 21.8,
+  "sep34": 1.2,
+  "G1": false,
+  "G2": false,
+  "G5": true
+ }
+]

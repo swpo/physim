@@ -1,0 +1,21 @@
+=== c response curve (G*), m=0.15, G0=1.5, 2 seeds ===
+[rc_c=0.005 sd=0] c=0.005 m=0.15 G0=1.5: st=ok G*=0.783 tau4=2782.0 mode=relaxation_log fit4=relaxation_log/0.8563 sdG=0.194 T3=200.0 ecoG1=False ecoG2=False s34=13.9 entr=False stat=False rt=55.8s 
+[rc_c=0.005 sd=1] c=0.005 m=0.15 G0=1.5: st=ok G*=0.764 tau4=None mode=None fit4=switch/0.8349 sdG=0.194 T3=174.9 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=42.9s 
+[rc_c=0.0075 sd=0] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.765 tau4=1589.0 mode=relaxation_log fit4=relaxation_log/0.9464 sdG=0.192 T3=186.6 ecoG1=False ecoG2=False s34=8.5 entr=False stat=True rt=47.1s 
+[rc_c=0.0075 sd=1] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.748 tau4=None mode=None fit4=switch/0.8729 sdG=0.192 T3=172.8 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=45.0s 
+[rc_c=0.01 sd=0] c=0.01 m=0.15 G0=1.5: st=ok G*=0.75 tau4=1268.0 mode=relaxation_log fit4=relaxation_log/0.8983 sdG=0.191 T3=164.3 ecoG1=False ecoG2=False s34=7.7 entr=False stat=True rt=43.0s 
+[rc_c=0.01 sd=1] c=0.01 m=0.15 G0=1.5: st=ok G*=0.734 tau4=None mode=None fit4=switch/0.8887 sdG=0.191 T3=162.5 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=42.5s 
+[rc_c=0.0125 sd=0] c=0.0125 m=0.15 G0=1.5: st=ok G*=0.736 tau4=1504.0 mode=relaxation_log fit4=relaxation_log/0.8692 sdG=0.19 T3=176.1 ecoG1=False ecoG2=False s34=8.5 entr=False stat=True rt=58.8s 
+[rc_c=0.0125 sd=1] c=0.0125 m=0.15 G0=1.5: st=ok G*=0.722 tau4=None mode=None fit4=switch/0.8609 sdG=0.189 T3=162.0 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=96.9s 
+[rc_c=0.015 sd=0] c=0.015 m=0.15 G0=1.5: st=ok G*=0.725 tau4=1606.0 mode=relaxation_log fit4=relaxation_log/0.9059 sdG=0.188 T3=165.8 ecoG1=False ecoG2=False s34=9.7 entr=False stat=True rt=89.6s 
+[rc_c=0.015 sd=1] c=0.015 m=0.15 G0=1.5: st=ok G*=0.712 tau4=1752.0 mode=relaxation_log fit4=relaxation_log/0.9079 sdG=0.188 T3=158.0 ecoG1=False ecoG2=False s34=11.1 entr=False stat=True rt=85.2s 
+=== m response curve (tau4), c=0.0075, G0=1.5, 2 seeds ===
+[rc_m=0.06 sd=0] c=0.0075 m=0.06 G0=1.5: st=ok G*=0.502 tau4=None mode=None fit4=switch/0.7539 sdG=0.086 T3=120.1 ecoG1=False ecoG2=False s34=None entr=False stat=False rt=93.9s 
+[rc_m=0.06 sd=1] c=0.0075 m=0.06 G0=1.5: st=ok G*=0.488 tau4=None mode=None fit4=switch/0.8212 sdG=0.082 T3=120.3 ecoG1=False ecoG2=False s34=None entr=False stat=False rt=108.2s 
+[rc_m=0.1 sd=0] c=0.0075 m=0.1 G0=1.5: st=ok G*=0.597 tau4=None mode=None fit4=switch/0.8805 sdG=0.13 T3=167.8 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=54.8s 
+[rc_m=0.1 sd=1] c=0.0075 m=0.1 G0=1.5: st=ok G*=0.591 tau4=3766.0 mode=relaxation_log fit4=relaxation_log/0.8639 sdG=0.129 T3=190.7 ecoG1=False ecoG2=False s34=19.7 entr=False stat=True rt=83.0s 
+[rc_m=0.15 sd=0] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.765 tau4=1589.0 mode=relaxation_log fit4=relaxation_log/0.9464 sdG=0.192 T3=186.6 ecoG1=False ecoG2=False s34=8.5 entr=False stat=True rt=96.1s 
+[rc_m=0.15 sd=1] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.748 tau4=None mode=None fit4=switch/0.8729 sdG=0.192 T3=172.8 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=99.8s 
+[rc_m=0.25 sd=0] c=0.0075 m=0.25 G0=1.5: st=ok G*=1.068 tau4=None mode=None fit4=switch/0.8603 sdG=0.316 T3=154.8 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=142.1s 
+[rc_m=0.25 sd=1] c=0.0075 m=0.25 G0=1.5: st=ok G*=1.044 tau4=None mode=None fit4=switch/0.8968 sdG=0.316 T3=133.0 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=50.4s 
+DONE E2

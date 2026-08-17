@@ -1,0 +1,6 @@
+=== tau4 protocol: displacement relaxation, c=0.0075 m=0.15, 400k ticks ===
+[tau4_G0=1.5 sd=0] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.751 tau4=1664.0 mode=relaxation_log fit4=relaxation_log/0.9488 sdG=0.194 T3=146.9 ecoG1=False ecoG2=False s34=11.3 entr=False stat=True rt=61.8s 
+[tau4_G0=1.5 sd=1] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.745 tau4=None mode=None fit4=switch/0.873 sdG=0.191 T3=184.1 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=72.4s 
+[tau4_G0=1.5 sd=2] c=0.0075 m=0.15 G0=1.5: st=ok G*=0.748 tau4=None mode=None fit4=switch/0.8435 sdG=0.193 T3=174.4 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=73.9s 
+[tau4_G0=0.6 sd=0] c=0.0075 m=0.15 G0=0.6: st=ok G*=0.751 tau4=61.0 mode=relaxation fit4=relaxation/0.8568 sdG=0.194 T3=146.9 ecoG1=False ecoG2=False s34=0.4 entr=False stat=True rt=78.2s 
+DONE tau4

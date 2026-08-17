@@ -13,3 +13,5 @@
 [e1-12] c=0.0125 m=0.1 G0=1.5: st=ok G*=0.582 tau4=None mode=None fit4=switch/0.8805 sdG=0.128 T3=176.6 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=51.5s 
 [e1-13] c=0.0125 m=0.1 G0=0.6: st=ok G*=0.582 tau4=None mode=None fit4=switch/0.6263 sdG=0.128 T3=167.3 ecoG1=False ecoG2=False s34=None entr=False stat=True rt=51.7s 
 [e1-14] c=0.0125 m=0.2 G0=1.5: st=ok G*=0.868 tau4=967.0 mode=relaxation fit4=relaxation/0.88 sdG=0.249 T3=170.4 ecoG1=False ecoG2=False s34=5.7 entr=False stat=True rt=36.8s 
+[e1-15] c=0.0125 m=0.2 G0=0.6: st=ok G*=0.868 tau4=31.0 mode=relaxation fit4=relaxation/0.9077 sdG=0.249 T3=170.4 ecoG1=False ecoG2=False s34=0.2 entr=False stat=True rt=47.0s 
+DONE E1

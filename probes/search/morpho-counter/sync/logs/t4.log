@@ -1,0 +1,3 @@
+t_cut=2000: slips=1 exc=1.005 net=0.989 rho=1.0431 locked=False span_cyc=22.6
+t_cut=10000: slips=1 exc=1.001 net=0.99 rho=1.0551 locked=False span_cyc=17.8
+t_cut=20000: slips=0 exc=0.056 net=-0.067 rho=0.9944 locked=True span_cyc=11.3

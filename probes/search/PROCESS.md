@@ -116,3 +116,31 @@ fire-forest+succession | trophic-tower+eco-evo | slime-lifecycle+cheaters
   clocks; L4 = phase-slip/rotation-number; expect saddle-node-ghost T_slip law).
   Fourth stacking-coupling type: synchronization-of-equals vs the three
   slower-ingredient stackings already running.
+
+
+### guild-economy — scorecard T+~11h, AUDIT PASS (fifth certified; 5/5 round-1 worlds real)
+- 224 evals; GE-F (rho=2.15 yW=.7 leak=.62 margin=7 over=1.5 r0=.006 hz=4.5e-4 DW=.02
+  L96). Controller audit (post-outage rerun), fresh seeds 61/62: guilds+top-law
+  reproduce, fr* 0.474 (theirs 0.473), s12 5.0-5.2 PASS, s23-time 4.6-4.7 (the AT-THE-
+  LINE marginality they flagged; length-based s23 13-19x clean). Out-of-grid rho=2.75:
+  fr*=0.566 — demand curve continues monotonically. CERTIFIED with the s23-time caveat.
+- Emergent top law is the most "economic" of round 1: market clearing by marginal-
+  return equalization; hazard rate is the market clock (tau3 ~ 1/hz) — externalizing
+  hz as a dial is their (good) engine-integration suggestion.
+- Honest negatives: over=0 -> generalists win (no guilds); leak window 0.5-0.65.
+
+### INFRASTRUCTURE OUTAGE (user internet, T+~11-12h) — recovery log
+- All 5 child sessions ended mid-round-2; my guild-economy audit process was killed
+  pre-launch. On-disk state SURVIVED everywhere (results/logs/strips) — the
+  file-based deliverable protocol is outage-robust by design. Kernel state survived.
+- Recovery: reran guild audit (above); revived 4 children with precise resume
+  prompts pointing at their own surviving files ("consolidate, don't redo");
+  fire-forest never received round-2 brief (no succession/ dir) -> brief re-sent.
+- Round-2 partial state found on disk: trophic ecoevo G*~0.75 attractor + THE BIG
+  TENSION (evolution degrades the teacup: ecoTop r2~0.6, ecoG1/G2 False) — the
+  stacking question is becoming "can towers coexist with their new layer?";
+  slime cheaters: c* 0.10-0.35 polymorphism, high seed variance, regime
+  classification needed; morpho sync: LOCKING CONFIRMED (rho=1.0 in tongue, slips
+  outside, R_c(kc) edges mapped) — needs slip-scaling law + summary.
+- Process lesson: child sessions are ephemeral, disk + controller ledger are the
+  real program state. Resume prompts should always point at surviving artifacts.
