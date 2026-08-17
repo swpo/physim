@@ -1,0 +1,1 @@
+idx=1 rho=2.1 sig=0.035 hz=0.0005 seed=1 ->  fr*=0.377 lo=0.289 fit=relaxation/0.9785 tau3=4152 t2=750.0 s12=5.56 s23=5.54 gap=0.011 drift=0.074 pass=False (38s)

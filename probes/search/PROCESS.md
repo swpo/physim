@@ -96,3 +96,23 @@ Early observations (T+~40min):
 
 ### Round-1 stacking experiments now running (the scaling question, three couplings)
 fire-forest+succession | trophic-tower+eco-evo | slime-lifecycle+cheaters
+
+
+### morpho-counter — scorecard T+~9h, AUDIT PASS (fourth certified)
+- 279 runs; flagship Dv=11 L=64 kap=.5 eps=3.2e-3 (auto-calibrated kstar2). Fresh
+  seeds 51/52: switch r2 .91-.93, seps 6.5-7/11.7-12.2, 8 flips — reproduced.
+  Out-of-grid eps=1.2e-3/4.2e-3: measured 2857/857 vs law 3167/905 (5-10% — law is
+  approximate but monotone-smooth; weaker than slime's analytic law, stronger than
+  none). G4 is the marginal gate (jitter 4/6@60k, pooled 13/18@120k, mechanism alive
+  33/36) — honest reporting of a narrow-ish counter window.
+- Design-epistemics note: C-servo (wavenumber-error feedback toward forbidden gap)
+  is AUTHORED-BUT-INTERNAL feedback — same status as E2 prices. The staircase,
+  hysteresis loop widths, defect events are computed. Recorded as acceptable pattern:
+  "author feedback laws, not events".
+- Process notes: metric-lock discipline (v3 frozen BEFORE certification) — good
+  practice worth promoting; auto-calibration step (kstar2 from a calibration run)
+  is a reusable trick for Turing-family worlds.
+- Controller action: ROUND 2 issued — COUPLED COUNTERS (mutual sync of two integer
+  clocks; L4 = phase-slip/rotation-number; expect saddle-node-ghost T_slip law).
+  Fourth stacking-coupling type: synchronization-of-equals vs the three
+  slower-ingredient stackings already running.

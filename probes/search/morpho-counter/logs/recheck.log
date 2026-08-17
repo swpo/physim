@@ -1,0 +1,16 @@
+failed draws to recheck: 14
+FLAG_e28 jit=0: 120k PASS=False G1=False G2=True r2=0.954 fl=12 per=1686.25 sep=2.6/34.6 rungs=[5, 6, 7]
+FLAG_e28 jit=2: 120k PASS=True G1=True G2=True r2=0.935 fl=14 per=1585.0 sep=10.4/14.6 rungs=[5, 6, 7]
+FLAG_e28 jit=3: 120k PASS=True G1=True G2=True r2=0.909 fl=18 per=1307.5 sep=9.0/12.9 rungs=[5, 6, 7]
+FLAG_e28 jit=5: 120k PASS=True G1=True G2=True r2=0.863 fl=15 per=1125.0 sep=7.9/13.4 rungs=[5, 6, 7]
+FLAG_e32 jit=0: 120k PASS=True G1=True G2=True r2=0.857 fl=21 per=987.5 sep=6.2/10.4 rungs=[5, 6, 7]
+FLAG_e32 jit=5: 120k PASS=False G1=True G2=False r2=0.846 fl=24 per=672.5 sep=8.6/6.9 rungs=[5, 6, 7]
+e32x jit=1: 120k PASS=True G1=True G2=True r2=0.908 fl=15 per=1480.0 sep=5.3/22.8 rungs=[5, 6, 7]
+e32x jit=2: 120k PASS=True G1=True G2=True r2=0.851 fl=16 per=1655.0 sep=5.9/16.6 rungs=[5, 6, 7]
+e32x jit=3: 120k PASS=True G1=True G2=True r2=0.931 fl=15 per=1487.5 sep=6.7/17.0 rungs=[5, 6, 7]
+e32x jit=4: 120k PASS=False G1=True G2=False r2=0.848 fl=21 per=1157.5 sep=8.0/11.6 rungs=[5, 6, 7]
+e32x jit=7: 120k PASS=True G1=True G2=True r2=0.875 fl=20 per=1153.75 sep=10.5/11.5 rungs=[4, 5, 6, 7]
+e32x jit=9: 120k PASS=False G1=True G2=False r2=0.845 fl=15 per=1662.5 sep=5.1/22.2 rungs=[5, 6, 7]
+e32x jit=10: 120k PASS=False G1=False G2=True r2=0.963 fl=15 per=1427.5 sep=4.0/24.8 rungs=[5, 6, 7]
+e32x jit=11: 120k PASS=False G1=True G2=False r2=0.850 fl=21 per=841.25 sep=6.0/10.5 rungs=[5, 6, 7]
+recheck: 8/14 now pass at 120k

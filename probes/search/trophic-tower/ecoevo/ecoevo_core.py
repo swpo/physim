@@ -140,17 +140,17 @@ def run_evo(raw, evo, L=64, nticks=120000, seed=0, record_fields_at=None, nblk=1
     return rec
 
 
-def measure_evo(rec, cut_frac=0.5):
-    """L4 metrics on biomass-weighted mean genotype Gbar + eco tower reuse.
-    Returns dict with eco (L1-L3) metrics from measure_teacup on the same rec
-    plus L4: mode (relaxation|oscillator), tau4/T4, Gstar, sdG stats,
-    entrainment of Gbar at T3."""
+def measure_evo(rec, eco_cut=0.6):
+    """L4 metrics on biomass-weighted mean genotype Gbar.
+    Relaxation protocol: Gbar starts displaced at G0; fit exp relaxation on
+    the approach window; G* = plateau mean; require plateau stationarity.
+    Eco tower (L1-L3) measured on the settled tail (cut_frac=eco_cut)."""
     out = dict(status=rec.get("status", "?"))
     if rec.get("status") != "ok":
         return out
     L, DTt, RECd = rec["L"], rec["DT"], rec["REC"]
     dt_mac = DTt * RECd
-    eco = measure_teacup(rec, cut_frac=0.5)   # eco layers on the settled half
+    eco = measure_teacup(rec, cut_frac=eco_cut)
     out["eco"] = {k: eco.get(k) for k in
                   ("status", "meanH_end", "meanP_end", "T3", "T2", "tau1",
                    "sep12", "sep23", "spatial_cv", "npatch_med", "G1", "G2",
@@ -159,48 +159,70 @@ def measure_evo(rec, cut_frac=0.5):
         out["status"] = "eco_" + str(eco.get("status")); return out
     gb = rec["Gbar"]; sd = rec["sdG"]
     n = len(gb)
-    out["G_end"] = float(gb[-max(3, n // 20):].mean())
-    out["sdG_end"] = float(sd[-max(3, n // 20):].mean())
-    out["sdG_med"] = float(np.median(sd[n // 2:]))
+    q = max(n // 5, 10)
+    Gstar = float(gb[-q:].mean())
+    plate_sd = float(gb[-q:].std())
+    out["Gstar"] = Gstar; out["G_plateau_sd"] = plate_sd
     out["G_init"] = float(gb[0])
-    # --- L4 top fit on the FULL Gbar series (transient included: that IS the law)
-    f4 = compact_top_fit(gb, dt=dt_mac)
-    out["fit4"] = f4
-    T3 = eco.get("T3")
-    # relaxation branch
-    tau4 = None; T4 = None; mode = None
-    if f4["model"] == "relaxation" and f4["r2"] >= 0.85:
-        tau4 = f4["params"]["tau"]; mode = "relaxation"
-    elif f4["model"] == "oscillator" and f4["params"].get("n_cycles", 0) >= 5 and f4["r2"] >= 0.85:
-        T4 = f4["params"]["period"]; mode = "oscillator"
+    out["sdG_med"] = float(np.median(sd[n // 2:]))
+    out["sdG_end"] = float(sd[-q:].mean())
+    # plateau stationarity: linear drift over last 40% << plateau fluctuation
+    tail = gb[-2 * q:]
+    tt = np.arange(len(tail))
+    slope = float(np.polyfit(tt, tail, 1)[0]) * len(tail)   # drift over window
+    out["G_drift_tailwin"] = slope
+    out["stationary"] = bool(abs(slope) < max(3 * plate_sd, 0.02))
+    # --- L4 fit
+    gap0 = gb[0] - Gstar
+    mode = None; tau4 = None; T4 = None; fit4 = None
+    thr = max(2.5 * plate_sd, 0.05 * abs(gap0), 0.01)
+    if abs(gap0) > max(4 * plate_sd, 0.04):
+        # relaxation experiment: fit on window until |gap| first < thr
+        gap = np.abs(gb - Gstar)
+        below = np.where(gap < thr)[0]
+        t_conv = int(below[0]) if len(below) else n
+        w = int(min(n, max(t_conv * 1.6, 30)))
+        seg = gb[:w]
+        fit4 = compact_top_fit(seg, dt=dt_mac)
+        if fit4["model"] == "relaxation" and fit4["r2"] >= 0.85:
+            mode = "relaxation"; tau4 = fit4["params"]["tau"]
+        else:
+            # robust log-linear fit of |gap| on the approach
+            gseg = gap[:t_conv] if t_conv >= 20 else gap[:n // 2]
+            good = gseg > thr
+            if good.sum() >= 15:
+                tt2 = np.arange(len(gseg))[good] * dt_mac
+                ly = np.log(gseg[good])
+                mfit, bfit = np.polyfit(tt2, ly, 1)
+                pred = mfit * tt2 + bfit
+                r2 = 1 - ((ly - pred) ** 2).sum() / max(((ly - ly.mean()) ** 2).sum(), 1e-12)
+                if mfit < 0 and r2 >= 0.85:
+                    mode = "relaxation_log"; tau4 = float(-1.0 / mfit)
+                    fit4 = dict(model="relaxation_log", r2=round(float(r2), 4),
+                                params=dict(tau=tau4))
+        out["t_conv"] = float(t_conv * dt_mac)
     else:
-        # maybe relaxation happened fast then plateau noise dominates the fit:
-        # refit on the leading segment (until first crossing of final mean)
-        gfin = gb[-max(3, n // 10):].mean()
-        s0 = np.sign(gb[0] - gfin)
-        crossed = np.where(np.sign(gb - gfin) != s0)[0]
-        if len(crossed) and crossed[0] > 20:
-            seg = gb[:int(min(len(gb), crossed[0] * 1.5))]
-            f4b = compact_top_fit(seg, dt=dt_mac)
-            if f4b["model"] == "relaxation" and f4b["r2"] >= 0.85:
-                tau4 = f4b["params"]["tau"]; mode = "relaxation_seg"
-                out["fit4_seg"] = f4b
-    out["mode"] = mode; out["tau4"] = tau4; out["T4"] = T4
-    # --- entrainment check: Gbar power at T3 band vs slow band
+        # started near attractor: check for slow eco-evo oscillation instead
+        fit4 = compact_top_fit(gb[n // 4:], dt=dt_mac)
+        if fit4["model"] == "oscillator" and fit4["params"].get("n_cycles", 0) >= 5 and fit4["r2"] >= 0.85:
+            mode = "oscillator"; T4 = fit4["params"]["period"]
+    out["fit4"] = fit4; out["mode"] = mode; out["tau4"] = tau4; out["T4"] = T4
+    # --- entrainment: T3-band amplitude of Gbar ON THE PLATEAU vs plateau sd
+    T3 = eco.get("T3")
     if T3:
         w3 = max(int((T3 / 2) / dt_mac), 4)
-        g_slow = smooth1d(gb, int(3 * T3 / dt_mac))
-        g_fast = gb - smooth1d(gb, w3)
-        h = n // 2
-        out["G_amp_T3band"] = float(np.std(g_fast[h:]))
-        out["G_amp_slow"] = float(np.std(g_slow[h:] - g_slow[h:].mean()))
-        out["entrain_ratio"] = float(out["G_amp_T3band"] /
-                                     max(out["G_amp_slow"], 1e-12))
+        gp = gb[-2 * q:]
+        gfast = gp - smooth1d(gp, w3)
+        pq3 = macro_period_quality(gp - gp.mean(), dt=dt_mac)
+        out["G_T3band_amp"] = float(np.std(gfast[w3:-w3])) if len(gfast) > 3 * w3 else None
+        out["G_plateau_acfT"] = pq3["period"]; out["G_plateau_acfq"] = pq3["q"]
+        out["entrained"] = bool(pq3["period"] and T3 and
+                                abs(pq3["period"] - T3) / T3 < 0.25 and pq3["q"] > 0.5)
     # --- gates
     scale4 = tau4 or T4
     out["sep34"] = (scale4 / T3) if (scale4 and T3) else None
     out["G1_4layer"] = bool(eco.get("G1") and out["sep34"] and out["sep34"] >= 5)
-    out["G2_L4"] = bool(mode is not None)
+    out["G2_L4"] = bool(mode is not None and (fit4 or {}).get("r2", 0) >= 0.85)
     out["variance_ok"] = bool(out["sdG_med"] > 0.01)
     return out
 

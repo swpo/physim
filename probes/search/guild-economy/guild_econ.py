@@ -115,7 +115,11 @@ def init_state(p, rng):
     L = p["L"]
     gx, gy = np.meshgrid(np.arange(L), np.arange(L), indexing="ij")
     V = np.zeros((L, L)); E = np.zeros((L, L))
-    R = 0.6 * np.ones((L, L)); W = np.zeros((L, L))
+    # start fields near marginal-viability prices so both guilds are viable
+    # from t=0 (otherwise recyclers are wiped and must slowly re-invade)
+    Rstar = min((1 + p["over"]) / p["margin"], 0.9)
+    Wstar = Rstar / p["rho"]
+    R = 0.6 * np.ones((L, L)); W = p.get("W0", Wstar) * np.ones((L, L))
     A = np.full((L, L), 0.5)
     founder_a = np.linspace(0.06, 0.94, 12)
     rng.shuffle(founder_a)

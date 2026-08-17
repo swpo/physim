@@ -1,0 +1,2 @@
+rho=2.1 lk=0.65 hz=0.0005 ->  lo=0.413 pur=0.9648 fit=relaxation/0.9789 tau3=3448 t2=520.0 t1=(66.0,99.0) s12=5.25 s23=6.63 gap=0.007 drift=0.023 pass=True (46s)
+done

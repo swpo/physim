@@ -1,0 +1,4 @@
+m=0.05: st=ok G(t): start=1.501 1/4=1.470 1/2=1.428 3/4=1.243 end=1.115 sdG_med=0.071 eco_T3=162.5 ecoG1=False fit4=switch/0.8386 tau4=None rt=37.0s
+m=0.1: st=ok G(t): start=1.501 1/4=1.281 1/2=0.926 3/4=0.584 end=0.585 sdG_med=0.133 eco_T3=589.2 ecoG1=False fit4=switch/0.8775 tau4=None rt=39.7s
+m=0.2: st=ok G(t): start=1.502 1/4=0.900 1/2=0.865 3/4=0.885 end=0.874 sdG_med=0.252 eco_T3=172.2 ecoG1=False fit4=switch/0.4044 tau4=None rt=44.7s
+DONE calib

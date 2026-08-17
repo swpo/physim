@@ -47,10 +47,10 @@ def guild_patch_stats(A, V):
     return out
 
 
-def evaluate_cert(tc, seed=0, T1=36000, T2=24000, flip_frac=0.8,
+def evaluate_cert(tc, seed=0, T1=30000, T2=20000, flip_frac=0.8,
                   rec_every=25, snap_ticks=(), keep_series=False):
     res = {"tc": dict(tc), "seed": seed,
-           "protocol": "cert_twinflip0.8_T36k+24k_skip1500"}
+           "protocol": "cert_v2_Wseed_T30k+20k_noskip"}
     t_start = time.time()
     p = theory_to_raw(tc)
     rng = np.random.default_rng(seed)
@@ -125,18 +125,14 @@ def evaluate_cert(tc, seed=0, T1=36000, T2=24000, flip_frac=0.8,
     res["kick_start"] = float(kfs[0])
     res["kick_end"] = float(np.median(kfs[-40:]))
     res["return_gap"] = float(abs(res["kick_end"] - res["fr_star"]))
-    # L3 fit protocol: the macro law is fitted where the slow mode dominates
-    # (skip 1500 ticks = the fast L1/L2 re-equilibration after the kick);
-    # full-series fit reported alongside for honesty.
-    skip = 1500 // rec_every
-    sm = smooth(kfs[skip:], 11)
+    # L3 fit: hier_metrics.compact_top_fit on the FULL smoothed kicked series
+    # (starts at the kick = max deviation; no window games).
+    sm = smooth(kfs, 11)
     fit = compact_top_fit(sm, dt=rec_every)
     res["top_fit"] = {"model": fit["model"], "r2": fit["r2"],
                       "params": {k: (round(v, 1) if isinstance(v, float) else v)
                                  for k, v in fit["params"].items()},
                       "all": fit["all"]}
-    fit_full = compact_top_fit(smooth(kfs, 11), dt=rec_every)
-    res["top_fit_full"] = {"model": fit_full["model"], "r2": fit_full["r2"]}
     tau3 = fit["params"].get("tau") if fit["model"] == "relaxation" else None
     res["tau_L3"] = float(tau3) if tau3 else None
     if keep_series:

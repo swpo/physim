@@ -1,0 +1,3 @@
+seed=0 rho=2.0 lk=0.6 hz=0.0007 ->  lo=0.453 pur=0.9732 fit=relaxation/0.991 tau3=1521 t2=520.0 t1=(69.0,89.0) s12=5.84 s23=2.93 gap=0.001 drift=0.005 pass=False (33s)
+seed=1 rho=2.0 lk=0.6 hz=0.0007 ->  lo=0.459 pur=0.9752 fit=relaxation/0.8097 tau3=2455 t2=430.0 t1=(70.0,87.0) s12=4.94 s23=5.71 gap=0.004 drift=-0.0 pass=False (35s)
+done

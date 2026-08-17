@@ -41,3 +41,11 @@ id=38 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=0.75 -> ok | G1=True G2=False
 id=39 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.25 -> ok | G1=True G2=True G5=True r2=1.000 fl=6 per=1395.0 tau=11.6/95.0 sep=8.2/14.7 rungs=[5, 6]
 id=40 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.50 -> ok | G1=True G2=True G5=True r2=1.000 fl=7 per=1230.0 tau=13.8/107.5 sep=7.8/11.4 rungs=[5, 6]
 id=41 G:Dc Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 -> ok | G1=True G2=True G5=True r2=0.919 fl=6 per=1642.5 tau=11.8/88.8 sep=7.5/18.5 rungs=[5, 6, 7]
+id=42 G:Dc Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 -> ok | G1=True G2=False G5=True r2=0.937 fl=5 per=1483.75 tau=9.2/102.5 sep=11.1/14.5 rungs=[5, 6, 7]
+id=43 H:cert grid Dv=11.0 L=64 kap=0.42 eps=2.8e-03 sg=1.00 -> ok | G1=True G2=False G5=True r2=1.000 fl=5 per=1526.25 tau=11.0/108.8 sep=9.9/14.0 rungs=[5, 6]
+id=44 H:cert grid Dv=11.0 L=64 kap=0.50 eps=2.8e-03 sg=1.00 -> ok | G1=True G2=True G5=True r2=1.000 fl=6 per=1467.5 tau=14.3/95.0 sep=6.6/15.4 rungs=[5, 6]
+id=45 H:cert grid Dv=11.0 L=64 kap=0.42 eps=3.2e-03 sg=1.00 -> ok | G1=True G2=False G5=True r2=0.799 fl=9 per=1115.0 tau=11.3/80.0 sep=7.1/13.9 rungs=[4, 5, 6, 7]
+id=46 H:cert grid Dv=11.0 L=64 kap=0.50 eps=3.2e-03 sg=1.00 -> ok | G1=True G2=True G5=True r2=1.000 fl=7 per=1292.5 tau=13.5/102.5 sep=7.6/12.6 rungs=[5, 6]
+id=47 H:cert grid Dv=11.0 L=64 kap=0.50 eps=2.8e-03 sg=1.00 -> ok | G1=True G2=True G5=True r2=1.000 fl=6 per=1347.5 tau=10.9/92.5 sep=8.5/14.6 rungs=[5, 6]
+id=48 H:cert grid Dv=10.5 L=64 kap=0.50 eps=2.8e-03 sg=1.00 -> ok | G1=True G2=False G5=True r2=1.000 fl=5 per=1527.5 tau=9.6/101.2 sep=10.5/15.1 rungs=[5, 6]
+sweep3 done in 376s

@@ -1,0 +1,1336 @@
+[
+ {
+  "cand": {
+   "Dv": 9.918,
+   "L": 64,
+   "kappa": 0.489,
+   "eps": 0.0025662115447408367,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.001999160634305105
+  },
+  "band_ratio": 1.558,
+  "growth": 0.0543,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22724870495587235,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.30899767461627176,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2672,
+  "runtime_s": 15.9,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.987,
+  "n_flips": 13,
+  "period": 1686.2,
+  "n_cycles": 6,
+  "dwell_lo": 865.0,
+  "dwell_hi": 823.8,
+  "top_model": "switch",
+  "top_r2": 0.9543,
+  "top_params": {
+   "mean_dwell": 791.88,
+   "n_flips": 12
+  },
+  "n_events": 14,
+  "tau2": 48.75,
+  "heal_med": 35.0,
+  "pinch_med": 26.25,
+  "ev_durs": [
+   67.5,
+   132.5,
+   32.5,
+   20.0,
+   30.0,
+   55.0,
+   140.0,
+   32.5,
+   160.0,
+   30.0,
+   162.5,
+   42.5,
+   147.5,
+   32.5
+  ],
+  "tau1": 18.5,
+  "tau1_lin": 18.4,
+  "tau3_period": 1686.25,
+  "C_range": [
+   0.789,
+   1.121
+  ],
+  "clamp_hit": false,
+  "sep12": 2.6,
+  "sep23": 34.6,
+  "G1": false,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e28",
+  "jitter_id": 0,
+  "pass120": false
+ },
+ {
+  "cand": {
+   "Dv": 11.134,
+   "L": 64,
+   "kappa": 0.459,
+   "eps": 0.0025250067830856573,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0019529121893964744
+  },
+  "band_ratio": 1.817,
+  "growth": 0.0941,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22731878541803235,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.30908058306808384,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2648,
+  "runtime_s": 15.2,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9811,
+  "n_flips": 15,
+  "period": 1585.0,
+  "n_cycles": 7,
+  "dwell_lo": 935.0,
+  "dwell_hi": 637.5,
+  "top_model": "switch",
+  "top_r2": 0.935,
+  "top_params": {
+   "mean_dwell": 708.93,
+   "n_flips": 14
+  },
+  "n_events": 16,
+  "tau2": 108.75,
+  "heal_med": 70.0,
+  "pinch_med": 55.0,
+  "ev_durs": [
+   95.0,
+   122.5,
+   125.0,
+   32.5,
+   82.5,
+   130.0,
+   37.5,
+   135.0,
+   255.0,
+   85.0,
+   130.0,
+   92.5,
+   137.5,
+   72.5,
+   130.0,
+   90.0
+  ],
+  "tau1": 10.5,
+  "tau1_lin": 10.6,
+  "tau3_period": 1585.0,
+  "C_range": [
+   0.778,
+   1.113
+  ],
+  "clamp_hit": false,
+  "sep12": 10.4,
+  "sep23": 14.6,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e28",
+  "jitter_id": 2,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 11.873,
+   "L": 64,
+   "kappa": 0.453,
+   "eps": 0.003058439763969833,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0020980822624522204
+  },
+  "band_ratio": 1.951,
+  "growth": 0.1152,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22749474983701787,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3638370509286099,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2893,
+  "runtime_s": 13.9,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9725,
+  "n_flips": 19,
+  "period": 1307.5,
+  "n_cycles": 8,
+  "dwell_lo": 482.5,
+  "dwell_hi": 822.5,
+  "top_model": "switch",
+  "top_r2": 0.9094,
+  "top_params": {
+   "mean_dwell": 585.56,
+   "n_flips": 18
+  },
+  "n_events": 20,
+  "tau2": 101.25,
+  "heal_med": 51.25,
+  "pinch_med": 40.0,
+  "ev_durs": [
+   110.0,
+   105.0,
+   45.0,
+   105.0,
+   90.0,
+   22.5,
+   97.5,
+   52.5,
+   127.5,
+   245.0,
+   152.5,
+   47.5,
+   110.0,
+   85.0,
+   122.5,
+   47.5,
+   112.5,
+   85.0,
+   120.0,
+   87.5
+  ],
+  "tau1": 11.2,
+  "tau1_lin": 8.7,
+  "tau3_period": 1307.5,
+  "C_range": [
+   0.803,
+   1.127
+  ],
+  "clamp_hit": false,
+  "sep12": 9.0,
+  "sep23": 12.9,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e28",
+  "jitter_id": 3,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 11.9,
+   "L": 64,
+   "kappa": 0.454,
+   "eps": 0.0025770371053749335,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0021879239872171752
+  },
+  "band_ratio": 1.959,
+  "growth": 0.1159,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.227502562389383,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.36615081555007756,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2904,
+  "runtime_s": 12.5,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9543,
+  "n_flips": 16,
+  "period": 1125.0,
+  "n_cycles": 7,
+  "dwell_lo": 511.2,
+  "dwell_hi": 640.0,
+  "top_model": "switch",
+  "top_r2": 0.8634,
+  "top_params": {
+   "mean_dwell": 623.5,
+   "n_flips": 15
+  },
+  "n_events": 20,
+  "tau2": 83.75,
+  "heal_med": 50.0,
+  "pinch_med": 16.25,
+  "ev_durs": [
+   77.5,
+   125.0,
+   50.0,
+   52.5,
+   100.0,
+   27.5,
+   117.5,
+   45.0,
+   32.5,
+   17.5,
+   22.5,
+   142.5,
+   105.0,
+   30.0,
+   142.5,
+   97.5,
+   32.5,
+   155.0,
+   90.0,
+   120.0
+  ],
+  "tau1": 10.6,
+  "tau1_lin": 8.6,
+  "tau3_period": 1125.0,
+  "C_range": [
+   0.811,
+   1.115
+  ],
+  "clamp_hit": false,
+  "sep12": 7.9,
+  "sep23": 13.4,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e28",
+  "jitter_id": 5,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 11.651,
+   "L": 64,
+   "kappa": 0.486,
+   "eps": 0.0029663963523130416,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0020587624703378676
+  },
+  "band_ratio": 1.915,
+  "growth": 0.1091,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22743384935253985,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.34402087663644854,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2841,
+  "runtime_s": 12.3,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9425,
+  "n_flips": 22,
+  "period": 987.5,
+  "n_cycles": 10,
+  "dwell_lo": 540.0,
+  "dwell_hi": 521.2,
+  "top_model": "switch",
+  "top_r2": 0.8573,
+  "top_params": {
+   "mean_dwell": 484.4,
+   "n_flips": 21
+  },
+  "n_events": 24,
+  "tau2": 95.0,
+  "heal_med": 50.0,
+  "pinch_med": 46.25,
+  "ev_durs": [
+   75.0,
+   35.0,
+   97.5,
+   52.5,
+   132.5,
+   245.0,
+   97.5,
+   92.5,
+   17.5,
+   97.5,
+   110.0,
+   95.0,
+   105.0,
+   92.5,
+   142.5,
+   90.0,
+   132.5,
+   5.0,
+   25.0,
+   17.5,
+   77.5,
+   115.0,
+   95.0,
+   140.0
+  ],
+  "tau1": 15.4,
+  "tau1_lin": 9.2,
+  "tau3_period": 987.5,
+  "C_range": [
+   0.806,
+   1.124
+  ],
+  "clamp_hit": false,
+  "sep12": 6.2,
+  "sep23": 10.4,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e32",
+  "jitter_id": 0,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 10.65,
+   "L": 64,
+   "kappa": 0.518,
+   "eps": 0.0035027789460289577,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.002076852208329584
+  },
+  "band_ratio": 1.722,
+  "growth": 0.0791,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.227253181817519,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3090183372455954,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2696,
+  "runtime_s": 12.2,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9164,
+  "n_flips": 25,
+  "period": 672.5,
+  "n_cycles": 11,
+  "dwell_lo": 477.5,
+  "dwell_hi": 212.5,
+  "top_model": "switch",
+  "top_r2": 0.8455,
+  "top_params": {
+   "mean_dwell": 428.54,
+   "n_flips": 24
+  },
+  "n_events": 27,
+  "tau2": 97.5,
+  "heal_med": 27.5,
+  "pinch_med": 80.0,
+  "ev_durs": [
+   127.5,
+   77.5,
+   120.0,
+   242.5,
+   242.5,
+   20.0,
+   130.0,
+   242.5,
+   25.0,
+   92.5,
+   30.0,
+   95.0,
+   32.5,
+   135.0,
+   252.5,
+   135.0,
+   77.5,
+   130.0,
+   82.5,
+   97.5,
+   145.0,
+   20.0,
+   97.5,
+   12.5,
+   125.0,
+   95.0,
+   110.0
+  ],
+  "tau1": 11.3,
+  "tau1_lin": 12.6,
+  "tau3_period": 672.5,
+  "C_range": [
+   0.775,
+   1.135
+  ],
+  "clamp_hit": false,
+  "sep12": 8.6,
+  "sep23": 6.9,
+  "G1": true,
+  "G2": false,
+  "G5": false,
+  "status": "ok",
+  "tag": "FLAG_e32",
+  "jitter_id": 5,
+  "pass120": false
+ },
+ {
+  "cand": {
+   "Dv": 10.069,
+   "L": 64,
+   "kappa": 0.539,
+   "eps": 0.003006258233699141,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.002066781659951645
+  },
+  "band_ratio": 1.594,
+  "growth": 0.0596,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22723993744021584,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.309000944837753,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2713,
+  "runtime_s": 13.1,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9693,
+  "n_flips": 16,
+  "period": 1480.0,
+  "n_cycles": 7,
+  "dwell_lo": 702.5,
+  "dwell_hi": 763.8,
+  "top_model": "switch",
+  "top_r2": 0.908,
+  "top_params": {
+   "mean_dwell": 659.17,
+   "n_flips": 15
+  },
+  "n_events": 18,
+  "tau2": 65.0,
+  "heal_med": 43.75,
+  "pinch_med": 32.5,
+  "ev_durs": [
+   52.5,
+   147.5,
+   55.0,
+   137.5,
+   62.5,
+   162.5,
+   142.5,
+   92.5,
+   57.5,
+   130.0,
+   57.5,
+   127.5,
+   32.5,
+   25.0,
+   30.0,
+   145.0,
+   30.0,
+   67.5
+  ],
+  "tau1": 12.3,
+  "tau1_lin": 16.8,
+  "tau3_period": 1480.0,
+  "C_range": [
+   0.782,
+   1.132
+  ],
+  "clamp_hit": false,
+  "sep12": 5.3,
+  "sep23": 22.8,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 1,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 11.855,
+   "L": 64,
+   "kappa": 0.508,
+   "eps": 0.0028839370993863573,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0018554127745992308
+  },
+  "band_ratio": 1.949,
+  "growth": 0.1147,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.2274895884970917,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.36228308076161525,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.296,
+  "runtime_s": 17.3,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9536,
+  "n_flips": 17,
+  "period": 1655.0,
+  "n_cycles": 7,
+  "dwell_lo": 451.2,
+  "dwell_hi": 992.5,
+  "top_model": "switch",
+  "top_r2": 0.8513,
+  "top_params": {
+   "mean_dwell": 624.84,
+   "n_flips": 16
+  },
+  "n_events": 20,
+  "tau2": 100.0,
+  "heal_med": 42.5,
+  "pinch_med": 45.0,
+  "ev_durs": [
+   92.5,
+   125.0,
+   80.0,
+   125.0,
+   80.0,
+   132.5,
+   107.5,
+   37.5,
+   147.5,
+   82.5,
+   30.0,
+   75.0,
+   32.5,
+   147.5,
+   287.5,
+   147.5,
+   40.0,
+   32.5,
+   137.5,
+   272.5
+  ],
+  "tau1": 16.9,
+  "tau1_lin": 8.7,
+  "tau3_period": 1655.0,
+  "C_range": [
+   0.811,
+   1.125
+  ],
+  "clamp_hit": false,
+  "sep12": 5.9,
+  "sep23": 16.6,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 2,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 10.099,
+   "L": 64,
+   "kappa": 0.545,
+   "eps": 0.002984299963112779,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0020446944541528357
+  },
+  "band_ratio": 1.599,
+  "growth": 0.0607,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22723877600586273,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3090016301742348,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2718,
+  "runtime_s": 18.0,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9791,
+  "n_flips": 16,
+  "period": 1487.5,
+  "n_cycles": 7,
+  "dwell_lo": 702.5,
+  "dwell_hi": 768.8,
+  "top_model": "switch",
+  "top_r2": 0.9313,
+  "top_params": {
+   "mean_dwell": 680.67,
+   "n_flips": 15
+  },
+  "n_events": 17,
+  "tau2": 87.5,
+  "heal_med": 47.5,
+  "pinch_med": 35.0,
+  "ev_durs": [
+   52.5,
+   147.5,
+   67.5,
+   132.5,
+   65.0,
+   150.0,
+   142.5,
+   87.5,
+   55.0,
+   130.0,
+   62.5,
+   127.5,
+   32.5,
+   165.0,
+   30.0,
+   57.5,
+   122.5
+  ],
+  "tau1": 13.1,
+  "tau1_lin": 16.5,
+  "tau3_period": 1487.5,
+  "C_range": [
+   0.786,
+   1.132
+  ],
+  "clamp_hit": false,
+  "sep12": 6.7,
+  "sep23": 17.0,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 3,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 11.549,
+   "L": 64,
+   "kappa": 0.517,
+   "eps": 0.0029162549750930203,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0020171998892802604
+  },
+  "band_ratio": 1.891,
+  "growth": 0.1062,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22740800139930278,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.33419353414951586,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2826,
+  "runtime_s": 25.0,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9355,
+  "n_flips": 22,
+  "period": 1157.5,
+  "n_cycles": 10,
+  "dwell_lo": 546.2,
+  "dwell_hi": 545.0,
+  "top_model": "switch",
+  "top_r2": 0.8482,
+  "top_params": {
+   "mean_dwell": 513.93,
+   "n_flips": 21
+  },
+  "n_events": 25,
+  "tau2": 100.0,
+  "heal_med": 50.0,
+  "pinch_med": 47.5,
+  "ev_durs": [
+   132.5,
+   90.0,
+   187.5,
+   37.5,
+   40.0,
+   12.5,
+   25.0,
+   97.5,
+   105.0,
+   27.5,
+   137.5,
+   272.5,
+   122.5,
+   25.0,
+   102.5,
+   97.5,
+   112.5,
+   95.0,
+   30.0,
+   127.5,
+   122.5,
+   100.0,
+   30.0,
+   125.0,
+   255.0
+  ],
+  "tau1": 12.5,
+  "tau1_lin": 9.4,
+  "tau3_period": 1157.5,
+  "C_range": [
+   0.799,
+   1.124
+  ],
+  "clamp_hit": false,
+  "sep12": 8.0,
+  "sep23": 11.6,
+  "G1": true,
+  "G2": false,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 4,
+  "pass120": false
+ },
+ {
+  "cand": {
+   "Dv": 10.959,
+   "L": 64,
+   "kappa": 0.5,
+   "eps": 0.0033205482299110095,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0021907637954486454
+  },
+  "band_ratio": 1.781,
+  "growth": 0.0888,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22728984353170165,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3090405833281608,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2682,
+  "runtime_s": 22.7,
+  "rungs_visited": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.955,
+  "n_flips": 21,
+  "period": 1153.8,
+  "n_cycles": 10,
+  "dwell_lo": 621.2,
+  "dwell_hi": 533.8,
+  "top_model": "switch",
+  "top_r2": 0.8753,
+  "top_params": {
+   "mean_dwell": 509.38,
+   "n_flips": 20
+  },
+  "n_events": 21,
+  "tau2": 100.0,
+  "heal_med": 65.0,
+  "pinch_med": 72.5,
+  "ev_durs": [
+   30.0,
+   100.0,
+   242.5,
+   242.5,
+   77.5,
+   130.0,
+   80.0,
+   102.5,
+   27.5,
+   80.0,
+   132.5,
+   230.0,
+   80.0,
+   132.5,
+   92.5,
+   165.0,
+   80.0,
+   122.5,
+   110.0,
+   27.5,
+   92.5
+  ],
+  "tau1": 9.5,
+  "tau1_lin": 11.3,
+  "tau3_period": 1153.75,
+  "C_range": [
+   0.773,
+   1.129
+  ],
+  "clamp_hit": false,
+  "sep12": 10.5,
+  "sep23": 11.5,
+  "G1": true,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 7,
+  "pass120": true
+ },
+ {
+  "cand": {
+   "Dv": 12.031,
+   "L": 64,
+   "kappa": 0.485,
+   "eps": 0.003109071481306596,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0019288711765880961
+  },
+  "band_ratio": 1.978,
+  "growth": 0.1194,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22754163317456436,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.37708964823965707,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.3001,
+  "runtime_s": 20.7,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.957,
+  "n_flips": 16,
+  "period": 1662.5,
+  "n_cycles": 7,
+  "dwell_lo": 395.0,
+  "dwell_hi": 1265.0,
+  "top_model": "switch",
+  "top_r2": 0.8452,
+  "top_params": {
+   "mean_dwell": 672.17,
+   "n_flips": 15
+  },
+  "n_events": 17,
+  "tau2": 75.0,
+  "heal_med": 35.0,
+  "pinch_med": 37.5,
+  "ev_durs": [
+   67.5,
+   12.5,
+   47.5,
+   195.0,
+   75.0,
+   27.5,
+   145.0,
+   30.0,
+   145.0,
+   75.0,
+   145.0,
+   75.0,
+   130.0,
+   75.0,
+   30.0,
+   92.5,
+   100.0
+  ],
+  "tau1": 14.6,
+  "tau1_lin": 8.4,
+  "tau3_period": 1662.5,
+  "C_range": [
+   0.838,
+   1.128
+  ],
+  "clamp_hit": false,
+  "sep12": 5.1,
+  "sep23": 22.2,
+  "G1": true,
+  "G2": false,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 9,
+  "pass120": false
+ },
+ {
+  "cand": {
+   "Dv": 10.02,
+   "L": 64,
+   "kappa": 0.48,
+   "eps": 0.003191687401301949,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.0021646136152305806
+  },
+  "band_ratio": 1.581,
+  "growth": 0.0579,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.2272422548518638,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3089998524156034,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2665,
+  "runtime_s": 33.9,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9898,
+  "n_flips": 16,
+  "period": 1427.5,
+  "n_cycles": 7,
+  "dwell_lo": 750.0,
+  "dwell_hi": 670.0,
+  "top_model": "switch",
+  "top_r2": 0.9629,
+  "top_params": {
+   "mean_dwell": 675.0,
+   "n_flips": 15
+  },
+  "n_events": 17,
+  "tau2": 57.5,
+  "heal_med": 42.5,
+  "pinch_med": 32.5,
+  "ev_durs": [
+   32.5,
+   137.5,
+   55.0,
+   152.5,
+   52.5,
+   150.0,
+   42.5,
+   195.0,
+   57.5,
+   137.5,
+   65.0,
+   17.5,
+   32.5,
+   55.0,
+   145.0,
+   50.0,
+   135.0
+  ],
+  "tau1": 14.5,
+  "tau1_lin": 17.3,
+  "tau3_period": 1427.5,
+  "C_range": [
+   0.774,
+   1.129
+  ],
+  "clamp_hit": false,
+  "sep12": 4.0,
+  "sep23": 24.8,
+  "G1": false,
+  "G2": true,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 10,
+  "pass120": false
+ },
+ {
+  "cand": {
+   "Dv": 10.71,
+   "L": 64,
+   "kappa": 0.529,
+   "eps": 0.0030444328554627333,
+   "n_pair": [
+    5,
+    6
+   ],
+   "noise": 0.002181942578204267
+  },
+  "band_ratio": 1.735,
+  "growth": 0.081,
+  "calib": [
+   {
+    "n": 5,
+    "held": true,
+    "S": 0.22725877605327896,
+    "n_final": 5
+   },
+   {
+    "n": 6,
+    "held": true,
+    "S": 0.3090211486403147,
+    "n_final": 6
+   }
+  ],
+  "kstar2": 0.2705,
+  "runtime_s": 32.7,
+  "rungs_visited": [
+   5,
+   6,
+   7
+  ],
+  "dom_pair": [
+   5,
+   6
+  ],
+  "frac_2level": 0.9277,
+  "n_flips": 22,
+  "period": 841.2,
+  "n_cycles": 10,
+  "dwell_lo": 552.5,
+  "dwell_hi": 267.5,
+  "top_model": "switch",
+  "top_r2": 0.8497,
+  "top_params": {
+   "mean_dwell": 497.74,
+   "n_flips": 21
+  },
+  "n_events": 27,
+  "tau2": 80.0,
+  "heal_med": 25.0,
+  "pinch_med": 32.5,
+  "ev_durs": [
+   80.0,
+   122.5,
+   27.5,
+   130.0,
+   87.5,
+   137.5,
+   37.5,
+   17.5,
+   27.5,
+   35.0,
+   17.5,
+   30.0,
+   27.5,
+   127.5,
+   27.5,
+   160.0,
+   277.5,
+   27.5,
+   15.0,
+   27.5,
+   80.0,
+   120.0,
+   80.0,
+   122.5,
+   27.5,
+   152.5,
+   265.0
+  ],
+  "tau1": 13.3,
+  "tau1_lin": 12.3,
+  "tau3_period": 841.25,
+  "C_range": [
+   0.776,
+   1.128
+  ],
+  "clamp_hit": false,
+  "sep12": 6.0,
+  "sep23": 10.5,
+  "G1": true,
+  "G2": false,
+  "G5": false,
+  "status": "ok",
+  "tag": "e32x",
+  "jitter_id": 11,
+  "pass120": false
+ }
+]

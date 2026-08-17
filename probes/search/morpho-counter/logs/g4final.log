@@ -1,0 +1,25 @@
+FLAG_e28 seed=1: PASS=True G1=True G2=True r2=1.000 fl=6 per=1467.5 tau=14.3/95.0 sep=6.6/15.4 rungs=[5, 6] ev=7
+FLAG_e28 seed=2: PASS=True G1=True G2=True r2=0.921 fl=7 per=1430.0 tau=11.6/90.0 sep=7.8/15.9 rungs=[5, 6, 7] ev=9
+FLAG_e28 seed=3: PASS=True G1=True G2=True r2=0.935 fl=6 per=1447.5 tau=15.5/95.0 sep=6.1/15.2 rungs=[5, 6, 7] ev=7
+FLAG_e28 seed=4: PASS=True G1=True G2=True r2=0.928 fl=7 per=1385.0 tau=10.2/117.5 sep=11.5/11.8 rungs=[5, 6, 7] ev=9
+== FLAG_e28 seeds: 4/4
+FLAG_e32 seed=1: PASS=True G1=True G2=True r2=1.000 fl=7 per=1292.5 tau=13.5/102.5 sep=7.6/12.6 rungs=[5, 6] ev=8
+FLAG_e32 seed=2: PASS=True G1=True G2=True r2=0.867 fl=8 per=1052.5 tau=10.4/95.0 sep=9.1/11.1 rungs=[5, 6, 7] ev=9
+FLAG_e32 seed=3: PASS=True G1=True G2=True r2=1.000 fl=7 per=1287.5 tau=14.0/103.8 sep=7.4/12.4 rungs=[5, 6] ev=8
+FLAG_e32 seed=4: PASS=True G1=True G2=True r2=0.940 fl=7 per=1300.0 tau=9.3/96.2 sep=10.3/13.5 rungs=[5, 6, 7] ev=8
+== FLAG_e32 seeds: 4/4
+FLAG_e28 jit=0 (Dv=9.92 kap=0.489 eps=2.57e-03 ns=2.0e-03): PASS=False G1=False G2=False r2=0.912 fl=5 per=1350.0 sep=4.7/24.5 rungs=[5, 6, 7]
+FLAG_e28 jit=1 (Dv=10.89 kap=0.521 eps=2.69e-03 ns=2.0e-03): PASS=True G1=True G2=True r2=0.926 fl=6 per=1470.0 sep=6.5/18.1 rungs=[5, 6, 7]
+FLAG_e28 jit=2 (Dv=11.13 kap=0.459 eps=2.53e-03 ns=2.0e-03): PASS=False G1=True G2=False r2=0.932 fl=5 per=1342.5 sep=7.7/12.3 rungs=[5, 6, 7]
+FLAG_e28 jit=3 (Dv=11.87 kap=0.453 eps=3.06e-03 ns=2.1e-03): PASS=False G1=True G2=False r2=0.848 fl=9 per=926.25 sep=7.0/8.8 rungs=[5, 6, 7]
+FLAG_e28 jit=4 (Dv=11.49 kap=0.468 eps=2.85e-03 ns=2.1e-03): PASS=True G1=True G2=True r2=1.000 fl=6 per=1305.0 sep=9.2/12.7 rungs=[5, 6]
+FLAG_e28 jit=5 (Dv=11.90 kap=0.454 eps=2.58e-03 ns=2.2e-03): PASS=False G1=False G2=True r2=0.917 fl=6 per=1365.0 sep=4.4/21.0 rungs=[5, 6, 7]
+== FLAG_e28 jitter: 2/6
+FLAG_e32 jit=0 (Dv=11.65 kap=0.486 eps=2.97e-03 ns=2.1e-03): PASS=False G1=True G2=False r2=0.844 fl=10 per=591.25 sep=8.1/6.2 rungs=[5, 6, 7]
+FLAG_e32 jit=1 (Dv=11.93 kap=0.471 eps=3.35e-03 ns=1.9e-03): PASS=True G1=True G2=True r2=0.867 fl=8 per=1377.5 sep=6.4/16.7 rungs=[5, 6, 7]
+FLAG_e32 jit=2 (Dv=11.49 kap=0.464 eps=3.51e-03 ns=1.8e-03): PASS=True G1=True G2=True r2=0.861 fl=11 per=592.5 sep=8.5/5.6 rungs=[5, 6, 7]
+FLAG_e32 jit=3 (Dv=10.69 kap=0.514 eps=3.28e-03 ns=1.9e-03): PASS=True G1=True G2=True r2=1.000 fl=7 per=1310.0 sep=6.5/13.3 rungs=[5, 6]
+FLAG_e32 jit=4 (Dv=10.12 kap=0.480 eps=3.02e-03 ns=2.1e-03): PASS=True G1=True G2=True r2=1.000 fl=6 per=1472.5 sep=6.2/19.6 rungs=[5, 6]
+FLAG_e32 jit=5 (Dv=10.65 kap=0.518 eps=3.50e-03 ns=2.1e-03): PASS=False G1=True G2=False r2=0.845 fl=12 per=670.0 sep=8.2/5.6 rungs=[5, 6, 7]
+== FLAG_e32 jitter: 4/6
+g4 final done

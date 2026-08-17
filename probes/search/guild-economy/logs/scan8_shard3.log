@@ -1,0 +1,6 @@
+shard 3/4: 4
+[1/4] DW=0.02 rho=2.1 lk=0.65 hz=0.0007 ->  lo=0.345 fit=relaxation/0.978 tau3=3681 t2=820.0 s12=6.67 s23=4.49 rec_diam=4.2 gap=0.004 drift=0.065 pass=False (36s)
+[2/4] DW=0.02 rho=2.7 lk=0.85 hz=0.0007 ->  lo=0.368 fit=relaxation/0.9943 tau3=3423 t2=870.0 s12=8.21 s23=3.93 rec_diam=7.0 gap=0.001 drift=0.072 pass=False (38s)
+[3/4] DW=0.06 rho=2.1 lk=0.65 hz=0.0007 ->  lo=0.461 fit=switch/0.413 tau3=None t2=500.0 s12=5.88 s23=None rec_diam=9.8 gap=0.001 drift=0.001 pass=False (37s)
+[4/4] DW=0.06 rho=2.7 lk=0.85 hz=0.0007 ->  lo=0.513 fit=switch/0.2744 tau3=None t2=440.0 s12=6.11 s23=None rec_diam=13.1 gap=0.0 drift=0.005 pass=False (34s)
+done

@@ -1,0 +1,1 @@
+idx=3 DW=0.02 L=96 seed=1 ->  fr*=0.456 lo=0.43 pur=0.9714 fit=relaxation/0.9597 tau3=3139 t2=520.0 t1=(67.0,95.0) s12=5.47 s23=6.04 gap=0.006 drift=0.016 pass=True (104s)

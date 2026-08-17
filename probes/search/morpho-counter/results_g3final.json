@@ -1,0 +1,148 @@
+{
+ "metric_version": "v3-locked",
+ "eps_curve": [
+  {
+   "eps": 0.0014,
+   "period": 2517.5,
+   "n_cycles": 3,
+   "n_flips": 9,
+   "dwell_lo": 1376.2,
+   "dwell_hi": 1166.2,
+   "rungs": [
+    5,
+    6
+   ],
+   "frac2": 1.0,
+   "eps_x_period": 3.5244999999999997
+  },
+  {
+   "eps": 0.002,
+   "period": 1882.5,
+   "n_cycles": 5,
+   "n_flips": 12,
+   "dwell_lo": 1052.5,
+   "dwell_hi": 828.8,
+   "rungs": [
+    5,
+    6,
+    7
+   ],
+   "frac2": 0.9805,
+   "eps_x_period": 3.765
+  },
+  {
+   "eps": 0.0028,
+   "period": 1430.0,
+   "n_cycles": 7,
+   "n_flips": 16,
+   "dwell_lo": 800.0,
+   "dwell_hi": 632.5,
+   "rungs": [
+    5,
+    6,
+    7
+   ],
+   "frac2": 0.9841,
+   "eps_x_period": 4.004
+  },
+  {
+   "eps": 0.004,
+   "period": 1052.5,
+   "n_cycles": 11,
+   "n_flips": 23,
+   "dwell_lo": 610.0,
+   "dwell_hi": 442.5,
+   "rungs": [
+    5,
+    6,
+    7
+   ],
+   "frac2": 0.9702,
+   "eps_x_period": 4.21
+  },
+  {
+   "eps": 0.0056,
+   "period": 470.0,
+   "n_cycles": 19,
+   "n_flips": 40,
+   "dwell_lo": 337.5,
+   "dwell_hi": 135.0,
+   "rungs": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "frac2": 0.9009,
+   "eps_x_period": 2.632
+  }
+ ],
+ "kappa_curve": [
+  {
+   "kappa": 0.3,
+   "period": 1655.0,
+   "duty": 0.2805,
+   "dwell_lo": 1186.2,
+   "dwell_hi": 462.5,
+   "n_flips": 14,
+   "rungs": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "kappa": 0.4,
+   "period": 1551.25,
+   "duty": 0.3525,
+   "dwell_lo": 1001.2,
+   "dwell_hi": 545.0,
+   "n_flips": 14,
+   "rungs": [
+    5,
+    6
+   ]
+  },
+  {
+   "kappa": 0.5,
+   "period": 1430.0,
+   "duty": 0.4415,
+   "dwell_lo": 800.0,
+   "dwell_hi": 632.5,
+   "n_flips": 16,
+   "rungs": [
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "kappa": 0.6,
+   "period": 1377.5,
+   "duty": 0.5652,
+   "dwell_lo": 575.0,
+   "dwell_hi": 747.5,
+   "n_flips": 19,
+   "rungs": [
+    4,
+    5,
+    6,
+    7
+   ]
+  },
+  {
+   "kappa": 0.7,
+   "period": 1412.5,
+   "duty": 0.5908,
+   "dwell_lo": 577.5,
+   "dwell_hi": 833.8,
+   "n_flips": 18,
+   "rungs": [
+    5,
+    6,
+    7
+   ]
+  }
+ ]
+}

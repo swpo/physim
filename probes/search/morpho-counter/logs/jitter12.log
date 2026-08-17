@@ -1,0 +1,13 @@
+jit=00 (Dv=10.38 kap=0.451 eps=2.90e-03): PASS=True G1=True G2=True r2=0.926 fl=6 per=1497.5 sep=7.0/14.1 rungs=[5, 6, 7]
+jit=01 (Dv=10.07 kap=0.539 eps=3.01e-03): PASS=False G1=True G2=False r2=0.996 fl=5 per=1481.25 sep=5.3/14.8 rungs=[5, 6, 7]
+jit=02 (Dv=11.86 kap=0.508 eps=2.88e-03): PASS=False G1=True G2=False r2=0.905 fl=5 per=1696.25 sep=6.7/18.3 rungs=[5, 6, 7]
+jit=03 (Dv=10.10 kap=0.545 eps=2.98e-03): PASS=False G1=True G2=False r2=1.000 fl=5 per=1488.75 sep=5.5/14.9 rungs=[5, 6]
+jit=04 (Dv=11.55 kap=0.517 eps=2.92e-03): PASS=False G1=True G2=False r2=0.838 fl=9 per=1157.5 sep=8.3/12.3 rungs=[5, 6, 7]
+jit=05 (Dv=11.80 kap=0.451 eps=3.11e-03): PASS=True G1=True G2=True r2=0.891 fl=9 per=1180.0 sep=8.2/11.9 rungs=[5, 6, 7]
+jit=06 (Dv=10.91 kap=0.478 eps=3.41e-03): PASS=True G1=True G2=True r2=0.945 fl=7 per=1180.0 sep=5.7/13.1 rungs=[5, 6, 7]
+jit=07 (Dv=10.96 kap=0.500 eps=3.32e-03): PASS=False G1=True G2=False r2=0.843 fl=9 per=882.5 sep=6.5/8.8 rungs=[4, 5, 6, 7]
+jit=08 (Dv=11.56 kap=0.492 eps=3.07e-03): PASS=True G1=True G2=True r2=0.937 fl=8 per=1265.0 sep=7.2/12.3 rungs=[5, 6, 7]
+jit=09 (Dv=12.03 kap=0.485 eps=3.11e-03): PASS=False G1=True G2=False r2=0.805 fl=7 per=1410.0 sep=6.4/20.9 rungs=[5, 6, 7]
+jit=10 (Dv=10.02 kap=0.480 eps=3.19e-03): PASS=False G1=False G2=True r2=1.000 fl=6 per=1432.5 sep=3.0/24.9 rungs=[5, 6]
+jit=11 (Dv=10.71 kap=0.529 eps=3.04e-03): PASS=False G1=False G2=True r2=0.855 fl=8 per=1062.5 sep=3.1/28.3 rungs=[5, 6, 7]
+== extra jitter: 4/12
