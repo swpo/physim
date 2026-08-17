@@ -573,6 +573,7 @@ code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; }
 <nav style="font-size:14px;margin-bottom:18px;">
 <a href="index.html">home</a> · <a href="results.html">results</a> ·
 <a href="worlds.html">the worlds</a> ·
+<a href="scoring.html">scoring</a> ·
 <a href="rollouts-bulk.html"><b>rollouts: bulk</b></a> ·
 <a href="rollouts-chemistry.html"><b>rollouts: chemistry</b></a> ·
 <a href="https://github.com/swpo/physim">github</a></nav>

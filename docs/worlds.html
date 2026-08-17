@@ -18,6 +18,7 @@
 <nav style="font-size:14px;margin-bottom:18px;">
 <a href="index.html">home</a> · <a href="results.html">results</a> ·
 <a href="worlds.html"><b>the worlds</b></a> ·
+<a href="scoring.html">scoring</a> ·
 <a href="rollouts-bulk.html">rollouts: bulk</a> ·
 <a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
 <a href="https://github.com/swpo/physim">github</a></nav>
@@ -235,11 +236,15 @@ around a constant. Channel order is shuffled; nothing is labelled.</li>
   </ul></li>
 <li><b>Scoring</b>, all on fresh world-copies the agent never touched:
   <b>prediction</b> contracts ("under this input schedule, what will sensor 23
-  average at the end?" — scored by closeness relative to the world's own
-  run-to-run spread), <b>preparation</b> contracts ("get sensor 12 into this
-  band and make it stay after you let go" — a policy, scored on 5 fresh
+  average at the end?" — answered with a point estimate or, since v0.10.0,
+  full <b>quantiles</b>, scored by a proper distributional rule (CRPS) against
+  the world's own god-mode repetition ensemble, with the world's irreducible
+  noise floor subtracted: honest uncertainty and multimodal structure pay,
+  bluffed certainty loses), <b>preparation</b> contracts ("get sensor 12 into
+  this band and make it stay after you let go" — a policy, scored on 5 fresh
   copies), and optionally an <b>executable theory</b> (a simulator of the
-  sensors, scored by replaying every contract protocol through it).</li>
+  sensors, scored by replaying every contract protocol through it).
+  Full mechanics: <a href="scoring.html">the scoring page</a>.</li>
 </ul>
 <p class="meta">Everything an agent can access runs in a separate process from
 the world engine; hidden state, wiring, and ground-truth ensembles never cross

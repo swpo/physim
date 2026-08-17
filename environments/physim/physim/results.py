@@ -3,9 +3,12 @@
 Curated summary of REPORT.md, split by world track:
   docs/results.html            — overview + headline findings + links
   docs/results-bulk.html       — D-track (D0-D4): grids, strata, cost accounting
-  docs/results-chemistry.html  — C-track (C0-C1): first frontier runs
+  docs/results-chemistry.html  — C-track (C0-C4)
+  docs/results-life.html       — B-track (ecology) + E-track (evolution)
+  docs/scoring.html            — how scoring works (contracts, CRPS, adequacy)
 
-Numbers are transcribed from REPORT.md (the running lab log, linked).
+The results pages are the CURATED view (clean, current-truth, no chronology
+obligation); REPORT.md is the authoritative append-only lab log.
 Usage: .venv/bin/python -m physim.results
 """
 from __future__ import annotations
@@ -33,9 +36,11 @@ nav a { margin-right: 14px; }
 
 NAV = """<nav>
 <a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
-<a href="results-bulk.html">bulk-matter track</a> ·
-<a href="results-chemistry.html">chemistry track</a> ·
+<a href="results-bulk.html">bulk</a> ·
+<a href="results-chemistry.html">chemistry</a> ·
+<a href="results-life.html">life</a> ·
 <a href="worlds.html">the worlds</a> ·
+<a href="scoring.html">scoring</a> ·
 <a href="rollouts-bulk.html">rollouts: bulk</a> ·
 <a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
 <a href="https://github.com/swpo/physim">github</a> ·
@@ -60,9 +65,13 @@ interface. Agents explore under a tick budget, then are scored on
 <b>prediction</b> (held-out protocols on fresh world copies),
 <b>preparation</b> (submit control policies that steer the world into target
 states), and optionally an <b>executable theory</b> (a simulator of the
-sensors, replayed against ground truth). Two world tracks exist:
-the <a href="results-bulk.html">bulk-matter track</a> (D0–D4) and the
-<a href="results-chemistry.html">chemistry track</a> (C0–C1).</p>
+sensors, replayed against ground truth). Since v0.10.0 prediction is scored
+<b>distributionally</b> (CRPS against god-mode truth ensembles — honest
+uncertainty and multimodal structure pay; <a href="scoring.html">how scoring
+works</a>). Four world tracks:
+<a href="results-bulk.html">bulk matter</a> (D0–D4),
+<a href="results-chemistry.html">chemistry</a> (C0–C4), and the life tracks —
+<a href="results-life.html">ecology (B) + evolution (E)</a>.</p>
 
 <h2>Headline results (2026-02)</h2>
 <table>
@@ -95,6 +104,16 @@ mean |err| 0.021 — <a href="rollouts.html">read it in the gallery</a></td></tr
 gemini-3.1-pro satisfices (~12 turns, 1% budget) where fable runs 60–180-turn
 research programs</td></tr>
 </table>
+
+<h2>Current track order by frontier gap (oracle − best agent)</h2>
+<p>C4 (0.5–0.6) &gt; B2 (0.3–0.5) &gt; E1 (0.23–0.38) &gt; D4 (0.3–0.45) &gt;
+B0/C2/C3 (0.1–0.3) &gt; B1/C0/C1 (≈0, saturated or interpolable).</p>
+<p class="note"><b>Scoring upgrade (2026-02-16, v0.10.0):</b> accuracy is now
+a proper distributional score (CRPS vs the truth ensemble, noise-floor
+subtracted). On quasi-deterministic worlds (C/D tracks) it reduces exactly to
+the old point score, so those numbers carry over. On stochastic worlds (B/E
+tracks) point-scored numbers are marked <span class="meta">(legacy)</span>
+until re-run. Details: <a href="scoring.html">scoring page</a>.</p>
 
 <h2>Current leaderboard snapshots</h2>
 <h3>Bulk-matter frontier (D4, tools tier, 5 seeds, prediction reward)</h3>
@@ -343,6 +362,22 @@ quantifies the project thesis: what separates current AI scientists from the
 achievable is <i>discovery</i>, not representation capacity.</li>
 </ul>
 
+<h2>Current track order by frontier gap</h2>
+<p>See the <a href="results.html">overview</a> for the cross-track ranking
+and the <a href="results-life.html">life-tracks page</a> for B/E results.</p>
+"""
+
+
+
+LIFE = """
+<h1>Results — life tracks: ecology (B) and evolution (E)</h1>
+<p class="note">B-track worlds are <b>ecosystems</b> (organisms, resources,
+competition) built on the same lattice-field engine as chemistry; E-track
+worlds add <b>heredity</b> — a genotype field that new tissue copies from its
+parent, with mutation, making natural selection possible as world physics.
+Agents still see only anonymous ports and sensors.
+<a href="worlds.html">World guide</a> · <a href="scoring.html">scoring</a>.</p>
+
 <h2>B0 — the biology track opens (2026-02-14, v0.7.0)</h2>
 <p class="note">An <b>ecosystem</b>: two organism variants (greedy-fast vs
 frugal-fragile) compete for one regenerating resource. Ports fertilize or
@@ -352,7 +387,7 @@ carrying capacity; coexistence under a consumption trade-off; and
 extinct while the frugal one inherits the world (verified through the port
 interface: poison 32→0). Certified 6/6 seeds.</p>
 <table>
-<tr><th class="l">agent / reference</th><th>prediction</th><th>theory</th></tr>
+<tr><th class="l">agent / reference <span class="meta">(legacy point scoring — CRPS re-run in progress)</span></th><th>prediction</th><th>theory</th></tr>
 <tr><td class="l">claude-fable-5 + claude_code</td><td>0.63, 0.46</td><td>0.41, 0.47</td></tr>
 <tr><td class="l">gpt-5.2 + codex</td><td>0.58, 0.46</td><td>—</td></tr>
 <tr><td class="l meta">compact ecology oracle (~50 lines)</td><td class="meta"><b>0.744</b></td><td class="meta">—</td></tr>
@@ -420,15 +455,6 @@ shifts the population's genotype toward frugality and the population
 re-expands <i>at the adapted genotype</i>: natural selection, emergent,
 with genetic path dependence (a second famine meets a different population
 than the first).</p>
-<p class="note"><b>Scoring note (2026-02-16, v0.10.0):</b> prediction
-scoring is now distributional (CRPS against the truth ensemble; reduces to the
-old point score on deterministic contracts). Agents may answer with quantiles;
-where a world is stochastic or has multiple regimes, honest distributions now
-outscore any point — the old scoring silently erased exactly that structure.
-Numbers on this page predate the upgrade (point-scored); floors were
-spot-checked unchanged. Measurement adequacy is now certified god-side
-(variance decomposition A = between-instance/within-instance; CRPS recovers
-it with Spearman 0.90-1.00).</p>
 <p class="note"><b>Correction (2026-02-15):</b> the first E0 release used
 blending inheritance (variance-destroying; Jenkin's 1867 objection, live) and
 its "adaptation" was mostly location-luck survivorship. The physics is fixed
@@ -460,16 +486,160 @@ variance — the breeder's equation runs out of fuel). Micro shape ≠ macro
 shape; now tracked per rung.</li>
 </ul>
 
-<h2>Current track order by frontier gap</h2>
-<p>C4 (0.5–0.6) &gt; <b>B2 (0.3–0.5)</b> &gt; D4 (0.3–0.45) &gt; B0/C2/C3
-(0.1–0.3) &gt; B1/C0/C1 (≈0, saturated or interpolable).</p>
-
-<h2>What's next</h2>
+<h2>What's next on the life tracks</h2>
 <ul>
+<li>E2 candidate: "enzyme economics" — evolvable biochemistry where trade-offs
+are theorems of conservation laws instead of authored curves (DESIGN v0.14),
+with parameter-search screening;</li>
 <li>B3 candidates: two variants + waves (selection whose winner depends on
 wave regime); reproduction-rate contracts; spatial refugia geography;</li>
-<li>tracking-grade apparatus / closed-loop microscopy;</li>
-<li>oracle ensemble calibration; n≥5 statistics on B-track and C4.</li>
+<li>n≥5 seed statistics across B/E frontier rows.</li>
+</ul>
+"""
+
+SCORING = """
+<h1>How physim scores an AI scientist</h1>
+<p class="note">Every number on the results pages comes from the machinery on
+this page. Design goals: scores must be <b>a fixed function of (world, seed,
+answers)</b> — nothing adapts to the agent; truth comes from <b>god-mode
+ensembles</b> the agent never sees; and the scoring rule must be <b>proper</b> —
+the best strategy is to report what you actually believe, including your
+uncertainty and even "it could go two ways."</p>
+
+<h2>1. Prediction contracts</h2>
+<p>After exploration, the agent receives ~8 <b>contracts</b>. Each specifies,
+in the same anonymous port language the agent explored through:</p>
+<ul>
+<li>an <b>input protocol</b> — a schedule of port drives (constants and ramps,
+concatenated segments) applied to a <b>fresh draw</b> of the same world (same
+hidden laws, new initial conditions);</li>
+<li>one <b>output channel</b> and one <b>statistic</b> of it: the mean over
+the final 250 ticks, the standard deviation over a ~200-tick window, or a
+threshold-crossing count (event rate);</li>
+<li>a <b>stratum</b> tag (S1 equilibrium, S2 sustained drive, S3
+pulse-and-recover, S4 extreme/boundary, S5 track-specific), used for
+reporting only.</li>
+</ul>
+<p>Contracts are sampled by a fixed grammar per world family, seeded by
+(world, seed) only. The agent answers each contract with:</p>
+<pre><code>{"id": 3, "mean": -0.28, "low": -0.55, "high": 0.08,
+ "quantiles": {"0.1": -0.45, "0.25": -0.38, "0.5": -0.30,
+               "0.75": -0.20, "0.9": -0.05}}   &lt;- quantiles optional</code></pre>
+
+<h2>2. Ground truth: the ensemble</h2>
+<p>For each contract the harness runs the protocol on 4-8 fresh clones of the
+true world (god mode) and records the statistic each time: samples
+y<sub>1</sub>..y<sub>n</sub>, with mean μ and spread τ. Where the world is
+quasi-deterministic the ensemble collapses to a point; where it is genuinely
+stochastic — or where an emergent structure differs between draws (which
+species wins, whether a membrane closes) — the ensemble IS the answer, and
+can be broad or even bimodal.</p>
+
+<h2>3. The accuracy score: CRPS against the ensemble (v0.10.0)</h2>
+<p>The agent's answer is read as a predictive distribution F: the five
+quantiles if given, else the point answer as a degenerate distribution. The
+score per contract is the <b>Continuous Ranked Probability Score</b>,
+estimated from the quantiles by pinball loss:</p>
+<pre><code>QS(F) = 2 · mean over levels p ∈ {.1,.25,.5,.75,.9} of
+            mean over ensemble draws y of  pinball_p(q_p, y)
+pinball_p(q, y) = (y − q)·(p − 1[y &lt; q])</code></pre>
+<p>Raw CRPS is unfair where the world itself is noisy: even a perfect
+forecaster pays for irreducible spread. So we subtract the <b>ensemble's own
+floor</b> — the leave-one-out CRPS of the truth ensemble predicting itself —
+and map through an exponential with a per-contract <b>scale</b>:</p>
+<pre><code>accuracy = exp( − max(QS(F) − QS_floor, 0) / scale )</code></pre>
+<p>Properties, all verified in code:</p>
+<table>
+<tr><th class="l">situation</th><th class="l">behavior</th></tr>
+<tr><td class="l">deterministic contract, point answer</td>
+<td class="l">reduces EXACTLY to the legacy score exp(−|err|/scale) — old and
+new numbers are comparable on quasi-deterministic worlds (C/D tracks)</td></tr>
+<tr><td class="l">stochastic contract, honest point at the mean</td>
+<td class="l">no longer punished for the world's own noise (the floor is
+subtracted) — fairness fix vs legacy</td></tr>
+<tr><td class="l">bimodal truth (e.g. species A wins in 60% of draws)</td>
+<td class="l">point at the unphysical middle: ~0.34. Point at one mode: ~0.32.
+Honest bimodal quantiles: <b>~1.0</b>. Structure pays; the old scoring erased
+it</td></tr>
+<tr><td class="l">overconfident narrow quantiles in the wrong place</td>
+<td class="l">worst case — CRPS is a proper scoring rule, bluffing certainty
+loses</td></tr>
+</table>
+<p>The <b>scale</b> is 3τ floored at a small fraction of the channel's
+dynamic range (3% for means, 1.5% for sd-statistics on the quasi-deterministic
+families; 10%/5% on noisy bulk worlds) — so "within a few percent of range"
+counts as understanding, and branch-level confusion (~full range) scores ~0.
+The floor keeps replication-grade answers from saturating to 1.0 for free.</p>
+
+<h2>4. Calibration (report-only by default)</h2>
+<p>The [low, high] interval is scored by a Winkler-style rule: score
+exp(−W/(10·scale)) where W = width + 10× the amount by which the truth escapes
+the interval. Narrow-and-right ≈ 1; wide-honest moderate; narrow-and-wrong ≈ 0.
+It is reported for every run and carries 0 reward weight by default
+(leaderboard comparability; an interval-honesty experiment is in REPORT
+addendum 17: rewarding calibration made models honest, not better).</p>
+
+<h2>5. Preparation contracts (control)</h2>
+<p>Some worlds add preparation contracts: "steer channel c into band
+[lo, hi], then it must hold through a free release window." The agent submits
+<b>policy code</b> (a function of time and current readings) which runs
+sandboxed on 5 fresh clones; the score is the fraction of clones that end in
+band <i>after release</i>. Bands are certified at generation time to exclude
+the do-nothing outcome (null-policy success ≤ 0.2), so scores measure real
+steering. Understanding-not-luck shows in the observed bimodality of outcomes
+(most policies score 5/5 or 0/5).</p>
+
+<h2>6. Executable theories (optional bonus)</h2>
+<p>Agents may submit a simulator — <code>init(history)</code> and
+<code>step(state, input) → predicted sensors</code>. It is replayed against
+every prediction contract's protocol and scored on the same statistics and
+scales as answers (report-only weight). A theory that scores near the
+compact-oracle line is evidence the agent's model captures the laws, not just
+the answers it happened to submit.</p>
+
+<h2>7. References every world must beat (rich-vs-big criterion)</h2>
+<table>
+<tr><th class="l">reference</th><th class="l">what it knows</th></tr>
+<tr><td class="l">null</td><td class="l">nothing — answers 0 everywhere</td></tr>
+<tr><td class="l">tail</td><td class="l">the world's resting statistics (no
+response to drives)</td></tr>
+<tr><td class="l">persistence theory</td><td class="l">"nothing ever changes":
+propagates the last observation</td></tr>
+<tr><td class="l">compact oracle</td><td class="l">a ~40-70 line
+god-parameterized theory of the world's actual laws, scored through the REAL
+pipeline — the honest ceiling a discovering agent could reach; frontier gap
+below it = discovery-hardness, not representation-hardness</td></tr>
+<tr><td class="l">replication</td><td class="l">runs the contract protocol
+once on the true world and reports what it saw — the measurement-noise
+ceiling</td></tr>
+</table>
+
+<h2>8. Measurement-adequacy certification (god-side audit, v0.10.0)</h2>
+<p>Could the contracts <i>miss</i> the science? If an emergent property (which
+species wins; whether a boundary closes) never moves any contract's truth,
+agents could ace the benchmark while blind to the phenomenon. We certify
+against this per world: on fixed verbatim contract templates across many
+world instances, decompose</p>
+<pre><code>A = Var<sub>instances</sub>(μ) / mean<sub>instances</sub>(τ²)</code></pre>
+<p>A ≫ 1 means the contract's truth depends on instance-level structure far
+beyond measurement noise — the phenomenon is measured. A ≈ 0 flags
+instance-invariant questions (fine, but they don't probe the phenomenon).
+Cross-check on B2 (whose truth is bimodal — which species wins varies by
+instance): the CRPS advantage of an instance-aware oracle over a pooled
+"climatology" answerer tracks A with Spearman ρ = 1.00 (D2: 0.90) — the
+proper scoring rule <i>recovers</i> the audit signal, so we can lean on CRPS
+generally and keep A as the cheap certificate.</p>
+
+<h2>9. What the reward is NOT</h2>
+<ul>
+<li>No credit for vocabulary: calling it "natural selection" earns nothing;
+predicting what selection does to the observables earns everything.</li>
+<li>No partial credit for effort or budget spent; unanswered contracts
+score 0.</li>
+<li>No agent-coupled adaptation: contracts are a fixed function of
+(world, seed) — two agents on the same seed answer the same questions.</li>
+<li>Conduct metrics (port coverage, budget use, apparatus displacement) are
+recorded and reported but never rewarded.</li>
 </ul>
 """
 
@@ -483,6 +653,8 @@ def build() -> list[str]:
         ("results.html", "physim results", OVERVIEW),
         ("results-bulk.html", "physim results — bulk-matter track", BULK),
         ("results-chemistry.html", "physim results — chemistry track", CHEM),
+        ("results-life.html", "physim results — life tracks (ecology + evolution)", LIFE),
+        ("scoring.html", "physim — how scoring works", SCORING),
     ]:
         p = docs / name
         p.write_text(page(title, body))
