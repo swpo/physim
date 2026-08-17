@@ -1,0 +1,5 @@
+[c04v2] ok=True why=         nfam=19  top=oscillator r2=0.8674 G1=True G2=True wall=26s
+[c07v2] ok=True why=         nfam=19  top=switch r2=0.9673 G1=False G2=True wall=26s
+[c14v2] ok=True why=         nfam=12  top=switch r2=0.9549 G1=False G2=True wall=35s
+[c32v2] ok=True why=         nfam=20  top=switch r2=0.9643 G1=True G2=True wall=42s
+wrote reout1.json

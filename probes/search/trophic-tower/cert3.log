@@ -1,0 +1,12 @@
+=== extra jitter (6 more draws) ===
+[jitB0] sd=40 L=64: ok top=oscillator/0.9337 T3=230.5 T2=25.5 t1=4.95 s12=5.2 s23=9.0 lam=25.3 ell1=2.8 des=0.35 pp={'alpha': 1.4922036418954008, 'decades': 2.912930241739325, 'ks': 0.10089886707705142, 'n': 5156} G1=True G2=True BOTH
+[jitB1] sd=41 L=64: ok top=oscillator/0.9644 T3=142.5 T2=23.5 t1=4.65 s12=5.1 s23=6.1 lam=27.5 ell1=3.7 des=0.34 pp={'alpha': 1.466924046353909, 'decades': 3.1455071714096627, 'ks': 0.13111318118304616, 'n': 4294} G1=True G2=True BOTH
+[jitB2] sd=42 L=64: ok top=oscillator/0.9717 T3=135.0 T2=24.0 t1=4.53 s12=5.3 s23=5.6 lam=28.7 ell1=2.7 des=0.75 pp={'alpha': 1.4038341879471141, 'decades': 3.0582361689427673, 'ks': 0.1265260821309656, 'n': 2703} G1=True G2=True BOTH
+[jitB3] sd=43 L=64: ok top=oscillator/0.9477 T3=161.5 T2=29.5 t1=4.7 s12=6.3 s23=5.5 lam=26.8 ell1=3.0 des=0.76 pp={'alpha': 1.3757459823787483, 'decades': 2.6186755388851397, 'ks': 0.12115066729791063, 'n': 1796} G1=True G2=True BOTH
+[jitB4] sd=44 L=64: ok top=oscillator/0.9733 T3=150.0 T2=24.0 t1=4.55 s12=5.3 s23=6.2 lam=27.1 ell1=2.5 des=0.3 pp={'alpha': 1.5119267806464745, 'decades': 2.908842315881035, 'ks': 0.08686949559647716, 'n': 4996} G1=True G2=True BOTH
+[jitB5] sd=45 L=64: ok top=switch/0.6104 T3=122.8 T2=23.5 t1=3.75 s12=6.3 s23=5.2 lam=25.7 ell1=3.6 des=0.32 pp={'alpha': 1.394544993518715, 'decades': 2.8097280132159064, 'ks': 0.09889509089183246, 'n': 2340} G1=True G2=False 
+extra JITTER: 5/6 BOTH
+=== L=96 at TC* (2 seeds) ===
+[L96] sd=0 L=96: ok top=oscillator/0.9708 T3=166.0 T2=26.0 t1=4.8 s12=5.4 s23=6.4 lam=40.8 ell1=4.1 des=0.62 pp={'alpha': 1.4818170282422503, 'decades': 3.249198357391113, 'ks': 0.09198908331995503, 'n': 6229} G1=True G2=True BOTH
+[L96] sd=1 L=96: ok top=oscillator/0.9691 T3=165.0 T2=26.2 t1=4.95 s12=5.3 s23=6.3 lam=38.5 ell1=2.6 des=0.59 pp={'alpha': 1.496777655910574, 'decades': 3.241629480020003, 'ks': 0.10240399625351237, 'n': 6406} G1=True G2=True BOTH
+DONE cert3

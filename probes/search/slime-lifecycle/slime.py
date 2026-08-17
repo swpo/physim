@@ -64,24 +64,23 @@ def diffuse_var(V, D):
 
 DEFAULTS = dict(
     L=64,
-    # resource (grazing crash ~1/g*V, regrow ~1/rho => famine period)
-    rho=1.0 / 2000, g=0.004, Y=0.6, Dr=0.2,
-    # mortality / protection (aggregated dormant cells nearly immortal)
-    d0=2.0e-3, d_base=1.2e-4, pd=0.9, V_c=1.5,
-    # hunger switch (sensed on smoothed R) + commitment timers
-    R_star=0.12, R_wake=0.6, n_sense=2, T_dev=300, T_wake=400,
+    # resource: grazing crash (g*V >> rho) vs slow regen; Dr mixes R globally
+    rho=1.0 / 4000, g=0.03, Y=0.6, Dr=0.2,
+    # mortality: famine kills loners fast; dense aggregates nearly immortal
+    d0=2e-3, d_base=1e-4, pd=0.95, V_c=1.5,
+    # hunger switch: famine len ~ (1/rho) ln((1-R_star)/(1-R_wake))
+    R_star=0.12, R_wake=0.55, n_sense=1, T_dev=400, T_wake=400,
     # fast relay S (2 diffusion substeps)
-    Ds=0.3, ks=0.10, a_s=1.2, S_thr=0.06, T_e=2, T_r=14, p_spont=5.0e-4,
+    Ds=0.3, ks=0.10, a_s=1.2, S_thr=0.06, T_e=2, T_r=14, p_spont=1.0e-3,
     V_min=0.03, S_sub=2, C_spore=2.0,
-    # slow pheromone A = leaky integral of firing
+    # slow pheromone A = leaky integral of firing (aggregation memory ~1/ka)
     Da=0.12, ka=0.004, a_a=0.05, V_h=1.0,
-    # movement
-    chi_a=12.0, u_max=0.18, Dv0=0.02, Dv_fed=0.12, V_pack=8.0, V_disp=2.0,
-    V0=0.35,
-    # famine-onset wave recruitment (synchronizer; R_join in (R_star, R_wake))
-    S_dev=0.3, R_join=0.35,
+    # movement: hungry chemotax up A; germinating disperse down A; fed graze
+    chi_a=12.0, chi_d=12.0, u_max=0.18, Dv0=0.02, Dv_fed=0.05, Dv_germ=0.22,
+    V_pack=8.0, V0=0.35,
+    # famine-onset wave recruitment of marginal fed cells (synchronizer)
+    S_dev=0.25, R_join=0.35,
 )
-
 
 def run(params=None, T=30000, seed=0, rec=10, snap_times=(), s_probe=False,
         keep_fields=False, snap_every=None):
@@ -111,6 +110,8 @@ def run(params=None, T=30000, seed=0, rec=10, snap_times=(), s_probe=False,
     snaps = {}
     movie = []
     clsizes_pool = []
+    fire_hist = np.zeros(1001, dtype=np.int64)   # per-cell refire intervals (L1)
+    lastF = np.full((L, L), -1, dtype=np.int64)
     ri = 0
     Te, Tr = int(p["T_e"]), int(p["T_r"])
     nsub = int(p["S_sub"])
@@ -142,6 +143,11 @@ def run(params=None, T=30000, seed=0, rec=10, snap_times=(), s_probe=False,
         E[fire] = Te
         Q[fire] = Te + Tr
         fires[t] = int(fire.sum())
+        seen = fire & (lastF >= 0)
+        if seen.any():
+            iv = np.clip(t - lastF[seen], 0, 1000)
+            fire_hist += np.bincount(iv, minlength=1001)
+        lastF[fire] = t
         sat = V / (V + p["V_h"])
         firing = (E > 0)
         for _ in range(nsub):
@@ -152,20 +158,32 @@ def run(params=None, T=30000, seed=0, rec=10, snap_times=(), s_probe=False,
         Q = np.maximum(Q - 1, 0)
         # --- slow pheromone: leaky integral of firing
         A = A + p["Da"] * lap(A) - p["ka"] * A + p["a_a"] * sat * firing
-        # --- movement
+        # --- movement in three modes:
+        # hungry: chemotax up grad(A) (aggregate);
+        # germinating (fed, Ww>0): disperse — fast diffusion + drift DOWN
+        #   grad(A) (away from the fruiting center), no feeding yet;
+        # fed grazer (Ww==0): slow foraging diffusion.
         gax, gay = gradc(A)
         pack = np.clip(1.0 - Vs / p["V_pack"], 0.0, 1.0)
-        ux = np.clip(p["chi_a"] * gax, -p["u_max"], p["u_max"]) * Hf * pack
-        uy = np.clip(p["chi_a"] * gay, -p["u_max"], p["u_max"]) * Hf * pack
-        Dv = p["Dv0"] + p["Dv_fed"] * (1.0 - Hf) * (1.0 + Vs / p["V_disp"])
+        Ff = 1.0 - Hf
+        Gf = Ff * (Ww > 0)   # germinating dispersers
+        ux = (np.clip(p["chi_a"] * gax, -p["u_max"], p["u_max"]) * Hf * pack
+              - np.clip(p["chi_d"] * gax, -p["u_max"], p["u_max"]) * Gf)
+        uy = (np.clip(p["chi_a"] * gay, -p["u_max"], p["u_max"]) * Hf * pack
+              - np.clip(p["chi_d"] * gay, -p["u_max"], p["u_max"]) * Gf)
+        Dv = p["Dv0"] + p["Dv_fed"] * (Ff - Gf) + p["Dv_germ"] * Gf
         np.minimum(Dv, 0.24, out=Dv)
-        V = V + advect(V, ux, uy) + diffuse_var(V, Dv)
-        np.maximum(V, 0.0, out=V)
+        # sequential updates keep V >= 0 without clipping (mass-conserving):
+        # advect outflow <= 0.9 V; diffusion outflow <= 4*0.24 V < V.
+        V = V + advect(V, ux, uy)
+        V = V + diffuse_var(V, Dv)
+        np.maximum(V, 0.0, out=V)  # numerical dust only
         # --- crowd factor (protection when dense; post-move density)
         Vs = smooth9(V, 1)
         C = Vs * Vs / (Vs * Vs + p["V_c"] ** 2)
-        # --- eat / grow / die (developing cells do not feed)
-        eatf = p["g"] * (1.0 - Hf)
+        # --- eat / grow / die (developing cells and germinating dispersers
+        # do not feed; only settled grazers eat)
+        eatf = p["g"] * (1.0 - Hf) * (Ww == 0)
         Rold = R.copy()
         R = R * np.exp(-eatf * V)
         eaten = Rold - R
@@ -207,13 +225,16 @@ def run(params=None, T=30000, seed=0, rec=10, snap_times=(), s_probe=False,
         if not np.isfinite(V.sum()) or V.mean() > 50:
             return dict(ok=False, why="blowup", t=t, ser={k: v[:ri] for k, v in ser.items()},
                         fires=fires[:t], s_tr=None if s_tr is None else s_tr[:t],
-                        snaps=snaps, movie=movie, clsizes=clsizes_pool, p=p)
+                        snaps=snaps, movie=movie, clsizes=clsizes_pool,
+                        fire_hist=fire_hist, p=p)
         if V.mean() < 1e-3:
             return dict(ok=False, why="extinct", t=t, ser={k: v[:ri] for k, v in ser.items()},
                         fires=fires[:t], s_tr=None if s_tr is None else s_tr[:t],
-                        snaps=snaps, movie=movie, clsizes=clsizes_pool, p=p)
+                        snaps=snaps, movie=movie, clsizes=clsizes_pool,
+                        fire_hist=fire_hist, p=p)
     out = dict(ok=True, why="", t=T, ser={k: v[:ri] for k, v in ser.items()},
-               fires=fires, s_tr=s_tr, snaps=snaps, movie=movie, clsizes=clsizes_pool, p=p)
+               fires=fires, s_tr=s_tr, snaps=snaps, movie=movie, clsizes=clsizes_pool,
+               fire_hist=fire_hist, p=p)
     if keep_fields:
         out["fields"] = dict(V=V, R=R, S=S, A=A)
     return out

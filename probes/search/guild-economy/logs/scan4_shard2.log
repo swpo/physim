@@ -1,0 +1,5 @@
+shard 2/4: 3
+[1/3] rho=1.9 lk=0.6 hz=0.0006 ->  lo=0.424 fit=relaxation/0.9712 tau3=2244 t2=540.0 s12=5.62 s23=4.16 gap=0.002 drift=0.017 pass=False (29s)
+[2/3] rho=2.0 lk=0.6 hz=0.0006 ->  lo=0.458 fit=switch/0.4359 tau3=None t2=500.0 s12=5.62 s23=None gap=0.005 drift=0.005 pass=False (36s)
+[3/3] rho=2.2 lk=0.7 hz=0.0006 ->  lo=0.47 fit=relaxation/0.9872 tau3=1825 t2=580.0 s12=7.07 s23=3.15 gap=0.002 drift=0.01 pass=False (43s)
+done

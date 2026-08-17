@@ -132,12 +132,14 @@ def macro(state):
     Vtot = float(V.sum())
     if Vtot < 1e-9:
         return dict(Vtot=0.0, ncell=0, fr_e=np.nan, fr_b=np.nan,
+                    fr_site=np.nan,
                     P_e=0.0, Q_e=0.0, Rm=float(R.mean()), Wm=float(W.mean()),
                     purity=np.nan)
     P_e = float((A * V).sum()); Q_e = float(((1 - A) * V).sum())
     return dict(Vtot=Vtot, ncell=int(alive.sum()),
                 fr_e=Q_e / (P_e + Q_e),
                 fr_b=float(V[A < 0.5].sum() / Vtot),
+                fr_site=float(((A < 0.5) & alive).sum() / alive.sum()),
                 P_e=P_e, Q_e=Q_e, Rm=float(R.mean()), Wm=float(W.mean()),
                 purity=float((np.abs(A - 0.5) * V).sum() / Vtot * 2))
 

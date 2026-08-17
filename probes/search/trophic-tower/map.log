@@ -1,0 +1,33 @@
+e2=0.42 rho=0.03 nu=0.02: ok top=oscillator/0.9486 T3=196.5 T2=27.0 famp=0.68 np=7.0 cv=0.61 BOTH
+e2=0.42 rho=0.03 nu=0.03: ok top=oscillator/0.9599 T3=188.0 T2=26.0 famp=0.62 np=8.5 cv=0.66 BOTH
+e2=0.42 rho=0.034 nu=0.02: ok top=oscillator/0.96 T3=166.5 T2=27.2 famp=0.7 np=8.0 cv=0.56 BOTH
+e2=0.42 rho=0.034 nu=0.03: ok top=oscillator/0.9607 T3=164.0 T2=26.5 famp=0.69 np=12.0 cv=0.6 BOTH
+e2=0.42 rho=0.038 nu=0.02: ok top=oscillator/0.9512 T3=155.0 T2=27.5 famp=0.72 np=6.0 cv=0.59 BOTH
+e2=0.42 rho=0.038 nu=0.03: ok top=oscillator/0.9426 T3=151.5 T2=26.5 famp=0.69 np=9.0 cv=0.61 BOTH
+e2=0.42 rho=0.042 nu=0.02: ok top=switch/0.7664 T3=131.2 T2=27.2 famp=0.61 np=5.0 cv=0.72 
+e2=0.42 rho=0.042 nu=0.03: ok top=oscillator/0.9575 T3=130.0 T2=27.0 famp=0.6 np=7.0 cv=0.67 G2
+e2=0.44 rho=0.03 nu=0.02: ok top=oscillator/0.9334 T3=201.0 T2=26.5 famp=0.71 np=9.0 cv=0.52 BOTH
+e2=0.44 rho=0.03 nu=0.03: ok top=oscillator/0.9524 T3=194.5 T2=25.5 famp=0.62 np=14.0 cv=0.57 BOTH
+e2=0.44 rho=0.034 nu=0.02: ok top=oscillator/0.948 T3=169.5 T2=26.5 famp=0.69 np=6.0 cv=0.57 BOTH
+e2=0.44 rho=0.034 nu=0.03: ok top=oscillator/0.9687 T3=166.0 T2=26.0 famp=0.66 np=10.0 cv=0.59 BOTH
+e2=0.44 rho=0.038 nu=0.02: ok top=oscillator/0.9631 T3=158.5 T2=27.0 famp=0.72 np=7.0 cv=0.55 BOTH
+e2=0.44 rho=0.038 nu=0.03: ok top=oscillator/0.9619 T3=155.5 T2=26.5 famp=0.69 np=11.0 cv=0.6 BOTH
+e2=0.44 rho=0.042 nu=0.02: ok top=switch/0.7681 T3=137.6 T2=27.0 famp=0.65 np=5.0 cv=0.68 
+e2=0.44 rho=0.042 nu=0.03: ok top=oscillator/0.9389 T3=141.0 T2=26.5 famp=0.66 np=7.0 cv=0.66 BOTH
+e2=0.46 rho=0.03 nu=0.02: ok top=switch/0.716 T3=202.3 T2=25.5 famp=0.74 np=11.0 cv=0.44 G1
+e2=0.46 rho=0.03 nu=0.03: ok top=switch/0.7359 T3=196.4 T2=25.0 famp=0.67 np=13.0 cv=0.5 G1
+e2=0.46 rho=0.034 nu=0.02: ok top=oscillator/0.9286 T3=186.5 T2=26.8 famp=0.72 np=8.0 cv=0.52 BOTH
+e2=0.46 rho=0.034 nu=0.03: ok top=oscillator/0.9444 T3=182.5 T2=25.8 famp=0.68 np=11.0 cv=0.56 BOTH
+e2=0.46 rho=0.038 nu=0.02: ok top=oscillator/0.9601 T3=159.5 T2=27.0 famp=0.73 np=7.0 cv=0.51 BOTH
+e2=0.46 rho=0.038 nu=0.03: ok top=oscillator/0.9555 T3=158.0 T2=26.0 famp=0.68 np=10.0 cv=0.57 BOTH
+e2=0.46 rho=0.042 nu=0.02: ok top=oscillator/0.9462 T3=147.5 T2=27.0 famp=0.72 np=6.0 cv=0.58 BOTH
+e2=0.46 rho=0.042 nu=0.03: ok top=oscillator/0.9343 T3=145.5 T2=26.0 famp=0.67 np=8.0 cv=0.56 BOTH
+e2=0.48 rho=0.03 nu=0.02: ok top=switch/0.7359 T3=None T2=24.0 famp=1.03 np=12.0 cv=0.34 
+e2=0.48 rho=0.03 nu=0.03: ok top=switch/0.7113 T3=203.8 T2=24.0 famp=0.8 np=12.0 cv=0.48 G1
+e2=0.48 rho=0.034 nu=0.02: ok top=switch/0.6732 T3=195.8 T2=25.0 famp=0.81 np=8.0 cv=0.44 G1
+e2=0.48 rho=0.034 nu=0.03: ok top=switch/0.6827 T3=183.6 T2=24.5 famp=0.78 np=12.0 cv=0.5 G1
+e2=0.48 rho=0.038 nu=0.02: ok top=switch/0.7166 T3=166.2 T2=26.0 famp=0.78 np=6.0 cv=0.53 G1
+e2=0.48 rho=0.038 nu=0.03: ok top=switch/0.7668 T3=158.3 T2=25.5 famp=0.7 np=10.0 cv=0.51 G1
+e2=0.48 rho=0.042 nu=0.02: ok top=oscillator/0.855 T3=149.5 T2=26.8 famp=0.7 np=5.0 cv=0.55 G2
+e2=0.48 rho=0.042 nu=0.03: ok top=oscillator/0.9434 T3=147.0 T2=26.0 famp=0.68 np=9.0 cv=0.57 BOTH
+DONE map

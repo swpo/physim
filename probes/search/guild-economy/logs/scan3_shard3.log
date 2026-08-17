@@ -1,0 +1,11 @@
+shard 3/4: 9 candidates
+[1/9] lk=0.45 rho=1.8 m=8.5 hz=0.001 ->  lo=0.459 pur=0.9498 fit=relaxation/0.4894 tau3=2203 t2=680.0 s12=7.39 s23=3.24 s23L=3.58 gap=0.002 pass=False (43s)
+[2/9] lk=0.45 rho=2.1 m=8.5 hz=0.001 ->  lo=0.516 pur=0.9559 fit=relaxation/0.1484 tau3=2168 t2=480.0 s12=5.71 s23=4.52 s23L=5.15 gap=0.0 pass=False (52s)
+[3/9] lk=0.45 rho=2.4 m=8.5 hz=0.001 ->  lo=0.555 pur=0.9525 fit=relaxation/0.9905 tau3=698 t2=510.0 s12=6.46 s23=1.37 s23L=2.87 gap=0.0 pass=False (61s)
+[4/9] lk=0.55 rho=1.8 m=8.5 hz=0.001 ->  lo=0.427 pur=0.942 fit=relaxation/0.4885 tau3=2430 t2=640.0 s12=6.67 s23=3.8 s23L=1.68 gap=0.0 pass=False (58s)
+[5/9] lk=0.55 rho=2.1 m=8.5 hz=0.001 ->  lo=0.487 pur=0.9624 fit=switch/0.1273 tau3=None t2=600.0 s12=7.23 s23=None s23L=6.11 gap=0.0 pass=False (57s)
+[6/9] lk=0.55 rho=2.4 m=8.5 hz=0.001 ->  lo=0.542 pur=0.9569 fit=relaxation/0.9926 tau3=786 t2=580.0 s12=7.53 s23=1.35 s23L=2.75 gap=0.0 pass=False (58s)
+[7/9] lk=0.65 rho=1.8 m=8.5 hz=0.001 ->  lo=0.381 pur=0.9248 fit=switch/0.307 tau3=None t2=670.0 s12=6.63 s23=None s23L=1.39 gap=0.003 pass=False (52s)
+[8/9] lk=0.65 rho=2.1 m=8.5 hz=0.001 ->  lo=0.459 pur=0.9368 fit=relaxation/0.7958 tau3=1790 t2=570.0 s12=6.63 s23=3.14 s23L=4.6 gap=0.001 pass=False (66s)
+[9/9] lk=0.65 rho=2.4 m=8.5 hz=0.001 ->  lo=0.515 pur=0.9468 fit=relaxation/0.9784 tau3=978 t2=560.0 s12=7.18 s23=1.75 s23L=3.88 gap=0.004 pass=False (51s)
+done

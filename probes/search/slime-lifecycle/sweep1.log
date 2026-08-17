@@ -1,0 +1,13 @@
+[c01] ok=True why=         nfam=10  top=switch r2=0.2631 G1=False G2=False wall=40s
+[c04] ok=True why=         nfam=19  top=oscillator r2=0.8674 G1=False G2=True wall=29s
+[c07] ok=True why=         nfam=19  top=switch r2=0.9673 G1=False G2=True wall=28s
+[c10] ok=True why=         nfam=11  top=switch r2=0.4057 G1=False G2=False wall=28s
+[c13] ok=True why=         nfam=11  top=switch r2=0.8406 G1=False G2=False wall=29s
+[c16] ok=True why=         nfam=7   top=oscillator r2=0.291 G1=False G2=False wall=27s
+[c19] ok=True why=         nfam=7   top=oscillator r2=0.2915 G1=False G2=False wall=27s
+[c22] ok=True why=         nfam=7   top=switch r2=0.3882 G1=False G2=False wall=27s
+[c25] ok=False why=extinct  nfam=4   top=switch r2=0.8308 G1=False G2=False wall=8s
+[c28] ok=False why=extinct  nfam=4   top=switch r2=0.9687 G1=False G2=False wall=11s
+[c31] ok=True why=         nfam=7   top=oscillator r2=0.293 G1=False G2=False wall=33s
+[c34] ok=True why=         nfam=8   top=oscillator r2=0.2834 G1=False G2=False wall=29s
+wrote out1.json

@@ -1,0 +1,1711 @@
+[
+ {
+  "id": "c02",
+  "theory": {
+   "T_fam": 1500,
+   "dose": 2.0,
+   "pd": 0.97,
+   "chi_a": 8.0,
+   "g": 0.02,
+   "T_r": 20,
+   "p_spont": 0.0003
+  },
+  "params": {
+   "rho": 0.00044711621647192454,
+   "d0": 0.0013333333333333333,
+   "pd": 0.97,
+   "chi_a": 8.0,
+   "g": 0.02,
+   "T_r": 20,
+   "p_spont": 0.0003,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 40.0,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 22.0,
+    "q": 0.9302785000849083,
+    "n": 2
+   },
+   "l2": {
+    "tau": 442.2735818321022,
+    "n": 5
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.1579,
+      "params": {
+       "mean_dwell": 5793.333333333334,
+       "n_flips": 3
+      },
+      "all": [
+       [
+        "switch",
+        0.158
+       ],
+       [
+        "oscillator",
+        0.047
+       ],
+       [
+        "constant",
+        -0.0
+       ],
+       [
+        "relaxation",
+        -0.036
+       ]
+      ]
+     },
+     "acf_period": 10860.0,
+     "acf_q": -3.603382538250635e-05,
+     "acf_ncyc": 2.9465930018416207
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.5028,
+      "params": {
+       "mean_dwell": 12820.0,
+       "n_flips": 1
+      },
+      "all": [
+       [
+        "switch",
+        0.503
+       ],
+       [
+        "oscillator",
+        0.061
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -2.257
+       ]
+      ]
+     },
+     "acf_period": 11620.0,
+     "acf_q": -3.22033535795033e-05,
+     "acf_ncyc": 2.7538726333907055
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.0904,
+      "params": {
+       "mean_dwell": 4860.0,
+       "n_flips": 6
+      },
+      "all": [
+       [
+        "switch",
+        0.09
+       ],
+       [
+        "oscillator",
+        0.038
+       ],
+       [
+        "constant",
+        -0.0
+       ],
+       [
+        "relaxation",
+        -0.891
+       ]
+      ]
+     },
+     "acf_period": 5820.0,
+     "acf_q": 0.0005106496166077776,
+     "acf_ncyc": 5.498281786941581
+    }
+   },
+   "l1_refire_med": 22,
+   "aggm_range": 0.0658355252408912,
+   "vmean_last": 0.7154956296855373,
+   "n_famines": 5,
+   "famine_period_med": 2070.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c05",
+  "theory": {
+   "T_fam": 1500,
+   "dose": 5.0,
+   "pd": 0.9,
+   "chi_a": 16.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.0003
+  },
+  "params": {
+   "rho": 0.00044711621647192454,
+   "d0": 0.0033333333333333335,
+   "pd": 0.9,
+   "chi_a": 16.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.0003,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 28.4,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 80.0,
+    "q": 0.7524120956610777,
+    "n": 5
+   },
+   "l2": {
+    "tau": 357.43064609938364,
+    "n": 20
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9639,
+      "params": {
+       "mean_dwell": 1043.3333333333333,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.964
+       ],
+       [
+        "oscillator",
+        0.754
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 2080.0,
+     "acf_q": 0.9215382298452317,
+     "acf_ncyc": 15.384615384615385
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9977,
+      "params": {
+       "mean_dwell": 1043.3333333333333,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.998
+       ],
+       [
+        "oscillator",
+        0.591
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -2.532
+       ]
+      ]
+     },
+     "acf_period": 2080.0,
+     "acf_q": 0.9180085662096386,
+     "acf_ncyc": 15.384615384615385
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.8695,
+      "params": {
+       "mean_dwell": 1043.3333333333333,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.869
+       ],
+       [
+        "oscillator",
+        0.717
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -1.837
+       ]
+      ]
+     },
+     "acf_period": 2080.0,
+     "acf_q": 0.9226069875582624,
+     "acf_ncyc": 15.384615384615385
+    }
+   },
+   "l1_refire_med": 16,
+   "aggm_range": 0.8571440720108898,
+   "vmean_last": 0.20024222326963098,
+   "n_famines": 20,
+   "famine_period_med": 2080.0
+  },
+  "gates": {
+   "G2": true,
+   "G2_detail": [
+    "hf",
+    0.9977,
+    "switch",
+    {
+     "mean_dwell": 1043.3333333333333,
+     "n_flips": 30
+    }
+   ],
+   "sep12": 4.467883076242296,
+   "sep23": 5.837962383579355,
+   "G1": false
+  }
+ },
+ {
+  "id": "c08",
+  "theory": {
+   "T_fam": 3000,
+   "dose": 2.0,
+   "pd": 0.9,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.001
+  },
+  "params": {
+   "rho": 0.00022355810823596227,
+   "d0": 0.0006666666666666666,
+   "pd": 0.9,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.001,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 27.6,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 120.0,
+    "q": 0.6393753701971292,
+    "n": 2
+   },
+   "l2": {
+    "tau": 412.40224263642176,
+    "n": 12
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.8065,
+      "params": {
+       "mean_dwell": 1696.4705882352941,
+       "n_flips": 17
+      },
+      "all": [
+       [
+        "switch",
+        0.806
+       ],
+       [
+        "oscillator",
+        0.433
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 3500.0,
+     "acf_q": 0.8889578562925569,
+     "acf_ncyc": 9.142857142857142
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.3083,
+      "params": {
+       "period": 3500.0,
+       "q": 0.8884733689576465,
+       "n_cycles": 9.142857142857142
+      },
+      "all": [
+       [
+        "oscillator",
+        0.308
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.161
+       ]
+      ]
+     },
+     "acf_period": 3500.0,
+     "acf_q": 0.8884733689576465,
+     "acf_ncyc": 9.142857142857142
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.6257,
+      "params": {
+       "mean_dwell": 1724.4444444444446,
+       "n_flips": 18
+      },
+      "all": [
+       [
+        "switch",
+        0.626
+       ],
+       [
+        "oscillator",
+        0.455
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 3500.0,
+     "acf_q": 0.8916565640311946,
+     "acf_ncyc": 9.142857142857142
+    }
+   },
+   "l1_refire_med": 16,
+   "aggm_range": 0.9325787035788973,
+   "vmean_last": 0.35678974259164786,
+   "n_famines": 12,
+   "famine_period_med": 3500.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c11",
+  "theory": {
+   "T_fam": 3000,
+   "dose": 2.0,
+   "pd": 0.97,
+   "chi_a": 16.0,
+   "g": 0.03,
+   "T_r": 20,
+   "p_spont": 0.0003
+  },
+  "params": {
+   "rho": 0.00022355810823596227,
+   "d0": 0.0006666666666666666,
+   "pd": 0.97,
+   "chi_a": 16.0,
+   "g": 0.03,
+   "T_r": 20,
+   "p_spont": 0.0003,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 26.8,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 22.0,
+    "q": 0.9386420420279299,
+    "n": 9
+   },
+   "l2": {
+    "tau": 327.2030102189862,
+    "n": 12
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.7916,
+      "params": {
+       "mean_dwell": 1701.1764705882354,
+       "n_flips": 17
+      },
+      "all": [
+       [
+        "switch",
+        0.792
+       ],
+       [
+        "oscillator",
+        0.424
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.234
+       ]
+      ]
+     },
+     "acf_period": 3520.0,
+     "acf_q": 0.8816934056400634,
+     "acf_ncyc": 9.090909090909092
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.3187,
+      "params": {
+       "period": 3520.0,
+       "q": 0.8798202333062858,
+       "n_cycles": 9.090909090909092
+      },
+      "all": [
+       [
+        "oscillator",
+        0.319
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.167
+       ]
+      ]
+     },
+     "acf_period": 3520.0,
+     "acf_q": 0.8798202333062858,
+     "acf_ncyc": 9.090909090909092
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.58,
+      "params": {
+       "mean_dwell": 1745.5555555555554,
+       "n_flips": 18
+      },
+      "all": [
+       [
+        "switch",
+        0.58
+       ],
+       [
+        "oscillator",
+        0.449
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 3520.0,
+     "acf_q": 0.8887146102621862,
+     "acf_ncyc": 9.090909090909092
+    }
+   },
+   "l1_refire_med": 22,
+   "aggm_range": 0.941391064619455,
+   "vmean_last": 0.47254191746640317,
+   "n_famines": 12,
+   "famine_period_med": 3520.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c14",
+  "theory": {
+   "T_fam": 3000,
+   "dose": 5.0,
+   "pd": 0.97,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.0003
+  },
+  "params": {
+   "rho": 0.00022355810823596227,
+   "d0": 0.0016666666666666668,
+   "pd": 0.97,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 14,
+   "p_spont": 0.0003,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 28.6,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 72.0,
+    "q": 0.8015769176666988,
+    "n": 2
+   },
+   "l2": {
+    "tau": 323.45362798242843,
+    "n": 12
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9549,
+      "params": {
+       "mean_dwell": 1723.5294117647059,
+       "n_flips": 17
+      },
+      "all": [
+       [
+        "switch",
+        0.955
+       ],
+       [
+        "oscillator",
+        0.533
+       ],
+       [
+        "constant",
+        -0.0
+       ],
+       [
+        "relaxation",
+        -0.455
+       ]
+      ]
+     },
+     "acf_period": 3560.0,
+     "acf_q": 0.8635645088085069,
+     "acf_ncyc": 8.98876404494382
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.342,
+      "params": {
+       "period": 3560.0,
+       "q": 0.872306820102812,
+       "n_cycles": 8.98876404494382
+      },
+      "all": [
+       [
+        "oscillator",
+        0.342
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.185
+       ]
+      ]
+     },
+     "acf_period": 3560.0,
+     "acf_q": 0.872306820102812,
+     "acf_ncyc": 8.98876404494382
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.819,
+      "params": {
+       "mean_dwell": 1730.5882352941176,
+       "n_flips": 17
+      },
+      "all": [
+       [
+        "switch",
+        0.819
+       ],
+       [
+        "oscillator",
+        0.523
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 3560.0,
+     "acf_q": 0.8831330828467985,
+     "acf_ncyc": 8.98876404494382
+    }
+   },
+   "l1_refire_med": 16,
+   "aggm_range": 0.9011306220076482,
+   "vmean_last": 0.20149438410392873,
+   "n_famines": 12,
+   "famine_period_med": 3560.0
+  },
+  "gates": {
+   "G2": true,
+   "G2_detail": [
+    "aggm",
+    0.9549,
+    "switch",
+    {
+     "mean_dwell": 1723.5294117647059,
+     "n_flips": 17
+    }
+   ],
+   "sep12": 4.49241149975595,
+   "sep23": 10.657041768338653,
+   "G1": false
+  }
+ },
+ {
+  "id": "c17",
+  "theory": {
+   "T_fam": 6000,
+   "dose": 2.0,
+   "pd": 0.9,
+   "chi_a": 16.0,
+   "g": 0.02,
+   "T_r": 14,
+   "p_spont": 0.001
+  },
+  "params": {
+   "rho": 0.00011177905411798113,
+   "d0": 0.0003333333333333333,
+   "pd": 0.9,
+   "chi_a": 16.0,
+   "g": 0.02,
+   "T_r": 14,
+   "p_spont": 0.001,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 26.9,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 16.0,
+    "q": 0.9909434256703218,
+    "n": 2
+   },
+   "l2": {
+    "tau": 338.58342099706573,
+    "n": 6
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.335,
+      "params": {
+       "mean_dwell": 2758.0,
+       "n_flips": 10
+      },
+      "all": [
+       [
+        "switch",
+        0.335
+       ],
+       [
+        "oscillator",
+        0.287
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 6680.0,
+     "acf_q": 0.7808989729013618,
+     "acf_ncyc": 4.790419161676646
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.2285,
+      "params": {
+       "period": 6680.0,
+       "q": 0.7847851742520243,
+       "n_cycles": 4.790419161676646
+      },
+      "all": [
+       [
+        "oscillator",
+        0.228
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.112
+       ]
+      ]
+     },
+     "acf_period": 6680.0,
+     "acf_q": 0.7847851742520243,
+     "acf_ncyc": 4.790419161676646
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.4308,
+      "params": {
+       "mean_dwell": 3133.333333333333,
+       "n_flips": 9
+      },
+      "all": [
+       [
+        "switch",
+        0.431
+       ],
+       [
+        "oscillator",
+        0.317
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 6680.0,
+     "acf_q": 0.7808899926884721,
+     "acf_ncyc": 4.790419161676646
+    }
+   },
+   "l1_refire_med": 16,
+   "aggm_range": 0.9201363462240161,
+   "vmean_last": 0.3520795618400791,
+   "n_famines": 6,
+   "famine_period_med": 6660.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c20",
+  "theory": {
+   "T_fam": 6000,
+   "dose": 5.0,
+   "pd": 0.9,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 20,
+   "p_spont": 0.001
+  },
+  "params": {
+   "rho": 0.00011177905411798113,
+   "d0": 0.0008333333333333334,
+   "pd": 0.9,
+   "chi_a": 8.0,
+   "g": 0.045,
+   "T_r": 20,
+   "p_spont": 0.001,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 26.9,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 22.0,
+    "q": 0.9746048780460796,
+    "n": 1
+   },
+   "l2": {
+    "tau": 312.7640003798373,
+    "n": 6
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.5605,
+      "params": {
+       "mean_dwell": 1160.909090909091,
+       "n_flips": 22
+      },
+      "all": [
+       [
+        "switch",
+        0.561
+       ],
+       [
+        "oscillator",
+        0.469
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.195
+       ]
+      ]
+     },
+     "acf_period": 6640.0,
+     "acf_q": 0.7349930168382653,
+     "acf_ncyc": 4.819277108433735
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.2209,
+      "params": {
+       "period": 6660.0,
+       "q": 0.778749851254856,
+       "n_cycles": 4.804804804804805
+      },
+      "all": [
+       [
+        "oscillator",
+        0.221
+       ],
+       [
+        "constant",
+        -0.0
+       ],
+       [
+        "relaxation",
+        -0.11
+       ]
+      ]
+     },
+     "acf_period": 6660.0,
+     "acf_q": 0.778749851254856,
+     "acf_ncyc": 4.804804804804805
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.5858,
+      "params": {
+       "mean_dwell": 2630.9090909090905,
+       "n_flips": 11
+      },
+      "all": [
+       [
+        "switch",
+        0.586
+       ],
+       [
+        "oscillator",
+        0.45
+       ],
+       [
+        "constant",
+        -0.0
+       ]
+      ]
+     },
+     "acf_period": 6640.0,
+     "acf_q": 0.7754119733350475,
+     "acf_ncyc": 4.819277108433735
+    }
+   },
+   "l1_refire_med": 22,
+   "aggm_range": 0.8633280342472345,
+   "vmean_last": 0.2660300376891989,
+   "n_famines": 7,
+   "famine_period_med": 6640.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c23",
+  "theory": {
+   "T_fam": 6000,
+   "dose": 5.0,
+   "pd": 0.97,
+   "chi_a": 16.0,
+   "g": 0.03,
+   "T_r": 20,
+   "p_spont": 0.0003
+  },
+  "params": {
+   "rho": 0.00011177905411798113,
+   "d0": 0.0008333333333333334,
+   "pd": 0.97,
+   "chi_a": 16.0,
+   "g": 0.03,
+   "T_r": 20,
+   "p_spont": 0.0003,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 27.3,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 66.0,
+    "q": 0.9169945290740322,
+    "n": 2
+   },
+   "l2": {
+    "tau": 297.63536702884335,
+    "n": 6
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.3864,
+      "params": {
+       "mean_dwell": 1760.0,
+       "n_flips": 14
+      },
+      "all": [
+       [
+        "switch",
+        0.386
+       ],
+       [
+        "oscillator",
+        0.32
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.146
+       ]
+      ]
+     },
+     "acf_period": 6640.0,
+     "acf_q": 0.7826588356255095,
+     "acf_ncyc": 4.819277108433735
+    },
+    "hf": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.2158,
+      "params": {
+       "period": 6640.0,
+       "q": 0.7843028046264122,
+       "n_cycles": 4.819277108433735
+      },
+      "all": [
+       [
+        "oscillator",
+        0.216
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.108
+       ]
+      ]
+     },
+     "acf_period": 6640.0,
+     "acf_q": 0.7843028046264122,
+     "acf_ncyc": 4.819277108433735
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.4592,
+      "params": {
+       "mean_dwell": 3115.5555555555557,
+       "n_flips": 9
+      },
+      "all": [
+       [
+        "switch",
+        0.459
+       ],
+       [
+        "oscillator",
+        0.336
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 6640.0,
+     "acf_q": 0.7846202866843778,
+     "acf_ncyc": 4.819277108433735
+    }
+   },
+   "l1_refire_med": 22,
+   "aggm_range": 0.9218007568168562,
+   "vmean_last": 0.30914154545516237,
+   "n_famines": 7,
+   "famine_period_med": 6630.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c26",
+  "theory": {
+   "T_fam": 1359,
+   "dose": 1.58,
+   "pd": 0.821,
+   "chi_a": 19.4,
+   "g": 0.0388,
+   "T_r": 12,
+   "p_spont": 0.002468552363805428
+  },
+  "params": {
+   "rho": 0.0004933486225704633,
+   "d0": 0.001165602423701516,
+   "pd": 0.8212515858576709,
+   "chi_a": 19.397126662956232,
+   "g": 0.0387615988444607,
+   "T_r": 12,
+   "p_spont": 0.002468552363805428,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 33.7,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 14.0,
+    "q": 0.9856853344306454,
+    "n": 3
+   },
+   "l2": {
+    "tau": 937.0650361430872,
+    "n": 7
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.0572,
+      "params": {
+       "period": 2020.0,
+       "q": 0.4173027046477853,
+       "n_cycles": 15.841584158415841
+      },
+      "all": [
+       [
+        "oscillator",
+        0.057
+       ],
+       [
+        "switch",
+        0.043
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.11
+       ]
+      ]
+     },
+     "acf_period": 2020.0,
+     "acf_q": 0.4173027046477853,
+     "acf_ncyc": 15.841584158415841
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.1125,
+      "params": {
+       "mean_dwell": 5726.666666666666,
+       "n_flips": 3
+      },
+      "all": [
+       [
+        "switch",
+        0.113
+       ],
+       [
+        "oscillator",
+        0.061
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.255
+       ]
+      ]
+     },
+     "acf_period": 2020.0,
+     "acf_q": 0.2871954861521899,
+     "acf_ncyc": 15.841584158415841
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.0814,
+      "params": {
+       "mean_dwell": 2248.8888888888887,
+       "n_flips": 9
+      },
+      "all": [
+       [
+        "switch",
+        0.081
+       ],
+       [
+        "oscillator",
+        0.045
+       ],
+       [
+        "relaxation",
+        0.042
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 2020.0,
+     "acf_q": 0.30590268411605703,
+     "acf_ncyc": 15.841584158415841
+    }
+   },
+   "l1_refire_med": 14,
+   "aggm_range": 0.06271735031187908,
+   "vmean_last": 0.5351038139242471,
+   "n_famines": 7,
+   "famine_period_med": 1840.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c29",
+  "theory": {
+   "T_fam": 2611,
+   "dose": 1.64,
+   "pd": 0.889,
+   "chi_a": 21.8,
+   "g": 0.0181,
+   "T_r": 12,
+   "p_spont": 0.00024128689285880263
+  },
+  "params": {
+   "rho": 0.0002569078550815304,
+   "d0": 0.0006278420153024498,
+   "pd": 0.8894498694331882,
+   "chi_a": 21.750836606684597,
+   "g": 0.01812839798745874,
+   "T_r": 12,
+   "p_spont": 0.00024128689285880263,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 27.9,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 14.0,
+    "q": 0.966787518697165,
+    "n": 3
+   },
+   "l2": {
+    "tau": 472.9688282516496,
+    "n": 6
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "oscillator",
+      "r2": 0.1198,
+      "params": {
+       "period": 3320.0,
+       "q": 0.6495522958279037,
+       "n_cycles": 9.63855421686747
+      },
+      "all": [
+       [
+        "oscillator",
+        0.12
+       ],
+       [
+        "switch",
+        0.053
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.117
+       ]
+      ]
+     },
+     "acf_period": 3320.0,
+     "acf_q": 0.6495522958279037,
+     "acf_ncyc": 9.63855421686747
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.5884,
+      "params": {
+       "mean_dwell": 1655.0,
+       "n_flips": 4
+      },
+      "all": [
+       [
+        "switch",
+        0.588
+       ],
+       [
+        "oscillator",
+        0.091
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.645
+       ]
+      ]
+     },
+     "acf_period": 3320.0,
+     "acf_q": 0.5962646952073617,
+     "acf_ncyc": 9.63855421686747
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.3955,
+      "params": {
+       "mean_dwell": 1693.3333333333335,
+       "n_flips": 6
+      },
+      "all": [
+       [
+        "switch",
+        0.395
+       ],
+       [
+        "relaxation",
+        0.037
+       ],
+       [
+        "oscillator",
+        0.01
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 6700.0,
+     "acf_q": 0.21375559785238632,
+     "acf_ncyc": 4.776119402985074
+    }
+   },
+   "l1_refire_med": 14,
+   "aggm_range": 0.5823106687362586,
+   "vmean_last": 0.41635154433012156,
+   "n_famines": 6,
+   "famine_period_med": 3180.0
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ },
+ {
+  "id": "c32",
+  "theory": {
+   "T_fam": 1425,
+   "dose": 3.17,
+   "pd": 0.846,
+   "chi_a": 16.6,
+   "g": 0.0264,
+   "T_r": 8,
+   "p_spont": 0.0005278685747221877
+  },
+  "params": {
+   "rho": 0.0004705646443126239,
+   "d0": 0.0022240901564797508,
+   "pd": 0.8458930574612386,
+   "chi_a": 16.59390394926906,
+   "g": 0.026357233877236076,
+   "T_r": 8,
+   "p_spont": 0.0005278685747221877,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 27.4,
+  "metrics": {
+   "ok": true,
+   "why": "",
+   "t_end": 40000,
+   "l1": {
+    "period": 10.0,
+    "q": 0.9849213334517342,
+    "n": 1
+   },
+   "l2": {
+    "tau": 424.0030171790802,
+    "n": 20
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9643,
+      "params": {
+       "mean_dwell": 1027.3333333333333,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.964
+       ],
+       [
+        "oscillator",
+        0.725
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -2.143
+       ]
+      ]
+     },
+     "acf_period": 2060.0,
+     "acf_q": 0.9273156845012731,
+     "acf_ncyc": 15.533980582524272
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9767,
+      "params": {
+       "mean_dwell": 1026.6666666666667,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.977
+       ],
+       [
+        "oscillator",
+        0.657
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -2.44
+       ]
+      ]
+     },
+     "acf_period": 2060.0,
+     "acf_q": 0.9278476439300085,
+     "acf_ncyc": 15.533980582524272
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.8793,
+      "params": {
+       "mean_dwell": 1026.6666666666667,
+       "n_flips": 30
+      },
+      "all": [
+       [
+        "switch",
+        0.879
+       ],
+       [
+        "oscillator",
+        0.716
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 2060.0,
+     "acf_q": 0.9293020593336149,
+     "acf_ncyc": 15.533980582524272
+    }
+   },
+   "l1_refire_med": 10,
+   "aggm_range": 0.9040578992161535,
+   "vmean_last": 0.23178015040474925,
+   "n_famines": 20,
+   "famine_period_med": 2060.0
+  },
+  "gates": {
+   "G2": true,
+   "G2_detail": [
+    "hf",
+    0.9767,
+    "switch",
+    {
+     "mean_dwell": 1026.6666666666667,
+     "n_flips": 30
+    }
+   ],
+   "sep12": 42.40030171790802,
+   "sep23": 4.842732834766824,
+   "G1": false
+  }
+ },
+ {
+  "id": "c35",
+  "theory": {
+   "T_fam": 1236,
+   "dose": 7.99,
+   "pd": 0.897,
+   "chi_a": 7.1,
+   "g": 0.0206,
+   "T_r": 12,
+   "p_spont": 0.0012904589822991
+  },
+  "params": {
+   "rho": 0.0005426643940190932,
+   "d0": 0.006465796665618489,
+   "pd": 0.8974819692717139,
+   "chi_a": 7.08558726291269,
+   "g": 0.02058346866974882,
+   "T_r": 12,
+   "p_spont": 0.0012904589822991,
+   "R_star": 0.12,
+   "R_wake": 0.55
+  },
+  "T": 40000,
+  "seed": 0,
+  "wall_s": 2.1,
+  "metrics": {
+   "ok": false,
+   "why": "extinct",
+   "t_end": 3397,
+   "l1": {
+    "period": 14.0,
+    "q": 0.9634780635055973,
+    "n": 1
+   },
+   "l2": {
+    "tau": 701.2295683918965,
+    "n": 2
+   },
+   "l3": {
+    "aggm": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.8478,
+      "params": {
+       "mean_dwell": 670.0,
+       "n_flips": 2
+      },
+      "all": [
+       [
+        "switch",
+        0.848
+       ],
+       [
+        "relaxation",
+        0.52
+       ],
+       [
+        "oscillator",
+        0.021
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 540.0,
+     "acf_q": -0.030685692590793238,
+     "acf_ncyc": 5.037037037037037
+    },
+    "hf": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.9952,
+      "params": {
+       "mean_dwell": 900.0,
+       "n_flips": 1
+      },
+      "all": [
+       [
+        "switch",
+        0.995
+       ],
+       [
+        "oscillator",
+        0.031
+       ],
+       [
+        "constant",
+        0.0
+       ]
+      ]
+     },
+     "acf_period": 560.0,
+     "acf_q": -0.02928224574691871,
+     "acf_ncyc": 4.857142857142857
+    },
+    "cv": {
+     "fit": {
+      "model": "switch",
+      "r2": 0.8639,
+      "params": {
+       "mean_dwell": 890.0,
+       "n_flips": 2
+      },
+      "all": [
+       [
+        "switch",
+        0.864
+       ],
+       [
+        "oscillator",
+        0.026
+       ],
+       [
+        "constant",
+        0.0
+       ],
+       [
+        "relaxation",
+        -0.03
+       ]
+      ]
+     },
+     "acf_period": 460.0,
+     "acf_q": -0.005626997431535383,
+     "acf_ncyc": 5.913043478260869
+    }
+   },
+   "l1_refire_med": 14,
+   "aggm_range": 0.7703349625332918,
+   "vmean_last": 0.001117742481594285,
+   "n_famines": 2
+  },
+  "gates": {
+   "G2": false,
+   "G2_detail": null,
+   "G1": false
+  }
+ }
+]

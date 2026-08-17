@@ -1,0 +1,61 @@
+s6-00 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.6849 T3=237.6 T2=24.5 famp=0.71 s23=9.7 des=0.18 G1=True G2=False 
+s6-00 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.6875 T3=238.4 T2=24.5 famp=0.71 s23=9.7 des=0.18 G1=True G2=False 
+  -> s6-00: 0/2 seeds BOTH
+s6-01 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.9329 T3=201.0 T2=26.5 famp=0.69 s23=7.6 des=0.32 G1=True G2=True **BOTH**
+s6-01 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.9326 T3=202.0 T2=26.5 famp=0.67 s23=7.6 des=0.37 G1=True G2=True **BOTH**
+  -> s6-01: 2/2 seeds BOTH
+s6-02 sd=0 s1=4.5 s2=2.0 e2=0.5 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.735 T3=21.7 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+s6-02 sd=1 s1=4.5 s2=2.0 e2=0.5 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7405 T3=21.5 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+  -> s6-02: 0/2 seeds BOTH
+s6-03 sd=0 s1=4.5 s2=2.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.6795 T3=21.8 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+s6-03 sd=1 s1=4.5 s2=2.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.6874 T3=21.8 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+  -> s6-03: 0/2 seeds BOTH
+s6-04 sd=0 s1=4.5 s2=2.0 e2=0.55 rho=0.025 mu1=0.4 nu=0.02: ok top=oscillator/0.9219 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=True 
+s6-04 sd=1 s1=4.5 s2=2.0 e2=0.55 rho=0.025 mu1=0.4 nu=0.02: ok top=oscillator/0.7992 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=False 
+  -> s6-04: 0/2 seeds BOTH
+s6-05 sd=0 s1=4.5 s2=2.0 e2=0.55 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.9105 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=True 
+s6-05 sd=1 s1=4.5 s2=2.0 e2=0.55 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.791 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=False 
+  -> s6-05: 0/2 seeds BOTH
+s6-06 sd=0 s1=5.0 s2=2.0 e2=0.45 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7014 T3=None T2=26.0 famp=1.03 s23=None des=0.12 G1=False G2=False 
+s6-06 sd=1 s1=5.0 s2=2.0 e2=0.45 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.6893 T3=None T2=26.5 famp=1.03 s23=None des=0.08 G1=False G2=False 
+  -> s6-06: 0/2 seeds BOTH
+s6-07 sd=0 s1=5.0 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.6984 T3=232.6 T2=27.5 famp=0.75 s23=8.5 des=0.28 G1=True G2=False 
+s6-07 sd=1 s1=5.0 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7001 T3=224.9 T2=27.5 famp=0.76 s23=8.2 des=0.26 G1=True G2=False 
+  -> s6-07: 0/2 seeds BOTH
+s6-08 sd=0 s1=5.0 s2=2.0 e2=0.5 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7355 T3=24.2 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+s6-08 sd=1 s1=5.0 s2=2.0 e2=0.5 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7482 T3=24.2 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+  -> s6-08: 0/2 seeds BOTH
+s6-09 sd=0 s1=5.0 s2=2.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7355 T3=24.4 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+s6-09 sd=1 s1=5.0 s2=2.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.746 T3=24.1 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+  -> s6-09: 0/2 seeds BOTH
+s6-10 sd=0 s1=5.0 s2=2.0 e2=0.55 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7531 T3=24.0 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+s6-10 sd=1 s1=5.0 s2=2.0 e2=0.55 rho=0.025 mu1=0.4 nu=0.02: ok top=switch/0.7372 T3=23.6 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+  -> s6-10: 0/2 seeds BOTH
+s6-11 sd=0 s1=5.0 s2=2.0 e2=0.55 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7502 T3=24.0 T2=None famp=0.23 s23=None des=None G1=False G2=False 
+s6-11 sd=1 s1=5.0 s2=2.0 e2=0.55 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7378 T3=23.8 T2=None famp=0.19 s23=None des=None G1=False G2=False 
+  -> s6-11: 0/2 seeds BOTH
+s6-12 sd=0 s1=4.5 s2=2.5 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.6713 T3=228.9 T2=25.0 famp=0.83 s23=9.2 des=0.18 G1=True G2=False 
+s6-12 sd=1 s1=4.5 s2=2.5 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.6676 T3=160.9 T2=25.0 famp=1.04 s23=6.4 des=0.11 G1=True G2=False 
+  -> s6-12: 0/2 seeds BOTH
+s6-13 sd=0 s1=4.5 s2=2.5 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7342 T3=22.8 T2=None famp=0.21 s23=None des=None G1=False G2=False 
+s6-13 sd=1 s1=4.5 s2=2.5 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7472 T3=22.8 T2=None famp=0.21 s23=None des=None G1=False G2=False 
+  -> s6-13: 0/2 seeds BOTH
+s6-14 sd=0 s1=4.5 s2=3.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7361 T3=22.5 T2=None famp=0.2 s23=None des=None G1=False G2=False 
+s6-14 sd=1 s1=4.5 s2=3.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.02: ok top=switch/0.7418 T3=22.5 T2=None famp=0.2 s23=None des=None G1=False G2=False 
+  -> s6-14: 0/2 seeds BOTH
+s6-15 sd=0 s1=4.5 s2=3.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.7681 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=False 
+s6-15 sd=1 s1=4.5 s2=3.0 e2=0.5 rho=0.03 mu1=0.4 nu=0.02: ok top=oscillator/0.8696 T3=23.5 T2=None famp=0.21 s23=None des=None G1=False G2=True 
+  -> s6-15: 0/2 seeds BOTH
+s6-16 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.35 nu=0.02: ok top=switch/0.6577 T3=160.6 T2=25.0 famp=0.9 s23=6.4 des=0.23 G1=True G2=False 
+s6-16 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.35 nu=0.02: ok top=switch/0.6598 T3=160.5 T2=25.0 famp=0.89 s23=6.4 des=0.24 G1=True G2=False 
+  -> s6-16: 0/2 seeds BOTH
+s6-17 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.45 nu=0.02: ok top=oscillator/0.9482 T3=213.5 T2=25.5 famp=0.57 s23=8.4 des=0.51 G1=False G2=True 
+s6-17 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.45 nu=0.02: ok top=oscillator/0.9425 T3=224.0 T2=25.5 famp=0.57 s23=8.8 des=0.35 G1=True G2=True **BOTH**
+  -> s6-17: 1/2 seeds BOTH
+s6-18 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.01: ok top=switch/0.7654 T3=205.8 T2=27.0 famp=0.7 s23=7.6 des=0.37 G1=False G2=False 
+s6-18 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.01: ok top=switch/0.7686 T3=206.5 T2=27.0 famp=0.7 s23=7.6 des=0.36 G1=False G2=False 
+  -> s6-18: 0/2 seeds BOTH
+s6-19 sd=0 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.005: ok top=switch/0.771 T3=213.0 T2=27.0 famp=0.72 s23=7.9 des=0.24 G1=False G2=False 
+s6-19 sd=1 s1=4.5 s2=2.0 e2=0.45 rho=0.03 mu1=0.4 nu=0.005: ok top=switch/0.7666 T3=208.2 T2=27.0 famp=0.7 s23=7.7 des=0.3 G1=False G2=False 
+  -> s6-19: 0/2 seeds BOTH
+DONE stage6

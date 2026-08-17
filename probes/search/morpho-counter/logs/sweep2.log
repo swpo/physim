@@ -1,0 +1,45 @@
+total candidates: 43
+id=00 A:band x ladder Dv=10.0 L=48 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=1.000 flips=9 per=1040.0 tau=15.2/198.75 rungs=[4, 5] sep=13.1/5.2
+id=01 A:band x ladder Dv=10.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.913 flips=5 per=1490.0 tau=12.3/142.5 rungs=[5, 6, 7] sep=11.6/10.5
+id=02 A:band x ladder Dv=10.0 L=80 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.815 flips=6 per=1168.75 tau=15.1/125.0 rungs=[5, 6, 7, 8] sep=8.3/9.3
+id=03 A:band x ladder Dv=11.0 L=48 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=True G5=True r2=1.000 flips=11 per=922.5 tau=12.5/2.5 rungs=[4, 5] sep=0.2/369.0
+id=04 A:band x ladder Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=0.911 flips=6 per=1672.5 tau=9.8/107.5 rungs=[5, 6, 7] sep=11.0/15.6
+id=05 A:band x ladder Dv=11.0 L=80 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.830 flips=7 per=1260.0 tau=13.4/217.5 rungs=[5, 6, 7, 8] sep=16.2/5.8
+id=06 A:band x ladder Dv=12.0 L=48 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=1.2/None rungs=[5] sep=0.0/0.0
+id=07 A:band x ladder Dv=12.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.249 flips=None per=1877.5 tau=12.3/140.0 rungs=[5, 6, 7] sep=11.4/13.4
+id=08 A:band x ladder Dv=12.0 L=80 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.781 flips=7 per=1072.5 tau=15.8/178.75 rungs=[5, 6, 7, 8] sep=11.3/6.0
+id=09 A:band x ladder Dv=15.0 L=48 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=2.5/None rungs=[5] sep=0.0/0.0
+id=10 A:band x ladder Dv=15.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=2.4/None rungs=[6] sep=0.0/0.0
+id=11 A:band x ladder Dv=15.0 L=80 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=1.2/None rungs=[7] sep=0.0/0.0
+id=12 A2:eps Dv=11.0 L=64 kap=0.50 eps=1.2e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=2 per=None tau=12.2/97.5 rungs=[5, 6] sep=8.0/0.0
+id=13 A2:eps Dv=11.0 L=64 kap=0.50 eps=4.8e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.822 flips=13 per=817.5 tau=11.8/75.0 rungs=[4, 5, 6, 7] sep=6.4/10.9
+id=14 A2:eps Dv=11.0 L=80 kap=0.50 eps=1.2e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=1 per=None tau=2.1/66.25 rungs=[6, 7] sep=31.5/0.0
+id=15 A2:eps Dv=11.0 L=80 kap=0.50 eps=4.8e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.838 flips=12 per=872.5 tau=11.5/20.0 rungs=[5, 6, 7, 8] sep=1.7/43.6
+id=16 A2:eps Dv=12.0 L=64 kap=0.50 eps=1.2e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.006 flips=None per=None tau=2.6/193.75 rungs=[5, 6] sep=74.5/0.0
+id=17 A2:eps Dv=12.0 L=64 kap=0.50 eps=4.8e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.821 flips=8 per=1383.75 tau=12.8/32.5 rungs=[5, 6, 7] sep=2.5/42.6
+id=18 A2:eps Dv=12.0 L=80 kap=0.50 eps=1.2e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=2 per=None tau=8.9/55.0 rungs=[6, 7] sep=6.2/0.0
+id=19 A2:eps Dv=12.0 L=80 kap=0.50 eps=4.8e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.820 flips=12 per=716.25 tau=17.4/105.0 rungs=[5, 6, 7, 8] sep=6.0/6.8
+id=20 A3:flagship eps Dv=11.0 L=64 kap=0.50 eps=3.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=0.885 flips=8 per=1083.75 tau=13.0/162.5 rungs=[5, 6, 7] sep=12.5/6.7
+id=21 A3:flagship eps Dv=10.0 L=48 kap=0.50 eps=3.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=0.933 flips=12 per=802.5 tau=14.1/140.0 rungs=[4, 5, 6] sep=9.9/5.7
+id=22 B:kappa Dv=11.0 L=64 kap=0.10 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.002 flips=None per=None tau=2.8/82.5 rungs=[5, 6] sep=29.5/0.0
+id=23 B:kappa Dv=11.0 L=64 kap=0.20 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.414 flips=None per=2407.5 tau=12.5/73.75 rungs=[5, 6] sep=5.9/32.6
+id=24 B:kappa Dv=11.0 L=64 kap=0.35 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.879 flips=5 per=1533.75 tau=15.1/238.75 rungs=[5, 6, 7] sep=15.8/6.4
+id=25 B:kappa Dv=11.0 L=64 kap=0.65 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.837 flips=8 per=1127.5 tau=9.1/297.5 rungs=[5, 6, 7] sep=32.7/3.8
+id=26 B:kappa Dv=11.0 L=64 kap=0.80 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.885 flips=5 per=1635.0 tau=10.6/30.0 rungs=[5, 6, 7] sep=2.8/54.5
+id=27 B:kappa Dv=11.0 L=64 kap=0.90 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=0.002 flips=None per=None tau=13.9/22.5 rungs=[5, 6] sep=1.6/0.0
+id=28 C:noise Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=0.851 flips=7 per=1305.0 tau=14.6/226.25 rungs=[5, 6, 7] sep=15.5/5.8
+id=29 C:noise Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.921 flips=5 per=1390.0 tau=10.4/120.0 rungs=[5, 6, 7] sep=11.5/11.6
+id=30 C:noise Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=0.923 flips=5 per=1358.75 tau=12.4/120.0 rungs=[5, 6, 7] sep=9.7/11.3
+id=31 C:noise Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=True G5=True r2=0.920 flips=6 per=1577.5 tau=11.9/102.5 rungs=[5, 6, 7] sep=8.6/15.4
+id=32 D:wide band Dv=25.0 L=96 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=1.2/None rungs=[7] sep=0.0/0.0
+id=33 D:wide band Dv=25.0 L=96 kap=0.50 eps=8.0e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=1.2/None rungs=[7] sep=0.0/0.0
+id=34 D:wide band Dv=25.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None tau=2.1/None rungs=[5] sep=0.0/0.0
+id=35 E:narrow band Dv=9.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=1.000 flips=5 per=1522.5 tau=19.7/107.5 rungs=[5, 6] sep=5.5/14.2
+id=36 E:narrow band Dv=9.5 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=10 -> ok | G1=True G2=False G5=True r2=1.000 flips=5 per=1708.75 tau=11.1/62.5 rungs=[5, 6] sep=5.6/27.3
+id=37 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=0.50 Dc=10 -> ok | G1=True G2=False G5=True r2=1.000 flips=3 per=2730.0 tau=12.7/87.5 rungs=[5, 6] sep=6.9/31.2
+id=38 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=0.75 Dc=10 -> ok | G1=True G2=False G5=True r2=0.921 flips=4 per=1907.5 tau=12.2/97.5 rungs=[5, 6, 7] sep=8.0/19.6
+id=39 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.25 Dc=10 -> ok | G1=True G2=True G5=True r2=1.000 flips=6 per=1395.0 tau=11.6/72.5 rungs=[5, 6] sep=6.2/19.2
+id=40 F:sigma Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.50 Dc=10 -> ok | G1=False G2=True G5=True r2=1.000 flips=7 per=1230.0 tau=13.8/58.75 rungs=[5, 6] sep=4.3/20.9
+id=41 G:Dc Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=1 -> ok | G1=True G2=True G5=True r2=0.919 flips=6 per=1642.5 tau=11.8/108.75 rungs=[5, 6, 7] sep=9.2/15.1
+id=42 G:Dc Dv=11.0 L=64 kap=0.50 eps=2.4e-03 sg=1.00 Dc=3 -> ok | G1=True G2=False G5=True r2=0.937 flips=5 per=1483.75 tau=9.2/88.75 rungs=[5, 6, 7] sep=9.6/16.7
+sweep2 done in 589s

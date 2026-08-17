@@ -1,0 +1,28 @@
+s4-00 s1=3.75 rho=0.025 e2=0.42: st=ok top=oscillator/0.9594 T3=184.0 T2=None s12=None s23=None cv=0.48 des=None G1=False G2=True 
+s4-01 s1=3.75 rho=0.025 e2=0.45: st=ok top=switch/0.7598 T3=192.9 T2=21.5 s12=5.1 s23=9.0 cv=0.46 des=0.31 G1=True G2=False 
+s4-02 s1=3.75 rho=0.025 e2=0.48: st=ok top=switch/0.749 T3=344.3 T2=21.0 s12=7.5 s23=16.4 cv=0.34 des=0.09 G1=True G2=False 
+s4-03 s1=3.75 rho=0.03 e2=0.42: st=ok top=oscillator/0.9574 T3=151.0 T2=151.5 s12=34.0 s23=1.0 cv=0.43 des=0.12 G1=False G2=True 
+s4-04 s1=3.75 rho=0.03 e2=0.45: st=ok top=oscillator/0.9584 T3=169.5 T2=171.0 s12=40.2 s23=1.0 cv=0.49 des=0.14 G1=False G2=True 
+s4-05 s1=3.75 rho=0.03 e2=0.48: st=ok top=switch/0.6829 T3=171.5 T2=21.5 s12=5.4 s23=8.0 cv=0.42 des=0.22 G1=True G2=False 
+s4-06 s1=3.75 rho=0.035 e2=0.42: st=ok top=oscillator/0.9683 T3=140.0 T2=141.0 s12=32.4 s23=1.0 cv=0.46 des=0.13 G1=False G2=True 
+s4-07 s1=3.75 rho=0.035 e2=0.45: st=ok top=oscillator/0.9571 T3=142.0 T2=140.8 s12=32.0 s23=1.0 cv=0.49 des=0.18 G1=False G2=True 
+s4-08 s1=3.75 rho=0.035 e2=0.48: st=ok top=oscillator/0.8969 T3=143.5 T2=138.8 s12=32.1 s23=1.0 cv=0.46 des=0.21 G1=False G2=True 
+s4-09 s1=4.0 rho=0.025 e2=0.42: st=ok top=oscillator/0.9592 T3=194.5 T2=None s12=None s23=None cv=0.46 des=None G1=False G2=True 
+s4-10 s1=4.0 rho=0.025 e2=0.45: st=ok top=switch/0.7298 T3=213.5 T2=22.8 s12=5.7 s23=9.4 cv=0.43 des=0.24 G1=True G2=False 
+s4-11 s1=4.0 rho=0.025 e2=0.48: st=ok top=switch/0.7791 T3=None T2=22.0 s12=8.5 s23=None cv=0.33 des=0.09 G1=False G2=False 
+s4-12 s1=4.0 rho=0.03 e2=0.42: st=ok top=oscillator/0.977 T3=162.0 T2=162.5 s12=35.7 s23=1.0 cv=0.53 des=0.2 G1=False G2=True 
+s4-13 s1=4.0 rho=0.03 e2=0.45: st=ok top=oscillator/0.9382 T3=181.0 T2=23.5 s12=5.4 s23=7.7 cv=0.5 des=0.43 G1=True G2=True **BOTH**
+s4-14 s1=4.0 rho=0.03 e2=0.48: st=ok top=switch/0.6556 T3=183.6 T2=22.5 s12=5.9 s23=8.2 cv=0.41 des=0.18 G1=True G2=False 
+s4-15 s1=4.0 rho=0.035 e2=0.42: st=ok top=oscillator/0.9637 T3=147.5 T2=148.5 s12=32.6 s23=1.0 cv=0.51 des=0.14 G1=False G2=True 
+s4-16 s1=4.0 rho=0.035 e2=0.45: st=ok top=oscillator/0.9713 T3=149.5 T2=148.5 s12=32.3 s23=1.0 cv=0.53 des=0.21 G1=False G2=True 
+s4-17 s1=4.0 rho=0.035 e2=0.48: st=ok top=oscillator/0.9243 T3=154.0 T2=153.5 s12=33.0 s23=1.0 cv=0.46 des=0.19 G1=False G2=True 
+s4-18 s1=4.25 rho=0.025 e2=0.42: st=ok top=oscillator/0.9456 T3=224.5 T2=225.0 s12=51.1 s23=1.0 cv=0.49 des=0.1 G1=False G2=True 
+s4-19 s1=4.25 rho=0.025 e2=0.45: st=ok top=switch/0.6969 T3=226.6 T2=23.5 s12=5.9 s23=9.6 cv=0.48 des=0.23 G1=True G2=False 
+s4-20 s1=4.25 rho=0.025 e2=0.48: st=ok top=switch/0.7792 T3=None T2=23.0 s12=9.6 s23=None cv=0.3 des=0.06 G1=False G2=False 
+s4-21 s1=4.25 rho=0.03 e2=0.42: st=ok top=oscillator/0.95 T3=188.5 T2=189.5 s12=42.6 s23=1.0 cv=0.53 des=0.15 G1=False G2=True 
+s4-22 s1=4.25 rho=0.03 e2=0.45: st=ok top=oscillator/0.9522 T3=191.5 T2=190.5 s12=41.0 s23=1.0 cv=0.5 des=0.13 G1=False G2=True 
+s4-23 s1=4.25 rho=0.03 e2=0.48: st=ok top=switch/0.6794 T3=196.2 T2=23.0 s12=6.7 s23=8.5 cv=0.4 des=0.14 G1=True G2=False 
+s4-24 s1=4.25 rho=0.035 e2=0.42: st=ok top=oscillator/0.9732 T3=156.5 T2=156.5 s12=33.7 s23=1.0 cv=0.59 des=0.22 G1=False G2=True 
+s4-25 s1=4.25 rho=0.035 e2=0.45: st=ok top=oscillator/0.9526 T3=157.0 T2=156.5 s12=33.7 s23=1.0 cv=0.54 des=0.23 G1=False G2=True 
+s4-26 s1=4.25 rho=0.035 e2=0.48: st=ok top=switch/0.7218 T3=174.0 T2=24.5 s12=5.9 s23=7.1 cv=0.48 des=0.28 G1=True G2=False 
+DONE stage4

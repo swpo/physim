@@ -54,3 +54,21 @@ Early observations (T+~40min):
 - Controller action: ROUND 2 issued to same agent — SUCCESSION TOWER (4th layer:
   savanna-forest bistability above the fire clock; tests hierarchy STACKING,
   the user's scaling question directly).
+
+
+### trophic-tower — scorecard T+~5h, AUDIT PASS (second certified world)
+- 292 runs / 215 candidates; TC* teacup (sig1=4.5 mu1=.4 d1=.4 sig2=2 eta2=.44
+  rho=.034 DH=.05 Delta=4 nu=.03); 6s/candidate.
+- Controller audit: fresh seeds 31/32 reproduce T3=165.5 T2=26 tau1=4.9 sep 5.3/6.3.
+  G3 out-of-grid: rho=.025 -> T3=227 (their law predicts 232); rho=.055 -> 107 (105).
+  CONFIRMED — though rho=.055 shows teacup edge (T2_q .32, sep23 3.8): narrow window
+  is real. G1 margins thinnest so far (5.2-6.4x vs fire-forest 41x/17x).
+- Process notes: staged sweeps (results_stage1-6) = systematic local iteration; the
+  honest 0-D mean-field control (ragged switch r2=.76) proves SPACE CLEANS THE TOP
+  LAW — a design principle worth promoting to PROGRAM.md round 2. Warm-start trick
+  (skip 700-tu predator ramp) = useful budget lesson. H3 support: lynx-hare prior
+  clearly guided the search (Holling-II + saturation window from literature).
+- Controller action: ROUND 2 issued — ECO-EVOLUTIONARY TOWER (heritable attack rate
+  with linear price on top of the cycles; L4 = mean genotype; tests stacking via a
+  DIFFERENT coupling than fire-forest's succession: evolution-on-oscillator vs
+  competition-on-oscillator). Two parallel stacking experiments now running.

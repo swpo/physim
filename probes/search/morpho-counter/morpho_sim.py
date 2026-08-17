@@ -112,6 +112,9 @@ def simulate(p):
     u0, v0 = steady_state(a, b)
     u = u0 + 0.05 * rng.standard_normal((ny, nx))
     v = v0 + 0.01 * rng.standard_normal((ny, nx))
+    if p.get("seed_mode"):  # init ON branch n: seeded cosine ring mode
+        xg = np.arange(nx) * dx
+        u += 0.25 * np.cos(2 * np.pi * p["seed_mode"] * xg / (nx * dx))[None, :]
     C = np.full((ny, nx), float(p.get("C0", 1.0)))
     Eu, Ev, Ec = make_ops(ny, nx, dx, dt, Du, Dv, Dc)
 
@@ -120,6 +123,7 @@ def simulate(p):
     keys = ["t", "n", "nz", "purity", "amp", "Cm", "Csd", "Sm", "drive", "envmin"]
     nm = steps // meas_every
     rec = {k: np.zeros(nm) for k in keys}
+    modes = np.zeros((nm, min(17, nx // 2)))
     kymo = np.zeros((nm, nx)) if p.get("kymo") else None
     tr_win = p.get("trace_win")  # (s_lo, s_hi) in ticks: per-tick pixel trace
     if tr_win:
@@ -172,6 +176,7 @@ def simulate(p):
             rec["t"][j] = t
             rec["n"][j] = n
             rec["nz"][j] = count_zc(prof)
+            modes[j] = np.abs(np.fft.rfft(prof - prof.mean()))[:modes.shape[1]]
             rec["purity"][j] = pur
             rec["amp"][j] = prof.std()
             rec["Cm"][j] = C.mean()
@@ -190,6 +195,7 @@ def simulate(p):
             rec["blown"] = s
             break
     rec["snaps"] = snaps
+    rec["modes"] = modes[:j]
     if kymo is not None:
         rec["kymo"] = kymo[:j]
     if trace is not None:

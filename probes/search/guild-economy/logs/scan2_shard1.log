@@ -1,0 +1,11 @@
+shard 1/4: 9 candidates
+[1/9] m=6.0 rho=1.8 lk=0.25 hz=0.0007 ->  bimod=1.0 lo=0.47 fit=switch/0.1463 tau3=None t2=930.0 t1=(73.0,112.0) s12=8.3 s23=None pass=False (24s)
+[2/9] m=6.0 rho=1.8 lk=0.55 hz=0.0007 -> FAIL:no_guilds bimod=1.0 lo=0.0 fit=None/None tau3=None t2=750.0 t1=(58.0,293.0) s12=None s23=None pass=None (12s)
+[3/9] m=6.0 rho=2.2 lk=0.4 hz=0.0007 ->  bimod=0.998 lo=0.421 fit=relaxation/0.8543 tau3=2383.7154644415155 t2=1160.0 t1=(69.0,133.0) s12=8.72 s23=2.05 pass=False (23s)
+[4/9] m=6.0 rho=2.6 lk=0.25 hz=0.0007 ->  bimod=1.0 lo=0.603 fit=relaxation/0.9677 tau3=872.2113059713059 t2=630.0 t1=(83.0,85.0) s12=7.41 s23=1.38 pass=False (22s)
+[5/9] m=6.0 rho=2.6 lk=0.55 hz=0.0007 -> FAIL:no_guilds bimod=0.636 lo=0.042 fit=None/None tau3=None t2=760.0 t1=(57.0,275.0) s12=None s23=None pass=None (11s)
+[6/9] m=8.0 rho=1.8 lk=0.4 hz=0.0007 ->  bimod=1.0 lo=0.454 fit=relaxation/0.3503 tau3=3070.7113658838744 t2=690.0 t1=(64.0,109.0) s12=6.33 s23=4.45 pass=False (22s)
+[7/9] m=8.0 rho=2.2 lk=0.25 hz=0.0007 ->  bimod=1.0 lo=0.574 fit=relaxation/0.995 tau3=1013.3918100383581 t2=560.0 t1=(73.0,92.0) s12=6.09 s23=1.81 pass=False (20s)
+[8/9] m=8.0 rho=2.2 lk=0.55 hz=0.0007 ->  bimod=1.0 lo=0.495 fit=relaxation/0.4631 tau3=3161.360613319034 t2=580.0 t1=(64.0,98.0) s12=5.92 s23=5.45 pass=False (24s)
+[9/9] m=8.0 rho=2.6 lk=0.4 hz=0.0007 ->  bimod=0.999 lo=0.61 fit=relaxation/0.974 tau3=1292.5514813947943 t2=720.0 t1=(73.0,86.0) s12=8.37 s23=1.8 pass=False (25s)
+done

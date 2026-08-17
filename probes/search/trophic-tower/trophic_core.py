@@ -59,16 +59,28 @@ def run(raw, L=64, nticks=40000, seed=0, record_fields_at=None, nblk=16):
     a1, b1, d1 = raw["a1"], raw["b1"], raw["d1"]
     a2, b2, d2 = raw["a2"], raw["b2"], raw["d2"]
     DRl, DH, DP, nu = raw["DR"], raw["DH"], raw["DP"], raw["nu"]
-    # init: near coexistence-ish, noisy blobs to break symmetry (life after "terrain")
-    R = 0.5 + 0.15 * rng.random((L, L))
-    H = 0.15 + 0.1 * rng.random((L, L))
-    P = 0.05 + 0.05 * rng.random((L, L))
-    for _ in range(6):   # blobs
+    # warm start: 0-D ODE pre-run -> time-averaged attractor means (kills the
+    # long P ramp transient; honest: same micro physics, just better init)
+    r0, h0, p0 = 0.6, 0.2, 0.1
+    accR = accH = accP = 0.0; nacc = 0
+    for i in range(12000):  # 600 time units at dt=0.05
+        f1o = a1 * r0 / (1 + b1 * r0); f2o = a2 * h0 / (1 + b2 * h0)
+        r0 += DT * (r0 * (1 - r0) - f1o * h0)
+        h0 += DT * ((f1o - d1) * h0 - f2o * p0)
+        p0 += DT * ((f2o - d2) * p0)
+        r0 = min(max(r0, 1e-9), CAP); h0 = min(max(h0, 1e-9), CAP); p0 = min(max(p0, 1e-9), CAP)
+        if i >= 8000:
+            accR += r0; accH += h0; accP += p0; nacc += 1
+    R0, H0, P0 = accR / nacc, accH / nacc, accP / nacc
+    R = R0 * (0.8 + 0.4 * rng.random((L, L)))
+    H = H0 * (0.7 + 0.6 * rng.random((L, L)))
+    P = P0 * (0.7 + 0.6 * rng.random((L, L)))
+    for _ in range(6):   # blobs (relative to warm-start scale)
         cx, cy = rng.integers(0, L, 2)
         xx, yy = np.meshgrid(np.arange(L), np.arange(L), indexing="ij")
         dd = ((xx - cx + L/2) % L - L/2)**2 + ((yy - cy + L/2) % L - L/2)**2
-        H += 0.2 * np.exp(-dd / 18.0)
-        P += 0.1 * np.exp(-dd / 30.0)
+        H += 0.6 * H0 * np.exp(-dd / 18.0)
+        P += 0.4 * P0 * np.exp(-dd / 30.0)
     bs = L // nblk  # block size
     # probes: 8 pairs (p, p+4 in x) on a grid
     pr = np.linspace(8, L - 9, 4).astype(int)
@@ -398,28 +410,33 @@ def measure_teacup(rec, cut_frac=0.35):
     out["T3"] = T3; out["G2"] = bool(ok3)
     # also record fit on meanH for reference
     out["fitH"] = compact_top_fit(mH, dt=dt_mac)["all"][:2]
-    # ---- L2: local fast cycle from block series (high-passed at 3*T2guess)
+    # ---- L2: local fast cycle from block series, band-limited BELOW T3/4
+    # (deterministic: high-pass window set by the already-fitted slow period)
     blocks = rec["blocksH"][c:]
     nb = blocks.shape[1]
-    pers, qs = [], []
-    w = None
+    T3_eff = T3 if T3 else 150.0
+    w = max(int((T3_eff / 4.0) / dt_mac), 4)
+    max_lag = int((T3_eff / 3.0) / dt_mac)     # only accept fast periods < T3/3
+    pers, qs, amps = [], [], []
     for j in np.linspace(0, nb - 1, 24).astype(int):
         x = blocks[:, j]
-        if w is None:
-            pq0 = macro_period_quality(x - smooth1d(x, int(50 / dt_mac)), dt=dt_mac)
-            w = int((3 * pq0["period"]) / dt_mac) if pq0["period"] else int(50 / dt_mac)
         xf = x - smooth1d(x, w)
-        pq = macro_period_quality(xf[w:-w] if len(xf) > 3 * w else xf, dt=dt_mac)
-        if pq["period"] and pq["q"] >= 0.25 and pq["n_cycles"] >= 4:
+        xf = xf[w:-w] if len(xf) > 3 * w else xf
+        pq = macro_period_quality(xf, dt=dt_mac, max_lag=max_lag)
+        amps.append(np.std(xf) / max(np.std(x), 1e-12))
+        if pq["period"] and pq["q"] >= 0.25 and pq["n_cycles"] >= 8:
             pers.append(pq["period"]); qs.append(pq["q"])
-    out["T2"] = float(np.median(pers)) if pers else None
+    out["T2"] = float(np.median(pers)) if len(pers) >= 12 else None
     out["T2_frac"] = float(len(pers) / 24.0)
     out["T2_q"] = float(np.median(qs)) if qs else None
+    out["fast_amp_frac"] = float(np.median(amps))
+    # require the fast layer to carry real amplitude (>=15% of block std)
+    if out["T2"] and out["fast_amp_frac"] < 0.15:
+        out["T2_weak"] = True; out["T2"] = None
     # desynchronization of the fast layer: global fast amplitude vs local
     if out["T2"]:
-        wf = int(3 * out["T2"] / dt_mac)
-        gf = mH - smooth1d(mH, wf)
-        loc_amp = np.median([np.std(blocks[:, j] - smooth1d(blocks[:, j], wf))
+        gf = mH - smooth1d(mH, w)
+        loc_amp = np.median([np.std(blocks[:, j] - smooth1d(blocks[:, j], w))
                              for j in np.linspace(0, nb - 1, 12).astype(int)])
         out["desync"] = float(1.0 - min(np.std(gf) / max(loc_amp, 1e-12), 1.0))
     # ---- L1: front transit

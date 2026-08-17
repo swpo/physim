@@ -1,0 +1,9 @@
+grid00 eps=2.4e-03 kap=0.42 ns=2e-03 Dv=11.0 -> 1/4 | s1:f(r2=0.91 fl=6 sep=8/15 per=1713.75) s2:f(r2=0.85 fl=6 sep=6/13 per=1566.25) s3:f(r2=0.93 fl=6 sep=7/16 per=1716.25) s4:P(r2=0.85 fl=7 sep=5/19 per=1452.5)
+grid01 eps=2.4e-03 kap=0.50 ns=2e-03 Dv=11.0 -> 2/4 | s1:P(r2=0.91 fl=7 sep=11/16 per=1672.5) s2:f(r2=1.00 fl=6 sep=5/29 per=1646.25) s3:f(r2=0.93 fl=6 sep=8/12 per=1403.75) s4:P(r2=0.86 fl=9 sep=12/5 per=922.5)
+grid02 eps=2.8e-03 kap=0.42 ns=2e-03 Dv=11.0 -> 2/4 | s1:f(r2=1.00 fl=6 sep=8/17 per=1526.25) s2:P(r2=0.89 fl=7 sep=7/12 per=1527.5) s3:P(r2=0.93 fl=8 sep=7/16 per=1462.5) s4:f(r2=0.82 fl=8 sep=10/9 per=1277.5)
+grid03 eps=2.8e-03 kap=0.50 ns=2e-03 Dv=11.0 -> 3/4 | s1:f(r2=1.00 fl=7 sep=4/24 per=1467.5) s2:P(r2=0.92 fl=8 sep=9/13 per=1430.0) s3:P(r2=0.94 fl=7 sep=7/14 per=1447.5) s4:P(r2=0.93 fl=8 sep=10/14 per=1385.0)
+grid04 eps=3.2e-03 kap=0.42 ns=2e-03 Dv=11.0 -> 3/4 | s1:f(r2=0.80 fl=10 sep=11/9 per=1115.0) s2:P(r2=0.89 fl=9 sep=14/7 per=1147.5) s3:P(r2=0.92 fl=8 sep=11/10 per=1327.5) s4:P(r2=0.89 fl=9 sep=13/7 per=1056.25)
+grid05 eps=3.2e-03 kap=0.50 ns=2e-03 Dv=11.0 -> 2/4 | s1:f(r2=1.00 fl=8 sep=4/23 per=1292.5) s2:P(r2=0.87 fl=9 sep=12/8 per=1052.5) s3:f(r2=1.00 fl=8 sep=4/24 per=1287.5) s4:P(r2=0.94 fl=8 sep=14/10 per=1300.0)
+grid06 eps=2.8e-03 kap=0.50 ns=8e-03 Dv=11.0 -> 3/4 | s1:P(r2=1.00 fl=7 sep=7/19 per=1347.5) s2:f(r2=0.90 fl=8 sep=19/4 per=980.0) s3:P(r2=0.94 fl=8 sep=5/20 per=1340.0) s4:P(r2=0.99 fl=7 sep=7/15 per=1395.0)
+grid07 eps=2.8e-03 kap=0.50 ns=2e-03 Dv=10.5 -> 1/4 | s1:f(r2=1.00 fl=6 sep=9/18 per=1527.5) s2:P(r2=0.92 fl=7 sep=10/11 per=1487.5) s3:f(r2=1.00 fl=6 sep=6/17 per=1503.75) s4:f(r2=0.87 fl=8 sep=19/3 per=827.5)
+grid done

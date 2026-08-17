@@ -1,0 +1,35 @@
+total candidates: 33
+id=00 Dv=10.0 L=48 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=True G5=True r2=1.000 flips=9 per=1040.0 rungs=[4, 5] 2lv=1.00 sep=7.6/7.8
+id=01 Dv=10.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.913 flips=5 per=1490.0 rungs=[5, 6, 7] 2lv=0.97 sep=6.6/13.0
+id=02 Dv=10.0 L=80 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.815 flips=6 per=1168.75 rungs=[5, 6, 7, 8] 2lv=0.89 sep=5.4/12.5
+id=03 Dv=11.0 L=48 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=True G5=True r2=1.000 flips=11 per=922.5 rungs=[4, 5] 2lv=1.00 sep=1.6/52.7
+id=04 Dv=11.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=True G5=True r2=0.911 flips=6 per=1672.5 rungs=[5, 6, 7] 2lv=0.97 sep=9.5/15.9
+id=05 Dv=11.0 L=80 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.830 flips=7 per=1260.0 rungs=[5, 6, 7, 8] 2lv=0.83 sep=17.7/6.4
+id=06 Dv=12.0 L=48 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[5] 2lv=1.00 sep=0.0/0.0
+id=07 Dv=12.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.249 flips=None per=1877.5 rungs=[5, 6, 7] 2lv=0.95 sep=5.9/37.5
+id=08 Dv=12.0 L=80 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.781 flips=7 per=1072.5 rungs=[5, 6, 7, 8] 2lv=0.87 sep=16.8/7.6
+id=09 Dv=15.0 L=48 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[5] 2lv=1.00 sep=0.0/0.0
+id=10 Dv=15.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[6] 2lv=1.00 sep=0.0/0.0
+id=11 Dv=15.0 L=80 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[7] 2lv=1.00 sep=0.0/0.0
+id=12 Dv=11.0 L=64 kap=0.50 eps=1.2e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=2 per=None rungs=[5, 6] 2lv=1.00 sep=11.9/0.0
+id=13 Dv=11.0 L=64 kap=0.50 eps=4.8e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=0.822 flips=13 per=817.5 rungs=[4, 5, 6, 7] 2lv=0.92 sep=5.0/14.9
+id=14 Dv=11.0 L=80 kap=0.50 eps=1.2e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=1 per=None rungs=[6, 7] 2lv=1.00 sep=4.3/0.0
+id=15 Dv=11.0 L=80 kap=0.50 eps=4.8e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=0.838 flips=12 per=872.5 rungs=[5, 6, 7, 8] 2lv=0.85 sep=1.9/41.1
+id=16 Dv=12.0 L=64 kap=0.50 eps=1.2e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=0.006 flips=None per=None rungs=[5, 6] 2lv=1.00 sep=5.0/0.0
+id=17 Dv=12.0 L=64 kap=0.50 eps=4.8e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=0.821 flips=8 per=1383.75 rungs=[5, 6, 7] 2lv=0.95 sep=4.3/38.2
+id=18 Dv=12.0 L=80 kap=0.50 eps=1.2e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=2 per=None rungs=[6, 7] 2lv=1.00 sep=6.8/0.0
+id=19 Dv=12.0 L=80 kap=0.50 eps=4.8e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.820 flips=12 per=716.25 rungs=[5, 6, 7, 8] 2lv=0.89 sep=9.8/8.7
+id=20 Dv=11.0 L=64 kap=0.20 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.414 flips=None per=2407.5 rungs=[5, 6] 2lv=1.00 sep=11.4/19.1
+id=21 Dv=11.0 L=64 kap=0.35 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.879 flips=5 per=1533.75 rungs=[5, 6, 7] 2lv=0.96 sep=21.6/6.4
+id=22 Dv=11.0 L=64 kap=0.65 eps=2.4e-03 noise=2e-03 -> ok | G1=True G2=False G5=True r2=0.837 flips=8 per=1127.5 rungs=[5, 6, 7] 2lv=0.91 sep=9.0/11.3
+id=23 Dv=11.0 L=64 kap=0.80 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=0.885 flips=5 per=1635.0 rungs=[5, 6, 7] 2lv=0.97 sep=4.5/32.7
+id=24 Dv=11.0 L=64 kap=0.50 eps=2.4e-03 noise=5e-04 -> ok | G1=True G2=True G5=True r2=0.851 flips=7 per=1305.0 rungs=[5, 6, 7] 2lv=0.93 sep=16.1/7.3
+id=25 Dv=11.0 L=64 kap=0.50 eps=2.4e-03 noise=1e-03 -> ok | G1=True G2=False G5=True r2=0.921 flips=5 per=1390.0 rungs=[5, 6, 7] 2lv=0.98 sep=14.0/9.0
+id=26 Dv=11.0 L=64 kap=0.50 eps=2.4e-03 noise=4e-03 -> ok | G1=True G2=False G5=True r2=0.923 flips=5 per=1358.75 rungs=[5, 6, 7] 2lv=0.98 sep=13.5/9.1
+id=27 Dv=11.0 L=64 kap=0.50 eps=2.4e-03 noise=8e-03 -> ok | G1=True G2=True G5=True r2=0.920 flips=6 per=1577.5 rungs=[5, 6, 7] 2lv=0.97 sep=5.6/25.2
+id=28 Dv=25.0 L=96 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[7] 2lv=1.00 sep=0.0/0.0
+id=29 Dv=25.0 L=96 kap=0.50 eps=8.0e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[7] 2lv=1.00 sep=0.0/0.0
+id=30 Dv=25.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=None per=None rungs=[5] 2lv=1.00 sep=0.0/0.0
+id=31 Dv=9.0 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=5 per=1522.5 rungs=[5, 6] 2lv=1.00 sep=1.9/14.7
+id=32 Dv=9.5 L=64 kap=0.50 eps=2.4e-03 noise=2e-03 -> ok | G1=False G2=False G5=True r2=1.000 flips=5 per=1708.75 rungs=[5, 6] 2lv=1.00 sep=2.9/22.8
+sweep done in 237s

@@ -1,0 +1,14 @@
+settled (12s): fr_b=0.298 fr_site=0.272 pur=0.938
+kill85 done (14s)
+flip80 done (12s)
+dilute30 done (11s)
+rho_step_2.6 done (10s)
+saved diag_protocols.png
+kill85         fr_b    : relaxation r2=0.845 tau=4617 end=0.438
+kill85         fr_site : relaxation r2=0.950 tau=5109 end=0.443
+flip80         fr_b    : relaxation r2=0.897 tau=4366 end=0.436
+flip80         fr_site : relaxation r2=0.973 tau=4475 end=0.442
+dilute30       fr_b    : switch     r2=0.738 tau=None end=0.435
+dilute30       fr_site : relaxation r2=0.949 tau=5707 end=0.439
+rho_step_2.6   fr_b    : relaxation r2=0.700 tau=5970 end=0.564
+rho_step_2.6   fr_site : relaxation r2=0.867 tau=5234 end=0.571

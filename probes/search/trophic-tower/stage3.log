@@ -1,0 +1,17 @@
+s3-00 rho=0.025 e2=0.45 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9712 T3=174.5 T2=174.5 t1=4.15 s12=42.0 s23=1.0 cv=0.41 np=13.0 des=0.1 G1=False G2=True rt=6.1
+s3-01 rho=0.025 e2=0.48 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=switch/0.6901 T3=163.9 T2=20.0 t1=3.15 s12=6.3 s23=8.2 cv=0.34 np=13.0 des=0.11 G1=True G2=False rt=6.0
+s3-02 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9529 T3=146.0 T2=145.0 t1=4.1 s12=35.4 s23=1.0 cv=0.5 np=6.0 des=0.21 G1=False G2=True rt=6.0
+s3-03 rho=0.03 e2=0.48 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=switch/0.7398 T3=160.0 T2=160.5 t1=4.0 s12=40.1 s23=1.0 cv=0.31 np=15.5 des=0.07 G1=False G2=False rt=6.1
+s3-04 rho=0.035 e2=0.45 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9639 T3=132.0 T2=132.5 t1=4.25 s12=31.2 s23=1.0 cv=0.38 np=10.5 des=0.11 G1=False G2=True rt=6.1
+s3-05 rho=0.035 e2=0.48 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9655 T3=134.5 T2=133.2 t1=4.25 s12=31.4 s23=1.0 cv=0.42 np=7.0 des=0.16 G1=False G2=True rt=6.1
+s3-06 rho=0.04 e2=0.45 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.8251 T3=110.0 T2=106.8 t1=4.35 s12=24.5 s23=1.0 cv=0.5 np=6.0 des=0.26 G1=False G2=False rt=6.3
+s3-07 rho=0.04 e2=0.48 mu1=0.4 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.8172 T3=121.5 T2=124.5 t1=4.25 s12=29.3 s23=1.0 cv=0.48 np=6.0 des=0.23 G1=False G2=False rt=6.1
+s3-08 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.01 nu=0.02 L=64: st=ok top=oscillator/0.9848 T3=140.0 T2=141.0 t1=3.9 s12=36.2 s23=1.0 cv=0.53 np=18.0 des=0.12 G1=False G2=True rt=6.2
+s3-09 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.01 nu=0.06 L=64: st=ok top=oscillator/0.9165 T3=112.0 T2=111.8 t1=6.1 s12=18.3 s23=1.0 cv=0.76 np=28.0 des=0.5 G1=False G2=True rt=6.0
+s3-10 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.02 nu=0.02 L=64: st=ok top=oscillator/0.9778 T3=141.0 T2=141.5 t1=4.0 s12=35.4 s23=1.0 cv=0.64 np=7.0 des=0.24 G1=False G2=True rt=6.0
+s3-11 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.02 nu=0.06 L=64: st=ok top=oscillator/0.976 T3=114.5 T2=115.2 t1=5.4 s12=21.3 s23=1.0 cv=0.71 np=24.0 des=0.23 G1=False G2=True rt=5.9
+s3-12 rho=0.03 e2=0.45 mu1=0.4 s1=3.5 DH=0.02 nu=0.04 L=96: st=ok top=oscillator/0.9893 T3=132.5 T2=132.5 t1=4.15 s12=31.9 s23=1.0 cv=0.6 np=46.0 des=0.11 G1=False G2=True rt=14.6
+s3-13 rho=0.03 e2=0.45 mu1=0.36 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.955 T3=136.5 T2=135.5 t1=4.0 s12=33.9 s23=1.0 cv=0.53 np=7.0 des=0.2 G1=False G2=True rt=6.1
+s3-14 rho=0.03 e2=0.45 mu1=0.44 s1=3.5 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9564 T3=165.5 T2=166.5 t1=4.4 s12=37.8 s23=1.0 cv=0.32 np=18.0 des=0.06 G1=False G2=True rt=6.3
+s3-15 rho=0.03 e2=0.45 mu1=0.4 s1=4.0 DH=0.05 nu=0.02 L=64: st=ok top=oscillator/0.9382 T3=181.0 T2=23.5 t1=4.35 s12=5.4 s23=7.7 cv=0.5 np=8.0 des=0.43 G1=True G2=True rt=6.6
+DONE stage3

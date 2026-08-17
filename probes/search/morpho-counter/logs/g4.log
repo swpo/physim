@@ -1,0 +1,19 @@
+F48 seed=1: PASS=True G1=True G2=True r2=1.000 flips=9 per=1040.0 rungs=[4, 5] sep=7.6/7.8 ev=10
+F48 seed=2: PASS=True G1=True G2=True r2=1.000 flips=9 per=1045.0 rungs=[4, 5] sep=7.7/7.7 ev=10
+F48 seed=3: PASS=True G1=True G2=True r2=0.934 flips=9 per=1021.25 rungs=[4, 5, 6] sep=5.2/11.2 ev=12
+F48 seed=4: PASS=True G1=True G2=True r2=1.000 flips=9 per=1045.0 rungs=[4, 5] sep=7.9/7.6 ev=10
+F64 seed=1: PASS=True G1=True G2=True r2=0.911 flips=6 per=1672.5 rungs=[5, 6, 7] sep=9.5/15.9 ev=6
+F64 seed=2: PASS=False G1=True G2=False r2=1.000 flips=5 per=1646.25 rungs=[5, 6] sep=5.6/26.3 ev=6
+F64 seed=3: PASS=False G1=True G2=False r2=0.927 flips=5 per=1403.75 rungs=[5, 6, 7] sep=13.1/9.7 ev=5
+F64 seed=4: PASS=True G1=True G2=True r2=0.864 flips=8 per=922.5 rungs=[5, 6, 7] sep=11.9/7.0 ev=7
+F48 jit=0 (Dv=10.01 kap=0.507 eps=2.41e-03): PASS=True G1=True G2=True r2=0.940 flips=9 per=1047.5 rungs=[4, 5, 6] sep=5.1/11.8
+F48 jit=1 (Dv=10.23 kap=0.507 eps=2.30e-03): PASS=True G1=True G2=True r2=0.998 flips=9 per=1043.75 rungs=[4, 5, 6] sep=11.1/6.1
+F48 jit=2 (Dv=9.94 kap=0.511 eps=2.61e-03): PASS=False G1=False G2=True r2=1.000 flips=9 per=1008.75 rungs=[4, 5] sep=2.3/23.7
+F48 jit=3 (Dv=9.62 kap=0.489 eps=2.29e-03): PASS=False G1=False G2=True r2=0.996 flips=8 per=1182.5 rungs=[4, 5, 6] sep=4.4/11.5
+F48 jit=4 (Dv=10.87 kap=0.488 eps=2.53e-03): PASS=False G1=False G2=True r2=0.950 flips=10 per=845.0 rungs=[4, 5, 6] sep=2.4/30.7
+F64 jit=0 (Dv=10.56 kap=0.520 eps=2.38e-03): PASS=True G1=True G2=True r2=0.869 flips=6 per=1105.0 rungs=[5, 6, 7] sep=9.3/9.0
+F64 jit=1 (Dv=10.86 kap=0.512 eps=2.44e-03): PASS=True G1=True G2=True r2=0.860 flips=6 per=1200.0 rungs=[5, 6, 7] sep=10.9/9.4
+F64 jit=2 (Dv=11.34 kap=0.501 eps=2.25e-03): PASS=True G1=True G2=True r2=0.880 flips=6 per=1307.5 rungs=[5, 6, 7] sep=10.8/12.2
+F64 jit=3 (Dv=10.46 kap=0.460 eps=2.21e-03): PASS=False G1=True G2=False r2=0.899 flips=5 per=1647.5 rungs=[5, 6, 7] sep=7.9/15.1
+F64 jit=4 (Dv=11.20 kap=0.484 eps=2.53e-03): PASS=False G1=True G2=False r2=1.000 flips=5 per=1530.0 rungs=[5, 6] sep=8.9/16.5
+G4 done

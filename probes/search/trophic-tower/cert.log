@@ -1,0 +1,28 @@
+=== A) 4 seeds at TC* ===
+[seeds] sd=0: ok top=oscillator/0.9329 T3=201.0 acfT3=201.0 q=0.87 T2=26.5 t1=4.75 s12=5.6 s23=7.6 cv=0.48 np=9.0 G1=True G2=True BOTH
+[seeds] sd=1: ok top=oscillator/0.9326 T3=202.0 acfT3=202.0 q=0.87 T2=26.5 t1=4.65 s12=5.7 s23=7.6 cv=0.51 np=8.0 G1=True G2=True BOTH
+[seeds] sd=2: ok top=oscillator/0.9253 T3=201.5 acfT3=201.5 q=0.85 T2=26.5 t1=4.75 s12=5.6 s23=7.6 cv=0.54 np=7.0 G1=True G2=True BOTH
+[seeds] sd=3: ok top=oscillator/0.9059 T3=203.5 acfT3=203.5 q=0.84 T2=26.5 t1=4.65 s12=5.7 s23=7.7 cv=0.54 np=7.0 G1=True G2=True BOTH
+SEEDS: 4/4 BOTH
+=== B) +-10% jitter of ALL searched params (3 draws) ===
+[jitter0] sd=10: ok top=oscillator/0.8878 T3=217.0 acfT3=217.0 q=0.85 T2=27.0 t1=4.38 s12=6.2 s23=8.0 cv=0.67 np=8.0 G1=True G2=True BOTH
+[jitter1] sd=11: ok top=switch/0.7651 T3=None acfT3=661.5 q=-0.0 T2=24.5 t1=2.65 s12=9.2 s23=None cv=0.41 np=9.0 G1=False G2=False 
+[jitter2] sd=12: ok top=switch/0.728 T3=233.8 acfT3=234.0 q=0.52 T2=26.5 t1=3.85 s12=6.9 s23=8.8 cv=0.55 np=9.0 G1=True G2=False 
+JITTER: 1/3 BOTH
+=== C) response curve: rho (predator metabolic price) ===
+[rc_rho=0.022] sd=0: ok top=switch/0.7229 T3=274.3 acfT3=608.5 q=-0.0 T2=24.0 t1=3.0 s12=8.0 s23=11.4 cv=0.34 np=13.0 G1=True G2=False 
+[rc_rho=0.022] sd=1: ok top=switch/0.7241 T3=274.8 acfT3=609.5 q=-0.0 T2=24.0 t1=2.98 s12=8.1 s23=11.5 cv=0.34 np=11.0 G1=True G2=False 
+[rc_rho=0.026] sd=0: ok top=switch/0.6819 T3=232.4 acfT3=230.5 q=0.55 T2=25.0 t1=3.98 s12=6.3 s23=9.3 cv=0.38 np=11.0 G1=True G2=False 
+[rc_rho=0.026] sd=1: ok top=switch/0.6904 T3=237.8 acfT3=234.0 q=0.54 T2=25.0 t1=3.85 s12=6.5 s23=9.5 cv=0.43 np=11.0 G1=True G2=False 
+[rc_rho=0.03] sd=0: ok top=oscillator/0.9329 T3=201.0 acfT3=201.0 q=0.87 T2=26.5 t1=4.75 s12=5.6 s23=7.6 cv=0.48 np=9.0 G1=True G2=True BOTH
+[rc_rho=0.03] sd=1: ok top=oscillator/0.9326 T3=202.0 acfT3=202.0 q=0.87 T2=26.5 t1=4.65 s12=5.7 s23=7.6 cv=0.51 np=8.0 G1=True G2=True BOTH
+[rc_rho=0.034] sd=0: ok top=oscillator/0.8333 T3=180.5 acfT3=180.5 q=0.85 T2=26.5 t1=4.62 s12=5.7 s23=6.8 cv=0.58 np=6.0 G1=True G2=False 
+[rc_rho=0.034] sd=1: ok top=oscillator/0.9294 T3=183.0 acfT3=183.0 q=0.88 T2=26.5 t1=4.7 s12=5.6 s23=6.9 cv=0.58 np=7.0 G1=True G2=True BOTH
+[rc_rho=0.038] sd=0: ok top=oscillator/0.9302 T3=160.0 acfT3=160.0 q=0.85 T2=27.0 t1=4.8 s12=5.6 s23=5.9 cv=0.55 np=6.0 G1=True G2=True BOTH
+[rc_rho=0.038] sd=1: ok top=oscillator/0.9312 T3=159.0 acfT3=159.0 q=0.88 T2=27.0 t1=4.75 s12=5.7 s23=5.9 cv=0.55 np=7.0 G1=True G2=True BOTH
+=== D) response curve: eta2 (predator efficiency) ===
+[rc_eta2=0.4] sd=0: ok top=oscillator/0.8845 T3=185.5 acfT3=185.5 q=0.88 T2=26.5 t1=4.55 s12=5.8 s23=7.0 cv=0.67 np=5.0 G1=False G2=True 
+[rc_eta2=0.43] sd=0: ok top=oscillator/0.9355 T3=198.0 acfT3=198.0 q=0.88 T2=26.5 t1=4.75 s12=5.6 s23=7.5 cv=0.54 np=9.0 G1=True G2=True BOTH
+[rc_eta2=0.45] sd=0: ok top=oscillator/0.9329 T3=201.0 acfT3=201.0 q=0.87 T2=26.5 t1=4.75 s12=5.6 s23=7.6 cv=0.48 np=9.0 G1=True G2=True BOTH
+[rc_eta2=0.47] sd=0: ok top=switch/0.6751 T3=222.5 acfT3=431.0 q=0.23 T2=24.5 t1=3.7 s12=6.6 s23=9.1 cv=0.41 np=10.0 G1=True G2=False 
+DONE cert

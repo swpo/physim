@@ -1,0 +1,6 @@
+{'T_fam': 1000, 'rho': np.float64(0.0006706743247078868), 'T': 30000, 'period': 1470.0, 'acf_period': 1480.0, 'n_fam': 21, 'ok': True, 'why': '', 'wall': 46.3}
+{'T_fam': 1750, 'rho': np.float64(0.0003832424712616496), 'T': 30000, 'period': 2220.0, 'acf_period': 2220.0, 'n_fam': 14, 'ok': True, 'why': '', 'wall': 46.9}
+{'T_fam': 3000, 'rho': np.float64(0.00022355810823596227), 'T': 36000, 'period': 3480.0, 'acf_period': 3480.0, 'n_fam': 11, 'ok': True, 'why': '', 'wall': 32.4}
+{'T_fam': 5000, 'rho': np.float64(0.00013413486494157735), 'T': 60000, 'period': 5500.0, 'acf_period': 5500.0, 'n_fam': 11, 'ok': True, 'why': '', 'wall': 41.0}
+{'T_fam': 8000, 'rho': np.float64(8.383429058848585e-05), 'T': 60000, 'period': 8540.0, 'acf_period': 8540.0, 'n_fam': 8, 'ok': True, 'why': '', 'wall': 45.7}
+wrote g3_c30.json
