@@ -1,0 +1,41 @@
+W1 seed0 ok=1 r2=0.901 switch(phi) nev=53 t3=1814 s21=36.6 s32=21.3 dec=2.793
+W1 seed1 ok=1 r2=0.898 switch(phi) nev=40 t3=1982 s21=36.8 s32=23.3 dec=0.0
+W1 seed2 ok=1 r2=0.907 switch(phi) nev=47 t3=2049 s21=37.1 s32=24.1 dec=0.0
+W1 seed3 ok=1 r2=0.900 switch(phi) nev=44 t3=1900 s21=36.7 s32=22.4 dec=0.0
+W1 jit0 ok=1 r2=0.918 switch nev=23 t3=3410 s21=51.6 s32=40.1
+W1 jit1 ok=1 r2=0.905 switch nev=53 t3=2077 s21=48.4 s32=23.1
+W1 jit2 ok=1 r2=0.902 switch nev=53 t3=1948 s21=39.2 s32=21.6
+== W1: seeds 4/4, jitter 3/3 -> G4=True
+W2 seed0 ok=1 r2=0.912 switch(phi) nev=30 t3=2377 s21=34.0 s32=28.0 dec=0.0
+W2 seed1 ok=1 r2=0.903 switch(phi) nev=30 t3=2128 s21=36.8 s32=25.0 dec=0.0
+W2 seed2 ok=1 r2=0.908 switch(phi) nev=38 t3=2242 s21=35.2 s32=26.4 dec=0.0
+W2 seed3 ok=1 r2=0.905 switch(phi) nev=34 t3=2285 s21=31.8 s32=26.9 dec=0.0
+W2 jit0 ok=1 r2=0.922 switch nev=17 t3=3514 s21=51.1 s32=41.3
+W2 jit1 ok=1 r2=0.908 switch nev=39 t3=2390 s21=46.6 s32=26.6
+W2 jit2 ok=1 r2=0.915 switch nev=30 t3=2632 s21=35.9 s32=29.2
+== W2: seeds 4/4, jitter 3/3 -> G4=True
+W3 seed0 ok=1 r2=0.911 switch(phi) nev=30 t3=2261 s21=24.3 s32=26.6 dec=0.0
+W3 seed1 ok=1 r2=0.903 switch(phi) nev=28 t3=2124 s21=25.7 s32=25.0 dec=0.0
+W3 seed2 ok=1 r2=0.909 switch(phi) nev=36 t3=2140 s21=26.2 s32=25.2 dec=0.0
+W3 seed3 ok=1 r2=0.899 switch(phi) nev=30 t3=2120 s21=24.7 s32=24.9 dec=0.0
+W3 jit0 ok=1 r2=0.924 switch nev=17 t3=3511 s21=28.4 s32=41.3
+W3 jit1 ok=1 r2=0.907 switch nev=38 t3=2284 s21=28.9 s32=25.4
+W3 jit2 ok=1 r2=0.915 switch nev=30 t3=2500 s21=25.8 s32=27.8
+== W3: seeds 4/4, jitter 3/3 -> G4=True
+W4 seed0 ok=1 r2=0.902 switch(phi) nev=42 t3=1820 s21=26.8 s32=21.4 dec=0.0
+W4 seed1 ok=1 r2=0.900 switch(phi) nev=38 t3=1982 s21=26.2 s32=23.3 dec=0.0
+W4 seed2 ok=1 r2=0.904 switch(phi) nev=40 t3=1963 s21=26.2 s32=23.1 dec=0.0
+W4 seed3 ok=1 r2=0.901 switch(phi) nev=47 t3=1829 s21=27.2 s32=21.5 dec=0.0
+W4 jit0 ok=1 r2=0.916 switch nev=25 t3=2991 s21=29.6 s32=35.2
+W4 jit1 ok=1 r2=0.899 switch nev=44 t3=1916 s21=31.1 s32=21.3
+W4 jit2 ok=1 r2=0.894 switch nev=44 t3=1836 s21=27.7 s32=20.4
+== W4: seeds 4/4, jitter 3/3 -> G4=True
+W5 seed0 ok=1 r2=0.925 switch(phi) nev=14 t3=3608 s21=22.4 s32=42.4 dec=0.0
+W5 seed1 ok=1 r2=0.911 switch(phi) nev=22 t3=2722 s21=23.1 s32=32.0 dec=0.0
+W5 seed2 ok=1 r2=0.920 switch(phi) nev=24 t3=2788 s21=23.6 s32=32.8 dec=0.0
+W5 seed3 ok=1 r2=0.907 switch(phi) nev=22 t3=2634 s21=22.4 s32=31.0 dec=0.0
+W5 jit0 ok=0 r2=0.930 switch nev=11 t3=4920 s21=28.0 s32=57.9
+W5 jit1 ok=1 r2=0.917 switch nev=23 t3=2967 s21=27.9 s32=33.0
+W5 jit2 ok=1 r2=0.919 switch nev=21 t3=2958 s21=24.5 s32=32.9
+== W5: seeds 4/4, jitter 2/3 -> G4=True
+done

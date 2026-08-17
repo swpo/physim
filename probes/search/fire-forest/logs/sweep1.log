@@ -1,0 +1,32 @@
+ 0 A  th=0.70 Lam=  0.7 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.964 nev=  9 t1= 7.9 t2=   80 t3=  5287 s21=10.1 s32=66.1 pl_dec=0.0 | G1=0 G2=1
+ 1 A  th=0.70 Lam=  0.7 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.908 nev= 10 t1= 8.4 t2=   80 t3=  5391 s21= 9.5 s32=67.4 pl_dec=0.0 | G1=0 G2=1
+ 2 A  th=0.70 Lam=  1.5 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.954 nev= 13 t1= 8.1 t2=   80 t3=  4514 s21= 9.9 s32=56.4 pl_dec=0.0 | G1=1 G2=1
+ 3 A  th=0.70 Lam=  1.5 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.895 nev= 13 t1= 8.4 t2=   80 t3=  4360 s21= 9.5 s32=54.5 pl_dec=0.0 | G1=1 G2=1
+ 4 A  th=0.70 Lam=  3.0 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.832 nev= 32 t1= 7.0 t2=   80 t3=  2391 s21=11.4 s32=29.9 pl_dec=0.0 | G1=1 G2=0
+ 5 A  th=0.70 Lam=  3.0 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.832 nev= 27 t1= 7.2 t2=   80 t3=  2461 s21=11.1 s32=30.8 pl_dec=0.0 | G1=1 G2=0
+ 6 A  th=0.70 Lam=  6.0 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.715 nev= 46 t1= 6.6 t2=   80 t3=  1537 s21=12.0 s32=19.2 pl_dec=0.0 | G1=1 G2=0
+ 7 A  th=0.70 Lam=  6.0 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.730 nev= 53 t1= 6.2 t2=   80 t3=  1514 s21=12.8 s32=18.9 pl_dec=1.261 | G1=1 G2=0
+ 8 A  th=0.80 Lam=  0.7 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.948 nev=  7 t1= 8.1 t2=   80 t3=  6142 s21= 9.9 s32=76.8 pl_dec=0.0 | G1=0 G2=1
+ 9 A  th=0.80 Lam=  0.7 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.890 nev=  8 t1= 7.6 t2=   80 t3=  6133 s21=10.5 s32=76.7 pl_dec=0.0 | G1=0 G2=1
+10 A  th=0.80 Lam=  1.5 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.896 nev= 12 t1= 7.9 t2=   80 t3=  4538 s21=10.2 s32=56.7 pl_dec=0.0 | G1=1 G2=1
+11 A  th=0.80 Lam=  1.5 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.862 nev= 14 t1= 7.1 t2=   80 t3=  4369 s21=11.2 s32=54.6 pl_dec=0.0 | G1=1 G2=1
+12 A  th=0.80 Lam=  3.0 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.854 nev= 23 t1= 7.0 t2=   80 t3=  3441 s21=11.4 s32=43.0 pl_dec=0.0 | G1=1 G2=1
+13 A  th=0.80 Lam=  3.0 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.824 nev= 24 t1= 6.1 t2=   80 t3=  2508 s21=13.0 s32=31.4 pl_dec=0.0 | G1=1 G2=0
+14 A  th=0.80 Lam=  6.0 M=3 D= 8 gs=0.00 rho=0.03 | top=switch(phi) r2=0.746 nev= 51 t1= 6.2 t2=   80 t3=  1659 s21=12.8 s32=20.7 pl_dec=2.121 | G1=1 G2=0
+15 A  th=0.80 Lam=  6.0 M=3 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.724 nev= 61 t1= 4.7 t2=   80 t3=  1471 s21=16.9 s32=18.4 pl_dec=2.056 | G1=1 G2=0
+16 A2 th=0.80 Lam=  1.5 M=3 D= 8 gs=0.35 rho=0.00 | top=switch(phi) r2=0.799 nev= 15 t1= 6.7 t2=   80 t3=  3991 s21=12.0 s32=49.9 pl_dec=0.0 | G1=1 G2=0
+17 A2 th=0.80 Lam=  3.0 M=3 D= 8 gs=0.35 rho=0.00 | top=switch(phi) r2=0.810 nev= 26 t1= 6.1 t2=   80 t3=  2761 s21=13.2 s32=34.5 pl_dec=0.0 | G1=1 G2=0
+18 B  th=0.55 Lam= 15.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.681 nev= 96 t1= 6.4 t2=  105 t3=   857 s21=16.4 s32= 8.2 pl_dec=1.432 | G1=1 G2=0
+19 B  th=0.55 Lam= 40.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.631 nev=213 t1= 5.7 t2=  115 t3=   616 s21=20.2 s32= 5.4 pl_dec=2.444 | G1=1 G2=0
+20 B  th=0.55 Lam=100.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.655 nev=342 t1= 5.2 t2=  150 t3=   429 s21=28.8 s32= 2.9 pl_dec=2.37 | G1=0 G2=0
+21 B  th=0.65 Lam= 15.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.702 nev= 98 t1= 5.9 t2=   90 t3=  1017 s21=15.3 s32=11.3 pl_dec=2.406 | G1=1 G2=0
+22 B  th=0.65 Lam= 40.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.676 nev=222 t1= 4.9 t2=  120 t3=   580 s21=24.6 s32= 4.8 pl_dec=2.508 | G1=0 G2=0
+23 B  th=0.65 Lam=100.0 M=3 D= 5 gs=0.50 rho=0.00 | top=switch(phi) r2=0.648 nev=351 t1= 4.6 t2=  120 t3=   447 s21=26.3 s32= 3.7 pl_dec=2.324 | G1=0 G2=0
+24 C  th=0.75 Lam=  2.0 M=2 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.918 nev= 19 t1= 3.2 t2=   85 t3=  3011 s21=26.7 s32=35.4 pl_dec=0.0 | G1=1 G2=1
+25 C  th=0.75 Lam=  2.0 M=5 D= 8 gs=0.35 rho=0.03 | top=switch(phi) r2=0.875 nev= 15 t1=10.2 t2=   80 t3=  3690 s21= 7.8 s32=46.1 pl_dec=0.0 | G1=1 G2=1
+26 C  th=0.75 Lam=  2.0 M=3 D= 4 gs=0.35 rho=0.03 | top=switch(phi) r2=0.868 nev= 21 t1= 8.4 t2=   80 t3=  3247 s21= 9.5 s32=40.6 pl_dec=0.0 | G1=1 G2=1
+27 C  th=0.75 Lam=  2.0 M=3 D=12 gs=0.35 rho=0.03 | top=switch(phi) r2=0.855 nev= 20 t1= 6.7 t2=   80 t3=  3248 s21=11.9 s32=40.6 pl_dec=0.0 | G1=1 G2=1
+28 D  th=0.35 Lam=  0.3 M=4 D= 2 gs=0.00 rho=0.05 | top=switch(meanB) r2=0.802 nev=  7 t1=13.1 t2=   80 t3=  7195 s21= 6.1 s32=89.9 pl_dec=0.0 | G1=0 G2=0
+29 D  th=0.35 Lam=  0.3 M=6 D= 2 gs=0.00 rho=0.05 | top=switch(meanB) r2=0.808 nev=  7 t1=13.6 t2=   80 t3=  7195 s21= 5.9 s32=89.9 pl_dec=0.0 | G1=0 G2=0
+30 D  th=0.35 Lam=  0.3 M=4 D= 3 gs=0.00 rho=0.05 | top=switch(meanB) r2=0.828 nev=  7 t1=11.1 t2=   80 t3=  7200 s21= 7.2 s32=90.0 pl_dec=0.0 | G1=0 G2=0
+done 31

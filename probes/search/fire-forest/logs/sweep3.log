@@ -1,0 +1,7 @@
+200 Lam= 6.0 gs=0.35 D=8 | top=switch r2=0.885 nev= 80 s21=41.4 s32=18.4 dec=3.01 | G1=1 G2=1
+201 Lam= 9.0 gs=0.35 D=8 | top=switch r2=0.860 nev= 95 s21=46.3 s32=16.3 dec=3.134 | G1=1 G2=1
+202 Lam=15.0 gs=0.35 D=8 | top=switch r2=0.808 nev=147 s21=48.9 s32=13.7 dec=3.29 | G1=1 G2=0
+203 Lam=25.0 gs=0.35 D=8 | top=switch r2=0.763 nev=206 s21=55.2 s32=10.4 dec=2.885 | G1=1 G2=0
+204 Lam= 9.0 gs=0.70 D=5 | top=switch r2=0.788 nev= 86 s21=28.1 s32=13.1 dec=2.912 | G1=1 G2=0
+205 Lam=15.0 gs=0.70 D=5 | top=switch r2=0.762 nev=135 s21=30.9 s32=10.6 dec=3.117 | G1=1 G2=0
+done

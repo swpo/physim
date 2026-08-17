@@ -1,0 +1,17 @@
+W6 seed0 ok=1 r2=0.885 nev=80 t1=2.1 t2=85 t3=1562 s21=41.4 s32=18.4
+W6 seed1 ok=1 r2=0.893 nev=54 t1=2.1 t2=85 t3=1697 s21=39.9 s32=20.0
+W6 seed2 ok=1 r2=0.898 nev=60 t1=2.4 t2=85 t3=1886 s21=36.0 s32=22.2
+W6 seed3 ok=1 r2=0.892 nev=56 t1=2.1 t2=85 t3=1725 s21=40.2 s32=20.3
+W6 jit0 ok=1 r2=0.908 nev=60 t3=2046
+W6 jit1 ok=1 r2=0.889 nev=74 t3=1595
+W6 jit2 ok=1 r2=0.904 nev=63 t3=2107
+== W6: seeds 4/4 jitter 3/3 G4=True | pooled n=250 dec=3.01 alpha=1.25 frac_span=0.16
+W7 seed0 ok=1 r2=0.860 nev=95 t1=1.9 t2=90 t3=1467 s21=46.3 s32=16.3
+W7 seed1 ok=1 r2=0.881 nev=95 t1=1.9 t2=90 t3=1425 s21=48.1 s32=15.8
+W7 seed2 ok=1 r2=0.895 nev=83 t1=2.2 t2=85 t3=1751 s21=38.3 s32=20.6
+W7 seed3 ok=1 r2=0.883 nev=102 t1=2.0 t2=90 t3=1439 s21=45.2 s32=16.0
+W7 jit0 ok=1 r2=0.877 nev=100 t3=1707
+W7 jit1 ok=1 r2=0.894 nev=82 t3=1502
+W7 jit2 ok=1 r2=0.895 nev=103 t3=1845
+== W7: seeds 4/4 jitter 3/3 G4=True | pooled n=375 dec=3.14 alpha=1.30 frac_span=0.07
+done

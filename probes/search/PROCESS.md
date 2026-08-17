@@ -36,3 +36,21 @@ Early observations (T+~40min):
   Keller-Segel blowup with an explicit stability check (ok/why pattern).
 - Controller policy: no mid-flight interruptions; feedback lands against
   scorecards. Exception: hard numerical blowup or gate misreading.
+
+
+## Round 1 fan-in (updating as scorecards arrive)
+
+### fire-forest — scorecard received T+~3.5h, AUDIT PASS (first certified world)
+- 70 candidates logged; W7 winner (theta=.78 Lam=9 M=2 D=8 gsig=.35 rho=.03 g=2e-3)
+- Controller audit: fresh seeds 11/12 via their own ff_core -> switch r2 .873-.886,
+  tau 2/85/1440, sep 41x/17x, ~100 events, 3.8s/probe. G3 spot-check beyond their
+  sampled range: g=.001 -> tau3=2819; g=.006 -> tau3=520 (monotone, ~g^-0.64). CONFIRMED.
+- Process notes: theory coordinates (rate RATIOS + threshold) worked (H1 +1).
+  Their negative results show the G2/L2-richness TENSION: SOC corner (Lam>=15)
+  kills top-law simplicity (r2<.81) — evidence for H2 (simple top is the scarce
+  property, and it TRADES OFF against middle-layer richness).
+- Honesty: refused to certify SOC (spanning bump at L^2, only broadband) — the
+  honesty rules are being followed under incentive to claim more.
+- Controller action: ROUND 2 issued to same agent — SUCCESSION TOWER (4th layer:
+  savanna-forest bistability above the fire clock; tests hierarchy STACKING,
+  the user's scaling question directly).

@@ -1,0 +1,5 @@
+pooled events: 269 min/med/max = 1/235/4096
+xmin=None -> alpha=1.22 decades=2.83 ks=0.290 n=190
+xmin=3 -> alpha=1.21 decades=3.14 ks=0.262 n=211
+xmin=10 -> alpha=1.22 decades=2.61 ks=0.328 n=168
+log10-size histogram: {0.0: 47, 0.3: 21, 0.6: 19, 0.9: 26, 1.2: 11, 1.5: 1, 1.8: 4, 2.1: 6, 2.4: 8, 2.7: 12, 3.0: 14, 3.3: 100}
