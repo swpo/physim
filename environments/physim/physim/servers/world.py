@@ -50,8 +50,15 @@ def _snapshot(world: World) -> str:
     elif world.p.reaction == "ecowave":
         arrays.update(U1e=world.U1e, V1e=world.V1e, Re=world.Re,
                       eu=world.eu, ev=world.ev, ext=np.array([world._ex_t]))
+    elif world.p.reaction == "ecowave2":
+        arrays.update(U1e=world.U1e, V1e=world.V1e, U2e=world.U2e,
+                      V2e=world.V2e, Re=world.Re,
+                      eu=world.eu, ev=world.ev, ext=np.array([world._ex_t]))
     elif world.p.reaction == "evo":
         arrays.update(U1e=world.U1e, V1e=world.V1e, Re=world.Re, Ge=world.Ge,
+                      evt=np.array([getattr(world, "_evo_tick", 0)]))
+    elif world.p.reaction == "enzyme":
+        arrays.update(V1e=world.V1e, Ee=world.Ee, Re=world.Re, Ge=world.Ge,
                       evt=np.array([getattr(world, "_evo_tick", 0)]))
     else:
         arrays.update(x=world.x, a=world.a)
@@ -85,8 +92,15 @@ def _restore(world: World, snap: str) -> None:
     elif world.p.reaction == "ecowave":
         world.U1e = z["U1e"]; world.V1e = z["V1e"]; world.Re = z["Re"]
         world.eu = z["eu"]; world.ev = z["ev"]; world._ex_t = int(z["ext"][0])
+    elif world.p.reaction == "ecowave2":
+        world.U1e = z["U1e"]; world.V1e = z["V1e"]
+        world.U2e = z["U2e"]; world.V2e = z["V2e"]; world.Re = z["Re"]
+        world.eu = z["eu"]; world.ev = z["ev"]; world._ex_t = int(z["ext"][0])
     elif world.p.reaction == "evo":
         world.U1e = z["U1e"]; world.V1e = z["V1e"]; world.Re = z["Re"]
+        world.Ge = z["Ge"]; world._evo_tick = int(z["evt"][0])
+    elif world.p.reaction == "enzyme":
+        world.V1e = z["V1e"]; world.Ee = z["Ee"]; world.Re = z["Re"]
         world.Ge = z["Ge"]; world._evo_tick = int(z["evt"][0])
     else:
         world.x = z["x"]

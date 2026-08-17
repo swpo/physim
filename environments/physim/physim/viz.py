@@ -462,6 +462,24 @@ def preset_notes(name: str) -> str:
               "levels. Includes apparatus ports and occasional object "
               "births/deaths. No preparation contracts in v1: positions are "
               "transient by design (tracking preps are future work).",
+        "E2": "ENZYME ECONOMICS: the deepest world in the benchmark by design "
+              "philosophy. Nothing biological is authored — only PRICES and "
+              "CONSERVATION: tissue earns energy in proportion to enzyme amount "
+              "(the heritable gene g) times local substrate, pays rent in "
+              "proportion to enzyme amount, stores at most a finite larder, "
+              "burns itself when bankrupt, and dies below a viability floor. "
+              "From that ledger the world COMPUTES what E0/E1 had built in by "
+              "hand: a critical substrate level R* = rent/earnings (above it "
+              "greed pays, below it frugality survives), famine/plenty "
+              "selection asymmetry, and the whole trade-off structure — "
+              "theorems of bookkeeping, not authored curves. Storms cycle the "
+              "world across R* (~1000-tick weather), so the gene pool "
+              "oscillates with the climate; ports fertilize/poison eras that "
+              "move it on demand. Parameters were found by search over "
+              "price-space, screened by a certification battery (survival, "
+              "bidirectional selection, variance maintenance, R*-straddling) "
+              "— worlds are selected for interesting physics, not designed "
+              "around it.",
         "E1": "STORM WORLD: the environment itself cycles — recurring famines "
               "(hidden period, ~half the time) alternate with plenty. Because "
               "traits are heritable (particulate inheritance: new tissue copies "
@@ -606,7 +624,7 @@ def gif_evo_storm(name="E1", seed=0) -> str:
         Gc = cm.coolwarm(np.clip(G, 0, 1))[..., :3]
         Gc = np.where(alive[..., None], Gc, 0.10)
         Rc = np.zeros((*R.shape, 3))
-        Rc[..., 1] = np.clip(R / w.eco_R_max, 0, 1)
+        Rc[..., 1] = np.clip(R / getattr(w, "eco_R_max", 1.0), 0, 1)
         Vc = cm.magma(np.clip(V / 0.35, 0, 1))[..., :3]
         mg = float(m[1]) if m[0] > 0 else float("nan")
         pils.append(_film_row([Vc, Gc, Rc], badge, colr,
@@ -647,6 +665,49 @@ def gif_evo_free(name="E0", seed=0) -> str:
     return _save_gif(pils, f"{name.lower()}_selection.gif", duration=110)
 
 
+def gif_enzyme_economics(name="E2", seed=0) -> str:
+    """E2 film: three acts — storm-cycle equilibrium, fertilize era (R held
+    above R*: greed pays), then famine era (R below R*: bankruptcy selects
+    frugality). Same linear ledger throughout."""
+    import numpy as np
+    from matplotlib import cm
+    w = make_world(name, seed)
+    n_in = w.p.n_in
+    sub = w.p.gs_steps_per_tick
+    frames = []
+    def shoot(amp, blocks, per, badge, colr):
+        for k in range(blocks):
+            w.run(np.full((per, n_in), amp))
+            cyc = (w.evo_storm_dwell + w.evo_storm_calm) * sub
+            storm = (w._evo_tick % cyc) < w.evo_storm_dwell * sub
+            b = badge if badge else ("storm (R < R*)" if storm else "calm (R > R*)")
+            c = colr if colr else ((255, 110, 70) if storm else (150, 220, 150))
+            m = w.true_macro()
+            frames.append((b, c, w.V1e.copy(), w.Ge.copy(), w.Re.copy(),
+                           float(m[1]) if m[0] > 0 else float("nan")))
+    shoot(0.0, 30, 80, None, None)                                    # act 1: climate
+    shoot(0.85, 30, 80, "FERTILIZED era (R held above R*)", (120, 220, 120))
+    shoot(-0.6, 30, 80, "POISON era (R forced below R*)", (255, 110, 70))
+    shoot(0.0, 10, 80, None, None)                                    # release
+    Rstar = w.enz_m1 / w.enz_c_max
+    pils = []
+    for (badge, colr, V, G, R, mg) in frames:
+        alive = V > 0.05
+        Gc = cm.coolwarm(np.clip(G, 0, 1))[..., :3]
+        Gc = np.where(alive[..., None], Gc, 0.10)
+        # resource shown RELATIVE TO R*: below R* = brown (famine), above = green
+        Rc = np.zeros((*R.shape, 3))
+        above = np.clip((R - Rstar) / max(1 - Rstar, 1e-6), 0, 1)
+        below = np.clip((Rstar - R) / max(Rstar, 1e-6), 0, 1)
+        Rc[..., 1] = above
+        Rc[..., 0] = below * 0.75
+        Rc[..., 2] = 0.05
+        Vc = cm.magma(np.clip(V / 0.6, 0, 1))[..., :3]
+        pils.append(_film_row([Vc, Gc, Rc], badge, colr,
+                              f"mean g {mg:.2f}   [biomass | genotype | R vs R*: green=above, brown=below]"))
+    return _save_gif(pils, f"{name.lower()}_economics.gif", duration=110)
+
+
 def panel_evo_ghist(name="E1", seed=0) -> str:
     """Genotype-distribution timeline: the population histogram wanders under
     port eras and world weather — quantitative genetics as a picture."""
@@ -660,9 +721,16 @@ def panel_evo_ghist(name="E1", seed=0) -> str:
         alive = V > 0.05
         h, _ = np.histogram(G[alive], bins=bins, weights=V[alive])
         rows.append(h / max(h.sum(), 1e-9)); marks.append(era)
-    phases = [(0.85, 22, "fertilize"), (0.0, 26, "free (storms)"),
-              (-0.6, 18, "poison"), (0.0, 22, "free (storms)")]         if name == "E1" else              [(0.0, 22, "free"), (0.85, 20, "fertilize"), (0.0, 14, "free"),
-              (-0.75, 22, "poison"), (0.0, 12, "free")]
+    if name == "E1":
+        phases = [(0.85, 22, "fertilize"), (0.0, 26, "free (storms)"),
+                  (-0.6, 18, "poison"), (0.0, 22, "free (storms)")]
+    elif name == "E2":
+        phases = [(0.0, 16, "free (storms)"), (0.85, 12, "fertilize"),
+                  (0.0, 12, "free (storms)"), (-0.6, 12, "poison"),
+                  (0.0, 12, "free (storms)")]
+    else:
+        phases = [(0.0, 22, "free"), (0.85, 20, "fertilize"), (0.0, 14, "free"),
+                  (-0.75, 22, "poison"), (0.0, 12, "free")]
     for amp, blocks, lab in phases:
         for b in range(blocks):
             w.run(np.full((300, n_in), amp))
@@ -727,7 +795,7 @@ def gif_ecowave_rain(name="B2", seed=0) -> str:
         Ec = cm.viridis(np.clip((eu + 2.0) / 4.0, 0, 1))[..., :3]
         Vc = cm.magma(np.clip(V / 0.35, 0, 1))[..., :3]
         Rc = np.zeros((*R.shape, 3))
-        Rc[..., 1] = np.clip(R / w.eco_R_max, 0, 1)
+        Rc[..., 1] = np.clip(R / getattr(w, "eco_R_max", 1.0), 0, 1)
         pils.append(_film_row([Ec, Vc, Rc], "waves feed the ecology", (150, 220, 150),
                               "[waves | organisms | resource ('rain' trails)]"))
     return _save_gif(pils, f"{name.lower()}_rain.gif", duration=90)
@@ -798,7 +866,7 @@ def gif_eco_selection(name="B0", seed=0) -> str:
         rgb = np.zeros((*V1.shape, 3))
         rgb[..., 0] = np.clip(V1 / 0.3, 0, 1)
         rgb[..., 2] = np.clip(V2 / 0.3, 0, 1)
-        Rc = np.zeros((*R.shape, 3)); Rc[..., 1] = np.clip(R / w.eco_R_max, 0, 1)
+        Rc = np.zeros((*R.shape, 3)); Rc[..., 1] = np.clip(R / getattr(w, "eco_R_max", 1.0), 0, 1)
         pils.append(_film_row([rgb, Rc], badge, colr,
                               f"greedy(red) n={n1}  frugal(blue) n={n2}   [organisms | resource]"))
     return _save_gif(pils, f"{name.lower()}_selection.gif", duration=100)
@@ -1020,7 +1088,7 @@ breaks frontier models.</p>
         "title": "physim worlds — evolution (E)",
         "page": "worlds-evolution.html",
         "prefix": ("E",),
-        "families": ("evo",),
+        "families": ("evo", "enzyme"),
         "blurb": """
 <h1>Evolution — the E track</h1>
 <p class="note">Ecology plus <b>heredity</b>. Organisms carry a continuous
@@ -1051,7 +1119,7 @@ addendum 20).</p>
 def _preset_section(name: str, p) -> list[str]:
     """Header + note + meta + static panels for one preset (no films)."""
     parts = []
-    if p.reaction == "evo":
+    if p.reaction in ("evo", "enzyme"):
         parts.append(f"<h2 id='{name}'>{name} — evolution, "
                      f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
     elif p.reaction in ("ecology", "ecowave"):
@@ -1066,7 +1134,13 @@ def _preset_section(name: str, p) -> list[str]:
         parts.append(f"<h2 id='{name}'>{name} — {p.n_modules} module(s), "
                      f"{p.n_in} inputs / {p.n_out} sensors ({p.n_dead} dead)</h2>")
     parts.append(f'<p class="note">{preset_notes(name)}</p>')
-    if p.reaction == "evo":
+    if p.reaction == "enzyme":
+        parts.append(f'<p class="meta">lattice {p.L}×{p.L} · authored prices: income '
+                     f'{p.enz_c_max}·g·V·R, rent ({p.enz_m0}+{p.enz_m1}·g)·V, larder '
+                     f'≤{p.enz_cap}·V · R* = {p.enz_m1/p.enz_c_max:.2f} (emergent) · '
+                     f'storms ×{p.evo_storm_depth} for ~{p.evo_storm_dwell:,}t · '
+                     f'mutation {p.enz_mut} · tick budget {p.max_ticks:,}</p>')
+    elif p.reaction == "evo":
         parts.append(f'<p class="meta">lattice {p.L}×{p.L} · heritable trait field '
                      f'(mutation {p.evo_mut}, {"saturating-robustness" if p.evo_gp == "asym" else "linear"} GP map)'
                      + (f' · storms: regen ×{p.evo_storm_depth} for ~{p.evo_storm_dwell:,} ticks, '
@@ -1147,6 +1221,14 @@ FILMS = {
             "colorful (genetic variance); a poison era then bleaches it toward blue — "
             "frugal genotypes — live, colony by colony. Watch sd g: variance drops "
             "under selection and recovers by mutation afterwards.")],
+    "E2": [("gif_enzyme_economics", "FILM (god view, E2): enzyme economics — the only authored "
+            "biology is a price list (income ∝ enzyme × substrate, rent ∝ enzyme, finite "
+            "larder, bankruptcy). The world computes a critical resource level R* = rent/earning "
+            "rate; a fertilize era holds local R above R* (greedy genotypes spread, red), then "
+            "the era ends and the storm climate drops R below R* — the SAME linear law now "
+            "selects the other direction (frugal blues return). No trade-off curve anywhere in "
+            "the code: the trade-off is a theorem of conservation."),
+           ("panel_evo_ghist", None)],
     "E1": [("gif_evo_storm", "FILM (god view, E1): a fertilize era first DE-adapts the "
             "gene pool (rich world favors greedy: reds spread), then the era ends and "
             "the world's own storm cycle re-selects frugality (blues return). The gene "
@@ -1215,7 +1297,8 @@ def build(out_path: str = "docs/worlds.html", films: bool = True) -> list[str]:
                      "→ C3 two species + cascades → C4 excitable waves",
         "life": "B0a carrying capacity → B0b competition → B0 selection → "
                 "B1 exclusion boundary → B2 wave-fed ecology",
-        "evolution": "E0 heredity laboratory → E1 storm world (evolution as weather)",
+        "evolution": "E0 heredity laboratory → E1 storm world (evolution as weather) → "
+                     "E2 enzyme economics (trade-offs as theorems of conservation)",
     }
     for track, lad in ladders.items():
         meta = TRACK_META[track]

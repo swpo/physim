@@ -109,9 +109,9 @@ def sample_contracts(world: World, rng: np.random.Generator,
         return _sample_contracts_excitable(world, rng, n_per_stratum)
     if getattr(world.p, "reaction", "tanh") == "ecology":
         return _sample_contracts_ecology(world, rng, n_per_stratum)
-    if getattr(world.p, "reaction", "tanh") == "ecowave":
+    if getattr(world.p, "reaction", "tanh") in ("ecowave", "ecowave2"):
         return _sample_contracts_ecowave(world, rng, n_per_stratum)
-    if getattr(world.p, "reaction", "tanh") == "evo":
+    if getattr(world.p, "reaction", "tanh") in ("evo", "enzyme"):
         return _sample_contracts_evo(world, rng, n_per_stratum)
     n_in = world.p.n_in
     dead = world.true_is_dead()
@@ -469,6 +469,20 @@ def _sample_contracts_ecowave(world: World, rng: np.random.Generator,
         contracts.append(Contract(cid, "S4", segs, pick_channel(),
                                   stat=stat_pick(i)))
         cid += 1
+    if getattr(world.p, "reaction", "") == "ecowave2":
+        for i in range(n_per_stratum):      # S5: selection era (winner boundary)
+            port = int(rng.integers(0, n_in))
+            if rng.random() < 0.5:          # famine era: sparse rain
+                era = [hold(np.full(n_in, -float(rng.uniform(0.5, 0.8))),
+                            int(rng.integers(2500, 4000)))]
+            else:                           # rich era: heavy extra pacing
+                p_off = int(rng.choice([25, 50]))
+                reps = max(6, int(rng.integers(2500, 4000) // (8 + p_off)))
+                era = pulse_train(port, 8, p_off, reps)
+            era.append(hold(np.zeros(n_in), int(rng.integers(800, 1400))))
+            contracts.append(Contract(cid, "S5", era, pick_channel(),
+                                      stat=("mean", "sd")[i % 2]))
+            cid += 1
     return contracts
 
 
@@ -532,7 +546,9 @@ def truth_statistic(world: World, contract: Contract, ensemble: int = ENSEMBLE
         ensemble = min(ensemble, 8)
     if getattr(world.p, "reaction", "tanh") in ("ecology", "ecowave"):
         ensemble = min(ensemble, 6)
-    if getattr(world.p, "reaction", "tanh") == "evo":
+    if getattr(world.p, "reaction", "tanh") == "ecowave2":
+        ensemble = min(ensemble, 5)   # era protocols are long
+    if getattr(world.p, "reaction", "tanh") in ("evo", "enzyme"):
         ensemble = min(ensemble, 4)   # selection-era protocols are LONG
     vals = []
     for e in range(ensemble):
@@ -553,7 +569,8 @@ def answer_scale(tau: float, channel_range: float, stat: str = "mean",
     if stat == "rate":
         return float(max(3.0 * tau, 1.0))
     frac = 0.05 if stat == "sd" else 0.1
-    if reaction in ("grayscott", "grayscott2", "ecology", "ecowave", "evo"):
+    if reaction in ("grayscott", "grayscott2", "ecology", "ecowave",
+                    "ecowave2", "evo", "enzyme"):
         # GS ensembles are quasi-deterministic (shared settled start): the
         # range floor dominates and must be tight or replication saturates.
         frac = 0.015 if stat == "sd" else 0.03
@@ -690,7 +707,8 @@ def sample_prep_contracts(world: World, rng: np.random.Generator,
         return _sample_prep_gs(world, rng, n)
     if getattr(world.p, "reaction", "tanh") == "excitable":
         return []   # v1: wave states are transient; preps deferred
-    if getattr(world.p, "reaction", "tanh") in ("ecology", "ecowave", "evo"):
+    if getattr(world.p, "reaction", "tanh") in ("ecology", "ecowave",
+                                                "ecowave2", "evo", "enzyme"):
         return []   # v1: population targets need long holds; preps deferred
     p = world.p
     dead = world.true_is_dead()

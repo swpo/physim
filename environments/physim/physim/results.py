@@ -526,14 +526,33 @@ variance — the breeder's equation runs out of fuel). Micro shape ≠ macro
 shape; now tracked per rung.</li>
 </ul>
 
+<h2>E2 — enzyme economics (2026-02-16, v0.11.0): trade-offs as theorems</h2>
+<p class="note">The deepest world by design philosophy. The only authored
+biology is a <b>price list</b>: tissue earns energy ∝ gene·substrate, pays
+rent ∝ gene, stores at most a finite larder, burns itself when bankrupt, dies
+below a floor. No trade-off curves, no per-genotype death law. The critical
+resource level R* = rent/earnings, the famine/plenty selection asymmetry, and
+the whole trade-off structure are <b>computed by the world</b> from the
+conservation law. Parameters were found by <b>search over price-space</b>
+(theory coordinates; 4/48 candidates passed the battery: survival,
+bidirectional selection, variance maintenance, R*-straddling weather),
+certified 20/20 seeds. The gene pool visibly breathes with the ~1000-tick
+storm clock — <a href="worlds-evolution.html#E2">film + histogram
+timeline</a>. Unlike E1, the selection clock now fits INSIDE contract
+horizons (S3/S4 are era-scale).</p>
+<table>
+<tr><th class="l">reference (E2, seed 0)</th><th>prediction</th></tr>
+<tr><td class="l meta">storm-phase oracle (dist / point)</td><td class="meta"><b>0.974</b> / 0.969</td></tr>
+<tr><td class="l meta">null / persistence / tail</td><td class="meta">0.25 / 0.23 / 0.17</td></tr>
+<tr><td class="l">frontier</td><td>running</td></tr>
+</table>
+
 <h2>What's next on the evolution track</h2>
 <ul>
-<li>E2 candidate: "enzyme economics" — evolvable biochemistry where
-trade-offs are theorems of conservation laws instead of authored curves
-(DESIGN v0.14), parameters found by search with the certification battery as
-the objective;</li>
+<li>E2 frontier validation (running) — the oracle gap will tell whether
+conservation-law worlds are frontier-hard;</li>
 <li>evolutionary preparation contracts (breed a target genotype);</li>
-<li>n≥5 seed statistics on E1.</li>
+<li>n≥5 seed statistics on E1/E2.</li>
 </ul>
 """
 

@@ -42,3 +42,17 @@ screen — document the screen as part of the benchmark's design provenance.
 Natural pairing: v0.14 enzyme economics (few linear prices, emergent regime
 diagrams) + this screen = scalable world search. Related: IDEAS "automated
 world search" thread.
+
+
+## Winner-flip worlds (B3 v2 candidates, parked 2026-02-16)
+
+The ecowave2 probe showed rain-richness produces competitive exclusion, not
+selection flips, under kill-rate trade-offs; and FHN anode-break inversion
+makes "poison = famine" false in wave-fed worlds. Candidate fixes for a real
+selection-by-weather world: (a) birth-rate trade-off (fast-breeder wins rich
+CONSTANT rain; stress-tolerator wins intermittent rain — r/K selection
+proper), needs per-variant growth-rate laws, not just death rates; (b) rain
+shadows: pacemaker geometry creates permanently dry refugia where only the
+frugal variant persists — winner becomes a GEOGRAPHY question; (c) driven
+Turing switch: wave frequency sets which variant's preferred resource band
+is replenished. All need probe campaigns before engine work.

@@ -1229,3 +1229,31 @@ Site restructure (user direction), no engine changes:
 Next (user-approved): E2 (enzyme economics, parameter search screened by the
 certification battery) and B3 (selection-by-wave-regime) — with the new film
 infrastructure available to showcase their emergence for review.
+
+
+---
+
+# Addendum 27 (2026-02-16): E2 enzyme economics ships (v0.11.0); B3 probe campaign parks it
+
+E2 (reaction="enzyme") is live: the only authored biology is a price list
+(income ∝ gene·substrate, rent ∝ gene, finite larder, bankruptcy, viability
+floor) — the critical resource R* = rent/earnings, the famine/plenty
+selection asymmetry, and the entire trade-off structure are THEOREMS of the
+conservation law (DESIGN v0.16). Parameters found by search over price-space
+in theory coordinates (raw-coordinate search failed 0/48; theory-coordinate
+4/48 pass), certified 20/20 seeds. The world breathes: gene pool swings
+frugal↔greedy with the ~1000-tick storm clock, variance regenerating every
+cycle (see the worlds-evolution page film + histogram timeline).
+
+Battery: storm-phase oracle 0.974 (dist) / 0.969 (point); floors null 0.251 /
+tail 0.174 / persistence 0.227. Frontier eval launched (fable, gpt-5.2 × 2
+seeds). E2 note: with 1000-tick eras, era-scale protocols fit in S3/S4
+contract lengths — the selection clock is finally INSIDE the contract
+horizon, unlike E1 where storms outlast most protocols.
+
+B3 (selection by wave regime): fully built and probed, then PARKED (not
+agent-facing). Two honest reasons in DESIGN v0.16: the FHN layer's
+anode-break inversion (negative current makes it rain MORE) breaks the
+famine-era concept, and rich rain produces competitive exclusion of the
+frugal variant rather than a flippable winner. The preset and physics remain
+in-engine as a probe record; winner-flip world designs are parked in IDEAS.

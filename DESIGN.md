@@ -1633,3 +1633,50 @@ emergent multimodality (B2) with smooth law variation (C4) — both are
 legitimately "instance-specific truth the agent must pin down"; the
 distinction (multimodal vs smooth) is visible in the pooled histogram if
 needed, not in A.
+
+
+---
+
+# v0.16 — E2 ships (enzyme economics); B3 parked after probe campaign (2026-02-16)
+
+## E2 (reaction="enzyme") — DESIGN
+
+Authored surface, in full: income = c_max·g·V·R; upkeep = (m0 + m1·g)·V;
+larder E ≤ cap·V; deficit burns tissue (V -= deficit/0.05); V < 0.05 dies;
+colonization copies dominant-neighbor genotype + N(0, mut); storms multiply
+regen by depth on a ~1000-tick alienized cycle; ports multiply regen ±0.8
+(same fertilize/poison interface as B/E tracks). NO trade-off curves, NO
+per-genotype death law: k is constant. Everything E0/E1 authored as curve
+shapes is now computed by the ledger:
+  R* = m1/c_max  (emergent critical resource);  net(g) = V·(g·(c_max·R−m1)−m0)
+  → greed pays iff local R > R*; famine bankrupts the greedy first; the
+  gene pool oscillates with the storm clock (verified: mean_g swings
+  0.2-0.35 ↔ 0.8-0.95 across phases with variance regenerating each cycle).
+
+PARAMETERS BY SEARCH, not design (user's screening principle): 48 candidates
+sampled in THEORY coordinates (R*_target, m0/m1, c_max, cap, depth); battery =
+survival ∧ bidirectional phase-conditioned selection ∧ variance maintenance ∧
+R*-straddled-by-weather. v1 raw-coordinate search: 0/48 pass (extinct or
+monotone). v2 theory-coordinate search: 4/48 pass; winner c_max=.0191,
+m0=.00209, m1=.0094, cap=.105, depth=.13 (R*=.49). Search coordinates matter:
+sample where the theory says the physics lives. Certify (engine): alive_frac
+≥ .08 all spans ∧ mean sd_g ≥ .06 ∧ mean_g range > .05 — 20/20 seeds.
+Settle = 10k substeps (~2.5 storm cycles): worlds arrive climate-adapted.
+
+Readout: density + G·V "metabolic stain" mix (same convention as E0/E1).
+Battery: storm-phase-aware oracle dist 0.974 / point 0.969; floors: null
+0.251, tail 0.174, persistence 0.227. Oracle gap will be measured vs frontier.
+
+## B3 (reaction="ecowave2") — PARKED, preset kept as probe record
+
+Built: two-variant ecology (B0 trade-off) + wave-fed rain (B2), S5
+winner-boundary contracts, full engine plumbing. Probe campaign findings:
+(1) ANODE-BREAK INVERSION: sustained negative current RAISES wave rate in the
+FHN layer (rebound excitation) — "famine" drives make it rain harder; poison
+is not famine in a wave-fed world. (2) CSR-like exclusion: rich rain lets the
+greedy variant overrun the frugal (competitive exclusion), opposite of the
+intended selection story; soft-k2 climates coexist but no era protocol
+demonstrated a winner FLIP (frugal extinctions only, from wave-shadow
+geometry). A winner-flip world needs either birth-rate-based trade-offs
+(fast-breeder vs stress-tolerator) or spatially structured rain shadows as
+refugia — parked to IDEAS; taskset does not expose B3.
