@@ -72,3 +72,27 @@ Early observations (T+~40min):
   with linear price on top of the cycles; L4 = mean genotype; tests stacking via a
   DIFFERENT coupling than fire-forest's succession: evolution-on-oscillator vs
   competition-on-oscillator). Two parallel stacking experiments now running.
+
+
+### slime-lifecycle — scorecard T+~6h, AUDIT PASS (third certified; cleanest top law)
+- 92 runs logged; c30 winner. Fresh seeds 41/42: period 2330, switch r2 .997-.999,
+  seps 7.7/11.7 — reproduced. G3 out-of-grid AUDIT (dose-preserving path, T_fam=1300/
+  6500): predicted within 1-2% by their analytic law period=0.695/rho+405 (which they
+  DERIVED from famine-length integration — the top law is literally solvable).
+- AUDIT LESSON (process): G3 response curves live on theory-coordinate PATHS (their
+  rho sweep co-varies d0 to hold famine dose constant). My naive rho-only variation
+  broke the world (no cycles). Controller audits must follow the searcher's path
+  convention -> added to audit protocol.
+- Process notes: 13 failed mechanism versions (v3-v13 froze into permanent towers)
+  before the germination-dispersal commitment fix — deep local iteration, exactly
+  what the subagent layer is for (H4 support). Found+fixed a mass-creation bug in
+  advect+diffuse clipping (40x mass!) — numerical honesty. Controls prove the
+  lifecycle is RESCUED by multicellularity (chi_a=0 crashes to V~0.002): the L2
+  layer is load-bearing, not decorative.
+- Controller action: ROUND 2 issued — CHEATER EVOLUTION (Dicty social evolution:
+  heritable cooperativeness, relay cost private, aggregation benefit shared,
+  assortment by clonal growth). Third stacking-coupling type: social-evolution-on-
+  lifecycle vs succession-on-clock (fire) and evo-on-cycles (trophic).
+
+### Round-1 stacking experiments now running (the scaling question, three couplings)
+fire-forest+succession | trophic-tower+eco-evo | slime-lifecycle+cheaters
