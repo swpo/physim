@@ -1191,3 +1191,41 @@ calibration-rep spread as Gaussian quantiles)
    gap to frontier 0.45-0.63 — B2 is now clearly the hardest life world and
    second overall behind C4.
 4. Track order under CRPS: C4 > B2 > B0 ~ E1 > D4 > C2/C3 > B1/C0/C1.
+
+
+---
+
+# Addendum 26 (2026-02-16): documentation day — track subpages, films, scoring visuals
+
+Site restructure (user direction), no engine changes:
+
+1. WORLDS: docs/worlds.html is now a compact hub (shared machinery, the idea,
+   agent interface, track cards); each track got its own page with god-view
+   FILMS of the dynamics (animated gifs rendered from the real engine, seed 0):
+   - worlds-bulk.html: D4 film — global reset, single-region flip, hysteresis
+     hold + fatigue pushback;
+   - worlds-chemistry.html: C2 drift film; C4 film — natural pacemaker vs
+     port-driven competing pacemaker, collision fronts, release;
+   - worlds-life.html: B0 film — coexistence → poison era → greedy extinction
+     persists after release; B2 film — waves water the ecology (rain trails);
+   - worlds-evolution.html: E0 film — colony mosaic bleaching toward frugal
+     under poison; E1 film — fertilize de-adapts, storm cycle re-selects
+     (gene pool tracking climate with a lag); + genotype-distribution
+     timeline panel (variance persistence via mutation-selection balance).
+   Films: 7 gifs, ~18 MB total, quantized 128 colors, lazy-loaded.
+2. RESULTS: one page per track now — results-evolution.html split out of the
+   life page (which is now ecology-only); nav updated everywhere.
+3. SCORING VISUALS (docs/scoring.html): three figures generated from real
+   machinery (probes/scoring_figs.py):
+   - bimodal-contract figure: truth histogram + three answers with their
+     actual crps_accuracy scores (mean 0.39 / mode 0.49 / honest 1.00) and
+     the CDF-area picture of CRPS;
+   - reference-ladder bar chart on B2 (null 0.32 → tail 0.42 → frontier
+     0.37/0.53 → point oracle 0.92 → distributional oracle 0.975);
+   - adequacy scatter (A ratio vs CRPS gap) for B2/C4/D2 from
+     probes/adequacy_cert.py live numbers.
+4. ROLLOUTS: rollouts-life.html gallery added (B/E traces).
+
+Next (user-approved): E2 (enzyme economics, parameter search screened by the
+certification battery) and B3 (selection-by-wave-regime) — with the new film
+infrastructure available to showcase their emergence for review.

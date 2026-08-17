@@ -26,6 +26,8 @@ th { background: #f6f8fa; }
 td.l, th.l { text-align: left; }
 .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.panel { margin: 16px 0; } .panel img { max-width: 100%; height: auto;
+        border: 1px solid #e1e4e8; border-radius: 6px; }
 .good { color: #1a7f37; font-weight: 600; } .bad { color: #cf222e; }
 .meta { color: #57606a; font-size: 13px; }
 code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
@@ -35,14 +37,14 @@ nav a { margin-right: 14px; }
 """
 
 NAV = """<nav>
-<a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
-<a href="results-bulk.html">bulk</a> ·
-<a href="results-chemistry.html">chemistry</a> ·
-<a href="results-life.html">life</a> ·
-<a href="worlds.html">the worlds</a> ·
+<a href="index.html">home</a> · <a href="results.html"><b>results</b></a>
+(<a href="results-bulk.html">D</a> ·
+<a href="results-chemistry.html">C</a> ·
+<a href="results-life.html">B</a> ·
+<a href="results-evolution.html">E</a>) ·
+<a href="worlds.html">worlds</a> ·
 <a href="scoring.html">scoring</a> ·
-<a href="rollouts-bulk.html">rollouts: bulk</a> ·
-<a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
+<a href="rollouts-bulk.html">rollouts</a> ·
 <a href="https://github.com/swpo/physim">github</a> ·
 <a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
 </nav>"""
@@ -70,8 +72,9 @@ sensors, replayed against ground truth). Since v0.10.0 prediction is scored
 uncertainty and multimodal structure pay; <a href="scoring.html">how scoring
 works</a>). Four world tracks:
 <a href="results-bulk.html">bulk matter</a> (D0–D4),
-<a href="results-chemistry.html">chemistry</a> (C0–C4), and the life tracks —
-<a href="results-life.html">ecology (B) + evolution (E)</a>.</p>
+<a href="results-chemistry.html">chemistry</a> (C0–C4),
+<a href="results-life.html">ecology</a> (B0–B2),
+<a href="results-evolution.html">evolution</a> (E0–E1).</p>
 
 <h2>Headline results (2026-02)</h2>
 <table>
@@ -379,13 +382,13 @@ and the <a href="results-life.html">life-tracks page</a> for B/E results.</p>
 
 
 LIFE = """
-<h1>Results — life tracks: ecology (B) and evolution (E)</h1>
+<h1>Results — ecology track (B)</h1>
 <p class="note">B-track worlds are <b>ecosystems</b> (organisms, resources,
-competition) built on the same lattice-field engine as chemistry; E-track
-worlds add <b>heredity</b> — a genotype field that new tissue copies from its
-parent, with mutation, making natural selection possible as world physics.
-Agents still see only anonymous ports and sensors.
-<a href="worlds.html">World guide</a> · <a href="scoring.html">scoring</a>.</p>
+competition) built on the same lattice-field engine as chemistry. Agents see
+only anonymous ports and sensors; that two kinds of life exist is itself a
+discovery. <a href="worlds-life.html">World guide</a> ·
+<a href="scoring.html">scoring</a> ·
+<a href="results-evolution.html">evolution track results →</a></p>
 
 <h2>B0 — the biology track opens (2026-02-14, v0.7.0)</h2>
 <p class="note">An <b>ecosystem</b>: two organism variants (greedy-fast vs
@@ -464,6 +467,23 @@ with a smooth one (ecology) and the frontier gap returns without scaling.
 Hardness lives in coupling structure, not size.</li>
 </ul>
 
+<h2>What's next on the ecology track</h2>
+<ul>
+<li>B3 candidate: two variants + waves — selection whose winner depends on
+the wave regime;</li>
+<li>reproduction-rate contracts; spatial refugia geography;</li>
+<li>n≥5 seed statistics across B frontier rows.</li>
+</ul>
+"""
+EVO = """
+<h1>Results — evolution track (E)</h1>
+<p class="note">E-track worlds add <b>heredity</b> to the ecology engine: a
+genotype field that new tissue copies from its parent (with mutation),
+making natural selection possible as world physics rather than as a scripted
+event. The world guide's <a href="worlds-evolution.html">evolution page</a>
+shows films of the gene pool evolving.
+<a href="scoring.html">Scoring</a>.</p>
+
 <h2>E0/E1 — the evolution track (corrected physics, v0.9.0)</h2>
 <p class="note">One species + resource + a <b>heritable trait field</b>:
 new tissue copies its parent tissue's genotype g (with mutation at growth
@@ -506,16 +526,18 @@ variance — the breeder's equation runs out of fuel). Micro shape ≠ macro
 shape; now tracked per rung.</li>
 </ul>
 
-<h2>What's next on the life tracks</h2>
+<h2>What's next on the evolution track</h2>
 <ul>
-<li>E2 candidate: "enzyme economics" — evolvable biochemistry where trade-offs
-are theorems of conservation laws instead of authored curves (DESIGN v0.14),
-with parameter-search screening;</li>
-<li>B3 candidates: two variants + waves (selection whose winner depends on
-wave regime); reproduction-rate contracts; spatial refugia geography;</li>
-<li>n≥5 seed statistics across B/E frontier rows.</li>
+<li>E2 candidate: "enzyme economics" — evolvable biochemistry where
+trade-offs are theorems of conservation laws instead of authored curves
+(DESIGN v0.14), parameters found by search with the certification battery as
+the objective;</li>
+<li>evolutionary preparation contracts (breed a target genotype);</li>
+<li>n≥5 seed statistics on E1.</li>
 </ul>
 """
+
+
 
 SCORING = """
 <h1>How physim scores an AI scientist</h1>
@@ -568,6 +590,8 @@ forecaster pays for irreducible spread. So we subtract the <b>ensemble's own
 floor</b> — the leave-one-out CRPS of the truth ensemble predicting itself —
 and map through an exponential with a per-contract <b>scale</b>:</p>
 <pre><code>accuracy = exp( − max(QS(F) − QS_floor, 0) / scale )</code></pre>
+<div class="panel"><img src="assets/scoring_crps_bimodal.png"
+alt="CRPS on a bimodal contract"/></div>
 <p>Properties, all verified in code:</p>
 <table>
 <tr><th class="l">situation</th><th class="l">behavior</th></tr>
@@ -634,6 +658,9 @@ once on the true world and reports what it saw — the measurement-noise
 ceiling</td></tr>
 </table>
 
+<div class="panel"><img src="assets/scoring_ladder_b2.png"
+alt="reference ladder on B2"/></div>
+
 <h2>8. Measurement-adequacy certification (god-side audit, v0.10.0)</h2>
 <p>Could the contracts <i>miss</i> the science? If an emergent property (which
 species wins; whether a boundary closes) never moves any contract's truth,
@@ -649,6 +676,13 @@ instance): the CRPS advantage of an instance-aware oracle over a pooled
 "climatology" answerer tracks A with Spearman ρ = 1.00 (D2: 0.90) — the
 proper scoring rule <i>recovers</i> the audit signal, so we can lean on CRPS
 generally and keep A as the cheap certificate.</p>
+<div class="panel"><img src="assets/scoring_adequacy.png"
+alt="adequacy ratio vs CRPS gap"/></div>
+<p class="meta">Left to right: B2 (contracts span uninformative→decisive;
+the gap tracks A over three decades), C4 (every contract is instance-heavy —
+alienized wave parameters — so both measures saturate together), D2 (two
+contracts ask instance-invariant questions and correctly score A≈0, gap≈0).
+Live numbers from <code>probes/adequacy_cert.py</code>.</p>
 
 <h2>9. What the reward is NOT</h2>
 <ul>
@@ -673,7 +707,8 @@ def build() -> list[str]:
         ("results.html", "physim results", OVERVIEW),
         ("results-bulk.html", "physim results — bulk-matter track", BULK),
         ("results-chemistry.html", "physim results — chemistry track", CHEM),
-        ("results-life.html", "physim results — life tracks (ecology + evolution)", LIFE),
+        ("results-life.html", "physim results — ecology track", LIFE),
+        ("results-evolution.html", "physim results — evolution track", EVO),
         ("scoring.html", "physim — how scoring works", SCORING),
     ]:
         p = docs / name

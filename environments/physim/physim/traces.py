@@ -572,10 +572,11 @@ code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; }
 </style></head><body>
 <nav style="font-size:14px;margin-bottom:18px;">
 <a href="index.html">home</a> · <a href="results.html">results</a> ·
-<a href="worlds.html">the worlds</a> ·
+<a href="worlds.html">worlds</a> ·
 <a href="scoring.html">scoring</a> ·
-<a href="rollouts-bulk.html"><b>rollouts: bulk</b></a> ·
-<a href="rollouts-chemistry.html"><b>rollouts: chemistry</b></a> ·
+rollouts: <a href="rollouts-bulk.html"><b>bulk</b></a> ·
+<a href="rollouts-chemistry.html"><b>chemistry</b></a> ·
+<a href="rollouts-life.html"><b>life</b></a> ·
 <a href="https://github.com/swpo/physim">github</a></nav>
 <h1>physim rollouts — what the agents actually did</h1>
 <p class="note">Each rollout below is reconstructed from its complete trace.
@@ -604,6 +605,8 @@ def build(out_path="docs/rollouts.html",
         if track == "bulk" and not diff.startswith("D"):
             continue
         if track == "chemistry" and not diff.startswith("C"):
+            continue
+        if track == "life" and not (diff.startswith("B") or diff.startswith("E")):
             continue
         groups[(r["pair"], diff)].append(r)
     parts = [HEAD]
@@ -647,3 +650,4 @@ if __name__ == "__main__":
     else:
         print("wrote", build("docs/rollouts-bulk.html", max_per_pair=mpp, track="bulk"))
         print("wrote", build("docs/rollouts-chemistry.html", max_per_pair=mpp, track="chemistry"))
+        print("wrote", build("docs/rollouts-life.html", max_per_pair=mpp, track="life"))

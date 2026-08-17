@@ -1,0 +1,93 @@
+<!doctype html><html><head><meta charset='utf-8'/><title>physim results — evolution track</title>
+<style>
+body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+       max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+h1 { font-size: 25px; } h2 { font-size: 20px; margin-top: 36px;
+     border-bottom: 2px solid #eee; padding-bottom: 6px; }
+h3 { font-size: 16px; margin-top: 24px; }
+table { border-collapse: collapse; font-size: 13.5px; margin: 10px 0; }
+td, th { border: 1px solid #d0d7de; padding: 4px 10px; text-align: center; }
+th { background: #f6f8fa; }
+td.l, th.l { text-align: left; }
+.note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+        border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.panel { margin: 16px 0; } .panel img { max-width: 100%; height: auto;
+        border: 1px solid #e1e4e8; border-radius: 6px; }
+.good { color: #1a7f37; font-weight: 600; } .bad { color: #cf222e; }
+.meta { color: #57606a; font-size: 13px; }
+code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+nav { font-size: 14px; margin-bottom: 18px; }
+nav a { margin-right: 14px; }
+</style>
+</head><body><nav>
+<a href="index.html">home</a> · <a href="results.html"><b>results</b></a>
+(<a href="results-bulk.html">D</a> ·
+<a href="results-chemistry.html">C</a> ·
+<a href="results-life.html">B</a> ·
+<a href="results-evolution.html">E</a>) ·
+<a href="worlds.html">worlds</a> ·
+<a href="scoring.html">scoring</a> ·
+<a href="rollouts-bulk.html">rollouts</a> ·
+<a href="https://github.com/swpo/physim">github</a> ·
+<a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
+</nav>
+<h1>Results — evolution track (E)</h1>
+<p class="note">E-track worlds add <b>heredity</b> to the ecology engine: a
+genotype field that new tissue copies from its parent (with mutation),
+making natural selection possible as world physics rather than as a scripted
+event. The world guide's <a href="worlds-evolution.html">evolution page</a>
+shows films of the gene pool evolving.
+<a href="scoring.html">Scoring</a>.</p>
+
+<h2>E0/E1 — the evolution track (corrected physics, v0.9.0)</h2>
+<p class="note">One species + resource + a <b>heritable trait field</b>:
+new tissue copies its parent tissue's genotype g (with mutation at growth
+sites), and g sets each cell's consumption/robustness through a fixed linear
+"biochemistry" map. Nothing selects explicitly — yet sustained scarcity
+shifts the population's genotype toward frugality and the population
+re-expands <i>at the adapted genotype</i>: natural selection, emergent,
+with genetic path dependence (a second famine meets a different population
+than the first).</p>
+<p class="note"><b>Correction (2026-02-15):</b> the first E0 release used
+blending inheritance (variance-destroying; Jenkin's 1867 objection, live) and
+its "adaptation" was mostly location-luck survivorship. The physics is fixed
+(particulate copy inheritance — variance persists); blending-era results are
+wiped. <b>E1 (storm world)</b>: the world's own famine cycles drive real,
+verified evolution — populations arrive <i>already adapted</i> to their
+climate (mean genotype ~0.2 vs founder 0.5) and de-/re-adapt under
+port-driven eras.</p>
+<table>
+<tr><th class="l">agent / reference <span class="meta">(CRPS, 2026-02-16 re-run)</span></th><th>prediction</th><th>answers</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.72, 0.51</b></td><td>quantiles</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.68, 0.53</td><td>points</td></tr>
+<tr><td class="l meta">compact storm oracle (~65 lines + honest spread)</td><td class="meta"><b>0.934</b> (0.92 point-only)</td><td class="meta">quantiles</td></tr>
+<tr><td class="l meta">tail / null</td><td class="meta">0.42 / 0.35</td><td class="meta">points</td></tr>
+</table>
+<p class="meta">Legacy point-scored run (2026-02-15): gpt-5.2 0.57/0.55,
+fable 0.42 and one 0.00 — 112 productive turns, then it ended its session
+without ever answering (unanswered = 0, as the rules state; kept as scored).
+In the CRPS re-run fable answered both seeds. Oracle gap 0.22–0.43: still
+hard-tier-adjacent. fable senses the storm clock ("regime", "period") but no
+agent has discovered adaptation — the storm oracle's edge is exactly the
+storm-phase calibration nobody builds.</p>
+<ul>
+<li><b>Fourth ontology rung</b>: no agent workspace contains any
+evolutionary vocabulary (adapt/select/mutate/trait). Budget use 1–5%:
+era-scale physics (4–7k-tick selection eras) far exceeds what agents explore
+voluntarily — no agent ran a single selection era of its own.</li>
+<li><b>Cross-level map finding</b>: the linear micro genotype→phenotype map
+aggregates to a <i>saturating</i> macro response (selection depletes trait
+variance — the breeder's equation runs out of fuel). Micro shape ≠ macro
+shape; now tracked per rung.</li>
+</ul>
+
+<h2>What's next on the evolution track</h2>
+<ul>
+<li>E2 candidate: "enzyme economics" — evolvable biochemistry where
+trade-offs are theorems of conservation laws instead of authored curves
+(DESIGN v0.14), parameters found by search with the certification battery as
+the objective;</li>
+<li>evolutionary preparation contracts (breed a target genotype);</li>
+<li>n≥5 seed statistics on E1.</li>
+</ul>
+<p class='meta'>Generated by <code>python -m physim.results</code>; numbers from <a href='https://github.com/swpo/physim/blob/main/REPORT.md'>REPORT.md</a> (the running lab log with full methodology).</p></body></html>

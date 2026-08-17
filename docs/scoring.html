@@ -11,6 +11,8 @@ th { background: #f6f8fa; }
 td.l, th.l { text-align: left; }
 .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.panel { margin: 16px 0; } .panel img { max-width: 100%; height: auto;
+        border: 1px solid #e1e4e8; border-radius: 6px; }
 .good { color: #1a7f37; font-weight: 600; } .bad { color: #cf222e; }
 .meta { color: #57606a; font-size: 13px; }
 code { background: #f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
@@ -18,14 +20,14 @@ nav { font-size: 14px; margin-bottom: 18px; }
 nav a { margin-right: 14px; }
 </style>
 </head><body><nav>
-<a href="index.html">home</a> · <a href="results.html"><b>results</b></a> ·
-<a href="results-bulk.html">bulk</a> ·
-<a href="results-chemistry.html">chemistry</a> ·
-<a href="results-life.html">life</a> ·
-<a href="worlds.html">the worlds</a> ·
+<a href="index.html">home</a> · <a href="results.html"><b>results</b></a>
+(<a href="results-bulk.html">D</a> ·
+<a href="results-chemistry.html">C</a> ·
+<a href="results-life.html">B</a> ·
+<a href="results-evolution.html">E</a>) ·
+<a href="worlds.html">worlds</a> ·
 <a href="scoring.html">scoring</a> ·
-<a href="rollouts-bulk.html">rollouts: bulk</a> ·
-<a href="rollouts-chemistry.html">rollouts: chemistry</a> ·
+<a href="rollouts-bulk.html">rollouts</a> ·
 <a href="https://github.com/swpo/physim">github</a> ·
 <a href="https://github.com/swpo/physim/blob/main/REPORT.md">full lab log</a>
 </nav>
@@ -79,6 +81,8 @@ forecaster pays for irreducible spread. So we subtract the <b>ensemble's own
 floor</b> — the leave-one-out CRPS of the truth ensemble predicting itself —
 and map through an exponential with a per-contract <b>scale</b>:</p>
 <pre><code>accuracy = exp( − max(QS(F) − QS_floor, 0) / scale )</code></pre>
+<div class="panel"><img src="assets/scoring_crps_bimodal.png"
+alt="CRPS on a bimodal contract"/></div>
 <p>Properties, all verified in code:</p>
 <table>
 <tr><th class="l">situation</th><th class="l">behavior</th></tr>
@@ -145,6 +149,9 @@ once on the true world and reports what it saw — the measurement-noise
 ceiling</td></tr>
 </table>
 
+<div class="panel"><img src="assets/scoring_ladder_b2.png"
+alt="reference ladder on B2"/></div>
+
 <h2>8. Measurement-adequacy certification (god-side audit, v0.10.0)</h2>
 <p>Could the contracts <i>miss</i> the science? If an emergent property (which
 species wins; whether a boundary closes) never moves any contract's truth,
@@ -160,6 +167,13 @@ instance): the CRPS advantage of an instance-aware oracle over a pooled
 "climatology" answerer tracks A with Spearman ρ = 1.00 (D2: 0.90) — the
 proper scoring rule <i>recovers</i> the audit signal, so we can lean on CRPS
 generally and keep A as the cheap certificate.</p>
+<div class="panel"><img src="assets/scoring_adequacy.png"
+alt="adequacy ratio vs CRPS gap"/></div>
+<p class="meta">Left to right: B2 (contracts span uninformative→decisive;
+the gap tracks A over three decades), C4 (every contract is instance-heavy —
+alienized wave parameters — so both measures saturate together), D2 (two
+contracts ask instance-invariant questions and correctly score A≈0, gap≈0).
+Live numbers from <code>probes/adequacy_cert.py</code>.</p>
 
 <h2>9. What the reward is NOT</h2>
 <ul>
