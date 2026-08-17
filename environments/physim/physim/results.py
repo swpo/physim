@@ -99,6 +99,12 @@ sensor motion</td></tr>
 attractors" (=growth), "trigger → absorbing state" (=death, thresholds
 measured), "immune above σ≈850" (=too big to kill); held-out validation
 mean |err| 0.021 — <a href="rollouts.html">read it in the gallery</a></td></tr>
+<tr><td class="l">Distributional literacy is a <i>conduct</i> trait</td>
+<td class="l">given optional quantile answers under a proper score (CRPS),
+fable used them on 5/5 stochastic-world rollouts, gpt-5.2 on 0/5 — same
+tools, same prompt; the reward now prices honest uncertainty and gpt leaves
+it on the table (e.g. E1: fable 0.72 with quantiles vs its own 0.57 legacy
+point ceiling)</td></tr>
 <tr><td class="l">Harness matters; models differ in <i>conduct</i>, not just skill</td>
 <td class="l">coding harness doubles chat-tier scores (budget → offline fits);
 gemini-3.1-pro satisfices (~12 turns, 1% budget) where fable runs 60–180-turn
@@ -106,14 +112,17 @@ research programs</td></tr>
 </table>
 
 <h2>Current track order by frontier gap (oracle − best agent)</h2>
-<p>C4 (0.5–0.6) &gt; B2 (0.3–0.5) &gt; E1 (0.23–0.38) &gt; D4 (0.3–0.45) &gt;
-B0/C2/C3 (0.1–0.3) &gt; B1/C0/C1 (≈0, saturated or interpolable).</p>
+<p>Under CRPS (2026-02-16 re-runs, distributional oracles):
+C4 (0.5–0.6) &gt; <b>B2 (0.45–0.63)</b> &gt; B0 (0.13–0.31) ≈ E1 (0.22–0.43)
+&gt; D4 (0.3–0.45, point-era) &gt; C2/C3 (0.1–0.3) &gt; B1/C0/C1 (≈0).
+B2's distributional oracle hit 0.975 — its ensembles are wide-but-knowable,
+and the frontier is nowhere near that.</p>
 <p class="note"><b>Scoring upgrade (2026-02-16, v0.10.0):</b> accuracy is now
 a proper distributional score (CRPS vs the truth ensemble, noise-floor
-subtracted). On quasi-deterministic worlds (C/D tracks) it reduces exactly to
-the old point score, so those numbers carry over. On stochastic worlds (B/E
-tracks) point-scored numbers are marked <span class="meta">(legacy)</span>
-until re-run. Details: <a href="scoring.html">scoring page</a>.</p>
+subtracted; answers may include quantiles). On quasi-deterministic worlds
+(C/D tracks) it reduces exactly to the old point score, so those numbers
+carry over. B0/B2/E1 frontier rows were re-run under CRPS on 2026-02-16.
+Details: <a href="scoring.html">scoring page</a>.</p>
 
 <h2>Current leaderboard snapshots</h2>
 <h3>Bulk-matter frontier (D4, tools tier, 5 seeds, prediction reward)</h3>
@@ -387,12 +396,16 @@ carrying capacity; coexistence under a consumption trade-off; and
 extinct while the frugal one inherits the world (verified through the port
 interface: poison 32→0). Certified 6/6 seeds.</p>
 <table>
-<tr><th class="l">agent / reference <span class="meta">(legacy point scoring — CRPS re-run in progress)</span></th><th>prediction</th><th>theory</th></tr>
-<tr><td class="l">claude-fable-5 + claude_code</td><td>0.63, 0.46</td><td>0.41, 0.47</td></tr>
-<tr><td class="l">gpt-5.2 + codex</td><td>0.58, 0.46</td><td>—</td></tr>
-<tr><td class="l meta">compact ecology oracle (~50 lines)</td><td class="meta"><b>0.744</b></td><td class="meta">—</td></tr>
-<tr><td class="l meta">tail / null / persistence</td><td class="meta">0.27 / 0.18 / 0.15</td><td class="meta">—</td></tr>
+<tr><th class="l">agent / reference <span class="meta">(CRPS, 2026-02-16 re-run)</span></th><th>prediction</th><th>answers</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.54, 0.72</b></td><td>quantiles</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.55, 0.49</td><td>points</td></tr>
+<tr><td class="l meta">compact ecology oracle (~50 lines + honest spread)</td><td class="meta"><b>0.845</b> (0.82 point-only)</td><td class="meta">quantiles</td></tr>
+<tr><td class="l meta">tail / null</td><td class="meta">0.33 / 0.22</td><td class="meta">points</td></tr>
 </table>
+<p class="meta">Legacy point-scored run (2026-02-14): fable 0.63/0.46, gpt-5.2
+0.58/0.46, oracle 0.744, floors 0.27/0.18. Same-answer legacy scores in the
+re-run (fable 0.39/0.55, gpt 0.49/0.41) confirm skill is unchanged — CRPS
+lifts honest answers by not charging the world's own noise floor.</p>
 <ul>
 <li><b>Layer-3 ontology gap</b>: no agent workspace contains ANY biological
 vocabulary (population/organism/resource/extinction) — models fit channel
@@ -431,12 +444,17 @@ conduction block and <i>fewer</i> meals (a non-monotonic response that
 breaks interpolation). B2 = C4 (waves) + B0a (carrying capacity), composed —
 each component separately certified.</p>
 <table>
-<tr><th class="l">agent / reference</th><th>prediction</th><th>theory</th></tr>
-<tr><td class="l">claude-fable-5 + claude_code</td><td>0.48, 0.36</td><td>0.52, 0.51</td></tr>
-<tr><td class="l">gpt-5.2 + codex</td><td>0.42, 0.29</td><td>—</td></tr>
-<tr><td class="l meta">compact hybrid oracle (~55 lines)</td><td class="meta"><b>0.795</b></td><td class="meta">—</td></tr>
-<tr><td class="l meta">tail / persistence / null</td><td class="meta">0.35 / 0.29 / 0.28</td><td class="meta">—</td></tr>
+<tr><th class="l">agent / reference <span class="meta">(CRPS, 2026-02-16 re-run)</span></th><th>prediction</th><th>answers</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.53, 0.42</b></td><td>quantiles</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.37, 0.34</td><td>points</td></tr>
+<tr><td class="l meta">compact hybrid oracle (~55 lines + honest spread)</td><td class="meta"><b>0.975</b> (0.92 point-only)</td><td class="meta">quantiles</td></tr>
+<tr><td class="l meta">tail / null</td><td class="meta">0.42 / 0.32</td><td class="meta">points</td></tr>
 </table>
+<p class="meta">Legacy point-scored run (2026-02-14): fable 0.48/0.36, gpt-5.2
+0.42/0.29, oracle 0.795, floors 0.35/0.28. The distributional oracle at 0.975
+shows B2's truth ensembles are wide-but-knowable: an agent that pinned the
+laws AND reported honest spread would nearly close the gap — the frontier
+(≤0.53) is far from that.</p>
 <ul>
 <li>fable's notes contain "wave, pulse, period, <b>rain</b>" — it perceives
 the coupling — yet the pacing stratum (S2) scores 0.04–0.31 for every model:
@@ -464,17 +482,19 @@ verified evolution — populations arrive <i>already adapted</i> to their
 climate (mean genotype ~0.2 vs founder 0.5) and de-/re-adapt under
 port-driven eras.</p>
 <table>
-<tr><th class="l">reference (E1, corrected physics)</th><th>prediction</th></tr>
-<tr><td class="l meta">compact oracle (~65 lines)</td><td class="meta"><b>0.805</b></td></tr>
-<tr><td class="l meta">persistence / tail / null</td><td class="meta">0.43 / 0.35 / 0.28</td></tr>
-<tr><td class="l">gpt-5.2 + codex</td><td>0.57, 0.55</td></tr>
-<tr><td class="l">claude-fable-5 + claude_code</td><td>0.42, 0.00†</td></tr>
+<tr><th class="l">agent / reference <span class="meta">(CRPS, 2026-02-16 re-run)</span></th><th>prediction</th><th>answers</th></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.72, 0.51</b></td><td>quantiles</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.68, 0.53</td><td>points</td></tr>
+<tr><td class="l meta">compact storm oracle (~65 lines + honest spread)</td><td class="meta"><b>0.934</b> (0.92 point-only)</td><td class="meta">quantiles</td></tr>
+<tr><td class="l meta">tail / null</td><td class="meta">0.42 / 0.35</td><td class="meta">points</td></tr>
 </table>
-<p class="meta">†112 productive turns, then ended its session without ever
-answering the contracts (unanswered = 0, as stated in the rules). E1 sits
-hard-tier-adjacent: oracle gap 0.23–0.38. fable's notes contain "regime" and
-"period" — the storm clock is sensed but never converted into a predictive
-theory, and no agent discovered adaptation.</p>
+<p class="meta">Legacy point-scored run (2026-02-15): gpt-5.2 0.57/0.55,
+fable 0.42 and one 0.00 — 112 productive turns, then it ended its session
+without ever answering (unanswered = 0, as the rules state; kept as scored).
+In the CRPS re-run fable answered both seeds. Oracle gap 0.22–0.43: still
+hard-tier-adjacent. fable senses the storm clock ("regime", "period") but no
+agent has discovered adaptation — the storm oracle's edge is exactly the
+storm-phase calibration nobody builds.</p>
 <ul>
 <li><b>Fourth ontology rung</b>: no agent workspace contains any
 evolutionary vocabulary (adapt/select/mutate/trait). Budget use 1–5%:

@@ -1149,3 +1149,45 @@ mention) — on the world with winner bimodality, the model immediately used
 the distributional channel. CRPS > legacy for honest point answers is the
 intended fairness fix (legacy charged agents for the world's own noise
 floor; CRPS charges only excess over it). End-to-end schema flow validated.
+
+
+---
+
+# Addendum 25 (2026-02-16): CRPS re-runs land + site restructure
+
+## Site
+- New docs/scoring.html: complete scoring mechanics (contracts, ensembles,
+  CRPS + noise-floor subtraction + verified-properties table, calibration,
+  preparation, theories, reference ladder, adequacy audit, non-rewards).
+- New docs/results-life.html: B/E tracks split out of the chemistry page.
+- Nav/index/worlds/overview updated; results pages are the curated view.
+
+## Distributional oracle + floor battery (seed 0, quantile answers = own
+calibration-rep spread as Gaussian quantiles)
+
+| world | oracle (dist) | oracle (point) | oracle (legacy) | tail | null |
+|---|---|---|---|---|---|
+| B0 | 0.845 | 0.820 | 0.779 | 0.33 | 0.22 |
+| B2 | 0.975 | 0.917 | 0.840 | 0.42 | 0.32 |
+| E1 | 0.934 | 0.916 | 0.818 | 0.42 | 0.35 |
+
+## Frontier re-runs (2 seeds each, CRPS; legacy metric in parens)
+
+| world | fable + claude_code | gpt-5.2 + codex |
+|---|---|---|
+| B0 | 0.54 (0.39), 0.72 (0.55) | 0.55 (0.49), 0.49 (0.41) |
+| B2 | 0.53 (0.39), 0.42 (0.31) [prev turn] | 0.37 (0.32), 0.34 (0.30) |
+| E1 | 0.72 (0.57), 0.51 (0.31) | 0.68 (0.57), 0.53 (0.48) |
+
+## Findings
+1. QUANTILE USE IS A CONDUCT TRAIT: fable answered with quantiles on 5/5
+   stochastic-world rollouts; gpt-5.2 on 0/5 — same tool schema, same prompt
+   sentence. The proper score now prices honest uncertainty; gpt leaves it
+   on the table.
+2. CRPS lifts honest answers ~0.05-0.20 over their legacy score (noise-floor
+   fairness), ordering within worlds mostly preserved; E1 fable answered
+   both seeds this time (last run's answer-or-zero was conduct, not env).
+3. B2's distributional oracle (0.975) reveals wide-but-knowable ensembles:
+   gap to frontier 0.45-0.63 — B2 is now clearly the hardest life world and
+   second overall behind C4.
+4. Track order under CRPS: C4 > B2 > B0 ~ E1 > D4 > C2/C3 > B1/C0/C1.
