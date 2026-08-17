@@ -1257,3 +1257,28 @@ anode-break inversion (negative current makes it rain MORE) breaks the
 famine-era concept, and rich rain produces competitive exclusion of the
 frugal variant rather than a flippable winner. The preset and physics remain
 in-engine as a probe record; winner-flip world designs are parked in IDEAS.
+
+
+---
+
+# Addendum 28 (2026-02-16): E2 frontier — fast clocks forgive; the fifth rung holds
+
+E2 frontier (2 seeds each, CRPS): fable 0.85/0.71 (quantiles, again 5/5
+conduct), gpt-5.2 0.74/0.65 (points). Oracle gap 0.13-0.26 — mid-tier.
+
+Diagnosis: E2's era clock (~1000 ticks, chosen so selection fits inside
+contract horizons) also fits inside AGENT experiments: fable discovered the
+storm cycle as a bistable A/B state machine ("FLIPS B->A", per-state
+timescales, release undershoot) and interpolated the climate without any
+evolutionary ontology. Nobody wrote heredity/selection/mutation vocabulary
+(fable's "adaptation" is sensory undershoot). The fifth ontology rung
+(genes) is intact — but a good climate model prices most E2 contracts.
+
+Design law recorded: CLOCK SPEED TRADES DISCOVERABILITY AGAINST DIFFICULTY.
+Fast selection clocks make evolution observable (and film-able) but
+interpolable; slow clocks (E1: gap 0.22-0.43) hide the mechanism outside
+protocol horizons and punish climate-only models. The E-track now brackets
+the tradeoff: E1 (slow, hard) / E2 (fast, mid). A future E3 could put the
+selection response just BEYOND single-contract horizons but within
+multi-contract reach — the sweet spot where only mechanistic (genetic)
+models transfer.

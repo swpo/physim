@@ -99,8 +99,18 @@ horizons (S3/S4 are era-scale).</p>
 <tr><th class="l">reference (E2, seed 0)</th><th>prediction</th></tr>
 <tr><td class="l meta">storm-phase oracle (dist / point)</td><td class="meta"><b>0.974</b> / 0.969</td></tr>
 <tr><td class="l meta">null / persistence / tail</td><td class="meta">0.25 / 0.23 / 0.17</td></tr>
-<tr><td class="l">frontier</td><td>running</td></tr>
+<tr><td class="l">claude-fable-5 + claude_code</td><td><b>0.85, 0.71</b> (quantiles)</td></tr>
+<tr><td class="l">gpt-5.2 + codex</td><td>0.74, 0.65 (points)</td></tr>
 </table>
+<p class="meta">Oracle gap 0.13–0.26: mid-tier, and a finding in itself —
+E2's fast selection clock (~1000-tick eras, chosen so eras fit inside
+contracts) makes the world <i>easier</i> than E1: fable's notes model the
+storm cycle as a bistable A/B state machine ("FLIPS B→A", rise/release
+timescales per state) and interpolate it well without any evolutionary
+ontology. The gene pool is still invisible — no heredity/selection/mutation
+vocabulary in any workspace (the "adaptation" in fable's notes is sensory
+undershoot, not biology) — but a good enough climate model prices most
+contracts. Slow clocks (E1) punish ignorance harder than fast ones.</p>
 
 <h2>What's next on the evolution track</h2>
 <ul>
