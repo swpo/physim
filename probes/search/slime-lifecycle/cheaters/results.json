@@ -1,0 +1,1095 @@
+{
+ "world": "slime-lifecycle/cheaters \u2014 social evolution on the certified c30 lifecycle",
+ "date": "2026-02-18",
+ "mechanism": {
+  "inheritance": "K=9-11 discrete strain bins c_k in [0,1]; growth allocated by local composition (particulate/clonal); mutation mu moves fraction of NEW growth to adjacent bins; NO trait averaging",
+  "signal_cost": "emitting sites burn biomass exp(-lam_c*c_k) per firing tick \u2014 cooperators pay, cheaters free-ride",
+  "shared_benefit": "crowding protection, chemotaxis, dispersal all trait-blind",
+  "emission": "a_s*sat(Vc), Vc=sum(c_k*VK_k): pure-cheater mounds are silent (public-good failure)",
+  "assortment": "founder bottleneck at germination: each waking mound resamples composition ~ Dirichlet(N_f*share) (spore-head sampling, strain-blind, mass-conserving) + local dispersal (chi_d, Dv_germ) -> clonal neighborhoods",
+  "no_fitness_function": true
+ },
+ "canonical_params": {
+  "chi_d": 6.0,
+  "Dv_germ": 0.14,
+  "T_wake": 300,
+  "Dv_fed": 0.04,
+  "N_f": 1.5,
+  "V_found": 0.3,
+  "K": 9,
+  "mu": 0.01,
+  "lam_c": 0.002,
+  "base": "c30 (certified)"
+ },
+ "all_runs": {
+  "C_lc0005": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.419498842747854,
+   "sd_eq": 0.2898821754450085,
+   "c_iqr": [
+    0.41849800752063293,
+    0.4205551606017633
+   ],
+   "v_end": 0.5915514804047604,
+   "T": 99950
+  },
+  "C_lc001": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.3889514562653111,
+   "sd_eq": 0.291055648112859,
+   "c_iqr": [
+    0.3886724843974205,
+    0.38995546330353004
+   ],
+   "v_end": 0.4643176664499449,
+   "T": 99950
+  },
+  "C_lc002": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.08118094564772088,
+   "sd_eq": 0.19515358953041967,
+   "c_iqr": [
+    0.07561940650858412,
+    0.08566102905081528
+   ],
+   "v_end": 0.23446874882346658,
+   "T": 99950
+  },
+  "C_lc004": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.212143539754284,
+   "sd_eq": 0.2799734626788789,
+   "c_iqr": [
+    0.19722783256146795,
+    0.22589895122783304
+   ],
+   "v_end": 0.4983486194387403,
+   "T": 99950
+  },
+  "C_mu003": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.379959511861933,
+   "sd_eq": 0.2514212638220721,
+   "c_iqr": [
+    0.37593559036388624,
+    0.38391993198145236
+   ],
+   "v_end": 0.5144820098682737,
+   "T": 99950
+  },
+  "C_mu03": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.746,
+   "agg_lo_frac": 0.208,
+   "c_eq": 0.24961317512878783,
+   "sd_eq": 0.04939434998068554,
+   "c_iqr": [
+    0.24158910965956995,
+    0.2824706012602989
+   ],
+   "v_end": 0.47195217487248153,
+   "T": 99950
+  },
+  "C_mu10": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.4572355882171684,
+   "sd_eq": 0.3216151015877765,
+   "c_iqr": [
+    0.4531818385771744,
+    0.4604497365869878
+   ],
+   "v_end": 0.5491558788643567,
+   "T": 99950
+  },
+  "Glc001_s0": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.1508894237396119,
+   "sd_eq": 0.09943512672880542,
+   "c_iqr": [
+    0.14971968324026105,
+    0.15218947913211966
+   ],
+   "v_end": 0.20141664483048993,
+   "T": 99950
+  },
+  "Glc001_s1": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.12408857922125095,
+   "sd_eq": 0.10374593842040705,
+   "c_iqr": [
+    0.12309647561838638,
+    0.12528694112847538
+   ],
+   "v_end": 0.05665727473029557,
+   "T": 99950
+  },
+  "Glc001_s2": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.79,
+   "agg_lo_frac": 0.182,
+   "c_eq": 0.8858541682347537,
+   "sd_eq": 0.03663096046146479,
+   "c_iqr": [
+    0.8776151005451707,
+    0.9040675187353793
+   ],
+   "v_end": 0.3344167147117578,
+   "T": 99950
+  },
+  "Glc004_s0": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.14554343244140294,
+   "sd_eq": 0.25254703296275305,
+   "c_iqr": [
+    0.14137105200667766,
+    0.14897412668298135
+   ],
+   "v_end": 0.04844479386677587,
+   "T": 99950
+  },
+  "Glc004_s1": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.039689355817671745,
+   "sd_eq": 0.09409170345083463,
+   "c_iqr": [
+    0.03352088450443594,
+    0.04461234968659593
+   ],
+   "v_end": 0.07124988744552492,
+   "T": 99950
+  },
+  "Glc004_s2": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.10975989219269687,
+   "sd_eq": 0.1411496800181604,
+   "c_iqr": [
+    0.10547684147116712,
+    0.11320115235583117
+   ],
+   "v_end": 0.06323499471740032,
+   "T": 99950
+  },
+  "M1hi_s0": {
+   "regime": "cycling",
+   "on_q": 7,
+   "agg_hi_frac": 0.77,
+   "agg_lo_frac": 0.18333333333333332,
+   "c_eq": 0.2669516497307406,
+   "sd_eq": 0.043229094000601535,
+   "c_iqr": [
+    0.26173995474036527,
+    0.3006408016969754
+   ],
+   "v_end": 0.3857189640984492,
+   "T": 59950
+  },
+  "M1hi_s1": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.2657030346010002,
+   "sd_eq": 0.30867138144691597,
+   "c_iqr": [
+    0.2651461768697178,
+    0.26733824915344795
+   ],
+   "v_end": 0.5616863494819422,
+   "T": 59950
+  },
+  "M1lo_s0": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.5184950514685311,
+   "sd_eq": 0.3095306024573118,
+   "c_iqr": [
+    0.5130447687838764,
+    0.5259943477638847
+   ],
+   "v_end": 0.487942541798389,
+   "T": 59950
+  },
+  "M1lo_s1": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.2566868597997726,
+   "sd_eq": 0.29673317713445146,
+   "c_iqr": [
+    0.25241013174265936,
+    0.2611877441566288
+   ],
+   "v_end": 0.5565492355906411,
+   "T": 59950
+  },
+  "M2hi_s0": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.10333333333333333,
+   "agg_lo_frac": 0.8866666666666667,
+   "c_eq": 0.1542718582187191,
+   "sd_eq": 0.08229929192883556,
+   "c_iqr": [
+    0.12576407654905167,
+    0.19983361662914284
+   ],
+   "v_end": 0.12579041462665494,
+   "T": 59950
+  },
+  "M2hi_s1": {
+   "regime": "non-aggregating",
+   "on_q": 7,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.13830919033123584,
+   "sd_eq": 0.070463248528191,
+   "c_iqr": [
+    0.1380807447348338,
+    0.21783568091330802
+   ],
+   "v_end": 0.15889021512270673,
+   "T": 59950
+  },
+  "M2lo_s0": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.81,
+   "agg_lo_frac": 0.14666666666666667,
+   "c_eq": 0.44380620959517014,
+   "sd_eq": 0.24658456490860597,
+   "c_iqr": [
+    0.39891614148341703,
+    0.4694464456233697
+   ],
+   "v_end": 0.34701457654904155,
+   "T": 59950
+  },
+  "M2lo_s1": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.8133333333333334,
+   "agg_lo_frac": 0.15333333333333332,
+   "c_eq": 0.7918566563495175,
+   "sd_eq": 0.2950378279002853,
+   "c_iqr": [
+    0.7828492083592318,
+    0.8624659066471605
+   ],
+   "v_end": 0.34090061859926224,
+   "T": 59950
+  },
+  "T_hi_mu03": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.16516410972993922,
+   "sd_eq": 0.19138567931154615,
+   "c_iqr": [
+    0.15835019625310226,
+    0.17285669862712386
+   ],
+   "v_end": 0.09519702702134038,
+   "T": 99950
+  },
+  "T_lo_mu03": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.794,
+   "agg_lo_frac": 0.168,
+   "c_eq": 0.7719894407531886,
+   "sd_eq": 0.3423484941052886,
+   "c_iqr": [
+    0.6479413339106443,
+    0.8188507905746181
+   ],
+   "v_end": 0.3647062162674559,
+   "T": 99950
+  },
+  "T_mid_hi": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.782,
+   "agg_lo_frac": 0.198,
+   "c_eq": 0.9259179498802181,
+   "sd_eq": 0.11719895784957512,
+   "c_iqr": [
+    0.8817556533472624,
+    0.9492960027311489
+   ],
+   "v_end": 0.34795709910880396,
+   "T": 99950
+  },
+  "T_mid_lo": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.13041205294596572,
+   "sd_eq": 0.14574145037694697,
+   "c_iqr": [
+    0.1219376038440615,
+    0.14008006297948497
+   ],
+   "v_end": 0.12249814608541473,
+   "T": 99950
+  },
+  "eq_base": {
+   "regime": "cycling",
+   "on_q": 15,
+   "agg_hi_frac": 0.3973333333333333,
+   "agg_lo_frac": 0.5733333333333334,
+   "c_eq": 0.2527220423445672,
+   "sd_eq": 0.12061121613420636,
+   "c_iqr": [
+    0.19392696219039657,
+    0.27080812179610114
+   ],
+   "v_end": 0.04984102608461445,
+   "T": 149950
+  },
+  "eq_hicost": {
+   "regime": "non-aggregating",
+   "on_q": 16,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.17697891337971983,
+   "sd_eq": 0.22390870696750845,
+   "c_iqr": [
+    0.17510834729441577,
+    0.17870955805600242
+   ],
+   "v_end": 0.21521525338421554,
+   "T": 149950
+  },
+  "eq_locost": {
+   "regime": "non-aggregating",
+   "on_q": 15,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.1551903595373889,
+   "sd_eq": 0.17551401520221965,
+   "c_iqr": [
+    0.15216248506072705,
+    0.1577898840869139
+   ],
+   "v_end": 0.11345325947338394,
+   "T": 149950
+  },
+  "glob_nobn": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.18441669460553953,
+   "sd_eq": 0.2087093233490241,
+   "c_iqr": [
+    0.18281625229284706,
+    0.18598873888982348
+   ],
+   "v_end": 0.11542037512965117,
+   "T": 99950
+  },
+  "k6test": {
+   "regime": "cycling",
+   "on_q": 4,
+   "agg_hi_frac": 0.84,
+   "agg_lo_frac": 0.13666666666666666,
+   "c_eq": 0.8007881516523148,
+   "sd_eq": 0.08540689010002786,
+   "c_iqr": [
+    0.7666952703576382,
+    0.8428620917351837
+   ],
+   "v_end": 0.35984031842794373,
+   "T": 59950
+  },
+  "lc0.001": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.44833276554759555,
+   "sd_eq": 0.28761315234620044,
+   "c_iqr": [
+    0.4481396413807089,
+    0.4486881994537484
+   ],
+   "v_end": 0.5583719695016619,
+   "T": 149950
+  },
+  "lc0.002": {
+   "regime": "cycling",
+   "on_q": 15,
+   "agg_hi_frac": 0.7173333333333334,
+   "agg_lo_frac": 0.20266666666666666,
+   "c_eq": 0.23651965571462083,
+   "sd_eq": 0.14650685241877548,
+   "c_iqr": [
+    0.13711990044074474,
+    0.28003400137483825
+   ],
+   "v_end": 0.3078171178768911,
+   "T": 149950
+  },
+  "lc0.004": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.14322410074111275,
+   "sd_eq": 0.19400946681571193,
+   "c_iqr": [
+    0.13456469448270428,
+    0.1535303757232514
+   ],
+   "v_end": 0.46954804939806166,
+   "T": 149950
+  },
+  "lc0": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.44056392484872814,
+   "sd_eq": 0.29535839949671805,
+   "c_iqr": [
+    0.4377148673115499,
+    0.4433645292147169
+   ],
+   "v_end": 0.5996642298579273,
+   "T": 149950
+  },
+  "loc_bn03": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.27648666229991614,
+   "sd_eq": 0.3046599634355108,
+   "c_iqr": [
+    0.26813306936819314,
+    0.28430290229017496
+   ],
+   "v_end": 0.5081100193834546,
+   "T": 99950
+  },
+  "loc_bn3": {
+   "regime": "cycling",
+   "on_q": 10,
+   "agg_hi_frac": 0.742,
+   "agg_lo_frac": 0.208,
+   "c_eq": 0.296893439036979,
+   "sd_eq": 0.17310525666622595,
+   "c_iqr": [
+    0.2830425335946221,
+    0.35248846909472975
+   ],
+   "v_end": 0.42521859632731207,
+   "T": 99950
+  },
+  "loc_nobn": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.09365739903469178,
+   "sd_eq": 0.12958622475145587,
+   "c_iqr": [
+    0.09150426371400439,
+    0.09627270346677194
+   ],
+   "v_end": 0.05602971339572405,
+   "T": 99950
+  },
+  "mid1": {
+   "regime": "non-aggregating",
+   "on_q": 15,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.20904533467777622,
+   "sd_eq": 0.045946892066800554,
+   "c_iqr": [
+    0.2090273069846908,
+    0.20911439487178324
+   ],
+   "v_end": 0.04124415546791194,
+   "T": 149950
+  },
+  "mid2": {
+   "regime": "non-aggregating",
+   "on_q": 16,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.09734407172943936,
+   "sd_eq": 0.22083179437893813,
+   "c_iqr": [
+    0.09183332274437332,
+    0.10252640410584293
+   ],
+   "v_end": 0.12417161373678937,
+   "T": 149950
+  },
+  "mid3": {
+   "regime": "non-aggregating",
+   "on_q": 15,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.15440990062248797,
+   "sd_eq": 0.17277030141640112,
+   "c_iqr": [
+    0.15059498478641553,
+    0.15778162662734932
+   ],
+   "v_end": 0.07295057227144527,
+   "T": 149950
+  },
+  "mid4": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.4442004165667589,
+   "sd_eq": 0.08980525905750467,
+   "c_iqr": [
+    0.4283615134185992,
+    0.4497713202527059
+   ],
+   "v_end": 0.4685543150867486,
+   "T": 149950
+  },
+  "mid4_s1": {
+   "regime": "cycling",
+   "on_q": 16,
+   "agg_hi_frac": 0.7506666666666667,
+   "agg_lo_frac": 0.13866666666666666,
+   "c_eq": 0.1016488471463238,
+   "sd_eq": 0.01763583889706114,
+   "c_iqr": [
+    0.10004120081653417,
+    0.10953348643949457
+   ],
+   "v_end": 0.23866108897013366,
+   "T": 149950
+  },
+  "mid4_s2": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.33462832799016734,
+   "sd_eq": 0.25596402461005274,
+   "c_iqr": [
+    0.32570328625730904,
+    0.33930174131623847
+   ],
+   "v_end": 0.45758898886976146,
+   "T": 149950
+  },
+  "nf05": {
+   "regime": "non-aggregating",
+   "on_q": 6,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.11392496654099457,
+   "sd_eq": 0.06932777464458637,
+   "c_iqr": [
+    0.11373771395487689,
+    0.11418744186164856
+   ],
+   "v_end": 0.041544815668652355,
+   "T": 59950
+  },
+  "nf05_lomu": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.76,
+   "agg_lo_frac": 0.22,
+   "c_eq": 0.5999928338079163,
+   "sd_eq": 0.005054124113983597,
+   "c_iqr": [
+    0.5796018537154594,
+    0.599997170602868
+   ],
+   "v_end": 0.3203916368689614,
+   "T": 59950
+  },
+  "nf1": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.7533333333333333,
+   "agg_lo_frac": 0.21,
+   "c_eq": 0.2999970387093607,
+   "sd_eq": 0.008824483999545649,
+   "c_iqr": [
+    0.2999881319564235,
+    0.3000184106122299
+   ],
+   "v_end": 0.33251343144853246,
+   "T": 59950
+  },
+  "nf1_drift": {
+   "regime": "cycling",
+   "on_q": 6,
+   "agg_hi_frac": 0.75,
+   "agg_lo_frac": 0.21333333333333335,
+   "c_eq": 0.2999955880058208,
+   "sd_eq": 0.03559906561871822,
+   "c_iqr": [
+    0.2803674107758963,
+    0.30044535438098374
+   ],
+   "v_end": 0.33960724530248354,
+   "T": 59950
+  },
+  "Zlam0_s0": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.08958935890061687,
+   "sd_eq": 0.13444552366523976,
+   "c_iqr": [
+    0.08667420311599068,
+    0.2630818525541876
+   ],
+   "v_end": 0.22522898365707578,
+   "T": 99950
+  },
+  "Zlam008_s0": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.1264840962217692,
+   "sd_eq": 0.13179124653419164,
+   "c_iqr": [
+    0.12407697514603135,
+    0.1292471289549934
+   ],
+   "v_end": 0.09971571332986479,
+   "T": 99950
+  },
+  "Zlam0_s1": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.8,
+   "agg_lo_frac": 0.166,
+   "c_eq": 0.7093104188621925,
+   "sd_eq": 0.12567769464842676,
+   "c_iqr": [
+    0.6555211642093901,
+    0.7499985076619008
+   ],
+   "v_end": 0.40622887225931015,
+   "T": 99950
+  },
+  "Zlam008_s1": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.718,
+   "agg_lo_frac": 0.22,
+   "c_eq": 0.2499555849618198,
+   "sd_eq": 0.014073544674605882,
+   "c_iqr": [
+    0.2498188514745352,
+    0.250166253531889
+   ],
+   "v_end": 0.18635902915376545,
+   "T": 99950
+  },
+  "Zlam0_s2": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.08601089160072553,
+   "sd_eq": 0.2041102075879002,
+   "c_iqr": [
+    0.08109224843247767,
+    0.09071858415048101
+   ],
+   "v_end": 0.31107522227218953,
+   "T": 99950
+  },
+  "Zlam008_s2": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.12199864338817437,
+   "sd_eq": 0.12321067411681919,
+   "c_iqr": [
+    0.11946206598584795,
+    0.12489932907235496
+   ],
+   "v_end": 0.0975511387405184,
+   "T": 99950
+  },
+  "R_lc002_s2": {
+   "regime": "non-aggregating",
+   "on_q": 11,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.125962857054374,
+   "sd_eq": 0.06054021490537151,
+   "c_iqr": [
+    0.12541469846182365,
+    0.1269426391489548
+   ],
+   "v_end": 0.1357274005244954,
+   "T": 99950
+  },
+  "R_lc002_s3": {
+   "regime": "non-aggregating",
+   "on_q": 10,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.06136565964300379,
+   "sd_eq": 0.16533817280089447,
+   "c_iqr": [
+    0.05527959754936961,
+    0.0662193493826516
+   ],
+   "v_end": 0.05453153656462247,
+   "T": 99950
+  },
+  "R_lc003_s0": {
+   "regime": "frozen-tower",
+   "on_q": 0,
+   "agg_hi_frac": 1.0,
+   "agg_lo_frac": 0.0,
+   "c_eq": 0.27905332176843534,
+   "sd_eq": 0.3558544688112779,
+   "c_iqr": [
+    0.22856322858652328,
+    0.36758606600599675
+   ],
+   "v_end": 0.47751477613265814,
+   "T": 59950
+  },
+  "R_lc003_s1": {
+   "regime": "non-aggregating",
+   "on_q": 6,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.13139496690026942,
+   "sd_eq": 0.1883538533046508,
+   "c_iqr": [
+    0.12964329376076977,
+    0.13313624128959967
+   ],
+   "v_end": 0.04867462149163485,
+   "T": 59950
+  },
+  "R_lc003_s2": {
+   "regime": "non-aggregating",
+   "on_q": 6,
+   "agg_hi_frac": 0.0,
+   "agg_lo_frac": 1.0,
+   "c_eq": 0.08763822888773398,
+   "sd_eq": 0.17734977173512206,
+   "c_iqr": [
+    0.08503852209809695,
+    0.09017677147268452
+   ],
+   "v_end": 0.056718223974188325,
+   "T": 59950
+  },
+  "R_jit0": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.774,
+   "agg_lo_frac": 0.188,
+   "c_eq": 0.4999756964116289,
+   "sd_eq": 0.014209188357984945,
+   "c_iqr": [
+    0.49920793932955854,
+    0.5004109168424542
+   ],
+   "v_end": 0.2511882687305972,
+   "T": 99950
+  },
+  "R_jit1": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.772,
+   "agg_lo_frac": 0.194,
+   "c_eq": 0.3749985029475931,
+   "sd_eq": 0.012885633726887469,
+   "c_iqr": [
+    0.3749548071253121,
+    0.3773101083745492
+   ],
+   "v_end": 0.36008299270916744,
+   "T": 99950
+  },
+  "R_jit2": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.794,
+   "agg_lo_frac": 0.166,
+   "c_eq": 0.48089858985776013,
+   "sd_eq": 0.08295321018710616,
+   "c_iqr": [
+    0.39209951383336084,
+    0.4999992299236808
+   ],
+   "v_end": 0.4701269464766804,
+   "T": 99950
+  },
+  "R_jit3": {
+   "regime": "cycling",
+   "on_q": 11,
+   "agg_hi_frac": 0.772,
+   "agg_lo_frac": 0.182,
+   "c_eq": 0.27253093920625904,
+   "sd_eq": 0.07631658776576065,
+   "c_iqr": [
+    0.23328222522275077,
+    0.30222079516780365
+   ],
+   "v_end": 0.28134450994143784,
+   "T": 99950
+  }
+ },
+ "regime_map": {
+  "note": "every long run classified on last quarter: cycling (lifecycle alive) | frozen-tower (aggregated, never wakes) | non-aggregating (relay too weak, bare R-V relaxation at V~0.05-0.2) | extinct",
+  "counts": {
+   "frozen-tower": 15,
+   "non-aggregating": 25,
+   "cycling": 22
+  }
+ },
+ "g3_curve_cost": {
+  "observable_primary": "collapse half-time t_half (first t with <c> < 0.3 from uniform 0.5 init; selection speed) and equilibrium fate",
+  "movement": "M2 canonical",
+  "mu": 0.01,
+  "seeds": 3,
+  "points": {
+   "0.0": {
+    "t_half": [
+     48650,
+     null,
+     10850
+    ],
+    "regime_end": "2/3 drift-collapse (neutral), 1/3 cooperative-frozen"
+   },
+   "0.001": {
+    "t_half": [
+     13100,
+     4150,
+     null
+    ],
+    "regime_end": "2/3 collapse, 1/3 cooperative cycling (c*=0.89)"
+   },
+   "0.002": {
+    "t_half": [
+     26600,
+     28850,
+     37600,
+     10900
+    ],
+    "regime_end": "4/4 collapse to c*~0.1 (tragedy) at 100k; relay survives as marginal cycling/non-agg"
+   },
+   "0.003": {
+    "t_half": [
+     20950,
+     8250,
+     9850
+    ],
+    "regime_end": "3/3 collapse"
+   },
+   "0.004": {
+    "t_half": [
+     10850,
+     8650,
+     8650
+    ],
+    "regime_end": "3/3 collapse"
+   },
+   "0.008": {
+    "t_half": [
+     4200,
+     6450,
+     3650
+    ],
+    "regime_end": "3/3 collapse"
+   }
+  },
+  "selection_regime_law": "for lam_c >= 0.002: median t_half monotone decreasing (27725 -> 9850 -> 8650 -> 4200); lam_c * t_half \u2248 30-55e-3 (approx 1/lam_c scaling)",
+  "low_lam": "lam_c <= 0.001: collapse is DRIFT-dominated (mound-level founder bottleneck, ~15 mounds = tiny N_e): t_half scattered, some seeds never collapse; direction of <c> motion not set by cost",
+  "verdict": "MONOTONE and smooth in the selection regime (4 points); NOT monotone across the drift regime \u2014 reported honestly"
+ },
+ "g3_curve_mutation": {
+  "observable": "equilibrium trait s.d. sd(c)* from monoclonal c=1 init (mutation-variance balance), lam_c=0.002, 30k, 3 seeds",
+  "points": {
+   "0.001": {
+    "sd": [
+     0.0027,
+     0.0028,
+     0.0036
+    ],
+    "med": 0.0028
+   },
+   "0.003": {
+    "sd": [
+     0.0048,
+     0.0519,
+     0.0048
+    ],
+    "med": 0.0048
+   },
+   "0.01": {
+    "sd": [
+     0.0254,
+     0.0182,
+     0.0631
+    ],
+    "med": 0.0254
+   },
+   "0.03": {
+    "sd": [
+     0.0345,
+     0.059,
+     0.0205
+    ],
+    "med": 0.0345
+   },
+   "0.1": {
+    "sd": [
+     0.0498,
+     0.0452,
+     0.0376
+    ],
+    "med": 0.0452
+   }
+  },
+  "law": "sd(c)* monotone increasing over 2 decades of mu (0.0028 -> 0.0452), ~ mu^0.6; c* stays ~1.0 at 30k (erosion slower than horizon)",
+  "verdict": "MONOTONE+smooth: PASS as second response curve",
+  "caveat": "d<c>/dt erosion slope itself too slow/noisy at 30k to resolve vs mu \u2014 variance balance is the clean observable"
+ },
+ "l4_timescale": {
+  "method": "free exponential fit on collapse window [0, 3.5*t_half]; sep34 = tau4 / L3 period (2250-2400)",
+  "fits_lam002_004": {
+   "taus": [
+    35120,
+    47922,
+    53046,
+    11043,
+    16508,
+    11248,
+    16870,
+    8015,
+    10099
+   ],
+   "r2": [
+    0.911,
+    0.701,
+    0.752,
+    0.876,
+    0.914,
+    0.884,
+    0.898,
+    0.903,
+    0.926
+   ],
+   "sep": [
+    15.1,
+    20.7,
+    22.9,
+    4.8,
+    7.1,
+    4.8,
+    7.3,
+    3.5,
+    4.4
+   ]
+  },
+  "median_sep34": 7.1,
+  "frac_ge_5x": 0.56,
+  "entrainment": "detrended <c> per-cycle wiggle sd 0.002-0.02 << collapse amplitude 0.4; correlation with aggm 0.2-0.8 (phasic: cost is paid during famine) \u2014 L4 is modulated BY L3 but runs 5-20x slower at the canonical point",
+  "verdict": "L4 separation holds at the canonical point (sep 15-23x for lam=0.002 seeds 0-2) but degrades toward lam=0.004-0.008 (sep 3.5-7): the layer exists in the polymorphic/slow-tragedy band, entrains nowhere"
+ },
+ "g4_robustness": {
+  "seeds_lam002": {
+   "n": 4,
+   "all_collapse_to_tragedy": true,
+   "t_half": [
+    26600,
+    28850,
+    37600,
+    10900
+   ]
+  },
+  "jitter": {
+   "n": 4,
+   "desc": "all 15 evo+lifecycle params x U(0.9,1.1), seeds 10-13, 100k",
+   "outcome": "4/4 lifecycle CYCLING alive; c* = [0.50, 0.375, 0.481, 0.273] \u2014 all POLYMORPHIC (regime a), none tragedy within 100k",
+   "reading": "canonical lam=0.002 sits near the tragedy boundary; \u00b110% jitter mostly lands on the polymorphic side. Lifecycle robust: 4/4. L4 state robust as 'polymorphism or slow tragedy', not as a fixed c*"
+  }
+ },
+ "tragedy_boundary": {
+  "summary": "cooperation collapse does NOT kill the L3 lifecycle outright at canonical movement: post-tragedy worlds keep marginal relay (p_spont pacemakers still nucleate weak mounds) but population falls 3-10x (V 0.35 -> 0.05-0.15) and aggregation weakens to non-aggregating in most seeds",
+  "boundary_in_lam": "drift band lam<=0.001 (fate seed-dependent, bistable cooperative-frozen vs drift-collapse) | tragedy band lam>=0.002 at mu=0.01 (all seeds collapse, t_half ~ 1/lam)",
+  "assortment_lever": "raising N_f (weaker bottleneck: nf05->0.5 strengthens drift+assortment, c* 0.11; N_f=1.5-3 canonical) and tighter dispersal (chi_d, Dv_germ) shift the boundary; global dispersal (certified c30 movement, blast radius ~19) = NO assortment: c* -> 0.09-0.18 even at lam=0.0005 (glob_nobn, loc_nobn) \u2014 Hamilton's mechanism verified in the negative",
+  "cooperative_rescue": "mosaic_hi init at lam=0.002, mu=0.03 HOLDS at c*=0.93 (T_mid_hi) while mosaic_lo collapses (T_mid_lo c*=0.13): BISTABLE \u2014 cooperation persists only above a critical initial assortment/frequency; classic threshold public good"
+ },
+ "variance_maintenance": {
+  "polymorphic_runs": "cycling jitter runs hold sd(c) 0.013-0.083 at 100k; mutation-variance balance verified: sd* rises monotonically with mu (see mu curve)",
+  "tragedy_runs": "sd 0.06-0.20 at 100k (residual cheater-bin spread)",
+  "verdict": "sd(c) > 0 everywhere; no blending collapse (particulate inheritance works)"
+ },
+ "negative_results": [
+  "evolutionary-rescue OSCILLATOR (regime b) NOT found in any of 61 runs: cheater collapse is not followed by cooperator re-bloom \u2014 the founder bottleneck regenerates variance too slowly and collapsed worlds have too few mounds (N_e ~ 15) for rescue mutants to establish before drift removes them",
+  "certified c30 movement (global dispersal) provides zero assortment: cooperation always collapses regardless of cost \u2014 sociality REQUIRES the local-dispersal + founder-bottleneck modification (M2), i.e. the evolution question forced a (biologically honest) change to the dispersal physics",
+  "eq_base/eq_hicost/eq_locost (first-generation site-level bottleneck) gave non-monotone c*(lam) \u2014 site-level Dirichlet resampling every wake event is TOO much drift; mound-level sampling (one draw per mound) is the working design",
+  "d<c>/dt linear-slope assays (30k) too noisy for G3 at low lam: drift >> selection below lam~0.002 at N_e~15 mounds",
+  "L4 'stable polymorphism with clean relaxation to a cost-set c*' (regime a as a smooth curve) NOT achieved as hoped: bistability + drift make c* seed-dependent outside the jitter band; honest regime map delivered instead"
+ ],
+ "budget": {
+  "runs_this_round": 61,
+  "typical": "100k ticks / 110-170s",
+  "assays": "30k / ~65s",
+  "total_wall": "~3.5h incl. outage recovery",
+  "per_candidate_max": "<5min OK"
+ }
+}

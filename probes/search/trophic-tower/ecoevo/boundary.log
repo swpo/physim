@@ -1,0 +1,26 @@
+=== dissolution boundary: c=0.0075, G0=1.0, 120k ticks, 3 seeds ===
+m=0.02 sd=0: st=ok top=oscillator/0.9466 T3=167.5 T2=26.0 s12=5.7 s23=6.4 ecoG1=True ecoG2=True COHER=True sdG=0.028 <G>end=1.025 rt=56.3s
+m=0.02 sd=1: st=ok top=oscillator/0.9733 T3=167.0 T2=26.0 s12=5.5 s23=6.4 ecoG1=True ecoG2=True COHER=True sdG=0.028 <G>end=1.005 rt=52.0s
+m=0.02 sd=2: st=ok top=oscillator/0.9634 T3=167.5 T2=26.0 s12=5.5 s23=6.4 ecoG1=True ecoG2=True COHER=True sdG=0.029 <G>end=1.011 rt=51.6s
+  ==> m=0.02: coherent 3/3
+m=0.04 sd=0: st=ok top=oscillator/0.9438 T3=165.0 T2=26.0 s12=5.5 s23=6.3 ecoG1=True ecoG2=True COHER=True sdG=0.057 <G>end=0.997 rt=51.4s
+m=0.04 sd=1: st=ok top=oscillator/0.9556 T3=160.5 T2=25.5 s12=5.4 s23=6.3 ecoG1=True ecoG2=True COHER=True sdG=0.057 <G>end=0.958 rt=28.1s
+m=0.04 sd=2: st=ok top=oscillator/0.9534 T3=162.0 T2=25.8 s12=5.3 s23=6.3 ecoG1=True ecoG2=True COHER=True sdG=0.057 <G>end=0.97 rt=28.1s
+  ==> m=0.04: coherent 3/3
+m=0.06 sd=0: st=ok top=switch/0.7699 T3=153.6 T2=25.5 s12=5.4 s23=6.0 ecoG1=True ecoG2=False COHER=False sdG=0.086 <G>end=0.922 rt=27.1s
+m=0.06 sd=1: st=ok top=switch/0.708 T3=140.7 T2=25.0 s12=4.8 s23=5.6 ecoG1=False ecoG2=False COHER=False sdG=0.086 <G>end=0.838 rt=26.5s
+m=0.06 sd=2: st=ok top=switch/0.7703 T3=149.0 T2=25.0 s12=5.2 s23=6.0 ecoG1=True ecoG2=False COHER=False sdG=0.086 <G>end=0.868 rt=26.4s
+  ==> m=0.06: coherent 0/3
+m=0.09 sd=0: st=ok top=switch/0.7478 T3=None T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.125 <G>end=0.599 rt=26.5s
+m=0.09 sd=1: st=ok top=switch/0.7052 T3=314.0 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.122 <G>end=0.588 rt=24.3s
+m=0.09 sd=2: st=ok top=switch/0.7218 T3=117.9 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.125 <G>end=0.592 rt=23.3s
+  ==> m=0.09: coherent 0/3
+m=0.12 sd=0: st=ok top=switch/0.6152 T3=165.6 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.157 <G>end=0.664 rt=23.5s
+m=0.12 sd=1: st=ok top=switch/0.5714 T3=163.1 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.156 <G>end=0.679 rt=22.1s
+m=0.12 sd=2: st=ok top=switch/0.6474 T3=205.5 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.157 <G>end=0.67 rt=18.3s
+  ==> m=0.12: coherent 0/3
+m=0.15 sd=0: st=ok top=switch/0.6133 T3=152.3 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.195 <G>end=0.756 rt=18.5s
+m=0.15 sd=1: st=ok top=switch/0.6041 T3=165.2 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.193 <G>end=0.774 rt=18.4s
+m=0.15 sd=2: st=ok top=switch/0.673 T3=163.1 T2=None s12=None s23=None ecoG1=False ecoG2=False COHER=False sdG=0.194 <G>end=0.764 rt=18.3s
+  ==> m=0.15: coherent 0/3
+DONE boundary

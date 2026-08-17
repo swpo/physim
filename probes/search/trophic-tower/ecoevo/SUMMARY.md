@@ -46,17 +46,34 @@ L1–L3 teacup coherence underneath it. Primary deliverable is this mapped negat
   all runs; detrended cross-corr |r|≈0.5 at ~100-tu lag but no locked period).
 
 ### 4. THE HEADLINE NEGATIVE: evolution dissolves the eco tower below it
-- In ALL 45 evolving runs (m>0), the certified L3 oscillator degrades to an
-  irregular switch: eco top fit = switch in 45/45, median r2 0.63 (was 0.93–0.97
-  frozen); L2 fast layer measurable in only 2/45; ecoG1 = False in 45/45.
-- Even m=0.02 (sdG≈0.03) already breaks ecoG1; m=0 exactly restores the full
-  certified tower (control: frozen G=1.0 run → oscillator r2 0.96, ecoG1+ecoG2 PASS).
-- Mechanism (supported by the frozen-G scan): the teacup is only coherent for
-  uniform G in ≈[0.75, 1.2] (T3 shifts 140→190 across it; outside, no clean
-  oscillator). Standing spatial variance sd(G) ≥ ~0.03 puts different neighborhoods
-  at different effective (attack, rent) — local cycles detune and the global P
-  clock decoheres. **Variance maintenance (needed for evolution to work) and macro
-  coherence (needed for the L3 clock) are mutually exclusive in this physics.**
+- AUDIT-CORRECTED boundary law (results_boundary.json: G0=1.0, c=0.0075, 120k
+  ticks, 3 seeds per m; coherent = ecoG1 AND ecoG2):
+
+  | m | sd(G) maintained | coherent | median top r2 |
+  |---|---|---|---|
+  | 0.02 | 0.028 | 3/3 | 0.96 |
+  | 0.04 | 0.057 | 3/3 | 0.95 |
+  | 0.06 | 0.086 | 0/3 | 0.77 |
+  | 0.09 | 0.125 | 0/3 | 0.72 |
+  | 0.12 | 0.157 | 0/3 | 0.62 |
+  | 0.15 | 0.194 | 0/3 | 0.61 |
+
+  **The law: the clock survives sd(G) ≤ ~0.06 and dissolves above sd(G)* ≈ 0.07
+  (sharp transition between 0.057 and 0.086; top-law r2 decays monotonically with
+  sd(G) past the boundary).** At the boundary <G> is still in-window (0.87–0.97),
+  so this is a pure variance effect, not a mean shift. Strips: dissolution_boundary.png.
+- CORRECTION of the earlier claim "even m=0.02 breaks it": that run started at
+  G0=1.5 (mean genotype outside the frozen-G coherent window) — a mean-outside-
+  window confound, not variance. At G0=1.0 the m=0.02 and m=0.04 towers are fully
+  coherent WITH ongoing evolution (audit seed 71 + our 3 seeds agree). There IS a
+  narrow coexistence regime: 4 gated eco layers + live L4 at sd(G) ≤ 0.06 — but the
+  interesting evolutionary dynamics (fast selection, tau4 in the thousands of tu,
+  strong G3 curves) live at m ≥ 0.1, beyond the dissolution boundary.
+- Mechanism (frozen-G scan): the teacup is only coherent for uniform G in
+  ≈[0.75, 1.2] (T3 shifts 140→190 across it). Standing spatial variance puts
+  neighborhoods at different effective (attack, rent); past sd(G)* local cycles
+  detune and the global P clock decoheres. High-variance evolution and macro
+  coherence remain incompatible; low-variance evolution coexists with the clock.
 - Sweet-spot attempts failed and are logged: rho=0.030 (wider eco margin), logmut
   (multiplicative mutation — runs to G*≈3.2, worse), G*≈1.0 tuning via (c=0.005,
   m=0.22) — all still ecoG1=False.
@@ -69,8 +86,11 @@ L1–L3 teacup coherence underneath it. Primary deliverable is this mapped negat
   time cannot runaway; a handling-time or conversion-efficiency genotype might).
 
 ## Gate scorecard (4-layer world)
-- G1 (4 layers, adjacent ≥5x): **FAIL** — L4/L3 separation is 9–11x, but L1–L3
-  collapse under evolving G (ecoG1 false in every m>0 run).
+- G1 (4 layers, adjacent ≥5x): **FAIL at the interesting-evolution regime**
+  (m ≥ 0.06: eco layers collapse, 0/12 coherent). Coexistence exists at m ≤ 0.04
+  (3/3 + 3/3 coherent with live L4), but there tau4 was not separately certified
+  (selection is ~sd(G)^2-slow: at m=0.04 the G0=1.5 displacement would need
+  >~50k tu runs — beyond G5 budget; recorded as untested, not failed).
 - G2 on <G>: **MARGINAL FAIL** — relaxation, r2 median 0.849 (2–3/4 seeds ≥0.85).
 - G3: **PASS** — two response curves (G* vs c, G* vs m), both monotone, tight seeds.
 - G4: attractor G* robust (4/4 seeds ±0.01; both directions; rho variant) — but the
@@ -86,5 +106,6 @@ in parent dir (frozen-G control reproduces it).
 
 ## One-line story
 Evolution on this teacup finds a beautiful, price-responsive attractor of restraint —
-and pays for it by dissolving the very population clock it rides on: heritable
-variance is the currency of adaptation and the poison of macro coherence.
+and the clock beneath it survives only while heritable variance stays below
+sd(G)* ≈ 0.07: slow, quiet evolution coexists with the tower; fast, high-variance
+evolution dissolves the very oscillator it rides on.

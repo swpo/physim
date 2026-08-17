@@ -58,6 +58,21 @@ def make_init(L, rng, init, patch_frac, Tinit_patch):
         B[:, :L // 2] = 0.08
     elif init == "forest":
         T = np.full((L, L), 0.85); B[:] = 0.08
+    elif init == "mixed2":
+        # mature patches (patch_frac at 0.85) + immature patches (same area
+        # at Tinit_patch) -> immature ones relax: the L4 perturbation
+        T = np.full((L, L), 0.02)
+        yy, xx = np.mgrid[0:L, 0:L]
+        for frac, val in ((patch_frac, 0.85), (patch_frac, Tinit_patch)):
+            placed = 0.0
+            while placed < frac * L * L:
+                cx, cy = rng.integers(0, L, 2)
+                r = rng.uniform(3.5, 6.5)
+                dx = np.minimum(np.abs(xx - cx), L - np.abs(xx - cx))
+                dy = np.minimum(np.abs(yy - cy), L - np.abs(yy - cy))
+                m = (dx * dx + dy * dy <= r * r) & (T < 0.1)
+                placed += float(m.sum())
+                T[m] = val
     elif init == "mixed":
         T = np.full((L, L), 0.02)
         area_target = patch_frac * L * L

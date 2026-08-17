@@ -164,3 +164,71 @@ fire-forest+succession | trophic-tower+eco-evo | slime-lifecycle+cheaters
   fire+succession (competition-on-clock) and slime+cheaters pending; morpho sync
   (clock-on-clock) locking already confirmed — stacking couplings differ in whether
   they preserve the lower tower.
+
+
+## Round 2 — COMPLETE (all four audited, 2026-02-18)
+
+### fire-forest/succession — AUDIT FULL PASS (the stacking winner)
+- Fresh seeds 7/8: all 4 layers reproduce (L4 tau 15.2-15.9k r2 .90-.96; L3 switch
+  r2 ~.90 SURVIVES under the tower; seps 46-50/18-20/8.2-8.4; span ~7600x).
+- Bistability fresh seed 9: fF(savanna-init)=0.000 vs fF(forest-init)=1.000, identical
+  params. Out-of-grid G3 gT=1.35e-4 -> T*=0.890 (predicted 0.885-0.905). CERTIFIED.
+- Strongest local modulation: burns 15.45/cell grass vs 0.00 forest — the L3 clock
+  lives only in the savanna phase (biome-gated clock, not destroyed clock).
+- Honest negatives: flammable canopy kills L4; W>=0.3 kills settling; static site
+  quality pins mosaic (no free 5th layer without climate forcing).
+
+### morpho-counter/sync — AUDIT PASS (tongue certified; slip = mapped regime)
+- AUDIT ARTIFACT CAUGHT AND FIXED: my first fresh-seed runs used runner DEFAULT
+  eps_g=2.77e-3; ALL their certs use eps_g=2.4e-3. With the right convention:
+  R=1.3 locked on 2 fresh seeds (rho 1.0000/1.0034, 0 slips), R=1.85 slips,
+  and the kc=1.5e-3 tongue edge INTERPOLATES (R=1.40 locked / R=1.48 slips,
+  their Rc=1.4406). Lesson repeated from E2: audits must replicate the searcher's
+  full coordinate conventions — grab cand dicts from their results files, not
+  runner defaults.
+- Textbook Arnold phenomenology: rho staircase 1.0000+-0.005 over 1.7x detuning,
+  half-width ~linear in kc (r2 .95 weak-4, saturates kc>=4e-3), T_slip divergence
+  exponent -0.72 (free) / -1/2 (fixed, r2 .86) — SN-ghost consistent.
+- Honest fail kept as finding: slip sawtooth strict G2 fails (CV~0.4 defect jitter,
+  noise-independent 1e-5..2e-3) — integer clocks synced through a diffusive scalar
+  keep their event jitter. No 3:2 plateau resolvable.
+
+### trophic-tower/ecoevo — boundary campaign VERIFIED; certified as MAPPED NEGATIVE + law
+- Their corrected table: coherent 3/3 at sdG<=0.057, 0/3 at sdG>=0.086 — sharp.
+  My spot check m=0.05 seed81: sdG=0.075 -> dissolved (consistent, boundary
+  sdG*~0.06-0.075). Their original m=0.02 claim was a G0-window confound they
+  found and fixed after my audit flagged it — correction loop worked.
+- Standing law: teacup coherent iff sd(G) <= ~0.06; strong selection needs m>=0.1
+  (sdG~0.13+) -> variance-for-evolution and coherence-for-clocks are mutually
+  exclusive HERE. Coexistence regime exists (sdG<=0.06, live L4) but tau4 there
+  is >G5-budget slow — recorded untested, not failed.
+
+### slime-lifecycle/cheaters — AUDIT PASS as regime-map world
+- Fresh seed 21 tragedy: c_eq=0.124, aggregation dead (their claim: collapse to
+  ~0.1, relay marginal). Fresh seed 22 bistability: mosaic_hi holds c*=0.776 with
+  lifecycle CYCLING (agg=0.91) vs mosaic_lo collapse c*=0.065 agg=0. CERTIFIED.
+- Headliners: tragedy-of-commons computed from physics; Hamilton verified in the
+  negative (certified c30 global dispersal = zero assortment = cooperation always
+  dies -> sociality REQUIRED a dispersal-physics change, M2 local+bottleneck);
+  t_half ~ 1/lam; sd(c)* ~ mu^0.6. Drift-limited at 64^2 (N_e~15 mounds); no
+  rescue oscillator in 61 runs (honest negative).
+
+## THE STACKING LAW (round-2 synthesis; H2 sharpened)
+Four coupling types tested. Hierarchy STACKS when the new layer's back-action on
+the lower layers is (a) spatially COHERENT and slow (succession: biome field gates
+the fire clock locally — clock survives in its phase), or (b) PHASE-ONLY
+(sync: mode-locking preserves both counters exactly). Hierarchy DISSOLVES when the
+new layer injects spatial VARIANCE into oscillator parameters (ecoevo: sd(G)>~0.06
+detunes local cycles, global clock decoheres) and is DRIFT-LIMITED when the
+effective population of social units is small (cheaters: N_e~15 mounds at 64^2).
+=> Design rule for tall towers: couple upward through means/phases, not through
+per-unit parameter spread; keep the "social unit" count large or the top layer
+goes stochastic.
+
+## Yield accounting (for the scaling question)
+- Round 1: 5/5 certified (after audit corrections: 0 retractions, 2 sharpenings).
+- Round 2: 2 full stacking passes (succession, sync-tongue) + 2 certified
+  mapped-negatives/regimes (ecoevo law, cheaters regime map) = 4/4 deliverable
+  yield; 2/4 "clean 4-layer tower" yield. Cost ~1 day wall-clock, 5 children,
+  ~500 sim runs. Audit layer: caught 1 boundary confound + 1 audit-side
+  convention artifact; both loops closed same-day.

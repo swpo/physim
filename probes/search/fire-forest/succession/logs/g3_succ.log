@@ -1,0 +1,8 @@
+gT=6.0e-05 W=0.25 | T* forest=0.762 (0.762,0.762,0.763) | savanna end=0.005 fF=0.00 | tau4=15608 r2=0.851
+gT=8.0e-05 W=0.19 | T* forest=0.817 (0.817,0.817,0.817) | savanna end=0.006 fF=0.00 | tau4=16675 r2=0.964
+gT=1.2e-04 W=0.12 | T* forest=0.877 (0.877,0.877,0.877) | savanna end=0.012 fF=0.00 | tau4=16773 r2=0.910
+gT=1.8e-04 W=0.08 | T* forest=0.918 (0.918,0.918,0.918) | savanna end=0.019 fF=0.00 | tau4=20605 r2=0.689
+gT=2.7e-04 W=0.06 | T* forest=0.945 (0.945,0.945,0.945) | savanna end=0.043 fF=0.00 | tau4=23171 r2=0.892
+gT=4.0e-04 W=0.04 | T* forest=0.963 (0.963,0.963,0.963) | savanna end=0.963 fF=1.00 | tau4=7460 r2=0.704
+T* monotone increasing: True
+done

@@ -2,3 +2,7 @@ R=1.76: T_rate seeds=[22978, 42366, 15294] -> med=22978 | T_med med=8543 | slips
 R=1.80: T_rate seeds=[5930, 11835, 8887] -> med=8887 | T_med med=5382 | slips=[6, 3, 4]
 R=1.85: T_rate seeds=[5080, 4446, 11648] -> med=5080 | T_med med=5328 | slips=[7, 7, 3]
 R=1.92: T_rate seeds=[5228, 8767, 5087] -> med=5228 | T_med med=4298 | slips=[5, 3, 4]
+R=2.00: T_rate seeds=[4439, 2837, 4259] -> med=4259 | T_med med=3080 | slips=[5, 9, 6]
+R=2.15: T_rate seeds=[3067, 4039, 3127] -> med=3127 | T_med med=3214 | slips=[7, 6, 7]
+R=2.30: T_rate seeds=[2398, 2623, 1971] -> med=2398 | T_med med=2522 | slips=[7, 7, 10]
+campB3 done

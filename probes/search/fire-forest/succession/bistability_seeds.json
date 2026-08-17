@@ -1,0 +1,32 @@
+[
+ {
+  "seed": 1,
+  "sav_fF": 0.0,
+  "for_fF": 1.0,
+  "bistable": true
+ },
+ {
+  "seed": 2,
+  "sav_fF": 0.0,
+  "for_fF": 1.0,
+  "bistable": true
+ },
+ {
+  "seed": 3,
+  "sav_fF": 0.0,
+  "for_fF": 1.0,
+  "bistable": true
+ },
+ {
+  "jit": 0,
+  "sav_fF": 0.0,
+  "for_fF": 1.0,
+  "bistable": true
+ },
+ {
+  "jit": 1,
+  "sav_fF": 0.0,
+  "for_fF": 1.0,
+  "bistable": true
+ }
+]

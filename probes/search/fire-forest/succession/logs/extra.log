@@ -1,0 +1,15 @@
+--- forest-branch collapse (low gT) ---
+gT=8.0e-06 | forest-branch T=0.408 fF=0.00
+gT=1.5e-05 | forest-branch T=0.483 fF=0.35
+gT=2.5e-05 | forest-branch T=0.572 fF=0.99
+gT=4.0e-05 | forest-branch T=0.673 fF=1.00
+--- savanna->forest tipping refine ---
+gT=3.00e-04 | savanna-branch T=0.051 fF=0.00
+gT=3.40e-04 | savanna-branch T=0.070 fF=0.00
+gT=3.70e-04 | savanna-branch T=0.959 fF=1.00
+--- NEGATIVE CONTROL: flammable canopy veg_flam>0 ---
+veg_flam=0.4 | sav T=0.009 fF=0.00 | forest T=0.809 fF=1.00 | forest FRI n=27493 | bistable=True
+veg_flam=0.8 | sav T=0.008 fF=0.00 | forest T=0.008 fF=0.00 | forest FRI n=24880 | bistable=False
+--- L3-clock integrity inside 4-layer world vs round-1 (no trees) ---
+no-trees: L3 switch r2=0.847 tau3=1439 FRIg=2842
+done

@@ -1,0 +1,9 @@
+S1 seed0 ok=1 | L4 tau=16595 r2=0.965 | L3 switch r2=0.873 t3=1568 | seps 51.6/15.7/10.6 span=8569 | FRIg=2185 nFRIf=0 | rt=8s
+S1 seed1 ok=1 | L4 tau=13991 r2=0.974 | L3 switch r2=0.887 t3=1607 | seps 49.3/16.9/8.7 span=7265 | FRIg=2452 nFRIf=0 | rt=8s
+S1 seed2 ok=1 | L4 tau=16978 r2=0.956 | L3 switch r2=0.897 t3=1965 | seps 45.9/20.7/8.6 span=8199 | FRIg=2329 nFRIf=0 | rt=8s
+S1 seed3 ok=1 | L4 tau=14707 r2=0.972 | L3 switch r2=0.888 t3=1683 | seps 53.3/16.0/8.7 span=7469 | FRIg=2534 nFRIf=0 | rt=8s
+S1 jit0 ok=1 | L4 tau=13946 r2=0.958 | seps43=10.1 span=5866
+S1 jit1 ok=1 | L4 tau=14660 r2=0.973 | seps43=8.2 span=7524
+S1 jit2 ok=1 | L4 tau=15599 r2=0.949 | seps43=7.3 span=6247
+== S1: seeds 4/4 jitter 3/3 -> G4=True
+done

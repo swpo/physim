@@ -1,0 +1,2172 @@
+{
+ "program": "fire-forest ROUND 2: succession tower (4-layer hierarchy)",
+ "model": "sf_core.py: W7 grass-fire backbone + slow tree field T with fire-trap, canopy fire suppression (veg_flam=0), space competition",
+ "mechanism_choice": "Forest SUPPRESSES grass fire (Staver-Levin mesic): flammability sig(B-theta) is carried by grass fine fuel only; mature canopy shades grass (space term 1-B-cT*T keeps B below theta under canopy) so fire cannot enter forest. Canopy megafires excluded deliberately: (a) they belong to a different (crown-fire) regime, (b) they would add a second fast clock that destroys L3 simplicity. Negative control veg_flam=0.8 shows flammable canopy kills bistability (forest burns like grass -> savanna everywhere).",
+ "theory_coords": [
+  "R=gT/g succession slowness",
+  "W=mu/gT senescence balance",
+  "Tm fire-trap maturity threshold",
+  "kapT trap severity",
+  "cT canopy shading of grass",
+  "rhoT tree seed rain",
+  "patch_frac/Tinit_patch mosaic geometry",
+  "gT = tree growth price (G3)"
+ ],
+ "candidates": [
+  {
+   "id": "S-v1-sav",
+   "params": {
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "init": "savanna"
+   },
+   "outcome": "savanna holds (fire trap works): T->0.007, 0 forest cells. L3 clock intact r2=0.85",
+   "gates": {
+    "note": "single-state run; used as branch evidence"
+   }
+  },
+  {
+   "id": "S-v1-for",
+   "params": {
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "init": "forest"
+   },
+   "outcome": "forest holds: fF=1.0, fires extinct (0 events) -> L1-L3 empty INSIDE forest state; bistable pair with S-v1-sav",
+   "gates": {
+    "note": "proves alternative stable state"
+   }
+  },
+  {
+   "id": "S-v1-mixed",
+   "params": {
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "init": "mixed",
+    "patch_frac": 0.3
+   },
+   "outcome": "mosaic: all 4 layers coexist. L4 relax tau=11419 r2=0.957, sep43=6.9, span41=6016",
+   "gates": {
+    "G1": true,
+    "G2": true
+   }
+  },
+  {
+   "id": "S-kapT0",
+   "params": {
+    "kapT": 0.0,
+    "init": "savanna"
+   },
+   "outcome": "NO fire trap -> trees invade savanna (T 0.02->0.72). Confirms trap is the savanna-holding mechanism",
+   "gates": {
+    "note": "mechanism control"
+   }
+  },
+  {
+   "id": "S-longrun",
+   "params": {
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "T": 150000,
+    "init": "mixed"
+   },
+   "outcome": "NEGATIVE: fixed heterogeneity map pins the mosaic; fracF drifts 0.302->0.307 over 150k ticks; no biome turnover cycle at L=64. L4 is RELAXATION to a pinned mosaic, not an oscillator. tau4(150k window)=44634 but r2=0.63 (two-timescale settling)",
+   "gates": {
+    "note": "honest limit: L4 law is relaxation, not oscillation"
+   }
+  },
+  {
+   "id": "S-pilot-W",
+   "params": {
+    "mu": 3e-05,
+    "gT": "1e-4..3.6e-4",
+    "init": "mixed 85% forest"
+   },
+   "outcome": "forest branch T* rises smoothly with gT (0.70->0.92); at W=mu/gT>=0.3 forest decays; W<=0.12 L4 r2>0.93",
+   "gates": {
+    "note": "pilot for G3"
+   }
+  },
+  {
+   "id": 300,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 8e-05,
+    "mu": 1.5e-05,
+    "kapT": 0.8,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.41,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20033713215489266,
+    "T_end": 0.26399594088666384,
+    "fracF_end": 0.30224609375,
+    "fracF_last20_drift": 0.000244140625,
+    "L3_model": "switch",
+    "L3_r2": 0.8926,
+    "L3_params": {
+     "mean_dwell": 811.2068965517242,
+     "n_flips": 58
+    },
+    "tau3": 1622.4137931034484,
+    "fri_grass_med": 2805.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 38360,
+    "n_fri_forest": 0,
+    "tau3_fri": 2805.0,
+    "n_events": 73,
+    "size_max": 2680,
+    "size_med": 15.0,
+    "tau2": 95.0,
+    "pl": {
+     "alpha": 1.303,
+     "decades": 2.826,
+     "ks": 0.176,
+     "n": 53
+    },
+    "tau1": 1.8907095865802441,
+    "L4_relax": {
+     "tau": 16092.21794716089,
+     "r2": 0.9765787095725751,
+     "c": 0.2557704901669714,
+     "a": -0.053992579964292874
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9779,
+    "L4_params": {
+     "tau": 17160.505413231906
+    },
+    "tau4": 16092.21794716089,
+    "tau3_used": 1622.4137931034484,
+    "sep21": 50.245685891839145,
+    "sep32": 17.07803992740472,
+    "sep43": 9.918689064137425,
+    "span41": 8511.20556080066
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 301,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 8e-05,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.54,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20033713215489266,
+    "T_end": 0.25574040929563957,
+    "fracF_end": 0.30126953125,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8716,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2822.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 40816,
+    "n_fri_forest": 0,
+    "tau3_fri": 2822.0,
+    "n_events": 72,
+    "size_max": 2714,
+    "size_med": 16.0,
+    "tau2": 95.0,
+    "pl": {
+     "alpha": 1.312,
+     "decades": 2.735,
+     "ks": 0.176,
+     "n": 52
+    },
+    "tau1": 1.9659666078831046,
+    "L4_relax": {
+     "tau": 16675.017445003636,
+     "r2": 0.964030790847725,
+     "c": 0.2484462208000995,
+     "a": -0.05307714102203919
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9552,
+    "L4_params": {
+     "tau": 17359.761531993325
+    },
+    "tau4": 16675.017445003636,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 48.32228564771668,
+    "sep32": 16.50877192982456,
+    "sep43": 10.632317180661191,
+    "span41": 8481.841643769732
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 302,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 0.8,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.61,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.28730486539986605,
+    "fracF_end": 0.302978515625,
+    "fracF_last20_drift": 0.00048828125,
+    "L3_model": "switch",
+    "L3_r2": 0.8684,
+    "L3_params": {
+     "mean_dwell": 758.8709677419355,
+     "n_flips": 62
+    },
+    "tau3": 1517.741935483871,
+    "fri_grass_med": 2730.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 37214,
+    "n_fri_forest": 0,
+    "tau3_fri": 2730.0,
+    "n_events": 75,
+    "size_max": 2634,
+    "size_med": 17.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.36,
+     "decades": 2.576,
+     "ks": 0.146,
+     "n": 54
+    },
+    "tau1": 1.883676782815037,
+    "L4_relax": {
+     "tau": 16690.6603348242,
+     "r2": 0.9498526704007482,
+     "c": 0.27626274962534636,
+     "a": -0.05963051701335945
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9282,
+    "L4_params": {
+     "tau": 17472.90965175668
+    },
+    "tau4": 16690.6603348242,
+    "tau3_used": 1517.741935483871,
+    "sep21": 53.08766393062204,
+    "sep32": 15.17741935483871,
+    "sep43": 10.997034439522851,
+    "span41": 8860.681666353106
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 303,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.39,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.27363653139170346,
+    "fracF_end": 0.301513671875,
+    "fracF_last20_drift": 0.000244140625,
+    "L3_model": "switch",
+    "L3_r2": 0.8726,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2185.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 41339,
+    "n_fri_forest": 0,
+    "tau3_fri": 2185.0,
+    "n_events": 73,
+    "size_max": 2709,
+    "size_med": 18.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.326,
+     "decades": 2.613,
+     "ks": 0.199,
+     "n": 51
+    },
+    "tau1": 1.9366257752025713,
+    "L4_relax": {
+     "tau": 16595.043501186286,
+     "r2": 0.9653657592000997,
+     "c": 0.264104246976314,
+     "a": -0.0563178264098106
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9661,
+    "L4_params": {
+     "tau": 17361.20452673146
+    },
+    "tau4": 16595.043501186286,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 51.636202141087374,
+    "sep32": 15.683333333333332,
+    "sep43": 10.581324230299439,
+    "span41": 8569.050207673934
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 304,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00013000000000000002,
+    "mu": 1.5e-05,
+    "kapT": 0.8,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.43,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20048587928259382,
+    "T_end": 0.3332048971380123,
+    "fracF_end": 0.3245166015625,
+    "fracF_last20_drift": 0.0078125,
+    "L3_model": "switch",
+    "L3_r2": 0.8938,
+    "L3_params": {
+     "mean_dwell": 840.1785714285713,
+     "n_flips": 56
+    },
+    "tau3": 1680.3571428571427,
+    "fri_grass_med": 2466.5,
+    "fri_forest_med": null,
+    "n_fri_grass": 35344,
+    "n_fri_forest": 0,
+    "tau3_fri": 2466.5,
+    "n_events": 74,
+    "size_max": 2525,
+    "size_med": 12.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.354,
+     "decades": 2.703,
+     "ks": 0.14,
+     "n": 53
+    },
+    "tau1": 1.8132072994617303,
+    "L4_relax": {
+     "tau": 18933.537452184475,
+     "r2": 0.9554742940263892,
+     "c": 0.3163291745847632,
+     "a": -0.09188262775110655
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.8777,
+    "L4_params": {
+     "tau": 19685.686552750336
+    },
+    "tau4": 18933.537452184475,
+    "tau3_used": 1680.3571428571427,
+    "sep21": 55.15089202965709,
+    "sep32": 16.803571428571427,
+    "sep43": 11.267567452947192,
+    "span41": 10442.014797648948
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 305,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00013000000000000002,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.48,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20048587928259382,
+    "T_end": 0.29414781482261193,
+    "fracF_end": 0.302490234375,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8909,
+    "L3_params": {
+     "mean_dwell": 811.2068965517242,
+     "n_flips": 58
+    },
+    "tau3": 1622.4137931034484,
+    "fri_grass_med": 2137.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 39535,
+    "n_fri_forest": 0,
+    "tau3_fri": 2137.0,
+    "n_events": 72,
+    "size_max": 2665,
+    "size_med": 15.5,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.328,
+     "decades": 2.648,
+     "ks": 0.197,
+     "n": 51
+    },
+    "tau1": 1.8896966835831466,
+    "L4_relax": {
+     "tau": 17290.721830949184,
+     "r2": 0.860650465528709,
+     "c": 0.2802057817748685,
+     "a": -0.05002628206226466
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.7682,
+    "L4_params": {
+     "tau": 18278.507040725315
+    },
+    "tau4": 17290.721830949184,
+    "tau3_used": 1622.4137931034484,
+    "sep21": 52.91854553630538,
+    "sep32": 16.224137931034484,
+    "sep43": 10.65740559187091,
+    "span41": 9149.99850566674
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 306,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00016,
+    "mu": 1.5e-05,
+    "kapT": 0.8,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.43,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20057514970868104,
+    "T_end": 0.4318096228261356,
+    "fracF_end": 0.396578369140625,
+    "fracF_last20_drift": 0.0322265625,
+    "L3_model": "switch",
+    "L3_r2": 0.8981,
+    "L3_params": {
+     "mean_dwell": 918.0,
+     "n_flips": 50
+    },
+    "tau3": 1836.0,
+    "fri_grass_med": 2713.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 30849,
+    "n_fri_forest": 2,
+    "tau3_fri": 2713.0,
+    "n_events": 73,
+    "size_max": 2286,
+    "size_med": 10.0,
+    "tau2": 105.0,
+    "pl": {
+     "alpha": 1.323,
+     "decades": 2.882,
+     "ks": 0.148,
+     "n": 53
+    },
+    "tau1": 1.6973271614155592,
+    "L4_relax": {
+     "tau": 22642.33016194752,
+     "r2": 0.9485180162083351,
+     "c": 0.3966535886604081,
+     "a": -0.1907884334667976
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9385,
+    "L4_params": {
+     "tau": 24191.300980060587
+    },
+    "tau4": 22642.33016194752,
+    "tau3_used": 1836.0,
+    "sep21": 61.861968857218265,
+    "sep32": 17.485714285714284,
+    "sep43": 12.332423835483398,
+    "span41": 13339.99165079287
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 307,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00016,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.54,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20057514970868104,
+    "T_end": 0.3119058552491428,
+    "fracF_end": 0.30322265625,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8911,
+    "L3_params": {
+     "mean_dwell": 811.2068965517242,
+     "n_flips": 58
+    },
+    "tau3": 1622.4137931034484,
+    "fri_grass_med": 2448.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 37716,
+    "n_fri_forest": 0,
+    "tau3_fri": 2448.0,
+    "n_events": 72,
+    "size_max": 2617,
+    "size_med": 18.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.336,
+     "decades": 2.64,
+     "ks": 0.188,
+     "n": 52
+    },
+    "tau1": 1.8589129683566175,
+    "L4_relax": {
+     "tau": 19816.23596244641,
+     "r2": 0.6978296308048474,
+     "c": 0.2930566929594414,
+     "a": -0.04141781990781991
+    },
+    "L4_model": "switch",
+    "L4_r2": 0.6174,
+    "L4_params": {
+     "mean_dwell": 781.25,
+     "n_flips": 8
+    },
+    "tau4": 1562.5,
+    "tau3_used": 1622.4137931034484,
+    "sep21": 53.794879966008075,
+    "sep32": 16.224137931034484,
+    "sep43": 0.9630712008501594,
+    "span41": 840.5449994688762
+   },
+   "gates": {
+    "G1": false,
+    "G2": false,
+    "G5": true
+   }
+  },
+  {
+   "id": 308,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.35,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.63,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.2739888260584707,
+    "fracF_end": 0.302001953125,
+    "fracF_last20_drift": 0.000732421875,
+    "L3_model": "switch",
+    "L3_r2": 0.8862,
+    "L3_params": {
+     "mean_dwell": 812.0689655172415,
+     "n_flips": 58
+    },
+    "tau3": 1624.137931034483,
+    "fri_grass_med": 2186.5,
+    "fri_forest_med": null,
+    "n_fri_grass": 41214,
+    "n_fri_forest": 0,
+    "tau3_fri": 2186.5,
+    "n_events": 73,
+    "size_max": 2710,
+    "size_med": 13.0,
+    "tau2": 95.0,
+    "pl": {
+     "alpha": 1.318,
+     "decades": 2.685,
+     "ks": 0.164,
+     "n": 51
+    },
+    "tau1": 1.9484292718358454,
+    "L4_relax": {
+     "tau": 17082.49773552119,
+     "r2": 0.9637923277639835,
+     "c": 0.264651866179941,
+     "a": -0.05608481875905842
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9653,
+    "L4_params": {
+     "tau": 17547.80165823718
+    },
+    "tau4": 17082.49773552119,
+    "tau3_used": 1624.137931034483,
+    "sep21": 48.75722273998136,
+    "sep32": 17.0961887477314,
+    "sep43": 10.517886079195634,
+    "span41": 8767.31733732667
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 309,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00013000000000000002,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.35,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.45,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20048587928259382,
+    "T_end": 0.29497858649231107,
+    "fracF_end": 0.302490234375,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8674,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2669.5,
+    "fri_forest_med": null,
+    "n_fri_grass": 39192,
+    "n_fri_forest": 0,
+    "tau3_fri": 2669.5,
+    "n_events": 74,
+    "size_max": 2663,
+    "size_med": 18.5,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.339,
+     "decades": 2.647,
+     "ks": 0.163,
+     "n": 54
+    },
+    "tau1": 1.9328668998833916,
+    "L4_relax": {
+     "tau": 17669.44922924525,
+     "r2": 0.8625945341568915,
+     "c": 0.28132463338336744,
+     "a": -0.05087373657039866
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.7577,
+    "L4_params": {
+     "tau": 18675.860809628113
+    },
+    "tau4": 17669.44922924525,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 51.73661983969663,
+    "sep32": 15.683333333333332,
+    "sep43": 11.266386331080925,
+    "span41": 9141.57577550282
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 310,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.55,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.42,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.2735612906502106,
+    "fracF_end": 0.301513671875,
+    "fracF_last20_drift": 0.000244140625,
+    "L3_model": "switch",
+    "L3_r2": 0.8724,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2185.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 41370,
+    "n_fri_forest": 0,
+    "tau3_fri": 2185.0,
+    "n_events": 73,
+    "size_max": 2709,
+    "size_med": 14.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.326,
+     "decades": 2.613,
+     "ks": 0.201,
+     "n": 51
+    },
+    "tau1": 1.9356297921425825,
+    "L4_relax": {
+     "tau": 16713.301336628414,
+     "r2": 0.9641775087432348,
+     "c": 0.2640496619148681,
+     "a": -0.055957440338767254
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9674,
+    "L4_params": {
+     "tau": 17290.188801765722
+    },
+    "tau4": 16713.301336628414,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 51.662771675625144,
+    "sep32": 15.683333333333332,
+    "sep43": 10.656727738551593,
+    "span41": 8634.554709001543
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 311,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.00013000000000000002,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.55,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.41,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20048587928259382,
+    "T_end": 0.2943801813079201,
+    "fracF_end": 0.302490234375,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8718,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2681.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 39320,
+    "n_fri_forest": 0,
+    "tau3_fri": 2681.0,
+    "n_events": 75,
+    "size_max": 2666,
+    "size_med": 17.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.339,
+     "decades": 2.648,
+     "ks": 0.162,
+     "n": 54
+    },
+    "tau1": 1.9393400232486417,
+    "L4_relax": {
+     "tau": 17763.12607895142,
+     "r2": 0.8684196873773368,
+     "c": 0.2809075173319089,
+     "a": -0.05120332733410513
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.7692,
+    "L4_params": {
+     "tau": 18545.64301118377
+    },
+    "tau4": 17763.12607895142,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 51.56393350377375,
+    "sep32": 15.683333333333332,
+    "sep43": 11.32611652217944,
+    "span41": 9159.366519542004
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 312,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.35,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.38,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.2603483082376855,
+    "fracF_end": 0.29736328125,
+    "fracF_last20_drift": 0.0,
+    "L3_model": "switch",
+    "L3_r2": 0.8553,
+    "L3_params": {
+     "mean_dwell": 744.6969696969697,
+     "n_flips": 66
+    },
+    "tau3": 1489.3939393939395,
+    "fri_grass_med": 2777.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 43043,
+    "n_fri_forest": 1,
+    "tau3_fri": 2777.0,
+    "n_events": 107,
+    "size_max": 2733,
+    "size_med": 5.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.377,
+     "decades": 3.437,
+     "ks": 0.327,
+     "n": 107
+    },
+    "tau1": 1.8984507593890074,
+    "L4_relax": {
+     "tau": 14623.218901120503,
+     "r2": 0.9688448506357463,
+     "c": 0.2579535209590007,
+     "a": -0.052619424131184325
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9749,
+    "L4_params": {
+     "tau": 14895.361988163018
+    },
+    "tau4": 14623.218901120503,
+    "tau3_used": 1489.3939393939395,
+    "sep21": 52.67452922096528,
+    "sep32": 14.893939393939394,
+    "sep43": 9.818234460569208,
+    "span41": 7702.711713116438
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 313,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.65,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.49,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2003966254677998,
+    "T_end": 0.274158219855335,
+    "fracF_end": 0.302490234375,
+    "fracF_last20_drift": 0.000244140625,
+    "L3_model": "switch",
+    "L3_r2": 0.8909,
+    "L3_params": {
+     "mean_dwell": 811.2068965517242,
+     "n_flips": 58
+    },
+    "tau3": 1622.4137931034484,
+    "fri_grass_med": 2134.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 39873,
+    "n_fri_forest": 0,
+    "tau3_fri": 2134.0,
+    "n_events": 69,
+    "size_max": 2681,
+    "size_med": 19.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.32,
+     "decades": 2.65,
+     "ks": 0.207,
+     "n": 50
+    },
+    "tau1": 1.8966235834035778,
+    "L4_relax": {
+     "tau": 16189.54948783291,
+     "r2": 0.9664577576422986,
+     "c": 0.264289961596841,
+     "a": -0.056902058155145076
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9684,
+    "L4_params": {
+     "tau": 17070.1839018983
+    },
+    "tau4": 16189.54948783291,
+    "tau3_used": 1622.4137931034484,
+    "sep21": 52.72527499660498,
+    "sep32": 16.224137931034484,
+    "sep43": 9.978680874541007,
+    "span41": 8535.984488171354
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 314,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.45,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.6,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2984457738373564,
+    "T_end": 0.4134720421130635,
+    "fracF_end": 0.468017578125,
+    "fracF_last20_drift": 0.0009765625,
+    "L3_model": "switch",
+    "L3_r2": 0.891,
+    "L3_params": {
+     "mean_dwell": 871.2962962962964,
+     "n_flips": 54
+    },
+    "tau3": 1742.5925925925928,
+    "fri_grass_med": 2963.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 30133,
+    "n_fri_forest": 0,
+    "tau3_fri": 2963.0,
+    "n_events": 65,
+    "size_max": 1941,
+    "size_med": 13.0,
+    "tau2": 115.0,
+    "pl": {
+     "alpha": 1.309,
+     "decades": 2.572,
+     "ks": 0.205,
+     "n": 45
+    },
+    "tau1": 1.9485590331577316,
+    "L4_relax": {
+     "tau": 14904.372083202994,
+     "r2": 0.9868839660307204,
+     "c": 0.4043106492002361,
+     "a": -0.09774658628289175
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9878,
+    "L4_params": {
+     "tau": 15268.062353181833
+    },
+    "tau4": 14904.372083202994,
+    "tau3_used": 1742.5925925925928,
+    "sep21": 59.01797073791349,
+    "sep32": 15.152979066022546,
+    "sep43": 8.552987167831684,
+    "span41": 7648.9199606386865
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 315,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.55
+   },
+   "res": {
+    "runtime": 7.98,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.1793917792123422,
+    "T_end": 0.27295974120347194,
+    "fracF_end": 0.301513671875,
+    "fracF_last20_drift": 0.000244140625,
+    "L3_model": "switch",
+    "L3_r2": 0.8921,
+    "L3_params": {
+     "mean_dwell": 811.2068965517242,
+     "n_flips": 58
+    },
+    "tau3": 1622.4137931034484,
+    "fri_grass_med": 2741.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 40234,
+    "n_fri_forest": 0,
+    "tau3_fri": 2741.0,
+    "n_events": 69,
+    "size_max": 2697,
+    "size_med": 16.0,
+    "tau2": 100.0,
+    "pl": {
+     "alpha": 1.302,
+     "decades": 2.732,
+     "ks": 0.21,
+     "n": 50
+    },
+    "tau1": 1.9086076419518083,
+    "L4_relax": {
+     "tau": 15068.617009168049,
+     "r2": 0.9802629918653872,
+     "c": 0.26296525815805954,
+     "a": -0.0815004665047978
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9838,
+    "L4_params": {
+     "tau": 15710.028297646686
+    },
+    "tau4": 15068.617009168049,
+    "tau3_used": 1622.4137931034484,
+    "sep21": 52.394215448983815,
+    "sep32": 16.224137931034484,
+    "sep43": 9.28777669002919,
+    "span41": 7895.083660965728
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 316,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 1.5e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.45,
+    "Tinit_patch": 0.55
+   },
+   "res": {
+    "runtime": 7.99,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.2660169856377451,
+    "T_end": 0.4126918721168047,
+    "fracF_end": 0.4677734375,
+    "fracF_last20_drift": 0.0009765625,
+    "L3_model": "switch",
+    "L3_r2": 0.8905,
+    "L3_params": {
+     "mean_dwell": 871.2962962962964,
+     "n_flips": 54
+    },
+    "tau3": 1742.5925925925928,
+    "fri_grass_med": 2820.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 30464,
+    "n_fri_forest": 0,
+    "tau3_fri": 2820.0,
+    "n_events": 66,
+    "size_max": 1944,
+    "size_med": 12.5,
+    "tau2": 115.0,
+    "pl": {
+     "alpha": 1.325,
+     "decades": 2.59,
+     "ks": 0.193,
+     "n": 48
+    },
+    "tau1": 1.932364483688987,
+    "L4_relax": {
+     "tau": 14114.782120679543,
+     "r2": 0.992673557692111,
+     "c": 0.40334545309117387,
+     "a": -0.14079333315809245
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9919,
+    "L4_params": {
+     "tau": 14423.397602298368
+    },
+    "tau4": 14114.782120679543,
+    "tau3_used": 1742.5925925925928,
+    "sep21": 59.512582108970896,
+    "sep32": 15.152979066022546,
+    "sep43": 8.099874968296442,
+    "span41": 7304.4098252797885
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 317,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 8e-06,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.79,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20043236976060408,
+    "T_end": 0.29692502618311895,
+    "fracF_end": 0.30224609375,
+    "fracF_last20_drift": 0.00048828125,
+    "L3_model": "switch",
+    "L3_r2": 0.8697,
+    "L3_params": {
+     "mean_dwell": 784.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1568.3333333333333,
+    "fri_grass_med": 2639.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 40643,
+    "n_fri_forest": 0,
+    "tau3_fri": 2639.0,
+    "n_events": 73,
+    "size_max": 2703,
+    "size_med": 16.0,
+    "tau2": 95.0,
+    "pl": {
+     "alpha": 1.335,
+     "decades": 2.654,
+     "ks": 0.182,
+     "n": 53
+    },
+    "tau1": 1.9573396499781524,
+    "L4_relax": {
+     "tau": 15568.8350169913,
+     "r2": 0.9763340084840615,
+     "c": 0.28672757514346175,
+     "a": -0.07799544904840996
+    },
+    "L4_model": "relaxation",
+    "L4_r2": 0.9809,
+    "L4_params": {
+     "tau": 16109.691565646253
+    },
+    "tau4": 15568.8350169913,
+    "tau3_used": 1568.3333333333333,
+    "sep21": 48.53526571183513,
+    "sep32": 16.50877192982456,
+    "sep43": 9.926993634638448,
+    "span41": 7954.0794144568
+   },
+   "gates": {
+    "G1": true,
+    "G2": true,
+    "G5": true
+   }
+  },
+  {
+   "id": 318,
+   "stage": "sweepS1",
+   "params": {
+    "L": 64,
+    "T": 60000,
+    "init": "mixed",
+    "gT": 0.0001,
+    "mu": 3e-05,
+    "kapT": 1.5,
+    "Tm": 0.45,
+    "rhoT": 0.03,
+    "cT": 0.5,
+    "patch_frac": 0.3,
+    "Tinit_patch": 0.62
+   },
+   "res": {
+    "runtime": 7.96,
+    "f": 7.498194068920034e-07,
+    "Tg": 2930.4,
+    "T_start": 0.20032005802235425,
+    "T_end": 0.21595364468529032,
+    "fracF_end": 0.29736328125,
+    "fracF_last20_drift": 0.000732421875,
+    "L3_model": "switch",
+    "L3_r2": 0.8794,
+    "L3_params": {
+     "mean_dwell": 819.1666666666666,
+     "n_flips": 60
+    },
+    "tau3": 1638.3333333333333,
+    "fri_grass_med": 2816.0,
+    "fri_forest_med": null,
+    "n_fri_grass": 42870,
+    "n_fri_forest": 0,
+    "tau3_fri": 2816.0,
+    "n_events": 86,
+    "size_max": 2711,
+    "size_med": 11.5,
+    "tau2": 95.0,
+    "pl": {
+     "alpha": 1.282,
+     "decades": 3.035,
+     "ks": 0.14,
+     "n": 60
+    },
+    "tau1": 1.9779410157189392,
+    "L4_relax": {
+     "tau": 22885.956891631115,
+     "r2": 0.6283078381647553,
+     "c": 0.21441050635198913,
+     "a": -0.00888190747258565
+    },
+    "L4_model": "switch",
+    "L4_r2": 0.6565,
+    "L4_params": {
+     "mean_dwell": 1791.6666666666667,
+     "n_flips": 24
+    },
+    "tau4": 3583.3333333333335,
+    "tau3_used": 1638.3333333333333,
+    "sep21": 48.02974368043505,
+    "sep32": 17.24561403508772,
+    "sep43": 2.187182095625636,
+    "span41": 1811.6482265427255
+   },
+   "gates": {
+    "G1": false,
+    "G2": false,
+    "G5": true
+   }
+  }
+ ],
+ "bistability_map_kapT_gT": [
+  {
+   "gT": 8e-05,
+   "kapT": 0.8,
+   "mu": 3e-05,
+   "W": 0.375,
+   "R": 0.04,
+   "sav": {
+    "T_end": 0.008111719895629293,
+    "fracF": 0.0,
+    "rt": 18.4
+   },
+   "forest": {
+    "T_end": 0.6402392968368116,
+    "fracF": 0.99853515625,
+    "rt": 18.1
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00012,
+   "kapT": 0.8,
+   "mu": 3e-05,
+   "W": 0.25,
+   "R": 0.06,
+   "sav": {
+    "T_end": 0.014775273274334541,
+    "fracF": 0.0,
+    "rt": 19.8
+   },
+   "forest": {
+    "T_end": 0.7530478567974771,
+    "fracF": 1.0,
+    "rt": 19.6
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00018,
+   "kapT": 0.8,
+   "mu": 3e-05,
+   "W": 0.16666666666666666,
+   "R": 0.09000000000000001,
+   "sav": {
+    "T_end": 0.03238191285708268,
+    "fracF": 0.0,
+    "rt": 21.9
+   },
+   "forest": {
+    "T_end": 0.8341603828144084,
+    "fracF": 1.0,
+    "rt": 21.1
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00027,
+   "kapT": 0.8,
+   "mu": 3e-05,
+   "W": 0.11111111111111112,
+   "R": 0.135,
+   "sav": {
+    "T_end": 0.8862753376530573,
+    "fracF": 1.0,
+    "rt": 22.4
+   },
+   "forest": {
+    "T_end": 0.8891138828585167,
+    "fracF": 1.0,
+    "rt": 19.9
+   },
+   "bistable": false
+  },
+  {
+   "gT": 0.0004,
+   "kapT": 0.8,
+   "mu": 3e-05,
+   "W": 0.075,
+   "R": 0.2,
+   "sav": {
+    "T_end": 0.925022609644409,
+    "fracF": 1.0,
+    "rt": 20.2
+   },
+   "forest": {
+    "T_end": 0.925022955966423,
+    "fracF": 1.0,
+    "rt": 20.2
+   },
+   "bistable": false
+  },
+  {
+   "gT": 8e-05,
+   "kapT": 1.5,
+   "mu": 3e-05,
+   "W": 0.375,
+   "R": 0.04,
+   "sav": {
+    "T_end": 0.004666701095200334,
+    "fracF": 0.0,
+    "rt": 20.9
+   },
+   "forest": {
+    "T_end": 0.6396584201834374,
+    "fracF": 0.995843505859375,
+    "rt": 19.7
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00012,
+   "kapT": 1.5,
+   "mu": 3e-05,
+   "W": 0.25,
+   "R": 0.06,
+   "sav": {
+    "T_end": 0.007419767788286813,
+    "fracF": 0.0,
+    "rt": 20.9
+   },
+   "forest": {
+    "T_end": 0.753027248793051,
+    "fracF": 1.0,
+    "rt": 21.6
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00018,
+   "kapT": 1.5,
+   "mu": 3e-05,
+   "W": 0.16666666666666666,
+   "R": 0.09000000000000001,
+   "sav": {
+    "T_end": 0.012734911455859716,
+    "fracF": 0.0,
+    "rt": 12.5
+   },
+   "forest": {
+    "T_end": 0.8341597215582279,
+    "fracF": 1.0,
+    "rt": 11.2
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00027,
+   "kapT": 1.5,
+   "mu": 3e-05,
+   "W": 0.11111111111111112,
+   "R": 0.135,
+   "sav": {
+    "T_end": 0.025268765736095395,
+    "fracF": 0.0,
+    "rt": 11.3
+   },
+   "forest": {
+    "T_end": 0.8891138828585167,
+    "fracF": 1.0,
+    "rt": 10.8
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.0004,
+   "kapT": 1.5,
+   "mu": 3e-05,
+   "W": 0.075,
+   "R": 0.2,
+   "sav": {
+    "T_end": 0.11319457042162964,
+    "fracF": 0.027956542968750005,
+    "rt": 11.4
+   },
+   "forest": {
+    "T_end": 0.925022955966423,
+    "fracF": 1.0,
+    "rt": 11.0
+   },
+   "bistable": true
+  },
+  {
+   "gT": 8e-05,
+   "kapT": 2.5,
+   "mu": 3e-05,
+   "W": 0.375,
+   "R": 0.04,
+   "sav": {
+    "T_end": 0.0031981840199965467,
+    "fracF": 0.0,
+    "rt": 10.8
+   },
+   "forest": {
+    "T_end": 0.6386839051876074,
+    "fracF": 0.99365234375,
+    "rt": 10.4
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00012,
+   "kapT": 2.5,
+   "mu": 3e-05,
+   "W": 0.25,
+   "R": 0.06,
+   "sav": {
+    "T_end": 0.005117582494481838,
+    "fracF": 0.0,
+    "rt": 10.9
+   },
+   "forest": {
+    "T_end": 0.7529961656033073,
+    "fracF": 1.0,
+    "rt": 10.4
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00018,
+   "kapT": 2.5,
+   "mu": 3e-05,
+   "W": 0.16666666666666666,
+   "R": 0.09000000000000001,
+   "sav": {
+    "T_end": 0.008512428593704244,
+    "fracF": 0.0,
+    "rt": 10.9
+   },
+   "forest": {
+    "T_end": 0.8341587746625432,
+    "fracF": 1.0,
+    "rt": 10.4
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.00027,
+   "kapT": 2.5,
+   "mu": 3e-05,
+   "W": 0.11111111111111112,
+   "R": 0.135,
+   "sav": {
+    "T_end": 0.014221949795098715,
+    "fracF": 0.0,
+    "rt": 10.8
+   },
+   "forest": {
+    "T_end": 0.8891138828585167,
+    "fracF": 1.0,
+    "rt": 10.3
+   },
+   "bistable": true
+  },
+  {
+   "gT": 0.0004,
+   "kapT": 2.5,
+   "mu": 3e-05,
+   "W": 0.075,
+   "R": 0.2,
+   "sav": {
+    "T_end": 0.030205554476755093,
+    "fracF": 0.0,
+    "rt": 10.9
+   },
+   "forest": {
+    "T_end": 0.925022955966423,
+    "fracF": 1.0,
+    "rt": 10.7
+   },
+   "bistable": true
+  }
+ ],
+ "bistability_seed_jitter": [
+  {
+   "seed": 1,
+   "sav_fF": 0.0,
+   "for_fF": 1.0,
+   "bistable": true
+  },
+  {
+   "seed": 2,
+   "sav_fF": 0.0,
+   "for_fF": 1.0,
+   "bistable": true
+  },
+  {
+   "seed": 3,
+   "sav_fF": 0.0,
+   "for_fF": 1.0,
+   "bistable": true
+  },
+  {
+   "jit": 0,
+   "sav_fF": 0.0,
+   "for_fF": 1.0,
+   "bistable": true
+  },
+  {
+   "jit": 1,
+   "sav_fF": 0.0,
+   "for_fF": 1.0,
+   "bistable": true
+  }
+ ],
+ "hysteresis_loop": {
+  "up_branch": [
+   {
+    "gT": 4e-05,
+    "T_up": 0.003062554378306688,
+    "fF_up": 0.0,
+    "T_dn": 0.6734319667855233,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 6e-05,
+    "T_up": 0.004738991146727296,
+    "fF_up": 0.0,
+    "T_dn": 0.7620475518288019,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 9e-05,
+    "T_up": 0.007593112995199808,
+    "fF_up": 0.0,
+    "T_dn": 0.8364702869173903,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 0.000135,
+    "T_up": 0.012697667518340268,
+    "fF_up": 0.0,
+    "T_dn": 0.8902893622506385,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 0.0002,
+    "T_up": 0.022940264530009313,
+    "fF_up": 0.0,
+    "T_dn": 0.925802888929152,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 0.0003,
+    "T_up": 0.05145146407256573,
+    "fF_up": 0.0,
+    "T_dn": 0.9504686217912041,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 0.00045,
+    "T_up": 0.9669496467697566,
+    "fF_up": 1.0,
+    "T_dn": 0.9669496927288709,
+    "fF_dn": 1.0
+   },
+   {
+    "gT": 0.000675,
+    "T_up": 0.9779536923012881,
+    "fF_up": 1.0,
+    "T_dn": 0.9779536923014984,
+    "fF_dn": 1.0
+   }
+  ],
+  "up_branch_refine": [
+   {
+    "gT": 0.0003,
+    "T_up": 0.05145146407256573,
+    "fF_up": 0.0
+   },
+   {
+    "gT": 0.00034,
+    "T_up": 0.06956430043826761,
+    "fF_up": 0.0
+   },
+   {
+    "gT": 0.00037,
+    "T_up": 0.9589352488429124,
+    "fF_up": 1.0
+   }
+  ],
+  "down_branch_low": [
+   {
+    "gT": 8e-06,
+    "T_dn": 0.40750018365764207,
+    "fF_dn": 0.0
+   },
+   {
+    "gT": 1.5e-05,
+    "T_dn": 0.4825184274095692,
+    "fF_dn": 0.3457797851562501
+   },
+   {
+    "gT": 2.5e-05,
+    "T_dn": 0.5722474773142936,
+    "fF_dn": 0.987548828125
+   },
+   {
+    "gT": 4e-05,
+    "T_dn": 0.6734319667855233,
+    "fF_dn": 1.0
+   }
+  ],
+  "window": "gT in [~2.5e-5 (forest collapse), ~3.5e-4 (savanna tips to forest)]: 14x wide in the growth price"
+ },
+ "g3_response": [
+  {
+   "gT": 6e-05,
+   "W": 0.25,
+   "R": 0.03,
+   "Tstar_forest": [
+    0.7620475518288019,
+    0.76227978319718,
+    0.7626277850501354
+   ],
+   "Tstar_med": 0.76227978319718,
+   "T_savanna_end": 0.004738991146727296,
+   "fracF_savanna": 0.0,
+   "tau4_mixed": 15607.608095245168,
+   "tau4_r2": 0.8514190276920863
+  },
+  {
+   "gT": 8e-05,
+   "W": 0.1875,
+   "R": 0.04,
+   "Tstar_forest": [
+    0.8169278732702223,
+    0.8171164426650211,
+    0.817391228534815
+   ],
+   "Tstar_med": 0.8171164426650211,
+   "T_savanna_end": 0.006493830158870473,
+   "fracF_savanna": 0.0,
+   "tau4_mixed": 16675.017445003636,
+   "tau4_r2": 0.964030790847725
+  },
+  {
+   "gT": 0.00012,
+   "W": 0.125,
+   "R": 0.06,
+   "Tstar_forest": [
+    0.8766918561947754,
+    0.8768210082062402,
+    0.8770076550567348
+   ],
+   "Tstar_med": 0.8768210082062402,
+   "T_savanna_end": 0.011671223431412931,
+   "fracF_savanna": 0.0,
+   "tau4_mixed": 16773.02051841888,
+   "tau4_r2": 0.9095343291489166
+  },
+  {
+   "gT": 0.00018,
+   "W": 0.08333333333333333,
+   "R": 0.09000000000000001,
+   "Tstar_forest": [
+    0.9175946312831803,
+    0.9176821501546135,
+    0.917805333156219
+   ],
+   "Tstar_med": 0.9176821501546135,
+   "T_savanna_end": 0.018876798983431965,
+   "fracF_savanna": 0.0,
+   "tau4_mixed": 20605.211390392527,
+   "tau4_r2": 0.6890816112890077
+  },
+  {
+   "gT": 0.00027,
+   "W": 0.05555555555555556,
+   "R": 0.135,
+   "Tstar_forest": [
+    0.9449816855100606,
+    0.9450407757541991,
+    0.9451220884457886
+   ],
+   "Tstar_med": 0.9450407757541991,
+   "T_savanna_end": 0.04329515443632994,
+   "fracF_savanna": 0.0,
+   "tau4_mixed": 23170.966070968774,
+   "tau4_r2": 0.892325238397601
+  },
+  {
+   "gT": 0.0004,
+   "W": 0.0375,
+   "R": 0.2,
+   "Tstar_forest": [
+    0.9628265891831829,
+    0.9628668015270074,
+    0.9629213387460809
+   ],
+   "Tstar_med": 0.9628668015270074,
+   "T_savanna_end": 0.9628234895529879,
+   "fracF_savanna": 1.0,
+   "tau4_mixed": 7459.703044069327,
+   "tau4_r2": 0.7043622504129685
+  }
+ ],
+ "gate_certification_S1": {
+  "base": {
+   "g": 0.002,
+   "Lam": 9.0,
+   "theta": 0.78,
+   "M": 2.0,
+   "D": 8.0,
+   "gsig": 0.35,
+   "rho": 0.03,
+   "gT": 0.0001,
+   "mu": 1.5e-05,
+   "kapT": 1.5,
+   "Tm": 0.45,
+   "rhoT": 0.03,
+   "cT": 0.5,
+   "patch_frac": 0.3,
+   "Tinit_patch": 0.62
+  },
+  "seeds": [
+   {
+    "seed": 0,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "L4_tau": 16595.043501186286,
+    "L4_r2": 0.9653657592000997,
+    "L3_model": "switch",
+    "L3_r2": 0.8726,
+    "tau3": 1568.3333333333333,
+    "tau2": 100.0,
+    "tau1": 1.9366257752025713,
+    "sep21": 51.636202141087374,
+    "sep32": 15.683333333333332,
+    "sep43": 10.581324230299439,
+    "span41": 8569.050207673934,
+    "n_events": 73,
+    "fri_grass": 2185.0,
+    "n_fri_forest": 0,
+    "fracF_end": 0.301513671875,
+    "T_end": 0.27363653139170346,
+    "runtime": 7.7
+   },
+   {
+    "seed": 1,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "L4_tau": 13991.235596186842,
+    "L4_r2": 0.9744007959191413,
+    "L3_model": "switch",
+    "L3_r2": 0.8873,
+    "tau3": 1606.5573770491803,
+    "tau2": 95.0,
+    "tau1": 1.9257844927776855,
+    "sep21": 49.33054573670144,
+    "sep32": 16.911130284728213,
+    "sep43": 8.708830320075483,
+    "span41": 7265.213552533266,
+    "n_events": 71,
+    "fri_grass": 2452.0,
+    "n_fri_forest": 0,
+    "fracF_end": 0.30029296875,
+    "T_end": 0.2601663850643728,
+    "runtime": 7.65
+   },
+   {
+    "seed": 2,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "L4_tau": 16977.5595581959,
+    "L4_r2": 0.9556238490750727,
+    "L3_model": "switch",
+    "L3_r2": 0.8968,
+    "tau3": 1965.3061224489797,
+    "tau2": 95.0,
+    "tau1": 2.070619636336676,
+    "sep21": 45.879986035519906,
+    "sep32": 20.687432867884,
+    "sep43": 8.638633627742461,
+    "span41": 8199.265215234056,
+    "n_events": 57,
+    "fri_grass": 2329.0,
+    "n_fri_forest": 0,
+    "fracF_end": 0.308349609375,
+    "T_end": 0.27076995739792575,
+    "runtime": 7.81
+   },
+   {
+    "seed": 3,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "L4_tau": 14707.287957783947,
+    "L4_r2": 0.9721729611598348,
+    "L3_model": "switch",
+    "L3_r2": 0.8884,
+    "tau3": 1683.050847457627,
+    "tau2": 105.0,
+    "tau1": 1.9692194943202639,
+    "sep21": 53.320617789356156,
+    "sep32": 16.02905569007264,
+    "sep43": 8.738469179347964,
+    "span41": 7468.587427761889,
+    "n_events": 75,
+    "fri_grass": 2534.0,
+    "n_fri_forest": 0,
+    "fracF_end": 0.31787109375,
+    "T_end": 0.275869188117573,
+    "runtime": 8.08
+   }
+  ],
+  "jitter": [
+   {
+    "j": 0,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "kw": {
+     "g": 0.002113,
+     "Lam": 9.308676,
+     "theta": 0.739031,
+     "M": 1.871785,
+     "D": 7.754598,
+     "gsig": 0.325648,
+     "rho": 0.028869,
+     "gT": 9.5e-05,
+     "mu": 1.5e-05,
+     "kapT": 1.625313,
+     "Tm": 0.444984,
+     "rhoT": 0.031562,
+     "cT": 0.507528,
+     "patch_frac": 0.300713,
+     "Tinit_patch": 0.639488
+    },
+    "L4_tau": 13946.04018548188,
+    "L4_r2": 0.958182739688858,
+    "L3_r2": 0.8317,
+    "sep43": 10.142574680350458,
+    "span41": 5866.0210064993735,
+    "n_events": 89
+   },
+   {
+    "j": 1,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "kw": {
+     "g": 0.002179,
+     "Lam": 9.747547,
+     "theta": 0.814357,
+     "M": 1.849102,
+     "D": 8.654946,
+     "gsig": 0.36493,
+     "rho": 0.02912,
+     "gT": 9.4e-05,
+     "mu": 1.6e-05,
+     "kapT": 1.594706,
+     "Tm": 0.435628,
+     "rhoT": 0.032777,
+     "cT": 0.518379,
+     "patch_frac": 0.272184,
+     "Tinit_patch": 0.605726
+    },
+    "L4_tau": 14660.18044115373,
+    "L4_r2": 0.9731986172551191,
+    "L3_r2": 0.8827,
+    "sep43": 8.19513192362631,
+    "span41": 7523.521672672567,
+    "n_events": 106
+   },
+   {
+    "j": 2,
+    "ok": true,
+    "gates": {
+     "G1": true,
+     "G2": true,
+     "G5": true
+    },
+    "kw": {
+     "g": 0.001857,
+     "Lam": 8.737568,
+     "theta": 0.852964,
+     "M": 2.038235,
+     "D": 7.833263,
+     "gsig": 0.327872,
+     "rho": 0.028665,
+     "gT": 0.000104,
+     "mu": 1.6e-05,
+     "kapT": 1.476877,
+     "Tm": 0.421517,
+     "rhoT": 0.030004,
+     "cT": 0.532354,
+     "patch_frac": 0.291805,
+     "Tinit_patch": 0.618615
+    },
+    "L4_tau": 15599.413730208584,
+    "L4_r2": 0.9490802408950662,
+    "L3_r2": 0.8875,
+    "sep43": 7.335147522041654,
+    "span41": 6246.978167324732,
+    "n_events": 91
+   }
+  ],
+  "G4": true
+ },
+ "negative_results": [
+  "veg_flam=0.8 (flammable canopy): bistability destroyed, forest cannot exist (savanna everywhere). veg_flam=0.4 still bistable. Justifies suppression choice.",
+  "W=mu/gT>=0.30 (id 318): senescence too strong -> L4 never settles cleanly (r2=0.63), sep43=2.2. Forest branch also decays at gT<=1.5e-5 (fF 0.35->0).",
+  "kapT low + R high (id 307, R=0.08 kapT=1.5 interplay): slow encroachment of savanna wrecks the relaxation fit (r2=0.70) -> L4 needs T* separation from trap zone.",
+  "No biome turnover oscillator at L=64: static gsig map pins the mosaic; L4 is relaxation to a pinned attractor. A 5th layer (biome cycle) would need slow climate forcing or tree senescence waves - not present by design.",
+  "Fires NEVER enter mature forest (n_fri_forest=0 in all mixed runs; burn count 15.45/cell grass vs 0.00/cell forest): local modulation is total (infinite FRI contrast), not merely a slowdown."
+ ]
+}

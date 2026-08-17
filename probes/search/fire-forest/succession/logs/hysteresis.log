@@ -1,0 +1,9 @@
+gT=4.00e-05 | savanna-branch T=0.003 fF=0.00 | forest-branch T=0.673 fF=1.00 | gap=0.670
+gT=6.00e-05 | savanna-branch T=0.005 fF=0.00 | forest-branch T=0.762 fF=1.00 | gap=0.757
+gT=9.00e-05 | savanna-branch T=0.008 fF=0.00 | forest-branch T=0.836 fF=1.00 | gap=0.829
+gT=1.35e-04 | savanna-branch T=0.013 fF=0.00 | forest-branch T=0.890 fF=1.00 | gap=0.878
+gT=2.00e-04 | savanna-branch T=0.023 fF=0.00 | forest-branch T=0.926 fF=1.00 | gap=0.903
+gT=3.00e-04 | savanna-branch T=0.051 fF=0.00 | forest-branch T=0.950 fF=1.00 | gap=0.899
+gT=4.50e-04 | savanna-branch T=0.967 fF=1.00 | forest-branch T=0.967 fF=1.00 | gap=0.000
+gT=6.75e-04 | savanna-branch T=0.978 fF=1.00 | forest-branch T=0.978 fF=1.00 | gap=0.000
+done
