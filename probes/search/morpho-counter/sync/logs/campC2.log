@@ -10,3 +10,6 @@ kc=5.0e-04: R_c_upper ~ 1.1969
    probe R=1.4500 kc=1.5e-03 -> marginal (slips=1 exc=1.0544 rho=1.1209)
    probe R=1.3750 kc=1.5e-03 -> locked (slips=0 exc=0.0995 rho=0.9981)
    probe R=1.4125 kc=1.5e-03 -> locked (slips=0 exc=0.9618 rho=1.0954)
+   probe R=1.4312 kc=1.5e-03 -> locked (slips=0 exc=0.2062 rho=1.0012)
+kc=1.5e-03: R_c_upper ~ 1.4406
+campC2 done

@@ -1,0 +1,9 @@
+seed=1: v=slip slips=6 T_med=4127.5 T3=1591.2 sep34=2.6 r2=0.8574 flips=13 PASS=True (55s)
+seed=2: v=slip slips=7 T_med=3036.25 T3=1656.9 sep34=1.8 r2=0.8322 flips=13 PASS=False (87s)
+seed=3: v=slip slips=4 T_med=3867.5 T3=1631.2 sep34=2.4 r2=0.3256 flips=14 PASS=False (128s)
+seed=4: v=slip slips=4 T_med=11315.0 T3=1635.6 sep34=6.9 r2=0.6829 flips=7 PASS=False (88s)
+jit=0 (R=1.80 kc=2.1e-03 ns=5.2e-04): v=locked slips=0 r2=None sep34=None PASS=False
+jit=1 (R=1.79 kc=2.0e-03 ns=4.9e-04): v=marginal slips=2 r2=None sep34=None PASS=False
+jit=2 (R=1.85 kc=1.8e-03 ns=5.3e-04): v=slip slips=4 r2=0.834 sep34=3.5 PASS=False
+jit=3 (R=1.77 kc=2.2e-03 ns=5.4e-04): v=marginal slips=2 r2=None sep34=None PASS=False
+g4_slip2 done

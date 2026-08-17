@@ -144,3 +144,23 @@ fire-forest+succession | trophic-tower+eco-evo | slime-lifecycle+cheaters
   outside, R_c(kc) edges mapped) — needs slip-scaling law + summary.
 - Process lesson: child sessions are ephemeral, disk + controller ledger are the
   real program state. Resume prompts should always point at surviving artifacts.
+
+
+## Round 2 fan-in
+
+### trophic-tower/ecoevo — scorecard received; AUDIT: headline confirmed, boundary CORRECTED
+- L4 attractor REAL (audited): G* from above/below, two clean G3 curves (G* vs price c,
+  G* vs mutation m), evolutionary rescue (G0=3.0 -> meanP 0.02 -> recovers), variance
+  maintained sd~1.3m. Their m=0/G=1 control reproduces certified TC* exactly.
+- HEADLINE NEGATIVE partially confirmed, boundary corrected by audit: on fresh seed 71,
+  m=0.15 dissolves the teacup (CONFIRMED: top switch r2~.6, ecoG1/G2 False) but
+  m=0.02 KEEPS it coherent (CONTRADICTS their claim). Dissolution boundary lies in
+  m in (0.02, 0.15); correction campaign requested (coherent-fraction vs sdG law).
+- FIRST AUDIT CORRECTION of the program — the audit layer is earning its cost:
+  headline claims survive, boundary claims get sharpened. Process rule reinforced:
+  boundary claims need multi-seed fractions, not single-seed thresholds.
+- The deep design finding stands either way: variance-for-evolution vs coherence-for-
+  clocks is a REAL TENSION in this coupling type (evolution-on-oscillator). Compare:
+  fire+succession (competition-on-clock) and slime+cheaters pending; morpho sync
+  (clock-on-clock) locking already confirmed — stacking couplings differ in whether
+  they preserve the lower tower.

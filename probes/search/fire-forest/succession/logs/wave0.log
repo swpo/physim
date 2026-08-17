@@ -1,0 +1,8 @@
+kapT=0 savanna: T 0.020 -> 0.715 fracF_end=1.000  (expect invasion)
+t= 29995 meanT=0.260 fracF=0.302
+t= 59995 meanT=0.276 fracF=0.303
+t= 89995 meanT=0.265 fracF=0.305
+t=119995 meanT=0.267 fracF=0.305
+t=149995 meanT=0.268 fracF=0.307
+L4 relax tau=44634 r2=0.632 | L3 switch r2=0.889 tau3=1665 | seps 43=1.1 span=931 rt=48.7
+done

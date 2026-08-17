@@ -1,0 +1,5 @@
+gT=1.0e-04 R=0.050 W=0.30 | T 0.85-> 0.703 (mid 0.689) fracF=1.000 | L4relax tau=1182 r2=-1.005 | L3 switch r2=0.876 | rt=15s
+gT=1.6e-04 R=0.080 W=0.19 | T 0.85-> 0.814 (mid 0.812) fracF=1.000 | L4relax tau=12361 r2=0.824 | L3 switch r2=0.883 | rt=15s
+gT=2.4e-04 R=0.120 W=0.12 | T 0.85-> 0.875 (mid 0.875) fracF=1.000 | L4relax tau=7209 r2=0.931 | L3 relaxation r2=0.916 | rt=15s
+gT=3.6e-04 R=0.180 W=0.08 | T 0.85-> 0.917 (mid 0.917) fracF=1.000 | L4relax tau=4559 r2=0.953 | L3 constant r2=1.000 | rt=15s
+done

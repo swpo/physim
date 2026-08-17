@@ -49,6 +49,13 @@ def make_init(L, rng, init, patch_frac, Tinit_patch):
     B = rng.uniform(0.05, 0.35, (L, L))
     if init == "savanna":
         T = np.full((L, L), 0.02)
+    elif isinstance(init, float) or (isinstance(init, str) and init.startswith("uni")):
+        val = init if isinstance(init, float) else float(init[3:])
+        T = np.full((L, L), val)
+    elif init == "half":
+        T = np.full((L, L), 0.02)
+        T[:, :L // 2] = 0.85
+        B[:, :L // 2] = 0.08
     elif init == "forest":
         T = np.full((L, L), 0.85); B[:] = 0.08
     elif init == "mixed":
@@ -73,7 +80,7 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
         gsig=0.35, rho=0.03, gT=6e-5, mu=3e-5, Tm=0.45, wm=0.08, kapT=1.5,
         rhoT=0.03, delta=0.2, w=0.05, Bfloor=0.01, Fq=0.02, seed=0, rec=5,
         init="mixed", patch_frac=0.30, Tinit_patch=0.62,
-        snap_times=(), f_abs=None, veg_flam=0.0, record_maps=True):
+        snap_times=(), f_abs=None, veg_flam=0.0, cT=0.5, record_maps=True):
     rng = np.random.default_rng(seed)
     beta = 4.0 * delta * M
     eta = delta * D
@@ -87,13 +94,14 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
     nrec = T_ticks // rec
     meanB = np.zeros(nrec); phi = np.zeros(nrec)
     meanT = np.zeros(nrec); fracForest = np.zeros(nrec)
+    phi_grass = np.zeros(nrec)
     area = np.zeros(nrec, np.int32); ign = np.zeros(nrec, np.int32)
     # per-cell fire-return bookkeeping, split by biome at ignition time
     last_burn = np.full((L, L), -1.0)
     fri_grass = []; fri_forest = []
     burn_count = np.zeros((L, L), np.int32)
     hot_ticks = 0; ign_total = 0
-    snaps = {}
+    snaps = {}; prof_list = []
     t0 = time.time()
     inv_LL = 1.0 / (L * L)
     for t in range(T_ticks):
@@ -115,8 +123,8 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
         T += gTmap * (rhoT + 0.5 * (T + Tn)) * (1.0 - T) - mu * T \
              - kapT * F * trap * T
         np.clip(T, 0.0, 0.99, out=T)
-        # grass layer
-        space = 1.0 - B - T
+        # grass layer (canopy asymmetry: grass persists under open canopy)
+        space = 1.0 - B - cT * T
         B += gmap * (rho + B) * space - eta * F * B
         np.clip(B, Bfloor, 1.0, out=B)
         hot = F > 0.1
@@ -135,6 +143,9 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
         r = t // rec
         meanB[r] += B.mean(); phi[r] += (B > theta).sum() * inv_LL
         meanT[r] += T.mean(); fracForest[r] += (T > 0.5).sum() * inv_LL
+        gm = T < 0.3
+        ng = int(gm.sum())
+        phi_grass[r] += ((B > theta) & gm).sum() / max(ng, 1)
         a = int(hot.sum())
         if a > area[r]: area[r] = a
         ni = int(new.sum())
@@ -143,8 +154,12 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
         hot_prev = hot
         if t in snap_times:
             snaps[t] = (B.copy(), F.copy(), T.copy())
+        if t % 500 == 0:
+            prof_list.append(T.mean(0).copy())
     meanB /= rec; phi /= rec; meanT /= rec; fracForest /= rec
-    return dict(meanB=meanB, phi=phi, meanT=meanT, fracForest=fracForest,
+    phi_grass /= rec
+    return dict(meanB=meanB, phi=phi, phi_grass=phi_grass, meanT=meanT,
+                fracForest=fracForest, prof=np.array(prof_list),
                 area=area, ign=ign, rec=rec, hot_ticks=hot_ticks,
                 ign_total=ign_total, snaps=snaps, fri_grass=fri_grass,
                 fri_forest=fri_forest, burn_count=burn_count,
@@ -153,7 +168,7 @@ def run(L=64, T_ticks=60000, g=2e-3, Lam=9.0, theta=0.78, M=2.0, D=8.0,
                 T_ticks=T_ticks,
                 params=dict(L=L, T_ticks=T_ticks, g=g, Lam=Lam, theta=theta,
                             M=M, D=D, gsig=gsig, rho=rho, gT=gT, mu=mu,
-                            Tm=Tm, wm=wm, kapT=kapT, rhoT=rhoT, delta=delta,
-                            w=w, seed=seed, init=init,
+                            Tm=Tm, wm=wm, kapT=kapT, rhoT=rhoT, cT=cT,
+                            delta=delta, w=w, seed=seed, init=init,
                             patch_frac=patch_frac, Tinit_patch=Tinit_patch,
                             veg_flam=veg_flam))
