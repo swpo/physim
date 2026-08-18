@@ -60,9 +60,36 @@ M0 existence (DONE Day-0, controller probe): persistent blob at
    area~26px stable 2000 tu, noise-robust to 2e-3; neighbors: k1=-0.9 dies,
    k1=-0.5 & k4=2.5 replicate into spot soup. Blob is LATTICE-PINNED (disp=0 under
    noise) — motility is not free, needs drift bifurcation (M1).
-M1 motility + un-pinning (searcher: blob-motility)
-M2 binding / molecules (searcher: blob-binding)
-M3 flavors / multi-species architecture (searcher: blob-flavors)
+M1 motility + un-pinning — DONE (controller fan-in 2026-02-18): drift bifurcation
+   at Dv=0.65, c=sqrt(0.0299(tau-4.78)) r2=0.993; unpinned (IMEX-FFT dx=0.5, c
+   converged 0.6% vs dx=0.25; directions isotropic 0/8 lattice-clustered); 10ktu
+   lifetime; corridor k1(-0.75,-0.68) Dv(0.55,0.67] tau(4.78,~5.45); wall
+   reflection + soft blob-blob scattering (no merge) logged. AUDITED seeds 23/31.
+   TRAP for future: at tau=5 the plain u-only Gaussian IC dies — use symmetric
+   centered v,w bumps (kick_d=0) or an explicit kick. Convention documented.
+M2 binding / molecules — DONE (scorecard + controller audit 2026-02-18): working
+   point P7s = M0 + Dv=2.0, tau=2.5. Bond curve (dx=0.5): TWO-SIDED convergence to
+   d1*=15.70+-0.02, basin ~[14.5,19.5], no 2nd minimum <=20; unpinning d* shift
+   dx=1->0.5 = 1.8%. AUDIT (controller): fresh stamps on L=64 (periodic-image-safe),
+   d0=16.5 & 18.5 -> d*=15.67/15.70. CONFIRMED. Strength: escapes censored >4000tu
+   at sigma up to 0.075 (blob itself dies at 0.09) >> 10x relax (36tu). Molecules:
+   stable 3-chain [16,16] and equilateral triangle [16.0,16.1,16.1] 3000tu.
+   HONEST NEGATIVES: tau=3.0 d*=14.65 is a continuum SADDLE (dx=1 stability was
+   lattice pinning — trap confirmed); all M0 (Dv=1) "bonds" are pinned artifacts;
+   osc-dominant corners (Dv>=4, k4>=1.7) replicate on pairing; binding window sits
+   ~0.1 in k1 from the replication edge. B5 rotation NOT observed (triangle static).
+M3 flavors — DONE (scorecard + controller audit 2026-02-18): arch "vvw" = private
+   u_i,v_i + ONE shared long-range w (drive (u1+u2)/2); iso-background line
+   k1_i=-1.0+d_i*ub, k4_i=1.4+d_i keeps one stable background for all species.
+   Species A (k1=-1.0,k4=1.40, 169px broad) and B (k1=-1.651,k4=2.15, 25px sharp),
+   both Du=0.65. B1 both species 1e4 tu + noise (audit: fresh seed 41 persistent,
+   3000tu). B3 port-classification 20/20 full & w-only & size (audit: A+B d0=8
+   repel to 12.1, flavor conserved, seeds 51/52). Encounter table: pure repulsion
+   at d0>=6 except AA d0=6 deterministic MERGE (only non-conserving event).
+   HONEST: blobs non-oscillatory (frequency not a signature); B's k1/k4 windows
+   1.28-1.29x (marginally under 1.3 on 2 dials, >=1.3x on 3 others).
+   FOR M4/M5: B = natural cargo (small, weak w-print); per-species tau windows
+   (A 1.5-4.0, B 1.5-6.0+) leave room for species-selective drift.
 M4 composite dynamics in background fields (round 2)
 M5 machines: upstream transport (round 3)
 

@@ -1,0 +1,210 @@
+[
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 0.45,
+  "ok": true,
+  "why": "persistent",
+  "a": 124
+ },
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 0.55,
+  "ok": true,
+  "why": "persistent",
+  "a": 81
+ },
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 0.7,
+  "ok": true,
+  "why": "persistent",
+  "a": 169
+ },
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 0.85,
+  "ok": true,
+  "why": "persistent",
+  "a": 169
+ },
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 1.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 169
+ },
+ {
+  "species": "A",
+  "dial": "theta",
+  "val": 1.15,
+  "ok": false,
+  "why": "domain",
+  "a": 637
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 1.5,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 2.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 69
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 2.5,
+  "ok": true,
+  "why": "persistent",
+  "a": 89
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 3.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 169
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 4.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 156
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 5.0,
+  "ok": false,
+  "why": "split",
+  "a": 2028
+ },
+ {
+  "species": "A",
+  "dial": "tau",
+  "val": 6.0,
+  "ok": false,
+  "why": "split",
+  "a": 3144
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 0.45,
+  "ok": true,
+  "why": "persistent",
+  "a": 21
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 0.55,
+  "ok": true,
+  "why": "persistent",
+  "a": 25
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 0.7,
+  "ok": true,
+  "why": "persistent",
+  "a": 25
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 0.85,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 1.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "B",
+  "dial": "theta",
+  "val": 1.15,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 1.5,
+  "ok": true,
+  "why": "persistent",
+  "a": 21
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 2.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 21
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 2.5,
+  "ok": true,
+  "why": "persistent",
+  "a": 25
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 3.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 25
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 4.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 5.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 45
+ },
+ {
+  "species": "B",
+  "dial": "tau",
+  "val": 6.0,
+  "ok": true,
+  "why": "persistent",
+  "a": 120
+ }
+]

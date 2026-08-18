@@ -1,0 +1,162 @@
+[
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.88,
+  "ok": false,
+  "why": "dead_or_tiny",
+  "a": 0
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.85,
+  "ok": false,
+  "why": "dead_or_tiny",
+  "a": 0
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.82,
+  "ok": true,
+  "why": "persistent",
+  "a": 9
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.79,
+  "ok": true,
+  "why": "persistent",
+  "a": 21
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.42,
+  "ok": true,
+  "why": "persistent",
+  "a": 400
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.4,
+  "ok": false,
+  "why": "split",
+  "a": 2776
+ },
+ {
+  "species": "B",
+  "dial": "k1",
+  "val": -1.38,
+  "ok": false,
+  "why": "split",
+  "a": 3180
+ },
+ {
+  "species": "B",
+  "dial": "k4",
+  "val": 1.9,
+  "ok": true,
+  "why": "persistent",
+  "a": 9
+ },
+ {
+  "species": "B",
+  "dial": "k4",
+  "val": 1.94,
+  "ok": true,
+  "why": "persistent",
+  "a": 9
+ },
+ {
+  "species": "B",
+  "dial": "k4",
+  "val": 1.97,
+  "ok": true,
+  "why": "persistent",
+  "a": 21
+ },
+ {
+  "species": "B",
+  "dial": "k4",
+  "val": 2.5,
+  "ok": false,
+  "why": "split",
+  "a": 2008
+ },
+ {
+  "species": "B",
+  "dial": "k4",
+  "val": 2.55,
+  "ok": false,
+  "why": "split",
+  "a": 2956
+ },
+ {
+  "species": "A",
+  "dial": "k4",
+  "val": 1.05,
+  "ok": false,
+  "why": "dead_or_tiny",
+  "a": 0
+ },
+ {
+  "species": "A",
+  "dial": "k4",
+  "val": 1.45,
+  "ok": true,
+  "why": "persistent",
+  "a": 169
+ },
+ {
+  "species": "A",
+  "dial": "k4",
+  "val": 1.5,
+  "ok": false,
+  "why": "domain",
+  "a": 760
+ },
+ {
+  "species": "A",
+  "dial": "k4",
+  "val": 1.55,
+  "ok": false,
+  "why": "split",
+  "a": 2660
+ },
+ {
+  "species": "A",
+  "dial": "k1",
+  "val": -1.28,
+  "ok": false,
+  "why": "dead_or_tiny",
+  "a": 0
+ },
+ {
+  "species": "A",
+  "dial": "k1",
+  "val": -1.31,
+  "ok": false,
+  "why": "dead_or_tiny",
+  "a": 0
+ },
+ {
+  "species": "A",
+  "dial": "k1",
+  "val": -0.92,
+  "ok": true,
+  "why": "persistent",
+  "a": 552
+ },
+ {
+  "species": "A",
+  "dial": "k1",
+  "val": -0.9,
+  "ok": false,
+  "why": "split",
+  "a": 3116
+ }
+]

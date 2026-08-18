@@ -1,0 +1,10 @@
+{'kind': 'AA', 'seed': 0, 'd0': 10, 'outcome': 'repel', 'nA': 2, 'nB': 0, 'areas_A': [112, 108], 'areas_B': [], 'sep_end': 15.46, 'mass0': {'A': 226.2, 'B': 0.0}, 'mass1': {'A': 348.6, 'B': -128.5}}
+{'kind': 'AA', 'seed': 1, 'd0': 10, 'outcome': 'repel', 'nA': 2, 'nB': 0, 'areas_A': [108, 112], 'areas_B': [], 'sep_end': 15.46, 'mass0': {'A': 226.2, 'B': 0.0}, 'mass1': {'A': 348.6, 'B': -128.3}}
+{'kind': 'AA', 'seed': 2, 'd0': 10, 'outcome': 'repel', 'nA': 2, 'nB': 0, 'areas_A': [108, 108], 'areas_B': [], 'sep_end': 15.67, 'mass0': {'A': 226.2, 'B': 0.0}, 'mass1': {'A': 344.0, 'B': -126.9}}
+{'kind': 'AB', 'seed': 0, 'd0': 10, 'outcome': 'repel', 'nA': 1, 'nB': 1, 'areas_A': [141], 'areas_B': [33], 'sep_end': 13.19, 'mass0': {'A': 113.1, 'B': 113.1}, 'mass1': {'A': 205.7, 'B': -32.5}}
+{'kind': 'AB', 'seed': 1, 'd0': 10, 'outcome': 'repel', 'nA': 1, 'nB': 1, 'areas_A': [141], 'areas_B': [32], 'sep_end': 13.13, 'mass0': {'A': 113.1, 'B': 113.1}, 'mass1': {'A': 205.7, 'B': -32.3}}
+{'kind': 'AB', 'seed': 2, 'd0': 10, 'outcome': 'repel', 'nA': 1, 'nB': 1, 'areas_A': [141], 'areas_B': [32], 'sep_end': 13.13, 'mass0': {'A': 113.1, 'B': 113.1}, 'mass1': {'A': 205.8, 'B': -32.4}}
+{'kind': 'BB', 'seed': 0, 'd0': 10, 'outcome': 'repel', 'nA': 0, 'nB': 2, 'areas_A': [], 'areas_B': [28, 28], 'sep_end': 15.0, 'mass0': {'A': 0.0, 'B': 226.2}, 'mass1': {'A': -24.0, 'B': 77.4}}
+{'kind': 'BB', 'seed': 1, 'd0': 10, 'outcome': 'repel', 'nA': 0, 'nB': 2, 'areas_A': [], 'areas_B': [28, 28], 'sep_end': 15.0, 'mass0': {'A': 0.0, 'B': 226.2}, 'mass1': {'A': -24.0, 'B': 77.6}}
+{'kind': 'BB', 'seed': 2, 'd0': 10, 'outcome': 'repel', 'nA': 0, 'nB': 2, 'areas_A': [], 'areas_B': [28, 28], 'sep_end': 15.0, 'mass0': {'A': 0.0, 'B': 226.2}, 'mass1': {'A': -23.9, 'B': 77.4}}
+total 179s

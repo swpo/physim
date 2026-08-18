@@ -1,0 +1,1013 @@
+{
+ "program": "BLOBS M2 blob-binding",
+ "conventions": {
+  "integrator": "explicit Euler, 5-pt periodic Laplacian, dt=min(0.2*dx^2/Dw, 0.02)",
+  "seeding": "stamp method: relax single blob 2000tu on L=64 -> save (du,dv,dw) deviation stamp -> paste at positions",
+  "threshold": "thr = u0 + 0.45*(sqrt(lam)-u0)",
+  "tracking": "periodic connected components + circular-mean centroids",
+  "units": "1 px = 1 space unit at dx=1; tu = time units"
+ },
+ "fixed_params": {
+  "lam": 2.0,
+  "k1": -0.7,
+  "theta": 0.7,
+  "Du": 1.0,
+  "Dw": 20.0
+ },
+ "theory_scan": {
+  "method": "linearized spatial eigenvalues about u0: cubic in K=k^2 from (Du K+a)(1-tau Dv K)(1-th Dw K)-k3(1-th Dw K)-k4(1-tau Dv K)=0; oscillatory tails when complex k dominates (Re k smallest)",
+  "M0": "mono-dominant: mono_decay 2.51 > osc_decay 2.20, wl 10.8 -- weak oscillatory subdominant tail",
+  "P7 (Dv=2)": "mono_decay 2.96 vs osc_decay 2.77, wl 11.0; tail oscillation strengthened vs M0",
+  "note": "strictly osc-dominant points (e.g. Dv>=4,k3=1.5,k4=1.0; or k4->1.7-1.9) all FAILED single/pair (huge blobs, replication cascades); working binding found in mono-marginal zone"
+ },
+ "candidate_scan_failures": [
+  {
+   "point": "E_risky Dv=1 tau=3 k3=1 k4=2.0 (osc margin 4.5 theory)",
+   "outcome": "replication cascade: 51 blobs by t=800"
+  },
+  {
+   "point": "F_36 Dv=3 tau=6 k3=1.5 k4=1.0",
+   "outcome": "replication: 13 comps t=800"
+  },
+  {
+   "point": "D_64/C_46/B_66 (Dv=4-6, tau=4-6, k3=1.5, k4=1.0; osc-dominant, wl~12)",
+   "outcome": "single blob OK (area 109-165) BUT every pair d0=12..31 replicated into 6-20 blob soup within 400tu"
+  },
+  {
+   "point": "P1-P6,P9 (Dv=3-5, k3=1.2-1.5, k4=1.1-1.5 osc-margin>2)",
+   "outcome": "single-blob relax not single (split/replicate) at L=64"
+  },
+  {
+   "point": "Q2 Dv=2 k4=1.7 / Q4 Dv=1.5 k4=1.8",
+   "outcome": "pairs replicate (39-59 comps) though singles fine"
+  },
+  {
+   "point": "Q1 Dv=1.5 k4=1.7 tau=3",
+   "outcome": "dx=1 pairs bind d*=12.8-13.3 BUT dx=0.5 replication cascade (21+ comps) -- grid-fragile, rejected"
+  },
+  {
+   "point": "k1=-0.6 at P7",
+   "outcome": "single blob replicates (8 comps by t=2500) -- k1 window lower edge between -0.6 and -0.7"
+  }
+ ],
+ "P7": {
+  "params": {
+   "lam": 2.0,
+   "k1": -0.7,
+   "k3": 1.0,
+   "k4": 1.5,
+   "tau": 3.0,
+   "theta": 0.7,
+   "Du": 1.0,
+   "Dv": 2.0,
+   "Dw": 20.0
+  },
+  "B1_existence": {
+   "noise0.0_seed0": {
+    "T": 10000.0,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 45,
+    "disp_2ndhalf": 0.0
+   },
+   "noise0.002_seed0": {
+    "T": 10000.0,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 45,
+    "disp_2ndhalf": 0.004
+   },
+   "noise0.002_seed1": {
+    "T": 10000.0,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 45,
+    "disp_2ndhalf": 0.004
+   },
+   "noise0.005_seed0": {
+    "T": 10000.0,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 45,
+    "disp_2ndhalf": 0.01
+   },
+   "noise0.045_T3000": {
+    "status": "ok",
+    "ncomp_end": 1,
+    "area_med": 42.0
+   },
+   "noise0.06_T3000": {
+    "status": "ok",
+    "ncomp_end": 3,
+    "note": "REPLICATES at noise 0.06 (3 comps) -- single-blob noise ceiling between 0.045 and 0.06"
+   }
+  },
+  "bond_curve_dx1": {
+   "runs": {
+    "9.0": {
+     "sep_end": 14.6528,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 14.444
+    },
+    "10.5": {
+     "sep_end": 14.6528,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 14.44
+    },
+    "12.0": {
+     "sep_end": 14.6528,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 14.435
+    },
+    "13.5": {
+     "sep_end": 14.3654,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 14.365
+    },
+    "15.0": {
+     "sep_end": 16.0144,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 16.014
+    },
+    "16.5": {
+     "sep_end": 16.0144,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 16.014
+    },
+    "18.0": {
+     "sep_end": 17.9395,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 17.939
+    },
+    "20.0": {
+     "sep_end": 19.9829,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 19.983
+    },
+    "22.0": {
+     "sep_end": 22.0088,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 22.009
+    },
+    "24.0": {
+     "sep_end": 24.0089,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 24.009
+    },
+    "26.0": {
+     "sep_end": 26.0028,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 26.003
+    },
+    "28.0": {
+     "sep_end": 27.9997,
+     "ncomp_min": 2,
+     "ncomp_max": 2,
+     "T": 4000.0,
+     "sep_t500": 28.0
+    }
+   },
+   "attractors_dx1": "d0<=13.5 -> 14.37-14.65; d0=15,16.5 -> 16.01; d0>=18 frozen at d0 (immobile)",
+   "caveat": "dx=1 endpoint spacing ~1.4-2px and freezing beyond 18 = LATTICE PINNING; continuum check below"
+  },
+  "refinement_dx05": {
+   "runs": {
+    "12.0": {
+     "T": 2000,
+     "sep_end": 41.7197,
+     "sep_plateau_800_1300": [
+      14.52,
+      14.52,
+      14.53
+     ],
+     "ncomp": 2
+    },
+    "14.0": {
+     "T": 2000,
+     "sep_end": 41.4228,
+     "sep_plateau_800_1300": [
+      14.55,
+      14.54,
+      14.54
+     ],
+     "ncomp": 2
+    },
+    "15.0": {
+     "T": 2000,
+     "sep_end": 41.3791,
+     "sep_plateau_800_1300": [
+      14.58,
+      14.58,
+      14.57
+     ],
+     "ncomp": 2
+    },
+    "16.0": {
+     "T": 2000,
+     "sep_end": 43.9778,
+     "sep_plateau_800_1300": [
+      14.67,
+      14.66,
+      14.66
+     ],
+     "ncomp": 2
+    },
+    "18.0": {
+     "T": 2000,
+     "sep_end": 33.0777,
+     "sep_plateau_800_1300": [
+      32.0,
+      32.0,
+      32.0
+     ],
+     "ncomp": 2
+    },
+    "20.0": {
+     "T": 2000,
+     "sep_end": 30.7144,
+     "sep_plateau_800_1300": [
+      32.0,
+      32.0,
+      32.0
+     ],
+     "ncomp": 2
+    },
+    "22.0": {
+     "T": 2000,
+     "sep_end": 31.6216,
+     "sep_plateau_800_1300": [
+      22.69,
+      22.73,
+      22.77
+     ],
+     "ncomp": 2
+    }
+   },
+   "long_dx05_d14p6": "plateau 14.5-15.0 until t~1400 then pair slides apart along axis to L/2-limited 45 (=box antipode), tau3.0 UNSTABLE",
+   "long_dx075_d14p6": "same: plateau ~14.9 to t~1000 then runaway to 44.9",
+   "escape_mode_growth_rate_dx05": 0.0072,
+   "verdict": "at tau=3.0 the d*~14.6 pair is a SADDLE in continuum: radially attracting (v_r<0 from d0=14-16 early), unstable along a slow mode with e-fold ~140tu; dx=1 stability was lattice pinning"
+  },
+  "escape_dx1": {
+   "protocol": "prep 300tu noiseless at d0=14.6 -> switch on noise; escape = |sep-14.65|>3 or ncomp!=2; dx=1 L=96",
+   "caveat": "measured at dx=1 where the well includes lattice pinning; treat as pinned-bond strength at tau=3.0",
+   "data": [
+    {
+     "noise": 0.02,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.02,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.02,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.03,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.03,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.03,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.038,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.038,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.038,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 8000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 1,
+     "t": 1200.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 8000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 8000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 1,
+     "t": 1080.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 2,
+     "t": 865.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 3,
+     "t": 2580.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 4,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.045,
+     "seed": 5,
+     "t": 715.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 0,
+     "t": 500.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 1,
+     "t": 785.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 2,
+     "t": 730.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 3,
+     "t": 1655.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 4,
+     "t": 535.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 5,
+     "t": 455.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 0,
+     "t": 450.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 1,
+     "t": 465.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 2,
+     "t": 2825.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 3000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 3,
+     "t": 540.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 4,
+     "t": 2960.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 5,
+     "t": 440.0,
+     "mode": "out",
+     "censored": false,
+     "Tmax": 6000.0
+    }
+   ]
+  },
+  "multi": {
+   "chain3": {
+    "n_start": 3,
+    "ncomp_end": 3,
+    "ncomp_range": [
+     3,
+     3
+    ],
+    "final_seps": [
+     15.07,
+     15.07,
+     30.14
+    ],
+    "T": 2500,
+    "dx": 1.0
+   },
+   "chain3_tight": {
+    "n_start": 3,
+    "ncomp_end": 3,
+    "ncomp_range": [
+     3,
+     3
+    ],
+    "final_seps": [
+     13.46,
+     13.46,
+     26.92
+    ],
+    "T": 2500,
+    "dx": 1.0
+   },
+   "tri3": {
+    "n_start": 3,
+    "ncomp_end": 3,
+    "ncomp_range": [
+     3,
+     3
+    ],
+    "final_seps": [
+     24.65,
+     24.65,
+     46.82
+    ],
+    "T": 2500,
+    "dx": 1.0
+   },
+   "square4": {
+    "n_start": 4,
+    "ncomp_end": 4,
+    "ncomp_range": [
+     4,
+     4
+    ],
+    "final_seps": [
+     14.4,
+     14.4,
+     14.4,
+     14.4,
+     20.36,
+     20.36
+    ],
+    "T": 2500,
+    "dx": 1.0
+   },
+   "comment": "chain3 at d*: stays 3 blobs, seps 15.07/15.07 (linear chain retained); square4: retains square 14.4x14.4; tri3 DRIFTED: two blobs pushed to 24.65 apart (2nd shell?), third at 46.8 -- triangle at d* unstable at dx=1; chain3_tight (d0=11): center absorbs flanks' inhibition, areas equalize then chain at 13.46"
+  },
+  "stabilization": {
+   "tau2.5_dx05_d14.6": "converges 15.62->15.68, STABLE 3000tu",
+   "tau2.0_dx05_d14.6": "converges 15.44->15.48, STABLE 3000tu",
+   "th0.5_dx05_d14.6": "14.38 stable 2700tu+ (also stable)",
+   "Dw30_dx05_d14.6": "runaway to 44 by t=900 (destabilizes)"
+  },
+  "B1_window": {
+   "k1_-0.6": {
+    "ncomp_end": 8,
+    "area_end": 346,
+    "T": 2500
+   },
+   "k1_-0.8": {
+    "ncomp_end": 1,
+    "area_end": 37,
+    "T": 2500
+   },
+   "Dv_1.5": {
+    "ncomp_end": 1,
+    "area_end": 37,
+    "T": 2500
+   },
+   "Dv_2.6": {
+    "ncomp_end": 1,
+    "area_end": 215,
+    "T": 2500
+   },
+   "tau_2.3": {
+    "ncomp_end": 1,
+    "area_end": 37,
+    "T": 2500
+   },
+   "tau_3.9": {
+    "ncomp_end": 1,
+    "area_end": 242,
+    "T": 2500
+   },
+   "k4_1.35": {
+    "ncomp_end": 1,
+    "area_end": 37,
+    "T": 2500
+   },
+   "k4_1.65": {
+    "ncomp_end": 1,
+    "area_end": 45,
+    "T": 2500
+   }
+  }
+ },
+ "M0_pairs": {
+  "final_seps": {
+   "10.0": 13.269,
+   "11.0": 13.269,
+   "12.0": 13.269,
+   "13.0": 13.269,
+   "14.0": 14.143,
+   "15.0": 15.992,
+   "16.0": 15.992,
+   "18.0": 18.002,
+   "20.0": 20.013
+  },
+  "note": "M0 (Dv=1): d0<=13->13.27, 14->14.14, 15/16->15.99, >=18 frozen. Same pinning ladder; M0 not pursued for continuum binding (weaker osc tail)"
+ },
+ "notes": [
+  "SEEDING BUG TRAP (found+fixed): v,w must start FLAT at u0 (day0 convention); seeding v=w=u(bumped) kills the blob.",
+  "All continuum (dx=0.5) binding claims at tau=3.0 FAIL: d*=14.6 is a saddle. tau=2.0-2.5 stabilizes it (real binding).",
+  "Replication pressure brackets the binding window: k4>=1.7 or k1>=-0.6 or strongly osc-dominant corners all cascade."
+ ],
+ "P7s": {
+  "params": {
+   "lam": 2.0,
+   "k1": -0.7,
+   "k3": 1.0,
+   "k4": 1.5,
+   "tau": 2.5,
+   "theta": 0.7,
+   "Du": 1.0,
+   "Dv": 2.0,
+   "Dw": 20.0
+  },
+  "bond_curve_dx05_L48": {
+   "runs": {
+    "9.0": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 32.3318,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      14.41,
+      14.41,
+      14.42,
+      14.42
+     ]
+    },
+    "11.0": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 32.4504,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      14.42,
+      14.42,
+      14.42,
+      14.42
+     ]
+    },
+    "12.5": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 32.5723,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      14.45,
+      14.44,
+      14.44,
+      14.44
+     ]
+    },
+    "14.0": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": null,
+     "ncomp_max": 4,
+     "plateau_800_1600": []
+    },
+    "15.5": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 15.6829,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      15.74,
+      15.74,
+      15.73,
+      15.73
+     ]
+    },
+    "17.0": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 15.691,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      15.85,
+      15.84,
+      15.83,
+      15.82
+     ]
+    },
+    "18.5": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 15.7065,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      16.14,
+      16.11,
+      16.08,
+      16.05
+     ]
+    },
+    "20.0": {
+     "T": 2500,
+     "L": 48,
+     "dx": 0.5,
+     "sep_end": 23.9847,
+     "ncomp_max": 2,
+     "plateau_800_1600": [
+      19.1,
+      18.99,
+      18.87,
+      18.72
+     ]
+    }
+   },
+   "reading": "TWO-SIDED convergence to d1*=15.68-15.71 from d0=15.5,17,18.5 (STABLE bond, continuum); d0=9-12.5 relax onto inner plateau 14.4 (transient) then escape at t~1700 to box antipode 24*sqrt(2)=33.9 -> 14.4 is the tau=2.5 remnant of the tau=3 saddle, TRUE stable bond only at 15.7; d0=14 hit the saddle and REPLICATED (2->4) at t~800 (L=48 box self-interaction across periodic images likely contributed); d0=20 walked out to antipode 24 (repulsive/free zone beyond barrier at ~19)",
+   "caveats": "L=48 box: antipode separation 24 (axis) / 33.9 (diagonal); wrap-around interactions nonzero"
+  },
+  "B1_existence": {
+   "noise0.0": {
+    "T": 10000,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 37,
+    "disp_2ndhalf": 0.0
+   },
+   "noise0.002": {
+    "T": 10000,
+    "status": "ok",
+    "ncomp_end": 1,
+    "ncomp_max": 1,
+    "area_end": 37,
+    "disp_2ndhalf": 0.004
+   }
+  },
+  "pairs_dx1": {
+   "final_seps": {
+    "13.0": 14.0122,
+    "14.6": 14.986,
+    "15.5": 15.9947,
+    "17.0": 15.9947,
+    "18.5": 17.9666,
+    "20.0": 19.9968,
+    "22.0": 22.0088
+   },
+   "T": 3000,
+   "L": 96,
+   "reading": "dx=1: d0=15.5,17 -> 15.99; 14.6->14.99; 13->14.01; >=18.5 frozen at start (pinned). d1* dx=1: 15.99"
+  },
+  "pinning_check": {
+   "d_star_dx1": 15.99,
+   "d_star_dx05": 15.7,
+   "shift_pct": 1.8,
+   "verdict": "PASS: d* shifts 1.8% under dx->dx/2 (<10%); the 15.7-16.0 bond is CONTINUUM, not lattice pinning. BUT basin/dynamics differ: dx=1 shows extra pinned states (14.0-15.0 plateau, freeze >=18.5) absent at dx=0.5."
+  },
+  "multi": {
+   "chain3_s": {
+    "n_start": 3,
+    "ncomp_end": 3,
+    "final_seps": [
+     16.0,
+     16.0,
+     32.0
+    ],
+    "T": 3000,
+    "dx": 1.0
+   },
+   "tri3_s": {
+    "n_start": 3,
+    "ncomp_end": 3,
+    "final_seps": [
+     16.0,
+     16.12,
+     16.12
+    ],
+    "T": 3000,
+    "dx": 1.0
+   },
+   "comment": "tau=2.5 d*: chain3 -> [16,16] linear molecule stable; tri3 -> EQUILATERAL TRIANGLE [16.0,16.12,16.12] stable 3000tu \u2014 3-blob molecule confirmed"
+  },
+  "escape_dx1": {
+   "protocol": "prep 300tu noiseless at d0=15.7 -> noise on; escape=|sep-15.99|>3 or ncomp!=2; L=96 dx=1; T_max=4000",
+   "data": [
+    {
+     "noise": 0.03,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.03,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.03,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.042,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.052,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.06,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.075,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.075,
+     "seed": 1,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.075,
+     "seed": 2,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.09,
+     "seed": 0,
+     "t": null,
+     "mode": null,
+     "censored": true,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.09,
+     "seed": 1,
+     "t": 2310.0,
+     "mode": "split",
+     "censored": false,
+     "Tmax": 4000.0
+    },
+    {
+     "noise": 0.09,
+     "seed": 2,
+     "t": 3460.0,
+     "mode": "split",
+     "censored": false,
+     "Tmax": 4000.0
+    }
+   ],
+   "single_blob_noise_ceiling": {
+    "0.06": {
+     "ncomp_end": 1,
+     "area_end": 37,
+     "area_med": 38.0
+    },
+    "0.075": {
+     "ncomp_end": 1,
+     "area_end": 38,
+     "area_med": 39.0
+    },
+    "0.09": {
+     "ncomp_end": 1,
+     "area_end": 887,
+     "area_med": 685.0
+    }
+   },
+   "reading": "bond UNBROKEN (censored >4000tu) for sigma in {0.03,0.042,0.052,0.06,0.075} x3 seeds = 15/15; at sigma=0.09 the SINGLE blob itself blows up to area~900, and 2/3 pair runs end by replication ('split') at t=2310/3460 -- i.e. field breakdown, not bond escape. Bond lifetime >> 10x single-blob relax (3.6tu -> threshold 36tu) at ALL usable noise. Quantitative exponential escape curve NOT resolvable at tau=2.5 within budget (too strong); the tau=3.0 pinned-well data (P7.escape_dx1) shows the activated trend: censored<=0.042 -> median 1310tu@0.045 -> 632@0.052 -> 502@0.06."
+  },
+  "single_relax_time_tu": 3.6
+ },
+ "budget_B7": {
+  "dx1_L96_T3000_s": 137,
+  "tu_per_s_dx1": 22,
+  "dx05_L48_T2500_s": 503,
+  "dx05_L64_T2000_s": 856,
+  "verdict": "dx=1 candidates ~2.3 min (PASS <=5min); dx=0.5 refinement runs 8-14 min each (documented over-budget, used sparingly for the pinning check)"
+ }
+}

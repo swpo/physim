@@ -1,0 +1,28 @@
+{'idx': 0, 'truth': 'A', 'at': [25, 49], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0005}
+{'idx': 1, 'truth': 'A', 'at': [78, 56], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0003}
+{'idx': 2, 'truth': 'A', 'at': [55, 38], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0004}
+{'idx': 3, 'truth': 'A', 'at': [32, 24], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0006}
+{'idx': 4, 'truth': 'A', 'at': [65, 10], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0007}
+{'idx': 5, 'truth': 'A', 'at': [42, 16], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0003}
+{'idx': 6, 'truth': 'A', 'at': [49, 35], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0003}
+{'idx': 7, 'truth': 'A', 'at': [14, 15], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0008}
+{'idx': 8, 'truth': 'A', 'at': [37, 22], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0008}
+{'idx': 9, 'truth': 'A', 'at': [65, 14], 'full': 'A', 'wport': 'A', 'size': 'A', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0007}
+{'idx': 10, 'truth': 'B', 'at': [62, 17], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0004}
+{'idx': 11, 'truth': 'B', 'at': [31, 31], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0002}
+{'idx': 12, 'truth': 'B', 'at': [66, 33], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0003}
+{'idx': 13, 'truth': 'B', 'at': [20, 70], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0002}
+{'idx': 14, 'truth': 'B', 'at': [55, 43], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0001}
+{'idx': 15, 'truth': 'B', 'at': [52, 37], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0001}
+{'idx': 16, 'truth': 'B', 'at': [58, 27], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0003}
+{'idx': 17, 'truth': 'B', 'at': [85, 79], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0002}
+{'idx': 18, 'truth': 'B', 'at': [77, 55], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0002}
+{'idx': 19, 'truth': 'B', 'at': [35, 26], 'full': 'B', 'wport': 'B', 'size': 'B', 'full_ok': True, 'wport_ok': True, 'size_ok': True, 'osc_rel_std': 0.0001}
+ACCURACY: full 20/20, wport 20/20, size 20/20
+{'seed': 11, 'results': [{'truth': 'A', 'full': 'A', 'wport': 'A'}, {'truth': 'B', 'full': 'B', 'wport': 'B'}]}
+{'seed': 22, 'results': [{'truth': 'A', 'full': 'A', 'wport': 'A'}, {'truth': 'B', 'full': 'B', 'wport': 'B'}]}
+{'seed': 33, 'results': [{'truth': 'A', 'full': 'A', 'wport': 'A'}, {'truth': 'B', 'full': 'B', 'wport': 'B'}]}
+{'seed': 44, 'results': [{'truth': 'A', 'full': 'A', 'wport': 'A'}, {'truth': 'B', 'full': 'B', 'wport': 'B'}]}
+{'seed': 55, 'results': [{'truth': 'A', 'full': 'A', 'wport': 'A'}, {'truth': 'B', 'full': 'B', 'wport': 'B'}]}
+PAIRWORLD: full 10/10, wport 10/10
+total 102s

@@ -1,0 +1,2003 @@
+[
+ {
+  "dA": 0.3,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 69,
+  "loneB": 45,
+  "ampA": 1.0823,
+  "ampB": 1.1093,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 2,
+    "a": 890,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 132,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 90,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 66,
+    "a2": 53,
+    "sep": 13.58
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 59,
+    "a2": 38,
+    "sep": 17.14
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 69,
+  "loneB": 37,
+  "ampA": 1.0849,
+  "ampB": 1.1068,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 2,
+    "a": 890,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 132,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 72,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 73,
+    "a2": 41,
+    "sep": 13.0
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 69,
+    "a2": 38,
+    "sep": 16.5
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 69,
+  "loneB": 96,
+  "ampA": 1.0824,
+  "ampB": 1.1758,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 2,
+    "a": 890,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 132,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 124,
+    "sep": 14.97,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 64,
+    "a2": 55,
+    "sep": 11.58
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 62,
+    "a2": 96,
+    "sep": 16.81
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 69,
+  "loneB": 96,
+  "ampA": 1.0851,
+  "ampB": 1.1654,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 2,
+    "a": 890,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 132,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 112,
+    "sep": 15.71,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 73,
+    "a2": 44,
+    "sep": 11.5
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 64,
+    "a2": 85,
+    "sep": 16.96
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.65,
+  "dB": 0.45,
+  "DuB": 0.5,
+  "loneA": 69,
+  "loneB": 96,
+  "ampA": 1.0792,
+  "ampB": 1.1862,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 2,
+    "a": 890,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 128,
+    "sep": 17.16,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 64,
+    "a2": 77,
+    "sep": 12.58
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 59,
+    "a2": 96,
+    "sep": 17.0
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 96,
+  "loneB": 45,
+  "ampA": 1.1994,
+  "ampB": 1.1094,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 136,
+    "sep": 14.18,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 220,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 90,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 104,
+    "a2": 43,
+    "sep": 12.83
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 38,
+    "sep": 16.74
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 96,
+  "loneB": 37,
+  "ampA": 1.2007,
+  "ampB": 1.1066,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 136,
+    "sep": 14.18,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 220,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 72,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 104,
+    "a2": 41,
+    "sep": 12.74
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 38,
+    "sep": 16.74
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 96,
+  "loneB": 96,
+  "ampA": 1.1995,
+  "ampB": 1.1759,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 136,
+    "sep": 14.18,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 220,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 124,
+    "sep": 14.97,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 99,
+    "a2": 50,
+    "sep": 12.2
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 96,
+    "sep": 16.24
+   }
+  ]
+ },
+ {
+  "dA": 0.3,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 96,
+  "loneB": 96,
+  "ampA": 1.2008,
+  "ampB": 1.1656,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 136,
+    "sep": 14.18,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 220,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 112,
+    "sep": 15.71,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 99,
+    "a2": 50,
+    "sep": 12.2
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 85,
+    "sep": 16.89
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 77,
+  "loneB": 45,
+  "ampA": 1.0905,
+  "ampB": 1.1088,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 158,
+    "sep": 16.78,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 156,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 90,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 78,
+    "a2": 43,
+    "sep": 12.59
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 75,
+    "a2": 38,
+    "sep": 15.58
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 77,
+  "loneB": 37,
+  "ampA": 1.0934,
+  "ampB": 1.116,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 168,
+    "sep": 17.1,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 156,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 72,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 78,
+    "a2": 41,
+    "sep": 11.5
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 78,
+    "a2": 38,
+    "sep": 15.0
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 77,
+  "loneB": 96,
+  "ampA": 1.0906,
+  "ampB": 1.174,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 158,
+    "sep": 16.78,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 156,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 124,
+    "sep": 14.97,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 84,
+    "a2": 55,
+    "sep": 12.55
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 78,
+    "a2": 85,
+    "sep": 16.15
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 77,
+  "loneB": 96,
+  "ampA": 1.0935,
+  "ampB": 1.1635,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 168,
+    "sep": 17.1,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 156,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 100,
+    "sep": 15.2,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": false,
+    "n1": 1,
+    "n2": 1,
+    "a1": 443,
+    "a2": 55,
+    "sep": 11.95
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 90,
+    "a2": 90,
+    "sep": 16.0
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.65,
+  "dB": 0.45,
+  "DuB": 0.5,
+  "loneA": 77,
+  "loneB": 96,
+  "ampA": 1.0897,
+  "ampB": 1.1846,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 166,
+    "sep": 17.42,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 156,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 84,
+    "a2": 75,
+    "sep": 12.63
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 73,
+    "a2": 96,
+    "sep": 16.0
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 121,
+  "loneB": 45,
+  "ampA": 1.1544,
+  "ampB": 1.1089,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 166,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 242,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 90,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 110,
+    "a2": 43,
+    "sep": 12.59
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 38,
+    "sep": 16.5
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 121,
+  "loneB": 37,
+  "ampA": 1.1559,
+  "ampB": 1.1158,
+  "verdict": "enc_fail",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": false,
+    "nc": 3,
+    "a": 125,
+    "sep": null,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 242,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 72,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 110,
+    "a2": 41,
+    "sep": 12.5
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 38,
+    "sep": 16.5
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 121,
+  "loneB": 96,
+  "ampA": 1.1544,
+  "ampB": 1.1741,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 166,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 242,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 124,
+    "sep": 14.97,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 110,
+    "a2": 50,
+    "sep": 11.7
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 96,
+    "sep": 16.0
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 121,
+  "loneB": 96,
+  "ampA": 1.156,
+  "ampB": 1.1637,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 143,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 242,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 100,
+    "sep": 15.2,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 110,
+    "a2": 50,
+    "sep": 11.7
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 90,
+    "sep": 16.5
+   }
+  ]
+ },
+ {
+  "dA": 0.15,
+  "DuA": 0.5,
+  "dB": 0.45,
+  "DuB": 0.5,
+  "loneA": 121,
+  "loneB": 96,
+  "ampA": 1.1528,
+  "ampB": 1.1847,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 166,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 238,
+    "sep": 16.17,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 99,
+    "a2": 62,
+    "sep": 13.48
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 96,
+    "sep": 16.0
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 157,
+  "loneB": 45,
+  "ampA": 1.0883,
+  "ampB": 1.1085,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 216,
+    "sep": 15.67,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 270,
+    "sep": 17.73,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 82,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 135,
+    "a2": 43,
+    "sep": 12.96
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 117,
+    "a2": 38,
+    "sep": 18.5
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 169,
+  "loneB": 25,
+  "ampA": 1.1015,
+  "ampB": 1.1976,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 216,
+    "sep": 15.67,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 282,
+    "sep": 18.14,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 56,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 141,
+    "a2": 33,
+    "sep": 13.19
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 156,
+    "a2": 31,
+    "sep": 17.5
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.65,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 157,
+  "loneB": 96,
+  "ampA": 1.0885,
+  "ampB": 1.1721,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 216,
+    "sep": 15.67,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 270,
+    "sep": 17.73,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 50,
+    "sep": 13.27
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 124,
+    "a2": 90,
+    "sep": 18.2
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.65,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 169,
+  "loneB": 96,
+  "ampA": 1.1016,
+  "ampB": 1.1616,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 216,
+    "sep": 15.67,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 282,
+    "sep": 18.14,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 100,
+    "sep": 15.2,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 180,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 141,
+    "a2": 48,
+    "sep": 12.36
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 137,
+    "a2": 90,
+    "sep": 17.7
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.65,
+  "dB": 0.45,
+  "DuB": 0.5,
+  "loneA": 97,
+  "loneB": 96,
+  "ampA": 1.0808,
+  "ampB": 1.1828,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 192,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 250,
+    "sep": 18.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 129,
+    "a2": 55,
+    "sep": 12.35
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 115,
+    "a2": 85,
+    "sep": 17.72
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.65,
+  "loneA": 137,
+  "loneB": 45,
+  "ampA": 1.0977,
+  "ampB": 1.1086,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 175,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 280,
+    "sep": 15.94,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 82,
+    "sep": 16.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 43,
+    "sep": 13.09
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 140,
+    "a2": 38,
+    "sep": 16.47
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.65,
+  "loneA": 145,
+  "loneB": 25,
+  "ampA": 1.1046,
+  "ampB": 1.1977,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 175,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 288,
+    "sep": 16.19,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 56,
+    "sep": 15.0,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 76,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 129,
+    "a2": 33,
+    "sep": 12.9
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 144,
+    "a2": 38,
+    "sep": 16.6
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.5,
+  "dB": 0.6,
+  "DuB": 0.5,
+  "loneA": 137,
+  "loneB": 96,
+  "ampA": 1.0978,
+  "ampB": 1.1723,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 175,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 280,
+    "sep": 15.94,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 50,
+    "sep": 12.2
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 140,
+    "a2": 85,
+    "sep": 16.62
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.5,
+  "dB": 0.75,
+  "DuB": 0.5,
+  "loneA": 145,
+  "loneB": 96,
+  "ampA": 1.1046,
+  "ampB": 1.1617,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 175,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 288,
+    "sep": 16.19,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 100,
+    "sep": 15.2,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 180,
+    "sep": 17.0,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 129,
+    "a2": 48,
+    "sep": 12.07
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 144,
+    "a2": 90,
+    "sep": 16.6
+   }
+  ]
+ },
+ {
+  "dA": 0.0,
+  "DuA": 0.5,
+  "dB": 0.45,
+  "DuB": 0.5,
+  "loneA": 137,
+  "loneB": 96,
+  "ampA": 1.0963,
+  "ampB": 1.1829,
+  "verdict": "PAIR_OK",
+  "cases": [
+   {
+    "kind": "AA",
+    "d0": 10,
+    "ok": true,
+    "nc": 1,
+    "a": 165,
+    "sep": null,
+    "merged": true
+   },
+   {
+    "kind": "AA",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 268,
+    "sep": 16.36,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 10,
+    "ok": true,
+    "nc": 2,
+    "a": 114,
+    "sep": 15.05,
+    "merged": false
+   },
+   {
+    "kind": "BB",
+    "d0": 16,
+    "ok": true,
+    "nc": 2,
+    "a": 170,
+    "sep": 17.29,
+    "merged": false
+   },
+   {
+    "kind": "AB",
+    "d0": 10,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 121,
+    "a2": 54,
+    "sep": 12.96
+   },
+   {
+    "kind": "AB",
+    "d0": 16,
+    "ok": true,
+    "n1": 1,
+    "n2": 1,
+    "a1": 140,
+    "a2": 85,
+    "sep": 16.62
+   }
+  ]
+ }
+]

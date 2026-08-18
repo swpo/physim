@@ -1,0 +1,21 @@
+{
+ "A": {
+  "du1": 1.2926424712264086,
+  "du2": -0.2624499468228548,
+  "dw_center": 0.24240807430392997,
+  "act_center": 1.030192524403554,
+  "w_halfwidth": 143,
+  "act_halfwidth": 121
+ },
+ "B": {
+  "du1": -0.17223563931269414,
+  "du2": 1.8722470687523776,
+  "dw_center": 0.19204617151309986,
+  "act_center": 1.700011429439683,
+  "w_halfwidth": 37,
+  "act_halfwidth": 25
+ },
+ "W_HALFWIDTH_STAR": 72.73926037567333,
+ "ACT_HALFWIDTH_STAR": 55.0,
+ "note": "geometric-mean midpoints; clean lone blobs T=500"
+}

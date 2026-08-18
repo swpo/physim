@@ -1,0 +1,62 @@
+{
+ "M0": {
+  "status": "ok",
+  "ncomp_end": 1,
+  "ncomp_max": 1,
+  "area_end": 26,
+  "area_min": 26,
+  "area_max": 26,
+  "runtime_s": 14.9,
+  "tu_per_s": 53.6
+ },
+ "B_66": {
+  "status": "ok",
+  "ncomp_end": 1,
+  "ncomp_max": 1,
+  "area_end": 165,
+  "area_min": 165,
+  "area_max": 165,
+  "runtime_s": 15.6,
+  "tu_per_s": 51.4
+ },
+ "C_46": {
+  "status": "ok",
+  "ncomp_end": 1,
+  "ncomp_max": 1,
+  "area_end": 109,
+  "area_min": 109,
+  "area_max": 109,
+  "runtime_s": 16.0,
+  "tu_per_s": 49.9
+ },
+ "D_64": {
+  "status": "ok",
+  "ncomp_end": 1,
+  "ncomp_max": 1,
+  "area_end": 109,
+  "area_min": 109,
+  "area_max": 109,
+  "runtime_s": 15.9,
+  "tu_per_s": 50.2
+ },
+ "E_risky": {
+  "status": "ok",
+  "ncomp_end": 52,
+  "ncomp_max": 52,
+  "area_end": 2222,
+  "area_min": 2222,
+  "area_max": 2222,
+  "runtime_s": 16.4,
+  "tu_per_s": 48.9
+ },
+ "F_36": {
+  "status": "ok",
+  "ncomp_end": 13,
+  "ncomp_max": 13,
+  "area_end": 2813,
+  "area_min": 2608,
+  "area_max": 2813,
+  "runtime_s": 16.7,
+  "tu_per_s": 47.8
+ }
+}

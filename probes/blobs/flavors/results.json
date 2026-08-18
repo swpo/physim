@@ -1,0 +1,1229 @@
+{
+ "milestone": "M3 FLAVORS",
+ "date": "2026-02-19",
+ "world": {
+  "arch": "vvw (5 fields: u1,v1,u2,v2,w)",
+  "equations": [
+   "du_i/dt = Du_i lap(u_i) + lam*u_i - u_i^3 - k3*v_i - k4_i*w + k1_i   (i=1:A, 2:B)",
+   "dv_i/dt = (u_i - v_i)/tau + Dv lap(v_i)",
+   "dw/dt   = ((u1+u2)/2 - w)/theta + Dw lap(w)"
+  ],
+  "shared": {
+   "lam": 2.0,
+   "k3": 1.0,
+   "tau": 3.0,
+   "theta": 0.7,
+   "Dv": 1.0,
+   "Dw": 20.0,
+   "L": 96,
+   "dt": 0.01,
+   "bc": "periodic",
+   "stencil": "5pt laplacian, explicit Euler"
+  },
+  "species_A": {
+   "k1": -1.0,
+   "k4": 1.4,
+   "Du": 0.65
+  },
+  "species_B": {
+   "k1": -1.65067,
+   "k4": 2.15,
+   "Du": 0.65
+  },
+  "background": {
+   "u1=u2=v1=v2=w": -0.86756,
+   "note": "identical for both species by iso-background construction; linearly stable (max growth -0.28 over k in [0,3])"
+  },
+  "design_rule": "iso-background line: k4_i = 1.4 + d_i, k1_i = -1.0 + d_i*ub with ub=-0.86756; A at d=0, B at d=0.75"
+ },
+ "architecture_decision": {
+  "chosen": "(a) two activators + PRIVATE slow inhibitors + SHARED long-range inhibitor w ('vvw', 5 fields)",
+  "why": "vw (4 fields, shared v): NO stable lone-spot island found anywhere scanned (k1 in [-1.3,-0.5], k4 in [1,4]) -> everything domain or bg_unstable. w-only (3 fields): lone-spot islands exist (e.g. k1=-1.0,k4=1.3) but drops the slow inhibitor v = the drift-bifurcation dial M1/M4/M5 need; each vvw species subsystem is EXACTLY the certified M0 model, so all M0/M1 results port over per-species. (b) painted type-field: rejected per brief. (c) u+/u- sign classes: not needed, (a) worked.",
+  "coupling": "cross-species interaction ONLY via shared w (average drive (u1+u2)/2); w-mediated competition => inter-species repulsion",
+  "evidence": [
+   "probe1_arch.json",
+   "probe2_island.json"
+  ]
+ },
+ "species": {
+  "A": {
+   "area_px": 169,
+   "peak_u": 1.102,
+   "amp_above_bg": 1.97,
+   "w_bump_peak": 0.45,
+   "w_halfwidth_px": 143,
+   "act_halfwidth_px": 121,
+   "character": "large broad spot (13x13 core)"
+  },
+  "B": {
+   "area_px": 25,
+   "peak_u": 1.198,
+   "amp_above_bg": 2.07,
+   "w_bump_peak": 0.23,
+   "w_halfwidth_px": 37,
+   "act_halfwidth_px": 25,
+   "character": "small sharp spot (5x5 core)"
+  },
+  "contrast": "6.8x area, 3.9x w-footprint, ~2x w-peak; both non-oscillatory (rel_std ~ 3e-4)"
+ },
+ "gates": {
+  "B1": {
+   "verdict": "PASS (both species, same parameter set)",
+   "lifetime": "1e4 tu clean AND 1e4 tu sigma=2.5e-3, both species: alive, ncomp==1 at every 100-tu record, area exactly constant (A:169, B:25)",
+   "noise": "sigma=2.5e-3 -> sigma/amp = 1.27e-3 (A), 1.21e-3 (B) >= 1e-3; extra seeds 1,2 at 2e3 tu pass",
+   "non_replication": "ncomp_max = 1 in all 8 runs",
+   "window": {
+    "A": {
+     "k1": 1.32,
+     "k4": 1.32,
+     "Du": 2.38,
+     "theta": 2.22,
+     "tau": 2.67
+    },
+    "B": {
+     "k1": 1.28,
+     "k4": 1.29,
+     "Du": 2.0,
+     "theta": ">=2.56",
+     "tau": ">=4.0"
+    },
+    "criterion": ">=1.3x in >=2 dials: A passes in 5 dials, B passes in 3 (Du, theta, tau)",
+    "honest_note": "B's own-source dials k1,k4 are 1.28-1.29x, marginally under 1.3x; window requirement met via Du/theta/tau"
+   },
+   "dt_check": "dt=0.005 reproduces dt=0.01 exactly (area & peak, both species)",
+   "runs": [
+    {
+     "species": "A",
+     "T": 10000.0,
+     "noise": 0.0,
+     "seed": 0,
+     "wall_s": 710.6,
+     "tu_per_s": 14.1,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 169,
+     "area_min": 169,
+     "area_max": 169,
+     "ncomp_max": 1,
+     "umax_end": 1.1015,
+     "area_series_every1000tu": [
+      37,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169
+     ]
+    },
+    {
+     "species": "A",
+     "T": 10000.0,
+     "noise": 0.0025,
+     "seed": 0,
+     "wall_s": 795.8,
+     "tu_per_s": 12.6,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 169,
+     "area_min": 169,
+     "area_max": 169,
+     "ncomp_max": 1,
+     "umax_end": 1.1024,
+     "area_series_every1000tu": [
+      37,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169,
+      169
+     ]
+    },
+    {
+     "species": "A",
+     "T": 2000.0,
+     "noise": 0.0025,
+     "seed": 1,
+     "wall_s": 311.3,
+     "tu_per_s": 6.4,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 169,
+     "area_min": 169,
+     "area_max": 169,
+     "ncomp_max": 1,
+     "umax_end": 1.102,
+     "area_series_every1000tu": [
+      37,
+      169,
+      169
+     ]
+    },
+    {
+     "species": "A",
+     "T": 2000.0,
+     "noise": 0.0025,
+     "seed": 2,
+     "wall_s": 311.3,
+     "tu_per_s": 6.4,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 169,
+     "area_min": 169,
+     "area_max": 169,
+     "ncomp_max": 1,
+     "umax_end": 1.1019,
+     "area_series_every1000tu": [
+      37,
+      169,
+      169
+     ]
+    },
+    {
+     "species": "B",
+     "T": 10000.0,
+     "noise": 0.0,
+     "seed": 0,
+     "wall_s": 713.7,
+     "tu_per_s": 14.0,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 25,
+     "area_min": 25,
+     "area_max": 25,
+     "ncomp_max": 1,
+     "umax_end": 1.1976,
+     "area_series_every1000tu": [
+      37,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+     ]
+    },
+    {
+     "species": "B",
+     "T": 10000.0,
+     "noise": 0.0025,
+     "seed": 0,
+     "wall_s": 794.8,
+     "tu_per_s": 12.6,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 25,
+     "area_min": 25,
+     "area_max": 25,
+     "ncomp_max": 1,
+     "umax_end": 1.1979,
+     "area_series_every1000tu": [
+      37,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25,
+      25
+     ]
+    },
+    {
+     "species": "B",
+     "T": 2000.0,
+     "noise": 0.0025,
+     "seed": 1,
+     "wall_s": 312.2,
+     "tu_per_s": 6.4,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 25,
+     "area_min": 25,
+     "area_max": 25,
+     "ncomp_max": 1,
+     "umax_end": 1.1967,
+     "area_series_every1000tu": [
+      37,
+      25,
+      25
+     ]
+    },
+    {
+     "species": "B",
+     "T": 2000.0,
+     "noise": 0.0025,
+     "seed": 2,
+     "wall_s": 311.0,
+     "tu_per_s": 6.4,
+     "passed": true,
+     "alive": true,
+     "nonreplicating": true,
+     "bounded": true,
+     "stable": true,
+     "area_end": 25,
+     "area_min": 25,
+     "area_max": 25,
+     "ncomp_max": 1,
+     "umax_end": 1.1978,
+     "area_series_every1000tu": [
+      37,
+      25,
+      25
+     ]
+    }
+   ]
+  },
+  "B3_distinguishability": {
+   "verdict": "PASS 20/20 (100%) on all three locked classifiers",
+   "protocol": "20 encounters (10 A + 10 B), random positions, unique seeds, sigma=2.5e-3, T=300 settle, probe patch = 5x5 time series (5 samples over 60 tu) at total-activity peak; classifiers locked in metrics.py BEFORE certification",
+   "classifiers": {
+    "classify_full": "activator-channel patch amplitude comparison (du1 vs du2) -> 20/20",
+    "classify_wport": "w-FIELD-ONLY (the single shared field = the physical port other blobs feel): w-bump halfwidth footprint vs frozen W*=72.7 -> 20/20",
+    "classify_size": "field-agnostic total-activity halfwidth vs frozen ACT*=55 -> 20/20"
+   },
+   "pairworld_check": "5 worlds with A and B coexisting, probe each blob: 10/10 both classifiers",
+   "oscillation": "HONEST NEGATIVE: blobs are non-oscillatory (patch amplitude rel_std ~ 1e-4-8e-4 under noise); local frequency is NOT a usable signature in this world",
+   "calibration": {
+    "A": {
+     "du1": 1.2926424712264086,
+     "du2": -0.2624499468228548,
+     "dw_center": 0.24240807430392997,
+     "act_center": 1.030192524403554,
+     "w_halfwidth": 143,
+     "act_halfwidth": 121
+    },
+    "B": {
+     "du1": -0.17223563931269414,
+     "du2": 1.8722470687523776,
+     "dw_center": 0.19204617151309986,
+     "act_center": 1.700011429439683,
+     "w_halfwidth": 37,
+     "act_halfwidth": 25
+    },
+    "W_HALFWIDTH_STAR": 72.73926037567333,
+    "ACT_HALFWIDTH_STAR": 55.0,
+    "note": "geometric-mean midpoints; clean lone blobs T=500"
+   },
+   "runs": {
+    "encounters": [
+     {
+      "idx": 0,
+      "truth": "A",
+      "at": [
+       25,
+       49
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0005
+     },
+     {
+      "idx": 1,
+      "truth": "A",
+      "at": [
+       78,
+       56
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0003
+     },
+     {
+      "idx": 2,
+      "truth": "A",
+      "at": [
+       55,
+       38
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0004
+     },
+     {
+      "idx": 3,
+      "truth": "A",
+      "at": [
+       32,
+       24
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0006
+     },
+     {
+      "idx": 4,
+      "truth": "A",
+      "at": [
+       65,
+       10
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0007
+     },
+     {
+      "idx": 5,
+      "truth": "A",
+      "at": [
+       42,
+       16
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0003
+     },
+     {
+      "idx": 6,
+      "truth": "A",
+      "at": [
+       49,
+       35
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0003
+     },
+     {
+      "idx": 7,
+      "truth": "A",
+      "at": [
+       14,
+       15
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0008
+     },
+     {
+      "idx": 8,
+      "truth": "A",
+      "at": [
+       37,
+       22
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0008
+     },
+     {
+      "idx": 9,
+      "truth": "A",
+      "at": [
+       65,
+       14
+      ],
+      "full": "A",
+      "wport": "A",
+      "size": "A",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0007
+     },
+     {
+      "idx": 10,
+      "truth": "B",
+      "at": [
+       62,
+       17
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0004
+     },
+     {
+      "idx": 11,
+      "truth": "B",
+      "at": [
+       31,
+       31
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0002
+     },
+     {
+      "idx": 12,
+      "truth": "B",
+      "at": [
+       66,
+       33
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0003
+     },
+     {
+      "idx": 13,
+      "truth": "B",
+      "at": [
+       20,
+       70
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0002
+     },
+     {
+      "idx": 14,
+      "truth": "B",
+      "at": [
+       55,
+       43
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0001
+     },
+     {
+      "idx": 15,
+      "truth": "B",
+      "at": [
+       52,
+       37
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0001
+     },
+     {
+      "idx": 16,
+      "truth": "B",
+      "at": [
+       58,
+       27
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0003
+     },
+     {
+      "idx": 17,
+      "truth": "B",
+      "at": [
+       85,
+       79
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0002
+     },
+     {
+      "idx": 18,
+      "truth": "B",
+      "at": [
+       77,
+       55
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0002
+     },
+     {
+      "idx": 19,
+      "truth": "B",
+      "at": [
+       35,
+       26
+      ],
+      "full": "B",
+      "wport": "B",
+      "size": "B",
+      "full_ok": true,
+      "wport_ok": true,
+      "size_ok": true,
+      "osc_rel_std": 0.0001
+     }
+    ],
+    "acc_full": 1.0,
+    "acc_wport": 1.0,
+    "acc_size": 1.0,
+    "pairworld": [
+     {
+      "seed": 11,
+      "results": [
+       {
+        "truth": "A",
+        "full": "A",
+        "wport": "A"
+       },
+       {
+        "truth": "B",
+        "full": "B",
+        "wport": "B"
+       }
+      ]
+     },
+     {
+      "seed": 22,
+      "results": [
+       {
+        "truth": "A",
+        "full": "A",
+        "wport": "A"
+       },
+       {
+        "truth": "B",
+        "full": "B",
+        "wport": "B"
+       }
+      ]
+     },
+     {
+      "seed": 33,
+      "results": [
+       {
+        "truth": "A",
+        "full": "A",
+        "wport": "A"
+       },
+       {
+        "truth": "B",
+        "full": "B",
+        "wport": "B"
+       }
+      ]
+     },
+     {
+      "seed": 44,
+      "results": [
+       {
+        "truth": "A",
+        "full": "A",
+        "wport": "A"
+       },
+       {
+        "truth": "B",
+        "full": "B",
+        "wport": "B"
+       }
+      ]
+     },
+     {
+      "seed": 55,
+      "results": [
+       {
+        "truth": "A",
+        "full": "A",
+        "wport": "A"
+       },
+       {
+        "truth": "B",
+        "full": "B",
+        "wport": "B"
+       }
+      ]
+     }
+    ],
+    "pw_full": 1.0,
+    "pw_wport": 1.0
+   }
+  },
+  "B3_encounters": {
+   "verdict": "flavor CONSERVED in all 18 runs; no conversion, no annihilation ever observed",
+   "table_d10": [
+    {
+     "pair": "A+A",
+     "d0": 10,
+     "outcome": "repel (3/3 seeds)",
+     "final_sep": "15.5-15.7",
+     "note": "blobs deform to face-to-face brackets, push apart, remain 2 separate A-blobs"
+    },
+    {
+     "pair": "A+B",
+     "d0": 10,
+     "outcome": "repel (3/3 seeds)",
+     "final_sep": "13.1-13.2",
+     "note": "w-mediated cross-repulsion; A deforms toward larger square, B stays compact"
+    },
+    {
+     "pair": "B+B",
+     "d0": 10,
+     "outcome": "repel (3/3 seeds)",
+     "final_sep": "15.0",
+     "note": "clean repulsion to lattice-registered separation"
+    }
+   ],
+   "table_d6": [
+    {
+     "pair": "A+A",
+     "d0": 6,
+     "outcome": "merge (3/3 seeds)",
+     "note": "overlapping seeds fuse into ONE A-blob (area 174 ~ single-A 169): documented same-flavor merge at strong overlap"
+    },
+    {
+     "pair": "A+B",
+     "d0": 6,
+     "outcome": "repel (3/3 seeds)",
+     "final_sep": "11.1-11.2"
+    },
+    {
+     "pair": "B+B",
+     "d0": 6,
+     "outcome": "repel (3/3 seeds)",
+     "final_sep": "13.0"
+    }
+   ],
+   "conservation": "Blob count per flavor conserved in every run EXCEPT same-species A+A at d0=6 which merges 2->1 (documented, deterministic across seeds). Field 'excess mass' is NOT conserved (dissipative system: each blob relaxes to its attractor); cross-species w-inhibition prints a NEGATIVE dip in the other species' activator under any blob (e.g. B-field mass -128 under two A blobs) - that is linear field response, not a blob (census threshold never crossed).",
+   "runs": [
+    {
+     "kind": "AA",
+     "seed": 0,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 2,
+     "nB": 0,
+     "areas_A": [
+      112,
+      108
+     ],
+     "areas_B": [],
+     "sep_end": 15.46,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 348.6,
+      "B": -128.5
+     }
+    },
+    {
+     "kind": "AA",
+     "seed": 1,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 2,
+     "nB": 0,
+     "areas_A": [
+      108,
+      112
+     ],
+     "areas_B": [],
+     "sep_end": 15.46,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 348.6,
+      "B": -128.3
+     }
+    },
+    {
+     "kind": "AA",
+     "seed": 2,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 2,
+     "nB": 0,
+     "areas_A": [
+      108,
+      108
+     ],
+     "areas_B": [],
+     "sep_end": 15.67,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 344.0,
+      "B": -126.9
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 0,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      141
+     ],
+     "areas_B": [
+      33
+     ],
+     "sep_end": 13.19,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 205.7,
+      "B": -32.5
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 1,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      141
+     ],
+     "areas_B": [
+      32
+     ],
+     "sep_end": 13.13,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 205.7,
+      "B": -32.3
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 2,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      141
+     ],
+     "areas_B": [
+      32
+     ],
+     "sep_end": 13.13,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 205.8,
+      "B": -32.4
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 0,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 15.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -24.0,
+      "B": 77.4
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 1,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 15.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -24.0,
+      "B": 77.6
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 2,
+     "d0": 10,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 15.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -23.9,
+      "B": 77.4
+     }
+    },
+    {
+     "kind": "AA",
+     "seed": 0,
+     "d0": 6,
+     "outcome": "merge",
+     "nA": 1,
+     "nB": 0,
+     "areas_A": [
+      174
+     ],
+     "areas_B": [],
+     "sep_end": null,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 274.5,
+      "B": -100.7
+     }
+    },
+    {
+     "kind": "AA",
+     "seed": 1,
+     "d0": 6,
+     "outcome": "merge",
+     "nA": 1,
+     "nB": 0,
+     "areas_A": [
+      174
+     ],
+     "areas_B": [],
+     "sep_end": null,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 274.6,
+      "B": -100.5
+     }
+    },
+    {
+     "kind": "AA",
+     "seed": 2,
+     "d0": 6,
+     "outcome": "merge",
+     "nA": 1,
+     "nB": 0,
+     "areas_A": [
+      174
+     ],
+     "areas_B": [],
+     "sep_end": null,
+     "mass0": {
+      "A": 226.2,
+      "B": 0.0
+     },
+     "mass1": {
+      "A": 274.7,
+      "B": -100.7
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 0,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      128
+     ],
+     "areas_B": [
+      26
+     ],
+     "sep_end": 11.19,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 187.6,
+      "B": -32.0
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 1,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      128
+     ],
+     "areas_B": [
+      27
+     ],
+     "sep_end": 11.13,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 187.6,
+      "B": -31.8
+     }
+    },
+    {
+     "kind": "AB",
+     "seed": 2,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 1,
+     "nB": 1,
+     "areas_A": [
+      128
+     ],
+     "areas_B": [
+      26
+     ],
+     "sep_end": 11.19,
+     "mass0": {
+      "A": 113.1,
+      "B": 113.1
+     },
+     "mass1": {
+      "A": 187.7,
+      "B": -31.9
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 0,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 13.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -24.0,
+      "B": 77.5
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 1,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 13.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -24.0,
+      "B": 77.7
+     }
+    },
+    {
+     "kind": "BB",
+     "seed": 2,
+     "d0": 6,
+     "outcome": "repel",
+     "nA": 0,
+     "nB": 2,
+     "areas_A": [],
+     "areas_B": [
+      28,
+      28
+     ],
+     "sep_end": 13.0,
+     "mass0": {
+      "A": 0.0,
+      "B": 226.2
+     },
+     "mass1": {
+      "A": -23.9,
+      "B": 77.4
+     }
+    }
+   ]
+  },
+  "B7": {
+   "verdict": "PASS with caveat",
+   "numbers": "5-field stepper 282-320 us/step at L=96 single-core; 11-14 tu/s in practice; standard 800-tu candidate = 71 s; 1e4-tu certification run = 12-13 min",
+   "caveat": "B1 certification runs (1e4 tu) exceed the 5-min/candidate budget by design (lifetime gate is 1e4 tu); routine candidates (<=3.4e3 tu) fit in 5 min. Ran 8 certs in parallel on 8 cores (~13 min wall)."
+  }
+ },
+ "honest_negatives": [
+  "arch vw (shared slow inhibitor, 4 fields) has NO stable localized-spot regime in the scanned box - shared v carries cross-species SHORT-range coupling that kills the spot island (everything -> domain or Turing-unstable background).",
+  "The naive M0 point (k1=-0.7,k4=1.5) does NOT survive as a lone species in the shared-w world: a lone spot only drives w at half weight (k4_eff=k4/2), so the whole island shifts; iso-background construction was needed to re-anchor it.",
+  "First pair candidate ('EQD', both Du=1, k4_eff<=0.9): same-species close encounters (d<=18) deformed into STRIPE pairs (area 750-900) - weak long-range self-inhibition is stripe-unstable. Fixed by Du=0.65 + deeper k4. This killed probe7's pair, documented in probe7/probe8 json.",
+  "Blobs are non-oscillatory: local oscillation frequency is NOT a usable port signature here (rel_std ~ 1e-4). Distinguishability rests on amplitude-per-channel, w-footprint and size.",
+  "Blobs are lattice-pinned squares (169=13x13, 25=5x5) - inherited M0 limitation; motility/unpinning is M1's problem, not re-solved here.",
+  "B species own-dial (k1,k4) windows are 1.28-1.29x, marginally under the 1.3x bar; B meets the >=2-dial requirement via Du (2.0x), theta (>=2.6x), tau (>=4x).",
+  "sigma=5e-3 was NOT certified (only 2.5e-3); higher noise not explored to keep budget."
+ ],
+ "files": {
+  "physics_core": "flavors_core.py",
+  "locked_metrics": "metrics.py (LOCK stamp inside; constants frozen by probe13_freeze.py before any certification run)",
+  "probes": [
+   "probe10_smallpair.py",
+   "probe11_noise_sanity.py",
+   "probe12_calib.py",
+   "probe13_freeze.py",
+   "probe1_arch.py",
+   "probe2_island.py",
+   "probe3_diff.py",
+   "probe4_isoline.py",
+   "probe5_contrast.py",
+   "probe6_portrait.py",
+   "probe7_encounter_preview.py",
+   "probe7b_du.py",
+   "probe8_samepair.py",
+   "probe9_jointpair.py"
+  ],
+  "certs": [
+   "cert_b1.py",
+   "cert_b3.py",
+   "cert_b7_budget.py",
+   "cert_encounters.py",
+   "cert_encounters_d6.py",
+   "cert_window.py",
+   "cert_window_refine.py",
+   "cert_window_shared.py"
+  ],
+  "strips": [
+   "encounter_strips.png",
+   "port_signatures.png",
+   "species_portraits.png"
+  ]
+ }
+}
