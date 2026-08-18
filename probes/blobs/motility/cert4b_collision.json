@@ -1,0 +1,80 @@
+{
+ "status": "ok",
+ "runtime_s": 255.2,
+ "story": [
+  {
+   "t0": 0,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.75
+  },
+  {
+   "t0": 100,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 56.5
+  },
+  {
+   "t0": 200,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 56.75
+  },
+  {
+   "t0": 300,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 56.375
+  },
+  {
+   "t0": 400,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 56.5
+  },
+  {
+   "t0": 500,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.0
+  },
+  {
+   "t0": 600,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.0
+  },
+  {
+   "t0": 700,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.0
+  },
+  {
+   "t0": 800,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.0
+  },
+  {
+   "t0": 900,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.125
+  },
+  {
+   "t0": 1000,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.125
+  },
+  {
+   "t0": 1100,
+   "nc_min": 2,
+   "nc_max": 2,
+   "area_med": 57.0
+  }
+ ],
+ "nc_end": 2,
+ "area_end": 57.0
+}
