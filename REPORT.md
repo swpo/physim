@@ -1282,3 +1282,34 @@ the tradeoff: E1 (slow, hard) / E2 (fast, mid). A future E3 could put the
 selection response just BEYOND single-contract horizons but within
 multi-contract reach — the sweet spot where only mechanistic (genetic)
 models transfer.
+
+
+## Addendum 29 — user redirect: BLOBS program (dissipative-soliton matter)
+
+After reviewing the five world-search finalist films, the user picked the slime
+lifecycle as closest-to-interesting but redirected the program upward: worlds built
+from BLOBS — persistent localized excitations of continuum fields ("instanton-like"),
+with flavors (multi-component fields), field-mediated interactions, BINDING into
+molecules, composite dynamics in background fields (spinning singles, mutually
+rotating pairs), and ultimately self-assembled MACHINES (e.g. a configuration that
+transports a target-flavor blob upstream against a background gradient).
+
+Controller Day-0 feasibility (probes/blobs/day0_probe.py): the 3-component
+Purwins-class reaction-diffusion system (activator + slow inhibitor + fast
+long-range inhibitor) holds a persistent single blob at lam=2, k1=-0.7, k3=1,
+k4=1.5, tau=3, theta=0.7, Du=Dv=1, Dw=20 (L=96, dt=0.01): area ~26px, stable
+2000 tu, noise-robust to 2e-3, non-replicating — sitting in the classic window
+between death (k1=-0.9) and replication cascade / spot soup (k1=-0.5, k4=2.5).
+Known trap confirmed immediately: the blob is LATTICE-PINNED (zero displacement
+under noise) — motility requires the drift bifurcation and an un-pinning proof
+(grid-refinement invariance), which is milestone M1.
+
+Program spec: probes/blobs/PROGRAM.md (gates B1 existence, B2 mobility, B3 flavors,
+B4 binding, B5 composite dynamics, B6 machine, B7 budget; honesty rules: fields
+only — blob identity is measured, never a state variable; no scripted events;
+machines must be same-physics configurations). Three searchers spawned:
+blob-motility (M1), blob-binding (M2), blob-flavors (M3). Slime-lifecycle engine
+integration is PARKED as the fallback shipping candidate, not cancelled.
+
+First blowup lesson re-learned within minutes (explicit Euler dt vs Dw=20-30
+stability: dt < dx^2/(4 Dw)) — encoded in the searcher briefs.
