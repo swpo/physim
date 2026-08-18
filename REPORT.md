@@ -1313,3 +1313,32 @@ integration is PARKED as the fallback shipping candidate, not cancelled.
 
 First blowup lesson re-learned within minutes (explicit Euler dt vs Dw=20-30
 stability: dt < dx^2/(4 Dw)) — encoded in the searcher briefs.
+
+
+## Addendum 30 — BLOBS round 1 certified (M1-M3); round 2 spawned (M4-M5 prep)
+
+Round-1 fan-in complete, all three milestones certified after controller audits:
+- M1 MOTILITY (consolidated by controller from child cert artifacts after the child
+  died pre-consolidation): drift bifurcation c=sqrt(0.0299(tau-4.78)), r2=0.993, at
+  Dv=0.65; unpinned (IMEX-FFT, dx=0.5 converged to 0.6% vs dx=0.25; 0/8 noise-chosen
+  directions lattice-clustered); 10k-tu lifetime; wall reflection + soft two-blob
+  scattering logged. Audit trap hit AGAIN: naive u-only IC dies at tau=5 — searchers'
+  documented symmetric-IC protocol required (convention-faithful audits, 3rd time).
+- M2 BINDING: P7s = M0 + Dv=2.0, tau=2.5. Bond d1*=15.70+-0.02 (two-sided
+  convergence), basin [14.5,19.5], unpinned (1.8% shift dx=1->0.5); escapes censored
+  >4000tu at sigma<=0.075; stable 3-chain + equilateral triangle molecules. THE BIG
+  HONEST NEGATIVE: tau=3.0's apparent bond was PURE LATTICE PINNING (continuum
+  saddle, e-fold 140tu) — the Day-0 trap materialized exactly as feared and was
+  caught by the dx-refinement gate. Controller audit: fresh stamps, L=64, d0=16.5 &
+  18.5 -> d*=15.67/15.70. CONFIRMED.
+- M3 FLAVORS: "vvw" arch (private u_i,v_i + shared long-range w) with an
+  iso-background line (k1_i, k4_i co-varied) holding ONE stable background for all
+  species. A=169px broad / B=25px sharp, port-classifiable 20/20 by w-signature
+  alone; encounters conserve flavor (pure repulsion; only AA at d0=6 merges,
+  deterministically). Audit: A+B at d0=8 repel to 12.1, conserved, 2 fresh seeds.
+Design tension for M4 (spawned: blob-composite): binding lives at (Dv=2.0, tau=2.5),
+motility at (Dv=0.65, tau>4.78) — round 2 must find the regime where bound
+structures MOVE (traveling bonds / rotating pairs / breathing bonds). M5-prep
+(spawned: blob-transport): static background gradients as "downstream", species-
+selective drift as the sorting primitive, chains as obstacles/channels, noise
+ratchet sketch. Machine assembly = round 3.
