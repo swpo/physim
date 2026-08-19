@@ -1,0 +1,12 @@
+5 to run (0 already done)
+[start] parkridge_eps0.0025
+[start] parkridge_eps0.00375
+[start] ratchet_pilot_sig0.02
+[done   546s] {"id": "parkridge_eps0.0025", "n": 64, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.009417757757604069, "v_y": 1.4915825910436005e-15, "r2_x": 0.9723211132107067, "net_x": 6.230358907532995, "area_max": 320.75, "n": 75, "t_lo": 150.0, "t_hi": 890.0, "x_lo": 41.31392275306941, "x_hi": 47.54428166060241}}
+[done   546s] {"id": "parkridge_eps0.00375", "n": 63, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.018247449484462, "v_y": 2.0923561700230555e-15, "r2_x": 0.9702881445569448, "net_x": 4.011743278762616, "area_max": 277.5, "n": 26, "t_lo": 150.0, "t_hi": 400.0, "x_lo": 42.090536018492806, "x_hi": 46.10227929725542}}
+[start] ratchet_pilot_sig0.03
+[start] Ap065_eps0.0025_dx025
+[done  1301s] {"id": "ratchet_pilot_sig0.02", "n": 66, "status": "ok", "key": {"verdict": "ok", "v_x": -6.940853622665566e-06, "net_x": -0.2097520276763376, "r2": 0.01283029709086636, "T_obs": 2850.0}}
+[done  1056s] {"id": "Ap065_eps0.0025_dx025", "n": 68, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.010195908542808964, "v_y": 1.7233866295880894e-14, "r2_x": 0.999784768999701, "net_x": 4.529664679755797, "area_max": 38.1875, "n": 46, "t_lo": 150.0, "t_hi": 600.0, "x_lo": 25.671632860050373, "x_hi": 30.20129753980617}}
+[done  1272s] {"id": "ratchet_pilot_sig0.03", "n": 69, "status": "ok", "key": {"verdict": "ok", "v_x": -4.412991013819632e-06, "net_x": -0.18519126482439674, "r2": 0.0034664787099032424, "T_obs": 2850.0}}
+ALL DONE

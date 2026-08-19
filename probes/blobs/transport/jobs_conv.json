@@ -1,0 +1,70 @@
+[
+ {
+  "id": "conveyor_f0.8",
+  "kind": "ratchet",
+  "eps": 0.0027,
+  "profile": "saw",
+  "frac": 0.8,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 4000.0,
+  "spots": [
+   [
+    "B",
+    28.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "sort_demo_eps0.0105",
+  "kind": "drift",
+  "eps": 0.0105,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "B",
+    24.0,
+    24.0
+   ],
+   [
+    "A",
+    24.0,
+    72.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "conveyor_f0.2",
+  "kind": "ratchet",
+  "eps": 0.0027,
+  "profile": "saw",
+  "frac": 0.2,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 4000.0,
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

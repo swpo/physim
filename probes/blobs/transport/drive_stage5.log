@@ -1,0 +1,20 @@
+9 to run (0 already done)
+[start] Bwin_k1_-1.62
+[start] Bwin_k1_-1.59
+[start] Bwin_k1_-1.56
+[start] Bwin_k1_-1.53
+[start] Bwin_k1_-1.5
+[done   660s] {"id": "Bwin_k1_-1.53", "n": 52, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 746.0, "n": 0}}
+[done   660s] {"id": "Bwin_k1_-1.5", "n": 53, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 2347.0, "n": 0}}
+[start] Apwin_k1_-1.55
+[start] Apwin_k1_-1.53
+[done   666s] {"id": "Bwin_k1_-1.62", "n": 55, "status": "ok", "key": {"verdict": "pinned", "v_x": -5.0233761443399524e-17, "v_y": 1.4266388249925463e-14, "r2_x": 0.22160883280757093, "net_x": -1.5631940186722204e-13, "area_max": 34.25, "n": 55, "t_lo": 150.0, "t_hi": 1500.0, "x_lo": 47.99999999999993, "x_hi": 47.99999999999977}}
+[done   666s] {"id": "Bwin_k1_-1.59", "n": 54, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 526.0, "n": 0}}
+[done   666s] {"id": "Bwin_k1_-1.56", "n": 56, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 631.0, "n": 0}}
+[start] Apwin_k1_-1.51
+[start] Apwin_k1_-1.49
+[done   646s] {"id": "Apwin_k1_-1.55", "n": 57, "status": "ok", "key": {"verdict": "pinned", "v_x": -1.03816440316359e-15, "v_y": 0.0, "r2_x": 0.9973172617936479, "net_x": -1.3784529073745944e-12, "area_max": 36.25, "n": 55, "t_lo": 150.0, "t_hi": 1500.0, "x_lo": 47.9999999999999, "x_hi": 47.99999999999852}}
+[done   651s] {"id": "Apwin_k1_-1.53", "n": 58, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 597.0, "n": 0}}
+[done   646s] {"id": "Apwin_k1_-1.51", "n": 60, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 682.0, "n": 0}}
+[done   646s] {"id": "Apwin_k1_-1.49", "n": 59, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 767.0, "n": 0}}
+ALL DONE

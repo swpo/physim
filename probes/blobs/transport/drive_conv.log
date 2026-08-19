@@ -1,0 +1,5 @@
+3 to run (0 already done)
+[start] conveyor_f0.8
+[start] sort_demo_eps0.0105
+[done   501s] {"id": "sort_demo_eps0.0105", "n": 82, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.03301535466052709, "v_y": 1.521460980541784e-14, "r2_x": 0.9887724499646098, "net_x": 3.2545944054288043, "area_max": 415.75, "n": 11, "t_lo": 150.0, "t_hi": 250.0, "x_lo": 30.2962745219626, "x_hi": 33.550868927391406}}
+[start] conveyor_f0.2

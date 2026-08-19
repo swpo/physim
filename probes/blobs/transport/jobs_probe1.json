@@ -1,0 +1,92 @@
+[
+ {
+  "id": "wall16_persist",
+  "kind": "exist",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "L": 80.0,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    8.0
+   ],
+   [
+    "A",
+    24.0,
+    24.0
+   ],
+   [
+    "A",
+    24.0,
+    40.0
+   ],
+   [
+    "A",
+    24.0,
+    56.0
+   ],
+   [
+    "A",
+    24.0,
+    72.0
+   ]
+  ],
+  "rec_tu": 20.0,
+  "cargo_idx": 0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "conv_probe",
+  "kind": "ratchet",
+  "eps": 0.005,
+  "profile": "saw",
+  "frac": 0.7,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "L": 96.0,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "spots": [
+   [
+    "B",
+    28.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "conv_mirror",
+  "kind": "ratchet",
+  "eps": 0.005,
+  "profile": "saw",
+  "frac": 0.3,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "L": 96.0,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

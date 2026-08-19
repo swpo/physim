@@ -1,0 +1,248 @@
+[
+ {
+  "id": "Ap065_drift_eps0.00125",
+  "kind": "drift",
+  "eps": 0.00125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Ap065_drift_eps0.00375",
+  "kind": "drift",
+  "eps": 0.00375,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Ap065_drift_eps0.0075",
+  "kind": "drift",
+  "eps": 0.0075,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Ap065_eps0.0025_s1",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 1,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Ap065_eps0.0025_s2",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 2,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Ap065_eps0.0025_s3",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 3,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ },
+ {
+  "id": "Bflip_eps0.009_s0",
+  "kind": "drift",
+  "eps": 0.009,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.0095_s0",
+  "kind": "drift",
+  "eps": 0.0095,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.0125_s1",
+  "kind": "drift",
+  "eps": 0.0125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "noise": 0.0025,
+  "seed": 1,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.0125_s2",
+  "kind": "drift",
+  "eps": 0.0125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "noise": 0.0025,
+  "seed": 2,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "selcouple_demo",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "B",
+    24.0,
+    30.0
+   ],
+   [
+    "A",
+    36.0,
+    66.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ }
+]

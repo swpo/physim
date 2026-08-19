@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] wall16_persist
+[start] conv_probe
+[start] conv_mirror
+[done   195s] {"id": "wall16_persist", "n": 49, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 176.5, "n": 5}}
+[done   415s] {"id": "conv_mirror", "n": 50, "status": "ok", "key": {"verdict": "ok", "v_x": -0.006672793923647722, "net_x": -10.710897064971775, "r2": 0.9515918982278782, "T_obs": 1850.0}}
+[done   420s] {"id": "conv_probe", "n": 51, "status": "ok", "key": {"verdict": "ok", "v_x": 0.003563594018834221, "net_x": 9.439828326632071, "r2": 0.5193627163271343, "T_obs": 1850.0}}
+ALL DONE

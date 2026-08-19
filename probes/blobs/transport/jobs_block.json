@@ -1,0 +1,132 @@
+[
+ {
+  "id": "block_Bwall_s0",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "init_from": "parkridge_eps0.0025",
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "block_ctrl_s0",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "block_Bwall_s1",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "init_from": "parkridge_eps0.0025",
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.0025,
+  "seed": 1,
+  "lone_area": 30.25
+ },
+ {
+  "id": "block_Bwall_s2",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "init_from": "parkridge_eps0.0025",
+  "spots": [
+   [
+    "B",
+    20.0,
+    48.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.0025,
+  "seed": 2,
+  "lone_area": 30.25
+ },
+ {
+  "id": "block_Bwall_Ap",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "init_from": "parkridge_eps0.0025",
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    20.0,
+    48.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    0,
+    20.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ }
+]

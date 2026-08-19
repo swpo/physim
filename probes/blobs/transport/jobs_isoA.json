@@ -1,0 +1,90 @@
+[
+ {
+  "id": "isoA_d0.2",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "params": {
+   "k1_1": -1.17351,
+   "k4_1": 1.6
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0,
+  "lone_area": null
+ },
+ {
+  "id": "isoA_d0.3",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "params": {
+   "k1_1": -1.26027,
+   "k4_1": 1.7
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0,
+  "lone_area": null
+ },
+ {
+  "id": "isoA_d0.4",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "params": {
+   "k1_1": -1.34702,
+   "k4_1": 1.8
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0,
+  "lone_area": null
+ },
+ {
+  "id": "isoA_d0.5",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "params": {
+   "k1_1": -1.43378,
+   "k4_1": 1.9
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0,
+  "lone_area": null
+ }
+]

@@ -1,0 +1,104 @@
+[
+ {
+  "id": "parkridge_eps0.0025",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    40.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "parkridge_eps0.00375",
+  "kind": "drift",
+  "eps": 0.00375,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    40.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "ratchet_pilot_sig0.02",
+  "kind": "ratchet",
+  "eps": 0.0025,
+  "profile": "saw",
+  "frac": 0.7,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "noise": 0.02,
+  "seed": 0,
+  "spots": [
+   [
+    "B",
+    40.8,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "ratchet_pilot_sig0.03",
+  "kind": "ratchet",
+  "eps": 0.0025,
+  "profile": "saw",
+  "frac": 0.7,
+  "n_teeth": 4,
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "noise": 0.03,
+  "seed": 0,
+  "spots": [
+   [
+    "B",
+    40.8,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Ap065_eps0.0025_dx025",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.25,
+  "stepper": "imexfft",
+  "T": 600.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ }
+]

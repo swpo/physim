@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] Afate_dx05_T3000
+[start] park_B_ridge
+[start] B_eps0_ctrl
+[done   205s] {"id": "B_eps0_ctrl", "n": 1, "status": "ok", "key": {"verdict": "pinned", "v_x": 1.604340480796119e-16, "v_y": -1.2892021720683098e-14, "r2_x": 0.697089294523927, "net_x": 7.105427357601002e-14, "area_max": 30.25, "n": 76, "t_lo": 150.0, "t_hi": 900.0, "x_lo": 23.999999999999957, "x_hi": 24.00000000000003}}
+[done   326s] {"id": "park_B_ridge", "n": 2, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.022474856259732806, "v_y": 1.8984209406541886e-15, "r2_x": 0.9263302575677983, "net_x": 2.933470751719227, "area_max": 253.75, "n": 15, "t_lo": 150.0, "t_hi": 290.0, "x_lo": 43.13777813778781, "x_hi": 46.07124888950704}}
+[done   616s] {"id": "Afate_dx05_T3000", "n": 3, "status": "ok", "key": {"verdict": "grew_unstable", "area_max": 3183.0, "n": 4}}
+ALL DONE

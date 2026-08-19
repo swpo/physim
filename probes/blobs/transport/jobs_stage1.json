@@ -1,0 +1,224 @@
+[
+ {
+  "id": "Bcurve_eps0.00125",
+  "kind": "drift",
+  "eps": 0.00125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.0025",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.00375",
+  "kind": "drift",
+  "eps": 0.00375,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.005",
+  "kind": "drift",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.0075",
+  "kind": "drift",
+  "eps": 0.0075,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 900.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.01",
+  "kind": "drift",
+  "eps": 0.01,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 900.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bnoise_sig0.01",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 800.0,
+  "spots": [
+   [
+    "B",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.01,
+  "seed": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bnoise_sig0.02",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 800.0,
+  "spots": [
+   [
+    "B",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.02,
+  "seed": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bnoise_sig0.03",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 800.0,
+  "spots": [
+   [
+    "B",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.03,
+  "seed": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bpark_eps0.0075",
+  "kind": "drift",
+  "eps": 0.0075,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    30.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bpark_eps0.01",
+  "kind": "drift",
+  "eps": 0.01,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    30.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bpark_eps0.015",
+  "kind": "drift",
+  "eps": 0.015,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    30.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

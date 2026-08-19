@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] chan_rails_y12
+[start] chan_ctrl_y12
+[done   490s] {"id": "chan_rails_y12", "n": 70, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.6080680725124736, "y_max": 1.3018769678153053, "net_x": 17.012604715796126, "T_obs": 1350.0}}
+[start] chan_rails_y11
+[done   495s] {"id": "chan_ctrl_y12", "n": 71, "status": "ok", "key": {"verdict": "ok", "y_rms": 26.157891691513726, "y_max": 36.0000004590113, "net_x": 13.013142886715201, "T_obs": 1350.0}}
+[start] wall_hold_eps0.00125
+[done   385s] {"id": "chan_rails_y11", "n": 74, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.6833534497547467, "y_max": 1.5502339868929216, "net_x": 17.330333542820842, "T_obs": 1350.0}}
+[done   516s] {"id": "wall_hold_eps0.00125", "n": 77, "status": "ok", "key": {"verdict": "pinned", "v_x": 6.558220436373751e-06, "v_y": 2.4147469593365037e-11, "r2_x": 0.9651107870738361, "net_x": 0.009437190549576258, "area_max": 315.75, "n": 55, "t_lo": 150.0, "t_hi": 1500.0, "x_lo": 47.993447801610834, "x_hi": 48.00288499216041}}
+ALL DONE

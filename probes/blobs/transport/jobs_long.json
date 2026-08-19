@@ -1,0 +1,42 @@
+[
+ {
+  "id": "B_long10k_dx05",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 10000.0,
+  "spots": [
+   [
+    "B",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 100.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Ap_long10k_dx05",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 10000.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 100.0,
+  "lone_area": 36.25
+ }
+]

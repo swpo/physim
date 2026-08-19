@@ -1,0 +1,339 @@
+[
+ {
+  "id": "chan_y9.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    9.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    9.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y10.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    10.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    10.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y11.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    11.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    11.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y12.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    12.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    12.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y14.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    14.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    14.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y16.0",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    16.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    16.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y12_s1",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    12.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    12.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.0025,
+  "seed": 1,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y12_s2",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    20.0,
+    12.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    20.0,
+    12.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "noise": 0.0025,
+  "seed": 2,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "chan_y12_x28",
+  "kind": "channel",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "L": 80.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "init_from": "wall16_persist",
+  "spots": [
+   [
+    "B",
+    28.0,
+    12.0
+   ]
+  ],
+  "track_seeds": [
+   [
+    1,
+    28.0,
+    12.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "y_center": 16.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ }
+]

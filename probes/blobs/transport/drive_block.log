@@ -1,0 +1,9 @@
+5 to run (0 already done)
+[start] block_Bwall_s0
+[start] block_ctrl_s0
+[start] block_Bwall_s1
+[done  1161s] {"id": "block_Bwall_s0", "n": 75, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.006240394522960199, "v_y": -1.323393548560781e-13, "r2_x": 0.9994880879221466, "net_x": 8.907633128619935, "area_max": 31.5, "n": 145, "t_lo": 150.0, "t_hi": 1590.0, "x_lo": 21.07504485655467, "x_hi": 29.982677985174604}}
+[done  1161s] {"id": "block_ctrl_s0", "n": 76, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.006653204786698909, "v_y": -1.0130649435376594e-15, "r2_x": 0.9999567136495865, "net_x": 8.914757270820921, "area_max": 31.5, "n": 135, "t_lo": 150.0, "t_hi": 1490.0, "x_lo": 21.078124642303834, "x_hi": 29.992881913124755}}
+[start] block_Bwall_s2
+[start] block_Bwall_Ap
+[done  1326s] {"id": "block_Bwall_s1", "n": 78, "status": "ok", "key": {"verdict": "drifts", "v_x": 0.006234359032312431, "v_y": 2.1452686382769035e-06, "r2_x": 0.9994337997187928, "net_x": 8.905731572093721, "area_max": 31.5, "n": 145, "t_lo": 150.0, "t_hi": 1590.0, "x_lo": 21.075937056245202, "x_hi": 29.981668628338923}}

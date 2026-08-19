@@ -1,0 +1,10 @@
+9 to run (0 already done)
+[start] chan_y9.0
+[start] chan_y10.0
+[start] chan_y11.0
+[done   345s] {"id": "chan_y9.0", "n": 80, "status": "ok", "key": {"verdict": "ok", "y_rms": 7.695347294955941, "y_max": 7.936312629935507, "net_x": 16.99605339464549, "T_obs": 1050.0}}
+[done   345s] {"id": "chan_y10.0", "n": 81, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.823592323488408, "y_max": 2.2257266714837556, "net_x": 17.590009814607832, "T_obs": 1050.0}}
+[done   345s] {"id": "chan_y11.0", "n": 79, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.6537850679311085, "y_max": 1.5502339868929216, "net_x": 17.266008112247132, "T_obs": 1050.0}}
+[start] chan_y12.0
+[start] chan_y14.0
+[start] chan_y16.0

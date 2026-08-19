@@ -1,0 +1,56 @@
+[
+ {
+  "id": "Afate_dx05_T3000",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 3000.0,
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0,
+  "lone_area": 169.0
+ },
+ {
+  "id": "park_B_ridge",
+  "kind": "drift",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    40.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "B_eps0_ctrl",
+  "kind": "drift",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 900.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

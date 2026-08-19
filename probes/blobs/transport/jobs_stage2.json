@@ -1,0 +1,221 @@
+[
+ {
+  "id": "isoA_d0.55",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "params": {
+   "k1_1": -1.47716,
+   "k4_1": 1.95
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0
+ },
+ {
+  "id": "isoA_d0.6",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "params": {
+   "k1_1": -1.52054,
+   "k4_1": 2.0
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0
+ },
+ {
+  "id": "isoA_d0.65",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0
+ },
+ {
+  "id": "isoA_d0.7",
+  "kind": "exist",
+  "eps": 0.0,
+  "profile": "flat",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 2000.0,
+  "params": {
+   "k1_1": -1.60729,
+   "k4_1": 2.1
+  },
+  "spots": [
+   [
+    "A",
+    48.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 25.0
+ },
+ {
+  "id": "Bcurve_eps0.0025_s1",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 1,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.0025_s2",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 2,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.0025_s3",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "noise": 0.0025,
+  "seed": 3,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bcurve_eps0.0025_dx025",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.25,
+  "stepper": "imexfft",
+  "T": 700.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.00875_s0",
+  "kind": "drift",
+  "eps": 0.00875,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "seed": 0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.01_s1",
+  "kind": "drift",
+  "eps": 0.01,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "seed": 1,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "Bflip_eps0.0125_s0",
+  "kind": "drift",
+  "eps": 0.0125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "seed": 0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

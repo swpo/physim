@@ -90,7 +90,22 @@ M3 flavors — DONE (scorecard + controller audit 2026-02-18): arch "vvw" = priv
    1.28-1.29x (marginally under 1.3 on 2 dials, >=1.3x on 3 others).
    FOR M4/M5: B = natural cargo (small, weak w-print); per-species tau windows
    (A 1.5-4.0, B 1.5-6.0+) leave room for species-selective drift.
-M4 composite dynamics in background fields (round 2)
+M4 composite dynamics — DONE (scorecard + controller audit 2026-02-18):
+   RESOLUTION of the round-1 tension: statics depend on (tau,Dv) only via A=tau*Dv
+   (exact: steady v gives u = v - tau*Dv*lap v). Binding lived at A=5, motility at
+   A~3.2; M4 family fixes A=4 and dials tau (Dv=4/tau) into drift.
+   TRAVELING BOND certified: pair bifurcation tau_c=5.636, c_pair=sqrt(0.0560(tau-
+   5.636)) r2=.996, OOW tau=6.1 pred/meas 6.3%; bond sep 15.4->14.76 under motion,
+   sep_std<0.006px; 3 seeds spontaneous take-off (c spread 0.15%); unpinned (dx
+   0.5 vs 0.25: 0.02%); wake-locked tandem shells at sep*=14.78 & 25.68 (~tail
+   wavelength 10.9); 3-blob train c=0.143 > pair 0.141 > single 0.123.
+   PAIR-ONLY DRIFT ZONE tau in (5.636, 5.748): molecule moves while lone blob
+   cannot (audit: pair c=0.0595 vs single c=0.001 at tau=5.7) — natural
+   selectivity dial for M5. AUDIT: fresh seed tau=5.8 c=0.0985 vs law 0.0958 (3%);
+   off-path A=4 (tau=8, Dv=0.5) replication cascade confirms the mapped ceiling.
+   HONEST NEGATIVES: M2's A=5 family can never travel (replication preempts);
+   rotation NOT observed (curl-kicks lock or convert to translation); breathing
+   dimer metastable ~1500tu then reorganizes to tandem.
 M5 machines: upstream transport (round 3)
 
 ## Roles
