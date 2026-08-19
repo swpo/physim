@@ -1,0 +1,263 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>physim — the BLOBS program</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="index.html">home</a> · <a href="results.html">results</a> · <a href="worlds.html">the worlds</a> · <a href="scoring.html">scoring</a> · <b>blobs</b> · <a href="https://github.com/swpo/physim">github</a></nav>
+
+<h1>The BLOBS program — matter, chemistry, and machines from three fields</h1>
+<p class="meta">Research report, 2026-02 (pre-world phase). Everything on this page is
+autonomous field physics: no per-blob bookkeeping, no scripted events, no painted sprites.
+Every headline number was independently re-derived by a controller audit on fresh random
+seeds before being accepted. Probe code + full logs: <code>probes/blobs/</code> in the repo.</p>
+
+<div class="note"><b>The idea.</b> Instead of simulating creatures or particles directly,
+we write down three interacting <i>fields</i> — think of three coupled "chemical
+concentrations" filling space — chosen so that the field equations themselves hold stable,
+particle-like excitations. Those excitations ("blobs") turn out to move, bind into
+molecules, come in species, and can be assembled into working machines. The program
+climbed that ladder one certified rung at a time:
+existence → motility → binding → flavors → composite dynamics → a machine.</div>
+
+<h2>1. The fields and the equations</h2>
+<p>The world is a periodic 2-D square. Three scalar fields live on it:</p>
+<table>
+<tr><th>field</th><th>role</th><th>timescale</th><th>range</th><th>intuition</th></tr>
+<tr><td><code>u</code></td><td><b>activator</b></td><td>fast (1)</td><td>short (D<sub>u</sub>=1)</td>
+<td>the "substance" of a blob; self-amplifying (cubic), wants to run away</td></tr>
+<tr><td><code>v</code></td><td><b>slow inhibitor</b></td><td>slow (τ)</td><td>short-to-mid (D<sub>v</sub>)</td>
+<td>local memory / drag; where u has been, v builds up and pushes back</td></tr>
+<tr><td><code>w</code></td><td><b>fast long-range inhibitor</b></td><td>very fast (θ=0.7)</td><td>long (D<sub>w</sub>=20)</td>
+<td>a wide "exclusion halo" broadcast around any activity; stops spreading and keeps blobs apart</td></tr>
+</table>
+<div class="eq">
+∂u/∂t = D<sub>u</sub>∇²u + λu − u³ − k₃v − k₄w + k₁ &nbsp;&nbsp;&nbsp;(activator: cubic self-drive, inhibited by v and w, biased by k₁)<br/>
+∂v/∂t = (u − v)/τ + D<sub>v</sub>∇²v &nbsp;&nbsp;&nbsp;(v relaxes toward u with time constant τ)<br/>
+∂w/∂t = (u − w)/θ + D<sub>w</sub>∇²w &nbsp;&nbsp;&nbsp;(w relaxes toward u fast, but spreads far)
+</div>
+<p>This is the three-component reaction–diffusion system of the
+<i>Purwins / Schenk gas-discharge</i> class — a laboratory system (planar gas discharges)
+in which all of the phenomena below were first seen experimentally. Baseline parameters
+(the "M0 point"): λ=2, k₁=−0.7, k₃=1, k₄=1.5, τ=3, θ=0.7, D<sub>u</sub>=D<sub>v</sub>=1,
+D<sub>w</sub>=20.</p>
+
+<h3>What is a blob?</h3>
+<p>The uniform "vacuum" state u=v=w=u₀ (the most negative root of
+−u³+(λ−k₃−k₄)u+k₁=0, u₀≈−0.70) is stable: small pokes die out. But a big enough local
+poke flips a patch of <code>u</code> onto the upper branch of the cubic, and the patch
+then <i>self-stabilizes</i>: the long-range <code>w</code> halo it broadcasts prevents it
+from growing or splitting, while the activator core prevents it from dying. The result is
+a <b>dissipative soliton</b> — a self-maintaining, fixed-size spot of "on" field in an
+"off" world. That is a blob. Its identity is measured (connected components + tracking),
+never stored: delete the fields and the blob is gone; move the fields and the blob moved.</p>
+
+<div class="film"><img src="assets/blobs/m0_birth.gif" alt="M0 blob birth"/>
+<div class="cap"><b>M0 — a blob is born.</b> A Gaussian poke overshoots, sheds mass, and
+locks to its preferred size (~26 px area at the M0 point), then persists indefinitely
+(certified 10,000 tu, noise-robust). The area trace shows the size lock. Neighboring
+parameter worlds fail in two directions: k₁=−0.9 → the poke dies; k₁=−0.5 or k₄=2.5 →
+the poke <i>replicates</i> into an ever-splitting "spot soup". Blobs live in the corridor
+between death and cancer.</div></div>
+
+<h2>2. Motility — the drift bifurcation (M1)</h2>
+<p>At M0 the blob sits still. Motion is a <i>phase transition</i>, not a given: the slow
+inhibitor v sits centered under the blob and cancels any nudge (the blob is overdamped).
+Two dials change that: <b>lower D<sub>v</sub></b> (make the drag field narrower) and
+<b>raise τ</b> (make it slower). Past a critical point the resting state becomes unstable —
+the blob "outruns its own shadow": v lags behind, the asymmetry pulls the blob forward,
+and steady self-propelled motion appears.</p>
+<div class="eq">speed law (measured): c(τ) = √(0.0299·(τ − τ_c)), τ_c = 4.78 at D<sub>v</sub>=0.65 — r²=0.993</div>
+<p>The square-root onset is the textbook signature of a supercritical drift bifurcation.
+Direction is free: under noise alone, 8/8 runs picked directions scattered across the
+compass (none along grid axes) — the motion belongs to the physics, not the lattice.</p>
+<div class="film"><img src="assets/blobs/m1_travel.gif" alt="M1 traveling blob"/>
+<div class="cap"><b>M1 — a traveling blob</b> (τ=5.0 &gt; τ_c): steady speed, straight
+kick-chosen track, shape preserved while moving. Certified unpinned: speed changes 0.6%
+under 2× grid refinement.</div></div>
+<div class="warn"><b>Trap we hit (and publish):</b> the M0 blob is small enough to get
+<i>pinned to the numerical lattice</i> — with naive integration it refuses to move at all,
+and apparent "stability" can be a grid artifact. All motility and binding results therefore
+use an implicit-spectral integrator (IMEX-FFT) at halved grid spacing, with every
+headline number re-checked under a further 2× refinement. This trap returned twice more
+below — it is the recurring failure mode of this physics.</div>
+
+<h2>3. Binding — blob molecules (M2)</h2>
+<p>Blobs interact through their field tails. The w halo gives plain repulsion — that alone
+would make a gas of loners. But with a wider slow inhibitor (D<sub>v</sub>=2, τ=2.5), the
+v-tail develops a gentle <i>oscillation</i>: rings of alternating push and pull around each
+blob. A neighbor sliding down that corrugated landscape gets trapped at the first well —
+a <b>bond</b> at a preferred separation:</p>
+<div class="eq">bond length (measured): d* = 15.70 ± 0.02 — approached from both sides; basin ≈ [14.5, 19.5]; no second well ≤ 20</div>
+<div class="film"><img src="assets/blobs/m2_bind.gif" alt="M2 binding"/>
+<div class="cap"><b>M2 — two blobs bind.</b> Released at separation 18.5, the pair slides
+into the well and settles onto d*=15.70 (dashed line). Released inside ~14.5 they push
+apart to the same distance. Bond strength: under noise strong enough to nearly kill a
+lone blob (σ=0.075), 15/15 bonded pairs refused to escape for the full 4000 tu watch.</div></div>
+<div class="film"><img src="assets/blobs/m2_triangle.gif" alt="M2 triangle molecule"/>
+<div class="cap"><b>Molecules:</b> three blobs form a stable equilateral triangle (sides
+16.0/16.1/16.1); chains of three at [16, 16] also hold. These are the first composite
+objects.</div></div>
+<div class="warn"><b>Honest negative:</b> the bond we first found at the M0-ish point
+(τ=3) is <i>fake</i> — a lattice-pinned state that the continuum limit reveals to be a
+saddle (falls apart with a 140-tu e-folding time). The certified bond above lives at
+τ=2.5. Grid-refinement checking is not optional in this program.</div>
+
+<h2>4. Flavors — two species in one world (M3)</h2>
+<p>To get more than one <i>kind</i> of blob, the architecture is: each species gets a
+<b>private activator u<sub>i</sub> and private slow inhibitor v<sub>i</sub></b>, and all
+species share <b>one long-range w</b> (driven by the average activity). Private u,v = a
+species' own chemistry; shared w = a common "space" they all exclude each other from.
+A one-parameter <i>iso-background line</i> (k₁ and k₄ co-varied so the vacuum state stays
+identical) lets us dial species apart without destabilizing the world:</p>
+<table>
+<tr><th>species</th><th>k₁</th><th>k₄</th><th>size</th><th>w-footprint</th><th>character</th></tr>
+<tr><td><b>A</b></td><td>−1.00</td><td>1.40</td><td>169 px</td><td>wide (peak 0.45)</td><td>large, broad, strong presence</td></tr>
+<tr><td><b>B</b></td><td>−1.65</td><td>2.15</td><td>25 px</td><td>narrow (peak 0.23)</td><td>small, sharp — the natural "cargo"</td></tr>
+</table>
+<p class="panel"><img src="assets/blobs/m3_species.png" alt="M3 species portraits"/></p>
+<p>Species are <b>port-distinguishable</b>: a probe patch reading only the shared w field
+classifies A vs B correctly 20/20 — an agent at an anonymous port can tell flavors apart
+without god vision. Encounters conserve flavor (A+B, A+A, B+B all repel at working
+distances; the only exception is a documented deterministic A+A merge at near-contact).
+No conversion, no annihilation.</p>
+<div class="warn"><b>Continuum caveat (found later, kept honest):</b> the big species A is
+itself lattice-stabilized — at fine grid resolution it slowly grows into a labyrinth
+pattern. Its port-classification results stand, but machine work uses the compact
+replacement A′ (k₁=−1.564, k₄=2.05, 36 px; metastable ≥ 8600 tu, documented) plus the
+continuum-clean B. Re-engineering a truly continuum large species is parked.</div>
+
+<h2>5. Composite dynamics — molecules that move (M4)</h2>
+<p>Round-1 left a tension: binding was certified at (D<sub>v</sub>=2.0, τ=2.5), motility at
+(D<sub>v</sub>=0.65, τ&gt;4.78) — no overlap. The resolution is a one-line theorem: the
+<b>steady states depend on τ and D<sub>v</sub> only through the product A = τ·D<sub>v</sub></b>
+(set ∂v/∂t=0: u = v − τD<sub>v</sub>∇²v). So the whole static world — blob shape, tails,
+bond wells — is frozen along any path with A fixed, while τ alone dials the drift
+instability. Binding lived at A=5, motility at A≈3.1. The M4 family holds <b>A=4</b>
+(bond exists, slightly shallower: static d*≈15.4) and walks τ up with D<sub>v</sub>=4/τ:</p>
+<div class="eq">pair speed law (measured): c_pair = √(0.0560·(τ − 5.636)), r²=0.996; out-of-window check at τ=6.1: predicted 0.161, measured 0.152 (6.3%)</div>
+<p>The traveling bond is a <b>wake-locked tandem</b>: the pair moves along its own axis,
+follower surfing the leader's wake at discrete shell distances (14.78 or 25.68 — spaced by
+the tail wavelength ~10.9). Trains of three go faster than pairs, which go faster than
+singles (0.143 &gt; 0.141 &gt; 0.123): each blob deepens the collective wake.</p>
+<div class="film"><img src="assets/blobs/m4_paironly.gif" alt="M4 pair-only zone"/>
+<div class="cap"><b>M4 — the pair-only zone.</b> At τ=5.70 (window 5.636–5.748), the same
+kick is given to a lone blob (left) and to a bound pair (right). The single dies back to
+rest — below its personal drift threshold. The pair travels steadily at c≈0.06.
+<b>The molecule can move before its atoms can.</b> This audited zone becomes the machine's
+parking brake below.</div></div>
+<div class="warn"><b>Honest negatives:</b> (i) the deep A=5 bond family can <i>never</i>
+travel — raising τ there hits replication before drift; mobility costs bond depth.
+(ii) Rotating bound pairs — the original hope — were not found: angular kicks either lock
+(ω≈0) or convert to straight translation. (iii) A "breathing" bond exists but is
+metastable (~1500 tu), then reorganizes into the tandem.</div>
+
+<h2>6. The machine — RELAY TUG (M5, gate B6)</h2>
+<p>A machine needs an opponent: a <b>load field</b> the cargo will not climb by itself.
+The trick that makes this clean is <i>zero-footprint forcing</i> ("isok" mode): shift
+(k₁, k₄) together along the iso-background line as a static function of position,
+b(x). The vacuum state stays an <i>exact</i> fixed point everywhere (checked to 1e−16) —
+the landscape is invisible until a blob shows up, and then it feels a force pushing it
+"downhill" toward lower b. A sawtooth b(x) (5 teeth, period 32, gentle rise + sharp cliff)
+makes a periodic track where <b>downstream = down the long rising ramps</b>.</p>
+<p>The machine, assembled entirely from certified parts:</p>
+<table>
+<tr><th>part</th><th>made of</th><th>function</th></tr>
+<tr><td>locomotive</td><td>3-blob wake-locked train (M4), τ=5.70</td><td>self-propulsion c≈0.06–0.09, strong enough to climb (a pair is NOT: it reverses on any tested tooth — measured, hence 3 blobs minimum, climb margin 1.53×)</td></tr>
+<tr><td>track</td><td>isok sawtooth b(x), ε=5·10⁻⁴</td><td>the adversary: every parked blob slides downstream into a trough and stays</td></tr>
+<tr><td>parking brake</td><td>pair-only zone (M4)</td><td>lone cargo <i>cannot</i> move itself — it waits exactly where it parked</td></tr>
+<tr><td>rails</td><td>static y-channel: b<sub>chan</sub>(y)=0.002·min(|y−y₀|, 24)</td><td>a shallow zero-footprint valley in the <i>cross</i> direction keeping the train on axis (without rails the growing train buckles into the trough valley after 1–2 pickups — the certified failure of machine v1)</td></tr>
+<tr><td>coupler</td><td>M2/M4 wake shells</td><td>head-on pickup: cargo locks into the leader's front shell at 14.9 px and becomes the <b>new leader</b> — a pusher-tug; train speed <i>grows</i> per pickup (0.059 → 0.073 → 0.085)</td></tr>
+</table>
+<div class="film"><img src="assets/blobs/m5_machine.gif" alt="M5 relay tug machine"/>
+<div class="cap"><b>M5 — RELAY TUG, the certified run.</b> Left: the field (bright = blobs).
+Right top: all six blob tracks; cargo lines (cyan) sit flat — parked — until the train
+arrives, then join the common upstream slope. Right bottom: the sawtooth load field.
+Certification: 3 seeds — 3/3 pickups each, net upstream cargo displacement 757–780 px
+(gate: 30), <b>efficiency 5.6–5.8× the do-nothing baseline</b>; null run (no locomotive):
+cargo drifts 0.5 px <i>downstream</i>. Fresh-seed controller audit reproduced everything;
+blob count stayed exactly 6 for the full 3600 tu.</div></div>
+<p>Two emergent bonuses, neither designed: at the 6-train power ceiling the machine
+<b>sheds its rear blob</b>, which slides back, parks at a trough (pair-only zone again),
+and is <b>re-collected on the next lap</b> — a self-healing relay. And because pickup
+happens by wake capture, the machine needs no controller at all after t=0: one initial
+kick, then pure autonomous physics for as long as we watched.</p>
+
+<h2>7. The dial table — what every parameter does</h2>
+<p>All measured windows below are from the certified probe campaigns (fresh-seed audited).
+"Death" = blob decays to vacuum; "replication" = blob splits into spreading spot soup —
+the two cliffs that bound every corridor in this world.</p>
+<table>
+<tr><th>dial</th><th>meaning</th><th>baseline</th><th>measured effect & window</th></tr>
+<tr><td><code>λ</code></td><td>drive / nonlinearity scale</td><td>2.0</td><td>sets activator plateau (±√λ) and overall energy scale; not scanned as a control dial</td></tr>
+<tr><td><code>k₁</code></td><td>global bias ("vacuum depth")</td><td>−0.7</td><td>THE existence dial: −0.9 death · −0.7 blob · −0.5 replication (M0). Traveling corridor k₁∈(−0.75,−0.68). Binding sits ~0.1 from the replication edge. Positional shifts of k₁ = force on blobs (see isok)</td></tr>
+<tr><td><code>k₃</code></td><td>v-inhibition strength</td><td>1.0</td><td>held fixed; k₃/k₄ balance sets how much of the inhibition is "memory" vs "halo"</td></tr>
+<tr><td><code>k₄</code></td><td>w-inhibition strength</td><td>1.5</td><td>1.35–1.65 binding window; 2.5 = spot soup at M0; ≥1.7 replication cascades when pairs form. In flavors, k₄ is the species dial (A:1.40, B:2.15) along the iso-line</td></tr>
+<tr><td><code>τ</code></td><td>slow-inhibitor time constant</td><td>3.0</td><td>THE motion dial. Single-blob drift onset τ_c=4.78 (A≈3.1); pair onset 5.636 (A=4); pair-only zone (5.636, 5.748); replication ≥6.2 (A=4). Statics blind to τ at fixed A</td></tr>
+<tr><td><code>θ</code></td><td>fast-inhibitor time constant</td><td>0.7</td><td>0.35 kills the M0 blob (halo reacts too fast); windows ≥2.2× wide around baseline elsewhere</td></tr>
+<tr><td><code>D<sub>u</sub></code></td><td>activator diffusion</td><td>1.0</td><td>blob core size scale; flavors species use 0.65</td></tr>
+<tr><td><code>D<sub>v</sub></code></td><td>slow-inhibitor diffusion</td><td>1.0</td><td>with τ only via <b>A=τ·D<sub>v</sub></b> for statics: A=5 deep bond d*=15.70 (never travels) · A=4 shallower bond d*≈15.4 that CAN travel · A≈3.1 single-blob motility. Dynamically: narrower v (smaller D<sub>v</sub>) = easier drift</td></tr>
+<tr><td><code>D<sub>w</sub></code></td><td>halo range</td><td>20</td><td>long-range repulsion & wall cushion; also the stiff term that forces implicit integration (explicit Euler needs dt&lt;dx²/(4D<sub>w</sub>))</td></tr>
+<tr><td><code>σ</code> (noise)</td><td>additive field noise</td><td>2·10⁻³</td><td>blob survives to 0.075, dies 0.09; bonds outlive 4000 tu at 0.075. Too stiff for noise ratchets: positional diffusion ≈ 0 (measured; honest negative)</td></tr>
+<tr><td><code>ε</code> (isod/isok)</td><td>slope of the zero-footprint load field</td><td>—</td><td>two-species world: cargo drift v=−0.906ε (linear to 0.03, safe ≤0.02). Single-species near-onset (τ=5.7): susceptibility amplified ~50× (v up to −0.08) — measured, used as the machine's adversary. Machine tooth ε=5·10⁻⁴; pair reverses at b≈0.005; 3-train climbs to b≈0.0104; replication cliff b≤−0.09</td></tr>
+</table>
+
+<h3>"Rails", precisely</h3>
+<p>A rail is not an object — it is a <b>static, zero-footprint potential in the cross-track
+direction</b>: b<sub>chan</sub>(y) = 0.002·min(|y−y₀|, 24) added to the same iso-line shift
+that makes the track. It is a V-shaped valley in parameter space, invisible to the vacuum,
+that gently pushes any blob back toward the channel centerline (measured: cargo injected
+6 px off-axis is centered to ±0.5 px while being conveyed). Rails were forced by an honest
+failure: without them, the growing train buckles sideways into the saw's trough valley
+after 1–2 pickups. (In the two-species world we also certified <i>self-assembled</i> walls —
+a blob parked on a gradient ridge destabilizes into a static stripe that blocks or channels
+cargo — defect turned tool; the machine uses the simpler potential rails.)</p>
+
+<h2>8. What's still missing (mapped, not hidden)</h2>
+<table>
+<tr><th>missing piece</th><th>status</th></tr>
+<tr><td><b>Unload / release</b></td><td>bonds never break below the replication edge — machine v1 delivers <i>displacement</i>, not release. The unbinding primitive is the next physics hunt (M6)</td></tr>
+<tr><td><b>Rotation</b></td><td>bound pairs refuse to orbit (angular kicks lock or straighten); mixed-species pairs untested — open</td></tr>
+<tr><td><b>Flavor-selective machines</b></td><td>needs B–B binding in the two-species world (never searched); currently cargo = carrier species</td></tr>
+<tr><td><b>Big continuum species</b></td><td>species A is lattice-stabilized; a truly continuum large blob is parked until a machine needs the 6.8× size contrast</td></tr>
+<tr><td><b>Max-train-length law</b></td><td>the 6-train sheds its rear blob (power ceiling) — worth mapping if longer hauls are wanted</td></tr>
+</table>
+
+<h2>9. Provenance & audit trail</h2>
+<p class="meta">Program spec and gates: <code>probes/blobs/PROGRAM.md</code>. Milestone
+searchers ran as independent agents with locked metrics; the controller re-derived every
+headline on fresh seeds before certification (M1 speeds within 5%; M2 bond from fresh
+stamps on a larger box: 15.67/15.70; M4 speed law within 3% + out-of-window 6.3%; M5
+machine rerun: 6/6 blobs upstream, efficiency 5.8×, null clean). Convention-faithfulness
+matters: three audit attempts initially "failed" by omitting a searcher's documented
+protocol detail (symmetric ICs; the exact gain eps_g; species stamps) — all three
+resolved on faithful replay. Raw run logs, job specs, and every failed candidate are in
+the per-milestone <code>results.json</code> files. Full chronological narrative incl.
+retractions: <code>REPORT.md</code> addenda 29–32.</p>
+
+<p class="meta">Next phase: world-ification — anonymous ports (what an agent can inject
+and measure), alienization of coordinates, prediction/preparation contracts (bond
+lengths, speed laws, climb thresholds, delivery tasks), certification, oracle and
+frontier baselines. The blob universe will join the catalog when it passes the same
+gates as every other world.</p>
+
+</body></html>
