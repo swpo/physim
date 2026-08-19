@@ -26,7 +26,8 @@ kw = dict(eps=job.get("eps", 0.0), kind=job.get("profile", "tri"),
           spots=tuple(tuple(s) for s in job["spots"]),
           noise=job.get("noise", 0.0), seed=job.get("seed", 0),
           rec_tu=job.get("rec_tu", 10.0), p=job.get("params"),
-          couple=tuple(job.get("couple", (1.0, 1.0))))
+          couple=tuple(job.get("couple", (1.0, 1.0))),
+          mode=job.get("mode", "k1"))
 if job.get("stop_leave"):
     kw["stop_leave"] = tuple(job["stop_leave"])
 if job.get("init_from"):
@@ -75,7 +76,8 @@ elif job["kind"] == "scatter":
                              for k in range(len(trk)) if k != kdef]
 elif job["kind"] == "channel":
     m = metrics.channel_metrics(t, tr["x"], tr["y"], tr["area"],
-                                y_center=job["y_center"])
+                                y_center=job["y_center"],
+                                lone_area=job.get("lone_area"))
     rec["channel"] = m
     rec["obstacle_final"] = [dict(x=round(trk[k]["x"][-1], 2), y=round(trk[k]["y"][-1], 2),
                                   area=trk[k]["area"][-1])

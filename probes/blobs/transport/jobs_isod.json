@@ -1,0 +1,82 @@
+[
+ {
+  "id": "isod_B_eps0.0025",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "mode": "isod",
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "isod_B_eps0.005",
+  "kind": "drift",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "mode": "isod",
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "isod_B_eps0.01",
+  "kind": "drift",
+  "eps": 0.01,
+  "profile": "tri",
+  "dx": 0.5,
+  "mode": "isod",
+  "stepper": "imexfft",
+  "T": 900.0,
+  "spots": [
+   [
+    "B",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "isod_Ap_eps0.005",
+  "kind": "drift",
+  "eps": 0.005,
+  "profile": "tri",
+  "dx": 0.5,
+  "mode": "isod",
+  "stepper": "imexfft",
+  "T": 1200.0,
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "A",
+    24.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 36.25
+ }
+]

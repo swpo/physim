@@ -12,6 +12,15 @@ activators (one environment field, all species couple with weight c_i, default
 c_1=c_2=1). This is an environment per the honesty rules: it enters the PDE as
 k1_i -> k1_i + c_i*b(x); no time dependence, no per-blob terms, no scripting.
 
+COUPLING MODES (static environment, chosen before the run):
+  mode="k1"  : k1_i -> k1_i + c_i*b(x)                      [default; used for P1-P4]
+  mode="isod": displacement along the M3 iso-background LINE, d_i(x) = d_i + c_i*b(x):
+               k1_i -> k1_i + c_i*b(x)*UB_ISO, k4_i -> k4_i + c_i*b(x).
+               Reaction term change: R[u_i] += c_i*b(x)*(UB_ISO - w).
+               At the quiescent background (w = UB_ISO) this vanishes IDENTICALLY:
+               zero-footprint force field; blobs feel it only where w deviates
+               (i.e. under themselves). Force<->stability decoupling.
+
 Periodic-safe profiles (b varies along axis 0 = "x"):
   tri(eps):  triangle wave, slope +eps on x in [0,L/2), -eps on [L/2,L),
              zero-mean, trough at x=0, peak at x=L/2. Local gradient db/dx = +-eps.
@@ -136,6 +145,7 @@ def measure_species(F, base2d, dx, min_px=4):
 
 # ------------------------------------------------------------------ main run
 def run(p=None, eps=0.0, kind="tri", frac=0.75, n_teeth=4, couple=(1.0, 1.0),
+        mode="k1",
         L=96.0, dx=1.0, dt=None, T=1500.0, stepper="euler",
         spots=(("A", 24.0, 48.0),), amp=2.0, sig=3.0,
         noise=0.0, seed=0, rec_tu=5.0, snap_times=(), base_from=None,
@@ -158,9 +168,7 @@ def run(p=None, eps=0.0, kind="tri", frac=0.75, n_teeth=4, couple=(1.0, 1.0),
     if base_from is not None:
         base1d = base_from
     else:
-        pb = dict(p); base1d = None
-        # relax with the two couplings applied
-        base1d = _relax_base_couple(p, b1, b2, dx)
+        base1d = _relax_base_couple(p, b1, b2, dx, mode=mode)
     if base1d is None:
         return dict(status="no_base")
     base2d = np.repeat(base1d[:, :, None], N, axis=2)   # (5,N,N) x along axis0
@@ -178,8 +186,14 @@ def run(p=None, eps=0.0, kind="tri", frac=0.75, n_teeth=4, couple=(1.0, 1.0),
     else:
         track_seeds = [tuple(s) for s in track_seeds]
     lam, k3, tau, theta = p["lam"], p["k3"], p["tau"], p["theta"]
-    k11 = p["k1_1"] + b1[:, None]; k12 = p["k1_2"] + b2[:, None]
-    k41, k42 = p["k4_1"], p["k4_2"]
+    if mode == "k1":
+        k11 = p["k1_1"] + b1[:, None]; k12 = p["k1_2"] + b2[:, None]
+        k41 = np.float64(p["k4_1"]); k42 = np.float64(p["k4_2"])
+    elif mode == "isod":
+        k11 = p["k1_1"] + UB_ISO * b1[:, None]; k12 = p["k1_2"] + UB_ISO * b2[:, None]
+        k41 = p["k4_1"] + b1[:, None]; k42 = p["k4_2"] + b2[:, None]
+    else:
+        raise ValueError(mode)
     D = np.array([p["Du_1"], p["Du_2"], p["Dv"], p["Dv"], p["Dw"]]).reshape(5, 1, 1)
     inv = 1.0 / (dx * dx)
     if stepper == "imexfft":
@@ -285,12 +299,18 @@ def run(p=None, eps=0.0, kind="tri", frac=0.75, n_teeth=4, couple=(1.0, 1.0),
                 tu_per_s=(t_end / wall if wall > 0 else None))
 
 
-def _relax_base_couple(p, b1, b2, dx):
-    """1D relax with per-species drive fields b1,b2."""
+def _relax_base_couple(p, b1, b2, dx, mode="k1"):
+    """1D relax with per-species drive fields b1,b2 (mode as in run())."""
     N = b1.shape[0]
     dt = min(0.2 * dx * dx / p["Dw"], 0.02)
     F = np.full((5, N), UB_ISO, float)
     lam, k3, tau, theta = p["lam"], p["k3"], p["tau"], p["theta"]
+    if mode == "k1":
+        k11 = p["k1_1"] + b1; k12 = p["k1_2"] + b2
+        k41 = np.full(N, p["k4_1"]); k42 = np.full(N, p["k4_2"])
+    else:
+        k11 = p["k1_1"] + UB_ISO * b1; k12 = p["k1_2"] + UB_ISO * b2
+        k41 = p["k4_1"] + b1; k42 = p["k4_2"] + b2
     D = np.array([p["Du_1"], p["Du_2"], p["Dv"], p["Dv"], p["Dw"]]).reshape(5, 1)
     inv = 1.0 / (dx * dx)
     steps = int(round(600.0 / dt))
@@ -298,15 +318,14 @@ def _relax_base_couple(p, b1, b2, dx):
         Lp = (np.roll(F, 1, 1) + np.roll(F, -1, 1) - 2.0 * F) * inv
         u1, u2, v1, v2, w = F
         R = np.empty_like(F)
-        R[0] = lam * u1 - u1**3 - k3 * v1 - p["k4_1"] * w + p["k1_1"] + b1
-        R[1] = lam * u2 - u2**3 - k3 * v2 - p["k4_2"] * w + p["k1_2"] + b2
+        R[0] = lam * u1 - u1**3 - k3 * v1 - k41 * w + k11
+        R[1] = lam * u2 - u2**3 - k3 * v2 - k42 * w + k12
         R[2] = (u1 - v1) / tau
         R[3] = (u2 - v2) / tau
         R[4] = (0.5 * (u1 + u2) - w) / theta
         F = F + dt * (D * Lp + R)
     if not np.isfinite(F).all():
         return None
-    # quiescence check: no pixel above excess threshold vs its own final value
     return F
 
 

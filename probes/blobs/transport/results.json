@@ -4039,5 +4039,2017 @@
   "nc_max": 1,
   "net_full": 12.06,
   "ts": "2026-08-18 20:04:40"
+ },
+ {
+  "id": "chan_y14.0",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y14.0",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     14.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     14.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 344.6,
+  "tu_per_s": 3.48,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.3945770795158684,
+   "y_max": 0.8888244813642938,
+   "net_x": 16.732184153661162,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:08:06"
+ },
+ {
+  "id": "chan_y12.0",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y12.0",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     12.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     12.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 348.5,
+  "tu_per_s": 3.44,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.5471725426771271,
+   "y_max": 1.3018769678153053,
+   "net_x": 17.101445073779526,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:08:09"
+ },
+ {
+  "id": "chan_y16.0",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y16.0",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     16.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     16.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 348.6,
+  "tu_per_s": 3.44,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 4.753773074168235e-13,
+   "y_max": 1.3429257705865894e-12,
+   "net_x": 15.00266700618451,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:08:09"
+ },
+ {
+  "id": "block_Bwall_Ap",
+  "kind": "drift",
+  "job": {
+   "id": "block_Bwall_Ap",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3000.0,
+   "init_from": "parkridge_eps0.0025",
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "spots": [
+    [
+     "A",
+     20.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     0,
+     20.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 36.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3000.0,
+  "wall_s": 1027.2,
+  "tu_per_s": 2.92,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.009422849902231809,
+   "v_y": 1.8658621570947113e-13,
+   "r2_x": 0.9970026205030298,
+   "net_x": 7.651470290267305,
+   "area_max": 914.75,
+   "n": 85,
+   "t_lo": 150.0,
+   "t_hi": 990.0,
+   "x_lo": 21.57819106808659,
+   "x_hi": 29.229661358353894
+  },
+  "area_tail": [
+   899.75,
+   902.0,
+   905.25,
+   911.5,
+   914.75
+  ],
+  "nc_max": 1,
+  "net_full": 12.468,
+  "ts": "2026-08-18 20:09:06"
+ },
+ {
+  "id": "block_Bwall_s2",
+  "kind": "drift",
+  "job": {
+   "id": "block_Bwall_s2",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     20.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "noise": 0.0025,
+   "seed": 2,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3000.0,
+  "wall_s": 1227.8,
+  "tu_per_s": 2.44,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.006257076334310961,
+   "v_y": 8.252859226579832e-06,
+   "r2_x": 0.9995256005426008,
+   "net_x": 8.922629399422426,
+   "area_max": 31.25,
+   "n": 145,
+   "t_lo": 150.0,
+   "t_hi": 1590.0,
+   "x_lo": 21.073399978259744,
+   "x_hi": 29.99602937768217
+  },
+  "area_tail": [
+   31.25,
+   31.25,
+   31.0,
+   31.0,
+   30.75
+  ],
+  "nc_max": 2,
+  "net_full": 13.886,
+  "ts": "2026-08-18 20:12:27"
+ },
+ {
+  "id": "chan_y12_x28",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y12_x28",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     28.0,
+     12.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     28.0,
+     12.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 295.6,
+  "tu_per_s": 4.06,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.6817397289249914,
+   "y_max": 1.23275224274024,
+   "net_x": 5.705232213112076,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:13:21"
+ },
+ {
+  "id": "chan_y12_s1",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y12_s1",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     12.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     12.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "noise": 0.0025,
+   "seed": 1,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 338.0,
+  "tu_per_s": 3.55,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.5465172524666069,
+   "y_max": 1.3020811715130183,
+   "net_x": 17.122020198939968,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:13:58"
+ },
+ {
+  "id": "chan_y12_s2",
+  "kind": "channel",
+  "job": {
+   "id": "chan_y12_s2",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     12.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     12.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "noise": 0.0025,
+   "seed": 2,
+   "y_center": 16.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 338.9,
+  "tu_per_s": 3.54,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.5462324666550034,
+   "y_max": 1.2887643275181464,
+   "net_x": 17.008519313005376,
+   "T_obs": 1050.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 20:13:59"
+ },
+ {
+  "id": "conveyor_f0.8",
+  "kind": "ratchet",
+  "job": {
+   "id": "conveyor_f0.8",
+   "kind": "ratchet",
+   "eps": 0.0027,
+   "profile": "saw",
+   "frac": 0.8,
+   "n_teeth": 4,
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 4000.0,
+   "spots": [
+    [
+     "B",
+     28.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 4000.0,
+  "wall_s": 1266.2,
+  "tu_per_s": 3.16,
+  "ratchet": {
+   "verdict": "ok",
+   "v_x": 0.0026325125759892355,
+   "net_x": 12.563418979020245,
+   "r2": 0.608643557467645,
+   "T_obs": 3850.0
+  },
+  "x_final": 42.547,
+  "y_final": 48.0,
+  "area_tail": [
+   306.75,
+   306.75,
+   306.75
+  ],
+  "ts": "2026-08-18 20:17:40"
+ },
+ {
+  "id": "conveyor_f0.2",
+  "kind": "ratchet",
+  "job": {
+   "id": "conveyor_f0.2",
+   "kind": "ratchet",
+   "eps": 0.0027,
+   "profile": "saw",
+   "frac": 0.2,
+   "n_teeth": 4,
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 4000.0,
+   "spots": [
+    [
+     "B",
+     20.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 4000.0,
+  "wall_s": 959.6,
+  "tu_per_s": 4.17,
+  "ratchet": {
+   "verdict": "ok",
+   "v_x": -0.002197593641038487,
+   "net_x": -9.087391316105474,
+   "r2": 0.9980085572186578,
+   "T_obs": 3850.0
+  },
+  "x_final": 10.324,
+  "y_final": 48.0,
+  "area_tail": [
+   30.0,
+   30.0,
+   30.0
+  ],
+  "ts": "2026-08-18 20:20:57"
+ },
+ {
+  "id": "standoff_eps0.00375",
+  "kind": "drift",
+  "job": {
+   "id": "standoff_eps0.00375",
+   "kind": "drift",
+   "eps": 0.00375,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     26.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     26.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3000.0,
+  "wall_s": 602.7,
+  "tu_per_s": 4.98,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.0020079116746072436,
+   "v_y": 4.243832926825364e-06,
+   "r2_x": 0.6753327289446736,
+   "net_x": 7.541876782195793,
+   "area_max": 32.75,
+   "n": 286,
+   "t_lo": 150.0,
+   "t_hi": 3000.0,
+   "x_lo": 27.555338587374976,
+   "x_hi": 35.09721536957077
+  },
+  "area_tail": [
+   31.25,
+   31.25,
+   31.25,
+   31.25,
+   31.25
+  ],
+  "nc_max": 2,
+  "net_full": 9.098,
+  "ts": "2026-08-18 20:32:27"
+ },
+ {
+  "id": "standoff_eps0.005",
+  "kind": "drift",
+  "job": {
+   "id": "standoff_eps0.005",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     26.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     26.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3000.0,
+  "wall_s": 606.1,
+  "tu_per_s": 4.95,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.004447647848930404,
+   "v_y": 1.3220989339914296e-08,
+   "r2_x": 0.8052906371151245,
+   "net_x": 7.474473130042348,
+   "area_max": 323.0,
+   "n": 152,
+   "t_lo": 150.0,
+   "t_hi": 1660.0,
+   "x_lo": 28.15765041205548,
+   "x_hi": 35.63212354209783
+  },
+  "area_tail": [
+   320.25,
+   321.25,
+   323.0,
+   322.75,
+   322.5
+  ],
+  "nc_max": 2,
+  "net_full": 9.649,
+  "ts": "2026-08-18 20:32:30"
+ },
+ {
+  "id": "Ap065_eps0.0125",
+  "kind": "drift",
+  "job": {
+   "id": "Ap065_eps0.0125",
+   "kind": "drift",
+   "eps": 0.0125,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 900.0,
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "spots": [
+    [
+     "A",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 36.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 900.0,
+  "wall_s": 191.2,
+  "tu_per_s": 4.71,
+  "drift": {
+   "verdict": "grew_unstable",
+   "area_max": 135.5,
+   "n": 1
+  },
+  "area_tail": [
+   1608.75,
+   1614.75,
+   1619.75,
+   1626.75,
+   1637.75
+  ],
+  "nc_max": 1,
+  "net_full": 23.609,
+  "ts": "2026-08-18 20:35:52"
+ },
+ {
+  "id": "standoff_eps0.00125",
+  "kind": "drift",
+  "job": {
+   "id": "standoff_eps0.00125",
+   "kind": "drift",
+   "eps": 0.00125,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 4000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     26.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     26.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 4000.0,
+  "wall_s": 810.3,
+  "tu_per_s": 4.94,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.001479123991815052,
+   "v_y": -1.0979464851760065e-07,
+   "r2_x": 0.9352535792476917,
+   "net_x": 5.770250835224942,
+   "area_max": 31.0,
+   "n": 386,
+   "t_lo": 150.0,
+   "t_hi": 4000.0,
+   "x_lo": 26.487262330965066,
+   "x_hi": 32.25751316619001
+  },
+  "area_tail": [
+   31.0,
+   31.0,
+   31.0,
+   31.0,
+   31.0
+  ],
+  "nc_max": 2,
+  "net_full": 6.257,
+  "ts": "2026-08-18 20:35:54"
+ },
+ {
+  "id": "block_x16",
+  "kind": "drift",
+  "job": {
+   "id": "block_x16",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 4000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     16.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     16.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 4000.0,
+  "wall_s": 953.2,
+  "tu_per_s": 4.2,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.0064606894654065505,
+   "v_y": -2.6325920048255773e-14,
+   "r2_x": 0.9999775082139413,
+   "net_x": 8.880222412206521,
+   "area_max": 30.5,
+   "n": 139,
+   "t_lo": 150.0,
+   "t_hi": 1530.0,
+   "x_lo": 17.06673381523941,
+   "x_hi": 25.94695622744593
+  },
+  "area_tail": [
+   30.25,
+   30.25,
+   30.25,
+   30.25,
+   30.25
+  ],
+  "nc_max": 2,
+  "net_full": 18.063,
+  "ts": "2026-08-18 20:48:29"
+ },
+ {
+  "id": "selcouple_eps0.00125",
+  "kind": "drift",
+  "job": {
+   "id": "selcouple_eps0.00125",
+   "kind": "drift",
+   "eps": 0.00125,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "spots": [
+    [
+     "B",
+     24.0,
+     30.0
+    ],
+    [
+     "A",
+     36.0,
+     66.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 520.4,
+  "tu_per_s": 2.88,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.007468682462697806,
+   "v_y": -7.762615195209217e-07,
+   "r2_x": 0.9999064358946587,
+   "net_x": 8.828686953599039,
+   "area_max": 35.0,
+   "n": 119,
+   "t_lo": 150.0,
+   "t_hi": 1330.0,
+   "x_lo": 25.164172538335436,
+   "x_hi": 33.992859491934475
+  },
+  "area_tail": [
+   34.25,
+   34.75,
+   35.25,
+   34.0,
+   34.0
+  ],
+  "nc_max": 1,
+  "net_full": 11.294,
+  "ts": "2026-08-18 20:48:36"
+ },
+ {
+  "id": "selcouple_s2",
+  "kind": "drift",
+  "job": {
+   "id": "selcouple_s2",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "noise": 0.0025,
+   "seed": 2,
+   "spots": [
+    [
+     "B",
+     24.0,
+     30.0
+    ],
+    [
+     "A",
+     36.0,
+     66.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 595.9,
+  "tu_per_s": 2.52,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.015389235881013874,
+   "v_y": 2.6468228559502164e-05,
+   "r2_x": 0.9998265444404394,
+   "net_x": 7.583309866679791,
+   "area_max": 36.0,
+   "n": 50,
+   "t_lo": 150.0,
+   "t_hi": 640.0,
+   "x_lo": 26.347421115093546,
+   "x_hi": 33.93073098177334
+  },
+  "area_tail": [
+   459.75,
+   467.25,
+   474.0,
+   482.25,
+   488.75
+  ],
+  "nc_max": 1,
+  "net_full": 18.411,
+  "ts": "2026-08-18 20:49:51"
+ },
+ {
+  "id": "selcouple_s1",
+  "kind": "drift",
+  "job": {
+   "id": "selcouple_s1",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "noise": 0.0025,
+   "seed": 1,
+   "spots": [
+    [
+     "B",
+     24.0,
+     30.0
+    ],
+    [
+     "A",
+     36.0,
+     66.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "cargo_idx": 0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 599.6,
+  "tu_per_s": 2.5,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.015432006733922614,
+   "v_y": -8.678266450845414e-06,
+   "r2_x": 0.9997996433896864,
+   "net_x": 7.5856241164192895,
+   "area_max": 36.0,
+   "n": 50,
+   "t_lo": 150.0,
+   "t_hi": 640.0,
+   "x_lo": 26.348427994808944,
+   "x_hi": 33.93405211122823
+  },
+  "area_tail": [
+   484.75,
+   493.5,
+   502.5,
+   508.5,
+   518.75
+  ],
+  "nc_max": 1,
+  "net_full": 18.602,
+  "ts": "2026-08-18 20:49:55"
+ },
+ {
+  "id": "standoff_eps0.003",
+  "kind": "drift",
+  "job": {
+   "id": "standoff_eps0.003",
+   "kind": "drift",
+   "eps": 0.003,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3000.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     26.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     26.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3000.0,
+  "wall_s": 827.6,
+  "tu_per_s": 3.63,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.0022235641295714923,
+   "v_y": 2.907133376254913e-07,
+   "r2_x": 0.7695958848899397,
+   "net_x": 7.365788868040873,
+   "area_max": 32.0,
+   "n": 286,
+   "t_lo": 150.0,
+   "t_hi": 3000.0,
+   "x_lo": 27.243822430001856,
+   "x_hi": 34.60961129804273
+  },
+  "area_tail": [
+   31.0,
+   31.0,
+   31.25,
+   31.25,
+   31.25
+  ],
+  "nc_max": 2,
+  "net_full": 8.61,
+  "ts": "2026-08-18 20:53:43"
+ },
+ {
+  "id": "standoff_eps0.00175",
+  "kind": "drift",
+  "job": {
+   "id": "standoff_eps0.00175",
+   "kind": "drift",
+   "eps": 0.00175,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 3500.0,
+   "init_from": "parkridge_eps0.0025",
+   "spots": [
+    [
+     "B",
+     26.0,
+     48.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     26.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 3500.0,
+  "wall_s": 917.4,
+  "tu_per_s": 3.82,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": 0.0019026476301768867,
+   "v_y": -9.094403734947036e-09,
+   "r2_x": 0.9006106483653531,
+   "net_x": 6.588791210213689,
+   "area_max": 31.5,
+   "n": 336,
+   "t_lo": 150.0,
+   "t_hi": 3500.0,
+   "x_lo": 26.67313818957214,
+   "x_hi": 33.26192939978583
+  },
+  "area_tail": [
+   31.0,
+   31.0,
+   31.0,
+   31.0,
+   31.0
+  ],
+  "nc_max": 2,
+  "net_full": 7.262,
+  "ts": "2026-08-18 20:55:13"
+ },
+ {
+  "id": "circ_f0.9_eps0.0025",
+  "kind": "ratchet",
+  "job": {
+   "id": "circ_f0.9_eps0.0025",
+   "kind": "ratchet",
+   "eps": 0.0025,
+   "profile": "saw",
+   "frac": 0.9,
+   "n_teeth": 3,
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 5000.0,
+   "spots": [
+    [
+     "B",
+     8.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 5000.0,
+  "wall_s": 809.9,
+  "tu_per_s": 6.17,
+  "ratchet": {
+   "verdict": "ok",
+   "v_x": 0.003888395406866542,
+   "net_x": 18.415081003771405,
+   "r2": 0.7735722174208433,
+   "T_obs": 4850.0
+  },
+  "x_final": 27.725,
+  "y_final": 48.0,
+  "area_tail": [
+   281.5,
+   281.5,
+   281.5
+  ],
+  "ts": "2026-08-18 21:05:34"
+ },
+ {
+  "id": "isod_B_eps0.01",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.01",
+   "kind": "drift",
+   "eps": 0.01,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 900.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 900.0,
+  "wall_s": 178.7,
+  "tu_per_s": 5.04,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.009158722336644541,
+   "v_y": -1.0657404622431362e-15,
+   "r2_x": 0.9998738863174146,
+   "net_x": -6.8245431467863185,
+   "area_max": 32.0,
+   "n": 76,
+   "t_lo": 150.0,
+   "t_hi": 900.0,
+   "x_lo": 22.50779456989966,
+   "x_hi": 15.68325142311334
+  },
+  "area_tail": [
+   30.75,
+   31.25,
+   31.5,
+   32.0,
+   31.5
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:08:25"
+ },
+ {
+  "id": "isod_B_eps0.005",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.005",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 245.6,
+  "tu_per_s": 4.89,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.0044383133666713636,
+   "v_y": -1.3409566256331272e-15,
+   "r2_x": 0.9999197801656887,
+   "net_x": -4.639467571516882,
+   "area_max": 31.0,
+   "n": 106,
+   "t_lo": 150.0,
+   "t_hi": 1200.0,
+   "x_lo": 23.25530316840173,
+   "x_hi": 18.61583559688485
+  },
+  "area_tail": [
+   30.5,
+   30.5,
+   31.0,
+   30.5,
+   30.0
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:09:32"
+ },
+ {
+  "id": "isod_B_eps0.0025",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.0025",
+   "kind": "drift",
+   "eps": 0.0025,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 294.9,
+  "tu_per_s": 5.09,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.0021967282400789847,
+   "v_y": -1.280394395356444e-15,
+   "r2_x": 0.9998283761126142,
+   "net_x": -2.9630254032430443,
+   "area_max": 30.5,
+   "n": 136,
+   "t_lo": 150.0,
+   "t_hi": 1500.0,
+   "x_lo": 23.627288359504917,
+   "x_hi": 20.664262956261872
+  },
+  "area_tail": [
+   30.0,
+   30.0,
+   30.0,
+   29.5,
+   30.5
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:10:21"
+ },
+ {
+  "id": "isod_Ap_eps0.005",
+  "kind": "drift",
+  "job": {
+   "id": "isod_Ap_eps0.005",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "spots": [
+    [
+     "A",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 36.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 206.6,
+  "tu_per_s": 5.81,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.005854906088074262,
+   "v_y": -5.751213972159856e-15,
+   "r2_x": 0.9992366879533876,
+   "net_x": -6.267428283176159,
+   "area_max": 38.5,
+   "n": 106,
+   "t_lo": 150.0,
+   "t_hi": 1200.0,
+   "x_lo": 23.067773970137182,
+   "x_hi": 16.800345686961023
+  },
+  "area_tail": [
+   38.0,
+   36.25,
+   36.25,
+   37.0,
+   37.5
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:11:59"
+ },
+ {
+  "id": "isod_B_eps0.0075",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.0075",
+   "kind": "drift",
+   "eps": 0.0075,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1000.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1000.0,
+  "wall_s": 224.5,
+  "tu_per_s": 4.45,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.0067503087909926785,
+   "v_y": -1.3016707024213206e-15,
+   "r2_x": 0.9999151251706146,
+   "net_x": -5.703949461061249,
+   "area_max": 31.5,
+   "n": 86,
+   "t_lo": 150.0,
+   "t_hi": 1000.0,
+   "x_lo": 22.882411963477352,
+   "x_hi": 17.178462502416103
+  },
+  "area_tail": [
+   30.75,
+   30.5,
+   31.5,
+   31.5,
+   31.0
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:17:53"
+ },
+ {
+  "id": "isod_B_eps0.005_s2",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.005_s2",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "noise": 0.0025,
+   "seed": 2,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 330.2,
+  "tu_per_s": 3.63,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.004375284262992424,
+   "v_y": 2.794025392554563e-05,
+   "r2_x": 0.9999276890835945,
+   "net_x": -4.5685575878516715,
+   "area_max": 30.75,
+   "n": 106,
+   "t_lo": 150.0,
+   "t_hi": 1200.0,
+   "x_lo": 23.258614664974182,
+   "x_hi": 18.69005707712251
+  },
+  "area_tail": [
+   30.25,
+   30.75,
+   30.5,
+   30.5,
+   30.75
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:19:39"
+ },
+ {
+  "id": "isod_B_eps0.005_s1",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.005_s1",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "noise": 0.0025,
+   "seed": 1,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 339.4,
+  "tu_per_s": 3.54,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.00441077019972644,
+   "v_y": 3.872766315589631e-06,
+   "r2_x": 0.9999378410762283,
+   "net_x": -4.62434623485521,
+   "area_max": 30.75,
+   "n": 106,
+   "t_lo": 150.0,
+   "t_hi": 1200.0,
+   "x_lo": 23.251471038781503,
+   "x_hi": 18.627124803926293
+  },
+  "area_tail": [
+   30.75,
+   30.5,
+   30.5,
+   30.75,
+   30.0
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:19:48"
+ },
+ {
+  "id": "isod_B_eps0.00125",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.00125",
+   "kind": "drift",
+   "eps": 0.00125,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 340.7,
+  "tu_per_s": 4.4,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.001093212868623367,
+   "v_y": -1.179029839057392e-15,
+   "r2_x": 0.9993706415809509,
+   "net_x": -1.4405766453051285,
+   "area_max": 30.25,
+   "n": 136,
+   "t_lo": 150.0,
+   "t_hi": 1500.0,
+   "x_lo": 23.79435775885959,
+   "x_hi": 22.35378111355446
+  },
+  "area_tail": [
+   30.0,
+   30.0,
+   30.0,
+   30.0,
+   29.5
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:19:50"
+ },
+ {
+  "id": "isod_B_eps0.02",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.02",
+   "kind": "drift",
+   "eps": 0.02,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 700.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 700.0,
+  "wall_s": 173.0,
+  "tu_per_s": 4.05,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.0198067753693853,
+   "v_y": -2.776651409749744e-16,
+   "r2_x": 0.9995949490903392,
+   "net_x": -6.970915033382013,
+   "area_max": 34.25,
+   "n": 36,
+   "t_lo": 150.0,
+   "t_hi": 500.0,
+   "x_lo": 20.990733465205693,
+   "x_hi": 14.01981843182368
+  },
+  "area_tail": [
+   34.25,
+   35.0,
+   35.25,
+   35.5,
+   35.25
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:22:48"
+ },
+ {
+  "id": "isod_B_eps0.03",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.03",
+   "kind": "drift",
+   "eps": 0.03,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 700.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 700.0,
+  "wall_s": 170.7,
+  "tu_per_s": 4.1,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.032573280112958146,
+   "v_y": 4.98324328437425e-16,
+   "r2_x": 0.9991082583244114,
+   "net_x": -5.203511744268987,
+   "area_max": 35.25,
+   "n": 17,
+   "t_lo": 150.0,
+   "t_hi": 310.0,
+   "x_lo": 19.283962077935442,
+   "x_hi": 14.080450333666455
+  },
+  "area_tail": [
+   116.75,
+   130.0,
+   138.0,
+   142.75,
+   151.75
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:22:52"
+ },
+ {
+  "id": "isod_B_eps0.005_s3",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.005_s3",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 1200.0,
+   "noise": 0.0025,
+   "seed": 3,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1200.0,
+  "wall_s": 340.4,
+  "tu_per_s": 3.53,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.004428923319722195,
+   "v_y": 5.26502473486641e-06,
+   "r2_x": 0.999919612276528,
+   "net_x": -4.635747790543888,
+   "area_max": 31.0,
+   "n": 106,
+   "t_lo": 150.0,
+   "t_hi": 1200.0,
+   "x_lo": 23.255995429995068,
+   "x_hi": 18.62024763945118
+  },
+  "area_tail": [
+   30.25,
+   30.5,
+   31.0,
+   30.5,
+   30.0
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:23:41"
+ },
+ {
+  "id": "isod_B_eps0.005_dx025",
+  "kind": "drift",
+  "job": {
+   "id": "isod_B_eps0.005_dx025",
+   "kind": "drift",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.25,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 600.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "rec_tu": 10.0,
+   "lone_area": 30.25
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 600.0,
+  "wall_s": 482.7,
+  "tu_per_s": 1.24,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.0044098553453848196,
+   "v_y": -1.6222588078029692e-15,
+   "r2_x": 0.9998762087738101,
+   "net_x": -1.9864267134647307,
+   "area_max": 30.1875,
+   "n": 46,
+   "t_lo": 150.0,
+   "t_hi": 600.0,
+   "x_lo": 23.255385427758284,
+   "x_hi": 21.268958714293554
+  },
+  "area_tail": [
+   29.9375,
+   29.875,
+   29.75,
+   29.8125,
+   30.1875
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:28:20"
+ },
+ {
+  "id": "NOTE_final_scorecard",
+  "kind": "note",
+  "scorecard": {
+   "P1_gradient": {
+    "verdict": "PASS",
+    "modes": [
+     "k1",
+     "isod"
+    ],
+    "B_k1": "v=2.64eps+27eps^2 R2=0.999998 (8pts), 3 seeds <0.5%, dx/2 -1.1%, flip at eps*~0.0095-0.010",
+    "Ap_k1": "v=4.43eps-169eps^2 (6pts), 3 seeds, dx/2 +4.8%",
+    "B_isod": "v=-0.906eps (7pts to 0.03), 3 seeds, dx/2 0.6%, SAFE to eps=0.02"
+   },
+   "P2_selectivity": {
+    "verdict": "PARTIAL",
+    "shared_dial": "same sign both modes; A'/B = 1.68x (k1, eps->0), 1.33x (isod)",
+    "sign_sorting": "only via flip window (eps~0.0105, short-range demo) or per-species c_i"
+   },
+   "P3_blocking": {
+    "verdict": "PASS",
+    "standoff_curve_pts": 6,
+    "seeds": 3,
+    "out_of_grid": "x0=16",
+    "standoff_at_0025": "14.18-14.36px",
+    "eps_max": "<0.005"
+   },
+   "P3_channeling": {
+    "verdict": "PASS",
+    "capture_curve_pts": 6,
+    "seeds": 3,
+    "y_rms_rails": "0.7-1.5px",
+    "ctrl": "never centers",
+    "capture_edge": "y0 between 9 and 10"
+   },
+   "P4_ratchet": {
+    "verdict": "NOISE-NEGATIVE",
+    "noise": "<=0.21px net / 3000tu at sigma 0.02-0.03",
+    "deterministic": "saw direction follows asymmetry, one-shot ~12px, apex absorbing in k1-mode"
+   },
+   "honest_negatives": [
+    "M3 species A not a continuum object (dx=0.5 -> labyrinth); replaced by A' d=0.65",
+    "A' 10ktu longrun: compact only 8600tu (slow instability documented)",
+    "noise ratchet dead: blob positional diffusion ~0",
+    "k1-mode level windows tight: |b|<=0.03 (B), <=0.015 (A')"
+   ],
+   "B7": "5.5-6 tu/s at dx=0.5 L=96; routine 2.5-4.5min; dx/4 + 10ktu one-offs documented"
+  },
+  "ts": "2026-08-18 21:39:23"
+ },
+ {
+  "id": "AUDIT_isod_eps0.025_s91",
+  "kind": "drift",
+  "job": {
+   "id": "AUDIT_isod_eps0.025_s91",
+   "kind": "drift",
+   "eps": 0.025,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 900.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "noise": 0.002,
+   "seed": 91,
+   "rec_tu": 10.0
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 900.0,
+  "wall_s": 170.1,
+  "tu_per_s": 5.29,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.025804121005333587,
+   "v_y": 7.428771388347614e-06,
+   "r2_x": 0.99944484467985,
+   "net_x": -5.978497614996755,
+   "area_max": 34.25,
+   "n": 24,
+   "t_lo": 150.0,
+   "t_hi": 380.0,
+   "x_lo": 20.190125987514783,
+   "x_hi": 14.211628372518028
+  },
+  "area_tail": [
+   107.5,
+   116.25,
+   125.75,
+   134.75,
+   142.25
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:44:08"
+ },
+ {
+  "id": "AUDIT_isod_eps0.01_s92",
+  "kind": "drift",
+  "job": {
+   "id": "AUDIT_isod_eps0.01_s92",
+   "kind": "drift",
+   "eps": 0.01,
+   "profile": "tri",
+   "dx": 0.5,
+   "mode": "isod",
+   "stepper": "imexfft",
+   "T": 900.0,
+   "spots": [
+    [
+     "B",
+     24.0,
+     48.0
+    ]
+   ],
+   "noise": 0.002,
+   "seed": 92,
+   "rec_tu": 10.0
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 900.0,
+  "wall_s": 167.8,
+  "tu_per_s": 5.36,
+  "drift": {
+   "verdict": "drifts",
+   "v_x": -0.009168826729356342,
+   "v_y": 3.279592772063079e-05,
+   "r2_x": 0.9999032392311693,
+   "net_x": -6.825008233690774,
+   "area_max": 31.75,
+   "n": 76,
+   "t_lo": 150.0,
+   "t_hi": 900.0,
+   "x_lo": 22.50812559389515,
+   "x_hi": 15.683117360204378
+  },
+  "area_tail": [
+   30.75,
+   31.25,
+   31.5,
+   31.75,
+   31.5
+  ],
+  "nc_max": 1,
+  "net_full": 0.0,
+  "ts": "2026-08-18 21:47:02"
+ },
+ {
+  "id": "AUDIT_chan_y14_s93",
+  "kind": "channel",
+  "job": {
+   "id": "AUDIT_chan_y14_s93",
+   "kind": "channel",
+   "eps": 0.005,
+   "profile": "tri",
+   "dx": 0.5,
+   "stepper": "imexfft",
+   "T": 1500.0,
+   "L": 80.0,
+   "couple": [
+    0.0,
+    1.0
+   ],
+   "params": {
+    "k1_1": -1.56391,
+    "k4_1": 2.05
+   },
+   "init_from": "wall16_persist",
+   "spots": [
+    [
+     "B",
+     20.0,
+     14.0
+    ]
+   ],
+   "track_seeds": [
+    [
+     1,
+     20.0,
+     14.0
+    ]
+   ],
+   "noise": 0.002,
+   "seed": 93,
+   "rec_tu": 10.0,
+   "y_center": 16.0,
+   "cargo_idx": 0
+  },
+  "status": "ok",
+  "dt": 0.01,
+  "T_end": 1500.0,
+  "wall_s": 190.1,
+  "tu_per_s": 7.89,
+  "channel": {
+   "verdict": "ok",
+   "y_rms": 0.49953606974881887,
+   "y_max": 1.2367770990741818,
+   "y_final": 17.23677709907418,
+   "net_x": 16.620897469159257,
+   "T_obs": 1350.0,
+   "t_compact": 1500.0
+  },
+  "obstacle_final": [],
+  "ts": "2026-08-18 21:50:30"
  }
 ]

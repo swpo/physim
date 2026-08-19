@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] circ_f0.9_eps0.0025
+[done   822s] {"id": "circ_f0.9_eps0.0025", "n": 103, "status": "ok", "key": {"verdict": "ok", "v_x": 0.003888395406866542, "net_x": 18.415081003771405, "r2": 0.7735722174208433, "T_obs": 4850.0}}
+ALL DONE

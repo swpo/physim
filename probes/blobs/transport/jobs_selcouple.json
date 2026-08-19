@@ -1,0 +1,102 @@
+[
+ {
+  "id": "selcouple_s1",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "noise": 0.0025,
+  "seed": 1,
+  "spots": [
+   [
+    "B",
+    24.0,
+    30.0
+   ],
+   [
+    "A",
+    36.0,
+    66.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "selcouple_s2",
+  "kind": "drift",
+  "eps": 0.0025,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "noise": 0.0025,
+  "seed": 2,
+  "spots": [
+   [
+    "B",
+    24.0,
+    30.0
+   ],
+   [
+    "A",
+    36.0,
+    66.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ },
+ {
+  "id": "selcouple_eps0.00125",
+  "kind": "drift",
+  "eps": 0.00125,
+  "profile": "tri",
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 1500.0,
+  "couple": [
+   0.0,
+   1.0
+  ],
+  "params": {
+   "k1_1": -1.56391,
+   "k4_1": 2.05
+  },
+  "spots": [
+   [
+    "B",
+    24.0,
+    30.0
+   ],
+   [
+    "A",
+    36.0,
+    66.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "cargo_idx": 0,
+  "lone_area": 30.25
+ }
+]

@@ -106,7 +106,33 @@ M4 composite dynamics — DONE (scorecard + controller audit 2026-02-18):
    HONEST NEGATIVES: M2's A=5 family can never travel (replication preempts);
    rotation NOT observed (curl-kicks lock or convert to translation); breathing
    dimer metastable ~1500tu then reorganizes to tandem.
-M5 machines: upstream transport (round 3)
+M5-prep transport primitives — DONE (scorecard + controller audit 2026-02-18):
+   P1 GRADIENT: two couplings. k1-mode: B v=+2.64eps+27eps^2 (r2 .999998), DOWNSTREAM
+   = up-gradient, flip bifurcation at eps*~0.01 (B reverses on a second soliton
+   branch); level-not-slope limits (safe |b|<=0.03). isod-mode (displace along M3
+   iso-line): ZERO-FOOTPRINT force, B v=-0.906eps linear to 0.03, safe to 0.02.
+   AUDIT: eps=0.01 fresh seed v=-0.00917 (law -0.00906, 1.2%); OOG eps=0.025
+   v=-0.0258 (14% superlinear, area growing — approaching safe edge as they said).
+   P2 SELECTIVITY partial: same sign both species; magnitudes 1.3-1.7x; conditional
+   sorting via flip window or per-species coupling c_i (B +0.015 vs A' -0.006).
+   P3 OBSTACLES: chains don't exist in vvw (pure repulsion) — WALLS SELF-ASSEMBLE
+   instead (parked blob at tri-ridge -> static y-spanning stripe; defect->tool).
+   Blocking: monotone standoff(eps) 15.7->12.9px. Channeling: two A'-rails center
+   B cargo from any y0>=10. AUDIT: y0=14 -> y_rms 0.50px while conveyed 16.6px.
+   P4 noise ratchet honest NEGATIVE (soliton too stiff for Kramers hops; positional
+   diffusion ~0); deterministic saw conveys one-shot ~12px; circulation redesign
+   deferred to round 3 in isod mode.
+   FOUNDATIONAL NEGATIVE: species A (169px) is lattice-stabilized at dx=1, grows a
+   labyrinth at dx=0.5 — NOT a continuum object (same trap class as M2's dx=1
+   ladder). B is continuum-clean (10ktu). Replacement A' (iso-line d=0.65, 36px)
+   is compact-metastable (8600tu horizon), usable <=2000tu documented.
+   CONTROLLER DECISION (2026-02-18): adopt B + A' at dx=0.5 as the canonical
+   working pair for M4/M5; M3's A-species claims get a continuum caveat note
+   (port-classification results stand at dx=1, flavor architecture unchanged);
+   re-engineering a big continuum species is PARKED (IDEAS) unless a machine
+   needs the 6.8x size contrast.
+
+M5 machines: upstream transport (round 3 — SPAWNED)
 
 ## Roles
 Controller (parent): briefs, audits (fresh seeds + convention-faithful reruns),

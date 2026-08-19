@@ -8,3 +8,13 @@
 [start] chan_y12.0
 [start] chan_y14.0
 [start] chan_y16.0
+[done   360s] {"id": "chan_y12.0", "n": 84, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.5471725426771271, "y_max": 1.3018769678153053, "net_x": 17.101445073779526, "T_obs": 1050.0}}
+[done   360s] {"id": "chan_y14.0", "n": 83, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.3945770795158684, "y_max": 0.8888244813642938, "net_x": 16.732184153661162, "T_obs": 1050.0}}
+[start] chan_y12_s1
+[start] chan_y12_s2
+[done   365s] {"id": "chan_y16.0", "n": 85, "status": "ok", "key": {"verdict": "ok", "y_rms": 4.753773074168235e-13, "y_max": 1.3429257705865894e-12, "net_x": 15.00266700618451, "T_obs": 1050.0}}
+[start] chan_y12_x28
+[done   310s] {"id": "chan_y12_x28", "n": 88, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.6817397289249914, "y_max": 1.23275224274024, "net_x": 5.705232213112076, "T_obs": 1050.0}}
+[done   350s] {"id": "chan_y12_s1", "n": 89, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.5465172524666069, "y_max": 1.3020811715130183, "net_x": 17.122020198939968, "T_obs": 1050.0}}
+[done   350s] {"id": "chan_y12_s2", "n": 90, "status": "ok", "key": {"verdict": "ok", "y_rms": 0.5462324666550034, "y_max": 1.2887643275181464, "net_x": 17.008519313005376, "T_obs": 1050.0}}
+ALL DONE

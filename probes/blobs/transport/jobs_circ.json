@@ -1,0 +1,22 @@
+[
+ {
+  "id": "circ_f0.9_eps0.0025",
+  "kind": "ratchet",
+  "eps": 0.0025,
+  "profile": "saw",
+  "frac": 0.9,
+  "n_teeth": 3,
+  "dx": 0.5,
+  "stepper": "imexfft",
+  "T": 5000.0,
+  "spots": [
+   [
+    "B",
+    8.0,
+    48.0
+   ]
+  ],
+  "rec_tu": 10.0,
+  "lone_area": 30.25
+ }
+]

@@ -97,18 +97,28 @@ def scatter_geometry(t, x, y, area, x_obs, y0, pass_margin=PASS_MARGIN):
                 vx_out=vx, vy_out=vy, t_pass=float(t[past][0]))
 
 
-def channel_metrics(t, x, y, area, y_center, settle=SETTLE):
+def channel_metrics(t, x, y, area, y_center, settle=SETTLE, lone_area=None):
+    """AMENDMENT 2026-02-19 (pre-certification, documented): added lone_area
+    guard — y statistics are only meaningful while the cargo IS a compact blob;
+    samples after area > GROW_FACTOR*lone_area are excluded and t_compact is
+    reported. Controls destabilize into stripes; without the guard y_rms
+    measures stripe COM, not cargo path."""
     t = np.asarray(t, float); x = np.asarray(x, float); y = np.asarray(y, float)
     area = np.asarray(area, float)
     alive = area >= DEAD_AREA
     m = (t >= settle) & np.isfinite(x) & alive
+    if lone_area is not None:
+        compact = area <= GROW_FACTOR * lone_area
+        m = m & compact
     if m.sum() < MIN_PTS:
         return dict(verdict="too_few_pts")
     dy = y[m] - y_center
     return dict(verdict="ok", y_rms=float(np.sqrt(np.mean(dy ** 2))),
                 y_max=float(np.max(np.abs(dy))),
+                y_final=float(y[m][-1]),
                 net_x=float(x[m][-1] - x[m][0]),
-                T_obs=float(t[m][-1] - t[m][0]))
+                T_obs=float(t[m][-1] - t[m][0]),
+                t_compact=float(t[m][-1]))
 
 
 def ratchet_speed(t, x, area, settle=SETTLE):

@@ -58,3 +58,52 @@
 ## Budget
 dx=0.5 L=96: ~5.5-6 tu/s single job (3-4 parallel). 900-1500tu candidates = 2.5-4.5min B7 OK.
 dx=0.25 700tu = 19min (one-off checks only). 10ktu longruns ~30min (one-off anchors).
+
+
+## UPDATE (post P3/P4 campaigns)
+
+### P3 BLOCKING — PASS (curve + 3 seeds + out-of-grid)
+Wall = self-assembled B-stripe on the ridge (parkridge final state; static, spans y).
+Cargo B pushed into it (tri, couple=(1,1)):
+  eps      standoff (wall_x - cargo_x_compact_end)
+  0.00125  15.74      0.00175  14.74      0.0025   14.18 (s0; s1=14.34 s2=14.36 noise seeds;
+  0.003    13.39      0.00375  12.90       block_x16 from x=16: 14.19 = same attractor)
+  0.005    destabilizes cargo at standoff ~12.9 (t~1750) -> honest eps_max(blocking)~<0.005
+Monotone standoff(eps): stronger push compresses the w-cushion. Control (no wall): passes
+ridge & destabilizes there. Wall holds its position & area under all cargo impacts
+(x=48+-0.2, wall intact at run end; wall alone static at eps=0.00125 for 1500tu).
+
+### P3 CHANNELING — PASS (capture curve + 2 noise seeds)
+Rails = two x-aligned A'-stripes (self-organized from A'-row at eps=0.005 couple=(0,1),
+L=80, y=8 & 24). B cargo drifts +x between them:
+  y0:     9      10     11     12     14     16    | ctrl(no rails) y0=12
+  y_rms:  7.8*   1.49   1.21   1.02   0.72   0.00  | 4.0 (then stripe at own y)
+  y_end:  8.1*   15.1   15.3   15.3   15.5   16.0  | 12.0 (never centers)
+  (*captured BY the rail at 1px gap — rail attracts at contact; capture basin edge
+   between y0=9 and 10.) Cargo centered to channel centerline y=16 from any y0>=10,
+   3-seed stable (s1/s2 identical to 1e-2). net_x ~ +6.5px while compact (then hits
+   ridge zone & fattens: channel POSITIONING works; long-range convey needs isod mode).
+
+### P4 RATCHET
+- Noise ratchet (saw f=0.7, eps=0.0025 apex-parked, sigma=0.02/0.03, 3000tu):
+  net |dx|<0.21px, v ~ -7e-6 px/tu. NO transport. HONEST NEGATIVE: B's positional
+  diffusion under noise is ~zero (soliton too stiff); Kramers hopping unmeasurable.
+- Deterministic saw current (no noise): direction follows tooth asymmetry
+  (f=0.7 -> +x, f=0.3 -> -x mirror; conveys ~12px to first apex). Apex is absorbing
+  (level b at apex crosses growth threshold at eps*P*f/2 too big) -> single-shot
+  conveyor, not circulation. f=0.9/n3 apex at b=+0.036: still absorbs (grows there).
+  k1-mode saw cannot circulate: cliff needs slope>eps_flip~0.0095 while |b|<0.03
+  everywhere AND rising slope <0.0095 -- possible in principle (eps=0.003, P=16,
+  f=0.85: cliff 0.017, apex 0.020<0.03) but teeth width ~ blob width -> averaging
+  kills the cliff. PARKED: revisit in isod mode where level-kill is absent.
+
+### NEW PRIMITIVE: iso-displacement coupling (mode="isod") — the SAFE dial
+b(x) moves BOTH k1_i and k4_i along the M3 iso-background line: d_i(x)=d_i+c_i*b(x).
+Reaction perturbation = c_i*b*(UB_ISO - w) -> vanishes at quiescent background
+(zero-footprint force field; only felt under a blob where w deviates!).
+- B drifts DOWN-d: v = -0.90*eps (eps 0.0025-0.01 measured, r2>0.999, area stays 30-32!)
+- eps=0.01 SAFE in isod (vs k1-mode flip+shrink at 0.0095): no destabilization seen.
+- A' same sign, v=-0.0059 at eps=0.005 (vs B -0.0044): ratio 1.33.
+- Direction: blobs slide toward SMALLER d (bigger/softer species end of the line).
+  DOWNSTREAM(isod) = -grad(d). Physically: blob chases the parameter point where its
+  species is 'bigger' (lower k4, higher k1).
