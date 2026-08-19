@@ -1,0 +1,1 @@
+[{"id": "C2_single_57", "kind": "control_zone", "tau": 5.7, "profile": "flat", "T": 1500.0, "blobs": [[48.0, 48.0, [0.0, 0.5]]], "rec_tu": 5.0}, {"id": "C2_pair_57", "kind": "control_zone", "tau": 5.7, "profile": "flat", "T": 1500.0, "blobs": [[55.5, 48.0, [0.0, 0.5]], [40.5, 48.0, [0.0, 0.5]]], "rec_tu": 5.0}]

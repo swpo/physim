@@ -132,7 +132,29 @@ M5-prep transport primitives — DONE (scorecard + controller audit 2026-02-18):
    re-engineering a big continuum species is PARKED (IDEAS) unless a machine
    needs the 6.8x size contrast.
 
-M5 machines: upstream transport (round 3 — SPAWNED)
+M5 MACHINE — DONE, B6 CERTIFIED (scorecard + controller audit 2026-02-19):
+   "RELAY TUG": 3-train locomotive on a 5-tooth isok saw track (L=160, eps=5e-4,
+   tau=5.7 pair-only zone, y-channel rails chan_eps=0.002) picks up 3 trough-parked
+   cargoes head-on (each locks at the 14.9px shell as NEW LEADER, pusher-tug;
+   train speed grows per pickup 0.059->0.073->0.085) and carries them net UPSTREAM
+   against the load field. Cert: 3 seeds 3/3 pickups, net_up 757-759px (gate 30),
+   efficiency 5.6x do-nothing baseline; jitter 3/3; null drifts -0.5px down.
+   CONTROLLER AUDIT fresh seed 71: 6/6 blobs +243..+297px upstream (cargo sum
+   ~780px, eff ~5.8x), ncomp frozen at 6, end-spacings 14.7-15.4px (M4 shell);
+   null -0.5px. Film run seed 72 identical; god-view film rendered
+   (strips/machine_film_audit_s72.gif).
+   MECHANISM NOTES: adversary ~50x stronger than vvw at same eps (near-onset
+   susceptibility); pair CANNOT climb (dynamic reversal b~0.000-0.005) -> 3-train
+   minimum; v1-without-rails BUCKLES after 1-2 pickups (honest negative -> rails);
+   6-train sheds rear blob at power ceiling, shed blob PARKS at trough (pair-only
+   zone = parking brake) and is re-collected next lap — self-healing relay.
+   OPEN (parked): unbinding/unload primitive (delivery = displacement, not
+   release); vvw B-B binding for flavor-selective machines; max-train-length law.
+
+THE LADDER IS CLIMBED: M0 existence -> M1 motility -> M2 binding -> M3 flavors ->
+M4 composite dynamics -> M5 machine. Every rung certified with controller audits,
+honest negatives mapped at each level. Next phase: world-ification (ports,
+contracts, alienization) — controller + user checkpoint.
 
 ## Roles
 Controller (parent): briefs, audits (fresh seeds + convention-faithful reruns),

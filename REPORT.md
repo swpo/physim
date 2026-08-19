@@ -1373,3 +1373,25 @@ blob-transport scorecard audited and certified (115 runs, job-spec replay system
 Round 3 spawned: blob-machine (B6 gate: >=3 cycles net-upstream B transport against
 an isod gradient, efficiency vs do-nothing baseline, integration risk = single- vs
 two-species world choice re-verified in-world).
+
+
+## Addendum 32 — B6 CERTIFIED: the first blob machine (RELAY TUG); BLOBS ladder complete
+
+blob-machine (round 3) delivered and controller-audited the first machine:
+a 3-train locomotive circulating a 5-tooth zero-footprint saw track (isok mode,
+tau=5.7 in the pair-only drift zone, self-assembled-wall-style y-rails) that
+picks up 3 trough-parked cargo blobs head-on and hauls them net upstream against
+the load field — 757-780 px per 3600 tu, 5.6-5.8x the do-nothing baseline, 3
+seeds + jitter + clean nulls (parked cargo drifts -0.5px downstream). Fresh-seed
+controller audit reproduced everything (6/6 blobs upstream, ncomp frozen, M4
+shell spacings). Design content: pickup = wake-shell capture as NEW LEADER
+(pusher-tug, speed grows with train length); pairs cannot climb any tested saw
+(3-train minimum, climb margin 1.53x); railless v1 buckled (honest negative ->
+rails); power ceiling at 6-train sheds the rear blob which PARKS (pair-only zone
+as parking brake) and is re-collected next lap — a self-healing relay.
+Machine v1 delivers displacement, not release: the unbinding/unload primitive is
+the mapped missing piece (parked with vvw-binding and max-train-length law).
+M0->M5 all certified. The BLOBS ladder the user sketched (persistent excitations
+-> flavors -> interactions -> binding -> composite dynamics -> machines that
+transport against a background field) is fully realized in autonomous field
+physics with no per-blob bookkeeping and no scripted events.
