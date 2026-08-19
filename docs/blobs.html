@@ -200,6 +200,47 @@ pattern. Its port-classification results stand, but machine work uses the compac
 replacement A′ (k₁=−1.564, k₄=2.05, 36 px; metastable ≥ 8600 tu, documented) plus the
 continuum-clean B. Re-engineering a truly continuum large species is parked.</div>
 
+<h3>The labyrinth instability — why big blobs are hard</h3>
+<div class="note" style="font-size:13.5px">
+<b>What a labyrinth is.</b> The blob state ("on" disk in an "off" sea) is not the only
+localized solution these equations admit — there is also the <b>stripe</b>: a band of
+activator flanked by inhibitor on both sides. Whether a chunk of "on" phase prefers to be
+a disk or a stripe is a competition between two pressures on its interface: the effective
+<i>surface tension</i> (wants to shrink boundary length → disks) and the activator's
+<i>lateral drive</i> (wants to extend the interface into fresh territory → fingers).
+For a small blob the boundary is strongly curved, tension dominates, and the disk is
+stable. Make the blob larger and its edge gets flatter — and a flat interface in this
+parameter regime is <b>transversely unstable</b>: any gentle bulge concentrates activator,
+outruns the local inhibitor, and grows into a finger. Each finger is itself a stripe whose
+tip keeps extending and whose sides repel other fingers through the w-halo, so the pattern
+elongates, branches, folds, and packs the domain at a fixed stripe wavelength — a
+space-filling maze. That is the labyrinth (the same fingering morphology as ferrofluids
+between glass plates, block-copolymer films, and Turing-stripe chemistry). It is a real
+solution of the continuum equations — just not the solution we wanted to call a "species".
+<br/><br/>
+<b>Why size is the trigger.</b> The interface instability has a threshold wavelength: bulges
+shorter than it are ironed out by tension, longer ones grow. A 25–36 px blob (B, A′) is
+smaller than that wavelength — its whole edge is one tight curve, nothing fits. The 169 px
+species A has long, nearly flat edge segments — several unstable wavelengths fit along its
+rim, so it fingers. Same equations, same parameters: being big is itself the vulnerability.
+<br/><br/>
+<b>Why we only saw it at fine grid.</b> At dx=1 the fingering seed is a sub-pixel bulge —
+the washboard from the numerics box flattens it out before it can grow: the lattice was
+<i>stabilizing</i> A, the same artifact that faked the τ=3 bond, now propping up a whole
+species. At dx=0.5 the continuum takes over and the truth comes out (36 → 3200 px² over
+~3000 tu). The honest inventory after refinement: <b>B</b> is continuum-clean (10,000 tu),
+<b>A′</b> — pulled back along the iso-line to sit safely below the fingering threshold —
+is compact-metastable (one slow reorganization event seen at ~8600 tu; used within
+documented lifetime), and a truly large continuum species would need a <i>different
+stabilization mechanism</i> (stronger/longer-range w to raise the threshold wavelength,
+or a ring/annulus topology) — parked until a machine actually needs a giant.
+</div>
+<div class="film"><img src="assets/blobs/m3_labyrinth.gif" alt="labyrinth instability"/>
+<div class="cap"><b>The instability, live</b> (both panels at fine grid, identical
+conditions except species parameters): species A (left) fingers from its rim, branches,
+and fills the box as a maze; the iso-line replacement A′ (right) holds its disk. The
+lattice had been hiding the left panel for the entire M3 campaign.</div></div>
+
 <h2>5. Composite dynamics — molecules that move (M4)</h2>
 <p>Round-1 left a tension: binding was certified at (D<sub>v</sub>=2.0, τ=2.5), motility at
 (D<sub>v</sub>=0.65, τ&gt;4.78) — no overlap. The resolution is a one-line theorem: the
