@@ -274,6 +274,28 @@ b(x). The vacuum state stays an <i>exact</i> fixed point everywhere (checked to 
 the landscape is invisible until a blob shows up, and then it feels a force pushing it
 "downhill" toward lower b. A sawtooth b(x) (5 teeth, period 32, gentle rise + sharp cliff)
 makes a periodic track where <b>downstream = down the long rising ramps</b>.</p>
+
+<div class="note" style="font-size:13.5px">
+<b>Field-theory view of isok</b> (for readers who like actions). To be precise about the
+knobs: isok shifts <i>both</i> couplings together, k₁ → k₁ + u₀·b(x) and k₄ → k₄ + b(x)
+(not k₄ alone) — the direction in (k₁,k₄) space along which the vacuum root u₀ is exactly
+preserved, because the vacuum condition −u³+(λ−k₃−k₄)u+k₁=0 traces a straight line of
+slope u₀ in that plane. The perturbation to the u-equation collapses to a single term:
+<div class="eq">δ(∂u/∂t) = −b(x)·(w − u₀)</div>
+which is identically zero on the vacuum (w=u₀ there) — that is the whole zero-footprint
+property, now as one line of algebra. And this term is exactly what a <b>trilinear vertex</b>
+would produce: add S<sub>int</sub> = ∫ b·u·(w−u₀) to a (pseudo-)action and vary in u, and
+you get −b·(w−u₀) in the equation of motion. So b is best read not as "changing the
+laws" but as a <b>static third field mediating the u–w interaction</b> — a b·u·w coupling
+with the u₀ counterterm subtracting its vacuum expectation. Where b≠0, a blob's own
+inhibitor shadow (w−u₀ &gt; 0 inside the blob, rippling in the tails) costs energy that
+depends on position; the gradient of that cost is the force. Two honest caveats: this
+system has no true action (it is dissipative, gradient-flow-like only in pieces), so
+"vertex" is an analogy at the equations-of-motion level; and b here is frozen
+(non-dynamical) by design — promoting it to a slow dynamical field with its own relaxation
+is precisely the door to blobs that reshape their own landscape (chemotaxis-style
+self-interaction), which we have deliberately kept closed in machine v1 to preserve
+the honesty rule that the environment is static.</div>
 <p>The machine, assembled entirely from certified parts:</p>
 <table>
 <tr><th>part</th><th>made of</th><th>function</th></tr>
