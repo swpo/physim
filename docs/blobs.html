@@ -125,9 +125,21 @@ forces dt &lt; dx²/(4D<sub>w</sub>), so halving dx costs 4× more cells <i>and<
 steps = <b>16× per halving</b> (dx=0.25 ⇒ ~256× Day-0 cost — impossible for
 hundred-run campaigns). And the explicit stencil adds its own grid bias: the 5-point
 Laplacian is anisotropic at O(dx²), so even an unpinned blob feels lattice axes.
-<b>IMEX-FFT</b> (implicit–explicit, spectral) splits the step: the nonlinear reaction terms
-advance explicitly, while diffusion is applied <i>exactly</i> in Fourier space — every mode
-k is multiplied by e<sup>−Dk²dt</sup>. That is unconditionally stable (no dt limit from
+<b>IMEX-FFT</b> (implicit–explicit, spectral) is two separate upgrades bundled. The
+<i>IMEX</i> part is about <b>time</b>: the stiff diffusion term is handled implicitly/exactly
+instead of extrapolated, removing the dt&lt;dx²/(4D<sub>w</sub>) stability constraint (normally
+implicit steps require solving a large linear system, but on a periodic grid diffusion
+<i>diagonalizes</i> in Fourier space, so the "solve" is a per-mode multiply — that is the
+<i>FFT</i> part, and it is what makes implicit free here). The spectral representation is
+also about <b>space</b>: Fourier derivatives are exact and isotropic for all resolved modes,
+so the stencil's lattice-axis bias vanishes. Concretely the step splits: nonlinear reaction
+terms advance explicitly, while diffusion is applied <i>exactly</i> — every mode
+k multiplied by e<sup>−Dk²dt</sup>. What IMEX-FFT does <b>not</b> fix is the washboard
+itself: that comes from sampling the blob's sharp profile on a finite grid, and only
+refinement shrinks it (exponentially fast, fortunately). Ground truth for this world is the
+continuum PDE; the grid is our telescope, and any grid-dependent effect is a defect of the
+telescope — which is why every headline number ships with a dx→dx/2 convergence
+certificate rather than an assumption. That is unconditionally stable (no dt limit from
 D<sub>w</sub>; we keep dt=0.02 at every dx, so halving dx costs only 4×) and perfectly
 isotropic (no stencil anisotropy at all). Refinement then does the one thing still needed —
 shrink the washboard — and convergence is checked, not assumed.<br/><br/>
