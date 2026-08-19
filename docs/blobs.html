@@ -101,6 +101,48 @@ use an implicit-spectral integrator (IMEX-FFT) at halved grid spacing, with ever
 headline number re-checked under a further 2× refinement. This trap returned twice more
 below — it is the recurring failure mode of this physics.</div>
 
+<h3>Numerics box — why the lattice pins blobs, and what IMEX-FFT changes</h3>
+<div class="note" style="font-size:13.5px">
+<b>Why pinning exists.</b> In the continuum the equations are translation-invariant: a blob
+costs exactly the same "energy" at every position, so an arbitrarily small force moves it
+(the drift bifurcation destabilizes precisely this free translation mode). A grid breaks
+that symmetry: the blob's discrete representation is slightly different centered <i>on</i>
+a cell vs <i>between</i> cells, so its energy ripples with period dx — a washboard
+(the Peierls–Nabarro potential of dislocation physics). The ripple amplitude falls
+<i>exponentially</i> with the number of grid cells across the blob's edge — invisible for
+well-resolved patterns, dominant for sharp ones. Our M0 blob is ~6 cells across with a
+~2-cell interface at dx=1: firmly in the dominant regime.<br/><br/>
+<b>Why it bites twice.</b> (1) Near onset the self-propulsion force is arbitrarily small
+(∝ τ−τ_c), so a finite washboard always wins in a window around τ_c: the blob creeps then
+sticks, the measured "onset" shifts, and the c(τ) curve becomes a depinning law instead of
+the true bifurcation. (2) The washboard's little walls can also <i>hold states the
+continuum would not hold</i> — that is how the fake τ=3 bond passed at dx=1 (a continuum
+saddle trapped by grid ripple) and how species A survives at dx=1 while labyrinthing at
+dx=0.5. Pinning fakes both immobility and stability.<br/><br/>
+<b>Why "just refine the grid" is not enough — the crux.</b> With the naive explicit
+integrator, refinement is nearly unaffordable: the stiff halo diffusion (D<sub>w</sub>=20)
+forces dt &lt; dx²/(4D<sub>w</sub>), so halving dx costs 4× more cells <i>and</i> 4× more
+steps = <b>16× per halving</b> (dx=0.25 ⇒ ~256× Day-0 cost — impossible for
+hundred-run campaigns). And the explicit stencil adds its own grid bias: the 5-point
+Laplacian is anisotropic at O(dx²), so even an unpinned blob feels lattice axes.
+<b>IMEX-FFT</b> (implicit–explicit, spectral) splits the step: the nonlinear reaction terms
+advance explicitly, while diffusion is applied <i>exactly</i> in Fourier space — every mode
+k is multiplied by e<sup>−Dk²dt</sup>. That is unconditionally stable (no dt limit from
+D<sub>w</sub>; we keep dt=0.02 at every dx, so halving dx costs only 4×) and perfectly
+isotropic (no stencil anisotropy at all). Refinement then does the one thing still needed —
+shrink the washboard — and convergence is checked, not assumed.<br/><br/>
+<b>Receipts</b> (same physics, τ near onset, kick at 30°):
+<table style="margin:8px 0">
+<tr><th>treatment</th><th>τ=4.85</th><th>τ=4.80</th></tr>
+<tr><td>explicit Euler, dx=1 (Day-0 numerics)</td><td>stationary, c=0 (pinned)</td><td>—</td></tr>
+<tr><td>IMEX-FFT, dx=1 (isotropy fixed, washboard remains)</td><td>creeping, c≈0.002</td><td>stationary, c≈0.001</td></tr>
+<tr><td>IMEX-FFT, dx=0.5 (certified treatment)</td><td><b>traveling, c=0.033, exactly along the 30° kick</b></td><td>traveling (law: onset τ_c=4.78)</td></tr>
+</table>
+And the convergence chain at τ=5.0: c = 0.0720 (dx=1) → 0.0820 (dx=0.5) → 0.0817 (dx=0.25):
+dx=1 is 12% low (residual washboard drag), dx=0.5 is converged to 0.6%. That 0.6% is the
+unpinning certificate every headline number carries.
+</div>
+
 <h2>3. Binding — blob molecules (M2)</h2>
 <p>Blobs interact through their field tails. The w halo gives plain repulsion — that alone
 would make a gas of loners. But with a wider slow inhibitor (D<sub>v</sub>=2, τ=2.5), the
