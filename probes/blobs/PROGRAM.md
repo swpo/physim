@@ -153,8 +153,33 @@ M5 MACHINE — DONE, B6 CERTIFIED (scorecard + controller audit 2026-02-19):
 
 THE LADDER IS CLIMBED: M0 existence -> M1 motility -> M2 binding -> M3 flavors ->
 M4 composite dynamics -> M5 machine. Every rung certified with controller audits,
-honest negatives mapped at each level. Next phase: world-ification (ports,
-contracts, alienization) — controller + user checkpoint.
+honest negatives mapped at each level.
+
+## Phase 2 (user-directed, 2026-02-19): two parallel tracks toward genuine emergence
+M6 B-FIELD (searcher blob-bfield): promote the static isok background b to a 4th
+   dynamical field db/dt=(gamma*S(u,w)-b)/tau_b + D_b lap b entering exactly through
+   the isok channel (-b*(w-u0) in the u-equation = trilinear b-u-w vertex with vacuum
+   counterterm). Questions: self-dug profiles (both gamma signs incl. possible
+   self-launching), backreaction on motion c(gamma,tau_b) (effective mass), trails &
+   stigmergy (mediated two-blob interaction with control), one emergent-structure
+   demo, and a b_target teaser (can deposition produce asymmetric sawtooth-like b?).
+M7 ROTOR (searcher blob-rotor): rotation as an ATTRACTOR (>=3 revolutions, +-20deg
+   kick basin — not a fine-tuned trajectory). Working hypothesis: symmetric pairs are
+   wake-frustrated for rotation -> break symmetry structurally. Designs: heterodimer
+   rotor (motile species tethered to anchored species; requires CROSS-SPECIES BINDING
+   — cross-wired v-channel or second shared inhibitor w2; no-go map acceptable),
+   same-species 3-rotor scan, engineered isok ring orbit (planetary demo, labeled
+   background-guided).
+MERGE MILESTONE (later): "b_target inverse problem" — evolve dynamical b from
+   primitive initial conditions into the machine landscape (sawtooth + rails) that
+   we hand-built in M5. If reachable, the full machine becomes emergent from initial
+   conditions. Parked until M6 characterizes the b-dynamics forward map.
+User's labyrinth note parked in IDEAS: labyrinth-prone species + dynamical b ~
+   growth/vasculature/territory phenomenology (space-filling curves in living
+   systems).
+
+Next phase after M6/M7: world-ification (ports, contracts, alienization) —
+controller + user checkpoint.
 
 ## Roles
 Controller (parent): briefs, audits (fresh seeds + convention-faithful reruns),

@@ -1395,3 +1395,24 @@ M0->M5 all certified. The BLOBS ladder the user sketched (persistent excitations
 -> flavors -> interactions -> binding -> composite dynamics -> machines that
 transport against a background field) is fully realized in autonomous field
 physics with no per-blob bookkeeping and no scripted events.
+
+
+## Addendum 33 — BLOBS phase 2 spawned: dynamical b-field (M6) + rotation (M7)
+
+User direction after reviewing the report page: (1) promote the isok background b to
+a bona-fide dynamical field (it already reads as a trilinear b-u-w vertex with a
+vacuum counterterm — verified algebraically: the isok perturbation collapses to
+-b*(w-u0), zero on vacuum; page updated with the field-theory box) and study its
+evolution + backreaction ("u and w push back on b"); (2) attack rotation via
+symmetry breaking — heterodimer with different per-species movement vectors — using
+the pieces we already have (per-species tau_i dials in the vvw arch). The user's
+sharpened certification concern is fine-tuning: rotation must be an attractor with a
+kick-angle basin, not a balanced trajectory. Long-game merge: solve the b_target
+inverse problem (evolve b from primitive ICs into the discovered sawtooth+rails
+machine landscape) => machines emergent from initial conditions alone.
+Two searchers spawned: blob-bfield (gates BF1-BF4: coexistence, self-profile +
+backreaction curves, mediated interaction w/ control, emergent-structure demo;
+b_target teaser probe) and blob-rotor (gates RT1 attractor rotation >=3 revs
++-20deg basin, RT2 cross-species bond curve OR no-go map of mediation channels,
+RT3 engineered isok-ring orbit demo). Labyrinth-as-feature parked in IDEAS
+(user: "living systems and space-filling curves").
