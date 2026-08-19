@@ -56,3 +56,5 @@ shadows: pacemaker geometry creates permanently dry refugia where only the
 frugal variant persists — winner becomes a GEOGRAPHY question; (c) driven
 Turing switch: wave frequency sets which variant's preferred resource band
 is replenished. All need probe campaigns before engine work.
+
+- BLOBS: re-engineer a large CONTINUUM species (A-class) — current A is lattice-stabilized at dx=1, labyrinths at dx=0.5; needed only if a machine wants the 6.8x size contrast (sorting sieves, big-anchor designs). Candidate route: move along iso-line toward deeper k1 with higher Du, or curvature-stabilized annulus species.

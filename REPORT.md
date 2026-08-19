@@ -1342,3 +1342,34 @@ structures MOVE (traveling bonds / rotating pairs / breathing bonds). M5-prep
 (spawned: blob-transport): static background gradients as "downstream", species-
 selective drift as the sorting primitive, chains as obstacles/channels, noise
 ratchet sketch. Machine assembly = round 3.
+
+
+## Addendum 31 — M5-prep certified; A-species continuum caveat; machine searcher spawned
+
+blob-transport scorecard audited and certified (115 runs, job-spec replay system):
+- P1 GRADIENT two couplings: k1-mode (v=+2.64eps+27eps^2, r2 .999998, flip
+  bifurcation at eps*~0.01 where B reverses onto a second soliton branch; LEVEL-not-
+  slope limits) and the NEW isod-mode — displacing parameters along M3's
+  iso-background line gives a ZERO-FOOTPRINT force (no background perturbation):
+  B drifts v=-0.906eps, linear to eps=0.03, safe to 0.02. Controller audit:
+  eps=0.01 fresh seed 1.2% off the law; out-of-grid eps=0.025 shows the predicted
+  approach to the safe edge (14% superlinear, area growing).
+- P2 SELECTIVITY partial (honest): both species drift the same sign (1.3-1.7x
+  magnitude ratio); sorting requires the flip window or per-species coupling.
+- P3 OBSTACLES: M2 chains cannot exist in the vvw world (pure repulsion) — instead
+  WALLS SELF-ASSEMBLE (a blob parked on a tri-gradient ridge destabilizes into a
+  static domain-spanning stripe: defect-turned-tool). Blocking standoff(eps)
+  monotone 15.7->12.9px; channeling: two rails center B cargo from any y0>=10
+  (audit: y_rms 0.50px while conveyed 16.6px).
+- P4 noise ratchet honest NEGATIVE: the soliton is too stiff for Kramers hops
+  (positional diffusion ~0 even at 10x working noise); deterministic saw conveys
+  ~12px one-shot. Circulation redesign deferred to round 3.
+- FOUNDATIONAL finding: species A (169px) is NOT a continuum object (labyrinth
+  at dx=0.5; lattice-stabilized at dx=1 — same trap class as M2's dx=1 bond
+  ladder). B is continuum-clean (10ktu). Controller decision: canonical working
+  pair = B + A' (compact-metastable, 8600tu horizon, documented) at dx=0.5;
+  M3 port-classification stands with a continuum caveat; big-species
+  re-engineering parked in IDEAS.
+Round 3 spawned: blob-machine (B6 gate: >=3 cycles net-upstream B transport against
+an isod gradient, efficiency vs do-nothing baseline, integration risk = single- vs
+two-species world choice re-verified in-world).
