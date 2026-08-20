@@ -1,0 +1,110 @@
+[
+ {
+  "id": "WIN_s1_g-0.30",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": -0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "WIN_s1_g+0.15",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": 0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "WIN_s1_g+0.30",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": 0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "WIN_s3_g-0.30",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": -0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s3",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "WIN_s3_g+0.15",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": 0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s3",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "WIN_s3_g+0.30",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": 0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s3",
+  "T": 800.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

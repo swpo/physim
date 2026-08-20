@@ -1,0 +1,212 @@
+[
+ {
+  "id": "C0_pair_t60_g0",
+  "kind": "anchor",
+  "tau": 6.0,
+  "gamma": 0.0,
+  "T": 1500.0,
+  "blobs": [
+   [
+    40.5,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ],
+   [
+    55.5,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "C0_single_t57_kick_g0",
+  "kind": "anchor",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "C0_pair_t57_g0",
+  "kind": "anchor",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "T": 1500.0,
+  "blobs": [
+   [
+    40.5,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ],
+   [
+    55.5,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "X_s2_gm03",
+  "kind": "explore_park",
+  "tau": 5.7,
+  "gamma": -0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "X_s2_gm03_final"
+ },
+ {
+  "id": "X_s2_gp03_kick",
+  "kind": "explore_launch",
+  "tau": 5.7,
+  "gamma": 0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.25
+    ]
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "X_s2_gp03_final"
+ },
+ {
+  "id": "X_s2_gp03_noise",
+  "kind": "explore_launch",
+  "tau": 5.7,
+  "gamma": 0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "noise": 0.002,
+  "seed": 11,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "X_s1_gm03",
+  "kind": "explore_park",
+  "tau": 5.7,
+  "gamma": -0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s1",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "X_s1_gp03_kick",
+  "kind": "explore_launch",
+  "tau": 5.7,
+  "gamma": 0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s1",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.25
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "X_s3_gm03",
+  "kind": "explore_park",
+  "tau": 5.7,
+  "gamma": -0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s3",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "X_s3_gm03_final"
+ },
+ {
+  "id": "X_s3_gp03_kick",
+  "kind": "explore_launch",
+  "tau": 5.7,
+  "gamma": 0.03,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s3",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.25
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

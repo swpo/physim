@@ -1,0 +1,14 @@
+6 to run (0 already done)
+[start] WIN_s1_g-0.30
+[start] WIN_s1_g+0.15
+[done   175s] {"id": "WIN_s1_g+0.15", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [34.802], "x_end": [83.05], "area_end": [31.5], "b_core_end": [0.017], "b_dyn_min_all": -0.02796, "b_dyn_max_all": 0.12068, "wall_s": 174.1, "tu_per_s": 4.6, "quick": {"v_x_0": 0.078733, "v_y_0": -0.07893, "c_com_med": 0.111976, "v_com_x": 0.078733, "v_com_y": -0.07893}}
+[start] WIN_s1_g+0.30
+[done   180s] {"id": "WIN_s1_g-0.30", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [37.25], "b_core_end": [-0.27996], "b_dyn_min_all": -0.27996, "b_dyn_max_all": 0.07192, "wall_s": 175.6, "tu_per_s": 4.56, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[start] WIN_s3_g-0.30
+[done   175s] {"id": "WIN_s1_g+0.30", "status": "ok", "ncomp0": 1, "ncomp_end": 2, "ncomp_max": 2, "net_x": [-59.702, 9.466], "x_end": [-11.45, 67.55], "area_end": [33.0, 32.5], "b_core_end": [0.02878, 0.02315], "b_dyn_min_all": -0.05168, "b_dyn_max_all": 0.21789, "wall_s": 172.9, "tu_per_s": 4.63}
+[start] WIN_s3_g+0.15
+[done   175s] {"id": "WIN_s3_g-0.30", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [44.25], "b_core_end": [-0.28523], "b_dyn_min_all": -0.28555, "b_dyn_max_all": 0.0, "wall_s": 173.9, "tu_per_s": 4.6, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[start] WIN_s3_g+0.30
+[done   180s] {"id": "WIN_s3_g+0.15", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [18.691], "x_end": [66.94], "area_end": [31.25], "b_core_end": [0.0266], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.13197, "wall_s": 175.3, "tu_per_s": 4.56, "quick": {"v_x_0": 0.070114, "v_y_0": -0.070314, "c_com_med": 0.105613, "v_com_x": 0.070114, "v_com_y": -0.070314}}
+[done   180s] {"id": "WIN_s3_g+0.30", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [33.68], "x_end": [81.93], "area_end": [31.25], "b_core_end": [0.04507], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.2476, "wall_s": 175.3, "tu_per_s": 4.56, "quick": {"v_x_0": 0.091615, "v_y_0": -0.09181, "c_com_med": 0.13168, "v_com_x": 0.091615, "v_com_y": -0.09181}}
+ALL DONE

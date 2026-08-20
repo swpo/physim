@@ -1416,3 +1416,44 @@ b_target teaser probe) and blob-rotor (gates RT1 attractor rotation >=3 revs
 +-20deg basin, RT2 cross-species bond curve OR no-go map of mediation channels,
 RT3 engineered isok-ring orbit demo). Labyrinth-as-feature parked in IDEAS
 (user: "living systems and space-filling curves").
+
+
+## Addendum 34 — M6+M7 certified: dynamical b-field (autophoresis, stigmergy, b-assembly)
+## and the heterodimer rotor (rotation as attractor)
+
+Both phase-2 searchers survived a second infrastructure outage with full disk state
+(178/99 result rows) and closed out after consolidation-only resumes.
+
+M6 BFIELD certified. The static machine background promoted to a genuine 4th field
+(bounded tanh source, relaxation tau_b, optional D_b) coupling through the exact
+isok channel. Gamma=0 reproduces every M4/M5 anchor. Headlines: (1) AUTOPHORESIS —
+a parked blob below the drift threshold self-launches (g>=0.005) by climbing its own
+lagging hill, c=0.209*g^0.341, audited to +0.3% on a fresh seed; (2) backreaction
+map — drag/plow/self-trapping; trail memory law exact to 0.002%; (3) STIGMERGY
+certified with controls (trail-mediated attraction/repulsion of a second blob);
+(4) BF4 honest partial (noiseless channel mechanism yes, noisy confinement no,
+space-partition clean negative); (5) b-ASSEMBLY (audited fresh-geometry): blobs
+placed BEYOND the bond basin collapse into M4-shell molecules via their shared
+self-dug halo well — and in the searcher's noiseless n=1, the assembled trimer then
+self-launched: "the field assembles a machine that walks away". (6) TEASER: one-way
+circulation writes an asymmetric sawtooth standing-b — the M5 track shape is a
+natural fixed point of motion+relaxation, making the b_target inverse problem
+(merge milestone) look genuinely reachable.
+
+M7 ROTOR certified — the user's rotation vision realized as an ATTRACTOR, not a
+tuned trajectory. New xv architecture: fully private 3-field species + one weak
+cross-v coupling eta (eta=0 is exactly two M4 worlds; vacuum exact for any eta).
+The anchor species' v-halo is a self-assembled circular rail (radial well 6-15px,
+azimuthally flat) — predicted from stamp radial profiles BEFORE any run (d* 7-9
+predicted, 7.5-8.0 observed; the program's first theory-first milestone). The
+motile+anchored heterodimer at eta=0.1 rotates SPONTANEOUSLY (round-off seeded,
+CW/CCW degenerate), omega dialed by tau1 (0.0035-0.0259 over 5.52-6.10), 17.4
+revolutions in the 10ktu longrun, noise-robust to sigma=0.04. Controller audit:
+fresh-seed omega +0.5%, cross-bond d*=7.976 exact from d0=12, onset-region point
+on-curve. Extra physics: ROTOR-ONLY ZONE (rotates below the pair-travel threshold:
+single-static < pair-travel < rotor-spin); rotation STABILIZES the cross-bond
+(static dimer metastable, rotating dimer immortal); same-species rotors are
+knife-edged (frustration hypothesis confirmed as a basin property — structural
+symmetry breaking is the fix). First cross-species binding in the program (v is
+the unique sign-changing mediator; w cannot bind — no-go quantified).
+Films: docs/assets/blobs/m7_rotor.gif (audited fresh-seed rotor).

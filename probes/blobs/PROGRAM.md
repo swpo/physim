@@ -156,14 +156,54 @@ M4 composite dynamics -> M5 machine. Every rung certified with controller audits
 honest negatives mapped at each level.
 
 ## Phase 2 (user-directed, 2026-02-19): two parallel tracks toward genuine emergence
-M6 B-FIELD (searcher blob-bfield): promote the static isok background b to a 4th
-   dynamical field db/dt=(gamma*S(u,w)-b)/tau_b + D_b lap b entering exactly through
+M6 B-FIELD — DONE (scorecard + controller audit 2026-02-19; 180 runs):
+   b as 4th dynamical field db/dt=(gamma*S-b)/tau_b + D_b lap b through the isok
+   channel; vacuum exact with dynamics on; gamma=0 reproduces M4/machine to 0.02%.
+   HEADLINE — SELF-LAUNCH (autophoresis): a parked blob BELOW the drift threshold
+   (tau=5.7 < 5.748) spontaneously launches for gamma >= 0.005 by climbing its own
+   lagging saturated hill; c = 0.209*gamma^0.341 (r2=.991). AUDIT: fresh seed
+   g=0.05 c=0.0755 vs law 0.0752 (+0.3%); OOG g=0.15 -6.4%; sub-threshold creep
+   under noise documented (their threshold is noiseless). Backreaction: drag -12%
+   (g=-0.05), plow-boost +6% (g>0), SELF-TRAPPING g<=-0.07; trail law
+   b(s)=B0 exp(-s/(c*tau_b)) to 0.002%. BF3 stigmergy certified w/ controls
+   (trail-mediated attract/repel +-3px gates, 2 seeds each sign). BF4 honest
+   partial: noiseless self-dug-channel mechanism certified; noisy confinement
+   fails (weak transverse pumping); space-partition clean negative (wake
+   clustering wins). BONUS replicated by audit: b-ASSEMBLY — 3 blobs beyond the
+   bond basin (d0=24-26) collapse via shared halo well onto M4 shells (fresh
+   seed/geometry: assembled by t=310); their n=1 noiseless trimer then
+   SELF-LAUNCHED (c=0.076) — my noisy replica assembles but wanders (documented
+   sensitivity). TEASER: one-way circulation writes an asymmetric sawtooth-like
+   standing b (lap-decay 0.49 vs 0.46 predicted) — the M5 track shape is a natural
+   fixed point of asymmetric motion + relaxation. (original brief follows)
+   [BRIEF] promote the static isok background b to a 4th dynamical field db/dt=(gamma*S(u,w)-b)/tau_b + D_b lap b entering exactly through
    the isok channel (-b*(w-u0) in the u-equation = trilinear b-u-w vertex with vacuum
    counterterm). Questions: self-dug profiles (both gamma signs incl. possible
    self-launching), backreaction on motion c(gamma,tau_b) (effective mass), trails &
    stigmergy (mediated two-blob interaction with control), one emergent-structure
    demo, and a b_target teaser (can deposition produce asymmetric sawtooth-like b?).
-M7 ROTOR (searcher blob-rotor): rotation as an ATTRACTOR (>=3 revolutions, +-20deg
+M7 ROTOR — DONE (scorecard + controller audit 2026-02-19; 108 runs):
+   ROTATION IS AN ATTRACTOR. xv arch (6 fields; ONLY coupling = cross-v eta drive;
+   eta=0 exactly M4; vacuum exact for any eta). Heterodimer M(tau1)+S(tau2=2.5),
+   eta=0.1, d0=8: SPONTANEOUS steady rotation (noiseless self-start from round-off;
+   CW/CCW degenerate). omega(tau1) 10 locked pts 0.0035->0.0259 (5.52-6.10),
+   monotone; grid 0.009%; 10ktu longrun 17.4 revs, sep 8.437+-0.004; survives
+   sigma=0.04. AUDIT: fresh seed omega=0.011114 vs 0.011062 (+0.5%), sep 8.439,
+   anchor net 0.6px; onset-region tau1=5.60 -> omega=0.0074 on-curve; cross-bond
+   eta=0.05 from d0=12 -> d*=7.976 EXACT (sep_std=0.0). ROTOR-ONLY ZONE: spins at
+   tau1=5.52 < pair tau_c 5.636 < single 5.748 (hierarchy: single-static <
+   pair-travel < rotor-spin). Mechanism certified by decomposition (eta12-only
+   rotates = passive pivot; eta21-only static): anchor's v-halo = self-assembled
+   circular rail, predicted from stamp math BEFORE first run (d* pred 7-9, obs
+   7.5-8.0). RT2: first cross-species bond in program; eta usable [0.05,0.125];
+   HONEST: static eta=0.1 slow-slow dimer metastable (balloons ~1700tu) but the
+   ROTATING dimer never balloons (rotation stabilizes the bond); no-go quantified
+   (w monotone repel-only; v is the unique sign-changing mediator). Same-species
+   3-rotor exists but knife-edged (+-20deg converts to translation — frustration
+   hypothesis confirmed as basin property). RT3 honest negative: at machine-safe
+   eps the bond outcompetes the ring valley (planetary film IS the heterodimer).
+   (original brief follows)
+   [BRIEF] rotation as an ATTRACTOR (>=3 revolutions, +-20deg
    kick basin — not a fine-tuned trajectory). Working hypothesis: symmetric pairs are
    wake-frustrated for rotation -> break symmetry structurally. Designs: heterodimer
    rotor (motile species tethered to anchored species; requires CROSS-SPECIES BINDING

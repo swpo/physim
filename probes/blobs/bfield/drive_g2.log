@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] G2_dig_gm40
+[start] G2_dig_gm70
+[start] G2_dig_g0
+[done   270s]  2, "ncomp_max": 2, "net_x": [28.625, 28.936], "x_end": [38.88, 54.18], "area_end": [32.75, 32.75], "b_core_end": [-0.01797, -0.01788], "b_dyn_min_all": -0.01804, "b_dyn_max_all": 0.0, "wall_s": 267.9, "tu_per_s": 12.32, "quick": {"v_x_0": -0.000547, "v_y_0": 0.0, "v_x_1": -0.000619, "v_y_1": -0.0, "c_com_med": 0.000612, "v_com_x": -0.000583, "v_com_y": -0.0, "sep_mean": 15.307, "sep_std": 0.007}}
+[done   270s] nd": 2, "ncomp_max": 2, "net_x": [17.071, 17.316], "x_end": [27.33, 42.56], "area_end": [32.75, 32.75], "b_core_end": [-0.03182, -0.03146], "b_dyn_min_all": -0.03182, "b_dyn_max_all": 0.0, "wall_s": 267.9, "tu_per_s": 12.32, "quick": {"v_x_0": -7.7e-05, "v_y_0": -0.0, "v_x_1": -7.6e-05, "v_y_1": 0.0, "c_com_med": 7.6e-05, "v_com_x": -7.6e-05, "v_com_y": 0.0, "sep_mean": 15.227, "sep_std": 0.0001}}
+[done   270s]  2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [201.611, 201.854], "x_end": [211.87, 227.09], "area_end": [32.75, 32.0], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 267.6, "tu_per_s": 12.33, "quick": {"v_x_0": 0.059239, "v_y_0": 0.0, "v_x_1": 0.059234, "v_y_1": 0.0, "c_com_med": 0.059246, "v_com_x": 0.059237, "v_com_y": 0.0, "sep_mean": 15.233, "sep_std": 0.0055}}
+ALL DONE

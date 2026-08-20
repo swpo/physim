@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] PF_fuse_s3_gm100_tb200
+[start] PF_fuse_s3_gm50_tb200
+[start] PF_fuse_ctrl_g0_d24
+[done   105s] comp_max": 2, "net_x": [4.967, -4.141], "x_end": [41.22, 56.11], "area_end": [35.0, 35.5], "b_core_end": [-0.08683, -0.08609], "b_dyn_min_all": -0.08825, "b_dyn_max_all": 0.0, "wall_s": 104.1, "tu_per_s": 14.41, "quick": {"v_x_0": 0.001128, "v_y_0": 0.000685, "v_x_1": 0.001169, "v_y_1": 0.0005, "c_com_med": 0.001037, "v_com_x": 0.001149, "v_com_y": 0.000592, "sep_mean": 14.891, "sep_std": 0.0044}}
+[done   105s] ncomp_end": 2, "ncomp_max": 2, "net_x": [4.434, -4.411], "x_end": [40.68, 55.84], "area_end": [33.75, 33.25], "b_core_end": [-0.04126, -0.04084], "b_dyn_min_all": -0.04194, "b_dyn_max_all": 0.0, "wall_s": 103.8, "tu_per_s": 14.45, "quick": {"v_x_0": 3.4e-05, "v_y_0": 0.0, "v_x_1": 3e-05, "v_y_1": 0.0, "c_com_med": 2.8e-05, "v_com_x": 3.2e-05, "v_com_y": 0.0, "sep_mean": 15.156, "sep_std": 0.0021}}
+[done   105s]  "ncomp0": 2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [-1.566, 1.566], "x_end": [34.68, 61.82], "area_end": [32.75, 32.75], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 104.4, "tu_per_s": 14.37, "quick": {"v_x_0": 0.000524, "v_y_0": -0.0, "v_x_1": -0.000524, "v_y_1": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0, "sep_mean": 27.291, "sep_std": 0.0923}}
+ALL DONE

@@ -1,0 +1,208 @@
+[
+ {
+  "id": "L_g+0.0050_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.005,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0075_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.0075,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0100_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.01,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0150_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.015,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0200_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.02,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0500_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.1000_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.1,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF1_launch_seed1",
+  "kind": "bf1_seed",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "noise": 0.002,
+  "seed": 1,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF1_launch_seed2",
+  "kind": "bf1_seed",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "noise": 0.002,
+  "seed": 2,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF1_launch_seed3",
+  "kind": "bf1_seed",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "noise": 0.002,
+  "seed": 3,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF1_well_seed1",
+  "kind": "bf1_well",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "noise": 0.002,
+  "seed": 1,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

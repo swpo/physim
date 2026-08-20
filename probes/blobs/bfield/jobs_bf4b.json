@@ -1,0 +1,98 @@
+[
+ {
+  "id": "BF4b_capture_s1",
+  "kind": "bf4_cert2",
+  "tau": 6.0,
+  "gamma": -0.5,
+  "tau_b": 1000.0,
+  "D_b": 0.25,
+  "source": "s2",
+  "T": 2500.0,
+  "L": 128.0,
+  "noise": 0.002,
+  "seed": 1,
+  "init_from": "W2_gm50_state",
+  "vacuum_blob_sector": true,
+  "add_blobs": [
+   [
+    60.0,
+    52.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "ref_pos": [
+   [
+    60.0,
+    52.0
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF4b_capture_s2",
+  "kind": "bf4_cert2",
+  "tau": 6.0,
+  "gamma": -0.5,
+  "tau_b": 1000.0,
+  "D_b": 0.25,
+  "source": "s2",
+  "T": 2500.0,
+  "L": 128.0,
+  "noise": 0.002,
+  "seed": 2,
+  "init_from": "W2_gm50_state",
+  "vacuum_blob_sector": true,
+  "add_blobs": [
+   [
+    60.0,
+    52.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "ref_pos": [
+   [
+    60.0,
+    52.0
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "BF4b_capture_s3",
+  "kind": "bf4_cert2",
+  "tau": 6.0,
+  "gamma": -0.5,
+  "tau_b": 1000.0,
+  "D_b": 0.25,
+  "source": "s2",
+  "T": 2500.0,
+  "L": 128.0,
+  "noise": 0.002,
+  "seed": 3,
+  "init_from": "W2_gm50_state",
+  "vacuum_blob_sector": true,
+  "add_blobs": [
+   [
+    60.0,
+    52.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "ref_pos": [
+   [
+    60.0,
+    52.0
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

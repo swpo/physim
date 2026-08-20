@@ -1,0 +1,368 @@
+[
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.2,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.20_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.15_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.1,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.10_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.05_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.02,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.02_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.02,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g+0.02_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g+0.05_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.1,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g+0.10_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g+0.15_tb200_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.0,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g0_ctrl"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.05,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g-0.05_tb50_Db0"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "id": "E3_t60_g+0.05_tb50_Db0"
+ },
+ {
+  "kind": "backreaction_oneoff",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1000.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "L": 128.0,
+  "id": "E3_t60_g-0.05_tb1000_Db0_L128"
+ },
+ {
+  "kind": "backreaction_oneoff",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1000.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "L": 128.0,
+  "id": "E3_t60_g+0.05_tb1000_Db0_L128"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "id": "E3_t60_g-0.05_tb200_Db0.5"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "snap_times": [
+   1200.0
+  ],
+  "save_state_as": "E3_trailsnap_final",
+  "id": "E3_t60_g+0.05_tb200_Db0.5"
+ },
+ {
+  "kind": "backreaction",
+  "tau": 6.0,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "snap_times": [
+   1200.0
+  ],
+  "id": "E3_t60_g-0.05_tb200_Db0_snap"
+ }
+]

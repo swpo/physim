@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] P7a_capture_gm50
+[start] P7d_capture_g0
+[start] P7c_ctrl_fresh_gm50
+[start] P7b_capture_gm50_15deg
+[done   240s] : 2, "net_x": [101.001, 98.18], "x_end": [204.42, 158.43], "area_end": [33.5, 32.75], "b_core_end": [-0.01017, -0.01127], "b_dyn_min_all": -0.01314, "b_dyn_max_all": -8e-05, "wall_s": 238.6, "tu_per_s": 3.77, "quick": {"v_x_0": 0.112499, "v_y_0": 0.002006, "v_x_1": 0.101461, "v_y_1": -0.051341, "c_com_med": 0.109852, "v_com_x": 0.10698, "v_com_y": -0.024668, "sep_mean": 44.716, "sep_std": 1.1449}}
+[done   240s] p_max": 2, "net_x": [110.78, 109.918], "x_end": [214.2, 170.17], "area_end": [32.5, 32.5], "b_core_end": [-0.00072, -0.00053], "b_dyn_min_all": -0.01144, "b_dyn_max_all": -8e-05, "wall_s": 238.5, "tu_per_s": 3.77, "quick": {"v_x_0": 0.123804, "v_y_0": -0.0, "v_x_1": 0.1185, "v_y_1": -0.035329, "c_com_med": 0.122453, "v_com_x": 0.121152, "v_com_y": -0.017665, "sep_mean": 43.481, "sep_std": 0.2469}}
+[done   240s] {"id": "P7c_ctrl_fresh_gm50", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [102.817], "x_end": [163.07], "area_end": [32.5], "b_core_end": [-0.00919], "b_dyn_min_all": -0.01077, "b_dyn_max_all": 0.0, "wall_s": 239.0, "tu_per_s": 3.77, "quick": {"v_x_0": 0.111429, "v_y_0": 0.0, "c_com_med": 0.11137, "v_com_x": 0.111429, "v_com_y": 0.0}}
+[done   240s] 2, "net_x": [101.145, 101.056], "x_end": [204.56, 141.31], "area_end": [32.5, 33.5], "b_core_end": [-0.01103, -0.01071], "b_dyn_min_all": -0.01253, "b_dyn_max_all": -8e-05, "wall_s": 239.3, "tu_per_s": 3.76, "quick": {"v_x_0": 0.112733, "v_y_0": 0.008937, "v_x_1": 0.107231, "v_y_1": -0.036433, "c_com_med": 0.110869, "v_com_x": 0.109982, "v_com_y": -0.013748, "sep_mean": 62.587, "sep_std": 0.5063}}
+ALL DONE

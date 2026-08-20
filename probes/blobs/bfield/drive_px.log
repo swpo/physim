@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] PX_fuse_s3_gm80_d24
+[start] PX_fuse_s3_gm80_single
+[start] PX_fuse_s2_gm100_d24
+[done   110s] {"id": "PX_fuse_s3_gm80_single", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.01494], "b_dyn_min_all": -0.01496, "b_dyn_max_all": 0.0, "wall_s": 104.9, "tu_per_s": 14.3, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[done   205s] : 2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [0.622, -0.622], "x_end": [36.87, 59.63], "area_end": [32.75, 32.75], "b_core_end": [-0.024, -0.02392], "b_dyn_min_all": -0.02405, "b_dyn_max_all": 0.0, "wall_s": 204.7, "tu_per_s": 14.66, "quick": {"v_x_0": 0.00073, "v_y_0": 0.0, "v_x_1": -0.00073, "v_y_1": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0, "sep_mean": 22.822, "sep_std": 0.1454}}
+[done   210s] 2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [-0.347, 0.347], "x_end": [35.9, 60.6], "area_end": [32.25, 32.25], "b_core_end": [-0.01072, -0.0107], "b_dyn_min_all": -0.01072, "b_dyn_max_all": 0.0, "wall_s": 205.2, "tu_per_s": 14.62, "quick": {"v_x_0": -5.7e-05, "v_y_0": -0.0, "v_x_1": 5.7e-05, "v_y_1": -0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": -0.0, "sep_mean": 24.681, "sep_std": 0.0101}}
+ALL DONE

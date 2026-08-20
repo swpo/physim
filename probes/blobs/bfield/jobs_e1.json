@@ -1,0 +1,393 @@
+[
+ {
+  "id": "E1a_s2_g-0.15_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g-0.15_final"
+ },
+ {
+  "id": "E1a_s2_g-0.10_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.1,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g-0.10_final"
+ },
+ {
+  "id": "E1a_s2_g-0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g-0.05_final"
+ },
+ {
+  "id": "E1a_s2_g-0.02_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.02,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g-0.02_final"
+ },
+ {
+  "id": "E1a_s2_g+0.02_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.02,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g+0.02_final"
+ },
+ {
+  "id": "E1a_s2_g+0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g+0.05_final"
+ },
+ {
+  "id": "E1a_s2_g+0.10_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.1,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g+0.10_final"
+ },
+ {
+  "id": "E1a_s2_g+0.15_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.15,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g+0.15_final"
+ },
+ {
+  "id": "E1a_s2_g+0.20_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.2,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1a_g+0.20_final"
+ },
+ {
+  "id": "E1b_s2_g-0.05_tb200_Db0.5",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1b_s2_g-0.05_tb200_Db2.0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 2.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1b_s2_g+0.05_tb200_Db0.5",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1b_s2_g+0.05_tb200_Db2.0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 2.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1c_s2_g-0.05_tb50_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1c_s2_g-0.05_tb1000_Db0",
+  "kind": "self_profile_oneoff",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 4000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 10.0
+ },
+ {
+  "id": "E1c_s2_g+0.05_tb50_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E1c_s2_g+0.05_tb1000_Db0",
+  "kind": "self_profile_oneoff",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 4000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 10.0
+ },
+ {
+  "id": "E1d_s1_g-0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1d_s1_g-0.05_final"
+ },
+ {
+  "id": "E1d_s1_g+0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1d_s1_g+0.05_final"
+ },
+ {
+  "id": "E1d_s3_g-0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": -0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s3",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1d_s3_g-0.05_final"
+ },
+ {
+  "id": "E1d_s3_g+0.05_tb200_Db0",
+  "kind": "self_profile",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s3",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "E1d_s3_g+0.05_final"
+ }
+]

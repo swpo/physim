@@ -1,0 +1,6 @@
+2 to run (0 already done)
+[start] PT3_triangle_gm50
+[start] PT3_triangle_g0
+[done   130s]  -6.392], "x_end": [45.85, 38.19, 53.86], "area_end": [34.75, 33.75, 33.5], "b_core_end": [-0.05561, -0.04837, -0.0493], "b_dyn_min_all": -0.0566, "b_dyn_max_all": 0.0, "wall_s": 126.8, "tu_per_s": 15.78, "quick": {"v_x_0": -0.006535, "v_y_0": -0.075494, "v_x_1": -0.00618, "v_y_1": -0.075619, "v_x_2": -0.006219, "v_y_2": -0.075417, "c_com_med": 0.075739, "v_com_x": -0.006311, "v_com_y": -0.07551}}
+[done   130s]  3, "ncomp_max": 3, "net_x": [0.0, -1.314, 1.314], "x_end": [48.25, 34.94, 61.56], "area_end": [31.75, 31.5, 31.5], "b_core_end": [0.0, 0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 127.0, "tu_per_s": 15.75, "quick": {"v_x_0": 0.0, "v_y_0": -0.000215, "v_x_1": 0.00027, "v_y_1": 9.4e-05, "v_x_2": -0.00027, "v_y_2": 9.4e-05, "c_com_med": 9e-06, "v_com_x": -0.0, "v_com_y": -9e-06}}
+ALL DONE

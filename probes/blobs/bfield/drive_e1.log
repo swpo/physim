@@ -1,0 +1,44 @@
+21 to run (0 already done)
+[start] E1a_s2_g-0.15_tb200_Db0
+[start] E1a_s2_g-0.10_tb200_Db0
+[start] E1a_s2_g-0.05_tb200_Db0
+[start] E1a_s2_g-0.02_tb200_Db0
+[done    95s] {"id": "E1a_s2_g-0.15_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.14655], "b_dyn_min_all": -0.14658, "b_dyn_max_all": 0.0, "wall_s": 90.9, "tu_per_s": 16.51, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done    95s] {"id": "E1a_s2_g-0.10_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.09762], "b_dyn_min_all": -0.09765, "b_dyn_max_all": 0.0, "wall_s": 90.8, "tu_per_s": 16.52, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done    95s] {"id": "E1a_s2_g-0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.04877], "b_dyn_min_all": -0.04879, "b_dyn_max_all": 0.0, "wall_s": 90.7, "tu_per_s": 16.53, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done    95s] {"id": "E1a_s2_g-0.02_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.0195], "b_dyn_min_all": -0.01951, "b_dyn_max_all": 0.0, "wall_s": 90.8, "tu_per_s": 16.52, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[start] E1a_s2_g+0.02_tb200_Db0
+[start] E1a_s2_g+0.05_tb200_Db0
+[start] E1a_s2_g+0.10_tb200_Db0
+[start] E1a_s2_g+0.15_tb200_Db0
+[done   100s] {"id": "E1a_s2_g+0.02_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [27.764], "x_end": [76.01], "area_end": [31.75], "b_core_end": [0.00431], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.01923, "wall_s": 98.3, "tu_per_s": 15.27, "quick": {"v_x_0": 0.039971, "v_y_0": -0.039985, "c_com_med": 0.057688, "v_com_x": 0.039971, "v_com_y": -0.039985}}
+[done   100s] {"id": "E1a_s2_g+0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [52.426], "x_end": [100.68], "area_end": [33.25], "b_core_end": [0.00861], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0459, "wall_s": 97.3, "tu_per_s": 15.42, "quick": {"v_x_0": 0.053646, "v_y_0": -0.053482, "c_com_med": 0.075529, "v_com_x": 0.053646, "v_com_y": -0.053482}}
+[done   100s] {"id": "E1a_s2_g+0.10_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [72.672], "x_end": [120.92], "area_end": [32.5], "b_core_end": [0.01251], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.08558, "wall_s": 97.6, "tu_per_s": 15.36, "quick": {"v_x_0": 0.065155, "v_y_0": -0.065031, "c_com_med": 0.091943, "v_com_x": 0.065155, "v_com_y": -0.065031}}
+[done   100s] {"id": "E1a_s2_g+0.15_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [84.634], "x_end": [132.88], "area_end": [32.25], "b_core_end": [0.01633], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.12141, "wall_s": 97.6, "tu_per_s": 15.36, "quick": {"v_x_0": 0.071826, "v_y_0": -0.072591, "c_com_med": 0.102432, "v_com_x": 0.071826, "v_com_y": -0.072591}}
+[start] E1a_s2_g+0.20_tb200_Db0
+[start] E1b_s2_g-0.05_tb200_Db0.5
+[start] E1b_s2_g-0.05_tb200_Db2.0
+[start] E1b_s2_g+0.05_tb200_Db0.5
+[done   105s] {"id": "E1a_s2_g+0.20_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [93.017], "x_end": [141.27], "area_end": [32.75], "b_core_end": [0.02112], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.15462, "wall_s": 100.4, "tu_per_s": 14.94, "quick": {"v_x_0": 0.076726, "v_y_0": -0.078028, "c_com_med": 0.109588, "v_com_x": 0.076726, "v_com_y": -0.078028}}
+[start] E1b_s2_g+0.05_tb200_Db2.0
+[done   120s] {"id": "E1b_s2_g-0.05_tb200_Db0.5", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.00373], "b_dyn_min_all": -0.00376, "b_dyn_max_all": 0.0, "wall_s": 118.1, "tu_per_s": 12.7, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done   120s] {"id": "E1b_s2_g-0.05_tb200_Db2.0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.00127], "b_dyn_min_all": -0.00128, "b_dyn_max_all": 0.0, "wall_s": 117.8, "tu_per_s": 12.74, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done   120s] {"id": "E1b_s2_g+0.05_tb200_Db0.5", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [0.00371], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.00374, "wall_s": 118.7, "tu_per_s": 12.64, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[start] E1c_s2_g-0.05_tb50_Db0
+[start] E1c_s2_g-0.05_tb1000_Db0
+[start] E1c_s2_g+0.05_tb50_Db0
+[done   120s] {"id": "E1b_s2_g+0.05_tb200_Db2.0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [0.00127], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.00128, "wall_s": 118.7, "tu_per_s": 12.64, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[done   105s] {"id": "E1c_s2_g-0.05_tb50_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.0488], "b_dyn_min_all": -0.04881, "b_dyn_max_all": 0.0, "wall_s": 101.6, "tu_per_s": 14.76, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done   105s] {"id": "E1c_s2_g+0.05_tb50_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [69.548], "x_end": [117.8], "area_end": [32.25], "b_core_end": [0.01858], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.04873, "wall_s": 101.7, "tu_per_s": 14.74, "quick": {"v_x_0": 0.070941, "v_y_0": -0.07112, "c_com_med": 0.100786, "v_com_x": 0.070941, "v_com_y": -0.07112}}
+[start] E1c_s2_g+0.05_tb1000_Db0
+[start] E1d_s1_g-0.05_tb200_Db0
+[start] E1d_s1_g+0.05_tb200_Db0
+[done   105s] {"id": "E1d_s1_g-0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.04747], "b_dyn_min_all": -0.04748, "b_dyn_max_all": 0.01138, "wall_s": 101.5, "tu_per_s": 14.78, "quick": {"v_x_0": -0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": -0.0}}
+[done   105s] {"id": "E1d_s1_g+0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [56.112], "x_end": [104.36], "area_end": [31.5], "b_core_end": [0.00724], "b_dyn_min_all": -0.01052, "b_dyn_max_all": 0.04493, "wall_s": 101.9, "tu_per_s": 14.72, "quick": {"v_x_0": 0.058589, "v_y_0": -0.05875, "c_com_med": 0.082937, "v_com_x": 0.058589, "v_com_y": -0.05875}}
+[start] E1d_s3_g-0.05_tb200_Db0
+[start] E1d_s3_g+0.05_tb200_Db0
+[done   270s] {"id": "E1c_s2_g-0.05_tb1000_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.0479], "b_dyn_min_all": -0.04792, "b_dyn_max_all": 0.0, "wall_s": 270.1, "tu_per_s": 14.81, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[done   100s] {"id": "E1d_s3_g-0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [34.25], "b_core_end": [-0.04731], "b_dyn_min_all": -0.04741, "b_dyn_max_all": 0.0, "wall_s": 98.0, "tu_per_s": 15.31, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[done   100s] {"id": "E1d_s3_g+0.05_tb200_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [34.386], "x_end": [82.64], "area_end": [32.25], "b_core_end": [0.0119], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.0464, "wall_s": 97.8, "tu_per_s": 15.34, "quick": {"v_x_0": 0.056447, "v_y_0": -0.056722, "c_com_med": 0.079914, "v_com_x": 0.056447, "v_com_y": -0.056722}}
+[done   250s] {"id": "E1c_s2_g+0.05_tb1000_Db0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [109.191], "x_end": [157.44], "area_end": [32.0], "b_core_end": [0.0032], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.02769, "wall_s": 248.4, "tu_per_s": 16.1, "quick": {"v_x_0": 0.030617, "v_y_0": -0.03626, "c_com_med": 0.047428, "v_com_x": 0.030617, "v_com_y": -0.03626}}
+ALL DONE

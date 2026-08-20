@@ -1,0 +1,258 @@
+[
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.005,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.005_tb200_Db0"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.01,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.010_tb200_Db0"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.015,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.015_tb200_Db0"
+ },
+ {
+  "kind": "window_edge",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": -0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "save_state_as": "E2_gm30_final",
+  "id": "E2_g-0.30_tb200_Db0"
+ },
+ {
+  "kind": "window_edge",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": -0.5,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g-0.50_tb200_Db0"
+ },
+ {
+  "kind": "window_edge",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.3,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.30_tb200_Db0"
+ },
+ {
+  "kind": "window_edge",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.5,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.50_tb200_Db0"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.08,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "id": "E2_g+0.08_tb200_Db0.5"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.1,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "id": "E2_g+0.10_tb200_Db0.5"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 3000.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.5,
+  "id": "E2_g+0.05_tb200_Db0.5_T3000"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.02,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.02_tb50_Db0"
+ },
+ {
+  "kind": "launch_threshold",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.01,
+  "tau_b": 50.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.01_tb50_Db0"
+ },
+ {
+  "kind": "launch_direction",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 1500.0,
+  "rec_tu": 5.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.05_tb200_Db0_kick"
+ },
+ {
+  "kind": "launch_threshold_oneoff",
+  "tau": 5.7,
+  "source": "s2",
+  "T": 4000.0,
+  "rec_tu": 10.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "gamma": 0.02,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "id": "E2_g+0.02_tb1000_Db0_T4000"
+ }
+]

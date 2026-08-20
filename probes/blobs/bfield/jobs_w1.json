@@ -1,0 +1,48 @@
+[
+ {
+  "id": "W1_dig_gm30_L128",
+  "kind": "bf4_dig",
+  "tau": 6.0,
+  "gamma": -0.3,
+  "tau_b": 1000.0,
+  "D_b": 0.25,
+  "source": "s2",
+  "T": 2050.0,
+  "L": 128.0,
+  "blobs": [
+   [
+    10.0,
+    30.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 10.0,
+  "save_state_as": "W1_gm30_state"
+ },
+ {
+  "id": "W1_dig_g0_L128",
+  "kind": "bf4_dig_ctrl",
+  "tau": 6.0,
+  "gamma": 0.0,
+  "tau_b": 1000.0,
+  "D_b": 0.25,
+  "source": "s2",
+  "T": 2050.0,
+  "L": 128.0,
+  "blobs": [
+   [
+    10.0,
+    30.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 10.0,
+  "save_state_as": "W1_g0_state"
+ }
+]

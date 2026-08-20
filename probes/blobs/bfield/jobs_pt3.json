@@ -1,0 +1,59 @@
+[
+ {
+  "id": "PT3_triangle_gm50",
+  "kind": "bf4f_pilot",
+  "tau": 5.7,
+  "gamma": -0.5,
+  "tau_b": 200.0,
+  "D_b": 2.0,
+  "source": "s3",
+  "T": 2000.0,
+  "blobs": [
+   [
+    48.0,
+    61.86,
+    null
+   ],
+   [
+    36.0,
+    41.07,
+    null
+   ],
+   [
+    60.0,
+    41.07,
+    null
+   ]
+  ],
+  "rec_tu": 5.0,
+  "save_state_as": "PT3_final"
+ },
+ {
+  "id": "PT3_triangle_g0",
+  "kind": "bf4f_ctrl",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "tau_b": 200.0,
+  "D_b": 2.0,
+  "source": "s3",
+  "T": 2000.0,
+  "blobs": [
+   [
+    48.0,
+    61.86,
+    null
+   ],
+   [
+    36.0,
+    41.07,
+    null
+   ],
+   [
+    60.0,
+    41.07,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

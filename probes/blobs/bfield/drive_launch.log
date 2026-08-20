@@ -1,0 +1,24 @@
+11 to run (0 already done)
+[start] L_g+0.0050_tb200_Db0_T3000
+[start] L_g+0.0075_tb200_Db0_T3000
+[start] L_g+0.0100_tb200_Db0_T3000
+[start] L_g+0.0150_tb200_Db0_T3000
+[done   299s] {"id": "L_g+0.0050_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [28.865], "x_end": [77.11], "area_end": [31.75], "b_core_end": [0.00173], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.00488, "wall_s": 294.9, "tu_per_s": 10.17, "quick": {"v_x_0": 0.022836, "v_y_0": -0.023119, "c_com_med": 0.032595, "v_com_x": 0.022836, "v_com_y": -0.023119}}
+[done   299s] {"id": "L_g+0.0075_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [44.92], "x_end": [93.17], "area_end": [32.0], "b_core_end": [0.00229], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.00731, "wall_s": 294.4, "tu_per_s": 10.19, "quick": {"v_x_0": 0.027409, "v_y_0": -0.027635, "c_com_med": 0.03908, "v_com_x": 0.027409, "v_com_y": -0.027635}}
+[done   299s] {"id": "L_g+0.0100_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [56.876], "x_end": [105.13], "area_end": [31.75], "b_core_end": [0.00272], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.00973, "wall_s": 293.7, "tu_per_s": 10.21, "quick": {"v_x_0": 0.030872, "v_y_0": -0.031058, "c_com_med": 0.043988, "v_com_x": 0.030872, "v_com_y": -0.031058}}
+[done   299s] {"id": "L_g+0.0150_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [74.709], "x_end": [122.96], "area_end": [31.75], "b_core_end": [0.00335], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.01452, "wall_s": 294.8, "tu_per_s": 10.18, "quick": {"v_x_0": 0.036134, "v_y_0": -0.03607, "c_com_med": 0.052149, "v_com_x": 0.036134, "v_com_y": -0.03607}}
+[start] L_g+0.0200_tb200_Db0_T3000
+[start] L_g+0.0500_tb200_Db0_T3000
+[start] L_g+0.1000_tb200_Db0_T3000
+[start] BF1_launch_seed1
+[done   746s] {"id": "L_g+0.0200_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [87.768], "x_end": [136.02], "area_end": [30.75], "b_core_end": [0.00425], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.01923, "wall_s": 741.2, "tu_per_s": 4.05, "quick": {"v_x_0": 0.039891, "v_y_0": -0.040061, "c_com_med": 0.056933, "v_com_x": 0.039891, "v_com_y": -0.040061}}
+[done   746s] {"id": "L_g+0.0500_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [132.776], "x_end": [181.03], "area_end": [31.5], "b_core_end": [0.00802], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0459, "wall_s": 743.5, "tu_per_s": 4.03, "quick": {"v_x_0": 0.053649, "v_y_0": -0.053474, "c_com_med": 0.075527, "v_com_x": 0.053649, "v_com_y": -0.053474}}
+[done   746s] {"id": "L_g+0.1000_tb200_Db0_T3000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [170.262], "x_end": [218.51], "area_end": [31.5], "b_core_end": [0.01324], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.08558, "wall_s": 741.7, "tu_per_s": 4.04, "quick": {"v_x_0": 0.065113, "v_y_0": -0.06503, "c_com_med": 0.091861, "v_com_x": 0.065113, "v_com_y": -0.06503}}
+[start] BF1_launch_seed2
+[start] BF1_launch_seed3
+[start] BF1_well_seed1
+[done   831s] {"id": "BF1_launch_seed1", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [14.115], "x_end": [62.36], "area_end": [32.0], "b_core_end": [0.00734], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.03336, "wall_s": 829.9, "tu_per_s": 3.61, "quick": {"v_x_0": 0.00757, "v_y_0": 0.075171, "c_com_med": 0.075532, "v_com_x": 0.00757, "v_com_y": 0.075171}}
+[done   641s] {"id": "BF1_launch_seed2", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [38.487], "x_end": [86.74], "area_end": [32.25], "b_core_end": [0.0067], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.03203, "wall_s": 636.9, "tu_per_s": 4.71, "quick": {"v_x_0": 0.013426, "v_y_0": 0.074534, "c_com_med": 0.075692, "v_com_x": 0.013426, "v_com_y": 0.074534}}
+[done   641s] {"id": "BF1_launch_seed3", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-186.607], "x_end": [-138.36], "area_end": [32.25], "b_core_end": [0.00749], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0317, "wall_s": 635.0, "tu_per_s": 4.72, "quick": {"v_x_0": -0.062162, "v_y_0": 0.04329, "c_com_med": 0.075791, "v_com_x": -0.062162, "v_com_y": 0.04329}}
+[done   641s] {"id": "BF1_well_seed1", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.006], "x_end": [48.24], "area_end": [32.75], "b_core_end": [-0.04881], "b_dyn_min_all": -0.04881, "b_dyn_max_all": 0.0, "wall_s": 635.5, "tu_per_s": 4.72, "quick": {"v_x_0": 6e-06, "v_y_0": 4.1e-05, "c_com_med": 0.000861, "v_com_x": 6e-06, "v_com_y": 4.1e-05}}
+ALL DONE

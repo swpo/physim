@@ -1,0 +1,6 @@
+2 to run (0 already done)
+[start] W1_dig_gm30_L128
+[start] W1_dig_g0_L128
+[done   385s] {"id": "W1_dig_gm30_L128", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [241.904], "x_end": [252.15], "area_end": [32.5], "b_core_end": [-0.00577], "b_dyn_min_all": -0.00667, "b_dyn_max_all": 0.0, "wall_s": 385.1, "tu_per_s": 5.32, "quick": {"v_x_0": 0.117103, "v_y_0": 0.0, "c_com_med": 0.117085, "v_com_x": 0.117103, "v_com_y": 0.0}}
+[done   385s] {"id": "W1_dig_g0_L128", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [254.669], "x_end": [264.92], "area_end": [32.5], "b_core_end": [0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 384.9, "tu_per_s": 5.33, "quick": {"v_x_0": 0.123384, "v_y_0": -0.0, "c_com_med": 0.123367, "v_com_x": 0.123384, "v_com_y": -0.0}}
+ALL DONE

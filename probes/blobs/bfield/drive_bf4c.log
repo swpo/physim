@@ -1,0 +1,6 @@
+2 to run (0 already done)
+[start] BF4c_ctrl_g0_s1
+[start] BF4c_long_s1_T5000
+[done  1151s] : 2, "ncomp_max": 2, "net_x": [310.12, 310.105], "x_end": [413.87, 370.36], "area_end": [32.75, 33.0], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 1148.3, "tu_per_s": 2.18, "quick": {"v_x_0": 0.123536, "v_y_0": -0.001877, "v_x_1": 0.123513, "v_y_1": 0.004172, "c_com_med": 0.123553, "v_com_x": 0.123525, "v_com_y": 0.001147, "sep_mean": 53.193, "sep_std": 0.3108}}
+[done  1817s] , "net_x": [558.514, 541.478], "x_end": [661.93, 601.73], "area_end": [32.75, 33.25], "b_core_end": [-0.01053, -0.01141], "b_dyn_min_all": -0.01337, "b_dyn_max_all": -8e-05, "wall_s": 1815.5, "tu_per_s": 2.75, "quick": {"v_x_0": 0.110614, "v_y_0": -0.020193, "v_x_1": 0.105077, "v_y_1": 0.039833, "c_com_med": 0.108183, "v_com_x": 0.107845, "v_com_y": 0.00982, "sep_mean": 61.811, "sep_std": 0.9404}}
+ALL DONE

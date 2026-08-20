@@ -1,0 +1,22 @@
+10 to run (0 already done)
+[start] C0_pair_t60_g0
+[start] C0_single_t57_kick_g0
+[start] C0_pair_t57_g0
+[start] X_s2_gm03
+[done   105s] {"id": "C0_single_t57_kick_g0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [19.627], "x_end": [67.88], "area_end": [32.25], "b_core_end": [0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 104.7, "tu_per_s": 14.33, "quick": {"v_x_0": 0.000296, "v_y_0": 0.0, "c_com_med": 0.000285, "v_com_x": 0.000296, "v_com_y": 0.0}}
+[start] X_s2_gp03_kick
+[done   110s] , "ncomp_end": 2, "ncomp_max": 2, "net_x": [212.745, 212.536], "x_end": [253.5, 268.28], "area_end": [33.5, 33.25], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 105.0, "tu_per_s": 14.29, "quick": {"v_x_0": 0.140785, "v_y_0": -0.0, "v_x_1": 0.140784, "v_y_1": -0.0, "c_com_med": 0.140784, "v_com_x": 0.140784, "v_com_y": -0.0, "sep_mean": 14.779, "sep_std": 0.0055}}
+[done   110s] ": 2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [94.981, 95.232], "x_end": [135.74, 150.97], "area_end": [32.25, 31.5], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 105.0, "tu_per_s": 14.28, "quick": {"v_x_0": 0.059236, "v_y_0": 0.0, "v_x_1": 0.059236, "v_y_1": 0.0, "c_com_med": 0.059257, "v_com_x": 0.059236, "v_com_y": 0.0, "sep_mean": 15.233, "sep_std": 0.0053}}
+[done   110s] {"id": "X_s2_gm03", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.00224], "b_dyn_min_all": -0.00225, "b_dyn_max_all": 0.0, "wall_s": 105.1, "tu_per_s": 14.28, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[start] X_s2_gp03_noise
+[start] X_s1_gm03
+[start] X_s1_gp03_kick
+[done   115s] {"id": "X_s2_gp03_kick", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [0.00223], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.00225, "wall_s": 112.7, "tu_per_s": 13.32, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[start] X_s3_gm03
+[done   115s] {"id": "X_s1_gm03", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.00208], "b_dyn_min_all": -0.00209, "b_dyn_max_all": 0.00012, "wall_s": 114.6, "tu_per_s": 13.09, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[done   115s] {"id": "X_s1_gp03_kick", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [0.00207], "b_dyn_min_all": -0.00012, "b_dyn_max_all": 0.00209, "wall_s": 114.3, "tu_per_s": 13.12, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+[start] X_s3_gp03_kick
+[done   130s] {"id": "X_s2_gp03_noise", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.757], "x_end": [47.49], "area_end": [30.5], "b_core_end": [0.00224], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.00225, "wall_s": 129.2, "tu_per_s": 11.61, "quick": {"v_x_0": -0.001266, "v_y_0": 0.000432, "c_com_med": 0.001418, "v_com_x": -0.001266, "v_com_y": 0.000432}}
+[done   100s] {"id": "X_s3_gm03", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [-0.00466], "b_dyn_min_all": -0.00467, "b_dyn_max_all": 0.0, "wall_s": 97.3, "tu_per_s": 15.41, "quick": {"v_x_0": -0.0, "v_y_0": 0.0, "c_com_med": 0.0, "v_com_x": -0.0, "v_com_y": 0.0}}
+[done   100s] {"id": "X_s3_gp03_kick", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "area_end": [32.25], "b_core_end": [0.00463], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.00464, "wall_s": 96.0, "tu_per_s": 15.62, "quick": {"v_x_0": 0.0, "v_y_0": -0.0, "c_com_med": 0.0, "v_com_x": 0.0, "v_com_y": -0.0}}
+ALL DONE

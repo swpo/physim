@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] G1_writer_gm40_tb1000
+[start] G1_writer_gm100_tb1000
+[start] G1_writer_g0_tb1000
+[start] G1_writer_gm60_tb1000
+[done   130s] mp_end": 2, "ncomp_max": 2, "net_x": [76.969, 77.199], "x_end": [87.23, 102.44], "area_end": [32.75, 32.0], "b_core_end": [-0.00636, -0.0054], "b_dyn_min_all": -0.00638, "b_dyn_max_all": 0.0, "wall_s": 126.1, "tu_per_s": 9.51, "quick": {"v_x_0": 0.05947, "v_y_0": 0.0, "v_x_1": 0.059469, "v_y_1": 0.0, "c_com_med": 0.059448, "v_com_x": 0.05947, "v_com_y": 0.0, "sep_mean": 15.209, "sep_std": 0.0058}}
+[done   130s] _end": 2, "ncomp_max": 2, "net_x": [76.389, 76.593], "x_end": [86.65, 101.83], "area_end": [32.75, 32.75], "b_core_end": [-0.01603, -0.01354], "b_dyn_min_all": -0.0161, "b_dyn_max_all": 0.0, "wall_s": 126.5, "tu_per_s": 9.49, "quick": {"v_x_0": 0.059566, "v_y_0": 0.0, "v_x_1": 0.059562, "v_y_1": 0.0, "c_com_med": 0.059435, "v_com_x": 0.059564, "v_com_y": 0.0, "sep_mean": 15.177, "sep_std": 0.006}}
+[done   130s] mp0": 2, "ncomp_end": 2, "ncomp_max": 2, "net_x": [77.212, 77.461], "x_end": [87.47, 102.7], "area_end": [32.0, 32.75], "b_core_end": [0.0, 0.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "wall_s": 126.6, "tu_per_s": 9.48, "quick": {"v_x_0": 0.059239, "v_y_0": 0.0, "v_x_1": 0.059238, "v_y_1": 0.0, "c_com_med": 0.059252, "v_com_x": 0.059239, "v_com_y": 0.0, "sep_mean": 15.233, "sep_std": 0.0054}}
+[done   130s] p_end": 2, "ncomp_max": 2, "net_x": [76.807, 77.024], "x_end": [87.07, 102.27], "area_end": [32.0, 32.25], "b_core_end": [-0.00956, -0.00806], "b_dyn_min_all": -0.0096, "b_dyn_max_all": 0.0, "wall_s": 126.2, "tu_per_s": 9.51, "quick": {"v_x_0": 0.05954, "v_y_0": 0.0, "v_x_1": 0.059533, "v_y_1": 0.0, "c_com_med": 0.059486, "v_com_x": 0.059536, "v_com_y": 0.0, "sep_mean": 15.198, "sep_std": 0.0058}}
+ALL DONE

@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] P8_damp_T2000
+[done   431s]  2, "net_x": [224.705, 217.825], "x_end": [328.12, 278.07], "area_end": [32.25, 33.0], "b_core_end": [-0.01072, -0.0118], "b_dyn_min_all": -0.01325, "b_dyn_max_all": -8e-05, "wall_s": 426.5, "tu_per_s": 4.69, "quick": {"v_x_0": 0.112341, "v_y_0": -0.006055, "v_x_1": 0.104854, "v_y_1": 0.044001, "c_com_med": 0.110435, "v_com_x": 0.108597, "v_com_y": 0.018973, "sep_mean": 50.866, "sep_std": 0.5529}}
+ALL DONE

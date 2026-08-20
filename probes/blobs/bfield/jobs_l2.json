@@ -1,0 +1,222 @@
+[
+ {
+  "id": "L_g+0.0020_tb200_Db0_T3000",
+  "kind": "launch_curve",
+  "tau": 5.7,
+  "gamma": 0.002,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "L_g+0.0010_tb200_Db0_T6000",
+  "kind": "launch_curve_oneoff",
+  "tau": 5.7,
+  "gamma": 0.001,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 6000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 10.0
+ },
+ {
+  "id": "W_gm1.0_tb200_Db0",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": -1.0,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "W_gp0.25_tb200_Db0",
+  "kind": "window_edge",
+  "tau": 5.7,
+  "gamma": 0.25,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E3_t60_g-0.05_tb100_Db0",
+  "kind": "backreaction",
+  "tau": 6.0,
+  "gamma": -0.05,
+  "tau_b": 100.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E3_t60_g+0.05_tb100_Db0",
+  "kind": "backreaction",
+  "tau": 6.0,
+  "gamma": 0.05,
+  "tau_b": 100.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E3_t60_g-0.05_tb500_Db0",
+  "kind": "backreaction",
+  "tau": 6.0,
+  "gamma": -0.05,
+  "tau_b": 500.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E3_t60_g+0.05_tb500_Db0",
+  "kind": "backreaction",
+  "tau": 6.0,
+  "gamma": 0.05,
+  "tau_b": 500.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "E3_t60_g-0.07_tb200_Db0",
+  "kind": "backreaction",
+  "tau": 6.0,
+  "gamma": -0.07,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1500.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "DX_launch_dx05",
+  "kind": "dx_check",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "DX_launch_dx025",
+  "kind": "dx_check_oneoff",
+  "tau": 5.7,
+  "gamma": 0.05,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 1000.0,
+  "dx": 0.25,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

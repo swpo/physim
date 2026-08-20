@@ -1,0 +1,51 @@
+[
+ {
+  "id": "T5_ramp_g-0.05_tb1000",
+  "kind": "teaser",
+  "tau": 6.0,
+  "gamma": -0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 4000.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 10.0,
+  "snap_times": [
+   3800.0
+  ],
+  "save_state_as": "T5_ramp_final"
+ },
+ {
+  "id": "T5_ramp_g+0.05_tb1000",
+  "kind": "teaser",
+  "tau": 6.0,
+  "gamma": 0.05,
+  "tau_b": 1000.0,
+  "D_b": 0.0,
+  "source": "s2",
+  "T": 4000.0,
+  "blobs": [
+   [
+    30.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 10.0,
+  "snap_times": [
+   3800.0
+  ]
+ }
+]

@@ -1,0 +1,66 @@
+[
+ {
+  "id": "PX_fuse_s3_gm80_d24",
+  "kind": "bf4x_pilot",
+  "tau": 5.7,
+  "gamma": -0.8,
+  "tau_b": 1000.0,
+  "D_b": 2.0,
+  "source": "s3",
+  "T": 3000.0,
+  "blobs": [
+   [
+    36.0,
+    48.0,
+    null
+   ],
+   [
+    60.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "PX_fuse_s3_gm80_single",
+  "kind": "bf4x_pilot_ctrl",
+  "tau": 5.7,
+  "gamma": -0.8,
+  "tau_b": 1000.0,
+  "D_b": 2.0,
+  "source": "s3",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "PX_fuse_s2_gm100_d24",
+  "kind": "bf4x_pilot",
+  "tau": 5.7,
+  "gamma": -1.0,
+  "tau_b": 1000.0,
+  "D_b": 2.0,
+  "source": "s2",
+  "T": 3000.0,
+  "blobs": [
+   [
+    36.0,
+    48.0,
+    null
+   ],
+   [
+    60.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]
