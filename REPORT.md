@@ -1457,3 +1457,23 @@ knife-edged (frustration hypothesis confirmed as a basin property — structural
 symmetry breaking is the fix). First cross-species binding in the program (v is
 the unique sign-changing mediator; w cannot bind — no-go quantified).
 Films: docs/assets/blobs/m7_rotor.gif (audited fresh-seed rotor).
+
+
+## Addendum 35 — BLOBS phase 3: bottom-up equation-space search + top-down factory/genesis
+
+Spatial-dynamics theory (controller): blob existence is subcritical (homoclinic —
+no local criterion suffices) BUT the vacuum's SPATIAL eigenvalues are algebraic and
+predict tail structure: complex mu with wavelength 10.8-10.9px vs measured M4 shell
+spacing 10.9px (1%); the A=tau*Dv invariance is one line in this formalism. This
+yields a G0 funnel (temporal stability / bistability / tail eigenvalues) that
+screens equation-space candidates in microseconds before any simulation.
+Four searchers spawned: l0-sampler (canonical deviation-form genome — vacuum-exact
+by construction, generalizing the iso-line trick structurally; funnel + poke/pair
+assay battery + MAP-Elites archive + yield curves), l0-evolver (merge = block
+composition, to be VALIDATED by reconstructing our own hand-designed vvw/xv
+architecture jumps as single merge operations; mutation = theory-coord jitter),
+blob-factory (fulfillment-center primitives: roller advection, eta(x) unload docks,
+species forks, one glued demo), blob-genesis (close the sawtooth loop: self-written
+landscapes that FUNCTION; self-dug ring racetracks; what grows from noise alone).
+Compute fan-out to rented Prime pods planned after local funnel validation
+(user-authorized). Grounding vision: fulfillment-center world.

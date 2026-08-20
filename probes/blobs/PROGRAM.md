@@ -238,3 +238,22 @@ natural L1 attractor), L3 components carry L2/L1 certificates. Higher levels buy
 exploration speed; reduction buys legitimacy. The two phase-2 tracks are stacked,
 not merged: L2 discovers what is worth wanting, L1 discovers what can be grown,
 and the reduction map is itself a research object.
+
+
+## PHASE 3 (user, 2026-02-19): bottom-up AND top-down in parallel
+Bottom-up (L0, probes/blobs/l0/): equation-space search through the G0 algebraic
+funnel (temporal stability, bistability, spatial-tail eigenvalues — shell spacing
+predicted to 1%) + assay battery; l0-sampler (random + theory-guided) and l0-evolver
+(merge = block composition validated by RECONSTRUCTING our own vvw/xv jumps;
+mutation = theory-coord jitter). Fan-out to rented Prime compute after local
+validation. Learn: density + geography of interesting physics in equation space.
+Top-down (L3->L2->L1 reductions): blob-factory (fulfillment-center primitives:
+roller->cargo advection — rotation as LOCAL drive in rotor-only zones where nothing
+translates; unload via static eta(x) null zones — eta enters like isok, vacuum-exact;
+species fork/sorter; one glued two-mechanism demo) and blob-genesis (close the
+teaser loop: does the self-written sawtooth FUNCTION as a track? does an orbiter
+dig its own ring racetrack? what infrastructure self-organizes from blobs + noise
++ dynamical b alone). Learn: which landscapes/machines are growable (reduction maps).
+Grounding target: the "Amazon fulfillment center" world (conveyor network with
+forks, merges, control arms, rollers) — north star for L3 composition and for L0
+behavior descriptors. Bottom-up and top-down teach different things; run both.
