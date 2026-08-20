@@ -226,3 +226,15 @@ Controller (parent): briefs, audits (fresh seeds + convention-faithful reruns),
 PROCESS-style ledger in this file, user checkpoints with films.
 Searchers: local loops, metric-lock before certification, results.json + SUMMARY.md
 + strips/ in probes/blobs/<name>/, scorecard message to parent when done.
+
+
+## LEVELS DOCTRINE (user, 2026-02-19 — program operating structure)
+L1 field level: everything dynamical incl. b; study what the physics grows.
+L2 background level: hand-written static b; study what landscapes can host.
+L3 molecule level: certified components (bonds/trains/rotors); study composition.
+Rule: higher-level findings must be REDUCIBLE one level down by a learned process —
+L2 landscapes reachable as L1 fixed points (inverse problem; teaser: sawtooth IS a
+natural L1 attractor), L3 components carry L2/L1 certificates. Higher levels buy
+exploration speed; reduction buys legitimacy. The two phase-2 tracks are stacked,
+not merged: L2 discovers what is worth wanting, L1 discovers what can be grown,
+and the reduction map is itself a research object.
