@@ -60,3 +60,29 @@ is replenished. All need probe campaigns before engine work.
 - BLOBS: re-engineer a large CONTINUUM species (A-class) — current A is lattice-stabilized at dx=1, labyrinths at dx=0.5; needed only if a machine wants the 6.8x size contrast (sorting sieves, big-anchor designs). Candidate route: move along iso-line toward deeper k1 with higher Du, or curvature-stabilized annulus species.
 
 - BLOBS phase-2 (user): labyrinth instability as FEATURE — a labyrinth-prone species coupled to dynamical b (deposition/relaxation) as a route to growth/vasculature/territorial phenomenology; 'living systems and space-filling curves'. Revisit after M6 (b-field) characterizes the forward map.
+
+- BLOBS L0 "equation-space search" (user, 2026-02-19 — parallel track, not replacing design):
+  GENOTYPE: dF/dt = D lap F + M(F) with D diagonal, M = linear part L(F-F0) + bounded
+  compositions (tanh-saturated terms); our whole zoo is points in this space (M0=3x3,
+  vvw=5x5, xv=6x6, bfield=4x4 with one tanh edge). Constraints as viability prior:
+  exact uniform vacuum (iso-line trick generalizes: keep F0 a root for all couplings),
+  bounded sources, sane stiffness (IMEX-compatible).
+  PHENOTYPE SCORES: reuse certified gate metrics as the assay battery (seconds-minutes
+  each): vacuum dispersion class (microseconds, linear algebra — demo'd: distinguishes
+  Turing-unstable soup from stable-vacuum blob worlds and detects oscillatory tails),
+  seeded-poke response (die/persist/replicate/travel), pair response (bond/repel/merge
+  + d*), periodicity, multistability, trail memory. NOTE subcriticality: blobs invisible
+  to vacuum linear analysis — seeded probes are mandatory; linear spectrum is only G0.
+  SEARCH: MAP-Elites quality-diversity over behavior descriptors (n_objects, motility
+  class, bond count, period) rather than scalar "interestingness" (Goodhart defense;
+  novelty niches preserved). Merge/crossover has a NATIVE meaning our history already
+  used by hand: block composition (vvw = two M0 blocks sharing w; xv = two M4 blocks +
+  one cross edge) — graft species blocks, share/split mediator channels, add one
+  off-diagonal edge at a time. Mutation = dial jitter on theory coordinates.
+  EIGEN-ANALYSIS: dispersion matrix M(k)=J-k^2 D per candidate = cheap fingerprint
+  (max Re lambda(k), k*, oscillatory?, # sign-changing mediator channels a la v-vs-w).
+  USES: (1) rapid L0 exploration feeding L1+ certification; (2) uniform genome format
+  to compare/diff agent-produced worlds across sessions; (3) screening provenance
+  doctrine already exists (E2 anthropic-screening precedent).
+  STATUS: parked pending user green-light for a pilot searcher (L0-sampler: random +
+  elite-archive over the constrained genotype space, yield curves per behavior cell).
