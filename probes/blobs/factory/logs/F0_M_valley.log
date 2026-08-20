@@ -1,0 +1,2 @@
+{"id": "F0_M_valley", "kind": "F0_valley_resp", "status": "ok", "dt": 0.02, "wall_s": 1425.6, "tu_per_s": 2.1, "T_end": 3000.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 0, "nc2_max": 0, "net1": [15.5], "end1": [[32.25, 48.25]], "area1_end": [31.25], "track_saved": "F0_M_valley"}
+[F0_M_valley] appended as record 34

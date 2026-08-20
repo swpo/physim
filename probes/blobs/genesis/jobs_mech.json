@@ -1,0 +1,53 @@
+[
+ {
+  "id": "FSRAIL_offset_y+6",
+  "kind": "fs_rail",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "T": 2000.0,
+  "blobs": [
+   [
+    43.5,
+    53.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "LV1_uniform-0.019_kick",
+  "kind": "fs_mech",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "uniformB_m019",
+  "T": 1500.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "LV2_uniform-0.019_park",
+  "kind": "fs_mech",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "uniformB_m019",
+  "T": 1000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

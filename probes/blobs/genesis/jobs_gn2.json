@@ -1,0 +1,53 @@
+[
+ {
+  "id": "GN_thresh_sig0.10",
+  "kind": "gn_thresh",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "noise": 0.1,
+  "seed": 9,
+  "T": 500.0,
+  "allow_empty": true,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "GN_thresh_sig0.20",
+  "kind": "gn_thresh",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "noise": 0.2,
+  "seed": 9,
+  "T": 500.0,
+  "allow_empty": true,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "GN_thresh_sig0.50",
+  "kind": "gn_thresh",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "noise": 0.5,
+  "seed": 9,
+  "T": 500.0,
+  "allow_empty": true,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "GN_surv_sig0.10",
+  "kind": "gn_thresh",
+  "tau": 5.7,
+  "gamma": 0.0,
+  "noise": 0.1,
+  "seed": 9,
+  "T": 500.0,
+  "allow_empty": true,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

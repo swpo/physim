@@ -1,0 +1,12 @@
+5 to run (0 already done)
+[start] FS1_cliff_native
+[start] FS5_ctrl_b0
+[start] FS2_ramp_native
+[done    65s] {"id": "FS5_ctrl_b0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.75], "y_end": [47.5], "area_end": [32.0], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.830655, "wall_s": 61.1, "tu_per_s": 16.35, "quick": {"v_x_0": 0.0, "v_y_0": -0.0}}
+[start] FS3_scale7.3_ramp
+[done   130s] {"id": "FS1_cliff_native", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-9.318], "x_end": [39.43], "y_end": [47.75], "area_end": [32.25], "b_dyn_min_all": -0.003778, "b_dyn_max_all": 0.0, "umax_dev_max": 1.83132, "wall_s": 125.7, "tu_per_s": 15.9, "quick": {"v_x_0": 0.005084, "v_y_0": 4e-06}}
+[start] FS4_brake_noise
+[done   215s] {"id": "FS3_scale7.3_ramp", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-151.734], "x_end": [-132.98], "y_end": [47.75], "area_end": [32.25], "b_dyn_min_all": -0.027579, "b_dyn_max_all": 0.0, "umax_dev_max": 1.834816, "wall_s": 210.9, "tu_per_s": 14.23, "quick": {"v_x_0": -0.063017, "v_y_0": 0.0}}
+[done   170s] {"id": "FS4_brake_noise", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-1.652], "x_end": [42.1], "y_end": [47.74], "area_end": [32.25], "b_dyn_min_all": -0.003778, "b_dyn_max_all": 0.0, "umax_dev_max": 1.832042, "wall_s": 167.9, "tu_per_s": 11.91, "quick": {"v_x_0": 0.000852, "v_y_0": 0.000472}}
+[done   476s] {"id": "FS2_ramp_native", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [16.334], "x_end": [41.58], "y_end": [47.75], "area_end": [32.25], "b_dyn_min_all": -0.003778, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831181, "wall_s": 472.5, "tu_per_s": 12.7, "quick": {"v_x_0": -7.1e-05, "v_y_0": 0.0}}
+ALL DONE

@@ -1,0 +1,200 @@
+{
+ "evolver_merge": {
+  "n": 8,
+  "stages": {
+   "assayed": 7,
+   "fail_g0a": 1
+  },
+  "funnel_pass": 7,
+  "assays": 62,
+  "cells_first": [
+   "2|4|1|1|1|persist|persist|repel|robust_static",
+   "2|3|1|1|1|domain|persist|repel|fragile",
+   "3|4|0|1|1|domain|persist|domain|repel|fragile",
+   "3|4|1|1|0|persist|persist|domain|repel|robust_static",
+   "2|6|1|1|1|die|multi|na|na",
+   "3|4|0|1|1|die|domain|persist|approach|fragile",
+   "3|5|2|1|1|domain|persist|persist|repel|fragile"
+  ],
+  "alive_cells_first": [
+   "2|4|1|1|1|persist|persist|repel|robust_static",
+   "3|4|1|1|0|persist|persist|domain|repel|robust_static"
+  ],
+  "cells_per100": 11.290322580645162,
+  "alive_per100": 3.225806451612903,
+  "ops": {
+   "merge_slow_tanh": 2,
+   "merge_cross_edge": 3,
+   "merge_share_chan": 3
+  },
+  "cross": {
+   "replicate": 2,
+   "repel": 1
+  },
+  "cells_sampler_never_touched": [
+   "2|4|1|1|1|persist|persist|repel|robust_static",
+   "2|3|1|1|1|domain|persist|repel|fragile",
+   "3|4|0|1|1|domain|persist|domain|repel|fragile",
+   "3|4|1|1|0|persist|persist|domain|repel|robust_static",
+   "2|6|1|1|1|die|multi|na|na",
+   "3|4|0|1|1|die|domain|persist|approach|fragile",
+   "3|5|2|1|1|domain|persist|persist|repel|fragile"
+  ]
+ },
+ "evolver_mutate": {
+  "n": 2,
+  "stages": {
+   "assayed": 2
+  },
+  "funnel_pass": 2,
+  "assays": 15,
+  "cells_first": [
+   "1|2|0|1|1|persist|bond|robust_static",
+   "1|2|1|1|1|persist|repel|robust_static"
+  ],
+  "alive_cells_first": [
+   "1|2|0|1|1|persist|bond|robust_static",
+   "1|2|1|1|1|persist|repel|robust_static"
+  ],
+  "cells_per100": 13.333333333333334,
+  "alive_per100": 13.333333333333334,
+  "ops": {
+   "mutate": 2
+  },
+  "cross": {},
+  "cells_sampler_never_touched": [
+   "1|2|1|1|1|persist|repel|robust_static"
+  ]
+ },
+ "sampler_jitter": {
+  "n": 107,
+  "stages": {
+   "fail_g0b": 22,
+   "assayed": 79,
+   "fail_g0a": 6
+  },
+  "funnel_pass": 79,
+  "assays": 373,
+  "cells_first": [
+   "1|2|0|1|1|die|na|na",
+   "1|2|0|1|1|replicate|na|na",
+   "1|2|1|1|1|die|na|na",
+   "2|4|0|1|1|replicate|replicate|na|na",
+   "1|2|0|1|1|persist|bond|fragile",
+   "1|2|0|1|1|persist|replicate|fragile",
+   "2|3|0|1|0|die|travel|bond|onset",
+   "2|4|0|1|1|die|die|na|na",
+   "1|2|0|1|1|persist|repel|robust_static",
+   "1|2|1|1|1|multi|na|na",
+   "1|2|0|1|1|persist|replicate|robust_static",
+   "2|3|0|1|0|domain|persist|repel|fragile",
+   "2|3|0|1|1|persist|persist|repel|robust_static",
+   "2|3|0|1|0|persist|persist|repel|robust_static",
+   "1|2|1|1|1|replicate|na|na",
+   "2|4|0|1|1|domain|persist|bond|fragile",
+   "2|3|0|1|0|domain|die|na|na",
+   "2|3|0|1|1|persist|die|repel|robust_static",
+   "1|2|1|1|1|persist|approach|robust_static",
+   "2|4|0|1|1|die|persist|bond|fragile",
+   "1|2|1|1|1|persist|replicate|robust_static",
+   "2|3|0|1|0|persist|die|repel|robust_static",
+   "2|4|0|1|1|persist|persist|replicate|robust_static",
+   "2|3|0|1|0|die|persist|repel|fragile",
+   "1|2|0|1|1|persist|die|fragile",
+   "2|3|0|1|0|persist|domain|repel|robust_static",
+   "2|4|0|1|1|domain|persist|repel|fragile",
+   "2|3|0|1|0|domain|domain|na|na",
+   "1|2|1|1|1|persist|bond|fragile",
+   "1|2|1|1|1|persist|replicate|fragile",
+   "2|4|0|1|1|persist|replicate|approach|robust_static",
+   "2|4|0|1|1|persist|die|replicate|robust_static",
+   "1|2|0|1|1|domain|na|na",
+   "2|4|0|1|1|multi|persist|bond|fragile"
+  ],
+  "alive_cells_first": [
+   "1|2|0|1|1|persist|bond|fragile",
+   "1|2|0|1|1|persist|replicate|fragile",
+   "1|2|0|1|1|persist|repel|robust_static",
+   "1|2|0|1|1|persist|replicate|robust_static",
+   "2|3|0|1|1|persist|persist|repel|robust_static",
+   "2|3|0|1|0|persist|persist|repel|robust_static",
+   "2|3|0|1|1|persist|die|repel|robust_static",
+   "1|2|1|1|1|persist|approach|robust_static",
+   "1|2|1|1|1|persist|replicate|robust_static",
+   "2|3|0|1|0|persist|die|repel|robust_static",
+   "2|4|0|1|1|persist|persist|replicate|robust_static",
+   "1|2|0|1|1|persist|die|fragile",
+   "2|3|0|1|0|persist|domain|repel|robust_static",
+   "1|2|1|1|1|persist|bond|fragile",
+   "1|2|1|1|1|persist|replicate|fragile",
+   "2|4|0|1|1|persist|replicate|approach|robust_static",
+   "2|4|0|1|1|persist|die|replicate|robust_static"
+  ],
+  "cells_per100": 9.115281501340483,
+  "alive_per100": 4.557640750670242,
+  "ops": {},
+  "cross": {}
+ },
+ "sampler_uniform": {
+  "n": 114,
+  "stages": {
+   "fail_g0b": 18,
+   "assayed": 96
+  },
+  "funnel_pass": 96,
+  "assays": 168,
+  "cells_first": [
+   "1|3|0|0|0|die|na|na",
+   "2|3|0|1|0|die|die|na|na",
+   "1|2|0|0|0|die|na|na",
+   "1|2|1|1|0|die|na|na",
+   "1|3|0|1|0|die|na|na",
+   "1|1|1|0|0|die|na|na",
+   "1|3|0|1|1|die|na|na",
+   "1|2|0|1|0|die|na|na",
+   "1|1|1|1|1|die|na|na",
+   "1|1|1|0|0|travel|merge|already",
+   "2|2|0|1|0|die|die|na|na",
+   "1|3|0|0|0|travel|merge|already",
+   "1|4|0|1|0|die|na|na",
+   "2|2|1|0|0|die|die|na|na",
+   "1|3|0|0|0|domain|na|na",
+   "1|3|0|1|0|domain|na|na",
+   "2|2|2|1|0|die|die|na|na",
+   "2|2|0|0|0|die|die|na|na",
+   "2|2|0|0|0|domain|die|na|na",
+   "1|2|1|0|0|domain|na|na",
+   "2|3|0|1|1|die|domain|na|na",
+   "2|2|0|1|0|die|domain|na|na",
+   "1|2|1|0|0|die|na|na",
+   "2|1|1|0|0|domain|die|na|na",
+   "2|3|1|0|0|die|domain|na|na",
+   "1|1|2|1|0|persist|merge|robust_static",
+   "1|2|2|0|0|domain|na|na",
+   "1|3|1|0|0|die|na|na",
+   "1|1|2|0|0|die|na|na",
+   "2|4|0|1|0|domain|domain|na|na",
+   "2|3|0|1|0|die|domain|na|na",
+   "1|4|0|0|0|die|na|na",
+   "2|2|1|0|0|domain|domain|na|na",
+   "2|3|1|0|0|domain|die|na|na",
+   "2|1|1|0|0|die|die|na|na",
+   "2|2|2|0|0|die|domain|na|na",
+   "1|1|1|0|0|domain|na|na",
+   "2|3|0|0|0|die|domain|na|na",
+   "1|2|1|0|0|persist|bond|fragile",
+   "1|4|0|0|0|domain|na|na",
+   "2|2|0|0|0|die|domain|na|na"
+  ],
+  "alive_cells_first": [
+   "1|1|1|0|0|travel|merge|already",
+   "1|3|0|0|0|travel|merge|already",
+   "1|1|2|1|0|persist|merge|robust_static",
+   "1|2|1|0|0|persist|bond|fragile"
+  ],
+  "cells_per100": 24.404761904761905,
+  "alive_per100": 2.380952380952381,
+  "ops": {},
+  "cross": {}
+ }
+}

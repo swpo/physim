@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] HS1_hand_ramp
+[start] HS2_hand_cliff
+[start] HS3_hand_brake
+[done   420s] {"id": "HS1_hand_ramp", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-14.049], "x_end": [34.2], "y_end": [47.75], "area_end": [32.75], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831461, "wall_s": 416.6, "tu_per_s": 4.8, "quick": {"v_x_0": 0.000591, "v_y_0": -0.0}}
+[done   420s] {"id": "HS2_hand_cliff", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [5.965], "x_end": [66.21], "y_end": [47.75], "area_end": [32.75], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.832194, "wall_s": 415.1, "tu_per_s": 4.82, "quick": {"v_x_0": 0.000539, "v_y_0": -0.0}}
+[done   486s] {"id": "HS3_hand_brake", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.331], "x_end": [34.22], "y_end": [46.39], "area_end": [32.5], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.83167, "wall_s": 484.7, "tu_per_s": 4.13, "quick": {"v_x_0": -1.1e-05, "v_y_0": -1.7e-05}}
+ALL DONE

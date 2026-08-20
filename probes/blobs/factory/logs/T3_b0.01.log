@@ -1,0 +1,2 @@
+{"id": "T3_b0.01", "kind": "T3_speeddial", "status": "ok", "dt": 0.02, "wall_s": 297.8, "tu_per_s": 2.69, "T_end": 800.0, "nc1_end": 2, "nc1_max": 2, "nc2_end": 0, "nc2_max": 0, "pairs": {"pair": {"sep_mean": 15.264, "sep_std": 0.0046, "sep_end": 15.262, "omega_last": 0.0, "rev_total": -0.0, "c_com_last": 0.041009, "sep0": 15.24, "sep_min": 15.179, "sep_max": 15.274}}, "net1": [35.76, 35.78], "end1": [[47.75, 45.42], [47.75, 60.68]], "area1_end": [31.5, 32.75], "track_saved": "T3_b0.01"}
+[T3_b0.01] appended as record 49

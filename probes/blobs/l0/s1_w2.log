@@ -1,0 +1,6 @@
+s1_uni_1100 fail_g0b  0.0s
+s1_jit_1101 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 1.98s
+s1_uni_1102 assayed ['1', '1', '1', '0', '0', 'die', 'na', 'na'] 2.18s
+s1_jit_1103 fail_g0b  0.0s
+s1_uni_1104 assayed ['1', '1', '1', '0', '0', 'travel', 'merge', 'already'] 336.0s
+s1_jit_1105 assayed ['1', '2', '1', '1', '1', 'die', 'na', 'na'] 4.26s

@@ -1,0 +1,81 @@
+[
+ {
+  "id": "RS2a_orbit_t60_native",
+  "kind": "rs_orbit",
+  "tau": 6.0,
+  "freeze_b": true,
+  "init_from": "RS1_end",
+  "vacuum_blob_sector": true,
+  "add_blobs": [
+   [
+    60.42444141161108,
+    47.82416692134481,
+    [
+     90.0,
+     0.5
+    ]
+   ]
+  ],
+  "T": 2500.0,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "RS2b_orbit_ctrl_b0",
+  "kind": "rs_orbit",
+  "tau": 6.0,
+  "freeze_b": true,
+  "init_from": "RS1_end",
+  "vacuum_blob_sector": true,
+  "b_scale": 0.0,
+  "add_blobs": [
+   [
+    60.42444141161108,
+    47.82416692134481,
+    [
+     90.0,
+     0.5
+    ]
+   ]
+  ],
+  "T": 1200.0,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "RS2c_park_t57_ring",
+  "kind": "rs_orbit",
+  "tau": 5.7,
+  "freeze_b": true,
+  "init_from": "RS1_end",
+  "vacuum_blob_sector": true,
+  "add_blobs": [
+   [
+    60.42444141161108,
+    47.82416692134481,
+    null
+   ]
+  ],
+  "T": 3000.0,
+  "rec_tu": 5.0
+ },
+ {
+  "id": "RS2d_orbit_t60_scale4",
+  "kind": "rs_orbit",
+  "tau": 6.0,
+  "freeze_b": true,
+  "init_from": "RS1_end",
+  "vacuum_blob_sector": true,
+  "b_scale": 4.0,
+  "add_blobs": [
+   [
+    60.42444141161108,
+    47.82416692134481,
+    [
+     90.0,
+     0.5
+    ]
+   ]
+  ],
+  "T": 2500.0,
+  "rec_tu": 5.0
+ }
+]

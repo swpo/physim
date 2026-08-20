@@ -1,0 +1,2 @@
+{"id": "C1_t5.7", "kind": "C1_tractor_rail", "status": "ok", "dt": 0.02, "wall_s": 2511.2, "tu_per_s": 1.19, "T_end": 3000.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "pairs": {"MS": {"sep_mean": 8.024, "sep_std": 0.3875, "sep_end": 7.686, "omega_last": -0.005355, "rev_total": -0.108, "c_com_last": 0.022903, "sep0": 8.0, "sep_min": 6.506, "sep_max": 8.86}}, "net1": [5.33], "end1": [[53.07, 40.58]], "area1_end": [33.25], "net2": [1.75], "end2": [[48.26, 46.58]], "area2_end": [32.75], "track_saved": "C1_t5.7"}
+[C1_t5.7] appended as record 19

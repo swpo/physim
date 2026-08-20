@@ -257,3 +257,25 @@ dig its own ring racetrack? what infrastructure self-organizes from blobs + nois
 Grounding target: the "Amazon fulfillment center" world (conveyor network with
 forks, merges, control arms, rollers) — north star for L3 composition and for L0
 behavior descriptors. Bottom-up and top-down teach different things; run both.
+
+
+### blob-genesis — DONE (scorecard + controller audit 2026-02-20)
+REDUCTION MAP (L2 features growable at L1?): tooth YES (functions native: parks
++ brakes; audit: fresh noisy park slid 16.9px to trough, stopped, 0.6px residual);
+ramp YES (trail law); rail YES and FREE (groove transverse profile self-rails,
+FWHM 5.5px — hand-built world needed a separate chan term); ring YES (rotor writes
+closed ring r=8.4 depth .0055 closure .62 at g=-0.05 tb=1000; deeper rings must be
+dug slowly — greedy g self-traps into C-arcs); dock YES (trough=brake); racetrack
+conveyor YES at 4x amplitude (SHAPE-ONLY label; audit: fresh immobile blob parked
+on frozen ring at NEW angle self-launched into 5.7-rev orbit r=8.45 omega=.0091);
+BLOB-FROM-NOISE NO (theory-backed null: vacuum-exact coupling is quadratic in
+deviations -> gamma cannot destabilize vacuum; nucleation window sigma>(0.2..0.5]
+lands directly in 54-comp soup while blob-death is 0.09 — no trails-beget-blobs
+channel in this coupling class).
+KEY NEW LAWS: chi=v/slope 10-40x better for self-written (near-onset response
+sublinear in slope — hand tracks WASTE slope); amplitude ladder park->mush->
+circulate->diode (boundary in (2,4)x native); speed-matching rule (guide depth must
+scale with traveler momentum); one-way DIODE at machine amplitude (kicked against
+tooth: reverses).
+M5 landscape CONFIRMED a natural L1 fixed-point family; the single exogenous step
+in the reduction is the FREEZE itself (gamma->0 limit). Films shipped.

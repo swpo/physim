@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] RS3c_ctrl_b0
+[done   561s] {"id": "RS3c_ctrl_b0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.002], "x_end": [60.67], "y_end": [98.34], "area_end": [32.0], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.835064, "wall_s": 556.6, "tu_per_s": 2.69, "quick": {"v_x_0": 3e-06, "v_y_0": 0.022432}}
+ALL DONE

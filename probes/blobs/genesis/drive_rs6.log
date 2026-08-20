@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] RS6_write_g-0.15_tb1000
+[done  1462s] b1000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [13.08], "x_end": [57.33], "y_end": [57.57], "area_end": [33.75], "b_dyn_min_all": -0.032521, "b_dyn_max_all": 0.0, "umax_dev_max": 1.84426, "ncomp2_end": 1, "s2_net_x": [0.561], "wall_s": 1460.1, "tu_per_s": 2.74, "quick": {"v_x_0": 0.057581, "v_y_0": 0.043453}, "s2_quick": {"s2_v_x_0": 0.002023, "s2_v_y_0": -0.002158}}
+ALL DONE

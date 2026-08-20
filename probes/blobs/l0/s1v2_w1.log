@@ -1,0 +1,9 @@
+s1v2_uni_2050 fail_g0b  0.01s
+s1v2_jit_2051 fail_g0b  0.0s
+s1v2_uni_2052 assayed ['1', '3', '0', '0', '0', 'die', 'na', 'na'] 6.45s
+s1v2_jit_2053 fail_g0b  0.0s
+s1v2_uni_2054 assayed ['1', '3', '0', '1', '0', 'domain', 'na', 'na'] 121.84s
+s1v2_jit_2055 fail_g0b  0.0s
+s1v2_uni_2056 assayed ['2', '3', '0', '1', '1', 'die|domain', 'na', 'na'] 167.11s
+s1v2_jit_2057 assayed ['2', '4', '0', '1', '1', 'die|die', 'na', 'na'] 29.37s
+s1v2_uni_2058 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 4.5s

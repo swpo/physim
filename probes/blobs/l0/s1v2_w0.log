@@ -1,0 +1,11 @@
+s1v2_uni_2000 assayed ['1', '3', '0', '0', '0', 'domain', 'na', 'na'] 120.97s
+s1v2_jit_2001 fail_g0a  0.0s
+s1v2_uni_2002 assayed ['2', '2', '2', '1', '0', 'die|die', 'na', 'na'] 24.76s
+s1v2_jit_2003 fail_g0b  0.0s
+s1v2_uni_2004 assayed ['2', '2', '0', '0', '0', 'die|die', 'na', 'na'] 15.42s
+s1v2_jit_2005 fail_g0b  0.0s
+s1v2_uni_2006 assayed ['2', '2', '1', '0', '0', 'die|die', 'na', 'na'] 20.3s
+s1v2_jit_2007 fail_g0b  0.0s
+s1v2_uni_2008 fail_g0b  0.01s
+s1v2_jit_2009 fail_g0a  0.03s
+s1v2_uni_2010 assayed ['1', '3', '0', '0', '0', 'die', 'na', 'na'] 5.86s

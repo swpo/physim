@@ -1,0 +1,2 @@
+{"id": "SMOKE_etafield_const", "kind": "smoke", "status": "ok", "dt": 0.02, "wall_s": 423.6, "tu_per_s": 4.25, "T_end": 1800.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "rotor": {"cls": "rotor", "omega_last": -0.011063, "sep_mean": 8.439176, "sep_std": 0.003877, "steady_rel": 9.6e-05, "t_lock": 100.0, "revs_locked": 3.00287, "S_net": 0.010294, "S_rms": 0.378651, "orbit_R": 8.439176}, "net1": [10.87], "end1": [[56.38, 50.85]], "area1_end": [33.0], "net2": [0.39], "end2": [[48.01, 51.95]], "area2_end": [32.75]}
+[SMOKE_etafield_const] appended as record 2

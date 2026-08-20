@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] RS4_write_g-0.30_tb1000
+[done  2383s] 0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [14.519], "x_end": [58.77], "y_end": [52.26], "area_end": [34.25], "b_dyn_min_all": -0.077529, "b_dyn_max_all": 0.0, "umax_dev_max": 1.848926, "ncomp2_end": 1, "s2_net_x": [-2.099], "wall_s": 2378.2, "tu_per_s": 1.68, "quick": {"v_x_0": 0.043872, "v_y_0": 0.056319}, "s2_quick": {"s2_v_x_0": -0.001483, "s2_v_y_0": -0.000164}}
+ALL DONE

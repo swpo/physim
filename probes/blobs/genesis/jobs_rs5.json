@@ -1,0 +1,23 @@
+[
+ {
+  "id": "RS3c_ctrl_b0",
+  "kind": "rs_orbit",
+  "tau": 5.76,
+  "freeze_b": true,
+  "init_from": "RS1_end",
+  "vacuum_blob_sector": true,
+  "b_scale": 0.0,
+  "add_blobs": [
+   [
+    60.42444141161108,
+    47.82416692134481,
+    [
+     90.0,
+     0.3
+    ]
+   ]
+  ],
+  "T": 1500.0,
+  "rec_tu": 5.0
+ }
+]

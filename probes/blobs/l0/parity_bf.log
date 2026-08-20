@@ -1,0 +1,2 @@
+{"gate": "P-BF0", "passed": true, "c": 5.2014722623456534e-12, "status": "ok", "ncomp_end": 1, "wall_s": 145.9, "tu_per_s": 2.74, "kind": "parity"}
+{"gate": "P-BF5", "passed": false, "c": 1.5894735394554979e-12, "status": "ok", "ncomp_end": 1, "wall_s": 288.0, "tu_per_s": 2.78, "kind": "parity"}

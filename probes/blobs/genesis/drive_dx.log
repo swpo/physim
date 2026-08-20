@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] FS1_dx025_refine
+[done  1367s] {"id": "FS1_dx025_refine", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-11.707], "x_end": [37.04], "y_end": [47.73], "area_end": [32.06], "b_dyn_min_all": -0.003774, "b_dyn_max_all": 8.2e-05, "umax_dev_max": 1.832163, "wall_s": 1362.3, "tu_per_s": 0.59, "quick": {"v_x_0": -0.010317, "v_y_0": 3.9e-05}}
+ALL DONE

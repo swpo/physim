@@ -1,0 +1,6 @@
+2 to run (0 already done)
+[start] FSR_ratchet_kick+x_scale7.3
+[done   856s] {"id": "FSR_ratchet_kick+x_scale7.3", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-50.412], "x_end": [19.84], "y_end": [47.75], "area_end": [32.75], "b_dyn_min_all": -0.027579, "b_dyn_max_all": 0.0, "umax_dev_max": 1.842215, "wall_s": 852.5, "tu_per_s": 2.93, "quick": {"v_x_0": -0.098438, "v_y_0": 0.0}}
+[start] FSR_park_x80_scale7.3
+[done   856s] {"id": "FSR_park_x80_scale7.3", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-41.742], "x_end": [38.51], "y_end": [47.75], "area_end": [33.0], "b_dyn_min_all": -0.027579, "b_dyn_max_all": 0.0, "umax_dev_max": 1.834465, "wall_s": 851.7, "tu_per_s": 2.94, "quick": {"v_x_0": -0.070132, "v_y_0": -0.0}}
+ALL DONE

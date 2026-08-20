@@ -1,0 +1,22 @@
+10 to run (0 already done)
+[start] GN_ctrl_g0_sig0.02
+[start] GN_ctrl_g0_sig0.05
+[start] GN_s2_g-0.5_sig0.01
+[done   706s] {"id": "GN_ctrl_g0_sig0.02", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 0.025965, "wall_s": 703.1, "tu_per_s": 2.84}
+[done   706s] {"id": "GN_ctrl_g0_sig0.05", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 0.065935, "wall_s": 703.0, "tu_per_s": 2.85}
+[start] GN_s1_g-0.5_sig2e-3
+[start] GN_s1_g-0.5_sig0.02
+[done  1106s] {"id": "GN_s2_g-0.5_sig0.01", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 0.013671, "wall_s": 1102.1, "tu_per_s": 2.72}
+[start] GN_s1_g-1.2_sig0.01
+[done  1206s] {"id": "GN_s1_g-0.5_sig2e-3", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -7.5e-05, "b_dyn_max_all": 7.1e-05, "umax_dev_max": 0.002578, "wall_s": 1202.1, "tu_per_s": 2.5}
+[done  1206s] {"id": "GN_s1_g-0.5_sig0.02", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.000761, "b_dyn_max_all": 0.000694, "umax_dev_max": 0.026023, "wall_s": 1200.7, "tu_per_s": 2.5}
+[start] GN_s1_g-2.0_sig0.01_Db0.5
+[start] GN_s1_g+0.25_sig0.01
+[done  1211s] {"id": "GN_s1_g-1.2_sig0.01", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.000873, "b_dyn_max_all": 0.000874, "umax_dev_max": 0.014774, "wall_s": 1207.5, "tu_per_s": 2.48}
+[start] GN_s1_g-0.5_tb50_sig0.02
+[done   751s] {"id": "GN_s1_g+0.25_sig0.01", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.000187, "b_dyn_max_all": 0.00019, "umax_dev_max": 0.013081, "wall_s": 748.1, "tu_per_s": 2.67}
+[start] GN_s3_g-0.5_sig0.02
+[done   871s] {"id": "GN_s1_g-2.0_sig0.01_Db0.5", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.000222, "b_dyn_max_all": 0.000173, "umax_dev_max": 0.013748, "wall_s": 867.4, "tu_per_s": 2.31}
+[done   761s] {"id": "GN_s1_g-0.5_tb50_sig0.02", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.001516, "b_dyn_max_all": 0.001605, "umax_dev_max": 0.027604, "wall_s": 758.8, "tu_per_s": 2.64}
+[done   981s] {"id": "GN_s3_g-0.5_sig0.02", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.000152, "b_dyn_max_all": 7e-05, "umax_dev_max": 0.027013, "wall_s": 975.6, "tu_per_s": 2.05}
+ALL DONE

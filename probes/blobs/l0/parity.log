@@ -1,0 +1,33 @@
+{"gate": "P-M0", "passed": true, "status": "ok", "area_end": 28.0, "ncomp_max": 1, "wall_s": 245.2, "tu_per_s": 8.16, "kind": "parity"}
+{"gate": "P-XV", "passed": true, "omega": 0.011062166944064193, "sep_mean": 8.437140103283243, "status": "ok", "wall_s": 385.0, "tu_per_s": 3.9, "kind": "parity"}
+{"gate": "P-VVW-B", "passed": true, "status": "ok", "area_end": 30.0, "ncomp_max": 1, "wall_s": 236.7, "tu_per_s": 4.22, "kind": "parity"}
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/queues.py", line 262, in _feed
+    obj = _ForkingPickler.dumps(obj)
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+_pickle.PicklingError: Can't pickle <function <lambda> at 0x108c5ae80>: attribute lookup <lambda> on __main__ failed
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/parity.py", line 137, in <module>
+    main()
+    ~~~~^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/parity.py", line 130, in main
+    rec = fu.result()
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/queues.py", line 262, in _feed
+    obj = _ForkingPickler.dumps(obj)
+  File "/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+_pickle.PicklingError: Can't pickle <function <lambda> at 0x108c5ae80>: attribute lookup <lambda> on __main__ failed

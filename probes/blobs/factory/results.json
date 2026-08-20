@@ -1,0 +1,5879 @@
+[
+ {
+  "id": "SMOKE_rotor_anchor",
+  "kind": "smoke",
+  "job": {
+   "id": "SMOKE_rotor_anchor",
+   "kind": "smoke",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 1800,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "rotor_verdict": true,
+   "blobs1": [
+    [
+     44.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ]
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 423.2,
+  "tu_per_s": 4.25,
+  "T_end": 1800.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "rotor": {
+   "cls": "rotor",
+   "omega_last": -0.011063,
+   "sep_mean": 8.439176,
+   "sep_std": 0.003877,
+   "steady_rel": 9.6e-05,
+   "t_lock": 100.0,
+   "revs_locked": 3.00287,
+   "S_net": 0.010294,
+   "S_rms": 0.378651,
+   "orbit_R": 8.439176
+  },
+  "net1": [
+   10.87
+  ],
+  "end1": [
+   [
+    56.38,
+    50.85
+   ]
+  ],
+  "area1_end": [
+   33.0
+  ],
+  "net2": [
+   0.39
+  ],
+  "end2": [
+   [
+    48.01,
+    51.95
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "ts": "2026-08-20 16:35:16"
+ },
+ {
+  "id": "SMOKE_etafield_const",
+  "kind": "smoke",
+  "job": {
+   "id": "SMOKE_etafield_const",
+   "kind": "smoke",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": {
+    "kind": "const",
+    "eta0": 0.1
+   },
+   "eta21": {
+    "kind": "const",
+    "eta0": 0.1
+   },
+   "T": 1800,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "rotor_verdict": true,
+   "blobs1": [
+    [
+     44.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ]
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 423.6,
+  "tu_per_s": 4.25,
+  "T_end": 1800.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "rotor": {
+   "cls": "rotor",
+   "omega_last": -0.011063,
+   "sep_mean": 8.439176,
+   "sep_std": 0.003877,
+   "steady_rel": 9.6e-05,
+   "t_lock": 100.0,
+   "revs_locked": 3.00287,
+   "S_net": 0.010294,
+   "S_rms": 0.378651,
+   "orbit_R": 8.439176
+  },
+  "net1": [
+   10.87
+  ],
+  "end1": [
+   [
+    56.38,
+    50.85
+   ]
+  ],
+  "area1_end": [
+   33.0
+  ],
+  "net2": [
+   0.39
+  ],
+  "end2": [
+   [
+    48.01,
+    51.95
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "ts": "2026-08-20 16:35:16"
+ },
+ {
+  "id": "D0_push_e0.1",
+  "kind": "D0_tow",
+  "job": {
+   "kind": "D0_tow",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     45.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "id": "D0_push_e0.1",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     53.4,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "D0_push_e01"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 78.9,
+  "tu_per_s": 1.52,
+  "T_end": 120.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "frontM_cargo": {
+    "sep_mean": 4.474,
+    "sep_std": 1.2674,
+    "sep_end": 6.134,
+    "omega_last": -0.002157,
+    "rev_total": -0.186,
+    "c_com_last": 0.085543,
+    "sep0": 8.008,
+    "sep_min": 2.787,
+    "sep_max": 8.008
+   },
+   "pair": {
+    "sep_mean": 15.031,
+    "sep_std": 0.175,
+    "sep_end": 15.219,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.089698,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   12.71,
+   12.55
+  ],
+  "end1": [
+   [
+    47.75,
+    42.97
+   ],
+   [
+    47.75,
+    58.19
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.25
+  ],
+  "net2": [
+   8.95
+  ],
+  "end2": [
+   [
+    42.11,
+    60.59
+   ]
+  ],
+  "area2_end": [
+   25.0
+  ],
+  "track_saved": "D0_push_e01",
+  "ts": "2026-08-20 16:41:56"
+ },
+ {
+  "id": "D0_mid_e0.1",
+  "kind": "D0_tow",
+  "job": {
+   "kind": "D0_tow",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     45.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "id": "D0_mid_e0.1",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     37.7,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "D0_mid_e01"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 81.7,
+  "tu_per_s": 1.53,
+  "T_end": 125.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 4.54,
+    "sep_std": 1.0425,
+    "sep_end": 6.388,
+    "omega_last": -0.001858,
+    "rev_total": -0.173,
+    "c_com_last": 0.09059,
+    "sep0": 7.694,
+    "sep_min": 3.346,
+    "sep_max": 7.694
+   },
+   "frontM_cargo": {
+    "sep_mean": 10.678,
+    "sep_std": 1.0458,
+    "sep_end": 13.506,
+    "omega_last": 0.000739,
+    "rev_total": 0.069,
+    "c_com_last": 0.091064,
+    "sep0": 7.686,
+    "sep_min": 7.686,
+    "sep_max": 13.506
+   },
+   "pair": {
+    "sep_mean": 15.038,
+    "sep_std": 0.1761,
+    "sep_end": 15.236,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.087805,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   13.04,
+   12.9
+  ],
+  "end1": [
+   [
+    47.75,
+    43.3
+   ],
+   [
+    47.75,
+    58.54
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.5
+  ],
+  "net2": [
+   10.06
+  ],
+  "end2": [
+   [
+    42.09,
+    46.27
+   ]
+  ],
+  "area2_end": [
+   26.0
+  ],
+  "track_saved": "D0_mid_e01",
+  "ts": "2026-08-20 16:41:59"
+ },
+ {
+  "id": "D0_trail_e0.1",
+  "kind": "D0_tow",
+  "job": {
+   "kind": "D0_tow",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     45.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "id": "D0_trail_e0.1",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     22.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "D0_trail_e01"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 598.1,
+  "tu_per_s": 1.86,
+  "T_end": 1115.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 70.844,
+    "sep_std": 4.5151,
+    "sep_end": 77.303,
+    "omega_last": 2.4e-05,
+    "rev_total": 0.012,
+    "c_com_last": 0.03074,
+    "sep0": 8.008,
+    "sep_min": 8.008,
+    "sep_max": 77.303
+   },
+   "frontM_cargo": {
+    "sep_mean": 86.076,
+    "sep_std": 4.5141,
+    "sep_end": 92.492,
+    "omega_last": 2e-05,
+    "rev_total": 0.01,
+    "c_com_last": 0.030294,
+    "sep0": 23.388,
+    "sep_min": 23.388,
+    "sep_max": 92.492
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0054,
+    "sep_end": 15.225,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059257,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   72.61,
+   72.45
+  ],
+  "end1": [
+   [
+    47.75,
+    102.86
+   ],
+   [
+    47.75,
+    118.09
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   6.82
+  ],
+  "end2": [
+   [
+    41.91,
+    25.78
+   ]
+  ],
+  "area2_end": [
+   26.75
+  ],
+  "track_saved": "D0_trail_e01",
+  "ts": "2026-08-20 16:50:35"
+ },
+ {
+  "id": "R1_d15_noM",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ]
+   ],
+   "id": "R1_d15_noM",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d15_noM"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2401.8,
+  "tu_per_s": 1.46,
+  "T_end": 3500.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 14.982,
+   "r_end": 15.443,
+   "r_min": 14.977,
+   "r_max": 15.443,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "anch_cargo": {
+    "sep_mean": 15.443,
+    "sep_std": 0.0,
+    "sep_end": 15.443,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 14.982,
+    "sep_min": 14.977,
+    "sep_max": 15.443
+   }
+  },
+  "net2": [
+   0.23,
+   0.23
+  ],
+  "end2": [
+   [
+    47.75,
+    48.03
+   ],
+   [
+    47.75,
+    63.47
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.0
+  ],
+  "track_saved": "R1_d15_noM",
+  "ts": "2026-08-20 17:18:32"
+ },
+ {
+  "id": "R1_d10",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R1_d10",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     58.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d10"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2402.0,
+  "tu_per_s": 1.46,
+  "T_end": 3500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 10.247,
+   "r_end": 14.499,
+   "r_min": 10.247,
+   "r_max": 15.52,
+   "dphi_net": -0.0478,
+   "arc_net": -0.707,
+   "omega_last": 0.0,
+   "vtan_last": 0.0,
+   "omega_all": -4e-06,
+   "vtan_all": -6e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.746,
+    "sep_std": 0.9668,
+    "sep_end": 8.245,
+    "omega_last": 0.003581,
+    "rev_total": 0.071,
+    "c_com_last": 0.043133,
+    "sep0": 18.124,
+    "sep_min": 7.188,
+    "sep_max": 20.628
+   },
+   "anch_cargo": {
+    "sep_mean": 14.808,
+    "sep_std": 0.2947,
+    "sep_end": 14.499,
+    "omega_last": 1e-06,
+    "rev_total": -0.008,
+    "c_com_last": 0.003167,
+    "sep0": 10.247,
+    "sep_min": 10.247,
+    "sep_max": 15.52
+   },
+   "M_anch": {
+    "sep_mean": 8.748,
+    "sep_std": 0.9656,
+    "sep_end": 8.243,
+    "omega_last": -0.003579,
+    "rev_total": -0.587,
+    "c_com_last": 0.043012,
+    "sep0": 7.876,
+    "sep_min": 7.41,
+    "sep_max": 10.256
+   }
+  },
+  "net1": [
+   13.57
+  ],
+  "end1": [
+   [
+    43.53,
+    53.15
+   ]
+  ],
+  "area1_end": [
+   33.25
+  ],
+  "net2": [
+   2.03,
+   2.3
+  ],
+  "end2": [
+   [
+    47.8,
+    46.1
+   ],
+   [
+    47.1,
+    60.58
+   ]
+  ],
+  "area2_end": [
+   32.5,
+   32.75
+  ],
+  "track_saved": "R1_d10",
+  "ts": "2026-08-20 17:18:33"
+ },
+ {
+  "id": "R1_d20",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R1_d20",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     68.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d20"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2403.0,
+  "tu_per_s": 1.46,
+  "T_end": 3500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 20.002,
+   "r_end": 14.404,
+   "r_min": 14.398,
+   "r_max": 20.386,
+   "dphi_net": -0.0228,
+   "arc_net": -0.354,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -1e-06,
+   "vtan_all": -1e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.736,
+    "sep_std": 0.9688,
+    "sep_end": 9.227,
+    "omega_last": 0.002115,
+    "rev_total": 0.104,
+    "c_com_last": 0.042825,
+    "sep0": 28.001,
+    "sep_min": 7.558,
+    "sep_max": 28.153
+   },
+   "anch_cargo": {
+    "sep_mean": 14.809,
+    "sep_std": 0.2921,
+    "sep_end": 14.404,
+    "omega_last": 0.0,
+    "rev_total": -0.004,
+    "c_com_last": 0.00264,
+    "sep0": 20.002,
+    "sep_min": 14.398,
+    "sep_max": 20.386
+   },
+   "M_anch": {
+    "sep_mean": 8.739,
+    "sep_std": 0.967,
+    "sep_end": 9.236,
+    "omega_last": -0.002114,
+    "rev_total": -0.611,
+    "c_com_last": 0.042912,
+    "sep0": 7.999,
+    "sep_min": 7.567,
+    "sep_max": 10.691
+   }
+  },
+  "net1": [
+   18.92
+  ],
+  "end1": [
+   [
+    41.81,
+    58.22
+   ]
+  ],
+  "area1_end": [
+   34.25
+  ],
+  "net2": [
+   2.89,
+   2.73
+  ],
+  "end2": [
+   [
+    47.74,
+    51.14
+   ],
+   [
+    47.42,
+    65.54
+   ]
+  ],
+  "area2_end": [
+   32.5,
+   33.0
+  ],
+  "track_saved": "R1_d20",
+  "ts": "2026-08-20 17:18:34"
+ },
+ {
+  "id": "R1_d15",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R1_d15",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d15"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2407.3,
+  "tu_per_s": 1.45,
+  "T_end": 3500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 14.982,
+   "r_end": 14.607,
+   "r_min": 14.399,
+   "r_max": 15.613,
+   "dphi_net": -0.0446,
+   "arc_net": -0.663,
+   "omega_last": 0.0,
+   "vtan_last": 0.0,
+   "omega_all": -3e-06,
+   "vtan_all": -5e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.751,
+    "sep_std": 0.9641,
+    "sep_end": 8.0,
+    "omega_last": 0.004022,
+    "rev_total": 0.06,
+    "c_com_last": 0.043159,
+    "sep0": 22.991,
+    "sep_min": 7.237,
+    "sep_max": 23.207
+   },
+   "anch_cargo": {
+    "sep_mean": 14.806,
+    "sep_std": 0.2926,
+    "sep_end": 14.607,
+    "omega_last": 1e-06,
+    "rev_total": -0.007,
+    "c_com_last": 0.003341,
+    "sep0": 14.982,
+    "sep_min": 14.399,
+    "sep_max": 15.613
+   },
+   "M_anch": {
+    "sep_mean": 8.748,
+    "sep_std": 0.9664,
+    "sep_end": 7.997,
+    "omega_last": -0.004021,
+    "rev_total": -0.574,
+    "c_com_last": 0.042994,
+    "sep0": 8.009,
+    "sep_min": 7.535,
+    "sep_max": 10.257
+   }
+  },
+  "net1": [
+   15.69
+  ],
+  "end1": [
+   [
+    44.23,
+    55.54
+   ]
+  ],
+  "area1_end": [
+   32.75
+  ],
+  "net2": [
+   0.15,
+   0.64
+  ],
+  "end2": [
+   [
+    47.81,
+    48.39
+   ],
+   [
+    47.16,
+    62.99
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.75
+  ],
+  "track_saved": "R1_d15",
+  "ts": "2026-08-20 17:18:38"
+ },
+ {
+  "id": "R1_d12",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R1_d12",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     60.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d12"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2409.7,
+  "tu_per_s": 1.45,
+  "T_end": 3500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 12.06,
+   "r_end": 14.567,
+   "r_min": 12.06,
+   "r_max": 15.533,
+   "dphi_net": -0.0475,
+   "arc_net": -0.703,
+   "omega_last": 0.0,
+   "vtan_last": 0.0,
+   "omega_all": -4e-06,
+   "vtan_all": -6e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.747,
+    "sep_std": 0.9658,
+    "sep_end": 8.082,
+    "omega_last": 0.003874,
+    "rev_total": 0.064,
+    "c_com_last": 0.043052,
+    "sep0": 20.03,
+    "sep_min": 7.193,
+    "sep_max": 21.263
+   },
+   "anch_cargo": {
+    "sep_mean": 14.806,
+    "sep_std": 0.2922,
+    "sep_end": 14.567,
+    "omega_last": 1e-06,
+    "rev_total": -0.008,
+    "c_com_last": 0.003047,
+    "sep0": 12.06,
+    "sep_min": 12.06,
+    "sep_max": 15.533
+   },
+   "M_anch": {
+    "sep_mean": 8.748,
+    "sep_std": 0.9659,
+    "sep_end": 8.074,
+    "omega_last": -0.003873,
+    "rev_total": -0.579,
+    "c_com_last": 0.043081,
+    "sep0": 7.97,
+    "sep_min": 7.485,
+    "sep_max": 10.256
+   }
+  },
+  "net1": [
+   14.34
+  ],
+  "end1": [
+   [
+    43.98,
+    54.09
+   ]
+  ],
+  "area1_end": [
+   33.5
+  ],
+  "net2": [
+   1.24,
+   1.4
+  ],
+  "end2": [
+   [
+    47.81,
+    46.98
+   ],
+   [
+    47.12,
+    61.53
+   ]
+  ],
+  "area2_end": [
+   32.5,
+   33.0
+  ],
+  "track_saved": "R1_d12",
+  "ts": "2026-08-20 17:18:40"
+ },
+ {
+  "id": "R1_d15_null",
+  "kind": "R1_roller",
+  "job": {
+   "kind": "R1_roller",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R1_d15_null",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R1_d15_null"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2414.1,
+  "tu_per_s": 1.45,
+  "T_end": 3500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 701,
+   "r0": 14.982,
+   "r_end": 15.395,
+   "r_min": 14.977,
+   "r_max": 15.395,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.937,
+    "sep_std": 0.9116,
+    "sep_end": 8.957,
+    "omega_last": 0.001785,
+    "rev_total": 0.085,
+    "c_com_last": 0.048252,
+    "sep0": 22.991,
+    "sep_min": 6.978,
+    "sep_max": 23.165
+   },
+   "anch_cargo": {
+    "sep_mean": 15.395,
+    "sep_std": 0.0,
+    "sep_end": 15.395,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 14.982,
+    "sep_min": 14.977,
+    "sep_max": 15.395
+   },
+   "M_anch": {
+    "sep_mean": 8.937,
+    "sep_std": 0.9116,
+    "sep_end": 8.957,
+    "omega_last": -0.001785,
+    "rev_total": -0.585,
+    "c_com_last": 0.048252,
+    "sep0": 8.009,
+    "sep_min": 7.285,
+    "sep_max": 10.31
+   }
+  },
+  "net1": [
+   16.16
+  ],
+  "end1": [
+   [
+    43.17,
+    55.75
+   ]
+  ],
+  "area1_end": [
+   33.75
+  ],
+  "net2": [
+   0.21,
+   0.21
+  ],
+  "end2": [
+   [
+    47.75,
+    48.05
+   ],
+   [
+    47.75,
+    63.45
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.0
+  ],
+  "track_saved": "R1_d15_null",
+  "ts": "2026-08-20 17:18:45"
+ },
+ {
+  "id": "C2_t5.7",
+  "kind": "C2_loadedpair",
+  "job": {
+   "kind": "C2_loadedpair",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "C2_t5.7",
+   "tau1": 5.7,
+   "save_track_as": "C2_t5.7"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 1060.2,
+  "tu_per_s": 1.25,
+  "T_end": 1330.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 69.17,
+    "sep_std": 7.0376,
+    "sep_end": 22.533,
+    "omega_last": -0.000997,
+    "rev_total": -0.5,
+    "c_com_last": 0.016747,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 74.58
+   },
+   "pair": {
+    "sep_mean": 15.563,
+    "sep_std": 1.1304,
+    "sep_end": 17.011,
+    "omega_last": -0.000131,
+    "rev_total": -0.066,
+    "c_com_last": 0.033128,
+    "sep0": 15.38,
+    "sep_min": 13.984,
+    "sep_max": 18.168
+   }
+  },
+  "net1": [
+   31.02,
+   31.57
+  ],
+  "end1": [
+   [
+    47.75,
+    8.24
+   ],
+   [
+    40.92,
+    23.82
+   ]
+  ],
+  "area1_end": [
+   34.25,
+   34.25
+  ],
+  "net2": [
+   0.52
+  ],
+  "end2": [
+   [
+    47.75,
+    30.77
+   ]
+  ],
+  "area2_end": [
+   34.25
+  ],
+  "track_saved": "C2_t5.7",
+  "ts": "2026-08-20 17:36:24"
+ },
+ {
+  "id": "R0_e0.05_d10",
+  "kind": "R0_response",
+  "job": {
+   "kind": "R0_response",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "R0_e0.05_d10",
+   "eta21": 0.05,
+   "blobs2": [
+    [
+     50.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_e0.05_d10"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 3459.3,
+  "tu_per_s": 1.16,
+  "T_end": 4000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.035,
+    "sep_std": 0.0,
+    "sep_end": 8.035,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 10.0,
+    "sep_min": 8.035,
+    "sep_max": 10.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   1.97
+  ],
+  "end2": [
+   [
+    47.75,
+    48.28
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "R0_e0.05_d10",
+  "ts": "2026-08-20 17:56:13"
+ },
+ {
+  "id": "R0_e0.1_d10",
+  "kind": "R0_response",
+  "job": {
+   "kind": "R0_response",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "R0_e0.1_d10",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     50.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_e0.1_d10"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 3461.4,
+  "tu_per_s": 1.16,
+  "T_end": 4000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.917,
+    "sep_std": 0.0,
+    "sep_end": 7.917,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 10.0,
+    "sep_min": 7.917,
+    "sep_max": 10.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   2.08
+  ],
+  "end2": [
+   [
+    47.75,
+    48.17
+   ]
+  ],
+  "area2_end": [
+   33.75
+  ],
+  "track_saved": "R0_e0.1_d10",
+  "ts": "2026-08-20 17:56:15"
+ },
+ {
+  "id": "R0_e0.1_d12",
+  "kind": "R0_response",
+  "job": {
+   "kind": "R0_response",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "R0_e0.1_d12",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_e0.1_d12"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 3461.2,
+  "tu_per_s": 1.16,
+  "T_end": 4000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.917,
+    "sep_std": 0.0,
+    "sep_end": 7.917,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 12.0,
+    "sep_min": 7.917,
+    "sep_max": 12.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   4.08
+  ],
+  "end2": [
+   [
+    47.75,
+    48.17
+   ]
+  ],
+  "area2_end": [
+   33.75
+  ],
+  "track_saved": "R0_e0.1_d12",
+  "ts": "2026-08-20 17:56:15"
+ },
+ {
+  "id": "R0_e0.1_d14",
+  "kind": "R0_response",
+  "job": {
+   "kind": "R0_response",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "R0_e0.1_d14",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     54.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_e0.1_d14"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 3466.4,
+  "tu_per_s": 1.15,
+  "T_end": 4000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.917,
+    "sep_std": 0.0,
+    "sep_end": 7.917,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 14.0,
+    "sep_min": 7.917,
+    "sep_max": 14.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   6.08
+  ],
+  "end2": [
+   [
+    47.75,
+    48.17
+   ]
+  ],
+  "area2_end": [
+   33.75
+  ],
+  "track_saved": "R0_e0.1_d14",
+  "ts": "2026-08-20 17:56:20"
+ },
+ {
+  "id": "C2_t5.66",
+  "kind": "C2_loadedpair",
+  "job": {
+   "kind": "C2_loadedpair",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "C2_t5.66",
+   "tau1": 5.66,
+   "save_track_as": "C2_t5.66"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2494.7,
+  "tu_per_s": 1.2,
+  "T_end": 3000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 61.341,
+    "sep_std": 0.4838,
+    "sep_end": 61.718,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.003304,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 61.802
+   },
+   "pair": {
+    "sep_mean": 15.391,
+    "sep_std": 0.0211,
+    "sep_end": 15.374,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.005813,
+    "sep0": 15.38,
+    "sep_min": 14.913,
+    "sep_max": 15.542
+   }
+  },
+  "net1": [
+   53.2,
+   53.2
+  ],
+  "end1": [
+   [
+    47.75,
+    92.46
+   ],
+   [
+    47.75,
+    107.84
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.75
+  ],
+  "net2": [
+   0.49
+  ],
+  "end2": [
+   [
+    47.75,
+    30.74
+   ]
+  ],
+  "area2_end": [
+   34.25
+  ],
+  "track_saved": "C2_t5.66",
+  "ts": "2026-08-20 18:00:18"
+ },
+ {
+  "id": "C1_t5.6",
+  "kind": "C1_tractor_rail",
+  "job": {
+   "kind": "C1_tractor_rail",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "MS"
+    ]
+   ],
+   "id": "C1_t5.6",
+   "tau1": 5.6,
+   "save_track_as": "C1_t5.6"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2504.7,
+  "tu_per_s": 1.2,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "MS": {
+    "sep_mean": 7.96,
+    "sep_std": 0.1165,
+    "sep_end": 7.833,
+    "omega_last": 0.000538,
+    "rev_total": 0.049,
+    "c_com_last": 0.018449,
+    "sep0": 8.0,
+    "sep_min": 6.568,
+    "sep_max": 8.137
+   }
+  },
+  "net1": [
+   1.92
+  ],
+  "end1": [
+   [
+    45.88,
+    40.69
+   ]
+  ],
+  "area1_end": [
+   33.0
+  ],
+  "net2": [
+   0.49
+  ],
+  "end2": [
+   [
+    48.23,
+    48.16
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "track_saved": "C1_t5.6",
+  "ts": "2026-08-20 18:00:29"
+ },
+ {
+  "id": "C1_t5.7",
+  "kind": "C1_tractor_rail",
+  "job": {
+   "kind": "C1_tractor_rail",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "MS"
+    ]
+   ],
+   "id": "C1_t5.7",
+   "tau1": 5.7,
+   "save_track_as": "C1_t5.7"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2511.2,
+  "tu_per_s": 1.19,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "MS": {
+    "sep_mean": 8.024,
+    "sep_std": 0.3875,
+    "sep_end": 7.686,
+    "omega_last": -0.005355,
+    "rev_total": -0.108,
+    "c_com_last": 0.022903,
+    "sep0": 8.0,
+    "sep_min": 6.506,
+    "sep_max": 8.86
+   }
+  },
+  "net1": [
+   5.33
+  ],
+  "end1": [
+   [
+    53.07,
+    40.58
+   ]
+  ],
+  "area1_end": [
+   33.25
+  ],
+  "net2": [
+   1.75
+  ],
+  "end2": [
+   [
+    48.26,
+    46.58
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "track_saved": "C1_t5.7",
+  "ts": "2026-08-20 18:00:35"
+ },
+ {
+  "id": "D1_t5.7",
+  "kind": "D1_frontpush",
+  "job": {
+   "kind": "D1_frontpush",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     24.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     39.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     50.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     1,
+     2,
+     0,
+     "leadM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D1_t5.7",
+   "tau1": 5.7,
+   "save_track_as": "D1_t5.7"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 50.3,
+  "tu_per_s": 1.59,
+  "T_end": 80.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "leadM_cargo": {
+    "sep_mean": 7.487,
+    "sep_std": 1.2027,
+    "sep_end": 9.389,
+    "omega_last": 0.003094,
+    "rev_total": 0.126,
+    "c_com_last": 0.017574,
+    "sep0": 10.612,
+    "sep_min": 6.577,
+    "sep_max": 10.612
+   },
+   "pair": {
+    "sep_mean": 14.273,
+    "sep_std": 1.0013,
+    "sep_end": 15.65,
+    "omega_last": -0.001725,
+    "rev_total": -0.07,
+    "c_com_last": 0.058373,
+    "sep0": 15.38,
+    "sep_min": 12.945,
+    "sep_max": 15.65
+   }
+  },
+  "net1": [
+   5.94,
+   8.17
+  ],
+  "end1": [
+   [
+    47.75,
+    30.2
+   ],
+   [
+    41.09,
+    44.36
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   33.25
+  ],
+  "net2": [
+   0.73
+  ],
+  "end2": [
+   [
+    47.75,
+    50.98
+   ]
+  ],
+  "area2_end": [
+   34.5
+  ],
+  "track_saved": "D1_t5.7",
+  "ts": "2026-08-20 18:03:33"
+ },
+ {
+  "id": "D1_t5.66",
+  "kind": "D1_frontpush",
+  "job": {
+   "kind": "D1_frontpush",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     24.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     39.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     50.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     1,
+     2,
+     0,
+     "leadM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D1_t5.66",
+   "tau1": 5.66,
+   "save_track_as": "D1_t5.66"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 50.5,
+  "tu_per_s": 1.58,
+  "T_end": 80.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "leadM_cargo": {
+    "sep_mean": 7.493,
+    "sep_std": 1.1236,
+    "sep_end": 8.677,
+    "omega_last": 0.002654,
+    "rev_total": 0.108,
+    "c_com_last": 0.016823,
+    "sep0": 10.612,
+    "sep_min": 6.638,
+    "sep_max": 10.612
+   },
+   "pair": {
+    "sep_mean": 14.293,
+    "sep_std": 0.9295,
+    "sep_end": 15.15,
+    "omega_last": -0.001439,
+    "rev_total": -0.058,
+    "c_com_last": 0.056066,
+    "sep0": 15.38,
+    "sep_min": 13.057,
+    "sep_max": 15.449
+   }
+  },
+  "net1": [
+   5.8,
+   7.1
+  ],
+  "end1": [
+   [
+    47.75,
+    30.06
+   ],
+   [
+    42.32,
+    44.2
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   30.5
+  ],
+  "net2": [
+   0.71
+  ],
+  "end2": [
+   [
+    47.75,
+    50.96
+   ]
+  ],
+  "area2_end": [
+   34.5
+  ],
+  "track_saved": "D1_t5.66",
+  "ts": "2026-08-20 18:03:34"
+ },
+ {
+  "id": "R2_d24_noM",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ]
+   ],
+   "id": "R2_d24_noM",
+   "blobs1": [],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d24_noM"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1824.1,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 24.0,
+   "r_end": 24.884,
+   "r_min": 24.0,
+   "r_max": 24.884,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "anch_cargo": {
+    "sep_mean": 24.845,
+    "sep_std": 0.023,
+    "sep_end": 24.884,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 24.0,
+    "sep_min": 24.0,
+    "sep_max": 24.884
+   }
+  },
+  "net2": [
+   0.44,
+   0.44
+  ],
+  "end2": [
+   [
+    47.75,
+    47.81
+   ],
+   [
+    47.75,
+    72.69
+   ]
+  ],
+  "area2_end": [
+   32.75,
+   32.75
+  ],
+  "track_saved": "R2_d24_noM",
+  "ts": "2026-08-20 18:08:44"
+ },
+ {
+  "id": "R2_d20_noM",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ]
+   ],
+   "id": "R2_d20_noM",
+   "blobs1": [],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     68.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d20_noM"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1824.6,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 20.002,
+   "r_end": 22.553,
+   "r_min": 20.002,
+   "r_max": 22.553,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "anch_cargo": {
+    "sep_mean": 22.408,
+    "sep_std": 0.0873,
+    "sep_end": 22.553,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 20.002,
+    "sep_min": 20.002,
+    "sep_max": 22.553
+   }
+  },
+  "net2": [
+   1.28,
+   1.28
+  ],
+  "end2": [
+   [
+    47.75,
+    46.97
+   ],
+   [
+    47.75,
+    69.53
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.0
+  ],
+  "track_saved": "R2_d20_noM",
+  "ts": "2026-08-20 18:08:44"
+ },
+ {
+  "id": "R2_d24",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R2_d24",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d24"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1825.1,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 24.0,
+   "r_end": 25.68,
+   "r_min": 23.962,
+   "r_max": 25.68,
+   "dphi_net": 0.0011,
+   "arc_net": 0.028,
+   "omega_last": 6.5e-05,
+   "vtan_last": 0.00163,
+   "omega_all": 3e-06,
+   "vtan_all": 7e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 31.117,
+    "sep_std": 2.7211,
+    "sep_end": 33.118,
+    "omega_last": -0.001524,
+    "rev_total": -0.018,
+    "c_com_last": 0.030532,
+    "sep0": 32.0,
+    "sep_min": 16.233,
+    "sep_max": 33.702
+   },
+   "anch_cargo": {
+    "sep_mean": 25.344,
+    "sep_std": 0.1828,
+    "sep_end": 25.68,
+    "omega_last": 3.9e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.001198,
+    "sep0": 24.0,
+    "sep_min": 23.962,
+    "sep_max": 25.68
+   },
+   "M_anch": {
+    "sep_mean": 8.165,
+    "sep_std": 0.0033,
+    "sep_end": 8.167,
+    "omega_last": -0.007459,
+    "rev_total": -3.077,
+    "c_com_last": 0.030902,
+    "sep0": 8.0,
+    "sep_min": 8.0,
+    "sep_max": 8.86
+   }
+  },
+  "net1": [
+   3.77
+  ],
+  "end1": [
+   [
+    51.52,
+    40.22
+   ]
+  ],
+  "area1_end": [
+   33.75
+  ],
+  "net2": [
+   0.81,
+   0.87
+  ],
+  "end2": [
+   [
+    47.7,
+    47.44
+   ],
+   [
+    47.73,
+    73.12
+   ]
+  ],
+  "area2_end": [
+   33.0,
+   32.5
+  ],
+  "track_saved": "R2_d24",
+  "ts": "2026-08-20 18:08:45"
+ },
+ {
+  "id": "R2_d20",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R2_d20",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     68.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d20"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1825.7,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 20.002,
+   "r_end": 15.244,
+   "r_min": 14.399,
+   "r_max": 20.386,
+   "dphi_net": -0.0227,
+   "arc_net": -0.359,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -2e-06,
+   "vtan_all": -3e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.746,
+    "sep_std": 0.9666,
+    "sep_end": 7.857,
+    "omega_last": -0.004539,
+    "rev_total": 0.036,
+    "c_com_last": 0.042673,
+    "sep0": 28.001,
+    "sep_min": 7.558,
+    "sep_max": 28.153
+   },
+   "anch_cargo": {
+    "sep_mean": 14.801,
+    "sep_std": 0.2916,
+    "sep_end": 15.244,
+    "omega_last": 1e-06,
+    "rev_total": -0.004,
+    "c_com_last": 0.003223,
+    "sep0": 20.002,
+    "sep_min": 14.399,
+    "sep_max": 20.386
+   },
+   "M_anch": {
+    "sep_mean": 8.749,
+    "sep_std": 0.965,
+    "sep_end": 7.86,
+    "omega_last": 0.00454,
+    "rev_total": -0.543,
+    "c_com_last": 0.042668,
+    "sep0": 7.999,
+    "sep_min": 7.567,
+    "sep_max": 10.691
+   }
+  },
+  "net1": [
+   18.13
+  ],
+  "end1": [
+   [
+    46.3,
+    58.32
+   ]
+  ],
+  "area1_end": [
+   35.75
+  ],
+  "net2": [
+   2.57,
+   2.29
+  ],
+  "end2": [
+   [
+    48.38,
+    50.74
+   ],
+   [
+    48.04,
+    65.98
+   ]
+  ],
+  "area2_end": [
+   33.0,
+   33.75
+  ],
+  "track_saved": "R2_d20",
+  "ts": "2026-08-20 18:08:46"
+ },
+ {
+  "id": "R2_d22_noM",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ]
+   ],
+   "id": "R2_d22_noM",
+   "blobs1": [],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     70.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d22_noM"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1826.1,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 22.001,
+   "r_end": 23.985,
+   "r_min": 22.001,
+   "r_max": 23.985,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "anch_cargo": {
+    "sep_mean": 23.901,
+    "sep_std": 0.0487,
+    "sep_end": 23.985,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 22.001,
+    "sep_min": 22.001,
+    "sep_max": 23.985
+   }
+  },
+  "net2": [
+   0.99,
+   0.99
+  ],
+  "end2": [
+   [
+    47.75,
+    47.26
+   ],
+   [
+    47.75,
+    71.24
+   ]
+  ],
+  "area2_end": [
+   34.25,
+   34.25
+  ],
+  "track_saved": "R2_d22_noM",
+  "ts": "2026-08-20 18:08:46"
+ },
+ {
+  "id": "R2_d22",
+  "kind": "R2_capture_map",
+  "job": {
+   "kind": "R2_capture_map",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "R2_d22",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     70.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R2_d22"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1826.7,
+  "tu_per_s": 1.37,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 501,
+   "r0": 22.001,
+   "r_end": 24.64,
+   "r_min": 21.973,
+   "r_max": 24.64,
+   "dphi_net": 0.0035,
+   "arc_net": 0.081,
+   "omega_last": 7.3e-05,
+   "vtan_last": 0.00176,
+   "omega_all": 3e-06,
+   "vtan_all": 7e-05
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 28.595,
+    "sep_std": 3.7026,
+    "sep_end": 32.75,
+    "omega_last": -0.001295,
+    "rev_total": -0.005,
+    "c_com_last": 0.030711,
+    "sep0": 30.001,
+    "sep_min": 14.186,
+    "sep_max": 32.771
+   },
+   "anch_cargo": {
+    "sep_mean": 24.301,
+    "sep_std": 0.1678,
+    "sep_end": 24.64,
+    "omega_last": 6.5e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.001207,
+    "sep0": 22.001,
+    "sep_min": 21.973,
+    "sep_max": 24.64
+   },
+   "M_anch": {
+    "sep_mean": 8.175,
+    "sep_std": 0.0265,
+    "sep_end": 8.167,
+    "omega_last": -0.007455,
+    "rev_total": -3.021,
+    "c_com_last": 0.031167,
+    "sep0": 7.999,
+    "sep_min": 7.99,
+    "sep_max": 8.855
+   }
+  },
+  "net1": [
+   1.64
+  ],
+  "end1": [
+   [
+    48.71,
+    38.92
+   ]
+  ],
+  "area1_end": [
+   33.0
+  ],
+  "net2": [
+   1.24,
+   1.4
+  ],
+  "end2": [
+   [
+    47.63,
+    47.01
+   ],
+   [
+    47.71,
+    71.65
+   ]
+  ],
+  "area2_end": [
+   33.25,
+   32.5
+  ],
+  "track_saved": "R2_d22",
+  "ts": "2026-08-20 18:08:47"
+ },
+ {
+  "id": "S1_t5.7",
+  "kind": "S1_sandwich",
+  "job": {
+   "kind": "S1_sandwich",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     32.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     48.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_S"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_S"
+    ]
+   ],
+   "id": "S1_t5.7",
+   "tau1": 5.7,
+   "save_track_as": "S1_t5.7"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 44.2,
+  "tu_per_s": 2.04,
+  "T_end": 90.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "pair": {
+    "sep_mean": 16.915,
+    "sep_std": 1.6766,
+    "sep_end": 10.971,
+    "omega_last": 0.00496,
+    "rev_total": 0.25,
+    "c_com_last": 0.037727,
+    "sep0": 15.987,
+    "sep_min": 10.971,
+    "sep_max": 18.486
+   },
+   "rearM_S": {
+    "sep_mean": 7.485,
+    "sep_std": 0.6393,
+    "sep_end": 9.254,
+    "omega_last": 0.002004,
+    "rev_total": 0.101,
+    "c_com_last": 0.006415,
+    "sep0": 7.993,
+    "sep_min": 6.49,
+    "sep_max": 9.254
+   },
+   "frontM_S": {
+    "sep_mean": 9.827,
+    "sep_std": 0.8865,
+    "sep_end": 9.254,
+    "omega_last": 0.007917,
+    "rev_total": 0.399,
+    "c_com_last": 0.047072,
+    "sep0": 7.993,
+    "sep_min": 7.993,
+    "sep_max": 10.806
+   }
+  },
+  "net1": [
+   5.83,
+   15.05
+  ],
+  "end1": [
+   [
+    42.26,
+    34.23
+   ],
+   [
+    53.24,
+    34.23
+   ]
+  ],
+  "area1_end": [
+   30.5,
+   30.5
+  ],
+  "net2": [
+   1.43
+  ],
+  "end2": [
+   [
+    47.75,
+    41.68
+   ]
+  ],
+  "area2_end": [
+   35.0
+  ],
+  "track_saved": "S1_t5.7",
+  "ts": "2026-08-20 18:12:39"
+ },
+ {
+  "id": "S1_t5.66",
+  "kind": "S1_sandwich",
+  "job": {
+   "kind": "S1_sandwich",
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     32.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     48.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_S"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_S"
+    ]
+   ],
+   "id": "S1_t5.66",
+   "tau1": 5.66,
+   "save_track_as": "S1_t5.66"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 48.3,
+  "tu_per_s": 2.07,
+  "T_end": 100.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "pair": {
+    "sep_mean": 16.57,
+    "sep_std": 1.5046,
+    "sep_end": 11.716,
+    "omega_last": 0.00408,
+    "rev_total": 0.25,
+    "c_com_last": 0.035689,
+    "sep0": 15.987,
+    "sep_min": 11.716,
+    "sep_max": 18.203
+   },
+   "rearM_S": {
+    "sep_mean": 7.512,
+    "sep_std": 0.6092,
+    "sep_end": 9.282,
+    "omega_last": 0.001774,
+    "rev_total": 0.109,
+    "c_com_last": 0.004983,
+    "sep0": 7.993,
+    "sep_min": 6.52,
+    "sep_max": 9.282
+   },
+   "frontM_S": {
+    "sep_mean": 9.384,
+    "sep_std": 1.0721,
+    "sep_end": 9.282,
+    "omega_last": 0.006386,
+    "rev_total": 0.391,
+    "c_com_last": 0.042997,
+    "sep0": 7.993,
+    "sep_min": 7.34,
+    "sep_max": 10.591
+   }
+  },
+  "net1": [
+   6.2,
+   15.14
+  ],
+  "end1": [
+   [
+    41.89,
+    34.28
+   ],
+   [
+    53.61,
+    34.28
+   ]
+  ],
+  "area1_end": [
+   29.5,
+   29.5
+  ],
+  "net2": [
+   1.23
+  ],
+  "end2": [
+   [
+    47.75,
+    41.48
+   ]
+  ],
+  "area2_end": [
+   35.0
+  ],
+  "track_saved": "S1_t5.66",
+  "ts": "2026-08-20 18:12:43"
+ },
+ {
+  "id": "RM_d20",
+  "kind": "RM_roller_Mcargo",
+  "job": {
+   "kind": "RM_roller_Mcargo",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     1,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "orb_cargo"
+    ],
+    [
+     2,
+     0,
+     1,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RM_d20",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ],
+    [
+     68.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "RM_d20"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 501.0,
+  "tu_per_s": 1.93,
+  "T_end": 965.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 194,
+   "r0": 20.0,
+   "r_end": 8.854,
+   "r_min": 6.673,
+   "r_max": 24.144,
+   "dphi_net": 0.5065,
+   "arc_net": 8.554,
+   "omega_last": 0.00021,
+   "vtan_last": 0.00264,
+   "omega_all": -0.000197,
+   "vtan_all": -0.00333
+  },
+  "pairs": {
+   "orb_cargo": {
+    "sep_mean": 15.294,
+    "sep_std": 0.568,
+    "sep_end": 14.484,
+    "omega_last": -0.002698,
+    "rev_total": -0.084,
+    "c_com_last": 0.04563,
+    "sep0": 28.0,
+    "sep_min": 14.372,
+    "sep_max": 28.154
+   },
+   "anch_cargo": {
+    "sep_mean": 8.557,
+    "sep_std": 1.762,
+    "sep_end": 8.854,
+    "omega_last": 0.001704,
+    "rev_total": 0.081,
+    "c_com_last": 0.015553,
+    "sep0": 20.0,
+    "sep_min": 6.673,
+    "sep_max": 24.144
+   },
+   "M_anch": {
+    "sep_mean": 8.394,
+    "sep_std": 0.5876,
+    "sep_end": 12.512,
+    "omega_last": -0.007733,
+    "rev_total": -1.187,
+    "c_com_last": 0.034495,
+    "sep0": 8.0,
+    "sep_min": 7.853,
+    "sep_max": 12.512
+   }
+  },
+  "net1": [
+   6.59,
+   13.3
+  ],
+  "end1": [
+   [
+    53.96,
+    42.46
+   ],
+   [
+    46.69,
+    55.0
+   ]
+  ],
+  "area1_end": [
+   34.5,
+   34.5
+  ],
+  "net2": [
+   5.44
+  ],
+  "end2": [
+   [
+    42.4,
+    47.25
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "RM_d20",
+  "ts": "2026-08-20 18:20:16"
+ },
+ {
+  "id": "RM_d15",
+  "kind": "RM_roller_Mcargo",
+  "job": {
+   "kind": "RM_roller_Mcargo",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     1,
+     1
+    ]
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "orb_cargo"
+    ],
+    [
+     2,
+     0,
+     1,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RM_d15",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "RM_d15"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 510.5,
+  "tu_per_s": 1.93,
+  "T_end": 985.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 198,
+   "r0": 15.0,
+   "r_end": 8.836,
+   "r_min": 6.576,
+   "r_max": 24.119,
+   "dphi_net": 0.4556,
+   "arc_net": 7.263,
+   "omega_last": 0.000212,
+   "vtan_last": 0.00265,
+   "omega_all": -0.000263,
+   "vtan_all": -0.0042
+  },
+  "pairs": {
+   "orb_cargo": {
+    "sep_mean": 15.274,
+    "sep_std": 0.5667,
+    "sep_end": 14.438,
+    "omega_last": -0.002713,
+    "rev_total": -0.096,
+    "c_com_last": 0.045696,
+    "sep0": 23.0,
+    "sep_min": 14.37,
+    "sep_max": 23.23
+   },
+   "anch_cargo": {
+    "sep_mean": 8.482,
+    "sep_std": 1.6882,
+    "sep_end": 8.836,
+    "omega_last": 0.001679,
+    "rev_total": 0.073,
+    "c_com_last": 0.01578,
+    "sep0": 15.0,
+    "sep_min": 6.576,
+    "sep_max": 24.119
+   },
+   "M_anch": {
+    "sep_mean": 8.402,
+    "sep_std": 0.6115,
+    "sep_end": 12.731,
+    "omega_last": -0.007641,
+    "rev_total": -1.2,
+    "c_com_last": 0.034457,
+    "sep0": 8.0,
+    "sep_min": 7.93,
+    "sep_max": 12.731
+   }
+  },
+  "net1": [
+   6.91,
+   8.86
+  ],
+  "end1": [
+   [
+    54.21,
+    42.7
+   ],
+   [
+    45.99,
+    54.57
+   ]
+  ],
+  "area1_end": [
+   34.0,
+   34.25
+  ],
+  "net2": [
+   5.87
+  ],
+  "end2": [
+   [
+    42.1,
+    46.63
+   ]
+  ],
+  "area2_end": [
+   30.75
+  ],
+  "track_saved": "RM_d15",
+  "ts": "2026-08-20 18:20:25"
+ },
+ {
+  "id": "T1_front_t5.64_e0.1",
+  "kind": "T1_towmatch",
+  "job": {
+   "kind": "T1_towmatch",
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T1_front_t5.64_e0.1",
+   "tau1": 5.64,
+   "eta21": 0.1,
+   "blobs1": [
+    [
+     24.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     39.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "T1_front_t564_e01"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 72.0,
+  "tu_per_s": 1.67,
+  "T_end": 120.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 19.954,
+    "sep_std": 1.3141,
+    "sep_end": 19.316,
+    "omega_last": -0.000563,
+    "rev_total": -0.049,
+    "c_com_last": 0.07543,
+    "sep0": 23.992,
+    "sep_min": 18.71,
+    "sep_max": 23.992
+   },
+   "frontM_cargo": {
+    "sep_mean": 4.987,
+    "sep_std": 1.2609,
+    "sep_end": 6.59,
+    "omega_last": -0.001988,
+    "rev_total": -0.171,
+    "c_com_last": 0.075678,
+    "sep0": 8.612,
+    "sep_min": 3.446,
+    "sep_max": 8.612
+   },
+   "pair": {
+    "sep_mean": 15.07,
+    "sep_std": 0.1698,
+    "sep_end": 15.301,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.078319,
+    "sep0": 15.38,
+    "sep_min": 14.839,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   11.33,
+   11.25
+  ],
+  "end1": [
+   [
+    47.75,
+    35.59
+   ],
+   [
+    47.75,
+    50.89
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.0
+  ],
+  "net2": [
+   8.18
+  ],
+  "end2": [
+   [
+    41.95,
+    54.01
+   ]
+  ],
+  "area2_end": [
+   25.5
+  ],
+  "track_saved": "T1_front_t564_e01",
+  "ts": "2026-08-20 18:31:06"
+ },
+ {
+  "id": "F0_S_valley",
+  "kind": "F0_valley_resp",
+  "job": {
+   "kind": "F0_valley_resp",
+   "id": "F0_S_valley",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "bfield2": {
+    "kind": "chan",
+    "yc": 32.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "save_track_as": "F0_S_valley"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1424.6,
+  "tu_per_s": 2.11,
+  "T_end": 3000.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "net2": [
+   13.75
+  ],
+  "end2": [
+   [
+    34.0,
+    48.25
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "F0_S_valley",
+  "ts": "2026-08-20 18:37:57"
+ },
+ {
+  "id": "F0_M_valley",
+  "kind": "F0_valley_resp",
+  "job": {
+   "kind": "F0_valley_resp",
+   "id": "F0_M_valley",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     48.0,
+     48.0,
+     null
+    ]
+   ],
+   "bfield": {
+    "kind": "chan",
+    "yc": 32.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.0,
+    "cap": 24.0
+   },
+   "save_track_as": "F0_M_valley"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1425.6,
+  "tu_per_s": 2.1,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "net1": [
+   15.5
+  ],
+  "end1": [
+   [
+    32.25,
+    48.25
+   ]
+  ],
+  "area1_end": [
+   31.25
+  ],
+  "track_saved": "F0_M_valley",
+  "ts": "2026-08-20 18:37:59"
+ },
+ {
+  "id": "T1_rear_t5.7_e0.2",
+  "kind": "T1_towmatch",
+  "job": {
+   "kind": "T1_towmatch",
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T1_rear_t5.7_e0.2",
+   "tau1": 5.7,
+   "eta21": 0.2,
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "T1_rear_t57_e02"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 555.8,
+  "tu_per_s": 1.89,
+  "T_end": 1050.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 68.2,
+    "sep_std": 5.2898,
+    "sep_end": 76.398,
+    "omega_last": 2.4e-05,
+    "rev_total": 0.012,
+    "c_com_last": 0.030057,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 76.398
+   },
+   "frontM_cargo": {
+    "sep_mean": 83.432,
+    "sep_std": 5.2889,
+    "sep_end": 91.595,
+    "omega_last": 2e-05,
+    "rev_total": 0.01,
+    "c_com_last": 0.030094,
+    "sep0": 24.388,
+    "sep_min": 24.388,
+    "sep_max": 91.595
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0054,
+    "sep_end": 15.233,
+    "omega_last": -0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059263,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   68.75,
+   68.6
+  ],
+  "end1": [
+   [
+    47.75,
+    108.01
+   ],
+   [
+    47.75,
+    123.24
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   31.75
+  ],
+  "net2": [
+   6.06
+  ],
+  "end2": [
+   [
+    41.9,
+    31.84
+   ]
+  ],
+  "area2_end": [
+   28.75
+  ],
+  "track_saved": "T1_rear_t57_e02",
+  "ts": "2026-08-20 18:39:10"
+ },
+ {
+  "id": "T1_rear_t5.66_e0.2",
+  "kind": "T1_towmatch",
+  "job": {
+   "kind": "T1_towmatch",
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T1_rear_t5.66_e0.2",
+   "tau1": 5.66,
+   "eta21": 0.2,
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "T1_rear_t566_e02"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 790.4,
+  "tu_per_s": 2.09,
+  "T_end": 1650.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 70.164,
+    "sep_std": 3.3935,
+    "sep_end": 75.424,
+    "omega_last": 2.6e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.015163,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 75.424
+   },
+   "frontM_cargo": {
+    "sep_mean": 85.509,
+    "sep_std": 3.3931,
+    "sep_end": 90.732,
+    "omega_last": 2.2e-05,
+    "rev_total": 0.011,
+    "c_com_last": 0.014833,
+    "sep0": 24.388,
+    "sep_min": 24.388,
+    "sep_max": 90.732
+   },
+   "pair": {
+    "sep_mean": 15.346,
+    "sep_std": 0.0047,
+    "sep_end": 15.35,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.031158,
+    "sep0": 15.38,
+    "sep_min": 14.829,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   65.89,
+   65.86
+  ],
+  "end1": [
+   [
+    47.75,
+    105.15
+   ],
+   [
+    47.75,
+    120.5
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   6.16
+  ],
+  "end2": [
+   [
+    41.6,
+    29.98
+   ]
+  ],
+  "area2_end": [
+   28.5
+  ],
+  "track_saved": "T1_rear_t566_e02",
+  "ts": "2026-08-20 18:43:05"
+ },
+ {
+  "id": "T1_rear_t5.64_e0.1",
+  "kind": "T1_towmatch",
+  "job": {
+   "kind": "T1_towmatch",
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     1,
+     2,
+     0,
+     "frontM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T1_rear_t5.64_e0.1",
+   "tau1": 5.64,
+   "eta21": 0.1,
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "T1_rear_t564_e01"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1063.4,
+  "tu_per_s": 2.35,
+  "T_end": 2500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 58.832,
+    "sep_std": 0.6986,
+    "sep_end": 59.99,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.003833,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 59.99
+   },
+   "frontM_cargo": {
+    "sep_mean": 74.224,
+    "sep_std": 0.6993,
+    "sep_end": 75.386,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.003844,
+    "sep0": 24.388,
+    "sep_min": 24.388,
+    "sep_max": 75.386
+   },
+   "pair": {
+    "sep_mean": 15.391,
+    "sep_std": 0.0035,
+    "sep_end": 15.396,
+    "omega_last": -0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.007821,
+    "sep0": 15.38,
+    "sep_min": 14.839,
+    "sep_max": 15.396
+   }
+  },
+  "net1": [
+   51.31,
+   51.32
+  ],
+  "end1": [
+   [
+    47.75,
+    90.57
+   ],
+   [
+    47.75,
+    105.96
+   ]
+  ],
+  "area1_end": [
+   31.75,
+   32.0
+  ],
+  "net2": [
+   0.33
+  ],
+  "end2": [
+   [
+    47.75,
+    30.58
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "T1_rear_t564_e01",
+  "ts": "2026-08-20 18:47:38"
+ },
+ {
+  "id": "R0_e0.15_d12",
+  "kind": "R0_response",
+  "job": {
+   "kind": "R0_response",
+   "id": "R0_e0.15_d12",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.15,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_e015_d12"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 287.5,
+  "tu_per_s": 1.63,
+  "T_end": 470.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.975,
+    "sep_std": 0.3504,
+    "sep_end": 9.444,
+    "omega_last": -0.000224,
+    "rev_total": -0.112,
+    "c_com_last": 0.001615,
+    "sep0": 12.0,
+    "sep_min": 7.27,
+    "sep_max": 12.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   7.79
+  ],
+  "end2": [
+   [
+    41.63,
+    47.44
+   ]
+  ],
+  "area2_end": [
+   27.75
+  ],
+  "track_saved": "R0_e015_d12",
+  "ts": "2026-08-20 18:56:15"
+ },
+ {
+  "id": "R0_push_d5",
+  "kind": "R0_pushbranch",
+  "job": {
+   "kind": "R0_pushbranch",
+   "id": "R0_push_d5",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     45.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_push_d5"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 119.5,
+  "tu_per_s": 1.54,
+  "T_end": 184.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.011,
+    "sep_std": 0.635,
+    "sep_end": 9.105,
+    "omega_last": -0.000228,
+    "rev_total": -0.106,
+    "c_com_last": 0.00368,
+    "sep0": 5.0,
+    "sep_min": 5.0,
+    "sep_max": 9.105
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   6.01
+  ],
+  "end2": [
+   [
+    42.14,
+    47.42
+   ]
+  ],
+  "area2_end": [
+   30.0
+  ],
+  "track_saved": "R0_push_d5",
+  "ts": "2026-08-20 19:12:54"
+ },
+ {
+  "id": "T2A_t5.66",
+  "kind": "T2_stageA",
+  "job": {
+   "kind": "T2_stageA",
+   "id": "T2A_t5.66",
+   "tau1": 5.66,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     10.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     25.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_state_as": "T2A_t566_state",
+   "save_track_as": "T2A_t566"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 908.0,
+  "tu_per_s": 1.65,
+  "T_end": 1500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "pairs": {
+   "pair": {
+    "sep_mean": 15.345,
+    "sep_std": 0.0047,
+    "sep_end": 15.349,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.031413,
+    "sep0": 15.38,
+    "sep_min": 14.829,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   61.24,
+   61.21
+  ],
+  "end1": [
+   [
+    47.75,
+    71.5
+   ],
+   [
+    47.75,
+    86.85
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.75
+  ],
+  "state_saved": "T2A_t566_state",
+  "track_saved": "T2A_t566",
+  "ts": "2026-08-20 19:17:14"
+ },
+ {
+  "id": "T2A_t5.7",
+  "kind": "T2_stageA",
+  "job": {
+   "kind": "T2_stageA",
+   "id": "T2A_t5.7",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     10.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     25.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_state_as": "T2A_t57_state",
+   "save_track_as": "T2A_t57"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 909.9,
+  "tu_per_s": 1.65,
+  "T_end": 1500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "pairs": {
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0055,
+    "sep_end": 15.24,
+    "omega_last": -0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059248,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   95.4,
+   95.26
+  ],
+  "end1": [
+   [
+    47.75,
+    105.66
+   ],
+   [
+    47.75,
+    120.9
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "state_saved": "T2A_t57_state",
+  "track_saved": "T2A_t57",
+  "ts": "2026-08-20 19:17:15"
+ },
+ {
+  "id": "R3_d15_t6.0",
+  "kind": "R3_fastroller",
+  "job": {
+   "kind": "R3_fastroller",
+   "id": "R3_d15_t6.0",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "save_track_as": "R3_d15_t60"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1718.0,
+  "tu_per_s": 1.75,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 14.982,
+   "r_end": 15.417,
+   "r_min": 14.965,
+   "r_max": 15.797,
+   "dphi_net": -0.0843,
+   "arc_net": -1.306,
+   "omega_last": -2.4e-05,
+   "vtan_last": -0.00037,
+   "omega_all": -1.9e-05,
+   "vtan_all": -0.0003
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 16.726,
+    "sep_std": 5.8433,
+    "sep_end": 8.161,
+    "omega_last": -0.002789,
+    "rev_total": -0.092,
+    "c_com_last": 0.095337,
+    "sep0": 22.991,
+    "sep_min": 6.812,
+    "sep_max": 24.393
+   },
+   "anch_cargo": {
+    "sep_mean": 15.501,
+    "sep_std": 0.188,
+    "sep_end": 15.417,
+    "omega_last": 5e-05,
+    "rev_total": -0.013,
+    "c_com_last": 0.003719,
+    "sep0": 14.982,
+    "sep_min": 14.965,
+    "sep_max": 15.797
+   },
+   "M_anch": {
+    "sep_mean": 8.923,
+    "sep_std": 0.4335,
+    "sep_end": 9.113,
+    "omega_last": -0.021401,
+    "rev_total": -10.443,
+    "c_com_last": 0.095497,
+    "sep0": 8.009,
+    "sep_min": 7.824,
+    "sep_max": 10.256
+   }
+  },
+  "net1": [
+   15.29
+  ],
+  "end1": [
+   [
+    49.7,
+    55.42
+   ]
+  ],
+  "area1_end": [
+   37.5
+  ],
+  "net2": [
+   1.85,
+   2.73
+  ],
+  "end2": [
+   [
+    46.52,
+    46.88
+   ],
+   [
+    45.22,
+    62.24
+   ]
+  ],
+  "area2_end": [
+   32.25,
+   33.75
+  ],
+  "track_saved": "R3_d15_t60",
+  "ts": "2026-08-20 19:20:06"
+ },
+ {
+  "id": "R0_push_d6",
+  "kind": "R0_pushbranch",
+  "job": {
+   "kind": "R0_pushbranch",
+   "id": "R0_push_d6",
+   "tau1": 5.6,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     46.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "save_track_as": "R0_push_d6"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 761.7,
+  "tu_per_s": 1.97,
+  "T_end": 1500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.917,
+    "sep_std": 0.0001,
+    "sep_end": 7.917,
+    "omega_last": -0.0,
+    "rev_total": 0.0,
+    "c_com_last": 1e-06,
+    "sep0": 6.0,
+    "sep_min": 6.0,
+    "sep_max": 7.917
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   1.92
+  ],
+  "end2": [
+   [
+    47.75,
+    48.17
+   ]
+  ],
+  "area2_end": [
+   33.75
+  ],
+  "track_saved": "R0_push_d6",
+  "ts": "2026-08-20 19:23:36"
+ },
+ {
+  "id": "F1_null",
+  "kind": "F1_fork",
+  "job": {
+   "kind": "F1_fork",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     8.0,
+     48.0,
+     null
+    ],
+    [
+     40.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     24.0,
+     48.0,
+     null
+    ],
+    [
+     56.0,
+     48.0,
+     null
+    ],
+    [
+     88.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "F1_null",
+   "seed": 1,
+   "save_track_as": "F1_null"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2085.7,
+  "tu_per_s": 1.68,
+  "T_end": 3500.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 3,
+  "nc2_max": 3,
+  "net1": [
+   1.25,
+   3.4,
+   2.63
+  ],
+  "end1": [
+   [
+    46.51,
+    8.39
+   ],
+   [
+    45.58,
+    42.87
+   ],
+   [
+    46.02,
+    74.23
+   ]
+  ],
+  "area1_end": [
+   31.75,
+   32.25,
+   32.0
+  ],
+  "net2": [
+   0.03,
+   0.02,
+   0.03
+  ],
+  "end2": [
+   [
+    47.72,
+    24.24
+   ],
+   [
+    47.74,
+    56.23
+   ],
+   [
+    47.73,
+    88.23
+   ]
+  ],
+  "area2_end": [
+   32.75,
+   32.75,
+   32.75
+  ],
+  "track_saved": "F1_null",
+  "ts": "2026-08-20 19:26:14"
+ },
+ {
+  "id": "F1_seed1",
+  "kind": "F1_fork",
+  "job": {
+   "kind": "F1_fork",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     8.0,
+     48.0,
+     null
+    ],
+    [
+     40.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     24.0,
+     48.0,
+     null
+    ],
+    [
+     56.0,
+     48.0,
+     null
+    ],
+    [
+     88.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "F1_seed1",
+   "seed": 1,
+   "bfield": {
+    "kind": "chan",
+    "yc": 60.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "chan",
+    "yc": 36.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "save_track_as": "F1_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2095.2,
+  "tu_per_s": 1.67,
+  "T_end": 3500.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 3,
+  "nc2_max": 3,
+  "net1": [
+   13.16,
+   12.66,
+   12.53
+  ],
+  "end1": [
+   [
+    60.28,
+    12.28
+   ],
+   [
+    60.3,
+    38.58
+   ],
+   [
+    60.24,
+    71.16
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25,
+   32.0
+  ],
+  "net2": [
+   11.37,
+   11.35,
+   11.36
+  ],
+  "end2": [
+   [
+    36.38,
+    24.25
+   ],
+   [
+    36.4,
+    56.29
+   ],
+   [
+    36.39,
+    88.24
+   ]
+  ],
+  "area2_end": [
+   32.25,
+   31.75,
+   32.25
+  ],
+  "track_saved": "F1_seed1",
+  "ts": "2026-08-20 19:26:23"
+ },
+ {
+  "id": "F1_swap",
+  "kind": "F1_fork",
+  "job": {
+   "kind": "F1_fork",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     8.0,
+     48.0,
+     null
+    ],
+    [
+     40.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     24.0,
+     48.0,
+     null
+    ],
+    [
+     56.0,
+     48.0,
+     null
+    ],
+    [
+     88.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "F1_swap",
+   "seed": 1,
+   "bfield": {
+    "kind": "chan",
+    "yc": 36.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "chan",
+    "yc": 60.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "save_track_as": "F1_swap"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2097.9,
+  "tu_per_s": 1.67,
+  "T_end": 3500.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 3,
+  "nc2_max": 3,
+  "net1": [
+   11.95,
+   11.47,
+   11.83
+  ],
+  "end1": [
+   [
+    36.3,
+    4.82
+   ],
+   [
+    36.29,
+    39.88
+   ],
+   [
+    36.28,
+    75.12
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.0,
+   32.0
+  ],
+  "net2": [
+   12.29,
+   12.29,
+   12.29
+  ],
+  "end2": [
+   [
+    60.04,
+    24.23
+   ],
+   [
+    60.04,
+    56.21
+   ],
+   [
+    60.04,
+    88.18
+   ]
+  ],
+  "area2_end": [
+   31.75,
+   32.0,
+   32.25
+  ],
+  "track_saved": "F1_swap",
+  "ts": "2026-08-20 19:26:26"
+ },
+ {
+  "id": "T3_b0.03",
+  "kind": "T3_speeddial",
+  "job": {
+   "kind": "T3_speeddial",
+   "id": "T3_b0.03",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 800,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "init_from": "T2A_t57_state",
+   "bfield": {
+    "kind": "const",
+    "val": 0.03
+   },
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "T3_b0.03"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 297.1,
+  "tu_per_s": 2.69,
+  "T_end": 800.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "pairs": {
+   "pair": {
+    "sep_mean": 15.237,
+    "sep_std": 0.0018,
+    "sep_end": 15.238,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.006716,
+    "sep0": 15.24,
+    "sep_min": 15.087,
+    "sep_max": 15.24
+   }
+  },
+  "net1": [
+   14.66,
+   14.65
+  ],
+  "end1": [
+   [
+    47.75,
+    24.32
+   ],
+   [
+    47.75,
+    39.56
+   ]
+  ],
+  "area1_end": [
+   30.75,
+   31.5
+  ],
+  "track_saved": "T3_b0.03",
+  "ts": "2026-08-20 19:29:02"
+ },
+ {
+  "id": "T3_b0.02",
+  "kind": "T3_speeddial",
+  "job": {
+   "kind": "T3_speeddial",
+   "id": "T3_b0.02",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 800,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "init_from": "T2A_t57_state",
+   "bfield": {
+    "kind": "const",
+    "val": 0.02
+   },
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "T3_b0.02"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 297.2,
+  "tu_per_s": 2.69,
+  "T_end": 800.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "pairs": {
+   "pair": {
+    "sep_mean": 15.271,
+    "sep_std": 0.0041,
+    "sep_end": 15.277,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.020047,
+    "sep0": 15.24,
+    "sep_min": 15.131,
+    "sep_max": 15.281
+   }
+  },
+  "net1": [
+   23.39,
+   23.43
+  ],
+  "end1": [
+   [
+    47.75,
+    33.06
+   ],
+   [
+    47.75,
+    48.33
+   ]
+  ],
+  "area1_end": [
+   31.5,
+   32.25
+  ],
+  "track_saved": "T3_b0.02",
+  "ts": "2026-08-20 19:29:02"
+ },
+ {
+  "id": "T3_b0.01",
+  "kind": "T3_speeddial",
+  "job": {
+   "kind": "T3_speeddial",
+   "id": "T3_b0.01",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 800,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "init_from": "T2A_t57_state",
+   "bfield": {
+    "kind": "const",
+    "val": 0.01
+   },
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "pairs": [
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "T3_b0.01"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 297.8,
+  "tu_per_s": 2.69,
+  "T_end": 800.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 0,
+  "nc2_max": 0,
+  "pairs": {
+   "pair": {
+    "sep_mean": 15.264,
+    "sep_std": 0.0046,
+    "sep_end": 15.262,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.041009,
+    "sep0": 15.24,
+    "sep_min": 15.179,
+    "sep_max": 15.274
+   }
+  },
+  "net1": [
+   35.76,
+   35.78
+  ],
+  "end1": [
+   [
+    47.75,
+    45.42
+   ],
+   [
+    47.75,
+    60.68
+   ]
+  ],
+  "area1_end": [
+   31.5,
+   32.75
+  ],
+  "track_saved": "T3_b0.01",
+  "ts": "2026-08-20 19:29:03"
+ }
+]

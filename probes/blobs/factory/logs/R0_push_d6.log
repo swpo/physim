@@ -1,0 +1,2 @@
+{"id": "R0_push_d6", "kind": "R0_pushbranch", "status": "ok", "dt": 0.02, "wall_s": 761.7, "tu_per_s": 1.97, "T_end": 1500.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "pairs": {"M_cargo": {"sep_mean": 7.917, "sep_std": 0.0001, "sep_end": 7.917, "omega_last": -0.0, "rev_total": 0.0, "c_com_last": 1e-06, "sep0": 6.0, "sep_min": 6.0, "sep_max": 7.917}}, "net1": [0.0], "end1": [[47.75, 40.25]], "area1_end": [32.25], "net2": [1.92], "end2": [[47.75, 48.17]], "area2_end": [33.75], "track_saved": "R0_push_d6"}
+[R0_push_d6] appended as record 43

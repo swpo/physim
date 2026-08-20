@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] RS3a_ring_park_t57_scale7.3
+[start] RS3b_ring_park_t57_scale4
+[done  1381s] {"id": "RS3b_ring_park_t57_scale4", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-15.396], "x_end": [45.27], "y_end": [43.03], "area_end": [32.5], "b_dyn_min_all": -0.027837, "b_dyn_max_all": 0.0, "umax_dev_max": 1.834308, "wall_s": 1378.1, "tu_per_s": 2.9, "quick": {"v_x_0": -0.057195, "v_y_0": -0.034746}}
+[start] RS3c_ring_t576_native
+[done  1386s] {"id": "RS3a_ring_park_t57_scale7.3", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-14.111], "x_end": [46.56], "y_end": [54.68], "area_end": [33.0], "b_dyn_min_all": -0.050803, "b_dyn_max_all": 0.0, "umax_dev_max": 1.837989, "wall_s": 1384.8, "tu_per_s": 2.89, "quick": {"v_x_0": -0.073021, "v_y_0": 0.012327}}
+[done   966s] {"id": "RS3c_ring_t576_native", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-12.352], "x_end": [48.32], "y_end": [40.19], "area_end": [32.5], "b_dyn_min_all": -0.006959, "b_dyn_max_all": 0.0, "umax_dev_max": 1.835663, "wall_s": 964.3, "tu_per_s": 3.11, "quick": {"v_x_0": 0.009081, "v_y_0": -0.049936}}
+ALL DONE

@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] RS2a_orbit_t60_native
+[start] RS2b_orbit_ctrl_b0
+[done   265s] {"id": "RS2b_orbit_ctrl_b0", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.007], "x_end": [60.68], "y_end": [197.36], "area_end": [33.0], "b_dyn_min_all": -0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.842664, "wall_s": 262.3, "tu_per_s": 4.57, "quick": {"v_x_0": -2e-06, "v_y_0": 0.123383}}
+[start] RS2c_park_t57_ring
+[done   541s] {"id": "RS2a_orbit_t60_native", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-111.853], "x_end": [-51.18], "y_end": [337.13], "area_end": [33.0], "b_dyn_min_all": -0.006959, "b_dyn_max_all": 0.0, "umax_dev_max": 1.843376, "wall_s": 539.7, "tu_per_s": 4.63, "quick": {"v_x_0": -0.041577, "v_y_0": 0.118392}}
+[start] RS2d_orbit_t60_scale4
+[done   836s] {"id": "RS2c_park_t57_ring", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-16.09], "x_end": [44.58], "y_end": [45.74], "area_end": [31.75], "b_dyn_min_all": -0.006959, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831418, "wall_s": 831.9, "tu_per_s": 3.61, "quick": {"v_x_0": 0.001282, "v_y_0": -0.005642}}
+[done   826s] {"id": "RS2d_orbit_t60_scale4", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-0.065], "x_end": [60.61], "y_end": [52.66], "area_end": [33.75], "b_dyn_min_all": -0.027837, "b_dyn_max_all": 0.0, "umax_dev_max": 1.845473, "wall_s": 821.3, "tu_per_s": 3.04, "quick": {"v_x_0": 0.05656, "v_y_0": -0.042574}}
+ALL DONE

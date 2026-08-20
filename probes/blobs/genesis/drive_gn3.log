@@ -1,0 +1,4 @@
+1 to run (0 already done)
+[start] GN_s1_g-30_sig0.02
+[done   556s] {"id": "GN_s1_g-30_sig0.02", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": -0.041407, "b_dyn_max_all": 0.042241, "umax_dev_max": 0.027931, "wall_s": 549.6, "tu_per_s": 2.73}
+ALL DONE

@@ -1,0 +1,6 @@
+s1_uni_1050 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 1.95s
+s1_jit_1051 fail_g0b  0.0s
+s1_uni_1052 assayed ['1', '3', '0', '1', '1', 'die', 'na', 'na'] 2.58s
+s1_jit_1053 fail_g0b  0.0s
+s1_uni_1054 assayed ['1', '3', '0', '1', '0', 'die', 'na', 'na'] 2.47s
+s1_jit_1055 assayed ['2', '3', '0', '1', '0', 'die|travel', 'bond', 'onset'] 671.68s

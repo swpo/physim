@@ -1,0 +1,11 @@
+e1_9300 g0 merge_share_chan assayed ['3', '4', '0', '1', '1', 'domain|persist|domain', 'repel', 'fragile'] new=True 971.76s
+e1_9301 g0 merge_share_chan assayed ['3', '4', '0', '1', '1', 'die|domain|persist', 'approach', 'fragile'] new=True 796.99s
+e1_9302 g0 mutate assayed ['2', '3', '0', '1', '1', 'persist|die', 'bond', 'robust_static'] new=True 356.12s
+e1_9303 g0 merge_slow_tanh assayed ['2', '4', '2', '1', '0', 'die|die', 'na', 'na'] new=True 12.31s
+e1_9304 g0 mutate assayed ['2', '3', '0', '1', '0', 'persist|die', 'repel', 'robust_static'] new=False 342.72s
+e1_9305 g0 merge_share_chan fail_g0a  new=- 0.0s
+e1_9306 g1 mutate assayed ['1', '2', '1', '1', '1', 'persist', 'replicate', 'robust_static'] new=False 228.94s
+e1_9307 g1 mutate assayed ['1', '2', '0', '1', '0', 'persist', 'repel', 'robust_static'] new=True 219.14s
+e1_9308 g1 mutate assayed ['1', '3', '0', '0', '0', 'domain', 'na', 'na'] new=False 68.05s
+e1_9309 g1 mutate assayed ['2', '4', '2', '1', '0', 'die|die', 'na', 'na'] new=False 17.53s
+e1_9310 g1 mutate assayed ['2', '4', '0', '1', '1', 'die|persist', 'bond', 'fragile'] new=False 611.64s

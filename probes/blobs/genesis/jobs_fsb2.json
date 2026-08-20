@@ -1,0 +1,39 @@
+[
+ {
+  "id": "FSR_ratchet_kick+x_scale7.3",
+  "kind": "fs_ratchet",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 7.3,
+  "T": 2500.0,
+  "blobs": [
+   [
+    70.0,
+    47.75,
+    [
+     0.0,
+     0.5
+    ]
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FSR_park_x80_scale7.3",
+  "kind": "fs_ratchet",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 7.3,
+  "T": 2500.0,
+  "blobs": [
+   [
+    80.0,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

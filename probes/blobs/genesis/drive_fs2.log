@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] FS1b_cliff_settle_T6000
+[start] FSB_trough_scale2
+[done   621s] {"id": "FSB_trough_scale2", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-1.866], "x_end": [41.88], "y_end": [47.75], "area_end": [32.25], "b_dyn_min_all": -0.007556, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831674, "wall_s": 620.0, "tu_per_s": 4.84, "quick": {"v_x_0": -0.003213, "v_y_0": 0.0}}
+[start] FSB_trough_scale4
+[done  1417s] {"id": "FS1b_cliff_settle_T6000", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-7.072], "x_end": [41.68], "y_end": [47.75], "area_end": [32.25], "b_dyn_min_all": -0.003778, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831229, "wall_s": 1411.5, "tu_per_s": 4.25, "quick": {"v_x_0": 1e-05, "v_y_0": 0.0}}
+[start] FSB_trough_scale7.3
+[done   801s] {"id": "FSB_trough_scale4", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-67.445], "x_end": [-23.69], "y_end": [47.75], "area_end": [32.75], "b_dyn_min_all": -0.015112, "b_dyn_max_all": 0.0, "umax_dev_max": 1.832792, "wall_s": 796.2, "tu_per_s": 3.77, "quick": {"v_x_0": 0.004325, "v_y_0": 0.0}}
+[done  1036s] {"id": "FSB_trough_scale7.3", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-225.553], "x_end": [-181.8], "y_end": [47.75], "area_end": [33.75], "b_dyn_min_all": -0.027579, "b_dyn_max_all": 0.0, "umax_dev_max": 1.834744, "wall_s": 1032.6, "tu_per_s": 2.91, "quick": {"v_x_0": -0.090837, "v_y_0": 0.0}}
+ALL DONE

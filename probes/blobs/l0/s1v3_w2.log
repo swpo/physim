@@ -1,0 +1,50 @@
+s1v3_uni_3100 assayed ['2', '1', '1', '0', '0', 'domain|die', 'na', 'na'] 149.54s
+s1v3_jit_3101 assayed ['1', '2', '0', '1', '1', 'persist', 'replicate', 'robust_static'] 283.42s
+s1v3_uni_3102 assayed ['2', '2', '1', '0', '0', 'die|die', 'na', 'na'] 20.08s
+s1v3_jit_3103 assayed ['2', '3', '0', '1', '1', 'persist|persist', 'repel', 'robust_static'] 852.89s
+s1v3_uni_3104 assayed ['1', '3', '1', '0', '0', 'die', 'na', 'na'] 6.46s
+s1v3_jit_3105 assayed ['1', '2', '0', '1', '1', 'persist', 'replicate', 'robust_static'] 172.79s
+s1v3_uni_3106 assayed ['1', '2', '1', '0', '0', 'domain', 'na', 'na'] 91.25s
+s1v3_jit_3107 assayed ['2', '4', '0', '1', '1', 'die|die', 'na', 'na'] 12.44s
+s1v3_uni_3108 assayed ['2', '2', '0', '0', '0', 'die|die', 'na', 'na'] 8.03s
+s1v3_jit_3109 assayed ['2', '3', '0', '1', '0', 'persist|persist', 'repel', 'robust_static'] 417.14s
+s1v3_uni_3110 assayed ['2', '2', '0', '0', '0', 'die|die', 'na', 'na'] 7.81s
+s1v3_jit_3111 assayed ['2', '4', '0', '1', '1', 'die|die', 'na', 'na'] 15.27s
+s1v3_uni_3112 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 2.47s
+s1v3_jit_3113 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.61s
+s1v3_uni_3114 assayed ['1', '3', '0', '1', '0', 'die', 'na', 'na'] 3.37s
+s1v3_jit_3115 assayed ['1', '2', '0', '1', '1', 'persist', 'bond', 'robust_static'] 106.2s
+s1v3_uni_3116 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 1.18s
+s1v3_jit_3117 assayed ['2', '3', '0', '1', '0', 'domain|persist', 'repel', 'fragile'] 388.13s
+s1v3_uni_3118 assayed ['1', '3', '0', '0', '0', 'die', 'na', 'na'] 3.8s
+s1v3_jit_3119 assayed ['1', '2', '1', '1', '1', 'die', 'na', 'na'] 4.13s
+s1v3_uni_3120 fail_g0b  0.02s
+s1v3_jit_3121 assayed ['2', '4', '0', '1', '1', 'persist|persist', 'replicate', 'robust_static'] 254.4s
+s1v3_uni_3122 assayed ['1', '3', '0', '0', '0', 'domain', 'na', 'na'] 55.64s
+s1v3_jit_3123 assayed ['1', '2', '0', '1', '1', 'persist', 'die', 'fragile'] 103.76s
+s1v3_uni_3124 assayed ['2', '1', '1', '0', '0', 'die|die', 'na', 'na'] 7.85s
+s1v3_jit_3125 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.14s
+s1v3_uni_3126 assayed ['2', '2', '1', '0', '0', 'die|die', 'na', 'na'] 9.11s
+s1v3_jit_3127 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.52s
+s1v3_uni_3128 assayed ['2', '2', '2', '0', '0', 'die|domain', 'na', 'na'] 103.94s
+s1v3_jit_3129 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.06s
+s1v3_uni_3130 assayed ['2', '3', '0', '0', '0', 'die|domain', 'na', 'na'] 81.18s
+s1v3_jit_3131 fail_g0a  0.0s
+s1v3_uni_3132 fail_g0b  0.0s
+s1v3_jit_3133 assayed ['1', '2', '1', '1', '1', 'persist', 'bond', 'fragile'] 214.66s
+s1v3_uni_3134 assayed ['2', '3', '0', '1', '0', 'die|domain', 'na', 'na'] 115.5s
+s1v3_jit_3135 assayed ['2', '4', '0', '1', '1', 'multi|persist', 'bond', 'fragile'] 585.6s
+s1v3_uni_3136 assayed ['2', '2', '1', '0', '0', 'die|die', 'na', 'na'] 6.89s
+s1v3_jit_3137 assayed ['2', '3', '0', '1', '0', 'persist|persist', 'repel', 'robust_static'] 328.85s
+s1v3_uni_3138 assayed ['1', '0', '2', '0', '0', 'die', 'na', 'na'] 2.08s
+s1v3_jit_3139 assayed ['1', '2', '1', '1', '1', 'replicate', 'na', 'na'] 42.53s
+s1v3_uni_3140 assayed ['2', '4', '0', '1', '0', 'domain|die', 'na', 'na'] 73.27s
+s1v3_jit_3141 assayed ['2', '4', '0', '1', '1', 'domain|persist', 'bond', 'fragile'] 500.42s
+s1v3_uni_3142 assayed ['1', '3', '0', '1', '0', 'die', 'na', 'na'] 3.43s
+s1v3_jit_3143 assayed ['1', '2', '0', '1', '1', 'multi', 'na', 'na'] 54.4s
+s1v3_uni_3144 assayed ['1', '1', '2', '0', '0', 'die', 'na', 'na'] 4.13s
+s1v3_jit_3145 assayed ['2', '4', '0', '1', '1', 'persist|replicate', 'replicate', 'robust_static'] 407.98s
+s1v3_uni_3146 fail_g0b  0.0s
+s1v3_jit_3147 assayed ['2', '4', '0', '1', '1', 'die|die', 'na', 'na'] 13.93s
+s1v3_uni_3148 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 3.31s
+s1v3_jit_3149 assayed ['2', '3', '0', '1', '0', 'domain|domain', 'na', 'na'] 238.43s

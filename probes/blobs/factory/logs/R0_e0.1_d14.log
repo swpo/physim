@@ -1,0 +1,2 @@
+{"id": "R0_e0.1_d14", "kind": "R0_response", "status": "ok", "dt": 0.02, "wall_s": 3466.4, "tu_per_s": 1.15, "T_end": 4000.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "pairs": {"M_cargo": {"sep_mean": 7.917, "sep_std": 0.0, "sep_end": 7.917, "omega_last": -0.0, "rev_total": -0.0, "c_com_last": 0.0, "sep0": 14.0, "sep_min": 7.917, "sep_max": 14.0}}, "net1": [0.0], "end1": [[47.75, 40.25]], "area1_end": [32.25], "net2": [6.08], "end2": [[47.75, 48.17]], "area2_end": [33.75], "track_saved": "R0_e0.1_d14"}
+[R0_e0.1_d14] appended as record 16

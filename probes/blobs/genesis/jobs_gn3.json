@@ -1,0 +1,16 @@
+[
+ {
+  "id": "GN_s1_g-30_sig0.02",
+  "kind": "gn",
+  "tau": 5.7,
+  "gamma": -30.0,
+  "tau_b": 200.0,
+  "D_b": 0.0,
+  "source": "s1",
+  "noise": 0.02,
+  "seed": 10,
+  "T": 1500.0,
+  "allow_empty": true,
+  "rec_tu": 10.0
+ }
+]

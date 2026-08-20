@@ -1,0 +1,8 @@
+3 to run (0 already done)
+[start] FSRAIL_offset_y+6
+[start] LV1_uniform-0.019_kick
+[done   531s] {"id": "LV1_uniform-0.019_kick", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [49.951], "x_end": [98.2], "y_end": [47.75], "area_end": [33.25], "b_dyn_min_all": -0.019, "b_dyn_max_all": -0.019, "umax_dev_max": 1.84115, "wall_s": 525.0, "tu_per_s": 2.86, "quick": {"v_x_0": 0.021562, "v_y_0": -0.0}}
+[start] LV2_uniform-0.019_park
+[done   701s] {"id": "FSRAIL_offset_y+6", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [-1.835], "x_end": [41.91], "y_end": [47.73], "area_end": [32.5], "b_dyn_min_all": -0.003778, "b_dyn_max_all": 0.0, "umax_dev_max": 1.831221, "wall_s": 697.6, "tu_per_s": 2.87, "quick": {"v_x_0": 2e-06, "v_y_0": -0.000152}}
+[done   355s] {"id": "LV2_uniform-0.019_park", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [0.0], "x_end": [48.25], "y_end": [47.75], "area_end": [34.25], "b_dyn_min_all": -0.019, "b_dyn_max_all": -0.019, "umax_dev_max": 1.833396, "wall_s": 349.9, "tu_per_s": 2.86, "quick": {"v_x_0": 0.0, "v_y_0": -0.0}}
+ALL DONE

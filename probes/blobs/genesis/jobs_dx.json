@@ -1,0 +1,19 @@
+[
+ {
+  "id": "FS1_dx025_refine",
+  "kind": "fs_grid",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "dx": 0.25,
+  "T": 800.0,
+  "blobs": [
+   [
+    48.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

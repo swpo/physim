@@ -1,0 +1,15 @@
+s1v2_uni_2100 assayed ['1', '4', '0', '1', '0', 'die', 'na', 'na'] 7.96s
+s1v2_jit_2101 fail_g0b  0.0s
+s1v2_uni_2102 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 4.9s
+s1v2_jit_2103 fail_g0b  0.0s
+s1v2_uni_2104 fail_g0b  0.07s
+s1v2_jit_2105 fail_g0b  0.0s
+s1v2_uni_2106 assayed ['1', '2', '0', '0', '0', 'die', 'na', 'na'] 4.81s
+s1v2_jit_2107 fail_g0b  0.0s
+s1v2_uni_2108 assayed ['1', '3', '0', '0', '0', 'domain', 'na', 'na'] 120.81s
+s1v2_jit_2109 assayed ['1', '2', '0', '1', '1', 'replicate', 'na', 'na'] 37.22s
+s1v2_uni_2110 fail_g0b  0.0s
+s1v2_jit_2111 fail_g0a  0.0s
+s1v2_uni_2112 assayed ['1', '2', '1', '0', '0', 'domain', 'na', 'na'] 116.81s
+s1v2_jit_2113 assayed ['1', '2', '1', '1', '1', 'die', 'na', 'na'] 6.19s
+s1v2_uni_2114 assayed ['2', '2', '0', '1', '0', 'die|domain', 'na', 'na'] 134.51s

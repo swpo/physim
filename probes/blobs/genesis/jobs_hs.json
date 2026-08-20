@@ -1,0 +1,58 @@
+[
+ {
+  "id": "HS1_hand_ramp",
+  "kind": "hs_saw",
+  "tau": 5.7,
+  "profile": "saw",
+  "eps": 0.0005,
+  "frac": 0.85,
+  "n_teeth": 3,
+  "T": 2000.0,
+  "blobs": [
+   [
+    48.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "HS2_hand_cliff",
+  "kind": "hs_saw",
+  "tau": 5.7,
+  "profile": "saw",
+  "eps": 0.0005,
+  "frac": 0.85,
+  "n_teeth": 3,
+  "T": 2000.0,
+  "blobs": [
+   [
+    60.0,
+    48.0,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "HS3_hand_brake",
+  "kind": "hs_saw",
+  "tau": 5.7,
+  "profile": "saw",
+  "eps": 0.0005,
+  "frac": 0.85,
+  "n_teeth": 3,
+  "T": 2000.0,
+  "blobs": [
+   [
+    34.3,
+    48.0,
+    null
+   ]
+  ],
+  "noise": 0.002,
+  "seed": 11,
+  "rec_tu": 5.0
+ }
+]

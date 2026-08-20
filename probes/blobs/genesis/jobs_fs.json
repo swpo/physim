@@ -1,0 +1,83 @@
+[
+ {
+  "id": "FS1_cliff_native",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "T": 2000.0,
+  "blobs": [
+   [
+    48.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FS5_ctrl_b0",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "T": 1000.0,
+  "blobs": [
+   [
+    48.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FS2_ramp_native",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "T": 6000.0,
+  "blobs": [
+   [
+    25.0,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 10.0
+ },
+ {
+  "id": "FS3_scale7.3_ramp",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 7.3,
+  "T": 3000.0,
+  "blobs": [
+   [
+    18.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FS4_brake_noise",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "T": 2000.0,
+  "blobs": [
+   [
+    43.5,
+    47.75,
+    null
+   ]
+  ],
+  "noise": 0.002,
+  "seed": 11,
+  "rec_tu": 5.0
+ }
+]

@@ -1,0 +1,14 @@
+e1_9100 g0 merge_cross_edge assayed ['3', '4', '1', '1', '0', 'persist|persist|domain', 'repel', 'robust_static'] X:repel new=True 1218.47s
+e1_9101 g0 mutate assayed ['1', '2', '1', '1', '1', 'persist', 'repel', 'robust_static'] new=True 294.26s
+e1_9102 g0 merge_share_chan fail_g0a  new=- 0.0s
+e1_9103 g0 merge_slow_tanh assayed ['2', '6', '1', '1', '1', 'die|multi', 'na', 'na'] new=True 204.27s
+e1_9104 g0 merge_slow_tanh assayed ['2', '4', '2', '1', '1', 'persist|persist', 'approach', 'robust_static'] X:drift new=True 741.35s
+e1_9105 g0 mutate assayed ['1', '2', '0', '1', '1', 'persist', 'replicate', 'robust_static'] new=False 166.43s
+e1_9106 g1 mutate assayed ['2', '3', '0', '1', '1', 'persist|domain', 'repel', 'robust_static'] new=True 611.1s
+e1_9107 g1 mutate assayed ['2', '3', '0', '1', '0', 'persist|persist', 'repel', 'robust_static'] X:repel new=False 812.55s
+e1_9108 g1 merge_share_chan assayed ['2', '2', '1', '1', '1', 'replicate|die', 'na', 'na'] new=True 22.63s
+e1_9109 g1 mutate assayed ['1', '2', '0', '1', '0', 'persist', 'repel', 'robust_static'] new=False 174.24s
+e1_9110 g1 merge_share_chan fail_g0a  new=- 0.0s
+e1_9111 g1 merge_share_chan assayed ['2', '3', '0', '1', '1', 'persist|replicate', 'die', 'robust_static'] new=True 323.78s
+e1_9112 g2 mutate assayed ['2', '3', '0', '1', '1', 'persist|domain', 'repel', 'robust_static'] new=False 224.04s
+e1_9113 g2 merge_share_chan fail_g0a  new=- 0.0s

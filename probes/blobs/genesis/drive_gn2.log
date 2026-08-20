@@ -1,0 +1,10 @@
+4 to run (0 already done)
+[start] GN_thresh_sig0.10
+[start] GN_thresh_sig0.20
+[done   205s] {"id": "GN_thresh_sig0.10", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 0.147594, "wall_s": 202.2, "tu_per_s": 2.47}
+[done   205s] {"id": "GN_thresh_sig0.20", "status": "ok", "ncomp0": 0, "ncomp_end": 0, "ncomp_max": 0, "net_x": [null], "x_end": [null], "y_end": [null], "area_end": [null], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 0.31589, "wall_s": 201.8, "tu_per_s": 2.48}
+[start] GN_thresh_sig0.50
+[start] GN_surv_sig0.10
+[done   215s] {"id": "GN_surv_sig0.10", "status": "ok", "ncomp0": 1, "ncomp_end": 1, "ncomp_max": 1, "net_x": [17.421], "x_end": [65.67], "y_end": [70.53], "area_end": [32.25], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 1.873468, "wall_s": 213.7, "tu_per_s": 2.34, "quick": {"v_x_0": 0.039424, "v_y_0": 0.039459}}
+[done   225s]  33.25, 22.75, 32.5, 24.25, 21.75, 18.25, 25.0, 28.25, 23.75, 27.5, 26.25, 38.5, 30.25, 29.25, 27.0, 25.25, 30.0, 22.5, 26.75, 28.5, 25.75, 28.25, 36.25, 23.75, 32.75, 22.5, 21.0, 22.25, 27.25, 25.75, 25.25, 28.25, 39.75, 33.75, 27.5, 30.75, 39.25, 26.0, 26.0, 30.25, 19.75, 27.25, 23.25, 27.5], "b_dyn_min_all": 0.0, "b_dyn_max_all": 0.0, "umax_dev_max": 2.213984, "wall_s": 220.1, "tu_per_s": 2.27}
+ALL DONE

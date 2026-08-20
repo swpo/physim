@@ -1,0 +1,69 @@
+[
+ {
+  "id": "FS1b_cliff_settle_T6000",
+  "kind": "fs_saw",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "T": 6000.0,
+  "blobs": [
+   [
+    48.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 10.0
+ },
+ {
+  "id": "FSB_trough_scale2",
+  "kind": "fs_scale",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 2.0,
+  "T": 3000.0,
+  "blobs": [
+   [
+    43.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FSB_trough_scale4",
+  "kind": "fs_scale",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 4.0,
+  "T": 3000.0,
+  "blobs": [
+   [
+    43.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ },
+ {
+  "id": "FSB_trough_scale7.3",
+  "kind": "fs_scale",
+  "tau": 5.7,
+  "freeze_b": true,
+  "binit_from": "T5_ramp_final",
+  "b_scale": 7.3,
+  "T": 3000.0,
+  "blobs": [
+   [
+    43.5,
+    47.75,
+    null
+   ]
+  ],
+  "rec_tu": 5.0
+ }
+]

@@ -1,0 +1,15 @@
+s1_uni_1000 assayed ['1', '3', '0', '1', '0', 'die', 'na', 'na'] 2.63s
+s1_jit_1001 assayed ['1', '2', '1', '1', '1', 'die', 'na', 'na'] 2.74s
+s1_uni_1002 assayed ['1', '2', '0', '1', '0', 'die', 'na', 'na'] 1.96s
+s1_jit_1003 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.01s
+s1_uni_1004 assayed ['1', '1', '1', '1', '1', 'die', 'na', 'na'] 2.19s
+s1_jit_1005 fail_g0b  0.0s
+s1_uni_1006 assayed ['1', '2', '1', '1', '0', 'die', 'na', 'na'] 2.89s
+s1_jit_1007 assayed ['1', '2', '0', '1', '1', 'replicate', 'na', 'na'] 6.73s
+s1_uni_1008 fail_g0b  0.0s
+s1_jit_1009 fail_g0b  0.0s
+s1_uni_1010 fail_g0b  0.0s
+s1_jit_1011 assayed ['1', '2', '0', '1', '1', 'die', 'na', 'na'] 2.14s
+s1_uni_1012 assayed ['1', '3', '0', '0', '0', 'travel', 'merge', 'already'] 407.25s
+s1_jit_1013 assayed ['1', '2', '0', '1', '1', 'persist', 'replicate', 'fragile'] 114.05s
+s1_uni_1014 fail_g0b  0.0s
