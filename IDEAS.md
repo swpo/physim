@@ -86,3 +86,27 @@ is replenished. All need probe campaigns before engine work.
   doctrine already exists (E2 anthropic-screening precedent).
   STATUS: parked pending user green-light for a pilot searcher (L0-sampler: random +
   elite-archive over the constrained genotype space, yield curves per behavior cell).
+
+- BLOBS L0 search SHARPENED G0 SCREENS (2026-02-19, from spatial-dynamics analysis):
+  blob existence is subcritical (invisible to temporal vacuum linearization) BUT the
+  STEADY-STATE equations read as spatial dynamics give algebraic screens in microseconds:
+  (G0a) temporal dispersion max Re lambda(k) < 0 — vacuum stable (else Turing soup);
+  (G0b) reaction cubic has the upper branch (bistable local structure — root count);
+  (G0c) SPATIAL eigenvalues of vacuum (modes e^{mu x} of the steady ODE system):
+        complex mu = oscillatory tails = binding shells; computed for our worlds:
+        wavelength 10.8-10.9 px vs MEASURED M4 shell spacing 10.9 px (1% match);
+        statics depend on tau,Dv only via A=tau*Dv — ANALYTIC in this formalism
+        (steady v-eq: v'' = (v-u)/(tau*Dv); the M4 searcher's empirical law is one line).
+  Then ONE nonlinear seeded-poke probe confirms existence (homoclinic orbit — a global/
+  topological object: no local criterion can fully replace the probe; snaking-region
+  theory says families of localized states exist where G0a-c hold near onset).
+- BLOBS grounding target: AMAZON FULFILLMENT CENTER world (user, 2026-02-19) — conveyor
+  network with forks/merges, control arms, sorters. Inventory already certified: track
+  (saw), rails, blocking walls, pickup coupler, parking brake (pair-only zone), ROTOR
+  (=roller: seeds motion locally where nothing translates — rotor-only zone!), species-
+  selective coupling (sorter). Missing: unload/release, fork/merge switchyards,
+  roller->cargo momentum transfer (CONCRETE NEXT PROBE: park B cargo beside a spinning
+  heterodimer; measure tangential advection through w/b channels). Too hard in one shot;
+  north-star for L3 composition + the L0 evolutionary search's behavior descriptors.
+- BLOBS L0 compute: parallelize assay battery on rented Prime compute (prime CLI pods;
+  per-candidate assays are independent — embarrassingly parallel).
