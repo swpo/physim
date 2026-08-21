@@ -146,3 +146,25 @@ capture works, terminal state destroys the machine. HONEST NEGATIVE for v1.
 ## T-series plan (tow matching): blind pair (eta12=0) tau1 in {5.64, 5.66},
 eta21 in {0.1, 0.2}, cargo rear slot d0=9; plus front slot at 5.64.
 Predicted stable tow: (5.64, 0.1) sep*~9.7; (5.66, 0.2) sep*~9.5.
+
+## Tow physics closed out (records 32-52)
+- R0 push branch (cargo INSIDE d*): d0=6 pushed out to 7.917 smoothly (record 43);
+  d0=5 SPLITS cargo (t=184) — core overlap kills. eta21=0.15 at d0=12: cargo
+  reeled but SPLITS at t=470 (well too deep -> deformation). USABLE eta21<=0.1.
+- F0 valley response (chan_eps=0.002, records 33-34): M near-onset runs at
+  0.074 px/tu; S crawls at 0.0047 px/tu (16x slower). Both reach valley center.
+  => per-species rails DO sort by speed; S response ~ vvw-linear class.
+- T1 rear tow honest negatives: 5.64 pair kick-transient decays to c~0.008 BUT
+  during decay (c>0.017 for first 1200tu) it outruns the well: cargo stranded.
+  5.66/5.7 e0.2: pair escapes; on lap 2 the pair PLOWS through the parked cargo
+  from behind -> cargo splits (they never bind: front slot is push-out branch).
+- T3/T4/T5 b-braked carrier ladder: uniform species-1 isok b slows the blind
+  pair: c(b) = 0.059 (b=0), 0.041 (0.01), 0.020 (0.02), 0.0067 (0.03) — but at
+  b=0.025 the pair keeps decelerating (c->0.0007 by t=2500: near quasi-static
+  stall b*~0.025-0.03, matches machine C3). Cargo at rear d0=8.7: NOT towed even
+  at c~0.024-0.01 (T4_b0.025: sep 8.7->30.6 monotone; the pair decelerated
+  THROUGH the tow window without capture; drag advanced cargo +1.8px vs blind
+  0.0px — the well acts but the fixed point never establishes).
+=> KEY numbers: well v_max = 0.0173 px/tu at sep=10.2 (eta21=0.1). A carrier
+   holding c in (0.005, 0.015) steadily is needed. The A=4 pair has NO stable
+   speed dial in that window (near-onset c is either >=0.02 or collapsing).

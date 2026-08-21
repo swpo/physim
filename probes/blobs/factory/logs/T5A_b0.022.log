@@ -1,0 +1,2 @@
+{"id": "T5A_b0.022", "kind": "T5_stageA", "status": "ok", "dt": 0.02, "wall_s": 636.9, "tu_per_s": 3.14, "T_end": 2000.0, "nc1_end": 2, "nc1_max": 2, "nc2_end": 0, "nc2_max": 0, "pairs": {"pair": {"sep_mean": 15.279, "sep_std": 0.0024, "sep_end": 15.279, "omega_last": -0.0, "rev_total": -0.0, "c_com_last": 0.004594, "sep0": 15.24, "sep_min": 15.121, "sep_max": 15.284}}, "net1": [30.57, 30.61], "end1": [[47.75, 40.23], [47.75, 55.51]], "area1_end": [30.75, 32.0], "state_saved": "T5A_b0.022_state", "track_saved": "T5A_b0.022"}
+[T5A_b0.022] appended as record 56

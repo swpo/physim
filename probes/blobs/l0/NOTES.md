@@ -67,3 +67,13 @@
 0.0300. Uniform strategy samples r in +-1.15 uniformly => only ~5% of uniform
 candidates land within 2x of the refs' fold margin — the two strategies probe
 very different shells of equation space (by design, now quantified).
+
+## Stage-1 COMPLETE (2026-02-19 ~19:40)
+- s1v3 batch 200/200 done (121 min wall, 4 workers). Yield curves in
+  data/yield_s1v3.json; SUMMARY.md final; scorecard sent to controller.
+- Headline: d*/wl_G0c = 1.348+-0.075 across 30 first-shell bonds in jittered
+  space (M4 cert 1.354); half-wavelength shell ladder above.
+- 2 uniform-random novel worlds (uni_3050 tanh-core, uni_3034 monotone-tail
+  bond d*=27.9). Strips rendered.
+- Stage-2 recommendations recorded in SUMMARY.md caveats (chem_box recall fix,
+  adaptive tau ladder, d*<30 wrap filter, 90/18 cands per core-hour budget).

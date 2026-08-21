@@ -5,3 +5,7 @@ e1_9503 g0 mutate assayed ['1', '2', '1', '0', '0', 'die', 'na', 'na'] new=False
 e1_9504 g0 mutate assayed ['2', '4', '1', '1', '1', 'persist|multi', 'repel', 'robust_static'] new=True 832.44s
 e1_9505 g0 mutate assayed ['2', '3', '0', '1', '0', 'persist|die', 'repel', 'robust_static'] new=False 522.96s
 e1_9506 g1 merge_slow_tanh assayed ['3', '5', '1', '1', '1', 'persist|persist|domain', 'repel', 'robust_static'] X:cross_bond new=True 1085.09s
+e1_9507 g1 merge_slow_tanh assayed ['3', '4', '3', '1', '1', 'persist|die|die', 'repel', 'robust_static'] new=True 791.5s
+e1_9508 g1 merge_cross_edge assayed ['3', '5', '1', '1', '1', 'persist|persist|persist', 'replicate', 'robust_static'] X:replicate new=True 363.93s
+e1_9509 g1 merge_cross_edge assayed ['3', '6', '0', '1', '1', 'persist|replicate|persist', 'replicate', 'robust_static'] X:drift new=True 614.94s
+e1_9510 g1 mutate assayed ['1', '2', '1', '1', '1', 'persist', 'replicate', 'robust_static'] new=False 84.97s

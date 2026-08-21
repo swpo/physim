@@ -1,0 +1,11 @@
+rh1_7000 eta=0.202 [5.9, 0.7, 5.0, 0.7] rotor omega=-0.03238 sep=8.72 178s
+ROTOR REDISCOVERED at child 1
+rh1_7001 eta=0.164 [5.9, 0.7, 5.9, 0.7] drift omega=-0.04014 sep=9.60 188s
+rh1_7002 eta=0.158 [4.5, 0.7, 5.7, 0.7] replicate  160s
+rh1_7003 eta=0.043 [4.5, 0.85, 5.17, 0.7] cross_bond omega=0.00000 sep=7.94 169s
+rh1_7004 eta=0.065 [5.43, 0.71, 5.7, 0.7] replicate  62s
+rh1_7005 eta=0.232 [4.5, 0.7, 4.5, 0.7] replicate  53s
+rh1_7006 eta=0.152 [5.0, 0.7, 5.0, 0.7] replicate  64s
+rh1_7007 eta=0.197 [5.7, 0.7, 4.5, 0.7] replicate  132s
+rh1_7008 eta=0.270 [5.9, 0.7, 6.62, 0.8] na  41s
+rh1_7009 eta=0.080 [4.5, 0.7, 5.0, 0.7] cross_bond omega=0.00000 sep=7.87 145s

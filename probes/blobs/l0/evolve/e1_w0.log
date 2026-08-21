@@ -12,3 +12,5 @@ e1_9110 g1 merge_share_chan fail_g0a  new=- 0.0s
 e1_9111 g1 merge_share_chan assayed ['2', '3', '0', '1', '1', 'persist|replicate', 'die', 'robust_static'] new=True 323.78s
 e1_9112 g2 mutate assayed ['2', '3', '0', '1', '1', 'persist|domain', 'repel', 'robust_static'] new=False 224.04s
 e1_9113 g2 merge_share_chan fail_g0a  new=- 0.0s
+e1_9114 g2 mutate assayed ['1', '2', '1', '1', '1', 'persist', 'repel', 'robust_static'] new=False 144.38s
+e1_9115 g2 merge_cross_edge assayed ['3', '6', '1', '1', '1', 'persist|multi|persist', 'repel', 'robust_static'] X:cross_bond new=True 911.37s

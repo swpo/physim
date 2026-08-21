@@ -279,3 +279,21 @@ scale with traveler momentum); one-way DIODE at machine amplitude (kicked agains
 tooth: reverses).
 M5 landscape CONFIRMED a natural L1 fixed-point family; the single exogenous step
 in the reduction is the FREEZE itself (gamma->0 limit). Films shipped.
+
+
+### l0-sampler — STAGE 1 DONE (scorecard + controller audit 2026-02-20)
+Parity 5/5 (rotor omega to 5 digits); G0c validated (M4 shell 0.5%). Yield curves
+(the deliverable): uniform 2 alive/100 (funnel 2ms, assay dominates 40s), jitter 49
+alive/100 + 14 bond/100; throughput 30 cand/hr/core mixed; ~1 novel world per 50
+core-hours uniform. Jitter-by-ref: VVW 74%, XV 76%, M0 38%, BFIELD 36%, M4 23% alive.
+HEADLINES: (1) transferable chemistry law d*/wl(G0c) — their n=30 gives 1.348+-0.075;
+controller fresh-jitter audit: 1.208-1.210 two-sided (1.8sig low) -> law is real but
+band wider (~1.2-1.5); order-of-shell physics confirmed. (2) uni_3034 NON-OSCILLATORY
+BINDING (monotone tails yet clean bond) — AUDITED: d0=14 -> d*=27.857 (3rd-decimal
+match), d0=24 -> 28.75 (wide/flat well or 2nd shell), d0=10 merges. New mechanism
+class (competing monotone tails), n=2 worlds (uni_3050 exciting-K also novel).
+(3) u0-designation is a GENE (certified vacua = MIDDLE root, channel-stabilized).
+(4) blobs live near the cubic fold (fold-dist ~0.03) -> log-jitter fold distance.
+Stage-2 fixes queued: chem_box recall bug, adaptive tau ladder (A3 +-20% too coarse
+for +-1% drift windows), A2 wrap filter. POD FAN-OUT: controller decision pending
+(economics: jitter maps islands 25x faster than uniform finds new ones).
