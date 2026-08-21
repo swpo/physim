@@ -77,3 +77,30 @@ very different shells of equation space (by design, now quantified).
   bond d*=27.9). Strips rendered.
 - Stage-2 recommendations recorded in SUMMARY.md caveats (chem_box recall fix,
   adaptive tau ladder, d*<30 wrap filter, 90/18 cands per core-hour budget).
+
+## Stage-2 prep (2026-02-19 evening, controller greenlight)
+V3 fixes applied to lib/ (locked in metrics.py V3 + V3.1 amendments):
+ 1. chem_box = wl+|Re| box only (recall bug removed).
+ 2. bond_wrap_artifact class for d*>30.
+ 3. A3 adaptive ladder +-{1,2,5}% early-stop; ONLY on alive candidates.
+ 4. shell_ratios d*/wl logged per bond; documented band [1.2,1.5].
+ 5. fold_dist logged for every candidate; jitter already log-jitters fold dist.
+V3.1 (found while validating fix 3 on ref M4 tau=5.7):
+ - +-1% tau ladder with SYMMETRIC pokes found nothing (symmetric IC masks
+   drift — BF5 lesson recurs); added kd=0.5px kick to ladder pokes.
+ - Kicked pokes COAST below onset (c decays 0.027->0.012->0.004 over windows);
+   naive c-threshold misclassifies coasting as travel. Added steadiness gate
+   c_last/c_prev>=0.7; decaying transients = new class "coast" (near-onset
+   critical slowing — itself a motility-adjacent signal, flag "near_onset").
+ - Validated ladder on M4 ref: -5/-2 persist, -1 coast, +1/+2 coast, +5 travel
+   c=0.038 steady. (Onset detection is conservative: +1% above threshold still
+   coasts at T=400 because near-onset acceleration is slow. Documented.)
+STAGE2 BUNDLE stage2/{worker.py, lib/, requirements.txt, merge_shards.py,
+README.md}: standalone worker (numpy+scipy only), deterministic per shard_seed
+(rng([shard_seed, j])), SAVE-AS-YOU-GO shard rewrite per candidate, ghash
+(sha256 of physics content) for merge dedup, 60/40 jitter/uniform mix, jitter
+pool = 5 refs + builtin elites uni_3034/uni_3050 (+ optional --elites file).
+Smokes: shard 7 10-cand quick 2.7 min; determinism ghash-identical on rerun;
+merge dedups 3/3; shard 11 6-cand FULL battery 9.8 min (98 s/cand jitter-heavy)
+with bonds, ratios in-band, ladders walking. Budget: ~3 h/core per 100-cand
+shard => 25 shards on 8x4vCPU ~ 3-4 h wall.

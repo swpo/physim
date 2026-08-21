@@ -84,6 +84,8 @@ def one_candidate(rng, strategy, cand_id, tag):
     rec["a1"] = recs["a1"]
     rec["a2"] = recs["a2"]
     rec["a3"] = recs["a3"]
+    rec["fold_dist"] = recs.get("fold_dist")
+    rec["shell_ratios"] = recs.get("shell_ratios")
     rec["desc"] = list(map(str, desc))
     rec["stage"] = "assayed"
     key = archive_update(desc, fr["g0a_margin"], g, cand_id)

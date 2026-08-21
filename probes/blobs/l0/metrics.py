@@ -1,4 +1,25 @@
-"""metrics.py — LOCKED L0 stage-1 measurement conventions.
+"""metrics.py — LOCKED L0 measurement conventions.
+V3 LOCK (stage-2, 2026-02-19, controller-approved fixes BEFORE pod batch):
+ 1. chem_box = wavelength+|Re| box ONLY (v2 osc-dominance clause had measured
+    recall bug: rejected all 15 alive VVW jitters).
+ 2. A2: d*>30px => class bond_wrap_artifact (stage-1: fake d*=131.9 co-travel).
+ 3. A3 = adaptive tau ladder +-{1,2,5}% with early stop per side (was +-20%,
+    0 onsets/200; M4 drift windows are ~2% wide). Ladder only on alive cands.
+ 4. shell_ratios d*/wl_G0c logged per bond; documented band [1.2,1.5] first
+    shell (order-of-shell physics; batch 1.348+-.075, controller audit 1.208).
+ 5. fold_dist = 1-|k1/k1max| logged per act for EVERY candidate.
+Stage-1 (s1v3) ran under V2; stage-2 shards run under V3.
+V3.1 AMENDMENT (locked after M4-ref ladder validation, BEFORE pod batch):
+ - A3 ladder pokes carry kd=0.5px kick (A3_KICK_PX; BF5 lesson: symmetric ICs
+   mask traveling regimes) and run T=400 (A3_T).
+ - travel requires STEADINESS: c_last/c_prev >= 0.7 (STEADY_RATIO) across the
+   two final 150tu windows; decaying kicked transients = new class "coast"
+   (near-onset critical slowing). Ladder walk: continue through persist/coast,
+   stop side on travel (onset found) or hard fail (island edge).
+ - motility flag adds "near_onset" (coast seen on ladder, no steady travel).
+ VALIDATION on ref M4 tau=5.7 (single-blob drift threshold 5.748):
+   -5%,-2% persist / -1% coast / +1%,+2% coast (critical slowing) / +5%
+   TRAVEL c=0.038 steady. Ladder cost ~100 core-s per alive candidate.
 V2 LOCK 2026-02-19: first batch (26 candidates, tag s1) ABORTED and DISCARDED
 after ref-parity check inside the locked geometry showed the bare u-poke misses
 ALL tau=5.7 certified refs (M1 trap: M4/XV/BFIELD die; dressed 0.6 poke revives
