@@ -1,0 +1,2 @@
+{"id": "R4_e0.05_d12", "kind": "R4_nearonset_cargo", "status": "ok", "dt": 0.02, "wall_s": 473.4, "tu_per_s": 3.17, "T_end": 1500.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "pairs": {"M_cargo": {"sep_mean": 8.033, "sep_std": 0.0, "sep_end": 8.033, "omega_last": -0.0, "rev_total": -0.0, "c_com_last": 0.0, "sep0": 12.0, "sep_min": 7.01, "sep_max": 12.0}}, "net1": [0.0], "end1": [[47.75, 40.25]], "area1_end": [32.25], "net2": [3.97], "end2": [[47.75, 48.28]], "area2_end": [31.75], "track_saved": "R4_e005_d12"}
+[R4_e0.05_d12] appended as record 63

@@ -349,3 +349,31 @@ is structural), cross_edge eta>~0.15 replicates (certified window generalizes).
 seeds 100-131, ~2500 candidates in flight; ~5% at first check — ETA 8-10h
 (full-battery candidates slower than smoke estimate). Harvest+merge = controller.
 Costs: a=datacrunch $0.028/hr, b-h=nebius $0.099/hr => ~$0.72/hr total.
+
+
+### blob-factory — DONE (scorecard + controller audit 2026-02-21)
+Fulfillment-center primitives, L3->L2. Engine: rotor/sim.py + vacuum-exact static
+FIELDS eta_i(x,y) (coupling geography — enters v_i like isok enters u) and
+per-species b_i(x,y). Smoke = M7 anchor to 6 digits.
+1) ROLLER split verdict: brief-config advection NULL (|vtan|<=6e-5; cargo reels to
+   anchor ring instead; rotor converts to S-M-S PENDULUM librator T~307tu —
+   hierarchy extended bond<travel<rotate<librate). CERTIFIED advection at deep
+   coupling (tau1=6.0, eta21=0.2, cargo on-ring): vtan=1.4e-3 sign-locked, null
+   exactly 0 — positioner (~0.07px/rev), not circulator. Roller also EXTENDS
+   same-species capture range (d0=20-22 vs basin 19.5).
+2) UNLOAD DOCK certified 3/3+controls via eta-xbox null zone. KEY NEW PRIMITIVE:
+   NEAR-ONSET CARGO — deep-static S is untowable (well ceiling << carrier speed;
+   mutual-eta carriers replicate; eta is a ~100x machine-scale |k1| kick), but
+   tau2=5.60 (rotor-only zone) cargo still parks alone yet responds 7-8x stronger:
+   locks at 8.46, tows at FULL pair speed 155px; eta21 0.1 tows / 0.05 drops.
+   (M5's near-onset adversary physics inverted into the tow mechanism.)
+3) SPECIES FORK certified: per-species rails 24/24 purity + timescale-asymmetry
+   speed-sorting dial (M 0.074 vs S 0.0047 px/tu).
+4) GLUE certified (v4 3 seeds + mirror; CONTROLLER AUDIT fresh seed 9: full chain
+   reproduced — tow, dock release 4px past x1, fork-sort to 17.75px off-lane park,
+   carrier laps 293px, ncomp frozen). INTERFERENCE MAPPED: composition rule =
+   interaction footprints (tow-well reach 15px / rail walls / carrier lane) must
+   be DISJOINT at every handoff; violations reproduce as fly-by drag, re-capture,
+   or crotch-trap head-on split. Glue design = geometric margins, not new physics.
+DESIGN LAWS: near-onset cargo (tau2 dial = cargo hot/cold switch); eta(x,y) legal;
+eta12<=0.05 budget for traveling carriers; 15px parking rule; crotches are traps.

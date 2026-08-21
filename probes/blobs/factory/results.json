@@ -6629,5 +6629,6630 @@
   "state_saved": "T5A_b0.022_state",
   "track_saved": "T5A_b0.022",
   "ts": "2026-08-20 19:59:14"
+ },
+ {
+  "id": "W0_b0.01",
+  "kind": "W0_tractor",
+  "job": {
+   "kind": "W0_tractor",
+   "tau1": 5.8,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     22.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "W0_b0.01",
+   "bfield": {
+    "kind": "const",
+    "val": 0.01
+   },
+   "save_track_as": "W0_b0.01"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 749.5,
+  "tu_per_s": 2.99,
+  "T_end": 2240.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 87.859,
+    "sep_std": 2.1604,
+    "sep_end": 90.909,
+    "omega_last": 1.9e-05,
+    "rev_total": 0.01,
+    "c_com_last": 0.018624,
+    "sep0": 8.0,
+    "sep_min": 8.0,
+    "sep_max": 90.909
+   }
+  },
+  "net1": [
+   84.55
+  ],
+  "end1": [
+   [
+    47.75,
+    114.8
+   ]
+  ],
+  "area1_end": [
+   32.75
+  ],
+  "net2": [
+   5.83
+  ],
+  "end2": [
+   [
+    42.21,
+    24.06
+   ]
+  ],
+  "area2_end": [
+   28.5
+  ],
+  "track_saved": "W0_b0.01",
+  "ts": "2026-08-20 20:07:35"
+ },
+ {
+  "id": "W0_b0.02",
+  "kind": "W0_tractor",
+  "job": {
+   "kind": "W0_tractor",
+   "tau1": 5.8,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     22.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "W0_b0.02",
+   "bfield": {
+    "kind": "const",
+    "val": 0.02
+   },
+   "save_track_as": "W0_b0.02"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 822.5,
+  "tu_per_s": 3.04,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 44.613,
+    "sep_std": 0.13,
+    "sep_end": 44.817,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.000733,
+    "sep0": 8.0,
+    "sep_min": 8.0,
+    "sep_max": 44.817
+   }
+  },
+  "net1": [
+   37.34
+  ],
+  "end1": [
+   [
+    47.75,
+    67.59
+   ]
+  ],
+  "area1_end": [
+   31.5
+  ],
+  "net2": [
+   0.52
+  ],
+  "end2": [
+   [
+    47.75,
+    22.77
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "track_saved": "W0_b0.02",
+  "ts": "2026-08-20 20:08:48"
+ },
+ {
+  "id": "W0_b0.03",
+  "kind": "W0_tractor",
+  "job": {
+   "kind": "W0_tractor",
+   "tau1": 5.8,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     22.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "W0_b0.03",
+   "bfield": {
+    "kind": "const",
+    "val": 0.03
+   },
+   "save_track_as": "W0_b0.03"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 822.9,
+  "tu_per_s": 3.04,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 29.83,
+    "sep_std": 0.0024,
+    "sep_end": 29.833,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 6e-06,
+    "sep0": 8.0,
+    "sep_min": 8.0,
+    "sep_max": 29.833
+   }
+  },
+  "net1": [
+   22.35
+  ],
+  "end1": [
+   [
+    47.75,
+    52.6
+   ]
+  ],
+  "area1_end": [
+   31.5
+  ],
+  "net2": [
+   0.51
+  ],
+  "end2": [
+   [
+    47.75,
+    22.76
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "W0_b0.03",
+  "ts": "2026-08-20 20:08:48"
+ },
+ {
+  "id": "W0_b0.04",
+  "kind": "W0_tractor",
+  "job": {
+   "kind": "W0_tractor",
+   "tau1": 5.8,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.1,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield2": {
+    "kind": "const",
+    "val": 0.0
+   },
+   "blobs1": [
+    [
+     30.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     22.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "W0_b0.04",
+   "bfield": {
+    "kind": "const",
+    "val": 0.04
+   },
+   "save_track_as": "W0_b0.04"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 824.0,
+  "tu_per_s": 3.03,
+  "T_end": 2500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 24.282,
+    "sep_std": 0.0039,
+    "sep_end": 24.275,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 2.6e-05,
+    "sep0": 8.0,
+    "sep_min": 8.0,
+    "sep_max": 24.32
+   }
+  },
+  "net1": [
+   16.93
+  ],
+  "end1": [
+   [
+    47.75,
+    47.18
+   ]
+  ],
+  "area1_end": [
+   30.75
+  ],
+  "net2": [
+   0.65
+  ],
+  "end2": [
+   [
+    47.75,
+    22.9
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "W0_b0.04",
+  "ts": "2026-08-20 20:08:49"
+ },
+ {
+  "id": "R4_e0.03_d12",
+  "kind": "R4_nearonset_cargo",
+  "job": {
+   "kind": "R4_nearonset_cargo",
+   "tau1": 5.6,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "R4_e0.03_d12",
+   "eta21": 0.03,
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R4_e003_d12"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 472.1,
+  "tu_per_s": 3.18,
+  "T_end": 1500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.066,
+    "sep_std": 0.0,
+    "sep_end": 8.066,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 12.0,
+    "sep_min": 7.108,
+    "sep_max": 12.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   3.93
+  ],
+  "end2": [
+   [
+    47.75,
+    48.32
+   ]
+  ],
+  "area2_end": [
+   32.75
+  ],
+  "track_saved": "R4_e003_d12",
+  "ts": "2026-08-20 20:22:10"
+ },
+ {
+  "id": "R4_e0.1_d12",
+  "kind": "R4_nearonset_cargo",
+  "job": {
+   "kind": "R4_nearonset_cargo",
+   "tau1": 5.6,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "R4_e0.1_d12",
+   "eta21": 0.1,
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R4_e01_d12"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 472.9,
+  "tu_per_s": 3.17,
+  "T_end": 1500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 7.922,
+    "sep_std": 0.0,
+    "sep_end": 7.922,
+    "omega_last": -3e-06,
+    "rev_total": -0.0,
+    "c_com_last": 9e-06,
+    "sep0": 12.0,
+    "sep_min": 6.931,
+    "sep_max": 12.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   4.08
+  ],
+  "end2": [
+   [
+    47.74,
+    48.17
+   ]
+  ],
+  "area2_end": [
+   33.75
+  ],
+  "track_saved": "R4_e01_d12",
+  "ts": "2026-08-20 20:22:11"
+ },
+ {
+  "id": "R4_e0.05_d12",
+  "kind": "R4_nearonset_cargo",
+  "job": {
+   "kind": "R4_nearonset_cargo",
+   "tau1": 5.6,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "cross",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_cargo"
+    ]
+   ],
+   "id": "R4_e0.05_d12",
+   "eta21": 0.05,
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     null
+    ]
+   ],
+   "save_track_as": "R4_e005_d12"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 473.4,
+  "tu_per_s": 3.17,
+  "T_end": 1500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 8.033,
+    "sep_std": 0.0,
+    "sep_end": 8.033,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 12.0,
+    "sep_min": 7.01,
+    "sep_max": 12.0
+   }
+  },
+  "net1": [
+   0.0
+  ],
+  "end1": [
+   [
+    47.75,
+    40.25
+   ]
+  ],
+  "area1_end": [
+   32.25
+  ],
+  "net2": [
+   3.97
+  ],
+  "end2": [
+   [
+    47.75,
+    48.28
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "R4_e005_d12",
+  "ts": "2026-08-20 20:22:11"
+ },
+ {
+  "id": "F1_seed3",
+  "kind": "F1_fork",
+  "job": {
+   "kind": "F1_fork",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     8.0,
+     48.0,
+     null
+    ],
+    [
+     40.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     24.0,
+     48.0,
+     null
+    ],
+    [
+     56.0,
+     48.0,
+     null
+    ],
+    [
+     88.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "F1_seed3",
+   "seed": 3,
+   "bfield": {
+    "kind": "chan",
+    "yc": 60.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "chan",
+    "yc": 36.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "save_track_as": "F1_seed3"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1013.6,
+  "tu_per_s": 3.45,
+  "T_end": 3500.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 3,
+  "nc2_max": 3,
+  "net1": [
+   13.37,
+   13.17,
+   12.54
+  ],
+  "end1": [
+   [
+    60.19,
+    13.15
+   ],
+   [
+    60.26,
+    44.38
+   ],
+   [
+    60.22,
+    70.88
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.25,
+   32.0
+  ],
+  "net2": [
+   11.36,
+   11.36,
+   11.36
+  ],
+  "end2": [
+   [
+    36.39,
+    24.27
+   ],
+   [
+    36.39,
+    56.3
+   ],
+   [
+    36.39,
+    88.23
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.0,
+   32.0
+  ],
+  "track_saved": "F1_seed3",
+  "ts": "2026-08-20 20:22:34"
+ },
+ {
+  "id": "F1_seed2",
+  "kind": "F1_fork",
+  "job": {
+   "kind": "F1_fork",
+   "tau1": 5.7,
+   "tau2": 2.5,
+   "eta12": 0.0,
+   "eta21": 0.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     8.0,
+     48.0,
+     null
+    ],
+    [
+     40.0,
+     48.0,
+     null
+    ],
+    [
+     72.0,
+     48.0,
+     null
+    ]
+   ],
+   "blobs2": [
+    [
+     24.0,
+     48.0,
+     null
+    ],
+    [
+     56.0,
+     48.0,
+     null
+    ],
+    [
+     88.0,
+     48.0,
+     null
+    ]
+   ],
+   "id": "F1_seed2",
+   "seed": 2,
+   "bfield": {
+    "kind": "chan",
+    "yc": 60.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "chan",
+    "yc": 36.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "save_track_as": "F1_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1016.1,
+  "tu_per_s": 3.44,
+  "T_end": 3500.0,
+  "nc1_end": 3,
+  "nc1_max": 3,
+  "nc2_end": 3,
+  "nc2_max": 3,
+  "net1": [
+   12.76,
+   12.54,
+   12.48
+  ],
+  "end1": [
+   [
+    60.31,
+    10.51
+   ],
+   [
+    60.29,
+    40.37
+   ],
+   [
+    60.21,
+    73.0
+   ]
+  ],
+  "area1_end": [
+   31.75,
+   32.0,
+   32.0
+  ],
+  "net2": [
+   11.36,
+   11.35,
+   11.34
+  ],
+  "end2": [
+   [
+    36.39,
+    24.23
+   ],
+   [
+    36.4,
+    56.29
+   ],
+   [
+    36.41,
+    88.23
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   31.75,
+   31.75
+  ],
+  "track_saved": "F1_seed2",
+  "ts": "2026-08-20 20:22:37"
+ },
+ {
+  "id": "R4_lone_ctrl",
+  "kind": "R4_nearonset_cargo",
+  "job": {
+   "kind": "R4_nearonset_cargo",
+   "tau1": 5.6,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 2.0,
+   "pairing": "none",
+   "blobs1": [],
+   "pairs": [],
+   "id": "R4_lone_ctrl",
+   "eta21": 0.0,
+   "blobs2": [
+    [
+     52.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "save_track_as": "R4_lone"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 543.0,
+  "tu_per_s": 3.68,
+  "T_end": 2000.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "net2": [
+   10.33
+  ],
+  "end2": [
+   [
+    47.75,
+    62.58
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "R4_lone",
+  "ts": "2026-08-20 20:23:21"
+ },
+ {
+  "id": "T6_e0.1",
+  "kind": "T6_tow_nearonset",
+  "job": {
+   "kind": "T6_tow_nearonset",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T6_e0.1",
+   "eta21": 0.1,
+   "save_track_as": "T6_e01"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 545.6,
+  "tu_per_s": 4.58,
+  "T_end": 2500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 8.457,
+    "sep_std": 0.0055,
+    "sep_end": 8.463,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059243,
+    "sep0": 9.008,
+    "sep_min": 7.716,
+    "sep_max": 12.361
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0055,
+    "sep_end": 15.224,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059285,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   154.65,
+   154.49
+  ],
+  "end1": [
+   [
+    47.75,
+    193.91
+   ],
+   [
+    47.75,
+    209.13
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   155.19
+  ],
+  "end2": [
+   [
+    47.75,
+    185.44
+   ]
+  ],
+  "area2_end": [
+   33.0
+  ],
+  "track_saved": "T6_e01",
+  "ts": "2026-08-20 20:32:28"
+ },
+ {
+  "id": "T6_e0.03",
+  "kind": "T6_tow_nearonset",
+  "job": {
+   "kind": "T6_tow_nearonset",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T6_e0.03",
+   "eta21": 0.03,
+   "save_track_as": "T6_e003"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 546.5,
+  "tu_per_s": 4.57,
+  "T_end": 2500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 73.847,
+    "sep_std": 0.0032,
+    "sep_end": 73.85,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059155,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 74.895
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0055,
+    "sep_end": 15.224,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059285,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   154.65,
+   154.49
+  ],
+  "end1": [
+   [
+    47.75,
+    193.91
+   ],
+   [
+    47.75,
+    209.13
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   89.81
+  ],
+  "end2": [
+   [
+    47.75,
+    120.06
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "T6_e003",
+  "ts": "2026-08-20 20:32:29"
+ },
+ {
+  "id": "T6_e0.05",
+  "kind": "T6_tow_nearonset",
+  "job": {
+   "kind": "T6_tow_nearonset",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "T6_e0.05",
+   "eta21": 0.05,
+   "save_track_as": "T6_e005"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 547.4,
+  "tu_per_s": 4.57,
+  "T_end": 2500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 73.71,
+    "sep_std": 0.0036,
+    "sep_end": 73.715,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.059295,
+    "sep0": 9.008,
+    "sep_min": 9.008,
+    "sep_max": 74.721
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0055,
+    "sep_end": 15.224,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059285,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   154.65,
+   154.49
+  ],
+  "end1": [
+   [
+    47.75,
+    193.91
+   ],
+   [
+    47.75,
+    209.13
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   89.94
+  ],
+  "end2": [
+   [
+    47.75,
+    120.19
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "T6_e005",
+  "ts": "2026-08-20 20:32:30"
+ },
+ {
+  "id": "D2_pilot",
+  "kind": "D2_dock_pilot",
+  "job": {
+   "kind": "D2_dock_pilot",
+   "id": "D2_pilot",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 64.0,
+    "w": 3.0
+   },
+   "T": 2500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "D2_pilot"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 296.0,
+  "tu_per_s": 8.45,
+  "T_end": 2500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 106.382,
+    "sep_std": 5.2006,
+    "sep_end": 115.256,
+    "omega_last": -0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.029784,
+    "sep0": 9.008,
+    "sep_min": 7.717,
+    "sep_max": 115.256
+   },
+   "pair": {
+    "sep_mean": 15.233,
+    "sep_std": 0.0055,
+    "sep_end": 15.224,
+    "omega_last": 0.0,
+    "rev_total": 0.0,
+    "c_com_last": 0.059285,
+    "sep0": 15.38,
+    "sep_min": 14.802,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   154.65,
+   154.49
+  ],
+  "end1": [
+   [
+    47.75,
+    193.91
+   ],
+   [
+    47.75,
+    209.13
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   48.4
+  ],
+  "end2": [
+   [
+    47.75,
+    78.65
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "D2_pilot",
+  "ts": "2026-08-20 20:46:19"
+ },
+ {
+  "id": "F2_pilot",
+  "kind": "F2_fork_pilot",
+  "job": {
+   "kind": "F2_fork_pilot",
+   "id": "F2_pilot",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 4.0,
+    "x1": 56.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 56.0,
+    "branch": 1,
+    "slope": 0.3,
+    "dy_max": 8.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 56.0,
+    "branch": -1,
+    "slope": 0.3,
+    "dy_max": 8.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     20.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     35.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     11.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "F2_pilot"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 347.4,
+  "tu_per_s": 8.63,
+  "T_end": 3000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 31.982,
+    "sep_std": 1.0838,
+    "sep_end": 32.202,
+    "omega_last": -0.000281,
+    "rev_total": 0.044,
+    "c_com_last": 0.007266,
+    "sep0": 9.008,
+    "sep_min": 7.842,
+    "sep_max": 33.837
+   },
+   "pair": {
+    "sep_mean": 15.829,
+    "sep_std": 0.536,
+    "sep_end": 16.103,
+    "omega_last": 0.00116,
+    "rev_total": -0.065,
+    "c_com_last": 0.021214,
+    "sep0": 15.38,
+    "sep_min": 14.521,
+    "sep_max": 17.282
+   }
+  },
+  "net1": [
+   72.98,
+   71.98
+  ],
+  "end1": [
+   [
+    55.38,
+    92.83
+   ],
+   [
+    48.96,
+    107.6
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   31.75
+  ],
+  "net2": [
+   50.62
+  ],
+  "end2": [
+   [
+    46.57,
+    61.86
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "F2_pilot",
+  "ts": "2026-08-20 20:47:11"
+ },
+ {
+  "id": "F2_pilot2",
+  "kind": "F2_fork_pilot",
+  "job": {
+   "kind": "F2_fork_pilot",
+   "id": "F2_pilot2",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 4.0,
+    "x1": 68.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 60.0,
+    "branch": -1,
+    "slope": 0.6,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     20.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     35.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     11.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "save_track_as": "F2_pilot2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 295.0,
+  "tu_per_s": 10.17,
+  "T_end": 3000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 164.476,
+    "sep_std": 6.1322,
+    "sep_end": 172.905,
+    "omega_last": 2e-05,
+    "rev_total": 0.006,
+    "c_com_last": 0.037251,
+    "sep0": 9.008,
+    "sep_min": 7.814,
+    "sep_max": 172.905
+   },
+   "pair": {
+    "sep_mean": 15.213,
+    "sep_std": 0.0056,
+    "sep_end": 15.213,
+    "omega_last": 0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.071976,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   221.01,
+   220.84
+  ],
+  "end1": [
+   [
+    48.25,
+    241.26
+   ],
+   [
+    48.25,
+    256.48
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   57.56
+  ],
+  "end2": [
+   [
+    41.68,
+    68.48
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "F2_pilot2",
+  "ts": "2026-08-20 20:56:43"
+ },
+ {
+  "id": "RL_null_e0",
+  "kind": "RL_cert",
+  "job": {
+   "kind": "RL_cert",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RL_null_e0",
+   "eta21": 0.0,
+   "save_track_as": "RL_null_e0"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1076.1,
+  "tu_per_s": 2.79,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 14.982,
+   "r_end": 15.395,
+   "r_min": 14.977,
+   "r_max": 15.395,
+   "dphi_net": -0.0,
+   "arc_net": -0.0,
+   "omega_last": -0.0,
+   "vtan_last": -0.0,
+   "omega_all": -0.0,
+   "vtan_all": -0.0
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 16.969,
+    "sep_std": 5.6494,
+    "sep_end": 12.193,
+    "omega_last": -0.001725,
+    "rev_total": -0.095,
+    "c_com_last": 0.09728,
+    "sep0": 22.991,
+    "sep_min": 6.569,
+    "sep_max": 24.754
+   },
+   "anch_cargo": {
+    "sep_mean": 15.395,
+    "sep_std": 0.0,
+    "sep_end": 15.395,
+    "omega_last": -0.0,
+    "rev_total": -0.0,
+    "c_com_last": 0.0,
+    "sep0": 14.982,
+    "sep_min": 14.977,
+    "sep_max": 15.395
+   },
+   "M_anch": {
+    "sep_mean": 8.974,
+    "sep_std": 0.5905,
+    "sep_end": 8.661,
+    "omega_last": -0.021237,
+    "rev_total": -10.355,
+    "c_com_last": 0.09728,
+    "sep0": 8.009,
+    "sep_min": 7.68,
+    "sep_max": 10.643
+   }
+  },
+  "net1": [
+   14.79
+  ],
+  "end1": [
+   [
+    54.6,
+    53.36
+   ]
+  ],
+  "area1_end": [
+   34.75
+  ],
+  "net2": [
+   0.21,
+   0.21
+  ],
+  "end2": [
+   [
+    47.75,
+    48.05
+   ],
+   [
+    47.75,
+    63.45
+   ]
+  ],
+  "area2_end": [
+   32.0,
+   32.0
+  ],
+  "track_saved": "RL_null_e0",
+  "ts": "2026-08-20 21:20:40"
+ },
+ {
+  "id": "RL_e0.2_s1",
+  "kind": "RL_cert",
+  "job": {
+   "kind": "RL_cert",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "seed": 1,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RL_e0.2_s1",
+   "eta21": 0.2,
+   "save_track_as": "RL_e02_s1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1172.8,
+  "tu_per_s": 2.56,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 14.982,
+   "r_end": 15.84,
+   "r_min": 14.646,
+   "r_max": 15.922,
+   "dphi_net": -0.306,
+   "arc_net": -4.719,
+   "omega_last": -5.2e-05,
+   "vtan_last": -0.00079,
+   "omega_all": -8.8e-05,
+   "vtan_all": -0.00136
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 17.088,
+    "sep_std": 5.5866,
+    "sep_end": 16.817,
+    "omega_last": 3.9e-05,
+    "rev_total": -0.135,
+    "c_com_last": 0.094051,
+    "sep0": 22.991,
+    "sep_min": 6.966,
+    "sep_max": 24.196
+   },
+   "anch_cargo": {
+    "sep_mean": 15.461,
+    "sep_std": 0.369,
+    "sep_end": 15.84,
+    "omega_last": 5e-05,
+    "rev_total": -0.049,
+    "c_com_last": 0.006418,
+    "sep0": 14.982,
+    "sep_min": 14.646,
+    "sep_max": 15.922
+   },
+   "M_anch": {
+    "sep_mean": 8.907,
+    "sep_std": 0.3954,
+    "sep_end": 8.767,
+    "omega_last": -0.021674,
+    "rev_total": -10.325,
+    "c_com_last": 0.094335,
+    "sep0": 8.009,
+    "sep_min": 7.952,
+    "sep_max": 10.135
+   }
+  },
+  "net1": [
+   10.1
+  ],
+  "end1": [
+   [
+    53.6,
+    48.49
+   ]
+  ],
+  "area1_end": [
+   35.25
+  ],
+  "net2": [
+   4.22,
+   7.65
+  ],
+  "end2": [
+   [
+    45.78,
+    44.53
+   ],
+   [
+    41.01,
+    59.63
+   ]
+  ],
+  "area2_end": [
+   34.0,
+   32.5
+  ],
+  "track_saved": "RL_e02_s1",
+  "ts": "2026-08-20 21:22:17"
+ },
+ {
+  "id": "RL_e0.2_s2",
+  "kind": "RL_cert",
+  "job": {
+   "kind": "RL_cert",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "seed": 2,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RL_e0.2_s2",
+   "eta21": 0.2,
+   "save_track_as": "RL_e02_s2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1173.5,
+  "tu_per_s": 2.56,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 14.982,
+   "r_end": 15.837,
+   "r_min": 14.654,
+   "r_max": 15.916,
+   "dphi_net": -0.3123,
+   "arc_net": -4.816,
+   "omega_last": -4.5e-05,
+   "vtan_last": -0.00069,
+   "omega_all": -9.3e-05,
+   "vtan_all": -0.00143
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 17.064,
+    "sep_std": 5.5914,
+    "sep_end": 16.422,
+    "omega_last": -0.000169,
+    "rev_total": -0.137,
+    "c_com_last": 0.093918,
+    "sep0": 22.991,
+    "sep_min": 6.959,
+    "sep_max": 24.175
+   },
+   "anch_cargo": {
+    "sep_mean": 15.454,
+    "sep_std": 0.371,
+    "sep_end": 15.837,
+    "omega_last": 6.5e-05,
+    "rev_total": -0.05,
+    "c_com_last": 0.006107,
+    "sep0": 14.982,
+    "sep_min": 14.654,
+    "sep_max": 15.916
+   },
+   "M_anch": {
+    "sep_mean": 8.909,
+    "sep_std": 0.4038,
+    "sep_end": 8.785,
+    "omega_last": -0.021538,
+    "rev_total": -10.333,
+    "c_com_last": 0.094395,
+    "sep0": 8.009,
+    "sep_min": 7.962,
+    "sep_max": 10.122
+   }
+  },
+  "net1": [
+   10.32
+  ],
+  "end1": [
+   [
+    53.43,
+    48.87
+   ]
+  ],
+  "area1_end": [
+   34.75
+  ],
+  "net2": [
+   4.24,
+   7.73
+  ],
+  "end2": [
+   [
+    45.83,
+    44.48
+   ],
+   [
+    40.96,
+    59.55
+   ]
+  ],
+  "area2_end": [
+   34.75,
+   32.25
+  ],
+  "track_saved": "RL_e02_s2",
+  "ts": "2026-08-20 21:22:17"
+ },
+ {
+  "id": "D3_seed2",
+  "kind": "D3_dock_cert",
+  "job": {
+   "kind": "D3_dock_cert",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "L": 160.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D3_seed2",
+   "seed": 2,
+   "save_track_as": "D3_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2243.1,
+  "tu_per_s": 0.89,
+  "T_end": 2000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 70.268,
+    "sep_std": 6.2766,
+    "sep_end": 81.014,
+    "omega_last": 3e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.036458,
+    "sep0": 9.008,
+    "sep_min": 7.847,
+    "sep_max": 81.014
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.188,
+    "omega_last": -3e-06,
+    "rev_total": -0.001,
+    "c_com_last": 0.072043,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   148.88,
+   148.69
+  ],
+  "end1": [
+   [
+    48.28,
+    188.14
+   ],
+   [
+    48.23,
+    203.33
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.75
+  ],
+  "net2": [
+   76.88
+  ],
+  "end2": [
+   [
+    48.23,
+    107.13
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "D3_seed2",
+  "ts": "2026-08-20 21:38:56"
+ },
+ {
+  "id": "D3_seed1",
+  "kind": "D3_dock_cert",
+  "job": {
+   "kind": "D3_dock_cert",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "L": 160.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D3_seed1",
+   "seed": 1,
+   "save_track_as": "D3_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2245.7,
+  "tu_per_s": 0.89,
+  "T_end": 2000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 70.112,
+    "sep_std": 6.3371,
+    "sep_end": 80.804,
+    "omega_last": -2e-06,
+    "rev_total": -0.0,
+    "c_com_last": 0.036106,
+    "sep0": 9.008,
+    "sep_min": 7.839,
+    "sep_max": 80.804
+   },
+   "pair": {
+    "sep_mean": 15.21,
+    "sep_std": 0.0182,
+    "sep_end": 15.223,
+    "omega_last": 1.5e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.072043,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   149.1,
+   148.94
+  ],
+  "end1": [
+   [
+    48.21,
+    188.35
+   ],
+   [
+    48.26,
+    203.58
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   31.5
+  ],
+  "net2": [
+   77.3
+  ],
+  "end2": [
+   [
+    48.23,
+    107.55
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "D3_seed1",
+  "ts": "2026-08-20 21:38:58"
+ },
+ {
+  "id": "D3_nullctrl",
+  "kind": "D3_dock_cert",
+  "job": {
+   "kind": "D3_dock_cert",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "L": 160.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [],
+   "id": "D3_nullctrl",
+   "seed": 1,
+   "save_track_as": "D3_nullctrl"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2246.6,
+  "tu_per_s": 0.89,
+  "T_end": 2000.0,
+  "nc1_end": 0,
+  "nc1_max": 0,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "net2": [
+   1.15
+  ],
+  "end2": [
+   [
+    48.27,
+    29.22
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "D3_nullctrl",
+  "ts": "2026-08-20 21:38:59"
+ },
+ {
+  "id": "D3_carryctrl",
+  "kind": "D3_dock_cert",
+  "job": {
+   "kind": "D3_dock_cert",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "const",
+    "eta0": 0.1
+   },
+   "L": 160.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D3_carryctrl",
+   "seed": 1,
+   "save_track_as": "D3_carryctrl"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2248.5,
+  "tu_per_s": 0.89,
+  "T_end": 2000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 8.577,
+    "sep_std": 0.014,
+    "sep_end": 8.585,
+    "omega_last": -1.7e-05,
+    "rev_total": -0.001,
+    "c_com_last": 0.072025,
+    "sep0": 9.008,
+    "sep_min": 7.839,
+    "sep_max": 12.431
+   },
+   "pair": {
+    "sep_mean": 15.21,
+    "sep_std": 0.0182,
+    "sep_end": 15.223,
+    "omega_last": 1.5e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.072043,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   149.1,
+   148.94
+  ],
+  "end1": [
+   [
+    48.21,
+    188.35
+   ],
+   [
+    48.26,
+    203.58
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   31.5
+  ],
+  "net2": [
+   149.52
+  ],
+  "end2": [
+   [
+    48.27,
+    179.77
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "D3_carryctrl",
+  "ts": "2026-08-20 21:39:01"
+ },
+ {
+  "id": "D3_seed3",
+  "kind": "D3_dock_cert",
+  "job": {
+   "kind": "D3_dock_cert",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "L": 160.0,
+   "T": 2000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "D3_seed3",
+   "seed": 3,
+   "save_track_as": "D3_seed3"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2249.5,
+  "tu_per_s": 0.89,
+  "T_end": 2000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 70.361,
+    "sep_std": 6.3392,
+    "sep_end": 81.229,
+    "omega_last": 5e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.036143,
+    "sep0": 9.008,
+    "sep_min": 7.835,
+    "sep_max": 81.229
+   },
+   "pair": {
+    "sep_mean": 15.211,
+    "sep_std": 0.0106,
+    "sep_end": 15.177,
+    "omega_last": -1.5e-05,
+    "rev_total": -0.001,
+    "c_com_last": 0.072093,
+    "sep0": 15.38,
+    "sep_min": 14.807,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   149.17,
+   148.97
+  ],
+  "end1": [
+   [
+    48.28,
+    188.43
+   ],
+   [
+    48.23,
+    203.61
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   31.75
+  ],
+  "net2": [
+   76.95
+  ],
+  "end2": [
+   [
+    48.24,
+    107.2
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "D3_seed3",
+  "ts": "2026-08-20 21:39:02"
+ },
+ {
+  "id": "RL_e0.2_d10",
+  "kind": "RL_cert",
+  "job": {
+   "kind": "RL_cert",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     58.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RL_e0.2_d10",
+   "eta21": 0.2,
+   "save_track_as": "RL_e02_d10"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 908.2,
+  "tu_per_s": 3.3,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 10.247,
+   "r_end": 15.832,
+   "r_min": 10.247,
+   "r_max": 15.911,
+   "dphi_net": -0.3443,
+   "arc_net": -5.267,
+   "omega_last": -4.1e-05,
+   "vtan_last": -0.00063,
+   "omega_all": -9.2e-05,
+   "vtan_all": -0.00141
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 17.157,
+    "sep_std": 5.6047,
+    "sep_end": 18.626,
+    "omega_last": 0.000711,
+    "rev_total": -0.133,
+    "c_com_last": 0.093042,
+    "sep0": 18.124,
+    "sep_min": 6.839,
+    "sep_max": 24.164
+   },
+   "anch_cargo": {
+    "sep_mean": 15.454,
+    "sep_std": 0.3662,
+    "sep_end": 15.832,
+    "omega_last": 5.1e-05,
+    "rev_total": -0.055,
+    "c_com_last": 0.005992,
+    "sep0": 10.247,
+    "sep_min": 10.247,
+    "sep_max": 15.911
+   },
+   "M_anch": {
+    "sep_mean": 8.912,
+    "sep_std": 0.4027,
+    "sep_end": 8.857,
+    "omega_last": -0.021706,
+    "rev_total": -10.295,
+    "c_com_last": 0.094326,
+    "sep0": 7.876,
+    "sep_min": 7.477,
+    "sep_max": 10.529
+   }
+  },
+  "net1": [
+   8.1
+  ],
+  "end1": [
+   [
+    54.64,
+    44.51
+   ]
+  ],
+  "area1_end": [
+   34.5
+  ],
+  "net2": [
+   6.29,
+   7.11
+  ],
+  "end2": [
+   [
+    46.13,
+    42.05
+   ],
+   [
+    40.79,
+    56.96
+   ]
+  ],
+  "area2_end": [
+   33.75,
+   32.5
+  ],
+  "track_saved": "RL_e02_d10",
+  "ts": "2026-08-20 21:39:48"
+ },
+ {
+  "id": "RL_e0.2_d20",
+  "kind": "RL_cert",
+  "job": {
+   "kind": "RL_cert",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "T": 3000,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "roller": {
+    "cen": [
+     2,
+     0
+    ],
+    "cargo": [
+     2,
+     1
+    ]
+   },
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     68.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     1,
+     "M_cargo"
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     "anch_cargo"
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     "M_anch"
+    ]
+   ],
+   "id": "RL_e0.2_d20",
+   "eta21": 0.2,
+   "save_track_as": "RL_e02_d20"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 908.5,
+  "tu_per_s": 3.3,
+  "T_end": 3000.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "roller": {
+   "n": 601,
+   "r0": 20.002,
+   "r_end": 15.812,
+   "r_min": 14.742,
+   "r_max": 20.607,
+   "dphi_net": -0.25,
+   "arc_net": -3.99,
+   "omega_last": -3.6e-05,
+   "vtan_last": -0.00055,
+   "omega_all": -8.5e-05,
+   "vtan_all": -0.00135
+  },
+  "pairs": {
+   "M_cargo": {
+    "sep_mean": 17.244,
+    "sep_std": 5.652,
+    "sep_end": 20.656,
+    "omega_last": 0.001471,
+    "rev_total": -0.107,
+    "c_com_last": 0.09305,
+    "sep0": 28.001,
+    "sep_min": 6.961,
+    "sep_max": 28.207
+   },
+   "anch_cargo": {
+    "sep_mean": 15.452,
+    "sep_std": 0.3667,
+    "sep_end": 15.812,
+    "omega_last": 3e-05,
+    "rev_total": -0.04,
+    "c_com_last": 0.006698,
+    "sep0": 20.002,
+    "sep_min": 14.742,
+    "sep_max": 20.607
+   },
+   "M_anch": {
+    "sep_mean": 8.917,
+    "sep_std": 0.4024,
+    "sep_end": 8.993,
+    "omega_last": -0.021804,
+    "rev_total": -10.235,
+    "c_com_last": 0.093735,
+    "sep0": 7.999,
+    "sep_min": 7.871,
+    "sep_max": 10.192
+   }
+  },
+  "net1": [
+   9.04
+  ],
+  "end1": [
+   [
+    54.63,
+    46.11
+   ]
+  ],
+  "area1_end": [
+   35.0
+  ],
+  "net2": [
+   2.44,
+   8.46
+  ],
+  "end2": [
+   [
+    45.68,
+    46.95
+   ],
+   [
+    41.77,
+    62.27
+   ]
+  ],
+  "area2_end": [
+   35.0,
+   34.25
+  ],
+  "track_saved": "RL_e02_d20",
+  "ts": "2026-08-20 21:39:48"
+ },
+ {
+  "id": "AMEND_release_window",
+  "kind": "metrics_amendment",
+  "note": "DK release gate amendment BEFORE verdicts, AFTER first D3 battery: locked gate required v<FREEZE_V within 300 tu of crossing x1. Measured deceleration glide through the w=3 tanh edge at entry speed 0.072 px/tu takes ~500-600 tu (t_cross~890, v<2e-3 sustained from t~1450). AMENDED: release = |net cargo dx| <= 1 px over the final 500 tu AND carrier continues >= 30 px past x1. Strict-gate result also reported: all 3 seeds fail the 300-tu window (v at +300 = 2.4-5.5e-3), pass by +600. Glide length 6.5-7.5 px past x1 (settle x=107.1-107.6).",
+  "ts": "2026-08-20 21:46:52"
+ },
+ {
+  "id": "VERDICT_DK_dock",
+  "kind": "verdict",
+  "verdict": "DK PASS (amended release gate; strict 300tu window fails documented)",
+  "seeds": [
+   {
+    "tag": "D3_seed1",
+    "lock_tu": 935.0,
+    "conveyed": 72.16097426627687,
+    "t_cross": 890.0,
+    "tail_dx": -0.14656319413401775,
+    "carrier_past_x1": 88.35312851024645,
+    "settle_x": 107.54916473110057
+   },
+   {
+    "tag": "D3_seed2",
+    "lock_tu": 940.0,
+    "conveyed": 72.29653026417614,
+    "t_cross": 895.0,
+    "tail_dx": 0.2892294958042214,
+    "carrier_past_x1": 88.13996383942435,
+    "settle_x": 107.12587877915226
+   },
+   {
+    "tag": "D3_seed3",
+    "lock_tu": 940.0,
+    "conveyed": 72.31135541482016,
+    "t_cross": 895.0,
+    "tail_dx": -0.1375428451525238,
+    "carrier_past_x1": 88.4312261202985,
+    "settle_x": 107.20223444650577
+   }
+  ],
+  "carry_ctrl": "no release: sep 8.585 held to end, cargo conveyed 149.5px (record 79)",
+  "null_ctrl": "no carrier: cargo net 1.15px incl. noise wobble (record 78)",
+  "tow_lock": "3/3 seeds ~935-940tu lock, 72px conveyed in-band",
+  "amendment": "AMEND_release_window",
+  "ts": "2026-08-20 21:46:52"
+ },
+ {
+  "id": "VERDICT_RL_roller",
+  "kind": "verdict",
+  "verdict": "RL PASS at working point (tau1=6.0 eta12=0.1 eta21=0.2, cargo S parked on anchor ring d*=15.4-15.8): sustained co-rotating advection vtan=1.3-1.4e-3 px/tu = 2.6-2.8x the locked gate 5e-4, 6/6 sign-locked windows, 2 noise seeds + 2 geometry variants (d0=10/20 both funnel to ring then advect at same rate). eta21=0 null EXACTLY zero (1e-17). At eta21=0.1: vtan 3e-4 BELOW gate (quantified null at graze distances 10-20 in R1: |vtan|<=6e-5 at tau1=5.6 rotor). Honest ceiling: cargo cannot be circulated (ratchet advection ~0.07 px per rotor rev; full orbit would need ~1400 revs; also d0<=15 initial placements first get reeled to the ring in ~200-600tu). Mechanism: rotating M's cross-halo drags cargo azimuthally each pass; amplitude linear-ish in eta21 (x2 eta -> x20 vtan: strongly nonlinear near-contact part dominates).",
+  "rows": [
+   {
+    "tag": "RL_e02_s1",
+    "d0": 15,
+    "omega_all": -8.84e-05,
+    "vtan_all": -0.00136,
+    "sign_locked_windows": 6,
+    "omega_rotor": -0.0216
+   },
+   {
+    "tag": "RL_e02_s2",
+    "d0": 15,
+    "omega_all": -9.27e-05,
+    "vtan_all": -0.00143,
+    "sign_locked_windows": 6,
+    "omega_rotor": -0.0217
+   },
+   {
+    "tag": "RL_e02_d10",
+    "d0": 10,
+    "omega_all": -9.22e-05,
+    "vtan_all": -0.00141,
+    "sign_locked_windows": 6,
+    "omega_rotor": -0.0215
+   },
+   {
+    "tag": "RL_e02_d20",
+    "d0": 20,
+    "omega_all": -8.47e-05,
+    "vtan_all": -0.00135,
+    "sign_locked_windows": 6,
+    "omega_rotor": -0.0214
+   },
+   {
+    "tag": "RL_null_e0",
+    "d0": 15,
+    "omega_all": -0.0,
+    "vtan_all": -0.0,
+    "sign_locked_windows": 6,
+    "omega_rotor": -0.0217
+   }
+  ],
+  "r1_null_summary": "R1 battery (tau1=5.60 slow rotor, eta21=0.1): all d0 capture into S-M-S pendulum (new attractor, +-90deg libration, period ~307tu), advection null <=6e-5",
+  "ts": "2026-08-20 21:52:43"
+ },
+ {
+  "id": "VERDICT_FK_staticfork",
+  "kind": "verdict",
+  "verdict": "FK STATIC-SORT PASS: per-species rails (chan_eps=0.002, M rail y=60, S rail y=36) sort 6 mixed blobs/run from common start y=48: 18/18 blobs across 3 noise seeds end within 2px of their own rail (M: 60.2-60.3, S: 36.4); SWAP control sorts to swapped rails (6/6, M->36.3 S->60.0); NULL control (no rails): nobody moves >3.4px. Purity 18/18 + 6/6 swap = 24/24. Timescale asymmetry documented: M sorts in ~200-400tu (near-onset), S needs ~3000tu (deep-static, v~0.005 px/tu). NOTE this is species-tagged STATIC sorting (the fields are per-species by construction); the composed moving-fork demo is the GL battery.",
+  "rows": [
+   {
+    "tag": "F1_seed1",
+    "yM_end": [
+     60.3,
+     60.3,
+     60.2
+    ],
+    "yS_end": [
+     36.4,
+     36.4,
+     36.4
+    ]
+   },
+   {
+    "tag": "F1_seed2",
+    "yM_end": [
+     60.3,
+     60.3,
+     60.2
+    ],
+    "yS_end": [
+     36.4,
+     36.4,
+     36.4
+    ]
+   },
+   {
+    "tag": "F1_seed3",
+    "yM_end": [
+     60.2,
+     60.3,
+     60.2
+    ],
+    "yS_end": [
+     36.4,
+     36.4,
+     36.4
+    ]
+   },
+   {
+    "tag": "F1_swap",
+    "yM_end": [
+     36.3,
+     36.3,
+     36.3
+    ],
+    "yS_end": [
+     60.0,
+     60.0,
+     60.0
+    ]
+   },
+   {
+    "tag": "F1_null",
+    "yM_end": [
+     46.5,
+     45.6,
+     46.0
+    ],
+    "yS_end": [
+     47.7,
+     47.7,
+     47.7
+    ]
+   }
+  ],
+  "ts": "2026-08-20 21:52:57"
+ },
+ {
+  "id": "GL_seed1",
+  "kind": "GL_glue",
+  "job": {
+   "kind": "GL_glue",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 0.6,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GL_seed1",
+   "seed": 1,
+   "save_track_as": "GL_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1982.4,
+  "tu_per_s": 1.77,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 186.687,
+    "sep_std": 6.6858,
+    "sep_end": 197.888,
+    "omega_last": -2.2e-05,
+    "rev_total": 0.003,
+    "c_com_last": 0.035044,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 197.888
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   68.13
+  ],
+  "end2": [
+   [
+    44.58,
+    98.3
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "GL_seed1",
+  "ts": "2026-08-20 22:20:12"
+ },
+ {
+  "id": "GL_seed2",
+  "kind": "GL_glue",
+  "job": {
+   "kind": "GL_glue",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 0.6,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GL_seed2",
+   "seed": 2,
+   "save_track_as": "GL_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1983.8,
+  "tu_per_s": 1.76,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 186.64,
+    "sep_std": 6.834,
+    "sep_end": 198.001,
+    "omega_last": -2.3e-05,
+    "rev_total": 0.003,
+    "c_com_last": 0.034752,
+    "sep0": 9.008,
+    "sep_min": 7.822,
+    "sep_max": 198.001
+   },
+   "pair": {
+    "sep_mean": 15.207,
+    "sep_std": 0.0215,
+    "sep_end": 15.199,
+    "omega_last": -6e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.072708,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   257.06,
+   256.88
+  ],
+  "end1": [
+   [
+    48.25,
+    296.32
+   ],
+   [
+    48.26,
+    311.52
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   68.18
+  ],
+  "end2": [
+   [
+    44.57,
+    98.36
+   ]
+  ],
+  "area2_end": [
+   31.5
+  ],
+  "track_saved": "GL_seed2",
+  "ts": "2026-08-20 22:20:13"
+ },
+ {
+  "id": "GL_mirror",
+  "kind": "GL_glue",
+  "job": {
+   "kind": "GL_glue",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": 1,
+    "slope": 0.6,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GL_mirror",
+   "seed": 1,
+   "save_track_as": "GL_mirror"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1984.3,
+  "tu_per_s": 1.76,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 186.523,
+    "sep_std": 6.6813,
+    "sep_end": 197.732,
+    "omega_last": 1.8e-05,
+    "rev_total": -0.003,
+    "c_com_last": 0.034958,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 197.732
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   68.35
+  ],
+  "end2": [
+   [
+    52.0,
+    98.46
+   ]
+  ],
+  "area2_end": [
+   30.75
+  ],
+  "track_saved": "GL_mirror",
+  "ts": "2026-08-20 22:20:14"
+ },
+ {
+  "id": "GLfix_mirror",
+  "kind": "GL_glue_fix",
+  "job": {
+   "kind": "GL_glue_fix",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": 1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLfix_mirror",
+   "seed": 1,
+   "save_track_as": "GLfix_mirror"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1902.4,
+  "tu_per_s": 1.84,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 188.644,
+    "sep_std": 6.6236,
+    "sep_end": 199.863,
+    "omega_last": 3.7e-05,
+    "rev_total": -0.004,
+    "c_com_last": 0.034549,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 199.863
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   66.34
+  ],
+  "end2": [
+   [
+    53.24,
+    96.36
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "GLfix_mirror",
+  "ts": "2026-08-20 22:59:44"
+ },
+ {
+  "id": "GLfix_seed1",
+  "kind": "GL_glue_fix",
+  "job": {
+   "kind": "GL_glue_fix",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLfix_seed1",
+   "seed": 1,
+   "save_track_as": "GLfix_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1909.3,
+  "tu_per_s": 1.83,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 176.727,
+    "sep_std": 6.307,
+    "sep_end": 187.462,
+    "omega_last": -3.4e-05,
+    "rev_total": 0.012,
+    "c_com_last": 0.035966,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 187.462
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   80.12
+  ],
+  "end2": [
+   [
+    34.22,
+    109.22
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "GLfix_seed1",
+  "ts": "2026-08-20 22:59:51"
+ },
+ {
+  "id": "GLfix_seed2",
+  "kind": "GL_glue_fix",
+  "job": {
+   "kind": "GL_glue_fix",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLfix_seed2",
+   "seed": 2,
+   "save_track_as": "GLfix_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1909.7,
+  "tu_per_s": 1.83,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 195.324,
+    "sep_std": 7.7211,
+    "sep_end": 207.981,
+    "omega_last": -3.7e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.029864,
+    "sep0": 9.008,
+    "sep_min": 7.822,
+    "sep_max": 207.981
+   },
+   "pair": {
+    "sep_mean": 15.207,
+    "sep_std": 0.0215,
+    "sep_end": 15.199,
+    "omega_last": -6e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.072708,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   257.06,
+   256.88
+  ],
+  "end1": [
+   [
+    48.25,
+    296.32
+   ],
+   [
+    48.26,
+    311.52
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   58.09
+  ],
+  "end2": [
+   [
+    48.15,
+    88.34
+   ]
+  ],
+  "area2_end": [
+   31.5
+  ],
+  "track_saved": "GLfix_seed2",
+  "ts": "2026-08-20 22:59:51"
+ },
+ {
+  "id": "FILM_roller",
+  "kind": "film",
+  "job": {
+   "kind": "film",
+   "id": "FILM_roller",
+   "tau1": 6.0,
+   "tau2": 2.5,
+   "eta12": 0.1,
+   "eta21": 0.2,
+   "T": 1500,
+   "dx": 0.5,
+   "noise": 0.0,
+   "seed": 0,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "blobs1": [
+    [
+     40.0,
+     48.0,
+     [
+      90.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     48.0,
+     48.0,
+     null
+    ],
+    [
+     63.0,
+     48.0,
+     null
+    ]
+   ],
+   "snap_times": [
+    300,
+    600,
+    900,
+    1200,
+    1500
+   ],
+   "save_snaps_as": "FILM_roller_snaps",
+   "save_track_as": "FILM_roller"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 385.3,
+  "tu_per_s": 3.89,
+  "T_end": 1500.0,
+  "nc1_end": 1,
+  "nc1_max": 1,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "net1": [
+   6.42
+  ],
+  "end1": [
+   [
+    54.06,
+    41.39
+   ]
+  ],
+  "area1_end": [
+   35.5
+  ],
+  "net2": [
+   2.42,
+   3.84
+  ],
+  "end2": [
+   [
+    46.49,
+    46.2
+   ],
+   [
+    44.21,
+    61.75
+   ]
+  ],
+  "area2_end": [
+   35.5,
+   33.75
+  ],
+  "track_saved": "FILM_roller",
+  "snaps_saved": "FILM_roller_snaps",
+  "ts": "2026-08-20 23:12:41"
+ },
+ {
+  "id": "FILM_dock",
+  "kind": "film",
+  "job": {
+   "kind": "film",
+   "id": "FILM_dock",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 1600,
+   "dx": 0.5,
+   "noise": 0.002,
+   "seed": 1,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 100.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "snap_times": [
+    200,
+    600,
+    900,
+    1100,
+    1500
+   ],
+   "save_snaps_as": "FILM_dock_snaps",
+   "save_track_as": "FILM_dock"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1347.5,
+  "tu_per_s": 1.19,
+  "T_end": 1600.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "net1": [
+   120.32,
+   120.14
+  ],
+  "end1": [
+   [
+    48.26,
+    159.58
+   ],
+   [
+    48.25,
+    174.78
+   ]
+  ],
+  "area1_end": [
+   31.75,
+   32.0
+  ],
+  "net2": [
+   77.37
+  ],
+  "end2": [
+   [
+    48.24,
+    107.62
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "FILM_dock",
+  "snaps_saved": "FILM_dock_snaps",
+  "ts": "2026-08-20 23:28:44"
+ },
+ {
+  "id": "GLF_seed2",
+  "kind": "GL_glue_final",
+  "job": {
+   "kind": "GL_glue_final",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 92.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLF_seed2",
+   "seed": 2,
+   "save_track_as": "GLF_seed2"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 2029.2,
+  "tu_per_s": 1.29,
+  "T_end": 2615.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 133.412,
+    "sep_std": 5.2796,
+    "sep_end": 139.914,
+    "omega_last": -1.3e-05,
+    "rev_total": -0.007,
+    "c_com_last": 0.038595,
+    "sep0": 9.008,
+    "sep_min": 7.822,
+    "sep_max": 139.914
+   },
+   "pair": {
+    "sep_mean": 15.218,
+    "sep_std": 0.0128,
+    "sep_end": 15.203,
+    "omega_last": 2.1e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.071932,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   193.08,
+   192.91
+  ],
+  "end1": [
+   [
+    48.27,
+    232.34
+   ],
+   [
+    48.28,
+    247.54
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   31.5
+  ],
+  "net2": [
+   62.65
+  ],
+  "end2": [
+   [
+    54.3,
+    92.56
+   ]
+  ],
+  "area2_end": [
+   30.25
+  ],
+  "track_saved": "GLF_seed2",
+  "ts": "2026-08-20 23:39:51"
+ },
+ {
+  "id": "GLF_mirror",
+  "kind": "GL_glue_final",
+  "job": {
+   "kind": "GL_glue_final",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 92.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": 1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLF_mirror",
+   "seed": 1,
+   "save_track_as": "GLF_mirror"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 2042.4,
+  "tu_per_s": 1.29,
+  "T_end": 2625.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 133.694,
+    "sep_std": 5.1436,
+    "sep_end": 139.953,
+    "omega_last": -3e-05,
+    "rev_total": -0.008,
+    "c_com_last": 0.039178,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 139.953
+   },
+   "pair": {
+    "sep_mean": 15.222,
+    "sep_std": 0.0186,
+    "sep_end": 15.205,
+    "omega_last": -8e-06,
+    "rev_total": -0.001,
+    "c_com_last": 0.072,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   194.01,
+   193.83
+  ],
+  "end1": [
+   [
+    48.27,
+    233.26
+   ],
+   [
+    48.19,
+    248.47
+   ]
+  ],
+  "area1_end": [
+   33.0,
+   32.0
+  ],
+  "net2": [
+   63.67
+  ],
+  "end2": [
+   [
+    55.19,
+    93.48
+   ]
+  ],
+  "area2_end": [
+   28.5
+  ],
+  "track_saved": "GLF_mirror",
+  "ts": "2026-08-20 23:40:05"
+ },
+ {
+  "id": "GLF_seed1",
+  "kind": "GL_glue_final",
+  "job": {
+   "kind": "GL_glue_final",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 92.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLF_seed1",
+   "seed": 1,
+   "save_track_as": "GLF_seed1"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 2044.9,
+  "tu_per_s": 1.28,
+  "T_end": 2625.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 133.659,
+    "sep_std": 5.1519,
+    "sep_end": 139.701,
+    "omega_last": -1e-06,
+    "rev_total": -0.006,
+    "c_com_last": 0.039194,
+    "sep0": 9.008,
+    "sep_min": 7.806,
+    "sep_max": 139.701
+   },
+   "pair": {
+    "sep_mean": 15.222,
+    "sep_std": 0.0186,
+    "sep_end": 15.205,
+    "omega_last": -8e-06,
+    "rev_total": -0.001,
+    "c_com_last": 0.072,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   194.01,
+   193.83
+  ],
+  "end1": [
+   [
+    48.27,
+    233.26
+   ],
+   [
+    48.19,
+    248.47
+   ]
+  ],
+  "area1_end": [
+   33.0,
+   32.0
+  ],
+  "net2": [
+   63.63
+  ],
+  "end2": [
+   [
+    53.15,
+    93.65
+   ]
+  ],
+  "area2_end": [
+   29.0
+  ],
+  "track_saved": "GLF_seed1",
+  "ts": "2026-08-20 23:40:07"
+ },
+ {
+  "id": "GLF_seed3",
+  "kind": "GL_glue_final",
+  "job": {
+   "kind": "GL_glue_final",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 92.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 14.0,
+    "chan_eps": 0.003,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLF_seed3",
+   "seed": 3,
+   "save_track_as": "GLF_seed3"
+  },
+  "status": "census_change",
+  "dt": 0.02,
+  "wall_s": 2048.4,
+  "tu_per_s": 1.29,
+  "T_end": 2635.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 2,
+  "nc2_max": 2,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 133.949,
+    "sep_std": 5.057,
+    "sep_end": 140.269,
+    "omega_last": 3.5e-05,
+    "rev_total": 0.009,
+    "c_com_last": 0.04018,
+    "sep0": 9.008,
+    "sep_min": 7.809,
+    "sep_max": 140.269
+   },
+   "pair": {
+    "sep_mean": 15.203,
+    "sep_std": 0.0181,
+    "sep_end": 15.19,
+    "omega_last": 2e-05,
+    "rev_total": -0.0,
+    "c_com_last": 0.072331,
+    "sep0": 15.38,
+    "sep_min": 14.807,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   194.8,
+   194.61
+  ],
+  "end1": [
+   [
+    48.29,
+    234.05
+   ],
+   [
+    48.29,
+    249.24
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.25
+  ],
+  "net2": [
+   64.19
+  ],
+  "end2": [
+   [
+    40.35,
+    94.01
+   ]
+  ],
+  "area2_end": [
+   29.75
+  ],
+  "track_saved": "GLF_seed3",
+  "ts": "2026-08-20 23:40:11"
+ },
+ {
+  "id": "GLv3_seed2",
+  "kind": "GL_glue_v3",
+  "job": {
+   "kind": "GL_glue_v3",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv3_seed2",
+   "seed": 2,
+   "save_track_as": "GLv3_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2161.6,
+  "tu_per_s": 1.62,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 189.202,
+    "sep_std": 6.1258,
+    "sep_end": 199.812,
+    "omega_last": -7e-06,
+    "rev_total": 0.004,
+    "c_com_last": 0.036878,
+    "sep0": 9.008,
+    "sep_min": 7.782,
+    "sep_max": 199.812
+   },
+   "pair": {
+    "sep_mean": 15.207,
+    "sep_std": 0.0215,
+    "sep_end": 15.199,
+    "omega_last": -6e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.072708,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   257.06,
+   256.88
+  ],
+  "end1": [
+   [
+    48.25,
+    296.32
+   ],
+   [
+    48.26,
+    311.52
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   66.49
+  ],
+  "end2": [
+   [
+    43.09,
+    96.58
+   ]
+  ],
+  "area2_end": [
+   31.0
+  ],
+  "track_saved": "GLv3_seed2",
+  "ts": "2026-08-21 00:21:16"
+ },
+ {
+  "id": "GLv3_mirror",
+  "kind": "GL_glue_v3",
+  "job": {
+   "kind": "GL_glue_v3",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": 1,
+    "slope": 1.2,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv3_mirror",
+   "seed": 1,
+   "save_track_as": "GLv3_mirror"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2163.4,
+  "tu_per_s": 1.62,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 189.328,
+    "sep_std": 6.12,
+    "sep_end": 199.958,
+    "omega_last": 9e-06,
+    "rev_total": -0.004,
+    "c_com_last": 0.036698,
+    "sep0": 9.008,
+    "sep_min": 7.772,
+    "sep_max": 199.958
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   66.22
+  ],
+  "end2": [
+   [
+    53.05,
+    96.26
+   ]
+  ],
+  "area2_end": [
+   31.25
+  ],
+  "track_saved": "GLv3_mirror",
+  "ts": "2026-08-21 00:21:18"
+ },
+ {
+  "id": "GLv3_seed3",
+  "kind": "GL_glue_v3",
+  "job": {
+   "kind": "GL_glue_v3",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv3_seed3",
+   "seed": 3,
+   "save_track_as": "GLv3_seed3"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2185.3,
+  "tu_per_s": 1.6,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 189.613,
+    "sep_std": 6.2089,
+    "sep_end": 200.354,
+    "omega_last": -1.5e-05,
+    "rev_total": 0.004,
+    "c_com_last": 0.036198,
+    "sep0": 9.008,
+    "sep_min": 7.77,
+    "sep_max": 200.354
+   },
+   "pair": {
+    "sep_mean": 15.214,
+    "sep_std": 0.0155,
+    "sep_end": 15.217,
+    "omega_last": 5.1e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.072412,
+    "sep0": 15.38,
+    "sep_min": 14.807,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   257.05,
+   256.88
+  ],
+  "end1": [
+   [
+    48.25,
+    296.3
+   ],
+   [
+    48.28,
+    311.52
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   32.0
+  ],
+  "net2": [
+   65.87
+  ],
+  "end2": [
+   [
+    43.78,
+    96.0
+   ]
+  ],
+  "area2_end": [
+   31.5
+  ],
+  "track_saved": "GLv3_seed3",
+  "ts": "2026-08-21 00:21:40"
+ },
+ {
+  "id": "GLv3_seed1",
+  "kind": "GL_glue_v3",
+  "job": {
+   "kind": "GL_glue_v3",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 3500,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 1.2,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv3_seed1",
+   "seed": 1,
+   "save_track_as": "GLv3_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2185.4,
+  "tu_per_s": 1.6,
+  "T_end": 3500.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 193.119,
+    "sep_std": 8.1382,
+    "sep_end": 207.376,
+    "omega_last": -8.2e-05,
+    "rev_total": -0.0,
+    "c_com_last": 0.025561,
+    "sep0": 9.008,
+    "sep_min": 7.772,
+    "sep_max": 207.376
+   },
+   "pair": {
+    "sep_mean": 15.215,
+    "sep_std": 0.0128,
+    "sep_end": 15.216,
+    "omega_last": 1.2e-05,
+    "rev_total": 0.001,
+    "c_com_last": 0.071859,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   256.9,
+   256.74
+  ],
+  "end1": [
+   [
+    48.19,
+    296.16
+   ],
+   [
+    48.31,
+    311.37
+   ]
+  ],
+  "area1_end": [
+   32.5,
+   32.0
+  ],
+  "net2": [
+   58.54
+  ],
+  "end2": [
+   [
+    48.35,
+    88.78
+   ]
+  ],
+  "area2_end": [
+   32.25
+  ],
+  "track_saved": "GLv3_seed1",
+  "ts": "2026-08-21 00:21:40"
+ },
+ {
+  "id": "VERDICT_R1_pendulum",
+  "kind": "verdict",
+  "verdict": "R1 DISCOVERY (not in brief): adding a 2nd S inside/near the anchor ring KILLS rotation and births a new composite attractor \u2014 the S-M-S PENDULUM: both S's lock at the M4 same-species bond 14.78, M cross-bonds to BOTH at 8.7-8.8 (isoceles, apex 118deg) and LIBRATES +-90deg about the S-S axis, period ~307tu, amplitude steady >=1500tu (limit cycle; 4/4 d0 in {10,12,15,20}). eta21=0 variant (blind S's): M shuttles THROUGH the S-S gap along the perpendicular bisector (x frozen to 1e-11). Extends the composite-dynamics family: static bond < travel < rotation < libration/shuttle.",
+  "evidence": "records 6-11; tracks R1_d*.npz; period/amplitude analysis in NOTES.md",
+  "ts": "2026-08-21 00:33:11"
+ },
+ {
+  "id": "VERDICT_TOW_primitive",
+  "kind": "verdict",
+  "verdict": "TOW PRIMITIVE CERTIFIED (T6 + R0/R4 response curves): blind M-M pair (eta12=0, tau1=5.7, c=0.0593) tows a NEAR-ONSET S cargo (tau2=5.60, rotor-only zone: parks alone = parking brake) in the trailing cross-well slot: lock at sep*=8.46+-0.006, cargo speed = pair speed to 0.2%, 155px conveyed, areas stable, robust through initial 12px transient. eta21 threshold: 0.1 tows, 0.05/0.03 drop (inner-branch v_max < c). DESIGN LAW: near-onset cargo susceptibility ~7-8x deep-static (v_max 0.127 vs 0.017 at eta=0.1) \u2014 the machine-C4 near-onset amplification ported to the eta channel. Deep-static cargo (tau2=2.5) is UNTOWABLE by any stable A=4 carrier (honest negative: D0/T1/T4/C2 ladder; carrier speed floor ~0.02 > well ceiling 0.017; b-braked carriers decelerate through the window without capture).",
+  "evidence": "records 3-5,12-17,35-37,47-52,54-56,61-69",
+  "ts": "2026-08-21 00:33:11"
+ },
+ {
+  "id": "VERDICT_R2_capture",
+  "kind": "verdict",
+  "verdict": "R2 capture-range attribution: spinning rotor EXTENDS same-species capture upper edge: d0=20 (outside M4 basin<=19.5) captured to ring by t~555 WITH rotor (omega=-0.0055 during approach) vs REPELLED to 22.6 without M; d0=22/24 repelled in both (edge in (20,22)). RM variant (M-species cargo): rotor reels it from d0=15-20 with transient azimuthal arc 7-8.5px, cargo M4-bonds the orbiter BUT then cross-binds the anchor too: overloaded anchor replicates at t~985 (honest negative: M-cargo rollers self-destruct).",
+  "evidence": "records 22-27, 30-31",
+  "ts": "2026-08-21 00:33:11"
+ },
+ {
+  "id": "VERDICT_GLF_crotch_trap",
+  "kind": "verdict",
+  "verdict": "GLUE negative (reproducible 4/4): releasing cargo AT the fork junction (eta null edge = fork x0) strands it in the fork CROTCH where tilted valley walls have a -x force component: cargo surfs backward to the crotch (x~88), sits on the carrier line, and is RAMMED head-on by the lapping carrier -> split (t~2620). Same wall-tilt mechanism causes slow surf-back whenever a fly-by lifts a parked cargo above its branch line. DESIGN RULE: release point must put the cargo ON its branch line at >= ring-reach (15px) from the carrier lane, i.e. branch offset at release >= 15 or cap reached.",
+  "evidence": "GLF_seed1-3 + GLF_mirror census_change records; GLv3 tail drift -9px",
+  "ts": "2026-08-21 00:33:11"
+ },
+ {
+  "id": "GLv4_mirror",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": 1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv4_mirror",
+   "seed": 1,
+   "save_track_as": "GLv4_mirror"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2485.0,
+  "tu_per_s": 1.61,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 214.156,
+    "sep_std": 6.2931,
+    "sep_end": 224.856,
+    "omega_last": 2.9e-05,
+    "rev_total": -0.013,
+    "c_com_last": 0.036311,
+    "sep0": 9.008,
+    "sep_min": 7.772,
+    "sep_max": 224.856
+   },
+   "pair": {
+    "sep_mean": 15.207,
+    "sep_std": 0.0136,
+    "sep_end": 15.203,
+    "omega_last": 3.4e-05,
+    "rev_total": -0.0,
+    "c_com_last": 0.072129,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   293.19,
+   293.02
+  ],
+  "end1": [
+   [
+    48.34,
+    332.45
+   ],
+   [
+    48.32,
+    347.65
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   80.22
+  ],
+  "end2": [
+   [
+    66.26,
+    108.31
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "GLv4_mirror",
+  "ts": "2026-08-21 01:13:10"
+ },
+ {
+  "id": "GLv4_seed1",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv4_seed1",
+   "seed": 1,
+   "save_track_as": "GLv4_seed1"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2485.2,
+  "tu_per_s": 1.61,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 213.73,
+    "sep_std": 6.3416,
+    "sep_end": 224.555,
+    "omega_last": -2.9e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.036068,
+    "sep0": 9.008,
+    "sep_min": 7.772,
+    "sep_max": 224.555
+   },
+   "pair": {
+    "sep_mean": 15.207,
+    "sep_std": 0.0136,
+    "sep_end": 15.203,
+    "omega_last": 3.4e-05,
+    "rev_total": -0.0,
+    "c_com_last": 0.072129,
+    "sep0": 15.38,
+    "sep_min": 14.806,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   293.19,
+   293.02
+  ],
+  "end1": [
+   [
+    48.34,
+    332.45
+   ],
+   [
+    48.32,
+    347.65
+   ]
+  ],
+  "area1_end": [
+   32.25,
+   32.25
+  ],
+  "net2": [
+   80.31
+  ],
+  "end2": [
+   [
+    30.25,
+    108.63
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "GLv4_seed1",
+  "ts": "2026-08-21 01:13:10"
+ },
+ {
+  "id": "GLv4_seed2",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv4_seed2",
+   "seed": 2,
+   "save_track_as": "GLv4_seed2"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2489.2,
+  "tu_per_s": 1.61,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 213.136,
+    "sep_std": 6.2197,
+    "sep_end": 223.752,
+    "omega_last": -2.7e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.036262,
+    "sep0": 9.008,
+    "sep_min": 7.782,
+    "sep_max": 223.752
+   },
+   "pair": {
+    "sep_mean": 15.218,
+    "sep_std": 0.0133,
+    "sep_end": 15.233,
+    "omega_last": -4e-05,
+    "rev_total": -0.001,
+    "c_com_last": 0.071675,
+    "sep0": 15.38,
+    "sep_min": 14.812,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   292.95,
+   292.8
+  ],
+  "end1": [
+   [
+    48.27,
+    332.2
+   ],
+   [
+    48.18,
+    347.44
+   ]
+  ],
+  "area1_end": [
+   32.75,
+   31.75
+  ],
+  "net2": [
+   80.85
+  ],
+  "end2": [
+   [
+    30.24,
+    109.18
+   ]
+  ],
+  "area2_end": [
+   32.0
+  ],
+  "track_saved": "GLv4_seed2",
+  "ts": "2026-08-21 01:13:14"
+ },
+ {
+  "id": "GLv4_seed3",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "GLv4_seed3",
+   "seed": 3,
+   "save_track_as": "GLv4_seed3"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 2490.7,
+  "tu_per_s": 1.61,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 214.22,
+    "sep_std": 6.4105,
+    "sep_end": 225.168,
+    "omega_last": -2.8e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.035951,
+    "sep0": 9.008,
+    "sep_min": 7.77,
+    "sep_max": 225.168
+   },
+   "pair": {
+    "sep_mean": 15.213,
+    "sep_std": 0.0127,
+    "sep_end": 15.215,
+    "omega_last": 1e-06,
+    "rev_total": 0.0,
+    "c_com_last": 0.072515,
+    "sep0": 15.38,
+    "sep_min": 14.807,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   293.27,
+   293.1
+  ],
+  "end1": [
+   [
+    48.28,
+    332.52
+   ],
+   [
+    48.29,
+    347.74
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.25
+  ],
+  "net2": [
+   79.77
+  ],
+  "end2": [
+   [
+    30.28,
+    108.08
+   ]
+  ],
+  "area2_end": [
+   32.5
+  ],
+  "track_saved": "GLv4_seed3",
+  "ts": "2026-08-21 01:13:16"
+ },
+ {
+  "id": "VERDICT_GL_glue",
+  "kind": "verdict",
+  "verdict": "GL GLUE PASS (v4, 3 seeds + mirror): ONE world chains THREE certified mechanisms \u2014 (1) tow: blind pair picks up near-onset S cargo, lock 820tu, 64px conveyed in-band; (2) dock release: eta-xbox null edge at x1=104 releases cargo (release glide onto branch, tow well hands cargo to rail); (3) fork sort: cargo slides down ITS branch (slope 2.0, chan 0.004) to park 17.7-18.3px off the carrier lane (mirror flips sign symmetrically); tails frozen (|dx|<=0.33px final 500tu). INTERFERENCE MAPPED & CLOSED: carrier lap fly-by closest approach 18.0px > cross-well ring reach 15 -> drag 0.17-0.33px (vs 6.6px at 7.4px approach in v1, re-capture in v2-fix, head-on split in crotch-release GLF). Composition rule: certified primitives compose IFF their interaction footprints (eta-well reach 15px, rail walls, carrier lane) are kept disjoint at every handoff; geometry margins are the glue design variables.",
+  "rows": [
+   {
+    "tag": "GLv4_seed1",
+    "lock_tu": 820.0,
+    "conveyed": 63.8,
+    "y_end": 30.24,
+    "branch_dy": -17.76,
+    "x_end": 108.63,
+    "tail_dx": -0.007,
+    "tail_dy": 0.003
+   },
+   {
+    "tag": "GLv4_seed2",
+    "lock_tu": 825.0,
+    "conveyed": 64.0,
+    "y_end": 30.25,
+    "branch_dy": -17.75,
+    "x_end": 109.18,
+    "tail_dx": 0.325,
+    "tail_dy": -0.038
+   },
+   {
+    "tag": "GLv4_seed3",
+    "lock_tu": 825.0,
+    "conveyed": 64.0,
+    "y_end": 30.26,
+    "branch_dy": -17.74,
+    "x_end": 108.08,
+    "tail_dx": -0.189,
+    "tail_dy": 0.024
+   },
+   {
+    "tag": "GLv4_mirror",
+    "lock_tu": 825.0,
+    "conveyed": 64.1,
+    "y_end": 66.26,
+    "branch_dy": 18.26,
+    "x_end": 108.31,
+    "tail_dx": 0.157,
+    "tail_dy": 0.008
+   }
+  ],
+  "design": {
+   "x0_fork": 92.0,
+   "x1_eta": 104.0,
+   "slope": 2.0,
+   "dy_max": 18.0,
+   "chan_eps_cargo": 0.004,
+   "chan_eps_carrier": 0.002,
+   "L": 160,
+   "T": 4000
+  },
+  "ts": "2026-08-21 01:16:20"
+ },
+ {
+  "id": "VERDICT_B7_budget",
+  "kind": "verdict",
+  "verdict": "B7 PASS: 6-field L=96 dx=0.5 runs 1.2-4.6 tu/s per process at 6-10-wide parallelism (10-core M-series host); routine candidates T=2500-3500 = 8-40 min wall in parallel batches; L=160 cert runs T=2000-4000 = 33-41 min (documented; 5 GL + 5 D3 one-offs). ~100 runs total this campaign.",
+  "ts": "2026-08-21 01:16:20"
+ },
+ {
+  "id": "AUDIT_glue_s9",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "AUDIT_glue_s9",
+   "seed": 9,
+   "save_track_as": "AUDIT_glue_s9"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1650.3,
+  "tu_per_s": 2.42,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 214.13,
+    "sep_std": 6.2715,
+    "sep_end": 224.828,
+    "omega_last": -2.9e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.035612,
+    "sep0": 9.008,
+    "sep_min": 7.76,
+    "sep_max": 224.828
+   },
+   "pair": {
+    "sep_mean": 15.222,
+    "sep_std": 0.0205,
+    "sep_end": 15.189,
+    "omega_last": -1e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.071394,
+    "sep0": 15.38,
+    "sep_min": 14.821,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   293.06,
+   292.87
+  ],
+  "end1": [
+   [
+    48.19,
+    332.32
+   ],
+   [
+    48.2,
+    347.51
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.5
+  ],
+  "net2": [
+   79.9
+  ],
+  "end2": [
+   [
+    30.25,
+    108.21
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "AUDIT_glue_s9",
+  "ts": "2026-08-21 01:48:01"
+ },
+ {
+  "id": "AUDIT_glue_s9",
+  "kind": "GL_glue_v4",
+  "job": {
+   "kind": "GL_glue_v4",
+   "tau1": 5.7,
+   "tau2": 5.6,
+   "eta12": 0.0,
+   "L": 160.0,
+   "T": 4000,
+   "dx": 0.5,
+   "noise": 0.002,
+   "rec_tu": 5.0,
+   "pairing": "none",
+   "eta21": {
+    "kind": "xbox",
+    "eta0": 0.1,
+    "x0": 8.0,
+    "x1": 104.0,
+    "w": 3.0
+   },
+   "bfield": {
+    "kind": "chan",
+    "yc": 48.0,
+    "chan_eps": 0.002,
+    "cap": 24.0
+   },
+   "bfield2": {
+    "kind": "forkchan",
+    "yc": 48.0,
+    "x0": 92.0,
+    "branch": -1,
+    "slope": 2.0,
+    "dy_max": 18.0,
+    "chan_eps": 0.004,
+    "cap": 24.0
+   },
+   "blobs1": [
+    [
+     39.0,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ],
+    [
+     54.4,
+     48.0,
+     [
+      0.0,
+      0.5
+     ]
+    ]
+   ],
+   "blobs2": [
+    [
+     30.0,
+     48.0,
+     null
+    ]
+   ],
+   "pairs": [
+    [
+     1,
+     0,
+     2,
+     0,
+     "rearM_cargo"
+    ],
+    [
+     1,
+     0,
+     1,
+     1,
+     "pair"
+    ]
+   ],
+   "id": "AUDIT_glue_s9",
+   "seed": 9,
+   "save_track_as": "AUDIT_glue_s9"
+  },
+  "status": "ok",
+  "dt": 0.02,
+  "wall_s": 1649.4,
+  "tu_per_s": 2.43,
+  "T_end": 4000.0,
+  "nc1_end": 2,
+  "nc1_max": 2,
+  "nc2_end": 1,
+  "nc2_max": 1,
+  "pairs": {
+   "rearM_cargo": {
+    "sep_mean": 214.13,
+    "sep_std": 6.2715,
+    "sep_end": 224.828,
+    "omega_last": -2.9e-05,
+    "rev_total": 0.013,
+    "c_com_last": 0.035612,
+    "sep0": 9.008,
+    "sep_min": 7.76,
+    "sep_max": 224.828
+   },
+   "pair": {
+    "sep_mean": 15.222,
+    "sep_std": 0.0205,
+    "sep_end": 15.189,
+    "omega_last": -1e-05,
+    "rev_total": 0.0,
+    "c_com_last": 0.071394,
+    "sep0": 15.38,
+    "sep_min": 14.821,
+    "sep_max": 15.38
+   }
+  },
+  "net1": [
+   293.06,
+   292.87
+  ],
+  "end1": [
+   [
+    48.19,
+    332.32
+   ],
+   [
+    48.2,
+    347.51
+   ]
+  ],
+  "area1_end": [
+   32.0,
+   32.5
+  ],
+  "net2": [
+   79.9
+  ],
+  "end2": [
+   [
+    30.25,
+    108.21
+   ]
+  ],
+  "area2_end": [
+   31.75
+  ],
+  "track_saved": "AUDIT_glue_s9",
+  "ts": "2026-08-21 01:50:09"
  }
 ]

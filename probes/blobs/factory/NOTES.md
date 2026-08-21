@@ -168,3 +168,68 @@ Predicted stable tow: (5.64, 0.1) sep*~9.7; (5.66, 0.2) sep*~9.5.
 => KEY numbers: well v_max = 0.0173 px/tu at sep=10.2 (eta21=0.1). A carrier
    holding c in (0.005, 0.015) steadily is needed. The A=4 pair has NO stable
    speed dial in that window (near-onset c is either >=0.02 or collapsing).
+
+## BREAKTHROUGH: NEAR-ONSET CARGO unlocks the tow (records 61-69)
+- R4: cargo species2 re-tuned to tau2=5.60 (rotor-only zone: parks alone after
+  kick, record 66: v->0 by t=500, "parking brake" intact). Well response is
+  near-onset AMPLIFIED ~7-8x (machine C4 susceptibility, ported to the eta
+  channel): v_max = 0.061 (eta21=0.03), 0.084 (0.05), 0.127 (0.1) px/tu at
+  sep~9, ALL >> pair speed 0.059. One-way statics: converge to d*=7.92-8.07,
+  cargo compact (area 32-34), NO split even at eta21=0.1 (deep-static S split
+  at 0.15; near-onset S at 0.1 is safe: shallower forcing).
+- T6 TOW CERT-GRADE EVENT: blind pair (tau1=5.7, c=0.0593) + tau2=5.6 cargo
+  rear slot d0=9:
+  * eta21=0.1: LOCKED TOW. sep 9->8.46+-0.005, cargo net +155.2px at pair speed
+    (c_cargo=0.0592 = c_pair to 0.2%), 2500tu, all areas 32-33. STABLE (sep_max
+    12.36 during initial transient, recovered -> genuine attractor).
+  * eta21=0.05/0.03: NOT towed (well v_max 0.084 >= c BUT the STABLE inner
+    branch tops out below c at the lock length; cargo left behind, then pair
+    laps torus and passes it cleanly (no split! near-onset cargo swings around).
+=> TOW LAW: need inner-branch v(sep*) = c_pair with margin; eta21=0.1 works.
+## DOCK + FORK pilots launched (D2, F2) using the certified tow.
+
+## Certification wave results (records 73-89)
+- RL ROLLER CERT PASS (verdict rec 84): tau1=6.0, eta12=0.1, eta21=0.2; cargo on
+  anchor ring: vtan = -1.35..-1.43e-3 px/tu co-rotating, 6/6 windows sign-locked,
+  2 noise seeds + d0=10/20 variants (all funnel to ring, same rate); eta21=0
+  null EXACTLY 0. eta21=0.1 below gate (3e-4) -> quantified null: roller needs
+  the deep-coupling channel. Ratchet efficiency ~0.07px cargo arc per rotor rev.
+- DK DOCK CERT PASS (verdict rec 83, amended release gate documented rec 82):
+  3/3 seeds tow_lock 935-940tu (72px conveyed in-band), release glide 6.5-7.5px
+  past x1, tail |dx|<0.3px/500tu, carrier continues 88px; carry control holds
+  cargo to end (149.5px); null control 1.15px. Strict 300tu freeze window fails
+  (real glide ~550tu) — amendment recorded BEFORE verdicts.
+- FK STATIC-SORT PASS (verdict rec 85): 24/24 purity (3 seeds + swap), null clean.
+- GL GLUE (records 87-89): tow -> release -> self-sort DOWN OWN BRANCH: cargo
+  towed 70px, released at junction, slides to fork valley (y 48->40.6, x parks
+  104.9; sorted state holds 1800tu). INTERFERENCE FOUND & MEASURED: carrier lap
+  fly-by (closest approach 7.4px transverse) drags parked cargo 6.6px back
+  toward the rail (t 2900-3500): the cross-well reach (ring 6-15px) exceeds the
+  achieved branch separation (7.4px at park x). Mirror(+y) run still passes the
+  4px end-gate; -y seeds end at 3.6-3.7px (marginal fail at final time ONLY due
+  to fly-by). FIX LAUNCHED: slope 1.2 -> park ~14px off-rail (outside ring).
+
+## GL iterations (records 87-93 + GLF census-change runs)
+- GL v1 (release x1=100, fork x0=92, slope 0.6, chan 0.003): tow+release+sort
+  works (y->40.6-40.7 branch; mirror +y symmetric) BUT branch sep at park
+  (7.4px) < cross-well ring reach (15) -> lap fly-by drags cargo 6.6px off
+  branch (measured interference).
+- GLfix (slope 1.2): seed1 full pass (parks y=34.2, 13.8px off rail, x=109;
+  fly-by immune 2 laps). seed2/mirror: cargo lingers at branch shoulder y~39,
+  lap fly-by RE-CAPTURES and re-tows cargo (carry-away at t~3000). Composition
+  is geometry-critical: released cargo must end OUTSIDE the tow well's reach.
+- GLF (release exactly at junction x1=x0=92): FAILS structurally — the fork
+  crotch is a TRAP (tilted valley walls surf the cargo backward to x~88, y=48);
+  the lapping carrier then rams it head-on: cargo splits t~2620 (3/3 + mirror,
+  clean reproducible negative). LESSON: never release into the crotch; release
+  point must sit where own-branch offset >= ~10px and slope keeps pulling.
+- GLv3 launched: x1=104 (branch offset 14.4 at release), slope 1.2, dy_max=18,
+  cargo rail 0.004: park target 18px off rail (> ring reach 15), 3 seeds+mirror.
+
+## GLv4 FINAL (records 108-111 + verdicts)
+GLv4 (x1=104, slope 2.0, dy_max=18, cargo chan 0.004): PASS 4/4 (3 seeds +
+mirror): lock 820-825tu, 64px conveyed, park dy=+-17.7-18.3, tail |dx|<=0.33,
+fly-by closest 18.0px > ring reach 15 -> drag 0.17px. Interference closed.
+All verdict records in results.json: RL (rec 84), DK (83) + amendment (82),
+FK static (85), R1 pendulum (104), TOW (105), R2 capture (106), GLF crotch
+trap (107), GL glue (111), B7 (112). SUMMARY.md + fig1-3 done.

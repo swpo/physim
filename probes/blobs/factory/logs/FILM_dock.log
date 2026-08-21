@@ -1,0 +1,2 @@
+{"id": "FILM_dock", "kind": "film", "status": "ok", "dt": 0.02, "wall_s": 1347.5, "tu_per_s": 1.19, "T_end": 1600.0, "nc1_end": 2, "nc1_max": 2, "nc2_end": 1, "nc2_max": 1, "net1": [120.32, 120.14], "end1": [[48.26, 159.58], [48.25, 174.78]], "area1_end": [31.75, 32.0], "net2": [77.37], "end2": [[48.24, 107.62]], "area2_end": [32.25], "track_saved": "FILM_dock", "snaps_saved": "FILM_dock_snaps"}
+[FILM_dock] appended as record 94

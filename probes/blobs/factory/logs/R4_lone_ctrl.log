@@ -1,0 +1,2 @@
+{"id": "R4_lone_ctrl", "kind": "R4_nearonset_cargo", "status": "ok", "dt": 0.02, "wall_s": 543.0, "tu_per_s": 3.68, "T_end": 2000.0, "nc1_end": 0, "nc1_max": 0, "nc2_end": 1, "nc2_max": 1, "net2": [10.33], "end2": [[47.75, 62.58]], "area2_end": [31.75], "track_saved": "R4_lone"}
+[R4_lone_ctrl] appended as record 66

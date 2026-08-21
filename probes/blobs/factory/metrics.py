@@ -147,3 +147,47 @@ def sqrt_law_fit(xs, oms):
     y = oms ** 2
     r2 = 1 - ((y - pred) ** 2).sum() / max(((y - y.mean()) ** 2).sum(), 1e-15)
     return dict(a=float(mm), x_c=(float(-bb / mm) if mm > 0 else None), r2=float(r2))
+
+
+# =====================================================================
+# FACTORY metrics — LOCKED 2026-02-20 BEFORE certification batteries.
+# (rotor RT1/RT2 constants above inherited unchanged for rotor_verdict.)
+#
+# ROLLER (RL) definitions:
+# - cargo azimuthal advection = omega_all: linear fit of unwrapped cargo
+#   azimuth about the ANCHOR identity over the WHOLE track (pre-capture
+#   segment where stated); vtan = omega_all * r_mean.
+# - RL advection PASS: |vtan| >= 5e-4 px/tu sustained (whole-track fit) AND
+#   sign(omega_cargo) == sign(omega_rotor) in >= 5 of 6 consecutive 500-tu
+#   windows AND census constant. Below that: quantified null.
+# - capture: anchor-cargo sep enters < 16 px and stays for all later records.
+#
+# DOCK (DK) certification (per run):
+# - tow_lock: rearM-cargo sep in [7.5, 9.5] sustained >= 300 tu while pair
+#   c >= 0.04 px/tu (cargo conveyed >= 25 px during lock).
+# - release: after cargo crosses eta-null edge (x1), cargo speed falls below
+#   FREEZE_V = 2e-3 px/tu within 300 tu and stays below it for the remainder
+#   (excluding any later carrier fly-by), while carrier continues >= 30 px
+#   past the release point. Cargo alive & compact (area in [25, 45]).
+# - DK PASS: tow_lock AND release in >= 3/3 noise seeds (sigma=2e-3);
+#   carry CONTROL (eta const, no null zone): NO release (cargo conveyed to
+#   end, sep stays in tow band); null CONTROL (no carrier): cargo net |dx|
+#   <= 2 px. Honest interference (lap fly-by drag) reported separately.
+#
+# FORK (FK) certification:
+# - arrival = a blob (either species) that starts >= 8 px before the junction
+#   x0 and reaches x > x0 + 6 (or is released there by the dock).
+# - sorted(M) = ends with |y - yc_M| <= 2 px (M rail/centerline);
+#   sorted(S) = ends >= 4 px toward the S branch (|y - yc| >= 4 on branch
+#   side, using last-300tu mean y).
+# - purity = sorted arrivals / arrivals over >= 6 mixed arrivals (>= 2 runs,
+#   noise sigma=2e-3). FK PASS: purity = 1.0 AND census constant.
+# - F1 static-rail sorting (both species start same y, per-species rails):
+#   sorted = |y_end - yc_own_rail| <= 2 px; counted separately.
+#
+# GLUE (GL): one world chaining >= 2 certified primitives (tow->release->fork)
+# - GL PASS: all DK gates + FK cargo gate in the same run, 2+ seeds; report
+#   interference terms (fly-by drag px, rail-bond conflicts) quantitatively.
+FREEZE_V = 2e-3
+TOW_BAND = (7.5, 9.5)
+RL_VTAN_MIN = 5e-4

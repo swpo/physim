@@ -1,0 +1,2 @@
+{"id": "FILM_roller", "kind": "film", "status": "ok", "dt": 0.02, "wall_s": 385.3, "tu_per_s": 3.89, "T_end": 1500.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 2, "nc2_max": 2, "net1": [6.42], "end1": [[54.06, 41.39]], "area1_end": [35.5], "net2": [2.42, 3.84], "end2": [[46.49, 46.2], [44.21, 61.75]], "area2_end": [35.5, 33.75], "track_saved": "FILM_roller", "snaps_saved": "FILM_roller_snaps"}
+[FILM_roller] appended as record 93

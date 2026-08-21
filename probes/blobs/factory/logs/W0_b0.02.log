@@ -1,0 +1,2 @@
+{"id": "W0_b0.02", "kind": "W0_tractor", "status": "ok", "dt": 0.02, "wall_s": 822.5, "tu_per_s": 3.04, "T_end": 2500.0, "nc1_end": 1, "nc1_max": 1, "nc2_end": 1, "nc2_max": 1, "pairs": {"M_cargo": {"sep_mean": 44.613, "sep_std": 0.13, "sep_end": 44.817, "omega_last": -0.0, "rev_total": -0.0, "c_com_last": 0.000733, "sep0": 8.0, "sep_min": 8.0, "sep_max": 44.817}}, "net1": [37.34], "end1": [[47.75, 67.59]], "area1_end": [31.5], "net2": [0.52], "end2": [[47.75, 22.77]], "area2_end": [32.75], "track_saved": "W0_b0.02"}
+[W0_b0.02] appended as record 58
