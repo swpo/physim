@@ -377,3 +377,13 @@ per-species b_i(x,y). Smoke = M7 anchor to 6 digits.
    or crotch-trap head-on split. Glue design = geometric margins, not new physics.
 DESIGN LAWS: near-onset cargo (tau2 dial = cargo hot/cold switch); eta(x,y) legal;
 eta12<=0.05 budget for traveling carriers; 15px parking rule; crotches are traps.
+
+
+## PHASE 4 (2026-02-21): machine v2 spawned; L0 harvest pending
+blob-machine-v2 (sub-6e468dbb): multi-cargo logistics line from certified parts —
+V2a throughput (3 deliveries, queue integrity via 15px rule), V2b two-way sort
+(mixed cargo, both branches), V2c closed loop (dock-to-dock series composition),
+V2d stretch: first L1-GROWN component (genesis groove) inside an L2 machine.
+Reuses factory/sim.py; glue anchor must reproduce before building.
+Pod fleet: 23/32 shards done at spawn time; harvest + MAP-Elites merge + pod
+termination = controller work when workers finish.
