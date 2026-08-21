@@ -1,0 +1,2 @@
+{"id": "PD2_null_nocarrier", "kind": "proto_null", "status": "ok", "dt": 0.02, "wall_s": 267.7, "tu_per_s": 7.47, "T_end": 2000.0, "nc1_end": 0, "nc1_max": 0, "nc2_end": 2, "nc2_max": 2, "pairs": {"c1_c2": {"sep_mean": 26.681, "sep_std": 0.0473, "sep_end": 26.758, "omega_last": 4e-06, "rev_total": 0.0, "c_com_last": 0.000535, "sep0": 24.0, "sep_min": 24.0, "sep_max": 26.759}}, "net2": [1.53, 1.39], "end2": [[48.22, 29.79], [48.25, 56.55]], "area2_end": [32.0, 32.5], "track_saved": "PD2_null"}
+[PD2_null_nocarrier] appended as record 14

@@ -104,3 +104,21 @@ Smokes: shard 7 10-cand quick 2.7 min; determinism ghash-identical on rerun;
 merge dedups 3/3; shard 11 6-cand FULL battery 9.8 min (98 s/cand jitter-heavy)
 with bonds, ratios in-band, ladders walking. Budget: ~3 h/core per 100-cand
 shard => 25 shards on 8x4vCPU ~ 3-4 h wall.
+
+## Stage-2 harvest analysis (2026-02-19/20)
+stage2/ANALYSIS.md complete. Key numbers: 3195 cands / 325 core-hr / 404 cells;
+alive 996 (jitter 51.2%, uniform 0.47%); bonds 467; d*/wl first shell
+1.369+-0.126 (n=677, band [1.2,1.5] holds), second shell 1.924 (+0.55wl).
+NON-OSC "PLATEAU BOND" mechanism SETTLED by 4-run ablation on uni_3034:
+exciting fast channel (K=-1.03) = existence; tanh channel (K=+0.90) = binding
+(remove tanh -> pure repulsion; remove/flip excite -> death). 53 family
+members + 1 independent uniform invention (s2_128_26). G0c-invisible by
+construction (gprime(0)=0).
+A3 POSTMORTEM: ladder works. 27 onsets = 22 masked already-travelers
+(symmetric base A1 hides drift — BF5 lesson at scale; verified kicked rerun
+c=0.2038 steady on s2_107_48 = program speed record) + 5 true asymmetric
+onsets. Control: ref M4 tau=6.0 kicked A1 c=0.12346 vs cert 0.1234 (0.05%).
+STAGE-3 FIX (1 line): A1 kick_px=0.5 always.
+Fold-shell law at n=3195: alive median fold-dist 0.020 (q25-75 .006-.030)
+vs dead/domain ~0.2-0.27. Uniform should sample fold-dist logU[0.003,0.1].
+Follow-up sims used: 7 of budget 20.

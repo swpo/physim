@@ -1,0 +1,2 @@
+{"id": "P3_queue_null", "kind": "proto_null", "status": "ok", "dt": 0.02, "wall_s": 276.3, "tu_per_s": 5.43, "T_end": 1500.0, "nc1_end": 0, "nc1_max": 0, "nc2_end": 2, "nc2_max": 2, "pairs": {"c1_c2": {"sep_mean": 30.042, "sep_std": 0.047, "sep_end": 30.087, "omega_last": 1e-06, "rev_total": 0.0, "c_com_last": 0.000561, "sep0": 30.0, "sep_min": 29.97, "sep_max": 30.489}}, "net2": [0.53, 0.58], "end2": [[48.24, 30.45], [48.25, 60.54]], "area2_end": [32.5, 32.75]}
+[P3_queue_null] appended as record 4

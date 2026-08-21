@@ -387,3 +387,26 @@ V2d stretch: first L1-GROWN component (genesis groove) inside an L2 machine.
 Reuses factory/sim.py; glue anchor must reproduce before building.
 Pod fleet: 23/32 shards done at spawn time; harvest + MAP-Elites merge + pod
 termination = controller work when workers finish.
+
+
+### l0-sampler stage-2 ANALYSIS — accepted with controller audit notes (2026-02-21)
+Yields v2: jitter 51.2%/24.1% alive/bond (stage-1 prediction confirmed); uniform
+0.47% alive (novelty ~1/600); best line e1_9508 (evolver 3-act elite) 89.8%/41.8%.
+Fold-shell law at n=3195: alive median fold-dist 0.020 vs dead 0.2.
+Atlas: 404 cells, top-10 tour incl. T1 first 3-flavor bonded matter (4 cells),
+T2 plateau-bond family (41 cells), T3 SPEED RECORD c=0.204 — CONTROLLER AUDIT
+CONFIRMED EXACTLY (kicked act-1 poke: c=0.2038; 5th convention lesson: poke the
+right SPECIES — act 0 of that world replicates), T4 13 self-launching M6 jitters.
+d*/wl law v2 (830 bonds): first shell 1.369+-0.126, ladder d*=(1.37+0.55k)*wl.
+A3 postmortem: ladder works (M4 control 0.05%); "0 travelers" was A1 masking —
+22 already-travelers unmasked by kicks (stage-3 fix: kick_px=0.5 always).
+AUDIT CORRECTION on the plateau-bond mechanism: their tanh-ablation attributes
+binding for the uni_3034 FAMILY; my ablation of the INDEPENDENT invention
+s2_128_26 still bonds with tanh zeroed (d* 14.06->14.95) — that world's binding
+is NOT tanh-driven; mechanism unattributed (possibly a second non-osc route).
+Their "unablated" caveat was correct; family claim stands, exemplar corrected.
+Onset-point s2_101_61 partially verified (coast not steady under my poke protocol;
+ladder-internal protocol differs — flagged, not blocking).
+STAGE-3 approved-in-principle (targeted ~100-150 core-hr): kicked-A1 travel census,
+plateau-bond design rule, 3-flavor encounter tables; blind uniform only with
+fold-dist logU sampling. PENDING machine-v2 fan-in first.
