@@ -555,6 +555,33 @@ couplings; at brief parameters the rotor instead captures the cargo and converts
 a new object, an <b>S–M–S pendulum librator</b> (period ~307 tu) — extending the motion
 hierarchy: bond &lt; travel &lt; rotate &lt; <i>librate</i>.)</div>
 
+<h3 style="margin-top:30px">9a½. Machine v2 — the convoy line and the law cascade</h3>
+<p>Scaling the glue machine from one cargo to a queue of three produced a genuinely
+new machine <i>and</i> three new laws that stopped it short of full certification —
+the most instructive outcome so far.</p>
+<p><b>The machine that works</b> (certified 3/3 seeds + fresh-seed audit): on a railed
+lane, a carrier meeting cargo head-on doesn't swing around it (rails forbid the
+factory's swing-around geometry) — at moderate grip the meet becomes a stable
+<b>push-capture "blade"</b>: the cargo rides 7 px <i>ahead</i> of the carrier at full
+speed. So sequential one-at-a-time service is impossible on rails; the only
+throughput machine is a <b>bulldozer convoy</b> — the carrier sweeps the whole queue
+into a chain and delivers it wholesale. One trick makes the convoy sortable: a
+<b>sacrificial plug</b> blob rides the blade slot (which can never be fork-sorted —
+its y-hold is weaker than the fork needs, with 4 distinct trap limit-cycles mapped),
+so the <i>chain-pushed</i> real cargoes sort cleanly behind it: all 3 delivered to
+the branch floor as a bond-shell stack (15.3–15.5 px spacing), blob count frozen,
+cycle time 215 tu.</p>
+<p><b>The law cascade that blocked the full gate</b>: the delivered 3-stack is itself
+a bonded structure — and per M4 physics, bonded structures near onset <i>travel</i>.
+The parked stack shuttles ±9 px (isolation control: intrinsic). Fixing it means
+colder cargo (τ₂ &lt; τ_c(3) ∈ (5.55, 5.60]) — but colder cargo compresses the blade
+gap below its ~5.4 px split floor at working speed (<b>blade-load law</b>), and
+slowing the convoy to protect the blade makes the blade contact transversely
+unstable (<b>slow-convoy buckling</b>, the M5 buckling generalized). For a 3-cargo
+convoy the window is empty in this architecture. <b>Stack-safety, blade-load, and
+buckling are now quantified design laws</b> — machine engineering in this physics is
+navigating a lattice of competing stability windows, exactly the kind of hidden-law
+structure the eventual agent-facing world wants.</p>
 <h3>9b. Growing the landscape instead of drawing it (genesis)</h3>
 <p>Phase 2 ended with a teaser: a circulating blob writes a sawtooth into the dynamical
 b field. The genesis searcher asked the L2→L1 question systematically: <b>for every
@@ -653,9 +680,18 @@ island geography 25× faster). An evolutionary layer (merge = block composition,
 validated by reconstructing our own vvw and xv design jumps as single merge operations)
 beats jitter on alive-cells per assay and owns ALL multi-species coexistence cells —
 it even rediscovered the rotor from M4 parts without the recipe (audited: ω to 4
-digits). A 32-worker pod fleet is currently sweeping ~3,200 candidates (~$0.72/hr).
-Every "interesting" candidate carries its selection provenance (anthropic-screening
-doctrine).</p>
+digits). The 32-worker pod sweep (3,195 candidates, ~$9 of compute) came back: the archive
+grew 111 → 404 cells. Confirmed at scale: jitter yields 51% alive / 24% bonded;
+blind-uniform novelty is ~1/600; the bond-shell law settled at d\* = (1.37±0.13 +
+0.55k)·wavelength over 830 bonds. New physics found by the sweep: the
+non-oscillatory "plateau bond" is a robust 41-cell family (a saturating-inhibitor
+well, invisible to the tail eigenvalues by construction — binding chemistry beyond
+the funnel's prediction), plus at least one further unattributed binding route; the
+first 3-species bonded matter (from the evolver's elite line); 13 self-launching
+worlds; and a program speed record — c = 0.204, a jittered descendant of the
+evolver's rediscovered rotor, 45% faster than anything hand-designed
+(controller-audited to 4 digits). Every candidate carries its selection provenance
+(anthropic-screening doctrine).</p>
 <p class="meta">Next: machine v2 (multi-cargo delivery-and-sort logistics from the
 certified parts), the b_target inverse problem (differentiable-RD or evolutionary,
 now that the forward map is characterized), pod-harvest atlas review, then
