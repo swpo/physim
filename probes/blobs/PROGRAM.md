@@ -297,3 +297,34 @@ class (competing monotone tails), n=2 worlds (uni_3050 exciting-K also novel).
 Stage-2 fixes queued: chem_box recall bug, adaptive tau ladder (A3 +-20% too coarse
 for +-1% drift windows), A2 wrap filter. POD FAN-OUT: controller decision pending
 (economics: jitter maps islands 25x faster than uniform finds new ones).
+
+
+## LIT REVIEW (2026-02-21, litreview/ — 132 sources; verified spot-checks by controller)
+REINVENTION DISCLOSURE (now on public page): our system IS Schenk/Or-Guil/Bode/
+Purwins PRL 78:3781 (1997); blobs = dissipative solitons (Adv.Phys 59:485 review).
+Known: M0 existence, M1 drift bif + sqrt law, M2 tail-quantized molecules (+ bond
+forces measured experimentally in gas discharges), rotating bound states incl.
+rotation-before-drift (Moskalenko EPL 63:361 — anticipates rotor-only ordering),
+labyrinthine instability (Hagberg-Meron), self-replicating spots (Pearson),
+self-launch mechanism class (camphor/autophoresis/walkers/delayed-feedback DS),
+trail formation dials (Schweitzer active walkers), diode (chemical diode).
+SURVIVING NOVELTY: pair-only TRANSLATION zone as transport selector; nonreciprocal
+heterodimer rotor design + omega(tau1) law + 3-level motion hierarchy; RELAY TUG
+(no published soliton-train hauling soliton cargo upstream w/ shedding/self-heal);
+self-dug ring that later guides fresh blobs; chi=v/slope 10-40x self-written law;
+c=0.209 gamma^0.341 + trail-memory law as RD-blob quantitative results; G0 funnel
+as 20,000x QD pre-filter (spatial dynamics is standard THEORY, unused as search
+filter); d*/wl band matches theory (core-phase-set band).
+FRAMING FIXES ADOPTED: active-particle ratchet (Curie principle — passive transport
+impossible; our machine works because blobs are active); Buryak-Akhmediev
+stable/saddle alternation => "stable bond at predicted saddle distance" = pinning
+alarm (adopted as artifact detector).
+TOP STEALS QUEUED: S1 numerical continuation/freezing method (pde2path, Beyn-
+Thummler) -> machine-precision tau_c/d*/omega branches + fold certificates
+(upgrades l0 funnel + replaces bisection hunts); S2 Kramers-Moyal drift
+reconstruction from noisy tracks (Bodeker PRE 67:056220 — their exact use case was
+noise-covered drift bifurcations) -> free bond curves + sub-threshold
+certification from longruns; S3 merge-milestone pipelines: differentiable-RD
+inverse design (our IMEX step is differentiable) + POET transfer gate; Flow-Lenia
+parameter localization = the TAMED replication-with-inheritance mechanism if we
+ever want evolution inside a blob world.
