@@ -328,3 +328,24 @@ certification from longruns; S3 merge-milestone pipelines: differentiable-RD
 inverse design (our IMEX step is differentiable) + POET transfer gate; Flow-Lenia
 parameter localization = the TAMED replication-with-inheritance mechanism if we
 ever want evolution inside a blob world.
+
+
+### l0-evolver — DONE (scorecard + controller audit 2026-02-21)
+Validation gate PASSED both directions (merge ops reconstruct vvw AND xv exactly,
+including the honest historical dead-end for M0+M0 share-w). RESEARCH ANSWER:
+recombination >> perturbation — merge 7.7 alive-cells/100assays vs jitter 5.3 vs
+mutate-only 3.2 vs uniform 1.9; multi-species coexistence cells are MERGE-ONLY
+(13 vs 4 vs 0); all cross-species physics cells (5 cross-bond, 2 rotor, 5 drift)
+are evolver-found. ROTOR REDISCOVERED without the recipe: rh1_7000 (asymmetric
+eta=0.202, taus 5.9/5.0, omega=-0.0324, sep 8.72) — CONTROLLER AUDIT: exact
+replication (omega -0.0324, sep 8.7207) after applying their dressed-poke
+convention (bare pokes die in this world; dress=0.6 channel bumps required —
+4TH convention-faithfulness lesson, now standard audit practice). Also: first
+3-species triple-persist world (e1_9508), slow_tanh-merge rotor (e1_9513).
+Honest negatives: share_chan fails G0a ~50% on random pairs (background matching
+is structural), cross_edge eta>~0.15 replicates (certified window generalizes).
+
+### Stage-2 pod fleet (2026-02-21): 8 CPU pods live (l0s2-a..h), 32 workers,
+seeds 100-131, ~2500 candidates in flight; ~5% at first check — ETA 8-10h
+(full-battery candidates slower than smoke estimate). Harvest+merge = controller.
+Costs: a=datacrunch $0.028/hr, b-h=nebius $0.099/hr => ~$0.72/hr total.
