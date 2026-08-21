@@ -31,6 +31,23 @@ autonomous field physics: no per-blob bookkeeping, no scripted events, no painte
 Every headline number was independently re-derived by a controller audit on fresh random
 seeds before being accepted. Probe code + full logs: <code>probes/blobs/</code> in the repo.</p>
 
+<div class="note" style="background:#fff8f0;border-left:4px solid #d4a72c">
+<b>Literature grounding (added after a 132-source review).</b> The three-field system
+below is not ours: it was introduced by Schenk, Or-Guil, Bode &amp; Purwins
+(<i>Phys. Rev. Lett.</i> <b>78</b>:3781, 1997) to model planar gas discharges, and
+"blobs" are that field's <b>dissipative solitons</b> (review: Purwins, Bödeker &amp;
+Amiranashvili, <i>Adv. Phys.</i> <b>59</b>:485, 2010). Much of our phase-1 ladder
+reproduces known results — spot existence, the drift bifurcation and its √-law
+(Or-Guil et al. <i>PRE</i> <b>57</b>:6432; Krischer &amp; Mikhailov <i>PRL</i>
+<b>73</b>:3165), tail-quantized soliton molecules (Bode et al. <i>Physica D</i>
+<b>161</b>:45; measured bond forces: Bödeker et al. <i>New J. Phys.</i> <b>6</b>:62) —
+and we mark those sections accordingly. What appears new here: the pair-only
+translation zone used as a transport selector, the nonreciprocal heterodimer rotor
+design (rotating bound states themselves were found by Moskalenko, Liehr &amp;
+Purwins, <i>EPL</i> <b>63</b>:361 / <i>EPJ B</i> <b>37</b>:199), the relay-tug cargo
+machine, the self-written-landscape design laws, and the algebraic pre-filter for
+equation-space search. Full review: <code>probes/blobs/litreview/REVIEW.md</code>.</div>
+
 <div class="note"><b>The idea.</b> Instead of simulating creatures or particles directly,
 we write down three interacting <i>fields</i> — think of three coupled "chemical
 concentrations" filling space — chosen so that the field equations themselves hold stable,
@@ -79,7 +96,7 @@ parameter worlds fail in two directions: k₁=−0.9 → the poke dies; k₁=−
 the poke <i>replicates</i> into an ever-splitting "spot soup". Blobs live in the corridor
 between death and cancer.</div></div>
 
-<h2>2. Motility — the drift bifurcation (M1)</h2>
+<h2>2. Motility — the drift bifurcation (M1) <span style='font-weight:normal;font-size:13px'>(known physics: Or-Guil et al. <i>PRE</i> <b>57</b>:6432; our contribution = the unpinning protocol + measured law)</span></h2>
 <p>At M0 the blob sits still. Motion is a <i>phase transition</i>, not a given: the slow
 inhibitor v sits centered under the blob and cancels any nudge (the blob is overdamped).
 Two dials change that: <b>lower D<sub>v</sub></b> (make the drag field narrower) and
@@ -155,7 +172,7 @@ dx=1 is 12% low (residual washboard drag), dx=0.5 is converged to 0.6%. That 0.6
 unpinning certificate every headline number carries.
 </div>
 
-<h2>3. Binding — blob molecules (M2)</h2>
+<h2>3. Binding — blob molecules (M2) <span style='font-weight:normal;font-size:13px'>(known: tail-quantized soliton molecules, Bode et al. <i>Physica D</i> <b>161</b>:45; bond forces measured in gas discharges, Bödeker et al. <i>NJP</i> <b>6</b>:62)</span></h2>
 <p>Blobs interact through their field tails. The w halo gives plain repulsion — that alone
 would make a gas of loners. But with a wider slow inhibitor (D<sub>v</sub>=2, τ=2.5), the
 v-tail develops a gentle <i>oscillation</i>: rings of alternating push and pull around each
@@ -171,10 +188,14 @@ lone blob (σ=0.075), 15/15 bonded pairs refused to escape for the full 4000 tu 
 <div class="cap"><b>Molecules:</b> three blobs form a stable equilateral triangle (sides
 16.0/16.1/16.1); chains of three at [16, 16] also hold. These are the first composite
 objects.</div></div>
-<div class="warn"><b>Honest negative:</b> the bond we first found at the M0-ish point
-(τ=3) is <i>fake</i> — a lattice-pinned state that the continuum limit reveals to be a
-saddle (falls apart with a 140-tu e-folding time). The certified bond above lives at
-τ=2.5. Grid-refinement checking is not optional in this program.</div>
+<div class="warn"><b>Honest negative, upgraded by the literature:</b> the bond we first
+found at the M0-ish point (τ=3) is a lattice-pinned state that the continuum limit
+reveals to be a <i>saddle</i>. Theory says this is expected, not accidental:
+tail-mediated bound states <b>alternate stable/saddle</b> in their distance ladder
+(Buryak &amp; Akhmediev <i>PRE</i> <b>51</b>:3572) — the lattice stabilized a predicted
+saddle. Free artifact detector, now adopted: a "stable" bond found at a
+theory-predicted saddle distance is a pinning alarm. Grid-refinement checking is not
+optional in this program.</div>
 
 <h2>4. Flavors — two species in one world (M3)</h2>
 <p>To get more than one <i>kind</i> of blob, the architecture is: each species gets a
@@ -200,7 +221,7 @@ pattern. Its port-classification results stand, but machine work uses the compac
 replacement A′ (k₁=−1.564, k₄=2.05, 36 px; metastable ≥ 8600 tu, documented) plus the
 continuum-clean B. Re-engineering a truly continuum large species is parked.</div>
 
-<h3>The labyrinth instability — why big blobs are hard</h3>
+<h3>The labyrinth instability — why big blobs are hard <span style='font-weight:normal;font-size:13px'>(known: transverse/labyrinthine instability, Hagberg &amp; Meron <i>PRL</i> <b>72</b>:2494; self-replicating spots, Pearson <i>Science</i> <b>261</b>:189)</span></h3>
 <div class="note" style="font-size:13.5px">
 <b>What a labyrinth is.</b> The blob state ("on" disk in an "off" sea) is not the only
 localized solution these equations admit — there is also the <b>stripe</b>: a band of
@@ -267,6 +288,13 @@ travel — raising τ there hits replication before drift; mobility costs bond d
 metastable (~1500 tu), then reorganizes into the tandem.</div>
 
 <h2>6. The machine — RELAY TUG (M5, gate B6)</h2>
+<p class="meta">Framing per the ratchet literature (Reimann <i>Phys. Rep.</i> <b>361</b>:57):
+a static asymmetric potential cannot transport a passive overdamped particle — and ours
+doesn't. This is an <b>active-particle ratchet</b>: the blobs' own drift mode is the
+motor, the sawtooth only rectifies it (cf. bacterial ratchet gears, Di Leonardo et al.
+<i>PNAS</i> <b>107</b>:9541). Our earlier noise-ratchet negative matches soliton-ratchet
+theory exactly (Salerno &amp; Quintero <i>PRE</i> <b>65</b>:025602: transport needs a
+soft internal mode or translational noise — our solitons are too stiff).</p>
 <p>A machine needs an opponent: a <b>load field</b> the cargo will not climb by itself.
 The trick that makes this clean is <i>zero-footprint forcing</i> ("isok" mode): shift
 (k₁, k₄) together along the iso-background line as a static function of position,
@@ -338,6 +366,13 @@ the two cliffs that bound every corridor in this world.</p>
 <tr><td><code>ε</code> (isod/isok)</td><td>slope of the zero-footprint load field</td><td>—</td><td>two-species world: cargo drift v=−0.906ε (linear to 0.03, safe ≤0.02). Single-species near-onset (τ=5.7): susceptibility amplified ~50× (v up to −0.08) — measured, used as the machine's adversary. Machine tooth ε=5·10⁻⁴; pair reverses at b≈0.005; 3-train climbs to b≈0.0104; replication cliff b≤−0.09</td></tr>
 </table>
 
+<p class="meta">Vocabulary alignment (full table in <code>probes/blobs/litreview/NAMING.md</code>):
+our "encounter table" = <b>scattering outcomes</b> organized by unstable "scattor"
+states (Nishiura et al. <i>Chaos</i> <b>13</b>:962); our isok landscapes = the
+<b>heterogeneous-media</b> program of Nishiura et al. (bump/jump heterogeneities,
+pinning/depinning — <i>Chaos</i> <b>17</b>:037104), whose taxonomy we adopt for
+dock/pin/rebound behaviors; our replication cascade = <b>self-replicating spots</b>
+(Pearson <i>Science</i> <b>261</b>:189).</p>
 <h3>"Rails", precisely</h3>
 <p>A rail is not an object — it is a <b>static, zero-footprint potential in the cross-track
 direction</b>: b<sub>chan</sub>(y) = 0.002·min(|y−y₀|, 24) added to the same iso-line shift
@@ -372,7 +407,14 @@ With γ=+0.05 it builds a hill under itself; the hill's buildup <i>lags</i> the 
 rolls off its own volcano, forever. Right panel: the red hill trailing the runaway blob.
 Measured launch law c = 0.209·γ<sup>0.341</sup> (r²=0.991); launch threshold γ* ∈
 (0.002, 0.005] (noiseless); D_b suppresses (spreads the hill flat). Audit: fresh seed at
-γ=0.05 hit the law to <b>+0.3%</b>. Chemotaxis-style self-propulsion, no motor anywhere.</div></div>
+γ=0.05 hit the law to <b>+0.3%</b>. Chemotaxis-style self-propulsion, no motor anywhere. <i>Mechanism class is
+well-known across four literatures</i> — camphor swimmers (Nagayama et al.
+<i>Physica D</i> <b>194</b>:151, same pitchfork + √-law), autophoretic colloids
+(Michelin et al. <i>Phys. Fluids</i> <b>25</b>:061701, critical-Péclet launch),
+walking droplets with path memory (Couder &amp; Fort <i>Nature</i> <b>437</b>:208 —
+the closest single analog to our bond+memory package), and delayed-feedback soliton
+drift (Gurevich &amp; Friedrich <i>PRL</i> <b>110</b>:014101). New here: the exact-vacuum
+embedding, c=0.209γ^0.341, and the trail-memory law.</div></div>
 <p>With a <i>traveling</i> blob (τ=6.0) the deposit becomes a <b>backreaction</b>:
 γ&lt;0 drags (−12% speed at γ=−0.05 — the blob tows its own well, an effective mass),
 γ&gt;0 plows (+6%), and below γ≤−0.07 the blob <b>self-traps</b> — alive, rattling in a
@@ -405,7 +447,11 @@ three repulsive-trail writers do NOT partition space (wake shell-locking wins �
 never get a vote); uniform-b stability windows do not transfer to local wells (locality is
 protective: a blob survives b_core=−0.99 locally vs replication at −0.1 uniform).</p>
 
-<h3>M7 — the heterodimer rotor: rotation as an attractor</h3>
+<h3>M7 — the heterodimer rotor: rotation as an attractor <span style='font-weight:normal;font-size:13px'>(rotating bound states of dissipative solitons: known — Moskalenko et al. <i>EPL</i> <b>63</b>:361, incl. rotation-before-drift ordering; our additions: the nonreciprocal heterodimer design, ω(τ₁) dial law, and the single-static &lt; pair-travel &lt; rotor-spin hierarchy w/ transport use)</span></h3>
+<p class="meta">Nonreciprocity framing: with η only M→S the rotor still spins — the
+coupling is effectively nonreciprocal, connecting this object to the non-reciprocal
+phase-transition literature (Fruchart et al. <i>Nature</i> <b>592</b>:363; Ivlev et al.
+<i>PRX</i> <b>5</b>:011035).</p>
 <p>M4's honest negative said symmetric pairs refuse to rotate — kicks either lock or
 convert to translation. The hypothesis: rotation of a symmetric pair is
 <i>wake-frustrated</i>; the fix is <b>structural symmetry breaking</b> — bind a motile
