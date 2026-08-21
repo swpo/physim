@@ -437,3 +437,15 @@ or per-cargo eta — tau-contrast cannot split one blade's chain).
 CONTROLLER NOTE: "machine physics" is now producing laws faster than machines —
 stack-safety/blade-load/buckling are exactly the content an agent-facing world
 would examine. World-ification calculus improved.
+
+
+### Stage-3 launched (2026-02-22): 4 pods (l0s3-a..d), 17 shards
+Census (996 kicked act-indexed pokes) on a-c; island+plateau+encounters on d.
+EARLY HEADLINE (local, controller-verified exactly): s2_107_48 DECOMPOSED —
+act1+2chans is a STANDALONE 3-FIELD ENGINE, c=0.2038 bit-identical alone
+(act0 = slaved cargo via one W entry). Statics A=2.53 (NOT M4's A=4; NOT
+near-onset — a different motility mechanism). NEW SPEED RECORD c=0.2516 at
+Dv*0.9 (verified). Robust +-10% all dials. Machine-v3 carrier candidate:
+3 fields, 1.8x M4 pair speed, cargo attachable by one W entry.
+V4 assays validated on certified anchors (a2_cross reproduces XV d*=7.85;
+stack_probe reproduces M2 3-chain 15.66px parked; M4 shuttle control).

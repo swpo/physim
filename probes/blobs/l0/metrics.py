@@ -1,4 +1,16 @@
 """metrics.py — LOCKED L0 measurement conventions.
+V4 LOCK (stage-3, 2026-02-22, controller-approved priorities):
+ - A1 pokes carry kick_px=0.5 ALWAYS in stage-3 workers (stage-2 postmortem:
+   symmetric pokes masked 22 travelers; steadiness gate separates coast).
+ - Pokes are ACT-INDEXED: every act of a genome is poked separately (audit
+   lesson: act-0 of s2_107_48 replicates, act-1 is the c=0.204 traveler).
+ - NEW assays: a2_cross (cross-species encounter classes cross_bond/repel/
+   approach/kill_i/kill_j/both_die/replicate), stack_probe (n-stack parking:
+   stack_parked iff COM net <= 2px AND max blob drift <= 4px over T=2000,
+   census intact), radial_profile (angle-averaged u-tail; detects
+   sign-changing monotone tails that G0c cannot see).
+ - Speed island runs use directed one-dial-at-a-time scans +-5/10% plus
+   sigma=0.08 whole-genome jitters, kicked act-indexed A1, T=400.
 V3 LOCK (stage-2, 2026-02-19, controller-approved fixes BEFORE pod batch):
  1. chem_box = wavelength+|Re| box ONLY (v2 osc-dominance clause had measured
     recall bug: rejected all 15 alive VVW jitters).

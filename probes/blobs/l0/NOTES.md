@@ -122,3 +122,40 @@ STAGE-3 FIX (1 line): A1 kick_px=0.5 always.
 Fold-shell law at n=3195: alive median fold-dist 0.020 (q25-75 .006-.030)
 vs dead/domain ~0.2-0.27. Uniform should sample fold-dist logU[0.003,0.1].
 Follow-up sims used: 7 of budget 20.
+
+## Stage-3 prep (2026-02-22, controller greenlight w/ machine-v2 priorities)
+V4 metrics lock: kicked A1 (kick_px=0.5) ALWAYS; act-indexed pokes (audit lesson
+s2_107_48: act0 replicates, act1 is the c=0.204 carrier); NEW assays a2_cross
+(cross-species encounters), stack_probe (machine stack-safety: parked n-stack,
+census + COM/blob drift + spacing over T=2000), radial_profile (angle-averaged
+tails; catches sign-changing monotone tails invisible to G0c).
+V4 unit smokes: a2_cross reproduces XV statics cross-bond d*=7.85 (cert 7.976
+at eta=0.05; ours eta=0.1 -> deeper well, consistent); stack_probe M2 3-chain
+stack_parked spacing 15.66 (cert [16,16] chain at A=5); radial M4 zero-crossings
+4.2/10.8/15.8/21.8 => shell spacing ~5.5/5.0/6.0px*2 ~ wl 10.9-ish (first min
+5.8px, u_min -0.23).
+Bundle stage3/: worker.py (job-list runner, kinds census/pair_grid/radial/
+stack/encounter), make_jobs.py -> 17 shards: 12 census (996 alive genomes),
+island (33: one-dial +-5/10% scans + 12 sigma=.08 jitters around s2_107_48),
+plateau x3 (21 pair grids d0 8-28 + 9 stacks incl M4 shuttle control + 3
+radials + s2_128_26 K-ablations), encounter (6 T1-line genomes x 3 cross
+pairs + 3 same x d0 8/12/16).
+Smokes: census 3-jobs 1.9min; island 1.9min (isl_base act1 travel c=0.2038,
+c_ratio repeat 1.000; tau0 dials don't touch act1 — chan0 has no K-feedback
+to act1: act1 is the autonomous engine, act0 is slaved cargo!); plateau
+pair-grid 10min/3 (base d* 28.0 basin 12-24, thr0.8 -> d*=29.8 & d0=28 bond
+in-range, K2 1.2 -> 28.1); encounters 19.5min/3 (first tables: replicate-on-
+contact pairs identified, one cross_bond, static locks).
+Cost fit: 12x~1.5-2.5h census + 5 small shards << 4x4vCPU x 6h budget.
+
+## Engine extraction (local, pre-pod bonus — 2026-02-22)
+s2_107_48 DECOMPOSED: act1 + chans{2,3} extracted as standalone 1-act genome
+(engine_10748.json: lam=1.962 k1=1.027 Du=1.01; v: tau=4.22 D=0.60 (A=2.53!),
+w: tau=0.70 D=27.4; K=[0.95,1.60]) -> travels ALONE c=0.2038 (identical to
+in-situ). => act0 was cargo/passenger, NOT part of the engine. The W[0][1]=0.26
+cross-drive slaves act0's v to the engine. 3 FIELDS ONLY — cheapest carrier
+in the program (M4 world = same field count but c max ~0.14 near onset).
+Mini island scan (19 pts, one-dial +-15%): travel across +-10% on tau_v/D_v/
+tau_w; NEW RECORD c=0.2516 at D_v*0.9 (A=2.28); edges replicate (tau_v/tau_w
++10-15%) or die-static (D_v+15%). Engine A=tau*Dv=2.53 vs M4's 4.0 — a
+DIFFERENT statics family, far above M4's drift onset; not near-onset physics.
