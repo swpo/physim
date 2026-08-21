@@ -410,3 +410,30 @@ ladder-internal protocol differs — flagged, not blocking).
 STAGE-3 approved-in-principle (targeted ~100-150 core-hr): kicked-A1 travel census,
 plateau-bond design rule, 3-flavor encounter tables; blind uniform only with
 fold-dist logU sampling. PENDING machine-v2 fan-in first.
+
+
+### blob-machine-v2 — HONEST PARTIAL, accepted (scorecard + controller audit 2026-02-22)
+V2a FUNCTION CERTIFIED (3/3 seeds + controller fresh-seed 7 audit: 3 cargoes swept
+into a 4-convoy behind a sacrificial PLUG, dock-released, fork-sorted to the y=20
+floor as a 15.3-15.5px bond-shell stack; census frozen; cycle 215+-5tu; functional
+throughput 0.6 deliveries/1000tu; anchor reproduced bit-exact first).
+FAILED GATE (why partial): the delivered bonded 3-stack is itself a SELF-PROPELLED
+TRAIN (shuttles +-9px; isolation control proves intrinsic). Fix blocked by a
+3-law cascade (all quantified w/ seeds+controls):
+- STACK-SAFETY: parked n-stacks self-propel unless tau2 < tau_c(n); tau_c3 in
+  (5.55,5.60] (sqrt-law extrapolation consistent).
+- BLADE-LOAD: blade core-gap compresses with chain-load x speed / cargo mobility;
+  split floor ~5.3-5.4px (tau2=5.50 at c=0.072 splits 3/3).
+- SLOW-CONVOY BUCKLING: c~0.044 blade contact transversely unstable (~2 laps).
+=> for n=3+plug the tau2 window is empty/knife-edge IN THIS ARCHITECTURE.
+KEY DISCOVERIES: PUSH-CAPTURE BLADE (head-on meets at eta 0.05-0.08 = stable FRONT
+capture riding 7.1px ahead at full speed; railed lanes make swing-around
+impossible -> bulldozer convoy is THE throughput machine on rails); PLUG primitive
+(sacrificial blade rider converts the never-sortable blade slot into
+infrastructure; 4 blade trap limit-cycles mapped); interference map extended to
+7 entries / 3 new footprint types. n=1 end-to-end certified in 3 geometries.
+V2b/c/d not reached (law cascade consumed budget; V2b needs species-tagged rails
+or per-cargo eta — tau-contrast cannot split one blade's chain).
+CONTROLLER NOTE: "machine physics" is now producing laws faster than machines —
+stack-safety/blade-load/buckling are exactly the content an agent-facing world
+would examine. World-ification calculus improved.
