@@ -1477,3 +1477,22 @@ species forks, one glued demo), blob-genesis (close the sawtooth loop: self-writ
 landscapes that FUNCTION; self-dug ring racetracks; what grows from noise alone).
 Compute fan-out to rented Prime pods planned after local funnel validation
 (user-authorized). Grounding vision: fulfillment-center world.
+
+
+## Addendum 36 — genesis certified, sampler stage-1 certified, stage-2 fan-out prep, lit review spawned
+
+blob-genesis certified (reduction map: tooth/ramp/rail/ring/dock all L1-growable;
+self-written tracks 10-40x more slope-efficient than hand-built; amplitude ladder
+park->circulate->diode; ring self-launch audited at fresh angle 5.7 revs; noise-
+genesis theory-backed null — vacuum-exact coupling is quadratic in deviations, so
+gamma cannot destabilize the vacuum: no trails-beget-blobs in this coupling class).
+l0-sampler stage-1 certified (parity 5/5 incl. rotor omega to 5 digits; G0c predicts
+M4 shell to 0.5%; yield curves uniform 2/100 alive vs jitter 49/100; d*/wl law
+audited fresh -> band widened to [1.2,1.5]; uni_3034 NON-OSCILLATORY BINDING
+replicated+extended = second binding mechanism class; u0-designation-as-gene;
+fold-distance geometry). Stage-2 fan-out greenlit: CPU pods at $0.0279/hr
+(~2500 candidates for ~$3); worker-bundle prep ordered (sampler's own caveat fixes
++ audit corrections baked in). lit-reviewer agent spawned (areas: dissipative
+solitons/Purwins school, homoclinic snaking, self-propelled spots + stigmergy,
+collision-based computing, Lenia-family ALife, quality-diversity search, soliton
+ratchets) — deliverables REVIEW.md / TRICKS.md / NAMING.md + reinvention audit.
