@@ -16,7 +16,7 @@
  .film { margin: 14px 0; }
  .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
  .meta { color: #57606a; font-size: 13px; }
- table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
  td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
  th { background: #f6f8fa; }
  code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
@@ -26,8 +26,44 @@
 </style></head><body>
 <nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
 <h1>Searching equation space</h1>
-<p class="meta">Post 7 — the genome, the algebraic funnel, MAP-Elites atlases, evolutionary operators, and what a $9 sweep of 3,195 universes found.</p>
-<h2>The levels doctrine</h2><p class='meta'>The certified physics this searches over: posts <a href='what-is-a-blob.html'>1</a>–<a href='machines.html'>6</a>. The G0c funnel derives from the spatial-eigenvalue analysis introduced in <a href='blob-chemistry.html'>post 3</a>.</p>
+<p class="meta">Post 7 — the bottom-up track: instead of designing worlds, sample the space
+of field theories and let physics tell us what exists. 4,500+ candidate universes screened
+for ~$12 of compute; every headline independently re-verified.</p>
+
+<h2>What the search found (the six results)</h2>
+<table>
+<tr><th>#</th><th>finding</th><th>status</th></tr>
+<tr><td>1</td><td><b>A second binding mechanism</b> — the "plateau bond": worlds with NO
+oscillatory tails that still bind at quantized distances, via a saturating (tanh) channel.
+Invisible to our shell theory <i>by construction</i>; found twice independently by blind
+uniform sampling. 41-cell family; d* tunable 14–30 px by one dial.</td>
+<td>audited ✓ (ablations + fresh-seed bonds)</td></tr>
+<tr><td>2</td><td><b>Plateau stacks solve the machine program's cargo problem</b> — 3-stacks
+of plateau-bonded blobs park motionless under noise, where the classic M4-bond stacks
+self-propel (the machine-v2 blocker). The stack-safety fix came from the atlas, not from
+design.</td><td>audited ✓ (head-to-head with M4 control)</td></tr>
+<tr><td>3</td><td><b>A second motility mechanism</b> — a standalone 3-field "engine"
+(A=τ·D<sub>v</sub>≈2.5, far from the drift-onset family) traveling at <b>c = 0.20–0.34</b>:
+2–2.4× faster than anything hand-designed, robust ±10% on every dial. Found as a slaved
+component inside a search hit, then purified by decomposition.</td>
+<td>audited ✓ (records reproduced to 4 digits)</td></tr>
+<tr><td>4</td><td><b>Motility is rare and lives in exactly two mechanisms.</b> Census of all
+996 alive worlds: 2.4% travel. By ancestry: dynamical-b lines 16% (stigmergic self-launch),
+engine/rotor lines ~4% (two-timescale engines), the classic M0/M4/VVW families
+<b>0% in 321 worlds</b>. Two independent protocols agree to 0.3%.</td>
+<td>census complete</td></tr>
+<tr><td>5</td><td><b>Recombination beats mutation, structurally.</b> Merge operators
+(validated by reconstructing our own vvw and xv design jumps) found ALL multi-species and
+ALL cross-species physics cells; plain mutation was worse than dumb jitter. The evolver
+also rediscovered the rotor from parts without the recipe.</td>
+<td>audited ✓ (rotor ω to 4 digits)</td></tr>
+<tr><td>6</td><td><b>An unplanned ecology primitive: predation.</b> One searched 3-species
+world has a conserved kill interaction (species 1 eliminates species 2 on contact, at all
+distances) plus an apex self-bond. Parked for the world-catalog phase.</td>
+<td>observed (6/6 assays), not yet audited</td></tr>
+</table>
+<p>Everything below explains how these were found and gives the evidence.</p>
+<h2>How: the levels doctrine (why a bottom-up track exists)</h2><p class='meta'>The certified physics this searches over: posts <a href='what-is-a-blob.html'>1</a>–<a href='machines.html'>6</a>. The G0c funnel derives from the spatial-eigenvalue analysis introduced in <a href='blob-chemistry.html'>post 3</a>.</p>
 <p>Phase 2 clarified the working structure of blob science as a ladder of description
 levels:</p>
 <table>
@@ -75,7 +111,7 @@ worlds; and a program speed record — c = 0.204, a jittered descendant of the
 evolver's rediscovered rotor, 45% faster than anything hand-designed
 (controller-audited to 4 digits). Every candidate carries its selection provenance
 (anthropic-screening doctrine).</p>
-<h2>The genome and the funnel (the machinery)</h2>
+<h2>How: the genome and the algebraic funnel</h2>
 <p>Every world in the search is a point in one canonical family — n cubic activators
 coupled to m linear-or-saturating channels:</p>
 <div class="eq">∂u_i/∂t = D<sub>u,i</sub>∇²u_i + λ_i u_i − u_i³ + k₁,ᵢ − Σ_c K[i,c]·x_c<br/>
@@ -95,7 +131,7 @@ G0c&nbsp;&nbsp;spatial modes e^{μx} of the steady state: D_u s + a − Σ_c K_c
 10.8 predicted) and then held across 830 bonds of the stage-2 sweep. Blob existence
 itself is subcritical (a homoclinic orbit — no local criterion suffices), so one
 seeded poke per candidate settles it; the funnel just makes the poke affordable.</p>
-<h3>Yield curves (what a candidate costs)</h3>
+<h2>Evidence I — yields and costs (findings 4, 5)</h2>
 <table>
 <tr><th>strategy</th><th>alive /100</th><th>bond /100</th><th>role</th></tr>
 <tr><td>uniform random</td><td>0.5–2</td><td>~1</td><td>mechanism discovery (both new binding mechanisms came from here)</td></tr>
@@ -103,12 +139,12 @@ seeded poke per candidate settles it; the funnel just makes the poke affordable.
 <tr><td>evolver merge</td><td>7.7 cells/100 assays</td><td>—</td><td>composition: ALL multi-species and cross-species cells</td></tr>
 <tr><td>evolver elite line (e1_9508)</td><td>89.8</td><td>41.8</td><td>evolved genomes are robust genomes</td></tr>
 </table>
-<div class="film"><img src="../assets/blobs/p7_uni3034.png" alt=""/><div class="cap"><b>uni_3034 — binding without oscillatory tails.</b> The monotone-tail world that bonds anyway (d*=27.9, two-sided): the plateau-bond mechanism, invisible to G0c by construction (its tanh channel has g′(0)=0). Blind uniform search found what the theory could not predict.</div></div>
-<div class="film"><img src="../assets/blobs/p7_uni3050.png" alt=""/><div class="cap"><b>uni_3050 — the other uniform novelty:</b> a tanh-channel core with an exciting K entry; merge-or-repel pair law.</div></div>
-<h2>Stage 3 — the harvest (complete)</h2>
+<div class="film"><img src="../assets/blobs/p7_uni3034.png" alt=""/><div class="cap"><b>Finding 1's first specimen: uni_3034 — binding without oscillatory tails.</b> The monotone-tail world that bonds anyway (d*=27.9, two-sided): the plateau-bond mechanism, invisible to G0c by construction (its tanh channel has g′(0)=0). Blind uniform search found what the theory could not predict.</div></div>
+<div class="film"><img src="../assets/blobs/p7_uni3050.png" alt=""/><div class="cap"><b>The other uniform novelty (uni_3050):</b> a tanh-channel core with an exciting K entry; merge-or-repel pair law.</div></div>
+<h2>Evidence II — the stage-3 harvest (findings 2, 3, 4, 6)</h2>
 <p class="meta">17 shards, 1,068 records, 4 pods, ~$3. Everything below controller-verified
 on fresh reruns where marked.</p>
-<h3>The carrier census: motility is rare, and it clusters</h3>
+<h3>The carrier census (findings 3 &amp; 4)</h3>
 <p>Of 996 alive worlds given the kicked travel assay, only <b>24 travel (2.4%)</b> —
 self-propulsion is a scarce phenotype in equation space, exactly as the funnel's
 near-onset analysis predicted. And it is not uniformly scattered: the traveler rate by
@@ -124,7 +160,7 @@ For scale: the best hand-designed carrier was 0.143. The two independent motilit
 protocols (census kicks; dial-ladder onsets) agree on the overall rate to within
 0.3% — and on the deeper point that all known motility lives in exactly two
 mechanisms: stigmergic self-launch and two-timescale v/w engines.</p>
-<h3>The encounter tables: species rails and a surprise</h3>
+<h3>The encounter tables (finding 6 + machine parts)</h3>
 <p>Six 3-species worlds got full pairwise encounter matrices (three cross-pairs ×
 three distances). Two are machine-grade: <code>s2_111_17</code> (two distinct
 cross-species bonds, zero replication anywhere — the species-rail candidate) and
@@ -134,7 +170,7 @@ cross-species bonds, zero replication anywhere — the species-rail candidate) a
 while surviving itself. That is a predation-like interaction, found by blind search,
 not designed. It is parked for the world-catalog phase (a predator–prey blob ecology
 is now demonstrably available in this equation space).</p>
-<h3>The stack verdict (what machine v3 was waiting for)</h3>
+<h3>The stack verdict (finding 2)</h3>
 <p>Head-to-head stack probes: plateau-bonded stacks (the tanh-well binding family)
 <b>park motionless at n=2 and n=3, including under working noise</b>, while the M4
 control stack shuttles under noise exactly as machine-v2's law cascade predicted.

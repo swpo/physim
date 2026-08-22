@@ -16,7 +16,7 @@
  .film { margin: 14px 0; }
  .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
  .meta { color: #57606a; font-size: 13px; }
- table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
  td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
  th { background: #f6f8fa; }
  code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
@@ -91,7 +91,16 @@ blob count stayed exactly 6 for the full 3600 tu.</div></div>
 <tr><td>cargo</td><td>3 blobs parked in troughs, spacing 32</td><td>trough = parking brake (pair-only zone)</td></tr>
 <tr><td>budget</td><td>L=160, T=3600, dt=0.02, dx=0.5</td><td>3 pickups + ≥2 laps</td></tr>
 </table>
-<div class="film"><img src="../assets/blobs/p6_tug_cert.png" alt=""/><div class="cap"><b>Tug certification panel:</b> per-blob positions through the 3 pickups, train speed growth per pickup (0.059→0.073→0.085), and the parked-cargo null.</div></div>
+<div class="film"><img src="../assets/blobs/p6_tug_cert.png" alt=""/><div class="cap"><b>Tug certification, four panels.</b> <i>Top-left:</i> every blob's position vs
+time in the certified run — stars mark the three pickups; note the rear locomotive
+blob shedding at t≈1150 (gray line goes flat = parked at a trough) and being
+re-collected on the train's next lap at t≈1750 — the self-healing relay. <i>Top-right:</i>
+the gate metrics across 3 seeds + jitter: per-cycle cargo displacement, all runs
+essentially identical (net 756–766 px, efficiency 5.6×). <i>Bottom-left:</i> the paired
+null — without the locomotive, the same cargoes move −0.5 px (solid lines at zero);
+with it, +235–270 px each (dashed). <i>Bottom-right:</i> the track design that makes it
+work: tooth apex (+0.0068) below the 3-train climb envelope (dashed red, +0.0104),
+trough depth far above the replication edge (dotted, −0.09).</div></div>
 
 <p>Two emergent bonuses, neither designed: at the 6-train power ceiling the machine
 <b>sheds its rear blob</b>, which slides back, parks at a trough (pair-only zone again),
@@ -151,7 +160,24 @@ couplings; at brief parameters the rotor instead captures the cargo and converts
 a new object, an <b>S–M–S pendulum librator</b> (period ~307 tu) — extending the motion
 hierarchy: bond &lt; travel &lt; rotate &lt; <i>librate</i>.)</div>
 
-<div class="film"><img src="../assets/blobs/p6_factory_prims.png" alt=""/><div class="cap"><b>The factory primitives, certified:</b> tow lock at the wake shell; the η-null dock releasing a towed cargo (glide, then frozen); the species fork (24/24 purity); and the self-assembled wall (a parked blob destabilized into a stripe — defect turned tool).</div></div>
+<div class="film"><img src="../assets/blobs/p6_factory_prims.png" alt=""/><div class="cap"><b>The factory primitives, panel by panel.</b>
+(a) <b>the near-onset cargo law</b>: approach speed into a carrier's η-well vs distance —
+deep-static cargo (blues) barely responds at any coupling, near-onset cargo (oranges/reds)
+responds 7–8× hotter; the dashed line is carrier speed — only near-onset cargo can keep up.
+(b) <b>tow lock</b>: carrier–cargo separation vs time — η=0.1 locks at the 8.5px shell and
+holds for the whole run; η≤0.05 drops the cargo.
+(c) <b>the dock</b>: cargo x(t) riding the carrier (red on gray) until the η-null edge
+(dashed black), then a short glide and a permanent park — while the carry-control
+(blue dashed, no null zone) keeps going and the null-control (green dotted, no carrier)
+never moves.
+(d) <b>the roller verdict</b>: tangential cargo arc next to a spinning rotor — real but
+tiny (~5px per 3000tu, exactly zero in the η=0 null): a positioner, not a conveyor.
+(e) <b>the pendulum surprise</b>: put a second anchor near a rotor and the orbiter
+converts to ±90° libration between them — a new composite mode (bond &lt; travel &lt;
+rotate &lt; librate).
+(f) <b>the species fork</b>: y(t) of the two species entering the fork — M (red) climbs to
+its rail at y=60, S (blue) descends to y=37; 24/24 sorting purity across seeds and a
+mirrored-geometry swap.</div></div>
 <h2>Machine v2 — the convoy line and the law cascade</h2>
 <p>Scaling the glue machine from one cargo to a queue of three produced a genuinely
 new machine <i>and</i> three new laws that stopped it short of full certification —
@@ -200,9 +226,16 @@ assembly at the dock</b>: three noisy-seed runs each delivered a parked, bonded
 3-stack at the certified bond spacing (13.6–14.0 px) with hold drift under 0.002 px —
 the stack-safety property the plateau cargo was recruited for, demonstrated in the
 delivered product.</p>
-<div class="film"><img src="../assets/blobs/p6_v3_tow.png" alt=""/><div class="cap"><b>V3 tow lock:</b> the engine (searched part #1) push-blading the plateau cargo (searched part #2) at 4.3px standoff — cargo carried at 97.6% of engine solo speed.</div></div>
-<div class="film"><img src="../assets/blobs/p6_v3_release.png" alt=""/><div class="cap"><b>Instant release:</b> coupling cut mid-run — cargo freezes within numerical zero (10⁻¹⁵ px) while the engine laps on; the decoupled engine's later flybys leave the cargo untouched.</div></div>
-<div class="film"><img src="../assets/blobs/p6_v3_assembly.png" alt=""/><div class="cap"><b>Sequential dock assembly:</b> three single-cargo deliveries building a parked, bonded 3-stack at the certified d* spacing — the stack-safety property in the delivered product.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v3_movie.gif" alt=""/>
+<div class="cap"><b>Watch tow-and-release</b> (both species' activator fields; orange = engine, blue = cargo): with the phantom-cargo coupling ON, the engine closes in and
+push-blades the cargo across the domain at 4.3 px standoff; at t=500 the coupling is
+CUT — the cargo freezes on the spot (drift 10⁻¹⁵ px) while the engine, now blind to
+it, drives on and laps the torus straight past the parked cargo without a nudge:
+release and flyby immunity are the same property, seen from two sides.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v3_assembly.png" alt=""/><div class="cap"><b>The delivered product</b> (final field of an assembly run,
+cargo species): three sequentially-delivered cargoes parked as a bonded 3-stack at the
+certified 14 px plateau-bond spacing. This stack does NOT shuttle — the plateau bond's
+stack-safety property (post 7, finding 2), demonstrated in the machine's output.</div></div>
 <h3>Earlier status note</h3>
 <p>The convoy line's three blocking laws (stack-safety, blade-load, buckling) were turned
 into search queries, and the equation-space atlas answered all three — see
@@ -213,8 +246,25 @@ stacks that park motionless under noise (the stack-safety fix), and two candidat
 closed-loop recirculation test (cargo gripped → towed → released → re-gripped over
 multiple carrier laps) and the first machine with an L1-grown component are in
 progress. This section will be updated when v3 certifies.</p>
-<div class="film"><img src="../assets/blobs/p6_v2_layout.png" alt=""/><div class="cap"><b>The convoy line layout</b> (L=192): carrier pair + sacrificial plug, 3-cargo queue, η-zone, dock, fork to the branch floor.</div></div>
-<div class="film"><img src="../assets/blobs/p6_v2_stacklaw.png" alt=""/><div class="cap"><b>The law cascade in one panel:</b> delivered-stack shuttle amplitude vs τ₂ (stack-safety), blade gap vs load and speed (split floor ~5.4px), and the buckling window — for n=3+plug the feasible region is empty.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v2_movie.gif" alt=""/>
+<div class="cap"><b>Watch the convoy run</b> (controller-audit seed): the carrier pair
+(purple) sweeps up the plug (gray) and three cargoes (oranges) into a blade convoy
+inside the green coupling zone; at the dock (red dashed) the chain releases; the three
+real cargoes slide down the fork branch (blue dashed) to the y=20 floor and park as a
+bonded stack, while the plug stays on-lane — it can never be sorted, which is exactly
+why it rides the blade slot. The wiggle near x≈120 is convoy formation: the blade
+finding its standoff.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v2_fieldstrip.png" alt=""/>
+<div class="cap"><b>The same run in the fields</b> (red = carrier species, blue = cargo
+species): queue on the lane → convoy → sorted floor stack.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v2_stacklaw.png" alt=""/><div class="cap"><b>Why full certification failed — the delivered stack is alive.</b>
+<i>Left:</i> the cert table: function passes 3/3 seeds (pickups, sort, throughput) but the
+park gate fails 3/3 — the delivered stack shuttles ±10px. <i>Right:</i> the smoking gun:
+x(t) of a delivered-stack blob (orange) vs the same stack built in isolation (blue) —
+both oscillate identically. The stack is not being disturbed; it is a bonded 3-train at
+τ₂=5.60 &gt; τ_c(3)≈5.56, and bonded trains above threshold travel. The fix (colder
+cargo) is blocked by the blade-load split floor, and slowing down hits buckling —
+the three-law cascade in the text.</div></div>
 <h2>The recirculation no-go (V2c, closed)</h2>
 <p>Can a single dock recycle its own cargo — grip, tow, release, and re-grip on the
 next lap? Two certified runs answer <b>no, structurally</b>: the cargo is towed once,
@@ -226,5 +276,13 @@ leg</b> (a second zone with an opposing carrier, or a landscape slope sliding pa
 cargo back to the entry — the genesis toolkit's job). Docks compose in series only
 with an interposed transport primitive. This closes V2c as a mapped negative and
 writes the requirements list for a true closed-loop logistics line.</p>
+<div class="film"><img src="../assets/blobs/p6_loop_movie.gif" alt=""/>
+<div class="cap"><b>Watch the no-go:</b> the carrier (purple) grips each towable blob
+once inside the green zone, releases it past the red edge — and then laps the torus
+again and again (counter top-left), passing within pixels of the parked cargo with
+zero re-grip: outside the coupling zone, the cargo is invisible to it. The release
+property and the un-collectable property are the same physics. Closing a loop needs
+a return leg.</div></div>
+
 <div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="living-landscape.html">The living landscape</a> · next: <a href="searching-equation-space.html">Searching equation space</a></div>
 </body></html>
