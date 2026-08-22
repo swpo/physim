@@ -159,3 +159,16 @@ Mini island scan (19 pts, one-dial +-15%): travel across +-10% on tau_v/D_v/
 tau_w; NEW RECORD c=0.2516 at D_v*0.9 (A=2.28); edges replicate (tau_v/tau_w
 +10-15%) or die-static (D_v+15%). Engine A=tau*Dv=2.53 vs M4's 4.0 — a
 DIFFERENT statics family, far above M4's drift onset; not near-onset physics.
+
+## Stage-3 harvest analysis (2026-02-22)
+stage3/CENSUS.md complete; ANALYSIS.md verdict appended. 7/15 verification
+sims used: record rerun (0.30367 @T=600), engine record chase (Du*1.1+Dv*0.9
+-> c=0.3439 standalone 3-field), 2x uni_3034 bare stacks (PARKED — dressed
+stack 'die' was a dressing overdose at 27.9px, not physics), 2x s2_128_26
+tanh cuts (W-path and K-path both lose bond -> audit discrepancy resolved:
+mechanism = same plateau family), 1x slow-launch check (s2_129_64 travels
+c=0.0385 at T=1000 — census T=300 undershoots BFIELD lines; noted in catalog
+as lower bounds).
+KEY: motility 2.4% (24/996), 2 mechanisms; plateau stacks park (machine
+cargo answer); s2_111_17 = species-rail nominee; s2_101_58 = predation
+(kill_j all d0).

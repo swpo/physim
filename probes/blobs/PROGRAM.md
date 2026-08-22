@@ -473,3 +473,26 @@ ISLAND (engine_10748 composite): 19/33 points travel; tau +-10% flat at c=0.2038
 NEW SPEED RECORD c=0.2788 at Du*1.1. Engine is robust and has headroom.
 => machine-v3 parts list forming: engine carrier (c 0.20-0.28) + plateau-bond
 cargo stacks (park-safe) + species rails pending encounter tables.
+
+
+### l0-sampler stage-3 CENSUS — accepted (controller audits 2026-02-23)
+Carrier catalog: 24 travelers ranked; RECORD c=0.3036 (s2_118_41) verified; ENGINE
+COMBINED-DIAL RECORD c=0.3439 (Du*1.1 + Dv*0.9) CONTROLLER-VERIFIED EXACT — 3-field
+world, cheapest sim cost, 2.4x hand-designed best. BFIELD-line catalog entries are
+lower bounds (still accelerating at assay T). Motility geography: BFIELD 16.4% >>
+e1_9513 4.3% > rh1 3.9% > XV 1.5% > M0/M4/VVW 0% — exactly 2 mechanisms (stigmergic
+self-launch; two-timescale engines A=2.5-4.5); census rate 2.4% matches stage-2 A3
+onset 2.7% (independent protocols agree). 6 stage-2 masked travelers honestly
+reclassified as coast-edge.
+PLATEAU DESIGN RULE: tanh = existence+capture gate; d* SET BY THE SLOW ID CHANNEL
+(tau_slow dial -> d* 20-30px menu; shells 20.8/24.5/28.5 at tau_slow*0.5); spacing
+decoupled from tail wavelength. s2_128_26 attribution SETTLED as same family (two
+parallel tanh paths — W-drive and K-feedback; cutting either alone keeps the bond;
+explains my earlier single-cut counter-result. Flagged not blocking).
+STACKS: uni_3034 pod-death was a DRESSING-OVERDOSE job-spec artifact — bare re-run
+parks at 29.34px n=3+noise; CONTROLLER RE-VERIFIED (com_net 1e-4). Cargo menu:
+d*=14.0px (s2_128_26) or 20-30px (tau_slow dial). M4 control shuttles 86px (law
+reproduced).
+ENCOUNTERS: NOMINEE s2_111_17 (zero replication in 18 assays; cross-bond d*=11.1;
+species 0 = pure repeller = fence/blade material). s2_101_58 = PREDATION (conserved
+kill direction) — world-catalog primitive, parked.
