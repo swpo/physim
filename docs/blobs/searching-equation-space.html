@@ -75,6 +75,36 @@ worlds; and a program speed record — c = 0.204, a jittered descendant of the
 evolver's rediscovered rotor, 45% faster than anything hand-designed
 (controller-audited to 4 digits). Every candidate carries its selection provenance
 (anthropic-screening doctrine).</p>
+<h2>The genome and the funnel (the machinery)</h2>
+<p>Every world in the search is a point in one canonical family — n cubic activators
+coupled to m linear-or-saturating channels:</p>
+<div class="eq">∂u_i/∂t = D<sub>u,i</sub>∇²u_i + λ_i u_i − u_i³ + k₁,ᵢ − Σ_c K[i,c]·x_c<br/>
+∂x_c/∂t = ( Σ_a W[c,a]·g_c(u_a − u₀,ₐ) − x_c )/τ_c + D_c∇²x_c,&nbsp;&nbsp;
+g_c = identity or tanh(max(z−thr,0)/sc)</div>
+<p>The genome is {acts: (λ, k₁, D_u)ᵢ, chans: (τ, D, g)_c, W, K} — and because every
+channel is driven by <i>deviations</i> (u−u₀), the uniform vacuum is an exact fixed
+point for any weights: the iso-line trick as architecture. All five hand-built worlds
+(M0, the motility line, vvw, xv, bfield) are reference points of this family,
+reproduced to 5 digits by the generic simulator before any sampling was allowed.</p>
+<p>Candidates pass a microsecond-scale algebraic funnel before any simulation:</p>
+<div class="eq">G0a&nbsp;&nbsp;max_k Re eig(J − k²D) &lt; 0&nbsp;&nbsp;(vacuum temporally stable — else Turing soup)<br/>
+G0b&nbsp;&nbsp;−u³+λu+k₁ has 3 real roots&nbsp;&nbsp;(local bistability — an "on" branch exists)<br/>
+G0c&nbsp;&nbsp;spatial modes e^{μx} of the steady state: D_u s + a − Σ_c K_cW_c/(1−A_c s) = 0, s=μ², A_c=τ_c D_c<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complex μ ⇒ oscillatory tails ⇒ bond shells at d* = (1.37±0.13 + 0.55k)·2π/|Im μ|</div>
+<p>G0c's shell prediction was validated on the certified worlds (10.9px measured vs
+10.8 predicted) and then held across 830 bonds of the stage-2 sweep. Blob existence
+itself is subcritical (a homoclinic orbit — no local criterion suffices), so one
+seeded poke per candidate settles it; the funnel just makes the poke affordable.</p>
+<h3>Yield curves (what a candidate costs)</h3>
+<table>
+<tr><th>strategy</th><th>alive /100</th><th>bond /100</th><th>role</th></tr>
+<tr><td>uniform random</td><td>0.5–2</td><td>~1</td><td>mechanism discovery (both new binding mechanisms came from here)</td></tr>
+<tr><td>jitter around references</td><td>49–51</td><td>14–24</td><td>island mapping (25× cheaper per alive world)</td></tr>
+<tr><td>evolver merge</td><td>7.7 cells/100 assays</td><td>—</td><td>composition: ALL multi-species and cross-species cells</td></tr>
+<tr><td>evolver elite line (e1_9508)</td><td>89.8</td><td>41.8</td><td>evolved genomes are robust genomes</td></tr>
+</table>
+<div class="film"><img src="../assets/blobs/p7_uni3034.png" alt=""/><div class="cap"><b>uni_3034 — binding without oscillatory tails.</b> The monotone-tail world that bonds anyway (d*=27.9, two-sided): the plateau-bond mechanism, invisible to G0c by construction (its tanh channel has g′(0)=0). Blind uniform search found what the theory could not predict.</div></div>
+<div class="film"><img src="../assets/blobs/p7_uni3050.png" alt=""/><div class="cap"><b>uni_3050 — the other uniform novelty:</b> a tanh-channel core with an exciting K entry; merge-or-repel pair law.</div></div>
 <h2>Stage 3 — the harvest (complete)</h2>
 <p class="meta">17 shards, 1,068 records, 4 pods, ~$3. Everything below controller-verified
 on fresh reruns where marked.</p>

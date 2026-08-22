@@ -81,6 +81,18 @@ Certification: 3 seeds — 3/3 pickups each, net upstream cargo displacement 757
 (gate: 30), <b>efficiency 5.6–5.8× the do-nothing baseline</b>; null run (no locomotive):
 cargo drifts 0.5 px <i>downstream</i>. Fresh-seed controller audit reproduced everything;
 blob count stayed exactly 6 for the full 3600 tu.</div></div>
+<h3>The certified tug layout (parameters)</h3>
+<table>
+<tr><th>component</th><th>value</th><th>why</th></tr>
+<tr><td>world</td><td>A=4 family (M0 + D<sub>v</sub>=4/τ), τ=5.70</td><td>pair-only zone: cargo parks, trains travel</td></tr>
+<tr><td>track</td><td>isok sawtooth, 5 teeth, period 32, ε=5·10⁻⁴, rise fraction 0.85</td><td>tooth height 0.0068 &lt; 3-train climb envelope 0.0104 (margin 1.53×)</td></tr>
+<tr><td>rails</td><td>b<sub>chan</sub>(y)=0.002·min(|y−80|, 24)</td><td>railless trains buckle after 1–2 pickups</td></tr>
+<tr><td>locomotive</td><td>3-blob train, kick at t=0 only</td><td>pairs cannot climb any tested tooth</td></tr>
+<tr><td>cargo</td><td>3 blobs parked in troughs, spacing 32</td><td>trough = parking brake (pair-only zone)</td></tr>
+<tr><td>budget</td><td>L=160, T=3600, dt=0.02, dx=0.5</td><td>3 pickups + ≥2 laps</td></tr>
+</table>
+<div class="film"><img src="../assets/blobs/p6_tug_cert.png" alt=""/><div class="cap"><b>Tug certification panel:</b> per-blob positions through the 3 pickups, train speed growth per pickup (0.059→0.073→0.085), and the parked-cargo null.</div></div>
+
 <p>Two emergent bonuses, neither designed: at the 6-train power ceiling the machine
 <b>sheds its rear blob</b>, which slides back, parks at a trough (pair-only zone again),
 and is <b>re-collected on the next lap</b> — a self-healing relay. And because pickup
@@ -139,6 +151,7 @@ couplings; at brief parameters the rotor instead captures the cargo and converts
 a new object, an <b>S–M–S pendulum librator</b> (period ~307 tu) — extending the motion
 hierarchy: bond &lt; travel &lt; rotate &lt; <i>librate</i>.)</div>
 
+<div class="film"><img src="../assets/blobs/p6_factory_prims.png" alt=""/><div class="cap"><b>The factory primitives, certified:</b> tow lock at the wake shell; the η-null dock releasing a towed cargo (glide, then frozen); the species fork (24/24 purity); and the self-assembled wall (a parked blob destabilized into a stripe — defect turned tool).</div></div>
 <h2>Machine v2 — the convoy line and the law cascade</h2>
 <p>Scaling the glue machine from one cargo to a queue of three produced a genuinely
 new machine <i>and</i> three new laws that stopped it short of full certification —
@@ -187,6 +200,9 @@ assembly at the dock</b>: three noisy-seed runs each delivered a parked, bonded
 3-stack at the certified bond spacing (13.6–14.0 px) with hold drift under 0.002 px —
 the stack-safety property the plateau cargo was recruited for, demonstrated in the
 delivered product.</p>
+<div class="film"><img src="../assets/blobs/p6_v3_tow.png" alt=""/><div class="cap"><b>V3 tow lock:</b> the engine (searched part #1) push-blading the plateau cargo (searched part #2) at 4.3px standoff — cargo carried at 97.6% of engine solo speed.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v3_release.png" alt=""/><div class="cap"><b>Instant release:</b> coupling cut mid-run — cargo freezes within numerical zero (10⁻¹⁵ px) while the engine laps on; the decoupled engine's later flybys leave the cargo untouched.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v3_assembly.png" alt=""/><div class="cap"><b>Sequential dock assembly:</b> three single-cargo deliveries building a parked, bonded 3-stack at the certified d* spacing — the stack-safety property in the delivered product.</div></div>
 <h3>Earlier status note</h3>
 <p>The convoy line's three blocking laws (stack-safety, blade-load, buckling) were turned
 into search queries, and the equation-space atlas answered all three — see
@@ -197,6 +213,8 @@ stacks that park motionless under noise (the stack-safety fix), and two candidat
 closed-loop recirculation test (cargo gripped → towed → released → re-gripped over
 multiple carrier laps) and the first machine with an L1-grown component are in
 progress. This section will be updated when v3 certifies.</p>
+<div class="film"><img src="../assets/blobs/p6_v2_layout.png" alt=""/><div class="cap"><b>The convoy line layout</b> (L=192): carrier pair + sacrificial plug, 3-cargo queue, η-zone, dock, fork to the branch floor.</div></div>
+<div class="film"><img src="../assets/blobs/p6_v2_stacklaw.png" alt=""/><div class="cap"><b>The law cascade in one panel:</b> delivered-stack shuttle amplitude vs τ₂ (stack-safety), blade gap vs load and speed (split floor ~5.4px), and the buckling window — for n=3+plug the feasible region is empty.</div></div>
 <h2>The recirculation no-go (V2c, closed)</h2>
 <p>Can a single dock recycle its own cargo — grip, tow, release, and re-grip on the
 next lap? Two certified runs answer <b>no, structurally</b>: the cargo is towed once,
