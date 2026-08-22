@@ -1,0 +1,134 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>The living landscape — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>The living landscape: trails, self-launch, and self-written infrastructure</h1>
+<p class="meta">Post 5 — the dynamical background field: autophoresis, stigmergy, b-assembly, and the reduction map (which landscapes grow themselves).</p>
+<h2>The background becomes a field</h2><p class='meta'>The static-landscape machinery this generalizes is in <a href='machines.html'>post 6</a> (isok, sawtooth, rails); the trilinear-vertex reading of the coupling is derived there too.</p>
+<p class="meta">Second campaign, 2026-02-19. Two parallel tracks, both audited on fresh
+seeds like everything above. Probe dirs: <code>probes/blobs/bfield/</code> (180 runs),
+<code>probes/blobs/rotor/</code> (108 runs).</p>
+
+<h3>Promoting b to a bona-fide field</h3>
+<p>Everything in section 6 treated the landscape b(x) as frozen scenery. M6 makes it the
+<b>fourth field of the theory</b>, sourced by the blobs themselves and relaxing on its own
+clock:</p>
+<div class="eq">∂b/∂t = (γ·S(u) − b)/τ_b + D_b∇²b,&nbsp;&nbsp; S = tanh(max(u−thr,0)/0.4)&nbsp;&nbsp;(bounded deposit where a blob sits)</div>
+<p>b still enters the u-equation only through the exact isok channel (−b·(w−u₀)), so the
+vacuum stays an exact fixed point <i>with the dynamics on</i> (verified to 1e−16), and
+γ=0 reproduces every M4/M5 anchor to 0.02%. Sign convention: γ&lt;0 digs a <b>well</b>
+under the blob (self-attraction), γ&gt;0 raises a <b>hill</b> (self-repulsion). τ_b ≫ τ
+makes b the slow field — geology to the blobs' weather. Three certified headlines:</p>
+<div class="film"><img src="../assets/blobs/m6_selflaunch.gif" alt="M6 self-launch"/>
+<div class="cap"><b>Autophoresis — a new motility mechanism.</b> This blob sits at
+τ=5.7, <i>below</i> its drift threshold (5.748): without b it is provably parked forever.
+With γ=+0.05 it builds a hill under itself; the hill's buildup <i>lags</i> the blob
+(τ_b=200), so any infinitesimal displacement puts the peak slightly behind — and the blob
+rolls off its own volcano, forever. Right panel: the red hill trailing the runaway blob.
+Measured launch law c = 0.209·γ<sup>0.341</sup> (r²=0.991); launch threshold γ* ∈
+(0.002, 0.005] (noiseless); D_b suppresses (spreads the hill flat). Audit: fresh seed at
+γ=0.05 hit the law to <b>+0.3%</b>. Chemotaxis-style self-propulsion, no motor anywhere. <i>Mechanism class is
+well-known across four literatures</i> — camphor swimmers (Nagayama et al.
+<i>Physica D</i> <b>194</b>:151, same pitchfork + √-law), autophoretic colloids
+(Michelin et al. <i>Phys. Fluids</i> <b>25</b>:061701, critical-Péclet launch),
+walking droplets with path memory (Couder &amp; Fort <i>Nature</i> <b>437</b>:208 —
+the closest single analog to our bond+memory package), and delayed-feedback soliton
+drift (Gurevich &amp; Friedrich <i>PRL</i> <b>110</b>:014101). New here: the exact-vacuum
+embedding, c=0.209γ^0.341, and the trail-memory law.</div></div>
+<p>With a <i>traveling</i> blob (τ=6.0) the deposit becomes a <b>backreaction</b>:
+γ&lt;0 drags (−12% speed at γ=−0.05 — the blob tows its own well, an effective mass),
+γ&gt;0 plows (+6%), and below γ≤−0.07 the blob <b>self-traps</b> — alive, rattling in a
+well it can no longer leave. The trail it leaves behind obeys
+b(s) = B₀·e<sup>−s/(c·τ_b)</sup> (verified to 0.002% — the field literally implements an
+exponential memory of where the blob has been).</p>
+<p><b>Stigmergy certified</b> (interaction through the medium): a traveling writer passes
+a parked reader 20 px away; with γ=−0.30 the reader is pulled 9–10 px toward the trail,
+with γ=+0.30 pushed 7 px away; γ=0 control: nothing. Two blobs now interact through
+<i>three</i> channels: w (contact repulsion), v (bonds, rotation — below), and b
+(long-range, long-memory trails).</p>
+<div class="film"><img src="../assets/blobs/m6_assembly.gif" alt="M6 b-assembly"/>
+<div class="cap"><b>b-assembly — the field builds the molecule.</b> Three blobs parked at
+separation 24–26 px — well <i>beyond</i> the bond basin ([14.5, 19.5]), so ordinary
+binding can never start. Each digs a halo-shaped well (γ=−0.5 on the w-footprint, D_b=2);
+the wells overlap and merge (right panel) into one shared basin that reels the blobs in
+until they lock onto the M4 bond shells [15.1, 15.1, 15.7] — a triangle molecule built by
+the landscape. Audited on a fresh seed and different geometry: assembled by t≈310. In the
+searcher's noiseless n=1 run the finished trimer then <b>self-launched</b> (c=0.076,
+rigid V-formation) — the field assembled a machine that walked away. (Kept honest: that
+last step is a single-run observation, geometry-sensitive under noise; certifying it is
+open work.)</div></div>
+<p><b>The teaser that motivates the inverse problem:</b> a blob circulating one way around
+the periodic domain writes a <i>standing asymmetric sawtooth</i> in b — sharp edge at the
+blob, exponential ramp behind (lap-decay measured 0.49 vs 0.46 predicted from the trail
+law). The hand-built M5 racetrack shape is apparently a <b>natural fixed point of
+asymmetric motion + relaxation</b>. Honest negatives from the BF4 hunt: noiseless self-dug
+channels certify, but noisy confinement fails (transverse sloshing is weakly pumped);
+three repulsive-trail writers do NOT partition space (wake shell-locking wins — the trails
+never get a vote); uniform-b stability windows do not transfer to local wells (locality is
+protective: a blob survives b_core=−0.99 locally vs replication at −0.1 uniform).</p>
+
+<h2>Growing the landscape instead of drawing it</h2>
+<p>Phase 2 ended with a teaser: a circulating blob writes a sawtooth into the dynamical
+b field. The genesis searcher asked the L2→L1 question systematically: <b>for every
+landscape feature the machines need, can the physics write it?</b> The audited answer:</p>
+<table>
+<tr><th>feature</th><th>growable?</th><th>how / fidelity</th></tr>
+<tr><td>tooth (parking track)</td><td><b>yes</b></td><td>one-way circulation + relaxation;
+functions at native amplitude (audit: fresh blob slid 16.9 px into the trough and froze)</td></tr>
+<tr><td>ramp</td><td><b>yes</b></td><td>the exponential trail law</td></tr>
+<tr><td>rail</td><td><b>yes — free</b></td><td>the groove's own transverse profile
+self-rails (FWHM 5.5 px); the hand-built machine needed a separate rails term</td></tr>
+<tr><td>ring</td><td><b>yes</b></td><td>an orbiting rotor writes a closed ring
+(r=8.4, closure 0.62); deep rings must be dug <i>slowly</i> — greedy deposition
+self-traps into C-arcs</td></tr>
+<tr><td>dock/brake</td><td><b>yes</b></td><td>self-tooth trough = parking brake</td></tr>
+<tr><td>racetrack conveyor</td><td><b>yes at 4× amplitude</b></td><td>shape-only label —
+see the film below</td></tr>
+<tr><td>blob from noise</td><td><b>no — theory-backed</b></td><td>vacuum-exact coupling
+is <i>quadratic</i> in deviations: γ can never destabilize the vacuum. The nucleation
+window (σ&gt;0.2) lands directly in spot soup while blobs die at 0.09. This coupling
+class cannot bootstrap blobs from nothing — a design theorem, not a failed run.</td></tr>
+</table>
+<div class="film"><img src="../assets/blobs/m6b_saw_write.gif" alt="self-written sawtooth"/>
+<div class="cap"><b>Writing the track by driving on it:</b> a circulating blob leaves an
+exponential trail that piles into a standing asymmetric sawtooth (lap-decay 0.49 vs 0.46
+predicted from the trail law). The hand-built M5 racetrack shape is a natural fixed point
+of asymmetric motion + relaxation.</div></div>
+<div class="film"><img src="../assets/blobs/m6b_ring_selflaunch.gif" alt="ring self-launch"/>
+<div class="cap"><b>The self-dug conveyor:</b> a rotor writes a ring into b; freeze the
+field, remove the rotor, park a fresh <i>immobile</i> blob (τ=5.7, provably stuck on flat
+ground) anywhere on the ring — it <b>self-launches into orbit</b> (audit at a fresh angle:
+5.7 revolutions, r=8.45). Infrastructure built by one object animates strangers.</div></div>
+<p>Two design laws came out of the comparison with the hand-built landscape:
+(1) <b>self-written beats hand-built on efficiency</b> — response per unit slope is
+10–40× higher (near-onset response is sublinear in slope; our hand-drawn track wastes
+slope), and the self-written groove rails for free; (2) <b>amplitude selects function</b>:
+the same self-written shape is a parking track at native amplitude, mush at 2×, a
+circulating conveyor at 4×, and a <b>one-way diode</b> at machine amplitude (kicked
+against the tooth: reverses). The single exogenous step left in the whole L2→L1
+reduction is the <i>freeze</i> (γ→0 limit) — everything else grows.</p>
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="molecules-that-move.html">Molecules that move</a> · next: <a href="machines.html">Blob machines</a></div>
+</body></html>

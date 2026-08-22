@@ -1,0 +1,107 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Blobs move — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Blobs move</h1>
+<p class="meta">Post 2 — the drift bifurcation, and the numerics that almost fooled us (twice).</p>
+<h2>2. Motility — the drift bifurcation (M1) <span style='font-weight:normal;font-size:13px'>(known physics: Or-Guil et al. <i>PRE</i> <b>57</b>:6432; our contribution = the unpinning protocol + measured law)</span></h2>
+<p>At M0 the blob sits still. Motion is a <i>phase transition</i>, not a given: the slow
+inhibitor v sits centered under the blob and cancels any nudge (the blob is overdamped).
+Two dials change that: <b>lower D<sub>v</sub></b> (make the drag field narrower) and
+<b>raise τ</b> (make it slower). Past a critical point the resting state becomes unstable —
+the blob "outruns its own shadow": v lags behind, the asymmetry pulls the blob forward,
+and steady self-propelled motion appears.</p>
+<div class="eq">speed law (measured): c(τ) = √(0.0299·(τ − τ_c)), τ_c = 4.78 at D<sub>v</sub>=0.65 — r²=0.993</div>
+<p>The square-root onset is the textbook signature of a supercritical drift bifurcation.
+Direction is free: under noise alone, 8/8 runs picked directions scattered across the
+compass (none along grid axes) — the motion belongs to the physics, not the lattice.</p>
+<div class="film"><img src="../assets/blobs/m1_travel.gif" alt="M1 traveling blob"/>
+<div class="cap"><b>M1 — a traveling blob</b> (τ=5.0 &gt; τ_c): steady speed, straight
+kick-chosen track, shape preserved while moving. Certified unpinned: speed changes 0.6%
+under 2× grid refinement.</div></div>
+<div class="warn"><b>Trap we hit (and publish):</b> the M0 blob is small enough to get
+<i>pinned to the numerical lattice</i> — with naive integration it refuses to move at all,
+and apparent "stability" can be a grid artifact. All motility and binding results therefore
+use an implicit-spectral integrator (IMEX-FFT) at halved grid spacing, with every
+headline number re-checked under a further 2× refinement. This trap returned twice more
+below — it is the recurring failure mode of this physics.</div>
+
+<h3>Numerics box — why the lattice pins blobs, and what IMEX-FFT changes</h3>
+<div class="note" style="font-size:13.5px">
+<b>Why pinning exists.</b> In the continuum the equations are translation-invariant: a blob
+costs exactly the same "energy" at every position, so an arbitrarily small force moves it
+(the drift bifurcation destabilizes precisely this free translation mode). A grid breaks
+that symmetry: the blob's discrete representation is slightly different centered <i>on</i>
+a cell vs <i>between</i> cells, so its energy ripples with period dx — a washboard
+(the Peierls–Nabarro potential of dislocation physics). The ripple amplitude falls
+<i>exponentially</i> with the number of grid cells across the blob's edge — invisible for
+well-resolved patterns, dominant for sharp ones. Our M0 blob is ~6 cells across with a
+~2-cell interface at dx=1: firmly in the dominant regime.<br/><br/>
+<b>Why it bites twice.</b> (1) Near onset the self-propulsion force is arbitrarily small
+(∝ τ−τ_c), so a finite washboard always wins in a window around τ_c: the blob creeps then
+sticks, the measured "onset" shifts, and the c(τ) curve becomes a depinning law instead of
+the true bifurcation. (2) The washboard's little walls can also <i>hold states the
+continuum would not hold</i> — that is how the fake τ=3 bond passed at dx=1 (a continuum
+saddle trapped by grid ripple) and how species A survives at dx=1 while labyrinthing at
+dx=0.5. Pinning fakes both immobility and stability.<br/><br/>
+<b>Why "just refine the grid" is not enough — the crux.</b> With the naive explicit
+integrator, refinement is nearly unaffordable: the stiff halo diffusion (D<sub>w</sub>=20)
+forces dt &lt; dx²/(4D<sub>w</sub>), so halving dx costs 4× more cells <i>and</i> 4× more
+steps = <b>16× per halving</b> (dx=0.25 ⇒ ~256× Day-0 cost — impossible for
+hundred-run campaigns). And the explicit stencil adds its own grid bias: the 5-point
+Laplacian is anisotropic at O(dx²), so even an unpinned blob feels lattice axes.
+<b>IMEX-FFT</b> (implicit–explicit, spectral) is two separate upgrades bundled. The
+<i>IMEX</i> part is about <b>time</b>: the stiff diffusion term is handled implicitly/exactly
+instead of extrapolated, removing the dt&lt;dx²/(4D<sub>w</sub>) stability constraint (normally
+implicit steps require solving a large linear system, but on a periodic grid diffusion
+<i>diagonalizes</i> in Fourier space, so the "solve" is a per-mode multiply — that is the
+<i>FFT</i> part, and it is what makes implicit free here). The spectral representation is
+also about <b>space</b>: Fourier derivatives are exact and isotropic for all resolved modes,
+so the stencil's lattice-axis bias vanishes. Concretely the step splits: nonlinear reaction
+terms advance explicitly, while diffusion is applied <i>exactly</i> — every mode
+k multiplied by e<sup>−Dk²dt</sup>. What IMEX-FFT does <b>not</b> fix is the washboard
+itself: that comes from sampling the blob's sharp profile on a finite grid, and only
+refinement shrinks it (exponentially fast, fortunately). Ground truth for this world is the
+continuum PDE; the grid is our telescope, and any grid-dependent effect is a defect of the
+telescope — which is why every headline number ships with a dx→dx/2 convergence
+certificate rather than an assumption. That is unconditionally stable (no dt limit from
+D<sub>w</sub>; we keep dt=0.02 at every dx, so halving dx costs only 4×) and perfectly
+isotropic (no stencil anisotropy at all). Refinement then does the one thing still needed —
+shrink the washboard — and convergence is checked, not assumed.<br/><br/>
+<b>Receipts</b> (same physics, τ near onset, kick at 30°):
+<table style="margin:8px 0">
+<tr><th>treatment</th><th>τ=4.85</th><th>τ=4.80</th></tr>
+<tr><td>explicit Euler, dx=1 (Day-0 numerics)</td><td>stationary, c=0 (pinned)</td><td>—</td></tr>
+<tr><td>IMEX-FFT, dx=1 (isotropy fixed, washboard remains)</td><td>creeping, c≈0.002</td><td>stationary, c≈0.001</td></tr>
+<tr><td>IMEX-FFT, dx=0.5 (certified treatment)</td><td><b>traveling, c=0.033, exactly along the 30° kick</b></td><td>traveling (law: onset τ_c=4.78)</td></tr>
+</table>
+And the convergence chain at τ=5.0: c = 0.0720 (dx=1) → 0.0820 (dx=0.5) → 0.0817 (dx=0.25):
+dx=1 is 12% low (residual washboard drag), dx=0.5 is converged to 0.6%. That 0.6% is the
+unpinning certificate every headline number carries.
+</div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="what-is-a-blob.html">What is a blob?</a> · next: <a href="blob-chemistry.html">Blob chemistry</a></div>
+</body></html>

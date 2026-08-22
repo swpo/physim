@@ -1,0 +1,121 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Blob chemistry — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Blob chemistry: bonds, molecules, species</h1>
+<p class="meta">Post 3 — how blobs bind at quantized distances, why big blobs labyrinth, and the two-species architecture.</p>
+<h2>Binding — blob molecules</h2><p class='meta'>Prerequisite: <a href='blobs-move.html'>post 2</a> for the IMEX-FFT/pinning conventions used throughout.</p><p class='meta'>Known: tail-quantized soliton molecules (Bode et al.; bond forces measured by Bödeker et al.). Ours: the unpinning discipline and the saddle alarm.</p>
+<p>Blobs interact through their field tails. The w halo gives plain repulsion — that alone
+would make a gas of loners. But with a wider slow inhibitor (D<sub>v</sub>=2, τ=2.5), the
+v-tail develops a gentle <i>oscillation</i>: rings of alternating push and pull around each
+blob. A neighbor sliding down that corrugated landscape gets trapped at the first well —
+a <b>bond</b> at a preferred separation:</p>
+<div class="eq">bond length (measured): d* = 15.70 ± 0.02 — approached from both sides; basin ≈ [14.5, 19.5]; no second well ≤ 20</div>
+<div class="film"><img src="../assets/blobs/m2_bind.gif" alt="M2 binding"/>
+<div class="cap"><b>M2 — two blobs bind.</b> Released at separation 18.5, the pair slides
+into the well and settles onto d*=15.70 (dashed line). Released inside ~14.5 they push
+apart to the same distance. Bond strength: under noise strong enough to nearly kill a
+lone blob (σ=0.075), 15/15 bonded pairs refused to escape for the full 4000 tu watch.</div></div>
+<div class="film"><img src="../assets/blobs/m2_triangle.gif" alt="M2 triangle molecule"/>
+<div class="cap"><b>Molecules:</b> three blobs form a stable equilateral triangle (sides
+16.0/16.1/16.1); chains of three at [16, 16] also hold. These are the first composite
+objects.</div></div>
+<div class="warn"><b>Honest negative, upgraded by the literature:</b> the bond we first
+found at the M0-ish point (τ=3) is a lattice-pinned state that the continuum limit
+reveals to be a <i>saddle</i>. Theory says this is expected, not accidental:
+tail-mediated bound states <b>alternate stable/saddle</b> in their distance ladder
+(Buryak &amp; Akhmediev <i>PRE</i> <b>51</b>:3572) — the lattice stabilized a predicted
+saddle. Free artifact detector, now adopted: a "stable" bond found at a
+theory-predicted saddle distance is a pinning alarm. Grid-refinement checking is not
+optional in this program.</div>
+
+<h2>Flavors — two species in one world</h2>
+<p>To get more than one <i>kind</i> of blob, the architecture is: each species gets a
+<b>private activator u<sub>i</sub> and private slow inhibitor v<sub>i</sub></b>, and all
+species share <b>one long-range w</b> (driven by the average activity). Private u,v = a
+species' own chemistry; shared w = a common "space" they all exclude each other from.
+A one-parameter <i>iso-background line</i> (k₁ and k₄ co-varied so the vacuum state stays
+identical) lets us dial species apart without destabilizing the world:</p>
+<table>
+<tr><th>species</th><th>k₁</th><th>k₄</th><th>size</th><th>w-footprint</th><th>character</th></tr>
+<tr><td><b>A</b></td><td>−1.00</td><td>1.40</td><td>169 px</td><td>wide (peak 0.45)</td><td>large, broad, strong presence</td></tr>
+<tr><td><b>B</b></td><td>−1.65</td><td>2.15</td><td>25 px</td><td>narrow (peak 0.23)</td><td>small, sharp — the natural "cargo"</td></tr>
+</table>
+<p class="panel"><img src="../assets/blobs/m3_species.png" alt="M3 species portraits"/></p>
+<p>Species are <b>port-distinguishable</b>: a probe patch reading only the shared w field
+classifies A vs B correctly 20/20 — an agent at an anonymous port can tell flavors apart
+without god vision. Encounters conserve flavor (A+B, A+A, B+B all repel at working
+distances; the only exception is a documented deterministic A+A merge at near-contact).
+No conversion, no annihilation.</p>
+<div class="warn"><b>Continuum caveat (found later, kept honest):</b> the big species A is
+itself lattice-stabilized — at fine grid resolution it slowly grows into a labyrinth
+pattern. Its port-classification results stand, but machine work uses the compact
+replacement A′ (k₁=−1.564, k₄=2.05, 36 px; metastable ≥ 8600 tu, documented) plus the
+continuum-clean B. Re-engineering a truly continuum large species is parked.</div>
+
+<h3>The labyrinth instability — why big blobs are hard <span style='font-weight:normal;font-size:13px'>(known: transverse/labyrinthine instability, Hagberg &amp; Meron <i>PRL</i> <b>72</b>:2494; self-replicating spots, Pearson <i>Science</i> <b>261</b>:189)</span></h3>
+<div class="note" style="font-size:13.5px">
+<b>What a labyrinth is.</b> The blob state ("on" disk in an "off" sea) is not the only
+localized solution these equations admit — there is also the <b>stripe</b>: a band of
+activator flanked by inhibitor on both sides. Whether a chunk of "on" phase prefers to be
+a disk or a stripe is a competition between two pressures on its interface: the effective
+<i>surface tension</i> (wants to shrink boundary length → disks) and the activator's
+<i>lateral drive</i> (wants to extend the interface into fresh territory → fingers).
+For a small blob the boundary is strongly curved, tension dominates, and the disk is
+stable. Make the blob larger and its edge gets flatter — and a flat interface in this
+parameter regime is <b>transversely unstable</b>: any gentle bulge concentrates activator,
+outruns the local inhibitor, and grows into a finger. Each finger is itself a stripe whose
+tip keeps extending and whose sides repel other fingers through the w-halo, so the pattern
+elongates, branches, folds, and packs the domain at a fixed stripe wavelength — a
+space-filling maze. That is the labyrinth (the same fingering morphology as ferrofluids
+between glass plates, block-copolymer films, and Turing-stripe chemistry). It is a real
+solution of the continuum equations — just not the solution we wanted to call a "species".
+<br/><br/>
+<b>Why size is the trigger.</b> The interface instability has a threshold wavelength: bulges
+shorter than it are ironed out by tension, longer ones grow. A 25–36 px blob (B, A′) is
+smaller than that wavelength — its whole edge is one tight curve, nothing fits. The 169 px
+species A has long, nearly flat edge segments — several unstable wavelengths fit along its
+rim, so it fingers. Same equations, same parameters: being big is itself the vulnerability.
+<br/><br/>
+<b>Why we only saw it at fine grid.</b> At dx=1 the fingering seed is a sub-pixel bulge —
+the washboard from the numerics box flattens it out before it can grow: the lattice was
+<i>stabilizing</i> A, the same artifact that faked the τ=3 bond, now propping up a whole
+species. At dx=0.5 the continuum takes over and the truth comes out (36 → 3200 px² over
+~3000 tu). The honest inventory after refinement: <b>B</b> is continuum-clean (10,000 tu),
+<b>A′</b> — pulled back along the iso-line to sit safely below the fingering threshold —
+is compact-metastable (one slow reorganization event seen at ~8600 tu; used within
+documented lifetime), and a truly large continuum species would need a <i>different
+stabilization mechanism</i> (stronger/longer-range w to raise the threshold wavelength,
+or a ring/annulus topology) — parked until a machine actually needs a giant.
+</div>
+<div class="film"><img src="../assets/blobs/m3_labyrinth.gif" alt="labyrinth instability"/>
+<div class="cap"><b>The instability, live</b> (both panels at fine grid, identical
+conditions except species parameters): species A (left) fingers from its rim, branches,
+and fills the box as a maze; the iso-line replacement A′ (right) holds its disk. The
+lattice had been hiding the left panel for the entire M3 campaign.</div></div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="blobs-move.html">Blobs move</a> · next: <a href="molecules-that-move.html">Molecules that move</a></div>
+</body></html>

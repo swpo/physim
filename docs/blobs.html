@@ -1,6 +1,6 @@
 <!doctype html>
 <html><head><meta charset="utf-8"/>
-<title>physim — the BLOBS program</title>
+<title>The BLOBS program — physim blobs</title>
 <style>
  body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
         max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
@@ -22,14 +22,22 @@
  code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
  .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
        font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
 </style></head><body>
-<nav style="font-size:14px;margin-bottom:18px;"><a href="index.html">home</a> · <a href="results.html">results</a> · <a href="worlds.html">the worlds</a> · <a href="scoring.html">scoring</a> · <b>blobs</b> · <a href="https://github.com/swpo/physim">github</a></nav>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="index.html">home</a> · <b>blobs series</b> · <a href="worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
 
 <h1>The BLOBS program — matter, chemistry, and machines from three fields</h1>
-<p class="meta">Research report, 2026-02 (pre-world phase). Everything on this page is
-autonomous field physics: no per-blob bookkeeping, no scripted events, no painted sprites.
-Every headline number was independently re-derived by a controller audit on fresh random
-seeds before being accepted. Probe code + full logs: <code>probes/blobs/</code> in the repo.</p>
+<p class="meta">A research-post series (updated as results certify). Every headline number
+is independently re-derived by a controller audit on fresh seeds before publication.
+Probe code + full logs: <code>probes/blobs/</code>.</p>
+<div class="note"><b>The idea.</b> Instead of simulating creatures or particles directly,
+we write down three interacting <i>fields</i> — think of three coupled "chemical
+concentrations" filling space — chosen so that the field equations themselves hold stable,
+particle-like excitations. Those excitations ("blobs") turn out to move, bind into
+molecules, come in species, and can be assembled into working machines. The program
+climbed that ladder one certified rung at a time:
+existence → motility → binding → flavors → composite dynamics → a machine.</div>
+
 
 <div class="note" style="background:#fff8f0;border-left:4px solid #d4a72c">
 <b>Literature grounding (added after a 132-source review).</b> The three-field system
@@ -48,306 +56,31 @@ Purwins, <i>EPL</i> <b>63</b>:361 / <i>EPJ B</i> <b>37</b>:199), the relay-tug c
 machine, the self-written-landscape design laws, and the algebraic pre-filter for
 equation-space search. Full review: <code>probes/blobs/litreview/REVIEW.md</code>.</div>
 
-<div class="note"><b>The idea.</b> Instead of simulating creatures or particles directly,
-we write down three interacting <i>fields</i> — think of three coupled "chemical
-concentrations" filling space — chosen so that the field equations themselves hold stable,
-particle-like excitations. Those excitations ("blobs") turn out to move, bind into
-molecules, come in species, and can be assembled into working machines. The program
-climbed that ladder one certified rung at a time:
-existence → motility → binding → flavors → composite dynamics → a machine.</div>
 
-<h2>1. The fields and the equations</h2>
-<p>The world is a periodic 2-D square. Three scalar fields live on it:</p>
+<h2>The series</h2>
+<div class="panel">
 <table>
-<tr><th>field</th><th>role</th><th>timescale</th><th>range</th><th>intuition</th></tr>
-<tr><td><code>u</code></td><td><b>activator</b></td><td>fast (1)</td><td>short (D<sub>u</sub>=1)</td>
-<td>the "substance" of a blob; self-amplifying (cubic), wants to run away</td></tr>
-<tr><td><code>v</code></td><td><b>slow inhibitor</b></td><td>slow (τ)</td><td>short-to-mid (D<sub>v</sub>)</td>
-<td>local memory / drag; where u has been, v builds up and pushes back</td></tr>
-<tr><td><code>w</code></td><td><b>fast long-range inhibitor</b></td><td>very fast (θ=0.7)</td><td>long (D<sub>w</sub>=20)</td>
-<td>a wide "exclusion halo" broadcast around any activity; stops spreading and keeps blobs apart</td></tr>
+<tr><th>#</th><th>post</th><th>what's in it</th></tr>
+<tr><td>1</td><td><a href="blobs/what-is-a-blob.html"><b>What is a blob?</b></a></td>
+<td>the 3-field theory, the vacuum, dissipative solitons, the corridor between death and cancer</td></tr>
+<tr><td>2</td><td><a href="blobs/blobs-move.html"><b>Blobs move</b></a></td>
+<td>the drift bifurcation and its √-law; the lattice-pinning trap and IMEX-FFT (why our telescope needed fixing)</td></tr>
+<tr><td>3</td><td><a href="blobs/blob-chemistry.html"><b>Blob chemistry</b></a></td>
+<td>bonds at quantized distances, the saddle alarm, molecules; the labyrinth instability; two port-distinguishable species</td></tr>
+<tr><td>4</td><td><a href="blobs/molecules-that-move.html"><b>Molecules that move</b></a></td>
+<td>A=τ·D<sub>v</sub>, wake-locked tandems and trains, the pair-only zone, the heterodimer rotor (spontaneous rotation), libration</td></tr>
+<tr><td>5</td><td><a href="blobs/living-landscape.html"><b>The living landscape</b></a></td>
+<td>b as a real field: autophoresis, trails and stigmergy, b-assembly, self-written sawtooths and self-dug racetracks, the reduction map</td></tr>
+<tr><td>6</td><td><a href="blobs/machines.html"><b>Blob machines</b></a></td>
+<td>the relay tug; tow/dock/fork and the glue machine; the convoy line and the stack-safety / blade-load / buckling law cascade; composition = footprint geometry</td></tr>
+<tr><td>7</td><td><a href="blobs/searching-equation-space.html"><b>Searching equation space</b></a></td>
+<td>the genome, the algebraic funnel, MAP-Elites atlases, merge-beats-mutate, the 3-field engine and the plateau-bond family; stage-3 partials</td></tr>
 </table>
-<div class="eq">
-∂u/∂t = D<sub>u</sub>∇²u + λu − u³ − k₃v − k₄w + k₁ &nbsp;&nbsp;&nbsp;(activator: cubic self-drive, inhibited by v and w, biased by k₁)<br/>
-∂v/∂t = (u − v)/τ + D<sub>v</sub>∇²v &nbsp;&nbsp;&nbsp;(v relaxes toward u with time constant τ)<br/>
-∂w/∂t = (u − w)/θ + D<sub>w</sub>∇²w &nbsp;&nbsp;&nbsp;(w relaxes toward u fast, but spreads far)
 </div>
-<p>This is the three-component reaction–diffusion system of the
-<i>Purwins / Schenk gas-discharge</i> class — a laboratory system (planar gas discharges)
-in which all of the phenomena below were first seen experimentally. Baseline parameters
-(the "M0 point"): λ=2, k₁=−0.7, k₃=1, k₄=1.5, τ=3, θ=0.7, D<sub>u</sub>=D<sub>v</sub>=1,
-D<sub>w</sub>=20.</p>
-
-<h3>What is a blob?</h3>
-<p>The uniform "vacuum" state u=v=w=u₀ (the most negative root of
-−u³+(λ−k₃−k₄)u+k₁=0, u₀≈−0.70) is stable: small pokes die out. But a big enough local
-poke flips a patch of <code>u</code> onto the upper branch of the cubic, and the patch
-then <i>self-stabilizes</i>: the long-range <code>w</code> halo it broadcasts prevents it
-from growing or splitting, while the activator core prevents it from dying. The result is
-a <b>dissipative soliton</b> — a self-maintaining, fixed-size spot of "on" field in an
-"off" world. That is a blob. Its identity is measured (connected components + tracking),
-never stored: delete the fields and the blob is gone; move the fields and the blob moved.</p>
-
-<div class="film"><img src="assets/blobs/m0_birth.gif" alt="M0 blob birth"/>
-<div class="cap"><b>M0 — a blob is born.</b> A Gaussian poke overshoots, sheds mass, and
-locks to its preferred size (~26 px area at the M0 point), then persists indefinitely
-(certified 10,000 tu, noise-robust). The area trace shows the size lock. Neighboring
-parameter worlds fail in two directions: k₁=−0.9 → the poke dies; k₁=−0.5 or k₄=2.5 →
-the poke <i>replicates</i> into an ever-splitting "spot soup". Blobs live in the corridor
-between death and cancer.</div></div>
-
-<h2>2. Motility — the drift bifurcation (M1) <span style='font-weight:normal;font-size:13px'>(known physics: Or-Guil et al. <i>PRE</i> <b>57</b>:6432; our contribution = the unpinning protocol + measured law)</span></h2>
-<p>At M0 the blob sits still. Motion is a <i>phase transition</i>, not a given: the slow
-inhibitor v sits centered under the blob and cancels any nudge (the blob is overdamped).
-Two dials change that: <b>lower D<sub>v</sub></b> (make the drag field narrower) and
-<b>raise τ</b> (make it slower). Past a critical point the resting state becomes unstable —
-the blob "outruns its own shadow": v lags behind, the asymmetry pulls the blob forward,
-and steady self-propelled motion appears.</p>
-<div class="eq">speed law (measured): c(τ) = √(0.0299·(τ − τ_c)), τ_c = 4.78 at D<sub>v</sub>=0.65 — r²=0.993</div>
-<p>The square-root onset is the textbook signature of a supercritical drift bifurcation.
-Direction is free: under noise alone, 8/8 runs picked directions scattered across the
-compass (none along grid axes) — the motion belongs to the physics, not the lattice.</p>
-<div class="film"><img src="assets/blobs/m1_travel.gif" alt="M1 traveling blob"/>
-<div class="cap"><b>M1 — a traveling blob</b> (τ=5.0 &gt; τ_c): steady speed, straight
-kick-chosen track, shape preserved while moving. Certified unpinned: speed changes 0.6%
-under 2× grid refinement.</div></div>
-<div class="warn"><b>Trap we hit (and publish):</b> the M0 blob is small enough to get
-<i>pinned to the numerical lattice</i> — with naive integration it refuses to move at all,
-and apparent "stability" can be a grid artifact. All motility and binding results therefore
-use an implicit-spectral integrator (IMEX-FFT) at halved grid spacing, with every
-headline number re-checked under a further 2× refinement. This trap returned twice more
-below — it is the recurring failure mode of this physics.</div>
-
-<h3>Numerics box — why the lattice pins blobs, and what IMEX-FFT changes</h3>
-<div class="note" style="font-size:13.5px">
-<b>Why pinning exists.</b> In the continuum the equations are translation-invariant: a blob
-costs exactly the same "energy" at every position, so an arbitrarily small force moves it
-(the drift bifurcation destabilizes precisely this free translation mode). A grid breaks
-that symmetry: the blob's discrete representation is slightly different centered <i>on</i>
-a cell vs <i>between</i> cells, so its energy ripples with period dx — a washboard
-(the Peierls–Nabarro potential of dislocation physics). The ripple amplitude falls
-<i>exponentially</i> with the number of grid cells across the blob's edge — invisible for
-well-resolved patterns, dominant for sharp ones. Our M0 blob is ~6 cells across with a
-~2-cell interface at dx=1: firmly in the dominant regime.<br/><br/>
-<b>Why it bites twice.</b> (1) Near onset the self-propulsion force is arbitrarily small
-(∝ τ−τ_c), so a finite washboard always wins in a window around τ_c: the blob creeps then
-sticks, the measured "onset" shifts, and the c(τ) curve becomes a depinning law instead of
-the true bifurcation. (2) The washboard's little walls can also <i>hold states the
-continuum would not hold</i> — that is how the fake τ=3 bond passed at dx=1 (a continuum
-saddle trapped by grid ripple) and how species A survives at dx=1 while labyrinthing at
-dx=0.5. Pinning fakes both immobility and stability.<br/><br/>
-<b>Why "just refine the grid" is not enough — the crux.</b> With the naive explicit
-integrator, refinement is nearly unaffordable: the stiff halo diffusion (D<sub>w</sub>=20)
-forces dt &lt; dx²/(4D<sub>w</sub>), so halving dx costs 4× more cells <i>and</i> 4× more
-steps = <b>16× per halving</b> (dx=0.25 ⇒ ~256× Day-0 cost — impossible for
-hundred-run campaigns). And the explicit stencil adds its own grid bias: the 5-point
-Laplacian is anisotropic at O(dx²), so even an unpinned blob feels lattice axes.
-<b>IMEX-FFT</b> (implicit–explicit, spectral) is two separate upgrades bundled. The
-<i>IMEX</i> part is about <b>time</b>: the stiff diffusion term is handled implicitly/exactly
-instead of extrapolated, removing the dt&lt;dx²/(4D<sub>w</sub>) stability constraint (normally
-implicit steps require solving a large linear system, but on a periodic grid diffusion
-<i>diagonalizes</i> in Fourier space, so the "solve" is a per-mode multiply — that is the
-<i>FFT</i> part, and it is what makes implicit free here). The spectral representation is
-also about <b>space</b>: Fourier derivatives are exact and isotropic for all resolved modes,
-so the stencil's lattice-axis bias vanishes. Concretely the step splits: nonlinear reaction
-terms advance explicitly, while diffusion is applied <i>exactly</i> — every mode
-k multiplied by e<sup>−Dk²dt</sup>. What IMEX-FFT does <b>not</b> fix is the washboard
-itself: that comes from sampling the blob's sharp profile on a finite grid, and only
-refinement shrinks it (exponentially fast, fortunately). Ground truth for this world is the
-continuum PDE; the grid is our telescope, and any grid-dependent effect is a defect of the
-telescope — which is why every headline number ships with a dx→dx/2 convergence
-certificate rather than an assumption. That is unconditionally stable (no dt limit from
-D<sub>w</sub>; we keep dt=0.02 at every dx, so halving dx costs only 4×) and perfectly
-isotropic (no stencil anisotropy at all). Refinement then does the one thing still needed —
-shrink the washboard — and convergence is checked, not assumed.<br/><br/>
-<b>Receipts</b> (same physics, τ near onset, kick at 30°):
-<table style="margin:8px 0">
-<tr><th>treatment</th><th>τ=4.85</th><th>τ=4.80</th></tr>
-<tr><td>explicit Euler, dx=1 (Day-0 numerics)</td><td>stationary, c=0 (pinned)</td><td>—</td></tr>
-<tr><td>IMEX-FFT, dx=1 (isotropy fixed, washboard remains)</td><td>creeping, c≈0.002</td><td>stationary, c≈0.001</td></tr>
-<tr><td>IMEX-FFT, dx=0.5 (certified treatment)</td><td><b>traveling, c=0.033, exactly along the 30° kick</b></td><td>traveling (law: onset τ_c=4.78)</td></tr>
-</table>
-And the convergence chain at τ=5.0: c = 0.0720 (dx=1) → 0.0820 (dx=0.5) → 0.0817 (dx=0.25):
-dx=1 is 12% low (residual washboard drag), dx=0.5 is converged to 0.6%. That 0.6% is the
-unpinning certificate every headline number carries.
-</div>
-
-<h2>3. Binding — blob molecules (M2) <span style='font-weight:normal;font-size:13px'>(known: tail-quantized soliton molecules, Bode et al. <i>Physica D</i> <b>161</b>:45; bond forces measured in gas discharges, Bödeker et al. <i>NJP</i> <b>6</b>:62)</span></h2>
-<p>Blobs interact through their field tails. The w halo gives plain repulsion — that alone
-would make a gas of loners. But with a wider slow inhibitor (D<sub>v</sub>=2, τ=2.5), the
-v-tail develops a gentle <i>oscillation</i>: rings of alternating push and pull around each
-blob. A neighbor sliding down that corrugated landscape gets trapped at the first well —
-a <b>bond</b> at a preferred separation:</p>
-<div class="eq">bond length (measured): d* = 15.70 ± 0.02 — approached from both sides; basin ≈ [14.5, 19.5]; no second well ≤ 20</div>
-<div class="film"><img src="assets/blobs/m2_bind.gif" alt="M2 binding"/>
-<div class="cap"><b>M2 — two blobs bind.</b> Released at separation 18.5, the pair slides
-into the well and settles onto d*=15.70 (dashed line). Released inside ~14.5 they push
-apart to the same distance. Bond strength: under noise strong enough to nearly kill a
-lone blob (σ=0.075), 15/15 bonded pairs refused to escape for the full 4000 tu watch.</div></div>
-<div class="film"><img src="assets/blobs/m2_triangle.gif" alt="M2 triangle molecule"/>
-<div class="cap"><b>Molecules:</b> three blobs form a stable equilateral triangle (sides
-16.0/16.1/16.1); chains of three at [16, 16] also hold. These are the first composite
-objects.</div></div>
-<div class="warn"><b>Honest negative, upgraded by the literature:</b> the bond we first
-found at the M0-ish point (τ=3) is a lattice-pinned state that the continuum limit
-reveals to be a <i>saddle</i>. Theory says this is expected, not accidental:
-tail-mediated bound states <b>alternate stable/saddle</b> in their distance ladder
-(Buryak &amp; Akhmediev <i>PRE</i> <b>51</b>:3572) — the lattice stabilized a predicted
-saddle. Free artifact detector, now adopted: a "stable" bond found at a
-theory-predicted saddle distance is a pinning alarm. Grid-refinement checking is not
-optional in this program.</div>
-
-<h2>4. Flavors — two species in one world (M3)</h2>
-<p>To get more than one <i>kind</i> of blob, the architecture is: each species gets a
-<b>private activator u<sub>i</sub> and private slow inhibitor v<sub>i</sub></b>, and all
-species share <b>one long-range w</b> (driven by the average activity). Private u,v = a
-species' own chemistry; shared w = a common "space" they all exclude each other from.
-A one-parameter <i>iso-background line</i> (k₁ and k₄ co-varied so the vacuum state stays
-identical) lets us dial species apart without destabilizing the world:</p>
-<table>
-<tr><th>species</th><th>k₁</th><th>k₄</th><th>size</th><th>w-footprint</th><th>character</th></tr>
-<tr><td><b>A</b></td><td>−1.00</td><td>1.40</td><td>169 px</td><td>wide (peak 0.45)</td><td>large, broad, strong presence</td></tr>
-<tr><td><b>B</b></td><td>−1.65</td><td>2.15</td><td>25 px</td><td>narrow (peak 0.23)</td><td>small, sharp — the natural "cargo"</td></tr>
-</table>
-<p class="panel"><img src="assets/blobs/m3_species.png" alt="M3 species portraits"/></p>
-<p>Species are <b>port-distinguishable</b>: a probe patch reading only the shared w field
-classifies A vs B correctly 20/20 — an agent at an anonymous port can tell flavors apart
-without god vision. Encounters conserve flavor (A+B, A+A, B+B all repel at working
-distances; the only exception is a documented deterministic A+A merge at near-contact).
-No conversion, no annihilation.</p>
-<div class="warn"><b>Continuum caveat (found later, kept honest):</b> the big species A is
-itself lattice-stabilized — at fine grid resolution it slowly grows into a labyrinth
-pattern. Its port-classification results stand, but machine work uses the compact
-replacement A′ (k₁=−1.564, k₄=2.05, 36 px; metastable ≥ 8600 tu, documented) plus the
-continuum-clean B. Re-engineering a truly continuum large species is parked.</div>
-
-<h3>The labyrinth instability — why big blobs are hard <span style='font-weight:normal;font-size:13px'>(known: transverse/labyrinthine instability, Hagberg &amp; Meron <i>PRL</i> <b>72</b>:2494; self-replicating spots, Pearson <i>Science</i> <b>261</b>:189)</span></h3>
-<div class="note" style="font-size:13.5px">
-<b>What a labyrinth is.</b> The blob state ("on" disk in an "off" sea) is not the only
-localized solution these equations admit — there is also the <b>stripe</b>: a band of
-activator flanked by inhibitor on both sides. Whether a chunk of "on" phase prefers to be
-a disk or a stripe is a competition between two pressures on its interface: the effective
-<i>surface tension</i> (wants to shrink boundary length → disks) and the activator's
-<i>lateral drive</i> (wants to extend the interface into fresh territory → fingers).
-For a small blob the boundary is strongly curved, tension dominates, and the disk is
-stable. Make the blob larger and its edge gets flatter — and a flat interface in this
-parameter regime is <b>transversely unstable</b>: any gentle bulge concentrates activator,
-outruns the local inhibitor, and grows into a finger. Each finger is itself a stripe whose
-tip keeps extending and whose sides repel other fingers through the w-halo, so the pattern
-elongates, branches, folds, and packs the domain at a fixed stripe wavelength — a
-space-filling maze. That is the labyrinth (the same fingering morphology as ferrofluids
-between glass plates, block-copolymer films, and Turing-stripe chemistry). It is a real
-solution of the continuum equations — just not the solution we wanted to call a "species".
-<br/><br/>
-<b>Why size is the trigger.</b> The interface instability has a threshold wavelength: bulges
-shorter than it are ironed out by tension, longer ones grow. A 25–36 px blob (B, A′) is
-smaller than that wavelength — its whole edge is one tight curve, nothing fits. The 169 px
-species A has long, nearly flat edge segments — several unstable wavelengths fit along its
-rim, so it fingers. Same equations, same parameters: being big is itself the vulnerability.
-<br/><br/>
-<b>Why we only saw it at fine grid.</b> At dx=1 the fingering seed is a sub-pixel bulge —
-the washboard from the numerics box flattens it out before it can grow: the lattice was
-<i>stabilizing</i> A, the same artifact that faked the τ=3 bond, now propping up a whole
-species. At dx=0.5 the continuum takes over and the truth comes out (36 → 3200 px² over
-~3000 tu). The honest inventory after refinement: <b>B</b> is continuum-clean (10,000 tu),
-<b>A′</b> — pulled back along the iso-line to sit safely below the fingering threshold —
-is compact-metastable (one slow reorganization event seen at ~8600 tu; used within
-documented lifetime), and a truly large continuum species would need a <i>different
-stabilization mechanism</i> (stronger/longer-range w to raise the threshold wavelength,
-or a ring/annulus topology) — parked until a machine actually needs a giant.
-</div>
-<div class="film"><img src="assets/blobs/m3_labyrinth.gif" alt="labyrinth instability"/>
-<div class="cap"><b>The instability, live</b> (both panels at fine grid, identical
-conditions except species parameters): species A (left) fingers from its rim, branches,
-and fills the box as a maze; the iso-line replacement A′ (right) holds its disk. The
-lattice had been hiding the left panel for the entire M3 campaign.</div></div>
-
-<h2>5. Composite dynamics — molecules that move (M4)</h2>
-<p>Round-1 left a tension: binding was certified at (D<sub>v</sub>=2.0, τ=2.5), motility at
-(D<sub>v</sub>=0.65, τ&gt;4.78) — no overlap. The resolution is a one-line theorem: the
-<b>steady states depend on τ and D<sub>v</sub> only through the product A = τ·D<sub>v</sub></b>
-(set ∂v/∂t=0: u = v − τD<sub>v</sub>∇²v). So the whole static world — blob shape, tails,
-bond wells — is frozen along any path with A fixed, while τ alone dials the drift
-instability. Binding lived at A=5, motility at A≈3.1. The M4 family holds <b>A=4</b>
-(bond exists, slightly shallower: static d*≈15.4) and walks τ up with D<sub>v</sub>=4/τ:</p>
-<div class="eq">pair speed law (measured): c_pair = √(0.0560·(τ − 5.636)), r²=0.996; out-of-window check at τ=6.1: predicted 0.161, measured 0.152 (6.3%)</div>
-<p>The traveling bond is a <b>wake-locked tandem</b>: the pair moves along its own axis,
-follower surfing the leader's wake at discrete shell distances (14.78 or 25.68 — spaced by
-the tail wavelength ~10.9). Trains of three go faster than pairs, which go faster than
-singles (0.143 &gt; 0.141 &gt; 0.123): each blob deepens the collective wake.</p>
-<div class="film"><img src="assets/blobs/m4_paironly.gif" alt="M4 pair-only zone"/>
-<div class="cap"><b>M4 — the pair-only zone.</b> At τ=5.70 (window 5.636–5.748), the same
-kick is given to a lone blob (left) and to a bound pair (right). The single dies back to
-rest — below its personal drift threshold. The pair travels steadily at c≈0.06.
-<b>The molecule can move before its atoms can.</b> This audited zone becomes the machine's
-parking brake below.</div></div>
-<div class="warn"><b>Honest negatives:</b> (i) the deep A=5 bond family can <i>never</i>
-travel — raising τ there hits replication before drift; mobility costs bond depth.
-(ii) Rotating bound pairs — the original hope — were not found: angular kicks either lock
-(ω≈0) or convert to straight translation. (iii) A "breathing" bond exists but is
-metastable (~1500 tu), then reorganizes into the tandem.</div>
-
-<h2>6. The machine — RELAY TUG (M5, gate B6)</h2>
-<p class="meta">Framing per the ratchet literature (Reimann <i>Phys. Rep.</i> <b>361</b>:57):
-a static asymmetric potential cannot transport a passive overdamped particle — and ours
-doesn't. This is an <b>active-particle ratchet</b>: the blobs' own drift mode is the
-motor, the sawtooth only rectifies it (cf. bacterial ratchet gears, Di Leonardo et al.
-<i>PNAS</i> <b>107</b>:9541). Our earlier noise-ratchet negative matches soliton-ratchet
-theory exactly (Salerno &amp; Quintero <i>PRE</i> <b>65</b>:025602: transport needs a
-soft internal mode or translational noise — our solitons are too stiff).</p>
-<p>A machine needs an opponent: a <b>load field</b> the cargo will not climb by itself.
-The trick that makes this clean is <i>zero-footprint forcing</i> ("isok" mode): shift
-(k₁, k₄) together along the iso-background line as a static function of position,
-b(x). The vacuum state stays an <i>exact</i> fixed point everywhere (checked to 1e−16) —
-the landscape is invisible until a blob shows up, and then it feels a force pushing it
-"downhill" toward lower b. A sawtooth b(x) (5 teeth, period 32, gentle rise + sharp cliff)
-makes a periodic track where <b>downstream = down the long rising ramps</b>.</p>
-
-<div class="note" style="font-size:13.5px">
-<b>Field-theory view of isok</b> (for readers who like actions). To be precise about the
-knobs: isok shifts <i>both</i> couplings together, k₁ → k₁ + u₀·b(x) and k₄ → k₄ + b(x)
-(not k₄ alone) — the direction in (k₁,k₄) space along which the vacuum root u₀ is exactly
-preserved, because the vacuum condition −u³+(λ−k₃−k₄)u+k₁=0 traces a straight line of
-slope u₀ in that plane. The perturbation to the u-equation collapses to a single term:
-<div class="eq">δ(∂u/∂t) = −b(x)·(w − u₀)</div>
-which is identically zero on the vacuum (w=u₀ there) — that is the whole zero-footprint
-property, now as one line of algebra. And this term is exactly what a <b>trilinear vertex</b>
-would produce: add S<sub>int</sub> = ∫ b·u·(w−u₀) to a (pseudo-)action and vary in u, and
-you get −b·(w−u₀) in the equation of motion. So b is best read not as "changing the
-laws" but as a <b>static third field mediating the u–w interaction</b> — a b·u·w coupling
-with the u₀ counterterm subtracting its vacuum expectation. Where b≠0, a blob's own
-inhibitor shadow (w−u₀ &gt; 0 inside the blob, rippling in the tails) costs energy that
-depends on position; the gradient of that cost is the force. Two honest caveats: this
-system has no true action (it is dissipative, gradient-flow-like only in pieces), so
-"vertex" is an analogy at the equations-of-motion level; and b here is frozen
-(non-dynamical) by design — promoting it to a slow dynamical field with its own relaxation
-is precisely the door to blobs that reshape their own landscape (chemotaxis-style
-self-interaction), which we have deliberately kept closed in machine v1 to preserve
-the honesty rule that the environment is static.</div>
-<p>The machine, assembled entirely from certified parts:</p>
-<table>
-<tr><th>part</th><th>made of</th><th>function</th></tr>
-<tr><td>locomotive</td><td>3-blob wake-locked train (M4), τ=5.70</td><td>self-propulsion c≈0.06–0.09, strong enough to climb (a pair is NOT: it reverses on any tested tooth — measured, hence 3 blobs minimum, climb margin 1.53×)</td></tr>
-<tr><td>track</td><td>isok sawtooth b(x), ε=5·10⁻⁴</td><td>the adversary: every parked blob slides downstream into a trough and stays</td></tr>
-<tr><td>parking brake</td><td>pair-only zone (M4)</td><td>lone cargo <i>cannot</i> move itself — it waits exactly where it parked</td></tr>
-<tr><td>rails</td><td>static y-channel: b<sub>chan</sub>(y)=0.002·min(|y−y₀|, 24)</td><td>a shallow zero-footprint valley in the <i>cross</i> direction keeping the train on axis (without rails the growing train buckles into the trough valley after 1–2 pickups — the certified failure of machine v1)</td></tr>
-<tr><td>coupler</td><td>M2/M4 wake shells</td><td>head-on pickup: cargo locks into the leader's front shell at 14.9 px and becomes the <b>new leader</b> — a pusher-tug; train speed <i>grows</i> per pickup (0.059 → 0.073 → 0.085)</td></tr>
-</table>
-<div class="film"><img src="assets/blobs/m5_machine.gif" alt="M5 relay tug machine"/>
-<div class="cap"><b>M5 — RELAY TUG, the certified run.</b> Left: the field (bright = blobs).
-Right top: all six blob tracks; cargo lines (cyan) sit flat — parked — until the train
-arrives, then join the common upstream slope. Right bottom: the sawtooth load field.
-Certification: 3 seeds — 3/3 pickups each, net upstream cargo displacement 757–780 px
-(gate: 30), <b>efficiency 5.6–5.8× the do-nothing baseline</b>; null run (no locomotive):
-cargo drifts 0.5 px <i>downstream</i>. Fresh-seed controller audit reproduced everything;
-blob count stayed exactly 6 for the full 3600 tu.</div></div>
-<p>Two emergent bonuses, neither designed: at the 6-train power ceiling the machine
-<b>sheds its rear blob</b>, which slides back, parks at a trough (pair-only zone again),
-and is <b>re-collected on the next lap</b> — a self-healing relay. And because pickup
-happens by wake capture, the machine needs no controller at all after t=0: one initial
-kick, then pure autonomous physics for as long as we watched.</p>
-
-<h2>7. The dial table — what every parameter does</h2>
+<p class="meta">Reading order is the research order, but each post stands alone and
+cross-links where it depends on another. The reference material below applies across
+the series.</p>
+<h2>Reference: the dial table</h2>
 <p>All measured windows below are from the certified probe campaigns (fresh-seed audited).
 "Death" = blob decays to vacuum; "replication" = blob splits into spreading spot soup —
 the two cliffs that bound every corridor in this world.</p>
@@ -384,245 +117,8 @@ after 1–2 pickups. (In the two-species world we also certified <i>self-assembl
 a blob parked on a gradient ridge destabilizes into a static stripe that blocks or channels
 cargo — defect turned tool; the machine uses the simpler potential rails.)</p>
 
-<h2>8. Phase 2 — the background becomes a field (M6) and molecules learn to spin (M7)</h2>
-<p class="meta">Second campaign, 2026-02-19. Two parallel tracks, both audited on fresh
-seeds like everything above. Probe dirs: <code>probes/blobs/bfield/</code> (180 runs),
-<code>probes/blobs/rotor/</code> (108 runs).</p>
 
-<h3>M6 — promoting b to a bona-fide field</h3>
-<p>Everything in section 6 treated the landscape b(x) as frozen scenery. M6 makes it the
-<b>fourth field of the theory</b>, sourced by the blobs themselves and relaxing on its own
-clock:</p>
-<div class="eq">∂b/∂t = (γ·S(u) − b)/τ_b + D_b∇²b,&nbsp;&nbsp; S = tanh(max(u−thr,0)/0.4)&nbsp;&nbsp;(bounded deposit where a blob sits)</div>
-<p>b still enters the u-equation only through the exact isok channel (−b·(w−u₀)), so the
-vacuum stays an exact fixed point <i>with the dynamics on</i> (verified to 1e−16), and
-γ=0 reproduces every M4/M5 anchor to 0.02%. Sign convention: γ&lt;0 digs a <b>well</b>
-under the blob (self-attraction), γ&gt;0 raises a <b>hill</b> (self-repulsion). τ_b ≫ τ
-makes b the slow field — geology to the blobs' weather. Three certified headlines:</p>
-<div class="film"><img src="assets/blobs/m6_selflaunch.gif" alt="M6 self-launch"/>
-<div class="cap"><b>Autophoresis — a new motility mechanism.</b> This blob sits at
-τ=5.7, <i>below</i> its drift threshold (5.748): without b it is provably parked forever.
-With γ=+0.05 it builds a hill under itself; the hill's buildup <i>lags</i> the blob
-(τ_b=200), so any infinitesimal displacement puts the peak slightly behind — and the blob
-rolls off its own volcano, forever. Right panel: the red hill trailing the runaway blob.
-Measured launch law c = 0.209·γ<sup>0.341</sup> (r²=0.991); launch threshold γ* ∈
-(0.002, 0.005] (noiseless); D_b suppresses (spreads the hill flat). Audit: fresh seed at
-γ=0.05 hit the law to <b>+0.3%</b>. Chemotaxis-style self-propulsion, no motor anywhere. <i>Mechanism class is
-well-known across four literatures</i> — camphor swimmers (Nagayama et al.
-<i>Physica D</i> <b>194</b>:151, same pitchfork + √-law), autophoretic colloids
-(Michelin et al. <i>Phys. Fluids</i> <b>25</b>:061701, critical-Péclet launch),
-walking droplets with path memory (Couder &amp; Fort <i>Nature</i> <b>437</b>:208 —
-the closest single analog to our bond+memory package), and delayed-feedback soliton
-drift (Gurevich &amp; Friedrich <i>PRL</i> <b>110</b>:014101). New here: the exact-vacuum
-embedding, c=0.209γ^0.341, and the trail-memory law.</div></div>
-<p>With a <i>traveling</i> blob (τ=6.0) the deposit becomes a <b>backreaction</b>:
-γ&lt;0 drags (−12% speed at γ=−0.05 — the blob tows its own well, an effective mass),
-γ&gt;0 plows (+6%), and below γ≤−0.07 the blob <b>self-traps</b> — alive, rattling in a
-well it can no longer leave. The trail it leaves behind obeys
-b(s) = B₀·e<sup>−s/(c·τ_b)</sup> (verified to 0.002% — the field literally implements an
-exponential memory of where the blob has been).</p>
-<p><b>Stigmergy certified</b> (interaction through the medium): a traveling writer passes
-a parked reader 20 px away; with γ=−0.30 the reader is pulled 9–10 px toward the trail,
-with γ=+0.30 pushed 7 px away; γ=0 control: nothing. Two blobs now interact through
-<i>three</i> channels: w (contact repulsion), v (bonds, rotation — below), and b
-(long-range, long-memory trails).</p>
-<div class="film"><img src="assets/blobs/m6_assembly.gif" alt="M6 b-assembly"/>
-<div class="cap"><b>b-assembly — the field builds the molecule.</b> Three blobs parked at
-separation 24–26 px — well <i>beyond</i> the bond basin ([14.5, 19.5]), so ordinary
-binding can never start. Each digs a halo-shaped well (γ=−0.5 on the w-footprint, D_b=2);
-the wells overlap and merge (right panel) into one shared basin that reels the blobs in
-until they lock onto the M4 bond shells [15.1, 15.1, 15.7] — a triangle molecule built by
-the landscape. Audited on a fresh seed and different geometry: assembled by t≈310. In the
-searcher's noiseless n=1 run the finished trimer then <b>self-launched</b> (c=0.076,
-rigid V-formation) — the field assembled a machine that walked away. (Kept honest: that
-last step is a single-run observation, geometry-sensitive under noise; certifying it is
-open work.)</div></div>
-<p><b>The teaser that motivates the inverse problem:</b> a blob circulating one way around
-the periodic domain writes a <i>standing asymmetric sawtooth</i> in b — sharp edge at the
-blob, exponential ramp behind (lap-decay measured 0.49 vs 0.46 predicted from the trail
-law). The hand-built M5 racetrack shape is apparently a <b>natural fixed point of
-asymmetric motion + relaxation</b>. Honest negatives from the BF4 hunt: noiseless self-dug
-channels certify, but noisy confinement fails (transverse sloshing is weakly pumped);
-three repulsive-trail writers do NOT partition space (wake shell-locking wins — the trails
-never get a vote); uniform-b stability windows do not transfer to local wells (locality is
-protective: a blob survives b_core=−0.99 locally vs replication at −0.1 uniform).</p>
-
-<h3>M7 — the heterodimer rotor: rotation as an attractor <span style='font-weight:normal;font-size:13px'>(rotating bound states of dissipative solitons: known — Moskalenko et al. <i>EPL</i> <b>63</b>:361, incl. rotation-before-drift ordering; our additions: the nonreciprocal heterodimer design, ω(τ₁) dial law, and the single-static &lt; pair-travel &lt; rotor-spin hierarchy w/ transport use)</span></h3>
-<p class="meta">Nonreciprocity framing: with η only M→S the rotor still spins — the
-coupling is effectively nonreciprocal, connecting this object to the non-reciprocal
-phase-transition literature (Fruchart et al. <i>Nature</i> <b>592</b>:363; Ivlev et al.
-<i>PRX</i> <b>5</b>:011035).</p>
-<p>M4's honest negative said symmetric pairs refuse to rotate — kicks either lock or
-convert to translation. The hypothesis: rotation of a symmetric pair is
-<i>wake-frustrated</i>; the fix is <b>structural symmetry breaking</b> — bind a motile
-blob to an anchored one, so the tangential push and the pivot are different objects.
-That needs a bond <i>between species</i>, which the shared-w architecture cannot make
-(w is monotone-repulsive — quantified no-go). The new <b>xv architecture</b>: each species
-gets fully private fields (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>) and the <i>only</i>
-coupling is a weak cross-drive in the slow channel:</p>
-<div class="eq">∂v_i/∂t = (u_i − v_i + η·(u_j − u₀))/τ_i + D_v∇²v_i&nbsp;&nbsp;&nbsp;(η = 0: exactly two independent copies of the M4 world)</div>
-<p>Why v? The slow inhibitor's halo is the unique <b>sign-changing</b> mediator: its radial
-response (measured from the certified stamp) is +1.04 in the core, crosses zero at r=6.1,
-and has a <i>negative ring</i> over r∈(6,15), minimum at r≈8. Cross-wiring imprints that
-ring into the partner's own propulsion field: repulsive core, attractive well at r≈8 —
-<b>a cross-species bond at d*≈7–9 was predicted from this profile before the first run</b>,
-and measured at 7.5–8.0 (η=0.05: d*=7.976, audited from d₀=12 to the third decimal).
-The same math predicts the rotor: the anchor's v-halo ring is <i>radially confining and
-azimuthally flat</i> — a self-assembled circular rail. Put a motile M (τ₁ past drift) on
-that rail around an anchored S (τ₂=2.5):</p>
-<div class="film"><img src="assets/blobs/m7_rotor.gif" alt="M7 heterodimer rotor"/>
-<div class="cap"><b>M7 — spontaneous rotation.</b> No kick, no noise needed: the static
-heterodimer is <i>linearly unstable to rotation</i> — round-off alone picks CW or CCW
-(3 noise seeds: −,−,+). Right: the orbiter's track in the anchor frame — a circle at
-r=8.44 (the static bond <i>dilates</i> from 7.6 under rotation; the traveling bond of M4
-contracts — opposite signs, both measured). ω is dialed by τ₁: 10 locked points,
-0.0035→0.0259 rad/tu over τ₁∈[5.52, 6.10], monotone; 17.4 revolutions in the 10k-tu
-longrun with sep drift ±0.004 px; survives noise σ=0.04; grid-refinement 0.009%. Audit:
-fresh seed ω within +0.5%, onset-region point on-curve. This is the rotation-as-attractor
-the program demanded: radius pinned by the bond well, speed by the propulsion attractor —
-the only soft mode is orbit sense.</div></div>
-<p>Three structural findings around the rotor: (1) a <b>rotor-only zone</b> — it spins at
-τ₁=5.52, below even the pair-travel threshold (5.636), extending the composite hierarchy:
-<i>single-static &lt; pair-travel &lt; rotor-spin</i> — each bound structure unlocks motion
-its parts cannot afford; (2) <b>rotation stabilizes the bond</b>: the static η=0.1 dimer is
-metastable (balloons at ~1700 tu) while the rotating one is immortal (10k tu) — motion as
-a stabilizer, the program's recurring theme inverted; (3) mechanism certified by
-decomposition: with η only in the M→S direction the rotor still spins (S is a passive
-pivot); with η only S→M it is static. Honest negatives: same-species 3-rotors exist but
-are knife-edged (±20° kicks fall back to translation — the frustration hypothesis
-confirmed as a <i>basin</i> property); the engineered ring-valley orbit lost to the bond
-(at machine-safe ε the cross-bond outcompetes the background ring — the "planet" prefers
-its tether).</p>
-
-<h3>Phase-2 dials (adds to the section-7 table)</h3>
-<table>
-<tr><th>dial</th><th>meaning</th><th>measured effect & window</th></tr>
-<tr><td><code>γ</code></td><td>b deposition gain (sign = well/hill)</td><td>hill: launch γ*∈(0.002,0.005], c=0.209γ<sup>0.341</sup>, replication γ≥+0.30. Well: drag −12% @ −0.05; self-trap ≤ −0.07; assembly wells at −0.5 (local depth −0.99 survivable — locality protective)</td></tr>
-<tr><td><code>τ_b</code></td><td>b relaxation time</td><td>trail memory length = c·τ_b (law exact to 0.002%); effects → 0 as τ_b→∞ at fixed γ; fast τ_b=50 raises launch threshold ~4×</td></tr>
-<tr><td><code>D_b</code></td><td>b diffusion</td><td>trades motility for trail range (ℓ=√(D_b·τ_b)): D_b=0.5 parks a γ=0.10 launcher; D_b=2 widens assembly wells 13–38×</td></tr>
-<tr><td><code>η</code></td><td>cross-species v-drive</td><td>bond window [0.05, 0.125]: d*(0.05)=7.976, d*(0.1)=7.5–7.6; ≥0.15 splits the motile blob; 0.3 cascades. ω set by τ₁ at fixed η</td></tr>
-</table>
-
-<h2>9. Phase 3 — the factory parts list and the reduction map</h2>
-<p class="meta">Third campaign, 2026-02-20/21: two top-down searchers (blob-factory:
-compose certified mechanisms toward the "fulfillment center" vision; blob-genesis:
-which hand-built landscapes can the physics grow on its own?) plus the bottom-up
-equation-space search (section 12). All audited on fresh seeds as usual. Probe dirs:
-<code>probes/blobs/factory/</code> (112 records), <code>probes/blobs/genesis/</code> (58).</p>
-
-<h3>9a. Machines from parts: tow → dock → sort in one world (factory)</h3>
-<p>The factory searcher added one legalism with big consequences: the cross-species
-coupling η can be a <b>static field η(x,y)</b> — it enters the v-equations exactly the
-way isok enters u, so the vacuum stays exact and "where blobs can grip each other"
-becomes <i>geography</i>. That gives three certified primitives and one composed machine:</p>
-<table>
-<tr><th>primitive</th><th>result</th><th>the law it produced</th></tr>
-<tr><td><b>tow</b></td><td>a traveling pair carries a cargo blob locked in its wake
-well (155 px conveyed at full pair speed)</td><td><b>near-onset cargo law</b>: deep-static
-cargo (τ₂=2.5) is <i>untowable</i> — any coupling strong enough to grip it destabilizes
-something (the well ceiling is 0.017, below every stable carrier speed; mutual-η carriers
-replicate). Cargo parked in the rotor-only zone (τ₂=5.60) still self-parks, but its well
-response is <b>7–8× amplified</b> (near-onset susceptibility — M5's adversary physics
-turned into the coupling): it locks at 8.46 and tows at full speed. One dial switches
-cargo between inert freight and towable. η=0.1 tows / 0.05 drops.</td></tr>
-<tr><td><b>unload dock</b></td><td>an η→0 null zone (vacuum-exact) releases the towed
-cargo: 6.5–7.5 px glide past the edge, then frozen ≤0.3 px/500 tu; carrier continues.
-3/3 seeds + carry-control (held 149 px) + null-control (1.15 px)</td><td>release needs
-no unbinding physics — <i>switch off the grip in space</i>, not in time. The missing
-"delivery" primitive from M5, solved by coupling geography.</td></tr>
-<tr><td><b>species fork</b></td><td>per-species rails sort mixed arrivals 24/24
-(3 seeds + mirrored geometry), null clean</td><td>bonus dial: timescale asymmetry
-(M slides at 0.074 px/tu, S at 0.0047) — speed sorting even without species rails.</td></tr>
-</table>
-<div class="film"><img src="assets/blobs/m8_glue_machine.gif" alt="glue machine"/>
-<div class="cap"><b>The glued machine, controller-audit run (fresh seed).</b> One world,
-three mechanisms chained: the carrier pair (purple) picks up near-onset cargo (orange)
-and tows it along the lane through the η-active zone (green); at the release edge
-(red dashed, x=104) the grip vanishes and the cargo glides free; the fork branch rail
-(blue dashed) catches it and sorts it to a parking spot 17.6 px off-lane; the carriers
-keep lapping (net +293 px). Blob count constant throughout — no replication, no death.</div></div>
-<p class="panel"><img src="assets/blobs/m8_glue_fields.png" alt="glue machine fields"/></p>
-<div class="warn"><b>The composition rule (the actual L3→L2 finding).</b> Gluing
-mechanisms is not free: v1 parked the cargo 7.4 px from the lane and every carrier
-lap dragged it 6.6 px; v2's fix got it re-captured; releasing at the fork crotch
-trapped the carrier head-on (4/4 reproducible). The rule that emerged: <b>certified
-primitives compose iff their interaction footprints — tow-well reach (15 px), rail
-walls, carrier lane — are disjoint at every handoff.</b> Machine design in this physics
-is geometric margin management, not new mechanisms. (Also mapped: the "roller" idea —
-using a spinning heterodimer to advect grazing cargo — is a <i>positioner</i>
-(~0.07 px/rev, certified, sign-locked, null exact) but not a conveyor at safe
-couplings; at brief parameters the rotor instead captures the cargo and converts into
-a new object, an <b>S–M–S pendulum librator</b> (period ~307 tu) — extending the motion
-hierarchy: bond &lt; travel &lt; rotate &lt; <i>librate</i>.)</div>
-
-<h3 style="margin-top:30px">9a½. Machine v2 — the convoy line and the law cascade</h3>
-<p>Scaling the glue machine from one cargo to a queue of three produced a genuinely
-new machine <i>and</i> three new laws that stopped it short of full certification —
-the most instructive outcome so far.</p>
-<p><b>The machine that works</b> (certified 3/3 seeds + fresh-seed audit): on a railed
-lane, a carrier meeting cargo head-on doesn't swing around it (rails forbid the
-factory's swing-around geometry) — at moderate grip the meet becomes a stable
-<b>push-capture "blade"</b>: the cargo rides 7 px <i>ahead</i> of the carrier at full
-speed. So sequential one-at-a-time service is impossible on rails; the only
-throughput machine is a <b>bulldozer convoy</b> — the carrier sweeps the whole queue
-into a chain and delivers it wholesale. One trick makes the convoy sortable: a
-<b>sacrificial plug</b> blob rides the blade slot (which can never be fork-sorted —
-its y-hold is weaker than the fork needs, with 4 distinct trap limit-cycles mapped),
-so the <i>chain-pushed</i> real cargoes sort cleanly behind it: all 3 delivered to
-the branch floor as a bond-shell stack (15.3–15.5 px spacing), blob count frozen,
-cycle time 215 tu.</p>
-<p><b>The law cascade that blocked the full gate</b>: the delivered 3-stack is itself
-a bonded structure — and per M4 physics, bonded structures near onset <i>travel</i>.
-The parked stack shuttles ±9 px (isolation control: intrinsic). Fixing it means
-colder cargo (τ₂ &lt; τ_c(3) ∈ (5.55, 5.60]) — but colder cargo compresses the blade
-gap below its ~5.4 px split floor at working speed (<b>blade-load law</b>), and
-slowing the convoy to protect the blade makes the blade contact transversely
-unstable (<b>slow-convoy buckling</b>, the M5 buckling generalized). For a 3-cargo
-convoy the window is empty in this architecture. <b>Stack-safety, blade-load, and
-buckling are now quantified design laws</b> — machine engineering in this physics is
-navigating a lattice of competing stability windows, exactly the kind of hidden-law
-structure the eventual agent-facing world wants.</p>
-<h3>9b. Growing the landscape instead of drawing it (genesis)</h3>
-<p>Phase 2 ended with a teaser: a circulating blob writes a sawtooth into the dynamical
-b field. The genesis searcher asked the L2→L1 question systematically: <b>for every
-landscape feature the machines need, can the physics write it?</b> The audited answer:</p>
-<table>
-<tr><th>feature</th><th>growable?</th><th>how / fidelity</th></tr>
-<tr><td>tooth (parking track)</td><td><b>yes</b></td><td>one-way circulation + relaxation;
-functions at native amplitude (audit: fresh blob slid 16.9 px into the trough and froze)</td></tr>
-<tr><td>ramp</td><td><b>yes</b></td><td>the exponential trail law</td></tr>
-<tr><td>rail</td><td><b>yes — free</b></td><td>the groove's own transverse profile
-self-rails (FWHM 5.5 px); the hand-built machine needed a separate rails term</td></tr>
-<tr><td>ring</td><td><b>yes</b></td><td>an orbiting rotor writes a closed ring
-(r=8.4, closure 0.62); deep rings must be dug <i>slowly</i> — greedy deposition
-self-traps into C-arcs</td></tr>
-<tr><td>dock/brake</td><td><b>yes</b></td><td>self-tooth trough = parking brake</td></tr>
-<tr><td>racetrack conveyor</td><td><b>yes at 4× amplitude</b></td><td>shape-only label —
-see the film below</td></tr>
-<tr><td>blob from noise</td><td><b>no — theory-backed</b></td><td>vacuum-exact coupling
-is <i>quadratic</i> in deviations: γ can never destabilize the vacuum. The nucleation
-window (σ&gt;0.2) lands directly in spot soup while blobs die at 0.09. This coupling
-class cannot bootstrap blobs from nothing — a design theorem, not a failed run.</td></tr>
-</table>
-<div class="film"><img src="assets/blobs/m6b_saw_write.gif" alt="self-written sawtooth"/>
-<div class="cap"><b>Writing the track by driving on it:</b> a circulating blob leaves an
-exponential trail that piles into a standing asymmetric sawtooth (lap-decay 0.49 vs 0.46
-predicted from the trail law). The hand-built M5 racetrack shape is a natural fixed point
-of asymmetric motion + relaxation.</div></div>
-<div class="film"><img src="assets/blobs/m6b_ring_selflaunch.gif" alt="ring self-launch"/>
-<div class="cap"><b>The self-dug conveyor:</b> a rotor writes a ring into b; freeze the
-field, remove the rotor, park a fresh <i>immobile</i> blob (τ=5.7, provably stuck on flat
-ground) anywhere on the ring — it <b>self-launches into orbit</b> (audit at a fresh angle:
-5.7 revolutions, r=8.45). Infrastructure built by one object animates strangers.</div></div>
-<p>Two design laws came out of the comparison with the hand-built landscape:
-(1) <b>self-written beats hand-built on efficiency</b> — response per unit slope is
-10–40× higher (near-onset response is sublinear in slope; our hand-drawn track wastes
-slope), and the self-written groove rails for free; (2) <b>amplitude selects function</b>:
-the same self-written shape is a parking track at native amplitude, mush at 2×, a
-circulating conveyor at 4×, and a <b>one-way diode</b> at machine amplitude (kicked
-against the tooth: reverses). The single exogenous step left in the whole L2→L1
-reduction is the <i>freeze</i> (γ→0 limit) — everything else grows.</p>
-<h2>10. What's still missing (mapped, not hidden)</h2>
+<h2>Reference: what's still missing (mapped, not hidden)</h2>
 <table>
 <tr><th>missing piece</th><th>status</th></tr>
 <tr><td><b>Unload / release</b></td><td>SOLVED in phase 3 (section 9a): η(x,y) null zones release towed cargo — coupling geography, not bond-breaking</td></tr>
@@ -632,7 +128,8 @@ reduction is the <i>freeze</i> (γ→0 limit) — everything else grows.</p>
 <tr><td><b>Max-train-length law</b></td><td>the 6-train sheds its rear blob (power ceiling) — worth mapping if longer hauls are wanted</td></tr>
 </table>
 
-<h2>11. Provenance & audit trail</h2>
+
+<h2>Reference: provenance & audit trail</h2>
 <p class="meta">Program spec and gates: <code>probes/blobs/PROGRAM.md</code>. Milestone
 searchers ran as independent agents with locked metrics; the controller re-derived every
 headline on fresh seeds before certification (M1 speeds within 5%; M2 bond from fresh
@@ -644,72 +141,5 @@ resolved on faithful replay. Raw run logs, job specs, and every failed candidate
 the per-milestone <code>results.json</code> files. Full chronological narrative incl.
 retractions: <code>REPORT.md</code> addenda 29–32.</p>
 
-<h2>12. The levels doctrine + the bottom-up search</h2>
-<p>Phase 2 clarified the working structure of blob science as a ladder of description
-levels:</p>
-<table>
-<tr><th>level</th><th>what is given</th><th>what you study</th><th>example</th></tr>
-<tr><td><b>L1 — field level</b></td><td>only the PDEs and initial conditions; every
-field (including b) dynamical</td><td>what landscapes/structures the physics builds
-on its own</td><td>M6: trails, self-launch, b-assembly, the standing sawtooth</td></tr>
-<tr><td><b>L2 — background level</b></td><td>a hand-written static b landscape</td>
-<td>what dynamics the landscape can host</td><td>M5 machine: saw track + rails;
-RT3 ring valleys</td></tr>
-<tr><td><b>L3 — molecule level</b></td><td>bonds/rotors/trains taken as certified
-components</td><td>what circuits and machines the components compose into</td>
-<td>relay tug; rotor-based devices (future)</td></tr>
-</table>
-<p>The doctrine: <b>findings at a higher level must be reducible to the level below by a
-learned process</b> — L2 landscapes should be reachable as L1 fixed points (the inverse
-problem: can deposition + relaxation evolve b into the sawtooth-and-rails the machine
-needs? the phase-2 teaser says the sawtooth, at least, is a natural attractor), and L3
-components must carry their L2/L1 certificates (bond curves, dial laws, stability
-windows). Higher levels buy speed of exploration; reduction buys legitimacy — a machine
-sketched at L3 is a conjecture until its landscape is demonstrated at L2 and, ultimately,
-grown at L1. The two phase-2 tracks are therefore not merged but <i>stacked</i>: L2 work
-discovers what is worth wanting; L1 work discovers what can be grown; the reduction map
-between them is itself a research object.</p>
-
-<p><b>The bottom-up search (L0), status.</b> The genome/funnel/assay stack is built
-and certified (reproduces every reference world to 5 digits; the spatial-eigenvalue
-screen predicts bond shells of unseen worlds to ~±15%). Stage-1 yield curves: uniform
-random finds ~2 alive worlds/100 candidates (but both novel mechanisms so far —
-including a bond with <i>no oscillatory tails</i>, a second binding mechanism our theory
-did not predict — came from uniform); jitter around references finds ~49/100 (maps
-island geography 25× faster). An evolutionary layer (merge = block composition,
-validated by reconstructing our own vvw and xv design jumps as single merge operations)
-beats jitter on alive-cells per assay and owns ALL multi-species coexistence cells —
-it even rediscovered the rotor from M4 parts without the recipe (audited: ω to 4
-digits). The 32-worker pod sweep (3,195 candidates, ~$9 of compute) came back: the archive
-grew 111 → 404 cells. Confirmed at scale: jitter yields 51% alive / 24% bonded;
-blind-uniform novelty is ~1/600; the bond-shell law settled at d\* = (1.37±0.13 +
-0.55k)·wavelength over 830 bonds. New physics found by the sweep: the
-non-oscillatory "plateau bond" is a robust 41-cell family (a saturating-inhibitor
-well, invisible to the tail eigenvalues by construction — binding chemistry beyond
-the funnel's prediction), plus at least one further unattributed binding route; the
-first 3-species bonded matter (from the evolver's elite line); 13 self-launching
-worlds; and a program speed record — c = 0.204, a jittered descendant of the
-evolver's rediscovered rotor, 45% faster than anything hand-designed
-(controller-audited to 4 digits). Every candidate carries its selection provenance
-(anthropic-screening doctrine).</p>
-<p><b>Stage 3 (running; partials in).</b> The machine-v2 law cascade turned into
-search queries, and the first answers are back: (1) <b>the stack-safety fix exists</b> —
-plateau-bonded cargo stacks (the tanh-well binding family found by uniform search)
-<i>park without shuttling</i> at n=2 and n=3 even under working noise, while the M4
-control stack shuttles exactly as machine-v2's did (the control reproduces the
-failure, the candidate fixes it); (2) the decomposed <b>3-field engine</b> — the
-speed-record world stripped to its motor — travels at c=0.2038 standalone (audited
-to 4 digits), is robust ±10% on every dial, and its island holds a new program
-record <b>c=0.2788</b> (2× the best hand-designed carrier, 5× margin over the
-blade-load floor); (3) a 996-world kicked travel census (the "carrier catalog") is
-completing on pods. Machine v3's parts list is assembling itself: engine carrier +
-plateau cargo stacks + species rails from the 3-flavor encounter tables.</p>
-<p class="meta">Next: machine v2 (multi-cargo delivery-and-sort logistics from the
-certified parts), the b_target inverse problem (differentiable-RD or evolutionary,
-now that the forward map is characterized), pod-harvest atlas review, then
-world-ification — anonymous ports, alienization, prediction/preparation contracts
-(bond lengths, speed laws, climb thresholds, delivery tasks), certification, oracle
-and frontier baselines. The blob universe joins the catalog when it passes the same
-gates as every other world.</p>
 
 </body></html>

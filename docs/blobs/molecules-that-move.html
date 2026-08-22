@@ -1,0 +1,112 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Molecules that move — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Molecules that move: tandems, trains, rotors</h1>
+<p class="meta">Post 4 — the A=τ·D_v law, wake-locked tandems, the pair-only zone, and spontaneous rotation.</p>
+<h2>The traveling bond</h2><p class='meta'>Builds on the bond of <a href='blob-chemistry.html'>post 3</a> and the drift bifurcation of <a href='blobs-move.html'>post 2</a>.</p>
+<p>Round-1 left a tension: binding was certified at (D<sub>v</sub>=2.0, τ=2.5), motility at
+(D<sub>v</sub>=0.65, τ&gt;4.78) — no overlap. The resolution is a one-line theorem: the
+<b>steady states depend on τ and D<sub>v</sub> only through the product A = τ·D<sub>v</sub></b>
+(set ∂v/∂t=0: u = v − τD<sub>v</sub>∇²v). So the whole static world — blob shape, tails,
+bond wells — is frozen along any path with A fixed, while τ alone dials the drift
+instability. Binding lived at A=5, motility at A≈3.1. The M4 family holds <b>A=4</b>
+(bond exists, slightly shallower: static d*≈15.4) and walks τ up with D<sub>v</sub>=4/τ:</p>
+<div class="eq">pair speed law (measured): c_pair = √(0.0560·(τ − 5.636)), r²=0.996; out-of-window check at τ=6.1: predicted 0.161, measured 0.152 (6.3%)</div>
+<p>The traveling bond is a <b>wake-locked tandem</b>: the pair moves along its own axis,
+follower surfing the leader's wake at discrete shell distances (14.78 or 25.68 — spaced by
+the tail wavelength ~10.9). Trains of three go faster than pairs, which go faster than
+singles (0.143 &gt; 0.141 &gt; 0.123): each blob deepens the collective wake.</p>
+<div class="film"><img src="../assets/blobs/m4_paironly.gif" alt="M4 pair-only zone"/>
+<div class="cap"><b>M4 — the pair-only zone.</b> At τ=5.70 (window 5.636–5.748), the same
+kick is given to a lone blob (left) and to a bound pair (right). The single dies back to
+rest — below its personal drift threshold. The pair travels steadily at c≈0.06.
+<b>The molecule can move before its atoms can.</b> This audited zone becomes the machine's
+parking brake below.</div></div>
+<div class="warn"><b>Honest negatives:</b> (i) the deep A=5 bond family can <i>never</i>
+travel — raising τ there hits replication before drift; mobility costs bond depth.
+(ii) Rotating bound pairs — the original hope — were not found: angular kicks either lock
+(ω≈0) or convert to straight translation. (iii) A "breathing" bond exists but is
+metastable (~1500 tu), then reorganizes into the tandem.</div>
+
+<h2>The heterodimer rotor: rotation as an attractor <span style='font-weight:normal;font-size:13px'>(rotating bound states of dissipative solitons: known — Moskalenko et al. <i>EPL</i> <b>63</b>:361, incl. rotation-before-drift ordering; our additions: the nonreciprocal heterodimer design, ω(τ₁) dial law, and the single-static &lt; pair-travel &lt; rotor-spin hierarchy w/ transport use)</span></h2>
+<p class="meta">Nonreciprocity framing: with η only M→S the rotor still spins — the
+coupling is effectively nonreciprocal, connecting this object to the non-reciprocal
+phase-transition literature (Fruchart et al. <i>Nature</i> <b>592</b>:363; Ivlev et al.
+<i>PRX</i> <b>5</b>:011035).</p>
+<p>M4's honest negative said symmetric pairs refuse to rotate — kicks either lock or
+convert to translation. The hypothesis: rotation of a symmetric pair is
+<i>wake-frustrated</i>; the fix is <b>structural symmetry breaking</b> — bind a motile
+blob to an anchored one, so the tangential push and the pivot are different objects.
+That needs a bond <i>between species</i>, which the shared-w architecture cannot make
+(w is monotone-repulsive — quantified no-go). The new <b>xv architecture</b>: each species
+gets fully private fields (u<sub>i</sub>, v<sub>i</sub>, w<sub>i</sub>) and the <i>only</i>
+coupling is a weak cross-drive in the slow channel:</p>
+<div class="eq">∂v_i/∂t = (u_i − v_i + η·(u_j − u₀))/τ_i + D_v∇²v_i&nbsp;&nbsp;&nbsp;(η = 0: exactly two independent copies of the M4 world)</div>
+<p>Why v? The slow inhibitor's halo is the unique <b>sign-changing</b> mediator: its radial
+response (measured from the certified stamp) is +1.04 in the core, crosses zero at r=6.1,
+and has a <i>negative ring</i> over r∈(6,15), minimum at r≈8. Cross-wiring imprints that
+ring into the partner's own propulsion field: repulsive core, attractive well at r≈8 —
+<b>a cross-species bond at d*≈7–9 was predicted from this profile before the first run</b>,
+and measured at 7.5–8.0 (η=0.05: d*=7.976, audited from d₀=12 to the third decimal).
+The same math predicts the rotor: the anchor's v-halo ring is <i>radially confining and
+azimuthally flat</i> — a self-assembled circular rail. Put a motile M (τ₁ past drift) on
+that rail around an anchored S (τ₂=2.5):</p>
+<div class="film"><img src="../assets/blobs/m7_rotor.gif" alt="M7 heterodimer rotor"/>
+<div class="cap"><b>M7 — spontaneous rotation.</b> No kick, no noise needed: the static
+heterodimer is <i>linearly unstable to rotation</i> — round-off alone picks CW or CCW
+(3 noise seeds: −,−,+). Right: the orbiter's track in the anchor frame — a circle at
+r=8.44 (the static bond <i>dilates</i> from 7.6 under rotation; the traveling bond of M4
+contracts — opposite signs, both measured). ω is dialed by τ₁: 10 locked points,
+0.0035→0.0259 rad/tu over τ₁∈[5.52, 6.10], monotone; 17.4 revolutions in the 10k-tu
+longrun with sep drift ±0.004 px; survives noise σ=0.04; grid-refinement 0.009%. Audit:
+fresh seed ω within +0.5%, onset-region point on-curve. This is the rotation-as-attractor
+the program demanded: radius pinned by the bond well, speed by the propulsion attractor —
+the only soft mode is orbit sense.</div></div>
+<p>Three structural findings around the rotor: (1) a <b>rotor-only zone</b> — it spins at
+τ₁=5.52, below even the pair-travel threshold (5.636), extending the composite hierarchy:
+<i>single-static &lt; pair-travel &lt; rotor-spin</i> — each bound structure unlocks motion
+its parts cannot afford; (2) <b>rotation stabilizes the bond</b>: the static η=0.1 dimer is
+metastable (balloons at ~1700 tu) while the rotating one is immortal (10k tu) — motion as
+a stabilizer, the program's recurring theme inverted; (3) mechanism certified by
+decomposition: with η only in the M→S direction the rotor still spins (S is a passive
+pivot); with η only S→M it is static. Honest negatives: same-species 3-rotors exist but
+are knife-edged (±20° kicks fall back to translation — the frustration hypothesis
+confirmed as a <i>basin</i> property); the engineered ring-valley orbit lost to the bond
+(at machine-safe ε the cross-bond outcompetes the background ring — the "planet" prefers
+its tether).</p>
+
+<h3>Phase-2 dials (adds to the section-7 table)</h3>
+<table>
+<tr><th>dial</th><th>meaning</th><th>measured effect & window</th></tr>
+<tr><td><code>γ</code></td><td>b deposition gain (sign = well/hill)</td><td>hill: launch γ*∈(0.002,0.005], c=0.209γ<sup>0.341</sup>, replication γ≥+0.30. Well: drag −12% @ −0.05; self-trap ≤ −0.07; assembly wells at −0.5 (local depth −0.99 survivable — locality protective)</td></tr>
+<tr><td><code>τ_b</code></td><td>b relaxation time</td><td>trail memory length = c·τ_b (law exact to 0.002%); effects → 0 as τ_b→∞ at fixed γ; fast τ_b=50 raises launch threshold ~4×</td></tr>
+<tr><td><code>D_b</code></td><td>b diffusion</td><td>trades motility for trail range (ℓ=√(D_b·τ_b)): D_b=0.5 parks a γ=0.10 launcher; D_b=2 widens assembly wells 13–38×</td></tr>
+<tr><td><code>η</code></td><td>cross-species v-drive</td><td>bond window [0.05, 0.125]: d*(0.05)=7.976, d*(0.1)=7.5–7.6; ≥0.15 splits the motile blob; 0.3 cascades. ω set by τ₁ at fixed η</td></tr>
+</table>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="blob-chemistry.html">Blob chemistry</a> · next: <a href="living-landscape.html">The living landscape</a></div>
+</body></html>

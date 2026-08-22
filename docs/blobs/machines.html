@@ -1,0 +1,170 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Blob machines — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Blob machines: tug, glue, convoy</h1>
+<p class="meta">Post 6 — from the first cargo hauler to composed logistics lines, and the stability laws machine engineering keeps running into.</p>
+<h2>The relay tug</h2><p class='meta'>Uses the trains of <a href='molecules-that-move.html'>post 4</a>; the landscape-growing counterpart is <a href='living-landscape.html'>post 5</a>; the search that found the v3 parts is <a href='searching-equation-space.html'>post 7</a>.</p>
+<p class="meta">Framing per the ratchet literature (Reimann <i>Phys. Rep.</i> <b>361</b>:57):
+a static asymmetric potential cannot transport a passive overdamped particle — and ours
+doesn't. This is an <b>active-particle ratchet</b>: the blobs' own drift mode is the
+motor, the sawtooth only rectifies it (cf. bacterial ratchet gears, Di Leonardo et al.
+<i>PNAS</i> <b>107</b>:9541). Our earlier noise-ratchet negative matches soliton-ratchet
+theory exactly (Salerno &amp; Quintero <i>PRE</i> <b>65</b>:025602: transport needs a
+soft internal mode or translational noise — our solitons are too stiff).</p>
+<p>A machine needs an opponent: a <b>load field</b> the cargo will not climb by itself.
+The trick that makes this clean is <i>zero-footprint forcing</i> ("isok" mode): shift
+(k₁, k₄) together along the iso-background line as a static function of position,
+b(x). The vacuum state stays an <i>exact</i> fixed point everywhere (checked to 1e−16) —
+the landscape is invisible until a blob shows up, and then it feels a force pushing it
+"downhill" toward lower b. A sawtooth b(x) (5 teeth, period 32, gentle rise + sharp cliff)
+makes a periodic track where <b>downstream = down the long rising ramps</b>.</p>
+
+<div class="note" style="font-size:13.5px">
+<b>Field-theory view of isok</b> (for readers who like actions). To be precise about the
+knobs: isok shifts <i>both</i> couplings together, k₁ → k₁ + u₀·b(x) and k₄ → k₄ + b(x)
+(not k₄ alone) — the direction in (k₁,k₄) space along which the vacuum root u₀ is exactly
+preserved, because the vacuum condition −u³+(λ−k₃−k₄)u+k₁=0 traces a straight line of
+slope u₀ in that plane. The perturbation to the u-equation collapses to a single term:
+<div class="eq">δ(∂u/∂t) = −b(x)·(w − u₀)</div>
+which is identically zero on the vacuum (w=u₀ there) — that is the whole zero-footprint
+property, now as one line of algebra. And this term is exactly what a <b>trilinear vertex</b>
+would produce: add S<sub>int</sub> = ∫ b·u·(w−u₀) to a (pseudo-)action and vary in u, and
+you get −b·(w−u₀) in the equation of motion. So b is best read not as "changing the
+laws" but as a <b>static third field mediating the u–w interaction</b> — a b·u·w coupling
+with the u₀ counterterm subtracting its vacuum expectation. Where b≠0, a blob's own
+inhibitor shadow (w−u₀ &gt; 0 inside the blob, rippling in the tails) costs energy that
+depends on position; the gradient of that cost is the force. Two honest caveats: this
+system has no true action (it is dissipative, gradient-flow-like only in pieces), so
+"vertex" is an analogy at the equations-of-motion level; and b here is frozen
+(non-dynamical) by design — promoting it to a slow dynamical field with its own relaxation
+is precisely the door to blobs that reshape their own landscape (chemotaxis-style
+self-interaction), which we have deliberately kept closed in machine v1 to preserve
+the honesty rule that the environment is static.</div>
+<p>The machine, assembled entirely from certified parts:</p>
+<table>
+<tr><th>part</th><th>made of</th><th>function</th></tr>
+<tr><td>locomotive</td><td>3-blob wake-locked train (M4), τ=5.70</td><td>self-propulsion c≈0.06–0.09, strong enough to climb (a pair is NOT: it reverses on any tested tooth — measured, hence 3 blobs minimum, climb margin 1.53×)</td></tr>
+<tr><td>track</td><td>isok sawtooth b(x), ε=5·10⁻⁴</td><td>the adversary: every parked blob slides downstream into a trough and stays</td></tr>
+<tr><td>parking brake</td><td>pair-only zone (M4)</td><td>lone cargo <i>cannot</i> move itself — it waits exactly where it parked</td></tr>
+<tr><td>rails</td><td>static y-channel: b<sub>chan</sub>(y)=0.002·min(|y−y₀|, 24)</td><td>a shallow zero-footprint valley in the <i>cross</i> direction keeping the train on axis (without rails the growing train buckles into the trough valley after 1–2 pickups — the certified failure of machine v1)</td></tr>
+<tr><td>coupler</td><td>M2/M4 wake shells</td><td>head-on pickup: cargo locks into the leader's front shell at 14.9 px and becomes the <b>new leader</b> — a pusher-tug; train speed <i>grows</i> per pickup (0.059 → 0.073 → 0.085)</td></tr>
+</table>
+<div class="film"><img src="../assets/blobs/m5_machine.gif" alt="M5 relay tug machine"/>
+<div class="cap"><b>M5 — RELAY TUG, the certified run.</b> Left: the field (bright = blobs).
+Right top: all six blob tracks; cargo lines (cyan) sit flat — parked — until the train
+arrives, then join the common upstream slope. Right bottom: the sawtooth load field.
+Certification: 3 seeds — 3/3 pickups each, net upstream cargo displacement 757–780 px
+(gate: 30), <b>efficiency 5.6–5.8× the do-nothing baseline</b>; null run (no locomotive):
+cargo drifts 0.5 px <i>downstream</i>. Fresh-seed controller audit reproduced everything;
+blob count stayed exactly 6 for the full 3600 tu.</div></div>
+<p>Two emergent bonuses, neither designed: at the 6-train power ceiling the machine
+<b>sheds its rear blob</b>, which slides back, parks at a trough (pair-only zone again),
+and is <b>re-collected on the next lap</b> — a self-healing relay. And because pickup
+happens by wake capture, the machine needs no controller at all after t=0: one initial
+kick, then pure autonomous physics for as long as we watched.</p>
+
+<h2>The factory parts list: tow, dock, fork</h2>
+<p class="meta">Third campaign, 2026-02-20/21: two top-down searchers (blob-factory:
+compose certified mechanisms toward the "fulfillment center" vision; blob-genesis:
+which hand-built landscapes can the physics grow on its own?) plus the bottom-up
+equation-space search (section 12). All audited on fresh seeds as usual. Probe dirs:
+<code>probes/blobs/factory/</code> (112 records), <code>probes/blobs/genesis/</code> (58).</p>
+
+
+<p>The factory searcher added one legalism with big consequences: the cross-species
+coupling η can be a <b>static field η(x,y)</b> — it enters the v-equations exactly the
+way isok enters u, so the vacuum stays exact and "where blobs can grip each other"
+becomes <i>geography</i>. That gives three certified primitives and one composed machine:</p>
+<table>
+<tr><th>primitive</th><th>result</th><th>the law it produced</th></tr>
+<tr><td><b>tow</b></td><td>a traveling pair carries a cargo blob locked in its wake
+well (155 px conveyed at full pair speed)</td><td><b>near-onset cargo law</b>: deep-static
+cargo (τ₂=2.5) is <i>untowable</i> — any coupling strong enough to grip it destabilizes
+something (the well ceiling is 0.017, below every stable carrier speed; mutual-η carriers
+replicate). Cargo parked in the rotor-only zone (τ₂=5.60) still self-parks, but its well
+response is <b>7–8× amplified</b> (near-onset susceptibility — M5's adversary physics
+turned into the coupling): it locks at 8.46 and tows at full speed. One dial switches
+cargo between inert freight and towable. η=0.1 tows / 0.05 drops.</td></tr>
+<tr><td><b>unload dock</b></td><td>an η→0 null zone (vacuum-exact) releases the towed
+cargo: 6.5–7.5 px glide past the edge, then frozen ≤0.3 px/500 tu; carrier continues.
+3/3 seeds + carry-control (held 149 px) + null-control (1.15 px)</td><td>release needs
+no unbinding physics — <i>switch off the grip in space</i>, not in time. The missing
+"delivery" primitive from M5, solved by coupling geography.</td></tr>
+<tr><td><b>species fork</b></td><td>per-species rails sort mixed arrivals 24/24
+(3 seeds + mirrored geometry), null clean</td><td>bonus dial: timescale asymmetry
+(M slides at 0.074 px/tu, S at 0.0047) — speed sorting even without species rails.</td></tr>
+</table>
+<div class="film"><img src="../assets/blobs/m8_glue_machine.gif" alt="glue machine"/>
+<div class="cap"><b>The glued machine, controller-audit run (fresh seed).</b> One world,
+three mechanisms chained: the carrier pair (purple) picks up near-onset cargo (orange)
+and tows it along the lane through the η-active zone (green); at the release edge
+(red dashed, x=104) the grip vanishes and the cargo glides free; the fork branch rail
+(blue dashed) catches it and sorts it to a parking spot 17.6 px off-lane; the carriers
+keep lapping (net +293 px). Blob count constant throughout — no replication, no death.</div></div>
+<p class="panel"><img src="../assets/blobs/m8_glue_fields.png" alt="glue machine fields"/></p>
+<div class="warn"><b>The composition rule (the actual L3→L2 finding).</b> Gluing
+mechanisms is not free: v1 parked the cargo 7.4 px from the lane and every carrier
+lap dragged it 6.6 px; v2's fix got it re-captured; releasing at the fork crotch
+trapped the carrier head-on (4/4 reproducible). The rule that emerged: <b>certified
+primitives compose iff their interaction footprints — tow-well reach (15 px), rail
+walls, carrier lane — are disjoint at every handoff.</b> Machine design in this physics
+is geometric margin management, not new mechanisms. (Also mapped: the "roller" idea —
+using a spinning heterodimer to advect grazing cargo — is a <i>positioner</i>
+(~0.07 px/rev, certified, sign-locked, null exact) but not a conveyor at safe
+couplings; at brief parameters the rotor instead captures the cargo and converts into
+a new object, an <b>S–M–S pendulum librator</b> (period ~307 tu) — extending the motion
+hierarchy: bond &lt; travel &lt; rotate &lt; <i>librate</i>.)</div>
+
+<h2>Machine v2 — the convoy line and the law cascade</h2>
+<p>Scaling the glue machine from one cargo to a queue of three produced a genuinely
+new machine <i>and</i> three new laws that stopped it short of full certification —
+the most instructive outcome so far.</p>
+<p><b>The machine that works</b> (certified 3/3 seeds + fresh-seed audit): on a railed
+lane, a carrier meeting cargo head-on doesn't swing around it (rails forbid the
+factory's swing-around geometry) — at moderate grip the meet becomes a stable
+<b>push-capture "blade"</b>: the cargo rides 7 px <i>ahead</i> of the carrier at full
+speed. So sequential one-at-a-time service is impossible on rails; the only
+throughput machine is a <b>bulldozer convoy</b> — the carrier sweeps the whole queue
+into a chain and delivers it wholesale. One trick makes the convoy sortable: a
+<b>sacrificial plug</b> blob rides the blade slot (which can never be fork-sorted —
+its y-hold is weaker than the fork needs, with 4 distinct trap limit-cycles mapped),
+so the <i>chain-pushed</i> real cargoes sort cleanly behind it: all 3 delivered to
+the branch floor as a bond-shell stack (15.3–15.5 px spacing), blob count frozen,
+cycle time 215 tu.</p>
+<p><b>The law cascade that blocked the full gate</b>: the delivered 3-stack is itself
+a bonded structure — and per M4 physics, bonded structures near onset <i>travel</i>.
+The parked stack shuttles ±9 px (isolation control: intrinsic). Fixing it means
+colder cargo (τ₂ &lt; τ_c(3) ∈ (5.55, 5.60]) — but colder cargo compresses the blade
+gap below its ~5.4 px split floor at working speed (<b>blade-load law</b>), and
+slowing the convoy to protect the blade makes the blade contact transversely
+unstable (<b>slow-convoy buckling</b>, the M5 buckling generalized). For a 3-cargo
+convoy the window is empty in this architecture. <b>Stack-safety, blade-load, and
+buckling are now quantified design laws</b> — machine engineering in this physics is
+navigating a lattice of competing stability windows, exactly the kind of hidden-law
+structure the eventual agent-facing world wants.</p>
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="living-landscape.html">The living landscape</a> · next: <a href="searching-equation-space.html">Searching equation space</a></div>
+</body></html>

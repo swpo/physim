@@ -1,0 +1,96 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>What is a blob? — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>What is a blob?</h1>
+<p class="meta">Post 1 of the BLOBS series — the field theory, the vacuum, and the object itself.</p>
+<div class="note" style="background:#fff8f0;border-left:4px solid #d4a72c">
+<b>Literature grounding (added after a 132-source review).</b> The three-field system
+below is not ours: it was introduced by Schenk, Or-Guil, Bode &amp; Purwins
+(<i>Phys. Rev. Lett.</i> <b>78</b>:3781, 1997) to model planar gas discharges, and
+"blobs" are that field's <b>dissipative solitons</b> (review: Purwins, Bödeker &amp;
+Amiranashvili, <i>Adv. Phys.</i> <b>59</b>:485, 2010). Much of our phase-1 ladder
+reproduces known results — spot existence, the drift bifurcation and its √-law
+(Or-Guil et al. <i>PRE</i> <b>57</b>:6432; Krischer &amp; Mikhailov <i>PRL</i>
+<b>73</b>:3165), tail-quantized soliton molecules (Bode et al. <i>Physica D</i>
+<b>161</b>:45; measured bond forces: Bödeker et al. <i>New J. Phys.</i> <b>6</b>:62) —
+and we mark those sections accordingly. What appears new here: the pair-only
+translation zone used as a transport selector, the nonreciprocal heterodimer rotor
+design (rotating bound states themselves were found by Moskalenko, Liehr &amp;
+Purwins, <i>EPL</i> <b>63</b>:361 / <i>EPJ B</i> <b>37</b>:199), the relay-tug cargo
+machine, the self-written-landscape design laws, and the algebraic pre-filter for
+equation-space search. Full review: <code>probes/blobs/litreview/REVIEW.md</code>.</div>
+
+<div class="note"><b>The idea.</b> Instead of simulating creatures or particles directly,
+we write down three interacting <i>fields</i> — think of three coupled "chemical
+concentrations" filling space — chosen so that the field equations themselves hold stable,
+particle-like excitations. Those excitations ("blobs") turn out to move, bind into
+molecules, come in species, and can be assembled into working machines. The program
+climbed that ladder one certified rung at a time:
+existence → motility → binding → flavors → composite dynamics → a machine.</div>
+
+<h2>The fields and the equations</h2>
+<p>The world is a periodic 2-D square. Three scalar fields live on it:</p>
+<table>
+<tr><th>field</th><th>role</th><th>timescale</th><th>range</th><th>intuition</th></tr>
+<tr><td><code>u</code></td><td><b>activator</b></td><td>fast (1)</td><td>short (D<sub>u</sub>=1)</td>
+<td>the "substance" of a blob; self-amplifying (cubic), wants to run away</td></tr>
+<tr><td><code>v</code></td><td><b>slow inhibitor</b></td><td>slow (τ)</td><td>short-to-mid (D<sub>v</sub>)</td>
+<td>local memory / drag; where u has been, v builds up and pushes back</td></tr>
+<tr><td><code>w</code></td><td><b>fast long-range inhibitor</b></td><td>very fast (θ=0.7)</td><td>long (D<sub>w</sub>=20)</td>
+<td>a wide "exclusion halo" broadcast around any activity; stops spreading and keeps blobs apart</td></tr>
+</table>
+<div class="eq">
+∂u/∂t = D<sub>u</sub>∇²u + λu − u³ − k₃v − k₄w + k₁ &nbsp;&nbsp;&nbsp;(activator: cubic self-drive, inhibited by v and w, biased by k₁)<br/>
+∂v/∂t = (u − v)/τ + D<sub>v</sub>∇²v &nbsp;&nbsp;&nbsp;(v relaxes toward u with time constant τ)<br/>
+∂w/∂t = (u − w)/θ + D<sub>w</sub>∇²w &nbsp;&nbsp;&nbsp;(w relaxes toward u fast, but spreads far)
+</div>
+<p>This is the three-component reaction–diffusion system of the
+<i>Purwins / Schenk gas-discharge</i> class — a laboratory system (planar gas discharges)
+in which all of the phenomena below were first seen experimentally. Baseline parameters
+(the "M0 point"): λ=2, k₁=−0.7, k₃=1, k₄=1.5, τ=3, θ=0.7, D<sub>u</sub>=D<sub>v</sub>=1,
+D<sub>w</sub>=20.</p>
+
+<h3>What is a blob?</h3>
+<p>The uniform "vacuum" state u=v=w=u₀ (the most negative root of
+−u³+(λ−k₃−k₄)u+k₁=0, u₀≈−0.70) is stable: small pokes die out. But a big enough local
+poke flips a patch of <code>u</code> onto the upper branch of the cubic, and the patch
+then <i>self-stabilizes</i>: the long-range <code>w</code> halo it broadcasts prevents it
+from growing or splitting, while the activator core prevents it from dying. The result is
+a <b>dissipative soliton</b> — a self-maintaining, fixed-size spot of "on" field in an
+"off" world. That is a blob. Its identity is measured (connected components + tracking),
+never stored: delete the fields and the blob is gone; move the fields and the blob moved.</p>
+
+<div class="film"><img src="../assets/blobs/m0_birth.gif" alt="M0 blob birth"/>
+<div class="cap"><b>M0 — a blob is born.</b> A Gaussian poke overshoots, sheds mass, and
+locks to its preferred size (~26 px area at the M0 point), then persists indefinitely
+(certified 10,000 tu, noise-robust). The area trace shows the size lock. Neighboring
+parameter worlds fail in two directions: k₁=−0.9 → the poke dies; k₁=−0.5 or k₄=2.5 →
+the poke <i>replicates</i> into an ever-splitting "spot soup". Blobs live in the corridor
+between death and cancer.</div></div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · next: <a href="blobs-move.html">Blobs move</a></div>
+</body></html>
