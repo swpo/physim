@@ -449,3 +449,12 @@ Dv*0.9 (verified). Robust +-10% all dials. Machine-v3 carrier candidate:
 3 fields, 1.8x M4 pair speed, cargo attachable by one W entry.
 V4 assays validated on certified anchors (a2_cross reproduces XV d*=7.85;
 stack_probe reproduces M2 3-chain 15.66px parked; M4 shuttle control).
+
+
+### Phase 4b (2026-02-22): blob-loop spawned — track-dependency clarification
+User correctly flagged: top-down need not wait for stage-3. Dependency truth:
+stage-3 census/island = bottom-up; plateau STACK PROBES + encounter tables =
+top-down QUESTIONS routed through L0 tooling (machine-v3's n>=3 throughput fix
+shops there). But V2c (closed loop) and V2d (first L1-grown component in an L2
+machine) need only certified parts -> blob-loop (sub-8a8acb27) runs them NOW,
+n=1 cargo regime, machinev2 engine reused. v3 (n>=3 convoy) waits for harvest.
