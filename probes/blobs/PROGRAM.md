@@ -458,3 +458,18 @@ top-down QUESTIONS routed through L0 tooling (machine-v3's n>=3 throughput fix
 shops there). But V2c (closed loop) and V2d (first L1-grown component in an L2
 machine) need only certified parts -> blob-loop (sub-8a8acb27) runs them NOW,
 n=1 cargo regime, machinev2 engine reused. v3 (n>=3 convoy) waits for harvest.
+
+
+### Stage-3 pod-d results harvested early (2026-02-22; census still running on a-c)
+STACK PROBES (the machine-v3 gate) — ANSWERED:
+- s2_128_26 plateau stacks (14.1px): PARKED at n=2 AND n=3, INCLUDING under working
+  noise. THE STACK-SAFETY FIX EXISTS: plateau-bonded cargo stacks do not shuttle.
+- M4 control: parked noiseless but SHUTTLES under noise at n=3 — reproduces
+  machine-v2's failure exactly (control validates the assay).
+- uni_3034 (27.9px): DIES in the stack assay (both n, both noise) — its blobs
+  do not survive this assay geometry; family usable only via s2_128_26-class
+  members. Honest mixed result.
+ISLAND (engine_10748 composite): 19/33 points travel; tau +-10% flat at c=0.2038;
+NEW SPEED RECORD c=0.2788 at Du*1.1. Engine is robust and has headroom.
+=> machine-v3 parts list forming: engine carrier (c 0.20-0.28) + plateau-bond
+cargo stacks (park-safe) + species rails pending encounter tables.
