@@ -1,0 +1,1 @@
+[{"kind": "tow", "L": 96.0, "T": 600.0, "x_e": 52.0, "x_c": 40.0, "n": 1, "name": "t_mim06_pull1", "coupling": "mimic", "eta": 0.6}, {"kind": "deliver", "name": "d_mim06_n1_eta0", "coupling": "mimic", "eta": 0.6, "n": 1, "x_e": 10.0, "x_c": 40.0, "T1": 500.0, "T2": 900.0, "release": "eta0"}]

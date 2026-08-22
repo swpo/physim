@@ -1,0 +1,5 @@
+[1/5] t_c1t_005 -> tow status=ok (176.6s, results n=5)
+[2/5] t_c1t_010 -> tow status=ok (186.1s, results n=8)
+[3/5] t_mim_03 -> tow status=ok (186.8s, results n=11)
+[4/5] t_mim_06 -> tow status=ok (175.4s, results n=14)
+[5/5] t_mim_10 -> tow status=ok (133.8s, results n=15)

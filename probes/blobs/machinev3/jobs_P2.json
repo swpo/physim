@@ -1,0 +1,1 @@
+[{"kind": "tow", "L": 96.0, "T": 900.0, "x_e": 8.0, "x_c": 40.0, "n": 3, "spacing": 18.0, "name": "t_mim06_stack3_sp18", "coupling": "mimic", "eta": 0.6}, {"kind": "tow", "L": 96.0, "T": 900.0, "x_e": 10.0, "x_c": 44.0, "n": 2, "spacing": 14.0, "name": "t_mim06_stack2", "coupling": "mimic", "eta": 0.6}]

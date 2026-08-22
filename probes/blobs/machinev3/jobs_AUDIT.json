@@ -1,0 +1,1 @@
+[{"L": 96.0, "T": 800.0, "x_e": 10.0, "x_c": 40.0, "n": 1, "rail": {"k_rail": 1.0, "amp": 0.03, "sig": 5.0, "y0": 48.0, "x_dock": 70.0, "dock_w": 2.0, "dock_amp": 0.03}, "coupling": "mimic", "eta": 0.6, "kind": "tow", "seed": 9, "noise": 0.002, "name": "AUDIT_tow_s9"}]

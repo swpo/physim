@@ -1,0 +1,1 @@
+[{"kind": "deliver", "name": "d_mim06_stack3y_s1", "coupling": "mimic", "eta": 0.6, "n": 3, "spacing": 14.0, "x_e": 10.0, "x_c": 48.0, "stack_axis": "y", "T1": 1000.0, "T2": 800.0, "release": "eta0", "noise": 0.002, "seed": 1}]

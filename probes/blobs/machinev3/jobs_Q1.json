@@ -1,0 +1,1 @@
+[{"kind": "engine_solo", "name": "c_du09", "coupling": "mimic", "eta": 0.6, "engine": "du09", "L": 96.0, "T": 400.0}, {"kind": "engine_solo", "name": "c_dv110", "coupling": "mimic", "eta": 0.6, "engine": "dv110", "L": 96.0, "T": 400.0}, {"kind": "engine_solo", "name": "c_dv113", "coupling": "mimic", "eta": 0.6, "engine": {"Dv_mul": 1.13}, "L": 96.0, "T": 400.0}]

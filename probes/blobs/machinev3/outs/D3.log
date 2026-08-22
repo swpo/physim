@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 256, in <module>
+    nrec = LB.append(rec)
+    ^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 251, in main
+    except Exception as e:
+    
+KeyError: 'status'

@@ -1,0 +1,1 @@
+[{"kind": "assemble", "name": "asm3_s2b", "coupling": "mimic", "eta": 0.6, "n_phase": 3, "x_pick": 8.0, "x_e": 2.0, "x_front": 84.0, "gap": 14.0, "T_settle": 150.0, "T_max": 5000.0, "noise": 0.002, "seed": 2}]

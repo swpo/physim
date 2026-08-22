@@ -1,0 +1,1 @@
+[{"kind": "tow", "L": 96.0, "T": 5000.0, "x_e": 14.0, "x_c": 40.0, "n": 3, "engine": {"Dv_mul": 1.13}, "spacing": 14.0, "name": "t_dv113_kw08_stack3", "coupling": "kw_c", "eta": 0.8}]

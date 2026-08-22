@@ -1,0 +1,1 @@
+[{"kind": "deliver", "name": "d_dv110_kw08_stack3_s0", "coupling": "kw_c", "eta": 0.8, "engine": "dv110", "n": 3, "spacing": 14.0, "x_e": 10.0, "x_c": 40.0, "T1": 4200.0, "T2": 1000.0, "release": "eta0", "noise": 0.002, "seed": 0}]

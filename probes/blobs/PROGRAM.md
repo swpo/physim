@@ -496,3 +496,29 @@ reproduced).
 ENCOUNTERS: NOMINEE s2_111_17 (zero replication in 18 assays; cross-bond d*=11.1;
 species 0 = pure repeller = fence/blade material). s2_101_58 = PREDATION (conserved
 kill direction) — world-catalog primitive, parked.
+
+
+### blob-machine-v3 — ACCEPTED (scorecard + controller audits 2026-02-23)
+FIRST MACHINE FROM SEARCHED PARTS. V3-0 PASS: combined world = direct-sum(engine_
+10748, s2_128_26) + ONE coupling move found by systematic search: "mimic eta=0.6"
+(engine act writes 60% phantom-cargo imprint into cargo channels, one-way).
+Engine c unchanged to 4 digits; cargo parks (1e-3px); tow = PUSH blade at 4.3px
+standoff (pull impossible: engine ahead runs away). Coupling no-go table: weak
+cross-v 0.05 no grip / 0.10 splits engine; binder-only, repeller-only, and
+pairwise channel writes all fail or kill cargo — binder+repeller TRIPLE imprint
+is the minimal grip. RELEASE certified: eta->0 mid-run parks cargo instantly
+(7e-15 px) + architectural flyby immunity.
+CONTROLLER AUDITS: exact noiseless tow replicated (drag 131.27px, dur 660 —
+deterministic, 5-digit match); fresh noisy seed 9: lock exists (sep 5.0+-0.9,
+cargo at c=0.144) but lock windows shorten to ~100-200tu under sigma=2e-3
+(NOISE CAVEAT recorded: noiseless locks indefinitely; noisy tows are
+lock-slip-relock — the certified sequential assembly ran noisy and still
+delivered, so functionally tolerated).
+V3-1 PASS (amended metric, documented): pre-bonded 3-stack tow is a mapped no-go
+(merge/tear/slip, 9 variants); amended mode = SEQUENTIAL single-cargo pushes +
+dock assembly: 3 noisy seeds delivered a parked bonded 3-stack (spacings
+13.55-14.02 = certified d* well; hold drift <2e-3 px/800tu). Release timing =
+outer control loop (in-genome docks mapped: stall dial holds grip; frozen-rail
+amp 0.35 nucleates engine copies / 0.03 harmless-weak).
+COST: 6.3 core-hr, 69 sims, all L=96. The engine and cargo came from blind
+uniform search; only the coupling was designed-by-search here.

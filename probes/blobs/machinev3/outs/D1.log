@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 248, in <module>
+    batch=args.tag)
+    
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 243, in main
+    jobs = json.load(open(args.jobs))
+                                ^^^^^
+KeyError: 'status'

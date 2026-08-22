@@ -1,0 +1,1 @@
+[{"kind": "engine_solo", "name": "e_kwm08_nuc", "coupling": "kw_c", "eta": -0.8, "L": 96.0, "T": 300.0}, {"kind": "tow", "L": 96.0, "T": 600.0, "x_e": 48.0, "x_c": 40.0, "n": 1, "name": "t_kwm08_pull1", "coupling": "kw_c", "eta": -0.8}]

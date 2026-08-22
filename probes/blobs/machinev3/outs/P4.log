@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 243, in <module>
+    main()
+    ~~~~^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/machinev3/runner.py", line 238, in main
+    f"{rec.get('cls', rec['status'])} status={rec.get('status')} "
+                      ~~~^^^^^^^^^^
+KeyError: 'status'

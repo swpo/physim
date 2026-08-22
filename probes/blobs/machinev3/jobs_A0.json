@@ -1,0 +1,1 @@
+[{"kind": "assemble", "name": "asm_smoke", "coupling": "mimic", "eta": 0.6, "n_phase": 1, "x_pick": 12.0, "x_e": 2.0, "x_front": 60.0, "T_settle": 100.0, "T_max": 500.0}]

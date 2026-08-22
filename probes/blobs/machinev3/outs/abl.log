@@ -1,0 +1,4 @@
+[1/4] t_c0_06 -> tow status=ok (193.8s, results n=23)
+[2/4] t_c0c1t_06 -> tow status=ok (192.6s, results n=25)
+[3/4] t_c0c2_06 -> tow status=ok (111.8s, results n=29)
+[4/4] t_c1tc2_06 -> tow status=ok (99.1s, results n=30)

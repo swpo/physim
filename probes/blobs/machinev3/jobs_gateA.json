@@ -1,0 +1,1 @@
+[{"kind": "engine_solo", "name": "g_engine_mim06", "coupling": "mimic", "eta": 0.6, "L": 96.0, "T": 600.0}, {"kind": "cargo_solo", "name": "g_cargo_mim06_noise", "coupling": "mimic", "eta": 0.6, "L": 96.0, "T": 800.0, "n": 1, "noise": 0.002, "seed": 1}]

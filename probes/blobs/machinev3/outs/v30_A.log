@@ -1,0 +1,4 @@
+[1/4] ref_engine_none -> engine_solo status=ok (126.5s, results n=3)
+[2/4] ref_cargo_none -> cargo_solo status=ok (178.2s, results n=6)
+[3/4] t_xv_005 -> tow status=ok (181.9s, results n=9)
+[4/4] t_xv_010 -> tow status=ok (183.6s, results n=12)
