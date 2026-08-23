@@ -522,3 +522,22 @@ outer control loop (in-genome docks mapped: stall dial holds grip; frozen-rail
 amp 0.35 nucleates engine copies / 0.03 harmless-weak).
 COST: 6.3 core-hr, 69 sims, all L=96. The engine and cargo came from blind
 uniform search; only the coupling was designed-by-search here.
+
+
+## PHASE 5 (user, 2026-02-23): metrics-gated complexity search + bounding structures
+User verdict on bottom-up: mechanisms found, complexity not — BECAUSE the assays
+only see single/pair short-horizon behavior (measurement-limited negative). Plan:
+(1) l0-metrics (sub-827fc746): design + VALIDATE complexity descriptors (soup assay
+    d1-d6: population dynamics, emergent-timescale ratio, spatial order, motion
+    structure, bond-network churn, b-memory) against 7 ground-truth worlds spanning
+    boring->designed-complex. Hierarchy toolkit reused from world-search
+    (hier_metrics.py — finally pointed at the atlas). Deep evolutionary search FOR
+    complexity is GATED on this validation ("metrics that cannot rank known
+    complexity are worthless").
+(2) blob-membrane (sub-287b3736): bounding structures ladder — R1 closed rings
+    (N-blob molecules with pi_1 != 0; square4 exists but is PINNING-ERA — continuum
+    check mandatory; alternating-species xv rings as fallback brace), R2 operational
+    membrane definition (in/out asymmetry + crossing barrier curve), R3 cargo-in-
+    cell (confined blob, the film target), R4 coupled interior->membrane motion.
+    User's long arc: composition inside a membrane affecting membrane motion =
+    cell-like compartments.
