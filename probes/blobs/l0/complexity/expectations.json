@@ -1,0 +1,30 @@
+{
+ "m0": {
+  "label": "(a) static gas",
+  "expect": "LOW: frozen/gas, no motion, no turnover, tau_slow~genome"
+ },
+ "m4": {
+  "label": "(b) traveling bonds",
+  "expect": "MID: moving_frac high, liquid-ish churn, some v_corr"
+ },
+ "xv": {
+  "label": "(c) rotor",
+  "expect": "MID: persistent angular dynamics -> slow ACF on positions, low transport"
+ },
+ "bf": {
+  "label": "(d) autophoresis+trails",
+  "expect": "MID-HIGH: memory channel used (cover, elong), self-launch motion"
+ },
+ "pred": {
+  "label": "(e) predation s2_101_58",
+  "expect": "HIGH: births+deaths (kill_j + replicate), species turnover"
+ },
+ "coex": {
+  "label": "(f) 3-sp coexist s2_116_46",
+  "expect": "MID-HIGH: 3 species alive, bond network, less churn than pred"
+ },
+ "mv3": {
+  "label": "(g) machinev3 engine+cargo",
+  "expect": "HIGH: designed complexity \u2014 motion + bonds + heterogeneous roles"
+ }
+}

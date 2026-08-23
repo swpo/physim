@@ -541,3 +541,14 @@ only see single/pair short-horizon behavior (measurement-limited negative). Plan
     cell (confined blob, the film target), R4 coupled interior->membrane motion.
     User's long arc: composition inside a membrane affecting membrane motion =
     cell-like compartments.
+
+
+### l0-metrics — ACCEPTED (scorecard + controller audit 2026-02-23)
+Complexity battery v1 LOCKED and validated: 7 ground truths ranked sanely
+(m0 3.1 << coex 23 < m4 28 < xv 35 < bf 40 ~ pred 41 < mv3 43), zero seed
+overlap between groups, seed-3 out-of-sample, T=2500 half-cost mode preserves
+ordering. CONTROLLER AUDIT fresh seed 7: m0=3.1 (exact), xv=37.5 (top of band).
+Honest disagreements documented (static coexistence scores low absent dynamics —
+gate on n_species if wanted; mv3 wins via division-of-labor roles component C7).
+Known limits: late-assembling rotors missed, tracking breaks >1.2px/tu, 12-blob
+calibration. DEEP SEARCH NOW UNGATED.

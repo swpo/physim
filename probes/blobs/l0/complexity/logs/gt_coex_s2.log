@@ -1,0 +1,1 @@
+{"tag": "gt_coex", "seed": 2, "status": "ok", "interest": 16.2315536827115, "C": {"C1_popdyn": 0.05, "C2_timescale": 0.402, "C3_motion": 0.029, "C4_graph": 0.25, "C5_memory": 0.225, "C6_ecology": 0.0}, "wall": 2865.8}

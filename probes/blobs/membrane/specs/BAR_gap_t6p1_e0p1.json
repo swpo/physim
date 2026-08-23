@@ -1,0 +1,1 @@
+{"kind": "barrier", "name": "BAR_gap_t6p1_e0p1", "ring_state": "MEMBRANE_N10.npz", "N": 10, "eta12": 0.1, "eta21": 0.0, "T": 2500.0, "tau2": 2.5, "Dv2": 1.6, "stamp2": "stamp_A4_dx05.npz", "cargo": {"x": 48.2499997234068, "y": 47.75000021958408, "tau": 6.1, "kick": [18.0, 0.5], "stamp": "stamp_A4_dx05.npz"}}

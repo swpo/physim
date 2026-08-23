@@ -1,0 +1,31 @@
+{"name": "PULL_A4s_N6_d14p5", "kind": "ring", "nrec": 32, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 15.401520210808837, "R_series_summary": {"first": 15.143378330904568, "last": 15.401520604214666, "max": 15.401520604214666, "min": 14.49195192166666}, "gate": true}}
+{"name": "PULL_A4s_N6_d13p5", "kind": "ring", "nrec": 33, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 15.401519971404156, "R_series_summary": {"first": 14.998410819257181, "last": 15.401520535204007, "max": 15.401520535204007, "min": 13.500683451182562}, "gate": true}}
+{"name": "PULL_A4s_N6_d18p0", "kind": "ring", "nrec": 34, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 15.40159433004579, "R_series_summary": {"first": 17.667303281895318, "last": 15.401545985732705, "max": 18.001543500422553, "min": 15.401545985732705}, "gate": true}}
+{"name": "PULL_A4s_N6_d17p0", "kind": "ring", "nrec": 35, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 15.401527484025575, "R_series_summary": {"first": 16.49724790250399, "last": 15.401522970279407, "max": 16.997714288584643, "min": 15.401522970279407}, "gate": true}}
+{"name": "PULL_A4s_N8_d17p0", "kind": "ring", "nrec": 36, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 20.122427594526247, "R_series_summary": {"first": 21.82905560737604, "last": 20.12099237950906, "max": 22.21361842589715, "min": 20.12099237950906}, "gate": true}}
+{"name": "PULL_A4s_N8_d14p5", "kind": "ring", "nrec": 37, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 20.11878004510999, "R_series_summary": {"first": 19.547655442560632, "last": 20.118917173902773, "max": 20.118917173902773, "min": 18.934548574928662}, "gate": true}}
+{"name": "PULL_A4s_N8_d13p5", "kind": "ring", "nrec": 38, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 20.118640745994036, "R_series_summary": {"first": 19.190898584337624, "last": 20.118837986563936, "max": 20.118837986563936, "min": 17.636826819256243}, "gate": true}}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:157: RuntimeWarning: Mean of empty slice
+  equil = (abs(np.nanmean(Rm[m1]) - np.nanmean(Rm[m2])) < R_EQUIL
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:162: RuntimeWarning: Mean of empty slice
+  R_final=float(np.nanmean(Rm[m1])) if m1.any() else None,
+{"name": "PULL_A5_N6_d14p5", "kind": "ring", "nrec": 39, "status": "ok", "verdict": {"closed_all_post": false, "crowd_late": false, "equil": false, "T": 4000.0, "long_enough": true, "R_final": NaN, "R_series_summary": {"first": 15.42753326706282, "last": NaN, "max": 34.99400548713212, "min": 14.488360843520082}, "gate": false}}
+{"name": "PULL_A4s_N8_d18p0", "kind": "ring", "nrec": 40, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 20.150363015741274, "R_series_summary": {"first": 23.275574107686033, "last": 20.137094229648127, "max": 23.52128921158379, "min": 20.137094229648127}, "gate": true}}
+{"name": "PULL_A4s_N12_d14p5", "kind": "ring", "nrec": 41, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 4000.0, "long_enough": true, "R_final": 29.696231694561554, "R_series_summary": {"first": 28.510393294994028, "last": 29.703605978173467, "max": 29.703605978173467, "min": 28.007308411215337}, "gate": true}}
+{"name": "PULL_A4s_N12_d17p0", "kind": "ring", "nrec": 42, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": false, "T": 4000.0, "long_enough": true, "R_final": 30.064275248352594, "R_series_summary": {"first": 32.5876769946862, "last": 29.997955141011673, "max": 32.83585467791663, "min": 29.997955141011673}, "gate": false}}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:157: RuntimeWarning: Mean of empty slice
+  equil = (abs(np.nanmean(Rm[m1]) - np.nanmean(Rm[m2])) < R_EQUIL
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:162: RuntimeWarning: Mean of empty slice
+  R_final=float(np.nanmean(Rm[m1])) if m1.any() else None,
+{"name": "PULL_A5_N8_d15p0", "kind": "ring", "nrec": 43, "status": "ok", "verdict": {"closed_all_post": false, "crowd_late": false, "equil": false, "T": 4000.0, "long_enough": true, "R_final": NaN, "R_series_summary": {"first": 20.022859295997012, "last": NaN, "max": 38.17519279709822, "min": 19.58967561413452}, "gate": false}}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:157: RuntimeWarning: Mean of empty slice
+  equil = (abs(np.nanmean(Rm[m1]) - np.nanmean(Rm[m2])) < R_EQUIL
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:162: RuntimeWarning: Mean of empty slice
+  R_final=float(np.nanmean(Rm[m1])) if m1.any() else None,
+{"name": "PULL_A5_N6_d18p5", "kind": "ring", "nrec": 44, "status": "ok", "verdict": {"closed_all_post": false, "crowd_late": false, "equil": false, "T": 4000.0, "long_enough": true, "R_final": NaN, "R_series_summary": {"first": 18.04047552420976, "last": NaN, "max": 33.520672700297574, "min": 17.88962582616962}, "gate": false}}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:157: RuntimeWarning: Mean of empty slice
+  equil = (abs(np.nanmean(Rm[m1]) - np.nanmean(Rm[m2])) < R_EQUIL
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/metrics.py:162: RuntimeWarning: Mean of empty slice
+  R_final=float(np.nanmean(Rm[m1])) if m1.any() else None,
+{"name": "PULL_A5_N6_d17p0", "kind": "ring", "nrec": 45, "status": "ok", "verdict": {"closed_all_post": false, "crowd_late": false, "equil": false, "T": 4000.0, "long_enough": true, "R_final": NaN, "R_series_summary": {"first": 16.49819482196538, "last": NaN, "max": 33.364304584464286, "min": 16.381426770218237}, "gate": false}}
+QUEUE_PULL_DONE

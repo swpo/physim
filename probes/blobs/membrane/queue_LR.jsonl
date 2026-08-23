@@ -1,0 +1,2 @@
+{"kind": "ring", "name": "LR_A4s_N6_wn_10k", "fam": "A4s", "N": 6, "T": 10000.0, "noise": 0.002, "seed": 11}
+{"kind": "ring", "name": "LR_A4s_N10_wn_10k", "fam": "A4s", "N": 10, "T": 10000.0, "noise": 0.002, "seed": 12}

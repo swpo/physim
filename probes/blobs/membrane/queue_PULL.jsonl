@@ -1,0 +1,14 @@
+{"kind": "ring", "name": "PULL_A4s_N6_d13p5", "fam": "A4s", "N": 6, "dstar": 13.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N6_d14p5", "fam": "A4s", "N": 6, "dstar": 14.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N6_d17p0", "fam": "A4s", "N": 6, "dstar": 17.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N6_d18p0", "fam": "A4s", "N": 6, "dstar": 18.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N8_d13p5", "fam": "A4s", "N": 8, "dstar": 13.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N8_d14p5", "fam": "A4s", "N": 8, "dstar": 14.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N8_d17p0", "fam": "A4s", "N": 8, "dstar": 17.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N8_d18p0", "fam": "A4s", "N": 8, "dstar": 18.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N12_d14p5", "fam": "A4s", "N": 12, "dstar": 14.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A4s_N12_d17p0", "fam": "A4s", "N": 12, "dstar": 17.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A5_N6_d14p5", "fam": "A5", "N": 6, "dstar": 14.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A5_N6_d17p0", "fam": "A5", "N": 6, "dstar": 17.0, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A5_N6_d18p5", "fam": "A5", "N": 6, "dstar": 18.5, "T": 4000.0, "noise": 0.0, "seed": 0}
+{"kind": "ring", "name": "PULL_A5_N8_d15p0", "fam": "A5", "N": 8, "dstar": 15.0, "T": 4000.0, "noise": 0.0, "seed": 0}

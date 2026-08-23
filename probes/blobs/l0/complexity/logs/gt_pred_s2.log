@@ -1,0 +1,1 @@
+{"tag": "gt_pred", "seed": 2, "status": "ok", "interest": 45.33561496008455, "C": {"C1_popdyn": 0.55, "C2_timescale": 0.447, "C3_motion": 0.031, "C4_graph": 1.0, "C5_memory": 0.858, "C6_ecology": 0.12}, "wall": 2869.3}

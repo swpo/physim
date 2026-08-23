@@ -1,0 +1,1 @@
+{"tag": "gt_bf", "seed": 1, "status": "ok", "interest": 47.49516850292566, "C": {"C1_popdyn": 0.05, "C2_timescale": 0.182, "C3_motion": 0.783, "C4_graph": 1.0, "C5_memory": 0.846, "C6_ecology": 0.0}, "wall": 1375.3}

@@ -1,0 +1,1 @@
+{"kind": "barrier", "name": "BC_t5p8_w1p0", "ring_state": "MEMBRANE_N10.npz", "N": 10, "eta12": 0.0, "eta21": 0.0, "etaw12": 1.0, "etaw21": 0.0, "T": 2500.0, "tau2": 2.5, "Dv2": 1.6, "stamp2": "stamp_A4_dx05.npz", "cargo": {"x": 48.2499997234068, "y": 47.75000021958408, "tau": 5.8, "kick": [18.0, 0.5], "stamp": "stamp_A4_dx05.npz"}}

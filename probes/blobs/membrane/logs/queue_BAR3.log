@@ -1,0 +1,362 @@
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 235, in <module>
+    main(json.load(f))
+    ~~~~^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py", line 174, in main
+    r = sim.run(tau1=tau1, tau2=spec.get("tau2", 2.5),
+                Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
+    ...<9 lines>...
+                n1_expect=1, n2_expect=spec["N"],
+                snap_times=spec.get("snap_times", ()))
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/sim.py", line 231, in run
+    src = np.load(init_from if init_from.endswith(".npz")
+                  else os.path.join(BASE, "data", init_from + ".npz"))
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_npyio_impl.py", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), "rb"))
+                              ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MEMBRANE_N10.npz'
+QUEUE_BAR3_DONE
+{"name": "BAR_gap_t5p9_e0p1", "kind": "barrier", "nrec": 52, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p0_e0p1", "kind": "barrier", "nrec": 53, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t5p8_e0p05", "kind": "barrier", "nrec": 54, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t5p8_e0p1", "kind": "barrier", "nrec": 55, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p1_e0p05", "kind": "barrier", "nrec": 56, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t5p9_e0p05", "kind": "barrier", "nrec": 57, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p0_e0p05", "kind": "barrier", "nrec": 58, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t5p8_e0p05", "kind": "barrier", "nrec": 59, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t5p9_e0p05", "kind": "barrier", "nrec": 60, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p1_e0p1", "kind": "barrier", "nrec": 61, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p2_e0p05", "kind": "barrier", "nrec": 62, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t5p9_e0p1", "kind": "barrier", "nrec": 63, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_gap_t6p2_e0p1", "kind": "barrier", "nrec": 64, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t5p8_e0p1", "kind": "barrier", "nrec": 65, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p1_e0p05", "kind": "barrier", "nrec": 66, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p0_e0p05", "kind": "barrier", "nrec": 67, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p0_e0p1", "kind": "barrier", "nrec": 68, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p1_e0p1", "kind": "barrier", "nrec": 69, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p2_e0p1", "kind": "barrier", "nrec": 70, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BAR_blob_t6p2_e0p05", "kind": "barrier", "nrec": 71, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+QUEUE_BAR3_DONE

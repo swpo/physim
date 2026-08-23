@@ -1,0 +1,1 @@
+{"name": "GRID_A4s_N6_dx025", "kind": "ring", "nrec": 49, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 1500.0, "long_enough": true, "R_final": 15.404949180190831, "R_series_summary": {"first": 15.395929864782858, "last": 15.405125342008427, "max": 15.405125342008427, "min": 15.38340615578034}, "gate": true}}

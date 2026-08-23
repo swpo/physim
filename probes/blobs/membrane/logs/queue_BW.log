@@ -1,0 +1,7 @@
+{"name": "BW_gap_t5p8_w1p0", "kind": "barrier", "nrec": 73, "status": "ok", "outcome": "NO_REACH", "confined": true}
+{"name": "BW_gap_t6p0_w0p3", "kind": "barrier", "nrec": 74, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BW_gap_t5p8_w0p3", "kind": "barrier", "nrec": 75, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BW_gap_t5p8_w0p6", "kind": "barrier", "nrec": 76, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BW_gap_t6p0_w1p0", "kind": "barrier", "nrec": 77, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BW_gap_t6p0_w0p6", "kind": "barrier", "nrec": 78, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+QUEUE_BW_DONE

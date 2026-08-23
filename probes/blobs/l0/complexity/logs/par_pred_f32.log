@@ -1,0 +1,1 @@
+{"tag": "par_pred_f32", "seed": 9, "status": "ok", "interest": 44.239327436501995, "C": {"C1_popdyn": 0.55, "C2_timescale": 0.0, "C3_motion": 0.111, "C4_graph": 1.0, "C5_memory": 0.546, "C6_ecology": 0.667}, "wall": 678.0}

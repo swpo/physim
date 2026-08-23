@@ -1,0 +1,1 @@
+{"name": "proto_A4s_N6", "kind": "ring", "nrec": 4, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 1500.0, "long_enough": true, "R_final": 15.401264659708003, "R_series_summary": {"first": 15.39253755904033, "last": 15.401432763976407, "max": 15.401432763976407, "min": 15.379062403407817}, "gate": true}}

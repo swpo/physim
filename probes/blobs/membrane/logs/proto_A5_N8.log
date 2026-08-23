@@ -1,0 +1,1 @@
+{"name": "proto_A5_N8", "kind": "ring", "nrec": 7, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 1500.0, "long_enough": true, "R_final": 20.391240536181034, "R_series_summary": {"first": 20.511796843056267, "last": 20.35705123927723, "max": 20.515765939484027, "min": 20.35705123927723}, "gate": true}}
