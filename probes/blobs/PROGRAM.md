@@ -552,3 +552,22 @@ Honest disagreements documented (static coexistence scores low absent dynamics �
 gate on n_species if wanted; mv3 wins via division-of-labor roles component C7).
 Known limits: late-assembling rotors missed, tracking breaks >1.2px/tu, 12-blob
 calibration. DEEP SEARCH NOW UNGATED.
+
+
+### blob-membrane MID-RUN findings (2026-02-23; final scorecard pending)
+R1 CERTIFIED: closed rings N=4..12 all pass (5000tu + noise, bond-graph == C_N
+cycle every record, R(N)=d*/(2 sin(pi/N)) exact, two-sided attractor, dx->0.25
+shift 0.023%). Pinning-era square4 doubt RETIRED: rings are continuum objects.
+Membrane material = A4s family (tau=2.5, Dv=1.6).
+NUMERICS TRAP (important, retroactive): A=5 statics (tau=2.5 Dv=2.0) are
+DT-ARTIFACTED under IMEX dt=0.02 (pair slides through d*, replicates ~2600tu;
+reproduced in two engines; dt<=0.005 freezes d*=15.71). EXPLAINS composite's
+"integrator band" 15.43-vs-15.70 discrepancy (was dt artifact). M2's original
+certs are SAFE (explicit Euler dt=0.0025). Rule adopted: A=5 IMEX work needs
+dt<=0.005; A=4 at dt=0.02 verified exact.
+R2a: rings enclose — interior u-pool asymmetry +0.035 (N5) decaying with N.
+R2b: v-channel walls are POROUS (gaps are attractive channels — honest negative,
+20/20 transmit) BUT cross-w wiring (etaw12, vacuum-exact) gives a REAL BARRIER:
+V_w = k4*etaw*0.046 at the gap saddle; etaw=1.0 confines a tau1=5.8 cargo
+(bounces 2500tu, never crosses, census frozen) while tau=6.0 still transmits —
+a speed-dependent crossing curve is being mapped. FIRST CONFINEMENT ACHIEVED.
