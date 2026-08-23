@@ -1,0 +1,39 @@
+g0_jit_04 ok 52.344472743955485 3|mobile|liquid|m1
+g0_jit_09 ok 34.89028899699751 2|drift|liquid|m1
+g0_jit_19 ok 38.62662598820496 3|mobile|liquid|m1
+g0_jit_12 ok 44.47272690143546 2|mobile|liquid|m0
+/Users/spoho/Documents/prime/test/physim/probes/search/hier_metrics.py:112: RuntimeWarning: divide by zero encountered in scalar divide
+  alpha = 1 + len(tail) / np.log(tail / xmin).sum()
+g0_seed_s2_128_26 ok 5.6000000000000005 1|still|frozen|m0
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/worker.py", line 51, in <module>
+    main()
+    ~~~~^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/worker.py", line 45, in main
+    row = DL.evaluate(job)
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/ds_lib.py", line 172, in evaluate
+    out = MV.full_battery(rec)
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/metrics_v1.py", line 682, in full_battery
+    d2 = d2_timescales(rec)     # after d4/d5 attach series
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/metrics_v1.py", line 219, in d2_timescales
+    - np.poly1d(np.polyfit(
+                ~~~~~~~~~~^
+        np.arange(len(x)), x, 1))(
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_polynomial_impl.py", line 647, in polyfit
+    raise TypeError("expected non-empty vector for x")
+TypeError: expected non-empty vector for x
+skip ('g0_jit_04', 'screen')
+skip ('g0_jit_09', 'screen')
+skip ('g0_jit_19', 'screen')
+skip ('g0_jit_12', 'screen')
+skip ('g0_seed_s2_128_26', 'screen')
+g0_seed_uni_3034 all_dead 0.0 None
+g0_seed_engine_10748 ok 21.893427752380205 1|mobile|liquid|m0
+gt g0_gt_m0 3.1 1|still|frozen|m0
+gt g0_gt_xv 36.9 2|rotor|liquid|m0
+gt g0_gt_coex 17.3 3|still|frozen|m1

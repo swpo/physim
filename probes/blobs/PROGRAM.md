@@ -571,3 +571,13 @@ R2b: v-channel walls are POROUS (gaps are attractive channels — honest negativ
 V_w = k4*etaw*0.046 at the gap saddle; etaw=1.0 confines a tau1=5.8 cargo
 (bounces 2500tu, never crosses, census frozen) while tau=6.0 still transmits —
 a speed-dependent crossing curve is being mapped. FIRST CONFINEMENT ACHIEVED.
+
+
+### l0-deepsearch: child died post-setup; CONTROLLER DRIVING the generation loop
+Infrastructure complete and operational (ds_lib eval pipeline, MAP-Elites archive
+keyed species x motion x graph-phase x memory, gen.py breed/ingest/confirm driver,
+idempotent workers). Gen-0 (35 evals) done, gen-1 breeding launched by child before
+death; controller driver.sh now runs gens 1-6 + confirms autonomously.
+EARLY SIGNAL: e1_9513 seed soup-scores 57.8 and a first-gen jitter (g0_jit_11) 66.5
+— both ABOVE machinev3's 43: the evolver's slow-tanh merge line is richer in soup
+than anything we designed. Archive already spans 14+ behavior cells.

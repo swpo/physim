@@ -1,0 +1,37 @@
+g0_seed_rail_111_17 ok 34.65940192331923 3|mobile|liquid|m1
+g0_jit_02 ok 46.08531372834686 3|mobile|liquid|m1
+g0_jit_11 ok 66.46179646058506 3|rotor|liquid|m1
+g0_seed_rh1_7000 ok 40.47904492388589 2|mobile|liquid|m0
+g0_jit_13 ok 39.63034609955333 2|mobile|liquid|m0
+g0_jit_00 fail_g0a None None
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Traceback (most recent call last):
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/worker.py", line 51, in <module>
+    main()
+    ~~~~^^
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/worker.py", line 45, in main
+    row = DL.evaluate(job)
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/ds_lib.py", line 172, in evaluate
+    out = MV.full_battery(rec)
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/metrics_v1.py", line 682, in full_battery
+    d2 = d2_timescales(rec)     # after d4/d5 attach series
+  File "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/metrics_v1.py", line 219, in d2_timescales
+    - np.poly1d(np.polyfit(
+                ~~~~~~~~~~^
+        np.arange(len(x)), x, 1))(
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/lib/_polynomial_impl.py", line 647, in polyfit
+    raise TypeError("expected non-empty vector for x")
+TypeError: expected non-empty vector for x
+skip ('g0_seed_rail_111_17', 'screen')
+skip ('g0_jit_02', 'screen')
+skip ('g0_jit_11', 'screen')
+skip ('g0_seed_rh1_7000', 'screen')
+skip ('g0_jit_13', 'screen')
+skip ('g0_jit_00', 'screen')
+g0_jit_05 all_dead 0.0 None
+gt g0_gt_m4 24.3 1|mobile|liquid|m0
+gt g0_gt_bf 35.9 1|mobile|liquid|m1

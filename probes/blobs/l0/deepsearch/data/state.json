@@ -1,0 +1,29 @@
+{
+ "gen": 0,
+ "blocks": [],
+ "gen_stats": [
+  {
+   "gen": 0,
+   "n": 35,
+   "events": {
+    "new": 14,
+    "improved": 7,
+    "held": 11,
+    "dead": 3
+   },
+   "mean_I": 29.94284967964358,
+   "max_I": 66.46179646058506,
+   "max_cand": "g0_jit_11",
+   "wall_sim_total": 21471.4
+  }
+ ],
+ "blocks_g1": [
+  "ref_M0",
+  "ref_M4_tau5.7",
+  "ref_XV_tau15.7",
+  "ref_BFIELD_g0.05",
+  "ref_iso_d0.65",
+  "ref_iso_d0.75",
+  "engine_10748"
+ ]
+}
