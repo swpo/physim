@@ -1,0 +1,3 @@
+{"name": "LR_A4s_N10_wn_10k", "kind": "ring", "nrec": 111, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 10000.0, "long_enough": true, "R_final": 24.909845160499923, "R_series_summary": {"first": 24.911813518424694, "last": 24.911086907982217, "max": 24.919697705078555, "min": 24.899413946834223}, "gate": true}}
+{"name": "LR_A4s_N6_wn_10k", "kind": "ring", "nrec": 112, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 10000.0, "long_enough": true, "R_final": 15.404395033112497, "R_series_summary": {"first": 15.391542226735927, "last": 15.406803706804906, "max": 15.407566741960707, "min": 15.37927693294075}, "gate": true}}
+QUEUE_BAR_DONE

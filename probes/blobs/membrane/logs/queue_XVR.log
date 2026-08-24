@@ -1,0 +1,5 @@
+{"name": "XVR_N5_nl", "kind": "xvring", "nrec": 127, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 5000.0, "long_enough": true, "R_final": 13.271159014295293, "gate": true}}
+{"name": "XVR_N6_nl", "kind": "xvring", "nrec": 128, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 5000.0, "long_enough": true, "R_final": 15.600813851070695, "gate": true}}
+{"name": "XVR_N5_wn", "kind": "xvring", "nrec": 129, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 5000.0, "long_enough": true, "R_final": 13.272668112055147, "gate": true}}
+{"name": "XVR_N6_wn", "kind": "xvring", "nrec": 130, "status": "ok", "verdict": {"closed_all_post": true, "crowd_late": false, "equil": true, "T": 5000.0, "long_enough": true, "R_final": 15.601896655995208, "gate": true}}
+QUEUE_XVR_DONE

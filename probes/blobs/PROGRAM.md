@@ -581,3 +581,22 @@ death; controller driver.sh now runs gens 1-6 + confirms autonomously.
 EARLY SIGNAL: e1_9513 seed soup-scores 57.8 and a first-gen jitter (g0_jit_11) 66.5
 — both ABOVE machinev3's 43: the evolver's slow-tanh merge line is richer in soup
 than anything we designed. Archive already spans 14+ behavior cells.
+
+
+### blob-membrane — CERTIFIED (scorecard + controller audits 2026-02-24)
+R1 rings N=4-12 (bond-graph C_N every record, ring law R=d*/2sin(pi/N), attractor,
+grid 0.023%; AUDIT: N=8 from out-of-set chord 17.0 + fresh noisy seed -> ncomp 8
+throughout). A5-dt trap logged. R2a enclosure (interior pool +0.035 N5 -> +6e-4
+N12). R2b: v-channel porous (gaps attract!); ONE-WAY CROSS-W closes pores:
+V_w = 0.046*etaw (saddle) / 0.82*etaw (core); SPEED-SELECTIVE: tau=5.8 confined
+at etaw>=0.9, tau>=5.9 passes at all stable etaw; nucleation ceiling etaw>=1.05.
+R3 CARGO-IN-CELL 4/4 + film (AUDIT: fresh seed/position/kick -> confined, rc_max
+8.3, ring closed 100% of records). R4 honest null: one-way membrane rigid (COM =
+noise floor); backreaction map (2-way wirings cascade/split/replicate; legal
+eta21=0.01 response < noise); noiseless hammer: sub-pixel deterministic PULL
+certified (wiring moves the light thing). BONUS: alternating-species xv ring
+(A-B-A-B, cross-chords 8.1, double-braced, topologically enforced composition).
+NEW PRIMITIVES: prerelax-before-cargo (IC-artifact killer), speed-selective
+membrane (cell wall with channels), second membrane material.
+PHASE-6 HANDLES: certified CELL = closed membrane + distinct interior + confined
+cargo; canonical states MEMBRANE_N10/N6.npz.

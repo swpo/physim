@@ -1,0 +1,6 @@
+ds2_022 size_cap None None
+ds2_003 ok 21.044187054083384 2|still|frozen|m1
+ds2_016 ok 37.852883432309014 2|still|flicker|m1
+ds2_009 ok 21.07209563692866 2|still|frozen|m1
+ds2_021 fail_g0a None None
+ds2_008 all_dead 0.0 None

@@ -1,0 +1,99 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Bounded structures — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Bounded structures: rings, membranes, and the first cell</h1>
+<p class="meta">Post 8 — closed topology: blob rings with a genuine inside, speed-selective
+membrane walls, and a confined cargo. All gates audited on fresh seeds as usual.</p>
+
+<div class="note"><b>The goal</b> (set as: "a structure with nontrivial π₁"): a closed
+loop of blobs whose interior is genuinely distinct from the exterior — an inside and an
+outside — then something <i>kept</i> inside. This is the road toward cell-like
+compartments where interior composition couples to the whole.</p></div>
+
+<h2>Rings exist, and they are just bonds bent into a loop</h2>
+<p>N blobs placed at bond spacing around a circle relax into a <b>stable closed ring</b>
+for every N tried (4, 5, 6, 8, 10, 12 — up to the box limit): blob count and the
+bond-graph cycle C<sub>N</sub> verified at every record over 5000 tu with working noise,
+10k-tu longruns at N=6/10, grid-refinement shift 0.023%. The ring radius obeys the chord
+law R = d*/(2·sin(π/N)) with chord lengths 15.39–15.45 ≈ the flat-space bond length
+15.40: <b>a ring is N ordinary bonds bent by topology</b> — curvature costs almost
+nothing. The rings are attractors (two-sided convergence from squeezed and stretched
+initial chords), which the audit confirmed from an out-of-set chord on a fresh seed.</p>
+<div class="film"><img src="../assets/blobs/p8_rings.png" alt=""/><div class="cap"><b>The ring family:</b> final states N=4 through 12 (activator fields). Same bond, different topological charge.</div></div>
+
+<div class="film"><img src="../assets/blobs/p8_ring_cert.png" alt=""/><div class="cap"><b>Ring certification:</b> chord length vs the flat d* across N (the ring law); two-sided radius convergence; noise longruns with the bond-cycle check at every record.</div></div>
+
+<div class="warn"><b>Numerics trap, again caught by an audit anchor:</b> the deep-bond
+A=5 family's statics are integrator-artifacted under IMEX at dt=0.02 (pairs slide
+through the bond and replicate; dt≤0.005 restores d*=15.71). This retroactively explains
+a 1.8% "integrator band" noted in the M4 campaign. The original M2 certifications
+(explicit-Euler era, dt=0.0025) are safe. Membranes are built from the A=4-statics
+family, which is verified exact at dt=0.02.</div>
+
+<h2>The interior is real — but naive walls are porous</h2>
+<p>Every certified ring encloses a measurably different interior: the activator pools
+up (+0.035 in k1-units at N=5, decaying with N), the slow inhibitor dips, the halo
+rises — the superposition of N stamps, as theory predicts. But <b>enclosure is not
+confinement</b>: against the naive v-channel wall, a kicked cargo transmitted in 20/20
+attempts. The honest surprise: the gaps between wall blobs are <i>attractive channels</i>
+(the potential drops −0.004 into the wall) — only the cores repel. A picket fence of
+attractive pickets is a turnstile, not a wall.</p>
+<p>The fix is a new legal wiring: <b>one-way cross-w coupling</b> — the cargo species
+feels the ring species' long-range exclusion halo (vacuum-exact, and one-way so the
+ring stays rigid). That closes the pores with a measured barrier V_w = 0.046·η_w at
+the gap saddle (0.82·η_w at the cores), and produces something better than a wall:</p>
+<div class="film"><img src="../assets/blobs/p8_barrier.png" alt=""/><div class="cap"><b>The barrier, measured:</b> potential along the approach path for v-only walls (attractive gaps — porous) vs cross-w walls (real saddle); the transmit/confine boundary in the (η_w, cargo-τ) plane; the nucleation ceiling at η_w≥1.05.</div></div>
+
+<div class="note"><b>Speed-selective membranes, for free.</b> The barrier is finite, so
+crossing depends on the cargo's drive: at η_w=0.9, a τ=5.8 cargo is <b>confined</b>
+while a τ≥5.9 cargo <b>passes</b> — a membrane that sorts by speed, i.e. a cell wall
+with built-in channels. No gating machinery required; it falls out of the barrier
+physics.</div>
+
+<h2>The first cell</h2>
+<div class="film"><img src="../assets/blobs/p8_cell_film.gif" alt=""/><div class="cap"><b>Cargo in a cell</b> (activator fields; ring blobs blue, cargo red): a 10-blob membrane with a motile cargo (τ=5.8) bouncing off the wall from inside — 3000 tu, four seeds plus the controller audit at a fresh position and kick angle: never crosses (max radius 8.3–9.4 vs cage ~10), ring bond-cycle closed at every record, nothing nucleates, nothing dies.</div></div>
+
+<div class="film"><img src="../assets/blobs/p8_cell_frames.png" alt=""/><div class="cap"><b>Trajectory summary:</b> motile cargoes rattle around the interior (radius traces below the cage line); a static cargo just parks. The mandatory new primitive: 500 tu of cargo-free prerelax — pasting the cargo into a fresh ring at high η_w nucleates daughter rings (an initial-condition artifact, mapped and killed).</div></div>
+
+
+<h2>Can the inside move the outside? (the honest part)</h2>
+<p>The one-way membrane is <b>structurally rigid</b>: the confined cargo's collisions
+move the ring's center of mass by exactly the noise floor. The two-way wirings that
+would let cargo push the wall are a mapped minefield — w–w feedback cascades
+(replication or vacuum detonation), v-couplings split the cargo at the wall, and the
+one <i>legal</i> two-way setting (η₂₁=0.01) produces a response below working noise.
+A noiseless "hammer" test certifies the mechanism at sub-pixel scale: wall blobs
+deflect 0.014 px <i>toward</i> the cargo (the v-well pulls, not pushes) with COM motion
+0.0039 px vs an exact 0.0000 control — <b>the wiring moves the light thing, not the
+wall</b>. Interior-driven membrane motion needs heavier interiors (multi-blob), a
+floppier ring family (A=5 at dt=0.005, 4× cost), or two-species membranes — the
+mapped doors for phase 6.</p>
+<div class="film"><img src="../assets/blobs/p8_r4_xvr.png" alt=""/><div class="cap"><b>Left:</b> the R4 backreaction map — every two-way wiring and its failure mode; the legal corner and the sub-pixel pull certification. <b>Right, bonus material:</b> the alternating-species ring (A-B-A-B in the xv architecture, cross-bonds at 8.1 px, double-braced by each species' second shell landing on its own bond distance) — the first structure whose composition order is topologically enforced.</div></div>
+
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="searching-equation-space.html">Searching equation space</a></div>
+</body></html>

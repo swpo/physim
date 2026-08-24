@@ -1,0 +1,47 @@
+{
+ "probe": "membrane (phase-5 top-down: closed bounding structures)",
+ "date": "2026-02-23",
+ "gates": {
+  "R1_closed_ring_existence": {
+   "verdict": "PASS",
+   "evidence": "A4s family (tau=2.5 Dv=1.6, A=4 statics): N=4,5,6,8,10,12 rings, T=5000tu, noiseless AND sigma=2e-3: ncomp==N + bond-graph==C_N every record t>=250tu, no crowding, R equilibrated; 10ktu longruns N6/N10 PASS; ring law R=d*/(2sin(pi/N)), chord 15.39-15.45 ~ pair d*=15.40; ATTRACTOR (two-sided convergence chords 13.5-18.0, N6/N8/N12); dx=0.25 shift 0.023% (G_GRID PASS); N-window: no ceiling found up to N=12 (L=96 box limit, not physics).",
+   "honest": "A5 family: N6 passes at dt=0.02 but statics are dt-artifacted (see trap); N>=8 at dt=0.02 inflate+replicate; A5 rings deferred to dt<=0.005 (4x cost) \u2014 A4s is the material of record. Alternating xv ring NOT needed as rescue but certified as bonus (4/4)."
+  },
+  "R2_topological_characterization": {
+   "verdict": "DELIVERED (enclosure PASS + barrier curve)",
+   "enclosure": "in/out asymmetry >1e-4 for all N<=12: interior pools u +0.0346(N5)..+0.0006(N12), v negative, w positive; sign structure = stamp-tail superposition; decays with N.",
+   "barrier": "v-channel POROUS (20/20 transmit; gap saddle is attractive: -0.004 k1-units INTO wall; only cores repel; eta12=0.1 wall contact replicates cargo). Cross-w channel closes pores: V_w=0.046*etaw at gap saddle vs 0.82*etaw at cores (measured from ring state). Confinement boundary: tau1=5.8 cargo confined at etaw in {0.9,1.0} (4/4), transmits <=0.7; tau1>=5.9 transmits everywhere stable => SPEED-SELECTIVE membrane. Nucleation ceiling etaw>=1.05 (no-cargo controls); operating window etaw in [0.8,1.0]. Ring survived every transit ever run (census-frozen)."
+  },
+  "R3_cargo_in_cell": {
+   "verdict": "PASS 4/4 (+film)",
+   "evidence": "N10 ring + etaw12=0.9 + prerelax 500tu + working noise, T=3000tu: 3 motile seeds (tau=5.8) confined (rc_max 9.3-9.4 vs cage ~10, never at wall), 1 static seed parks rc=3.3; cargo ncomp==1, ring ncomp==10 + cycle closed at EVERY record, 4/4. Zero-nucleation control clean (3000tu, noise). Films: film_R3_cargo_in_cell.gif + fig4 frames."
+  },
+  "R4_coupled_motion": {
+   "verdict": "HONEST NULL + boundary map",
+   "evidence": "One-way membrane structurally rigid (COM drift = noise floor 0.006-0.011px). Backreaction map: etaw21 0.2/0.5 = w-w feedback cascade (cargo replication t~50 / vacuum detonation, dispersion +0.058); eta21 0.05/0.1 = cargo splits at wall (near-onset kick); eta21=0.02 replicates; eta21=0.01 = LEGAL 2-way (2/2 confined) but response < noise (excursions <=0.024px vs sigma 0.010px). NOISELESS HAMMER: deterministic sub-pixel PULL certified: blobs at 15-18px deflect -0.014px toward cargo, COM 0.0039px (control 0.0000); cargo diverges 10.3px. Push proper needs >=0.02 coupling which kills cargo => architecture boundary."
+  }
+ },
+ "bonus": {
+  "alternating_species_ring": "XVR Nhalf=5/6 (10/12 blobs), mutual eta=0.05: 4/4 pass 5000tu noiseless+noise; cross-chords 8.08-8.20 (d*=7.976+curvature); same-species 2nd shell at 15.60 ~ d*=15.4: DOUBLE BRACING. Second membrane material, strict A-B order.",
+  "trap_finding": "A5 (tau=2.5,Dv=2.0) statics under IMEX dt=0.02 are integrator artifacts: pair slides through d*=15.7, replicates ~2600tu (reproduced in composite/sim.py); dt=0.005 freezes d*=15.7112, dt=0.0025 d*=15.7241. RULE: A=5 statics need dt<=0.005 IMEX; A=4 exact at dt=0.02 (anchors bit-exact). Retroactively explains composite's integrator band note."
+ },
+ "deliverables": {
+  "SUMMARY": "probes/blobs/membrane/SUMMARY.md",
+  "results": "probes/blobs/membrane/results.json (~95 records)",
+  "metrics_locked": "probes/blobs/membrane/metrics.py",
+  "engine": "probes/blobs/membrane/sim.py (xv + free Dv + cross-w etaw + prerelax + film)",
+  "strips": [
+   "fig1_R1_ring_portraits.png",
+   "fig2_R1_certification.png",
+   "fig3_R2b_barrier.png",
+   "fig4_R3_cargo_in_cell_frames.png",
+   "fig5_R4_and_xvr.png",
+   "film_R3_cargo_in_cell.gif"
+  ],
+  "canonical_states": [
+   "data/MEMBRANE_N10.npz",
+   "data/MEMBRANE_N6.npz"
+  ]
+ },
+ "budget": "~210 sims, all L=96 dx=0.5 (2 dx=0.25 checks); 3-field ~20tu/s, 6-field ~10tu/s; wall ~7h on 10 cores (M4)."
+}

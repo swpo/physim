@@ -1,0 +1,10 @@
+{"name": "R3_film", "kind": "cargo", "nrec": 122, "status": "ok", "outcome": null, "confined": true}
+{"name": "R4_e0p2_s11", "kind": "push", "nrec": 123, "status": "ok", "outcome": null, "confined": false}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py:214: RuntimeWarning: All-NaN slice encountered
+  Rwall = float(np.nanmedian(Rw))
+{"name": "R4_e0p5_s11", "kind": "push", "nrec": 124, "status": "ok", "outcome": null, "confined": false}
+{"name": "R4_e0p2_s12", "kind": "push", "nrec": 125, "status": "ok", "outcome": null, "confined": false}
+/Users/spoho/Documents/prime/test/physim/probes/blobs/membrane/runjob.py:214: RuntimeWarning: All-NaN slice encountered
+  Rwall = float(np.nanmedian(Rw))
+{"name": "R4_e0p5_s12", "kind": "push", "nrec": 126, "status": "ok", "outcome": null, "confined": false}
+QUEUE_R4_DONE

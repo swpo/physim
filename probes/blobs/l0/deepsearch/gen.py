@@ -185,6 +185,8 @@ def cmd_breed(gen):
         if na > DL.MAX_ACT or nf > DL.MAX_FIELDS:
             continue
         mode = ("share_chan", "cross_edge", "slow_tanh")[rng.integers(3)]
+        if mode == "slow_tanh" and nf + 1 > DL.MAX_FIELDS:
+            mode = "cross_edge"      # slow_tanh adds a channel; stay in cap
         kw = {}
         if mode == "share_chan":
             kw["rescale"] = None if rng.random() < 0.5 else 0.5

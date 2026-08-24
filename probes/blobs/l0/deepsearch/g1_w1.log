@@ -1,1 +1,6 @@
 ds1_011 fail_g0a None None
+ds1_019 ok 37.61864205297042 4|drift|liquid|m1
+ds1_006 ok 49.223014461329115 3|drift|liquid|m1
+ds1_012 ok 47.72470477002859 2|mobile|liquid|m1
+ds1_003 fail_g0a None None
+ds1_004 ok 38.99566108566792 1|mobile|liquid|m1

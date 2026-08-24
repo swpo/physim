@@ -1,0 +1,6 @@
+ds1_016 ok 33.03551961819982 3|still|liquid|m1
+ds1_022 fail_g0a None None
+ds1_008 ok 32.691520270224125 2|drift|liquid|m1
+ds1_015 fail_g0a None None
+ds1_014 ok 32.096128297498566 2|drift|liquid|m0
+ds1_005 ok 46.824514200932285 1|mobile|liquid|m1

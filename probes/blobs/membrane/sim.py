@@ -216,7 +216,8 @@ def run(tau1=5.7, tau2=2.5, Dv1=None, Dv2=None, eta12=0.0, eta21=0.0,
         noise=0.0, seed=0, rec_tu=5.0, snap_times=(), thr_frac=0.45,
         stamp1_name="stamp_A4_dx05.npz", stamp2_name="stamp_A4_dx05.npz",
         save_fields=True, p_over=None, stop_split=True,
-        n1_expect=None, n2_expect=None):
+        n1_expect=None, n2_expect=None, adia_w1=False, ramp_tu=0.0,
+        film_tu=0.0, prerelax_tu=0.0):
     """Integrate. Species 2 absent (no blobs2/add_blobs2 and eta12==0) ->
     3-field fast path. Returns per-species tracks + fields + snaps (full F)."""
     p = dict(M0, **(p_over or {}))
@@ -260,6 +261,33 @@ def run(tau1=5.7, tau2=2.5, Dv1=None, Dv2=None, eta12=0.0, eta21=0.0,
         if blobs2:
             paste_blobs(F[3], F[4], F[5], st2, list(blobs2), dx, L)
 
+    # Adiabatic species-1 initialization against a pre-existing species-2
+    # structure (stamp-method spirit: paste the RELAXED response, no switch-on
+    # shock). w1 gets its exact linear steady response to (u2-u0) through the
+    # cross-w channel; optional short cargo-free pre-relax of the full
+    # nonlinear system follows; cargo blobs are pasted after.
+    if adia_w1 and two:
+        kf0 = 2 * np.pi * np.fft.fftfreq(N, d=dx)
+        kr0 = 2 * np.pi * np.fft.rfftfreq(N, d=dx)
+        k20 = kf0[:, None] ** 2 + kr0[None, :] ** 2
+        s2hat = np.fft.rfft2(F[3] - u0)
+        if etaw12 != 0.0:
+            Gw = 1.0 / (1.0 + p["theta"] * p["Dw"] * k20)
+            F[2] = F[2] + etaw12 * np.fft.irfft2(s2hat * Gw, s=(N, N))
+        if eta12 != 0.0:
+            Gv = 1.0 / (1.0 + tau1 * Dv1 * k20)
+            F[1] = F[1] + eta12 * np.fft.irfft2(s2hat * Gv, s=(N, N))
+    # Cargo-free pre-relax: integrate the coupled system WITHOUT species-1
+    # blobs so the interior vacuum dresses itself (u1,v1,w1 relax to the
+    # membrane-shifted steady state with no v-lag shock), then paste cargo.
+    deferred_blobs1 = None
+    if prerelax_tu > 0.0 and two:
+        deferred_blobs1 = list(blobs1 or add_blobs1 or ())
+        # remove any already-pasted species-1 blobs: rebuild species-1 fields
+        F[0] = np.full((N, N), u0)
+        F[1] = np.full((N, N), u0)
+        F[2] = np.full((N, N), u0)
+
     ref1 = [(b[0], b[1]) for b in (blobs1 or add_blobs1)] or None
     ref2 = [(b[0], b[1]) for b in (blobs2 or add_blobs2)] or None
     tr1, tr2 = Tracker(L, ref1), Tracker(L, ref2)
@@ -282,10 +310,27 @@ def run(tau1=5.7, tau2=2.5, Dv1=None, Dv2=None, eta12=0.0, eta21=0.0,
     P1, A1, K1s, NC1 = [], [], [], []
     P2, A2, K2s, NC2 = [], [], [], []
     snaps = {}; snap_left = sorted(snap_times)
+    film_t, film_u1, film_u2 = [], [], []
+    film_every = max(int(round(film_tu / dt)), 1) if film_tu > 0 else 0
     status = "ok"
     t0_wall = time.time()
-    for t in range(steps + 1):
+    pre_steps = int(round(prerelax_tu / dt)) if deferred_blobs1 is not None else 0
+    for t in range(-pre_steps, steps + 1):
         tt = t * dt
+        if t == 0 and deferred_blobs1 is not None:
+            paste_blobs(F[0], F[1], F[2], st1, deferred_blobs1, dx, L)
+        if t < 0:
+            # pre-relax phase: integrate only, no recording
+            R = np.empty_like(F)
+            u1, v1, w1, u2, v2, w2 = F
+            R[0] = lam * u1 - u1 ** 3 - k3 * v1 - k4 * w1 + k1
+            R[3] = lam * u2 - u2 ** 3 - k3 * v2 - k4 * w2 + k1
+            R[1] = (u1 + eta12 * (u2 - u0) - v1) / tau1
+            R[4] = (u2 + eta21 * (u1 - u0) - v2) / tau2
+            R[2] = (u1 + etaw12 * (u2 - u0) - w1) / theta
+            R[5] = (u2 + etaw21 * (u1 - u0) - w2) / theta
+            F = np.fft.irfft2(np.fft.rfft2(F + dt * R) * E, s=(N, N))
+            continue
         if t % rec == 0 or t == steps:
             if not np.isfinite(F).all():
                 status = "blowup"; break
@@ -305,17 +350,23 @@ def run(tau1=5.7, tau2=2.5, Dv1=None, Dv2=None, eta12=0.0, eta21=0.0,
                 status = "census_change"; break
         while snap_left and tt >= snap_left[0] - 1e-9:
             snaps[snap_left.pop(0)] = F.copy()
+        if film_every and t % film_every == 0:
+            film_t.append(tt)
+            film_u1.append(F[0].astype(np.float16))
+            if two:
+                film_u2.append(F[3].astype(np.float16))
         if t == steps:
             break
+        rmp = min(tt / ramp_tu, 1.0) if ramp_tu > 0 else 1.0
         R = np.empty_like(F)
         if two:
             u1, v1, w1, u2, v2, w2 = F
             R[0] = lam * u1 - u1 ** 3 - k3 * v1 - k4 * w1 + k1
             R[3] = lam * u2 - u2 ** 3 - k3 * v2 - k4 * w2 + k1
-            R[1] = (u1 + eta12 * (u2 - u0) - v1) / tau1
-            R[4] = (u2 + eta21 * (u1 - u0) - v2) / tau2
-            R[2] = (u1 + etaw12 * (u2 - u0) - w1) / theta
-            R[5] = (u2 + etaw21 * (u1 - u0) - w2) / theta
+            R[1] = (u1 + rmp * eta12 * (u2 - u0) - v1) / tau1
+            R[4] = (u2 + rmp * eta21 * (u1 - u0) - v2) / tau2
+            R[2] = (u1 + rmp * etaw12 * (u2 - u0) - w1) / theta
+            R[5] = (u2 + rmp * etaw21 * (u1 - u0) - w2) / theta
         else:
             u1, v1, w1 = F
             R[0] = lam * u1 - u1 ** 3 - k3 * v1 - k4 * w1 + k1
@@ -333,6 +384,10 @@ def run(tau1=5.7, tau2=2.5, Dv1=None, Dv2=None, eta12=0.0, eta21=0.0,
                 pos1=P1, area1=A1, peak1=K1s, ncomp1=np.array(NC1, int),
                 pos2=P2, area2=A2, peak2=K2s, ncomp2=np.array(NC2, int),
                 fields=F if save_fields else None, snaps=snaps,
+                film=(dict(t=np.array(film_t),
+                           u1=np.array(film_u1),
+                           u2=(np.array(film_u2) if two else None))
+                      if film_every else None),
                 wall_s=wall, tu_per_s=(ts[-1] / wall if wall > 0 and ts else None))
 
 

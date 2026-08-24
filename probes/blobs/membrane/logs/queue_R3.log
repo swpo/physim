@@ -1,0 +1,5 @@
+{"name": "R3_run_s1", "kind": "cargo", "nrec": 117, "status": "ok", "outcome": null, "confined": true}
+{"name": "R3_static_s4", "kind": "cargo", "nrec": 118, "status": "ok", "outcome": null, "confined": true}
+{"name": "R3_run_s2", "kind": "cargo", "nrec": 119, "status": "ok", "outcome": null, "confined": true}
+{"name": "R3_run_s3", "kind": "cargo", "nrec": 120, "status": "ok", "outcome": null, "confined": true}
+QUEUE_R3_DONE

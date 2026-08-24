@@ -51,6 +51,11 @@ def save_track(name, r, extra=None):
         np.savez_compressed(os.path.join(BASE, "data",
                             f"{name}_snap{int(tt):05d}.npz"),
                             F=S.astype(np.float32))
+    if r.get("film"):
+        fl = r["film"]
+        np.savez_compressed(os.path.join(BASE, "data", name + "_film.npz"),
+                            t=fl["t"], u1=fl["u1"],
+                            **({"u2": fl["u2"]} if fl["u2"] is not None else {}))
 
 
 def tail_speed(t, P, frac=0.35):
@@ -122,7 +127,7 @@ def main(spec):
         c = L / 2
         pos = sim.ring_positions(N, R0, c, c, spec.get("phase", 0.0))
         r = sim.run(tau1=f["tau"], Dv1=f["Dv"], stamp1_name=f["stamp"],
-                    L=L, dx=dx, T=spec.get("T", 5000.0),
+                    L=L, dx=dx, T=spec.get("T", 5000.0), dt=spec.get("dt", 0.02),
                     blobs1=[(x, y, None) for (x, y) in pos],
                     noise=spec.get("noise", 0.0), seed=spec.get("seed", 0),
                     rec_tu=spec.get("rec_tu", 10.0),
@@ -175,6 +180,10 @@ def main(spec):
                     Dv1=Dv1, Dv2=spec.get("Dv2", 1.6),
                     eta12=spec.get("eta12", 0.05), eta21=spec.get("eta21", 0.0),
                     etaw12=spec.get("etaw12", 0.0), etaw21=spec.get("etaw21", 0.0),
+                    adia_w1=spec.get("adia_w1", False),
+                    prerelax_tu=spec.get("prerelax_tu", 0.0),
+                    ramp_tu=spec.get("ramp_tu", 0.0),
+                    film_tu=spec.get("film_tu", 0.0),
                     stamp1_name=cargo.get("stamp", "stamp_A4_dx05.npz"),
                     stamp2_name=spec.get("stamp2", "stamp_A4_dx05.npz"),
                     L=L, T=spec.get("T", 2000.0),

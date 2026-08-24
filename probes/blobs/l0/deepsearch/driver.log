@@ -1,0 +1,30 @@
+{
+ "gen": 1,
+ "n": 24,
+ "events": {
+  "new": 6,
+  "improved": 5,
+  "held": 8,
+  "dead": 5
+ },
+ "mean_I": 33.63892247332472,
+ "max_I": 53.68339016814251,
+ "max_cand": "ds1_013",
+ "wall_sim_total": 21780.6
+}
+gen 2: 24 jobs -> 4 shards, cost proxies ['59', '57', '55', '58']
+{
+ "gen": 2,
+ "n": 24,
+ "events": {
+  "new": 2,
+  "improved": 4,
+  "held": 11,
+  "dead": 7
+ },
+ "mean_I": 34.759480360191404,
+ "max_I": 56.981204982382806,
+ "max_cand": "ds2_000",
+ "wall_sim_total": 16623.0
+}
+gen 3: 24 jobs -> 4 shards, cost proxies ['53', '53', '53', '54']

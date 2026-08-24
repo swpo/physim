@@ -1,0 +1,21 @@
+{"name": "BC_t6p0_w0p2", "kind": "barrier", "nrec": 79, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p8_w0p2", "kind": "barrier", "nrec": 80, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p9_w0p2", "kind": "barrier", "nrec": 81, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p1_w0p2", "kind": "barrier", "nrec": 82, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p8_w0p4", "kind": "barrier", "nrec": 83, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p9_w0p4", "kind": "barrier", "nrec": 84, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p0_w0p4", "kind": "barrier", "nrec": 85, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p8_w1p0", "kind": "barrier", "nrec": 86, "status": "ok", "outcome": "NO_REACH", "confined": true}
+{"name": "BC_t6p1_w0p4", "kind": "barrier", "nrec": 87, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p8_w0p7", "kind": "barrier", "nrec": 88, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p9_w0p7", "kind": "barrier", "nrec": 89, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p0_w0p7", "kind": "barrier", "nrec": 90, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p1_w0p7", "kind": "barrier", "nrec": 91, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p9_w1p0", "kind": "barrier", "nrec": 92, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p0_w1p0", "kind": "barrier", "nrec": 93, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p9_w1p4", "kind": "barrier", "nrec": 94, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t5p8_w1p4", "kind": "barrier", "nrec": 95, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p1_w1p0", "kind": "barrier", "nrec": 96, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p0_w1p4", "kind": "barrier", "nrec": 97, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+{"name": "BC_t6p1_w1p4", "kind": "barrier", "nrec": 98, "status": "ok", "outcome": "TRANSMIT", "confined": false}
+QUEUE_BC_DONE

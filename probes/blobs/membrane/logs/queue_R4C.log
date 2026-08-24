@@ -1,0 +1,5 @@
+{"name": "R4C_v0p01_s11", "kind": "push", "nrec": 135, "status": "ok", "outcome": null, "confined": true}
+{"name": "R4C_v0p01_s12", "kind": "push", "nrec": 136, "status": "ok", "outcome": null, "confined": true}
+{"name": "R4C_v0p02_s12", "kind": "push", "nrec": 137, "status": "ok", "outcome": null, "confined": false}
+{"name": "R4C_v0p02_s11", "kind": "push", "nrec": 138, "status": "ok", "outcome": null, "confined": false}
+QUEUE_R4C_DONE
