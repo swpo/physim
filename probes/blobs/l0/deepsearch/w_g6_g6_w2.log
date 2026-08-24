@@ -1,0 +1,6 @@
+ds6_020 ok 53.64702960868443 3|rotor|liquid|m1
+ds6_017 fail_g0a None None
+ds6_005 ok 23.384881324610348 3|drift|liquid|m1
+ds6_006 ok 35.46203618045559 2|mobile|frozen|m1
+ds6_015 fail_g0a None None
+ds6_004 ok 32.1969772823442 1|mobile|frozen|m1

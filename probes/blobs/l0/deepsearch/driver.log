@@ -28,3 +28,64 @@ gen 2: 24 jobs -> 4 shards, cost proxies ['59', '57', '55', '58']
  "wall_sim_total": 16623.0
 }
 gen 3: 24 jobs -> 4 shards, cost proxies ['53', '53', '53', '54']
+{
+ "gen": 3,
+ "n": 24,
+ "events": {
+  "new": 9,
+  "improved": 4,
+  "held": 9,
+  "dead": 2
+ },
+ "mean_I": 38.413971236786274,
+ "max_I": 72.7445370502269,
+ "max_cand": "ds3_017",
+ "wall_sim_total": 24204.4
+}
+gen 4: 24 jobs -> 4 shards, cost proxies ['53', '53', '53', '52']
+{
+ "gen": 4,
+ "n": 24,
+ "events": {
+  "new": 2,
+  "improved": 4,
+  "held": 10,
+  "dead": 8
+ },
+ "mean_I": 41.671688436551094,
+ "max_I": 62.67130162628648,
+ "max_cand": "ds4_020",
+ "wall_sim_total": 12915.2
+}
+gen 5: 24 jobs -> 4 shards, cost proxies ['58', '58', '61', '61']
+{
+ "gen": 5,
+ "n": 24,
+ "events": {
+  "new": 2,
+  "improved": 5,
+  "held": 13,
+  "dead": 4
+ },
+ "mean_I": 44.57772452254125,
+ "max_I": 73.6971623729091,
+ "max_cand": "ds5_003",
+ "wall_sim_total": 24649.7
+}
+gen 6: 24 jobs -> 4 shards, cost proxies ['53', '51', '51', '51']
+{
+ "gen": 6,
+ "n": 24,
+ "events": {
+  "new": 0,
+  "improved": 6,
+  "held": 14,
+  "dead": 4
+ },
+ "mean_I": 44.40973707435383,
+ "max_I": 68.64788568438111,
+ "max_cand": "ds6_019",
+ "wall_sim_total": 16073.2
+}
+gen cf: 12 jobs -> 4 shards, cost proxies ['27', '30', '30', '30']
+DRIVER_DONE

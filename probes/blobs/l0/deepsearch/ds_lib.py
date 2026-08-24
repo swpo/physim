@@ -230,10 +230,12 @@ def archive_insert(row):
 
 
 def archive_confirm(row):
-    """Attach a T=5000 confirm to the archive cell held by row's cand."""
+    """Attach a T=5000 confirm to the archive cell held by row's cand
+    (confirm cands carry a _cf suffix)."""
+    base = row["cand"][:-3] if row["cand"].endswith("_cf") else row["cand"]
     with locked_json(ARCHIVE, {}) as c:
         for key, cell in c.data.items():
-            if cell["cand"] == row["cand"]:
+            if cell["cand"] == base:
                 cell["confirm_interest"] = row.get("interest")
                 cell["confirm_cell"] = row.get("cell")
                 cell["confirm_summary"] = row.get("summary")

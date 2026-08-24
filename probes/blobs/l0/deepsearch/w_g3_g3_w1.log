@@ -1,2 +1,6 @@
 ds3_015 ok 31.776424133787945 4|still|frozen|m1
 ds3_021 fail_g0a None None
+ds3_011 ok 25.780242094964528 3|drift|liquid|m0
+ds3_004 ok 33.24017786900794 3|mobile|frozen|m1
+ds3_018 ok 59.36253044670773 2|mobile|liquid|m1
+ds3_005 ok 5.902017846704352 1|still|gas|m0

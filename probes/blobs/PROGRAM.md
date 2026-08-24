@@ -600,3 +600,24 @@ NEW PRIMITIVES: prerelax-before-cargo (IC-artifact killer), speed-selective
 membrane (cell wall with channels), second membrane material.
 PHASE-6 HANDLES: certified CELL = closed membrane + distinct interior + confined
 cargo; canonical states MEMBRANE_N10/N6.npz.
+
+
+### l0-deepsearch — ACCEPTED (scorecard + controller audits 2026-02-24; overload-interrupted
+audits completed anyway: everything survived)
+LOOP VALIDATION PASS: mean interest monotone g0-g5 29.9->44.6 (+49%), g6 flat
+(honest saturation); max 66.5->73.7 (+ driver-era ds6_019 at 68.6). 35 archive
+cells, 28 NEW vs ground truths — incl. SIX 4-species cells (sampling ceiling was
+2-3), flicker-phase bonds (never-before-occupied graph phase), and 4-species
+rotor+memory (ds3_014). CONTROLLER FRESH-SEED AUDITS: ds3_017 = 76.3 (their 75.1),
+ds3_014 = 60.7 (their 57.3) — both confirmed. ds3_017 (merge_slow_tanh of a
+BFIELD-mutant x weak XV-jitter; weak parent contributed STRUCTURE not fitness —
+the open-endedness signature) scores +75% above the best designed world.
+OPERATOR LAW SHARPENED: merges OPEN cells (12/21 first-touches), mutations CLIMB
+(17 holders + both top scores); share_chan fragile (same-vacuum law).
+COST MODEL: 3.2 evals per archive event; 196 evals / 48 core-h local.
+POD PLAN (approved shape): 1x 32-vCPU day = 20 gens x pop 48 + confirms, with 20%
+immigration, richer descriptor key (n_act + memory-grade), MAX_FIELDS 14, 2-seed
+elite screens. PENDING: mechanism autopsies of ds3_017/ds3_014 before any
+world-catalog use; metric-drift note (mobile|liquid|m1 attractor) for metrics v2.
+USER QUESTION ANSWERED: with validated metrics + iteration, the search DOES climb
+past designed complexity and colonize behavior classes sampling never reached.

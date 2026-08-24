@@ -1,0 +1,6 @@
+ds5_012 ok 42.62561820003536 3|rotor|frozen|m0
+ds5_003 ok 73.6971623729091 3|mobile|liquid|m1
+ds5_009 ok 15.502026674877156 2|still|frozen|m1
+ds5_013 fail_g0a None None
+ds5_002 ok 18.484776895115587 2|still|frozen|m0
+ds5_019 ok 56.856646163333714 2|mobile|flicker|m1
