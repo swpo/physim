@@ -650,3 +650,19 @@ USER TAKEAWAYS ADOPTED (evolutionary program v2 pillars):
  T3 observation horizon: T is a moving target as complexity grows (ds3_014 needed
     12000tu vs the 2500tu screen); need cycle/steady-state detection to decide
     prune-vs-extend (adaptive-T assays); likely also larger L.
+
+
+## PHASE 6 (user, 2026-02-25): EVOLUTIONARY RUN V2 — applying T1/T2/T3
+Two searchers spawned:
+- l0-metrics-v2 (sub-b7724bdc): metric fixes traceable to v1 audit failures —
+  M1 interaction-gated ecology (sphere-passenger fix), M2 segment-vs-organism
+  (worm fix), M3 bilinear-aware anatomy/memory (ds3_014 lesson), M4 ADAPTIVE
+  HORIZON (extend-on-trend/charging/unconverged-ACF, stop-on-stationary; ds3_014
+  must auto-extend and gain, m0 must stay cheap), M5 succession/staging detector,
+  M6 box-limit flag (L-graduation). Locks gate the main run.
+- l0-evolve-v2 (sub-4a4d4304): operator alphabet v2 — mint_bilin/delete_bilin
+  (vertex research question: does evolution USE mintable nonlinearity?), add_chan
+  (slow channels allowed), dup_act (speciation move), + v1 moves; bilinear-
+  preserving merges tested; 2-seed elite confirmation before block library; 20%
+  immigration. Local validation first; controller rents pods for the 20-gen run.
+Membrane/top-down discussion queued after v2 is in motion (user).
