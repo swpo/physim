@@ -621,3 +621,32 @@ elite screens. PENDING: mechanism autopsies of ds3_017/ds3_014 before any
 world-catalog use; metric-drift note (mobile|liquid|m1 attractor) for metrics v2.
 USER QUESTION ANSWERED: with validated metrics + iteration, the search DOES climb
 past designed complexity and colonize behavior classes sampling never reached.
+
+
+### ds3_014 mechanism deep-dive (user-driven, 2026-02-25)
+FIELD EQUATIONS transcribed (12 fields, ~30 constants; on post 7). Interaction graph
+verified quantitatively: blue-red mutual v-crosstalk (red suppression ~100% near
+blue); green loses via asymmetric shared-halo (2.46 vs 1.67); yellow-blue association
+(68% touching vs 19% null) is MEDIATED (zero direct coupling — habitat, not
+conveyor: motion along blue ridges = 35% ~ random). Morphology division from
+self-halo strengths: yellow strong+long-range (spheres), blue half-strength
+(networks), red full-halo + deformable slow-v (spot/path hybrid).
+THE FOSSIL VERTEX: ds3_014's single bilinear term -m*w_R traces through FIVE
+generations (ds3_014 <- g0_jit_11 <- rail_111_17 <- s2_111_17 <- e1_9508 <-
+ref_BFIELD): it is the DESIGNED isok/stigmergy vertex -b*(w-u0) from M6, inherited
+verbatim (operators cannot mint bilinears — creation rate is structurally ZERO;
+founder gene). EXAPTATION: trail-steering vertex repurposed as replication enabler.
+ABLATION (T=12000, same seed): WITHOUT the vertex there is NO succession at all —
+no red boom (3->7 vs 3->71), no yellow boom (3 vs 75), near-stasis. The one
+inherited nonlinear term is load-bearing for everything interesting in the world.
+AUTOPSY CORRECTION: "write-only recorder = vestigial" was wrong — K=0 channels can
+act through bilinears; genome-anatomy tooling must treat bilin as first-class wiring.
+USER TAKEAWAYS ADOPTED (evolutionary program v2 pillars):
+ T1 dynamics: operator alphabet matters — bilinear minting is impossible today
+    (audited: mutation cannot append chans/acts/bilin); add structural moves.
+ T2 metrics: metric-audit loop is iterative BY NATURE (run -> inspect worlds ->
+    find unrewarded interesting behavior -> extend metric -> rerun). ds3_014's
+    succession was invisible to metrics until films showed it.
+ T3 observation horizon: T is a moving target as complexity grows (ds3_014 needed
+    12000tu vs the 2500tu screen); need cycle/steady-state detection to decide
+    prune-vs-extend (adaptive-T assays); likely also larger L.
