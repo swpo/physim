@@ -226,5 +226,47 @@ mutations climb within them (17 cell-holders and both top scores). Next: mechani
 autopsies of the champions (what IS ds3_017 doing? — it maxes ecology, roles, and
 graph components simultaneously), then the pod-scale run (20 generations, immigration,
 richer descriptors) if the autopsies justify it.</p>
+<h2>Champion autopsies — what the evolved worlds actually are</h2>
+<p class="meta">Per the review direction: less methodology, more "what did we breed."
+Training dynamics first, then films of the top worlds with what the metrics saw and
+what they missed.</p>
+
+<h3>Training dynamics</h3>
+<div class="film"><img src="../assets/blobs/p7_training_dynamics.png" alt=""/><div class="cap"><b>(a)</b> Interest distribution per generation: every dot one evaluated world; the mean (red) climbs monotonically +49% before saturating at g6; the dashed line is our best <i>designed</i> world — the population median crosses it by g4. <b>(b)</b> Cumulative behavior-space coverage: the g3 jump is the 4-species breakthrough (merge-opened). <b>(c)</b> The division of labor between operators: merges account for most first-touches of new cells relative to their evaluation share; mutations dominate within-cell climbing. Numbers on bars = new-cells-per-evaluation.</div></div>
+
+
+<h3>ds3_017, the champion (I = 76, audited): a worm ecology with trails</h3>
+<div class="film"><img src="../assets/blobs/p7_world_ds3_017.gif" alt=""/><div class="cap"><b>Watch:</b> the red species does something no designed world did — it GROWS: elongated worm-blobs that stretch, split, and pack the domain to a carrying capacity (~45 segments, logistic curve top-right, then slight decline — bounded, not a cascade). Among the worms, two conserved compact species (blue, green) wander. Top-right: total population; bottom-right: per-species biomass — red saturates, blue/green flat.</div></div>
+
+<p><b>Genome anatomy</b> (3 species, 8 channels): three M4-class motility engines at
+different clocks (τ = 4.1 / 5.75 / 1.8 — the middle one sits in the traveling corridor),
+weak mutual v-crosstalk between two species (the xv bond/rotor wiring, diluted), and
+<b>two slow tanh memory channels</b>: a shared trail field (τ=189, weakly attractive to
+two species — a faint stigmergy layer) and a <i>write-only recorder</i> (τ=200, K=0 — it
+influences nothing; evolution kept a channel that only remembers. A vestigial organ, or
+free capacity the metric never charged for).</p>
+<p><b>What the film shows that the metrics did not:</b> the "replicator" is the
+<b>labyrinth instability domesticated</b> — the same fingering that killed species A in
+post 3 is here <i>bounded</i> (worms stop at a finite width and count) and coexists with
+compact blobs. The metric scored it as ecology + roles + population dynamics (C6=1.0,
+C7=0.998, C1=0.7); the mechanism is stripe-forming physics living <i>with</i> spot-forming
+physics in one world — the coexistence the Purwins-class literature treats as separate
+phases, evolved into a single stable mixture.</p>
+
+<h3>ds3_014 (I = 61, audited): four species, rotors, and a delayed baby boom</h3>
+<div class="film"><img src="../assets/blobs/p7_world_ds3_014.gif" alt=""/><div class="cap"><b>Watch:</b> a sparse 4-species blob ecology — compact blobs (yellow/blue/red/green), some locked in tight pairs (the vvw-wired species 1+2: rotor cells). Nothing happens for 1500 tu — population flat at 12 — then a <b>delayed replication onset</b>: the yellow species begins budding and the count climbs stepwise (top-right). The metric's memory component saw the slow tanh recorder charging toward threshold during the quiet phase; the film shows what it was counting down to.</div></div>
+
+
+<h3>ds6_000 (I = 64): the flicker phase</h3>
+<div class="film"><img src="../assets/blobs/p7_world_ds6_000.gif" alt=""/><div class="cap"><b>Watch:</b> the never-before-occupied bond-network phase — a dense two-species tissue (~150 blobs at carrying capacity, spots + short worms) whose bond network continuously rewires without ever freezing or evaporating: a bond-liquid at high density, 'flicker' in the graph-churn descriptor. Population and biomass are statistically flat while the micro-structure never repeats.</div></div>
+
+
+<p class="meta">Two more champion films on disk (<code>p7_world_ds6_019.gif</code> — the
+gen-6 interest peak, a denser worm ecology; <code>p7_world_g0_jit_11.gif</code> — the
+gen-0 rotor-line high scorer). Autopsy data: genome anatomies and population traces in
+<code>probes/blobs/l0/deepsearch/</code>; all five worlds re-runnable from their genome
+JSONs. Flag for metrics v2: the champion lineage exploits growth (C1) + species count
+(C6) — both worm-segment-count artifacts in part; a segment-vs-organism discriminator
+would sharpen the next selection round.</p>
 <div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="machines.html">Blob machines</a></div>
 </body></html>
