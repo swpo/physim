@@ -679,3 +679,10 @@ Honest notes: mv3 soup bimodal across seeds (machine assembles or not — recomm
 org_model cell keys); statics pay ~8% C8 dilution by design; pred +5 from horizon
 (undervalued in v1). Continuation sim bitwise-identical (parity gate).
 GREENLIT: evolve-v2 local gens on assay_v2, then pod main run.
+
+
+### Budget update (user, 2026-02-25): main-run ceiling raised to "few hundred $"
+(check-in near $1k). v2 main run upgraded: pop 96 x 25 gens, 3-seed confirms,
+in-run L=192 graduation lane (box-flagged elites), long-horizon confirm lane
+(T cap 40k for top-3/gen), 20% immigration. Fleet plan: ~10x 16-vCPU nebius
+(~160 cores, ~$4/hr, ~25h wall, est. $100-250). Speed > thrift.
