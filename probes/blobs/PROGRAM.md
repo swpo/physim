@@ -686,3 +686,12 @@ GREENLIT: evolve-v2 local gens on assay_v2, then pod main run.
 in-run L=192 graduation lane (box-flagged elites), long-horizon confirm lane
 (T cap 40k for top-3/gen), 20% immigration. Fleet plan: ~10x 16-vCPU nebius
 (~160 cores, ~$4/hr, ~25h wall, est. $100-250). Speed > thrift.
+
+
+### blob-gpu spawned (2026-02-25, infrastructure track)
+JAX accelerator port: batched-population stepping (a generation as one tensor) +
+large-world mode; correctness gates (f64 L2 < 1e-5 @ T=100, descriptor parity on
+the locked v1 battery, bond anchors incl. the A5-dt trap); roofline analysis +
+optimization log; drop-in run_soup_gpu(); public post accelerating-blobs.html
+(the path others will use). One GPU pod authorized, target < $50, terminate when
+idle. Independent of the CPU main run.
