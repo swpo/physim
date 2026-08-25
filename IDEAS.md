@@ -110,3 +110,36 @@ is replenished. All need probe campaigns before engine work.
   north-star for L3 composition + the L0 evolutionary search's behavior descriptors.
 - BLOBS L0 compute: parallelize assay battery on rented Prime compute (prime CLI pods;
   per-candidate assays are independent — embarrassingly parallel).
+
+- BLOBS: PATCHWORLDS — construction via coordinate patches / partition of unity (user,
+  2026-02-25). Combine two worlds A, B on one large grid via PoU weights rho_A(x) +
+  rho_B(x) = 1: parameters theta(x) = rho_A theta_A + rho_B theta_B (and/or ICs blended).
+  CONTROLLER FEASIBILITY NOTES (quick math, logged for later):
+  * In deviation-form genomes the channel parameters (tau, D, W, K, thr, sc, bilin
+    coeffs) are VACUUM-SAFE to vary spatially — channels sit at 0 in vacuum for any
+    values, so PoU on the "wiring" is exactly legal (this is eta(x,y) coupling
+    geography generalized to ALL wiring — factory already certified the special case).
+  * Activator params (lam, k1, Du) blends move the vacuum u0(x) UNLESS constrained to
+    the iso-vacuum curve k1(x) = u0^3 - lam(x)*u0 (verified exact): aligned-vacuum
+    patching is free; non-aligned vacua create a seam source ~ Du*|du0|/w^2 (measured
+    scale 2e-3 k1-units at w=8px seam for ds3_014-scale mismatch — 100x below blob
+    drives; wide seams ~1e-4 = negligible). So seams are mild ramps, not walls —
+    compare transport's k1-ramp mode: blobs will DRIFT along vacuum-mismatch seams
+    (feature: seams as natural highways/fences; risk: seam nucleation at big mismatch
+    — the isok level-limit lesson applies, |b_eff| <= ~0.03).
+  * Species-set mismatch is the clean part: pad genomes to the union field set with
+    zero wiring outside their patch (direct-sum + PoU on W/K instead of hard blocks).
+  * Sharp risks to test first: (1) decay-length vs seam width (blob tails ~2-15px:
+    seams must be >> tail wavelength or bonds/shells get distorted near seams);
+    (2) long-range channels (Dw~20-27) leak ACROSS seams — a blob near the seam
+    broadcasts its halo into the other world (may be THE interesting physics: cross-
+    world interaction without shared species); (3) slow memory channels blend
+    trivially (tau,D vacuum-safe).
+  * Relation to existing ops: evolve's merge = direct sum on ONE grid (worlds overlap
+    everywhere); PATCHING = spatial separation with a controlled interface — the
+    missing third composition mode (share-channel / cross-edge / SPATIAL-PATCH).
+    Natural first experiment: patch ds3_014 (succession tissue) against the membrane
+    world A4s — does the tissue respect the membrane patch? Second: PoU as an
+    evolve-v3 merge operator (patch two elites side by side, let selection tune the
+    seam) — "ecotone evolution", literally.
+  STATUS: logged for later per user; no action now.
