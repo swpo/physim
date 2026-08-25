@@ -1,0 +1,6 @@
+rerun plan: [('4|grow|rotor|liquid|s2|g2', 'v2g10_ds3_014'), ('3|grow|still|frozen|s1|g2', 'v2g10_ds2g2_006')]
+[assay_v2 v2g10_ds3_014_s2f s2] T=5000 interest=49.5 fired=[]
+RERUN v2g10_ds3_014 t0= 5000.0 I2= 49.5 ok= True cell= 4|switch|rotor|liquid|s1|g2
+[assay_v2 v2g10_ds2g2_006_s2f s2] T=20000 interest=45.2 fired=[]
+RERUN v2g10_ds2g2_006 t0= 20000.0 I2= 45.2 ok= True cell= 3|grow|still|frozen|s1|g2
+S2F_DONE

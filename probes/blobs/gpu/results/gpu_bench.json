@@ -1,0 +1,221 @@
+[
+ {
+  "kind": "smoke",
+  "where": "local-cpu-jax",
+  "note": "4 worlds (m0/m4/xv/bf) 50 steps f32 batched-padded vs CPU kernel",
+  "relL2": {
+   "m0": 5.26e-07,
+   "m4": 8.28e-07,
+   "xv": 6.64e-07,
+   "bf": 5.84e-07
+  },
+  "verdict": "PASS",
+  "ts": "2026-08-25 10:50:39"
+ },
+ {
+  "kind": "gate-dev",
+  "where": "local-cpu-jax",
+  "test": "test_padding+test_chunking",
+  "result": {
+   "padding": "bitwise PASS",
+   "noise_batch_invariance": "PASS",
+   "chunking_bitwise": "PASS",
+   "f64_T25_relL2": 1.37e-14
+  },
+  "verdict": "PASS",
+  "ts": "2026-08-25 10:56:44"
+ },
+ {
+  "kind": "batch_sweep",
+  "B": 1,
+  "N": 256,
+  "nf": 9,
+  "fields": 9,
+  "dtype": "f32",
+  "world": "pred",
+  "ms_per_step": 5.505173751153052,
+  "us_per_field_step": 611.6859723503391,
+  "ts": "2026-08-25 11:02:53",
+  "backend": "TFRT_CPU_0"
+ },
+ {
+  "kind": "batch_sweep",
+  "B": 4,
+  "N": 256,
+  "nf": 9,
+  "fields": 36,
+  "dtype": "f32",
+  "world": "pred",
+  "ms_per_step": 22.086120839230716,
+  "us_per_field_step": 613.5033566452977,
+  "ts": "2026-08-25 11:03:02",
+  "backend": "TFRT_CPU_0"
+ },
+ {
+  "kind": "batch_sweep",
+  "B": 16,
+  "N": 256,
+  "nf": 9,
+  "fields": 144,
+  "dtype": "f32",
+  "world": "pred",
+  "ms_per_step": 78.24196291621774,
+  "us_per_field_step": 543.3469646959566,
+  "ts": "2026-08-25 11:03:36",
+  "backend": "TFRT_CPU_0"
+ },
+ {
+  "kind": "pod",
+  "event": "created",
+  "pod_id": "c18ff93d6fdc40eaaf479f01aa9b3354",
+  "gpu": "A100 40GB SXM4",
+  "rate_usd_h": 1.99,
+  "ts": "2026-08-25 11:14:17"
+ },
+ {
+  "kind": "gate",
+  "gate": "anchor",
+  "where": "local-cpu-jax",
+  "A1_A4s_dt02": {
+   "d": 15.3952,
+   "target": 15.4,
+   "verdict": "PASS"
+  },
+  "A2_A5_dt005": {
+   "d": 15.7207,
+   "target": 15.7,
+   "verdict": "PASS"
+  },
+  "A3_A5_dt02_trap": {
+   "status": "replicated",
+   "t": 2250.0,
+   "cpu_ref": "~2600tu",
+   "verdict": "PASS"
+  },
+  "verdict": "PASS",
+  "ts": "2026-08-25 11:15:12"
+ },
+ {
+  "kind": "gate",
+  "gate": "f64",
+  "where": "local-cpu-jax",
+  "worst_relL2": 1.73e-13,
+  "modes": [
+   "single",
+   "batched7"
+  ],
+  "verdict": "PASS",
+  "ts": "2026-08-25 11:15:12"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 100.0,
+  "L": 128.0,
+  "N": 256,
+  "workers": 1,
+  "wall_s": 20.5,
+  "ms_per_step": 4.104,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:16:47"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 100.0,
+  "L": 128.0,
+  "N": 256,
+  "workers": 4,
+  "wall_s": 17.7,
+  "ms_per_step": 3.535,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:17:05"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 100.0,
+  "L": 256.0,
+  "N": 512,
+  "workers": 1,
+  "wall_s": 93.8,
+  "ms_per_step": 18.752,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:18:39"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 100.0,
+  "L": 256.0,
+  "N": 512,
+  "workers": 4,
+  "wall_s": 73.0,
+  "ms_per_step": 14.607,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:19:52"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 50.0,
+  "L": 512.0,
+  "N": 1024,
+  "workers": 1,
+  "wall_s": 215.0,
+  "ms_per_step": 86.007,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:23:27"
+ },
+ {
+  "kind": "cpu_baseline",
+  "world": "pred",
+  "T": 50.0,
+  "L": 512.0,
+  "N": 1024,
+  "workers": 4,
+  "wall_s": 161.2,
+  "ms_per_step": 64.47,
+  "backend": "numpy+scipy.fft M-series core",
+  "ts": "2026-08-25 11:26:08"
+ },
+ {
+  "kind": "gate",
+  "gate": "f64",
+  "where": "pod-A100",
+  "worst_relL2": 7.9e-13,
+  "modes": [
+   "single",
+   "batched7"
+  ],
+  "verdict": "PASS",
+  "ts": "2026-08-25 11:32:37"
+ },
+ {
+  "kind": "gate",
+  "gate": "anchor",
+  "where": "pod-A100",
+  "A1": {
+   "d": 15.39516,
+   "target": 15.4
+  },
+  "A2": {
+   "d": 15.72152,
+   "target": 15.7
+  },
+  "A3": {
+   "status": "replicated",
+   "t": 2250.0
+  },
+  "verdict": "PASS",
+  "ts": "2026-08-25 11:32:37"
+ },
+ {
+  "kind": "gate",
+  "gate": "pad+det+chunk",
+  "where": "pod-A100",
+  "verdict": "PASS",
+  "note": "padding relL2<=5.9e-7@200steps (cuFFT shape-dependent bits), same-shape determinism bitwise, chunking bitwise",
+  "ts": "2026-08-25 11:32:37"
+ }
+]

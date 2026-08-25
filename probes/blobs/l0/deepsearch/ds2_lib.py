@@ -212,9 +212,12 @@ def evaluate_v2(job):
         try:
             npz = (os.path.join(RUNS2, f'{job["cand"]}_a.npz')
                    if job.get("save_npz", True) else None)
+            kw = {}
+            if job.get("t0"):
+                kw["t0"] = float(job["t0"])   # horizon floor (seed2 fairness)
             out = MOD.run_assay(G.genome_json(g), seed=seed, L=128.0,
                                 workers=1, results_path=None,
-                                tag=job["cand"], save_npz=npz)
+                                tag=job["cand"], save_npz=npz, **kw)
         except Exception as e:
             row["status"] = "assay_error"
             row["error"] = repr(e)[:300]

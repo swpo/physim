@@ -1,0 +1,17 @@
+[assay_v2 v2g10_ds2g3_015 s1] T=2500 interest=66.3 fired=[]
+v2g10_ds2g3_015 ok 66.25007744675506 4|switch|mobile|liquid|s1|g2 
+[assay_v2 v2g10_ds2g2_003 s1] T=2500 interest=55.8 fired=['b_org']
+[assay_v2 v2g10_ds2g2_003 s1] T=5000 interest=59.3 fired=['b_org']
+[assay_v2 v2g10_ds2g2_003 s1] T=10000 interest=62.6 fired=[]
+v2g10_ds2g2_003 ok 62.56187779861132 3|grow|mobile|liquid|s1|g0 ext
+[assay_v2 v2g10_ds2g2_007 s1] T=2500 interest=36.0 fired=[]
+v2g10_ds2g2_007 ok 36.00129411725863 2|constant|still|flicker|s1|g2 
+[assay_v2 v2g10_gt_mv3 s1] T=2500 interest=36.0 fired=['c_acf']
+[assay_v2 v2g10_gt_mv3 s1] T=5000 interest=48.9 fired=['b_org']
+[assay_v2 v2g10_gt_mv3 s1] T=10000 interest=51.0 fired=['b_org']
+[assay_v2 v2g10_gt_mv3 s1] T=20000 interest=52.4 fired=[]
+v2g10_gt_mv3 ok 52.41313956991491 2|grow|drift|liquid|s1|g0 ext
+[assay_v2 v2g10_ds6_000 s1] T=2500 interest=65.3 fired=[]
+v2g10_ds6_000 ok 65.32854396587224 2|switch|mobile|flicker|s1|g2 
+[assay_v2 v2g10_gt_m0 s1] T=2500 interest=2.8 fired=[]
+v2g10_gt_m0 ok 2.8000000000000003 1|constant|still|frozen|s1|g0 

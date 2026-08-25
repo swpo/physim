@@ -1,0 +1,15 @@
+[assay_v2 v2g10_ds3_014 s1] T=2500 interest=68.3 fired=['a_mem', 'b_org']
+[assay_v2 v2g10_ds3_014 s1] T=5000 interest=74.2 fired=[]
+v2g10_ds3_014 ok 74.23989761394299 4|grow|rotor|liquid|s2|g2 ext
+[assay_v2 v2g10_ds2g1_010 s1] T=2500 interest=58.8 fired=['b_org']
+[assay_v2 v2g10_ds2g1_010 s1] T=5000 interest=58.2 fired=[]
+v2g10_ds2g1_010 ok 58.21578323856714 2|switch|mobile|liquid|s1|g2 ext
+[assay_v2 v2g10_ds3_017 s1] T=2500 interest=66.7 fired=[]
+v2g10_ds3_017 ok 66.65701809705806 3|switch|mobile|liquid|s1|g2 
+[assay_v2 v2g10_g0_jit_11 s1] T=2500 interest=66.3 fired=['a_mem', 'b_org']
+[assay_v2 v2g10_g0_jit_11 s1] T=5000 interest=67.6 fired=[]
+v2g10_g0_jit_11 ok 67.6001481111109 3|grow|rotor|liquid|s1|g2 ext
+[assay_v2 v2g10_ds6_012 s1] T=2500 interest=60.5 fired=[]
+v2g10_ds6_012 ok 60.476995275888335 2|switch|mobile|liquid|s1|g2 
+[assay_v2 v2g10_ds3_001 s1] T=2500 interest=57.7 fired=[]
+v2g10_ds3_001 ok 57.69898296585991 1|switch|mobile|liquid|s1|g2 

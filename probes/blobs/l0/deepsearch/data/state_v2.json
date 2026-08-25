@@ -1,5 +1,5 @@
 {
- "gen": 3,
+ "gen": 10,
  "gen_stats": [
   {
    "gen": 1,
@@ -274,6 +274,57 @@
     "ok": 6,
     "fail": 0
    }
+  },
+  {
+   "gen": 10,
+   "n": 24,
+   "events": {
+    "new": 18,
+    "improved": 2,
+    "held": 4,
+    "dead": 0
+   },
+   "opstat": {
+    "seed": {
+     "n": 17,
+     "ok": 17,
+     "best": 74.23989761394299,
+     "events": 13
+    },
+    "gt": {
+     "n": 7,
+     "ok": 7,
+     "best": 52.41313956991491,
+     "events": 7
+    }
+   },
+   "n_extended": 9,
+   "mean_I": 51.464089928938826,
+   "max_I": 74.23989761394299,
+   "max_cand": "v2g10_ds3_014",
+   "wall_sim_total": 0.0,
+   "census": {
+    "gen": 10,
+    "mint_attempt_rows": 0,
+    "mint_ok": 0,
+    "mint_funnel_fail": 0,
+    "mint_best": 0.0,
+    "carrier_rows": 3,
+    "carrier_ok": 3,
+    "carrier_best": 66.84045311457805,
+    "archive_cells": 18,
+    "cells_with_minted": 3,
+    "minted_uids_alive": [
+     "v2_006",
+     "v2_007",
+     "v3_005"
+    ]
+   },
+   "seed2": {
+    "n": 20,
+    "ok": 16,
+    "fail": 2
+   }
   }
  ],
  "blocks_g1": [
@@ -359,5 +410,32 @@
   "blk_ds2g2_006",
   "blk_ds2g2_010",
   "blk_ds2g2_013"
+ ],
+ "blocks_g11": [
+  "ref_M0",
+  "ref_M4_tau5.7",
+  "ref_XV_tau15.7",
+  "ref_BFIELD_g0.05",
+  "ref_iso_d0.65",
+  "ref_iso_d0.75",
+  "engine_10748",
+  "blk_v2g10_ds2g1_017",
+  "blk_v2g10_ds2g3_015",
+  "blk_v2g10_ds3_014",
+  "blk_v2g10_ds2g2_003",
+  "blk_v2g10_ds5_003",
+  "blk_v2g10_ds4_023",
+  "blk_v2g10_gt_xv",
+  "blk_v2g10_gt_bf",
+  "blk_v2g10_ds2g2_007",
+  "blk_v2g10_g0_jit_11",
+  "blk_v2g10_ds3_001",
+  "blk_v2g10_ds2g2_006",
+  "blk_v2g10_gt_mv3",
+  "blk_v2g10_ds2g3_005",
+  "blk_v2g10_gt_pred",
+  "blk_v2g10_gt_m0",
+  "blk_v2g10_gt_coex",
+  "blk_v2g10_gt_m4"
  ]
 }

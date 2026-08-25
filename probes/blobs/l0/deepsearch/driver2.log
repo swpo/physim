@@ -268,3 +268,53 @@ g3: 24 jobs -> 4 shards, loads ['54', '53', '53', '53']
 s2g3: 6 jobs -> 4 shards, loads ['14', '13', '24', '20']
 seed2 g3: 6 rows, ok=6 fail=0
 DRIVER2_DONE_3-3
+{
+ "gen": 10,
+ "n": 24,
+ "events": {
+  "new": 18,
+  "improved": 2,
+  "held": 4,
+  "dead": 0
+ },
+ "opstat": {
+  "seed": {
+   "n": 17,
+   "ok": 17,
+   "best": 74.23989761394299,
+   "events": 13
+  },
+  "gt": {
+   "n": 7,
+   "ok": 7,
+   "best": 52.41313956991491,
+   "events": 7
+  }
+ },
+ "n_extended": 9,
+ "mean_I": 51.464089928938826,
+ "max_I": 74.23989761394299,
+ "max_cand": "v2g10_ds3_014",
+ "wall_sim_total": 0.0,
+ "census": {
+  "gen": 10,
+  "mint_attempt_rows": 0,
+  "mint_ok": 0,
+  "mint_funnel_fail": 0,
+  "mint_best": 0.0,
+  "carrier_rows": 3,
+  "carrier_ok": 3,
+  "carrier_best": 66.84045311457805,
+  "archive_cells": 18,
+  "cells_with_minted": 3,
+  "minted_uids_alive": [
+   "v2_006",
+   "v2_007",
+   "v3_005"
+  ]
+ }
+}
+s2g10: 20 jobs -> 4 shards, loads ['44', '44', '43', '44']
+seed2 g10: 20 rows, ok=16 fail=2
+G10_INGESTED
+g11: 24 jobs -> 4 shards, loads ['56', '56', '55', '57']

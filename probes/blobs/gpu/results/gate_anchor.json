@@ -1,0 +1,38 @@
+[
+ {
+  "kind": "gate_anchor",
+  "backend": "TFRT_CPU_0",
+  "ts": "2026-08-25 11:09:18",
+  "rows": [
+   {
+    "gate": "A1_A4s_dt02",
+    "status": "ok",
+    "d_final": 15.395205755556747,
+    "target": 15.4,
+    "verdict": "PASS"
+   },
+   {
+    "gate": "A2_A5_dt005",
+    "status": "ok",
+    "d_final": 15.720658766247904,
+    "target": 15.7,
+    "verdict": "PASS"
+   },
+   {
+    "gate": "A3_A5_dt02_trap",
+    "status": "replicated",
+    "t_repl": 2250.0,
+    "sep_tail": [
+     15.235208082545954,
+     15.209552652202174,
+     15.129253280395677,
+     15.086398756322607,
+     15.016500961517922,
+     null
+    ],
+    "verdict": "PASS"
+   }
+  ],
+  "verdict": "PASS"
+ }
+]

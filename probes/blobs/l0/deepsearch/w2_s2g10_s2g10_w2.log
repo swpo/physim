@@ -1,0 +1,10 @@
+[assay_v2 v2g10_ds3_014_s2 s2] T=2500 interest=37.1 fired=[]
+v2g10_ds3_014_s2 ok 37.08961584597651 4|constant|rotor|liquid|s1|g2 
+[assay_v2 v2g10_ds2g2_006_s2 s2] T=2500 interest=22.2 fired=[]
+v2g10_ds2g2_006_s2 ok 22.206437718916288 3|oscillator|still|liquid|s1|g2 
+[assay_v2 v2g10_gt_coex_s2 s2] T=2500 interest=16.3 fired=[]
+v2g10_gt_coex_s2 ok 16.294917602091132 3|constant|still|frozen|s1|g2 
+[assay_v2 v2g10_gt_xv_s2 s2] T=2500 interest=28.6 fired=[]
+v2g10_gt_xv_s2 ok 28.642728636920662 2|constant|rotor|liquid|s1|g0 
+[assay_v2 v2g10_gt_bf_s2 s2] T=2500 interest=34.9 fired=[]
+v2g10_gt_bf_s2 ok 34.871182351979066 1|constant|mobile|liquid|s1|g2 

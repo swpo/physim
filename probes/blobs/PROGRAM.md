@@ -702,3 +702,19 @@ aligned-vacuum seam w/ traveler-at-seam, P3 non-aligned ramp, P4 halo leak, P5
 chemistry near seams) + patch-lit (domain decomposition / heterogeneous-RD /
 multi-model coupling review; the D(x) discretization red-flag question).
 Both parallel to the v2 main-run pipeline and blob-gpu.
+
+
+### patch-lit — ACCEPTED (2026-02-25; van Heijster refs spot-verified)
+Verdict: MODIFIED PoU on one grid. Load-bearing: (1) D(x) discretization — only
+div(D grad u) is safe; our spectral integrator supports none of the D(x) forms =>
+v1 patches keep ALL D global, blend reaction/wiring only (A-contrast via tau at
+fixed Dv — A=tau*Dv saves the M0-vs-M4 test); (2) ghost-force principle validates
+our vacuum-safe-wiring + iso-vacuum recipe independently; (3) seam phenomenology
+pre-catalogued by our own model class's literature (penetrate/rebound/pin/
+oscillate/slide/one-way/refract/HIOPs) => P2 assay checklist + both directions;
+(4) R2 homotopy pre-flight MANDATORY (convex mix of two good worlds can be lethal;
+wide seams don't fix bad paths); (5) generative-PoU gap is real (FBPINNs/POUnet/
+Flow-Lenia adjacent; static-geography PoU over dissipative-soliton RD = our claim).
+Seam rule w>=32-48px; seam-strip masking in metrics; fitness in patch cores for
+any evolve-v3 use (Flow-Lenia seam-parasite lesson). Relayed to blob-patchworlds
+BEFORE its first physics run (only conventions written).

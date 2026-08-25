@@ -1,0 +1,111 @@
+[
+ {
+  "kind": "gate_f64",
+  "T": 100.0,
+  "L": 128.0,
+  "noise": 0.0,
+  "backend": "TFRT_CPU_0",
+  "ts": "2026-08-25 11:03:24",
+  "rows": [
+   {
+    "world": "m0",
+    "mode": "single",
+    "relL2": 9.391957988779743e-15,
+    "cpu_s": 8.9,
+    "gpu_s": 4.5,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "single",
+    "relL2": 1.7271794941559162e-13,
+    "cpu_s": 9.1,
+    "gpu_s": 4.7,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "single",
+    "relL2": 5.2565264248040926e-14,
+    "cpu_s": 16.7,
+    "gpu_s": 12.3,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "single",
+    "relL2": 1.1362016905911599e-13,
+    "cpu_s": 13.5,
+    "gpu_s": 7.4,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "single",
+    "relL2": 5.274654936808074e-14,
+    "cpu_s": 28.6,
+    "gpu_s": 21.4,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "single",
+    "relL2": 6.277278021096095e-15,
+    "cpu_s": 25.4,
+    "gpu_s": 21.7,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "single",
+    "relL2": 3.9850548098846264e-14,
+    "cpu_s": 23.9,
+    "gpu_s": 18.7,
+    "gate": "PASS"
+   },
+   {
+    "world": "m0",
+    "mode": "batched7",
+    "relL2": 9.391957988779743e-15,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "batched7",
+    "relL2": 1.7271794941559162e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "batched7",
+    "relL2": 5.2565264248040926e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "batched7",
+    "relL2": 1.1362016905911599e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "batched7",
+    "relL2": 5.274654936808074e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "batched7",
+    "relL2": 6.277278021096095e-15,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "batched7",
+    "relL2": 3.9850548098846264e-14,
+    "gate": "PASS"
+   }
+  ],
+  "verdict": "PASS"
+ }
+]

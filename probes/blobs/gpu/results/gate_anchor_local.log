@@ -1,0 +1,4 @@
+A1 A4s dt=0.02: ok d*=15.395205755556747 [PASS]
+A2 A5 dt=0.005: ok d*=15.720658766247904 [PASS]
+A3 A5 dt=0.02 trap: replicated at t=2250.0 [PASS]
+GATE-ANCHOR: PASS

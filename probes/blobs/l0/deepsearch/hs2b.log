@@ -1,2 +1,6 @@
 [assay_v2 hs2_mv3 s1] T=2500 interest=36.0 fired=['c_acf']
 [assay_v2 hs2_mv3 s1] T=5000 interest=48.9 fired=['b_org']
+[assay_v2 hs2_mv3 s1] T=10000 interest=51.0 fired=['b_org']
+[assay_v2 hs2_mv3 s1] T=20000 interest=52.4 fired=[]
+hs2_mv3 ok I2= 52.41313956991491 cell= 2|grow|drift|liquid|s1|g0 T= 20000.0 wall= 2925.0 npz= hs2_mv3_a.npz hor= {'T_used': 20000.0, 'why': 'converged', 'n_ext': 3, 'traj': [(2500.0, 36.0), (5000.0, 48.88), (10000.0, 51.0), (20000.0, 52.41)]}
+HS2_DONE

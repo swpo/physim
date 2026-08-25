@@ -1,0 +1,30 @@
+bf_s1 36.59
+bf_s2 39.6
+bf_s3 41.81
+coex_s1 25.31
+coex_s2 23.32
+coex_s3 23.75
+m0_s1 3.1
+m0_s2 3.1
+m0_s3 3.1
+m4_s1 29.2
+m4_s2 24.8
+m4_s3 28.3
+mv3_s1 44.87
+mv3_s2 31.31
+mv3_s3 34.62
+pred_s1 34.93
+pred_s2 40.14
+pred_s3 39.64
+xv_s1 32.49
+xv_s2 42.91
+xv_s3 37.44
+m0    cpu=[3.1, 3.1, 3.1] gpu=[3.1, 3.1, 3.1] band=[2.1, 4.1] P1=True P2=True
+m4    cpu=[27.9, 30.8, 25.8] gpu=[29.2, 24.8, 28.3] band=[24.54, 32.08] P1=True P2=True
+xv    cpu=[32.5, 36.3, 37.4] gpu=[32.5, 42.9, 37.4] band=[31.26, 38.62] P1=True P2=True
+bf    cpu=[38.8, 41.4, 38.9] gpu=[36.6, 39.6, 41.8] band=[37.78, 42.44] P1=True P2=True
+pred  cpu=[39.2, 41.0, 41.8] gpu=[34.9, 40.1, 39.6] band=[38.21, 42.82] P1=True P2=True
+coex  cpu=[24.6, 20.1, 25.0] gpu=[25.3, 23.3, 23.8] band=[18.92, 26.2] P1=True P2=True
+mv3   cpu=[45.4, 41.0, 42.4] gpu=[44.9, 31.3, 34.6] band=[39.84, 46.52] P1=False P2=False
+P3 violated: xv !< mv3
+GATE-PARITY: FAIL drift: -0.914

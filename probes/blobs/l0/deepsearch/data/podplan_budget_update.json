@@ -1,0 +1,13 @@
+{
+ "when": "2026-08-25 10:01",
+ "pod_plan_v2": {
+  "pop": 96,
+  "gens": 25,
+  "elite_confirm_seeds": 3,
+  "L192_lane": "box-flagged elites, cap 2/gen",
+  "long_horizon_lane": "top-3 interest/gen -> T cap 40000 in confirm",
+  "immigration": 0.2,
+  "fleet": "~10x 16-vCPU nebius, ~$4/hr, ~25h wall, $100-250 est",
+  "log": "per-gen cost verification vs ~2000 core-h estimate"
+ }
+}

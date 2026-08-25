@@ -365,8 +365,10 @@ def rows_v2():
 
 
 def cmd_ingest(gen):
+    cfg0 = D2.config()
     rows = [r for r in rows_v2() if r.get("kind") == "ds2_eval"
-            and r.get("gen") == gen and r.get("phase") == "screen"]
+            and r.get("gen") == gen and r.get("phase") == "screen"
+            and r.get("metrics", "v1") == cfg0["metrics"]]
     seen, ev = set(), dict(new=0, improved=0, held=0, dead=0)
     opstat = {}
     scores = []
@@ -385,6 +387,7 @@ def cmd_ingest(gen):
                 c.write()
             s2jobs.append(dict(cand=r["cand"] + "_s2", gen=gen, op="seed2",
                                kind="seed2", seed=cfg["seed2"],
+                               t0=r.get("T_used"),      # horizon-fair gate
                                parents=[r["cand"]], cell_src=cell,
                                genome=r["genome"]))
         ev[event] = ev.get(event, 0) + 1
@@ -398,7 +401,7 @@ def cmd_ingest(gen):
             scores.append((r["cand"], r["interest"]))
     scores.sort(key=lambda z: -z[1])
     walls = [(r.get("wall_sim", 0) or 0) + (r.get("wall_sim_ext", 0) or 0)
-             for r in rows]
+             + (r.get("wall_assay", 0) or 0) for r in rows]
     n_ext = sum(1 for r in rows if r.get("extended"))
     census = D2.vertex_census(gen)
     stat = dict(gen=gen, n=len(seen), events=ev, opstat=opstat,
@@ -421,8 +424,10 @@ def cmd_ingest(gen):
 
 
 def cmd_ingest2(gen):
+    cfg0 = D2.config()
     rows = [r for r in rows_v2() if r.get("kind") == "ds2_eval"
-            and r.get("gen") == gen and r.get("phase") == "seed2"]
+            and r.get("gen") == gen and r.get("phase") == "seed2"
+            and r.get("metrics", "v1") == cfg0["metrics"]]
     n_ok, n_fail = 0, 0
     for r in rows:
         key, ok = D2.archive2_seed2(r)
@@ -440,6 +445,8 @@ def cmd_ingest2(gen):
 
 def cmd_confirm(n=12):
     cfg = D2.config()
+    assert cfg["metrics"] == "v1", \
+        "confirm is a v1-epoch concept; under assay_v2 the 2-seed screen replaces it"
     arch = arch2()
     holders = sorted(arch.items(), key=lambda kv: -kv[1]["interest"])
     jobs = []

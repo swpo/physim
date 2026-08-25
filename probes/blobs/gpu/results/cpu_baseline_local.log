@@ -1,0 +1,6 @@
+{"kind": "cpu_baseline", "world": "pred", "T": 100.0, "L": 128.0, "N": 256, "workers": 1, "wall_s": 20.5, "ms_per_step": 4.104, "backend": "numpy+scipy.fft M-series core"}
+{"kind": "cpu_baseline", "world": "pred", "T": 100.0, "L": 128.0, "N": 256, "workers": 4, "wall_s": 17.7, "ms_per_step": 3.535, "backend": "numpy+scipy.fft M-series core"}
+{"kind": "cpu_baseline", "world": "pred", "T": 100.0, "L": 256.0, "N": 512, "workers": 1, "wall_s": 93.8, "ms_per_step": 18.752, "backend": "numpy+scipy.fft M-series core"}
+{"kind": "cpu_baseline", "world": "pred", "T": 100.0, "L": 256.0, "N": 512, "workers": 4, "wall_s": 73.0, "ms_per_step": 14.607, "backend": "numpy+scipy.fft M-series core"}
+{"kind": "cpu_baseline", "world": "pred", "T": 50.0, "L": 512.0, "N": 1024, "workers": 1, "wall_s": 215.0, "ms_per_step": 86.007, "backend": "numpy+scipy.fft M-series core"}
+{"kind": "cpu_baseline", "world": "pred", "T": 50.0, "L": 512.0, "N": 1024, "workers": 4, "wall_s": 161.2, "ms_per_step": 64.47, "backend": "numpy+scipy.fft M-series core"}
