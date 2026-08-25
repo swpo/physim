@@ -1,0 +1,4 @@
+[assay_v2 ds2g11_010 s1] T=2500 interest=67.8 fired=['b_org']
+[assay_v2 ds2g11_010 s1] T=5000 interest=64.3 fired=['b_org']
+[assay_v2 ds2g11_010 s1] T=10000 interest=67.9 fired=[]
+ds2g11_010 ok 67.8614744476384 3|grow|rotor|liquid|s1|g2 ext

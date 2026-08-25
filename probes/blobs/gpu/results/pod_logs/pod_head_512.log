@@ -1,0 +1,2 @@
+backend: [CudaDevice(id=0)]
+{"kind": "headline_big512", "N": 512, "world": "pred", "T": 10000.0, "t_init_s": 0.8, "wall_s": 266.9, "ms_per_step_with_records": 0.5339, "status": "ok"}

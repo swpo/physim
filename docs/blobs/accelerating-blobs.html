@@ -1,0 +1,270 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Accelerating blobs — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Accelerating blobs: the GPU port</h1>
+<p class="meta">Post 9 — infrastructure: a JAX port of the blob genome simulator,
+correctness-gated against the locked CPU numerics, roofline-analyzed on an A100.
+One number up front: an evolution generation (96 worlds × 2,500 tu) drops from
+~14 CPU-core-hours to <b>14 minutes</b> — 57× per core, $0.005 per world at pod
+prices. Total development bill: $5.71.</p>
+
+<div class="note"><b>Why this exists.</b> Every campaign in this series ran on CPU
+cores: pop-96 evolution generations take overnight batches, and the roadmap wants
+512²–1024² worlds (16–64× today's area) for macro-scale ecology. The kernel is
+seven lines of math; it deserves to run at memory bandwidth. This post documents
+the port others should be able to use: the batching idea, the correctness gates
+(and why this program is paranoid about them), the roofline, what optimizations
+actually did, and the throughput table.</div>
+
+<h2>The kernel (what we're porting)</h2>
+<p>Every blob world in this series — from the single M0 blob to the evolved
+predator–prey ecologies — is one genome-parameterized PDE system
+(post 7): <code>n_act</code> cubic activator fields u<sub>i</sub> plus
+<code>n_chan</code> linear relaxation channels x<sub>c</sub>, integrated with a
+pseudo-spectral IMEX scheme at dt=0.02, dx=0.5, periodic:</p>
+<div class="eq">
+per step (op order is part of the contract):<br/>
+&nbsp;1. reaction with OLD u: &nbsp;R<sub>u</sub> = λu − u³ + k₁ − K·x (− bilinear vertices)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R<sub>x</sub> = (W·g(u−u₀) − x)/τ<br/>
+&nbsp;2. F ← F + dt·R,&nbsp;&nbsp; then activator noise (amplitude 2·10⁻³·√dt)<br/>
+&nbsp;3. exact diffusion in k-space: F ← irfft2( rfft2(F) · e<sup>−D k² dt</sup> )
+</div>
+<p>On CPU (numpy + scipy.fft, one core) a 12-field 256² world costs
+<b>5.3 ms/step ≈ 0.44 ms per field-step</b>, half FFT, half pointwise. A T=5000
+assay run is ~17 minutes; a pop-96 generation at T=2500 is ~14 core-hours.
+The workloads we care about: <b>(a)</b> populations of small worlds (3–14 fields,
+256², 125k–2M sequential steps — evolution's shape), <b>(b)</b> single large
+worlds (512²–1024²).</p>
+
+<h2>The batching idea: a generation is one tensor</h2>
+<p>Sequential steps can't be parallelized — dt is physics (post 2's lattice-pinning
+lesson, and the A5 trap below). What CAN be parallelized is <i>everybody else's
+world</i>. The port packs an entire population into one tensor:</p>
+<div class="eq">
+F : (B, nf_max, N, N) — B worlds × padded field count × grid<br/>
+per-field parameters (λ, k₁, u₀, D, 1/τ, thresholds) : (B, nf_max) tensors<br/>
+per-world couplings W, K : (B, nc, na) / (B, na, nc) — reaction = two einsums<br/>
+diffusion: ONE batched rfft2 over B·nf fields, multiply precomputed
+e<sup>−Dk²dt</sup>, irfft2
+</div>
+<p>Ragged worlds (a 3-field M0 next to a 14-field ecology) are <b>padded, not
+masked</b>: padding slots get λ=k₁=u₀=0, zero W rows/K columns, D=0, 1/τ=0. A
+zero-initialized padded field then stays exactly zero forever — inertness is by
+parameter construction, verified bitwise in the test suite. No cross-world term
+exists anywhere (reactions are per-world einsums, FFTs are per-field), so a NaN
+blow-up in one world cannot touch its neighbors — this matters because evolution
+searches <i>expect</i> some genomes to explode.</p>
+<p>The whole step is one <code>jax.jit</code> program; 250 steps (one record
+interval) run device-side in a <code>lax.fori_loop</code> per launch. Per-world
+threefry noise keys are folded on the <i>absolute</i> step index, so a chunked
+run is bit-identical to an unchunked one — same trick the CPU v2 assay uses for
+adaptive horizons, and it survives on GPU (gate below). f32 is the production
+dtype (matching the locked CPU assay); f64 is a flag away for parity testing.</p>
+
+<h2>The correctness gates (the paranoid part)</h2>
+<div class="warn"><b>The cautionary tale — the A5-dt trap</b> (post 8, program log).
+The A5 blob pair under IMEX at dt=0.02 slides <i>through</i> its true bond
+minimum d*=15.7, hits the 14.4 replication saddle, and replicates at ~2600 tu.
+Pure integrator artifact — reproduced independently in two CPU engines; dt≤0.005
+freezes the pair at d*=15.71 indefinitely. The lesson: <b>integrator changes can
+silently alter statics</b>, and "the movie looks the same" is not a gate. A GPU
+port must reproduce the physics <i>and</i> the known artifacts — same equations
++ same dt = same wrong answer. A port that accidentally "fixes" the trap has
+different numerics.</div>
+<p>Bitwise identity across backends is impossible (different FFT algorithms,
+different reduction orders), so the gates are defined at three levels, locked in
+<code>probes/blobs/gpu/GATES.md</code> <i>before</i> the benchmark battery ran:</p>
+<table>
+<tr><th>gate</th><th>definition</th><th>result (A100)</th></tr>
+<tr><td><b>F64 trajectory</b></td><td>all 7 ground-truth worlds, f64, noise=0,
+bit-identical ICs, T=100 tu (5,000 steps): rel-L2 field error &lt; 10⁻⁵ vs the
+locked CPU kernel, single AND batched-7 modes</td>
+<td><b>PASS</b> — worst 7.9·10⁻¹³ (8 orders inside the gate)</td></tr>
+<tr><td><b>Padding / determinism</b></td><td>padded slots exactly 0; solo-vs-padded
+trajectories bitwise (CPU) / ≤10⁻⁵ (GPU: cuFFT picks different kernels per batch
+shape — measured last-bit reassociation only); same-shape reruns bitwise</td>
+<td><b>PASS</b> (5.9·10⁻⁷ rel-L2 after 200 steps across batch shapes; bitwise
+same-shape)</td></tr>
+<tr><td><b>Chunked continuation</b></td><td>advance(25)×4 == advance(100)
+bitwise, noise on (absolute-step key folds)</td><td><b>PASS</b> — bitwise on GPU
+too</td></tr>
+<tr><td><b>Bond anchors</b></td><td>A4s pair dt=0.02 → d*=15.40±0.5%; A5 pair
+dt=0.005 → d*=15.70±0.5%; A5 pair dt=0.02 → must REPLICATE (the trap
+reproduces)</td>
+<td><b>PASS</b> — 15.3952, 15.7215, replicated at t=2250 (CPU: ~2600)</td></tr>
+<tr><td><b>Descriptor parity</b></td><td>full locked assay (T=5000, f32, working
+noise) × 7 worlds × seeds 1–3 on GPU, scored with the LOCKED metrics_v1;
+per-world interest inside the CPU 3-seed band (band, rank, and drift criteria
+declared in GATES.md)</td>
+<td><b>6/7 PASS; mv3 3-seed FAIL → investigated (below) → parity confirmed
+8v8</b>; mean drift −0.9 points (gate ≤2.0)</td></tr>
+</table>
+
+<div class="panel"><img src="../assets/blobs/gpu_parity.png" alt="descriptor parity"/></div>
+
+<h3>The honest negative: mv3 and what 3 seeds can't tell you</h3>
+<p>The machine-v3 world (engine+cargo, the top scorer) failed its 3-seed band:
+GPU seeds 2/3 scored 31/35 against a CPU band [39.8, 46.5]. Per the locked
+protocol — investigate, never re-roll — we ran seeds 4–8 on BOTH backends
+(pre-registered, all reported). Verdict: <b>mv3 is seed-bimodal on both
+engines</b> — a low mode (soup collapses to ~8 blobs, "constant", interest
+31–39) and a high mode (12–37 blobs, "switch/oscillator", interest 41–52). The
+CPU's original 3 seeds all happened to land in the high mode; the band was an
+underestimate of the world's own seed noise. Over 8v8 seeds: CPU 40.0±4.8 vs GPU
+40.4±7.1, Mann-Whitney p=0.88, drift +0.45 points. Parity holds; the
+methodological lesson — <b>3-seed acceptance bands are the wrong estimator for
+switch-regime worlds</b> — is recorded in GATES.md for the next metrics
+lock.</p>
+
+<h2>The roofline: where the kernel actually sits</h2>
+<p>Counting flops (2 real FFTs ≈ 5N²log₂N² + ~15 flops/px reaction + spectrum
+multiply) against minimum bytes (state in/out + spectrum in/out + E), the step's
+arithmetic intensity is <b>2.4–3.3 flop/byte</b> — far left of the A100's
+12.5 F/B ridge. This kernel is <b>bandwidth-bound by construction</b>: no
+tensor-core trick will help it (and we pin einsums to full FP32 precision anyway
+— on A100, XLA would otherwise silently use TF32 tensor cores, a ~10⁻³-level
+numerics change that the gates would catch).</p>
+<div class="panel"><img src="../assets/blobs/gpu_roofline.png" alt="roofline"/></div>
+<p>Measured points sit at 25–30% of nominal peak bandwidth under the
+minimum-traffic model — i.e. ~35–40% under the <i>as-executed</i> model once
+cuFFT's separate row/column passes and the standalone E-multiply kernel are
+counted (each stage is its own read+write; XLA cannot fuse into cuFFT custom
+calls). The residual gap is transform-size efficiency: 256² batched real FFTs
+are small transforms, and cuFFT's achievable fraction at that size is well below
+STREAM bandwidth. The practical readings:</p>
+<ul>
+<li><b>Batching is the whole game at 256²</b>: one 9-field world runs at
+15 µs/field-step (launch-dominated); 8+ worlds amortize to <b>5.0–5.7
+µs/field-step</b> and hold flat through 224 worlds (2,016 fields, the largest
+tested). 0.44 ms → 5.6 µs is <b>78× per field-step</b> vs one CPU core.</li>
+<li><b>f64 costs 1.85×</b> f32 (bandwidth ratio 2× minus fixed overheads) — cheap
+enough that the f64 parity gate can run routinely on every future kernel
+change.</li>
+<li><b>Large single worlds don't need batching</b>: 1024² at 0.91 ms/step is
+already at the bandwidth plateau (24% of peak; same fraction as batched
+256²).</li>
+</ul>
+<div class="panel"><img src="../assets/blobs/gpu_throughput.png" alt="throughput"/></div>
+
+<h2>The optimization log (tried / kept / rejected)</h2>
+<table>
+<tr><th>optimization</th><th>verdict</th><th>evidence</th></tr>
+<tr><td>batched population tensor, one jit</td><td><b>KEPT</b></td>
+<td>14.8 → 5.0–5.6 µs/field-step (2.6–3×). Batching cuFFT + pointwise across
+worlds is THE win.</td></tr>
+<tr><td>device-side chunk loop (<code>lax.fori_loop</code>, 250 steps/launch)</td>
+<td><b>KEPT</b></td><td>python-loop stepping at B=96 costs +8% (5.26 vs 4.86
+ms/step) ≈ 0.4 ms/step of host dispatch; that fixed cost would dominate at B=1
+(0.13 ms/step total). Chunking also removes 250 host syncs per record.</td></tr>
+<tr><td><code>donate_argnums</code> buffer reuse</td><td><b>KEPT</b></td>
+<td>no speed change; halves device memory, enabling 224-world batches.</td></tr>
+<tr><td>precomputed e<sup>−Dk²dt</sup> tensor</td><td><b>KEPT</b> (wash)</td>
+<td>recomputing exp on the fly: −1.6% (within noise). Precompute keeps the
+f64-computed-then-cast convention from the CPU kernel — an exactness argument,
+not a speed one.</td></tr>
+<tr><td>reaction fusion (one XLA fusion vs forced barrier)</td><td><b>KEPT</b></td>
+<td>unfused +10% (5.35 vs 4.85 ms/step). XLA already fuses the entire pointwise
+stage; don't break it.</td></tr>
+<tr><td>CUDA graphs (XLA command buffers incl. CUSTOM_CALL)</td>
+<td><b>REJECTED</b></td><td>B=1: +6% <i>slower</i>; B=96: ±0.0%. cuFFT custom
+calls fragment the capture; XLA's default launch pipeline is already
+near-optimal here. Honest negative.</td></tr>
+<tr><td>activator-only device pulls at record points</td><td><b>KEPT</b></td>
+<td>pop-96 wall 1,696 → 859 s (<b>2.0×</b>). Blob tracking needs only u-fields
+25× more often than the full state; pulling channels every record was half the
+assay cost. Biggest single win after batching itself.</td></tr>
+<tr><td>threaded host record path + async overlap</td><td><b>KEPT</b></td>
+<td>part of the same 2×: CPU tracking of record k overlaps GPU stepping of
+chunk k+1 (JAX async dispatch). 16 threads vs 8: wash (396 vs 403 w/h) — now
+bound by per-world labeling work.</td></tr>
+</table>
+
+<h2>The headline table</h2>
+<p>All numbers measured on the rented pod (A100 40GB SXM4, $1.99/h,
+lambdalabs; jax 0.4.38/cuda12). CPU equivalents measured on this project's
+M-series laptop core running the locked pipeline — the actual engine every prior
+post used. "With records" = the full locked assay pipeline (blob tracking,
+patch stats, snapshots), not bare stepping.</p>
+<table>
+<tr><th>workload</th><th>CPU (1 core, measured)</th><th>A100 (measured, with
+records)</th><th>speedup</th><th>$ per eval @ $1.99/h</th></tr>
+<tr><td><b>(i) evolution generation</b>: pop-96 × T=2500, ~9-field worlds,
+256²</td><td>513 s/world → 7.0 worlds/h/core (~13.7 core-h/generation)</td>
+<td><b>858 s/generation → 403 worlds/h</b></td><td><b>57× per core</b></td>
+<td><b>$0.005/world</b> ($0.47/generation)</td></tr>
+<tr><td><b>(ii) 512² single world</b>, T=10,000 (500k steps)</td>
+<td>2.60 h</td><td><b>264 s</b></td><td><b>35×</b></td><td>$0.15</td></tr>
+<tr><td><b>(iii) 1024² single world</b>, T=10,000</td><td>11.9 h</td>
+<td><b>1,171 s</b></td><td><b>37×</b></td><td>$0.65</td></tr>
+</table>
+<p>Context: the entire phase-5b deepsearch (6 generations × 96 worlds) that took
+the CPU program days of staggered batches would take <b>~90 minutes and ~$3</b>
+on one A100. The 1024² world — 64× today's assay area, the "macro-ecology"
+regime the roadmap couldn't afford — is a 20-minute, 65-cent object. The
+single-world numbers are pull-limited by the record pipeline, not stepping
+(pure stepping: 512² = 0.24 ms/step, 1024² = 0.91); a future
+device-side tracker could roughly double (ii)/(iii).</p>
+
+<h2>How to run it</h2>
+<div class="eq">
+probes/blobs/gpu/ &nbsp;(no repo-wide install; JAX cpu works out of the box, cuda12 wheel on pods)<br/>
+├ blobgpu/ &nbsp;&nbsp;core.py (stepper) · packing.py (genome→tensors) · soup.py (assay driver) · anchors.py<br/>
+├ tests/ &nbsp;&nbsp;&nbsp;&nbsp;gate_f64.py · gate_anchor.py · gate_parity.py · test_{padding,chunking,determinism}.py<br/>
+├ bench/ &nbsp;&nbsp;&nbsp;&nbsp;bench_step.py · bench_headline.py · roofline.py · make_figs.py<br/>
+└ GATES.md &nbsp;the locked gate definitions + status
+</div>
+<div class="eq">
+# single world, drop-in for the locked assay (same record dict as soup_sim_v2):<br/>
+from blobgpu.soup import run_soup_gpu<br/>
+rec = run_soup_gpu(genome, T=5000.0, seed=1)&nbsp;&nbsp;# → metrics_v1.full_battery(rec)<br/>
+<br/>
+# a population as one tensor (evolution's shape):<br/>
+from blobgpu.soup import init_soup_gpu_batch, advance_gpu_batch, snapshot_rec_gpu<br/>
+SS = init_soup_gpu_batch([(g, seed) for g, seed in jobs])&nbsp;&nbsp;# pads to (B, nf_max, N, N)<br/>
+advance_gpu_batch(SS, 2500.0)&nbsp;&nbsp;&nbsp;# chunk-safe, adaptive-T continuation OK<br/>
+recs = [snapshot_rec_gpu(S) for S in SS["worlds"]]<br/>
+<br/>
+# the gates (run before trusting ANY kernel change):<br/>
+python tests/gate_f64.py && python tests/gate_anchor.py<br/>
+python tests/gate_parity.py run&nbsp;&nbsp;# then: gate_parity.py score (locked metrics_v1)
+</div>
+<p>The v2 assay integration is a deliberate <i>hook, not a rewire</i>:
+<code>run_soup_gpu()</code> / the batch drivers produce byte-compatible records
+(they reuse <code>soup_sim_v2</code>'s own IC builder and record functions —
+same numpy RNG, bit-identical seeded soups), so a future evolution run swaps
+backends with one import. The live CPU v2 campaign keeps its engine untouched.</p>
+
+<div class="note"><b>Scope & bill.</b> Development + full battery: one A100 pod,
+2.9 h, <b>$5.71</b> (target was &lt;$50). Everything here is one GPU; the
+batched design has no cross-world terms, so multi-GPU sharding of a population
+is embarrassingly parallel when someone needs pop-1000. The obvious next step —
+a device-side blob labeler to un-bottleneck the record path — is bounded by
+measurement, not speculation: removing all record cost would give 1.4× on (i)
+(858 vs 608 s step-only) and 2.2–2.6× on (ii)/(iii).</div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="bounded-structures.html">Bounded structures</a></div>
+</body></html>

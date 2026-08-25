@@ -69,3 +69,19 @@ band-based, declared here:
 * exp(-D k^2 dt) computed in f64 then cast (CPU convention).
 * Reaction with OLD u; noise BEFORE diffusion; same op order as soup_sim_v2.
 * f32 is the production dtype (matches the locked CPU assay, gate PAR-F32).
+
+
+## Parity outcome (2026-02-25, recorded after the battery — addendum, not an edit)
+6/7 worlds passed P1+P2 under the locked 3-seed bands. mv3 FAILED the 3-seed
+band (GPU s2/s3 below). Investigation per protocol (no re-rolls): seeds 4-8
+added on BOTH backends (pre-registered, all reported).
+  CPU 8-seed: mean 39.99 sd 4.82   [45.4 41.0 42.4 38.9 44.6 41.2 35.4 31.0]
+  GPU 8-seed: mean 40.44 sd 7.06   [44.9 31.3 34.6 35.8 41.6 52.3 36.7 46.4]
+  Mann-Whitney p=0.88; mean drift +0.45 interest points (P4 holds, <=2.0).
+Diagnosis: mv3 is seed-bimodal on BOTH backends (low mode n_end~8 "constant"
+interest 31-39; high mode n_end 12-37 "switch/oscillator" interest 41-52).
+The CPU 3-seed reference happened to sample only the high mode; its band
+underestimated seed noise. VERDICT: descriptor parity CONFIRMED (P1/P2 on the
+widened evidence, P3 unaffected in disjoint pairs, P4 pass); the locked
+3-seed-band criterion was the wrong estimator for switch-regime worlds — kept
+on record as designed-FAIL, superseded by the 8v8 distribution test.

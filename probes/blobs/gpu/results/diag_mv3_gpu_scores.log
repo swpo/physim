@@ -1,0 +1,5 @@
+{"seed": 4, "interest": 35.76, "n_end": 8.0, "model": "constant", "slow": null, "spp": null}
+{"seed": 5, "interest": 41.58, "n_end": 27.0, "model": "switch", "slow": null, "spp": null}
+{"seed": 6, "interest": 52.27, "n_end": 21.0, "model": "switch", "slow": null, "spp": null}
+{"seed": 7, "interest": 36.71, "n_end": 7.0, "model": "switch", "slow": null, "spp": null}
+{"seed": 8, "interest": 46.39, "n_end": 12.0, "model": "oscillator", "slow": null, "spp": null}

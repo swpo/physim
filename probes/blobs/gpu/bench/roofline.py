@@ -51,6 +51,26 @@ def step_bytes_per_field(N, dtype="f32", passes=None):
     return react + fwd + emul + inv
 
 
+def step_bytes_staged(N, dtype="f32"):
+    """Staged (as-executed) traffic model: cuFFT runs row and column passes
+    (each a full read+write of the array), the E-multiply and reaction are
+    separate XLA kernels. This is what the pipeline ACTUALLY moves:
+      reaction+update : read F (+coupled fields ~1.5x amortized), write F'
+      rfft2 row pass  : r N^2, w 2M ; col pass: r 2M, w 2M
+      E-mult          : r 2M, r E (M, f32), w 2M
+      irfft2 col pass : r 2M, w 2M ; row pass: r 2M, w N^2
+    M = N*(N/2+1) ~ N^2/2 complex numbers (x2 floats).
+    """
+    b = BYTES[dtype]
+    M = N * (N // 2 + 1)
+    n2 = N * N
+    react = 2.5 * n2 * b
+    fwd = (n2 + 2 * M) * b + (4 * M) * b
+    emul = (4 * M) * b + M * 4          # E stored f32-per-dtype run; ~M reals
+    inv = (4 * M) * b + (2 * M + n2) * b
+    return react + fwd + emul + inv
+
+
 def intensity(N, dtype="f32"):
     fl, fft, pw = step_flops_per_field(N)
     by = step_bytes_per_field(N, dtype)

@@ -1,0 +1,28 @@
+backend: [CudaDevice(id=0)]
+B=   1 (    9 fields)    0.133 ms/step   14.76 us/field-step
+B=   2 (   18 fields)    0.123 ms/step    6.85 us/field-step
+B=   4 (   36 fields)    0.193 ms/step    5.35 us/field-step
+B=   8 (   72 fields)    0.361 ms/step    5.01 us/field-step
+B=  16 (  144 fields)    0.884 ms/step    6.14 us/field-step
+B=  32 (  288 fields)    1.677 ms/step    5.82 us/field-step
+B=  64 (  576 fields)    3.265 ms/step    5.67 us/field-step
+B=  96 (  864 fields)    4.861 ms/step    5.63 us/field-step
+B= 128 ( 1152 fields)    6.606 ms/step    5.73 us/field-step
+B= 224 ( 2016 fields)   11.492 ms/step    5.70 us/field-step
+B=   1 (    9 fields)    0.145 ms/step   16.14 us/field-step
+B=   4 (   36 fields)    0.356 ms/step    9.90 us/field-step
+B=  16 (  144 fields)    1.599 ms/step   11.10 us/field-step
+B=  64 (  576 fields)    6.044 ms/step   10.49 us/field-step
+B=  96 (  864 fields)    9.000 ms/step   10.42 us/field-step
+N=  128    0.081 ms/step
+N=  256    0.108 ms/step
+N=  512    0.242 ms/step
+N= 1024    0.907 ms/step
+N=  256    0.146 ms/step
+N=  512    0.431 ms/step
+N= 1024    1.749 ms/step
+fused+E       4.854 ms/step
+unfused       5.345 ms/step
+expfly        4.776 ms/step
+nonoise       4.380 ms/step
+py-loop       5.261 ms/step

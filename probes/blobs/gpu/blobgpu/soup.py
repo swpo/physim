@@ -100,10 +100,13 @@ def advance_gpu(S, T_target):
         raise ValueError("T_target must be a multiple of CREC")
     G = S["_gpu"]
     rec = S["rec"]
+    crec = S["crec"]
     t = S["t_step"]
     while S["status"] == "ok" and t <= steps_target:
         if S["recorded_at"] < t:
-            S["F"] = _pull(G)[0]
+            full = (t % crec == 0) or (S["snap_t"]
+                                       and t * dt >= S["snap_t"][0] - 1e-9)
+            S["F"] = _pull(G, acts_only=not full)[0]
             ok = V2._record(S, t)
             S["recorded_at"] = t
             if not ok:
@@ -159,7 +162,8 @@ def advance_gpu_batch(SS, T_target, overlap=True, progress=None):
     assert all(S["t_step"] == t for S in ok_worlds), "batch worlds out of sync"
 
     from concurrent.futures import ThreadPoolExecutor
-    n_rec_threads = min(8, os.cpu_count() or 1)
+    n_rec_threads = int(os.environ.get("BLOBGPU_REC_THREADS",
+                                       min(16, os.cpu_count() or 1)))
 
     def record_one(args):
         S, Fh, t_now = args
@@ -171,11 +175,13 @@ def advance_gpu_batch(SS, T_target, overlap=True, progress=None):
         if not ok:
             S["_t_stopped"] = t_now        # CPU contract: stop at exit point
 
+    ex = (ThreadPoolExecutor(n_rec_threads)
+          if (n_rec_threads > 1 and len(worlds) > 4) else None)
+
     def record_all(t_now, F_list):
-        if n_rec_threads > 1 and len(worlds) > 4:
-            with ThreadPoolExecutor(n_rec_threads) as ex:
-                list(ex.map(record_one, [(S, Fh, t_now)
-                                         for S, Fh in zip(worlds, F_list)]))
+        if ex is not None:
+            list(ex.map(record_one, [(S, Fh, t_now)
+                                     for S, Fh in zip(worlds, F_list)]))
         else:
             for S, Fh in zip(worlds, F_list):
                 record_one((S, Fh, t_now))
@@ -208,6 +214,8 @@ def advance_gpu_batch(SS, T_target, overlap=True, progress=None):
             t += n
         if progress and (t % (rec * 100) == 0):
             progress(t * dt)
+    if ex is not None:
+        ex.shutdown(wait=True)
     wall = time.time() - t0w
     for S in worlds:
         if "_t_stopped" in S:

@@ -1,0 +1,18 @@
+backend: [CudaDevice(id=0)] flags: 
+baseline B=1 N=256: 0.1252 ms/step
+baseline B=4 N=256: 0.2151 ms/step
+baseline B=96 N=256: 4.8683 ms/step
+baseline B=1 N=512: 0.1993 ms/step
+baseline B=1 N=1024: 0.9046 ms/step
+backend: [CudaDevice(id=0)] flags: --xla_gpu_enable_command_buffer=FUSION,CUBLAS,CUSTOM_CALL
+cmdbuf_full B=1 N=256: 0.1333 ms/step
+cmdbuf_full B=4 N=256: 0.1940 ms/step
+cmdbuf_full B=96 N=256: 4.8690 ms/step
+cmdbuf_full B=1 N=512: 0.2001 ms/step
+cmdbuf_full B=1 N=1024: 0.9059 ms/step
+backend: [CudaDevice(id=0)] flags: --xla_gpu_enable_command_buffer=
+cmdbuf_off B=1 N=256: 0.1542 ms/step
+cmdbuf_off B=4 N=256: 0.2100 ms/step
+cmdbuf_off B=96 N=256: 4.8642 ms/step
+cmdbuf_off B=1 N=512: 0.2173 ms/step
+cmdbuf_off B=1 N=1024: 0.9218 ms/step

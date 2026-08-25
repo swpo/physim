@@ -1,0 +1,7 @@
+backend: [CudaDevice(id=0)]
+t=500
+t=1000
+t=1500
+t=2000
+t=2500
+{"kind": "headline_pop96", "B": 96, "world": "pred", "T": 2500.0, "L": 128.0, "t_init_s": 3.1, "wall_s": 858.5, "worlds_per_hour": 402.6, "statuses": {"ok": 96}}

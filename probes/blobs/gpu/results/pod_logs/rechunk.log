@@ -1,0 +1,3 @@
+chunked==single (f32+noise, T=100): fields True records True
+f64 noise-free GPU-vs-CPU relL2 @T=25: 1.004e-13
+PASS

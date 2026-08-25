@@ -1,0 +1,47 @@
+[
+ {
+  "opt": "batched population tensor (B,nf,N,N), one jit",
+  "verdict": "KEPT",
+  "evidence": "14.8 -> 5.0-5.6 us/field-step (2.6-3x): batching cuFFT + pointwise across worlds is THE win"
+ },
+ {
+  "opt": "device-side chunk loop (lax.fori_loop, 250 steps/launch)",
+  "verdict": "KEPT",
+  "evidence": "python-loop single steps at B=96: +8% (5.26 vs 4.86 ms/step) = ~0.4 ms/step host dispatch; that fixed cost would dominate at B=1 (0.13 ms/step) \u2014 est 4x, not measured"
+ },
+ {
+  "opt": "donate_argnums buffer reuse",
+  "verdict": "KEPT",
+  "evidence": "no measurable speed change; halves device footprint, enables 224-world batches"
+ },
+ {
+  "opt": "precomputed exp(-D k^2 dt) tensor",
+  "verdict": "KEPT (wash)",
+  "evidence": "on-the-fly exp: 4.78 vs 4.85 ms/step (-1.6%, within noise). Precompute wins on f64-exactness bookkeeping (computed in f64 once, cast)"
+ },
+ {
+  "opt": "reaction fusion (single XLA fusion vs barrier)",
+  "verdict": "KEPT",
+  "evidence": "unfused +10% (5.35 vs 4.85). XLA fuses the whole pointwise stage into ~2 kernels; barrier splits it"
+ },
+ {
+  "opt": "XLA command buffers / CUDA graphs (FUSION,CUBLAS,CUSTOM_CALL)",
+  "verdict": "REJECTED",
+  "evidence": "B=1: +6% slower; B=96: 0.0%. cuFFT custom calls prevent whole-loop capture; XLA default already near-optimal"
+ },
+ {
+  "opt": "acts-only device pulls at REC records",
+  "verdict": "KEPT",
+  "evidence": "pop-96 wall 1696 -> 859 s (2.0x): PCIe pull + f64 convert of channel fields was half the record cost"
+ },
+ {
+  "opt": "threaded host record path (8 threads)",
+  "verdict": "KEPT",
+  "evidence": "part of the same 2x (tracking overlaps GPU chunk via async dispatch)"
+ },
+ {
+  "opt": "16 record threads",
+  "verdict": "REJECTED (wash)",
+  "evidence": "396 vs 403 w/h: record path now bound by per-world labeling, not thread count"
+ }
+]

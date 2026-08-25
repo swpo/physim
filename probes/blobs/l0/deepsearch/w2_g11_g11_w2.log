@@ -1,1 +1,5 @@
 ds2g11_011 fail_g0a None None 
+[assay_v2 ds2g11_005 s1] T=2500 interest=55.6 fired=['b_org']
+[assay_v2 ds2g11_005 s1] T=5000 interest=57.7 fired=['b_org']
+[assay_v2 ds2g11_005 s1] T=10000 interest=62.7 fired=[]
+ds2g11_005 ok 62.66560887180413 3|grow|mobile|liquid|s1|g0 ext

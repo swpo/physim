@@ -718,3 +718,20 @@ Flow-Lenia adjacent; static-geography PoU over dissipative-soliton RD = our clai
 Seam rule w>=32-48px; seam-strip masking in metrics; fitness in patch cores for
 any evolve-v3 use (Flow-Lenia seam-parasite lesson). Relayed to blob-patchworlds
 BEFORE its first physics run (only conventions written).
+
+
+### blob-gpu — ACCEPTED (scorecard + controller inspection 2026-02-25)
+JAX port certified: f64 trajectory parity 7.9e-13 worst (gate 1e-5) on all 7 GTs
+single+batched; bond anchors pass INCLUDING the A5-dt trap reproduction (the port
+reproduces the physics AND the artifact — the right kind of fidelity); descriptor
+parity 6/7 in 3-seed bands + mv3 resolved by pre-registered 8v8 protocol (seed-
+bimodal on BOTH engines, MW p=0.88 — parity at distribution level; lesson: 3-seed
+bands are the wrong estimator for switch-regime worlds, flagged to metrics-v2).
+PERF: bandwidth-bound (AI 2.4-3.3 vs A100 ridge 12.5), 25-30% nominal BW;
+5.0-5.7 us/field-step FLAT from 72 to 2016 batched fields (CPU core: 440 us) =
+~80x; honest optimization log incl. CUDA-graphs REJECTED (+6% slower).
+HEADLINES: pop-96 T=2500 assay = 858 s (403 worlds/h, $0.005/world); 512^2 T=10k
+= 264 s (35x CPU); 1024^2 T=10k = 1171 s. A 6-gen deepsearch = 90 min / $3.
+Pod bill $5.71 total (2.87 h, terminated). Post 9 accelerating-blobs.html live.
+IMPLICATION: v3-scale searches (pop 200+, L=512+, T=40k lanes) are now $10-30
+problems; the CPU-fleet era ends after the current v2 run.

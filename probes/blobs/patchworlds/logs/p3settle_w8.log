@@ -1,0 +1,3 @@
+pmaps: {'k1': [0], 'u0': [0]}
+w=8.0: RHS0 max u=1.247e-03; end RHS u=8.949e-04; max|u-u0map|=0.0021 at x=22lu; nuc=0
+logged

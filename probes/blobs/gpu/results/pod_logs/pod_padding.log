@@ -1,0 +1,4 @@
+bf: padded-vs-solo relL2=5.78e-07 ok=True pad-slots-zero=True
+xv: padded-vs-solo relL2=0.00e+00 ok=True pad-slots-zero=True
+noise stream batch-invariant (m4, seed 7): relL2=5.87e-07 ok=True
+PASS

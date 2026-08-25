@@ -1,0 +1,1 @@
+{"seed": 7, "interest": 35.366685288708595, "C": {"C1_popdyn": 0.05, "C2_timescale": 0.318, "C3_motion": 0.582, "C4_graph": 1.0, "C5_memory": 0.0, "C6_ecology": 0.037, "C7_roles": 0.93}, "n_end": 8.0, "model": "constant", "slow": null}

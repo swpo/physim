@@ -1,0 +1,6 @@
+C1 pure-B (k1=-0.8) poke: {'status': 'died', 'ncomp_final': 0, 'ncomp_max': 1, 'area_final': [0.0]}
+C2 chord s=0.5: {'status': 'ok', 'ncomp_final': 1}
+C2 chord s=1.0: {'status': 'died', 'ncomp_final': 0}
+C2 dispersion ok: True
+C3 pure-M0 pair sep15.4: {'ncomp_final': 2, 'sep0': 15.399179874709908, 'sep_final': 15.233726524743826, 'sep_t1000': 15.505018049205393}
+logged

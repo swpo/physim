@@ -107,5 +107,223 @@
    }
   ],
   "verdict": "PASS"
+ },
+ {
+  "kind": "gate_f64",
+  "T": 100.0,
+  "L": 128.0,
+  "noise": 0.0,
+  "backend": "cuda:0",
+  "ts": "2026-08-25 15:26:12",
+  "rows": [
+   {
+    "world": "m0",
+    "mode": "single",
+    "relL2": 4.795195375716884e-14,
+    "cpu_s": 16.0,
+    "gpu_s": 2.0,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "single",
+    "relL2": 7.777871852142984e-13,
+    "cpu_s": 9.3,
+    "gpu_s": 0.6,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "single",
+    "relL2": 2.297542063815142e-13,
+    "cpu_s": 34.9,
+    "gpu_s": 1.1,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "single",
+    "relL2": 5.903330193467002e-13,
+    "cpu_s": 18.9,
+    "gpu_s": 0.8,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "single",
+    "relL2": 3.656409352563437e-13,
+    "cpu_s": 51.9,
+    "gpu_s": 1.5,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "single",
+    "relL2": 2.4070232560908084e-14,
+    "cpu_s": 44.2,
+    "gpu_s": 1.5,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "single",
+    "relL2": 1.1367523700930626e-13,
+    "cpu_s": 46.7,
+    "gpu_s": 1.3,
+    "gate": "PASS"
+   },
+   {
+    "world": "m0",
+    "mode": "batched7",
+    "relL2": 4.833455705738983e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "batched7",
+    "relL2": 7.914423796143381e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "batched7",
+    "relL2": 2.3010914017577547e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "batched7",
+    "relL2": 5.959948032082869e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "batched7",
+    "relL2": 3.656409352563437e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "batched7",
+    "relL2": 2.4070232560908084e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "batched7",
+    "relL2": 1.1367806041767125e-13,
+    "gate": "PASS"
+   }
+  ],
+  "verdict": "PASS"
+ },
+ {
+  "kind": "gate_f64",
+  "T": 100.0,
+  "L": 128.0,
+  "noise": 0.0,
+  "backend": "cuda:0",
+  "ts": "2026-08-25 17:12:55",
+  "rows": [
+   {
+    "world": "m0",
+    "mode": "single",
+    "relL2": 4.795195375716884e-14,
+    "cpu_s": 14.6,
+    "gpu_s": 1.8,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "single",
+    "relL2": 7.777871852142984e-13,
+    "cpu_s": 13.5,
+    "gpu_s": 0.7,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "single",
+    "relL2": 2.297542063815142e-13,
+    "cpu_s": 29.6,
+    "gpu_s": 1.2,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "single",
+    "relL2": 5.903330193467002e-13,
+    "cpu_s": 26.8,
+    "gpu_s": 0.8,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "single",
+    "relL2": 3.656409352563437e-13,
+    "cpu_s": 49.0,
+    "gpu_s": 1.6,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "single",
+    "relL2": 2.4070232560908084e-14,
+    "cpu_s": 43.0,
+    "gpu_s": 1.5,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "single",
+    "relL2": 1.1367523700930626e-13,
+    "cpu_s": 33.8,
+    "gpu_s": 1.4,
+    "gate": "PASS"
+   },
+   {
+    "world": "m0",
+    "mode": "batched7",
+    "relL2": 4.833455705738983e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "m4",
+    "mode": "batched7",
+    "relL2": 7.914423796143381e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "xv",
+    "mode": "batched7",
+    "relL2": 2.3010914017577547e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "bf",
+    "mode": "batched7",
+    "relL2": 5.959948032082869e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "pred",
+    "mode": "batched7",
+    "relL2": 3.656409352563437e-13,
+    "gate": "PASS"
+   },
+   {
+    "world": "coex",
+    "mode": "batched7",
+    "relL2": 2.4070232560908084e-14,
+    "gate": "PASS"
+   },
+   {
+    "world": "mv3",
+    "mode": "batched7",
+    "relL2": 1.1367806041767125e-13,
+    "gate": "PASS"
+   }
+  ],
+  "verdict": "PASS"
  }
 ]

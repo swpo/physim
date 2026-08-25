@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 HERE = os.path.dirname(os.path.abspath(__file__))
 GPU = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, GPU)
-from bench.roofline import (step_flops_per_field, step_bytes_per_field, A100)
+from bench.roofline import (step_flops_per_field, step_bytes_per_field,
+                            step_bytes_staged, A100)
 
 DOCS = os.path.normpath(os.path.join(GPU, "..", "..", "..", "docs", "assets",
                                      "blobs"))
@@ -37,17 +38,21 @@ def latest(rws, key):
 
 # ------------------------------------------------------------------ roofline
 def fig_roofline(pod_rows_f32, pod_rows_f64, out):
-    fig, ax = plt.subplots(figsize=(7.2, 5.4))
+    fig, ax = plt.subplots(figsize=(7.6, 5.4))
     bw = A100["bw_GBs"] * 1e9
     peak32 = A100["fp32_TFLOPS"] * 1e12
     peak64 = A100["fp64_TFLOPS"] * 1e12
-    ai = np.logspace(-1, 2.2, 200)
+    ai = np.logspace(-0.7, 2.0, 200)
     ax.plot(ai, np.minimum(ai * bw, peak32) / 1e12, "-", color="#0969da",
-            lw=2, label="A100 roofline (fp32 non-tensor, 1.56 TB/s)")
+            lw=2, label="A100 40GB roofline (fp32 non-tensor)")
     ax.plot(ai, np.minimum(ai * bw, peak64) / 1e12, "--", color="#8250df",
-            lw=1.5, label="fp64 ceiling")
-    # measured points: achieved flops = model flops / measured time
-    for rws, mk, lab in ((pod_rows_f32, "o", "f32"), (pod_rows_f64, "s", "f64")):
+            lw=1.5, label="fp64 compute ceiling")
+    ridge = peak32 / bw
+    ax.axvline(ridge, color="#57606a", lw=0.8, ls=":")
+    ax.text(ridge * 1.06, 0.12, f"ridge {ridge:.1f} F/B", fontsize=8,
+            color="#57606a", rotation=90)
+    for rws, mk, lab, col in ((pod_rows_f32, "o", "f32", "#d1242f"),
+                              (pod_rows_f64, "s", "f64", "#9a6700")):
         xs, ys, ann = [], [], []
         for r in rws:
             N = r["N"]; nf = r.get("nf", 9); B = r.get("B", 1)
@@ -56,18 +61,30 @@ def fig_roofline(pod_rows_f32, pod_rows_f64, out):
             t = r["ms_per_step"] * 1e-3
             xs.append(fl / by)
             ys.append(fl * nf * B / t / 1e12)
-            ann.append(f"B{B} N{N}")
-        ax.plot(xs, ys, mk, ms=7, label=f"measured ({lab})",
-                color="#d1242f" if lab == "f32" else "#9a6700", zorder5 := 5)
+            ann.append(f"B{B}·{N}")
+        ax.plot(xs, ys, mk, ms=7, color=col, label=f"measured ({lab})",
+                zorder=5, lw=0)
+        keep = {"B1·128", "B1·256", "B8·256", "B96·256", "B1·1024",
+                "B1·512"}
+        seen_ann = set()
         for x, y, a in zip(xs, ys, ann):
+            if a not in keep or a in seen_ann:
+                continue
+            seen_ann.add(a)
             ax.annotate(a, (x, y), textcoords="offset points",
-                        xytext=(6, -4), fontsize=7, color="#57606a")
+                        xytext=(7, -4), fontsize=7.5, color="#57606a")
     ax.set_xscale("log"); ax.set_yscale("log")
-    ax.set_xlabel("arithmetic intensity (flop / byte)")
-    ax.set_ylabel("achieved Tflop/s")
-    ax.set_title("blob step kernel on the A100 roofline")
+    ax.set_ylim(0.05, 30)
+    ax.set_xlabel("arithmetic intensity (flop/byte, minimum-traffic model)")
+    ax.set_ylabel("achieved Tflop/s (model flops / measured time)")
+    ax.set_title("the blob step kernel on the A100 roofline",
+                 fontsize=12)
+    ax.text(0.02, 0.97, "AI 2.4–3.3 F/B: bandwidth-bound.\n"
+            "gap to roof = cuFFT multi-pass traffic\n+ launch overhead "
+            "(small B), not compute",
+            transform=ax.transAxes, fontsize=8.5, va="top", color="#57606a")
     ax.grid(alpha=0.3, which="both")
-    ax.legend(fontsize=9, loc="upper left")
+    ax.legend(fontsize=9, loc="lower right")
     fig.tight_layout()
     fig.savefig(out, dpi=140)
     print("wrote", out)
@@ -111,30 +128,42 @@ def fig_throughput(out):
 
 # -------------------------------------------------------------------- parity
 def fig_parity(out):
-    par = json.load(open(os.path.join(GPU, "results", "gate_parity.json")))[-1]
+    hist = json.load(open(os.path.join(GPU, "results", "gate_parity.json")))
+    par = [h for h in hist if h.get("kind") == "gate_parity"][-1]
+    inv = [h for h in hist if h.get("kind") == "gate_parity_investigation"][-1]
     ref = json.load(open(os.path.normpath(os.path.join(
         GPU, "..", "l0", "complexity", "v1_scores_all.json"))))
     names = ["m0", "m4", "xv", "bf", "pred", "coex", "mv3"]
-    fig, ax = plt.subplots(figsize=(7.6, 4.8))
-    xs = np.arange(len(names))
+    fig, ax = plt.subplots(figsize=(8.2, 4.9))
     for i, n in enumerate(names):
         cpu = [ref[f"gt_{n}_s{s}"]["interest"] for s in (1, 2, 3)]
         v = par["verdicts"][n]
-        gpu = v["gpu"]
+        gpu = list(v["gpu"])
+        if n == "mv3":                     # 8-seed investigation data
+            cpu = inv["cpu_8seed"]["scores"]
+            gpu = inv["gpu_8seed"]["scores"]
         band = v["band"]
-        ax.add_patch(plt.Rectangle((i - 0.32, band[0]), 0.64,
-                                   band[1] - band[0], alpha=0.15,
+        ax.add_patch(plt.Rectangle((i - 0.34, band[0]), 0.68,
+                                   band[1] - band[0], alpha=0.14,
                                    color="#0969da", lw=0))
-        ax.plot([i - 0.13] * 3, cpu, "o", color="#57606a", ms=6,
+        jx = np.linspace(-0.16, -0.10, len(cpu))
+        ax.plot(i + jx, cpu, "o", color="#57606a", ms=6,
                 label="CPU seeds" if i == 0 else None)
-        ax.plot([i + 0.13] * 3, gpu, "o", color="#d1242f", ms=6,
+        jx = np.linspace(0.10, 0.16, len(gpu))
+        ax.plot(i + jx, gpu, "o", color="#d1242f", ms=6,
                 label="GPU seeds" if i == 0 else None)
-    ax.set_xticks(xs, names)
+    ax.annotate("mv3: seed-bimodal on BOTH backends\n8v8 seeds: p=0.88, "
+                "drift +0.5", xy=(6, 31), xytext=(3.6, 8),
+                fontsize=8.5, color="#57606a",
+                arrowprops=dict(arrowstyle="->", color="#57606a", lw=0.8))
+    ax.set_xticks(np.arange(len(names)), names)
     ax.set_ylabel("interest score (metrics_v1, locked)")
-    ax.set_title("descriptor parity: locked assay battery, CPU vs GPU runs\n"
-                 "(shaded = acceptance band from CPU seed scatter)")
+    ax.set_title("descriptor parity on the locked assay battery\n"
+                 "(shaded = 3-seed CPU acceptance band; mv3 shown with the "
+                 "8-seed investigation)")
     ax.grid(alpha=0.3, axis="y")
-    ax.legend(fontsize=9)
+    ax.set_ylim(0, 56)
+    ax.legend(fontsize=9, loc="upper left")
     fig.tight_layout()
     fig.savefig(out, dpi=140)
     print("wrote", out)

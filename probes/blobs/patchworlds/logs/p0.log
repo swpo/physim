@@ -1,0 +1,6 @@
+dispersion stable along chord: True | A range 3.0 4.0
+s=0.25: ok ncomp=1 area=[29.0]
+s=0.5: ok ncomp=1 area=[30.0]
+s=0.75: ok ncomp=1 area=[31.0]
+P0 verdict: PASS
+logged
