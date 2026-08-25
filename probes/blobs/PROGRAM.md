@@ -695,3 +695,10 @@ the locked v1 battery, bond anchors incl. the A5-dt trap); roofline analysis +
 optimization log; drop-in run_soup_gpu(); public post accelerating-blobs.html
 (the path others will use). One GPU pod authorized, target < $50, terminate when
 idle. Independent of the CPU main run.
+
+
+### Patchworlds probes spawned (2026-02-25): blob-patchworlds (P1 identity, P2
+aligned-vacuum seam w/ traveler-at-seam, P3 non-aligned ramp, P4 halo leak, P5
+chemistry near seams) + patch-lit (domain decomposition / heterogeneous-RD /
+multi-model coupling review; the D(x) discretization red-flag question).
+Both parallel to the v2 main-run pipeline and blob-gpu.
