@@ -1,0 +1,6 @@
+ds2g2_016 ok 64.66410724698581 4|mobile|liquid|m1|a4 
+ds2g2_006 ok 36.12530408929631 3|drift|liquid|m1|a4 
+ds2g2_012 ok 34.221090564096855 3|drift|frozen|m1|a3 
+ds2g2_018 fail_g0a None None 
+ds2g2_021 ok 0.0 1|still|gas|m0|a2 
+ds2g2_023 all_dead 0.0 None 

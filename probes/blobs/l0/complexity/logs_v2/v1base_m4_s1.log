@@ -1,0 +1,1 @@
+{"tag": "v1base_m4", "seed": 1, "status": "ok", "interest": 24.336886709856348, "C": {"C1_popdyn": 0.05, "C2_timescale": 0.117, "C3_motion": 0.814, "C4_graph": 1.0, "C5_memory": 0.0, "C6_ecology": 0.0, "C7_roles": 0.0}, "wall": 670.8}

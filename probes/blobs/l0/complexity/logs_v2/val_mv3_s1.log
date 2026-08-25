@@ -1,0 +1,2 @@
+[assay_v2 mv3 s1] T=2500 fired=[]
+{"tag": "mv3", "seed": 1, "interest": 36.0055092510536, "horizon": 2500.0, "why": "static", "C": {"C1_popdyn": 0.05, "C2_timescale": 0.707, "C3_motion": 0.491, "C4_graph": 1.0, "C5_memory": 0.0, "C6_ecology": 0.083, "C7_roles": 0.951, "C8_succession": 0.0}, "flags": {"box_limit": true, "box_span_frac": 0.859, "box_persist": 0.333}}

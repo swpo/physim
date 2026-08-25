@@ -16158,5 +16158,14 @@
   "e1_children": 54,
   "rh1_children": 10,
   "ts": "2026-08-20 20:50:35"
+ },
+ {
+  "kind": "val_gate",
+  "gate": "lib_format_exactness",
+  "passed": true,
+  "v1_sharechan_vvw": true,
+  "v2_crossedge_xv": true,
+  "note": "operators ported to lib format; behavior gates for own-engine versions already logged (V1_behavior_vvw_recal, V1b_M0M0_deadend_repro, V2_behavior_rotor_certproto all PASS)",
+  "ts": "2026-08-24 17:52:33"
  }
 ]

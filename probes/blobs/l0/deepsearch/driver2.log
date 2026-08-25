@@ -1,0 +1,270 @@
+g1: 24 jobs -> 4 shards, loads ['54', '54', '54', '55']
+{
+ "gen": 1,
+ "n": 24,
+ "events": {
+  "new": 2,
+  "improved": 5,
+  "held": 8,
+  "dead": 9
+ },
+ "opstat": {
+  "merge_cross_edge": {
+   "n": 4,
+   "ok": 4,
+   "best": 66.38626834191376,
+   "events": 2
+  },
+  "dup_act": {
+   "n": 2,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "delete_bilin": {
+   "n": 1,
+   "ok": 1,
+   "best": 9.525831785517411,
+   "events": 0
+  },
+  "mutate": {
+   "n": 5,
+   "ok": 5,
+   "best": 62.64071880675428,
+   "events": 3
+  },
+  "mint_bilin": {
+   "n": 3,
+   "ok": 3,
+   "best": 73.6971623729091,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 5,
+   "ok": 1,
+   "best": 0.0,
+   "events": 0
+  },
+  "add_chan": {
+   "n": 2,
+   "ok": 1,
+   "best": 64.50704070234696,
+   "events": 1
+  },
+  "merge_slow_tanh": {
+   "n": 1,
+   "ok": 1,
+   "best": 73.83268289522672,
+   "events": 1
+  },
+  "merge_share_chan": {
+   "n": 1,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  }
+ },
+ "n_extended": 3,
+ "mean_I": 33.61897416447025,
+ "max_I": 73.83268289522672,
+ "max_cand": "ds2g1_017",
+ "wall_sim_total": 33556.0,
+ "census": {
+  "gen": 1,
+  "mint_attempt_rows": 3,
+  "mint_ok": 3,
+  "mint_funnel_fail": 0,
+  "mint_best": 73.6971623729091,
+  "carrier_rows": 3,
+  "carrier_ok": 3,
+  "carrier_best": 73.6971623729091,
+  "archive_cells": 38,
+  "cells_with_minted": 0,
+  "minted_uids_alive": []
+ }
+}
+s2g1: 7 jobs -> 4 shards, loads ['13', '23', '21', '19']
+seed2 g1: 7 rows, ok=7 fail=0
+g2: 24 jobs -> 4 shards, loads ['52', '52', '53', '53']
+{
+ "gen": 2,
+ "n": 24,
+ "events": {
+  "new": 5,
+  "improved": 6,
+  "held": 4,
+  "dead": 9
+ },
+ "opstat": {
+  "mutate": {
+   "n": 5,
+   "ok": 3,
+   "best": 64.01684524483136,
+   "events": 2
+  },
+  "merge_cross_edge": {
+   "n": 3,
+   "ok": 3,
+   "best": 56.97754541466664,
+   "events": 3
+  },
+  "merge_slow_tanh": {
+   "n": 2,
+   "ok": 2,
+   "best": 64.66410724698581,
+   "events": 1
+  },
+  "delete_bilin": {
+   "n": 1,
+   "ok": 1,
+   "best": 34.14272943093341,
+   "events": 1
+  },
+  "mint_bilin": {
+   "n": 3,
+   "ok": 3,
+   "best": 38.5276806563721,
+   "events": 2
+  },
+  "immigrate": {
+   "n": 5,
+   "ok": 3,
+   "best": 0.0,
+   "events": 0
+  },
+  "dup_act": {
+   "n": 2,
+   "ok": 1,
+   "best": 34.221090564096855,
+   "events": 1
+  },
+  "merge_share_chan": {
+   "n": 1,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "add_chan": {
+   "n": 2,
+   "ok": 2,
+   "best": 57.4413862360011,
+   "events": 1
+  }
+ },
+ "n_extended": 1,
+ "mean_I": 32.08935042832171,
+ "max_I": 64.66410724698581,
+ "max_cand": "ds2g2_016",
+ "wall_sim_total": 20893.9,
+ "census": {
+  "gen": 2,
+  "mint_attempt_rows": 3,
+  "mint_ok": 3,
+  "mint_funnel_fail": 0,
+  "mint_best": 38.5276806563721,
+  "carrier_rows": 3,
+  "carrier_ok": 3,
+  "carrier_best": 38.5276806563721,
+  "archive_cells": 43,
+  "cells_with_minted": 2,
+  "minted_uids_alive": [
+   "v2_006",
+   "v2_007"
+  ]
+ }
+}
+s2g2: 11 jobs -> 4 shards, loads ['32', '33', '25', '33']
+seed2 g2: 11 rows, ok=9 fail=0
+DRIVER2_DONE_1-2
+g3: 24 jobs -> 4 shards, loads ['54', '53', '53', '53']
+{
+ "gen": 3,
+ "n": 24,
+ "events": {
+  "new": 3,
+  "improved": 3,
+  "held": 8,
+  "dead": 10
+ },
+ "opstat": {
+  "add_chan": {
+   "n": 2,
+   "ok": 1,
+   "best": 65.0411020494268,
+   "events": 1
+  },
+  "merge_cross_edge": {
+   "n": 3,
+   "ok": 3,
+   "best": 72.30509024670438,
+   "events": 2
+  },
+  "mutate": {
+   "n": 5,
+   "ok": 4,
+   "best": 60.23007579550823,
+   "events": 2
+  },
+  "merge_share_chan": {
+   "n": 1,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 5,
+   "ok": 3,
+   "best": 0.0,
+   "events": 0
+  },
+  "dup_act": {
+   "n": 2,
+   "ok": 1,
+   "best": 39.54707840664165,
+   "events": 0
+  },
+  "mint_bilin": {
+   "n": 3,
+   "ok": 3,
+   "best": 65.49586667110991,
+   "events": 1
+  },
+  "merge_slow_tanh": {
+   "n": 2,
+   "ok": 2,
+   "best": 61.19258519302028,
+   "events": 0
+  },
+  "delete_bilin": {
+   "n": 1,
+   "ok": 1,
+   "best": 58.366182394694185,
+   "events": 0
+  }
+ },
+ "n_extended": 1,
+ "mean_I": 33.24679618299515,
+ "max_I": 72.30509024670438,
+ "max_cand": "ds2g3_015",
+ "wall_sim_total": 20553.9,
+ "census": {
+  "gen": 3,
+  "mint_attempt_rows": 3,
+  "mint_ok": 3,
+  "mint_funnel_fail": 0,
+  "mint_best": 65.49586667110991,
+  "carrier_rows": 3,
+  "carrier_ok": 3,
+  "carrier_best": 65.49586667110991,
+  "archive_cells": 46,
+  "cells_with_minted": 3,
+  "minted_uids_alive": [
+   "v2_006",
+   "v2_007",
+   "v3_005"
+  ]
+ }
+}
+s2g3: 6 jobs -> 4 shards, loads ['14', '13', '24', '20']
+seed2 g3: 6 rows, ok=6 fail=0
+DRIVER2_DONE_3-3

@@ -1,0 +1,2 @@
+[assay_v2 bf s2] T=2500 fired=[]
+{"tag": "bf", "seed": 2, "interest": 35.32171940489333, "horizon": 2500.0, "why": "static", "C": {"C1_popdyn": 0.05, "C2_timescale": 0.0, "C3_motion": 0.797, "C4_graph": 1.0, "C5_memory": 0.859, "C6_ecology": 0.0, "C7_roles": 0.0, "C8_succession": 0.0}, "flags": {"box_limit": false, "box_span_frac": 0.055, "box_persist": 0.0}}

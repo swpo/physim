@@ -1,0 +1,6 @@
+ds2g1_014 ok 66.38626834191376 4|rotor|liquid|m1|a4 
+ds2g1_012 fail_g0a None None 
+ds2g1_015 ok 27.935989012642132 3|drift|frozen|m1|a3 
+ds2g1_008 ok 9.525831785517411 3|still|frozen|m1|a3 
+ds2g1_007 ok 35.01861709442784 1|mobile|liquid|m1|a1 
+ds2g1_019 all_dead 0.0 None 

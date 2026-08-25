@@ -1,0 +1,6 @@
+ds2g3_014 ok 55.57583560898131 4|rotor|liquid|m1|a4 
+ds2g3_001 ok 37.48530118855252 4|drift|frozen|m1|a4 
+ds2g3_003 ok 25.57696743022851 3|still|frozen|m1|a3 
+ds2g3_012 fail_g0a None None 
+ds2g3_010 all_dead 0.0 None 
+ds2g3_023 ok 0.0 1|still|gas|m1|a2 

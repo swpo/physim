@@ -1,0 +1,6 @@
+[assay_v2 pred s2] T=2500 fired=['a_mem', 'b_org']
+[assay_v2 pred s2] T=2500 interest=40.3 -> EXTEND
+[assay_v2 pred s2] T=5000 fired=['a_mem']
+[assay_v2 pred s2] T=5000 interest=37.9 -> EXTEND
+[assay_v2 pred s2] T=10000 fired=[]
+{"tag": "pred", "seed": 2, "interest": 35.190772292958464, "horizon": 10000.0, "why": "converged", "C": {"C1_popdyn": 0.55, "C2_timescale": 0.585, "C3_motion": 0.014, "C4_graph": 0.582, "C5_memory": 0.887, "C6_ecology": 0.053, "C7_roles": 0.06, "C8_succession": 0.0}, "flags": {"box_limit": true, "box_span_frac": 1.0, "box_persist": 1.0}}

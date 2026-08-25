@@ -1,0 +1,2 @@
+[assay_v2 m0_smoke s7] T=2500 fired=[]
+{"tag": "m0_smoke", "seed": 7, "interest": 6.65, "horizon": 2500.0, "why": "static", "C": {"C1_popdyn": 0.4, "C2_timescale": 0.0, "C3_motion": 0.0, "C4_graph": 0.25, "C5_memory": 0.0, "C6_ecology": 0.0, "C7_roles": 0.0, "C8_succession": 0.0}, "flags": {"box_limit": false, "box_span_frac": 0.051, "box_persist": 0.0}}

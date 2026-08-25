@@ -1,0 +1,6 @@
+picks: {'hs2_top': 'ds2g1_017', 'hs2_mint': 'ds2g3_005'}
+[assay_v2 hs2_top s1] T=2500 interest=64.7 fired=[]
+hs2_top ok I2= 64.72742253576148 cell= 2|switch|mobile|liquid|s1|g2 T= 2500.0 hor= {'T_used': 2500.0, 'why': 'static', 'n_ext': 0, 'traj': [(2500.0, 64.73)]}
+[assay_v2 hs2_mint s1] T=2500 interest=66.8 fired=[]
+hs2_mint ok I2= 66.84045311457805 cell= 2|switch|mobile|flicker|s1|g2 T= 2500.0 hor= {'T_used': 2500.0, 'why': 'static', 'n_ext': 0, 'traj': [(2500.0, 66.84)]}
+HS_DONE

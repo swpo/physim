@@ -666,3 +666,16 @@ Two searchers spawned:
   preserving merges tested; 2-seed elite confirmation before block library; 20%
   immigration. Local validation first; controller rents pods for the 20-gen run.
 Membrane/top-down discussion queued after v2 is in motion (user).
+
+
+### l0-metrics-v2 — LOCKED & ACCEPTED (scorecard + controller audit 2026-02-25)
+All M1-M6 delivered, validation 10 worlds x 3 seeds, seed-3 out-of-sample clean,
+SHA256-pinned lock. v2 rank: m0 2.8 << coex 15 < m4 24 < xv 31 < bf 34 < mv3 41 ~
+pred 45 << ds3_017 65 ~ ds6_000 66 < ds3_014 76 — the succession world is now the
+corpus top (v1 had it 8 BELOW ds3_017; the horizon founnd what the fixed screen
+missed). CONTROLLER AUDIT fresh seed 13: ds3_014 auto-extends 2500->5000->10000
+(fires a_mem+b_org then converges) landing 77.9; m0 stops at 2500 scoring 2.8.
+Honest notes: mv3 soup bimodal across seeds (machine assembles or not — recommend
+org_model cell keys); statics pay ~8% C8 dilution by design; pred +5 from horizon
+(undervalued in v1). Continuation sim bitwise-identical (parity gate).
+GREENLIT: evolve-v2 local gens on assay_v2, then pod main run.

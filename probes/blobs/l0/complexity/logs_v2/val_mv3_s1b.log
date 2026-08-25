@@ -1,0 +1,5 @@
+[assay_v2 mv3 s1] T=2500 interest=36.0 fired=['c_acf']
+[assay_v2 mv3 s1] T=5000 interest=49.6 fired=['b_org']
+[assay_v2 mv3 s1] T=10000 interest=51.3 fired=['b_org']
+[assay_v2 mv3 s1] T=20000 interest=53.4 fired=['b_org']
+{"tag": "mv3", "seed": 1, "interest": 53.426246534614485, "horizon": 20000.0, "why": "cap", "C": {"C1_popdyn": 0.7, "C2_timescale": 1.0, "C3_motion": 0.406, "C4_graph": 1.0, "C5_memory": 0.0, "C6_ecology": 0.527, "C7_roles": 0.904, "C8_succession": 0.0}, "flags": {"box_limit": true, "box_span_frac": 1.0, "box_persist": 0.604}}

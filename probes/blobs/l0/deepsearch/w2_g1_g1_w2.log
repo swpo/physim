@@ -1,0 +1,6 @@
+ds2g1_013 ok 45.21212836812512 4|drift|liquid|m1|a4 ext
+ds2g1_010 ok 64.50704070234696 2|mobile|liquid|m1|a3 
+ds2g1_011 fail_g0a None None 
+ds2g1_004 ok 37.23795406207541 3|mobile|frozen|m1|a3 
+ds2g1_021 all_dead 0.0 None 
+ds2g1_022 ok 0.0 1|still|gas|m0|a2 

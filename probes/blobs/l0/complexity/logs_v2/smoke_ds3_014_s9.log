@@ -1,0 +1,4 @@
+[assay_v2 ds3_014_smoke s9] T=2500 fired=['a_mem', 'b_org']
+[assay_v2 ds3_014_smoke s9] T=5000 fired=['b_org']
+[assay_v2 ds3_014_smoke s9] T=10000 fired=[]
+{"tag": "ds3_014_smoke", "seed": 9, "interest": 59.687712280101636, "horizon": 10000.0, "why": "converged", "C": {"C1_popdyn": 0.55, "C2_timescale": 0.647, "C3_motion": 0.63, "C4_graph": 1.0, "C5_memory": 0.787, "C6_ecology": 0.085, "C7_roles": 0.905, "C8_succession": 0.5}, "flags": {"box_limit": true, "box_span_frac": 1.0, "box_persist": 0.864}}

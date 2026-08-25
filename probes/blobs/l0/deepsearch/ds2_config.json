@@ -1,0 +1,25 @@
+{
+ "metrics": "v2",
+ "T_screen": 2500.0,
+ "T_extend": 5000.0,
+ "T_confirm": 5000.0,
+ "adaptive": true,
+ "seed": 1,
+ "seed2": 2,
+ "pop": 24,
+ "mix": {
+  "mutate": 5,
+  "mint_bilin": 3,
+  "delete_bilin": 1,
+  "add_chan": 2,
+  "dup_act": 2,
+  "merge": 6,
+  "immigrate": 5
+ },
+ "merge_mix": {
+  "cross_edge": 3,
+  "slow_tanh": 2,
+  "share_chan": 1
+ },
+ "n_workers": 4
+}

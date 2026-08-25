@@ -1,0 +1,6 @@
+bf s1 rc=0
+bf s2 rc=0
+coex s1 rc=0
+coex s2 rc=0
+mv3 s1 rc=0
+mv3 s2 rc=0

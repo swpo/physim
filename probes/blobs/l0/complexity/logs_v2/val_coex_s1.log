@@ -1,0 +1,2 @@
+[assay_v2 coex s1] T=2500 fired=[]
+{"tag": "coex", "seed": 1, "interest": 15.56119267631369, "horizon": 2500.0, "why": "static", "C": {"C1_popdyn": 0.05, "C2_timescale": 0.201, "C3_motion": 0.01, "C4_graph": 0.452, "C5_memory": 0.267, "C6_ecology": 0.0, "C7_roles": 0.385, "C8_succession": 0.0}, "flags": {"box_limit": false, "box_span_frac": 0.062, "box_persist": 0.0}}

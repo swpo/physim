@@ -1,0 +1,485 @@
+{
+ "bf_s1": {
+  "int2": 33.37,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.735,
+   "C4_graph": 1.0,
+   "C5_memory": 0.795,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.055,
+   "box_persist": 0.0
+  }
+ },
+ "bf_s2": {
+  "int2": 35.32,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.797,
+   "C4_graph": 1.0,
+   "C5_memory": 0.859,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.055,
+   "box_persist": 0.0
+  }
+ },
+ "coex_s1": {
+  "int2": 15.56,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.201,
+   "C3_motion": 0.01,
+   "C4_graph": 0.452,
+   "C5_memory": 0.267,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.385,
+   "C8_succession": 0.0
+  },
+  "nsi": 3.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.062,
+   "box_persist": 0.0
+  }
+ },
+ "coex_s2": {
+  "int2": 16.29,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.201,
+   "C3_motion": 0.023,
+   "C4_graph": 0.51,
+   "C5_memory": 0.255,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.408,
+   "C8_succession": 0.0
+  },
+  "nsi": 3.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 0.407
+  }
+ },
+ "ds3_014_s1": {
+  "int2": 77.26,
+  "T": 10000.0,
+  "C": {
+   "C1_popdyn": 0.55,
+   "C2_timescale": 0.658,
+   "C3_motion": 0.606,
+   "C4_graph": 1.0,
+   "C5_memory": 0.808,
+   "C6_ecology": 1.0,
+   "C7_roles": 0.91,
+   "C8_succession": 0.5
+  },
+  "nsi": 4.0,
+  "stages": 2,
+  "grade": 2,
+  "org_model": "relaxation",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 0.969
+  }
+ },
+ "ds3_014_s2": {
+  "int2": 80.29,
+  "T": 20000.0,
+  "C": {
+   "C1_popdyn": 0.55,
+   "C2_timescale": 0.833,
+   "C3_motion": 0.699,
+   "C4_graph": 1.0,
+   "C5_memory": 0.778,
+   "C6_ecology": 1.0,
+   "C7_roles": 0.925,
+   "C8_succession": 0.5
+  },
+  "nsi": 4.0,
+  "stages": 2,
+  "grade": 2,
+  "org_model": "relaxation",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 0.851
+  }
+ },
+ "ds3_014_s9": {
+  "int2": 77.06,
+  "T": 10000.0,
+  "C": {
+   "C1_popdyn": 0.55,
+   "C2_timescale": 0.647,
+   "C3_motion": 0.63,
+   "C4_graph": 1.0,
+   "C5_memory": 0.787,
+   "C6_ecology": 1.0,
+   "C7_roles": 0.905,
+   "C8_succession": 0.5
+  },
+  "nsi": 4.0,
+  "stages": 2,
+  "grade": 2,
+  "org_model": "relaxation",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 0.864
+  }
+ },
+ "ds3_017_s1": {
+  "int2": 60.2,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.007,
+   "C3_motion": 0.736,
+   "C4_graph": 1.0,
+   "C5_memory": 0.507,
+   "C6_ecology": 0.765,
+   "C7_roles": 0.996,
+   "C8_succession": 0.0
+  },
+  "nsi": 3.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 0.695,
+   "box_persist": 0.235
+  }
+ },
+ "ds3_017_s2": {
+  "int2": 66.97,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.802,
+   "C4_graph": 1.0,
+   "C5_memory": 0.6,
+   "C6_ecology": 0.993,
+   "C7_roles": 0.999,
+   "C8_succession": 0.0
+  },
+  "nsi": 3.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 0.621,
+   "box_persist": 0.062
+  }
+ },
+ "ds6_000_s1": {
+  "int2": 65.0,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.525,
+   "C4_graph": 0.958,
+   "C5_memory": 0.832,
+   "C6_ecology": 0.971,
+   "C7_roles": 0.873,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.473,
+   "box_persist": 0.0
+  }
+ },
+ "ds6_000_s2": {
+  "int2": 65.94,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.038,
+   "C3_motion": 0.52,
+   "C4_graph": 0.937,
+   "C5_memory": 0.842,
+   "C6_ecology": 1.0,
+   "C7_roles": 0.875,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.527,
+   "box_persist": 0.0
+  }
+ },
+ "m0_s1": {
+  "int2": 2.8,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.0,
+   "C4_graph": 0.25,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.051,
+   "box_persist": 0.0
+  }
+ },
+ "m0_s2": {
+  "int2": 2.8,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.0,
+   "C3_motion": 0.0,
+   "C4_graph": 0.25,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.051,
+   "box_persist": 0.0
+  }
+ },
+ "m4_s1": {
+  "int2": 22.36,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.117,
+   "C3_motion": 0.814,
+   "C4_graph": 1.0,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.062,
+   "box_persist": 0.0
+  }
+ },
+ "m4_s2": {
+  "int2": 26.26,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.318,
+   "C3_motion": 0.921,
+   "C4_graph": 1.0,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.0,
+   "C8_succession": 0.0
+  },
+  "nsi": 1.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.062,
+   "box_persist": 0.0
+  }
+ },
+ "mv3_s1": {
+  "int2": 53.43,
+  "T": 20000.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 1.0,
+   "C3_motion": 0.406,
+   "C4_graph": 1.0,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.527,
+   "C7_roles": 0.904,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 1,
+  "grade": 0,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 0.604
+  }
+ },
+ "mv3_s2": {
+  "int2": 38.39,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.466,
+   "C3_motion": 0.364,
+   "C4_graph": 1.0,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.097,
+   "C7_roles": 0.916,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.098,
+   "box_persist": 0.0
+  }
+ },
+ "pred_s1": {
+  "int2": 45.36,
+  "T": 10000.0,
+  "C": {
+   "C1_popdyn": 0.7,
+   "C2_timescale": 0.637,
+   "C3_motion": 0.063,
+   "C4_graph": 1.0,
+   "C5_memory": 0.898,
+   "C6_ecology": 0.23,
+   "C7_roles": 0.05,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "switch",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 1.0
+  }
+ },
+ "pred_s2": {
+  "int2": 44.1,
+  "T": 10000.0,
+  "C": {
+   "C1_popdyn": 0.55,
+   "C2_timescale": 0.585,
+   "C3_motion": 0.073,
+   "C4_graph": 1.0,
+   "C5_memory": 0.887,
+   "C6_ecology": 0.281,
+   "C7_roles": 0.06,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 2,
+  "org_model": "relaxation",
+  "flags": {
+   "box_limit": true,
+   "box_span_frac": 1.0,
+   "box_persist": 1.0
+  }
+ },
+ "xv_s1": {
+  "int2": 29.61,
+  "T": 5000.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.707,
+   "C3_motion": 1.0,
+   "C4_graph": 0.25,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.433,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.055,
+   "box_persist": 0.0
+  }
+ },
+ "xv_s2": {
+  "int2": 28.64,
+  "T": 2500.0,
+  "C": {
+   "C1_popdyn": 0.05,
+   "C2_timescale": 0.415,
+   "C3_motion": 0.582,
+   "C4_graph": 1.0,
+   "C5_memory": 0.0,
+   "C6_ecology": 0.0,
+   "C7_roles": 0.595,
+   "C8_succession": 0.0
+  },
+  "nsi": 2.0,
+  "stages": 0,
+  "grade": 0,
+  "org_model": "constant",
+  "flags": {
+   "box_limit": false,
+   "box_span_frac": 0.062,
+   "box_persist": 0.0
+  }
+ }
+}

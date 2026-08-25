@@ -1,0 +1,4 @@
+smk2_mint ok 3.1 1|still|frozen|m0|a1 minted: ['smoke_v0']
+smk2_addch ok 3.1 1|still|frozen|m0|a1 minted: []
+smk2_dup fail_g0a None None minted: []
+SMOKE_DONE

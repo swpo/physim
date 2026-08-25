@@ -1,0 +1,2 @@
+[assay_v2 ds6_000 s2] T=2500 fired=[]
+{"tag": "ds6_000", "seed": 2, "interest": 65.93611883849564, "horizon": 2500.0, "why": "static", "C": {"C1_popdyn": 0.7, "C2_timescale": 0.038, "C3_motion": 0.52, "C4_graph": 0.936, "C5_memory": 0.842, "C6_ecology": 1.0, "C7_roles": 0.875, "C8_succession": 0.0}, "flags": {"box_limit": false, "box_span_frac": 0.527, "box_persist": 0.0}}
