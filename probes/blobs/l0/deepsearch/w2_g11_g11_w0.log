@@ -4,3 +4,6 @@ ds2g11_008 ok 65.20646376970564 4|switch|mobile|liquid|s1|g2
 [assay_v2 ds2g11_007 s1] T=5000 interest=69.5 fired=[]
 ds2g11_007 ok 69.53426621575373 4|grow|rotor|liquid|s1|g2 ext
 [assay_v2 ds2g11_009 s1] T=2500 interest=61.6 fired=['a_mem']
+[assay_v2 ds2g11_009 s1] T=5000 interest=63.5 fired=['a_mem']
+[assay_v2 ds2g11_009 s1] T=10000 interest=59.8 fired=[]
+ds2g11_009 ok 59.81254656398127 3|grow|rotor|frozen|s1|g2 ext

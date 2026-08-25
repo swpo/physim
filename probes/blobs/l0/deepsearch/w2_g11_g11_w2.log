@@ -3,3 +3,13 @@ ds2g11_011 fail_g0a None None
 [assay_v2 ds2g11_005 s1] T=5000 interest=57.7 fired=['b_org']
 [assay_v2 ds2g11_005 s1] T=10000 interest=62.7 fired=[]
 ds2g11_005 ok 62.66560887180413 3|grow|mobile|liquid|s1|g0 ext
+[assay_v2 ds2g11_002 s1] T=2500 interest=17.5 fired=[]
+ds2g11_002 ok 17.53844767027202 2|constant|still|frozen|s1|g2 
+[assay_v2 ds2g11_000 s1] T=2500 interest=10.4 fired=[]
+ds2g11_000 ok 10.414826802830477 3|constant|still|frozen|s1|g2 
+ds2g11_012 fail_g0a None None 
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+ds2g11_019 assay_error 0.0 None 

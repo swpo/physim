@@ -2,3 +2,11 @@
 ds2g11_016 ok 28.96132904155251 4|constant|still|frozen|s1|g2 
 [assay_v2 ds2g11_006 s1] T=2500 interest=44.5 fired=['b_org']
 [assay_v2 ds2g11_006 s1] T=5000 interest=57.7 fired=['b_org']
+[assay_v2 ds2g11_006 s1] T=10000 interest=63.5 fired=[]
+ds2g11_006 ok 63.50864780927432 3|grow|mobile|liquid|s2|g0 ext
+ds2g11_018 fail_g0a None None 
+[assay_v2 ds2g11_013 s1] T=2500 interest=28.7 fired=['c_acf']
+[assay_v2 ds2g11_013 s1] T=5000 interest=30.5 fired=[]
+ds2g11_013 ok 30.532717321908976 3|constant|rotor|frozen|s1|g0 ext
+[assay_v2 ds2g11_015 s1] T=2500 interest=13.1 fired=[]
+ds2g11_015 ok 13.125373368021483 2|constant|drift|frozen|s1|g0 

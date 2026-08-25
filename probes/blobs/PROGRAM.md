@@ -735,3 +735,30 @@ HEADLINES: pop-96 T=2500 assay = 858 s (403 worlds/h, $0.005/world); 512^2 T=10k
 Pod bill $5.71 total (2.87 h, terminated). Post 9 accelerating-blobs.html live.
 IMPLICATION: v3-scale searches (pop 200+, L=512+, T=40k lanes) are now $10-30
 problems; the CPU-fleet era ends after the current v2 run.
+
+
+### blob-patchworlds — ACCEPTED (scorecard + controller audit 2026-02-25)
+VERDICT: PoU world composition WORKS (modified-PoU per litreview; engine =
+patch_lib.run_patched with conservative div(dD grad f) deviation split, P1-gated).
+- P1 bit-identity PASS; P0 chord healthy for M0->M4 + NEW TRAP: linear stability
+  of the chord is NOT enough — an existence CLIFF can kill blobs at s>=0.9 while
+  the vacuum stays stable => P0 protocol now includes existence pokes along s.
+- P2: traveler PENETRATES M4->M0 at all widths, converts to static-with-creep;
+  45-deg incidence refracts to NORMAL exit (seams collimate). CONTROLLER AUDIT:
+  fresh geometry, 10-deg oblique, w=12: crossed, exit 0.0 deg off-normal, parked
+  at x=4.4 lu. CONFIRMED. One-way by construction (statics cannot approach).
+- P7 CONTRAST (the design dial): tau-only seam (Dv global) = traveler PARKS at
+  8.7 lu standoff — wiring-only seams are REPELLING FENCES; tau+Dv seams are
+  PENETRABLE MEMBRANES. Seam composition mode is a world-design instrument.
+- P3: non-aligned vacua settle to smooth ramps (source 1.25e-3 ~ predicted 2e-3),
+  no nucleation; blobs expelled NORMAL to seam (no along-seam drift — honest
+  negative vs controller's highway conjecture); habitable|lethal patching works.
+- P4: aligned seams are structurally invisible (<1e-6); halos cross seams
+  unscreened (cross-world force == same-world force at 20 lu; nothing invented).
+- P5: bonds straddling seams survive; d* shift -0.9% at w=24; at w=4 the whole
+  molecule is expelled intact.
+- NEW LAW: seam body force v ~ -0.4*grad(rho_B) on every localized object =>
+  ecotone-depopulation prediction for evolve-v3 spatial merges; design rule
+  w >= 12 lu (force <= 1e-2, d* shift < 1%).
+NOT tested (scope, queued): species-union padding, bilin blends, noise-driven
+crossing statistics, membrane x tissue patch (the natural showcase).
