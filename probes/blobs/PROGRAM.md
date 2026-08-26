@@ -818,3 +818,13 @@ restarted). Load 113 -> 14; eval completion rate jumped ~10x immediately.
 LESSON (bundle checklist): ALWAYS export thread pins in worker launch scripts;
 a local smoke on a 10-core laptop does not reproduce 16-vCPU contention.
 Run clock impact: ~6h lost; revised ETA ~30-40h from restart.
+
+
+### Fleet decision policy (user, 2026-08-26)
+Discovered: deployed config runs 96 cand/island/gen = 6x the fleet-wide-96 plan
+(6 independent full evolutions; ~93h/island, ~$220 — accepted as more science).
+Policy: CPU fleet continues as-is. If the GPU shadow run (islands 6-11, same
+per-island mix) certifies + completes first with sane results, present side-by-
+side and stop the CPU fleet early at a clean generation boundary WITH user
+confirmation. GPU racer on revival #2 (execute-only orders; controller takes
+over inline if it dies at setup again).
