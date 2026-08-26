@@ -805,3 +805,16 @@ behind a backend switch (locked logic untouched), re-runs ALL gates on GPU
 (~25x faster), then launches a GPU SHADOW RUN (islands 6-11, one A100, one-way
 immigration from CPU-fleet unions) racing the live CPU fleet. CPU fleet keeps
 running; harvest merges both.
+
+
+### FLEET INCIDENT + FIX (2026-02-26): OpenBLAS thread thrash
+Symptom: ~7h into the run, islands had completed only 3-11 evals each (model said
+~50-90). Diagnosis: each of 14 workers spawned 31 threads (OpenBLAS DYNAMIC_ARCH
+defaulting to 16 threads for numpy pointwise ops) -> load 113 on 16 vCPU ->
+5-10x slowdown from cache/scheduler thrash. The bundle pinned scipy-FFT workers=1
+correctly but nobody pinned BLAS. FIX: rolling restart with OMP/OPENBLAS/MKL
+_NUM_THREADS=1 injected into pod_run.sh (workers idempotent; in-flight evals
+restarted). Load 113 -> 14; eval completion rate jumped ~10x immediately.
+LESSON (bundle checklist): ALWAYS export thread pins in worker launch scripts;
+a local smoke on a 10-core laptop does not reproduce 16-vCPU contention.
+Run clock impact: ~6h lost; revised ETA ~30-40h from restart.
