@@ -777,3 +777,14 @@ LIVE FIX adopted both sides: confirm seeds inherit incumbent T_used as t0 floor
 screen incl. rejects; T_used dist 74/11/13/3% at 2500/5000/10000/20000.
 Pod plan: 10x16 vCPU island model (archive-union by cell-max every 2 gens),
 ~1985 core-h, $76-99 base, ceiling $250. Bundle prep -> controller provisions.
+
+
+### V2 MAIN RUN LAUNCHED (2026-02-26)
+Fleet: 6 pods (2x FI e2-16vCPU + 4x FR d3-16vCPU; 10-pod plan cut to 6 by provider
+stock — islands 0-5, ~96 vCPU, ~$2.4/h, wall estimate stretches 1.6x to ~30-40h,
+cost ~$75-120). Bundle hash-verified per pod; smoke 3/3 PASS gates on every
+launched island (bit-identical anchor values); islands 0-4 RUNNING (25 gens,
+pop 96 fleet-equivalent via island mix), island 5 dep-fix in flight. Merge
+cadence: controller pulls archives every ~2 gens, merge_islands.py union
+(cell-max, lineage-preserving), pushes union back. evolve-v2 dormant until
+harvest.
