@@ -788,3 +788,20 @@ pop 96 fleet-equivalent via island mix), island 5 dep-fix in flight. Merge
 cadence: controller pulls archives every ~2 gens, merge_islands.py union
 (cell-max, lineage-preserving), pushes union back. evolve-v2 dormant until
 harvest.
+
+
+### Pipeline speed analysis + GPU shadow run (2026-02-26)
+END-TO-END TIMING AUDIT (measured): the v2 cycle spent ~65-81h of SIMULATION wall
+(metrics validation 10-12h local, evolve local gens 14h, main run 30-40h remote,
+audits/autopsies ~5-10h) vs ~2-3 agent-days of dev. GPU compresses every sim
+stage ~15-25x (validation battery ~40 min, local-gen equivalent ~1h, main run
+12-15h on one A100, audits/films ~1h) => pipeline potential ~10-19h sim wall.
+Biggest non-sim losses: session-death respawns (agent), pod provisioning + per-pod
+smoke (~1.5h, stock-limited), and LOCAL stages that predate fleet rental (the
+metrics validation + evolve local gens ran on 4 laptop cores — should have been
+podded or GPU'd from the start; rule adopted: any >2h sim batch goes remote).
+ACTION: l0-gpu-run spawned — wires the certified GPU backend into assay_v2/ds2
+behind a backend switch (locked logic untouched), re-runs ALL gates on GPU
+(~25x faster), then launches a GPU SHADOW RUN (islands 6-11, one A100, one-way
+immigration from CPU-fleet unions) racing the live CPU fleet. CPU fleet keeps
+running; harvest merges both.
