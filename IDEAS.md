@@ -143,3 +143,24 @@ is replenished. All need probe campaigns before engine work.
     evolve-v3 merge operator (patch two elites side by side, let selection tune the
     seam) — "ecotone evolution", literally.
   STATUS: logged for later per user; no action now.
+
+- PROGRAM FUTURE: DECENTRALIZED AGENT-TEAM RESEARCH PHASE (user, 2026-02-26).
+  Sequencing (explicit prerequisites before scaling the org):
+  1. Finish world-building PoC round (v2 evolution harvest + membrane/vesicle arc).
+  2. DOCS OVERHAUL: user wants to clean/streamline the current pages substantially
+     (current posts = research log; target = contribution-ready docs).
+  3. AGENT-FACING INTEGRATION (world-ification): plug blob worlds into the physim
+     env/ports/contracts stack. EXPECT ITERATION on measurement capabilities —
+     open question flagged: do agents need richer instruments (blob tracking
+     ports? bond-graph queries? field probes at multiple scales?) than the
+     current port set. Dig in after PoC round.
+  4. THEN: a more ambitious multi-agent team, LESS directed/centralized — enabled
+     by the rlm DEPTH parameter (deeper delegation trees: coordinators spawning
+     their own searcher sub-trees). Precondition: repo "ripe for contribution" —
+     good docs, clean interfaces, locked gates/conventions written down (the
+     convention-faithfulness lessons become onboarding docs). The current
+     hub-and-spoke controller model is the bottleneck by design; the depth
+     parameter lifts it once the substrate is standardized enough that
+     independent teams can self-serve (locked metrics, genome format, audit
+     protocol, save-as-you-go norms = the "constitution").
+  Noted for later; no action now.
