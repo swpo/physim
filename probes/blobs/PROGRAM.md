@@ -762,3 +762,18 @@ patch_lib.run_patched with conservative div(dD grad f) deviation split, P1-gated
   w >= 12 lu (force <= 1e-2, d* shift < 1%).
 NOT tested (scope, queued): species-union padding, bilin blends, noise-driven
 crossing statistics, membrane x tissue patch (the natural showcase).
+
+
+### v2 MAIN RUN GREENLIT (2026-02-26)
+evolve-v2 local validation ACCEPTED: T1 answered — evolution USES minted vertices
+(15/15 evaluable, 9 fixations, 8/34 archive cells carry mints, all 2-seed
+confirmed; best bred child of g12 IS a mint, I2=70.1, CONTROLLER AUDIT fresh seed
+67.6 in-band; a second vertex was minted alongside ds3_014's fossil; delete_bilin
+reproduces the fossil ablation in-search 66.5->9.5). Operator law v2: cross_edge
+still the opener (12 events), mint 8, mutate 8, add_chan 4; dup_act weak (vacuum
+destabilization, kept low); immigration works (64% alive, 3 cells).
+LIVE FIX adopted both sides: confirm seeds inherit incumbent T_used as t0 floor
+(naive seed-2 confirms falsely failed extended elites). Cost model: 1399s/bred
+screen incl. rejects; T_used dist 74/11/13/3% at 2500/5000/10000/20000.
+Pod plan: 10x16 vCPU island model (archive-union by cell-max every 2 gens),
+~1985 core-h, $76-99 base, ceiling $250. Bundle prep -> controller provisions.
