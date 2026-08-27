@@ -844,3 +844,13 @@ XV PARITY (CPU side complete): seeds 4-8 = {35.8, 33.7, 37.5, 25.6, 4.0} — xv 
 heavy-tailed seed-variable on CPU too; GPU 50.2 excursion pending distribution
 comparison (GPU parity seeds queued after battery, 16/30 rows done).
 Budget: ~$75 cumulative (CPU ~20h x $2.38 + GPU ~5h x $1.20 + priors). OK.
+
+
+### blobkit spawned (2026-08-27): packaging the certified core
+Diagnosis: flat modules + sys.path chains + tree-walking data loads (worlds.py
+BLOBS=dirname(dirname()) + machinev3 imports) make every remote deployment an
+archaeology dig — 3 GPU-pod breakages from missing implicit deps. Fix: blobkit
+installable package (locked files verbatim w/ SHA256 import self-check, worlds
+as packaged data via importlib.resources, cpu/gpu backend switch, MANIFEST
+provenance). Additive only; running fleet untouched. Also the "repo ripe for
+contribution" prerequisite for the decentralized-agents phase.
