@@ -877,3 +877,17 @@ install, strict lock check, m0 anchor 2.8 exact. Honest boundaries: GPU numerics
 not re-executed (no local device — gate on next pod deploy), probe-grade modules
 explicitly non-goals. DEPLOYMENT RULE going forward: pods install blobkit
 (pip install ./blobkit or wheel); no more tree archaeology.
+
+
+### Sweep 2026-08-27 ~17:00 — GPU SHADOW RUN LIVE
+XV PARITY FORMALLY ACCEPTED: GPU seeds {35.2,33.9,35.5,35.5,6.9} vs CPU
+{35.8,33.7,37.5,25.6,4.0} — both heavy-tailed with dropout seeds, 8v8
+Mann-Whitney p=0.64. All 7 GT worlds band-overlap, zero errors. Full gate
+suite: PASS on GPU.
+SHADOW RUN (islands 6-11) LAUNCHED on the A100 after three launch traps
+(pod_run argv = first_gen not island; system-python vs venv PY; pod_lib's
+sys.path[0] shadowing the GPU shim — the archaeology disease one more time,
+blobkit's raison d'etre). Now LIVE: gen-0 screens (41 evals/island) completed
+in ~12 min — roughly 40x the CPU islands' pace. 25 gens projected in hours,
+not days. CPU fleet: islands 0-1 finished gen-1, 2-5 mid-gen-2; healthy.
+Budget ~$105/$250.
