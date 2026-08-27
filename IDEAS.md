@@ -164,3 +164,30 @@ is replenished. All need probe campaigns before engine work.
      independent teams can self-serve (locked metrics, genome format, audit
      protocol, save-as-you-go norms = the "constitution").
   Noted for later; no action now.
+
+- GPU-THROUGHPUT LESSONS from microduck/mjlab (user pointer, 2026-08-28). Their stack:
+  mjlab = MuJoCo Warp (GPU-native physics) + Isaac-Lab-style manager API; 4096 parallel
+  envs on one consumer GPU; ~1-2h to a usable policy. What TRANSFERS to blobkit:
+  T1 RESIDENT-STATE DISCIPLINE: envs live on-device for the entire rollout; host sees
+     only small observation/metric tensors at low cadence. Our current GPU assay pulls
+     full fields to host for _record() every rec_tu (=the CPU-metrics-dominated walls
+     we measured in gate mode). FIX for blobkit 0.2/0.3: device-side reduction of the
+     record streams (blob count/biomass/coarse fields are all reductions expressible
+     in jax) — pull scalars per record, fields only at snapshots. Expected: removes
+     the host-transfer bottleneck that made gate-mode "GPU" runs CPU-bound.
+  T2 IN-PLACE RESET/REPLACEMENT: mjlab resets terminated envs on-device without
+     leaving the batch. Our evolution analogue: when a soup dies/finishes early in a
+     batched generation, RESEED the slot with the next candidate on-device (continuous
+     batching a la LLM serving) instead of ragged-tail draining. Kills the tail problem
+     structurally (CPU islands currently idle 13 workers waiting for stragglers).
+  T3 FIXED-SHAPE EVERYTHING: Warp requires static shapes; mjlab pads/masks. We already
+     pad fields (nf_max) — extend to fixed record-buffer shapes so jit never recompiles
+     across candidates (blob-gpu found cuFFT kernel-switch effects across batch shapes;
+     pin ONE batch geometry per fleet).
+  T4 THROUGHPUT AS CI: mjlab publishes nightly benchmarks. Cheap for us: a
+     worlds/hour benchmark row appended to blobkit verify on every release (catch
+     perf regressions like numerics regressions).
+  What does NOT transfer: Warp itself (contact dynamics solver — wrong physics);
+  PPO/rollout machinery; manager-based env API (our assay/battery IS the analogue).
+  NOTE their eval story mirrors ours: train on GPU, EVALUATE deterministically
+  elsewhere (ONNX on robot) — same shape as our certify-on-GPU/audit-on-CPU split.
