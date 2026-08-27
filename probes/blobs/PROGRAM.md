@@ -854,3 +854,15 @@ installable package (locked files verbatim w/ SHA256 import self-check, worlds
 as packaged data via importlib.resources, cpu/gpu backend switch, MANIFEST
 provenance). Additive only; running fleet untouched. Also the "repo ripe for
 contribution" prerequisite for the decentralized-agents phase.
+
+
+### Sweep 2026-08-27 ~13:00
+Fleet: islands 2-5 healthy (+22-30/2h, mid gen-2 confirms); islands 0-1 lag ~1 gen
+(slower e2 CPUs + heavy t0-floored seed3 confirms running 4h each single-core —
+legitimate; v3 lesson: batch confirms on GPU). GPU GATE BATTERY COMPLETE for the
+7 ground truths, ZERO errors, ALL bands overlap CPU (champion worlds skipped on
+pod — registry lacks deepsearch files; gate via blobkit later). XV RESOLUTION:
+GPU extra seeds cluster 33.9-35.5 vs CPU's heavy-tailed {35.8,33.7,37.5,25.6,4.0}
+— the 50.2 was the same distribution's upper tail (H2 confirmed, parity holding).
+Awaiting xv seeds 7-8 for formal acceptance -> shadow-run launch decision.
+Budget ~$100/$250.
