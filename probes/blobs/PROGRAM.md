@@ -866,3 +866,14 @@ GPU extra seeds cluster 33.9-35.5 vs CPU's heavy-tailed {35.8,33.7,37.5,25.6,4.0
 — the 50.2 was the same distribution's upper tail (H2 confirmed, parity holding).
 Awaiting xv seeds 7-8 for formal acceptance -> shadow-run launch decision.
 Budget ~$100/$250.
+
+
+### blobkit 0.1.0 — ACCEPTED (scorecard + controller audit 2026-08-27)
+Verification exemplary: bitwise tree-vs-package equality on full record streams
+(m4, ds3_014, mv3), cross-numpy-version bitwise vs archived fleet npz, all 31
+locked runs re-scored field-exact, 15/15 registry genomes == source builds with
+0 funnel diffs, drift drill works. Controller audit: independent fresh-venv
+install, strict lock check, m0 anchor 2.8 exact. Honest boundaries: GPU numerics
+not re-executed (no local device — gate on next pod deploy), probe-grade modules
+explicitly non-goals. DEPLOYMENT RULE going forward: pods install blobkit
+(pip install ./blobkit or wheel); no more tree archaeology.
