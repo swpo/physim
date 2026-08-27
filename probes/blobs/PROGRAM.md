@@ -891,3 +891,20 @@ blobkit's raison d'etre). Now LIVE: gen-0 screens (41 evals/island) completed
 in ~12 min — roughly 40x the CPU islands' pace. 25 gens projected in hours,
 not days. CPU fleet: islands 0-1 finished gen-1, 2-5 mid-gen-2; healthy.
 Budget ~$105/$250.
+
+
+### GPU shadow run: HONEST STOP (2026-08-27 ~18:30)
+Gates: PASSED (7/7 GT parity + xv distribution resolution — the certification
+stands). Shadow EVOLUTION run: abandoned after 5 shim-integration failures
+(argv semantics, system-vs-venv python, sys.path shadowing, 2x import cycles
+from blobgpu<->soup_sim_v2 mutual imports). Root cause: the deploy bundle's
+name-based imports + blobgpu's internal reuse of the CPU module make in-place
+backend swapping fragile — EXACTLY the disease blobkit cures, but blobkit's
+locked assay_v2 does not yet accept a backend parameter (verbatim-lock rule).
+DECISION: GPU pod terminated (total GPU spend ~$18); CPU fleet remains the run
+of record. Proper fix queued as blobkit 0.2: a backend-parameterized assay entry
+(new function, locked core untouched) + gpu-gated on-pod test — then GPU
+evolution becomes a first-class one-liner instead of shim archaeology.
+Race verdict data point: GPU per-eval sim is fast but per-eval wall was
+CPU-metrics-dominated in gate mode; the batched-generation mode (the real 40x)
+needs the deeper pod_lib integration — same blobkit 0.2 milestone.
