@@ -828,3 +828,19 @@ per-island mix) certifies + completes first with sane results, present side-by-
 side and stop the CPU fleet early at a clean generation boundary WITH user
 confirmation. GPU racer on revival #2 (execute-only orders; controller takes
 over inline if it dies at setup again).
+
+
+### Sweep log 2026-08-27 ~05:00
+LANE BOTTLENECK FOUND+FIXED (infrastructure discretion): the deployed config ran
+L192 + longH-40000 lanes EVERY generation as blocking one-offs (~14h serial tail
+per gen => plan infeasible ~16 days). Fix: l192_per_gen=0, longh_top=0 on all
+islands (live for subsequent gens); in-flight lane jobs killed + shards emptied
+(the drain-step restart trap documented); lane science reassigned to the GPU
+where L192/T40k costs minutes. All islands immediately bred their next gens
+(96 jobs each, full worker load).
+FIRST UNION MERGED+PUSHED: 77 cells from 6 islands (26 minted-vertex cells, 39
+block-eligible); TOP = 81.3 in 4|grow|rotor|liquid (above ds3_014's 76!).
+XV PARITY (CPU side complete): seeds 4-8 = {35.8, 33.7, 37.5, 25.6, 4.0} — xv is
+heavy-tailed seed-variable on CPU too; GPU 50.2 excursion pending distribution
+comparison (GPU parity seeds queued after battery, 16/30 rows done).
+Budget: ~$75 cumulative (CPU ~20h x $2.38 + GPU ~5h x $1.20 + priors). OK.
