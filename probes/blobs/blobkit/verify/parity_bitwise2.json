@@ -1,0 +1,42 @@
+{
+ "ds3_014": {
+  "status": [
+   "ok",
+   "ok"
+  ],
+  "F_bitwise": true,
+  "ts": true,
+  "blobs": true,
+  "mass": true,
+  "patches": true,
+  "orgs": true,
+  "memf": true,
+  "snaps": true,
+  "interest_equal": true,
+  "C_equal": true,
+  "interest": [
+   30.748217146314456,
+   30.748217146314456
+  ]
+ },
+ "mv3": {
+  "status": [
+   "ok",
+   "ok"
+  ],
+  "F_bitwise": true,
+  "ts": true,
+  "blobs": true,
+  "mass": true,
+  "patches": true,
+  "orgs": true,
+  "memf": true,
+  "snaps": true,
+  "interest_equal": true,
+  "C_equal": true,
+  "interest": [
+   37.72855584101463,
+   37.72855584101463
+  ]
+ }
+}

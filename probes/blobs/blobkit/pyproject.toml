@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blobkit"
+version = "0.1.0"
+description = "Certified physim blob core: L0 genome simulator, locked assay/metrics batteries, soup simulators (CPU + JAX GPU), world registry, variation operators."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Proprietary" }
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[project.optional-dependencies]
+gpu = ["jax[cuda12]==0.4.38"]
+
+[tool.setuptools]
+packages = ["blobkit", "blobkit.soup"]
+
+[tool.setuptools.package-data]
+blobkit = ["data/*.npz", "data/worlds/*.json", "_locks.json"]

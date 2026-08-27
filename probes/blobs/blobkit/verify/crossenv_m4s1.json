@@ -1,0 +1,10 @@
+{
+ "T": true,
+ "ts": true,
+ "blobs": true,
+ "mass": true,
+ "patches": true,
+ "orgs": true,
+ "memf": true,
+ "snaps": true
+}
