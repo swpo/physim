@@ -1,0 +1,12 @@
+[assay_v2 ds2g12_015 s1] T=2500 interest=31.7 fired=['a_mem']
+[assay_v2 ds2g12_015 s1] T=5000 interest=31.0 fired=[]
+ds2g12_015 ok 30.965995991539465 4|oscillator|still|frozen|s1|g2 ext
+[assay_v2 ds2g12_007 s1] T=2500 interest=49.2 fired=[]
+ds2g12_007 ok 49.229026889809745 4|switch|rotor|liquid|s1|g2 
+[assay_v2 ds2g12_003 s1] T=2500 interest=62.3 fired=[]
+ds2g12_003 ok 62.325073370810976 3|switch|mobile|liquid|s1|g2 
+ds2g12_012 fail_g0a None None 
+[assay_v2 ds2g12_022 s1] T=2500 interest=20.5 fired=[]
+ds2g12_022 ok 20.450000000000003 2|constant|still|gas|s1|g0 
+[assay_v2 ds2g12_019 s1] T=2500 interest=32.0 fired=[]
+ds2g12_019 ok 32.0 1|constant|still|frozen|s1|g2 

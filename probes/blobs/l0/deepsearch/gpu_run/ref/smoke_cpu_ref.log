@@ -1,0 +1,7 @@
+smoke_m0       status=ok I=2.8000000000000003 T=2500.0 cell=1|constant|still|frozen|s1|g0 minted=[]
+  archive: new 1|constant|still|frozen|s1|g0
+smoke_mint     status=ok I=35.56942589285106 T=5000.0 cell=1|constant|mobile|liquid|s1|g2 minted=['smoke_vertex']
+  archive: new 1|constant|mobile|liquid|s1|g2
+smoke_elite    status=ok I=74.23989761394299 T=5000.0 cell=4|grow|rotor|liquid|s2|g2 minted=[]
+  archive: new 4|grow|rotor|liquid|s2|g2
+SMOKE PASS

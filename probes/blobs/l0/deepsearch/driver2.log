@@ -318,3 +318,193 @@ s2g10: 20 jobs -> 4 shards, loads ['44', '44', '43', '44']
 seed2 g10: 20 rows, ok=16 fail=2
 G10_INGESTED
 g11: 24 jobs -> 4 shards, loads ['56', '56', '55', '57']
+{
+ "gen": 11,
+ "n": 24,
+ "events": {
+  "new": 10,
+  "improved": 3,
+  "held": 3,
+  "dead": 8
+ },
+ "opstat": {
+  "dup_act": {
+   "n": 2,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "merge_slow_tanh": {
+   "n": 2,
+   "ok": 2,
+   "best": 46.14809727426321,
+   "events": 2
+  },
+  "delete_bilin": {
+   "n": 1,
+   "ok": 1,
+   "best": 65.20646376970564,
+   "events": 0
+  },
+  "mint_bilin": {
+   "n": 3,
+   "ok": 3,
+   "best": 69.53426621575373,
+   "events": 3
+  },
+  "add_chan": {
+   "n": 2,
+   "ok": 2,
+   "best": 67.8614744476384,
+   "events": 2
+  },
+  "mutate": {
+   "n": 5,
+   "ok": 5,
+   "best": 47.53334185105712,
+   "events": 3
+  },
+  "merge_share_chan": {
+   "n": 1,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 5,
+   "ok": 1,
+   "best": 0.0,
+   "events": 0
+  },
+  "merge_cross_edge": {
+   "n": 3,
+   "ok": 3,
+   "best": 34.79678883172945,
+   "events": 3
+  }
+ },
+ "n_extended": 6,
+ "mean_I": 31.82856434341477,
+ "max_I": 69.53426621575373,
+ "max_cand": "ds2g11_007",
+ "wall_sim_total": 40502.5,
+ "census": {
+  "gen": 11,
+  "mint_attempt_rows": 3,
+  "mint_ok": 3,
+  "mint_funnel_fail": 0,
+  "mint_best": 69.53426621575373,
+  "carrier_rows": 4,
+  "carrier_ok": 4,
+  "carrier_best": 69.53426621575373,
+  "archive_cells": 28,
+  "cells_with_minted": 6,
+  "minted_uids_alive": [
+   "v11_005",
+   "v11_006",
+   "v11_007",
+   "v2_006",
+   "v2_007",
+   "v3_005"
+  ]
+ }
+}
+s2g11: 13 jobs -> 4 shards, loads ['39', '34', '34', '33']
+seed2 g11: 13 rows, ok=12 fail=1
+g12: 24 jobs -> 4 shards, loads ['57', '59', '56', '59']
+{
+ "gen": 12,
+ "n": 24,
+ "events": {
+  "new": 6,
+  "improved": 2,
+  "held": 10,
+  "dead": 6
+ },
+ "opstat": {
+  "mutate": {
+   "n": 5,
+   "ok": 4,
+   "best": 62.325073370810976,
+   "events": 0
+  },
+  "merge_cross_edge": {
+   "n": 4,
+   "ok": 4,
+   "best": 57.44163625386343,
+   "events": 4
+  },
+  "add_chan": {
+   "n": 2,
+   "ok": 2,
+   "best": 40.875212287267075,
+   "events": 0
+  },
+  "mint_bilin": {
+   "n": 3,
+   "ok": 3,
+   "best": 70.11882019723798,
+   "events": 2
+  },
+  "dup_act": {
+   "n": 2,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "merge_slow_tanh": {
+   "n": 1,
+   "ok": 1,
+   "best": 67.94302591686963,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 5,
+   "ok": 5,
+   "best": 32.0,
+   "events": 2
+  },
+  "delete_bilin": {
+   "n": 1,
+   "ok": 1,
+   "best": 62.56187779861132,
+   "events": 0
+  },
+  "merge_share_chan": {
+   "n": 1,
+   "ok": 1,
+   "best": 52.68645295983285,
+   "events": 0
+  }
+ },
+ "n_extended": 4,
+ "mean_I": 40.89086546507757,
+ "max_I": 70.11882019723798,
+ "max_cand": "ds2g12_005",
+ "wall_sim_total": 26652.9,
+ "census": {
+  "gen": 12,
+  "mint_attempt_rows": 3,
+  "mint_ok": 3,
+  "mint_funnel_fail": 0,
+  "mint_best": 70.11882019723798,
+  "carrier_rows": 8,
+  "carrier_ok": 7,
+  "carrier_best": 70.11882019723798,
+  "archive_cells": 34,
+  "cells_with_minted": 8,
+  "minted_uids_alive": [
+   "v11_005",
+   "v11_006",
+   "v11_007",
+   "v12_005",
+   "v12_007",
+   "v2_006",
+   "v2_007",
+   "v3_005"
+  ]
+ }
+}
+s2g12: 8 jobs -> 4 shards, loads ['18', '18', '24', '18']
+seed2 g12: 8 rows, ok=8 fail=0
+DRIVER2_DONE_11-12

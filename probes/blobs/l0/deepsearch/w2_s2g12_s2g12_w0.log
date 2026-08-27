@@ -1,0 +1,4 @@
+[assay_v2 ds2g12_017_s2 s2] T=2500 interest=34.4 fired=[]
+ds2g12_017_s2 ok 34.42198091208448 3|switch|drift|liquid|s1|g2 
+[assay_v2 ds2g12_019_s2 s2] T=2500 interest=32.0 fired=[]
+ds2g12_019_s2 ok 32.0 1|constant|still|frozen|s1|g2 

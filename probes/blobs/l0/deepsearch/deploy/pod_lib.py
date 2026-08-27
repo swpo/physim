@@ -1,0 +1,281 @@
+"""pod_lib.py — island-pod deepsearch v2 runtime (bundle-local, self-contained).
+
+Differences vs laptop ds2_lib.py: single flat lib/ path, no v1 fallback
+(assay_v2 ONLY), island id in every row, genome-hash dedup key, npz kept only
+for interest >= NPZ_MIN_INTEREST elites.
+"""
+import copy, fcntl, hashlib, json, os, sys, time
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))          # deploy/
+LIB = os.path.join(HERE, "lib")
+sys.path.insert(0, LIB)
+
+import genome as G
+import funnel as FU
+import ds2_ops as OPS2
+import assay_v2
+
+CONFIG = os.path.join(HERE, "island_config.json")
+
+
+def config():
+    return json.load(open(CONFIG))
+
+
+def paths(cfg=None):
+    cfg = cfg or config()
+    out = cfg.get("out_dir") or os.path.join(HERE, "out")
+    os.makedirs(out, exist_ok=True)
+    os.makedirs(os.path.join(out, "runs"), exist_ok=True)
+    os.makedirs(os.path.join(out, "jobs"), exist_ok=True)
+    return dict(out=out,
+                results=os.path.join(out, "results.json"),
+                archive=os.path.join(out, "archive.json"),
+                state=os.path.join(out, "state.json"),
+                runs=os.path.join(out, "runs"),
+                jobs=os.path.join(out, "jobs"))
+
+
+MAX_ACT, MAX_FIELDS = 4, 14
+NPZ_MIN_INTEREST = 25.0
+
+
+def js(o):
+    if isinstance(o, dict):
+        return {k: js(v) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [js(v) for v in o]
+    if isinstance(o, np.ndarray):
+        return o.tolist()
+    if isinstance(o, (np.floating,)):
+        return float(o)
+    if isinstance(o, (np.integer,)):
+        return int(o)
+    if isinstance(o, (np.bool_,)):
+        return bool(o)
+    return o
+
+
+def locked_json(path, default):
+    class _ctx:
+        def __enter__(self):
+            self.lk = open(path + ".lock", "w")
+            fcntl.flock(self.lk, fcntl.LOCK_EX)
+            try:
+                with open(path) as f:
+                    self.data = json.load(f)
+            except (FileNotFoundError, json.JSONDecodeError):
+                self.data = copy.deepcopy(default)
+            return self
+
+        def write(self):
+            tmp = path + ".tmp"
+            with open(tmp, "w") as f:
+                json.dump(js(self.data), f)
+            os.replace(tmp, path)
+
+        def __exit__(self, *a):
+            self.lk.close()
+    return _ctx()
+
+
+def append_result(row, path):
+    with locked_json(path, []) as c:
+        row = dict(row)
+        row.setdefault("ts", time.strftime("%Y-%m-%d %H:%M:%S"))
+        c.data.append(js(row))
+        c.write()
+        return len(c.data)
+
+
+def ghash(g):
+    """Stable genome hash for cross-island dedup (acts/chans/W/K/bilin only)."""
+    key = json.dumps([g["acts"], g["chans"], g["W"], g["K"],
+                      sorted(map(list, g.get("bilin", [])))],
+                     sort_keys=True, default=float)
+    return hashlib.sha1(key.encode()).hexdigest()[:16]
+
+
+# ---------------------------------------------------------------- cell key
+def motion_class(D):
+    wind = D["d5"].get("winding_max", 0.0) or 0.0
+    com = D["d5"].get("wind_com_speed")
+    mv = D["d4"].get("moving_frac", 0.0)
+    if wind >= 1.5 and com is not None and com < 0.03:
+        return "rotor"
+    if mv >= 0.25:
+        return "mobile"
+    if mv >= 0.05:
+        return "drift"
+    return "still"
+
+
+def _stages_bin(ns):
+    if ns is None:
+        return "s?"
+    return "s1" if ns <= 1 else ("s2" if ns == 2 else "s3")
+
+
+def cell_key_v2(out):
+    D = out["D"]
+    spp = D.get("d7", {}).get("n_species_int")
+    spp = int(np.clip(round(spp), 0, 4)) if spp is not None else 0
+    d1 = D.get("d1", {})
+    growth = "grow" if d1.get("org_growth") else str(d1.get("org_model"))
+    mot = motion_class(D)
+    ph = D["d5"]["phase"]
+    st = _stages_bin(d1.get("n_stages"))
+    mg = D.get("d6", {}).get("mem_grade", 0)
+    return f"{spp}|{growth}|{mot}|{ph}|{st}|g{mg}"
+
+
+def lean_horizon(h):
+    if not isinstance(h, dict):
+        return None
+    return dict(T_used=h.get("T_used"), why=h.get("why_stopped"),
+                n_ext=h.get("n_extensions"),
+                traj=h.get("interest_trajectory"))
+
+
+def minted_uids(g):
+    return [t for t in (g.get("vtags") or []) if not str(t).startswith("fdr_")]
+
+
+# ---------------------------------------------------------------- evaluate
+def evaluate(job, cfg=None):
+    cfg = cfg or config()
+    P = paths(cfg)
+    g = job["genome"]
+    OPS2.ensure_vtags(g)
+    seed = int(job.get("seed", cfg.get("seed", 1)))
+    row = dict(kind="ds2_eval", phase=job.get("kind", "screen"),
+               island=cfg.get("island"), cand=job["cand"], gen=job.get("gen"),
+               op=job.get("op"), parents=job.get("parents"),
+               params=job.get("params"), seed=seed, metrics="v2",
+               ghash=ghash(g))
+    na, nc = len(g["acts"]), len(g["chans"])
+    row["na"], row["nc"] = na, nc
+    row["n_bilin"] = len(g.get("bilin", []) or [])
+    row["vtags"] = list(g.get("vtags", []) or [])
+    row["minted"] = minted_uids(g)
+    if na > MAX_ACT or na + nc > MAX_FIELDS:
+        row["status"] = "size_cap"
+        append_result(row, P["results"])
+        return row
+    t0w = time.time()
+    fu = FU.funnel(g)
+    row["funnel"] = dict(stage=fu["stage"], margin=fu.get("g0a_margin"))
+    row["wall_funnel"] = round(time.time() - t0w, 3)
+    if fu["stage"] != "pass":
+        row["status"] = fu["stage"]
+        row["genome"] = G.genome_json(g)
+        append_result(row, P["results"])
+        return row
+    t1 = time.time()
+    kw = {}
+    if job.get("t0"):
+        kw["t0"] = float(job["t0"])       # confirm-t0 floor rule
+    if job.get("cap"):
+        kw["cap"] = float(job["cap"])     # long-horizon lane
+    if job.get("L"):
+        kw["L"] = float(job["L"])         # L192 graduation lane
+    npz = os.path.join(P["runs"], f'{job["cand"]}.npz')
+    try:
+        out = assay_v2.run_assay(G.genome_json(g), seed=seed,
+                                 workers=int(cfg.get("assay_workers", 1)),
+                                 results_path=None, tag=job["cand"],
+                                 save_npz=npz, verbose=False, **kw)
+    except Exception as e:
+        msg = repr(e)
+        # alive-but-blobless worlds crash v1's d2 on an empty window
+        # (funnel-passing subcritical immigrants); score 0, distinct label
+        if "non-empty vector" in msg or "empty slice" in msg:
+            row["status"] = "no_blobs"
+        else:
+            row["status"] = "assay_error"
+        row["error"] = msg[:300]
+        row["interest"] = 0.0
+        row["genome"] = G.genome_json(g)
+        append_result(row, P["results"])
+        return row
+    hor = out.get("horizon") or {}
+    why = hor.get("why_stopped")
+    row["wall_assay"] = round(time.time() - t1, 1)
+    row.update(status=("blowup" if why == "blowup" else
+                       "all_dead" if why == "all_dead" else "ok"),
+               interest=out.get("interest", 0.0), T_used=hor.get("T_used"),
+               horizon=lean_horizon(hor), flags=out.get("flags"),
+               summary=out.get("summary") or None)
+    row["extended"] = bool(hor.get("n_extensions"))
+    try:
+        row["cell"] = cell_key_v2(out)
+    except Exception as e:
+        row["cell"] = None
+        row["cell_error"] = repr(e)[:200]
+    if os.path.exists(npz):
+        if (row["interest"] or 0.0) >= NPZ_MIN_INTEREST:
+            row["npz"] = os.path.basename(npz)
+        else:
+            os.remove(npz)
+    row["genome"] = G.genome_json(g)
+    append_result(row, P["results"])
+    return row
+
+
+# ---------------------------------------------------------------- archive
+def archive_insert(row, P=None):
+    P = P or paths()
+    if row.get("interest", 0.0) <= 0.0 or not row.get("cell"):
+        return ("dead", None)
+    key = row["cell"]
+    with locked_json(P["archive"], {}) as c:
+        cell = c.data.get(key)
+        entry = dict(cand=row["cand"], gen=row.get("gen"), op=row.get("op"),
+                     island=row.get("island"), metrics="v2",
+                     parents=row.get("parents"), interest=row["interest"],
+                     T_used=row.get("T_used"), ghash=row.get("ghash"),
+                     summary=row.get("summary"), genome=row.get("genome"),
+                     origin=row.get("origin", "pod"),
+                     n_bilin=row.get("n_bilin"), minted=row.get("minted"),
+                     vtags=row.get("vtags"),
+                     seed2_interest=None, seed2_ok=False,
+                     seed3_interest=None, seed3_ok=False,
+                     count=(cell["count"] + 1 if cell else 1),
+                     history=(cell.get("history", []) if cell else []))
+        if cell is None:
+            c.data[key] = entry
+            c.write()
+            return ("new", key)
+        if row["interest"] > cell["interest"]:
+            entry["history"] = (cell.get("history", [])
+                                + [dict(cand=cell["cand"],
+                                        interest=cell["interest"],
+                                        gen=cell.get("gen"),
+                                        island=cell.get("island"))])[-8:]
+            if "first_gen" in cell:
+                entry["first_gen"] = cell["first_gen"]
+            c.data[key] = entry
+            c.write()
+            return ("improved", key)
+        cell["count"] = entry["count"]
+        c.write()
+        return ("held", key)
+
+
+def archive_seedk(row, k, P=None):
+    """Attach seed-k result (k in {2,3}); ok iff >= 0.6*incumbent and alive."""
+    P = P or paths()
+    suf = f"_s{k}"
+    base = row["cand"][:-len(suf)] if row["cand"].endswith(suf) else row["cand"]
+    with locked_json(P["archive"], {}) as c:
+        for key, cell in c.data.items():
+            if cell["cand"] == base:
+                i = row.get("interest", 0.0) or 0.0
+                ok = bool(i >= 0.6 * cell["interest"] and i > 0.0)
+                cell[f"seed{k}_interest"] = i
+                cell[f"seed{k}_cell"] = row.get("cell")
+                cell[f"seed{k}_ok"] = ok
+                c.write()
+                return key, ok
+    return None, None

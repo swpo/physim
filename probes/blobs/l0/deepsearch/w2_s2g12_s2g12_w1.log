@@ -1,0 +1,6 @@
+[assay_v2 ds2g12_015_s2 s2] T=5000 interest=40.7 fired=['a_mem', 'c_acf']
+[assay_v2 ds2g12_015_s2 s2] T=10000 interest=30.9 fired=['a_mem']
+[assay_v2 ds2g12_015_s2 s2] T=20000 interest=32.5 fired=[]
+ds2g12_015_s2 ok 32.45303621401732 4|oscillator|still|frozen|s1|g2 ext
+[assay_v2 ds2g12_022_s2 s2] T=2500 interest=20.5 fired=[]
+ds2g12_022_s2 ok 20.450000000000003 2|constant|still|gas|s1|g0 

@@ -219,8 +219,10 @@ def evaluate_v2(job):
                                 workers=1, results_path=None,
                                 tag=job["cand"], save_npz=npz, **kw)
         except Exception as e:
-            row["status"] = "assay_error"
-            row["error"] = repr(e)[:300]
+            msg = repr(e)
+            row["status"] = ("no_blobs" if "non-empty vector" in msg
+                             or "empty slice" in msg else "assay_error")
+            row["error"] = msg[:300]
             row["interest"] = 0.0
             row["genome"] = G.genome_json(g)
             DL.append_result(row, RESULTS2)

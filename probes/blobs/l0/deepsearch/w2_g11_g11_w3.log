@@ -10,3 +10,5 @@ ds2g11_018 fail_g0a None None
 ds2g11_013 ok 30.532717321908976 3|constant|rotor|frozen|s1|g0 ext
 [assay_v2 ds2g11_015 s1] T=2500 interest=13.1 fired=[]
 ds2g11_015 ok 13.125373368021483 2|constant|drift|frozen|s1|g0 
+[assay_v2 ds2g11_023 s1] T=2500 interest=0.0 fired=[]
+ds2g11_023 ok 0.0 1|constant|still|gas|s1|g0 

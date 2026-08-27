@@ -1,0 +1,26 @@
+{
+ "island": 99,
+ "n_workers": 14,
+ "assay_workers": 1,
+ "seed": 1,
+ "seed2": 2,
+ "seed3": 3,
+ "rng_base": 700000,
+ "mix": {
+  "mutate": 20,
+  "mint_bilin": 12,
+  "delete_bilin": 4,
+  "add_chan": 8,
+  "dup_act": 8,
+  "merge": 24,
+  "immigrate": 20
+ },
+ "merge_mix": {
+  "cross_edge": 12,
+  "slow_tanh": 8,
+  "share_chan": 4
+ },
+ "l192_per_gen": 2,
+ "longh_top": 3,
+ "out_dir": null
+}

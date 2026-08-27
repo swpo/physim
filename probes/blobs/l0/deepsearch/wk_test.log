@@ -1,5 +1,0 @@
-[assay_v2 wk1 s2] T=2500 interest=37.1 fired=[]
-workers=1: I=37.09 why=static
-[assay_v2 wk2 s2] T=2500 interest=37.1 fired=[]
-workers=2: I=37.09 why=static
-WORKERTEST_DONE

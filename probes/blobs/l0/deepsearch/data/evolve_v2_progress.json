@@ -1,18 +1,29 @@
 {
- "when": "2026-08-25 05:04",
- "state": "gen-10 (v2-epoch bootstrap) running: 24 seeds under LOCKED assay_v2, 4 workers",
+ "when": "2026-08-26 06:05",
+ "state": "BUNDLE SMOKE-TESTED + SHIPPED (deploy_v2_bundle.tgz); dormant until harvest",
  "done": [
   "ds2_ops.py: mint_bilin/delete_bilin/add_chan/dup_act + merge_v2 (bilin-preserving) + vtag lineage tracking",
   "ds2_gates.py: 16/16 PASS (vacuum-exact, fossil restore bit-exact, mint reaches fossil class, dup==selfmerge, merges preserve bilin, v1 exactness kept)",
   "ds2_lib.py: eval pipeline v1-fallback + assay_v2 genome-in adapter (pinned contract), metric-mixing guard, seed2 gate, vertex census",
   "ds2_gen.py: seed_import/init_full/breed/ingest/ingest2/status; 20% immigration; blocks need seed2_ok",
   "v1-epoch validation: 3 gens x 24 done (archive_v2_v1epoch.json, 46 cells): operators all produce archive events; minted vertices FIXED in 3 cells (v2_006,v2_007,v3_005 all seed2-confirmed); ds2g1_017 I=73.8 beats v1 best 73.7",
-  "handshake: assay_v2 via adapter OK both static (2500, 'static') and extending (mv3 -> 20000, 4-rung trajectory)"
+  "handshake: assay_v2 via adapter OK both static (2500, 'static') and extending (mv3 -> 20000, 4-rung trajectory)",
+  "t0-floor rule adopted by l0-metrics-v2 into ASSAY_V2_API.md + VALIDATION_V2.md (docs-only, lock hashes intact)"
  ],
  "next": [
-  "when g10 workers done: ds2_gen.py ingest 10 (config now metrics=v2, fresh archive_v2.json)",
-  "then breed/run gens 11-12 under assay_v2 (the real cost measurement)",
-  "then scorecard to parent: operator stats + adaptive-T cost model + pod spec"
+  "controller rents pods for main run (pop 96 x 25 gens, island-model spec in SCORECARD_V2_EVOLVE.md)",
+  "on pod go: ds2_gen.py init_full (fresh v2 archive per island) then breed/ingest/ingest2 loop"
  ],
- "watch": "pgrep -fl ds2_worker; logs w2_g10_w*.log; results_v2.json rows metrics=v2 gen=10"
+ "watch": "pgrep -fl ds2_worker; logs w2_g10_w*.log; results_v2.json rows metrics=v2 gen=10",
+ "bundle": {
+  "tarball": "probes/blobs/l0/deepsearch/deploy_v2_bundle.tgz",
+  "sha256": "9b31ebd88bf3abeeb5c382c33c0973f8aa718138a2e2582d92af8c5881a057d2",
+  "contents": "deploy/: pod_lib/gen/worker/run.sh/smoke + merge_islands.py + lib(12 files, locked trio hash-verified) + 41 seeds + README",
+  "smoke": "3/3 PASS from clean extract (m0 2.8@2500, mint 35.6@5000, ds3_014 74.2@5000-cap)",
+  "fixes_during_packaging": [
+   "no_blobs classifier (all_dead<BURN crash, documented by metrics-v2 as known-limit vi)",
+   "pod_run.sh honors out_dir from config",
+   "lib_hashes.txt relative paths"
+  ]
+ }
 }

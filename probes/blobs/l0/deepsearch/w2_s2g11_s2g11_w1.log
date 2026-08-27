@@ -1,0 +1,6 @@
+[assay_v2 ds2g11_010_s2 s2] T=10000 interest=68.1 fired=[]
+ds2g11_010_s2 ok 68.07178932953038 3|switch|rotor|liquid|s1|g2 
+[assay_v2 ds2g11_002_s2 s2] T=2500 interest=15.3 fired=[]
+ds2g11_002_s2 ok 15.340608063100195 2|constant|still|frozen|s1|g2 
+[assay_v2 ds2g11_009_s2 s2] T=10000 interest=67.4 fired=[]
+ds2g11_009_s2 ok 67.43383601562681 3|grow|rotor|frozen|s1|g2 

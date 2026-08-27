@@ -1,0 +1,4 @@
+[assay_v2 ds2g12_005_s2 s2] T=2500 interest=64.1 fired=[]
+ds2g12_005_s2 ok 64.08793863521721 3|switch|mobile|liquid|s1|g2 
+[assay_v2 ds2g12_014_s2 s2] T=2500 interest=40.7 fired=[]
+ds2g12_014_s2 ok 40.687389618156494 2|grow|rotor|liquid|s1|g0 

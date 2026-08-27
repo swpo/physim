@@ -7,3 +7,11 @@ ds2g11_007 ok 69.53426621575373 4|grow|rotor|liquid|s1|g2 ext
 [assay_v2 ds2g11_009 s1] T=5000 interest=63.5 fired=['a_mem']
 [assay_v2 ds2g11_009 s1] T=10000 interest=59.8 fired=[]
 ds2g11_009 ok 59.81254656398127 3|grow|rotor|frozen|s1|g2 ext
+[assay_v2 ds2g11_017 s1] T=2500 interest=46.1 fired=[]
+ds2g11_017 ok 46.14809727426321 3|constant|mobile|liquid|s1|g2 
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+ds2g11_021 assay_error 0.0 None 
+ds2g11_020 assay_error 0.0 None 

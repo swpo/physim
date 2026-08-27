@@ -1,0 +1,10 @@
+[assay_v2 ds2g11_016_s2 s2] T=2500 interest=15.9 fired=[]
+ds2g11_016_s2 ok 15.946509996723465 4|constant|still|frozen|s1|g2 
+[assay_v2 ds2g11_014_s2 s2] T=2500 interest=40.3 fired=[]
+ds2g11_014_s2 ok 40.29597369890958 4|switch|drift|liquid|s1|g2 
+/Users/spoho/Documents/prime/test/physim/probes/search/hier_metrics.py:112: RuntimeWarning: divide by zero encountered in scalar divide
+  alpha = 1 + len(tail) / np.log(tail / xmin).sum()
+[assay_v2 ds2g11_003_s2 s2] T=2500 interest=3.7 fired=[]
+ds2g11_003_s2 ok 3.716666666666666 1|constant|still|gas|s1|g0 
+[assay_v2 ds2g11_015_s2 s2] T=2500 interest=23.1 fired=[]
+ds2g11_015_s2 ok 23.06451827270665 2|constant|mobile|liquid|s1|g0 

@@ -8,3 +8,12 @@ ds2g11_004 ok 47.53334185105712 4|switch|rotor|liquid|s1|g2
 ds2g11_014 ok 34.79678883172945 4|switch|still|frozen|s1|g2 
 [assay_v2 ds2g11_001 s1] T=2500 interest=44.8 fired=[]
 ds2g11_001 ok 44.793254705250696 2|switch|mobile|liquid|s1|g2 
+/Users/spoho/Documents/prime/test/physim/probes/search/hier_metrics.py:112: RuntimeWarning: divide by zero encountered in scalar divide
+  alpha = 1 + len(tail) / np.log(tail / xmin).sum()
+[assay_v2 ds2g11_003 s1] T=2500 interest=6.0 fired=[]
+ds2g11_003 ok 5.966666666666666 1|constant|still|frozen|s1|g0 
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+ds2g11_022 assay_error 0.0 None 
