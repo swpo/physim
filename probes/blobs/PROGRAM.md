@@ -908,3 +908,13 @@ evolution becomes a first-class one-liner instead of shim archaeology.
 Race verdict data point: GPU per-eval sim is fast but per-eval wall was
 CPU-metrics-dominated in gate mode; the batched-generation mode (the real 40x)
 needs the deeper pod_lib integration — same blobkit 0.2 milestone.
+
+
+### blobkit-v02 spawned (2026-08-28): backend injection + shared driver
+Design fixed from controller exploration (user-approved): share science /
+duplicate kernels / gate-proven equality. T1 run_assay_b (injected backend, new
+module, locks untouched), T2 soup/driver.py extraction (GPU adopts now, CPU at
+next relock), T3 workers-tolerant gpu backend surface, T4 make_bundle() fleet
+generator (retires legacy bundle pattern; thread pins + lanes-off baked in).
+Gates: interface identity bitwise, refactor identity, lock integrity, fresh-venv
++ generated-bundle smoke. GPU-device gates deferred to next pod deployment.
