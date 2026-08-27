@@ -1,0 +1,19 @@
+{
+ "world": "m0",
+ "seed": 7,
+ "gate": "G1",
+ "match_bitwise": true,
+ "ref": {
+  "interest": 2.8000000000000003,
+  "T": 2500.0,
+  "why": "static",
+  "wall": 102.0
+ },
+ "new": {
+  "interest": 2.8000000000000003,
+  "T": 2500.0,
+  "why": "static",
+  "wall": 155.0
+ },
+ "canon_chars": 3151
+}

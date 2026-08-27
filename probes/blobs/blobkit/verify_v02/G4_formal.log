@@ -1,0 +1,29 @@
+{
+ "blobkit": "0.2.0",
+ "backend": "cpu",
+ "wheel": "blobkit-0.2.0-py3-none-any.whl",
+ "n_seeds": 16,
+ "n_files": 124,
+ "out_dir": "/tmp/fleetbundle"
+}
+Using CPython 3.11.14
+Creating virtual environment at: /tmp/bk02fresh
+Activate with: source /tmp/bk02fresh/bin/activate
+Using Python 3.11.14 environment at: /tmp/bk02fresh
+Resolved 3 packages in 122ms
+Prepared 1 package in 6ms
+Installed 3 packages in 42ms
+ + blobkit==0.2.0 (from file:///tmp/fleetbundle/wheel/blobkit-0.2.0-py3-none-any.whl)
+ + numpy==2.4.6
+ + scipy==1.17.1
+FRESH 0.2.0 locks_ok True n 41
+fresh imports ok; gpu ns lazy-built: ['advance', 'init_soup', 'name', 'save_run', 'snapshot_rec']
+gpu entry raises clean ImportError: blobkit.soup.sim_gpu needs jax. Install the gpu extra: pip i
+smoke_m0       status=ok I=2.8000000000000003 T=2500.0 cell=1|constant|still|frozen|s1|g0 minted=[]
+  archive: new 1|constant|still|frozen|s1|g0
+smoke_mint     status=ok I=36.398982074406604 T=5000.0 cell=1|constant|mobile|liquid|s1|g2 minted=['smoke_vertex']
+  archive: new 1|constant|mobile|liquid|s1|g2
+smoke_elite    status=ok I=74.2048566698709 T=5000.0 cell=4|grow|rotor|liquid|s2|g2 minted=[]
+  archive: new 4|grow|rotor|liquid|s2|g2
+SMOKE PASS
+G4_FORMAL_DONE rc=0

@@ -1,0 +1,31 @@
+{
+ "gate": "G3",
+ "locks_ok": true,
+ "n_checked": 41,
+ "relocked": [
+  "soup/backend.py (E24)",
+  "soup/sim_gpu.py (E23)"
+ ],
+ "added": [
+  "assay_v2b.py",
+  "soup/driver.py",
+  "deploy_tools.py",
+  "data/fleet/pod_lib.py",
+  "data/fleet/pod_gen.py",
+  "data/fleet/pod_worker.py",
+  "data/fleet/pod_smoke.py",
+  "data/fleet/merge_islands.py",
+  "data/fleet/funnel.py",
+  "data/fleet/sampler.py",
+  "data/fleet/ds2_ops.py"
+ ],
+ "unchanged_from_010": 28,
+ "drift_drill": {
+  "corrupted": "soup/driver.py (scratch copy /tmp/bkdrill)",
+  "flagged_exactly": [
+   "soup/driver.py"
+  ],
+  "warn_fired": true,
+  "strict_raised": true
+ }
+}

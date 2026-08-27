@@ -1,0 +1,13 @@
+
+driver refactor contract audit (pre-G2 reasoning):
+- record failure: old single loop broke after _record ok=False with t_step=t; driver
+  reproduces via _t_stopped (set in _record_host) + stop_when_dead break. same t.
+- recorded_at set before ok-check in both old and new. identical.
+- batch natural end: old set t_step=steps_target for ok worlds; driver min(t, steps)
+  == steps_target whenever an ok world remains (early break only if none ok).
+- pull skipping: old single loop already skipped pull at continuation boundaries
+  (recorded_at guard); old batch pulled redundantly. driver unifies to skip —
+  record-stream-invisible; documented in driver docstring; exercised by G2's
+  chunked 250->500 protocol.
+- progress cadence: identical t values (loop-bottom after increment; skipped on
+  the t==steps_target break in both).

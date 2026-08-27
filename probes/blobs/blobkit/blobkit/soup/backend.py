@@ -32,7 +32,12 @@ def get_backend(name="cpu"):
         from . import sim_cpu
 
         def init_soup(g, L=128.0, seed=0, dtype="f32", kicks=None,
-                      noise=None, workers=0, n_soup=None, gpu_seed=None):
+                      noise=None, workers=0, n_soup=None, gpu_seed=None,
+                      **cpu_only):
+            # workers + **cpu_only: accepted and IGNORED. CPU-backend callers
+            # (assay_v2/_b pass workers=...; future sim_cpu kwargs) must never
+            # crash the GPU namespace — the 4-function surface is the API and
+            # kwarg drift broke a pod deploy once. [blobkit 0.2 E24]
             kw = {}
             if noise is not None:
                 kw["noise"] = noise

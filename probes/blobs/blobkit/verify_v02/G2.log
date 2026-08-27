@@ -1,0 +1,29 @@
+{
+ "A_single_m4_s1_T500_f64": {
+  "match": true,
+  "diffs": [],
+  "T": 500.0,
+  "status": "ok",
+  "n_ts": 101,
+  "n_ct": 21,
+  "wall_pre": 117.4,
+  "wall_new": 113.3
+ },
+ "B_batch_m4+mv3_T500_f64_overlap": {
+  "match": true,
+  "diffs": [],
+  "T": [
+   500.0,
+   500.0
+  ],
+  "status": [
+   "ok",
+   "ok"
+  ],
+  "wall_pre": 632.4,
+  "wall_new": 672.7
+ },
+ "gate": "G2",
+ "pass": true,
+ "note": "CPU-JAX f64 refactor-identity; GPU-device gates rerun on next pod deployment"
+}

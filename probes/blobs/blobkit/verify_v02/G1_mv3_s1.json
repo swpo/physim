@@ -1,0 +1,19 @@
+{
+ "world": "mv3",
+ "seed": 1,
+ "gate": "G1",
+ "match_bitwise": true,
+ "ref": {
+  "interest": 53.426246534614485,
+  "T": 20000.0,
+  "why": "cap",
+  "wall": 4363.8
+ },
+ "new": {
+  "interest": 53.426246534614485,
+  "T": 20000.0,
+  "why": "cap",
+  "wall": 3466.2
+ },
+ "canon_chars": 4794
+}

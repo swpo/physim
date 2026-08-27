@@ -1,0 +1,19 @@
+{
+ "world": "ds3_014",
+ "seed": 9,
+ "gate": "G1",
+ "match_bitwise": true,
+ "ref": {
+  "interest": 77.0636234293702,
+  "T": 10000.0,
+  "why": "converged",
+  "wall": 3216.7
+ },
+ "new": {
+  "interest": 77.0636234293702,
+  "T": 10000.0,
+  "why": "converged",
+  "wall": 2830.3
+ },
+ "canon_chars": 5841
+}

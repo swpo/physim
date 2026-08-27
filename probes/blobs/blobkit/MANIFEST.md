@@ -138,3 +138,73 @@ A component enters blobkit only when ALL of:
   certified for the stage-3 encounter screen only; promote separately if needed.
 - funnel/sampler (G0 screens) not in scope for this brief; the V3 gate ran the
   tree funnel against packaged genomes instead.
+
+## 0.2.0 — backend injection + shared sim driver (2026-08-28)
+
+Design (fixed): share the science, duplicate the kernels, prove kernel
+equality with gates, not shared code.
+- L3 science (genome/metrics/assay decisions): single copy (was already true).
+- L2 sim driver (chunk loop, record cadence, snapshot scheduling, early
+  exits): single copy — NEW `soup/driver.py`.
+- L1 physics kernels: scipy-FFT (`soup/sim_cpu.py`, LOCKED) and jax
+  (`soup/sim_gpu.py`) — two implementations ON PURPOSE; equality via parity
+  gates (VERIFY.md V2 / gpu GATES.md / VERIFY_V02.md G2).
+- L3<->L2 interface: the 4-function namespace `init_soup/advance/
+  snapshot_rec/save_run` == `blobkit.soup.backend.get_backend(name)`.
+
+Verification transcript: `VERIFY_V02.md` (gates G1-G4, artifacts in
+`verify_v02/`). The 0.1.0 verification (VERIFY.md) remains valid for all
+files whose hashes did not change.
+
+### New modules (0.2 lock entries)
+
+| blobkit file | role | provenance |
+|---|---|---|
+| `blobkit/assay_v2b.py` | backend-injected assay entry: `run_assay_b(genome, backend=None, ...)` + `run_assay_gpu` | VERBATIM port of `assay_v2.run_assay` (LOCKED, untouched) with the sim namespace injected instead of hard-bound; shares `js`/`horizon_criteria`/constants by import. G1: bit-identical battery+horizon vs locked `run_assay` (m0 s7, ds3_014 s9, mv3 s1). Adds one non-science field: results row gains `backend` name. |
+| `blobkit/soup/driver.py` | L2 shared sim driver: `run_chunks(worlds, steps_target, step_fn, pull_fn, record_fn, ...)` | Chunk-loop shell LIFTED from the pre-0.2 `sim_gpu.advance_gpu`/`advance_gpu_batch` (loop, REC record cadence, CREC/snapshot full-pull scheduling, early exits, `_t_stopped` contract, amortized wall). No numerics, no measurement code. Two 0.3 seams (design input, logged): `record_fn` is backend-provided (device-side reduction variant can slot in) and `reseed_hook` no-op stub (continuous batching). |
+| `blobkit/deploy_tools.py` | fleet bundle generator: `make_bundle(out_dir, backend=, extra_seeds=)` + CLI | NEW. Emits wheel (or pip-installable `pkg/`) + adapted `pod_lib.py` + verbatim fleet scripts + shims + generated `pod_run.sh` (thread pins) + `island_config.template.json` (`sim_backend` field; lanes OFF) + seeds from the packaged registry. Retires the legacy tree-snapshot deploy bundle for FUTURE runs; the RUNNING CPU fleet and its deploy/ bundle are untouched. |
+| `blobkit/data/fleet/pod_lib.py` | bundle template (adapted) | from `l0/deepsearch/deploy/pod_lib.py`; edits marked `[fleetbundle F1]` (imports genome/assay from the blobkit wheel) and `[fleetbundle F2]` (assay via `assay_v2b.run_assay_b(backend=sim_backend(cfg))`; `sim_backend` config helper; results rows carry `sim_backend`). Everything else verbatim. |
+| `blobkit/data/fleet/{pod_gen,pod_worker,pod_smoke,merge_islands}.py` | bundle templates (verbatim) | byte-identical copies of the fleet-certified `l0/deepsearch/deploy/` scripts: pod_gen `f1015e176dde`, pod_worker `fb8e6e0205f5`, pod_smoke `d3851198f438`, merge_islands `315c1414c348`. |
+| `blobkit/data/fleet/{funnel,sampler,ds2_ops}.py` | bundle templates (verbatim) | byte-identical copies of `deploy/lib/`: funnel `7d049f1219f8`, sampler `c65ca23aba63`, ds2_ops `c79ced9a00ab`. Certified for the fleet but NOT yet promoted to package modules (they keep flat `import genome` imports and ride as data; promotion = separate brief). `lib/genome.py` + `lib/operators_lib.py` in generated bundles are alias shims onto `blobkit.genome`/`blobkit.operators` (deploy copies were verbatim-identical to the packaged sources: `914fad08dffd`/`fcca88b546b1`, see 0.1 table). |
+
+### Edits to existing files (0.2)
+
+- **E23** — `soup/sim_gpu.py`: `advance_gpu` + `advance_gpu_batch` chunk loops
+  replaced by calls into `driver.run_chunks` (new `_record_host` record_fn +
+  `_driver_kw` plumbing; `from . import driver as DRV`). NO numerics change:
+  stepper, packing, `_pull`, init fns byte-untouched; G2 gates bit-identical
+  record streams + final fields vs the pre-refactor module (CPU-JAX f64;
+  GPU-device rerun pending next pod deployment). Driver unifications that are
+  invisible to records (skipped redundant pulls at chunk boundaries) are
+  documented in driver.py's docstring.
+- **E24** — `soup/backend.py`: gpu `init_soup` wrapper now accepts+ignores
+  `workers` AND arbitrary future CPU-only kwargs (`**cpu_only`) — the pod
+  fiasco's API-drift lesson, enforced in-package. Backend namespaces also
+  used by `assay_v2b` (results row `backend` field).
+- `__init__.py`: `__version__` 0.1.0 -> 0.2.0; `assay_v2b`, `deploy_tools`
+  registered as lazy submodules.
+- `pyproject.toml`: version 0.2.0; package-data + `data/fleet/*`.
+- `_locks.json`: regenerated. 28 hashes unchanged from 0.1.0; re-locked:
+  `soup/backend.py` (E24), `soup/sim_gpu.py` (E23); added: the 11 new files
+  above (n_checked 30 -> 41).
+
+### CPU advance: driver adoption deferred (relock note)
+
+`soup/sim_cpu.py` is LOCKED (upstream soup_sim_v2 `8541dedd…`) and was NOT
+touched in 0.2: its `advance` keeps the original inline chunk loop, which the
+driver's shell is provably equivalent to (it was lifted from the GPU port of
+that same loop; G2). At the NEXT RELOCK WINDOW (first version that re-locks
+sim_cpu for its own reasons) `sim_cpu.advance` adopts `driver.run_chunks`
+with a CPU step_fn/pull_fn, gated by the same bitwise battery (V2.0-style)
+before the swap. Until then the CPU loop is the one intentional L2
+duplicate, and it is frozen.
+
+### Deploy bundles: legacy pattern retired for future runs
+
+Future fleets: `python -m blobkit.deploy_tools <out_dir> [--backend gpu]`.
+Generated `pod_run.sh` pins OMP/OPENBLAS/MKL/VECLIB/NUMEXPR to 1 thread
+(process-level parallelism only — the thrash lesson). Generated
+`island_config.template.json` defaults `l192_per_gen=0, longh_top=0` with a
+note pointing the L192/long-horizon lanes at the GPU backend
+(`sim_backend: "gpu"`); set 2/3 to restore legacy CPU-lane behavior.
+The RUNNING fleet keeps its frozen `deploy/` bundle to completion.

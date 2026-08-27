@@ -1,0 +1,9 @@
+[assay_v2 gt_mv3 s1] T=2500 interest=36.0 fired=['c_acf']
+[assay_v2 gt_mv3 s1] T=5000 interest=49.6 fired=['b_org']
+[assay_v2 gt_mv3 s1] T=10000 interest=51.3 fired=['b_org']
+[assay_v2 gt_mv3 s1] T=20000 interest=53.4 fired=['b_org']
+[assay_v2b gt_mv3 s1] T=2500 interest=36.0 fired=['c_acf']
+[assay_v2b gt_mv3 s1] T=5000 interest=49.6 fired=['b_org']
+[assay_v2b gt_mv3 s1] T=10000 interest=51.3 fired=['b_org']
+[assay_v2b gt_mv3 s1] T=20000 interest=53.4 fired=['b_org']
+{"world": "mv3", "seed": 1, "gate": "G1", "match_bitwise": true, "ref": {"interest": 53.426246534614485, "T": 20000.0, "why": "cap", "wall": 4363.8}, "new": {"interest": 53.426246534614485, "T": 20000.0, "why": "cap", "wall": 3466.2}, "canon_chars": 4794}

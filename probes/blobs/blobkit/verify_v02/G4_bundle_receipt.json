@@ -1,0 +1,8 @@
+{
+ "blobkit": "0.2.0",
+ "backend": "cpu",
+ "wheel": "blobkit-0.2.0-py3-none-any.whl",
+ "n_seeds": 16,
+ "n_files": 124,
+ "out_dir": "/tmp/fleetbundle"
+}
