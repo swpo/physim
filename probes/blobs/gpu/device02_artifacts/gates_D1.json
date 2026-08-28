@@ -1,0 +1,149 @@
+[
+ {
+  "world": "m0",
+  "seed": 1,
+  "interest": 2.8,
+  "T": 2500.0,
+  "wall": 20.1
+ },
+ {
+  "world": "m0",
+  "seed": 2,
+  "interest": 2.8,
+  "T": 2500.0,
+  "wall": 12.8
+ },
+ {
+  "world": "m0",
+  "seed": 3,
+  "interest": 2.8,
+  "T": 2500.0,
+  "wall": 11.2
+ },
+ {
+  "world": "m4",
+  "seed": 1,
+  "interest": 26.65,
+  "T": 2500.0,
+  "wall": 11.7
+ },
+ {
+  "world": "m4",
+  "seed": 2,
+  "interest": 22.51,
+  "T": 2500.0,
+  "wall": 12.7
+ },
+ {
+  "world": "m4",
+  "seed": 3,
+  "interest": 23.94,
+  "T": 2500.0,
+  "wall": 11.2
+ },
+ {
+  "world": "coex",
+  "seed": 1,
+  "interest": 15.05,
+  "T": 2500.0,
+  "wall": 23.2
+ },
+ {
+  "world": "coex",
+  "seed": 2,
+  "interest": 18.2,
+  "T": 2500.0,
+  "wall": 22.6
+ },
+ {
+  "world": "coex",
+  "seed": 3,
+  "interest": 22.28,
+  "T": 2500.0,
+  "wall": 22.6
+ },
+ {
+  "world": "xv",
+  "seed": 1,
+  "interest": 29.62,
+  "T": 5000.0,
+  "wall": 35.7
+ },
+ {
+  "world": "xv",
+  "seed": 2,
+  "interest": 38.39,
+  "T": 5000.0,
+  "wall": 33.7
+ },
+ {
+  "world": "xv",
+  "seed": 3,
+  "interest": 34.28,
+  "T": 5000.0,
+  "wall": 35.6
+ },
+ {
+  "world": "pred",
+  "seed": 1,
+  "interest": 43.74,
+  "T": 10000.0,
+  "wall": 113.9
+ },
+ {
+  "world": "pred",
+  "seed": 2,
+  "interest": 43.87,
+  "T": 20000.0,
+  "wall": 195.8
+ },
+ {
+  "world": "pred",
+  "seed": 3,
+  "interest": 42.21,
+  "T": 10000.0,
+  "wall": 101.5
+ },
+ {
+  "world": "mv3",
+  "seed": 1,
+  "interest": 50.77,
+  "T": 20000.0,
+  "wall": 169.9
+ },
+ {
+  "world": "mv3",
+  "seed": 2,
+  "interest": 26.27,
+  "T": 2500.0,
+  "wall": 18.3
+ },
+ {
+  "world": "mv3",
+  "seed": 3,
+  "interest": 32.65,
+  "T": 2500.0,
+  "wall": 20.3
+ },
+ {
+  "world": "bf",
+  "seed": 1,
+  "interest": 34.8,
+  "T": 2500.0,
+  "wall": 13.1
+ },
+ {
+  "world": "bf",
+  "seed": 2,
+  "interest": 35.28,
+  "T": 2500.0,
+  "wall": 13.3
+ },
+ {
+  "world": "bf",
+  "seed": 3,
+  "interest": 34.8,
+  "T": 2500.0,
+  "wall": 14.8
+ }
+]
