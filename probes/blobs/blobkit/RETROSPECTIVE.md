@@ -52,3 +52,56 @@ MATURATION BACKLOG (blobkit 0.3->0.4, in priority order):
  6. RETIRE remaining bundle-era scripts from probes/ deploy paths (single
     source: make_bundle).
 =============================================================================
+
+## Run-plan efficiency changes (adopted pre-relaunch)
+
+REMAINING INEFFICIENCY AUDIT (plan-of-record, stage by stage):
+
+S1 GENERATION STRUCTURE — the confirm serialization survives batching UNLESS
+   confirms ride the same batch. In the CPU era: screen 96 -> confirm elites
+   seed2 -> confirm seed3 (SEQUENTIAL phases; s3 tails idled islands for hours).
+   The batched ladder fixes WITHIN-phase walls, but if pod_gen still emits
+   screen/confirm as separate synchronous phases, we serialize 3 batch rounds
+   per gen with the s2/s3 rounds mostly-empty (few elites).
+   CHANGE: fold confirms into the NEXT gen's batch (async confirms): gen N+1's
+   batch = 96 new candidates + gen N's pending s2/s3 confirm jobs. Zero idle
+   lanes, no extra phase walls. Cost: elites enter the archive one gen later
+   (negligible science impact; MAP-Elites is order-tolerant).
+   -> implement in pod_gen driver flags, not in the assay (small change).
+
+S2 ISLAND TOPOLOGY AT 6 PODS — 6 pods x 1 island x 20 gens with unions every
+   2 gens = 60 union events touching my session (pull 6, merge, push 6, x10).
+   CHANGE: unions become POD-LOCAL cadence-free: since each pod has 1 island,
+   do 3 unions TOTAL (after gens 7, 14, final) — immigration pressure stays
+   (mix has immigrate=20 vs archive), and the measured v1/v2 benefit of unions
+   was concentrated in 2-3 merge events, not continuous mixing. 60 -> 18
+   controller-touch events. Alternatively pods rsync archives peer-to-peer via
+   a tiny cron — but keep it simple: 3 scheduled unions.
+
+S3 MEASURE-POINT PROTOCOL — currently 'first 2 gens on pod1 then fan out' =
+   serial: ~1-2h of single-pod time before parallelism starts.
+   CHANGE: fan out ALL 6 pods immediately; the measure point is READ from pod1
+   at gen-2 WITHOUT blocking the others (they're all running the same certified
+   engine; if the number is bad we stop 6 pods instead of 1 — the downside is
+   ~$20 of pod-hours, the upside is 1-2h earlier completion for the 5 others).
+   Given user's parallelize-max + single-digit-hours policy: fan out day one.
+
+S4 GEN-0 RE-CONFIRM TOLL — every island re-confirms the 190-cell union5 seed
+   at g0 (we watched isl6 pay ~65 min for this in single mode). 6 islands
+   re-confirming the SAME 190 incumbents = 5x wasted duplicate work.
+   CHANGE: pre-confirm ONCE during the measure point (pod1 g0), then ship the
+   confirmed archive (with fresh T_used stamps) to the other 5 pods as their
+   g0-complete state; they start breeding at g1 directly. Saves ~5 pod-hours
+   and removes the biggest cold-start wall.
+
+S5 RESULT ROW PROVENANCE — already scoped into v03 (version+locks+engine per
+   row). No further change.
+
+S6 FILM/AUTOPSY PIPELINE — post-run analysis (l0-evolve-v2 wake + films) is
+   still manual-ish; fine for now, not worth pre-engineering.
+
+NET: 4 changes, all small, all in the DRIVER layer (pod_gen/runner scripts),
+none touching certified code: async confirms, 3-union schedule, immediate
+fan-out, seed-once-share-confirms. Est. combined effect: removes ~30-40% of
+projected wall beyond what batching gives, and cuts controller babysitting by
+~3x.
