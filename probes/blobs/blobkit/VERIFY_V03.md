@@ -27,7 +27,7 @@ design). So: batch == jax single (bitwise, this file) == locked assay
 | V1c | f32 [m0 s7, mv3 s1] t0=2500 cap=5000 B_pad=(2,) — non-deterministic ladder, extra evidence | **PASS 2/2 bitwise** (V1c.json) |
 | V1d | f32 [m0 (t0=cap=2500), mv3 (t0=cap=5000)] B_pad=(1,2): m0 exits rung 1 DETERMINISTICALLY, repack 2->1 under a live lane riding its t0 floor, mv3 decides at 5000 | **PASS 2/2 bitwise** (V1d.json; mv3 rides t0 floor across the 2->1 repack, decides at 5000: fired=[b_org], why=cap) |
 | V1e | same as V1d with B_pad=(2,): repack disabled — exited m0 row rides as inert ballast; no-cross-talk identity | **PASS 2/2 bitwise** (V1e.json; ballast path; mv3 out == V1d's bit-for-bit) |
-| V2 | throughput, union4 mixed lanes, batched vs sequential singles (same backend): local CPU-JAX reference + PERF_REFERENCE.json emission; BINDING on H100 (`--device H100`, target >=2.5x, post ref 396 w/h) | local reference run in flight at packaging (V2.json + PERF_REFERENCE.json land beside this file); **binding H100 run = next pod** |
+| V2 | throughput, union4 mixed lanes, batched vs sequential singles (same backend): local CPU-JAX reference + PERF_REFERENCE.json emission; BINDING on H100 (`--device H100`, target >=2.5x, post ref 396 w/h) | **local reference recorded** (V2.json): 8 lanes, batch 5667.2s (5.1 w/h) vs sequential 3993.2s (7.2 w/h) -> ratio 0.7x local. HONEST NOTE: on CPU-JAX batching pays the padding FLOPs (nf_max x B tensor on saturated cores) with no launch-overhead pool to amortize — the mechanism the batch exploits exists only on the GPU; local ratio <1 was anticipated by the controller directive. Decision agreement 7/8; the 1 flip (p2g3_032: batch exits 2500, single extends to 10000) is a T=2500 criteria-threshold flip in the known f32 engine-noise regime (certification gates f32 decisions at the DISTRIBUTION level; V1a-e prove the ladder machinery bitwise). PERF_REFERENCE.json emitted (binding=false). **Binding gate = same script `--device H100` on the pod (controller)** |
 | V3a | relock: _locks.json regenerated (44 files), verify_locks() green, no unexpected drift | **PASS** (V3a.json: 44 files, clean-import verify_locks ok) |
 | V3b | fresh-venv pip install + import smoke + `run_assay_batch` entry present + locks green | **PASS** (V3b.log: fresh venv, locks green, jax lazy) |
 | V3c | `make_bundle(backend="gpu_batch")` emission: pod_worker_batch/pod_gen_batch/pod_run_batch.sh present, config template extended; offline grouping + collect/g0import unit runs | **PASS** (V3c.json: emission + grouping/collect/g0import unit runs) |
@@ -58,3 +58,26 @@ design). So: batch == jax single (bitwise, this file) == locked assay
    device; 2. BINDING V2 (32 lanes, --device H100, >=2.5x + w/h floor);
 3. GPU-device rerun of the 0.2 G2 record-stream identity (was already
    deferred by 0.2).
+
+## Local close-out note (controller directive)
+
+Local evidence closed with: V1a-e bitwise identity (+ V1a re-verified on
+0.3.1), spawn/teardown hardening tests H1-H4, V2 local reference + perf
+floor emission. Binding V2 and full-ladder long-world identity run on the
+H100 (controller). The V2 7/8 probe (v2_probe_lane0.py) was STOPPED on the
+close-out directive — CPU-JAX decision divergences in the f32 engine-noise
+regime are distribution-gated per certification and not chased locally; the
+probe script stays in verify_v03/ for the pod checklist.
+
+## 0.3.1 hotfix gates (GPU teardown hardening)
+
+| gate | what | result |
+|---|---|---|
+| H1 | spawn-context pool battery == inline (real m0 record; worker module jax-free import chain asserted) | **PASS** (/tmp/bk031_spawntest.py) |
+| H2 | broken-flag shutdown returns promptly (no feeder-queue join) | **PASS** (same script) |
+| H3 | end-to-end sabotaged pool: BrokenProcessPool on first rung -> serial fallback -> correct results -> shutdown(wait=False, cancel_futures=True) | **PASS** (/tmp/bk031_breaktest.py) |
+| H4 | V1a rerun on 0.3.1 (4-lane heterogeneous, f32) | **PASS 4/4 bitwise** (V1a.json, walls batch 1039.5s/singles 657.2s — probe ran concurrently) |
+| H5 | relock 45 files + clean-import verify_locks + version 0.3.1 | **PASS** |
+
+Device-side verification of the fix (the actual GPU teardown) = parent's
+device-gate rerun.

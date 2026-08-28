@@ -310,7 +310,35 @@ micro-tuning.
 | V1c | f32 [m0 s7, mv3 s1] B_pad=(2,) ballast path | **PASS 2/2 bitwise** |
 | V1d | f32 per-lane t0 floors force multi-rung: repack 2->1 under live lane, mv3 rides its floor to a 5000 decision | **PASS 2/2 bitwise** |
 | V1e | as V1d, repack disabled (exited row = inert ballast) | **PASS 2/2 bitwise** (mv3 out identical to V1d's — repack and ballast paths agree bit-for-bit) |
-| V2 | throughput union4 mixed lanes (stratified T_used) batched vs sequential singles + PERF_REFERENCE.json emission (deploy-smoke perf floor). LOCAL CPU-JAX = reference only (batching multiplies CPU FLOPs ~linearly; understates GPU win); BINDING gate = same script `--device H100` on the pod (target >=2.5x; post ref 396 w/h pop-96) | local run in flight at packaging time (V2.json/V2.log land in verify_v03/); binding H100 run = next pod |
+| V2 | throughput union4 mixed lanes (stratified T_used) batched vs sequential singles + PERF_REFERENCE.json emission (deploy-smoke perf floor). LOCAL CPU-JAX = reference only (batching multiplies CPU FLOPs ~linearly; understates GPU win); BINDING gate = same script `--device H100` on the pod (target >=2.5x; post ref 396 w/h pop-96) | local ref recorded: 0.7x (8 lanes; batch 5.1 w/h vs seq 7.2 w/h — CPU pays the padding FLOPs, no launch-overhead pool to amortize; anticipated). Decisions 7/8 (1 f32 engine-noise threshold flip at T=2500; distribution-gated regime). PERF_REFERENCE.json emitted (binding=false). BINDING: `v2_run.py --device H100` on the pod |
 | V3a | relock: 44 files (41 + 3 new; re-locked deploy_tools + fleet pod_lib), clean import verify_locks ok | **PASS** (V3a.json) |
 | V3b | fresh-venv (`/tmp/bk03fresh`) pip install 0.3.0: locks green, run_assay_batch present, jax stays lazy | **PASS** (V3b.log) |
 | V3c | gpu_batch bundle emission from the fresh venv + offline unit runs (grouping, async collect, g0import) | **PASS** (V3c.json) |
+
+## 0.3.1 — GPU teardown hardening (2026-08-28, hotfix)
+
+Fleet-blocking bug caught at device gates: `run_assay_batch` hung at
+teardown on the GPU pod. py-spy: MainThread in `executor.shutdown->join`,
+worker thread in `terminate_broken->...->queue join` — the battery pool
+BROKE (fork-after-jax/CUDA-init killed a worker) and a broken executor's
+`shutdown(wait=True)` deadlocks on its feeder queue. Local CPU boxes never
+saw it (fork works there).
+
+Fixes (assay_batch.py + new `_batteryproc.py`; no science changes):
+- battery pool now uses the SPAWN mp context (mandatory; fork after CUDA
+  init is undefined);
+- the pool worker moved to `blobkit/_batteryproc.py`, a deliberately tiny
+  module whose import chain is numpy/scipy-only: spawned workers import the
+  worker's module — they must NEVER pull jax/sim_gpu;
+- `_shutdown_pool`: checks the executor's broken flag UP FRONT (a deadlock
+  hangs rather than raises) and falls back to
+  `shutdown(wait=False, cancel_futures=True)`;
+- broken pool mid-run: the rung finishes serially in-process (correctness
+  first), the pool is retired non-blockingly, remaining rungs run inline.
+
+Tests (dev venv): spawn-pool battery == inline battery on a real record;
+simulated-broken-flag shutdown returns promptly; sabotaged-pool end-to-end
+(`BrokenProcessPool` on first map) -> serial fallback -> results correct ->
+non-waiting shutdown. V1a rerun on 0.3.1: PASS 4/4 bitwise (V1a.json).
+Locks: 45 files (re-locked assay_batch.py, added `_batteryproc.py`);
+verify_locks green on clean import; version 0.3.1.

@@ -1,0 +1,13 @@
+[assay_batch gt_m0 s7 lane0] T=1250 interest=3.3 fired=[]
+[assay_batch gt_m4 s1 lane1] T=1250 interest=23.9 fired=[]
+[assay_batch gt_mv3 s1 lane2] T=1250 interest=32.4 fired=[]
+[assay_batch gt_bf s1 lane3] T=1250 interest=33.7 fired=[]
+[assay_v2b gt_m0 s7] T=1250 interest=3.3 fired=[]
+[assay_v2b gt_m4 s1] T=1250 interest=23.9 fired=[]
+[assay_v2b gt_mv3 s1] T=1250 interest=32.4 fired=[]
+[assay_v2b gt_bf s1] T=1250 interest=33.7 fired=[]
+{"gate": "V1a", "dtype": "f32", "backend": "cpu-jax", "t0": 1250.0, "cap": 2500.0, "B_pad": [2, 4], "pass_": true, "wall_batch": 1039.5, "wall_singles": 657.2, "note": "bitwise identity vs run_assay_b(backend=gpu) singles on the same jax backend+dtype; t0/cap reduced (legal locked-assay params) per controller directive \u2014 standard-ladder long-world identity reruns on the GPU pod. Singles chain to the locked CPU assay via 0.2 G1/G2 + gpu GATES.md."}
+m0 7 match: True {'interest': 3.3128039506489673, 'T': 1250.0, 'why': 'static', 'n_ext': 0} {'interest': 3.3128039506489673, 'T': 1250.0, 'why': 'static', 'n_ext': 0}
+m4 1 match: True {'interest': 23.883032554158675, 'T': 1250.0, 'why': 'static', 'n_ext': 0} {'interest': 23.883032554158675, 'T': 1250.0, 'why': 'static', 'n_ext': 0}
+mv3 1 match: True {'interest': 32.42065292660067, 'T': 1250.0, 'why': 'static', 'n_ext': 0} {'interest': 32.42065292660067, 'T': 1250.0, 'why': 'static', 'n_ext': 0}
+bf 1 match: True {'interest': 33.72368479527081, 'T': 1250.0, 'why': 'static', 'n_ext': 0} {'interest': 33.72368479527081, 'T': 1250.0, 'why': 'static', 'n_ext': 0}

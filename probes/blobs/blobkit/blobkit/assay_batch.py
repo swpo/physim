@@ -67,6 +67,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 
 import blobkit
+from . import _batteryproc as _BP
 from . import metrics_v2 as MV2
 from . import genome as G
 from .assay_v2 import T0_DEFAULT, T_CAP, js, horizon_criteria
@@ -115,19 +116,31 @@ def _pad_B(n, ladder):
     return int(n)
 
 
-# --------------------------------------------------------- battery worker
-def _battery_worker(args):
-    """LOCKED battery + LOCKED criteria for one lane (CPU, pool-safe).
-    Exceptions are captured per lane (a no_blobs-style battery crash on one
-    lane must not abort the other B-1 lanes; the singles path lets it
-    propagate to the caller — pod_lib.evaluate catches it there)."""
-    rec, genome = args
+def _shutdown_pool(pool):
+    """Teardown that cannot hang: a BROKEN executor deadlocks
+    shutdown(wait=True) on its feeder queue (observed on the GPU pod —
+    and a deadlock HANGS rather than raises, so it must be detected UP
+    FRONT via the executor's broken flag, not caught after)."""
+    if pool is None:
+        return
+    broken = bool(getattr(pool, "_broken", False))
     try:
-        out = MV2.full_battery(dict(rec), genome=genome)
-        crit = horizon_criteria(rec, genome, D=out["D"])
-        return out, crit, None
-    except Exception as e:                       # contained, reported per lane
-        return None, None, repr(e)[:300]
+        if broken:
+            pool.shutdown(wait=False, cancel_futures=True)
+        else:
+            pool.shutdown(wait=True)
+    except Exception:
+        try:
+            pool.shutdown(wait=False, cancel_futures=True)
+        except Exception:
+            pass
+
+
+# --------------------------------------------------------- battery worker
+# 0.3.1: the pool worker lives in blobkit._batteryproc (tiny, jax-free
+# import chain) so SPAWNED workers never touch jax/sim_gpu. See its
+# docstring for the GPU fork-deadlock post-mortem.
+_battery_worker = _BP.battery_worker
 
 
 # --------------------------------------------------------- batch plumbing
@@ -241,6 +254,9 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
     if _pad_B(len(live), B_pad) != len(live):
         master = _repack(live, dtype, noise, B_pad)   # t=0 roundtrip (exact)
 
+    # SPAWN context is mandatory: fork-after-jax/CUDA-init killed workers on
+    # GPU hosts and shutdown then deadlocked on the broken feeder queue
+    # (0.3.0 fleet bug). Workers run _batteryproc.battery_worker (jax-free).
     pool = (ProcessPoolExecutor(max_workers=battery_procs,
                                 mp_context=mp.get_context("spawn"))
             if battery_procs > 0 else None)
@@ -315,8 +331,13 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
             if pool is not None and len(payloads) > 1:
                 try:
                     results = list(pool.map(_battery_worker, payloads))
-                except Exception:                 # pool died: inline fallback
+                except Exception:
+                    # pool broke (BrokenExecutor & co): correctness first —
+                    # finish THIS rung serially in-process, retire the pool
+                    # (broken executors deadlock shutdown(wait=True)).
                     results = [_battery_worker(p) for p in payloads]
+                    _shutdown_pool(pool)
+                    pool = None
             else:
                 results = [_battery_worker(p) for p in payloads]
             by_lane = {id(ln): r for ln, r in zip(ok_lanes, results)}
@@ -376,7 +397,6 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
             # their "exited" status and keep stepping as inert ballast.
             T = min(T * 2, max(ln["cap"] for ln in live))
     finally:
-        if pool is not None:
-            pool.shutdown(wait=True)
+        _shutdown_pool(pool)
 
     return [ln["out_final"] for ln in lanes]

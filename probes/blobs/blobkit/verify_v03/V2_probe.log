@@ -1,0 +1,6 @@
+[assay_v2b p2g3_032 s1] T=2500 interest=43.3 fired=['b_org']
+[assay_v2b p2g3_032 s1] T=5000 interest=43.3 fired=['b_org']
+[assay_v2b p2g3_032 s1] T=10000 interest=0.0 fired=[]
+[assay_batch p2g3_032 s1 lane0] T=2500 interest=43.3 fired=['b_org']
+/Users/spoho/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

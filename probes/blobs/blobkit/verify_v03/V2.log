@@ -1,1 +1,11 @@
 [v2] 8 lanes; T_used mix: {2500.0: 4, 5000.0: 2, 10000.0: 1, 20000.0: 1}
+[v2] batch done in 5667.2s = 5.1 w/h
+[v2] single 1/8 p2g3_032 T=10000
+[v2] single 2/8 p5g6_009 T=2500
+[v2] single 3/8 p4g4_068 T=5000
+[v2] single 4/8 p3g4_011 T=2500
+[v2] single 5/8 p3g5_055 T=2500
+[v2] single 6/8 p2g3_024 T=2500
+[v2] single 7/8 p2g4_088 T=2500
+[v2] single 8/8 p0g0_gt_m4 T=2500
+{"gate": "V2", "device": "cpu-jax", "dtype": "f32", "lanes": 8, "wall_batch_s": 5667.2, "wall_sequential_s": 3993.2, "ratio": 0.7, "worlds_per_hour_batch": 5.1, "worlds_per_hour_seq": 7.2, "decision_agree": "7/8", "target": 2.5, "binding": false, "pass_": false, "note": "cpu-jax runs are LOCAL REFERENCE ONLY (controller directive): batching B worlds multiplies CPU FLOPs ~linearly, so the local ratio understates the GPU win. The BINDING throughput gate is this same script on the H100 pod (--device H100; post reference 396 w/h pop-96). f32 decision agreement is expected, not bitwise-gated (V1 is the f64 identity gate)."}

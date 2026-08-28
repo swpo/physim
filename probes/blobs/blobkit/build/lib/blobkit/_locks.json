@@ -1,8 +1,9 @@
 {
- "locked_at": "2026-08-28 13:55:44",
- "version": "0.3.0",
+ "locked_at": "2026-08-28 16:11:51",
+ "version": "0.3.1",
  "files": {
-  "assay_batch.py": "79ab6c10edfca16b4ca26b66a750133cd257d0758caf88fef42a8f23a4fa505e",
+  "_batteryproc.py": "361ffc9cbf3ca79ea34342fc711052500b7ec67f9e0f7ee5878effd3c69164d1",
+  "assay_batch.py": "9c70796db3a0f66e84f476cfceab40aa905caafe2c77690aa535203f66309190",
   "assay_v2.py": "a8672a92a5de791cdb685d7a84cd9af5e148b8fdab7c50c6d7fb7412f7b17042",
   "assay_v2b.py": "1d30bce790fa7a7f27905a4bf162180325d95982a779d545a1632ee3fa23052e",
   "assays_v1.py": "27c1af44a5ce666802825509a37dc9c62c6d7cdd44c278951a164f0907b303ba",
