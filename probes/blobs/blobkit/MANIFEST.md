@@ -208,3 +208,34 @@ Generated `pod_run.sh` pins OMP/OPENBLAS/MKL/VECLIB/NUMEXPR to 1 thread
 note pointing the L192/long-horizon lanes at the GPU backend
 (`sim_backend: "gpu"`); set 2/3 to restore legacy CPU-lane behavior.
 The RUNNING fleet keeps its frozen `deploy/` bundle to completion.
+
+## Check taxonomy (adopted 2026-08-28)
+
+
+A) POOR MAN'S CI (fast, runs everywhere, forever):
+   - verify_locks(): hash table check, <1s, at install + before every run
+   - import/version smoke: blobkit.__version__, backend surface exists
+   -> These stay in every pod bootstrap script permanently. Cost ~seconds.
+
+B) ONE-TIME SOFTWARE CERTIFICATION (per code version, then done):
+   - v02: G1 bitwise interface identity, G2 driver refactor identity
+   - v03: V1 batched-ladder decision identity, (V2 local throughput reference)
+   - device gates when an engine first meets real hardware class (D1/D3 7-world
+     + champion distributional)
+   -> Run ONCE per (code version x engine class). 0.3's certification does NOT
+      re-run 0.2's gates except transitively (locks prove 0.2 files unchanged).
+      A future H100->H200 or CUDA-major bump = one cheap re-gate of the device
+      suite, not the full ladder.
+
+C) PER-DEPLOY BEST-PRACTICE CHECKS (every fresh pod, ~2-5 min):
+   - locks + import smoke (A)
+   - pod_smoke.py: 3-candidate mini-gen against the packaged registry (catches
+     env/driver/CUDA/wheel mismatches on THAT box)
+   - one known-anchor world (m0 s7 = 2.8) as a numerics canary
+   -> Cheap insurance per box; NOT re-certification.
+
+WHAT WAS CONFLATED IN OUR FLOW (honest): the research run kept absorbing (B)
+because the software was being built DURING the campaign. Post-0.3, the split
+is clean: B is done offline once, C is scripted into make_bundle's generated
+bootstrap, and research runs start from a certified wheel + 2-minute deploy
+check, no gate theater.
