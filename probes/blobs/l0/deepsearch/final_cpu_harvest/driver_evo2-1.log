@@ -1,0 +1,166 @@
+g1: 96 jobs -> 14 shards, loads ['41', '41', '41', '41', '38', '38', '40', '40', '40', '40', '40', '40', '40', '39']
+g1: 96 jobs -> 14 shards, loads ['41', '41', '41', '41', '38', '38', '40', '40', '40', '40', '40', '40', '40', '39']
+{
+ "gen": 1,
+ "n": 96,
+ "events": {
+  "new": 24,
+  "improved": 10,
+  "held": 23,
+  "dead": 39
+ },
+ "opstat": {
+  "merge_slow_tanh": {
+   "n": 8,
+   "ok": 8,
+   "best": 39.92042809995009,
+   "events": 5
+  },
+  "merge_cross_edge": {
+   "n": 12,
+   "ok": 12,
+   "best": 61.055271913576284,
+   "events": 9
+  },
+  "dup_act": {
+   "n": 8,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "mutate": {
+   "n": 20,
+   "ok": 16,
+   "best": 56.96302485259417,
+   "events": 9
+  },
+  "add_chan": {
+   "n": 8,
+   "ok": 5,
+   "best": 76.88086609084195,
+   "events": 2
+  },
+  "mint_bilin": {
+   "n": 12,
+   "ok": 11,
+   "best": 75.3514905678596,
+   "events": 5
+  },
+  "merge_share_chan": {
+   "n": 4,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 20,
+   "ok": 8,
+   "best": 38.175000000000004,
+   "events": 2
+  },
+  "delete_bilin": {
+   "n": 4,
+   "ok": 4,
+   "best": 65.34012184382789,
+   "events": 2
+  }
+ },
+ "n_extended": 9,
+ "mean_I": 24.23182402780223,
+ "max_I": 76.88086609084195,
+ "max_cand": "p1g1_040",
+ "wall_assay_total": 175643.4,
+ "census": {
+  "minted_rows": 47,
+  "minted_ok": 37,
+  "minted_best": 75.3514905678596,
+  "cells_with_minted": 11
+ }
+}
+s2g1: 34 jobs -> 14 shards, loads ['21', '21', '19', '19', '18', '18', '18', '18', '20', '20', '17', '17', '20', '20']
+laneg1: 2 jobs -> 2 shards, loads ['29', '27', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+seed2 g1: 34 rows, ok=12
+s3g1: 12 jobs -> 12 shards, loads ['12', '12', '12', '12', '7', '6', '5', '5', '4', '4', '4', '3', '0', '0']
+seed3 g1: 12 rows, ok=11
+GEN_1_DONE Thu Aug 27 13:48:45 UTC 2026
+g2: 96 jobs -> 14 shards, loads ['64', '67', '67', '66', '66', '64', '67', '66', '66', '66', '66', '66', '66', '66']
+{
+ "gen": 2,
+ "n": 96,
+ "events": {
+  "new": 9,
+  "improved": 13,
+  "held": 43,
+  "dead": 31
+ },
+ "opstat": {
+  "dup_act": {
+   "n": 8,
+   "ok": 2,
+   "best": 55.12721446758536,
+   "events": 2
+  },
+  "add_chan": {
+   "n": 8,
+   "ok": 8,
+   "best": 70.51215890121779,
+   "events": 2
+  },
+  "merge_cross_edge": {
+   "n": 14,
+   "ok": 14,
+   "best": 78.43881892386077,
+   "events": 5
+  },
+  "mint_bilin": {
+   "n": 12,
+   "ok": 12,
+   "best": 80.20766280801138,
+   "events": 3
+  },
+  "mutate": {
+   "n": 20,
+   "ok": 19,
+   "best": 71.95597289574287,
+   "events": 7
+  },
+  "merge_slow_tanh": {
+   "n": 6,
+   "ok": 6,
+   "best": 71.41609268198832,
+   "events": 2
+  },
+  "merge_share_chan": {
+   "n": 4,
+   "ok": 0,
+   "best": 0.0,
+   "events": 0
+  },
+  "immigrate": {
+   "n": 20,
+   "ok": 7,
+   "best": 0.0,
+   "events": 0
+  },
+  "delete_bilin": {
+   "n": 4,
+   "ok": 4,
+   "best": 77.29740662493627,
+   "events": 1
+  }
+ },
+ "n_extended": 27,
+ "mean_I": 38.568918826020756,
+ "max_I": 80.20766280801138,
+ "max_cand": "p1g2_025",
+ "wall_assay_total": 387531.0,
+ "census": {
+  "minted_rows": 36,
+  "minted_ok": 32,
+  "minted_best": 80.20766280801138,
+  "cells_with_minted": 59
+ }
+}
+s2g2: 22 jobs -> 14 shards, loads ['14', '14', '14', '14', '14', '14', '19', '16', '24', '23', '23', '22', '21', '20']
+seed2 g2: 22 rows, ok=17
+s3g2: 17 jobs -> 14 shards, loads ['14', '14', '14', '14', '13', '13', '12', '12', '12', '12', '12', '17', '14', '17']
