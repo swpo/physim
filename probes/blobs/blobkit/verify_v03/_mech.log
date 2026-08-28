@@ -1,0 +1,5 @@
+[assay_batch gt_m0 s7 lane0] T=2500 interest=2.8 fired=[]
+[assay_batch gt_m0 s3 lane1] T=2500 interest=2.8 fired=[]
+OUT 2.8000000000000003 2500.0 static 0
+OUT 2.8000000000000003 2500.0 static 0
+wall 565.8

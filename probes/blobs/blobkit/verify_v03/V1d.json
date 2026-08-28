@@ -1,0 +1,53 @@
+{
+ "gate": "V1d",
+ "dtype": "f32",
+ "backend": "cpu-jax",
+ "t0": 2500.0,
+ "cap": 5000.0,
+ "B_pad": [
+  1,
+  2
+ ],
+ "pass_": true,
+ "wall_batch": 1741.5,
+ "wall_singles": 1303.3,
+ "lanes": [
+  {
+   "world": "m0",
+   "seed": 7,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 2.8000000000000003,
+    "T": 2500.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 2.8000000000000003,
+    "T": 2500.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "canon_chars": 3152
+  },
+  {
+   "world": "mv3",
+   "seed": 1,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 47.7414796493387,
+    "T": 5000.0,
+    "why": "cap",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 47.7414796493387,
+    "T": 5000.0,
+    "why": "cap",
+    "n_ext": 0
+   },
+   "canon_chars": 4268
+  }
+ ],
+ "note": "bitwise identity vs run_assay_b(backend=gpu) singles on the same jax backend+dtype; t0/cap reduced (legal locked-assay params) per controller directive \u2014 standard-ladder long-world identity reruns on the GPU pod. Singles chain to the locked CPU assay via 0.2 G1/G2 + gpu GATES.md."
+}

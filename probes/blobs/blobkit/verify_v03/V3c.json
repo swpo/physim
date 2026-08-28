@@ -1,0 +1,12 @@
+{
+ "gate": "V3c",
+ "bundle": "/tmp/bk03bundle",
+ "backend": "gpu_batch",
+ "n_files": 80,
+ "sh_syntax": true,
+ "py_compile": true,
+ "grouping_test": true,
+ "pgb_test": true,
+ "pass_": true,
+ "note": "offline unit runs with a stubbed run_assay_batch: shard grouping (mixed screens+confirms+longH share one tensor; L192 splits), row schema/status vocabulary, async-confirm collect (same-gen confirms excluded), g0import (+overwrite guard). Emitted from the fresh-venv 0.3.0 install."
+}

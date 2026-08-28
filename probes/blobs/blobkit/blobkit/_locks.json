@@ -1,5 +1,8 @@
 {
+ "locked_at": "2026-08-28 13:55:44",
+ "version": "0.3.0",
  "files": {
+  "assay_batch.py": "79ab6c10edfca16b4ca26b66a750133cd257d0758caf88fef42a8f23a4fa505e",
   "assay_v2.py": "a8672a92a5de791cdb685d7a84cd9af5e148b8fdab7c50c6d7fb7412f7b17042",
   "assay_v2b.py": "1d30bce790fa7a7f27905a4bf162180325d95982a779d545a1632ee3fa23052e",
   "assays_v1.py": "27c1af44a5ce666802825509a37dc9c62c6d7cdd44c278951a164f0907b303ba",
@@ -7,9 +10,11 @@
   "data/fleet/funnel.py": "7d049f1219f80d56040038719807164b62845844b4168db26c70107e5220017e",
   "data/fleet/merge_islands.py": "315c1414c34829f1d75a7a4a4d0291c6b957d216c4ecb2695df1da4192a67d9d",
   "data/fleet/pod_gen.py": "f1015e176ddee295ccb24435a91ff7be317547ec9a10bef45c23a1a291944ec6",
-  "data/fleet/pod_lib.py": "4046c5cba7243d420f858050618be2eaa4b168a118dc9e49fb41d1c8cc3697e6",
+  "data/fleet/pod_gen_batch.py": "e23c16f658d8843568c23eae5ef389372679214e33dbcac84d6fbb5fc4e376a8",
+  "data/fleet/pod_lib.py": "bbd36d7a9fd536d6b844ae6abb4f8792b8ed86ebfa951fb0321d93062e91175b",
   "data/fleet/pod_smoke.py": "d3851198f4389fcfdc043e7c9ab50cf1b5235c44f7eb0dfd870d3e37ebf716b1",
   "data/fleet/pod_worker.py": "fb8e6e0205f5ee7bc03e71e029eeb5bec0b84f052aa405410eafe182f257e675",
+  "data/fleet/pod_worker_batch.py": "765c464d0630832e9e23d0b5956eeca7ec5d21c982713a6a82ab05c1d3c41eb3",
   "data/fleet/sampler.py": "c65ca23aba63658992b2985cc61da91c39bf81af890d700db710eba1731075f1",
   "data/stamp_A4_dx05.npz": "067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9",
   "data/worlds/_extraction.json": "98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
@@ -28,7 +33,7 @@
   "data/worlds/s2_118_41.json": "d411efe30e46965322e13f5a734e952acf5b560e47adddc0639235b31540c522",
   "data/worlds/s2_128_26.json": "f907d4359869931e8069c2ca07ec725b477b81268d13544f3f2300927a1c9dbc",
   "data/worlds/xv.json": "8869bc6f46d1a7f5085abe097eac7bfd7ac66d96f6b201b029b72e2defb5171f",
-  "deploy_tools.py": "ff6996e8e3dd058d08c4dac6e6e11801064c1da9730d9991d8c64d601ff0b8f9",
+  "deploy_tools.py": "e45729a80f1b1538ca7f50efce5cd42f735ab3d8e1035b3e0048be2759c08a6b",
   "genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
   "hier_metrics.py": "bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614",
   "metrics_v1.py": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
@@ -41,7 +46,5 @@
   "soup/sim_gpu.py": "b555241929ab7ed46499ec7614c4ddbb193fb7a5f9696177081a236cd180891b",
   "soup/sim_v1.py": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
   "worlds.py": "9435f8964f3a9df07504afab8b19b4c6fe0432c653925bd376376dfbb94c54be"
- },
- "locked_at": "2026-08-27 13:47:41",
- "note": "SHA256 of every certified blobkit file at packaging time. Upstream v2 lock (source tree l0/complexity/v2_lock_hashes.txt): metrics_v2 bcfd5d00..., assay_v2 1eb45780..., soup_sim_v2 8541dedd... \u2014 blobkit copies differ ONLY by the documented import edits (MANIFEST.md). | 0.2.0 relock 2026-08-28: +assay_v2b, +soup/driver, +deploy_tools, +data/fleet/* (bundle templates); soup/backend.py (E24 workers-tolerant gpu init), soup/sim_gpu.py (E23 driver refactor, G2-gated). All other hashes unchanged from 0.1.0."
+ }
 }

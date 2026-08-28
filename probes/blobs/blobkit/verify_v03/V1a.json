@@ -1,0 +1,89 @@
+{
+ "gate": "V1a",
+ "dtype": "f32",
+ "backend": "cpu-jax",
+ "t0": 1250.0,
+ "cap": 2500.0,
+ "B_pad": [
+  2,
+  4
+ ],
+ "pass_": true,
+ "wall_batch": 914.1,
+ "wall_singles": 462.0,
+ "lanes": [
+  {
+   "world": "m0",
+   "seed": 7,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 3.3128039506489673,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 3.3128039506489673,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "canon_chars": 3222
+  },
+  {
+   "world": "m4",
+   "seed": 1,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 23.883032554158675,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 23.883032554158675,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "canon_chars": 3453
+  },
+  {
+   "world": "mv3",
+   "seed": 1,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 32.42065292660067,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 32.42065292660067,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "canon_chars": 3896
+  },
+  {
+   "world": "bf",
+   "seed": 1,
+   "match_bitwise": true,
+   "batch": {
+    "interest": 33.72368479527081,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "single": {
+    "interest": 33.72368479527081,
+    "T": 1250.0,
+    "why": "static",
+    "n_ext": 0
+   },
+   "canon_chars": 3912
+  }
+ ],
+ "note": "bitwise identity vs run_assay_b(backend=gpu) singles on the same jax backend+dtype; t0/cap reduced (legal locked-assay params) per controller directive \u2014 standard-ladder long-world identity reruns on the GPU pod. Singles chain to the locked CPU assay via 0.2 G1/G2 + gpu GATES.md."
+}

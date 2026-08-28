@@ -1,0 +1,28 @@
+{
+ "gate": "W1",
+ "pass_": true,
+ "runs": [
+  {
+   "what": "2 m0 lanes f32, battery_procs=2, B_pad pads 2->4 (2 ballast rows), pool battery, finalize",
+   "out": [
+    {
+     "interest": 2.8000000000000003,
+     "T": 2500.0,
+     "why": "static"
+    },
+    {
+     "interest": 2.8000000000000003,
+     "T": 2500.0,
+     "why": "static"
+    }
+   ],
+   "wall_s": 565.8,
+   "log": "_mech.log"
+  },
+  {
+   "what": "4-lane heterogeneous batch (V1a doubles as the full smoke: m0/m4/mv3/bf one tensor)",
+   "ref": "V1a.json"
+  }
+ ],
+ "note": "course-corrected: smoke4.py (4-lane f64 m0/m4/m4/coex) kept as a pod-ready script; local run superseded by V1a-e which cover the same paths WITH identity checks."
+}

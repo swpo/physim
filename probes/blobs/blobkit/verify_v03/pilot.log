@@ -1,0 +1,1 @@
+[{"dtype": "f32", "init": 0.6, "first250": 189.0, "second250": 188.5, "tu_per_s_warm": 5.3}, {"dtype": "f64", "init": 0.1, "first250": 418.3, "second250": 416.0, "tu_per_s_warm": 2.4}]

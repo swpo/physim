@@ -1,0 +1,1 @@
+{"gate": "V3b", "version": "0.3.0", "locks_ok": true, "n_checked": 44, "entry": "run_assay_batch", "jax_lazy": true, "pass_": true}

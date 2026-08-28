@@ -21,7 +21,7 @@ import json
 import os
 import warnings
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 _PKG = os.path.dirname(os.path.abspath(__file__))
 _LOCK_TABLE = os.path.join(_PKG, "_locks.json")
@@ -73,8 +73,8 @@ if os.environ.get("BLOBKIT_SKIP_LOCK") != "1":
     verify_locks()
 
 _SUBMODULES = ("genome", "assays_v1", "metrics_v1", "hier_metrics",
-               "metrics_v2", "assay_v2", "assay_v2b", "worlds", "operators",
-               "soup", "deploy_tools")
+               "metrics_v2", "assay_v2", "assay_v2b", "assay_batch",
+               "worlds", "operators", "soup", "deploy_tools")
 
 
 def __getattr__(name):

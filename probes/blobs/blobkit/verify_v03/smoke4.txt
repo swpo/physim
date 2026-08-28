@@ -1,0 +1,15 @@
+W1 smoke transcript (course-corrected; see W1.json)
+====================================================
+Run 1 (_mech.log): 2x m0 f32 lanes, battery_procs=2, B_pad=(4,...)
+  -> pad 2->4 with ballast; both lanes exit rung 1 "static", interest 2.80
+     (== locked assay reference for m0: VERIFY.md assay_m0_s7 = 2.8)
+  [assay_batch gt_m0 s7 lane0] T=2500 interest=2.8 fired=[]
+  [assay_batch gt_m0 s3 lane1] T=2500 interest=2.8 fired=[]
+  wall 565.8s (CPU-JAX; local walls are reference only)
+
+Run 2 = V1a (V1a.log): 4-lane heterogeneous batch m0 s7 / m4 s1 / mv3 s1 /
+  bf s1 in ONE f32 tensor, t0=1250 cap=2500 -> all four bitwise-identical
+  to run_assay_b singles (V1a.json, pass_=true).
+
+smoke4.py (m0 s7, m4 s1, m4 s2, coex s2; f64, cap=5000) is kept for the GPU
+pod's arrival checklist where it runs in minutes, not hours.

@@ -1,0 +1,16 @@
+{
+ "gate": "V3a",
+ "pass_": true,
+ "n_checked": 44,
+ "relocked": [
+  "deploy_tools.py",
+  "data/fleet/pod_lib.py"
+ ],
+ "added": [
+  "assay_batch.py",
+  "data/fleet/pod_worker_batch.py",
+  "data/fleet/pod_gen_batch.py"
+ ],
+ "version": "0.3.0",
+ "import_check": "clean import (no BLOBKIT_SKIP_LOCK) -> ok=true"
+}

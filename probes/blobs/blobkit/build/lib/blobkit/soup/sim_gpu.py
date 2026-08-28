@@ -318,6 +318,7 @@ def unpack_state(g, Fb, na_max):
 import os, time
 
 from . import sim_cpu as V2                    # locked CPU assay [blobkit edit E20]
+from . import driver as DRV                    # 0.2 shared sim driver [blobkit 0.2 E23]
 from .sim_v1 import NOISE, N_SOUP
 
 
@@ -372,33 +373,41 @@ def _pull(G, acts_only=False):
             for b, g in enumerate(G["gens"])]
 
 
+def _record_host(S, Fh, t_now):
+    """0.2 record seam: host-side record via the verbatim locked V2._record.
+    Contract for driver.run_chunks record_fn; a 0.3 device-side reduction
+    variant plugs in here without touching the driver. [blobkit 0.2 E23]"""
+    S["F"] = Fh
+    ok = V2._record(S, t_now)
+    S["recorded_at"] = t_now
+    if not ok:
+        S["_t_stopped"] = t_now            # CPU contract: stop at exit point
+
+
+def _driver_kw(S, G):
+    """Shared plumbing: bind this batch's step/pull to driver kwargs.
+    [blobkit 0.2 E23]"""
+    def step_fn(t, n):
+        G["F"] = G["step"](G["F"], G["params"], G["keys"], t, n)
+
+    def pull_fn(full):
+        return _pull(G, acts_only=not full)
+
+    return dict(step_fn=step_fn, pull_fn=pull_fn, record_fn=_record_host,
+                rec=S["rec"], crec=S["crec"], dt=S["dt"])
+
+
 def advance_gpu(S, T_target):
-    """GPU version of soup_sim_v2.advance. Same record grid, same exits."""
-    t0w = time.time()
+    """GPU version of soup_sim_v2.advance. Same record grid, same exits.
+    Since 0.2 the chunk loop lives in driver.run_chunks (G2-gated identity).
+    [blobkit 0.2 E23]"""
     dt = S["dt"]
     steps_target = int(round(T_target / dt))
     if steps_target % S["crec"] != 0:
         raise ValueError("T_target must be a multiple of CREC")
     G = S["_gpu"]
-    rec = S["rec"]
-    crec = S["crec"]
-    t = S["t_step"]
-    while S["status"] == "ok" and t <= steps_target:
-        if S["recorded_at"] < t:
-            full = (t % crec == 0) or (S["snap_t"]
-                                       and t * dt >= S["snap_t"][0] - 1e-9)
-            S["F"] = _pull(G, acts_only=not full)[0]
-            ok = V2._record(S, t)
-            S["recorded_at"] = t
-            if not ok:
-                break
-        if t == steps_target:
-            break
-        n = min(rec, steps_target - t)
-        G["F"] = G["step"](G["F"], G["params"], G["keys"], t, n)
-        t += n
-    S["t_step"] = t
-    S["wall_s"] += time.time() - t0w
+    DRV.run_chunks([S], steps_target, overlap=False, stop_when_dead=True,
+                   **_driver_kw(S, G))
     return S["status"]
 
 
@@ -427,85 +436,28 @@ def init_soup_gpu_batch(jobs, L=128.0, dtype="f32", noise=NOISE, kicks_map=None)
 def advance_gpu_batch(SS, T_target, overlap=True, progress=None):
     """Advance all worlds to T_target on one tensor. CPU tracking overlaps the
     next GPU chunk (JAX async dispatch). Worlds whose status != ok stop being
-    recorded but keep stepping (padding-inert, no cross-talk)."""
-    t0w = time.time()
+    recorded but keep stepping (padding-inert, no cross-talk).
+    Since 0.2 the chunk loop lives in driver.run_chunks (G2-gated identity).
+    [blobkit 0.2 E23]"""
     worlds = SS["worlds"]
     G = worlds[0]["_gpu"]
-    dt = worlds[0]["dt"]
-    rec = worlds[0]["rec"]
-    steps_target = int(round(T_target / dt))
+    steps_target = int(round(T_target / worlds[0]["dt"]))
     if steps_target % worlds[0]["crec"] != 0:
         raise ValueError("T_target must be a multiple of CREC")
-    ok_worlds = [S for S in worlds if S["status"] == "ok"]
-    if not ok_worlds:
-        return [S["status"] for S in worlds]
-    t = ok_worlds[0]["t_step"]
-    assert all(S["t_step"] == t for S in ok_worlds), "batch worlds out of sync"
 
     from concurrent.futures import ThreadPoolExecutor
     n_rec_threads = int(os.environ.get("BLOBGPU_REC_THREADS",
                                        min(16, os.cpu_count() or 1)))
-
-    def record_one(args):
-        S, Fh, t_now = args
-        if S["status"] != "ok" or S["recorded_at"] >= t_now:
-            return
-        S["F"] = Fh
-        ok = V2._record(S, t_now)          # per-world state: thread-safe
-        S["recorded_at"] = t_now
-        if not ok:
-            S["_t_stopped"] = t_now        # CPU contract: stop at exit point
-
     ex = (ThreadPoolExecutor(n_rec_threads)
           if (n_rec_threads > 1 and len(worlds) > 4) else None)
-
-    def record_all(t_now, F_list):
+    try:
+        return DRV.run_chunks(worlds, steps_target, overlap=overlap,
+                              stop_when_dead=False, rec_pool=ex,
+                              progress=progress,
+                              **_driver_kw(worlds[0], G))
+    finally:
         if ex is not None:
-            list(ex.map(record_one, [(S, Fh, t_now)
-                                     for S, Fh in zip(worlds, F_list)]))
-        else:
-            for S, Fh in zip(worlds, F_list):
-                record_one((S, Fh, t_now))
-
-    crec = worlds[0]["crec"]
-
-    def full_pull_needed(t_now):
-        tt = t_now * dt
-        if t_now % crec == 0:
-            return True
-        for S in worlds:                     # pending snapshot due?
-            if S["snap_t"] and tt >= S["snap_t"][0] - 1e-9:
-                return True
-        return False
-
-    while t <= steps_target:
-        full = full_pull_needed(t)
-        F_host = _pull(G, acts_only=not full)  # blocks on chunk ending at t
-        if t < steps_target and overlap:      # dispatch next chunk first
-            n = min(rec, steps_target - t)
-            G["F"] = G["step"](G["F"], G["params"], G["keys"], t, n)
-            record_all(t, F_host)             # CPU tracking overlaps GPU
-            t += n
-        else:
-            record_all(t, F_host)
-            if t == steps_target:
-                break
-            n = min(rec, steps_target - t)
-            G["F"] = G["step"](G["F"], G["params"], G["keys"], t, n)
-            t += n
-        if progress and (t % (rec * 100) == 0):
-            progress(t * dt)
-    if ex is not None:
-        ex.shutdown(wait=True)
-    wall = time.time() - t0w
-    for S in worlds:
-        if "_t_stopped" in S:
-            S["t_step"] = S.pop("_t_stopped")   # stopped this call
-        elif S["status"] == "ok":
-            S["t_step"] = steps_target
-        # else: stopped in an earlier call; keep its t_step
-        S["wall_s"] += wall / len(worlds)     # amortized per-world wall
-    return [S["status"] for S in worlds]
+            ex.shutdown(wait=True)
 
 
 # ------------------------------------------------------------- run_soup_gpu

@@ -1,0 +1,7 @@
+[assay_batch gt_m0 s7 lane0] T=2500 interest=2.8 fired=[]
+[assay_batch gt_mv3 s1 lane1] T=2500 interest=32.4 fired=[]
+[assay_v2b gt_m0 s7] T=2500 interest=2.8 fired=[]
+[assay_v2b gt_mv3 s1] T=2500 interest=32.4 fired=[]
+{"gate": "V1c", "dtype": "f32", "backend": "cpu-jax", "t0": 2500.0, "cap": 5000.0, "B_pad": [2], "pass_": true, "wall_batch": 1129.9, "wall_singles": 788.6, "note": "bitwise identity vs run_assay_b(backend=gpu) singles on the same jax backend+dtype; t0/cap reduced (legal locked-assay params) per controller directive \u2014 standard-ladder long-world identity reruns on the GPU pod. Singles chain to the locked CPU assay via 0.2 G1/G2 + gpu GATES.md."}
+m0 7 match: True {'interest': 2.8000000000000003, 'T': 2500.0, 'why': 'static', 'n_ext': 0} {'interest': 2.8000000000000003, 'T': 2500.0, 'why': 'static', 'n_ext': 0}
+mv3 1 match: True {'interest': 32.40014018862018, 'T': 2500.0, 'why': 'static', 'n_ext': 0} {'interest': 32.40014018862018, 'T': 2500.0, 'why': 'static', 'n_ext': 0}
