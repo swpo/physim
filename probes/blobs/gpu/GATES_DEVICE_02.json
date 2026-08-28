@@ -1,0 +1,40 @@
+{
+ "date": "2026-08-28",
+ "pod": "blobgpu-gates H100 PCIe (lambda)",
+ "blobkit": "0.2.0",
+ "D1_gt7x3": {
+  "verdict": "PASS 7/7",
+  "note": "pred band corrected to certified v2_scores (44.1-46.3)"
+ },
+ "D2_champions_single_seed": {
+  "verdict": "SUPERSEDED",
+  "note": "machine-level chaos: pod-CPU vs local-CPU vs GPU all diverge on knife-edge ds3_014; single-seed anchors are machine-specific"
+ },
+ "D3_champion_distributional": {
+  "gpu_8seed": [
+   75.73,
+   40.48,
+   70.4,
+   78.85,
+   79.09,
+   70.44,
+   72.65,
+   70.26
+  ],
+  "podcpu_4seed": [
+   77.3,
+   79.17,
+   72.35,
+   76.54
+  ],
+  "mannwhitney_p": 0.214,
+  "verdict": "PASS",
+  "note": "7/8 GPU extend 70-79; dropouts occur on both engines (chaos)"
+ },
+ "D4_batch": {
+  "batch16_s_per_world": 7.16,
+  "single_s_per_world": 12.8,
+  "batch_gain": "1.8x @T2500 m4",
+  "assay_walls": "GPU 32-183s/world vs pod-CPU 45min-5.5h/world on ds3_014 ladders"
+ }
+}
