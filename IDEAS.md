@@ -191,3 +191,14 @@ is replenished. All need probe campaigns before engine work.
   PPO/rollout machinery; manager-based env API (our assay/battery IS the analogue).
   NOTE their eval story mirrors ours: train on GPU, EVALUATE deterministically
   elsewhere (ONNX on robot) — same shape as our certify-on-GPU/audit-on-CPU split.
+
+- BLOBKIT PERF GOVERNANCE (user vision, 2026-08-28): eventual state = blobkit PUBLISHED
+  with benchmark configs in-package. Rule: any perf-improvement PR/claim requires evidence
+  from the packaged benchmarks (minutes-scale, prod-like tiers: kernel / assay-mix /
+  gen-sim). Perf work = separate research thread from science campaigns (blobkit-perf
+  thread spawned; hypotheses ledger + versioned bench rows). Known open hypotheses:
+  record-path overlap, cross-gen lane pooling (continuous batching), device-side record
+  reduction, T-stratified packing (confirm T known a priori from stamps; screen T unknown),
+  persistent compile cache. Measured context: full-assay batch 100 w/h vs tracking-only
+  396 w/h reference — battery 0.25s/world is NOT the gap; host round-trips + underfilled
+  B=32 are.
