@@ -1,0 +1,128 @@
+{
+ "row": {
+  "v": 1,
+  "suite": "blobkit-perf",
+  "ts": "2026-08-29T03:23:13Z",
+  "host": "mac.lan",
+  "machine": "arm64",
+  "cpu_count": 10,
+  "blobkit": "0.3.2",
+  "locks": "e1af8bca2e2a",
+  "tier": "t2",
+  "config": "t2smoke",
+  "profile": null,
+  "dtype": "f32",
+  "workload": "fb67f46ab2be",
+  "instrumented": true,
+  "tag": "instrument-smoke",
+  "device": "cpu",
+  "platform": "cpu",
+  "device_kind": "cpu",
+  "device_class": "cpu",
+  "n_devices": 1,
+  "jax": "0.4.38",
+  "wall_s": 102.3,
+  "n_lanes": 2,
+  "n_calls": 2,
+  "w_h": 70.35,
+  "tu_total": 2500.0,
+  "tu_per_s": 24.4,
+  "assay_errors": 0,
+  "statuses": {
+   "static": 2
+  },
+  "rep": 0,
+  "probe": {
+   "dispatch": 99.31,
+   "pull": 0.07,
+   "record": 1.95,
+   "snapshot": 0.0,
+   "battery": 0.48
+  }
+ },
+ "detail": {
+  "cfg": {
+   "n_lanes": 2,
+   "L": 64.0,
+   "t0": 1250.0,
+   "cap": 1250.0,
+   "bmax": 8,
+   "B_pad": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8
+   ],
+   "note": "2-lane smoke, cap=t0 (single rung), N=128"
+  },
+  "calls": [
+   {
+    "call": 0,
+    "n_lanes": 1,
+    "bucket": 4,
+    "wall_s": 25.1,
+    "T_used": [
+     1250.0
+    ],
+    "why": [
+     "static"
+    ]
+   },
+   {
+    "call": 1,
+    "n_lanes": 1,
+    "bucket": 14,
+    "wall_s": 77.2,
+    "T_used": [
+     1250.0
+    ],
+    "why": [
+     "static"
+    ]
+   }
+  ],
+  "lanes": [
+   {
+    "cand": "p5g5_010_s3",
+    "phase": "seed3",
+    "bucket": 14,
+    "seed": 3,
+    "t0": 1250.0,
+    "cap": 1250.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p1g1_009_s2",
+    "phase": "seed2",
+    "bucket": 4,
+    "seed": 2,
+    "t0": 1250.0,
+    "cap": 1250.0,
+    "T_stamp": 2500.0
+   }
+  ],
+  "probe": {
+   "seconds": {
+    "dispatch": 99.31,
+    "pull": 0.07,
+    "record": 1.95,
+    "snapshot": 0.0,
+    "battery": 0.48
+   },
+   "counts": {
+    "chunks": 500,
+    "pulls": 502,
+    "full_pulls": 102,
+    "records": 502,
+    "snapshots": 4,
+    "batteries": 2
+   },
+   "accounted_s": 101.81,
+   "other_s": 0.54,
+   "chunk_dispatch_median_ms": 295.35,
+   "chunk_dispatch_max_ms": 487.38
+  }
+ }
+}

@@ -1,0 +1,14 @@
+[bench] device=cpu jax=0.4.38
+[t1 b4_B1] B=1 nf_max=4 compile=2.3s us/world-step=1308.8 simT2500-ceiling=22 w/h
+[t1 b4_B4] B=4 nf_max=4 compile=2.8s us/world-step=1287.9 simT2500-ceiling=22 w/h
+[t1 b7_B4] B=4 nf_max=7 compile=3.6s us/world-step=2790.5 simT2500-ceiling=10 w/h
+[t1 b10_B4] B=4 nf_max=10 compile=4.4s us/world-step=4107.2 simT2500-ceiling=7 w/h
+[t1 b14_B4] B=4 nf_max=13 compile=3.3s us/world-step=5167.2 simT2500-ceiling=6 w/h
+[t1 b14_B8] B=8 nf_max=13 compile=3.6s us/world-step=5206.1 simT2500-ceiling=6 w/h
+[t1 pull] B=4 b14: {'none': 20.867, 'acts': 21.076, 'full': 20.882}  acts_pull=52ms full_pull=4ms per chunk
+[t1 launch] 50x1step=0.282s vs chunk=0.280s -> 28.6us/step
+[t1 record] m0: REC=4.6ms CREC=6.3ms per world-record
+[t1 record] pred: REC=10.8ms CREC=14.4ms per world-record
+
+[row] /Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/perf/results/rows.jsonl
+{"tier": "t1", "config": "cpu", "blobkit": "0.3.2", "device_class": "cpu", "workload": "t1profile-cpu-v1", "wall_s": 145.7, "instrumented": false}

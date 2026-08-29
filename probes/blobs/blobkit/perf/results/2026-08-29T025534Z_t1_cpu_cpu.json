@@ -1,0 +1,170 @@
+{
+ "row": {
+  "v": 1,
+  "suite": "blobkit-perf",
+  "ts": "2026-08-29T02:55:34Z",
+  "host": "mac.lan",
+  "machine": "arm64",
+  "cpu_count": 10,
+  "blobkit": "0.3.2",
+  "locks": "e1af8bca2e2a",
+  "tier": "t1",
+  "config": "cpu",
+  "profile": "cpu",
+  "dtype": "f32",
+  "workload": "t1profile-cpu-v1",
+  "instrumented": false,
+  "tag": null,
+  "device": "cpu",
+  "platform": "cpu",
+  "device_kind": "cpu",
+  "device_class": "cpu",
+  "n_devices": 1,
+  "jax": "0.4.38",
+  "wall_s": 145.7,
+  "cells": {
+   "b4_B1": 1308.75,
+   "b4_B4": 1287.88,
+   "b7_B4": 2790.48,
+   "b10_B4": 4107.18,
+   "b14_B4": 5167.17,
+   "b14_B8": 5206.06
+  },
+  "pull_full_ms": 3.8,
+  "pull_acts_ms": 52.2,
+  "launch_us": 28.6,
+  "record_ms": {
+   "m0": 4.55,
+   "pred": 10.78
+  }
+ },
+ "detail": {
+  "cells": [
+   {
+    "name": "b4_B1",
+    "B": 1,
+    "bucket": 4,
+    "nf_max": 4,
+    "nsteps": 1500,
+    "compile_s": 2.34,
+    "us_per_world_step": 1308.75,
+    "w_h_sim_ceiling_T2500": 22.0,
+    "reps_s": [
+     1.963,
+     1.921,
+     1.97
+    ]
+   },
+   {
+    "name": "b4_B4",
+    "B": 4,
+    "bucket": 4,
+    "nf_max": 4,
+    "nsteps": 500,
+    "compile_s": 2.79,
+    "us_per_world_step": 1287.88,
+    "w_h_sim_ceiling_T2500": 22.4,
+    "reps_s": [
+     2.576,
+     2.612,
+     2.568
+    ]
+   },
+   {
+    "name": "b7_B4",
+    "B": 4,
+    "bucket": 7,
+    "nf_max": 7,
+    "nsteps": 300,
+    "compile_s": 3.58,
+    "us_per_world_step": 2790.48,
+    "w_h_sim_ceiling_T2500": 10.3,
+    "reps_s": [
+     3.348,
+     3.349,
+     3.362
+    ]
+   },
+   {
+    "name": "b10_B4",
+    "B": 4,
+    "bucket": 10,
+    "nf_max": 10,
+    "nsteps": 250,
+    "compile_s": 4.36,
+    "us_per_world_step": 4107.18,
+    "w_h_sim_ceiling_T2500": 7.0,
+    "reps_s": [
+     4.114,
+     4.098,
+     4.107
+    ]
+   },
+   {
+    "name": "b14_B4",
+    "B": 4,
+    "bucket": 14,
+    "nf_max": 13,
+    "nsteps": 150,
+    "compile_s": 3.32,
+    "us_per_world_step": 5167.17,
+    "w_h_sim_ceiling_T2500": 5.6,
+    "reps_s": [
+     3.1,
+     3.204,
+     3.094
+    ]
+   },
+   {
+    "name": "b14_B8",
+    "B": 8,
+    "bucket": 14,
+    "nf_max": 13,
+    "nsteps": 80,
+    "compile_s": 3.57,
+    "us_per_world_step": 5206.06,
+    "w_h_sim_ceiling_T2500": 5.5,
+    "reps_s": [
+     3.332,
+     3.319,
+     3.347
+    ]
+   }
+  ],
+  "pullcadence": {
+   "B": 4,
+   "bucket": 14,
+   "chunk": 250,
+   "n_chunks": 4,
+   "walls_s": {
+    "none": 20.867,
+    "acts": 21.076,
+    "full": 20.882
+   },
+   "per_pull_acts_ms": 52.2,
+   "per_pull_full_ms": 3.8
+  },
+  "launch": {
+   "B": 4,
+   "bucket": 4,
+   "n": 50,
+   "singles_s": 0.282,
+   "chunk_s": 0.28,
+   "per_step_overhead_us": 28.6
+  },
+  "record": [
+   {
+    "world": "m0",
+    "na": 1,
+    "rec_ms": 4.55,
+    "crec_ms": 6.31
+   },
+   {
+    "world": "pred",
+    "na": 3,
+    "rec_ms": 10.78,
+    "crec_ms": 14.42
+   }
+  ]
+ }
+}
