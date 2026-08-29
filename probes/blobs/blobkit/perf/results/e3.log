@@ -1,0 +1,2 @@
+[row] {"question": "E3 step/stats jit overlap", "B": 32, "nf_fields": 128, "N": 256, "nstep": 250, "step_ms": 410.28, "stats_ms": 34.9, "interleaved_ms": 445.1, "serial_sum_ms": 445.18, "overlap_ratio": 1.0, "verdict": "SERIALIZES (single stream)", "ts": "2026-08-29T16:26:40Z"}
+[row] {"question": "E3d full-acts pull after async step", "step_ms": 410.28, "step_plus_fullpull_ms": 439.05, "pull_overhead_ms": 28.78, "acts_shape": [32, 4, 256, 256], "ts": "2026-08-29T16:26:44Z"}
