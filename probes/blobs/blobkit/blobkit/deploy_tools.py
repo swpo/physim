@@ -395,6 +395,13 @@ def make_bundle(out_dir, backend="cpu", extra_seeds=None, wheel=True,
         cfg["battery_procs"] = 8
         cfg["confirms"] = "sync"
         cfg["g0"] = "eval"
+        # [0.3.3] gated record-path prototypes (perf 2.18x claim row):
+        # record_mode "device" -> blobkit.soup.devrec_proto;
+        # apply_mode "async" -> asyncapply drain (composes). Defaults ON
+        # for gpu_batch bundles; set "host"/"sync" to fall back to 0.3.2
+        # behavior. record_procs: spawn pool size (default min(8, cpus)).
+        cfg["record_mode"] = "device"
+        cfg["apply_mode"] = "async"
         cfg["_note_batch"] = (
             "gpu_batch (0.3): pod_run_batch.sh drives whole generations "
             "through run_assay_batch (one device tensor; pod_worker_batch). "

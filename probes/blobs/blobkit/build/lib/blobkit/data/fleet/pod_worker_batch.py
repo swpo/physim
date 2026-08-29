@@ -185,6 +185,23 @@ def main():
     cfg = PL.config()
     P = PL.paths(cfg)
     bmax = int(cfg.get("batch_lanes", BMAX_DEFAULT))
+    # [0.3.3] gated record-path prototypes (perf thread; 2.18x claim row).
+    # island_config: {"record_mode": "device"} -> devrec_proto (device-side
+    # REC records; composes with {"apply_mode": "async"} -> asyncapply
+    # drain). {"apply_mode": "async"} alone -> asyncapply_proto. Mirrors
+    # perf/bench.py --devrec/--asyncapply wiring exactly.
+    if cfg.get("record_mode") == "device":
+        from blobkit.soup import devrec_proto as _DR
+        _DR.install(async_apply=(cfg.get("apply_mode") == "async"),
+                    procs=int(cfg["record_procs"])
+                    if cfg.get("record_procs") else None)
+        print("devrec_proto installed (record_mode=device, apply_mode="
+              f"{cfg.get('apply_mode') or 'sync'})", flush=True)
+    elif cfg.get("apply_mode") == "async":
+        from blobkit.soup import asyncapply_proto as _AA
+        _AA.install(procs=int(cfg["record_procs"])
+                    if cfg.get("record_procs") else None)
+        print("asyncapply_proto installed (apply_mode=async)", flush=True)
     jobs = []
     for p in sys.argv[1:]:
         jobs += json.load(open(p))
