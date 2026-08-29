@@ -77,6 +77,26 @@ from .soup.sim_v1 import NOISE
 
 B_PAD_DEFAULT = (4, 8, 16, 32)
 
+# nf padding buckets [blobkit 0.3.2]: pack_genomes pads every lane to the
+# batch's nf_max, so a mixed call makes narrow worlds pay wide-world FLOPs
+# (H100 V2 audit: union4 mixes span nf 3-14 => 2-4x padding waste; the
+# accelerating-blobs 396 w/h figure was nf-homogeneous pop-96). CALLERS
+# partition jobs by nf_bucket() and issue one run_assay_batch per bucket;
+# run_assay_batch itself NEVER re-partitions a call (per-call identity is
+# exactly what the V1 gates certify).
+NF_BUCKETS = (4, 7, 10, 14)
+
+
+def nf_bucket(g, buckets=NF_BUCKETS):
+    """Padding bucket for a genome: nf = na+nc rounded UP to the bucket
+    ladder (>max(buckets) worlds return their own nf; the fleet size cap
+    MAX_FIELDS=14 rejects those upstream). [blobkit 0.3.2]"""
+    nf = len(g["acts"]) + len(g["chans"])
+    for b in buckets:
+        if nf <= b:
+            return int(b)
+    return int(nf)
+
 _LOCKS12 = None
 
 
@@ -230,6 +250,10 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
     run_assay_b rows + lane/batched; default None = no file writes).
     Keep len(jobs) <= max(B_pad) per call for jit-shape stability. All lanes
     share L (one grid N per tensor): group L192 jobs into their own batch.
+    PADDING EFFICIENCY [0.3.2]: also group jobs by nf_bucket(genome) before
+    calling — a mixed-nf call pads everyone to the widest lane (2-4x FLOPs
+    waste on realistic mixes; see NF_BUCKETS note). This function does not
+    re-partition: one call = one tensor, always.
     save_npz_map: {job_index: path} — save the lane's final record npz at
     exit (the singles' save_npz, per lane)."""
     os.environ.setdefault("BLOBGPU_REC_THREADS", "8")

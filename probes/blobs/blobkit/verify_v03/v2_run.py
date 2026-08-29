@@ -68,11 +68,29 @@ def main():
           {t: sum(1 for *_, tt in gens if tt == t)
            for t in (2500.0, 5000.0, 10000.0, 20000.0)})
 
+    # [0.3.2] nf-bucket partition (padding waste fix): one call per bucket,
+    # lanes ordered by expected T (harvest T_used stamp) within the bucket.
+    from blobkit.assay_batch import nf_bucket
+    tstamp = {g["id"]: (t or 2500.0) for _, g, t in gens}
+    buckets = {}
+    for j in jobs:
+        buckets.setdefault(nf_bucket(j[0]), []).append(j)
+    for b in buckets:
+        buckets[b].sort(key=lambda j: -tstamp.get(j[0]["id"], 2500.0))
+    print(f"[v2] nf buckets: " +
+          str({b: len(v) for b, v in sorted(buckets.items())}))
+
     t0 = time.time()
-    outs = run_assay_batch(jobs, dtype="f32", verbose=False)
+    outs_by_id = {}
+    for b in sorted(buckets):
+        bouts = run_assay_batch(buckets[b], dtype="f32", verbose=False)
+        for (g, _s), o in zip(buckets[b], bouts):
+            outs_by_id[g["id"]] = o
+    outs = [outs_by_id[g["id"]] for g, _s in jobs]
     wall_batch = time.time() - t0
     wph_batch = 3600 * len(jobs) / wall_batch
-    print(f"[v2] batch done in {wall_batch:.1f}s = {wph_batch:.1f} w/h")
+    print(f"[v2] batch done in {wall_batch:.1f}s = {wph_batch:.1f} w/h "
+          f"({len(buckets)} nf-bucket calls)")
 
     wall_seq = ratio = wph_seq = None
     agree = "n/a"
@@ -97,6 +115,7 @@ def main():
 
     binding = args.device != "cpu-jax"
     res = dict(gate="V2", device=args.device, dtype="f32", lanes=len(jobs),
+               nf_buckets={str(b): len(v) for b, v in sorted(buckets.items())},
                wall_batch_s=round(wall_batch, 1),
                wall_sequential_s=wall_seq, ratio=ratio,
                worlds_per_hour_batch=round(wph_batch, 1),

@@ -81,3 +81,16 @@ probe script stays in verify_v03/ for the pod checklist.
 
 Device-side verification of the fix (the actual GPU teardown) = parent's
 device-gate rerun.
+
+## 0.3.2 perf-fix gates (nf-bucket call partitioning)
+
+| gate | what | result |
+|---|---|---|
+| P1 | nf_bucket unit ladder (3->4, 5->7, 10->10, 14->14, 16->16-own) | **PASS** |
+| P2 | pod_worker_batch offline grouping: 5 mixed jobs -> 3 bucket calls (nf_max 3/8/11 — narrow worlds no longer pay wide padding), descending expected-T order within bucket, rows correct | **PASS** (/tmp/bk032_grouptest.py -> archived h_nfbuckettest.py) |
+| P3 | V1a rerun on 0.3.2 (identity unchanged: partitioning happens BEFORE the call) | **PASS 4/4 bitwise** (V1a.json) |
+| P4 | v2_run.py path smoke, 4 lanes --skip-singles: 2 nf-bucket calls, outputs merged in job order, V2.json+PERF_REFERENCE.json written (V2_032_smoke.log; 8-lane 0.3.1 reference preserved as V2_031_8lane.json) | **PASS** |
+| P5 | relock 45 files (assay_batch + pod_worker_batch) + clean-import verify_locks + 0.3.2 | **PASS** |
+
+H100 rerun of the binding V2 (expected to clear the 2-4x padding waste) =
+controller.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "blobkit"
-version = "0.3.1"
+version = "0.3.2"
 description = "Certified physim blob core: L0 genome simulator, locked assay/metrics batteries, soup simulators (CPU + JAX GPU), world registry, variation operators."
 readme = "README.md"
 requires-python = ">=3.9"

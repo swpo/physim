@@ -27,6 +27,7 @@ import pod_lib as PL
 
 from blobkit import genome as G
 from blobkit.assay_batch import run_assay_batch
+from blobkit.assay_batch import nf_bucket as AB_nf_bucket   # [0.3.2]
 import funnel as FU
 
 BMAX_DEFAULT = 32
@@ -77,10 +78,13 @@ def prefilter(job, cfg, P):
 def grid_key(job, cfg):
     """Batch-compat key. Seeds are PER-LANE (init_soup_gpu_batch takes
     (genome, seed) pairs), so screens (s1) and s2/s3 confirm jobs share one
-    tensor — the async-confirms mode rides on this. Split only on L (one
-    grid N per tensor) and the t0/cap doubling-grid class: fleet t0/cap
-    values ({2500..20000, longH 40000}) are all 2500*2^k, so in practice
-    everything but L192 lands in one group per sweep."""
+    tensor — the async-confirms mode rides on this. Split on: L (one grid N
+    per tensor), the t0/cap doubling-grid class (fleet t0/cap values
+    ({2500..20000, longH 40000}) are all 2500*2^k, so this rarely splits),
+    and the nf PADDING BUCKET [0.3.2]: pack_genomes pads every lane to the
+    call's nf_max, so mixed-nf calls make narrow worlds pay wide-world
+    FLOPs (H100 V2 audit: 2-4x waste on union4-like mixes). One bucket =
+    one run_assay_batch call."""
     L = float(job.get("L") or 128.0)
     t0 = float(job.get("t0") or 2500.0)
     cap = float(job.get("cap") or 20000.0)
@@ -90,7 +94,18 @@ def grid_key(job, cfg):
         k = round(math.log2(r)) if r > 0 else -1
         return "grid" if (r > 0 and abs(r - 2 ** k) < 1e-9 and k >= 0) \
             else f"off_{v}"
-    return (L, _pow2_class(t0), _pow2_class(cap))
+    return (L, _pow2_class(t0), _pow2_class(cap),
+            AB_nf_bucket(job["genome"]))
+
+
+def expected_T(job):
+    """Ladder-length prior for lane ordering [0.3.2]: confirm/lane jobs
+    carry a t0 floor (seed1's T_used); screens default to the base rung.
+    Sorting a bucket by DESCENDING expected T keeps likely-extenders
+    adjacent, so after early rungs exit the survivors repack densely
+    instead of being scattered across sparse tensors."""
+    return (float(job.get("cap") or 0.0) if job.get("kind") == "lane"
+            else float(job.get("t0") or 2500.0))
 
 
 def flush_batch(batch, cfg, P):
@@ -184,8 +199,11 @@ def main():
         if g is None:
             continue
         groups.setdefault(grid_key(job, cfg), []).append((job, row))
-    for key in sorted(groups):
+    for key in sorted(groups, key=str):
         grp = groups[key]
+        # [0.3.2] descending expected T: likely-extenders stay adjacent ->
+        # dense survivor repacks on the ladder's later rungs
+        grp.sort(key=lambda jr: -expected_T(jr[0]))
         for i in range(0, len(grp), bmax):
             flush_batch(grp[i:i + bmax], cfg, P)
 

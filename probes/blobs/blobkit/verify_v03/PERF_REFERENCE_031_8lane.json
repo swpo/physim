@@ -1,9 +1,9 @@
 {
  "device": "cpu-jax",
  "dtype": "f32",
- "B": 4,
- "worlds_per_hour": 2.8,
- "measured_utc": "2026-08-29T00:28:13Z",
+ "B": 8,
+ "worlds_per_hour": 5.1,
+ "measured_utc": "2026-08-28T20:01:28Z",
  "binding": false,
  "note": "make_bundle 0.3 deploy smoke reads this as the perf floor (fail-below). cpu-jax entries are reference only; the floor binds when device is a GPU."
 }

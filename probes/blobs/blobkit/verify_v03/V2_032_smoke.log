@@ -1,0 +1,4 @@
+[v2] 4 lanes; T_used mix: {2500.0: 1, 5000.0: 1, 10000.0: 1, 20000.0: 1}
+[v2] nf buckets: {7: 3, 10: 1}
+[v2] batch done in 5148.0s = 2.8 w/h (2 nf-bucket calls)
+{"gate": "V2", "device": "cpu-jax", "dtype": "f32", "lanes": 4, "nf_buckets": {"7": 3, "10": 1}, "wall_batch_s": 5148.0, "wall_sequential_s": null, "ratio": null, "worlds_per_hour_batch": 2.8, "worlds_per_hour_seq": null, "decision_agree": "n/a", "target": 2.5, "binding": false, "pass_": false, "note": "cpu-jax runs are LOCAL REFERENCE ONLY (controller directive): batching B worlds multiplies CPU FLOPs ~linearly, so the local ratio understates the GPU win. The BINDING throughput gate is this same script on the H100 pod (--device H100; post reference 396 w/h pop-96). f32 decision agreement is expected, not bitwise-gated (V1 is the f64 identity gate)."}
