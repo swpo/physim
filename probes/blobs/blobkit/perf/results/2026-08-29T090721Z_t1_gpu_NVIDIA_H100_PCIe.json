@@ -1,0 +1,186 @@
+{
+ "row": {
+  "v": 1,
+  "suite": "blobkit-perf",
+  "ts": "2026-08-29T09:07:21Z",
+  "host": "209-20-156-250",
+  "machine": "x86_64",
+  "cpu_count": 26,
+  "blobkit": "0.3.2",
+  "locks": "e1af8bca2e2a",
+  "tier": "t1",
+  "config": "gpu",
+  "profile": "gpu",
+  "dtype": "f32",
+  "workload": "t1profile-gpu-v1",
+  "instrumented": false,
+  "tag": null,
+  "device": "gpu",
+  "platform": "gpu",
+  "device_kind": "NVIDIA H100 PCIe",
+  "device_class": "NVIDIA_H100_PCIe",
+  "n_devices": 1,
+  "jax": "0.4.38",
+  "wall_s": 255.6,
+  "cells": {
+   "b4_B32": 29.71,
+   "b7_B32": 38.67,
+   "b10_B32": 54.82,
+   "b14_B32": 71.29,
+   "b14_B8": 78.14,
+   "b14_B64": 75.23,
+   "b14_B96": 76.27
+  },
+  "pull_full_ms": 47.7,
+  "pull_acts_ms": 29.8,
+  "launch_us": 168.7,
+  "record_ms": {
+   "m0": 10.33,
+   "pred": 33.1
+  }
+ },
+ "detail": {
+  "cells": [
+   {
+    "name": "b4_B32",
+    "B": 32,
+    "bucket": 4,
+    "nf_max": 5,
+    "nsteps": 2500,
+    "compile_s": 4.86,
+    "us_per_world_step": 29.71,
+    "w_h_sim_ceiling_T2500": 969.3,
+    "reps_s": [
+     2.377,
+     2.191,
+     2.378
+    ]
+   },
+   {
+    "name": "b7_B32",
+    "B": 32,
+    "bucket": 7,
+    "nf_max": 7,
+    "nsteps": 2500,
+    "compile_s": 5.5,
+    "us_per_world_step": 38.67,
+    "w_h_sim_ceiling_T2500": 744.8,
+    "reps_s": [
+     3.227,
+     3.003,
+     3.093
+    ]
+   },
+   {
+    "name": "b10_B32",
+    "B": 32,
+    "bucket": 10,
+    "nf_max": 10,
+    "nsteps": 2500,
+    "compile_s": 7.87,
+    "us_per_world_step": 54.82,
+    "w_h_sim_ceiling_T2500": 525.4,
+    "reps_s": [
+     4.386,
+     4.351,
+     4.394
+    ]
+   },
+   {
+    "name": "b14_B32",
+    "B": 32,
+    "bucket": 14,
+    "nf_max": 14,
+    "nsteps": 2500,
+    "compile_s": 8.43,
+    "us_per_world_step": 71.29,
+    "w_h_sim_ceiling_T2500": 404.0,
+    "reps_s": [
+     5.6,
+     5.704,
+     6.078
+    ]
+   },
+   {
+    "name": "b14_B8",
+    "B": 8,
+    "bucket": 14,
+    "nf_max": 13,
+    "nsteps": 2500,
+    "compile_s": 2.74,
+    "us_per_world_step": 78.14,
+    "w_h_sim_ceiling_T2500": 368.5,
+    "reps_s": [
+     1.744,
+     1.544,
+     1.563
+    ]
+   },
+   {
+    "name": "b14_B64",
+    "B": 64,
+    "bucket": 14,
+    "nf_max": 14,
+    "nsteps": 2500,
+    "compile_s": 13.59,
+    "us_per_world_step": 75.23,
+    "w_h_sim_ceiling_T2500": 382.8,
+    "reps_s": [
+     11.719,
+     12.037,
+     12.067
+    ]
+   },
+   {
+    "name": "b14_B96",
+    "B": 96,
+    "bucket": 14,
+    "nf_max": 14,
+    "nsteps": 2500,
+    "compile_s": 20.26,
+    "us_per_world_step": 76.27,
+    "w_h_sim_ceiling_T2500": 377.6,
+    "reps_s": [
+     18.306,
+     18.166,
+     18.351
+    ]
+   }
+  ],
+  "pullcadence": {
+   "B": 32,
+   "bucket": 14,
+   "chunk": 250,
+   "n_chunks": 20,
+   "walls_s": {
+    "none": 12.003,
+    "acts": 12.598,
+    "full": 12.957
+   },
+   "per_pull_acts_ms": 29.8,
+   "per_pull_full_ms": 47.7
+  },
+  "launch": {
+   "B": 8,
+   "bucket": 4,
+   "n": 200,
+   "singles_s": 0.059,
+   "chunk_s": 0.025,
+   "per_step_overhead_us": 168.7
+  },
+  "record": [
+   {
+    "world": "m0",
+    "na": 1,
+    "rec_ms": 10.33,
+    "crec_ms": 14.08
+   },
+   {
+    "world": "pred",
+    "na": 3,
+    "rec_ms": 33.1,
+    "crec_ms": 43.1
+   }
+  ]
+ }
+}

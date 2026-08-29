@@ -1,0 +1,269 @@
+{
+ "row": {
+  "v": 1,
+  "suite": "blobkit-perf",
+  "ts": "2026-08-29T09:55:10Z",
+  "host": "209-20-156-250",
+  "machine": "x86_64",
+  "cpu_count": 26,
+  "blobkit": "0.3.2",
+  "locks": "e1af8bca2e2a",
+  "tier": "t2",
+  "config": "t2",
+  "profile": null,
+  "dtype": "f32",
+  "workload": "697bcb716916",
+  "instrumented": false,
+  "tag": null,
+  "device": "gpu",
+  "platform": "gpu",
+  "device_kind": "NVIDIA H100 PCIe",
+  "device_class": "NVIDIA_H100_PCIe",
+  "n_devices": 1,
+  "jax": "0.4.38",
+  "wall_s": 1361.3,
+  "n_lanes": 16,
+  "n_calls": 4,
+  "w_h": 42.31,
+  "tu_total": 92500.0,
+  "tu_per_s": 67.9,
+  "assay_errors": 0,
+  "statuses": {
+   "cap": 1,
+   "converged": 3,
+   "static": 12
+  },
+  "rep": 0
+ },
+ "detail": {
+  "cfg": {
+   "n_lanes": 16,
+   "L": 128.0,
+   "t0": 2500.0,
+   "cap": 20000.0,
+   "bmax": 16,
+   "B_pad": null,
+   "note": "prod-distribution 16-lane mix, prod ladder, N=256"
+  },
+  "calls": [
+   {
+    "call": 0,
+    "n_lanes": 3,
+    "bucket": 4,
+    "wall_s": 108.1,
+    "T_used": [
+     2500.0,
+     5000.0,
+     2500.0
+    ],
+    "why": [
+     "static",
+     "converged",
+     "static"
+    ]
+   },
+   {
+    "call": 1,
+    "n_lanes": 2,
+    "bucket": 7,
+    "wall_s": 63.9,
+    "T_used": [
+     2500.0,
+     2500.0
+    ],
+    "why": [
+     "static",
+     "static"
+    ]
+   },
+   {
+    "call": 2,
+    "n_lanes": 2,
+    "bucket": 10,
+    "wall_s": 76.0,
+    "T_used": [
+     2500.0,
+     2500.0
+    ],
+    "why": [
+     "static",
+     "static"
+    ]
+   },
+   {
+    "call": 3,
+    "n_lanes": 9,
+    "bucket": 14,
+    "wall_s": 1113.3,
+    "T_used": [
+     20000.0,
+     20000.0,
+     10000.0,
+     10000.0,
+     2500.0,
+     2500.0,
+     2500.0,
+     2500.0,
+     2500.0
+    ],
+    "why": [
+     "cap",
+     "converged",
+     "static",
+     "converged",
+     "static",
+     "static",
+     "static",
+     "static",
+     "static"
+    ]
+   }
+  ],
+  "lanes": [
+   {
+    "cand": "p4g6_004_s2",
+    "phase": "seed2",
+    "bucket": 14,
+    "seed": 2,
+    "t0": 20000.0,
+    "cap": 20000.0,
+    "T_stamp": 20000.0
+   },
+   {
+    "cand": "p0g0_ds3_014_s2",
+    "phase": "seed2",
+    "bucket": 14,
+    "seed": 2,
+    "t0": 10000.0,
+    "cap": 20000.0,
+    "T_stamp": 10000.0
+   },
+   {
+    "cand": "p4g4_023_s2",
+    "phase": "seed2",
+    "bucket": 14,
+    "seed": 2,
+    "t0": 10000.0,
+    "cap": 20000.0,
+    "T_stamp": 10000.0
+   },
+   {
+    "cand": "p5g8_037",
+    "phase": "screen",
+    "bucket": 14,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 5000.0
+   },
+   {
+    "cand": "p5g5_010_s3",
+    "phase": "seed3",
+    "bucket": 14,
+    "seed": 3,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p4g7_001",
+    "phase": "screen",
+    "bucket": 14,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p4g7_026",
+    "phase": "screen",
+    "bucket": 14,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p1g2_013",
+    "phase": "screen",
+    "bucket": 14,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p2g5_041",
+    "phase": "screen",
+    "bucket": 14,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p5g7_002_s2",
+    "phase": "seed2",
+    "bucket": 10,
+    "seed": 2,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p0g0_ds6_000_s3",
+    "phase": "seed3",
+    "bucket": 10,
+    "seed": 3,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p4g4_062_s3",
+    "phase": "seed3",
+    "bucket": 7,
+    "seed": 3,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p4g4_055_s3",
+    "phase": "seed3",
+    "bucket": 7,
+    "seed": 3,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p1g1_009_s2",
+    "phase": "seed2",
+    "bucket": 4,
+    "seed": 2,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p2g2_000_s3",
+    "phase": "seed3",
+    "bucket": 4,
+    "seed": 3,
+    "t0": 2500.0,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   },
+   {
+    "cand": "p5g5_012",
+    "phase": "screen",
+    "bucket": 4,
+    "seed": 1,
+    "t0": null,
+    "cap": 20000.0,
+    "T_stamp": 2500.0
+   }
+  ]
+ }
+}
