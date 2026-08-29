@@ -930,3 +930,14 @@ pulls, barriers only at rung decisions, H-A async-apply composed; (P3-P5)
 prototype -> parity harness vs locked blob_list_fast -> bench rows on frozen
 workload. Science changes (record defs/cadence): reserved for ORDER-OF-MAGNITUDE
 wins at genuine algorithmic bottlenecks only (user policy).
+
+
+### devrec CLAIMED: 92.2 w/h = GREEN -> fleet relaunch (2026-08-29)
+Claim row (frozen t2): 42.31 -> 46.52 (+procrec) -> 92.20 w/h (+devrec+async),
+2.18x, zero fallbacks over 4779 device record points, ladder identical. Gates:
+blob sets exact (area/peak), centroids/mass 3.8e-13 vs 1e-12 tol, assay
+decisions identical, x64-flip bit-safe. GREEN rule (>=90) => GO: 0.3.3 packages
+the gated prototypes (record_mode=device, apply_mode=async config flags);
+6 pods x 1 island x 20 gens from union5+isl1 (211 cells); projected gen cycle
+~35-50 min => campaign completes in single-digit hours, ~$150-250 remaining.
+0.4 proper (driver-native devrec, CREC phase 2, battery overlap) = post-campaign.
