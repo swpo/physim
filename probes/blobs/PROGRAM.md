@@ -918,3 +918,15 @@ next relock), T3 workers-tolerant gpu backend surface, T4 make_bundle() fleet
 generator (retires legacy bundle pattern; thread pins + lanes-off baked in).
 Gates: interface identity bitwise, refactor identity, lock integrity, fresh-venv
 + generated-bundle smoke. GPU-device gates deferred to next pod deployment.
+
+
+### blobkit 0.4 flagship: device-side record path + pipeline (user green-light 2026-08-29)
+RED-profile chain localized the throughput wall: blob_list_fast = 85% of record
+cost (6.4ms/field/record host) = 60% of prod wall; procrec (parallel extract)
+= only 1.10x (apply-sync Amdahl); T1 B-scaling flat => H-B dead. Plan: (P1)
+research GPU CC-labeling (periodic label-prop in jax) + jax pipelining
+semantics; (P2) design doc: device blob-stats after each chunk, tiny host
+pulls, barriers only at rung decisions, H-A async-apply composed; (P3-P5)
+prototype -> parity harness vs locked blob_list_fast -> bench rows on frozen
+workload. Science changes (record defs/cadence): reserved for ORDER-OF-MAGNITUDE
+wins at genuine algorithmic bottlenecks only (user policy).
