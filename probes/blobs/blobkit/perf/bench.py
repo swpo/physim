@@ -341,7 +341,12 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     from blobkit.assay_batch import run_assay_batch
 
     calls = bc.group_lanes(lanes, cfg["bmax"])
-    if getattr(args, "procrec", False):
+    if getattr(args, "asyncapply", False):
+        # 0.4 H-A prototype: async apply, barrier only at rung decisions
+        # (proto_asyncapply; subsumes --procrec, do not combine).
+        import proto_asyncapply as AA
+        AA.install(procs=args.battery_procs or None)
+    elif getattr(args, "procrec", False):
         # 0.4 fix-(a) prototype: record tracking on a spawn process pool
         # (proto_procrec wraps the driver at runtime; identity gated).
         import proto_procrec as PP
@@ -377,7 +382,11 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     wall = time.time() - t_tier0
     if probe:
         probe.restore()
-    if getattr(args, "procrec", False):
+    if getattr(args, "asyncapply", False):
+        import proto_asyncapply as AA
+        print(f"[asyncapply] stats {AA.stats()}", flush=True)
+        AA.uninstall(shutdown=False)
+    elif getattr(args, "procrec", False):
         import proto_procrec as PP
         print(f"[procrec] stats {PP.stats()}", flush=True)
         PP.uninstall(shutdown=False)
@@ -415,7 +424,8 @@ def run_t2(args):
                    n_calls=len(calls), w_h=round(w_h, 2),
                    tu_total=tu, tu_per_s=round(tu / wall, 1),
                    assay_errors=errs, statuses=statuses, rep=rep,
-                   procrec=bool(args.procrec))
+                   procrec=bool(args.procrec),
+                   asyncapply=bool(getattr(args, "asyncapply", False)))
         detail = dict(cfg=cfg, calls=call_rows,
                       lanes=[{k: ln[k] for k in
                               ("cand", "phase", "bucket", "seed", "t0",
@@ -532,7 +542,8 @@ def run_compare(args):
                 base = wh
             ratio = (f"{wh / base:6.2f}x" if (wh is not None and base)
                      else "      -")
-            mark = "+procrec" if r.get("procrec") else ""
+            mark = ("+async" if r.get("asyncapply")
+                    else "+procrec" if r.get("procrec") else "")
             print(f"  {r.get('ts', ''):22s} {r.get('blobkit', ''):9s} "
                   f"{(f'{wh:9.2f}' if wh is not None else '        -')} "
                   f"{r.get('wall_s', 0):8.1f} {ratio} "
@@ -558,6 +569,11 @@ def main():
                        help="0.4 fix-(a) prototype: record tracking on a "
                             "spawn process pool (proto_procrec; identity "
                             "gated). Row carries procrec=true.")
+        p.add_argument("--asyncapply", action="store_true",
+                       help="0.4 H-A prototype: async record apply, barrier "
+                            "only at rung decision points (proto_asyncapply;"
+                            " identity gated; subsumes --procrec). Row "
+                            "carries asyncapply=true.")
 
     p1 = sub.add_parser("t1", help="kernel tier")
     common(p1)

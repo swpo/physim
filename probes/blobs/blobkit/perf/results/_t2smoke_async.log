@@ -1,0 +1,9 @@
+[bench] device=cpu jax=0.4.38
+[t2 t2smoke] 2 lanes, L=64.0 t0=1250.0 cap=1250.0 workload=fb67f46ab2be
+[t2 t2smoke call0] b4 n=1 wall=27.3s T=[1250.0]
+[t2 t2smoke call1] b14 n=1 wall=76.3s T=[1250.0]
+[asyncapply] stats {'records': 502, 'points': 502, 'submit_s': 0.03006241424009204, 'apply_s': 2.5701207173988223, 'backpressure_s': 0.0003070286475121975, 'barrier_s': 0.011416999623179436, 'skipped': 0, 'max_queue': 1}
+
+[row] /Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/perf/results/rows.jsonl
+{"tier": "t2", "config": "t2smoke", "blobkit": "0.3.2", "device_class": "cpu", "workload": "fb67f46ab2be", "w_h": 69.45, "wall_s": 103.7, "instrumented": false}
+[t2 t2smoke rep0] wall=104s w/h=69.45 tu/s=24.1 errors=0

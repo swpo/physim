@@ -258,10 +258,35 @@ def bench_scaling(lanes, rounds=6):
             for S, dlt in zip(lanes, deltas):
                 apply_record(S, dlt, dlt["t"])
         w = time.perf_counter() - t0
-        ex.shutdown()
         res[f"procs{nP}"] = dict(wall_s=round(w, 3),
                                  ms_per_record=round(1e3 * w / n_rec, 2),
                                  speedup=round(serial_s / w, 2))
+        if nP == 8:
+            # ASYNC-APPLY cell: same 8-proc pool, but submissions never
+            # wait for the round (point) to finish — futures drain FIFO on
+            # one apply thread, barrier at the very end. This is the
+            # proto_asyncapply data path minus the driver; its speedup vs
+            # procs8 isolates the per-point sync cost (H-A's target).
+            from concurrent.futures import ThreadPoolExecutor as _TPE
+            t0 = time.perf_counter()
+            futs = []
+            for r in range(rounds):
+                for S in lanes:
+                    t = points(S, r + 400)
+                    ctx, acts, chm, snap = payload_of(S, t)
+                    futs.append((S, ex.submit(
+                        _extract_star, (ctx, acts, chm, t, snap)), t))
+            ap = _TPE(1)
+            def _apply_all():
+                for S, fut, t in futs:
+                    apply_record(S, fut.result(), t)
+            ap.submit(_apply_all).result()
+            ap.shutdown()
+            w = time.perf_counter() - t0
+            res["async8"] = dict(wall_s=round(w, 3),
+                                 ms_per_record=round(1e3 * w / n_rec, 2),
+                                 speedup=round(serial_s / w, 2))
+        ex.shutdown()
     return res
 
 

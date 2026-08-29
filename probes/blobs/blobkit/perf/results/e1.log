@@ -1,0 +1,6 @@
+[e1] building real states...
+[e1] 11 real fields: ['m0/a0', 'pred/a0', 'pred/a1', 'pred/a2', 'coex/a0', 'coex/a1', 'coex/a2', 'ds3_014/a0', 'ds3_014/a1', 'ds3_014/a2', 'ds3_014/a3']
+[row] {"question": "E1 labelprop feasibility", "tag": "real-adv-T1000", "B": 11, "N": 256, "iters_to_converge": 496, "conv_wall_ms": 191.9, "fused_wall_ms": 10.33, "fused_ms_per_field": 0.939, "host_periodic_label_ms": 10.88, "host_ms_per_field": 0.99, "n_components": [12, 34, 5, 0, 4, 4, 4, 7, 3, 3, 3], "partition_match": true, "verdict": "FEASIBLE", "ts": "2026-08-29T14:23:20Z"}
+[row] {"question": "E2 parity DETAIL", "tag": "real-adv-T1000", "lane": 2, "name": "pred/a1", "n_dev": 256, "n_ref": 5, "ts": "2026-08-29T14:23:22Z"}
+[row] {"question": "E2 parity DETAIL", "tag": "real-adv-T1000", "lane": 8, "name": "ds3_014/a1", "n_dev": 60, "n_ref": 3, "ts": "2026-08-29T14:23:22Z"}
+[row] {"question": "E2 segment reductions + parity", "tag": "real-adv-T1000", "B": 11, "N": 256, "max_lab": 256, "dev_stats_ms": 2.62, "dev_e2e_ms": 6.4, "dev_e2e_ms_per_field": 0.582, "host_bloblist_ms": 120.23, "host_ms_per_field": 10.93, "n_blobs_ref": [12, 34, 5, 0, 4, 4, 4, 7, 3, 3, 3], "parity_match": false, "worst_rel_err": 4.707414020592795e-07, "verdict": "PARITY FAIL", "ts": "2026-08-29T14:23:

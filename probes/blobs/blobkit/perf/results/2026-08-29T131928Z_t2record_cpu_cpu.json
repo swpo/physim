@@ -1,0 +1,135 @@
+{
+ "row": {
+  "v": 1,
+  "suite": "blobkit-perf",
+  "ts": "2026-08-29T13:19:28Z",
+  "host": "mac.lan",
+  "machine": "arm64",
+  "cpu_count": 10,
+  "blobkit": "0.3.2",
+  "locks": "e1af8bca2e2a",
+  "tier": "t2record",
+  "config": "cpu",
+  "profile": null,
+  "dtype": "f32",
+  "workload": "t2record-cpu-v1",
+  "instrumented": false,
+  "tag": "async-cell",
+  "device": "cpu",
+  "platform": "cpu",
+  "device_kind": "cpu",
+  "device_class": "cpu",
+  "n_devices": 1,
+  "jax": "0.4.38",
+  "wall_s": 29.1,
+  "identity_pass": true,
+  "ms_per_record_serial": 3.23,
+  "speedup_threads8": 2.09,
+  "speedup_procs8": 3.56,
+  "gil": {
+   "ndimage_label": 1.22,
+   "periodic_label": 1.31,
+   "blob_list_fast": 1.84,
+   "np_dot_control": 1.33
+  },
+  "components_ms": {
+   "f64_convert": 0.028,
+   "ndimage_label": 0.16,
+   "periodic_label": 0.282,
+   "blob_list_fast": 4.497,
+   "mass_clip_sum": 0.052,
+   "org_patches": 0.927,
+   "patches_sizes": 1.405,
+   "coarse_memf": 0.019,
+   "record_REC_total": 4.354
+  }
+ },
+ "detail": {
+  "meta": {
+   "L": 64.0,
+   "T_state": 250.0,
+   "B": 16,
+   "specs": [
+    "m0",
+    "pred"
+   ]
+  },
+  "identity_pass": true,
+  "scaling": {
+   "serial": {
+    "wall_s": 0.31,
+    "ms_per_record": 3.23,
+    "speedup": 1.0
+   },
+   "threads2": {
+    "wall_s": 0.184,
+    "ms_per_record": 1.91,
+    "speedup": 1.69
+   },
+   "threads4": {
+    "wall_s": 0.145,
+    "ms_per_record": 1.51,
+    "speedup": 2.14
+   },
+   "threads8": {
+    "wall_s": 0.148,
+    "ms_per_record": 1.55,
+    "speedup": 2.09
+   },
+   "procs2": {
+    "wall_s": 0.181,
+    "ms_per_record": 1.89,
+    "speedup": 1.71
+   },
+   "procs4": {
+    "wall_s": 0.118,
+    "ms_per_record": 1.23,
+    "speedup": 2.63
+   },
+   "procs8": {
+    "wall_s": 0.087,
+    "ms_per_record": 0.91,
+    "speedup": 3.56
+   },
+   "async8": {
+    "wall_s": 0.068,
+    "ms_per_record": 0.71,
+    "speedup": 4.54
+   }
+  },
+  "components": {
+   "f64_convert": 0.028,
+   "ndimage_label": 0.16,
+   "periodic_label": 0.282,
+   "blob_list_fast": 4.497,
+   "mass_clip_sum": 0.052,
+   "org_patches": 0.927,
+   "patches_sizes": 1.405,
+   "coarse_memf": 0.019,
+   "record_REC_total": 4.354
+  },
+  "gil": {
+   "ndimage_label": {
+    "serial_s": 0.001,
+    "par2_s": 0.001,
+    "speedup": 1.22
+   },
+   "periodic_label": {
+    "serial_s": 0.002,
+    "par2_s": 0.002,
+    "speedup": 1.31
+   },
+   "blob_list_fast": {
+    "serial_s": 0.03,
+    "par2_s": 0.016,
+    "speedup": 1.84
+   },
+   "np_dot_control": {
+    "serial_s": 0.023,
+    "par2_s": 0.017,
+    "speedup": 1.33
+   }
+  },
+  "build_and_bench_wall_s": 29.1
+ }
+}
