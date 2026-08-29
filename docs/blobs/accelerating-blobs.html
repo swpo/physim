@@ -229,6 +229,74 @@ single-world numbers are pull-limited by the record pipeline, not stepping
 (pure stepping: 512² = 0.24 ms/step, 1024² = 0.91); a future
 device-side tracker could roughly double (ii)/(iii).</p>
 
+
+<h2>Production contact: the record path (2026-08-29 update)</h2>
+
+<p><b>The benchmark met production and lost.</b> When the first real evolution
+campaign ran on this port (blobkit 0.3.x: the batched ladder driving full
+assays, not tracking-only populations), throughput came in at 38&ndash;46
+worlds/hour against a measured sim-only ceiling of ~189. The gap was not the
+kernel: an instrumented production run split the wall as <b>record tracking
+2299&thinsp;s (cumulative)</b> vs dispatch 493&thinsp;s, battery 356&thinsp;s,
+pull 40&thinsp;s &mdash; and the record path ran at ~1.5 effective threads
+(GIL-serialized <span class="mono">blob_list_fast</span>, ~6.4&thinsp;ms per
+field per record point, 85% of record cost). The 396&thinsp;w/h headline above
+is real but describes a tracking-only workload; the full assay pays for
+science the tracker skips.</p>
+
+<p>Two plausible fixes died by benchmark before any code shipped:
+<b>nf-bucketed packing</b> (padding waste was free capacity &mdash; the GPU was
+not FLOP-bound at B=32) and <b>bigger batches</b> (B-scaling is flat:
+78/71/75/76&thinsp;&micro;s/world-step at B=8/32/64/96; cuFFT at 256&sup2;
+already fills an H100 at small B). Parallelizing record <i>extraction</i>
+into a spawn pool gated bitwise but bought only 1.10&times; &mdash; the rung
+loop still waited for records between chunks. Amdahl, textbook.</p>
+
+<p><b>So the record math moved onto the device.</b> A fast experiment loop on
+real evolved states (minutes per question, one question per experiment)
+settled the design in a day:</p>
+
+<table>
+<tr><th>experiment</th><th>verdict</th><th>evidence</th></tr>
+<tr><td>naive min-neighbor label propagation</td><td><b>REJECTED</b></td>
+<td>correct partitions but 496 sweeps on real labyrinths &mdash; right math,
+wrong algorithm.</td></tr>
+<tr><td>sweep + pointer-jumping</td><td><b>REJECTED</b></td>
+<td>stalls on 3 of 11 real fields (unions land at pixels; jumps only
+compress).</td></tr>
+<tr><td>scatter-min root merging (label equivalence;
+<span class="mono">jnp .at[].min</span> is the scatter)</td><td><b>KEPT</b></td>
+<td>converges in 4 outer rounds on all real fields <i>and</i> a pathological
+serpentine (diameter ~N&sup2;/8); partitions exactly match the locked host
+labeler; <b>0.12&thinsp;ms/field</b> labels-only.</td></tr>
+<tr><td>segment stats on device (dense rank + scatter-add + scatter-max +
+trig moments)</td><td><b>KEPT</b></td>
+<td><b>7.6&times; per field end-to-end</b> (1.58 vs 12.0&thinsp;ms) incl. the
+tiny per-blob row pull; blob sets/areas/peaks exact, sums within 5.5e-7 (f32
+accumulation; f64 variant gates at ~1e-12).</td></tr>
+<tr><td>step/stats multi-stream overlap</td><td><b>UNNECESSARY</b></td>
+<td>XLA serializes the two jits (overlap ratio 1.00 measured) &mdash; but
+device stats cost only 8.5% of chunk stepping (34.9 vs 410&thinsp;ms per
+32-lane&times;128-field REC point), so the simple in-loop fold wins. Honest
+negative that simplified the design.</td></tr>
+<tr><td>async record apply (host)</td><td><b>KEPT</b></td>
+<td>records/battery processed while the device steps the next chunk; barrier
+only at rung decision points &mdash; assay decisions bitwise identical;
+&times;4.54 on the record microbench.</td></tr>
+</table>
+
+<p><b>Parity policy</b> (inherited from the noise-stream precedent): integer
+and max-reduction outputs &mdash; partitions, blob counts, areas, peaks &mdash;
+must be <i>exact</i>; floating-point sums use f64 device accumulation behind a
+1e-12 tolerance gate, because bitwise equality of scattered sums is
+fundamentally unattainable (fp non-associativity meets GPU scatter order).</p>
+
+<p><b>Method note.</b> Every claim in this chapter is a row in a versioned
+benchmark suite that now ships with the package (<span class="mono">
+perf/bench.py</span>: kernel / assay-mix / generation tiers, frozen workload
+hashes, one-command version comparison). The rule that produced the honest
+negatives above: <i>no performance claim without a benchmark row.</i></p>
+
 <h2>How to run it</h2>
 <div class="eq">
 probes/blobs/gpu/ &nbsp;(no repo-wide install; JAX cpu works out of the box, cuda12 wheel on pods)<br/>
