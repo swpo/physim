@@ -38,6 +38,10 @@ it, and the cost to try. Update status lines with row references only.
 ## Ranked ledger
 
 ### H-C  Fewer/cheaper host syncs on the record path        [rank 1]
+(2026-08-29 REVISION: "host syncs" was the wrong noun — the H100
+instrumented row shows the PULL is cheap (40 s) and the host-side RECORD
+TRACKING is the wall, serialized by the GIL. Mechanism text below kept
+for the C1/C2 designs; see Status + GAINS.md for the measured story.)
 Mechanism: today every REC point (5 tu = 250 steps) pulls the FULL padded
 f32 state (B, nf_max, N, N) to host (activator-only pull exists but
 full_pull_needed fires every CREC=25tu and at snapshots) and runs the locked
@@ -66,7 +70,17 @@ the per-pull cost (already in the suite: pull_full_ms vs pull_acts_ms).
 Cost to try: C1 medium (driver + sim_gpu pull_fn seam, no locked-file
 edits — record_fn contract already allows it); C2 high (device labeling
 kernel + parity gates).
-Status: OPEN. Evidence rows: pending GPU window.
+Status: DIAGNOSED + prototype gated (2026-08-29). H100 instrumented t2
+(workload 697bcb716916): record 2299 s cum vs 1505 s wall at 8 REC
+threads = x1.5 effective -> record tracking IS the wall (60%+), NOT the
+PCIe pull (40 s). t2record microbench: thread pool saturates x2.4
+(GIL-bound: blob_list_fast x1.79 @2T, periodic_label x1.18); spawn
+process pool keeps scaling (x4.0 @8 procs laptop; payloads 1.6 MB /
+0.1 ms pickle). FIX (a) = record extract on a spawn process pool;
+prototype proto_procrec.py + `bench.py t2 --procrec`, identity gates
+PASS (extract+apply == stock _record; batch record streams bitwise).
+Expected on pod: x2.75-4.2 (GAINS.md table). C2 re-ranked to 0.4+
+(blob lists ~90% of record cum; needs device periodic labeling).
 
 ### H-B  Fill the device: cross-gen lane pooling to B>=64-96 [rank 2]
 Mechanism: the H100 is under-worked at B=32 (util 60-99%, and the 396 w/h
@@ -168,9 +182,12 @@ Status: OPEN. Local T1/T2 rows already carry compile_s per cell.
 
 ## Priority order for the next GPU window
 
-1. T1 gpu profile (b14 B=8/32/64/96 cells): free H-B evidence + pull/launch
-   microbench numbers on real hardware.
-2. T2 t2 config on 0.3.2 = the baseline row every hypothesis compares to.
-3. H-C1 prototype behind a flag -> T2 again (same workload hash).
-4. H-D grouping flag -> T2 variant row.
-5. H-A speculative-rung prototype -> instrumented T2 + identity gate.
+1. DONE 2026-08-29: T1 gpu profile + T2 t2 baseline (42.3 w/h) +
+   instrumented T2 -> record tracking = the wall (see H-C status).
+2. NEXT: `bench.py t2 --config t2 --device gpu --procrec` on workload
+   697bcb716916 -> the fix-(a) claim row (expected x2.75-4.2, GAINS.md).
+3. Then re-instrument (--procrec --instrument): what binds post-fix?
+   (dispatch? battery? -> re-rank H-B/H-A with data.)
+4. H-D grouping flag -> T2 variant row (cheap).
+5. H-A speculative-rung prototype only if post-(a) shows rung-boundary
+   stalls still matter.

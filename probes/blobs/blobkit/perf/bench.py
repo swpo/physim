@@ -341,6 +341,11 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     from blobkit.assay_batch import run_assay_batch
 
     calls = bc.group_lanes(lanes, cfg["bmax"])
+    if getattr(args, "procrec", False):
+        # 0.4 fix-(a) prototype: record tracking on a spawn process pool
+        # (proto_procrec wraps the driver at runtime; identity gated).
+        import proto_procrec as PP
+        PP.install(procs=args.battery_procs or None)
     probe = Probe() if args.instrument else None
     kw = {}
     if cfg.get("B_pad"):
@@ -372,6 +377,10 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     wall = time.time() - t_tier0
     if probe:
         probe.restore()
+    if getattr(args, "procrec", False):
+        import proto_procrec as PP
+        print(f"[procrec] stats {PP.stats()}", flush=True)
+        PP.uninstall(shutdown=False)
     return calls, call_rows, outs_by_lane, wall, probe
 
 
@@ -405,7 +414,8 @@ def run_t2(args):
         row.update(wall_s=round(wall, 1), n_lanes=len(lanes),
                    n_calls=len(calls), w_h=round(w_h, 2),
                    tu_total=tu, tu_per_s=round(tu / wall, 1),
-                   assay_errors=errs, statuses=statuses, rep=rep)
+                   assay_errors=errs, statuses=statuses, rep=rep,
+                   procrec=bool(args.procrec))
         detail = dict(cfg=cfg, calls=call_rows,
                       lanes=[{k: ln[k] for k in
                               ("cand", "phase", "bucket", "seed", "t0",
@@ -466,6 +476,31 @@ def run_t3(args):
           f"(screen {wall_s:.0f}s + confirm {wall_c:.0f}s)", flush=True)
 
 
+# -------------------------------------------------------------- t2record
+def run_t2record(args):
+    """Record-path microbench: scaling (threads vs spawn procs vs serial),
+    per-op components, GIL probe, extract/apply identity gate. See
+    recbench.py docstring; motivated by the H100 t2 instrumented row
+    (record 2299 s cum vs 1505 s wall at 8 rec threads = x1.5 effective)."""
+    import recbench as RB
+    t0 = time.time()
+    detail = RB.run(profile=("gpu" if args.device == "gpu" else "cpu"),
+                    verbose=True)
+    wall = time.time() - t0
+    row = base_row("t2record", args.device, args,
+                   workload=f"t2record-{'gpu' if args.device == 'gpu' else 'cpu'}-v{SUITE_V}")
+    scal = detail["scaling"]
+    row.update(
+        wall_s=round(wall, 1),
+        identity_pass=detail["identity_pass"],
+        ms_per_record_serial=scal["serial"]["ms_per_record"],
+        speedup_threads8=scal["threads8"]["speedup"],
+        speedup_procs8=scal["procs8"]["speedup"],
+        gil=({k: v["speedup"] for k, v in detail["gil"].items()}),
+        components_ms=detail["components"])
+    emit(row, detail)
+
+
 # --------------------------------------------------------------- compare
 def run_compare(args):
     if not os.path.exists(ROWS):
@@ -497,9 +532,11 @@ def run_compare(args):
                 base = wh
             ratio = (f"{wh / base:6.2f}x" if (wh is not None and base)
                      else "      -")
+            mark = "+procrec" if r.get("procrec") else ""
             print(f"  {r.get('ts', ''):22s} {r.get('blobkit', ''):9s} "
                   f"{(f'{wh:9.2f}' if wh is not None else '        -')} "
-                  f"{r.get('wall_s', 0):8.1f} {ratio} {r.get('tag') or ''}")
+                  f"{r.get('wall_s', 0):8.1f} {ratio} "
+                  f"{(r.get('tag') or '')}{mark}")
 
 
 # ------------------------------------------------------------------ main
@@ -517,6 +554,10 @@ def main():
         p.add_argument("--battery-procs", type=int, default=None,
                        dest="battery_procs")
         p.add_argument("--repeat", type=int, default=1)
+        p.add_argument("--procrec", action="store_true",
+                       help="0.4 fix-(a) prototype: record tracking on a "
+                            "spawn process pool (proto_procrec; identity "
+                            "gated). Row carries procrec=true.")
 
     p1 = sub.add_parser("t1", help="kernel tier")
     common(p1)
@@ -530,6 +571,10 @@ def main():
     p3 = sub.add_parser("t3", help="gen-sim tier")
     common(p3)
     p3.add_argument("--config", default=None, help="t3|t3mini")
+
+    pr = sub.add_parser("t2record", help="record-path microbench "
+                        "(scaling/components/GIL + extract-apply identity)")
+    common(pr)
 
     pc = sub.add_parser("compare", help="compare rows across versions")
     pc.add_argument("--tier", default=None)
@@ -552,7 +597,9 @@ def main():
         ap.error("--device gpu but jax sees only CPU")
     print(f"[bench] device={di['device_kind']} jax={di['jax']}", flush=True)
 
-    if args.cmd == "t1":
+    if args.cmd == "t2record":
+        run_t2record(args)
+    elif args.cmd == "t1":
         args.profile = args.profile or ("gpu" if args.device == "gpu"
                                         else "cpu")
         run_t1(args)

@@ -7,9 +7,16 @@ on the SAME tier/config/device-class/workload hash. Hypotheses live in
 
 ## Layout
 
-    bench.py            benchmark harness (T1/T2/T3 + compare); CPU-JAX and
-                        GPU with the same script (--device cpu|gpu)
+    bench.py            benchmark harness (T1/T2/T3/t2record + compare);
+                        CPU-JAX and GPU with the same script (--device)
     benchconfigs.py     frozen tier configs + lane builders (workload hash)
+    recbench.py         record-path microbench lib + extract/apply split of
+                        the locked _record (identity-gated)
+    proto_procrec.py    0.4 fix-(a) prototype: record tracking on a spawn
+                        process pool (runtime driver wrap; gate_batch);
+                        enabled per-run via `bench.py t2 --procrec`
+    GAINS.md            record-path diagnosis + expected-gain table vs the
+                        frozen t2 workload 697bcb716916
     data/prodmix.json.gz  127 evolved genomes sampled from the deepsearch
                         final CPU harvest, preserving the measured joint
                         (nf_bucket, T_used) distribution (n=2079)
@@ -29,6 +36,7 @@ fleet env (`blobkit[gpu]`).
 | T1 `kernel` | pure batched stepping (B x nf grid) + pull/launch/record microbenches; no assay | profiles `cpu`, `gpu` | 2-5 |
 | T2 `assay-mix` | prod-distribution lane mix through the REAL `run_assay_batch` ladder incl. full battery — THE prod-like w/h number | `t2` (prod, GPU), `t2mini` (local), `t2smoke` (CI) | 5-15 |
 | T3 `gen-sim` | one synthetic generation end-to-end: screens -> top-K confirm lanes with t0 floors (optional tier) | `t3` (prod), `t3mini` (local) | 15-25 |
+| `t2record` | record-path microbench: scaling (threads/procs/serial), per-op components, GIL probe, extract-apply identity gate | (device profiles) | 1-2 |
 
 Scale vs device: prod configs (`t2`, `t3`, profile `gpu`) use the prod
 substrate (L=128 -> N=256, ladder 2500->20000) — run them on the pod. Mini

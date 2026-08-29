@@ -1,0 +1,19 @@
+[bench] device=cpu jax=0.4.38
+[identity m0] PASS (57 rec points, 13 crec, 2 snaps)
+[identity pred] PASS (57 rec points, 13 crec, 2 snaps)
+[t2record] identity: PASS
+[t2record scaling] serial       3.13 ms/record  x1.00
+[t2record scaling] threads2     1.85 ms/record  x1.69
+[t2record scaling] threads4     1.27 ms/record  x2.47
+[t2record scaling] threads8     1.33 ms/record  x2.36
+[t2record scaling] procs2       1.69 ms/record  x1.85
+[t2record scaling] procs4       1.00 ms/record  x3.13
+[t2record scaling] procs8       0.78 ms/record  x4.01
+[t2record components(ms)] {'blob_list_fast': 3.983, 'record_REC_total': 3.96, 'patches_sizes': 1.374, 'org_patches': 0.898, 'periodic_label': 0.279, 'ndimage_label': 0.147, 'mass_clip_sum': 0.049, 'f64_convert': 0.02, 'coarse_memf': 0.019}
+[t2record gil] ndimage_label    2-thread speedup x1.5
+[t2record gil] periodic_label   2-thread speedup x1.18
+[t2record gil] blob_list_fast   2-thread speedup x1.79
+[t2record gil] np_dot_control   2-thread speedup x1.38
+
+[row] /Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/perf/results/rows.jsonl
+{"tier": "t2record", "config": "cpu", "blobkit": "0.3.2", "device_class": "cpu", "workload": "t2record-cpu-v1", "wall_s": 24.3, "instrumented": false}
