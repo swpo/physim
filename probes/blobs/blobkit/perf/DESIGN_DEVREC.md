@@ -1,9 +1,15 @@
 # DESIGN_DEVREC.md — device-side record path + pipeline (0.4 flagship)
 
-Status: EXPERIMENT-BACKED design. Every number below is a measured row in
-`perf/results/experiments.jsonl` (pod H100 PCIe, jax 0.4.38, N=256 real
-advanced states) or `perf/results/rows.jsonl`. Prototype next (P3/P4);
-this doc freezes the architecture and the parity contract.
+Status: PROTOTYPED + CLAIMED (2026-08-29). Every number below is a measured
+row in `perf/results/experiments.jsonl` (pod H100 PCIe, jax 0.4.38, N=256
+real advanced states) or `perf/results/rows.jsonl`. Prototype
+`proto_devrec.py` (+`--devrec` bench flag) passed all parity gates
+(gate_batch inline + async: PASS, worst rel err 3.8e-13 vs 1e-12 tol,
+ZERO fallbacks; assay-level decision identity PASS) and the pod claim row
+landed: **t2 frozen workload 697bcb716916: 42.31 -> 92.20 w/h (2.18x),
+zero fallbacks over 4779 device points / 14737 lane-records**. E4 added:
+the global x64 flag does NOT change f32 stepper bits (state+records
+sha-identical) — the f64-accumulator policy is deploy-safe.
 
 ## 0. What the experiments established (E-rows)
 

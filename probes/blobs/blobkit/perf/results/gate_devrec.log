@@ -1,0 +1,13 @@
+[devrec gate lane0] PASS (101 rec, 21 crec)
+[devrec gate lane1] PASS (101 rec, 21 crec)
+[devrec gate lane2] PASS (101 rec, 21 crec)
+[devrec gate lane3] PASS (101 rec, 21 crec)
+[devrec gate] worst rel err 3.75e-13 (tol 1e-12); stats {'points_dev': 80, 'points_host': 21, 'lanes_dev': 320, 'lanes_fallback': 0, 'fb_unconv': 0, 'fb_overflow': 0, 'fb_nonfinite': 0, 'dispatch_s': 1.3428924120671581, 'flags_s': 0.093110506029916, 'rows_pull_s': 0.16804944393516053, 'assemble_s': 0.04312353295972571, 'apply_s': 0.0011575500102480873}
+[row] {"question": "P3 devrec gate_batch inline", "ok": true, "stats": {"points_dev": 80, "points_host": 21, "lanes_dev": 320, "lanes_fallback": 0, "fb_unconv": 0, "fb_overflow": 0, "fb_nonfinite": 0, "dispatch_s": 1.3428924120671581, "flags_s": 0.093110506029916, "rows_pull_s": 0.16804944393516053, "assemble_s": 0.04312353295972571, "apply_s": 0.0011575500102480873}, "ts": "2026-08-29T17:31:04Z"}
+[devrec gate lane0] PASS (101 rec, 21 crec)
+[devrec gate lane1] PASS (101 rec, 21 crec)
+[devrec gate lane2] PASS (101 rec, 21 crec)
+[devrec gate lane3] PASS (101 rec, 21 crec)
+[devrec gate] worst rel err 1.40e-13 (tol 1e-12); stats {'points_dev': 74, 'points_host': 27, 'lanes_dev': 296, 'lanes_fallback': 0, 'fb_unconv': 0, 'fb_overflow': 0, 'fb_nonfinite': 0, 'dispatch_s': 0.22683894797228277, 'flags_s': 0.11884450301295146, 'rows_pull_s': 0.3253859180404106, 'assemble_s': 0.0, 'apply_s': 0.0}
+[row] {"question": "P3 devrec gate_batch async_apply", "ok": true, "stats": {"points_dev": 74, "points_host": 27, "lanes_dev": 296, "lanes_fallback": 0, "fb_unconv": 0, "fb_overflow": 0, "fb_nonfinite": 0, "dispatch_s": 0.22683894797228277, "flags_s": 0.11884450301295146, "rows_pull_s": 0.3253859180404106, "assemble_s": 0.0, "apply_s": 0.0}, "ts": "2026-08-29T17:31:16Z"}
+VERDICT: ALL PASS

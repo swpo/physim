@@ -15,6 +15,16 @@ on the SAME tier/config/device-class/workload hash. Hypotheses live in
     proto_procrec.py    0.4 fix-(a) prototype: record tracking on a spawn
                         process pool (runtime driver wrap; gate_batch);
                         enabled per-run via `bench.py t2 --procrec`
+    proto_asyncapply.py 0.4 H-A prototype: async record apply, barrier only
+                        at rung decision points (`--asyncapply`)
+    proto_devrec.py     0.4 devrec prototype: device-side REC-grid records
+                        (scatter-min CCL + f64 segment stats; `--devrec`,
+                        composes with `--asyncapply`) — the 2.18x claim
+    gate_assay_async.py / gate_assay_devrec.py  assay-level identity gates
+    e1*.py e2c*.py e3*.py e4*.py  pod experiment scripts (E-rows)
+    DESIGN_DEVREC.md    experiment-backed devrec design + timing budget
+    RESEARCH log: results/experiments.jsonl (E-rows, {question, numbers,
+                        verdict}); e*.log transcripts
     GAINS.md            record-path diagnosis + expected-gain table vs the
                         frozen t2 workload 697bcb716916
     data/prodmix.json.gz  127 evolved genomes sampled from the deepsearch

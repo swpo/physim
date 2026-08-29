@@ -1,0 +1,5 @@
+
+== tier=t2 config=t2 device=NVIDIA_H100_PCIe workload=697bcb716916
+  ts                     blobkit         w_h   wall_s   ratio tag
+  2026-08-29T09:55:10Z   0.3.2         42.31   1361.3   1.00x 
+  2026-08-29T11:44:54Z   0.3.2         46.52   1238.3   1.10x +procrec

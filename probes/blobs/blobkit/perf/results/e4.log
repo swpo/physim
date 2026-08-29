@@ -1,0 +1,3 @@
+off {'variant': 'off', 'dtype': 'float32', 'state_sha': '50824bf7b0b6d993', 'rec_sha': '5e68f3a1ca055ffc'}
+on {'variant': 'on', 'dtype': 'float32', 'state_sha': '50824bf7b0b6d993', 'rec_sha': '5e68f3a1ca055ffc'}
+[row] {"question": "E4 x64 flag vs f32 stepper bits", "state_match": true, "rec_match": true, "detail": {"off": {"variant": "off", "dtype": "float32", "state_sha": "50824bf7b0b6d993", "rec_sha": "5e68f3a1ca055ffc"}, "on": {"variant": "on", "dtype": "float32", "state_sha": "50824bf7b0b6d993", "rec_sha": "5

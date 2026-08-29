@@ -1,0 +1,10 @@
+[bench] device=NVIDIA H100 PCIe jax=0.4.38
+[t2 t2] 16 lanes, L=128.0 t0=2500.0 cap=20000.0 workload=697bcb716916
+[t2 t2 call0] b4 n=3 wall=108.1s T=[2500.0, 5000.0, 2500.0]
+[t2 t2 call1] b7 n=2 wall=63.9s T=[2500.0, 2500.0]
+[t2 t2 call2] b10 n=2 wall=76.0s T=[2500.0, 2500.0]
+[t2 t2 call3] b14 n=9 wall=1113.3s T=[20000.0, 20000.0, 10000.0, 10000.0, 2500.0, 2500.0, 2500.0, 2500.0, 2500.0]
+
+[row] /home/ubuntu/perf/results/rows.jsonl
+{"tier": "t2", "config": "t2", "blobkit": "0.3.2", "device_class": "NVIDIA_H100_PCIe", "workload": "697bcb716916", "w_h": 42.31, "wall_s": 1361.3, "instrumented": false}
+[t2 t2 rep0] wall=1361s w/h=42.31 tu/s=67.9 errors=0

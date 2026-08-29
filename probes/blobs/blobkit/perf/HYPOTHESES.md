@@ -70,7 +70,10 @@ the per-pull cost (already in the suite: pull_full_ms vs pull_acts_ms).
 Cost to try: C1 medium (driver + sim_gpu pull_fn seam, no locked-file
 edits — record_fn contract already allows it); C2 high (device labeling
 kernel + parity gates).
-Status: DIAGNOSED + prototype gated (2026-08-29). H100 instrumented t2
+Status: CLAIMED via devrec (2026-08-29): device-side REC records
+(proto_devrec, DESIGN_DEVREC.md) + async apply = 92.2 w/h on the frozen
+t2 workload (2.18x vs 42.31 baseline; compare row +devrec+async).
+Chain of evidence below retained. H100 instrumented t2
 (workload 697bcb716916): record 2299 s cum vs 1505 s wall at 8 REC
 threads = x1.5 effective -> record tracking IS the wall (60%+), NOT the
 PCIe pull (40 s). t2record microbench: thread pool saturates x2.4
@@ -102,6 +105,11 @@ batching high (repack identity gates).
 Status: OPEN. T1-gpu rows pending pod window.
 
 ### H-A  Record-path overlap across rungs                    [rank 3]
+Status update (2026-08-29): async-apply variant GATED (proto_asyncapply:
+gate_batch PASS, test_blowup staleness PASS, assay-level identity PASS;
+t2record async8 x4.54 vs procs8 x3.56) and SHIPPED as part of the devrec
+claim row (92.2 w/h = --devrec --asyncapply). The speculative-rung idea
+below stays open for the battery pole (356 s), re-rank post-devrec.
 Mechanism: advance_gpu_batch already overlaps WITHIN a rung (dispatch next
 chunk, then record current pull; BLOBGPU_REC_THREADS). But at every RUNG
 boundary the pipeline drains: full pull -> per-lane battery (0.25 s/world

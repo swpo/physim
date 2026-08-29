@@ -1,0 +1,15 @@
+[bench] device=NVIDIA H100 PCIe jax=0.4.38
+[t1 b4_B32] B=32 nf_max=5 compile=4.9s us/world-step=29.7 simT2500-ceiling=969 w/h
+[t1 b7_B32] B=32 nf_max=7 compile=5.5s us/world-step=38.7 simT2500-ceiling=745 w/h
+[t1 b10_B32] B=32 nf_max=10 compile=7.9s us/world-step=54.8 simT2500-ceiling=525 w/h
+[t1 b14_B32] B=32 nf_max=14 compile=8.4s us/world-step=71.3 simT2500-ceiling=404 w/h
+[t1 b14_B8] B=8 nf_max=13 compile=2.7s us/world-step=78.1 simT2500-ceiling=369 w/h
+[t1 b14_B64] B=64 nf_max=14 compile=13.6s us/world-step=75.2 simT2500-ceiling=383 w/h
+[t1 b14_B96] B=96 nf_max=14 compile=20.3s us/world-step=76.3 simT2500-ceiling=378 w/h
+[t1 pull] B=32 b14: {'none': 12.003, 'acts': 12.598, 'full': 12.957}  acts_pull=30ms full_pull=48ms per chunk
+[t1 launch] 200x1step=0.059s vs chunk=0.025s -> 168.7us/step
+[t1 record] m0: REC=10.3ms CREC=14.1ms per world-record
+[t1 record] pred: REC=33.1ms CREC=43.1ms per world-record
+
+[row] /home/ubuntu/perf/results/rows.jsonl
+{"tier": "t1", "config": "gpu", "blobkit": "0.3.2", "device_class": "NVIDIA_H100_PCIe", "workload": "t1profile-gpu-v1", "wall_s": 255.6, "instrumented": false}

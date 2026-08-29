@@ -341,7 +341,13 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     from blobkit.assay_batch import run_assay_batch
 
     calls = bc.group_lanes(lanes, cfg["bmax"])
-    if getattr(args, "asyncapply", False):
+    if getattr(args, "devrec", False):
+        # 0.4 devrec prototype: device-side REC-grid records (E1c CCL +
+        # f64 segment stats), optionally composed with H-A async apply.
+        import proto_devrec as DR
+        DR.install(async_apply=bool(getattr(args, "asyncapply", False)),
+                   procs=args.battery_procs or None)
+    elif getattr(args, "asyncapply", False):
         # 0.4 H-A prototype: async apply, barrier only at rung decisions
         # (proto_asyncapply; subsumes --procrec, do not combine).
         import proto_asyncapply as AA
@@ -382,7 +388,11 @@ def _run_lane_calls(lanes, cfg, args, tier, config):
     wall = time.time() - t_tier0
     if probe:
         probe.restore()
-    if getattr(args, "asyncapply", False):
+    if getattr(args, "devrec", False):
+        import proto_devrec as DR
+        print(f"[devrec] stats {DR.stats()}", flush=True)
+        DR.uninstall()
+    elif getattr(args, "asyncapply", False):
         import proto_asyncapply as AA
         print(f"[asyncapply] stats {AA.stats()}", flush=True)
         AA.uninstall(shutdown=False)
@@ -425,7 +435,8 @@ def run_t2(args):
                    tu_total=tu, tu_per_s=round(tu / wall, 1),
                    assay_errors=errs, statuses=statuses, rep=rep,
                    procrec=bool(args.procrec),
-                   asyncapply=bool(getattr(args, "asyncapply", False)))
+                   asyncapply=bool(getattr(args, "asyncapply", False)),
+                   devrec=bool(getattr(args, "devrec", False)))
         detail = dict(cfg=cfg, calls=call_rows,
                       lanes=[{k: ln[k] for k in
                               ("cand", "phase", "bucket", "seed", "t0",
@@ -542,8 +553,11 @@ def run_compare(args):
                 base = wh
             ratio = (f"{wh / base:6.2f}x" if (wh is not None and base)
                      else "      -")
-            mark = ("+async" if r.get("asyncapply")
-                    else "+procrec" if r.get("procrec") else "")
+            mark = "".join([
+                "+devrec" if r.get("devrec") else "",
+                "+async" if r.get("asyncapply") else "",
+                "+procrec" if (r.get("procrec")
+                               and not r.get("asyncapply")) else ""])
             print(f"  {r.get('ts', ''):22s} {r.get('blobkit', ''):9s} "
                   f"{(f'{wh:9.2f}' if wh is not None else '        -')} "
                   f"{r.get('wall_s', 0):8.1f} {ratio} "
@@ -574,6 +588,11 @@ def main():
                             "only at rung decision points (proto_asyncapply;"
                             " identity gated; subsumes --procrec). Row "
                             "carries asyncapply=true.")
+        p.add_argument("--devrec", action="store_true",
+                       help="0.4 devrec prototype: device-side REC-grid "
+                            "records (scatter-min CCL + f64 segment stats; "
+                            "proto_devrec; parity gated). Composes with "
+                            "--asyncapply. Row carries devrec=true.")
 
     p1 = sub.add_parser("t1", help="kernel tier")
     common(p1)
