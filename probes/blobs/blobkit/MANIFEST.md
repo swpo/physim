@@ -1,3 +1,37 @@
+## 0.3.4 — per-lane battery timeout (2026-08-29, wedge fix)
+
+Prod wedge (isl6, 4h+): a battery pool worker sat ACTIVE+GIL inside
+metrics_v1.build_tracks — greedy track matching is O(frames x blobs^2)
+pure Python; a dense long-T world made it effectively unbounded (also
+explains the 163-181 min g2/g3 walls as near-misses).
+
+Containment ladder (worker-side, _batteryproc.guarded_battery):
+  1. SIGALRM wall-clock guard around every battery call
+     (BLOBKIT_BATTERY_TIMEOUT, default 300 s; 0 disables; arms only in a
+     main thread with SIGALRM — spawn pool workers qualify);
+  2. on timeout, ONE retry with TRACK SUBSAMPLING: build_tracks sees every
+     BLOBKIT_BATTERY_SUBSAMPLE-th record frame (default 4; last frame
+     always kept — survivor filters test ks[-1]) with ks remapped to the
+     original grid (time axes exact; matching ~16x cheaper). Tracks feed
+     motion/graph metrics only; everything else sees the full record.
+     Battery dict + results rows carry {"battery_mode": "subsampled"}
+     (honesty: those worlds' motion metrics are coarser);
+  3. second timeout -> battery_timeout assay_error (lane contained,
+     batch continues).
+
+Re-locked: _batteryproc.py (guard + ladder + strided build_tracks),
+assay_batch.py (finalize -> guarded_battery + row battery_mode),
+data/fleet/pod_worker_batch.py (row battery_mode). Version 0.3.4,
+47 files locked.
+
+Gates (verify_v03/, installed wheel): T1 identity — m0/pred battery +
+criteria EQUAL to the 0.3.3 reference (ref_033.json captured pre-upgrade;
+subsample never engages below timeout); T2 ladder — synthetic dense
+record (400 frames x 260 blobs) times out at 20 s and SCORES subsampled;
+T3 double-timeout contained in 4 s; T4 battery_worker identity; POOL
+path — SIGALRM fires inside spawn workers (dense lane subsampled, normal
+lane full, wall 27 s). Logs: V1a via test_034.log, pool_test.log.
+
 ## 0.3.3 — gated record-path prototypes packaged (2026-08-29, perf integration)
 
 The blobkit-perf thread's GATED prototypes ship in-package so the fleet

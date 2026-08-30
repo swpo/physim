@@ -294,8 +294,13 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
         out, traj = ln["out"], ln["traj"]
         if err is None and (out is None or rec["T"] != traj[-1][0]):
             try:
-                out = MV2.full_battery(dict(rec), genome=g)
-                traj.append((rec["T"], round(out["interest"], 2)))
+                # [0.3.4] guarded: timeout -> subsampled retry -> error
+                out2, err2 = _BP.guarded_battery(rec, g)
+                if err2 is not None:
+                    err = err2
+                else:
+                    out = out2
+                    traj.append((rec["T"], round(out["interest"], 2)))
             except Exception as e:
                 err = repr(e)[:300]
         if err is not None:
@@ -328,6 +333,8 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
             row["backend"] = "gpu_batch"
             row["lane"] = ln["idx"]
             row["batched"] = True
+            if out.get("battery_mode"):          # [0.3.4] subsampled flag
+                row["battery_mode"] = out["battery_mode"]
             row["blobkit"] = blobkit.__version__      # provenance (L1/L3b/L5)
             row["locks"] = _locks12()
             row["engine"] = "gpu_batch"

@@ -1,0 +1,9 @@
+blobkit 0.3.4 locks True
+[T1 m0] PASS interest=2.25 (ref 2.25) mode=full
+[T1 pred] PASS interest=3.73906725391441 (ref 3.73906725391441) mode=full
+/Users/spoho/Documents/prime/test/physim/probes/blobs/gpu/.venv/lib/python3.12/site-packages/blobkit/hier_metrics.py:112: RuntimeWarning: divide by zero encountered in scalar divide
+  alpha = 1 + len(tail) / np.log(tail / xmin).sum()
+[T2 ladder] PASS wall=30s mode=subsampled interest=18.57661020609366 err=None
+[T3 double-timeout] PASS wall=4s err=battery_timeout(2s; subsample x4 retry also timed out)
+[T4 worker] PASS
+V1a_034: PASS

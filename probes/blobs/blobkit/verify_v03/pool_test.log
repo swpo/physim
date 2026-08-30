@@ -1,0 +1,5 @@
+/Users/spoho/Documents/prime/test/physim/probes/blobs/gpu/.venv/lib/python3.12/site-packages/blobkit/hier_metrics.py:112: RuntimeWarning: divide by zero encountered in scalar divide
+  alpha = 1 + len(tail) / np.log(tail / xmin).sum()
+dense: mode=subsampled err=None
+normal: mode=full interest=2.25
+POOL_PATH: PASS (wall 27s)

@@ -1,9 +1,9 @@
 {
- "locked_at": "2026-08-29 14:00:25",
- "version": "0.3.3",
+ "locked_at": "2026-08-29 23:11:04",
+ "version": "0.3.4",
  "files": {
-  "_batteryproc.py": "361ffc9cbf3ca79ea34342fc711052500b7ec67f9e0f7ee5878effd3c69164d1",
-  "assay_batch.py": "423c43dfb74664f5dc94142b2c9c38291f295319c7dd1546da530f5b9b1f42f1",
+  "_batteryproc.py": "83aabdb606efb99cc180f5b08741cc3968215e8f7ac6db57509e1fa5b1f05220",
+  "assay_batch.py": "5d86e645f6485fa23151edfeeaccb3b6990df7639681f1b12799d9c99fb342ab",
   "assay_v2.py": "a8672a92a5de791cdb685d7a84cd9af5e148b8fdab7c50c6d7fb7412f7b17042",
   "assay_v2b.py": "1d30bce790fa7a7f27905a4bf162180325d95982a779d545a1632ee3fa23052e",
   "assays_v1.py": "27c1af44a5ce666802825509a37dc9c62c6d7cdd44c278951a164f0907b303ba",
@@ -15,7 +15,7 @@
   "data/fleet/pod_lib.py": "bbd36d7a9fd536d6b844ae6abb4f8792b8ed86ebfa951fb0321d93062e91175b",
   "data/fleet/pod_smoke.py": "d3851198f4389fcfdc043e7c9ab50cf1b5235c44f7eb0dfd870d3e37ebf716b1",
   "data/fleet/pod_worker.py": "fb8e6e0205f5ee7bc03e71e029eeb5bec0b84f052aa405410eafe182f257e675",
-  "data/fleet/pod_worker_batch.py": "79f3b2219961a384a8b3074a73703e58b7428dc71ba467fb45553f7bbcabb658",
+  "data/fleet/pod_worker_batch.py": "78f9acbea2d56313cb3cdf6b1160523e14b0083d836adb955b6b565cc7d2e10e",
   "data/fleet/sampler.py": "c65ca23aba63658992b2985cc61da91c39bf81af890d700db710eba1731075f1",
   "data/stamp_A4_dx05.npz": "067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9",
   "data/worlds/_extraction.json": "98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",

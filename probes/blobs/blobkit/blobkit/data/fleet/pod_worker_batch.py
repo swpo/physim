@@ -163,6 +163,8 @@ def flush_batch(batch, cfg, P):
                    T_used=hor.get("T_used"),
                    horizon=PL.lean_horizon(hor), flags=out.get("flags"),
                    summary=out.get("summary") or None)
+        if out.get("battery_mode"):              # [0.3.4] subsampled flag
+            row["battery_mode"] = out["battery_mode"]
         row["extended"] = bool(hor.get("n_extensions"))
         try:
             row["cell"] = PL.cell_key_v2(out)
