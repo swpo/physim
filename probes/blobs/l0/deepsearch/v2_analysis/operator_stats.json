@@ -1,0 +1,166 @@
+{
+ "era4_final_gpu": {
+  "merge_slow_tanh": {
+   "attempts": 302,
+   "ok": 279,
+   "ok_rate": 0.924,
+   "funnel_pass": 287,
+   "archive_holder_cands": 44,
+   "holder_rate": 0.1457,
+   "union_final_cells": 29,
+   "n_I_ge70": 15,
+   "n_I_ge80": 2,
+   "best_I": 81.55,
+   "best_cand": "p2g6_069"
+  },
+  "mutate": {
+   "attempts": 1027,
+   "ok": 944,
+   "ok_rate": 0.919,
+   "funnel_pass": 957,
+   "archive_holder_cands": 124,
+   "holder_rate": 0.1207,
+   "union_final_cells": 99,
+   "n_I_ge70": 95,
+   "n_I_ge80": 10,
+   "best_I": 87.77,
+   "best_cand": "p3g5_001"
+  },
+  "merge_share_chan": {
+   "attempts": 215,
+   "ok": 54,
+   "ok_rate": 0.251,
+   "funnel_pass": 54,
+   "archive_holder_cands": 15,
+   "holder_rate": 0.0698,
+   "union_final_cells": 17,
+   "n_I_ge70": 3,
+   "n_I_ge80": 1,
+   "best_I": 81.53,
+   "best_cand": "p2g3_073"
+  },
+  "dup_act": {
+   "attempts": 428,
+   "ok": 169,
+   "ok_rate": 0.395,
+   "funnel_pass": 172,
+   "archive_holder_cands": 30,
+   "holder_rate": 0.0701,
+   "union_final_cells": 25,
+   "n_I_ge70": 36,
+   "n_I_ge80": 12,
+   "best_I": 86.93,
+   "best_cand": "p2g7_047"
+  },
+  "add_chan": {
+   "attempts": 413,
+   "ok": 398,
+   "ok_rate": 0.964,
+   "funnel_pass": 410,
+   "archive_holder_cands": 46,
+   "holder_rate": 0.1114,
+   "union_final_cells": 42,
+   "n_I_ge70": 89,
+   "n_I_ge80": 22,
+   "best_I": 88.74,
+   "best_cand": "p2g7_039"
+  },
+  "merge_cross_edge": {
+   "attempts": 731,
+   "ok": 694,
+   "ok_rate": 0.949,
+   "funnel_pass": 703,
+   "archive_holder_cands": 101,
+   "holder_rate": 0.1382,
+   "union_final_cells": 89,
+   "n_I_ge70": 82,
+   "n_I_ge80": 5,
+   "best_I": 81.66,
+   "best_cand": "p5g4_063"
+  },
+  "mint_bilin": {
+   "attempts": 615,
+   "ok": 609,
+   "ok_rate": 0.99,
+   "funnel_pass": 615,
+   "archive_holder_cands": 100,
+   "holder_rate": 0.1626,
+   "union_final_cells": 85,
+   "n_I_ge70": 240,
+   "n_I_ge80": 66,
+   "best_I": 89.33,
+   "best_cand": "p3g9_022"
+  },
+  "delete_bilin": {
+   "attempts": 206,
+   "ok": 205,
+   "ok_rate": 0.995,
+   "funnel_pass": 206,
+   "archive_holder_cands": 32,
+   "holder_rate": 0.1553,
+   "union_final_cells": 20,
+   "n_I_ge70": 96,
+   "n_I_ge80": 37,
+   "best_I": 91.16,
+   "best_cand": "p6g8_033"
+  },
+  "immigrate": {
+   "attempts": 980,
+   "ok": 408,
+   "ok_rate": 0.416,
+   "funnel_pass": 980,
+   "archive_holder_cands": 8,
+   "holder_rate": 0.0082,
+   "union_final_cells": 8,
+   "n_I_ge70": 0,
+   "n_I_ge80": 0,
+   "best_I": 48.84,
+   "best_cand": "p4g3_082"
+  }
+ },
+ "v1_local_campaign": {
+  "mutate": {
+   "attempts": 80,
+   "ok_rate": 0.9,
+   "archive_holders": 21,
+   "holder_rate": 0.263,
+   "best_I_v1metrics": 73.7
+  },
+  "merge_cross_edge": {
+   "attempts": 39,
+   "ok_rate": 0.974,
+   "archive_holders": 8,
+   "holder_rate": 0.205,
+   "best_I_v1metrics": 68.8
+  },
+  "merge_share_chan": {
+   "attempts": 24,
+   "ok_rate": 0.208,
+   "archive_holders": 3,
+   "holder_rate": 0.125,
+   "best_I_v1metrics": 54.5
+  },
+  "merge_slow_tanh": {
+   "attempts": 21,
+   "ok_rate": 0.857,
+   "archive_holders": 1,
+   "holder_rate": 0.048,
+   "best_I_v1metrics": 72.7
+  }
+ },
+ "note": "v1 interest scale (metrics_v1) is NOT comparable to v2 interest",
+ "era4_screen_attempts_total": 4917,
+ "era4_ok_total": 3760,
+ "union_cells_by_op": {
+  "immigrate": 8,
+  "mutate": 99,
+  "mint_bilin": 85,
+  "merge_slow_tanh": 29,
+  "merge_share_chan": 17,
+  "delete_bilin": 20,
+  "seed": 9,
+  "add_chan": 42,
+  "merge_cross_edge": 89,
+  "dup_act": 25
+ }
+}

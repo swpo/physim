@@ -1,0 +1,3537 @@
+{
+ "definition": "assay_v2 horizon why=='cap': extension criteria (a_mem/b_org/c_acf) still firing at T=20000 but cap stopped the run",
+ "counts": {
+  "rows_all_phases": 337,
+  "screen": 194,
+  "seed2": 82,
+  "seed3": 61,
+  "screen_by_island": {
+   "1": 16,
+   "2": 28,
+   "3": 58,
+   "4": 29,
+   "5": 33,
+   "6": 30
+  },
+  "screen_interest": {
+   "mean": 75.52143561721435,
+   "median": 76.42185993301007,
+   "max": 89.32647468435658,
+   "n_ge70": 157,
+   "n_ge80": 54
+  },
+  "rising_at_exit": 142,
+  "union_holder_cells_cap": 21
+ },
+ "families": {
+  "p1g2_009": {
+   "n": 56,
+   "best": 89.32647468435658
+  },
+  "p1g2_070": {
+   "n": 37,
+   "best": 88.3453058141435
+  },
+  "p4g6_004": {
+   "n": 33,
+   "best": 88.53157558825377
+  },
+  "p6g1_071": {
+   "n": 24,
+   "best": 79.23119651510463
+  },
+  "p3g3_027": {
+   "n": 6,
+   "best": 84.66515170628796
+  },
+  "p2g4_062": {
+   "n": 5,
+   "best": 78.72905104632973
+  },
+  "p1g2_016": {
+   "n": 4,
+   "best": 78.28514265467356
+  },
+  "p4g5_057": {
+   "n": 3,
+   "best": 81.52783687231873
+  },
+  "p0g1_052": {
+   "n": 3,
+   "best": 67.79295353535764
+  },
+  "p4g6_072": {
+   "n": 2,
+   "best": 75.83530288043697
+  },
+  "p5g7_039": {
+   "n": 2,
+   "best": 71.27718542246973
+  },
+  "p2g4_056": {
+   "n": 2,
+   "best": 70.69905222797249
+  },
+  "p8g0_s2_118_41": {
+   "n": 1,
+   "best": 80.31118472191072
+  },
+  "p5g6_014": {
+   "n": 1,
+   "best": 75.7204622846127
+  },
+  "p0g1_077": {
+   "n": 1,
+   "best": 74.59277855168367
+  },
+  "p1g2_020": {
+   "n": 1,
+   "best": 69.67291655461378
+  },
+  "p2g2_040": {
+   "n": 1,
+   "best": 69.5884979565593
+  },
+  "p6g1_083": {
+   "n": 1,
+   "best": 65.36294124663921
+  },
+  "p3g4_059": {
+   "n": 1,
+   "best": 64.3386830479183
+  },
+  "p5g6_009": {
+   "n": 1,
+   "best": 64.06503923366613
+  },
+  "p2g3_024": {
+   "n": 1,
+   "best": 60.77059523391357
+  },
+  "p3g5_062": {
+   "n": 1,
+   "best": 60.25523010117654
+  },
+  "p2g4_064": {
+   "n": 1,
+   "best": 59.850846394013736
+  },
+  "p4g6_019": {
+   "n": 1,
+   "best": 58.85964003613117
+  },
+  "p0g0_ds2g11_006": {
+   "n": 1,
+   "best": 58.778838425962135
+  },
+  "p2g3_035": {
+   "n": 1,
+   "best": 50.17598767445677
+  },
+  "p1g2_058": {
+   "n": 1,
+   "best": 45.39468494891533
+  },
+  "p2g3_032": {
+   "n": 1,
+   "best": 44.22333213740458
+  },
+  "p1g2_071": {
+   "n": 1,
+   "best": 40.84157828396262
+  }
+ },
+ "longer_horizon_rerun_candidates": [
+  {
+   "cand": "p4g6_021",
+   "island": 4,
+   "interest_at_20000": 88.17,
+   "dI_10k_to_20k": 12.36,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "856199f38873b04f",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030",
+    "v4_6_021"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     61.31
+    ],
+    [
+     5000.0,
+     68.66
+    ],
+    [
+     10000.0,
+     75.81
+    ],
+    [
+     20000.0,
+     88.17
+    ]
+   ]
+  },
+  {
+   "cand": "p5g3_028",
+   "island": 5,
+   "interest_at_20000": 78.59,
+   "dI_10k_to_20k": 11.51,
+   "cell": "3|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "3b28f1f5d22a82e8",
+   "vtags": [
+    "v5_3_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     64.95
+    ],
+    [
+     5000.0,
+     64.16
+    ],
+    [
+     10000.0,
+     67.08
+    ],
+    [
+     20000.0,
+     78.59
+    ]
+   ]
+  },
+  {
+   "cand": "p3g10_028",
+   "island": 3,
+   "interest_at_20000": 85.79,
+   "dI_10k_to_20k": 10.76,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "e4285a181271e53c",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_9_022",
+    "v3_10_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     67.71
+    ],
+    [
+     5000.0,
+     73.38
+    ],
+    [
+     10000.0,
+     75.03
+    ],
+    [
+     20000.0,
+     85.79
+    ]
+   ]
+  },
+  {
+   "cand": "p3g8_021",
+   "island": 3,
+   "interest_at_20000": 86.01,
+   "dI_10k_to_20k": 10.42,
+   "cell": "4|grow|mobile|liquid|s3|g1",
+   "is_union_holder": false,
+   "ghash": "1ed6b7ebed01c69f",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_8_021"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     65.71
+    ],
+    [
+     5000.0,
+     67.39
+    ],
+    [
+     10000.0,
+     75.59
+    ],
+    [
+     20000.0,
+     86.01
+    ]
+   ]
+  },
+  {
+   "cand": "p2g7_040",
+   "island": 2,
+   "interest_at_20000": 74.22,
+   "dI_10k_to_20k": 10.23,
+   "cell": "3|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "186fc509d8dd9a91",
+   "vtags": [
+    "v2_1_022",
+    "v2_6_020"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     66.29
+    ],
+    [
+     5000.0,
+     65.85
+    ],
+    [
+     10000.0,
+     63.99
+    ],
+    [
+     20000.0,
+     74.22
+    ]
+   ]
+  },
+  {
+   "cand": "p3g6_032",
+   "island": 3,
+   "interest_at_20000": 88.02,
+   "dI_10k_to_20k": 10.15,
+   "cell": "4|grow|mobile|liquid|s3|g1",
+   "is_union_holder": true,
+   "ghash": "3e9e387b61a8cb22",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     65.07
+    ],
+    [
+     5000.0,
+     68.39
+    ],
+    [
+     10000.0,
+     77.87
+    ],
+    [
+     20000.0,
+     88.02
+    ]
+   ]
+  },
+  {
+   "cand": "p3g4_057",
+   "island": 3,
+   "interest_at_20000": 81.51,
+   "dI_10k_to_20k": 9.55,
+   "cell": "4|switch|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "51d2d28de8f3a105",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     66.13
+    ],
+    [
+     5000.0,
+     70.2
+    ],
+    [
+     10000.0,
+     71.96
+    ],
+    [
+     20000.0,
+     81.51
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_022",
+   "island": 3,
+   "interest_at_20000": 89.33,
+   "dI_10k_to_20k": 8.81,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": true,
+   "ghash": "9a815b4bb1db78ea",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_9_022"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     57.64
+    ],
+    [
+     5000.0,
+     68.97
+    ],
+    [
+     10000.0,
+     80.52
+    ],
+    [
+     20000.0,
+     89.33
+    ]
+   ]
+  },
+  {
+   "cand": "p4g5_024",
+   "island": 4,
+   "interest_at_20000": 83.68,
+   "dI_10k_to_20k": 8.81,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "827e72bbbf1c6414",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_024"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     61.91
+    ],
+    [
+     5000.0,
+     68.92
+    ],
+    [
+     10000.0,
+     74.87
+    ],
+    [
+     20000.0,
+     83.68
+    ]
+   ]
+  },
+  {
+   "cand": "p3g1_028",
+   "island": 3,
+   "interest_at_20000": 88.53,
+   "dI_10k_to_20k": 8.69,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "15c5a0b6238fd2f0",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     68.06
+    ],
+    [
+     5000.0,
+     75.23
+    ],
+    [
+     10000.0,
+     79.84
+    ],
+    [
+     20000.0,
+     88.53
+    ]
+   ]
+  },
+  {
+   "cand": "p3g6_029",
+   "island": 3,
+   "interest_at_20000": 87.34,
+   "dI_10k_to_20k": 8.43,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "1bc462edf5b70206",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     62.18
+    ],
+    [
+     5000.0,
+     73.12
+    ],
+    [
+     10000.0,
+     78.91
+    ],
+    [
+     20000.0,
+     87.34
+    ]
+   ]
+  },
+  {
+   "cand": "p4g8_034",
+   "island": 4,
+   "interest_at_20000": 87.88,
+   "dI_10k_to_20k": 8.2,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "f39ee6d52e4f946d",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v4_6_021"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     61.01
+    ],
+    [
+     5000.0,
+     68.58
+    ],
+    [
+     10000.0,
+     79.68
+    ],
+    [
+     20000.0,
+     87.88
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_012",
+   "island": 3,
+   "interest_at_20000": 78.97,
+   "dI_10k_to_20k": 8.1,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "25d9e04bd113f61b",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     52.28
+    ],
+    [
+     5000.0,
+     59.45
+    ],
+    [
+     10000.0,
+     70.87
+    ],
+    [
+     20000.0,
+     78.97
+    ]
+   ]
+  },
+  {
+   "cand": "p2g6_004",
+   "island": 2,
+   "interest_at_20000": 73.62,
+   "dI_10k_to_20k": 7.81,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "810a341e17f94a8b",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_3_027"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     60.6
+    ],
+    [
+     5000.0,
+     66.65
+    ],
+    [
+     10000.0,
+     65.81
+    ],
+    [
+     20000.0,
+     73.62
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_047",
+   "island": 3,
+   "interest_at_20000": 81.66,
+   "dI_10k_to_20k": 7.43,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "b39ca3778f0aadb8",
+   "vtags": [],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     68.44
+    ],
+    [
+     5000.0,
+     77.53
+    ],
+    [
+     10000.0,
+     74.23
+    ],
+    [
+     20000.0,
+     81.66
+    ]
+   ]
+  },
+  {
+   "cand": "p6g5_025",
+   "island": 6,
+   "interest_at_20000": 72.43,
+   "dI_10k_to_20k": 7.36,
+   "cell": "2|grow|rotor|liquid|s2|g2",
+   "is_union_holder": true,
+   "ghash": "c53633b366a18482",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_025"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     61.46
+    ],
+    [
+     5000.0,
+     59.63
+    ],
+    [
+     10000.0,
+     65.07
+    ],
+    [
+     20000.0,
+     72.43
+    ]
+   ]
+  },
+  {
+   "cand": "p3g10_032",
+   "island": 3,
+   "interest_at_20000": 81.86,
+   "dI_10k_to_20k": 7.31,
+   "cell": "3|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "9fec94c7b0f6ac2f",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_9_020"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     63.25
+    ],
+    [
+     5000.0,
+     72.95
+    ],
+    [
+     10000.0,
+     74.55
+    ],
+    [
+     20000.0,
+     81.86
+    ]
+   ]
+  },
+  {
+   "cand": "p6g8_045",
+   "island": 6,
+   "interest_at_20000": 83.91,
+   "dI_10k_to_20k": 7.2,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "e6b255a65db17f4e",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026"
+   ],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     58.86
+    ],
+    [
+     5000.0,
+     69.93
+    ],
+    [
+     10000.0,
+     76.71
+    ],
+    [
+     20000.0,
+     83.91
+    ]
+   ]
+  },
+  {
+   "cand": "p1g3_064",
+   "island": 1,
+   "interest_at_20000": 70.7,
+   "dI_10k_to_20k": 7.03,
+   "cell": "3|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "8f37beba4e0d5e93",
+   "vtags": [],
+   "op": "merge_slow_tanh",
+   "traj": [
+    [
+     2500.0,
+     57.18
+    ],
+    [
+     5000.0,
+     64.5
+    ],
+    [
+     10000.0,
+     63.67
+    ],
+    [
+     20000.0,
+     70.7
+    ]
+   ]
+  },
+  {
+   "cand": "p2g3_065",
+   "island": 2,
+   "interest_at_20000": 80.31,
+   "dI_10k_to_20k": 6.83,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "e368f0043ed0205f",
+   "vtags": [],
+   "op": "merge_slow_tanh",
+   "traj": [
+    [
+     2500.0,
+     54.6
+    ],
+    [
+     5000.0,
+     70.59
+    ],
+    [
+     10000.0,
+     73.48
+    ],
+    [
+     20000.0,
+     80.31
+    ]
+   ]
+  },
+  {
+   "cand": "p5g4_015",
+   "island": 5,
+   "interest_at_20000": 74.8,
+   "dI_10k_to_20k": 6.72,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "a4ec283643c9dca3",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     70.17
+    ],
+    [
+     5000.0,
+     69.21
+    ],
+    [
+     10000.0,
+     68.08
+    ],
+    [
+     20000.0,
+     74.8
+    ]
+   ]
+  },
+  {
+   "cand": "p5g5_032",
+   "island": 5,
+   "interest_at_20000": 83.44,
+   "dI_10k_to_20k": 6.72,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "6b9d0f238241541d",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v5_1_029",
+    "v5_3_024"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     68.83
+    ],
+    [
+     5000.0,
+     79.41
+    ],
+    [
+     10000.0,
+     76.72
+    ],
+    [
+     20000.0,
+     83.44
+    ]
+   ]
+  },
+  {
+   "cand": "p4g5_040",
+   "island": 4,
+   "interest_at_20000": 81.27,
+   "dI_10k_to_20k": 6.58,
+   "cell": "3|grow|mobile|liquid|s3|g1",
+   "is_union_holder": true,
+   "ghash": "66a64dfb975fcdc6",
+   "vtags": [
+    "v1_1_031"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     51.16
+    ],
+    [
+     5000.0,
+     62.91
+    ],
+    [
+     10000.0,
+     74.69
+    ],
+    [
+     20000.0,
+     81.27
+    ]
+   ]
+  },
+  {
+   "cand": "p3g6_006",
+   "island": 3,
+   "interest_at_20000": 76.5,
+   "dI_10k_to_20k": 6.57,
+   "cell": "3|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "a615c24b17076b30",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     65.8
+    ],
+    [
+     5000.0,
+     69.19
+    ],
+    [
+     10000.0,
+     69.93
+    ],
+    [
+     20000.0,
+     76.5
+    ]
+   ]
+  },
+  {
+   "cand": "p2g8_040",
+   "island": 2,
+   "interest_at_20000": 81.26,
+   "dI_10k_to_20k": 6.47,
+   "cell": "4|grow|mobile|liquid|s2|g1",
+   "is_union_holder": false,
+   "ghash": "df7d440cc490c6d9",
+   "vtags": [
+    "v1_1_031"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     61.46
+    ],
+    [
+     5000.0,
+     71.8
+    ],
+    [
+     10000.0,
+     74.79
+    ],
+    [
+     20000.0,
+     81.26
+    ]
+   ]
+  },
+  {
+   "cand": "p3g3_032",
+   "island": 3,
+   "interest_at_20000": 82.57,
+   "dI_10k_to_20k": 6.42,
+   "cell": "4|grow|mobile|liquid|s2|g1",
+   "is_union_holder": false,
+   "ghash": "a065779eaf3df961",
+   "vtags": [
+    "v1_1_022"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     66.43
+    ],
+    [
+     5000.0,
+     73.41
+    ],
+    [
+     10000.0,
+     76.15
+    ],
+    [
+     20000.0,
+     82.57
+    ]
+   ]
+  },
+  {
+   "cand": "p3g6_043",
+   "island": 3,
+   "interest_at_20000": 76.14,
+   "dI_10k_to_20k": 6.29,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "a9751f40278b0cc8",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     67.28
+    ],
+    [
+     5000.0,
+     77.12
+    ],
+    [
+     10000.0,
+     69.85
+    ],
+    [
+     20000.0,
+     76.14
+    ]
+   ]
+  },
+  {
+   "cand": "p6g9_021",
+   "island": 6,
+   "interest_at_20000": 88.35,
+   "dI_10k_to_20k": 6.12,
+   "cell": "3|grow|mobile|liquid|s2|g2",
+   "is_union_holder": true,
+   "ghash": "b310fbfc5cac334e",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026",
+    "v6_9_021"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     74.76
+    ],
+    [
+     5000.0,
+     79.25
+    ],
+    [
+     10000.0,
+     82.23
+    ],
+    [
+     20000.0,
+     88.35
+    ]
+   ]
+  },
+  {
+   "cand": "p5g3_043",
+   "island": 5,
+   "interest_at_20000": 79.23,
+   "dI_10k_to_20k": 5.89,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "1c618f3efc2923d2",
+   "vtags": [],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     55.1
+    ],
+    [
+     5000.0,
+     64.59
+    ],
+    [
+     10000.0,
+     73.34
+    ],
+    [
+     20000.0,
+     79.23
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_035",
+   "island": 3,
+   "interest_at_20000": 83.91,
+   "dI_10k_to_20k": 5.8,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "d104e5f8bbd987f4",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_1_028"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     70.5
+    ],
+    [
+     5000.0,
+     76.25
+    ],
+    [
+     10000.0,
+     78.11
+    ],
+    [
+     20000.0,
+     83.91
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_002",
+   "island": 3,
+   "interest_at_20000": 83.1,
+   "dI_10k_to_20k": 5.6,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "e27406e3570e38fa",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     62.39
+    ],
+    [
+     5000.0,
+     70.14
+    ],
+    [
+     10000.0,
+     77.5
+    ],
+    [
+     20000.0,
+     83.1
+    ]
+   ]
+  },
+  {
+   "cand": "p6g4_066",
+   "island": 6,
+   "interest_at_20000": 79.09,
+   "dI_10k_to_20k": 5.57,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "251b1070895539f4",
+   "vtags": [
+    "v6_1_028"
+   ],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     65.14
+    ],
+    [
+     5000.0,
+     69.02
+    ],
+    [
+     10000.0,
+     73.52
+    ],
+    [
+     20000.0,
+     79.09
+    ]
+   ]
+  },
+  {
+   "cand": "p6g3_066",
+   "island": 6,
+   "interest_at_20000": 74.32,
+   "dI_10k_to_20k": 5.35,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "8b0ac68e078f846e",
+   "vtags": [],
+   "op": "merge_slow_tanh",
+   "traj": [
+    [
+     2500.0,
+     62.34
+    ],
+    [
+     5000.0,
+     64.75
+    ],
+    [
+     10000.0,
+     68.97
+    ],
+    [
+     20000.0,
+     74.32
+    ]
+   ]
+  },
+  {
+   "cand": "p3g10_033",
+   "island": 3,
+   "interest_at_20000": 84.25,
+   "dI_10k_to_20k": 5.29,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "fa588fb7cad627c0",
+   "vtags": [
+    "v1_1_031",
+    "v5_1_029",
+    "v5_2_026",
+    "v5_3_024"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     70.21
+    ],
+    [
+     5000.0,
+     80.69
+    ],
+    [
+     10000.0,
+     78.96
+    ],
+    [
+     20000.0,
+     84.25
+    ]
+   ]
+  },
+  {
+   "cand": "p6g9_046",
+   "island": 6,
+   "interest_at_20000": 75.46,
+   "dI_10k_to_20k": 5.23,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "72c3a2138db344d4",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026"
+   ],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     61.49
+    ],
+    [
+     5000.0,
+     66.51
+    ],
+    [
+     10000.0,
+     70.23
+    ],
+    [
+     20000.0,
+     75.46
+    ]
+   ]
+  },
+  {
+   "cand": "p4g4_035",
+   "island": 4,
+   "interest_at_20000": 84.43,
+   "dI_10k_to_20k": 4.7,
+   "cell": "4|grow|mobile|liquid|s3|g1",
+   "is_union_holder": false,
+   "ghash": "f0c0d4119fa77126",
+   "vtags": [],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     64.71
+    ],
+    [
+     5000.0,
+     70.06
+    ],
+    [
+     10000.0,
+     79.73
+    ],
+    [
+     20000.0,
+     84.43
+    ]
+   ]
+  },
+  {
+   "cand": "p3g8_039",
+   "island": 3,
+   "interest_at_20000": 81.66,
+   "dI_10k_to_20k": 4.69,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "8ba4c9923bd9a02d",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     74.56
+    ],
+    [
+     5000.0,
+     82.56
+    ],
+    [
+     10000.0,
+     76.97
+    ],
+    [
+     20000.0,
+     81.66
+    ]
+   ]
+  },
+  {
+   "cand": "p2g1_031",
+   "island": 2,
+   "interest_at_20000": 75.32,
+   "dI_10k_to_20k": 4.67,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "d82efd8972b5e040",
+   "vtags": [
+    "v2_1_031"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     55.51
+    ],
+    [
+     5000.0,
+     67.02
+    ],
+    [
+     10000.0,
+     70.65
+    ],
+    [
+     20000.0,
+     75.32
+    ]
+   ]
+  },
+  {
+   "cand": "p5g7_022",
+   "island": 5,
+   "interest_at_20000": 73.6,
+   "dI_10k_to_20k": 4.46,
+   "cell": "3|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "ed306526e547a0ea",
+   "vtags": [
+    "v5_7_022"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     66.4
+    ],
+    [
+     5000.0,
+     70.0
+    ],
+    [
+     10000.0,
+     69.14
+    ],
+    [
+     20000.0,
+     73.6
+    ]
+   ]
+  },
+  {
+   "cand": "p5g7_060",
+   "island": 5,
+   "interest_at_20000": 71.49,
+   "dI_10k_to_20k": 3.88,
+   "cell": "3|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "2cf38c80aae17d56",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     45.61
+    ],
+    [
+     5000.0,
+     64.19
+    ],
+    [
+     10000.0,
+     67.61
+    ],
+    [
+     20000.0,
+     71.49
+    ]
+   ]
+  },
+  {
+   "cand": "p4g2_045",
+   "island": 4,
+   "interest_at_20000": 80.41,
+   "dI_10k_to_20k": 3.83,
+   "cell": "4|switch|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "727e68573d27b5c3",
+   "vtags": [],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     69.84
+    ],
+    [
+     5000.0,
+     77.35
+    ],
+    [
+     10000.0,
+     76.58
+    ],
+    [
+     20000.0,
+     80.41
+    ]
+   ]
+  },
+  {
+   "cand": "p1g2_063",
+   "island": 1,
+   "interest_at_20000": 77.0,
+   "dI_10k_to_20k": 3.79,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "a988656c3043a570",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     58.03
+    ],
+    [
+     5000.0,
+     68.03
+    ],
+    [
+     10000.0,
+     73.21
+    ],
+    [
+     20000.0,
+     77.0
+    ]
+   ]
+  },
+  {
+   "cand": "p2g3_017",
+   "island": 2,
+   "interest_at_20000": 76.22,
+   "dI_10k_to_20k": 3.75,
+   "cell": "4|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "b222cacdd676939e",
+   "vtags": [
+    "v2_1_022"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     67.73
+    ],
+    [
+     5000.0,
+     70.85
+    ],
+    [
+     10000.0,
+     72.47
+    ],
+    [
+     20000.0,
+     76.22
+    ]
+   ]
+  },
+  {
+   "cand": "p2g4_035",
+   "island": 2,
+   "interest_at_20000": 72.73,
+   "dI_10k_to_20k": 3.54,
+   "cell": "4|grow|mobile|flicker|s2|g2",
+   "is_union_holder": false,
+   "ghash": "f9b472471d86b2cd",
+   "vtags": [
+    "fdr_ref_BFIELD_g0.05_0"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     59.18
+    ],
+    [
+     5000.0,
+     65.05
+    ],
+    [
+     10000.0,
+     69.19
+    ],
+    [
+     20000.0,
+     72.73
+    ]
+   ]
+  },
+  {
+   "cand": "p4g4_028",
+   "island": 4,
+   "interest_at_20000": 78.95,
+   "dI_10k_to_20k": 3.53,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "84146905dab64a2a",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_4_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     53.88
+    ],
+    [
+     5000.0,
+     67.6
+    ],
+    [
+     10000.0,
+     75.42
+    ],
+    [
+     20000.0,
+     78.95
+    ]
+   ]
+  },
+  {
+   "cand": "p2g3_031",
+   "island": 2,
+   "interest_at_20000": 75.32,
+   "dI_10k_to_20k": 3.5,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "b7cb6dc4b5ca6cad",
+   "vtags": [
+    "v2_3_031"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     51.61
+    ],
+    [
+     5000.0,
+     71.07
+    ],
+    [
+     10000.0,
+     71.82
+    ],
+    [
+     20000.0,
+     75.32
+    ]
+   ]
+  },
+  {
+   "cand": "p6g6_032",
+   "island": 6,
+   "interest_at_20000": 82.21,
+   "dI_10k_to_20k": 3.48,
+   "cell": "4|switch|mobile|liquid|s1|g2",
+   "is_union_holder": true,
+   "ghash": "e85f4b309db0d245",
+   "vtags": [
+    "v1_1_022"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     72.79
+    ],
+    [
+     5000.0,
+     72.82
+    ],
+    [
+     10000.0,
+     78.73
+    ],
+    [
+     20000.0,
+     82.21
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_032",
+   "island": 3,
+   "interest_at_20000": 78.76,
+   "dI_10k_to_20k": 3.46,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "bac0dc07bd0c208b",
+   "vtags": [
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     67.83
+    ],
+    [
+     5000.0,
+     78.58
+    ],
+    [
+     10000.0,
+     75.3
+    ],
+    [
+     20000.0,
+     78.76
+    ]
+   ]
+  },
+  {
+   "cand": "p4g1_022",
+   "island": 4,
+   "interest_at_20000": 73.82,
+   "dI_10k_to_20k": 3.42,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "29a393b709892d6a",
+   "vtags": [
+    "v4_1_022"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     66.63
+    ],
+    [
+     5000.0,
+     69.41
+    ],
+    [
+     10000.0,
+     70.4
+    ],
+    [
+     20000.0,
+     73.82
+    ]
+   ]
+  },
+  {
+   "cand": "p6g10_000",
+   "island": 6,
+   "interest_at_20000": 74.83,
+   "dI_10k_to_20k": 3.41,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "dc2d9dea3296fe68",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026",
+    "v6_9_021"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     63.0
+    ],
+    [
+     5000.0,
+     67.28
+    ],
+    [
+     10000.0,
+     71.42
+    ],
+    [
+     20000.0,
+     74.83
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_014",
+   "island": 3,
+   "interest_at_20000": 80.02,
+   "dI_10k_to_20k": 3.39,
+   "cell": "3|switch|mobile|liquid|s1|g2",
+   "is_union_holder": true,
+   "ghash": "bb89c8e401f4f69a",
+   "vtags": [
+    "v6_1_028",
+    "v6_3_021"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     69.98
+    ],
+    [
+     5000.0,
+     72.56
+    ],
+    [
+     10000.0,
+     76.63
+    ],
+    [
+     20000.0,
+     80.02
+    ]
+   ]
+  },
+  {
+   "cand": "p4g6_027",
+   "island": 4,
+   "interest_at_20000": 86.15,
+   "dI_10k_to_20k": 3.26,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "930a1e9c9b842212",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030",
+    "v4_6_027"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     62.12
+    ],
+    [
+     5000.0,
+     72.41
+    ],
+    [
+     10000.0,
+     82.89
+    ],
+    [
+     20000.0,
+     86.15
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_043",
+   "island": 3,
+   "interest_at_20000": 88.09,
+   "dI_10k_to_20k": 3.16,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "a48e02214a7520a5",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     66.4
+    ],
+    [
+     5000.0,
+     72.79
+    ],
+    [
+     10000.0,
+     84.93
+    ],
+    [
+     20000.0,
+     88.09
+    ]
+   ]
+  },
+  {
+   "cand": "p1g7_022",
+   "island": 1,
+   "interest_at_20000": 82.3,
+   "dI_10k_to_20k": 3.11,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "d1ecd26311f6a9bc",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v5_1_029",
+    "v5_2_026",
+    "v5_3_024",
+    "v1_7_022"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     73.05
+    ],
+    [
+     5000.0,
+     80.24
+    ],
+    [
+     10000.0,
+     79.19
+    ],
+    [
+     20000.0,
+     82.3
+    ]
+   ]
+  },
+  {
+   "cand": "p4g4_043",
+   "island": 4,
+   "interest_at_20000": 84.41,
+   "dI_10k_to_20k": 3.04,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "75493c42c614ca5d",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_3_027",
+    "v4_1_028",
+    "v4_2_031"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     68.1
+    ],
+    [
+     5000.0,
+     78.44
+    ],
+    [
+     10000.0,
+     81.37
+    ],
+    [
+     20000.0,
+     84.41
+    ]
+   ]
+  },
+  {
+   "cand": "p2g8_025",
+   "island": 2,
+   "interest_at_20000": 81.29,
+   "dI_10k_to_20k": 2.99,
+   "cell": "3|grow|mobile|liquid|s3|g1",
+   "is_union_holder": false,
+   "ghash": "5a09cd1c202e823d",
+   "vtags": [
+    "v1_1_031",
+    "v2_8_025"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     50.86
+    ],
+    [
+     5000.0,
+     71.32
+    ],
+    [
+     10000.0,
+     78.3
+    ],
+    [
+     20000.0,
+     81.29
+    ]
+   ]
+  },
+  {
+   "cand": "p3g5_031",
+   "island": 3,
+   "interest_at_20000": 79.63,
+   "dI_10k_to_20k": 2.94,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "7a7b7c96b31453bc",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v5_1_029",
+    "v5_2_026",
+    "v5_3_024",
+    "v3_5_031"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     69.34
+    ],
+    [
+     5000.0,
+     75.28
+    ],
+    [
+     10000.0,
+     76.69
+    ],
+    [
+     20000.0,
+     79.63
+    ]
+   ]
+  },
+  {
+   "cand": "p3g8_029",
+   "island": 3,
+   "interest_at_20000": 79.89,
+   "dI_10k_to_20k": 2.92,
+   "cell": "3|grow|mobile|liquid|s3|g1",
+   "is_union_holder": false,
+   "ghash": "ca67556e4aeb0fc9",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_8_029"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     61.67
+    ],
+    [
+     5000.0,
+     67.94
+    ],
+    [
+     10000.0,
+     76.97
+    ],
+    [
+     20000.0,
+     79.89
+    ]
+   ]
+  },
+  {
+   "cand": "p6g9_049",
+   "island": 6,
+   "interest_at_20000": 75.79,
+   "dI_10k_to_20k": 2.85,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "045506ae17541b46",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026"
+   ],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     58.35
+    ],
+    [
+     5000.0,
+     60.23
+    ],
+    [
+     10000.0,
+     72.94
+    ],
+    [
+     20000.0,
+     75.79
+    ]
+   ]
+  },
+  {
+   "cand": "p4g2_006",
+   "island": 4,
+   "interest_at_20000": 86.91,
+   "dI_10k_to_20k": 2.81,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "28a9a90a73d4403b",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     55.41
+    ],
+    [
+     5000.0,
+     68.27
+    ],
+    [
+     10000.0,
+     84.1
+    ],
+    [
+     20000.0,
+     86.91
+    ]
+   ]
+  },
+  {
+   "cand": "p3g8_032",
+   "island": 3,
+   "interest_at_20000": 89.21,
+   "dI_10k_to_20k": 2.72,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "cff5d6b57db95cc0",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     54.43
+    ],
+    [
+     5000.0,
+     78.61
+    ],
+    [
+     10000.0,
+     86.49
+    ],
+    [
+     20000.0,
+     89.21
+    ]
+   ]
+  },
+  {
+   "cand": "p5g4_029",
+   "island": 5,
+   "interest_at_20000": 76.71,
+   "dI_10k_to_20k": 2.68,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "fd43780c4c504601",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v5_1_029",
+    "v5_2_026",
+    "v5_3_024",
+    "v5_4_029"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     70.77
+    ],
+    [
+     5000.0,
+     76.0
+    ],
+    [
+     10000.0,
+     74.03
+    ],
+    [
+     20000.0,
+     76.71
+    ]
+   ]
+  },
+  {
+   "cand": "p1g7_057",
+   "island": 1,
+   "interest_at_20000": 73.66,
+   "dI_10k_to_20k": 2.67,
+   "cell": "3|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "82592be7f7ba5fc6",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     62.96
+    ],
+    [
+     5000.0,
+     74.88
+    ],
+    [
+     10000.0,
+     70.99
+    ],
+    [
+     20000.0,
+     73.66
+    ]
+   ]
+  },
+  {
+   "cand": "p2g7_032",
+   "island": 2,
+   "interest_at_20000": 77.57,
+   "dI_10k_to_20k": 2.66,
+   "cell": "4|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "96571deaa3f8ef4b",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v5_1_029",
+    "v5_2_026",
+    "v5_3_024"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     74.2
+    ],
+    [
+     5000.0,
+     75.87
+    ],
+    [
+     10000.0,
+     74.91
+    ],
+    [
+     20000.0,
+     77.57
+    ]
+   ]
+  },
+  {
+   "cand": "p4g3_039",
+   "island": 4,
+   "interest_at_20000": 82.18,
+   "dI_10k_to_20k": 2.58,
+   "cell": "3|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "faf26699befb18fc",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     53.68
+    ],
+    [
+     5000.0,
+     66.99
+    ],
+    [
+     10000.0,
+     79.6
+    ],
+    [
+     20000.0,
+     82.18
+    ]
+   ]
+  },
+  {
+   "cand": "p2g5_061",
+   "island": 2,
+   "interest_at_20000": 75.72,
+   "dI_10k_to_20k": 2.55,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "daab842db592a753",
+   "vtags": [
+    "fdr_ref_BFIELD_g0.05_0",
+    "smoke_vertex"
+   ],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     70.21
+    ],
+    [
+     5000.0,
+     73.87
+    ],
+    [
+     10000.0,
+     73.17
+    ],
+    [
+     20000.0,
+     75.72
+    ]
+   ]
+  },
+  {
+   "cand": "p1g4_020",
+   "island": 1,
+   "interest_at_20000": 72.52,
+   "dI_10k_to_20k": 2.54,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "6c592fe5935319c1",
+   "vtags": [
+    "v1_4_020"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     65.98
+    ],
+    [
+     5000.0,
+     70.99
+    ],
+    [
+     10000.0,
+     69.98
+    ],
+    [
+     20000.0,
+     72.52
+    ]
+   ]
+  },
+  {
+   "cand": "p6g10_051",
+   "island": 6,
+   "interest_at_20000": 83.94,
+   "dI_10k_to_20k": 2.54,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "bc0bad863ebd7ebf",
+   "vtags": [
+    "v6_1_028",
+    "v6_5_026",
+    "v6_6_020",
+    "v6_7_028",
+    "v6_7_028_d"
+   ],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     57.83
+    ],
+    [
+     5000.0,
+     68.04
+    ],
+    [
+     10000.0,
+     81.4
+    ],
+    [
+     20000.0,
+     83.94
+    ]
+   ]
+  },
+  {
+   "cand": "p6g3_051",
+   "island": 6,
+   "interest_at_20000": 75.97,
+   "dI_10k_to_20k": 2.51,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "04b017122d22a117",
+   "vtags": [
+    "v6_1_028"
+   ],
+   "op": "dup_act",
+   "traj": [
+    [
+     2500.0,
+     62.84
+    ],
+    [
+     5000.0,
+     69.02
+    ],
+    [
+     10000.0,
+     73.46
+    ],
+    [
+     20000.0,
+     75.97
+    ]
+   ]
+  },
+  {
+   "cand": "p5g6_023",
+   "island": 5,
+   "interest_at_20000": 79.51,
+   "dI_10k_to_20k": 2.46,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "33a89fd43c8bb1a9",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v5_6_023"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     68.67
+    ],
+    [
+     5000.0,
+     76.88
+    ],
+    [
+     10000.0,
+     77.05
+    ],
+    [
+     20000.0,
+     79.51
+    ]
+   ]
+  },
+  {
+   "cand": "p4g4_039",
+   "island": 4,
+   "interest_at_20000": 79.53,
+   "dI_10k_to_20k": 2.32,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "4c7fcf07d14dab2b",
+   "vtags": [
+    "v3_3_027",
+    "v4_1_028",
+    "v4_2_031"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     69.89
+    ],
+    [
+     5000.0,
+     77.52
+    ],
+    [
+     10000.0,
+     77.21
+    ],
+    [
+     20000.0,
+     79.53
+    ]
+   ]
+  },
+  {
+   "cand": "p2g1_066",
+   "island": 2,
+   "interest_at_20000": 75.32,
+   "dI_10k_to_20k": 2.23,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "2d5368ea263064b2",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     61.38
+    ],
+    [
+     5000.0,
+     70.51
+    ],
+    [
+     10000.0,
+     73.09
+    ],
+    [
+     20000.0,
+     75.32
+    ]
+   ]
+  },
+  {
+   "cand": "p4g5_030",
+   "island": 4,
+   "interest_at_20000": 87.04,
+   "dI_10k_to_20k": 2.18,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "09281ce7d0faaa16",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     64.11
+    ],
+    [
+     5000.0,
+     68.77
+    ],
+    [
+     10000.0,
+     84.86
+    ],
+    [
+     20000.0,
+     87.04
+    ]
+   ]
+  },
+  {
+   "cand": "p6g3_039",
+   "island": 6,
+   "interest_at_20000": 81.67,
+   "dI_10k_to_20k": 2.18,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "f8c5929d04ee57aa",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     72.46
+    ],
+    [
+     5000.0,
+     74.62
+    ],
+    [
+     10000.0,
+     79.49
+    ],
+    [
+     20000.0,
+     81.67
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_021",
+   "island": 3,
+   "interest_at_20000": 71.28,
+   "dI_10k_to_20k": 2.14,
+   "cell": "3|grow|mobile|liquid|s1|g1",
+   "is_union_holder": true,
+   "ghash": "d2673ccaa565671c",
+   "vtags": [
+    "smoke_vertex",
+    "v3_9_021"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     58.26
+    ],
+    [
+     5000.0,
+     64.12
+    ],
+    [
+     10000.0,
+     69.14
+    ],
+    [
+     20000.0,
+     71.28
+    ]
+   ]
+  },
+  {
+   "cand": "p4g6_029",
+   "island": 4,
+   "interest_at_20000": 84.28,
+   "dI_10k_to_20k": 2.11,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "14b029d38482eadb",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_3_027",
+    "v4_1_028",
+    "v4_2_031",
+    "v4_6_029"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     59.72
+    ],
+    [
+     5000.0,
+     71.5
+    ],
+    [
+     10000.0,
+     82.17
+    ],
+    [
+     20000.0,
+     84.28
+    ]
+   ]
+  },
+  {
+   "cand": "p1g5_031",
+   "island": 1,
+   "interest_at_20000": 73.48,
+   "dI_10k_to_20k": 2.08,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "6bad01657535ede4",
+   "vtags": [
+    "v1_5_031"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     65.63
+    ],
+    [
+     5000.0,
+     69.72
+    ],
+    [
+     10000.0,
+     71.4
+    ],
+    [
+     20000.0,
+     73.48
+    ]
+   ]
+  },
+  {
+   "cand": "p3g4_063",
+   "island": 3,
+   "interest_at_20000": 73.15,
+   "dI_10k_to_20k": 2.0,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "84ac82e156c4261e",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     49.22
+    ],
+    [
+     5000.0,
+     71.72
+    ],
+    [
+     10000.0,
+     71.15
+    ],
+    [
+     20000.0,
+     73.15
+    ]
+   ]
+  },
+  {
+   "cand": "p6g4_015",
+   "island": 6,
+   "interest_at_20000": 77.94,
+   "dI_10k_to_20k": 1.9,
+   "cell": "4|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "3e4a495dbdff6dbf",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     68.99
+    ],
+    [
+     5000.0,
+     75.38
+    ],
+    [
+     10000.0,
+     76.04
+    ],
+    [
+     20000.0,
+     77.94
+    ]
+   ]
+  },
+  {
+   "cand": "p4g2_058",
+   "island": 4,
+   "interest_at_20000": 75.95,
+   "dI_10k_to_20k": 1.82,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "a927093fcd5be4b0",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     66.51
+    ],
+    [
+     5000.0,
+     69.08
+    ],
+    [
+     10000.0,
+     74.13
+    ],
+    [
+     20000.0,
+     75.95
+    ]
+   ]
+  },
+  {
+   "cand": "p3g3_038",
+   "island": 3,
+   "interest_at_20000": 83.74,
+   "dI_10k_to_20k": 1.79,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": true,
+   "ghash": "0c49060d9652323f",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v3_1_020",
+    "v3_2_027"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     72.49
+    ],
+    [
+     5000.0,
+     78.31
+    ],
+    [
+     10000.0,
+     81.95
+    ],
+    [
+     20000.0,
+     83.74
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_004",
+   "island": 3,
+   "interest_at_20000": 76.48,
+   "dI_10k_to_20k": 1.77,
+   "cell": "3|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "5c35e05514c07a27",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     61.78
+    ],
+    [
+     5000.0,
+     71.21
+    ],
+    [
+     10000.0,
+     74.71
+    ],
+    [
+     20000.0,
+     76.48
+    ]
+   ]
+  },
+  {
+   "cand": "p6g10_038",
+   "island": 6,
+   "interest_at_20000": 77.42,
+   "dI_10k_to_20k": 1.74,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "ed877a913aa8d041",
+   "vtags": [
+    "v1_1_022"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     72.49
+    ],
+    [
+     5000.0,
+     78.45
+    ],
+    [
+     10000.0,
+     75.68
+    ],
+    [
+     20000.0,
+     77.42
+    ]
+   ]
+  },
+  {
+   "cand": "p6g8_023",
+   "island": 6,
+   "interest_at_20000": 86.51,
+   "dI_10k_to_20k": 1.63,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "3ea26074eba3c954",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028",
+    "v6_8_023"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     75.99
+    ],
+    [
+     5000.0,
+     73.12
+    ],
+    [
+     10000.0,
+     84.88
+    ],
+    [
+     20000.0,
+     86.51
+    ]
+   ]
+  },
+  {
+   "cand": "p5g3_034",
+   "island": 5,
+   "interest_at_20000": 78.75,
+   "dI_10k_to_20k": 1.6,
+   "cell": "4|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "a792a8830a22784a",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v5_1_029",
+    "v5_2_026"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     69.34
+    ],
+    [
+     5000.0,
+     77.68
+    ],
+    [
+     10000.0,
+     77.15
+    ],
+    [
+     20000.0,
+     78.75
+    ]
+   ]
+  },
+  {
+   "cand": "p5g2_066",
+   "island": 5,
+   "interest_at_20000": 75.43,
+   "dI_10k_to_20k": 1.55,
+   "cell": "4|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "2bd828879936befb",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     50.54
+    ],
+    [
+     5000.0,
+     68.91
+    ],
+    [
+     10000.0,
+     73.88
+    ],
+    [
+     20000.0,
+     75.43
+    ]
+   ]
+  },
+  {
+   "cand": "p4g6_035",
+   "island": 4,
+   "interest_at_20000": 84.67,
+   "dI_10k_to_20k": 1.53,
+   "cell": "4|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "889cbbd2ab372515",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_3_027",
+    "v4_2_031"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     67.82
+    ],
+    [
+     5000.0,
+     76.56
+    ],
+    [
+     10000.0,
+     83.14
+    ],
+    [
+     20000.0,
+     84.67
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_020",
+   "island": 3,
+   "interest_at_20000": 85.15,
+   "dI_10k_to_20k": 1.5,
+   "cell": "3|grow|mobile|liquid|s3|g2",
+   "is_union_holder": true,
+   "ghash": "4b6edf7bed2ff135",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029",
+    "v3_9_020"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     63.3
+    ],
+    [
+     5000.0,
+     73.69
+    ],
+    [
+     10000.0,
+     83.65
+    ],
+    [
+     20000.0,
+     85.15
+    ]
+   ]
+  },
+  {
+   "cand": "p2g8_036",
+   "island": 2,
+   "interest_at_20000": 78.7,
+   "dI_10k_to_20k": 1.41,
+   "cell": "4|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "4148ecd0845c84d9",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     72.52
+    ],
+    [
+     5000.0,
+     71.19
+    ],
+    [
+     10000.0,
+     77.29
+    ],
+    [
+     20000.0,
+     78.7
+    ]
+   ]
+  },
+  {
+   "cand": "p1g7_038",
+   "island": 1,
+   "interest_at_20000": 78.73,
+   "dI_10k_to_20k": 1.14,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "8e03d4eec8ccb6d9",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     71.13
+    ],
+    [
+     5000.0,
+     74.95
+    ],
+    [
+     10000.0,
+     77.59
+    ],
+    [
+     20000.0,
+     78.73
+    ]
+   ]
+  },
+  {
+   "cand": "p4g7_015",
+   "island": 4,
+   "interest_at_20000": 80.01,
+   "dI_10k_to_20k": 1.12,
+   "cell": "3|grow|rotor|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "61ff607dc7f7c0ff",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v4_5_030",
+    "v4_6_021"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     61.33
+    ],
+    [
+     5000.0,
+     73.84
+    ],
+    [
+     10000.0,
+     78.89
+    ],
+    [
+     20000.0,
+     80.01
+    ]
+   ]
+  },
+  {
+   "cand": "p3g9_028",
+   "island": 3,
+   "interest_at_20000": 87.75,
+   "dI_10k_to_20k": 1.1,
+   "cell": "4|grow|mobile|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "83f0cb8740b373a6",
+   "vtags": [
+    "v1_1_031",
+    "v4_5_030",
+    "v3_6_029",
+    "v3_9_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     51.91
+    ],
+    [
+     5000.0,
+     78.36
+    ],
+    [
+     10000.0,
+     86.65
+    ],
+    [
+     20000.0,
+     87.75
+    ]
+   ]
+  },
+  {
+   "cand": "p3g5_037",
+   "island": 3,
+   "interest_at_20000": 71.03,
+   "dI_10k_to_20k": 1.09,
+   "cell": "3|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "b5bcfbf2e019a85b",
+   "vtags": [
+    "v6_1_028",
+    "v6_3_021"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     66.45
+    ],
+    [
+     5000.0,
+     66.56
+    ],
+    [
+     10000.0,
+     69.94
+    ],
+    [
+     20000.0,
+     71.03
+    ]
+   ]
+  },
+  {
+   "cand": "p3g5_003",
+   "island": 3,
+   "interest_at_20000": 75.45,
+   "dI_10k_to_20k": 1.07,
+   "cell": "4|grow|mobile|liquid|s1|g1",
+   "is_union_holder": true,
+   "ghash": "a8588ddb13332b62",
+   "vtags": [
+    "v1_1_031"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     68.0
+    ],
+    [
+     5000.0,
+     74.3
+    ],
+    [
+     10000.0,
+     74.38
+    ],
+    [
+     20000.0,
+     75.45
+    ]
+   ]
+  },
+  {
+   "cand": "p5g6_052",
+   "island": 5,
+   "interest_at_20000": 74.69,
+   "dI_10k_to_20k": 1.04,
+   "cell": "3|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "65bcb6eef3c790dc",
+   "vtags": [],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     67.57
+    ],
+    [
+     5000.0,
+     71.01
+    ],
+    [
+     10000.0,
+     73.65
+    ],
+    [
+     20000.0,
+     74.69
+    ]
+   ]
+  },
+  {
+   "cand": "p4g3_034",
+   "island": 4,
+   "interest_at_20000": 84.92,
+   "dI_10k_to_20k": 1.0,
+   "cell": "4|grow|mobile|liquid|s3|g1",
+   "is_union_holder": false,
+   "ghash": "e169f7c89e6864bc",
+   "vtags": [
+    "v1_1_031"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     59.78
+    ],
+    [
+     5000.0,
+     71.69
+    ],
+    [
+     10000.0,
+     83.92
+    ],
+    [
+     20000.0,
+     84.92
+    ]
+   ]
+  },
+  {
+   "cand": "p1g7_035",
+   "island": 1,
+   "interest_at_20000": 78.29,
+   "dI_10k_to_20k": 0.94,
+   "cell": "4|grow|mobile|liquid|s2|g2",
+   "is_union_holder": false,
+   "ghash": "eef1806b5f1e0089",
+   "vtags": [],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     69.79
+    ],
+    [
+     5000.0,
+     72.02
+    ],
+    [
+     10000.0,
+     77.35
+    ],
+    [
+     20000.0,
+     78.29
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_020",
+   "island": 3,
+   "interest_at_20000": 76.71,
+   "dI_10k_to_20k": 0.94,
+   "cell": "3|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "642bc26af7cb23dc",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_031",
+    "v3_1_020",
+    "v3_2_027",
+    "v3_7_020"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     63.12
+    ],
+    [
+     5000.0,
+     71.98
+    ],
+    [
+     10000.0,
+     75.77
+    ],
+    [
+     20000.0,
+     76.71
+    ]
+   ]
+  },
+  {
+   "cand": "p5g9_041",
+   "island": 5,
+   "interest_at_20000": 75.04,
+   "dI_10k_to_20k": 0.93,
+   "cell": "3|switch|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "1c2a11f5597b88b6",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "add_chan",
+   "traj": [
+    [
+     2500.0,
+     67.86
+    ],
+    [
+     5000.0,
+     72.31
+    ],
+    [
+     10000.0,
+     74.11
+    ],
+    [
+     20000.0,
+     75.04
+    ]
+   ]
+  },
+  {
+   "cand": "p5g6_026",
+   "island": 5,
+   "interest_at_20000": 77.38,
+   "dI_10k_to_20k": 0.92,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "c6f9d4d941921ac5",
+   "vtags": [
+    "v5_6_026"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     70.45
+    ],
+    [
+     5000.0,
+     77.45
+    ],
+    [
+     10000.0,
+     76.46
+    ],
+    [
+     20000.0,
+     77.38
+    ]
+   ]
+  },
+  {
+   "cand": "p3g7_001",
+   "island": 3,
+   "interest_at_20000": 79.93,
+   "dI_10k_to_20k": 0.88,
+   "cell": "4|switch|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "087541a397504cfb",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022",
+    "v3_1_028"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     68.65
+    ],
+    [
+     5000.0,
+     76.17
+    ],
+    [
+     10000.0,
+     79.05
+    ],
+    [
+     20000.0,
+     79.93
+    ]
+   ]
+  },
+  {
+   "cand": "p4g5_035",
+   "island": 4,
+   "interest_at_20000": 74.74,
+   "dI_10k_to_20k": 0.82,
+   "cell": "3|grow|rotor|liquid|s3|g2",
+   "is_union_holder": false,
+   "ghash": "cbff5bd37e7ccdfb",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v3_3_027",
+    "v4_1_028"
+   ],
+   "op": "delete_bilin",
+   "traj": [
+    [
+     2500.0,
+     51.78
+    ],
+    [
+     5000.0,
+     62.59
+    ],
+    [
+     10000.0,
+     73.92
+    ],
+    [
+     20000.0,
+     74.74
+    ]
+   ]
+  },
+  {
+   "cand": "p1g6_012",
+   "island": 1,
+   "interest_at_20000": 74.63,
+   "dI_10k_to_20k": 0.69,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "bd98783aa97b1441",
+   "vtags": [
+    "fdr_ds3_014_0",
+    "v1_1_022"
+   ],
+   "op": "mutate",
+   "traj": [
+    [
+     2500.0,
+     68.14
+    ],
+    [
+     5000.0,
+     71.3
+    ],
+    [
+     10000.0,
+     73.94
+    ],
+    [
+     20000.0,
+     74.63
+    ]
+   ]
+  },
+  {
+   "cand": "p2g8_028",
+   "island": 2,
+   "interest_at_20000": 74.28,
+   "dI_10k_to_20k": 0.63,
+   "cell": "4|grow|mobile|flicker|s2|g1",
+   "is_union_holder": false,
+   "ghash": "dba3fd6b6f34214d",
+   "vtags": [
+    "v1_1_031",
+    "v2_8_028"
+   ],
+   "op": "mint_bilin",
+   "traj": [
+    [
+     2500.0,
+     60.44
+    ],
+    [
+     5000.0,
+     68.43
+    ],
+    [
+     10000.0,
+     73.65
+    ],
+    [
+     20000.0,
+     74.28
+    ]
+   ]
+  },
+  {
+   "cand": "p2g1_067",
+   "island": 2,
+   "interest_at_20000": 74.59,
+   "dI_10k_to_20k": 0.62,
+   "cell": "3|grow|mobile|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "3df221daaf79802c",
+   "vtags": [],
+   "op": "merge_slow_tanh",
+   "traj": [
+    [
+     2500.0,
+     69.86
+    ],
+    [
+     5000.0,
+     70.19
+    ],
+    [
+     10000.0,
+     73.97
+    ],
+    [
+     20000.0,
+     74.59
+    ]
+   ]
+  },
+  {
+   "cand": "p6g5_066",
+   "island": 6,
+   "interest_at_20000": 74.13,
+   "dI_10k_to_20k": 0.62,
+   "cell": "4|grow|rotor|liquid|s1|g2",
+   "is_union_holder": false,
+   "ghash": "b33f7403f67cdb57",
+   "vtags": [
+    "v6_1_028"
+   ],
+   "op": "merge_cross_edge",
+   "traj": [
+    [
+     2500.0,
+     68.75
+    ],
+    [
+     5000.0,
+     72.57
+    ],
+    [
+     10000.0,
+     73.51
+    ],
+    [
+     20000.0,
+     74.13
+    ]
+   ]
+  }
+ ]
+}
