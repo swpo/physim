@@ -67,6 +67,28 @@ continuations, no re-simulation). EXTEND iff ANY of:
 Score is computed at final T; `horizon` explains the decision trail.
 Blowup/all-dead exit immediately with v1 semantics.
 
+## Multi-seed / confirm runs: floor t0 at the incumbent's T_used
+Different seeds fire the extend criteria at different chunk boundaries; a
+confirm seed run at default t0=2500 can stop "static" BEFORE the behavior
+that made seed 1 extend has assembled (live example from evolve-v2: ds3_014
+seed1 74.2@5000; naive seed2 37.1@2500 "static"; with t0 floored at the
+incumbent's T_used it confirms at 49.5). Rule for confirm/elite multi-seed
+evals: pass `t0=<incumbent horizon.T_used>` to run_assay (kwarg already in
+the locked signature). Scores at different T_used are comparable BY DESIGN
+(windowed rate metrics + structure metrics on full record), but the DECISION
+to stop must not be made on a shorter window than the incumbent earned.
+
+## Error contract: catch exceptions on all_dead-before-burn records
+Root cause (verified): a subcritical genome (alive fields, ZERO blobs ever)
+takes soup_sim's all_dead exit at ~405tu < BURN=500, so the post-burn window
+is EMPTY and locked metrics_v1.d2_timescales crashes (np.polyfit "expected
+non-empty vector") inside full_battery — run_assay propagates it. A
+full-length zero-blob record does NOT crash (scores 0.0). Hits ~1-5% of
+random immigrants (evolve-v2 measurement). Callers must wrap run_assay in
+try/except and score such candidates status="no_blobs", interest 0 (the
+evolve-v2 adapter does this). A guard belongs in metrics_v3, not in a locked
+module.
+
 ## Cost expectations (M1 Max, solo)
 Static/boring worlds: one chunk = v1 T2500 cost + ~20-40s battery per decision.
 Median over static ground truths validated <= 1.5x v1 T2500 (a lock gate).

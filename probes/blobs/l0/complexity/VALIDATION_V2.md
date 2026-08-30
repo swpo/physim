@@ -135,7 +135,16 @@ mv3 s1 (persist 0.60), pred (bilinear tanh halo webs), coex s2 (marginal 0.05).
   robust statistic, and cell-key users should prefer org_model over raw
   score; (iii) box-limited worlds (ds3_014) have their true asymptotics
   censored by L=128 — flag raised, confirms deferred; (iv) c_acf uses
-  window/5 — a tau ~ window/4 world stops one doubling late, never early.
+  window/5 — a tau ~ window/4 world stops one doubling late, never early;
+  (v) confirm/multi-seed runs MUST floor t0 at the incumbent's T_used
+  (evolve-v2 live finding: seeds fire extend criteria at different chunk
+  boundaries; a naive seed-2 confirm at t0=2500 can falsely fail an elite
+  whose seed-1 extended — see ASSAY_V2_API.md "Multi-seed / confirm runs");
+  (vi) all_dead-before-burn records (subcritical genomes, zero blobs ever ->
+  soup exit ~405tu < BURN) crash locked metrics_v1.d2_timescales on an empty
+  post-burn window; run_assay propagates — callers catch and score
+  status="no_blobs"/interest 0 (see ASSAY_V2_API.md "Error contract";
+  metrics_v3 should guard the empty window).
 
 ## Seed-3 OUT-OF-SAMPLE (run after lock, no edits)
 (table: same columns as seeds 1-2 above)
