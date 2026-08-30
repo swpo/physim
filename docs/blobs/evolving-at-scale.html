@@ -1,0 +1,308 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Evolving at scale — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ video { max-width: 100%; height: auto; border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Evolving at scale: the v2 campaign</h1>
+<p class="meta">Post 10 — the science run the GPU port (post 9) was built for: a
+four-era MAP-Elites campaign over blob field theories, ending at a
+<b>423-cell archive</b> whose champion — a 3-species rotor ecology at
+interest 91.2 — descends from a frozen single blob at interest 2.8 through
+ten recorded operator hops. 9,409 pod evaluations, ~$515 total, every
+number below from the committed harvest
+(<code>probes/blobs/l0/deepsearch/v2_analysis/</code>).</p>
+
+<div class="note"><b>What this post is.</b> Post 7 asked whether selection
+for complexity works at all (answer: yes, on a laptop, 164 evals). This is
+the same search run 40× larger, across four compute eras, with the v2
+operator alphabet (bilinear-vertex minting/ablation, channel adds,
+cross-island migration) and the locked adaptive-horizon assay
+(<code>assay_v2</code>: T doubles from 2,500 to a 20,000 tu cap while
+memory/organism/autocorrelation criteria keep firing). Films of the five
+best worlds are embedded below; each was re-simulated from its committed
+genome + seed on an H100 and rendered from full field snapshots.</div>
+
+<h2>1 · The campaign in one table</h2>
+<table>
+<tr><th>era</th><th>engine</th><th>window (2026)</th><th>evals</th><th>archive checkpoint</th><th>best I</th></tr>
+<tr><td>0 · local validation</td><td>laptop CPU (operator shakedown + assay handshake)</td>
+<td>≤ 08-26</td><td>217</td><td>34 cells (local v2 epoch)</td><td>74.2</td></tr>
+<tr><td>1 · CPU fleet</td><td>6 pods × 16 vCPU, one world per core</td>
+<td>08-26 → 08-28 (~48 h)</td><td>2,516</td><td><code>union4_final_cpu</code> = <b>182 cells</b></td><td>81.9</td></tr>
+<tr><td>2 · single-mode GPU</td><td>3 GPU pods, one world per process (kernel-level wins only)</td>
+<td>08-28 (2.5 h)</td><td>368</td><td><code>union5_prebatch</code> = <b>190 cells</b></td><td>81.9</td></tr>
+<tr><td>3 · batched pilot</td><td>1 pod, a generation as ONE tensor (blobkit 0.3)</td>
+<td>08-29 (3.6 h, 2 gens, then RED-stop for the perf thread)</td><td>234</td><td>211 cells at stop</td><td>—</td></tr>
+<tr><td>4 · batched fleet</td><td>6 islands on H100/A100, blobkit 0.3.3/0.3.4, unions every ~2 gens</td>
+<td>08-29 → 08-30 (~1.5 days)</td><td><b>6,291</b></td><td><code>gpu_b_union1</code> 362 → <b><code>UNION_FINAL_v2</code> = 423 cells</b></td><td><b>91.16</b></td></tr>
+</table>
+<p>Totals: <b>9,409 pod evaluations</b> (era-4 alone: 4,917 screens + 769
+seed2 + 605 seed3 confirms, ~2,061 lane-hours of assay compute), total spend
+across all eras incl. gates and perf work <b>~$515</b>. The final archive
+holds 423 of 2,880 possible descriptor cells (14.7%); 230 of 423 cells carry
+minted bilinear vertices — couplings written by an operator, not by us —
+of which 133 distinct minted vertices fixed. The v1 minted-vertex creation
+rate was structurally zero.</p>
+<p class="meta">Descriptor cell key: <code>species|growth|motion|phase|stages|memory</code>,
+e.g. the champion's cell <code>3|grow|rotor|liquid|s2|g2</code>. Engine story —
+batching, correctness gates, the record-path Amdahl fight — is
+<a href="accelerating-blobs.html">post 9</a>; this post only uses it.</p>
+
+<h2>2 · The champion rose ×32 from a frozen blob</h2>
+<p>The campaign champion <code>p6g8_033</code> (interest 91.16, cell
+<code>3|grow|rotor|liquid|s2|g2</code>) has a fully recorded ancestry: ten
+hops through all four eras, starting at <code>smoke_m0</code> — the trivial
+single-species ground-truth world every pod boots with, interest <b>2.8</b>.
+Nothing in the spine was designed; every hop is one operator application
+that won an archive cell at the time.</p>
+<div class="eq">
+era1&nbsp;cpu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.80&nbsp;&nbsp;smoke_m0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1|constant|still|frozen<br/>
+era1&nbsp;cpu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.62&nbsp;&nbsp;p5g5_074&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merge_share_chan&nbsp;&nbsp;[+donor ref_iso]<br/>
+era1&nbsp;cpu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10.98&nbsp;&nbsp;p5g6_005&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mutate<br/>
+era2&nbsp;gpu-1&nbsp;&nbsp;&nbsp;&nbsp;62.28&nbsp;&nbsp;p6g1_043&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add_chan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>+51.3&nbsp;— woke the frozen world up</b><br/>
+era3&nbsp;pilot&nbsp;&nbsp;&nbsp;&nbsp;78.60&nbsp;&nbsp;p1g2_070&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merge_slow_tanh&nbsp;&nbsp;&nbsp;<b>+16.3&nbsp;— crossed with an immigrant</b><br/>
+era4&nbsp;final&nbsp;&nbsp;&nbsp;&nbsp;83.31&nbsp;&nbsp;p6g1_028&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mint_bilin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+4.7&nbsp;&nbsp;(vertex v6_1_028)<br/>
+era4&nbsp;final&nbsp;&nbsp;&nbsp;&nbsp;81.47&nbsp;&nbsp;p6g2_039&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add_chan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;−1.8&nbsp;&nbsp;(structure-buying dip)<br/>
+era4&nbsp;final&nbsp;&nbsp;&nbsp;&nbsp;88.04&nbsp;&nbsp;p6g5_026&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mint_bilin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+6.6&nbsp;&nbsp;(vertex v6_5_026)<br/>
+era4&nbsp;final&nbsp;&nbsp;&nbsp;&nbsp;87.30&nbsp;&nbsp;p6g7_037&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add_chan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;−0.7<br/>
+era4&nbsp;final&nbsp;&nbsp;&nbsp;&nbsp;<b>91.16</b>&nbsp;&nbsp;<b>p6g8_033</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delete_bilin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>+3.9&nbsp;— ablation authored the champion</b>
+</div>
+<p>The pattern along the spine: <b>merge and add_chan open the valley,
+mint_bilin climbs it, delete_bilin prunes the scaffolding</b>. The two
+discontinuities are an add_chan (+51.3: added a relaxation channel that
+turned a frozen 2-species dead end into a growing rotor world) and a
+merge_slow_tanh (+16.3: crossed it with a block built from
+<code>ds2g12_019</code>, a 1-activator/3-channel miniature that immigrated
+from the local era at interest 32). Inside era 4 the search minted two
+bilinear vertices and then deleted one of them again: the surviving champion
+carries exactly ONE minted vertex (<code>v6_1_028</code>). Its dynasty
+(pool founder <code>p1g2_070</code>) holds 41 of 423 final cells including
+4 of the global top-6.</p>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_smoke_m0.mp4"></video>
+<div class="cap"><b>B-roll, the root:</b> <code>smoke_m0</code> at interest
+2.8 — twelve seeded blobs relax into a static lattice and nothing ever
+happens again (T=2,500 tu shown; blob count pinned at 12). This is the
+ancestor of the champion, ten operator hops later.</div></div>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_ds3_014.mp4"></video>
+<div class="cap"><b>B-roll, the OTHER root:</b> <code>ds3_014</code> — the
+v1-era fossil-vertex succession world (pod seed <code>smoke_elite</code>,
+interest 74.5 at boot). Flat 12-blob ecology for ~1,500 tu, then the
+recorded delayed replication onset. Three of the four top dynasties descend
+from this world; the champion dynasty is the exception — it grew from
+<code>smoke_m0</code>, pure operator work, no elite blood.</div></div>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_p6g8_033.mp4"></video>
+<div class="cap"><b>THE CHAMPION — <code>p6g8_033</code>, I=91.16, T=20,000 tu,
+seed 942</b> (the exact assay run, re-simulated). Three species:
+a growing worm/rotor tissue (species 1, magma) that winds across the box
+(mean winding 8.0), with two compact species threading it. Two-stage
+succession, slow-channel memory 0.93, 42 organisms at close. Seed2 confirm
+79.7. The one load-bearing minted vertex <code>v6_1_028</code> survived a
+delete_bilin ablation — the deletion RAISED interest by 3.9 and authored
+this world.</div></div>
+
+<h2>3 · Operator scoreboard: mint climbs, delete prunes, merge opens</h2>
+<p>4,917 era-4 screen attempts, split by operator. <i>Holder rate</i> =
+share of attempts that ended holding ≥1 archive cell in their island's
+end-state; the last two columns are the union-final footprint.</p>
+<table>
+<tr><th>op</th><th>attempts</th><th>ok%</th><th>holder rate</th><th>union cells</th><th>screens ≥80</th><th>best I</th><th>note</th></tr>
+<tr><td><b>mint_bilin</b></td><td>615</td><td>99%</td><td><b>16.3%</b></td><td>85</td><td><b>66</b></td><td>89.33</td>
+<td>best per attempt; 37% of all I≥70 rows from 12.5% of attempts</td></tr>
+<tr><td><b>delete_bilin</b></td><td>206</td><td>100%</td><td>15.5%</td><td>20</td><td>37</td><td><b>91.16</b></td>
+<td>ablation-as-operator; authored the champion</td></tr>
+<tr><td>merge_slow_tanh</td><td>302</td><td>92%</td><td>14.6%</td><td>29</td><td>2</td><td>81.55</td>
+<td>low volume, built the champion's pool founder (+16.3)</td></tr>
+<tr><td>merge_cross_edge</td><td>731</td><td>95%</td><td>13.8%</td><td><b>89</b></td><td>5</td><td>81.66</td>
+<td>the cell-opener, as in v1</td></tr>
+<tr><td>mutate</td><td>1,027</td><td>92%</td><td>12.1%</td><td><b>99</b></td><td>10</td><td>87.77</td>
+<td>the workhorse; ceiling below mint/delete</td></tr>
+<tr><td>add_chan</td><td>413</td><td>96%</td><td>11.1%</td><td>42</td><td>22</td><td>88.74</td>
+<td>buys structure, often at a dip; made the +51.3 jump</td></tr>
+<tr><td>dup_act</td><td>428</td><td>40%</td><td>7.0%</td><td>25</td><td>12</td><td>86.93</td>
+<td>funnel-kill heavy, occasional elite</td></tr>
+<tr><td>merge_share_chan</td><td>215</td><td>25%</td><td>7.0%</td><td>17</td><td>1</td><td>81.53</td>
+<td>fragile (same-vacuum law, unchanged v1→v2)</td></tr>
+<tr><td>immigrate</td><td>980</td><td>42%</td><td>0.8%</td><td>8</td><td>0</td><td>48.84</td>
+<td>see below</td></tr>
+</table>
+<p><b>The immigrant deferred-payoff law.</b> Fresh random genomes are a
+terrible bet per attempt (0.8% holder rate, zero rows ≥70) — and yet
+<b>82 of 423 final cells root in a pod immigrant</b>, and the champion's
++16.3 merge donor was immigrant-descended. Immigration doesn't score;
+it seeds dynasties that score generations later. Selection needed both
+budgets: cheap diversity now, elite operators on top of it later.</p>
+<p><b>Minted vertices are scaffolding.</b> Every top-4 dynasty chain
+contains at least one mint_bilin, and 3 of 4 pass through a delete_bilin
+ablation. The search keeps a minted coupling only while it is load-bearing
+— the same fossil-vertex logic we found by hand in v1
+(<a href="searching-equation-space.html">post 7</a>), now discovered and
+exploited by the operators themselves.</p>
+
+<h2>4 · The archival ratchet (what "selection" actually did)</h2>
+<p>Per-generation screen statistics are FLAT: mean interest oscillates in
+43–48 across eleven generations, C-component means barely move, ok-rate
+sits at ~76%. The population never "gets better". What ratchets is the
+<b>archive</b>:</p>
+<table>
+<tr><th>checkpoint</th><th>cells</th><th>mean I</th><th>p90</th><th>max</th><th>≥70</th><th>≥80</th></tr>
+<tr><td>union4_final_cpu</td><td>182</td><td>44.4</td><td>69.0</td><td>81.9</td><td>17</td><td>3</td></tr>
+<tr><td>union5_prebatch</td><td>190</td><td>44.3</td><td>69.0</td><td>81.9</td><td>18</td><td>4</td></tr>
+<tr><td>gpu_b_union1</td><td>362</td><td>46.5</td><td>74.2</td><td>88.5</td><td>46</td><td>22</td></tr>
+<tr><td><b>UNION_FINAL_v2</b></td><td><b>423</b></td><td>47.0</td><td>73.2</td><td><b>91.2</b></td><td><b>50</b></td><td><b>28</b></td></tr>
+</table>
+<p>The GPU-batched eras did the heavy lifting: cells ×2.2, I≥70 count ×2.8,
+<b>I≥80 count ×7</b>. 241 of the 423 final cells did not exist at CPU
+handoff, and 131 surviving CPU-era cells were improved in place. This is
+the MAP-Elites contract working as designed: screens are lottery tickets,
+the archive is the ratchet, and the every-2-generations union push is what
+moved winners across islands.</p>
+<p><b>Succession is the elite axis.</b> The strongest single predictor of
+interest in the final archive is the staging descriptor: s1 cells average
+43.4, s2 cells 65.1, <b>s3 cells 81.4</b> — and ALL of the top-10 worlds are
+s2/s3. The s2 count tripled (18→49) and s3 tripled (4→12) across the
+checkpoints; C7_roles rose 0.51→0.56 and C2_timescale 0.35→0.40. The search
+found that the way to be interesting in this space is to build worlds that
+happen in <i>acts</i> — ecologies whose species composition restructures
+one or two times before settling.</p>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_p4g3_033.mp4"></video>
+<div class="cap"><b><code>p4g3_033</code>, I=85.20, <code>4|grow|rotor|liquid|s3|g1</code></b> —
+the ROTOR STORM: 241 organisms, 4 species, mean winding 15.1 (the most
+kinetic elite in the archive), full three-stage succession. Head of the
+mint-stack dynasty: mint → mint → mint → delete, ending with 3 minted
+vertices plus the inherited fossil. 3-seed confirmed (80.4 / 53.8).</div></div>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_p5g3_040.mp4"></video>
+<div class="cap"><b><code>p5g3_040</code>, I=86.21, <code>4|switch|mobile|liquid|s3|g2</code></b> —
+the world to show a skeptic: best fully-3-seed-CERTIFIED deep world
+(confirms 75.9 AND 74.1), three-stage succession with memory 0.97,
+92 organisms. One era-4 add_chan (+5.3) on a CPU-era elite.</div></div>
+
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_p4g2_044.mp4"></video>
+<div class="cap"><b><code>p4g2_044</code>, I=82.47, <code>4|switch|rotor|liquid|s2|g2</code></b> —
+the architecture contrast: the most seed-stable elite in the archive
+(81 ± 1 across three seeds), a minimal 21-organism 4-species rotor with
+<b>NO minted vertices</b> — proof the space holds clean elite worlds both
+with and without operator-written couplings.</div></div>
+
+<h2>5 · The telescope limit: cap-riders</h2>
+<p>The assay extends a world's horizon while any criterion keeps firing,
+up to a hard cap of T=20,000 tu. In the final harvest <b>337 rows exited at
+the cap</b> with criteria still firing (194 screens, 6.6% of scored rows) —
+the assay was cut off, not converged. Cap-riding is an elite phenomenon:
+mean interest of cap-exits is 75.5, 157/194 are ≥70, and <b>142 of 194 were
+still RISING at exit</b> (I@20k &gt; I@10k). For these worlds our measured
+interest is a lower bound. 21 union holders sit on cap exits, including the
+#2 world; 65% of all cap exits belong to the three top dynasties — the
+lineages that win cells are the ones that refuse to converge.</p>
+<div class="film"><video controls loop muted playsinline preload="metadata" src="media/v2/v2_p3g9_022.mp4"></video>
+<div class="cap"><b>The evidence film: <code>p3g9_022</code> re-run to
+T=40,000 — twice its assay horizon.</b> The #2 archive world (I=89.33 at
+the 20,000 cap, trajectory 57.6 → 69.0 → 80.5 → 89.3, still climbing +8.8
+per doubling). Four species, 151 organisms, the only full three-stage
+succession above 89. The assay never saw the second half of this film.</div></div>
+<p>106 distinct cap-exit genomes with I≥70 and still rising are queued as
+longer-horizon re-run candidates (<code>cap_riders.json</code>); the
+fastest riser gains +12.4 per horizon doubling. Whatever interest ceiling
+this space has, the 20,000 tu telescope cannot see it.</p>
+
+<h2>6 · Honest ops notes</h2>
+<table>
+<tr><th>issue</th><th>status</th></tr>
+<tr><td><b>26 battery timeouts dropped.</b> On dense long-T worlds the track-building
+step (greedy O(frames × blobs²) matching) could exceed its 300 s per-lane guard;
+after one subsampled retry also timed out, the row was recorded as
+<code>assay_error</code> and never scored (isl3: 10, isl6: 9, isl4: 4, isl1: 2, isl5: 1).
+Zero <code>battery_mode=subsampled</code> rows contaminate the harvest.</td>
+<td>flagged, contained (blobkit 0.3.4)</td></tr>
+<tr><td><b>box_limit is the elite norm, not an anomaly.</b> 74% of flagged era-4
+screens and 337/423 union holders span the full L=128 box. Elite worlds are
+box-limited almost by definition (they grow tissues); their descriptors are
+measured at the size the box allows.</td>
+<td>known bias; L192 confirm lane exists</td></tr>
+<tr><td><b>Names are pod-scoped and reused across eras</b> (<code>p1g2_070</code>
+exists in three eras as different genomes). All lineage claims above come from a
+timestamp- and structure-aware resolver (act/chan/bilin count deltas, vtag
+subset checks, exact parameter matches) — see <code>v2_analysis/LINEAGE.md</code>.</td>
+<td>resolved per-hop</td></tr>
+<tr><td><b>Champion seed sensitivity.</b> The 91.16 champion confirms at 79.7 on
+seed2 — elite but seed-sensitive, like most single-seed peaks. The seed-stable
+counterpoint is <code>p4g2_044</code> (81 ± 1 across 3 seeds); the certified-deep
+counterpoint is <code>p5g3_040</code>.</td>
+<td>reported per-world above</td></tr>
+<tr><td><b>Engine story not repeated here.</b> Mid-campaign the batched fleet hit a
+record-path wall (generation walls of 96–181 min), was RED-stopped, instrumented,
+and fixed by benchmark-gated engineering (2.18× on the frozen workload).
+That whole story, including the fixes that died by benchmark, is
+<a href="accelerating-blobs.html">post 9's production chapter</a>.</td>
+<td>see post 9</td></tr>
+</table>
+
+<h2>7 · What v3 should be</h2>
+<table>
+<tr><th>change</th><th>why (evidence)</th></tr>
+<tr><td><b>Longer horizons for elites</b> — a T=40,000 deploy lane (cap doubling for
+screens that exit at cap still rising), seeded with the 106 queued cap-riders.</td>
+<td>142/194 cap screens still rising; the p3g9_022 film above; measured interest
+is a lower bound exactly on the leaderboard's top.</td></tr>
+<tr><td><b>Device-side records (CREC on GPU)</b> — move the coarse-grid record
+reductions on-device; host pulls scalars, fields only at snapshots.</td>
+<td>record path = 60% of batched wall at 1.5 effective threads (post 9);
+the 0.3.3 <code>devrec</code> prototype already measured 2.18× and is
+gate-certified — v3 should make it the default, not the flag.</td></tr>
+<tr><td><b>Bigger boxes (L=192–256 lanes)</b> — at least for confirms and for the
+box-limited elite class.</td>
+<td>337/423 union holders span the full L=128 box; growth-class worlds are
+measured at box size, not at their intrinsic scale.</td></tr>
+<tr><td><b>Succession-directed search</b> — s3 cells average I=81.4 but only 12
+exist; make staging a first-class exploration target (e.g. stage-count novelty
+bonus or an s3-only island).</td>
+<td>strongest single interest predictor in the archive; the s2/s3 corner is
+where every top-10 world lives.</td></tr>
+<tr><td><b>Keep the immigrant tax.</b> Do not "optimize away" the 0.8%-holder
+immigration budget.</td>
+<td>82/423 final cells root in immigrants; the champion's +16.3 merge donor
+was immigrant-descended. It pays at dynasty timescale, not screen timescale.</td></tr>
+<tr><td><b>Continuous batching</b> — reseed dead/converged tensor slots mid-flight
+instead of ragged-tail draining.</td>
+<td>the 0.3 driver already carries the reseed seam (<code>reseed_hook</code>);
+island tails idled lanes for hours in era 4.</td></tr>
+</table>
+
+<div class="note"><b>Reproduce the films.</b> Every film genome + seed + horizon is
+committed in <code>probes/blobs/l0/deepsearch/v2_analysis/film_candidates/</code>.
+Capture: <code>blobkit 0.3.4</code> (verify_locks 47/47) on one H100,
+<code>init_soup_gpu_batch → advance_gpu_batch</code> with a dense
+<code>snap_t</code> schedule on the CREC grid — the exact campaign stepper, f32,
+same seeds; ~40–60 full-field frames per world; rendered per-activator-channel
+with fixed per-film color scales. Films re-simulate the recorded runs
+(identical IC/RNG protocol), they are not renders of stored assay data.</div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="accelerating-blobs.html">Accelerating blobs</a></div>
+</body></html>
