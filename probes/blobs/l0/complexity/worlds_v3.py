@@ -174,8 +174,11 @@ def noise_soup():
     K[0, 1] = 2.5                # M0 neighbor note: k4=2.5 -> spot soup
     g["K"] = K.tolist()
     g["id"] = "c_noise"
-    return dict(genome=g, ic=None, kw=dict(cap=2500.0, noise=6e-3),
-                note="m0 K_w=2.5 spot soup at 3x noise")
+    # v1 of this probe used noise=6e-3: world died <405tu (all_dead) — that
+    # degenerates into the dead-world case (C1 gate), not the r9 test.
+    # WORKING noise keeps the replication churn alive: r9 must do the kill.
+    return dict(genome=g, ic=None, kw=dict(cap=2500.0),
+                note="m0 K_w=2.5 spot soup, working noise (alive churn)")
 
 
 BANK_B = dict(cargo_cell=cargo_cell, m5_trains=m5_trains,
