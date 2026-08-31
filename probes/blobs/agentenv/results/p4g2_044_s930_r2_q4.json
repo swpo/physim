@@ -1,0 +1,127 @@
+{
+ "world": "p4g2_044",
+ "seed": 930,
+ "roster": "r2",
+ "tier": "q4",
+ "plan": {
+  "total": 31,
+  "A": 12,
+  "do_B": false,
+  "do_C": false,
+  "b_nrep": 1,
+  "C_wait": 3,
+  "D_duty": 0.0,
+  "E": 16
+ },
+ "r1": {
+  "ok": true,
+  "n_reads_A": 12,
+  "lattice_est": "unknown",
+  "lattice_true": "square",
+  "lattice_correct": false,
+  "adj_f1": 0.16,
+  "embed_corr": 0.419,
+  "snapped": false,
+  "snap_cost": null,
+  "center_correct": false,
+  "motion_ok": false
+ },
+ "r1_devB": {
+  "ok": true,
+  "n_reads_A": 12,
+  "lattice_est": "tri",
+  "lattice_true": "hex",
+  "lattice_correct": false,
+  "adj_f1": 0.4068,
+  "embed_corr": 0.2852,
+  "snapped": false,
+  "snap_cost": null,
+  "center_correct": false,
+  "motion_ok": false
+ },
+ "r2": {
+  "ok": true,
+  "particulate": false,
+  "bim_max": 0.989,
+  "fano": 0.5,
+  "p_event": 6,
+  "p_event_field": 2,
+  "center_passes": 0,
+  "scan_ok": false,
+  "scan_why": "skipped"
+ },
+ "r3": {
+  "ok": false,
+  "why": "tracking skipped"
+ },
+ "home_err": 0.0,
+ "p1": {
+  "H50": {
+   "persistence": 0.19817,
+   "ar2": 0.14046,
+   "informed": 0.14046,
+   "climatology": 0.13428
+  },
+  "H200": {
+   "persistence": 0.15357,
+   "ar2": 0.11398,
+   "informed": 0.11398,
+   "climatology": 0.10685
+  },
+  "ok": true
+ },
+ "p2": {
+  "ok": true,
+  "p_event": 9,
+  "sign": 1.0,
+  "thr": 0.0924,
+  "degenerate": false,
+  "true_rates": [
+   6.0,
+   5.0,
+   8.0,
+   3.0,
+   8.0,
+   3.0,
+   4.0,
+   8.0,
+   5.0,
+   7.0,
+   4.0,
+   7.0,
+   5.0,
+   6.0,
+   5.0,
+   5.0
+  ],
+  "mae_persistence": 4.438,
+  "mae_mean": 1.354,
+  "mae_informed": 4.438,
+  "mae_zero": 5.562
+ },
+ "p3": {
+  "ok": true,
+  "z_response": 912.78,
+  "resp_max": 2.3441,
+  "noise_floor": 0.00257,
+  "n_calib": 1,
+  "sensor_cost": 760.0,
+  "injection_cost": 10.0,
+  "crps": {
+   "persistence": 0.14737,
+   "ar2": 0.19696,
+   "informed": 0.26334
+  }
+ },
+ "spend": {
+  "sensor": 4480.0,
+  "motion": 0.0,
+  "injection": 0.0
+ },
+ "budget": {
+  "sensor": 5000.0,
+  "motion": 150.0,
+  "injection": 15.0
+ },
+ "wall_s": 1.2
+}

@@ -1,0 +1,127 @@
+{
+ "world": "p4g2_044",
+ "seed": 930,
+ "roster": "r2",
+ "tier": "x1",
+ "plan": {
+  "total": 125,
+  "A": 40,
+  "do_B": true,
+  "do_C": true,
+  "b_nrep": 1,
+  "C_wait": 3,
+  "D_duty": 0.2638888888888889,
+  "E": 16
+ },
+ "r1": {
+  "ok": true,
+  "n_reads_A": 40,
+  "lattice_est": "square",
+  "lattice_true": "square",
+  "lattice_correct": true,
+  "adj_f1": 0.9375,
+  "embed_corr": 0.9286,
+  "snapped": true,
+  "snap_cost": 0.707,
+  "center_correct": true,
+  "motion_ok": false
+ },
+ "r1_devB": {
+  "ok": true,
+  "n_reads_A": 40,
+  "lattice_est": "unknown",
+  "lattice_true": "hex",
+  "lattice_correct": false,
+  "adj_f1": 0.5231,
+  "embed_corr": 0.722,
+  "snapped": false,
+  "snap_cost": null,
+  "center_correct": false,
+  "motion_ok": false
+ },
+ "r2": {
+  "ok": true,
+  "particulate": true,
+  "bim_max": 0.959,
+  "fano": 0.92,
+  "p_event": 6,
+  "p_event_field": 2,
+  "center_passes": 0,
+  "scan_ok": false,
+  "scan_why": "no blob pass"
+ },
+ "r3": {
+  "ok": false,
+  "why": "tracking skipped"
+ },
+ "home_err": 1.4210854715202004e-14,
+ "p1": {
+  "H50": {
+   "persistence": 0.19421,
+   "ar2": 0.12319,
+   "informed": 0.12319,
+   "climatology": 0.13878
+  },
+  "H200": {
+   "persistence": 0.15084,
+   "ar2": 0.12625,
+   "informed": 0.12625,
+   "climatology": 0.12633
+  },
+  "ok": true
+ },
+ "p2": {
+  "ok": true,
+  "p_event": 9,
+  "sign": 1.0,
+  "thr": 0.0924,
+  "degenerate": false,
+  "true_rates": [
+   6.0,
+   5.0,
+   8.0,
+   3.0,
+   8.0,
+   3.0,
+   4.0,
+   8.0,
+   5.0,
+   7.0,
+   4.0,
+   7.0,
+   5.0,
+   6.0,
+   5.0,
+   5.0
+  ],
+  "mae_persistence": 4.438,
+  "mae_mean": 1.37,
+  "mae_informed": 9.647,
+  "mae_zero": 5.562
+ },
+ "p3": {
+  "ok": true,
+  "z_response": 912.78,
+  "resp_max": 2.3441,
+  "noise_floor": 0.00257,
+  "n_calib": 2,
+  "sensor_cost": 3705.0,
+  "injection_cost": 30.0,
+  "crps": {
+   "persistence": 0.14737,
+   "ar2": 0.19023,
+   "informed": 0.15427
+  }
+ },
+ "spend": {
+  "sensor": 14560.0,
+  "motion": 37.0,
+  "injection": 0.0
+ },
+ "budget": {
+  "sensor": 20000.0,
+  "motion": 600.0,
+  "injection": 60.0
+ },
+ "wall_s": 1.2
+}

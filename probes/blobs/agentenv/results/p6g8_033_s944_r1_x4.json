@@ -1,0 +1,140 @@
+{
+ "world": "p6g8_033",
+ "seed": 944,
+ "roster": "r1",
+ "tier": "x4",
+ "plan": {
+  "total": 500,
+  "A": 200,
+  "do_B": true,
+  "do_C": true,
+  "b_nrep": 2,
+  "C_wait": 4,
+  "D_duty": 1.0,
+  "E": 161
+ },
+ "r1": {
+  "ok": true,
+  "n_reads_A": 200,
+  "lattice_est": "hex",
+  "lattice_true": "hex",
+  "lattice_correct": true,
+  "adj_f1": 0.4048,
+  "embed_corr": 0.4732,
+  "snapped": true,
+  "snap_cost": 1.048,
+  "center_correct": true,
+  "motion_ok": true,
+  "motion_angle_err": [
+   46.9,
+   77.5
+  ],
+  "motion_scale_ratio": [
+   0.98,
+   1.77
+  ],
+  "motion_qual": 0.37,
+  "motion_spend": {
+   "reads": 22,
+   "motion": 24.0,
+   "steps": 22
+  }
+ },
+ "r2": {
+  "ok": true,
+  "particulate": false,
+  "bim_max": 0.913,
+  "fano": 17.33,
+  "p_event": 12,
+  "p_event_field": 9,
+  "center_passes": 0,
+  "scan_ok": false,
+  "scan_why": "no blob pass"
+ },
+ "r3": {
+  "ok": true,
+  "lock_radius": 11.0,
+  "acquired": true,
+  "t_first_lock": 55.0,
+  "pct_locked_nearest": 84.7,
+  "pct_hold": 100.0,
+  "pct_locked_same": 82.0,
+  "trace_len": 188,
+  "mean_dist": 8.03,
+  "port": 2,
+  "field": 1,
+  "pct_in_track_state": 100.0,
+  "spend_reads": 72,
+  "spend_motion": 141.4
+ },
+ "home_err": 2.1316282072803006e-14,
+ "p1": {
+  "H50": {
+   "persistence": 0.13995,
+   "ar2": 0.11056,
+   "informed": 0.11056,
+   "climatology": 0.11202
+  },
+  "H200": {
+   "persistence": 0.19035,
+   "ar2": 0.11464,
+   "informed": 0.11464,
+   "climatology": 0.11361
+  },
+  "ok": true
+ },
+ "p2": {
+  "ok": true,
+  "p_event": 6,
+  "sign": 1.0,
+  "thr": 0.4813,
+  "degenerate": false,
+  "true_rates": [
+   9.0,
+   11.0,
+   8.0,
+   7.0,
+   8.0,
+   9.0,
+   0.0,
+   0.0,
+   2.0,
+   2.0,
+   5.0,
+   6.0,
+   10.0,
+   4.0,
+   4.0,
+   2.0
+  ],
+  "mae_persistence": 4.688,
+  "mae_mean": 3.112,
+  "mae_informed": 7.28,
+  "mae_zero": 5.438
+ },
+ "p3": {
+  "ok": true,
+  "z_response": 4549.17,
+  "resp_max": 2.5092,
+  "noise_floor": 0.00055,
+  "n_calib": 3,
+  "sensor_cost": 19380.0,
+  "injection_cost": 70.0,
+  "crps": {
+   "persistence": 0.20983,
+   "ar2": 0.15474,
+   "informed": 0.14321
+  }
+ },
+ "spend": {
+  "sensor": 44555.0,
+  "motion": 177.0,
+  "injection": 0.0
+ },
+ "budget": {
+  "sensor": 47500.0,
+  "motion": 2400.0,
+  "injection": 240.0
+ },
+ "wall_s": 2.6
+}

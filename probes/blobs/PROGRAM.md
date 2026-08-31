@@ -962,3 +962,19 @@ currency contracts P1-P5, no images/coordinates/dimension disclosure ever.
 a0-adequacy child building device layer + reference pipelines (geometry
 bootstrap, soliton detection, closed-loop tracking) + adequacy curves on
 E1/E2/E3 (p4g2_044/p6g8_033/p3g9_022). Agent trials gated on adequacy review.
+
+
+### Track A a0-adequacy COMPLETE (2026-08-31): probe-device layer + A0 study
+Probe-device layer LIVE (probes/blobs/agentenv/): anonymized lattice sensor
+arrays (secret rot/reflect/node-perm/port-perm, dilation, center injection via
+poke pathway, budget ledgers) + sim-once/replay-many cache design (bitwise-
+gated local stepper; 54-cell study ran in hours on laptop CPU). A0 VERDICT:
+measurement adequate — E1 fully trackable at 4x budget (100% hold, 79% blob
+identity retention), geometry bootstrap works (lattice class 100% at 1x,
+motion basis needs ~4x), steep budget region = 1x-4x => round-1 rec 2x.
+Contract health: P3 injection-response STRONG everywhere (3-5x over baselines,
+z 600-10k); P2 discriminating on E1; P1 (H=50-200) nearly skill-free for point
+streams — respec before round 1 (shorter H or slow-channel targets). Honest
+floors: E3 swarm tracking 10% (neighbor-stealing), dilation size skirt-biased,
+1/4x below measurement floor. Roster: keep 2 devices (cross-device P3), hex as
+prober. Full verdict table: agentenv/ADEQUACY.md + SCORECARD.md.

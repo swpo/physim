@@ -1,0 +1,146 @@
+{
+ "world": "p4g2_044",
+ "seed": 928,
+ "roster": "r1",
+ "tier": "x4",
+ "plan": {
+  "total": 500,
+  "A": 200,
+  "do_B": true,
+  "do_C": true,
+  "b_nrep": 2,
+  "C_wait": 4,
+  "D_duty": 1.0,
+  "E": 161
+ },
+ "r1": {
+  "ok": true,
+  "n_reads_A": 200,
+  "lattice_est": "hex",
+  "lattice_true": "hex",
+  "lattice_correct": true,
+  "adj_f1": 1.0,
+  "embed_corr": 1.0,
+  "snapped": true,
+  "snap_cost": 0.772,
+  "center_correct": true,
+  "motion_ok": true,
+  "motion_angle_err": [
+   20.9,
+   0.1
+  ],
+  "motion_scale_ratio": [
+   1.14,
+   0.58
+  ],
+  "motion_qual": 0.689,
+  "motion_spend": {
+   "reads": 22,
+   "motion": 24.0,
+   "steps": 22
+  }
+ },
+ "r2": {
+  "ok": true,
+  "particulate": true,
+  "bim_max": 0.963,
+  "fano": 3.16,
+  "p_event": 7,
+  "p_event_field": 3,
+  "center_passes": 0,
+  "scan_ok": true,
+  "r_est": 2.67,
+  "r_true": 6.97,
+  "r_ratio": 0.38,
+  "scan_spend": {
+   "reads": 7,
+   "motion": 2.0
+  }
+ },
+ "r3": {
+  "ok": true,
+  "lock_radius": 9.3,
+  "acquired": true,
+  "t_first_lock": 255.0,
+  "pct_locked_nearest": 29.2,
+  "pct_hold": 100.0,
+  "pct_locked_same": 100.0,
+  "trace_len": 207,
+  "mean_dist": 10.99,
+  "port": 5,
+  "field": 1,
+  "pct_in_track_state": 100.0,
+  "spend_reads": 72,
+  "spend_motion": 83.5
+ },
+ "home_err": 4.4938668397781776e-14,
+ "p1": {
+  "H50": {
+   "persistence": 0.17724,
+   "ar2": 0.14245,
+   "informed": 0.14245,
+   "climatology": 0.14971
+  },
+  "H200": {
+   "persistence": 0.11811,
+   "ar2": 0.15017,
+   "informed": 0.15017,
+   "climatology": 0.15248
+  },
+  "ok": true
+ },
+ "p2": {
+  "ok": true,
+  "p_event": 8,
+  "sign": 1.0,
+  "thr": 0.0904,
+  "degenerate": false,
+  "true_rates": [
+   9.0,
+   9.0,
+   10.0,
+   8.0,
+   11.0,
+   10.0,
+   12.0,
+   8.0,
+   8.0,
+   10.0,
+   8.0,
+   10.0,
+   9.0,
+   10.0,
+   12.0,
+   9.0
+  ],
+  "mae_persistence": 1.785,
+  "mae_mean": 3.274,
+  "mae_informed": 3.026,
+  "mae_zero": 9.562
+ },
+ "p3": {
+  "ok": true,
+  "z_response": 795.72,
+  "resp_max": 2.5981,
+  "noise_floor": 0.00327,
+  "n_calib": 3,
+  "sensor_cost": 19380.0,
+  "injection_cost": 70.0,
+  "crps": {
+   "persistence": 0.23301,
+   "ar2": 0.22575,
+   "informed": 0.18879
+  }
+ },
+ "spend": {
+  "sensor": 44840.0,
+  "motion": 144.4,
+  "injection": 0.0
+ },
+ "budget": {
+  "sensor": 47500.0,
+  "motion": 2400.0,
+  "injection": 240.0
+ },
+ "wall_s": 9.7
+}

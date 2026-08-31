@@ -1,0 +1,120 @@
+{
+ "world": "p3g9_022",
+ "seed": 921,
+ "roster": "r1",
+ "tier": "x4",
+ "plan": {
+  "total": 500,
+  "A": 200,
+  "do_B": true,
+  "do_C": true,
+  "b_nrep": 2,
+  "C_wait": 4,
+  "D_duty": 1.0,
+  "E": 161
+ },
+ "r1": {
+  "ok": true,
+  "n_reads_A": 200,
+  "lattice_est": "hex",
+  "lattice_true": "hex",
+  "lattice_correct": true,
+  "adj_f1": 0.6667,
+  "embed_corr": 0.8693,
+  "snapped": true,
+  "snap_cost": 1.089,
+  "center_correct": false,
+  "motion_ok": false
+ },
+ "r2": {
+  "ok": true,
+  "particulate": true,
+  "bim_max": 0.917,
+  "fano": 9.0,
+  "p_event": 0,
+  "p_event_field": 10,
+  "center_passes": 1,
+  "scan_ok": true,
+  "r_est": 2.67,
+  "r_true": 3.68,
+  "r_ratio": 0.73,
+  "scan_spend": {
+   "reads": 4,
+   "motion": 1.0
+  }
+ },
+ "r3": {
+  "ok": false,
+  "why": "tracking skipped"
+ },
+ "home_err": 1.4210854715202004e-14,
+ "p1": {
+  "H50": {
+   "persistence": 0.0519,
+   "ar2": 0.05073,
+   "informed": 0.05073,
+   "climatology": 0.04883
+  },
+  "H200": {
+   "persistence": 0.04776,
+   "ar2": 0.04624,
+   "informed": 0.04624,
+   "climatology": 0.0487
+  },
+  "ok": true
+ },
+ "p2": {
+  "ok": true,
+  "p_event": 9,
+  "sign": 1.0,
+  "thr": 0.1464,
+  "degenerate": false,
+  "true_rates": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   19.0,
+   0.0,
+   0.0,
+   0.0,
+   14.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   12.0,
+   0.0,
+   0.0
+  ],
+  "mae_persistence": 2.812,
+  "mae_mean": 3.406,
+  "mae_informed": 2.812,
+  "mae_zero": 2.812
+ },
+ "p3": {
+  "ok": true,
+  "z_response": 7461.65,
+  "resp_max": 2.1883,
+  "noise_floor": 0.00029,
+  "n_calib": 3,
+  "sensor_cost": 19380.0,
+  "injection_cost": 70.0,
+  "crps": {
+   "persistence": 0.03891,
+   "ar2": 0.0408,
+   "informed": 0.01448
+  }
+ },
+ "spend": {
+  "sensor": 37335.0,
+  "motion": 26.0,
+  "injection": 0.0
+ },
+ "budget": {
+  "sensor": 47500.0,
+  "motion": 2400.0,
+  "injection": 240.0
+ },
+ "wall_s": 10.4
+}
