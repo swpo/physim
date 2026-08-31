@@ -10,33 +10,37 @@ action space is unclear (pokes vs background fluctuations vs blob insertion).
 
 DESIGN ANSWERS
 
-A. MEASUREMENT v2 (2026-08-31, user constraint: NO DIRECT WORLD VIEW —
-   no images, no spatial layout, no dimension, no box size):
-   The interface is a SENSOR NETWORK with opaque addressing. Space is not
-   given; it is DISCOVERABLE.
-   ADDRESSING: agent receives K anchor tokens (opaque ids; harness placed
-   them randomly, never discloses coordinates). Operations:
-     place_sensor(anchor | existing_sensor, step_direction d, step_size s)
-   where d ranges over D anonymous 'direction slots' (harness knows the
-   secret mapping; per-episode random rotation/reflection). DIMENSION,
-   TOPOLOGY (torus wrap!), and METRIC are all inferable only through
-   sensor-motion experiments (how many independent directions? do long
-   walks return?). This is the strict form of the barrier: geometry itself
-   is science.
-   SENSOR TYPES (all return SCALAR TIMESERIES; no arrays/images ever):
-     s-tap: port value at sensor
-     s-int(r): integrated mass within radius r (three gain settings, priced
-       by r — a wide antenna, not a picture)
-     s-diff(d): finite difference along anonymous direction d
-     s-event(theta): threshold-crossing counter (rate stream)
-   Global aggregates (I3) reduced to: per-port global mean + variance ONLY
-   (no spectra — spectra leak grid/box structure).
-   PRICING: per-episode budget in sensor-seconds, weighted by type (s-int
-   costs ~r^2). Sensor moves cost budget too (relocation friction).
-   NEVER PROVIDED: images, blob lists, coordinates, dimension, box size,
-   boundary conditions. Recognizing particulateness, dimensionality, and
-   the torus IS the agent's early science program.
+A. MEASUREMENT v3 (2026-08-31, settled design: the PROBE-DEVICE):
+   The instrument is a rigid LOCAL SENSOR ARRAY with co-located injection —
+   'learn to use your hands' applied to eyes. Structure exists but is never
+   disclosed; discovering it is the agent's calibration science.
 
+   DEVICE = lattice patch of k sensor nodes centered on a movable point:
+   - lattice type per device: square | triangular | hex (undisclosed)
+   - rings: >=2, default 3 (square L1-diamond r=2: 13 nodes; hex 3-ring: 19;
+     square Chebyshev 5x5: 25 — chosen per world roster, undisclosed)
+   - node spacing: base ds (undisclosed), scaled by agent's dilation control
+   AGENT-FACING INTERFACE per device (all anonymous):
+     i) INPUTS: n injection channels (one per port) driving a source at the
+        DEVICE CENTER: inject(port, amplitude, duration) under integral
+        budget (poke/background/nucleation regimes all expressible)
+     ii) MOTION: 2 direction controls (anonymous basis, per-episode secret
+        rotation/reflection; steps cost budget; world topology undisclosed —
+        wrap discoverable by long walks)
+     iii) DILATION: one control scaling node spacing (zoom without images;
+        min/max undisclosed)
+     iv) OUTPUTS: k scalar streams per port = k x n channels, channel order
+        SHUFFLED per episode (agents must self-calibrate channel->node
+        correspondence via correlation + motion/dilation experiments)
+   Notes: sensors sample bilinearly at node positions (continuum-honest);
+   no arrays/images; no coordinates; no lattice/geometry disclosure; k and
+   n are visible as channel counts (unavoidable and fine — control/channel
+   COUNTS are the only structural facts disclosed).
+   GLOBAL AGGREGATES: per-port global mean/variance streams retained (cheap
+   'weather report'); no spectra.
+   ROSTER per world: 1-3 devices (per-world config); multi-device rosters
+   enable cross-device propagation science; device configs may DIFFER
+   (square vs hex) so 'device geometry' generalizes as a skill.
 B. BARRIER MECHANISMS (strict, enumerable):
    b1 ports = anonymized field channels (shuffled ids; no genome/params ever)
    b2 instruments = generic signal processing (above), no assay internals
@@ -71,9 +75,9 @@ D. CONTRACT LADDER v2 (sensor-observable currency only):
    P2 event-rate forecasting: predict s-event rate trajectories (the
       particulate world's census signature, WITHOUT the harness admitting
       a census exists)
-   P3 perturbation-response: announced injection at anchor A; predict
-      response distribution at sensors B_1..B_k (causality + propagation +
-      geometry, all in one)
+   P3 perturbation-response: announced injection through device A's center;
+      predict response distributions on device B's channels (causality +
+      propagation + relative geometry, all in one)
    P4 preparation: drive named sensor observables into announced bands and
       HOLD (e.g. 's-int(large)@S3 in [a,b] for 200tu') under injection budget
    P5 executable theory: compact simulator/predictor of the SENSOR
