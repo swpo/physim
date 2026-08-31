@@ -1,0 +1,106 @@
+{
+ "name": "m2_dimer_a4",
+ "bank": "b",
+ "seed": 1,
+ "note": "A4s dimer gas (dt=0.02-certified bonds)",
+ "interest_v2": 2.8,
+ "interest_v3": 2.1,
+ "C9": 0.0,
+ "spatial_class": "structured",
+ "factors": {
+  "t9": 0.0,
+  "s9": 0.5974,
+  "e9": 0.0,
+  "r9": 0.0
+ },
+ "partial": false,
+ "t9_detail": {
+  "t9": 0.0,
+  "void_frac": 0.9768,
+  "percolates": true,
+  "disp_med": null,
+  "disp_score": null,
+  "r_blob": 3.19,
+  "n_win": 468,
+  "n_win_void": 0,
+  "mask_src": "snaps",
+  "alive": true,
+  "void_tent": 0.7283
+ },
+ "s9_detail": {
+  "s9": 0.5974,
+  "shell_frac": 0.0519,
+  "mask_frac": 0.0232,
+  "n_snaps": 5,
+  "enrich": 11.52,
+  "pairs": {
+   "K[0,0]": {
+    "kind": "K",
+    "s": 0.6621,
+    "share": 0.1782
+   },
+   "K[0,1]": {
+    "kind": "K",
+    "s": 0.6635,
+    "share": 0.1614
+   },
+   "W[0,0]": {
+    "kind": "W",
+    "s": 0.5637,
+    "share": 0.3302
+   },
+   "W[1,0]": {
+    "kind": "W",
+    "s": 0.5637,
+    "share": 0.3302
+   }
+  }
+ },
+ "e9_detail": {
+  "e9": 0.0,
+  "n_bonds": 5,
+  "mass_epi": 0.0,
+  "mass_tot": 10125.0,
+  "frozen_frac": 1.0,
+  "life_med": 2025.0,
+  "epi_frac": 0.0
+ },
+ "d7b": {
+  "n_tracks": 12,
+  "n_species": 1,
+  "n_eff": 1.0,
+  "takeover": 0.0,
+  "r9": 0.0,
+  "k_best": 1,
+  "sil": null,
+  "features": 0
+ },
+ "C": {
+  "C1_popdyn": 0.05,
+  "C2_timescale": 0.0,
+  "C3_motion": 0.0,
+  "C4_graph": 0.25,
+  "C5_memory": 0.0,
+  "C6_ecology": 0.0,
+  "C7_roles": 0.0,
+  "C8_succession": 0.0,
+  "C9_spatial": 0.0
+ },
+ "horizon": {
+  "T": 2500.0,
+  "why": "static",
+  "traj": [
+   [
+    2500.0,
+    2.8
+   ]
+  ]
+ },
+ "flags": {
+  "box_limit": false,
+  "box_span_frac": 0.055,
+  "box_persist": 0.0
+ },
+ "status": "ok",
+ "wall": 292.1
+}
