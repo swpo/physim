@@ -96,8 +96,22 @@ top-100 + 20 wall-dressed variants of champions; SUCCESS = >=5 archive cells
 in 'economy' spatial class with C9 >= 0.4 AND interest >= 60 by gen 12.
 Cost ~$100. Full campaign only after pilot review.
 
+SPATIAL MERGE (2026-08-31 discussion):
+ - TRUE patch-gluing merge (per-region COEFFICIENTS, PoU seams) = v4. Hard gate:
+   blobkit steppers (CPU+GPU) assume uniform coefficients; the conservative
+   div(D grad u) PoU stepper is certified only in probes/blobs/patchworlds.
+   Port + parity-regate before any such operator exists. The seam body-force
+   law would feed s9 directly — this IS the long-term diversity scaler.
+ - v3 bridge (FREE, no numerics change): merge_spatial_ic — offspring inherits
+   ONE parent's chemistry; IC composed from BOTH parents' developed snapshots
+   stamped into disjoint soft-masked regions (existing dressing machinery).
+   Populations meet in space; chemistry stays uniform. Added to the v3
+   operator mix at ~8 slots (from mutate's 20 -> 16, merge 24 -> 20).
+ - Decision data: spatial-IC offspring dominating economy cells in the pilot
+   = the evidence case for funding the v4 PoU-stepper port.
+
 BUILD PLAN (children):
- K1 'v3-metrics': d7b + C9 in metrics_v3.py (extends locked v2 per relock
+ K1 'v3-metrics': d7b + C9 in metrics_v3.py + merge_spatial_ic in ops (extends locked v2 per relock
     protocol) + validation gate (a/b/c banks) + report. [THE build]
  K2 pilot deploy (controller, after K1 gate + user look at validation
     numbers): UNCHANGED grammar, C9-augmented interest + spatial-class
