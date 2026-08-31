@@ -59,7 +59,16 @@ thresholds -> MAP-Elites protects sparse-structured lineages from being
 outcompeted in the archive by dense high-C1-C8 worlds (the B3 lesson:
 protect the niche, don't fight the gradient).
 
-GRAMMAR EXTENSION (B1, walls only for v3):
+GRAMMAR EXTENSION (B1) — DEMOTED TO CONTINGENT (2026-08-31 discussion):
+The existing grammar already EXPRESSES bounded structure (hand-built membranes
+/rings/barriers used the standard 3-component chemistry + existing coupling
+types; no special material). The wall template is a search-efficiency bias,
+not an expressivity need. v3 CORE = C9 + d7b + spatial-class niche ONLY
+(one change at a time — metrics/search co-evolution lesson). Trigger for
+adding the wall template in a v3.1 iteration: pilot shows economy-class
+cells stay empty (pressure exists, parts unfound) — i.e., archives show
+attempts (rising s9/t9 sub-scores) but no C9 >= 0.4 cells by gen 12.
+Original template spec kept below for that contingency:
  - new channel template 'wall': non-diffusing-ish (D in [0.05, 0.5]) bistable
    channel (strong self-activation, high threshold, slow tau in [50, 400]);
    couplings to activators via minted W entries only (evolution wires it).
@@ -89,10 +98,10 @@ Cost ~$100. Full campaign only after pilot review.
 
 BUILD PLAN (children):
  K1 'v3-metrics': d7b + C9 in metrics_v3.py (extends locked v2 per relock
-    protocol) + validation gate (a/b/c banks) + report. [starts NOW]
- K2 'v3-grammar': wall template + operators + IC curves in genome/operators
-    + smoke evolution (5 gens local CPU tiny) proving walls get minted and
-    survive. [starts NOW, independent]
- K3 pilot deploy (controller, after K1+K2 gates + user look at validation
-    numbers).
+    protocol) + validation gate (a/b/c banks) + report. [THE build]
+ K2 pilot deploy (controller, after K1 gate + user look at validation
+    numbers): UNCHANGED grammar, C9-augmented interest + spatial-class
+    archive axis, seeded from v2 union top-100 + hand-built positives
+    (membrane/channel worlds as immigrants — the atlas as seed stock).
+ K3 (contingent v3.1) wall grammar per above, only on pilot trigger.
 =============================================================================
