@@ -978,3 +978,12 @@ streams — respec before round 1 (shorter H or slow-channel targets). Honest
 floors: E3 swarm tracking 10% (neighbor-stealing), dilation size skirt-biased,
 1/4x below measurement floor. Roster: keep 2 devices (cross-device P3), hex as
 prober. Full verdict table: agentenv/ADEQUACY.md + SCORECARD.md.
+
+### Dual launch (2026-08-31): v3 pilot + Track A round-1 build
+v3-pilot: 2 islands x 12 gens from v2 top-100 + atlas immigrants, interest_v3/C9,
+merge_spatial_ic 8 slots; success >=5 economy cells C9>=0.4; ~$100.
+a1-harness: BLOB tier in environments/physim (MCP world server, coding-harness
+first-class per D-track finding 'harness doubles chat-tier'), P1 respec, scripted-actor
+smoke + one cheap-model loop test; post 11 setup edition (results stub). Round-1 eval
+roster (user): Fable 5 + gpt-5.6-sol at ceiling first — measure true difficulty before
+adding help. Full physim->blobs site migration deferred until agent evals verified.
