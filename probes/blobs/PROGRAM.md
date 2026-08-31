@@ -953,3 +953,12 @@ phenotype-cluster species + spatial-class archive axis + merge_spatial_ic bridge
 Wall grammar: contingent v3.1 (trigger: economy cells empty with rising s9/t9).
 v3-metrics child building metrics_v3 + three-bank validation gate (registry/champions
 low-mid, hand-built bounded/transport positives high, anti-gaming zeros).
+
+### Track A kickoff (2026-08-31): probe-device + A0 adequacy study
+Spec settled through 4 design rounds (user): probe-device = undisclosed lattice
+sensor array (sq/tri/hex, ~3 rings), center-co-located injection, move/dilate
+controls, k x n scalar streams FIXED per world (retinotopy decision), sensor-
+currency contracts P1-P5, no images/coordinates/dimension disclosure ever.
+a0-adequacy child building device layer + reference pipelines (geometry
+bootstrap, soliton detection, closed-loop tracking) + adequacy curves on
+E1/E2/E3 (p4g2_044/p6g8_033/p3g9_022). Agent trials gated on adequacy review.
