@@ -1,0 +1,172 @@
+{
+ "name": "coex",
+ "bank": "a",
+ "seed": 1,
+ "note": "GT world gt_coex",
+ "interest_v2": 15.56,
+ "interest_v3": 11.67,
+ "C9": 0.0,
+ "spatial_class": "structured",
+ "factors": {
+  "t9": 0.2485,
+  "s9": 0.6286,
+  "e9": 0.0,
+  "r9": 0.4047
+ },
+ "partial": false,
+ "t9_detail": {
+  "t9": 0.2485,
+  "void_frac": 0.9782,
+  "percolates": true,
+  "disp_med": 3.39,
+  "disp_score": 0.37,
+  "r_blob": 3.05,
+  "n_win": 468,
+  "n_win_void": 3,
+  "mask_src": "snaps",
+  "alive": true,
+  "void_tent": 0.6716
+ },
+ "s9_detail": {
+  "s9": 0.6286,
+  "shell_frac": 0.0484,
+  "mask_frac": 0.0218,
+  "n_snaps": 5,
+  "enrich": 12.97,
+  "pairs": {
+   "K[0,0]": {
+    "kind": "K",
+    "s": 0.7067,
+    "share": 0.0367
+   },
+   "K[0,1]": {
+    "kind": "K",
+    "s": 0.7303,
+    "share": 0.0613
+   },
+   "K[1,3]": {
+    "kind": "K",
+    "s": 0.6615,
+    "share": 0.1022
+   },
+   "K[1,5]": {
+    "kind": "K",
+    "s": 0.5648,
+    "share": 0.0602
+   },
+   "K[2,4]": {
+    "kind": "K",
+    "s": 0.6286,
+    "share": 0.0655
+   },
+   "K[2,5]": {
+    "kind": "K",
+    "s": 0.5648,
+    "share": 0.0684
+   },
+   "B[0,2,1]": {
+    "kind": "bilin",
+    "s": 0.8526,
+    "share": 0.0004
+   },
+   "W[0,0]": {
+    "kind": "W",
+    "s": 0.5915,
+    "share": 0.0929
+   },
+   "W[0,1]": {
+    "kind": "W",
+    "s": 0.6362,
+    "share": 0.0302
+   },
+   "W[1,0]": {
+    "kind": "W",
+    "s": 0.5915,
+    "share": 0.0929
+   },
+   "W[2,0]": {
+    "kind": "W",
+    "s": 0.8983,
+    "share": 0.0009
+   },
+   "W[3,0]": {
+    "kind": "W",
+    "s": 0.5915,
+    "share": 0.0222
+   },
+   "W[3,1]": {
+    "kind": "W",
+    "s": 0.6362,
+    "share": 0.1334
+   },
+   "W[4,2]": {
+    "kind": "W",
+    "s": 0.6367,
+    "share": 0.1106
+   },
+   "W[5,1]": {
+    "kind": "W",
+    "s": 0.6362,
+    "share": 0.0667
+   },
+   "W[5,2]": {
+    "kind": "W",
+    "s": 0.6367,
+    "share": 0.0553
+   }
+  }
+ },
+ "e9_detail": {
+  "e9": 0.0,
+  "n_bonds": 12,
+  "mass_epi": 0.0,
+  "mass_tot": 21800.0,
+  "frozen_frac": 0.8333,
+  "life_med": 2025.0,
+  "epi_frac": 0.0
+ },
+ "d7b": {
+  "n_tracks": 12,
+  "n_species": 4,
+  "n_eff": 3.618,
+  "takeover": 0.0,
+  "r9": 0.4047,
+  "k_best": 4,
+  "sil": 0.8673,
+  "features": 5,
+  "persist": {
+   "0": 1005.0,
+   "1": 1005.0,
+   "2": 1005.0,
+   "3": 1005.0
+  }
+ },
+ "C": {
+  "C1_popdyn": 0.05,
+  "C2_timescale": 0.20091711339600302,
+  "C3_motion": 0.0099,
+  "C4_graph": 0.4518,
+  "C5_memory": 0.26720267186098945,
+  "C6_ecology": 0.0,
+  "C7_roles": 0.385409658214917,
+  "C8_succession": 0.0,
+  "C9_spatial": 0.0
+ },
+ "horizon": {
+  "T": 2500.0,
+  "why": "static",
+  "traj": [
+   [
+    2500.0,
+    15.56
+   ]
+  ]
+ },
+ "flags": {
+  "box_limit": false,
+  "box_span_frac": 0.062,
+  "box_persist": 0.0
+ },
+ "status": "ok",
+ "wall": 800.5
+}
