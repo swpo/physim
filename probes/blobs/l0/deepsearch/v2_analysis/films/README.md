@@ -24,3 +24,21 @@ Captured nblobs_end vs assay: p4g2_044 21/21 exact, p4g3_033 247/241,
 p5g3_040 93/92, smoke_m0 12 frozen, ds3_014 80 (delayed onset),
 p3g9_022 189 vs 151@20k — GREW past the cap, confirming the rising-at-exit
 claim on camera.
+
+## Slow-motion segments (2026-08-31, one A100-40GB pod, ~11 min GPU wall, pod terminated after)
+
+`jobs_slomo.json` re-simulates 3 champions with dense in-window snapshots:
+every 5tu (REC grid, 101 frames) over one 500tu window each, riding ONE
+tensor to the latest window end (t_start feature in film_job.py; advance to
+window start records cheap activator-only pulls, no full snaps):
+
+* p6g8_033 t=10,000-10,500 (mature rotor core; count pinned at 31)
+* p3g9_022 t=19,500-20,000 (cap-crossing boom; count 148-162, ends 151 = assay)
+* p4g3_033 t= 5,000- 5,500 (rotor storm peak growth; count 136->165)
+
+Render: render_film.py --fps 8 --crf 27 --zoom-pop (window-local population
+panel) -> v2_<cand>_slomo.mp4, 12.6s each, 0.17/0.59/0.47 MB.
+40tu/s of sim time vs the originals' ~900tu/s: ~12x finer time resolution.
+Decorrelation check (species-1 full field): consecutive 25tu frames corr
+r=0.98 (p6g8) / 0.23 (p3g9) / 0.94 (p4g3); at 5tu those become
+1.00 / 0.86 / 0.99 — the fast movers were strobing on the 25tu grid.

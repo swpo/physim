@@ -20,6 +20,8 @@ def main():
     ap.add_argument("--title", default=None)
     ap.add_argument("--fps", type=float, default=2.5)
     ap.add_argument("--crf", type=int, default=23)
+    ap.add_argument("--zoom-pop", action="store_true",
+                    help="zoom population panel to the snapshot window (slomo)")
     a = ap.parse_args()
 
     d = np.load(a.npz, allow_pickle=True)
@@ -41,7 +43,11 @@ def main():
     panel = 3.4
     fig_w, fig_h = panel * ncol, panel + 0.55
     tmp = tempfile.mkdtemp(prefix="film_")
+    if a.zoom_pop and len(rec_ts):          # slomo: window-local pop panel
+        m = (rec_ts >= ts.min() - 1e-9) & (rec_ts <= ts.max() + 1e-9)
+        rec_ts, rec_ct = rec_ts[m], rec_ct[m]
     ct_max = max(rec_ct.max(), 1.0) if len(rec_ct) else 1.0
+    ct_min = min(rec_ct.min(), ct_max) if len(rec_ct) else 0.0
 
     for k in range(nf):
         fig, axes = plt.subplots(1, ncol, figsize=(fig_w, fig_h))
@@ -62,8 +68,10 @@ def main():
         if len(rec_ts):
             axp.plot(rec_ts, rec_ct, color="#0969da", lw=1.2)
             axp.axvline(ts[k], color="#d43a2f", lw=1.0)
-            axp.set_xlim(0, max(rec_ts.max(), ts.max()))
-            axp.set_ylim(0, ct_max * 1.08)
+            axp.set_xlim((ts.min() if a.zoom_pop else 0),
+                         max(rec_ts.max(), ts.max()))
+            axp.set_ylim((max(0.0, ct_min * 0.92) if a.zoom_pop else 0),
+                         ct_max * 1.08)
         axp.set_title("blob count", fontsize=10)
         axp.tick_params(labelsize=8)
         axp.set_xlabel("t (tu)", fontsize=8)

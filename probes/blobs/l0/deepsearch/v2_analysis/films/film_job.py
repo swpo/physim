@@ -12,7 +12,9 @@ import json, os, sys, time
 import numpy as np
 from blobkit.soup import sim_gpu as SG
 
-def snap_schedule(T, frames):
+def snap_schedule(T, frames, t0=None):
+    if t0 is not None:            # slow-motion window: every 5tu (REC grid)
+        return [float(t) for t in np.arange(t0, T + 1e-9, 5.0)]
     ts = np.linspace(0.0, T, frames)
     ts = sorted({float(round(t / 25.0) * 25.0) for t in ts} | {0.0, float(T)})
     return ts
@@ -41,12 +43,13 @@ def save_world(S, job, outdir):
           f"nblobs_end={ct[-1] if len(ct) else 'na'}", flush=True)
 
 def run_group(group, outdir):
-    T = float(group[0]["T"])
+    T = max(float(j["T"]) for j in group)   # latest window end in the group
     t0 = time.time()
     SS = SG.init_soup_gpu_batch([(j["genome"], j["seed"]) for j in group],
                                 L=128.0, dtype="f32")
     for S, j in zip(SS["worlds"], group):
-        S["snap_t"] = snap_schedule(T, j.get("frames", 56))
+        S["snap_t"] = snap_schedule(float(j["T"]), j.get("frames", 56),
+                                    t0=j.get("t_start"))
     statuses = SG.advance_gpu_batch(SS, T, overlap=True)
     wall = time.time() - t0
     print(f"group T={T} n={len(group)} statuses={statuses} wall={wall:.1f}s",
@@ -66,8 +69,8 @@ def main():
     print("jax devices:", jax.devices(), flush=True)
     groups = {}
     for j in jobs:
-        groups.setdefault(float(j["T"]), []).append(j)
-    for T in sorted(groups):
+        groups.setdefault(j.get("group", float(j["T"])), []).append(j)
+    for T in sorted(groups, key=str):
         run_group(groups[T], outdir)
     print("ALL DONE", flush=True)
 
