@@ -24,14 +24,18 @@ A. MEASUREMENT v3 (2026-08-31, settled design: the PROBE-DEVICE):
      i) INPUTS: n injection channels (one per port) driving a source at the
         DEVICE CENTER: inject(port, amplitude, duration) under integral
         budget (poke/background/nucleation regimes all expressible)
-     ii) MOTION: 2 direction controls (anonymous basis, per-episode secret
-        rotation/reflection; steps cost budget; world topology undisclosed —
-        wrap discoverable by long walks)
+     ii) MOTION: 2 direction controls (anonymous basis, FIXED per world,
+        secret rotation/reflection chosen at world build; steps cost budget;
+        world topology undisclosed — wrap discoverable by long walks)
      iii) DILATION: one control scaling node spacing (zoom without images;
         min/max undisclosed)
-     iv) OUTPUTS: k scalar streams per port = k x n channels, channel order
-        SHUFFLED per episode (agents must self-calibrate channel->node
-        correspondence via correlation + motion/dilation experiments)
+     iv) OUTPUTS: k scalar streams per port = k x n channels. Channel order
+        FIXED per world (2026-08-31 decision: like retinotopy — nature wires
+        sensors once; agents master a consistent instrument, knowledge
+        compounds across episodes). Order + direction basis randomized only
+        ACROSS worlds (fresh world = fresh instrument; anti-memorization
+        preserved between benchmark items). Layout remains UNDISCLOSED —
+        consistent, not explained.
    Notes: sensors sample bilinearly at node positions (continuum-honest);
    no arrays/images; no coordinates; no lattice/geometry disclosure; k and
    n are visible as channel counts (unavoidable and fine — control/channel
