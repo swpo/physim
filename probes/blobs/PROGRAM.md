@@ -941,3 +941,15 @@ the gated prototypes (record_mode=device, apply_mode=async config flags);
 6 pods x 1 island x 20 gens from union5+isl1 (211 cells); projected gen cycle
 ~35-50 min => campaign completes in single-digit hours, ~$150-250 remaining.
 0.4 proper (driver-native devrec, CREC phase 2, battery overlap) = post-campaign.
+
+
+### v3 KICKOFF (2026-08-31, user-approved specs)
+Sequence: v3 metrics NOW -> pilot after validation review -> agent-env trials on v2
+champions (needs more discussion) -> PoU-gluing stepper port (v4) AFTER agent-eval
+work settles. v3 core = C9 spatial economy (traversal/surface-locality/episodic-
+encounters/robust-diversity, geometric mean, consequences-not-appearance) + d7b
+phenotype-cluster species + spatial-class archive axis + merge_spatial_ic bridge
+(IC-level spatial composition; true per-region coefficients gated on v4 stepper).
+Wall grammar: contingent v3.1 (trigger: economy cells empty with rising s9/t9).
+v3-metrics child building metrics_v3 + three-bank validation gate (registry/champions
+low-mid, hand-built bounded/transport positives high, anti-gaming zeros).
