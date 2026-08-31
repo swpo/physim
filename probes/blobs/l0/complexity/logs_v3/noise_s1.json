@@ -1,0 +1,112 @@
+{
+ "name": "noise",
+ "bank": "c",
+ "seed": 1,
+ "note": "M0 spot-soup corner (k1=-0.5,k4=2.5): alive churn",
+ "interest_v2": 9.13,
+ "interest_v3": 6.84,
+ "C9": 0.0,
+ "spatial_class": "structured",
+ "factors": {
+  "t9": 0.0,
+  "s9": 0.7158,
+  "e9": 0.0001,
+  "r9": 0.2154
+ },
+ "partial": false,
+ "t9_detail": {
+  "t9": 0.0,
+  "void_frac": 0.7339,
+  "percolates": true,
+  "disp_med": null,
+  "disp_score": null,
+  "r_blob": 4.2,
+  "n_win": 2067,
+  "n_win_void": 0,
+  "mask_src": "snaps",
+  "alive": true,
+  "void_tent": 1.0
+ },
+ "s9_detail": {
+  "s9": 0.7158,
+  "shell_frac": 0.6597,
+  "mask_frac": 0.2661,
+  "n_snaps": 5,
+  "enrich": 1.09,
+  "carpet_acts": [],
+  "pairs": {
+   "K[0,0]": {
+    "kind": "K",
+    "s": 0.7228,
+    "share": 0.1459
+   },
+   "K[0,1]": {
+    "kind": "K",
+    "s": 0.9375,
+    "share": 0.1469
+   },
+   "W[0,0]": {
+    "kind": "W",
+    "s": 0.6684,
+    "share": 0.3536
+   },
+   "W[1,0]": {
+    "kind": "W",
+    "s": 0.6684,
+    "share": 0.3536
+   }
+  }
+ },
+ "e9_detail": {
+  "e9": 0.0001,
+  "n_bonds": 139,
+  "mass_epi": 375.0,
+  "mass_tot": 275150.0,
+  "frozen_frac": 0.9568,
+  "life_med": 2025.0,
+  "support": 1.0,
+  "epi_frac": 0.0014
+ },
+ "d7b": {
+  "n_tracks": 53,
+  "n_species": 2,
+  "n_eff": 1.983,
+  "takeover": 0.0,
+  "r9": 0.2154,
+  "k_best": 2,
+  "sil": 0.5437,
+  "features": 1,
+  "persist": {
+   "0": 1005.0,
+   "1": 1005.0
+  }
+ },
+ "C": {
+  "C1_popdyn": 0.05,
+  "C2_timescale": 0.36271202956685045,
+  "C3_motion": 8.469392556344987e-05,
+  "C4_graph": 0.25,
+  "C5_memory": 0.0,
+  "C6_ecology": 0.10377358490566038,
+  "C7_roles": 0.0,
+  "C8_succession": 0.0,
+  "C9_spatial": 0.0
+ },
+ "horizon": {
+  "T": 2500.0,
+  "why": "static",
+  "traj": [
+   [
+    2500.0,
+    9.13
+   ]
+  ]
+ },
+ "flags": {
+  "box_limit": false,
+  "box_span_frac": 0.473,
+  "box_persist": 0.0
+ },
+ "status": "ok",
+ "wall": 93.0
+}

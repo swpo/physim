@@ -1,0 +1,2 @@
+[assay_v3 dead s1] T=2500 interest_v2=14.1 fired=[]
+{"name": "dead", "C9": 0.0, "cls": "mixed", "f": {"t9": 0.0, "s9": null, "e9": 1.0, "r9": 0.0}, "iv2": 14.12, "iv3": 10.59, "wall": 713.4}

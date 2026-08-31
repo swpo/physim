@@ -1,0 +1,81 @@
+{
+ "name": "dead",
+ "bank": "c",
+ "seed": 1,
+ "note": "champion chemistry, lam x0.2 (subcritical)",
+ "interest_v2": 14.12,
+ "interest_v3": 10.59,
+ "C9": 0.0,
+ "spatial_class": "mixed",
+ "factors": {
+  "t9": 0.0,
+  "s9": null,
+  "e9": 1.0,
+  "r9": 0.0
+ },
+ "partial": true,
+ "t9_detail": {
+  "t9": 0.0,
+  "void_frac": 0.0,
+  "percolates": false,
+  "disp_med": null,
+  "disp_score": null,
+  "r_blob": 72.22,
+  "n_win": 0,
+  "n_win_void": 0,
+  "mask_src": "snaps",
+  "alive": true,
+  "void_tent": 0.0
+ },
+ "s9_detail": {
+  "s9": null,
+  "why": "empty_or_full_mask"
+ },
+ "e9_detail": {
+  "e9": 1.0,
+  "n_bonds": 12,
+  "mass_epi": 300.0,
+  "mass_tot": 300.0,
+  "frozen_frac": 0.0,
+  "life_med": 25.0,
+  "epi_frac": 1.0
+ },
+ "d7b": {
+  "n_tracks": 0,
+  "n_species": 0,
+  "n_eff": 0.0,
+  "takeover": 0.0,
+  "r9": 0.0,
+  "k_best": 0,
+  "sil": null,
+  "features": null
+ },
+ "C": {
+  "C1_popdyn": 0.05,
+  "C2_timescale": 0.0,
+  "C3_motion": 0.0,
+  "C4_graph": 0.1,
+  "C5_memory": 0.0,
+  "C6_ecology": 0.6666666666666666,
+  "C7_roles": 0.0,
+  "C8_succession": 0.0,
+  "C9_spatial": 0.0
+ },
+ "horizon": {
+  "T": 2500.0,
+  "why": "static",
+  "traj": [
+   [
+    2500.0,
+    14.12
+   ]
+  ]
+ },
+ "flags": {
+  "box_limit": true,
+  "box_span_frac": 1.0,
+  "box_persist": 1.0
+ },
+ "status": "ok",
+ "wall": 713.4
+}

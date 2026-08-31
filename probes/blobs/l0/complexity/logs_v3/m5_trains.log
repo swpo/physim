@@ -1,0 +1,2 @@
+[assay_v3 m5_trains s1] T=2500 interest_v2=26.3 fired=[]
+{"name": "m5_trains", "C9": 0.1412, "cls": "economy", "f": {"t9": 0.3543, "s9": 0.5987, "e9": 0.0086, "r9": 0.2181}, "iv2": 26.27, "iv3": 23.23, "wall": 236.6}

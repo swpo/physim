@@ -57,7 +57,8 @@ def _void_masks(fsnaps, rec):
     dil = int(round(MV3.VOID_DILATE_PX / 0.5))
     masks, raw = [], []
     for F in fsnaps["F"]:
-        m = MV3.support_mask(np.asarray(F[:na]), thr_a)
+        m, _carp = MV3.support_mask(np.asarray(F[:na]), thr_a,
+                                    carpet_frac=MV3.VOID_CARPET_FRAC)
         raw.append(1.0 - m.mean())
         masks.append(~MV3._wrap_binary(m, "dil", dil))
     return masks, (float(np.mean(raw)) if raw else None)

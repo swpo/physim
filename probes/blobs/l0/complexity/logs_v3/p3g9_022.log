@@ -1,0 +1,3 @@
+[assay_v3 p3g9_022 s1] T=2500 interest_v2=50.7 fired=['a_mem', 'b_org']
+[assay_v3 p3g9_022 s1] T=5000 interest_v2=68.6 fired=['a_mem', 'b_org']
+{"name": "p3g9_022", "C9": 0.5139, "cls": "economy", "f": {"t9": 1.0, "s9": 0.6186, "e9": 0.6804, "r9": 0.1657}, "iv2": 68.56, "iv3": 64.27, "wall": 2280.5}

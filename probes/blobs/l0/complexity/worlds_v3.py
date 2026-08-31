@@ -169,16 +169,27 @@ def noise_soup():
     vacuum-exact change) + 3x working noise: blobs keep nucleating/dying,
     tracks shred -> d7b clusters cannot persist -> r9 ~ 0 (and e9 flicker).
     Deliberately ALIVE (the C1 gate must not be the thing that kills it)."""
-    g = G.ref_M0()
-    K = np.asarray(g["K"], float)
-    K[0, 1] = 2.5                # M0 neighbor note: k4=2.5 -> spot soup
-    g["K"] = K.tolist()
-    g["id"] = "c_noise"
-    # v1 of this probe used noise=6e-3: world died <405tu (all_dead) — that
-    # degenerates into the dead-world case (C1 gate), not the r9 test.
-    # WORKING noise keeps the replication churn alive: r9 must do the kill.
+    # Documented M0 replication corner (PROGRAM.md): ORIGINAL params
+    # k1=-0.5, k4=2.5 -> spot soup. Rebuild in deviation form exactly like
+    # G.ref_M0 does (root of the original cubic, K folded into k1_g).
+    # Probe history: K_w=2.5 at fixed vacuum kills blobs (all_dead@405,
+    # C1-degenerate); 6e-3 noise same. This corner is ALIVE churn: blobs
+    # replicate/die continuously -> tracks shred -> d7b clusters cannot
+    # persist -> the r9-named kill.
+    lam, k1, k3, k4 = 2.0, -0.5, 1.0, 2.5
+    tau, theta, Du, Dv, Dw = 3.0, 0.7, 1.0, 1.0, 20.0
+    r = np.roots([-1.0, 0.0, lam - k3 - k4, k1])
+    u0 = sorted(x.real for x in r if abs(x.imag) < 1e-9)[0]
+    act = G._mk_act(lam, k1, (k3 + k4) * u0, u0, Du)
+    g = dict(id="c_noise",
+             acts=[act],
+             chans=[dict(tau=tau, D=Dv, g="id", thr=0.0, sc=1.0),
+                    dict(tau=theta, D=Dw, g="id", thr=0.0, sc=1.0)],
+             W=[[1.0], [1.0]], K=[[k3, k4]], bilin=[],
+             provenance=dict(kind="probe", source="M0 replication corner "
+                             "k1=-0.5 k4=2.5 (spot soup)"))
     return dict(genome=g, ic=None, kw=dict(cap=2500.0),
-                note="m0 K_w=2.5 spot soup, working noise (alive churn)")
+                note="M0 spot-soup corner (k1=-0.5,k4=2.5): alive churn")
 
 
 BANK_B = dict(cargo_cell=cargo_cell, m5_trains=m5_trains,

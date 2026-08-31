@@ -4,18 +4,18 @@
  "seed": 1,
  "note": "GT world gt_m4",
  "interest_v2": 22.36,
- "interest_v3": 28.2,
- "C9": 0.4572,
+ "interest_v3": 28.97,
+ "C9": 0.4882,
  "spatial_class": "economy",
  "factors": {
-  "t9": 0.7691,
+  "t9": 1.0,
   "s9": 0.5963,
   "e9": 0.3411,
   "r9": 0.2793
  },
  "partial": false,
  "t9_detail": {
-  "t9": 0.7691,
+  "t9": 1.0,
   "void_frac": 0.9758,
   "percolates": true,
   "disp_med": 14.01,
@@ -25,7 +25,7 @@
   "n_win_void": 456,
   "mask_src": "snaps",
   "alive": true,
-  "void_tent": 0.7691
+  "void_tent": 1.0
  },
  "s9_detail": {
   "s9": 0.5963,
@@ -33,6 +33,7 @@
   "mask_frac": 0.0242,
   "n_snaps": 5,
   "enrich": 11.24,
+  "carpet_acts": [],
   "pairs": {
    "K[0,0]": {
     "kind": "K",
@@ -63,6 +64,7 @@
   "mass_tot": 33200.0,
   "frozen_frac": 0.1154,
   "life_med": 225.0,
+  "support": 1.0,
   "epi_frac": 0.3855
  },
  "d7b": {
@@ -89,7 +91,7 @@
   "C6_ecology": 0.0,
   "C7_roles": 0.0,
   "C8_succession": 0.0,
-  "C9_spatial": 0.4572
+  "C9_spatial": 0.4882
  },
  "horizon": {
   "T": 2500.0,
@@ -107,5 +109,5 @@
   "box_persist": 0.0
  },
  "status": "ok",
- "wall": 194.6
+ "wall": 85.1
 }

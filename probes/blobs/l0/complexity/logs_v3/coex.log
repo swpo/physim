@@ -1,0 +1,2 @@
+[assay_v3 coex s1] T=2500 interest_v2=15.6 fired=[]
+{"name": "coex", "C9": 0.0, "cls": "structured", "f": {"t9": 0.2485, "s9": 0.6286, "e9": 0.0, "r9": 0.4047}, "iv2": 15.56, "iv3": 11.67, "wall": 800.5}

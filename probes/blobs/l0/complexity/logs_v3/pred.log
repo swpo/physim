@@ -1,0 +1,2 @@
+[assay_v3 pred s1] T=2500 interest_v2=37.9 fired=['a_mem', 'b_org']
+{"name": "pred", "C9": 0.2298, "cls": "economy", "f": {"t9": 0.7354, "s9": 0.8756, "e9": 0.0449, "r9": 0.0964}, "iv2": 37.95, "iv3": 34.2, "wall": 794.9}

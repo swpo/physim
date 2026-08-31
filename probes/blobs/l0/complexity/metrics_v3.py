@@ -54,14 +54,27 @@ from metrics_v1 import (BURN, REC, CREC, MOVE_THR, window_mask, series_n,
 # 0.95-0.99 — a symmetric tent [0.35,0.9] would zero the sparse positives.
 # Plateau credit for any void majority; kill only labyrinth-dense (< lo0)
 # and blank/merely-dead (> hi2, C1 gate handles truly dead).
-VOID_KNOTS = (0.35, 0.55, 0.97, 0.995)
+VOID_KNOTS = (0.35, 0.55, 0.99, 0.9975)   # gate-tuned (see VALIDATION_V3):
+                           # upper ramp only above 0.99 — m4/m5_trains sit at
+                           # void .976/.984 with certified transport; empt-
+                           # iness w/o movers is already killed by disp+C1
 VOID_DILATE_PX = 0.0       # optional support skirt (0 = spec-literal raw)
+VOID_CARPET_FRAC = 0.85    # an act whose thr_a support covers > this box
+                           # fraction is a MEDIUM/carpet (iso-background
+                           # class), not organisms: excluded from the
+                           # occupancy union (t9 void + s9 shell). Labyrinths
+                           # (stripes, 0.4-0.7 cover) stay counted+punished.
+                           # Added at the gate: p4g2_044 diagnosis.
 TRAV_WIN = 100.0           # tu per traversal window
 TRAV_RADII = 3.0           # full credit at >= this many blob radii / window
 TRAV_CHORD_PTS = 6         # interior sample points on each window chord
 SHELL_PX = 2.0             # s9 boundary shell half-width (dilate xor erode)
 E9_BAND = (10.0, 500.0)    # episodic bond-lifetime band (tu)
 E9_FROZEN = 0.80           # pair bonded > this fraction of window = frozen
+E9_SUPPORT_TU = 2000.0     # bond-mass support floor: e9 fades in with
+                           # total bond-lifetime mass (12 anecdotal bonds in
+                           # a near-dead world must not score e9=1 — gate
+                           # evidence: bank-c dead world)
 LATE_W_MIN = 1000.0        # d7b late window: last max(this, 0.2*span) tu
 D7B_KMAX = 24              # k-means scan ceiling
 D7B_MIN_ROWS = 6           # min feature rows to attempt clustering
@@ -102,12 +115,19 @@ def _wrap_binary(mask, op, iters):
     return big[p:-p, p:-p]
 
 
-def support_mask(F_acts, thr_a):
-    """Union act support at thr_a from a full-field snapshot (acts block)."""
+def support_mask(F_acts, thr_a, carpet_frac=None):
+    """Union act support at thr_a from a full-field snapshot (acts block).
+    carpet_frac: acts covering > this fraction are media, excluded (their
+    indices returned). None -> include all (raw union)."""
     m = np.zeros(F_acts.shape[1:], bool)
+    excluded = []
     for i in range(F_acts.shape[0]):
-        m |= np.asarray(F_acts[i], np.float64) > thr_a[i]
-    return m
+        mi = np.asarray(F_acts[i], np.float64) > thr_a[i]
+        if carpet_frac is not None and mi.mean() > carpet_frac:
+            excluded.append(i)
+            continue
+        m |= mi
+    return (m, excluded) if carpet_frac is not None else m
 
 
 def disk_mask_from_blobs(rec, k, dilate_cells=0):
@@ -362,8 +382,10 @@ def s9_surface(rec, genome, fsnaps):
     s9_num = s9_den = 0.0
     shell_area = mask_area = 0.0
     n_used = 0
+    carpets = []
     for F in fsnaps["F"]:
-        m = support_mask(np.asarray(F[:na]), thr_a)
+        m, carpets = support_mask(np.asarray(F[:na]), thr_a,
+                                  carpet_frac=VOID_CARPET_FRAC)
         if not m.any() or m.all():
             continue
         shell = _wrap_binary(m, "dil", dil) ^ _wrap_binary(m, "ero", dil)
@@ -389,7 +411,7 @@ def s9_surface(rec, genome, fsnaps):
     return dict(s9=round(float(s9), 4), shell_frac=round(shell_frac, 4),
                 mask_frac=round(mask_area / n_used, 4), n_snaps=n_used,
                 enrich=round(float(s9 / max(shell_frac, 1e-9)), 2),
-                pairs=pairs)
+                carpet_acts=carpets, pairs=pairs)
 
 
 # ================================================================= e9
@@ -423,7 +445,9 @@ def e9_episodic(rec, v2_out):
             mass_epi += Lt
     frozen = [p for p, b in per_pair_bonded.items() if b > E9_FROZEN * win]
     frozen_frac = len(frozen) / max(len(per_pair_bonded), 1)
-    e9 = (mass_epi / max(mass_tot, 1e-9)) * (1.0 - frozen_frac)
+    support = min(mass_tot / E9_SUPPORT_TU, 1.0)
+    e9 = (mass_epi / max(mass_tot, 1e-9)) * (1.0 - frozen_frac) * support
+    out["support"] = round(float(support), 4)
     out.update(e9=round(float(e9), 4), n_bonds=len(lives),
                mass_epi=round(mass_epi, 1), mass_tot=round(mass_tot, 1),
                frozen_frac=round(float(frozen_frac), 4),
@@ -555,8 +579,13 @@ def d7b_species(rec, v2_out):
         return out
     Xz = (X[:, keep] - X[:, keep].mean(axis=0)) / sd[keep]
     # ---- k-means + silhouette scan
+    # single informative feature: cap k at 2 (a 1-D split into >2 strata is
+    # packing geometry, not phenotypes — gate evidence: c_noise spot lattice
+    # scored 5 "species" on log-area alone)
     from scipy.cluster.vq import kmeans2
     kmax = int(min(D7B_KMAX, len(rows) // 3))
+    if nfeat == 1:
+        kmax = min(kmax, 2)
     best = (1, None, -1.0)
     for k in range(2, max(kmax, 2) + 1):
         try:
@@ -636,13 +665,14 @@ def d7b_species(rec, v2_out):
 
 
 # ================================================================= C9 + glue
-def spatial_class(s9, t9):
+def spatial_class(s9, t9, C9=None):
     """{mixed|structured|economy} from (s9, t9). economy = interactions at
-    surfaces AND used emptiness; structured = one of the two; mixed = neither.
+    surfaces AND used emptiness AND a live C9 (all factors nonzero) —
+    a never-bonding gas with nice geometry is structured, not an economy.
     None s9 (no snapshots) grades on t9 alone (structured at best)."""
     s_hi = (s9 is not None) and (s9 >= S9_CLASS)
     t_hi = (t9 is not None) and (t9 >= T9_CLASS)
-    if s_hi and t_hi:
+    if s_hi and t_hi and (C9 is None or C9 > 0.0):
         return "economy"
     if s_hi or t_hi:
         return "structured"
@@ -673,7 +703,7 @@ def c9_spatial_economy(rec, genome=None, fsnaps=None, v2_out=None,
         vals = np.array([max(v, 0.0) for v in avail.values()], float)
         C9 = float(np.exp(np.mean(np.log(np.clip(vals, 1e-9, None))))) \
             if (vals > 0).all() else 0.0
-    cls = spatial_class(factors.get("s9"), factors.get("t9"))
+    cls = spatial_class(factors.get("s9"), factors.get("t9"), C9=C9)
     return dict(C9=round(C9, 4), factors=factors, partial=partial,
                 spatial_class=cls, alive=bool(alive),
                 t9_detail=t9, s9_detail=s9, e9_detail=e9, d7b=d7b)

@@ -1,0 +1,2 @@
+[assay_v3 cargo_cell s1] T=2500 interest_v2=40.5 fired=[]
+{"name": "cargo_cell", "C9": 0.3111, "cls": "economy", "f": {"t9": 0.7466, "s9": 0.6703, "e9": 0.1839, "r9": 0.1018}, "iv2": 40.5, "iv3": 38.15, "wall": 492.8}

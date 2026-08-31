@@ -1,0 +1,2 @@
+[assay_v3 frozen s1] T=2500 interest_v2=2.8 fired=[]
+{"name": "frozen", "C9": 0.0, "cls": "structured", "f": {"t9": 0.0, "s9": 0.6335, "e9": 0.0, "r9": 0.0}, "iv2": 2.8, "iv3": 2.1, "wall": 266.4}

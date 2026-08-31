@@ -1,0 +1,2 @@
+[assay_v3 m2_dimer s1] T=2500 interest_v2=27.4 fired=['b_org']
+{"name": "m2_dimer", "C9": 0.4213, "cls": "economy", "f": {"t9": 0.7538, "s9": 0.5913, "e9": 0.2399, "r9": 0.2945}, "iv2": 27.42, "iv3": 31.1, "wall": 253.1}
