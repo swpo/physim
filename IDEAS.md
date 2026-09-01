@@ -202,3 +202,12 @@ is replenished. All need probe campaigns before engine work.
   persistent compile cache. Measured context: full-assay batch 100 w/h vs tracking-only
   396 w/h reference — battery 0.25s/world is NOT the gap; host round-trips + underfilled
   B=32 are.
+
+- RESEARCH-DEPLOY MECHANISM (user, 2026-08-31): the v3-pilot friction identified a
+  missing layer: deploying UNVALIDATED research modules (probes/*) onto production
+  bundles without polluting the certified package. Wanted: `make_bundle(...,
+  research_overlay=[paths])` that auto-copies research modules into bundle lib/,
+  auto-generates the wheel-shims for their top-level imports (import-scan ->
+  blobkit mapping table), and runs an import smoke — turning tonight's 6 manual
+  shims + hand-patches into one flag. Post-validation, modules graduate into
+  blobkit proper at the next relock. Target: blobkit 0.4/0.5.
