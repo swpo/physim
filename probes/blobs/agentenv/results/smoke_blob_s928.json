@@ -1,0 +1,49 @@
+{
+ "world": "p4g2_044",
+ "seed": 928,
+ "reward_accuracy": 0.6004,
+ "accs": {
+  "P1": 0.0,
+  "P2": 0.38817799840633116,
+  "P3": 0.9678155609557243
+ },
+ "crps": {
+  "p1": 0.136577,
+  "p2": 0.7397,
+  "p3": 0.004973
+ },
+ "p2_mae": 1.0347,
+ "baselines": {
+  "p1_ref": 0.13215,
+  "p1_persistence": 0.13215,
+  "p1_climatology": 0.13915,
+  "p2_ref": 1.20895,
+  "p2_zero": 6.3125,
+  "p2_rate": 1.20895,
+  "p2_pre_rate_per_win": 5.2071,
+  "p3_ref": 0.15453,
+  "p3_persistence": 0.15453,
+  "p3_climatology": 0.16962
+ },
+ "skill": {
+  "p1_vs_persistence": 0.968,
+  "p3_vs_persistence": 31.073,
+  "p2_mae_vs_ref": 1.168
+ },
+ "spend": {
+  "sensor": 32140.0,
+  "motion": 0.0,
+  "injection": 37.5
+ },
+ "n_replicas": 4,
+ "n_reads": 170,
+ "wall_s": 171.1,
+ "gates": {
+  "budgets_respected": true,
+  "p1p2_locked_after_inject": true,
+  "p3_beats_persistence": true,
+  "p2_not_worse_than_ref": true,
+  "all_submitted": true
+ },
+ "smoke_pass": true
+}
