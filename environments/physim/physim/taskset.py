@@ -234,8 +234,10 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2"] = "D0"
-    """World difficulty preset (port opacity + macro complexity + budget)."""
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E2", "BLOB-E3"] = "D0"
+    """World difficulty preset (port opacity + macro complexity + budget).
+    BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
+    only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
     tier: Literal["chat", "tools"] = "chat"
     """chat: JSON-over-messages loop (PhysimEnv drives). tools: per-rollout MCP
     world server for coding harnesses (codex/claude_code); scoring in Task."""
@@ -316,6 +318,148 @@ class PhysimEnv(vf.Env[PhysimEnvConfig]):
             }
 
 
+
+
+# ============================================================ BLOB family
+# Track A round 1: probe-device episodes on evolved blob worlds. Additive
+# to the file: its own Data/Task classes + a branch in PhysimTaskset.load.
+# Design + scoring live in physim/blobcore.py; the agent-facing MCP surface
+# in physim/servers/blob.py. Tools tier ONLY (coding harnesses drive the
+# probe_* toolset; there is no chat-tier BLOB loop).
+
+BLOB_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' geometry, or their placement is documented. Everything must be discovered by experiment.
+
+INTERFACE (MCP tools, prefix probe_)
+- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled at that slot's location. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium: a weather report, not a map.
+- probe_status(): time, budgets, costs, caps, the contracts, lock state.
+- probe_read_streams(window, devices, ports, stride): advance the world up to `window` 5tu steps, reading sensors each `stride`-th step. Sensor cost = slots x 5 per read step per device.
+- probe_wait(steps): advance without reading. Free.
+- probe_move(device, a1, a2, steps, read): apply an anonymous 2-component motion control, |each| <= 1.5, cost |a1|+|a2| per step. The basis is fixed but undisclosed (direction, scale, and handedness are yours to calibrate).
+- probe_dilate(device, gain, read): scale that device's sensor spacing by exp(gain) within undisclosed bounds; cost |log change|. A zoom without images.
+- probe_inject(port, amp, dur, lags, devices, ports): ONLY after the span ends. Forks an independent replica of the world from the span's final instant, emits (port, amp) for dur tu from a FIXED emitter co-located with device 0's INITIAL position, and returns reads at your lags. amp <= 1.0 with steeply convex pricing above 0.5; amp=0 = control replica. Replicas share the same start state and noise stream: differences between replicas are causal responses.
+- probe_submit(contract, payload): submit/revise contract predictions.
+
+EPISODE
+The world runs t = 0 to {t0} tu in 5tu steps (the SPAN), then hard-stops. What happens after t={t0} is never directly observable — it is exactly what the contracts ask you to predict. After the span you may run up to {max_replicas} replica experiments (probe_inject) to calibrate causal responses. Budgets (sensor {b_sensor:.0f}, motion {b_motion:.0f}, injection {b_injection:.0f}) cover the whole episode; unspent budget is not rewarded.
+
+CONTRACTS (issued now; details via probe_status)
+- P1 (weight {w1}): the streams of device 0 AT ITS INITIAL POSE at {p1_h} tu after the span ends, without injection. payload mean shape [{n_h}][{n_ports}][{k0}].
+- P2 (weight {w2}): per consecutive {p2_win:.0f}tu window after the span (there are {p2_n}), the count of upward crossings of the announced (port, threshold, sign) summed over device 0's slots at its initial pose, without injection. payload mean shape [{p2_n}].
+- P3 (weight {w3}, flagship): the harness will run the ANNOUNCED emission (see probe_status: port, amp {ann_amp:g} — far above your cap — dur {ann_dur:g}tu) from the span end, at the same fixed emitter. Predict device 1's streams at its initial pose at the announced lags. payload mean shape [{n_lags}][{n_ports}][{k1}].
+P1 and P2 LOCK at your first probe_inject (they are forecasts from span information). P3 stays open until the episode ends.
+
+SCORING
+Each contract is scored by CRPS against truth, normalized against scripted reference baselines (persistence/climatology-grade): beat the references toward 0 CRPS for accuracy 1, match them for 0. Your "sigma" is your predictive sd — honest uncertainty strictly beats overconfidence. Unsubmitted contracts score 0.
+
+STRATEGY
+You have a full coding environment: record every read, build models offline. Suggested science: (1) learn the device geometry from stream correlations (which slots are neighbors?); (2) calibrate the motion controls by moving and watching structure flow across slots; (3) characterize the medium — is it particulate? what moves? what are the timescales per port?; (4) after the span: control replica first, then small-amp emissions on the announced port; measure the response at device 1, fit amplitude scaling, extrapolate to the announced amp. Watch the clock: the span is {t0} tu and only moves forward. Submit P1/P2 BEFORE your first inject. Always submit all three contracts — calibrated baselines with honest sigma are worth real points."""
+
+BLOB_PROMPT = (
+    "Begin your investigation using the probe_* tools. Start with "
+    "probe_status. Explore the span, submit P1 and P2 before your first "
+    "probe_inject, run replica experiments, then submit P3. Submit every "
+    "contract before finishing.")
+
+
+class BlobData(vf.TaskData):
+    difficulty: str = "BLOB-E1"
+    world: str = ""
+    world_seed: int = 0
+    max_turns: int = 80
+    tier: str = "tools"                # BLOB is tools-tier only (PhysimEnv
+    #                                    branches on data.tier)
+
+
+class BlobTaskConfig(vf.TaskConfig):
+    tools: vf.ToolsetConfig = vf.ToolsetConfig()
+
+
+from physim.blobstate import BlobToolState  # noqa: E402  (state for BlobTask)
+
+
+class BlobTask(vf.Task[BlobData, BlobToolState, BlobTaskConfig]):
+    @classmethod
+    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
+        from physim.servers.blob import BlobToolset
+        return [BlobToolset(config.tools)]
+
+    async def setup(self, trace: vf.Trace, runtime) -> None:
+        st = trace.state
+        st.world = self.data.world
+        st.seed = self.data.world_seed
+
+    async def finalize(self, trace: vf.Trace, runtime) -> None:
+        try:
+            from verifiers.v1.utils.artifacts import collect
+            trace.state.artifacts = await collect(runtime, self.data.artifacts)
+        except Exception as e:  # collection must never fail the rollout
+            trace.info.setdefault("physim_artifact_error", str(e))
+
+    @vf.reward(weight=1.0)
+    async def accuracy(self, trace: vf.Trace) -> float:
+        from physim import blobcore as B
+        st = trace.state
+        world, seed = self.data.world, self.data.world_seed
+        result = B.score_episode(world, seed, st.sub_p1 or "",
+                                 st.sub_p2 or "", st.sub_p3 or "")
+        for c, v in result["accs"].items():
+            trace.record_metric(f"acc_{c}", float(v))
+        for key in ("sensor", "motion", "injection"):
+            spent = (st.spent or {}).get(key, 0.0)
+            trace.record_metric(f"spend_{key}_frac",
+                                float(spent / B.BUDGETS[key]))
+        trace.record_metric("n_replicas", float(st.n_replicas))
+        trace.record_metric("turns_used", float(st.turns))
+        trace.record_metric("span_frac",
+                            float(st.i_ctrl / B.N_STEPS_MAIN))
+        trace.info["physim"] = {
+            "difficulty": self.data.difficulty,
+            "world": world,
+            "world_seed": seed,
+            "tier": "blob",
+            "detail": result["detail"],
+            "replica_log": list(st.replica_log or []),
+            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
+        }
+        return float(result["reward_accuracy"])
+
+
+def _blob_task(config: "PhysimConfig", i: int) -> "BlobTask":
+    from physim import blobcore as B
+    ep = B.episode_cfg(config.difficulty, config.seed0 + i)
+    world, seed = ep["world"], ep["seed"]
+    cc = B.contracts(world, seed)["private"]
+    system_prompt = BLOB_SYSTEM_PROMPT.format(
+        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
+        t0=int(B.T0), max_replicas=B.MAX_REPLICAS,
+        b_sensor=B.BUDGETS["sensor"], b_motion=B.BUDGETS["motion"],
+        b_injection=B.BUDGETS["injection"],
+        w1=B.W_P1, w2=B.W_P2, w3=B.W_P3,
+        p1_h="/".join(str(int(h)) for h in B.P1_HORIZONS),
+        n_h=len(B.P1_HORIZONS),
+        p2_win=B.P2_WIN, p2_n=len(B.truth_p2(world, seed)),
+        ann_amp=B.ANN_AMP, ann_dur=B.ANN_DUR, n_lags=len(B.P3_LAGS))
+    artifacts = [vf.Artifact(
+        source=".",
+        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
+                 ".venv", "*.tar", "*.npz"],
+        required=False,
+    )]
+    data = BlobData(
+        idx=i,
+        name=f"physim-{config.difficulty}#{seed}",
+        prompt=BLOB_PROMPT,
+        system_prompt=system_prompt,
+        difficulty=config.difficulty,
+        world=world,
+        world_seed=seed,
+        max_turns=config.max_turns,
+        artifacts=artifacts,
+    )
+    return BlobTask(data, BlobTaskConfig(judges=list(config.task.judges),
+                                         tools=config.task.tools))
+
+
 def certified_seed(difficulty: str, seed0: int, index: int) -> int:
     """Deterministically map task index -> the (index+1)-th certified seed at
     or after seed0. Cheap for tanh worlds (always certified); GS worlds run a
@@ -336,6 +480,10 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
     INFINITE = True
 
     def load(self) -> Iterator[PhysimTask]:
+        if self.config.difficulty.startswith("BLOB"):
+            for i in itertools.count():
+                yield _blob_task(self.config, i)
+            return
         params = DIFFICULTY_PRESETS[self.config.difficulty]
         tools_tier = self.config.tier == "tools"
         for i in itertools.count():
