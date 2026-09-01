@@ -1,0 +1,276 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Measuring evolved worlds — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style></head><body>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Measuring evolved worlds: the probe-device benchmark (setup)</h1>
+<p class="meta">Post 11 — the evolution campaign (post 10) left us with an archive
+of 423 worlds nobody understands. This post turns the five best into a
+<b>measurement benchmark for AI scientists</b>: a probe-device instrument layer,
+an adequacy study that priced its budgets (54 scripted-pipeline cells), a
+three-contract ladder, and a verifiers/MCP environment that coding agents drive
+end-to-end. Setup edition: round-1 agent results land in the follow-up.
+Code: <code>probes/blobs/agentenv/</code> (instrument + adequacy),
+<code>environments/physim/</code> (the environment). Study log:
+<code>probes/blobs/agentenv/ADEQUACY.md</code>.</p>
+
+<div class="note"><b>The question.</b> Post 10 ended with films: rotor ecologies,
+labyrinths that hold a census steady while reorganizing all their matter, a
+151-organism swarm. We can stare at those films because we own the simulator.
+An agent being <i>evaluated as a scientist</i> must not own anything — no fields,
+no images, no equations, not even the words "blob" or "lattice". The physim
+program has always scored agents this way on <i>designed</i> worlds (bulk matter,
+chemistry, waves; see the <a href="../index.html">main series</a>). Evolved worlds
+break the old instruments, and this post is about why, and what replaced them.</div>
+
+<h2>1 · Why point taps fail here: particulate worlds</h2>
+<p>Every earlier physim tier measured the world through fixed anonymous sensors —
+point taps wired once per world, plus global aggregates. That works for bulk
+matter: the interesting state is collective (phases, fronts, hysteresis), and any
+fixed tap sits <i>in</i> the phenomenon.</p>
+<p>The evolved worlds are different in one decisive way: they are
+<b>particulate</b>. The interesting objects are localized, mobile, and sparse —
+21 stable blobs in a 128×128-unit box in the entry world. A fixed point tap
+almost surely sits in vacuum, and a blob that drifts through its aperture once
+per thousand time units produces a spike train indistinguishable from noise
+bursts. Worse, the natural actions ("poke it", "push a blob in") are spatial:
+a point-force interface can't even express them. The instruments had to become
+spatial without ever disclosing space.</p>
+
+<div class="note"><b>Design principle (settled 2026-08-31): "learn to use your
+hands," applied to eyes.</b> Human scientists do not get told their retina's
+wiring; they wave a hand in front of their face and calibrate. The instrument we
+ship is a <b>probe device</b>: a rigid cluster of point sensors with real
+structure — a lattice patch — whose structure is <i>never documented</i>.
+Discovering your own sensor geometry is the first experiment of every episode.
+Structure exists; it is consistent; it is not explained.</div>
+
+<h3>The probe device</h3>
+<p>One device = <code>k</code> point sensors in a rigid local patch around a
+movable center, sampling every world field bilinearly (continuum-honest — no
+grid reads), plus a co-located emitter at the center. The agent gets, per
+device:</p>
+<table>
+<tr><th>control</th><th>surface</th><th>what's hidden</th></tr>
+<tr><td><b>streams</b></td><td>k × n_ports anonymous scalar channels @ 5 tu</td>
+<td>node layout (square-13 / hex-19 / …), node order (secretly permuted),
+port identities (secretly permuted per world)</td></tr>
+<tr><td><b>motion</b></td><td>2 control axes, |a| ≤ 1.5/step, cost |a₁|+|a₂|</td>
+<td>the basis: a secret rotation + possible reflection of world axes, fixed for
+the whole episode ("retinotopy": nature wires sensors once; agents master a
+consistent instrument)</td></tr>
+<tr><td><b>dilation</b></td><td>one zoom control scaling sensor spacing,
+cost |log change|</td><td>the spacing itself, its bounds — a ruler the agent
+must first calibrate against the world</td></tr>
+<tr><td><b>emission</b></td><td>inject(port, amp, dur) from the device center,
+budgeted</td><td>the stamp profile (σ=2 Gaussian), what the port drives</td></tr>
+<tr><td><b>global stats</b></td><td>free per-port mean/variance of the whole
+medium</td><td>everything spatial — it's a weather report, not a map</td></tr>
+</table>
+<p>The only structural facts an agent ever sees are <i>counts</i>: 2 devices,
+13 and 19 slots, 12 ports. Everything else — that slots form a lattice, that
+the two devices differ in geometry, that one motion unit is 3–3.5 space units,
+that the box wraps — is discoverable, priced science.</p>
+
+<div class="warn"><b>The barrier, stated once.</b> The genome→environment
+boundary is the program's oldest law (post 7 onward: searchers never see genomes).
+Here it means: (b1) ports are a secret permutation of the world's fields —
+never named; (b2) instruments are generic signal processing; (b3) contracts are
+defined ONLY on sensor-observable quantities — no window counts, no positions,
+nothing that presumes geometry we refuse to disclose; (b4) the env code path
+touches the sim state only through the port layer (blob metrics stay on the
+evaluator side); (b5) worlds come from the archive by published rule, contracts
+are fixed per (world, seed). The environment's test suite greps every
+agent-visible string — tool responses, prompts, docstrings, contract
+announcements — against a leak-pattern list (coordinates, lattice words,
+port names, blob words). It runs in CI with the other gates.</div>
+
+<h2>2 · A0: is the instrument adequate? (measure the meter first)</h2>
+<p>Before any agent burns tokens, the instrument itself went under test — the
+same discipline as post 2's telescope fix (IMEX-FFT) and post 9's parity gates.
+The <b>A0 adequacy study</b> asks: can <i>scripted</i> reference pipelines,
+speaking only the agent-facing surface, do science through this thing at all?
+And at what sensor budget does capability die?</p>
+<p>Setup: 3 worlds × 3 seeds × 3 budget tiers × 2 device rosters = 54 cells.
+Each (world, seed) is simulated once to 2,500 tu and cached (f16 frames at 5 tu
++ truth blob lists + an f32 mid-run snapshot with RNG state); passive pipeline
+work replays the cache (sensors don't disturb the field — replay was gated
+against live stepping), and injection branches run live once and are shared.
+That sim-once/replay-many design is what made 54 cells affordable on a laptop
+(~4.5 CPU-hours of sim; each pipeline cell replays in seconds).</p>
+<p>The scripted pipelines are honest instrument users, not oracles: correlation
+→ MDS embedding for geometry, dilation wiggles for radial structure, hold-still
+drift subtraction for motion calibration, an online-threshold WATCH/TRACK state
+machine for blob pursuit, AR2/persistence/template forecasters for contracts.</p>
+
+<div class="panel"><img src="../assets/blobs/p11_adequacy_curves.png" alt="A0 adequacy curves: capability vs sensor budget"/>
+<div class="film"><div class="cap">Adequacy curves: scripted-pipeline capability vs sensor budget
+(1/4×, 1×, 4× of a baseline duty), per world (green E1, orange E2, red E3;
+solid r1 = single hex device, dashed r2 = square+hex pair). Top row: geometry
+self-calibration (lattice class, adjacency F1, tracking hold, P1 forecast skill).
+Bottom: P1 at H200, P2 event-rate MAE ratio vs the zero baseline, P3
+injection-response CRPS ratio vs persistence (below 1 = informed pipeline wins),
+and the dilation size-ruler ratio.</div></div></div>
+
+<h3>What the 54 cells said</h3>
+<table>
+<tr><th>capability (scripted pipelines)</th><th>E1 sparse (21 blobs)</th><th>E2 champion (labyrinth+rotors)</th><th>E3 swarm (151 organisms)</th></tr>
+<tr><td>identify own lattice class</td><td>100% at 1×, dies at 1/4×</td><td>same cliff</td><td>same cliff</td></tr>
+<tr><td>recover motion basis (prereq for all closed-loop skill)</td><td>67% at 4×, 33% at 1×, 0% at 1/4×</td><td>100/33/0%</td><td>33/33/0%</td></tr>
+<tr><td>detect particulateness</td><td>100% all tiers</td><td>4× only</td><td>4× reliably</td></tr>
+<tr><td>acquire + hold a blob (tracking)</td><td>acquires when calibrated; ~100% hold, 79% same-blob retention</td><td>acquires (labyrinth is everywhere); identity ill-posed (51%)</td><td>10% — swarm steals the target</td></tr>
+<tr><td>P1 stream forecast skill vs climatology (H=50/200 tu)</td><td>+7% / +5%</td><td>~0</td><td>~0</td></tr>
+<tr><td>P2 event-rate forecast vs zero baseline</td><td>4.5× better</td><td>~ties</td><td>~ties</td></tr>
+<tr><td>P3 injection-response prediction vs persistence</td><td><b>5.0× better</b></td><td><b>3.4×</b></td><td><b>3.2×</b></td></tr>
+<tr><td>announced-injection detectability (z-score)</td><td>620–960</td><td>~5,900</td><td>~8–10k</td></tr>
+</table>
+
+<p>Three findings drove the round-1 configuration:</p>
+<p><b>F1 — the budget knee is between 1× and 4×.</b> Geometry survives down to
+1×; the motion basis needs 4×; nothing survives 1/16 duty. So round 1 runs at
+<b>2× baseline</b> — ON the steep part of the curve. Self-calibration is neither
+free nor hopeless; budget skill is real skill.</p>
+<p><b>F2 — P1 as originally specified was nearly skill-free.</b> The fields
+decorrelate in 10–30 tu at a fixed point, so forecasting raw streams at
+H=50–200 tu is mostly irreducible noise — AR2 beats climatology by 7% on the
+easiest world and ~0 elsewhere. A contract that cannot separate a good agent
+from persistence is dead weight. Round 1 <b>respecs P1 to horizons ≤ 25 tu</b>
+(where autocorrelation still carries signal) and demotes it to tertiary weight.</p>
+<p><b>F3 — P3 is the healthiest contract everywhere</b> — causal,
+budget-sensitive, world-robust (3–5× over persistence on every world). It
+becomes the flagship. But the A0 announced amplitude (3.0) turned out to be a
+<b>free beacon</b>: response z-scores of 600–10,000 mean any agent that pokes at
+amp 3 sees the answer glowing. Round 1 therefore caps agent emissions at
+<b>amp ≤ 1.0</b> with steeply convex pricing above 0.5 — while the <i>announced</i>
+protocol stays at amp 3. Predicting the announced response now requires
+calibrating below the cap and extrapolating: response science, not response
+reading.</p>
+
+<div class="warn"><b>Honest list (what scripted pipelines could NOT do).</b>
+Track through the E3 swarm (10%); pursue a blob more than ~2 patch radii away
+(the reference tracker is reactive, not searching); estimate absolute blob size
+(the dilation ruler lands on the skirt half-width, ~4× under on E1 — ratios only);
+recover motion at 1/4× anywhere; beat climatology at H=200 (maybe genuinely
+irreducible); define "same blob" in the E2 labyrinth at all. Each is either an
+agent opportunity (beat the script) or a round-2 respec note (E2 wants
+preparation-style contracts, not tracking).</div>
+
+<h2>3 · The environment: contracts, budgets, episode</h2>
+<p>The benchmark ships as a new difficulty family (<code>BLOB-E1</code>; E2/E3
+registered but gated) in the existing physim verifiers environment — same
+harness stack the C/D-track used: the world is an MCP tool server, the agent is
+a coding harness with a workspace, files, and its own offline modeling loop.</p>
+
+<h3>Episode shape</h3>
+<div class="eq">
+worlds&nbsp;: E1 = p4g2_044 (21 sparse stable blobs — "can you even see a blob")<br/>
+roster&nbsp;: device 0 = square-13 (witness/anchor) · device 1 = hex-19 (stronger instrument) · ~18–30 u apart, undisclosed<br/>
+span&nbsp;&nbsp;&nbsp;: t = 0 → 1,700 tu at 5 tu steps, passive replay of the cached trajectory — then a HARD STOP<br/>
+replicas: after the span, up to 12 live forks from the span-end state: inject(port, amp ≤ 1.0, dur) at a fixed emitter (device 0's initial center), read at chosen lags ≤ 250 tu<br/>
+budgets&nbsp;: sensor 40,000 node·tu (≈½ duty for the 32-slot pair) · motion 1,200 cu · injection 120 amp·tu at price amp·(1+4·max(0, amp−0.5))
+</div>
+<p>The hard stop is the information structure: everything after t=1700 is
+exactly what the contracts ask about, so it is never directly observable. The
+replica mechanism prices causal experimentation separately from passive
+observation — and because replicas share the start state and noise stream,
+differences between them are pure causal response.</p>
+
+<h3>The contract ladder (round 1)</h3>
+<table>
+<tr><th>contract</th><th>weight</th><th>ask</th><th>scored</th><th>locked</th></tr>
+<tr><td><b>P3 response</b> (flagship)</td><td>0.5</td><td>the harness announces: amp-3.0, 10 tu emission on a named port from the fixed emitter at span end. Predict device 1's streams at 13 announced lags (5–250 tu)</td><td>CRPS vs the cached truth branch</td><td>open all episode</td></tr>
+<tr><td><b>P2 events</b></td><td>0.3</td><td>upward-crossing counts of an announced (port, threshold, sign) on device 0, per 50 tu window, 16 windows after span end</td><td>CRPS (MAE reported)</td><td rowspan="2">at first inject() — forecasts are issued from span information</td></tr>
+<tr><td><b>P1′ forecast</b> (respec'd)</td><td>0.2</td><td>device 0's streams at +5/+15/+25 tu after span end, no injection</td><td>CRPS</td></tr>
+</table>
+<p>Every contract answer is a mean + honest sigma; scoring is CRPS normalized
+against scripted reference baselines (persistence/climatology for streams, the
+better of zero/pre-span-rate for events): match the reference → 0, halve its
+error with honest uncertainty → real points. The announced P2 quantity is
+chosen by the A0 rule (the sparse-excursion port with the highest pre-span
+crossing rate) so the contract is never trivially zero — an E1/E2 lesson from
+the adequacy study, where home-anchor event rates could be degenerate.</p>
+
+<h3>What the agent-facing surface looks like</h3>
+<div class="eq">
+probe_status()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ time, budgets, prices, caps, contracts, locks<br/>
+probe_read_streams(window, …)&nbsp;→ advance + read (slots × 5 node·tu per device per read step)<br/>
+probe_wait(steps)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ advance free, no reads<br/>
+probe_move(device, a1, a2, …)&nbsp;→ anonymous 2-axis motion, costed<br/>
+probe_dilate(device, gain)&nbsp;&nbsp;&nbsp;→ spacing zoom, costed<br/>
+probe_inject(port, amp, dur, lags, …) → ONE replica fork per call, priced<br/>
+probe_submit(contract, payload)&nbsp;→ mean+sigma arrays; last submission scores
+</div>
+<p>Notebook, files, and offline compute come free with the coding harness — the
+agent is expected to dump every read to disk and model offline, exactly like the
+C-track scientists did. Budgets are enforced server-side; a rejected action
+costs nothing but a turn.</p>
+
+<h2>4 · Null-harness verification: the environment reproduces the study</h2>
+<p>The environment is new code wrapping certified physics, so it gets its own
+gate: a <b>scripted actor</b> — the A0 informed pipeline re-expressed against
+the MCP tool surface — plays a full episode through the agent interface (burst
+reads at ~½ duty, duty-corrected event-rate estimation, then a control replica
+plus three sub-cap calibration emissions, linear template scaled to the
+announced amplitude). If the environment is honest, that actor must reproduce
+adequacy-grade skill <i>without touching a single internal API</i>. The result
+table lives in the scorecard
+(<code>probes/blobs/agentenv/results/smoke_blob_s928.json</code>); the headline:
+the tool-surface actor lands the P3 informed-vs-persistence ratio in the
+adequacy band and stays inside every budget. Two structural gates ride along:
+the amp-0 control replica is <i>bitwise identical</i> to the A0 cached control
+branch, and the barrier grep covers every string the actor ever saw.</p>
+
+<h2>5 · Round-1 roster</h2>
+<p>Round 1 puts two frontier coding harnesses on BLOB-E1, three seeds each,
+alongside the scripted reference row:</p>
+<table>
+<tr><th>row</th><th>agent</th><th>harness</th><th>what it tests</th></tr>
+<tr><td>1</td><td>Fable 5 (Anthropic)</td><td>claude_code</td><td rowspan="2">full loop: self-calibration → span science → replica calibration → contract submission</td></tr>
+<tr><td>2</td><td>gpt-5.6-sol (OpenAI)</td><td>codex</td></tr>
+<tr><td>0</td><td>scripted informed pipeline (null harness)</td><td>—</td><td>the floor that agents must beat: A0 reference science through the same tools</td></tr>
+</table>
+<p>Conduct metrics (budget-use fractions, replica counts, turn counts) are
+report-only, as everywhere in physim. The interesting comparisons: does an
+agent <i>choose</i> to calibrate its instrument before spending on contracts?
+Does it discover the amp cap's pricing structure and run rational calibration
+ladders? Does anyone beat the duty-corrected event-rate trick?</p>
+
+<h2>6 · Results</h2>
+<div class="note"><b>Round 1 in progress.</b> This section fills in when the
+round-1 episodes complete and certify (fresh-seed audit, as always). The
+scripted-reference row and the environment gates above are committed and
+reproducible today.</div>
+
+<div class="note"><b>Reproduce.</b> Environment gates:
+<code>.venv/bin/python environments/physim/tools/test_blob_server.py</code> ·
+scripted smoke: <code>.venv/bin/python environments/physim/tools/smoke_blob.py</code> ·
+adequacy study: <code>probes/blobs/agentenv/adequacy.py</code> (cache → evalgroup → aggregate)
+with the blobkit venv · an agent episode:
+<code>.venv/bin/eval physim -n 1 -m &lt;model&gt; --env.taskset.difficulty BLOB-E1
+--env.taskset.tier tools --env.scientist.harness.id claude_code</code>.
+A0 caches are local artifacts (7–11 GB, gitignored); rebuild via adequacy.py.</div>
+
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="evolving-at-scale.html">Evolving at scale</a></div>
+</body></html>
