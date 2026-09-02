@@ -147,3 +147,59 @@ partial application, pure-translation-at-the-wall). Scripted-actor smoke
 EXEMPT this round: the actor never calls probe_adjust and the R3 change is
 adjust-only — the r2-surface smoke result (reward 0.6004) remains the valid
 null-harness row. Post 11 revision box now tells the full R2->R3 story.
+
+
+## ROUND-2 addendum (clean-slate contracts, 2026-09-02)
+Spec: TRACKA_CLEANSLATE_EVAL.md Parts 1-3. Shipped ADDITIVE (BLOB-E1r3
+untouched): tags BLOB2-E1 (p4g2_044) + BLOB2-E2 (p6g8_033, gate OPEN with
+its A0-caveat menu). New module physim/blobround2.py; server round-2 branch
+(status menu mode + submit contract-id routing + lock set L1/L2/L3* at first
+inject, L4/L4D open); taskset Blob2Data/Blob2Task/_blob2_task, slim prompt
+(no 'suggested science' hints).
+
+CONTRACTS: L1 pose-targeted (K=3 announced opaque [u1,u2,u3] sequences,
+wall-safe by construction; truth = cached main line at the walked pose,
+frame T0+steps) | L2 hidden-sensor nowcast (harness-owned square-13 at a
+secret pose seeded near the roster midpoint; zero pose language — gated) |
+L3F multi-horizon (E1 H=5/25/100/400; E2 drops H5) | L3E events (E1 only) |
+L3S slow observables (E2 only: 200tu-windowed global mean+var at T0+400/800)
+| L4 response (6 lags, slimmed from 13) | L4D dose leg (table over amps
+.30/.45/.60/.75/.90 at 3 lags, scored at ONE secret amp ~ U[0.3,0.9] via
+linear interpolation; truth = live replica, disk-cached under
+cache/round2/).
+
+SKILL SCORING: skill = clip(1 - CRPS/CRPS_best_baseline, -1, 1); ladder
+(climatology/persistence/AR(2) where sensible) computed evaluator-side at
+score time and PUBLISHED in detail.baselines; unsubmitted = -1; reward =
+mean skill over the world menu.
+
+GATES: round-2 G1-G6 ALL PASS (registry/menus; L1 pose/truth parity through
+the agent surface; dose interpolation exactness + announced-port==branch-
+port; skill clipping; barrier audit over 10 surfaces with the extended
+pattern list + location-hint words; submit/locks). Legacy 6/6 still PASS.
+
+SCRIPTED-ACTOR BASELINE TABLE (the published reference row; smoke_blob2.py):
+| contract | E1 skill | E2 skill | note |
+|---|---|---|---|
+| L1 | +0.15 | +0.11 | executes announced walks on-span, reads, walks back |
+| L2 | -0.00 | -0.00 | HONEST GAP: script has no spatial model; ~ties the global-aggregate baseline. This is the measurement — L2 headroom belongs to agents that build one |
+| L3F | -0.06 | -0.06 | AR2/climatology blend ~ ladder's own AR2 (expected ~0) |
+| L3E | -0.55 | — | trend extrapolation UNDERSHOT this seed's rate lift; honest scripted weakness (round-1 P2 logic, same code) |
+| L3S | — | -0.29 | persistence of last window; sigma too tight on the var column |
+| L4 | +0.89 | +0.65 | control+calib template, 4 replicas, 41.4/120 inj budget |
+| L4D | +0.99 | +0.99 | linear dose law nails the drawn amp (E1 0.882, E2 0.659) |
+| REWARD | +0.238 | +0.233 | mean over menu |
+Both smokes: budgets respected, all contracts submitted, wall ~225s.
+Negative rows are kept as-is: skill-normalized scoring is SUPPOSED to show
+scripted weaknesses honestly; agents beating 0 on L2/L3E/L3S is exactly the
+signal round 2 exists to measure.
+
+Launch lines (E2 max_turns higher — bigger menu):
+```
+.venv/bin/eval physim -n 3 -m anthropic/claude-fable-5 \
+  --env.taskset.difficulty BLOB2-E1 --env.scientist.harness.id claude_code \
+  --env.scientist.runtime.type docker --env.scientist.max-turns 150
+# same for BLOB2-E2; and openai/gpt-5.6-sol with codex.
+```
+Dose-truth caches for all 6 (world,seed) pairs prebuilt under
+probes/blobs/agentenv/cache/round2/ (gitignored, rebuild = ~30s each).

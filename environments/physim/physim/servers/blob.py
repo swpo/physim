@@ -124,7 +124,11 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         self._ensure()
         st = self.state
         st.turns += 1
-        cc = B.contracts(st.world, st.seed)["public"]
+        if st.round2:
+            from physim import blobround2 as R2
+            cc = R2.contracts2(st.world, st.seed, st.round2)["public"]
+        else:
+            cc = B.contracts(st.world, st.seed)["public"]
         nf = B.n_ports(st.world, st.seed)
         devs = self._devices()
         at_t0 = st.i_ctrl >= B.N_STEPS_MAIN
@@ -151,15 +155,23 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
                       "and what it couples to is undisclosed"),
             contracts=cc,
             locked_p1p2=st.locked_p1p2,
-            submitted=dict(P1=bool(st.sub_p1), P2=bool(st.sub_p2),
-                           P3=bool(st.sub_p3)),
+            submitted=(
+                {c: bool((st.subs2 or {}).get(c)) for c in cc["menu"]}
+                if st.round2 else
+                dict(P1=bool(st.sub_p1), P2=bool(st.sub_p2),
+                     P3=bool(st.sub_p3))),
             notes=[
                 "the main span replays a fixed trajectory to t_end_of_span "
                 "and stops there; nothing after it is observable directly",
                 "probe_inject only works once t = t_end_of_span; each call "
                 "forks a fresh replica of the world from that instant",
-                "the first probe_inject locks P1 and P2 (they are forecasts "
-                "issued from span information only)",
+                ("the first probe_inject locks these contracts (forecasts "
+                 "issued from span information only): "
+                 + ", ".join(c for c in cc["menu"]
+                             if c in ("L1", "L2", "L3F", "L3E", "L3S"))
+                 if st.round2 else
+                 "the first probe_inject locks P1 and P2 (they are "
+                 "forecasts issued from span information only)"),
                 "contract truths are evaluated with each device at its "
                 "t=0 configuration (as if you never adjusted it); your "
                 "accepted probe_adjust commands are your only record of "
@@ -476,25 +488,19 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
 
     @vf.tool(name="submit")
     async def submit(self, contract: str, payload) -> str:
-        """Submit or revise one contract payload. contract in {'P1','P2',
-        'P3'}. payload = {"mean": nested list in the contract's shape,
-        "sigma": scalar or same-shape list} (sigma = your predictive sd;
-        scoring is CRPS, so honest spread beats overconfidence). Shapes:
-        P1 [n_horizons][ports][slots_A], P2 [n_windows], P3 [n_lags][ports]
-        [slots_B]. P1/P2 lock at the first probe_inject; P3 stays open.
-        The LAST accepted submission per contract scores."""
+        """Submit or revise one contract payload (ids and required shapes:
+        see probe_status contracts). payload = {"mean": nested list in the
+        contract's shape, "sigma": scalar or same-shape list} (sigma = your
+        predictive sd; scoring is CRPS-based, so honest spread beats
+        overconfidence). Forecast contracts lock at the first probe_inject;
+        emission contracts stay open. The LAST accepted submission per
+        contract scores."""
         if not self._ready():
             return json.dumps({"error": "world not initialized; retry"})
         self._ensure()
         st = self.state
         st.turns += 1
         c = str(contract).strip().upper()
-        if c not in ("P1", "P2", "P3"):
-            return self._err("contract must be one of P1, P2, P3")
-        if st.locked_p1p2 and c in ("P1", "P2"):
-            return self._err(
-                f"{c} is locked (forecasts must be issued before the first "
-                "probe_inject)")
         if isinstance(payload, str):
             js = payload
         else:
@@ -502,6 +508,32 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
                 js = json.dumps(payload)
             except (TypeError, ValueError):
                 return self._err("payload not JSON-serializable")
+        if st.round2:
+            from physim import blobround2 as R2
+            menu = R2.MENUS[st.round2]
+            if c not in menu:
+                return self._err(
+                    "contract must be one of " + ", ".join(menu))
+            if st.locked_p1p2 and c in R2.LOCK_AT_INJECT:
+                return self._err(
+                    f"{c} is locked (forecasts must be issued before the "
+                    "first probe_inject)")
+            shape = R2.payload_shapes2(st.world, st.seed, st.round2)[c]
+            parsed, why = B._parse_payload(js, shape)
+            if parsed is None:
+                return self._err(f"rejected: {why}",
+                                 required_shape=list(shape))
+            st.subs2 = {**(st.subs2 or {}), c: js}
+            return json.dumps(dict(
+                ok=True, contract=c, shape=list(shape),
+                note="recorded; scored after the episode ends; "
+                     "resubmission replaces", budget=self._budget()))
+        if c not in ("P1", "P2", "P3"):
+            return self._err("contract must be one of P1, P2, P3")
+        if st.locked_p1p2 and c in ("P1", "P2"):
+            return self._err(
+                f"{c} is locked (forecasts must be issued before the first "
+                "probe_inject)")
         shape = B.payload_shapes(st.world, st.seed)[c]
         parsed, why = B._parse_payload(js, shape)
         if parsed is None:

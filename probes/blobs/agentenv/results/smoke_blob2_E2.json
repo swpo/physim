@@ -1,0 +1,67 @@
+{
+ "world": "p6g8_033",
+ "seed": 942,
+ "menu": "E2",
+ "difficulty": "BLOB2-E2",
+ "reward_skill": 0.233,
+ "skills": {
+  "L1": 0.1142,
+  "L2": -0.0016,
+  "L3F": -0.064,
+  "L3S": -0.2855,
+  "L4": 0.6496,
+  "L4D": 0.9855
+ },
+ "crps": {
+  "l1": 0.078638,
+  "l2": 0.10868,
+  "l3f": 0.094828,
+  "l3s": 0.022163,
+  "l4": 0.030976,
+  "l4d": 0.001192
+ },
+ "baselines": {
+  "L1": {
+   "climatology": 0.088776,
+   "persistence": 0.102114
+  },
+  "L2": {
+   "climatology": 0.10851,
+   "persistence": 0.111333
+  },
+  "L3F": {
+   "climatology": 0.089127,
+   "persistence": 0.099722,
+   "ar2": 0.091094
+  },
+  "L3S": {
+   "climatology": 0.020037,
+   "persistence": 0.017241
+  },
+  "L4": {
+   "climatology": 0.088391,
+   "persistence": 0.110238
+  },
+  "L4D": {
+   "climatology": 0.082107,
+   "persistence": 0.126248
+  }
+ },
+ "spend": {
+  "sensor": 27110.0,
+  "adjust": 7.9719999999999995,
+  "injection": 41.4
+ },
+ "n_replicas": 4,
+ "n_reads": 148,
+ "wall_s": 221.3,
+ "gates": {
+  "budgets_respected": true,
+  "all_submitted": true,
+  "l1_positive": true,
+  "l4_positive": true,
+  "l4d_positive": true,
+  "no_contract_at_floor": true
+ },
+ "smoke_pass": true
+}

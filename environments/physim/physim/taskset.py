@@ -234,7 +234,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget).
     BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
     only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
@@ -459,6 +459,159 @@ def _blob_task(config: "PhysimConfig", i: int) -> "BlobTask":
                                          tools=config.task.tools))
 
 
+
+
+# ========================================================= BLOB round 2
+# Clean-slate contract system (TRACKA_CLEANSLATE_EVAL.md): L1 pose-targeted,
+# L2 hidden-sensor nowcast, L3 multi-horizon/slow-observable forecasts, L4
+# response + dose leg; skill-normalized scoring; world-adaptive menus.
+# Additive: BLOB-E1r3 stays untouched. Tags: BLOB2-E1, BLOB2-E2.
+
+BLOB2_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
+
+INTERFACE (MCP tools, prefix probe_)
+- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled by that slot. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium.
+- probe_status(): time, budgets, costs, caps, the contract menu, lock state.
+- probe_read_streams(window, devices, ports, stride): advance the world up to `window` 5tu steps, reading sensors each `stride`-th step. Sensor cost = slots x 5 per read step per device.
+- probe_wait(steps): advance without reading. Free.
+- probe_adjust(device, u1, u2, u3, steps, read): apply a 3-channel actuator to one device; each u in [-1, 1], cost |u1|+|u2|+|u3| per step, charged as commanded. What the channels do is fixed all episode but undisclosed. The actuator may refuse a step (generic "adjust_rejected"; the refused step still costs).
+- probe_inject(port, amp, dur, lags, devices, ports): ONLY after the span ends. Forks an independent replica of the world from the span's final instant, drives a FIXED emission channel with (port, amp) for dur tu, and returns reads at your lags. Where and what the emission channel couples to is undisclosed. amp <= 1.0 with steeply convex pricing above 0.5; amp=0 = control replica. Replicas share the same start state and noise stream. The same channel carries the announced protocols.
+- probe_submit(contract, payload): submit/revise one contract payload.
+
+EPISODE
+The world runs t = 0 to {t0} tu in 5tu steps (the SPAN), then hard-stops. What happens after t={t0} is never directly observable. After the span you may run up to {max_replicas} replica experiments (probe_inject). Budgets (sensor {b_sensor:.0f}, adjust {b_adjust:.0f}, injection {b_injection:.0f}) cover the whole episode; unspent budget is not rewarded.
+
+CONTRACT MENU (this world's menu: {menu}; full specs + required payload shapes via probe_status)
+{contract_lines}
+Contract truths are evaluated with each device as it was at t=0 (as if you never adjusted it), except where a contract states otherwise. These contracts LOCK at your first probe_inject: {lock_list}. The rest stay open until the episode ends.
+
+SCORING
+Every contract is scored by CRPS against truth and normalized against an evaluator-side baseline ladder (climatology / persistence / AR(2) fits on full-rate data): skill = 1 - CRPS/CRPS_best_baseline, clipped to [-1, 1]. Matching the best scripted baseline scores 0; beating it scores up to 1. UNSUBMITTED contracts score -1. Your reward is the mean skill over the menu. "sigma" is your predictive sd — honest spread beats overconfidence.
+
+You have a full coding environment: record reads to disk, model offline, budget your span. Submit every contract on the menu."""
+
+BLOB2_PROMPT = (
+    "Begin your investigation using the probe_* tools. Start with "
+    "probe_status and read the contract menu carefully. Submit the locking "
+    "contracts before your first probe_inject. Submit every contract on "
+    "the menu.")
+
+BLOB2_CONTRACT_LINES = dict(
+    L1=("L1: the harness executes announced 3-channel command sequences on "
+        "device 0 (each on a fresh fork from the span end, no emission) and "
+        "reads it once after each; predict those readings."),
+    L2=("L2: one additional fixed sensor cluster (same ports, slot count in "
+        "the spec) exists; predict its reading vector at the span end."),
+    L3F=("L3F: device 0's streams (t=0 configuration) at several announced "
+         "horizons after the span end, no emission."),
+    L3E=("L3E: per consecutive window after the span end, the count of "
+         "upward crossings of an announced (port, threshold, sign) summed "
+         "over device 0's slots, no emission."),
+    L3S=("L3S: the per-port global mean and variance averaged over "
+         "announced long windows after the span end, no emission."),
+    L4=("L4: the announced strong emission runs from the span end; predict "
+        "device 1's streams (t=0 configuration) at the announced lags."),
+    L4D=("L4D: one more emission at an UNDISCLOSED amp inside the announced "
+         "amp range; submit your predicted response table over the listed "
+         "amps (interpolated linearly in amp at the drawn value)."),
+)
+
+
+class Blob2Data(vf.TaskData):
+    difficulty: str = "BLOB2-E1"
+    world: str = ""
+    world_seed: int = 0
+    menu: str = "E1"
+    max_turns: int = 80
+    tier: str = "tools"
+
+
+class Blob2Task(vf.Task[Blob2Data, BlobToolState, BlobTaskConfig]):
+    @classmethod
+    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
+        from physim.servers.blob import BlobToolset
+        return [BlobToolset(config.tools)]
+
+    async def setup(self, trace: vf.Trace, runtime) -> None:
+        st = trace.state
+        st.world = self.data.world
+        st.seed = self.data.world_seed
+        st.round2 = self.data.menu
+
+    async def finalize(self, trace: vf.Trace, runtime) -> None:
+        try:
+            from verifiers.v1.utils.artifacts import collect
+            trace.state.artifacts = await collect(runtime, self.data.artifacts)
+        except Exception as e:  # collection must never fail the rollout
+            trace.info.setdefault("physim_artifact_error", str(e))
+
+    @vf.reward(weight=1.0)
+    async def skill(self, trace: vf.Trace) -> float:
+        from physim import blobcore as B
+        from physim import blobround2 as R2
+        st = trace.state
+        world, seed = self.data.world, self.data.world_seed
+        result = R2.score_episode2(world, seed, self.data.menu,
+                                   dict(st.subs2 or {}))
+        for c, v in result["skills"].items():
+            trace.record_metric(f"skill_{c}", float(v))
+        for key in B.BUDGETS:
+            spent = (st.spent or {}).get(key, 0.0)
+            trace.record_metric(f"spend_{key}_frac",
+                                float(spent / B.BUDGETS[key]))
+        trace.record_metric("n_replicas", float(st.n_replicas))
+        trace.record_metric("turns_used", float(st.turns))
+        trace.record_metric("span_frac", float(st.i_ctrl / B.N_STEPS_MAIN))
+        trace.info["physim"] = {
+            "difficulty": self.data.difficulty,
+            "world": world,
+            "world_seed": seed,
+            "tier": "blob2",
+            "menu": self.data.menu,
+            "detail": result["detail"],
+            "replica_log": list(st.replica_log or []),
+            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
+        }
+        return float(result["reward_skill"])
+
+
+def _blob2_task(config: "PhysimConfig", i: int) -> "Blob2Task":
+    from physim import blobcore as B
+    from physim import blobround2 as R2
+    ep = R2.episode_cfg2(config.difficulty, config.seed0 + i)
+    world, seed, menu = ep["world"], ep["seed"], ep["menu"]
+    cc = R2.contracts2(world, seed, menu)["private"]
+    lock = [c for c in R2.MENUS[menu] if c in R2.LOCK_AT_INJECT]
+    lines = "\n".join(BLOB2_CONTRACT_LINES[c] for c in R2.MENUS[menu])
+    system_prompt = BLOB2_SYSTEM_PROMPT.format(
+        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
+        t0=int(B.T0), max_replicas=B.MAX_REPLICAS,
+        b_sensor=B.BUDGETS["sensor"], b_adjust=B.BUDGETS["adjust"],
+        b_injection=B.BUDGETS["injection"],
+        menu=", ".join(R2.MENUS[menu]), contract_lines=lines,
+        lock_list=", ".join(lock))
+    artifacts = [vf.Artifact(
+        source=".",
+        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
+                 ".venv", "*.tar", "*.npz"],
+        required=False,
+    )]
+    data = Blob2Data(
+        idx=i,
+        name=f"physim-{config.difficulty}#{seed}",
+        prompt=BLOB2_PROMPT,
+        system_prompt=system_prompt,
+        difficulty=config.difficulty,
+        world=world,
+        world_seed=seed,
+        menu=menu,
+        max_turns=config.max_turns,
+        artifacts=artifacts,
+    )
+    return Blob2Task(data, BlobTaskConfig(judges=list(config.task.judges),
+                                          tools=config.task.tools))
+
+
 def certified_seed(difficulty: str, seed0: int, index: int) -> int:
     """Deterministically map task index -> the (index+1)-th certified seed at
     or after seed0. Cheap for tanh worlds (always certified); GS worlds run a
@@ -479,6 +632,10 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
     INFINITE = True
 
     def load(self) -> Iterator[PhysimTask]:
+        if self.config.difficulty.startswith("BLOB2"):
+            for i in itertools.count():
+                yield _blob2_task(self.config, i)
+            return
         if self.config.difficulty.startswith("BLOB"):
             for i in itertools.count():
                 yield _blob_task(self.config, i)

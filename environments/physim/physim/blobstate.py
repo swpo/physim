@@ -21,7 +21,9 @@ class BlobToolState(vf.State):
     n_replicas: int = 0
     locked_p1p2: bool = False
     replica_log: list = []             # [{port, amp, dur, n_lags}]
-    sub_p1: str = ""                   # submitted payloads (JSON)
+    sub_p1: str = ""                   # submitted payloads (JSON, round 1)
     sub_p2: str = ""
     sub_p3: str = ""
+    round2: str = ""                   # menu name ("E1"/"E2") when round 2
+    subs2: dict = {}                   # round-2 payloads: contract id -> JSON
     turns: int = 0
