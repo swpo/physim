@@ -235,15 +235,23 @@ def t5():
 
 
 def t6():
-    """R2 probe_adjust: known-M pose math, wall rejection at BOTH bounds,
-    strain-charge equality (+/-u3-dominant, commanded not actual), multi-
-    step partial application, rejected-step stream absence."""
-    import device as agdev
-
+    """R3 probe_adjust: pure permuted/signed/scaled channels — known-M pose
+    math, wall rejection at BOTH bounds (dilation channel only), strain-
+    charge equality, multi-step partial application, rejected-step stream
+    absence, and pure-translation commands NEVER refused (even at a wall)."""
     M = np.asarray(B.get_secrets(WORLD, SEED)["adjust_mix"], float)
-    # M construction: rows scaled Haar SO(3); invertible, cond <= 2.5
-    s = np.linalg.svd(M, compute_uv=False)
-    assert s[-1] > 0 and s[0] / s[-1] <= 3.0, s
+    # structure: exactly one nonzero per row and per column (P @ diag(s))
+    nz = np.abs(M) > 0
+    assert (nz.sum(axis=0) == 1).all() and (nz.sum(axis=1) == 1).all(), M
+    s_tr0 = np.abs(M[0]).max()
+    s_tr1 = np.abs(M[1]).max()
+    s_dil = np.abs(M[2]).max()
+    assert 1.0 <= s_tr0 <= 1.5 and 1.0 <= s_tr1 <= 1.5, (s_tr0, s_tr1)
+    assert 0.6 <= s_dil <= 1.0, s_dil
+    ch_dil = int(np.argmax(np.abs(M[2])))       # secret dilation channel
+    ch_tr = [c for c in range(3) if c != ch_dil]
+    sgn_dil = float(np.sign(M[2, ch_dil]))
+
     # --- pose math with known M
     ts, st = make_ts()
     sec = B.get_secrets(WORLD, SEED)
@@ -253,68 +261,68 @@ def t6():
     assert r["result"] == "ok" and r["steps_applied"] == 1
     d = M @ u
     L = B.get_cached(WORLD, SEED).meta["L"]
-    exp_c = (c0 + d[:2]) % L
-    assert np.allclose(st.poses[0][:2], exp_c, atol=1e-9)
+    assert np.allclose(st.poses[0][:2], (c0 + d[:2]) % L, atol=1e-9)
     assert abs(st.poses[0][2] - float(np.exp(d[2]))) < 1e-12
-    assert abs(r["adjust_cost"] - np.abs(u).sum()) < 1e-9
+    assert abs(st.spent["adjust"] - np.abs(u).sum()) < 1e-9
 
-    # --- helper: pure-dilation command via M^{-1} (evaluator-side only)
-    Minv = np.linalg.inv(M)
+    # --- helper: command only the dilation channel toward a wall
+    def dil_u(mag):                     # mag>0 pushes dilation UP
+        uu = np.zeros(3)
+        uu[ch_dil] = mag * sgn_dil
+        return uu
 
-    def dil_cmd(dlog):
-        cmd = Minv @ np.array([0.0, 0.0, dlog])
-        m = np.abs(cmd).max()
-        if m > 1.0:                      # keep within actuator caps
-            cmd = cmd / m
-            dlog_eff = dlog / m
-        else:
-            dlog_eff = dlog
-        return cmd, dlog_eff
-
-    # --- drive to the UPPER wall, then expect rejection + strain
+    # --- UPPER wall: pure-dilation pushes until refusal
     ts, st = make_ts()
-    cmd_up, dl = dil_cmd(0.35)
+    up = dil_u(0.5)
+    dl = s_dil * 0.5                    # dlog per step
     n_to_wall = int(np.ceil(np.log(3.0) / dl)) + 1
-    rr = run(ts.adjust(device=0, u1=cmd_up[0], u2=cmd_up[1], u3=cmd_up[2],
+    rr = run(ts.adjust(device=0, u1=up[0], u2=up[1], u3=up[2],
                        steps=n_to_wall, read=False))
     assert rr["result"] == "adjust_rejected", rr
     napp = rr["steps_applied"]
     assert 0 < napp < n_to_wall
-    # partial application: charge = (applied + 1 strain) * per-step cost
-    # (response rounds to 2dp; the ledger st.spent is exact)
-    per = np.abs(cmd_up).sum()
+    per = 0.5
+    # partial application: (applied + 1 strain) * per-step commanded cost
     assert abs(st.spent["adjust"] - (napp + 1) * per) < 1e-9
-    # pose respects the bound (never clamped past it)
     assert st.poses[0][2] <= 3.0 + 1e-9
-    dil_at_wall = st.poses[0][2]
-    # repeated push at the wall: nothing applies, strain still charged
+    dil_wall = st.poses[0][2]
+    # repeated push at the wall: 1 strain, no movement, no streams
     spent0 = st.spent["adjust"]
-    r2_ = run(ts.adjust(device=0, u1=cmd_up[0], u2=cmd_up[1], u3=cmd_up[2],
+    r2_ = run(ts.adjust(device=0, u1=up[0], u2=up[1], u3=up[2],
                         steps=5, read=True))
     assert r2_["result"] == "adjust_rejected" and r2_["steps_applied"] == 0
-    assert st.poses[0][2] == dil_at_wall           # nothing moved
-    assert r2_["steps_read"] == []                 # no stream for rejected
-    assert r2_["sensor_cost"] == 0.0
-    assert abs(st.spent["adjust"] - spent0 - per) < 1e-9   # ONE strain
-    # --- strain equality: +u3-dominant vs -u3-dominant, equal magnitude
-    cmd_dn = -cmd_up
+    assert st.poses[0][2] == dil_wall
+    assert r2_["steps_read"] == [] and r2_["sensor_cost"] == 0.0
+    assert abs(st.spent["adjust"] - spent0 - per) < 1e-9
+    # --- pure TRANSLATION at the wall: NEVER refused
+    tr = np.zeros(3)
+    tr[ch_tr[0]] = 1.0
+    tr[ch_tr[1]] = -0.7
+    pos_before = list(st.poses[0][:2])
+    r3_ = run(ts.adjust(device=0, u1=tr[0], u2=tr[1], u3=tr[2],
+                        steps=3, read=False))
+    assert r3_["result"] == "ok" and r3_["steps_applied"] == 3, r3_
+    assert st.poses[0][2] == dil_wall               # dilation untouched
+    assert st.poses[0][:2] != pos_before            # translated
+    # --- strain equality: +dil vs -dil commands of equal magnitude
     spent1 = st.spent["adjust"]
-    r3_ = run(ts.adjust(device=0, u1=cmd_dn[0], u2=cmd_dn[1],
-                        u3=cmd_dn[2], read=False))
-    assert r3_["result"] == "ok"                   # away from wall: applies
-    assert abs(st.spent["adjust"] - spent1 - per) < 1e-9   # same commanded cost
+    dn = dil_u(-0.5)
+    r4_ = run(ts.adjust(device=0, u1=dn[0], u2=dn[1], u3=dn[2],
+                        read=False))
+    assert r4_["result"] == "ok"                    # off the wall: applies
+    assert abs(st.spent["adjust"] - spent1 - per) < 1e-9  # same |u| cost
     # --- LOWER wall
     ts, st = make_ts()
     n_to_floor = int(np.ceil(np.log(1.0 / 0.5) / dl)) + 1
-    r4_ = run(ts.adjust(device=0, u1=cmd_dn[0], u2=cmd_dn[1], u3=cmd_dn[2],
+    r5_ = run(ts.adjust(device=0, u1=dn[0], u2=dn[1], u3=dn[2],
                         steps=n_to_floor + 3, read=False))
-    assert r4_["result"] == "adjust_rejected"
+    assert r5_["result"] == "adjust_rejected"
     assert st.poses[0][2] >= 0.5 - 1e-9
-    # strain charge at the floor == strain charge at the ceiling (per-step
-    # commanded cost is identical: same |u| either way); exact via ledger
-    assert abs(st.spent["adjust"] - (r4_["steps_applied"] + 1) * per) < 1e-9
-    print("T6 probe_adjust (R2): PASS "
-          f"(wall at dil={dil_at_wall:.3f}, cond(M)={s[0]/s[-1]:.2f})")
+    assert abs(st.spent["adjust"]
+               - (r5_["steps_applied"] + 1) * per) < 1e-9
+    print("T6 probe_adjust (R3 pure): PASS "
+          f"(dil channel u{ch_dil + 1}, scales tr=({s_tr0:.2f},{s_tr1:.2f}) "
+          f"dil={s_dil:.2f}, wall at {dil_wall:.3f})")
 
 
 if __name__ == "__main__":

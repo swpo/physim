@@ -234,7 +234,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E2", "BLOB-E3"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget).
     BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
     only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
@@ -361,7 +361,7 @@ BLOB_PROMPT = (
 
 
 class BlobData(vf.TaskData):
-    difficulty: str = "BLOB-E1r2"
+    difficulty: str = "BLOB-E1r3"
     world: str = ""
     world_seed: int = 0
     max_turns: int = 80

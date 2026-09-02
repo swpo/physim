@@ -123,10 +123,13 @@ MAX_REPLICAS = 12
 SIGMA_MIN = 1e-4
 
 EPISODES = {
-    "BLOB-E1r2": dict(world="p4g2_044", seeds=(928, 929, 930), gated=False),
+    "BLOB-E1r3": dict(world="p4g2_044", seeds=(928, 929, 930), gated=False),
+    "BLOB-E1r2": dict(world="p4g2_044", seeds=(928, 929, 930), gated=True,
+                      why="superseded by BLOB-E1r3 (mixed-control variant, "
+                          "retired before any scored rollouts were kept)"),
     "BLOB-E1": dict(world="p4g2_044", seeds=(928, 929, 930), gated=True,
-                    why="superseded by BLOB-E1r2 (R2 control-surface "
-                        "revision: probe_adjust replaces move/dilate)"),
+                    why="superseded (R2/R3 control-surface revisions: "
+                        "probe_adjust replaces move/dilate)"),
     "BLOB-E2": dict(world="p6g8_033", seeds=(942, 943, 944), gated=True,
                     why="A0 verdict: E2 contracts need the round-2 respec"),
     "BLOB-E3": dict(world="p3g9_022", seeds=(921, 922, 923), gated=True,
@@ -189,28 +192,29 @@ def get_branches(world: str, seed: int):
 
 
 def adjust_mix(wk: str) -> np.ndarray:
-    """R2 secret actuator map (TRACKA_R2_CONTROLS.md): per-WORLD fixed 3x3
-    invertible mix M over (dy, dx, dlog_spacing). Per adjust step the pose
-    delta is M @ u, u in [-1,1]^3 — translation and dilation are MIXED so
-    the control factorization itself must be discovered by experiment.
+    """R3 secret actuator map (TRACKA_R2_CONTROLS.md + R3 revision): per-
+    WORLD fixed 3x3 map with PURE effects — M = P @ diag(s) up to signs,
+    i.e. each anonymous channel u_i drives exactly ONE of (dy, dx,
+    dlog_spacing) with a secret sign and scale; WHICH one is a secret
+    permutation. No cross-mixing (R2's mixed map was retired: difficulty
+    without depth). Per adjust step the pose delta is M @ u.
 
-    Construction: M = diag(scales) @ Q with Q ~ Haar SO(3) (QR sign-fixed,
-    det +1) and scales: rows 0-1 (translation) in [1.0, 1.5] (the old
-    MAX_STEP range), row 2 (dlog) in [0.6, 1.0] (the old gain range).
-    cond(M) = s_max/s_min <= 1.5/0.6 = 2.5 (spec: <= ~3). Deterministic in
-    world_key via a salted hash, independent of the A0 secret stream."""
+    Scales: translation channels in [1.0, 1.5] (the old MAX_STEP range),
+    the dilation channel in [0.6, 1.0] (the old gain range). Deterministic
+    in world_key via a salted hash (fresh salt: r3), independent of the A0
+    secret stream."""
     import hashlib
-    h = int(hashlib.sha256((wk + "|adjust_mix_v1").encode())
+    h = int(hashlib.sha256((wk + "|adjust_pure_v3").encode())
             .hexdigest()[:16], 16)
     rng = np.random.default_rng(h)
-    A = rng.standard_normal((3, 3))
-    Q, R = np.linalg.qr(A)
-    Q = Q * np.sign(np.diag(R))[None, :]        # Haar-uniform O(3)
-    if np.linalg.det(Q) < 0:
-        Q[:, 0] = -Q[:, 0]                       # force SO(3)
+    perm = rng.permutation(3)           # effect row -> channel column
+    signs = rng.choice([-1.0, 1.0], size=3)
     scales = np.array([rng.uniform(1.0, 1.5), rng.uniform(1.0, 1.5),
-                       rng.uniform(0.6, 1.0)])
-    return scales[:, None] * Q
+                       rng.uniform(0.6, 1.0)])  # rows: dy, dx, dlog
+    M = np.zeros((3, 3))
+    for row in range(3):                # row = effect, perm[row] = channel
+        M[row, perm[row]] = signs[row] * scales[row]
+    return M
 
 
 @lru_cache(maxsize=6)

@@ -76,3 +76,15 @@ translation-never-refused), barrier audit rerun (text unchanged should pass),
 scripted-actor smoke NOT needed again (actor never adjusts; interface change
 is adjust-only) — note that exemption in the scorecard.
 I killed the in-flight E1r2 eval runs; nothing scored is kept from r2.
+R3 SIMPLIFICATION (user; final): drop the permutation/sign/scale secrecy too.
+probe_adjust(device, u1, u2, u3): FIXED GLOBAL convention across all worlds —
+u1 -> dx, u2 -> dy, u3 -> dlog_spacing, fixed scales (old MAX_STEP for u1/u2,
+old gain range for u3). NOTHING about this is documented to the agent (doc
+stays: "3 control channels; effects undisclosed") — undocumented IS the
+mechanism, same principle as the output channels (fixed retinotopy, no
+shuffle). Channel knowledge transfers across worlds, which is desirable
+(instrument mastery transfers; the WORLD is what varies).
+Everything else stands (generic adjust_rejected on the dilation wall + strain
+charge + zero location language + commanded-cost).
+Tag stays BLOB-E1r3. Unit tests simplify to the fixed map. Then reply DONE
+and I relaunch the eval round.

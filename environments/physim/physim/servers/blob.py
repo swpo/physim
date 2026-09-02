@@ -11,9 +11,10 @@ Tools (prefix `probe_`):
                                      announced contracts, pricing, locks
   probe_read_streams(window, ...)    advance + read sensors (costed)
   probe_wait(steps)                  advance without reading (free)
-  probe_adjust(device, u1, u2, u3)   3-channel actuator (costed; per-world
-                                     secret linear mix — R2: the control
-                                     factorization itself is undisclosed)
+  probe_adjust(device, u1, u2, u3)   3-channel actuator (costed; R3: each
+                                     channel purely drives ONE secret effect
+                                     — an axis or the spacing — with secret
+                                     sign/scale; which is which undisclosed)
   probe_inject(port, amp, dur, ...)  ONLY at the end of the span: fork a
                                      live replica with the agent's emission
                                      on the fixed emission channel (location
@@ -315,10 +316,12 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
             new_dil = dev.dilation * float(np.exp(delta[2]))
             if not (dev.dil_bounds[0] - 1e-12 <= new_dil
                     <= dev.dil_bounds[1] + 1e-12):
-                # actuator refusal: the step does not apply (its translation
-                # component included — entanglement intended); strain charge
-                # for the commanded effort; remaining steps do not run and
-                # are not charged.
+                # actuator refusal (R3: only the secret dilation channel
+                # can strike the spacing bounds — pure-translation commands
+                # never land here since delta[2] == 0). The whole step is
+                # the unit: commanded translation channels in a refused
+                # step do not apply either. Strain charge for the commanded
+                # effort; remaining steps do not run and are not charged.
                 rejected = True
                 charge += adj_per_step
                 break
