@@ -56,3 +56,23 @@ EXPLICIT GENERIC REJECTION:
   translation component; that entanglement is intended and undisclosed).
 - Unit tests: rejection at both walls, strain charge equality, multi-step
   partial application, and rejected-step stream absence.
+R3 CONTROL REVISION (user: mixing = difficulty without depth, like the sensor-
+shuffle we already rejected — revert it):
+probe_adjust keeps its 3 anonymous channels BUT effects are PURE:
+  effect = P @ diag(s1,s2,s3) @ u  where P = secret per-world PERMUTATION
+  (which channel is which) x secret SIGNS; s_i = secret per-channel scales
+  (translation channels in the old MAX_STEP range, dilation channel in the
+  old gain range). NO cross-mixing: each channel does exactly one of
+  {translate-axis-A, translate-axis-B, dilate}, agent discovers WHICH by
+  trial and error (the user's original intent).
+Rejection semantics simplify back: only the (secret) dilation channel can
+strike bounds -> adjust_rejected only when the commanded step's dilation
+component would cross a wall; pure-translation commands never refused.
+(Strain charge + generic rejection + all Amendment A/2 language rules stay.)
+Keep cost = sum|u_i| commanded. Tag: BLOB-E1r3; gate E1r2 as superseded
+('mixed-control variant, retired before any scored rollouts were kept').
+Regate: unit test rewritten for P/diag (both walls, strain equality, pure-
+translation-never-refused), barrier audit rerun (text unchanged should pass),
+scripted-actor smoke NOT needed again (actor never adjusts; interface change
+is adjust-only) — note that exemption in the scorecard.
+I killed the in-flight E1r2 eval runs; nothing scored is kept from r2.
