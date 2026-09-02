@@ -16,7 +16,8 @@ Tools (prefix `probe_`):
                                      factorization itself is undisclosed)
   probe_inject(port, amp, dur, ...)  ONLY at the end of the span: fork a
                                      live replica with the agent's emission
-                                     at the fixed emitter; returns replica
+                                     on the fixed emission channel (location
+                                     undisclosed, R2); returns replica
                                      streams (sensor-costed, amp-priced)
   probe_submit(contract, payload)    submit/revise a contract payload
 
