@@ -32,12 +32,12 @@
  },
  "spend": {
   "sensor": 32140.0,
-  "motion": 0.0,
+  "adjust": 0.0,
   "injection": 37.5
  },
  "n_replicas": 4,
  "n_reads": 170,
- "wall_s": 171.1,
+ "wall_s": 168.3,
  "gates": {
   "budgets_respected": true,
   "p1p2_locked_after_inject": true,

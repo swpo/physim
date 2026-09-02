@@ -97,3 +97,34 @@ responses (~60k-number cap per read keeps context sane).
   replicas. E2/E3 gated: contracts respec needed (A0 F7) before opening.
 - Score-time baselines recompute cached-truth streams per call (~seconds);
   fine at round-1 scale.
+
+
+## R2 addendum (interface change order + amendments, 2026-09-01)
+Spec: probes/blobs/l0/deepsearch/TRACKA_R2_CONTROLS.md. Shipped:
+- probe_move + probe_dilate REPLACED by probe_adjust(device, u1, u2, u3,
+  steps, read): u in [-1,1]^3, per-step pose delta = M @ u with M = secret
+  per-world 3x3 mix (Haar SO(3) x row scales 1.0-1.5/1.0-1.5/0.6-1.0;
+  cond <= 2.5; salted-hash seeded from world_key, independent of A0 secrets).
+  Translation and dilation are MIXED: the control factorization itself is
+  now undiscovered science.
+- ONE 'adjust' budget (1200 cu, sum|u| per step, charged as COMMANDED).
+- Bound behavior (amendment 2): a step that would cross a spacing bound is
+  REFUSED — generic result:"adjust_rejected", no reason/channel/value;
+  the refused step still charges sum|u| (strain); remaining steps in the
+  call do not run and are not charged; refused steps return no streams.
+  Translation-only commands cannot be refused (torus), but a refused mixed
+  step blocks its translation component too (intended entanglement).
+- Emitter co-location disclosure REMOVED everywhere (status, inject docs,
+  system prompt): emissions enter through "a fixed emission channel";
+  localizing it from transients is intended science.
+- Difficulty tag BLOB-E1r2 (BLOB-E1 registered+gated as superseded, so no
+  result mixing).
+- Regates: 6/6 server gates PASS (new T6: known-M pose math, both walls,
+  strain equality via exact ledger, multi-step partial application,
+  rejected-step stream absence; T4 barrier list extended with co-locat/
+  position/located/center/origin/motion/move/translat/dilat/spacing/zoom/
+  scale/scaling/adjacen/pose/emitter + the adjust_rejected response
+  key-set check). Scripted smoke rerun: SEE results/smoke_blob_s928.json
+  (actor never adjusts; reproduces round-1 scores through the R2 surface).
+- Post 11 updated: R2 revision note (the API-shape leak story), actuator
+  row in the interface table, emission wording, BLOB-E1r2 repro line.

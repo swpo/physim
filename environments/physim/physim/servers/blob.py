@@ -268,8 +268,10 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         `steps` 5tu steps. Each u is clipped to [-1, 1]; cost |u1|+|u2|+|u3|
         per step from the adjust budget. What the channels do to the device
         is fixed for the whole episode but undisclosed — discovering it is
-        part of the task. read=True samples the device each step (costed).
-        Only works on the main span."""
+        part of the task. The actuator may refuse a step (the response marks
+        it "adjust_rejected", steps after it do not run); a refused step
+        still costs its commanded effort. read=True samples the device after
+        each completed step (costed). Only works on the main span."""
         if not self._ready():
             return json.dumps({"error": "world not initialized; retry"})
         self._ensure()
@@ -289,39 +291,57 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         if left_steps <= 0:
             return self._err("the span has ended; devices are parked")
         steps = min(steps, left_steps)
-        adj_cost = float(np.abs(u).sum()) * steps
-        if adj_cost > self._left("adjust") + 1e-9:
+        adj_per_step = float(np.abs(u).sum())
+        if adj_per_step * steps > self._left("adjust") + 1e-9:
             return self._err(
-                f"adjust budget too low (cost {adj_cost:.1f}, left "
-                f"{self._left('adjust'):.1f})")
+                f"adjust budget too low (cost {adj_per_step * steps:.1f}, "
+                f"left {self._left('adjust'):.1f})")
         k_dev = self._k_of([device])
-        read_cost = k_dev * B.CTRL_TU * steps if read else 0.0
-        if read_cost > self._left("sensor") + 1e-9:
+        read_per_step = k_dev * B.CTRL_TU if read else 0.0
+        if read and read_per_step * steps > self._left("sensor") + 1e-9:
             read = False
-            read_cost = 0.0
-        st.spent["adjust"] = st.spent.get("adjust", 0.0) + adj_cost
-        st.spent["sensor"] = st.spent.get("sensor", 0.0) + read_cost
+            read_per_step = 0.0
         dev = self._devices()[device]
         M = np.asarray(B.get_secrets(st.world, st.seed)["adjust_mix"],
                        float)
         delta = M @ u                     # (dy, dx, dlog_spacing) per step
         out_steps = []
+        applied = 0
+        rejected = False
+        charge = 0.0
+        sensor_charge = 0.0
         for _ in range(steps):
+            new_dil = dev.dilation * float(np.exp(delta[2]))
+            if not (dev.dil_bounds[0] - 1e-12 <= new_dil
+                    <= dev.dil_bounds[1] + 1e-12):
+                # actuator refusal: the step does not apply (its translation
+                # component included — entanglement intended); strain charge
+                # for the commanded effort; remaining steps do not run and
+                # are not charged.
+                rejected = True
+                charge += adj_per_step
+                break
             dev.center = (dev.center + delta[:2]) % dev.L
-            dev.dilation = float(np.clip(dev.dilation * np.exp(delta[2]),
-                                         *dev.dil_bounds))   # silent clamp
+            dev.dilation = new_dil
+            charge += adj_per_step
+            applied += 1
             st.i_ctrl += 1
             if read:
+                sensor_charge += read_per_step
                 v = B.sample_at(st.world, st.seed, st.i_ctrl, dev)
                 out_steps.append(dict(t=st.i_ctrl * B.CTRL_TU,
                                       values=_r(v)))
+        st.spent["adjust"] = st.spent.get("adjust", 0.0) + charge
+        st.spent["sensor"] = st.spent.get("sensor", 0.0) + sensor_charge
         st.poses[device] = [float(dev.center[0]), float(dev.center[1]),
                             float(dev.dilation)]
         return json.dumps(dict(
             t=st.i_ctrl * B.CTRL_TU, applied=[float(x) for x in u],
-            steps=steps, device=device,
-            adjust_cost=round(adj_cost, 2),
-            sensor_cost=round(read_cost, 1),
+            steps_requested=steps, steps_applied=applied,
+            result=("adjust_rejected" if rejected else "ok"),
+            device=device,
+            adjust_cost=round(charge, 2),
+            sensor_cost=round(sensor_charge, 1),
             steps_read=out_steps, budget=self._budget()))
 
     @vf.tool(name="inject")
