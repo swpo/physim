@@ -63,7 +63,7 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
             st.poses = [[*sec["devices"][i]["center"], 1.0]
                         for i in range(len(B.ROSTER))]
         if not st.spent:
-            st.spent = dict(sensor=0.0, motion=0.0, injection=0.0)
+            st.spent = dict(sensor=0.0, adjust=0.0, injection=0.0)
 
     def _devices(self):
         st = self.state
@@ -144,9 +144,9 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
             caps=dict(amp_max=B.AMP_CAP, amp_min=B.AMP_MIN,
                       dur_max=B.DUR_CAP, u_max=1.0,
                       replicas_left=B.MAX_REPLICAS - st.n_replicas),
-            emitter=("fixed emitter co-located with device 0's initial "
-                     "position; all emissions (yours and the announced one) "
-                     "originate there"),
+            emission=("all emissions — yours and the announced protocol — "
+                      "enter through the same fixed emission channel; where "
+                      "and what it couples to is undisclosed"),
             contracts=cc,
             locked_p1p2=st.locked_p1p2,
             submitted=dict(P1=bool(st.sub_p1), P2=bool(st.sub_p2),
@@ -158,8 +158,10 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
                 "forks a fresh replica of the world from that instant",
                 "the first probe_inject locks P1 and P2 (they are forecasts "
                 "issued from span information only)",
-                "contract truths are evaluated at each device's INITIAL "
-                "pose; your accepted actions are your only pose ledger",
+                "contract truths are evaluated with each device at its "
+                "t=0 configuration (as if you never adjusted it); your "
+                "accepted probe_adjust commands are your only record of "
+                "what you changed",
             ],
         ))
 
@@ -326,14 +328,15 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
     async def inject(self, port: int, amp: float, dur: float,
                      lags="all", devices="all", ports="all") -> str:
         """Run ONE replica experiment: fork the world at t_end_of_span,
-        emit (port, amp) from the fixed emitter for `dur` tu, and read the
-        selected devices (at their current poses) at the requested lags
-        (list of tu after the fork, multiples of 5, max 250; 'all' = the
-        13 announced P3 lags). Costs: injection amp*(1+4*max(0,amp-0.5))
-        *dur + sensor slots*5 per lag per device. amp in [0.05, 1.0], or
-        amp=0 for an emission-free CONTROL replica (sensor cost only).
-        Requires t = t_end_of_span; the first call locks P1/P2. Replicas
-        are independent forks: same start state, same world noise stream."""
+        drive the fixed emission channel with (port, amp) for `dur` tu, and
+        read the selected devices at the requested lags (list of tu after
+        the fork, multiples of 5, max 250; 'all' = the 13 announced P3
+        lags). Where and what the emission channel couples to is
+        undisclosed. Costs: injection amp*(1+4*max(0,amp-0.5))*dur + sensor
+        slots*5 per lag per device. amp in [0.05, 1.0], or amp=0 for an
+        emission-free CONTROL replica (sensor cost only). Requires
+        t = t_end_of_span; the first call locks P1/P2. Replicas are
+        independent forks: same start state, same world noise stream."""
         if not self._ready():
             return json.dumps({"error": "world not initialized; retry"})
         self._ensure()

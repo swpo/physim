@@ -37,3 +37,22 @@ B. ADJUST COST SEMANTICS (dilation symmetry): cost = sum|u_i| of the COMMANDED
 C. While auditing: ALSO strip any residual layout language anywhere in agent-
    visible text ('slots' is fine as a count word; 'ring', 'grid', 'lattice',
    'adjacent', 'spacing' are not).
+R2 AMENDMENT 2 (user decision on bound behavior): REPLACE silent-clamp with
+EXPLICIT GENERIC REJECTION:
+- If a probe_adjust step would push spacing past an (undisclosed) bound, that
+  step does NOT apply. Response includes result:"adjust_rejected" for that
+  step — NO reason, NO which-channel, NO bound value (generic string, add to
+  barrier list that it stays generic).
+- Charging: completed steps charge normally; the rejected step ALSO charges
+  its commanded sum|u_i| ("strain": the actuator refused but effort was
+  spent). This kills the free binary-search oracle while avoiding silent
+  world-model corruption (agent KNOWS nothing changed, doesn't know why).
+- Multi-step calls: apply steps until first rejection, reject the remainder
+  (single rejection charge, not per remaining step), return poses' streams
+  for the applied steps as usual.
+- Translation stays unbounded on the torus (no rejection path for pure
+  translation; only the spacing component can strike bounds — NOTE: since
+  channels MIX translation+dilation, a rejected step also blocks its
+  translation component; that entanglement is intended and undisclosed).
+- Unit tests: rejection at both walls, strain charge equality, multi-step
+  partial application, and rejected-step stream absence.

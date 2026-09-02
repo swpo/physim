@@ -41,7 +41,7 @@ def t1():
     s0 = run(ts.status())
     assert s0["t"] == 0.0 and s0["phase"] == "exploration", s0
     assert s0["ports"] == 12 and s0["slots_per_device"] == [13, 19]
-    assert s0["budget"] == {"sensor": 40000.0, "motion": 1200.0,
+    assert s0["budget"] == {"sensor": 40000.0, "adjust": 1200.0,
                             "injection": 120.0}
     r = run(ts.read_streams(window=4, devices="all"))
     assert len(r["steps"]) == 4 and r["t"] == 20.0
@@ -50,12 +50,13 @@ def t1():
     assert v0.shape == (12, 13)
     w = run(ts.wait(steps=100))
     assert w["t"] == 520.0
-    m = run(ts.move(device=1, a1=1.0, a2=-0.5, steps=2))
-    assert abs(m["motion_cost"] - 3.0) < 1e-9 and len(m["steps_read"]) == 2
-    d = run(ts.dilate(device=1, gain=0.2))
-    assert abs(d["motion_cost"] - 0.2) < 1e-6
-    # pose persisted in state
-    assert st.poses[1][2] != 1.0
+    m = run(ts.adjust(device=1, u1=1.0, u2=-0.5, u3=0.0, steps=2))
+    assert abs(m["adjust_cost"] - 3.0) < 1e-9 and len(m["steps_read"]) == 2
+    d = run(ts.adjust(device=1, u1=0.0, u2=0.0, u3=0.8))
+    assert abs(d["adjust_cost"] - 0.8) < 1e-6
+    # pose persisted in state (some translation and/or dilation happened)
+    assert st.poses[1][2] != 1.0 or st.poses[1][:2] != list(
+        B.get_secrets(WORLD, SEED)["devices"][1]["center"])
     # span hard-stop
     w2 = run(ts.wait(steps=10000))
     assert w2["t"] == B.T0 and w2["at_end_of_span"]
@@ -64,6 +65,10 @@ def t1():
     # sensor budget ledger consistent
     assert abs(st.spent["sensor"] - (r["sensor_cost"] + m["sensor_cost"]
                + d["sensor_cost"])) < 1e-6
+    # status reports the R2 surface
+    s1 = run(ts.status())
+    assert s1["n_actuator_channels"] == 3
+    assert "adjust" in s1["budget"] and "motion" not in s1["budget"]
     print("T1 tool loop: PASS")
 
 

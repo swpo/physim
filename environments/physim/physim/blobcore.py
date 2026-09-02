@@ -323,22 +323,23 @@ def contracts(world: str, seed: int) -> dict:
         public=dict(
             P1=dict(device=0, horizons=[int(h) for h in P1_HORIZONS],
                     ports=nf, slots=kA,
-                    statistic="stream values at the device's initial pose, "
-                              "no injection, at each horizon after the "
-                              "exploration span ends"),
+                    statistic="stream values with the device at its t=0 "
+                              "configuration, no injection, at each horizon "
+                              "after the exploration span ends"),
             P2=dict(device=0, port=p_ev, thr=float(round(float(thr), 6)),
                     sign=int(sign), window_tu=int(P2_WIN), n_windows=n_win,
                     statistic="count of upward crossings of sign*value "
-                              "above thr, summed over the device's slots, "
-                              "per consecutive window after the span ends, "
+                              "above thr, summed over the slots of the "
+                              "device at its t=0 configuration, per "
+                              "consecutive window after the span ends, "
                               "no injection"),
             P3=dict(device=1, port=ann_port, amp=ANN_AMP,
                     dur_tu=int(ANN_DUR),
                     lags=[int(x) for x in P3_LAGS], ports=nf, slots=kB,
-                    statistic="stream values at the device's initial pose "
-                              "at each lag after the announced emission "
-                              "(amp, dur on the announced port) starts at "
-                              "the end of the span"),
+                    statistic="stream values with the device at its t=0 "
+                              "configuration at each lag after the announced "
+                              "emission (amp, dur on the announced port) "
+                              "starts at the end of the span"),
         ),
         private=dict(p2_port=p_ev, p2_sign=float(sign), p2_thr=float(thr),
                      ann_field=0, ann_port=ann_port, kA=kA, kB=kB, nf=nf),
