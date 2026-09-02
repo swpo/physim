@@ -79,14 +79,14 @@ device:</p>
 port identities (secretly permuted per world)</td></tr>
 <tr><td><b>actuator</b></td><td>3 anonymous channels u ∈ [−1,1]³, cost
 |u₁|+|u₂|+|u₃| per step, charged as commanded</td>
-<td>everything: the channels drive a secret fixed linear mix of translation
-and sensor-spacing change (an SO(3)-flavored 3×3 map, condition ≤ 2.5), so even
-the fact that the pose space factorizes into "move" and "zoom" must be
-discovered from the streams. The map is fixed all episode ("retinotopy":
-nature wires actuators once; agents master a consistent instrument). Spacing
-has undisclosed bounds; a step that would cross one is refused with a generic
-<code>adjust_rejected</code> — and still costs its commanded effort (strain),
-so the refusal itself is not a free bound-measuring oracle</td></tr>
+<td>what the channels do: two translate the device, one scales its sensor
+spacing — in a fixed global convention that is simply never documented
+(undocumented IS the mechanism, exactly like the fixed output retinotopy:
+nature wires actuators once, mastery transfers across worlds, and the WORLD
+is what varies). Spacing has undisclosed bounds; a step that would cross one
+is refused with a generic <code>adjust_rejected</code> — and still costs its
+commanded effort (strain), so the refusal is not a free bound-measuring
+oracle. Pure-translation steps are never refused</td></tr>
 <tr><td><b>emission</b></td><td>inject(port, amp, dur) through one fixed
 emission channel, budgeted</td><td>the emitter's location and coupling
 (round-1 revision: originally disclosed as co-located with a device; now fully
@@ -184,21 +184,25 @@ agent opportunity (beat the script) or a round-2 respec note (E2 wants
 preparation-style contracts, not tracking).</div>
 
 <h2>3 · The environment: contracts, budgets, episode</h2>
-<div class="warn"><b>Interface revision R2 (pre-launch).</b> The first cut of
-this environment shipped <code>probe_move(a1, a2)</code> +
-<code>probe_dilate(gain)</code> — and thereby leaked, through the API shape
-alone, that the pose space factorizes into two translation axes plus a zoom.
-It also told agents the emitter was co-located with a device. Both are gone:
-round 1 launches with a single opaque 3-channel actuator
-(<code>probe_adjust</code>) whose channels secretly <i>mix</i> translation and
-spacing change through a fixed random linear map, refusals at the undisclosed
-spacing bounds are generic and still cost their commanded effort ("strain" —
-no free binary-search on the bounds), and the emission channel's location is
-undisclosed (localizing it from decaying transients is now intended science —
-a capable agent demonstrated exactly that during review). The difficulty tag
-is <code>BLOB-E1r2</code> so no results mix with the brief pre-revision
-surface.</div>
-<p>The benchmark ships as a new difficulty family (<code>BLOB-E1r2</code>; E2/E3
+<div class="warn"><b>Interface revisions R2/R3 (pre-launch).</b> The first
+cut shipped <code>probe_move(a1, a2)</code> + <code>probe_dilate(gain)</code>
+— leaking, through the API shape alone, that the pose space factorizes into
+two translation axes plus a zoom, and telling agents the emitter was
+co-located with a device. R2 replaced both tools with one 3-channel
+<code>probe_adjust</code> whose channels secretly <i>mixed</i> translation and
+spacing through a random linear map — and was itself retired a day later
+(user verdict: mixing is difficulty without depth, the same reasoning that
+rejected shuffled sensors). The final surface: <code>probe_adjust</code>'s
+channels have PURE effects under a fixed global convention that is simply
+never documented — undocumented is the mechanism, mastery transfers across
+worlds. What survives from R2: refusals at the undisclosed spacing bounds are
+generic (<code>adjust_rejected</code>) and still cost their commanded effort
+("strain" — no free binary-search on the bounds), and the emission channel's
+location is undisclosed (localizing it from decaying transients is intended
+science — a capable agent demonstrated exactly that during review). The
+difficulty tag is <code>BLOB-E1r3</code>; nothing scored was kept from the
+earlier surfaces.</div>
+<p>The benchmark ships as a new difficulty family (<code>BLOB-E1r3</code>; E2/E3
 registered but gated) in the existing physim verifiers environment — same
 harness stack the C/D-track used: the world is an MCP tool server, the agent is
 a coding harness with a workspace, files, and its own offline modeling loop.</p>
@@ -287,7 +291,7 @@ reproducible today.</div>
 scripted smoke: <code>.venv/bin/python environments/physim/tools/smoke_blob.py</code> ·
 adequacy study: <code>probes/blobs/agentenv/adequacy.py</code> (cache → evalgroup → aggregate)
 with the blobkit venv · an agent episode:
-<code>.venv/bin/eval physim -n 1 -m &lt;model&gt; --env.taskset.difficulty BLOB-E1r2
+<code>.venv/bin/eval physim -n 1 -m &lt;model&gt; --env.taskset.difficulty BLOB-E1r3
 --env.taskset.tier tools --env.scientist.harness.id claude_code</code>.
 A0 caches are local artifacts (7–11 GB, gitignored); rebuild via adequacy.py.</div>
 

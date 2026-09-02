@@ -192,29 +192,18 @@ def get_branches(world: str, seed: int):
 
 
 def adjust_mix(wk: str) -> np.ndarray:
-    """R3 secret actuator map (TRACKA_R2_CONTROLS.md + R3 revision): per-
-    WORLD fixed 3x3 map with PURE effects — M = P @ diag(s) up to signs,
-    i.e. each anonymous channel u_i drives exactly ONE of (dy, dx,
-    dlog_spacing) with a secret sign and scale; WHICH one is a secret
-    permutation. No cross-mixing (R2's mixed map was retired: difficulty
-    without depth). Per adjust step the pose delta is M @ u.
-
-    Scales: translation channels in [1.0, 1.5] (the old MAX_STEP range),
-    the dilation channel in [0.6, 1.0] (the old gain range). Deterministic
-    in world_key via a salted hash (fresh salt: r3), independent of the A0
-    secret stream."""
-    import hashlib
-    h = int(hashlib.sha256((wk + "|adjust_pure_v3").encode())
-            .hexdigest()[:16], 16)
-    rng = np.random.default_rng(h)
-    perm = rng.permutation(3)           # effect row -> channel column
-    signs = rng.choice([-1.0, 1.0], size=3)
-    scales = np.array([rng.uniform(1.0, 1.5), rng.uniform(1.0, 1.5),
-                       rng.uniform(0.6, 1.0)])  # rows: dy, dx, dlog
-    M = np.zeros((3, 3))
-    for row in range(3):                # row = effect, perm[row] = channel
-        M[row, perm[row]] = signs[row] * scales[row]
-    return M
+    """R3-final actuator map (TRACKA_R2_CONTROLS.md + R3 simplification):
+    FIXED GLOBAL convention across all worlds — u1 -> dx, u2 -> dy,
+    u3 -> dlog_spacing, fixed scales (u1/u2: 1.5 = the old MAX_STEP;
+    u3: 1.0 = the old gain clip). No permutation, no signs, no per-world
+    variation: undocumented IS the mechanism (same principle as the fixed
+    output retinotopy — instrument mastery transfers across worlds; the
+    WORLD is what varies). Nothing about the convention is ever stated in
+    agent-visible text. Rows of the returned M are (dy, dx, dlog); the
+    world_key argument is kept for interface stability and ignored."""
+    return np.array([[0.0, 1.5, 0.0],     # dy = 1.5 * u2
+                     [1.5, 0.0, 0.0],     # dx = 1.5 * u1
+                     [0.0, 0.0, 1.0]])    # dlog_spacing = u3
 
 
 @lru_cache(maxsize=6)

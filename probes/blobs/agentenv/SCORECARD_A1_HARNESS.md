@@ -128,3 +128,22 @@ Spec: probes/blobs/l0/deepsearch/TRACKA_R2_CONTROLS.md. Shipped:
   (actor never adjusts; reproduces round-1 scores through the R2 surface).
 - Post 11 updated: R2 revision note (the API-shape leak story), actuator
   row in the interface table, emission wording, BLOB-E1r2 repro line.
+
+
+## R3 addendum (final control revision, 2026-09-01)
+User verdicts: (R3) channel mixing = difficulty without depth (like the
+rejected sensor shuffle) -> pure per-channel effects; (R3-final) drop the
+permutation/sign/scale secrecy too -> FIXED GLOBAL convention u1->dx (x1.5),
+u2->dy (x1.5), u3->dlog spacing (x1.0), identical across worlds, simply never
+documented (undocumented IS the mechanism; instrument mastery transfers, the
+world is what varies — the fixed-retinotopy principle applied to actuators).
+Kept from R2: single adjust budget, commanded-|u| cost, generic
+adjust_rejected + strain at the (undisclosed) spacing bounds, zero location
+language, pure-translation never refused. Tag BLOB-E1r3 (E1r2 gated:
+'mixed-control variant, retired before any scored rollouts were kept').
+Regates: 6/6 server gates PASS (T6 rewritten for the fixed map: pose math,
+both walls incl. wall at exp(1.0)=2.718 from 5x u3=0.5 steps, strain equality,
+partial application, pure-translation-at-the-wall). Scripted-actor smoke
+EXEMPT this round: the actor never calls probe_adjust and the R3 change is
+adjust-only — the r2-surface smoke result (reward 0.6004) remains the valid
+null-harness row. Post 11 revision box now tells the full R2->R3 story.

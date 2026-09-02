@@ -50,14 +50,13 @@ def t1():
     assert v0.shape == (12, 13)
     w = run(ts.wait(steps=100))
     assert w["t"] == 520.0
-    # commands sized for this world's fixed M (dlog per step ~-0.26 for
-    # the first, +0.24 for the second: no wall strikes from dilation 1.0)
+    # R3-final fixed map: pure translation + a safe dilation step
     m = run(ts.adjust(device=1, u1=0.4, u2=-0.2, u3=0.0, steps=2))
     assert m["result"] == "ok" and m["steps_applied"] == 2
     assert abs(m["adjust_cost"] - 1.2) < 1e-9 and len(m["steps_read"]) == 2
-    d = run(ts.adjust(device=1, u1=0.0, u2=0.0, u3=-0.8))
-    assert d["result"] == "ok"
-    assert abs(d["adjust_cost"] - 0.8) < 1e-6
+    d = run(ts.adjust(device=1, u1=0.0, u2=0.0, u3=-0.6))
+    assert d["result"] == "ok"                     # exp(-0.6)=0.55 > 0.5
+    assert abs(d["adjust_cost"] - 0.6) < 1e-6
     # pose persisted in state (some translation and/or dilation happened)
     assert st.poses[1][2] != 1.0 or st.poses[1][:2] != list(
         B.get_secrets(WORLD, SEED)["devices"][1]["center"])
@@ -165,21 +164,13 @@ def t4():
     texts.append(("submit_err", asyncio.get_event_loop().run_until_complete(
         ts.submit(contract="P2", payload={"mean": [1]}))))
     # a rejected adjust (park device at the wall via evaluator state, then
-    # command a strong push): the response must stay GENERIC
+    # command the dilation channel upward): the response must stay GENERIC
     ts2, st2 = make_ts()
     st2.poses = [[10.0, 10.0, 2.999], [40.0, 40.0, 1.0]]
     st2.spent = dict(sensor=0.0, adjust=0.0, injection=0.0)
     rej = asyncio.get_event_loop().run_until_complete(
-        ts2.adjust(device=0, u1=1.0, u2=1.0, u3=1.0, steps=3))
+        ts2.adjust(device=0, u1=0.0, u2=0.0, u3=1.0, steps=3))
     rj = json.loads(rej)
-    if rj.get("result") != "adjust_rejected":      # mix row sign varies
-        rej = asyncio.get_event_loop().run_until_complete(
-            ts2.adjust(device=0, u1=-1.0, u2=-1.0, u3=-1.0, steps=3))
-        rj = json.loads(rej)
-        st2.poses[0][2] = 0.5001                   # then hit the floor
-        rej = asyncio.get_event_loop().run_until_complete(
-            ts2.adjust(device=0, u1=-1.0, u2=-1.0, u3=-1.0, steps=3))
-        rj = json.loads(rej)
     assert rj.get("result") == "adjust_rejected", rj
     assert set(rj) <= {"t", "applied", "steps_requested", "steps_applied",
                        "result", "device", "adjust_cost", "sensor_cost",
@@ -188,7 +179,7 @@ def t4():
     for label, txt in texts:
         _leak_scan(txt, label)
     # system prompt + tool docstrings
-    cfg = PhysimConfig(id="physim", difficulty="BLOB-E1r2", tier="tools")
+    cfg = PhysimConfig(id="physim", difficulty="BLOB-E1r3", tier="tools")
     task = _blob_task(cfg, 0)
     _leak_scan(task.data.system_prompt, "system_prompt")
     _leak_scan(task.data.prompt, "prompt")
@@ -235,94 +226,69 @@ def t5():
 
 
 def t6():
-    """R3 probe_adjust: pure permuted/signed/scaled channels — known-M pose
-    math, wall rejection at BOTH bounds (dilation channel only), strain-
+    """R3-final probe_adjust: fixed global map (u1->dx*1.5, u2->dy*1.5,
+    u3->dlog) — pose math, wall rejection at BOTH bounds (u3 only), strain-
     charge equality, multi-step partial application, rejected-step stream
-    absence, and pure-translation commands NEVER refused (even at a wall)."""
+    absence, pure-translation never refused (even at a wall)."""
     M = np.asarray(B.get_secrets(WORLD, SEED)["adjust_mix"], float)
-    # structure: exactly one nonzero per row and per column (P @ diag(s))
-    nz = np.abs(M) > 0
-    assert (nz.sum(axis=0) == 1).all() and (nz.sum(axis=1) == 1).all(), M
-    s_tr0 = np.abs(M[0]).max()
-    s_tr1 = np.abs(M[1]).max()
-    s_dil = np.abs(M[2]).max()
-    assert 1.0 <= s_tr0 <= 1.5 and 1.0 <= s_tr1 <= 1.5, (s_tr0, s_tr1)
-    assert 0.6 <= s_dil <= 1.0, s_dil
-    ch_dil = int(np.argmax(np.abs(M[2])))       # secret dilation channel
-    ch_tr = [c for c in range(3) if c != ch_dil]
-    sgn_dil = float(np.sign(M[2, ch_dil]))
+    assert np.allclose(M, [[0.0, 1.5, 0.0], [1.5, 0.0, 0.0],
+                           [0.0, 0.0, 1.0]]), M
 
-    # --- pose math with known M
+    # --- pose math
     ts, st = make_ts()
     sec = B.get_secrets(WORLD, SEED)
     c0 = np.asarray(sec["devices"][0]["center"], float)
-    u = np.array([0.3, -0.2, 0.1])
-    r = run(ts.adjust(device=0, u1=u[0], u2=u[1], u3=u[2], read=False))
+    r = run(ts.adjust(device=0, u1=0.3, u2=-0.2, u3=0.1, read=False))
     assert r["result"] == "ok" and r["steps_applied"] == 1
-    d = M @ u
     L = B.get_cached(WORLD, SEED).meta["L"]
-    assert np.allclose(st.poses[0][:2], (c0 + d[:2]) % L, atol=1e-9)
-    assert abs(st.poses[0][2] - float(np.exp(d[2]))) < 1e-12
-    assert abs(st.spent["adjust"] - np.abs(u).sum()) < 1e-9
+    exp = (c0 + np.array([1.5 * -0.2, 1.5 * 0.3])) % L   # (dy, dx)
+    assert np.allclose(st.poses[0][:2], exp, atol=1e-9)
+    assert abs(st.poses[0][2] - float(np.exp(0.1))) < 1e-12
+    assert abs(st.spent["adjust"] - 0.6) < 1e-9
 
-    # --- helper: command only the dilation channel toward a wall
-    def dil_u(mag):                     # mag>0 pushes dilation UP
-        uu = np.zeros(3)
-        uu[ch_dil] = mag * sgn_dil
-        return uu
-
-    # --- UPPER wall: pure-dilation pushes until refusal
+    # --- UPPER wall via u3
     ts, st = make_ts()
-    up = dil_u(0.5)
-    dl = s_dil * 0.5                    # dlog per step
-    n_to_wall = int(np.ceil(np.log(3.0) / dl)) + 1
-    rr = run(ts.adjust(device=0, u1=up[0], u2=up[1], u3=up[2],
+    per = 0.5
+    n_to_wall = int(np.ceil(np.log(3.0) / 0.5)) + 1      # dlog=0.5/step
+    rr = run(ts.adjust(device=0, u1=0.0, u2=0.0, u3=0.5,
                        steps=n_to_wall, read=False))
     assert rr["result"] == "adjust_rejected", rr
     napp = rr["steps_applied"]
     assert 0 < napp < n_to_wall
-    per = 0.5
-    # partial application: (applied + 1 strain) * per-step commanded cost
     assert abs(st.spent["adjust"] - (napp + 1) * per) < 1e-9
     assert st.poses[0][2] <= 3.0 + 1e-9
     dil_wall = st.poses[0][2]
     # repeated push at the wall: 1 strain, no movement, no streams
     spent0 = st.spent["adjust"]
-    r2_ = run(ts.adjust(device=0, u1=up[0], u2=up[1], u3=up[2],
-                        steps=5, read=True))
+    r2_ = run(ts.adjust(device=0, u1=0.0, u2=0.0, u3=0.5, steps=5,
+                        read=True))
     assert r2_["result"] == "adjust_rejected" and r2_["steps_applied"] == 0
     assert st.poses[0][2] == dil_wall
     assert r2_["steps_read"] == [] and r2_["sensor_cost"] == 0.0
     assert abs(st.spent["adjust"] - spent0 - per) < 1e-9
     # --- pure TRANSLATION at the wall: NEVER refused
-    tr = np.zeros(3)
-    tr[ch_tr[0]] = 1.0
-    tr[ch_tr[1]] = -0.7
     pos_before = list(st.poses[0][:2])
-    r3_ = run(ts.adjust(device=0, u1=tr[0], u2=tr[1], u3=tr[2],
-                        steps=3, read=False))
-    assert r3_["result"] == "ok" and r3_["steps_applied"] == 3, r3_
-    assert st.poses[0][2] == dil_wall               # dilation untouched
-    assert st.poses[0][:2] != pos_before            # translated
-    # --- strain equality: +dil vs -dil commands of equal magnitude
-    spent1 = st.spent["adjust"]
-    dn = dil_u(-0.5)
-    r4_ = run(ts.adjust(device=0, u1=dn[0], u2=dn[1], u3=dn[2],
+    r3_ = run(ts.adjust(device=0, u1=1.0, u2=-0.7, u3=0.0, steps=3,
                         read=False))
+    assert r3_["result"] == "ok" and r3_["steps_applied"] == 3, r3_
+    assert st.poses[0][2] == dil_wall
+    assert st.poses[0][:2] != pos_before
+    # --- strain equality: +u3 vs -u3 of equal magnitude
+    spent1 = st.spent["adjust"]
+    r4_ = run(ts.adjust(device=0, u1=0.0, u2=0.0, u3=-0.5, read=False))
     assert r4_["result"] == "ok"                    # off the wall: applies
-    assert abs(st.spent["adjust"] - spent1 - per) < 1e-9  # same |u| cost
+    assert abs(st.spent["adjust"] - spent1 - per) < 1e-9
     # --- LOWER wall
     ts, st = make_ts()
-    n_to_floor = int(np.ceil(np.log(1.0 / 0.5) / dl)) + 1
-    r5_ = run(ts.adjust(device=0, u1=dn[0], u2=dn[1], u3=dn[2],
+    n_to_floor = int(np.ceil(np.log(1.0 / 0.5) / 0.5)) + 1
+    r5_ = run(ts.adjust(device=0, u1=0.0, u2=0.0, u3=-0.5,
                         steps=n_to_floor + 3, read=False))
     assert r5_["result"] == "adjust_rejected"
     assert st.poses[0][2] >= 0.5 - 1e-9
     assert abs(st.spent["adjust"]
                - (r5_["steps_applied"] + 1) * per) < 1e-9
-    print("T6 probe_adjust (R3 pure): PASS "
-          f"(dil channel u{ch_dil + 1}, scales tr=({s_tr0:.2f},{s_tr1:.2f}) "
-          f"dil={s_dil:.2f}, wall at {dil_wall:.3f})")
+    print("T6 probe_adjust (R3-final fixed map): PASS "
+          f"(wall at {dil_wall:.3f}, floor at {st.poses[0][2]:.3f})")
 
 
 if __name__ == "__main__":
