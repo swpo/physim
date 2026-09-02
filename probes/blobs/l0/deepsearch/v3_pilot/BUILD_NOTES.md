@@ -8,3 +8,9 @@ Base: make_bundle(gpu_batch) 0.3.4 + overlay:
 - seeds: v2 UNION_FINAL top-100 + atlas g0 jobs (cargo_cell, m5_trains, m2_dimer)
 SMOKE (local, cpu-jax): smoke_0 75.2 C9=0.42 structured; smoke_1 60.5 C9=0.37
 structured; smoke_sic 69.6 C9=0.49 economy — all ok, cells carry spatial axis.
+
+## Workspace policy (2026-09-02, after /tmp GC ate the build venv mid-run)
+- NEVER build venvs or long-lived workspaces in /tmp (macOS GC prunes aggressively).
+- Local science venv: ~/.venvs/bk3 (py3.9, blobkit -e install, numpy<2, jax 0.4.30 cpu).
+- v3 pilot workspace: ~/v3work/{v3bundle,v3smoke} (was /tmp/v3bundle).
+- Prefer uv-managed project venvs (physim/.venv) where the project defines deps.
