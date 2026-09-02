@@ -11,8 +11,9 @@ Tools (prefix `probe_`):
                                      announced contracts, pricing, locks
   probe_read_streams(window, ...)    advance + read sensors (costed)
   probe_wait(steps)                  advance without reading (free)
-  probe_move(device, a1, a2, ...)    motion control (costed, anonymous basis)
-  probe_dilate(device, gain, ...)    spacing control (costed, bounded)
+  probe_adjust(device, u1, u2, u3)   3-channel actuator (costed; per-world
+                                     secret linear mix — R2: the control
+                                     factorization itself is undisclosed)
   probe_inject(port, amp, dur, ...)  ONLY at the end of the span: fork a
                                      live replica with the agent's emission
                                      at the fixed emitter; returns replica
@@ -133,14 +134,15 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
             n_devices=len(devs),
             ports=nf,
             slots_per_device=[d.k for d in devs],
+            n_actuator_channels=3,
             budget=self._budget(),
             costs=dict(
                 sensor="slots_per_device[d] * 5 per read step per device",
-                motion="|a1|+|a2| per move step; |log(spacing change)| per dilate",
+                adjust="|u1|+|u2|+|u3| per adjust step",
                 injection="amp*(1+4*max(0,amp-0.5)) per tu of emission",
             ),
             caps=dict(amp_max=B.AMP_CAP, amp_min=B.AMP_MIN,
-                      dur_max=B.DUR_CAP, move_step_max=B.MAX_STEP,
+                      dur_max=B.DUR_CAP, u_max=1.0,
                       replicas_left=B.MAX_REPLICAS - st.n_replicas),
             emitter=("fixed emitter co-located with device 0's initial "
                      "position; all emissions (yours and the announced one) "
@@ -257,13 +259,14 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
             global_stats=_r(B.global_stats(st.world, st.seed, st.i_ctrl)),
             budget=self._budget()))
 
-    @vf.tool(name="move")
-    async def move(self, device: int, a1: float, a2: float,
-                   steps: int = 1, read: bool = True) -> str:
-        """Apply the motion control (a1, a2) to one device for `steps` 5tu
-        steps (each component clipped to +/-1.5; cost |a1|+|a2| per step).
-        The control basis is fixed for the whole episode but its meaning is
-        undisclosed. read=True samples the moved device each step (costed).
+    @vf.tool(name="adjust")
+    async def adjust(self, device: int, u1: float, u2: float, u3: float,
+                     steps: int = 1, read: bool = True) -> str:
+        """Apply the 3-channel actuator (u1, u2, u3) to one device for
+        `steps` 5tu steps. Each u is clipped to [-1, 1]; cost |u1|+|u2|+|u3|
+        per step from the adjust budget. What the channels do to the device
+        is fixed for the whole episode but undisclosed — discovering it is
+        part of the task. read=True samples the device each step (costed).
         Only works on the main span."""
         if not self._ready():
             return json.dumps({"error": "world not initialized; retry"})
@@ -272,10 +275,10 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         st.turns += 1
         try:
             device = int(device)
-            a = np.clip([float(a1), float(a2)], -B.MAX_STEP, B.MAX_STEP)
+            u = np.clip([float(u1), float(u2), float(u3)], -1.0, 1.0)
             steps = int(steps)
         except (TypeError, ValueError):
-            return self._err("device, a1, a2, steps must be numeric")
+            return self._err("device, u1, u2, u3, steps must be numeric")
         if device not in (0, 1):
             return self._err("device must be 0 or 1")
         if steps < 1:
@@ -284,22 +287,27 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         if left_steps <= 0:
             return self._err("the span has ended; devices are parked")
         steps = min(steps, left_steps)
-        move_cost = float(np.abs(a).sum()) * steps
-        if move_cost > self._left("motion") + 1e-9:
+        adj_cost = float(np.abs(u).sum()) * steps
+        if adj_cost > self._left("adjust") + 1e-9:
             return self._err(
-                f"motion budget too low (cost {move_cost:.1f}, left "
-                f"{self._left('motion'):.1f})")
+                f"adjust budget too low (cost {adj_cost:.1f}, left "
+                f"{self._left('adjust'):.1f})")
         k_dev = self._k_of([device])
         read_cost = k_dev * B.CTRL_TU * steps if read else 0.0
         if read_cost > self._left("sensor") + 1e-9:
             read = False
             read_cost = 0.0
-        st.spent["motion"] = st.spent.get("motion", 0.0) + move_cost
+        st.spent["adjust"] = st.spent.get("adjust", 0.0) + adj_cost
         st.spent["sensor"] = st.spent.get("sensor", 0.0) + read_cost
         dev = self._devices()[device]
+        M = np.asarray(B.get_secrets(st.world, st.seed)["adjust_mix"],
+                       float)
+        delta = M @ u                     # (dy, dx, dlog_spacing) per step
         out_steps = []
         for _ in range(steps):
-            dev.apply_move(a)
+            dev.center = (dev.center + delta[:2]) % dev.L
+            dev.dilation = float(np.clip(dev.dilation * np.exp(delta[2]),
+                                         *dev.dil_bounds))   # silent clamp
             st.i_ctrl += 1
             if read:
                 v = B.sample_at(st.world, st.seed, st.i_ctrl, dev)
@@ -308,61 +316,11 @@ class BlobToolset(vf.Toolset[BlobToolsetConfig, BlobToolState]):
         st.poses[device] = [float(dev.center[0]), float(dev.center[1]),
                             float(dev.dilation)]
         return json.dumps(dict(
-            t=st.i_ctrl * B.CTRL_TU, applied=[float(x) for x in a],
+            t=st.i_ctrl * B.CTRL_TU, applied=[float(x) for x in u],
             steps=steps, device=device,
-            motion_cost=round(move_cost, 2),
+            adjust_cost=round(adj_cost, 2),
             sensor_cost=round(read_cost, 1),
             steps_read=out_steps, budget=self._budget()))
-
-    @vf.tool(name="dilate")
-    async def dilate(self, device: int, gain: float, read: bool = True
-                     ) -> str:
-        """Scale one device's sensor spacing by exp(gain) (gain clipped to
-        +/-1; spacing bounded, bounds undisclosed; cost = |log actual
-        change|). Advances one 5tu step. read=True samples the device after
-        (costed). Only works on the main span."""
-        if not self._ready():
-            return json.dumps({"error": "world not initialized; retry"})
-        self._ensure()
-        st = self.state
-        st.turns += 1
-        try:
-            device = int(device)
-            gain = float(gain)
-        except (TypeError, ValueError):
-            return self._err("device and gain must be numeric")
-        if device not in (0, 1):
-            return self._err("device must be 0 or 1")
-        if st.i_ctrl >= B.N_STEPS_MAIN:
-            return self._err("the span has ended; devices are parked")
-        dev = self._devices()[device]
-        gain = float(np.clip(gain, -1.0, 1.0))
-        tgt = float(np.clip(dev.dilation * np.exp(gain), *dev.dil_bounds))
-        cost = abs(np.log(tgt / dev.dilation))
-        if cost > self._left("motion") + 1e-9:
-            return self._err(
-                f"motion budget too low (cost {cost:.2f}, left "
-                f"{self._left('motion'):.1f})")
-        k_dev = self._k_of([device])
-        read_cost = k_dev * B.CTRL_TU if read else 0.0
-        if read_cost > self._left("sensor") + 1e-9:
-            read = False
-            read_cost = 0.0
-        st.spent["motion"] = st.spent.get("motion", 0.0) + cost
-        st.spent["sensor"] = st.spent.get("sensor", 0.0) + read_cost
-        dev.apply_dilate(gain)
-        st.i_ctrl += 1
-        st.poses[device] = [float(dev.center[0]), float(dev.center[1]),
-                            float(dev.dilation)]
-        out = dict(t=st.i_ctrl * B.CTRL_TU, device=device,
-                   motion_cost=round(cost, 3),
-                   sensor_cost=round(read_cost, 1),
-                   at_bound=bool(abs(cost) < abs(gain) - 1e-9),
-                   budget=self._budget())
-        if read:
-            out["values"] = _r(B.sample_at(st.world, st.seed, st.i_ctrl,
-                                           dev))
-        return json.dumps(out)
 
     @vf.tool(name="inject")
     async def inject(self, port: int, amp: float, dur: float,

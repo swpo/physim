@@ -123,12 +123,19 @@ MAX_REPLICAS = 12
 SIGMA_MIN = 1e-4
 
 EPISODES = {
-    "BLOB-E1": dict(world="p4g2_044", seeds=(928, 929, 930), gated=False),
-    "BLOB-E2": dict(world="p6g8_033", seeds=(942, 943, 944), gated=True),
-    "BLOB-E3": dict(world="p3g9_022", seeds=(921, 922, 923), gated=True),
+    "BLOB-E1r2": dict(world="p4g2_044", seeds=(928, 929, 930), gated=False),
+    "BLOB-E1": dict(world="p4g2_044", seeds=(928, 929, 930), gated=True,
+                    why="superseded by BLOB-E1r2 (R2 control-surface "
+                        "revision: probe_adjust replaces move/dilate)"),
+    "BLOB-E2": dict(world="p6g8_033", seeds=(942, 943, 944), gated=True,
+                    why="A0 verdict: E2 contracts need the round-2 respec"),
+    "BLOB-E3": dict(world="p3g9_022", seeds=(921, 922, 923), gated=True,
+                    why="A0 verdict: E3 contracts need the round-2 respec"),
 }
 
-BUDGETS = dict(sensor=40000.0, motion=1200.0, injection=120.0)
+# R2 (TRACKA_R2_CONTROLS.md): 'adjust' = the merged motion+dilation pool
+# (round 1 already funded both from motion's 1200; the merge keeps the total).
+BUDGETS = dict(sensor=40000.0, adjust=1200.0, injection=120.0)
 
 W_P1, W_P2, W_P3 = 0.2, 0.3, 0.5
 
@@ -143,8 +150,8 @@ def episode_cfg(difficulty: str, seed_idx: int) -> dict:
     ep = EPISODES[difficulty]
     if ep["gated"]:
         raise ValueError(
-            f"{difficulty} is registered but GATED for round 1 "
-            "(A0 verdict: E2/E3 contracts need the round-2 respec)")
+            f"{difficulty} is registered but GATED "
+            f"({ep.get('why', 'no reason recorded')})")
     seed = ep["seeds"][seed_idx % len(ep["seeds"])]
     return dict(world=ep["world"], seed=seed)
 
@@ -181,12 +188,39 @@ def get_branches(world: str, seed: int):
     return z, json.loads(str(z["meta"]))
 
 
+def adjust_mix(wk: str) -> np.ndarray:
+    """R2 secret actuator map (TRACKA_R2_CONTROLS.md): per-WORLD fixed 3x3
+    invertible mix M over (dy, dx, dlog_spacing). Per adjust step the pose
+    delta is M @ u, u in [-1,1]^3 — translation and dilation are MIXED so
+    the control factorization itself must be discovered by experiment.
+
+    Construction: M = diag(scales) @ Q with Q ~ Haar SO(3) (QR sign-fixed,
+    det +1) and scales: rows 0-1 (translation) in [1.0, 1.5] (the old
+    MAX_STEP range), row 2 (dlog) in [0.6, 1.0] (the old gain range).
+    cond(M) = s_max/s_min <= 1.5/0.6 = 2.5 (spec: <= ~3). Deterministic in
+    world_key via a salted hash, independent of the A0 secret stream."""
+    import hashlib
+    h = int(hashlib.sha256((wk + "|adjust_mix_v1").encode())
+            .hexdigest()[:16], 16)
+    rng = np.random.default_rng(h)
+    A = rng.standard_normal((3, 3))
+    Q, R = np.linalg.qr(A)
+    Q = Q * np.sign(np.diag(R))[None, :]        # Haar-uniform O(3)
+    if np.linalg.det(Q) < 0:
+        Q[:, 0] = -Q[:, 0]                       # force SO(3)
+    scales = np.array([rng.uniform(1.0, 1.5), rng.uniform(1.0, 1.5),
+                       rng.uniform(0.6, 1.0)])
+    return scales[:, None] * Q
+
+
 @lru_cache(maxsize=6)
 def get_secrets(world: str, seed: int) -> dict:
     c = get_cached(world, seed)
     nf = c.meta["na"] + c.meta["nc"]
-    return agdev.world_secrets(world_key(world, seed), nf, ROSTER,
-                               c.meta["L"])
+    wk = world_key(world, seed)
+    sec = agdev.world_secrets(wk, nf, ROSTER, c.meta["L"])
+    sec["adjust_mix"] = adjust_mix(wk).tolist()   # R2 control surface
+    return sec
 
 
 def n_ports(world: str, seed: int) -> int:

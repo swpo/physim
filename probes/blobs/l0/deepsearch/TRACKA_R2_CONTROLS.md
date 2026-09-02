@@ -16,3 +16,24 @@ REPLACE with ONE opaque actuator:
 Injection stays as-is (emitter disclosure retained round-1: flagged for a
 future round decision). probe_status text audit: remove any wording implying
 translation/scaling/spacing semantics.
+R2 AMENDMENT (user):
+A. REMOVE the emitter co-location disclosure entirely. probe_status must contain
+   ZERO location language: no 'co-located', no 'device 0's initial position',
+   no 'originate there'. Injection docs say only: emissions enter through a
+   fixed emission channel; where/what it couples to is undisclosed. (Agents
+   can rediscover the emitter location experimentally — Fable already proved
+   this is doable via decaying transients. That is now intended science.)
+   Add to the barrier regex: 'co-locat', 'position', 'located', 'center',
+   'origin' (agent-visible strings only).
+B. ADJUST COST SEMANTICS (dilation symmetry): cost = sum|u_i| of the COMMANDED
+   control, charged in full even when the effect clamps at (undisclosed)
+   spacing bounds. Rationale: (i) log-symmetric — scale-down and scale-up of
+   equal |dlog| cost the same (halving == doubling effort); (ii) charging
+   commanded-not-actual is leak-free (cost-vs-effect analysis cannot localize
+   the bounds; bounds are discoverable only through the STREAMS: correlation
+   scale stops changing); (iii) physical: pushing against a wall still costs.
+   Unit test: verify cost identical for +u3-dominant and -u3-dominant commands
+   of equal magnitude, including at both clamp walls.
+C. While auditing: ALSO strip any residual layout language anywhere in agent-
+   visible text ('slots' is fine as a count word; 'ring', 'grid', 'lattice',
+   'adjacent', 'spacing' are not).
