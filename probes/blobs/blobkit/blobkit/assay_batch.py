@@ -202,16 +202,18 @@ def _norm_jobs(jobs, t0, cap):
     """jobs entries: (genome, seed) tuples or dicts {genome, seed, t0, cap}.
     Per-lane t0 (confirm floor) / cap (long-horizon lane) default to the
     call-level values. -> (init_jobs, t0s, caps, t0_min)."""
-    init_jobs, t0s, caps = [], [], []
+    init_jobs, t0s, caps, ics = [], [], [], []
     for j in jobs:
         if isinstance(j, dict):
             g, s = j["genome"], j.get("seed", 1)
             t0s.append(float(j.get("t0") or t0))
             caps.append(float(j.get("cap") or cap))
+            ics.append(j.get("ic"))
         else:
             g, s = j
             t0s.append(float(t0))
             caps.append(float(cap))
+            ics.append(None)
         init_jobs.append((g, int(s)))
     t0_min = min(t0s)
     bad = []
@@ -228,7 +230,7 @@ def _norm_jobs(jobs, t0, cap):
             f"per-lane t0/cap must sit on the shared doubling grid "
             f"t0_min*2^k (t0_min={t0_min}) with cap>=t0; offenders {bad}. "
             f"Group jobs with incompatible ladders into separate batches.")
-    return init_jobs, t0s, caps, t0_min
+    return init_jobs, t0s, caps, t0_min, ics
 
 
 # --------------------------------------------------------------- the ladder
@@ -260,11 +262,16 @@ def run_assay_batch(jobs, dtype="f32", L=128.0, t0=T0_DEFAULT, cap=T_CAP,
     t_wall0 = time.time()
     if battery_procs is None:
         battery_procs = min(8, os.cpu_count() or 1)
-    init_jobs, t0s, caps, t0_min = _norm_jobs(jobs, t0, cap)
+    init_jobs, t0s, caps, t0_min, ics = _norm_jobs(jobs, t0, cap)
 
     # 1) init all lanes: certified batch init (bit-identical seeded states)
+    #    [v3] per-lane ic override: job dicts may carry "ic" ((na+nc, N, N)
+    #    array replacing the soup IC after init — the documented data-level
+    #    hook on S["F"], same semantics as assay_v3.run_assay(ic_override=)).
     master = SG.init_soup_gpu_batch(init_jobs, L=L, dtype=dtype, noise=noise,
-                                    kicks_map=kicks_map)
+                                    kicks_map=kicks_map,
+                                    ics=(ics if any(x is not None for x in ics)
+                                         else None))
     Gd = master["worlds"][0]["_gpu"]          # swap in the cached stepper
     Gd["step"] = _stepper(Gd["struct"], Gd["N"], noise)
     lanes = []
