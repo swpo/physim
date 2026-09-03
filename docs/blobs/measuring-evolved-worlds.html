@@ -25,16 +25,22 @@
  .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
 </style></head><body>
 <nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
-<h1>Measuring evolved worlds: the probe-device benchmark (setup)</h1>
+<h1>Measuring evolved worlds: the probe-device benchmark</h1>
 <p class="meta">Post 11 — the evolution campaign (post 10) left us with an archive
-of 423 worlds nobody understands. This post turns the five best into a
+of 423 worlds nobody understands. This post turns the best of them into a
 <b>measurement benchmark for AI scientists</b>: a probe-device instrument layer,
 an adequacy study that priced its budgets (54 scripted-pipeline cells), a
-three-contract ladder, and a verifiers/MCP environment that coding agents drive
-end-to-end. Setup edition: round-1 agent results land in the follow-up.
+contract system, and a verifiers/MCP environment that coding agents drive
+end-to-end. First published as the setup edition; <b>updated with the round-4
+results and the clean-slate contract system</b> — the rounds-1–3 history (an
+interface leak priced at ~0.06 of score; zero actuator use in 12 rollouts),
+the capability-ladder redesign that followed (BLOB2, L1–L4D, skill-normalized
+scoring), and the first agent result above the scripted bar on both worlds.
 Code: <code>probes/blobs/agentenv/</code> (instrument + adequacy),
 <code>environments/physim/</code> (the environment). Study log:
-<code>probes/blobs/agentenv/ADEQUACY.md</code>.</p>
+<code>probes/blobs/agentenv/ADEQUACY.md</code> · redesign:
+<code>probes/blobs/l0/deepsearch/TRACKA_CLEANSLATE_EVAL.md</code> · results:
+<code>probes/blobs/agentenv/round4/ROUND4_FINAL.md</code>.</p>
 
 <div class="note"><b>The question.</b> Post 10 ended with films: rotor ecologies,
 labyrinths that hold a census steady while reorganizing all their matter, a
@@ -89,8 +95,9 @@ commanded effort (strain), so the refusal is not a free bound-measuring
 oracle. Pure-translation steps are never refused</td></tr>
 <tr><td><b>emission</b></td><td>inject(port, amp, dur) through one fixed
 emission channel, budgeted</td><td>the emitter's location and coupling
-(round-1 revision: originally disclosed as co-located with a device; now fully
-undisclosed — localizing it from decaying transients is intended science),
+(post-round-1 revision: originally disclosed as co-located with a device; now
+fully undisclosed — localizing it from decaying transients is intended science,
+and fable-5 did exactly that in round 1),
 the stamp profile (σ=2 Gaussian), what the port drives</td></tr>
 <tr><td><b>global stats</b></td><td>free per-port mean/variance of the whole
 medium</td><td>everything spatial — it's a weather report, not a map</td></tr>
@@ -183,29 +190,38 @@ irreducible); define "same blob" in the E2 labyrinth at all. Each is either an
 agent opportunity (beat the script) or a round-2 respec note (E2 wants
 preparation-style contracts, not tracking).</div>
 
-<h2>3 · The environment: contracts, budgets, episode</h2>
-<div class="warn"><b>Interface revisions R2/R3 (pre-launch).</b> The first
-cut shipped <code>probe_move(a1, a2)</code> + <code>probe_dilate(gain)</code>
-— leaking, through the API shape alone, that the pose space factorizes into
-two translation axes plus a zoom, and telling agents the emitter was
-co-located with a device. R2 replaced both tools with one 3-channel
+<h2>3 · The environment: episode machinery and the round-1 contracts</h2>
+<div class="warn"><b>Interface revisions R2/R3 (the leak audit).</b> Round 1
+shipped — and was scored — with <code>probe_move(a1, a2)</code> +
+<code>probe_dilate(gain)</code>: leaking, through the API shape alone, that
+the pose space factorizes into two translation axes plus a zoom, and telling
+agents the emitter was co-located with a device. The post-round-1 audit
+(<code>TRACKA_R2_CONTROLS.md</code>) replaced both tools with one 3-channel
 <code>probe_adjust</code> whose channels secretly <i>mixed</i> translation and
-spacing through a random linear map — and was itself retired a day later
-(user verdict: mixing is difficulty without depth, the same reasoning that
-rejected shuffled sensors). The final surface: <code>probe_adjust</code>'s
-channels have PURE effects under a fixed global convention that is simply
-never documented — undocumented is the mechanism, mastery transfers across
-worlds. What survives from R2: refusals at the undisclosed spacing bounds are
-generic (<code>adjust_rejected</code>) and still cost their commanded effort
-("strain" — no free binary-search on the bounds), and the emission channel's
-location is undisclosed (localizing it from decaying transients is intended
-science — a capable agent demonstrated exactly that during review). The
-difficulty tag is <code>BLOB-E1r3</code>; nothing scored was kept from the
-earlier surfaces.</div>
-<p>The benchmark ships as a new difficulty family (<code>BLOB-E1r3</code>; E2/E3
-registered but gated) in the existing physim verifiers environment — same
-harness stack the C/D-track used: the world is an MCP tool server, the agent is
-a coding harness with a workspace, files, and its own offline modeling loop.</p>
+spacing through a random linear map — and that revision was itself retired a
+day later (verdict: mixing is difficulty without depth, the same reasoning
+that rejected shuffled sensors; the in-flight round-2 rollouts were killed,
+nothing from them scored). The final surface: <code>probe_adjust</code>'s
+channels have PURE effects under a fixed global convention — u1→dx (×1.5),
+u2→dy (×1.5), u3→dlog-spacing (×1.0) — that is simply never documented:
+barrier by undocumentation, exactly like the fixed output retinotopy (nature
+wires actuators once, mastery transfers across worlds, and the WORLD is what
+varies). What survives from R2: refusals at the undisclosed spacing bounds
+are generic (<code>adjust_rejected</code>) and still cost their commanded
+effort ("strain" — no free binary-search on the bounds), and the emission
+channel's location is undisclosed (localizing it from decaying transients is
+intended science — fable-5 demonstrated exactly that in round 1). The
+tightened tag is <code>BLOB-E1r3</code>; round 3 re-ran the same episodes on
+it, and the score difference prices the leak (section 6).</div>
+<p>The benchmark ships as difficulty families in the existing physim verifiers
+environment — rounds 1–3 ran <code>BLOB-E1</code>→<code>BLOB-E1r3</code> (E2/E3
+registered but gated pending a contract respec); the current families are
+<code>BLOB2-E1</code>/<code>BLOB2-E2</code> (section 7). Same harness stack the
+C/D-track used: the world is an MCP tool server, the agent is a coding harness
+with a workspace, files, and its own offline modeling loop. Everything below in
+this section — episode shape, budgets, replica forks — carries unchanged into
+BLOB2; the contract ladder at the end of the section is the round-1 design that
+sections 6–7 retire.</p>
 
 <h3>Episode shape</h3>
 <div class="eq">
@@ -265,9 +281,10 @@ adequacy band and stays inside every budget. Two structural gates ride along:
 the amp-0 control replica is <i>bitwise identical</i> to the A0 cached control
 branch, and the barrier grep covers every string the actor ever saw.</p>
 
-<h2>5 · Round-1 roster</h2>
-<p>Round 1 puts two frontier coding harnesses on BLOB-E1, three seeds each,
-alongside the scripted reference row:</p>
+<h2>5 · The roster</h2>
+<p>Every round puts two frontier coding harnesses on the environment, three
+rollouts each, alongside the scripted reference row — the same roster from
+round 1 through round 4:</p>
 <table>
 <tr><th>row</th><th>agent</th><th>harness</th><th>what it tests</th></tr>
 <tr><td>1</td><td>Fable 5 (Anthropic)</td><td>claude_code</td><td rowspan="2">full loop: self-calibration → span science → replica calibration → contract submission</td></tr>
@@ -280,20 +297,190 @@ agent <i>choose</i> to calibrate its instrument before spending on contracts?
 Does it discover the amp cap's pricing structure and run rational calibration
 ladders? Does anyone beat the duty-corrected event-rate trick?</p>
 
-<h2>6 · Results</h2>
-<div class="note"><b>Round 1 in progress.</b> This section fills in when the
-round-1 episodes complete and certify (fresh-seed audit, as always). The
-scripted-reference row and the environment gates above are committed and
-reproducible today.</div>
+<h2>6 · Rounds 1–3: results, and the two findings that retired the menu</h2>
+<p>Round 1 ran in full on the original surface; the leak audit and the two
+interface revisions above followed it; round 3 re-ran the same episodes on the
+tightened <code>BLOB-E1r3</code>. The scores (episode reward, mean over 3
+rollouts):</p>
+<table>
+<tr><th>round</th><th>tag / surface</th><th>fable-5</th><th>gpt-5.6-sol</th><th>scripted actor</th></tr>
+<tr><td>1</td><td><code>BLOB-E1</code> — documented semantic controls (move/dilate), emitter co-location disclosed</td><td><b>0.689</b></td><td>0.08</td><td>0.60</td></tr>
+<tr><td>2</td><td><code>BLOB-E1r2</code> — mixed opaque controls</td><td colspan="3">killed in flight (mixing = difficulty without depth); nothing scored</td></tr>
+<tr><td>3</td><td><code>BLOB-E1r3</code> — tightened surface after the leak audit</td><td><b>0.632</b></td><td>0.05</td><td>0.60*</td></tr>
+</table>
+<p class="meta">*the scripted actor never adjusts, so the interface change
+(adjust-only) leaves its round-1 row valid on r3 — the exemption is recorded in
+the scorecard.</p>
+<p><b>Finding 1 — the interface leak had a measurable price.</b> fable-5 beat
+the scripted floor cleanly on the round-1 surface; sol never got a scoring
+episode together in either round (0.08 / 0.05, reported as-is). Re-running
+fable on the tightened surface cost ~0.06 of score
+(0.689 → 0.632): that difference is the isolated value of the leak — points
+that had been purchased by the API shape disclosing the pose factorization and
+the emitter location, not by science through the streams. The instrument was
+measuring itself into the score.</p>
+<p><b>Finding 2 — nobody touched the actuators.</b> Across all 12 scored
+rollouts of rounds 1+3, zero actuator use in anger: the only adjust spend was
+one u1-identification test by fable in a round-3 rollout, whose answer was
+never exploited. The diagnosis is a benchmark flaw, not agent laziness:
+<code>BLOB-E1</code> was <b>fixed-pose-solvable</b> — every contract in the
+P3/P2/P1′ menu answerable from the spawn pose. The world had a discoverable
+pose space; the contracts never priced it; so rational agents ignored it.
+Actuators priced but useless.</p>
+<div class="note"><b>The lesson that drove the redesign: contracts ARE the
+curriculum.</b> Unpriced capabilities go unexercised. The A0 study (section 2)
+priced what the <i>instrument</i> affords; it said nothing about whether the
+<i>contract menu</i> makes agents exercise those affordances. The round-1 menu
+was track-shaped — contracts optimized for years of point-tap worlds, then
+ported — and two structural gaps survived every iteration on it: geometry/pose
+was never priced, and law-learning was never separated from point-matching.</div>
+
+<h2>7 · The clean-slate redesign: a capability ladder (BLOB2)</h2>
+<p>Rather than patch the menu, the redesign restarted from first principles
+(<code>TRACKA_CLEANSLATE_EVAL.md</code>): "understanding a world" decomposes
+into gradeable capabilities — ontology, dynamics, causality, transfer, economy
+— under three grading rules. Never grade descriptions (language is gameable);
+grade the <b>predictive consequences</b> of having the right description.
+Contracts are the curriculum (design the set to span the capabilities). And
+score <b>skill, not raw accuracy</b> — round-1 P1 had looked "nearly
+skill-free" precisely because raw CRPS was scored on a world where persistence
+saturates; skill normalization shows the ~0 honestly instead of hiding it in
+the scale.</p>
+<p>The audit's verdict on the historical assets was clean: the episode
+machinery (replay → hard stop → replica forks), CRPS + honest-sigma scoring,
+the budget system, the barrier mechanisms, report-only conduct metrics, and
+the scripted-baseline-actor pattern all survive scrutiny unchanged. The design
+was right; the contract <i>menu</i> was track-shaped. It was replaced by a
+capability ladder:</p>
+<table>
+<tr><th>tier</th><th>ask (all announced text is pose/geometry-free)</th><th>what it prices</th></tr>
+<tr><td><b>L1</b> pose-targeted</td><td>K=3 announced opaque command sequences ([u1,u2,u3] lists, wall-safe by construction), each executed from device 0's t=0 configuration on a passive fork; predict the streams after the final command of each</td><td>actuator calibration + local spatial modeling — the rounds-1–3 gap, now priced</td></tr>
+<tr><td><b>L2</b> hidden-sensor nowcast</td><td>the harness owns one extra 13-slot sensor cluster at an undisclosed pose; predict its reading vector at span end</td><td>spatial world-modeling — interpolating to a place you never sampled needs a field/object model</td></tr>
+<tr><td><b>L3F</b> multi-horizon forecast</td><td>device-0 streams at H = 5/25/100/400 tu (E2 drops the H=5 leg)</td><td>the deterministic→stochastic transition; honest sigma widening is skill</td></tr>
+<tr><td><b>L3E</b> events (E1 menu)</td><td>upward-crossing counts per 50 tu window, 16 windows — round-1 P2 kept</td><td>object-flavored dynamics in a particulate world</td></tr>
+<tr><td><b>L3S</b> slow observables (E2 menu)</td><td>per-port global mean+variance over 200 tu windows ending at T0+400 / T0+800</td><td>structural trends — the frozen-census/reorganizing-matter split post 10's films exposed</td></tr>
+<tr><td><b>L4</b> response</td><td>announced amp-3.0 emission; predict device-1 streams at 6 announced lags (slimmed from 13) — round-1 P3 kept</td><td>causal prediction under the amp cap</td></tr>
+<tr><td><b>L4D</b> dose-response</td><td>submit a response <i>table</i> over announced amps 0.30/0.45/0.60/0.75/0.90 at 3 lags; scored at ONE amp drawn secretly from U[0.3, 0.9], interpolating the agent's table against a live replica at the drawn amp</td><td>law-learning vs point-matching — the other structural gap, now priced</td></tr>
+</table>
+<h3>Skill-normalized scoring</h3>
+<div class="eq">
+skill(contract) = clip( 1 − CRPS_agent / CRPS_best_baseline , −1, +1 )<br/>
+baseline ladder = climatology · persistence · AR(2) — pose-ignorant, full-rate pre-span information, computed evaluator-side at scoring time and published with every result<br/>
+unsubmitted contract → skill = −1 &nbsp;·&nbsp; episode reward = mean skill over the world's menu
+</div>
+<p>Zero now means "matched the best scripted baseline" on every contract
+regardless of world difficulty; positive skill is real signal; and skipping a
+contract costs −1, so the curriculum cannot be dodged. Forecast tiers
+(L1/L2/L3*) lock at the first injection; the response tiers stay open.</p>
+<h3>World-adaptive menus, two worlds</h3>
+<p>Fixed menus misprice heterogeneous worlds (E1 needs little geometry; E2
+punishes its absence). The evaluator knows each world's certified
+phenomenology from the assay records — species counts, spatial class, motion
+class, timescales — so the menu is generated per world: every certified
+phenomenon gets at least one contract that prices it, and no contract
+references phenomena the world lacks. The selection is evaluator-side
+knowledge only; the menu discloses nothing beyond what any contract
+necessarily discloses about what is measurable.</p>
+<table>
+<tr><th>tag</th><th>world</th><th>menu</th></tr>
+<tr><td><code>BLOB2-E1</code></td><td>p4g2_044 — 21 sparse stable blobs (the rounds-1–3 world)</td><td>L1 · L2 · L3F(H=5–400) · L3E · L4 · L4D</td></tr>
+<tr><td><code>BLOB2-E2</code></td><td>p6g8_033 — the campaign champion (reorganizing labyrinth + rotors), gate opened with its A0-caveat menu: blob-identity and event contracts stay off</td><td>L1 · L2 · L3F(no H=5) · L3S · L4 · L4D</td></tr>
+</table>
+<p>Both tags are harder than rounds 1–3 even where the world is the same: the
+hidden sensor and the dose leg have no fixed-pose shortcut, an unsubmitted
+contract is −1 instead of 0, the system prompt lost its "suggested science"
+hints (round-3 evidence: fable follows its own program anyway; hints anchor
+and leak our framing of what is interesting), and the whole surface re-passed
+an extended barrier audit (zero pose/location/actuator-semantics language,
+the L2 wording especially). Episode machinery, budgets, and the amp-1.0 cap
+are unchanged from section 3.</p>
+<h3>The published floor: the scripted actor on BLOB2</h3>
+<p>The null-harness pattern (section 4) repeats: the A0-grade scripted actor
+plays full episodes through the MCP tools only (<code>smoke_blob2.py</code>),
+and its per-contract skill table ships with the environment as the published
+reference row:</p>
+<table>
+<tr><th>contract</th><th>E1 skill</th><th>E2 skill</th><th>note</th></tr>
+<tr><td>L1</td><td>+0.15</td><td>+0.11</td><td>executes the announced walks on-span, reads, walks back</td></tr>
+<tr><td>L2</td><td>−0.00</td><td>−0.00</td><td>honest gap: the script has no spatial model — it ties the global-aggregate baseline. That IS the measurement; L2 headroom belongs to agents that build one</td></tr>
+<tr><td>L3F</td><td>−0.06</td><td>−0.06</td><td>AR(2)/climatology blend ≈ the ladder's own AR(2)</td></tr>
+<tr><td>L3E</td><td>−0.55</td><td>—</td><td>trend extrapolation undershot this seed's rate lift — honest scripted weakness</td></tr>
+<tr><td>L3S</td><td>—</td><td>−0.29</td><td>persistence of the last window; sigma too tight on the variance column</td></tr>
+<tr><td>L4</td><td>+0.89</td><td>+0.65</td><td>control replica + sub-cap calibration template, 4 replicas</td></tr>
+<tr><td>L4D</td><td><b>+0.99</b></td><td><b>+0.99</b></td><td>a linear dose law nails the drawn amp</td></tr>
+<tr><td><b>reward</b></td><td><b>+0.238</b></td><td><b>+0.233</b></td><td>mean over menu; budgets respected, all contracts submitted, ~225 s wall</td></tr>
+</table>
+<p>The negative rows stay in print deliberately — skill scoring is supposed to
+show scripted weaknesses honestly, and agents beating zero on L2/L3E/L3S is
+exactly the signal round 4 exists to measure. Round-2 gates G1–G6 pass (menu
+registry, L1 pose/truth parity through the agent surface, dose-interpolation
+exactness, skill clipping, the extended barrier audit, submit/locks) alongside
+the legacy six.</p>
+<p class="meta">Two more tiers are specified but not yet priced: L5 preparation
+("drive an observable into a band and hold it" — the classic prep-track ported)
+and L6 executable theory (a compact predictor submitted as code, scored on
+held-out seeds and poses, size-capped). They phase into later rounds.</p>
+
+<h2>8 · Round 4: results</h2>
+<p>Round 4 ran the roster on both BLOB2 tags — 3 rollouts per (model, world);
+fable-5 via the claude_code harness, gpt-5.6-sol via codex, docker runtime,
+all rollouts through pinference (transient 5xx bursts cost resumes, not
+data — all six fable rollouts completed).</p>
+<table>
+<tr><th>row</th><th>BLOB2-E1 reward (rollouts)</th><th>BLOB2-E2 reward (rollouts)</th></tr>
+<tr><td><b>fable-5</b> (n=3)</td><td><b>+0.308</b> (0.268 / 0.287 / 0.370)</td><td><b>+0.287</b> (0.159 / 0.248 / 0.454)</td></tr>
+<tr><td>scripted actor (published floor)</td><td>+0.238</td><td>+0.233</td></tr>
+<tr><td>gpt-5.6-sol (n=3)</td><td>−0.42 … −0.67</td><td>−0.22 … −0.67</td></tr>
+</table>
+<p>fable-5's per-tier means across the three rollouts:</p>
+<table>
+<tr><th>world</th><th>L1</th><th>L2</th><th>L3F</th><th>L3E</th><th>L3S</th><th>L4</th><th>L4D</th></tr>
+<tr><td>E1</td><td>0.28</td><td>−0.00</td><td>0.26</td><td>−0.02</td><td>—</td><td>0.61</td><td><b>0.72</b></td></tr>
+<tr><td>E2</td><td>0.08</td><td>0.20</td><td>0.00</td><td>—</td><td>0.47</td><td>0.43</td><td><b>0.55</b></td></tr>
+</table>
+<p>Readings, in order of confidence:</p>
+<p><b>The bar is cleared, on both worlds.</b> fable-5 beats the published
+scripted floor by +0.07 on E1 and +0.05 on E2 — the first positive-skill agent
+result on the clean-slate system. The margin is modest, and it comes from
+the right place: on the tiers where the script is already strong (L4/L4D) the
+per-tier means stay below the script's rows, and the lead is built where the
+script is honestly weak (L3F +0.26 vs −0.06 on E1; L3S +0.47 vs −0.29 and
+L2 +0.20 vs −0.00 on E2).</p>
+<p><b>The dose leg is where agents shine.</b> L4/L4D are fable's strongest
+tiers everywhere, with L4D spiking to 0.99 in one rollout per world — the
+calibrate-below-the-cap, fit-the-law, interpolate strategy executed at agent
+quality. Law-learning is the capability the redesign added, and it is the one
+agents deliver on first.</p>
+<p><b>L2 is dented, not cracked.</b> The hidden-sensor nowcast — the tier built
+to price spatial world-modeling — is still ~0 on E1 in all three rollouts; on
+E2 two of three rollouts posted 0.28. Partial skill means a partial spatial
+model exists. The open-headroom tier is being dented, not cracked.</p>
+<p><b>Flat spots.</b> L3E stayed flat-to-negative on E1 (−0.02 — well above the
+script's −0.55, still no skill), and L1 is only modestly positive on both
+worlds: the ladder now pays for actuator science, and after the zero-actuator
+rounds that much works — but calibration quality is ordinary.</p>
+<p><b>Variance is the caveat.</b> E2 rollouts span 0.16 → 0.45. n=3 is a floor,
+not a book: the defensible sentence is "fable-5 clears the scripted bar on both
+worlds", not any per-tier ranking beyond the spikes above.</p>
+<p>And the sol row is a result, not a footnote: negative on every rollout of
+both worlds under a rule where matching a scripted baseline scores 0 and an
+unsubmitted contract costs −1. The harness gap that rounds 1 and 3 exposed
+(0.08/0.05 vs fable's 0.689/0.632) survives the redesign intact.</p>
 
 <div class="note"><b>Reproduce.</b> Environment gates:
-<code>.venv/bin/python environments/physim/tools/test_blob_server.py</code> ·
-scripted smoke: <code>.venv/bin/python environments/physim/tools/smoke_blob.py</code> ·
+<code>.venv/bin/python environments/physim/tools/test_blob_server.py</code> (legacy six) ·
+<code>.venv/bin/python environments/physim/tools/test_blob_round2.py</code> (round-2 G1–G6) ·
+scripted floors: <code>.venv/bin/python environments/physim/tools/smoke_blob2.py --world E1</code>
+(writes <code>results/smoke_blob2_E1.json</code>; same for E2) ·
 adequacy study: <code>probes/blobs/agentenv/adequacy.py</code> (cache → evalgroup → aggregate)
 with the blobkit venv · an agent episode:
-<code>.venv/bin/eval physim -n 1 -m &lt;model&gt; --env.taskset.difficulty BLOB-E1r3
---env.taskset.tier tools --env.scientist.harness.id claude_code</code>.
-A0 caches are local artifacts (7–11 GB, gitignored); rebuild via adequacy.py.</div>
+<code>.venv/bin/eval physim -n 3 -m &lt;model&gt; --env.taskset.difficulty BLOB2-E1
+--env.scientist.harness.id claude_code --env.scientist.runtime.type docker
+--env.scientist.max-turns 150</code> (E2: same shape, higher turn cap — bigger menu).
+A0 caches are local artifacts (7–11 GB, gitignored; rebuild via adequacy.py);
+round-2 dose-truth caches rebuild in ~30 s each under
+<code>probes/blobs/agentenv/cache/round2/</code>. Round-4 log:
+<code>probes/blobs/agentenv/round4/ROUND4_FINAL.md</code>.</div>
 
 <div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="evolving-at-scale.html">Evolving at scale</a></div>
 </body></html>
