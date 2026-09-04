@@ -20,7 +20,9 @@ def rescore_row(row, rec, v2_out=None):
         row["c9_partial"] = bool(out.get("partial", True))
         iv2 = float(row.get("interest", 0.0))
         row["interest_v2"] = iv2
-        row["interest"] = 0.75 * iv2 + 25.0 * row["C9"]
+        # blend via metrics_v3.W9 (single source of truth; 0.25 pilot v1,
+        # 0.40 for the gens-8-12 continuation)
+        row["interest"] = (1.0 - MV3.W9) * iv2 + MV3.W9 * 100.0 * row["C9"]
     except Exception as e:
         row["c9_error"] = str(e)[:120]
     return row

@@ -416,15 +416,27 @@ def snapshot_rec_gpu(S):
 
 
 # ------------------------------------------------------------- batched pop
-def init_soup_gpu_batch(jobs, L=128.0, dtype="f32", noise=NOISE, kicks_map=None):
+def init_soup_gpu_batch(jobs, L=128.0, dtype="f32", noise=NOISE, kicks_map=None,
+                        ics=None):
     """jobs: list of (genome, seed). One padded tensor for the whole batch.
     Returns SS = dict(worlds=[S...], _gpu=...). Each S is a full v2 state dict
-    (independent records); stepping is shared."""
+    (independent records); stepping is shared.
+    ics: optional list aligned with jobs; entry i (if not None) is an
+    (na+nc, N, N) array replacing lane i's soup IC after init_soup — the
+    documented data-level hook on S["F"] (same semantics as
+    assay_v3.run_assay(ic_override=); applied before device packing)."""
     worlds, gens, states, seeds = [], [], [], []
-    for (g, seed) in jobs:
+    for i, (g, seed) in enumerate(jobs):
         kicks = (kicks_map or {}).get(g.get("id"))
         S = V2.init_soup(g, L=L, seed=seed, dtype=dtype, kicks=kicks,
                          noise=noise, workers=0)
+        ic = ics[i] if (ics is not None and i < len(ics)) else None
+        if ic is not None:
+            ic = np.asarray(ic)
+            if ic.shape != S["F"].shape:
+                raise ValueError(f"lane {i} ic shape {ic.shape} != state "
+                                 f"shape {S['F'].shape}")
+            S["F"] = ic.astype(S["F"].dtype)
         worlds.append(S); gens.append(g); states.append(S["F"]); seeds.append(seed)
     master = dict(worlds=worlds)
     G = _attach_gpu(master, gens, states, seeds, dtype, noise)

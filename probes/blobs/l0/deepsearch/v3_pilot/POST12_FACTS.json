@@ -1,0 +1,253 @@
+{
+ "headline": {
+  "union_econ_cells": 76,
+  "isl1": 60,
+  "isl2": 50,
+  "econ_rows": 516,
+  "target": ">=5",
+  "bar_multiple": "15x"
+ },
+ "per_gen_isl1": {
+  "0": {
+   "n": 3,
+   "maxC9": 0.304,
+   "meanC9": 0.27,
+   "econ": 0,
+   "maxI": 0
+  },
+  "1": {
+   "n": 199,
+   "maxC9": 0.85,
+   "meanC9": 0.258,
+   "econ": 56,
+   "maxI": 80.5
+  },
+  "2": {
+   "n": 174,
+   "maxC9": 0.663,
+   "meanC9": 0.286,
+   "econ": 47,
+   "maxI": 82.3
+  },
+  "3": {
+   "n": 158,
+   "maxC9": 0.786,
+   "meanC9": 0.231,
+   "econ": 30,
+   "maxI": 79.3
+  },
+  "4": {
+   "n": 151,
+   "maxC9": 0.779,
+   "meanC9": 0.237,
+   "econ": 36,
+   "maxI": 81.8
+  },
+  "5": {
+   "n": 126,
+   "maxC9": 0.741,
+   "meanC9": 0.237,
+   "econ": 28,
+   "maxI": 78.5
+  },
+  "6": {
+   "n": 137,
+   "maxC9": 0.75,
+   "meanC9": 0.291,
+   "econ": 43,
+   "maxI": 78.6
+  },
+  "7": {
+   "n": 106,
+   "maxC9": 0.649,
+   "meanC9": 0.218,
+   "econ": 22,
+   "maxI": 82.3
+  }
+ },
+ "per_gen_isl2": {
+  "0": {
+   "n": 3,
+   "maxC9": 0.274,
+   "meanC9": 0.254,
+   "econ": 0,
+   "maxI": 0
+  },
+  "1": {
+   "n": 191,
+   "maxC9": 0.684,
+   "meanC9": 0.297,
+   "econ": 46,
+   "maxI": 79.3
+  },
+  "2": {
+   "n": 160,
+   "maxC9": 0.758,
+   "meanC9": 0.291,
+   "econ": 41,
+   "maxI": 76.3
+  },
+  "3": {
+   "n": 158,
+   "maxC9": 0.703,
+   "meanC9": 0.263,
+   "econ": 36,
+   "maxI": 73.3
+  },
+  "4": {
+   "n": 129,
+   "maxC9": 0.631,
+   "meanC9": 0.247,
+   "econ": 25,
+   "maxI": 74.3
+  },
+  "5": {
+   "n": 130,
+   "maxC9": 0.67,
+   "meanC9": 0.257,
+   "econ": 35,
+   "maxI": 77.4
+  },
+  "6": {
+   "n": 130,
+   "maxC9": 0.805,
+   "meanC9": 0.258,
+   "econ": 40,
+   "maxI": 76.9
+  },
+  "7": {
+   "n": 119,
+   "maxC9": 0.686,
+   "meanC9": 0.275,
+   "econ": 31,
+   "maxI": 79.5
+  }
+ },
+ "operator_hit_rate": {
+  "merge_spatial_ic": [
+   112,
+   92,
+   0.82
+  ],
+  "merge_slow_tanh": [
+   42,
+   27,
+   0.64
+  ],
+  "mint_bilin": [
+   168,
+   100,
+   0.6
+  ],
+  "delete_bilin": [
+   56,
+   32,
+   0.57
+  ],
+  "merge_cross_edge": [
+   219,
+   116,
+   0.53
+  ],
+  "add_chan": [
+   112,
+   57,
+   0.51
+  ],
+  "mutate": [
+   224,
+   89,
+   0.4
+  ],
+  "merge_share_chan": [
+   51,
+   2,
+   0.04
+  ],
+  "dup_act": [
+   112,
+   1,
+   0.01
+  ],
+  "immigrate": [
+   280,
+   0,
+   0.0
+  ]
+ },
+ "top_rows": [
+  {
+   "cand": "p1g1_009_s3",
+   "isl": 1,
+   "I": 77.2,
+   "C9": 0.85,
+   "cls": "structured",
+   "cell": "4|grow|rotor|liquid|s1|g2|structured",
+   "origin_op": "mutate",
+   "npz": "~/v3work/harvest/isl1_snap/out/runs/p1g1_009_s3.npz"
+  },
+  {
+   "cand": "p2g6_032_s2",
+   "isl": 2,
+   "I": 76.2,
+   "C9": 0.8,
+   "cls": "structured",
+   "cell": "3|switch|rotor|liquid|s1|g1|structured",
+   "origin_op": "add_chan",
+   "npz": "~/v3work/harvest/isl2_snap/out/runs/p2g6_032_s2.npz"
+  },
+  {
+   "cand": "p1g3_005_s3",
+   "isl": 1,
+   "I": 73.5,
+   "C9": 0.79,
+   "cls": "structured",
+   "cell": "3|switch|rotor|flicker|s1|g1|structured",
+   "origin_op": "mutate",
+   "npz": "~/v3work/harvest/isl1_snap/out/runs/p1g3_005_s3.npz"
+  },
+  {
+   "cand": "p1g2_051_s3",
+   "isl": 1,
+   "I": 82.1,
+   "C9": 0.66,
+   "cls": "structured",
+   "cell": "4|grow|mobile|liquid|s3|g2|structured",
+   "origin_op": "merge_spatial_ic",
+   "npz": "~/v3work/harvest/isl1_snap/out/runs/p1g2_051_s3.npz"
+  },
+  {
+   "cand": "p1g4_050_s3",
+   "isl": 1,
+   "I": 81.8,
+   "C9": 0.65,
+   "cls": "structured",
+   "cell": "4|grow|mobile|liquid|s3|g2|structured",
+   "origin_op": "merge_spatial_ic",
+   "npz": "~/v3work/harvest/isl1_snap/out/runs/p1g4_050_s3.npz"
+  },
+  {
+   "cand": "p2g7_049_s3",
+   "isl": 2,
+   "I": 79.5,
+   "C9": 0.66,
+   "cls": "structured",
+   "cell": "4|grow|mobile|liquid|s2|g2|structured",
+   "origin_op": "merge_spatial_ic",
+   "npz": "~/v3work/harvest/isl2_snap/out/runs/p2g7_049_s3.npz"
+  }
+ ],
+ "flat_c9_finding": "max C9 0.85 already at gen 1 (isl1); per-gen econ counts stable; mean C9 flat ~0.25-0.29. Economy niches found early and held, not compounded.",
+ "confirm_depth": {
+  "isl1_seed3_cells": 74,
+  "isl2_seed3_cells": 73
+ },
+ "strict_economy_class_rows": 6,
+ "continuation": "gens 8-12 RUNNING now with respec: sic lanes 8->24/gen, mint_bilin 16, immigrate 20->5, dup_act/share_chan 0; W9 0.25->0.40 (C9 pressed directly in selection); c9-backfill of 88 v2-seeded elites -> single-currency archive.",
+ "ops_context": "pilot: 2xA100 pods, gens 1-7 each, ~$115; RED-protocol mid-flight fix (blobkit 0.3.5): ic lanes moved onto the GPU batch tensor + C9 rescore into a spawn pool (10-20x). merge_spatial_ic = compose two elites developed states in space (ic-level merge).",
+ "sources": [
+  "probes/blobs/l0/deepsearch/v3_pilot/HARVEST.md",
+  "probes/blobs/l0/complexity/VALIDATION_V3.md",
+  "probes/blobs/l0/deepsearch/V3_TRACKB_SPEC.md"
+ ]
+}

@@ -21,7 +21,7 @@ import json
 import os
 import warnings
 
-__version__ = "0.3.4"
+__version__ = "0.3.5"
 
 _PKG = os.path.dirname(os.path.abspath(__file__))
 _LOCK_TABLE = os.path.join(_PKG, "_locks.json")

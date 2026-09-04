@@ -83,7 +83,7 @@ D7B_PERSIST = 500.0        # cluster time-coverage to count as a species (tu)
 D7B_SIL_FLOOR = 0.25       # best silhouette below this -> single cluster
 NEFF_LOG_TARGET = 24.0     # r9 = clip(log2(n_eff)/log2(this))
 S9_CLASS, T9_CLASS = 0.50, 0.35   # spatial-class thresholds (prior)
-W9 = 0.25                  # C9 weight share in interest_v3
+W9 = 0.40                  # C9 weight share in interest_v3 [gens 8-12: raised from 0.25, selection presses C9]
 
 
 # ---------------------------------------------------------------- helpers
