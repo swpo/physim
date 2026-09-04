@@ -103,3 +103,10 @@
 4. NEXT: harvest (untar snapshots -> merge islands, join C9 from results.json,
    economy-cell census, C9 trajectory by gen, operator stats esp. merge_spatial_ic,
    film candidates) -> pilot verdict doc -> v3 full-campaign go/no-go + round-5 spec.
+
+5. POST-11 REPUBLISH AFTER v2.1 IMPLEMENTATION (user request 2026-09-04): once the
+   round-5/v2.1 contract system (TRACKA_R5_ANCHORS.md: category-anchored contracts,
+   closed-book agent-triggered reveal, silent caps) is IMPLEMENTED and floors are
+   re-derived, update docs/blobs/measuring-evolved-worlds.html (live at
+   swpo.github.io/physim/blobs/measuring-evolved-worlds.html) to describe v2.1 as
+   the current instrument (v1 + round-4 numbers stay as the tagged historical row).
