@@ -67,3 +67,39 @@
   --env.scientist.harness.id <claude_code|codex> --env.scientist.runtime.type docker;
   --resume <output-dir> reruns errored rollouts only.
 - pinference transient 5xx = HarnessError mid-rollout; resume fixes; not our env.
+
+
+## UPDATE 2026-09-04 (post prime-agent-update context)
+1. V3 PILOT: COMPLETE + TERMINATED. RED-protocol mid-flight: launch was 10-20x too
+   slow (ic lanes serial on CPU pre-GPU-batch; C9 rescore serial on main thread).
+   Fix = blobkit 0.3.5 (job dicts carry per-lane "ic" -> init_soup_gpu_batch ics
+   hook) + pilot-2 worker (ic lanes ride GPU tensor, version-gated; C9 rescore in
+   spawn ProcessPool; commits 9a07779). Gated tests green (ic-injection differ test,
+   6-job end-to-end, rescore exact-match). Both islands ran gens 1-7 (~3.5-4.5h/gen),
+   confirms settled through gen 7 (two-stage async drain: s3g6+s2g7 -> ingest3 6 +
+   ingest2 7 -> s3g7 -> ingest3 7; CONFIRM7_SETTLED in driver.log both islands).
+   SNAPSHOTS: ~/v3work/isl1_final.tgz (7.7GB, 1103 entries), isl2_final.tgz (6.7GB,
+   1053) — full out/ (results, archive, jobs, elite npzs), configs, campaign.log.
+   Pods TERMINATED ~03:00/05:45Z Sep 4. Total spend ≈ $110-115 of $150 cap.
+   SUCCESS CRITERION MET AT GEN 3: >=5 economy cells target vs 45 (isl1) + 34 (isl2)
+   distinct cells with C9>=0.4 & I>=60 (from results.json rows; archive entries lack
+   C9 — ingest field subset — join results.json at harvest). Continuation to gens
+   8-12 possible from snapshots: restore ~/islN, pod_run_batch.sh 8 12.
+2. ROUND 4: FINAL + PUBLISHED. fable E1 +0.308 / E2 +0.287 (n=3) vs scripted
+   +0.238/+0.233; sol negative everywhere. probes/blobs/agentenv/round4/ROUND4_FINAL.md.
+   POST 11 rewritten current-first (BLOB2 ladder w/ shipped semantics from
+   blobround2.py) + pushed (a1d1123). Local eval resumes done; launch detached
+   (start_new_session) or agent restarts kill them — pids die with prime-agent.
+3. ROUND 5 DIRECTION (user-agreed, spec doc pending): (a) budgets -> huge
+   unadvertised safety caps (utilization data: injection hit 0.95, replicas 12/12 —
+   limits DID bind in round 4); (b) spend metered silently -> post-hoc Pareto
+   (skill vs spend); strip budget from probe_status/tool returns/coaching errors;
+   (c) span/lock-at-inject removed -> anchor-parameterized contracts (anchor =
+   (world line, t)): free exploration forks + reset; scored contract instances
+   harness-issued (fixed per world+seed) for comparability; truth = fresh replicas
+   per (anchor, protocol); baselines per anchor. Scripted actor re-played, floors
+   re-derived; round-4 numbers stay as BLOB2-v1 row. Agent-authored contracts =
+   later L6 lane.
+4. NEXT: harvest (untar snapshots -> merge islands, join C9 from results.json,
+   economy-cell census, C9 trajectory by gen, operator stats esp. merge_spatial_ic,
+   film candidates) -> pilot verdict doc -> v3 full-campaign go/no-go + round-5 spec.
