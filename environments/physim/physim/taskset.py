@@ -234,7 +234,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2", "BLOB2v2-E1", "BLOB2v2-E2"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget).
     BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
     only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
@@ -612,6 +612,159 @@ def _blob2_task(config: "PhysimConfig", i: int) -> "Blob2Task":
                                           tools=config.task.tools))
 
 
+
+
+# ========================================================= BLOB round 5
+# v2.1 contract system (TRACKA_R5_ANCHORS.md): category-anchored contracts,
+# closed-book reveal. Two-phase episodes: open exploration (base record +
+# forks, silent meters, no budgets) -> agent-triggered probe_ready ->
+# closed-book answers against hidden instances drawn from published
+# continuous domains. Additive: v1 tags (BLOB2-E1/E2) stay untouched.
+# Tags: BLOB2v2-E1, BLOB2v2-E2. Design + scoring in physim/blobround5.py.
+
+BLOB5_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
+
+INTERFACE (MCP tools, prefix probe_)
+- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled by that slot. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium.
+- probe_status(): phase, times, open forks, interface counts, apparatus ranges, the syllabus; after the reveal also the instance menu and your submission flags.
+- probe_read(ctx, window, devices, ports, stride): read streams in a context ("base" = the base record, or a fork id), advancing it up to `window` 5tu steps and reading every `stride`-th step; window=0 reads the current state without advancing.
+- probe_wait(ctx, steps): advance a context without reading.
+- probe_adjust(device, u1, u2, u3, ctx, steps, read): apply a 3-channel actuator to one device in a context; each u in [-1, 1]. What the channels do is fixed all episode but undisclosed — discovering it is part of the task. The actuator may refuse a step (generic "adjust_rejected"). Device configurations are per-context; forks inherit them from the spawning context.
+- probe_fork(t | fork): spawn an exploration fork from any base grid time t (a multiple of 5 in [0, 2500]) or from another fork's current state. Forks run live and independently; they are yours to experiment in and are never scored.
+- probe_reset(fork): discard a fork.
+- probe_inject(ctx, port, amp, dur): drive the fixed emission channel inside fork ctx from its current time: amp = 0 or in [0.05, 1.0] (the apparatus cannot emit stronger), dur in (0, 50] tu. The base record never takes emissions. Where and what the emission channel couples to is undisclosed. The emission acts while that fork advances; reading is probe_read.
+- probe_ready(): IRREVERSIBLE. Ends exploration, reveals the six concrete instances, and closes every world tool for the rest of the episode (base-record reads included). Only probe_status and probe_submit stay.
+- probe_submit(instance, payload): after probe_ready, submit or revise one instance's payload.
+
+EPISODE (two phases, closed book)
+The base record is a fixed trajectory of the world spanning t = 0 to 2500 tu, fully readable in 5tu steps during exploration; its read head only advances, and probe_fork gives random access to any grid time. Forks continue the world live from their anchor: same laws, fresh microscopic realization — two forks from one anchor diverge the way the world itself would. There is no deadline for probe_ready; take the time the science needs. But after the reveal you cannot touch the world again: anything you want available in phase two — recorded streams, fitted laws, code — must be in your own files before you call probe_ready.
+
+THE SYLLABUS (the six instance categories; concrete values only at probe_ready)
+{syllabus}
+
+SCORING
+Per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1] (details in the syllabus); reward = the mean over the six. UNSUBMITTED instances score -1 — after probe_ready, always submit every instance: calibrated classical estimates with honest sigma beat empty slots. "sigma" is your predictive sd — honest spread beats overconfidence.
+
+STRATEGY
+You have a full coding environment: record reads to disk, model offline, keep notes. The instances are drawn from continuous domains, so pre-running answers is hopeless by construction — what carries through the reveal is the portable artifact: the laws, response templates, and forecasts you can run from your own files."""
+
+BLOB5_PROMPT = (
+    "Begin your investigation with the probe_* tools. Start with "
+    "probe_status and read the syllabus carefully. Explore and calibrate "
+    "in phase one and persist what you learn to files; call probe_ready "
+    "only when your artifacts can answer the syllabus categories; then "
+    "submit every instance.")
+
+
+class Blob5Data(vf.TaskData):
+    difficulty: str = "BLOB2v2-E1"
+    world: str = ""
+    world_seed: int = 0
+    menu: str = "E1"
+    max_turns: int = 120
+    tier: str = "tools"
+
+
+class Blob5Task(vf.Task[Blob5Data, BlobToolState, BlobTaskConfig]):
+    @classmethod
+    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
+        from physim.servers.blob import BlobToolset
+        return [BlobToolset(config.tools)]
+
+    async def setup(self, trace: vf.Trace, runtime) -> None:
+        st = trace.state
+        st.world = self.data.world
+        st.seed = self.data.world_seed
+        st.round5 = self.data.menu
+
+    async def finalize(self, trace: vf.Trace, runtime) -> None:
+        try:
+            from verifiers.v1.utils.artifacts import collect
+            trace.state.artifacts = await collect(runtime,
+                                                  self.data.artifacts)
+        except Exception as e:  # collection must never fail the rollout
+            trace.info.setdefault("physim_artifact_error", str(e))
+
+    @vf.reward(weight=1.0)
+    async def skill(self, trace: vf.Trace) -> float:
+        from physim import blobround5 as R5
+        st = trace.state
+        world, seed = self.data.world, self.data.world_seed
+        result = R5.score_episode5(world, seed, self.data.menu,
+                                   dict(st.r5_subs or {}))
+        for c, v in result["skills"].items():
+            trace.record_metric(f"skill_{c}", float(v))
+        # silent meters -> rollout metrics (spec 2.7: track, don't tell)
+        m = st.r5_meters or {}
+        for key in ("sensor", "adjust", "injection", "sim_tu"):
+            trace.record_metric(f"meter_{key}", float(m.get(key, 0.0)))
+        trace.record_metric("meter_fork_spawns", float(st.r5_fork_seq))
+        trace.record_metric("meter_open_forks_peak", float(st.r5_open_peak))
+        trace.record_metric("meter_resets", float(st.r5_n_resets))
+        trace.record_metric("meter_reads_base", float(st.r5_reads_base))
+        trace.record_metric("meter_reads_fork", float(st.r5_reads_fork))
+        trace.record_metric("meter_turns", float(st.turns))
+        trace.record_metric("time_to_ready_sim_tu",
+                            float(st.r5_t_ready_sim))
+        trace.record_metric("time_to_ready_turns",
+                            float(st.r5_t_ready_turns))
+        cap_hits = dict(st.r5_cap_hits or {})
+        trace.record_metric("cap_hits_total",
+                            float(sum(cap_hits.values())))
+        trace.record_metric("readied",
+                            1.0 if st.r5_phase == "revealed" else 0.0)
+        trace.info["physim"] = {
+            "difficulty": self.data.difficulty,
+            "world": world,
+            "world_seed": seed,
+            "tier": "blob2v2",
+            "menu": self.data.menu,
+            "detail": result["detail"],
+            "meters": {**m, "fork_spawns": st.r5_fork_seq,
+                       "open_forks_peak": st.r5_open_peak,
+                       "resets": st.r5_n_resets,
+                       "reads_base": st.r5_reads_base,
+                       "reads_fork": st.r5_reads_fork,
+                       "turns": st.turns},
+            "time_to_ready": {"sim_tu": st.r5_t_ready_sim,
+                              "turns": st.r5_t_ready_turns},
+            "cap_hits": cap_hits,
+            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
+        }
+        return float(result["reward_skill"])
+
+
+def _blob5_task(config: "PhysimConfig", i: int) -> "Blob5Task":
+    from physim import blobcore as B
+    from physim import blobround5 as R5
+    ep = R5.episode_cfg5(config.difficulty, config.seed0 + i)
+    world, seed, menu = ep["world"], ep["seed"], ep["menu"]
+    cc = B.contracts(world, seed)["private"]
+    system_prompt = BLOB5_SYSTEM_PROMPT.format(
+        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
+        syllabus=R5.syllabus5(world, seed, menu))
+    artifacts = [vf.Artifact(
+        source=".",
+        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
+                 ".venv", "*.tar", "*.npz"],
+        required=False,
+    )]
+    data = Blob5Data(
+        idx=i,
+        name=f"physim-{config.difficulty}#{seed}",
+        prompt=BLOB5_PROMPT,
+        system_prompt=system_prompt,
+        difficulty=config.difficulty,
+        world=world,
+        world_seed=seed,
+        menu=menu,
+        max_turns=config.max_turns,
+        artifacts=artifacts,
+    )
+    return Blob5Task(data, BlobTaskConfig(judges=list(config.task.judges),
+                                          tools=config.task.tools))
+
+
 def certified_seed(difficulty: str, seed0: int, index: int) -> int:
     """Deterministically map task index -> the (index+1)-th certified seed at
     or after seed0. Cheap for tanh worlds (always certified); GS worlds run a
@@ -632,6 +785,10 @@ class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
     INFINITE = True
 
     def load(self) -> Iterator[PhysimTask]:
+        if self.config.difficulty.startswith("BLOB2v2"):
+            for i in itertools.count():
+                yield _blob5_task(self.config, i)
+            return
         if self.config.difficulty.startswith("BLOB2"):
             for i in itertools.count():
                 yield _blob2_task(self.config, i)

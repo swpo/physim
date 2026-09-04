@@ -1,0 +1,9 @@
+{
+ "anchor_t": "continuous-uniform [600, 2300], realized at sim-step resolution dt=0.02 -> 85,000 distinguishable anchor states per family draw, off the 5tu read grid w.p. 1",
+ "L1": "anchor x sequence length {1,2,3} x continuous u in [-1,1]^3 per step -> R^3..R^9 continuum",
+ "L2": "anchor continuum",
+ "L3F": "anchor continuum x device {0,1}",
+ "L3E/L3S": "anchor continuum",
+ "L4": "anchor x port x amp [1.5,3.0] x dur [5,20] continuum; the whole amp domain sits above the apparatus AMP_CAP=1.0, so the graded protocol is never runnable even in Phase A",
+ "L4D": "anchor x port x amp [0.30,0.90] x dur [5,20] continuum; runnable amps, but the instance is hidden until the world is closed"
+}

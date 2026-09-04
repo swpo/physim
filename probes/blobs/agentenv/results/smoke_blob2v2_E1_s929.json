@@ -1,0 +1,163 @@
+{
+ "world": "p4g2_044",
+ "seed": 929,
+ "menu": "E1",
+ "difficulty": "BLOB2v2-E1",
+ "reward_skill": 0.2594,
+ "skills": {
+  "L1": -0.0158,
+  "L2": 0.0022,
+  "L3F": -0.0747,
+  "L3E": 0.0375,
+  "L4": 0.8354,
+  "L4D": 0.7715
+ },
+ "crps": {
+  "l1": 0.208521,
+  "l2": 0.21762,
+  "l3f": 0.11279,
+  "l3e": 1.26005,
+  "l4": 0.029182,
+  "l4d": 0.038692
+ },
+ "ladders": {
+  "L1": {
+   "climatology": 0.216033,
+   "persistence": 0.205286
+  },
+  "L2": {
+   "climatology": 0.218104,
+   "persistence": 0.218213
+  },
+  "L3F": {
+   "climatology": 0.129342,
+   "persistence": 0.104949,
+   "ar2": 0.117095
+  },
+  "L3E": {
+   "zero": 2.827583,
+   "pre_rate": 1.309132
+  },
+  "L4": {
+   "climatology": 0.177243,
+   "persistence": 0.192249
+  },
+  "L4D": {
+   "climatology": 0.191417,
+   "persistence": 0.169345
+  }
+ },
+ "instances": {
+  "L1": {
+   "id": "L1@i1",
+   "family": "L1",
+   "t_a": 911.74,
+   "k_a": 45587,
+   "seq": [
+    [
+     0.368,
+     0.5947,
+     0.8879
+    ]
+   ]
+  },
+  "L2": {
+   "id": "L2@i1",
+   "family": "L2",
+   "t_a": 1843.22,
+   "k_a": 92161
+  },
+  "L3F": {
+   "id": "L3F@i1",
+   "family": "L3F",
+   "t_a": 1925.24,
+   "k_a": 96262,
+   "device": 0,
+   "horizons": [
+    5.0,
+    25.0,
+    100.0,
+    400.0
+   ]
+  },
+  "L3E": {
+   "id": "L3E@i1",
+   "family": "L3E",
+   "t_a": 700.46,
+   "k_a": 35023,
+   "port": 7,
+   "sign": 1.0,
+   "thr": 0.48078430278789047,
+   "n_windows": 16,
+   "window_tu": 50.0
+  },
+  "L4": {
+   "id": "L4@i1",
+   "family": "L4",
+   "t_a": 728.68,
+   "k_a": 36434,
+   "port": 6,
+   "amp": 2.7757,
+   "dur": 17.1,
+   "k_dur": 855,
+   "lags": [
+    10.0,
+    25.0,
+    50.0,
+    100.0,
+    175.0,
+    250.0
+   ]
+  },
+  "L4D": {
+   "id": "L4D@i1",
+   "family": "L4D",
+   "t_a": 2264.62,
+   "k_a": 113231,
+   "port": 10,
+   "amp": 0.6472,
+   "dur": 10.94,
+   "k_dur": 547,
+   "lags": [
+    25.0,
+    75.0,
+    150.0
+   ]
+  }
+ },
+ "meters": {
+  "sensor": 255945.0,
+  "adjust": 1.3,
+  "injection": 496.8,
+  "sim_tu": 9265.0,
+  "fork_spawns": 38.0,
+  "open_forks_peak": 1.0,
+  "resets": 38.0,
+  "reads_base": 500.0,
+  "reads_fork": 1853.0,
+  "turns": 210.0
+ },
+ "cap_hits": {
+  "sensor": 0,
+  "adjust": 0,
+  "injection": 0,
+  "sim_tu": 0,
+  "fork_spawns": 0,
+  "open_forks": 0
+ },
+ "time_to_ready": {
+  "sim_tu": 9265.0,
+  "turns": 204
+ },
+ "n_reads": 500,
+ "wall_s": 3051.5,
+ "gates": {
+  "all_submitted": true,
+  "none_at_floor": true,
+  "l1_near_floor": true,
+  "l4_positive": true,
+  "l4d_positive": true,
+  "zero_cap_hits": true
+ },
+ "smoke_pass": true
+}
