@@ -1,0 +1,103 @@
+{
+  "classification": "diagnostic only, excluded from science results",
+  "output_dir": "/Users/spoho/v3work/ops/recovery_20260905/eval_pilot_r2/E1",
+  "checks": {
+    "new_syllabus": true,
+    "phase_exploration": true,
+    "base_and_ports": true,
+    "no_legacy_budget_surface": true,
+    "private_profile": true,
+    "seven_guards": true,
+    "zero_cap_hits": true,
+    "no_resource_truncation": true,
+    "env_retries_zero": true,
+    "agent_retries_zero": true
+  },
+  "trace_results": [
+    {
+      "id": "7acb4851a9ab4e1582fcaa876fdf9527",
+      "task": "physim-BLOB2v2r2-E1#928",
+      "ok": false,
+      "errors": [
+        {
+          "type": "HarnessError",
+          "message": "agent timeout: rollout exceeded its 180s budget",
+          "traceback": "Traceback (most recent call last):\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/rollout.py\", line 282, in step\n    await self._harness_session.turn(messages)\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/harness.py\", line 306, in turn\n    result = await self._run(messages)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/acp/__init__.py\", line 251, in _run\n    response = await self._reader.read()\n               ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/acp/__init__.py\", line 163, in read\n    size = int.from_bytes(await self._readexactly(8), \"big\")\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/acp/__init__.py\", line 155, in _readexactly\n    self._buffer.extend(await anext(self._source))\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/runtimes/docker/__init__.py\", line 55, in _read_stream\n    while chunk := await reader.read(64 * 1024):\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/asyncio/streams.py\", line 730, in read\n    await self._wait_for_data('read')\n  File \"/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/asyncio/streams.py\", line 539, in _wait_for_data\n    await self._waiter\nasyncio.exceptions.CancelledError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/rollout.py\", line 280, in step\n    async with asyncio.timeout_at(self.deadline_at):\n               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/asyncio/timeouts.py\", line 116, in __aexit__\n    raise TimeoutError from exc_val\nTimeoutError\n"
+        }
+      ],
+      "private_policy": {
+        "id": "v2r2",
+        "caps": {
+          "sensor": 1000000000.0,
+          "adjust": 10000000.0,
+          "injection": 1000000.0,
+          "fork_spawns": 100000,
+          "open_forks": 10000,
+          "sim_tu": 10000000.0,
+          "log_entries": 1000000
+        },
+        "resident_forks": 8,
+        "resident_policy": "lru-replay",
+        "safety_trip": "truncate"
+      },
+      "meters": {
+        "sensor": 160.0,
+        "adjust": 0.0,
+        "injection": 0.0,
+        "sim_tu": 0.0,
+        "log_entries": 0.0,
+        "fork_spawns": 1,
+        "open_forks_peak": 1,
+        "resets": 0,
+        "reads_base": 1,
+        "reads_fork": 0,
+        "turns": 4
+      },
+      "cap_hits": {
+        "sensor": 0,
+        "adjust": 0,
+        "injection": 0,
+        "sim_tu": 0,
+        "fork_spawns": 0,
+        "open_forks": 0,
+        "log_entries": 0
+      },
+      "first_status": {
+        "node": 6,
+        "payload": {
+          "phase": "exploration",
+          "t_base_head": 0.0,
+          "T_BASE": 2500.0,
+          "step_tu": 5.0,
+          "n_devices": 2,
+          "ports": 12,
+          "slots_per_device": [
+            13,
+            19
+          ],
+          "n_actuator_channels": 3,
+          "apparatus": {
+            "u_range": [
+              -1.0,
+              1.0
+            ],
+            "amp_range": [
+              0.05,
+              1.0
+            ],
+            "amp_zero_ok": true,
+            "dur_range_tu": [
+              0.0,
+              50.0
+            ],
+            "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed"
+          },
+          "contexts": [],
+          "syllabus": "SYLLABUS \u2014 BLOB2v2r2-E1 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {5, 25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [4][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3E event rate. Predict the crossing count of the announced event\n     (port 4, sign 1, threshold -0.798244) in each of 16\n     consecutive 50tu windows starting at a hidden anchor, undisturbed;\n     windows may extend past the base record. domain: t_a continuous-\n     uniform in [600, 2300]. payload: [16]. ladder: zero-rate |\n     pre-anchor rate.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence."
+        }
+      }
+    }
+  ],
+  "surface_gate_pass": true,
+  "note": "The 180s diagnostic ended with HarnessError timeout; this is not a successful science rollout. Surface/policy checks are supported by actual returned status and trace telemetry."
+}

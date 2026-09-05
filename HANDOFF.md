@@ -24,12 +24,19 @@ work, NOT restarting campaigns. Prime CLI authentication works.
   All first status replies verified as v2. Native resume preflight passed:
   E2 kept 2/owed 1, E1 kept 0/owed 3. The 4 retries LAUNCHED at 20:51:19Z
   in ~/v3work/ops/recovery_20260905/eval_resume/{E1,E2}; pids 18087/18090.
-  PAUSED shortly afterward (SIGSTOP pgids 18085/18088) after full audit found
-  binding fork-spawn/open-fork caps. User decision requested: finish the old
-  capped cohort vs raise safety ceilings, re-gate and label a new cohort.
-  DO NOT auto-resume, silently change caps, or mix the two cohorts. GPU
-  settlement/backup work continues independently. Exit/log/launch files
-  are in the same ops directory. Originals preserved.
+  PAUSED shortly afterward after full audit found binding fork-spawn/open-fork
+  caps. User chose FIX at 20:57Z. Root then requested graceful termination
+  of those old-policy retries (SIGTERM to exact eval PID, SIGCONT to paused
+  private group for cleanup). DO NOT resume the old-policy copies.
+  Resource fix COMMITTED/PUSHED 0a0fc5e: BLOB2v2r2 policy, generous guards,
+  bounded8-resident replayable LRU,7th private metadata guard, terminal
+  ResourceSafetyError with no science scoring/retries. Legacy tests and
+  real-physics/native lifecycle gates pass. Root's actual Fable diagnostic
+  verified new syllabus/private policy/zero hits; its intentional180s timeout
+  is NOT a science result. Fresh n3/r1/c1 cohorts per menu launched21:33Z
+  under ops recovery/eval_fable_r2/{E1,E2}, exact PID/logs in state.json.
+  Full configs remove diagnostic limits. DO NOT mix old capped scores or
+  diagnostic results into this new cohort. GPU settlement/backup continues.
   Full audit: probes/blobs/agentenv/round5/recovery_20260905/.
   Failed records' nested ProviderError 402 is authoritative (outer errors=[]
   and is_completed=true do NOT mean success). Sample upload size limits are
