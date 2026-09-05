@@ -1,0 +1,21 @@
+{
+  "schema": "v3-film-replay-v1",
+  "note": "TEMPLATE ONLY. Root must replace identity/path values with its explicit final selection; about six TOTAL across both islands.",
+  "items": [
+    {
+      "name": "i1-chosen-confirm",
+      "island_dir": "/home/ubuntu/isl1",
+      "island": 1,
+      "cand": "EXACT_SELECTED_CAND",
+      "phase": "seed3",
+      "seed": 959,
+      "results_path": "out/results.json",
+      "original": {
+        "dtype": "f32",
+        "environment": {
+          "evidence": "Replace with actual archived evidence; historical runtime versions remain unknown unless recorded."
+        }
+      }
+    }
+  ]
+}
