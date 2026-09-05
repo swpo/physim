@@ -1,57 +1,75 @@
-# ACTIVE RECOVERY — 2026-09-05 20:50 UTC (read this before historical notes)
-User replenished API credits and asked to resume. Root is recovering completed
-work, NOT restarting campaigns. Prime CLI authentication works.
+# ACTIVE STATE — 2026-09-05 23:00 UTC (read first)
 
-- Both v3 continuation pods reached GEN_12_DONE (isl1 08:37:32Z, isl2
-  08:27:45Z Sep 5) and campaign processes exited normally. At 20:46Z both
-  were ACTIVE but idle; snapshots/films were NOT yet made. Approx 12h of
-  additional idle billing occurred during the agent outage (exact invoice
-  not yet checked). No generation data loss observed.
-- At 20:50Z root launched verified confirm settlement on both pods via
-  durable script files. Logs: ~/islN/out/recovery_settle12.log. Stage-1
-  pending 37/30 jobs; then stage-2 s3g12. Require verified final marker
-  out/recovery_settle12/CONFIRM12_SETTLED.json, not process exit alone.
-- Recovery state/runbook: ~/v3work/ops/recovery_20260905/state.json.
-  Local small checkpoints (archive/results/state/driver.log) already copied
-  there per pod before settlement. Complete archive + film + termination
-  still pending; no old untested /tmp film/settle scripts should be run.
-- Only root-owned pods: e54975df9f1745e7b3573a625f43d0f8 (isl1,
-  150.136.116.0), 9e6f440582e94895a549ba44b3ef3288 (isl2,150.136.65.67).
-  Other Prime resources are OUT OF SCOPE; leave them alone.
-- Valid Fable runs: 51d11a68-92fe-405f-aeb8-3b345bb69469 (E2),
-  588029cc-23dd-4b89-88e9-2813a3fa73b9 (E1). Two E2 tasks succeeded;
-  four tasks failed with nested ProviderError 402 insufficient_funds.
-  All first status replies verified as v2. Native resume preflight passed:
-  E2 kept 2/owed 1, E1 kept 0/owed 3. The 4 retries LAUNCHED at 20:51:19Z
-  in ~/v3work/ops/recovery_20260905/eval_resume/{E1,E2}; pids 18087/18090.
-  PAUSED shortly afterward after full audit found binding fork-spawn/open-fork
-  caps. User chose FIX at 20:57Z. Root then requested graceful termination
-  of those old-policy retries (SIGTERM to exact eval PID, SIGCONT to paused
-  private group for cleanup). DO NOT resume the old-policy copies.
-  Resource fix COMMITTED/PUSHED 0a0fc5e: BLOB2v2r2 policy, generous guards,
-  bounded8-resident replayable LRU,7th private metadata guard, terminal
-  ResourceSafetyError with no science scoring/retries. Legacy tests and
-  real-physics/native lifecycle gates pass. Root's actual Fable diagnostic
-  verified new syllabus/private policy/zero hits; its intentional180s timeout
-  is NOT a science result. Fresh n3/r1/c1 cohorts per menu launched21:33Z
-  under ops recovery/eval_fable_r2/{E1,E2}, exact PID/logs in state.json.
-  Full configs remove diagnostic limits. DO NOT mix old capped scores or
-  diagnostic results into this new cohort. GPU settlement/backup continues.
-  Full audit: probes/blobs/agentenv/round5/recovery_20260905/.
-  Failed records' nested ProviderError 402 is authoritative (outer errors=[]
-  and is_completed=true do NOT mean success). Sample upload size limits are
-  a separate publication issue, not a scored failure. API credentials are
-  read at launch, never embedded in the new launcher.
-- Earlier babe2a40/791527b3 runs are INVALID (v1 toolset / v2 scorer mismatch)
-  and must never be reported. G-R7c validated acc310e's serialization fix.
-  Truth builds + G-R1..G-R6 complete; do NOT rebuild or retrigger them.
-- New children: round5-recovery-audit (local trace audit/preflight only),
-  film-recovery-helper (local provenance-safe capture helper only).
-  Root controls remote changes. No children have remote job ownership now.
-- Heartbeat f80768c7-a2cb-4766-ba37-19c6ce9680cc updated to a recovery-specific
-  runbook every 10m; do not trust stale queued heartbeat instructions.
-  Keep watching evals after GPU shutdown if needed. Post11 v2 update and
-  post12 final harvest/films remain queued, not yet published.
+## GPU continuation: COMPLETE, secured, and terminated
+- Both islands finished through gen12 and verified final confirmations.
+  Final result rows: isl1 1850, isl2 1756. No pending confirms remain.
+- BOTH campaign pods terminated; API listing confirms neither remains.
+  Do NOT SSH to or recreate e54975df9f1745e7b3573a625f43d0f8 or
+  9e6f440582e94895a549ba44b3ef3288. Other projects' pods are out of scope.
+- Immutable final archives, locally verified against remote SHA256, tar
+  integrity, settledgen12 marker, and independently copied critical files:
+  ~/v3work/isl1_final2.tgz — 7526611213 bytes,1951 members,
+  SHA256 7ef7e373677750b16cef373623e1b6bbecd400cea312ba359a940fd5fe3f40c3
+  ~/v3work/isl2_final2.tgz — 7667929517 bytes,1970 members,
+  SHA256 cb00bc78b38c7edf28cbb0a6128b721eec5a345810b26460f390992f72a68a81
+  Verification sidecars are <archive>.verified.json; release receipts and
+  exact metadata in ~/v3work/ops/recovery_20260905/state.json.
+- Both completed three GPU re-simulation films before backup. Native smoke
+  validated3 finite changing frames and fresh-device equality. Record these
+  as RE-SIMULATIONS, not exact original traces or reconfirmed scores.
+  Helper/pin exception: shipped0.3.5 has two stale lock-table entries;
+  all48 deployed source hashes matched explicit reviewed wheel pins. No
+  physics/lock table was edited. Helper lives at v3_pilot/film_recovery/.
+
+## Eval resource fix: IMPLEMENTED; fresh cohort RUNNING
+- User chose to fix experimentally binding400-fork/8-open limits rather
+  than retry the old capped cohort. Fix pushed0a0fc5e; pilot evidence e455715.
+- BLOB2v2r2-E1/E2: high PRIVATE7guards,8-resident replayableLRU,128bitforkIDs,
+  terminalResourceSafetyError(no science score, no whole-run retries).
+  Old tags/limits intact; truth/scoring/physics unchanged. Full native/real
+  physics/legacy tests + parent fast gate passed.
+- Actual8turn/180s Fable diagnostic verified new syllabus/privatepolicy/zero
+  hits, then timed out as designed; DO NOT count it as science.
+- Fresh full cohorts launched21:32:25Z, n3/r1/c1 per world, same six seeds:
+  ~/v3work/ops/recovery_20260905/eval_fable_r2/E1 (pid27324)
+  ~/v3work/ops/recovery_20260905/eval_fable_r2/E2 (pid27323)
+  Logs/exitfiles/specs in state.json fresh_resource_cohorts. Saved native
+  max_turns=None and timeout={}; diagnosticlimits NOT carried over.
+- Original corrected-but-capped runs51d11a68(E2),588029cc(E1) preserved:
+  two E2 successes + four402billing failures; capped scores are a separate
+  cohort. Their copied retry processes were intentionally stopped; NEVER
+  resume them. Earlierbabe2a40/791527b3 runs INVALID(v1surface/v2scorer).
+- Parse NESTED ok/errors/readied/submissions/privatepolicy/meters; JSONL
+  count or outer errors=[] is not success. Resource errors terminal and
+  unscored;402 not a scientific zero. Hub>26MB failures publication-only.
+
+## Local analysis underway (no more GPU work)
+- Source of truth: ~/v3work/ops/recovery_20260905/state.json.
+- Disk ~16GBfree after final backups. NO full extraction. Bounded metadata
+  and films extracted to ~/v3work/harvest2/v3cont-N/islN/out (about200MB per
+  island), with EXTRACTION_COMPLETE.json. Raw run NPZs remain compressed.
+  Originalgen7snapshots/harvest remain. Deleted only redundant /tmp elite
+  upload tars and the optional partial extraction created during recovery.
+- Children harvest2-auditor and h9-metric-audit: LOCAL read-only analysis/
+  toy tests, no ops/model launches/production edits. Wait explicit reports.
+- Important early audit findings (report pending): all2324 baseline rows
+  preserved exactly; one c9fill identity has2differentgenomes;11 older seed3
+  jobs used same-named donor-v2genomes rather than the v3screen genotype.
+  Quarantine invalid genotype-confirmation joins; preserve every raw row.
+  Spatial-IC screen + soup confirmation are different IC protocols even
+  when ghash matches. Do not call the latter replication of the spatial IC.
+- Old .82 'operator hit rate' pooled confirmations over screen lanes. Use
+  screen-only rates/denominators, separate selected confirmations, common
+  W9 for cross-phase tables, and distinguish full/partial C9.
+- h9 is exploratory, not calibrated. Five low examples do not prove no
+  evolved world segregates; positional relabel is not an upper bound.
+  Review also found h9 stops before d7b persistence pruning. No h9 was
+  deployed into evolution. Do not repeat earlier overclaims.
+- Next: audited HARVEST2 + corrected post12 with six time-lapse films;
+  evaluate h9 review before a full streaming rescore; tag fresh agent
+  results separately and update post11 to current implemented policy.
+- Heartbeat f80768c7-a2cb-4766-ba37-19c6ce9680cc remains for local eval/analysis
+  (15m). Delete only after completion or an explicit successor watch.
 
 ---
 ## Historical handoff (older claims may be superseded above)

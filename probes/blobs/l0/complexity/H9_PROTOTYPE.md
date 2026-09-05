@@ -1,3 +1,12 @@
+> **Audit correction (2026-09-05): this prototype is NOT approved for regional-phenotype ranking or a biological threshold.**
+> Local counterexamples show identical repeated multichannel locales can score1,
+> rigidly moving/rotating separated regions can score0, and a small global shift
+> can flip the score. The median-x relabel control is not an upper bound; h9
+> omits d7b persistence pruning. The five low values below do not prove that
+> all evolved worlds homogenize, that motility prevents segregation, or that
+> genome-level merging is necessary. No h9 score was used in evolution.
+> Detailed audit and replacement requirements are being prepared under h9_review/.
+
 # H9 PROTOTYPE — regional composition segregation (metric-gap follow-up to post 12)
 Motivation: top-C9 worlds are homogeneous tilings (user visual audit of
 p1g1_009_s3); C9's factor bank has NO spatial cross-term (t9 traversal, e9
