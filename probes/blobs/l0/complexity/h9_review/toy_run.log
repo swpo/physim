@@ -1,0 +1,408 @@
+{
+  "bond_units": {
+    "bond_times": [
+      500.0,
+      525.0
+    ],
+    "edge_counts": [
+      1,
+      1
+    ],
+    "wrapped_pair_distance": -0.5
+  },
+  "d7b_vs_h9_200tu_only": {
+    "d7b": {
+      "features": 2,
+      "k_best": 2,
+      "n_eff": 0.0,
+      "n_species": 0,
+      "n_tracks": 8,
+      "persist": {
+        "0": 200.0,
+        "1": 200.0
+      },
+      "r9": 0.0,
+      "sil": 1.0,
+      "takeover": 0.0
+    },
+    "h9": {
+      "Hs": 0.6931,
+      "I": 0.6931,
+      "I0": 0.1022,
+      "h9": 1.0,
+      "n_frames": 320,
+      "pers": 1.0,
+      "uc": 1.0
+    },
+    "h9_species": 2
+  },
+  "d7b_vs_h9_600tu": {
+    "d7b": {
+      "features": 2,
+      "k_best": 2,
+      "n_eff": 2.0,
+      "n_species": 2,
+      "n_tracks": 8,
+      "persist": {
+        "0": 600.0,
+        "1": 600.0
+      },
+      "r9": 0.2181,
+      "sil": 1.0,
+      "takeover": 0.0
+    },
+    "h9": {
+      "Hs": 0.6931,
+      "I": 0.6931,
+      "I0": 0.1022,
+      "h9": 1.0,
+      "n_frames": 960,
+      "pers": 1.0,
+      "uc": 1.0
+    },
+    "h9_species": 2
+  },
+  "d7b_vs_h9_600tu_plus_200tu_late_arrival": {
+    "d7b": {
+      "features": 2,
+      "k_best": 2,
+      "n_eff": 1.0,
+      "n_species": 1,
+      "n_tracks": 8,
+      "persist": {
+        "0": 200.0,
+        "1": 600.0
+      },
+      "r9": 0.0,
+      "sil": 1.0,
+      "takeover": 0.5542
+    },
+    "h9": {
+      "Hs": 0.5623,
+      "I": 0.5623,
+      "I0": 0.0794,
+      "h9": 1.0,
+      "n_frames": 640,
+      "pers": 1.0,
+      "uc": 1.0
+    },
+    "h9_species": 2
+  },
+  "distinct_multifield_compartments": {
+    "Hs": 1.0397,
+    "I": 0.3466,
+    "I0": 0.0364,
+    "h9": 0.3091,
+    "n_frames": 4096,
+    "pers": 1.0,
+    "uc": 0.3091
+  },
+  "few_frames": {
+    "h9": 0.0,
+    "why": "few_frames"
+  },
+  "identical_multifield_locales_P2": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.0491,
+    "h9": 0.0,
+    "n_frames": 4096,
+    "pers": 1.0,
+    "uc": 0.0
+  },
+  "identical_multifield_locales_boundary_split": {
+    "Hs": 0.6931,
+    "I": 0.6931,
+    "I0": 0.3292,
+    "h9": 1.0,
+    "n_frames": 4096,
+    "pers": 1.0,
+    "uc": 1.0
+  },
+  "identical_multifield_locales_coincident": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.1383,
+    "h9": 0.0,
+    "n_frames": 4096,
+    "pers": 1.0,
+    "uc": 0.0
+  },
+  "identical_multifield_locales_global_shift_2": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.1383,
+    "h9": 0.0,
+    "n_frames": 4096,
+    "pers": 1.0,
+    "uc": 0.0
+  },
+  "invalid_B_zero": {
+    "result": {
+      "Hs": 0.6931,
+      "I": 0.6931,
+      "I0": "nan",
+      "h9": "nan",
+      "n_frames": 2048,
+      "pers": 1.0,
+      "uc": "nan"
+    },
+    "warnings": [
+      "Mean of empty slice.",
+      "invalid value encountered in scalar divide"
+    ]
+  },
+  "invalid_empty_record": {
+    "exception": "IndexError",
+    "message": "index -1 is out of bounds for axis 0 with size 0",
+    "warnings": []
+  },
+  "invalid_empty_tracks": {
+    "exception": "ValueError",
+    "message": "need at least one array to concatenate",
+    "warnings": []
+  },
+  "invalid_zero_L": {
+    "result": {
+      "Hs": 0.6931,
+      "I": 0.0,
+      "I0": 0.0,
+      "h9": 0.0,
+      "n_frames": 2048,
+      "pers": 1.0,
+      "uc": 0.0
+    },
+    "warnings": [
+      "divide by zero encountered in divide",
+      "invalid value encountered in cast"
+    ]
+  },
+  "label_permutation": {
+    "Hs": 0.6931,
+    "I": 0.6931,
+    "I0": 0.0384,
+    "h9": 1.0,
+    "n_frames": 2048,
+    "pers": 1.0,
+    "uc": 1.0
+  },
+  "no_shared_half_support": {
+    "h9": 0.0,
+    "uc": 1.0,
+    "why": "no_stable_patches"
+  },
+  "one_patch": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.0,
+    "h9": 0.0,
+    "n_frames": 2048,
+    "pers": 1.0,
+    "uc": 0.0
+  },
+  "one_species": {
+    "Hs": 0.0,
+    "I": 0.0,
+    "I0": 0.0,
+    "h9": 0.0,
+    "n_frames": 2048,
+    "pers": 1.0,
+    "uc": 0.0
+  },
+  "provenance": {
+    "constants": {
+      "BURN": 500.0,
+      "CREC": 25.0,
+      "D7B_KMAX": 24,
+      "D7B_MIN_ROWS": 6,
+      "D7B_MIN_TRACK": 8,
+      "D7B_PERSIST": 500.0,
+      "D7B_SIL_FLOOR": 0.25,
+      "LATE_W_MIN": 1000.0,
+      "REC": 5.0
+    },
+    "constraints": "Synthetic arrays only; no physical simulation or archive extraction.",
+    "executable": "/Users/spoho/.venvs/bk3/bin/python",
+    "numpy": "1.26.4",
+    "python": "3.9.6 (default, Dec  2 2025, 07:27:58) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+    "scipy": "1.13.1",
+    "sources": {
+      "blobkit_metrics_v1": {
+        "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/blobkit/metrics_v1.py",
+        "sha256": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b"
+      },
+      "blobkit_metrics_v2": {
+        "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/blobkit/metrics_v2.py",
+        "sha256": "18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988"
+      },
+      "blobkit_sim_v1": {
+        "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/blobkit/blobkit/soup/sim_v1.py",
+        "sha256": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f"
+      },
+      "h9": {
+        "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/h9_dev.py",
+        "sha256": "f791bd655791d210e740b9eb68ae61597b8749f61035c0ad78a55d73d74e5856"
+      },
+      "metrics_v3": {
+        "path": "/Users/spoho/v3work/v3bundle/lib/metrics_v3.py",
+        "sha256": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9"
+      }
+    }
+  },
+  "recording_units": {
+    "L": 32.0,
+    "N": 64,
+    "P4_correct_patch_yx": [
+      0,
+      3
+    ],
+    "P4_wrong_divide_by_N_patch_yx": [
+      0,
+      1
+    ],
+    "blob": {
+      "area": 0.25,
+      "peak": 2.0,
+      "x": 24.25,
+      "y": 4.25
+    },
+    "cell_yx": [
+      8,
+      48
+    ],
+    "dx": 0.5,
+    "track_yx": [
+      [
+        4.25,
+        24.25
+      ],
+      [
+        4.25,
+        24.25
+      ]
+    ]
+  },
+  "rigid_rotation": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.0002,
+    "h9": 0.0,
+    "n_frames": 2048,
+    "pers": 0.0,
+    "uc": 0.0
+  },
+  "rigid_translation_parallel_to_separation": {
+    "Hs": 0.6931,
+    "I": 0.0,
+    "I0": 0.0,
+    "h9": 0.0,
+    "n_frames": 2048,
+    "pers": 0.5,
+    "uc": 0.0
+  },
+  "rigid_translation_perpendicular_to_separation": {
+    "Hs": 0.6931,
+    "I": 0.6931,
+    "I0": 0.0384,
+    "h9": 1.0,
+    "n_frames": 2048,
+    "pers": 1.0,
+    "uc": 1.0
+  },
+  "stationary_binary": {
+    "Hs": 0.6931,
+    "I": 0.6931,
+    "I0": 0.0384,
+    "h9": 1.0,
+    "n_frames": 2048,
+    "pers": 1.0,
+    "uc": 1.0
+  },
+  "stationary_binary_controls": {
+    "mixing_curve": [
+      [
+        0.25,
+        0.7125
+      ],
+      [
+        0.5,
+        0.0576
+      ],
+      [
+        0.75,
+        0.0
+      ]
+    ],
+    "seg_control": 1.0,
+    "shuffle_control": 0.0
+  },
+  "unequal_durations_null": {
+    "observed_species_1_frames": 80,
+    "permuted_Hs_mean": 0.5611860169161886,
+    "permuted_Hs_min_max": [
+      0.3950671208304354,
+      0.6172417697303416
+    ],
+    "permuted_species_1_frames_min_max": [
+      140.0,
+      320.0
+    ],
+    "score": {
+      "Hs": 0.2712,
+      "I": 0.2712,
+      "I0": 0.5318,
+      "h9": 0.0,
+      "n_frames": 1040,
+      "pers": 1.0,
+      "uc": 0.0
+    },
+    "track_duration_frames": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      80,
+      20,
+      20,
+      20,
+      20
+    ]
+  },
+  "y_separation_not_a_ceiling": {
+    "actual": {
+      "Hs": 0.6931,
+      "I": 0.6931,
+      "I0": 0.0384,
+      "h9": 1.0,
+      "n_frames": 2048,
+      "pers": 1.0,
+      "uc": 1.0
+    },
+    "controls": {
+      "mixing_curve": [
+        [
+          0.25,
+          0.0
+        ],
+        [
+          0.5,
+          0.0
+        ],
+        [
+          0.75,
+          0.0
+        ]
+      ],
+      "seg_control": 0.0,
+      "shuffle_control": 0.0
+    }
+  }
+}
+PASS: all toy expectations; wrote /Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/h9_review/toy_results.json
