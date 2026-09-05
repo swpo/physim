@@ -668,8 +668,15 @@ class Blob5Data(vf.TaskData):
 class Blob5Task(vf.Task[Blob5Data, BlobToolState, BlobTaskConfig]):
     @classmethod
     def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
-        from physim.servers.blob import BlobToolset
-        return [BlobToolset(config.tools)]
+        from physim.servers.blob import BlobToolset, BlobToolsetConfig
+        # [v2.1 fix] surface mode rides the toolset config so it survives
+        # server-process reconstruction (task channel is not guaranteed).
+        # NOTE: must be a DECLARED field on BlobToolsetConfig — model_copy
+        # (update=...) on the base-class instance attaches an undeclared
+        # attr that model_dump_json silently drops (G-R7b lesson).
+        cfg = BlobToolsetConfig(**{**config.tools.model_dump(),
+                                   "r5_mode": True})
+        return [BlobToolset(cfg)]
 
     async def setup(self, trace: vf.Trace, runtime) -> None:
         st = trace.state

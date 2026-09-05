@@ -49,7 +49,11 @@ def _r(x, nd=5):
 
 
 class BlobToolsetConfig(vf.ToolsetConfig):
-    pass
+    # [v2.1 fix] the surface mode must cross to the per-rollout tool-server
+    # process; task-derived state (setup_task) proved unreliable on the
+    # runner path (task channel not always served), so the mode rides the
+    # toolset CONFIG, set by Blob5Task.toolsets at construction.
+    r5_mode: bool = False
 
 
 # ═══════════════════════════════════════════════════════════ round 5 (v2.1)
@@ -847,18 +851,23 @@ class Blob5Mixin:
                  "replaces"))
 
     # ------------------------------------------------ registration / mode
-    _r5_mode = False   # set by setup_task before register (v1 default)
+    _r5_mode = False   # config-driven (see BlobToolsetConfig.r5_mode)
 
     async def setup_task(self, task) -> None:
+        # belt-and-braces only: config is authoritative; this hook is not
+        # guaranteed to run on every server shape (G-R7 lesson).
         d = str(getattr(getattr(task, "data", None), "difficulty", ""))
-        self._r5_mode = d.startswith("BLOB2v2")
+        if d:
+            self._r5_mode = d.startswith("BLOB2v2") or self._r5_mode
 
     def register(self, mcp) -> None:
         """Advertise exactly one surface: the frozen v1 tool set for v1
         tags, the round-5 tool set for BLOB2v2 tags. Name collisions
         (status/wait/adjust/inject/submit) resolve by the mode filter."""
         from verifiers.v1.utils.decorators import discover_decorated
-        want = V2_TOOL_NAMES if self._r5_mode else V1_TOOL_NAMES
+        mode = bool(getattr(self.config, "r5_mode", False)) or self._r5_mode
+        self._r5_mode = mode
+        want = V2_TOOL_NAMES if mode else V1_TOOL_NAMES
         for fn in discover_decorated(self, "tool"):
             name = getattr(fn, "tool_name", None) or fn.__name__
             if bool(getattr(fn, "_r5_tool", False)) != self._r5_mode:
