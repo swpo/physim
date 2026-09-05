@@ -25,232 +25,249 @@
  .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
 </style></head><body>
 <nav style="font-size:14px;margin-bottom:18px;"><a href="../index.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
-<h1>Breeding spatial economies: the v3 pilot</h1>
-<p class="meta">Post 12 — the v2 campaign (post 10) selected for organism-level
-complexity and got it: a 423-cell archive whose champions are <i>full boxes</i> —
-dense rotor ecologies, reorganizing labyrinths. v3 adds a ninth complexity axis,
-<b>C9 "spatial economy"</b>, a score for what emptiness buys, and this post is the
-pilot that bred for it: <b>2 islands × 7 generations</b> from the v2 archive,
-success bar ≥5 economy cells. It returned <b>76</b>. Every number is from the
-committed harvest: <code>probes/blobs/l0/deepsearch/v3_pilot/</code>
-(<code>HARVEST.md</code>, <code>POST12_FACTS.json</code>) · metric spec:
-<code>V3_TRACKB_SPEC.md</code> · validation gate:
-<code>probes/blobs/l0/complexity/VALIDATION_V3.md</code>.</p>
+<h1>Breeding spatial economies: the final v3 harvest</h1>
+<p class="meta">Post 12 · two islands from the v2 archive · generations 1–12 complete,
+including final selected reseeds. Baseline: g1–7; changed-configuration continuation:
+g8–12. Source: <a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/HARVEST2.md">audited final harvest</a>.</p>
 
-<div class="warn"><b>Audit correction — 5 September 2026.</b>
-The initial count of <b>76 descriptor bins and 516 qualifying observations</b>
-pooled screens with selected seed-2/seed-3 tests. It is not final archive
-occupancy, independent candidate count, or evidence of 76 heterogeneous physical
-compartments. Screens alone give <b>281 qualifying observations across 59 bins</b>.
-For <code>merge_spatial_ic</code>, the direct screen yield is
-<b>52/112 = 46.4%</b>; the earlier 0.82 ratio included confirmation rows in its
-numerator and was not a hit probability. The audit also found 11 older third-seed
-tests that used a same-named donor genome rather than the named screen genotype.
-Those cannot support that candidate's replication claim. Spatial-IC screens and
-soup-initialized confirmations test different initial conditions even when their
-genomes match. The legacy tables below are retained as the original report and
-are being replaced by a genotype-aware twelve-generation audit.
-A high C9 is a proxy result, <b>not proof of the regional compositional diversity
-we want</b>. The short pilot curve did not establish a hard C9 ceiling.</div>
+<div class="note"><b>Final verdict: proxy progress and added breadth, not proven heterogeneous compartments.</b>
+The best correctly linked selected partial-C9 assay rose from <b>0.8504 to 0.8895</b>.
+At common W9 = 0.40, the continuation added <b>14 qualifying descriptor bins</b>
+not observed qualifying in the baseline. Screen means rose, but selected-reseed
+results did not improve uniformly. These are search and measurement results,
+not evidence that the intended compartment phenotype was achieved.</div>
 
-<h2>1 · The ninth axis: pricing what emptiness buys</h2>
-<p>The v2 interest currency (C1–C8) pays for density — organisms, motion
-machinery, internal dynamics, memory — and evolution obliged: the best v2 worlds
-tile the whole box. The v3 design rule targets the other side of that tension,
-and it prices <b>realized consequences, not appearance</b>. There is no reward
-for <i>looking</i> sparse; the score pays for what sparsity buys. C9 is the
-geometric mean of four [0,1] factors — any zero kills it:</p>
+<h2>1 · What C9 measures</h2>
+<p>v3 adds a “spatial economy” proxy to the v2 complexity score. Its factors
+reward used empty space, localized coupling, episodic bonds, and persistent
+phenotype diversity. They do not directly test regional chemical composition.</p>
+<table>
+<tr><th>factor</th><th>measured quantity</th></tr>
+<tr><td><code>t9</code> · traversal</td><td>Void-fraction trapezoid (knots 0.35, 0.55, 0.99, 0.9975)
+× median displacement-through-void score, gated by void percolation.
+Full displacement credit at 3 blob radii per 100 tu.</td></tr>
+<tr><td><code>s9</code> · surface locality</td><td>Share of coupling-term flux inside the
+organism-support boundary shell (<code>SHELL_PX=2</code> in the implementation).
+Requires full-field snapshots.</td></tr>
+<tr><td><code>e9</code> · episodic encounters</td><td>Bond-lifetime mass in the 10–500 tu band /
+total bond mass, multiplied by <code>(1 − frozen-pair fraction)</code> and
+<code>min(total bond mass / 2000 tu, 1)</code>. “Frozen” means bonded for &gt;80% of the window.</td></tr>
+<tr><td><code>r9</code> · diversity</td><td><code>clip(log₂(n_eff)/log₂(24), 0, 1) × (1 − takeover)</code>.
+Here <code>n_eff = exp(entropy)</code> over d7b phenotype clusters with ≥500 tu time coverage.
+These clusters are not regional compartments.</td></tr>
+</table>
 <div class="eq">
-C9 = geomean( t9, s9, e9, r9 )<br/>
-&nbsp;&nbsp;t9&nbsp;&nbsp;traversal — emptiness that is <b>used</b>: void fraction in band, void percolates, moving organisms cross it (≥3 blob radii / 100 tu)<br/>
-&nbsp;&nbsp;s9&nbsp;&nbsp;surface locality — fraction of interaction flux within 2 px of blob boundaries (membrane worlds → 1, bulk-mixed soup → small)<br/>
-&nbsp;&nbsp;e9&nbsp;&nbsp;episodic encounters — bond-lifetime mass in the 10–500 tu band, discounted by permanently-frozen pairs<br/>
-&nbsp;&nbsp;r9&nbsp;&nbsp;robust diversity — effective phenotype-species count (log-scaled, full credit at 24), discounted by winner-take-all trends
+Full C9 = (t9 × s9 × e9 × r9)<sup>1/4</sup><br/>
+Partial C9 = (t9 × e9 × r9)<sup>1/3</sup> &nbsp; [s9 unavailable]<br/>
+interest_v3 = (1-W9)*I_v2 + 100*W9*C9
 </div>
-<p>Selection sees <code>interest_v3 = (1 − W9)·interest_v2 + 100·W9·C9</code> with
-<b>W9 = 0.25</b> of total weight (v2 components keep their relative
-proportions), and the archive's descriptor key gains one axis — a spatial class
-in {<code>mixed</code> | <code>structured</code> | <code>economy</code>} — so
-MAP-Elites <i>protects</i> sparse-structured lineages from being outcompeted by
-dense high-C1–C8 worlds instead of asking them to win a fight they lose (the
-campaign lesson: protect the niche, don't fight the gradient). An <b>economy
-cell</b>, for the pilot bar, is an archive cell holding C9 ≥ 0.4 at
-interest ≥ 60.</p>
-<p>The metric was gated before any evolution ran
-(<code>VALIDATION_V3.md</code>): three banks — ground-truth worlds + v2
-champions, hand-built positives (the cargo-in-cell membrane world, M5 trains,
-the M2 dimer gas), and anti-gaming probes (dead world, frozen lattice, noise
-soup — all forced to C9 = 0 by a named factor) — landed in the expected order
-after five documented threshold tunes. One prior was revised by the metric
-rather than the reverse: <code>p4g2_044</code>, long read as a "sparse rotor,"
-is actually a rotor on a box-covering excited carpet; C9 = 0 is the correct
-verdict.</p>
-<div class="warn"><b>Honest scope — the pilot scored C9 in partial mode.</b>
-s9 needs full-field interaction-flux snapshots, which the <code>assay_v3</code>
-battery provides but the pilot pods' v2-format records do not. Pilot C9 is
-therefore the geometric mean of <b>t9·e9·r9 only</b> — every C9 number below is
-partial-mode. Two consequences: the surface-locality factor the spec cares
-about is <i>unmeasured</i> in these rows, and the spatial-class gate is
-conservative — only 6 rows earn the strict <code>economy</code> class label;
-most bar-passing rows classify <code>structured</code>. Full-C9 (s9) confirms
-for economy elites are part of the continuation plan.</div>
+<p>Any measured zero factor makes C9 zero; the alive gate also rejects dead worlds.
+<code>I_v2</code> is the preserved 0–100 v2 score.
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/complexity/metrics_v3.py">Metric definitions and constants</a> give the exact implementation.</p>
+<p class="warn"><b>Partial and full C9 are different assays.</b> The continuation
+measured partial C9 only: surface locality was not measured. The baseline includes
+13 full-C9 creative screens in generation 1, so its C9 statistics are split below.
+Six full-C9 atlas imports are outside the creative-screen comparison. Missing C9
+is not zero. Partial C9 can earn the <code>structured</code> descriptor, but cannot
+satisfy the full-s9 <code>economy</code> class rule.</p>
 
-<h2>2 · Pilot design: two islands over the v2 archive</h2>
-<p>Two islands, one A100 pod each, population 96 per generation, spec'd for up
-to 12 generations with the bar at ≥5 economy cells; both ran generations 1–7,
-which sufficed for the pilot question (section 4). Seeds are the v2 union
-archive's top rows, plus <b>the atlas as seed stock</b>: hand-built positives —
-membrane and channel worlds from the bounded-structures program (post 8) —
-enter as immigrants. The grammar is <b>unchanged from v2</b>: the planned
-wall-channel template was demoted to a contingency (one change at a time), so
-v3-core is exactly C9 + phenotype clustering (d7b) + the spatial-class archive
-axis + one new operator.</p>
-<h3>merge_spatial_ic — composing developed states in space</h3>
-<p>True spatial gluing of two chemistries — per-region coefficients with
-partition-of-unity seams — is a v4 engine project; today's certified steppers
-assume uniform coefficients. The v3 bridge costs no numerics at all: the child
-inherits <b>one</b> parent's chemistry verbatim, and its <b>initial condition</b>
-is composed from <b>both</b> parents' developed states — each parent's fields
-after 300 tu of development, stamped into disjoint soft-masked regions with
-periodic-safe seams (4 px). Two evolved populations meet in space; the
-chemistry stays uniform; the hook is data-level (it replaces the state after
-<code>init_soup</code>; no locked file was edited). It got 8 lanes per
-generation, and its pilot performance is the decision data for whether the v4
-patch-stepper port gets funded.</p>
-
-<h2>3 · Results</h2>
-<h3>3.1 · The bar: 76 economy cells against ≥5</h3>
+<h2>2 · Comparable results</h2>
+<p>Unless marked otherwise, qualification means <code>status=ok</code>,
+<b>C9 ≥ 0.4</b>, and <b>common interest ≥ 60 at W9 = 0.40</b>.
+The audit applies the same blend to preserved measurements; it does not rerun
+metrics or compare raw scores made with different weights. “Qualifying” is not
+a test for biological cells or the strict <code>economy</code> class.</p>
+<h3>Creative screens only</h3>
 <table>
-<tr><th></th><th>island 1</th><th>island 2</th><th>union</th></tr>
-<tr><td>distinct economy cells (C9 ≥ 0.4 &amp; I ≥ 60)</td><td>60</td><td>50</td><td><b>76</b></td></tr>
-<tr><td>economy rows (scored candidate × seed results)</td><td colspan="2"></td><td>516</td></tr>
-<tr><td>archive cells seed-3-confirmed through gen 7</td><td>74</td><td>73</td><td></td></tr>
-<tr><td>success bar</td><td colspan="2"></td><td>≥5 → <b>PASS, 15×</b></td></tr>
+<tr><th>quantity</th><th>baseline g1–7</th><th>continuation g8–12</th></tr>
+<tr><td>Qualifying / all emitted screens</td><td><b>241 / 1,376 (17.5%)</b><br/>237 partial + 4 full</td><td><b>159 / 723 (22.0%)</b><br/>all partial</td></tr>
+<tr><td>Measured partial C9: n · mean · max</td><td>1,114 · <b>0.2599</b> · 0.7576</td><td>679 · <b>0.2903</b> · 0.8185</td></tr>
+<tr><td>Measured full C9: n · mean · max</td><td>13 · 0.4487 · 0.6979</td><td>none measured</td></tr>
 </table>
-<h3>3.2 · Trajectory, both islands</h3>
+<p class="meta">One screen per emitted candidate-name unit within each island.
+Failed and missing-C9 screens stay in the yield denominator. C9 means and maxima
+use only the measured rows shown; imports and selected reseeds are excluded.</p>
 <div class="panel"><img src="media/v3pilot/v3pilot_trajectory.png"
- alt="economy rows per generation and C9 per generation, both islands"/></div>
+ alt="Screen-only generation trend: measured partial-C9 mean and maximum, with sample counts; qualifying screens over all emitted screens at common W9 0.40. Generation 1 includes 13 full-C9 rows in the yield panel only."/></div>
+
+<h3>Selected reseeds: a separate distribution</h3>
 <table>
-<tr><th rowspan="2">gen</th><th colspan="5">island 1</th><th colspan="5">island 2</th></tr>
-<tr><th>rows</th><th>max C9</th><th>mean C9</th><th>econ rows</th><th>max I</th>
-<th>rows</th><th>max C9</th><th>mean C9</th><th>econ rows</th><th>max I</th></tr>
-<tr><td>0</td><td>3</td><td>0.30</td><td>0.27</td><td><b>0</b></td><td>0</td><td>3</td><td>0.27</td><td>0.25</td><td><b>0</b></td><td>0</td></tr>
-<tr><td>1</td><td>199</td><td>0.85</td><td>0.26</td><td><b>56</b></td><td>80.5</td><td>191</td><td>0.68</td><td>0.30</td><td><b>46</b></td><td>79.3</td></tr>
-<tr><td>2</td><td>174</td><td>0.66</td><td>0.29</td><td><b>47</b></td><td>82.3</td><td>160</td><td>0.76</td><td>0.29</td><td><b>41</b></td><td>76.3</td></tr>
-<tr><td>3</td><td>158</td><td>0.79</td><td>0.23</td><td><b>30</b></td><td>79.3</td><td>158</td><td>0.70</td><td>0.26</td><td><b>36</b></td><td>73.3</td></tr>
-<tr><td>4</td><td>151</td><td>0.78</td><td>0.24</td><td><b>36</b></td><td>81.8</td><td>129</td><td>0.63</td><td>0.25</td><td><b>25</b></td><td>74.3</td></tr>
-<tr><td>5</td><td>126</td><td>0.74</td><td>0.24</td><td><b>28</b></td><td>78.5</td><td>130</td><td>0.67</td><td>0.26</td><td><b>35</b></td><td>77.4</td></tr>
-<tr><td>6</td><td>137</td><td>0.75</td><td>0.29</td><td><b>43</b></td><td>78.6</td><td>130</td><td>0.81</td><td>0.26</td><td><b>40</b></td><td>76.9</td></tr>
-<tr><td>7</td><td>106</td><td>0.65</td><td>0.22</td><td><b>22</b></td><td>82.3</td><td>119</td><td>0.69</td><td>0.28</td><td><b>31</b></td><td>79.5</td></tr>
+<tr><th>cohort</th><th>same-genome assay rows</th><th>measured partial C9 n</th><th>mean C9</th><th>max C9</th><th>qualifying at W9 .40</th></tr>
+<tr><td>g1–7</td><td>931</td><td>930</td><td>0.2619</td><td>0.8504</td><td>200 / 931</td></tr>
+<tr><td>g8–12</td><td>389</td><td>389</td><td>0.2172</td><td>0.8895</td><td>74 / 389</td></tr>
 </table>
-<p class="meta">Rows = scored (candidate, seed) results per generation; econ
-rows = rows passing C9 ≥ 0.4 &amp; I ≥ 60. Gen 0 is the 3-row boot handshake
-(max I = 0 by construction), so its zero economy count carries no
-information.</p>
-<h3>3.3 · Operator scoreboard</h3>
-<p>Hit rate is origin-attributed: every economy row is credited to the operator
-that created its base candidate (confirm reruns map back to the original
-lane).</p>
+<p>The best selected assay is <code>p1g12_049_s3</code>, an <code>add_chan</code>
+child on island 1. Its genotype scored <b>0.6737 / 0.8854 / 0.8895</b> in the
+screen / seed-2 / seed-3 observations. The aggregate selected-reseed mean fell,
+and island 2's best selected C9 remains the older 0.8048 result. A higher maximum
+is not uniform improvement or a guarantee on a new seed.</p>
+
+<h3>Descriptor breadth, not physical cells</h3>
+<p>Count each exact MAP-Elites descriptor key once if at least one creative
+screen qualifies at common W9 = 0.40. The baseline observed <b>51 bins</b>
+(<b>48 restricted to partial C9</b>); the continuation observed <b>45</b> (all partial),
+including <b>14 new relative to the baseline</b>. Their union is <b>65</b>
+(<b>62 using partial C9 only</b>). These are observed behavior categories across
+runs, not physical cells, verified archive incumbents, or compartment counts.
+The earlier <b>76</b> was a pooled screen-plus-selected-reseed bin count at
+W9 = 0.25, not archive occupancy.</p>
+
+<div class="warn"><b>Integrity and inference limits.</b>
+<ul>
+<li><b>11 baseline seed-3 jobs used a wrong, same-named donor genome.</b> They are
+excluded from strict same-genome confirmation claims. All 389 continuation
+selected assays match their named screen's physical model.</li>
+<li><b>29 initial archive-reblend joins used a different physical model.</b>
+Candidate names were not globally unique. A numerically consistent blend does
+not prove correct genome, run, or descriptor provenance.</li>
+<li><b>Raw data were not rewritten or re-scored.</b> One contradictory C9-backfill
+identity has both variants preserved and excluded from primary summaries.</li>
+<li>Selected confirmations and shared-ancestry adaptive search are <b>not IID
+trials</b>. Unselected candidates lack confirmation evidence; they are not proven failures.
+SIC screens use composed initial conditions; their confirmations use ordinary soup. Same-genome matching does not establish same-IC phenotype replication.</li>
+</ul>
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/HARVEST2_DRAFT.md">Detailed audit: identities, exclusions, and denominators</a> ·
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/VALIDATION.json">17-check validation</a>.
+</div>
+
+<h2>3 · What actually changed during the search</h2>
+<p>Two islands searched from the v2 archive with a spatial-class descriptor axis.
+The following are <b>requested creative slots per island per generation</b>, not
+emitted counts or a nominal population size.</p>
+<table>
+<tr><th>phase</th><th>W9</th><th>total slots</th><th>SIC slots / retries per target</th><th>mutate</th><th>mint_bilin</th></tr>
+<tr><td>g1–7</td><td>0.25</td><td><b>100</b></td><td>8 / pilot generator</td><td>16</td><td>12</td></tr>
+<tr><td>g8</td><td>0.40</td><td><b>93</b></td><td><b>24 / 60</b></td><td>16</td><td>16</td></tr>
+<tr><td>g9–12</td><td>0.40</td><td><b>89</b></td><td><b>12 / 12</b></td><td><b>22</b></td><td><b>18</b></td></tr>
+</table>
+<p class="meta">The classical-merge loop requested 24 slots in g1–7, then 20.
+Retry failures can drop targets. g8 emitted 81 + 82 screens; g9–12 emitted 560
+in total. Continuation SIC emitted 45 screens in g8 and 25 in g9–12, not 24
+per island throughout. Immigration fell from 20 to 5 requested slots;
+duplication and shared-channel merge targets went to zero. C9 backfill and
+archive reblending also changed parent selection.</p>
+
+<h3>Spatial-IC composition and operator yield</h3>
+<p><code>merge_spatial_ic</code> (SIC) keeps one parent's chemistry and composes
+two parents' developed fields into soft-masked spatial regions as the initial
+condition. It does not create region-specific chemistry. Confirmation jobs
+omit that composed IC and start from soup.</p>
 <div class="panel"><img src="media/v3pilot/v3pilot_operators.png"
- alt="operator hit-rate horizontal bar chart, merge_spatial_ic at 0.82"/></div>
-<table>
-<tr><th>operator</th><th>lanes</th><th>econ rows</th><th>hit rate</th><th>note</th></tr>
-<tr><td><b><code>merge_spatial_ic</code></b></td><td>112</td><td>92</td><td><b>0.82</b></td><td>the v3 flagship — 8 lanes/gen only</td></tr>
-<tr><td><code>merge_slow_tanh</code></td><td>42</td><td>27</td><td>0.64</td><td></td></tr>
-<tr><td><code>mint_bilin</code></td><td>168</td><td>100</td><td>0.60</td><td></td></tr>
-<tr><td><code>delete_bilin</code></td><td>56</td><td>32</td><td>0.57</td><td></td></tr>
-<tr><td><code>merge_cross_edge</code></td><td>219</td><td>116</td><td>0.53</td><td></td></tr>
-<tr><td><code>add_chan</code></td><td>112</td><td>57</td><td>0.51</td><td></td></tr>
-<tr><td><code>mutate</code></td><td>224</td><td>89</td><td>0.40</td><td></td></tr>
-<tr><td><code>merge_share_chan</code></td><td>51</td><td>2</td><td>0.04</td><td>dead lane</td></tr>
-<tr><td><code>dup_act</code></td><td>112</td><td>1</td><td>0.01</td><td>dead lane</td></tr>
-<tr><td><code>immigrate</code></td><td>280</td><td>0</td><td>0.00</td><td>zero direct rows; supplies parent stock</td></tr>
-</table>
-<p><code>merge_spatial_ic</code> is the validation the spec asked for: on only
-8 lanes per generation it converts <b>82%</b> of its lanes into economy rows —
-18 points clear of the next operator and double <code>mutate</code>. Composing
-two elites' developed populations in space is, in this search, the most
-reliable known way to make a world that scores as an economy. The two structural
-duplicators (<code>dup_act</code>, <code>merge_share_chan</code>) are dead
-lanes for this objective, and <code>immigrate</code> scored zero economy rows
-directly — but it supplies the parent stock the merges draw from, the same
-dynasty-timescale role it played in v2. All three lose lanes in the
-continuation respec.</p>
-<h3>3.4 · The flat-C9 finding, and the best worlds</h3>
-<p>Stated plainly: <b>C9 does not escalate across generations.</b> The pilot's
-best C9, 0.85, appears at <b>generation 1</b> on island 1; island 2's best,
-0.80, arrives at generation 6 — but the union ceiling was set in generation 1
-and never beaten. Mean C9 is flat at ~0.25–0.29, and per-generation economy-row
-counts oscillate in a stable 22–56 band with no trend. Economy niches are
-<b>found early — by v2-seeded elites under strong operators — and held,
-not compounded</b>. Selection at W9 = 0.25 maintained the niches it was asked
-to protect; it did not climb the axis. Seven generations were enough to see
-that, which is why the pilot stopped there.</p>
-<table>
-<tr><th>candidate</th><th>isl</th><th>origin op</th><th>I</th><th>C9</th><th>archive cell (v3 key: <code>…|spatial class</code>)</th></tr>
-<tr><td><code>p1g1_009_s3</code></td><td>1</td><td><code>mutate</code></td><td>77.2</td><td><b>0.85</b></td><td><code>4|grow|rotor|liquid|s1|g2|structured</code></td></tr>
-<tr><td><code>p2g6_032_s2</code></td><td>2</td><td><code>add_chan</code></td><td>76.2</td><td><b>0.80</b></td><td><code>3|switch|rotor|liquid|s1|g1|structured</code></td></tr>
-<tr><td><code>p1g3_005_s3</code></td><td>1</td><td><code>mutate</code></td><td>73.5</td><td><b>0.79</b></td><td><code>3|switch|rotor|flicker|s1|g1|structured</code></td></tr>
-<tr><td><code>p1g2_051_s3</code></td><td>1</td><td><code>merge_spatial_ic</code></td><td>82.1</td><td><b>0.66</b></td><td><code>4|grow|mobile|liquid|s3|g2|structured</code></td></tr>
-<tr><td><code>p1g4_050_s3</code></td><td>1</td><td><code>merge_spatial_ic</code></td><td>81.8</td><td><b>0.65</b></td><td><code>4|grow|mobile|liquid|s3|g2|structured</code></td></tr>
-<tr><td><code>p2g7_049_s3</code></td><td>2</td><td><code>merge_spatial_ic</code></td><td>79.5</td><td><b>0.66</b></td><td><code>4|grow|mobile|liquid|s2|g2|structured</code></td></tr>
-</table>
-<p class="meta">Top pilot rows by C9 and the leading <code>merge_spatial_ic</code>
-children — 4 of the top-10 film candidates are spatial-IC merges (I ~ 80–82,
-C9 ~ 0.65). Cell key as in post 10 (<code>species|growth|motion|phase|stages|memory</code>)
-plus the new spatial-class axis.</p>
-<div class="panel"><img src="media/v3pilot/still_p1g1_009_s3.png"
- alt="p1g1_009_s3 activator fields at t=250"/>
-<img src="media/v3pilot/still_p2g6_032_s2.png"
- alt="p2g6_032_s2 activator fields at t=250"/>
-<img src="media/v3pilot/still_p1g2_051_s3.png"
- alt="p1g2_051_s3 activator fields at t=250"/></div>
-<p class="meta"><b>Early-time morphology only.</b> Activator fields (u1–u4,
-per-channel color scales) at t = 250 tu from the committed run snapshots — the
-islands' assay keeps full-field frames only at t ∈ {0, 250}. These runs'
-adaptive horizons settled at T = 10,000 tu (<code>p1g1_009_s3</code>) and
-20,000 tu (the other two), so what is shown is the developed initial pattern,
-not the late-time economy the scores measure. Full films from re-simulated
-genomes follow with the continuation harvest.</p>
+ alt="Corrected operator screen yields at common W9 0.40, with qualifying-screen numerators and all-emitted-screen denominators. Baseline SIC 45/112; continuation SIC 22/70. No selected confirmations in these bars."/></div>
+<p>For the historical W9 = 0.25 comparison, SIC's direct screen yield was
+<b>52/112 = 0.4643</b>. The old <b>0.82</b> was
+<b>(52 screens + 40 selected-confirmation observations) / 112 screen lanes</b>:
+92 observations in the numerator, not a hit probability. Counting each of the
+112 bases once, <b>23</b> had at least one qualifying same-genome confirmation,
+whether or not its screen qualified; <b>12</b> passed the threshold in all three
+assays (11 partial-only).
+Those assays did not replicate the composed spatial phenotype.</p>
+<p>These are descriptive operator yields. Weight, operator mix, retry limits,
+and parent archive changed together. There is no causal W9 or SIC comparison,
+and an unchanged-configuration continuation was not tested.</p>
 
-<h2>4 · What it means — and the running continuation</h2>
-<p>The pilot validates the <i>pressure</i> and the <i>operator</i>, not yet an
-open-ended climb. C9 plus the spatial-class niche surfaced 76 protected economy
-cells from material the v2 archive already contained, in one generation, and
-kept them alive for six more — exactly what archive protection is for. What the
-pilot did <b>not</b> show is compounding: under W9 = 0.25 the selection
-gradient toward higher C9 was evidently too weak to matter once the bar was
-cleared. The harvest's own verdict was <b>no</b> to a same-config continuation
-— breadth would grow, the C9 ceiling would not.</p>
-<p>So the continuation now running (generations 8–12, from the gen-7
-snapshots) is a <b>respec, not a rerun</b>:</p>
-<table>
-<tr><th>change</th><th>from → to</th><th>why</th></tr>
-<tr><td><code>merge_spatial_ic</code> lanes</td><td>8 → <b>24</b> per gen</td><td>3× the top operator (0.82)</td></tr>
-<tr><td><code>mint_bilin</code> lanes</td><td>→ 16</td><td>second-tier workhorse (0.60 on 168 lanes)</td></tr>
-<tr><td><code>immigrate</code> lanes</td><td>20 → 5</td><td>zero direct economy rows; keeps a trickle of parent stock</td></tr>
-<tr><td><code>dup_act</code>, <code>merge_share_chan</code></td><td>→ 0</td><td>dead lanes (0.01 / 0.04)</td></tr>
-<tr><td>W9</td><td>0.25 → <b>0.40</b></td><td>press C9 directly in selection, not only via niche protection</td></tr>
-<tr><td>archive currency</td><td>C9-backfill of the 88 v2-seeded elites</td><td>every archive row on the same interest_v3 currency (ingest rows lacked C9)</td></tr>
-</table>
-<p>That is the direct test of the flat-ceiling reading: if C9 still refuses to
-climb with triple the spatial-merge bandwidth and a 0.40 selection weight, the
-ceiling is real under this grammar — and the contingent wall template (and
-eventually the v4 patch-glued stepper, for which <code>merge_spatial_ic</code>'s
-0.82 is the funding evidence) is the next move. <b>Films of the best economy
-worlds and the full 12-generation picture follow in an update</b> when the
-continuation harvest lands.</p>
+<h2>4 · Six GPU re-simulation films</h2>
+<p><b>These are not the original measured trajectories or score reconfirmations.</b>
+All six captured requests match their actual result-row and job genomes and
+are outside the 11 anomalous links
+(<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/production_film_identity_checks.json">identity checks</a>).
+The C9 labels below belong to the original assays. Replays regenerate soup
+initial conditions; runtime and numerical-path differences can change trajectories.</p>
+<p class="meta">Frames are 250 tu apart. This coarse time-lapse does not establish an
+interaction mechanism. The films' inherited “species” panel labels mean activator
+fields <code>u_i</code>, not inferred phenotype species or compartments.
+Posters show replay times T/2, 3T/4, and T. Colors overlay activator fields. Positive excess above each activator's
+baseline is scaled by its maximum across the three shown frames, separately per
+film and activator. The scale is fixed within a strip, not comparable across films.</p>
+<div style="display:grid;grid-template-columns:1fr;gap:24px;">
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i1-p1g12_049_s2.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i1-p1g12_049_s2: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i1-p1g12_049_s2.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i1-p1g12_049_s2.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p1g12_049_s2</code></b><br/>
+Island 1 · generation 12 · selected seed-2 assay.<br/>
+<code>add_chan</code> · seed 958 · T = 20,000 tu.<br/>
+<b>Original partial C9 = 0.8854</b>; not remeasured in this replay.</div>
+</div>
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i1-p1g12_007_s3.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i1-p1g12_007_s3: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i1-p1g12_007_s3.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i1-p1g12_007_s3.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p1g12_007_s3</code></b><br/>
+Island 1 · generation 12 · selected seed-3 assay.<br/>
+<code>mutate</code> · seed 959 · T = 20,000 tu.<br/>
+<b>Original partial C9 = 0.8867</b>; not remeasured in this replay.</div>
+</div>
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i1-p1g1_009_s3.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i1-p1g1_009_s3: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i1-p1g1_009_s3.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i1-p1g1_009_s3.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p1g1_009_s3</code></b><br/>
+Island 1 · generation 1 · selected seed-3 assay.<br/>
+<code>mutate</code> · seed 959 · T = 10,000 tu.<br/>
+<b>Original partial C9 = 0.8504</b>; not remeasured in this replay.</div>
+</div>
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i2-p2g6_032_s2.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i2-p2g6_032_s2: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i2-p2g6_032_s2.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i2-p2g6_032_s2.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p2g6_032_s2</code></b><br/>
+Island 2 · generation 6 · selected seed-2 assay.<br/>
+<code>add_chan</code> · seed 965 · T = 20,000 tu.<br/>
+<b>Original partial C9 = 0.8048</b>; not remeasured in this replay.</div>
+</div>
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i2-p2g11_036.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i2-p2g11_036: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i2-p2g11_036.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i2-p2g11_036.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p2g11_036</code></b><br/>
+Island 2 · generation 11 · SCREEN, not a confirmation.<br/>
+<code>mint_bilin</code> · seed 964 · T = 10,000 tu.<br/>
+<b>Original partial C9 = 0.6979</b>; not remeasured in this replay.</div>
+</div>
+<div class="film">
+<video controls playsinline preload="none" poster="media/v3pilot/late_i2-p2g1_025_s2.png"
+ style="width:100%;height:auto;max-height:480px;object-fit:contain;background:#111" aria-label="i2-p2g1_025_s2: GPU re-simulation, not the original trace">
+<source src="media/v3pilot/final/i2-p2g1_025_s2.mp4" type="video/mp4"/>
+<a href="media/v3pilot/final/i2-p2g1_025_s2.mp4">Download this re-simulation film</a>.
+</video>
+<div class="cap"><b><code>p2g1_025_s2</code></b><br/>
+Island 2 · generation 1 · selected seed-2 assay.<br/>
+<code>mint_bilin</code> · seed 965 · T = 20,000 tu.<br/>
+<b>Original partial C9 = 0.6845</b>; not remeasured in this replay.</div>
+</div>
+</div>
 
-<div class="note"><b>Ops sidebar — the mid-flight RED fix.</b> The pilot ran on
-two A100 pods (one per island) for ~$115 all-in, but the first launch window
-was slow: <code>merge_spatial_ic</code> lanes were composing initial conditions
-<i>off</i> the batched tensor path, and C9 rescoring was blocking the driver —
-a 9.5 h first window triggered the RED protocol (stop the line, fix the engine,
-re-gate; post 9's discipline). The fix shipped as blobkit 0.3.5: IC lanes moved
-onto the GPU batch tensor and the C9 rescore into a spawn pool — a <b>10–20×</b>
-lane speedup — after which generations settled at ~3.5–4.5 h with zero worker
-crashes over 7 generations × 2 islands. The engine story stays in
-<a href="accelerating-blobs.html">post 9</a>; this post only uses it.</div>
+<h2>5 · Before another campaign</h2>
+<p><b>Do not start another campaign until identity and the intended measure are validated.</b></p>
+<ul>
+<li>Make candidate and evaluation identities collision-safe. Carry exact genome,
+initial-condition, seed, and protocol provenance through confirmations and archive migration.</li>
+<li>Validate a regional-composition measure against distinct-composition and
+identical-composition controls, including moving regions and grid-origin changes.</li>
+</ul>
+<p>The <a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/complexity/h9_review/REVIEW.md">h9 review</a> found that v0 is a fixed-grid
+label-association diagnostic, <b>not a compartment-phenotype ranker</b>. Its toy
+counterexamples can reward identical compositions or lose separation under
+translation. Do not add v0 to C9, choose a biological cutoff, or scan the full
+harvest to hunt for one. The next step is identity safeguards and measure
+validation, not a larger search justified by a proxy maximum.</p>
+<p class="meta">Details and reusable tables:
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/audit_tables.json">audit JSON</a> ·
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/screen_by_generation.csv">screen CSV</a> ·
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/operator_rates.csv">operator CSV</a> ·
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/confirmed_top_rows.csv">selected-assay maxima</a>.
+The historical harvest and raw outputs remain preserved.</p>
 
 <div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="measuring-evolved-worlds.html">Measuring evolved worlds</a></div>
 </body></html>

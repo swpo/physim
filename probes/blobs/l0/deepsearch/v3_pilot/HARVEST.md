@@ -1,3 +1,9 @@
+> **Superseded historical report.** Use [HARVEST2.md](HARVEST2.md) for the
+> audited final twelve-generation result, corrected screen/confirmation
+> denominators, and genome-provenance limits. The original report below is
+> preserved unchanged; its pooled-bin, operator-rate, and ceiling claims are not
+> the current interpretation.
+
 # V3 PILOT HARVEST (gens 1-7, both islands; snapshots ~/v3work/isl{1,2}_final.tgz)
 Success criterion: >=5 economy cells (C9>=0.4 & interest>=60). RESULT: **76 distinct
 cells (union)** — isl1 60 / isl2 50; 516 economy rows total. VERDICT: **PASS, 15x bar.**
