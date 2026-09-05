@@ -1,3 +1,54 @@
+# ACTIVE RECOVERY — 2026-09-05 20:50 UTC (read this before historical notes)
+User replenished API credits and asked to resume. Root is recovering completed
+work, NOT restarting campaigns. Prime CLI authentication works.
+
+- Both v3 continuation pods reached GEN_12_DONE (isl1 08:37:32Z, isl2
+  08:27:45Z Sep 5) and campaign processes exited normally. At 20:46Z both
+  were ACTIVE but idle; snapshots/films were NOT yet made. Approx 12h of
+  additional idle billing occurred during the agent outage (exact invoice
+  not yet checked). No generation data loss observed.
+- At 20:50Z root launched verified confirm settlement on both pods via
+  durable script files. Logs: ~/islN/out/recovery_settle12.log. Stage-1
+  pending 37/30 jobs; then stage-2 s3g12. Require verified final marker
+  out/recovery_settle12/CONFIRM12_SETTLED.json, not process exit alone.
+- Recovery state/runbook: ~/v3work/ops/recovery_20260905/state.json.
+  Local small checkpoints (archive/results/state/driver.log) already copied
+  there per pod before settlement. Complete archive + film + termination
+  still pending; no old untested /tmp film/settle scripts should be run.
+- Only root-owned pods: e54975df9f1745e7b3573a625f43d0f8 (isl1,
+  150.136.116.0), 9e6f440582e94895a549ba44b3ef3288 (isl2,150.136.65.67).
+  Other Prime resources are OUT OF SCOPE; leave them alone.
+- Valid Fable runs: 51d11a68-92fe-405f-aeb8-3b345bb69469 (E2),
+  588029cc-23dd-4b89-88e9-2813a3fa73b9 (E1). Two E2 tasks succeeded;
+  four tasks failed with nested ProviderError 402 insufficient_funds.
+  All first status replies verified as v2. Native resume preflight passed:
+  E2 kept 2/owed 1, E1 kept 0/owed 3. The 4 retries LAUNCHED at 20:51:19Z
+  in ~/v3work/ops/recovery_20260905/eval_resume/{E1,E2}; pids 18087/18090.
+  PAUSED shortly afterward (SIGSTOP pgids 18085/18088) after full audit found
+  binding fork-spawn/open-fork caps. User decision requested: finish the old
+  capped cohort vs raise safety ceilings, re-gate and label a new cohort.
+  DO NOT auto-resume, silently change caps, or mix the two cohorts. GPU
+  settlement/backup work continues independently. Exit/log/launch files
+  are in the same ops directory. Originals preserved.
+  Full audit: probes/blobs/agentenv/round5/recovery_20260905/.
+  Failed records' nested ProviderError 402 is authoritative (outer errors=[]
+  and is_completed=true do NOT mean success). Sample upload size limits are
+  a separate publication issue, not a scored failure. API credentials are
+  read at launch, never embedded in the new launcher.
+- Earlier babe2a40/791527b3 runs are INVALID (v1 toolset / v2 scorer mismatch)
+  and must never be reported. G-R7c validated acc310e's serialization fix.
+  Truth builds + G-R1..G-R6 complete; do NOT rebuild or retrigger them.
+- New children: round5-recovery-audit (local trace audit/preflight only),
+  film-recovery-helper (local provenance-safe capture helper only).
+  Root controls remote changes. No children have remote job ownership now.
+- Heartbeat f80768c7-a2cb-4766-ba37-19c6ce9680cc updated to a recovery-specific
+  runbook every 10m; do not trust stale queued heartbeat instructions.
+  Keep watching evals after GPU shutdown if needed. Post11 v2 update and
+  post12 final harvest/films remain queued, not yet published.
+
+---
+## Historical handoff (older claims may be superseded above)
+
 # CONTEXT HANDOFF (2026-09-02) — full program state for a fresh prime-agent context
 (Repo = single source of truth. Everything below is committed or referenced by path.)
 

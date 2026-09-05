@@ -1,0 +1,3911 @@
+{
+  "actions": {
+    "environment_code_changed": false,
+    "evaluation_launched": false,
+    "gpu_pods_touched": false,
+    "launch_shell_script_contents_read_or_printed": false,
+    "models_called": false,
+    "native_command": ".venv/bin/python probes/blobs/agentenv/round5/recovery_20260905/validate_resume_copies.py",
+    "native_resume_bookkeeping_called": true,
+    "native_resume_bookkeeping_copy_dirs": {
+      "E1": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1",
+      "E2": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2"
+    },
+    "native_validation_exit_code": 0,
+    "original_raw_files_modified": false
+  },
+  "audit_utc": "2026-09-05T20:51:40.573793+00:00",
+  "auditor": "round5-recovery-audit",
+  "baseline": {
+    "comparison_policy": "Use only BLOB2v2 scripted floors. Successful-only partial means are not final model results; there is no complete-cohort delta. No v1 score is used.",
+    "only_source": "probes/blobs/agentenv/results/smoke_blob2v2_aggregate.json",
+    "sha256": "18aaa21e247e68e454ed51872235eccc7bf861c1e369a39635c64638a6eb919f",
+    "v2_floors": {
+      "E1": {
+        "all_pass": true,
+        "n": 3,
+        "reward_mean": 0.2206,
+        "skills_mean": {
+          "L1": 0.001,
+          "L2": 0.0014,
+          "L3E": 0.0163,
+          "L3F": -0.2893,
+          "L4": 0.7582,
+          "L4D": 0.8359
+        },
+        "zero_cap_hits": true
+      },
+      "E2": {
+        "all_pass": true,
+        "n": 3,
+        "reward_mean": 0.2022,
+        "skills_mean": {
+          "L1": -0.0099,
+          "L2": -0.0175,
+          "L3F": -0.1588,
+          "L3S": -0.0099,
+          "L4": 0.5342,
+          "L4D": 0.8749
+        },
+        "zero_cap_hits": true
+      }
+    }
+  },
+  "count_method": "One expected rollout per configured task index. Success requires explicit outer and nested ok=true, empty outer and nested errors, is_completed=true, and agent_completed. All successful records additionally have six terminal skill metrics and all six submitted flags. Failures are explicit nested ProviderError 402, despite outer errors=[]. Empty metrics and log reward=0.000 are not model scores.",
+  "current_git_head": "acc310e3feedcf679fab7a676ba11a0b8ec25081",
+  "final_model_comparison_available": false,
+  "limitations": [
+    "No final performance estimate exists for either menu. E1 skill/time_to_ready/meters/cap_hits are unavailable for all tasks; E2 seed944 likewise has no final metrics.",
+    "Observed tool saturation denials are not a replacement for missing final cap telemetry.",
+    "Tool event counts omit direct HTTP calls inside agent scripts; terminal meters are the authoritative counts when available.",
+    "The native resume validation matched original serialized task keys; it did not instantiate worlds or execute task rollouts.",
+    "Prepared copy state is a dated pre-launch snapshot. Root may authorize future eval work after this audit."
+  ],
+  "native_resume_validation": {
+    "assertions_passed": true,
+    "method": "Installed native load() with task keys from original serialized task data. Files copied before load; native Episode.ok and nested terminal values recorded. No environment rollout, model client, eval CLI, or GPU work was launched.",
+    "path": "probes/blobs/agentenv/round5/recovery_20260905/native_resume_load_validation.json",
+    "semantics_source": ".venv/lib/python3.13/site-packages/verifiers/v1/cli/eval/resume.py",
+    "warning": "load() atomically rewrites traces.jsonl to kept rows. It was run only on copies. E2 copy retains original successes; E1 copy contains an empty traces.jsonl. Original failed traces remain preserved in the source runs. --resume later re-runs entire failed rollouts; it does not continue their agent conversation."
+  },
+  "project_dir": "/Users/spoho/Documents/prime/test/physim",
+  "raw_file_preservation_checks": {
+    "51d11a68-92fe-405f-aeb8-3b345bb69469": {
+      "config.toml": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      },
+      "eval.log": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      },
+      "traces.jsonl": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      }
+    },
+    "588029cc-23dd-4b89-88e9-2813a3fa73b9": {
+      "config.toml": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      },
+      "eval.log": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      },
+      "traces.jsonl": {
+        "mtime_unchanged": true,
+        "sha256_unchanged": true,
+        "size_unchanged": true
+      }
+    }
+  },
+  "resume_recommendations": {
+    "commands_NOT_EXECUTED": [
+      ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2",
+      ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1"
+    ],
+    "cost_warning": "Failed traces already contain 1,233 to 2,093 model calls without error each, plus retries. A bookkeeping resume restarts failed episodes rather than continuing their prior exploration; prior recorded usage does not predict the remaining cost.",
+    "prerequisites": [
+      "Wait for root authorization and confirm the intended billing balance has funds. No request was sent to check balance in this audit.",
+      "Use the prepared copies, not the original raw output directories.",
+      "Use the same project environment and unchanged task data/contract. Native resume matches full task content hashes; a task-data change may cause a rerun of previous successes.",
+      "Do not pass extra CLI overrides with --resume; saved config is replayed verbatim.",
+      "Keep push=true as saved. Sample-size upload warnings are publication blockers only; they are not rollout failures."
+    ],
+    "priority": "Both runs need resume. E2 owes one task; E1 owes all three. Existing E2 successes must remain kept.",
+    "working_directory": "/Users/spoho/Documents/prime/test/physim"
+  },
+  "run_provenance_note": "The two source run IDs are the parent-specified post-config-fix cohort. Their config and actual first status wire results independently confirm the v2 contract; run config does not itself record a Git commit.",
+  "runs": [
+    {
+      "comparison_note": "Only the v2 scripted floor is shown. No complete-cohort delta or final model ranking can be computed until all three selected tasks succeed. E2 successful-only values cover two seeds; the floor aggregate covers three.",
+      "config_verified": {
+        "api_key_var": "PRIME_API_KEY",
+        "difficulty": "BLOB2v2-E2",
+        "env_timeout": {},
+        "harness": "claude_code",
+        "harness_version": "2.1.223",
+        "max_concurrent": 128,
+        "max_concurrent_agents": 1,
+        "model": "anthropic/claude-fable-5",
+        "num_rollouts": 1,
+        "num_tasks": 3,
+        "provider_base_url": "https://api.pinference.ai/api/v1",
+        "push": true,
+        "scientist_timeout": {},
+        "seed0": 0,
+        "shuffle": false,
+        "taskset_max_turns": 40,
+        "team_header_present": true,
+        "tier": "chat"
+      },
+      "counts": {
+        "expected_rollouts": 3,
+        "failed_rollouts": 1,
+        "missing_rollouts": 0,
+        "nested_traces": 3,
+        "parsed_records": 3,
+        "successful_scored_rollouts": 2,
+        "unknown_terminal_rollouts": 0,
+        "v2_surface_verified_rollouts": 3
+      },
+      "expected_task_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_task_seeds": [
+        942,
+        943,
+        944
+      ],
+      "log_provider_error_counts": [
+        {
+          "call_kind": "model",
+          "count": 2,
+          "status_code": 402,
+          "type": "ProviderError"
+        },
+        {
+          "call_kind": "model",
+          "count": 50,
+          "status_code": 429,
+          "type": "ProviderError"
+        }
+      ],
+      "menu": "E2",
+      "missing_task_indices": [],
+      "observed_task_seeds": [
+        942,
+        943,
+        944
+      ],
+      "parse_issues": [],
+      "publication_note": "push size-limit failures block publication, not rollout validity. Config push=true is preserved.",
+      "publication_warnings": [
+        {
+          "line": 191,
+          "text": "03:57:31 WARNING --push: upload failed (ValueError: sample 1 is too large to upload (47052338 > 26214400 bytes)); skipping"
+        }
+      ],
+      "resume": {
+        "command_NOT_EXECUTED": ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2",
+        "copy_dir": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2",
+        "copy_pruning_timestamp_utc": "2026-09-05T20:50:00.636510+00:00",
+        "copy_trace_bytes_after_prune": 4167693,
+        "copy_trace_sha256_after_prune": "5523d89f04953ef1f654f3d47f0b9a4e1d407c483227c96bed0d54a5dd46dcb3",
+        "native_kept_count": 2,
+        "native_load_validated_on_copy": true,
+        "native_owed": [
+          {
+            "num_rollouts": 1,
+            "original_episode_id": "280eba004d644ee4ba878c08354a1785",
+            "original_trace_id": "0819dd2bf7404901a752a4fa0b2ccec3",
+            "task_index": 2,
+            "task_key": "1dc86a5d7f5bca1f4a5b9a24cc20a02a6f442846e32c195a16de15a28696150c",
+            "task_name": "physim-BLOB2v2-E2#944",
+            "world_seed": 944
+          }
+        ],
+        "native_owed_count": 1,
+        "original_files_unchanged_during_native_validation": true,
+        "recommended": true,
+        "task_indices": [
+          2
+        ],
+        "task_names": [
+          "physim-BLOB2v2-E2#944"
+        ]
+      },
+      "run_dir": "outputs/physim--anthropic--claude-fable-5--claude_code/51d11a68-92fe-405f-aeb8-3b345bb69469",
+      "run_id": "51d11a68-92fe-405f-aeb8-3b345bb69469",
+      "score_summary": {
+        "expected_rollouts": 3,
+        "final_mean_skill": null,
+        "interpretation": "Incomplete cohort. Successful-only partial means are descriptive, not final. Failed scores are null, not zero or -1.",
+        "status": "incomplete_provider_failure",
+        "successful_count": 2,
+        "successful_only_partial_mean_skill": 0.6261618674092737,
+        "successful_only_partial_skill_per_tier": {
+          "L1": 0.33704966934223135,
+          "L2": 0.08605008191123681,
+          "L3F": 0.9568578582165914,
+          "L3S": 0.9385801974232797,
+          "L4": 0.4720583773462625,
+          "L4D": 0.9663750202160407
+        }
+      },
+      "sources": {
+        "config.toml": {
+          "bytes": 1274,
+          "modified_utc": "2026-09-05T04:56:11.447963+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/51d11a68-92fe-405f-aeb8-3b345bb69469/config.toml",
+          "sha256": "1954d70cd3f31f5b692693861bda22dde1d4d64164b8ef739e13065690edd996"
+        },
+        "eval.log": {
+          "bytes": 21491,
+          "modified_utc": "2026-09-05T07:57:31.355830+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/51d11a68-92fe-405f-aeb8-3b345bb69469/eval.log",
+          "sha256": "ebf3c50a471c549dca30843e88e8e4d9759c2e81a43729f91477eab59c3ca005"
+        },
+        "traces.jsonl": {
+          "bytes": 21188907,
+          "modified_utc": "2026-09-05T07:57:31.098021+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/51d11a68-92fe-405f-aeb8-3b345bb69469/traces.jsonl",
+          "sha256": "66a439e62b0d8079011c81f4b80c9f917822edc58d6450881894d6bad13e5ac1"
+        }
+      },
+      "tasks": [
+        {
+          "cap_hits": {
+            "adjust": 0,
+            "fork_spawns": 13,
+            "injection": 0,
+            "open_forks": 0,
+            "sensor": 0,
+            "sim_tu": 0
+          },
+          "cap_hits_total": 13.0,
+          "classification": "successful_scored",
+          "difficulty": "BLOB2v2-E2",
+          "environment_meters": {
+            "adjust": 611.75,
+            "fork_spawns": 400,
+            "injection": 1015.5999999999999,
+            "open_forks_peak": 5,
+            "reads_base": 500,
+            "reads_fork": 3142,
+            "resets": 400,
+            "sensor": 536360.0,
+            "sim_tu": 15795.0,
+            "turns": 4552
+          },
+          "episode_id": "eb95d03bb1c049dbaa70fc2bd1632673",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E2 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [3][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3S slow observable. Predict the per-port global mean and variance\n     (the free aggregate stream) averaged over the 200tu windows ending\n     at t_a+400 and t_a+800, undisturbed. domain: t_a continuous-uniform\n     in [600, 2300]. payload: [2][ports][2] with [.,.,0]=mean\n     [.,.,1]=variance. ladder: windowed climatology | windowed\n     persistence.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "d8b105733fe74c0ae339236435c597034661906f8fb4829bc833fc1c2fe6dc58",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584263.957005,
+            "tool_call_id": "toolu_017h2U6wEuCbyJbbMxSapVfe"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              365
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "instances": [
+                {
+                  "anchor_t": 747.6,
+                  "device": 0,
+                  "id": "L1@i1",
+                  "payload_shape": [
+                    13,
+                    13
+                  ],
+                  "sequence": [
+                    [
+                      0.3683,
+                      -0.0735,
+                      -0.1045
+                    ]
+                  ],
+                  "statistic": "a fresh fork is taken at the anchor and the command sequence is applied to device 0 (from its t=0 configuration, one control step per command, no emission); predict its reading right after the final command"
+                },
+                {
+                  "anchor_t": 1458.66,
+                  "id": "L2@i1",
+                  "payload_shape": [
+                    13,
+                    13
+                  ],
+                  "slots": 13,
+                  "statistic": "the additional fixed 13-slot sensor cluster's reading vector at the anchor"
+                },
+                {
+                  "anchor_t": 1789.02,
+                  "device": 0,
+                  "horizons": [
+                    25,
+                    100,
+                    400
+                  ],
+                  "id": "L3F@i1",
+                  "payload_shape": [
+                    3,
+                    13,
+                    13
+                  ],
+                  "statistic": "device 0's streams (t=0 configuration) at each horizon after the anchor, undisturbed"
+                },
+                {
+                  "anchor_t": 2060.72,
+                  "epochs": [
+                    400,
+                    800
+                  ],
+                  "id": "L3S@i1",
+                  "payload_shape": [
+                    2,
+                    13,
+                    2
+                  ],
+                  "statistic": "the per-port global mean and variance (the free aggregate stream), each averaged over the window ending at the anchor plus the stated epoch, undisturbed",
+                  "window_tu": 200
+                },
+                {
+                  "amp": 2.7998,
+                  "anchor_t": 829.94,
+                  "device": 1,
+                  "dur_tu": 10.5,
+                  "id": "L4@i1",
+                  "lags": [
+                    10,
+                    25,
+                    50,
+                    100,
+                    175,
+                    250
+                  ],
+                  "payload_shape": [
+                    6,
+                    13,
+                    19
+                  ],
+                  "port": 6,
+                  "statistic": "one emission (port, amp, dur) is driven through the fixed emission channel from the anchor on a fresh fork; predict device 1's streams (t=0 configuration) at each lag from emission start"
+                },
+                {
+                  "amp": 0.8124,
+                  "anchor_t": 1346.0,
+                  "device": 1,
+                  "dur_tu": 16.78,
+                  "id": "L4D@i1",
+                  "lags": [
+                    25,
+                    75,
+                    150
+                  ],
+                  "payload_shape": [
+                    3,
+                    13,
+                    19
+                  ],
+                  "port": 11,
+                  "statistic": "one emission (port, amp, dur) is driven through the fixed emission channel from the anchor on a fresh fork; predict device 1's streams (t=0 configuration) at each lag from emission start"
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "revealed",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "submitted": {
+                "L1@i1": true,
+                "L2@i1": true,
+                "L3F@i1": true,
+                "L3S@i1": true,
+                "L4@i1": true,
+                "L4D@i1": true
+              },
+              "t_base_head": 2500.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 366,
+            "timestamp": 1788594126.849586,
+            "tool_call_id": "toolu_01AAuNcxaFASvRaPmz9vdUga"
+          },
+          "log_rollout_done": [
+            {
+              "line": 187,
+              "text": "03:43:45    INFO rollout done: id=344a8d7d8b7b433cb7d73cbf8a402aac task=0 reward=0.628 turns=158 stop=agent_completed"
+            }
+          ],
+          "metrics_raw": {
+            "cap_hits_total": 13.0,
+            "meter_adjust": 611.75,
+            "meter_fork_spawns": 400.0,
+            "meter_injection": 1015.5999999999999,
+            "meter_open_forks_peak": 5.0,
+            "meter_reads_base": 500.0,
+            "meter_reads_fork": 3142.0,
+            "meter_resets": 400.0,
+            "meter_sensor": 536360.0,
+            "meter_sim_tu": 15795.0,
+            "meter_turns": 4552.0,
+            "readied": 1.0,
+            "skill_L1": 0.5654504830289517,
+            "skill_L2": -0.021130337653723297,
+            "skill_L3F": 0.987284359218241,
+            "skill_L3S": 0.9652233436018346,
+            "skill_L4": 0.2893185366735279,
+            "skill_L4D": 0.9828224605447194,
+            "time_to_ready_sim_tu": 15795.0,
+            "time_to_ready_turns": 4542.0
+          },
+          "nested_terminal": {
+            "errors": [],
+            "is_completed": true,
+            "ok": true,
+            "stop_condition": "agent_completed"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": true
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 0,
+            "error_groups": [],
+            "error_result_count": 0,
+            "instrument_saturated_result_count": 0,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__read": 1,
+              "mcp__probe__ready": 1,
+              "mcp__probe__status": 2
+            }
+          },
+          "progress": {
+            "caution": "Final status confirms all six submission flags; terminal score contains all six skills.",
+            "last_status_phase": "revealed",
+            "last_status_submitted_flags": {
+              "L1@i1": true,
+              "L2@i1": true,
+              "L3F@i1": true,
+              "L3S@i1": true,
+              "L4@i1": true,
+              "L4D@i1": true
+            },
+            "last_successful_world_tool_result_node": 8,
+            "observed_accepted_probe_ready_results": 1,
+            "observed_probe_ready_results": 1
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [],
+            "call_count": 163,
+            "call_error_count": 5,
+            "call_error_counts": [
+              {
+                "count": 5,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              }
+            ],
+            "calls_without_error": 158,
+            "last_three_call_errors": [
+              {
+                "call_index": 41,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a362bde00d2c4f4e-EWR\",\"inference_id\":\"req_e1c01af3f0aa4ecdacb430d3e989caa6\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_e1c01af3f0aa4ecdacb430d3e989caa6",
+                  "request_id": "a362bde00d2c4f4e-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788585178.114472,
+                  "start": 1788585174.9797819
+                }
+              },
+              {
+                "call_index": 96,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a3633b4c1b6982a6-EWR\",\"inference_id\":\"req_15b09bd395734e35ab7015ceae471fb7\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_15b09bd395734e35ab7015ceae471fb7",
+                  "request_id": "a3633b4c1b6982a6-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788590315.5381582,
+                  "start": 1788590312.2631848
+                }
+              },
+              {
+                "call_index": 135,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a3638642dae9de9b-EWR\",\"inference_id\":\"req_94ec099908b2456ba7c56c57966739d5\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_94ec099908b2456ba7c56c57966739d5",
+                  "request_id": "a3638642dae9de9b-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788593386.018236,
+                  "start": 1788593382.7943501
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 19296159,
+              "completion_tokens": 149601,
+              "prompt_tokens": 1729448,
+              "reasoning_tokens": 64752
+            }
+          },
+          "readied": 1.0,
+          "resume_recommended": false,
+          "rewards_raw": {
+            "skill": {
+              "score": 0.6281614742355919,
+              "weight": 1.0
+            }
+          },
+          "scoring_detail_without_workspace": {
+            "instances": {
+              "L1": {
+                "family": "L1",
+                "id": "L1@i1",
+                "k_a": 37380,
+                "seq": [
+                  [
+                    0.3683,
+                    -0.0735,
+                    -0.1045
+                  ]
+                ],
+                "t_a": 747.6
+              },
+              "L2": {
+                "family": "L2",
+                "id": "L2@i1",
+                "k_a": 72933,
+                "t_a": 1458.66
+              },
+              "L3F": {
+                "device": 0,
+                "family": "L3F",
+                "horizons": [
+                  25.0,
+                  100.0,
+                  400.0
+                ],
+                "id": "L3F@i1",
+                "k_a": 89451,
+                "t_a": 1789.02
+              },
+              "L3S": {
+                "epochs": [
+                  400.0,
+                  800.0
+                ],
+                "family": "L3S",
+                "id": "L3S@i1",
+                "k_a": 103036,
+                "t_a": 2060.72,
+                "window_tu": 200.0
+              },
+              "L4": {
+                "amp": 2.7998,
+                "dur": 10.5,
+                "family": "L4",
+                "id": "L4@i1",
+                "k_a": 41497,
+                "k_dur": 525,
+                "lags": [
+                  10.0,
+                  25.0,
+                  50.0,
+                  100.0,
+                  175.0,
+                  250.0
+                ],
+                "port": 6,
+                "t_a": 829.94
+              },
+              "L4D": {
+                "amp": 0.8124,
+                "dur": 16.78,
+                "family": "L4D",
+                "id": "L4D@i1",
+                "k_a": 67300,
+                "k_dur": 839,
+                "lags": [
+                  25.0,
+                  75.0,
+                  150.0
+                ],
+                "port": 11,
+                "t_a": 1346.0
+              }
+            },
+            "l1_crps": 0.021869,
+            "l1_ratio_vs_ref": 0.4345,
+            "l2_crps": 0.096437,
+            "l2_ratio_vs_ref": 1.0211,
+            "l3f_crps": 0.001162,
+            "l3f_crps_per_leg": {
+              "h100": 0.00075,
+              "h25": 0.00091,
+              "h400": 0.001827
+            },
+            "l3f_ratio_vs_ref": 0.0127,
+            "l3s_crps": 0.000612,
+            "l3s_ratio_vs_ref": 0.0348,
+            "l4_crps": 0.079387,
+            "l4_ratio_vs_ref": 0.7107,
+            "l4d_crps": 0.001497,
+            "l4d_ratio_vs_ref": 0.0172,
+            "ladders": {
+              "L1": {
+                "climatology": 0.09769,
+                "persistence": 0.050326
+              },
+              "L2": {
+                "climatology": 0.094442,
+                "persistence": 0.096404
+              },
+              "L3F": {
+                "ar2": 0.091896,
+                "climatology": 0.091403,
+                "persistence": 0.100997
+              },
+              "L3S": {
+                "climatology": 0.027268,
+                "persistence": 0.017601
+              },
+              "L4": {
+                "climatology": 0.111706,
+                "persistence": 0.14896
+              },
+              "L4D": {
+                "climatology": 0.087167,
+                "persistence": 0.111622
+              }
+            },
+            "skills": {
+              "L1": 0.5655,
+              "L2": -0.0211,
+              "L3F": 0.9873,
+              "L3S": 0.9652,
+              "L4": 0.2893,
+              "L4D": 0.9828
+            }
+          },
+          "scoring_executed": true,
+          "skill": 0.6281614742355919,
+          "skill_per_tier": {
+            "L1": 0.5654504830289517,
+            "L2": -0.021130337653723297,
+            "L3F": 0.987284359218241,
+            "L3S": 0.9652233436018346,
+            "L4": 0.2893185366735279,
+            "L4D": 0.9828224605447194
+          },
+          "source_jsonl_line_1based": 2,
+          "task_content_sha256": "a828b12baa3b9e8617e290a29c08c8b534706d60cbc964162aa94cc0c6f2af4e",
+          "task_index": 0,
+          "task_name": "physim-BLOB2v2-E2#942",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [],
+          "time_to_ready": {
+            "sim_tu": 15795.0,
+            "turns": 4542
+          },
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:43:38.956124+00:00",
+            "scoring_end_utc": "2026-09-05T07:43:44.266421+00:00",
+            "scoring_start_utc": "2026-09-05T07:43:39.594703+00:00",
+            "start_utc": "2026-09-05T04:56:11.478156+00:00"
+          },
+          "trace_id": "344a8d7d8b7b433cb7d73cbf8a402aac",
+          "v2_surface_valid": true,
+          "world": "p6g8_033",
+          "world_seed": 942
+        },
+        {
+          "cap_hits": {
+            "adjust": 0,
+            "fork_spawns": 0,
+            "injection": 0,
+            "open_forks": 1,
+            "sensor": 0,
+            "sim_tu": 0
+          },
+          "cap_hits_total": 1.0,
+          "classification": "successful_scored",
+          "difficulty": "BLOB2v2-E2",
+          "environment_meters": {
+            "adjust": 32.3,
+            "fork_spawns": 35,
+            "injection": 523.8,
+            "open_forks_peak": 8,
+            "reads_base": 191,
+            "reads_fork": 182,
+            "resets": 34,
+            "sensor": 47820.0,
+            "sim_tu": 3930.0,
+            "turns": 215
+          },
+          "episode_id": "8ed2673ea88641d9b6af990d7002c61e",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E2 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [3][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3S slow observable. Predict the per-port global mean and variance\n     (the free aggregate stream) averaged over the 200tu windows ending\n     at t_a+400 and t_a+800, undisturbed. domain: t_a continuous-uniform\n     in [600, 2300]. payload: [2][ports][2] with [.,.,0]=mean\n     [.,.,1]=variance. ladder: windowed climatology | windowed\n     persistence.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "d8b105733fe74c0ae339236435c597034661906f8fb4829bc833fc1c2fe6dc58",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584227.0986528,
+            "tool_call_id": "toolu_019zPeeE48seZT3WerqqqeCE"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              648
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "instances": [
+                {
+                  "anchor_t": 2069.62,
+                  "device": 0,
+                  "id": "L1@i1",
+                  "payload_shape": [
+                    13,
+                    13
+                  ],
+                  "sequence": [
+                    [
+                      0.6815,
+                      -0.234,
+                      -0.2869
+                    ],
+                    [
+                      -0.2555,
+                      0.6642,
+                      0.6923
+                    ]
+                  ],
+                  "statistic": "a fresh fork is taken at the anchor and the command sequence is applied to device 0 (from its t=0 configuration, one control step per command, no emission); predict its reading right after the final command"
+                },
+                {
+                  "anchor_t": 644.4,
+                  "id": "L2@i1",
+                  "payload_shape": [
+                    13,
+                    13
+                  ],
+                  "slots": 13,
+                  "statistic": "the additional fixed 13-slot sensor cluster's reading vector at the anchor"
+                },
+                {
+                  "anchor_t": 1218.94,
+                  "device": 0,
+                  "horizons": [
+                    25,
+                    100,
+                    400
+                  ],
+                  "id": "L3F@i1",
+                  "payload_shape": [
+                    3,
+                    13,
+                    13
+                  ],
+                  "statistic": "device 0's streams (t=0 configuration) at each horizon after the anchor, undisturbed"
+                },
+                {
+                  "anchor_t": 1454.42,
+                  "epochs": [
+                    400,
+                    800
+                  ],
+                  "id": "L3S@i1",
+                  "payload_shape": [
+                    2,
+                    13,
+                    2
+                  ],
+                  "statistic": "the per-port global mean and variance (the free aggregate stream), each averaged over the window ending at the anchor plus the stated epoch, undisturbed",
+                  "window_tu": 200
+                },
+                {
+                  "amp": 1.5078,
+                  "anchor_t": 904.46,
+                  "device": 1,
+                  "dur_tu": 13.04,
+                  "id": "L4@i1",
+                  "lags": [
+                    10,
+                    25,
+                    50,
+                    100,
+                    175,
+                    250
+                  ],
+                  "payload_shape": [
+                    6,
+                    13,
+                    19
+                  ],
+                  "port": 11,
+                  "statistic": "one emission (port, amp, dur) is driven through the fixed emission channel from the anchor on a fresh fork; predict device 1's streams (t=0 configuration) at each lag from emission start"
+                },
+                {
+                  "amp": 0.3114,
+                  "anchor_t": 2130.36,
+                  "device": 1,
+                  "dur_tu": 14.78,
+                  "id": "L4D@i1",
+                  "lags": [
+                    25,
+                    75,
+                    150
+                  ],
+                  "payload_shape": [
+                    3,
+                    13,
+                    19
+                  ],
+                  "port": 2,
+                  "statistic": "one emission (port, amp, dur) is driven through the fixed emission channel from the anchor on a fresh fork; predict device 1's streams (t=0 configuration) at each lag from emission start"
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "revealed",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "submitted": {
+                "L1@i1": true,
+                "L2@i1": true,
+                "L3F@i1": true,
+                "L3S@i1": true,
+                "L4@i1": true,
+                "L4D@i1": true
+              },
+              "t_base_head": 2500.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 649,
+            "timestamp": 1788593100.586273,
+            "tool_call_id": "toolu_01PUknvdmHbSpG3LmRBP1tcu"
+          },
+          "log_rollout_done": [
+            {
+              "line": 181,
+              "text": "03:25:32    INFO rollout done: id=529feadde86341e5b3ae008c20a24872 task=1 reward=0.624 turns=251 stop=agent_completed"
+            }
+          ],
+          "metrics_raw": {
+            "cap_hits_total": 1.0,
+            "meter_adjust": 32.3,
+            "meter_fork_spawns": 35.0,
+            "meter_injection": 523.8,
+            "meter_open_forks_peak": 8.0,
+            "meter_reads_base": 191.0,
+            "meter_reads_fork": 182.0,
+            "meter_resets": 34.0,
+            "meter_sensor": 47820.0,
+            "meter_sim_tu": 3930.0,
+            "meter_turns": 215.0,
+            "readied": 1.0,
+            "skill_L1": 0.10864885565551097,
+            "skill_L2": 0.19323050147619691,
+            "skill_L3F": 0.9264313572149417,
+            "skill_L3S": 0.9119370512447249,
+            "skill_L4": 0.6547982180189971,
+            "skill_L4D": 0.949927579887362,
+            "time_to_ready_sim_tu": 3930.0,
+            "time_to_ready_turns": 208.0
+          },
+          "nested_terminal": {
+            "errors": [],
+            "is_completed": true,
+            "ok": true,
+            "stop_condition": "agent_completed"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": true
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 4,
+            "error_groups": [
+              {
+                "count": 1,
+                "error": "instrument saturated",
+                "tool": "mcp__probe__fork"
+              },
+              {
+                "count": 1,
+                "error": "ports must be 'all' or a list",
+                "tool": "mcp__probe__read"
+              }
+            ],
+            "error_result_count": 2,
+            "instrument_saturated_result_count": 1,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [
+              {
+                "arguments": "{\"ctx\": \"fda32b617\", \"window\": 60, \"stride\": 2, \"devices\": \"0\", \"ports\": \"3,4,7,9,10,11\"}",
+                "call_node_indices": [
+                  33
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "ports must be 'all' or a list"
+                },
+                "name": "mcp__probe__read",
+                "result_node_index": 35,
+                "timestamp": 1788584415.81582,
+                "tool_call_id": "toolu_01PQB3iRyvW4KuQ6usnVtDxx"
+              },
+              {
+                "arguments": "{\"t\": \"1000\"}",
+                "call_node_indices": [
+                  194
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 195,
+                "timestamp": 1788589300.5859299,
+                "tool_call_id": "toolu_01NnmN5YzDbPzQq7Ty679psN"
+              }
+            ],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__adjust": 39,
+              "mcp__probe__fork": 36,
+              "mcp__probe__inject": 13,
+              "mcp__probe__read": 68,
+              "mcp__probe__ready": 1,
+              "mcp__probe__reset": 34,
+              "mcp__probe__status": 6,
+              "mcp__probe__submit": 6,
+              "mcp__probe__wait": 14
+            }
+          },
+          "progress": {
+            "caution": "Final status confirms all six submission flags; terminal score contains all six skills.",
+            "last_status_phase": "revealed",
+            "last_status_submitted_flags": {
+              "L1@i1": true,
+              "L2@i1": true,
+              "L3F@i1": true,
+              "L3S@i1": true,
+              "L4@i1": true,
+              "L4D@i1": true
+            },
+            "last_successful_world_tool_result_node": 596,
+            "observed_accepted_probe_ready_results": 1,
+            "observed_probe_ready_results": 1
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [],
+            "call_count": 263,
+            "call_error_count": 12,
+            "call_error_counts": [
+              {
+                "count": 12,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              }
+            ],
+            "calls_without_error": 251,
+            "last_three_call_errors": [
+              {
+                "call_index": 211,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a36362d9bfbdaa39-EWR\",\"inference_id\":\"req_1680115b5dd14b0bb869f72a1106490c\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_1680115b5dd14b0bb869f72a1106490c",
+                  "request_id": "a36362d9bfbdaa39-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788591935.920044,
+                  "start": 1788591932.419136
+                }
+              },
+              {
+                "call_index": 232,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a3636a799c3baa39-EWR\",\"inference_id\":\"req_93defe512ca343af863915c81f4cb40f\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_93defe512ca343af863915c81f4cb40f",
+                  "request_id": "a3636a799c3baa39-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788592248.117429,
+                  "start": 1788592244.658251
+                }
+              },
+              {
+                "call_index": 239,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 429: {\"type\":\"error\",\"error\":{\"type\":\"rate_limit_error\",\"message\":\"Server is busy. Try again shortly.\",\"code\":\"rate_limited\"},\"request_id\":\"a3637297f8f58c6d-EWR\",\"inference_id\":\"req_7a67537dc0964bd890723fe43167e353\"}",
+                  "status_code": 429,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "rate_limited",
+                    "message": "Server is busy. Try again shortly.",
+                    "type": "rate_limit_error"
+                  },
+                  "inference_id": "req_7a67537dc0964bd890723fe43167e353",
+                  "request_id": "a3637297f8f58c6d-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788592580.677857,
+                  "start": 1788592577.197252
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 151713130,
+              "completion_tokens": 482921,
+              "prompt_tokens": 952571,
+              "reasoning_tokens": 75109
+            }
+          },
+          "readied": 1.0,
+          "resume_recommended": false,
+          "rewards_raw": {
+            "skill": {
+              "score": 0.6241622605829557,
+              "weight": 1.0
+            }
+          },
+          "scoring_detail_without_workspace": {
+            "instances": {
+              "L1": {
+                "family": "L1",
+                "id": "L1@i1",
+                "k_a": 103481,
+                "seq": [
+                  [
+                    0.6815,
+                    -0.234,
+                    -0.2869
+                  ],
+                  [
+                    -0.2555,
+                    0.6642,
+                    0.6923
+                  ]
+                ],
+                "t_a": 2069.62
+              },
+              "L2": {
+                "family": "L2",
+                "id": "L2@i1",
+                "k_a": 32220,
+                "t_a": 644.4
+              },
+              "L3F": {
+                "device": 0,
+                "family": "L3F",
+                "horizons": [
+                  25.0,
+                  100.0,
+                  400.0
+                ],
+                "id": "L3F@i1",
+                "k_a": 60947,
+                "t_a": 1218.94
+              },
+              "L3S": {
+                "epochs": [
+                  400.0,
+                  800.0
+                ],
+                "family": "L3S",
+                "id": "L3S@i1",
+                "k_a": 72721,
+                "t_a": 1454.42,
+                "window_tu": 200.0
+              },
+              "L4": {
+                "amp": 1.5078,
+                "dur": 13.04,
+                "family": "L4",
+                "id": "L4@i1",
+                "k_a": 45223,
+                "k_dur": 652,
+                "lags": [
+                  10.0,
+                  25.0,
+                  50.0,
+                  100.0,
+                  175.0,
+                  250.0
+                ],
+                "port": 11,
+                "t_a": 904.46
+              },
+              "L4D": {
+                "amp": 0.3114,
+                "dur": 14.78,
+                "family": "L4D",
+                "id": "L4D@i1",
+                "k_a": 106518,
+                "k_dur": 739,
+                "lags": [
+                  25.0,
+                  75.0,
+                  150.0
+                ],
+                "port": 2,
+                "t_a": 2130.36
+              }
+            },
+            "l1_crps": 0.085977,
+            "l1_ratio_vs_ref": 0.8914,
+            "l2_crps": 0.074183,
+            "l2_ratio_vs_ref": 0.8068,
+            "l3f_crps": 0.006032,
+            "l3f_crps_per_leg": {
+              "h100": 0.005612,
+              "h25": 0.005333,
+              "h400": 0.00715
+            },
+            "l3f_ratio_vs_ref": 0.0736,
+            "l3s_crps": 0.001548,
+            "l3s_ratio_vs_ref": 0.0881,
+            "l4_crps": 0.027762,
+            "l4_ratio_vs_ref": 0.3452,
+            "l4d_crps": 0.004938,
+            "l4d_ratio_vs_ref": 0.0501,
+            "ladders": {
+              "L1": {
+                "climatology": 0.10723,
+                "persistence": 0.096457
+              },
+              "L2": {
+                "climatology": 0.092267,
+                "persistence": 0.091951
+              },
+              "L3F": {
+                "ar2": 0.084683,
+                "climatology": 0.081988,
+                "persistence": 0.084563
+              },
+              "L3S": {
+                "climatology": 0.019794,
+                "persistence": 0.017575
+              },
+              "L4": {
+                "climatology": 0.080424,
+                "persistence": 0.096954
+              },
+              "L4D": {
+                "climatology": 0.098607,
+                "persistence": 0.148006
+              }
+            },
+            "skills": {
+              "L1": 0.1086,
+              "L2": 0.1932,
+              "L3F": 0.9264,
+              "L3S": 0.9119,
+              "L4": 0.6548,
+              "L4D": 0.9499
+            }
+          },
+          "scoring_executed": true,
+          "skill": 0.6241622605829557,
+          "skill_per_tier": {
+            "L1": 0.10864885565551097,
+            "L2": 0.19323050147619691,
+            "L3F": 0.9264313572149417,
+            "L3S": 0.9119370512447249,
+            "L4": 0.6547982180189971,
+            "L4D": 0.949927579887362
+          },
+          "source_jsonl_line_1based": 1,
+          "task_content_sha256": "aef8273bd4dfe08f578bca1ceb95ba7fa3be5d81064804692f0efafd158589e5",
+          "task_index": 1,
+          "task_name": "physim-BLOB2v2-E2#943",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [],
+          "time_to_ready": {
+            "sim_tu": 3930.0,
+            "turns": 208
+          },
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:25:23.691519+00:00",
+            "scoring_end_utc": "2026-09-05T07:25:30.688058+00:00",
+            "scoring_start_utc": "2026-09-05T07:25:24.362147+00:00",
+            "start_utc": "2026-09-05T04:56:11.482996+00:00"
+          },
+          "trace_id": "529feadde86341e5b3ae008c20a24872",
+          "v2_surface_valid": true,
+          "world": "p6g8_033",
+          "world_seed": 943
+        },
+        {
+          "cap_hits": null,
+          "cap_hits_total": null,
+          "classification": "failed_provider",
+          "difficulty": "BLOB2v2-E2",
+          "environment_meters": null,
+          "episode_id": "280eba004d644ee4ba878c08354a1785",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E2 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [3][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3S slow observable. Predict the per-port global mean and variance\n     (the free aggregate stream) averaged over the 200tu windows ending\n     at t_a+400 and t_a+800, undisturbed. domain: t_a continuous-uniform\n     in [600, 2300]. payload: [2][ports][2] with [.,.,0]=mean\n     [.,.,1]=variance. ladder: windowed climatology | windowed\n     persistence.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "d8b105733fe74c0ae339236435c597034661906f8fb4829bc833fc1c2fe6dc58",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584231.5865002,
+            "tool_call_id": "toolu_01VGGJCUvSbxTmKEoiR7TpvX"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3107,
+              3113
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [
+                {
+                  "anchor_t": 1450.0,
+                  "id": "fa6053395",
+                  "t_now": 1455.0
+                },
+                {
+                  "anchor_t": 1600.0,
+                  "id": "f645210e6",
+                  "t_now": 1875.0
+                },
+                {
+                  "anchor_t": 1750.0,
+                  "id": "ff797a4be",
+                  "t_now": 1755.0
+                },
+                {
+                  "anchor_t": 2050.0,
+                  "id": "f8962694d",
+                  "t_now": 2055.0
+                },
+                {
+                  "anchor_t": 2300.0,
+                  "id": "f861e0cce",
+                  "t_now": 2305.0
+                },
+                {
+                  "anchor_t": 1600.0,
+                  "id": "fec307f61",
+                  "t_now": 1600.0
+                },
+                {
+                  "anchor_t": 1600.0,
+                  "id": "fe5dbadc9",
+                  "t_now": 1675.0
+                },
+                {
+                  "anchor_t": 1600.0,
+                  "id": "fd1aee2f6",
+                  "t_now": 1675.0
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 13,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "t_base_head": 2500.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 3114,
+            "timestamp": 1788592464.79849,
+            "tool_call_id": "toolu_01SyC7yxJoSApaDYy2vBb9XH"
+          },
+          "log_rollout_done": [
+            {
+              "line": 190,
+              "text": "03:57:31    INFO rollout done: id=0819dd2bf7404901a752a4fa0b2ccec3 task=2 reward=0.000 turns=1686 stop=ProviderError"
+            }
+          ],
+          "metrics_raw": {},
+          "nested_terminal": {
+            "errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aef568a54237-EWR\",\"inference_id\":\"req_f784853b3c9b4ebda762dc07312f3e38\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "is_completed": true,
+            "ok": false,
+            "stop_condition": "error"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": false
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 1,
+            "error_groups": [
+              {
+                "count": 1,
+                "error": "unknown context 'f16fa4fcb'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f24293263'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f7b6a052e'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 42,
+                "error": "instrument saturated",
+                "tool": "mcp__probe__fork"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f16fa4fcb'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "ports must be 'all' or a list",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 34,
+                "error": "the base record ends at t = 2500 (window=0 reads the current state; probe_fork reaches any base time)",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f07b7179e'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f4a879a2b'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f89c246bb'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fe362dbcb'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f22d4d4e9'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f4a879a2b'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f64ee3dea'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fae3988cc'",
+                "tool": "mcp__probe__reset"
+              }
+            ],
+            "error_result_count": 90,
+            "instrument_saturated_result_count": 42,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [
+              {
+                "arguments": "{\"t\": \"1600\"}",
+                "call_node_indices": [
+                  4228
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 4229,
+                "timestamp": 1788594860.746443,
+                "tool_call_id": "toolu_01XhQpYrVwczmBcXKCPdCuAe"
+              },
+              {
+                "arguments": "{\"t\": \"1600\"}",
+                "call_node_indices": [
+                  4240
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 4243,
+                "timestamp": 1788594927.776035,
+                "tool_call_id": "toolu_01Qdit2Vacvp383CMsK9B4mC"
+              },
+              {
+                "arguments": "{\"t\": \"1600\"}",
+                "call_node_indices": [
+                  4257
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 4258,
+                "timestamp": 1788594998.295653,
+                "tool_call_id": "toolu_01FgBZZ8oPFKLoX94Qu8JLJA"
+              }
+            ],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__adjust": 109,
+              "mcp__probe__fork": 187,
+              "mcp__probe__inject": 20,
+              "mcp__probe__read": 436,
+              "mcp__probe__reset": 157,
+              "mcp__probe__status": 23,
+              "mcp__probe__wait": 27
+            }
+          },
+          "progress": {
+            "caution": "Failed tasks have no final readied/time_to_ready/metrics. Last observed phase is exploration; no accepted ready result was observed. Do not replace absent telemetry with zero.",
+            "last_status_phase": "exploration",
+            "last_status_submitted_flags": null,
+            "last_successful_world_tool_result_node": 4260,
+            "observed_accepted_probe_ready_results": 0,
+            "observed_probe_ready_results": 0
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [],
+            "call_count": 1724,
+            "call_error_count": 38,
+            "call_error_counts": [
+              {
+                "count": 2,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "JSONDecodeError"
+              },
+              {
+                "count": 2,
+                "endpoint": "/v1/messages",
+                "status_code": 402,
+                "type": "ProviderError"
+              },
+              {
+                "count": 33,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              },
+              {
+                "count": 1,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "calls_without_error": 1686,
+            "last_three_call_errors": [
+              {
+                "call_index": 1578,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                  "traceback": "Traceback (most recent call last):\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_transports/default.py\", line 101, in map_httpcore_exceptions\n    yield\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_transports/default.py\", line 271, in __aiter__\n    async for part in self._httpcore_stream:\n        yield part\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py\", line 407, in __aiter__\n    raise exc from None\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/connection_pool.py\", line 403, in __aiter__\n    async for part in self._stream:\n        yield part\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/http11.py\", line 342, in __aiter__\n    raise exc\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/http11.py\", line 334, in __aiter__\n    async for chunk in self._connection._receive_response_body(**kwargs):\n        yield chunk\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/http11.py\", line 203, in _receive_response_body\n    event = await self._receive_event(timeout=timeout)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_async/http11.py\", line 213, in _receive_event\n    with map_exceptions({h11.RemoteProtocolError: RemoteProtocolError}):\n         ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpcore/_exceptions.py\", line 14, in map_exceptions\n    raise to_exc(exc) from exc\nhttpcore.RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/interception/server.py\", line 630, in _stream\n    await producer\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/interception/server.py\", line 104, in _queue_chunks\n    async for chunk in chunks:\n        await queue.put(chunk)\n        ready.set()\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/clients/eval.py\", line 182, in chunks\n    async for chunk in resp.aiter_bytes():\n    ...<6 lines>...\n        search_from = max(0, len(buffer) - 3)\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_models.py\", line 997, in aiter_bytes\n    async for raw_bytes in self.aiter_raw():\n    ...<2 lines>...\n            yield chunk\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_models.py\", line 1055, in aiter_raw\n    async for raw_stream_bytes in self.stream:\n    ...<2 lines>...\n            yield chunk\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_client.py\", line 176, in __aiter__\n    async for chunk in self._stream:\n        yield chunk\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_transports/default.py\", line 270, in __aiter__\n    with map_httpcore_exceptions():\n         ~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/contextlib.py\", line 162, in __exit__\n    self.gen.throw(value)\n    ~~~~~~~~~~~~~~^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/httpx/_transports/default.py\", line 118, in map_httpcore_exceptions\n    raise mapped_exc(message) from exc\nhttpx.RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)\n",
+                  "type": "RemoteProtocolError"
+                },
+                "provider_body": null,
+                "timestamp": {
+                  "end": 1788593858.304887,
+                  "start": 1788593740.456245
+                }
+              },
+              {
+                "call_index": 1722,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aef10e844237-EWR\",\"inference_id\":\"req_829c3b25cb5e4e38a96329ae7fdfff72\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_829c3b25cb5e4e38a96329ae7fdfff72",
+                  "request_id": "a363aef10e844237-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595049.5032709,
+                  "start": 1788595049.052019
+                }
+              },
+              {
+                "call_index": 1723,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aef568a54237-EWR\",\"inference_id\":\"req_f784853b3c9b4ebda762dc07312f3e38\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_f784853b3c9b4ebda762dc07312f3e38",
+                  "request_id": "a363aef568a54237-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595050.1309419,
+                  "start": 1788595049.750358
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [
+              {
+                "call_index": 1569,
+                "message": "Unterminated string starting at: line 1 column 13 (char 12)",
+                "timestamp": {
+                  "end": 1788593801.246196,
+                  "start": 1788593789.485332
+                },
+                "type": "JSONDecodeError"
+              },
+              {
+                "call_index": 1570,
+                "message": "Unterminated string starting at: line 1 column 13 (char 12)",
+                "timestamp": {
+                  "end": 1788593815.303621,
+                  "start": 1788593720.866079
+                },
+                "type": "JSONDecodeError"
+              },
+              {
+                "call_index": 1578,
+                "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                "timestamp": {
+                  "end": 1788593858.304887,
+                  "start": 1788593740.456245
+                },
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 374221111,
+              "completion_tokens": 4229059,
+              "prompt_tokens": 8996796,
+              "reasoning_tokens": 140832
+            }
+          },
+          "readied": null,
+          "resume_recommended": true,
+          "rewards_raw": {},
+          "scoring_detail_without_workspace": null,
+          "scoring_executed": false,
+          "skill": null,
+          "skill_per_tier": null,
+          "source_jsonl_line_1based": 3,
+          "task_content_sha256": "1dc86a5d7f5bca1f4a5b9a24cc20a02a6f442846e32c195a16de15a28696150c",
+          "task_index": 2,
+          "task_name": "physim-BLOB2v2-E2#944",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [
+            {
+              "error": {
+                "code": "insufficient_funds",
+                "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                "metadata": {
+                  "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                },
+                "type": "billing_error"
+              },
+              "inference_id": "req_f784853b3c9b4ebda762dc07312f3e38",
+              "request_id": "a363aef568a54237-EWR",
+              "type": "error"
+            }
+          ],
+          "time_to_ready": null,
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:57:30.451782+00:00",
+            "scoring_end_utc": null,
+            "scoring_start_utc": null,
+            "start_utc": "2026-09-05T04:56:11.487379+00:00"
+          },
+          "trace_id": "0819dd2bf7404901a752a4fa0b2ccec3",
+          "v2_surface_valid": true,
+          "world": "p6g8_033",
+          "world_seed": 944
+        }
+      ],
+      "v2_scripted_floor_context_only": {
+        "all_pass": true,
+        "n": 3,
+        "reward_mean": 0.2022,
+        "skills_mean": {
+          "L1": -0.0099,
+          "L2": -0.0175,
+          "L3F": -0.1588,
+          "L3S": -0.0099,
+          "L4": 0.5342,
+          "L4D": 0.8749
+        },
+        "zero_cap_hits": true
+      }
+    },
+    {
+      "comparison_note": "Only the v2 scripted floor is shown. No complete-cohort delta or final model ranking can be computed until all three selected tasks succeed. E2 successful-only values cover two seeds; the floor aggregate covers three.",
+      "config_verified": {
+        "api_key_var": "PRIME_API_KEY",
+        "difficulty": "BLOB2v2-E1",
+        "env_timeout": {},
+        "harness": "claude_code",
+        "harness_version": "2.1.223",
+        "max_concurrent": 128,
+        "max_concurrent_agents": 1,
+        "model": "anthropic/claude-fable-5",
+        "num_rollouts": 1,
+        "num_tasks": 3,
+        "provider_base_url": "https://api.pinference.ai/api/v1",
+        "push": true,
+        "scientist_timeout": {},
+        "seed0": 0,
+        "shuffle": false,
+        "taskset_max_turns": 40,
+        "team_header_present": true,
+        "tier": "chat"
+      },
+      "counts": {
+        "expected_rollouts": 3,
+        "failed_rollouts": 3,
+        "missing_rollouts": 0,
+        "nested_traces": 3,
+        "parsed_records": 3,
+        "successful_scored_rollouts": 0,
+        "unknown_terminal_rollouts": 0,
+        "v2_surface_verified_rollouts": 3
+      },
+      "expected_task_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_task_seeds": [
+        928,
+        929,
+        930
+      ],
+      "log_provider_error_counts": [
+        {
+          "call_kind": "aux",
+          "count": 33,
+          "status_code": 404,
+          "type": "ProviderError"
+        },
+        {
+          "call_kind": "model",
+          "count": 16,
+          "status_code": 402,
+          "type": "ProviderError"
+        },
+        {
+          "call_kind": "model",
+          "count": 81,
+          "status_code": 429,
+          "type": "ProviderError"
+        }
+      ],
+      "menu": "E1",
+      "missing_task_indices": [],
+      "observed_task_seeds": [
+        928,
+        929,
+        930
+      ],
+      "parse_issues": [],
+      "publication_note": "push size-limit failures block publication, not rollout validity. Config push=true is preserved.",
+      "publication_warnings": [
+        {
+          "line": 269,
+          "text": "03:59:12 WARNING --push: upload failed (ValueError: sample 0 is too large to upload (40917192 > 26214400 bytes)); skipping"
+        }
+      ],
+      "resume": {
+        "command_NOT_EXECUTED": ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1",
+        "copy_dir": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1",
+        "copy_pruning_timestamp_utc": "2026-09-05T20:50:00.636510+00:00",
+        "copy_trace_bytes_after_prune": 0,
+        "copy_trace_sha256_after_prune": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "native_kept_count": 0,
+        "native_load_validated_on_copy": true,
+        "native_owed": [
+          {
+            "num_rollouts": 1,
+            "original_episode_id": "0ec62525d16a4b8cb9ef6d14548a6857",
+            "original_trace_id": "759a50b441ef459489edbabd7760323a",
+            "task_index": 0,
+            "task_key": "1c06882535a2f9121002dd6da5a08b6fb92e0857fe2999f382e0728bc91dac36",
+            "task_name": "physim-BLOB2v2-E1#928",
+            "world_seed": 928
+          },
+          {
+            "num_rollouts": 1,
+            "original_episode_id": "79a2cb75ce854d0c8b747a87f2d09020",
+            "original_trace_id": "45d261304cfd41e1871fe49434a1ce69",
+            "task_index": 1,
+            "task_key": "32abb021c931069dcd22469c0a456dd9ff53623500d60b6ff9bb467b206cbe9d",
+            "task_name": "physim-BLOB2v2-E1#929",
+            "world_seed": 929
+          },
+          {
+            "num_rollouts": 1,
+            "original_episode_id": "8786fdcbbe8c4fe9a9db4a901a02546e",
+            "original_trace_id": "829b7b6807fa4f058c374f7482049012",
+            "task_index": 2,
+            "task_key": "e28c94a3aa838367685f46c6870da9251728353fadc12bf64adebdbc03377717",
+            "task_name": "physim-BLOB2v2-E1#930",
+            "world_seed": 930
+          }
+        ],
+        "native_owed_count": 3,
+        "original_files_unchanged_during_native_validation": true,
+        "recommended": true,
+        "task_indices": [
+          0,
+          1,
+          2
+        ],
+        "task_names": [
+          "physim-BLOB2v2-E1#928",
+          "physim-BLOB2v2-E1#929",
+          "physim-BLOB2v2-E1#930"
+        ]
+      },
+      "run_dir": "outputs/physim--anthropic--claude-fable-5--claude_code/588029cc-23dd-4b89-88e9-2813a3fa73b9",
+      "run_id": "588029cc-23dd-4b89-88e9-2813a3fa73b9",
+      "score_summary": {
+        "expected_rollouts": 3,
+        "final_mean_skill": null,
+        "interpretation": "Incomplete cohort. Successful-only partial means are descriptive, not final. Failed scores are null, not zero or -1.",
+        "status": "incomplete_provider_failure",
+        "successful_count": 0,
+        "successful_only_partial_mean_skill": null,
+        "successful_only_partial_skill_per_tier": {}
+      },
+      "sources": {
+        "config.toml": {
+          "bytes": 1274,
+          "modified_utc": "2026-09-05T04:56:11.395168+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/588029cc-23dd-4b89-88e9-2813a3fa73b9/config.toml",
+          "sha256": "49156fa61bdbf84bb583a6e5367feec3236078f3b02a25a27951943b9f0f2ecf"
+        },
+        "eval.log": {
+          "bytes": 49486,
+          "modified_utc": "2026-09-05T07:59:12.150097+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/588029cc-23dd-4b89-88e9-2813a3fa73b9/eval.log",
+          "sha256": "9eed33cb1d0e6b9668d1366d135180db1252e8dc1f70dcb214b734cf637ee1b9"
+        },
+        "traces.jsonl": {
+          "bytes": 23838501,
+          "modified_utc": "2026-09-05T07:59:11.848761+00:00",
+          "path": "outputs/physim--anthropic--claude-fable-5--claude_code/588029cc-23dd-4b89-88e9-2813a3fa73b9/traces.jsonl",
+          "sha256": "087091f0b6c67a2e860837b0ae518074b446fe65cf97172a7511670f2db703cd"
+        }
+      },
+      "tasks": [
+        {
+          "cap_hits": null,
+          "cap_hits_total": null,
+          "classification": "failed_provider",
+          "difficulty": "BLOB2v2-E1",
+          "environment_meters": null,
+          "episode_id": "0ec62525d16a4b8cb9ef6d14548a6857",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E1 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {5, 25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [4][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3E event rate. Predict the crossing count of the announced event\n     (port 4, sign 1, threshold -0.798244) in each of 16\n     consecutive 50tu windows starting at a hidden anchor, undisturbed;\n     windows may extend past the base record. domain: t_a continuous-\n     uniform in [600, 2300]. payload: [16]. ladder: zero-rate |\n     pre-anchor rate.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "60beafe2723da635a8553a734be7dfc1ef32a5fac6361f4847b194ee039331ed",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584255.7614589,
+            "tool_call_id": "toolu_0134wwskxmgTzpqpREU8HLn3"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              5255
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [
+                {
+                  "anchor_t": 1300.0,
+                  "id": "fe0a98288",
+                  "t_now": 1325.0
+                },
+                {
+                  "anchor_t": 1900.0,
+                  "id": "f276cd8c3",
+                  "t_now": 1905.0
+                },
+                {
+                  "anchor_t": 1450.0,
+                  "id": "fdb12f6df",
+                  "t_now": 1455.0
+                },
+                {
+                  "anchor_t": 1550.0,
+                  "id": "f08398be9",
+                  "t_now": 1555.0
+                },
+                {
+                  "anchor_t": 2300.0,
+                  "id": "f24c3ad65",
+                  "t_now": 2315.0
+                },
+                {
+                  "anchor_t": 1600.0,
+                  "id": "fa2f2ebcb",
+                  "t_now": 1760.0
+                },
+                {
+                  "anchor_t": 1650.0,
+                  "id": "f4b7ab9f6",
+                  "t_now": 1650.0
+                },
+                {
+                  "anchor_t": 1400.0,
+                  "id": "fdf2400c8",
+                  "t_now": 1400.0
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "t_base_head": 2435.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 5276,
+            "timestamp": 1788594925.885789,
+            "tool_call_id": "toolu_01BVoozvZ4vxUvAUWsAoD3am"
+          },
+          "log_rollout_done": [
+            {
+              "line": 268,
+              "text": "03:59:11    INFO rollout done: id=759a50b441ef459489edbabd7760323a task=0 reward=0.000 turns=2093 stop=ProviderError"
+            }
+          ],
+          "metrics_raw": {},
+          "nested_terminal": {
+            "errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363b16c5cf74faa-EWR\",\"inference_id\":\"req_bdfe1d4220a7452f9943078bd6ffd368\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "is_completed": true,
+            "ok": false,
+            "stop_condition": "error"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": false
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 17,
+            "error_groups": [
+              {
+                "count": 1,
+                "error": "unknown context 'f456e53ce'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f6646396c'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f748b2d28'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f7879659f'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f88007d5d'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 2,
+                "error": "unknown context 'f94d651a9'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fc1fec18b'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'ff6f1184b'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'ffa18805d'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 193,
+                "error": "instrument saturated",
+                "tool": "mcp__probe__fork"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f7879659f'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fcd76f169'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 8,
+                "error": "ports must be 'all' or a list of ints",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "ports must be 'all' or a list",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f16717871'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 4,
+                "error": "unknown context 'f21e3b525'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f456e53ce'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f6646396c'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f8eb7234e'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fb243a918'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fe7d46afe'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f1081040e'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f232b3333'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f27cb3a50'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f2faff64b'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f6325c93d'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f6d6d5911'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f86983eac'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f974944b4'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fc1fec18b'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'ff5c5c7dd'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'ffabec8bc'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 2,
+                "error": "unknown context 'fa62cb628'",
+                "tool": "mcp__probe__wait"
+              }
+            ],
+            "error_result_count": 237,
+            "instrument_saturated_result_count": 193,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [
+              {
+                "arguments": "{\"t\": \"2300\"}",
+                "call_node_indices": [
+                  5185
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 5186,
+                "timestamp": 1788594757.637165,
+                "tool_call_id": "toolu_01D1hzTrKHnwvP7dEUkBDHvC"
+              },
+              {
+                "arguments": "{\"t\": \"1650\"}",
+                "call_node_indices": [
+                  5201
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 5212,
+                "timestamp": 1788594839.7915788,
+                "tool_call_id": "toolu_01UPkkEj2BQvk6pWWPuDv6i3"
+              },
+              {
+                "arguments": "{\"t\": \"1400\"}",
+                "call_node_indices": [
+                  5203
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 5214,
+                "timestamp": 1788594840.3750029,
+                "tool_call_id": "toolu_01Fg6CVUXTfqagTZfCvaPnED"
+              }
+            ],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__adjust": 184,
+              "mcp__probe__fork": 425,
+              "mcp__probe__inject": 36,
+              "mcp__probe__read": 487,
+              "mcp__probe__reset": 239,
+              "mcp__probe__status": 60,
+              "mcp__probe__wait": 73
+            }
+          },
+          "progress": {
+            "caution": "Failed tasks have no final readied/time_to_ready/metrics. Last observed phase is exploration; no accepted ready result was observed. Do not replace absent telemetry with zero.",
+            "last_status_phase": "exploration",
+            "last_status_submitted_flags": null,
+            "last_successful_world_tool_result_node": 5357,
+            "observed_accepted_probe_ready_results": 0,
+            "observed_probe_ready_results": 0
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [
+              {
+                "call_kind": "aux",
+                "count": 21,
+                "status_code": 404,
+                "type": "ProviderError"
+              }
+            ],
+            "call_count": 2141,
+            "call_error_count": 48,
+            "call_error_counts": [
+              {
+                "count": 1,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "JSONDecodeError"
+              },
+              {
+                "count": 7,
+                "endpoint": "/v1/messages",
+                "status_code": 402,
+                "type": "ProviderError"
+              },
+              {
+                "count": 39,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              },
+              {
+                "count": 1,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "calls_without_error": 2093,
+            "last_three_call_errors": [
+              {
+                "call_index": 2138,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363ae86ecb31492-EWR\",\"inference_id\":\"req_bafcadf0ba184e5b8093d04d55fe2fa7\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_bafcadf0ba184e5b8093d04d55fe2fa7",
+                  "request_id": "a363ae86ecb31492-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595032.2140968,
+                  "start": 1788595032.0722308
+                }
+              },
+              {
+                "call_index": 2139,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363af27ba37c701-EWR\",\"inference_id\":\"req_601aa57bc6fb46c1b7080f0f03ae5228\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_601aa57bc6fb46c1b7080f0f03ae5228",
+                  "request_id": "a363af27ba37c701-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595058.155644,
+                  "start": 1788595057.6829839
+                }
+              },
+              {
+                "call_index": 2140,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363b16c5cf74faa-EWR\",\"inference_id\":\"req_bdfe1d4220a7452f9943078bd6ffd368\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_bdfe1d4220a7452f9943078bd6ffd368",
+                  "request_id": "a363b16c5cf74faa-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595151.0955808,
+                  "start": 1788595150.576083
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [
+              {
+                "call_index": 1128,
+                "message": "Unterminated string starting at: line 1 column 13 (char 12)",
+                "timestamp": {
+                  "end": 1788589961.506326,
+                  "start": 1788589944.872535
+                },
+                "type": "JSONDecodeError"
+              },
+              {
+                "call_index": 1895,
+                "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                "timestamp": {
+                  "end": 1788593797.608895,
+                  "start": 1788593674.135039
+                },
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 213851362,
+              "completion_tokens": 1457247,
+              "prompt_tokens": 3997044,
+              "reasoning_tokens": 173760
+            }
+          },
+          "readied": null,
+          "resume_recommended": true,
+          "rewards_raw": {},
+          "scoring_detail_without_workspace": null,
+          "scoring_executed": false,
+          "skill": null,
+          "skill_per_tier": null,
+          "source_jsonl_line_1based": 3,
+          "task_content_sha256": "1c06882535a2f9121002dd6da5a08b6fb92e0857fe2999f382e0728bc91dac36",
+          "task_index": 0,
+          "task_name": "physim-BLOB2v2-E1#928",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [
+            {
+              "error": {
+                "code": "insufficient_funds",
+                "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                "metadata": {
+                  "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                },
+                "type": "billing_error"
+              },
+              "inference_id": "req_bdfe1d4220a7452f9943078bd6ffd368",
+              "request_id": "a363b16c5cf74faa-EWR",
+              "type": "error"
+            }
+          ],
+          "time_to_ready": null,
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:59:11.409566+00:00",
+            "scoring_end_utc": null,
+            "scoring_start_utc": null,
+            "start_utc": "2026-09-05T04:56:11.478191+00:00"
+          },
+          "trace_id": "759a50b441ef459489edbabd7760323a",
+          "v2_surface_valid": true,
+          "world": "p4g2_044",
+          "world_seed": 928
+        },
+        {
+          "cap_hits": null,
+          "cap_hits_total": null,
+          "classification": "failed_provider",
+          "difficulty": "BLOB2v2-E1",
+          "environment_meters": null,
+          "episode_id": "79a2cb75ce854d0c8b747a87f2d09020",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E1 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {5, 25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [4][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3E event rate. Predict the crossing count of the announced event\n     (port 7, sign 1, threshold 0.480784) in each of 16\n     consecutive 50tu windows starting at a hidden anchor, undisturbed;\n     windows may extend past the base record. domain: t_a continuous-\n     uniform in [600, 2300]. payload: [16]. ladder: zero-rate |\n     pre-anchor rate.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "2bfb333d8470af73c5836e0a9f2ccf3909160e280265f7431642104e0016bac2",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584252.746187,
+            "tool_call_id": "toolu_01SjXZhc9mnAjTmXW6UvHyeT"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              2457
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [
+                {
+                  "anchor_t": 2125.0,
+                  "id": "f62fcdfbd",
+                  "t_now": 2250.0
+                },
+                {
+                  "anchor_t": 2250.0,
+                  "id": "fefd5dfc5",
+                  "t_now": 2300.0
+                },
+                {
+                  "anchor_t": 625.0,
+                  "id": "fe50a9fe3",
+                  "t_now": 675.0
+                },
+                {
+                  "anchor_t": 2275.0,
+                  "id": "f9e6baef2",
+                  "t_now": 2300.0
+                },
+                {
+                  "anchor_t": 1000.0,
+                  "id": "fc1dedcdc",
+                  "t_now": 1250.0
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "t_base_head": 2480.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 2469,
+            "timestamp": 1788593871.160519,
+            "tool_call_id": "toolu_01HyXg3qy92GaA2ZPJXRwELP"
+          },
+          "log_rollout_done": [
+            {
+              "line": 265,
+              "text": "03:57:29    INFO rollout done: id=45d261304cfd41e1871fe49434a1ce69 task=1 reward=0.000 turns=1233 stop=ProviderError"
+            }
+          ],
+          "metrics_raw": {},
+          "nested_terminal": {
+            "errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aeecdc06187f-EWR\",\"inference_id\":\"req_15d3e2b7095d4205be48f299232e18ba\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "is_completed": true,
+            "ok": false,
+            "stop_condition": "error"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": false
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 10,
+            "error_groups": [
+              {
+                "count": 1,
+                "error": "unknown context 'f958739fe'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 87,
+                "error": "instrument saturated",
+                "tool": "mcp__probe__fork"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f82390583'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f9fe49861'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fae5255e2'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "ports must be 'all' or a list",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f1aa53346'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f3395a016'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f695690c4'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f82390583'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f95e1252a'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f05f794db'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f08464da1'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f097e3ab8'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f236efd92'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f33da27df'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f4944097e'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f4c6f8987'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f64401704'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f7779be12'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f81ee4e6f'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f95e1252a'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'feee53601'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'ff5fc16aa'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 3,
+                "error": "unknown context 'f695690c4'",
+                "tool": "mcp__probe__wait"
+              }
+            ],
+            "error_result_count": 114,
+            "instrument_saturated_result_count": 87,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [
+              {
+                "arguments": "{\"t\": \"1750\"}",
+                "call_node_indices": [
+                  2229
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 2230,
+                "timestamp": 1788593131.378494,
+                "tool_call_id": "toolu_01EYdM1riCwTgXYU9UmzebHd"
+              },
+              {
+                "arguments": "{\"ctx\": \"f1aa53346\", \"window\": 0, \"devices\": \"[0]\", \"ports\": \"[0]\"}",
+                "call_node_indices": [
+                  2383
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "unknown context 'f1aa53346'"
+                },
+                "name": "mcp__probe__read",
+                "result_node_index": 2388,
+                "timestamp": 1788593609.346376,
+                "tool_call_id": "toolu_01TNF5FQP16gtKHYTB3HwCbV"
+              },
+              {
+                "arguments": "{\"fork\": \"f977d87b9\"}",
+                "call_node_indices": [
+                  2435
+                ],
+                "decode_steps": [],
+                "decoded_result": "The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()",
+                "name": "mcp__probe__reset",
+                "result_node_index": 2436,
+                "timestamp": 1788593754.913594,
+                "tool_call_id": "toolu_01TzF99pti1VQyE9wBxeER3w"
+              }
+            ],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__adjust": 45,
+              "mcp__probe__fork": 242,
+              "mcp__probe__inject": 34,
+              "mcp__probe__read": 338,
+              "mcp__probe__reset": 181,
+              "mcp__probe__status": 38,
+              "mcp__probe__wait": 119
+            }
+          },
+          "progress": {
+            "caution": "Failed tasks have no final readied/time_to_ready/metrics. Last observed phase is exploration; no accepted ready result was observed. Do not replace absent telemetry with zero.",
+            "last_status_phase": "exploration",
+            "last_status_submitted_flags": null,
+            "last_successful_world_tool_result_node": 2713,
+            "observed_accepted_probe_ready_results": 0,
+            "observed_probe_ready_results": 0
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [
+              {
+                "call_kind": "aux",
+                "count": 12,
+                "status_code": 404,
+                "type": "ProviderError"
+              }
+            ],
+            "call_count": 1255,
+            "call_error_count": 22,
+            "call_error_counts": [
+              {
+                "count": 1,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "ClientConnectionResetError"
+              },
+              {
+                "count": 3,
+                "endpoint": "/v1/messages",
+                "status_code": 402,
+                "type": "ProviderError"
+              },
+              {
+                "count": 17,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              },
+              {
+                "count": 1,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "calls_without_error": 1233,
+            "last_three_call_errors": [
+              {
+                "call_index": 1252,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aeea582c187f-EWR\",\"inference_id\":\"req_abfa56b2810d43538decd63468059ffe\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_abfa56b2810d43538decd63468059ffe",
+                  "request_id": "a363aeea582c187f-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595048.257809,
+                  "start": 1788595047.9746199
+                }
+              },
+              {
+                "call_index": 1253,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aeecdc06187f-EWR\",\"inference_id\":\"req_15d3e2b7095d4205be48f299232e18ba\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_15d3e2b7095d4205be48f299232e18ba",
+                  "request_id": "a363aeecdc06187f-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595048.562591,
+                  "start": 1788595048.37982
+                }
+              },
+              {
+                "call_index": 1254,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "Cannot write to closing transport",
+                  "traceback": "Traceback (most recent call last):\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/verifiers/v1/interception/server.py\", line 650, in _stream\n    await resp.write(chunk)\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/aiohttp/web_response.py\", line 564, in write\n    await self._payload_writer.write(data)\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/aiohttp/http_writer.py\", line 199, in write\n    self._write_chunked_payload(chunk)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/aiohttp/http_writer.py\", line 122, in _write_chunked_payload\n    self._writelines((chunk_len_pre, chunk, b\"\\r\\n\"))\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/spoho/Documents/prime/test/physim/.venv/lib/python3.13/site-packages/aiohttp/http_writer.py\", line 113, in _writelines\n    raise ClientConnectionResetError(\"Cannot write to closing transport\")\naiohttp.client_exceptions.ClientConnectionResetError: Cannot write to closing transport\n",
+                  "type": "ClientConnectionResetError"
+                },
+                "provider_body": null,
+                "timestamp": {
+                  "end": 1788595048.7724512,
+                  "start": 1788594989.689821
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [
+              {
+                "call_index": 1121,
+                "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                "timestamp": {
+                  "end": 1788593845.0688,
+                  "start": 1788593751.43757
+                },
+                "type": "RemoteProtocolError"
+              },
+              {
+                "call_index": 1254,
+                "message": "Cannot write to closing transport",
+                "timestamp": {
+                  "end": 1788595048.7724512,
+                  "start": 1788594989.689821
+                },
+                "type": "ClientConnectionResetError"
+              }
+            ],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 193590158,
+              "completion_tokens": 1175813,
+              "prompt_tokens": 3805683,
+              "reasoning_tokens": 134749
+            }
+          },
+          "readied": null,
+          "resume_recommended": true,
+          "rewards_raw": {},
+          "scoring_detail_without_workspace": null,
+          "scoring_executed": false,
+          "skill": null,
+          "skill_per_tier": null,
+          "source_jsonl_line_1based": 2,
+          "task_content_sha256": "32abb021c931069dcd22469c0a456dd9ff53623500d60b6ff9bb467b206cbe9d",
+          "task_index": 1,
+          "task_name": "physim-BLOB2v2-E1#929",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [
+            {
+              "error": {
+                "code": "insufficient_funds",
+                "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                "metadata": {
+                  "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                },
+                "type": "billing_error"
+              },
+              "inference_id": "req_15d3e2b7095d4205be48f299232e18ba",
+              "request_id": "a363aeecdc06187f-EWR",
+              "type": "error"
+            }
+          ],
+          "time_to_ready": null,
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:57:28.908037+00:00",
+            "scoring_end_utc": null,
+            "scoring_start_utc": null,
+            "start_utc": "2026-09-05T04:56:11.482962+00:00"
+          },
+          "trace_id": "45d261304cfd41e1871fe49434a1ce69",
+          "v2_surface_valid": true,
+          "world": "p4g2_044",
+          "world_seed": 929
+        },
+        {
+          "cap_hits": null,
+          "cap_hits_total": null,
+          "classification": "failed_provider",
+          "difficulty": "BLOB2v2-E1",
+          "environment_meters": null,
+          "episode_id": "8786fdcbbe8c4fe9a9db4a901a02546e",
+          "first_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3,
+              5
+            ],
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "syllabus": "SYLLABUS \u2014 BLOB2v2-E1 (the only contract text before the reveal)\nThis episode has two phases. NOW (exploration): probe_read / probe_wait /\nprobe_adjust / probe_fork / probe_reset / probe_inject are open on the\nbase record and on your forks. WHEN YOU CALL probe_ready(): the six\ninstances below are revealed with concrete values, every world tool\ncloses for the rest of the episode, and probe_submit opens. Everything\noutside the world (your notes, files, code) stays available. Submit\n{\"mean\",\"sigma\"} arrays of the stated shape per instance; resubmission\nallowed, last accepted wins; unsubmitted instances score -1.\nScoring per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1],\nwhere CRPS_ref is the best of the stated reference forecasts (\"ladder\"),\nfit to pre-anchor base-record data; reward = mean over the six.\nHidden instance parameters are sampled once per episode from the stated\ndomains and revealed all at once at probe_ready(). CONTINUOUS means any\nreal value in the range \u2014 do not expect grid values. tu = time units of\nthe base record, which spans [0, 2500].\n L1  apparatus response. At a hidden anchor a fresh fork is taken and a\n     hidden command sequence is applied to device 0 (from its t=0\n     configuration); predict device 0's reading right after the final\n     command. domain: anchor t_a continuous-uniform in [600, 2300];\n     sequence length in {1, 2, 3}; each command u in [-1, 1]^3,\n     components continuous, one control step each; only sequences the\n     apparatus accepts are drawn. payload: [ports][slots of device 0].\n     ladder: climatology | persistence.\n L2  hidden-sensor nowcast. One additional fixed sensor cluster of 13\n     slots reports the same ports; predict its reading vector at a\n     hidden anchor. domain: t_a continuous-uniform in [600, 2300].\n     payload: [ports][13]. ladder: global climatology | global\n     persistence.\n L3F forecast. Predict device i's streams (t=0 configuration) at every\n     horizon H in {5, 25, 100, 400} tu after a hidden anchor,\n     undisturbed. domain: device i uniform over your devices {0, 1};\n     t_a continuous-uniform in [600, 2300]. payload:\n     [4][ports][slots of device i]. ladder: climatology | persistence\n     | AR(2).\n L3E event rate. Predict the crossing count of the announced event\n     (port 9, sign 1, threshold 0.092351) in each of 16\n     consecutive 50tu windows starting at a hidden anchor, undisturbed;\n     windows may extend past the base record. domain: t_a continuous-\n     uniform in [600, 2300]. payload: [16]. ladder: zero-rate |\n     pre-anchor rate.\n L4  emission response, beyond the apparatus range. At a hidden anchor a\n     fresh fork is taken and one hidden emission is driven through the\n     same emitter probe_inject uses; predict device 1's streams (t=0\n     configuration) at lags {10, 25, 50, 100, 175, 250} tu from emission\n     start. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [1.5, 3.0] (your\n     apparatus stops at 1.0); dur continuous-uniform in [5, 20] tu.\n     payload: [6][ports][slots of device 1]. ladder: climatology |\n     persistence.\n L4D emission response, inside the apparatus range. Same protocol shape\n     as L4. domain: t_a continuous-uniform in [600, 2300]; port uniform\n     over the ports; amp continuous-uniform in [0.30, 0.90]; dur\n     continuous-uniform in [5, 20] tu; lags {25, 75, 150} tu. payload:\n     [3][ports][slots of device 1]. ladder: climatology | persistence.",
+              "t_base_head": 0.0
+            },
+            "name": "mcp__probe__status",
+            "raw_tool_content_sha256": "6a75610110c434102f29c8edd0bdbf480dd224eb406b746fe4adf8e59834023f",
+            "result_node_index": 6,
+            "source": "nodes[].message with role=tool; not task prompt or tool schema",
+            "surface_checks": {
+              "T_BASE_is_2500": true,
+              "actual_tool_result": true,
+              "budget_absent_recursively": true,
+              "decoded_nested_json": true,
+              "phase_exploration": true,
+              "ports_match": true,
+              "syllabus_matches_difficulty": true,
+              "t_end_of_span_absent_recursively": true
+            },
+            "timestamp": 1788584228.391295,
+            "tool_call_id": "toolu_01AuzbACQJ2XcAMHoMovtU8W"
+          },
+          "last_observed_probe_status": {
+            "arguments": "{}",
+            "call_node_indices": [
+              3833
+            ],
+            "caution": "Last observed status, not inferred terminal telemetry.",
+            "decode_steps": [
+              "json.loads",
+              "result",
+              "json.loads"
+            ],
+            "decoded_result_without_syllabus": {
+              "T_BASE": 2500.0,
+              "apparatus": {
+                "amp_range": [
+                  0.05,
+                  1.0
+                ],
+                "amp_zero_ok": true,
+                "dur_range_tu": [
+                  0.0,
+                  50.0
+                ],
+                "emission": "all emissions enter through the same fixed emission channel; where and what it couples to is undisclosed",
+                "u_range": [
+                  -1.0,
+                  1.0
+                ]
+              },
+              "contexts": [
+                {
+                  "anchor_t": 1100.0,
+                  "id": "fd4042f9c",
+                  "t_now": 1500.0
+                },
+                {
+                  "anchor_t": 1500.0,
+                  "id": "fb7ba032d",
+                  "t_now": 1515.0
+                },
+                {
+                  "anchor_t": 1500.0,
+                  "id": "f92d355bf",
+                  "t_now": 1505.0
+                },
+                {
+                  "anchor_t": 600.0,
+                  "id": "f274d1408",
+                  "t_now": 610.0
+                },
+                {
+                  "anchor_t": 1800.0,
+                  "id": "f1ba20a8b",
+                  "t_now": 1810.0
+                },
+                {
+                  "anchor_t": 1050.0,
+                  "id": "f6628f3d4",
+                  "t_now": 1060.0
+                },
+                {
+                  "anchor_t": 1000.0,
+                  "id": "fe8c8a749",
+                  "t_now": 1100.0
+                },
+                {
+                  "anchor_t": 2200.0,
+                  "id": "fb11c1819",
+                  "t_now": 2275.0
+                }
+              ],
+              "n_actuator_channels": 3,
+              "n_devices": 2,
+              "phase": "exploration",
+              "ports": 12,
+              "slots_per_device": [
+                13,
+                19
+              ],
+              "step_tu": 5.0,
+              "t_base_head": 1055.0
+            },
+            "name": "mcp__probe__status",
+            "result_node_index": 3834,
+            "timestamp": 1788594024.505862,
+            "tool_call_id": "toolu_01KxQnMfY5vYY4juLiw7gnq7"
+          },
+          "log_rollout_done": [
+            {
+              "line": 262,
+              "text": "03:57:27    INFO rollout done: id=829b7b6807fa4f058c374f7482049012 task=2 reward=0.000 turns=1848 stop=ProviderError"
+            }
+          ],
+          "metrics_raw": {},
+          "nested_terminal": {
+            "errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aee17c71d953-EWR\",\"inference_id\":\"req_c9a3ccb894864843add8cbad3801b356\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "is_completed": true,
+            "ok": false,
+            "stop_condition": "error"
+          },
+          "outer_terminal": {
+            "errors": [],
+            "ok": false
+          },
+          "probe_wire_observations": {
+            "adjust_rejected_result_count": 4,
+            "error_groups": [
+              {
+                "count": 1,
+                "error": "unknown context 'f2ee82c61'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fdca280d2'",
+                "tool": "mcp__probe__adjust"
+              },
+              {
+                "count": 147,
+                "error": "instrument saturated",
+                "tool": "mcp__probe__fork"
+              },
+              {
+                "count": 3,
+                "error": "unknown context 'fc22575bf'",
+                "tool": "mcp__probe__inject"
+              },
+              {
+                "count": 1,
+                "error": "ports must be 'all' or a list of ints",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f299a83fc'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f2ea30523'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f3ef67f3f'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'feab49cbe'",
+                "tool": "mcp__probe__read"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f066a93b2'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f086416c7'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f18321ffb'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f2ea30523'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f3f98e795'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f64b3ccc0'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'f7f91acd5'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fb189d404'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 2,
+                "error": "unknown context 'fc22575bf'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fc4674bc0'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fdca280d2'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 1,
+                "error": "unknown context 'fe40161fa'",
+                "tool": "mcp__probe__reset"
+              },
+              {
+                "count": 3,
+                "error": "unknown context 'fea64ca56'",
+                "tool": "mcp__probe__reset"
+              }
+            ],
+            "error_result_count": 173,
+            "instrument_saturated_result_count": 147,
+            "instrument_saturated_warning": "Observed generic denials only; exact cap category and total for failed tasks are unavailable.",
+            "last_error_results": [
+              {
+                "arguments": "{\"t\": \"1050\"}",
+                "call_node_indices": [
+                  3865
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 3866,
+                "timestamp": 1788594098.235937,
+                "tool_call_id": "toolu_01GMfX8c3sMkfzFjXogxJQJ3"
+              },
+              {
+                "arguments": "{\"t\": \"1050\"}",
+                "call_node_indices": [
+                  3877
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 3878,
+                "timestamp": 1788594151.854576,
+                "tool_call_id": "toolu_01Me5szaML87H5sqKVgaDziC"
+              },
+              {
+                "arguments": "{\"t\": \"1050\"}",
+                "call_node_indices": [
+                  3891
+                ],
+                "decode_steps": [
+                  "json.loads",
+                  "result",
+                  "json.loads"
+                ],
+                "decoded_result": {
+                  "error": "instrument saturated"
+                },
+                "name": "mcp__probe__fork",
+                "result_node_index": 3892,
+                "timestamp": 1788594197.756386,
+                "tool_call_id": "toolu_01UnxPftCZaQaT9fvUjqoneA"
+              }
+            ],
+            "method": "Match tool_call_id; deduplicate identical (tool_call_id, raw content) result messages across DAG history. Counts cover explicit MCP tool returns only, not direct HTTP calls inside scripts. They are not environment meters.",
+            "result_counts_by_tool": {
+              "mcp__probe__adjust": 160,
+              "mcp__probe__fork": 377,
+              "mcp__probe__inject": 46,
+              "mcp__probe__read": 350,
+              "mcp__probe__reset": 247,
+              "mcp__probe__status": 106
+            }
+          },
+          "progress": {
+            "caution": "Failed tasks have no final readied/time_to_ready/metrics. Last observed phase is exploration; no accepted ready result was observed. Do not replace absent telemetry with zero.",
+            "last_status_phase": "exploration",
+            "last_status_submitted_flags": null,
+            "last_successful_world_tool_result_node": 4305,
+            "observed_accepted_probe_ready_results": 0,
+            "observed_probe_ready_results": 0
+          },
+          "provider_and_transport": {
+            "aux_call_errors_from_log": [],
+            "call_count": 1881,
+            "call_error_count": 33,
+            "call_error_counts": [
+              {
+                "count": 6,
+                "endpoint": "/v1/messages",
+                "status_code": 402,
+                "type": "ProviderError"
+              },
+              {
+                "count": 25,
+                "endpoint": "/v1/messages",
+                "status_code": 429,
+                "type": "ProviderError"
+              },
+              {
+                "count": 2,
+                "endpoint": "/v1/messages",
+                "status_code": null,
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "calls_without_error": 1848,
+            "last_three_call_errors": [
+              {
+                "call_index": 1877,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363ae6bbac91492-EWR\",\"inference_id\":\"req_a875fcac4a404fdf9c5bef4371c40c71\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_a875fcac4a404fdf9c5bef4371c40c71",
+                  "request_id": "a363ae6bbac91492-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595028.1448472,
+                  "start": 1788595027.7183008
+                }
+              },
+              {
+                "call_index": 1879,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aee06a5ad953-EWR\",\"inference_id\":\"req_2b208eb0ac9c41d7983c0e6046092ceb\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_2b208eb0ac9c41d7983c0e6046092ceb",
+                  "request_id": "a363aee06a5ad953-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595046.4968581,
+                  "start": 1788595046.390502
+                }
+              },
+              {
+                "call_index": 1880,
+                "endpoint": "/v1/messages",
+                "error": {
+                  "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aee17c71d953-EWR\",\"inference_id\":\"req_c9a3ccb894864843add8cbad3801b356\"}",
+                  "status_code": 402,
+                  "type": "ProviderError"
+                },
+                "provider_body": {
+                  "error": {
+                    "code": "insufficient_funds",
+                    "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                    "metadata": {
+                      "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                    },
+                    "type": "billing_error"
+                  },
+                  "inference_id": "req_c9a3ccb894864843add8cbad3801b356",
+                  "request_id": "a363aee17c71d953-EWR",
+                  "type": "error"
+                },
+                "timestamp": {
+                  "end": 1788595046.8075461,
+                  "start": 1788595046.556389
+                }
+              }
+            ],
+            "non_provider_call_error_summaries": [
+              {
+                "call_index": 1625,
+                "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                "timestamp": {
+                  "end": 1788593823.361588,
+                  "start": 1788593754.591599
+                },
+                "type": "RemoteProtocolError"
+              },
+              {
+                "call_index": 1651,
+                "message": "peer closed connection without sending complete message body (incomplete chunked read)",
+                "timestamp": {
+                  "end": 1788593941.357942,
+                  "start": 1788593823.986527
+                },
+                "type": "RemoteProtocolError"
+              }
+            ],
+            "usage_totals_from_recorded_calls": {
+              "cached_input_tokens": 138237689,
+              "completion_tokens": 1638331,
+              "prompt_tokens": 4705522,
+              "reasoning_tokens": 131176
+            }
+          },
+          "readied": null,
+          "resume_recommended": true,
+          "rewards_raw": {},
+          "scoring_detail_without_workspace": null,
+          "scoring_executed": false,
+          "skill": null,
+          "skill_per_tier": null,
+          "source_jsonl_line_1based": 1,
+          "task_content_sha256": "e28c94a3aa838367685f46c6870da9251728353fadc12bf64adebdbc03377717",
+          "task_index": 2,
+          "task_name": "physim-BLOB2v2-E1#930",
+          "task_tier_field": "tools",
+          "task_type": "Blob5Task",
+          "terminal_provider_bodies": [
+            {
+              "error": {
+                "code": "insufficient_funds",
+                "message": "Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.",
+                "metadata": {
+                  "help_url": "https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds"
+                },
+                "type": "billing_error"
+              },
+              "inference_id": "req_c9a3ccb894864843add8cbad3801b356",
+              "request_id": "a363aee17c71d953-EWR",
+              "type": "error"
+            }
+          ],
+          "time_to_ready": null,
+          "timing": {
+            "agent_end_utc": "2026-09-05T07:57:27.192845+00:00",
+            "scoring_end_utc": null,
+            "scoring_start_utc": null,
+            "start_utc": "2026-09-05T04:56:11.486975+00:00"
+          },
+          "trace_id": "829b7b6807fa4f058c374f7482049012",
+          "v2_surface_valid": true,
+          "world": "p4g2_044",
+          "world_seed": 930
+        }
+      ],
+      "v2_scripted_floor_context_only": {
+        "all_pass": true,
+        "n": 3,
+        "reward_mean": 0.2206,
+        "skills_mean": {
+          "L1": 0.001,
+          "L2": 0.0014,
+          "L3E": 0.0163,
+          "L3F": -0.2893,
+          "L4": 0.7582,
+          "L4D": 0.8359
+        },
+        "zero_cap_hits": true
+      }
+    }
+  ],
+  "schema_version": 1,
+  "scope": {
+    "excluded_reason": "Earlier invalid v1-surface/v2-scoring runs are not opened, counted, compared, or used.",
+    "excluded_run_ids": [
+      "babe2a40-6612-4fca-966e-543eccb53580",
+      "791527b3-ada2-4660-998a-96b5d26863f2"
+    ],
+    "haiku_note": "Independent Fable status validation was required and performed. The Haiku run is not evidence for Fable scores or completion.",
+    "haiku_run_not_used": "24482991-9d89-4c4e-a5f0-ba14f29aeb29",
+    "valid_source_run_ids": [
+      "51d11a68-92fe-405f-aeb8-3b345bb69469",
+      "588029cc-23dd-4b89-88e9-2813a3fa73b9"
+    ]
+  },
+  "seed_mapping_evidence": {
+    "config": "env.taskset.seed0=0; num_tasks=3; shuffle=false; num_rollouts=1",
+    "episode_source": "environments/physim/physim/blobround5.py:68-70,112-115",
+    "expected": {
+      "E1": {
+        "ports": 12,
+        "seeds": [
+          928,
+          929,
+          930
+        ],
+        "world": "p4g2_044"
+      },
+      "E2": {
+        "ports": 13,
+        "seeds": [
+          942,
+          943,
+          944
+        ],
+        "world": "p6g8_033"
+      }
+    },
+    "rule": "episode seed = EPISODES5[difficulty].seeds[(seed0 + task_index) % 3]",
+    "taskset_source": "environments/physim/physim/taskset.py:744-772"
+  },
+  "summary": "Both valid configurations and all six first tool status results use the BLOB2v2 surface. E2 has two scored completions and one explicit 402 billing failure; E1 has three explicit 402 billing failures and no scores. No full-run or cross-menu final mean is available.",
+  "summary_counts": {
+    "expected_rollouts": 6,
+    "failed_rollouts": 4,
+    "missing_rollouts": 0,
+    "successful_scored_rollouts": 2,
+    "unknown_terminal_rollouts": 0,
+    "v2_surface_verified_rollouts": 6
+  },
+  "surface_method": "Read actual tool result content at node index 6 in every trace. Apply json.loads(content), select result, then json.loads(result). Validate syllabus name, phase=exploration, T_BASE=2500, expected ports, and recursive absence of budget/t_end_of_span. Tool definitions and system prompts are not used as surface evidence."
+}

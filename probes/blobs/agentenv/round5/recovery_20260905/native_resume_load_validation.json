@@ -1,0 +1,221 @@
+{
+  "assertions_passed": true,
+  "audit_utc": "2026-09-05T20:50:00.636510+00:00",
+  "copies_only": true,
+  "eval_or_model_launched": false,
+  "native_api": "verifiers.v1.cli.eval.resume.load",
+  "project_interpreter": "/Users/spoho/Documents/prime/test/physim/.venv/bin/python",
+  "runs": {
+    "E1": {
+      "before": {
+        "copy_trace_sha256": "087091f0b6c67a2e860837b0ae518074b446fe65cf97172a7511670f2db703cd",
+        "native_episode_checks": [
+          {
+            "native_episode_ok": false,
+            "nested_trace_errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363b16c5cf74faa-EWR\",\"inference_id\":\"req_bdfe1d4220a7452f9943078bd6ffd368\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "nested_trace_ok": [
+              false
+            ],
+            "original_episode_id": "0ec62525d16a4b8cb9ef6d14548a6857",
+            "original_trace_id": "759a50b441ef459489edbabd7760323a",
+            "saved_outer_errors": [],
+            "saved_outer_ok": false,
+            "task_index": 0,
+            "task_key": "1c06882535a2f9121002dd6da5a08b6fb92e0857fe2999f382e0728bc91dac36",
+            "task_name": "physim-BLOB2v2-E1#928",
+            "world_seed": 928
+          },
+          {
+            "native_episode_ok": false,
+            "nested_trace_errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aeecdc06187f-EWR\",\"inference_id\":\"req_15d3e2b7095d4205be48f299232e18ba\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "nested_trace_ok": [
+              false
+            ],
+            "original_episode_id": "79a2cb75ce854d0c8b747a87f2d09020",
+            "original_trace_id": "45d261304cfd41e1871fe49434a1ce69",
+            "saved_outer_errors": [],
+            "saved_outer_ok": false,
+            "task_index": 1,
+            "task_key": "32abb021c931069dcd22469c0a456dd9ff53623500d60b6ff9bb467b206cbe9d",
+            "task_name": "physim-BLOB2v2-E1#929",
+            "world_seed": 929
+          },
+          {
+            "native_episode_ok": false,
+            "nested_trace_errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aee17c71d953-EWR\",\"inference_id\":\"req_c9a3ccb894864843add8cbad3801b356\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "nested_trace_ok": [
+              false
+            ],
+            "original_episode_id": "8786fdcbbe8c4fe9a9db4a901a02546e",
+            "original_trace_id": "829b7b6807fa4f058c374f7482049012",
+            "saved_outer_errors": [],
+            "saved_outer_ok": false,
+            "task_index": 2,
+            "task_key": "e28c94a3aa838367685f46c6870da9251728353fadc12bf64adebdbc03377717",
+            "task_name": "physim-BLOB2v2-E1#930",
+            "world_seed": 930
+          }
+        ],
+        "original_hashes": {
+          "config.toml": "49156fa61bdbf84bb583a6e5367feec3236078f3b02a25a27951943b9f0f2ecf",
+          "eval.log": "9eed33cb1d0e6b9668d1366d135180db1252e8dc1f70dcb214b734cf637ee1b9",
+          "traces.jsonl": "087091f0b6c67a2e860837b0ae518074b446fe65cf97172a7511670f2db703cd"
+        }
+      },
+      "config_loaded_verbatim": true,
+      "copy_dir": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1",
+      "copy_trace_bytes_after_prune": 0,
+      "copy_trace_sha256_after_prune": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kept_count": 0,
+      "kept_episode_ids": [],
+      "kept_trace_ids": [],
+      "original_dir": "/Users/spoho/Documents/prime/test/physim/outputs/physim--anthropic--claude-fable-5--claude_code/588029cc-23dd-4b89-88e9-2813a3fa73b9",
+      "original_files_unchanged": true,
+      "owed": [
+        {
+          "num_rollouts": 1,
+          "original_episode_id": "0ec62525d16a4b8cb9ef6d14548a6857",
+          "original_trace_id": "759a50b441ef459489edbabd7760323a",
+          "task_index": 0,
+          "task_key": "1c06882535a2f9121002dd6da5a08b6fb92e0857fe2999f382e0728bc91dac36",
+          "task_name": "physim-BLOB2v2-E1#928",
+          "world_seed": 928
+        },
+        {
+          "num_rollouts": 1,
+          "original_episode_id": "79a2cb75ce854d0c8b747a87f2d09020",
+          "original_trace_id": "45d261304cfd41e1871fe49434a1ce69",
+          "task_index": 1,
+          "task_key": "32abb021c931069dcd22469c0a456dd9ff53623500d60b6ff9bb467b206cbe9d",
+          "task_name": "physim-BLOB2v2-E1#929",
+          "world_seed": 929
+        },
+        {
+          "num_rollouts": 1,
+          "original_episode_id": "8786fdcbbe8c4fe9a9db4a901a02546e",
+          "original_trace_id": "829b7b6807fa4f058c374f7482049012",
+          "task_index": 2,
+          "task_key": "e28c94a3aa838367685f46c6870da9251728353fadc12bf64adebdbc03377717",
+          "task_name": "physim-BLOB2v2-E1#930",
+          "world_seed": 930
+        }
+      ],
+      "owed_count": 3,
+      "push": true,
+      "resume_command_NOT_EXECUTED": ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E1",
+      "run_id": "588029cc-23dd-4b89-88e9-2813a3fa73b9"
+    },
+    "E2": {
+      "before": {
+        "copy_trace_sha256": "66a439e62b0d8079011c81f4b80c9f917822edc58d6450881894d6bad13e5ac1",
+        "native_episode_checks": [
+          {
+            "native_episode_ok": true,
+            "nested_trace_errors": [],
+            "nested_trace_ok": [
+              true
+            ],
+            "original_episode_id": "eb95d03bb1c049dbaa70fc2bd1632673",
+            "original_trace_id": "344a8d7d8b7b433cb7d73cbf8a402aac",
+            "saved_outer_errors": [],
+            "saved_outer_ok": true,
+            "task_index": 0,
+            "task_key": "a828b12baa3b9e8617e290a29c08c8b534706d60cbc964162aa94cc0c6f2af4e",
+            "task_name": "physim-BLOB2v2-E2#942",
+            "world_seed": 942
+          },
+          {
+            "native_episode_ok": true,
+            "nested_trace_errors": [],
+            "nested_trace_ok": [
+              true
+            ],
+            "original_episode_id": "8ed2673ea88641d9b6af990d7002c61e",
+            "original_trace_id": "529feadde86341e5b3ae008c20a24872",
+            "saved_outer_errors": [],
+            "saved_outer_ok": true,
+            "task_index": 1,
+            "task_key": "aef8273bd4dfe08f578bca1ceb95ba7fa3be5d81064804692f0efafd158589e5",
+            "task_name": "physim-BLOB2v2-E2#943",
+            "world_seed": 943
+          },
+          {
+            "native_episode_ok": false,
+            "nested_trace_errors": [
+              {
+                "message": "upstream 402: {\"type\":\"error\",\"error\":{\"type\":\"billing_error\",\"message\":\"Insufficient balance (including overdraft). Please add funds to continue. Requests are authenticated by PRIME_API_KEY and billed to the personal balance unless the request includes X-Prime-Team-ID. Add funds to the selected balance. If you intended to use team billing, send X-Prime-Team-ID with the team ID and make sure that team has funds. See https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds.\",\"code\":\"insufficient_funds\",\"metadata\":{\"help_url\":\"https://docs.primeintellect.ai/inference/troubleshooting#insufficient-funds\"}},\"request_id\":\"a363aef568a54237-EWR\",\"inference_id\":\"req_f784853b3c9b4ebda762dc07312f3e38\"}",
+                "status_code": 402,
+                "type": "ProviderError"
+              }
+            ],
+            "nested_trace_ok": [
+              false
+            ],
+            "original_episode_id": "280eba004d644ee4ba878c08354a1785",
+            "original_trace_id": "0819dd2bf7404901a752a4fa0b2ccec3",
+            "saved_outer_errors": [],
+            "saved_outer_ok": false,
+            "task_index": 2,
+            "task_key": "1dc86a5d7f5bca1f4a5b9a24cc20a02a6f442846e32c195a16de15a28696150c",
+            "task_name": "physim-BLOB2v2-E2#944",
+            "world_seed": 944
+          }
+        ],
+        "original_hashes": {
+          "config.toml": "1954d70cd3f31f5b692693861bda22dde1d4d64164b8ef739e13065690edd996",
+          "eval.log": "ebf3c50a471c549dca30843e88e8e4d9759c2e81a43729f91477eab59c3ca005",
+          "traces.jsonl": "66a439e62b0d8079011c81f4b80c9f917822edc58d6450881894d6bad13e5ac1"
+        }
+      },
+      "config_loaded_verbatim": true,
+      "copy_dir": "/Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2",
+      "copy_trace_bytes_after_prune": 4167693,
+      "copy_trace_sha256_after_prune": "5523d89f04953ef1f654f3d47f0b9a4e1d407c483227c96bed0d54a5dd46dcb3",
+      "kept_count": 2,
+      "kept_episode_ids": [
+        "eb95d03bb1c049dbaa70fc2bd1632673",
+        "8ed2673ea88641d9b6af990d7002c61e"
+      ],
+      "kept_trace_ids": [
+        "344a8d7d8b7b433cb7d73cbf8a402aac",
+        "529feadde86341e5b3ae008c20a24872"
+      ],
+      "original_dir": "/Users/spoho/Documents/prime/test/physim/outputs/physim--anthropic--claude-fable-5--claude_code/51d11a68-92fe-405f-aeb8-3b345bb69469",
+      "original_files_unchanged": true,
+      "owed": [
+        {
+          "num_rollouts": 1,
+          "original_episode_id": "280eba004d644ee4ba878c08354a1785",
+          "original_trace_id": "0819dd2bf7404901a752a4fa0b2ccec3",
+          "task_index": 2,
+          "task_key": "1dc86a5d7f5bca1f4a5b9a24cc20a02a6f442846e32c195a16de15a28696150c",
+          "task_name": "physim-BLOB2v2-E2#944",
+          "world_seed": 944
+        }
+      ],
+      "owed_count": 1,
+      "push": true,
+      "resume_command_NOT_EXECUTED": ".venv/bin/eval --resume /Users/spoho/v3work/ops/recovery_20260905/eval_resume/E2",
+      "run_id": "51d11a68-92fe-405f-aeb8-3b345bb69469"
+    }
+  },
+  "selected_keys_method": "native task_key(original task wire data), sorted by task data.idx"
+}
