@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "validation": {
+    "mode": "native_cli_parse_only",
+    "parser": "pydantic_config.cli(narrow_config(EvalConfig, with_positional_taskset(argv)))",
+    "command": ".venv/bin/python -B -c 'import sys, json\nfrom pydantic_config import cli\nfrom verifiers.v1.cli.resolve import with_positional_taskset, narrow_config\nfrom verifiers.v1.configs.cli.eval import EvalConfig\nspecs = [{'\"'\"'id'\"'\"': '\"'\"'fresh_full_E1'\"'\"', '\"'\"'kind'\"'\"': '\"'\"'fresh_full_cohort'\"'\"', '\"'\"'argv'\"'\"': ['\"'\"'physim'\"'\"', '\"'\"'--env.taskset.difficulty'\"'\"', '\"'\"'BLOB2v2r2-E1'\"'\"', '\"'\"'-m'\"'\"', '\"'\"'anthropic/claude-fable-5'\"'\"', '\"'\"'-n'\"'\"', '\"'\"'3'\"'\"', '\"'\"'-r'\"'\"', '\"'\"'1'\"'\"', '\"'\"'-c'\"'\"', '\"'\"'1'\"'\"', '\"'\"'--shuffle'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--env.taskset.tier'\"'\"', '\"'\"'tools'\"'\"', '\"'\"'--env.taskset.seed0'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.harness.id'\"'\"', '\"'\"'claude_code'\"'\"', '\"'\"'--env.scientist.harness.version'\"'\"', '\"'\"'2.1.223'\"'\"', '\"'\"'--env.scientist.runtime.type'\"'\"', '\"'\"'docker'\"'\"', '\"'\"'--env.scientist.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--env.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--rich'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--push'\"'\"', '\"'\"'False'\"'\"']}, {'\"'\"'id'\"'\"': '\"'\"'fresh_full_E2'\"'\"', '\"'\"'kind'\"'\"': '\"'\"'fresh_full_cohort'\"'\"', '\"'\"'argv'\"'\"': ['\"'\"'physim'\"'\"', '\"'\"'--env.taskset.difficulty'\"'\"', '\"'\"'BLOB2v2r2-E2'\"'\"', '\"'\"'-m'\"'\"', '\"'\"'anthropic/claude-fable-5'\"'\"', '\"'\"'-n'\"'\"', '\"'\"'3'\"'\"', '\"'\"'-r'\"'\"', '\"'\"'1'\"'\"', '\"'\"'-c'\"'\"', '\"'\"'1'\"'\"', '\"'\"'--shuffle'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--env.taskset.tier'\"'\"', '\"'\"'tools'\"'\"', '\"'\"'--env.taskset.seed0'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.harness.id'\"'\"', '\"'\"'claude_code'\"'\"', '\"'\"'--env.scientist.harness.version'\"'\"', '\"'\"'2.1.223'\"'\"', '\"'\"'--env.scientist.runtime.type'\"'\"', '\"'\"'docker'\"'\"', '\"'\"'--env.scientist.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--env.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--rich'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--push'\"'\"', '\"'\"'False'\"'\"']}, {'\"'\"'id'\"'\"': '\"'\"'short_fable_E1'\"'\"', '\"'\"'kind'\"'\"': '\"'\"'interface_smoke_only'\"'\"', '\"'\"'argv'\"'\"': ['\"'\"'physim'\"'\"', '\"'\"'--env.taskset.difficulty'\"'\"', '\"'\"'BLOB2v2r2-E1'\"'\"', '\"'\"'-m'\"'\"', '\"'\"'anthropic/claude-fable-5'\"'\"', '\"'\"'-n'\"'\"', '\"'\"'1'\"'\"', '\"'\"'-r'\"'\"', '\"'\"'1'\"'\"', '\"'\"'-c'\"'\"', '\"'\"'1'\"'\"', '\"'\"'--shuffle'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--env.taskset.tier'\"'\"', '\"'\"'tools'\"'\"', '\"'\"'--env.taskset.seed0'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.harness.id'\"'\"', '\"'\"'claude_code'\"'\"', '\"'\"'--env.scientist.harness.version'\"'\"', '\"'\"'2.1.223'\"'\"', '\"'\"'--env.scientist.runtime.type'\"'\"', '\"'\"'docker'\"'\"', '\"'\"'--env.scientist.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.retries.max-retries'\"'\"', '\"'\"'0'\"'\"', '\"'\"'--env.scientist.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--env.retries.exclude'\"'\"', '\"'\"'ResourceSafetyError'\"'\"', '\"'\"'--rich'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--push'\"'\"', '\"'\"'False'\"'\"', '\"'\"'--env.scientist.max-turns'\"'\"', '\"'\"'8'\"'\"', '\"'\"'--env.scientist.timeout.rollout'\"'\"', '\"'\"'180'\"'\"']}]\nresults = []\nfor spec in specs:\n    argv = with_positional_taskset(spec[\"argv\"])\n    sys.argv = [\"native-parse-only\", *argv]\n    c = cli(narrow_config(EvalConfig, argv))\n    scientist = c.env.scientist\n    row = {\"id\": spec[\"id\"], \"kind\": spec[\"kind\"],\n           \"env_type\": type(c.env).__name__, \"difficulty\": c.env.taskset.difficulty,\n           \"seed0\": c.env.taskset.seed0, \"shuffle\": c.shuffle,\n           \"model\": c.model, \"tasks\": c.num_tasks, \"rollouts\": c.num_rollouts,\n           \"concurrency\": c.max_concurrent, \"tier\": c.env.taskset.tier,\n           \"harness\": scientist.harness.model_dump(mode=\"json\"),\n           \"runtime\": scientist.runtime.type,\n           \"model_turn_cap\": scientist.max_turns,\n           \"token_caps\": {k:getattr(scientist,k) for k in\n                          (\"max_input_tokens\",\"max_output_tokens\",\"max_total_tokens\")},\n           \"agent_timeouts\": scientist.timeout.model_dump(mode=\"json\"),\n           \"env_timeouts\": c.env.timeout.model_dump(mode=\"json\"),\n           \"env_retries\": c.env.retries.model_dump(mode=\"json\"),\n           \"agent_retries\": scientist.retries.model_dump(mode=\"json\"),\n           \"rich\": c.rich, \"server\": c.server, \"resume\": c.resume,\n           \"push\": c.push, \"explicit_output_dir\": c.output_dir}\n    assert type(c.env).__name__ == \"PhysimEnvConfig\"\n    assert c.model == \"anthropic/claude-fable-5\"\n    assert c.env.taskset.seed0 == 0 and c.shuffle is False\n    assert c.num_rollouts == 1 and c.max_concurrent == 1\n    assert c.server is False and c.resume is None\n    assert c.env.retries.max_retries == scientist.retries.max_retries == 0\n    assert \"ResourceSafetyError\" in c.env.retries.exclude\n    assert \"ResourceSafetyError\" in scientist.retries.exclude\n    assert c.push is False\n    if spec[\"kind\"] == \"fresh_full_cohort\":\n        assert c.num_tasks == 3\n        assert scientist.max_turns is None\n        assert all(v is None for v in row[\"token_caps\"].values())\n        assert scientist.timeout.rollout is None\n        assert c.env.timeout.episode is None\n    else:\n        assert c.num_tasks == 1 and scientist.max_turns == 8\n        assert scientist.timeout.rollout == 180\n    results.append(row)\nprint(json.dumps({\"parse_only\":True, \"actual_eval_launches\":0, \"results\":results}, indent=2))\n'",
+    "exit_code": 0,
+    "duration_seconds": 1.25345000019297,
+    "actual_eval_launches": 0,
+    "provider_calls": 0,
+    "runtime_launches": 0
+  },
+  "commands": [
+    {
+      "id": "fresh_full_E1",
+      "kind": "fresh_full_cohort",
+      "argv": [
+        "physim",
+        "--env.taskset.difficulty",
+        "BLOB2v2r2-E1",
+        "-m",
+        "anthropic/claude-fable-5",
+        "-n",
+        "3",
+        "-r",
+        "1",
+        "-c",
+        "1",
+        "--shuffle",
+        "False",
+        "--env.taskset.tier",
+        "tools",
+        "--env.taskset.seed0",
+        "0",
+        "--env.scientist.harness.id",
+        "claude_code",
+        "--env.scientist.harness.version",
+        "2.1.223",
+        "--env.scientist.runtime.type",
+        "docker",
+        "--env.scientist.retries.max-retries",
+        "0",
+        "--env.retries.max-retries",
+        "0",
+        "--env.scientist.retries.exclude",
+        "ResourceSafetyError",
+        "--env.retries.exclude",
+        "ResourceSafetyError",
+        "--rich",
+        "False",
+        "--push",
+        "False"
+      ],
+      "command": ".venv/bin/python .venv/bin/eval physim --env.taskset.difficulty BLOB2v2r2-E1 -m anthropic/claude-fable-5 -n 3 -r 1 -c 1 --shuffle False --env.taskset.tier tools --env.taskset.seed0 0 --env.scientist.harness.id claude_code --env.scientist.harness.version 2.1.223 --env.scientist.runtime.type docker --env.scientist.retries.max-retries 0 --env.retries.max-retries 0 --env.scientist.retries.exclude ResourceSafetyError --env.retries.exclude ResourceSafetyError --rich False --push False",
+      "resolved": {
+        "id": "fresh_full_E1",
+        "kind": "fresh_full_cohort",
+        "env_type": "PhysimEnvConfig",
+        "difficulty": "BLOB2v2r2-E1",
+        "seed0": 0,
+        "shuffle": false,
+        "model": "anthropic/claude-fable-5",
+        "tasks": 3,
+        "rollouts": 1,
+        "concurrency": 1,
+        "tier": "tools",
+        "harness": {
+          "id": "claude_code",
+          "env": {},
+          "forward_env": [],
+          "tool_timeout": 600.0,
+          "disabled_tools": null,
+          "skills": [],
+          "version": "2.1.223"
+        },
+        "runtime": "docker",
+        "model_turn_cap": null,
+        "token_caps": {
+          "max_input_tokens": null,
+          "max_output_tokens": null,
+          "max_total_tokens": null
+        },
+        "agent_timeouts": {
+          "setup": null,
+          "rollout": null,
+          "finalize": null,
+          "scoring": null
+        },
+        "env_timeouts": {
+          "episode": null,
+          "finalize": null
+        },
+        "env_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "agent_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "rich": false,
+        "server": false,
+        "resume": null,
+        "push": false,
+        "explicit_output_dir": null
+      },
+      "world_seeds": [
+        928,
+        929,
+        930
+      ]
+    },
+    {
+      "id": "fresh_full_E2",
+      "kind": "fresh_full_cohort",
+      "argv": [
+        "physim",
+        "--env.taskset.difficulty",
+        "BLOB2v2r2-E2",
+        "-m",
+        "anthropic/claude-fable-5",
+        "-n",
+        "3",
+        "-r",
+        "1",
+        "-c",
+        "1",
+        "--shuffle",
+        "False",
+        "--env.taskset.tier",
+        "tools",
+        "--env.taskset.seed0",
+        "0",
+        "--env.scientist.harness.id",
+        "claude_code",
+        "--env.scientist.harness.version",
+        "2.1.223",
+        "--env.scientist.runtime.type",
+        "docker",
+        "--env.scientist.retries.max-retries",
+        "0",
+        "--env.retries.max-retries",
+        "0",
+        "--env.scientist.retries.exclude",
+        "ResourceSafetyError",
+        "--env.retries.exclude",
+        "ResourceSafetyError",
+        "--rich",
+        "False",
+        "--push",
+        "False"
+      ],
+      "command": ".venv/bin/python .venv/bin/eval physim --env.taskset.difficulty BLOB2v2r2-E2 -m anthropic/claude-fable-5 -n 3 -r 1 -c 1 --shuffle False --env.taskset.tier tools --env.taskset.seed0 0 --env.scientist.harness.id claude_code --env.scientist.harness.version 2.1.223 --env.scientist.runtime.type docker --env.scientist.retries.max-retries 0 --env.retries.max-retries 0 --env.scientist.retries.exclude ResourceSafetyError --env.retries.exclude ResourceSafetyError --rich False --push False",
+      "resolved": {
+        "id": "fresh_full_E2",
+        "kind": "fresh_full_cohort",
+        "env_type": "PhysimEnvConfig",
+        "difficulty": "BLOB2v2r2-E2",
+        "seed0": 0,
+        "shuffle": false,
+        "model": "anthropic/claude-fable-5",
+        "tasks": 3,
+        "rollouts": 1,
+        "concurrency": 1,
+        "tier": "tools",
+        "harness": {
+          "id": "claude_code",
+          "env": {},
+          "forward_env": [],
+          "tool_timeout": 600.0,
+          "disabled_tools": null,
+          "skills": [],
+          "version": "2.1.223"
+        },
+        "runtime": "docker",
+        "model_turn_cap": null,
+        "token_caps": {
+          "max_input_tokens": null,
+          "max_output_tokens": null,
+          "max_total_tokens": null
+        },
+        "agent_timeouts": {
+          "setup": null,
+          "rollout": null,
+          "finalize": null,
+          "scoring": null
+        },
+        "env_timeouts": {
+          "episode": null,
+          "finalize": null
+        },
+        "env_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "agent_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "rich": false,
+        "server": false,
+        "resume": null,
+        "push": false,
+        "explicit_output_dir": null
+      },
+      "world_seeds": [
+        942,
+        943,
+        944
+      ]
+    },
+    {
+      "id": "short_fable_E1",
+      "kind": "interface_smoke_only",
+      "argv": [
+        "physim",
+        "--env.taskset.difficulty",
+        "BLOB2v2r2-E1",
+        "-m",
+        "anthropic/claude-fable-5",
+        "-n",
+        "1",
+        "-r",
+        "1",
+        "-c",
+        "1",
+        "--shuffle",
+        "False",
+        "--env.taskset.tier",
+        "tools",
+        "--env.taskset.seed0",
+        "0",
+        "--env.scientist.harness.id",
+        "claude_code",
+        "--env.scientist.harness.version",
+        "2.1.223",
+        "--env.scientist.runtime.type",
+        "docker",
+        "--env.scientist.retries.max-retries",
+        "0",
+        "--env.retries.max-retries",
+        "0",
+        "--env.scientist.retries.exclude",
+        "ResourceSafetyError",
+        "--env.retries.exclude",
+        "ResourceSafetyError",
+        "--rich",
+        "False",
+        "--push",
+        "False",
+        "--env.scientist.max-turns",
+        "8",
+        "--env.scientist.timeout.rollout",
+        "180"
+      ],
+      "command": ".venv/bin/python .venv/bin/eval physim --env.taskset.difficulty BLOB2v2r2-E1 -m anthropic/claude-fable-5 -n 1 -r 1 -c 1 --shuffle False --env.taskset.tier tools --env.taskset.seed0 0 --env.scientist.harness.id claude_code --env.scientist.harness.version 2.1.223 --env.scientist.runtime.type docker --env.scientist.retries.max-retries 0 --env.retries.max-retries 0 --env.scientist.retries.exclude ResourceSafetyError --env.retries.exclude ResourceSafetyError --rich False --push False --env.scientist.max-turns 8 --env.scientist.timeout.rollout 180",
+      "resolved": {
+        "id": "short_fable_E1",
+        "kind": "interface_smoke_only",
+        "env_type": "PhysimEnvConfig",
+        "difficulty": "BLOB2v2r2-E1",
+        "seed0": 0,
+        "shuffle": false,
+        "model": "anthropic/claude-fable-5",
+        "tasks": 1,
+        "rollouts": 1,
+        "concurrency": 1,
+        "tier": "tools",
+        "harness": {
+          "id": "claude_code",
+          "env": {},
+          "forward_env": [],
+          "tool_timeout": 600.0,
+          "disabled_tools": null,
+          "skills": [],
+          "version": "2.1.223"
+        },
+        "runtime": "docker",
+        "model_turn_cap": 8,
+        "token_caps": {
+          "max_input_tokens": null,
+          "max_output_tokens": null,
+          "max_total_tokens": null
+        },
+        "agent_timeouts": {
+          "setup": null,
+          "rollout": 180.0,
+          "finalize": null,
+          "scoring": null
+        },
+        "env_timeouts": {
+          "episode": null,
+          "finalize": null
+        },
+        "env_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "agent_retries": {
+          "max_retries": 0,
+          "include": [],
+          "exclude": [
+            "ResourceSafetyError"
+          ]
+        },
+        "rich": false,
+        "server": false,
+        "resume": null,
+        "push": false,
+        "explicit_output_dir": null
+      },
+      "world_seeds": [
+        928
+      ]
+    }
+  ],
+  "publication": {
+    "owner": "root",
+    "recommendation": "Keep --push False until root approves publication; root may change it to --push True.",
+    "credentials": "Use normal configured environment/CLI credentials. No credentials are embedded here."
+  },
+  "notes": [
+    "These are proposed commands, not launched evaluations.",
+    "Full E1/E2 commands use n=3, r=1, c=1, shuffle=False, seed0=0.",
+    "Full commands have no model-turn, total-token, or solve wall-time cap.",
+    "No --resume or --server path is selected; output uses a fresh native UUID directory.",
+    "Run full E1/E2 commands sequentially if total host rollout concurrency must remain one.",
+    "New r2 cohort validation forces both whole-run retry counts to zero and keeps ResourceSafetyError exclusions.",
+    "Transient per-call SDK retries remain unchanged.",
+    "The optional Fable5 smoke is one E1 task with eight model turns and a 180-second solve bound; it is not a science-score cohort."
+  ]
+}

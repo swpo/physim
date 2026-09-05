@@ -34,6 +34,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections import OrderedDict
+from typing import Literal
 
 import numpy as np
 
@@ -54,6 +56,9 @@ class BlobToolsetConfig(vf.ToolsetConfig):
     # runner path (task channel not always served), so the mode rides the
     # toolset CONFIG, set by Blob5Task.toolsets at construction.
     r5_mode: bool = False
+    # Declared wire field: survives model_dump_json -> VF_CONFIG before
+    # registration, independently of the optional setup_task channel.
+    r5_resource_policy: Literal["v2", "v2r2"] = "v2"
 
 
 # ═══════════════════════════════════════════════════════════ round 5 (v2.1)
@@ -66,16 +71,18 @@ class BlobToolsetConfig(vf.ToolsetConfig):
 #   probe_ready [A->B]  probe_submit [B]
 # Phase B: every world tool returns one generic phase error; status/submit
 # stay. No budget/pricing/meter language anywhere agent-visible; silent
-# meters + safety caps live in physim.blobround5 (CAPS5), cap refusals are
-# the generic "instrument saturated".
+# meters + safety policies live in physim.blobround5. Legacy CAPS5 keeps
+# generic "instrument saturated" refusals. BLOB2v2r2 uses much higher
+# private guards; a real trip latches a host-side, unscored safety stop.
 #
 # Live fork sims are held in server-process memory (_LIVE5) keyed by
 # (rollout nonce, fork id); the serializable state carries each fork's
 # anchor + op log, so a cold registry rebuilds any fork deterministically
 # (fork noise streams are salted per (nonce, fork counter): same prefix of
-# ops => same stream => same state).
+# ops => same stream => same state). BLOB2v2r2 logically open handles can
+# outnumber the 8 resident LRU entries; eviction never closes a fork.
 
-_LIVE5: dict = {}          # (nonce, fork_id) -> dict(S=sim state, steps=int)
+_LIVE5: OrderedDict = OrderedDict()  # (nonce, fid) -> dict(S=sim, steps=int)
 _TPL5: dict = {}           # (world, seed) -> shared init_soup template
 
 _PHASE_ERR = "not available in the current phase"
@@ -114,6 +121,12 @@ class Blob5Mixin:
 
     def _ensure5(self):
         st = self.state
+        R5 = self._R5()
+        policy = getattr(self.config, "r5_resource_policy", R5.LEGACY_POLICY5)
+        R5.resource_caps5(policy)
+        if st.r5_resource_policy and st.r5_resource_policy != policy:
+            raise ValueError("round-5 resource policy/state mismatch")
+        st.r5_resource_policy = policy
         if not st.r5_nonce:
             import uuid
             st.r5_nonce = uuid.uuid4().hex
@@ -128,14 +141,24 @@ class Blob5Mixin:
             st.r5_cap_hits = {k: 0 for k in ("sensor", "adjust", "injection",
                                              "sim_tu", "fork_spawns",
                                              "open_forks")}
+        if policy == R5.RESOURCE_POLICY5:
+            st.r5_meters.setdefault("log_entries", 0.0)
+            st.r5_cap_hits.setdefault("log_entries", 0)
 
     def _err5(self, msg: str, **extra) -> str:
         out = {"error": msg}
         out.update(extra)
         return json.dumps(out)
 
+    def _resource_stopped5(self) -> str:
+        # Normal return is essential: MCP _with_state pushes state ONLY
+        # after the tool returns. Raising here would lose the stop latch.
+        return self._err5(self._R5().RESOURCE_STOP_MSG5, terminal=True)
+
     def _phase_gate(self, need: str) -> str | None:
         """need = "A" (world tools) or "B" (submit)."""
+        if self.state.r5_resource_stop:
+            return self._resource_stopped5()
         revealed = self.state.r5_phase == "revealed"
         if need == "A" and revealed:
             return self._err5(_PHASE_ERR)
@@ -144,33 +167,91 @@ class Blob5Mixin:
         return None
 
     def _cap_check(self, meter: str, add: float = 1.0) -> str | None:
-        """Silent safety caps (blobround5.CAPS5). A refusal is generic and
-        counted; caps are runaway protection, target hit rate 0."""
+        """Private aggregate guard; legacy refuses, r2 latches truncation.
+
+        No per-fork duration guard. A genuine r2 trip is NOT a scientific
+        submission and never forces reveal. Host @stop sees the persisted
+        latch before the next model call; finalize rejects scoring.
+        """
         R5 = self._R5()
         st = self.state
+        if st.r5_resource_stop:
+            return self._resource_stopped5()
+        caps = R5.resource_caps5(st.r5_resource_policy or R5.LEGACY_POLICY5)
         if meter in ("fork_spawns", "open_forks"):
             cur = (st.r5_fork_seq if meter == "fork_spawns" else
                    sum(1 for f in st.r5_forks.values() if f["open"]))
-            if cur + add > R5.CAPS5[meter]:
-                st.r5_cap_hits[meter] += 1
-                return self._err5(R5.CAP_MSG)
+            exceeded = cur + add > caps[meter]
+        else:
+            cur = st.r5_meters.get(meter, 0.0)
+            exceeded = cur + add > caps[meter] + 1e-9
+        if not exceeded:
             return None
-        if st.r5_meters.get(meter, 0.0) + add > R5.CAPS5[meter] + 1e-9:
-            st.r5_cap_hits[meter] += 1
+        st.r5_cap_hits[meter] = st.r5_cap_hits.get(meter, 0) + 1
+        if st.r5_resource_policy == R5.LEGACY_POLICY5:
             return self._err5(R5.CAP_MSG)
-        return None
+        st.r5_resource_stop = dict(
+            kind="resource_limit", policy=st.r5_resource_policy,
+            meter=meter, current=cur, requested=float(add),
+            limit=caps[meter], turn=st.turns)
+        self._clear_live5()
+        return self._resource_stopped5()
 
     def _meter(self, key: str, add: float):
         st = self.state
         st.r5_meters[key] = st.r5_meters.get(key, 0.0) + float(add)
 
+    def _log_check5(self, add: int) -> str | None:
+        # Guard persisted metadata even when an accepted emission has zero
+        # amplitude or rounds to zero substeps. No no-op elision or physics
+        # changes: each op-log record costs one entry; each emission record
+        # costs one more. Fixed fork records have the separate spawn guard.
+        if self.state.r5_resource_policy == self._R5().RESOURCE_POLICY5:
+            return self._cap_check("log_entries", add)
+        return None
+
+    def _log_charge5(self, add: int):
+        if self.state.r5_resource_policy == self._R5().RESOURCE_POLICY5:
+            self._meter("log_entries", add)
+
     # ------------------------------------------------------- fork registry
+    def _clear_live5(self):
+        nonce = self.state.r5_nonce
+        for key in list(_LIVE5):
+            if key[0] == nonce:
+                del _LIVE5[key]
+
+    def _cache_live5(self, fid: str, S: dict, steps: int):
+        """Logical fork records outlive LRU entries, including reset parents.
+
+        The r2 cache is bounded process-wide (tool servers are per rollout).
+        Historical ancestors are temporary, not additional cache entries.
+        Eviction never closes a handle or changes its log/poses/emissions.
+        """
+        st = self.state
+        R5 = self._R5()
+        key = (st.r5_nonce, fid)
+        _LIVE5.pop(key, None)
+        if st.r5_resource_policy == R5.RESOURCE_POLICY5:
+            while len(_LIVE5) >= R5.RESIDENT_FORKS5:
+                _LIVE5.popitem(last=False)
+                st.r5_cache_evictions += 1
+        _LIVE5[key] = dict(S=S, steps=steps)
+        count = sum(k[0] == st.r5_nonce for k in _LIVE5)
+        st.r5_resident_peak = max(st.r5_resident_peak, count)
+
     def _fork_record(self, src: list, poses: list, anchor_abs: float) -> str:
         st = self.state
         st.r5_fork_seq += 1
         idx = st.r5_fork_seq
+        # Legacy ids retain their exact 32-bit spelling. At r2's 100,000
+        # spawn guard a 32-bit birthday collision would be likely, so use
+        # 128 bits in the new resource cohort. The stream salt remains idx.
+        width = 32 if st.r5_resource_policy == self._R5().RESOURCE_POLICY5 else 8
         fid = "f" + hashlib.sha256(
-            f"{st.r5_nonce}|{idx}".encode()).hexdigest()[:8]
+            f"{st.r5_nonce}|{idx}".encode()).hexdigest()[:width]
+        if width == 32 and fid in st.r5_forks:
+            raise RuntimeError("round-5 fork handle collision")
         st.r5_forks[fid] = dict(
             src=src, salt_idx=idx, poses=[list(p) for p in poses],
             poses0=[list(p) for p in poses], steps=0, emissions=[],
@@ -188,12 +269,13 @@ class Blob5Mixin:
         parent_S = self._fork_sim(src[1], upto_steps=int(src[2]))
         return np.array(parent_S["F"], np.float32)
 
-    def _fresh_sim(self, fk: dict) -> dict:
+    def _fresh_sim(self, fk: dict, anchor_fields=None) -> dict:
         R5 = self._R5()
         st = self.state
         tpl = _template5(st.world, st.seed)
         S = dict(tpl)
-        S["F"] = np.array(self._anchor_state5(fk), np.float32)
+        anchor = self._anchor_state5(fk) if anchor_fields is None else anchor_fields
+        S["F"] = np.array(anchor, np.float32)
         S["rng"] = np.random.default_rng(
             R5.fork_stream_seed(st.r5_nonce, fk["salt_idx"]))
         S["t_step"] = 0
@@ -225,20 +307,10 @@ class Blob5Mixin:
                         if int(e[2]) <= s0 < int(e[3])]
                 B.agdev.step_chunk(S, s1 - s0, injections=injs)
 
-    def _fork_sim(self, fid: str, upto_steps: int | None = None) -> dict:
-        """The live sim state of a fork, rebuilt from the op log when the
-        in-memory registry is cold (deterministic: salted stream + logged
-        ops). upto_steps: historical state for fork-of-fork anchors."""
-        st = self.state
-        fk = st.r5_forks[fid]
-        target = fk["steps"] if upto_steps is None else upto_steps
-        key = (st.r5_nonce, fid)
-        ent = _LIVE5.get(key)
-        if ent is not None and ent["steps"] == target and \
-                upto_steps is None:
-            return ent["S"]
-        # deterministic rebuild: replay the op log up to `target` steps
-        S = self._fresh_sim(fk)
+    def _replay_fork5(self, fk: dict, target: int, anchor_fields=None) -> dict:
+        """Replay the original operation order; pose/emission logs stay exact."""
+        self.state.r5_cache_rebuilds += 1
+        S = self._fresh_sim(fk, anchor_fields)
         steps = 0
         rec = dict(emissions=[], poses=[list(p) for p in fk["poses0"]])
         for op in fk["log"]:
@@ -261,8 +333,64 @@ class Blob5Mixin:
                 rec["emissions"].append(
                     [int(op[1]), float(op[2]), k0,
                      k0 + int(round(float(op[3]) / self._R5().SIM_DT))])
+        if steps != target:
+            raise ValueError("incomplete round-5 fork log")
+        return S
+
+    def _rebuild_fork5(self, fid: str, target: int) -> dict:
+        """r2 iterative ancestry replay: bounded states even for deep chains.
+
+        Ancestors need only fields at the recorded spawn step, not their
+        current poses/RNG/emissions. Each child keeps the original fresh
+        salt and captured poses0. Later parent ops cannot enter its past.
+        Reset removes a handle/cache entry, NEVER an ancestor's fork log.
+        """
+        st = self.state
+        chain = []
+        seen = set()
+        current, at = fid, target
+        while True:
+            if current in seen:
+                raise ValueError("cyclic round-5 fork ancestry")
+            seen.add(current)
+            key = (st.r5_nonce, current)
+            ent = _LIVE5.get(key)
+            if ent is not None and ent["steps"] == at:
+                _LIVE5.move_to_end(key)
+                S = ent["S"]
+                fields = S["F"]
+                break
+            fk = st.r5_forks[current]
+            chain.append((fk, at))
+            src = fk["src"]
+            if src[0] == "base":
+                fields = B.get_cached(st.world, st.seed).fields_at(int(src[1]))
+                break
+            current, at = src[1], int(src[2])
+        for fk, at in reversed(chain):
+            S = self._replay_fork5(fk, at, anchor_fields=fields)
+            fields = S["F"]
+        return S
+
+    def _fork_sim(self, fid: str, upto_steps: int | None = None) -> dict:
+        """Live state or deterministic cold replay. Cache residency is NOT
+        logical fork validity. upto_steps reconstructs a historical anchor
+        without replacing the parent's current cached state."""
+        st = self.state
+        fk = st.r5_forks[fid]
+        target = fk["steps"] if upto_steps is None else upto_steps
+        key = (st.r5_nonce, fid)
+        ent = _LIVE5.get(key)
+        if ent is not None and ent["steps"] == target and upto_steps is None:
+            _LIVE5.move_to_end(key)
+            return ent["S"]
+        if st.r5_resource_policy == self._R5().RESOURCE_POLICY5:
+            S = self._rebuild_fork5(fid, target)
+        else:
+            # Preserve legacy reconstruction and its historical-cache rules.
+            S = self._replay_fork5(fk, target)
         if upto_steps is None:
-            _LIVE5[key] = dict(S=S, steps=steps)
+            self._cache_live5(fid, S, target)
         return S
 
     def _walk_poses(self, poses: list, device: int, u: list,
@@ -363,7 +491,7 @@ class Blob5Mixin:
         S = self._fork_sim(fid)
         self._advance_sim(S, fk, fk["steps"], n_steps)
         fk["steps"] += n_steps
-        _LIVE5[(st.r5_nonce, fid)] = dict(S=S, steps=fk["steps"])
+        self._cache_live5(fid, S, fk["steps"])
 
     def _open_forks(self):
         st = self.state
@@ -383,6 +511,8 @@ class Blob5Mixin:
         R5 = self._R5()
         st = self.state
         st.turns += 1
+        if st.r5_resource_stop:
+            return self._resource_stopped5()
         nf = B.n_ports(st.world, st.seed)
         devs = self._devices5(st.r5_poses_base)
         revealed = st.r5_phase == "revealed"
@@ -406,7 +536,8 @@ class Blob5Mixin:
                            anchor_t=st.r5_forks[fid]["anchor_abs"],
                            t_now=self._t_of("fork", fid))
                       for fid in self._open_forks()],
-            syllabus=R5.syllabus5(st.world, st.seed, st.round5),
+            syllabus=R5.syllabus5(st.world, st.seed, st.round5,
+                                  st.r5_resource_policy),
         )
         if revealed:
             out["instances"] = R5.reveal_menu5(st.world, st.seed, st.round5,
@@ -461,14 +592,17 @@ class Blob5Mixin:
                     "the base record ends at t = 2500 (window=0 reads the "
                     "current state; probe_fork reaches any base time)")
             window = min(window, room)
+        # Lazy indexing avoids allocating a huge list before either the
+        # response-envelope check or the private aggregate sim guard.
         read_steps = ([0] if window == 0 else
-                      list(range(stride - 1, window, stride)))
+                      range(stride - 1, window, stride))
+        n_reads = 1 if window == 0 else window // stride
         k_read = self._k_of(dev_ids)
-        n_numbers = len(read_steps) * len(port_ids) * k_read
+        n_numbers = n_reads * len(port_ids) * k_read
         if n_numbers > 60000:
             return self._err5(f"response too large ({n_numbers} numbers > "
                               "60000); narrow the read")
-        sensor_cost = len(read_steps) * k_read * B.CTRL_TU
+        sensor_cost = n_reads * k_read * B.CTRL_TU
         cap = self._cap_check("sensor", sensor_cost)
         if cap:
             return cap
@@ -476,6 +610,10 @@ class Blob5Mixin:
             cap = self._cap_check("sim_tu", window * B.CTRL_TU)
             if cap:
                 return cap
+            if window > 0:
+                cap = self._log_check5(1)
+                if cap:
+                    return cap
         poses = (st.r5_poses_base if kind == "base"
                  else st.r5_forks[fid]["poses"])
         devs = self._devices5(poses)
@@ -501,11 +639,12 @@ class Blob5Mixin:
         if kind == "fork" and window > 0:
             fk = st.r5_forks[fid]
             fk["log"] = list(fk["log"]) + [["adv", window]]
+            self._log_charge5(1)
             self._meter("sim_tu", window * B.CTRL_TU)
         if kind == "base":
-            st.r5_reads_base += len(read_steps)
+            st.r5_reads_base += n_reads
         else:
-            st.r5_reads_fork += len(read_steps)
+            st.r5_reads_fork += n_reads
         resp = dict(ctx=("base" if kind == "base" else fid),
                     t=self._t_of(kind, fid), steps=out_steps,
                     ports=port_ids)
@@ -547,9 +686,13 @@ class Blob5Mixin:
             cap = self._cap_check("sim_tu", steps * B.CTRL_TU)
             if cap:
                 return cap
+            cap = self._log_check5(1)
+            if cap:
+                return cap
             self._advance_fork_live(fid, steps)
             fk = st.r5_forks[fid]
             fk["log"] = list(fk["log"]) + [["adv", steps]]
+            self._log_charge5(1)
             self._meter("sim_tu", steps * B.CTRL_TU)
         return json.dumps(dict(
             ctx=("base" if kind == "base" else fid),
@@ -605,11 +748,28 @@ class Blob5Mixin:
                 return cap
         k_dev = self._k_of([device])
         if read:
+            # The r2 aggregate guards intentionally permit very long
+            # experiments. Bound one buffered response just as read5 does;
+            # read=False retains the full allowed actuator/sim duration.
+            if st.r5_resource_policy == self._R5().RESOURCE_POLICY5:
+                n_numbers = steps * k_dev * B.n_ports(st.world, st.seed)
+                if n_numbers > 60000:
+                    return self._err5(
+                        f"response too large ({n_numbers} numbers > "
+                        "60000); use read=False or fewer steps")
             cap = self._cap_check("sensor", steps * k_dev * B.CTRL_TU)
             if cap:
                 return cap
         poses = (st.r5_poses_base if kind == "base"
                  else st.r5_forks[fid]["poses"])
+        if (kind == "fork"
+                and st.r5_resource_policy == self._R5().RESOURCE_POLICY5
+                and self._walk_poses([list(p) for p in poses], device, list(u), 1)):
+            # A rejected first actuator step adds no log entry. Preflight
+            # accepted walks before touching either poses or physics.
+            cap = self._log_check5(1)
+            if cap:
+                return cap
         out_steps = []
         applied = 0
         rejected = False
@@ -639,6 +799,7 @@ class Blob5Mixin:
                 fk["log"] = list(fk["log"]) + [["adj", device, float(u[0]),
                                                 float(u[1]), float(u[2]),
                                                 applied]]
+                self._log_charge5(1)
             self._meter("sim_tu", applied * B.CTRL_TU)
             st.r5_reads_fork += len(out_steps)
         else:
@@ -768,11 +929,15 @@ class Blob5Mixin:
         cap = self._cap_check("injection", inj_cost)
         if cap:
             return cap
+        cap = self._log_check5(2)
+        if cap:
+            return cap
         fk = st.r5_forks[fid]
         k0 = fk["steps"] * R5.SPC
         k1 = k0 + int(round(dur / R5.SIM_DT))
         fk["emissions"] = list(fk["emissions"]) + [[port, amp, k0, k1]]
         fk["log"] = list(fk["log"]) + [["inj", port, amp, dur]]
+        self._log_charge5(2)
         self._meter("injection", inj_cost)
         return json.dumps(dict(ok=True, ctx=fid, port=port, amp=amp,
                                dur=dur, t=self._t_of("fork", fid),
@@ -793,8 +958,9 @@ class Blob5Mixin:
         R5 = self._R5()
         st = self.state
         st.turns += 1
-        if st.r5_phase == "revealed":
-            return self._err5(_PHASE_ERR)
+        gate = self._phase_gate("A")
+        if gate:
+            return gate
         st.r5_phase = "revealed"
         st.r5_t_ready_sim = float(st.r5_meters.get("sim_tu", 0.0))
         st.r5_t_ready_turns = int(st.turns)
@@ -866,6 +1032,8 @@ class Blob5Mixin:
         (status/wait/adjust/inject/submit) resolve by the mode filter."""
         from verifiers.v1.utils.decorators import discover_decorated
         mode = bool(getattr(self.config, "r5_mode", False)) or self._r5_mode
+        self._R5().resource_caps5(getattr(self.config, "r5_resource_policy",
+                                        "v2"))
         self._r5_mode = mode
         want = V2_TOOL_NAMES if mode else V1_TOOL_NAMES
         for fn in discover_decorated(self, "tool"):

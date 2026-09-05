@@ -10,6 +10,15 @@ from __future__ import annotations
 import verifiers.v1 as vf
 
 
+class ResourceSafetyError(vf.TaskError):
+    """A resource guard ended a rollout, not a scored scientific failure.
+
+    Native runners have no intrinsic non-retryable exception flag. The r2
+    PhysimEnvConfig enforces max_retries=0 at both whole-run layers and
+    also excludes this exact name. Per-call SDK retries are unchanged.
+    """
+
+
 class BlobToolState(vf.State):
     # identity (set host-side by BlobTask.setup)
     world: str = ""
@@ -36,13 +45,19 @@ class BlobToolState(vf.State):
     r5_phase: str = ""                 # "" = exploration; "revealed" after
     #                                    probe_ready (irreversible)
     r5_nonce: str = ""                 # rollout nonce (fork stream salt)
+    r5_resource_policy: str = ""       # private; config-selected cohort
+    r5_resource_stop: dict = {}        # latched safety trip; no forced reveal
+    r5_resident_peak: int = 0          # resident states, NOT logical handles
+    r5_cache_evictions: int = 0
+    r5_cache_rebuilds: int = 0          # cold loads, including initial spawns
     r5_ibase: int = 0                  # base read head (5tu grid, monotone)
     r5_poses_base: list = []           # base-context device poses
     r5_forks: dict = {}                # fork id -> record (src, poses,
     #                                    steps, emissions, log, open)
     r5_fork_seq: int = 0               # spawn counter (fork stream index)
     r5_meters: dict = {}               # silent meters: sensor, adjust,
-    #                                    injection, sim_tu (never surfaced)
+    #                                    injection, sim_tu; r2 log_entries
+    #                                    counts op + emission metadata
     r5_cap_hits: dict = {}             # meter -> refusal count (target 0)
     r5_open_peak: int = 0              # max concurrent open forks
     r5_n_resets: int = 0

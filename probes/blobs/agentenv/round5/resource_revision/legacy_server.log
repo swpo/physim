@@ -1,0 +1,7 @@
+T1 tool loop: PASS
+T2 replica parity (amp=0 vs cached control, f16): PASS bitwise
+T3 inject mechanics: PASS (amp-1 response max 0.0002)
+T4 barrier audit: PASS (9 responses + prompt + docstrings + contracts)
+T5 submit/locks: PASS
+T6 probe_adjust (R3-final fixed map): PASS (wall at 2.718, floor at 0.607)
+ALL BLOB SERVER GATES PASS

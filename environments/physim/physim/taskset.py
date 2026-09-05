@@ -16,6 +16,7 @@ import json
 from collections.abc import Iterator
 from typing import Literal
 
+from pydantic import model_validator
 import verifiers.v1 as vf
 
 from physim.engine import DIFFICULTY_PRESETS, make_world
@@ -234,7 +235,7 @@ class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
 
 
 class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2", "BLOB2v2-E1", "BLOB2v2-E2"] = "D0"
+    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2", "BLOB2v2-E1", "BLOB2v2-E2", "BLOB2v2r2-E1", "BLOB2v2r2-E2"] = "D0"
     """World difficulty preset (port opacity + macro complexity + budget).
     BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
     only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
@@ -258,8 +259,47 @@ class PhysimConfig(vf.TasksetConfig):
 class PhysimEnvConfig(vf.EnvConfig):
     scientist: vf.AgentConfig = vf.AgentConfig()
 
+    @model_validator(mode="after")
+    def _resource_safety_no_retry(self):
+        # A resource truncation is a terminal result, not a transport fault.
+        # The native episode retry predicate examines ALL prior errors,
+        # so an older ProviderError can bypass a later resource exclusion.
+        # Disable whole-run retries in BOTH layers for the NEW cohort.
+        # Per-call provider SDK retries are separate and remain unchanged.
+        d = str(getattr(self.taskset, "difficulty", ""))
+        if d.startswith("BLOB2v2r2-"):
+            name = "ResourceSafetyError"
+            self.retries = self.retries.model_copy(update={
+                "max_retries": 0,
+                "exclude": list(dict.fromkeys([*self.retries.exclude, name]))})
+            retries = self.scientist.retries
+            self.scientist = self.scientist.model_copy(update={
+                "retries": retries.model_copy(update={
+                    "max_retries": 0,
+                    "exclude": list(dict.fromkeys([*retries.exclude, name]))})})
+        return self
+
 
 class PhysimEnv(vf.Env[PhysimEnvConfig]):
+    def complete(self, episode: vf.Episode) -> bool:
+        if super().complete(episode):
+            return True
+        # --resume uses complete(), not RetryConfig. Keep explicit r2
+        # resource truncations as terminal evidence, WITHOUT calling them
+        # successful or turning their absent scientific reward into zero.
+        if episode.errors or len(episode.traces) != 1:
+            return False
+        trace = episode.traces[0]
+        info = trace.info.get("physim", {})
+        return bool(
+            str(getattr(trace.task.data, "difficulty", "")).startswith(
+                "BLOB2v2r2-")
+            and trace.last_error
+            and trace.last_error.type == "ResourceSafetyError"
+            and info.get("resource_truncated")
+            and info.get("score_status") == "not_scored_resource_limit"
+            and info.get("resource_policy", {}).get("id") == "v2r2")
+
     async def run(self, task, agents):
         data: PhysimData = task.data
         if data.tier == "tools":
@@ -620,7 +660,8 @@ def _blob2_task(config: "PhysimConfig", i: int) -> "Blob2Task":
 # forks, silent meters, no budgets) -> agent-triggered probe_ready ->
 # closed-book answers against hidden instances drawn from published
 # continuous domains. Additive: v1 tags (BLOB2-E1/E2) stay untouched.
-# Tags: BLOB2v2-E1, BLOB2v2-E2. Design + scoring in physim/blobround5.py.
+# Tags: BLOB2v2-E1/E2 (legacy caps), BLOB2v2r2-E1/E2 (resource revision).
+# Design + unchanged scoring in physim/blobround5.py.
 
 BLOB5_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
 
@@ -665,79 +706,143 @@ class Blob5Data(vf.TaskData):
     tier: str = "tools"
 
 
-class Blob5Task(vf.Task[Blob5Data, BlobToolState, BlobTaskConfig]):
+class Blob5TaskConfig(BlobTaskConfig):
+    # Host task config also declares the policy, so a serialize/reload does
+    # not lose it before toolsets() builds the per-server VF_CONFIG.
+    r5_resource_policy: Literal["v2", "v2r2"] = "v2"
+
+
+class Blob5Task(vf.Task[Blob5Data, BlobToolState, Blob5TaskConfig]):
     @classmethod
-    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
+    def toolsets(cls, config: "Blob5TaskConfig") -> list[vf.Toolset]:
         from physim.servers.blob import BlobToolset, BlobToolsetConfig
-        # [v2.1 fix] surface mode rides the toolset config so it survives
-        # server-process reconstruction (task channel is not guaranteed).
-        # NOTE: must be a DECLARED field on BlobToolsetConfig — model_copy
-        # (update=...) on the base-class instance attaches an undeclared
-        # attr that model_dump_json silently drops (G-R7b lesson).
+        # Both values are DECLARED fields. Do not attach them with a
+        # model_copy(update=...) on the base ToolsetConfig (acc310e lesson).
         cfg = BlobToolsetConfig(**{**config.tools.model_dump(),
-                                   "r5_mode": True})
+                                   "r5_mode": True,
+                                   "r5_resource_policy": getattr(
+                                       config, "r5_resource_policy", "v2")})
         return [BlobToolset(cfg)]
 
     async def setup(self, trace: vf.Trace, runtime) -> None:
+        from physim import blobround5 as R5
         st = trace.state
+        policy = R5.resource_policy5(self.data.difficulty)
+        if getattr(self.config, "r5_resource_policy", "v2") != policy:
+            raise ValueError("round-5 cohort/config resource policy mismatch")
         st.world = self.data.world
         st.seed = self.data.world_seed
         st.round5 = self.data.menu
+        st.r5_resource_policy = policy
+        self._resource_telemetry5(trace)
 
-    async def finalize(self, trace: vf.Trace, runtime) -> None:
-        try:
-            from verifiers.v1.utils.artifacts import collect
-            trace.state.artifacts = await collect(runtime,
-                                                  self.data.artifacts)
-        except Exception as e:  # collection must never fail the rollout
-            trace.info.setdefault("physim_artifact_error", str(e))
+    def _resource_telemetry5(self, trace: vf.Trace) -> None:
+        """Private host evidence, also preserved when native scoring fails.
 
-    @vf.reward(weight=1.0)
-    async def skill(self, trace: vf.Trace) -> float:
+        Called before model turns: provider failures need not run finalize,
+        and Trace.state is not part of the serialized trace payload.
+        """
         from physim import blobround5 as R5
         st = trace.state
-        world, seed = self.data.world, self.data.world_seed
-        result = R5.score_episode5(world, seed, self.data.menu,
-                                   dict(st.r5_subs or {}))
-        for c, v in result["skills"].items():
-            trace.record_metric(f"skill_{c}", float(v))
-        # silent meters -> rollout metrics (spec 2.7: track, don't tell)
+        policy = st.r5_resource_policy or R5.resource_policy5(
+            self.data.difficulty)
         m = st.r5_meters or {}
         for key in ("sensor", "adjust", "injection", "sim_tu"):
             trace.record_metric(f"meter_{key}", float(m.get(key, 0.0)))
+        if policy == R5.RESOURCE_POLICY5:
+            trace.record_metric("meter_log_entries", float(m.get("log_entries", 0.0)))
         trace.record_metric("meter_fork_spawns", float(st.r5_fork_seq))
         trace.record_metric("meter_open_forks_peak", float(st.r5_open_peak))
         trace.record_metric("meter_resets", float(st.r5_n_resets))
         trace.record_metric("meter_reads_base", float(st.r5_reads_base))
         trace.record_metric("meter_reads_fork", float(st.r5_reads_fork))
         trace.record_metric("meter_turns", float(st.turns))
-        trace.record_metric("time_to_ready_sim_tu",
-                            float(st.r5_t_ready_sim))
-        trace.record_metric("time_to_ready_turns",
-                            float(st.r5_t_ready_turns))
+        trace.record_metric("time_to_ready_sim_tu", float(st.r5_t_ready_sim))
+        trace.record_metric("time_to_ready_turns", float(st.r5_t_ready_turns))
+        trace.record_metric("resident_forks_peak", float(st.r5_resident_peak))
+        trace.record_metric("fork_cache_evictions", float(st.r5_cache_evictions))
+        trace.record_metric("fork_cache_rebuilds", float(st.r5_cache_rebuilds))
         cap_hits = dict(st.r5_cap_hits or {})
-        trace.record_metric("cap_hits_total",
-                            float(sum(cap_hits.values())))
-        trace.record_metric("readied",
-                            1.0 if st.r5_phase == "revealed" else 0.0)
-        trace.info["physim"] = {
+        trace.record_metric("cap_hits_total", float(sum(cap_hits.values())))
+        trace.record_metric("readied", float(st.r5_phase == "revealed"))
+        truncated = bool(st.r5_resource_stop)
+        trace.record_metric("resource_truncated", float(truncated))
+        info = trace.info.setdefault("physim", {})
+        info.update({
             "difficulty": self.data.difficulty,
-            "world": world,
-            "world_seed": seed,
-            "tier": "blob2v2",
+            "world": self.data.world,
+            "world_seed": self.data.world_seed,
+            "tier": "blob2v2r2" if policy == R5.RESOURCE_POLICY5 else "blob2v2",
             "menu": self.data.menu,
-            "detail": result["detail"],
+            "resource_policy": R5.resource_metadata5(policy),
+            "resource_truncated": truncated,
+            "resource_stop": dict(st.r5_resource_stop or {}),
             "meters": {**m, "fork_spawns": st.r5_fork_seq,
                        "open_forks_peak": st.r5_open_peak,
                        "resets": st.r5_n_resets,
                        "reads_base": st.r5_reads_base,
                        "reads_fork": st.r5_reads_fork,
                        "turns": st.turns},
+            "resident_cache": {"peak": st.r5_resident_peak,
+                               "evictions": st.r5_cache_evictions,
+                               "rebuilds": st.r5_cache_rebuilds},
             "time_to_ready": {"sim_tu": st.r5_t_ready_sim,
                               "turns": st.r5_t_ready_turns},
             "cap_hits": cap_hits,
-            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
-        }
+        })
+        if truncated:
+            info["score_status"] = "not_scored_resource_limit"
+        else:
+            info.setdefault("score_status", "pending")
+
+    @vf.stop
+    async def resource_safety_stop(self, trace: vf.Trace) -> bool:
+        # Native stop runs before the next MODEL request (HTTP 400, no SDK
+        # retry), not on state PUT. The tool latch blocks further world
+        # work in the meantime. A True stop alone still scores in native
+        # verifiers, so finalize/score must also reject a truncated result.
+        self._resource_telemetry5(trace)
+        return bool(trace.state.r5_resource_stop)
+
+    def _reject_resource_score5(self, trace: vf.Trace) -> None:
+        if trace.state.r5_resource_stop:
+            from physim.blobstate import ResourceSafetyError
+            self._resource_telemetry5(trace)
+            trace.stop_condition = "resource_safety_stop"
+            raise ResourceSafetyError(
+                "resource-limit truncation; scientific scoring skipped")
+
+    async def finalize(self, trace: vf.Trace, runtime) -> None:
+        try:
+            from verifiers.v1.utils.artifacts import collect
+            trace.state.artifacts = await collect(runtime, self.data.artifacts)
+        except Exception as e:  # collection must never hide a safety trip
+            trace.info.setdefault("physim_artifact_error", str(e))
+        self._resource_telemetry5(trace)
+        trace.info["physim"]["workspace"] = _extract_workspace(
+            getattr(trace.state, "artifacts", None))
+        # A distinct native task error leaves ok=False and skips BOTH task
+        # and harness scoring. The last-tool-before-exit case lands here
+        # even when there was no subsequent model request to run @stop.
+        self._reject_resource_score5(trace)
+
+    async def score(self, trace: vf.Trace, runtime=None) -> None:
+        self._reject_resource_score5(trace)  # offline/re-score protection
+        await super().score(trace, runtime)
+
+    @vf.reward(weight=1.0)
+    async def skill(self, trace: vf.Trace) -> float:
+        from physim import blobround5 as R5
+        self._reject_resource_score5(trace)  # direct-call protection
+        st = trace.state
+        result = R5.score_episode5(self.data.world, self.data.world_seed,
+                                   self.data.menu, dict(st.r5_subs or {}))
+        for c, v in result["skills"].items():
+            trace.record_metric(f"skill_{c}", float(v))
+        self._resource_telemetry5(trace)
+        trace.info["physim"].update(
+            detail=result["detail"], score_status="scored",
+            workspace=_extract_workspace(getattr(st, "artifacts", None)))
         return float(result["reward_skill"])
 
 
@@ -749,7 +854,8 @@ def _blob5_task(config: "PhysimConfig", i: int) -> "Blob5Task":
     cc = B.contracts(world, seed)["private"]
     system_prompt = BLOB5_SYSTEM_PROMPT.format(
         k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
-        syllabus=R5.syllabus5(world, seed, menu))
+        syllabus=R5.syllabus5(world, seed, menu,
+                              R5.resource_policy5(config.difficulty)))
     artifacts = [vf.Artifact(
         source=".",
         exclude=["*.pyc", "__pycache__", ".git", "node_modules",
@@ -768,8 +874,9 @@ def _blob5_task(config: "PhysimConfig", i: int) -> "Blob5Task":
         max_turns=config.max_turns,
         artifacts=artifacts,
     )
-    return Blob5Task(data, BlobTaskConfig(judges=list(config.task.judges),
-                                          tools=config.task.tools))
+    return Blob5Task(data, Blob5TaskConfig(
+        judges=list(config.task.judges), tools=config.task.tools,
+        r5_resource_policy=R5.resource_policy5(config.difficulty)))
 
 
 def certified_seed(difficulty: str, seed0: int, index: int) -> int:

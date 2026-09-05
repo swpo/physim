@@ -1,0 +1,81 @@
+PASS physics_parity (67.107s)
+{
+  "cohort": "BLOB2v2r2",
+  "command": "environments/physim/tools/test_blob_round5_resources.py --gates physics --json-out probes/blobs/agentenv/round5/resource_revision/physics_gates.json",
+  "gates": {
+    "physics_parity": {
+      "pass_": true,
+      "physics": "actual step_chunk",
+      "exact_fields_rng_poses_emissions_logs": true,
+      "evicted_parent_branch_and_reset_ancestor": true,
+      "transcript_responses": 29,
+      "warm_resident_peak": 8,
+      "warm_cache_evictions": 7,
+      "warm_rebuilds": 19,
+      "cold_rebuilds": 39,
+      "snapshots": {
+        "f1ffc84ee": {
+          "fields": "235cd2cacf66d6a827fb09296d384baf2174024b180350d0e0c93e9773635356",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 37046027123818533393679849430602639499,
+              "inc": 1885050121631953615108343486873332487
+            },
+            "has_uint32": 1,
+            "uinteger": 1382177526
+          },
+          "t_step": 750
+        },
+        "fa88af592": {
+          "fields": "56c672a45df34e94475ecabf0116a3caeedd50382a2a40244883a0f3c9e3a8ec",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 194756752597030116080729404823423694764,
+              "inc": 114268856522997074398178377196764157757
+            },
+            "has_uint32": 1,
+            "uinteger": 2138644001
+          },
+          "t_step": 500
+        },
+        "f6133b628": {
+          "fields": "70caae6ccfbd3cb300e6fffc29dad15861809a21b873c9e62fe8f146a97a3e33",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 159326677344851450191331910179912275977,
+              "inc": 316701535582069804590041952563382160195
+            },
+            "has_uint32": 0,
+            "uinteger": 3047706147
+          },
+          "t_step": 250
+        },
+        "fad89e73d": {
+          "fields": "ad6cac4e2f45d6bfb99d73b65afb91ba5c34771526f037dbb578a66e9caf4202",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 220054568317024763957713359209686287724,
+              "inc": 180860331138422645136993277436049602805
+            },
+            "has_uint32": 1,
+            "uinteger": 3898765101
+          },
+          "t_step": 250
+        }
+      },
+      "meters": {
+        "sensor": 1025.0,
+        "adjust": 1.3,
+        "injection": 9.2,
+        "sim_tu": 35.0
+      },
+      "duration_s": 67.107
+    }
+  },
+  "pass": true,
+  "duration_s": 67.108
+}

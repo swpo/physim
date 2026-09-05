@@ -1,0 +1,84 @@
+[
+  {
+    "name": "fast_gates",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5_resources.py --gates config synthetic --json-out probes/blobs/agentenv/round5/resource_revision/fast_gates.json",
+    "pid": 22626,
+    "exit_code": 0,
+    "duration_s": 1.656350167002529,
+    "log": "fast_gates.log",
+    "report": "fast_gates.json"
+  },
+  {
+    "name": "physics_initial",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5_resources.py --gates physics --json-out probes/blobs/agentenv/round5/resource_revision/physics_gates.json",
+    "pid": 22822,
+    "exit_code": 0,
+    "duration_s": 68.58981208316982,
+    "log": "physics_gates.log",
+    "report": "physics_gates.json",
+    "note": "Stage run before widened opaque ids; superseded by all_gates for final tree."
+  },
+  {
+    "name": "legacy_server",
+    "command": "PYTHONPATH=environments/physim .venv/bin/python -B environments/physim/tools/test_blob_server.py",
+    "pid": 22911,
+    "exit_code": 0,
+    "duration_s": 79.92039079172537,
+    "log": "legacy_server.log"
+  },
+  {
+    "name": "legacy_round2",
+    "command": "PYTHONPATH=environments/physim .venv/bin/python -B environments/physim/tools/test_blob_round2.py",
+    "pid": 23612,
+    "exit_code": 0,
+    "duration_s": 4.228078124579042,
+    "log": "legacy_round2.log"
+  },
+  {
+    "name": "legacy_round5",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5.py --fast",
+    "pid": 23974,
+    "exit_code": 0,
+    "duration_s": 70.58953495835885,
+    "log": "legacy_round5.log",
+    "note": "--fast skips fresh300tu A0 replay, not any policy/reveal/hash gate. Existing51trutharrays checked; no truth build."
+  },
+  {
+    "name": "pre_metadata_all_gates",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5_resources.py --json-out probes/blobs/agentenv/round5/resource_revision/all_gates.json",
+    "pid": 24098,
+    "exit_code": 0,
+    "duration_s": 66.5675469157286,
+    "log": "pre_metadata_all_gates.log",
+    "report": "pre_metadata_all_gates.json",
+    "note": "Superseded final-tree run; before parent-approved seventh metadata guard."
+  },
+  {
+    "name": "metadata_gates",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5_resources.py --gates config synthetic --json-out probes/blobs/agentenv/round5/resource_revision/metadata_gates.json",
+    "pid": 25345,
+    "exit_code": 0,
+    "duration_s": 1.8146030423231423,
+    "log": "metadata_gates.log",
+    "report": "metadata_gates.json"
+  },
+  {
+    "name": "all_gates",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5_resources.py --json-out probes/blobs/agentenv/round5/resource_revision/all_gates.json",
+    "pid": 25564,
+    "exit_code": 0,
+    "duration_s": 71.66357045806944,
+    "log": "all_gates.log",
+    "report": "all_gates.json",
+    "note": "Final seven-guard tree; real E1physics and real-injection native state/stop tests."
+  },
+  {
+    "name": "final_legacy_round5",
+    "command": ".venv/bin/python -B environments/physim/tools/test_blob_round5.py --fast",
+    "pid": 25567,
+    "exit_code": 0,
+    "duration_s": 74.91025120904669,
+    "log": "final_legacy_round5.log",
+    "note": "Final seven-guard tree; old cappedv2 tests unchanged,51existingtrutharrays checked, no rebuild."
+  }
+]

@@ -3,6 +3,8 @@ contracts, closed-book reveal). EVALUATOR-SIDE.
 
 Implements probes/blobs/l0/deepsearch/TRACKA_R5_ANCHORS.md (spec v2.1) for
 worlds E1 (p4g2_044) + E2 (p6g8_033), difficulty tags BLOB2v2-E1 / BLOB2v2-E2.
+BLOB2v2r2-E1/E2 reuse these exact contracts and truths with a separately
+versioned resource policy. Legacy v2 ceilings and refusals remain available.
 v1 (blobround2.py, tags BLOB2-E1/E2) is FROZEN; nothing here touches it.
 
 The v2 mechanic (spec 2.1): a two-phase episode.
@@ -43,8 +45,9 @@ SCORING (spec PART 3, formula unchanged from round 2):
   pre-anchor base-record history. Raw CRPS is logged verbatim (Q5a).
 
 METERS (spec 2.7): all silent; logged per rollout, never surfaced, never
-priced into reward. CAPS5 are runaway protection only (~25-33x v1 budgets),
-enforced with a generic "instrument saturated" error.
+priced into reward. Legacy CAPS5/refusals are frozen. CAPS5_R2 has measured
+headroom over real rollouts; r2 guard trips stop as unscored resource-limit
+errors. Replayable LRU residency is separate from logical fork admission.
 """
 
 from __future__ import annotations
@@ -68,6 +71,8 @@ MENUS5 = dict(
 EPISODES5 = {
     "BLOB2v2-E1": dict(world="p4g2_044", seeds=(928, 929, 930), menu="E1"),
     "BLOB2v2-E2": dict(world="p6g8_033", seeds=(942, 943, 944), menu="E2"),
+    "BLOB2v2r2-E1": dict(world="p4g2_044", seeds=(928, 929, 930), menu="E1"),
+    "BLOB2v2r2-E2": dict(world="p6g8_033", seeds=(942, 943, 944), menu="E2"),
 }
 
 T_BASE = 2500.0                       # full cached span, observable in A
@@ -103,7 +108,50 @@ CAPS5 = dict(sensor=1_000_000.0,      # node-tu
              open_forks=8,            # concurrent
              sim_tu=100_000.0)        # live sim tu across all forks
 
-CAP_MSG = "instrument saturated"      # the only cap refusal text (generic)
+CAP_MSG = "instrument saturated"      # frozen legacy-v2 refusal text
+
+# Resource-policy-only revision, not new physics/contracts/truth. These
+# values are PRIVATE runaway guards, not displayed budgets. Actual Fable
+# demand reached 400 forks / 15,795 sim-tu / 536,360 sensor node-tu; r2 has
+# 250x / 633x / 1,864x headroom on those observations, not a never-hit promise.
+LEGACY_POLICY5 = "v2"
+RESOURCE_POLICY5 = "v2r2"
+CAPS5_R2 = dict(sensor=1_000_000_000.0,
+                adjust=10_000_000.0,
+                injection=1_000_000.0,
+                fork_spawns=100_000,
+                open_forks=10_000,       # LOGICAL handles, not resident sims
+                sim_tu=10_000_000.0,     # aggregate only; no per-fork deadline
+                log_entries=1_000_000)   # persisted op + emission entries
+RESIDENT_FORKS5 = 8                      # replayable LRU, not an experiment cap
+RESOURCE_STOP_MSG5 = "episode stopped by a safety guard"
+
+
+def resource_policy5(difficulty: str) -> str:
+    """Select an explicit cohort; old tags must never silently opt into r2."""
+    if difficulty not in EPISODES5:
+        raise ValueError(f"unknown round-5 cohort: {difficulty!r}")
+    return (RESOURCE_POLICY5 if difficulty.startswith("BLOB2v2r2-")
+            else LEGACY_POLICY5)
+
+
+def resource_caps5(policy: str) -> dict:
+    if policy == LEGACY_POLICY5:
+        return CAPS5
+    if policy == RESOURCE_POLICY5:
+        return CAPS5_R2
+    raise ValueError(f"unknown round-5 resource policy: {policy!r}")
+
+
+def resource_metadata5(policy: str) -> dict:
+    """Private host/trace metadata. NEVER include this in tool responses."""
+    return dict(id=policy, caps=dict(resource_caps5(policy)),
+                resident_forks=RESIDENT_FORKS5 if policy == RESOURCE_POLICY5
+                else CAPS5["open_forks"],
+                resident_policy="lru-replay" if policy == RESOURCE_POLICY5
+                else "legacy-open-limit",
+                safety_trip="truncate" if policy == RESOURCE_POLICY5
+                else "generic-refusal")
 
 _R5_CACHE_DIR = os.environ.get(
     "PHYSIM_BLOB_R5_CACHE", os.path.join(B.CACHE_DIR, "round5"))
@@ -295,10 +343,14 @@ _SYLLABUS_TAIL = """ L4  emission response, beyond the apparatus range. At a hid
 
 
 @lru_cache(maxsize=8)
-def syllabus5(world: str, seed: int, menu: str) -> str:
-    """The published Phase-A contract text. Depends ONLY on (world, seed)
-    category facts (the L3E event spec) — never on the hidden instances."""
+def syllabus5(world: str, seed: int, menu: str,
+              resource_policy: str = LEGACY_POLICY5) -> str:
+    """Published Phase-A text. Resource revision changes the label ONLY;
+    domains/category facts never depend on hidden instances or meters."""
+    resource_caps5(resource_policy)  # reject unknown private policy ids
     head = _SYLLABUS_HEAD.format(tag=menu)
+    if resource_policy == RESOURCE_POLICY5:
+        head = head.replace("BLOB2v2-", "BLOB2v2r2-", 1)
     parts = [head]
     parts.append(_SYLLABUS_L3F_E1 if menu == "E1" else _SYLLABUS_L3F_E2)
     if "L3E" in MENUS5[menu]:

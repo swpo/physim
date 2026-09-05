@@ -1,0 +1,131 @@
+Command: .venv/bin/python -B environments/physim/tools/test_blob_round5_resources_native.py
+Exit code: 0
+Duration: 1.509554750 seconds
+Output (exact combined stdout/stderr):
+{
+  "gate": "BLOB2v2r2 native resource lifecycle",
+  "pass": true,
+  "http_stop_statuses": [
+    400,
+    400
+  ],
+  "provider_calls": 0,
+  "simulation_or_truth_calls": 0,
+  "resource_error": "ResourceSafetyError",
+  "science_reward_recorded": false,
+  "next_model_stop_condition": "resource_safety_stop",
+  "final_tool_stop_condition": "resource_safety_stop",
+  "artifact_and_error_wire_roundtrip": true,
+  "retry_exclusions_checked": [
+    "agent",
+    "episode"
+  ],
+  "forced_exclusions_with_retries_3": true,
+  "native_retry_loop_attempts": {
+    "agent": 1,
+    "episode": 1
+  },
+  "in_process_resume_terminal": true,
+  "native_is_truncated": false
+}
+
+Revision 2 — enforced zero whole-run retries (supersedes the prior retry-policy result)
+Command: .venv/bin/python -B environments/physim/tools/test_blob_round5_resources_native.py
+Exit code: 0
+Duration: 2.035567708 seconds
+Output (exact combined stdout/stderr):
+{
+  "gate": "BLOB2v2r2 native resource lifecycle",
+  "pass": true,
+  "http_stop_statuses": [
+    400,
+    400
+  ],
+  "provider_calls": 0,
+  "simulation_or_truth_calls": 0,
+  "resource_error": "ResourceSafetyError",
+  "science_reward_recorded": false,
+  "next_model_stop_condition": "resource_safety_stop",
+  "final_tool_stop_condition": "resource_safety_stop",
+  "artifact_and_error_wire_roundtrip": true,
+  "retry_exclusions_checked": [
+    "agent",
+    "episode"
+  ],
+  "requested_whole_retry_count": 3,
+  "enforced_whole_retry_count": 0,
+  "native_retry_loop_attempts": {
+    "terminal_only": {
+      "agent": 1,
+      "episode": 1
+    },
+    "prior_provider_then_terminal": {
+      "agent": 1,
+      "episode": 1
+    }
+  },
+  "prior_provider_error_history_preserved": true,
+  "in_process_resume_terminal": true,
+  "native_is_truncated": false
+}
+
+## Revision 3 — actual zero-charge/zero-substep injection reaches the seventh guard
+
+Command: .venv/bin/python -B environments/physim/tools/test_blob_round5_resources_native.py
+Exit: 0
+Standalone duration: 1.542343583 s (native worker report)
+Also passed in final all-gates process; its exact native result follows.
+
+{
+  "gate": "BLOB2v2r2 native resource lifecycle",
+  "pass": true,
+  "http_stop_statuses": [
+    400,
+    400
+  ],
+  "provider_calls": 0,
+  "real_inject_log_guard": {
+    "tool": "BlobToolset.inject5",
+    "amp": 0.0,
+    "dur": 0.002,
+    "simulation_substeps": 0,
+    "retained_log_entries": 1,
+    "retained_emission_entries": 1,
+    "resource_stop": {
+      "kind": "resource_limit",
+      "policy": "v2r2",
+      "meter": "log_entries",
+      "current": 2.0,
+      "requested": 2.0,
+      "limit": 3,
+      "turn": 2
+    }
+  },
+  "synthetic_log_entries_cap": 3,
+  "simulation_or_truth_calls": 0,
+  "resource_error": "ResourceSafetyError",
+  "science_reward_recorded": false,
+  "next_model_stop_condition": "resource_safety_stop",
+  "final_tool_stop_condition": "resource_safety_stop",
+  "artifact_and_error_wire_roundtrip": true,
+  "retry_exclusions_checked": [
+    "agent",
+    "episode"
+  ],
+  "requested_whole_retry_count": 3,
+  "enforced_whole_retry_count": 0,
+  "native_retry_loop_attempts": {
+    "terminal_only": {
+      "agent": 1,
+      "episode": 1
+    },
+    "prior_provider_then_terminal": {
+      "agent": 1,
+      "episode": 1
+    }
+  },
+  "prior_provider_error_history_preserved": true,
+  "in_process_resume_terminal": true,
+  "native_is_truncated": false,
+  "duration_s": 0.305
+}

@@ -1,0 +1,31 @@
+{
+  "environments/physim/physim/blobround5.py": {
+    "bytes": 47664,
+    "sha256": "71418a1ad48a96579dd73f6d65cd40798b3b2a605d882a58400435279b21257a"
+  },
+  "environments/physim/physim/blobstate.py": {
+    "bytes": 3655,
+    "sha256": "15f3e30c19f9d4c260539a4f2448a6596d8b681ad444ca2ee7aee8da783ba8a1"
+  },
+  "environments/physim/physim/servers/blob.py": {
+    "bytes": 69015,
+    "sha256": "4ca976c347af6d639536a7d6c65c5cc99bbdfaf0f26d9d5da36561b71b9bf5a3"
+  },
+  "environments/physim/physim/taskset.py": {
+    "bytes": 56838,
+    "sha256": "b633072fd3b7a38c33525b1283fce464bbf4160a55f99f1323b9db83d195cd0d"
+  },
+  "environments/physim/tools/test_blob_round5_resources.py": {
+    "bytes": 34083,
+    "sha256": "9bfac981bab2696c03127668e338d3121ac1fed4ef604f8edd577cd8ff9b8291"
+  },
+  "environments/physim/tools/test_blob_round5_resources_native.py": {
+    "bytes": 22172,
+    "sha256": "68b08fdeac9f89619ae96267b66db8d7ac9fc72c18604b7301dc958fe82108c7"
+  },
+  "legacy_test_sources_unchanged": {
+    "environments/physim/tools/test_blob_round5.py": "7b6b1822aea484d850238d3a178560a43ab3ccb89de8e01cb21c70688b20e3bc",
+    "environments/physim/tools/test_blob_round2.py": "437ef6c1cbfb483b1357958c54a91da86ce670cac3474ae0a993d835b64ea17f",
+    "environments/physim/tools/test_blob_server.py": "120c370510a271ed4e0c86a454e1ee287394e371b8768c0c12221753bdd6e3ea"
+  }
+}

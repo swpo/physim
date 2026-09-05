@@ -1,0 +1,14 @@
+G-R1 reveal-leak + text audit: PASS (19 surfaces, byte-identical pre-reveal transcripts under salt redraw)
+G-R2 post-reveal isolation: PASS (9 world tools refused generically; status/submit/resubmit alive; meters frozen)
+G-R3 replay==live at anchor: PASS (fork window-0 reads bitwise vs record; build parity_max 4.44e-04
+G-R4 caps: PASS (6 synthetic saturations -> generic refusal, all logged; zero hits in normal smokes checked in G-R5)
+  E1 s928: reward +0.222  L1 +0.01  L2 -0.00  L3F -0.38  L3E +0.01  L4 +0.88  L4D +0.82
+  E1 s929: reward +0.259  L1 -0.02  L2 +0.00  L3F -0.07  L3E +0.04  L4 +0.84  L4D +0.77
+  E1 s930: reward +0.181  L1 +0.01  L2 +0.00  L3F -0.41  L3E +0.00  L4 +0.56  L4D +0.92
+  E2 s942: reward +0.166  L1 -0.00  L2 -0.02  L3F -0.04  L3S -0.02  L4 +0.15  L4D +0.93
+  E2 s943: reward +0.256  L1 +0.00  L2 +0.00  L3F -0.05  L3S -0.04  L4 +0.65  L4D +0.97
+  E2 s944: reward +0.184  L1 -0.03  L2 -0.03  L3F -0.39  L3S +0.02  L4 +0.81  L4D +0.73
+G-R5 scripted-actor floors: PASS (6/6 rollouts, all instances submitted, zero cap hits)
+G-R6 determinism: PASS (menus redraw-stable; 51 truth arrays hash-consistent (second build not supplied: self-consistency only))
+brute-force-infeasibility note -> /Users/spoho/Documents/prime/test/physim/probes/blobs/agentenv/results/smoke_blob2v2_bruteforce_note.json
+ALL BLOB ROUND-5 GATES PASS

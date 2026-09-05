@@ -1,0 +1,384 @@
+{
+  "cohort": "BLOB2v2r2",
+  "command": "environments/physim/tools/test_blob_round5_resources.py --gates config synthetic native --json-out probes/blobs/agentenv/round5/resource_revision/parent_fast_gate.json",
+  "gates": {
+    "config": {
+      "pass_": true,
+      "cohorts": [
+        {
+          "cohort": "BLOB2v2-E1",
+          "policy": "v2",
+          "vf_config": {
+            "colocated": false,
+            "runtime": {
+              "type": "subprocess"
+            },
+            "url": null,
+            "r5_mode": true,
+            "r5_resource_policy": "v2"
+          }
+        },
+        {
+          "cohort": "BLOB2v2r2-E1",
+          "policy": "v2r2",
+          "vf_config": {
+            "colocated": false,
+            "runtime": {
+              "type": "subprocess"
+            },
+            "url": null,
+            "r5_mode": true,
+            "r5_resource_policy": "v2r2"
+          }
+        },
+        {
+          "cohort": "BLOB2v2-E2",
+          "policy": "v2",
+          "vf_config": {
+            "colocated": false,
+            "runtime": {
+              "type": "subprocess"
+            },
+            "url": null,
+            "r5_mode": true,
+            "r5_resource_policy": "v2"
+          }
+        },
+        {
+          "cohort": "BLOB2v2r2-E2",
+          "policy": "v2r2",
+          "vf_config": {
+            "colocated": false,
+            "runtime": {
+              "type": "subprocess"
+            },
+            "url": null,
+            "r5_mode": true,
+            "r5_resource_policy": "v2r2"
+          }
+        }
+      ],
+      "native_vf_config_entrypoint": true,
+      "contracts_identical_except_label": true,
+      "legacy_caps": {
+        "sensor": 1000000.0,
+        "adjust": 30000.0,
+        "injection": 3000.0,
+        "fork_spawns": 400,
+        "open_forks": 8,
+        "sim_tu": 100000.0
+      },
+      "new_caps": {
+        "sensor": 1000000000.0,
+        "adjust": 10000000.0,
+        "injection": 1000000.0,
+        "fork_spawns": 100000,
+        "open_forks": 10000,
+        "sim_tu": 10000000.0,
+        "log_entries": 1000000
+      },
+      "duration_s": 0.004
+    },
+    "handle_collision": {
+      "pass_": true,
+      "r2_handle_bits": 128,
+      "legacy_handle_bits": 32,
+      "known_legacy_hash_collision_counters": [
+        5931,
+        67233
+      ],
+      "occupied_record_preserved": true,
+      "duration_s": 0.0
+    },
+    "high_count": {
+      "pass_": true,
+      "spawn_reset_cycles": 512,
+      "cumulative_spawns": 576,
+      "logical_open": 64,
+      "resident_peak": 8,
+      "resident_fixture_field_bytes_peak": 1024,
+      "cache_evictions": 121,
+      "meters": {
+        "sensor": 554240.0,
+        "adjust": 0.0,
+        "injection": 0.0,
+        "sim_tu": 117005.0,
+        "log_entries": 18.0
+      },
+      "cap_hits": {
+        "sensor": 0,
+        "adjust": 0,
+        "injection": 0,
+        "sim_tu": 0,
+        "fork_spawns": 0,
+        "open_forks": 0,
+        "log_entries": 0
+      },
+      "no_per_fork_duration_ceiling": true,
+      "duration_s": 0.192
+    },
+    "synthetic_parity": {
+      "pass_": true,
+      "physics": "synthetic",
+      "exact_fields_rng_poses_emissions_logs": true,
+      "evicted_parent_branch_and_reset_ancestor": true,
+      "transcript_responses": 29,
+      "warm_resident_peak": 8,
+      "warm_resident_field_bytes_peak": 1024,
+      "warm_cache_evictions": 7,
+      "warm_rebuilds": 19,
+      "cold_rebuilds": 39,
+      "snapshots": {
+        "f1ffc84eedf89e2ebfcc0cb58491ebe56": {
+          "fields": "abec4dfdf153d232dd91caad99918433d4e1c998ad861d788f1380b064414e33",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 271452847849158708958780778235257012502,
+              "inc": 1885050121631953615108343486873332487
+            },
+            "has_uint32": 0,
+            "uinteger": 2587490517
+          },
+          "t_step": 750
+        },
+        "fa88af592784f362785b75f4b0f609fcc": {
+          "fields": "bbe37ab6fd447a7fbf6460253dfbee179b9ee5a4e12e9889b0f492611088f28d",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 97823591045896206798262288601475078092,
+              "inc": 114268856522997074398178377196764157757
+            },
+            "has_uint32": 1,
+            "uinteger": 3338261413
+          },
+          "t_step": 500
+        },
+        "f6133b628fd139bf4872a9e1a0daa8477": {
+          "fields": "bd10ec0473550ee13dba48a493220558dbe820f094eb270023eab41ded758ff2",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 191627456109411839451879796187420900318,
+              "inc": 316701535582069804590041952563382160195
+            },
+            "has_uint32": 0,
+            "uinteger": 735455458
+          },
+          "t_step": 250
+        },
+        "fad89e73d4d1628f3d3c3556af9c23f62": {
+          "fields": "b86eee0164300ab2877a8d8277ff0fd502921c817fc427ccdf182cc5f0dcf715",
+          "rng": {
+            "bit_generator": "PCG64",
+            "state": {
+              "state": 154419503611845075296759990947945934968,
+              "inc": 180860331138422645136993277436049602805
+            },
+            "has_uint32": 0,
+            "uinteger": 1686132601
+          },
+          "t_step": 250
+        }
+      },
+      "meters": {
+        "sensor": 1025.0,
+        "adjust": 1.3,
+        "injection": 9.2,
+        "sim_tu": 35.0,
+        "log_entries": 13.0
+      },
+      "duration_s": 0.008
+    },
+    "deep_chain": {
+      "pass_": true,
+      "ancestry_depth": 1101,
+      "logical_open": 1100,
+      "resident_peak": 8,
+      "cap_hits": {
+        "sensor": 0,
+        "adjust": 0,
+        "injection": 0,
+        "sim_tu": 0,
+        "fork_spawns": 0,
+        "open_forks": 0,
+        "log_entries": 0
+      },
+      "duration_s": 0.048
+    },
+    "metadata_entries": {
+      "pass_": true,
+      "guard": 1000000,
+      "counter": "persisted operation-log plus emission-list entries",
+      "noop_entries_preserved": [
+        {
+          "amp": 0.0,
+          "dur": 7.5,
+          "accepted": 2,
+          "persisted_entries": 4,
+          "terminal_before_third_append": true
+        },
+        {
+          "amp": 0.0,
+          "dur": 0.001,
+          "accepted": 2,
+          "persisted_entries": 4,
+          "terminal_before_third_append": true
+        },
+        {
+          "amp": 0.5,
+          "dur": 0.001,
+          "accepted": 2,
+          "persisted_entries": 4,
+          "terminal_before_third_append": true
+        }
+      ],
+      "preflight_before_physics_paths": [
+        "read5",
+        "wait5",
+        "adjust5",
+        "inject5"
+      ],
+      "actual_entry_accounting": true,
+      "legacy_unchanged": true,
+      "duration_s": 0.002
+    },
+    "response_memory": {
+      "pass_": true,
+      "lazy_billion_step_read": true,
+      "bounded_adjust_read_response": true,
+      "long_adjust_read_false_steps": 2500,
+      "sparse_oversized_read_stops_before_physics": true,
+      "duration_s": 0.011
+    },
+    "phase_and_caps": {
+      "pass_": true,
+      "post_ready_world_tools_closed": 9,
+      "apparatus_bounds_unchanged": true,
+      "private_surface_clean": true,
+      "synthetic_resource_trips": {
+        "sensor": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "sensor",
+          "current": 0.0,
+          "requested": 160.0,
+          "limit": 0,
+          "turn": 2
+        },
+        "adjust": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "adjust",
+          "current": 0.0,
+          "requested": 0.1,
+          "limit": 0,
+          "turn": 2
+        },
+        "injection": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "injection",
+          "current": 0.0,
+          "requested": 2.5,
+          "limit": 0,
+          "turn": 2
+        },
+        "fork_spawns": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "fork_spawns",
+          "current": 1,
+          "requested": 1.0,
+          "limit": 1,
+          "turn": 2
+        },
+        "open_forks": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "open_forks",
+          "current": 1,
+          "requested": 1.0,
+          "limit": 1,
+          "turn": 2
+        },
+        "sim_tu": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "sim_tu",
+          "current": 0.0,
+          "requested": 5.0,
+          "limit": 0,
+          "turn": 2
+        },
+        "log_entries": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "log_entries",
+          "current": 0.0,
+          "requested": 2.0,
+          "limit": 0,
+          "turn": 2
+        }
+      },
+      "legacy_refusals_unchanged": true,
+      "duration_s": 0.002
+    },
+    "native_lifecycle": {
+      "gate": "BLOB2v2r2 native resource lifecycle",
+      "pass": true,
+      "http_stop_statuses": [
+        400,
+        400
+      ],
+      "provider_calls": 0,
+      "real_inject_log_guard": {
+        "tool": "BlobToolset.inject5",
+        "amp": 0.0,
+        "dur": 0.002,
+        "simulation_substeps": 0,
+        "retained_log_entries": 1,
+        "retained_emission_entries": 1,
+        "resource_stop": {
+          "kind": "resource_limit",
+          "policy": "v2r2",
+          "meter": "log_entries",
+          "current": 2.0,
+          "requested": 2.0,
+          "limit": 3,
+          "turn": 2
+        }
+      },
+      "synthetic_log_entries_cap": 3,
+      "simulation_or_truth_calls": 0,
+      "resource_error": "ResourceSafetyError",
+      "science_reward_recorded": false,
+      "next_model_stop_condition": "resource_safety_stop",
+      "final_tool_stop_condition": "resource_safety_stop",
+      "artifact_and_error_wire_roundtrip": true,
+      "retry_exclusions_checked": [
+        "agent",
+        "episode"
+      ],
+      "requested_whole_retry_count": 3,
+      "enforced_whole_retry_count": 0,
+      "native_retry_loop_attempts": {
+        "terminal_only": {
+          "agent": 1,
+          "episode": 1
+        },
+        "prior_provider_then_terminal": {
+          "agent": 1,
+          "episode": 1
+        }
+      },
+      "prior_provider_error_history_preserved": true,
+      "in_process_resume_terminal": true,
+      "native_is_truncated": false,
+      "duration_s": 0.205
+    }
+  },
+  "pass": true,
+  "duration_s": 0.475
+}
