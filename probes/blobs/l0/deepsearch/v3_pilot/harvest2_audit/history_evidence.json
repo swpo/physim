@@ -1,0 +1,2520 @@
+{
+  "schema": "harvest2_history_evidence_v1",
+  "scope": "Local-only read-only audit; source text tar members read into memory/stdout; no full tar extraction, simulation, remote action, or archive rewrite.",
+  "index_convention": "All JSON array indices and archive donor ordinals are zero-based; line numbers are one-based.",
+  "structural_genome_fields": [
+    "acts",
+    "chans",
+    "W",
+    "K",
+    "bilin"
+  ],
+  "local_sources": [
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/archive.json",
+      "sha256": "775161e0d7f8125cc9bfaefcbed290d1c492f4bef1714ab44a1877f6fbe05999",
+      "bytes": 1294662
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/state.json",
+      "sha256": "812bb47cd55514d7c2ca0b7068eec51d7d39f76b3844ac0a498a5341c06dff41",
+      "bytes": 16435
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/results.json",
+      "sha256": "b051be6572d441b25bd4d7696eae0d99583801ae1905c6ce7857f25285b71e26",
+      "bytes": 6884607
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/island_config.json",
+      "sha256": "1a88acce46602cfd331b3f18232fb6632cb0efae460207a7e0f5e5c675d2e09a",
+      "bytes": 1885
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/CONFIRM12_SETTLED.json",
+      "sha256": "b930aa039752052cf9959bc3fce224eea5ddd2ea2767fb8ccb2ac32bbf41a756",
+      "bytes": 100
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/driver.log",
+      "sha256": "5d8b414efaa9aed812735c50a8b133bf0c3ce8c38d69b714f158054cdbdf131e",
+      "bytes": 7788
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl1_snap/out/archive.json",
+      "sha256": "91e29a9f69932ac1dfdf59a2ae78e005eeb8b40fe0e342bc5058a01d1216bc16",
+      "bytes": 973382
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl1_snap/out/results.json",
+      "sha256": "e8b94fb98c81eaddd7cbe5dac6e4d5bf79d0ba6ba3b0f5c21cec6ccb2fb337c7",
+      "bytes": 4281435
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl1_snap/out/archive_seed.json",
+      "sha256": "b74a35ddf3ecc8d503bc67decda36cea9f456aea89afdaed644f050f2274a253",
+      "bytes": 388964
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl1_snap/island_config.json",
+      "sha256": "450fa647d376bc5187331688b8bb87c817f49a5a53e993949aa77bc8d3ea71f6",
+      "bytes": 1607
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/island_config_1.json",
+      "sha256": "a87e4bf1391897241a5ccc662f48d8e9679bb55e0ad7ec6b0d450cb15546fcbf",
+      "bytes": 1586
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/island_config_cont_1.json",
+      "sha256": "0fddf799626050eb9ca57c2987b372fee98118130805441a6d247ca76f173def",
+      "bytes": 1784
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/archive.json",
+      "sha256": "eaa9b11e714f491a4b38244355ae178f5046ca077b94a49151f4e8308f8fe878",
+      "bytes": 1242497
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/state.json",
+      "sha256": "e11d19e5db0dd984b0c56587b6211eff749928c9f79526f917d9b52d3b226357",
+      "bytes": 16552
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/results.json",
+      "sha256": "422f2ded50754aa71bd94da33c745f010e335f1b795b8ecda96a2856601afd5c",
+      "bytes": 6566760
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/island_config.json",
+      "sha256": "dd8d73940471105b9e5c9758195a9fffbcb445cbd11c46f545ed12a5c3b8a73e",
+      "bytes": 1885
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/CONFIRM12_SETTLED.json",
+      "sha256": "2a21e31005040603f8721a2555036ceab4799968428949888ace404d46c48de2",
+      "bytes": 100
+    },
+    {
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/driver.log",
+      "sha256": "93313fe865ab2c2cea738b0b7dda8ee695f331490f859c4a60e4e816c1d9df33",
+      "bytes": 7811
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl2_snap/out/archive.json",
+      "sha256": "dc0d9a364e0b4371bdcec9769fa5e54d867bb2f5ccb3425ac4f6042469f21a10",
+      "bytes": 977158
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl2_snap/out/results.json",
+      "sha256": "ff9490fd75066517149f3fd18590ae76a8b300b1e0ec4c09b3c00bc074904bca",
+      "bytes": 4152153
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl2_snap/out/archive_seed.json",
+      "sha256": "b74a35ddf3ecc8d503bc67decda36cea9f456aea89afdaed644f050f2274a253",
+      "bytes": 388964
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest/isl2_snap/island_config.json",
+      "sha256": "3c62bd377a34ab7e82b667aad5b37fcccbd29162665ec3f039a99fc8af9fcd15",
+      "bytes": 1607
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/island_config_2.json",
+      "sha256": "dae33db600711130402d5f0e4d81ce5fb0b950d655a6f9484a4b9e2b4a159909",
+      "bytes": 1586
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/island_config_cont_2.json",
+      "sha256": "f97f0a826f806af2a7550586d4a639f1410fca477164751adda6c62e1997edf9",
+      "bytes": 1784
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/pod_lib.py",
+      "sha256": "174bf52683df0f600d3dbe36f59289d74519bf1c1eec113ac9c4b59b6bf74d4a",
+      "bytes": 11684
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/reblend_archive.py",
+      "sha256": "8111730347b0fefcf0cb2d98b98a6420ea8cad26d8b41cffe3c4bed66ba3a160",
+      "bytes": 1587
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/HARVEST.md",
+      "sha256": "a1b8a743aef23ae97b584c70d42d27a1da2c6c8c7481565fa2ea094386bddc35",
+      "bytes": 2888
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/POST12_FACTS.json",
+      "sha256": "6e96debbab443f630864e7cd890bd10bb662534df9c04d6c2ded8b5b298d9de8",
+      "bytes": 4677
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/gen_c9backfill.py",
+      "sha256": "fbc72db539c8f7ab0409c2202713023a4ee079725ffbd165b963a8a8742a2138",
+      "bytes": 1139
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/pod_worker_batch.py",
+      "sha256": "425090a6a24032561ce13a5cd8b7358c030e3e86fbcdeaf6ad3efc1aee669671",
+      "bytes": 18944
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/v3_postpass.py",
+      "sha256": "705be884b017aaa8e333942008f399e997b1bb6f2bc70c1301727e98c9452f48",
+      "bytes": 1279
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/pod_gen.py",
+      "sha256": "1eb2277273338bd9fee441bcabc556eb2fc2ad8c5e0e7f55861311a55cbebdf7",
+      "bytes": 17074
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/pod_gen_batch.py",
+      "sha256": "e23c16f658d8843568c23eae5ef389372679214e33dbcac84d6fbb5fc4e376a8",
+      "bytes": 4909
+    },
+    {
+      "path": "/Users/spoho/v3work/v3bundle/pkg/blobkit/data/fleet/pod_lib.py",
+      "sha256": "bbd36d7a9fd536d6b844ae6abb4f8792b8ed86ebfa951fb0321d93062e91175b",
+      "bytes": 11356
+    },
+    {
+      "path": "/Users/spoho/v3work/v3contbundle.tgz",
+      "sha256": "9232f8d972c9ab360ddc7817de03650fadc144d636f38cded25a5391e6ab1e32",
+      "bytes": 5300067
+    },
+    {
+      "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/c9fill_w0.json",
+      "sha256": "cb18518c997dc18e240ef837fb072761b6f9fa4a03df4b62efbbe10993cbc721",
+      "bytes": 167061
+    }
+  ],
+  "source_members": [
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "campaign.log",
+      "sha256": "940a7df4283896ecd0546d9d0ca51da82617b4371e93287a539cf19f27084db2",
+      "bytes": 261,
+      "snippets": [
+        {
+          "start_line": 1,
+          "end_line": 5,
+          "text": "=== C9 BACKFILL 2026-09-04T13:00:53Z ===\nreblended 269 entries at W9=0.4; kept 0 (no C9 join — g0 imports)\n=== ISLAND 1 gens 8-12 2026-09-04T14:48:34Z ===\n=== RESUME gens 9-12 (sic12, retry cap) 2026-09-04T22:24:52Z ===\nPOD_CAMPAIGN_DONE 2026-09-05T08:37:32Z"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "campaign9.sh",
+      "sha256": "0cc8f184e5ba8b22d6bbcb022680b81d96d056685bc70c6893e0be11c3dec010",
+      "bytes": 532,
+      "snippets": [
+        {
+          "start_line": 1,
+          "end_line": 10,
+          "text": "#!/bin/bash\n# campaign9.sh — resume continuation at gen 9 after breed-9 respec (sic 12, retry cap 12)\nexport XLA_PYTHON_CLIENT_PREALLOCATE=false\nexport OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1\nexport VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1\ncd ~/isl1\nPY=/home/ubuntu/gv/bin/python\necho \"=== RESUME gens 9-12 (sic12, retry cap) $(date -u +%FT%TZ) ===\" >> ~/campaign.log\nPY=/home/ubuntu/gv/bin/python ./pod_run_batch.sh 9 12 >> ~/campaign.log 2>&1\necho POD_CAMPAIGN_DONE $(date -u +%FT%TZ) >> ~/campaign.log"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "campaign_cont.sh",
+      "sha256": "a7ed08289ebd898d18e95cf5c2668d41e1cef03866b8c1b82b5427bb255d9c05",
+      "bytes": 700,
+      "snippets": [
+        {
+          "start_line": 9,
+          "end_line": 13,
+          "text": "echo \"=== C9 BACKFILL $(date -u +%FT%TZ) ===\" >> ~/campaign.log\n$PY pod_worker_batch.py out/jobs/c9fill_w0.json > out/wb_c9fill.log 2>&1\n$PY reblend_archive.py out 0.40 >> ~/campaign.log 2>&1\necho \"=== ISLAND $ISL gens 8-12 $(date -u +%FT%TZ) ===\" >> ~/campaign.log\nPY=/home/ubuntu/gv/bin/python ./pod_run_batch.sh 8 12 >> ~/campaign.log 2>&1"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/reblend_archive.py",
+      "sha256": "8111730347b0fefcf0cb2d98b98a6420ea8cad26d8b41cffe3c4bed66ba3a160",
+      "bytes": 1587,
+      "snippets": [
+        {
+          "start_line": 13,
+          "end_line": 33,
+          "text": "best = {}\nfor r in rows:\n    if r.get(\"status\") != \"ok\" or r.get(\"C9\") is None: continue\n    base = r[\"cand\"].split(\"_s2\")[0].split(\"_s3\")[0].split(\"_c9\")[0]\n    if base not in best or (r.get(\"interest\") or 0) > (best[base].get(\"interest\") or 0):\n        best[base] = r\narch = json.load(open(f\"{out}/archive.json\"))\nn_re, n_keep = 0, 0\nfor k, c in arch.items():\n    r = best.get(c[\"cand\"]) or best.get(str(c[\"cand\"]).split(\"_s2\")[0].split(\"_s3\")[0])\n    if r is None:\n        n_keep += 1; continue\n    iv2 = r.get(\"interest_v2\")\n    c9 = r.get(\"C9\")\n    if iv2 is None or c9 is None:\n        n_keep += 1; continue\n    c[\"interest\"] = (1.0 - w9) * float(iv2) + w9 * 100.0 * float(c9)\n    c[\"C9\"] = c9; c[\"C9_factors\"] = r.get(\"C9_factors\")\n    c[\"spatial_class\"] = r.get(\"spatial_class\"); c[\"c9_partial\"] = r.get(\"c9_partial\")\n    c[\"interest_v2\"] = iv2\n    c[\"_reblended_w9\"] = w9"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/pod_lib.py",
+      "sha256": "174bf52683df0f600d3dbe36f59289d74519bf1c1eec113ac9c4b59b6bf74d4a",
+      "bytes": 11684,
+      "snippets": [
+        {
+          "start_line": 254,
+          "end_line": 269,
+          "text": "        entry = dict(cand=row[\"cand\"], gen=row.get(\"gen\"), op=row.get(\"op\"),\n                     island=row.get(\"island\"), metrics=\"v2\",\n                     parents=row.get(\"parents\"), interest=row[\"interest\"],\n                     T_used=row.get(\"T_used\"), ghash=row.get(\"ghash\"),\n                     summary=row.get(\"summary\"), genome=row.get(\"genome\"),\n                     origin=row.get(\"origin\", \"pod\"),\n                     n_bilin=row.get(\"n_bilin\"), minted=row.get(\"minted\"),\n                     vtags=row.get(\"vtags\"),\n                     # [v3 continuation] carry the C9 annotation into the archive\n                     C9=row.get(\"C9\"), C9_factors=row.get(\"C9_factors\"),\n                     spatial_class=row.get(\"spatial_class\"),\n                     c9_partial=row.get(\"c9_partial\"),\n                     interest_v2=row.get(\"interest_v2\"),\n                     seed2_interest=None, seed2_ok=False,\n                     seed3_interest=None, seed3_ok=False,\n                     count=(cell[\"count\"] + 1 if cell else 1),"
+        },
+        {
+          "start_line": 291,
+          "end_line": 306,
+          "text": "def archive_seedk(row, k, P=None):\n    \"\"\"Attach seed-k result (k in {2,3}); ok iff >= 0.6*incumbent and alive.\"\"\"\n    P = P or paths()\n    suf = f\"_s{k}\"\n    base = row[\"cand\"][:-len(suf)] if row[\"cand\"].endswith(suf) else row[\"cand\"]\n    with locked_json(P[\"archive\"], {}) as c:\n        for key, cell in c.data.items():\n            if cell[\"cand\"] == base:\n                i = row.get(\"interest\", 0.0) or 0.0\n                ok = bool(i >= 0.6 * cell[\"interest\"] and i > 0.0)\n                cell[f\"seed{k}_interest\"] = i\n                cell[f\"seed{k}_cell\"] = row.get(\"cell\")\n                cell[f\"seed{k}_ok\"] = ok\n                c.write()\n                return key, ok\n    return None, None"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/island_config.json",
+      "sha256": "1a88acce46602cfd331b3f18232fb6632cb0efae460207a7e0f5e5c675d2e09a",
+      "bytes": 1885,
+      "snippets": [
+        {
+          "start_line": 11,
+          "end_line": 25,
+          "text": " \"mix\": {\n  \"mutate\": 22,\n  \"mint_bilin\": 18,\n  \"delete_bilin\": 4,\n  \"add_chan\": 8,\n  \"dup_act\": 0,\n  \"merge\": 20,\n  \"merge_spatial_ic\": 12,\n  \"immigrate\": 5\n },\n \"merge_mix\": {\n  \"cross_edge\": 14,\n  \"slow_tanh\": 6,\n  \"share_chan\": 0\n },"
+        },
+        {
+          "start_line": 38,
+          "end_line": 41,
+          "text": " \"rescore_procs\": 8,\n \"_continuation\": \"gens 8-12: lanes reallocated per HARVEST.md (sic 8->24, mint_bilin 12->16, immigrate 20->5, dup_act 8->0, share_chan 4->0); W9 0.25->0.40 in lib/metrics_v3\",\n \"_midcourse\": \"gens10-12: sic 24->12 (breed retry-loop cost on grown genomes), mutate 22, mint 18\"\n}"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/lib/v3_postpass.py",
+      "sha256": "705be884b017aaa8e333942008f399e997b1bb6f2bc70c1301727e98c9452f48",
+      "bytes": 1279,
+      "snippets": [
+        {
+          "start_line": 21,
+          "end_line": 26,
+          "text": "        iv2 = float(row.get(\"interest\", 0.0))\n        row[\"interest_v2\"] = iv2\n        # blend via metrics_v3.W9 (single source of truth; 0.25 pilot v1,\n        # 0.40 for the gens-8-12 continuation)\n        row[\"interest\"] = (1.0 - MV3.W9) * iv2 + MV3.W9 * 100.0 * row[\"C9\"]\n    except Exception as e:"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/lib/metrics_v3.py",
+      "sha256": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+      "bytes": 32351,
+      "snippets": [
+        {
+          "start_line": 86,
+          "end_line": 86,
+          "text": "W9 = 0.40                  # C9 weight share in interest_v3 [gens 8-12: raised from 0.25, selection presses C9]"
+        },
+        {
+          "start_line": 713,
+          "end_line": 715,
+          "text": "    \"\"\"interest_v3 = renormalized v2 + W9*C9 share (both on the 0-100 scale).\n    v2 components keep relative proportions: total = (1-W9)*v2 + W9*100*C9.\"\"\"\n    return float((1.0 - W9) * v2_interest + W9 * 100.0 * C9)"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "isl1/pod_gen.py",
+      "sha256": "e1e52bac2847fcb8d0be99cc8f1d47cf7019de3914988e2e314959f7dd90dc3e",
+      "bytes": 17074,
+      "snippets": [
+        {
+          "start_line": 153,
+          "end_line": 170,
+          "text": "    mix, mmix = cfg[\"mix\"], cfg[\"merge_mix\"]\n    blocks = blocks_for(gen, a)\n    jobs, k = [], 0\n\n    def push(child, op, parents, params, cell_src=None):\n        nonlocal k\n        cand = f\"p{isl}g{gen}_{k:03d}\"\n        child[\"id\"] = cand\n        jobs.append(dict(cand=cand, gen=gen, op=op, kind=\"screen\",\n                         parents=parents, cell_src=cell_src, params=params,\n                         genome=G.genome_json(child)))\n        k += 1\n\n    unary = ([(\"mutate\",)] * mix[\"mutate\"] + [(\"mint_bilin\",)] * mix[\"mint_bilin\"]\n             + [(\"delete_bilin\",)] * mix[\"delete_bilin\"]\n             + [(\"add_chan\",)] * mix[\"add_chan\"] + [(\"dup_act\",)] * mix[\"dup_act\"])\n    for (op,) in unary:\n        for _try in range(80):"
+        },
+        {
+          "start_line": 195,
+          "end_line": 205,
+          "text": "    # [v3 pilot] spatial-IC merges: compose two elites' developed states in space\n    n_sic = int(mix.get(\"merge_spatial_ic\", 0))\n    if n_sic:\n        sys.path.insert(0, os.path.join(HERE, \"lib\"))\n        import operators_v3 as OPS3\n        import numpy as _np\n        os.makedirs(os.path.join(P[\"out\"], \"jobs\"), exist_ok=True)\n        for _ in range(n_sic):\n            for _try in range(12):\n                k1_, c1_ = pick_elite(a, rng)\n                k2_, c2_ = pick_elite(a, rng, top=None)"
+        },
+        {
+          "start_line": 231,
+          "end_line": 235,
+          "text": "    merge_plan = ([\"cross_edge\"] * mmix[\"cross_edge\"]\n                  + [\"slow_tanh\"] * mmix[\"slow_tanh\"]\n                  + [\"share_chan\"] * mmix[\"share_chan\"])\n    for mode in merge_plan:\n        for _try in range(150):"
+        },
+        {
+          "start_line": 249,
+          "end_line": 253,
+          "text": "            md = mode\n            if na > PL.MAX_ACT or nf > PL.MAX_FIELDS:\n                continue\n            if md == \"slow_tanh\" and nf + 1 > PL.MAX_FIELDS:\n                md = \"cross_edge\""
+        },
+        {
+          "start_line": 316,
+          "end_line": 319,
+          "text": "            s2jobs.append(dict(cand=r[\"cand\"] + \"_s2\", gen=gen, op=\"seed2\",\n                               kind=\"seed2\", seed=cfg[\"seed2\"],\n                               t0=r.get(\"T_used\"), parents=[r[\"cand\"]],\n                               genome=r[\"genome\"]))"
+        },
+        {
+          "start_line": 375,
+          "end_line": 393,
+          "text": "def cmd_ingest2(gen, cfg):\n    P = PL.paths(cfg)\n    rws = [r for r in rows(P) if r.get(\"kind\") == \"ds2_eval\"\n           and r.get(\"gen\") == gen and r.get(\"phase\") == \"seed2\"]\n    s3jobs, n_ok = [], 0\n    for r in rws:\n        key, ok = PL.archive_seedk(r, 2, P)\n        if key is None:\n            continue\n        n_ok += int(bool(ok))\n        if ok:\n            a = arch(P)\n            cell = a.get(key)\n            if cell and cell[\"cand\"] + \"_s2\" == r[\"cand\"]:\n                s3jobs.append(dict(cand=cell[\"cand\"] + \"_s3\", gen=gen,\n                                   op=\"seed3\", kind=\"seed3\",\n                                   seed=cfg[\"seed3\"], t0=r.get(\"T_used\"),\n                                   parents=[cell[\"cand\"]],\n                                   genome=cell[\"genome\"]))"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl1_final2.tgz",
+      "member": "setup_cont.sh",
+      "sha256": "3a3c7f977762a0baed001a61e587681748da1e4065742173ffd29339aab7b146",
+      "bytes": 652,
+      "snippets": [
+        {
+          "start_line": 8,
+          "end_line": 8,
+          "text": "cp isl$ISL/island_config_cont_$ISL.json isl$ISL/island_config.json"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "campaign.log",
+      "sha256": "454d4fa869e64ff56b74f87f3cd3749bae43e41aaa392f49fd935733904a0f60",
+      "bytes": 261,
+      "snippets": [
+        {
+          "start_line": 1,
+          "end_line": 5,
+          "text": "=== C9 BACKFILL 2026-09-04T13:00:57Z ===\nreblended 269 entries at W9=0.4; kept 0 (no C9 join — g0 imports)\n=== ISLAND 2 gens 8-12 2026-09-04T14:28:47Z ===\n=== RESUME gens 9-12 (sic12, retry cap) 2026-09-04T22:24:57Z ===\nPOD_CAMPAIGN_DONE 2026-09-05T08:27:45Z"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "campaign9.sh",
+      "sha256": "5b2bcdb89fa3f9264bee7970c915d65b08d2b1aa3f251fe5ec753f92b902710b",
+      "bytes": 532,
+      "snippets": [
+        {
+          "start_line": 1,
+          "end_line": 10,
+          "text": "#!/bin/bash\n# campaign9.sh — resume continuation at gen 9 after breed-9 respec (sic 12, retry cap 12)\nexport XLA_PYTHON_CLIENT_PREALLOCATE=false\nexport OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1\nexport VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1\ncd ~/isl2\nPY=/home/ubuntu/gv/bin/python\necho \"=== RESUME gens 9-12 (sic12, retry cap) $(date -u +%FT%TZ) ===\" >> ~/campaign.log\nPY=/home/ubuntu/gv/bin/python ./pod_run_batch.sh 9 12 >> ~/campaign.log 2>&1\necho POD_CAMPAIGN_DONE $(date -u +%FT%TZ) >> ~/campaign.log"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "campaign_cont.sh",
+      "sha256": "a7ed08289ebd898d18e95cf5c2668d41e1cef03866b8c1b82b5427bb255d9c05",
+      "bytes": 700,
+      "snippets": [
+        {
+          "start_line": 9,
+          "end_line": 13,
+          "text": "echo \"=== C9 BACKFILL $(date -u +%FT%TZ) ===\" >> ~/campaign.log\n$PY pod_worker_batch.py out/jobs/c9fill_w0.json > out/wb_c9fill.log 2>&1\n$PY reblend_archive.py out 0.40 >> ~/campaign.log 2>&1\necho \"=== ISLAND $ISL gens 8-12 $(date -u +%FT%TZ) ===\" >> ~/campaign.log\nPY=/home/ubuntu/gv/bin/python ./pod_run_batch.sh 8 12 >> ~/campaign.log 2>&1"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/reblend_archive.py",
+      "sha256": "8111730347b0fefcf0cb2d98b98a6420ea8cad26d8b41cffe3c4bed66ba3a160",
+      "bytes": 1587,
+      "snippets": [
+        {
+          "start_line": 13,
+          "end_line": 33,
+          "text": "best = {}\nfor r in rows:\n    if r.get(\"status\") != \"ok\" or r.get(\"C9\") is None: continue\n    base = r[\"cand\"].split(\"_s2\")[0].split(\"_s3\")[0].split(\"_c9\")[0]\n    if base not in best or (r.get(\"interest\") or 0) > (best[base].get(\"interest\") or 0):\n        best[base] = r\narch = json.load(open(f\"{out}/archive.json\"))\nn_re, n_keep = 0, 0\nfor k, c in arch.items():\n    r = best.get(c[\"cand\"]) or best.get(str(c[\"cand\"]).split(\"_s2\")[0].split(\"_s3\")[0])\n    if r is None:\n        n_keep += 1; continue\n    iv2 = r.get(\"interest_v2\")\n    c9 = r.get(\"C9\")\n    if iv2 is None or c9 is None:\n        n_keep += 1; continue\n    c[\"interest\"] = (1.0 - w9) * float(iv2) + w9 * 100.0 * float(c9)\n    c[\"C9\"] = c9; c[\"C9_factors\"] = r.get(\"C9_factors\")\n    c[\"spatial_class\"] = r.get(\"spatial_class\"); c[\"c9_partial\"] = r.get(\"c9_partial\")\n    c[\"interest_v2\"] = iv2\n    c[\"_reblended_w9\"] = w9"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/pod_lib.py",
+      "sha256": "174bf52683df0f600d3dbe36f59289d74519bf1c1eec113ac9c4b59b6bf74d4a",
+      "bytes": 11684,
+      "snippets": [
+        {
+          "start_line": 254,
+          "end_line": 269,
+          "text": "        entry = dict(cand=row[\"cand\"], gen=row.get(\"gen\"), op=row.get(\"op\"),\n                     island=row.get(\"island\"), metrics=\"v2\",\n                     parents=row.get(\"parents\"), interest=row[\"interest\"],\n                     T_used=row.get(\"T_used\"), ghash=row.get(\"ghash\"),\n                     summary=row.get(\"summary\"), genome=row.get(\"genome\"),\n                     origin=row.get(\"origin\", \"pod\"),\n                     n_bilin=row.get(\"n_bilin\"), minted=row.get(\"minted\"),\n                     vtags=row.get(\"vtags\"),\n                     # [v3 continuation] carry the C9 annotation into the archive\n                     C9=row.get(\"C9\"), C9_factors=row.get(\"C9_factors\"),\n                     spatial_class=row.get(\"spatial_class\"),\n                     c9_partial=row.get(\"c9_partial\"),\n                     interest_v2=row.get(\"interest_v2\"),\n                     seed2_interest=None, seed2_ok=False,\n                     seed3_interest=None, seed3_ok=False,\n                     count=(cell[\"count\"] + 1 if cell else 1),"
+        },
+        {
+          "start_line": 291,
+          "end_line": 306,
+          "text": "def archive_seedk(row, k, P=None):\n    \"\"\"Attach seed-k result (k in {2,3}); ok iff >= 0.6*incumbent and alive.\"\"\"\n    P = P or paths()\n    suf = f\"_s{k}\"\n    base = row[\"cand\"][:-len(suf)] if row[\"cand\"].endswith(suf) else row[\"cand\"]\n    with locked_json(P[\"archive\"], {}) as c:\n        for key, cell in c.data.items():\n            if cell[\"cand\"] == base:\n                i = row.get(\"interest\", 0.0) or 0.0\n                ok = bool(i >= 0.6 * cell[\"interest\"] and i > 0.0)\n                cell[f\"seed{k}_interest\"] = i\n                cell[f\"seed{k}_cell\"] = row.get(\"cell\")\n                cell[f\"seed{k}_ok\"] = ok\n                c.write()\n                return key, ok\n    return None, None"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/island_config.json",
+      "sha256": "dd8d73940471105b9e5c9758195a9fffbcb445cbd11c46f545ed12a5c3b8a73e",
+      "bytes": 1885,
+      "snippets": [
+        {
+          "start_line": 11,
+          "end_line": 25,
+          "text": " \"mix\": {\n  \"mutate\": 22,\n  \"mint_bilin\": 18,\n  \"delete_bilin\": 4,\n  \"add_chan\": 8,\n  \"dup_act\": 0,\n  \"merge\": 20,\n  \"merge_spatial_ic\": 12,\n  \"immigrate\": 5\n },\n \"merge_mix\": {\n  \"cross_edge\": 14,\n  \"slow_tanh\": 6,\n  \"share_chan\": 0\n },"
+        },
+        {
+          "start_line": 38,
+          "end_line": 41,
+          "text": " \"rescore_procs\": 8,\n \"_continuation\": \"gens 8-12: lanes reallocated per HARVEST.md (sic 8->24, mint_bilin 12->16, immigrate 20->5, dup_act 8->0, share_chan 4->0); W9 0.25->0.40 in lib/metrics_v3\",\n \"_midcourse\": \"gens10-12: sic 24->12 (breed retry-loop cost on grown genomes), mutate 22, mint 18\"\n}"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/lib/v3_postpass.py",
+      "sha256": "705be884b017aaa8e333942008f399e997b1bb6f2bc70c1301727e98c9452f48",
+      "bytes": 1279,
+      "snippets": [
+        {
+          "start_line": 21,
+          "end_line": 26,
+          "text": "        iv2 = float(row.get(\"interest\", 0.0))\n        row[\"interest_v2\"] = iv2\n        # blend via metrics_v3.W9 (single source of truth; 0.25 pilot v1,\n        # 0.40 for the gens-8-12 continuation)\n        row[\"interest\"] = (1.0 - MV3.W9) * iv2 + MV3.W9 * 100.0 * row[\"C9\"]\n    except Exception as e:"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/lib/metrics_v3.py",
+      "sha256": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+      "bytes": 32351,
+      "snippets": [
+        {
+          "start_line": 86,
+          "end_line": 86,
+          "text": "W9 = 0.40                  # C9 weight share in interest_v3 [gens 8-12: raised from 0.25, selection presses C9]"
+        },
+        {
+          "start_line": 713,
+          "end_line": 715,
+          "text": "    \"\"\"interest_v3 = renormalized v2 + W9*C9 share (both on the 0-100 scale).\n    v2 components keep relative proportions: total = (1-W9)*v2 + W9*100*C9.\"\"\"\n    return float((1.0 - W9) * v2_interest + W9 * 100.0 * C9)"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "isl2/pod_gen.py",
+      "sha256": "e1e52bac2847fcb8d0be99cc8f1d47cf7019de3914988e2e314959f7dd90dc3e",
+      "bytes": 17074,
+      "snippets": [
+        {
+          "start_line": 153,
+          "end_line": 170,
+          "text": "    mix, mmix = cfg[\"mix\"], cfg[\"merge_mix\"]\n    blocks = blocks_for(gen, a)\n    jobs, k = [], 0\n\n    def push(child, op, parents, params, cell_src=None):\n        nonlocal k\n        cand = f\"p{isl}g{gen}_{k:03d}\"\n        child[\"id\"] = cand\n        jobs.append(dict(cand=cand, gen=gen, op=op, kind=\"screen\",\n                         parents=parents, cell_src=cell_src, params=params,\n                         genome=G.genome_json(child)))\n        k += 1\n\n    unary = ([(\"mutate\",)] * mix[\"mutate\"] + [(\"mint_bilin\",)] * mix[\"mint_bilin\"]\n             + [(\"delete_bilin\",)] * mix[\"delete_bilin\"]\n             + [(\"add_chan\",)] * mix[\"add_chan\"] + [(\"dup_act\",)] * mix[\"dup_act\"])\n    for (op,) in unary:\n        for _try in range(80):"
+        },
+        {
+          "start_line": 195,
+          "end_line": 205,
+          "text": "    # [v3 pilot] spatial-IC merges: compose two elites' developed states in space\n    n_sic = int(mix.get(\"merge_spatial_ic\", 0))\n    if n_sic:\n        sys.path.insert(0, os.path.join(HERE, \"lib\"))\n        import operators_v3 as OPS3\n        import numpy as _np\n        os.makedirs(os.path.join(P[\"out\"], \"jobs\"), exist_ok=True)\n        for _ in range(n_sic):\n            for _try in range(12):\n                k1_, c1_ = pick_elite(a, rng)\n                k2_, c2_ = pick_elite(a, rng, top=None)"
+        },
+        {
+          "start_line": 231,
+          "end_line": 235,
+          "text": "    merge_plan = ([\"cross_edge\"] * mmix[\"cross_edge\"]\n                  + [\"slow_tanh\"] * mmix[\"slow_tanh\"]\n                  + [\"share_chan\"] * mmix[\"share_chan\"])\n    for mode in merge_plan:\n        for _try in range(150):"
+        },
+        {
+          "start_line": 249,
+          "end_line": 253,
+          "text": "            md = mode\n            if na > PL.MAX_ACT or nf > PL.MAX_FIELDS:\n                continue\n            if md == \"slow_tanh\" and nf + 1 > PL.MAX_FIELDS:\n                md = \"cross_edge\""
+        },
+        {
+          "start_line": 316,
+          "end_line": 319,
+          "text": "            s2jobs.append(dict(cand=r[\"cand\"] + \"_s2\", gen=gen, op=\"seed2\",\n                               kind=\"seed2\", seed=cfg[\"seed2\"],\n                               t0=r.get(\"T_used\"), parents=[r[\"cand\"]],\n                               genome=r[\"genome\"]))"
+        },
+        {
+          "start_line": 375,
+          "end_line": 393,
+          "text": "def cmd_ingest2(gen, cfg):\n    P = PL.paths(cfg)\n    rws = [r for r in rows(P) if r.get(\"kind\") == \"ds2_eval\"\n           and r.get(\"gen\") == gen and r.get(\"phase\") == \"seed2\"]\n    s3jobs, n_ok = [], 0\n    for r in rws:\n        key, ok = PL.archive_seedk(r, 2, P)\n        if key is None:\n            continue\n        n_ok += int(bool(ok))\n        if ok:\n            a = arch(P)\n            cell = a.get(key)\n            if cell and cell[\"cand\"] + \"_s2\" == r[\"cand\"]:\n                s3jobs.append(dict(cand=cell[\"cand\"] + \"_s3\", gen=gen,\n                                   op=\"seed3\", kind=\"seed3\",\n                                   seed=cfg[\"seed3\"], t0=r.get(\"T_used\"),\n                                   parents=[cell[\"cand\"]],\n                                   genome=cell[\"genome\"]))"
+        }
+      ]
+    },
+    {
+      "container": "~/v3work/isl2_final2.tgz",
+      "member": "setup_cont.sh",
+      "sha256": "3a3c7f977762a0baed001a61e587681748da1e4065742173ffd29339aab7b146",
+      "bytes": 652,
+      "snippets": [
+        {
+          "start_line": 8,
+          "end_line": 8,
+          "text": "cp isl$ISL/island_config_cont_$ISL.json isl$ISL/island_config.json"
+        }
+      ]
+    }
+  ],
+  "final_container_certificates": [
+    {
+      "archive": "/Users/spoho/v3work/isl1_final2.tgz",
+      "bytes": 7526611213,
+      "sha256": "7ef7e373677750b16cef373623e1b6bbecd400cea312ba359a940fd5fe3f40c3",
+      "ok": true,
+      "certificate_path": "~/v3work/isl1_final2.tgz.verified.json",
+      "digest_recomputed_by_this_audit": false
+    },
+    {
+      "archive": "/Users/spoho/v3work/isl2_final2.tgz",
+      "bytes": 7667929517,
+      "sha256": "cb00bc78b38c7edf28cbb0a6128b721eec5a345810b26460f390992f72a68a81",
+      "ok": true,
+      "certificate_path": "~/v3work/isl2_final2.tgz.verified.json",
+      "digest_recomputed_by_this_audit": false
+    }
+  ],
+  "git_history": {
+    "continuation_commit": "4239d7a53180e4cc5b43f755ab2f046304bc7160 2026-09-04T10:09:26-04:00 v3 continuation respec: W9 0.25->0.40 (single-sourced, v3_postpass imports), pod_lib carries C9 into archive, c9-backfill + reblend tooling; build-dir mirrors of 0.3.5",
+    "pilot_metrics": {
+      "locator": "git:3b07d0b:probes/blobs/l0/complexity/metrics_v3.py",
+      "sha256": "88671a71bb0bfbc3e92212e819248de64cad4e8031df991e1d67829e23cee29d",
+      "snippet": {
+        "start_line": 86,
+        "end_line": 86,
+        "text": "W9 = 0.25                  # C9 weight share in interest_v3"
+      }
+    },
+    "pilot_postpass": {
+      "locator": "git:3b07d0b:probes/blobs/l0/deepsearch/v3_pilot/v3_postpass.py",
+      "sha256": "bf67be5cdbd312093c315f4614f5c3308a4b31c2c38cfd43542af79434056393",
+      "snippet": {
+        "start_line": 21,
+        "end_line": 23,
+        "text": "        iv2 = float(row.get(\"interest\", 0.0))\n        row[\"interest_v2\"] = iv2\n        row[\"interest\"] = 0.75 * iv2 + 25.0 * row[\"C9\"]"
+      }
+    },
+    "old_vs_new_pod_lib": "Packaged fleet pod_lib.py and final pod_lib.py differ only by 5 archive C9-copy lines; archive_seedk matching logic is unchanged."
+  },
+  "generation_history": {
+    "periods": [
+      {
+        "gens": [
+          1,
+          7
+        ],
+        "mix": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge": 20,
+          "merge_spatial_ic": 8,
+          "immigrate": 20
+        },
+        "merge_mix": {
+          "cross_edge": 12,
+          "slow_tanh": 8,
+          "share_chan": 4
+        },
+        "classical_merge_slots": 24,
+        "total_requested_creative_slots_per_island_gen": 100,
+        "W9": 0.25,
+        "evidence": "Retained baseline configs and generation job shards; mix.merge is not read by generator"
+      },
+      {
+        "gens": [
+          8,
+          8
+        ],
+        "mix": {
+          "mutate": 16,
+          "mint_bilin": 16,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 0,
+          "merge": 20,
+          "merge_spatial_ic": 24,
+          "immigrate": 5
+        },
+        "merge_mix": {
+          "cross_edge": 14,
+          "slow_tanh": 6,
+          "share_chan": 0
+        },
+        "classical_merge_slots": 20,
+        "sic_retries_per_target": 60,
+        "total_requested_creative_slots_per_island_gen": 93,
+        "W9": 0.4,
+        "evidence": "Initial continuation bundle, setup_cont.sh:8, campaign_cont.sh:9-13, gen8 jobs"
+      },
+      {
+        "gens": [
+          9,
+          12
+        ],
+        "mix": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 0,
+          "merge": 20,
+          "merge_spatial_ic": 12,
+          "immigrate": 5
+        },
+        "merge_mix": {
+          "cross_edge": 14,
+          "slow_tanh": 6,
+          "share_chan": 0
+        },
+        "classical_merge_slots": 20,
+        "sic_retries_per_target": 12,
+        "total_requested_creative_slots_per_island_gen": 89,
+        "W9": 0.4,
+        "evidence": "Final generator line203, campaign9.sh:2,8-9 and gen9-12 jobs; ignore stale _midcourse gens10-12 text"
+      }
+    ],
+    "emitted_jobs": [
+      {
+        "island": 1,
+        "gen": 1,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g1_w0.json",
+        "sha256": "c36fdf9535a41e64ce698b1d8c3380b982da72f153d488c7bf76af8f542e68da",
+        "n": 100,
+        "operators": {
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 19,
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "merge_share_chan": 4,
+          "merge_slow_tanh": 1,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 2,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g2_w0.json",
+        "sha256": "abf1f017ce03366961cfb4f4a43cc0a9f8316421bbb95e2c263f4d50c61350e0",
+        "n": 100,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 17,
+          "delete_bilin": 4,
+          "merge_slow_tanh": 3,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 3,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g3_w0.json",
+        "sha256": "2f62eb0fbf832bb7ecdedbd57c284a6506498b1869ff6d0c8ddcefb90936e1d2",
+        "n": 98,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_cross_edge": 16,
+          "merge_slow_tanh": 2,
+          "merge_spatial_ic": 8,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 4,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g4_w0.json",
+        "sha256": "a14212be88c77541b0d0ee8d806e554b764009a8da2127b5cded0f58d151b9c5",
+        "n": 98,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 16,
+          "merge_slow_tanh": 3,
+          "delete_bilin": 4,
+          "merge_share_chan": 3,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 5,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g5_w0.json",
+        "sha256": "0863c4367181e2922324817ade513748109751a0cd171fc9c5e7842748e3cb3b",
+        "n": 98,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 15,
+          "merge_slow_tanh": 4,
+          "merge_share_chan": 3,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 6,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g6_w0.json",
+        "sha256": "b632516eab9f2673f46bf2ec3c91193e3a7e74433010311b832d01cd5261f454",
+        "n": 99,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 15,
+          "merge_slow_tanh": 4,
+          "delete_bilin": 4,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 7,
+        "path": "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g7_w0.json",
+        "sha256": "bcd6208aa16a70a1ef3596b310e43897dfceb1ec0bfa797e8754d198be9f42ce",
+        "n": 97,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 13,
+          "merge_slow_tanh": 4,
+          "delete_bilin": 4,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 1,
+        "gen": 8,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/jobs/g8_w0.json",
+        "sha256": "d53e780b5da33f4e2f3ed0eb31b41c0933486c615856b139c16473469ce7b15b",
+        "n": 81,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 16,
+          "add_chan": 8,
+          "merge_spatial_ic": 22,
+          "merge_cross_edge": 7,
+          "merge_slow_tanh": 3,
+          "delete_bilin": 4,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 1,
+        "gen": 9,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/jobs/g9_w0.json",
+        "sha256": "eee5a35d9fb91a7eefec326f749cc2ad5eac3439e79a3c86f848f922c8ce4140",
+        "n": 72,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 2,
+          "merge_cross_edge": 11,
+          "merge_slow_tanh": 2,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 1,
+        "gen": 10,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/jobs/g10_w0.json",
+        "sha256": "bdd19bd9ea2038e7158b81f6733b15d56e23917623d8aaa7db9448cce6b45bcf",
+        "n": 69,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 2,
+          "merge_cross_edge": 7,
+          "merge_slow_tanh": 3,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 1,
+        "gen": 11,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/jobs/g11_w0.json",
+        "sha256": "a3e7707dcdbef7011b37cd888ae725f90762340fe8c6f58a409770c66f9c84b1",
+        "n": 70,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "add_chan": 8,
+          "merge_spatial_ic": 5,
+          "merge_cross_edge": 6,
+          "merge_slow_tanh": 2,
+          "delete_bilin": 4,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 1,
+        "gen": 12,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/jobs/g12_w0.json",
+        "sha256": "2767aaa513bd1ad4ebed28897e7a0c3aa818a632b48915ec3ab8eb90cc23c454",
+        "n": 72,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 3,
+          "merge_cross_edge": 7,
+          "merge_slow_tanh": 5,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 2,
+        "gen": 1,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g1_w0.json",
+        "sha256": "11c4d96f6aa4988f2316e6e0c2159901b0ba1b13f7d2da0cc97193bed7032044",
+        "n": 100,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 19,
+          "merge_slow_tanh": 1,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 2,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g2_w0.json",
+        "sha256": "dcd15137e1fe13c0b0be4941cee11782027a009fd4573cee500b68ff9b10cd2f",
+        "n": 99,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 16,
+          "merge_slow_tanh": 3,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 3,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g3_w0.json",
+        "sha256": "00d146984d2f82bab2d474fbddf467b7c2e38e0adc484be30d62d5bd038c2101",
+        "n": 98,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 15,
+          "merge_slow_tanh": 4,
+          "merge_share_chan": 3,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 4,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g4_w0.json",
+        "sha256": "3a81b9ca81f98d7e3f704bb4f4351b22b067de4030dd0733fcd8b36dcb831605",
+        "n": 97,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 15,
+          "merge_share_chan": 4,
+          "merge_slow_tanh": 2,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 5,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g5_w0.json",
+        "sha256": "8a41d0e92a53ad1396093edc47bfeebc0636e5f192f9ce356b0dea867e7d2265",
+        "n": 95,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 14,
+          "delete_bilin": 4,
+          "merge_share_chan": 3,
+          "merge_slow_tanh": 2,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 6,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g6_w0.json",
+        "sha256": "a836e16476104b2b6374ecb55ef2fef69d6f74bf5855dbfb9571458ee67362fc",
+        "n": 99,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 15,
+          "merge_slow_tanh": 5,
+          "merge_share_chan": 3,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 7,
+        "path": "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g7_w0.json",
+        "sha256": "42efa81d597a6f480651a6c7abb814ddbe4808cbc9afce36dcdd06d1071604f5",
+        "n": 98,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 12,
+          "add_chan": 8,
+          "dup_act": 8,
+          "merge_spatial_ic": 8,
+          "merge_cross_edge": 14,
+          "merge_slow_tanh": 4,
+          "delete_bilin": 4,
+          "merge_share_chan": 4,
+          "immigrate": 20
+        }
+      },
+      {
+        "island": 2,
+        "gen": 8,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/g8_w0.json",
+        "sha256": "a793112e596cdd8cea79a6fb35523ee5442a56b67949aff5fd1e5aead5203236",
+        "n": 82,
+        "operators": {
+          "mutate": 16,
+          "mint_bilin": 16,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 23,
+          "merge_cross_edge": 8,
+          "merge_slow_tanh": 2,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 2,
+        "gen": 9,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/g9_w0.json",
+        "sha256": "bf6b68e3a44af7395a8d708bcda1489442cc170be558f3f4b902bcbcf9275932",
+        "n": 70,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "add_chan": 8,
+          "merge_cross_edge": 10,
+          "delete_bilin": 4,
+          "merge_spatial_ic": 1,
+          "merge_slow_tanh": 2,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 2,
+        "gen": 10,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/g10_w0.json",
+        "sha256": "85ef34ea692dd2bc4d79e26a6206c05cd7f9322d412258609da5e71480c0a262",
+        "n": 72,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 7,
+          "merge_cross_edge": 5,
+          "merge_slow_tanh": 3,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 2,
+        "gen": 11,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/g11_w0.json",
+        "sha256": "783c12045bf0ebb76d12ce8fd22b22ff8e1fd684305996df363280af26dc294c",
+        "n": 68,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_cross_edge": 6,
+          "merge_slow_tanh": 1,
+          "merge_spatial_ic": 4,
+          "immigrate": 5
+        }
+      },
+      {
+        "island": 2,
+        "gen": 12,
+        "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/g12_w0.json",
+        "sha256": "32c3f2203c1d7e3fd968568db6c4d808b0d9dc0d0bb2c5c93c2a6e579eb7523d",
+        "n": 67,
+        "operators": {
+          "mutate": 22,
+          "mint_bilin": 18,
+          "delete_bilin": 4,
+          "add_chan": 8,
+          "merge_spatial_ic": 1,
+          "merge_cross_edge": 8,
+          "merge_slow_tanh": 1,
+          "immigrate": 5
+        }
+      }
+    ],
+    "corrections": [
+      "SIC24 applies only to gen8; SIC12 and retry12 apply to gens9-12, not gens10-12.",
+      "Gen8 mutate16/mint16 becomes gen9-12 mutate22/mint18: deltas +6 and +2, not +6 each.",
+      "Pilot mix.merge=20 is stale/unused; merge_mix12+8+4 generates24 classical merge target slots. Continuation14+6+0 generates20.",
+      "Requested slots are not emitted jobs; capped retries can drop a target. slow_tanh can become cross_edge at pod_gen.py:252-253.",
+      "HARVEST.md:34 immigrant40->10 is a proposal/misstatement, not actual per-island20->5. POST12_FACTS.json:246 is initial-continuation prose, not settled facts."
+    ]
+  },
+  "archive_reblend": {
+    "method": "Exactly reproduce reblend_archive.py:13-33 without writes: status ok AND C9 non-null; row base=cand.split(_s2)[0].split(_s3)[0].split(_c9)[0]; first highest stored interest wins; archive join by cand then stripped s2/s3; compare to 0.6*interest_v2+40*C9. Ties remain first in input order. Eligible rows restricted to gen<=7 produce the same selected rows for every surviving marked entry.",
+    "per_island": {
+      "1": {
+        "scope": "settled entries with _reblended_w9 == 0.4",
+        "all_archive_cells": 343,
+        "archive_own_blend_mismatches": 0,
+        "metrics": {
+          "all_reblend": {
+            "n": 243,
+            "different_source_cand": 189,
+            "key_mismatch": 173,
+            "six_axes": 100,
+            "different_structural_genome": 11,
+            "different_T": 84,
+            "different_summary": 198,
+            "different_spatial_axis": 16,
+            "highest_new_weight_changed": 13
+          },
+          "imported_gen0": {
+            "n": 100,
+            "different_source_cand": 91,
+            "key_mismatch": 100,
+            "six_axes": 100,
+            "different_structural_genome": 11,
+            "different_T": 61,
+            "different_summary": 100,
+            "different_spatial_axis": 0,
+            "highest_new_weight_changed": 1
+          },
+          "pilot_gen1to7": {
+            "n": 143,
+            "different_source_cand": 98,
+            "key_mismatch": 73,
+            "six_axes": 0,
+            "different_structural_genome": 0,
+            "different_T": 23,
+            "different_summary": 98,
+            "different_spatial_axis": 16,
+            "highest_new_weight_changed": 12
+          }
+        },
+        "join_variants": {
+          "all_surviving_reblended": {
+            "n": 243,
+            "script_source_phases": {
+              "c9fill": 88,
+              "screen": 54,
+              "seed2": 46,
+              "seed3": 55
+            },
+            "script_match_archive_score": 243,
+            "script_match_archive_C9": 243,
+            "script_model_mismatch": 11,
+            "same_model_join_missing": 9,
+            "same_model_join_different_source": 2,
+            "same_model_alternatives": [
+              {
+                "key": "3|grow|mobile|liquid|s1|g0",
+                "script_row": 316,
+                "same_model_row": 527,
+                "script_cand": "p1g2_021_s2",
+                "same_model_cand": "p1g2_021_s3"
+              },
+              {
+                "key": "3|grow|mobile|liquid|s2|g0",
+                "script_row": 110,
+                "same_model_row": 621,
+                "script_cand": "p1g2_034",
+                "same_model_cand": "p1g2_034_s3"
+              }
+            ],
+            "exact_candidate_screen_available": 155,
+            "exact_candidate_screen_model_mismatch": 12,
+            "exact_candidate_screen_C9_mismatch": 73,
+            "new_weight_selects_different_score": 13
+          },
+          "imported_gen0": {
+            "n": 100,
+            "script_source_phases": {
+              "c9fill": 88,
+              "screen": 9,
+              "seed2": 2,
+              "seed3": 1
+            },
+            "script_match_archive_score": 100,
+            "script_match_archive_C9": 100,
+            "script_model_mismatch": 11,
+            "same_model_join_missing": 9,
+            "same_model_join_different_source": 2,
+            "same_model_alternatives": [
+              {
+                "key": "3|grow|mobile|liquid|s1|g0",
+                "script_row": 316,
+                "same_model_row": 527,
+                "script_cand": "p1g2_021_s2",
+                "same_model_cand": "p1g2_021_s3"
+              },
+              {
+                "key": "3|grow|mobile|liquid|s2|g0",
+                "script_row": 110,
+                "same_model_row": 621,
+                "script_cand": "p1g2_034",
+                "same_model_cand": "p1g2_034_s3"
+              }
+            ],
+            "exact_candidate_screen_available": 12,
+            "exact_candidate_screen_model_mismatch": 12,
+            "exact_candidate_screen_C9_mismatch": 3,
+            "new_weight_selects_different_score": 1
+          },
+          "pilot_gen1to7": {
+            "n": 143,
+            "script_source_phases": {
+              "seed3": 54,
+              "seed2": 44,
+              "screen": 45
+            },
+            "script_match_archive_score": 143,
+            "script_match_archive_C9": 143,
+            "script_model_mismatch": 0,
+            "same_model_join_missing": 0,
+            "same_model_join_different_source": 0,
+            "same_model_alternatives": [],
+            "exact_candidate_screen_available": 143,
+            "exact_candidate_screen_model_mismatch": 0,
+            "exact_candidate_screen_C9_mismatch": 70,
+            "new_weight_selects_different_score": 12
+          }
+        }
+      },
+      "2": {
+        "scope": "settled entries with _reblended_w9 == 0.4",
+        "all_archive_cells": 327,
+        "archive_own_blend_mismatches": 0,
+        "metrics": {
+          "all_reblend": {
+            "n": 253,
+            "different_source_cand": 196,
+            "key_mismatch": 179,
+            "six_axes": 100,
+            "different_structural_genome": 18,
+            "different_T": 93,
+            "different_summary": 206,
+            "different_spatial_axis": 12,
+            "highest_new_weight_changed": 14
+          },
+          "imported_gen0": {
+            "n": 100,
+            "different_source_cand": 90,
+            "key_mismatch": 100,
+            "six_axes": 100,
+            "different_structural_genome": 16,
+            "different_T": 59,
+            "different_summary": 100,
+            "different_spatial_axis": 0,
+            "highest_new_weight_changed": 2
+          },
+          "pilot_gen1to7": {
+            "n": 153,
+            "different_source_cand": 106,
+            "key_mismatch": 79,
+            "six_axes": 0,
+            "different_structural_genome": 2,
+            "different_T": 34,
+            "different_summary": 106,
+            "different_spatial_axis": 12,
+            "highest_new_weight_changed": 12
+          }
+        },
+        "join_variants": {
+          "all_surviving_reblended": {
+            "n": 253,
+            "script_source_phases": {
+              "c9fill": 82,
+              "seed3": 55,
+              "screen": 57,
+              "seed2": 59
+            },
+            "script_match_archive_score": 253,
+            "script_match_archive_C9": 253,
+            "script_model_mismatch": 18,
+            "same_model_join_missing": 10,
+            "same_model_join_different_source": 8,
+            "same_model_alternatives": [
+              {
+                "key": "4|grow|rotor|flicker|s3|g2",
+                "script_row": 582,
+                "same_model_row": 655,
+                "script_cand": "p2g3_073_s2",
+                "same_model_cand": "p2g3_073_s3"
+              },
+              {
+                "key": "4|switch|mobile|flicker|s1|g2",
+                "script_row": 311,
+                "same_model_row": 517,
+                "script_cand": "p2g2_070_s2",
+                "same_model_cand": "p2g2_070_s3"
+              },
+              {
+                "key": "3|grow|rotor|liquid|s1|g0",
+                "script_row": 303,
+                "same_model_row": 486,
+                "script_cand": "p2g2_023_s2",
+                "same_model_cand": "p2g2_023_s3"
+              },
+              {
+                "key": "4|grow|still|frozen|s2|g2",
+                "script_row": 744,
+                "same_model_row": 918,
+                "script_cand": "p2g4_015_s2",
+                "same_model_cand": "p2g4_015_s3"
+              },
+              {
+                "key": "4|oscillator|mobile|liquid|s2|g0",
+                "script_row": 1226,
+                "same_model_row": 1209,
+                "script_cand": "p1g2_008_c9",
+                "same_model_cand": "p1g2_008_c9"
+              },
+              {
+                "key": "2|switch|mobile|liquid|s2|g2",
+                "script_row": 736,
+                "same_model_row": 917,
+                "script_cand": "p2g4_002_s2",
+                "same_model_cand": "p2g4_002_s3"
+              },
+              {
+                "key": "2|switch|still|liquid|s1|g2|structured",
+                "script_row": 496,
+                "same_model_row": 406,
+                "script_cand": "p2g2_038_s3",
+                "same_model_cand": "p2g2_038_s2"
+              },
+              {
+                "key": "3|switch|drift|liquid|s1|g2|structured",
+                "script_row": 1139,
+                "same_model_row": 1044,
+                "script_cand": "p2g7_039_s3",
+                "same_model_cand": "p2g7_039"
+              }
+            ],
+            "exact_candidate_screen_available": 171,
+            "exact_candidate_screen_model_mismatch": 18,
+            "exact_candidate_screen_C9_mismatch": 79,
+            "new_weight_selects_different_score": 14
+          },
+          "imported_gen0": {
+            "n": 100,
+            "script_source_phases": {
+              "c9fill": 82,
+              "seed3": 3,
+              "screen": 10,
+              "seed2": 5
+            },
+            "script_match_archive_score": 100,
+            "script_match_archive_C9": 100,
+            "script_model_mismatch": 16,
+            "same_model_join_missing": 10,
+            "same_model_join_different_source": 6,
+            "same_model_alternatives": [
+              {
+                "key": "4|grow|rotor|flicker|s3|g2",
+                "script_row": 582,
+                "same_model_row": 655,
+                "script_cand": "p2g3_073_s2",
+                "same_model_cand": "p2g3_073_s3"
+              },
+              {
+                "key": "4|switch|mobile|flicker|s1|g2",
+                "script_row": 311,
+                "same_model_row": 517,
+                "script_cand": "p2g2_070_s2",
+                "same_model_cand": "p2g2_070_s3"
+              },
+              {
+                "key": "3|grow|rotor|liquid|s1|g0",
+                "script_row": 303,
+                "same_model_row": 486,
+                "script_cand": "p2g2_023_s2",
+                "same_model_cand": "p2g2_023_s3"
+              },
+              {
+                "key": "4|grow|still|frozen|s2|g2",
+                "script_row": 744,
+                "same_model_row": 918,
+                "script_cand": "p2g4_015_s2",
+                "same_model_cand": "p2g4_015_s3"
+              },
+              {
+                "key": "4|oscillator|mobile|liquid|s2|g0",
+                "script_row": 1226,
+                "same_model_row": 1209,
+                "script_cand": "p1g2_008_c9",
+                "same_model_cand": "p1g2_008_c9"
+              },
+              {
+                "key": "2|switch|mobile|liquid|s2|g2",
+                "script_row": 736,
+                "same_model_row": 917,
+                "script_cand": "p2g4_002_s2",
+                "same_model_cand": "p2g4_002_s3"
+              }
+            ],
+            "exact_candidate_screen_available": 18,
+            "exact_candidate_screen_model_mismatch": 18,
+            "exact_candidate_screen_C9_mismatch": 8,
+            "new_weight_selects_different_score": 2
+          },
+          "pilot_gen1to7": {
+            "n": 153,
+            "script_source_phases": {
+              "screen": 47,
+              "seed2": 54,
+              "seed3": 52
+            },
+            "script_match_archive_score": 153,
+            "script_match_archive_C9": 153,
+            "script_model_mismatch": 2,
+            "same_model_join_missing": 0,
+            "same_model_join_different_source": 2,
+            "same_model_alternatives": [
+              {
+                "key": "2|switch|still|liquid|s1|g2|structured",
+                "script_row": 496,
+                "same_model_row": 406,
+                "script_cand": "p2g2_038_s3",
+                "same_model_cand": "p2g2_038_s2"
+              },
+              {
+                "key": "3|switch|drift|liquid|s1|g2|structured",
+                "script_row": 1139,
+                "same_model_row": 1044,
+                "script_cand": "p2g7_039_s3",
+                "same_model_cand": "p2g7_039"
+              }
+            ],
+            "exact_candidate_screen_available": 153,
+            "exact_candidate_screen_model_mismatch": 0,
+            "exact_candidate_screen_C9_mismatch": 71,
+            "new_weight_selects_different_score": 12
+          }
+        }
+      }
+    },
+    "identity_mismatches": [
+      {
+        "island": 1,
+        "archive_key": "4|grow|mobile|liquid|s2|g1",
+        "archive_cand": "p1g7_025",
+        "archive_gen": 0,
+        "archive_ghash": "07854843ba8e93b1",
+        "selected_result_index": 1051,
+        "selected_cand": "p1g7_025",
+        "selected_phase": "screen",
+        "selected_ghash": "de1b14c1d5bc2426",
+        "selected_cell": "3|grow|rotor|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 65.91275809127973,
+        "C9": 0.4729
+      },
+      {
+        "island": 1,
+        "archive_key": "4|switch|rotor|liquid|s1|g2",
+        "archive_cand": "p1g7_030",
+        "archive_gen": 0,
+        "archive_ghash": "d2ee337cb598d2ef",
+        "selected_result_index": 1053,
+        "selected_cand": "p1g7_030",
+        "selected_phase": "screen",
+        "selected_ghash": "3e9e387b61a8cb22",
+        "selected_cell": "4|grow|mobile|liquid|s1|g1|structured",
+        "structural_genome_equal": false,
+        "interest": 53.4934417075938,
+        "C9": 0.3719
+      },
+      {
+        "island": 1,
+        "archive_key": "4|grow|rotor|liquid|s2|g2",
+        "archive_cand": "p1g2_020",
+        "archive_gen": 0,
+        "archive_ghash": "07440dda3d77d9a9",
+        "selected_result_index": 318,
+        "selected_cand": "p1g2_020_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "94568c24e2971139",
+        "selected_cell": "3|oscillator|drift|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 41.27436612270917,
+        "C9": 0.251
+      },
+      {
+        "island": 1,
+        "archive_key": "4|grow|rotor|liquid|s2|g1",
+        "archive_cand": "p1g7_032",
+        "archive_gen": 0,
+        "archive_ghash": "f0c0d4119fa77126",
+        "selected_result_index": 1054,
+        "selected_cand": "p1g7_032",
+        "selected_phase": "screen",
+        "selected_ghash": "53ba29b19dcd90c2",
+        "selected_cell": "3|switch|rotor|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 61.065172052697775,
+        "C9": 0.5278
+      },
+      {
+        "island": 1,
+        "archive_key": "3|constant|rotor|flicker|s1|g2",
+        "archive_cand": "p1g6_065",
+        "archive_gen": 0,
+        "archive_ghash": "6ffe5602270e02e4",
+        "selected_result_index": 876,
+        "selected_cand": "p1g6_065",
+        "selected_phase": "screen",
+        "selected_ghash": "d760747f84c5546f",
+        "selected_cell": "4|grow|rotor|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 57.615453465178646,
+        "C9": 0.2139
+      },
+      {
+        "island": 1,
+        "archive_key": "2|switch|rotor|liquid|s1|g2",
+        "archive_cand": "p1g2_008",
+        "archive_gen": 0,
+        "archive_ghash": "6aef37d09adb821c",
+        "selected_result_index": 216,
+        "selected_cand": "p1g2_008",
+        "selected_phase": "screen",
+        "selected_ghash": "2e7f82f20c7a06c0",
+        "selected_cell": "3|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 57.53477784956226,
+        "C9": 0.5389
+      },
+      {
+        "island": 1,
+        "archive_key": "4|oscillator|mobile|liquid|s2|g0",
+        "archive_cand": "p1g2_008",
+        "archive_gen": 0,
+        "archive_ghash": "a19e1629a9d1fb98",
+        "selected_result_index": 216,
+        "selected_cand": "p1g2_008",
+        "selected_phase": "screen",
+        "selected_ghash": "2e7f82f20c7a06c0",
+        "selected_cell": "3|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 57.53477784956226,
+        "C9": 0.5389
+      },
+      {
+        "island": 1,
+        "archive_key": "3|grow|mobile|liquid|s1|g0",
+        "archive_cand": "p1g2_021",
+        "archive_gen": 0,
+        "archive_ghash": "67cf8460076bdd5b",
+        "selected_result_index": 316,
+        "selected_cand": "p1g2_021_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "cd3b802cf2dc17d5",
+        "selected_cell": "4|switch|mobile|liquid|s2|g0|mixed",
+        "structural_genome_equal": false,
+        "interest": 54.31304084134824,
+        "C9": 0.3793
+      },
+      {
+        "island": 1,
+        "archive_key": "3|grow|mobile|liquid|s2|g0",
+        "archive_cand": "p1g2_034",
+        "archive_gen": 0,
+        "archive_ghash": "65ee88a4e85ee72d",
+        "selected_result_index": 110,
+        "selected_cand": "p1g2_034",
+        "selected_phase": "screen",
+        "selected_ghash": "158f0c237e4f658e",
+        "selected_cell": "2|switch|mobile|flicker|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 62.40766224348483,
+        "C9": 0.5568
+      },
+      {
+        "island": 1,
+        "archive_key": "4|grow|mobile|liquid|s1|g0",
+        "archive_cand": "p1g7_023",
+        "archive_gen": 0,
+        "archive_ghash": "ae859cef82a541f9",
+        "selected_result_index": 1068,
+        "selected_cand": "p1g7_023",
+        "selected_phase": "screen",
+        "selected_ghash": "eb5e4ef733bd5672",
+        "selected_cell": "3|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 67.21152808694907,
+        "C9": 0.6487
+      },
+      {
+        "island": 1,
+        "archive_key": "4|grow|drift|frozen|s1|g2",
+        "archive_cand": "p1g5_022",
+        "archive_gen": 0,
+        "archive_ghash": "e0c477a1df493566",
+        "selected_result_index": 701,
+        "selected_cand": "p1g5_022",
+        "selected_phase": "screen",
+        "selected_ghash": "4716b0ed967ab0c9",
+        "selected_cell": "4|grow|rotor|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 61.912291554029295,
+        "C9": 0.5209
+      },
+      {
+        "island": 2,
+        "archive_key": "3|grow|rotor|liquid|s3|g2",
+        "archive_cand": "p2g6_020",
+        "archive_gen": 0,
+        "archive_ghash": "489530b94bd868b0",
+        "selected_result_index": 856,
+        "selected_cand": "p2g6_020",
+        "selected_phase": "screen",
+        "selected_ghash": "1cd25e1fb85243c5",
+        "selected_cell": "4|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 61.30062132237107,
+        "C9": 0.5047
+      },
+      {
+        "island": 2,
+        "archive_key": "4|grow|rotor|flicker|s3|g2",
+        "archive_cand": "p2g3_073",
+        "archive_gen": 0,
+        "archive_ghash": "6da2f3231522e927",
+        "selected_result_index": 582,
+        "selected_cand": "p2g3_073_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "97de45f90d6ebef4",
+        "selected_cell": "4|grow|rotor|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 67.06343156966689,
+        "C9": 0.4562
+      },
+      {
+        "island": 2,
+        "archive_key": "4|grow|mobile|flicker|s2|g2",
+        "archive_cand": "p2g5_023",
+        "archive_gen": 0,
+        "archive_ghash": "84ec665a3a51196b",
+        "selected_result_index": 676,
+        "selected_cand": "p2g5_023",
+        "selected_phase": "screen",
+        "selected_ghash": "95a88a754c64494b",
+        "selected_cell": "3|grow|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 49.33260786991533,
+        "C9": 0.2703
+      },
+      {
+        "island": 2,
+        "archive_key": "4|grow|drift|liquid|s1|g2",
+        "archive_cand": "p2g4_020",
+        "archive_gen": 0,
+        "archive_ghash": "36456c27fa9e9db9",
+        "selected_result_index": 538,
+        "selected_cand": "p2g4_020",
+        "selected_phase": "screen",
+        "selected_ghash": "3868b359bed4a6eb",
+        "selected_cell": "4|switch|rotor|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 54.0606301039895,
+        "C9": 0.5963
+      },
+      {
+        "island": 2,
+        "archive_key": "2|grow|rotor|liquid|s1|g2",
+        "archive_cand": "p2g4_062",
+        "archive_gen": 0,
+        "archive_ghash": "37e5bf4d92c4be41",
+        "selected_result_index": 579,
+        "selected_cand": "p2g4_062",
+        "selected_phase": "screen",
+        "selected_ghash": "f78b00513c33a9a3",
+        "selected_cell": "3|switch|rotor|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 62.10303814186868,
+        "C9": 0.5238
+      },
+      {
+        "island": 2,
+        "archive_key": "2|grow|mobile|liquid|s1|g2",
+        "archive_cand": "p2g4_053",
+        "archive_gen": 0,
+        "archive_ghash": "8f894fb7b2f207f4",
+        "selected_result_index": 526,
+        "selected_cand": "p2g4_053",
+        "selected_phase": "screen",
+        "selected_ghash": "fa86cb8089d048d0",
+        "selected_cell": "4|grow|rotor|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 64.98037000738421,
+        "C9": 0.4625
+      },
+      {
+        "island": 2,
+        "archive_key": "4|switch|mobile|flicker|s1|g2",
+        "archive_cand": "p2g2_070",
+        "archive_gen": 0,
+        "archive_ghash": "3403b1a691db96ea",
+        "selected_result_index": 311,
+        "selected_cand": "p2g2_070_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "2ccd2e15c8fa6fb9",
+        "selected_cell": "4|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 67.5065391109578,
+        "C9": 0.5843
+      },
+      {
+        "island": 2,
+        "archive_key": "3|switch|rotor|flicker|s1|g2",
+        "archive_cand": "p2g4_041",
+        "archive_gen": 0,
+        "archive_ghash": "794646053eadd329",
+        "selected_result_index": 543,
+        "selected_cand": "p2g4_041",
+        "selected_phase": "screen",
+        "selected_ghash": "61edc1e3803867c8",
+        "selected_cell": "3|constant|mobile|flicker|s1|g2|mixed",
+        "structural_genome_equal": false,
+        "interest": 33.2301821579412,
+        "C9": 0.0
+      },
+      {
+        "island": 2,
+        "archive_key": "3|grow|rotor|flicker|s2|g2",
+        "archive_cand": "p2g6_031",
+        "archive_gen": 0,
+        "archive_ghash": "84226d894db71e93",
+        "selected_result_index": 880,
+        "selected_cand": "p2g6_031",
+        "selected_phase": "screen",
+        "selected_ghash": "b2edf1a5811fbe08",
+        "selected_cell": "3|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 61.46690437233841,
+        "C9": 0.4273
+      },
+      {
+        "island": 2,
+        "archive_key": "3|grow|rotor|liquid|s1|g0",
+        "archive_cand": "p2g2_023",
+        "archive_gen": 0,
+        "archive_ghash": "18fb4a511bd5fd41",
+        "selected_result_index": 303,
+        "selected_cand": "p2g2_023_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "7fa13f78a42abf98",
+        "selected_cell": "2|switch|mobile|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 52.68046935317933,
+        "C9": 0.2103
+      },
+      {
+        "island": 2,
+        "archive_key": "4|grow|rotor|frozen|s1|g2",
+        "archive_cand": "p2g6_001",
+        "archive_gen": 0,
+        "archive_ghash": "b10ebb5bb2a75e70",
+        "selected_result_index": 820,
+        "selected_cand": "p2g6_001",
+        "selected_phase": "screen",
+        "selected_ghash": "48e236252e0117e2",
+        "selected_cell": "3|switch|mobile|liquid|s1|g2|mixed",
+        "structural_genome_equal": false,
+        "interest": 34.566945088681884,
+        "C9": 0.0
+      },
+      {
+        "island": 2,
+        "archive_key": "4|grow|still|frozen|s2|g2",
+        "archive_cand": "p2g4_015",
+        "archive_gen": 0,
+        "archive_ghash": "04a0f0e5eb95cb51",
+        "selected_result_index": 744,
+        "selected_cand": "p2g4_015_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "a04fca4ed04a8fd9",
+        "selected_cell": "2|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 54.85436987300561,
+        "C9": 0.4212
+      },
+      {
+        "island": 2,
+        "archive_key": "4|oscillator|mobile|liquid|s2|g0",
+        "archive_cand": "p1g2_008",
+        "archive_gen": 0,
+        "archive_ghash": "a19e1629a9d1fb98",
+        "selected_result_index": 1226,
+        "selected_cand": "p1g2_008_c9",
+        "selected_phase": "c9fill",
+        "selected_ghash": "6aef37d09adb821c",
+        "selected_cell": "2|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 59.5337117778859,
+        "C9": 0.4855
+      },
+      {
+        "island": 2,
+        "archive_key": "3|grow|still|frozen|s2|g2",
+        "archive_cand": "p2g4_069",
+        "archive_gen": 0,
+        "archive_ghash": "ae9d1473551424c6",
+        "selected_result_index": 547,
+        "selected_cand": "p2g4_069",
+        "selected_phase": "screen",
+        "selected_ghash": "929650f101dbb962",
+        "selected_cell": "4|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 57.424354154655916,
+        "C9": 0.4744
+      },
+      {
+        "island": 2,
+        "archive_key": "3|grow|drift|liquid|s2|g2",
+        "archive_cand": "p2g2_041",
+        "archive_gen": 0,
+        "archive_ghash": "6d69c834bff5afd0",
+        "selected_result_index": 153,
+        "selected_cand": "p2g2_041",
+        "selected_phase": "screen",
+        "selected_ghash": "2c35048f8d3575ac",
+        "selected_cell": "3|constant|drift|liquid|s1|g2|mixed",
+        "structural_genome_equal": false,
+        "interest": 31.160418869609117,
+        "C9": 0.0
+      },
+      {
+        "island": 2,
+        "archive_key": "2|switch|mobile|liquid|s2|g2",
+        "archive_cand": "p2g4_002",
+        "archive_gen": 0,
+        "archive_ghash": "bcc3072a07e51f96",
+        "selected_result_index": 736,
+        "selected_cand": "p2g4_002_s2",
+        "selected_phase": "seed2",
+        "selected_ghash": "583c31fd9c9b98d6",
+        "selected_cell": "4|switch|mobile|liquid|s1|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 69.83567168049427,
+        "C9": 0.6018
+      },
+      {
+        "island": 2,
+        "archive_key": "2|switch|still|liquid|s1|g2|structured",
+        "archive_cand": "p2g2_038",
+        "archive_gen": 2,
+        "archive_ghash": "5c3b22eec22509f0",
+        "selected_result_index": 496,
+        "selected_cand": "p2g2_038_s3",
+        "selected_phase": "seed3",
+        "selected_ghash": "ad835d9583d074b2",
+        "selected_cell": "2|grow|rotor|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 54.96902475062794,
+        "C9": 0.2611
+      },
+      {
+        "island": 2,
+        "archive_key": "3|switch|drift|liquid|s1|g2|structured",
+        "archive_cand": "p2g7_039",
+        "archive_gen": 7,
+        "archive_ghash": "9e7b3a1d8d445359",
+        "selected_result_index": 1139,
+        "selected_cand": "p2g7_039_s3",
+        "selected_phase": "seed3",
+        "selected_ghash": "fa86cb8089d048d0",
+        "selected_cell": "4|grow|mobile|liquid|s2|g2|structured",
+        "structural_genome_equal": false,
+        "interest": 71.76909891768386,
+        "C9": 0.5627
+      }
+    ],
+    "no_archive_writes": true,
+    "limits": [
+      "Joining by candidate base only ignores island, source era, ghash/genome, IC, cell and horizon.",
+      "Script updates score/C9 fields but retains archive key, cand, genome, ghash, T_used, summary and seed2/3 metadata.",
+      "Highest stored interest is not necessarily highest new-W9 score, highest C9 or deepest confirmation.",
+      "All670 settled entries have C9 and numeric W.4 blend consistency; this does not mean common run/genome/cell provenance.",
+      "Strict identity alternative source selection is only a diagnostic; no archive repair was run."
+    ]
+  },
+  "namespace_collisions": {
+    "cause": "g0import retains donor cands and ghash/genome; fresh breed uses p{island}g{gen}_{k:03d} again. archive_seedk returns first archive candidate-name match. cmd_ingest2 constructs seed3 from that cell.genome, not the seed2 row genome.",
+    "source_refs": [
+      "pod_gen_batch.py:83-86",
+      "pod_gen.py:157-164",
+      "pod_lib.py:291-306",
+      "pod_gen.py:375-393"
+    ],
+    "evidence": [
+      {
+        "island": 1,
+        "base_cand": "p1g2_021",
+        "screen_result_index": 202,
+        "seed2_result_index": 316,
+        "seed3_result_index": 527,
+        "screen_ghash": "cd3b802cf2dc17d5",
+        "seed2_ghash": "cd3b802cf2dc17d5",
+        "seed3_ghash": "67cf8460076bdd5b",
+        "donor_key": "3|grow|mobile|liquid|s1|g0",
+        "donor_entry_ordinal": 80,
+        "donor_ghash": "67cf8460076bdd5b",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 1,
+        "base_cand": "p1g2_034",
+        "screen_result_index": 110,
+        "seed2_result_index": 275,
+        "seed3_result_index": 621,
+        "screen_ghash": "158f0c237e4f658e",
+        "seed2_ghash": "158f0c237e4f658e",
+        "seed3_ghash": "65ee88a4e85ee72d",
+        "donor_key": "3|grow|mobile|liquid|s2|g0",
+        "donor_entry_ordinal": 85,
+        "donor_ghash": "65ee88a4e85ee72d",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 1,
+        "base_cand": "p1g3_035",
+        "screen_result_index": 355,
+        "seed2_result_index": 505,
+        "seed3_result_index": 676,
+        "screen_ghash": "46505242674afd5a",
+        "seed2_ghash": "46505242674afd5a",
+        "seed3_ghash": "a065779eaf3df961",
+        "donor_key": "4|switch|mobile|liquid|s2|g1",
+        "donor_entry_ordinal": 38,
+        "donor_ghash": "a065779eaf3df961",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g2_023",
+        "screen_result_index": 186,
+        "seed2_result_index": 303,
+        "seed3_result_index": 486,
+        "screen_ghash": "7fa13f78a42abf98",
+        "seed2_ghash": "7fa13f78a42abf98",
+        "seed3_ghash": "18fb4a511bd5fd41",
+        "donor_key": "3|grow|rotor|liquid|s1|g0",
+        "donor_entry_ordinal": 64,
+        "donor_ghash": "18fb4a511bd5fd41",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g2_038",
+        "screen_result_index": 190,
+        "seed2_result_index": 406,
+        "seed3_result_index": 496,
+        "screen_ghash": "5c3b22eec22509f0",
+        "seed2_ghash": "5c3b22eec22509f0",
+        "seed3_ghash": "ad835d9583d074b2",
+        "donor_key": "2|grow|mobile|liquid|s2|g2",
+        "donor_entry_ordinal": 41,
+        "donor_ghash": "ad835d9583d074b2",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g2_070",
+        "screen_result_index": 169,
+        "seed2_result_index": 311,
+        "seed3_result_index": 517,
+        "screen_ghash": "2ccd2e15c8fa6fb9",
+        "seed2_ghash": "2ccd2e15c8fa6fb9",
+        "seed3_ghash": "3403b1a691db96ea",
+        "donor_key": "4|switch|mobile|flicker|s1|g2",
+        "donor_entry_ordinal": 42,
+        "donor_ghash": "3403b1a691db96ea",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g3_073",
+        "screen_result_index": 351,
+        "seed2_result_index": 582,
+        "seed3_result_index": 655,
+        "screen_ghash": "97de45f90d6ebef4",
+        "seed2_ghash": "97de45f90d6ebef4",
+        "seed3_ghash": "6da2f3231522e927",
+        "donor_key": "4|grow|rotor|flicker|s3|g2",
+        "donor_entry_ordinal": 21,
+        "donor_ghash": "6da2f3231522e927",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g4_002",
+        "screen_result_index": 520,
+        "seed2_result_index": 736,
+        "seed3_result_index": 917,
+        "screen_ghash": "583c31fd9c9b98d6",
+        "seed2_ghash": "583c31fd9c9b98d6",
+        "seed3_ghash": "bcc3072a07e51f96",
+        "donor_key": "2|switch|mobile|liquid|s2|g2",
+        "donor_entry_ordinal": 97,
+        "donor_ghash": "bcc3072a07e51f96",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g4_015",
+        "screen_result_index": 561,
+        "seed2_result_index": 744,
+        "seed3_result_index": 918,
+        "screen_ghash": "a04fca4ed04a8fd9",
+        "seed2_ghash": "a04fca4ed04a8fd9",
+        "seed3_ghash": "04a0f0e5eb95cb51",
+        "donor_key": "4|grow|still|frozen|s2|g2",
+        "donor_entry_ordinal": 75,
+        "donor_ghash": "04a0f0e5eb95cb51",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g4_030",
+        "screen_result_index": 550,
+        "seed2_result_index": 759,
+        "seed3_result_index": 933,
+        "screen_ghash": "2d9a00b0dec7e567",
+        "seed2_ghash": "2d9a00b0dec7e567",
+        "seed3_ghash": "ca21e100b2dea0c3",
+        "donor_key": "4|grow|mobile|flicker|s1|g2",
+        "donor_entry_ordinal": 44,
+        "donor_ghash": "ca21e100b2dea0c3",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      },
+      {
+        "island": 2,
+        "base_cand": "p2g7_039",
+        "screen_result_index": 1044,
+        "seed2_result_index": 1109,
+        "seed3_result_index": 1139,
+        "screen_ghash": "9e7b3a1d8d445359",
+        "seed2_ghash": "9e7b3a1d8d445359",
+        "seed3_ghash": "fa86cb8089d048d0",
+        "donor_key": "4|grow|rotor|liquid|s3|g2",
+        "donor_entry_ordinal": 2,
+        "donor_ghash": "fa86cb8089d048d0",
+        "donor_model_equal_seed3": true,
+        "screen_model_equal_seed3": false,
+        "baseline_row_unchanged": true
+      }
+    ],
+    "baseline_results_are_settled_prefix": {
+      "1": true,
+      "2": true
+    }
+  },
+  "c9fill_duplicate": {
+    "island": 2,
+    "candidate": "p1g2_008_c9",
+    "job_source": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/jobs/c9fill_w0.json",
+    "job_indices": [
+      55,
+      64
+    ],
+    "donor_keys": [
+      "2|switch|rotor|liquid|s1|g2",
+      "4|oscillator|mobile|liquid|s2|g0"
+    ],
+    "donor_ghashes": [
+      "6aef37d09adb821c",
+      "a19e1629a9d1fb98"
+    ],
+    "result_rows": [
+      {
+        "result_index": 1209,
+        "cand": "p1g2_008_c9",
+        "island": 2,
+        "phase": "c9fill",
+        "seed": 958,
+        "ghash": "a19e1629a9d1fb98",
+        "interest": 54.57172838379547,
+        "interest_v2": 62.85288063965911,
+        "C9": 0.4215,
+        "cell": "4|switch|mobile|liquid|s2|g0|mixed",
+        "T_used": 5000.0,
+        "status": "ok"
+      },
+      {
+        "result_index": 1226,
+        "cand": "p1g2_008_c9",
+        "island": 2,
+        "phase": "c9fill",
+        "seed": 958,
+        "ghash": "6aef37d09adb821c",
+        "interest": 59.5337117778859,
+        "interest_v2": 66.8561862964765,
+        "C9": 0.4855,
+        "cell": "2|switch|mobile|liquid|s1|g2|structured",
+        "T_used": 2500.0,
+        "status": "ok"
+      }
+    ],
+    "cause": "gen_c9backfill.py:16-24 emits per archive cell, with no generated-job name/genome dedup. Both source cells reuse one candidate name. Worker checks done from pre-existing rows, not within pending jobs (374-380), so both survive.",
+    "npz_limit": "Worker paths are cand-based (128-129); duplicate names share an NPZ path. No claim of snapshot provenance for the duplicated rows is established by this audit."
+  },
+  "sic_confirm_ic": {
+    "source_refs": [
+      "pod_gen.py:224-227",
+      "pod_gen.py:316-319",
+      "pod_gen.py:389-393",
+      "pod_worker_batch.py:121-123",
+      "pod_worker_batch.py:384-404"
+    ],
+    "per_island": {
+      "1": {
+        "screens": 90,
+        "screens_ic_merge_true": 90,
+        "origin_attributed_confirm_rows": 69,
+        "confirm_rows_ic_merge_true": 0
+      },
+      "2": {
+        "screens": 92,
+        "screens_ic_merge_true": 92,
+        "origin_attributed_confirm_rows": 61,
+        "confirm_rows_ic_merge_true": 0
+      }
+    },
+    "conclusion": "Seed2/3 jobs omit ic_npz. SIC-origin confirmations reseed the genome from the normal initial-state path; they do not repeat or preserve the composed screen IC."
+  },
+  "initial_reblend": {
+    "method": "Apply literal reblend_archive.py selection to original baseline gen7 archive.json (269 entries per island), using historical settled rows with gen<=7 only. In these files they form the exact prefix ending after c9fill. No archive was written. Structural equality compares acts/chans/W/K/bilin.",
+    "target_seed_limit": "Archive entries contain no seed field:0/538 initial entries and0/670 final entries have one. Universal target-seed correctness cannot be evaluated. The separate seed comparison uses a historical screen only if its full candidate name and structural genome equal the archive entry; all such rows in this sample are status ok and unique.",
+    "per_island": {
+      "1": {
+        "historical_row_count": 1267,
+        "historical_phase_counts": {
+          "screen": 693,
+          "seed2": 257,
+          "seed3": 229,
+          "c9fill": 88
+        },
+        "last_historical_result_index": 1266,
+        "historical_rows_are_exact_settled_prefix": true,
+        "summaries": {
+          "initial": {
+            "n_entries": 269,
+            "joined": 269,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 88,
+              "screen": 60,
+              "seed2": 58,
+              "seed3": 63
+            },
+            "model_mismatch": 11,
+            "ghash_mismatch": 11,
+            "key_mismatch": 183,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 83,
+            "source_phases_for_model_mismatch": {
+              "screen": 9,
+              "seed2": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 169,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 169,
+            "source_seed_differs_from_same_model_screen": 118,
+            "source_seed_same_as_same_model_screen": 51,
+            "source_phase_among_different_seed_comparisons": {
+              "seed3": 62,
+              "seed2": 56
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "surviving_final_marked": {
+            "n_entries": 243,
+            "joined": 243,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 88,
+              "screen": 54,
+              "seed2": 46,
+              "seed3": 55
+            },
+            "model_mismatch": 11,
+            "ghash_mismatch": 11,
+            "key_mismatch": 173,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 73,
+            "source_phases_for_model_mismatch": {
+              "screen": 9,
+              "seed2": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 143,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 143,
+            "source_seed_differs_from_same_model_screen": 98,
+            "source_seed_same_as_same_model_screen": 45,
+            "source_phase_among_different_seed_comparisons": {
+              "seed3": 54,
+              "seed2": 44
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "replaced_by_continuation": {
+            "n_entries": 26,
+            "joined": 26,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "seed3": 8,
+              "seed2": 12,
+              "screen": 6
+            },
+            "model_mismatch": 0,
+            "ghash_mismatch": 0,
+            "key_mismatch": 10,
+            "key_mismatch_gen0": 0,
+            "key_mismatch_gen1to7": 10,
+            "source_phases_for_model_mismatch": {},
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 26,
+            "exact_candidate_same_model_screen_absent": 0,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 26,
+            "source_seed_differs_from_same_model_screen": 20,
+            "source_seed_same_as_same_model_screen": 6,
+            "source_phase_among_different_seed_comparisons": {
+              "seed3": 8,
+              "seed2": 12
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "initial_imported_gen0": {
+            "n_entries": 100,
+            "joined": 100,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 88,
+              "screen": 9,
+              "seed2": 2,
+              "seed3": 1
+            },
+            "model_mismatch": 11,
+            "ghash_mismatch": 11,
+            "key_mismatch": 100,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 0,
+            "source_phases_for_model_mismatch": {
+              "screen": 9,
+              "seed2": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 0,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 0,
+            "source_seed_differs_from_same_model_screen": 0,
+            "source_seed_same_as_same_model_screen": 0,
+            "source_phase_among_different_seed_comparisons": {},
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "initial_pilot_gen1to7": {
+            "n_entries": 169,
+            "joined": 169,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "seed3": 62,
+              "seed2": 56,
+              "screen": 51
+            },
+            "model_mismatch": 0,
+            "ghash_mismatch": 0,
+            "key_mismatch": 83,
+            "key_mismatch_gen0": 0,
+            "key_mismatch_gen1to7": 83,
+            "source_phases_for_model_mismatch": {},
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 169,
+            "exact_candidate_same_model_screen_absent": 0,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 169,
+            "source_seed_differs_from_same_model_screen": 118,
+            "source_seed_same_as_same_model_screen": 51,
+            "source_phase_among_different_seed_comparisons": {
+              "seed3": 62,
+              "seed2": 56
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          }
+        },
+        "initial_and_surviving_identity_mismatch_key_source_pairs_identical": true,
+        "all_final_archive_seed_field_present": 0
+      },
+      "2": {
+        "historical_row_count": 1227,
+        "historical_phase_counts": {
+          "screen": 689,
+          "seed2": 239,
+          "seed3": 217,
+          "c9fill": 82
+        },
+        "last_historical_result_index": 1226,
+        "historical_rows_are_exact_settled_prefix": true,
+        "summaries": {
+          "initial": {
+            "n_entries": 269,
+            "joined": 269,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 82,
+              "seed3": 58,
+              "screen": 66,
+              "seed2": 63
+            },
+            "model_mismatch": 18,
+            "ghash_mismatch": 18,
+            "key_mismatch": 182,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 82,
+            "source_phases_for_model_mismatch": {
+              "screen": 10,
+              "seed2": 5,
+              "c9fill": 1,
+              "seed3": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 169,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 169,
+            "source_seed_differs_from_same_model_screen": 113,
+            "source_seed_same_as_same_model_screen": 56,
+            "source_phase_among_different_seed_comparisons": {
+              "seed2": 58,
+              "seed3": 55
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 2,
+            "source_wrong_model_among_different_screen_seed_comparisons": 2
+          },
+          "surviving_final_marked": {
+            "n_entries": 253,
+            "joined": 253,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 82,
+              "seed3": 55,
+              "screen": 57,
+              "seed2": 59
+            },
+            "model_mismatch": 18,
+            "ghash_mismatch": 18,
+            "key_mismatch": 179,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 79,
+            "source_phases_for_model_mismatch": {
+              "screen": 10,
+              "seed2": 5,
+              "c9fill": 1,
+              "seed3": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 153,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 153,
+            "source_seed_differs_from_same_model_screen": 106,
+            "source_seed_same_as_same_model_screen": 47,
+            "source_phase_among_different_seed_comparisons": {
+              "seed2": 54,
+              "seed3": 52
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 2,
+            "source_wrong_model_among_different_screen_seed_comparisons": 2
+          },
+          "replaced_by_continuation": {
+            "n_entries": 16,
+            "joined": 16,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "screen": 9,
+              "seed2": 4,
+              "seed3": 3
+            },
+            "model_mismatch": 0,
+            "ghash_mismatch": 0,
+            "key_mismatch": 3,
+            "key_mismatch_gen0": 0,
+            "key_mismatch_gen1to7": 3,
+            "source_phases_for_model_mismatch": {},
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 16,
+            "exact_candidate_same_model_screen_absent": 0,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 16,
+            "source_seed_differs_from_same_model_screen": 7,
+            "source_seed_same_as_same_model_screen": 9,
+            "source_phase_among_different_seed_comparisons": {
+              "seed2": 4,
+              "seed3": 3
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "initial_imported_gen0": {
+            "n_entries": 100,
+            "joined": 100,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "c9fill": 82,
+              "seed3": 3,
+              "screen": 10,
+              "seed2": 5
+            },
+            "model_mismatch": 16,
+            "ghash_mismatch": 16,
+            "key_mismatch": 100,
+            "key_mismatch_gen0": 100,
+            "key_mismatch_gen1to7": 0,
+            "source_phases_for_model_mismatch": {
+              "screen": 10,
+              "seed2": 5,
+              "c9fill": 1
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 0,
+            "exact_candidate_same_model_screen_absent": 100,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 0,
+            "source_seed_differs_from_same_model_screen": 0,
+            "source_seed_same_as_same_model_screen": 0,
+            "source_phase_among_different_seed_comparisons": {},
+            "source_wrong_model_among_screen_seed_comparisons": 0,
+            "source_wrong_model_among_different_screen_seed_comparisons": 0
+          },
+          "initial_pilot_gen1to7": {
+            "n_entries": 169,
+            "joined": 169,
+            "kept_no_complete_join": 0,
+            "source_phases": {
+              "screen": 56,
+              "seed2": 58,
+              "seed3": 55
+            },
+            "model_mismatch": 2,
+            "ghash_mismatch": 2,
+            "key_mismatch": 82,
+            "key_mismatch_gen0": 0,
+            "key_mismatch_gen1to7": 82,
+            "source_phases_for_model_mismatch": {
+              "seed3": 2
+            },
+            "archive_target_seed_field_present": 0,
+            "archive_target_seed_nonnull": 0,
+            "exact_candidate_same_model_screen_available": 169,
+            "exact_candidate_same_model_screen_absent": 0,
+            "exact_candidate_same_model_screen_ambiguous": 0,
+            "source_and_same_model_screen_seed_comparable": 169,
+            "source_seed_differs_from_same_model_screen": 113,
+            "source_seed_same_as_same_model_screen": 56,
+            "source_phase_among_different_seed_comparisons": {
+              "seed2": 58,
+              "seed3": 55
+            },
+            "source_wrong_model_among_screen_seed_comparisons": 2,
+            "source_wrong_model_among_different_screen_seed_comparisons": 2
+          }
+        },
+        "initial_and_surviving_identity_mismatch_key_source_pairs_identical": true,
+        "all_final_archive_seed_field_present": 0
+      }
+    },
+    "identity_mismatch_list_reference": "archive_reblend.identity_mismatches is also the full initial 29-entry mismatch list; every key and selected source index matches the initial reconstruction.",
+    "seed_comparison_caveat": "Selected-source seed differs from the known same-model screen seed in118/169 (island1) and113/169 (island2) initial comparisons. Two island2 cases also select the wrong physical model. Excluding these yields118/169 and111/167 model-correct selected-source comparisons. A changed seed from a confirmation is not by itself an erroneous run or a proven wrong archive target seed."
+  }
+}

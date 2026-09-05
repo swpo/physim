@@ -1,0 +1,394 @@
+{
+  "audited_interpretations": [
+    {
+      "audited_sha256": "a3051a0c2c31a75cab617e7e09f8a18434f3df804435a101d0bd0ee4394a21ec",
+      "bytes_at_review": 24711,
+      "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/evolving-at-scale.html",
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    },
+    {
+      "audited_line_excerpts": [
+        {
+          "first_line": 40,
+          "last_line": 46,
+          "text": "<div class=\"note\"><b>Headline.</b> The pilot's archive holds <b>76 distinct\neconomy cells</b> (union; island&nbsp;1: 60, island&nbsp;2: 50) against a \u22655\nsuccess bar \u2014 <b>15\u00d7 over</b> \u2014 from 516 economy rows total, with confirmation\ndepth 74/73 cells seed-3-confirmed per island. The new spatial-merge operator\n<code>merge_spatial_ic</code> is the <b>top operator at a 0.82 hit rate</b>. And\none finding is stated plainly below because it shapes what happens next: the C9\nceiling is <b>flat across generations</b> \u2014 economy niches are found early and"
+        },
+        {
+          "first_line": 63,
+          "last_line": 65,
+          "text": "<p>Selection sees <code>interest_v3 = interest_v2 + W9\u00b7C9</code> with\n<b>W9 = 0.25</b> of total weight (v2 components keep their relative\nproportions), and the archive's descriptor key gains one axis \u2014 a spatial class"
+        },
+        {
+          "first_line": 115,
+          "last_line": 120,
+          "text": "<h3>3.1 \u00b7 The bar: 76 economy cells against \u22655</h3>\n<table>\n<tr><th></th><th>island 1</th><th>island 2</th><th>union</th></tr>\n<tr><td>distinct economy cells (C9 \u2265 0.4 &amp; I \u2265 60)</td><td>60</td><td>50</td><td><b>76</b></td></tr>\n<tr><td>economy rows (scored candidate \u00d7 seed results)</td><td colspan=\"2\"></td><td>516</td></tr>\n<tr><td>archive cells seed-3-confirmed through gen 7</td><td>74</td><td>73</td><td></td></tr>"
+        },
+        {
+          "first_line": 143,
+          "last_line": 163,
+          "text": "<h3>3.3 \u00b7 Operator scoreboard</h3>\n<p>Hit rate is origin-attributed: every economy row is credited to the operator\nthat created its base candidate (confirm reruns map back to the original\nlane).</p>\n<div class=\"panel\"><img src=\"media/v3pilot/v3pilot_operators.png\"\n alt=\"operator hit-rate horizontal bar chart, merge_spatial_ic at 0.82\"/></div>\n<table>\n<tr><th>operator</th><th>lanes</th><th>econ rows</th><th>hit rate</th><th>note</th></tr>\n<tr><td><b><code>merge_spatial_ic</code></b></td><td>112</td><td>92</td><td><b>0.82</b></td><td>the v3 flagship \u2014 8 lanes/gen only</td></tr>\n<tr><td><code>merge_slow_tanh</code></td><td>42</td><td>27</td><td>0.64</td><td></td></tr>\n<tr><td><code>mint_bilin</code></td><td>168</td><td>100</td><td>0.60</td><td></td></tr>\n<tr><td><code>delete_bilin</code></td><td>56</td><td>32</td><td>0.57</td><td></td></tr>\n<tr><td><code>merge_cross_edge</code></td><td>219</td><td>116</td><td>0.53</td><td></td></tr>\n<tr><td><code>add_chan</code></td><td>112</td><td>57</td><td>0.51</td><td></td></tr>\n<tr><td><code>mutate</code></td><td>224</td><td>89</td><td>0.40</td><td></td></tr>\n<tr><td><code>merge_share_chan</code></td><td>51</td><td>2</td><td>0.04</td><td>dead lane</td></tr>\n<tr><td><code>dup_act</code></td><td>112</td><td>1</td><td>0.01</td><td>dead lane</td></tr>\n<tr><td><code>immigrate</code></td><td>280</td><td>0</td><td>0.00</td><td>zero direct rows; supplies parent stock</td></tr>\n</table>\n<p><code>merge_spatial_ic</code> is the validation the spec asked for: on only\n8 lanes per generation it converts <b>82%</b> of its lanes into economy rows \u2014"
+        },
+        {
+          "first_line": 173,
+          "last_line": 179,
+          "text": "<p>Stated plainly: <b>C9 does not escalate across generations.</b> The pilot's\nbest C9, 0.85, appears at <b>generation 1</b> on island 1; island 2's best,\n0.80, arrives at generation 6 \u2014 but the union ceiling was set in generation 1\nand never beaten. Mean C9 is flat at ~0.25\u20130.29, and per-generation economy-row\ncounts oscillate in a stable 22\u201356 band with no trend. Economy niches are\n<b>found early \u2014 by v2-seeded elites under strong operators \u2014 and held,\nnot compounded</b>. Selection at W9 = 0.25 maintained the niches it was asked"
+        },
+        {
+          "first_line": 211,
+          "last_line": 233,
+          "text": "open-ended climb. C9 plus the spatial-class niche surfaced 76 protected economy\ncells from material the v2 archive already contained, in one generation, and\nkept them alive for six more \u2014 exactly what archive protection is for. What the\npilot did <b>not</b> show is compounding: under W9 = 0.25 the selection\ngradient toward higher C9 was evidently too weak to matter once the bar was\ncleared. The harvest's own verdict was <b>no</b> to a same-config continuation\n\u2014 breadth would grow, the C9 ceiling would not.</p>\n<p>So the continuation now running (generations 8\u201312, from the gen-7\nsnapshots) is a <b>respec, not a rerun</b>:</p>\n<table>\n<tr><th>change</th><th>from \u2192 to</th><th>why</th></tr>\n<tr><td><code>merge_spatial_ic</code> lanes</td><td>8 \u2192 <b>24</b> per gen</td><td>3\u00d7 the top operator (0.82)</td></tr>\n<tr><td><code>mint_bilin</code> lanes</td><td>\u2192 16</td><td>second-tier workhorse (0.60 on 168 lanes)</td></tr>\n<tr><td><code>immigrate</code> lanes</td><td>20 \u2192 5</td><td>zero direct economy rows; keeps a trickle of parent stock</td></tr>\n<tr><td><code>dup_act</code>, <code>merge_share_chan</code></td><td>\u2192 0</td><td>dead lanes (0.01 / 0.04)</td></tr>\n<tr><td>W9</td><td>0.25 \u2192 <b>0.40</b></td><td>press C9 directly in selection, not only via niche protection</td></tr>\n<tr><td>archive currency</td><td>C9-backfill of the 88 v2-seeded elites</td><td>every archive row on the same interest_v3 currency (ingest rows lacked C9)</td></tr>\n</table>\n<p>That is the direct test of the flat-ceiling reading: if C9 still refuses to\nclimb with triple the spatial-merge bandwidth and a 0.40 selection weight, the\nceiling is real under this grammar \u2014 and the contingent wall template (and\neventually the v4 patch-glued stepper, for which <code>merge_spatial_ic</code>'s\n0.82 is the funding evidence) is the next move. <b>Films of the best economy"
+        }
+      ],
+      "audited_sha256": "d6cf4148ab3960e61622d774af019bab485f78bb2d9163a0e8868970c9deeb42",
+      "bytes_at_review": 18751,
+      "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/breeding-spatial-economies.html",
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    },
+    {
+      "audited_sha256": "a1b8a743aef23ae97b584c70d42d27a1da2c6c8c7481565fa2ea094386bddc35",
+      "bytes_at_review": 2888,
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/HARVEST.md",
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    },
+    {
+      "audited_sha256": "6e96debbab443f630864e7cd890bd10bb662534df9c04d6c2ded8b5b298d9de8",
+      "bytes_at_review": 4677,
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/POST12_FACTS.json",
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    }
+  ],
+  "final_archive_sha256_from_verified_records": {
+    "1": "7ef7e373677750b16cef373623e1b6bbecd400cea312ba359a940fd5fe3f40c3",
+    "2": "cb00bc78b38c7edf28cbb0a6128b721eec5a345810b26460f390992f72a68a81"
+  },
+  "inputs": {
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/complexity/metrics_v3.py": {
+      "bytes": 32351,
+      "sha256": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/gen_c9backfill.py": {
+      "bytes": 1139,
+      "sha256": "fbc72db539c8f7ab0409c2202713023a4ee079725ffbd165b963a8a8742a2138"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/audit.py": {
+      "bytes": 49831,
+      "sha256": "3a14e61d2ace0fc2ee504562d775b699f987225f9072d31d9cc43552f59535ee"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/history_evidence.json": {
+      "bytes": 102405,
+      "sha256": "3c41e1a9fa0c92c149d25b5a9e0dc50feaad7328e01a3dcde571333ba8e18945"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/interpretation_source_pins.json": {
+      "bytes": 7612,
+      "sha256": "3e93354ae9dd8adc8417f9a675b2f2d80a812d0394349ba3bfc537a0d3423a8a"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/validate_audit.py": {
+      "bytes": 4776,
+      "sha256": "14aeeec041a262ff08071fc5f703e941fcfd072aaf78d8d1461e2f39882dd3af"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/write_report.py": {
+      "bytes": 33837,
+      "sha256": "9995a6aa64be16205a28702a4c6da228155bcef8d30b2d161923bf99b4b66329"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/pod_lib.py": {
+      "bytes": 11684,
+      "sha256": "174bf52683df0f600d3dbe36f59289d74519bf1c1eec113ac9c4b59b6bf74d4a"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/pod_worker_batch.py": {
+      "bytes": 18944,
+      "sha256": "425090a6a24032561ce13a5cd8b7358c030e3e86fbcdeaf6ad3efc1aee669671"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/reblend_archive.py": {
+      "bytes": 1587,
+      "sha256": "8111730347b0fefcf0cb2d98b98a6420ea8cad26d8b41cffe3c4bed66ba3a160"
+    },
+    "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/v3_postpass.py": {
+      "bytes": 1279,
+      "sha256": "705be884b017aaa8e333942008f399e997b1bb6f2bc70c1301727e98c9452f48"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/archive.json": {
+      "bytes": 973382,
+      "sha256": "91e29a9f69932ac1dfdf59a2ae78e005eeb8b40fe0e342bc5058a01d1216bc16"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/archive_seed.json": {
+      "bytes": 388964,
+      "sha256": "b74a35ddf3ecc8d503bc67decda36cea9f456aea89afdaed644f050f2274a253"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g1_w0.json": {
+      "bytes": 201005,
+      "sha256": "c36fdf9535a41e64ce698b1d8c3380b982da72f153d488c7bf76af8f542e68da"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g2_w0.json": {
+      "bytes": 194271,
+      "sha256": "abf1f017ce03366961cfb4f4a43cc0a9f8316421bbb95e2c263f4d50c61350e0"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g3_w0.json": {
+      "bytes": 194899,
+      "sha256": "2f62eb0fbf832bb7ecdedbd57c284a6506498b1869ff6d0c8ddcefb90936e1d2"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g4_w0.json": {
+      "bytes": 195765,
+      "sha256": "a14212be88c77541b0d0ee8d806e554b764009a8da2127b5cded0f58d151b9c5"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g5_w0.json": {
+      "bytes": 192238,
+      "sha256": "0863c4367181e2922324817ade513748109751a0cd171fc9c5e7842748e3cb3b"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g6_w0.json": {
+      "bytes": 192696,
+      "sha256": "b632516eab9f2673f46bf2ec3c91193e3a7e74433010311b832d01cd5261f454"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/g7_w0.json": {
+      "bytes": 190611,
+      "sha256": "bcd6208aa16a70a1ef3596b310e43897dfceb1ec0bfa797e8754d198be9f42ce"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g1_w0.json": {
+      "bytes": 142333,
+      "sha256": "057e75db3229c7370f83446a9b26bb6e44800bed71df2015b56684b607e9aae4"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g2_w0.json": {
+      "bytes": 106705,
+      "sha256": "ba6118b266e4927fc7059fd0bf778a9eacf7df1d498b6f0fece646fe6289a93a"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g3_w0.json": {
+      "bytes": 80909,
+      "sha256": "4f79f11a718b8e05ad0da4fd4b00fb79193dcfe00c52246ad4dffd2c01eca743"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g4_w0.json": {
+      "bytes": 72792,
+      "sha256": "8efd3a2638ee4510f9e63730376e0ae1e27e805e279bf3522c3ecdb5d647ddcf"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g5_w0.json": {
+      "bytes": 47097,
+      "sha256": "03e2de10f9c1e6ab1fc70caf072c72702eca56006f7339c0d39fe36a461228ee"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g6_w0.json": {
+      "bytes": 65655,
+      "sha256": "cf22d486678d2e329addb33d9885afdea861e1d6d93e47786809481a24954895"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s2g7_w0.json": {
+      "bytes": 30275,
+      "sha256": "fa6c1474c51dedcd2e3e684d13eedd5864f946e6a32a076c91a057af77054657"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g1_w0.json": {
+      "bytes": 117009,
+      "sha256": "db2969f06b7b13ec766b6050271b80c1309a50cbeaa22f4db417484c418e7a07"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g2_w0.json": {
+      "bytes": 92022,
+      "sha256": "815b0408e0e2f8e315d17af41b94a5e7dc9b288fc47c9cd01e2dd8741ca51696"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g3_w0.json": {
+      "bytes": 72740,
+      "sha256": "e826cd24dead2d7fe2c4cd11b6318579f005913a016707ad31bcc9b4a4e60cfc"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g4_w0.json": {
+      "bytes": 69966,
+      "sha256": "5996079d3f70af323af86ba578a62d08b6e05be1cfaff760c4e4934a04c9e3fe"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g5_w0.json": {
+      "bytes": 42857,
+      "sha256": "3a7f459333ef2aa26c673c9cb8f913d97620e72fe3e44da652a7453f60e226db"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g6_w0.json": {
+      "bytes": 62162,
+      "sha256": "84d3fd62b94122119216bb39075a5580277ff6e96f6170f0fad686287ad8c693"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g7_w0.json": {
+      "bytes": 30276,
+      "sha256": "1dae0649be9eebaaf3310f0d7baa94876cb09ab266c1234da0a25d10ba2e0482"
+    },
+    "/Users/spoho/v3work/harvest/isl1_snap/out/results.json": {
+      "bytes": 4281435,
+      "sha256": "e8b94fb98c81eaddd7cbe5dac6e4d5bf79d0ba6ba3b0f5c21cec6ccb2fb337c7"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/archive.json": {
+      "bytes": 977158,
+      "sha256": "dc0d9a364e0b4371bdcec9769fa5e54d867bb2f5ccb3425ac4f6042469f21a10"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/archive_seed.json": {
+      "bytes": 388964,
+      "sha256": "b74a35ddf3ecc8d503bc67decda36cea9f456aea89afdaed644f050f2274a253"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g1_w0.json": {
+      "bytes": 199926,
+      "sha256": "11c4d96f6aa4988f2316e6e0c2159901b0ba1b13f7d2da0cc97193bed7032044"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g2_w0.json": {
+      "bytes": 196865,
+      "sha256": "dcd15137e1fe13c0b0be4941cee11782027a009fd4573cee500b68ff9b10cd2f"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g3_w0.json": {
+      "bytes": 191344,
+      "sha256": "00d146984d2f82bab2d474fbddf467b7c2e38e0adc484be30d62d5bd038c2101"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g4_w0.json": {
+      "bytes": 194487,
+      "sha256": "3a81b9ca81f98d7e3f704bb4f4351b22b067de4030dd0733fcd8b36dcb831605"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g5_w0.json": {
+      "bytes": 185741,
+      "sha256": "8a41d0e92a53ad1396093edc47bfeebc0636e5f192f9ce356b0dea867e7d2265"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g6_w0.json": {
+      "bytes": 198791,
+      "sha256": "a836e16476104b2b6374ecb55ef2fef69d6f74bf5855dbfb9571458ee67362fc"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/g7_w0.json": {
+      "bytes": 193748,
+      "sha256": "42efa81d597a6f480651a6c7abb814ddbe4808cbc9afce36dcdd06d1071604f5"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g1_w0.json": {
+      "bytes": 132971,
+      "sha256": "9a23643c3b28c05d1f52b3a864a45b5c3b147f5bab95a3e0cdb53480240a1d8e"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g2_w0.json": {
+      "bytes": 92588,
+      "sha256": "6cd0a6b6beb9b3da1d90cf731f74576d67e90c75847c7f9de2a5b980e57b8193"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g3_w0.json": {
+      "bytes": 75955,
+      "sha256": "86dc2e36382314f6a24fa61791f462a7bcf530da8b44b515eaa01cb6f47b09c2"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g4_w0.json": {
+      "bytes": 56417,
+      "sha256": "6d0a3db6f2777d5ad358967d269ef73e7c78b295c996bd5ed0435e20a2a19db0"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g5_w0.json": {
+      "bytes": 60420,
+      "sha256": "c9e118d5688f1b9969f4436b221babc70f12793f272e61df087b59ce270416a8"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g6_w0.json": {
+      "bytes": 51689,
+      "sha256": "2219f82d9d9c342a4b26278cb35777bd791f155e88b080dc8918aac0a6f5a323"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s2g7_w0.json": {
+      "bytes": 40633,
+      "sha256": "81b8d819aadea766e61a7298b0dd413988526eedc54c6ad78fa7f9f948a1c9a3"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g1_w0.json": {
+      "bytes": 112409,
+      "sha256": "246c818d895bbe878e82289f085aa3c03f4591a4d1cefd3480f4cb39d03c1f09"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g2_w0.json": {
+      "bytes": 76105,
+      "sha256": "d21561d988b3d0c46e94bee93232062a6179bf9ab0aeb38a7b9e7cdc94814a2b"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g3_w0.json": {
+      "bytes": 73348,
+      "sha256": "4f3c638ae43ad43882724c1859ef8d7a4d64493557899fcdfec58200dfc1866e"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g4_w0.json": {
+      "bytes": 51019,
+      "sha256": "18414880a8e4a0ac34e29ee92ff26b87faf3388d8279fdc68f6fafeedc5e264a"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g5_w0.json": {
+      "bytes": 56001,
+      "sha256": "2c71fcb1874b42ac03e2bce14fb29532ab0c1867eaf0d8192572ff9969f10365"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g6_w0.json": {
+      "bytes": 49488,
+      "sha256": "953f76b1b170b9e591abc3336dd4c3555a4eea638b34a23fb5d652122a2fe4a5"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g7_w0.json": {
+      "bytes": 41365,
+      "sha256": "ec5a257b890123b31231faa6fa07cfe442cdf54e925852f1fcda75fc10c37ee0"
+    },
+    "/Users/spoho/v3work/harvest/isl2_snap/out/results.json": {
+      "bytes": 4152153,
+      "sha256": "ff9490fd75066517149f3fd18590ae76a8b300b1e0ec4c09b3c00bc074904bca"
+    },
+    "/Users/spoho/v3work/isl1_final2.tgz.verified.json": {
+      "bytes": 1372,
+      "sha256": "2a9da737d954a2467b5094658885091ed398197a48af9ba52e7bd4c980c4de13"
+    },
+    "/Users/spoho/v3work/isl2_final2.tgz.verified.json": {
+      "bytes": 1372,
+      "sha256": "f2bf3d16adfda3295828d15e4d2627f8ae69e9c48b411034dc5360cad551ca39"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island1.json": {
+      "bytes": 7884,
+      "sha256": "6127d3bd1385961260d139d2de74a76da9e9efaf16e2cc6dce3944c41d0ef541"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island2.json": {
+      "bytes": 13587,
+      "sha256": "26b0932ed69e9bd5ec71517bfa67b745295668993876c257eaa664d23c518d36"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/CONFIRM12_SETTLED.json": {
+      "bytes": 100,
+      "sha256": "b930aa039752052cf9959bc3fce224eea5ddd2ea2767fb8ccb2ac32bbf41a756"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/archive.json": {
+      "bytes": 1294662,
+      "sha256": "775161e0d7f8125cc9bfaefcbed290d1c492f4bef1714ab44a1877f6fbe05999"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/driver.log": {
+      "bytes": 7788,
+      "sha256": "5d8b414efaa9aed812735c50a8b133bf0c3ce8c38d69b714f158054cdbdf131e"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/island_config.json": {
+      "bytes": 1885,
+      "sha256": "1a88acce46602cfd331b3f18232fb6632cb0efae460207a7e0f5e5c675d2e09a"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/results.json": {
+      "bytes": 6884607,
+      "sha256": "b051be6572d441b25bd4d7696eae0d99583801ae1905c6ce7857f25285b71e26"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-1/settled/state.json": {
+      "bytes": 16435,
+      "sha256": "812bb47cd55514d7c2ca0b7068eec51d7d39f76b3844ac0a498a5341c06dff41"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/CONFIRM12_SETTLED.json": {
+      "bytes": 100,
+      "sha256": "2a21e31005040603f8721a2555036ceab4799968428949888ace404d46c48de2"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/archive.json": {
+      "bytes": 1242497,
+      "sha256": "eaa9b11e714f491a4b38244355ae178f5046ca077b94a49151f4e8308f8fe878"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/driver.log": {
+      "bytes": 7811,
+      "sha256": "93313fe865ab2c2cea738b0b7dda8ee695f331490f859c4a60e4e816c1d9df33"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/island_config.json": {
+      "bytes": 1885,
+      "sha256": "dd8d73940471105b9e5c9758195a9fffbcb445cbd11c46f545ed12a5c3b8a73e"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/results.json": {
+      "bytes": 6566760,
+      "sha256": "422f2ded50754aa71bd94da33c745f010e335f1b795b8ecda96a2856601afd5c"
+    },
+    "/Users/spoho/v3work/ops/recovery_20260905/v3cont-2/settled/state.json": {
+      "bytes": 16552,
+      "sha256": "e11d19e5db0dd984b0c56587b6211eff749928c9f79526f917d9b52d3b226357"
+    },
+    "/Users/spoho/v3work/v3bundle/island_config_1.json": {
+      "bytes": 1586,
+      "sha256": "a87e4bf1391897241a5ccc662f48d8e9679bb55e0ad7ec6b0d450cb15546fcbf"
+    },
+    "/Users/spoho/v3work/v3bundle/island_config_2.json": {
+      "bytes": 1586,
+      "sha256": "dae33db600711130402d5f0e4d81ce5fb0b950d655a6f9484a4b9e2b4a159909"
+    },
+    "/Users/spoho/v3work/v3bundle/island_config_cont_1.json": {
+      "bytes": 1784,
+      "sha256": "0fddf799626050eb9ca57c2987b372fee98118130805441a6d247ca76f173def"
+    },
+    "/Users/spoho/v3work/v3bundle/island_config_cont_2.json": {
+      "bytes": 1784,
+      "sha256": "f97f0a826f806af2a7550586d4a639f1410fca477164751adda6c62e1997edf9"
+    },
+    "/Users/spoho/v3work/v3bundle/pod_gen.py": {
+      "bytes": 17074,
+      "sha256": "1eb2277273338bd9fee441bcabc556eb2fc2ad8c5e0e7f55861311a55cbebdf7"
+    },
+    "/Users/spoho/v3work/v3bundle/pod_gen_batch.py": {
+      "bytes": 4909,
+      "sha256": "e23c16f658d8843568c23eae5ef389372679214e33dbcac84d6fbb5fc4e376a8"
+    },
+    "/Users/spoho/v3work/v3bundle/pod_lib.py": {
+      "bytes": 11684,
+      "sha256": "174bf52683df0f600d3dbe36f59289d74519bf1c1eec113ac9c4b59b6bf74d4a"
+    }
+  }
+}

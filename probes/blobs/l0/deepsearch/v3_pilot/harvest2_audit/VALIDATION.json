@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "checks": [
+    "raw_row_count",
+    "unambiguous_row_count",
+    "unique_identity_keys",
+    "every_observation_raw_values_identity_and_common_scores",
+    "one_unit_per_named_base",
+    "invalid_confirmations_not_attributed",
+    "three_assay_joint_threshold_requires_valid_pair_and_three_seeds",
+    "per_generation_screen_n_sum",
+    "per_generation_status_n_sums",
+    "baseline_rows_preserved",
+    "initial_wrong_model_reconstruction",
+    "initial_descriptor_mismatches",
+    "final_descriptor_mismatches",
+    "archive_target_seed_unknown",
+    "all_small_data_code_and_pin_input_hashes_still_match_manifest",
+    "six_current_film_keys_resolve",
+    "film_selection_no_known_invalid_parent_joins"
+  ],
+  "check_count": 17,
+  "interpretation_drift": [
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/breeding-spatial-economies.html",
+      "audited_sha256": "d6cf4148ab3960e61622d774af019bab485f78bb2d9163a0e8868970c9deeb42",
+      "current_sha256": "b4d7a29931c92c52d1d62181ee6c169306b6a01d0803149acb3924b903771da8",
+      "meaning": "Interpretation changed after review; old pin retained. Not a change to simulation data."
+    }
+  ],
+  "scope": "Pure local JSON/CSV/hash validation; no simulation, metric execution, or input modification"
+}

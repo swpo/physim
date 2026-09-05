@@ -1,0 +1,191 @@
+{
+  "schema": "harvest2_audit_freeze_v1",
+  "status": "frozen",
+  "final_draft": {
+    "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/HARVEST2_DRAFT.md",
+    "bytes": 33797,
+    "sha256": "76c8ab465664949b4dbea4cf5399e413d1f3194f0c5dd4a4783a3079d7226b35"
+  },
+  "artifact_directory": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit",
+  "artifacts": {
+    "HARVEST2_DRAFT.md": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/HARVEST2_DRAFT.md",
+      "bytes": 33797,
+      "sha256": "76c8ab465664949b4dbea4cf5399e413d1f3194f0c5dd4a4783a3079d7226b35"
+    },
+    "VALIDATION.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/VALIDATION.json",
+      "bytes": 1295,
+      "sha256": "c58256b9bd1f20d7a87d2c41ecf25ca78482b1cb0cfeb537bfa1b4fbfbba8234"
+    },
+    "archive_reblend_diagnostics.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/archive_reblend_diagnostics.csv",
+      "bytes": 161700,
+      "sha256": "2326b57c198f02958a1c47b0655b8d2643963f77325ec7e87988501377c1f2c5"
+    },
+    "audit.py": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/audit.py",
+      "bytes": 49831,
+      "sha256": "3a14e61d2ace0fc2ee504562d775b699f987225f9072d31d9cc43552f59535ee"
+    },
+    "audit_tables.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/audit_tables.json",
+      "bytes": 833746,
+      "sha256": "0b127671ec62f6b8eec52132d47008e7c2d9f28d684d126423d47f73608df381"
+    },
+    "candidate_confirmations.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/candidate_confirmations.csv",
+      "bytes": 684213,
+      "sha256": "723b65ddfeff62e0114695b214810f21f089679e3c84fe31ecdccea328301517"
+    },
+    "cohort_phase_summary.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/cohort_phase_summary.csv",
+      "bytes": 57912,
+      "sha256": "89bee5941888b54c23a89abc1aaa5999bfe40530c0cb4677196bf7e88e84bba3"
+    },
+    "confirmation_join_anomalies.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/confirmation_join_anomalies.json",
+      "bytes": 25700,
+      "sha256": "0e538639a553446990f53c1998fa93cabb59ac77846bf8a132dee7119b6bd8c4"
+    },
+    "confirmation_origins.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/confirmation_origins.csv",
+      "bytes": 139920,
+      "sha256": "24b425b0547d1551c12295a4240ca9a3df7e206dafeec5372f371931cfbd5f22"
+    },
+    "confirmed_top_rows.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/confirmed_top_rows.csv",
+      "bytes": 19413,
+      "sha256": "6f35e9bad19a8ea923c9b588fe021fc5ef801e65749653dff21b05742edaae3b"
+    },
+    "dedup_conflicts.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/dedup_conflicts.json",
+      "bytes": 4023,
+      "sha256": "a3a0ed3e59540f3cb849ec9d67c725de6de0aa80a39b3296eaa6ca42ba1e9869"
+    },
+    "film_selection_identity_checks.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/film_selection_identity_checks.json",
+      "bytes": 3193,
+      "sha256": "0808dca8a7a85a75bd5fe9abdc9e7d6128804846bccb8fc241ef5497548406c0"
+    },
+    "history_evidence.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/history_evidence.json",
+      "bytes": 102405,
+      "sha256": "3c41e1a9fa0c92c149d25b5a9e0dc50feaad7328e01a3dcde571333ba8e18945"
+    },
+    "history_notes.md": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/history_notes.md",
+      "bytes": 20993,
+      "sha256": "277caf8699c5c0c39fdb9e1503c6b000545f9e2c6c02a7203ad2729127d7abc4"
+    },
+    "image_shortlist.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/image_shortlist.csv",
+      "bytes": 12975,
+      "sha256": "ff18a6948b7dcfe971a83ab362a9ce2d399f2232490f03959234aabc1a996e5d"
+    },
+    "interpretation_source_pins.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/interpretation_source_pins.json",
+      "bytes": 7612,
+      "sha256": "3e93354ae9dd8adc8417f9a675b2f2d80a812d0394349ba3bfc537a0d3423a8a"
+    },
+    "observations.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/observations.csv",
+      "bytes": 949443,
+      "sha256": "cc9393454938a84e6afdb1a353757c0325134979edbafd7e5c72febbc7e15b4e"
+    },
+    "operator_emitted_by_generation.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/operator_emitted_by_generation.csv",
+      "bytes": 1362,
+      "sha256": "2ed8126489769379ac1d568411b51257cbde72908d18ca6c0c3f4eadb98e219a"
+    },
+    "operator_rates.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/operator_rates.csv",
+      "bytes": 49783,
+      "sha256": "e3311494cb5147fd0b9212e960a9716413262ebe39ab136bd9b1041b5077996f"
+    },
+    "production_film_identity_checks.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/production_film_identity_checks.json",
+      "bytes": 12029,
+      "sha256": "376d0474f067bb1b8ed638add70b58f359c00ddaece3b9a60db6d3ede3f0d3e4"
+    },
+    "reblend_initial_vs_surviving.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/reblend_initial_vs_surviving.csv",
+      "bytes": 248455,
+      "sha256": "57f581b9637689d94fcbcdd570d329f8d943c9fddbd2d1621cf0131374ec3797"
+    },
+    "screen_by_generation.csv": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/screen_by_generation.csv",
+      "bytes": 25313,
+      "sha256": "fbb45094e491bf8ee84ebef236df27dbf7aba2e3d75fdee1980449535f15b159"
+    },
+    "source_manifest.json": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/source_manifest.json",
+      "bytes": 22963,
+      "sha256": "2fcb89cd52dfa688d91607c2f3e8e2eeea2db1f628a02c3a0969c2099618613d"
+    },
+    "validate_audit.py": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/validate_audit.py",
+      "bytes": 4776,
+      "sha256": "14aeeec041a262ff08071fc5f703e941fcfd072aaf78d8d1461e2f39882dd3af"
+    },
+    "write_report.py": {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/write_report.py",
+      "bytes": 33837,
+      "sha256": "9995a6aa64be16205a28702a4c6da228155bcef8d30b2d161923bf99b4b66329"
+    }
+  },
+  "immutable_data_code_pin_hash_check": {
+    "n": 82,
+    "mismatches": []
+  },
+  "production_capture_and_selection_hash_check": {
+    "n": 18,
+    "mismatches": []
+  },
+  "validation_result": {
+    "ok": true,
+    "checks": [
+      "raw_row_count",
+      "unambiguous_row_count",
+      "unique_identity_keys",
+      "every_observation_raw_values_identity_and_common_scores",
+      "one_unit_per_named_base",
+      "invalid_confirmations_not_attributed",
+      "three_assay_joint_threshold_requires_valid_pair_and_three_seeds",
+      "per_generation_screen_n_sum",
+      "per_generation_status_n_sums",
+      "baseline_rows_preserved",
+      "initial_wrong_model_reconstruction",
+      "initial_descriptor_mismatches",
+      "final_descriptor_mismatches",
+      "archive_target_seed_unknown",
+      "all_small_data_code_and_pin_input_hashes_still_match_manifest",
+      "six_current_film_keys_resolve",
+      "film_selection_no_known_invalid_parent_joins"
+    ],
+    "check_count": 17,
+    "interpretation_drift": [
+      {
+        "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/breeding-spatial-economies.html",
+        "audited_sha256": "d6cf4148ab3960e61622d774af019bab485f78bb2d9163a0e8868970c9deeb42",
+        "current_sha256": "b4d7a29931c92c52d1d62181ee6c169306b6a01d0803149acb3924b903771da8",
+        "meaning": "Interpretation changed after review; old pin retained. Not a change to simulation data."
+      }
+    ],
+    "scope": "Pure local JSON/CSV/hash validation; no simulation, metric execution, or input modification"
+  },
+  "interpretation_drift": {
+    "root_reported_and_local_git_verified_correction_commit": "45006a5d30ab7b6a7a9b9aed475bfeb057eb0408",
+    "changed_paths": [
+      "HANDOFF.md",
+      "docs/blobs/breeding-spatial-economies.html",
+      "probes/blobs/l0/complexity/H9_PROTOTYPE.md"
+    ],
+    "classification": "Interpretive handoff/page/prototype-note correction, not simulation-data, physics-code, or archive change.",
+    "reviewed_post12_sha256": "d6cf4148ab3960e61622d774af019bab485f78bb2d9163a0e8868970c9deeb42",
+    "post12_sha256_after_root_correction": "b4d7a29931c92c52d1d62181ee6c169306b6a01d0803149acb3924b903771da8",
+    "preserved_review_evidence": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/harvest2_audit/interpretation_source_pins.json",
+    "policy": "Preserve original reviewed hash and old-version line excerpts. Do not silently repin or fail immutable-data validation because of later interpretation edits."
+  },
+  "freeze_action": "Added only this audit-output freeze record. Existing final draft, code, tables, source pins, raw sources, archives, production selections, and web pages were not edited in this freeze step."
+}

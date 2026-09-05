@@ -1,0 +1,320 @@
+{
+  "scope": "Read-only comparison to captured request/manifest JSON as production truth; no source edits, re-ranking, replay/eval, or selection overwrite. No visual or numerical replay-parity claim.",
+  "staging_sources": [
+    {
+      "island": 1,
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island1.json",
+      "sha256": "6127d3bd1385961260d139d2de74a76da9e9efaf16e2cc6dce3944c41d0ef541",
+      "items": [
+        {
+          "cand": "p1g12_049_s2",
+          "phase": "seed2",
+          "seed": 958
+        },
+        {
+          "cand": "p1g12_007_s3",
+          "phase": "seed3",
+          "seed": 959
+        },
+        {
+          "cand": "p1g1_009_s3",
+          "phase": "seed3",
+          "seed": 959
+        }
+      ]
+    },
+    {
+      "island": 2,
+      "path": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island2.json",
+      "sha256": "26b0932ed69e9bd5ec71517bfa67b745295668993876c257eaa664d23c518d36",
+      "items": [
+        {
+          "cand": "p2g6_032_s2",
+          "phase": "seed2",
+          "seed": 965
+        },
+        {
+          "cand": "p2g11_036",
+          "phase": "screen",
+          "seed": 964
+        },
+        {
+          "cand": "p2g1_025_s2",
+          "phase": "seed2",
+          "seed": 965
+        }
+      ]
+    }
+  ],
+  "captured_selection_reports": [
+    {
+      "island": 1,
+      "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/reports/20260905T222002-3d5d2c61/selection.json",
+      "file_sha256": "ab53bf704fa47f537fd26fb4f1c8c2cacaf7c60e559cf30323c215249c0a03d6",
+      "semantic_equal_to_current_staging": true,
+      "item_keys": [
+        [
+          1,
+          "p1g12_049_s2",
+          "seed2",
+          958
+        ],
+        [
+          1,
+          "p1g12_007_s3",
+          "seed3",
+          959
+        ],
+        [
+          1,
+          "p1g1_009_s3",
+          "seed3",
+          959
+        ]
+      ]
+    },
+    {
+      "island": 1,
+      "path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/reports/20260905T222407-81e1ca14/selection.json",
+      "file_sha256": "ab53bf704fa47f537fd26fb4f1c8c2cacaf7c60e559cf30323c215249c0a03d6",
+      "semantic_equal_to_current_staging": true,
+      "item_keys": [
+        [
+          1,
+          "p1g12_049_s2",
+          "seed2",
+          958
+        ],
+        [
+          1,
+          "p1g12_007_s3",
+          "seed3",
+          959
+        ],
+        [
+          1,
+          "p1g1_009_s3",
+          "seed3",
+          959
+        ]
+      ]
+    },
+    {
+      "island": 2,
+      "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/reports/20260905T215529-652c54b1/selection.json",
+      "file_sha256": "1404aa4cf09d82a94f3b06350a61676e505892b8d803d18f40438c95212a799a",
+      "semantic_equal_to_current_staging": true,
+      "item_keys": [
+        [
+          2,
+          "p2g6_032_s2",
+          "seed2",
+          965
+        ],
+        [
+          2,
+          "p2g11_036",
+          "screen",
+          964
+        ],
+        [
+          2,
+          "p2g1_025_s2",
+          "seed2",
+          965
+        ]
+      ]
+    },
+    {
+      "island": 2,
+      "path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/reports/20260905T220119-865504c8/selection.json",
+      "file_sha256": "1404aa4cf09d82a94f3b06350a61676e505892b8d803d18f40438c95212a799a",
+      "semantic_equal_to_current_staging": true,
+      "item_keys": [
+        [
+          2,
+          "p2g6_032_s2",
+          "seed2",
+          965
+        ],
+        [
+          2,
+          "p2g11_036",
+          "screen",
+          964
+        ],
+        [
+          2,
+          "p2g1_025_s2",
+          "seed2",
+          965
+        ]
+      ]
+    }
+  ],
+  "production_requests": [
+    {
+      "key": [
+        1,
+        "p1g12_007_s3",
+        "seed3",
+        959
+      ],
+      "capture_name": "i1-p1g12_007_s3",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g12_007_s3/request.json",
+      "request_file_sha256": "9ba83426a0579e46ad59ba89cd3c786ff7ef082755213c7ed34e3e1a65ad5fce",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g12_007_s3/manifest.json",
+      "manifest_file_sha256": "645de3e4e29ed89aa141130562699aae4295b87020367829e0f5e496899551d4",
+      "recorded_request_sha256": "c0890121ca6aa3b55bd9b04f2d578238f426112905aad0e79af54e36cd52ef27",
+      "recorded_manifest_sha256": "0c1480cd0dc2d9938d6ed1ddb647deeda5820d5bfabe12355f7913b903bd41ca",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "mutate",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    },
+    {
+      "key": [
+        1,
+        "p1g12_049_s2",
+        "seed2",
+        958
+      ],
+      "capture_name": "i1-p1g12_049_s2",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g12_049_s2/request.json",
+      "request_file_sha256": "9ed329c9e14c9f17a95c9d73e120802f473a00ac3f969cb02673d25a922baec5",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g12_049_s2/manifest.json",
+      "manifest_file_sha256": "5c3e00b3477b4a7b2f9db10f3c92de975780c9e67802f74bb957116be1b9f722",
+      "recorded_request_sha256": "7b7cb0274aafc86f1ef5330f8fbd765491991ff28028e9c6e503ddfd43854e05",
+      "recorded_manifest_sha256": "2904d5f310e87a1ac09bfe93486b2cdb421c8c438f7e395252f37321741ec304",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "add_chan",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    },
+    {
+      "key": [
+        1,
+        "p1g1_009_s3",
+        "seed3",
+        959
+      ],
+      "capture_name": "i1-p1g1_009_s3",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g1_009_s3/request.json",
+      "request_file_sha256": "0d732854cbd8daa949e008b7b637760c248dfb77e704f016780ba621ff19e00d",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-1/isl1/out/films/capture/i1-p1g1_009_s3/manifest.json",
+      "manifest_file_sha256": "cb13d26141a28c22ba7031222ea58656ab2fe002bcf7a97da6f38642f925cd52",
+      "recorded_request_sha256": "ff6cdc57c4298494465bb0c4be2fe76ad6ee65eab627d80ae049dc041ce197b9",
+      "recorded_manifest_sha256": "1464997287895c0c295690b2f0b3f1b3ef31f7228f55eafbe04465458498356f",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "mutate",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    },
+    {
+      "key": [
+        2,
+        "p2g11_036",
+        "screen",
+        964
+      ],
+      "capture_name": "i2-p2g11_036",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g11_036/request.json",
+      "request_file_sha256": "55c04922e27a496db26446666ca434f289a8178720970091671872debdb4ca90",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g11_036/manifest.json",
+      "manifest_file_sha256": "e30181e0334ece447106c1d7e1db397ddd33f515f7cad08033de01965bea8380",
+      "recorded_request_sha256": "ef8157163c0d2c41739eb1dc5a7f620475cb0826f7ed21eb2a50cbbcd66fd7f7",
+      "recorded_manifest_sha256": "3d5f8f4f0074d46a89546d89c101b84551f3c8c291519bbb90327f116c9a505f",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "mint_bilin",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    },
+    {
+      "key": [
+        2,
+        "p2g1_025_s2",
+        "seed2",
+        965
+      ],
+      "capture_name": "i2-p2g1_025_s2",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g1_025_s2/request.json",
+      "request_file_sha256": "985ce4e2eddc48b728f6b26687a423bb3580943031e78aea3aebb07b2a9946f5",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g1_025_s2/manifest.json",
+      "manifest_file_sha256": "209c574bb373fd07fdf30b4fcce61ef194d998082bf29213f8f7160f8c821402",
+      "recorded_request_sha256": "77225517a6f3657b16e4d84fb9a326686ffb049c1d1b127b2e31b63bd6146b5d",
+      "recorded_manifest_sha256": "3f566b3d6f8bbe582c340ce521d9588d6585825f7363386cd0819eda7c30f327",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "mint_bilin",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    },
+    {
+      "key": [
+        2,
+        "p2g6_032_s2",
+        "seed2",
+        965
+      ],
+      "capture_name": "i2-p2g6_032_s2",
+      "request_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g6_032_s2/request.json",
+      "request_file_sha256": "9477793d1054333136c471923e3ea2c4e8ab6037a812385d040f8d28e7823403",
+      "manifest_path": "/Users/spoho/v3work/harvest2/v3cont-2/isl2/out/films/capture/i2-p2g6_032_s2/manifest.json",
+      "manifest_file_sha256": "27dda9760de7533deefd920daae2fc3effd5f8e2dabe4f01cc35dc969c3bbb25",
+      "recorded_request_sha256": "e1d16d15e718b12e333b2e157edf2ae5b5f5e7c1e7a7f10e73519a243ef55dbe",
+      "recorded_manifest_sha256": "bd42d92b68e36b15163b33118d74eac0a213366b6ec7f17c5b6daa601eedebe4",
+      "manifest_status": "complete",
+      "exact_original_trace": false,
+      "key_in_current_staging": true,
+      "captured_row_equals_exact_settled_row": true,
+      "request_genome_matches_row_core": true,
+      "request_job_genome_matches_row_core": true,
+      "manifest_provenance_equals_request": true,
+      "manifest_request_hash_matches_recorded_request_hash": true,
+      "request_row_source_file_hash_matches_settled": true,
+      "actual_origin_op": "add_chan",
+      "named_screen_model_match": true,
+      "known_wrong_genome_confirmation": false
+    }
+  ],
+  "correction": "An earlier inter-agent prose message guessed two stale E2 candidate names. It was corrected immediately. The actual staging files and the completed audit table always use E2 p2g6_032_s2, p2g11_036, p2g1_025_s2, matching immutable production captures."
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "harvest2_interpretation_pins_v1",
+  "sources": [
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/evolving-at-scale.html",
+      "audited_sha256": "a3051a0c2c31a75cab617e7e09f8a18434f3df804435a101d0bd0ee4394a21ec",
+      "bytes_at_review": 24711,
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/docs/blobs/breeding-spatial-economies.html",
+      "audited_sha256": "d6cf4148ab3960e61622d774af019bab485f78bb2d9163a0e8868970c9deeb42",
+      "bytes_at_review": 18751,
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data",
+      "audited_line_excerpts": [
+        {
+          "first_line": 40,
+          "last_line": 46,
+          "text": "<div class=\"note\"><b>Headline.</b> The pilot's archive holds <b>76 distinct\neconomy cells</b> (union; island&nbsp;1: 60, island&nbsp;2: 50) against a \u22655\nsuccess bar \u2014 <b>15\u00d7 over</b> \u2014 from 516 economy rows total, with confirmation\ndepth 74/73 cells seed-3-confirmed per island. The new spatial-merge operator\n<code>merge_spatial_ic</code> is the <b>top operator at a 0.82 hit rate</b>. And\none finding is stated plainly below because it shapes what happens next: the C9\nceiling is <b>flat across generations</b> \u2014 economy niches are found early and"
+        },
+        {
+          "first_line": 63,
+          "last_line": 65,
+          "text": "<p>Selection sees <code>interest_v3 = interest_v2 + W9\u00b7C9</code> with\n<b>W9 = 0.25</b> of total weight (v2 components keep their relative\nproportions), and the archive's descriptor key gains one axis \u2014 a spatial class"
+        },
+        {
+          "first_line": 115,
+          "last_line": 120,
+          "text": "<h3>3.1 \u00b7 The bar: 76 economy cells against \u22655</h3>\n<table>\n<tr><th></th><th>island 1</th><th>island 2</th><th>union</th></tr>\n<tr><td>distinct economy cells (C9 \u2265 0.4 &amp; I \u2265 60)</td><td>60</td><td>50</td><td><b>76</b></td></tr>\n<tr><td>economy rows (scored candidate \u00d7 seed results)</td><td colspan=\"2\"></td><td>516</td></tr>\n<tr><td>archive cells seed-3-confirmed through gen 7</td><td>74</td><td>73</td><td></td></tr>"
+        },
+        {
+          "first_line": 143,
+          "last_line": 163,
+          "text": "<h3>3.3 \u00b7 Operator scoreboard</h3>\n<p>Hit rate is origin-attributed: every economy row is credited to the operator\nthat created its base candidate (confirm reruns map back to the original\nlane).</p>\n<div class=\"panel\"><img src=\"media/v3pilot/v3pilot_operators.png\"\n alt=\"operator hit-rate horizontal bar chart, merge_spatial_ic at 0.82\"/></div>\n<table>\n<tr><th>operator</th><th>lanes</th><th>econ rows</th><th>hit rate</th><th>note</th></tr>\n<tr><td><b><code>merge_spatial_ic</code></b></td><td>112</td><td>92</td><td><b>0.82</b></td><td>the v3 flagship \u2014 8 lanes/gen only</td></tr>\n<tr><td><code>merge_slow_tanh</code></td><td>42</td><td>27</td><td>0.64</td><td></td></tr>\n<tr><td><code>mint_bilin</code></td><td>168</td><td>100</td><td>0.60</td><td></td></tr>\n<tr><td><code>delete_bilin</code></td><td>56</td><td>32</td><td>0.57</td><td></td></tr>\n<tr><td><code>merge_cross_edge</code></td><td>219</td><td>116</td><td>0.53</td><td></td></tr>\n<tr><td><code>add_chan</code></td><td>112</td><td>57</td><td>0.51</td><td></td></tr>\n<tr><td><code>mutate</code></td><td>224</td><td>89</td><td>0.40</td><td></td></tr>\n<tr><td><code>merge_share_chan</code></td><td>51</td><td>2</td><td>0.04</td><td>dead lane</td></tr>\n<tr><td><code>dup_act</code></td><td>112</td><td>1</td><td>0.01</td><td>dead lane</td></tr>\n<tr><td><code>immigrate</code></td><td>280</td><td>0</td><td>0.00</td><td>zero direct rows; supplies parent stock</td></tr>\n</table>\n<p><code>merge_spatial_ic</code> is the validation the spec asked for: on only\n8 lanes per generation it converts <b>82%</b> of its lanes into economy rows \u2014"
+        },
+        {
+          "first_line": 173,
+          "last_line": 179,
+          "text": "<p>Stated plainly: <b>C9 does not escalate across generations.</b> The pilot's\nbest C9, 0.85, appears at <b>generation 1</b> on island 1; island 2's best,\n0.80, arrives at generation 6 \u2014 but the union ceiling was set in generation 1\nand never beaten. Mean C9 is flat at ~0.25\u20130.29, and per-generation economy-row\ncounts oscillate in a stable 22\u201356 band with no trend. Economy niches are\n<b>found early \u2014 by v2-seeded elites under strong operators \u2014 and held,\nnot compounded</b>. Selection at W9 = 0.25 maintained the niches it was asked"
+        },
+        {
+          "first_line": 211,
+          "last_line": 233,
+          "text": "open-ended climb. C9 plus the spatial-class niche surfaced 76 protected economy\ncells from material the v2 archive already contained, in one generation, and\nkept them alive for six more \u2014 exactly what archive protection is for. What the\npilot did <b>not</b> show is compounding: under W9 = 0.25 the selection\ngradient toward higher C9 was evidently too weak to matter once the bar was\ncleared. The harvest's own verdict was <b>no</b> to a same-config continuation\n\u2014 breadth would grow, the C9 ceiling would not.</p>\n<p>So the continuation now running (generations 8\u201312, from the gen-7\nsnapshots) is a <b>respec, not a rerun</b>:</p>\n<table>\n<tr><th>change</th><th>from \u2192 to</th><th>why</th></tr>\n<tr><td><code>merge_spatial_ic</code> lanes</td><td>8 \u2192 <b>24</b> per gen</td><td>3\u00d7 the top operator (0.82)</td></tr>\n<tr><td><code>mint_bilin</code> lanes</td><td>\u2192 16</td><td>second-tier workhorse (0.60 on 168 lanes)</td></tr>\n<tr><td><code>immigrate</code> lanes</td><td>20 \u2192 5</td><td>zero direct economy rows; keeps a trickle of parent stock</td></tr>\n<tr><td><code>dup_act</code>, <code>merge_share_chan</code></td><td>\u2192 0</td><td>dead lanes (0.01 / 0.04)</td></tr>\n<tr><td>W9</td><td>0.25 \u2192 <b>0.40</b></td><td>press C9 directly in selection, not only via niche protection</td></tr>\n<tr><td>archive currency</td><td>C9-backfill of the 88 v2-seeded elites</td><td>every archive row on the same interest_v3 currency (ingest rows lacked C9)</td></tr>\n</table>\n<p>That is the direct test of the flat-ceiling reading: if C9 still refuses to\nclimb with triple the spatial-merge bandwidth and a 0.40 selection weight, the\nceiling is real under this grammar \u2014 and the contingent wall template (and\neventually the v4 patch-glued stepper, for which <code>merge_spatial_ic</code>'s\n0.82 is the funding evidence) is the next move. <b>Films of the best economy"
+        }
+      ]
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/HARVEST.md",
+      "audited_sha256": "a1b8a743aef23ae97b584c70d42d27a1da2c6c8c7481565fa2ea094386bddc35",
+      "bytes_at_review": 2888,
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/l0/deepsearch/v3_pilot/POST12_FACTS.json",
+      "audited_sha256": "6e96debbab443f630864e7cd890bd10bb662534df9c04d6c2ded8b5b298d9de8",
+      "bytes_at_review": 4677,
+      "role": "Interpretation reviewed for corrections; not authoritative simulation data"
+    }
+  ],
+  "note": "Preserves the versions actually reviewed, including the pre-correction post12 page. Later edits are reported as interpretation drift, not silently substituted for the audited source."
+}

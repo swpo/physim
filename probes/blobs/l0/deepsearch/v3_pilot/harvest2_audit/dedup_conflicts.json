@@ -1,0 +1,149 @@
+{
+  "conflicts": [
+    {
+      "changed_fields": [
+        "C9",
+        "C9_factors",
+        "T_used",
+        "cell",
+        "extended",
+        "flags",
+        "funnel",
+        "genome",
+        "ghash",
+        "horizon",
+        "interest",
+        "interest_v2",
+        "lane",
+        "minted",
+        "n_bilin",
+        "na",
+        "nc",
+        "spatial_class",
+        "summary",
+        "ts",
+        "vtags",
+        "wall_assay",
+        "wall_funnel"
+      ],
+      "film_path_ambiguity": "Both rows declare the same cand-based NPZ path. File content or overwrite timing is not inferred from row timestamps.",
+      "key": {
+        "cand": "p1g2_008_c9",
+        "island": 2,
+        "phase": "c9fill",
+        "seed": 958
+      },
+      "n_rows": 2,
+      "physical_differences": {
+        "compared_core_sha256": "d87418fa9d34c168dd10bc90f686009e59e56df3936063ff27680f0ef1705b63",
+        "differing_core_fields": [
+          "acts",
+          "chans",
+          "W",
+          "K",
+          "bilin"
+        ],
+        "differing_leaf_count": 56,
+        "first_five_differences": [
+          {
+            "compared_value": 0.902648898090291,
+            "path": "K[0][2]",
+            "screen_value": 0.0
+          },
+          {
+            "compared_value": null,
+            "path": "K[0][5]",
+            "screen_value": 0.0
+          },
+          {
+            "compared_value": null,
+            "path": "K[0][6]",
+            "screen_value": 0.0
+          },
+          {
+            "compared_value": null,
+            "path": "K[0][7]",
+            "screen_value": 0.0
+          },
+          {
+            "compared_value": 0.0,
+            "path": "K[1][2]",
+            "screen_value": 1.0
+          }
+        ],
+        "screen_core_sha256": "a3b00ae80ce5230ccbc4f4f1d8fa0a7895822f0ab32870dc590963390fc296d8"
+      },
+      "variants": [
+        {
+          "C9": 0.4215,
+          "cell": "4|switch|mobile|liquid|s2|g0|mixed",
+          "core_model_sha256": "a3b00ae80ce5230ccbc4f4f1d8fa0a7895822f0ab32870dc590963390fc296d8",
+          "genome_provenance": {
+            "kind": "evolve",
+            "moves": [
+              "D0",
+              "D2",
+              "tau5",
+              "D5",
+              "tau6",
+              "tau7",
+              "D7",
+              "k10",
+              "Du1",
+              "k11",
+              "lam2",
+              "k12"
+            ],
+            "op": "mutate",
+            "parents": [
+              "p5g7_012"
+            ]
+          },
+          "ghash": "a19e1629a9d1fb98",
+          "interest_raw": 54.57172838379547,
+          "interest_v2": 62.85288063965911,
+          "na": 4,
+          "nc": 8,
+          "npz": "p1g2_008_c9.npz",
+          "source_island": 2,
+          "source_row_index": 1209,
+          "timestamp": "2026-09-04 14:27:11"
+        },
+        {
+          "C9": 0.4855,
+          "cell": "2|switch|mobile|liquid|s1|g2|structured",
+          "core_model_sha256": "d87418fa9d34c168dd10bc90f686009e59e56df3936063ff27680f0ef1705b63",
+          "genome_provenance": {
+            "kind": "evolve",
+            "moves": [
+              "tau0",
+              "D0",
+              "tau1",
+              "tau2",
+              "D2",
+              "tau3",
+              "tau4",
+              "D4",
+              "lam0",
+              "k10"
+            ],
+            "op": "mutate",
+            "parents": [
+              "p2g4_062"
+            ]
+          },
+          "ghash": "6aef37d09adb821c",
+          "interest_raw": 59.5337117778859,
+          "interest_v2": 66.8561862964765,
+          "na": 2,
+          "nc": 5,
+          "npz": "p1g2_008_c9.npz",
+          "source_island": 2,
+          "source_row_index": 1226,
+          "timestamp": "2026-09-04 14:28:45"
+        }
+      ]
+    }
+  ],
+  "policy": "Identical-key different-payload variants are quarantined from all primary summaries; both are retained in observations.csv and dedup_conflicts.json. No suffix dedup, latest-row choice or silent genome merge."
+}

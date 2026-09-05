@@ -1,0 +1,98 @@
+[
+  {
+    "actual_origin_op": "add_chan",
+    "embedded_job_matches_actual_row_model": null,
+    "key": {
+      "cand": "p1g12_049_s2",
+      "island": 1,
+      "phase": "seed2",
+      "seed": 958
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 1809,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island1.json"
+  },
+  {
+    "actual_origin_op": "mutate",
+    "embedded_job_matches_actual_row_model": null,
+    "key": {
+      "cand": "p1g12_007_s3",
+      "island": 1,
+      "phase": "seed3",
+      "seed": 959
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 1845,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island1.json"
+  },
+  {
+    "actual_origin_op": "mutate",
+    "embedded_job_matches_actual_row_model": true,
+    "key": {
+      "cand": "p1g1_009_s3",
+      "island": 1,
+      "phase": "seed3",
+      "seed": 959
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 324,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island1.json"
+  },
+  {
+    "actual_origin_op": "add_chan",
+    "embedded_job_matches_actual_row_model": true,
+    "key": {
+      "cand": "p2g6_032_s2",
+      "island": 2,
+      "phase": "seed2",
+      "seed": 965
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 952,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island2.json"
+  },
+  {
+    "actual_origin_op": "mint_bilin",
+    "embedded_job_matches_actual_row_model": null,
+    "key": {
+      "cand": "p2g11_036",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 1548,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island2.json"
+  },
+  {
+    "actual_origin_op": "mint_bilin",
+    "embedded_job_matches_actual_row_model": true,
+    "key": {
+      "cand": "p2g1_025_s2",
+      "island": 2,
+      "phase": "seed2",
+      "seed": 965
+    },
+    "known_invalid_genome_confirmation": false,
+    "row_index": 125,
+    "row_index_matches_key": true,
+    "same_genome_screen_link": true,
+    "scope": "Identity and model audit only; replay output not reviewed or rerun",
+    "selection_file": "/Users/spoho/v3work/ops/recovery_20260905/film/selection.final.island2.json"
+  }
+]

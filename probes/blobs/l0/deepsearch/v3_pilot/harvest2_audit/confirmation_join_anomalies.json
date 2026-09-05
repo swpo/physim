@@ -1,0 +1,1020 @@
+[
+  {
+    "actual_origin_op": "mint_bilin",
+    "confirmation_ghash": "67cf8460076bdd5b",
+    "declared_parents": [
+      "p1g2_021"
+    ],
+    "genome_provenance": {
+      "kind": "evolve_v2",
+      "op": "mint_bilin",
+      "parents": [
+        "p0g0_ds2g11_005"
+      ],
+      "vertex": {
+        "bias": "own",
+        "c": 4,
+        "c2": 4,
+        "coef": 0.12631785657233302,
+        "i": 2,
+        "uid": "v1_2_021"
+      }
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g2_w0.json"
+    ],
+    "key": {
+      "cand": "p1g2_021_s3",
+      "island": 1,
+      "phase": "seed3",
+      "seed": 959
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p1g2_021",
+        "descriptor_key": "3|grow|mobile|liquid|s1|g0",
+        "ghash": "67cf8460076bdd5b",
+        "op": "mint_bilin"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "a6a88fe4ff8fd4cb0e6374ae6d1479b619bf5d1cbde26c9707b67501c9dd2080",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "bilin"
+      ],
+      "differing_leaf_count": 30,
+      "first_five_differences": [
+        {
+          "compared_value": 1.033803494753087,
+          "path": "acts[0].k1",
+          "screen_value": 1.1318954551924052
+        },
+        {
+          "compared_value": 1.9721898111431282,
+          "path": "acts[0].lam",
+          "screen_value": 2.1027259955470075
+        },
+        {
+          "compared_value": -0.6927903894232904,
+          "path": "acts[0].u0",
+          "screen_value": -0.7047978255119641
+        },
+        {
+          "compared_value": 1.0630902884607976,
+          "path": "acts[1].Du",
+          "screen_value": 1.1648483772536078
+        },
+        {
+          "compared_value": 1.0667125213770552,
+          "path": "acts[1].k1",
+          "screen_value": 1.0473537032712075
+        }
+      ],
+      "screen_core_sha256": "858f808716a24fdd3e6d73ae061f0963cad2e4c2a82dc0c2b653fd21e9bffef6"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "cd3b802cf2dc17d5",
+    "screen_key": {
+      "cand": "p1g2_021",
+      "island": 1,
+      "phase": "screen",
+      "seed": 957
+    },
+    "screen_operator": "mint_bilin",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "delete_bilin",
+    "confirmation_ghash": "65ee88a4e85ee72d",
+    "declared_parents": [
+      "p1g2_034"
+    ],
+    "genome_provenance": {
+      "kind": "evolve_v2",
+      "op": "delete_bilin",
+      "parents": [
+        "p0g0_ds2g11_006"
+      ],
+      "removed": {
+        "term": [
+          1,
+          3,
+          0,
+          0.8988367232753157
+        ],
+        "uid": "v11_006"
+      }
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g2_w0.json"
+    ],
+    "key": {
+      "cand": "p1g2_034_s3",
+      "island": 1,
+      "phase": "seed3",
+      "seed": 959
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p1g2_034",
+        "descriptor_key": "3|grow|mobile|liquid|s2|g0",
+        "ghash": "65ee88a4e85ee72d",
+        "op": "delete_bilin"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "5e2ab558b5b3922e3f4ef7ec4bf58b3633308b8708f6ae3a52f92c5ba5fae5bd",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 62,
+      "first_five_differences": [
+        {
+          "compared_value": 0.0,
+          "path": "K[0][6]",
+          "screen_value": -0.08905565475718068
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[0][7]",
+          "screen_value": null
+        },
+        {
+          "compared_value": 1.0,
+          "path": "K[1][2]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 1.5,
+          "path": "K[1][3]",
+          "screen_value": 1.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][4]",
+          "screen_value": 1.5
+        }
+      ],
+      "screen_core_sha256": "ba49b337e7568d486665f603bf6497e377be4061b2c9f90094907fb13880f0db"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "158f0c237e4f658e",
+    "screen_key": {
+      "cand": "p1g2_034",
+      "island": 1,
+      "phase": "screen",
+      "seed": 957
+    },
+    "screen_operator": "add_chan",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "delete_bilin",
+    "confirmation_ghash": "a065779eaf3df961",
+    "declared_parents": [
+      "p1g3_035"
+    ],
+    "genome_provenance": {
+      "kind": "evolve_v2",
+      "op": "delete_bilin",
+      "parents": [
+        "p4g6_004"
+      ],
+      "removed": {
+        "term": [
+          0,
+          2,
+          1,
+          1.1938457607142219
+        ],
+        "uid": "fdr_ds3_014_0"
+      }
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl1_snap/out/jobs/s3g3_w0.json"
+    ],
+    "key": {
+      "cand": "p1g3_035_s3",
+      "island": 1,
+      "phase": "seed3",
+      "seed": 959
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p1g3_035",
+        "descriptor_key": "4|switch|mobile|liquid|s2|g1",
+        "ghash": "a065779eaf3df961",
+        "op": "delete_bilin"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "9313689cbd2db8328c405c94dd072bfaba4f4068bebfa63450082fa53be3d386",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 83,
+      "first_five_differences": [
+        {
+          "compared_value": 0.777497418454826,
+          "path": "K[0][0]",
+          "screen_value": 1.0
+        },
+        {
+          "compared_value": 1.4418062863669268,
+          "path": "K[0][1]",
+          "screen_value": 1.5
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][8]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][1]",
+          "screen_value": 2.05
+        }
+      ],
+      "screen_core_sha256": "3504ad985c1db52dcc7815c02b7afb431cd16ca8154f8c12a9affe2178db30dc"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "46505242674afd5a",
+    "screen_key": {
+      "cand": "p1g3_035",
+      "island": 1,
+      "phase": "screen",
+      "seed": 957
+    },
+    "screen_operator": "add_chan",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "mint_bilin",
+    "confirmation_ghash": "18fb4a511bd5fd41",
+    "declared_parents": [
+      "p2g2_023"
+    ],
+    "genome_provenance": {
+      "kind": "evolve_v2",
+      "op": "mint_bilin",
+      "parents": [
+        "p0g0_ds2g11_005"
+      ],
+      "vertex": {
+        "bias": "rand",
+        "c": 1,
+        "c2": 4,
+        "coef": -1.122312422113825,
+        "i": 3,
+        "uid": "v2_2_023"
+      }
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g2_w0.json"
+    ],
+    "key": {
+      "cand": "p2g2_023_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g2_023",
+        "descriptor_key": "3|grow|rotor|liquid|s1|g0",
+        "ghash": "18fb4a511bd5fd41",
+        "op": "mint_bilin"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "04abd936fffefc0af1ebeac44323d91cc75272a9d888129473a77f7464b67377",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 71,
+      "first_five_differences": [
+        {
+          "compared_value": 0.0,
+          "path": "K[0][7]",
+          "screen_value": 0.012734104409964501
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][8]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][1]",
+          "screen_value": 2.05
+        },
+        {
+          "compared_value": 1.5,
+          "path": "K[1][3]",
+          "screen_value": 0.1472471775444885
+        }
+      ],
+      "screen_core_sha256": "ba63c1a4784539207143c90d1c89bae8a105537f9f4b710c35aefbe496447f8a"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "7fa13f78a42abf98",
+    "screen_key": {
+      "cand": "p2g2_023",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "mint_bilin",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "add_chan",
+    "confirmation_ghash": "ad835d9583d074b2",
+    "declared_parents": [
+      "p2g2_038"
+    ],
+    "genome_provenance": {
+      "chan": {
+        "D": 0.9555435526033093,
+        "K": -0.5949137597583645,
+        "act": 2,
+        "g": "id",
+        "sc": 1.0,
+        "tau": 1.0091918938630127,
+        "thr": 0.0
+      },
+      "kind": "evolve_v2",
+      "op": "add_chan",
+      "parents": [
+        "p2g1_022"
+      ]
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g2_w0.json"
+    ],
+    "key": {
+      "cand": "p2g2_038_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g2_038",
+        "descriptor_key": "2|grow|mobile|liquid|s2|g2",
+        "ghash": "ad835d9583d074b2",
+        "op": "add_chan"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "9ff8f66cc0347cfb3f86b6b7f2ff4ff80b5eda1caa4dca8ed78627b9f33c93f0",
+      "differing_core_fields": [
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 12,
+      "first_five_differences": [
+        {
+          "compared_value": null,
+          "path": "K[0][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": null,
+          "path": "K[1][9]",
+          "screen_value": 0.7143850146862343
+        },
+        {
+          "compared_value": -0.5949137597583645,
+          "path": "K[2][8]",
+          "screen_value": 0.06927009070087439
+        },
+        {
+          "compared_value": null,
+          "path": "K[2][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": null,
+          "path": "W[9]",
+          "screen_value": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ],
+      "screen_core_sha256": "139d84539a240c235ff4ebdd3165528aad41f11c0c3d27f660a10469d65709bb"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "5c3b22eec22509f0",
+    "screen_key": {
+      "cand": "p2g2_038",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "add_chan",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "merge_cross_edge",
+    "confirmation_ghash": "3403b1a691db96ea",
+    "declared_parents": [
+      "p2g2_070"
+    ],
+    "genome_provenance": {
+      "eta": 0.07123649499158388,
+      "kind": "evolve",
+      "op": "merge_cross_edge",
+      "parents": [
+        "p2g3_032",
+        "blk_p10g0_ds6_000"
+      ],
+      "symmetric": true
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g2_w0.json"
+    ],
+    "key": {
+      "cand": "p2g2_070_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g2_070",
+        "descriptor_key": "4|switch|mobile|flicker|s1|g2",
+        "ghash": "3403b1a691db96ea",
+        "op": "merge_cross_edge"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "dc7d4271e948a1bcfeabd949230eadd0be1dfa0248e84a7cab72aa64f65de2ed",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 76,
+      "first_five_differences": [
+        {
+          "compared_value": 0.0,
+          "path": "K[0][7]",
+          "screen_value": 0.012734104409964501
+        },
+        {
+          "compared_value": 2.15,
+          "path": "K[1][1]",
+          "screen_value": 2.05
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][2]",
+          "screen_value": 1.0
+        },
+        {
+          "compared_value": 1.0,
+          "path": "K[1][3]",
+          "screen_value": 0.1472471775444885
+        },
+        {
+          "compared_value": 1.0,
+          "path": "K[2][4]",
+          "screen_value": 1.9640602778523835
+        }
+      ],
+      "screen_core_sha256": "3352f8437c82612c99a0613063085eb730e9429bfbdb06365c87eb58e12a17b8"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "2ccd2e15c8fa6fb9",
+    "screen_key": {
+      "cand": "p2g2_070",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "merge_cross_edge",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "merge_share_chan",
+    "confirmation_ghash": "6da2f3231522e927",
+    "declared_parents": [
+      "p2g3_073"
+    ],
+    "genome_provenance": {
+      "kind": "evolve",
+      "op": "merge_share_chan",
+      "parents": [
+        "p4g5_057",
+        "ref_iso_d0.65"
+      ],
+      "rescale": null
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g3_w0.json"
+    ],
+    "key": {
+      "cand": "p2g3_073_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g3_073",
+        "descriptor_key": "4|grow|rotor|flicker|s3|g2",
+        "ghash": "6da2f3231522e927",
+        "op": "merge_share_chan"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "f8df2516c22c8ea17d16f18731c09cd4bf6a3c97d63fbeb7befe5802d70963da",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 73,
+      "first_five_differences": [
+        {
+          "compared_value": 1.4613707834859755,
+          "path": "K[0][3]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[0][7]",
+          "screen_value": 0.012734104409964501
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][1]",
+          "screen_value": 2.05
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][2]",
+          "screen_value": 1.0
+        }
+      ],
+      "screen_core_sha256": "7e461b99b7b63df215bcb32c4334aa78d286f36811cde158c0b68b2c41a222ab"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "97de45f90d6ebef4",
+    "screen_key": {
+      "cand": "p2g3_073",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "merge_cross_edge",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "mutate",
+    "confirmation_ghash": "bcc3072a07e51f96",
+    "declared_parents": [
+      "p2g4_002"
+    ],
+    "genome_provenance": {
+      "kind": "evolve",
+      "moves": [
+        "tau0",
+        "tau1",
+        "D1",
+        "D2",
+        "tau5",
+        "D5",
+        "tau6",
+        "tau8",
+        "Du0",
+        "k10",
+        "lam1",
+        "k11",
+        "Du2",
+        "k12",
+        "Du3",
+        "k13"
+      ],
+      "op": "mutate",
+      "parents": [
+        "p0g0_ds2g11_010"
+      ]
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g4_w0.json"
+    ],
+    "key": {
+      "cand": "p2g4_002_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g4_002",
+        "descriptor_key": "2|switch|mobile|liquid|s2|g2",
+        "ghash": "bcc3072a07e51f96",
+        "op": "mutate"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "13d9867306b753289a3ccc56fcad8c3efa8569aa03e6dc6208fa3ff5470c9df9",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 68,
+      "first_five_differences": [
+        {
+          "compared_value": 1.0,
+          "path": "K[0][0]",
+          "screen_value": 0.777497418454826
+        },
+        {
+          "compared_value": 1.5,
+          "path": "K[0][1]",
+          "screen_value": 1.4418062863669268
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[0][8]",
+          "screen_value": 0.07333783269329808
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][9]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 1.0,
+          "path": "K[1][2]",
+          "screen_value": 0.0
+        }
+      ],
+      "screen_core_sha256": "8c6ab1c4893483a14be245fa2de7bae622cb81f667c54b8dad3d8dcff901c421"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "583c31fd9c9b98d6",
+    "screen_key": {
+      "cand": "p2g4_002",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "mutate",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "mutate",
+    "confirmation_ghash": "04a0f0e5eb95cb51",
+    "declared_parents": [
+      "p2g4_015"
+    ],
+    "genome_provenance": {
+      "kind": "evolve",
+      "moves": [
+        "tau0",
+        "D0",
+        "D2",
+        "thr2",
+        "tau3",
+        "D3",
+        "tau4",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "Du0",
+        "k10",
+        "lam1",
+        "k11",
+        "Du2",
+        "k12",
+        "Du3",
+        "k13"
+      ],
+      "op": "mutate",
+      "parents": [
+        "p1g1_022"
+      ]
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g4_w0.json"
+    ],
+    "key": {
+      "cand": "p2g4_015_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g4_015",
+        "descriptor_key": "4|grow|still|frozen|s2|g2",
+        "ghash": "04a0f0e5eb95cb51",
+        "op": "mutate"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "f8400f4131b1199dac5d42d52f2722a633dac9033248fe01ae65322aa74c597f",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 78,
+      "first_five_differences": [
+        {
+          "compared_value": 0.777497418454826,
+          "path": "K[0][0]",
+          "screen_value": 1.0
+        },
+        {
+          "compared_value": 1.4418062863669268,
+          "path": "K[0][1]",
+          "screen_value": 1.5
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[0][7]",
+          "screen_value": 0.012734104409964501
+        },
+        {
+          "compared_value": null,
+          "path": "K[0][8]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][1]",
+          "screen_value": 2.05
+        }
+      ],
+      "screen_core_sha256": "a84209a2a72d25967fb5e883ad2ecd19e5f25415bd1a32b4c507d8df9cfd1aee"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "a04fca4ed04a8fd9",
+    "screen_key": {
+      "cand": "p2g4_015",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "mutate",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "mint_bilin",
+    "confirmation_ghash": "ca21e100b2dea0c3",
+    "declared_parents": [
+      "p2g4_030"
+    ],
+    "genome_provenance": {
+      "kind": "evolve_v2",
+      "op": "mint_bilin",
+      "parents": [
+        "p2g3_073"
+      ],
+      "vertex": {
+        "bias": "rand",
+        "c": 0,
+        "c2": 6,
+        "coef": -0.2381889411867809,
+        "i": 2,
+        "uid": "v2_4_030"
+      }
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g4_w0.json"
+    ],
+    "key": {
+      "cand": "p2g4_030_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g4_030",
+        "descriptor_key": "4|grow|mobile|flicker|s1|g2",
+        "ghash": "ca21e100b2dea0c3",
+        "op": "mint_bilin"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "7912e81b2df7ca049012082b0860112e319c3e69786d7a0239cf9820cf635e6a",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 75,
+      "first_five_differences": [
+        {
+          "compared_value": 1.0,
+          "path": "K[0][0]",
+          "screen_value": 0.777497418454826
+        },
+        {
+          "compared_value": 1.5,
+          "path": "K[0][1]",
+          "screen_value": 1.4418062863669268
+        },
+        {
+          "compared_value": 1.4613707834859755,
+          "path": "K[0][3]",
+          "screen_value": 0.0
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][3]",
+          "screen_value": 0.8973848532609228
+        },
+        {
+          "compared_value": 1.0,
+          "path": "K[1][4]",
+          "screen_value": 0.0
+        }
+      ],
+      "screen_core_sha256": "bc0e1293de537560687cd2e790e1c4c3213a9cca0722b261a902a03edcda33f3"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "2d9a00b0dec7e567",
+    "screen_key": {
+      "cand": "p2g4_030",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "delete_bilin",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  },
+  {
+    "actual_origin_op": "add_chan",
+    "confirmation_ghash": "fa86cb8089d048d0",
+    "declared_parents": [
+      "p2g7_039"
+    ],
+    "genome_provenance": {
+      "chan": {
+        "D": 0.01195317444454502,
+        "K": -0.0856910563774809,
+        "act": 1,
+        "g": "id",
+        "sc": 1.0,
+        "tau": 18.394058541749164,
+        "thr": 0.0
+      },
+      "kind": "evolve_v2",
+      "op": "add_chan",
+      "parents": [
+        "p4g5_030"
+      ]
+    },
+    "job_evidence": [
+      "/Users/spoho/v3work/harvest/isl2_snap/out/jobs/s3g7_w0.json"
+    ],
+    "key": {
+      "cand": "p2g7_039_s3",
+      "island": 2,
+      "phase": "seed3",
+      "seed": 966
+    },
+    "matching_donor_archive_entries": [
+      {
+        "cand": "p2g7_039",
+        "descriptor_key": "4|grow|rotor|liquid|s3|g2",
+        "ghash": "fa86cb8089d048d0",
+        "op": "add_chan"
+      }
+    ],
+    "model_fields_equal": false,
+    "origin_evidence": "actual_job_genome_provenance_not_named_screen",
+    "physical_differences_from_named_screen": {
+      "compared_core_sha256": "b8400ec59466f5cf2f4beef9b1c976abc6fddbdc0584817312e390d16f0625b5",
+      "differing_core_fields": [
+        "acts",
+        "chans",
+        "W",
+        "K",
+        "bilin"
+      ],
+      "differing_leaf_count": 77,
+      "first_five_differences": [
+        {
+          "compared_value": 0.777497418454826,
+          "path": "K[0][0]",
+          "screen_value": 1.0
+        },
+        {
+          "compared_value": 1.4418062863669268,
+          "path": "K[0][1]",
+          "screen_value": 1.5
+        },
+        {
+          "compared_value": 0.07333783269329808,
+          "path": "K[0][8]",
+          "screen_value": null
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[0][9]",
+          "screen_value": null
+        },
+        {
+          "compared_value": 0.0,
+          "path": "K[1][2]",
+          "screen_value": 1.0
+        }
+      ],
+      "screen_core_sha256": "e95d37eeef7b3f4829a95f34143c5102f6c51ccfa7b66d16d6ec539f565ddd7f"
+    },
+    "result_genome_equals_job": true,
+    "screen_ghash": "9e7b3a1d8d445359",
+    "screen_key": {
+      "cand": "p2g7_039",
+      "island": 2,
+      "phase": "screen",
+      "seed": 964
+    },
+    "screen_operator": "add_chan",
+    "unique_screen_parent": true,
+    "valid_same_genome_base": false
+  }
+]
