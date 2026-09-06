@@ -1,0 +1,1045 @@
+{
+  "trace_id": "0bdd699154ee4e1d96aac4e0961bc11d",
+  "task": "physim-BLOB2v2r2-E1#928",
+  "source": "/Users/spoho/v3work/ops/recovery_20260905/eval_fable_r2/E1/traces.jsonl",
+  "source_line": 1,
+  "source_nested_path": [
+    "traces",
+    0
+  ],
+  "status": {
+    "is_completed": true,
+    "ok": true
+  },
+  "scope": "Read-only inspection of this exact trace and its embedded workspace. No trace code execution, prediction regeneration, simulation, model/evaluation launch, GPU or remote process action.",
+  "action_selection": "Completed model-call node references with sampled=true; unique tool-call IDs; results matched by tool_call_id. Contextual copies such as node2973 are not new actions.",
+  "top_findings": [
+    "Substantial empirical exploration, but deployed means mainly reconstruct saved record values rather than roll out learned dynamics.",
+    "L3F last target1189.72 and L3E last target2494.78 are inside the fully readable base [0,2500]; continuation is unused for these instances.",
+    "Actual L4 port3 and L4D port1 predictions have undisturbed-record means. Dose influences uncertainty only; unused port2 template cannot explain their scores.",
+    "No custom dynamical simulator is used by the retained final prediction path. Scores are instance-level evidence, not proof of recovered laws."
+  ],
+  "methods_investigated": [
+    {
+      "method": "Port correlations and linear relations",
+      "evidence": [
+        "S3"
+      ]
+    },
+    {
+      "method": "Apparatus controls/refusals, single/multiple command steps, delta regression then per-port contraction",
+      "evidence": [
+        "S5",
+        "S10",
+        "S13"
+      ]
+    },
+    {
+      "method": "Fork divergence versus record, interpolation error, event-count definitions, lag-zero QC",
+      "evidence": [
+        "S4",
+        "S11",
+        "S12"
+      ]
+    },
+    {
+      "method": "Emission port scans, selected second anchor, amplitude/duration series, RMS envelopes and port2 mean template",
+      "evidence": [
+        "S6",
+        "S8",
+        "S9"
+      ]
+    },
+    {
+      "method": "L2 marginal global nowcast/climatology/device blends, CRPS selection",
+      "evidence": [
+        "S7"
+      ]
+    }
+  ],
+  "code_built": [
+    {
+      "filename": "app/probe/lib.py",
+      "role": "Recorded data loading, linear interpolation helper, threshold counts"
+    },
+    {
+      "filename": "app/probe/predict.py",
+      "role": "World class loads records and continuation; cubic/circular device interpolation; linear global interpolation"
+    },
+    {
+      "filename": "app/probe/predict_final.py",
+      "role": "Final six prediction methods and uncertainty rules"
+    },
+    {
+      "filename": "app/probe/build_payloads.py",
+      "role": "Dispatch revealed parameters, check shapes/NaNs/positive sigma, round to five decimals and save payloads"
+    }
+  ],
+  "shared_method": {
+    "record_interpolator": "Four-point Catmull-Rom; sine/cosine interpolation and atan2 for ports7 and11",
+    "record_source": {
+      "filename": "app/probe/predict.py",
+      "line_start": 59,
+      "line_end": 81,
+      "quote": "Cubic (Catmull-Rom) interpolation at scalar time t; angle ports via sin/cos."
+    },
+    "global_interpolator": "Linear interpolation of saved mean/variance",
+    "global_source": {
+      "filename": "app/probe/predict.py",
+      "line_start": 83,
+      "line_end": 88
+    },
+    "base_sigma": "1.5*sqrt(replay_rms[p,bucket(H)]^2+interp_rms[d,p]^2)+0.0005; constant over slots",
+    "base_sigma_source": {
+      "filename": "app/probe/predict_final.py",
+      "line_start": 35,
+      "line_end": 50
+    },
+    "lag_buckets": [
+      [
+        0,
+        15
+      ],
+      [
+        15,
+        40
+      ],
+      [
+        40,
+        80
+      ],
+      [
+        80,
+        160
+      ],
+      [
+        160,
+        300
+      ],
+      [
+        300,
+        450
+      ]
+    ],
+    "dose_sigma": "q=amp^1.3*(dur/10)^0.85. Interpolate empirical RMS profile in lag, extrapolate later lags by min(3,1+1.5*(lag-last_lag)/100). Multiply by max(1,q), cap at1.5*device1 climatological SD over600..2300 and all slots. Combine in quadrature with base_sigma.",
+    "unused_port2_branch": "Mean += clip(template*min(q,3.5),-2.9,2.9); wrap ports7/11; sigma adds0.6*abs(mean_adjustment) in quadrature",
+    "unused_port2_source": {
+      "filename": "app/probe/predict_final.py",
+      "line_start": 211,
+      "line_end": 219,
+      "quote": "if port == 2 and int(lag) in self.p2tmpl:"
+    }
+  },
+  "l1_training": {
+    "reported_trials": 44,
+    "command_step_observations": 81,
+    "coefficient_fit_observations": 60,
+    "sigma_calibration_observations": 21,
+    "split": "hold = np.arange(N)%4==0; sample-wise, not whole-trial or anchor holdout",
+    "refit_all_81": false,
+    "evidence": "S10",
+    "model": {
+      "filename": "app/probe/models_l1.json",
+      "line_start": 1,
+      "line_end": 252
+    }
+  },
+  "post_reveal_changes": [
+    {
+      "change": "L1 raw cumulative u3 replaced by sequential clipping to[0,1]",
+      "motivation": "Revealed accepted sequence crosses inferred lower bound; no post-reveal world test",
+      "evidence": "S13"
+    },
+    {
+      "change": "L3E sigma max(0.35,0.15sqrt(max(c,1))) -> max(0.45,0.18sqrt(max(c,1)))",
+      "evidence": "S14"
+    }
+  ],
+  "ready": {
+    "node_index": 2970,
+    "timestamp_utc": "2026-09-06T00:58:27.141+00:00",
+    "tool_call_id": "toolu_01UJUVLKFPZJwjCTUQWafJko",
+    "tool": "mcp__probe__ready",
+    "response_node_index": 2971,
+    "response_timestamp_utc": "2026-09-06T00:59:31.902+00:00"
+  },
+  "instances": {
+    "L1": {
+      "method": "Empirical actuator contraction of recorded baseline toward global mean",
+      "mean": "B0(t_a+5L) + clip(w_coefs dot f,-0.1,1.15)*(Gmean(t_a+5L)-B0(t_a+5L))",
+      "sigma": "max(sigma_coefs dot f, base_sigma(device=0, H=5L)), repeated across 13 slots",
+      "features": [
+        0,
+        0,
+        0.3096,
+        0.09585216,
+        0.1638,
+        1
+      ],
+      "feature_definition": [
+        "u3_final",
+        "u3_final squared",
+        "abs(cumulative u1)",
+        "cumulative u1 squared",
+        "abs(cumulative u2)",
+        "1"
+      ],
+      "cumulative_u": [
+        -0.3096,
+        0.1638,
+        0
+      ],
+      "u3_state_rule": "start at 0; clip(state+command_u3,0,1) each command",
+      "target_times": [
+        1768.1
+      ],
+      "direct_mean_response_fit_used": true,
+      "custom_dynamical_simulator_used": false,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 53,
+          "line_end": 74
+        },
+        {
+          "filename": "app/probe/models_l1.json",
+          "line_start": 1,
+          "line_end": 252
+        }
+      ],
+      "evidence_labels": [
+        "S5",
+        "S10",
+        "S13",
+        "S15"
+      ],
+      "instance": "L1@i1",
+      "revealed_parameters": {
+        "t_a": 1758.1,
+        "commands": [
+          [
+            0.197,
+            0.4786,
+            0.5426
+          ],
+          [
+            -0.5066,
+            -0.3148,
+            -0.7374
+          ]
+        ]
+      },
+      "skill": 0.22247321834555456,
+      "payload_shape": [
+        12,
+        13
+      ],
+      "mean_range": [
+        -1.63716,
+        1.80393
+      ],
+      "sigma_range": [
+        0.0005,
+        0.38354
+      ],
+      "submission": {
+        "node_index": 2993,
+        "timestamp_utc": "2026-09-06T01:00:45.387+00:00",
+        "tool_call_id": "toolu_012BTyTdFxh9kf37bhPSsocZ",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 2994,
+        "response_timestamp_utc": "2026-09-06T01:00:50.149+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L1.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    },
+    "L2": {
+      "method": "Port-wise choice between global nowcast and global climatology; slot-exchangeable marginals",
+      "mean": "Global mean at t_a or unweighted mean of all saved global means; repeat over 13 hidden slots",
+      "sigma": "sqrt(global variance at t_a) or sqrt(mean global variance + variance of global means); floor 1e-4",
+      "logged_climatology_ports": [
+        3,
+        7,
+        9
+      ],
+      "logged_nowcast_ports": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "choice_rule": "Lower cumulative Gaussian CRPS on both observed devices, every fourth recorded time in [600,2300]",
+      "target_times": [
+        1242.24
+      ],
+      "hidden_sensor_geometry_learned": false,
+      "custom_dynamical_simulator_used": false,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 77,
+          "line_end": 116
+        },
+        {
+          "filename": "app/probe/predict.py",
+          "line_start": 83,
+          "line_end": 88
+        }
+      ],
+      "evidence_labels": [
+        "S7",
+        "S15"
+      ],
+      "instance": "L2@i1",
+      "revealed_parameters": {
+        "t_a": 1242.24
+      },
+      "skill": -0.0033505825043154136,
+      "payload_shape": [
+        12,
+        13
+      ],
+      "mean_range": [
+        -0.8231,
+        1.56013
+      ],
+      "sigma_range": [
+        0.00316,
+        1.07794
+      ],
+      "submission": {
+        "node_index": 2997,
+        "timestamp_utc": "2026-09-06T01:01:09.699+00:00",
+        "tool_call_id": "toolu_0192k357iYNLZN3Vh1M255ha",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 2998,
+        "response_timestamp_utc": "2026-09-06T01:01:14.444+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L2.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    },
+    "L3F": {
+      "method": "Recorded-history interpolation, not a learned-law forecast rollout",
+      "mean": "B1(t_a+H), H=[5,25,100,400]",
+      "sigma": "base_sigma(device=1,H), repeated across slots",
+      "target_times": [
+        794.72,
+        814.72,
+        889.72,
+        1189.72
+      ],
+      "last_target_time": 1189.72,
+      "wholly_inside_readable_base": true,
+      "recorded_continuation_needed": false,
+      "missing_data_climatology_fallback_used": false,
+      "custom_dynamical_simulator_used": false,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 119,
+          "line_end": 129,
+          "quote": "m = self.w.record_at(device, t_a + H)"
+        },
+        {
+          "filename": "app/probe/predict.py",
+          "line_start": 59,
+          "line_end": 81
+        }
+      ],
+      "evidence_labels": [
+        "S4",
+        "S11",
+        "S15"
+      ],
+      "instance": "L3F@i1",
+      "revealed_parameters": {
+        "device": 1,
+        "t_a": 789.72
+      },
+      "skill": 0.9964270407900108,
+      "payload_shape": [
+        4,
+        12,
+        19
+      ],
+      "mean_range": [
+        -1.62904,
+        1.74566
+      ],
+      "sigma_range": [
+        0.0005,
+        0.0115
+      ],
+      "submission": {
+        "node_index": 3001,
+        "timestamp_utc": "2026-09-06T01:02:55.263+00:00",
+        "tool_call_id": "toolu_01WTLCNGj2cQ5Kok9Y7J5ByY",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 3002,
+        "response_timestamp_utc": "2026-09-06T01:03:03.982+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L3F.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    },
+    "L3E": {
+      "method": "Count upward crossings in interpolated recorded device-0 port-4 streams",
+      "sample_times": "1694.78 + 5*k for k=0..160",
+      "threshold_used": -0.798244,
+      "sign": 1,
+      "device": 0,
+      "slots": 13,
+      "window_rule": "16 windows of ten adjacent sample intervals; sum (value<thr and next_value>=thr) over all slots",
+      "mean": [
+        8.0,
+        6.0,
+        8.0,
+        6.0,
+        7.0,
+        5.0,
+        7.0,
+        7.0,
+        6.0,
+        6.0,
+        6.0,
+        5.0,
+        8.0,
+        5.0,
+        7.0,
+        5.0
+      ],
+      "sigma": "max(0.45,0.18*sqrt(max(count,1))) per window",
+      "submitted_sigma": [
+        0.50912,
+        0.45,
+        0.50912,
+        0.45,
+        0.47624,
+        0.45,
+        0.47624,
+        0.47624,
+        0.45,
+        0.45,
+        0.45,
+        0.45,
+        0.50912,
+        0.45,
+        0.47624,
+        0.45
+      ],
+      "last_target_time": 2494.78,
+      "wholly_inside_readable_base": true,
+      "recorded_continuation_needed": false,
+      "beyond_record_rate_fallback_used": false,
+      "custom_dynamical_simulator_used": false,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 132,
+          "line_end": 184
+        },
+        {
+          "filename": "app/probe/payload_L3E.json",
+          "line_start": 1,
+          "line_end": 1
+        }
+      ],
+      "evidence_labels": [
+        "S14",
+        "S15"
+      ],
+      "instance": "L3E@i1",
+      "revealed_parameters": {
+        "t_a": 1694.78,
+        "stream": "dev0_sum",
+        "sign": 1
+      },
+      "skill": 0.8855591583280163,
+      "payload_shape": [
+        16
+      ],
+      "mean_range": [
+        5.0,
+        8.0
+      ],
+      "sigma_range": [
+        0.45,
+        0.50912
+      ],
+      "submission": {
+        "node_index": 2989,
+        "timestamp_utc": "2026-09-06T01:00:15.186+00:00",
+        "tool_call_id": "toolu_01Xokr2M25eGPdGxCWWWB79N",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 2990,
+        "response_timestamp_utc": "2026-09-06T01:00:20.120+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L3E.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    },
+    "L4": {
+      "method": "Undisturbed record mean plus empirical response uncertainty; no treatment mean adjustment for selected port 3",
+      "mean": "B1(t_a+lag), lag=[10,25,50,100,175,250]",
+      "sigma": "sqrt(base_sigma(1,lag)^2 + capped_scaled_envelope(port=3,lag)^2), repeated over slots",
+      "target_times": [
+        827.82,
+        842.82,
+        867.82,
+        917.82,
+        992.82,
+        1067.82
+      ],
+      "last_target_time": 1067.82,
+      "dose_scale": 2.826566854188563,
+      "applied_dose_scale": 2.826566854188563,
+      "envelope_measured_lags": [
+        10,
+        25,
+        50,
+        100,
+        150
+      ],
+      "late_lag_envelope_growth": {
+        "175": 1.375,
+        "250": 2.5
+      },
+      "treatment_mean_adjustment_used": false,
+      "port2_template_used": false,
+      "custom_dynamical_simulator_used": false,
+      "wholly_inside_readable_base": true,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 187,
+          "line_end": 224
+        },
+        {
+          "filename": "app/probe/models_l4_env.json",
+          "line_start": 407,
+          "line_end": 478
+        }
+      ],
+      "evidence_labels": [
+        "S9",
+        "S15"
+      ],
+      "instance": "L4@i1",
+      "revealed_parameters": {
+        "t_a": 817.82,
+        "port": 3,
+        "amp": 1.8696,
+        "dur": 13.04
+      },
+      "skill": 0.9890614273531856,
+      "payload_shape": [
+        6,
+        12,
+        19
+      ],
+      "mean_range": [
+        -1.65108,
+        1.74641
+      ],
+      "sigma_range": [
+        0.0005,
+        0.03815
+      ],
+      "submission": {
+        "node_index": 3005,
+        "timestamp_utc": "2026-09-06T01:05:28.229+00:00",
+        "tool_call_id": "toolu_01DNpxZqnFWT7fGsfyRhHkTS",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 3006,
+        "response_timestamp_utc": "2026-09-06T01:05:33.138+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L4.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    },
+    "L4D": {
+      "method": "Undisturbed record mean plus empirical response uncertainty; no treatment mean adjustment for selected port 1",
+      "mean": "B1(t_a+lag), lag=[25,75,150]",
+      "sigma": "sqrt(base_sigma(1,lag)^2 + capped_scaled_envelope(port=1,lag)^2), repeated over slots",
+      "target_times": [
+        1194.16,
+        1244.16,
+        1319.16
+      ],
+      "last_target_time": 1319.16,
+      "dose_scale": 0.24974546417143162,
+      "applied_dose_scale": 1,
+      "low_dose_envelope_shrunk": false,
+      "envelope_measured_lags": [
+        10,
+        25,
+        50,
+        75,
+        100,
+        150,
+        175,
+        250
+      ],
+      "treatment_mean_adjustment_used": false,
+      "port2_template_used": false,
+      "custom_dynamical_simulator_used": false,
+      "wholly_inside_readable_base": true,
+      "sources": [
+        {
+          "filename": "app/probe/predict_final.py",
+          "line_start": 187,
+          "line_end": 227
+        },
+        {
+          "filename": "app/probe/models_l4_env.json",
+          "line_start": 179,
+          "line_end": 292
+        }
+      ],
+      "evidence_labels": [
+        "S9",
+        "S15"
+      ],
+      "instance": "L4D@i1",
+      "revealed_parameters": {
+        "t_a": 1169.16,
+        "port": 1,
+        "amp": 0.3295,
+        "dur": 10.68
+      },
+      "skill": 0.9938040173729119,
+      "payload_shape": [
+        3,
+        12,
+        19
+      ],
+      "mean_range": [
+        -1.63875,
+        1.74513
+      ],
+      "sigma_range": [
+        0.00052,
+        0.04961
+      ],
+      "submission": {
+        "node_index": 3012,
+        "timestamp_utc": "2026-09-06T01:06:47.811+00:00",
+        "tool_call_id": "toolu_01BZBJcKHM1jMWwEKDZN3ein",
+        "tool": "mcp__probe__submit",
+        "response_node_index": 3013,
+        "response_timestamp_utc": "2026-09-06T01:06:52.441+00:00",
+        "accepted": true,
+        "matches_archived_payload": true
+      },
+      "payload_artifact": {
+        "filename": "app/probe/payload_L4D.json",
+        "line_start": 1,
+        "line_end": 1
+      }
+    }
+  },
+  "evidence": [
+    {
+      "node_index": 1286,
+      "timestamp_utc": "2026-09-05T22:25:16.849+00:00",
+      "tool_call_id": "toolu_01HX4miuZA82Pu2NMJLhDq66",
+      "tool": "Bash",
+      "response_node_index": 1287,
+      "response_timestamp_utc": "2026-09-05T22:25:20.178+00:00",
+      "label": "S1",
+      "method": "Late base-chunk coverage",
+      "quote_location": "response",
+      "quote": "99 2010.0 2500.0 {5.0}"
+    },
+    {
+      "node_index": 2225,
+      "timestamp_utc": "2026-09-05T23:36:43.669+00:00",
+      "tool_call_id": "toolu_014QKAnzETJsNDFeBKAYth7J",
+      "tool": "Bash",
+      "response_node_index": 2226,
+      "response_timestamp_utc": "2026-09-05T23:36:50.624+00:00",
+      "label": "S2",
+      "method": "Recorded continuation coverage",
+      "quote_location": "response",
+      "quote": "121 2505.0 3105.0 {5.0}"
+    },
+    {
+      "node_index": 1057,
+      "timestamp_utc": "2026-09-05T22:17:25.500+00:00",
+      "tool_call_id": "toolu_01XjPMw85L7H89WrPD51FqM6",
+      "tool": "Bash",
+      "response_node_index": 1073,
+      "response_timestamp_utc": "2026-09-05T22:18:11.826+00:00",
+      "label": "S3",
+      "method": "Port relationship regression",
+      "quote_location": "response",
+      "quote": "port4 ~ p0,p1,p8"
+    },
+    {
+      "node_index": 1155,
+      "timestamp_utc": "2026-09-05T22:20:57.101+00:00",
+      "tool_call_id": "toolu_011p2UzXPF6y7X5t18FsNLMn",
+      "tool": "Bash",
+      "response_node_index": 1164,
+      "response_timestamp_utc": "2026-09-05T22:21:10.023+00:00",
+      "label": "S4",
+      "method": "Replay comparison",
+      "quote_location": "response",
+      "quote": "lag   400: max0=0.0048 max1=0.0183"
+    },
+    {
+      "node_index": 1474,
+      "timestamp_utc": "2026-09-05T22:30:53.984+00:00",
+      "tool_call_id": "toolu_0153WhZudiLtZ9DkzPRL2Cuc",
+      "tool": "Bash",
+      "response_node_index": 1475,
+      "response_timestamp_utc": "2026-09-05T22:31:09.714+00:00",
+      "label": "S5",
+      "method": "L1 contraction exploration",
+      "quote_location": "response",
+      "quote": "normalized residual fraction with contraction model: 0.658"
+    },
+    {
+      "node_index": 2347,
+      "timestamp_utc": "2026-09-05T23:52:32.659+00:00",
+      "tool_call_id": "toolu_01T3b94JJAuTpyPVasHJRuS1",
+      "tool": "Bash",
+      "response_node_index": 2351,
+      "response_timestamp_utc": "2026-09-05T23:52:47.126+00:00",
+      "label": "S6",
+      "method": "Removal of anomalous p2@900 run",
+      "quote_location": "response",
+      "quote": "remaining lines: 0"
+    },
+    {
+      "node_index": 2692,
+      "timestamp_utc": "2026-09-06T00:34:38.019+00:00",
+      "tool_call_id": "toolu_01TKEc9HupvZDTWbtr84GQm4",
+      "tool": "Bash",
+      "response_node_index": 2696,
+      "response_timestamp_utc": "2026-09-06T00:34:46.633+00:00",
+      "label": "S7",
+      "method": "Final predictor dry-run choices",
+      "quote_location": "response",
+      "quote": "L2 choice: ['now', 'now', 'now', 'clim', 'now', 'now', 'now', 'clim', 'now', 'clim', 'now', 'now']"
+    },
+    {
+      "node_index": 2648,
+      "timestamp_utc": "2026-09-06T00:32:36.891+00:00",
+      "tool_call_id": "toolu_01ELLPxWKuHqKvuwzzpxZARP",
+      "tool": "Bash",
+      "response_node_index": 2668,
+      "response_timestamp_utc": "2026-09-06T00:33:15.058+00:00",
+      "label": "S8",
+      "method": "Port-2 dose scan summary",
+      "quote_location": "response",
+      "quote": "P2a030 [(10, -0.039, 0.0046), (25, -0.155, 0.0173)"
+    },
+    {
+      "node_index": 2670,
+      "timestamp_utc": "2026-09-06T00:33:15.058+00:00",
+      "tool_call_id": "toolu_01EZu9dQxPF18hY36DEQLSMc",
+      "tool": "Bash",
+      "response_node_index": 2687,
+      "response_timestamp_utc": "2026-09-06T00:34:33.451+00:00",
+      "label": "S9",
+      "method": "Envelope/template construction",
+      "quote_location": "command",
+      "quote": "prof[lag]=np.sqrt((D*D).mean(axis=(0,2))).tolist()"
+    },
+    {
+      "node_index": 2820,
+      "timestamp_utc": "2026-09-06T00:47:07.810+00:00",
+      "tool_call_id": "toolu_01Ux2NdFLRzeo1tAT9NzFcEZ",
+      "tool": "Bash",
+      "response_node_index": 2823,
+      "response_timestamp_utc": "2026-09-06T00:47:21.328+00:00",
+      "label": "S10",
+      "method": "L1 final fit",
+      "quote_location": "response",
+      "quote": "N = 81"
+    },
+    {
+      "node_index": 2244,
+      "timestamp_utc": "2026-09-05T23:40:48.062+00:00",
+      "tool_call_id": "toolu_01VVAQYXGgsPKDJrMj59nQB2",
+      "tool": "Bash",
+      "response_node_index": 2245,
+      "response_timestamp_utc": "2026-09-05T23:41:09.779+00:00",
+      "label": "S11",
+      "method": "Uncertainty table construction",
+      "quote_location": "command",
+      "quote": "weak={'ref','ref2','p3','p6','p7','p11'}"
+    },
+    {
+      "node_index": 2932,
+      "timestamp_utc": "2026-09-06T00:53:16.927+00:00",
+      "tool_call_id": "toolu_01DnKMfzv7yrh3eDLan55rXi",
+      "tool": "Bash",
+      "response_node_index": 2933,
+      "response_timestamp_utc": "2026-09-06T00:53:20.629+00:00",
+      "label": "S12",
+      "method": "Last of eight lag-zero QC checks",
+      "quote_location": "response",
+      "quote": "2435 0.0 0.0"
+    },
+    {
+      "node_index": 2972,
+      "timestamp_utc": "2026-09-06T00:59:31.902+00:00",
+      "tool_call_id": "toolu_017uK4JgPMqyKmAsFk6SS5SR",
+      "tool": "Edit",
+      "response_node_index": 2974,
+      "response_timestamp_utc": "2026-09-06T00:59:40.292+00:00",
+      "label": "S13",
+      "method": "Post-reveal L1 state clipping",
+      "quote_location": "new_string",
+      "quote": "u3 = float(np.clip(u3 + c[2], 0.0, 1.0))"
+    },
+    {
+      "node_index": 2972,
+      "timestamp_utc": "2026-09-06T00:59:31.902+00:00",
+      "tool_call_id": "toolu_01J2EkQ9Zf2PzXGVBNUxGsYB",
+      "tool": "Edit",
+      "response_node_index": 2975,
+      "response_timestamp_utc": "2026-09-06T00:59:40.292+00:00",
+      "label": "S14",
+      "method": "Post-reveal event sigma increase",
+      "quote_location": "new_string",
+      "quote": "sigma = np.maximum(0.45, 0.18 * np.sqrt(np.maximum(c, 1)))"
+    },
+    {
+      "node_index": 2976,
+      "timestamp_utc": "2026-09-06T00:59:40.292+00:00",
+      "tool_call_id": "toolu_01G4vFFgH79Dk5KzAtzuymJ1",
+      "tool": "Bash",
+      "response_node_index": 2977,
+      "response_timestamp_utc": "2026-09-06T00:59:47.701+00:00",
+      "label": "S15",
+      "method": "Build actual payloads",
+      "quote_location": "command",
+      "quote": "python3 build_payloads.py revealed.json"
+    }
+  ],
+  "qc_checks": [
+    {
+      "node_index": 2848,
+      "timestamp_utc": "2026-09-06T00:48:07.285+00:00",
+      "tool_call_id": "toolu_01F7vwjSEQgTKfyDfAy7cRwP",
+      "tool": "Bash",
+      "response_node_index": 2849,
+      "response_timestamp_utc": "2026-09-06T00:48:11.896+00:00",
+      "anchor": 615.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "615 0.0 0.0"
+    },
+    {
+      "node_index": 2860,
+      "timestamp_utc": "2026-09-06T00:48:54.275+00:00",
+      "tool_call_id": "toolu_01JX9mm9ZG3dm1noDYoVqg4g",
+      "tool": "Bash",
+      "response_node_index": 2861,
+      "response_timestamp_utc": "2026-09-06T00:48:58.266+00:00",
+      "anchor": 875.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "875 0.0 0.0"
+    },
+    {
+      "node_index": 2872,
+      "timestamp_utc": "2026-09-06T00:49:40.375+00:00",
+      "tool_call_id": "toolu_01QWLmgCmnRaPu2qVJXvFrpZ",
+      "tool": "Bash",
+      "response_node_index": 2873,
+      "response_timestamp_utc": "2026-09-06T00:49:43.900+00:00",
+      "anchor": 1135.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "1135 0.0 0.0"
+    },
+    {
+      "node_index": 2884,
+      "timestamp_utc": "2026-09-06T00:50:23.721+00:00",
+      "tool_call_id": "toolu_0131e5jaFk4NNGXDLf2HWpvA",
+      "tool": "Bash",
+      "response_node_index": 2885,
+      "response_timestamp_utc": "2026-09-06T00:50:27.137+00:00",
+      "anchor": 1395.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "1395 0.0 0.0"
+    },
+    {
+      "node_index": 2896,
+      "timestamp_utc": "2026-09-06T00:51:06.041+00:00",
+      "tool_call_id": "toolu_011eWeoz6vFgBMSwgKHd45ni",
+      "tool": "Bash",
+      "response_node_index": 2897,
+      "response_timestamp_utc": "2026-09-06T00:51:09.241+00:00",
+      "anchor": 1655.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "1655 0.0 0.0"
+    },
+    {
+      "node_index": 2908,
+      "timestamp_utc": "2026-09-06T00:51:52.037+00:00",
+      "tool_call_id": "toolu_017TWSZ6hzhNsXin2nWiTjx7",
+      "tool": "Bash",
+      "response_node_index": 2909,
+      "response_timestamp_utc": "2026-09-06T00:51:55.416+00:00",
+      "anchor": 1915.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "1915 0.0 0.0"
+    },
+    {
+      "node_index": 2920,
+      "timestamp_utc": "2026-09-06T00:52:34.128+00:00",
+      "tool_call_id": "toolu_01Hztwc7Esac5qPjsALWafTQ",
+      "tool": "Bash",
+      "response_node_index": 2921,
+      "response_timestamp_utc": "2026-09-06T00:52:37.649+00:00",
+      "anchor": 2175.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "2175 0.0 0.0"
+    },
+    {
+      "node_index": 2932,
+      "timestamp_utc": "2026-09-06T00:53:16.927+00:00",
+      "tool_call_id": "toolu_01DnKMfzv7yrh3eDLan55rXi",
+      "tool": "Bash",
+      "response_node_index": 2933,
+      "response_timestamp_utc": "2026-09-06T00:53:20.629+00:00",
+      "anchor": 2435.0,
+      "max_difference_device0": 0,
+      "max_difference_device1": 0,
+      "quote": "2435 0.0 0.0"
+    }
+  ],
+  "artifact_availability": {
+    "available_probe_files": [
+      "app/probe/payload_L3F.json",
+      "app/probe/payload_L2.json",
+      "app/probe/payload_L4.json",
+      "app/probe/models_l4_env.json",
+      "app/probe/models_sigma.json",
+      "app/probe/data/plan_batch3.json",
+      "app/probe/data/base_t5.json",
+      "app/probe/payload_L3E.json",
+      "app/probe/scripts/append_chunk007.py",
+      "app/probe/notes/findings.md",
+      "app/probe/notes/SUBMISSION_PLAYBOOK.md",
+      "app/probe/payload_L4D.json",
+      "app/probe/predict.py",
+      "app/probe/payload_L1.json",
+      "app/probe/predict_final.py",
+      "app/probe/models_l4_p2template.json",
+      "app/probe/revealed.json",
+      "app/probe/models_l1.json",
+      "app/probe/build_payloads.py",
+      "app/probe/lib.py"
+    ],
+    "missing_expected_data_files": [
+      "app/probe/data/base_chunk_001.jsonl",
+      "app/probe/data/base_chunk_002.jsonl",
+      "app/probe/data/base_chunk_003.jsonl",
+      "app/probe/data/base_chunk_004.jsonl",
+      "app/probe/data/base_chunk_005.jsonl",
+      "app/probe/data/base_chunk_006.jsonl",
+      "app/probe/data/base_chunk_007.jsonl",
+      "app/probe/data/continuation.jsonl",
+      "app/probe/data/global_sweep_600.jsonl",
+      "app/probe/data/L1_trials_batch1.jsonl",
+      "app/probe/data/L1_trials_batch2.jsonl",
+      "app/probe/data/L1_trials_batch3.jsonl",
+      "app/probe/data/div_A1000_f1.jsonl",
+      "app/probe/data/inj_scan_A.jsonl",
+      "app/probe/data/inj_scan_B.jsonl",
+      "app/probe/data/amp_series.jsonl",
+      "app/probe/data/amp_series_p2.jsonl",
+      "app/probe/data/L4_A900.jsonl",
+      "app/probe/data/L4_A2100.jsonl",
+      "app/probe/data/qc_results.jsonl"
+    ],
+    "retained_raw_tool_result_slices": [
+      {
+        "filename": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01CT9XQ7ju7XvVsoPsvcKBtx.txt",
+        "line_start": 1,
+        "line_end": 1,
+        "sample_count": 25,
+        "time_range": [
+          760.0,
+          880.0
+        ]
+      },
+      {
+        "filename": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01RwfNZMebZu5TE2gYrgGGsr.txt",
+        "line_start": 1,
+        "line_end": 1,
+        "sample_count": 25,
+        "time_range": [
+          10.0,
+          130.0
+        ]
+      },
+      {
+        "filename": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_016GxLJFpXKQRi8Ek23Qowjo.txt",
+        "line_start": 1,
+        "line_end": 1,
+        "sample_count": 25,
+        "time_range": [
+          2010.0,
+          2130.0
+        ]
+      },
+      {
+        "filename": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01ScQ8ixYwPH2xvMvT1GSbSb.txt",
+        "line_start": 1,
+        "line_end": 1,
+        "sample_count": 25,
+        "time_range": [
+          510.0,
+          630.0
+        ]
+      }
+    ],
+    "not_self_contained": "Workspace lacks the bulk JSONL input files loaded by the retained code. Some observations and build scripts remain in messages. This audit did not reconstruct or rerun the pipeline."
+  },
+  "limits": [
+    "Only six concrete instance scores in one trace; no cohort or theory-proof claim.",
+    "No independent regeneration of payloads or model fit; raw training/input files absent from embedded workspace layout.",
+    "L1 held-out samples can share trials/anchors with fitted samples; the post-reveal clipping change was not empirically retested.",
+    "RMS noise table includes weak-injection residuals, and interpolation/dose scaling is heuristic, not a calibrated dynamical law.",
+    "Agent notes changed from rare stochastic branching to server-state anomaly interpretation. Observable repeated/stale/colliding replies do not reveal the exact internal request interleaving.",
+    "No independent baseline-only ablation or treatment-effect target arrays are present; causal contribution to dose scores is not quantified."
+  ]
+}

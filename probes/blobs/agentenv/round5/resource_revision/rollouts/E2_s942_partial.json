@@ -1,0 +1,43 @@
+{
+  "cohort": "BLOB2v2r2-E2",
+  "task": "physim-BLOB2v2r2-E2#942",
+  "trace_id": "ae982494a72144c186f58a687a99cd33",
+  "ok": true,
+  "errors": [],
+  "reward": {
+    "skill": {
+      "score": 0.6544984435867794,
+      "weight": 1.0
+    }
+  },
+  "policy": "v2r2",
+  "cap_hits": {
+    "sensor": 0,
+    "adjust": 0,
+    "injection": 0,
+    "sim_tu": 0,
+    "fork_spawns": 0,
+    "open_forks": 0,
+    "log_entries": 0
+  },
+  "resource_truncated": false,
+  "meters": {
+    "sensor": 199320.0,
+    "adjust": 219.229,
+    "injection": 559.7000000000003,
+    "sim_tu": 14655.0,
+    "log_entries": 577.0,
+    "fork_spawns": 97,
+    "open_forks_peak": 12,
+    "resets": 96,
+    "reads_base": 500,
+    "reads_fork": 895,
+    "turns": 1023
+  },
+  "time_to_ready": {
+    "sim_tu": 14655.0,
+    "turns": 1016
+  },
+  "scope_caveat": "Reported outcome; world-state concurrency integrity under audit. Not a final unbiased benchmark.",
+  "wall_hours": 5.82280331061946
+}

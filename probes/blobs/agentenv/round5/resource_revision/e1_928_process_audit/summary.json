@@ -1,0 +1,925 @@
+{
+  "scope": {
+    "trace_id": "0bdd699154ee4e1d96aac4e0961bc11d",
+    "episode_id": "92a3213843e341708f73479f7464c9b8",
+    "task": "physim-BLOB2v2r2-E1#928",
+    "world": "p4g2_044",
+    "world_seed": 928,
+    "source": "/Users/spoho/v3work/ops/recovery_20260905/eval_fable_r2/E1/traces.jsonl",
+    "source_line": 1,
+    "selected_trace_sha256": "29392ad517806a7743c592b0f527241e23a7128d189c70b050b54c0792756b81",
+    "source_bytes_at_read": 7305427,
+    "scope_note": "Only this completed fresh-resource instance. Not a cohort mean. No legacy capped results used."
+  },
+  "completion": {
+    "is_completed": true,
+    "ok": true,
+    "stop_condition": "agent_completed",
+    "trace_errors": [],
+    "resource_truncated": false,
+    "resource_stop": {},
+    "cap_hits": {
+      "sensor": 0,
+      "adjust": 0,
+      "injection": 0,
+      "sim_tu": 0,
+      "fork_spawns": 0,
+      "open_forks": 0,
+      "log_entries": 0
+    },
+    "start_utc": "2026-09-05T21:32:29.546Z",
+    "scoring_end_utc": "2026-09-06T01:07:17.178Z",
+    "elapsed_wall_seconds": 12887.632680177689,
+    "wall_time_is_not_billing": true
+  },
+  "accounting": {
+    "message_graph_nodes": 3017,
+    "sampled_model_nodes": 1216,
+    "model_request_records": 1239,
+    "completed_model_calls": 1216,
+    "request_errors": 23,
+    "request_error_types": {
+      "ProviderError": 22,
+      "ClientConnectionResetError": 1
+    },
+    "finish_reasons": {
+      "tool_calls": 1197,
+      "stop": 19
+    },
+    "model_names": {
+      "anthropic/claude-fable-5": 1239
+    },
+    "tool_call_occurrences_in_context_graph": 1623,
+    "unique_tool_calls": 1484,
+    "recorded_tool_results": 1480,
+    "environment_tool_requests": 1065,
+    "environment_persisted_turns": 891,
+    "delegated_Agent_invocations": 22,
+    "all_tool_arguments_valid_json": true,
+    "total_usage": {
+      "prompt_tokens": 4818550,
+      "completion_tokens": 1199851,
+      "cached_input_tokens": 117000774,
+      "reasoning_tokens": 153020,
+      "input_tokens": 121819324,
+      "total_tokens": 123019175,
+      "cache_write_tokens": null,
+      "provider_uncached_input_excluding_cache_writes": null,
+      "billed_dollars": null,
+      "reason": "prompt_tokens merges provider input_tokens + cache_creation_input_tokens; cache reads are separate; reasoning is a subset of completion. No cost field is recorded."
+    },
+    "through_ready_usage": {
+      "prompt_tokens": 4726008,
+      "completion_tokens": 1151748,
+      "cached_input_tokens": 109935413,
+      "reasoning_tokens": 148247,
+      "input_tokens": 114661421,
+      "total_tokens": 115813169
+    },
+    "after_ready_usage": {
+      "prompt_tokens": 92542,
+      "completion_tokens": 48103,
+      "cached_input_tokens": 7065361,
+      "reasoning_tokens": 4773,
+      "input_tokens": 7157903,
+      "total_tokens": 7206006
+    },
+    "usage_scope": "All completed model calls in this one trace, including delegated branches. Context copies are not counted again.",
+    "auxiliary_requests": {
+      "recorded_extra_usage_entries": 0,
+      "count_tokens_request_count": null,
+      "note": "verifiers relays /v1/messages/count_tokens outside model turns and never records it on this trace. extra_usage is judge/off-graph usage, not a count_tokens log."
+    },
+    "missing_retry_usage_note": "All 23 errored requests lack usage. A connection reset may hide partial generation. No token or dollar amount is imputed.",
+    "request_errors_detail": [
+      {
+        "call_index": 100,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T21:49:47.797Z",
+        "end_utc": "2026-09-05T21:49:50.912Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 166,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T21:54:34.554Z",
+        "end_utc": "2026-09-05T21:54:37.665Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 169,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T21:54:49.556Z",
+        "end_utc": "2026-09-05T21:54:52.794Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 271,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:02:53.957Z",
+        "end_utc": "2026-09-05T22:02:57.187Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 316,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:06:14.170Z",
+        "end_utc": "2026-09-05T22:06:17.292Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 380,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:12:54.252Z",
+        "end_utc": "2026-09-05T22:12:57.414Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 399,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:15:13.081Z",
+        "end_utc": "2026-09-05T22:15:16.231Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 420,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:17:01.334Z",
+        "end_utc": "2026-09-05T22:17:04.451Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 439,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:18:33.803Z",
+        "end_utc": "2026-09-05T22:18:37.060Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 517,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:25:20.856Z",
+        "end_utc": "2026-09-05T22:25:23.959Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 614,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:34:22.552Z",
+        "end_utc": "2026-09-05T22:34:25.679Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 624,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:34:46.621Z",
+        "end_utc": "2026-09-05T22:34:49.821Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 658,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:37:30.810Z",
+        "end_utc": "2026-09-05T22:37:34.114Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 791,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:59:35.001Z",
+        "end_utc": "2026-09-05T22:59:38.274Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 793,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T22:59:58.356Z",
+        "end_utc": "2026-09-05T23:00:01.587Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 809,
+        "type": "ClientConnectionResetError",
+        "status_code": null,
+        "start_utc": "2026-09-05T23:05:22.866Z",
+        "end_utc": "2026-09-05T23:05:28.456Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 910,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-05T23:47:45.126Z",
+        "end_utc": "2026-09-05T23:47:48.351Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1027,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T00:20:21.117Z",
+        "end_utc": "2026-09-06T00:20:24.239Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1047,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T00:25:44.504Z",
+        "end_utc": "2026-09-06T00:25:47.632Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1074,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T00:32:40.803Z",
+        "end_utc": "2026-09-06T00:32:43.914Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1188,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T00:51:12.939Z",
+        "end_utc": "2026-09-06T00:51:16.095Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1215,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T00:57:50.706Z",
+        "end_utc": "2026-09-06T00:57:54.029Z",
+        "usage_recorded": false
+      },
+      {
+        "call_index": 1227,
+        "type": "ProviderError",
+        "status_code": 429,
+        "start_utc": "2026-09-06T01:00:20.141Z",
+        "end_utc": "2026-09-06T01:00:23.468Z",
+        "usage_recorded": false
+      }
+    ],
+    "reasoning_note": "The Anthropic adapter labels reasoning_tokens a re-tokenized raw-thinking estimate inside completion_tokens, not visible-summary tokens or an extra total bucket.",
+    "retry_chains": null,
+    "retry_note": "No retry_of metadata. Error request records and repeated success replies are counted separately; identical read/fork arguments may be intentional experiments."
+  },
+  "tools": {
+    "mcp__probe__status": {
+      "calls": 48,
+      "outcomes": {
+        "success_response": 24,
+        "tool_timeout": 22,
+        "no_result_recorded": 2
+      }
+    },
+    "mcp__probe__read": {
+      "calls": 485,
+      "outcomes": {
+        "success_response": 452,
+        "malformed_argument": 4,
+        "unknown_context": 8,
+        "tool_timeout": 21
+      },
+      "persisted_outputs": 17,
+      "persisted_outputs_recovered": 4
+    },
+    "Bash": {
+      "calls": 324,
+      "outcomes": {
+        "nonzero_shell_exit": 13,
+        "returned_without_explicit_error": 308,
+        "returned_with_embedded_code_error": 1,
+        "no_result_recorded": 2
+      }
+    },
+    "Agent": {
+      "calls": 22,
+      "outcomes": {
+        "returned_without_explicit_error": 22
+      }
+    },
+    "TaskCreate": {
+      "calls": 5,
+      "outcomes": {
+        "returned_without_explicit_error": 5
+      }
+    },
+    "TaskUpdate": {
+      "calls": 9,
+      "outcomes": {
+        "returned_without_explicit_error": 9
+      }
+    },
+    "mcp__probe__fork": {
+      "calls": 183,
+      "outcomes": {
+        "success_response": 181,
+        "tool_timeout": 2
+      }
+    },
+    "mcp__probe__adjust": {
+      "calls": 112,
+      "outcomes": {
+        "success_response": 99,
+        "partial_adjustment_then_refused": 2,
+        "adjustment_refused": 1,
+        "unknown_context": 9,
+        "tool_timeout": 1
+      }
+    },
+    "mcp__probe__reset": {
+      "calls": 160,
+      "outcomes": {
+        "success_response": 150,
+        "unknown_context": 5,
+        "tool_timeout": 5
+      }
+    },
+    "mcp__probe__inject": {
+      "calls": 67,
+      "outcomes": {
+        "success_response": 46,
+        "unknown_context": 18,
+        "tool_timeout": 3
+      }
+    },
+    "mcp__probe__wait": {
+      "calls": 3,
+      "outcomes": {
+        "success_response": 3
+      }
+    },
+    "Write": {
+      "calls": 52,
+      "outcomes": {
+        "returned_without_explicit_error": 52
+      }
+    },
+    "TaskStop": {
+      "calls": 4,
+      "outcomes": {
+        "returned_without_explicit_error": 4
+      }
+    },
+    "Edit": {
+      "calls": 3,
+      "outcomes": {
+        "returned_without_explicit_error": 3
+      }
+    },
+    "mcp__probe__ready": {
+      "calls": 1,
+      "outcomes": {
+        "success_response": 1
+      }
+    },
+    "mcp__probe__submit": {
+      "calls": 6,
+      "outcomes": {
+        "success_response": 6
+      }
+    }
+  },
+  "resources": {
+    "policy": {
+      "id": "v2r2",
+      "caps": {
+        "sensor": 1000000000.0,
+        "adjust": 10000000.0,
+        "injection": 1000000.0,
+        "fork_spawns": 100000,
+        "open_forks": 10000,
+        "sim_tu": 10000000.0,
+        "log_entries": 1000000
+      },
+      "resident_forks": 8,
+      "resident_policy": "lru-replay",
+      "safety_trip": "truncate"
+    },
+    "persisted_meters": {
+      "sensor": 145405.0,
+      "adjust": 219.72100000000006,
+      "injection": 814.2999999999998,
+      "sim_tu": 11495.0,
+      "log_entries": 514.0,
+      "fork_spawns": 145,
+      "open_forks_peak": 31,
+      "resets": 133,
+      "reads_base": 500,
+      "reads_fork": 625,
+      "turns": 891
+    },
+    "resident_cache": {
+      "peak": 8,
+      "evictions": 44,
+      "rebuilds": 168
+    },
+    "time_to_ready": {
+      "sim_tu": 11495.0,
+      "turns": 884
+    },
+    "read_meter_units": "Number of read frames; each may contain several ports/devices. Not tool-call counts.",
+    "sensor_units": "5 tu times selected sensor-slot count per read frame; independent of number of ports. Global statistics are free.",
+    "adjustment_units": "sum(abs(u)) times accepted steps plus the first rejected step, if any.",
+    "injection_units": "abs(amp) * (1 + 4*max(0,abs(amp)-0.5)) * dur; not dollars.",
+    "sim_units": "Live control advancement only. Base record reads and cache rebuild/replay work do not add sim_tu.",
+    "rebuild_note": "168 counts cold reconstruction, including initial construction at spawn; not necessarily 168 evicted-fork reloads. Evictions and rebuilds do not by themselves close logical handles.",
+    "observed_status_peak_contexts": 30,
+    "observed_reply_naive_meter_sums": {
+      "sensor": 149070.0,
+      "adjust": 229.86500000000007,
+      "injection": 976.9000000000001,
+      "sim_tu": 11860.0,
+      "log_entries": 562,
+      "reads_base": 505,
+      "reads_fork": 657
+    },
+    "observed_reply_minus_persisted_meters": {
+      "sensor": 3665.0,
+      "adjust": 10.144000000000005,
+      "injection": 162.60000000000025,
+      "sim_tu": 365.0,
+      "log_entries": 48.0,
+      "reads_base": 5,
+      "reads_fork": 32
+    },
+    "reconciliation_note": "Reply-derived sums are NOT actual meters. Concurrent/state anomalies and timeouts prevent exact per-operation reconstruction from this trace. Final persisted meters are the reported environment accounting, not proof all server work is billed there.",
+    "fork_success_responses": 181,
+    "unique_returned_fork_ids": 145,
+    "fork_ids_returned_multiple_times": 22,
+    "fork_ids_with_multiple_reported_anchors": 15,
+    "reset_success_responses": 150,
+    "unique_successfully_reset_ids": 140,
+    "successful_or_error_reply_requests": 1009,
+    "successful_or_error_reply_minus_persisted_turns": 118,
+    "matched_state_anomaly_evidence": "CONCURRENCY.md"
+  },
+  "ready_and_submission": {
+    "ready": {
+      "node": 2970,
+      "model_call_index": 1218,
+      "tool_call_id": "toolu_01UJUVLKFPZJwjCTUQWafJko",
+      "timestamp_utc": "2026-09-06T00:58:27.141Z",
+      "result_node": 2971
+    },
+    "ready_model_call_end_utc": "2026-09-06T00:58:27.142Z",
+    "first_post_reveal_model_request_start_utc": "2026-09-06T00:58:27.171Z",
+    "node_timestamp_note": "Tool-use node time is the sampled model response time. Tool-result node time may be when the next model response is recorded, not actual tool execution time.",
+    "post_ready_tool_counts": {
+      "Edit": 2,
+      "Bash": 10,
+      "mcp__probe__submit": 6,
+      "mcp__probe__status": 1
+    },
+    "post_ready_completed_model_calls": 19,
+    "post_ready_request_errors": 1,
+    "world_tool_requests_after_ready": [],
+    "submissions": [
+      {
+        "node": 2989,
+        "model_call_index": 1225,
+        "tool_call_id": "toolu_01Xokr2M25eGPdGxCWWWB79N",
+        "timestamp_utc": "2026-09-06T01:00:15.186Z",
+        "result_node": 2990,
+        "instance": "L3E@i1",
+        "accepted": true,
+        "accepted_shape": [
+          16
+        ],
+        "exact_match_to_workspace_payload": true
+      },
+      {
+        "node": 2993,
+        "model_call_index": 1228,
+        "tool_call_id": "toolu_012BTyTdFxh9kf37bhPSsocZ",
+        "timestamp_utc": "2026-09-06T01:00:45.387Z",
+        "result_node": 2994,
+        "instance": "L1@i1",
+        "accepted": true,
+        "accepted_shape": [
+          12,
+          13
+        ],
+        "exact_match_to_workspace_payload": true
+      },
+      {
+        "node": 2997,
+        "model_call_index": 1230,
+        "tool_call_id": "toolu_0192k357iYNLZN3Vh1M255ha",
+        "timestamp_utc": "2026-09-06T01:01:09.699Z",
+        "result_node": 2998,
+        "instance": "L2@i1",
+        "accepted": true,
+        "accepted_shape": [
+          12,
+          13
+        ],
+        "exact_match_to_workspace_payload": true
+      },
+      {
+        "node": 3001,
+        "model_call_index": 1232,
+        "tool_call_id": "toolu_01WTLCNGj2cQ5Kok9Y7J5ByY",
+        "timestamp_utc": "2026-09-06T01:02:55.263Z",
+        "result_node": 3002,
+        "instance": "L3F@i1",
+        "accepted": true,
+        "accepted_shape": [
+          4,
+          12,
+          19
+        ],
+        "exact_match_to_workspace_payload": true
+      },
+      {
+        "node": 3005,
+        "model_call_index": 1234,
+        "tool_call_id": "toolu_01DNpxZqnFWT7fGsfyRhHkTS",
+        "timestamp_utc": "2026-09-06T01:05:28.229Z",
+        "result_node": 3006,
+        "instance": "L4@i1",
+        "accepted": true,
+        "accepted_shape": [
+          6,
+          12,
+          19
+        ],
+        "exact_match_to_workspace_payload": true
+      },
+      {
+        "node": 3012,
+        "model_call_index": 1236,
+        "tool_call_id": "toolu_01BZBJcKHM1jMWwEKDZN3ein",
+        "timestamp_utc": "2026-09-06T01:06:47.811Z",
+        "result_node": 3013,
+        "instance": "L4D@i1",
+        "accepted": true,
+        "accepted_shape": [
+          3,
+          12,
+          19
+        ],
+        "exact_match_to_workspace_payload": true
+      }
+    ],
+    "final_status": {
+      "node": 3014,
+      "model_call_index": 1237,
+      "tool_call_id": "toolu_01VTthavKkTPer266Fj5KkVf",
+      "timestamp_utc": "2026-09-06T01:06:52.441Z",
+      "result_node": 3015
+    },
+    "all_submitted_flags": {
+      "L1@i1": true,
+      "L2@i1": true,
+      "L3F@i1": true,
+      "L3E@i1": true,
+      "L4@i1": true,
+      "L4D@i1": true
+    },
+    "final_status_open_contexts": [],
+    "offline_path_review": "All ten post-ready Bash commands inspect local files or run the saved offline predictor/builder. No world/network client appears in these commands or their embedded prediction path."
+  },
+  "experiments": {
+    "all_successful_fork_sources": "base anchors; no fork-from-fork calls",
+    "reported_anchor_count": 62,
+    "base_record": {
+      "successful_read_responses": 58,
+      "reported_frames": 505,
+      "distinct_grid_times": 500,
+      "min_t": 5.0,
+      "max_t": 2500.0,
+      "repeated_grid_times": {
+        "165.0": 4,
+        "220.0": 2,
+        "245.0": 2
+      },
+      "persisted_output_responses": 17,
+      "full_persisted_outputs_in_workspace": 4,
+      "preview_only_base_chunks": 13,
+      "note": "13 base chunks have only response previews in this audit; frame spans/counts use their request and reported end time. Agent-saved full binary/text datasets are not all embedded."
+    },
+    "detailed_register": "experiment_register.json",
+    "readable_protocol_tables": "EXPERIMENTS.md"
+  },
+  "scores": {
+    "instance_reward": {
+      "skill": {
+        "score": 0.6806623799475607,
+        "weight": 1.0
+      }
+    },
+    "instance_detail": {
+      "ladders": {
+        "L1": {
+          "climatology": 0.12598,
+          "persistence": 0.092947
+        },
+        "L2": {
+          "climatology": 0.211999,
+          "persistence": 0.201923
+        },
+        "L3F": {
+          "climatology": 0.211936,
+          "persistence": 0.154958,
+          "ar2": 0.212504
+        },
+        "L3E": {
+          "zero": 4.549944,
+          "pre_rate": 1.082928
+        },
+        "L4": {
+          "climatology": 0.209764,
+          "persistence": 0.177224
+        },
+        "L4D": {
+          "climatology": 0.218559,
+          "persistence": 0.207267
+        }
+      },
+      "instances": {
+        "L1": {
+          "id": "L1@i1",
+          "family": "L1",
+          "t_a": 1758.1,
+          "k_a": 87905,
+          "seq": [
+            [
+              0.197,
+              0.4786,
+              0.5426
+            ],
+            [
+              -0.5066,
+              -0.3148,
+              -0.7374
+            ]
+          ]
+        },
+        "L2": {
+          "id": "L2@i1",
+          "family": "L2",
+          "t_a": 1242.24,
+          "k_a": 62112
+        },
+        "L3F": {
+          "id": "L3F@i1",
+          "family": "L3F",
+          "t_a": 789.72,
+          "k_a": 39486,
+          "device": 1,
+          "horizons": [
+            5.0,
+            25.0,
+            100.0,
+            400.0
+          ]
+        },
+        "L3E": {
+          "id": "L3E@i1",
+          "family": "L3E",
+          "t_a": 1694.78,
+          "k_a": 84739,
+          "port": 4,
+          "sign": 1.0,
+          "thr": -0.7982437411369686,
+          "n_windows": 16,
+          "window_tu": 50.0
+        },
+        "L4": {
+          "id": "L4@i1",
+          "family": "L4",
+          "t_a": 817.82,
+          "k_a": 40891,
+          "port": 3,
+          "amp": 1.8696,
+          "dur": 13.04,
+          "k_dur": 652,
+          "lags": [
+            10.0,
+            25.0,
+            50.0,
+            100.0,
+            175.0,
+            250.0
+          ]
+        },
+        "L4D": {
+          "id": "L4D@i1",
+          "family": "L4D",
+          "t_a": 1169.16,
+          "k_a": 58458,
+          "port": 1,
+          "amp": 0.3295,
+          "dur": 10.68,
+          "k_dur": 534,
+          "lags": [
+            25.0,
+            75.0,
+            150.0
+          ]
+        }
+      },
+      "l1_crps": 0.072269,
+      "l1_ratio_vs_ref": 0.7775,
+      "l2_crps": 0.2026,
+      "l2_ratio_vs_ref": 1.0034,
+      "l3f_crps_per_leg": {
+        "h5": 0.000484,
+        "h25": 0.000462,
+        "h100": 0.000605,
+        "h400": 0.000663
+      },
+      "l3f_crps": 0.000554,
+      "l3f_ratio_vs_ref": 0.0036,
+      "l3e_crps": 0.123931,
+      "l3e_ratio_vs_ref": 0.1144,
+      "l4_crps": 0.001939,
+      "l4_ratio_vs_ref": 0.0109,
+      "l4d_crps": 0.001284,
+      "l4d_ratio_vs_ref": 0.0062,
+      "skills": {
+        "L1": 0.2225,
+        "L2": -0.0034,
+        "L3F": 0.9964,
+        "L3E": 0.8856,
+        "L4": 0.9891,
+        "L4D": 0.9938
+      }
+    },
+    "scope": "Raw per-instance metrics for this one world/seed. Not a cohort mean or proof of learned dynamics.",
+    "instance_skills_full_precision": {
+      "skill_L1": 0.22247321834555456,
+      "skill_L2": -0.0033505825043154136,
+      "skill_L3F": 0.9964270407900108,
+      "skill_L3E": 0.8855591583280163,
+      "skill_L4": 0.9890614273531856,
+      "skill_L4D": 0.9938040173729119
+    }
+  },
+  "artifact_availability": {
+    "embedded_artifact_count": 24,
+    "embedded_files": [
+      {
+        "path": "app/probe/payload_L3F.json",
+        "bytes": 16528
+      },
+      {
+        "path": "app/probe/payload_L2.json",
+        "bytes": 2903
+      },
+      {
+        "path": "app/probe/payload_L4.json",
+        "bytes": 24913
+      },
+      {
+        "path": "app/probe/models_l4_env.json",
+        "bytes": 26832
+      },
+      {
+        "path": "app/probe/models_sigma.json",
+        "bytes": 2875
+      },
+      {
+        "path": "app/probe/data/plan_batch3.json",
+        "bytes": 1886
+      },
+      {
+        "path": "app/probe/data/base_t5.json",
+        "bytes": 3699
+      },
+      {
+        "path": "app/probe/payload_L3E.json",
+        "bytes": 218
+      },
+      {
+        "path": "app/probe/scripts/append_chunk007.py",
+        "bytes": 1503
+      },
+      {
+        "path": "app/probe/notes/findings.md",
+        "bytes": 6908
+      },
+      {
+        "path": "app/probe/notes/SUBMISSION_PLAYBOOK.md",
+        "bytes": 2736
+      },
+      {
+        "path": "app/probe/payload_L4D.json",
+        "bytes": 12478
+      },
+      {
+        "path": "app/probe/predict.py",
+        "bytes": 5914
+      },
+      {
+        "path": "app/probe/payload_L1.json",
+        "bytes": 2888
+      },
+      {
+        "path": "app/probe/predict_final.py",
+        "bytes": 10819
+      },
+      {
+        "path": "app/probe/models_l4_p2template.json",
+        "bytes": 39462
+      },
+      {
+        "path": "app/probe/revealed.json",
+        "bytes": 338
+      },
+      {
+        "path": "app/probe/models_l1.json",
+        "bytes": 5330
+      },
+      {
+        "path": "app/probe/build_payloads.py",
+        "bytes": 2405
+      },
+      {
+        "path": "app/probe/lib.py",
+        "bytes": 2262
+      },
+      {
+        "path": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01CT9XQ7ju7XvVsoPsvcKBtx.txt",
+        "bytes": 89967
+      },
+      {
+        "path": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01RwfNZMebZu5TE2gYrgGGsr.txt",
+        "bytes": 87979
+      },
+      {
+        "path": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_016GxLJFpXKQRi8Ek23Qowjo.txt",
+        "bytes": 92233
+      },
+      {
+        "path": "app/.vf-claude/0bdd699154ee4e1d96aac4e0961bc11d/projects/-app/78d6ecc8-5a44-40bd-8803-1b1b7ce414ab/tool-results/toolu_01ScQ8ixYwPH2xvMvT1GSbSb.txt",
+        "bytes": 89955
+      }
+    ],
+    "unavailable_note": "The workspace snapshot includes final predictors/models/payloads and four persisted read outputs, but not all captured JSONL/NPZ datasets. No trace code, simulations or payload generators were rerun."
+  },
+  "evidence_sources": {
+    "usage_definition": ".venv/lib/python3.13/site-packages/verifiers/v1/types.py:107-167",
+    "anthropic_usage": ".venv/lib/python3.13/site-packages/verifiers/v1/dialects/anthropic.py:146-160",
+    "auxiliary_semantics": ".venv/lib/python3.13/site-packages/verifiers/v1/dialects/anthropic.py:1-6,273; v1/dialects/base.py:113-115; v1/interception/server.py:705-729",
+    "environment_meter_code": "environments/physim/physim/servers/blob.py:565-647,718-811,828-886,902-966",
+    "injection_price": "environments/physim/physim/blobcore.py:146-149",
+    "source_caveat": "Definitions inspected in the current installed/project code. No claim that every line is an immutable historical source snapshot."
+  },
+  "reports": {
+    "main": "REPORT.md",
+    "timeline": "TIMELINE.md",
+    "state_anomalies": "CONCURRENCY.md",
+    "experiments": "EXPERIMENTS.md",
+    "science": "SCIENTIFIC_PROCESS.md"
+  },
+  "recommendations": {
+    "status": "Recommendations only; no new budgets or live changes imposed in this audit.",
+    "next_native_test_recipe": "NEXT_NATIVE_TEST.md (not executed)",
+    "test_ladder": [
+      "Deterministic native transport/lifecycle/scripted controls, including concurrent mutations across different contexts sharing rollout state, dependencies, argument formats, artifact persistence, phase gates and six submissions.",
+      "One short cheap-model wiring smoke, diagnostic only, with diagnostic allowance separate from scientific exploration freedom.",
+      "One full frontier pilot with normal scientific freedom and process/integrity review.",
+      "Predeclare a limited seed/world set, with within-record versus out-of-record and weak versus active-emission controls.",
+      "Broaden to a balanced model panel only after stable transport/protocol behavior."
+    ],
+    "cheap_first_limit": "A cheap model can fail valid tools or miss long-context/parallel stress. A pass is not a scientific performance result, and a failure is not proof the environment is invalid."
+  },
+  "scientific_process": {
+    "detail": "scientific_summary.json",
+    "main_findings": [
+      "Substantial empirical exploration, but deployed means mainly reconstruct saved record values rather than roll out learned dynamics.",
+      "L3F last target1189.72 and L3E last target2494.78 are inside the fully readable base [0,2500]; continuation is unused for these instances.",
+      "Actual L4 port3 and L4D port1 predictions have undisturbed-record means. Dose influences uncertainty only; unused port2 template cannot explain their scores.",
+      "No custom dynamical simulator is used by the retained final prediction path. Scores are instance-level evidence, not proof of recovered laws."
+    ],
+    "actual_methods": {
+      "L1": "Empirical actuator contraction of recorded baseline toward global mean",
+      "L2": "Port-wise choice between global nowcast and global climatology; slot-exchangeable marginals",
+      "L3F": "Recorded-history interpolation, not a learned-law forecast rollout",
+      "L3E": "Count upward crossings in interpolated recorded device-0 port-4 streams",
+      "L4": "Undisturbed record mean plus empirical response uncertainty; no treatment mean adjustment for selected port 3",
+      "L4D": "Undisturbed record mean plus empirical response uncertainty; no treatment mean adjustment for selected port 1"
+    },
+    "limitation": "Most bulk fit/capture inputs are absent. Source/action/payload comparisons were inspected, not regenerated by running the episode code."
+  }
+}

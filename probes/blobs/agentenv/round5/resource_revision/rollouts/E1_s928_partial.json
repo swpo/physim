@@ -1,0 +1,52 @@
+{
+  "cohort": "BLOB2v2r2-E1",
+  "task": "physim-BLOB2v2r2-E1#928",
+  "n_complete": 1,
+  "n_target": 3,
+  "not_final_mean": true,
+  "reward": 0.6806623799475607,
+  "per_tier": {
+    "skill_L1": 0.22247321834555456,
+    "skill_L2": -0.0033505825043154136,
+    "skill_L3F": 0.9964270407900108,
+    "skill_L3E": 0.8855591583280163,
+    "skill_L4": 0.9890614273531856,
+    "skill_L4D": 0.9938040173729119
+  },
+  "cap_hits": {
+    "sensor": 0,
+    "adjust": 0,
+    "injection": 0,
+    "sim_tu": 0,
+    "fork_spawns": 0,
+    "open_forks": 0,
+    "log_entries": 0
+  },
+  "resource_truncated": false,
+  "meters": {
+    "sensor": 145405.0,
+    "adjust": 219.72100000000006,
+    "injection": 814.2999999999998,
+    "sim_tu": 11495.0,
+    "log_entries": 514.0,
+    "fork_spawns": 145,
+    "open_forks_peak": 31,
+    "resets": 133,
+    "reads_base": 500,
+    "reads_fork": 625,
+    "turns": 891
+  },
+  "cache": {
+    "peak": 8,
+    "evictions": 44,
+    "rebuilds": 168
+  },
+  "time_to_ready": {
+    "sim_tu": 11495.0,
+    "turns": 884
+  },
+  "wall_hours": 3.5798979667160244,
+  "trace_id": "0bdd699154ee4e1d96aac4e0961bc11d",
+  "all_six_scored": true,
+  "scope_caveat": "Reported score; parallel-tool state integrity and experiment-counter reconciliation failed audit. Not a clean benchmark or proof of theory learning."
+}
