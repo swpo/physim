@@ -23,3 +23,11 @@ Scores/experiment accounting are provisional because the completed-run audit
 found repeated fork IDs under distinct parallel requests and lost-counter
 symptoms. Raw data must not be edited. Cheap concurrency/transport regression
 is needed before another benchmark, not further paid model probes.
+
+Final03:40Z update: E1#929 terminated naturally with a provider/server-mid-response
+HarnessError and no score. Its watcher stopped evaluator27324 only after this
+terminal trace was saved. E1#930 had a scheduler-start log at03:39:57 but was
+canceled during setup before any observed container/tool/model stage. E2#944
+was not admitted. Both evaluators and completion watchers have exited, and
+both exact-parent startup fence files were removed. No further benchmark
+model work is authorized.

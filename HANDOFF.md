@@ -1,75 +1,73 @@
-# ACTIVE STATE — 2026-09-05 23:00 UTC (read first)
+# CURRENT STATE — 2026-09-06 03:45 UTC
 
-## GPU continuation: COMPLETE, secured, and terminated
-- Both islands finished through gen12 and verified final confirmations.
-  Final result rows: isl1 1850, isl2 1756. No pending confirms remain.
-- BOTH campaign pods terminated; API listing confirms neither remains.
-  Do NOT SSH to or recreate e54975df9f1745e7b3573a625f43d0f8 or
-  9e6f440582e94895a549ba44b3ef3288. Other projects' pods are out of scope.
-- Immutable final archives, locally verified against remote SHA256, tar
-  integrity, settledgen12 marker, and independently copied critical files:
-  ~/v3work/isl1_final2.tgz — 7526611213 bytes,1951 members,
-  SHA256 7ef7e373677750b16cef373623e1b6bbecd400cea312ba359a940fd5fe3f40c3
-  ~/v3work/isl2_final2.tgz — 7667929517 bytes,1970 members,
-  SHA256 cb00bc78b38c7edf28cbb0a6128b721eec5a345810b26460f390992f72a68a81
-  Verification sidecars are <archive>.verified.json; release receipts and
-  exact metadata in ~/v3work/ops/recovery_20260905/state.json.
-- Both completed three GPU re-simulation films before backup. Native smoke
-  validated3 finite changing frames and fresh-device equality. Record these
-  as RE-SIMULATIONS, not exact original traces or reconfirmed scores.
-  Helper/pin exception: shipped0.3.5 has two stale lock-table entries;
-  all48 deployed source hashes matched explicit reviewed wheel pins. No
-  physics/lock table was edited. Helper lives at v3_pilot/film_recovery/.
+## STOP: no further benchmark models/seeds/worlds authorized
+User asked to cancel queued runs to protect credits, leaving current runs to
+finish. Both evaluators have now exited. No automatic resume/relaunch.
+- E1#928 completed: reported skill0.68066238 (3h34m48s).
+- E2#942 completed: reported skill0.65449844 (5h49m22s).
+- E1#929 ended with HarnessError from provider/server mid-response; UNSCORED,
+  not a sciencezero or resource-cap stop. Saved before operator cleanup.
+- E2#943 slipped into startup03:21:52 before the admission fence was armed
+  at03:28; root canceled it03:33:11 (~11min). No retainedscience score or
+  completeusage total; do not pretend it never started.
+- E1#930 scheduler slot opened but was canceled during setup before model
+  stage; E2#944 was not admitted. They must not be resumed.
+- Native runner releases semaphore before persistence; Ctrl-C/SIGTERM is not
+  admission-only. Root added exact-parent PID/birth/commandhash NEW-server
+  fences (commit8d03412) and tested event-driven kqueue completion watchers.
+  Existing experiments were unchanged; watchers stopped evaluators only
+  after named current terminal records were saved. Both fences removed.
+- Evaluators27323/27324 exited130; no active inference jobs. Repeating eval
+  heartbeat f80768c7-a2cb-4766-ba37-19c6ce9680cc DELETED. No polls needed.
 
-## Eval resource fix: IMPLEMENTED; fresh cohort RUNNING
-- User chose to fix experimentally binding400-fork/8-open limits rather
-  than retry the old capped cohort. Fix pushed0a0fc5e; pilot evidence e455715.
-- BLOB2v2r2-E1/E2: high PRIVATE7guards,8-resident replayableLRU,128bitforkIDs,
-  terminalResourceSafetyError(no science score, no whole-run retries).
-  Old tags/limits intact; truth/scoring/physics unchanged. Full native/real
-  physics/legacy tests + parent fast gate passed.
-- Actual8turn/180s Fable diagnostic verified new syllabus/privatepolicy/zero
-  hits, then timed out as designed; DO NOT count it as science.
-- Fresh full cohorts launched21:32:25Z, n3/r1/c1 per world, same six seeds:
-  ~/v3work/ops/recovery_20260905/eval_fable_r2/E1 (pid27324)
-  ~/v3work/ops/recovery_20260905/eval_fable_r2/E2 (pid27323)
-  Logs/exitfiles/specs in state.json fresh_resource_cohorts. Saved native
-  max_turns=None and timeout={}; diagnosticlimits NOT carried over.
-- Original corrected-but-capped runs51d11a68(E2),588029cc(E1) preserved:
-  two E2 successes + four402billing failures; capped scores are a separate
-  cohort. Their copied retry processes were intentionally stopped; NEVER
-  resume them. Earlierbabe2a40/791527b3 runs INVALID(v1surface/v2scorer).
-- Parse NESTED ok/errors/readied/submissions/privatepolicy/meters; JSONL
-  count or outer errors=[] is not success. Resource errors terminal and
-  unscored;402 not a scientific zero. Hub>26MB failures publication-only.
+## Completed-run audit ready (reported scores are PROVISIONAL)
+Report: probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/REPORT.md
+(commit4f80805;30parent-validated checks; exacttarget trace0bdd699154ee4e1d96aac4e0961bc11d).
+-1216completed modelcalls +23error attempts.4,818,550reportedprompttokens
+ include cachewrites;117,000,774cache-read;1,199,851output.153,020reasoning
+ is a SUBSET of output, not an additional charge. Billed$ unavailable.
+-1065distinct environment requests vs891persisted turns;181successful fork
+ replies but145uniqueIDs. Distinctparallel toolcalls returned SAME ID at
+ DIFFERENTanchors; concurrentbasereads repeatedadvancingtimes. Strong
+ whole-state GET/fn/PUT lost-update evidence, not random128bitcollision.
+-Physics/state history and meters are not a trustworthy exactledger. Do not
+ promote reported+0.681 as cleanbenchmark/theory-learning proof.
+-L3F/L3E use recorded-history interpolation/counting insidebase2500. Both
+ drawn dose means use undisturbedrecord+uncertainty; learnedport2mean unused.
+ No customdynsim in submittedpath. No post-ready worldaccess observed; all
+ six E1payloads accepted. E2process strategy not audited.
+-NEXT_NATIVE_TEST.md is a cheap deterministic barrier/event transport-test
+ recipe, not executed. Need state-transaction correctness + replay/no-dose
+ shortcutcontrols before more paid models. No productionracefix applied.
 
-## Local analysis underway (no more GPU work)
-- Source of truth: ~/v3work/ops/recovery_20260905/state.json.
-- Disk ~16GBfree after final backups. NO full extraction. Bounded metadata
-  and films extracted to ~/v3work/harvest2/v3cont-N/islN/out (about200MB per
-  island), with EXTRACTION_COMPLETE.json. Raw run NPZs remain compressed.
-  Originalgen7snapshots/harvest remain. Deleted only redundant /tmp elite
-  upload tars and the optional partial extraction created during recovery.
-- Children harvest2-auditor and h9-metric-audit: LOCAL read-only analysis/
-  toy tests, no ops/model launches/production edits. Wait explicit reports.
-- Important early audit findings (report pending): all2324 baseline rows
-  preserved exactly; one c9fill identity has2differentgenomes;11 older seed3
-  jobs used same-named donor-v2genomes rather than the v3screen genotype.
-  Quarantine invalid genotype-confirmation joins; preserve every raw row.
-  Spatial-IC screen + soup confirmation are different IC protocols even
-  when ghash matches. Do not call the latter replication of the spatial IC.
-- Old .82 'operator hit rate' pooled confirmations over screen lanes. Use
-  screen-only rates/denominators, separate selected confirmations, common
-  W9 for cross-phase tables, and distinguish full/partial C9.
-- h9 is exploratory, not calibrated. Five low examples do not prove no
-  evolved world segregates; positional relabel is not an upper bound.
-  Review also found h9 stops before d7b persistence pruning. No h9 was
-  deployed into evolution. Do not repeat earlier overclaims.
-- Next: audited HARVEST2 + corrected post12 with six time-lapse films;
-  evaluate h9 review before a full streaming rescore; tag fresh agent
-  results separately and update post11 to current implemented policy.
-- Heartbeat f80768c7-a2cb-4766-ba37-19c6ce9680cc remains for local eval/analysis
-  (15m). Delete only after completion or an explicit successor watch.
+## GPU / final evolution: completely secured and terminated
+Both campaign pods are gone; do NOT reconnect/recreate. Otherprojects’ pods
+out of scope. Final archives immutable and verified locally:
+~/v3work/isl1_final2.tgz —7526611213B,SHA256
+7ef7e373677750b16cef373623e1b6bbecd400cea312ba359a940fd5fe3f40c3
+~/v3work/isl2_final2.tgz —7667929517B,SHA256
+cb00bc78b38c7edf28cbb0a6128b721eec5a345810b26460f390992f72a68a81
+Both settledgen12; independentcriticalfile hashes/tar integrity verified;
+verificationJSON/release receipts in ~/v3work/ops/recovery_20260905/state.json.
+No fullunpacking: disk14–16GBfree. Selectedmetadata/films (~200MB/island)
+under ~/v3work/harvest2/v3cont-N; originalgen7snapshots/harvest preserved.
+
+## Published science corrections / media
+-HARVEST2 audited27da8ab: rawdata preserved;11baseline wrong-genome seed3,
+29unsafe archive reblend physical-genome joins; samegenome vs sameIC separate.
+C9proxy max.8895,notproofheterogeneouscompartments; no causalrespecclaim.
+-h9review6f9723e: v0NOT phenotype ranker/biologicalcutoff; nofullscan or
+selection. Toycounterexamples disprove earlierceiling/homogenizationclaims.
+-post12cb4d73b live: finalauditedresults,correctedcharts,6wide re-sim films.
+Replayhelperd257b8a;48sourcepins verified,known2stale0.3.5lockentries explicit.
+
+## Remaining work (no paid benchmark runs)
+Child post11-pilot-notes is documentation-only, updating post11 to current
+BLOB2v2r2method + reduced-scope diagnosticcase-study/caveats + cheaptestladder.
+It will reply explicitly; parent reviews/commits/pushes. No newmodels/physics/
+resource changes. User can review the E1audit on nextcheck-in. Existing
+oldcappedcohorts, invalidmodecohorts, and shortdiagnostic remain separate.
+Operatorcontrols/logs/specs and exactfreshdirs are in recovery state.json.
 
 ---
 ## Historical handoff (older claims may be superseded above)
