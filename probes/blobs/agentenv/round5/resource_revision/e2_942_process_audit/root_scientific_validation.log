@@ -1,0 +1,20 @@
+{
+  "trace_id": "ae982494a72144c186f58a687a99cd33",
+  "checks": {
+    "global_times_16": true,
+    "global_saves_exactly_match_world_replies": true,
+    "global_saves_pre_ready": true,
+    "L3S_second_window_bracketed_by_measured_global_continuation": true,
+    "L3F_all_targets_in_base": true,
+    "device_continuation_gap_preserved": true,
+    "emission_mean_shrinkage_in_final_code": true,
+    "L2_local_override_in_accepted_path": true,
+    "six_payloads_exactly_match_archived_objects": true,
+    "no_post_ready_sampled_world_requests": true
+  },
+  "global_measurements_matched": 16,
+  "artifacts_written": [
+    "scientific_summary.json",
+    "SCIENTIFIC_PROCESS.md"
+  ]
+}

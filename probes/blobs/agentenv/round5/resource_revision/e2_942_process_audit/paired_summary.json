@@ -1,0 +1,315 @@
+{
+  "scope": "Two completed case audits, not a clean comparative benchmark or aggregate benchmark mean.",
+  "stop_status_as_supplied_by_operator": "All runs stopped. Two reported completions; E1#929 unscored HarnessError; one queued E2#943 operator-canceled after about11min; other queued tasks had no model stage. Excluded from these completed-case totals.",
+  "cases": {
+    "E1_928": {
+      "trace_id": "0bdd699154ee4e1d96aac4e0961bc11d",
+      "task": "physim-BLOB2v2r2-E1#928",
+      "world": "p4g2_044",
+      "seed": 928,
+      "reported_episode_skill": 0.6806623799475607,
+      "elapsed_wall_seconds": 12887.632680177689,
+      "completed_model_calls": 1216,
+      "model_error_attempts": 23,
+      "usage": {
+        "prompt_tokens": 4818550,
+        "cached_input_tokens": 117000774,
+        "input_tokens": 121819324,
+        "completion_tokens": 1199851,
+        "reasoning_tokens": 153020,
+        "total_tokens": 123019175,
+        "cache_write_tokens": null,
+        "billed_dollars": null
+      },
+      "unique_tool_invocations": 1484,
+      "environment_requests": 1065,
+      "persisted_environment_turns": 891,
+      "Agent_invocations": 22,
+      "tools": {
+        "status": 48,
+        "read": 485,
+        "Bash": 324,
+        "Agent": 22,
+        "TaskCreate": 5,
+        "TaskUpdate": 9,
+        "fork": 183,
+        "adjust": 112,
+        "reset": 160,
+        "inject": 67,
+        "wait": 3,
+        "Write": 52,
+        "TaskStop": 4,
+        "Edit": 3,
+        "ready": 1,
+        "submit": 6
+      },
+      "environment_tool_timeouts": 54,
+      "environment_missing_results": 2,
+      "persisted_meters": {
+        "sensor": 145405.0,
+        "adjust": 219.72100000000006,
+        "injection": 814.2999999999998,
+        "sim_tu": 11495.0,
+        "log_entries": 514.0,
+        "fork_spawns": 145,
+        "open_forks_peak": 31,
+        "resets": 133,
+        "reads_base": 500,
+        "reads_fork": 625,
+        "turns": 891
+      },
+      "resident_cache": {
+        "peak": 8,
+        "evictions": 44,
+        "rebuilds": 168
+      },
+      "time_to_ready": {
+        "sim_tu": 11495.0,
+        "turns": 884
+      },
+      "policy": "v2r2",
+      "resource_truncated": false,
+      "cap_hits": {
+        "sensor": 0,
+        "adjust": 0,
+        "injection": 0,
+        "sim_tu": 0,
+        "fork_spawns": 0,
+        "open_forks": 0,
+        "log_entries": 0
+      },
+      "readied": true,
+      "all_six_submissions_accepted": true,
+      "submission_order": [
+        "L3E@i1",
+        "L1@i1",
+        "L2@i1",
+        "L3F@i1",
+        "L4@i1",
+        "L4D@i1"
+      ],
+      "post_ready_world_tool_requests": 0,
+      "final_logical_contexts": [],
+      "instance_skills": {
+        "skill_L1": 0.22247321834555456,
+        "skill_L2": -0.0033505825043154136,
+        "skill_L3F": 0.9964270407900108,
+        "skill_L3E": 0.8855591583280163,
+        "skill_L4": 0.9890614273531856,
+        "skill_L4D": 0.9938040173729119
+      },
+      "selected_trace_sha256": "29392ad517806a7743c592b0f527241e23a7128d189c70b050b54c0792756b81",
+      "request_error_description": "22 HTTP429 +1 connection reset; all23 lack usage; retry chains unknown.",
+      "fork_reply_summary": {
+        "fork_success_responses": 181,
+        "unique_returned_fork_ids": 145,
+        "fork_ids_returned_multiple_times": 22,
+        "fork_ids_with_multiple_reported_anchors": 15
+      },
+      "reply_minus_persisted_meters": {
+        "sensor": 3665.0,
+        "adjust": 10.144000000000005,
+        "injection": 162.60000000000025,
+        "sim_tu": 365.0,
+        "log_entries": 48.0,
+        "reads_base": 5,
+        "reads_fork": 32
+      },
+      "ordinary_reply_minus_persisted_turns": 118,
+      "method_summary": {
+        "L1": "Empirical record-to-global contraction; two drawn commands; post-ready sequential u3 clipping.",
+        "L2": "Per-port global nowcast/climatology, repeated hidden-slot marginals.",
+        "L3F": "Catmull-Rom/circular recorded-history interpolation; targets794.72,814.72,889.72,1189.72 all inside base2500.",
+        "L3E": "Recorded-history upward-crossing counts,1694.78..2494.78, inside base.",
+        "L4_L4D": "Drawn ports3/1 use passive recorded means with dose-aware uncertainty. Port2 fitted mean template is unused.",
+        "continuation": "Audited continuation through3105 was collected but unnecessary for drawn L3F/L3E.",
+        "general_dynamical_simulator_in_submitted_path": false,
+        "citations": [
+          "../e1_928_process_audit/SCIENTIFIC_PROCESS.md:9-21,24-45",
+          "E1 embedded app/probe/predict_final.py:53-227",
+          "E1 node2972/toolu_017uK4JgPMqyKmAsFk6SS5SR",
+          "../e1_928_process_audit/REPORT.md sections4-5"
+        ]
+      }
+    },
+    "E2_942": {
+      "trace_id": "ae982494a72144c186f58a687a99cd33",
+      "task": "physim-BLOB2v2r2-E2#942",
+      "world": "p6g8_033",
+      "seed": 942,
+      "reported_episode_skill": 0.6544984435867794,
+      "elapsed_wall_seconds": 20962.091918230057,
+      "completed_model_calls": 2218,
+      "model_error_attempts": 40,
+      "usage": {
+        "prompt_tokens": 5979370,
+        "cached_input_tokens": 213938314,
+        "input_tokens": 219917684,
+        "completion_tokens": 2265077,
+        "reasoning_tokens": 97241,
+        "total_tokens": 222182761,
+        "cache_write_tokens": null,
+        "billed_dollars": null
+      },
+      "unique_tool_invocations": 2336,
+      "environment_requests": 1300,
+      "persisted_environment_turns": 1023,
+      "Agent_invocations": 35,
+      "tools": {
+        "status": 82,
+        "read": 421,
+        "Bash": 665,
+        "Write": 276,
+        "Agent": 35,
+        "TaskCreate": 5,
+        "TaskUpdate": 9,
+        "fork": 103,
+        "adjust": 78,
+        "Edit": 8,
+        "TaskStop": 16,
+        "reset": 110,
+        "wait": 466,
+        "inject": 33,
+        "Read": 22,
+        "ready": 1,
+        "submit": 6
+      },
+      "environment_tool_timeouts": 266,
+      "environment_missing_results": 11,
+      "persisted_meters": {
+        "sensor": 199320.0,
+        "adjust": 219.229,
+        "injection": 559.7000000000003,
+        "sim_tu": 14655.0,
+        "log_entries": 577.0,
+        "fork_spawns": 97,
+        "open_forks_peak": 12,
+        "resets": 96,
+        "reads_base": 500,
+        "reads_fork": 895,
+        "turns": 1023
+      },
+      "resident_cache": {
+        "peak": 8,
+        "evictions": 3,
+        "rebuilds": 121
+      },
+      "time_to_ready": {
+        "sim_tu": 14655.0,
+        "turns": 1016
+      },
+      "policy": "v2r2",
+      "resource_truncated": false,
+      "cap_hits": {
+        "sensor": 0,
+        "adjust": 0,
+        "injection": 0,
+        "sim_tu": 0,
+        "fork_spawns": 0,
+        "open_forks": 0,
+        "log_entries": 0
+      },
+      "readied": true,
+      "all_six_submissions_accepted": true,
+      "submission_order": [
+        "L3S@i1",
+        "L1@i1",
+        "L2@i1",
+        "L3F@i1",
+        "L4D@i1",
+        "L4@i1"
+      ],
+      "post_ready_world_tool_requests": 0,
+      "final_logical_contexts": [],
+      "instance_skills": {
+        "skill_L1": 0.5224558046650924,
+        "skill_L2": 0.12600194999423586,
+        "skill_L3F": 0.9563501818873622,
+        "skill_L3S": 0.9517775345930017,
+        "skill_L4": 0.4040150062113137,
+        "skill_L4D": 0.9663901841696706
+      },
+      "selected_trace_sha256": "a9e4fb4c1c610eba8dd233061a9f76a11f3cd64cccb62b7c7192acd5990588f9",
+      "request_error_description": "38 HTTP429 +2 HTTP400 content_policy_violation; all40 lack usage; retry chains unknown.",
+      "fork_reply_summary": {
+        "fork_success_responses": 100,
+        "unique_returned_fork_ids": 96,
+        "fork_ids_returned_multiple_times": 3,
+        "fork_ids_with_multiple_reported_anchors": 1
+      },
+      "reply_minus_persisted_meters": {
+        "sensor": -8355.0,
+        "adjust": -0.021,
+        "injection": 4.0,
+        "sim_tu": -625.0,
+        "log_entries": -11.0,
+        "reads_base": 0,
+        "reads_fork": -50,
+        "fork_spawns": 3,
+        "resets": 5,
+        "turns": 0
+      },
+      "ordinary_reply_minus_persisted_turns": 0,
+      "method_summary": {
+        "L1": "Fitted actuator-distance contraction of record toward local mean; one drawn command; target752.6.",
+        "L2": "Post-ready0.7 pooled-device mean +0.3 global mean; identical marginal forecast across13 hidden slots.",
+        "L3F": "Cubic recorded-history interpolation; targets1814.02,1889.02,2189.02 all inside base2500.",
+        "L3S": "Linear saved-global interpolation averaged at41 points per200tu window.2260.72..2460.72 in base;2660.72..2860.72 covered by pre-ready future global samples.",
+        "future_global_samples": {
+          "anchor": 2500,
+          "count": 16,
+          "first_t": 2525,
+          "last_t": 2900,
+          "step_tu": 25,
+          "plan_node": 4013,
+          "plan_tool_id": "toolu_01FArZ3E2DiK4KjzcSpJQaCG",
+          "fork_node": 4016,
+          "fork_tool_id": "toolu_01PzHLUnhsFM9kiRdMdL7cQK",
+          "fork_id": "fceee3e6210a425daa3830b8d928cd49a"
+        },
+        "device_continuation": "cont_r1:80 retained distinct frames2505..3000 with gap2800->2905; cont_r3b:40frames2905..3100. Not uniform5tu post-base.",
+        "L4_L4D": "Empirical RMS-derived decorrelation/shrinkage changes means and sigma. Drawn port6 amp2.7998 uses unvalidated above-apparatus scaling; port11 amp0.8124 has smaller measured training residuals.",
+        "general_dynamical_simulator_in_submitted_path": false,
+        "citations": [
+          "SCIENTIFIC_PROCESS.md",
+          "E2 embedded app/models/predictor3.py:13-29,44-76,79-94,105-214",
+          "E2 node5114/toolu_01KwioQiU29N3GXNPj1gg4YA",
+          "E2 node2364->2365/toolu_01YYUePYZxCJ71Foe7dctYBd"
+        ]
+      }
+    }
+  },
+  "limitations": [
+    "Different worlds/seeds, menus and drawn instances; completion-selected cases are not balanced performance evidence.",
+    "Recorded/allowed-future lookup is permitted, not misconduct; it limits claims about learned dynamics.",
+    "Empirical response/uncertainty models are genuine narrower modeling; no general dynamics rollout is used in either submitted path.",
+    "State-update integrity defects and scientific target discriminating power are different issues.",
+    "No actual billing; cache writes merged into prompt; auxiliary count_tokens and errored-attempt usage unknown.",
+    "Missing bulk predictor inputs and native transaction history prevent full regeneration/state reconstruction."
+  ],
+  "controls": [
+    {
+      "name": "Native model-free state and phase-gate regression",
+      "status": "Recommended only; not executed.",
+      "recipe": "Use deterministic barrier-controlled state handlers through actual native GET/fn/PUT/MCP transport. Assert distinct fork IDs, stable anchors, additive shared-state meters, nondecreasing clocks, durable resets, and ready gating for delayed calls, across same/different contexts. Include shape-only six-submit and large-output persistence checks.",
+      "interpretation": "Diagnostic wiring/state integrity, not scientific model performance; no pressure/time caps imposed on investigators and no production fix here."
+    },
+    {
+      "name": "Declared record/continuation and emission controls",
+      "status": "Recommended only; not executed.",
+      "recipe": "Compare transparent record(+allowed pre-ready continuation) and no-emission-mean controls with empirical RMS/shrinkage. Separately predeclare targets outside any captured stream and active-response ports/doses, with anchor/protocol holdouts. Do not choose only favorable completed worlds/ports.",
+      "interpretation": "Scientific evidence control, not another paid rollout or a diagnostic benchmark mean."
+    }
+  ],
+  "numeric_citations": {
+    "E1": "../e1_928_process_audit/summary.json#/accounting,/resources,/scores,/ready_and_submission; existing validation.json all_passed=true",
+    "E2": "summary.json#/accounting,/resources,/scores,/ready_and_submission; experiment_summary.json#/handles,/reply_accounting"
+  },
+  "audit_input_hashes": {
+    "e1_928_process_audit/summary.json": "41e8c5168293d60315bb4947a47913995d764bf4068bad660809ad1d4b4b01d7",
+    "e1_928_process_audit/REPORT.md": "e690fcedc9770d4030f282f520555c0fe47eb3172d4d5dd95c130fcb8b99cce5",
+    "e1_928_process_audit/SCIENTIFIC_PROCESS.md": "1a50e10d64fb51243240f8dbe039c87c8cdb4512bd0653a5b0333aacd936f4b7",
+    "e1_928_process_audit/validation.json": "c1b08281819ea6e84a03261e43fbf0eb548e5ac42b9879490c892a0c727703cb"
+  },
+  "E2_full_source_sha256": "d73404e732b895d795ec41cd18ac2cbcb3c929f63ad2d44dbf0a3e65f1dd3459"
+}

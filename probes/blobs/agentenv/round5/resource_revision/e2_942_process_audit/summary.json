@@ -1,0 +1,973 @@
+{
+  "scope": {
+    "source": "/Users/spoho/v3work/ops/recovery_20260905/eval_fable_r2/E2/traces.jsonl",
+    "source_line": 1,
+    "episode_id": "11107cb8a9b94145b5c2e05868dc10dc",
+    "source_sha256_at_read": "d73404e732b895d795ec41cd18ac2cbcb3c929f63ad2d44dbf0a3e65f1dd3459",
+    "source_bytes_at_read": 11116033,
+    "selected_trace_sha256": "a9e4fb4c1c610eba8dd233061a9f76a11f3cd64cccb62b7c7192acd5990588f9",
+    "outer_ok": true,
+    "trace_id": "ae982494a72144c186f58a687a99cd33",
+    "task": "physim-BLOB2v2r2-E2#942",
+    "world": "p6g8_033",
+    "world_seed": 942,
+    "selection": "Exact nested trace ID and exact task assertion; excludes canceled E2 #943, E1 #929 error, diagnostics and all other cohorts.",
+    "source_sha256_after_counting": "d73404e732b895d795ec41cd18ac2cbcb3c929f63ad2d44dbf0a3e65f1dd3459",
+    "source_unchanged_during_counting": true
+  },
+  "completion": {
+    "is_completed": true,
+    "ok": true,
+    "stop_condition": "agent_completed",
+    "trace_errors": [],
+    "score_status": "scored",
+    "readied_metric": 1.0,
+    "resource_policy": {
+      "id": "v2r2",
+      "caps": {
+        "sensor": 1000000000.0,
+        "adjust": 10000000.0,
+        "injection": 1000000.0,
+        "fork_spawns": 100000,
+        "open_forks": 10000,
+        "sim_tu": 10000000.0,
+        "log_entries": 1000000
+      },
+      "resident_forks": 8,
+      "resident_policy": "lru-replay",
+      "safety_trip": "truncate"
+    },
+    "resource_truncated": false,
+    "resource_stop": {},
+    "cap_hits": {
+      "sensor": 0,
+      "adjust": 0,
+      "injection": 0,
+      "sim_tu": 0,
+      "fork_spawns": 0,
+      "open_forks": 0,
+      "log_entries": 0
+    },
+    "start_utc": "2026-09-05T21:32:29.603Z",
+    "scoring_end_utc": "2026-09-06T03:21:51.695Z",
+    "elapsed_wall_seconds": 20962.091918230057,
+    "wall_time_is_not_billing": true
+  },
+  "accounting": {
+    "message_graph_nodes": 5150,
+    "sampled_model_nodes": 2218,
+    "model_request_records": 2258,
+    "completed_model_calls": 2218,
+    "completed_with_usage": 2218,
+    "request_errors": 40,
+    "request_error_types": {
+      "ProviderError": 40
+    },
+    "request_error_status_codes": {
+      "429": 38,
+      "400": 2
+    },
+    "request_errors_with_usage": 0,
+    "request_error_provider_codes": {
+      "rate_limited": 38,
+      "content_policy_violation": 2
+    },
+    "reported_usage_field_coverage": {
+      "prompt_tokens": 2218,
+      "completion_tokens": 2218,
+      "cached_input_tokens": 2218,
+      "reasoning_tokens": 2217
+    },
+    "missing_finish_reason_call_indices": [
+      1919,
+      1922
+    ],
+    "empty_completed_response_call_indices": [
+      1922
+    ],
+    "finish_reasons": {
+      "tool_calls": 2197,
+      "stop": 19,
+      "None": 2
+    },
+    "model_names": {
+      "anthropic/claude-fable-5": 2258
+    },
+    "tool_call_occurrences_in_context_graph": 2558,
+    "unique_tool_calls": 2336,
+    "recorded_tool_results": 2319,
+    "tool_result_graph_nodes": 2357,
+    "repeated_result_ids": 38,
+    "duplicate_result_copies": 38,
+    "repeated_result_contents_identical": true,
+    "result_ids_not_in_sampled_tool_calls": 0,
+    "environment_tool_requests": 1300,
+    "environment_persisted_turns": 1023,
+    "delegated_Agent_invocations": 35,
+    "all_tool_arguments_valid_json": true,
+    "total_usage": {
+      "prompt_tokens": 5979370,
+      "completion_tokens": 2265077,
+      "cached_input_tokens": 213938314,
+      "reasoning_tokens": 97241,
+      "input_tokens": 219917684,
+      "total_tokens": 222182761,
+      "usage_records": 2218,
+      "missing_usage_records": 0,
+      "cache_write_tokens": null,
+      "provider_uncached_input_excluding_cache_writes": null,
+      "billed_dollars": null,
+      "interpretation": "prompt_tokens excludes cache reads and includes Anthropic cache creation; reasoning is a subset of completion. No price or retry usage is imputed."
+    },
+    "through_ready_usage": {
+      "prompt_tokens": 5890964,
+      "completion_tokens": 2221829,
+      "cached_input_tokens": 205827290,
+      "reasoning_tokens": 92343,
+      "input_tokens": 211718254,
+      "total_tokens": 213940083,
+      "usage_records": 2192,
+      "missing_usage_records": 0
+    },
+    "after_ready_usage": {
+      "prompt_tokens": 88406,
+      "completion_tokens": 43248,
+      "cached_input_tokens": 8111024,
+      "reasoning_tokens": 4898,
+      "input_tokens": 8199430,
+      "total_tokens": 8242678,
+      "usage_records": 26,
+      "missing_usage_records": 0
+    },
+    "usage_scope": "All completed calls in this one trace, including delegated branches; deduplicated sampled call/node/tool IDs, not context occurrences.",
+    "auxiliary_requests": {
+      "recorded_extra_usage_entries": 0,
+      "count_tokens_requests": null,
+      "note": "extra_usage is judge/off-graph usage, not an auxiliary-request log. Anthropic count_tokens requests are relayed, never recorded here."
+    },
+    "error_usage_note": "Error attempts without recorded usage have unknown token consumption; no partial output, retry tokens or billing is imputed.",
+    "known_retry_chains": null,
+    "retry_note": "No retry_of metadata links attempts to successful completions. Repeated error attempts are not a known count of retry chains; repeated tool calls may be intentional experiments.",
+    "reasoning_note": "Anthropic adapter labels reasoning_tokens a re-tokenized raw-thinking estimate within completion, not an additional output bucket."
+  },
+  "tools": {
+    "mcp__probe__status": {
+      "calls": 82,
+      "outcomes": {
+        "success_response": 12,
+        "tool_timeout": 70
+      }
+    },
+    "mcp__probe__read": {
+      "calls": 421,
+      "outcomes": {
+        "success_response": 339,
+        "malformed_argument": 2,
+        "tool_timeout": 75,
+        "no_result_recorded": 5
+      },
+      "persisted_outputs": 20,
+      "persisted_outputs_recovered": 0
+    },
+    "Bash": {
+      "calls": 665,
+      "outcomes": {
+        "nonzero_shell_exit": 43,
+        "returned_without_explicit_error": 616,
+        "no_result_recorded": 6
+      }
+    },
+    "Write": {
+      "calls": 276,
+      "outcomes": {
+        "returned_without_explicit_error": 275,
+        "tool_error_text": 1
+      }
+    },
+    "Agent": {
+      "calls": 35,
+      "outcomes": {
+        "returned_without_explicit_error": 35
+      }
+    },
+    "TaskCreate": {
+      "calls": 5,
+      "outcomes": {
+        "returned_without_explicit_error": 5
+      }
+    },
+    "TaskUpdate": {
+      "calls": 9,
+      "outcomes": {
+        "returned_without_explicit_error": 9
+      }
+    },
+    "mcp__probe__fork": {
+      "calls": 103,
+      "outcomes": {
+        "success_response": 100,
+        "tool_timeout": 3
+      }
+    },
+    "mcp__probe__adjust": {
+      "calls": 78,
+      "outcomes": {
+        "success_response": 58,
+        "tool_timeout": 7,
+        "partial_adjustment_then_refused": 1,
+        "adjustment_refused": 10,
+        "unknown_context": 2
+      }
+    },
+    "Edit": {
+      "calls": 8,
+      "outcomes": {
+        "returned_without_explicit_error": 8
+      }
+    },
+    "TaskStop": {
+      "calls": 16,
+      "outcomes": {
+        "returned_without_explicit_error": 16
+      }
+    },
+    "mcp__probe__reset": {
+      "calls": 110,
+      "outcomes": {
+        "tool_timeout": 8,
+        "success_response": 101,
+        "unknown_context": 1
+      }
+    },
+    "mcp__probe__wait": {
+      "calls": 466,
+      "outcomes": {
+        "success_response": 357,
+        "tool_timeout": 103,
+        "no_result_recorded": 6
+      }
+    },
+    "mcp__probe__inject": {
+      "calls": 33,
+      "outcomes": {
+        "success_response": 33
+      }
+    },
+    "Read": {
+      "calls": 22,
+      "outcomes": {
+        "returned_without_explicit_error": 22
+      }
+    },
+    "mcp__probe__ready": {
+      "calls": 1,
+      "outcomes": {
+        "success_response": 1
+      }
+    },
+    "mcp__probe__submit": {
+      "calls": 6,
+      "outcomes": {
+        "success_response": 6
+      }
+    }
+  },
+  "resources": {
+    "policy": {
+      "id": "v2r2",
+      "caps": {
+        "sensor": 1000000000.0,
+        "adjust": 10000000.0,
+        "injection": 1000000.0,
+        "fork_spawns": 100000,
+        "open_forks": 10000,
+        "sim_tu": 10000000.0,
+        "log_entries": 1000000
+      },
+      "resident_forks": 8,
+      "resident_policy": "lru-replay",
+      "safety_trip": "truncate"
+    },
+    "persisted_meters": {
+      "sensor": 199320.0,
+      "adjust": 219.229,
+      "injection": 559.7000000000003,
+      "sim_tu": 14655.0,
+      "log_entries": 577.0,
+      "fork_spawns": 97,
+      "open_forks_peak": 12,
+      "resets": 96,
+      "reads_base": 500,
+      "reads_fork": 895,
+      "turns": 1023
+    },
+    "resident_cache": {
+      "peak": 8,
+      "evictions": 3,
+      "rebuilds": 121
+    },
+    "time_to_ready": {
+      "sim_tu": 14655.0,
+      "turns": 1016
+    },
+    "observed_status_peak_contexts": 12,
+    "state_analysis": "experiment_summary.json and CONCURRENCY.md (independent E2 response analysis)",
+    "observed_reply_naive_meter_sums": {
+      "sensor": 190965.0,
+      "adjust": 219.208,
+      "injection": 563.7,
+      "sim_tu": 14030.0,
+      "log_entries": 566,
+      "reads_base": 500,
+      "reads_fork": 845,
+      "fork_spawns": 100,
+      "resets": 101,
+      "turns": 1023
+    },
+    "observed_reply_minus_persisted_meters": {
+      "sensor": -8355.0,
+      "adjust": -0.021,
+      "injection": 4.0,
+      "sim_tu": -625.0,
+      "log_entries": -11.0,
+      "reads_base": 0,
+      "reads_fork": -50,
+      "fork_spawns": 3,
+      "resets": 5,
+      "turns": 0
+    },
+    "reply_meter_note": "These are reply-derived counterfactual sums under the current source formulas, not a reconstruction of persisted transactions or all server work. Timeouts and missing replies are excluded, not assigned zero execution.",
+    "fork_success_responses": 100,
+    "unique_returned_fork_ids": 96,
+    "fork_ids_returned_multiple_times": 3,
+    "fork_ids_with_multiple_reported_anchors": 1,
+    "final_logical_context_count": 0,
+    "final_resident_count": null,
+    "final_resident_count_note": "Not recorded. ready5 removes open handles from the cache, but this is not a final live-registry snapshot."
+  },
+  "ready_and_submission": {
+    "ready": {
+      "node": 5090,
+      "model_call_index": 2230,
+      "tool_call_id": "toolu_017NUVZLCyYuN5ApLCGKPHa4",
+      "timestamp_utc": "2026-09-06T03:13:08.486Z",
+      "result_node": 5091
+    },
+    "ready_result_node": 5091,
+    "ready_model_call_end_utc": "2026-09-06T03:13:08.487Z",
+    "ready_result_graph_timestamp_utc": "2026-09-06T03:13:24.906Z",
+    "node_timestamp_note": "Tool-use node time is the sampled response time; a tool-result node may be recorded at the next model response rather than at server completion. Node order is not a native transaction log.",
+    "post_ready_tool_counts": {
+      "Bash": 9,
+      "Read": 8,
+      "mcp__probe__submit": 6,
+      "Edit": 1,
+      "mcp__probe__status": 1
+    },
+    "post_ready_completed_model_calls": 26,
+    "post_ready_request_errors": 1,
+    "world_tool_requests_after_ready": [],
+    "pre_ready_tool_requests_with_later_recorded_results": [],
+    "submissions": [
+      {
+        "node": 5103,
+        "model_call_index": 2236,
+        "tool_call_id": "toolu_01SJeXv648jMBmr4YerqYrtt",
+        "timestamp_utc": "2026-09-06T03:14:08.034Z",
+        "result_node": 5104,
+        "instance": "L3S@i1",
+        "accepted": true,
+        "accepted_shape": [
+          2,
+          13,
+          2
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L3S_i1.json"
+        ],
+        "payload_object_sha256": "20501d0bc9f56b7fac5706f44239cc4271eac5d684bc0cd2d9c56dcffd07144b"
+      },
+      {
+        "node": 5108,
+        "model_call_index": 2238,
+        "tool_call_id": "toolu_0179fKaoi6pv4mkbH5pLMVG8",
+        "timestamp_utc": "2026-09-06T03:14:36.434Z",
+        "result_node": 5111,
+        "instance": "L1@i1",
+        "accepted": true,
+        "accepted_shape": [
+          13,
+          13
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L1_i1.json"
+        ],
+        "payload_object_sha256": "8cb35e54e0bcf069ea63c494f92d568ddb05ae234e0a4233d1481e66c918ac0f"
+      },
+      {
+        "node": 5118,
+        "model_call_index": 2242,
+        "tool_call_id": "toolu_016hJrffezPD4WNSVgn9S7Ja",
+        "timestamp_utc": "2026-09-06T03:16:06.455Z",
+        "result_node": 5119,
+        "instance": "L2@i1",
+        "accepted": true,
+        "accepted_shape": [
+          13,
+          13
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L2_i1.json"
+        ],
+        "payload_object_sha256": "46a8fabb474e4ff644114a7af228d0797e9956e4482e2bc1a2115a8a35259402"
+      },
+      {
+        "node": 5124,
+        "model_call_index": 2246,
+        "tool_call_id": "toolu_015791NvJTs3vkXCameiDB52",
+        "timestamp_utc": "2026-09-06T03:17:14.740Z",
+        "result_node": 5125,
+        "instance": "L3F@i1",
+        "accepted": true,
+        "accepted_shape": [
+          3,
+          13,
+          13
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L3F_i1.json"
+        ],
+        "payload_object_sha256": "8c1b3e33662bcb9fecd24187c0f847dd8e4b95250f40bb9c2b251faa99531987"
+      },
+      {
+        "node": 5141,
+        "model_call_index": 2253,
+        "tool_call_id": "toolu_01NqfhmEXtQxqmowTmfuDmZS",
+        "timestamp_utc": "2026-09-06T03:19:09.877Z",
+        "result_node": 5142,
+        "instance": "L4D@i1",
+        "accepted": true,
+        "accepted_shape": [
+          3,
+          13,
+          19
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L4D_i1.json"
+        ],
+        "payload_object_sha256": "035685a891bce939e9ade8656d99b5871623822a575210315a66743de2ad87c4"
+      },
+      {
+        "node": 5145,
+        "model_call_index": 2255,
+        "tool_call_id": "toolu_014hagsGsDoREtXyY1GqqGDL",
+        "timestamp_utc": "2026-09-06T03:21:21.339Z",
+        "result_node": 5146,
+        "instance": "L4@i1",
+        "accepted": true,
+        "accepted_shape": [
+          6,
+          13,
+          19
+        ],
+        "matching_workspace_payloads": [
+          "app/models/sub_L4_i1.json"
+        ],
+        "payload_object_sha256": "af0a9010d61f06bfeef6d2238afa4d5b46538ba86af340e9c133b877cdf7a45c"
+      }
+    ],
+    "final_status": {
+      "node": 5147,
+      "model_call_index": 2256,
+      "tool_call_id": "toolu_012PuXHtRXzJWggvxMdsgkqj",
+      "timestamp_utc": "2026-09-06T03:21:28.524Z",
+      "result_node": 5148
+    },
+    "final_status_resource_note": "Status exposes phase/head/context/submission state, not meters. Resource totals and time-to-ready meters come from final trace info.physim.",
+    "all_submitted_flags": {
+      "L1@i1": true,
+      "L2@i1": true,
+      "L3F@i1": true,
+      "L3S@i1": true,
+      "L4@i1": true,
+      "L4D@i1": true
+    },
+    "final_status_open_contexts": []
+  },
+  "scores": {
+    "instance_reward": {
+      "skill": {
+        "score": 0.6544984435867794,
+        "weight": 1.0
+      }
+    },
+    "instance_detail": {
+      "ladders": {
+        "L1": {
+          "climatology": 0.09769,
+          "persistence": 0.050326
+        },
+        "L2": {
+          "climatology": 0.094442,
+          "persistence": 0.096404
+        },
+        "L3F": {
+          "climatology": 0.091403,
+          "persistence": 0.100997,
+          "ar2": 0.091896
+        },
+        "L3S": {
+          "climatology": 0.027268,
+          "persistence": 0.017601
+        },
+        "L4": {
+          "climatology": 0.111706,
+          "persistence": 0.14896
+        },
+        "L4D": {
+          "climatology": 0.087167,
+          "persistence": 0.111622
+        }
+      },
+      "instances": {
+        "L1": {
+          "id": "L1@i1",
+          "family": "L1",
+          "t_a": 747.6,
+          "k_a": 37380,
+          "seq": [
+            [
+              0.3683,
+              -0.0735,
+              -0.1045
+            ]
+          ]
+        },
+        "L2": {
+          "id": "L2@i1",
+          "family": "L2",
+          "t_a": 1458.66,
+          "k_a": 72933
+        },
+        "L3F": {
+          "id": "L3F@i1",
+          "family": "L3F",
+          "t_a": 1789.02,
+          "k_a": 89451,
+          "device": 0,
+          "horizons": [
+            25.0,
+            100.0,
+            400.0
+          ]
+        },
+        "L3S": {
+          "id": "L3S@i1",
+          "family": "L3S",
+          "t_a": 2060.72,
+          "k_a": 103036,
+          "epochs": [
+            400.0,
+            800.0
+          ],
+          "window_tu": 200.0
+        },
+        "L4": {
+          "id": "L4@i1",
+          "family": "L4",
+          "t_a": 829.94,
+          "k_a": 41497,
+          "port": 6,
+          "amp": 2.7998,
+          "dur": 10.5,
+          "k_dur": 525,
+          "lags": [
+            10.0,
+            25.0,
+            50.0,
+            100.0,
+            175.0,
+            250.0
+          ]
+        },
+        "L4D": {
+          "id": "L4D@i1",
+          "family": "L4D",
+          "t_a": 1346.0,
+          "k_a": 67300,
+          "port": 11,
+          "amp": 0.8124,
+          "dur": 16.78,
+          "k_dur": 839,
+          "lags": [
+            25.0,
+            75.0,
+            150.0
+          ]
+        }
+      },
+      "l1_crps": 0.024033,
+      "l1_ratio_vs_ref": 0.4775,
+      "l2_crps": 0.082542,
+      "l2_ratio_vs_ref": 0.874,
+      "l3f_crps_per_leg": {
+        "h25": 0.002776,
+        "h100": 0.002768,
+        "h400": 0.006425
+      },
+      "l3f_crps": 0.00399,
+      "l3f_ratio_vs_ref": 0.0436,
+      "l3s_crps": 0.000849,
+      "l3s_ratio_vs_ref": 0.0482,
+      "l4_crps": 0.066575,
+      "l4_ratio_vs_ref": 0.596,
+      "l4d_crps": 0.00293,
+      "l4d_ratio_vs_ref": 0.0336,
+      "skills": {
+        "L1": 0.5225,
+        "L2": 0.126,
+        "L3F": 0.9564,
+        "L3S": 0.9518,
+        "L4": 0.404,
+        "L4D": 0.9664
+      }
+    },
+    "instance_skills_full_precision": {
+      "skill_L1": 0.5224558046650924,
+      "skill_L2": 0.12600194999423586,
+      "skill_L3F": 0.9563501818873622,
+      "skill_L3S": 0.9517775345930017,
+      "skill_L4": 0.4040150062113137,
+      "skill_L4D": 0.9663901841696706
+    },
+    "scope": "One completed E2 world/seed, not a cohort mean, paired performance estimate, or proof of learned dynamics."
+  },
+  "artifact_availability": {
+    "embedded_artifact_count": 51,
+    "embedded_files": [
+      {
+        "path": "app/models/sub_L4_i1.json",
+        "bytes": 20326,
+        "sha256": "af0a9010d61f06bfeef6d2238afa4d5b46538ba86af340e9c133b877cdf7a45c"
+      },
+      {
+        "path": "app/models/sub_L3F_i1.json",
+        "bytes": 9058,
+        "sha256": "66c1c21a6ff926c0e0e3e368438569d33fdeb5d2dfd2708f6fa35bfbdf8f2206"
+      },
+      {
+        "path": "app/models/analyze2.py",
+        "bytes": 2131,
+        "sha256": "53827c762769473944bf38df1adb7b4286dd276cf5d40a364f38e945e8278f4d"
+      },
+      {
+        "path": "app/models/analyze1.py",
+        "bytes": 1294,
+        "sha256": "5a7b4f949c22d05eb31c105bc0fec273c86e87e0b7983a6f48430b0b42e6070d"
+      },
+      {
+        "path": "app/models/sub_L2_i1.json",
+        "bytes": 3076,
+        "sha256": "919ab51855b58580d439d6e1a6179bb8007c19f09a6c5a2a839f49f80fd5749e"
+      },
+      {
+        "path": "app/models/dose_check.py",
+        "bytes": 1541,
+        "sha256": "cbf3205514536ae6455334733ea00f6c0a24e2eaebca276afb2c6fd9f9672d89"
+      },
+      {
+        "path": "app/models/sub_L3S_i1.json",
+        "bytes": 1009,
+        "sha256": "c40215d792c4911c05e8f0c049faeeed73f81e0262f3dff81384e9bbc1d911bc"
+      },
+      {
+        "path": "app/models/l1_fit2.py",
+        "bytes": 2444,
+        "sha256": "89f14e3532a6f6488059524b97c69b92b6fbfeec978f1aea95008ccfb300ad4c"
+      },
+      {
+        "path": "app/models/predictor2.py",
+        "bytes": 8858,
+        "sha256": "9a9ad8f21628eb5aa9bb9fbdc71ca0ee830d2dcab178da698f76fbab77635662"
+      },
+      {
+        "path": "app/models/parse_base.py",
+        "bytes": 1238,
+        "sha256": "7c3326a4cfb3e1d55f5e6469b683404d0e00ef8665afb049da26fa82113fdf35"
+      },
+      {
+        "path": "app/models/predictor.py",
+        "bytes": 7857,
+        "sha256": "a3c4546ceacd2ed828b4ebd99008ab11402a87d030918cd8bbda56c199d2f574"
+      },
+      {
+        "path": "app/models/sigma_h.py",
+        "bytes": 1251,
+        "sha256": "25ebd69a7ff3dbd7154cfa1774f6294a4c54ad8de57897e8ecbb58e7e3959d11"
+      },
+      {
+        "path": "app/models/l1_fit.py",
+        "bytes": 2264,
+        "sha256": "fb3dc6494692779780027c2335953f7934a26f3237ec487127b77b23103cdca3"
+      },
+      {
+        "path": "app/models/emis_templates.py",
+        "bytes": 1168,
+        "sha256": "c5c0e4b3922447e61acc7876f787af39f5ec2105d3993cb4ffcba38aa586a9ab"
+      },
+      {
+        "path": "app/models/emis_check.py",
+        "bytes": 1284,
+        "sha256": "37ee49a3871597cd6c8e690b67aac09304befa828f1f74f1003020c2ec17e91a"
+      },
+      {
+        "path": "app/models/l1_validate.py",
+        "bytes": 2058,
+        "sha256": "f1e85f297241f9c3c91a6c46585118b6fe7669efab65c320d78daa62cffb8392"
+      },
+      {
+        "path": "app/models/sub_L4D_i1.json",
+        "bytes": 10180,
+        "sha256": "035685a891bce939e9ade8656d99b5871623822a575210315a66743de2ad87c4"
+      },
+      {
+        "path": "app/models/l1_check.py",
+        "bytes": 1144,
+        "sha256": "eb0bad896ff3c77cd16626f8ed7bb78490cf806db487eaf0b71b36cc16a2d39a"
+      },
+      {
+        "path": "app/models/parse_forks.py",
+        "bytes": 2066,
+        "sha256": "a4f0b6e509b4bb46d28c86814ea16253263775fe5530ff386a2d06a2b074221e"
+      },
+      {
+        "path": "app/models/sub_L1_i1.json",
+        "bytes": 3069,
+        "sha256": "0bc2ff76dd21bb87cec46c91dc896938963a7e59b74bf2ab8523d8bd5fe69950"
+      },
+      {
+        "path": "app/models/predictor3.py",
+        "bytes": 10495,
+        "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8"
+      },
+      {
+        "path": "app/models/globals_regression.py",
+        "bytes": 2422,
+        "sha256": "bc00c4d46ef805b2f585c57eaced322de15e90f5736861ff0662b9e51a4e93d2"
+      },
+      {
+        "path": "app/models/emis_mtable.py",
+        "bytes": 2042,
+        "sha256": "b1a6fdfee275e91e2e9754f2a23afdd4a2d126a721e2f829c2e998828723ede8"
+      },
+      {
+        "path": "app/data/forks/div800r1_c6.json",
+        "bytes": 19266,
+        "sha256": "df2c44ea51ce86501e1dc1cc54ede3917243789446c5cf3f17343701ef90eb28"
+      },
+      {
+        "path": "app/data/forks/act_ctrl_pre.json",
+        "bytes": 1686,
+        "sha256": "ca89b748c7a27b36e7d7b9dfc38fa5dcdb8a6df37d74271c27f92cb3e9b14d30"
+      },
+      {
+        "path": "app/data/forks/div2200r1_c1.json",
+        "bytes": 19636,
+        "sha256": "97631fa0aa3621c1553130029ab5b38effc5ec51880293296969d8405e5db4d0"
+      },
+      {
+        "path": "app/data/forks/div800r2_c12.json",
+        "bytes": 19251,
+        "sha256": "486281fcd34b0127d4e1a21678ce4c68ec09e74176ab7a2bd9dbeb22ce94bd3a"
+      },
+      {
+        "path": "app/data/forks/act_u2n_post.json",
+        "bytes": 16095,
+        "sha256": "7c6d9ef5fb2de2183d9f00202cf4a02b12627f68ca4d79db9f881d4a452f286d"
+      },
+      {
+        "path": "app/data/forks/act_u1n_pre.json",
+        "bytes": 1686,
+        "sha256": "180f578cb4c44350de58602a4167be21350d1e0551bf61841ae4e56d8f8ae267"
+      },
+      {
+        "path": "app/data/forks/div2200r1_c4.json",
+        "bytes": 19555,
+        "sha256": "46ec25e59385dfe146904d4e521495d80928b9dca9f35f65d4ae9640def92df6"
+      },
+      {
+        "path": "app/data/forks/div1600r2_c2.json",
+        "bytes": 19152,
+        "sha256": "c9357d24fbe21d8794ec848b37a398b0a081c6cf99146e5bc538f171d44ca20b"
+      },
+      {
+        "path": "app/data/forks/act_u1n_adj.json",
+        "bytes": 211,
+        "sha256": "104c234ce66b157270e36e569c0d3d4c2c84a75f7e1b71816561d98f577cdf67"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c6.json",
+        "bytes": 19094,
+        "sha256": "135f0c9c70dc3fba2009bc28769d8b9c7002ae2b0a2323844f9852ca95078265"
+      },
+      {
+        "path": "app/data/forks/div1600r2_c1.json",
+        "bytes": 19184,
+        "sha256": "309d13e4a898d3a9298e5e8d3d5693e746bb134e03d40e77689c8b7df78b2208"
+      },
+      {
+        "path": "app/data/forks/cont_r2b_c1.json",
+        "bytes": 38367,
+        "sha256": "2d43f6095aa26732c37a960ee0040f4cc0140b981be6e94d3595574c7a341763"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c8.json",
+        "bytes": 19213,
+        "sha256": "65755b08ec1171cea8ea4f235ae8b46e716ab2f2bee3d2b040acafd5e313f7d3"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c1.json",
+        "bytes": 19197,
+        "sha256": "e86ed8e0bd661245d6019fac2114e4bae0c7c8008a9ea5a49c1016d2d51e03df"
+      },
+      {
+        "path": "app/data/forks/div800r1_c8.json",
+        "bytes": 19251,
+        "sha256": "5fdda8d49c9ebd34608edc84cadf4d8f28d237ed4aaef574cd5d5948041caac4"
+      },
+      {
+        "path": "app/data/forks/div800r2_c5.json",
+        "bytes": 19290,
+        "sha256": "2964ae033a43b96ad1689509512149752ea4503569cc6dedee675591ee4271b9"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c7.json",
+        "bytes": 19165,
+        "sha256": "a9ef8981cc39ef4a1f4363e6de93459245ea9670a27abc0135ec7339f95fa717"
+      },
+      {
+        "path": "app/data/forks/div800r2_c4.json",
+        "bytes": 19326,
+        "sha256": "734b09871f1f576efcb0100530b0084b4aeae6c9fc98a2c765b95b4e240c36a3"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c11.json",
+        "bytes": 19382,
+        "sha256": "592da8b3cce03f6b7b8c9cf42f7a30fc1a91080b8803edd13d9ac996b277cf24"
+      },
+      {
+        "path": "app/data/forks/div800r1_c2.json",
+        "bytes": 19324,
+        "sha256": "4bdc47c46ec3f44cbf4df6c928526625574e5f22362c628af8b617e6f1721bdb"
+      },
+      {
+        "path": "app/data/forks/act_u2p_adj.json",
+        "bytes": 210,
+        "sha256": "1220c62c79e8168c8f395d50f9b7f6f577c4eb6ed35c97cd1f0080582c4e68e6"
+      },
+      {
+        "path": "app/data/forks/div1600r1_c18.json",
+        "bytes": 38479,
+        "sha256": "c95029f23d4f7a897a544bb8130f1111b81c91cc4642220ed520ad4752807e19"
+      },
+      {
+        "path": "app/data/forks/act_u1p_post.json",
+        "bytes": 16095,
+        "sha256": "b85832c0ab4f61f6fe43b059ffffa2ca9fd804c4a0af0192f1372ccc767a209f"
+      },
+      {
+        "path": "app/data/forks/div2200r1_c5.json",
+        "bytes": 19501,
+        "sha256": "1d6ff234f075888eac3ff8b0f93d609c3965f846b31ec0db17e6c59de1182512"
+      },
+      {
+        "path": "app/data/forks/div800r1_c17.json",
+        "bytes": 37970,
+        "sha256": "efcff98dcbf654d705efe1c7793724c6968a72040fa82c3f156580f8c02f166e"
+      },
+      {
+        "path": "app/data/forks/act_u2n_pre.json",
+        "bytes": 1686,
+        "sha256": "d48e710ca3c90a127db0b518b2726d2527a082ec8018ce78ac004a297cf0bed8"
+      },
+      {
+        "path": "app/data/forks/div800r1_c9.json",
+        "bytes": 19256,
+        "sha256": "c6d9161e253dec009f43c7b774783b53d599c6d5a85c0d1b37348808cb1cb271"
+      },
+      {
+        "path": "app/data/forks/div800r2_c1.json",
+        "bytes": 19322,
+        "sha256": "c0ca423ecaaf93acd1356790dd5d9c570bb5dfad95ee5afe789fb5c886a8075d"
+      }
+    ],
+    "caveat": "Artifact snapshot is selective. No full predictor regeneration, trace code execution, simulation or world query was performed."
+  },
+  "evidence_sources": {
+    "usage_definition": ".venv/lib/python3.13/site-packages/verifiers/v1/types.py:107-167",
+    "anthropic_usage": ".venv/lib/python3.13/site-packages/verifiers/v1/dialects/anthropic.py:146-160",
+    "auxiliary_semantics": ".venv/lib/python3.13/site-packages/verifiers/v1/dialects/anthropic.py:1-6,273; v1/dialects/base.py:113-115; v1/interception/server.py:703-727",
+    "inspected_source_hashes": {
+      ".venv/lib/python3.13/site-packages/verifiers/v1/types.py": "d4fc5a989b299a84dcdce945640c07ea8ff68bf4e0f5936f1f1b6d207588c6af",
+      ".venv/lib/python3.13/site-packages/verifiers/v1/dialects/anthropic.py": "9e3f49ece3a17b198f1dafac5a234fdb1948f7f6c686fc0ce555b3761d7da417"
+    },
+    "source_caveat": "Current installed definitions were inspected. No claim that source lines are immutable historical snapshots.",
+    "extra_usage_definition": ".venv/lib/python3.13/site-packages/verifiers/v1/trace.py:349-350"
+  },
+  "reports": {
+    "main": "REPORT.md",
+    "timeline": "TIMELINE.md",
+    "science": "SCIENTIFIC_PROCESS.md",
+    "states": "CONCURRENCY.md",
+    "experiments": "EXPERIMENTS.md",
+    "paired": "POST11_PAIR_NOTES.md"
+  },
+  "experiments": {
+    "reported_anchor_count": 15,
+    "fork_from_fork_issued": 0,
+    "base_record": {
+      "successful_read_replies": 21,
+      "frames": 500,
+      "distinct_grid_times": 500,
+      "min_t": 5.0,
+      "max_t": 2500.0,
+      "preview_only_replies": 20,
+      "repeated_grid_times": {},
+      "note": "The trace has one full first-frame reply and 20 header/preview-only base chunks; 500 grid times do not imply that all 500 raw sensor arrays are available in this snapshot.",
+      "representative_read_ranges": [
+        {
+          "node": 7,
+          "tool_id": "toolu_01MFmvD31hGcAXEWii5Gjkgx",
+          "result_node": 8,
+          "ctx": "base",
+          "t": 5.0,
+          "frames": 1,
+          "first_t": 5.0,
+          "preview_only": false
+        },
+        {
+          "node": 41,
+          "tool_id": "toolu_01MNkN5SNkjkG4eBFqsgiu75",
+          "result_node": 44,
+          "ctx": "base",
+          "t": 130.0,
+          "frames": 25,
+          "first_t": 10.0,
+          "preview_only": true
+        },
+        {
+          "node": 163,
+          "tool_id": "toolu_01PRRuvPKkKeNNm8GRBnqJ2G",
+          "result_node": 164,
+          "ctx": "base",
+          "t": 2500.0,
+          "frames": 24,
+          "first_t": 2385.0,
+          "preview_only": true
+        }
+      ],
+      "omitted_read_ranges": 18
+    },
+    "detailed_protocols": "experiment_summary.json#/anchors,/injection_protocol_groups,/adjustment_protocol_groups"
+  }
+}

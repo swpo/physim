@@ -1,0 +1,791 @@
+{
+  "trace_id": "ae982494a72144c186f58a687a99cd33",
+  "task": "physim-BLOB2v2r2-E2#942",
+  "scope": {
+    "source": "/Users/spoho/v3work/ops/recovery_20260905/eval_fable_r2/E2/traces.jsonl",
+    "source_line": 1,
+    "episode_id": "11107cb8a9b94145b5c2e05868dc10dc",
+    "source_sha256_at_read": "d73404e732b895d795ec41cd18ac2cbcb3c929f63ad2d44dbf0a3e65f1dd3459",
+    "source_bytes_at_read": 11116033,
+    "selected_trace_sha256": "a9e4fb4c1c610eba8dd233061a9f76a11f3cd64cccb62b7c7192acd5990588f9",
+    "outer_ok": true
+  },
+  "recovery": "Root completed missing scientific handoff after inactive child; static read-only verification only",
+  "checks": {
+    "global_times_16": true,
+    "global_saves_exactly_match_world_replies": true,
+    "global_saves_pre_ready": true,
+    "L3S_second_window_bracketed_by_measured_global_continuation": true,
+    "L3F_all_targets_in_base": true,
+    "device_continuation_gap_preserved": true,
+    "emission_mean_shrinkage_in_final_code": true,
+    "L2_local_override_in_accepted_path": true,
+    "six_payloads_exactly_match_archived_objects": true,
+    "no_post_ready_sampled_world_requests": true
+  },
+  "instances": {
+    "L1": {
+      "id": "L1@i1",
+      "family": "L1",
+      "t_a": 747.6,
+      "k_a": 37380,
+      "seq": [
+        [
+          0.3683,
+          -0.0735,
+          -0.1045
+        ]
+      ]
+    },
+    "L2": {
+      "id": "L2@i1",
+      "family": "L2",
+      "t_a": 1458.66,
+      "k_a": 72933
+    },
+    "L3F": {
+      "id": "L3F@i1",
+      "family": "L3F",
+      "t_a": 1789.02,
+      "k_a": 89451,
+      "device": 0,
+      "horizons": [
+        25.0,
+        100.0,
+        400.0
+      ]
+    },
+    "L3S": {
+      "id": "L3S@i1",
+      "family": "L3S",
+      "t_a": 2060.72,
+      "k_a": 103036,
+      "epochs": [
+        400.0,
+        800.0
+      ],
+      "window_tu": 200.0
+    },
+    "L4": {
+      "id": "L4@i1",
+      "family": "L4",
+      "t_a": 829.94,
+      "k_a": 41497,
+      "port": 6,
+      "amp": 2.7998,
+      "dur": 10.5,
+      "k_dur": 525,
+      "lags": [
+        10.0,
+        25.0,
+        50.0,
+        100.0,
+        175.0,
+        250.0
+      ]
+    },
+    "L4D": {
+      "id": "L4D@i1",
+      "family": "L4D",
+      "t_a": 1346.0,
+      "k_a": 67300,
+      "port": 11,
+      "amp": 0.8124,
+      "dur": 16.78,
+      "k_dur": 839,
+      "lags": [
+        25.0,
+        75.0,
+        150.0
+      ]
+    }
+  },
+  "L3F_targets": [
+    1814.02,
+    1889.02,
+    2189.02
+  ],
+  "L3S_windows": [
+    [
+      2260.72,
+      2460.72
+    ],
+    [
+      2660.72,
+      2860.72
+    ]
+  ],
+  "global_continuation": {
+    "times": [
+      2525.0,
+      2550.0,
+      2575.0,
+      2600.0,
+      2625.0,
+      2650.0,
+      2675.0,
+      2700.0,
+      2725.0,
+      2750.0,
+      2775.0,
+      2800.0,
+      2825.0,
+      2850.0,
+      2875.0,
+      2900.0
+    ],
+    "matches": [
+      {
+        "t": 2525.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4027,
+          "tool_call_id": "toolu_01K1xPzkB37oxifd2zVRik4h",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4023,
+            "result_node": 4026,
+            "tool_call_id": "toolu_01XykDTha6a7s4bKokhwQoWh"
+          }
+        ]
+      },
+      {
+        "t": 2550.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4035,
+          "tool_call_id": "toolu_01CpHXFPenMWGL4sHS1oNmrh",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4031,
+            "result_node": 4034,
+            "tool_call_id": "toolu_01TkcWrcdaJwnCP68EaJQYup"
+          }
+        ]
+      },
+      {
+        "t": 2575.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4041,
+          "tool_call_id": "toolu_01CpCNf8FV8oLQGETUexLP8v",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4039,
+            "result_node": 4040,
+            "tool_call_id": "toolu_01TomeuJ1kCBiYGtR18znvbG"
+          }
+        ]
+      },
+      {
+        "t": 2600.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4049,
+          "tool_call_id": "toolu_01FW9kdx1Xp7hyfaapGNF8Qh",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4045,
+            "result_node": 4048,
+            "tool_call_id": "toolu_015rtmcAgz3gdt8QCvDKk4po"
+          }
+        ]
+      },
+      {
+        "t": 2625.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4056,
+          "tool_call_id": "toolu_01Dx7ZZQfbw8DusgzoGAxP8e",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4053,
+            "result_node": 4054,
+            "tool_call_id": "toolu_01RFmJXRvkcSX4845kZ9yssJ"
+          }
+        ]
+      },
+      {
+        "t": 2650.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4066,
+          "tool_call_id": "toolu_01WHj8v5wZzpF7bzhMyALzTV",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4062,
+            "result_node": 4065,
+            "tool_call_id": "toolu_01VBZGCzgaMmgrPi1JZ7EDKx"
+          }
+        ]
+      },
+      {
+        "t": 2675.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4072,
+          "tool_call_id": "toolu_013TAWs6jPQZzHTV6z3DqJEM",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4068,
+            "result_node": 4071,
+            "tool_call_id": "toolu_01H99iFX4sfvUpbGVp2k6d4r"
+          }
+        ]
+      },
+      {
+        "t": 2700.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4078,
+          "tool_call_id": "toolu_01UeKtz5idUuutGzyJArvtDQ",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4074,
+            "result_node": 4077,
+            "tool_call_id": "toolu_012uyVKqGBP1jWjDgYifreCv"
+          }
+        ]
+      },
+      {
+        "t": 2725.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4091,
+          "tool_call_id": "toolu_01D8ZhAE3P1FPo5rvFFXtWEx",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4085,
+            "result_node": 4090,
+            "tool_call_id": "toolu_011itZrn3N788xm3Fpyg23JH"
+          }
+        ]
+      },
+      {
+        "t": 2750.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4098,
+          "tool_call_id": "toolu_01HoWEq3X97CHycT1fv2nEXc",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4095,
+            "result_node": 4096,
+            "tool_call_id": "toolu_016yWb9DjcmtUakmLrgksXGM"
+          }
+        ]
+      },
+      {
+        "t": 2775.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4108,
+          "tool_call_id": "toolu_01Sk9PcAsoLwk7pTmnDdc8Qk",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4104,
+            "result_node": 4107,
+            "tool_call_id": "toolu_01FMbiBDBxjS8jJvCiE2VjpR"
+          }
+        ]
+      },
+      {
+        "t": 2800.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4114,
+          "tool_call_id": "toolu_0148dQidDY3on96EtvXy3pML",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4112,
+            "result_node": 4113,
+            "tool_call_id": "toolu_01WsBm1waE85a1PSpFAo5SkU"
+          }
+        ]
+      },
+      {
+        "t": 2825.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4122,
+          "tool_call_id": "toolu_012LLiYzXRgnEftzDEWA19wo",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4118,
+            "result_node": 4121,
+            "tool_call_id": "toolu_01Y8TvQ3A5ihWsaaovaxjviA"
+          }
+        ]
+      },
+      {
+        "t": 2850.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4128,
+          "tool_call_id": "toolu_017XQHULwYA6oWd9YdtoEiq9",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4124,
+            "result_node": 4127,
+            "tool_call_id": "toolu_017KmwLHAHZbdTeYxxDvD9eG"
+          }
+        ]
+      },
+      {
+        "t": 2875.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4135,
+          "tool_call_id": "toolu_011RwKUXhQi9gfHUB96q67uz",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4130,
+            "result_node": 4133,
+            "tool_call_id": "toolu_01MYEvf1v55jZtywrtk6X91f"
+          }
+        ]
+      },
+      {
+        "t": 2900.0,
+        "save_ref": {
+          "path": "app/data/globals/g2500.jsonl",
+          "node_index": 4145,
+          "tool_call_id": "toolu_01AKp4HFfToYH8rW8vH7bwpj",
+          "argument_field": "command",
+          "line_start": 2,
+          "line_end": 2
+        },
+        "matching_world_replies": [
+          {
+            "node": 4141,
+            "result_node": 4144,
+            "tool_call_id": "toolu_01Kik8cp5YxC1RBuBWuJv6R5"
+          }
+        ]
+      }
+    ]
+  },
+  "device_continuation": {
+    "cont_r1": {
+      "n": 80,
+      "times": [
+        2505.0,
+        2510.0,
+        2515.0,
+        2520.0,
+        2525.0,
+        2530.0,
+        2535.0,
+        2540.0,
+        2545.0,
+        2550.0,
+        2555.0,
+        2560.0,
+        2565.0,
+        2570.0,
+        2575.0,
+        2580.0,
+        2585.0,
+        2590.0,
+        2595.0,
+        2600.0,
+        2605.0,
+        2610.0,
+        2615.0,
+        2620.0,
+        2625.0,
+        2630.0,
+        2635.0,
+        2640.0,
+        2645.0,
+        2650.0,
+        2655.0,
+        2660.0,
+        2665.0,
+        2670.0,
+        2675.0,
+        2680.0,
+        2685.0,
+        2690.0,
+        2695.0,
+        2700.0,
+        2705.0,
+        2710.0,
+        2715.0,
+        2720.0,
+        2725.0,
+        2730.0,
+        2735.0,
+        2740.0,
+        2745.0,
+        2750.0,
+        2755.0,
+        2760.0,
+        2765.0,
+        2770.0,
+        2775.0,
+        2780.0,
+        2785.0,
+        2790.0,
+        2795.0,
+        2800.0,
+        2905.0,
+        2910.0,
+        2915.0,
+        2920.0,
+        2925.0,
+        2930.0,
+        2935.0,
+        2940.0,
+        2945.0,
+        2950.0,
+        2955.0,
+        2960.0,
+        2965.0,
+        2970.0,
+        2975.0,
+        2980.0,
+        2985.0,
+        2990.0,
+        2995.0,
+        3000.0
+      ],
+      "source_refs": [
+        {
+          "path": "app/data/forks/cont_r1_c1.json",
+          "node_index": 352,
+          "tool_call_id": "toolu_01LZFUUPVdGC4qrpQsbP16Nr",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c2.json",
+          "node_index": 681,
+          "tool_call_id": "toolu_01SA3EoicguDGEvS28FKWQvT",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c3.json",
+          "node_index": 755,
+          "tool_call_id": "toolu_01KyiFXEDKvdd69tkBcgbcDi",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c4.json",
+          "node_index": 829,
+          "tool_call_id": "toolu_0193EgAN4iGjVkKHPGBRfdhy",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c5.json",
+          "node_index": 899,
+          "tool_call_id": "toolu_018g8sLFXkD3X4xgZ7QhQSGR",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c6.json",
+          "node_index": 1045,
+          "tool_call_id": "toolu_0153uTHBepVLGpMcqsAHFMwW",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c13.json",
+          "node_index": 3363,
+          "tool_call_id": "toolu_015rB4tJL56tfDNJnxuQYdmf",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r1_c14.json",
+          "node_index": 3441,
+          "tool_call_id": "toolu_01WkvNTXWxgKJUn9cWd3HYD2",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        }
+      ]
+    },
+    "cont_r3b": {
+      "n": 40,
+      "times": [
+        2905.0,
+        2910.0,
+        2915.0,
+        2920.0,
+        2925.0,
+        2930.0,
+        2935.0,
+        2940.0,
+        2945.0,
+        2950.0,
+        2955.0,
+        2960.0,
+        2965.0,
+        2970.0,
+        2975.0,
+        2980.0,
+        2985.0,
+        2990.0,
+        2995.0,
+        3000.0,
+        3005.0,
+        3010.0,
+        3015.0,
+        3020.0,
+        3025.0,
+        3030.0,
+        3035.0,
+        3040.0,
+        3045.0,
+        3050.0,
+        3055.0,
+        3060.0,
+        3065.0,
+        3070.0,
+        3075.0,
+        3080.0,
+        3085.0,
+        3090.0,
+        3095.0,
+        3100.0
+      ],
+      "source_refs": [
+        {
+          "path": "app/data/forks/cont_r3b_c1.json",
+          "node_index": 4175,
+          "tool_call_id": "toolu_01AVXAbZkoYsLFYHzYw16Zmr",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r3b_c2.json",
+          "node_index": 4179,
+          "tool_call_id": "toolu_01EQpJpYTuXVBoSCgiEwnoj1",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r3b_c3.json",
+          "node_index": 4183,
+          "tool_call_id": "toolu_014rvwMDNtJzZn6dV8dVEJrz",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "app/data/forks/cont_r3b_c4.json",
+          "node_index": 4188,
+          "tool_call_id": "toolu_016nEUAtALNyFT4kHKLLjA7j",
+          "argument_field": "content",
+          "line_start": 1,
+          "line_end": 1
+        }
+      ]
+    },
+    "gap": [
+      2800,
+      2905
+    ]
+  },
+  "artifact_excerpts": {
+    "record_interpolation": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        13,
+        29
+      ],
+      "text": "# ---------- extended record (base + post-2500 continuation, deterministic) ----------\n_parts = [ (bts, B[0], B[1]) ]\nfor pref in ['cont_r1', 'cont_r3b']:\n    ts, F0, F1, _ = load_group(pref)\n    if len(ts): _parts.append((ts, F0, F1))\n_at = np.concatenate([p[0] for p in _parts])\n_a0 = np.concatenate([p[1] for p in _parts]); _a1 = np.concatenate([p[2] for p in _parts])\norder = np.argsort(_at); _at = _at[order]; _a0 = _a0[order]; _a1 = _a1[order]\nuniq = np.concatenate([[True], np.diff(_at) > 0])\nets, E = _at[uniq], {0: _a0[uniq], 1: _a1[uniq]}\nPOST_END = float(ets[-1])\n_spl = {}\ndef rec_interp(dev, t):\n    if dev not in _spl:\n        _spl[dev] = CubicSpline(ets, E[dev].reshape(len(ets), -1), axis=0)\n    t = float(np.clip(t, ets[0], ets[-1]))\n    return _spl[dev](t).reshape(13, NS[dev])"
+    },
+    "global_interpolation": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        44,
+        75
+      ],
+      "text": "# ---------- global stream ----------\ndef _load_globals():\n    pts = {}\n    def unwrap(s):\n        d = json.loads(s)\n        return json.loads(d['result']) if isinstance(d.get('result'), str) else d\n    for f in glob.glob('/app/data/globals/*.jsonl'):\n        for line in open(f):\n            if not line.strip(): continue\n            try: d = unwrap(line)\n            except Exception: continue\n            if 't' in d and 'global_stats' in d:\n                pts[d['t']] = np.array(d['global_stats'])\n    for f in glob.glob('/app/data/base/chunk_*.json') + glob.glob('/app/data/forks/*_c*.json'):\n        try: d = unwrap(open(f).read())\n        except Exception: continue\n        if d.get('steps') and d.get('global_stats'):\n            pts[d['steps'][-1]['t']] = np.array(d['global_stats'])\n    ts = np.array(sorted(pts)); G = np.array([pts[t] for t in ts])\n    return ts, G\nGTS, G = _load_globals()\ndef glob_interp(t):\n    t = float(np.clip(t, GTS[0], GTS[-1]))\n    i = int(np.clip(np.searchsorted(GTS, t), 1, len(GTS)-1))\n    w = (t - GTS[i-1]) / (GTS[i] - GTS[i-1])\n    return (1-w)*G[i-1] + w*G[i]\ndef glob_gap(t):\n    t = float(np.clip(t, GTS[0], GTS[-1]))\n    i = int(np.clip(np.searchsorted(GTS, t), 1, len(GTS)-1))\n    return float(GTS[i] - GTS[i-1])\ndef glob_window_avg(t_end, width=200.0, n=41):\n    return np.mean([glob_interp(t) for t in np.linspace(t_end-width, t_end, n)], axis=0)"
+    },
+    "L1": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        79,
+        94
+      ],
+      "text": "L1P = dict(a2=3.60, a3p=22.55, a3n=19.17, L=15.47)\nL1CAL = np.clip(np.array([0.91,0.99,1.19,1.0,1.10,0.5,1.04,0.92,0.90,0.70,0.69,1.40,1.09]), 0.5, 1.5)\ndef l1_alpha(seq):\n    U = np.array(seq, dtype=float)\n    u3p = np.clip(U[:,2],0,None); u3n = np.clip(-U[:,2],0,None)\n    V = np.stack([U[:,0], L1P['a2']*U[:,1], L1P['a3p']*u3p - L1P['a3n']*u3n], axis=1)\n    return float(np.exp(-np.linalg.norm(V.sum(axis=0)) / L1P['L']))\ndef predict_L1(t_a, seq):\n    k = len(seq); t_read = t_a + 5.0*k\n    rec = rec_interp(0, t_read)\n    m_loc, v_loc = local_stats(0, t_read)\n    a = l1_alpha(seq)\n    mean = a*rec + (1-a)*m_loc[:,None]\n    var = (1 - a*a) * v_loc[:,None] * np.ones((13,13))\n    sigma = np.sqrt(var + np.maximum(INTERP[0][:,None], 5e-4)**2) * L1CAL[:,None]\n    return mean, np.maximum(sigma, 1e-4)"
+    },
+    "L3F": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        105,
+        116
+      ],
+      "text": "# ---------- L3F ----------\ndef predict_L3F(dev, t_a):\n    means, sigs = [], []\n    for H in (25., 100., 400.):\n        t = t_a + H\n        rec = rec_interp(dev, t)\n        s_h = np.array([sig_h(dev, p, H) for p in range(13)])\n        if t > 2500.0:\n            s_h = np.maximum(s_h, 0.003)   # measured post-2500 fork agreement ~0.0016 port2; hedge x2\n        sig = np.sqrt(s_h[:,None]**2 + INTERP[dev][:,None]**2) * np.ones((13, NS[dev]))\n        means.append(rec); sigs.append(np.maximum(sig, 1e-4))\n    return np.array(means), np.array(sigs)"
+    },
+    "L3S": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        118,
+        128
+      ],
+      "text": "# ---------- L3S ----------\ndef predict_L3S(t_a):\n    means, sigs = [], []\n    for off in (400., 800.):\n        te = t_a + off\n        g = glob_window_avg(te)\n        sig = np.maximum(3.0*GSTEP, 0.0008)\n        if te > 2500.0: sig = np.maximum(sig*2.0, 0.002)\n        if te > POST_END: sig = np.maximum(sig*5.0, 0.02)\n        means.append(g); sigs.append(sig*np.ones_like(g))\n    return np.array(means), np.array(sigs)"
+    },
+    "emission": {
+      "artifact": "app/models/predictor3.py",
+      "sha256": "4eb9ccc0c0b66b4e694d7a3a20cb0d19cb275cdaf92795cdd749a92c189b3db8",
+      "lines": [
+        168,
+        214
+      ],
+      "text": "def emis_M(inj, amp, dur, lag):\n    \"\"\"M[13] magnitude and spread[13] across measurements\"\"\"\n    eff = _eff(amp, dur)\n    li = _nearest_lag(lag)\n    pts = MEAS.get(inj, {}).get(li, [])\n    if pts:\n        arr_a = np.array([p[0] for p in pts]); arr_m = np.array([p[1] for p in pts])  # [n,13]\n        # weight by closeness in eff-amp\n        w = np.exp(-((arr_a - min(eff, arr_a.max()))**2) / (2*0.2**2)) + 1e-6\n        M = (w[:,None]*arr_m).sum(0)/w.sum()\n        spread = np.sqrt(np.maximum(((w[:,None]*(arr_m - M)**2).sum(0)/w.sum()), 0.0))\n        if eff > arr_a.max():\n            M = M * min(1.0 + 0.35*(eff - arr_a.max()), 1.7)\n            spread = np.maximum(spread, 0.5*M)\n        return M, spread\n    # no measurements for this inj port: scale its amp-1 template or fall back to tiny\n    base_pts = MEAS.get(inj, {})\n    allm = [m for lps in base_pts.values() for a,m in lps if abs(a-1.0) < 0.05]\n    if allm:\n        Mb = np.mean(allm, axis=0)\n    else:\n        Mb = np.full(13, 0.01)\n    M = Mb * amp_ratio(eff)\n    return M, 0.5*M\ndef _predict_L4_generic(t_a, port, amp, dur, lags):\n    means, sigs = [], []\n    for lag in lags:\n        t = t_a + lag\n        rec = rec_interp(1, t)\n        M, spread = emis_M(port, amp, dur, lag)\n        m_loc, v_loc = local_stats(1, t)\n        v = np.maximum(v_loc, 1e-8)\n        alpha = np.clip(1 - (M**2)/(2*v), 0.0, 1.0)\n        mean = alpha[:,None]*rec + (1-alpha)[:,None]*m_loc[:,None]\n        var = (1 - alpha**2)[:,None]*v[:,None]\n        extra = (0.7*M + spread)**2   # anchor/template variability\n        sig = np.sqrt(var + np.minimum(extra, v)[:,None] + INTERP[1][:,None]**2 + 0.002**2)\n        # cap sigma at ~1.2x climatological sd (no point exceeding)\n        cap = 1.2*np.sqrt(v)[:,None] + 0.01\n        sig = np.minimum(sig, np.maximum(cap, 0.01))\n        sig = np.broadcast_to(sig, (13, NS[1])).copy()\n        means.append(mean); sigs.append(np.maximum(sig, 1e-4))\n    return np.array(means), np.array(sigs)\ndef predict_L4(t_a, port, amp, dur):\n    return _predict_L4_generic(t_a, port, amp, dur, (10.,25.,50.,100.,175.,250.))\ndef predict_L4D(t_a, port, amp, dur):\n    return _predict_L4_generic(t_a, port, amp, dur, (25.,75.,150.))"
+    }
+  },
+  "L2_override": {
+    "node": 5114,
+    "tool_call_id": "toolu_01KwioQiU29N3GXNPj1gg4YA",
+    "command": "python3 - <<'EOF'\nimport sys, json, numpy as np\nsys.path.insert(0,'/app/models')\nimport predictor3 as P\n\nt_a = 1458.66\nr0 = P.rec_interp(0, t_a); r1 = P.rec_interp(1, t_a)\nallv = np.concatenate([r0, r1], axis=1)     # [13, 32]\ndev_mean = allv.mean(axis=1); dev_spread = allv.std(axis=1)\ng = P.glob_interp(t_a); g_mean = g[:,0]; g_sd = np.sqrt(np.maximum(g[:,1],1e-10))\nmean = 0.7*dev_mean + 0.3*g_mean\nsigma = np.sqrt((0.7*dev_spread)**2 + (0.45*(dev_mean-g_mean))**2 + (0.5*g_sd)**2)\nsigma = np.maximum(sigma, 1e-4)\nM = np.repeat(mean[:,None], 13, axis=1); S = np.repeat(sigma[:,None], 13, axis=1)\npl = P.payload(M, S)\nopen('/app/models/sub_L2_i1.json','w').write(pl)\nfor p in range(13):\n    print(f'port{p:2d}: dev {dev_mean[p]:+.4f}\u00b1{dev_spread[p]:.4f} glob {g_mean[p]:+.4f}\u00b1{g_sd[p]:.4f} -> mean {mean[p]:+.4f} sigma {sigma[p]:.4f}')\nEOF"
+  },
+  "payloads": [
+    {
+      "instance": "L3S@i1",
+      "node": 5103,
+      "tool_call_id": "toolu_01SJeXv648jMBmr4YerqYrtt",
+      "artifact": "app/models/sub_L3S_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    },
+    {
+      "instance": "L1@i1",
+      "node": 5108,
+      "tool_call_id": "toolu_0179fKaoi6pv4mkbH5pLMVG8",
+      "artifact": "app/models/sub_L1_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    },
+    {
+      "instance": "L2@i1",
+      "node": 5118,
+      "tool_call_id": "toolu_016hJrffezPD4WNSVgn9S7Ja",
+      "artifact": "app/models/sub_L2_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    },
+    {
+      "instance": "L3F@i1",
+      "node": 5124,
+      "tool_call_id": "toolu_015791NvJTs3vkXCameiDB52",
+      "artifact": "app/models/sub_L3F_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    },
+    {
+      "instance": "L4D@i1",
+      "node": 5141,
+      "tool_call_id": "toolu_01NqfhmEXtQxqmowTmfuDmZS",
+      "artifact": "app/models/sub_L4D_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    },
+    {
+      "instance": "L4@i1",
+      "node": 5145,
+      "tool_call_id": "toolu_014hagsGsDoREtXyY1GqqGDL",
+      "artifact": "app/models/sub_L4_i1.json",
+      "exact_object_match": true,
+      "ok": true
+    }
+  ],
+  "methods": {
+    "L1": "empirical actuator-distance contraction",
+    "L2": "0.7device pooled mean+0.3global mean, repeated across hidden slots",
+    "L3F": "cubic observed-record interpolation",
+    "L3S": "global observed-record/continuation interpolation and window averaging",
+    "L4": "RMS-conditioned decorrelation/shrinkage of mean and uncertainty",
+    "L4D": "same empirical RMS/shrinkage path; smaller observed training residual at drawn port11"
+  },
+  "limitations": [
+    "No embedded predictor or episode code executed",
+    "Not a general learned dynamics simulator",
+    "Bulk generator input arrays absent; no full payload regeneration",
+    "Global/device continuation sampling are different",
+    "State transaction and timeout-commit history incomplete",
+    "Experimental methods can be legitimate without establishing general theory"
+  ]
+}

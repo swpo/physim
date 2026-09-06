@@ -34,7 +34,7 @@ worlds; this post asks what a coding agent can learn through instruments.</p>
 The resource revision is implemented. The user canceled further queued work;
 all evaluation processes are now stopped. No future benchmark is authorized.
 The two reported completions below are <b>diagnostic pilot evidence, not a
-trusted comparative benchmark</b>: the E1 audit found non-composing replies
+trusted comparative benchmark</b>: both audits found non-composing replies
 during parallel exploration. No live state-integrity fix was applied.</div>
 <table>
 <tr><th>BLOB2v2r2 task</th><th>Reported outcome</th><th>Wall time</th></tr>
@@ -46,8 +46,8 @@ during parallel exploration. No live state-integrity fix was applied.</div>
 <tr><td>E2 #944</td><td>Not admitted</td><td>—</td></tr>
 </table>
 <p>These are Fable-5 pilot outcomes, not cohort means or a model ranking.
-<b>The process audit covers E1 #928 only.</b> It does not establish E2's
-strategy. Failures and cancellations are not scored zeros. See the
+<b>Both completed cases now have process audits.</b> Failures and
+cancellations are not scored zeros. See the
 <a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/rollouts/OPERATOR_SCOPE.md">scope and terminal stop record</a>.</p>
 
 <h2>1 · The current task: known syllabus, hidden instances</h2>
@@ -115,70 +115,93 @@ reconstructs its state from the fork stream and operation log. Reconstruction
 is not charged as logical forward time. Eight states is not a total-memory bound,
 and response-size guards are transport limits, not experiment deadlines.</p>
 
-<h2>3 · E1 #928: what the high score actually measured</h2>
-<p>The <a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/REPORT.md">one-run audit</a> follows trace
-<code>0bdd699154ee4e1d96aac4e0961bc11d</code>. It found empirical work—actuator
-trials, twelve-port emission scans, dose series, replay checks, and
-uncertainty fitting—with <b>22 Agent delegations</b>. Rounded UTC milestones
-are not server transaction timestamps:</p>
+<h2>3 · Two completed cases: E1 #928 and E2 #942</h2>
+<p>Both audits follow one exact trace each:
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/REPORT.md">E1 #928</a>
+(<code>0bdd699154ee4e1d96aac4e0961bc11d</code>) and
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/REPORT.md">E2 #942</a>
+(<code>ae982494a72144c186f58a687a99cd33</code>). The
+<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/POST11_PAIR_NOTES.md">paired notes</a>
+hold every exact tool ID and artifact line cited here. The two cases use
+different worlds, menus, ports, and hidden draws. Their scores are not averaged,
+and their difference is not evidence about model quality.</p>
 <table>
-<tr><th>UTC, September 5–6</th><th>Recorded process</th></tr>
-<tr><td>21:32–22:25</td><td>Start; parallel exploration; base capture reaches 2500</td></tr>
-<tr><td>23:05</td><td>Stops four workers after sustained timeouts; later major batches run serially</td></tr>
-<tr><td>23:52</td><td>Rejects eight anomalous port-2/anchor-900 rows; final response artifacts use anchors 1600/2100</td></tr>
-<tr><td>00:58:27</td><td>Calls ready; makes two permitted offline predictor edits afterward</td></tr>
-<tr><td>01:00–01:07</td><td>Six submissions accepted; scoring completes</td></tr>
+<tr><th>Quantity</th><th>E1 #928</th><th>E2 #942</th></tr>
+<tr><td>World / menu</td><td><code>p4g2_044</code> · L3E</td><td><code>p6g8_033</code> · L3S</td></tr>
+<tr><td>Reported episode skill (six-instance mean)</td><td><b>0.68066238</b></td><td><b>0.65449844</b></td></tr>
+<tr><td>Wall time</td><td>3 h 34 m 48 s</td><td>5 h 49 m 22 s</td></tr>
+<tr><td>Completed model calls / error attempts</td><td>1,216 / 23</td><td>2,218 / 40</td></tr>
+<tr><td>Prompt tokens (excludes cache reads, includes cache writes)</td><td>4,818,550</td><td>5,979,370</td></tr>
+<tr><td>Cache-read tokens</td><td>117,000,774</td><td>213,938,314</td></tr>
+<tr><td>Output tokens (reasoning subset)</td><td>1,199,851 (153,020)</td><td>2,265,077 (97,241)</td></tr>
+<tr><td>Input + output tokens</td><td>123,019,175</td><td>222,182,761</td></tr>
+<tr><td>Agent delegations / Bash / Write</td><td>22 / 324 / 52</td><td>35 / 665 / 276</td></tr>
+<tr><td>Environment requests / persisted turns</td><td>1,065 / 891</td><td>1,300 / 1,023</td></tr>
+<tr><td>Environment timeouts / missing results</td><td>54 / 2</td><td>266 / 11</td></tr>
+<tr><td>Live simulated tu / fork read frames</td><td>11,495 / 625</td><td>14,655 / 895</td></tr>
+<tr><td>Fork replies / distinct returned IDs</td><td>181 / 145</td><td>100 / 96</td></tr>
+<tr><td>Peak logical open / resident forks</td><td>31 / 8</td><td>12 / 8</td></tr>
+<tr><td>Cap hits / resource truncation</td><td>0 / none</td><td>0 / none</td></tr>
+<tr><td>Post-ready world requests / accepted submissions</td><td>0 / 6</td><td>0 / 6</td></tr>
 </table>
-<p><b>No post-ready world calls were observed.</b> All six accepted payloads exactly match
-the saved payload files. Post-ready shell commands only use local files
-and predictors. Full <a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/TIMELINE.md">timeline</a> and
-<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/SCIENTIFIC_PROCESS.md">method evidence</a>:</p>
-<table>
-<tr><th>Instance</th><th>Submitted method</th><th>Reported skill</th></tr>
-<tr><td>L1</td><td>Recorded readings blended toward global means with empirical actuator features</td><td>0.2225</td></tr>
-<tr><td>L2</td><td>Global nowcast/climatology, repeated across hidden slots; no recovered geometry</td><td>−0.0034</td></tr>
-<tr><td>L3F</td><td>Catmull–Rom record interpolation, with angle-aware interpolation and empirical sigma</td><td>0.9964</td></tr>
-<tr><td>L3E</td><td>Count crossings in interpolated recorded streams</td><td>0.8856</td></tr>
-<tr><td>L4 / L4D</td><td>Undisturbed recorded means; response envelopes change uncertainty</td><td>0.9891 / 0.9938</td></tr>
-</table>
-<p>L3F ends at <b>789.72+400=1189.72</b>; L3E ends at
-<b>1694.78+800=2494.78</b>. Both lie inside the readable 2500-tu record.
-This is permitted pre-reveal interpolation/counting, not observed forbidden
-access—and not learned-dynamics extrapolation. Both actual dose means also
-use the undisturbed record. A fitted port-2 mean response existed, but the
-drawn ports were <b>3 and 1</b>, so it was unused. High dose scores do not
-validate that template or strong-response extrapolation.</p>
-<p><b>No custom dynamical simulator appears in the submitted path.</b>
-Most bulk fitting inputs are absent from the archived workspace; no
-independent payload regeneration was performed. High instance scores are
-not evidence of a general theory.</p>
+<p>Token counts follow the installed verifiers <code>Usage</code> schema.
+Error attempts have no recorded usage; auxiliary token-count requests are not
+recorded; separate cache-write totals and billed dollars are unavailable.
+Reasoning tokens are already inside output tokens. Wall time is not a billing
+measurement. Both runs stayed far below every private guard.</p>
 
-<div class="note"><b>E1-only token accounting</b> (<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/summary.json">audit JSON</a>).<br/>
-1,216 completed model calls, including delegated branches; 23 errors
-(22 HTTP 429, one connection reset), without recorded usage.<br/>
-Prompt: <b>4,818,550</b> (includes cache writes, excludes cache reads).<br/>
-Cache reads: <b>117,000,774</b>. Output: <b>1,199,851</b>.<br/>
-Reasoning: <b>153,020</b>, a <b>subset of output</b>, not added again.<br/>
-Input + output: <b>123,019,175</b> reported tokens, not unique scientific
-content. Separate cache-write totals and billed dollars are unavailable;
-missing error usage was not imputed. Wall time is not a billing estimate.</div>
+<h3>What each agent actually submitted</h3>
+<table>
+<tr><th>Instance</th><th>E1 #928 method → skill</th><th>E2 #942 method → skill</th></tr>
+<tr><td>L1</td><td>Recorded device readings contracted toward global means with fitted actuator features → 0.2225</td><td>Fitted actuator-distance contraction toward a local mean → 0.5225</td></tr>
+<tr><td>L2</td><td>Global nowcast/climatology repeated across hidden slots → −0.0034</td><td>Post-ready local blend: 0.7 pooled-device mean + 0.3 global mean, repeated across slots → 0.1260</td></tr>
+<tr><td>L3F</td><td>Catmull–Rom record interpolation; all targets inside base 2500 → 0.9964</td><td>Cubic record interpolation; targets 1814.02 / 1889.02 / 2189.02, inside base → 0.9564</td></tr>
+<tr><td>L3E / L3S</td><td>Crossing counts from interpolated record through 2494.78 → 0.8856</td><td>Window means of saved global streams; second window 2660.72–2860.72 is outside base but covered by 16 global samples collected before ready → 0.9518</td></tr>
+<tr><td>L4</td><td>Undisturbed recorded mean; response envelope in sigma; port 3 → 0.9891</td><td>Measured-RMS shrinkage of mean and sigma; port 6, amp 2.7998 → 0.4040</td></tr>
+<tr><td>L4D</td><td>Undisturbed recorded mean; envelope in sigma; port 1 → 0.9938</td><td>Same RMS/shrinkage model; port 11, amp 0.8124 → 0.9664</td></tr>
+</table>
+<p>Neither submitted path contains a general learned dynamical simulator.
+That is not the same as “no modeling”: E2's actuator contraction and
+RMS→decorrelation/shrinkage models are genuine, narrower empirical models.
+E1's two drawn dose means stayed passive; its fitted port-2 mean template was
+unused because the drawn ports were 3 and 1. E2's emission model changes the
+mean itself, backed by measured late RMS about 0.22 for port 6 versus about
+0.01 for port 11 at its training condition. E2's L4 draw (amplitude 2.7998,
+above the apparatus limit 1) scored 0.404 with bounded heuristic scaling and no
+direct training validation above amplitude 1.</p>
+<p><b>Record and continuation lookup were permitted.</b> Both agents used the
+readable base record heavily. E2 also sampled a fresh anchor-2500 continuation
+before ready: 16 global observations at 2525–2900 in 25-tu steps, which cover
+its out-of-base L3S window. Its device continuation is sparser and has a
+2800→2905 gap; it is not uniform 5-tu coverage. High undisturbed-forecast scores
+therefore show careful data collection and interpolation, not learned
+extrapolation. Both L2 answers repeat marginal estimates across hidden slots;
+neither recovers hidden sensor geometry.</p>
+<p>Post-ready behavior was clean in both cases: zero sampled world-tool calls
+after ready; only local file, predictor, and submission work; all six payloads
+exactly match the archived payload files. E1 submitted L3E, L1, L2, L3F, L4,
+L4D; E2 submitted L3S, L1, L2, L3F, L4D, L4.</p>
 
 <h2>4 · State integrity limits the interpretation</h2>
-<p><a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/CONCURRENCY.md">Distinct parallel fork requests</a>
-for anchors 200 and 600 returned the <b>same ID at different anchors</b>;
-another batch repeated this across four anchors. Advancing reads also
-returned repeated times. Native transport performs whole-state
-GET → tool → PUT, with last-write-wins updates. This strongly supports lost
-updates, not random 128-bit ID collisions. Missing transaction logs prevent
-reconstructing exact interleavings or identifying every affected sample.</p>
-<p>Persisted counters report <b>145 forks versus 181 success-shaped fork
-replies</b>, peak <b>31 logical / 8 resident</b>, and <b>zero cap hits</b>.
-Meters and replies do not reconcile. These are <b>reported counters, not
-exact physical-work totals</b>. The audit also found 54 environment-tool
-timeouts and 40 unknown-context errors. A timeout does not tell us whether
-server work committed. Completion and six accepted submissions do not
-repair this evidence gap.</p>
-
+<p>In E1, <a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/CONCURRENCY.md">distinct parallel fork requests</a>
+for anchors 200 and 600 returned the <b>same ID at different anchors</b>; another
+batch repeated this across four anchors, and parallel advancing reads returned
+repeated times. In E2, the pattern is weaker but present: 100 successful fork
+replies returned 96 distinct handles, one handle was reported at anchors 2500
+and 1000, a wait reply reported 1250 followed by a zero-window read at 1225, and
+five handles acknowledged reset twice
+(<a href="https://github.com/swpo/physim/blob/main/probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/CONCURRENCY.md">E2 evidence</a>).
+Native transport performs whole-state GET → tool → PUT with last-write-wins
+updates. This strongly supports lost updates, not random 128-bit ID
+collisions. Transaction logs are missing, so exact interleavings cannot be
+reconstructed.</p>
+<p>Reported counters are not exact physical-work ledgers. E1's ordinary replies
+exceed persisted turns by 118 and its reply sums exceed the meters; E2's
+ordinary replies equal its 1,023 persisted turns, yet reply-derived sensor and
+simulation sums fall below the final meters. A matching count is not
+transaction exactness. E2 also had 266 environment timeouts; a timeout does not
+tell us whether server work committed. Completion and six accepted
+submissions do not repair this evidence gap. No live fix was applied.</p>
 <h2>5 · Before any further model comparison</h2>
 <p><b>Proposed test ladder only; no new runs or fixes are claimed here.</b></p>
 <ol>
