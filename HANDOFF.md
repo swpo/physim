@@ -61,12 +61,17 @@ selection. Toycounterexamples disprove earlierceiling/homogenizationclaims.
 -post12cb4d73b live: finalauditedresults,correctedcharts,6wide re-sim films.
 Replayhelperd257b8a;48sourcepins verified,known2stale0.3.5lockentries explicit.
 
-## Remaining work (no paid benchmark runs)
-Child post11-pilot-notes is documentation-only, updating post11 to current
-BLOB2v2r2method + reduced-scope diagnosticcase-study/caveats + cheaptestladder.
-It will reply explicitly; parent reviews/commits/pushes. No newmodels/physics/
-resource changes. User can review the E1audit on nextcheck-in. Existing
-oldcappedcohorts, invalidmodecohorts, and shortdiagnostic remain separate.
+## Final handoff (no work or benchmark runs active)
+Post11 current-method/cost/process audit is updated and pushed17f0806,
+including all six final dispositions, E1-only methods/tokens, concurrency
+caveat and a future-only cheaper test ladder. Index row11 updated; post12
+unchanged. Documentation child completed and was deleted. All evaluators,
+completion watchers and recurring evalheartbeat are stopped. No further
+paid benchmark/model/seed/world runs are authorized. No concurrency fix
+or fresh benchmark has been run. User can review the E1audit and post11.
+Keep oldcapped, invalidmode, diagnostic and reduced fresh cohorts separate.
+Next work requires user direction; cheapest proposed action is the native
+concurrency/state-transaction test and record/no-emission shortcut controls.
 Operatorcontrols/logs/specs and exactfreshdirs are in recovery state.json.
 
 ---
