@@ -1555,4 +1555,8 @@ class BlobToolset(Blob5Mixin,
 
 
 if __name__ == "__main__":
+    # Host operator fence applies only to NEW server processes. Running
+    # experiments already imported this module and are not interrupted.
+    from physim.operator_admission import main_guard
+    main_guard()
     BlobToolset.run()
