@@ -1,0 +1,268 @@
+[
+  {
+    "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/agentenv/cache/p4g2_044_s928.npz",
+    "entries": [
+      {
+        "name": "frames.npy",
+        "shape": [
+          501,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 788004992,
+        "compressed_bytes": 788004992
+      },
+      {
+        "name": "meta.npy",
+        "shape": [],
+        "dtype": "<U3907",
+        "fortran": false,
+        "uncompressed_bytes": 15756,
+        "compressed_bytes": 15756
+      },
+      {
+        "name": "blobs.npy",
+        "shape": [],
+        "dtype": "<U884806",
+        "fortran": false,
+        "uncompressed_bytes": 3539352,
+        "compressed_bytes": 3539352
+      },
+      {
+        "name": "snaps.npy",
+        "shape": [
+          1
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 136,
+        "compressed_bytes": 136
+      },
+      {
+        "name": "snapF_1700.npy",
+        "shape": [
+          12,
+          256,
+          256
+        ],
+        "dtype": "float32",
+        "fortran": false,
+        "uncompressed_bytes": 3145856,
+        "compressed_bytes": 3145856
+      },
+      {
+        "name": "snapR_1700.npy",
+        "shape": [
+          175
+        ],
+        "dtype": "uint8",
+        "fortran": false,
+        "uncompressed_bytes": 303,
+        "compressed_bytes": 303
+      }
+    ]
+  },
+  {
+    "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/agentenv/cache/p4g2_044_s928_branches.npz",
+    "entries": [
+      {
+        "name": "meta.npy",
+        "shape": [],
+        "dtype": "<U181",
+        "fortran": false,
+        "uncompressed_bytes": 852,
+        "compressed_bytes": 852
+      },
+      {
+        "name": "control.npy",
+        "shape": [
+          51,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 80216192,
+        "compressed_bytes": 80216192
+      },
+      {
+        "name": "calib1.npy",
+        "shape": [
+          51,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 80216192,
+        "compressed_bytes": 80216192
+      },
+      {
+        "name": "calib2.npy",
+        "shape": [
+          51,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 80216192,
+        "compressed_bytes": 80216192
+      },
+      {
+        "name": "calib4.npy",
+        "shape": [
+          51,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 80216192,
+        "compressed_bytes": 80216192
+      },
+      {
+        "name": "announced.npy",
+        "shape": [
+          51,
+          12,
+          256,
+          256
+        ],
+        "dtype": "float16",
+        "fortran": false,
+        "uncompressed_bytes": 80216192,
+        "compressed_bytes": 80216192
+      }
+    ]
+  },
+  {
+    "path": "/Users/spoho/Documents/prime/test/physim/probes/blobs/agentenv/cache/round5/r5_p4g2_044_s928_truth.npz",
+    "entries": [
+      {
+        "name": "manifest.npy",
+        "shape": [],
+        "dtype": "<U1693",
+        "fortran": false,
+        "uncompressed_bytes": 6900,
+        "compressed_bytes": 1359
+      },
+      {
+        "name": "L1.npy",
+        "shape": [
+          1,
+          12,
+          13
+        ],
+        "dtype": "float64",
+        "fortran": true,
+        "uncompressed_bytes": 1376,
+        "compressed_bytes": 1325
+      },
+      {
+        "name": "L2.npy",
+        "shape": [
+          1,
+          12,
+          13
+        ],
+        "dtype": "float64",
+        "fortran": true,
+        "uncompressed_bytes": 1376,
+        "compressed_bytes": 1329
+      },
+      {
+        "name": "L3F_h5.npy",
+        "shape": [
+          1,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 1952,
+        "compressed_bytes": 1876
+      },
+      {
+        "name": "L3F_h25.npy",
+        "shape": [
+          1,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 1952,
+        "compressed_bytes": 1877
+      },
+      {
+        "name": "L3F_h100.npy",
+        "shape": [
+          24,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 43904,
+        "compressed_bytes": 41527
+      },
+      {
+        "name": "L3F_h400.npy",
+        "shape": [
+          24,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 43904,
+        "compressed_bytes": 41734
+      },
+      {
+        "name": "L3E.npy",
+        "shape": [
+          24,
+          16
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 3200,
+        "compressed_bytes": 144
+      },
+      {
+        "name": "L4.npy",
+        "shape": [
+          16,
+          6,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 175232,
+        "compressed_bytes": 168400
+      },
+      {
+        "name": "L4D.npy",
+        "shape": [
+          16,
+          3,
+          12,
+          19
+        ],
+        "dtype": "float64",
+        "fortran": false,
+        "uncompressed_bytes": 87680,
+        "compressed_bytes": 84127
+      }
+    ]
+  }
+]

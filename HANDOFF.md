@@ -1,4 +1,54 @@
-# CURRENT STATE — 2026-09-06 03:45 UTC
+# CURRENT STATE — R6 FIRST PASS READY (2026-09-07T03:39:48.296136+00:00)
+
+## Completed and reviewed, not a shipped evaluation
+- Review entry: probes/blobs/agentenv/round6/README.md.
+- Draft: probes/blobs/l0/deepsearch/TRACKA_R6_PREDICTOR.md.
+- New isolated oracle runner: environments/physim/physim/blobround6.py.
+  Submitted API remains predict(actions,queries,n_samples,seed) from fixed opaque
+  t0; no public history/anchor/geometry. Private OracleRunner has separate required
+  truth_seed. No fixed L1–L4 mentor syllabus.
+- Worker and independent root tests:31/31 PASS;25toy/API/checkpoint+6native;
+  max6substeps(0.12tu). No full old-truth parity, scorer, sandbox, resource limits,
+  production integration, or long-horizon performance proof.
+- Both privileged physics dossiers are COMPLETE at round6/physics/p4g2_044/
+  and p6g8_033/. Root read reports and key figures. Source-off spot/stripe
+  changes, negative structures missed by home probes, shared filters and gated
+  halos are candidates; no general law/chaos/organism identity proven.
+- Real paired field effects replace the earlier invalid MAE-as-effect inference.
+  Existing control/treatment caches use common state/RNG. PolicyA prototype does
+  NOT couple sham/treatment noise that way; resolve that gate before a battery.
+- All three workers sent explicit final handoffs and were retired. User-approved
+  watchdog95f1c473-ed4e-4edf-be8b-509c91ffd375 was deleted after review. No
+  worker, plotting/test process, evaluation monitor, or pod is left running.
+  COORDINATION.json records recovery of finished background jobs and closure.
+
+## Next decision, not an automatic launch
+Review dossiers; choose one/two phenomena and minimal confirmatory experiments.
+Resolve causal noise pairing and exploration/evaluation ranges; then bound costs.
+No new scientific sims, seeds/cohorts, truth battery, paid model run or pod is
+currently authorized. The transport whole-state GET/PUT race still needs a native
+regression/fix before ANY rollout. Privileged source/dossiers/cache must be excluded
+from agent access; published worlds are development cases, not uncontaminated tests.
+
+## Closed work and corrections to preserve
+- Post11 paired E1/E2 audits pushed16275df. E1 audit30checks; E2 audit43checks.
+  Both r2 reported completions remain diagnostic, not a clean benchmark. E1#929
+  unscored HarnessError; E2#943 canceled after~11min; E1#930 setup canceled;
+  E2#944 not admitted. No relaunch, cohort pooling, or canceled-task zeros.
+- Uncommitted absolute_scoring/ script+JSON unchanged. It reproduces raw CRPS to
+  stored rounding, but spread normalization and noise-floor ratios are exploratory.
+  Full-base span is not pre-anchor; LOO Gaussian CRPS is not an exact achievable
+  floor; mixed-horizon ratios require aligned reductions. Do not publish as fixed0–1.
+- Sensor-local quietness is not global deadness; noise growth is not chaos;
+  prediction error is not paired intervention effect; metrics do not replace
+  per-world physics. New dossiers preserve single-path/quantization limits.
+- Both campaign GPU pods remain terminated. Never fully unpack final archives,
+  never read old launcher .sh files (credentials); durable scratch ~/v3work.
+- R6 first-pass files ship together with this handoff. Publication receipt and
+  exact operational state are in ~/v3work/ops/recovery_20260905/state.json.
+
+---
+# HISTORICAL STOPPED-RUN HANDOFF — 2026-09-06 03:45 UTC
 
 ## STOP: no further benchmark models/seeds/worlds authorized
 User asked to cancel queued runs to protect credits, leaving current runs to

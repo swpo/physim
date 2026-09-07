@@ -1,0 +1,162 @@
+{
+  "status": "passed",
+  "checks": {
+    "strict_json_all_finite": true,
+    "local_markdown_links_exist": true,
+    "recorded_small_source_and_artifact_hashes_match": true,
+    "worker_and_parent_31_tests_pass": true,
+    "native_scope_max_six_substeps": true,
+    "no_credential_value_patterns": true,
+    "no_legacy_truth_parity_promotion": true,
+    "causal_pair_noise_gate_explicit": true,
+    "privileged_material_isolation_gate_explicit": true
+  },
+  "json_files": 11,
+  "markdown_files": 10,
+  "hash_checks": [
+    {
+      "path": "environments/physim/physim/blobdata/p4g2_044.json",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_cpu.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_v1.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/device.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/adequacy.py",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobcore.py",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobround5.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/SCIENTIFIC_PROCESS.md",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e1_928_process_audit/CONCURRENCY.md",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobdata/p6g8_033.json",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/device.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/adequacy.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/genome.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_cpu.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_v1.py",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobcore.py",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobround5.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/cache/round5/r5_p6g8_033_s942_truth.npz",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/REPORT.md",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/SCIENTIFIC_PROCESS.md",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/CONCURRENCY.md",
+      "matches": true
+    },
+    {
+      "path": "environments/physim/physim/blobround6.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/recon.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/offline_checks.py",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/initial_stats.json",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/offline_checks.json",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/offline_sensor_observations.npz",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/initial_activators.png",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/initial_channels_0_4.png",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/initial_channels_5_9.png",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/matched_branch_fields.png",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/late_polarity_and_quiet_control.png",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/physics/p6g8_033/PHYSICS.md",
+      "matches": true
+    }
+  ],
+  "missing_links": [],
+  "credential_files": [],
+  "large_sources_not_rehashed_by_parent": [
+    "probes/blobs/agentenv/cache/p6g8_033_s942.npz",
+    "probes/blobs/agentenv/cache/p6g8_033_s942_branches.npz"
+  ],
+  "limitations": [
+    "Static consistency checks, not independent regeneration of all physics measurements.",
+    "E1 full cache hashes were not supplied; E2 large cache hashes were not rehashed here.",
+    "Evidence is finite, quantized, and largely single-realization; no universal law or noise floor is certified.",
+    "No simulator, model, scorer, sandbox, or production integration is run by this validator."
+  ]
+}

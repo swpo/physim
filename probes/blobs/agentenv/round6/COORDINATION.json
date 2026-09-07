@@ -1,0 +1,108 @@
+{
+  "updated_utc": "2026-09-07T03:40:34.513022+00:00",
+  "incident": "All three workers ended turns after background commands; commands completed but no continuation wake-up followed.",
+  "observed_dynamics": {
+    "background_completion_wakes_agent": false,
+    "explicit_parent_message_wakes_idle_child": "verified: delivered continuation produced E2 reply",
+    "registry_completed_means_task_delivered": false,
+    "shell_agent_message_command": "not installed under that name; do not assume a completion CLI hook"
+  },
+  "completion_policy": "Explicit parent handoff required; root watchdog resumes idle unfinished workers from available files, without reruns.",
+  "watchdog": {
+    "id": "95f1c473-ed4e-4edf-be8b-509c91ffd375",
+    "status": "deleted",
+    "label": "r6-first-pass-watchdog",
+    "delivery_mode": "follow_up",
+    "instruction": "R6 first-pass coordination watchdog, explicitly requested by user after three workers went idle with completed background outputs. DEADLINE 2026-09-07T03:48:45.910572+00:00. Only monitor/finish the already approved R6 tasks; no model rollouts/pods/new battery/simulations. At/after deadline, delete this heartbeat and report remaining blockers; never renew automatically.\nRead ~/v3work/ops/recovery_20260905/state.json and probes/blobs/agentenv/round6/COORDINATION.json if present. Check actual statuses with agent_observe for r6-protocol-runner, r6-physics-e1, r6-physics-e2; a completed registry label or old status message is not proof of final handoff. User explicitly authorizes these checks and follow-up messages. For an idle UNFINISHED worker, inspect its current output files and resume the SAME worker with a specific request to finish from available results and send an explicit parent handoff. Do not duplicate workers or rerun already completed commands. Background completion does not automatically wake an agent; force a follow-up when output is ready. Do not interrupt an actively streaming worker with redundant messages. Record status transitions and final handoffs. If all three have handed off and root first-pass review is complete, delete this heartbeat immediately. No polling/sleep loops. Progress prose only for real changes/blockers, not every check. Preserve stopped eval/GPU state and uncommitted absolute_scoring/.",
+    "schedule": {
+      "kind": "interval",
+      "expression": "every 2m",
+      "intervalMs": 120000
+    },
+    "created_at": "2026-09-07T03:18:45.911Z",
+    "updated_at": "2026-09-07T03:18:45.911Z",
+    "next_run_at": "2026-09-07T03:20:45.911Z",
+    "last_run_at": null,
+    "last_error": null,
+    "run_count": 0,
+    "deleted_utc": "2026-09-07T03:39:48.296136+00:00",
+    "reason": "All three explicit handoffs received and first-pass root review complete"
+  },
+  "deadline_utc": "2026-09-07T03:48:45.910572+00:00",
+  "tasks": {
+    "r6-physics-e2": {
+      "state": "first_pass_accepted",
+      "final_handoff_received": true,
+      "output_dir": "probes/blobs/agentenv/round6/physics/p6g8_033"
+    },
+    "r6-physics-e1": {
+      "state": "first_pass_accepted",
+      "final_handoff_received": true,
+      "output_dir": "probes/blobs/agentenv/round6/physics/p4g2_044",
+      "background_job": {
+        "pid": 64260,
+        "kind": "read-only cached-field measurement, no integration",
+        "outputs": [
+          "probes/blobs/agentenv/round6/physics/p4g2_044/measurements.json",
+          "probes/blobs/agentenv/round6/physics/p4g2_044/paired_source_fields.png"
+        ],
+        "resume_action": "Read completed measurement/figure; finalize report; do not rerun",
+        "state": "completed; child explicitly inspected figures and reported1.45s cache-only analysis"
+      }
+    },
+    "r6-protocol-runner": {
+      "state": "first_pass_accepted",
+      "final_handoff_received": true,
+      "output_dir": "probes/blobs/agentenv/round6/runner",
+      "parent_review": "31/31 toy/native checks independently passed; API/seed boundary statically reviewed",
+      "limits": "Trusted offline prototype only; resource caps, sandbox, scorer, transport parity and full old-truth tests remain open"
+    }
+  },
+  "recovered": {
+    "runner": "validation.json:31 tests passed,0.523s,max6dt; final docs/handoff pending",
+    "physics": "Both first-look plotting jobs finished; existing figures/stats preserved; scientific interpretation pending"
+  },
+  "first_pass_root_review_complete": true,
+  "no_paid_rollouts": true,
+  "no_new_battery": true,
+  "live_check": [
+    {
+      "name": "r6-physics-e2",
+      "status": "model",
+      "streaming": true,
+      "active": true,
+      "queued": 0
+    },
+    {
+      "name": "r6-physics-e1",
+      "status": "model",
+      "streaming": true,
+      "active": true,
+      "queued": 0
+    },
+    {
+      "name": "r6-protocol-runner",
+      "status": "user",
+      "streaming": false,
+      "active": false,
+      "queued": 0
+    }
+  ],
+  "parent_runner_test": {
+    "status": "passed",
+    "tests_run": 31,
+    "wall_seconds": 0.49506850028410554,
+    "peak_rss_bytes": 250036224
+  },
+  "root_visual_review": [
+    "p4g2_044/paired_source_fields.png",
+    "p4g2_044/activators_time.png",
+    "p4g2_044/all_fields_t1700.png",
+    "p6g8_033/initial_activators.png",
+    "p6g8_033/matched_branch_fields.png",
+    "p6g8_033/late_polarity_and_quiet_control.png"
+  ],
+  "last_watchdog_check_utc": "2026-09-07T03:27:10.239017+00:00",
+  "first_pass_root_review_complete_utc": "2026-09-07T03:39:48.296136+00:00",
+  "worker_sessions_retired": true
+}

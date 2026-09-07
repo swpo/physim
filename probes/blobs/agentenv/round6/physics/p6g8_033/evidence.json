@@ -1,0 +1,843 @@
+{
+  "schema": "r6_private_physics_recon_v1",
+  "world": "p6g8_033",
+  "seed": 942,
+  "scope": "read-only bounded first pass; evaluator-side private coverage; not fixed contracts or investigator syllabus",
+  "created_utc": "2026-09-07T03:26:46.129424+00:00",
+  "status": "COMPLETE_FIRST_PASS_NOT_COMPLETE_THEORY",
+  "source_priority": [
+    "native full-field base cache",
+    "native matched branch fields",
+    "current genome and implementation rules",
+    "round5 manifest/header only",
+    "E2 audit context only; no trace physics measurements"
+  ],
+  "cache_headers": {
+    "probes/blobs/agentenv/cache/p6g8_033_s942.npz": {
+      "frames.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          501,
+          13,
+          256,
+          256
+        ],
+        "bytes": 853672064,
+        "compressed_bytes": 853672064,
+        "npy_header_bytes": 128
+      },
+      "meta.npy": {
+        "descr": "<U3908",
+        "fortran_order": false,
+        "shape": [],
+        "bytes": 15760,
+        "compressed_bytes": 15760,
+        "npy_header_bytes": 128
+      },
+      "blobs.npy": {
+        "descr": "<U1020668",
+        "fortran_order": false,
+        "shape": [],
+        "bytes": 4082800,
+        "compressed_bytes": 4082800,
+        "npy_header_bytes": 128
+      },
+      "snaps.npy": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          1
+        ],
+        "bytes": 136,
+        "compressed_bytes": 136,
+        "npy_header_bytes": 128
+      },
+      "snapF_1700.npy": {
+        "descr": "<f4",
+        "fortran_order": false,
+        "shape": [
+          13,
+          256,
+          256
+        ],
+        "bytes": 3408000,
+        "compressed_bytes": 3408000,
+        "npy_header_bytes": 128
+      },
+      "snapR_1700.npy": {
+        "descr": "|u1",
+        "fortran_order": false,
+        "shape": [
+          176
+        ],
+        "bytes": 304,
+        "compressed_bytes": 304,
+        "npy_header_bytes": 128
+      }
+    },
+    "probes/blobs/agentenv/cache/p6g8_033_s942_branches.npz": {
+      "meta.npy": {
+        "descr": "<U181",
+        "fortran_order": false,
+        "shape": [],
+        "bytes": 852,
+        "compressed_bytes": 852,
+        "npy_header_bytes": 128
+      },
+      "control.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          51,
+          13,
+          256,
+          256
+        ],
+        "bytes": 86900864,
+        "compressed_bytes": 86900864,
+        "npy_header_bytes": 128
+      },
+      "calib1.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          51,
+          13,
+          256,
+          256
+        ],
+        "bytes": 86900864,
+        "compressed_bytes": 86900864,
+        "npy_header_bytes": 128
+      },
+      "calib2.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          51,
+          13,
+          256,
+          256
+        ],
+        "bytes": 86900864,
+        "compressed_bytes": 86900864,
+        "npy_header_bytes": 128
+      },
+      "calib4.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          51,
+          13,
+          256,
+          256
+        ],
+        "bytes": 86900864,
+        "compressed_bytes": 86900864,
+        "npy_header_bytes": 128
+      },
+      "announced.npy": {
+        "descr": "<f2",
+        "fortran_order": false,
+        "shape": [
+          51,
+          13,
+          256,
+          256
+        ],
+        "bytes": 86900864,
+        "compressed_bytes": 86900864,
+        "npy_header_bytes": 128
+      }
+    }
+  },
+  "round5_truth_headers": {
+    "probes/blobs/agentenv/cache/round5/r5_p6g8_033_s942_truth.npz": {
+      "manifest.npy": {
+        "descr": "<U1543",
+        "fortran_order": false,
+        "shape": [],
+        "bytes": 6300,
+        "compressed_bytes": 1257,
+        "npy_header_bytes": 128
+      },
+      "L1.npy": {
+        "descr": "<f8",
+        "fortran_order": true,
+        "shape": [
+          1,
+          13,
+          13
+        ],
+        "bytes": 1480,
+        "compressed_bytes": 1409,
+        "npy_header_bytes": 128
+      },
+      "L2.npy": {
+        "descr": "<f8",
+        "fortran_order": true,
+        "shape": [
+          1,
+          13,
+          13
+        ],
+        "bytes": 1480,
+        "compressed_bytes": 1395,
+        "npy_header_bytes": 128
+      },
+      "L3F_h25.npy": {
+        "descr": "<f8",
+        "fortran_order": true,
+        "shape": [
+          1,
+          13,
+          13
+        ],
+        "bytes": 1480,
+        "compressed_bytes": 1349,
+        "npy_header_bytes": 128
+      },
+      "L3F_h100.npy": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          24,
+          13,
+          13
+        ],
+        "bytes": 32576,
+        "compressed_bytes": 28263,
+        "npy_header_bytes": 128
+      },
+      "L3F_h400.npy": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          24,
+          13,
+          13
+        ],
+        "bytes": 32576,
+        "compressed_bytes": 28502,
+        "npy_header_bytes": 128
+      },
+      "L3S.npy": {
+        "descr": "<f4",
+        "fortran_order": false,
+        "shape": [
+          24,
+          2,
+          13,
+          2
+        ],
+        "bytes": 5120,
+        "compressed_bytes": 4023,
+        "npy_header_bytes": 128
+      },
+      "L4.npy": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          16,
+          6,
+          13,
+          19
+        ],
+        "bytes": 189824,
+        "compressed_bytes": 167415,
+        "npy_header_bytes": 128
+      },
+      "L4D.npy": {
+        "descr": "<f8",
+        "fortran_order": false,
+        "shape": [
+          16,
+          3,
+          13,
+          19
+        ],
+        "bytes": 94976,
+        "compressed_bytes": 83581,
+        "npy_header_bytes": 128
+      }
+    }
+  },
+  "cache_summary": {
+    "world": "p6g8_033",
+    "seed": 942,
+    "T": 2500.0,
+    "L": 128.0,
+    "N": 256,
+    "na": 3,
+    "nc": 10,
+    "dx": 0.5,
+    "ctrl_tu": 5.0
+  },
+  "field_order": [
+    "u0",
+    "u1",
+    "u2",
+    "X0",
+    "X1",
+    "X2",
+    "X3",
+    "X4",
+    "X5",
+    "X6",
+    "X7",
+    "X8",
+    "X9"
+  ],
+  "port_to_field": [
+    2,
+    4,
+    1,
+    12,
+    6,
+    9,
+    5,
+    0,
+    3,
+    8,
+    11,
+    10,
+    7
+  ],
+  "port_to_label": [
+    "u2",
+    "X1",
+    "u1",
+    "X9",
+    "X3",
+    "X6",
+    "X2",
+    "u0",
+    "X0",
+    "X5",
+    "X8",
+    "X7",
+    "X4"
+  ],
+  "device_geometry_provenance": {
+    "key": "p6g8_033|s942|A0",
+    "roster_source": "environments/physim/physim/blobcore.py:100-106",
+    "sampling_source": "probes/blobs/agentenv/device.py:177-206",
+    "center_yx": [
+      [
+        70.05045196043221,
+        42.25598909218823
+      ],
+      [
+        48.718557342986784,
+        53.1048056183721
+      ]
+    ],
+    "n_slots": [
+      13,
+      19
+    ],
+    "center_separation_world_units": 23.932123766782535,
+    "r6_prototype_currently_reuses_A0_layout": true,
+    "r6_prototype_source": "environments/physim/physim/blobround6.py:431-438",
+    "r6_prototype_sha256": "f3ed537fe6287c77d9e97482d0c317e12abfa10ccd6271c5b061fcc5ee71e7d7",
+    "qualification": "B.world_key and B.ROSTER reuse this layout for the same world/hidden seed in the inspected version; geometry remains private, not predictor input."
+  },
+  "execution": {
+    "interpreter": "~/.venvs/bk3/bin/python",
+    "project_imports": "native science process only; no project imports in orchestration kernel",
+    "scripts": [
+      "recon.py",
+      "offline_checks.py"
+    ],
+    "thread_env": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "initial_duration_s": 2.052286459133029,
+    "followup_duration_s": 4.83254887489602,
+    "simulation_steps_run": 0,
+    "model_runs": 0,
+    "new_worlds_or_seeds": 0,
+    "truth_ensembles_generated": 0,
+    "cache_access": "read-only memory map of ZIP_STORED NPY payload; no extraction; per-frame float32 work arrays",
+    "resident_limit_policy_bytes": 2000000000,
+    "rss_measured": false,
+    "largest_mapped_member_bytes": 853671936,
+    "note": "Mapped base and control plus one dose branch at a time; no full trajectory float32 copies."
+  },
+  "visual_inspection": {
+    "actually_viewed_with": "attach_image",
+    "figures": [
+      "initial_activators.png",
+      "initial_channels_0_4.png",
+      "initial_channels_5_9.png",
+      "matched_branch_fields.png",
+      "late_polarity_and_quiet_control.png"
+    ],
+    "initial_times": [
+      0,
+      250,
+      1000,
+      1700,
+      2500
+    ],
+    "cautions": [
+      "Initial X9 color change at last panel is a degenerate-vmin/vmax colorbar normalization artifact; arrays are all zero.",
+      "Late X4 contrast is obscured on initialization-inclusive range; follow-up figure uses explicit late scales.",
+      "No time-dense feature tracking or movie-derived rotation measurement."
+    ]
+  },
+  "phenomena": [
+    {
+      "id": "A",
+      "name": "evolving_u0_u1_ridges_and_delayed_local_state",
+      "observed": [
+        "Curved u1 ridges reorganize across selected full-field times; u0 includes spots and extended ridges.",
+        "X0/X1/X2/X3/X7 show spatial shadows with distinct appearances; native home sensors have large u0/u1/X3 excursions."
+      ],
+      "hypothesis": "Fast shared X1 inhibition plus slower X3/X7 state may yield phase- and history-dependent recovery and interactions.",
+      "not_yet_tested": [
+        "Matched X3-pulse/sham by observed local phase",
+        "Phase-resolved 2D tracking",
+        "Transfer across unseen anchors",
+        "Same-noise sham/treatment semantics in current R6 policy A; root comparison gate remains unresolved"
+      ],
+      "figures": [
+        "initial_activators.png",
+        "initial_channels_0_4.png",
+        "initial_channels_5_9.png"
+      ],
+      "numerical_evidence": [
+        "initial_stats.json#/stats",
+        "offline_checks.json#/sensor_summary_t250_to2500"
+      ],
+      "sensor_fields_ports": {
+        "u0": 7,
+        "u1": 2,
+        "X1": 1,
+        "X2": 6,
+        "X3": 4,
+        "X7": 11
+      },
+      "compact_experiment": "One fixed patch, short multi-port history, matched small port4 pulse versus sham, repeat at a second pre-observed phase; read u1/X2 recovery. Investigator exploration proposal only; same-noise sham/treated comparisons require resolution of the current R6 policy-A gate.",
+      "private_query_axes": [
+        "rising versus falling phase selected privately from complete t0 action schedule",
+        "short future recovery query times",
+        "private scored slots/patches of full device arrays",
+        "complete t0 action schedule with declared pulse or sham"
+      ],
+      "missing": [
+        "causal pathway isolation",
+        "wave speed/rotation tracking",
+        "measured refractory time"
+      ],
+      "do_not_claim": [
+        "rotation/winding from a curved-band snapshot",
+        "population growth from spatial variance",
+        "identified general dynamics"
+      ],
+      "predictor_inputs": "complete fixed-t0 action schedule and query times only; no history, separate anchor, or geometry input",
+      "scoring_selection": "private grader selects slots within returned full device arrays"
+    },
+    {
+      "id": "B",
+      "name": "persistent_negative_u2_cores_and_gated_quiet_X9",
+      "observed": [
+        "Four u2<0 periodic components at t250,1000,1700,2500; about1.6percent area.",
+        "Apparent matching cores drift up to6.00 units from250 to2500; not pinned.",
+        "u2 is nearly uniform at both home arrays but globally has strong negative cores and a broad X4 halo.",
+        "All late saved f16 X9 cells are zero; f32 t1700 residue is nonzero subnormal."
+      ],
+      "hypothesis": "Opposite-polarity localized u2 states have graded channel halos; closed X9 drive is consistent with late passive quiet.",
+      "not_yet_tested": [
+        "Controlled negative-core stability",
+        "X6-mediated influence on u1",
+        "Gate opening under allowed upstream pulses",
+        "Background versus core sensor scan acquisition",
+        "Same-noise sham/treatment semantics in current R6 policy A; root comparison gate remains unresolved"
+      ],
+      "figures": [
+        "initial_activators.png",
+        "late_polarity_and_quiet_control.png",
+        "initial_channels_5_9.png"
+      ],
+      "numerical_evidence": [
+        "offline_checks.json#/negative_u2_components",
+        "offline_checks.json#/negative_u2_iou",
+        "offline_checks.json#/x9",
+        "offline_checks.json#/sensor_summary_t250_to2500"
+      ],
+      "sensor_fields_ports": {
+        "u2": 0,
+        "X4": 12,
+        "X8": 10,
+        "X9": 3,
+        "X6": 5
+      },
+      "compact_experiment": "Cross-scan and return at a heterogeneous patch with u2/X4/X8; separate matched sham and two allowed positive u2 doses to test whether measured threshold crossing produces delayed X9. Investigator exploration proposal only; same-noise sham/treated comparisons require resolution of the current R6 policy-A gate.",
+      "private_query_axes": [
+        "core/halo/background patch selected privately after declared adjustments",
+        "complete t0 anonymous command schedule without coordinates or geometry",
+        "passive quiet future query times",
+        "subthreshold versus gate-opening schedule after accessibility pilot"
+      ],
+      "missing": [
+        "sensor acquisition of remote cores",
+        "substep gate evidence",
+        "stability mechanism",
+        "multi-seed generality"
+      ],
+      "do_not_claim": [
+        "flat homes imply globally dead field",
+        "negative mask equals organism count",
+        "exact physical zero from f16 zero",
+        "permanently closed gate"
+      ],
+      "predictor_inputs": "complete fixed-t0 action schedule and query times only; no history, separate anchor, or geometry input",
+      "scoring_selection": "private grader selects slots within returned full device arrays"
+    },
+    {
+      "id": "C",
+      "name": "short_u0_pulse_long_signed_pattern_rearrangement",
+      "observed": [
+        "All native control frames equal matched base frames at stored precision; all dose branches start equal control.",
+        "At amp3 the pulse induces a local u0 peak and early negative u1 bands, followed by mixed-sign local rearrangement after source ends.",
+        "At lag250, global mean differences nearly cancel despite large field and B-sensor differences; u2 and X9 remain useful weak/quiet controls."
+      ],
+      "hypothesis": "u0 excitation changes subsequent coupled u0/u1 timing/shape, plausibly via shared X1 inhibition and delayed state.",
+      "not_yet_tested": [
+        "Independent paired noise repeats",
+        "Additional anchors/emitters/durations",
+        "Paired strengths below1",
+        "Phase conditioning",
+        "Feature lineage",
+        "Same-noise sham/treatment semantics in current R6 policy A; root comparison gate remains unresolved"
+      ],
+      "figures": [
+        "matched_branch_fields.png"
+      ],
+      "numerical_evidence": [
+        "offline_checks.json#/branch"
+      ],
+      "sensor_fields_ports": {
+        "u0": 7,
+        "u1": 2,
+        "X1": 1,
+        "X2": 6,
+        "X3": 4,
+        "u2_control": 0,
+        "X9_control": 3
+      },
+      "compact_experiment": "At fixed anchor/pose, same-noise sham plus two allowed-strength pulses; short A/B series plus sparse later witness observations; then second pre-observed phase. Investigator exploration proposal only; same-noise sham/treated comparisons require resolution of the current R6 policy-A gate.",
+      "private_query_axes": [
+        "complete t0 schedule containing pulse or sham",
+        "in-range held-out dose",
+        "pre-pulse phase selected privately, not supplied as an anchor/history input",
+        "near versus remote slots scored privately in full returned arrays",
+        "signed outputs with quiet controls",
+        "explicit separate query outside actual exploration range only"
+      ],
+      "missing": [
+        "noise distribution",
+        "repeatability away from this anchor",
+        "general law"
+      ],
+      "do_not_claim": [
+        "noise-spread proves chaos",
+        "dose series establishes a threshold",
+        "remote difference establishes propagation speed",
+        "RMS-only model identifies signed spatial response",
+        "single paired trajectory is ensemble effect"
+      ],
+      "predictor_inputs": "complete fixed-t0 action schedule and query times only; no history, separate anchor, or geometry input",
+      "scoring_selection": "private grader selects slots within returned full device arrays"
+    }
+  ],
+  "important_numeric_checks": {
+    "control_equal_base_all_51_frames": true,
+    "all_dose_initial_frames_equal_control": true,
+    "snapshot_rounding": {
+      "f32_to_f16_matches_frame340": true,
+      "max_absolute_error": 0.0009765625
+    },
+    "branch_metadata": {
+      "world": "p6g8_033",
+      "seed": 942,
+      "t0": 1700.0,
+      "t_branch": 250.0,
+      "inj_port": 7,
+      "inj_yx": [
+        70.05045196043221,
+        42.25598909218823
+      ],
+      "ann_amp": 3.0,
+      "ann_dur": 10.0,
+      "ctrl_tu": 5.0
+    },
+    "paired_branch_scope": "single shared noise path, same anchor and emitter; no repeated noise/path uncertainty estimate",
+    "u2_negative_component_mask": "u2<0; periodic connectivity via blobkit.genome.periodic_label; not organism identity",
+    "u2_negative_core_centroid_displacement_t250_to2500": [
+      0.34325883014252206,
+      5.832514584488241,
+      6.002389106098944,
+      2.5238927175490713
+    ],
+    "u2_centroid_correspondence_caution": "four visually corresponding components sorted by y; sparse samples do not prove unchanged lineage",
+    "u2_core_area_fraction": [
+      0.0159454345703125,
+      0.0161895751953125,
+      0.016387939453125,
+      0.016326904296875
+    ],
+    "x9": {
+      "last_nonzero_f16_sample_t": 140,
+      "sampled_late_nonzero_count": 0,
+      "sampled_max_u2_t250_to2500": 1.556640625,
+      "x9_positive_drive_threshold_u2": 1.7680982371019585,
+      "f32_snapshot1700_min": 6.20775219695894e-43,
+      "f32_snapshot1700_max": 6.263804135531932e-43,
+      "warning": "f16 zeros do not prove exact continuum zeros; only saved 5tu times checked"
+    }
+  },
+  "round5_truth_usage": {
+    "used_for": "headers and manifest only; no values used to infer field physics or effect sizes",
+    "manifest_world_seed_menu": {
+      "world": "p6g8_033",
+      "seed": 942,
+      "menu": "E2"
+    },
+    "L4_protocol": {
+      "id": "L4@i1",
+      "family": "L4",
+      "t_a": 829.94,
+      "k_a": 41497,
+      "port": 6,
+      "amp": 2.7998,
+      "dur": 10.5,
+      "k_dur": 525,
+      "lags": [
+        10.0,
+        25.0,
+        50.0,
+        100.0,
+        175.0,
+        250.0
+      ]
+    },
+    "L4D_protocol": {
+      "id": "L4D@i1",
+      "family": "L4D",
+      "t_a": 1346.0,
+      "k_a": 67300,
+      "port": 11,
+      "amp": 0.8124,
+      "dur": 16.78,
+      "k_dur": 839,
+      "lags": [
+        25.0,
+        75.0,
+        150.0
+      ]
+    },
+    "warning": "Sensor-output arrays, not full 2D fields; differing hidden anchors/ports/doses are not a matched causal comparison."
+  },
+  "exclusions": [
+    "No E2 agent MAE interpreted as paired no-emission effect.",
+    "No port6 versus port11 unmatched hidden-truth causal contrast.",
+    "No noise-spread-only chaos/nucleation/propagation claim.",
+    "No Gaussian leave-one-out exact irreducible floor.",
+    "No globally dead field inference from flat sensors.",
+    "No trace-derived field physics: E2 state-concurrency defects remain provisional.",
+    "No archive unpack, launcher read, secrets in artifacts, shared-file edit, or commit."
+  ],
+  "provenance": [
+    {
+      "path": "environments/physim/physim/blobdata/p6g8_033.json",
+      "bytes": 4586,
+      "sha256": "92ba00a5c6f5c520cf643eaf58c18a0dede9ad21ff52342f868d3f5faff25525"
+    },
+    {
+      "path": "probes/blobs/agentenv/cache/p6g8_033_s942.npz",
+      "bytes": 861179790,
+      "sha256": "049b0925ab731f007ec529a576ed2ff10dd6175efd54f2881a07559a2dd6cf88"
+    },
+    {
+      "path": "probes/blobs/agentenv/cache/p6g8_033_s942_branches.npz",
+      "bytes": 434505894,
+      "sha256": "22f97368f58d532288583dc440f336a05f032308c801f915b09dfd1c907c5b4e"
+    },
+    {
+      "path": "probes/blobs/agentenv/device.py",
+      "bytes": 27334,
+      "sha256": "5d18f15143c86d118faffaa8eaf4cf1a33b0192eb15b7270230a1b56a0686906"
+    },
+    {
+      "path": "probes/blobs/agentenv/adequacy.py",
+      "bytes": 40155,
+      "sha256": "4382fef51aad06bbdd8f5edc31c4178ef2e9490304f145769dfc9dd7c378f0b3"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/genome.py",
+      "bytes": 20517,
+      "sha256": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_cpu.py",
+      "bytes": 10359,
+      "sha256": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_v1.py",
+      "bytes": 10356,
+      "sha256": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f"
+    },
+    {
+      "path": "environments/physim/physim/blobcore.py",
+      "bytes": 24932,
+      "sha256": "042ae66689ec5e1e885b0b98c28674d716eeef05d2b680c73aafc9c088c7d1d1"
+    },
+    {
+      "path": "environments/physim/physim/blobround5.py",
+      "bytes": 47664,
+      "sha256": "71418a1ad48a96579dd73f6d65cd40798b3b2a605d882a58400435279b21257a"
+    },
+    {
+      "path": "probes/blobs/agentenv/cache/round5/r5_p6g8_033_s942_truth.npz",
+      "bytes": 318238,
+      "sha256": "8baace90e5cf3bf4114f4caffc7cbe663367153fb3e4815339b7caa90035a3f6"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/REPORT.md",
+      "bytes": 18058,
+      "sha256": "745a4a2750cb9c311006e0585eac4d1ed9032bd8d7d2ee6119f27724a1513803"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/SCIENTIFIC_PROCESS.md",
+      "bytes": 7323,
+      "sha256": "bb90d77e96e9fae6c75ec5e6623739199e57ade249b4fe2d92c242840422057c"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/e2_942_process_audit/CONCURRENCY.md",
+      "bytes": 8414,
+      "sha256": "ee83e97a66a3254ae6ad9dacf0e0a97c331da60e8947bd7c0f67821656072e9e"
+    },
+    {
+      "path": "environments/physim/physim/blobround6.py",
+      "bytes": 19963,
+      "sha256": "f3ed537fe6287c77d9e97482d0c317e12abfa10ccd6271c5b061fcc5ee71e7d7",
+      "usage": "read-only API/layout/noise-policy qualification; not imported or executed"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "recon.py",
+      "bytes": 3707,
+      "sha256": "145535a9003b57150efba43d0fc93af3310bb0efc50a73ceb52e455f4fa48025"
+    },
+    {
+      "path": "offline_checks.py",
+      "bytes": 9132,
+      "sha256": "170aef6b19691be740e97576d52df0599370d7942702c9dc4b5ad79cea62c87d"
+    },
+    {
+      "path": "initial_stats.json",
+      "bytes": 12083,
+      "sha256": "b837c804eb3ef214d23cebde9e75e1c0231533eedf5619aab241e15ad6dd6b21"
+    },
+    {
+      "path": "offline_checks.json",
+      "bytes": 164580,
+      "sha256": "c12f29b3d4db7a2b5f90dfa5f8830d84fe1211e74d1318b45c434da4247a4e48"
+    },
+    {
+      "path": "offline_sensor_observations.npz",
+      "bytes": 1330827,
+      "sha256": "1fd6d5236138fe83b868f71732888818b8f23ce7f88ce4e791b5a93878ec4f50"
+    },
+    {
+      "path": "initial_activators.png",
+      "bytes": 665121,
+      "sha256": "cb42a2c5e3641ae0b4c21fb67e2918ac221dbfbc7b108a86bd617924e9b3e079"
+    },
+    {
+      "path": "initial_channels_0_4.png",
+      "bytes": 1196220,
+      "sha256": "e86eb86f0b8044f832d99b8504f5ed8c1fc08744e87f34e152c32991fdeabda4"
+    },
+    {
+      "path": "initial_channels_5_9.png",
+      "bytes": 350791,
+      "sha256": "990d330f6924cca7269a04c493a59338660092bfa598a9add2cd70d475b1de0e"
+    },
+    {
+      "path": "matched_branch_fields.png",
+      "bytes": 609950,
+      "sha256": "6286542660388a4980d5ee93182631b90ce51e9da2caca41d83ee3124e0c29d8"
+    },
+    {
+      "path": "late_polarity_and_quiet_control.png",
+      "bytes": 249695,
+      "sha256": "66aec1171fa370c52f3ae0f6ac4026708043840a63ff4c1694e626380b71dbca"
+    },
+    {
+      "path": "PHYSICS.md",
+      "bytes": 21431,
+      "sha256": "bf9d8bef888feea411d65423271acbe20d4a221bb25d8940caa42988706a6222"
+    }
+  ],
+  "missing_summary": [
+    "multi-noise paired distributions",
+    "other anchor/phase/emitter tests",
+    "allowed-dose gate accessibility",
+    "dense feature/phase tracking",
+    "sensor acquisition of remote cores",
+    "multi-seed generality",
+    "resolved policy-A sham/treatment noise-comparison semantics for proposed matched experiments"
+  ],
+  "clarified_utc": "2026-09-07T03:32:57.654255+00:00",
+  "predictor_query_contract": {
+    "source": "environments/physim/physim/blobround6.py",
+    "source_sha256": "f3ed537fe6287c77d9e97482d0c317e12abfa10ccd6271c5b061fcc5ee71e7d7",
+    "signature": "Predictor.predict(actions, queries, n_samples=64, seed=0)",
+    "conditioning_inputs": [
+      "complete action schedule from fixed opaque t0",
+      "query times for anonymous device IDs"
+    ],
+    "action_identifiers": "anonymous device and port IDs plus declared commands; no supplied geometry",
+    "sampling_controls": [
+      "n_samples",
+      "seed"
+    ],
+    "not_inputs": [
+      "sensor histories",
+      "anchor time as a separate input",
+      "anchor state",
+      "sensor coordinates",
+      "sensor geometry"
+    ],
+    "output_coverage": "full device arrays; private grader may score selected slots of returned arrays",
+    "history_role": "investigator exploration and private grader phase selection only",
+    "scope": "current inspected prototype; no execution or runtime gate performed in this clarification"
+  },
+  "root_unresolved_gates": [
+    {
+      "id": "policy_A_sham_treatment_noise_comparison",
+      "status": "UNRESOLVED_ROOT_GATE_NOT_TESTED_HERE",
+      "source": "environments/physim/physim/blobround6.py:355-395",
+      "observed_source_semantics": "No-effective-action sham follows base RNG; treated continuations reseed each member.",
+      "scientific_requirement": "Proposed same-noise pulse/sham experiments need a controlled pairing mechanism or a resolved root comparison policy.",
+      "native_cache_distinction": "The existing A0 cached pulse/control pairs remain the matched single-noise-path evidence; they do not establish pairing semantics for policy A."
+    }
+  ],
+  "dose_domain_qualification": {
+    "archived_R5_exploration_amp_cap": 1,
+    "current_R6_prototype_proposed_evaluation_amp_range": [
+      0,
+      3
+    ],
+    "source": "environments/physim/physim/blobround6.py:25",
+    "warning": "R5 cap does not establish R6 exploration availability; native amp4 cache is not automatically an R6 query case; exploration/query mismatch belongs to root policy."
+  }
+}

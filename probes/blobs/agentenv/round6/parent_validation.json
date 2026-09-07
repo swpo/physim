@@ -1,0 +1,165 @@
+{
+  "status": "passed",
+  "gates": [
+    "toy",
+    "native"
+  ],
+  "tests_run": 31,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "wall_seconds": 0.49506850028410554,
+  "peak_rss_bytes": 250036224,
+  "interpreter": "/Users/spoho/Documents/prime/test/physim/.venv/bin/python",
+  "numpy_version": "2.5.2",
+  "thread_env": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "tests": [
+    {
+      "test": "__main__.ValidationTests.test_boolean_string_and_nonfinite_numbers",
+      "seconds": 0.010762541089206934
+    },
+    {
+      "test": "__main__.ValidationTests.test_container_types_and_unknown_actions",
+      "seconds": 0.00018591666594147682
+    },
+    {
+      "test": "__main__.ValidationTests.test_empty_outputs_validate_all_actions_but_never_step",
+      "seconds": 0.0001821252517402172
+    },
+    {
+      "test": "__main__.ValidationTests.test_exact_action_keys",
+      "seconds": 0.00018141698092222214
+    },
+    {
+      "test": "__main__.ValidationTests.test_exact_query_keys_and_shapes",
+      "seconds": 0.00016204221174120903
+    },
+    {
+      "test": "__main__.ValidationTests.test_integer_ids_counts_seeds_and_ranges",
+      "seconds": 0.00024349987506866455
+    },
+    {
+      "test": "__main__.ValidationTests.test_supported_boundaries_and_cross_lane_overlap",
+      "seconds": 0.0009076250717043877
+    },
+    {
+      "test": "__main__.ValidationTests.test_time_grid_and_float_tolerance",
+      "seconds": 0.00229637511074543
+    },
+    {
+      "test": "__main__.ValidationTests.test_unsorted_simultaneous_and_overlapping_actions",
+      "seconds": 0.00013625016435980797
+    },
+    {
+      "test": "__main__.SchedulerTests.test_adjust_is_immediate_and_occupies_five_tu",
+      "seconds": 0.00085041718557477
+    },
+    {
+      "test": "__main__.SchedulerTests.test_base_replay_and_noops_ignore_truth_seed",
+      "seconds": 0.0008875830098986626
+    },
+    {
+      "test": "__main__.SchedulerTests.test_branch_at_pose_change_and_only_once_across_multiple_actions",
+      "seconds": 0.0009231655858457088
+    },
+    {
+      "test": "__main__.SchedulerTests.test_future_action_suffix_cannot_change_past_queries",
+      "seconds": 0.0011005420237779617
+    },
+    {
+      "test": "__main__.SchedulerTests.test_lower_dilation_clip_and_second_device_independence",
+      "seconds": 0.0004275827668607235
+    },
+    {
+      "test": "__main__.SchedulerTests.test_member_prefix_distinct_streams_and_cross_sensor_coherence",
+      "seconds": 0.002020875457674265
+    },
+    {
+      "test": "__main__.SchedulerTests.test_noops_do_not_move_first_branch_or_reseed",
+      "seconds": 0.0015666661784052849
+    },
+    {
+      "test": "__main__.SchedulerTests.test_perfect_known_state_deterministic_law",
+      "seconds": 0.00031962478533387184
+    },
+    {
+      "test": "__main__.SchedulerTests.test_predictor_sampling_seed_is_not_an_oracle_truth_input",
+      "seconds": 0.001281083095818758
+    },
+    {
+      "test": "__main__.SchedulerTests.test_query_invariance_order_duplicates_and_no_mutation",
+      "seconds": 0.0012108748778700829
+    },
+    {
+      "test": "__main__.SchedulerTests.test_reset_repeat_and_output_ownership",
+      "seconds": 0.0021179160103201866
+    },
+    {
+      "test": "__main__.SchedulerTests.test_source_half_open_boundaries_and_amplitude_duration",
+      "seconds": 0.0003086668439209461
+    },
+    {
+      "test": "__main__.CheckpointTests.test_checkpoint_never_skips_earlier_query_or_intervention",
+      "seconds": 0.0008124168962240219
+    },
+    {
+      "test": "__main__.CheckpointTests.test_checkpoint_provenance_dtype_and_tamper_rejection",
+      "seconds": 0.00027066702023148537
+    },
+    {
+      "test": "__main__.CheckpointTests.test_exact_checkpoint_reuse_preserves_rng_and_saves_steps",
+      "seconds": 0.0003994172438979149
+    },
+    {
+      "test": "__main__.CheckpointTests.test_private_template_is_owned_full_precision_t0",
+      "seconds": 0.0003742501139640808
+    },
+    {
+      "test": "__main__.NativeTests.test_native_base_replay_direct_stepper_exact",
+      "seconds": 0.04025458311662078
+    },
+    {
+      "test": "__main__.NativeTests.test_native_injection_matches_r5_member_state_and_source_primitive",
+      "seconds": 0.059093458112329245
+    },
+    {
+      "test": "__main__.NativeTests.test_native_multiple_actions_fixed_emitter_and_pose",
+      "seconds": 0.10119887534528971
+    },
+    {
+      "test": "__main__.NativeTests.test_native_pose_helper_matches_r5_truth_not_transport",
+      "seconds": 0.0022969162091612816
+    },
+    {
+      "test": "__main__.NativeTests.test_native_private_checkpoint_continuation_exact",
+      "seconds": 0.06515820836648345
+    },
+    {
+      "test": "__main__.NativeTests.test_native_query_cuts_do_not_change_rng_or_fields",
+      "seconds": 0.03963233297690749
+    }
+  ],
+  "native": {
+    "world": "p4g2_044",
+    "hidden_seed": 928,
+    "initialization_seconds": 0.011233374942094088,
+    "field_shape": [
+      12,
+      256,
+      256
+    ],
+    "field_dtype": "float32",
+    "field_bytes": 3145728,
+    "maximum_trajectory_substeps": 6,
+    "old_truth_parity": "not run; primitive/state parity only"
+  },
+  "limitations": [
+    "No old truth-instance parity or full base replay was run.",
+    "No scorer, untrusted-code sandbox, transport or exploration parity.",
+    "No final horizon/member/output resource budgets; trusted small requests only."
+  ]
+}
