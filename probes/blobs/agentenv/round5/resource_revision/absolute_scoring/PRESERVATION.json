@@ -1,0 +1,113 @@
+{
+  "schema": "physim-absolute-scoring-preservation-v1",
+  "archived_utc": "2026-09-07T13:15:24.259320+00:00",
+  "status": "exploratory archive; only raw CRPS reproduction at six-decimal logging precision established",
+  "original_files": [
+    {
+      "path": "absolute_scores.json",
+      "bytes": 8543,
+      "sha256": "d5704e2f443b4991d14a8df5f230b76f32adca44e20e6dc4dfb07cca05c76410"
+    },
+    {
+      "path": "run.log",
+      "bytes": 1587,
+      "sha256": "35604bf458cc6fed1896aa2f6289cb9b8f05532090714043eaf2ddf492875245"
+    },
+    {
+      "path": "absolute_scores.py",
+      "bytes": 4843,
+      "sha256": "d8f53694a711b8652c7755d4d66c030c93186236886dfdf485b7455ee44f8ace"
+    }
+  ],
+  "raw_crps_checks": [
+    {
+      "run": "E1_928",
+      "contract": "L1",
+      "raw_crps": 0.07226899727554158,
+      "stored_crps": 0.072269,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E1_928",
+      "contract": "L2",
+      "raw_crps": 0.20259981230662524,
+      "stored_crps": 0.2026,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E1_928",
+      "contract": "L3F",
+      "raw_crps": 0.0005536603449376121,
+      "stored_crps": 0.000554,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E1_928",
+      "contract": "L3E",
+      "raw_crps": 0.12393123061051221,
+      "stored_crps": 0.123931,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E1_928",
+      "contract": "L4",
+      "raw_crps": 0.0019385735915957165,
+      "stored_crps": 0.001939,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E1_928",
+      "contract": "L4D",
+      "raw_crps": 0.0012842208702175378,
+      "stored_crps": 0.001284,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L1",
+      "raw_crps": 0.024033001320710914,
+      "stored_crps": 0.024033,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L2",
+      "raw_crps": 0.08254181038787653,
+      "stored_crps": 0.082542,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L3F",
+      "raw_crps": 0.003989738269087825,
+      "stored_crps": 0.00399,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L3S",
+      "raw_crps": 0.0008487456368605414,
+      "stored_crps": 0.000849,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L4",
+      "raw_crps": 0.06657508641779791,
+      "stored_crps": 0.066575,
+      "same_at_six_decimals": true
+    },
+    {
+      "run": "E2_942",
+      "contract": "L4D",
+      "raw_crps": 0.0029296648735873546,
+      "stored_crps": 0.00293,
+      "same_at_six_decimals": true
+    }
+  ],
+  "all_twelve_match_logged_six_decimals": true,
+  "no_original_bytes_changed": true,
+  "rerun_for_migration": false,
+  "raw_inputs": "handoff/LOCAL_ASSETS.json (repo root); raw traces and caches remain local",
+  "interpretation": "README.md corrections override misleading original script comments and earlier prose; no normalized metric adopted"
+}

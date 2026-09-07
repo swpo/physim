@@ -1,0 +1,29 @@
+{
+  "schema": "physim-migration-environments-v1",
+  "snapshot_utc": "2026-09-07T13:15:24.259320+00:00",
+  "project": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+    "executable": "/Users/spoho/Documents/prime/test/physim/.venv/bin/python",
+    "platform": "macOS-15.7.4-arm64-arm-64bit-Mach-O",
+    "distributions": {
+      "blobkit": "0.3.4",
+      "numpy": "2.5.2",
+      "matplotlib": "3.11.1",
+      "physim": "0.11.0",
+      "scipy": "1.18.0",
+      "verifiers": "0.3.0"
+    }
+  },
+  "science": {
+    "python": "3.9.6 (default, Dec  2 2025, 07:27:58) \n[Clang 17.0.0 (clang-1700.6.3.2)]",
+    "executable": "/Users/spoho/.venvs/bk3/bin/python",
+    "platform": "macOS-15.7.4-arm64-arm-64bit",
+    "distributions": {
+      "blobkit": "0.3.4",
+      "scipy": "1.13.1",
+      "matplotlib": "3.9.4",
+      "numpy": "1.26.4"
+    }
+  },
+  "policy": "Use the project environment, not the agent kernel. No environment installation/change done for this snapshot."
+}

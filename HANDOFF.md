@@ -1,4 +1,13 @@
-# CURRENT STATE — R6 FIRST PASS READY (2026-09-07T03:39:48.296136+00:00)
+# CURRENT STATE — MIGRATION READY (2026-09-07T13:15:24.259320+00:00)
+
+**Start a fresh session with [SESSION_MIGRATION.md](SESSION_MIGRATION.md).**
+It records the user direction, approval limits, current decisions and read order.
+`handoff/SESSION_STATE.json` is a curated repo snapshot; `LOCAL_ASSETS.json` maps
+local-only inputs and recorded/current hashes. No old kernel variables, workers,
+or heartbeat are required. The R6 first pass was pushed in **c06b2fb**.
+
+Migration archival work only: original exploratory score files preserved with
+warnings; no new score normalization, scientific simulation, model run or pod.
 
 ## Completed and reviewed, not a shipped evaluation
 - Review entry: probes/blobs/agentenv/round6/README.md.
@@ -35,10 +44,12 @@ from agent access; published worlds are development cases, not uncontaminated te
   Both r2 reported completions remain diagnostic, not a clean benchmark. E1#929
   unscored HarnessError; E2#943 canceled after~11min; E1#930 setup canceled;
   E2#944 not admitted. No relaunch, cohort pooling, or canceled-task zeros.
-- Uncommitted absolute_scoring/ script+JSON unchanged. It reproduces raw CRPS to
-  stored rounding, but spread normalization and noise-floor ratios are exploratory.
-  Full-base span is not pre-anchor; LOO Gaussian CRPS is not an exact achievable
-  floor; mixed-horizon ratios require aligned reductions. Do not publish as fixed0–1.
+- Absolute-scoring script/JSON/log are now archived unchanged in the migration
+  commit at probes/blobs/agentenv/round5/resource_revision/absolute_scoring/,
+  with README.md caveats and
+  original hashes. Raw CRPS matches12 values at six decimals; normalization is NOT
+  adopted. Full-base is not pre-anchor, LOO is not an exact achievable floor, and
+  mixed-horizon ratios need aligned reductions. Do not use as a fixed0–1 score.
 - Sensor-local quietness is not global deadness; noise growth is not chaos;
   prediction error is not paired intervention effect; metrics do not replace
   per-world physics. New dossiers preserve single-path/quantization limits.

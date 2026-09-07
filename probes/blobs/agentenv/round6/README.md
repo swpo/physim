@@ -2,6 +2,10 @@
 
 **Ready for review. Offline prototype only; not a shipped evaluation.**
 
+For a new session, start with [SESSION_MIGRATION.md](../../../../SESSION_MIGRATION.md).
+The separate [absolute-scoring exploration](../round5/resource_revision/absolute_scoring/README.md)
+is preserved for provenance, not adopted as the R6 scoring policy.
+
 The agent-facing idea is a code bundle implementing
 `predict(actions, queries, n_samples=64, seed=0)`, from one opaque fixed start.
 It gets no world history, anchor state or geometry as a prediction argument.

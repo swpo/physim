@@ -1,5 +1,11 @@
 # physim
 
+> **Continuing this research in a new agent session?** Start with
+> [SESSION_MIGRATION.md](SESSION_MIGRATION.md) and the current
+> [HANDOFF.md](HANDOFF.md). They record completed work, local data dependencies,
+> unresolved R6 design choices, and the no-automatic-rollout/pod approval limits.
+> R6 is an offline executable-predictor prototype, not the shipped contract eval.
+
 A benchmark for **doing science in simulated universes**, built on
 [Prime Intellect verifiers](https://github.com/PrimeIntellect-ai/verifiers).
 

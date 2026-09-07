@@ -1,0 +1,344 @@
+{
+  "schema": "physim-local-untracked-inventory-v1",
+  "observed_utc": "2026-09-07T13:15:24.259320+00:00",
+  "base_commit": "c06b2fb",
+  "scope": "Pre-migration-documentation working tree inventory; path/size only for historical or potentially sensitive material. Not instructions to execute or delete. Absolute-scoring trio will be intentionally archived in this commit; remaining files stay local.",
+  "files": [
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E1_s928.npz",
+      "bytes": 4455468,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E1_s929.npz",
+      "bytes": 4800832,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E1_s930.npz",
+      "bytes": 4549981,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E2_s942.npz",
+      "bytes": 4196046,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E2_s943.npz",
+      "bytes": 4463910,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/results/actor_logs/E2_s944.npz",
+      "bytes": 4293392,
+      "category": "historical_local_actor_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round2/fable5.log",
+      "bytes": 16983789,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round2/fable5.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round2/sol.log",
+      "bytes": 4517533,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round2/sol.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/POST11_BRIEF.md",
+      "bytes": 3179,
+      "category": "superseded_editorial_draft",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/POST11_BRIEF2.md",
+      "bytes": 2639,
+      "category": "superseded_editorial_draft",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E1.log",
+      "bytes": 37977652,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E1.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E2.log",
+      "bytes": 30479724,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E2.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E1_resume.log",
+      "bytes": 36795294,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E1_resume.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E1_resume2.log",
+      "bytes": 2318,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E1_resume2.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E1_resume2.sh",
+      "bytes": 267,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E2_resume.log",
+      "bytes": 37016867,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E2_resume.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E2_resume2.log",
+      "bytes": 2318,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E2_resume2.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/fable5_E2_resume2.sh",
+      "bytes": 267,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E1.log",
+      "bytes": 6733392,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E1.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E2.log",
+      "bytes": 6639661,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E2.pid",
+      "bytes": 6,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1.log",
+      "bytes": 2369,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1.sh",
+      "bytes": 317,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1_r2.log",
+      "bytes": 1877,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1_r2.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E1_r2.sh",
+      "bytes": 317,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2.log",
+      "bytes": 2424,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2.sh",
+      "bytes": 317,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2_r2.log",
+      "bytes": 2656,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2_r2.pid",
+      "bytes": 5,
+      "category": "stale_pid_record_not_liveness",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/fable5_E2_r2.sh",
+      "bytes": 317,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7_integration.log",
+      "bytes": 1574,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7_integration.sh",
+      "bytes": 343,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7b_integration.log",
+      "bytes": 1647,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7b_integration.sh",
+      "bytes": 347,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7c_integration.log",
+      "bytes": 1641,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/g7c_integration.sh",
+      "bytes": 347,
+      "category": "potentially_credential_bearing_launcher_do_not_read_or_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/absolute_scores.json",
+      "bytes": 8543,
+      "category": "absolute_scoring_to_archive_in_this_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/absolute_scores.py",
+      "bytes": 4843,
+      "category": "absolute_scoring_to_archive_in_this_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/run.log",
+      "bytes": 1587,
+      "category": "absolute_scoring_to_archive_in_this_commit",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/l0/deepsearch/v2_analysis/films/out_slomo/p3g9_022_slomo_film.npz",
+      "bytes": 38781365,
+      "category": "historical_local_render_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/l0/deepsearch/v2_analysis/films/out_slomo/p4g3_033_slomo_film.npz",
+      "bytes": 39448767,
+      "category": "historical_local_render_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/l0/deepsearch/v2_analysis/films/out_slomo/p6g8_033_slomo_film.npz",
+      "bytes": 22278272,
+      "category": "historical_local_render_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "probes/blobs/l0/deepsearch/v2_analysis/films/out_slomo/run_slomo.log",
+      "bytes": 324,
+      "category": "historical_local_render_output",
+      "action": "preserve existing; do not stage wholesale"
+    },
+    {
+      "path": "truth.log",
+      "bytes": 0,
+      "category": "historical_local_log_not_a_resume_instruction",
+      "action": "preserve existing; do not stage wholesale"
+    }
+  ]
+}

@@ -234,7 +234,8 @@ not proof that 1x means a perfect theory. No automatic 0-1 score is frozen here.
 Keep raw CRPS alongside other error/calibration diagnostics. Any variability
 normalization must name its source, observable, time span and reduction. The
 existing exploratory absolute_scoring/ outputs used full-base spans, not always
-pre-anchor history; they remain uncommitted and are not a certified R6 score.
+pre-anchor history. They are now [archived unchanged with caveats](../../agentenv/round5/resource_revision/absolute_scoring/README.md)
+in the migration commit, not adopted as a certified R6 score.
 Synthetic oracle/lookup predictors are scorer diagnostics, not world-independent
 criteria for deciding what physics is interesting.
 

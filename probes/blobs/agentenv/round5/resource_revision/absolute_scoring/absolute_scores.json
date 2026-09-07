@@ -1,0 +1,331 @@
+{
+  "E1_928": {
+    "world": "p4g2_044",
+    "seed": 928,
+    "menu": "E1",
+    "trace": "0bdd699154ee4e1d96aac4e0961bc11d",
+    "contracts": {
+      "L1": {
+        "agent_crps": 0.07226899727554158,
+        "stored_crps": 0.072269,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.07226899727554158
+        ],
+        "truth_loo_crps": [
+          null
+        ],
+        "truth_member_spread": [
+          0.0
+        ],
+        "mae": [
+          0.08115445840141228
+        ],
+        "n_members": [
+          1
+        ],
+        "climatological_sd_scale": 0.2633226351863909,
+        "crps_over_clim_sd": 0.2744503799469671,
+        "crps_over_truth_loo": null,
+        "reference_best": 0.092947
+      },
+      "L2": {
+        "agent_crps": 0.20259981230662524,
+        "stored_crps": 0.2026,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.20259981230662524
+        ],
+        "truth_loo_crps": [
+          null
+        ],
+        "truth_member_spread": [
+          0.0
+        ],
+        "mae": [
+          0.2848145083747294
+        ],
+        "n_members": [
+          1
+        ],
+        "climatological_sd_scale": 0.34432902932167053,
+        "crps_over_clim_sd": 0.5883901589876045,
+        "crps_over_truth_loo": null,
+        "reference_best": 0.201923
+      },
+      "L3F": {
+        "agent_crps": 0.0005536603449376121,
+        "stored_crps": 0.000554,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.000484208418951489,
+          0.0004619194708450393,
+          0.0006053693443804166,
+          0.0006631441455735033
+        ],
+        "truth_loo_crps": [
+          null,
+          null,
+          0.00020027619831014423,
+          0.00027977590825274966
+        ],
+        "truth_member_spread": [
+          0.0,
+          0.0,
+          0.0003336239873746191,
+          0.0004652113046514127
+        ],
+        "mae": [
+          0.00018876675124518107,
+          0.00016834459961282818,
+          0.00039745255253481,
+          0.0004912226479305182
+        ],
+        "n_members": [
+          1,
+          1,
+          24,
+          24
+        ],
+        "climatological_sd_scale": 0.28625686712937676,
+        "crps_over_clim_sd": 0.001934138211214963,
+        "crps_over_truth_loo": 2.3066677028114424,
+        "reference_best": 0.154958
+      },
+      "L3E": {
+        "agent_crps": 0.12393123061051221,
+        "stored_crps": 0.123931,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.12393123061051221
+        ],
+        "truth_loo_crps": [
+          0.03385373525026844
+        ],
+        "truth_member_spread": [
+          0.062009796353076345
+        ],
+        "mae": [
+          0.0234375
+        ],
+        "n_members": [
+          24
+        ],
+        "climatological_sd_scale": null,
+        "crps_over_clim_sd": null,
+        "crps_over_truth_loo": 3.6607845395591765,
+        "reference_best": 1.082928
+      },
+      "L4": {
+        "agent_crps": 0.0019385735915957165,
+        "stored_crps": 0.001939,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.0019385735915957165
+        ],
+        "truth_loo_crps": [
+          0.00017227146973170621
+        ],
+        "truth_member_spread": [
+          0.00027868486720400464
+        ],
+        "mae": [
+          0.002083687666019885
+        ],
+        "n_members": [
+          16
+        ],
+        "climatological_sd_scale": 0.28625686712937676,
+        "crps_over_clim_sd": 0.006772147026675723,
+        "crps_over_truth_loo": 11.253015920830249,
+        "reference_best": 0.177224
+      },
+      "L4D": {
+        "agent_crps": 0.0012842208702175378,
+        "stored_crps": 0.001284,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.0012842208702175378
+        ],
+        "truth_loo_crps": [
+          0.0001897148701194245
+        ],
+        "truth_member_spread": [
+          0.00030687895641757433
+        ],
+        "mae": [
+          0.0007509591630088789
+        ],
+        "n_members": [
+          16
+        ],
+        "climatological_sd_scale": 0.28625686712937676,
+        "crps_over_clim_sd": 0.004486253493569888,
+        "crps_over_truth_loo": 6.769215662478791,
+        "reference_best": 0.207267
+      }
+    }
+  },
+  "E2_942": {
+    "world": "p6g8_033",
+    "seed": 942,
+    "menu": "E2",
+    "trace": "ae982494a72144c186f58a687a99cd33",
+    "contracts": {
+      "L1": {
+        "agent_crps": 0.024033001320710914,
+        "stored_crps": 0.024033,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.024033001320710914
+        ],
+        "truth_loo_crps": [
+          null
+        ],
+        "truth_member_spread": [
+          0.0
+        ],
+        "mae": [
+          0.027713001338882635
+        ],
+        "n_members": [
+          1
+        ],
+        "climatological_sd_scale": 0.17694323619371907,
+        "crps_over_clim_sd": 0.13582322691554802,
+        "crps_over_truth_loo": null,
+        "reference_best": 0.050326
+      },
+      "L2": {
+        "agent_crps": 0.08254181038787653,
+        "stored_crps": 0.082542,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.08254181038787653
+        ],
+        "truth_loo_crps": [
+          null
+        ],
+        "truth_member_spread": [
+          0.0
+        ],
+        "mae": [
+          0.11418542171551907
+        ],
+        "n_members": [
+          1
+        ],
+        "climatological_sd_scale": 0.23818178474903107,
+        "crps_over_clim_sd": 0.34654963424197077,
+        "crps_over_truth_loo": null,
+        "reference_best": 0.094442
+      },
+      "L3F": {
+        "agent_crps": 0.003989738269087825,
+        "stored_crps": 0.00399,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.0027763673189144297,
+          0.002767546501552195,
+          0.006425300986796852
+        ],
+        "truth_loo_crps": [
+          null,
+          0.0001275764889769905,
+          8.891925920024983e-05
+        ],
+        "truth_member_spread": [
+          0.0,
+          0.00021502727257771548,
+          0.00014825872544016444
+        ],
+        "mae": [
+          0.00013449370493050613,
+          0.00021989402609160063,
+          0.00016350401072590432
+        ],
+        "n_members": [
+          1,
+          24,
+          24
+        ],
+        "climatological_sd_scale": 0.17694323619371907,
+        "crps_over_clim_sd": 0.02254812534749745,
+        "crps_over_truth_loo": 36.85742840382726,
+        "reference_best": 0.091403
+      },
+      "L3S": {
+        "agent_crps": 0.0008487456368605414,
+        "stored_crps": 0.000849,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.0008487456368605414
+        ],
+        "truth_loo_crps": [
+          0.00028870720010697144
+        ],
+        "truth_member_spread": [
+          0.0005854536654523127
+        ],
+        "mae": [
+          0.0006327158334513894
+        ],
+        "n_members": [
+          24
+        ],
+        "climatological_sd_scale": 0.03797609731554985,
+        "crps_over_clim_sd": 0.022349469715336193,
+        "crps_over_truth_loo": 2.9398145821997694,
+        "reference_best": 0.017601
+      },
+      "L4": {
+        "agent_crps": 0.06657508641779791,
+        "stored_crps": 0.066575,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.06657508641779791
+        ],
+        "truth_loo_crps": [
+          0.0049302819750689396
+        ],
+        "truth_member_spread": [
+          0.009431008105417596
+        ],
+        "mae": [
+          0.0854987683126194
+        ],
+        "n_members": [
+          16
+        ],
+        "climatological_sd_scale": 0.17418391944429115,
+        "crps_over_clim_sd": 0.38221143851967615,
+        "crps_over_truth_loo": 13.503301992553276,
+        "reference_best": 0.111706
+      },
+      "L4D": {
+        "agent_crps": 0.0029296648735873546,
+        "stored_crps": 0.00293,
+        "reproduces_stored": true,
+        "per_leg_agent_crps": [
+          0.0029296648735873546
+        ],
+        "truth_loo_crps": [
+          0.00020860482133969622
+        ],
+        "truth_member_spread": [
+          0.00033649762567819903
+        ],
+        "mae": [
+          0.0005681298390620077
+        ],
+        "n_members": [
+          16
+        ],
+        "climatological_sd_scale": 0.17418391944429115,
+        "crps_over_clim_sd": 0.016819376225624218,
+        "crps_over_truth_loo": 14.044089943715301,
+        "reference_best": 0.087167
+      }
+    }
+  }
+}

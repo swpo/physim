@@ -1,0 +1,106 @@
+{
+  "schema": "physim-session-handoff-v1",
+  "snapshot_utc": "2026-09-07T13:15:24.259320+00:00",
+  "base_code_commit": "c06b2fb",
+  "phase": "R6 first pass published; migration documentation/archive added; await design review",
+  "start_here": "SESSION_MIGRATION.md",
+  "current_handoff": "HANDOFF.md",
+  "current_request": "Ensure completed work and local-input dependencies are documented for another session; do not launch new science",
+  "runtime_at_migration": {
+    "direct_children": [],
+    "agent_owned_heartbeats": [],
+    "r6_background_work": "none; all explicit final handoffs accepted",
+    "campaign_gpu_pods": "terminated; do not reconnect or recreate",
+    "paid_eval_jobs": "stopped; no auto-resume",
+    "old_watchdog_id": "95f1c473-ed4e-4edf-be8b-509c91ffd375",
+    "old_watchdog_status": "deleted"
+  },
+  "completed": {
+    "r6": {
+      "commit": "c06b2fb",
+      "entry": "probes/blobs/agentenv/round6/README.md",
+      "worker_tests": 31,
+      "independent_parent_tests": 31,
+      "max_native_trajectory_tu": 0.12,
+      "physics_dossiers": [
+        "probes/blobs/agentenv/round6/physics/p4g2_044/PHYSICS.md",
+        "probes/blobs/agentenv/round6/physics/p6g8_033/PHYSICS.md"
+      ],
+      "scope": "isolated trusted oracle prototype plus bounded cache-only reconnaissance"
+    },
+    "post11_pair": {
+      "commit": "16275df",
+      "path": "docs/blobs/measuring-evolved-worlds.html",
+      "E1_audit_checks": 30,
+      "E2_audit_checks": 43
+    },
+    "absolute_scoring": {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring",
+      "status": "archived unchanged with caveats in migration commit; not adopted normalized metric",
+      "raw_crps_matches_at_six_decimals": 12
+    },
+    "v3": {
+      "status": "gens1-12/confirmations/harvest complete; two final archives secured; pods terminated",
+      "audit": "probes/blobs/l0/deepsearch/v3_pilot/HARVEST2.md"
+    },
+    "h9_v0": {
+      "status": "rejected as phenotype ranker/threshold",
+      "review": "probes/blobs/l0/complexity/h9_review/REVIEW.md"
+    }
+  },
+  "predictor_interface": {
+    "submitted": "predict(actions, queries, n_samples=64, seed=0)",
+    "return": "{\"samples\": [joint array per query]}",
+    "origin": "opaque fixed t0",
+    "no_inputs": [
+      "history",
+      "anchor_t",
+      "geometry",
+      "field equations"
+    ],
+    "oracle": "OracleRunner.sample_truth(..., *, truth_seed)",
+    "oracle_seed": "required private namespace, independent of predictor sampling seed"
+  },
+  "open_gates": [
+    "causal noise pairing: policyA no-op/base vs treatment/reseed not common-noise contrast",
+    "exploration/evaluation amplitude and dilation semantics",
+    "sensor-accessible phenomenon selection and bounded confirmatory experiments",
+    "untrusted runtime/filesystem/network isolation and privileged-data exclusion",
+    "resource caps and long-horizon validation",
+    "joint and marginal scoring, no universal exact floor or0-1 normalization",
+    "production state-concurrency regression/fix before any rollout",
+    "public development-world contamination and held-out policy"
+  ],
+  "not_implemented": [
+    "R6 scorer",
+    "safe submitted-code runtime",
+    "production R6 environment integration",
+    "full old-truth parity",
+    "broad physics battery",
+    "old-predictor adapters",
+    "new paid pilot",
+    "evolution metric replacement"
+  ],
+  "approval_limits": {
+    "no_automatic_paid_model_rollouts": true,
+    "no_automatic_new_worlds_seeds_truth_battery": true,
+    "no_automatic_gpu_pods": true,
+    "next_action": "review/design discussion; scoped authorization before further scientific runs"
+  },
+  "data_inventory": "handoff/LOCAL_ASSETS.json",
+  "environment_inventory": "handoff/ENVIRONMENTS.json",
+  "leftover_dispositions": "handoff/UNTRACKED_LOCAL_FILES.json",
+  "historical_local_state": "~/v3work/ops/recovery_20260905/state.json; not required to reconstruct current decisions",
+  "credential_policy": "Do not read or stage old launch .sh files or API config. Never embed keys. Do not stage the entire untracked tree.",
+  "scientific_corrections": [
+    "MAE != paired causal effect",
+    "sensor quietness != global inactivity",
+    "ensemble spread growth != chaos",
+    "Gaussian LOO CRPS != exact achievable floor",
+    "full-base SD != per-anchor SD",
+    "L3F ratio reduction misalignment",
+    "single-path/quantized observations != universal laws",
+    "generic baseline difficulty != interesting physics"
+  ],
+  "coordination_lesson": "Background job completion did not resume child turns; explicit messages and bounded watchdog recovered results. All old workers/watchdog are retired; do not recreate automatically."
+}

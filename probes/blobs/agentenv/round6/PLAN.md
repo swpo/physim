@@ -22,9 +22,10 @@ COORDINATION.json retains the incident and closure record.
 No paid rollout, pod, new world/seed cohort, or broad simulation battery.
 Native tests used at most six substeps per trajectory. Physics analysis used
 existing caches only. No archived whole-state transport fix, scorer, sandbox,
-full legacy-truth parity or long-horizon performance claim. Existing uncommitted
-absolute_scoring/ remains exploratory and unchanged. Old stopped/canceled and
-unscored cohorts remain separate.
+full legacy-truth parity or long-horizon performance claim. The absolute_scoring/
+exploration is now archived unchanged with warnings by the migration commit;
+its normalized columns are not adopted. Old stopped/canceled and unscored cohorts
+remain separate.
 
 Next: review per-world hypotheses and resolve noise-pairing/experimental-domain
 choices, then scope minimal confirmatory work. No automatic next-stage launch.

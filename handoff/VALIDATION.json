@@ -1,0 +1,39 @@
+{
+  "schema": "physim-migration-validation-v1",
+  "status": "passed",
+  "checks": {
+    "runtime_snapshot_closed": true,
+    "approval_limits_explicit": true,
+    "original_scoring_files_unchanged": true,
+    "raw_crps_twelve_matches_at_six_decimals": true,
+    "recorded_input_hash_comparison_no_mismatch": true,
+    "separate_native_environment_snapshots": true,
+    "migration_local_links_exist": true,
+    "migration_json_is_finite": true,
+    "no_credential_value_patterns_in_new_material": true,
+    "corrected_scoring_warning_present": true,
+    "corrected_current_handoff_present": true
+  },
+  "original_file_checks": [
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/absolute_scores.json",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/run.log",
+      "matches": true
+    },
+    {
+      "path": "probes/blobs/agentenv/round5/resource_revision/absolute_scoring/absolute_scores.py",
+      "matches": true
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "Checks recorded live-state snapshot, not another session's runtime.",
+    "No raw trace, field cache, archive, simulator or predictor was read/executed by this checker.",
+    "Input hashes are those recorded by the separate inventory command, not recomputed here.",
+    "Credential scan is narrow; old launchers were not read or included.",
+    "No new scientific claims or normalized scoring policy are validated."
+  ]
+}

@@ -1,0 +1,15 @@
+E1_928
+  L1   crps=0.072269 stored=0.072269 ok=True crps/clim_sd=0.2744503799469671 crps/truth_loo=None members=[1]
+  L2   crps=0.202600 stored=0.2026 ok=True crps/clim_sd=0.5883901589876045 crps/truth_loo=None members=[1]
+  L3F  crps=0.000554 stored=0.000554 ok=True crps/clim_sd=0.001934138211214963 crps/truth_loo=2.3066677028114424 members=[1, 1, 24, 24]
+  L3E  crps=0.123931 stored=0.123931 ok=True crps/clim_sd=None crps/truth_loo=3.6607845395591765 members=[24]
+  L4   crps=0.001939 stored=0.001939 ok=True crps/clim_sd=0.006772147026675723 crps/truth_loo=11.253015920830249 members=[16]
+  L4D  crps=0.001284 stored=0.001284 ok=True crps/clim_sd=0.004486253493569888 crps/truth_loo=6.769215662478791 members=[16]
+E2_942
+  L1   crps=0.024033 stored=0.024033 ok=True crps/clim_sd=0.13582322691554802 crps/truth_loo=None members=[1]
+  L2   crps=0.082542 stored=0.082542 ok=True crps/clim_sd=0.34654963424197077 crps/truth_loo=None members=[1]
+  L3F  crps=0.003990 stored=0.00399 ok=True crps/clim_sd=0.02254812534749745 crps/truth_loo=36.85742840382726 members=[1, 24, 24]
+  L3S  crps=0.000849 stored=0.000849 ok=True crps/clim_sd=0.022349469715336193 crps/truth_loo=2.9398145821997694 members=[24]
+  L4   crps=0.066575 stored=0.066575 ok=True crps/clim_sd=0.38221143851967615 crps/truth_loo=13.503301992553276 members=[16]
+  L4D  crps=0.002930 stored=0.00293 ok=True crps/clim_sd=0.016819376225624218 crps/truth_loo=14.044089943715301 members=[16]
+written /Users/spoho/Documents/prime/test/physim/probes/blobs/agentenv/round5/resource_revision/absolute_scoring/absolute_scores.json
