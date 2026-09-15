@@ -19,13 +19,13 @@ An editable installation of just the packages is also supported:
 uv pip install -e ./packages/blobkit -e './environments/physim[reference,hub]'
 ```
 
-Physim 0.12.1 depends on blobkit 0.3.5 and Verifiers 0.3.1–0.3.x. The `reference`
+Physim 0.12.2 depends on blobkit 0.3.5 and Verifiers 0.3.1–0.3.x. The `reference`
 extra pins NumPy 2.5.2 and SciPy 1.18.0; `hub` adds immutable Hugging Face downloads.
 The empty `agent` extra is retained for old installation commands.
 
 The standalone distributions are published as GitHub release assets:
 [Blobkit 0.3.5](https://github.com/swpo/physim/releases/tag/blobkit-v0.3.5) and
-[Physim 0.12.1](https://github.com/swpo/physim/releases/tag/physim-v0.12.1).
+[Physim 0.12.2](https://github.com/swpo/physim/releases/tag/physim-v0.12.2).
 Physim declares the Blobkit wheel URL with its SHA-256, so installation does not
 need `packages/blobkit/` or the uv workspace. The PyPI project named `physim` is
 unrelated; use this repository's distribution explicitly.
@@ -42,8 +42,10 @@ uv pip install -r requirements.txt
 
 The prepared data are published and have passed anonymous download, offline-cache,
 and native checks. The Dockerfiles can be built by a reviewer; publishing prebuilt
-images is optional. Image tags remain at `0.12.0` because their contents have not
-changed with the host package's `0.12.1` update.
+images is optional. The agent image is `physim-agent:0.12.2`; it caches the
+stock Verifiers bash-harness dependencies during the build and starts offline.
+The predictor image remains `physim-predictor:0.12.0` with unchanged numerical
+dependencies. Rebuild the agent image when upgrading the host Verifiers version.
 
 ## Data and setup
 
@@ -67,7 +69,7 @@ From the repository root, build the isolated predictor and agent images:
 docker build -f scripts/physim/docker/predictor.Dockerfile \
   -t physim-predictor:0.12.0 scripts/physim/docker
 docker build -f scripts/physim/docker/agent.Dockerfile \
-  -t physim-agent:0.12.0 scripts/physim/docker
+  -t physim-agent:0.12.2 scripts/physim/docker
 ```
 
 The standard taskset ID is `physim`. It exports one native taskset class,

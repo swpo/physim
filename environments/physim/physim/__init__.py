@@ -2,7 +2,7 @@
 
 from importlib import import_module
 
-__version__ = "0.12.1"
+__version__ = "0.12.2"
 __all__ = ["PhysimTaskset", "Bundle", "BundleError", "ExperimentService", "OracleRunner"]
 _PUBLIC = {
     "PhysimTaskset": ("physim.taskset", "R6Taskset"),

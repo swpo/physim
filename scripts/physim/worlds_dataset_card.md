@@ -27,6 +27,34 @@ laboratory preparations**. Multiple records may share a genome. The viewer's
 `train` label is a catalog partition, not a scientific training/test split.
 These are disclosed development data.
 
+## Catalog viewer and Parquet conversion
+
+The `worlds` subset contains one row per registry record; `evaluations` contains
+one row per prepared evaluation bundle. Hugging Face automatically converts these
+two JSONL catalogs to Parquet on `refs/convert/parquet` to power browsing, filtering,
+and queries. That is a derived catalog view. Scientific arrays remain in their
+checksummed NPZ files, and the preserved registry records remain JSON.
+
+Use a pinned dataset commit for scientific reproduction. The conversion branch
+follows the current catalog and is not the identity of a world or an evaluation.
+
+```python
+from datasets import load_dataset
+
+worlds = load_dataset("{{DATASET_REPO}}", "worlds",
+                      revision="FULL_DATASET_COMMIT", split="train")
+evaluations = load_dataset("{{DATASET_REPO}}", "evaluations",
+                           revision="FULL_DATASET_COMMIT", split="train")
+```
+
+In `worlds`, `world_record` and `genome` are immutable identifiers; `record_path`
+and `genome_path` locate their JSON records. `recipe` and `run` link available
+provenance. A null `bundle_path` means the record has no prepared evaluation
+bundle. Paths are relative to this dataset at the selected commit. The evaluation
+catalog adds preparation/suite references, port counts, grading-program counts,
+download-profile sizes in bytes, dependencies, and licenses. Neither catalog
+loads or executes archived recipe code.
+
 ## Worlds, preparations, and suites
 
 - A **world** defines physical dynamics: its genome, parameters, and interactions.
@@ -86,11 +114,17 @@ registry.verify()
 world = registry.load_genome("WORLD_RECORD_ID_FROM_WORLDS_CATALOG")
 ```
 
-Use Physim 0.12.0 and blobkit 0.3.5 with Python 3.12. The reference numerical
+Use Physim 0.12.2 and blobkit 0.3.5 with Python 3.12. The reference numerical
 profile pins NumPy 2.5.2 and SciPy 1.18.0. Code and Docker build instructions live
-in the [code repository](https://github.com/swpo/physim). The dataset is independent
-of package publication; blobkit 0.3.5 still needs a public package release or an
-installable source revision for an upstream environment-only installation.
+in the [Physim release](https://github.com/swpo/physim/releases/tag/physim-v0.12.2).
+Both packages are available as public GitHub release wheels and source archives;
+the setup archive includes explicit configs for all three preparations. Physim
+pins the Blobkit wheel by SHA-256. The PyPI project named `physim` is unrelated.
+Use the release's `requirements.txt` for the checksummed installation.
+
+The catalog's `code_versions.physim = 0.12.0` records the original bundle export
+runtime. Version 0.12.2 adds portable selection and distribution while preserving
+the numerical source hashes and all world, preparation, and suite identities.
 
 ## Provenance and reproducibility
 

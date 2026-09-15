@@ -28,7 +28,7 @@ from physim.bundles import Bundle
 from . import evaluation as E
 
 PROTOCOL = "r6-verifiers-v1-bash-1"
-AGENT_IMAGE = "physim-agent:0.12.0"
+AGENT_IMAGE = "physim-agent:0.12.2"
 DEFAULT_OUTPUT = Path("outputs/r6/artifacts")
 DEFAULT_PROMPT = "Investigate the laboratory and submit your executable predictor."
 

@@ -162,7 +162,8 @@ def stage_release(*, registry_root, bundle_paths, output, release):
                 git_baseline=baseline,
                 working_tree_dirty=dirty,
                 exporter_sha256={p.relative_to(ROOT).as_posix(): digest(p) for p in sources},
-                package_publication="pending",
+                package_publication="published" if release.get("code_packages") else "pending",
+                code_packages=release.get("code_packages", {}),
             ),
             files=[
                 dict(path=p.relative_to(output).as_posix(), bytes=p.stat().st_size, sha256=digest(p))

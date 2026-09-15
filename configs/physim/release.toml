@@ -4,6 +4,11 @@ data_license = "CC-BY-4.0"
 dataset_repo = "seanpohorence/physim-worlds"
 exposure = "public-reference-development"
 
-dataset_revision = "dcd6abd5eae76a47f326c70518315d2d1e101d86"
-release_id = "dataset-release:sha256:f00596ea8751cb4208c519b99e6c9958b8c021a63c627c8700c2672420ca7d85"
-published_date = "2026-09-14"
+dataset_revision = "163caf1f52ad7d1630475fabccf5a72f1c33dfdd"
+release_id = "dataset-release:sha256:439f80074bb905418ffa185574362b699972fcab85c16b7ca807f3b1dd56aa2f"
+published_date = "2026-09-15"
+
+[code_packages]
+physim = "https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-0.12.1-py3-none-any.whl#sha256=1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74"
+blobkit = "https://github.com/swpo/physim/releases/download/blobkit-v0.3.5/blobkit-0.3.5-py3-none-any.whl#sha256=6747e7ebe26e3909c05d91d050ebce93715d08992c51498cbf480b8206224331"
+source_commit = "55ab966415f1504a430379064b74e274d8bde553"

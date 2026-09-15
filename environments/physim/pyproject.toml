@@ -1,6 +1,6 @@
 [project]
 name = "physim"
-version = "0.12.1"
+version = "0.12.2"
 description = "A Verifiers v1 taskset for experimental prediction in prepared physical worlds"
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
