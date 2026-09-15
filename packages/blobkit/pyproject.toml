@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blobkit"
+version = "0.3.5"
+description = "Spatial-field simulators, world genomes, and CPU/JAX experiment assays"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = [
+    "numpy>=1.26,<3",
+    "scipy>=1.11,<2",
+]
+
+[project.optional-dependencies]
+accelerator = ["jax==0.4.38"]
+gpu = ["jax[cuda12]==0.4.38"]
+plot = ["matplotlib>=3.8,<4"]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+blobkit = "blobkit.cli:main"
+
+[project.urls]
+Repository = "https://github.com/swpo/physim"
+Documentation = "https://swpo.github.io/physim/"
+
+[tool.setuptools]
+packages = ["blobkit", "blobkit.soup"]
+
+[tool.setuptools.package-data]
+blobkit = ["data/*.npz", "data/worlds/*.json", "data/fleet/*", "_locks*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["accelerator: requires the optional JAX installation", "slow: longer numerical and assay regression checks"]
