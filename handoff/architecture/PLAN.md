@@ -65,7 +65,8 @@ validation now covers installed public dependencies, both complete BF/XV suite
 replays and registry round trips, all three published reference scores and fresh
 native experiments, and two successful stock Verifiers wiring smokes. See
 `handoff/pr_preparation_20260915/REPORT.md` and its publication receipt for the
-current draft PR and review status.
+current review status. The contribution is open as
+[draft PR #22](https://github.com/PrimeIntellect-ai/residency-environments/pull/22).
 
 After acceptance, adapt the personal research workspace to consume the shared
 environment and retire its transitional source copy. Maintainer review remains

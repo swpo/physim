@@ -1,0 +1,43 @@
+{
+  "status": "published",
+  "prime": {
+    "repository": "PrimeIntellect-ai/residency-environments",
+    "fork": "swpo/residency-environments",
+    "branch": "codex/physim",
+    "commit": "a90b133eb96882a2260002a3f24d754c32bfe75b",
+    "tree": "5a633156e1173b206d9bcaf6dbd42eeeccd61071",
+    "base": "01d9f5f80572b7ec82575b10d45a800ed844e496",
+    "pr_url": "https://github.com/PrimeIntellect-ai/residency-environments/pull/22",
+    "draft": true,
+    "ci": "passed"
+  },
+  "personal": {
+    "repository": "swpo/physim",
+    "prepared_branch": "codex/physim-publication-20260915",
+    "target_branch": "main",
+    "pages_url": "https://swpo.github.io/physim/",
+    "published": true,
+    "code_commit": "652c2fd68300014c905ccc034a3cbba8a756ff6e",
+    "code_tree": "0e3f8f67781806ea9221e8588e3a134b1cced1b4",
+    "ci_url": "https://github.com/swpo/physim/actions/runs/35024969386",
+    "ci": "passed",
+    "publication_note": "Main also includes a documentation-only follow-up with publication records and PR crosslinks."
+  },
+  "local_backups": {
+    "prime.bundle": {
+      "path": "dist/publication-20260915/prime.bundle",
+      "bytes": 87576,
+      "sha256": "2eee004e03ece81a76519518422906f77c2f175cf3152f91a23e5ddd70a083aa"
+    },
+    "personal.bundle": {
+      "path": "dist/publication-20260915/personal.bundle",
+      "bytes": 21136511,
+      "sha256": "822bd34d06aeee86ad33bd79aa47c4483fea2bc23f3464f1eeadbfdd6084728d"
+    },
+    "prime.patch": {
+      "path": "dist/publication-20260915/prime.patch",
+      "bytes": 267471,
+      "sha256": "59bb226dc4abbd091f2017329abc69d65436e0f9ac50b968bf4da850617efebc"
+    }
+  }
+}

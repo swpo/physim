@@ -50,3 +50,19 @@ and the research workspace consumes the upstream package.
 
 Machine-readable evidence is stored alongside this report. New replay data are
 local verification outputs; the published HF scientific snapshot is unchanged.
+
+## Publication
+
+The contribution is open as [Prime draft PR #22](https://github.com/PrimeIntellect-ai/residency-environments/pull/22),
+at commit `a90b133eb96882a2260002a3f24d754c32bfe75b`. Upstream
+[Ruff](https://github.com/PrimeIntellect-ai/residency-environments/actions/runs/35025062249)
+and [unit tests](https://github.com/PrimeIntellect-ai/residency-environments/actions/runs/35025062279)
+passed. The personal publication's code commit is
+`652c2fd68300014c905ccc034a3cbba8a756ff6e`; its
+[full GitHub CI](https://github.com/swpo/physim/actions/runs/35024969386)
+passed installation, lint, package contracts, Blobkit CPU tests, scientific and
+integration checks, documentation checks, and distribution builds. A subsequent
+documentation-only commit adds the PR links and publication record.
+
+The website is served from `main:/docs` at <https://swpo.github.io/physim/>.
+See [PUBLICATION.md](PUBLICATION.md) for the source commits and recovery details.

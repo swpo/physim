@@ -135,5 +135,10 @@ See [the generation API](packages/blobkit/GENERATION.md) and [the registry](regi
 
 The first four directories follow Prime Intellect's residency conventions.
 Blobkit is a separate dependency; `packages/` is specific to this workspace.
+The environment and portable preparation workflows are proposed in
+[Prime draft PR #22](https://github.com/PrimeIntellect-ai/residency-environments/pull/22).
+Blobkit, exploratory research, and this website remain here. The local environment
+copy stays until the upstream contribution is accepted and the research workspace
+has been adapted to consume it as an installed dependency.
 Older engines are archived under `probes/legacy/physim/`. See
 [REPOSITORY.md](REPOSITORY.md) for validation commands and the upstream boundary.

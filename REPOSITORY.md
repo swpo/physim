@@ -16,7 +16,7 @@ reviewed at commit `01d9f5f80572b7ec82575b10d45a800ed844e496`.
 | `docs_source/`, `docs/` | Edited documentation and generated static site |
 | `probes/`, `handoff/` | Preserved research and audit evidence |
 
-## Blobkit and the eventual upstream PR
+## Blobkit and the upstream contribution
 
 Prime has no `packages/` convention. Its `pmpp-hard` environment depends on a
 separately released `kernelguard` package, which is the closer precedent for our
@@ -47,7 +47,8 @@ the selected world's required inputs. Fresh continuation, truth generation,
 mechanism controls, and registry round-trip checks use installed packages without
 the personal research checkout. Historical search and initialization evidence
 remain archived in the registry; the portable recipes start at saved endpoints.
-See `handoff/pr_preparation_20260915/REPORT.md` for the current contribution status.
+The contribution is open as [draft PR #22](https://github.com/PrimeIntellect-ai/residency-environments/pull/22).
+See [the verification report](handoff/pr_preparation_20260915/REPORT.md) for checks and reproduction evidence.
 
 This repository retains Blobkit, exploratory research, and the website. Keep the
 local environment copy until Prime accepts the contribution and the research
@@ -88,7 +89,7 @@ Four Physim reference files (`blobround6.py`, `blobround6_eval.py`,
 `blobround6_explore.py`, `devices.py`) and the historical blobkit implementation
 are excluded from formatting: scientific manifests bind their exact source bytes.
 Changing their formatting would invalidate those identities. This is an explicit
-local exception to discuss in the eventual PR, not a recertification of the law.
+local exception disclosed in the PR, not a recertification of the law.
 
 ## Historical boundaries
 
