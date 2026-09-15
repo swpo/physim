@@ -38,7 +38,7 @@ DETAIL_PARENTS = {
 }
 DESCRIPTIONS = {
     "index": "Learn physical systems through experiments in blob-field worlds, then evaluate an executable prediction function.",
-    "worlds": "Blob-field dynamics, the prepared p4g2_044 instance, its instruments, and current evaluation coverage.",
+    "worlds": "Prepared worlds with patterns, persistent trails, and orbital motion, sharing an experimental prediction interface.",
     "experiment": "Explore a physical system, validate a predictor, freeze the artifact, and forecast new experimental programs.",
     "scoring": "Joint energy scoring, independent truth realizations, fixed coordinate scales, marginal diagnostics, and limitations.",
     "try": "Run a minimal Python predictor to understand the sensor-array interface without a simulation or model API.",
@@ -199,7 +199,7 @@ def generated_content():
         if bundle
         else ""
     )
-    card = f'''<article class="world" id="{escape(world["id"])}"><span class="badge">Prepared development example</span>
+    card = f'''<article class="world" id="{escape(world["id"])}"><span class="badge">Original reference preparation</span>
 <h2>{escape(world["id"])}</h2><p>{escape(world["description"])}</p><dl>
 <dt>Fields</dt><dd>{world["activators"]} activators + {world["channels"]} channels</dd>
 <dt>Numerics</dt><dd>{world["grid"][0]} × {world["grid"][1]} periodic grid; {world["dtype"]}; step {world["dt"]}</dd>

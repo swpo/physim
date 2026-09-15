@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Blob-field dynamics, the prepared p4g2_044 instance, its instruments, and current evaluation coverage.">
+<meta name="description" content="Prepared worlds with patterns, persistent trails, and orbital motion, sharing an experimental prediction interface.">
 <title>Worlds · Physim</title>
 <link rel="stylesheet" href="site.css">
 </head>
@@ -14,7 +14,20 @@
 <div class="layout">
 <main id="main"><p class="eyebrow">Worlds</p><h1>Blob-field worlds</h1><p class="lead">A world is a set of field dynamics. A prepared instance fixes where an experiment begins and how its instruments are arranged.</p>
 <p>Fields assign a value to every point on a two-dimensional periodic grid. Local interactions, diffusion, and ongoing disturbances evolve those values. A “blob” is a persistent localized structure in the fields. Its movement and interactions emerge from the dynamics. <a href="fields.html">Read more about field dynamics.</a></p>
-<article class="world" id="p4g2_044"><span class="badge">Prepared development example</span>
+<h2>Worlds prepared for evaluation</h2>
+<p>Three worlds currently have validated preparations and prediction suites. They expose different physical behaviors through the same experimental interface. The registry also preserves a wider collection of world definitions and generation history.</p>
+<div class="table-scroll"><table><thead><tr><th>Preparation</th><th>Physics to investigate</th><th>Ports</th><th>Prediction programs</th></tr></thead><tbody>
+<tr><td><code>p4g2_044</code></td><td>Localized structures, stripes, and defects; nonlinear responses that depend on source strength and probe position.</td><td>12</td><td>15</td></tr>
+<tr><td><code>bf_trail_lab</code></td><td>A persistent trail field that changes later motion and responses.</td><td>4</td><td>11</td></tr>
+<tr><td><code>xv_rotor_lab</code></td><td>A coupled pair with sustained orbital motion and responses to interventions on either partner.</td><td>6</td><td>11</td></tr>
+</tbody></table></div>
+<h3>BF: a trail that changes later motion</h3>
+<p>BF has one activator and three channels. Its trail channel stays where it is written and relaxes slowly. A brief source pulse into that channel changes the activator's later trajectory, long after the pulse ends. Removing the bilinear feedback term eliminates this effect in paired simulations. The preparation gives an agent a persistent physical memory to discover and use when predicting delayed or combined interventions.</p>
+<h3>XV: an orbiting pair held together by coupling</h3>
+<p>XV has two activators and four channels. In the prepared pair, one activator sweeps around a much less mobile partner. Pulses into either activator change the subsequent readings. Longer control simulations show that removing the cross-coupling lets the pair separate and reduces its rotation. The prediction suite probes response strength, timing, and the influence of one partner on the other.</p>
+<p>These observations come from fresh simulations and mechanism controls for the selected preparations. See the <a href="https://github.com/swpo/physim/blob/main/handoff/eval_preparation/REPORT.md">BF and XV scientific report</a> for figures, measurements, and model pilots.</p>
+<details><summary>Original reference settings: <code>p4g2_044</code></summary>
+<article class="world" id="p4g2_044"><span class="badge">Original reference preparation</span>
 <h2>p4g2_044</h2><p>Localized structures, stripes, and coupled defects in twelve spatial fields.</p><dl>
 <dt>Fields</dt><dd>4 activators + 8 channels</dd>
 <dt>Numerics</dt><dd>256 × 256 periodic grid; float32; step 0.02</dd>
@@ -23,14 +36,15 @@
 <dt>Sampling</dt><dd>64 forecast members per model prediction; 2 independent truth realizations per program</dd>
 <dt>Release status</dt><dd>Genome available. See the registry for release availability.</dd><dt>Reference bundle</dt><dd>3,732,420 payload bytes; 15 cases; exact field and truth hashes</dd></dl>
 <p><a href="data/p4g2_044.json" download>Download genome JSON</a> · <a href="simulator.html">Numerical profile</a></p></article>
+</details>
 <h2>What the instruments reveal</h2>
-<p>Two movable probe arrays sample all anonymous ports at multiple positions: 12 in the worked example above, four in the prepared BF laboratory, and six in XV. A global sensor reports each port's spatial mean and variance. A fixed source injects through one port at a time. Moving a probe changes its readings without moving the emitter or disturbing the fields.</p>
+<p>Two movable probe arrays sample every anonymous port at multiple positions. The number of ports depends on the preparation, as shown above. A global sensor reports each port's spatial mean and variance. A fixed source injects through one port at a time. Moving a probe changes its readings without moving the emitter or disturbing the fields.</p>
 <p>Each trial restores the same prepared fields and apparatus, then draws independent ongoing noise. The investigator can therefore compare treatments and repeat experiments, while still needing to represent uncertainty.</p>
 <h2>A wider space of physical systems</h2>
 <p>World generation changes the number of activators and channels, their timescales, diffusion, and couplings. Earlier small systems provide interpretable examples of persistent spots, motion, binding, and transport. Larger evolved systems combine several kinds of structure. These phenomena belong to particular parameter settings; they are not properties of every world.</p>
 <p><a href="generation.html">How worlds are generated and characterized.</a></p>
 <h2>World registry</h2>
-<p>The registry uses exact world, preparation, and evaluation-suite identities. A self-contained bundle of this worked example is now <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">published on Hugging Face</a> alongside the BF and XV preparations. Anonymous download, file integrity, offline reuse, and native reference checks passed at this immutable revision.</p>
+<p>The registry uses exact world, preparation, and evaluation-suite identities. Self-contained bundles for all three preparations are <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">published on Hugging Face</a>. Anonymous download, file integrity, offline reuse, and native reference checks passed at this immutable revision.</p>
 <p><a href="registry.html">Read the registry status and format</a> · <a href="data/worlds.json">Download current catalog metadata</a></p>
 <p>To add a world, evaluation suite, or predictor, see the <a href="contribute.html">contribution requirements</a>.</p>
 <div class="page-continuation"><a class="previous" rel="prev" href="index.html"><span>Previous</span>← Overview</a><a class="following" rel="next" href="experiment.html"><span>Next</span>Experiment &amp; predict →</a></div></main>
