@@ -20,8 +20,8 @@ jobs:
           set -euo pipefail
           cd "$RUNNER_TEMP"
           curl --fail --location --retry 3 -o physim-setup.tar.gz \
-            https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-setup.tar.gz
-          echo '93710acdec819fa47f58681dcdee9ffeb9f698b47acbefde87492a78bacba4c7  physim-setup.tar.gz' | sha256sum --check
+            https://github.com/swpo/physim/releases/download/physim-v0.12.2/physim-setup.tar.gz
+          echo 'daa4f6f2c97a599ccd6f1c5e582b54959939eb3d8c797edb2340dbd7095da48c  physim-setup.tar.gz' | sha256sum --check
           mkdir physim-setup
           tar -xzf physim-setup.tar.gz -C physim-setup
           python3.12 -m pip install uv==0.12.8
@@ -31,7 +31,7 @@ jobs:
           set -euo pipefail
           cd "$RUNNER_TEMP/physim-setup"
           python3.12 scripts/physim/check_published_install.py \
-            --package-url 'https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-0.12.1-py3-none-any.whl#sha256=1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74' \
+            --package-url 'https://github.com/swpo/physim/releases/download/physim-v0.12.2/physim-0.12.2-py3-none-any.whl#sha256=dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f' \
             --configs configs/physim --workdir "$RUNNER_TEMP/physim-clean" \
             --report "$RUNNER_TEMP/public-install.json"
           cat "$RUNNER_TEMP/public-install.json"
@@ -41,7 +41,8 @@ jobs:
           set -euo pipefail
           cd "$RUNNER_TEMP/physim-setup"
           docker build -f scripts/physim/docker/predictor.Dockerfile -t physim-predictor:0.12.0 scripts/physim/docker
-          docker build -f scripts/physim/docker/agent.Dockerfile -t physim-agent:0.12.0 scripts/physim/docker
+          docker build -f scripts/physim/docker/agent.Dockerfile -t physim-agent:0.12.2 scripts/physim/docker
           mkdir "$RUNNER_TEMP/observations"
           "$RUNNER_TEMP/physim-clean/venv/bin/physim" validate \
             --artifact scripts/physim/examples/predictor --observations "$RUNNER_TEMP/observations"
+          "$RUNNER_TEMP/physim-clean/venv/bin/python" scripts/physim/check_harness_image.py --image physim-agent:0.12.2
