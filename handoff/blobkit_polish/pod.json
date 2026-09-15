@@ -1,0 +1,10 @@
+{
+  "pod_id": "aee17f876964457e86c17aad4396ca65",
+  "name": "blobkit-polish-20260913",
+  "created_at_unix": 1789307194.4966452,
+  "gpu": "A100_80GB",
+  "hourly_price_usd": 1.2,
+  "max_hours": 2,
+  "status": "created",
+  "backstop_pid": 88961
+}

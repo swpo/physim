@@ -1,0 +1,69 @@
+{
+ "kicks": {
+  "gt_mv3": {
+   "0": 0.5
+  }
+ },
+ "worlds": {
+  "bf": {
+   "id": "gt_bf",
+   "source": "built:complexity/worlds.py:bf"
+  },
+  "coex": {
+   "id": "gt_coex",
+   "source": "built:complexity/worlds.py:coex"
+  },
+  "ds3_014": {
+   "id": "ds3_014",
+   "source": "l0/complexity/genomes_v2/ds3_014.json"
+  },
+  "ds3_017": {
+   "id": "ds3_017",
+   "source": "l0/complexity/genomes_v2/ds3_017.json"
+  },
+  "ds6_000": {
+   "id": "ds6_000",
+   "source": "l0/complexity/genomes_v2/ds6_000.json"
+  },
+  "engine_10748": {
+   "id": "engine_10748",
+   "source": "l0/stage3/engine_10748.json"
+  },
+  "g0_jit_11": {
+   "id": "g0_jit_11",
+   "source": "l0/deepsearch/deploy/seeds/g0_jit_11.json"
+  },
+  "m0": {
+   "id": "gt_m0",
+   "source": "built:complexity/worlds.py:m0"
+  },
+  "m4": {
+   "id": "gt_m4",
+   "source": "built:complexity/worlds.py:m4"
+  },
+  "mv3": {
+   "id": "gt_mv3",
+   "source": "built:complexity/worlds.py:mv3"
+  },
+  "pred": {
+   "id": "gt_pred",
+   "source": "built:complexity/worlds.py:pred"
+  },
+  "rail_111_17": {
+   "id": "rail_111_17",
+   "source": "l0/deepsearch/seeds/rail_111_17.json"
+  },
+  "s2_118_41": {
+   "id": "s2_118_41",
+   "source": "l0/deepsearch/seeds/s2_118_41.json"
+  },
+  "s2_128_26": {
+   "id": "s2_128_26",
+   "source": "l0/deepsearch/seeds/s2_128_26.json"
+  },
+  "xv": {
+   "id": "gt_xv",
+   "source": "built:complexity/worlds.py:xv"
+  }
+ }
+}

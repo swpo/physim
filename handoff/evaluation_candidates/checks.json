@@ -1,0 +1,42 @@
+{
+  "review_scope": "Historical evidence assessment; no new physics simulation or GPU rental.",
+  "immutable_records_identical_to_previous_release_stage": 55,
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 2,
+      "genome": 19,
+      "recipe": 2,
+      "world-record": 22,
+      "artifact": 37
+    }
+  },
+  "curation_counts": {
+    "role": {
+      "demonstration": 6,
+      "evaluation-reference": 1,
+      "research-candidate": 15
+    },
+    "evaluation_stage": {
+      "genome-only": 21,
+      "validated": 1
+    },
+    "priority": {
+      "control": 3,
+      "example": 6,
+      "first": 3,
+      "later": 5,
+      "next": 2,
+      "reference": 1,
+      "unreviewed": 2
+    }
+  },
+  "complete_registry_staging_round_trip": "passed",
+  "tests": "21 passed: tests/test_registry_catalog.py and packages/blobkit/tests/test_registry.py",
+  "docs": "678 local links checked; no errors",
+  "lint_and_whitespace": "passed",
+  "review_sha256": "870851f3310ab980e5c968449700f5a05ab335f27a1d7784481d8b9448869730"
+}

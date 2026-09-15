@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "public_checks": [
+    {
+      "name": "mixed_sensors",
+      "ok": true
+    },
+    {
+      "name": "repeat_seed",
+      "ok": true
+    },
+    {
+      "name": "reordered_queries",
+      "ok": true
+    },
+    {
+      "name": "empty_times",
+      "ok": true
+    },
+    {
+      "name": "empty_queries",
+      "ok": true
+    },
+    {
+      "name": "single_member_actions",
+      "ok": true
+    },
+    {
+      "name": "default_members_repeated_sensor",
+      "ok": true
+    }
+  ],
+  "expected": {
+    "predictor": "initial_persistence",
+    "forecast_members": 4,
+    "primary_joint_energy": 0.8271209896216252,
+    "absolute_tolerance": 1e-10
+  },
+  "actual": 0.8271209896216252,
+  "references": {
+    "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+    "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+    "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+    "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+  },
+  "grade": "/Users/spoho/Documents/prime/test/physim/outputs/blobkit-polish-reference/grade.json",
+  "run_id": "run:sha256:ea1e6df8f4e3db2a25c1155840233b05c156404790bbd31e1ddfb9e87d3b6641"
+}

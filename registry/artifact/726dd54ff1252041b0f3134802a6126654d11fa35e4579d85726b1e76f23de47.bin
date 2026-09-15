@@ -1,0 +1,29 @@
+{
+  "world": "bf",
+  "seed": 11001,
+  "horizon_tu": 2500,
+  "L": 128.0,
+  "dx": 0.5,
+  "dt": 0.02,
+  "noise": 0.002,
+  "dtype": "f32",
+  "backend": "installed-blobkit-cpu",
+  "n_soup": 12,
+  "initialization": "Installed init_soup default dressed pokes, including its per-act default 0.5px kicks.",
+  "explicit_kick_overrides": null,
+  "snapshot_cadence_tu": 250,
+  "horizon_policy": "Fixed observation window; extension criteria recorded, no convergence assumed.",
+  "versions": {
+    "blobkit": "0.3.5",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0"
+  },
+  "sources": {
+    "generators/physim/characterize.py": "414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+    "probes/blobs/l0/complexity/metrics_v3.py": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+    "packages/blobkit/blobkit/soup/sim_cpu.py": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+    "packages/blobkit/blobkit/genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "packages/blobkit/blobkit/metrics_v1.py": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
+    "packages/blobkit/blobkit/metrics_v2.py": "18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988"
+  }
+}

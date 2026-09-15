@@ -1,0 +1,9 @@
+{
+  "patch_sha256": "f255f9969f61280d2569a8317cbc81e9761964d42b52d2136038dc817add36db",
+  "apply_check": "passed",
+  "changed_in_this_turn": [
+    "environments/physim/DATA_SOURCES.md",
+    "configs/physim/release.toml"
+  ],
+  "runtime_dataset_pins_unchanged": true
+}

@@ -1,0 +1,16 @@
+{
+  "references": {
+    "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+    "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+    "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+    "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+  },
+  "usage": {
+    "experiments": 1,
+    "max_experiments": 1,
+    "charged_tu": 0.06,
+    "max_total_tu": 50.0
+  },
+  "observation": "/Users/spoho/Documents/prime/test/physim/outputs/generation-refactor-experiment/observation.npz"
+}

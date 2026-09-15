@@ -1,0 +1,20 @@
+{
+  "directory": "/Users/spoho/Documents/prime/test/physim/dist/hf-worlds-20260915-0122",
+  "release_id": "dataset-release:sha256:165fbfac4c6760469c9ca6f88cc2818186d3b5464ced9a18b44f1620a56e9dd4",
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 4,
+      "genome": 19,
+      "recipe": 4,
+      "world-record": 24,
+      "artifact": 204
+    }
+  },
+  "evaluations": 3,
+  "files": 330,
+  "bytes": 18357260
+}

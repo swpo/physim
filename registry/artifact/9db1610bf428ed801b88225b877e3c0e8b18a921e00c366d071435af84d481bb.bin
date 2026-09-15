@@ -1,0 +1,297 @@
+"""Predictor for the laboratory dynamical system.
+
+Uses observations collected during exploration to build a probabilistic
+predictor.
+"""
+import json
+import numpy as np
+from scipy.interpolate import interp1d
+
+NUM_SLOTS = {"device0": 13, "device1": 19, "global": 2}
+
+NOISE_STD = {
+    "device0": np.array([1.44e-04, 9.83e-04, 5.40e-07, 1.68e-04]),
+    "device1": np.array([1.01e-04, 6.99e-04, 5.90e-07, 1.02e-04]),
+    "global":  np.array([6.00e-07, 2.70e-06, 1.00e-09, 7.00e-07]),
+}
+
+# Cache for loaded data
+_CACHE = None
+
+
+def _load_observations():
+    import glob
+    paths = sorted(glob.glob("/observations/experiment_*.npz"))
+    records = []
+    for path in paths:
+        with np.load(path, allow_pickle=False) as f:
+            request = json.loads(f["request"].item())
+            actions = request.get("actions", [])
+            queries_list = request.get("queries", [])
+            obs = {}
+            for i, q in enumerate(queries_list):
+                obs[q["sensor"]] = {
+                    "t": np.array(q["t"], dtype=float),
+                    "values": f[f"query{i}"].copy(),
+                }
+            records.append({"actions": actions, "obs": obs})
+    return records
+
+
+def _interp(obs_entry, t_query):
+    t_obs = obs_entry["t"]
+    vals = obs_entry["values"][0]
+    n_slots = vals.shape[-1]
+    if len(t_query) == 0:
+        return np.zeros((0, 4, n_slots))
+    result = np.zeros((len(t_query), 4, n_slots))
+    for p in range(4):
+        for s in range(n_slots):
+            f = interp1d(t_obs, vals[:, p, s], kind="linear",
+                         bounds_error=False, fill_value="extrapolate")
+            result[:, p, s] = f(t_query)
+    return result
+
+
+def _align_times(t1, t2):
+    s1 = set(np.round(t1, 10).tolist())
+    s2 = set(np.round(t2, 10).tolist())
+    common = sorted(s1 & s2)
+    return np.array(common, dtype=float)
+
+
+def _build_model(records):
+    """Build baseline and action effect models from observations."""
+    # Find baseline
+    baseline = {}
+    for rec in records:
+        if len(rec["actions"]) == 0:
+            baseline = rec["obs"]
+            break
+    
+    # Extract action effects relative to baseline
+    inject_effects = []  # list of dicts
+    adjust_effects = []  # list of dicts
+    
+    if not baseline:
+        return {"baseline": {}, "inject": [], "adjust": []}
+    
+    for rec in records:
+        for act in rec["actions"]:
+            if act["kind"] == "inject":
+                entry = {
+                    "port": act["port"],
+                    "amp": act["amp"],
+                    "dur": act["dur"],
+                    "t_start": act["t"],
+                    "sensors": {}
+                }
+                for sensor in ["device0", "device1", "global"]:
+                    if sensor not in rec["obs"] or sensor not in baseline:
+                        continue
+                    common_t = _align_times(baseline[sensor]["t"],
+                                            rec["obs"][sensor]["t"])
+                    if len(common_t) == 0:
+                        continue
+                    base_vals = _interp(baseline[sensor], common_t)
+                    rec_vals = _interp(rec["obs"][sensor], common_t)
+                    entry["sensors"][sensor] = {
+                        "t": common_t,
+                        "delta": rec_vals - base_vals,
+                    }
+                inject_effects.append(entry)
+            
+            elif act["kind"] == "adjust":
+                entry = {
+                    "device": act["device"],
+                    "u": np.array(act["u"]),
+                    "t_start": act["t"],
+                    "sensors": {}
+                }
+                for sensor in ["device0", "device1", "global"]:
+                    if sensor not in rec["obs"] or sensor not in baseline:
+                        continue
+                    common_t = _align_times(baseline[sensor]["t"],
+                                            rec["obs"][sensor]["t"])
+                    if len(common_t) == 0:
+                        continue
+                    base_vals = _interp(baseline[sensor], common_t)
+                    rec_vals = _interp(rec["obs"][sensor], common_t)
+                    entry["sensors"][sensor] = {
+                        "t": common_t,
+                        "delta": rec_vals - base_vals,
+                    }
+                adjust_effects.append(entry)
+    
+    return {"baseline": baseline, "inject": inject_effects, "adjust": adjust_effects}
+
+
+def _ensure_loaded():
+    global _CACHE
+    if _CACHE is not None:
+        return
+    records = _load_observations()
+    _CACHE = _build_model(records)
+
+
+def _injection_effect(sensor, port, amp, dur, t_start, t_query, model):
+    """Compute injection effect.
+    
+    Uses weighted combination of all known injection effects with same port.
+    Weight is based on duration similarity.
+    """
+    candidates = [e for e in model["inject"] if e["port"] == port]
+    candidates = [c for c in candidates if sensor in c["sensors"]]
+    
+    if not candidates:
+        return np.zeros((len(t_query), 4, NUM_SLOTS[sensor]))
+    
+    result = np.zeros((len(t_query), 4, NUM_SLOTS[sensor]))
+    total_weight = 0.0
+    
+    for ce in candidates:
+        info = ce["sensors"][sensor]
+        k_t = info["t"]
+        k_delta = info["delta"]
+        k_dur = ce["dur"]
+        k_t0 = ce["t_start"]
+        k_amp = ce["amp"]
+        
+        if k_amp == 0:
+            continue
+        
+        amp_scale = amp / k_amp
+        
+        # Weight: higher for similar durations (using Gaussian kernel)
+        dur_diff = abs(dur - k_dur)
+        weight = np.exp(-dur_diff**2 / 2.0)  # sigma=1
+        if weight < 0.01:
+            continue
+        
+        for i, t in enumerate(t_query):
+            if t < t_start:
+                continue
+            
+            rel = t - t_start
+            
+            # Map to known experiment time frame
+            # During injection: use same relative time
+            # After injection: scale by duration ratio
+            if rel <= dur:
+                known_rel = rel
+            else:
+                # Post-injection: scale time by duration ratio
+                if dur > 0:
+                    known_rel = dur + (rel - dur) * (k_dur / dur)
+                else:
+                    known_rel = rel
+            
+            known_t = k_t0 + known_rel
+            
+            idx = np.argmin(np.abs(k_t - known_t))
+            if idx < len(k_delta):
+                result[i] += k_delta[idx] * amp_scale * weight
+        
+        total_weight += weight
+    
+    if total_weight > 0:
+        result /= total_weight
+    
+    return result
+
+
+def _adjustment_effect(sensor, device, u, t_start, t_query, model):
+    """Compute adjustment effect from known examples."""
+    candidates = [e for e in model["adjust"] if e["device"] == device]
+    candidates = [c for c in candidates if sensor in c["sensors"]]
+    
+    if not candidates:
+        return np.zeros((len(t_query), 4, NUM_SLOTS[sensor]))
+    
+    result = np.zeros((len(t_query), 4, NUM_SLOTS[sensor]))
+    total_weight = 0.0
+    u_arr = np.asarray(u, dtype=float)
+    
+    for ce in candidates:
+        info = ce["sensors"][sensor]
+        k_t = info["t"]
+        k_delta = info["delta"]
+        k_u = ce["u"]
+        
+        # Linear model: effect scales with projection of u onto known_u
+        k_u_norm_sq = np.dot(k_u, k_u)
+        if k_u_norm_sq > 0:
+            w = np.dot(u_arr, k_u) / k_u_norm_sq
+        else:
+            w = 0.0
+        
+        if w <= 0:
+            continue
+        
+        for i, t in enumerate(t_query):
+            if t < t_start:
+                continue
+            idx = np.argmin(np.abs(k_t - t))
+            if idx < len(k_delta):
+                result[i] += k_delta[idx] * w
+        
+        total_weight += w
+    
+    if total_weight > 0:
+        result /= total_weight
+    
+    return result
+
+
+def predict(actions, queries, n_samples=64, seed=0):
+    _ensure_loaded()
+    rng = np.random.RandomState(seed)
+    
+    model = _CACHE
+    baseline = model["baseline"]
+    
+    inject_acts = [a for a in actions if a["kind"] == "inject"]
+    adjust_acts = [a for a in actions if a["kind"] == "adjust"]
+    
+    samples_list = []
+    for query in queries:
+        sensor = query["sensor"]
+        t_query = np.array(query["t"], dtype=float)
+        n_t = len(t_query)
+        n_slots = NUM_SLOTS[sensor]
+        
+        if n_t == 0:
+            samples_list.append(np.zeros((n_samples, 0, 4, n_slots)))
+            continue
+        
+        # Baseline
+        if sensor in baseline:
+            mean_vals = _interp(baseline[sensor], t_query)
+        else:
+            mean_vals = np.zeros((n_t, 4, n_slots))
+        
+        # Injection effects
+        for act in inject_acts:
+            mean_vals += _injection_effect(
+                sensor, act["port"], act["amp"], act["dur"],
+                act["t"], t_query, model
+            )
+        
+        # Adjustment effects
+        for act in adjust_acts:
+            mean_vals += _adjustment_effect(
+                sensor, act["device"], act["u"],
+                act["t"], t_query, model
+            )
+        
+        # Generate samples
+        noise_std = NOISE_STD.get(sensor, np.ones(4) * 0.001)
+        samples = np.zeros((n_samples, n_t, 4, n_slots))
+        for m in range(n_samples):
+            for p in range(4):
+                samples[m, :, p, :] = mean_vals[:, p, :] + \
+                    rng.normal(0, noise_std[p], size=(n_t, n_slots))
+        
+        samples_list.append(samples)
+    
+    return {"samples": samples_list}

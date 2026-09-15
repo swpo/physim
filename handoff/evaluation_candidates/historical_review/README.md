@@ -1,0 +1,1 @@
+This preserves the initial historical-only review. Its registry curation proposal was superseded by the user: the current registry uses only preserved / eval-ready. Fresh simulations and their interpretation are recorded separately. The archived artifact keeps its original bytes and original source-relative links.

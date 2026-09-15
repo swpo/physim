@@ -1,0 +1,103 @@
+{
+  "ok": true,
+  "submitted": true,
+  "status": "COMPLETE",
+  "models": [
+    "deepseek/deepseek-v4-flash"
+  ],
+  "calls": 41,
+  "stop_condition": "submitted",
+  "laboratory_usage": {
+    "experiments": 12,
+    "max_experiments": 12,
+    "charged_tu": 125.0,
+    "max_total_tu": 500.0
+  },
+  "inference_usage": {
+    "prompt_tokens": 65615,
+    "completion_tokens": 39767,
+    "cached_input_tokens": 1067264,
+    "reasoning_tokens": 11016,
+    "cost": 0.0504
+  },
+  "observed_horizons": [
+    1.0,
+    10,
+    5,
+    6,
+    6,
+    6,
+    5,
+    50,
+    10,
+    10,
+    10,
+    6
+  ],
+  "primary_joint_energy": 0.1841817970116252,
+  "by_family": {
+    "act_delayed": 0.2783908942279839,
+    "act_strong": 0.43589676847399605,
+    "act_then_partner": 0.35910357255756953,
+    "act_weak": 0.04131410324344315,
+    "cross_feedback": 0.37390419057978574,
+    "partner_delayed": 0.071013682095201,
+    "partner_pulse": 0.15420309434251714,
+    "probe_shift": 0.1571028876360469,
+    "probe_wide": 0.05974775041724295,
+    "sham": 0.0018280099828309898,
+    "slow_feedback": 0.09349481357125988
+  },
+  "valid_cases": 11,
+  "total_cases": 11,
+  "references": {
+    "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+    "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+    "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc",
+    "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+    "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106"
+  },
+  "grade_id": "run:sha256:6f1324526546918cd6807021e1f3d4a68dca89e4f22468b2406410c7d753e0b6",
+  "checks": [
+    {
+      "kind": "validate",
+      "ok": false
+    },
+    {
+      "kind": "validate",
+      "ok": true
+    },
+    {
+      "kind": "validate",
+      "ok": true
+    },
+    {
+      "kind": "submit",
+      "ok": true
+    }
+  ],
+  "trace_path": "pilot/physim--deepseek--deepseek-v4-flash--bash--4545b7fe/traces.jsonl",
+  "trace_sha256": "f3fb90b16e83ba62ed39e8834d723ee78f137167287abbf273c88dd2fc95f180",
+  "artifact_path": "pilot-artifacts/7e4def7fb80e429fb141f9fc3737a624",
+  "grade_sha256": "6614b138af0d3d495d0481c4816a029fda7473f5e04af19dfb303657b87cf8b3",
+  "predictor_files": [
+    {
+      "path": "AGENT_SPEC.md",
+      "sha256": "94aa3b1f9e2910d86ac71f2ddedcfa82ec869937eccd22e7445c163835a02840"
+    },
+    {
+      "path": "analysis_data.pkl",
+      "sha256": "61898f9a3c40149cc61a0bf24feed7e6b7fc60ff66897ec0ad5fbbfa932392ea"
+    },
+    {
+      "path": "model_data.pkl",
+      "sha256": "62fa130fb02a0807937d834fce2a2cd1bf3feb3883b812de195d53cc11479502"
+    },
+    {
+      "path": "predictor.py",
+      "sha256": "39709233b180945f04377978ec351f5308c2fc721a84cc4faecfccc68d83dcc2"
+    }
+  ],
+  "source_sha256": "62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21",
+  "interpretation": "One bounded development rollout, not a model benchmark. Cost is the sum of provider-reported call costs."
+}

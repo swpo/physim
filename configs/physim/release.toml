@@ -4,8 +4,8 @@ data_license = "CC-BY-4.0"
 dataset_repo = "seanpohorence/physim-worlds"
 exposure = "public-reference-development"
 
-dataset_revision = "0813ee4d0a4e97a12bbf598d5d43a45eddf5492f"
-release_id = "dataset-release:sha256:165fbfac4c6760469c9ca6f88cc2818186d3b5464ced9a18b44f1620a56e9dd4"
+dataset_revision = "1d8b73624669aea004befd54ec050bb7280f1678"
+release_id = "dataset-release:sha256:c1c96f192057c553478ec9522987a2de61c40f6cc9765a4ca97a065cb4148a06"
 published_date = "2026-09-15"
 
 [code_packages]

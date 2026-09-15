@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Requirements for contributing reproducible worlds, evaluation suites, predictors, and documentation.">
+<title>Contribute · Physim</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html" class="section-active">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<div class="layout">
+<main id="main"><p class="breadcrumb"><a href="worlds.html">Worlds</a><span aria-hidden="true"> / </span><span>Contribute</span></p><h1>Contributing to Physim</h1><p class="lead">A useful contribution makes a physical system easier to reproduce, investigate, or evaluate.</p>
+<h2>Contribute a world</h2>
+<p>A preserved world needs its genome, a name, attribution, license information, and available provenance. Include recipes, simulator settings, observations, and known gaps where available. Any world can be preserved, including simple controls and historical examples; an apparatus or evaluation suite is not required.</p>
+<p>Follow the <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/main/CONTRIBUTING.md">world contribution guide</a> to package the files with Blobkit and open a Hugging Face pull request. A maintainer reviews the submission; you do not need write access to the main dataset. For help packaging a world, start in the dataset's <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/discussions">Community tab</a>.</p>
+<h2>Contribute an evaluation suite</h2>
+<p>Eval-ready status applies to a validated preparation and suite. Add the exact starting state, numerical profile, measurement/control apparatus, reference trajectories, and validation evidence. The apparatus belongs to the preparation, and one world can support several preparations or suites.</p>
+<p>Use interventions and observations grounded in the world's measured behavior. Fix score groups and coordinate scales before evaluating agents. Include controls that remove particular capabilities, such as responding to later pulses or tracking probe motion, and verify that the intended errors affect the score.</p>
+<p>Record known measurement limits. Improvements to coverage should receive a new suite identity so existing results remain interpretable.</p>
+<h2>Contribute a predictor or result</h2>
+<p>Supply the executable predictor and supporting data, its observations, and exact world/preparation/suite references. Record model and harness settings, sampling, all resource budgets, stopping conditions, interface validity, and costs. Keep retries as separate attempts. Keep scientific scores separate from framework rewards: a completed rollout without a predictor receives zero reward, while infrastructure failures use Verifiers error handling.</p>
+<h2>Work on the repository</h2>
+<p>The current public documentation is generated from <code>docs_source/</code> by <code>python3 scripts/build_docs.py</code>. Edit those sources, rebuild, and run <code>python3 scripts/check_docs.py</code>. The older generators write to the research archive.</p>
+<p>The installed environment supports the three eval-ready preparations listed in the <a href="registry.html">registry</a>, selected explicitly in evaluation configs. Contributions should preserve world, preparation, suite, and run identities and add evidence for any new physical coverage.</p>
+<p><a href="https://github.com/swpo/physim">Open the source repository</a></p>
+<p class="return-link"><a href="worlds.html">← Back to Worlds</a></p></main>
+</div>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+</body>
+</html>

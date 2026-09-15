@@ -1,0 +1,22 @@
+{
+  "immutable_json_records_unchanged": 55,
+  "release_roundtrip_matches": true,
+  "verification": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 2,
+      "genome": 19,
+      "recipe": 2,
+      "world-record": 22,
+      "artifact": 36
+    }
+  },
+  "statuses": {
+    "eval-ready": 1,
+    "preserved": 21
+  },
+  "registry_tests": "18 passed in 0.42s"
+}

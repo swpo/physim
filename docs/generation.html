@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Generate field equations, characterize their behavior, and design physically grounded prediction suites.">
+<title>World generation · Physim</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html" class="section-active">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<div class="layout">
+<main id="main"><p class="breadcrumb"><a href="worlds.html">Worlds</a><span aria-hidden="true"> / </span><span>World generation</span></p><h1>Generating worlds</h1><p class="lead">World generation searches for field dynamics worth investigating, then measures what those dynamics actually do.</p>
+<h2>A reusable generation package</h2>
+<p>Blobkit provides simulation, evolutionary search, metrics, scheduling, checkpoints, and harvesting. A recipe supplies Python functions for its measurements, fitness, mutation or recombination, selection, and harvest criteria. Defaults are available; new behavior can be written directly in Python.</p>
+<p>The registry stores each recipe's code and starting genomes, then links its runs, measurements, parentage, and harvested worlds. A short CPU example exercises this workflow:</p>
+<pre><code>uv run blobkit generate generators/physim/recipes/small_search.py --registry outputs/small-search
+uv run blobkit registry verify outputs/small-search</code></pre>
+<p>The example's short-run mass metric demonstrates the workflow; it is not a quality benchmark. Runs can pause at a generation checkpoint and resume with the recorded recipe and implementation. Custom metrics and search policies belong to the recipe, while the package executes the reusable search loop.</p>
+<p>A genome describes activators, channels, coefficients, and coupling structure. Search operators can mutate parameters, add or remove channels, combine systems, or introduce interactions. Numerical checks reject unsupported or unstable candidates before more expensive characterization.</p>
+<ol class="steps"><li><strong>Generate equations</strong><p>Construct a candidate genome within the simulator's supported family.</p></li><li><strong>Characterize behavior</strong><p>Observe persistence, spatial organization, motion, and response across preparations.</p></li><li><strong>Design experiments</strong><p>Choose instruments and interventions that expose established phenomena.</p></li></ol>
+<h2>Search descriptors are evidence to investigate</h2>
+<p>Descriptors can organize candidates by movement, growth, timescales, or spatial structure. Keeping diverse candidates helps preserve distinct behaviors instead of optimizing a single appearance. A descriptor bin is a category in a search archive; it is not a physical compartment.</p>
+<p>Search fitness measures the criteria used by a generation campaign. It is separate from a prediction score. A high search score alone does not establish a causal mechanism, a robust phenomenon, or a usable evaluation task.</p>
+<h2>From candidate to experimental world</h2>
+<p>A useful world needs a reproducible numerical specification and an exact preparation. Characterization should distinguish observations from mechanistic hypotheses, include controls, and record where behavior fails or changes with preparation.</p>
+<p>Apparatus and evaluation cases follow the physics. For example, if an observed pulse effect depends on location, probe placements should resolve that spatial difference. If intervention timing matters, the selected readings must resolve the relevant times.</p>
+<h2>From experimental world to prediction suite</h2>
+<p>The suite fixes the action/query programs, score groups, scales, and truth evidence. Simple predictors and deliberately incomplete physical predictors test whether the score responds to the intended errors. Case changes produce a new suite revision rather than silently changing an existing result.</p>
+<p>Three preparations have a complete evaluation path: <code>p4g2_044</code>, <code>bf_trail_lab</code>, and <code>xv_rotor_lab</code>. BF and XV preserve fresh intervention studies, mechanism controls, frozen suites, and model pilots. Other registry records are preserved worlds and do not need an evaluation suite.</p>
+<p><a href="registry.html">How a world becomes a reproducible registry entry</a></p>
+<p class="return-link"><a href="worlds.html">← Back to Worlds</a></p></main>
+</div>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+</body>
+</html>

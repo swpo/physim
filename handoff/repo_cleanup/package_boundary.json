@@ -1,0 +1,34 @@
+{
+  "active_package_files": [
+    "__init__.py",
+    "blobround6.py",
+    "blobround6_eval.py",
+    "blobround6_explore.py",
+    "bundles.py",
+    "cli.py",
+    "container_worker.py",
+    "devices.py",
+    "evaluation.py",
+    "hub.py",
+    "sandbox.py"
+  ],
+  "source_only": [
+    "physim/baselines.py",
+    "physim/blobcore.py",
+    "physim/blobround2.py",
+    "physim/blobround5.py",
+    "physim/blobstate.py",
+    "physim/engine.py",
+    "physim/jail.py",
+    "physim/legacy_docs.py",
+    "physim/operator_admission.py",
+    "physim/report.py",
+    "physim/results.py",
+    "physim/session.py",
+    "physim/taskset.py",
+    "physim/traces.py",
+    "physim/viz.py",
+    "physim/blobdata",
+    "physim/servers"
+  ]
+}

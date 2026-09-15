@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "counts": {
+    "candidate": 6,
+    "checkpoint": 3,
+    "generation-result": 1,
+    "generation-run": 2,
+    "genome": 19,
+    "recipe": 2,
+    "world-record": 22,
+    "artifact": 26
+  }
+}

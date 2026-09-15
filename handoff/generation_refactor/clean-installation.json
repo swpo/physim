@@ -1,0 +1,16 @@
+{
+  "python": "3.12.12 (main, Oct  9 2025, 11:07:00) [Clang 17.0.0 (clang-1700.4.4.1)]",
+  "path": "/private/tmp/blobkit-generation-clean/venv/lib/python3.12/site-packages/blobkit/__init__.py",
+  "integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 52,
+    "locked_at": "2026-09-13T16:02:53.159338+00:00",
+    "version": "0.3.5"
+  },
+  "versions": {
+    "blobkit": "0.3.5",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  }
+}

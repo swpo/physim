@@ -1,6 +1,17 @@
-# blobkit 0.3.0
+# blobkit 0.3.5
 
-The certified physim blob core as an installable package. No more sys.path /
+The CPU reference runtime is used by Physim 0.12.0. Install from the repository
+root with `uv sync --locked`, or build this project and Physim as separate wheels.
+The package metadata and `blobkit.__version__` both identify 0.3.5.
+
+The historical `_locks.json` is preserved as evidence from 0.3.4. The current
+`assay_batch.py` and `soup/sim_gpu.py` differ from that record; a full historical
+`verify_locks()` check reports those two differences. They are outside the new
+CPU reference workflow. The genome and CPU kernels still match their original
+hashes, and the world bundle binds their exact implementation. This release
+check does not recertify the GPU or fleet research code.
+
+The historical physim blob core as an installable package. No more sys.path /
 tree-layout archaeology on GPU pods, CPU fleets, or laptops.
 
 0.2 added backend injection (`assay_v2b.run_assay_b(backend=...)`), the

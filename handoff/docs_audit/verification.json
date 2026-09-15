@@ -1,0 +1,19 @@
+{
+  "completed_utc": "2026-09-09T21:57:39.436754+00:00",
+  "local_html_pages": 29,
+  "missing_local_html_targets": 0,
+  "markdown_links_valid": true,
+  "evaluator_tests_passed": 30,
+  "exploration_tests_passed": 10,
+  "native_world_simulations": 0,
+  "paid_model_calls": 0,
+  "public_site_modified": false,
+  "scientific_sources_modified": false,
+  "registry_published": false,
+  "temporary_preview_stopped": true,
+  "deliverable_sha256": {
+    "AUDIT.md": "33686c8b5c65f84412cdfcb6c2e83a86746ffe86a48d757f045e163b290b7f21",
+    "REGISTRY_PLAN.md": "cd5bbedc21feea2344ee48b15a736b7b86ac820dab16ba0b3385f3e843964a1d",
+    "inventory.json": "2732a19e8d8801357a431be44046a0e2a2d46c3841c1fa43be3121c360c956c5"
+  }
+}

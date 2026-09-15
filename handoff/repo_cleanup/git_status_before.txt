@@ -1,0 +1,112 @@
+ M .gitignore
+ M README.md
+ M SESSION_MIGRATION.md
+ M docs/blobs.html
+ M docs/blobs/accelerating-blobs.html
+ M docs/blobs/blob-chemistry.html
+ M docs/blobs/blobs-move.html
+ M docs/blobs/bounded-structures.html
+ M docs/blobs/breeding-spatial-economies.html
+ M docs/blobs/evolving-at-scale.html
+ M docs/blobs/living-landscape.html
+ M docs/blobs/machines.html
+ M docs/blobs/measuring-evolved-worlds.html
+ M docs/blobs/molecules-that-move.html
+ M docs/blobs/searching-equation-space.html
+ M docs/blobs/what-is-a-blob.html
+ M docs/index.html
+ M docs/results-bulk.html
+ M docs/results-chemistry.html
+ M docs/results-evolution.html
+ M docs/results-life.html
+ M docs/results.html
+ M docs/rollouts-bulk.html
+ M docs/rollouts-chemistry.html
+ M docs/rollouts-life.html
+ M docs/rollouts.html
+ M docs/scoring.html
+ M docs/worlds-bulk.html
+ M docs/worlds-chemistry.html
+ M docs/worlds-evolution.html
+ M docs/worlds-life.html
+ M docs/worlds.html
+ M environments/physim/README.md
+ M environments/physim/physim/blobround6.py
+ M environments/physim/physim/results.py
+ M environments/physim/physim/traces.py
+ M environments/physim/physim/viz.py
+ M environments/physim/pyproject.toml
+ M environments/physim/tools/test_blob_round6.py
+ M probes/blobs/agentenv/round6/README.md
+ M probes/blobs/agentenv/round6/physics/p4g2_044/PHYSICS.md
+ M probes/blobs/agentenv/round6/runner/DESIGN.md
+ M probes/blobs/l0/deepsearch/TRACKA_R6_PREDICTOR.md
+?? docs/api.html
+?? docs/archive/
+?? docs/contribute.html
+?? docs/data/
+?? docs/examples/
+?? docs/experiment.html
+?? docs/fields.html
+?? docs/generation.html
+?? docs/registry.html
+?? docs/simulator.html
+?? docs/site.css
+?? docs/try.html
+?? docs_source/
+?? environments/physim/physim/blobround6_eval.py
+?? environments/physim/physim/blobround6_explore.py
+?? environments/physim/physim/legacy_docs.py
+?? environments/physim/physim_r6/
+?? environments/physim/physim_r6_scaling/
+?? environments/physim/tools/test_blob_round6_eval.py
+?? environments/physim/tools/test_blob_round6_explore.py
+?? environments/physim/tools/test_r6_verifiers.py
+?? handoff/docs_audit/
+?? handoff/repo_cleanup/
+?? handoff/web_refresh/
+?? probes/blobs/agentenv/results/actor_logs/
+?? probes/blobs/agentenv/round2/
+?? probes/blobs/agentenv/round4/POST11_BRIEF.md
+?? probes/blobs/agentenv/round4/POST11_BRIEF2.md
+?? probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E1.log
+?? probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E1.pid
+?? probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E2.log
+?? probes/blobs/agentenv/round4/anthropic_claude-fable-5_BLOB2-E2.pid
+?? probes/blobs/agentenv/round4/fable5_E1_resume.log
+?? probes/blobs/agentenv/round4/fable5_E1_resume.pid
+?? probes/blobs/agentenv/round4/fable5_E1_resume2.log
+?? probes/blobs/agentenv/round4/fable5_E1_resume2.pid
+?? probes/blobs/agentenv/round4/fable5_E1_resume2.sh
+?? probes/blobs/agentenv/round4/fable5_E2_resume.log
+?? probes/blobs/agentenv/round4/fable5_E2_resume.pid
+?? probes/blobs/agentenv/round4/fable5_E2_resume2.log
+?? probes/blobs/agentenv/round4/fable5_E2_resume2.pid
+?? probes/blobs/agentenv/round4/fable5_E2_resume2.sh
+?? probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E1.log
+?? probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E1.pid
+?? probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E2.log
+?? probes/blobs/agentenv/round4/openai_gpt-5_6-sol_BLOB2-E2.pid
+?? probes/blobs/agentenv/round5/fable5_E1.log
+?? probes/blobs/agentenv/round5/fable5_E1.pid
+?? probes/blobs/agentenv/round5/fable5_E1.sh
+?? probes/blobs/agentenv/round5/fable5_E1_r2.log
+?? probes/blobs/agentenv/round5/fable5_E1_r2.pid
+?? probes/blobs/agentenv/round5/fable5_E1_r2.sh
+?? probes/blobs/agentenv/round5/fable5_E2.log
+?? probes/blobs/agentenv/round5/fable5_E2.pid
+?? probes/blobs/agentenv/round5/fable5_E2.sh
+?? probes/blobs/agentenv/round5/fable5_E2_r2.log
+?? probes/blobs/agentenv/round5/fable5_E2_r2.pid
+?? probes/blobs/agentenv/round5/fable5_E2_r2.sh
+?? probes/blobs/agentenv/round5/g7_integration.log
+?? probes/blobs/agentenv/round5/g7_integration.sh
+?? probes/blobs/agentenv/round5/g7b_integration.log
+?? probes/blobs/agentenv/round5/g7b_integration.sh
+?? probes/blobs/agentenv/round5/g7c_integration.log
+?? probes/blobs/agentenv/round5/g7c_integration.sh
+?? probes/blobs/agentenv/round6/physics/p4g2_044/sensor_study/
+?? probes/blobs/agentenv/round6/worked_example/
+?? probes/blobs/l0/deepsearch/v2_analysis/films/out_slomo/
+?? scripts/
+?? truth.log

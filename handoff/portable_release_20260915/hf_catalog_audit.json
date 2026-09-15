@@ -1,0 +1,114 @@
+{
+  "ok": true,
+  "repo": "seanpohorence/physim-worlds",
+  "catalogs": [
+    {
+      "config": "worlds",
+      "rows": 24,
+      "exact_catalog_match": true,
+      "parquet_bytes": 13390
+    },
+    {
+      "config": "evaluations",
+      "rows": 3,
+      "exact_catalog_match": true,
+      "parquet_bytes": 15608
+    }
+  ],
+  "endpoints": {
+    "is-valid": {
+      "preview": true,
+      "viewer": true,
+      "search": true,
+      "filter": true,
+      "statistics": true
+    },
+    "parquet": {
+      "parquet_files": [
+        {
+          "dataset": "seanpohorence/physim-worlds",
+          "config": "worlds",
+          "split": "train",
+          "url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/resolve/refs%2Fconvert%2Fparquet/worlds/train/0000.parquet",
+          "filename": "0000.parquet",
+          "size": 13390
+        },
+        {
+          "dataset": "seanpohorence/physim-worlds",
+          "config": "evaluations",
+          "split": "train",
+          "url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/resolve/refs%2Fconvert%2Fparquet/evaluations/train/0000.parquet",
+          "filename": "0000.parquet",
+          "size": 15608
+        }
+      ],
+      "pending": [],
+      "failed": [],
+      "partial": false
+    },
+    "size": {
+      "size": {
+        "dataset": {
+          "dataset": "seanpohorence/physim-worlds",
+          "num_bytes_original_files": null,
+          "num_bytes_parquet_files": 28998,
+          "num_bytes_memory": 13679,
+          "num_rows": 27,
+          "estimated_num_rows": null
+        },
+        "configs": [
+          {
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "worlds",
+            "num_bytes_original_files": null,
+            "num_bytes_parquet_files": 13390,
+            "num_bytes_memory": 11185,
+            "num_rows": 24,
+            "num_columns": 9,
+            "estimated_num_rows": null
+          },
+          {
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "evaluations",
+            "num_bytes_original_files": null,
+            "num_bytes_parquet_files": 15608,
+            "num_bytes_memory": 2494,
+            "num_rows": 3,
+            "num_columns": 17,
+            "estimated_num_rows": null
+          }
+        ],
+        "splits": [
+          {
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "worlds",
+            "split": "train",
+            "num_bytes_parquet_files": 13390,
+            "num_bytes_memory": 11185,
+            "num_rows": 24,
+            "num_columns": 9,
+            "estimated_num_rows": null
+          },
+          {
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "evaluations",
+            "split": "train",
+            "num_bytes_parquet_files": 15608,
+            "num_bytes_memory": 2494,
+            "num_rows": 3,
+            "num_columns": 17,
+            "estimated_num_rows": null
+          }
+        ]
+      },
+      "pending": [],
+      "failed": [],
+      "partial": false
+    }
+  },
+  "scientific_arrays_remain_npz": true,
+  "sources": [
+    "https://huggingface.co/docs/dataset-viewer/parquet",
+    "https://huggingface.co/docs/hub/datasets-manual-configuration"
+  ]
+}

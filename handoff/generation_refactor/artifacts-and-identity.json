@@ -1,0 +1,26 @@
+{
+  "changed_existing_package_files": [
+    "__init__.py",
+    "_locks.json",
+    "cli.py"
+  ],
+  "added_modules": [
+    "generation.py",
+    "registry.py"
+  ],
+  "all_previous_numerical_and_operator_sources_unchanged": true,
+  "artifacts": [
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-generation/blobkit-0.3.5-py3-none-any.whl",
+      "sha256": "9f22ad58da04aaf8eb45c1966aaac9a60569dad2223413a9e9055af2be5a11b1",
+      "bytes": 362245
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-generation/blobkit-0.3.5.tar.gz",
+      "sha256": "e316cfedfe6e2f85ac559fdae5d20751595f84588fe373166448101a8e1488ac",
+      "bytes": 349885
+    }
+  ],
+  "registry_bytes": 214998,
+  "wheel_rebuilt_from_sdist_has_identical_contents": true
+}

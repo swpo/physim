@@ -1,0 +1,236 @@
+{
+  "ok": true,
+  "repo": "seanpohorence/physim-worlds",
+  "revision": "dcd6abd5eae76a47f326c70518315d2d1e101d86",
+  "anonymous": true,
+  "release_id": "dataset-release:sha256:f00596ea8751cb4208c519b99e6c9958b8c021a63c627c8700c2672420ca7d85",
+  "checked_files": 330,
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 4,
+      "genome": 19,
+      "recipe": 4,
+      "world-record": 24,
+      "artifact": 204
+    }
+  },
+  "catalog_offline": true,
+  "worlds": [
+    {
+      "name": "bf_trail_lab",
+      "references": {
+        "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+        "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+        "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+        "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+        "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+      },
+      "paths": {
+        "simulation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/1381e747667f5052e29e5dfbe7560b9e071d0eda30e4f3796e5192a9f742528b/simulation",
+        "evaluation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/1381e747667f5052e29e5dfbe7560b9e071d0eda30e4f3796e5192a9f742528b/evaluation"
+      },
+      "reference_demo": {
+        "ok": true,
+        "public_checks": [
+          {
+            "name": "mixed_sensors",
+            "ok": true
+          },
+          {
+            "name": "repeat_seed",
+            "ok": true
+          },
+          {
+            "name": "reordered_queries",
+            "ok": true
+          },
+          {
+            "name": "empty_times",
+            "ok": true
+          },
+          {
+            "name": "empty_queries",
+            "ok": true
+          },
+          {
+            "name": "single_member_actions",
+            "ok": true
+          },
+          {
+            "name": "default_members_repeated_sensor",
+            "ok": true
+          }
+        ],
+        "expected": {
+          "predictor": "initial_persistence",
+          "forecast_members": 4,
+          "primary_joint_energy": 0.46001066377541483,
+          "absolute_tolerance": 1e-10
+        },
+        "actual": 0.46001066377541483,
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "grade": "/private/tmp/physim-hf-published-20260914/demos/bf_trail_lab/grade.json",
+        "run_id": "run:sha256:06f411cd4ce19b3522bbaaa8d76d95d516a61753cd6c7f1576fb85af8dc50bb7"
+      },
+      "native_experiment_usage": {
+        "experiments": 1,
+        "max_experiments": 1,
+        "charged_tu": 0.02,
+        "max_total_tu": 1.0
+      },
+      "task_count": 1
+    },
+    {
+      "name": "p4g2_044",
+      "references": {
+        "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+        "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+        "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+        "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+        "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+      },
+      "paths": {
+        "simulation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/beab7416051c730e8728898d13f02871c862dfde884789a78188bf601f8a52ab/simulation",
+        "evaluation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/beab7416051c730e8728898d13f02871c862dfde884789a78188bf601f8a52ab/evaluation"
+      },
+      "reference_demo": {
+        "ok": true,
+        "public_checks": [
+          {
+            "name": "mixed_sensors",
+            "ok": true
+          },
+          {
+            "name": "repeat_seed",
+            "ok": true
+          },
+          {
+            "name": "reordered_queries",
+            "ok": true
+          },
+          {
+            "name": "empty_times",
+            "ok": true
+          },
+          {
+            "name": "empty_queries",
+            "ok": true
+          },
+          {
+            "name": "single_member_actions",
+            "ok": true
+          },
+          {
+            "name": "default_members_repeated_sensor",
+            "ok": true
+          }
+        ],
+        "expected": {
+          "predictor": "initial_persistence",
+          "forecast_members": 4,
+          "primary_joint_energy": 0.8271209896216252,
+          "absolute_tolerance": 1e-10
+        },
+        "actual": 0.8271209896216252,
+        "references": {
+          "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+          "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+          "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+          "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+          "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+        },
+        "grade": "/private/tmp/physim-hf-published-20260914/demos/p4g2_044/grade.json",
+        "run_id": "run:sha256:468f9c8ee341fbe84ff6afbaf9189f298fa6b9fa8b3ed5385e2c054fd3ae96f0"
+      },
+      "native_experiment_usage": {
+        "experiments": 1,
+        "max_experiments": 1,
+        "charged_tu": 0.02,
+        "max_total_tu": 1.0
+      },
+      "task_count": 1
+    },
+    {
+      "name": "xv_rotor_lab",
+      "references": {
+        "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+        "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+        "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc",
+        "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+        "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106"
+      },
+      "paths": {
+        "simulation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/2292abbc1ccea50477928dd36d91b2f0ec2a7c76bde5729685164530ee7ff60f/simulation",
+        "evaluation": "/private/tmp/physim-hf-published-20260914/physim-cache/bundles/2292abbc1ccea50477928dd36d91b2f0ec2a7c76bde5729685164530ee7ff60f/evaluation"
+      },
+      "reference_demo": {
+        "ok": true,
+        "public_checks": [
+          {
+            "name": "mixed_sensors",
+            "ok": true
+          },
+          {
+            "name": "repeat_seed",
+            "ok": true
+          },
+          {
+            "name": "reordered_queries",
+            "ok": true
+          },
+          {
+            "name": "empty_times",
+            "ok": true
+          },
+          {
+            "name": "empty_queries",
+            "ok": true
+          },
+          {
+            "name": "single_member_actions",
+            "ok": true
+          },
+          {
+            "name": "default_members_repeated_sensor",
+            "ok": true
+          }
+        ],
+        "expected": {
+          "predictor": "initial_persistence",
+          "forecast_members": 4,
+          "primary_joint_energy": 0.4298978335198635,
+          "absolute_tolerance": 1e-10
+        },
+        "actual": 0.4298978335198635,
+        "references": {
+          "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+          "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+          "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc",
+          "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+          "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106"
+        },
+        "grade": "/private/tmp/physim-hf-published-20260914/demos/xv_rotor_lab/grade.json",
+        "run_id": "run:sha256:086718b152d63c3cf96f8503e3c08280d0cb23886ad8d3648f3b67a5995bfab8"
+      },
+      "native_experiment_usage": {
+        "experiments": 1,
+        "max_experiments": 1,
+        "charged_tu": 0.02,
+        "max_total_tu": 1.0
+      },
+      "task_count": 1
+    }
+  ],
+  "no_model_api_calls": true,
+  "no_gpu_rentals": true
+}

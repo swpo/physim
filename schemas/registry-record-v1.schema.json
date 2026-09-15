@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Blobkit registry record v1",
+  "type": "object",
+  "required": ["id", "schema_version", "kind", "refs", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z-]+:sha256:[0-9a-f]{64}$"},
+    "schema_version": {"const": "blobkit-registry-v1"},
+    "kind": {"enum": ["genome", "recipe", "generation-run", "candidate", "checkpoint", "generation-result", "world-record"]},
+    "refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z-]+:sha256:[0-9a-f]{64}$"}},
+    "payload": {"type": "object"}
+  }
+}

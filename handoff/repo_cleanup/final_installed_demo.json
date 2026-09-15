@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "public_checks": [
+    {
+      "name": "mixed_sensors",
+      "ok": true
+    },
+    {
+      "name": "repeat_seed",
+      "ok": true
+    },
+    {
+      "name": "reordered_queries",
+      "ok": true
+    },
+    {
+      "name": "empty_times",
+      "ok": true
+    },
+    {
+      "name": "empty_queries",
+      "ok": true
+    },
+    {
+      "name": "single_member_actions",
+      "ok": true
+    },
+    {
+      "name": "default_members_repeated_sensor",
+      "ok": true
+    }
+  ],
+  "expected": {
+    "predictor": "initial_persistence",
+    "forecast_members": 4,
+    "primary_joint_energy": 0.8271209896216252,
+    "absolute_tolerance": 1e-10
+  },
+  "actual": 0.8271209896216252,
+  "references": {
+    "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "manifest_sha256": "33650125665f4a3792164a74b1d95cbce2097609d4e9cef2dc8e9fefc75dfbf9",
+    "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+    "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+    "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+  },
+  "grade": "/private/tmp/physim-clean-install-20260913/final-demo/grade.json",
+  "run_id": "run:sha256:c498d208c66c9853c4dd41356e007ab6a024eb6a6b238d8d1f1aa6a0344e6395"
+}

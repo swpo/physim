@@ -1,0 +1,15 @@
+{
+  "tests": {
+    "passed": 126,
+    "subtests": 216,
+    "package_build": "Passed in the final complete suite with declared build-dependency access"
+  },
+  "reference_bundle_runtime_identity_unchanged": true,
+  "blobkit_locked_files_unchanged": 52,
+  "docker_public_interface_checks": {
+    "4_ports": 7,
+    "6_ports": 7
+  },
+  "docs_links_checked": 678,
+  "pilot_containers_removed": true
+}

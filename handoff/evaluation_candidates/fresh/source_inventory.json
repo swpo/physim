@@ -1,0 +1,77 @@
+[
+  {
+    "path": "source/environments/physim/physim/devices.py",
+    "sha256": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+    "bytes": 8962
+  },
+  {
+    "path": "source/generators/physim/characterize.py",
+    "sha256": "414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+    "bytes": 8082
+  },
+  {
+    "path": "source/generators/physim/plot_characterization.py",
+    "sha256": "d9defa790b74021002f3bebbabc19dd9d756f29d6d5caa39e96cb469c8ff58a5",
+    "bytes": 8082
+  },
+  {
+    "path": "source/generators/physim/probe_candidates.py",
+    "sha256": "7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26",
+    "bytes": 5633
+  },
+  {
+    "path": "source/generators/physim/rotor_check.py",
+    "sha256": "4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+    "bytes": 4289
+  },
+  {
+    "path": "source/generators/physim/summarize_characterization.py",
+    "sha256": "94edb9845e1dcec0595720da9c5e0b1b6adbc3412c8aa622a7ccabdc8d54324c",
+    "bytes": 8670
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/_locks.json",
+    "sha256": "2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c",
+    "bytes": 5154
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/data/stamp_A4_dx05.npz",
+    "sha256": "067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9",
+    "bytes": 201746
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/genome.py",
+    "sha256": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "bytes": 20517
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/hier_metrics.py",
+    "sha256": "bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614",
+    "bytes": 6291
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/metrics_v1.py",
+    "sha256": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
+    "bytes": 28916
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/metrics_v2.py",
+    "sha256": "18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988",
+    "bytes": 27012
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/soup/sim_cpu.py",
+    "sha256": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+    "bytes": 10359
+  },
+  {
+    "path": "source/packages/blobkit/blobkit/soup/sim_v1.py",
+    "sha256": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+    "bytes": 10356
+  },
+  {
+    "path": "source/probes/blobs/l0/complexity/metrics_v3.py",
+    "sha256": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+    "bytes": 32351
+  }
+]

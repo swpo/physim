@@ -1,0 +1,38 @@
+[
+  {
+    "world": "bf_trail_lab",
+    "file": "world.json",
+    "sha256": "d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038",
+    "matches_published": true
+  },
+  {
+    "world": "bf_trail_lab",
+    "file": "apparatus.json",
+    "sha256": "2e96ff4e7a498c0fc1baae3e00410cfdc76bfce10c133d3bf2655d19c6f8dce5",
+    "matches_published": true
+  },
+  {
+    "world": "bf_trail_lab",
+    "file": "preparation.npz",
+    "sha256": "de9dda65ef430cd70353e472a956c32df462a5bb33b41641e26ced0b07bd68f8",
+    "matches_published": true
+  },
+  {
+    "world": "xv_rotor_lab",
+    "file": "world.json",
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb",
+    "matches_published": true
+  },
+  {
+    "world": "xv_rotor_lab",
+    "file": "apparatus.json",
+    "sha256": "cfe6ee07ac72228a1c0583b19d1f64ac475d1c810f7e91dfd7181a9516c2a67d",
+    "matches_published": true
+  },
+  {
+    "world": "xv_rotor_lab",
+    "file": "preparation.npz",
+    "sha256": "e5752b2cbdb84813527310cba4565ad4218204176ed10b19d13816914fe40158",
+    "matches_published": true
+  }
+]

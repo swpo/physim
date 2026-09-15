@@ -1,0 +1,266 @@
+import json
+import numpy as np
+import pickle
+import os
+from scipy.interpolate import interp1d
+
+# Load model data
+_model_data = None
+
+def _get_model_data():
+    global _model_data
+    if _model_data is None:
+        pkl_path = os.path.join(os.path.dirname(__file__), "model_data.pkl")
+        with open(pkl_path, "rb") as f:
+            _model_data = pickle.load(f)
+    return _model_data
+
+def _interp_baseline(t, data):
+    """Interpolate baseline at time t. Returns (d0, d1, gl) each (6, slots)."""
+    base_times = data['base_times']
+    bd0 = data['base_d0']
+    bd1 = data['base_d1']
+    bgl = data['base_gl']
+    
+    if t <= base_times[0]:
+        return bd0[0].copy(), bd1[0].copy(), bgl[0].copy()
+    if t >= base_times[-1]:
+        return bd0[-1].copy(), bd1[-1].copy(), bgl[-1].copy()
+    
+    idx = np.searchsorted(base_times, t)
+    t1, t2 = base_times[idx-1], base_times[idx]
+    w = (t - t1) / (t2 - t1)
+    d0 = (1-w) * bd0[idx-1] + w * bd0[idx]
+    d1 = (1-w) * bd1[idx-1] + w * bd1[idx]
+    gl = (1-w) * bgl[idx-1] + w * bgl[idx]
+    return d0, d1, gl
+
+def _get_inj_resp(port, offset, data):
+    """Get injection response at given offset from start, interpolated.
+    Returns (resp_d0, resp_d1) each (6, slots) or None if port not available."""
+    inj = data['injection']
+    port_key = f'port{port}'
+    
+    if port_key not in inj:
+        # For missing ports, try to approximate from known ports
+        # Port grouping: {0,3,5} and {1,2,4}
+        if port in [3, 5]:
+            port_key = 'port0'
+        elif port == 4:
+            port_key = 'port1'
+        else:
+            return None
+    
+    resp = inj[port_key]
+    offsets = resp['offsets']
+    
+    # Handle interpolation
+    if offset <= offsets[0]:
+        return resp['resp_d0'][0].copy(), resp['resp_d1'][0].copy()
+    if offset >= offsets[-1]:
+        return resp['resp_d0'][-1].copy(), resp['resp_d1'][-1].copy()
+    
+    idx = np.searchsorted(offsets, offset)
+    t1, t2 = offsets[idx-1], offsets[idx]
+    w = (offset - t1) / (t2 - t1)
+    r_d0 = (1-w) * resp['resp_d0'][idx-1] + w * resp['resp_d0'][idx]
+    r_d1 = (1-w) * resp['resp_d1'][idx-1] + w * resp['resp_d1'][idx]
+    return r_d0, r_d1
+
+def _add_injection_effect(action, times_list, sensor_list, data, rng):
+    """Compute injection effect for multiple queries.
+    Returns dict mapping sensor name to array (n_samples, n_times, 6, n_slots)"""
+    t_start = action['t']
+    t_end = t_start + action['dur']
+    port = action['port']
+    amp = action['amp']
+    
+    effects = {}
+    for sensor, times in zip(sensor_list, times_list):
+        n_times = len(times)
+        n_slots = 13 if sensor == 'device0' else (19 if sensor == 'device1' else 2)
+        # We'll fill this lazily
+        effects[sensor] = np.zeros((n_times, 6, n_slots))
+    
+    if amp == 0:
+        return effects
+    
+    for sensor, times in zip(sensor_list, times_list):
+        n_slots = 13 if sensor == 'device0' else (19 if sensor == 'device1' else 2)
+        eff = effects[sensor]
+        
+        for i, t in enumerate(times):
+            if t < t_start:
+                continue
+            
+            offset = t - t_start
+            resp = _get_inj_resp(port, offset, data)
+            if resp is None:
+                continue
+            
+            if sensor == 'device0':
+                r = resp[0]
+            elif sensor == 'device1':
+                r = resp[1]
+            else:
+                continue
+            
+            eff[i] = amp * r
+    
+    return effects
+
+def _get_adj_effect(device, u_vec, t, data):
+    """Get adjustment effect at time t for given device and u vector.
+    Returns (eff_d0, eff_d1) each (6, slots) or None."""
+    adj = data['adjustment']
+    dev_key = f'device{device}'
+    
+    if dev_key not in adj:
+        return None
+    
+    n_slots_d0 = 13
+    n_slots_d1 = 19
+    
+    eff_d0 = np.zeros((6, n_slots_d0))
+    eff_d1 = np.zeros((6, n_slots_d1))
+    
+    u_components = [u_vec[0], u_vec[1], u_vec[2]]
+    u_keys = ['u0', 'u1', 'u2']
+    
+    for ui, (uk, uc) in enumerate(zip(u_keys, u_components)):
+        if abs(uc) < 1e-12:
+            continue
+        
+        u_data = adj[dev_key][uk]
+        offsets = u_data['offsets']
+        d0_data = u_data['d0']
+        d1_data = u_data['d1']
+        
+        # Interpolate
+        if t <= offsets[0]:
+            e_d0 = d0_data[0].copy()
+            e_d1 = d1_data[0].copy()
+        elif t >= offsets[-1]:
+            e_d0 = d0_data[-1].copy()
+            e_d1 = d1_data[-1].copy()
+        else:
+            idx = np.searchsorted(offsets, t)
+            t1, t2 = offsets[idx-1], offsets[idx]
+            w = (t - t1) / (t2 - t1)
+            e_d0 = (1-w) * d0_data[idx-1] + w * d0_data[idx]
+            e_d1 = (1-w) * d1_data[idx-1] + w * d1_data[idx]
+        
+        # Scale: data at uc=0.5, so factor = uc / 0.5 = 2*uc
+        eff_d0 += e_d0 * 2.0 * uc
+        eff_d1 += e_d1 * 2.0 * uc
+    
+    return eff_d0, eff_d1
+
+def predict(actions, queries, n_samples=64, seed=0):
+    """Predict observations for given actions and queries."""
+    data = _get_model_data()
+    rng = np.random.RandomState(seed)
+    
+    # Sort actions by time
+    actions_sorted = sorted(actions, key=lambda a: a['t'])
+    
+    # Extract sensor names and times
+    sensor_list = [q['sensor'] for q in queries]
+    times_list = [list(q['t']) for q in queries]
+    
+    # Build slot counts
+    slot_counts = {
+        'device0': 13,
+        'device1': 19,
+        'global': 2
+    }
+    
+    result = {"samples": []}
+    
+    # For each query, compute the prediction
+    for qi, sensor in enumerate(sensor_list):
+        times = times_list[qi]
+        n_times = len(times)
+        n_slots = slot_counts[sensor]
+        
+        # Initialize samples
+        samples = np.zeros((n_samples, n_times, 6, n_slots))
+        
+        # Fill baseline
+        for i, t in enumerate(times):
+            bd0, bd1, bgl = _interp_baseline(t, data)
+            if sensor == 'device0':
+                base = bd0
+            elif sensor == 'device1':
+                base = bd1
+            else:
+                base = bgl
+            samples[:, i, :, :] = base[np.newaxis, :, :]
+        
+        # Add injection effects (accumulate all injections)
+        for action in actions_sorted:
+            if action['kind'] == 'inject':
+                t_start = action['t']
+                amp = action['amp']
+                port = action['port']
+                
+                if amp == 0:
+                    continue
+                
+                for i, t in enumerate(times):
+                    if t < t_start:
+                        continue
+                    
+                    offset = t - t_start
+                    resp = _get_inj_resp(port, offset, data)
+                    if resp is None:
+                        continue
+                    
+                    if sensor == 'device0':
+                        r = resp[0]
+                    elif sensor == 'device1':
+                        r = resp[1]
+                    else:
+                        continue
+                    
+                    samples[:, i, :, :] += amp * r[np.newaxis, :, :]
+        
+        # Add adjustment effects
+        for action in actions_sorted:
+            if action['kind'] == 'adjust':
+                t_adj = action['t']
+                device = action['device']
+                u = action['u']
+                
+                # Get the persistent adjustment effect
+                adj_eff = _get_adj_effect(device, u, t_adj, data)
+                if adj_eff is None:
+                    continue
+                
+                eff_d0, eff_d1 = adj_eff
+                if sensor == 'device0':
+                    eff = eff_d0
+                elif sensor == 'device1':
+                    eff = eff_d1
+                else:
+                    continue
+                
+                # Apply to all times >= adjustment time
+                for i, qt in enumerate(times):
+                    if qt >= t_adj:
+                        samples[:, i, :, :] += eff[np.newaxis, :, :]
+        
+        # Add stochastic noise (very small - the system is nearly deterministic)
+        if sensor == 'device0':
+            noise_std = 0.0003
+        elif sensor == 'device1':
+            noise_std = 0.0003
+        else:
+            noise_std = 1e-7
+        
+        noise = rng.normal(0, noise_std, samples.shape)
+        samples += noise
+        
+        result["samples"].append(samples)
+    
+    return result

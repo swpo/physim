@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+<title>Searching equation space — physim blobs</title>
+<style>
+ body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
+ h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
+      border-bottom: 2px solid #eee; padding-bottom: 6px;}
+ h3 { font-size: 16px; margin-top: 26px; }
+ .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .warn { background: #fff8f0; border-left: 4px solid #d4a72c; padding: 10px 14px;
+         border-radius: 4px; margin: 12px 0; font-size: 14px; }
+ .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
+          border: 1px solid #e1e4e8; border-radius: 6px; }
+ .film { margin: 14px 0; }
+ .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
+ .meta { color: #57606a; font-size: 13px; }
+ /* table-wrap-fix */ table { border-collapse: collapse; font-size: 13px; margin: 12px 0; display: block; overflow-x: auto; max-width: 100%; }
+ td, th { border: 1px solid #d0d7de; padding: 5px 10px; text-align: left; }
+ th { background: #f6f8fa; }
+ code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
+ .eq { background:#f6f8fa; border-radius: 6px; padding: 10px 16px; font-family: ui-monospace, Menlo, monospace;
+       font-size: 13.5px; margin: 10px 0; line-height: 1.7; }
+ .postnav { font-size: 13.5px; color:#57606a; border-top: 1px solid #eee; margin-top: 36px; padding-top: 12px; }
+</style><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"></head><body><aside style="padding:1rem;border:1px solid #ccd4de;margin:0 0 1.5rem;font-size:16px;line-height:1.5;background:#f6f8fa"><strong>Research archive.</strong> This page preserves an earlier study and its original claims. <a href="../../index.html">Read the current Physim documentation</a>.</aside>
+<nav style="font-size:14px;margin-bottom:18px;"><a href="../overview.html">home</a> · <a href="../blobs.html">blobs series</a> · <a href="../worlds.html">the worlds</a> · <a href="https://github.com/swpo/physim">github</a></nav>
+<h1>Searching equation space</h1>
+<p class="meta">Post 7 — the bottom-up track: instead of designing worlds, sample the space
+of field theories and let physics tell us what exists. 4,500+ candidate universes screened
+for ~$12 of compute; every headline independently re-verified.</p>
+
+<h2>What the search found (the seven results)</h2>
+<table>
+<tr><th>#</th><th>finding</th><th>status</th></tr>
+<tr><td>1</td><td><b>A second binding mechanism</b> — the "plateau bond": worlds with NO
+oscillatory tails that still bind at quantized distances, via a saturating (tanh) channel.
+Invisible to our shell theory <i>by construction</i>; found twice independently by blind
+uniform sampling. 41-cell family; d* tunable 14–30 px by one dial.</td>
+<td>audited ✓ (ablations + fresh-seed bonds)</td></tr>
+<tr><td>2</td><td><b>Plateau stacks solve the machine program's cargo problem</b> — 3-stacks
+of plateau-bonded blobs park motionless under noise, where the classic M4-bond stacks
+self-propel (the machine-v2 blocker). The stack-safety fix came from the atlas, not from
+design.</td><td>audited ✓ (head-to-head with M4 control)</td></tr>
+<tr><td>3</td><td><b>A second motility mechanism</b> — a standalone 3-field "engine"
+(A=τ·D<sub>v</sub>≈2.5, far from the drift-onset family) traveling at <b>c = 0.20–0.34</b>:
+2–2.4× faster than anything hand-designed, robust ±10% on every dial. Found as a slaved
+component inside a search hit, then purified by decomposition.</td>
+<td>audited ✓ (records reproduced to 4 digits)</td></tr>
+<tr><td>4</td><td><b>Motility is rare and lives in exactly two mechanisms.</b> Census of all
+996 alive worlds: 2.4% travel. By ancestry: dynamical-b lines 16% (stigmergic self-launch),
+engine/rotor lines ~4% (two-timescale engines), the classic M0/M4/VVW families
+<b>0% in 321 worlds</b>. Two independent protocols agree to 0.3%.</td>
+<td>census complete</td></tr>
+<tr><td>5</td><td><b>Recombination beats mutation, structurally.</b> Merge operators
+(validated by reconstructing our own vvw and xv design jumps) found ALL multi-species and
+ALL cross-species physics cells; plain mutation was worse than dumb jitter. The evolver
+also rediscovered the rotor from parts without the recipe.</td>
+<td>audited ✓ (rotor ω to 4 digits)</td></tr>
+<tr><td>6</td><td><b>An unplanned ecology primitive: predation.</b> One searched 3-species
+world has a conserved kill interaction (species 1 eliminates species 2 on contact, at all
+distances) plus an apex self-bond. Parked for the world-catalog phase.</td>
+<td>observed (6/6 assays), not yet audited</td></tr>
+</table>
+<p>Everything below explains how these were found and gives the evidence.</p>
+<h2>How: the levels doctrine (why a bottom-up track exists)</h2><p class='meta'>The certified physics this searches over: posts <a href='what-is-a-blob.html'>1</a>–<a href='machines.html'>6</a>. The G0c funnel derives from the spatial-eigenvalue analysis introduced in <a href='blob-chemistry.html'>post 3</a>.</p>
+<p>Phase 2 clarified the working structure of blob science as a ladder of description
+levels:</p>
+<table>
+<tr><th>level</th><th>what is given</th><th>what you study</th><th>example</th></tr>
+<tr><td><b>L1 — field level</b></td><td>only the PDEs and initial conditions; every
+field (including b) dynamical</td><td>what landscapes/structures the physics builds
+on its own</td><td>M6: trails, self-launch, b-assembly, the standing sawtooth</td></tr>
+<tr><td><b>L2 — background level</b></td><td>a hand-written static b landscape</td>
+<td>what dynamics the landscape can host</td><td>M5 machine: saw track + rails;
+RT3 ring valleys</td></tr>
+<tr><td><b>L3 — molecule level</b></td><td>bonds/rotors/trains taken as certified
+components</td><td>what circuits and machines the components compose into</td>
+<td>relay tug; rotor-based devices (future)</td></tr>
+</table>
+<p>The doctrine: <b>findings at a higher level must be reducible to the level below by a
+learned process</b> — L2 landscapes should be reachable as L1 fixed points (the inverse
+problem: can deposition + relaxation evolve b into the sawtooth-and-rails the machine
+needs? the phase-2 teaser says the sawtooth, at least, is a natural attractor), and L3
+components must carry their L2/L1 certificates (bond curves, dial laws, stability
+windows). Higher levels buy speed of exploration; reduction buys legitimacy — a machine
+sketched at L3 is a conjecture until its landscape is demonstrated at L2 and, ultimately,
+grown at L1. The two phase-2 tracks are therefore not merged but <i>stacked</i>: L2 work
+discovers what is worth wanting; L1 work discovers what can be grown; the reduction map
+between them is itself a research object.</p>
+
+<p><b>The bottom-up search (L0), status.</b> The genome/funnel/assay stack is built
+and certified (reproduces every reference world to 5 digits; the spatial-eigenvalue
+screen predicts bond shells of unseen worlds to ~±15%). Stage-1 yield curves: uniform
+random finds ~2 alive worlds/100 candidates (but both novel mechanisms so far —
+including a bond with <i>no oscillatory tails</i>, a second binding mechanism our theory
+did not predict — came from uniform); jitter around references finds ~49/100 (maps
+island geography 25× faster). An evolutionary layer (merge = block composition,
+validated by reconstructing our own vvw and xv design jumps as single merge operations)
+beats jitter on alive-cells per assay and owns ALL multi-species coexistence cells —
+it even rediscovered the rotor from M4 parts without the recipe (audited: ω to 4
+digits). The 32-worker pod sweep (3,195 candidates, ~$9 of compute) came back: the archive
+grew 111 → 404 cells. Confirmed at scale: jitter yields 51% alive / 24% bonded;
+blind-uniform novelty is ~1/600; the bond-shell law settled at d\* = (1.37±0.13 +
+0.55k)·wavelength over 830 bonds. New physics found by the sweep: the
+non-oscillatory "plateau bond" is a robust 41-cell family (a saturating-inhibitor
+well, invisible to the tail eigenvalues by construction — binding chemistry beyond
+the funnel's prediction), plus at least one further unattributed binding route; the
+first 3-species bonded matter (from the evolver's elite line); 13 self-launching
+worlds; and a program speed record — c = 0.204, a jittered descendant of the
+evolver's rediscovered rotor, 45% faster than anything hand-designed
+(controller-audited to 4 digits). Every candidate carries its selection provenance
+(anthropic-screening doctrine).</p>
+<h2>How: the genome and the algebraic funnel</h2>
+<p>Every world in the search is a point in one canonical family — n cubic activators
+coupled to m linear-or-saturating channels:</p>
+<div class="eq">∂u_i/∂t = D<sub>u,i</sub>∇²u_i + λ_i u_i − u_i³ + k₁,ᵢ − Σ_c K[i,c]·x_c<br/>
+∂x_c/∂t = ( Σ_a W[c,a]·g_c(u_a − u₀,ₐ) − x_c )/τ_c + D_c∇²x_c,&nbsp;&nbsp;
+g_c = identity or tanh(max(z−thr,0)/sc)</div>
+<p>The genome is {acts: (λ, k₁, D_u)ᵢ, chans: (τ, D, g)_c, W, K} — and because every
+channel is driven by <i>deviations</i> (u−u₀), the uniform vacuum is an exact fixed
+point for any weights: the iso-line trick as architecture. All five hand-built worlds
+(M0, the motility line, vvw, xv, bfield) are reference points of this family,
+reproduced to 5 digits by the generic simulator before any sampling was allowed.</p>
+<p>Candidates pass a microsecond-scale algebraic funnel before any simulation:</p>
+<div class="eq">G0a&nbsp;&nbsp;max_k Re eig(J − k²D) &lt; 0&nbsp;&nbsp;(vacuum temporally stable — else Turing soup)<br/>
+G0b&nbsp;&nbsp;−u³+λu+k₁ has 3 real roots&nbsp;&nbsp;(local bistability — an "on" branch exists)<br/>
+G0c&nbsp;&nbsp;spatial modes e^{μx} of the steady state: D_u s + a − Σ_c K_cW_c/(1−A_c s) = 0, s=μ², A_c=τ_c D_c<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;complex μ ⇒ oscillatory tails ⇒ bond shells at d* = (1.37±0.13 + 0.55k)·2π/|Im μ|</div>
+<p>G0c's shell prediction was validated on the certified worlds (10.9px measured vs
+10.8 predicted) and then held across 830 bonds of the stage-2 sweep. Blob existence
+itself is subcritical (a homoclinic orbit — no local criterion suffices), so one
+seeded poke per candidate settles it; the funnel just makes the poke affordable.</p>
+<h2>Evidence I — yields and costs (findings 4, 5)</h2>
+<table>
+<tr><th>strategy</th><th>alive /100</th><th>bond /100</th><th>role</th></tr>
+<tr><td>uniform random</td><td>0.5–2</td><td>~1</td><td>mechanism discovery (both new binding mechanisms came from here)</td></tr>
+<tr><td>jitter around references</td><td>49–51</td><td>14–24</td><td>island mapping (25× cheaper per alive world)</td></tr>
+<tr><td>evolver merge</td><td>7.7 cells/100 assays</td><td>—</td><td>composition: ALL multi-species and cross-species cells</td></tr>
+<tr><td>evolver elite line (e1_9508)</td><td>89.8</td><td>41.8</td><td>evolved genomes are robust genomes</td></tr>
+</table>
+<div class="film"><img src="../../assets/blobs/p7_uni3034.png" alt=""/><div class="cap"><b>Finding 1's first specimen: uni_3034 — binding without oscillatory tails.</b> The monotone-tail world that bonds anyway (d*=27.9, two-sided): the plateau-bond mechanism, invisible to G0c by construction (its tanh channel has g′(0)=0). Blind uniform search found what the theory could not predict.</div></div>
+<div class="film"><img src="../../assets/blobs/p7_uni3050.png" alt=""/><div class="cap"><b>The other uniform novelty (uni_3050):</b> a tanh-channel core with an exciting K entry; merge-or-repel pair law.</div></div>
+<h2>Evidence II — the stage-3 harvest (findings 2, 3, 4, 6)</h2>
+<p class="meta">17 shards, 1,068 records, 4 pods, ~$3. Everything below controller-verified
+on fresh reruns where marked.</p>
+<h3>The carrier census (findings 3 &amp; 4)</h3>
+<p>Of 996 alive worlds given the kicked travel assay, only <b>24 travel (2.4%)</b> —
+self-propulsion is a scarce phenotype in equation space, exactly as the funnel's
+near-onset analysis predicted. And it is not uniformly scattered: the traveler rate by
+ancestry is <b>16% for dynamical-b lines</b> (self-launchers — motility by deposition
+is the easiest route), <b>4% for the engine/rotor lines</b>, ~2% for uniform ancestry,
+and <b>0% for the M0/M4 and VVW lines</b> (170 and 151 worlds each, not one traveler —
+the classic families are deeply static away from their tuned onsets). Speed
+leaderboard: <b>c = 0.304</b> (XV-line jitter, verified independently to 4 digits ✓),
+0.245, 0.208 (both from the evolver's slow-tanh merge line e1_9513), 0.204 (the
+3-field engine) — and combining the engine's two best dials (Du×1.1, D_v×0.9) gives
+the outright program record, <b>c = 0.3439 in a bare 3-field world</b> (verified ✓).
+For scale: the best hand-designed carrier was 0.143. The two independent motility
+protocols (census kicks; dial-ladder onsets) agree on the overall rate to within
+0.3% — and on the deeper point that all known motility lives in exactly two
+mechanisms: stigmergic self-launch and two-timescale v/w engines.</p>
+<h3>The encounter tables (finding 6 + machine parts)</h3>
+<p>Six 3-species worlds got full pairwise encounter matrices (three cross-pairs ×
+three distances). Two are machine-grade: <code>s2_111_17</code> (two distinct
+cross-species bonds, zero replication anywhere — the species-rail candidate) and
+<code>s2_116_46</code> (cross-bond in a robust cell). Two replicate on contact
+(fragile lines), one is inert. And one — <code>s2_101_58</code> — shows
+<b>kill outcomes</b>: one species consistently eliminates another on close encounter
+while surviving itself. That is a predation-like interaction, found by blind search,
+not designed. It is parked for the world-catalog phase (a predator–prey blob ecology
+is now demonstrably available in this equation space).</p>
+<h3>The stack verdict (finding 2)</h3>
+<p>Head-to-head stack probes: plateau-bonded stacks (the tanh-well binding family)
+<b>park motionless at n=2 and n=3, including under working noise</b>, while the M4
+control stack shuttles under noise exactly as machine-v2's law cascade predicted.
+The stack-safety problem is solved by a binding mechanism that blind uniform search
+found and that our tail-eigenvalue theory is structurally blind to. (Update — the census closed this: the uni_3034 "death" was a job-spec artifact
+(dressing overdose); re-run bare, its 3-stack parks at 29.3 px under noise,
+controller-verified. Both family members are usable cargo, and the plateau design
+rule gives a d\* menu: 14 px fixed, or 20–30 px tunable via the slow-channel τ —
+stack spacing fully decoupled from tail physics.)</p>
+<h3>Machine v3's parts list, assembled by search</h3>
+<table>
+<tr><th>need (from machine-v2's law cascade)</th><th>answer (from the atlas)</th></tr>
+<tr><td>faster carrier (blade-load margin)</td><td>3-field engine family, c = 0.20–0.30 (2–5× margin)</td></tr>
+<tr><td>cargo that parks (stack-safety)</td><td>plateau-bonded stacks (noise-parked at n=3)</td></tr>
+<tr><td>species-tagged rails (two-way sort)</td><td><code>s2_111_17</code> / <code>s2_116_46</code> cross-bond worlds</td></tr>
+</table>
+<p class="meta">This closes the loop the program was built to test: top-down machine
+failures became bottom-up search queries, and the search answered all three. The next
+machine will be built from parts no one designed.</p>
+<p class="meta">Next: machine v2 (multi-cargo delivery-and-sort logistics from the
+certified parts), the b_target inverse problem (differentiable-RD or evolutionary,
+now that the forward map is characterized), pod-harvest atlas review, then
+world-ification — anonymous ports, alienization, prediction/preparation contracts
+(bond lengths, speed laws, climb thresholds, delivery tasks), certification, oracle
+and frontier baselines. The blob universe joins the catalog when it passes the same
+gates as every other world.</p>
+
+</body></html>
+<h2>The deep search: selection for complexity works (finding 7)</h2>
+<p>The gated experiment ran: MAP-Elites over the audited complexity descriptors,
+seeded with the ground truths and atlas elites, evolving by the validated operators
+(merge to open cells, mutate to climb) with a growing block library. Six generations,
+196 evaluations, 48 core-hours. The verdict:</p>
+<table>
+<tr><th>question</th><th>answer</th></tr>
+<tr><td>does selected interest climb?</td><td>yes — mean 29.9 → 44.6 over five
+generations (+49%), then honest saturation; max 66.5 → 73.7</td></tr>
+<tr><td>does it find things sampling never did?</td><td>yes — 28 of 35 archive cells
+are new vs the ground-truth set, including <b>six 4-species worlds</b> (the sampling
+era never passed 3), a never-occupied bond-network phase ("flicker"), and a 4-species
+world with a persistent rotor plus field memory</td></tr>
+<tr><td>does it beat designed complexity?</td><td>yes — the champion <b>ds3_017</b>
+(a merge of a <i>weak</i> dynamical-b mutant with an xv jitter) scores <b>76</b> on
+the audited scale vs 43 for machine v3, our best designed world. Fresh-seed
+controller audits: 76.3 and 60.7 for the two headliners, both confirming the
+searcher's numbers</td></tr>
+<tr><td>the open-endedness signature</td><td>the champion's weaker parent scored 11 —
+it contributed <i>structure</i> (a slow tanh channel), not fitness. Recombination
+converts junk into capability; that is what open-ended search is supposed to do</td></tr>
+</table>
+<p class="meta">Sharpened operator law: merges open new cells (12/21 first-touches),
+mutations climb within them (17 cell-holders and both top scores). Next: mechanism
+autopsies of the champions (what IS ds3_017 doing? — it maxes ecology, roles, and
+graph components simultaneously), then the pod-scale run (20 generations, immigration,
+richer descriptors) if the autopsies justify it.</p>
+<h2>Champion autopsies — what the evolved worlds actually are</h2>
+<p class="meta">Per the review direction: less methodology, more "what did we breed."
+Training dynamics first, then films of the top worlds with what the metrics saw and
+what they missed.</p>
+
+<h3>Training dynamics</h3>
+<div class="film"><img src="../../assets/blobs/p7_training_dynamics.png" alt=""/><div class="cap"><b>(a)</b> Interest distribution per generation: every dot one evaluated world; the mean (red) climbs monotonically +49% before saturating at g6; the dashed line is our best <i>designed</i> world — the population median crosses it by g4. <b>(b)</b> Cumulative behavior-space coverage: the g3 jump is the 4-species breakthrough (merge-opened). <b>(c)</b> The division of labor between operators: merges account for most first-touches of new cells relative to their evaluation share; mutations dominate within-cell climbing. Numbers on bars = new-cells-per-evaluation.</div></div>
+
+
+<h3>ds3_017, the champion (I = 76, audited): a worm ecology with trails</h3>
+<div class="film"><img src="../../assets/blobs/p7_world_ds3_017.gif" alt=""/><div class="cap"><b>Watch:</b> the red species does something no designed world did — it GROWS: elongated worm-blobs that stretch, split, and pack the domain to a carrying capacity (~45 segments, logistic curve top-right, then slight decline — bounded, not a cascade). Among the worms, two conserved compact species (blue, green) wander. Top-right: total population; bottom-right: per-species biomass — red saturates, blue/green flat.</div></div>
+
+<p><b>Genome anatomy</b> (3 species, 8 channels): three M4-class motility engines at
+different clocks (τ = 4.1 / 5.75 / 1.8 — the middle one sits in the traveling corridor),
+weak mutual v-crosstalk between two species (the xv bond/rotor wiring, diluted), and
+<b>two slow tanh memory channels</b>: a shared trail field (τ=189, weakly attractive to
+two species — a faint stigmergy layer) and a <i>write-only recorder</i> (τ=200, K=0 — it
+influences nothing; evolution kept a channel that only remembers. A vestigial organ, or
+free capacity the metric never charged for).</p>
+<p><b>What the film shows that the metrics did not:</b> the "replicator" is the
+<b>labyrinth instability domesticated</b> — the same fingering that killed species A in
+post 3 is here <i>bounded</i> (worms stop at a finite width and count) and coexists with
+compact blobs. The metric scored it as ecology + roles + population dynamics (C6=1.0,
+C7=0.998, C1=0.7); the mechanism is stripe-forming physics living <i>with</i> spot-forming
+physics in one world — the coexistence the Purwins-class literature treats as separate
+phases, evolved into a single stable mixture.</p>
+
+<h3>ds3_014 (I = 61, audited): four species, rotors, and a delayed baby boom</h3>
+<div class="film"><img src="../../assets/blobs/p7_world_ds3_014.gif" alt=""/><div class="cap"><b>Watch:</b> a sparse 4-species blob ecology — compact blobs (yellow/blue/red/green), some locked in tight pairs (the vvw-wired species 1+2: rotor cells). Nothing happens for 1500 tu — population flat at 12 — then a <b>delayed replication onset</b>: the yellow species begins budding and the count climbs stepwise (top-right). The metric's memory component saw the slow tanh recorder charging toward threshold during the quiet phase; the film shows what it was counting down to.</div></div>
+
+
+<h3>Follow-up: are the champion's spheres load-bearing? (ablation)</h3>
+<p>Reviewer question: the blue/green compact blobs in ds3_017 don't visibly interact
+with the worms — do they matter? Ablation answer: <b>mostly passengers.</b> Deleting
+both sphere species leaves the worm ecology essentially unchanged (carrying capacity
+47 vs 46 baseline); deleting only blue <i>raises</i> worm suppression slightly (37 vs
+46 — blue is a weak worm inhibitor), green is near-neutral. So the champion's core is
+the domesticated-worm physics plus trails; the sphere species pad the ecology component
+of its score. Logged as a metrics-v2 case: species that neither interact nor die
+should not count toward "ecology" — an interaction-strength gate would fix it.</p>
+
+<h3>Follow-up: ds3_014 run to its climax (T = 12,000)</h3>
+<div class="film"><img src="../../assets/blobs/p7_world_ds3_014_long.gif" alt=""/><div class="cap"><b>Watch the whole succession:</b> the sparse 12-blob world (first 1500 tu — the original clip ended here, mid-takeoff) erupts between t≈2000–4000 into a dense mixed tissue of ~150 blobs, then ripens slowly. The species boom IN ORDER: yellow pioneers saturate first (~t=4000), blue converts to worm-infrastructure second (~t=5000), red spots fill the remaining space in a slow climb still completing at t=12,000 — and the green species never booms (3 marginal blobs, near-zero biomass in the climax: the succession's loser). Right panels: stepwise population curve and the staggered per-species biomass saturations.</div></div>
+
+<p><b>Reading:</b> what looked like a "delayed baby boom" is the first act of a full
+<b>ecological succession</b> — pioneer → infrastructure → climax-filler → loser — ending
+in a packed, statistically steady tissue (population flat at ~150 from t≈7000; red
+biomass the last still-ripening component). The steady state is a static-mosaic climax,
+not a cycle. The slow tanh channels are the succession clock: each species' boom awaits
+its memory field charging toward threshold. This is the closest thing to a
+developmental program the search has produced — and it was bred, not designed.</p>
+
+<h3>The fossil vertex: how ds3_014 actually works (correction + lineage)</h3>
+<p><b>Correction to the anatomy above:</b> the "write-only recorder" is not vestigial.
+Its feedback column is zero, but it acts through the genome's single <i>bilinear</i>
+term — red's equation contains <b>−m·w_R</b>: the slow memory field multiplies red's
+own exclusion halo. Ablating this one term (same seed, T=12,000) is catastrophic:
+<b>the entire succession disappears</b> — no red boom (3→7 blobs instead of 3→71), no
+yellow boom (3 instead of 75), twelve thousand time units of near-stasis. One term
+carries the whole developmental program: as m charges over ~130 tu wherever red
+persists, it modulates red's self-inhibition until mature spots destabilize and
+split — fatigue as the replication trigger.</p>
+<p><b>And the term is a fossil.</b> No operator in the search can create bilinear
+couplings (creation rate: structurally zero — audited). The lineage traces it through
+five generations and three separate campaigns — ds3_014 ← g0_jit_11 ← rail_111_17 ←
+s2_111_17 ← e1_9508 ← <b>ref_BFIELD</b> — to the <i>designed</i> stigmergy vertex
+−b·(w−u₀) of the dynamical-background world (post 5), inherited verbatim and
+repurposed: a trail-steering coupling exapted into a replication clock. Every
+nonlinear interaction vertex in the entire evolved archive descends from this one
+designed gene. Consequence for the next search round: give mutation the power to
+<i>mint</i> vertices, and find out whether evolution uses them or this founder effect
+was luck.</p>
+<h3>ds6_000 (I = 64): the flicker phase</h3>
+<div class="film"><img src="../../assets/blobs/p7_world_ds6_000.gif" alt=""/><div class="cap"><b>Watch:</b> the never-before-occupied bond-network phase — a dense two-species tissue (~150 blobs at carrying capacity, spots + short worms) whose bond network continuously rewires without ever freezing or evaporating: a bond-liquid at high density, 'flicker' in the graph-churn descriptor. Population and biomass are statistically flat while the micro-structure never repeats.</div></div>
+
+
+<p class="meta">Two more champion films on disk (<code>p7_world_ds6_019.gif</code> — the
+gen-6 interest peak, a denser worm ecology; <code>p7_world_g0_jit_11.gif</code> — the
+gen-0 rotor-line high scorer). Autopsy data: genome anatomies and population traces in
+<code>probes/blobs/l0/deepsearch/</code>; all five worlds re-runnable from their genome
+JSONs. Flag for metrics v2: the champion lineage exploits growth (C1) + species count
+(C6) — both worm-segment-count artifacts in part; a segment-vs-organism discriminator
+would sharpen the next selection round.</p>
+<div class="postnav">Series: <a href="../blobs.html">index</a> · previous: <a href="machines.html">Blob machines</a></div>
+</body></html>

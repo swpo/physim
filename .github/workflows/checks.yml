@@ -1,0 +1,49 @@
+name: Residency package and reference checks
+on: [push, pull_request]
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+      - name: Install the development workspace
+        run: uv sync --locked
+      - name: Lint and format
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+          uv run ruff check --no-force-exclude packages/blobkit/blobkit/generation.py packages/blobkit/blobkit/registry.py packages/blobkit/blobkit/cli.py
+          uv run ruff format --check --no-force-exclude packages/blobkit/blobkit/generation.py packages/blobkit/blobkit/registry.py packages/blobkit/blobkit/cli.py
+      - name: Generic environment package contracts
+        env:
+          PHYSIM_TEST_BUNDLE: dist/residency-reference-bundle
+        run: |
+          uv run python - <<'PY'
+          import shutil, tomllib
+          from pathlib import Path
+          from physim.hub import fetch_bundle
+          config = tomllib.loads(Path("configs/physim/p4g2_044.toml").read_text())
+          source = config["env"]["taskset"]["task"]["tools"]["bundle_source"]
+          bundle = fetch_bundle(**source, profile="evaluation")
+          shutil.copytree(bundle, "dist/residency-reference-bundle")
+          PY
+          uv run pytest -n auto tests -v
+      - name: Blobkit package and CPU checks
+        run: uv run pytest packages/blobkit/tests -m 'not accelerator and not slow' -v
+      - name: Local scientific and integration checks
+        run: |
+          uv run python scripts/physim/validation/test_blob_round6.py --gates toy
+          uv run python scripts/physim/validation/test_blob_round6_eval.py
+          uv run python scripts/physim/validation/test_blob_round6_explore.py
+          uv run python -m unittest discover -s scripts/physim/validation -p test_bundles.py
+          uv run python -m unittest discover -s scripts/physim/validation -p test_r6_verifiers.py
+      - name: Build and check static documentation
+        run: |
+          uv run python scripts/build_docs.py
+          uv run python scripts/check_docs.py
+      - name: Build distributions
+        run: |
+          uv build --package blobkit
+          uv build --package physim

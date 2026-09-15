@@ -1,0 +1,412 @@
+{
+  "schema_version": "physim-curation-v1",
+  "reviewed_on": "2026-09-13",
+  "basis": "Historical evidence review; no new physics simulations or evaluation certification. Labels are judgments about linked preparations and do not bypass runtime validation.",
+  "evidence": {
+    "review": {
+      "path": "registry/EVALUATION_CANDIDATES.md",
+      "artifact": "artifact:sha256:870851f3310ab980e5c968449700f5a05ab335f27a1d7784481d8b9448869730"
+    },
+    "v2": {
+      "path": "probes/blobs/l0/complexity/VALIDATION_V2.md",
+      "artifact": "artifact:sha256:0b360f68d1065fac237d8ba8546f6017eebe028e343c7c9f7fb692b29c59464b"
+    },
+    "v3": {
+      "path": "probes/blobs/l0/complexity/VALIDATION_V3.md",
+      "artifact": "artifact:sha256:16b3f0dd94f3e0eb3a43e893164aa9cad6fcdb2cadc3aa3e13fd3d081ebd0dbb"
+    },
+    "rotor": {
+      "path": "probes/blobs/rotor/SUMMARY.md",
+      "artifact": "artifact:sha256:34e24f6f8a3991d99ee4351673585da5db9551ea7a26bd853659f71f9671cea7"
+    },
+    "trail": {
+      "path": "probes/blobs/bfield/SUMMARY.md",
+      "artifact": "artifact:sha256:cd4efb5123fbb04aeb3dbed905ba5039094a6b7ea4e72157da181bffb7576c71"
+    },
+    "transport": {
+      "path": "probes/blobs/machinev3/SUMMARY.md",
+      "artifact": "artifact:sha256:31483a8052919486dd7a44faf35de2e2eabba268df253910adf22fb767d3d830"
+    },
+    "census": {
+      "path": "probes/blobs/l0/stage3/CENSUS.md",
+      "artifact": "artifact:sha256:88b7bcdbe58dd26125780d797037f0e00b462df2574f38a4bdde5cb5760da0e1"
+    },
+    "extraction": {
+      "path": "packages/blobkit/blobkit/data/worlds/_extraction.json",
+      "artifact": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5"
+    },
+    "champions": {
+      "path": "docs/archive/blobs/searching-equation-space.html",
+      "artifact": "artifact:sha256:c87032b5525d3d94857c2247664326982a73447a3f7209ab981148050ea8d0dc"
+    },
+    "reference": {
+      "path": "handoff/generation_refactor/STATUS.md",
+      "artifact": "artifact:sha256:e8c264f41ee47145812feea10ab77066d1b2673a8aeadc8974a04279512b0d7b"
+    },
+    "loader": {
+      "path": "environments/physim/physim/bundles.py",
+      "artifact": "artifact:sha256:9fb174a116a3560adc6f13f795657437da7a0915ed359971921c7b94348f70d3"
+    },
+    "assays": {
+      "path": "handoff/evaluation_candidates/historical_assays.json",
+      "artifact": "artifact:sha256:037063d826bcfc59a959483068bf110f06233196495645f2a53639a6d2c8da3e"
+    },
+    "example": {
+      "path": "generators/physim/recipes/small_search.py",
+      "artifact": "artifact:sha256:6d58b352a9e4ccb651ae36925a53ad70d00968724c17c913a6b21c1c72f5f13e"
+    }
+  },
+  "worlds": {
+    "world-record:sha256:14dec27e55240d651cec81e836d5992e45bdbed87d8ce05e3979a21c7dc47855": {
+      "name": "ds3_017",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "later",
+      "phenomena": [
+        "worm-ecology",
+        "rearrangement"
+      ],
+      "assessment": "Potential interaction-rich tissue; two of three assays have box-limit flags. Segment counts must not be treated as organism counts.",
+      "next_check": "Check size sensitivity and organism-aware response measures before preparing a forecast suite.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays",
+        "champions"
+      ]
+    },
+    "world-record:sha256:30b6fd5f62c6b1c98a667da62f2f287c6f7cd6f14e60aabb53a8823e655f2aca": {
+      "name": "g0_jit_11",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "unreviewed",
+      "phenomena": [
+        "research-seed"
+      ],
+      "assessment": "Retained generation seed; no detailed standalone evaluation-suitability review in this pass.",
+      "next_check": "Review original runs, behavior and preparation options.",
+      "evidence": [
+        "review",
+        "extraction"
+      ]
+    },
+    "world-record:sha256:487ad248a7425180daa7895597ef0b9ed5825db6fcf9b759e4715899b9261d91": {
+      "name": "small-mass-search/g1/1",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:4bbdff513c4b0d9891a4987c5e8973de6d13e5a1f9611c085dab888ad0d555f2": {
+      "name": "small-mass-search/g2/0",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:4e1b36a1832c1063206957c28724477e6c5905944b7d086a58617b2646f2387a": {
+      "name": "small-mass-search/g2/1",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:5d47391ad240b5108c33e8222aeb078de96e15329a176f909b8141668c7440c0": {
+      "name": "m4",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "first",
+      "phenomena": [
+        "translation",
+        "binding"
+      ],
+      "assessment": "Simple moving/bonded structures; three-seed motion evidence without box-limit flags.",
+      "next_check": "Prepare a traveler and bonded pair; compare pulse-response forecasts with persistence and constant-velocity controls.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays"
+      ]
+    },
+    "world-record:sha256:650ae9a9935150270d7baccfe2a621ec7aea1130e96be1cf7833ad017954e3bf": {
+      "name": "rail_111_17",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "later",
+      "phenomena": [
+        "cross-species-binding",
+        "repulsion"
+      ],
+      "assessment": "Historical encounter census suggests distinct binding/repelling roles useful for sorting.",
+      "next_check": "Reproduce the encounter menu with explicit preparations before designing predictions.",
+      "evidence": [
+        "review",
+        "census"
+      ]
+    },
+    "world-record:sha256:7f75326ecee9de5a5a170c79fec8f8f3e2788d7531c0b2d0a0fddedcf7eb1cf9": {
+      "name": "ds6_000",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "next",
+      "phenomena": [
+        "dense-tissue",
+        "rearrangement"
+      ],
+      "assessment": "Evolved dense two-species dynamics; three 2500-tu assays without box-limit flags. Diversity beyond the current dense reference needs testing.",
+      "next_check": "Harvest multiple mature starts; compare pulse/control ensembles and predictive gain over persistence.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays",
+        "champions"
+      ]
+    },
+    "world-record:sha256:874237337627bd0e447f9814b223cda5e887e05b58e4d457a807e49b69a2ecc1": {
+      "name": "small-mass-search/g0/1",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:8c3bc4bd886829ee14607702b1c0305c1d64746f47781ab2a84aa546c104e9a4": {
+      "name": "xv",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "first",
+      "phenomena": [
+        "rotation",
+        "cross-species-binding"
+      ],
+      "assessment": "Prepared heterodimer has noise-seed, grid and long-run evidence at the packaged reference point.",
+      "next_check": "Harvest a settled rotor; vary phase/orientation and measure distinguishable phase and pulse effects within the forecast horizon.",
+      "evidence": [
+        "review",
+        "rotor",
+        "v2",
+        "assays"
+      ]
+    },
+    "world-record:sha256:980660994a598d90346eeb63086a0a01cb96d47c84d76b158dcb79b96c9a83cf": {
+      "name": "s2_118_41",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "unreviewed",
+      "phenomena": [
+        "research-seed"
+      ],
+      "assessment": "Retained generation seed; no detailed standalone evaluation-suitability review in this pass.",
+      "next_check": "Review original runs, behavior and preparation options.",
+      "evidence": [
+        "review",
+        "extraction"
+      ]
+    },
+    "world-record:sha256:a52b056a19832f17ae90bc9c241ac21221c63f90941d5e89ad59287b1677af6c": {
+      "name": "coex",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "later",
+      "phenomena": [
+        "coexistence"
+      ],
+      "assessment": "Common soup assays are mostly inert, with box-limit flags on two seeds.",
+      "next_check": "Seek an informative intervention or retain as a coexistence control.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays",
+        "census"
+      ]
+    },
+    "world-record:sha256:cace0bea6e790ef51cc5e0c4ca42a5a279b6787b7ec4d5583c720652b3252c83": {
+      "name": "pred",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "later",
+      "phenomena": [
+        "predation",
+        "slow-memory"
+      ],
+      "assessment": "Encounter evidence supports predation; mature soups have weak motion, slow charging and box-limit flags.",
+      "next_check": "Prepare controlled encounters and establish that intervention changes observable outcomes.",
+      "evidence": [
+        "review",
+        "census",
+        "v2",
+        "assays"
+      ]
+    },
+    "world-record:sha256:daec7d5f9215bfcdf29b2b1cf192b6c6f0b69ed5bce98d68b65307a413a6c67c": {
+      "name": "s2_128_26",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "control",
+      "phenomena": [
+        "plateau-binding",
+        "parked-cargo"
+      ],
+      "assessment": "Historical plateau-bonded cargo provides a parked control; the full genome includes another activator.",
+      "next_check": "Reproduce cargo-only stability and binding, accounting for all fields.",
+      "evidence": [
+        "review",
+        "transport",
+        "census"
+      ]
+    },
+    "world-record:sha256:df6500cab36fa5d1f9bf1c97d450d6d8f83eeea204eb02e7dc5560a1d94f5889": {
+      "name": "small-mass-search/g0/0",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:dfea350f322680515d10037984fffc8c26ed51501fe7857b3b518e7b67201622": {
+      "name": "small-mass-search/g1/0",
+      "role": "demonstration",
+      "evaluation_stage": "genome-only",
+      "priority": "example",
+      "phenomena": [],
+      "assessment": "Workflow demonstration of generation and harvesting; its short mass metric makes no evaluation-quality claim.",
+      "next_check": "Exclude from evaluation selection unless independently characterized and prepared.",
+      "evidence": [
+        "review",
+        "example"
+      ]
+    },
+    "world-record:sha256:e8f1724d609bb41cb45951070377599310478e6a4ec201b66d8e680e2bb52a87": {
+      "name": "ds3_014",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "later",
+      "phenomena": [
+        "succession",
+        "slow-memory"
+      ],
+      "assessment": "Strong staged dynamics but long seed-dependent horizons and box-limit flags on every tested seed.",
+      "next_check": "Check larger domains, harvest the interesting epoch, and establish signal within a practical forecast window.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays",
+        "champions"
+      ]
+    },
+    "world-record:sha256:e92a96b64a4544dcc0c4c9da1263330a70c261768477109067836678d3c58df5": {
+      "name": "engine_10748",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "control",
+      "phenomena": [
+        "self-propulsion"
+      ],
+      "assessment": "A useful transport component/control for mv3.",
+      "next_check": "Reproduce the kicked solitary-engine control alongside the composed world.",
+      "evidence": [
+        "review",
+        "transport",
+        "census"
+      ]
+    },
+    "world-record:sha256:ef738f147a6978914f9a080432d86f1174ee008b1fd9dc39a304b86c5a11e523": {
+      "name": "p4g2_044",
+      "role": "evaluation-reference",
+      "evaluation_stage": "validated",
+      "priority": "reference",
+      "phenomena": [
+        "dense-background",
+        "localized-structures",
+        "coupled-defects"
+      ],
+      "assessment": "The one validated local evaluation reference. Original sparse-rotor interpretation was corrected; publication remains pending and exposure is development.",
+      "next_check": "Use for development; future unfamiliar-world claims need distinct held-out preparations or worlds.",
+      "evidence": [
+        "review",
+        "reference",
+        "v3"
+      ]
+    },
+    "world-record:sha256:f58dbd841bc5bf5dc21b93c8b84391a0c342d158952117621ca72d46d5f075f9": {
+      "name": "mv3",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "next",
+      "phenomena": [
+        "cargo-transport",
+        "capture"
+      ],
+      "assessment": "Prepared engine-cargo transport is supported; random soups are bimodal. Delivery used an external coupling-cut controller.",
+      "next_check": "Prepare a kicked engine behind cargo and component controls; test capture/transport using the existing source and probe actions.",
+      "evidence": [
+        "review",
+        "transport",
+        "v2",
+        "assays"
+      ]
+    },
+    "world-record:sha256:f8e55cb2a8db8b6a35068e4ba991a3a0e91fcf48cc0a71f6d93533f46eaab204": {
+      "name": "m0",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "control",
+      "phenomena": [
+        "static-blobs"
+      ],
+      "assessment": "Useful static calibration world; weak candidate for a challenging forecast task.",
+      "next_check": "Use as a simple persistence and apparatus control.",
+      "evidence": [
+        "review",
+        "v2",
+        "assays"
+      ]
+    },
+    "world-record:sha256:fbd4767df9f27de0836d6d5ba286c666a2cd097d62fe0e902e02efd3bdc0f67e": {
+      "name": "bf",
+      "role": "research-candidate",
+      "evaluation_stage": "genome-only",
+      "priority": "first",
+      "phenomena": [
+        "trail-memory",
+        "self-propulsion"
+      ],
+      "assessment": "Packaged point matches historical self-launch reference; slow trail field gives a new source of memory. Reader-deflection results used other parameters.",
+      "next_check": "Prepare mature trails; test memory-ablated and full-state forecasts, and whether the 50-tu window shows a usable signal.",
+      "evidence": [
+        "review",
+        "trail",
+        "v2",
+        "assays"
+      ]
+    }
+  }
+}

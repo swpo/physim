@@ -1,0 +1,15 @@
+{
+  "blobkit": "0.3.5",
+  "integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 50,
+    "locked_at": "2026-09-13T14:01:33.086394+00:00",
+    "version": "0.3.5"
+  },
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "ok": true
+}

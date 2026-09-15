@@ -1,0 +1,18 @@
+{
+  "world": "xv",
+  "seed": 12001,
+  "coupled": true,
+  "horizon_tu": 2500,
+  "dtype": "f32",
+  "initialization": "Installed A4 deviation stamp; act0 at (x=60,y=64), act1 at (68,64); no kick.",
+  "noise": 0.002,
+  "L": 128.0,
+  "dx": 0.5,
+  "dt": 0.02,
+  "control": "Only W[0,1] and W[1,0] set to zero in the decoupled run.",
+  "sources": {
+    "rotor_check.py": "4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+    "genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "sim_cpu.py": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84"
+  }
+}

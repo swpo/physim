@@ -1,0 +1,12 @@
+{
+  "id": "aee17f876964457e86c17aad4396ca65",
+  "name": "blobkit-polish-20260913",
+  "provider": "massedcompute",
+  "gpu": "A100_80GB x1",
+  "created_at": "2026-09-13 13:46:34 UTC",
+  "terminated_at": "2026-09-13 14:10:07 UTC",
+  "duration": "23m",
+  "price_per_hour": 1.2,
+  "total_cost": 3765.0,
+  "team_id": "cm06pkxft000nem2k4cqh38jq"
+}

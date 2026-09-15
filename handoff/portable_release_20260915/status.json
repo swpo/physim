@@ -1,0 +1,179 @@
+{
+  "source_commits": {
+    "blobkit": "bfdd4319fbbbf1fe92e20afad3c5e9118c8d862e",
+    "physim": "eb6647cb429226dc43b27db6950329ed849b92d9"
+  },
+  "physim_release": {
+    "commit": "eb6647cb429226dc43b27db6950329ed849b92d9",
+    "package_url": "https://github.com/swpo/physim/releases/download/physim-v0.12.2/physim-0.12.2-py3-none-any.whl#sha256=dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f",
+    "assets": {
+      "physim-0.12.2-py3-none-any.whl": "dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f",
+      "physim-0.12.2.tar.gz": "9d6a33d31356defacfd9bb003b7ceb77e0bddc1a9fb8a63b90448b01af7e83f7",
+      "physim-setup-0.12.2.tar.gz": "daa4f6f2c97a599ccd6f1c5e582b54959939eb3d8c797edb2340dbd7095da48c",
+      "requirements-0.12.2.txt": "5e0a4d9c5fe1a648565495a13771fe4b3d5d00fb3a6379d9ba5b45485fc0fef4"
+    }
+  },
+  "blobkit_asset": {
+    "url": "https://github.com/swpo/physim/releases/download/blobkit-v0.3.5/blobkit-0.3.5-py3-none-any.whl#sha256=6747e7ebe26e3909c05d91d050ebce93715d08992c51498cbf480b8206224331",
+    "sha256": "6747e7ebe26e3909c05d91d050ebce93715d08992c51498cbf480b8206224331"
+  },
+  "hf_publication": {
+    "repo": "seanpohorence/physim-worlds",
+    "revision": "0813ee4d0a4e97a12bbf598d5d43a45eddf5492f",
+    "parent": "163caf1f52ad7d1630475fabccf5a72f1c33dfdd",
+    "commit_url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/commit/0813ee4d0a4e97a12bbf598d5d43a45eddf5492f",
+    "release_id": "dataset-release:sha256:165fbfac4c6760469c9ca6f88cc2818186d3b5464ced9a18b44f1620a56e9dd4",
+    "changed": [
+      "README.md",
+      "release.json"
+    ],
+    "scientific_payloads_unchanged": true,
+    "anonymous_changed_file_verification": true,
+    "is-valid": {
+      "http_status": 200,
+      "response": {
+        "preview": false,
+        "viewer": false,
+        "search": false,
+        "filter": false,
+        "statistics": false
+      }
+    },
+    "parquet": {
+      "http_status": 200,
+      "response": {
+        "parquet_files": [],
+        "pending": [
+          {
+            "kind": "config-parquet",
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "worlds",
+            "split": null
+          },
+          {
+            "kind": "config-parquet",
+            "dataset": "seanpohorence/physim-worlds",
+            "config": "evaluations",
+            "split": null
+          }
+        ],
+        "failed": [],
+        "partial": false
+      }
+    }
+  },
+  "hf_catalogs": [
+    {
+      "config": "worlds",
+      "rows": 24,
+      "exact_catalog_match": true,
+      "parquet_bytes": 13390
+    },
+    {
+      "config": "evaluations",
+      "rows": 3,
+      "exact_catalog_match": true,
+      "parquet_bytes": 15608
+    }
+  ],
+  "validation": {
+    "blobkit_cpu_tests": 67,
+    "physim_bundle_roster_tests": 48,
+    "physim_bundle_roster_subtests": 13,
+    "native_after_reward_change_tests": 20,
+    "native_after_reward_change_subtests": 6,
+    "export_catalog_tests": 12,
+    "upstream_package_tests": 2,
+    "upstream_contribution_package_tests": 2,
+    "docker_builds": 2,
+    "docs_errors": 0,
+    "native_after_image_fix_tests": 20,
+    "native_after_image_fix_subtests": 6
+  },
+  "contribution_patch": "handoff/portable_release_20260915/residency.patch",
+  "upstream_base": "01d9f5f80572b7ec82575b10d45a800ed844e496",
+  "public_install": {
+    "macos": "Fresh public 0.12.1 install and all-world verification, upgraded from public 0.12.2 wheel for live smoke",
+    "linux": "Fresh public 0.12.2 install and all-world verification"
+  },
+  "model_smoke": "passed: 2/2 completed on 0.12.2, no infrastructure errors; no predictor -> zero reward",
+  "no_gpu_rentals": true,
+  "linux_ci": {
+    "conclusion": "success",
+    "headSha": "58f00494884eaffbeb2d70f15ad43a67bfd69dd4",
+    "jobs": [
+      {
+        "completedAt": "2026-09-15T12:47:50Z",
+        "conclusion": "success",
+        "databaseId": 104386481147,
+        "name": "linux",
+        "startedAt": "2026-09-15T12:46:33Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-09-15T12:46:34Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-09-15T12:46:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-15T12:46:37Z",
+            "conclusion": "success",
+            "name": "Download and verify the public setup",
+            "number": 2,
+            "startedAt": "2026-09-15T12:46:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-15T12:47:16Z",
+            "conclusion": "success",
+            "name": "Install public packages and verify every preparation",
+            "number": 3,
+            "startedAt": "2026-09-15T12:46:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-15T12:47:47Z",
+            "conclusion": "success",
+            "name": "Build Docker images and validate an executable predictor",
+            "number": 4,
+            "startedAt": "2026-09-15T12:47:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-15T12:47:47Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 5,
+            "startedAt": "2026-09-15T12:47:47Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/swpo/physim/actions/runs/34970845043/job/104386481147"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/swpo/physim/actions/runs/34970845043"
+  },
+  "model_smoke_results": "model_smoke_results.json",
+  "model_api_cost_usd": 0.0044,
+  "contribution_files": 35,
+  "contribution_patch_applies": true,
+  "test_rollout_containers_cleaned": true,
+  "upstream_pr_opened": false,
+  "documentation_commit": "da3faa5",
+  "report": "/Users/spoho/Documents/prime/test/physim/handoff/portable_release_20260915/REPORT.md",
+  "completed_at_local": "2026-09-15",
+  "contribution_scope_complete": false,
+  "contribution_scope": "Physim environment, portable evaluation-specific generation/preparation/validation workflows, configs and Docker support; Blobkit source remains in the personal repository as a published dependency",
+  "contribution_patch_scope": "Verified environment and supporting files; portable evaluation-specific generation, preparation, and validation workflows still need integration. Blobkit remains an installed dependency owned by the personal repository.",
+  "remaining_contribution_work": [
+    "Add portable evaluation-specific workflows under upstream generators/physim using installed Blobkit",
+    "Replace required research-checkout inputs with explicit published registry inputs",
+    "Validate the preparation and evaluation workflow from a clean contribution checkout"
+  ],
+  "architecture_plan": "handoff/architecture/PLAN.md",
+  "registry_contribution_guide": "handoff/registry_contribution_20260915/REPORT.md"
+}

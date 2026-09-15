@@ -1,71 +1,30 @@
-<!doctype html><html><head><meta charset="utf-8"/>
-<title>physim — science benchmark for AI agents</title>
-<style>
-body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
-       max-width: 900px; margin: 32px auto; padding: 0 16px; color: #1a1a1a; }
-h1 { font-size: 28px; margin-bottom: 4px; }
-.tag { color: #57606a; font-size: 15px; margin-bottom: 24px; }
-.card { border: 1px solid #d0d7de; border-radius: 8px; padding: 14px 18px;
-        margin: 12px 0; }
-.card h2 { margin: 0 0 6px; font-size: 18px; }
-.card p { margin: 4px 0; font-size: 14px; color: #333; }
-a { text-decoration: none; } a:hover { text-decoration: underline; }
-.meta { color: #57606a; font-size: 13px; margin-top: 22px; }
-</style></head><body>
-<h1>physim</h1>
-<p class="tag">Can AI agents do science? Procedurally generated universes with
-hidden laws behind anonymous interfaces — agents explore, experiment, build
-instruments, and are scored on prediction, state preparation, and executable
-theories.</p>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Learn physical systems through experiments in blob-field worlds, then evaluate an executable prediction function.">
+<title>Overview · Physim</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
+<nav aria-label="Main navigation"><a href="index.html" aria-current="page">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<div class="layout">
+<main id="main"><p class="eyebrow">Overview</p><h1>Learning physical systems through experiments</h1><p class="lead">Physim studies whether AI agents can learn to predict unfamiliar physical systems through experiments.</p>
+<p>Its worlds are interacting fields spread across space. Their dynamics produce persistent spots, moving structures, and collective behavior. An agent investigates a world through instruments, then submits a Python function that predicts what those instruments will measure under new experimental programs.</p>
+<ol class="steps"><li><strong>Investigate a world</strong><p>Apply a source, move probes, and collect repeatable measurements.</p></li><li><strong>Build a predictor</strong><p>Turn observations into code that forecasts complete sensor readings.</p></li><li><strong>Test its predictions</strong><p>Compare predicted trajectories with independent realizations of the world.</p></li></ol>
+<pre><code>def predict(actions, queries, n_samples=64, seed=0):
+    return {"samples": [array_for_each_query]}</code></pre>
+<p>The function returns possible trajectories, so it can express uncertainty as well as a best estimate. Each trajectory must stay coherent across time and across instruments. <a href="experiment.html">See how an experiment becomes a prediction request.</a></p>
+<h2>A physical world with observable consequences</h2>
+<p>The worked world, <code>p4g2_044</code>, contains four activator fields and eight coupled channels. Localized structures coexist with extended stripe and defect patterns. A source can perturb these patterns; repositioning a probe changes which part of the response it sees.</p>
+<figure><video controls muted playsinline preload="none" aria-label="Full-field simulation of p4g2_044"><source src="blobs/media/v2/v2_p4g2_044.mp4" type="video/mp4"><a href="blobs/media/v2/v2_p4g2_044.mp4">Download the simulation film</a>.</video><figcaption>A full-field research film of <code>p4g2_044</code>. It illustrates the world's dynamics across a longer simulation, rather than the exact prepared evaluation episode. The investigating agent receives sensor arrays, not this view.</figcaption></figure>
 
-<div class="card"><h2><a href="results.html">📊 Results</a></h2>
-<p>Headline findings and leaderboards, one page per world track:
-<a href="results-bulk.html">bulk matter (D)</a> ·
-<a href="results-chemistry.html">chemistry (C)</a> ·
-<a href="results-life.html">ecology (B)</a> ·
-<a href="results-evolution.html">evolution (E)</a>.</p></div>
-
-<div class="card"><h2><a href="scoring.html">⚖️ Scoring</a></h2>
-<p>How an AI scientist is graded: prediction contracts scored by a proper
-distributional rule (CRPS vs god-mode truth ensembles, noise-floor
-subtracted), preparation policies run on fresh clones, executable theories
-replayed against the laws — plus the reference ladder (null → tail →
-persistence → compact oracle → replication) and the measurement-adequacy
-audit that certifies the contracts can see each world's emergent
-phenomena.</p></div>
-
-<div class="card"><h2><a href="blobs.html">🟠 The BLOBS program <span style="font-weight:normal;font-size:13px;color:#57606a">(new)</span></a></h2>
-<p>A research program building the next world from scratch: three coupled fields whose
-excitations are particle-like <b>blobs</b> that move (drift bifurcation), bind into
-molecules (d*=15.70), come in port-distinguishable species, and self-assemble into a
-working machine — a relay tug hauling cargo upstream against a load field at 5.8×
-baseline; then evolved at scale (423-cell archive) and turned into a measurement
-benchmark for AI scientists (post 11). Full report with films, equations, the dial
-table, and honest negatives.</p></div>
-
-<div class="card"><h2><a href="worlds.html">🌍 The worlds</a></h2>
-<p>Plain-language guide to the simulated universes, one page per track with
-god-view <b>films of the dynamics</b> (waves entraining, ecosystems starving,
-gene pools evolving through storm cycles):
-<a href="worlds-bulk.html">bulk matter</a> ·
-<a href="worlds-chemistry.html">chemistry</a> ·
-<a href="worlds-life.html">ecology</a> ·
-<a href="worlds-evolution.html">evolution</a>.</p></div>
-
-<div class="card"><h2>🔬 Rollout galleries:
-<a href="rollouts-bulk.html">bulk-matter</a> ·
-<a href="rollouts-chemistry.html">chemistry</a> ·
-<a href="rollouts-life.html">life</a></h2>
-<p>What the agents actually did: narrative experiment logs with timeline
-figures, the files each agent wrote (its instruments and theories), and
-contract answers vs ground truth — split by world track.</p></div>
-
-<div class="card"><h2><a href="https://github.com/swpo/physim">💻 Code</a></h2>
-<p>The verifiers taskset, engine, and docs generators.
-Raw rollout traces: <a href="https://huggingface.co/datasets/seanpohorence/physim-rollouts">
-HF dataset</a>. Full running lab log:
-<a href="https://github.com/swpo/physim/blob/main/REPORT.md">REPORT.md</a>.</p></div>
-
-<p class="meta">Built on <a href="https://github.com/PrimeIntellect-ai/verifiers">
-Prime Intellect verifiers</a>.</p>
-</body></html>
+<p>The <a href="registry.html">published registry</a> contains 24 world records and three eval-ready preparations: this worked example, BF's trail laboratory, and XV's rotating-pair laboratory. The other records preserve world definitions and available provenance.</p>
+<div class="page-continuation"><a class="following" rel="next" href="worlds.html"><span>Next</span>Worlds →</a></div></main>
+</div>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+</body>
+</html>

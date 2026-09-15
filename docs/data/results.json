@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-10",
+  "scope": "Selected native development profiles; every attempt in each selected profile is retained. Earlier harness-development pilots are excluded.",
+  "world": "p4g2_044",
+  "prepared_instances": 1,
+  "cases": 15,
+  "model_forecast_members": 64,
+  "truths_per_case": 2,
+  "profiles": [
+    {
+      "id": "verifiers_scaling_v1",
+      "label": "Initial resource profile",
+      "experiment_limit": 20,
+      "integrated_time_limit": 750,
+      "source": {
+        "path": "probes/blobs/agentenv/round6/worked_example/rollout/verifiers_scaling_v1/summary.json",
+        "sha256": "d341eb021c79bf0567bbbbd14405ded3c3917c6f5acfd9a0a2d99238ed822399"
+      },
+      "rows": [
+        {
+          "run": "deepseek_pro_bash",
+          "model": "deepseek/deepseek-v4-pro",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "max_output_tokens",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 8192
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 65536
+          },
+          "model_calls": 69,
+          "experiments": 19,
+          "charged_tu": 510.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.6871030785160558,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.985,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "e311602e9f1ae7c6aec7209df2d6b99dd027e4ac517dfb25c600c2f64c21be25",
+          "cost_ceiling_usd": 5.0
+        },
+        {
+          "run": "gpt_sol_bash",
+          "model": "openai/gpt-5.6-sol",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 131072
+          },
+          "model_calls": 25,
+          "experiments": 15,
+          "charged_tu": 750.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 3.1901887173193226,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.3149,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "a9d5a7d1cf5d0912ac1f324d0f4019ed8b650363ec957bac333251f888e465a0",
+          "cost_ceiling_usd": 13.58
+        },
+        {
+          "run": "gpt_terra_bash",
+          "model": "openai/gpt-5.6-terra",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 131072
+          },
+          "model_calls": 31,
+          "experiments": 20,
+          "charged_tu": 685.0,
+          "score_kind": "infinity",
+          "primary_joint_energy": null,
+          "grade_status": "INVALID_PREDICTIONS",
+          "provider_reported_cost_usd": 0.2058,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "819836392a6b4132578ae73399d146dabb19041a8537acde39960c951334943f",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "qwen122b_bash",
+          "model": "Qwen/Qwen3.5-122B-A10B",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 8192
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 65536
+          },
+          "model_calls": 48,
+          "experiments": 15,
+          "charged_tu": 750.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.7485249406683763,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.065,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "9799bb2929f9cd133124dd38e3a0c2c28e452fd093f4b537fe2b3546a8ce01aa",
+          "cost_ceiling_usd": 3.0
+        },
+        {
+          "run": "qwen397b_bash",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 8192
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 65536
+          },
+          "model_calls": 45,
+          "experiments": 20,
+          "charged_tu": 750.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.918615786225108,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.6278,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "9a5c09eda8b04507bea68e2009aa2a703b9bce3ac544d4471e49b6262a6874f6",
+          "cost_ceiling_usd": 4.0
+        },
+        {
+          "run": "sonnet5_bash",
+          "model": "anthropic/claude-sonnet-5",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "agent_completed",
+          "sampling": {
+            "max_tokens": 8192
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 65536
+          },
+          "model_calls": 12,
+          "experiments": 5,
+          "charged_tu": 238.0,
+          "score_kind": "nan",
+          "primary_joint_energy": null,
+          "grade_status": null,
+          "provider_reported_cost_usd": 0.7079,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "c6320cb220cf15c6711f42e3ad57e1ebdf1f363e8eaef800745e0cca9ecaa0ec",
+          "cost_ceiling_usd": 8.0
+        },
+        {
+          "run": "sonnet5_bash_medium128k",
+          "model": "anthropic/claude-sonnet-5",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "dollar_budget",
+          "sampling": {
+            "reasoning_effort": "medium",
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 131072
+          },
+          "model_calls": 51,
+          "experiments": 10,
+          "charged_tu": 320.8,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.8326937431695252,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 5.826,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "0eb51b2606383fe39dbb5945ee3a260ec51b0adae898fc5cabbb6b8e93017547",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "sonnet5_bash_response32k",
+          "model": "anthropic/claude-sonnet-5",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "dollar_budget",
+          "sampling": {
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 96,
+            "max_input_tokens": 2000000,
+            "max_output_tokens": 65536
+          },
+          "model_calls": 26,
+          "experiments": 15,
+          "charged_tu": 750.0,
+          "score_kind": "nan",
+          "primary_joint_energy": null,
+          "grade_status": null,
+          "provider_reported_cost_usd": 2.9948,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "323bf3babd138a137ae9ef584779ae4c9652cb01e40110a7f70a7967964cabde",
+          "cost_ceiling_usd": 7.2921
+        }
+      ]
+    },
+    {
+      "id": "verifiers_highlimits_v1",
+      "label": "Expanded resource profile",
+      "experiment_limit": 100,
+      "integrated_time_limit": 5000,
+      "source": {
+        "path": "probes/blobs/agentenv/round6/worked_example/rollout/verifiers_highlimits_v1/summary.json",
+        "sha256": "12cdd1b906e322c610e9b609b2d6d7f31d0f91b67004280970f43756dd33ba0e"
+      },
+      "rows": [
+        {
+          "run": "deepseek_pro_highlimits",
+          "model": "deepseek/deepseek-v4-pro",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "error",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 42,
+          "experiments": 21,
+          "charged_tu": 260.0,
+          "score_kind": "nan",
+          "primary_joint_energy": null,
+          "grade_status": null,
+          "provider_reported_cost_usd": 0.2085,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "8b17aff2c8b5dfaa3f325567c70421a5f7a198d20d9431fb1fd3e260d78e1d05",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "deepseek_pro_highlimits_retry",
+          "model": "deepseek/deepseek-v4-pro",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 87,
+          "experiments": 38,
+          "charged_tu": 350.98,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.5532580513525498,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 1.1996,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "2d1704949d1e7c5c830930f548a38ee8b02cf44405aa6700b906c82c12d500ec",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "gpt_terra_highlimits",
+          "model": "openai/gpt-5.6-terra",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 16,
+          "experiments": 25,
+          "charged_tu": 1250.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 4.229568705052527,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.1856,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "81aa9211f184f4aaffa2b795c664dd36366bec57f8c257b2d204abbed1c7a58f",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "qwen122b_highlimits",
+          "model": "Qwen/Qwen3.5-122B-A10B",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "agent_completed",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 17,
+          "experiments": 8,
+          "charged_tu": 195.0,
+          "score_kind": "nan",
+          "primary_joint_energy": null,
+          "grade_status": null,
+          "provider_reported_cost_usd": 0.0434,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "997b235c010d05f0744451bccb5c5639588e8a8cefe497c19d05360bd489b154",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "qwen122b_highlimits_retry",
+          "model": "Qwen/Qwen3.5-122B-A10B",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 66,
+          "experiments": 17,
+          "charged_tu": 240.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 1.2927006253833084,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.1109,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "e475f14491c1484db79145a913f30039ef8bc9e295c545e792a7532e7046e9f9",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "qwen397b_highlimits",
+          "model": "qwen/qwen3.5-397b-a17b",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "temperature": 0.6,
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 36,
+          "experiments": 13,
+          "charged_tu": 520.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.5419051630315852,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 0.4925,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "30f7b03855b789661f28e276793a93f1cfeb0d7fdae186dc7f6861017f2dcde1",
+          "cost_ceiling_usd": 10.0
+        },
+        {
+          "run": "sonnet5_highlimits",
+          "model": "anthropic/claude-sonnet-5",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "dollar_budget",
+          "sampling": {
+            "reasoning_effort": "medium",
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 57,
+          "experiments": 53,
+          "charged_tu": 1186.0,
+          "score_kind": "nan",
+          "primary_joint_energy": null,
+          "grade_status": null,
+          "provider_reported_cost_usd": 6.8497,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "5a15c066ed5255db73fb475518d629bdd8d5567d8b0decb7e7bae8d373c5440b",
+          "cost_ceiling_usd": 11.0323
+        },
+        {
+          "run": "sonnet5_highlimits_retry",
+          "model": "anthropic/claude-sonnet-5",
+          "harness": "bash",
+          "verifiers": {
+            "version": "0.3.0"
+          },
+          "protocol": "r6-verifiers-v1-bash-1-dollar-budget-v1",
+          "stop": "submitted",
+          "sampling": {
+            "reasoning_effort": "medium",
+            "max_tokens": 32768
+          },
+          "native_limits": {
+            "max_turns": 512,
+            "max_input_tokens": 20000000,
+            "max_output_tokens": 1048576
+          },
+          "model_calls": 63,
+          "experiments": 48,
+          "charged_tu": 2380.0,
+          "score_kind": "finite",
+          "primary_joint_energy": 0.5254767393965027,
+          "grade_status": "COMPLETE",
+          "provider_reported_cost_usd": 6.8619,
+          "calls_without_reported_cost": 0,
+          "trace_sha256": "62d0df03fe6d9a897506cb5360d92325433ce4cb944c013c79fd1e0004b03d45",
+          "cost_ceiling_usd": 20.0
+        }
+      ]
+    }
+  ],
+  "controls": {
+    "aggregate": {
+      "zero": {
+        "joint_energy": 1.0845872705112616,
+        "marginal_crps_all_coordinates": 0.5630546163045478
+      },
+      "initial_persistence": {
+        "joint_energy": 0.8271209896216252,
+        "marginal_crps_all_coordinates": 0.2565638988017091
+      },
+      "frozen_initial_field": {
+        "joint_energy": 0.8205374414838396,
+        "marginal_crps_all_coordinates": 0.22619197705892524
+      },
+      "physics_25pct": {
+        "joint_energy": 0.6152277441097521,
+        "marginal_crps_all_coordinates": 0.16961618171174037
+      },
+      "physics_50pct": {
+        "joint_energy": 0.40992201602944583,
+        "marginal_crps_all_coordinates": 0.11304293439738852
+      },
+      "physics_75pct": {
+        "joint_energy": 0.20463214085710754,
+        "marginal_crps_all_coordinates": 0.05647719900190065
+      },
+      "native_physics": {
+        "joint_energy": 0.0017754838002445362,
+        "marginal_crps_all_coordinates": 0.00037282203753287256
+      },
+      "ignore_later_pulses": {
+        "joint_energy": 0.10418304442699827,
+        "marginal_crps_all_coordinates": 0.010777625694318347
+      },
+      "ignore_probe_moves": {
+        "joint_energy": 0.26539210865663915,
+        "marginal_crps_all_coordinates": 0.09567361525670495
+      },
+      "five_unit_time_grid": {
+        "joint_energy": 0.08265350635068562,
+        "marginal_crps_all_coordinates": 0.017510356328804638
+      },
+      "spatially_flat": {
+        "joint_energy": 0.3380931491151655,
+        "marginal_crps_all_coordinates": 0.18441421827476484
+      },
+      "ensemble_mean": {
+        "joint_energy": 0.00217737097041959,
+        "marginal_crps_all_coordinates": 0.0004512129311560606
+      },
+      "spread_x100": {
+        "joint_energy": 0.04747207925469124,
+        "marginal_crps_all_coordinates": 0.01043733491172249
+      }
+    },
+    "prediction_members": 4,
+    "truth_members_per_case": 2,
+    "scoring": "Equal group weights within each case; equal case weights across 15 cases; lower is better. Fixed original scales."
+  },
+  "control_source": {
+    "path": "probes/blobs/agentenv/round6/worked_example/p4g2_044/predictor_sanity/results.json",
+    "sha256": "d00efb70ae78653d5bdc5f6297e314a559847b2d46ee3c2410dffa21805bf70c"
+  }
+}

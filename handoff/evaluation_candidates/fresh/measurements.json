@@ -1,0 +1,468 @@
+{
+  "package_integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 52,
+    "locked_at": "2026-09-13T16:02:53.159338+00:00",
+    "version": "0.3.5"
+  },
+  "verified_archived_sources": {
+    "generators/physim/characterize.py": "414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+    "probes/blobs/l0/complexity/metrics_v3.py": "2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+    "packages/blobkit/blobkit/soup/sim_cpu.py": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+    "packages/blobkit/blobkit/genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "packages/blobkit/blobkit/metrics_v1.py": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
+    "packages/blobkit/blobkit/metrics_v2.py": "18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988",
+    "generators/physim/rotor_check.py": "4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+    "environments/physim/physim/devices.py": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+    "generators/physim/probe_candidates.py": "7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26"
+  },
+  "simulations": [
+    {
+      "world": "bf",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.9989609310058188,
+      "organisms": 12.0,
+      "C9": 0.5194,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0235443115234375
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "bf",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.9987531172069826,
+      "organisms": 12.0,
+      "C9": 0.3359,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0235443115234375
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "ds6_000",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.8091149773071105,
+      "organisms": 146.0,
+      "C9": 0.6135,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.1689910888671875,
+        0.242950439453125
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "ds6_000",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.8158004991165273,
+      "organisms": 148.0,
+      "C9": 0.6082,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.171539306640625,
+        0.240753173828125
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "m0",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.0,
+      "organisms": 12.0,
+      "C9": 0.0,
+      "spatial_class": "structured",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0194549560546875
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "m0",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.0,
+      "organisms": 12.0,
+      "C9": 0.0,
+      "spatial_class": "structured",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0194244384765625
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "m4",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 1.0,
+      "organisms": 12.0,
+      "C9": 0.3715,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0245361328125
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "m4",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.9995843724023276,
+      "organisms": 12.0,
+      "C9": 0.4317,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.02435302734375
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "mv3",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.5389650872817955,
+      "organisms": 8.0,
+      "C9": 0.5778,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0082244873046875,
+        0.00567626953125,
+        0.0
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "mv3",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.5293017456359103,
+      "organisms": 8.0,
+      "C9": 0.6158,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0081024169921875,
+        0.0054473876953125,
+        0.0
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "p4g2_044",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.9082474226804124,
+      "organisms": 30.0,
+      "C9": 0.0,
+      "spatial_class": "mixed",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.01934814453125,
+        0.2945709228515625,
+        0.8513641357421875,
+        0.4661407470703125
+      ],
+      "box_limit": true,
+      "extension_triggers": [
+        "a_mem"
+      ]
+    },
+    {
+      "world": "p4g2_044",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.842403244887612,
+      "organisms": 37.0,
+      "C9": 0.0,
+      "spatial_class": "mixed",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.13763427734375,
+        0.1461639404296875,
+        0.7701416015625,
+        0.411773681640625
+      ],
+      "box_limit": true,
+      "extension_triggers": [
+        "a_mem",
+        "b_org"
+      ]
+    },
+    {
+      "world": "xv",
+      "seed": 11001,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.08935993349958438,
+      "organisms": 12.0,
+      "C9": 0.1271,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0118865966796875,
+        0.01190185546875
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    },
+    {
+      "world": "xv",
+      "seed": 11002,
+      "status": "ok",
+      "horizon": 2500.0,
+      "moving_fraction": 0.1128428927680798,
+      "organisms": 12.0,
+      "C9": 0.2023,
+      "spatial_class": "economy",
+      "partial": false,
+      "v3_weight": 0.4,
+      "occupancy": [
+        0.0119171142578125,
+        0.0119171142578125
+      ],
+      "box_limit": false,
+      "extension_triggers": []
+    }
+  ],
+  "responses": [
+    {
+      "preparation": "bf_s11001",
+      "trajectories": 12,
+      "baseline_drift_rms": 0.6129133983833246,
+      "independent_difference_rms": 0.005734805288258851,
+      "pulse_005_rms": 0.08398896714423758,
+      "pulse_03_rms": 0.48967801058959676,
+      "memory_causal_test": {
+        "activator_effect_mean": 0.3405725060603939,
+        "activator_effect_range": [
+          0.3367396694329125,
+          0.34365037763552436
+        ],
+        "independent_difference_mean": 0.010635437873910336,
+        "ratio_of_means": 32.0224244735469
+      }
+    },
+    {
+      "preparation": "bf_s11002",
+      "trajectories": 12,
+      "baseline_drift_rms": 0.6391096879341936,
+      "independent_difference_rms": 0.003422543815981983,
+      "pulse_005_rms": 0.035124382511504675,
+      "pulse_03_rms": 0.6341889090499758,
+      "memory_causal_test": {
+        "activator_effect_mean": 0.06926797129234218,
+        "activator_effect_range": [
+          0.06900621443049017,
+          0.06951378290614207
+        ],
+        "independent_difference_mean": 0.006160469672436515,
+        "ratio_of_means": 11.243943234111587
+      }
+    },
+    {
+      "preparation": "ds6_000_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.3492869280038496,
+      "independent_difference_rms": 0.0022588419487450757,
+      "pulse_005_rms": 0.032612350073180675,
+      "pulse_03_rms": 0.2192825102844845
+    },
+    {
+      "preparation": "ds6_000_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.2940673236643531,
+      "independent_difference_rms": 0.03546042491006312,
+      "pulse_005_rms": 0.19905770053786856,
+      "pulse_03_rms": 0.34382831918513285
+    },
+    {
+      "preparation": "m0_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.0014927561528215534,
+      "independent_difference_rms": 0.001657000170558163,
+      "pulse_005_rms": 0.033138134151481986,
+      "pulse_03_rms": 0.5761062950567329
+    },
+    {
+      "preparation": "m0_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.0034049843259515793,
+      "independent_difference_rms": 0.0015029243832441561,
+      "pulse_005_rms": 0.03086578703518611,
+      "pulse_03_rms": 0.5761127495118217
+    },
+    {
+      "preparation": "m4_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.6780754913259067,
+      "independent_difference_rms": 0.003526559479429611,
+      "pulse_005_rms": 0.07225091972658344,
+      "pulse_03_rms": 0.28277710020075447
+    },
+    {
+      "preparation": "m4_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.6516059386566838,
+      "independent_difference_rms": 0.001949594637213957,
+      "pulse_005_rms": 0.01002535555514549,
+      "pulse_03_rms": 0.20916395026245724
+    },
+    {
+      "preparation": "mv3_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.3887101425490125,
+      "independent_difference_rms": 0.00082770078644103,
+      "pulse_005_rms": 0.020781131849763903,
+      "pulse_03_rms": 0.04584447281382883
+    },
+    {
+      "preparation": "mv3_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.3955012835210041,
+      "independent_difference_rms": 0.0013474067460098962,
+      "pulse_005_rms": 0.007402763863344375,
+      "pulse_03_rms": 0.07241024050543701
+    },
+    {
+      "preparation": "p4g2_044_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.5932440277310874,
+      "independent_difference_rms": 0.0007163736262313972,
+      "pulse_005_rms": 0.011982519993784635,
+      "pulse_03_rms": 0.10040567354881709
+    },
+    {
+      "preparation": "p4g2_044_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.0870352262397784,
+      "independent_difference_rms": 0.0006053925835519529,
+      "pulse_005_rms": 0.0010578096113137189,
+      "pulse_03_rms": 0.009728375125131774
+    },
+    {
+      "preparation": "xv_pair_coupled_s12001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.495190501929374,
+      "independent_difference_rms": 0.0028969802182654465,
+      "pulse_005_rms": 0.017807766505107223,
+      "pulse_03_rms": 0.3463335050917083
+    },
+    {
+      "preparation": "xv_pair_coupled_s12002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.5038791857910935,
+      "independent_difference_rms": 0.0061951093303784935,
+      "pulse_005_rms": 0.059465789552182284,
+      "pulse_03_rms": 0.392515107011957
+    },
+    {
+      "preparation": "xv_s11001",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.3000712942779471,
+      "independent_difference_rms": 0.006724426261890782,
+      "pulse_005_rms": 0.18321623149974745,
+      "pulse_03_rms": 0.4115801744291496
+    },
+    {
+      "preparation": "xv_s11002",
+      "trajectories": 9,
+      "baseline_drift_rms": 0.37595031133648815,
+      "independent_difference_rms": 0.004744204667652934,
+      "pulse_005_rms": 0.15368734973903506,
+      "pulse_03_rms": 0.40061988905649476
+    }
+  ],
+  "rotations": [
+    {
+      "coupled": true,
+      "seed": 12001,
+      "intact_pair_frames": 501,
+      "total_frames": 501,
+      "angular_velocity_rad_per_tu": -0.011108561741939143,
+      "late_turns": -1.765783982384138,
+      "late_separation_mean": 8.441596498999171,
+      "late_separation_std": 0.010662877548388093,
+      "angle_fit_rms_rad": 0.0033493613956743534,
+      "wall_seconds": 562.4077462079003
+    },
+    {
+      "coupled": true,
+      "seed": 12002,
+      "intact_pair_frames": 501,
+      "total_frames": 501,
+      "angular_velocity_rad_per_tu": 0.011073807418333274,
+      "late_turns": 1.762277094643315,
+      "late_separation_mean": 8.440043416727404,
+      "late_separation_std": 0.009736600652076856,
+      "angle_fit_rms_rad": 0.002962553871136186,
+      "wall_seconds": 561.5912011666223
+    },
+    {
+      "coupled": false,
+      "seed": 12001,
+      "intact_pair_frames": 501,
+      "total_frames": 501,
+      "angular_velocity_rad_per_tu": -2.1778288616885996e-05,
+      "late_turns": -0.007400049025648798,
+      "late_separation_mean": 8.731661937337435,
+      "late_separation_std": 0.25297998854226417,
+      "angle_fit_rms_rad": 0.006820251656847662,
+      "wall_seconds": 512.9522123341449
+    }
+  ],
+  "trajectory_count": 150,
+  "checks": "Genomes match preserved registry records (rotor control differs only in cross-drive and name); all fields finite f32; fixed horizons; source hashes match archived code; sensor shapes; paired initial states; distinct independent-noise continuations; all three rotors start from identical fields.",
+  "complete_battery": true
+}

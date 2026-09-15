@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "physim_r6": "/tmp/physim-clean-install-20260913/venv/lib/python3.13/site-packages/physim_r6/taskset.py",
+  "bundle": "/private/tmp/physim-clean-install-20260913/bundle",
+  "protocol": "r6-verifiers-v1-bash-1",
+  "usage": {
+    "experiments": 0,
+    "max_experiments": 20,
+    "charged_tu": 0.0,
+    "max_total_tu": 750.0
+  },
+  "harness": "stock bash",
+  "no_model_calls": true,
+  "hub_client": "Client"
+}

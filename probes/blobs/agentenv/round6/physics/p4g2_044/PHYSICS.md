@@ -1,5 +1,7 @@
 # p4g2_044 / seed 928: privileged physics reconnaissance
 
+This is the original cache-only dossier. For subsequent causal/noise experiments and executable R6 tasks, see the [current worked example](../../worked_example/README.md).
+
 **Status: complete, bounded first pass. Private evaluator material.**
 This is a per-world coverage map, not an agent syllabus and not a decision to retain L1–L4.
 No simulations, new seeds, ensembles, model calls, or evaluations were run.

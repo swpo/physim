@@ -1,0 +1,5 @@
+# Content-addressed records and archived artifacts must retain their exact bytes.
+registry/** -text
+registry/artifact/*.bin -diff
+# Published numerical manifests bind these library source bytes.
+packages/blobkit/blobkit/** -text

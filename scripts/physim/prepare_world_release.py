@@ -73,6 +73,7 @@ def stage_release(*, registry_root, bundle_paths, output, release):
     output.mkdir(parents=True, exist_ok=False)
     catalog = stage_registry(registry.root, output / "registry")
     shutil.copyfile(ROOT / "registry/README.md", output / "registry/README.md")
+    shutil.copyfile(ROOT / "registry/CONTRIBUTING.md", output / "CONTRIBUTING.md")
     entries = []
     used = set()
     for row in sorted(catalog["worlds"], key=lambda world: (world["name"], world["id"])):
@@ -145,6 +146,7 @@ def stage_release(*, registry_root, bundle_paths, output, release):
     sources = [
         Path(__file__).resolve(),
         Path(__file__).with_name("worlds_dataset_card.md"),
+        ROOT / "registry/CONTRIBUTING.md",
         ROOT / "generators/physim/export_registry_catalog.py",
         ROOT / "generators/physim/register_evaluation.py",
     ]

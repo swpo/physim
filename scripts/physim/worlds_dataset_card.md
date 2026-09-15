@@ -70,6 +70,14 @@ definition and available history are archived. `eval-ready` means an exact
 preparation and suite have been validated and packaged for evaluation. Availability
 does not automatically select a world when running Physim.
 
+## Contributing worlds
+
+See the [contribution guide](CONTRIBUTING.md) for packaging a world with Blobkit
+and submitting an HF pull request without main-branch write access. Preserved
+worlds need a definition and available provenance; eval-ready preparations need
+the additional suite and validation evidence. Maintainers review submissions
+and regenerate the catalogs as part of publication.
+
 ## Evaluation preparations
 
 | Preparation | Public ports | Grading programs | Files |

@@ -1,0 +1,167 @@
+{
+  "status": "staged-not-published",
+  "directory": "/Users/spoho/Documents/prime/test/physim/dist/hf-worlds-candidate",
+  "entry": {
+    "world_name": "p4g2_044",
+    "description": "Localized structures, stripes, and coupled defects in twelve spatial fields.",
+    "bundle_path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "status": "local-reference-candidate",
+    "exposure": "public-reference-development",
+    "simulation_available": true,
+    "preparation_reproducible": true,
+    "prediction_suite_available": true,
+    "public_release_available": false,
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "33650125665f4a3792164a74b1d95cbce2097609d4e9cef2dc8e9fefc75dfbf9",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "profiles": {
+      "simulation": 2751237,
+      "evaluation": 3732420
+    },
+    "manifest_bytes": 8545,
+    "case_count": 15,
+    "truth_members": 2,
+    "forecast_members": 64,
+    "code_versions": {
+      "physim": "0.12.0",
+      "blobkit": "0.3.5"
+    },
+    "licenses": {
+      "code": "LicenseRef-Pending",
+      "data": "LicenseRef-Pending"
+    }
+  },
+  "total_bytes": 3744769,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 42,
+      "sha256": "1732fba3f643f24b404c53c5680defa32439f299010b437060cf8fb8291d0d62"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2566,
+      "sha256": "7f8cf1afe7e159955bf8d1a4e94b0a0bc25dd737751233afcf925287bce26dc4"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/apparatus.json",
+      "bytes": 2227,
+      "sha256": "33c132cff0c450dced24421472db8a8bcce45488f0c4185979ab970178a5e390"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/checks.json",
+      "bytes": 2964,
+      "sha256": "0a0bd2fc91cb839b9bd6fd931fdf53088b0fcb477115f3bafd6f89e465762a68"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/manifest.json",
+      "bytes": 8545,
+      "sha256": "33650125665f4a3792164a74b1d95cbce2097609d4e9cef2dc8e9fefc75dfbf9"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/preparation.npz",
+      "bytes": 2743196,
+      "sha256": "6898298af7bf49fbda7749a27d537dc5e1da32b8acd80a8eeabc277d639dc0c5"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/suite.json",
+      "bytes": 143551,
+      "sha256": "cffe457a50b33a0843bef3436610fb78bca3f10a824c93994dbfe5608fd84588"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c001.npz",
+      "bytes": 97637,
+      "sha256": "37e2c7c3cefc6b593983218b1bfa136d5acf6fd60aa7be4abebf7a51e05b58b8"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c002.npz",
+      "bytes": 97359,
+      "sha256": "9ce9c3547030b00b78dcfb66abf356df367409e9f20bc0888dfc4802bbbe3bb4"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c003.npz",
+      "bytes": 97393,
+      "sha256": "bc18ff9a2acf68ae6998c42852f2a44ea5cf1c8f597ea5867e0dbab24bf3882a"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c004.npz",
+      "bytes": 97372,
+      "sha256": "ea14ff2188f1ba2c6ddadcbd98d2dce41fdf0917a0c324161b1a45fa172e805e"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c005.npz",
+      "bytes": 97403,
+      "sha256": "a8d9c12982ab9f8332987dd0d4a465b05a6dc8051c656674d5cdafd551ae9eea"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c006.npz",
+      "bytes": 68621,
+      "sha256": "731b0c0b95b16434f982e04d6b623aaf49211f8ed9cb96407fd4752c6d9e3a13"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c007.npz",
+      "bytes": 68721,
+      "sha256": "460d990952dce96e6acbdd882169f545361e5f873ea952460c99458bdb945b4a"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c008.npz",
+      "bytes": 97385,
+      "sha256": "982a7027f3d6ad7f6e47746e6fb5ffa509c336aa431c54c7bb85a644d30be5f4"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c009.npz",
+      "bytes": 97384,
+      "sha256": "560a20de1b63b8a7ef338c6ebd2da96163e848f0f8be08477d32dc10c230f1ba"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c113.npz",
+      "bytes": 3075,
+      "sha256": "a3c6ee7127b2d2c02e26f83b6465718f3c2d8089c34fdec85b04c8f5fe70f1a4"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c129.npz",
+      "bytes": 3043,
+      "sha256": "30f05d3afb806092a387ceb820a66d7226867c442ac48ed66303c3b7dc7b379d"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c146.npz",
+      "bytes": 3064,
+      "sha256": "e79540e359086ceed505a356703319e2c2b013fe5c5bbb1a654c8b94162f3dad"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c166.npz",
+      "bytes": 3067,
+      "sha256": "fb09cec12b70b07703b2666c936182f9c78de49632fb1d9e758a47a8c825db2b"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c169.npz",
+      "bytes": 3047,
+      "sha256": "0ade949229a0f02d0c4af3eac16df582f3a5691088b9afda41f795d8cf5e48c1"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/truth/c173.npz",
+      "bytes": 3061,
+      "sha256": "771fc4bdf605e248996479ccfbec45bb0289b8412dcc82310f2ddaef9b9e13f2"
+    },
+    {
+      "path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/world.json",
+      "bytes": 2850,
+      "sha256": "3493101590a98492a9aa9ae8384c42577fcf99d2d970d29a15ef023d5e6a70d8"
+    },
+    {
+      "path": "catalog.jsonl",
+      "bytes": 1196,
+      "sha256": "de122d75623edee6878cc37e05bf7287edf11280bc485eeabbdccbc3aa723c7f"
+    }
+  ],
+  "pending": [
+    "code license",
+    "data license",
+    "Hugging Face namespace",
+    "committed code release revision"
+  ]
+}

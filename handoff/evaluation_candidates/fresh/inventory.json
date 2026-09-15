@@ -1,0 +1,892 @@
+[
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/field_summary.json",
+    "bytes": 3261,
+    "sha256": "04e4442328ee640513af69344bb6b0928d474cfc1256ac1eb7174e29632fdbbb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/fields.npz",
+    "bytes": 9661594,
+    "sha256": "965215e278e61ac91a2611ab20b5287be833f7d73a88797a971461af50e5901c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/final_state.npz",
+    "bytes": 903298,
+    "sha256": "c40ffe28cebe33ef43f9e8f446672e6e33b1e93ce1e7ec869a8e03bc3a58b760"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/genome.json",
+    "bytes": 883,
+    "sha256": "d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/metrics.json",
+    "bytes": 6431,
+    "sha256": "74d66590dc14126472f86182f5292a9c6d82ee47527fb6764f0c37482a6e7bd2"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/protocol.json",
+    "bytes": 1253,
+    "sha256": "726dd54ff1252041b0f3134802a6126654d11fa35e4579d85726b1e76f23de47"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/record.json",
+    "bytes": 8389749,
+    "sha256": "4733ab568c8d9431430e033e08978172b0847db02bca4671a6d13b00f75a7e29"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/responses/final_fields.npz",
+    "bytes": 3612992,
+    "sha256": "3041df5a10e3aada5003f08bfe46148ba1796b3fe9bb692836ef6876852a1187"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/responses/samples.npz",
+    "bytes": 12116,
+    "sha256": "ed8a6e32d7e93f71bd0d2b8e59760f1b9cefa9077f765d3b940bcb1742d0a192"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/responses/summary.json",
+    "bytes": 10323,
+    "sha256": "d52b0e2f58eca210b8205439ba64a24dc974f92ad3edf33501a33b0cb2eb3261"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11001/summary.json",
+    "bytes": 2019,
+    "sha256": "196e8474f11f8701b21d050f69402facc8473083bb9e03d836e24a2c27f8d259"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/field_summary.json",
+    "bytes": 3266,
+    "sha256": "2bd70be5336315c3651c55653e65b08fad93cd50b674d962e70aa3b9faf56405"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/fields.npz",
+    "bytes": 9667566,
+    "sha256": "3defdf7fdcb6d16ca459b922212625dce9358f78ecc9533d211c4002ba7fcc89"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/final_state.npz",
+    "bytes": 904066,
+    "sha256": "46a4f4ffb58760a54b13945eee8c25188d3e465a1315c11b0c02c8541604993a"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/genome.json",
+    "bytes": 883,
+    "sha256": "d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/metrics.json",
+    "bytes": 6437,
+    "sha256": "0ac1b7f1a017ed9370499fb248f54de19b419c786d012d59cbf4462c06cf0d03"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/protocol.json",
+    "bytes": 1253,
+    "sha256": "6c2a42e7858ef6ac523492fdc8e00f499595bca41d6993c9e9f680bd9b16f204"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/record.json",
+    "bytes": 8388799,
+    "sha256": "b040a6d150deebbcb4720fdde13ad552e215f50e89af6723c87f50227c71c994"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/responses/final_fields.npz",
+    "bytes": 3621166,
+    "sha256": "7679f768adff63eb37b5e0803229b9ebd59370d49740443975cb69179bf46192"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/responses/samples.npz",
+    "bytes": 12325,
+    "sha256": "d614bcb062ae874244bafaf4aa546b7fc7c1400071e3dee5b202599c3e108964"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/responses/summary.json",
+    "bytes": 10374,
+    "sha256": "78fe84d58896c3bc1f7e49469928047edc217036533aa74825003445475b23f4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/bf_s11002/summary.json",
+    "bytes": 2028,
+    "sha256": "30563dd32fad109ea2e4d7dce35d495a95f8746687593b9e661244d404014b62"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/field_summary.json",
+    "bytes": 5831,
+    "sha256": "a4ef120302ab0b5e41bcf58911556ff43f2527c9dbedf9b266f2d6bc98b0fe24"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/fields.npz",
+    "bytes": 20012587,
+    "sha256": "cdcac27f706a7f3a8af1c31b44293e2cb50740705da93cc99e08adc7230036a2"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/final_state.npz",
+    "bytes": 1884609,
+    "sha256": "12fc28e63422c868eb7e4afe592f8397463cb85f29c17d3f1eb40a3e6160bab6"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/genome.json",
+    "bytes": 1889,
+    "sha256": "cc029a6c2c8f9117d4d4bcae9805dcd6a87d299c8e8a19be04ad5c2e69085788"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/metrics.json",
+    "bytes": 8748,
+    "sha256": "7adf1b08460d45e80f62f0c9475aa771d72292d1cdeb870613d43ac5682592fa"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/protocol.json",
+    "bytes": 1258,
+    "sha256": "54d66ac556a6df8fdaff7535a4fb5bff9923fd1eb5dcf30450868e0a85c580d4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/record.json",
+    "bytes": 24179284,
+    "sha256": "a49c5cc4e654f2111fc2ecaea4ee95ca4a6a79afd562c52380ff80082f725404"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/responses/final_fields.npz",
+    "bytes": 5652592,
+    "sha256": "0686aa2553010dfda49162d78477d3447316c85284e1d6f7fc4ecc2f8307b456"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/responses/samples.npz",
+    "bytes": 17371,
+    "sha256": "9f0580ec1f3efd4bb1c54a7a7abe8967e25995fbe7f7a5b49b1a9c5dccc0bd6c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/responses/summary.json",
+    "bytes": 11210,
+    "sha256": "0967415c198ec37af6e727ad74ba7cfc21a35c1edd2f506b9ebe5a3800ba2ae0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11001/summary.json",
+    "bytes": 2153,
+    "sha256": "d8f4f26af20507489ae4219766321a321f46c2f5f38ebfe4d4fd1055fc9f60cf"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/field_summary.json",
+    "bytes": 5839,
+    "sha256": "2fccaea875207f05b6d2438dc22159d6b4fd873723048cb9785916c3ca3d0fb5"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/fields.npz",
+    "bytes": 19958209,
+    "sha256": "d30bb8d7dec8d1d6d2f49521c2eb433f4b335e9d6da667ca974b2651c53e4f70"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/final_state.npz",
+    "bytes": 1884361,
+    "sha256": "e72efc7fca838bae85d1d526027007ad76e723656df1fe3e177a263ba2ee0b13"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/genome.json",
+    "bytes": 1889,
+    "sha256": "cc029a6c2c8f9117d4d4bcae9805dcd6a87d299c8e8a19be04ad5c2e69085788"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/metrics.json",
+    "bytes": 8857,
+    "sha256": "fce3e4df1f147775518d63f1206f0582795f49ddd72a816631a7e07fbd76d307"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/protocol.json",
+    "bytes": 1258,
+    "sha256": "3d9ff29b399c22b66e9eb970c715c267051a4c761c9735cb0a76d3777a51f281"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/record.json",
+    "bytes": 24491110,
+    "sha256": "e4865057c2cc7e9c7a385b6009712ce376f2f7ca1c788c874bccf286de8a4dc7"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/responses/final_fields.npz",
+    "bytes": 5653350,
+    "sha256": "7db227494c606fd16f68e413ae736ab600e35d94c95c500790ab9813bd86ac95"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/responses/samples.npz",
+    "bytes": 17613,
+    "sha256": "17057637123d8d407923524a6d821d8220d1230e90db9ecacc3a2131f9e89c77"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/responses/summary.json",
+    "bytes": 11202,
+    "sha256": "7759475f732453ec98de31476aac6b149513ef5235269f27019679e88fe598ad"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/ds6_000_s11002/summary.json",
+    "bytes": 2148,
+    "sha256": "a91689e55eb37a3c83e4d91b53f9c1fd7ed920e8b742a95bb186e314ea8d552e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/field_summary.json",
+    "bytes": 2677,
+    "sha256": "7936f696aacc722994b6cf1c1c2757f9d1f355735443fd8f2c1429485c237b25"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/fields.npz",
+    "bytes": 7373249,
+    "sha256": "a387623299f18deec1bec6fa6ce5950766ebab98b5addc9bae611ac5921f5627"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/final_state.npz",
+    "bytes": 674668,
+    "sha256": "8944f945c5ab8822e61ae4271d6d025006062686566000b2ae9c95dbbde283cd"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/genome.json",
+    "bytes": 740,
+    "sha256": "e2bb4efd9cab953f524e4cd5c0a8a514b6d0dc01c8e3e71deb36d4a7a49a97f8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/metrics.json",
+    "bytes": 4964,
+    "sha256": "5e0dcc0bcc92cbd405d1aeff88e77758b8ddcc36932fd5edbca1c729fac34de2"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/protocol.json",
+    "bytes": 1253,
+    "sha256": "ed0555c0968006c7a2072b821086584b1e99bf288af760e737e12d7b237f1d15"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/record.json",
+    "bytes": 4908591,
+    "sha256": "4fa20aaf3621268ffc88738ce9b27de53c50c57406272cd0b0a2d1fffc197b4e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/responses/final_fields.npz",
+    "bytes": 2023084,
+    "sha256": "6c79af7fe1350455a39c0923bd9baa61efc13dc934e6c6ca465437964b81c88f"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/responses/samples.npz",
+    "bytes": 6989,
+    "sha256": "eaffc930a86703a64938b81a01eeae9941f524d902f3c42f1e9531de7c9bc94b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/responses/summary.json",
+    "bytes": 6857,
+    "sha256": "f7418d8f0c6d380a425368ad83597ddd58d204761492594169ddcd7f25de7955"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11001/summary.json",
+    "bytes": 1885,
+    "sha256": "2a2c4bea894bed172a36376f79279a6bcecdab4d09562b789024927ffcac704a"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/field_summary.json",
+    "bytes": 2652,
+    "sha256": "dcc3b6f7bf2a6a02eec536effc8f74eab6d81db0b6a79304b39dcbeea8df88b9"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/fields.npz",
+    "bytes": 7400371,
+    "sha256": "0d2a679cac6ce30f9004d5c003709356d682ba125ee6aa768f64ffa3e9ff99eb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/final_state.npz",
+    "bytes": 676965,
+    "sha256": "df46357c9dcff563806839367fad6ced0c34f39848efd598fd295d994ac9898f"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/genome.json",
+    "bytes": 740,
+    "sha256": "e2bb4efd9cab953f524e4cd5c0a8a514b6d0dc01c8e3e71deb36d4a7a49a97f8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/metrics.json",
+    "bytes": 4972,
+    "sha256": "439b87e055dac4fc85c3a4e296b2d22c366bf7bd4110ab8a7ddcaf5f9eb8b014"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/protocol.json",
+    "bytes": 1253,
+    "sha256": "77bbb56d84f05b0630d5d68d179882f15a3a15fa29e99b6c6170fbba596d4111"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/record.json",
+    "bytes": 4907227,
+    "sha256": "83aa83166d849281a4c29be8bb11351cb47e9434d14d235573134d8f06895dd9"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/responses/final_fields.npz",
+    "bytes": 2033370,
+    "sha256": "7b15093f729c9a98ef7f8a3a8f00b4a02b8b36ec836aaf78c266143893d83320"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/responses/samples.npz",
+    "bytes": 6828,
+    "sha256": "e2a8aabb1a1f7fb26af8ff8b4bc9d839969cd1992bc6419ffda14a96f7dfe2ff"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/responses/summary.json",
+    "bytes": 6853,
+    "sha256": "ace12c1685d1ecf338cf1badada197ab4be47645e9a13421b434fb065ea1f4c4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m0_s11002/summary.json",
+    "bytes": 1888,
+    "sha256": "c414952b00fc2a76aace8078ec48a0dcf26e1a52a25eafab08f2a4e45b0b4b15"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/field_summary.json",
+    "bytes": 2659,
+    "sha256": "4629e12e61c9cc31694d5c1b41fa4be18b7b388b3317e5edf78665bcc1ea6fb3"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/fields.npz",
+    "bytes": 7386558,
+    "sha256": "53a75e27dab2612fd424ffb4a4c014d7c62aa6dcd9bae188ed26fd015cf227b5"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/final_state.npz",
+    "bytes": 674637,
+    "sha256": "04c82abdd38490de30e67ae3d15208e61d3372b74c297701beeda95dc3419381"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/genome.json",
+    "bytes": 755,
+    "sha256": "84381da160a07f5b4287b91c74c66a13741081213d97476c3a0845939846d1bf"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/metrics.json",
+    "bytes": 5500,
+    "sha256": "653bf87ae9155a16b8350ce1426db9020858e990698f9e1c85223d76bb985cbe"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/protocol.json",
+    "bytes": 1253,
+    "sha256": "ab3a48665e7a5fc6dfa425c3bb132632ca2197ed963f8e5b954ed1f883a749ae"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/record.json",
+    "bytes": 4908604,
+    "sha256": "5293debd0072b56d2ac9cea53a791cd1d10d8f6a52b56a74dbaa0abf5c1be146"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/responses/final_fields.npz",
+    "bytes": 2018043,
+    "sha256": "3fda929dee20fb949f3cf85858bcda3597ddcb4b8b9716202a7a39679c6af1ab"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/responses/samples.npz",
+    "bytes": 7277,
+    "sha256": "5479f7220ea5fb3ebcd706782ac214e67f6e42574732bb098692cb904285e5b6"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/responses/summary.json",
+    "bytes": 6811,
+    "sha256": "907bee3d306c822fe8019b23961230be814e27abcf45801a42246a3549bac918"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11001/summary.json",
+    "bytes": 1958,
+    "sha256": "4c61f9bd8e6a9261c0d266e2a83f7e29f428cd6cb96f5ec4d4301671e3a24e7b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/field_summary.json",
+    "bytes": 2664,
+    "sha256": "4bb8ae760bfc7f4a2a8f4081c2b1fed95a118a938d1f0710b3c3f8ed32169d79"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/fields.npz",
+    "bytes": 7370379,
+    "sha256": "e47d1a6d3097776f246e05bbb52ce0f8f5e3a9ab0e5cbff3e0abbfbeb13bccb0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/final_state.npz",
+    "bytes": 672883,
+    "sha256": "cf1a82ecd18c6d2f3dccaa14d94a0cdf87bd6f06356507d3b0842f8f0cf5968a"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/genome.json",
+    "bytes": 755,
+    "sha256": "84381da160a07f5b4287b91c74c66a13741081213d97476c3a0845939846d1bf"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/metrics.json",
+    "bytes": 5526,
+    "sha256": "9113ca415308bddcdbba519b9daf7d95ed67906a6dfa5a07dce20f06746b4021"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/protocol.json",
+    "bytes": 1253,
+    "sha256": "e046af6a43e3273cce9d5ecb1ada18afaba9ac52d4964b44d595e6ac91ba5de0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/record.json",
+    "bytes": 4908211,
+    "sha256": "e0dd6227fb6d01b9af6781a0684eab599ec6fbd4008da4465e2b08d25dc925b8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/responses/final_fields.npz",
+    "bytes": 2020428,
+    "sha256": "78458e8501cd1c6b1271a6d59bea28c63495c7b100781a3a9be6aba37f14f389"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/responses/samples.npz",
+    "bytes": 7285,
+    "sha256": "3ffc468be55c0562f065a861687f9db207c041b2c42e60b6e5c2bc634de56682"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/responses/summary.json",
+    "bytes": 6846,
+    "sha256": "01934defffc2ac6ce57dc4b65e0195ea9d5c88a34cb7c88805a1326bcc346616"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/m4_s11002/summary.json",
+    "bytes": 1976,
+    "sha256": "c59616b2fb874c75b3e94637a9129d64592a2080fa7679d451560139c49c91da"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/field_summary.json",
+    "bytes": 6045,
+    "sha256": "4f2998bcfa9ee28489b5ef4ada3a1beee9cd0f6658a1a96d7ce110a0a557d295"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/fields.npz",
+    "bytes": 18038123,
+    "sha256": "7d5ec37137c23480b7afed3377cdd0cf8e202546d97bc14fe5bbcd6f54d9333b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/final_state.npz",
+    "bytes": 1700864,
+    "sha256": "00ac538fd754b892812b29395810300a456243838b6978885e0556c10e54434b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/genome.json",
+    "bytes": 1900,
+    "sha256": "32d26d23aa72b19bf8e83683eb19c4cccf4db4213349fc07c6b7171141f69fc4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/metrics.json",
+    "bytes": 7562,
+    "sha256": "11a59e77325c9d7b486391663f1947211f93ae6cb760625795805347c926ce14"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/protocol.json",
+    "bytes": 1268,
+    "sha256": "94d796c3953c4ba762e591a3798fb5c00d8eafaab8e6a0ffc40ac991d1c3a670"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/record.json",
+    "bytes": 12698656,
+    "sha256": "7d7fb809f3aa8f6e8b9b5b3e2b7cae8b811969b0bfd2881b8411ebb413b9729e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/responses/final_fields.npz",
+    "bytes": 5063562,
+    "sha256": "a5b267f5b2e000200e370bfe1485b1f98ca44f1ca3d486e83795af8e87ab9b3a"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/responses/samples.npz",
+    "bytes": 17793,
+    "sha256": "bf82e17c62fb9836065314e38b07fc6a99c227b1629f973c4d149c10c1ccad6f"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/responses/summary.json",
+    "bytes": 11073,
+    "sha256": "7cb95aae8e2f98a4dcd738ce267e8cf225265877f53ef25147e70eb38b9673aa"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11001/summary.json",
+    "bytes": 2074,
+    "sha256": "b830fb508b31d0c813f0b428f35e907045136fcdf6470dc8350f97fc06a452c7"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/field_summary.json",
+    "bytes": 6046,
+    "sha256": "620438bfb427ebcd914236fdb6c358159e5e1740d968d17c20d297e0cbcdb0e8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/fields.npz",
+    "bytes": 18026137,
+    "sha256": "3dfbb236b3b1f3c65f486d10aa9e0fab09854fa07902a02ada33df05c38f4245"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/final_state.npz",
+    "bytes": 1693534,
+    "sha256": "b1f9f3e3899c0fb673999e864ec8f8e56dc6d8cc2ac0be9c0c71a9266512ecea"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/genome.json",
+    "bytes": 1900,
+    "sha256": "32d26d23aa72b19bf8e83683eb19c4cccf4db4213349fc07c6b7171141f69fc4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/metrics.json",
+    "bytes": 7602,
+    "sha256": "1e925f96ae22693d918b523e916bd84c18f915d27f5b71e21da213e126f8ef70"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/protocol.json",
+    "bytes": 1268,
+    "sha256": "9e0ee8c06aa45c67d7b0525877748b6ed4e7f8f733930f8e390493343f1aabef"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/record.json",
+    "bytes": 12698009,
+    "sha256": "0de795bf7d13251bd236ae5016c12ea08ca00a7b0ac9c24adcdec405a948ef7e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/responses/final_fields.npz",
+    "bytes": 5110021,
+    "sha256": "2c83c248b569df7cad50e0418f0c52eaafcaa54d4145012edacc233648c4bcb4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/responses/samples.npz",
+    "bytes": 17842,
+    "sha256": "678157a183e51421912506b1cd58c2f16343210b2796b4d718db1725101b8aad"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/responses/summary.json",
+    "bytes": 11098,
+    "sha256": "b585ddd7bb898d4a2d69de9c974396a9d5aedb4ccdaeab204cd1e0ec33b8cd32"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/mv3_s11002/summary.json",
+    "bytes": 2083,
+    "sha256": "cda3a923523bbdff7e37a637ba8388dd4478ccc9355781756676064451cf146c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/field_summary.json",
+    "bytes": 8766,
+    "sha256": "7ad74411d23a94ad58898beeab3beaf3dd773b8dd03aabb4588ce063b360b574"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/fields.npz",
+    "bytes": 29158934,
+    "sha256": "d485246b7c545723f071af58d44ff1385424e5621c8dae14d6c2a6f0226944c6"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/final_state.npz",
+    "bytes": 2745244,
+    "sha256": "794bcb5343c09f70f70be66cfc0e0bfb5ae31667b130d5b0ac3626f09d837714"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/genome.json",
+    "bytes": 2850,
+    "sha256": "3493101590a98492a9aa9ae8384c42577fcf99d2d970d29a15ef023d5e6a70d8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/metrics.json",
+    "bytes": 12146,
+    "sha256": "69e5a4494cc5a96c2a98b081fcc329ec622a2a0b4598ef6a6a4429748d2ddcf0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/protocol.json",
+    "bytes": 1259,
+    "sha256": "51050b006c0fd3f9ea0d5f69685934e516cf9cd7011ca5277c085ce8de781d07"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/record.json",
+    "bytes": 24364826,
+    "sha256": "fd215d3510cf3e4049b6a9949bc4d28c27d48bf51e804d2906fae7922e07f510"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/responses/final_fields.npz",
+    "bytes": 8236945,
+    "sha256": "064a9f2d35c3285a426298dccf12b50b5d2f7980eb69d08317df1ec85863fd60"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/responses/samples.npz",
+    "bytes": 25103,
+    "sha256": "181b55c4f61695563a7471e2e09cd2d8b5ad5a6f56fd7b0a4e161fc09898ffb5"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/responses/summary.json",
+    "bytes": 14705,
+    "sha256": "9fba8ac8b284c0d6d4a8d05f876aec87f4ee562bd7163612bd065e86830745ca"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11001/summary.json",
+    "bytes": 2195,
+    "sha256": "778aecd00e1b94959e5a79a62e6934bc36b0ce13c10f1bcc3672bebd8d8798c7"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/field_summary.json",
+    "bytes": 8742,
+    "sha256": "56a15cc8016886e056770212a0cc7b7a93a8a702e23601ef44efcd8df9a665dc"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/fields.npz",
+    "bytes": 29196648,
+    "sha256": "75e1b6639ed85691ca14e94729d1282455af34cca1158242ef72ed4629d50f64"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/final_state.npz",
+    "bytes": 2765360,
+    "sha256": "71b6647c8e11e06dc1800fd3c4cf6c32c9f6d2b2f87083831545731b75f8594e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/genome.json",
+    "bytes": 2850,
+    "sha256": "3493101590a98492a9aa9ae8384c42577fcf99d2d970d29a15ef023d5e6a70d8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/metrics.json",
+    "bytes": 12073,
+    "sha256": "b20e31b9bbd21b348bb309a8ed98a4da93acb8f66c6ba55878ffc64af130843d"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/protocol.json",
+    "bytes": 1259,
+    "sha256": "69522d5f5fc52f35cccddaefcb007146ba49b3911e326609dc638822b463da42"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/record.json",
+    "bytes": 24728412,
+    "sha256": "1807cd7c70ebf2bcde79900577c3259d10efadeefea28c0ff9abadc2bb5c22f0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/responses/final_fields.npz",
+    "bytes": 8293003,
+    "sha256": "5a31d3039b08ae555dbed5e92b2ac1f19e7dd43e96efc944bfb8b91206903e1f"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/responses/samples.npz",
+    "bytes": 24163,
+    "sha256": "2cb4f1d8622583801d3575c4d4faa921a504e2a3074fa921387a4f9c74085d03"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/responses/summary.json",
+    "bytes": 14865,
+    "sha256": "88fd968343ea65e594bc02d23e699c74537077b81a0234c344dccf523eb7ae70"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/p4g2_044_s11002/summary.json",
+    "bytes": 2198,
+    "sha256": "8d255454e4b7bbe2d608ae9b6fb19cabdfafbb5931b2768d53ef7e5938b7d753"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/fields.npz",
+    "bytes": 13362919,
+    "sha256": "1e9b2f4a27b395bcf1b52500fd485a60b582350325200299374126e6f0b60d0c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/final_state.npz",
+    "bytes": 1316153,
+    "sha256": "4374ff8f7c8c769bf5ae15cdc54567c1f4d2904ebd94fa551636ecdeb0031d0c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/genome.json",
+    "bytes": 1158,
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/protocol.json",
+    "bytes": 608,
+    "sha256": "ae9658ed85b2c33cadebce5a1602943b277ef9445fd5cc912505984310293018"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/record.json",
+    "bytes": 8357576,
+    "sha256": "03fa4e01fd41276211a731aec8cff41aabaa4abc932720315bd7da0170b2dda3"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/responses/final_fields.npz",
+    "bytes": 3948652,
+    "sha256": "82f919de0ec1ce05141b19dec2bcde8b1153abc01ce37ac61b8a84840aaf6544"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/responses/samples.npz",
+    "bytes": 13824,
+    "sha256": "b191c32897a88e6c444d462706616c205347b69bf40bc4a493242d9f93144705"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/responses/summary.json",
+    "bytes": 9390,
+    "sha256": "aa7cca8fd36d5898edb7d2a784ae195831b7bbc4cbcaf2689d8a0e2515489866"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12001/rotation.json",
+    "bytes": 29825,
+    "sha256": "5f90990bfb31727bf8c8d9fdb4c793740c57af9bf6ae9851de9233a95f4223da"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/fields.npz",
+    "bytes": 13362446,
+    "sha256": "6947b5ede4322656590f30f916c4c49967c499443bdb1ff21d3fa3f9b71cf898"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/final_state.npz",
+    "bytes": 1317087,
+    "sha256": "483ff61c2e50a07520fcf1a1ac664a0422d34ce3d565cb449cae8a243406e2e4"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/genome.json",
+    "bytes": 1158,
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/protocol.json",
+    "bytes": 608,
+    "sha256": "854310441c3da20a3b4483a85fe9f2829874d52a0d1a4fbb85396886af4c81be"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/record.json",
+    "bytes": 8358064,
+    "sha256": "e4a2e6c12b71c1d154e83379dfd5b26b735e7fcf0a03e1a85847abec8a4474fa"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/responses/final_fields.npz",
+    "bytes": 3949228,
+    "sha256": "18963663f595dfda2cba6cc011bb82edbf04070bdc9913474e99d6004acbd57e"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/responses/samples.npz",
+    "bytes": 13823,
+    "sha256": "3460c6117f68f1dcc4a3b676d7e93987cf8c6dcf45bcc2a5e1e217a4fb7ef8de"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/responses/summary.json",
+    "bytes": 9370,
+    "sha256": "357d258d90114c642071f668e3094f458cbdd351234b4fe0e8f410dae1128ee0"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_coupled_s12002/rotation.json",
+    "bytes": 29426,
+    "sha256": "d93cbb3d5c1de38c206980b4c96a395dca0b69db8de20e57d14ca617000ab88d"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/fields.npz",
+    "bytes": 13336486,
+    "sha256": "f9cee9fdc29425025b53ddcb16c2bb22cf78689f5148f774ca83838a22f9a61c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/final_state.npz",
+    "bytes": 1313881,
+    "sha256": "619694e1051408d7ea11ad3b895ce5c6dc3dd6fa4c9b81a66f34f8cf81e197cb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/genome.json",
+    "bytes": 1178,
+    "sha256": "fc13125ba045b4c78634a712c9dc26e6d32561ea2fc87e78fc0f03b574c5518b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/protocol.json",
+    "bytes": 609,
+    "sha256": "825d1f5f987f7b08872e86db096894f7c1fd9161ff7896c1497d9b783c937275"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/record.json",
+    "bytes": 8357922,
+    "sha256": "498fabb5dce2f122d4742bf2432da099752fb2c7261965b8c5dfb1fad3eeeda7"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_pair_decoupled_s12001/rotation.json",
+    "bytes": 29443,
+    "sha256": "5383e2346a877de2205ce3ce16506217fc6cfc2a7bdcc4ac8f4c78110f773acc"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/field_summary.json",
+    "bytes": 4749,
+    "sha256": "0e47309e1f7445baac69907762a96927ed812b064f02972fdc5727bdc5368a5d"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/fields.npz",
+    "bytes": 14713495,
+    "sha256": "0ee321aebbdbd0fc2d82b7dcea19518b1876c34de330e5280c9754f157f0336f"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/final_state.npz",
+    "bytes": 1355923,
+    "sha256": "b958d51c75256b6414964694cd6d33817ea2d41c505a99fda297ce9c97445bea"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/genome.json",
+    "bytes": 1158,
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/metrics.json",
+    "bytes": 6458,
+    "sha256": "fcc84c9c74f6a7141ca2e99bea4b44651cdf7b68b64ea46eaf9df1db5adb6894"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/protocol.json",
+    "bytes": 1253,
+    "sha256": "3eb24ed3ae9efbc682881f350a524e6be0fdf90db68767e71d4fd1db82322bb8"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/record.json",
+    "bytes": 9020535,
+    "sha256": "7ba446db483dc0ef28b7d21a0a2182660f5b95aaff71d6a9a4e4edaea799fc58"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/responses/final_fields.npz",
+    "bytes": 4066933,
+    "sha256": "1086ff7ac07c901f8ce910f6dcde842fc95f35e376e768b73707b44f36b45745"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/responses/samples.npz",
+    "bytes": 13742,
+    "sha256": "4adb4f29ac62e196b8f2b599d4a747fef70e56e82aa0f066e567c6766ec3f7fc"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/responses/summary.json",
+    "bytes": 9373,
+    "sha256": "61d57ff9138b07556f46e3d1096cd40c02b934659326c098288156c719106b6b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11001/summary.json",
+    "bytes": 2054,
+    "sha256": "eb44470927a5f2f18912aa57c72a163e288bd544f95a02a571a817891d8d949b"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/field_summary.json",
+    "bytes": 4750,
+    "sha256": "27346957b8c2370fd293513375f2568d71077fee40e90daa0d7656864f4b0e26"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/fields.npz",
+    "bytes": 14665112,
+    "sha256": "23b83708efb73393b87e633f90895a679486315ceecb1cd90dfcd96269e106a7"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/final_state.npz",
+    "bytes": 1352219,
+    "sha256": "c4020fed7a38e2e74109570f788bc19844bff491b5847e2ea7c62c6449b19b06"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/genome.json",
+    "bytes": 1158,
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/metrics.json",
+    "bytes": 6384,
+    "sha256": "df6c32f182fb633887090bc9b3ed8deae7b6c2dca369b867082f196c3160a38a"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/protocol.json",
+    "bytes": 1253,
+    "sha256": "469a1879a4e94cd949ebdf8e2ea1ded4b2ba394bc1708b29e6f4f2e75a7482ff"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/record.json",
+    "bytes": 9020494,
+    "sha256": "723d9042a65369457a8b303355533ee283835c2bce4186d88103f38000019a6c"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/responses/final_fields.npz",
+    "bytes": 4057253,
+    "sha256": "7bcbb826da122b00984cf594a1fd8a5f5f9b7e44d6c9477e47187a99225cdf53"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/responses/samples.npz",
+    "bytes": 13818,
+    "sha256": "ba6072b5946347cc40dba1689d4b149140cfc9c9164500ec5ceaebfa640e8dcd"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/responses/summary.json",
+    "bytes": 9385,
+    "sha256": "6de7779b1a102ffeb655700921ef70e119d0f7d21aa8bfe86e40dfaf7198dd96"
+  },
+  {
+    "path": "outputs/phenomenology-20260913/xv_s11002/summary.json",
+    "bytes": 2050,
+    "sha256": "ff891e7617404f4b8fa6940dd81e5b92d656d6f946885e5f5519394287a36dc4"
+  }
+]

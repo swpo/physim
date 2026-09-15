@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "gates": [
+    "toy",
+    "native"
+  ],
+  "tests_run": 29,
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "wall_seconds": 0.93640016624704,
+  "peak_rss_bytes": 211697664,
+  "interpreter": "/Users/spoho/Documents/prime/test/physim/.venv/bin/python",
+  "numpy_version": "2.5.2",
+  "thread_env": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "tests": [
+    {
+      "test": "__main__.ValidationTests.test_boolean_string_and_nonfinite_numbers",
+      "seconds": 0.009401541203260422
+    },
+    {
+      "test": "__main__.ValidationTests.test_container_types_and_unknown_actions",
+      "seconds": 0.00018083304166793823
+    },
+    {
+      "test": "__main__.ValidationTests.test_empty_outputs_validate_all_actions_but_never_step",
+      "seconds": 0.0001743333414196968
+    },
+    {
+      "test": "__main__.ValidationTests.test_exact_action_keys",
+      "seconds": 0.00018199998885393143
+    },
+    {
+      "test": "__main__.ValidationTests.test_exact_query_keys_and_shapes",
+      "seconds": 0.0001649581827223301
+    },
+    {
+      "test": "__main__.ValidationTests.test_integer_ids_counts_seeds_and_ranges",
+      "seconds": 0.0002454170025885105
+    },
+    {
+      "test": "__main__.ValidationTests.test_supported_boundaries_and_cross_lane_overlap",
+      "seconds": 0.0006594168953597546
+    },
+    {
+      "test": "__main__.ValidationTests.test_time_grid_and_float_tolerance",
+      "seconds": 0.007375875022262335
+    },
+    {
+      "test": "__main__.ValidationTests.test_unsorted_simultaneous_and_overlapping_actions",
+      "seconds": 0.00018133409321308136
+    },
+    {
+      "test": "__main__.SchedulerTests.test_adjust_is_immediate_and_occupies_five_tu",
+      "seconds": 0.0008522090502083302
+    },
+    {
+      "test": "__main__.SchedulerTests.test_future_action_suffix_cannot_change_past_queries",
+      "seconds": 0.0016703750006854534
+    },
+    {
+      "test": "__main__.SchedulerTests.test_lower_dilation_clip_and_second_device_independence",
+      "seconds": 0.0003865417093038559
+    },
+    {
+      "test": "__main__.SchedulerTests.test_member_prefix_distinct_streams_and_cross_sensor_coherence",
+      "seconds": 0.0022355415858328342
+    },
+    {
+      "test": "__main__.SchedulerTests.test_noise_starts_at_origin_and_actions_never_reseed",
+      "seconds": 0.0012644999660551548
+    },
+    {
+      "test": "__main__.SchedulerTests.test_noops_never_reseed_an_experiment",
+      "seconds": 0.001791583839803934
+    },
+    {
+      "test": "__main__.SchedulerTests.test_perfect_known_state_deterministic_law",
+      "seconds": 0.0005645831115543842
+    },
+    {
+      "test": "__main__.SchedulerTests.test_predictor_sampling_seed_is_not_an_oracle_truth_input",
+      "seconds": 0.0014329170808196068
+    },
+    {
+      "test": "__main__.SchedulerTests.test_query_invariance_order_duplicates_and_no_mutation",
+      "seconds": 0.001363957766443491
+    },
+    {
+      "test": "__main__.SchedulerTests.test_reset_repeat_and_output_ownership",
+      "seconds": 0.0024598329328000546
+    },
+    {
+      "test": "__main__.SchedulerTests.test_shams_vary_across_members_and_experiment_seeds",
+      "seconds": 0.0021254578605294228
+    },
+    {
+      "test": "__main__.SchedulerTests.test_source_half_open_boundaries_and_amplitude_duration",
+      "seconds": 0.00025070784613490105
+    },
+    {
+      "test": "__main__.OriginTests.test_previous_experiment_cannot_contaminate_or_accelerate_fresh_noise",
+      "seconds": 0.0003361250273883343
+    },
+    {
+      "test": "__main__.OriginTests.test_private_template_is_owned_full_precision_t0",
+      "seconds": 0.0008533326908946037
+    },
+    {
+      "test": "__main__.NativeTests.test_native_independent_sham_matches_direct_stepper",
+      "seconds": 0.11555666662752628
+    },
+    {
+      "test": "__main__.NativeTests.test_native_injection_matches_r5_member_state_and_source_primitive",
+      "seconds": 0.0669599580578506
+    },
+    {
+      "test": "__main__.NativeTests.test_native_multiple_actions_fixed_emitter_and_pose",
+      "seconds": 0.13620045920833945
+    },
+    {
+      "test": "__main__.NativeTests.test_native_pose_helper_matches_r5_truth_not_transport",
+      "seconds": 0.0011160001158714294
+    },
+    {
+      "test": "__main__.NativeTests.test_native_query_cuts_do_not_change_member_trajectory",
+      "seconds": 0.128801042214036
+    },
+    {
+      "test": "__main__.NativeTests.test_native_repeated_calls_restore_physical_origin",
+      "seconds": 0.2990302499383688
+    }
+  ],
+  "native": {
+    "world": "p4g2_044",
+    "hidden_seed": 928,
+    "initialization_seconds": 0.00904937507584691,
+    "field_shape": [
+      12,
+      256,
+      256
+    ],
+    "field_dtype": "float32",
+    "field_bytes": 3145728,
+    "maximum_trajectory_substeps": 6,
+    "old_truth_parity": "not run; primitive/state parity only"
+  },
+  "limitations": [
+    "No old truth-instance parity or full base replay was run.",
+    "No scorer, untrusted-code sandbox, transport or exploration parity.",
+    "No final horizon/member/output resource budgets; trusted small requests only."
+  ]
+}

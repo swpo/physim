@@ -1,0 +1,75 @@
+{
+  "status": "local-alignment-complete",
+  "upstream": {
+    "repository": "https://github.com/PrimeIntellect-ai/residency-environments",
+    "commit": "01d9f5f80572b7ec82575b10d45a800ed844e496"
+  },
+  "layout": {
+    "environment": "environments/physim",
+    "generation": "generators/physim",
+    "support": "scripts/physim",
+    "configuration": "configs/physim",
+    "simulator_local_extension": "packages/blobkit",
+    "archived_engines": "probes/legacy/physim"
+  },
+  "canonical_taskset": "physim",
+  "compatible_taskset_ids": [
+    "physim_r6",
+    "physim_r6_scaling"
+  ],
+  "versions": {
+    "physim": "0.12.0",
+    "blobkit": "0.3.5",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "verifiers": "0.3.1"
+  },
+  "checks": {
+    "local_regression_tests": 100,
+    "generic_upstream_package_tests": 2,
+    "native_parity_checks": 16,
+    "ruff_check": "passed",
+    "ruff_format": "passed",
+    "verifiers_cli": "configuration dry-run passed; model smoke not run",
+    "distributions_built_and_inspected": 4,
+    "predictor_and_agent_docker_builds": "passed",
+    "sandbox_interface_checks": 7,
+    "sandbox_grade_cases": 15,
+    "sandbox_zero_score": 1.0845872705112614,
+    "clean_install_reference_score": 0.8271209896216252,
+    "native_experiment_charged_tu": 0.06,
+    "docs": {
+      "html_pages": 67,
+      "current_pages": 12,
+      "local_links_checked": 676,
+      "archived_originals": 29,
+      "evidence_sources_checked": 3,
+      "errors": []
+    }
+  },
+  "reference": {
+    "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+    "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+    "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+    "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+  },
+  "data_payloads_and_scientific_objects_unchanged": true,
+  "release": {
+    "licenses": {
+      "code": "Apache-2.0",
+      "data": "CC-BY-4.0"
+    },
+    "dataset_repo": "seanpohorence/physim-worlds",
+    "staged_directory": "/Users/spoho/Documents/prime/test/physim/dist/hf-worlds-residency",
+    "published": false
+  },
+  "no_model_calls": true,
+  "remaining_before_upstream_submission": [
+    "Review and commit the intended source changes.",
+    "Publish blobkit 0.3.5 or agree an immutable installable dependency.",
+    "Publish the worlds dataset and verify its immutable revision and offline fetch.",
+    "Run the documented Verifiers model smoke before presenting the PR as eval-tested.",
+    "Discuss byte-bound source-format exclusions with upstream; keep the research-only generator migration out of the first environment PR."
+  ]
+}

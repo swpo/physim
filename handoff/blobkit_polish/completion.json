@@ -1,0 +1,166 @@
+{
+  "completed_at": "2026-09-13T14:13:12.586137+00:00",
+  "blobkit": "0.3.5",
+  "publication_status": "local release candidate; not published",
+  "distributions": [
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-polished/blobkit-0.3.5-py3-none-any.whl",
+      "bytes": 352367,
+      "sha256": "59c4cd8b664cc937db2d14302e41f84f7aeaea943b672789756a4d80e8d9aeed"
+    },
+    {
+      "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-polished/blobkit-0.3.5.tar.gz",
+      "bytes": 334747,
+      "sha256": "db2d1accbf733e92ca3c285e172370f7c332158eec0e10f86666f2ab300b49d4"
+    }
+  ],
+  "tests": {
+    "unique_passing_cases": 58,
+    "case_names": [
+      "tests.test_accelerator::test_accelerated_recording_matches_host[async]",
+      "tests.test_accelerator::test_accelerated_recording_matches_host[device]",
+      "tests.test_accelerator::test_assay_repack_and_ballast_match_singles[padding0]",
+      "tests.test_accelerator::test_assay_repack_and_ballast_match_singles[padding1]",
+      "tests.test_accelerator::test_explicit_initial_fields_are_owned_and_recorded",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[bf]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[coex]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[m0]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[m4]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[mv3]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[pred]",
+      "tests.test_accelerator::test_f64_cpu_accelerator_trajectory[xv]",
+      "tests.test_accelerator::test_full_grid_seven_world_batch_matches_cpu",
+      "tests.test_accelerator::test_noisy_chunking_is_bitwise",
+      "tests.test_accelerator::test_padding_and_noise_are_lane_independent[bf]",
+      "tests.test_accelerator::test_padding_and_noise_are_lane_independent[m4]",
+      "tests.test_accelerator::test_padding_and_noise_are_lane_independent[xv]",
+      "tests.test_cpu::test_all_public_modules_import",
+      "tests.test_cpu::test_cpu_chunking_preserves_fields_and_records[m4]",
+      "tests.test_cpu::test_cpu_chunking_preserves_fields_and_records[mv3]",
+      "tests.test_cpu::test_import_does_not_load_jax",
+      "tests.test_cpu::test_optional_plot_extra_writes_png",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[bf]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[coex]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[ds3_014]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[ds3_017]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[ds6_000]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[engine_10748]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[g0_jit_11]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[m0]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[m4]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[mv3]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[pred]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[rail_111_17]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[s2_118_41]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[s2_128_26]",
+      "tests.test_cpu::test_packaged_world_is_valid_and_independent[xv]",
+      "tests.test_cpu::test_reference_assay_and_injected_cpu_backend_agree",
+      "tests.test_cpu::test_stamp_is_packaged",
+      "tests.test_integrity::test_historical_table_is_preserved",
+      "tests.test_integrity::test_missing_and_modified_files_fail_strictly",
+      "tests.test_integrity::test_release_table_matches_installed_files",
+      "tests.test_packaging::test_empty_assay_batch_needs_no_jax",
+      "tests.test_packaging::test_fleet_bundle_preserves_install_metadata_and_data[cpu]",
+      "tests.test_packaging::test_fleet_bundle_preserves_install_metadata_and_data[gpu]",
+      "tests.test_packaging::test_fleet_bundle_preserves_install_metadata_and_data[gpu_batch]",
+      "tests.test_packaging::test_initial_state_list_must_match_jobs",
+      "tests.test_packaging::test_invalid_backend_cannot_replace_output",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[-25]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[0]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[250]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[26]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[500]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[inf]",
+      "tests.test_packaging::test_invalid_horizon_rejected_before_device_initialization[nan]",
+      "tests.test_packaging::test_invalid_initial_fields_rejected_before_device_initialization[complex]",
+      "tests.test_packaging::test_invalid_initial_fields_rejected_before_device_initialization[nan]",
+      "tests.test_packaging::test_invalid_initial_fields_rejected_before_device_initialization[shape]"
+    ],
+    "cpu_fast_and_plot": "40 passed, fresh Python 3.12 wheel installation outside checkout",
+    "cpu_reference": "1 passed, original and injected CPU assay outputs agree",
+    "accelerator": "17 passed across the initial CUDA run and corrected fixture rerun",
+    "final_wheel_cuda_package_integrity": "21 passed on NVIDIA A100 80GB PCIe, JAX 0.4.38",
+    "final_wheel_python310": "39 passed, 1 optional plot skip",
+    "python313": "38 passed before two additional burn-in validation cases",
+    "initial_failure_resolution": "Two assay fixture horizons were at/below the fixed 500-unit burn-in. Corrected fixtures to 1250/2500, and added fail-fast validation for invalid horizons. Both corrected CUDA cases pass.",
+    "generic_environment_contracts": "2 passed; build dependency download required authorized network access",
+    "ruff": "lint and format pass",
+    "git_diff_check": "pass"
+  },
+  "science_identity": {
+    "genome.py": true,
+    "soup/sim_cpu.py": true,
+    "soup/sim_v1.py": true,
+    "metrics_v1.py": true,
+    "metrics_v2.py": true,
+    "assay_v2.py": true,
+    "assay_v2b.py": true,
+    "gpu operation make_stepper": true,
+    "gpu operation make_single_step": true,
+    "gpu operation pack_genomes": true,
+    "gpu operation pack_states": true,
+    "gpu operation unpack_state": true,
+    "gpu operation _attach_gpu": true,
+    "gpu operation advance_gpu": true,
+    "gpu operation advance_gpu_batch": true
+  },
+  "physim_reference": {
+    "ok": true,
+    "public_checks": [
+      {
+        "name": "mixed_sensors",
+        "ok": true
+      },
+      {
+        "name": "repeat_seed",
+        "ok": true
+      },
+      {
+        "name": "reordered_queries",
+        "ok": true
+      },
+      {
+        "name": "empty_times",
+        "ok": true
+      },
+      {
+        "name": "empty_queries",
+        "ok": true
+      },
+      {
+        "name": "single_member_actions",
+        "ok": true
+      },
+      {
+        "name": "default_members_repeated_sensor",
+        "ok": true
+      }
+    ],
+    "expected": {
+      "predictor": "initial_persistence",
+      "forecast_members": 4,
+      "primary_joint_energy": 0.8271209896216252,
+      "absolute_tolerance": 1e-10
+    },
+    "actual": 0.8271209896216252,
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "grade": "/Users/spoho/Documents/prime/test/physim/outputs/blobkit-polish-reference/grade.json",
+    "run_id": "run:sha256:ea1e6df8f4e3db2a25c1155840233b05c156404790bbd31e1ddfb9e87d3b6641"
+  },
+  "rental": {
+    "pod_id": "aee17f876964457e86c17aad4396ca65",
+    "terminated_at": "2026-09-13 14:10:07 UTC",
+    "duration_seconds": 1413.0,
+    "quoted_usd_per_hour": 1.2,
+    "estimated_usd": 0.471,
+    "cost_note": "Estimate from timestamps and the quoted rate. Prime CLI history returned total_cost=3765.0 without a usable unit; that raw value is retained in pod_termination.json and is not treated as USD.",
+    "cleanup_backstop_cancelled": true,
+    "unrelated_pods_modified": false
+  }
+}

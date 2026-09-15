@@ -1,0 +1,26 @@
+{
+  "blobkit_integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 52,
+    "locked_at": "2026-09-13T16:02:53.159338+00:00",
+    "version": "0.3.5"
+  },
+  "blobkit_wheel_sha256": "9f22ad58da04aaf8eb45c1966aaac9a60569dad2223413a9e9055af2be5a11b1",
+  "git_commit": "87325d9fbf37225c1ef5f44c3138de7fca81c704",
+  "working_tree": "dirty; exact executed source snapshots and hashes retained separately",
+  "docs": {
+    "current_pages": 12,
+    "local_links_checked": 678,
+    "errors": []
+  },
+  "gpu_instances_rented": 0,
+  "immutable_registry_objects_changed": 0,
+  "complete_battery": true,
+  "long_simulations": 17,
+  "sensor_trajectories": 150,
+  "total_simulated_tu": 50000,
+  "registry_tests_passed": 18,
+  "ruff": "check and format pass",
+  "git_diff_check": true
+}

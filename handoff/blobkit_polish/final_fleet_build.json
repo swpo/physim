@@ -1,0 +1,9 @@
+{
+ "blobkit": "0.3.5",
+ "backend": "gpu_batch",
+ "wheel": null,
+ "wheel_note": "no wheel builder available (uv/build/pip); install with: pip install ./pkg",
+ "n_seeds": 16,
+ "n_files": 88,
+ "out_dir": "/tmp/blobkit-polished-final-fleet"
+}

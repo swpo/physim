@@ -1,0 +1,11 @@
+Add Physim: experimental prediction in prepared physical worlds
+
+Physim lets an agent investigate an unfamiliar simulated physical system through a stock Verifiers bash harness and then submit an executable trajectory predictor. The trusted host runs experiments and grades submitted predictors against independent retained realizations. The patch adds the environment, three explicit world configs, Docker recipes and small setup checks. Blobkit 0.3.5 is an independently installable public wheel pinned by URL and SHA-256; physical data are loaded from immutable Hugging Face revisions.
+
+Each config selects one preparation: original reference, BF trail lab or XV rotor lab. No world is selected implicitly. Default budgets allow long investigations; the reward is `1 / (1 + joint_energy)`, with zero for completed attempts that deliver no valid predictor. Infrastructure failures use native Verifiers error handling. The public suites are disclosed development material and do not establish held-out generalization.
+
+Validation: clean public-wheel installation outside a checkout on Linux; all three reference controls and fresh short simulations; evaluation/simulation cache verification and offline reuse; Docker builds and executable-predictor grading; exact stock harness startup with networking disabled; two four-turn DeepSeek V4 Flash rollouts, both completing with zero reward and no infrastructure errors. A four-turn smoke checks integration, not forecast quality. Generic repository package tests and Ruff pass. Public installation evidence is linked in the source project's release notes and Linux CI run.
+
+The 0.12.2 agent image caches stock harness dependencies during its build, following the existing pmpp-hard pattern. The unchanged predictor image retains its numerical dependencies. Public release: https://github.com/swpo/physim/releases/tag/physim-v0.12.2. Linux verification: https://github.com/swpo/physim/actions/runs/34970845043. Dataset: https://huggingface.co/datasets/seanpohorence/physim-worlds.
+
+Reviewer setup: install `./environments/physim[reference,hub]`, build the two images using the environment README, then select one config under `configs/physim` and supply a model ID. The external evaluation runner must choose that config explicitly. Code is Apache-2.0; world data are CC-BY-4.0.

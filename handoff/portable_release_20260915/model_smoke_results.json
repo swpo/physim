@@ -1,0 +1,286 @@
+{
+  "model": "deepseek/deepseek-v4-flash",
+  "scope": "Four-turn wiring smoke, not a model capability evaluation.",
+  "rollouts": [
+    {
+      "version": "0.12.1",
+      "rollout_id": "4baafcf86eb541d5984b74dbd0f462dd",
+      "ok": true,
+      "is_completed": true,
+      "stop_condition": "max_turns",
+      "errors": [],
+      "timing": {
+        "start": 1789475383.81553,
+        "boot": {
+          "start": 1789475383.815855,
+          "end": 1789475384.16473
+        },
+        "setup": {
+          "start": 1789475384.16473,
+          "end": 1789475541.732841
+        },
+        "agent": {
+          "start": 1789475541.732841,
+          "end": 1789475561.4219992,
+          "model": {
+            "duration": 16.63714027404785
+          },
+          "harness": {
+            "duration": 3.0520179271698
+          }
+        },
+        "finalize": {
+          "start": 1789475561.4220212,
+          "end": 1789475561.515389
+        },
+        "scoring": {
+          "start": 1789475561.515389,
+          "end": 1789475561.516541
+        }
+      },
+      "rewards": {
+        "prediction_reward": {
+          "score": 0.0,
+          "weight": 1.0
+        }
+      },
+      "r6": {
+        "protocol": "r6-verifiers-v1-bash-1-ports-4",
+        "artifact_directory": "/private/tmp/physim-public-install-20260915-retry/smoke-artifacts/4baafcf86eb541d5984b74dbd0f462dd",
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "verifiers_version": "0.3.1",
+        "gate": "r6-gate-public-validation-v2-roster",
+        "checkpoint": {},
+        "final_collection": {
+          "ok": false,
+          "gate": "r6-gate-public-validation-v2-roster",
+          "failure": {
+            "stage": "artifact",
+            "error": "write /workspace/predictor.py before submitting"
+          },
+          "finalized": false,
+          "accepted": false
+        },
+        "score_kind": "nan",
+        "score_reason": "no_predictor",
+        "primary_joint_energy": null,
+        "reward_mapping": "missing or invalid predictor -> 0"
+      },
+      "model_calls": 4,
+      "model_cost_usd": 0.0024
+    },
+    {
+      "version": "0.12.1",
+      "rollout_id": "a75d936145d246e0b777724ea53d66a4",
+      "ok": false,
+      "is_completed": true,
+      "stop_condition": "error",
+      "errors": [
+        {
+          "type": "HarnessError",
+          "message": "harness setup timed out",
+          "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/rollout.py\", line 246, in open\n    await self.harness.setup(runtime)\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/harnesses/bash/harness.py\", line 49, in setup\n    await runtime.prepare_uv_script(PROGRAM_SOURCE, self.config.resolved_env)\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/runtimes/base.py\", line 263, in prepare_uv_script\n    result = await self.run([\"sh\", \"-c\", command], env or {})\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/runtimes/docker/__init__.py\", line 423, in run\n    return await docker(\n           ^^^^^^^^^^^^^\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/runtimes/docker/__init__.py\", line 116, in docker\n    stdout, stderr = await proc.communicate()\n                     ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/subprocess.py\", line 201, in communicate\n    stdin, stdout, stderr = await tasks.gather(stdin, stdout, stderr)\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/subprocess.py\", line 181, in _read_stream\n    output = await stream.read()\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/streams.py\", line 706, in read\n    block = await self.read(self._limit)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/streams.py\", line 713, in read\n    await self._wait_for_data('read')\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/streams.py\", line 545, in _wait_for_data\n    await self._waiter\nasyncio.exceptions.CancelledError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/errors.py\", line 93, in boundary\n    yield\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/rollout.py\", line 244, in open\n    asyncio.timeout_at(setup_deadline),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/timeouts.py\", line 115, in __aexit__\n    raise TimeoutError from exc_val\nTimeoutError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/rollout.py\", line 243, in open\n    boundary(HarnessError, \"harness setup\"),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.12/3.12.12/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py\", line 231, in __aexit__\n    await self.gen.athrow(value)\n  File \"/private/tmp/physim-public-install-20260915-retry/venv/lib/python3.12/site-packages/verifiers/v1/errors.py\", line 97, in boundary\n    raise error_cls(f\"{what} timed out\") from e\nverifiers.v1.errors.HarnessError: harness setup timed out\n"
+        }
+      ],
+      "timing": {
+        "start": 1789475561.820983,
+        "boot": {
+          "start": 1789475561.821235,
+          "end": 1789475562.102649
+        },
+        "setup": {
+          "start": 1789475562.102649,
+          "end": 1789475742.1171808
+        },
+        "agent": {
+          "start": 0.0,
+          "end": 0.0,
+          "model": {
+            "duration": 0.0
+          },
+          "harness": {
+            "duration": 0.0
+          }
+        },
+        "finalize": {
+          "start": 0.0,
+          "end": 0.0
+        },
+        "scoring": {
+          "start": 0.0,
+          "end": 0.0
+        }
+      },
+      "rewards": {},
+      "r6": {
+        "protocol": "r6-verifiers-v1-bash-1-ports-4",
+        "artifact_directory": "/private/tmp/physim-public-install-20260915-retry/smoke-artifacts/a75d936145d246e0b777724ea53d66a4",
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "verifiers_version": "0.3.1",
+        "gate": "r6-gate-public-validation-v2-roster",
+        "checkpoint": {}
+      },
+      "model_calls": 0,
+      "model_cost_usd": 0
+    },
+    {
+      "version": "0.12.2",
+      "rollout_id": "69d1c942c5d34ce6a5afb98756e45e68",
+      "ok": true,
+      "is_completed": true,
+      "stop_condition": "max_turns",
+      "errors": [],
+      "timing": {
+        "start": 1789476709.800189,
+        "boot": {
+          "start": 1789476709.800565,
+          "end": 1789476710.182482
+        },
+        "setup": {
+          "start": 1789476710.182482,
+          "end": 1789476732.070764
+        },
+        "agent": {
+          "start": 1789476732.070764,
+          "end": 1789476752.620439,
+          "model": {
+            "duration": 16.67524242401123
+          },
+          "harness": {
+            "duration": 3.8744325637817383
+          }
+        },
+        "finalize": {
+          "start": 1789476752.620461,
+          "end": 1789476752.708887
+        },
+        "scoring": {
+          "start": 1789476752.708887,
+          "end": 1789476752.709756
+        }
+      },
+      "rewards": {
+        "prediction_reward": {
+          "score": 0.0,
+          "weight": 1.0
+        }
+      },
+      "r6": {
+        "protocol": "r6-verifiers-v1-bash-1-ports-4",
+        "artifact_directory": "/private/tmp/physim-public-install-20260915-retry/smoke-artifacts-0122/69d1c942c5d34ce6a5afb98756e45e68",
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "verifiers_version": "0.3.1",
+        "gate": "r6-gate-public-validation-v2-roster",
+        "checkpoint": {},
+        "final_collection": {
+          "ok": false,
+          "gate": "r6-gate-public-validation-v2-roster",
+          "failure": {
+            "stage": "artifact",
+            "error": "write /workspace/predictor.py before submitting"
+          },
+          "finalized": false,
+          "accepted": false
+        },
+        "score_kind": "nan",
+        "score_reason": "no_predictor",
+        "primary_joint_energy": null,
+        "reward_mapping": "missing or invalid predictor -> 0"
+      },
+      "model_calls": 4,
+      "model_cost_usd": 0.0011
+    },
+    {
+      "version": "0.12.2",
+      "rollout_id": "0a08ea60313b40c29a08f268f1b471b5",
+      "ok": true,
+      "is_completed": true,
+      "stop_condition": "max_turns",
+      "errors": [],
+      "timing": {
+        "start": 1789476752.954189,
+        "boot": {
+          "start": 1789476752.954494,
+          "end": 1789476753.217696
+        },
+        "setup": {
+          "start": 1789476753.217696,
+          "end": 1789476772.5274482
+        },
+        "agent": {
+          "start": 1789476772.5274482,
+          "end": 1789476789.548586,
+          "model": {
+            "duration": 13.83994174003601
+          },
+          "harness": {
+            "duration": 3.1811959743499756
+          }
+        },
+        "finalize": {
+          "start": 1789476789.5485911,
+          "end": 1789476789.616875
+        },
+        "scoring": {
+          "start": 1789476789.616875,
+          "end": 1789476789.617324
+        }
+      },
+      "rewards": {
+        "prediction_reward": {
+          "score": 0.0,
+          "weight": 1.0
+        }
+      },
+      "r6": {
+        "protocol": "r6-verifiers-v1-bash-1-ports-4",
+        "artifact_directory": "/private/tmp/physim-public-install-20260915-retry/smoke-artifacts-0122/0a08ea60313b40c29a08f268f1b471b5",
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "verifiers_version": "0.3.1",
+        "gate": "r6-gate-public-validation-v2-roster",
+        "checkpoint": {},
+        "final_collection": {
+          "ok": false,
+          "gate": "r6-gate-public-validation-v2-roster",
+          "failure": {
+            "stage": "artifact",
+            "error": "write /workspace/predictor.py before submitting"
+          },
+          "finalized": false,
+          "accepted": false
+        },
+        "score_kind": "nan",
+        "score_reason": "no_predictor",
+        "primary_joint_energy": null,
+        "reward_mapping": "missing or invalid predictor -> 0"
+      },
+      "model_calls": 4,
+      "model_cost_usd": 0.0009000000000000001
+    }
+  ],
+  "total_model_cost_usd": 0.0044
+}

@@ -15,3 +15,7 @@ Run from the repository root through `uv run python scripts/physim/<script>.py`.
   reproducibility. These are not new per-environment tests for upstream submission.
 
 Reference export and parity migration live in `generators/physim/`.
+
+`check_harness_image.py` verifies the installed stock bash harness can resolve its
+dependencies and start in the agent image with Docker networking disabled. Run
+it after building the image and whenever changing the pinned Verifiers version.

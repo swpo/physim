@@ -1,0 +1,22 @@
+{
+  "blobkit": "0.3.5",
+  "integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 50,
+    "locked_at": "2026-09-13T14:01:33.086394+00:00",
+    "version": "0.3.5"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "jax": "0.4.38"
+  },
+  "devices": [
+    {
+      "platform": "gpu",
+      "kind": "NVIDIA A100 80GB PCIe"
+    }
+  ],
+  "ok": true
+}

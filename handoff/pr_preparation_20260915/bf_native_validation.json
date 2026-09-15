@@ -1,0 +1,36 @@
+{
+  "ready": true,
+  "references": {
+    "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+    "manifest_sha256": "d3c0d69d5d56a80b0ac2d76389f0284fa906336fd117f78262d20c67c3bec290",
+    "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+    "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+    "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+  },
+  "public_ports": 4,
+  "native_sensor_shapes": [
+    [
+      1,
+      2,
+      4,
+      13
+    ],
+    [
+      1,
+      2,
+      4,
+      19
+    ],
+    [
+      1,
+      2,
+      4,
+      2
+    ]
+  ],
+  "invalid_port_rejected_without_charge": true,
+  "cases": 11,
+  "truth_members": 2,
+  "reference_score": 0.46001066377541483,
+  "source_sha256": "ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e"
+}

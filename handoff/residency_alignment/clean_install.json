@@ -1,0 +1,133 @@
+{
+  "ok": true,
+  "workdir": "/private/tmp/physim-residency-clean",
+  "installed": {
+    "physim": "/private/tmp/physim-residency-clean/venv/lib/python3.12/site-packages/physim/__init__.py",
+    "blobkit": "/private/tmp/physim-residency-clean/venv/lib/python3.12/site-packages/blobkit/__init__.py",
+    "versions": {
+      "physim": "0.12.0",
+      "blobkit": "0.3.5",
+      "numpy": "2.5.2",
+      "scipy": "1.18.0",
+      "verifiers": "0.3.1"
+    }
+  },
+  "inspection": {
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "world": {
+      "name": "p4g2_044",
+      "genome_sha256": "3493101590a98492a9aa9ae8384c42577fcf99d2d970d29a15ef023d5e6a70d8",
+      "numerics": {
+        "backend": "blobkit-cpu",
+        "dtype": "float32",
+        "grid": [
+          256,
+          256
+        ],
+        "L": 128.0,
+        "dx": 0.5,
+        "dt": 0.02,
+        "boundary": "periodic",
+        "workers": 1
+      },
+      "implementation": {
+        "blobkit_version": "0.3.5",
+        "reference_dependencies": {
+          "numpy": "2.5.2",
+          "scipy": "1.18.0"
+        },
+        "source_sha256": {
+          "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+          "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+          "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+          "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+          "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d"
+        }
+      },
+      "id": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2"
+    },
+    "profiles": {
+      "simulation": 2751237,
+      "evaluation": 3732420
+    },
+    "status": "local-reference-verified",
+    "licenses": {
+      "code": "Apache-2.0",
+      "data": "CC-BY-4.0"
+    }
+  },
+  "reference_demo": {
+    "ok": true,
+    "public_checks": [
+      {
+        "name": "mixed_sensors",
+        "ok": true
+      },
+      {
+        "name": "repeat_seed",
+        "ok": true
+      },
+      {
+        "name": "reordered_queries",
+        "ok": true
+      },
+      {
+        "name": "empty_times",
+        "ok": true
+      },
+      {
+        "name": "empty_queries",
+        "ok": true
+      },
+      {
+        "name": "single_member_actions",
+        "ok": true
+      },
+      {
+        "name": "default_members_repeated_sensor",
+        "ok": true
+      }
+    ],
+    "expected": {
+      "predictor": "initial_persistence",
+      "forecast_members": 4,
+      "primary_joint_energy": 0.8271209896216252,
+      "absolute_tolerance": 1e-10
+    },
+    "actual": 0.8271209896216252,
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "grade": "/private/tmp/physim-residency-clean/demo/grade.json",
+    "run_id": "run:sha256:2df58f2e70c95fecc53c7f490c1b607028a70ec9dfbf141ba7a617245077a969"
+  },
+  "native_experiment": {
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "usage": {
+      "experiments": 1,
+      "max_experiments": 1,
+      "charged_tu": 0.06,
+      "max_total_tu": 50.0
+    },
+    "observation": "/private/tmp/physim-residency-clean/experiment/observation.npz"
+  },
+  "no_model_api": true,
+  "isolated_python": true,
+  "source_checkout_on_python_path": false
+}

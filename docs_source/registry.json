@@ -1,0 +1,1761 @@
+{
+  "schema_version": "blobkit-registry-v1",
+  "verification": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 4,
+      "genome": 19,
+      "recipe": 4,
+      "world-record": 24,
+      "artifact": 204
+    }
+  },
+  "worlds": [
+    {
+      "id": "world-record:sha256:14dec27e55240d651cec81e836d5992e45bdbed87d8ce05e3979a21c7dc47855",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:bb84bd4ad747c64a7ce623cdf3544abc367dee8c25c79c8be40ff8046fd1a6b3",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:49366f2439d90799156caceceb56ed88fedbbde168c252cad50b4b86c8a98a40",
+      "links": {},
+      "name": "ds3_017",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "evolve",
+          "moves": [
+            "tau0",
+            "D0",
+            "D3",
+            "tau4",
+            "tau5",
+            "D7",
+            "lam0",
+            "Du0",
+            "k10",
+            "bilin"
+          ],
+          "op": "mutate",
+          "parents": [
+            "m"
+          ]
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "ds3_017",
+        "original_source": "l0/complexity/genomes_v2/ds3_017.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:30b6fd5f62c6b1c98a667da62f2f287c6f7cd6f14e60aabb53a8823e655f2aca",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:d0f4372e2fd73f776e178193b57eb23b80add7cefdaca362aee3c803485d506f",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:12a11f44206f077b18d76120c020dc00a9f3f75a099f2e5de0db36118b19b070",
+      "links": {},
+      "name": "g0_jit_11",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "evolve",
+          "moves": [
+            "D0",
+            "D1",
+            "D2",
+            "thr2",
+            "D3",
+            "tau4",
+            "D4",
+            "Du0",
+            "lam1",
+            "Du1",
+            "k11",
+            "k12"
+          ],
+          "op": "mutate",
+          "parents": [
+            "rail_111_17"
+          ]
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "g0_jit_11",
+        "original_source": "l0/deepsearch/deploy/seeds/g0_jit_11.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:487ad248a7425180daa7895597ef0b9ed5825db6fcf9b759e4715899b9261d91",
+      "candidate": "candidate:sha256:83e6d307cccf319c343890b7d74fd12afdd1b77c258db60f848a092547fef99f",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:766453ac865db24d6ffe7c6e63a9c9c28021a0573b07db524e61f3a1763732b9",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 24.483527276096087
+      },
+      "name": "small-mass-search/g1/1",
+      "parents": [
+        "candidate:sha256:83219cf3c67417dfa659855cf9964260cb7b3b9e30842108f4afbf07f6e31214"
+      ],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 24.483527276096087,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:4bbdff513c4b0d9891a4987c5e8973de6d13e5a1f9611c085dab888ad0d555f2",
+      "candidate": "candidate:sha256:f5f200c67d07347cf7513c04a03210c0df43b1cf83968b89c167019fb6312c69",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:14a057b75695861399aec6abf8a9c97918000eb66c1d01fc3b98dcb262f0a7aa",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 12.270773190469622
+      },
+      "name": "small-mass-search/g2/0",
+      "parents": [
+        "candidate:sha256:83e6d307cccf319c343890b7d74fd12afdd1b77c258db60f848a092547fef99f",
+        "candidate:sha256:83219cf3c67417dfa659855cf9964260cb7b3b9e30842108f4afbf07f6e31214"
+      ],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 12.270773190469622,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:4e1b36a1832c1063206957c28724477e6c5905944b7d086a58617b2646f2387a",
+      "candidate": "candidate:sha256:7e02b0e5e5ffb0f36b6a4640a5145d186dadd5d14e6c2969284486aa9e52620a",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:14a057b75695861399aec6abf8a9c97918000eb66c1d01fc3b98dcb262f0a7aa",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 12.30288334590424
+      },
+      "name": "small-mass-search/g2/1",
+      "parents": [
+        "candidate:sha256:83e6d307cccf319c343890b7d74fd12afdd1b77c258db60f848a092547fef99f",
+        "candidate:sha256:83219cf3c67417dfa659855cf9964260cb7b3b9e30842108f4afbf07f6e31214"
+      ],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 12.30288334590424,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:4e7aadd81e7931d700a83069f08ca78c9cee8970c60841db3e80c64ea204aa52",
+      "artifacts": {
+        "bundle/apparatus.json": "artifact:sha256:cfe6ee07ac72228a1c0583b19d1f64ac475d1c810f7e91dfd7181a9516c2a67d",
+        "bundle/checks.json": "artifact:sha256:f7f7b28c7ceb966e0d7aec2d086874e50d9049b4f31690e2ab43d1ed00fa6ef1",
+        "bundle/manifest.json": "artifact:sha256:fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+        "bundle/preparation.npz": "artifact:sha256:e5752b2cbdb84813527310cba4565ad4218204176ed10b19d13816914fe40158",
+        "bundle/suite.json": "artifact:sha256:434b937ceecbf8b77a1c212f19ce796984bc9e0dcc663f806c40812e19ce5a2b",
+        "bundle/truth/c001.npz": "artifact:sha256:7238b305498308ecb942f31a40848b0903e91d145ac706bd0349ba988107aedb",
+        "bundle/truth/c002.npz": "artifact:sha256:12e2e2fd67e5498786ed2bc9b55d3cf57edca3979f8d176e59d901242aa2a00a",
+        "bundle/truth/c003.npz": "artifact:sha256:4bf8423b03b674faf84177d71dae0206fbd7a7df97c6a0113b3180b2ab4855a7",
+        "bundle/truth/c004.npz": "artifact:sha256:1916d93c3f790c9198bda532da6c224c9b2812205723e430de90b02d959e9767",
+        "bundle/truth/c005.npz": "artifact:sha256:496482ac775edf9e0c7c4a66f0f531c530f927cf8d627fe4e75af6237fc61089",
+        "bundle/truth/c006.npz": "artifact:sha256:b2f3418df0625cb259d5172ecca89a1a268bef8d9e16ce5124a9201ca9346398",
+        "bundle/truth/c007.npz": "artifact:sha256:36e12f983b44370c344075d5f2e7c9fb947d82e3b902c8ee1e3abe1f6b092926",
+        "bundle/truth/c008.npz": "artifact:sha256:1f1a0b6b0873f2a6f39a7a3bca49d7698926ed6303241a107290621050b09c19",
+        "bundle/truth/c009.npz": "artifact:sha256:772ed4385c3521fe088615b62a67a996158e974dcb0b3f0224662b56f5512bd4",
+        "bundle/truth/c010.npz": "artifact:sha256:80e0e6ffb8058268e6b25058c4b541f927eebb39fb2f580563ad247193c19fa7",
+        "bundle/truth/c011.npz": "artifact:sha256:9cdc21c99d3eed59fd44cc612d6ad470a4cf799675473f5a9148da0d464a3f65",
+        "bundle/world.json": "artifact:sha256:0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb",
+        "evidence/causal/result.json": "artifact:sha256:1a1b4f4b35d5502257bc929e5f5798cd5e2aadde40c5caae83a628440e3b325b",
+        "evidence/causal_extended/result.json": "artifact:sha256:c1cd50f0bdf35ae61d42bcc04a9351a44165f2dc46326b74a426737724860d44",
+        "evidence/control_summary.json": "artifact:sha256:09055fc9f465dde85b5311bad7d35a9edcdf7a110a22b2ef7d20c6c751744f98",
+        "evidence/native_validation.json": "artifact:sha256:a359c3080e0ede30958ae9293851b8d77ab9726efdc96a623549c7665c1c9b70",
+        "evidence/pilot/config.toml": "artifact:sha256:c5767d8f4ff56e07053379ac9ffb88b75961830bb15de8f05006b1931fb97696",
+        "evidence/pilot/grade.json": "artifact:sha256:6614b138af0d3d495d0481c4816a029fda7473f5e04af19dfb303657b87cf8b3",
+        "evidence/pilot/observations/experiment_001.npz": "artifact:sha256:e180981fd0d39027e0b2d8d38a16d51e600eddc4ecec0e8f60bdfc30ef2c2000",
+        "evidence/pilot/observations/experiment_002.npz": "artifact:sha256:b48b4a092cd2ebdd8bfb87430b36dfccbd0c63f3b484ab5ec198b8ac4a1871ba",
+        "evidence/pilot/observations/experiment_003.npz": "artifact:sha256:dd3fb9fe7ef1ab641615671be12cab60311fba799ff2608833dfb2a05e6333d5",
+        "evidence/pilot/observations/experiment_004.npz": "artifact:sha256:f5feacba017a74d02dcaf2b6ccd0fbc2015300e655476ae326112f7a508c5e83",
+        "evidence/pilot/observations/experiment_005.npz": "artifact:sha256:657174ba335855a840c8966ad20da688354c5eb5bb093bb37b7842761928a55e",
+        "evidence/pilot/observations/experiment_006.npz": "artifact:sha256:407fff5dffba6fd39811a5c4f4bfb298f8a179ddab8ddd1da42ae284c8635293",
+        "evidence/pilot/observations/experiment_007.npz": "artifact:sha256:9df019ddc6cdc4664ae6c68e0dc230eb64f142e6a758a6c838c5cc843d9957c4",
+        "evidence/pilot/observations/experiment_008.npz": "artifact:sha256:0055949e438481e49c4ed24207e7643de84e372b0feb6a5b4e199c17128b5dd8",
+        "evidence/pilot/observations/experiment_009.npz": "artifact:sha256:a6161dad2b5c9a8bca692e32771b7084a56ab36e322fa98af60ed0506958a1d3",
+        "evidence/pilot/observations/experiment_010.npz": "artifact:sha256:b4e7ae1221c834bbd292506e4206307d80a063f59f331cd52b238084cf2bd5ce",
+        "evidence/pilot/observations/experiment_011.npz": "artifact:sha256:e081a852d7169352c5f1e5565c39af7352bd30aec7b9386464ac2a1676b2dffe",
+        "evidence/pilot/observations/experiment_012.npz": "artifact:sha256:57682e9310fa4e7ab047ca390e4944bbd728360f1c1aa461fef313483848d750",
+        "evidence/pilot/predictor/AGENT_SPEC.md": "artifact:sha256:94aa3b1f9e2910d86ac71f2ddedcfa82ec869937eccd22e7445c163835a02840",
+        "evidence/pilot/predictor/analysis_data.pkl": "artifact:sha256:61898f9a3c40149cc61a0bf24feed7e6b7fc60ff66897ec0ad5fbbfa932392ea",
+        "evidence/pilot/predictor/model_data.pkl": "artifact:sha256:62fa130fb02a0807937d834fce2a2cd1bf3feb3883b812de195d53cc11479502",
+        "evidence/pilot/predictor/predictor.py": "artifact:sha256:39709233b180945f04377978ec351f5308c2fc721a84cc4faecfccc68d83dcc2",
+        "evidence/pilot_summary.json": "artifact:sha256:ebedcbaebde1e8ff6294b0669a6b19a05c9a09078ef6e77758859bcaf51da76b",
+        "evidence/preparation/origin.json": "artifact:sha256:a78b4c17101dad1e50dc35fc0a53a1f3f6021b28f367e945d0d740e3c05a4b7e",
+        "evidence/programs.json": "artifact:sha256:876a34885cf08520b8e1b52f3f353ae17949ceff4eacd0fc6224e6b06fbf8fb3",
+        "evidence/reference-demo/reference_check.json": "artifact:sha256:abff4e1f970ac85eb61889cc42c974a349a3b2236f3b972d8cbff8ce15cf8dae",
+        "evidence/science/act_delayed/observations.npz": "artifact:sha256:b0ec198eeaea0c4bf81bd18b7840fe2814e454be9666f6c198fd3fe19916784b",
+        "evidence/science/act_delayed/receipt.json": "artifact:sha256:8dd29d46ab2cbced741160cb8abbe9a1a9ecb603f7ffa9853b5a75570f088b37",
+        "evidence/science/act_strong/observations.npz": "artifact:sha256:819c30890c0ada114e285375d16adbfe97fd952fadeae56a31f88b84b41e56b8",
+        "evidence/science/act_strong/receipt.json": "artifact:sha256:57187f0be8f1dac8c87ff45a486b5e4570c4d8628964dba09c6e6885dd114bd2",
+        "evidence/science/act_then_partner/observations.npz": "artifact:sha256:bb5e2f8fcf76f326aa2a0bd47c4fec1175e63ccaec564264c3579b199017c924",
+        "evidence/science/act_then_partner/receipt.json": "artifact:sha256:47a2a0468442c5a43c8422dd4a449f47c79294d2f2a26334b8f5faf7fe68db9f",
+        "evidence/science/act_weak/observations.npz": "artifact:sha256:a9c1dc032b0506206fdfdb3f55401a22d5a9bed91f9beb6867b714435221ab50",
+        "evidence/science/act_weak/receipt.json": "artifact:sha256:02fbfc57a15aaf35d3f3ca90d9abfd1ff4067bffeb7cc45b96c8ebd25e92011d",
+        "evidence/science/cross_feedback/observations.npz": "artifact:sha256:816efad3d1d03f9ddedb80779c21fa8bc2414e7a8d2e50a58329da38c4ec8a10",
+        "evidence/science/cross_feedback/receipt.json": "artifact:sha256:77ce7466348b79da04095972b09a12f5974d5176365dd6739f72b142337a166e",
+        "evidence/science/partner_delayed/observations.npz": "artifact:sha256:910ce59ab7c901da989880c5af716cfd40dfda2dc466e398d028558707a9154c",
+        "evidence/science/partner_delayed/receipt.json": "artifact:sha256:131dd89a17bf9eb289fbee5aa7aee21ac160ec3393b6699973d2bbdd36018d66",
+        "evidence/science/partner_pulse/observations.npz": "artifact:sha256:eaac6e6553663c330a9046e271185dd84927f21c89af0b1caa0e0645286a5aec",
+        "evidence/science/partner_pulse/receipt.json": "artifact:sha256:e4935fcb4eda145a730d62a4afcf560d32f1f79883f2ec445c26e440ce22f903",
+        "evidence/science/probe_shift/observations.npz": "artifact:sha256:3292d383c0550391757144e231e1cc0535b96e19e42da3f8cb4522c2d7c46dcf",
+        "evidence/science/probe_shift/receipt.json": "artifact:sha256:617a07e8b6390305648e3640d2307778a2140e55442595c3443b7d64acd6aad5",
+        "evidence/science/probe_wide/observations.npz": "artifact:sha256:150979e7ccce719b050889d8321c4febdff08dd92766f378d26f2c1faaf66f48",
+        "evidence/science/probe_wide/receipt.json": "artifact:sha256:20d69860c7044f8b7e7f6e4b57e6c83fbd37f4668f06c7dfad6c147910c7ea69",
+        "evidence/science/sham/observations.npz": "artifact:sha256:c588994c9f8f44d0d48363ac1d0c7fde9ef5d41004ea2bc5606b4f0a4d723dc0",
+        "evidence/science/sham/receipt.json": "artifact:sha256:c5a1ce4ae67e9a5d977d8c7c8fe51ace65b46bb30dd9985d87e4047715fb42b9",
+        "evidence/science/slow_feedback/observations.npz": "artifact:sha256:50cfb50678df1a77c292dd81c67120b833b73692d1d27aedd7eff7d5224c0798",
+        "evidence/science/slow_feedback/receipt.json": "artifact:sha256:9c5b0693165d089eb27c70794de91c99f4596775961461d4079a5d78da9c1b16"
+      },
+      "genome": "genome:sha256:18b93402aa8569e99df1f53a74375ab15e324ab0d5f203fa751ee082344d4d53",
+      "links": {
+        "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+        "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+        "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+        "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106",
+        "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc"
+      },
+      "name": "xv_rotor_lab",
+      "recipe": "recipe:sha256:f458c91a69647eb2016f11e0fea524106ca40215d75b3436cacda0b4bc07ca4e",
+      "run": "generation-run:sha256:7feb9234791cd1a0ceb99fbeb8a39f58c2e4fcfc15e540aeb3265bf000c09912",
+      "source": {
+        "kind": "fresh-simulation-preparation",
+        "origin": {
+          "implementation": {
+            "blobkit_version": "0.3.5",
+            "reference_dependencies": {
+              "numpy": "2.5.2",
+              "scipy": "1.18.0"
+            },
+            "source_sha256": {
+              "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+              "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+              "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+              "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+              "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+            }
+          },
+          "noise_coefficient": 0.002,
+          "noise_policy": "independent-experiment-v1",
+          "original_time": 2500,
+          "recipe_sha256": "35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+          "selection": "First independently simulated preparation; apparatus centered by fixed activator-0 maximum rule.",
+          "source": "outputs/phenomenology-20260913/xv_pair_coupled_s12001",
+          "source_fields_sha256": "4374ff8f7c8c769bf5ae15cdc54567c1f4d2904ebd94fa551636ecdeb0031d0c",
+          "world": "xv"
+        },
+        "scope": "One prepared laboratory and its verified evaluation suite."
+      },
+      "status": "eval-ready",
+      "evaluation": {
+        "references": {
+          "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+          "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+          "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc",
+          "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+          "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106"
+        },
+        "evidence": [
+          "artifact:sha256:a359c3080e0ede30958ae9293851b8d77ab9726efdc96a623549c7665c1c9b70",
+          "artifact:sha256:abff4e1f970ac85eb61889cc42c974a349a3b2236f3b972d8cbff8ce15cf8dae",
+          "artifact:sha256:09055fc9f465dde85b5311bad7d35a9edcdf7a110a22b2ef7d20c6c751744f98",
+          "artifact:sha256:a78b4c17101dad1e50dc35fc0a53a1f3f6021b28f367e945d0d740e3c05a4b7e",
+          "artifact:sha256:876a34885cf08520b8e1b52f3f353ae17949ceff4eacd0fc6224e6b06fbf8fb3",
+          "artifact:sha256:ebedcbaebde1e8ff6294b0669a6b19a05c9a09078ef6e77758859bcaf51da76b",
+          "artifact:sha256:1a1b4f4b35d5502257bc929e5f5798cd5e2aadde40c5caae83a628440e3b325b",
+          "artifact:sha256:c1cd50f0bdf35ae61d42bcc04a9351a44165f2dc46326b74a426737724860d44",
+          "artifact:sha256:6614b138af0d3d495d0481c4816a029fda7473f5e04af19dfb303657b87cf8b3",
+          "artifact:sha256:e180981fd0d39027e0b2d8d38a16d51e600eddc4ecec0e8f60bdfc30ef2c2000",
+          "artifact:sha256:b48b4a092cd2ebdd8bfb87430b36dfccbd0c63f3b484ab5ec198b8ac4a1871ba",
+          "artifact:sha256:dd3fb9fe7ef1ab641615671be12cab60311fba799ff2608833dfb2a05e6333d5",
+          "artifact:sha256:f5feacba017a74d02dcaf2b6ccd0fbc2015300e655476ae326112f7a508c5e83",
+          "artifact:sha256:657174ba335855a840c8966ad20da688354c5eb5bb093bb37b7842761928a55e",
+          "artifact:sha256:407fff5dffba6fd39811a5c4f4bfb298f8a179ddab8ddd1da42ae284c8635293",
+          "artifact:sha256:9df019ddc6cdc4664ae6c68e0dc230eb64f142e6a758a6c838c5cc843d9957c4",
+          "artifact:sha256:0055949e438481e49c4ed24207e7643de84e372b0feb6a5b4e199c17128b5dd8",
+          "artifact:sha256:a6161dad2b5c9a8bca692e32771b7084a56ab36e322fa98af60ed0506958a1d3",
+          "artifact:sha256:b4e7ae1221c834bbd292506e4206307d80a063f59f331cd52b238084cf2bd5ce",
+          "artifact:sha256:e081a852d7169352c5f1e5565c39af7352bd30aec7b9386464ac2a1676b2dffe",
+          "artifact:sha256:57682e9310fa4e7ab047ca390e4944bbd728360f1c1aa461fef313483848d750",
+          "artifact:sha256:94aa3b1f9e2910d86ac71f2ddedcfa82ec869937eccd22e7445c163835a02840",
+          "artifact:sha256:61898f9a3c40149cc61a0bf24feed7e6b7fc60ff66897ec0ad5fbbfa932392ea",
+          "artifact:sha256:62fa130fb02a0807937d834fce2a2cd1bf3feb3883b812de195d53cc11479502",
+          "artifact:sha256:39709233b180945f04377978ec351f5308c2fc721a84cc4faecfccc68d83dcc2",
+          "artifact:sha256:c5767d8f4ff56e07053379ac9ffb88b75961830bb15de8f05006b1931fb97696",
+          "artifact:sha256:b0ec198eeaea0c4bf81bd18b7840fe2814e454be9666f6c198fd3fe19916784b",
+          "artifact:sha256:8dd29d46ab2cbced741160cb8abbe9a1a9ecb603f7ffa9853b5a75570f088b37",
+          "artifact:sha256:819c30890c0ada114e285375d16adbfe97fd952fadeae56a31f88b84b41e56b8",
+          "artifact:sha256:57187f0be8f1dac8c87ff45a486b5e4570c4d8628964dba09c6e6885dd114bd2",
+          "artifact:sha256:bb5e2f8fcf76f326aa2a0bd47c4fec1175e63ccaec564264c3579b199017c924",
+          "artifact:sha256:47a2a0468442c5a43c8422dd4a449f47c79294d2f2a26334b8f5faf7fe68db9f",
+          "artifact:sha256:a9c1dc032b0506206fdfdb3f55401a22d5a9bed91f9beb6867b714435221ab50",
+          "artifact:sha256:02fbfc57a15aaf35d3f3ca90d9abfd1ff4067bffeb7cc45b96c8ebd25e92011d",
+          "artifact:sha256:816efad3d1d03f9ddedb80779c21fa8bc2414e7a8d2e50a58329da38c4ec8a10",
+          "artifact:sha256:77ce7466348b79da04095972b09a12f5974d5176365dd6739f72b142337a166e",
+          "artifact:sha256:910ce59ab7c901da989880c5af716cfd40dfda2dc466e398d028558707a9154c",
+          "artifact:sha256:131dd89a17bf9eb289fbee5aa7aee21ac160ec3393b6699973d2bbdd36018d66",
+          "artifact:sha256:eaac6e6553663c330a9046e271185dd84927f21c89af0b1caa0e0645286a5aec",
+          "artifact:sha256:e4935fcb4eda145a730d62a4afcf560d32f1f79883f2ec445c26e440ce22f903",
+          "artifact:sha256:3292d383c0550391757144e231e1cc0535b96e19e42da3f8cb4522c2d7c46dcf",
+          "artifact:sha256:617a07e8b6390305648e3640d2307778a2140e55442595c3443b7d64acd6aad5",
+          "artifact:sha256:150979e7ccce719b050889d8321c4febdff08dd92766f378d26f2c1faaf66f48",
+          "artifact:sha256:20d69860c7044f8b7e7f6e4b57e6c83fbd37f4668f06c7dfad6c147910c7ea69",
+          "artifact:sha256:c588994c9f8f44d0d48363ac1d0c7fde9ef5d41004ea2bc5606b4f0a4d723dc0",
+          "artifact:sha256:c5a1ce4ae67e9a5d977d8c7c8fe51ace65b46bb30dd9985d87e4047715fb42b9",
+          "artifact:sha256:50cfb50678df1a77c292dd81c67120b833b73692d1d27aedd7eff7d5224c0798",
+          "artifact:sha256:9c5b0693165d089eb27c70794de91c99f4596775961461d4079a5d78da9c1b16"
+        ]
+      }
+    },
+    {
+      "id": "world-record:sha256:5d47391ad240b5108c33e8222aeb078de96e15329a176f909b8141668c7440c0",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:7fbc88225663cd76cfae485b018cf083fba013bc16bed5af62cd207c75295a38",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:53ca2712649f5786149b32a17c74f8167f595cdce8ea3bb99bc0ae561fa20449",
+      "links": {},
+      "name": "m4",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "reference",
+          "orig": {
+            "Du": 1.0,
+            "Dv": 1.0,
+            "Dw": 20.0,
+            "k1": -0.7,
+            "k3": 1.0,
+            "k4": 1.5,
+            "lam": 2.0,
+            "tau": 3.0,
+            "theta": 0.7
+          },
+          "source": "M4 A=4 family"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_m4",
+        "original_source": "built:complexity/worlds.py:m4",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:5f1e5720001a4a6b98368d0090f9b274e2438cf4fc847f0f627cc6948a0ebe92",
+      "artifacts": {
+        "bundle/apparatus.json": "artifact:sha256:2e96ff4e7a498c0fc1baae3e00410cfdc76bfce10c133d3bf2655d19c6f8dce5",
+        "bundle/checks.json": "artifact:sha256:be4a36732bb06b4989797f28174e651a51c35be5373e65c591469de524ec4402",
+        "bundle/manifest.json": "artifact:sha256:fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+        "bundle/preparation.npz": "artifact:sha256:de9dda65ef430cd70353e472a956c32df462a5bb33b41641e26ced0b07bd68f8",
+        "bundle/suite.json": "artifact:sha256:e8ff657af18f682a424fd31ef43d8cf27fc20bb410f616943f5f6b340771906a",
+        "bundle/truth/c001.npz": "artifact:sha256:6a13f71020f83c24b1f6f681d3fbf287541f4ad3309076fa52786ac79c03f7de",
+        "bundle/truth/c002.npz": "artifact:sha256:8ed52bfe2887a2aac4eabf7ff7319ff992a02d4383321cc80cab83cd42679f13",
+        "bundle/truth/c003.npz": "artifact:sha256:a753e73a4a2d672dde0b91b240af3f2c5c9c5c9ab8e1ff97a19896106da6cb57",
+        "bundle/truth/c004.npz": "artifact:sha256:b13fdd364fb0ec575d656502131ec37c99e9100e990cac798eff121848c624bb",
+        "bundle/truth/c005.npz": "artifact:sha256:c9d8392a7262a59f0769a0b4eaa05d9b0c43c398b06be0c698cc2d2df798c88b",
+        "bundle/truth/c006.npz": "artifact:sha256:b027ae064e60def49e4448ce0d2fbec8ed4b624697ebf62fc1de8918652acc76",
+        "bundle/truth/c007.npz": "artifact:sha256:307fad27ee4c4c89c75ddabebf271297bc4d3528adc509d699b240cf2b1cbaa4",
+        "bundle/truth/c008.npz": "artifact:sha256:2fae338b4dfa72eb950e7e9ccff68916979f6b8b78b003123a128c1b8167fb5b",
+        "bundle/truth/c009.npz": "artifact:sha256:f30ace6077fc89e86112c99640ec4f89cab27497075e4ecb1d8c7c79edfe8f5a",
+        "bundle/truth/c010.npz": "artifact:sha256:787d2d6da16b3e3852d8efef3520703be56657b70ed1bda9335a95316fc9ed38",
+        "bundle/truth/c011.npz": "artifact:sha256:364e2fa48efc44f8f6676cbf04568382d29939d00982164fe19ec27afe97127f",
+        "bundle/world.json": "artifact:sha256:d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038",
+        "evidence/causal/result.json": "artifact:sha256:1f18ab2af64de86412934feb6510872504b4b6764a07f1ab22b50a09a4daa08f",
+        "evidence/control_summary.json": "artifact:sha256:9072f069b1d4e7df253b59da795a5913113ffa1918d7d3d454b354d69dd3af2f",
+        "evidence/native_validation.json": "artifact:sha256:cace7f574b09a01011e2641390a2cda5d7123b73690f9f39bcda42dc65e713fe",
+        "evidence/pilot/config.toml": "artifact:sha256:bacf2056f75fb9839ca8dc84ac19f99a9f27300bb42eb0a9741be1c7e68b8e3b",
+        "evidence/pilot/grade.json": "artifact:sha256:de8a72b1b9a0cbf163feb7e9a7b0b80adbf8a72966d34956434c858c3ac72bd3",
+        "evidence/pilot/observations/experiment_001.npz": "artifact:sha256:6512815bd61b2f74585d648c81d0fd6c746f8d1323d138534563310a8ca2c51d",
+        "evidence/pilot/observations/experiment_002.npz": "artifact:sha256:9c4cc4d67c570955915d812a01d1f0ed4f7e7b844e4dadcb07d6ec3151122e8f",
+        "evidence/pilot/observations/experiment_003.npz": "artifact:sha256:cb99c1703c4b3309e5ee35a64457188a29fa605b92482c205a7e88639f0a4e4a",
+        "evidence/pilot/observations/experiment_004.npz": "artifact:sha256:d619e97c94dec519716af922d390deca52a106b01fd24b2d5218991bc610ba4d",
+        "evidence/pilot/observations/experiment_005.npz": "artifact:sha256:78575282982876326c9b2b2411032923e5010c60ed8546ec5af4cc937661d758",
+        "evidence/pilot/observations/experiment_006.npz": "artifact:sha256:48ddf9aa09060a93ad28f877763ac860197013c51238e5f304bc6184b4ed1162",
+        "evidence/pilot/observations/experiment_007.npz": "artifact:sha256:007ea5f6703b084ac43fec768ba60180bfdff86f637da8bfc7939738257080f0",
+        "evidence/pilot/observations/experiment_008.npz": "artifact:sha256:e5bb6dd22d34faa4b0181af267c694da0c1c2ed301ee8c766050a05190bd9079",
+        "evidence/pilot/observations/experiment_009.npz": "artifact:sha256:907aa8238b3438886c3602eaa703f40df583ab2fa523d7dcdad7124ae0c4d66c",
+        "evidence/pilot/observations/experiment_010.npz": "artifact:sha256:2075aab4501042fc180824eb20b17faf9e90305a6f960480324f0b9ac36e46a1",
+        "evidence/pilot/observations/experiment_011.npz": "artifact:sha256:bd43834d97322eee839469da6c026834dae715cae22396d2bd766e44dd40709d",
+        "evidence/pilot/observations/experiment_012.npz": "artifact:sha256:745e34a83047b71ab1c345a20149973a2e183fabe889fdc6ede72582ba92661e",
+        "evidence/pilot/predictor/AGENT_SPEC.md": "artifact:sha256:a7bf456a2aa9c13b4b6258ed1ee84a60376e08bce8bea981fb2a48c3c5e7dcab",
+        "evidence/pilot/predictor/predictor.py": "artifact:sha256:9db1610bf428ed801b88225b877e3c0e8b18a921e00c366d071435af84d481bb",
+        "evidence/pilot_summary.json": "artifact:sha256:1d56414373daa116aba4f113b8af6e1e65d8b82799066838df8dc49af2e28b9b",
+        "evidence/preparation/origin.json": "artifact:sha256:a0dca1260d5d26c16d014c85ad5b9853174af35e280e5477d79126d3238f2aad",
+        "evidence/programs.json": "artifact:sha256:862f1ac94639ff2211ec25150f21f01d16248432bb26762baa2be57e8d792c1a",
+        "evidence/reference-demo/reference_check.json": "artifact:sha256:c8444b8dac9a8f36ee3c4d1d28f4579479eb68edd79a52c839c4064ac02220e6",
+        "evidence/science/act_delayed/observations.npz": "artifact:sha256:7a14c83536f32f9675b4b8a371690a576da9ce15459cc834ce864c5c73f08bd0",
+        "evidence/science/act_delayed/receipt.json": "artifact:sha256:6d726e1bd175acc95f4e7dd11cb00e9a4edbf8c76c3d65dfe1e04d8e4c4cd63f",
+        "evidence/science/act_strong/observations.npz": "artifact:sha256:1b052e7fb226d3a1c38bd1834a75025b7a2b88012ddab26b36db44e5ea5324de",
+        "evidence/science/act_strong/receipt.json": "artifact:sha256:8497992a7de7cd478c5308c6fb9f727b9fa4b61ad48d29d4c62936402a24e386",
+        "evidence/science/act_then_trail/observations.npz": "artifact:sha256:b7fb56ef39cd0db0d18492067d4e90b70e42b4807b9f14644e1f38603d02df1b",
+        "evidence/science/act_then_trail/receipt.json": "artifact:sha256:96d3a1e27e8094185ccf65d5c9228084f1c5570b70c48b830327c6098fadded2",
+        "evidence/science/act_weak/observations.npz": "artifact:sha256:08a3b7132877330c518cff08d1171ab4f192d97dd9b8d1e5299f646fd9e22c7d",
+        "evidence/science/act_weak/receipt.json": "artifact:sha256:c33a2228b4e4c265d17ca4b6997ab2e7f6a6d2a36ca0b20be2428bb4a7a60738",
+        "evidence/science/fast_inhibitor/observations.npz": "artifact:sha256:8f70941f8e6f6b77ba88d407babae1bbbbb1c7da26eece98cec45feaf300e2d2",
+        "evidence/science/fast_inhibitor/receipt.json": "artifact:sha256:4cb8617d90c838dcd9eaabd9a097193a304d5a0fff3e4e5ea245fdacd00a7764",
+        "evidence/science/probe_shift/observations.npz": "artifact:sha256:2ad2b4efdc3d31ae0f2655ce5a9526138ebd58e420b2371f20a01949173fa7bc",
+        "evidence/science/probe_shift/receipt.json": "artifact:sha256:8ffe6226c8457979038ec1ec5686b5ee1ddcff8f6ae1eae7cd72ff2e24735445",
+        "evidence/science/probe_wide/observations.npz": "artifact:sha256:903312e9b3fb19c9fff3bc5bf32972b3348defc8fcd5b563fba79f777aa77bbd",
+        "evidence/science/probe_wide/receipt.json": "artifact:sha256:cf67c3f0b92efcfcadf6771e3dcb432ce11f55bf68db2bc300bb6bc50f79e05c",
+        "evidence/science/sham/observations.npz": "artifact:sha256:b5e775554776a3d8489e161a8c12c561cc56dfb95ab7900473623924013ce647",
+        "evidence/science/sham/receipt.json": "artifact:sha256:8ee55df191979a5b6a8e18db16a92c4266d575cf9cef05736422fc18c3594f3f",
+        "evidence/science/trail_high/observations.npz": "artifact:sha256:89bf51b10a6d18f4e74ce0ecd51ffc91c96db4413dd78874bfda9f18a188811f",
+        "evidence/science/trail_high/receipt.json": "artifact:sha256:09483e715e0449eb10d973111829b611ee52d9d8651dcc175d87fd8b9af739fb",
+        "evidence/science/trail_low/observations.npz": "artifact:sha256:30648b5ca8cd57b020b10d43d78af90fab8d1af5a112059b9cfe2ae7a57343d8",
+        "evidence/science/trail_low/receipt.json": "artifact:sha256:3c5543b8c7110267c83b039e7d02ac2635ef39a1deb694644796b0291d4974af",
+        "evidence/science/trail_mid/observations.npz": "artifact:sha256:c34347e3dc39f21b3580e810a62dcfb9ce75e8eb635b87be741ab968dbed352f",
+        "evidence/science/trail_mid/receipt.json": "artifact:sha256:380501768b9d976ff93ff92394f708b15bef26272a6dc1598b732fbdba1f6ed6"
+      },
+      "genome": "genome:sha256:9d4db94afaef09e577b85a4e33f550595a650085a6c157da6b5d3b8df0d92b7b",
+      "links": {
+        "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+        "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+        "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+        "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de",
+        "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9"
+      },
+      "name": "bf_trail_lab",
+      "recipe": "recipe:sha256:98b9f406c6edf7e6a0879861bb7989d4de6882e8b1868decca97ca9505031e78",
+      "run": "generation-run:sha256:6ce9db328907142f6d9aa0ee5dd52a9b38b4ca8f1100546edb3e60ee8467ad40",
+      "source": {
+        "kind": "fresh-simulation-preparation",
+        "origin": {
+          "implementation": {
+            "blobkit_version": "0.3.5",
+            "reference_dependencies": {
+              "numpy": "2.5.2",
+              "scipy": "1.18.0"
+            },
+            "source_sha256": {
+              "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+              "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+              "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+              "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+              "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+            }
+          },
+          "noise_coefficient": 0.002,
+          "noise_policy": "independent-experiment-v1",
+          "original_time": 2500,
+          "recipe_sha256": "042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28",
+          "selection": "First independently simulated preparation; apparatus centered by fixed activator-0 maximum rule.",
+          "source": "outputs/phenomenology-20260913/bf_s11001",
+          "source_fields_sha256": "c40ffe28cebe33ef43f9e8f446672e6e33b1e93ce1e7ec869a8e03bc3a58b760",
+          "world": "bf"
+        },
+        "scope": "One prepared laboratory and its verified evaluation suite."
+      },
+      "status": "eval-ready",
+      "evaluation": {
+        "references": {
+          "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+          "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+          "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+          "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+          "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+        },
+        "evidence": [
+          "artifact:sha256:cace7f574b09a01011e2641390a2cda5d7123b73690f9f39bcda42dc65e713fe",
+          "artifact:sha256:c8444b8dac9a8f36ee3c4d1d28f4579479eb68edd79a52c839c4064ac02220e6",
+          "artifact:sha256:9072f069b1d4e7df253b59da795a5913113ffa1918d7d3d454b354d69dd3af2f",
+          "artifact:sha256:a0dca1260d5d26c16d014c85ad5b9853174af35e280e5477d79126d3238f2aad",
+          "artifact:sha256:862f1ac94639ff2211ec25150f21f01d16248432bb26762baa2be57e8d792c1a",
+          "artifact:sha256:1d56414373daa116aba4f113b8af6e1e65d8b82799066838df8dc49af2e28b9b",
+          "artifact:sha256:1f18ab2af64de86412934feb6510872504b4b6764a07f1ab22b50a09a4daa08f",
+          "artifact:sha256:de8a72b1b9a0cbf163feb7e9a7b0b80adbf8a72966d34956434c858c3ac72bd3",
+          "artifact:sha256:6512815bd61b2f74585d648c81d0fd6c746f8d1323d138534563310a8ca2c51d",
+          "artifact:sha256:9c4cc4d67c570955915d812a01d1f0ed4f7e7b844e4dadcb07d6ec3151122e8f",
+          "artifact:sha256:cb99c1703c4b3309e5ee35a64457188a29fa605b92482c205a7e88639f0a4e4a",
+          "artifact:sha256:d619e97c94dec519716af922d390deca52a106b01fd24b2d5218991bc610ba4d",
+          "artifact:sha256:78575282982876326c9b2b2411032923e5010c60ed8546ec5af4cc937661d758",
+          "artifact:sha256:48ddf9aa09060a93ad28f877763ac860197013c51238e5f304bc6184b4ed1162",
+          "artifact:sha256:007ea5f6703b084ac43fec768ba60180bfdff86f637da8bfc7939738257080f0",
+          "artifact:sha256:e5bb6dd22d34faa4b0181af267c694da0c1c2ed301ee8c766050a05190bd9079",
+          "artifact:sha256:907aa8238b3438886c3602eaa703f40df583ab2fa523d7dcdad7124ae0c4d66c",
+          "artifact:sha256:2075aab4501042fc180824eb20b17faf9e90305a6f960480324f0b9ac36e46a1",
+          "artifact:sha256:bd43834d97322eee839469da6c026834dae715cae22396d2bd766e44dd40709d",
+          "artifact:sha256:745e34a83047b71ab1c345a20149973a2e183fabe889fdc6ede72582ba92661e",
+          "artifact:sha256:a7bf456a2aa9c13b4b6258ed1ee84a60376e08bce8bea981fb2a48c3c5e7dcab",
+          "artifact:sha256:9db1610bf428ed801b88225b877e3c0e8b18a921e00c366d071435af84d481bb",
+          "artifact:sha256:bacf2056f75fb9839ca8dc84ac19f99a9f27300bb42eb0a9741be1c7e68b8e3b",
+          "artifact:sha256:7a14c83536f32f9675b4b8a371690a576da9ce15459cc834ce864c5c73f08bd0",
+          "artifact:sha256:6d726e1bd175acc95f4e7dd11cb00e9a4edbf8c76c3d65dfe1e04d8e4c4cd63f",
+          "artifact:sha256:1b052e7fb226d3a1c38bd1834a75025b7a2b88012ddab26b36db44e5ea5324de",
+          "artifact:sha256:8497992a7de7cd478c5308c6fb9f727b9fa4b61ad48d29d4c62936402a24e386",
+          "artifact:sha256:b7fb56ef39cd0db0d18492067d4e90b70e42b4807b9f14644e1f38603d02df1b",
+          "artifact:sha256:96d3a1e27e8094185ccf65d5c9228084f1c5570b70c48b830327c6098fadded2",
+          "artifact:sha256:08a3b7132877330c518cff08d1171ab4f192d97dd9b8d1e5299f646fd9e22c7d",
+          "artifact:sha256:c33a2228b4e4c265d17ca4b6997ab2e7f6a6d2a36ca0b20be2428bb4a7a60738",
+          "artifact:sha256:8f70941f8e6f6b77ba88d407babae1bbbbb1c7da26eece98cec45feaf300e2d2",
+          "artifact:sha256:4cb8617d90c838dcd9eaabd9a097193a304d5a0fff3e4e5ea245fdacd00a7764",
+          "artifact:sha256:2ad2b4efdc3d31ae0f2655ce5a9526138ebd58e420b2371f20a01949173fa7bc",
+          "artifact:sha256:8ffe6226c8457979038ec1ec5686b5ee1ddcff8f6ae1eae7cd72ff2e24735445",
+          "artifact:sha256:903312e9b3fb19c9fff3bc5bf32972b3348defc8fcd5b563fba79f777aa77bbd",
+          "artifact:sha256:cf67c3f0b92efcfcadf6771e3dcb432ce11f55bf68db2bc300bb6bc50f79e05c",
+          "artifact:sha256:b5e775554776a3d8489e161a8c12c561cc56dfb95ab7900473623924013ce647",
+          "artifact:sha256:8ee55df191979a5b6a8e18db16a92c4266d575cf9cef05736422fc18c3594f3f",
+          "artifact:sha256:89bf51b10a6d18f4e74ce0ecd51ffc91c96db4413dd78874bfda9f18a188811f",
+          "artifact:sha256:09483e715e0449eb10d973111829b611ee52d9d8651dcc175d87fd8b9af739fb",
+          "artifact:sha256:30648b5ca8cd57b020b10d43d78af90fab8d1af5a112059b9cfe2ae7a57343d8",
+          "artifact:sha256:3c5543b8c7110267c83b039e7d02ac2635ef39a1deb694644796b0291d4974af",
+          "artifact:sha256:c34347e3dc39f21b3580e810a62dcfb9ce75e8eb635b87be741ab968dbed352f",
+          "artifact:sha256:380501768b9d976ff93ff92394f708b15bef26272a6dc1598b732fbdba1f6ed6"
+        ]
+      }
+    },
+    {
+      "id": "world-record:sha256:650ae9a9935150270d7baccfe2a621ec7aea1130e96be1cf7833ad017954e3bf",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:7c3032594ea0c6e43e25add8855f6989270b18ba74d07b586679e3777d7d623c",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:e145ac7db30fe359d4dcd538906f750192d27288bd55f29a6e34227495b11f1b",
+      "links": {},
+      "name": "rail_111_17",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "jitter",
+          "ref": "e1_9508",
+          "sigma": 0.15,
+          "sigma_d": 0.4
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "rail_111_17",
+        "original_source": "l0/deepsearch/seeds/rail_111_17.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:7f75326ecee9de5a5a170c79fec8f8f3e2788d7531c0b2d0a0fddedcf7eb1cf9",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:15a887a45f49e1af0599ad464d6b3b4dab9710c04f67ad159d175a2b058d7e2e",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:cdc7eb921a4473292fbb8df16e130df53d709074a9b55a41c9652a6db1d9bf35",
+      "links": {},
+      "name": "ds6_000",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "evolve",
+          "moves": [
+            "D0",
+            "D1",
+            "tau3",
+            "D3",
+            "D4",
+            "thr5",
+            "sc5",
+            "Du1",
+            "k11"
+          ],
+          "op": "mutate",
+          "parents": [
+            "ds4_020"
+          ]
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "ds6_000",
+        "original_source": "l0/complexity/genomes_v2/ds6_000.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:874237337627bd0e447f9814b223cda5e887e05b58e4d457a807e49b69a2ecc1",
+      "candidate": "candidate:sha256:83219cf3c67417dfa659855cf9964260cb7b3b9e30842108f4afbf07f6e31214",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:53ca2712649f5786149b32a17c74f8167f595cdce8ea3bb99bc0ae561fa20449",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 21.89910195808293
+      },
+      "name": "small-mass-search/g0/1",
+      "parents": [],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 21.89910195808293,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:8c3bc4bd886829ee14607702b1c0305c1d64746f47781ab2a84aa546c104e9a4",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:8869bc6f46d1a7f5085abe097eac7bfd7ac66d96f6b201b029b72e2defb5171f",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:18b93402aa8569e99df1f53a74375ab15e324ab0d5f203fa751ee082344d4d53",
+      "links": {},
+      "name": "xv",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "reference",
+          "orig": {
+            "eta12": 0.1,
+            "eta21": 0.1,
+            "tau1": 5.7,
+            "tau2": 2.5
+          },
+          "source": "M7 rotor RT1 ref point"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_xv",
+        "original_source": "built:complexity/worlds.py:xv",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:980660994a598d90346eeb63086a0a01cb96d47c84d76b158dcb79b96c9a83cf",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:d411efe30e46965322e13f5a734e952acf5b560e47adddc0639235b31540c522",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:cb524f47eacad8670b06beb6044f94857398cac67d4e95960adb5e0677d274f0",
+      "links": {},
+      "name": "s2_118_41",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "jitter",
+          "ref": "XV",
+          "sigma": 0.15,
+          "sigma_d": 0.4
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "s2_118_41",
+        "original_source": "l0/deepsearch/seeds/s2_118_41.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:a52b056a19832f17ae90bc9c241ac21221c63f90941d5e89ad59287b1677af6c",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:720a3b5125275965a4dc8aa55659dfc2410522e93102809a1ef2fc8691a847be",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:9e79a593e27a23145ffed8b99ff59eb96de1bea4b6251c2d0459e054d6d4bd13",
+      "links": {},
+      "name": "coex",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "jitter",
+          "ref": "e1_9508",
+          "sigma": 0.15,
+          "sigma_d": 0.4
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_coex",
+        "original_source": "built:complexity/worlds.py:coex",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:cace0bea6e790ef51cc5e0c4ca42a5a279b6787b7ec4d5583c720652b3252c83",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:1df73ef4c0daddf5573f3fe6fb29be9749fb18005e3f984a52b4321e3a0332d8",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:98458d19f5222172c6c1098e3112447373ecb242b57bf93d384b966aa33b6134",
+      "links": {},
+      "name": "pred",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "jitter",
+          "ref": "e1_9508",
+          "sigma": 0.15,
+          "sigma_d": 0.4
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_pred",
+        "original_source": "built:complexity/worlds.py:pred",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:daec7d5f9215bfcdf29b2b1cf192b6c6f0b69ed5bce98d68b65307a413a6c67c",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:f907d4359869931e8069c2ca07ec725b477b81268d13544f3f2300927a1c9dbc",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:7b887b60bd3b2c02688a0b9e1a24b899768141b1807e8065141e31a9a3d4abba",
+      "links": {},
+      "name": "s2_128_26",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "uniform"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "s2_128_26",
+        "original_source": "l0/deepsearch/seeds/s2_128_26.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:df6500cab36fa5d1f9bf1c97d450d6d8f83eeea204eb02e7dc5560a1d94f5889",
+      "candidate": "candidate:sha256:2f3bac4f6e6cfe6c04da955a73e0de4ec28f2b76b08eca80228f830ec2760949",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:e99278d82b286e57ebfb1313c343a069034b5f3ce8aad98c44cd77972c99bc91",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 13.352570939590333
+      },
+      "name": "small-mass-search/g0/0",
+      "parents": [],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 13.352570939590333,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:dfea350f322680515d10037984fffc8c26ed51501fe7857b3b518e7b67201622",
+      "candidate": "candidate:sha256:9819edd6d78b71e66c30d9728edeffd375ea96a9e0330d47abc122b6f12626f6",
+      "evaluation_bundle": null,
+      "genome": "genome:sha256:cdeda8b2d8012ca0622ef9f4096d6eb3197f565bbbe5f1c40cb1bcc56dd5128b",
+      "metrics": {
+        "horizon": 25.0,
+        "mean_mass": 13.36498378653095
+      },
+      "name": "small-mass-search/g1/0",
+      "parents": [
+        "candidate:sha256:2f3bac4f6e6cfe6c04da955a73e0de4ec28f2b76b08eca80228f830ec2760949"
+      ],
+      "preparation": null,
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "score": 13.36498378653095,
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:e8f1724d609bb41cb45951070377599310478e6a4ec201b66d8e680e2bb52a87",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:1f67d99976600f2f2ff89afc7aec5757e6a116e7226211b9597cc8bc695c7859",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:4db15f8c813b682199adcb63f20ef219f3b8c93fb8f7d08187fff26b982d9884",
+      "links": {},
+      "name": "ds3_014",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "eta": 0.06486774959101578,
+          "kind": "evolve",
+          "op": "merge_cross_edge",
+          "parents": [
+            "g0_jit_11",
+            "engine_10748"
+          ],
+          "symmetric": true
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "ds3_014",
+        "original_source": "l0/complexity/genomes_v2/ds3_014.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:e92a96b64a4544dcc0c4c9da1263330a70c261768477109067836678d3c58df5",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:88b14046610879d60db4e31a8bed28d08b3697dbfee012f2155efc968a260f12",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:c1c958b5e413743b0152c2ffaedf1dd52fcca2febe0eb9c0dbd8698e970dc2d8",
+      "links": {},
+      "name": "engine_10748",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "extract",
+          "src": "s2_107_48_jit act1"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "engine_10748",
+        "original_source": "l0/stage3/engine_10748.json",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:ef738f147a6978914f9a080432d86f1174ee008b1fd9dc39a304b86c5a11e523",
+      "artifacts": {
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/cases/build_cases.py": "artifact:sha256:dd97f2191930de24b9887329cacd9f8ca292aa103b5286cdee4abc82b8739de6",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/native_supplemental/manifest.json": "artifact:sha256:89e92cbd56f92accdc2be3cc4c054107e3627eae699ccd253efe0a7f89e0e9ae",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/native_validation/manifest.json": "artifact:sha256:6aec33fa7622cc1cc215ad77d4f59f11e42f663cd95c0e2eee88d6d20a15ead9",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/origin.py": "artifact:sha256:829d495db95ec01d1599ab4988e667a71f2907c69d4f0f7f91858b7909bb40c7",
+        "source-record.json": "artifact:sha256:e09f647cc1c9e946e4a6a9111d2a55cde10fbeac1b3b2791536f49360ceb3802"
+      },
+      "genome": "genome:sha256:66f5978675ab2b05d791a2c965607e0367277b78629f6f3c3073bd1dd2d2304c",
+      "links": {
+        "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+        "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+        "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+        "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce",
+        "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2"
+      },
+      "name": "p4g2_044",
+      "recipe": "recipe:sha256:55ad59090f6e4645e1d2421d646fa38a38976b2190310d5aba1c980388f97732",
+      "run": "generation-run:sha256:8286c71cd8321ecf007573d7413afd68e612138a5203346b605b9186fa174b26",
+      "source": {
+        "genome_provenance": {
+          "dup_chans": [],
+          "kind": "evolve_v2",
+          "mode": "shared",
+          "op": "dup_act",
+          "parents": [
+            "p1g2_070"
+          ],
+          "src_act": 2
+        },
+        "kind": "historical-evolution",
+        "missing": [
+          "complete original evolutionary recipe and generation checkpoints"
+        ],
+        "original_source": "environments/physim/physim/blobdata/p4g2_044.json",
+        "recipe_status": "partial",
+        "recorded_measurements": {
+          "T_used": 20000.0,
+          "cand": "p4g2_044",
+          "cell": "4|switch|rotor|liquid|s2|g2",
+          "flags": {
+            "box_limit": true,
+            "box_persist": 1.0,
+            "box_span_frac": 1.0
+          },
+          "horizon": {
+            "T_used": 20000.0,
+            "n_ext": 3,
+            "traj": [
+              [
+                2500.0,
+                71.81
+              ],
+              [
+                5000.0,
+                78.83
+              ],
+              [
+                10000.0,
+                76.08
+              ],
+              [
+                20000.0,
+                82.47
+              ]
+            ],
+            "why": "converged"
+          },
+          "interest": 82.46726177839516,
+          "island": 4,
+          "note": "82.47 \u2014 3-seed confirmed (80.8/81.4 \u2014 most seed-stable elite); 4-species 21-organism minimal rotor; NO minted vertices (pure dup_act architecture); visually clean small-N world",
+          "seed": 928,
+          "seed2_interest": 80.77615697847152,
+          "seed3_interest": 81.3655991101312,
+          "summary": {
+            "C": {
+              "C1_popdyn": 0.7,
+              "C2_timescale": 1.0,
+              "C3_motion": 0.7732,
+              "C4_graph": 1.0,
+              "C5_memory": 0.6,
+              "C6_ecology": 1.0,
+              "C7_roles": 0.9743,
+              "C8_succession": 0.5
+            },
+            "d1": {
+              "model": "switch",
+              "n_end": 21.0,
+              "n_org_end": 20.0,
+              "n_stages": 2,
+              "org_growth": false,
+              "org_model": "switch",
+              "spp": 4,
+              "turn": 4.0059
+            },
+            "d2": {
+              "obs": "cover0",
+              "r_emerg": 34.54374030923063,
+              "slow": 2725.0
+            },
+            "d4": {
+              "mv": 0.5887196174135976,
+              "role": 0.9742890006352097,
+              "vc": 0.5452053017902567
+            },
+            "d5": {
+              "churn": 0.166232770262997,
+              "com": 0.010347178584986978,
+              "phase": "liquid",
+              "wind": 1.6533632903071425
+            },
+            "d6": {
+              "charging": 0,
+              "cover": 1.0,
+              "elong": 0.0,
+              "grade": 2,
+              "rmem": 123.59686899632977
+            },
+            "d7": {
+              "nsi": 4.0,
+              "w": [
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "flags": {
+              "box_limit": true,
+              "box_persist": 1.0,
+              "box_span_frac": 1.0
+            },
+            "horizon": {
+              "T_used": 20000.0,
+              "next": 3,
+              "why": "converged"
+            },
+            "interest": 82.47
+          }
+        }
+      },
+      "status": "eval-ready",
+      "evaluation": {
+        "references": {
+          "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+          "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+          "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+          "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce",
+          "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2"
+        },
+        "evidence": [
+          "artifact:sha256:89e92cbd56f92accdc2be3cc4c054107e3627eae699ccd253efe0a7f89e0e9ae",
+          "artifact:sha256:6aec33fa7622cc1cc215ad77d4f59f11e42f663cd95c0e2eee88d6d20a15ead9"
+        ]
+      }
+    },
+    {
+      "id": "world-record:sha256:f58dbd841bc5bf5dc21b93c8b84391a0c342d158952117621ca72d46d5f075f9",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:ea6393afa78b035b146228cd31b0c417426a8a3f42b0b24b76902780688789f6",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:69ee78d36b21f9878ae8ef319fe82b2f50838b564254725f0531711166367536",
+      "links": {},
+      "name": "mv3",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "engine": "base",
+          "eta": 0.6,
+          "kind": "machinev3",
+          "op": "block_sum+mimic",
+          "parents": [
+            "engine_10748",
+            "s2_128_26_uni"
+          ]
+        },
+        "kicks": {
+          "0": 0.5
+        },
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_mv3",
+        "original_source": "built:complexity/worlds.py:mv3",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:f8e55cb2a8db8b6a35068e4ba991a3a0e91fcf48cc0a71f6d93533f46eaab204",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:122e07dfb549793f328dff9dabe1d7b58798e207eeb430f5c386a78f519d6fe0",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:e99278d82b286e57ebfb1313c343a069034b5f3ce8aad98c44cd77972c99bc91",
+      "links": {},
+      "name": "m0",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "reference",
+          "orig": {
+            "Du": 1.0,
+            "Dv": 1.0,
+            "Dw": 20.0,
+            "k1": -0.7,
+            "k3": 1.0,
+            "k4": 1.5,
+            "lam": 2.0,
+            "tau": 3.0,
+            "theta": 0.7
+          },
+          "source": "M0 Day-0 blob"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_m0",
+        "original_source": "built:complexity/worlds.py:m0",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    },
+    {
+      "id": "world-record:sha256:fbd4767df9f27de0836d6d5ba286c666a2cd097d62fe0e902e02efd3bdc0f67e",
+      "artifacts": {
+        "original-genome.json": "artifact:sha256:8175170249f9ea51b085bd2537a3bb445463df4169b1e482b544b03d7468c3c7",
+        "packaged-extraction.json": "artifact:sha256:98aca9936fe55e229d08538c677d9c83086ba5cffbb39ce6d3d94cb4f2d3c1a5",
+        "probes/blobs/blobkit/MANIFEST.md": "artifact:sha256:2a7ef735ea9f5ea302203f49bab80d473459df72e246320e2499ba08aa1cc9c2",
+        "probes/blobs/blobkit/tools/extract_worlds.py": "artifact:sha256:bc6c9fc88d09d2fbbd12302e98d241ba6651cd440481bd3f303a3ca9a0429f31",
+        "probes/blobs/l0/complexity/worlds.py": "artifact:sha256:b55ddc1b5361dd605d06fbca776613c0e2f170a43079dfe8e15f62f2b86d7843"
+      },
+      "genome": "genome:sha256:9d4db94afaef09e577b85a4e33f550595a650085a6c157da6b5d3b8df0d92b7b",
+      "links": {},
+      "name": "bf",
+      "recipe": null,
+      "run": null,
+      "source": {
+        "genome_provenance": {
+          "kind": "reference",
+          "orig": {
+            "D_b": 0.0,
+            "gamma": 0.05,
+            "tau": 5.7,
+            "tau_b": 200.0
+          },
+          "source": "M6 bfield s2 point"
+        },
+        "kicks": null,
+        "kind": "historical-package-extraction",
+        "missing": [
+          "complete original generation recipe and execution record"
+        ],
+        "original_genome_id": "gt_bf",
+        "original_source": "built:complexity/worlds.py:bf",
+        "recipe_status": "partial"
+      },
+      "status": "preserved"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "config": {
+        "generations": 2,
+        "max_attempts": 100,
+        "offspring": 2,
+        "population": 2,
+        "seed": 19
+      },
+      "description": "A short, local example of the complete generation and provenance workflow.",
+      "entrypoint": "small_search.py",
+      "hooks": {
+        "evaluate": {
+          "module": "blobkit.generation",
+          "qualname": "SimulationEvaluator",
+          "source": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+          "state": {
+            "backend": "cpu",
+            "horizon": 25,
+            "metric": {
+              "module": "blobkit_recipe_6d58b352a9e4ccb6",
+              "qualname": "measure",
+              "source": "artifact:sha256:6d58b352a9e4ccb651ae36925a53ad70d00968724c17c913a6b21c1c72f5f13e",
+              "state": {
+                "closure": {},
+                "defaults": null,
+                "keyword_defaults": null
+              }
+            },
+            "options": {
+              "L": 32,
+              "n_soup": 1,
+              "noise": 0,
+              "workers": 1
+            }
+          }
+        },
+        "harvest": {
+          "module": "blobkit.generation",
+          "qualname": "HarvestAbove",
+          "source": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+          "state": {
+            "threshold": 0
+          }
+        },
+        "propose": {
+          "module": "blobkit.generation",
+          "qualname": "Variation",
+          "source": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+          "state": {
+            "max_fields": 24,
+            "mutation_options": {},
+            "recombination_options": {
+              "eta": 0.1
+            },
+            "recombination_probability": 0.25
+          }
+        },
+        "score": {
+          "module": "blobkit.generation",
+          "qualname": "MetricScore",
+          "source": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+          "state": {
+            "name": "mean_mass"
+          }
+        },
+        "select": {
+          "module": "blobkit.generation",
+          "qualname": "TopK",
+          "source": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+          "state": {}
+        }
+      },
+      "implementation": {
+        "packages": {
+          "blobkit": "0.3.5",
+          "numpy": "2.5.2",
+          "scipy": "1.18.0"
+        },
+        "python": "3.12.12",
+        "recipe_dependencies": {},
+        "source_table_sha256": "2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c"
+      },
+      "name": "small-mass-search",
+      "parameters": {
+        "purpose": "workflow-example",
+        "quality_claim": false
+      },
+      "seeds": [
+        "genome:sha256:e99278d82b286e57ebfb1313c343a069034b5f3ce8aad98c44cd77972c99bc91",
+        "genome:sha256:53ca2712649f5786149b32a17c74f8167f595cdce8ea3bb99bc0ae561fa20449"
+      ],
+      "sources": {
+        "hooks/62aff7e9834577ac_generation.py": "artifact:sha256:62aff7e9834577ac924e767f07e45ff144328aa2aa73a6f06bd5693fa574f010",
+        "hooks/6d58b352a9e4ccb6_small_search.py": "artifact:sha256:6d58b352a9e4ccb651ae36925a53ad70d00968724c17c913a6b21c1c72f5f13e",
+        "small_search.py": "artifact:sha256:6d58b352a9e4ccb651ae36925a53ad70d00968724c17c913a6b21c1c72f5f13e"
+      }
+    },
+    {
+      "id": "recipe:sha256:55ad59090f6e4645e1d2421d646fa38a38976b2190310d5aba1c980388f97732",
+      "entrypoint": null,
+      "known": {
+        "island": 4,
+        "operator": {
+          "dup_chans": [],
+          "kind": "evolve_v2",
+          "mode": "shared",
+          "op": "dup_act",
+          "parents": [
+            "p1g2_070"
+          ],
+          "src_act": 2
+        }
+      },
+      "missing": [
+        "full search settings",
+        "historical dependency snapshot",
+        "parent genomes and checkpoints"
+      ],
+      "name": "historical-p4g2_044",
+      "provenance_status": "partial",
+      "sources": {
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/cases/build_cases.py": "artifact:sha256:dd97f2191930de24b9887329cacd9f8ca292aa103b5286cdee4abc82b8739de6",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/native_supplemental/manifest.json": "artifact:sha256:89e92cbd56f92accdc2be3cc4c054107e3627eae699ccd253efe0a7f89e0e9ae",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/native_validation/manifest.json": "artifact:sha256:6aec33fa7622cc1cc215ad77d4f59f11e42f663cd95c0e2eee88d6d20a15ead9",
+        "probes/blobs/agentenv/round6/worked_example/p4g2_044/origin.py": "artifact:sha256:829d495db95ec01d1599ab4988e667a71f2907c69d4f0f7f91858b7909bb40c7",
+        "source-record.json": "artifact:sha256:e09f647cc1c9e946e4a6a9111d2a55cde10fbeac1b3b2791536f49360ceb3802"
+      }
+    },
+    {
+      "id": "recipe:sha256:98b9f406c6edf7e6a0879861bb7989d4de6882e8b1868decca97ca9505031e78",
+      "command": "python generators/physim/eval_preparation.py --world bf --source inputs/original --output replay",
+      "entrypoint": "generators/physim/eval_preparation.py",
+      "implementation": {
+        "blobkit_version": "0.3.5",
+        "reference_dependencies": {
+          "numpy": "2.5.2",
+          "scipy": "1.18.0"
+        },
+        "source_sha256": {
+          "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+          "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+          "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+          "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+          "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+        }
+      },
+      "kind": "prepared-evaluation",
+      "name": "bf_trail_lab_preparation",
+      "note": "Recipe replay creates new data files; the preserved bundle is the byte-exact evaluation release.",
+      "sources": {
+        "executed/042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28/eval_preparation.py": "artifact:sha256:042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28",
+        "executed/067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9/stamp_A4_dx05.npz": "artifact:sha256:067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9",
+        "executed/18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988/metrics_v2.py": "artifact:sha256:18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988",
+        "executed/2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9/metrics_v3.py": "artifact:sha256:2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+        "executed/2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c/_locks.json": "artifact:sha256:2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c",
+        "executed/35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23/eval_preparation.py": "artifact:sha256:35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+        "executed/3f7fecef51af28d200621c06bea716d33ce4da72be0ecad61a3e7a5b44edf9d9/plot_eval_preparation.py": "artifact:sha256:3f7fecef51af28d200621c06bea716d33ce4da72be0ecad61a3e7a5b44edf9d9",
+        "executed/414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf/characterize.py": "artifact:sha256:414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+        "executed/43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6/devices.py": "artifact:sha256:43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+        "executed/4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7/rotor_check.py": "artifact:sha256:4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+        "executed/4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84/sim_cpu.py": "artifact:sha256:4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+        "executed/65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b/metrics_v1.py": "artifact:sha256:65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
+        "executed/7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26/probe_candidates.py": "artifact:sha256:7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26",
+        "executed/7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f/sim_v1.py": "artifact:sha256:7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+        "executed/8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d/bf_feedback_check.py": "artifact:sha256:8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d",
+        "executed/8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2/build_evaluation_bundle.py": "artifact:sha256:8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2",
+        "executed/8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1/genome.py": "artifact:sha256:8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+        "executed/94edb9845e1dcec0595720da9c5e0b1b6adbc3412c8aa622a7ccabdc8d54324c/summarize_characterization.py": "artifact:sha256:94edb9845e1dcec0595720da9c5e0b1b6adbc3412c8aa622a7ccabdc8d54324c",
+        "executed/bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614/hier_metrics.py": "artifact:sha256:bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614",
+        "executed/d9defa790b74021002f3bebbabc19dd9d756f29d6d5caa39e96cb469c8ff58a5/plot_characterization.py": "artifact:sha256:d9defa790b74021002f3bebbabc19dd9d756f29d6d5caa39e96cb469c8ff58a5",
+        "executed/f16cef43ba492823d0299580c3f19696417d03170d5b6abcc21a22fab87c3527/xv_feedback_check.py": "artifact:sha256:f16cef43ba492823d0299580c3f19696417d03170d5b6abcc21a22fab87c3527",
+        "generators/physim/EVALUATION_WORKFLOW.md": "artifact:sha256:57044c64c5994a8fc785f7e70ad6346cff3badd0ab532e3713d9d7284e645d77",
+        "generators/physim/bf_feedback_check.py": "artifact:sha256:8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d",
+        "generators/physim/build_evaluation_bundle.py": "artifact:sha256:8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2",
+        "generators/physim/characterize.py": "artifact:sha256:414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+        "generators/physim/eval_preparation.py": "artifact:sha256:35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+        "generators/physim/plot_eval_preparation.py": "artifact:sha256:3f7fecef51af28d200621c06bea716d33ce4da72be0ecad61a3e7a5b44edf9d9",
+        "generators/physim/register_evaluation.py": "artifact:sha256:94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7",
+        "generators/physim/rotor_check.py": "artifact:sha256:4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+        "generators/physim/summarize_pilot.py": "artifact:sha256:62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21",
+        "generators/physim/validate_evaluation.py": "artifact:sha256:ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e",
+        "generators/physim/xv_feedback_check.py": "artifact:sha256:a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c",
+        "inputs/original/final_state.npz": "artifact:sha256:c40ffe28cebe33ef43f9e8f446672e6e33b1e93ce1e7ec869a8e03bc3a58b760",
+        "inputs/original/genome.json": "artifact:sha256:d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038",
+        "inputs/original/protocol.json": "artifact:sha256:726dd54ff1252041b0f3134802a6126654d11fa35e4579d85726b1e76f23de47",
+        "inputs/original/summary.json": "artifact:sha256:196e8474f11f8701b21d050f69402facc8473083bb9e03d836e24a2c27f8d259"
+      },
+      "upstream_protocol": "artifact:sha256:726dd54ff1252041b0f3134802a6126654d11fa35e4579d85726b1e76f23de47"
+    },
+    {
+      "id": "recipe:sha256:f458c91a69647eb2016f11e0fea524106ca40215d75b3436cacda0b4bc07ca4e",
+      "command": "python generators/physim/eval_preparation.py --world xv --source inputs/original --output replay",
+      "entrypoint": "generators/physim/eval_preparation.py",
+      "implementation": {
+        "blobkit_version": "0.3.5",
+        "reference_dependencies": {
+          "numpy": "2.5.2",
+          "scipy": "1.18.0"
+        },
+        "source_sha256": {
+          "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+          "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+          "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+          "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+          "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+        }
+      },
+      "kind": "prepared-evaluation",
+      "name": "xv_rotor_lab_preparation",
+      "note": "Recipe replay creates new data files; the preserved bundle is the byte-exact evaluation release.",
+      "sources": {
+        "executed/042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28/eval_preparation.py": "artifact:sha256:042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28",
+        "executed/067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9/stamp_A4_dx05.npz": "artifact:sha256:067cdd91326f47ee30a9804de7074f8dc3eb2db341912f462e8779281f2202b9",
+        "executed/091f7d1779487dca895086f5f919be96f2a540102fe94384ddeedf04aae6727f/plot_eval_preparation.py": "artifact:sha256:091f7d1779487dca895086f5f919be96f2a540102fe94384ddeedf04aae6727f",
+        "executed/18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988/metrics_v2.py": "artifact:sha256:18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988",
+        "executed/1aa953f62f11ca422e1d484796fd41273b401cd7a68c382687eae7ebc1781cd6/plot_prepared_overview.py": "artifact:sha256:1aa953f62f11ca422e1d484796fd41273b401cd7a68c382687eae7ebc1781cd6",
+        "executed/2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9/metrics_v3.py": "artifact:sha256:2273a13f7de704234261c15f2886a57a1b68d017b196bf637e3c61db5fbd40c9",
+        "executed/2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c/_locks.json": "artifact:sha256:2e4d30972ec1eefcbf25bf8ddfeea2f570943ee1284f491cdc06e7920511692c",
+        "executed/2eadf4718275211404d42899f0810bba2f34ec8a9433095fecf664f48570384b/container_worker.py": "artifact:sha256:2eadf4718275211404d42899f0810bba2f34ec8a9433095fecf664f48570384b",
+        "executed/35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23/eval_preparation.py": "artifact:sha256:35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+        "executed/3f7fecef51af28d200621c06bea716d33ce4da72be0ecad61a3e7a5b44edf9d9/plot_eval_preparation.py": "artifact:sha256:3f7fecef51af28d200621c06bea716d33ce4da72be0ecad61a3e7a5b44edf9d9",
+        "executed/414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf/characterize.py": "artifact:sha256:414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+        "executed/43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6/devices.py": "artifact:sha256:43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6",
+        "executed/4ab008d0aaa90e7044d9234106db46f026dffca934de972a07bf76b3cd8e96aa/agent_spec.txt": "artifact:sha256:4ab008d0aaa90e7044d9234106db46f026dffca934de972a07bf76b3cd8e96aa",
+        "executed/4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7/rotor_check.py": "artifact:sha256:4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+        "executed/4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84/sim_cpu.py": "artifact:sha256:4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+        "executed/62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21/summarize_pilot.py": "artifact:sha256:62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21",
+        "executed/65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b/metrics_v1.py": "artifact:sha256:65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b",
+        "executed/7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26/probe_candidates.py": "artifact:sha256:7ee00e0370370fa70b8c12f57e6a3ba0f687cb75128f7c09a2437f80b32e9c26",
+        "executed/7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f/sim_v1.py": "artifact:sha256:7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+        "executed/81799f8499ab309b41b07462217e2d9e39954ac4b1b9234a8bc62fdb3865b74b/sandbox.py": "artifact:sha256:81799f8499ab309b41b07462217e2d9e39954ac4b1b9234a8bc62fdb3865b74b",
+        "executed/8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d/bf_feedback_check.py": "artifact:sha256:8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d",
+        "executed/8442505903e7436d9ae2aa2f82b1a0e3df0adf380fbb373363a1a2ccfe4f43df/taskset.py": "artifact:sha256:8442505903e7436d9ae2aa2f82b1a0e3df0adf380fbb373363a1a2ccfe4f43df",
+        "executed/8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2/build_evaluation_bundle.py": "artifact:sha256:8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2",
+        "executed/8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1/genome.py": "artifact:sha256:8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+        "executed/94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7/register_evaluation.py": "artifact:sha256:94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7",
+        "executed/94edb9845e1dcec0595720da9c5e0b1b6adbc3412c8aa622a7ccabdc8d54324c/summarize_characterization.py": "artifact:sha256:94edb9845e1dcec0595720da9c5e0b1b6adbc3412c8aa622a7ccabdc8d54324c",
+        "executed/a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c/xv_feedback_check.py": "artifact:sha256:a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c",
+        "executed/aa8888c2cffff924bcba6839f0598860e795ef5d8b13f157f1c23e1b080d2810/cli.py": "artifact:sha256:aa8888c2cffff924bcba6839f0598860e795ef5d8b13f157f1c23e1b080d2810",
+        "executed/ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e/validate_evaluation.py": "artifact:sha256:ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e",
+        "executed/b4383cb9f05e0e841dc45eb6fe8ecdae2474a12ac470516441046e527a8107ce/bundles.py": "artifact:sha256:b4383cb9f05e0e841dc45eb6fe8ecdae2474a12ac470516441046e527a8107ce",
+        "executed/bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614/hier_metrics.py": "artifact:sha256:bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614",
+        "executed/d9defa790b74021002f3bebbabc19dd9d756f29d6d5caa39e96cb469c8ff58a5/plot_characterization.py": "artifact:sha256:d9defa790b74021002f3bebbabc19dd9d756f29d6d5caa39e96cb469c8ff58a5",
+        "executed/dbc50c1a32fdc84f4685633393dd062fbd48a4076fa0c8626403f74223a26a8b/evaluation.py": "artifact:sha256:dbc50c1a32fdc84f4685633393dd062fbd48a4076fa0c8626403f74223a26a8b",
+        "executed/f16cef43ba492823d0299580c3f19696417d03170d5b6abcc21a22fab87c3527/xv_feedback_check.py": "artifact:sha256:f16cef43ba492823d0299580c3f19696417d03170d5b6abcc21a22fab87c3527",
+        "generators/physim/EVALUATION_WORKFLOW.md": "artifact:sha256:57044c64c5994a8fc785f7e70ad6346cff3badd0ab532e3713d9d7284e645d77",
+        "generators/physim/bf_feedback_check.py": "artifact:sha256:8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d",
+        "generators/physim/build_evaluation_bundle.py": "artifact:sha256:8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2",
+        "generators/physim/characterize.py": "artifact:sha256:414d6674e4084b66999445ed5be2ed94b79cb7d80329933c35679fe3cd030fcf",
+        "generators/physim/eval_preparation.py": "artifact:sha256:35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+        "generators/physim/plot_eval_preparation.py": "artifact:sha256:091f7d1779487dca895086f5f919be96f2a540102fe94384ddeedf04aae6727f",
+        "generators/physim/register_evaluation.py": "artifact:sha256:94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7",
+        "generators/physim/rotor_check.py": "artifact:sha256:4ada55d5b70165e142d893f2e078eccf26a13f862f9ffcacd0e283be3ca7dce7",
+        "generators/physim/summarize_pilot.py": "artifact:sha256:62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21",
+        "generators/physim/validate_evaluation.py": "artifact:sha256:ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e",
+        "generators/physim/xv_feedback_check.py": "artifact:sha256:a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c",
+        "inputs/original/final_state.npz": "artifact:sha256:4374ff8f7c8c769bf5ae15cdc54567c1f4d2904ebd94fa551636ecdeb0031d0c",
+        "inputs/original/genome.json": "artifact:sha256:0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb",
+        "inputs/original/protocol.json": "artifact:sha256:ae9658ed85b2c33cadebce5a1602943b277ef9445fd5cc912505984310293018",
+        "inputs/original/rotation.json": "artifact:sha256:5f90990bfb31727bf8c8d9fdb4c793740c57af9bf6ae9851de9233a95f4223da"
+      },
+      "upstream_protocol": "artifact:sha256:ae9658ed85b2c33cadebce5a1602943b277ef9445fd5cc912505984310293018"
+    }
+  ],
+  "runs": [
+    {
+      "id": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "execution": "b88e3f06-0d49-4170-9acc-597afe27fc29",
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "started_at": "2026-09-13T16:03:11.339644+00:00"
+    },
+    {
+      "id": "generation-run:sha256:6ce9db328907142f6d9aa0ee5dd52a9b38b4ca8f1100546edb3e60ee8467ad40",
+      "development_members": 3,
+      "evidence": {
+        "evidence/causal/result.json": "artifact:sha256:1f18ab2af64de86412934feb6510872504b4b6764a07f1ab22b50a09a4daa08f",
+        "evidence/control_summary.json": "artifact:sha256:9072f069b1d4e7df253b59da795a5913113ffa1918d7d3d454b354d69dd3af2f",
+        "evidence/native_validation.json": "artifact:sha256:cace7f574b09a01011e2641390a2cda5d7123b73690f9f39bcda42dc65e713fe",
+        "evidence/pilot/config.toml": "artifact:sha256:bacf2056f75fb9839ca8dc84ac19f99a9f27300bb42eb0a9741be1c7e68b8e3b",
+        "evidence/pilot/grade.json": "artifact:sha256:de8a72b1b9a0cbf163feb7e9a7b0b80adbf8a72966d34956434c858c3ac72bd3",
+        "evidence/pilot/observations/experiment_001.npz": "artifact:sha256:6512815bd61b2f74585d648c81d0fd6c746f8d1323d138534563310a8ca2c51d",
+        "evidence/pilot/observations/experiment_002.npz": "artifact:sha256:9c4cc4d67c570955915d812a01d1f0ed4f7e7b844e4dadcb07d6ec3151122e8f",
+        "evidence/pilot/observations/experiment_003.npz": "artifact:sha256:cb99c1703c4b3309e5ee35a64457188a29fa605b92482c205a7e88639f0a4e4a",
+        "evidence/pilot/observations/experiment_004.npz": "artifact:sha256:d619e97c94dec519716af922d390deca52a106b01fd24b2d5218991bc610ba4d",
+        "evidence/pilot/observations/experiment_005.npz": "artifact:sha256:78575282982876326c9b2b2411032923e5010c60ed8546ec5af4cc937661d758",
+        "evidence/pilot/observations/experiment_006.npz": "artifact:sha256:48ddf9aa09060a93ad28f877763ac860197013c51238e5f304bc6184b4ed1162",
+        "evidence/pilot/observations/experiment_007.npz": "artifact:sha256:007ea5f6703b084ac43fec768ba60180bfdff86f637da8bfc7939738257080f0",
+        "evidence/pilot/observations/experiment_008.npz": "artifact:sha256:e5bb6dd22d34faa4b0181af267c694da0c1c2ed301ee8c766050a05190bd9079",
+        "evidence/pilot/observations/experiment_009.npz": "artifact:sha256:907aa8238b3438886c3602eaa703f40df583ab2fa523d7dcdad7124ae0c4d66c",
+        "evidence/pilot/observations/experiment_010.npz": "artifact:sha256:2075aab4501042fc180824eb20b17faf9e90305a6f960480324f0b9ac36e46a1",
+        "evidence/pilot/observations/experiment_011.npz": "artifact:sha256:bd43834d97322eee839469da6c026834dae715cae22396d2bd766e44dd40709d",
+        "evidence/pilot/observations/experiment_012.npz": "artifact:sha256:745e34a83047b71ab1c345a20149973a2e183fabe889fdc6ede72582ba92661e",
+        "evidence/pilot/predictor/AGENT_SPEC.md": "artifact:sha256:a7bf456a2aa9c13b4b6258ed1ee84a60376e08bce8bea981fb2a48c3c5e7dcab",
+        "evidence/pilot/predictor/predictor.py": "artifact:sha256:9db1610bf428ed801b88225b877e3c0e8b18a921e00c366d071435af84d481bb",
+        "evidence/pilot_summary.json": "artifact:sha256:1d56414373daa116aba4f113b8af6e1e65d8b82799066838df8dc49af2e28b9b",
+        "evidence/preparation/origin.json": "artifact:sha256:a0dca1260d5d26c16d014c85ad5b9853174af35e280e5477d79126d3238f2aad",
+        "evidence/programs.json": "artifact:sha256:862f1ac94639ff2211ec25150f21f01d16248432bb26762baa2be57e8d792c1a",
+        "evidence/reference-demo/reference_check.json": "artifact:sha256:c8444b8dac9a8f36ee3c4d1d28f4579479eb68edd79a52c839c4064ac02220e6",
+        "evidence/science/act_delayed/observations.npz": "artifact:sha256:7a14c83536f32f9675b4b8a371690a576da9ce15459cc834ce864c5c73f08bd0",
+        "evidence/science/act_delayed/receipt.json": "artifact:sha256:6d726e1bd175acc95f4e7dd11cb00e9a4edbf8c76c3d65dfe1e04d8e4c4cd63f",
+        "evidence/science/act_strong/observations.npz": "artifact:sha256:1b052e7fb226d3a1c38bd1834a75025b7a2b88012ddab26b36db44e5ea5324de",
+        "evidence/science/act_strong/receipt.json": "artifact:sha256:8497992a7de7cd478c5308c6fb9f727b9fa4b61ad48d29d4c62936402a24e386",
+        "evidence/science/act_then_trail/observations.npz": "artifact:sha256:b7fb56ef39cd0db0d18492067d4e90b70e42b4807b9f14644e1f38603d02df1b",
+        "evidence/science/act_then_trail/receipt.json": "artifact:sha256:96d3a1e27e8094185ccf65d5c9228084f1c5570b70c48b830327c6098fadded2",
+        "evidence/science/act_weak/observations.npz": "artifact:sha256:08a3b7132877330c518cff08d1171ab4f192d97dd9b8d1e5299f646fd9e22c7d",
+        "evidence/science/act_weak/receipt.json": "artifact:sha256:c33a2228b4e4c265d17ca4b6997ab2e7f6a6d2a36ca0b20be2428bb4a7a60738",
+        "evidence/science/fast_inhibitor/observations.npz": "artifact:sha256:8f70941f8e6f6b77ba88d407babae1bbbbb1c7da26eece98cec45feaf300e2d2",
+        "evidence/science/fast_inhibitor/receipt.json": "artifact:sha256:4cb8617d90c838dcd9eaabd9a097193a304d5a0fff3e4e5ea245fdacd00a7764",
+        "evidence/science/probe_shift/observations.npz": "artifact:sha256:2ad2b4efdc3d31ae0f2655ce5a9526138ebd58e420b2371f20a01949173fa7bc",
+        "evidence/science/probe_shift/receipt.json": "artifact:sha256:8ffe6226c8457979038ec1ec5686b5ee1ddcff8f6ae1eae7cd72ff2e24735445",
+        "evidence/science/probe_wide/observations.npz": "artifact:sha256:903312e9b3fb19c9fff3bc5bf32972b3348defc8fcd5b563fba79f777aa77bbd",
+        "evidence/science/probe_wide/receipt.json": "artifact:sha256:cf67c3f0b92efcfcadf6771e3dcb432ce11f55bf68db2bc300bb6bc50f79e05c",
+        "evidence/science/sham/observations.npz": "artifact:sha256:b5e775554776a3d8489e161a8c12c561cc56dfb95ab7900473623924013ce647",
+        "evidence/science/sham/receipt.json": "artifact:sha256:8ee55df191979a5b6a8e18db16a92c4266d575cf9cef05736422fc18c3594f3f",
+        "evidence/science/trail_high/observations.npz": "artifact:sha256:89bf51b10a6d18f4e74ce0ecd51ffc91c96db4413dd78874bfda9f18a188811f",
+        "evidence/science/trail_high/receipt.json": "artifact:sha256:09483e715e0449eb10d973111829b611ee52d9d8651dcc175d87fd8b9af739fb",
+        "evidence/science/trail_low/observations.npz": "artifact:sha256:30648b5ca8cd57b020b10d43d78af90fab8d1af5a112059b9cfe2ae7a57343d8",
+        "evidence/science/trail_low/receipt.json": "artifact:sha256:3c5543b8c7110267c83b039e7d02ac2635ef39a1deb694644796b0291d4974af",
+        "evidence/science/trail_mid/observations.npz": "artifact:sha256:c34347e3dc39f21b3580e810a62dcfb9ce75e8eb635b87be741ab968dbed352f",
+        "evidence/science/trail_mid/receipt.json": "artifact:sha256:380501768b9d976ff93ff92394f708b15bef26272a6dc1598b732fbdba1f6ed6"
+      },
+      "grading_members": 2,
+      "kind": "prepared-evaluation",
+      "name": "bf_trail_lab",
+      "origin": {
+        "implementation": {
+          "blobkit_version": "0.3.5",
+          "reference_dependencies": {
+            "numpy": "2.5.2",
+            "scipy": "1.18.0"
+          },
+          "source_sha256": {
+            "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+            "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+            "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+            "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+            "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+          }
+        },
+        "noise_coefficient": 0.002,
+        "noise_policy": "independent-experiment-v1",
+        "original_time": 2500,
+        "recipe_sha256": "042dacb60cc91b8d41d66ee4e814097159ea67fd8ece8287d9a3b06fa5450e28",
+        "selection": "First independently simulated preparation; apparatus centered by fixed activator-0 maximum rule.",
+        "source": "outputs/phenomenology-20260913/bf_s11001",
+        "source_fields_sha256": "c40ffe28cebe33ef43f9e8f446672e6e33b1e93ce1e7ec869a8e03bc3a58b760",
+        "world": "bf"
+      },
+      "programs": 11,
+      "recipe": "recipe:sha256:98b9f406c6edf7e6a0879861bb7989d4de6882e8b1868decca97ca9505031e78",
+      "references": {
+        "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+        "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+        "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+        "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de",
+        "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9"
+      }
+    },
+    {
+      "id": "generation-run:sha256:7feb9234791cd1a0ceb99fbeb8a39f58c2e4fcfc15e540aeb3265bf000c09912",
+      "development_members": 3,
+      "evidence": {
+        "evidence/causal/result.json": "artifact:sha256:1a1b4f4b35d5502257bc929e5f5798cd5e2aadde40c5caae83a628440e3b325b",
+        "evidence/causal_extended/result.json": "artifact:sha256:c1cd50f0bdf35ae61d42bcc04a9351a44165f2dc46326b74a426737724860d44",
+        "evidence/control_summary.json": "artifact:sha256:09055fc9f465dde85b5311bad7d35a9edcdf7a110a22b2ef7d20c6c751744f98",
+        "evidence/native_validation.json": "artifact:sha256:a359c3080e0ede30958ae9293851b8d77ab9726efdc96a623549c7665c1c9b70",
+        "evidence/pilot/config.toml": "artifact:sha256:c5767d8f4ff56e07053379ac9ffb88b75961830bb15de8f05006b1931fb97696",
+        "evidence/pilot/grade.json": "artifact:sha256:6614b138af0d3d495d0481c4816a029fda7473f5e04af19dfb303657b87cf8b3",
+        "evidence/pilot/observations/experiment_001.npz": "artifact:sha256:e180981fd0d39027e0b2d8d38a16d51e600eddc4ecec0e8f60bdfc30ef2c2000",
+        "evidence/pilot/observations/experiment_002.npz": "artifact:sha256:b48b4a092cd2ebdd8bfb87430b36dfccbd0c63f3b484ab5ec198b8ac4a1871ba",
+        "evidence/pilot/observations/experiment_003.npz": "artifact:sha256:dd3fb9fe7ef1ab641615671be12cab60311fba799ff2608833dfb2a05e6333d5",
+        "evidence/pilot/observations/experiment_004.npz": "artifact:sha256:f5feacba017a74d02dcaf2b6ccd0fbc2015300e655476ae326112f7a508c5e83",
+        "evidence/pilot/observations/experiment_005.npz": "artifact:sha256:657174ba335855a840c8966ad20da688354c5eb5bb093bb37b7842761928a55e",
+        "evidence/pilot/observations/experiment_006.npz": "artifact:sha256:407fff5dffba6fd39811a5c4f4bfb298f8a179ddab8ddd1da42ae284c8635293",
+        "evidence/pilot/observations/experiment_007.npz": "artifact:sha256:9df019ddc6cdc4664ae6c68e0dc230eb64f142e6a758a6c838c5cc843d9957c4",
+        "evidence/pilot/observations/experiment_008.npz": "artifact:sha256:0055949e438481e49c4ed24207e7643de84e372b0feb6a5b4e199c17128b5dd8",
+        "evidence/pilot/observations/experiment_009.npz": "artifact:sha256:a6161dad2b5c9a8bca692e32771b7084a56ab36e322fa98af60ed0506958a1d3",
+        "evidence/pilot/observations/experiment_010.npz": "artifact:sha256:b4e7ae1221c834bbd292506e4206307d80a063f59f331cd52b238084cf2bd5ce",
+        "evidence/pilot/observations/experiment_011.npz": "artifact:sha256:e081a852d7169352c5f1e5565c39af7352bd30aec7b9386464ac2a1676b2dffe",
+        "evidence/pilot/observations/experiment_012.npz": "artifact:sha256:57682e9310fa4e7ab047ca390e4944bbd728360f1c1aa461fef313483848d750",
+        "evidence/pilot/predictor/AGENT_SPEC.md": "artifact:sha256:94aa3b1f9e2910d86ac71f2ddedcfa82ec869937eccd22e7445c163835a02840",
+        "evidence/pilot/predictor/analysis_data.pkl": "artifact:sha256:61898f9a3c40149cc61a0bf24feed7e6b7fc60ff66897ec0ad5fbbfa932392ea",
+        "evidence/pilot/predictor/model_data.pkl": "artifact:sha256:62fa130fb02a0807937d834fce2a2cd1bf3feb3883b812de195d53cc11479502",
+        "evidence/pilot/predictor/predictor.py": "artifact:sha256:39709233b180945f04377978ec351f5308c2fc721a84cc4faecfccc68d83dcc2",
+        "evidence/pilot_summary.json": "artifact:sha256:ebedcbaebde1e8ff6294b0669a6b19a05c9a09078ef6e77758859bcaf51da76b",
+        "evidence/preparation/origin.json": "artifact:sha256:a78b4c17101dad1e50dc35fc0a53a1f3f6021b28f367e945d0d740e3c05a4b7e",
+        "evidence/programs.json": "artifact:sha256:876a34885cf08520b8e1b52f3f353ae17949ceff4eacd0fc6224e6b06fbf8fb3",
+        "evidence/reference-demo/reference_check.json": "artifact:sha256:abff4e1f970ac85eb61889cc42c974a349a3b2236f3b972d8cbff8ce15cf8dae",
+        "evidence/science/act_delayed/observations.npz": "artifact:sha256:b0ec198eeaea0c4bf81bd18b7840fe2814e454be9666f6c198fd3fe19916784b",
+        "evidence/science/act_delayed/receipt.json": "artifact:sha256:8dd29d46ab2cbced741160cb8abbe9a1a9ecb603f7ffa9853b5a75570f088b37",
+        "evidence/science/act_strong/observations.npz": "artifact:sha256:819c30890c0ada114e285375d16adbfe97fd952fadeae56a31f88b84b41e56b8",
+        "evidence/science/act_strong/receipt.json": "artifact:sha256:57187f0be8f1dac8c87ff45a486b5e4570c4d8628964dba09c6e6885dd114bd2",
+        "evidence/science/act_then_partner/observations.npz": "artifact:sha256:bb5e2f8fcf76f326aa2a0bd47c4fec1175e63ccaec564264c3579b199017c924",
+        "evidence/science/act_then_partner/receipt.json": "artifact:sha256:47a2a0468442c5a43c8422dd4a449f47c79294d2f2a26334b8f5faf7fe68db9f",
+        "evidence/science/act_weak/observations.npz": "artifact:sha256:a9c1dc032b0506206fdfdb3f55401a22d5a9bed91f9beb6867b714435221ab50",
+        "evidence/science/act_weak/receipt.json": "artifact:sha256:02fbfc57a15aaf35d3f3ca90d9abfd1ff4067bffeb7cc45b96c8ebd25e92011d",
+        "evidence/science/cross_feedback/observations.npz": "artifact:sha256:816efad3d1d03f9ddedb80779c21fa8bc2414e7a8d2e50a58329da38c4ec8a10",
+        "evidence/science/cross_feedback/receipt.json": "artifact:sha256:77ce7466348b79da04095972b09a12f5974d5176365dd6739f72b142337a166e",
+        "evidence/science/partner_delayed/observations.npz": "artifact:sha256:910ce59ab7c901da989880c5af716cfd40dfda2dc466e398d028558707a9154c",
+        "evidence/science/partner_delayed/receipt.json": "artifact:sha256:131dd89a17bf9eb289fbee5aa7aee21ac160ec3393b6699973d2bbdd36018d66",
+        "evidence/science/partner_pulse/observations.npz": "artifact:sha256:eaac6e6553663c330a9046e271185dd84927f21c89af0b1caa0e0645286a5aec",
+        "evidence/science/partner_pulse/receipt.json": "artifact:sha256:e4935fcb4eda145a730d62a4afcf560d32f1f79883f2ec445c26e440ce22f903",
+        "evidence/science/probe_shift/observations.npz": "artifact:sha256:3292d383c0550391757144e231e1cc0535b96e19e42da3f8cb4522c2d7c46dcf",
+        "evidence/science/probe_shift/receipt.json": "artifact:sha256:617a07e8b6390305648e3640d2307778a2140e55442595c3443b7d64acd6aad5",
+        "evidence/science/probe_wide/observations.npz": "artifact:sha256:150979e7ccce719b050889d8321c4febdff08dd92766f378d26f2c1faaf66f48",
+        "evidence/science/probe_wide/receipt.json": "artifact:sha256:20d69860c7044f8b7e7f6e4b57e6c83fbd37f4668f06c7dfad6c147910c7ea69",
+        "evidence/science/sham/observations.npz": "artifact:sha256:c588994c9f8f44d0d48363ac1d0c7fde9ef5d41004ea2bc5606b4f0a4d723dc0",
+        "evidence/science/sham/receipt.json": "artifact:sha256:c5a1ce4ae67e9a5d977d8c7c8fe51ace65b46bb30dd9985d87e4047715fb42b9",
+        "evidence/science/slow_feedback/observations.npz": "artifact:sha256:50cfb50678df1a77c292dd81c67120b833b73692d1d27aedd7eff7d5224c0798",
+        "evidence/science/slow_feedback/receipt.json": "artifact:sha256:9c5b0693165d089eb27c70794de91c99f4596775961461d4079a5d78da9c1b16"
+      },
+      "grading_members": 2,
+      "kind": "prepared-evaluation",
+      "name": "xv_rotor_lab",
+      "origin": {
+        "implementation": {
+          "blobkit_version": "0.3.5",
+          "reference_dependencies": {
+            "numpy": "2.5.2",
+            "scipy": "1.18.0"
+          },
+          "source_sha256": {
+            "blobkit.genome": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+            "blobkit.soup.sim_cpu": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+            "blobkit.soup.sim_v1": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f",
+            "physim.blobround6": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d",
+            "physim.devices": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+          }
+        },
+        "noise_coefficient": 0.002,
+        "noise_policy": "independent-experiment-v1",
+        "original_time": 2500,
+        "recipe_sha256": "35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+        "selection": "First independently simulated preparation; apparatus centered by fixed activator-0 maximum rule.",
+        "source": "outputs/phenomenology-20260913/xv_pair_coupled_s12001",
+        "source_fields_sha256": "4374ff8f7c8c769bf5ae15cdc54567c1f4d2904ebd94fa551636ecdeb0031d0c",
+        "world": "xv"
+      },
+      "programs": 11,
+      "recipe": "recipe:sha256:f458c91a69647eb2016f11e0fea524106ca40215d75b3436cacda0b4bc07ca4e",
+      "references": {
+        "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+        "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+        "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+        "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106",
+        "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc"
+      }
+    },
+    {
+      "id": "generation-run:sha256:8286c71cd8321ecf007573d7413afd68e612138a5203346b605b9186fa174b26",
+      "island": 4,
+      "measurements": {
+        "T_used": 20000.0,
+        "cand": "p4g2_044",
+        "cell": "4|switch|rotor|liquid|s2|g2",
+        "flags": {
+          "box_limit": true,
+          "box_persist": 1.0,
+          "box_span_frac": 1.0
+        },
+        "horizon": {
+          "T_used": 20000.0,
+          "n_ext": 3,
+          "traj": [
+            [
+              2500.0,
+              71.81
+            ],
+            [
+              5000.0,
+              78.83
+            ],
+            [
+              10000.0,
+              76.08
+            ],
+            [
+              20000.0,
+              82.47
+            ]
+          ],
+          "why": "converged"
+        },
+        "interest": 82.46726177839516,
+        "island": 4,
+        "note": "82.47 \u2014 3-seed confirmed (80.8/81.4 \u2014 most seed-stable elite); 4-species 21-organism minimal rotor; NO minted vertices (pure dup_act architecture); visually clean small-N world",
+        "seed": 928,
+        "seed2_interest": 80.77615697847152,
+        "seed3_interest": 81.3655991101312,
+        "summary": {
+          "C": {
+            "C1_popdyn": 0.7,
+            "C2_timescale": 1.0,
+            "C3_motion": 0.7732,
+            "C4_graph": 1.0,
+            "C5_memory": 0.6,
+            "C6_ecology": 1.0,
+            "C7_roles": 0.9743,
+            "C8_succession": 0.5
+          },
+          "d1": {
+            "model": "switch",
+            "n_end": 21.0,
+            "n_org_end": 20.0,
+            "n_stages": 2,
+            "org_growth": false,
+            "org_model": "switch",
+            "spp": 4,
+            "turn": 4.0059
+          },
+          "d2": {
+            "obs": "cover0",
+            "r_emerg": 34.54374030923063,
+            "slow": 2725.0
+          },
+          "d4": {
+            "mv": 0.5887196174135976,
+            "role": 0.9742890006352097,
+            "vc": 0.5452053017902567
+          },
+          "d5": {
+            "churn": 0.166232770262997,
+            "com": 0.010347178584986978,
+            "phase": "liquid",
+            "wind": 1.6533632903071425
+          },
+          "d6": {
+            "charging": 0,
+            "cover": 1.0,
+            "elong": 0.0,
+            "grade": 2,
+            "rmem": 123.59686899632977
+          },
+          "d7": {
+            "nsi": 4.0,
+            "w": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "flags": {
+            "box_limit": true,
+            "box_persist": 1.0,
+            "box_span_frac": 1.0
+          },
+          "horizon": {
+            "T_used": 20000.0,
+            "next": 3,
+            "why": "converged"
+          },
+          "interest": 82.47
+        }
+      },
+      "provenance_status": "partial",
+      "recipe": "recipe:sha256:55ad59090f6e4645e1d2421d646fa38a38976b2190310d5aba1c980388f97732",
+      "seed": 928,
+      "source_candidate": "p4g2_044"
+    }
+  ],
+  "results": [
+    {
+      "id": "generation-result:sha256:efb9b53f7153a3f4afcc8817896d4f287ab461425ae142e276648b868b9965bb",
+      "checkpoint": "checkpoint:sha256:62357bcb24aef09324483ef3519b30298612889c92f3887fcd81fab425a5fb4a",
+      "complete": true,
+      "population": [
+        "candidate:sha256:83e6d307cccf319c343890b7d74fd12afdd1b77c258db60f848a092547fef99f",
+        "candidate:sha256:83219cf3c67417dfa659855cf9964260cb7b3b9e30842108f4afbf07f6e31214"
+      ],
+      "recipe": "recipe:sha256:097d36694e45fbf367e3c3547fba5228ac4185c0486e5e095bb159b038df19b3",
+      "run": "generation-run:sha256:33139f16a96cd21510fd5af3b68a0e9af915480e16abe105c8dc6608c3268e1d",
+      "worlds": [
+        "world-record:sha256:df6500cab36fa5d1f9bf1c97d450d6d8f83eeea204eb02e7dc5560a1d94f5889",
+        "world-record:sha256:874237337627bd0e447f9814b223cda5e887e05b58e4d457a807e49b69a2ecc1",
+        "world-record:sha256:dfea350f322680515d10037984fffc8c26ed51501fe7857b3b518e7b67201622",
+        "world-record:sha256:487ad248a7425180daa7895597ef0b9ed5825db6fcf9b759e4715899b9261d91",
+        "world-record:sha256:4bbdff513c4b0d9891a4987c5e8973de6d13e5a1f9611c085dab888ad0d555f2",
+        "world-record:sha256:4e1b36a1832c1063206957c28724477e6c5905944b7d086a58617b2646f2387a"
+      ]
+    }
+  ],
+  "availability": {
+    "schema_version": "physim-registry-availability-v1",
+    "counts": {
+      "eval-ready": 3,
+      "preserved": 21
+    }
+  }
+}

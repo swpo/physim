@@ -1,0 +1,82 @@
+[
+  {
+    "path": "generators/physim/build_evaluation_bundle.py",
+    "sha256": "8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2",
+    "archive": "handoff/eval_preparation/source/8af80c209dd8f0d50292bdd1e544464f9489913051a8ae906353309c4fa7d1f2/build_evaluation_bundle.py"
+  },
+  {
+    "path": "generators/physim/validate_evaluation.py",
+    "sha256": "ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e",
+    "archive": "handoff/eval_preparation/source/ae089eb4440d02571a8af5ddafb5630f95032c138f307fa00cd380e381db5d7e/validate_evaluation.py"
+  },
+  {
+    "path": "generators/physim/register_evaluation.py",
+    "sha256": "94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7",
+    "archive": "handoff/eval_preparation/source/94e56cbdac6634d9e4d66da84f166d1104dc2f12da34d2a1480749cf694aa1f7/register_evaluation.py"
+  },
+  {
+    "path": "generators/physim/eval_preparation.py",
+    "sha256": "35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23",
+    "archive": "handoff/eval_preparation/source/35ccb77823e24ef48bf7e528130a9bd77953e5fed95676f9d71cca277f444d23/eval_preparation.py"
+  },
+  {
+    "path": "generators/physim/plot_eval_preparation.py",
+    "sha256": "091f7d1779487dca895086f5f919be96f2a540102fe94384ddeedf04aae6727f",
+    "archive": "handoff/eval_preparation/source/091f7d1779487dca895086f5f919be96f2a540102fe94384ddeedf04aae6727f/plot_eval_preparation.py"
+  },
+  {
+    "path": "generators/physim/xv_feedback_check.py",
+    "sha256": "a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c",
+    "archive": "handoff/eval_preparation/source/a60e318d901916148ee46d5c6aa51125eddddef1581070d53b7c5e8ea21efa0c/xv_feedback_check.py"
+  },
+  {
+    "path": "generators/physim/bf_feedback_check.py",
+    "sha256": "8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d",
+    "archive": "handoff/eval_preparation/source/8398411a5cfb69d199f5d884e226753180a71424ba83c96e7d599904014bfe2d/bf_feedback_check.py"
+  },
+  {
+    "path": "generators/physim/summarize_pilot.py",
+    "sha256": "62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21",
+    "archive": "handoff/eval_preparation/source/62b858d15a20652f1de847051b97cba23a0ccad6494c87c93da506544ccd4b21/summarize_pilot.py"
+  },
+  {
+    "path": "generators/physim/plot_prepared_overview.py",
+    "sha256": "1aa953f62f11ca422e1d484796fd41273b401cd7a68c382687eae7ebc1781cd6",
+    "archive": "handoff/eval_preparation/source/1aa953f62f11ca422e1d484796fd41273b401cd7a68c382687eae7ebc1781cd6/plot_prepared_overview.py"
+  },
+  {
+    "path": "environments/physim/physim/bundles.py",
+    "sha256": "b4383cb9f05e0e841dc45eb6fe8ecdae2474a12ac470516441046e527a8107ce",
+    "archive": "handoff/eval_preparation/source/b4383cb9f05e0e841dc45eb6fe8ecdae2474a12ac470516441046e527a8107ce/bundles.py"
+  },
+  {
+    "path": "environments/physim/physim/evaluation.py",
+    "sha256": "dbc50c1a32fdc84f4685633393dd062fbd48a4076fa0c8626403f74223a26a8b",
+    "archive": "handoff/eval_preparation/source/dbc50c1a32fdc84f4685633393dd062fbd48a4076fa0c8626403f74223a26a8b/evaluation.py"
+  },
+  {
+    "path": "environments/physim/physim/taskset.py",
+    "sha256": "8442505903e7436d9ae2aa2f82b1a0e3df0adf380fbb373363a1a2ccfe4f43df",
+    "archive": "handoff/eval_preparation/source/8442505903e7436d9ae2aa2f82b1a0e3df0adf380fbb373363a1a2ccfe4f43df/taskset.py"
+  },
+  {
+    "path": "environments/physim/physim/sandbox.py",
+    "sha256": "81799f8499ab309b41b07462217e2d9e39954ac4b1b9234a8bc62fdb3865b74b",
+    "archive": "handoff/eval_preparation/source/81799f8499ab309b41b07462217e2d9e39954ac4b1b9234a8bc62fdb3865b74b/sandbox.py"
+  },
+  {
+    "path": "environments/physim/physim/container_worker.py",
+    "sha256": "2eadf4718275211404d42899f0810bba2f34ec8a9433095fecf664f48570384b",
+    "archive": "handoff/eval_preparation/source/2eadf4718275211404d42899f0810bba2f34ec8a9433095fecf664f48570384b/container_worker.py"
+  },
+  {
+    "path": "environments/physim/physim/cli.py",
+    "sha256": "aa8888c2cffff924bcba6839f0598860e795ef5d8b13f157f1c23e1b080d2810",
+    "archive": "handoff/eval_preparation/source/aa8888c2cffff924bcba6839f0598860e795ef5d8b13f157f1c23e1b080d2810/cli.py"
+  },
+  {
+    "path": "environments/physim/physim/data/agent_spec.txt",
+    "sha256": "4ab008d0aaa90e7044d9234106db46f026dffca934de972a07bf76b3cd8e96aa",
+    "archive": "handoff/eval_preparation/source/4ab008d0aaa90e7044d9234106db46f026dffca934de972a07bf76b3cd8e96aa/agent_spec.txt"
+  }
+]

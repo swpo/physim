@@ -1,0 +1,282 @@
+{
+  "at": "2026-09-13T10:56:43.636153+00:00",
+  "files": [
+    {
+      "path": "environments/physim/physim_r6/scaling.py",
+      "dataless": true,
+      "bytes": 4809
+    },
+    {
+      "path": "environments/physim/physim_r6/evaluation.py",
+      "dataless": false,
+      "bytes": 9554,
+      "sha256": "7f987688cc629df7fb33932295466e44e220d81a73b58f934c14b56d1ef765a5"
+    },
+    {
+      "path": "environments/physim/physim_r6/taskset.py",
+      "dataless": true,
+      "bytes": 21723
+    },
+    {
+      "path": "environments/physim/physim_r6/__init__.py",
+      "dataless": false,
+      "bytes": 142,
+      "sha256": "d1a56b74c0b628c0a729ea3497689c5490409b7b5bba31f337c902f6dbf24ff0"
+    },
+    {
+      "path": "environments/physim/physim_r6_scaling/__init__.py",
+      "dataless": true,
+      "bytes": 148
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/metrics_v2.py",
+      "dataless": false,
+      "bytes": 27012,
+      "sha256": "18b50bc7344acbbb4868f1f0fe7b93050034d703203196a46216dc56015c2988"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/worlds.py",
+      "dataless": false,
+      "bytes": 2646,
+      "sha256": "9435f8964f3a9df07504afab8b19b4c6fe0432c653925bd376376dfbb94c54be"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/assays_v1.py",
+      "dataless": false,
+      "bytes": 14845,
+      "sha256": "27c1af44a5ce666802825509a37dc9c62c6d7cdd44c278951a164f0907b303ba"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/__init__.py",
+      "dataless": false,
+      "bytes": 3024,
+      "sha256": "8d78dc11792dfd3817bd39e2f2e13ad85bd45458a167075b3031597aacf3dbea"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/deploy_tools.py",
+      "dataless": false,
+      "bytes": 19668,
+      "sha256": "6864eb53ce938a95d4e1a0a564f65d4452472d7c0acb74f7fc146a28067bd159"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/assay_v2.py",
+      "dataless": false,
+      "bytes": 8018,
+      "sha256": "a8672a92a5de791cdb685d7a84cd9af5e148b8fdab7c50c6d7fb7412f7b17042"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/_batteryproc.py",
+      "dataless": false,
+      "bytes": 6258,
+      "sha256": "83aabdb606efb99cc180f5b08741cc3968215e8f7ac6db57509e1fa5b1f05220"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/operators.py",
+      "dataless": false,
+      "bytes": 11236,
+      "sha256": "0e117f4215462ef0d1aa547caf6effbf0f59fe4040c3610631ea631cec5200d4"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/genome.py",
+      "dataless": false,
+      "bytes": 20517,
+      "sha256": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/metrics_v1.py",
+      "dataless": false,
+      "bytes": 28916,
+      "sha256": "65e2d6305b52184f80168fbabec1c92e83dc9485b55295c579aa95ec8b2e133b"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/assay_batch.py",
+      "dataless": false,
+      "bytes": 20733,
+      "sha256": "ef1380866e2d46b3b97b21cfad2de5b64f8ea77e9268b3520a9ab0fbe6aae744"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/assay_v2b.py",
+      "dataless": false,
+      "bytes": 4761,
+      "sha256": "1d30bce790fa7a7f27905a4bf162180325d95982a779d545a1632ee3fa23052e"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/hier_metrics.py",
+      "dataless": false,
+      "bytes": 6291,
+      "sha256": "bf8a901683cddc01d066d3b47d89c5186d80bef4ee6144597e96e08fa792b614"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/backend.py",
+      "dataless": false,
+      "bytes": 2258,
+      "sha256": "6e023a2a5f1145ef139a7b4530703744f52a7de2f99beeb3a051d9ce335907cb"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/asyncapply_proto.py",
+      "dataless": false,
+      "bytes": 17848,
+      "sha256": "8969ddde6b2ce447a29609526abdb3dcdb1f17d09f4e89260046a8b183efc7d8"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_cpu.py",
+      "dataless": false,
+      "bytes": 10359,
+      "sha256": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/__init__.py",
+      "dataless": false,
+      "bytes": 433,
+      "sha256": "c815014522d3a10e2468cf8a925038414c07632a7ea96beecc0cd1547b880b7c"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_gpu.py",
+      "dataless": false,
+      "bytes": 21961,
+      "sha256": "742719e1fc5c4702ac00fcad2e706b7513ea856aa44e6d11859be3c0023cadd7"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/sim_v1.py",
+      "dataless": false,
+      "bytes": 10356,
+      "sha256": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/devrec_proto.py",
+      "dataless": false,
+      "bytes": 20203,
+      "sha256": "f1ef15f9582591463735c77326f518dd1d908b4b80a28daf443307c98411ea5f"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/soup/driver.py",
+      "dataless": false,
+      "bytes": 6013,
+      "sha256": "8695304cb3a9fd969b4aa72b2c056161e8c04d869ae28215c6c06bcce2811cbc"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/merge_islands.py",
+      "dataless": false,
+      "bytes": 3642,
+      "sha256": "315c1414c34829f1d75a7a4a4d0291c6b957d216c4ecb2695df1da4192a67d9d"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_worker_batch.py",
+      "dataless": false,
+      "bytes": 10007,
+      "sha256": "78f9acbea2d56313cb3cdf6b1160523e14b0083d836adb955b6b565cc7d2e10e"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/ds2_ops.py",
+      "dataless": false,
+      "bytes": 10524,
+      "sha256": "c79ced9a00ab04f766709ad89552b512b6a781165aa530ea0532d14d96797f49"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_gen_batch.py",
+      "dataless": false,
+      "bytes": 4909,
+      "sha256": "e23c16f658d8843568c23eae5ef389372679214e33dbcac84d6fbb5fc4e376a8"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_worker.py",
+      "dataless": false,
+      "bytes": 970,
+      "sha256": "fb8e6e0205f5ee7bc03e71e029eeb5bec0b84f052aa405410eafe182f257e675"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_lib.py",
+      "dataless": false,
+      "bytes": 11356,
+      "sha256": "bbd36d7a9fd536d6b844ae6abb4f8792b8ed86ebfa951fb0321d93062e91175b"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_smoke.py",
+      "dataless": false,
+      "bytes": 1791,
+      "sha256": "d3851198f4389fcfdc043e7c9ab50cf1b5235c44f7eb0dfd870d3e37ebf716b1"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/pod_gen.py",
+      "dataless": false,
+      "bytes": 15328,
+      "sha256": "f1015e176ddee295ccb24435a91ff7be317547ec9a10bef45c23a1a291944ec6"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/sampler.py",
+      "dataless": false,
+      "bytes": 6389,
+      "sha256": "c65ca23aba63658992b2985cc61da91c39bf81af890d700db710eba1731075f1"
+    },
+    {
+      "path": "probes/blobs/blobkit/blobkit/data/fleet/funnel.py",
+      "dataless": false,
+      "bytes": 8431,
+      "sha256": "7d049f1219f80d56040038719807164b62845844b4168db26c70107e5220017e"
+    },
+    {
+      "path": "environments/physim/physim/blobround6.py",
+      "dataless": false,
+      "bytes": 17115,
+      "sha256": "7fa965d513aa6ddeb2193596731981fc5a2f4f465eeef1bb73f836d19525827d"
+    },
+    {
+      "path": "environments/physim/physim/blobround6_explore.py",
+      "dataless": false,
+      "bytes": 3308,
+      "sha256": "bc651f046b83edbb5f19d731c9e248dfa8d217c5b76c0a97c32e20dcc197d7aa"
+    },
+    {
+      "path": "environments/physim/physim/blobround6_eval.py",
+      "dataless": false,
+      "bytes": 24117,
+      "sha256": "dcd1ab237e992645c5c50d4dbc252aa35617c143652126af0ae76c77924fc464"
+    },
+    {
+      "path": "environments/physim/physim/__init__.py",
+      "dataless": false,
+      "bytes": 268,
+      "sha256": "bab0859a9ddc66709e636b46ad4b4ad9f4e05e64ff419f995d6262b94805f71f"
+    },
+    {
+      "path": "probes/blobs/agentenv/device.py",
+      "dataless": false,
+      "bytes": 27334,
+      "sha256": "5d18f15143c86d118faffaa8eaf4cf1a33b0192eb15b7270230a1b56a0686906"
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/contract.py",
+      "dataless": false,
+      "bytes": 404,
+      "sha256": "a6edbb83c369ce3930235993bbe4396a3b8e842949a102ce11ccecff8741de30"
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/p4g2_044/origin.py",
+      "dataless": true,
+      "bytes": 3377
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/p4g2_044/cases/build_cases.py",
+      "dataless": true,
+      "bytes": 16575
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/rollout/isolation.py",
+      "dataless": false,
+      "bytes": 9875,
+      "sha256": "cb6b96f1e86cef1709db6a0cbc433ebfd710a00df4ff9c13c99e944aa419824a"
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/rollout/container_worker.py",
+      "dataless": false,
+      "bytes": 2255,
+      "sha256": "32728e7bf975c6319cc5aed6e7fa665940f5dd31444659b25bb027fa74d77bd4"
+    },
+    {
+      "path": "probes/blobs/agentenv/round6/worked_example/rollout/verifiers_v1/Dockerfile",
+      "dataless": false,
+      "bytes": 199,
+      "sha256": "be083d8cdef6df86a76de7cdd7537df282f19114aa46a8d27f75b9faa350bd0d"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "world": "bf",
+  "seed": 11001,
+  "status": "ok",
+  "T": 2500.0,
+  "wall_seconds": 233.78,
+  "summary": {
+    "interest": 41.3,
+    "C": {
+      "C1_popdyn": 0.05,
+      "C2_timescale": 0.0,
+      "C3_motion": 0.7478,
+      "C4_graph": 1.0,
+      "C5_memory": 0.8342,
+      "C6_ecology": 0.0,
+      "C7_roles": 0.0,
+      "C8_succession": 0.0,
+      "C9_spatial": 0.5194
+    },
+    "d1": {
+      "model": "constant",
+      "org_model": "constant",
+      "n_end": 12.0,
+      "n_org_end": 12.0,
+      "org_growth": false,
+      "n_stages": 0,
+      "turn": 0.0,
+      "spp": 1
+    },
+    "d2": {
+      "slow": 175.0,
+      "obs": "bond_series",
+      "r_emerg": 0.875
+    },
+    "d4": {
+      "mv": 0.9989609310058188,
+      "vc": 0.3713458187217281,
+      "role": 0.0
+    },
+    "d5": {
+      "phase": "liquid",
+      "churn": 0.15191082802547773,
+      "wind": 0.6216559086253793,
+      "com": 0.08702664740450837
+    },
+    "d6": {
+      "cover": 0.12043065200617284,
+      "elong": 0.9136299880785921,
+      "rmem": 1.125,
+      "grade": 2,
+      "charging": 0
+    },
+    "d7": {
+      "nsi": 1.0,
+      "w": [
+        0.0
+      ]
+    },
+    "flags": {
+      "box_limit": false,
+      "box_span_frac": 0.055,
+      "box_persist": 0.0
+    },
+    "interest_v2": 34.2,
+    "interest_v3": 41.3,
+    "d9": {
+      "C9": 0.5194,
+      "cls": "economy",
+      "partial": false,
+      "f": {
+        "t9": 0.9424,
+        "s9": 0.5999,
+        "e9": 0.3308,
+        "r9": 0.3891
+      },
+      "void": 0.9765,
+      "n_eff": 3.444,
+      "k": 4,
+      "frozen": 0.1296
+    },
+    "v3_weight": 0.4
+  },
+  "horizon_diagnostics": {
+    "a_mem": false,
+    "b_org": false,
+    "c_acf": false,
+    "detail": {
+      "mem_trend_frac": {
+        "2": -0.0036
+      },
+      "org_trend": {
+        "0": 0.0
+      },
+      "tau_slow": 175.0,
+      "acf_lim": 400.0
+    }
+  },
+  "final_activator_occupancy": [
+    0.0235443115234375
+  ],
+  "full_field_sha256": "965215e278e61ac91a2611ab20b5287be833f7d73a88797a971461af50e5901c"
+}

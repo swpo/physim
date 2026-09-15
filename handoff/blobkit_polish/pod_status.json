@@ -1,0 +1,13 @@
+{
+  "id": "aee17f876964457e86c17aad4396ca65",
+  "status": "ACTIVE",
+  "name": "blobkit-polish-20260913",
+  "team_id": "cm06pkxft000nem2k4cqh38jq",
+  "provider": "massedcompute",
+  "gpu": "A100_80GB x1",
+  "image": "ubuntu_22_cuda_12",
+  "created_at": "2026-09-13 13:46:34 UTC",
+  "ip": "64.247.196.9",
+  "ssh": "ubuntu@64.247.196.9",
+  "installation_status": "PENDING"
+}

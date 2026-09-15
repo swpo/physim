@@ -1,0 +1,98 @@
+{
+  "schema_version": "physim-registry-index-v1",
+  "worlds": [
+    {
+      "name": "bf",
+      "world": "world-record:sha256:fbd4767df9f27de0836d6d5ba286c666a2cd097d62fe0e902e02efd3bdc0f67e",
+      "source_status": "partial"
+    },
+    {
+      "name": "coex",
+      "world": "world-record:sha256:a52b056a19832f17ae90bc9c241ac21221c63f90941d5e89ad59287b1677af6c",
+      "source_status": "partial"
+    },
+    {
+      "name": "ds3_014",
+      "world": "world-record:sha256:e8f1724d609bb41cb45951070377599310478e6a4ec201b66d8e680e2bb52a87",
+      "source_status": "partial"
+    },
+    {
+      "name": "ds3_017",
+      "world": "world-record:sha256:14dec27e55240d651cec81e836d5992e45bdbed87d8ce05e3979a21c7dc47855",
+      "source_status": "partial"
+    },
+    {
+      "name": "ds6_000",
+      "world": "world-record:sha256:7f75326ecee9de5a5a170c79fec8f8f3e2788d7531c0b2d0a0fddedcf7eb1cf9",
+      "source_status": "partial"
+    },
+    {
+      "name": "engine_10748",
+      "world": "world-record:sha256:e92a96b64a4544dcc0c4c9da1263330a70c261768477109067836678d3c58df5",
+      "source_status": "partial"
+    },
+    {
+      "name": "g0_jit_11",
+      "world": "world-record:sha256:30b6fd5f62c6b1c98a667da62f2f287c6f7cd6f14e60aabb53a8823e655f2aca",
+      "source_status": "partial"
+    },
+    {
+      "name": "m0",
+      "world": "world-record:sha256:f8e55cb2a8db8b6a35068e4ba991a3a0e91fcf48cc0a71f6d93533f46eaab204",
+      "source_status": "partial"
+    },
+    {
+      "name": "m4",
+      "world": "world-record:sha256:5d47391ad240b5108c33e8222aeb078de96e15329a176f909b8141668c7440c0",
+      "source_status": "partial"
+    },
+    {
+      "name": "mv3",
+      "world": "world-record:sha256:f58dbd841bc5bf5dc21b93c8b84391a0c342d158952117621ca72d46d5f075f9",
+      "source_status": "partial"
+    },
+    {
+      "name": "pred",
+      "world": "world-record:sha256:cace0bea6e790ef51cc5e0c4ca42a5a279b6787b7ec4d5583c720652b3252c83",
+      "source_status": "partial"
+    },
+    {
+      "name": "rail_111_17",
+      "world": "world-record:sha256:650ae9a9935150270d7baccfe2a621ec7aea1130e96be1cf7833ad017954e3bf",
+      "source_status": "partial"
+    },
+    {
+      "name": "s2_118_41",
+      "world": "world-record:sha256:980660994a598d90346eeb63086a0a01cb96d47c84d76b158dcb79b96c9a83cf",
+      "source_status": "partial"
+    },
+    {
+      "name": "s2_128_26",
+      "world": "world-record:sha256:daec7d5f9215bfcdf29b2b1cf192b6c6f0b69ed5bce98d68b65307a413a6c67c",
+      "source_status": "partial"
+    },
+    {
+      "name": "xv",
+      "world": "world-record:sha256:8c3bc4bd886829ee14607702b1c0305c1d64746f47781ab2a84aa546c104e9a4",
+      "source_status": "partial"
+    },
+    {
+      "name": "p4g2_044",
+      "world": "world-record:sha256:ef738f147a6978914f9a080432d86f1174ee008b1fd9dc39a304b86c5a11e523",
+      "source_status": "partial"
+    }
+  ],
+  "verification": {
+    "ok": true,
+    "counts": {
+      "candidate": 0,
+      "checkpoint": 0,
+      "generation-result": 0,
+      "generation-run": 1,
+      "genome": 16,
+      "recipe": 1,
+      "world-record": 16,
+      "artifact": 24
+    }
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "kind": "documentation_catalog",
+  "registry_status": "published-verified",
+  "worlds": [
+    {
+      "id": "p4g2_044",
+      "description": "Localized structures, stripes, and coupled defects in twelve spatial fields.",
+      "activators": 4,
+      "channels": 8,
+      "grid": [
+        256,
+        256
+      ],
+      "domain_size": 128,
+      "boundary": "periodic",
+      "dtype": "float32",
+      "dt": 0.02,
+      "horizon": 50,
+      "ports": 12,
+      "device_slots": [
+        13,
+        19
+      ],
+      "global_slots": 2,
+      "evaluation_cases": 15,
+      "model_forecast_members": 64,
+      "truths_per_case": 2,
+      "coverage": "One prepared instance; development evaluation",
+      "simulation_available": true,
+      "prediction_suite_available_in_research_tree": true,
+      "released_preparation_bundle_available": true,
+      "genome": {
+        "file": "data/p4g2_044.json",
+        "source": "docs_source/data/p4g2_044.json",
+        "sha256": "e09f647cc1c9e946e4a6a9111d2a55cde10fbeac1b3b2791536f49360ceb3802",
+        "published_source": "https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/dcd6abd5eae76a47f326c70518315d2d1e101d86/bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/world.json"
+      },
+      "film": "blobs/media/v2/v2_p4g2_044.mp4",
+      "reference_bundle": {
+        "world_name": "p4g2_044",
+        "description": "Verified laboratory preparation of p4g2_044.",
+        "bundle_path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+        "status": "eval-ready",
+        "dataset_repo": "seanpohorence/physim-worlds",
+        "exposure": "public-reference-development",
+        "simulation_available": true,
+        "preparation_reproducible": true,
+        "prediction_suite_available": true,
+        "public_release_available": true,
+        "references": {
+          "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+          "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+          "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+          "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+          "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+        },
+        "profiles": {
+          "simulation": 2751237,
+          "evaluation": 3732420
+        },
+        "manifest_bytes": 8527,
+        "case_count": 15,
+        "truth_members": 2,
+        "forecast_members": 64,
+        "code_versions": {
+          "physim": "0.12.0",
+          "blobkit": "0.3.5"
+        },
+        "licenses": {
+          "code": "Apache-2.0",
+          "data": "CC-BY-4.0"
+        },
+        "world_record": "world-record:sha256:ef738f147a6978914f9a080432d86f1174ee008b1fd9dc39a304b86c5a11e523",
+        "public_ports": 12,
+        "reference_dependencies": {
+          "numpy": "2.5.2",
+          "scipy": "1.18.0"
+        },
+        "dataset_revision": "dcd6abd5eae76a47f326c70518315d2d1e101d86"
+      },
+      "prepared_bundle_verified_locally": true
+    }
+  ],
+  "publication": {
+    "dataset_repo": "seanpohorence/physim-worlds",
+    "revision": "1d8b73624669aea004befd54ec050bb7280f1678",
+    "url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/1d8b73624669aea004befd54ec050bb7280f1678",
+    "release_id": "dataset-release:sha256:c1c96f192057c553478ec9522987a2de61c40f6cc9765a4ca97a065cb4148a06"
+  },
+  "evaluation_bundles": [
+    {
+      "world_name": "bf_trail_lab",
+      "world_record": "world-record:sha256:5f1e5720001a4a6b98368d0090f9b274e2438cf4fc847f0f627cc6948a0ebe92",
+      "description": "Verified laboratory preparation of bf.",
+      "bundle_path": "bundles/bf_trail_lab/7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+      "status": "eval-ready",
+      "dataset_repo": "seanpohorence/physim-worlds",
+      "exposure": "public-reference-development",
+      "references": {
+        "bundle": "bundle:sha256:7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c",
+        "manifest_sha256": "fa6778b4b9ac7e8cb3a8ba74d5d11ac9bad05a955620e8d0ed8f886f70800398",
+        "world": "world:sha256:1bba17907a3802eee0ecda05bb571fdb6fc07779bcc3c5126d6242d46ac8bbb9",
+        "preparation": "preparation:sha256:79a315cad1466456b8fc3d4906fc7994bc94d6e215c9ba8f55a313db81934a80",
+        "suite": "suite:sha256:9e8a6cd778ce4feb5a05f655d7512ad98169ecac298efea40e381769e9a547de"
+      },
+      "profiles": {
+        "simulation": 907879,
+        "evaluation": 1646006
+      },
+      "manifest_bytes": 7257,
+      "case_count": 11,
+      "truth_members": 2,
+      "forecast_members": 64,
+      "public_ports": 4,
+      "code_versions": {
+        "physim": "0.12.0",
+        "blobkit": "0.3.5"
+      },
+      "reference_dependencies": {
+        "numpy": "2.5.2",
+        "scipy": "1.18.0"
+      },
+      "licenses": {
+        "code": "Apache-2.0",
+        "data": "CC-BY-4.0"
+      },
+      "dataset_revision": "dcd6abd5eae76a47f326c70518315d2d1e101d86",
+      "public_release_available": true
+    },
+    {
+      "world_name": "p4g2_044",
+      "world_record": "world-record:sha256:ef738f147a6978914f9a080432d86f1174ee008b1fd9dc39a304b86c5a11e523",
+      "description": "Verified laboratory preparation of p4g2_044.",
+      "bundle_path": "bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "status": "eval-ready",
+      "dataset_repo": "seanpohorence/physim-worlds",
+      "exposure": "public-reference-development",
+      "references": {
+        "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+        "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+        "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+        "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+        "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+      },
+      "profiles": {
+        "simulation": 2751237,
+        "evaluation": 3732420
+      },
+      "manifest_bytes": 8527,
+      "case_count": 15,
+      "truth_members": 2,
+      "forecast_members": 64,
+      "public_ports": 12,
+      "code_versions": {
+        "physim": "0.12.0",
+        "blobkit": "0.3.5"
+      },
+      "reference_dependencies": {
+        "numpy": "2.5.2",
+        "scipy": "1.18.0"
+      },
+      "licenses": {
+        "code": "Apache-2.0",
+        "data": "CC-BY-4.0"
+      },
+      "dataset_revision": "dcd6abd5eae76a47f326c70518315d2d1e101d86",
+      "public_release_available": true
+    },
+    {
+      "world_name": "xv_rotor_lab",
+      "world_record": "world-record:sha256:4e7aadd81e7931d700a83069f08ca78c9cee8970c60841db3e80c64ea204aa52",
+      "description": "Verified laboratory preparation of xv.",
+      "bundle_path": "bundles/xv_rotor_lab/8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+      "status": "eval-ready",
+      "dataset_repo": "seanpohorence/physim-worlds",
+      "exposure": "public-reference-development",
+      "references": {
+        "bundle": "bundle:sha256:8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6",
+        "manifest_sha256": "fb59aba52e4e37f2eaccb776118d9f3224eeba35089e649ee8410c6fa96de00f",
+        "world": "world:sha256:2b3e3f5149636824a3511338a3ccb746ab8eb373ccb9b4e193fd77d0e4eb7efc",
+        "preparation": "preparation:sha256:de6cda4ed92fef7fdd63e55a41eba35a2b873a74752d25b7e12055426339545d",
+        "suite": "suite:sha256:fafd2732111cdf882eab861e21bfb396d1c6dd728bcca4f27b273a6ad93af106"
+      },
+      "profiles": {
+        "simulation": 1321031,
+        "evaluation": 2186818
+      },
+      "manifest_bytes": 7259,
+      "case_count": 11,
+      "truth_members": 2,
+      "forecast_members": 64,
+      "public_ports": 6,
+      "code_versions": {
+        "physim": "0.12.0",
+        "blobkit": "0.3.5"
+      },
+      "reference_dependencies": {
+        "numpy": "2.5.2",
+        "scipy": "1.18.0"
+      },
+      "licenses": {
+        "code": "Apache-2.0",
+        "data": "CC-BY-4.0"
+      },
+      "dataset_revision": "dcd6abd5eae76a47f326c70518315d2d1e101d86",
+      "public_release_available": true
+    }
+  ],
+  "code_release": {
+    "commit": "eb6647cb429226dc43b27db6950329ed849b92d9",
+    "package_url": "https://github.com/swpo/physim/releases/download/physim-v0.12.2/physim-0.12.2-py3-none-any.whl#sha256=dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f",
+    "assets": {
+      "physim-0.12.2-py3-none-any.whl": "dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f",
+      "physim-0.12.2.tar.gz": "9d6a33d31356defacfd9bb003b7ceb77e0bddc1a9fb8a63b90448b01af7e83f7",
+      "physim-setup-0.12.2.tar.gz": "daa4f6f2c97a599ccd6f1c5e582b54959939eb3d8c797edb2340dbd7095da48c",
+      "requirements-0.12.2.txt": "5e0a4d9c5fe1a648565495a13771fe4b3d5d00fb3a6379d9ba5b45485fc0fef4"
+    }
+  }
+}

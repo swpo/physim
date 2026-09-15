@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The numerical profile, preparation, noise policy, and event timing of the current native simulation.">
+<title>Simulator &amp; numerics · Physim</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html" class="section-active">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<div class="layout">
+<main id="main"><p class="breadcrumb"><a href="worlds.html">Worlds</a><span aria-hidden="true"> / </span><span>Simulator &amp; numerics</span></p><h1>Simulator and numerics</h1><p class="lead">Reproducing a world requires its equations, numerical method, prepared fields, and apparatus.</p>
+<p>The native worked example uses the CPU field simulator in <code>blobkit</code>. Reaction updates use the existing activators, noise is applied to activators, and diffusion is integrated spectrally. Changing the update order, timestep, precision, or random-stream convention can change the physical realization.</p>
+<div class="table-scroll"><table><caption>Worked-world numerical profile</caption><thead><tr><th>Setting</th><th>Value</th></tr></thead><tbody><tr><td>Fields</td><td>4 activators + 8 channels</td></tr><tr><td>Grid / domain</td><td>256 × 256 / 128 × 128 spatial units</td></tr><tr><td>Spacing / boundary</td><td>0.5 / periodic</td></tr><tr><td>Native step / state dtype</td><td>0.02 time units / float32</td></tr><tr><td>Activator noise increment</td><td>Coefficient 0.002 × √dt</td></tr><tr><td>Experimental start</td><td>Exact saved fields at original time 1700, rebased to public time zero</td></tr><tr><td>Experimental horizon</td><td>50 time units</td></tr></tbody></table></div>
+<h2>Preparation and continuation</h2>
+<p>The prepared state is a field array of shape <code>(12, 256, 256)</code>, together with calibrated probe poses and a fixed source. New experiments restore that physical state and draw independent noise from the beginning of the trial. A predictor's sampling seed has no privileged relationship to experimental noise.</p>
+<p>The selected programs finish by time 40 or 50. Longer research movies illustrate other portions of a simulation and should not be read as direct evaluation traces.</p>
+<h2>Apparatus and event timing</h2>
+<p>Devices sample fields by periodic bilinear interpolation. At an event time, an ending source interval is removed, a starting action takes effect, and requested readings are taken. Probe adjustment is immediate but occupies its shared adjustment lane for five time units. Probe movement is passive.</p>
+<h2>Other backends</h2>
+<p>The released Blobkit package includes optional JAX CPU/GPU implementations for batched world search. Backend parity and speed measurements apply to their stated numerical settings and workloads. They do not by themselves establish exact reproduction of the prepared CPU evaluation.</p>
+<h2>Source and packaging</h2>
+<p>The simulator lives under <code>packages/blobkit/</code>; the current prediction adapter is <code>environments/physim/physim/</code>. The supported loader reads preparation, apparatus, cases, and truth from a verified local bundle. Native reproduction pins NumPy 2.5.2 and SciPy 1.18.0 and verifies the simulation source hashes. Published bundles need no research checkout. Portable preparation recipes restore BF/XV inputs from HF and generate fresh experiments and grading truths.</p>
+<p><a href="registry.html">Read the bundle format and release status</a></p>
+<p class="return-link"><a href="worlds.html">← Back to Worlds</a></p></main>
+</div>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+</body>
+</html>

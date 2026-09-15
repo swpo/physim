@@ -1,0 +1,14 @@
+{
+  "repo": "seanpohorence/physim-worlds",
+  "revision": "163caf1f52ad7d1630475fabccf5a72f1c33dfdd",
+  "parent": "dcd6abd5eae76a47f326c70518315d2d1e101d86",
+  "commit_url": "https://huggingface.co/datasets/seanpohorence/physim-worlds/commit/163caf1f52ad7d1630475fabccf5a72f1c33dfdd",
+  "release_id": "dataset-release:sha256:439f80074bb905418ffa185574362b699972fcab85c16b7ca807f3b1dd56aa2f",
+  "changed": [
+    "README.md",
+    "release.json",
+    "registry/README.md"
+  ],
+  "scientific_payloads_unchanged": true,
+  "anonymous_changed_file_verification": true
+}

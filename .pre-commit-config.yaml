@@ -1,0 +1,10 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.20
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+# Preserve the byte identities of research and scientific reference sources.
+exclude: ^(?:probes/|handoff/|docs/|docs_source/|packages/blobkit/blobkit/|environments/physim/physim/(?:blobround6(?:_eval|_explore)?|devices)\.py$)

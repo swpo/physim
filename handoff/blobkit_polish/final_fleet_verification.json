@@ -1,0 +1,15 @@
+{
+  "package_license_entrypoints_identical": true,
+  "n_identical_files": 53,
+  "metadata_fields_identical": {
+    "Name": true,
+    "Version": true,
+    "Requires-Python": true,
+    "Requires-Dist": true,
+    "Provides-Extra": true,
+    "License-Expression": true
+  },
+  "wheel_sha256": "1307e9729711a36960f14e344707f797ca692fa643f81418e3f64acd3c49b91e",
+  "source_bundle": "/tmp/blobkit-polished-final-fleet",
+  "note": "Automatic wheel attempt lacked build dependency network access; manual build succeeded with authorized network access."
+}

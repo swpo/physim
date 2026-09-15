@@ -1,0 +1,12 @@
+{
+  "changed": [
+    "CONTRIBUTING.md",
+    "README.md",
+    "registry/README.md",
+    "release.json"
+  ],
+  "removed": [],
+  "files": 331,
+  "release_id": "dataset-release:sha256:c1c96f192057c553478ec9522987a2de61c40f6cc9765a4ca97a065cb4148a06",
+  "scientific_payloads_unchanged": true
+}

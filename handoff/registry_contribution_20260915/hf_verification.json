@@ -1,0 +1,12 @@
+{
+  "revision": "1d8b73624669aea004befd54ec050bb7280f1678",
+  "anonymous": true,
+  "verified_sha256": {
+    "CONTRIBUTING.md": "7b793e064038246b5ad7ae28361d2906c4ff8815faeb4dc4ea11c1b9fbf0cc5c",
+    "README.md": "9e9e5fbd28a9e34b3ecda80188316954889980f8dbe0e37d57c2195bb24154b3",
+    "registry/README.md": "59fe2f33f963fec9e87a1c3ed499ab0dbb0f8b8b7fe1fd04c93986ee9a032d8a",
+    "release.json": "eca83a9a2b30bab1169d5b79bda8d64f917963eb7eaf2aa2d4d04967ecc71d29"
+  },
+  "file_count": 331,
+  "scientific_payloads_unchanged": true
+}

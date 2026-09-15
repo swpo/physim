@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "image": "physim-agent:0.12.2",
+  "network": "none",
+  "program_sha256": "5ddf3f27512ed9519b29c286756bb74fa3dcbd1d4a558fae36b4111e11d94fdb",
+  "seconds": 3.1324177800000115
+}

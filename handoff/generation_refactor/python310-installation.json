@@ -1,0 +1,16 @@
+{
+  "python": "3.10.21 (main, Aug 25 2026, 13:50:37) [Clang 22.1.3 ]",
+  "path": "/private/tmp/blobkit-generation-py310/venv/lib/python3.10/site-packages/blobkit/__init__.py",
+  "integrity": {
+    "ok": true,
+    "drift": {},
+    "n_checked": 52,
+    "locked_at": "2026-09-13T16:02:53.159338+00:00",
+    "version": "0.3.5"
+  },
+  "versions": {
+    "blobkit": "0.3.5",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  }
+}

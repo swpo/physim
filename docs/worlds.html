@@ -1,132 +1,40 @@
 <!doctype html>
-<html><head><meta charset="utf-8"/>
-<title>physim worlds — visual guide</title>
-<style>
- body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
-        max-width: 980px; margin: 24px auto; padding: 0 16px; color: #1a1a1a; }
- h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 40px;
-      border-bottom: 2px solid #eee; padding-bottom: 6px;}
- h3 { font-size: 16px; margin-top: 26px; }
- .note { background: #f6f8fa; border-left: 4px solid #0969da; padding: 10px 14px;
-         border-radius: 4px; margin: 12px 0; font-size: 14px; }
- .panel { margin: 18px 0; } img { max-width: 100%; height: auto;
-          border: 1px solid #e1e4e8; border-radius: 6px; }
- .film { margin: 14px 0; }
- .film img { image-rendering: pixelated; }
- .film .cap { color: #57606a; font-size: 13px; margin-top: 4px; }
- .meta { color: #57606a; font-size: 13px; }
- .cardrow { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0; }
- .tcard { border: 1px solid #d0d7de; border-radius: 8px; padding: 12px 16px;
-          flex: 1 1 260px; }
- .tcard h3 { margin: 0 0 6px; font-size: 16px; }
- .tcard p { margin: 4px 0; font-size: 13.5px; color: #333; }
- table { border-collapse: collapse; font-size: 13px; }
- td, th { border: 1px solid #d0d7de; padding: 4px 10px; text-align: center; }
- code { background:#f6f8fa; padding: 1px 5px; border-radius: 4px; font-size: 13px;}
-</style></head><body>
-<nav style="font-size:14px;margin-bottom:18px;"><a href="index.html">home</a> · <a href="results.html">results</a> · <a href="worlds.html"><b>the worlds</b></a> · <a href="scoring.html">scoring</a> · <a href="rollouts-bulk.html">rollouts</a> · <a href="https://github.com/swpo/physim">github</a></nav>
-
-
-<h1>physim worlds — a visual guide</h1>
-<p>Each physim task drops an agent into a procedurally generated world with
-<b>hidden laws</b> behind an <b>anonymous port interface</b>: it can set input
-ports in [−1,1] and read noisy, unnamed sensors — nothing else. These pages
-show what those worlds actually are, from two perspectives: the <b>god view</b>
-(evaluator-only: the hidden lattice, the wiring, the true collective modes,
-films of the dynamics) and the <b>agent view</b> (exactly what the agent
-gets). Under the hood every world is a <b>grid of simple units</b> (24×24 up
-to 96×96 cells) updated by one local rule per track family; everything an
-agent encounters — materials, chemistry, organisms, evolution — <i>emerges</i>
-from that rule. Time advances in discrete <b>ticks</b>; experiments spend a
-tick budget.</p>
-
-<div class="cardrow">
-<div class="tcard"><h3><a href="worlds-bulk.html">D — bulk matter</a></h3>
-<p>Coupled tanh lattices: collective bistability, hysteresis, per-region
-timescales, slow fatigue. The tutorial track that ends in a moody, 8-region
-material (D4) frontier agents still fail.</p></div>
-<div class="tcard"><h3><a href="worlds-chemistry.html">C — chemistry</a></h3>
-<p>Reaction–diffusion: self-sustaining "atoms", movable measurement apparatus,
-drifting objects, two coupled species, and an excitable wave medium (C4) whose
-timing physics breaks every frontier model.</p></div>
-<div class="tcard"><h3><a href="worlds-life.html">B — ecology</a></h3>
-<p>Make the food finite and chemistry becomes ecology: carrying capacity,
-competition, natural selection, the exclusion boundary — and B2, where
-excitable waves are the weather that feeds the world.</p></div>
-<div class="tcard"><h3><a href="worlds-evolution.html">E — evolution</a></h3>
-<p>Add heredity: a mutable trait field new tissue copies from its parents.
-Gene pools shift under selection the world itself applies — storms, famines,
-port-driven eras — and the population's history is written in its genotypes.</p></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Blob-field dynamics, the prepared p4g2_044 instance, its instruments, and current evaluation coverage.">
+<title>Worlds · Physim</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html" aria-current="page">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<div class="layout">
+<main id="main"><p class="eyebrow">Worlds</p><h1>Blob-field worlds</h1><p class="lead">A world is a set of field dynamics. A prepared instance fixes where an experiment begins and how its instruments are arranged.</p>
+<p>Fields assign a value to every point on a two-dimensional periodic grid. Local interactions, diffusion, and ongoing disturbances evolve those values. A “blob” is a persistent localized structure in the fields. Its movement and interactions emerge from the dynamics. <a href="fields.html">Read more about field dynamics.</a></p>
+<article class="world" id="p4g2_044"><span class="badge">Prepared development example</span>
+<h2>p4g2_044</h2><p>Localized structures, stripes, and coupled defects in twelve spatial fields.</p><dl>
+<dt>Fields</dt><dd>4 activators + 8 channels</dd>
+<dt>Numerics</dt><dd>256 × 256 periodic grid; float32; step 0.02</dd>
+<dt>Measurements</dt><dd>12 ports; probe arrays of 13 and 19 slots; global mean and variance</dd>
+<dt>Evaluation</dt><dd>15 programs; horizon 50 time units; one prepared instance</dd>
+<dt>Sampling</dt><dd>64 forecast members per model prediction; 2 independent truth realizations per program</dd>
+<dt>Release status</dt><dd>Genome available. See the registry for release availability.</dd><dt>Reference bundle</dt><dd>3,732,420 payload bytes; 15 cases; exact field and truth hashes</dd></dl>
+<p><a href="data/p4g2_044.json" download>Download genome JSON</a> · <a href="simulator.html">Numerical profile</a></p></article>
+<h2>What the instruments reveal</h2>
+<p>Two movable probe arrays sample all anonymous ports at multiple positions: 12 in the worked example above, four in the prepared BF laboratory, and six in XV. A global sensor reports each port's spatial mean and variance. A fixed source injects through one port at a time. Moving a probe changes its readings without moving the emitter or disturbing the fields.</p>
+<p>Each trial restores the same prepared fields and apparatus, then draws independent ongoing noise. The investigator can therefore compare treatments and repeat experiments, while still needing to represent uncertainty.</p>
+<h2>A wider space of physical systems</h2>
+<p>World generation changes the number of activators and channels, their timescales, diffusion, and couplings. Earlier small systems provide interpretable examples of persistent spots, motion, binding, and transport. Larger evolved systems combine several kinds of structure. These phenomena belong to particular parameter settings; they are not properties of every world.</p>
+<p><a href="generation.html">How worlds are generated and characterized.</a></p>
+<h2>World registry</h2>
+<p>The registry uses exact world, preparation, and evaluation-suite identities. A self-contained bundle of this worked example is now <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">published on Hugging Face</a> alongside the BF and XV preparations. Anonymous download, file integrity, offline reuse, and native reference checks passed at this immutable revision.</p>
+<p><a href="registry.html">Read the registry status and format</a> · <a href="data/worlds.json">Download current catalog metadata</a></p>
+<p>To add a world, evaluation suite, or predictor, see the <a href="contribute.html">contribution requirements</a>.</p>
+<div class="page-continuation"><a class="previous" rel="prev" href="index.html"><span>Previous</span>← Overview</a><a class="following" rel="next" href="experiment.html"><span>Next</span>Experiment &amp; predict →</a></div></main>
 </div>
-
-<h2 id="how-it-works">How the worlds work — the shared machinery</h2>
-<p>All four tracks are instances of one template: a multi-channel lattice
-field theory (diffusion/mixing + a pointwise nonlinear reaction + input
-fields + noise). The track pages describe each reaction family; everything
-below is common.</p>
-
-<h3>The idea: why the worlds are built this way</h3>
-<p>The benchmark asks one question: <b>can an agent do science?</b> Not recall
-science — do it. That requires a world where:</p>
-<ul>
-<li><b>There are real laws to find, at the right level.</b> The cell-update
-rule is the "microphysics", deliberately impossible to read off from outside
-(sensors are too coarse, too noisy, too few). But the dynamics guarantee that
-a small number of <b>collective</b> quantities — branch states, object counts,
-wave rates, populations, gene-pool means — obey simple, discoverable laws.
-Exactly like real physics, the useful theory lives at a coarser level than
-the mechanism; the agent must find the level itself. Nothing in the interface
-hints that regions, objects, species, or genotypes exist.</li>
-<li><b>Observation is an achievement, not a given.</b> Sensors are anonymous,
-scrambled, biased, sometimes dead. Before any physics can start, the agent has
-to calibrate its own senses — find the noise floor, identify dead channels,
-work out polarities and groupings. "Learning to use your hands before
-building instruments."</li>
-<li><b>Experiments cost.</b> A tick budget forces choices: sweep slowly or
-probe many ports? Long releases or many repetitions? Strategy, not stamina,
-separates agents.</li>
-<li><b>The test is out-of-sample by construction.</b> After exploration, the
-world poses <i>contracts</i> on fresh copies of itself (same laws, new random
-start). Memorised trajectories are useless; only laws transfer.</li>
-</ul>
-
-<h3>What the agent can see and do</h3>
-<p>The agent never sees the grid, the wiring, or any panel marked "god view"
-on these pages. Its entire universe is:</p>
-<ul>
-<li><b>6–10 input ports</b> ("dials"). Each port either projects a
-smooth, invisible field onto one patch of the grid (a force on the world) —
-or, in apparatus worlds, secretly operates a sensor instead. The agent does
-not know which is which, or where anything points. It sets the dials tick by
-tick, each in [−1, +1].</li>
-<li><b>24–60 output sensors</b> ("gauges"). Each live sensor reads the
-average of one small random patch, times a random gain (possibly negative),
-plus a random offset and fresh noise per tick. Several gauges are dead: pure
-noise around a constant. Channel order is shuffled; nothing is labelled.</li>
-<li><b>Actions</b> (through a fixed tool interface, no other access):
-<code>run(program)</code> (hold/ramp dials, get per-sensor summaries),
-<code>run_policy(code)</code> (closed-loop control executed inside the world
-loop), <code>reset()</code> (fresh initial state, same laws, costs budget),
-then <code>ready()</code> → contracts, <code>answer(...)</code>,
-<code>answer_prep(policy)</code>, <code>submit_theory(simulator)</code>.</li>
-<li><b>Scoring</b>, all on fresh world-copies the agent never touched:
-prediction contracts answered with points or <b>quantiles</b> and scored by a
-proper distributional rule (CRPS vs god-mode truth ensembles, noise floor
-subtracted); preparation policies run on 5 fresh clones; optional executable
-theories replayed against every contract. Full mechanics:
-<a href="scoring.html">the scoring page</a>.</li>
-</ul>
-<p class="meta">Everything an agent can access runs in a separate process from
-the world engine; hidden state, wiring, and ground-truth ensembles never cross
-that boundary. Worlds are procedurally generated from a seed (plus an optional
-evaluator-side salt, so public code cannot reproduce a live evaluation
-world).</p>
-
-<h2>The difficulty ladder, track by track</h2>
-<p><a href="worlds-bulk.html"><b>bulk matter (D)</b></a>: D0 tutorial magnet → D1 sensor opacity → D2 multi-region → D3 budget pressure → D4 slow/moody regions + fatigue</p>
-<p><a href="worlds-chemistry.html"><b>chemistry (C)</b></a>: C0 static objects → C1 movable apparatus → C2 drifting objects → C3 two species + cascades → C4 excitable waves</p>
-<p><a href="worlds-life.html"><b>ecology (B)</b></a>: B0a carrying capacity → B0b competition → B0 selection → B1 exclusion boundary → B2 wave-fed ecology</p>
-<p><a href="worlds-evolution.html"><b>evolution (E)</b></a>: E0 heredity laboratory → E1 storm world (evolution as weather) → E2 enzyme economics (trade-offs as theorems of conservation)</p>
-<p class="meta">Each track page carries god-view films of the
-dynamics, static panels, and the per-world parameter cards.</p>
-</body></html>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+</body>
+</html>

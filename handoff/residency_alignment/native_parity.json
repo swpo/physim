@@ -1,0 +1,76 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "lattice_offsets operations unchanged",
+      "passed": true
+    },
+    {
+      "name": "rot2 operations unchanged",
+      "passed": true
+    },
+    {
+      "name": "ProbeDevice operations unchanged",
+      "passed": true
+    },
+    {
+      "name": "bilinear operations unchanged",
+      "passed": true
+    },
+    {
+      "name": "step_chunk operations unchanged",
+      "passed": true
+    },
+    {
+      "name": "environments/physim/physim/blobround6.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "environments/physim/physim/blobround6_eval.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "environments/physim/physim/blobround6_explore.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "probes/blobs/blobkit/blobkit/soup/sim_cpu.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "probes/blobs/blobkit/blobkit/genome.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "installed blobkit/soup/sim_cpu.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "installed blobkit/soup/sim_v1.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "installed blobkit/genome.py bytes unchanged",
+      "passed": true
+    },
+    {
+      "name": "native action variant 0 bitwise parity",
+      "passed": true
+    },
+    {
+      "name": "native action variant 1 bitwise parity",
+      "passed": true
+    },
+    {
+      "name": "native action variant 2 bitwise parity",
+      "passed": true
+    }
+  ],
+  "references": {
+    "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+    "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+    "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+    "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+    "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+  }
+}

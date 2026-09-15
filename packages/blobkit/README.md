@@ -21,7 +21,8 @@ uv pip install /path/to/blobkit-0.3.5-py3-none-any.whl
 Python 3.10–3.13 is supported by the package metadata. Python 3.12 is the reference
 validation environment. NumPy 2.5.2 and SciPy 1.18.0 reproduce the prepared Physim
 reference; use those exact versions when comparing its native results. Version
-0.3.5 is a local release candidate; these commands do not require a PyPI release.
+0.3.5 is available as a [public release wheel and source archive](https://github.com/swpo/physim/releases/tag/blobkit-v0.3.5);
+these commands do not require a PyPI release.
 
 For JAX on CPU or another supported platform:
 
@@ -113,6 +114,8 @@ it does not provision compute or launch a fleet.
 ## Integrity and tests
 
 The generation API and registry workflow are documented in [GENERATION.md](GENERATION.md).
+To share a world and its provenance, follow the
+[registry contribution guide](https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/main/CONTRIBUTING.md).
 Start a small search from the repository with:
 
 ```sh

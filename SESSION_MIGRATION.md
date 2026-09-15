@@ -1,5 +1,154 @@
 # Session migration — start here
 
+## Latest completion: native Verifiers rerun (2026-09-09)
+
+The user required a provided Verifiers harness and requested rerunning the seven
+previously tested small models, with harness experimentation allowed. That work
+is complete. The [`physim_r6` taskset](environments/physim/physim_r6/taskset.py)
+uses Verifiers 0.3.0 native `eval` / `SingleAgentEnv`, stock Bash/RLM harnesses and
+DockerRuntime. Task hooks supply laboratory MCP tools, public validation and
+scoring; there is no custom model loop or harness.
+
+[Final results and every attempt](probes/blobs/agentenv/round6/worked_example/rollout/verifiers_v1/RESULTS.md):
+Qwen3.6 35B A3B 0.679223; Qwen3.6 27B 0.774276; DeepSeek v4 Flash 0.834902;
+GLM 4.7 Flash 1.020349; Qwen3.5 35B A3B 1.107505; Qwen3.5 9B 1.479912;
+Qwen3.5 2B +∞ for an invalid array contract. Persistence remains 0.827121.
+Six valid predictors complete all 15 cases; every earlier native NaN has a
+recorded follow-up. The 20 native attempts use $5.8186 in provider-reported
+inference cost, plus one initial GLM call with no reported cost. Historical
+custom-runner charges and results are separate.
+
+Conditions were adapted and are not a controlled model/harness comparison.
+Qwen2B/9B received explicit file-delivery prompts. Successful GLM and Qwen3.6
+follow-ups requested thinking disabled. Qwen3.6 A3B's final Bash episode restored
+a validated snapshot after two MCP cancellations and inherited nine observations
+/ 52 tu. It made no new experiments, but used 96 additional calls to refit and
+rewrite its predictor. Native finalization collected the revised file at the
+call limit. Qwen27B also completed through normal final collection at 96 calls.
+No model-authored predictor was repaired by the host. Native `max_input_tokens`
+counts newly introduced input once; it is not a dollar or cumulative billed
+prompt-token cap. Actual native cost is the accounting source.
+
+[Reproduction and boundary documentation](probes/blobs/agentenv/round6/worked_example/rollout/verifiers_v1/README.md)
+links the frozen plans/configs, source snapshots, and complete traces. Fifteen
+offline tests and four actual native eval/Docker smoke tests pass. The final
+evidence audit verifies all 176 installed Verifiers v1 Python files against the
+package record, unchanged scientific inputs and grading, and artifact/data hashes.
+All evaluation sessions are finished; no task containers remain. Two unrelated
+six-day-old Docker containers were left untouched. Use native eval for future
+work; earlier v1–v5 custom runners are preserved only for historical provenance.
+
+## Current continuation: R6 worked example (2026-09-07–09)
+
+The user authorized combining a concrete R6 suite with further physics exploration
+in p4g2_044, using subagents. That work is now documented in
+[round6/worked_example/README.md](probes/blobs/agentenv/round6/worked_example/README.md).
+It supersedes the first-pass-only scope and policy-A design described below.
+
+The native runner now uses independent ongoing noise from the prepared start for
+every experiment, including shams. Agent sampling seeds are unrelated to physical
+noise. A prepared exact t1700 state and calibrated close/wide devices are rebased
+to public0. The compact suite has15 anonymous cases and30 completed fresh native
+trajectories, alongside an executable scorer and trusted local exploration host.
+Further studies demonstrate timing-sensitive spatial effects and shared-feedback
+negative-boundary displacement/partner compensation. Scientific reports retain
+private causal interventions and limits separately from accessible actions.
+
+The [small-model iterations](probes/blobs/agentenv/round6/worked_example/rollout/iterations/README.md)
+now complete the isolated Prime path. The user approved more small-model runs,
+slightly larger Qwens, and counting failed callables as worst-ranked task scores.
+DeepSeek v4 Flash scores 0.686557; Qwen3.5-35B-A3B scores 0.802683 after a saved-state
+provider recovery. Qwen3.6-27B scores 1.791020 after its cumulative inference cap
+was raised from $0.45 to $0.90; its original budget-limited stop receives NaN
+because no predictor was submitted. Provider errors also receive NaN, including
+the Qwen35B HTTP-500 phase. +∞ is reserved for submitted contract/category errors.
+The v2 Qwen9B run also scores +∞ because of invalid empty-query output. Each
+valid predictor completed all 15 cases, versus initial persistence at 0.827121.
+The [analysis](probes/blobs/agentenv/round6/worked_example/rollout/iterations/ANALYSIS.md)
+explains the modeling limitations and why adaptive continuations are not a
+controlled comparison of model sizes.
+
+The user then requested [Qwen2B and Qwen9B retries](probes/blobs/agentenv/round6/worked_example/rollout/iterations/RETRIES.md).
+Both completed 64 model responses and ended at +∞ for submitted contract errors.
+Qwen2B's context-overflow NaN was repaired with a bounded provider conversation
+view before it submitted wrong-shaped arrays. Qwen9B returned forecasts for all
+15 cases (diagnostic error 2.294695), but a frozen-artifact check proved it reorders
+query outputs. The public contract already prohibited that. DeepSeek, Qwen35B and
+Qwen27B passed the same ordering check and retain their finite scores. The normal
+submission gate now checks ordering before grading.
+
+The user then approved [GLM-4.7-Flash and Qwen3.6-35B-A3B](probes/blobs/agentenv/round6/worked_example/rollout/iterations/NEXT_MODELS.md).
+GLM completes all 15 cases with error 0.673018 after four no-action experiments;
+its predictor ignores interventions and interpolates the last baseline experiment.
+Qwen uses 15 experiments and 750 native time units, then repeatedly fails to save
+a predictor. Recorded continuations raise its response allowance and inference
+cap without adding simulation time. Final direct source delivery with reasoning
+disabled returns model-written code that crashes while stacking differently
+shaped observations, yielding +∞. The final delivery condition differs from the
+initial rollout; no submitted code was repaired. The pair uses $0.4363 in reported
+inference, with Qwen's five physical phases counted once each.
+
+Through the completed v4 campaign, confirmed reported inference is $1.9281 including the original $0.0657
+pilot/probe cost. Another $0.06511041 is reserved for uncertain HTTP-500 and
+context-error charges, giving $1.99321041 charged or reserved against the $2 cap. Exploration
+used 2,177 native time units across old and new phases; grading reused saved
+truths. All model jobs and pilot containers have finished. The updated summary
+builder audits costs, bounds, source/artifact hashes, transcript restoration and
+all forecasts and compacted context views (102 checks); all 43 original audited
+v1 inputs and all 12 pre-pair status files remain unchanged. All 36 local runtime
+tests pass, covering outcomes, provider retries, rollout/gate/CLI limits, bounded
+contexts, cumulative recovery chains and direct source delivery.
+The original Docker smoke and saved audit remain 11 and 109 checks.
+
+The user clarified that NaN requires retry or environment/limit repair, rather
+than being a terminal model result. All eight historical NaNs have verified
+scored follow-ups; `unresolved_nan_runs` is empty. The
+[v4 runtime](probes/blobs/agentenv/round6/worked_example/rollout/runtime_v4/README.md)
+uses bounded transient-provider retries and context views, keeps the $0.90 Qwen27B
+cap, marks NaNs with required recovery actions and exits 2 when recovery is
+needed. Those runs use `_v4` directories and per-run source snapshots. Their
+gate version is `r6-gate-query-order-v1`. Old raw grades/statuses remain unchanged;
+the effective outcome layer applies verified post-submission contract audits.
+
+On September 9 the user approved trying a separate public validation tool.
+The [v5 runtime](probes/blobs/agentenv/round6/worked_example/rollout/runtime_v5/README.md)
+adds `validate()` without finalization, clarifies that JSON request metadata is
+embedded in each NPZ, and prompts earlier write/validate/repair cycles. The
+scientific contract and scoring suite are unchanged. There were 45 passing runtime
+tests, a Docker edit/validate/submit smoke test, and a replay of five frozen
+predictors with all 126 audited inputs preserved. GLM and DeepSeek pass all seven
+public checks; the three Qwen failures reproduce with useful diagnostics.
+A [fresh Qwen3.6-35B-A3B trial](probes/blobs/agentenv/round6/worked_example/rollout/runtime_v5/TRIAL.md)
+has completed under a separate $0.60 allowance. The initial 64-response phase and
+32-response continuation never wrote `predictor.py` or used `validate()`, despite
+saving analysis files. A final recovery disabled thinking and requested source
+directly; the model delivered code, passed validation and submitted in three
+responses, with no source repairs. It completes all 15 cases at error 0.901651,
+worse than initial persistence. The type checker works, but its presence did not
+solve ordinary delivery, and this experiment does not isolate reasoning mode
+from delivery format. The new trial used 99 responses, 10 experiments, 187 native
+time units and $0.4054. Both new NaNs have a verified finite follow-up. All runs
+are finished; current runtime tests total 51. Combined charged/reserved inference
+across the earlier campaign and this new trial is $2.39861041; combined native
+exploration is 2,364 time units. Its files live under `rollout/runtime_v5/runs`,
+keeping the earlier campaign ledger closed.
+Current protocol is `r6-prime-pilot-v5` and gate `r6-gate-public-validation-v1`.
+
+[Contract v2](probes/blobs/agentenv/round6/worked_example/rollout/contract_v2/README.md)
+uses 64 responses and strictly increasing query times, without the former
+duplicate-time submission check. The 15 grading programs and scientific scores
+remain unchanged. The original 32-response v1 records remain unchanged: Qwen2B
+and Qwen9B have submitted contract errors (+∞), while DeepSeek has no submission
+(NaN). The old Qwen9B 0.864094
+retrospective score stays diagnostic. Qwen122B-A10B never ran and still requires
+the previously requested explicit approval; it was not part of these iterations.
+The old R5 transport concurrency defect remains outside the new local path.
+Old first-pass validation hashes/counts and cache-only/no-new-seeds statements
+below are historical. Current evidence and commands are in the worked-example
+entry point. Historical launchers, operational state, and other untracked files
+remain untouched; do not resume old jobs from their presence.
+
+
 Updated 2026-09-07. The substantive R6 first pass was published in **c06b2fb**.
 This migration commit preserves the remaining scoring scratch work and records
 local inputs. No active task depends on the previous agent's Python variables,

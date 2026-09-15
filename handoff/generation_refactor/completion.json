@@ -1,0 +1,114 @@
+{
+  "status": "complete",
+  "completed_at": "2026-09-13T16:10:51.781159+00:00",
+  "artifacts": {
+    "changed_existing_package_files": [
+      "__init__.py",
+      "_locks.json",
+      "cli.py"
+    ],
+    "added_modules": [
+      "generation.py",
+      "registry.py"
+    ],
+    "all_previous_numerical_and_operator_sources_unchanged": true,
+    "artifacts": [
+      {
+        "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-generation/blobkit-0.3.5-py3-none-any.whl",
+        "sha256": "9f22ad58da04aaf8eb45c1966aaac9a60569dad2223413a9e9055af2be5a11b1",
+        "bytes": 362245
+      },
+      {
+        "path": "/Users/spoho/Documents/prime/test/physim/dist/blobkit-generation/blobkit-0.3.5.tar.gz",
+        "sha256": "e316cfedfe6e2f85ac559fdae5d20751595f84588fe373166448101a8e1488ac",
+        "bytes": 349885
+      }
+    ],
+    "registry_bytes": 214998,
+    "wheel_rebuilt_from_sdist_has_identical_contents": true
+  },
+  "checks": {
+    "blobkit_cpu": 65,
+    "cpu_assay_adapter": 1,
+    "jax_cpu_adapters": 2,
+    "clean_python312_passed": 64,
+    "clean_python310_passed": 63,
+    "generic_package_contracts": 2,
+    "source_archive_rebuild": "identical extracted wheel contents",
+    "lint": "passed",
+    "format": "passed",
+    "git_diff_check": "passed"
+  },
+  "reference": {
+    "ok": true,
+    "public_checks": [
+      {
+        "name": "mixed_sensors",
+        "ok": true
+      },
+      {
+        "name": "repeat_seed",
+        "ok": true
+      },
+      {
+        "name": "reordered_queries",
+        "ok": true
+      },
+      {
+        "name": "empty_times",
+        "ok": true
+      },
+      {
+        "name": "empty_queries",
+        "ok": true
+      },
+      {
+        "name": "single_member_actions",
+        "ok": true
+      },
+      {
+        "name": "default_members_repeated_sensor",
+        "ok": true
+      }
+    ],
+    "expected": {
+      "predictor": "initial_persistence",
+      "forecast_members": 4,
+      "primary_joint_energy": 0.8271209896216252,
+      "absolute_tolerance": 1e-10
+    },
+    "actual": 0.8271209896216252,
+    "references": {
+      "bundle": "bundle:sha256:0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2",
+      "manifest_sha256": "832d821a3097b9aed4b430b1f96977547c690f62d4be74af00cc772168fd932a",
+      "world": "world:sha256:d6e85267eba7a4acb281f4d77e5dc29f1a981de74add624eaccf3ce7762d37e2",
+      "preparation": "preparation:sha256:2d4e5a56452a1c4c1e31121da5d90ce9b86de42653786f64b27e225421197c8a",
+      "suite": "suite:sha256:c411b8ccfb3db7054e0b6bc326ddd2ba0a2f42e2e4b5fbc56669e5614ccbf6ce"
+    },
+    "grade": "/Users/spoho/Documents/prime/test/physim/outputs/generation-refactor-reference/grade.json",
+    "run_id": "run:sha256:f977e6c9cfc0e48eb96fffe7e027929221d7d7a3860b408c4242379125438b94"
+  },
+  "registry": {
+    "ok": true,
+    "counts": {
+      "candidate": 6,
+      "checkpoint": 3,
+      "generation-result": 1,
+      "generation-run": 2,
+      "genome": 19,
+      "recipe": 2,
+      "world-record": 22,
+      "artifact": 26
+    }
+  },
+  "docs": {
+    "html_pages": 67,
+    "current_pages": 12,
+    "local_links_checked": 678,
+    "archived_originals": 29,
+    "evidence_sources_checked": 3,
+    "errors": []
+  },
+  "gpu_rentals_this_turn": 0,
+  "publication_status": "local candidate; not published"
+}

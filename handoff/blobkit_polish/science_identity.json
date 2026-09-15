@@ -1,0 +1,17 @@
+{
+  "genome.py": true,
+  "soup/sim_cpu.py": true,
+  "soup/sim_v1.py": true,
+  "metrics_v1.py": true,
+  "metrics_v2.py": true,
+  "assay_v2.py": true,
+  "assay_v2b.py": true,
+  "gpu operation make_stepper": true,
+  "gpu operation make_single_step": true,
+  "gpu operation pack_genomes": true,
+  "gpu operation pack_states": true,
+  "gpu operation unpack_state": true,
+  "gpu operation _attach_gpu": true,
+  "gpu operation advance_gpu": true,
+  "gpu operation advance_gpu_batch": true
+}

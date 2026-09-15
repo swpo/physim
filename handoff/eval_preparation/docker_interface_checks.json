@@ -1,0 +1,872 @@
+{
+  "4": {
+    "ok": true,
+    "gate": "r6-gate-public-validation-v2-roster",
+    "checks": [
+      {
+        "name": "mixed_sensors",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            2,
+            4,
+            13
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            1,
+            4,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            2,
+            4,
+            13
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            1,
+            4,
+            2
+          ]
+        ],
+        "wall_seconds": 0.2474320000037551
+      },
+      {
+        "name": "repeat_seed",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            2,
+            4,
+            13
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            1,
+            4,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            2,
+            4,
+            13
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            1,
+            4,
+            2
+          ]
+        ],
+        "wall_seconds": 0.10908725019544363
+      },
+      {
+        "name": "reordered_queries",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            1,
+            4,
+            2
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            2,
+            4,
+            13
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            1,
+            4,
+            2
+          ],
+          [
+            2,
+            1,
+            4,
+            19
+          ],
+          [
+            2,
+            2,
+            4,
+            13
+          ]
+        ],
+        "wall_seconds": 0.12195075023919344
+      },
+      {
+        "name": "empty_times",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": []
+            },
+            {
+              "sensor": "device1",
+              "t": []
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            0,
+            4,
+            2
+          ],
+          [
+            2,
+            0,
+            4,
+            19
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            0,
+            4,
+            2
+          ],
+          [
+            2,
+            0,
+            4,
+            19
+          ]
+        ],
+        "wall_seconds": 0.11303554195910692
+      },
+      {
+        "name": "empty_queries",
+        "request": {
+          "actions": [],
+          "queries": [],
+          "n_samples": 1,
+          "seed": 11
+        },
+        "expected_shapes": [],
+        "ok": true,
+        "actual_shapes": [],
+        "wall_seconds": 0.11707941582426429
+      },
+      {
+        "name": "single_member_actions",
+        "request": {
+          "actions": [
+            {
+              "t": 0,
+              "kind": "inject",
+              "port": 0,
+              "amp": 1.0,
+              "dur": 0.02
+            },
+            {
+              "t": 0.02,
+              "kind": "adjust",
+              "device": 0,
+              "u": [
+                0.1,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "queries": [
+            {
+              "sensor": "device1",
+              "t": [
+                0,
+                0.02,
+                5.02
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0.02
+              ]
+            }
+          ],
+          "n_samples": 1,
+          "seed": 17
+        },
+        "expected_shapes": [
+          [
+            1,
+            3,
+            4,
+            19
+          ],
+          [
+            1,
+            1,
+            4,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            1,
+            3,
+            4,
+            19
+          ],
+          [
+            1,
+            1,
+            4,
+            2
+          ]
+        ],
+        "wall_seconds": 0.1322782076895237
+      },
+      {
+        "name": "default_members_repeated_sensor",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0.04
+              ]
+            }
+          ],
+          "n_samples": 64,
+          "seed": 23
+        },
+        "expected_shapes": [
+          [
+            64,
+            1,
+            4,
+            2
+          ],
+          [
+            64,
+            2,
+            4,
+            13
+          ],
+          [
+            64,
+            1,
+            4,
+            13
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            64,
+            1,
+            4,
+            2
+          ],
+          [
+            64,
+            2,
+            4,
+            13
+          ],
+          [
+            64,
+            1,
+            4,
+            13
+          ]
+        ],
+        "wall_seconds": 0.1295715826563537
+      }
+    ],
+    "checks_total": 7,
+    "experiments_used": 0,
+    "integrated_tu": 0,
+    "scope": "Public execution/interface checks only; no physical accuracy evaluation.",
+    "public_roster": {
+      "n_ports": 4,
+      "device_slots": [
+        13,
+        19
+      ]
+    },
+    "checks_passed": 7
+  },
+  "6": {
+    "ok": true,
+    "gate": "r6-gate-public-validation-v2-roster",
+    "checks": [
+      {
+        "name": "mixed_sensors",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            2,
+            6,
+            13
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            1,
+            6,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            2,
+            6,
+            13
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            1,
+            6,
+            2
+          ]
+        ],
+        "wall_seconds": 0.17376441601663828
+      },
+      {
+        "name": "repeat_seed",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            2,
+            6,
+            13
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            1,
+            6,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            2,
+            6,
+            13
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            1,
+            6,
+            2
+          ]
+        ],
+        "wall_seconds": 0.11893454194068909
+      },
+      {
+        "name": "reordered_queries",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device1",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            1,
+            6,
+            2
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            2,
+            6,
+            13
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            1,
+            6,
+            2
+          ],
+          [
+            2,
+            1,
+            6,
+            19
+          ],
+          [
+            2,
+            2,
+            6,
+            13
+          ]
+        ],
+        "wall_seconds": 0.11236699996516109
+      },
+      {
+        "name": "empty_times",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": []
+            },
+            {
+              "sensor": "device1",
+              "t": []
+            }
+          ],
+          "n_samples": 2,
+          "seed": 11
+        },
+        "expected_shapes": [
+          [
+            2,
+            0,
+            6,
+            2
+          ],
+          [
+            2,
+            0,
+            6,
+            19
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            2,
+            0,
+            6,
+            2
+          ],
+          [
+            2,
+            0,
+            6,
+            19
+          ]
+        ],
+        "wall_seconds": 0.11906595807522535
+      },
+      {
+        "name": "empty_queries",
+        "request": {
+          "actions": [],
+          "queries": [],
+          "n_samples": 1,
+          "seed": 11
+        },
+        "expected_shapes": [],
+        "ok": true,
+        "actual_shapes": [],
+        "wall_seconds": 0.12370837479829788
+      },
+      {
+        "name": "single_member_actions",
+        "request": {
+          "actions": [
+            {
+              "t": 0,
+              "kind": "inject",
+              "port": 0,
+              "amp": 1.0,
+              "dur": 0.02
+            },
+            {
+              "t": 0.02,
+              "kind": "adjust",
+              "device": 0,
+              "u": [
+                0.1,
+                0.0,
+                0.0
+              ]
+            }
+          ],
+          "queries": [
+            {
+              "sensor": "device1",
+              "t": [
+                0,
+                0.02,
+                5.02
+              ]
+            },
+            {
+              "sensor": "global",
+              "t": [
+                0.02
+              ]
+            }
+          ],
+          "n_samples": 1,
+          "seed": 17
+        },
+        "expected_shapes": [
+          [
+            1,
+            3,
+            6,
+            19
+          ],
+          [
+            1,
+            1,
+            6,
+            2
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            1,
+            3,
+            6,
+            19
+          ],
+          [
+            1,
+            1,
+            6,
+            2
+          ]
+        ],
+        "wall_seconds": 0.11944491695612669
+      },
+      {
+        "name": "default_members_repeated_sensor",
+        "request": {
+          "actions": [],
+          "queries": [
+            {
+              "sensor": "global",
+              "t": [
+                0
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0,
+                0.02
+              ]
+            },
+            {
+              "sensor": "device0",
+              "t": [
+                0.04
+              ]
+            }
+          ],
+          "n_samples": 64,
+          "seed": 23
+        },
+        "expected_shapes": [
+          [
+            64,
+            1,
+            6,
+            2
+          ],
+          [
+            64,
+            2,
+            6,
+            13
+          ],
+          [
+            64,
+            1,
+            6,
+            13
+          ]
+        ],
+        "ok": true,
+        "actual_shapes": [
+          [
+            64,
+            1,
+            6,
+            2
+          ],
+          [
+            64,
+            2,
+            6,
+            13
+          ],
+          [
+            64,
+            1,
+            6,
+            13
+          ]
+        ],
+        "wall_seconds": 0.12837837496772408
+      }
+    ],
+    "checks_total": 7,
+    "experiments_used": 0,
+    "integrated_tu": 0,
+    "scope": "Public execution/interface checks only; no physical accuracy evaluation.",
+    "public_roster": {
+      "n_ports": 6,
+      "device_slots": [
+        13,
+        19
+      ]
+    },
+    "checks_passed": 7
+  }
+}

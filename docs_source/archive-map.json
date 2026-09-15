@@ -1,0 +1,147 @@
+[
+  {
+    "old": "blobs/accelerating-blobs.html",
+    "archive": "archive/blobs/accelerating-blobs.html",
+    "title": "Accelerating blobs \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/blob-chemistry.html",
+    "archive": "archive/blobs/blob-chemistry.html",
+    "title": "Blob chemistry \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/blobs-move.html",
+    "archive": "archive/blobs/blobs-move.html",
+    "title": "Blobs move \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/bounded-structures.html",
+    "archive": "archive/blobs/bounded-structures.html",
+    "title": "Bounded structures \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/breeding-spatial-economies.html",
+    "archive": "archive/blobs/breeding-spatial-economies.html",
+    "title": "Breeding spatial economies \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/evolving-at-scale.html",
+    "archive": "archive/blobs/evolving-at-scale.html",
+    "title": "Evolving at scale \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/living-landscape.html",
+    "archive": "archive/blobs/living-landscape.html",
+    "title": "The living landscape \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/machines.html",
+    "archive": "archive/blobs/machines.html",
+    "title": "Blob machines \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/measuring-evolved-worlds.html",
+    "archive": "archive/blobs/measuring-evolved-worlds.html",
+    "title": "Measuring evolved worlds \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/molecules-that-move.html",
+    "archive": "archive/blobs/molecules-that-move.html",
+    "title": "Molecules that move \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/searching-equation-space.html",
+    "archive": "archive/blobs/searching-equation-space.html",
+    "title": "Searching equation space \u2014 physim blobs"
+  },
+  {
+    "old": "blobs/what-is-a-blob.html",
+    "archive": "archive/blobs/what-is-a-blob.html",
+    "title": "What is a blob? \u2014 physim blobs"
+  },
+  {
+    "old": "blobs.html",
+    "archive": "archive/blobs.html",
+    "title": "The BLOBS program \u2014 physim blobs"
+  },
+  {
+    "old": "index.html",
+    "archive": "archive/overview.html",
+    "title": "physim \u2014 science benchmark for AI agents"
+  },
+  {
+    "old": "results-bulk.html",
+    "archive": "archive/results-bulk.html",
+    "title": "physim results \u2014 bulk-matter track"
+  },
+  {
+    "old": "results-chemistry.html",
+    "archive": "archive/results-chemistry.html",
+    "title": "physim results \u2014 chemistry track"
+  },
+  {
+    "old": "results-evolution.html",
+    "archive": "archive/results-evolution.html",
+    "title": "physim results \u2014 evolution track"
+  },
+  {
+    "old": "results-life.html",
+    "archive": "archive/results-life.html",
+    "title": "physim results \u2014 ecology track"
+  },
+  {
+    "old": "results.html",
+    "archive": "archive/results.html",
+    "title": "physim results"
+  },
+  {
+    "old": "rollouts-bulk.html",
+    "archive": "archive/rollouts-bulk.html",
+    "title": "physim rollouts \u2014 trace gallery"
+  },
+  {
+    "old": "rollouts-chemistry.html",
+    "archive": "archive/rollouts-chemistry.html",
+    "title": "physim rollouts \u2014 trace gallery"
+  },
+  {
+    "old": "rollouts-life.html",
+    "archive": "archive/rollouts-life.html",
+    "title": "physim rollouts \u2014 trace gallery"
+  },
+  {
+    "old": "rollouts.html",
+    "archive": "archive/rollouts.html",
+    "title": "physim rollouts"
+  },
+  {
+    "old": "scoring.html",
+    "archive": "archive/scoring.html",
+    "title": "physim \u2014 how scoring works"
+  },
+  {
+    "old": "worlds-bulk.html",
+    "archive": "archive/worlds-bulk.html",
+    "title": "physim worlds \u2014 bulk matter (D)"
+  },
+  {
+    "old": "worlds-chemistry.html",
+    "archive": "archive/worlds-chemistry.html",
+    "title": "physim worlds \u2014 chemistry (C)"
+  },
+  {
+    "old": "worlds-evolution.html",
+    "archive": "archive/worlds-evolution.html",
+    "title": "physim worlds \u2014 evolution (E)"
+  },
+  {
+    "old": "worlds-life.html",
+    "archive": "archive/worlds-life.html",
+    "title": "physim worlds \u2014 ecology (B)"
+  },
+  {
+    "old": "worlds.html",
+    "archive": "archive/worlds.html",
+    "title": "physim worlds \u2014 visual guide"
+  }
+]

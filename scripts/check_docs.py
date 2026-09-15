@@ -1,0 +1,156 @@
+"""Check static documentation, local links, and published evidence consistency."""
+
+import hashlib
+import json
+import sys
+from collections import Counter
+from html.parser import HTMLParser
+from urllib.parse import unquote, urlsplit
+
+from build_docs import DETAIL_PARENTS, DOCS, MAIN, PAGES, ROOT, SOURCE
+
+
+class Page(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.ids, self.links, self.images, self.meta = [], [], [], {}
+        self.lang, self.h1, self.nav, self.main, self.titles = None, 0, [], False, 0
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if "id" in a:
+            self.ids.append(a["id"])
+        if tag == "a" and "name" in a:
+            self.ids.append(a["name"])
+        for key in ("href", "src", "poster"):
+            if key in a:
+                self.links.append(a[key])
+        if tag == "html":
+            self.lang = a.get("lang")
+        if tag == "h1":
+            self.h1 += 1
+        if tag == "title":
+            self.titles += 1
+        if tag == "meta":
+            self.meta[a.get("name")] = a.get("content")
+        if tag == "img":
+            self.images.append(a)
+        if tag == "nav":
+            self.nav.append(a.get("aria-label"))
+        if tag == "main":
+            self.main = a.get("id") == "main"
+
+
+def check():
+    pages, errors = {}, []
+    for path in sorted(DOCS.rglob("*.html")):
+        parser = Page()
+        parser.feed(path.read_text())
+        pages[path.resolve()] = parser
+    links = 0
+    for path, page in pages.items():
+        for raw in page.links:
+            url = urlsplit(raw)
+            if url.scheme or url.netloc:
+                continue
+            links += 1
+            target = (
+                (DOCS / unquote(url.path).lstrip("/"))
+                if url.path.startswith("/")
+                else (path.parent / unquote(url.path) if url.path else path)
+            ).resolve()
+            if target.is_dir():
+                target /= "index.html"
+            if not target.exists():
+                errors.append(f"{path.relative_to(ROOT)}: missing {raw}")
+            elif url.fragment and target in pages and unquote(url.fragment) not in pages[target].ids:
+                errors.append(f"{path.relative_to(ROOT)}: missing fragment {raw}")
+        if not page.meta.get("viewport"):
+            errors.append(f"{path.relative_to(ROOT)}: missing viewport")
+    for key in PAGES:
+        path = DOCS / f"{key}.html"
+        page = pages[path.resolve()]
+        source = path.read_text()
+        for condition, problem in (
+            (page.lang == "en", "language"),
+            (page.h1 == 1, "single h1"),
+            (page.titles == 1, "single title"),
+            (bool(page.meta.get("description")), "description"),
+            (page.main, "main landmark/skip target"),
+            (page.nav == ["Main navigation"], "single main navigation"),
+            (not any(n > 1 for n in Counter(page.ids).values()), "unique IDs"),
+            (all(img.get("alt") for img in page.images), "image alternatives"),
+            ("{{" not in source, "resolved template variables"),
+            ("site.css" in page.links, "shared stylesheet"),
+        ):
+            if not condition:
+                errors.append(f"{path.name}: failed {problem}")
+        if key in MAIN:
+            index = MAIN.index(key)
+            if index and f'rel="prev" href="{MAIN[index - 1]}.html"' not in source:
+                errors.append(f"{path.name}: missing previous page in main flow")
+            if index + 1 < len(MAIN) and f'rel="next" href="{MAIN[index + 1]}.html"' not in source:
+                errors.append(f"{path.name}: missing next page in main flow")
+        if key in DETAIL_PARENTS:
+            parent = DETAIL_PARENTS[key]
+            if f"{key}.html" not in pages[(DOCS / f"{parent}.html").resolve()].links:
+                errors.append(f"{path.name}: not discoverable from its parent page")
+            if f"{parent}.html" not in page.links or 'class="breadcrumb"' not in source:
+                errors.append(f"{path.name}: missing context/return path")
+    catalog = json.loads((DOCS / "data/worlds.json").read_text())
+    for world in catalog["worlds"]:
+        for path in (DOCS / world["genome"]["file"], ROOT / world["genome"]["source"]):
+            if hashlib.sha256(path.read_bytes()).hexdigest() != world["genome"]["sha256"]:
+                errors.append(f"{path}: genome/catalog hash mismatch")
+    for name in ("worlds.json", "results.json"):
+        if (DOCS / "data" / name).read_bytes() != (SOURCE / name).read_bytes():
+            errors.append(f"{name}: generated snapshot is stale")
+    for path in (SOURCE / "examples").iterdir():
+        if path.is_file() and path.read_bytes() != (DOCS / "examples" / path.name).read_bytes():
+            errors.append(f"{path.name}: example is stale")
+    records = json.loads((SOURCE / "archive-map.json").read_text())
+    for record in records:
+        archived = DOCS / record["archive"]
+        if not archived.is_file() or "Research archive." not in archived.read_text():
+            errors.append(f"{record['archive']}: missing archived original/banner")
+    evidence = json.loads((SOURCE / "results.json").read_text())
+    # Verify snapshots against research records when present; clean docs builds
+    # do not require those optional research fixtures.
+    fields = ("run", "model", "stop", "score_kind", "primary_joint_energy", "experiments")
+    checked_sources = 0
+    for profile in evidence["profiles"]:
+        source = ROOT / profile["source"]["path"]
+        if source.is_file():
+            checked_sources += 1
+            if hashlib.sha256(source.read_bytes()).hexdigest() != profile["source"]["sha256"]:
+                errors.append(f"{source}: evidence source changed; review snapshot")
+            original = json.loads(source.read_text())["rows"]
+            if len(original) != len(profile["rows"]):
+                errors.append(f"{profile['id']}: missing or extra attempts")
+            for a, b in zip(original, profile["rows"]):
+                if any(a.get(k) != b.get(k) for k in fields):
+                    errors.append(f"{b['run']}: snapshot differs from source")
+    control_source = ROOT / evidence["control_source"]["path"]
+    if control_source.is_file():
+        checked_sources += 1
+        if hashlib.sha256(control_source.read_bytes()).hexdigest() != evidence["control_source"]["sha256"]:
+            errors.append("Control evidence source changed; review snapshot")
+        if json.loads(control_source.read_text())["aggregate"] != evidence["controls"]["aggregate"]:
+            errors.append("Control aggregates differ from source")
+    contract = ROOT / "probes/blobs/agentenv/round6/worked_example/AGENT_SPEC.md"
+    if contract.is_file() and contract.read_bytes() != (SOURCE / "examples/AGENT_SPEC.md").read_bytes():
+        errors.append("Downloadable agent contract differs from current worked example")
+    summary = {
+        "html_pages": len(pages),
+        "current_pages": len(PAGES),
+        "local_links_checked": links,
+        "archived_originals": len(records),
+        "evidence_sources_checked": checked_sources,
+        "errors": errors,
+    }
+    print(json.dumps(summary, indent=2))
+    return bool(errors)
+
+
+if __name__ == "__main__":
+    sys.exit(check())

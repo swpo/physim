@@ -1,0 +1,8 @@
+{
+ "blobkit": "0.3.5",
+ "backend": "gpu_batch",
+ "wheel": "blobkit-0.3.5-py3-none-any.whl",
+ "n_seeds": 16,
+ "n_files": 144,
+ "out_dir": "/tmp/blobkit-polish-fleet"
+}

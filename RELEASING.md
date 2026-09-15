@@ -16,13 +16,20 @@ distributions are available with SHA-256 pins. The Physim setup archive includes
 portable world configs and Dockerfiles. Current portability receipts are in
 `handoff/portable_release_20260915/`.
 
-The latest dataset-card update at `0813ee4d0a4e97a12bbf598d5d43a45eddf5492f` links Physim 0.12.2
+The dataset-card update at `0813ee4d0a4e97a12bbf598d5d43a45eddf5492f` links Physim 0.12.2
 and documents Hugging Face's verified Parquet conversion. Across the two card
 updates, only `README.md`, `registry/README.md`, and `release.json` changed. The
 portable configs deliberately retain the original data revision above because
 all scientific payloads and catalog rows are identical. The viewer contains
 24 world rows and three evaluation rows; both converted tables match their
 source JSONL exactly.
+
+The contribution-guide update at `1d8b73624669aea004befd54ec050bb7280f1678`
+adds `CONTRIBUTING.md` and links it from both dataset READMEs. It updates the
+release manifest to inventory the guide; all scientific files and catalog rows
+remain unchanged. The editable guide is `registry/CONTRIBUTING.md`, which release
+staging copies to the dataset root. Publication and example-validation receipts
+are in `handoff/registry_contribution_20260915/`.
 
 The first live 0.12.1 smoke exposed a stock bash-harness setup timeout while
 fetching dependencies inside a fresh container. Version 0.12.2 ships an agent-image

@@ -1,0 +1,15 @@
+{
+  "suite": "r6_offline_evaluation_toy",
+  "tests": 30,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "passed": true,
+  "wall_seconds": 0.023491958621889353,
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
+  "numpy": "2.5.2",
+  "native_steps": 0,
+  "model_calls": 0,
+  "remote_calls": 0,
+  "execution_boundary": "reviewed local Python and data-only JSON; no submitted-code sandbox"
+}

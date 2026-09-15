@@ -1,0 +1,27 @@
+<p class="lead">Investigate through experiments. Submit a function that predicts new experiments.</p>
+<p>The agent gets an anonymous instrument interface, a Python workspace, and declared resource budgets. It chooses measurements and interventions, analyzes the resulting arrays, and saves <code>predictor.py</code> with any learned parameters or data.</p>
+<h2>One program, from a fixed starting point</h2>
+<p>An experiment specifies all actions and requested readings in advance. Timestamps are absolute from the prepared start. Starting another experiment restores that same physical state; ongoing noise differs independently between trials.</p>
+<pre><code>actions = [
+    {"t": 1.0, "kind": "inject", "port": 2, "amp": 0.7, "dur": 4.0},
+    {"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]},
+]
+queries = [
+    {"sensor": "device0", "t": [0, 8, 12]},
+    {"sensor": "device1", "t": [12, 20]},
+    {"sensor": "global", "t": [20]},
+]</code></pre>
+<p>This program injects through port 2 from time 1 to time 5, moves device 1 at time 2, and requests three sets of measurements. The source remains fixed when the probe moves. Actions may depend on earlier experiments, but cannot adapt to readings during this single program. The <a href="api.html">prediction API</a> specifies the exact action ranges, timing rules, and output contract.</p>
+<h2>Explore, check, submit</h2>
+<div class="table-scroll"><table><thead><tr><th>Operation</th><th>Purpose</th></tr></thead><tbody><tr><td><code>experiment(actions, queries)</code></td><td>Run one physical realization and receive the requested arrays.</td></tr><tr><td><code>usage()</code></td><td>Read consumed and remaining experiment resources.</td></tr><tr><td><code>validate()</code></td><td>Check a snapshot of the predictor against public interface requests. This provides no physical-accuracy feedback.</td></tr><tr><td><code>submit()</code></td><td>Check and freeze the predictor and supporting files. Successful submission ends exploration.</td></tr></tbody></table></div>
+<p>The native agent tools expose these operations with a <code>laboratory_</code> prefix. Experiment, model, and execution budgets are specified for each run; they are not properties of the physical world.</p>
+<h2>Predict possible trajectories</h2>
+<pre><code>def predict(actions, queries, n_samples=64, seed=0):
+    # One array per query, in the same order.
+    # Shape: (members, requested times, n_ports, sensor slots)
+    return {"samples": arrays}</code></pre>
+<p>For the twelve-port reference and the request above with 64 members, return arrays of shapes <code>(64, 3, 12, 13)</code>, <code>(64, 2, 12, 19)</code>, and <code>(64, 1, 12, 2)</code>. A member is one possible trajectory shared across all three arrays. Every value must be finite.</p>
+<p>A deterministic predictor can repeat its estimate in every member. A stochastic predictor can return a non-Gaussian distribution. Repeating the same request with the same predictor seed must reproduce the output. Adding later actions or queries must preserve earlier predictions.</p>
+<h2>Evaluate the frozen artifact</h2>
+<p>The evaluator calls the submitted function on new programs in an isolated runtime without access to the experimental service. Forecasts are finalized before truth observations are loaded for scoring. Predictor seeds determine only the predictor's own sampling; they do not identify the world's noise.</p>
+<p>The score compares distributions of measurements, including their dependence across times and sensor positions. A good result requires useful predictions under the selected interventions and probe movements.</p>

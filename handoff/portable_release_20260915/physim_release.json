@@ -1,0 +1,10 @@
+{
+  "commit": "55ab966415f1504a430379064b74e274d8bde553",
+  "package_url": "https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-0.12.1-py3-none-any.whl#sha256=1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74",
+  "assets": {
+    "physim-0.12.1-py3-none-any.whl": "1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74",
+    "physim-0.12.1.tar.gz": "09d5f2bb422e4ec59793b3ae6559d746cf294a8c138757a54a4c97ff48fbe6cc",
+    "physim-setup.tar.gz": "93710acdec819fa47f58681dcdee9ffeb9f698b47acbefde87492a78bacba4c7",
+    "requirements.txt": "637ac93a3dd3e0a301ab52a1483f3515129133c5e0e5aa5b5ef35082b74b56d6"
+  }
+}

@@ -1,5 +1,6 @@
 # environments / python
 .venv/
+.venv-docs/
 __pycache__/
 *.pyc
 *.egg-info/
@@ -8,3 +9,12 @@ nohup.out
 
 # rollout outputs live on HF: datasets/seanpohorence/physim-rollouts (sync_outputs.sh)
 outputs/
+
+# Reproducible release products and local verified world cache
+/dist/
+/build/
+/packages/*/build/
+/packages/*/dist/
+/.physim-cache/
+/.pytest_cache/
+.ruff_cache/

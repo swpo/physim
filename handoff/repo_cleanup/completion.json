@@ -1,0 +1,23 @@
+{
+  "status": "local-complete-publication-decisions-pending",
+  "automated_tests": 100,
+  "native_parity_checks": 13,
+  "documentation_links": 676,
+  "no_model_calls": true,
+  "published": false,
+  "report_sha256": {
+    "clean_install.json": "847ba9923900d158c210c953724a92861ebc88819d46941a51f20b735d52a159",
+    "final_installed_demo.json": "ac55d5be3e6ca6d8f7e8e2eea13b29a2cb84afdf5f5e8a760cbf931ff3e4e7df",
+    "native_parity.json": "c6ad6bae331a52069fcf8210d0c6fafd2219e77421058792c562f10bd4f97332",
+    "installed_native_task.json": "d3d74e389de7237719cd3e0951a064ccff2ee0c6ba0d911b8d88063ca2c8ecf8",
+    "docker_zero_grade_frozen.json": "dbf133eaf9ad68d2905a6395c4545eac2e3aeaa59058e419540ed6f9bdaab5b0",
+    "release_candidate.json": "6258c8f691961a0d73b7bc06d4faa45592ef137119cc060b7d8a753535c3d1b9",
+    "wheel_inventory.json": "5834b23e884f7a20e05d35538442844a719db4786b2f2c2fe7273a0e739fe562"
+  },
+  "remaining": [
+    "choose code and data licenses",
+    "confirm HF namespace",
+    "review and commit source",
+    "publish and verify immutable remote revision"
+  ]
+}
