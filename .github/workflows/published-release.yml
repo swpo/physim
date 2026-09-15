@@ -1,0 +1,47 @@
+name: Published release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/portable-release-20260915]
+    paths: [.github/workflows/published-release.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Download and verify the public setup
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          curl --fail --location --retry 3 -o physim-setup.tar.gz \
+            https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-setup.tar.gz
+          echo '93710acdec819fa47f58681dcdee9ffeb9f698b47acbefde87492a78bacba4c7  physim-setup.tar.gz' | sha256sum --check
+          mkdir physim-setup
+          tar -xzf physim-setup.tar.gz -C physim-setup
+          python3.12 -m pip install uv==0.12.8
+      - name: Install public packages and verify every preparation
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/physim-setup"
+          python3.12 scripts/physim/check_published_install.py \
+            --package-url 'https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-0.12.1-py3-none-any.whl#sha256=1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74' \
+            --configs configs/physim --workdir "$RUNNER_TEMP/physim-clean" \
+            --report "$RUNNER_TEMP/public-install.json"
+          cat "$RUNNER_TEMP/public-install.json"
+      - name: Build Docker images and validate an executable predictor
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/physim-setup"
+          docker build -f scripts/physim/docker/predictor.Dockerfile -t physim-predictor:0.12.0 scripts/physim/docker
+          docker build -f scripts/physim/docker/agent.Dockerfile -t physim-agent:0.12.0 scripts/physim/docker
+          mkdir "$RUNNER_TEMP/observations"
+          "$RUNNER_TEMP/physim-clean/venv/bin/physim" validate \
+            --artifact scripts/physim/examples/predictor --observations "$RUNNER_TEMP/observations"
