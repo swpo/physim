@@ -4,11 +4,11 @@ data_license = "CC-BY-4.0"
 dataset_repo = "seanpohorence/physim-worlds"
 exposure = "public-reference-development"
 
-dataset_revision = "163caf1f52ad7d1630475fabccf5a72f1c33dfdd"
-release_id = "dataset-release:sha256:439f80074bb905418ffa185574362b699972fcab85c16b7ca807f3b1dd56aa2f"
+dataset_revision = "0813ee4d0a4e97a12bbf598d5d43a45eddf5492f"
+release_id = "dataset-release:sha256:165fbfac4c6760469c9ca6f88cc2818186d3b5464ced9a18b44f1620a56e9dd4"
 published_date = "2026-09-15"
 
 [code_packages]
-physim = "https://github.com/swpo/physim/releases/download/physim-v0.12.1/physim-0.12.1-py3-none-any.whl#sha256=1d81f8716666d4c89f09194f4a215cecb76882ba0de6a634fa6621bb5455bb74"
+physim = "https://github.com/swpo/physim/releases/download/physim-v0.12.2/physim-0.12.2-py3-none-any.whl#sha256=dee8ec2e19b0ab57531758c535b1838020f8c3f0f6c138ae9d1eeed61c45e57f"
 blobkit = "https://github.com/swpo/physim/releases/download/blobkit-v0.3.5/blobkit-0.3.5-py3-none-any.whl#sha256=6747e7ebe26e3909c05d91d050ebce93715d08992c51498cbf480b8206224331"
-source_commit = "55ab966415f1504a430379064b74e274d8bde553"
+source_commit = "eb6647cb429226dc43b27db6950329ed849b92d9"

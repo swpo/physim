@@ -200,8 +200,9 @@ There is no custom model loop. The agent has no network access by default.
 ## Reward and reference checks
 
 Lower joint energy is better. The task maps it to Verifiers reward as
-`1 / (1 + primary_joint_energy)`. An invalid submitted predictor receives zero;
-a rollout delivering no executable predictor raises a task error.
+`1 / (1 + primary_joint_energy)`. An otherwise completed rollout with a missing
+or invalid predictor receives zero reward. Infrastructure failures remain native
+Verifiers errors.
 The disclosed reference world does not measure unfamiliar-world generalization.
 
 ```sh
