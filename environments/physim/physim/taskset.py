@@ -1,963 +1,551 @@
-"""physim — hidden-law world discovery taskset (M0, chat tier).
+"""R6 task hooks and MCP tools; execution is stock Verifiers v1.
 
-The agent faces an anonymous-port world (DESIGN.md v0.1-v0.5): input ports,
-output ports, a tick budget, no semantics. It explores by submitting JSON
-open-loop protocols, then answers evaluator-issued prediction contracts,
-scored against fresh truth ensembles of the same hidden world.
-
-Difficulty is a task parameter (D0..D3): port opacity, macro complexity
-(modules), noise, and budget scale together.
+The agent uses a provided harness in DockerRuntime, driven by SingleAgentEnv/eval.
+The trusted MCP tool process keeps the simulator and grader outside that box.
+Only observations and submitted workspace files cross the task boundary.
 """
 
 from __future__ import annotations
 
-import itertools
+import asyncio
+import hashlib
 import json
-from collections.abc import Iterator
+import re
+from functools import wraps
+from importlib.resources import files
+from pathlib import Path, PurePosixPath
+from types import SimpleNamespace
 from typing import Literal
 
-from pydantic import model_validator
+import numpy as np
 import verifiers.v1 as vf
+from pydantic import BaseModel, Field, model_validator
 
-from physim.engine import DIFFICULTY_PRESETS, make_world
-from physim.session import PhysimSession
+from physim.blobround6_eval import EvaluationError
+from physim.blobround6_explore import ExperimentService
+from physim.bundles import Bundle
 
-MAX_TURNS_DEFAULT = 40
+from . import evaluation as E
 
-WORKSPACE_TEXT_EXTS = {".md", ".txt", ".py", ".json", ".csv", ".yaml", ".yml", ".toml"}
-WORKSPACE_FILE_CAP = 120_000       # chars per file
-WORKSPACE_TOTAL_CAP = 600_000      # chars per rollout
-
-
-def _extract_workspace(artifacts: dict | None) -> dict:
-    """Text files from collected workspace tars -> {path: content}, capped."""
-    if not artifacts:
-        return {}
-    import io
-    import tarfile
-    from pathlib import PurePosixPath
-
-    out: dict[str, str] = {}
-    total = 0
-    for source, blob in artifacts.items():
-        if not blob:
-            continue
-        try:
-            tar = tarfile.open(fileobj=io.BytesIO(blob))
-        except tarfile.TarError:
-            continue
-        with tar:
-            for member in tar.getmembers():
-                if not member.isfile() or member.size > 2_000_000:
-                    continue
-                if PurePosixPath(member.name).suffix.lower() not in WORKSPACE_TEXT_EXTS:
-                    continue
-                fh = tar.extractfile(member)
-                if fh is None:
-                    continue
-                try:
-                    text = fh.read().decode("utf-8", errors="replace")
-                except Exception:
-                    continue
-                text = text[:WORKSPACE_FILE_CAP]
-                if total + len(text) > WORKSPACE_TOTAL_CAP:
-                    break
-                out[member.name] = text
-                total += len(text)
-    return out
-
-SYSTEM_PROMPT = """You are a scientist studying an unknown dynamical system through a fixed interface. Nothing about the system's internal laws is documented. Everything must be discovered by experiment.
-
-INTERFACE
-- The system has {n_in} input ports (values in [-1, 1]) and {n_out} output ports (real-valued sensors). Port meanings, locations, polarities, and reliability are all unknown. Some sensors may be dead. The system has persistent internal state that evolves one tick at a time and may retain memory of past inputs.
-- You interact ONLY by sending one JSON command per message:
-  {{"op":"run","segments":[{{"t":50,"u":[u1,...]}}, {{"t":80,"u_start":[...],"u_end":[...]}}],"observe":{{"channels":[0,1,2],"series":true}}}}
-     Advances the world through your input program (segments concatenate; "u" holds a constant vector for t ticks, "u_start"/"u_end" ramps linearly). Returns per-channel mean/sd over the last {tail} ticks; "series":true additionally returns downsampled traces for up to 6 channels. "channels" may be "all".
-  {{"op":"reset"}}  -> draw fresh initial conditions (costs 200 ticks). State otherwise PERSISTS between runs.
-  {{"op":"status"}} -> budget and interface info.
-  {{"op":"ready"}}  -> end exploration early and receive the prediction contracts.
-- Tick budget for all experiments combined: {budget}. Unspent budget is not rewarded; use it.
-
-TASK
-After exploration ends (you send "ready", or you run out of budget/turns), you receive prediction contracts. Each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one output channel — the mean over the final {tail} ticks, or on some worlds the standard deviation over a ~200-tick window, or the count of upward threshold crossings (event rate; threshold = channel median + 1 sd) — the contract says which. You answer each with a point prediction and an interval:
-  {{"op":"answer","answers":[{{"id":0,"mean":0.42,"low":0.1,"high":0.7}}, ...]}}
-Scoring: a proper distributional score (CRPS against the repetition ensemble; reduces to exp(-|error|/(3*ensemble_sd)) for point answers on deterministic contracts). You MAY add "quantiles":{{"0.1":..,"0.25":..,"0.5":..,"0.75":..,"0.9":..}} to any answer — where the system is stochastic or has multiple possible regimes, reporting your honest distribution scores strictly better than any single point. Your interval should cover the true ensemble mean (calibration is also measured). Unanswered contracts score 0.
-
-ADVICE
-- First learn your senses: measure the noise floor (zero input), find dead/live sensors, and each sensor's response direction.
-- Then characterize the dynamics: response to steps of different sizes and signs, relaxation after release, dependence on history (path dependence / hysteresis), per-port differences.
-- Contracts include held-out regimes: strong drives followed by release, weak pushes, long autonomous evolution, and multi-stage sequences with long settling periods. Understand state memory and any slow drift before answering.
-- Contracts are evaluated on FRESH initial draws, not on your current world state. Use reset to study how fresh states behave (relaxation, weak pushes of both signs) before answering.
-- Budget your ticks: reserve enough exploration for release/memory behavior, not just steady states.
-- Think between commands, but always end each message with exactly one JSON command."""
+PROTOCOL = "r6-verifiers-v1-bash-1"
+AGENT_IMAGE = "physim-agent:0.12.0"
+DEFAULT_OUTPUT = Path("outputs/r6/artifacts")
+DEFAULT_PROMPT = "Investigate the laboratory and submit your executable predictor."
 
 
-class PhysimData(vf.TaskData):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2"] = "D0"
-    world_seed: int = 0
-    max_turns: int = MAX_TURNS_DEFAULT
-    n_per_stratum: int = 4
-    n_prep: int = 0
-    calibration_weight: float = 0.0
-    tier: Literal["chat", "tools"] = "chat"
+class R6State(vf.State):
+    # This state channel is host-only; these fields are never tool arguments.
+    container_id: str = ""
+    output: str = ""
+    submitted: bool = False
+    artifact: str | None = None
+    checks: list[dict] = Field(default_factory=list)
+    experiments: list[dict] = Field(default_factory=list)
+    usage: dict = Field(default_factory=dict)
+    origin: dict = Field(default_factory=dict)
+    infrastructure_error: str | None = None
+    exploration_closed: bool = False
+    checkpoint: dict = Field(default_factory=dict)
 
 
-TOOLS_SYSTEM_PROMPT = """You are a scientist studying an unknown dynamical system through a fixed tool interface. Nothing about the system's internal laws is documented. Everything must be discovered by experiment.
-
-INTERFACE (MCP tools)
-- physim_run(segments, channels, series, max_numbers): advance the hidden system through an input program and observe sensors. segments = [{{"t": ticks, "u": [values]}}, ...] holds, or {{"t":.., "u_start":[..], "u_end":[..]}} ramps; values in [-1,1]; the system has {n_in} input ports and {n_out} output sensors with persistent internal state (one tick at a time, may retain memory of past inputs). Returns per-channel mean/sd over the final {tail} ticks; series=true adds downsampled traces (<=6 channels). segments MUST be a JSON array of objects, e.g. physim_run(segments=[{{"t": 100, "u": [0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}], channels="all").
-- physim_reset(): fresh initial conditions (costs 200 ticks). State otherwise PERSISTS between runs.
-- physim_status(): budget and interface info.
-- physim_ready(): end exploration, receive prediction contracts.
-- physim_answer(answers): submit [{{"id":..,"mean":..,"low":..,"high":..}}, ...]. May be revised; last submission scores.
-- physim_run_policy(code, t): closed-loop experiment — your code defines policy(t, y, mem) -> [{n_in} floats]; it runs tick-synchronously against the live system (y = current sensor readings). Use it to build feedback controllers (clamps) that hold states no open-loop input can reach. Sandboxed: math + np only, no imports/files.
-- physim_answer_prep(id, code): submit a policy for a PREPARATION contract (steer a fresh draw into a stated sensor band; verified on 5 fresh draws after release).
-- physim_submit_theory(code): OPTIONAL — submit an executable theory (init/step simulator of the sensors); scored separately after the rollout.
-- Tick budget for all experiments: {budget}. Unspent budget is not rewarded.
-
-TASK
-After physim_ready() you receive contracts: each specifies an input protocol applied to a FRESH draw of this same system (same laws, new initial conditions) and asks for one statistic of one sensor: its mean over the final {tail} ticks, or (on some worlds) its standard deviation over a ~200-tick window, or the COUNT of upward threshold crossings in that window (a pulse/event rate) — the contract says which. Score per contract: a proper distributional score (CRPS against the repetition ensemble; for a point answer on a deterministic contract this reduces to exp(-|error|/scale)). OPTIONAL "quantiles" per answer (see physim_answer) — where the system is stochastic or has multiple regimes, an honest full distribution scores strictly better than any point. An interval score also rewards NARROW intervals that contain the truth and heavily penalizes misses (honest width = your real uncertainty). Give calibrated [low,high] intervals. Unanswered contracts score 0.
-
-STRATEGY
-You have a full coding environment: write files and scripts to record every experiment result, fit response curves offline (per-port gains, signs, time constants, saturation, hysteresis branches, drift/adaptation over hundreds of ticks), and simulate your fitted model to predict each contract protocol. Contracts include held-out regimes: weak pushes + relaxation, steady drives, strong drive + release (branch memory), and multi-stage sequences with long settling windows -- systems like this can show duration-dependent effects and slow internal drift; design experiments that measure them. Characterize both the LEVELS and the VARIABILITY of every responsive channel — some contracts ask for fluctuation (sd) rather than mean. Use the tick budget generously; reserve turns to answer ALL contracts. Call physim_answer before finishing."""
+class HubBundleConfig(BaseModel):
+    repo: str
+    revision: str = Field(pattern=r"^[0-9a-f]{40}$")
+    path: str
+    cache: Path | None = None
+    offline: bool = False
 
 
-class PhysimTaskConfig(vf.TaskConfig):
-    tier: Literal["chat", "tools"] = "chat"
-    tools: vf.ToolsetConfig = vf.ToolsetConfig()
-
-
-from physim.servers.world import PhysimToolState
-
-
-class PhysimTask(vf.Task[PhysimData, PhysimToolState, PhysimTaskConfig]):
-    @classmethod
-    def toolsets(cls, config: "PhysimTaskConfig") -> list[vf.Toolset]:
-        if config.tier != "tools":
-            return []
-        from physim.servers.world import PhysimToolset
-        return [PhysimToolset(config.tools)]
-
-    async def finalize(self, trace: vf.Trace, runtime) -> None:
-        if self.data.tier != "tools":
-            return
-        try:
-            from verifiers.v1.utils.artifacts import collect
-            trace.state.artifacts = await collect(runtime, self.data.artifacts)
-        except Exception as e:  # collection must never fail the rollout
-            trace.info.setdefault("physim_artifact_error", str(e))
-
-    async def setup(self, trace: vf.Trace, runtime) -> None:
-        # Host-side state init: the tool server pulls trace.state through the
-        # state channel on every call (server-side setup_task mutations would
-        # only hit its inert fallback state).
-        st = trace.state
-        st.difficulty = self.data.difficulty
-        st.world_seed = self.data.world_seed
-        st.n_per_stratum = self.data.n_per_stratum
-        st.n_prep = self.data.n_prep
-
-    """Chat tier: scoring happens in PhysimEnv. Tools tier: the toolset records
-    the last answers + world snapshot in trace.state; score() replays them."""
-
-    @vf.reward(weight=1.0)
-    async def accuracy(self, trace: vf.Trace) -> float:
-        if self.data.tier != "tools":
-            # chat tier: PhysimEnv computed the score during the episode and
-            # stashed it in trace.info (score() re-seeds trace.rewards, so the
-            # env cannot record the reward directly).
-            info = (trace.info or {}).get("physim") or {}
-            return float(info.get("reward_accuracy") or 0.0)
-        from physim.session import PhysimSession
-        from physim.engine import make_world
-
-        st = trace.state
-        world = make_world(self.data.difficulty, self.data.world_seed)
-        session = PhysimSession(world, contract_seed=self.data.world_seed,
-                                n_per_stratum=self.data.n_per_stratum,
-                                n_prep=self.data.n_prep)
-        session.prep_answers = dict(getattr(st, "prep_answers", {}) or {})
-        session.theory_code = getattr(st, "theory_code", "") or ""
-        cache = getattr(st, "contracts_cache", "") or ""
-        if cache:
-            import json as _json
-            from physim.session import Contract, PrepContract
-            session.contracts = [Contract(**d) for d in _json.loads(cache)]
-            session.prep_contracts = [
-                PrepContract(**d)
-                for d in _json.loads(getattr(st, "preps_cache", "") or "[]")]
-        elif session.n_prep or session.theory_code:
-            session.issue_contracts()
-        result = session.score(getattr(st, "answers_json", "") or None)
-        trace.record_reward("calibration", result.get("reward_calibration", 0.0),
-                            float(self.data.calibration_weight))
-        if "reward_preparation" in result:
-            trace.record_reward("preparation", result["reward_preparation"], 1.0)
-            trace.record_metric("prep_n", float(len(result.get("prep_detail", []))))
-        if "theory" in result:
-            th = result["theory"]
-            trace.record_reward("theory", th["theory_accuracy"], 0.0)  # report-only weight
-            trace.record_metric("theory_code_chars", float(th["code_chars"]))
-            for stratum, acc in th["per_stratum"].items():
-                trace.record_metric(f"theory_acc_{stratum}", acc)
-        trace.record_metric("coverage", result["coverage"])
-        trace.record_metric("replication_ref", result["replication_ref"])
-        if "reward_accuracy_legacy" in result:
-            trace.record_metric("accuracy_legacy", result["reward_accuracy_legacy"])
-        trace.record_metric("n_answered", result["n_answered"])
-        for stratum, acc in result["per_stratum"].items():
-            trace.record_metric(f"acc_{stratum}", acc)
-        snap = getattr(st, "snapshot", "")
-        if snap:
-            try:
-                from physim.servers.world import _restore
-                w2 = make_world(self.data.difficulty, self.data.world_seed)
-                _restore(w2, snap)
-                trace.record_metric("budget_used_frac",
-                                    w2.ticks_used / w2.p.max_ticks)
-                for k, v in w2.conduct_metrics().items():
-                    trace.record_metric(k, v)
-            except Exception:
-                pass
-        trace.info["physim"] = {
-            "difficulty": self.data.difficulty,
-            "world_seed": self.data.world_seed,
-            "tier": "tools",
-            "detail": result["detail"],
-            "parse_error": result.get("parse_error"),
-            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
-            "prep_detail": result.get("prep_detail"),
-            "theory": {k: v for k, v in (result.get("theory") or {}).items()
-                       if k != "detail"} or None,
-            "theory_detail": (result.get("theory") or {}).get("detail"),
-        }
-        return float(result["reward_accuracy"])
-
-
-class PhysimConfig(vf.TasksetConfig):
-    difficulty: Literal["D0", "D1", "D2", "D3", "D4", "C0", "C1", "C2", "C3", "C4", "B0", "B0a", "B0b", "B1", "B2", "E0", "E1", "E2", "BLOB-E1", "BLOB-E1r2", "BLOB-E1r3", "BLOB-E2", "BLOB-E3", "BLOB2-E1", "BLOB2-E2", "BLOB2v2-E1", "BLOB2v2-E2", "BLOB2v2r2-E1", "BLOB2v2r2-E2"] = "D0"
-    """World difficulty preset (port opacity + macro complexity + budget).
-    BLOB-* = Track A probe-device episodes on evolved worlds (tools tier
-    only; E2/E3 registered but gated for round 1 — see physim/blobcore.py)."""
-    tier: Literal["chat", "tools"] = "chat"
-    """chat: JSON-over-messages loop (PhysimEnv drives). tools: per-rollout MCP
-    world server for coding harnesses (codex/claude_code); scoring in Task."""
-    seed0: int = 0
-    """First world seed; task i uses seed0 + i."""
-    max_turns: int = MAX_TURNS_DEFAULT
-    """Max agent messages before contracts are forced."""
-    n_per_stratum: int = 4
-    """Contracts per stratum (S1 relax / S2 interpolation / S3 memory)."""
-    n_prep: int = 0
-    """Preparation contracts (M2): submit-a-policy steering tasks. 0 = off."""
-    calibration_weight: float = 0.0
-    """Weight for the interval-calibration reward (Winkler-based). 0 = report-only."""
-    task: PhysimTaskConfig = PhysimTaskConfig()
-    """Per-task config (tier is copied from the taskset-level field)."""
-
-
-class PhysimEnvConfig(vf.EnvConfig):
-    scientist: vf.AgentConfig = vf.AgentConfig()
+class R6ToolsConfig(vf.ToolsetConfig):
+    bundle: Path | None = None
+    bundle_source: HubBundleConfig | None = None
+    max_experiments: int = Field(1000, ge=1)
+    max_total_tu: float = Field(50000, gt=0, le=1_000_000)
+    max_validation_attempts: int = Field(128, ge=1)
+    max_submission_attempts: int = Field(128, ge=1)
 
     @model_validator(mode="after")
-    def _resource_safety_no_retry(self):
-        # A resource truncation is a terminal result, not a transport fault.
-        # The native episode retry predicate examines ALL prior errors,
-        # so an older ProviderError can bypass a later resource exclusion.
-        # Disable whole-run retries in BOTH layers for the NEW cohort.
-        # Per-call provider SDK retries are separate and remain unchanged.
-        d = str(getattr(self.taskset, "difficulty", ""))
-        if d.startswith("BLOB2v2r2-"):
-            name = "ResourceSafetyError"
-            self.retries = self.retries.model_copy(update={
-                "max_retries": 0,
-                "exclude": list(dict.fromkeys([*self.retries.exclude, name]))})
-            retries = self.scientist.retries
-            self.scientist = self.scientist.model_copy(update={
-                "retries": retries.model_copy(update={
-                    "max_retries": 0,
-                    "exclude": list(dict.fromkeys([*retries.exclude, name]))})})
+    def unambiguous_bundle(self):
+        if self.bundle is not None and self.bundle_source is not None:
+            raise ValueError("Select either a local bundle or bundle_source, not both")
         return self
 
 
-class PhysimEnv(vf.Env[PhysimEnvConfig]):
-    def complete(self, episode: vf.Episode) -> bool:
-        if super().complete(episode):
-            return True
-        # --resume uses complete(), not RetryConfig. Keep explicit r2
-        # resource truncations as terminal evidence, WITHOUT calling them
-        # successful or turning their absent scientific reward into zero.
-        if episode.errors or len(episode.traces) != 1:
-            return False
-        trace = episode.traces[0]
-        info = trace.info.get("physim", {})
-        return bool(
-            str(getattr(trace.task.data, "difficulty", "")).startswith(
-                "BLOB2v2r2-")
-            and trace.last_error
-            and trace.last_error.type == "ResourceSafetyError"
-            and info.get("resource_truncated")
-            and info.get("score_status") == "not_scored_resource_limit"
-            and info.get("resource_policy", {}).get("id") == "v2r2")
-
-    async def run(self, task, agents):
-        data: PhysimData = task.data
-        if data.tier == "tools":
-            # coding-harness tier: the agent drives the MCP toolset itself;
-            # scoring happens in PhysimTask.accuracy from trace.state.
-            await agents.scientist.run(task)
-            return
-        world = make_world(data.difficulty, data.world_seed)
-        session = PhysimSession(world, contract_seed=data.world_seed,
-                                n_per_stratum=data.n_per_stratum,
-                                n_prep=data.n_prep)
-        answer_text: str | None = None
-        async with agents.scientist.interaction(task) as interaction:
-            segment = await interaction.turn()  # prompted task speaks first
-            for _ in range(data.max_turns):
-                if segment.terminated:
-                    break
-                reply = segment.last_reply or ""
-                if session.phase == "answer":
-                    answer_text = reply
-                    break
-                response = session.handle(reply)
-                if session.phase == "answer" and "contracts" not in response:
-                    # ready was acknowledged elsewhere; make sure specs are shown
-                    response = session.issue_contracts()
-                segment = await interaction.turn(json.dumps(response))
-            else:
-                # turn limit reached during exploration: force contracts, one shot
-                if session.phase != "answer" and not segment.terminated:
-                    forced = session.issue_contracts()
-                    segment = await interaction.turn(json.dumps(forced))
-                    if not segment.terminated:
-                        answer_text = segment.last_reply or ""
-            if session.phase != "answer":
-                session.issue_contracts()
-
-            result = session.score(answer_text)
-            trace = interaction.trace
-            trace.record_reward("calibration_chat", result.get("reward_calibration", 0.0), 0.0)
-            trace.record_metric("coverage", result["coverage"])
-            trace.record_metric("replication_ref", result["replication_ref"])
-            trace.record_metric("n_answered", result["n_answered"])
-            trace.record_metric("budget_used_frac", result["budget_used_frac"])
-            trace.record_metric("turns_used", float(session.turns))
-            for k, v in session.world.conduct_metrics().items():
-                trace.record_metric(k, v)
-            for stratum, acc in result["per_stratum"].items():
-                trace.record_metric(f"acc_{stratum}", acc)
-            trace.info["physim"] = {
-                "difficulty": data.difficulty,
-                "world_seed": data.world_seed,
-                "tier": "chat",
-                "reward_accuracy": result["reward_accuracy"],
-                "detail": result["detail"],
-                "parse_error": result.get("parse_error"),
-            }
+class R6TaskConfig(vf.TaskConfig):
+    tools: R6ToolsConfig = R6ToolsConfig()
+    output_root: Path = DEFAULT_OUTPUT
+    agent_image: str = AGENT_IMAGE
+    coding_interface: Literal["shell", "ipython"] = "shell"
+    setup_timeout: float = Field(180, gt=0, le=900)
+    checkpoint_artifact: Path | None = None
 
 
+class R6Config(vf.TasksetConfig):
+    task: R6TaskConfig = R6TaskConfig()
+    prompt: str = DEFAULT_PROMPT
 
 
-# ============================================================ BLOB family
-# Track A round 1: probe-device episodes on evolved blob worlds. Additive
-# to the file: its own Data/Task classes + a branch in PhysimTaskset.load.
-# Design + scoring live in physim/blobcore.py; the agent-facing MCP surface
-# in physim/servers/blob.py. Tools tier ONLY (coding harnesses drive the
-# probe_* toolset; there is no chat-tier BLOB loop).
+def required_bundle(config: R6ToolsConfig, *, profile="evaluation") -> Bundle:
+    path = config.bundle
+    if config.bundle_source is not None:
+        from physim.hub import fetch_bundle
 
-BLOB_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
-
-INTERFACE (MCP tools, prefix probe_)
-- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled by that slot. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium: a weather report, not a map.
-- probe_status(): time, budgets, costs, caps, the contracts, lock state.
-- probe_read_streams(window, devices, ports, stride): advance the world up to `window` 5tu steps, reading sensors each `stride`-th step. Sensor cost = slots x 5 per read step per device.
-- probe_wait(steps): advance without reading. Free.
-- probe_adjust(device, u1, u2, u3, steps, read): apply a 3-channel actuator to one device; each u in [-1, 1], cost |u1|+|u2|+|u3| per step. What the channels do to the device is fixed all episode but undisclosed — the effect of each channel, their interactions, and any limits are yours to discover from the streams. Cost is charged on the commanded u, whatever the effect.
-- probe_inject(port, amp, dur, lags, devices, ports): ONLY after the span ends. Forks an independent replica of the world from the span's final instant, drives a FIXED emission channel with (port, amp) for dur tu, and returns reads at your lags. Where and what the emission channel couples to is undisclosed. amp <= 1.0 with steeply convex pricing above 0.5; amp=0 = control replica. Replicas share the same start state and noise stream: differences between replicas are causal responses. The same channel carries the announced protocol.
-- probe_submit(contract, payload): submit/revise contract predictions.
-
-EPISODE
-The world runs t = 0 to {t0} tu in 5tu steps (the SPAN), then hard-stops. What happens after t={t0} is never directly observable — it is exactly what the contracts ask you to predict. After the span you may run up to {max_replicas} replica experiments (probe_inject) to calibrate causal responses. Budgets (sensor {b_sensor:.0f}, adjust {b_adjust:.0f}, injection {b_injection:.0f}) cover the whole episode; unspent budget is not rewarded.
-
-CONTRACTS (issued now; details via probe_status)
-- P1 (weight {w1}): the streams of device 0 in its t=0 configuration at {p1_h} tu after the span ends, without injection. payload mean shape [{n_h}][{n_ports}][{k0}].
-- P2 (weight {w2}): per consecutive {p2_win:.0f}tu window after the span (there are {p2_n}), the count of upward crossings of the announced (port, threshold, sign) summed over device 0's slots in its t=0 configuration, without injection. payload mean shape [{p2_n}].
-- P3 (weight {w3}, flagship): the harness will run the ANNOUNCED emission (see probe_status: port, amp {ann_amp:g} — far above your cap — dur {ann_dur:g}tu) from the span end, through the same fixed emission channel you use. Predict device 1's streams in its t=0 configuration at the announced lags. payload mean shape [{n_lags}][{n_ports}][{k1}].
-Contract truths are evaluated with each device as it was at t=0, as if you never adjusted it. P1 and P2 LOCK at your first probe_inject (they are forecasts from span information). P3 stays open until the episode ends.
-
-SCORING
-Each contract is scored by CRPS against truth, normalized against scripted reference baselines (persistence/climatology-grade): beat the references toward 0 CRPS for accuracy 1, match them for 0. Your "sigma" is your predictive sd — honest uncertainty strictly beats overconfidence. Unsubmitted contracts score 0.
-
-STRATEGY
-You have a full coding environment: record every read, build models offline. Suggested science: (1) learn the device's internal structure from stream correlations (which slots respond alike?); (2) calibrate the actuator channels one at a time and in combination, watching how the stream correlation structure responds; (3) characterize the medium — is it made of localized objects? what changes? what are the timescales per port?; (4) after the span: control replica first, then small-amp emissions on the announced port; find which device and ports respond, at what delay; fit how the response grows with amp and extrapolate to the announced amp. Watch the clock: the span is {t0} tu and only moves forward. Submit P1/P2 BEFORE your first inject. Always submit all three contracts — calibrated baselines with honest sigma are worth real points."""
-
-BLOB_PROMPT = (
-    "Begin your investigation using the probe_* tools. Start with "
-    "probe_status. Explore the span, submit P1 and P2 before your first "
-    "probe_inject, run replica experiments, then submit P3. Submit every "
-    "contract before finishing.")
+        path = fetch_bundle(**config.bundle_source.model_dump(), profile=profile)
+    if path is None:
+        raise ValueError(
+            "No world selected: Physim has no default world and does not automatically select "
+            "eval-ready registry entries. Set env.taskset.task.tools.bundle to a verified local "
+            "bundle directory, pass --env.taskset.task.tools.bundle /path/to/bundle to eval, "
+            "or set bundle_source with an explicit HF repo, full commit revision, and bundle path."
+        )
+    bundle = Bundle(path, profile=profile)
+    bundle.check_runtime()
+    if config.bundle is not None:
+        config.bundle = bundle.root
+    return bundle
 
 
-class BlobData(vf.TaskData):
-    difficulty: str = "BLOB-E1r3"
-    world: str = ""
-    world_seed: int = 0
-    max_turns: int = 80
-    tier: str = "tools"                # BLOB is tools-tier only (PhysimEnv
-    #                                    branches on data.tier)
+def public_roster(config: R6ToolsConfig):
+    if config.bundle is not None:
+        return Bundle(config.bundle, profile="simulation").roster
+    if config.bundle_source is not None:
+        return required_bundle(config, profile="simulation").roster
+    return E.E.DEFAULT_ROSTER
 
 
-class BlobTaskConfig(vf.TaskConfig):
-    tools: vf.ToolsetConfig = vf.ToolsetConfig()
+def public_prompt(config: R6ToolsConfig, coding_interface: str = "shell") -> str:
+    n_ports = public_roster(config).n_ports
+    spec = files("physim").joinpath("data/agent_spec.txt").read_text()
+    # The configured exploration budget is also written explicitly below.
+    spec = spec.replace("{max_experiments}", str(config.max_experiments))
+    spec = spec.replace("{max_total_tu}", f"{config.max_total_tu:g}")
+    for key, value in (("n_ports", n_ports), ("last_port", n_ports - 1), ("example_port", min(2, n_ports - 1))):
+        spec = spec.replace("{" + key + "}", str(value))
+    text = f"""Investigate the anonymous laboratory and deliver /workspace/predictor.py.
+
+You have the harness's bash and edit tools for working with files and running Python.
+NumPy, SciPy, scikit-learn and Matplotlib are installed. The working directory is
+/workspace. Files persist throughout the coding session. Laboratory tools:
+
+- laboratory_experiment(actions, queries): run an independent experiment from the
+  prepared start; save full NPZ observations in /observations and return their path.
+- laboratory_usage(): inspect the laboratory budget.
+- laboratory_validate(): test a snapshot of your predictor against public interface
+  examples; return errors to repair. Does not submit or test physical accuracy.
+- laboratory_submit(): check and freeze the current predictor and supporting files.
+  A failed check leaves the workspace open for repair; a successful submission ends
+  exploration. Finish the coding session once submission is accepted.
+
+The experiment budget is {config.max_experiments} experiments and
+{config.max_total_tu:g} integrated time units. Each experiment costs its largest
+requested timestamp, at most 50 tu. You may validate {config.max_validation_attempts}
+times and attempt submission {config.max_submission_attempts} times; neither costs
+experiments or simulation time. Save a simple working predictor early, validate it,
+then improve it and submit before your coding session ends. If the session ends
+with predictor.py written, its final snapshot is collected and checked as well.
+
+Implement predict(actions, queries, n_samples=64, seed=0) at module scope. Return
+{{"samples": [array_for_query0, array_for_query1, ...]}}. Each array has shape
+(n_samples, len(query["t"]), {n_ports}, sensor_slots), where slots are device0=13,
+device1=19, global=2. Handle empty query/time lists, different query orders,
+different time grids, and the requested member count. The same seed must reproduce
+the same result. During prediction /workspace and /observations are read-only;
+/tmp is writable. No further laboratory calls are available during prediction.
+
+Read observation metadata and arrays together:
+```python
+import json
+import numpy as np
+with np.load(observation_path, allow_pickle=False) as data:
+    request = json.loads(data["request"].item())
+    observations = [(query, data[f"query{{i}}"].copy())
+                    for i, query in enumerate(request["queries"])]
+```
+Observation arrays have shape (1, times, {n_ports}, slots). query0 is the first query
+in that file, not a fixed sensor. Align sensor identities and timestamps before
+comparing observations from different experiments. There is no separate metadata
+JSON file. Do not print whole arrays into the conversation; analyze saved files.
+
+The laboratory tools are your only access to the system. Grading happens after
+artifact freeze, on independent realizations and undisclosed action/query programs.
+The model receives no hidden equations, fields, sensor locations, or test answers.
+
+{spec}"""
+    if coding_interface == "ipython":
+        text = text.replace(
+            "You have the harness's bash and edit tools for working with files and running Python.",
+            "Use the harness's persistent IPython session to analyze data and write files.\n"
+            "Use the MCP skill wrappers advertised by the harness for laboratory calls;\n"
+            "follow their actual import and calling instructions.",
+        )
+    return text
 
 
-from physim.blobstate import BlobToolState  # noqa: E402  (state for BlobTask)
+def _container(state: R6State) -> str:
+    if not re.fullmatch(r"[0-9a-f]{12,64}", state.container_id):
+        raise vf.ToolsetError("missing trusted Docker runtime identity")
+    return state.container_id
 
 
-class BlobTask(vf.Task[BlobData, BlobToolState, BlobTaskConfig]):
-    @classmethod
-    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
-        from physim.servers.blob import BlobToolset
-        return [BlobToolset(config.tools)]
-
-    async def setup(self, trace: vf.Trace, runtime) -> None:
-        st = trace.state
-        st.world = self.data.world
-        st.seed = self.data.world_seed
-
-    async def finalize(self, trace: vf.Trace, runtime) -> None:
-        try:
-            from verifiers.v1.utils.artifacts import collect
-            trace.state.artifacts = await collect(runtime, self.data.artifacts)
-        except Exception as e:  # collection must never fail the rollout
-            trace.info.setdefault("physim_artifact_error", str(e))
-
-    @vf.reward(weight=1.0)
-    async def accuracy(self, trace: vf.Trace) -> float:
-        from physim import blobcore as B
-        st = trace.state
-        world, seed = self.data.world, self.data.world_seed
-        result = B.score_episode(world, seed, st.sub_p1 or "",
-                                 st.sub_p2 or "", st.sub_p3 or "")
-        for c, v in result["accs"].items():
-            trace.record_metric(f"acc_{c}", float(v))
-        for key in B.BUDGETS:
-            spent = (st.spent or {}).get(key, 0.0)
-            trace.record_metric(f"spend_{key}_frac",
-                                float(spent / B.BUDGETS[key]))
-        trace.record_metric("n_replicas", float(st.n_replicas))
-        trace.record_metric("turns_used", float(st.turns))
-        trace.record_metric("span_frac",
-                            float(st.i_ctrl / B.N_STEPS_MAIN))
-        trace.info["physim"] = {
-            "difficulty": self.data.difficulty,
-            "world": world,
-            "world_seed": seed,
-            "tier": "blob",
-            "detail": result["detail"],
-            "replica_log": list(st.replica_log or []),
-            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
-        }
-        return float(result["reward_accuracy"])
+def _snapshot(state: R6State, target: Path) -> dict:
+    # Reuse the existing bounded, regular-file-only artifact transport. This
+    # does not create a runtime or run an agent; Verifiers owns that runtime.
+    return E.Sandbox.export_workspace(SimpleNamespace(name=_container(state)), target, excludes=("./.vf-*",))
 
 
-def _blob_task(config: "PhysimConfig", i: int) -> "BlobTask":
-    from physim import blobcore as B
-    ep = B.episode_cfg(config.difficulty, config.seed0 + i)
-    world, seed = ep["world"], ep["seed"]
-    cc = B.contracts(world, seed)["private"]
-    system_prompt = BLOB_SYSTEM_PROMPT.format(
-        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
-        t0=int(B.T0), max_replicas=B.MAX_REPLICAS,
-        b_sensor=B.BUDGETS["sensor"], b_adjust=B.BUDGETS["adjust"],
-        b_injection=B.BUDGETS["injection"],
-        w1=B.W_P1, w2=B.W_P2, w3=B.W_P3,
-        p1_h="/".join(str(int(h)) for h in B.P1_HORIZONS),
-        n_h=len(B.P1_HORIZONS),
-        p2_win=B.P2_WIN, p2_n=len(B.truth_p2(world, seed)),
-        ann_amp=B.ANN_AMP, ann_dur=B.ANN_DUR, n_lags=len(B.P3_LAGS))
-    artifacts = [vf.Artifact(
-        source=".",
-        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
-                 ".venv", "*.tar", "*.npz"],
-        required=False,
-    )]
-    data = BlobData(
-        idx=i,
-        name=f"physim-{config.difficulty}#{seed}",
-        prompt=BLOB_PROMPT,
-        system_prompt=system_prompt,
-        difficulty=config.difficulty,
-        world=world,
-        world_seed=seed,
-        max_turns=config.max_turns,
-        artifacts=artifacts,
+def _put_observation(state: R6State, path: Path) -> None:
+    # No host path or code from the model is accepted. The trusted filename is
+    # fixed by the experiment counter. O_NOFOLLOW prevents a workspace symlink
+    # from redirecting this write within the agent container.
+    script = """import os,sys
+p='/observations/'+sys.argv[1]
+fd=os.open(p,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o444)
+with os.fdopen(fd,'wb') as f: f.write(sys.stdin.buffer.read())
+"""
+    E.docker(
+        ["exec", "-i", "--user", "0", _container(state), "python", "-c", script, path.name], data=path.read_bytes()
     )
-    return BlobTask(data, BlobTaskConfig(judges=list(config.task.judges),
-                                         tools=config.task.tools))
 
 
+def _checkpoint_file(root: Path, name: str, digest: str) -> tuple[str, bytes]:
+    """Read only a hashed regular file in a trusted prior artifact manifest."""
+    rel = PurePosixPath(name)
+    if rel.is_absolute() or not rel.parts or any(p in (".", "..") or p.startswith(".vf-") for p in rel.parts):
+        raise vf.TaskError("invalid checkpoint file path")
+    path = root.joinpath(*rel.parts)
+    if any(root.joinpath(*rel.parts[:i]).is_symlink() for i in range(1, len(rel.parts) + 1)) or not path.is_file():
+        raise vf.TaskError("checkpoint file is not a regular file")
+    data = path.read_bytes()
+    if hashlib.sha256(data).hexdigest() != digest:
+        raise vf.TaskError("checkpoint file hash mismatch")
+    return str(rel), data
 
 
-# ========================================================= BLOB round 2
-# Clean-slate contract system (TRACKA_CLEANSLATE_EVAL.md): L1 pose-targeted,
-# L2 hidden-sensor nowcast, L3 multi-horizon/slow-observable forecasts, L4
-# response + dose leg; skill-normalized scoring; world-adaptive menus.
-# Additive: BLOB-E1r3 stays untouched. Tags: BLOB2-E1, BLOB2-E2.
-
-BLOB2_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
-
-INTERFACE (MCP tools, prefix probe_)
-- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled by that slot. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium.
-- probe_status(): time, budgets, costs, caps, the contract menu, lock state.
-- probe_read_streams(window, devices, ports, stride): advance the world up to `window` 5tu steps, reading sensors each `stride`-th step. Sensor cost = slots x 5 per read step per device.
-- probe_wait(steps): advance without reading. Free.
-- probe_adjust(device, u1, u2, u3, steps, read): apply a 3-channel actuator to one device; each u in [-1, 1], cost |u1|+|u2|+|u3| per step, charged as commanded. What the channels do is fixed all episode but undisclosed. The actuator may refuse a step (generic "adjust_rejected"; the refused step still costs).
-- probe_inject(port, amp, dur, lags, devices, ports): ONLY after the span ends. Forks an independent replica of the world from the span's final instant, drives a FIXED emission channel with (port, amp) for dur tu, and returns reads at your lags. Where and what the emission channel couples to is undisclosed. amp <= 1.0 with steeply convex pricing above 0.5; amp=0 = control replica. Replicas share the same start state and noise stream. The same channel carries the announced protocols.
-- probe_submit(contract, payload): submit/revise one contract payload.
-
-EPISODE
-The world runs t = 0 to {t0} tu in 5tu steps (the SPAN), then hard-stops. What happens after t={t0} is never directly observable. After the span you may run up to {max_replicas} replica experiments (probe_inject). Budgets (sensor {b_sensor:.0f}, adjust {b_adjust:.0f}, injection {b_injection:.0f}) cover the whole episode; unspent budget is not rewarded.
-
-CONTRACT MENU (this world's menu: {menu}; full specs + required payload shapes via probe_status)
-{contract_lines}
-Contract truths are evaluated with each device as it was at t=0 (as if you never adjusted it), except where a contract states otherwise. These contracts LOCK at your first probe_inject: {lock_list}. The rest stay open until the episode ends.
-
-SCORING
-Every contract is scored by CRPS against truth and normalized against an evaluator-side baseline ladder (climatology / persistence / AR(2) fits on full-rate data): skill = 1 - CRPS/CRPS_best_baseline, clipped to [-1, 1]. Matching the best scripted baseline scores 0; beating it scores up to 1. UNSUBMITTED contracts score -1. Your reward is the mean skill over the menu. "sigma" is your predictive sd — honest spread beats overconfidence.
-
-You have a full coding environment: record reads to disk, model offline, budget your span. Submit every contract on the menu."""
-
-BLOB2_PROMPT = (
-    "Begin your investigation using the probe_* tools. Start with "
-    "probe_status and read the contract menu carefully. Submit the locking "
-    "contracts before your first probe_inject. Submit every contract on "
-    "the menu.")
-
-BLOB2_CONTRACT_LINES = dict(
-    L1=("L1: the harness executes announced 3-channel command sequences on "
-        "device 0 (each on a fresh fork from the span end, no emission) and "
-        "reads it once after each; predict those readings."),
-    L2=("L2: one additional fixed sensor cluster (same ports, slot count in "
-        "the spec) exists; predict its reading vector at the span end."),
-    L3F=("L3F: device 0's streams (t=0 configuration) at several announced "
-         "horizons after the span end, no emission."),
-    L3E=("L3E: per consecutive window after the span end, the count of "
-         "upward crossings of an announced (port, threshold, sign) summed "
-         "over device 0's slots, no emission."),
-    L3S=("L3S: the per-port global mean and variance averaged over "
-         "announced long windows after the span end, no emission."),
-    L4=("L4: the announced strong emission runs from the span end; predict "
-        "device 1's streams (t=0 configuration) at the announced lags."),
-    L4D=("L4D: one more emission at an UNDISCLOSED amp inside the announced "
-         "amp range; submit your predicted response table over the listed "
-         "amps (interpolated linearly in amp at the drawn value)."),
-)
-
-
-class Blob2Data(vf.TaskData):
-    difficulty: str = "BLOB2-E1"
-    world: str = ""
-    world_seed: int = 0
-    menu: str = "E1"
-    max_turns: int = 80
-    tier: str = "tools"
-
-
-class Blob2Task(vf.Task[Blob2Data, BlobToolState, BlobTaskConfig]):
-    @classmethod
-    def toolsets(cls, config: "BlobTaskConfig") -> list[vf.Toolset]:
-        from physim.servers.blob import BlobToolset
-        return [BlobToolset(config.tools)]
-
-    async def setup(self, trace: vf.Trace, runtime) -> None:
-        st = trace.state
-        st.world = self.data.world
-        st.seed = self.data.world_seed
-        st.round2 = self.data.menu
-
-    async def finalize(self, trace: vf.Trace, runtime) -> None:
-        try:
-            from verifiers.v1.utils.artifacts import collect
-            trace.state.artifacts = await collect(runtime, self.data.artifacts)
-        except Exception as e:  # collection must never fail the rollout
-            trace.info.setdefault("physim_artifact_error", str(e))
-
-    @vf.reward(weight=1.0)
-    async def skill(self, trace: vf.Trace) -> float:
-        from physim import blobcore as B
-        from physim import blobround2 as R2
-        st = trace.state
-        world, seed = self.data.world, self.data.world_seed
-        result = R2.score_episode2(world, seed, self.data.menu,
-                                   dict(st.subs2 or {}))
-        for c, v in result["skills"].items():
-            trace.record_metric(f"skill_{c}", float(v))
-        for key in B.BUDGETS:
-            spent = (st.spent or {}).get(key, 0.0)
-            trace.record_metric(f"spend_{key}_frac",
-                                float(spent / B.BUDGETS[key]))
-        trace.record_metric("n_replicas", float(st.n_replicas))
-        trace.record_metric("turns_used", float(st.turns))
-        trace.record_metric("span_frac", float(st.i_ctrl / B.N_STEPS_MAIN))
-        trace.info["physim"] = {
-            "difficulty": self.data.difficulty,
-            "world": world,
-            "world_seed": seed,
-            "tier": "blob2",
-            "menu": self.data.menu,
-            "detail": result["detail"],
-            "replica_log": list(st.replica_log or []),
-            "workspace": _extract_workspace(getattr(st, "artifacts", None)),
-        }
-        return float(result["reward_skill"])
-
-
-def _blob2_task(config: "PhysimConfig", i: int) -> "Blob2Task":
-    from physim import blobcore as B
-    from physim import blobround2 as R2
-    ep = R2.episode_cfg2(config.difficulty, config.seed0 + i)
-    world, seed, menu = ep["world"], ep["seed"], ep["menu"]
-    cc = R2.contracts2(world, seed, menu)["private"]
-    lock = [c for c in R2.MENUS[menu] if c in R2.LOCK_AT_INJECT]
-    lines = "\n".join(BLOB2_CONTRACT_LINES[c] for c in R2.MENUS[menu])
-    system_prompt = BLOB2_SYSTEM_PROMPT.format(
-        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
-        t0=int(B.T0), max_replicas=B.MAX_REPLICAS,
-        b_sensor=B.BUDGETS["sensor"], b_adjust=B.BUDGETS["adjust"],
-        b_injection=B.BUDGETS["injection"],
-        menu=", ".join(R2.MENUS[menu]), contract_lines=lines,
-        lock_list=", ".join(lock))
-    artifacts = [vf.Artifact(
-        source=".",
-        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
-                 ".venv", "*.tar", "*.npz"],
-        required=False,
-    )]
-    data = Blob2Data(
-        idx=i,
-        name=f"physim-{config.difficulty}#{seed}",
-        prompt=BLOB2_PROMPT,
-        system_prompt=system_prompt,
-        difficulty=config.difficulty,
-        world=world,
-        world_seed=seed,
-        menu=menu,
-        max_turns=config.max_turns,
-        artifacts=artifacts,
+def load_checkpoint(artifact: Path) -> tuple[dict, list, list]:
+    """Recover public workspace/data only; never copy host state or private origin."""
+    artifact = artifact.resolve()
+    state_path = artifact.parent / "laboratory_state.json"
+    prior = json.loads(state_path.read_text())
+    check = next((c for c in prior["checks"] if c["path"] == artifact.name), None)
+    if not check or not check.get("validation", {}).get("ok"):
+        raise vf.TaskError("checkpoint must be a previously validated artifact")
+    manifest = check["snapshot"]["files"]
+    files = [_checkpoint_file(artifact, f["path"], f["sha256"]) for f in manifest]
+    if "predictor.py" not in {name for name, _ in files}:
+        raise vf.TaskError("checkpoint has no predictor.py")
+    experiments = prior["experiments"]
+    observations = []
+    for index, event in enumerate(experiments, 1):
+        if event["file"] != f"experiment_{index:03d}.npz":
+            raise vf.TaskError("invalid checkpoint observation sequence")
+        observations.append(_checkpoint_file(artifact.parent / "observations", event["file"], event["sha256"]))
+    if len(experiments) != prior["usage"]["experiments"]:
+        raise vf.TaskError("checkpoint experiment accounting mismatch")
+    metadata = dict(
+        source_artifact=str(artifact),
+        source_state_sha256=E.file_digest(state_path),
+        files=manifest,
+        observations=[dict(file=e["file"], sha256=e["sha256"]) for e in experiments],
+        inherited_experiments=len(experiments),
+        inherited_charged_tu=prior["usage"]["charged_tu"],
+        exploration_closed=True,
     )
-    return Blob2Task(data, BlobTaskConfig(judges=list(config.task.judges),
-                                          tools=config.task.tools))
+    return metadata, files, observations
 
 
+def recovery_prompt() -> str:
+    return (
+        "\n\nThis is a submission recovery after a framework interruption. Your last "
+        "validated predictor and its supporting files are restored in /workspace, "
+        "with your collected data in /observations. Exploration is closed: no new "
+        "experiments are allowed. Inspect the restored predictor if needed, then "
+        "call laboratory_submit to validate and freeze it. No accuracy feedback "
+        "has been provided. This recovery inherits the earlier experiment/time usage."
+    )
 
 
-# ========================================================= BLOB round 5
-# v2.1 contract system (TRACKA_R5_ANCHORS.md): category-anchored contracts,
-# closed-book reveal. Two-phase episodes: open exploration (base record +
-# forks, silent meters, no budgets) -> agent-triggered probe_ready ->
-# closed-book answers against hidden instances drawn from published
-# continuous domains. Additive: v1 tags (BLOB2-E1/E2) stay untouched.
-# Tags: BLOB2v2-E1/E2 (legacy caps), BLOB2v2r2-E1/E2 (resource revision).
-# Design + unchanged scoring in physim/blobround5.py.
-
-BLOB5_SYSTEM_PROMPT = """You are a scientist studying an unknown spatial dynamical system through two remote sensor devices. Nothing about the system, the devices' structure, or their relation to it is documented. Everything must be discovered by experiment.
-
-INTERFACE (MCP tools, prefix probe_)
-- Two devices, ids 0 and 1. Each device is a fixed rigid cluster of point sensors: device 0 has {k0} sensor slots, device 1 has {k1}. Every slot reports {n_ports} scalar channels ("ports") — the same anonymous physical quantities sampled by that slot. Slot order and port order are fixed all episode but carry no disclosed meaning. You also get free per-port global mean/variance of the whole (unobserved) medium.
-- probe_status(): phase, times, open forks, interface counts, apparatus ranges, the syllabus; after the reveal also the instance menu and your submission flags.
-- probe_read(ctx, window, devices, ports, stride): read streams in a context ("base" = the base record, or a fork id), advancing it up to `window` 5tu steps and reading every `stride`-th step; window=0 reads the current state without advancing.
-- probe_wait(ctx, steps): advance a context without reading.
-- probe_adjust(device, u1, u2, u3, ctx, steps, read): apply a 3-channel actuator to one device in a context; each u in [-1, 1]. What the channels do is fixed all episode but undisclosed — discovering it is part of the task. The actuator may refuse a step (generic "adjust_rejected"). Device configurations are per-context; forks inherit them from the spawning context.
-- probe_fork(t | fork): spawn an exploration fork from any base grid time t (a multiple of 5 in [0, 2500]) or from another fork's current state. Forks run live and independently; they are yours to experiment in and are never scored.
-- probe_reset(fork): discard a fork.
-- probe_inject(ctx, port, amp, dur): drive the fixed emission channel inside fork ctx from its current time: amp = 0 or in [0.05, 1.0] (the apparatus cannot emit stronger), dur in (0, 50] tu. The base record never takes emissions. Where and what the emission channel couples to is undisclosed. The emission acts while that fork advances; reading is probe_read.
-- probe_ready(): IRREVERSIBLE. Ends exploration, reveals the six concrete instances, and closes every world tool for the rest of the episode (base-record reads included). Only probe_status and probe_submit stay.
-- probe_submit(instance, payload): after probe_ready, submit or revise one instance's payload.
-
-EPISODE (two phases, closed book)
-The base record is a fixed trajectory of the world spanning t = 0 to 2500 tu, fully readable in 5tu steps during exploration; its read head only advances, and probe_fork gives random access to any grid time. Forks continue the world live from their anchor: same laws, fresh microscopic realization — two forks from one anchor diverge the way the world itself would. There is no deadline for probe_ready; take the time the science needs. But after the reveal you cannot touch the world again: anything you want available in phase two — recorded streams, fitted laws, code — must be in your own files before you call probe_ready.
-
-THE SYLLABUS (the six instance categories; concrete values only at probe_ready)
-{syllabus}
-
-SCORING
-Per instance: skill = 1 - CRPS/CRPS_ref, clipped to [-1, 1] (details in the syllabus); reward = the mean over the six. UNSUBMITTED instances score -1 — after probe_ready, always submit every instance: calibrated classical estimates with honest sigma beat empty slots. "sigma" is your predictive sd — honest spread beats overconfidence.
-
-STRATEGY
-You have a full coding environment: record reads to disk, model offline, keep notes. The instances are drawn from continuous domains, so pre-running answers is hopeless by construction — what carries through the reveal is the portable artifact: the laws, response templates, and forecasts you can run from your own files."""
-
-BLOB5_PROMPT = (
-    "Begin your investigation with the probe_* tools. Start with "
-    "probe_status and read the syllabus carefully. Explore and calibrate "
-    "in phase one and persist what you learn to files; call probe_ready "
-    "only when your artifacts can answer the syllabus categories; then "
-    "submit every instance.")
+def _check(state: R6State, config: R6ToolsConfig, *, final: bool) -> dict:
+    if state.submitted:
+        return dict(ok=True, accepted=True, finalized=True)
+    kind = "submit" if final else "validate"
+    attempt = 1 + sum(row["kind"] == kind for row in state.checks)
+    cap = config.max_submission_attempts if final else config.max_validation_attempts
+    if attempt > cap:
+        return dict(ok=False, error=f"{kind} attempt limit reached", finalized=False)
+    target = Path(state.output) / f"{kind}_{attempt:02d}"
+    event = dict(kind=kind, attempt=attempt, path=target.name)
+    state.checks.append(event)
+    try:
+        event["snapshot"] = _snapshot(state, target)
+    except E.SandboxError as exc:
+        report = dict(ok=False, gate=E.SUBMISSION_GATE_VERSION, failure=dict(stage="artifact", error=str(exc)[-3000:]))
+    else:
+        # A validator-container startup failure is infrastructure failure, not
+        # evidence that the submitted predictor violates the contract.
+        report = E.validate_predictor(target, Path(state.output) / "observations", roster=public_roster(config))
+    event["validation"] = report
+    if final and report["ok"]:
+        state.submitted = True
+        state.artifact = str(target)
+    E.dump(Path(state.output) / "laboratory_state.json", state.model_dump(exclude={"artifacts"}))
+    return dict(report, finalized=state.submitted, accepted=final and report["ok"])
 
 
-class Blob5Data(vf.TaskData):
-    difficulty: str = "BLOB2v2-E1"
-    world: str = ""
-    world_seed: int = 0
-    menu: str = "E1"
-    max_turns: int = 120
-    tier: str = "tools"
+class LaboratoryTools(vf.Toolset[R6ToolsConfig, R6State]):
+    TOOL_PREFIX = "laboratory"
 
+    def __init__(self, config):
+        super().__init__(config)
+        self.service = None
+        self.lock = asyncio.Lock()
+        self.state_transaction = asyncio.Lock()
 
-class Blob5TaskConfig(BlobTaskConfig):
-    # Host task config also declares the policy, so a serialize/reload does
-    # not lose it before toolsets() builds the per-server VF_CONFIG.
-    r5_resource_policy: Literal["v2", "v2r2"] = "v2"
+    def _with_state(self, fn):
+        wrapped = super()._with_state(fn)
 
+        @wraps(wrapped)
+        async def serialized(*args, **kwargs):
+            # VF's state channel replaces the full state. Serialize the entire
+            # pull/call/push transaction, including under parallel-tool harnesses.
+            async with self.state_transaction:
+                return await wrapped(*args, **kwargs)
 
-class Blob5Task(vf.Task[Blob5Data, BlobToolState, Blob5TaskConfig]):
-    @classmethod
-    def toolsets(cls, config: "Blob5TaskConfig") -> list[vf.Toolset]:
-        from physim.servers.blob import BlobToolset, BlobToolsetConfig
-        # Both values are DECLARED fields. Do not attach them with a
-        # model_copy(update=...) on the base ToolsetConfig (acc310e lesson).
-        cfg = BlobToolsetConfig(**{**config.tools.model_dump(),
-                                   "r5_mode": True,
-                                   "r5_resource_policy": getattr(
-                                       config, "r5_resource_policy", "v2")})
-        return [BlobToolset(cfg)]
+        return serialized
 
-    async def setup(self, trace: vf.Trace, runtime) -> None:
-        from physim import blobround5 as R5
-        st = trace.state
-        policy = R5.resource_policy5(self.data.difficulty)
-        if getattr(self.config, "r5_resource_policy", "v2") != policy:
-            raise ValueError("round-5 cohort/config resource policy mismatch")
-        st.world = self.data.world
-        st.seed = self.data.world_seed
-        st.round5 = self.data.menu
-        st.r5_resource_policy = policy
-        self._resource_telemetry5(trace)
+    def _service(self):
+        if self.service is None:
+            bundle = required_bundle(self.config, profile="simulation")
+            self.state.origin = bundle.references()
+            self.service = ExperimentService(
+                bundle.make_oracle(),
+                limits=bundle.limits,
+                roster=bundle.roster,
+                max_experiments=self.config.max_experiments,
+                max_total_tu=self.config.max_total_tu,
+            )
+        return self.service
 
-    def _resource_telemetry5(self, trace: vf.Trace) -> None:
-        """Private host evidence, also preserved when native scoring fails.
-
-        Called before model turns: provider failures need not run finalize,
-        and Trace.state is not part of the serialized trace payload.
+    @vf.tool
+    async def experiment(self, actions: list[dict], queries: list[dict]) -> str:
+        """Run from the prepared start and save NPZ arrays. actions: inject
+        {t,kind:'inject',port:<public port index>,amp:0..3,dur} or adjust
+        {t,kind:'adjust',device:0..1,u:[-1..1,-1..1,-1..1]}. queries:
+        [{sensor:'device0'|'device1'|'global',t:[strictly increasing times]}].
+        All timestamps are absolute, 0..50 tu. Return path, shapes and usage.
         """
-        from physim import blobround5 as R5
-        st = trace.state
-        policy = st.r5_resource_policy or R5.resource_policy5(
-            self.data.difficulty)
-        m = st.r5_meters or {}
-        for key in ("sensor", "adjust", "injection", "sim_tu"):
-            trace.record_metric(f"meter_{key}", float(m.get(key, 0.0)))
-        if policy == R5.RESOURCE_POLICY5:
-            trace.record_metric("meter_log_entries", float(m.get("log_entries", 0.0)))
-        trace.record_metric("meter_fork_spawns", float(st.r5_fork_seq))
-        trace.record_metric("meter_open_forks_peak", float(st.r5_open_peak))
-        trace.record_metric("meter_resets", float(st.r5_n_resets))
-        trace.record_metric("meter_reads_base", float(st.r5_reads_base))
-        trace.record_metric("meter_reads_fork", float(st.r5_reads_fork))
-        trace.record_metric("meter_turns", float(st.turns))
-        trace.record_metric("time_to_ready_sim_tu", float(st.r5_t_ready_sim))
-        trace.record_metric("time_to_ready_turns", float(st.r5_t_ready_turns))
-        trace.record_metric("resident_forks_peak", float(st.r5_resident_peak))
-        trace.record_metric("fork_cache_evictions", float(st.r5_cache_evictions))
-        trace.record_metric("fork_cache_rebuilds", float(st.r5_cache_rebuilds))
-        cap_hits = dict(st.r5_cap_hits or {})
-        trace.record_metric("cap_hits_total", float(sum(cap_hits.values())))
-        trace.record_metric("readied", float(st.r5_phase == "revealed"))
-        truncated = bool(st.r5_resource_stop)
-        trace.record_metric("resource_truncated", float(truncated))
-        info = trace.info.setdefault("physim", {})
-        info.update({
-            "difficulty": self.data.difficulty,
-            "world": self.data.world,
-            "world_seed": self.data.world_seed,
-            "tier": "blob2v2r2" if policy == R5.RESOURCE_POLICY5 else "blob2v2",
-            "menu": self.data.menu,
-            "resource_policy": R5.resource_metadata5(policy),
-            "resource_truncated": truncated,
-            "resource_stop": dict(st.r5_resource_stop or {}),
-            "meters": {**m, "fork_spawns": st.r5_fork_seq,
-                       "open_forks_peak": st.r5_open_peak,
-                       "resets": st.r5_n_resets,
-                       "reads_base": st.r5_reads_base,
-                       "reads_fork": st.r5_reads_fork,
-                       "turns": st.turns},
-            "resident_cache": {"peak": st.r5_resident_peak,
-                               "evictions": st.r5_cache_evictions,
-                               "rebuilds": st.r5_cache_rebuilds},
-            "time_to_ready": {"sim_tu": st.r5_t_ready_sim,
-                              "turns": st.r5_t_ready_turns},
-            "cap_hits": cap_hits,
-        })
-        if truncated:
-            info["score_status"] = "not_scored_resource_limit"
-        else:
-            info.setdefault("score_status", "pending")
+        async with self.lock:
+            if self.state.submitted:
+                return json.dumps(dict(error="predictor already submitted"))
+            if self.state.exploration_closed:
+                return json.dumps(dict(error="exploration closed for checkpoint recovery", usage=self.state.usage))
+            service = self._service()
+            try:
+                data = await asyncio.to_thread(service.experiment, actions, queries)
+            except (ValueError, EvaluationError) as exc:
+                self.state.usage = service.usage()
+                return json.dumps(dict(error=str(exc), usage=self.state.usage))
+            self.state.usage = service.usage()
+            path = Path(self.state.output) / "observations" / f"experiment_{self.state.usage['experiments']:03d}.npz"
+            request = dict(actions=actions, queries=queries)
+            np.savez_compressed(
+                path, request=json.dumps(request), **{f"query{i}": a for i, a in enumerate(data["samples"])}
+            )
+            await asyncio.to_thread(_put_observation, self.state, path)
+            arrays = {f"query{i}": list(a.shape) for i, a in enumerate(data["samples"])}
+            self.state.experiments.append(
+                dict(request=request, file=path.name, sha256=E.file_digest(path), arrays=arrays)
+            )
+            E.dump(Path(self.state.output) / "laboratory_state.json", self.state.model_dump(exclude={"artifacts"}))
+            return json.dumps(dict(path="/observations/" + path.name, arrays=arrays, usage=self.state.usage))
+
+    @vf.tool
+    async def usage(self) -> str:
+        """Return experiment/time budgets and validation/submission attempt counts."""
+        return json.dumps(
+            dict(
+                **self.state.usage,
+                validation_attempts=sum(c["kind"] == "validate" for c in self.state.checks),
+                submission_attempts=sum(c["kind"] == "submit" for c in self.state.checks),
+            )
+        )
+
+    @vf.tool
+    async def validate(self) -> str:
+        """Check a predictor snapshot against public interface cases. No accuracy
+        feedback and no experiment cost. Does not submit; repair errors and retry."""
+        async with self.lock:
+            return json.dumps(await asyncio.to_thread(_check, self.state, self.config, final=False))
+
+    @vf.tool
+    async def submit(self) -> str:
+        """Validate and freeze predictor.py plus supporting files; success ends
+        exploration. Errors leave the workspace open for repairs."""
+        async with self.lock:
+            return json.dumps(await asyncio.to_thread(_check, self.state, self.config, final=True))
+
+
+class R6Data(vf.TaskData):
+    protocol: str = PROTOCOL
+
+
+class R6Task(vf.Task[R6Data, R6State, R6TaskConfig]):
+    @classmethod
+    def toolsets(cls, config):
+        if config.tools.colocated or config.tools.runtime.type != "subprocess" or config.tools.url:
+            raise ValueError("R6 laboratory tools must run in their trusted host process")
+        return [LaboratoryTools(config.tools)]
+
+    async def setup(self, trace, runtime):
+        bundle = required_bundle(self.config.tools)
+        if runtime.config.type != "docker" or not runtime.config.network_restricted:
+            raise vf.TaskError("R6 requires the Verifiers Docker runtime with framework-only network access")
+        state = trace.state
+        state.container_id = runtime.info.id
+        output = self.config.output_root.resolve() / trace.id
+        output.mkdir(parents=True, exist_ok=False)
+        (output / "observations").mkdir()
+        state.output = str(output)
+        state.usage = dict(
+            experiments=0,
+            max_experiments=self.config.tools.max_experiments,
+            charged_tu=0,
+            max_total_tu=self.config.tools.max_total_tu,
+        )
+        result = await runtime.run(["mkdir", "-p", "/workspace", "/observations"], {})
+        if result.exit_code:
+            raise vf.TaskError("could not initialize laboratory workspace")
+        await runtime.write(
+            "/workspace/AGENT_SPEC.md", public_prompt(self.config.tools, self.config.coding_interface).encode()
+        )
+        if self.config.checkpoint_artifact is not None:
+            metadata, files, observations = await asyncio.to_thread(load_checkpoint, self.config.checkpoint_artifact)
+            state.checkpoint = metadata
+            state.exploration_closed = True
+            state.usage.update(
+                experiments=metadata["inherited_experiments"],
+                charged_tu=metadata["inherited_charged_tu"],
+                exploration_closed=True,
+            )
+            for name, data in files:
+                result = await runtime.run(["mkdir", "-p", str(PurePosixPath("/workspace", name).parent)], {})
+                if result.exit_code:
+                    raise vf.TaskError("could not restore checkpoint directory")
+                await runtime.write("/workspace/" + name, data)
+            for name, data in observations:
+                path = output / "observations" / name
+                path.write_bytes(data)
+                await asyncio.to_thread(_put_observation, state, path)
+            E.dump(output / "laboratory_state.json", state.model_dump(exclude={"artifacts"}))
+        trace.info["r6"] = dict(
+            protocol=self.data.protocol,
+            artifact_directory=str(output),
+            references=bundle.references(),
+            verifiers_version=__import__("verifiers").__version__,
+            gate=E.SUBMISSION_GATE_VERSION,
+            checkpoint=state.checkpoint,
+        )
 
     @vf.stop
-    async def resource_safety_stop(self, trace: vf.Trace) -> bool:
-        # Native stop runs before the next MODEL request (HTTP 400, no SDK
-        # retry), not on state PUT. The tool latch blocks further world
-        # work in the meantime. A True stop alone still scores in native
-        # verifiers, so finalize/score must also reject a truncated result.
-        self._resource_telemetry5(trace)
-        return bool(trace.state.r5_resource_stop)
+    async def submitted(self, trace: vf.Trace) -> bool:
+        # This installed ACP adapter reports an externally stopped RLM prompt
+        # as a harness error. Let RLM return its final answer naturally; submit
+        # has already frozen the artifact and disabled further experiments.
+        return trace.state.submitted and self.config.coding_interface == "shell"
 
-    def _reject_resource_score5(self, trace: vf.Trace) -> None:
-        if trace.state.r5_resource_stop:
-            from physim.blobstate import ResourceSafetyError
-            self._resource_telemetry5(trace)
-            trace.stop_condition = "resource_safety_stop"
-            raise ResourceSafetyError(
-                "resource-limit truncation; scientific scoring skipped")
-
-    async def finalize(self, trace: vf.Trace, runtime) -> None:
-        try:
-            from verifiers.v1.utils.artifacts import collect
-            trace.state.artifacts = await collect(runtime, self.data.artifacts)
-        except Exception as e:  # collection must never hide a safety trip
-            trace.info.setdefault("physim_artifact_error", str(e))
-        self._resource_telemetry5(trace)
-        trace.info["physim"]["workspace"] = _extract_workspace(
-            getattr(trace.state, "artifacts", None))
-        # A distinct native task error leaves ok=False and skips BOTH task
-        # and harness scoring. The last-tool-before-exit case lands here
-        # even when there was no subsequent model request to run @stop.
-        self._reject_resource_score5(trace)
-
-    async def score(self, trace: vf.Trace, runtime=None) -> None:
-        self._reject_resource_score5(trace)  # offline/re-score protection
-        await super().score(trace, runtime)
-
-    @vf.reward(weight=1.0)
-    async def skill(self, trace: vf.Trace) -> float:
-        from physim import blobround5 as R5
-        self._reject_resource_score5(trace)  # direct-call protection
-        st = trace.state
-        result = R5.score_episode5(self.data.world, self.data.world_seed,
-                                   self.data.menu, dict(st.r5_subs or {}))
-        for c, v in result["skills"].items():
-            trace.record_metric(f"skill_{c}", float(v))
-        self._resource_telemetry5(trace)
-        trace.info["physim"].update(
-            detail=result["detail"], score_status="scored",
-            workspace=_extract_workspace(getattr(st, "artifacts", None)))
-        return float(result["reward_skill"])
-
-
-def _blob5_task(config: "PhysimConfig", i: int) -> "Blob5Task":
-    from physim import blobcore as B
-    from physim import blobround5 as R5
-    ep = R5.episode_cfg5(config.difficulty, config.seed0 + i)
-    world, seed, menu = ep["world"], ep["seed"], ep["menu"]
-    cc = B.contracts(world, seed)["private"]
-    system_prompt = BLOB5_SYSTEM_PROMPT.format(
-        k0=cc["kA"], k1=cc["kB"], n_ports=cc["nf"],
-        syllabus=R5.syllabus5(world, seed, menu,
-                              R5.resource_policy5(config.difficulty)))
-    artifacts = [vf.Artifact(
-        source=".",
-        exclude=["*.pyc", "__pycache__", ".git", "node_modules",
-                 ".venv", "*.tar", "*.npz"],
-        required=False,
-    )]
-    data = Blob5Data(
-        idx=i,
-        name=f"physim-{config.difficulty}#{seed}",
-        prompt=BLOB5_PROMPT,
-        system_prompt=system_prompt,
-        difficulty=config.difficulty,
-        world=world,
-        world_seed=seed,
-        menu=menu,
-        max_turns=config.max_turns,
-        artifacts=artifacts,
-    )
-    return Blob5Task(data, Blob5TaskConfig(
-        judges=list(config.task.judges), tools=config.task.tools,
-        r5_resource_policy=R5.resource_policy5(config.difficulty)))
-
-
-def certified_seed(difficulty: str, seed0: int, index: int) -> int:
-    """Deterministically map task index -> the (index+1)-th certified seed at
-    or after seed0. Cheap for tanh worlds (always certified); GS worlds run a
-    short health probe per candidate."""
-    from physim.engine import make_world
-    found = -1
-    seed = seed0
-    for _ in range(200):                     # hard cap on search
-        if make_world(difficulty, seed).certify():
-            found += 1
-            if found == index:
-                return seed
-        seed += 1
-    return seed0 + index                     # fallback: uncertified
-
-
-class PhysimTaskset(vf.Taskset[PhysimTask, PhysimConfig]):
-    INFINITE = True
-
-    def load(self) -> Iterator[PhysimTask]:
-        if self.config.difficulty.startswith("BLOB2v2"):
-            for i in itertools.count():
-                yield _blob5_task(self.config, i)
+    async def finalize(self, trace, runtime):
+        state = trace.state
+        if not state.output:
             return
-        if self.config.difficulty.startswith("BLOB2"):
-            for i in itertools.count():
-                yield _blob2_task(self.config, i)
-            return
-        if self.config.difficulty.startswith("BLOB"):
-            for i in itertools.count():
-                yield _blob_task(self.config, i)
-            return
-        params = DIFFICULTY_PRESETS[self.config.difficulty]
-        tools_tier = self.config.tier == "tools"
-        for i in itertools.count():
-            if tools_tier:
-                prompt = (
-                    "Begin your investigation of the system using the physim_* "
-                    "tools. Explore, build a quantitative model in your workspace, "
-                    "then call physim_ready and answer every contract with "
-                    "physim_answer."
-                )
-                system_prompt = TOOLS_SYSTEM_PROMPT.format(
-                    n_in=params.n_in, n_out=params.n_out,
-                    tail=20, budget=params.max_ticks,
-                )
-            else:
-                prompt = (
-                    "Begin. Send your first JSON command to start exploring the "
-                    "system. A good opening is a zero-input run to measure the "
-                    "noise floor."
-                )
-                system_prompt = SYSTEM_PROMPT.format(
-                    n_in=params.n_in, n_out=params.n_out,
-                    tail=20, budget=params.max_ticks,
-                )
-            artifacts = []
-            if tools_tier:
-                artifacts = [vf.Artifact(
-                    source=".",
-                    exclude=["*.pyc", "__pycache__", ".git", "node_modules",
-                             ".venv", "*.tar", "*.npz"],
-                    required=False,
-                )]
-            data = PhysimData(
-                idx=i,
-                name=f"physim-{self.config.difficulty}#{self.config.seed0 + i}",
-                prompt=prompt,
-                system_prompt=system_prompt,
-                difficulty=self.config.difficulty,
-                world_seed=certified_seed(self.config.difficulty,
-                                          self.config.seed0, i),
-                max_turns=self.config.max_turns,
-                n_per_stratum=self.config.n_per_stratum,
-                n_prep=self.config.n_prep,
-                calibration_weight=self.config.calibration_weight,
-                tier="tools" if tools_tier else "chat",
-                artifacts=artifacts,
+        # Stock VF ends naturally on final text or a configured limit. The task
+        # collects the last executable artifact, without another model call.
+        if not state.submitted:
+            report = await asyncio.to_thread(_check, state, self.config.tools, final=True)
+            trace.info["r6"]["final_collection"] = report
+        E.dump(Path(state.output) / "laboratory_state.json", state.model_dump(exclude={"artifacts"}))
+
+    @vf.reward(weight=1)
+    async def prediction_reward(self, trace) -> float:
+        state = trace.state
+        info = trace.info.setdefault("r6", {})
+        if not state.submitted:
+            attempted = any(c.get("snapshot") for c in state.checks)
+            info["score_kind"] = "infinity" if attempted else "nan"
+            info["score_reason"] = "invalid_predictor" if attempted else "no_predictor"
+            info["primary_joint_energy"] = None
+            info["reward_mapping"] = "missing or invalid predictor -> 0"
+            return 0.0
+        context = dict(
+            trace_id=trace.id,
+            protocol=self.data.protocol,
+            models=sorted({call.model for call in trace.calls if call.model}),
+            harness=trace.agent.config.harness.id,
+            coding_interface=self.config.coding_interface,
+            agent_limits={
+                name: getattr(trace.agent.config, name, None)
+                for name in ("max_turns", "max_input_tokens", "max_output_tokens")
+            },
+            laboratory_budget={
+                name: getattr(self.config.tools, name)
+                for name in ("max_experiments", "max_total_tu", "max_validation_attempts", "max_submission_attempts")
+            },
+            usage=state.usage,
+            checkpoint=state.checkpoint,
+            spend=info.get("spend_final"),
+            laboratory_state_sha256=E.file_digest(Path(state.output) / "laboratory_state.json"),
+        )
+        grade = await asyncio.to_thread(
+            E.grade,
+            Path(state.artifact),
+            Path(state.output) / "observations",
+            Path(state.output),
+            bundle=required_bundle(self.config.tools),
+            members=64,
+            run_context=context,
+        )
+        info["grade"] = grade
+        score = grade["primary_joint_energy"]
+        info["score_kind"] = "finite" if score is not None else "infinity"
+        info["primary_joint_energy"] = score
+        # Preserve the lower-is-better scientific score. VF rewards are larger
+        # is better; this monotone transform is explicit and recorded.
+        info["reward_mapping"] = "1 / (1 + primary_joint_energy); invalid contract -> 0"
+        return 1 / (1 + score) if score is not None else 0.0
+
+
+class R6Taskset(vf.Taskset[R6Task, R6Config]):
+    DEFAULT_HARNESS = "bash"
+
+    def load(self):
+        required_bundle(self.config.task.tools)
+        protocol = PROTOCOL if self.config.task.coding_interface == "shell" else "r6-verifiers-v1-ipython-1"
+        n_ports = public_roster(self.config.task.tools).n_ports
+        if n_ports != 12:
+            protocol += f"-ports-{n_ports}"
+        if self.config.prompt != DEFAULT_PROMPT:
+            protocol += "-prompt-" + hashlib.sha256(self.config.prompt.encode()).hexdigest()[:12]
+        system_prompt = public_prompt(self.config.task.tools, self.config.task.coding_interface)
+        if self.config.task.checkpoint_artifact is not None:
+            protocol += (
+                "-checkpoint-"
+                + hashlib.sha256(str(self.config.task.checkpoint_artifact.resolve()).encode()).hexdigest()[:12]
             )
-            task_config = self.config.task.model_copy(
-                update={"tier": self.config.tier})
-            yield PhysimTask(data, task_config)
+            system_prompt += recovery_prompt()
+        yield R6Task(
+            R6Data(
+                idx=0,
+                name="r6-prepared-laboratory",
+                protocol=protocol,
+                prompt=self.config.prompt,
+                system_prompt=system_prompt,
+                image=self.config.task.agent_image,
+                workdir="/workspace",
+                network_allow=[],
+                resources=vf.TaskResources(cpu=4, memory=8),
+                timeout=vf.TaskTimeout(setup=self.config.task.setup_timeout, agent=86400, finalize=180, scoring=900),
+            ),
+            self.config.task,
+        )
+
+
+if __name__ == "__main__":
+    LaboratoryTools.run()

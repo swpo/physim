@@ -1,0 +1,9 @@
+# Approved release choices and verified public dataset snapshot.
+code_license = "Apache-2.0"
+data_license = "CC-BY-4.0"
+dataset_repo = "seanpohorence/physim-worlds"
+exposure = "public-reference-development"
+
+dataset_revision = "dcd6abd5eae76a47f326c70518315d2d1e101d86"
+release_id = "dataset-release:sha256:f00596ea8751cb4208c519b99e6c9958b8c021a63c627c8700c2672420ca7d85"
+published_date = "2026-09-14"

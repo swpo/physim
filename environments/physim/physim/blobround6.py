@@ -13,7 +13,6 @@ from copy import deepcopy
 from dataclasses import dataclass
 import hashlib
 import math
-import pickle
 from typing import Callable, Protocol
 
 import numpy as np
@@ -22,13 +21,13 @@ SIM_DT = 0.02
 TIME_ATOL = 1e-9                 # tu; representation tolerance, not rounding
 ADJUST_TU = 5.0
 ADJUST_TICKS = 250
-AMP_RANGE = (0.0, 3.0)            # proposed R6 evaluation domain, NOT R5 tools
+AMP_RANGE = (0.0, 3.0)            # shared R6 exploration/evaluation domain
 DURATION_MAX = 50.0
 CONTROL_RANGE = (-1.0, 1.0)
 DEFAULT_SAMPLES = 64
 MAX_SEED = 2**64 - 1
 MAX_EXACT_TICK = 2**53 - 1        # numerical representation bound, not a budget
-_CHECKPOINT_SLOTS = 2             # t=0 plus one exact base checkpoint
+NOISE_POLICY = "independent-experiment-v1"
 
 
 class ProtocolError(ValueError):
@@ -194,11 +193,11 @@ def _effective_actions(actions, devices, mix):
 def _truth_member_seed(truth_seed: int, member: int) -> int:
     """Private truth-only continuation seed; never a submitted predictor seed.
 
-    This mapping is fixed for v0 and uses a grader-owned truth_seed. Changing
+    This mapping is fixed for v1 and uses a grader-owned truth_seed. Changing
     n_samples only extends the member prefix. Hidden initialization, queries,
     actions, and the submitted predictor's sampling seed are not inputs.
     """
-    data = f"physim/blobround6/truth/policy-A/v0|{truth_seed}|{member}".encode("ascii")
+    data = f"physim/blobround6/truth/{NOISE_POLICY}|{truth_seed}|{member}".encode("ascii")
     return int.from_bytes(hashlib.sha256(data).digest()[:16], "big")
 
 
@@ -209,24 +208,6 @@ def _clone_sim(template):
     sim["F"] = np.array(template["F"], copy=True)
     sim["rng"] = deepcopy(template["rng"])
     return sim
-
-
-def _checkpoint_digest(tick, fields, rng_state) -> bytes:
-    h = hashlib.sha256()
-    h.update(str((tick, fields.dtype.str, fields.shape)).encode("ascii"))
-    h.update(fields.tobytes(order="C"))
-    h.update(pickle.dumps(rng_state, protocol=5))
-    return h.digest()
-
-
-@dataclass(frozen=True)
-class _BaseCheckpoint:
-    """Owned exact base replay only; never an f16 record or public input."""
-    owner: object
-    tick: int
-    fields: np.ndarray
-    rng_state: dict
-    digest: bytes
 
 
 class Predictor(Protocol):
@@ -283,47 +264,6 @@ class OracleRunner:
         self._mix = mix.copy()
         self._emitter = emitter.copy()
         self._stepper = _stepper
-        self._owner = object()
-        self._base_checkpoints = {}
-        self._remember_base(self._template)
-
-    def _remember_base(self, sim):
-        """Capture only a known undisturbed continuation of this owned template."""
-        fields = np.array(sim["F"], copy=True)
-        if fields.dtype != self._template["F"].dtype:
-            raise ValueError("private checkpoint changed the native field precision")
-        rng_state = deepcopy(sim["rng"].bit_generator.state)
-        tick = int(sim["t_step"])
-        fields.flags.writeable = False
-        checkpoint = _BaseCheckpoint(self._owner, tick, fields, rng_state,
-                                     _checkpoint_digest(tick, fields, rng_state))
-        self._base_checkpoints[tick] = checkpoint
-        # Retain t=0 and the most recently captured nonzero checkpoint, at most.
-        for key in list(self._base_checkpoints):
-            if len(self._base_checkpoints) <= _CHECKPOINT_SLOTS:
-                break
-            if key not in (0, tick):
-                del self._base_checkpoints[key]
-        return checkpoint
-
-    def _restore_base(self, checkpoint):
-        if checkpoint.owner is not self._owner:
-            raise ValueError("private checkpoint provenance does not match this world")
-        if (checkpoint.tick < 0
-                or checkpoint.fields.dtype != self._template["F"].dtype
-                or checkpoint.fields.shape != self._template["F"].shape
-                or checkpoint.digest != _checkpoint_digest(
-                    checkpoint.tick, checkpoint.fields, checkpoint.rng_state)):
-            raise ValueError("private checkpoint precision, state or RNG integrity failed")
-        sim = _clone_sim(self._template)
-        sim["F"] = np.array(checkpoint.fields, copy=True)
-        sim["rng"].bit_generator.state = deepcopy(checkpoint.rng_state)
-        sim["t_step"] = checkpoint.tick
-        return sim
-
-    def _base_before(self, tick):
-        key = max(k for k in self._base_checkpoints if k <= tick)
-        return self._restore_base(self._base_checkpoints[key])
 
     def _sample(self, sim, devices, sensor):
         # No RNG call, stepping, pose changes, or persistent sample cache.
@@ -360,6 +300,12 @@ class OracleRunner:
         increasing. Validate the whole request before running any simulation.
         Empty outputs are legal. Containers are float64, without rounding or
         private metadata. A public request's ``seed`` key is NOT accepted here.
+
+        Each member starts from the same owned physical state with fresh future
+        forcing from t=0, including sham experiments and time before an action.
+        The evaluator chooses a new truth_seed per experiment. Reusing one is
+        supported for evaluator debugging only; predictors do not receive it.
+        No realized continuation is reused across independently seeded trials.
         """
         actions, queries, n_samples, truth_seed = _parse(
             actions, queries, n_samples, truth_seed, len(self._perm), self._devices)
@@ -374,24 +320,11 @@ class OracleRunner:
             return {"samples": output}
         last = max(marks)
         effective = tuple(a for a in effective if a.tick <= last)
-        branch = effective[0].tick if effective else None
-        earliest = min(marks) if branch is None else min(min(marks), branch)
-        sim = self._base_before(earliest)
-        base_marks = sorted(k for k in marks if branch is None or k < branch)
-        for tick in base_marks:
-            self._advance(sim, tick)
-            self._fill_queries(sim, self._devices, marks[tick], output, slice(None))
-        if branch is None:
-            self._remember_base(sim)
-            return {"samples": output}
-
-        self._advance(sim, branch)
-        self._remember_base(sim)   # exact base fields/RNG just BEFORE intervention
         starts = {a.tick: a for a in effective}
         ends = {a.end for a in effective if a.kind == "inject" and a.end <= last}
-        agenda = sorted({k for k in marks if k >= branch} | set(starts) | ends)
+        agenda = sorted(set(marks) | set(starts) | ends)
         for member in range(n_samples):
-            live = _clone_sim(sim)
+            live = _clone_sim(self._template)
             live["rng"] = np.random.default_rng(_truth_member_seed(truth_seed, member))
             devices = deepcopy(self._devices)
             active = None
