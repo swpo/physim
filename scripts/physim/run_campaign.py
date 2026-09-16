@@ -194,6 +194,7 @@ def execute(args):
                         break
                     attempt.mkdir(parents=True)
                     dump(attempt / "eval.json", config)
+                    dump(attempt / "provenance.json", provenance)
                     record = dict(
                         key=key,
                         model=model_id,

@@ -46,7 +46,9 @@ def freeze(output):
         packages=dict(sorted(packages.items())),
         images={tag: image["Id"] for image in images for tag in image["RepoTags"]},
     )
-    (output / "provenance.json").write_text(json.dumps(record, indent=2) + "\n")
+    encoded = json.dumps(record, indent=2) + "\n"
+    (output / f"provenance-{archive_id}.json").write_text(encoded)
+    (output / "provenance.json").write_text(encoded)
     print(json.dumps({key: record[key] for key in ("source_id", "archive", "images")}, indent=2))
 
 
