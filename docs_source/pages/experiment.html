@@ -46,6 +46,7 @@ observations["query0"][0, 1, 2, :]  # 13 measured values</code></pre>
 <pre><code>{"sensor": "device0", "t": [0, 3, 12]}</code></pre>
 <p>Times within each query must be strictly increasing without duplicates. The same timestamp may appear in different query objects, and query objects may appear in any order. Preserve their order in the result. A laboratory observation has shape <code>(1, len(t), n_ports, sensor_slots)</code>: one realization, with axes for time, port, and sensor slot. A prediction uses the same layout with multiple possible realizations.</p>
 <h2 id="prediction">Returning possible trajectories</h2>
+<p>After experimentation, the agent submits a single prediction function for evaluation. It must predict outcomes for any valid combination of actions and measurement queries in the selected laboratory.</p>
 <pre><code>def predict(actions, queries, n_samples=64, seed=0):
     # One array per query, in the same order.
     # Shape: (members, requested times, n_ports, sensor slots)
