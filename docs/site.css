@@ -12,6 +12,9 @@
 h2[id],h3[id]{scroll-margin-top:1.5rem}
 @media(max-width:680px){.contents ol{grid-template-columns:1fr}.equation{padding:.8rem;font-size:.95rem}}
 
+/* Native mathematical layout keeps summation limits and indices aligned. */
+.scoring-math math{font-size:1.1em;width:max-content;margin:.35rem auto}
+
 /* Recorded field snapshots and optional exact world equations. */
 .world-panels{display:grid;gap:1rem}.world-panels.two{grid-template-columns:repeat(2,minmax(0,1fr))}.world-panels.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .panel-label{font-size:.95rem;font-weight:600;text-align:center;margin:0 0 .6rem}.world-panels img{width:100%}
