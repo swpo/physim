@@ -8,8 +8,11 @@ import json
 import os
 import re
 import shutil
+from decimal import Decimal
 from html import escape, unescape
 from pathlib import Path
+
+from world_equations import render_equations
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE, DOCS = ROOT / "docs_source", ROOT / "docs"
@@ -204,6 +207,12 @@ def generated_content():
     sample_code = predictor[predictor.index("SLOTS =") : predictor.index("\n\nif __name__")].strip()
     registry_counts = registry_content()
     return {
+        **{
+            f"{key}_equations": render_equations(
+                key, source, json.loads((SOURCE / source["file"]).read_text(), parse_float=Decimal)
+            )
+            for key, source in json.loads((SOURCE / "data/equation-sources.json").read_text()).items()
+        },
         "evaluation_table": evaluation_table,
         "control_table": controls,
         "model_tables": "\n".join(profiles),
@@ -256,6 +265,10 @@ def build():
     for old, target in REDIRECTS.items():
         (DOCS / old).write_text(redirect(old, target))
     shutil.copyfile(SOURCE / "site.css", DOCS / "site.css")
+    for source in json.loads((SOURCE / "data/equation-sources.json").read_text()).values():
+        target = DOCS / source["file"]
+        target.parent.mkdir(exist_ok=True, parents=True)
+        shutil.copyfile(SOURCE / source["file"], target)
     for filename in ("worlds.json", "results.json", "registry.json"):
         (DOCS / "data").mkdir(exist_ok=True)
         shutil.copyfile(SOURCE / filename, DOCS / "data" / filename)

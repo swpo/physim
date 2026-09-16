@@ -1,0 +1,20 @@
+{
+  "p4g2_044": {
+    "label": "p4g2_044",
+    "file": "data/genomes/p4g2_044.json",
+    "sha256": "3493101590a98492a9aa9ae8384c42577fcf99d2d970d29a15ef023d5e6a70d8",
+    "published_source": "https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/dcd6abd5eae76a47f326c70518315d2d1e101d86/bundles/p4g2_044/0c133190c1c86450f56651b47e35f0d729f6a84c7c51a4bc7d91850a9a392ff2/world.json"
+  },
+  "bf": {
+    "label": "BF",
+    "file": "data/genomes/bf.json",
+    "sha256": "d59f7d9d7ffdb0251bceb2f989f91d2e2ac86dce4409f5d36f3f3e65cad3e038",
+    "published_source": "https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/dcd6abd5eae76a47f326c70518315d2d1e101d86/bundles/bf_trail_lab/7a28b7b8118986f9554a2a872eaa18ef6292264f22f21bcac53142adcf84671c/world.json"
+  },
+  "xv": {
+    "label": "XV",
+    "file": "data/genomes/xv.json",
+    "sha256": "0c7a308adfe6e8b700b9563be0cf75824d2ae970822b946d5817d1e09ef3e5fb",
+    "published_source": "https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/dcd6abd5eae76a47f326c70518315d2d1e101d86/bundles/xv_rotor_lab/8e711a8a0ea1b52985d6598d3093c15e6024058b9ee9ab5134917beabeccf4a6/world.json"
+  }
+}

@@ -105,6 +105,14 @@ def check():
     for name in ("worlds.json", "results.json", "registry.json"):
         if (DOCS / "data" / name).read_bytes() != (SOURCE / name).read_bytes():
             errors.append(f"{name}: generated snapshot is stale")
+    for source in json.loads((SOURCE / "data/equation-sources.json").read_text()).values():
+        for root in (SOURCE, DOCS):
+            path = root / source["file"]
+            if hashlib.sha256(path.read_bytes()).hexdigest() != source["sha256"]:
+                errors.append(f"{path}: equation genome differs from its published source")
+    visual_source = json.loads((SOURCE / "data/world-visuals.json").read_text())
+    if hashlib.sha256((SOURCE / "data/world-visuals.npz").read_bytes()).hexdigest() != visual_source["data_sha256"]:
+        errors.append("World visual data changed; review and regenerate the figures")
     for path in (SOURCE / "examples").iterdir():
         if path.is_file() and path.read_bytes() != (DOCS / "examples" / path.name).read_bytes():
             errors.append(f"{path.name}: example is stale")
