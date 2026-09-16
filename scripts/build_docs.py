@@ -31,7 +31,7 @@ REDIRECTS = {
     "registry.html": "try.html#registry",
 }
 DESCRIPTIONS = {
-    "index": "Learn physical systems through experiments in blob-field worlds, then evaluate an executable prediction function.",
+    "index": "Physim evaluates agents learning physics through experiments; Blobkit discovers worlds through simulation and evolutionary search over field equations.",
     "worlds": "Field equations, numerical dynamics, emergent structures, and the generation of worlds with patterns, trails, and orbital motion.",
     "experiment": "Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.",
     "scoring": "Joint energy scoring, independent truth realizations, fixed coordinate scales, marginal diagnostics, and limitations.",
