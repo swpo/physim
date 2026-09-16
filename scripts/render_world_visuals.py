@@ -30,13 +30,15 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def capture(source):
+def capture(source, bf_source=None):
     """Keep small, exact spatial crops so figure rendering needs no research tree."""
     arrays, panels = {}, []
     for key, relative, time in PANELS:
         name = key.split("-")[0]
-        apparatus = json.loads((source / name / "preparation/apparatus.json").read_text())
-        with np.load(source / relative, allow_pickle=False) as data:
+        world_source = bf_source if name == "bf" and bf_source else source / name
+        field_path = world_source / Path(relative).relative_to(name)
+        apparatus = json.loads((world_source / "preparation/apparatus.json").read_text())
+        with np.load(field_path, allow_pickle=False) as data:
             index = np.flatnonzero(data["t"] == time)
             if len(index) != 1:
                 raise ValueError(f"Missing or repeated time {time} in {relative}")
@@ -54,10 +56,13 @@ def capture(source):
             dict(
                 key=key,
                 time=time,
-                source=str((source / relative).relative_to(ROOT)),
-                source_sha256=digest(source / relative),
+                source=str(field_path.relative_to(ROOT)),
+                source_sha256=digest(field_path),
+                protocol=apparatus.get("protocol", "fixed-source-v1"),
                 crop_origin_yx=origin.tolist(),
-                emitter_relative_yx=(np.array(apparatus["emitter_yx"]) - origin).tolist(),
+                emitter_relative_yx=(
+                    np.array(apparatus.get("emitter_yx", apparatus["devices"][0]["parameters"]["center"])) - origin
+                ).tolist(),
                 extent=[-radius, radius, radius, -radius],
                 dx=0.5,
                 realization="First recorded realization",
@@ -69,7 +74,7 @@ def capture(source):
             dict(
                 description="Exact field-array crops for the Worlds page; no temporal or spatial interpolation.",
                 data_sha256=digest(DATA),
-                scale=dict(field="activator 0", vmin=-1, vmax=1.6, cmap="viridis"),
+                scale=dict(field="activator 0", vmin=-1.1, vmax=1.6, cmap="viridis"),
                 panels=panels,
             ),
             indent=2,
@@ -137,8 +142,9 @@ def render(output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--capture-from", type=Path, help="Optional original preparation-study directory")
+    parser.add_argument("--bf-source", type=Path, help="Replace only BF panels from a new preparation")
     parser.add_argument("--output", type=Path, default=ROOT / "docs/assets/worlds")
     args = parser.parse_args()
     if args.capture_from:
-        capture(args.capture_from.resolve())
+        capture(args.capture_from.resolve(), args.bf_source.resolve() if args.bf_source else None)
     render(args.output)

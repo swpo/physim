@@ -5,15 +5,14 @@ is not a security boundary or a replacement for R5's production transport.
 """
 from __future__ import annotations
 
-from dataclasses import replace
-from copy import deepcopy
-import secrets
 import math
+import secrets
+from copy import deepcopy
+from dataclasses import replace
 from threading import Lock
 
 from . import blobround6 as R6
-from .blobround6_eval import (DEFAULT_LIMITS, DEFAULT_ROSTER, EvaluationError,
-                             validate_case)
+from .blobround6_eval import DEFAULT_LIMITS, DEFAULT_ROSTER, EvaluationError, validate_case
 
 
 class ExperimentService:
@@ -26,15 +25,15 @@ class ExperimentService:
 
     def __init__(self, oracle, *, roster=DEFAULT_ROSTER, max_experiments=100,
                  max_total_tu=5000, limits=None):
-        if type(max_experiments) is not int or max_experiments < 1:
-            raise ValueError('max_experiments must be a positive integer')
-        if type(max_total_tu) not in (int, float) or not 0 < max_total_tu <= 1e6:
-            raise ValueError('max_total_tu must be finite and in (0,1000000]')
+        if max_experiments is not None and (type(max_experiments) is not int or max_experiments < 1):
+            raise ValueError('max_experiments must be a positive integer or None')
+        if max_total_tu is not None and (type(max_total_tu) not in (int, float) or not 0 < max_total_tu <= 1e6):
+            raise ValueError('max_total_tu must be finite and in (0,1000000], or None')
         self._oracle = oracle
         self._roster = roster
         self._limits = limits or replace(DEFAULT_LIMITS, max_horizon_tu=50.)
         self._max_experiments = max_experiments
-        self._max_ticks = math.floor(max_total_tu / R6.SIM_DT)
+        self._max_ticks = None if max_total_tu is None else math.floor(max_total_tu / R6.SIM_DT)
         self._calls = self._ticks = 0
         self._lock = Lock()
         self._seeds = set()
@@ -52,7 +51,8 @@ class ExperimentService:
             raise EvaluationError('experimental output exceeds the scalar-value cap')
         ticks = max((round(t / R6.SIM_DT) for q in case['queries'] for t in q['t']), default=0)
         with self._lock:
-            if self._calls >= self._max_experiments or self._ticks + ticks > self._max_ticks:
+            if ((self._max_experiments is not None and self._calls >= self._max_experiments)
+                    or (self._max_ticks is not None and self._ticks + ticks > self._max_ticks)):
                 raise EvaluationError('experimental budget exhausted')
             self._calls += 1
             self._ticks += ticks
@@ -67,4 +67,4 @@ class ExperimentService:
         with self._lock:
             return dict(experiments=self._calls, max_experiments=self._max_experiments,
                         charged_tu=self._ticks * R6.SIM_DT,
-                        max_total_tu=self._max_ticks * R6.SIM_DT)
+                        max_total_tu=None if self._max_ticks is None else self._max_ticks * R6.SIM_DT)

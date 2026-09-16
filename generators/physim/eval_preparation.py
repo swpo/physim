@@ -191,6 +191,24 @@ def with_pose_programs(programs):
     return programs
 
 
+def with_centered_programs(programs, port, amplitude=0.3):
+    """Exercise launch position, same-time ordering, and independent instruments."""
+    from copy import deepcopy
+
+    pulse = dict(t=0, kind="inject", device=0, port=port, amp=amplitude, dur=5)
+    move = dict(t=0, kind="adjust", device=0, u=[1, 0, 0])
+    arms = {
+        "pulse_then_move": [pulse, move],
+        "move_then_pulse": [move, pulse],
+        "two_sources": [pulse, dict(t=0, kind="adjust", device=1, u=[0, 1, 0]), dict(pulse, device=1)],
+        "move_during_pulse": [pulse, dict(move, t=2)],
+    }
+    return programs + [
+        dict(id=name, actions=deepcopy(actions), queries=deepcopy(programs[0]["queries"]))
+        for name, actions in arms.items()
+    ]
+
+
 def xv_programs():
     times = [0, 2, 5, 8, 10, 12, 15, 20, 22, 25, 30, 35, 40, 45, 50]
 
@@ -226,7 +244,9 @@ if __name__ == "__main__":
     parser.add_argument("--workers", type=int, default=3)
     args = parser.parse_args()
     prepare(args.world, args.output / "preparation", source=args.source)
-    programs = bf_programs() if args.world == "bf" else xv_programs()
+    programs = with_centered_programs(
+        bf_programs() if args.world == "bf" else xv_programs(), 1 if args.world == "bf" else 3
+    )
     write_json(args.output / "programs.json", programs)
     with ProcessPoolExecutor(max_workers=args.workers) as pool:
         jobs = [

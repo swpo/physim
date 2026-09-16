@@ -12,7 +12,7 @@ from physim import taskset as T
 
 
 class SpendConfig(vf.TaskConfig):
-    limit_usd: float = Field(gt=0, le=25)
+    limit_usd: float = Field(gt=0, le=150)
     input_usd_per_mtok: float = Field(ge=0)
     output_usd_per_mtok: float = Field(ge=0)
     cache_read_usd_per_mtok: float | None = Field(None, ge=0)
@@ -91,7 +91,7 @@ class ScalingTask(T.R6Task):
         )
 
     @vf.stop(priority=-1)
-    async def dollar_budget(self, trace) -> bool:
+    async def dollar_budget(self, trace: vf.Trace) -> bool:
         budget = spend_accounting(trace, self.config.spend)
         stop = budget["accounted_cost_usd"] + budget["next_call_reserve_usd"] > budget["limit_usd"] + 1e-12
         trace.info.setdefault("r6", {})["spend"] = dict(budget, stopped=stop)

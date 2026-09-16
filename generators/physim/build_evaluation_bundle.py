@@ -52,6 +52,19 @@ def score_groups(case, permutation):
     return groups
 
 
+def disable_shared_feedback(state):
+    """Remove channel-to-activator feedback from channels with multiple drivers.
+
+    Wf is channels × activators; Kf is activators × channels. Neither is
+    generally square. Channel production, initial fields and noise stay intact.
+    """
+    shared = np.count_nonzero(state["Wf"], axis=1) > 1
+    if state["Kf"].shape != state["Wf"].T.shape or not shared.any():
+        raise ValueError("Expected rectangular couplings with shared channels")
+    state["Kf"] = state["Kf"].copy()
+    state["Kf"][:, shared] = 0
+
+
 def generate_case(preparation, record, output, index):
     output = Path(output)
     case = record["request"]
@@ -82,6 +95,8 @@ def generate_case(preparation, record, output, index):
         elif name == "remove_feedback":
             if len(native._perm) == 4:
                 native._template["bilin"] = []
+            elif len(native._perm) == 12:
+                disable_shared_feedback(native._template)
             else:
                 # XV's cross-drive source rows; original preparation retained.
                 for key in ("Wf", "Wid"):
@@ -146,7 +161,11 @@ def build(source, output, workers=3, resume=False):
             dict(
                 request=case,
                 family=program["id"],
-                groups=score_groups(case, apparatus["port_permutation"]),
+                groups=(
+                    json.loads((source / "score_groups.json").read_text())[program["id"]]
+                    if (source / "score_groups.json").exists()
+                    else score_groups(case, apparatus["port_permutation"])
+                ),
                 truth=f"truth/{case['id']}.npz",
             )
         )

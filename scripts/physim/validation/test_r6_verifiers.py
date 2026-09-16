@@ -234,14 +234,15 @@ class NativeTaskTests(unittest.TestCase):
             captured = []
             version = {"text": "bad"}
 
-            def snapshot(state, target):
+            def snapshot(state, target, limits):
                 target.mkdir()
                 (target / "predictor.py").write_text(version["text"])
                 captured.append(target)
                 return {"files": [{"path": "predictor.py"}]}
 
-            def validate(target, observations, *, roster):
+            def validate(target, observations, *, roster, execution_limits):
                 self.assertEqual(roster.n_ports, 12)
+                self.assertEqual(execution_limits, T.R6ToolsConfig().predictor_limits)
                 return {"ok": (target / "predictor.py").read_text() == "good"}
 
             with patch.object(T, "_snapshot", snapshot), patch.object(T.E, "validate_predictor", validate):

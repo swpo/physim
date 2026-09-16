@@ -26,6 +26,7 @@ from physim.blobround6_explore import ExperimentService
 from physim.bundles import Bundle
 
 from . import evaluation as E
+from .sandbox import ExecutionLimits
 
 PROTOCOL = "r6-verifiers-v1-bash-1"
 AGENT_IMAGE = "physim-agent:0.12.2"
@@ -46,6 +47,7 @@ class R6State(vf.State):
     infrastructure_error: str | None = None
     exploration_closed: bool = False
     checkpoint: dict = Field(default_factory=dict)
+    rejected_requests: list[dict] = Field(default_factory=list)
 
 
 class HubBundleConfig(BaseModel):
@@ -59,10 +61,11 @@ class HubBundleConfig(BaseModel):
 class R6ToolsConfig(vf.ToolsetConfig):
     bundle: Path | None = None
     bundle_source: HubBundleConfig | None = None
-    max_experiments: int = Field(1000, ge=1)
-    max_total_tu: float = Field(50000, gt=0, le=1_000_000)
-    max_validation_attempts: int = Field(128, ge=1)
-    max_submission_attempts: int = Field(128, ge=1)
+    max_experiments: int | None = Field(1000, ge=1)
+    max_total_tu: float | None = Field(50000, gt=0, le=1_000_000)
+    max_validation_attempts: int | None = Field(128, ge=1)
+    max_submission_attempts: int | None = Field(128, ge=1)
+    predictor_limits: ExecutionLimits = ExecutionLimits()
 
     @model_validator(mode="after")
     def unambiguous_bundle(self):
@@ -114,13 +117,16 @@ def public_roster(config: R6ToolsConfig):
 
 
 def public_prompt(config: R6ToolsConfig, coding_interface: str = "shell") -> str:
+    def budget(value):
+        return "unlimited" if value is None else f"{value:g}"
+
     roster = public_roster(config)
     n_ports = roster.n_ports
     name = "agent_spec_v1.txt" if roster.protocol == E.E.R6.LEGACY_PROTOCOL else "agent_spec.txt"
     spec = files("physim").joinpath("data", name).read_text()
     # The configured exploration budget is also written explicitly below.
-    spec = spec.replace("{max_experiments}", str(config.max_experiments))
-    spec = spec.replace("{max_total_tu}", f"{config.max_total_tu:g}")
+    spec = spec.replace("{max_experiments}", budget(config.max_experiments))
+    spec = spec.replace("{max_total_tu}", budget(config.max_total_tu))
     for key, value in (("n_ports", n_ports), ("last_port", n_ports - 1), ("example_port", min(2, n_ports - 1))):
         spec = spec.replace("{" + key + "}", str(value))
     text = f"""Investigate the anonymous laboratory and deliver /workspace/predictor.py.
@@ -139,10 +145,10 @@ NumPy, SciPy, scikit-learn and Matplotlib are installed. The working directory i
   A failed check leaves the workspace open for repair; a successful submission ends
   exploration. Finish the coding session once submission is accepted.
 
-The experiment budget is {config.max_experiments} experiments and
-{config.max_total_tu:g} integrated time units. Each experiment costs its largest
-requested timestamp, at most 50 tu. You may validate {config.max_validation_attempts}
-times and attempt submission {config.max_submission_attempts} times; neither costs
+The experiment budget is {budget(config.max_experiments)} experiments and
+{budget(config.max_total_tu)} integrated time units. Each experiment costs its largest
+requested timestamp, at most 50 tu. Validation attempts: {budget(config.max_validation_attempts)};
+submission attempts: {budget(config.max_submission_attempts)}. Neither costs
 experiments or simulation time. Save a simple working predictor early, validate it,
 then improve it and submit before your coding session ends. If the session ends
 with predictor.py written, its final snapshot is collected and checked as well.
@@ -154,6 +160,10 @@ device1=19, global=2. Handle empty query/time lists, different query orders,
 different time grids, and the requested member count. The same seed must reproduce
 the same result. During prediction /workspace and /observations are read-only;
 /tmp is writable. No further laboratory calls are available during prediction.
+Each predictor call can use {config.predictor_limits.cpus} CPUs and
+{config.predictor_limits.memory_gib} GiB memory, with limits of
+{config.predictor_limits.cpu_seconds} CPU seconds and
+{config.predictor_limits.wall_seconds} wall-clock seconds.
 
 Read observation metadata and arrays together:
 ```python
@@ -190,10 +200,12 @@ def _container(state: R6State) -> str:
     return state.container_id
 
 
-def _snapshot(state: R6State, target: Path) -> dict:
+def _snapshot(state: R6State, target: Path, limits=None) -> dict:
     # Reuse the existing bounded, regular-file-only artifact transport. This
     # does not create a runtime or run an agent; Verifiers owns that runtime.
-    return E.Sandbox.export_workspace(SimpleNamespace(name=_container(state)), target, excludes=("./.vf-*",))
+    return E.Sandbox.export_workspace(
+        SimpleNamespace(name=_container(state), limits=limits or ExecutionLimits()), target, excludes=("./.vf-*",)
+    )
 
 
 def _put_observation(state: R6State, path: Path) -> None:
@@ -273,19 +285,25 @@ def _check(state: R6State, config: R6ToolsConfig, *, final: bool) -> dict:
     kind = "submit" if final else "validate"
     attempt = 1 + sum(row["kind"] == kind for row in state.checks)
     cap = config.max_submission_attempts if final else config.max_validation_attempts
-    if attempt > cap:
+    if cap is not None and attempt > cap:
+        state.rejected_requests.append(dict(kind=kind, error="attempt limit reached", attempt=attempt))
         return dict(ok=False, error=f"{kind} attempt limit reached", finalized=False)
     target = Path(state.output) / f"{kind}_{attempt:02d}"
     event = dict(kind=kind, attempt=attempt, path=target.name)
     state.checks.append(event)
     try:
-        event["snapshot"] = _snapshot(state, target)
+        event["snapshot"] = _snapshot(state, target, config.predictor_limits)
     except E.SandboxError as exc:
         report = dict(ok=False, gate=E.SUBMISSION_GATE_VERSION, failure=dict(stage="artifact", error=str(exc)[-3000:]))
     else:
         # A validator-container startup failure is infrastructure failure, not
         # evidence that the submitted predictor violates the contract.
-        report = E.validate_predictor(target, Path(state.output) / "observations", roster=public_roster(config))
+        report = E.validate_predictor(
+            target,
+            Path(state.output) / "observations",
+            roster=public_roster(config),
+            execution_limits=config.predictor_limits,
+        )
     event["validation"] = report
     if final and report["ok"]:
         state.submitted = True
@@ -347,6 +365,8 @@ class LaboratoryTools(vf.Toolset[R6ToolsConfig, R6State]):
                 data = await asyncio.to_thread(service.experiment, actions, queries)
             except (ValueError, EvaluationError) as exc:
                 self.state.usage = service.usage()
+                self.state.rejected_requests.append(dict(kind="experiment", error=str(exc)))
+                E.dump(Path(self.state.output) / "laboratory_state.json", self.state.model_dump(exclude={"artifacts"}))
                 return json.dumps(dict(error=str(exc), usage=self.state.usage))
             self.state.usage = service.usage()
             path = Path(self.state.output) / "observations" / f"experiment_{self.state.usage['experiments']:03d}.npz"
@@ -466,6 +486,28 @@ class R6Task(vf.Task[R6Data, R6State, R6TaskConfig]):
             report = await asyncio.to_thread(_check, state, self.config.tools, final=True)
             trace.info["r6"]["final_collection"] = report
         E.dump(Path(state.output) / "laboratory_state.json", state.model_dump(exclude={"artifacts"}))
+        audit = dict(
+            stop_condition=trace.stop_condition,
+            truncated=trace.is_truncated,
+            submitted=state.submitted,
+            final_collection=trace.info.get("r6", {}).get("final_collection"),
+            model_turns=trace.num_turns,
+            input_tokens=trace.num_input_tokens,
+            output_tokens=trace.num_output_tokens,
+            length_finished_calls=[i for i, call in enumerate(trace.calls) if call.finish_reason == "length"],
+            agent_limits={
+                name: getattr(trace.agent.config, name, None)
+                for name in ("max_turns", "max_input_tokens", "max_output_tokens", "max_total_tokens")
+            },
+            timeouts=trace.agent.config.timeout.model_dump(),
+            laboratory_limits=self.config.tools.model_dump(mode="json", exclude={"bundle", "bundle_source"}),
+            usage=state.usage,
+            rejected_requests=state.rejected_requests,
+            validation_attempts=sum(c["kind"] == "validate" for c in state.checks),
+            submission_attempts=sum(c["kind"] == "submit" for c in state.checks),
+        )
+        trace.info.setdefault("r6", {})["limit_audit"] = audit
+        E.dump(Path(state.output) / "limit_audit.json", audit)
 
     @vf.reward(weight=1)
     async def prediction_reward(self, trace) -> float:
@@ -505,6 +547,7 @@ class R6Task(vf.Task[R6Data, R6State, R6TaskConfig]):
             bundle=required_bundle(self.config.tools),
             members=64,
             run_context=context,
+            execution_limits=self.config.tools.predictor_limits,
         )
         info["grade"] = grade
         score = grade["primary_joint_energy"]

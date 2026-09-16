@@ -16,7 +16,16 @@ The loader selects behavior from the stored apparatus, and old reference modules
 retain their published bytes in `physim/legacy_v1`. Never amend historical truth
 or reinterpret an old action request under the new protocol.
 
-## After the user finishes reviewing the remaining pages
+## Campaign authorized after documentation review
+
+The user authorized the reruns on September 16. Fresh three-realization science
+for all three worlds and centered-source causal checks for BF/XV are complete.
+New grading truths and baseline controls are being generated. Paid inference
+starts with GLM Flash after validating each new bundle. The spending target is
+$50, with a $150 hard pause ceiling; finish an ongoing rollout that crosses $50,
+then discuss before launching more. The detailed plan and run evidence are in
+`handoff/evaluation_campaign_20260916/PLAN.md` and
+`outputs/evaluation-campaign-20260916`.
 
 1. Finalize any other agreed protocol changes before running campaigns.
 2. Create new preparations for p4g2_044, BF and XV with centered sources. Reuse
@@ -36,8 +45,6 @@ or reinterpret an old action request under the new protocol.
    measurements, including the captured `bf-evaluation` data, figure captions,
    response magnitudes, and suite groups. Its current recorded evidence is the
    September 13–14 fixed-source study, identified in the figure captions.
-
-No science campaign or model rollout is scheduled or launched by this change.
 
 ## Documentation review convention
 

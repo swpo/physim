@@ -1,7 +1,7 @@
 """Replot recorded BF sensor evidence; never run a simulation.
 
 Capture the selected raw readings once with --capture-from, then render from the
-small checked-in snapshot. The recorded study uses the fixed-source apparatus.
+small checked-in snapshot. The recorded study uses the centered-source apparatus.
 """
 
 import argparse
@@ -36,7 +36,7 @@ def capture(source):
 
     apparatus_path = source / "preparation/apparatus.json"
     apparatus = json.loads(apparatus_path.read_text())
-    assert apparatus.get("protocol", "fixed-source-v1") == "fixed-source-v1"
+    assert apparatus["protocol"] == "centered-pulse-v2"
     port = apparatus["port_permutation"].index(0)
     record(apparatus_path)
     for arm in ARMS:
@@ -54,6 +54,7 @@ def capture(source):
                     dict(
                         t=0,
                         kind="inject",
+                        device=0,
                         port=2,
                         amp={"trail_low": 0.002, "trail_mid": 0.01, "trail_high": 0.05}[arm],
                         dur=5,
@@ -85,8 +86,8 @@ def capture(source):
     META.write_text(
         json.dumps(
             dict(
-                study="BF preparation study, 13–14 September 2026",
-                apparatus="fixed-source-v1; source six units from the probe center",
+                study="BF centered-source preparation study, 16 September 2026",
+                apparatus="centered-pulse-v2; source at the device-0 sensor-array center",
                 data_sha256=digest(DATA),
                 sources=sources,
                 selected_data="Exact activator readings (public port 1), all 13 device-0 slots, all three repetitions.",
@@ -139,7 +140,7 @@ def render(mobile=False):
         ax = axes[0]
         ax.set_title("A  Sensor response", loc="left", fontsize=13, pad=54)
         ax.axvspan(0, 5, color="#e8ecef", zorder=0)
-        ax.text(2.5, 1.38, "Pulse", ha="center", fontsize=10, rotation=90)
+        ax.text(2.5, 0.77, "Pulse", ha="center", fontsize=10, rotation=90)
         for arm, amp, color, marker in (
             ("trail_low", 0.002, "#126e64", "o"),
             ("trail_mid", 0.01, "#075dad", "s"),
@@ -150,9 +151,9 @@ def render(mobile=False):
             print(f"{arm}: final sensor contrast {contrast[:, -1].mean():.12g}")
         noise = np.array([np.sqrt(np.mean((sham[i] - sham[j]) ** 2, axis=-1)) for i, j in ((0, 1), (0, 2), (1, 2))])
         ax.plot(t, noise.mean(axis=0), "--", color="#303940", lw=1.7, label="No-pulse difference")
-        ax.set(xlabel="Time after preparation", ylabel="Activator contrast (RMS)", xlim=(0, 50), ylim=(0, 1.6))
+        ax.set(xlabel="Time after preparation", ylabel="Activator contrast (RMS)", xlim=(0, 50), ylim=(0, 0.9))
         ax.set_xticks([0, 10, 20, 30, 40, 50])
-        ax.set_yticks([0, 0.4, 0.8, 1.2, 1.6])
+        ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
         ax.legend(
             loc="lower left",
             ncol=2,
@@ -168,15 +169,15 @@ def render(mobile=False):
         for i, (label, color) in enumerate((("coupled", "#126e64"), ("feedback_removed", "#68737e"))):
             effect = np.sqrt(np.mean((data[label + "_pulse"][:, -1] - data[label + "_sham"][:, -1]) ** 2, axis=-1))
             ax.bar(i, effect.mean(), width=0.52, color=color, alpha=0.45, edgecolor=color, linewidth=1.3)
-            ax.text(i, effect.mean() + 0.06, f"{effect.mean():.3f}" if i == 0 else "0", ha="center", fontsize=12)
+            ax.text(i, effect.mean() + 0.03, f"{effect.mean():.3f}" if i == 0 else "0", ha="center", fontsize=12)
         ax.set(
             xticks=[0, 1],
             xticklabels=["Original\nfeedback", "Feedback term\nremoved"],
             ylabel="Pulse effect at time 50 (RMS)",
-            ylim=(0, 1.6),
+            ylim=(0, 0.9),
             xlim=(-0.55, 1.55),
         )
-        ax.set_yticks([0, 0.4, 0.8, 1.2, 1.6])
+        ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8])
         for ax in axes:
             ax.grid(axis="y", color="#e4e8ec", lw=0.7)
             ax.set_axisbelow(True)

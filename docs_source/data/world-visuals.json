@@ -1,9 +1,9 @@
 {
   "description": "Exact field-array crops for the Worlds page; no temporal or spatial interpolation.",
-  "data_sha256": "aefa4a81fe8c8305f2a17fbf5d9118aecb49ded39c094e919cb25d1ecdd3b2a2",
+  "data_sha256": "54c8f2a3e4a9d8f5b690ef4a22c7542adc0cd1c96dd00c21eeb7d96fe4877069",
   "scale": {
     "field": "activator 0",
-    "vmin": -1,
+    "vmin": -1.1,
     "vmax": 1.6,
     "cmap": "viridis"
   },
@@ -11,15 +11,16 @@
     {
       "key": "bf-sham",
       "time": 50,
-      "source": "outputs/eval-preparation-20260913/bf/science/sham/fields.npz",
+      "source": "outputs/eval-preparation-20260916/bf/science/sham/fields.npz",
       "source_sha256": "333febb97a1ca52f97df7998703e2a7a9746b7456df535cdce30bf656ecd0114",
+      "protocol": "centered-pulse-v2",
       "crop_origin_yx": [
         127.0,
         9.5
       ],
       "emitter_relative_yx": [
         0.25,
-        6.25
+        0.25
       ],
       "extent": [
         -16.0,
@@ -33,15 +34,16 @@
     {
       "key": "bf-trail-pulse",
       "time": 50,
-      "source": "outputs/eval-preparation-20260913/bf/science/trail_high/fields.npz",
-      "source_sha256": "4711e9423d469b8e691437fd34679d4948a7441d9a5c88df31feb9aef8811dd9",
+      "source": "outputs/eval-preparation-20260916/bf/science/trail_high/fields.npz",
+      "source_sha256": "324b6692f7f563cc7fe8d9a4fe77945475fa53f80198605e58dec507ac4ec4ec",
+      "protocol": "centered-pulse-v2",
       "crop_origin_yx": [
         127.0,
         9.5
       ],
       "emitter_relative_yx": [
         0.25,
-        6.25
+        0.25
       ],
       "extent": [
         -16.0,
@@ -57,6 +59,7 @@
       "time": 0,
       "source": "outputs/eval-preparation-20260913/xv/causal_extended/coupled.npz",
       "source_sha256": "b204dc85a9fd17aa401600c7b178572b788e73e3231276ca6ffa59c0b7e3d302",
+      "protocol": "fixed-source-v1",
       "crop_origin_yx": [
         63.0,
         64.0
@@ -79,6 +82,7 @@
       "time": 125,
       "source": "outputs/eval-preparation-20260913/xv/causal_extended/coupled.npz",
       "source_sha256": "b204dc85a9fd17aa401600c7b178572b788e73e3231276ca6ffa59c0b7e3d302",
+      "protocol": "fixed-source-v1",
       "crop_origin_yx": [
         63.0,
         64.0
@@ -101,6 +105,7 @@
       "time": 250,
       "source": "outputs/eval-preparation-20260913/xv/causal_extended/coupled.npz",
       "source_sha256": "b204dc85a9fd17aa401600c7b178572b788e73e3231276ca6ffa59c0b7e3d302",
+      "protocol": "fixed-source-v1",
       "crop_origin_yx": [
         63.0,
         64.0

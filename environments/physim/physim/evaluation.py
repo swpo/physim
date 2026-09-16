@@ -5,7 +5,7 @@ Submitted code runs only in Docker. Forecasts are frozen before truth arrays loa
 
 import json
 from copy import deepcopy
-from dataclasses import replace
+from dataclasses import asdict, replace
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -14,7 +14,7 @@ import numpy as np
 from . import blobround6_eval as E
 from .bundles import Bundle, BundleError, identified, load_arrays
 from .bundles import digest as file_digest
-from .sandbox import IMAGE, Sandbox, SandboxError
+from .sandbox import IMAGE, ExecutionLimits, Sandbox, SandboxError
 from .sandbox import docker as docker
 
 LIMITS = replace(E.DEFAULT_LIMITS, max_horizon_tu=50.0)
@@ -89,7 +89,7 @@ def public_validation_cases(protocol=E.R6.APPARATUS_PROTOCOL):
     return cases
 
 
-def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER):
+def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER, execution_limits=None):
     """Run the public v5 gate; model code executes only inside Sandbox."""
     cases = public_validation_cases(roster.protocol)
     report = dict(
@@ -102,7 +102,10 @@ def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER):
         scope="Public execution/interface checks only; no physical accuracy evaluation.",
         public_roster=dict(n_ports=roster.n_ports, device_slots=list(roster.device_slots), protocol=roster.protocol),
     )
-    box = Sandbox(observations, artifact=artifact)
+    options = {} if execution_limits is None else {"limits": execution_limits}
+    box = Sandbox(observations, artifact=artifact, **options)
+    if execution_limits is not None:
+        report["execution_limits"] = asdict(execution_limits)
     baseline = None
     try:
         for case in cases:
@@ -264,7 +267,7 @@ def _forecast_suite(bundle, output, predict, *, members, predictor):
                 )
             )
         except Exception as exc:
-            failures.append(dict(case_id=case["id"], error=str(exc)[:3000]))
+            failures.append(dict(case_id=case["id"], error_type=type(exc).__name__, error=str(exc)[:3000]))
     dump(
         forecast_dir / "manifest.json",
         dict(
@@ -280,9 +283,10 @@ def _forecast_suite(bundle, output, predict, *, members, predictor):
     return score_frozen(bundle, output, saved, failures, members=members, predictor=predictor)
 
 
-def _snapshot_inputs(source, target, *, observations=False):
+def _snapshot_inputs(source, target, *, observations=False, limits=None):
     """Freeze bounded public input files once for the entire evaluation."""
     source, target = Path(source).resolve(), Path(target)
+    limits = limits or ExecutionLimits()
     if not source.is_dir():
         raise SandboxError("public input directory is missing")
     target.mkdir()
@@ -292,7 +296,8 @@ def _snapshot_inputs(source, target, *, observations=False):
             raise SandboxError("public artifact symlinks are forbidden")
         if not p.is_file() or (observations and (p.parent != source or p.suffix != ".npz")):
             continue
-        if len(rows) >= (100 if observations else 2048):
+        # Host-generated observations must not impose a hidden experiment budget.
+        if not observations and len(rows) >= 2048:
             raise SandboxError("public input file count exceeds cap")
         relative = p.relative_to(source)
         dest = target / relative
@@ -302,14 +307,16 @@ def _snapshot_inputs(source, target, *, observations=False):
             for block in iter(lambda: src.read(1024 * 1024), b""):
                 size += len(block)
                 total += len(block)
-                if size > 20 * 1024 * 1024 or total > (2000 if observations else 64) * 1024 * 1024:
+                if size > limits.file_mib * 1024 * 1024 or (
+                    not observations and total > limits.artifact_mib * 1024 * 1024
+                ):
                     raise SandboxError("public input byte cap exceeded")
                 dst.write(block)
         rows.append(dict(path=relative.as_posix(), sha256=file_digest(dest)))
     return rows
 
 
-def grade(artifact, observations, output, *, bundle, members=64, run_context=None):
+def grade(artifact, observations, output, *, bundle, members=64, run_context=None, execution_limits=None):
     """Freeze public inputs, then grade submitted code exclusively in Docker."""
     import tempfile
 
@@ -321,12 +328,16 @@ def grade(artifact, observations, output, *, bundle, members=64, run_context=Non
             kind="submitted-artifact",
             image=IMAGE,
             run_context=run_context,
-            files=_snapshot_inputs(artifact, root / "artifact"),
-            observations=_snapshot_inputs(observations, root / "observations", observations=True),
+            execution_limits=asdict(execution_limits) if execution_limits is not None else None,
+            files=_snapshot_inputs(artifact, root / "artifact", limits=execution_limits),
+            observations=_snapshot_inputs(
+                observations, root / "observations", observations=True, limits=execution_limits
+            ),
         )
 
         def predict(case, count, seed):
-            box = Sandbox(root / "observations", artifact=root / "artifact")
+            options = {} if execution_limits is None else {"limits": execution_limits}
+            box = Sandbox(root / "observations", artifact=root / "artifact", **options)
             try:
                 return read_prediction(
                     box, case["actions"], case["queries"], members=count, seed=seed, roster=bundle.roster

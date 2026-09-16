@@ -8,9 +8,10 @@ arbitrary genomes.
 The development recipe now writes `centered-pulse-v2` apparatus and explicit
 `device` injection commands. Existing published BF/XV evidence uses
 `fixed-source-v1`; its saved preparations retain that behavior when loaded.
-The updated apparatus still needs fresh science, controls, truth and rollouts.
-These reruns are deferred until the documentation review is complete; see the
-[apparatus update plan](../../docs_source/APPARATUS_UPDATE.md).
+Fresh science, controls, truth and model rollouts are being collected under the
+[authorized campaign plan](../../handoff/evaluation_campaign_20260916/PLAN.md).
+Treat the bundle's stored protocol and identities as authoritative when
+reproducing either preparation.
 
 1. **Simulate afresh and preserve the origin.** Inspect full activator and channel
    fields with the current phenomenology. Keep initialization, seed, numerical
@@ -32,8 +33,10 @@ These reruns are deferred until the documentation review is complete; see the
    controls separately from agent-accessible actions. BF removes its bilinear
    trail feedback; XV removes cross-drive source weights. Do not claim that a
    model knows these mechanisms merely because its predictor scores well.
-5. **Freeze the suite before grading truth.** These suites have 11 programs,
-   four physically scaled score groups, a 50-tu horizon and 64 forecast members.
+5. **Freeze the suite before grading truth.** The centered BF/XV suites have
+   15 programs, four physically scaled score groups, a 50-tu horizon and 64
+   forecast members. Four programs explicitly test source/movement ordering,
+   independent devices and movement during an earlier pulse.
    Generate two new truths per case with seeds separate from development and
    diagnostic forecasts. Changing the suite or preparation creates a new bundle.
 6. **Check score meaning and the actual environment.** Compare independent native
@@ -82,8 +85,27 @@ uv run python generators/physim/validate_evaluation.py --source outputs/bf-new
 For XV use `--world xv` and `xv_feedback_check.py`; its optional `--horizon 250`
 extends the mechanism control beyond the 50-tu agent contract. The builder
 uses three CPU workers by default. Full science and truth generation takes
-minutes; no GPU is required. Inspect observations and controls before treating
+tens of minutes, depending on world and CPU; no GPU is required. Inspect observations and controls before treating
 a replay as scientific validation of a new preparation.
+
+For p4g2_044, start from its immutable historical evaluation bundle:
+
+```sh
+uv run python generators/physim/prepare_centered_reference.py \
+  --source PATH_TO_ORIGINAL_P4_BUNDLE --output outputs/p4-centered
+uv run python generators/physim/build_evaluation_bundle.py \
+  --source outputs/p4-centered --output outputs/p4-centered/bundle
+uv run python generators/physim/validate_evaluation.py --source outputs/p4-centered
+```
+
+This copies the original world and prepared fields, replaces the fixed source
+with centered sources, and re-simulates all 19 programs. It carries over the
+original 15 programs' score selectors and adds the same four apparatus programs
+using the first case's queries and groups. It never reuses historical truths.
+The p4 feedback diagnostic removes channel-to-activator feedback from channels
+driven by multiple activators, preserving channel production, initial fields,
+and future-noise seeds. This differs from BF's bilinear-term ablation and XV's
+cross-drive ablation; none is an agent-accessible intervention.
 
 After building the agent and predictor images described in the environment README,
 run a bounded model smoke against the new local bundle:
@@ -121,7 +143,9 @@ Export never executes archived Python. The exported recipe includes its precise
 input fields and source versions; replay creates new data files. The exported
 bundle preserves the original bytes and identity. The first `p4g2_044` bundle is
 an export of historical prepared fields and retained truths: use its published
-bundle for exact reproduction. BF/XV are the portable fresh-truth recipes here.
+bundle for exact reproduction. `prepare_centered_reference.py` is the separate
+fresh-truth migration recipe; registration preserves the original bundle as its
+replay input, including the original case/group definitions.
 
 `build_evaluation_bundle.py --resume` only resumes an incomplete build whose
 preparation and frozen suite are unchanged. It reuses already written truth and

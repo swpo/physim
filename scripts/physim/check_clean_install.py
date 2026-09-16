@@ -1,4 +1,4 @@
-"""Build/install wheels and reproduce the reference outside the source checkout.
+"""Build/install the environment wheel and reproduce the reference outside the checkout.
 
 Requires uv and an available Python >=3.12. Uses PyPI for declared dependencies,
 never a model API. Leaves an inspectable clean install and reports in --workdir.
@@ -18,8 +18,10 @@ ROOT = Path(__file__).resolve().parents[2]
 def run(args, cwd, env):
     print("Running: " + " ".join(str(x) for x in args[:3]), flush=True)
     result = subprocess.run(
-        [str(x) for x in args], cwd=cwd, env=env, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+        [str(x) for x in args], cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
     )
+    if result.returncode:
+        raise RuntimeError(f"Command failed: {(result.stderr or result.stdout)[-4000:]}")
     if result.stderr:
         print(result.stderr[-2000:], file=sys.stderr)
     return result.stdout
@@ -45,11 +47,12 @@ def main():
     if not uv:
         raise RuntimeError("uv is required")
     wheels = directory / "wheels"
-    for package in ("blobkit", "physim"):
-        run([uv, "build", "--package", package, "--wheel", "--out-dir", wheels], ROOT, env)
+    run([uv, "build", "--package", "physim", "--wheel", "--out-dir", wheels], ROOT, env)
     run([uv, "venv", "--python", sys.executable, directory / "venv"], directory, env)
     python = directory / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-    packages = list(wheels.glob("*.whl"))
+    # Resolve the package's declared public Blobkit dependency, just as a fresh
+    # user install does; do not override its URL with a second local wheel.
+    packages = list(wheels.glob("physim-*.whl"))
     run([uv, "pip", "install", "--python", python, *packages, "numpy==2.5.2", "scipy==1.18.0"], directory, env)
     shutil.copytree(args.bundle.resolve(), directory / "bundle")
     installed = json.loads(
@@ -101,6 +104,9 @@ print(json.dumps(dict(physim=physim.__file__,blobkit=blobkit.__file__,versions={
         actions=[dict(t=0, kind="inject", port=0, amp=0.5, dur=0.04)],
         queries=[dict(sensor=s, t=[0, 0.02, 0.06]) for s in ("device0", "device1", "global")],
     )
+    apparatus = json.loads((directory / "bundle/apparatus.json").read_text())
+    if apparatus.get("protocol") == "centered-pulse-v2":
+        request["actions"][0]["device"] = 0
     (directory / "request.json").write_text(json.dumps(request))
     experiment = json.loads(
         run(
