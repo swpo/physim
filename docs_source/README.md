@@ -11,15 +11,28 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory docs
 
 Edit `pages/*.html`, `template.html`, and `site.css` here, then rebuild. Page
 metadata and the shared navigation are in `scripts/build_docs.py`. Its `MAIN`
-sequence drives the header and previous/next links. Technical detail pages are
-linked from the relevant main page; `DETAIL_PARENTS` supplies their breadcrumb
-and return link. There is no separate reference menu. The HTML
-fragments are the sole content source; `docs/*.html` is generated output.
+sequence drives the header and previous/next links. The seven chapters read in order:
+Overview → Worlds → Experiment & predict → Evaluation → Results → Reproduce → Contribute.
 
-`worlds.json` supplies the world card and downloadable coverage metadata. It is a
-documentation catalog, not the proposed release manifest. The immutable genome snapshot in `data/` records its published HF source. Its
-copy in `docs/data/` is checked against that snapshot and the catalog hash, so a
-clean documentation build does not require an environment source fixture.
+Worlds owns field equations, numerics, structures, physical examples, and generation.
+Experiment owns preparation, apparatus, and the full action/query/prediction contract.
+Evaluation owns suite design, scoring, validation, and eval-ready status. Reproduce
+owns the registry inventory, identities, bundle format, and runnable instructions.
+Contribution requirements come last. Keep essential explanations visible and avoid
+repeating them across chapters; link to the section that owns each detail.
+
+The HTML fragments are the sole content source; `docs/*.html` is generated output.
+The former fields, generation, simulator, API, and registry pages are compatibility
+redirects into these chapters, declared in `REDIRECTS`. They supply a default section
+when no fragment is present and preserve old explicit fragments (such as API `#time`).
+Keep the corresponding anchors when revising a chapter. Update current internal links
+to the new destinations instead of routing them through redirects.
+
+`worlds.json` supplies the evaluation preparation table and downloadable coverage
+metadata. It is a documentation catalog, not a release manifest. The immutable genome
+snapshot in `data/` records its published HF source. Its copy in `docs/data/` is checked
+against that snapshot and the catalog hash, so a clean documentation build does not
+require an environment source fixture. `registry.json` supplies the registry inventory.
 
 `results.json` is a public, bounded snapshot of saved controls and two native
 model-run profiles. Refresh deliberately with `python3 scripts/export_docs_evidence.py`;

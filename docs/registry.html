@@ -1,56 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Verified local world, preparation, suite, and run artifacts, with reference release status.">
-<title>World registry · Physim</title>
-<link rel="stylesheet" href="site.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
-<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html" class="section-active">Worlds</a><a href="experiment.html">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
-<div class="layout">
-<main id="main"><p class="breadcrumb"><a href="worlds.html">Worlds</a><span aria-hidden="true"> / </span><span>World registry</span></p><h1>A registry of reproducible worlds</h1><p class="lead">The registry keeps genomes, generation recipes, and run history together with prepared evaluation worlds and their evidence.</p>
-<div class="note"><p><strong>Published and verified.</strong> <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">Download the world registry and three evaluation preparations on Hugging Face</a>. The snapshot includes all 24 records and their available provenance. Anonymous download, file integrity, offline loading, and native reference checks passed. Code is Apache-2.0 and data are CC-BY-4.0.</p></div>
-<p>The distribution split is GitHub for code, schemas, and documentation, and a Hugging Face dataset repository for world bundles and a browsable catalog. Bundle identity and offline loading are independent of the host.</p>
-<h2>What is in the registry?</h2>
-<p><strong>24 world records · 19 distinct genomes · 3 eval-ready.</strong> Separate harvests can refer to the same genome.</p><div class="table-scroll"><table><caption>Current registry contents</caption><thead><tr><th scope="col">Status</th><th scope="col">Records</th><th scope="col">Names</th></tr></thead><tbody><tr><td>Eval-ready</td><td>3</td><td><code>bf_trail_lab</code>, <code>p4g2_044</code>, <code>xv_rotor_lab</code></td></tr><tr><td>Preserved</td><td>21</td><td><code>bf</code>, <code>coex</code>, <code>ds3_014</code>, <code>ds3_017</code>, <code>ds6_000</code>, <code>engine_10748</code>, <code>g0_jit_11</code>, <code>m0</code>, <code>m4</code>, <code>mv3</code>, <code>pred</code>, <code>rail_111_17</code>, <code>s2_118_41</code>, <code>s2_128_26</code>, <code>small-mass-search/g0/0</code>, <code>small-mass-search/g0/1</code>, <code>small-mass-search/g1/0</code>, <code>small-mass-search/g1/1</code>, <code>small-mass-search/g2/0</code>, <code>small-mass-search/g2/1</code>, <code>xv</code></td></tr></tbody></table></div>
-<p><strong>Preserved</strong> means the world and its available provenance are stored. Any world can be preserved, including simple controls and example harvests.</p>
-<p><strong>Eval-ready</strong> means an exact preparation, apparatus, prediction suite, truth data, and validation evidence are linked and ready to use with the evaluation environment. This label applies to that preparation and suite; it does not imply public release or suitability for every task.</p>
-<p>The registry records what exists. Scientific observations and generation history stay with their evidence; exploratory shortlists and future plans are kept outside the registry.</p>
-<h2>Generation history</h2>
-<p>The prepared evaluation records below are linked to a generation registry. That registry also contains genome, recipe, generation-run, candidate, checkpoint, and harvested-world records. A recipe can produce many runs and a run can produce many worlds; shared content is stored once by hash.</p>
-<p>Recipe records retain Python source, initial genomes, settings, callback state, and implementation versions. Candidate records retain parents, simulation seeds, metrics, and selection evidence. Registry reads never execute archived code. Explicit recipe export and execution support reproduction and extension.</p>
-<p>The current catalog contains 24 world records describing 19 distinct genomes: 21 preserved records and three eval-ready preparations. It includes the 15 packaged worlds, the <code>p4g2_044</code> reference, and a small executable search example with recorded provenance. Missing historical settings or checkpoints are marked partial. A harvested genome needs its own preparation and validation before becoming an evaluation task.</p>
-<p>The <code>bf_trail_lab</code> and <code>xv_rotor_lab</code> preparations are also eval-ready. Each preserves 11 prediction programs, independent grading truth, fresh scientific observations, mechanism controls, and a completed model pilot. BF uses four anonymous ports and XV six. Their complete bundles and preparation recipes can be reconstructed from registry artifacts.</p>
-<p><a href="data/registry.json">Browse generation recipes, runs, and world records</a> · <a href="generation.html">Run and customize generation</a></p>
-<h2>Four evaluation identities</h2>
-<div class="table-scroll"><table><thead><tr><th>Object</th><th>What it fixes</th></tr></thead><tbody><tr><td>World</td><td>Genome, simulator revision, and numerical profile.</td></tr><tr><td>Preparation</td><td>Exact initial fields, apparatus, source, time origin, and noise policy.</td></tr><tr><td>Evaluation suite</td><td>Preparation reference, API contract, programs, score groups/scales, truth set, and aggregation.</td></tr><tr><td>Run</td><td>Predictor artifact, observations, model/harness configuration, budgets, validity, and scores.</td></tr></tbody></table></div>
-<p>Human-readable names help browsing. Content hashes and exact code/data revisions make results reproducible. A changed sensor layout, prepared state, or score definition must produce a different corresponding identity. A mutable “latest” label is insufficient for a reported result.</p>
-<h2>The first reference bundle</h2>
-<pre><code>bundles/p4g2_044/&lt;revision&gt;/
-  manifest.json       # identities, source revisions, files and hashes
-  world.json          # genome and numerical profile
-  preparation.npz     # exact initial fields
-  apparatus.json      # probes, source and control mapping
-  suite.json          # programs, contract, groups and scales
-  truth/              # independent reference realizations
-  checks.json         # reproduction and validation evidence
-</code></pre>
-<p>The original reference bundle contains <strong>3,732,420 bytes</strong> of payloads plus its manifest. The simulation-only profile uses 2,751,237 bytes. The original field hash and all 15 retained truth files are preserved; the historical 795 MB cache is unnecessary after export.</p>
-<p>The loader requires a full repository commit, downloads only the requested profile with byte caps, verifies every hash, and checks array headers before allocation. Verified cached bundles work with <code>--offline</code>. Data bundles supply no executable Python.</p>
-<h2>Reference material and held-out evaluation</h2>
-<p>The first bundle is intended as an openly reproducible reference example. Results on its disclosed world and suite should be labeled as development results. Future claims about unfamiliar systems need distinct, appropriately held-out worlds or preparations.</p>
-<p>Unreleased challenge preparations and truth belong in a separate access-controlled grader store. The evaluated agent receives its contract, observations, and own artifact; the trusted host resolves the physical data.</p>
-<h2>Reproduction and publication</h2>
-<p>The original reference reproduces the saved persistence score exactly, passes all seven public interface checks, and matches the original simulator bit for bit on short no-action, injection, and probe-adjustment runs. The clean installation also performs a new native experiment without the research tree or model credentials.</p>
-<p>Evaluation configs pin data revision <code>dcd6abd5eae76a47f326c70518315d2d1e101d86</code>. Later documentation updates add installation and contribution guidance while preserving all scientific payloads and catalog rows. All three preparations pass download, offline-cache, reference-score, and short native simulation checks. The <a href="https://github.com/swpo/physim/releases/tag/physim-v0.12.2">public Physim release</a> includes checksummed packages, Docker build instructions, and configs selecting each preparation explicitly.</p>
-<p>The <a href="data/worlds.json">catalog metadata</a> records the published revision, verified bundle identities, and capabilities. Additional worlds need their own preparation and evidence.</p>
-<p><a href="contribute.html">What a contributed world should provide</a></p>
-<p class="return-link"><a href="worlds.html">← Back to Worlds</a></p></main>
-</div>
-<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
-</body>
-</html>
+<meta name="robots" content="noindex"><title>Page moved · Physim</title>
+<link rel="stylesheet" href="./site.css"></head><body>
+<main style="margin:3rem auto;padding:1rem"><h1>Page moved</h1>
+<p><a href="try.html#registry">Continue to this page</a>.</p>
+<p><a href="./index.html">Current Physim documentation</a></p></main>
+<script>window.location.replace("try.html" + (window.location.hash || "#registry"));</script>
+</body></html>

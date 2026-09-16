@@ -7,7 +7,7 @@ from collections import Counter
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 
-from build_docs import DETAIL_PARENTS, DOCS, MAIN, PAGES, ROOT, SOURCE
+from build_docs import DOCS, MAIN, PAGES, REDIRECTS, ROOT, SOURCE, redirect
 
 
 class Page(HTMLParser):
@@ -91,18 +91,18 @@ def check():
                 errors.append(f"{path.name}: missing previous page in main flow")
             if index + 1 < len(MAIN) and f'rel="next" href="{MAIN[index + 1]}.html"' not in source:
                 errors.append(f"{path.name}: missing next page in main flow")
-        if key in DETAIL_PARENTS:
-            parent = DETAIL_PARENTS[key]
-            if f"{key}.html" not in pages[(DOCS / f"{parent}.html").resolve()].links:
-                errors.append(f"{path.name}: not discoverable from its parent page")
-            if f"{parent}.html" not in page.links or 'class="breadcrumb"' not in source:
-                errors.append(f"{path.name}: missing context/return path")
+    for old, target in REDIRECTS.items():
+        if (DOCS / old).read_text() != redirect(old, target):
+            errors.append(f"{old}: stale chapter redirect")
+        for key in PAGES:
+            if any(urlsplit(link).path == old for link in pages[(DOCS / f"{key}.html").resolve()].links):
+                errors.append(f"{key}.html: link directly to the new section instead of {old}")
     catalog = json.loads((DOCS / "data/worlds.json").read_text())
     for world in catalog["worlds"]:
         for path in (DOCS / world["genome"]["file"], ROOT / world["genome"]["source"]):
             if hashlib.sha256(path.read_bytes()).hexdigest() != world["genome"]["sha256"]:
                 errors.append(f"{path}: genome/catalog hash mismatch")
-    for name in ("worlds.json", "results.json"):
+    for name in ("worlds.json", "results.json", "registry.json"):
         if (DOCS / "data" / name).read_bytes() != (SOURCE / name).read_bytes():
             errors.append(f"{name}: generated snapshot is stale")
     for path in (SOURCE / "examples").iterdir():

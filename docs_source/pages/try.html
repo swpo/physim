@@ -1,6 +1,27 @@
-<p class="lead">Start with a small, runnable example of the prediction interface.</p>
+<p class="lead">Reproduction connects the code, physical data, and experimental record at exact versions.</p>
+<p>GitHub hosts code and documentation. The <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">Hugging Face dataset</a> holds the world registry and self-contained laboratory bundles. Code is Apache-2.0; data are CC-BY-4.0. The published packages and bundles support use without the historical research checkout.</p>
+<h2 id="registry">The registry and its contents</h2>
+{{registry_counts}}
+<p>The two statuses are defined in <a href="scoring.html#prepared-worlds">Evaluation</a>. World records link their available generation recipes, runs, candidate measurements, checkpoints, and harvested artifacts. Shared content is stored once by hash. Missing historical settings or checkpoints are marked partial; future plans are kept outside the registry.</p>
+<p>Recipe records retain Python source, starting genomes, settings, callback state, and implementation versions. Candidate records retain parentage, seeds, metrics, and selection evidence. Reading the registry does not execute archived code; reproducing a generation run requires explicitly exporting and running its recipe.</p>
+<p><a href="data/registry.json">Download generation registry metadata</a> · <a href="data/worlds.json">Download laboratory bundle metadata</a></p>
+<h2 id="identities">What a result must identify</h2>
+<div class="table-scroll"><table><thead><tr><th scope="col">Object</th><th scope="col">What it fixes</th></tr></thead><tbody><tr><td>World</td><td>Genome, simulator revision, and numerical profile.</td></tr><tr><td>Preparation</td><td>Exact initial fields, apparatus, source, time origin, and noise policy.</td></tr><tr><td>Evaluation suite</td><td>Preparation reference, API contract, programs, score groups/scales, truth set, and aggregation.</td></tr><tr><td>Run</td><td>Predictor artifact, observations, model/harness configuration, budgets, validity, and scores.</td></tr></tbody></table></div>
+<p>Human-readable names aid browsing; hashes and exact code/data revisions identify what was used. Changing a sensor layout, starting state, or score definition creates a new corresponding identity. A mutable “latest” label is insufficient for reporting a result.</p>
+<h2 id="bundles">Laboratory bundles</h2>
+<pre><code>bundles/&lt;preparation-name&gt;/&lt;revision&gt;/
+  manifest.json       # identities, numerical profile, source versions and hashes
+  world.json          # field genome
+  preparation.npz     # exact initial fields
+  apparatus.json      # probes, source and control mapping
+  suite.json          # programs, contract, score groups and scales
+  truth/              # independent reference realizations
+  checks.json         # reproduction and validation evidence</code></pre>
+<p>The loader requires a full dataset commit, downloads only the selected profile within byte caps, verifies hashes, and checks array headers before allocation. Verified cached bundles work with <code>--offline</code>. Bundles contain data rather than executable Python.</p>
+<p>Evaluation configs pin scientific data revision <code>dcd6abd5eae76a47f326c70518315d2d1e101d86</code>. Later dataset documentation updates preserve these payloads and catalog rows. All three preparations passed anonymous download, offline loading, reference-score reproduction, and short native simulation checks. Native reproduction pins NumPy 2.5.2 and SciPy 1.18.0 and verifies simulation source hashes.</p>
+<h2 id="interface-example">Start with the prediction interface</h2>
 <p>This example returns zero for every requested reading. It demonstrates the exact array layout without a model API key, simulation cache, or running laboratory. It does not measure predictive accuracy.</p>
-<h2>Run from a checkout</h2>
+<h3>Run from a checkout</h3>
 <pre><code>git clone https://github.com/swpo/physim.git
 cd physim
 python3 -m venv .venv-docs
@@ -12,11 +33,11 @@ python3 -m venv .venv-docs
 <pre><code>(64, 3, 12, 13)  # device0: 3 times, 12 ports, 13 slots
 (64, 2, 12, 19)  # device1: 2 times, 12 ports, 19 slots
 (64, 1, 12, 2)   # global:  1 time,  12 ports,  2 statistics</code></pre>
-<h2>The predictor</h2>
+<h3>The predictor</h3>
 <pre><code>{{predictor_code}}</code></pre>
-<p>Replace the zero estimate with a model learned from experimental observations. Follow the <a href="api.html">prediction API</a>: keep the query order, full output shapes, finite values, and coherent trajectory semantics. The <code>seed</code> argument may be unused by a deterministic predictor.</p>
-<h2>Reproduce the physical reference locally</h2>
-<p>The packaged runtime now loads a self-contained bundle of the prepared fields, apparatus, 15 programs, and retained truths. The runtime has passed a clean installation check. Code is Apache-2.0 and data are CC-BY-4.0. <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/tree/dcd6abd5eae76a47f326c70518315d2d1e101d86">The world dataset is now published</a>, including the original reference, BF, and XV preparations. Anonymous downloads and offline reference checks are verified.</p>
+<p>Replace the zero estimate with a model learned from experimental observations. Follow the <a href="experiment.html#prediction">prediction contract</a>: keep the query order, full output shapes, finite values, and coherent trajectory semantics. The <code>seed</code> argument may be unused by a deterministic predictor.</p>
+<h2 id="reference">Reproduce a reference score locally</h2>
+<p>The original <code>p4g2_044</code> bundle supplies its saved fields, apparatus, 15 programs, and retained truths. The demo below uses these retained measurements to check the interface and scoring without advancing a simulation.</p>
 <p>From a checkout with Python 3.12, install the workspace and fetch the original reference:</p>
 <pre><code>uv sync --locked
 uv run physim catalog --repo seanpohorence/physim-worlds \
@@ -30,9 +51,13 @@ uv run physim inspect --bundle /path/printed/by/fetch
 uv run physim demo --bundle /path/printed/by/fetch --output outputs/reference-demo</code></pre>
 <p>The demo checks seven interface cases and reproduces the persistence predictor’s 15-case score of <strong>0.8271209896216252</strong>, using four forecast members and two retained truths per case. It makes no model API calls and advances no new simulation. Model results use 64 forecast members.</p>
 <p>To run new native physics explicitly, use <code>physim experiment</code> with <code>scripts/physim/examples/short-experiment.json</code>. To evaluate submitted Python, build the versioned Docker sandbox and use <code>physim validate</code> and <code>physim grade</code>. The repository README contains the complete commands.</p>
-<h2>Choose a world for a model evaluation</h2>
+<h2 id="model-evaluation">Run a model evaluation</h2>
 <p>The environment and portable preparation workflows are being contributed to Prime Intellect in <a href="https://github.com/PrimeIntellect-ai/residency-environments/pull/22">draft PR #22</a>. During review, the released package and this checkout remain available. Blobkit, exploratory research, and this documentation stay in the personal repository.</p>
-<p>The environment requires an explicit preparation. It does not scan the registry or run all eval-ready worlds by default. After building the Docker images and configuring a model provider, select one of <code>configs/physim/p4g2_044.toml</code>, <code>bf_trail_lab.toml</code>, or <code>xv_rotor_lab.toml</code>. Missing selection is an error.</p>
+<p>After building the Docker images and configuring a model provider, select a preparation explicitly with <code>configs/physim/p4g2_044.toml</code>, <code>configs/physim/bf_trail_lab.toml</code>, or <code>configs/physim/xv_rotor_lab.toml</code>. For example:</p>
 <pre><code>uv run eval @ configs/physim/bf_trail_lab.toml --model YOUR_MODEL_ID</code></pre>
 <p>The supplied configs allow 1,000 experiments, 50,000 integrated simulation time units, 1,024 model turns, and a 24-hour rollout timeout. They make paid model calls. Longer investigations can raise the experiment, model, and execution limits together; the physical horizon of each experiment remains 50 time units. See the <a href="https://github.com/swpo/physim/tree/main/configs/physim">configuration guide</a> and <a href="https://github.com/swpo/physim/releases/tag/physim-v0.12.2">standalone release</a> for installation and runtime setup.</p>
-<p><a href="registry.html">Bundle contents, identities, and release status</a></p>
+<h2 id="generation-example">Run a world-generation recipe</h2>
+<p>After <code>uv sync --locked</code>, a small CPU recipe exercises Blobkit's simulation, search, and registry workflow:</p>
+<pre><code>uv run blobkit generate generators/physim/recipes/small_search.py --registry outputs/small-search
+uv run blobkit registry verify outputs/small-search</code></pre>
+<p>Its short-run mass metric demonstrates the machinery; it is not a measure of scientific interest. A recipe supplies <code>build_recipe()</code> returning a <code>SearchRecipe</code>, with customizable evaluation, scoring, proposal, selection, and harvest functions. Checkpoints allow a run to pause and resume with recorded state. The <a href="https://github.com/swpo/physim/tree/main/packages/blobkit">Blobkit package documentation</a> describes the interfaces and optional backends.</p>

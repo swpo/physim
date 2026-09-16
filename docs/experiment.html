@@ -3,19 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Explore a physical system, validate a predictor, freeze the artifact, and forecast new experimental programs.">
+<meta name="description" content="Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.">
 <title>Experiment &amp; predict · Physim</title>
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
-<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html" aria-current="page">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html" aria-current="page">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="results.html">Results</a><a href="try.html">Reproduce</a><a href="contribute.html">Contribute</a></nav></header>
 <div class="layout">
-<main id="main"><p class="eyebrow">Experiment &amp; predict</p><h1>Experiments become predictions</h1><p class="lead">Investigate through experiments. Submit a function that predicts new experiments.</p>
-<p>The agent gets an anonymous instrument interface, a Python workspace, and declared resource budgets. It chooses measurements and interventions, analyzes the resulting arrays, and saves <code>predictor.py</code> with any learned parameters or data.</p>
-<h2>One program, from a fixed starting point</h2>
-<p>An experiment specifies all actions and requested readings in advance. Timestamps are absolute from the prepared start. Starting another experiment restores that same physical state; ongoing noise differs independently between trials.</p>
+<main id="main"><p class="eyebrow">Experiment &amp; predict</p><h1>Experiments become predictions</h1><p class="lead">A laboratory makes a world repeatable and observable. An agent uses its instruments to learn a predictive model.</p>
+<p>The investigator receives an anonymous instrument interface, a Python workspace, and declared resource budgets. It chooses interventions and measurements, analyzes the returned arrays, and writes a function that predicts the outcomes of further experiments.</p>
+<div class="contents"><span>In this chapter</span><ol><li><a href="#preparation">Preparing a laboratory</a></li><li><a href="#apparatus">Measuring and perturbing fields</a></li><li><a href="#actions">Specifying an experiment</a></li><li><a href="#prediction">Returning possible trajectories</a></li><li><a href="#submission">Exploration and submission</a></li></ol></div>
+<h2 id="preparation">Preparing a laboratory</h2>
+<p>The field equations allow many initial conditions. A <em>preparation</em> fixes one exact starting field array, a source, probe arrangements, a time origin, and a noise policy. These belong to the laboratory built around a world; a single world can support several preparations.</p>
+<p>Each experiment restores the saved fields and instrument poses, then draws fresh ongoing noise. It does not restart from an empty domain or a newly randomized collection of spots. This makes repeated treatments comparable while retaining uncertainty in their outcomes. Public time zero is the beginning of this continuation, regardless of how long it took to produce the starting state.</p>
+<p>The original <code>p4g2_044</code> preparation saves fields at simulation time 1700. The BF and XV laboratories use endpoints of fresh 2500-unit simulations: BF from its selected initial realization and XV from a prepared pair without an initial kick. Their numerical settings are those described in <a href="worlds.html#numerics">Worlds</a>. A research movie can show another portion of a simulation and should not be interpreted as a trace from one of these experiments.</p>
+<h2 id="apparatus">Measuring and perturbing fields</h2>
+<p>Every field is exposed through an anonymous numbered <em>port</em>. A port can therefore correspond to an activator or a feedback channel; its physical identity is hidden from the agent. The current laboratories have twelve ports for <code>p4g2_044</code>, four for BF, and six for XV.</p>
+<p>Two movable probe arrays sample every port by periodic bilinear interpolation. One has 13 positions in a square arrangement and the other 19 in a hexagonal arrangement. A global sensor reports each field's spatial mean and population variance. The agent receives numbered slots, without spatial coordinates, field labels, or the arrays' orientation and mapping.</p>
+<p>A fixed source adds a localized Gaussian pulse to one selected field. Its spatial standard deviation is 2 units; its amplitude and duration are controllable. Probe adjustment has three controls: two translate the device through its hidden motion basis, and one changes its dilation, bounded between 0.5 and 3. Moving a probe changes what it reads without moving the source or disturbing the fields.</p>
+<p>The agent learns through these measurements. It is not given the genome, equations, complete spatial fields, apparatus geometry, or private grading programs and truth. The full physical description remains available to the trusted simulator and to researchers reproducing the laboratory.</p>
+<h2 id="actions">Specifying an experiment</h2>
+<p>One experiment fixes all actions and requested readings in advance. Timestamps are absolute from the prepared start. The agent can adapt between experiments, but actions cannot react to observations during a single program.</p>
 <pre><code>actions = [
     {"t": 1.0, "kind": "inject", "port": 2, "amp": 0.7, "dur": 4.0},
     {"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]},
@@ -25,20 +35,35 @@ queries = [
     {"sensor": "device1", "t": [12, 20]},
     {"sensor": "global", "t": [20]},
 ]</code></pre>
-<p>This program injects through port 2 from time 1 to time 5, moves device 1 at time 2, and requests three sets of measurements. The source remains fixed when the probe moves. Actions may depend on earlier experiments, but cannot adapt to readings during this single program. The <a href="api.html">prediction API</a> specifies the exact action ranges, timing rules, and output contract.</p>
-<h2>Explore, check, submit</h2>
-<div class="table-scroll"><table><thead><tr><th>Operation</th><th>Purpose</th></tr></thead><tbody><tr><td><code>experiment(actions, queries)</code></td><td>Run one physical realization and receive the requested arrays.</td></tr><tr><td><code>usage()</code></td><td>Read consumed and remaining experiment resources.</td></tr><tr><td><code>validate()</code></td><td>Check a snapshot of the predictor against public interface requests. This provides no physical-accuracy feedback.</td></tr><tr><td><code>submit()</code></td><td>Check and freeze the predictor and supporting files. Successful submission ends exploration.</td></tr></tbody></table></div>
-<p>The native agent tools expose these operations with a <code>laboratory_</code> prefix. Experiment, model, and execution budgets are specified for each run; they are not properties of the physical world.</p>
-<h2>Predict possible trajectories</h2>
+<p>This program injects through port 2 from time 1 to time 5, moves device 1 at time 2, and requests three sets of measurements. The source remains fixed when the probe moves.</p>
+<ul><li>Injection: port 0 through <code>n_ports − 1</code>, amplitude 0–3, duration greater than zero. The source is active on <code>[t, t + dur)</code>.</li><li>Adjustment: device 0 or 1, three finite controls in <code>[-1, 1]</code>. Pose changes immediately and the adjustment lane is occupied for five time units.</li><li>Start times must be strictly increasing. Two injections cannot overlap. Two adjustments cannot overlap, including adjustments to different devices. An injection and an adjustment may overlap if they start at different times.</li><li>A zero-amplitude injection or zero-effect adjustment still occupies its lane. Adjacent endpoints are allowed.</li></ul>
+<h3 id="time">Time</h3>
+<p>All times are absolute from the prepared start and nonnegative multiples of <code>0.02</code>, with representation tolerance <code>1e-9</code>. The maximum is 50 time units. Every action's entire occupied interval must end by 50, including actions after the last reading.</p>
+<h3 id="event-timing">Event order</h3>
+<p>At an event time, an ending source interval is removed, starting actions take effect, and requested readings are taken. Probe adjustments change pose immediately. Source forcing is then applied before the next reaction, noise, and diffusion update. A source that starts at a reading's timestamp has not yet advanced the fields at that reading.</p>
+<h3 id="queries">Queries and measurement arrays</h3>
+<pre><code>{"sensor": "device0", "t": [0, 8, 12]}</code></pre>
+<p>Times within each query must be strictly increasing without duplicates. The same timestamp may appear in different query objects, and query objects may appear in any order. Preserve their order in the result. A laboratory observation has shape <code>(1, len(t), n_ports, sensor_slots)</code>: one realization, with axes for time, port, and sensor slot. A prediction uses the same layout with multiple possible realizations.</p>
+<h2 id="prediction">Returning possible trajectories</h2>
 <pre><code>def predict(actions, queries, n_samples=64, seed=0):
     # One array per query, in the same order.
     # Shape: (members, requested times, n_ports, sensor slots)
     return {"samples": arrays}</code></pre>
-<p>For the twelve-port reference and the request above with 64 members, return arrays of shapes <code>(64, 3, 12, 13)</code>, <code>(64, 2, 12, 19)</code>, and <code>(64, 1, 12, 2)</code>. A member is one possible trajectory shared across all three arrays. Every value must be finite.</p>
-<p>A deterministic predictor can repeat its estimate in every member. A stochastic predictor can return a non-Gaussian distribution. Repeating the same request with the same predictor seed must reproduce the output. Adding later actions or queries must preserve earlier predictions.</p>
-<h2>Evaluate the frozen artifact</h2>
-<p>The evaluator calls the submitted function on new programs in an isolated runtime without access to the experimental service. Forecasts are finalized before truth observations are loaded for scoring. Predictor seeds determine only the predictor's own sampling; they do not identify the world's noise.</p>
-<p>The score compares distributions of measurements, including their dependence across times and sensor positions. A good result requires useful predictions under the selected interventions and probe movements.</p>
+<p>The function returns exactly this dictionary, with one complete array per query. For the twelve-port laboratory and the example above, 64 members give shapes <code>(64, 3, 12, 13)</code>, <code>(64, 2, 12, 19)</code>, and <code>(64, 1, 12, 2)</code>. Use the selected laboratory's port count when constructing a predictor.</p>
+<div class="table-scroll"><table><thead><tr><th>Sensor</th><th>Slots</th><th>Returned array shape</th></tr></thead><tbody><tr><td><code>device0</code></td><td>13</td><td><code>(n_samples, len(t), n_ports, 13)</code></td></tr><tr><td><code>device1</code></td><td>19</td><td><code>(n_samples, len(t), n_ports, 19)</code></td></tr><tr><td><code>global</code></td><td>2: spatial mean, population variance</td><td><code>(n_samples, len(t), n_ports, 2)</code></td></tr></tbody></table></div>
+<p>Every value must be finite. No implicit broadcasting, missing ports, extra keys, NaNs, or infinities are accepted. Empty queries and time lists are supported with the corresponding empty outputs; scored cases contain observations. Exact keys and numeric types matter: booleans are not numeric IDs.</p>
+<p>Each member represents one possible trajectory. A deterministic predictor may repeat its estimate in every member; a stochastic predictor may express a non-Gaussian distribution.</p>
+<h3 id="samples">Sample semantics</h3>
+<p>A member index represents one coherent trajectory across every time, query, and device in a call. Whole-member permutations leave the score unchanged. Independent shuffling across times or devices changes the joint distribution.</p>
+<p>The same request and predictor seed must reproduce output. Adding future actions or queries must preserve earlier samples. The seed controls only predictor randomness, and the function has no access to experimental or grader seeds.</p>
+<h3 id="limits">Request caps</h3>
+<p>At most 256 predictive members, 128 actions, 32 queries, 256 times per query, 1,024 total query times, 2,000,000 combined prediction/truth scalar outputs, and 100,000,000 pairwise score operations. All caps apply together. The native model evaluation requests 64 members.</p>
+<p>Run profiles separately declare experiment counts, integrated simulation time, model limits, and artifact execution budgets. Public validation checks execution and shape, not forecast accuracy.</p>
+<h2 id="submission">Exploration and submission</h2>
+<div class="table-scroll"><table><thead><tr><th>Operation</th><th>Purpose</th></tr></thead><tbody><tr><td><code>experiment(actions, queries)</code></td><td>Run one physical realization and receive the requested arrays.</td></tr><tr><td><code>usage()</code></td><td>Read consumed and remaining experiment resources.</td></tr><tr><td><code>validate()</code></td><td>Check a snapshot of the predictor against public interface requests. This provides no physical-accuracy feedback.</td></tr><tr><td><code>submit()</code></td><td>Check and freeze the predictor and supporting files. Successful submission ends exploration.</td></tr></tbody></table></div>
+<p>The native agent tools expose these operations with a <code>laboratory_</code> prefix. Experiment, model, and execution budgets are specified for each run; they are not properties of the physical world.</p>
+<p>The predictor and any learned parameters or supporting data are saved in the submitted artifact. The evaluator calls the frozen function on further experimental programs in an isolated runtime, without access to the experimental service. Forecasts are finalized before truth observations are loaded for scoring.</p>
+<p>The next chapter defines how these distributions are scored and how a laboratory becomes an evaluation suite. For implementation, download the <a href="examples/AGENT_SPEC.md">twelve-port example contract</a> or use the <a href="try.html#interface-example">runnable interface example</a>.</p>
 <div class="page-continuation"><a class="previous" rel="prev" href="worlds.html"><span>Previous</span>← Worlds</a><a class="following" rel="next" href="scoring.html"><span>Next</span>Evaluation →</a></div></main>
 </div>
 <footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>

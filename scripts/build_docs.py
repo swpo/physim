@@ -15,39 +15,28 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE, DOCS = ROOT / "docs_source", ROOT / "docs"
 PAGES = {
     "index": ("Overview", "Learning physical systems through experiments", "Overview"),
-    "worlds": ("Worlds", "Blob-field worlds", "Worlds"),
+    "worlds": ("Worlds", "Worlds made of interacting fields", "Worlds"),
     "experiment": ("Experiment & predict", "Experiments become predictions", "Experiment & predict"),
     "scoring": ("Evaluation", "Evaluating a prediction function", "Evaluation"),
-    "try": ("Try it", "Try the prediction interface", "Try it"),
     "results": ("Results", "Evidence and current results", "Results"),
-    "fields": ("Field dynamics", "Structures made of fields", "Reference"),
-    "generation": ("World generation", "Generating worlds", "Reference"),
-    "simulator": ("Simulator & numerics", "Simulator and numerics", "Reference"),
-    "api": ("Prediction API", "Prediction API", "Reference"),
-    "registry": ("World registry", "A registry of reproducible worlds", "Reference"),
+    "try": ("Reproduce", "Reproducing worlds and experiments", "Reproduce"),
     "contribute": ("Contribute", "Contributing to Physim", "Contribute"),
 }
-MAIN = ("index", "worlds", "experiment", "scoring", "try", "results")
-DETAIL_PARENTS = {
-    "fields": "worlds",
-    "generation": "worlds",
-    "simulator": "worlds",
-    "registry": "worlds",
-    "contribute": "worlds",
-    "api": "experiment",
+MAIN = ("index", "worlds", "experiment", "scoring", "results", "try", "contribute")
+REDIRECTS = {
+    "fields.html": "worlds.html#field-model",
+    "generation.html": "worlds.html#generation",
+    "simulator.html": "worlds.html#numerics",
+    "api.html": "experiment.html#actions",
+    "registry.html": "try.html#registry",
 }
 DESCRIPTIONS = {
     "index": "Learn physical systems through experiments in blob-field worlds, then evaluate an executable prediction function.",
-    "worlds": "Prepared worlds with patterns, persistent trails, and orbital motion, sharing an experimental prediction interface.",
-    "experiment": "Explore a physical system, validate a predictor, freeze the artifact, and forecast new experimental programs.",
+    "worlds": "Field equations, numerical dynamics, emergent structures, and the generation of worlds with patterns, trails, and orbital motion.",
+    "experiment": "Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.",
     "scoring": "Joint energy scoring, independent truth realizations, fixed coordinate scales, marginal diagnostics, and limitations.",
-    "try": "Run a minimal Python predictor to understand the sensor-array interface without a simulation or model API.",
+    "try": "Find registry data, reproduce reference scores, run models, and generate worlds with pinned code and data.",
     "results": "Saved control scores and model attempts, with resource profiles, failures, and the limits of current evidence.",
-    "fields": "Activator fields, coupled channels, localized structures, and the physical background of blob-field worlds.",
-    "generation": "Generate field equations, characterize their behavior, and design physically grounded prediction suites.",
-    "simulator": "The numerical profile, preparation, noise policy, and event timing of the current native simulation.",
-    "api": "Exact action, query, timing, sample-shape, and resource rules for the prediction function.",
-    "registry": "Verified local world, preparation, suite, and run artifacts, with reference release status.",
     "contribute": "Requirements for contributing reproducible worlds, evaluation suites, predictors, and documentation.",
 }
 CONTROL_NAMES = {
@@ -85,26 +74,13 @@ STOP_NAMES = {
 def nav(keys, active, prefix=""):
     return "".join(
         f'<a href="{prefix}{key}.html"'
-        + (
-            ' aria-current="page"'
-            if key == active
-            else ' class="section-active"'
-            if key == DETAIL_PARENTS.get(active)
-            else ""
-        )
+        + (' aria-current="page"' if key == active else "")
         + f">{escape(PAGES[key][0])}</a>"
         for key in keys
     )
 
 
 def page_context(key, section, prefix=""):
-    parent = DETAIL_PARENTS.get(key)
-    if parent:
-        return (
-            f'<p class="breadcrumb"><a href="{prefix}{parent}.html">'
-            f'{escape(PAGES[parent][0])}</a><span aria-hidden="true"> / </span>'
-            f"<span>{escape(PAGES[key][0])}</span></p>"
-        )
     return f'<p class="eyebrow">{escape(section)}</p>'
 
 
@@ -125,9 +101,6 @@ def continuation(key, prefix=""):
                 f"<span>Next</span>{escape(PAGES[following][0])} →</a>"
             )
         return '<div class="page-continuation">' + "".join(links) + "</div>"
-    if key in DETAIL_PARENTS:
-        parent = DETAIL_PARENTS[key]
-        return f'<p class="return-link"><a href="{prefix}{parent}.html">← Back to {escape(PAGES[parent][0])}</a></p>'
     return ""
 
 
@@ -185,29 +158,16 @@ def displayed_results(rows):
 
 
 def generated_content():
-    world = json.loads((SOURCE / "worlds.json").read_text())["worlds"][0]
+    catalog = json.loads((SOURCE / "worlds.json").read_text())
     evidence = json.loads((SOURCE / "results.json").read_text())
-    bundle = world.get("reference_bundle")
-    release_status = (
-        "Standalone preparation/suite bundle verified locally; publication pending."
-        if bundle and not bundle["public_release_available"]
-        else "See the registry for release availability."
+    evaluation_table = table(
+        ("Preparation", "Ports", "Prediction programs"),
+        [
+            (f"<code>{escape(bundle['world_name'])}</code>", bundle["public_ports"], bundle["case_count"])
+            for bundle in catalog["evaluation_bundles"]
+        ],
+        "Published evaluation preparations · one starting state per genome",
     )
-    bundle_size = (
-        f"<dt>Reference bundle</dt><dd>{bundle['profiles']['evaluation']:,} payload bytes; "
-        f"{bundle['case_count']} cases; exact field and truth hashes</dd>"
-        if bundle
-        else ""
-    )
-    card = f'''<article class="world" id="{escape(world["id"])}"><span class="badge">Original reference preparation</span>
-<h2>{escape(world["id"])}</h2><p>{escape(world["description"])}</p><dl>
-<dt>Fields</dt><dd>{world["activators"]} activators + {world["channels"]} channels</dd>
-<dt>Numerics</dt><dd>{world["grid"][0]} × {world["grid"][1]} periodic grid; {world["dtype"]}; step {world["dt"]}</dd>
-<dt>Measurements</dt><dd>{world["ports"]} ports; probe arrays of {world["device_slots"][0]} and {world["device_slots"][1]} slots; global mean and variance</dd>
-<dt>Evaluation</dt><dd>{world["evaluation_cases"]} programs; horizon {world["horizon"]} time units; one prepared instance</dd>
-<dt>Sampling</dt><dd>{world["model_forecast_members"]} forecast members per model prediction; {world["truths_per_case"]} independent truth realizations per program</dd>
-<dt>Release status</dt><dd>Genome available. {escape(release_status)}</dd>{bundle_size}</dl>
-<p><a href="{escape(world["genome"]["file"])}" download>Download genome JSON</a> · <a href="simulator.html">Numerical profile</a></p></article>'''
     controls = table(
         ("Predictor", "Joint energy", "Marginal CRPS"),
         [
@@ -244,7 +204,7 @@ def generated_content():
     sample_code = predictor[predictor.index("SLOTS =") : predictor.index("\n\nif __name__")].strip()
     registry_counts = registry_content()
     return {
-        "world_card": card,
+        "evaluation_table": evaluation_table,
         "control_table": controls,
         "model_tables": "\n".join(profiles),
         "predictor_code": escape(sample_code),
@@ -269,17 +229,20 @@ def render(key, heading, section, body, title=None, description=None, prefix="")
 
 def redirect(old, target):
     prefix = os.path.relpath(DOCS, (DOCS / old).parent) + "/"
-    relative = os.path.relpath(DOCS / target, (DOCS / old).parent)
+    target_page, _, fragment = target.partition("#")
+    relative = os.path.relpath(DOCS / target_page, (DOCS / old).parent)
+    fallback = f"#{fragment}" if fragment else ""
     # JavaScript retains a deep-link fragment; the plain link works without JS.
     js_target = json.dumps(relative).replace("<", "\\u003c")
+    js_hash = f"(window.location.hash || {json.dumps(fallback)})" if fallback else "window.location.hash"
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><title>Page moved · Physim</title>
 <link rel="stylesheet" href="{prefix}site.css"></head><body>
 <main style="margin:3rem auto;padding:1rem"><h1>Page moved</h1>
-<p><a href="{relative}">Continue to this page</a>.</p>
+<p><a href="{escape(relative + fallback, quote=True)}">Continue to this page</a>.</p>
 <p><a href="{prefix}index.html">Current Physim documentation</a></p></main>
-<script>window.location.replace({js_target} + window.location.hash);</script>
+<script>window.location.replace({js_target} + {js_hash});</script>
 </body></html>'''
 
 
@@ -290,6 +253,8 @@ def build():
         body = (SOURCE / "pages" / f"{key}.html").read_text()
         body = re.sub(r"\{\{(\w+)\}\}", lambda m: blocks[m[1]], body)
         (DOCS / f"{key}.html").write_text(render(key, heading, section, body))
+    for old, target in REDIRECTS.items():
+        (DOCS / old).write_text(redirect(old, target))
     shutil.copyfile(SOURCE / "site.css", DOCS / "site.css")
     for filename in ("worlds.json", "results.json", "registry.json"):
         (DOCS / "data").mkdir(exist_ok=True)

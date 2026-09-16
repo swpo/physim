@@ -15,7 +15,7 @@ Joint energy scores compare forecasts with independent physical realizations;
 lower is better.
 
 **[Documentation](https://swpo.github.io/physim/)** ·
-[Worlds](docs/worlds.html) · [Prediction API](docs/api.html) ·
+[Worlds](docs/worlds.html) · [Prediction API](docs/experiment.html#prediction) ·
 [Evaluation](docs/scoring.html) · [Results](docs/results.html)
 
 ## Install and run locally

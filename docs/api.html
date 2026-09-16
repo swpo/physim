@@ -1,42 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Exact action, query, timing, sample-shape, and resource rules for the prediction function.">
-<title>Prediction API · Physim</title>
-<link rel="stylesheet" href="site.css">
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
-<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html" class="section-active">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="try.html">Try it</a><a href="results.html">Results</a></nav></header>
-<div class="layout">
-<main id="main"><p class="breadcrumb"><a href="experiment.html">Experiment &amp; predict</a><span aria-hidden="true"> / </span><span>Prediction API</span></p><h1>Prediction API</h1><p class="lead">The prediction interface describes a complete experimental program and returns complete sensor trajectories.</p>
-<pre><code>predict(actions, queries, n_samples=64, seed=0)
-# Returns exactly {"samples": [one_numeric_array_per_query]}</code></pre>
-<h2 id="actions">Actions</h2>
-<p>The selected laboratory declares its port count: twelve for <code>p4g2_044</code>, four for BF, and six for XV. The downloadable predictor and contract illustrate the twelve-port reference; use the selected laboratory's roster for other worlds.</p>
-<pre><code>{"t": 1.0, "kind": "inject", "port": 2, "amp": 0.7, "dur": 4.0}
-{"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]}</code></pre>
-<ul><li>Injection: port 0 through <code>n_ports − 1</code>, amplitude 0–3, duration greater than zero. The source is active on <code>[t, t + dur)</code>.</li><li>Adjustment: device 0 or 1, three finite controls in <code>[-1, 1]</code>. Pose changes immediately and the adjustment lane is occupied for five time units.</li><li>Start times must be strictly increasing. Two injections cannot overlap. Two adjustments cannot overlap, including adjustments to different devices. An injection and an adjustment may overlap if they start at different times.</li><li>A zero-amplitude injection or zero-effect adjustment still occupies its lane. Adjacent endpoints are allowed.</li></ul>
-<h2 id="time">Time</h2>
-<p>All times are absolute from the prepared start and nonnegative multiples of <code>0.02</code>, with representation tolerance <code>1e-9</code>. The maximum is 50 time units. Every action's entire occupied interval must end by 50, including actions after the last reading.</p>
-<h2 id="queries">Queries and arrays</h2>
-<pre><code>{"sensor": "device0", "t": [0, 8, 12]}</code></pre>
-<p>Times within each query must be strictly increasing without duplicates. The same timestamp may appear in different query objects, and query objects may appear in any order. Preserve their order in the result.</p>
-<div class="table-scroll"><table><thead><tr><th>Sensor</th><th>Slots</th><th>Returned array shape</th></tr></thead><tbody><tr><td><code>device0</code></td><td>13</td><td><code>(n_samples, len(t), n_ports, 13)</code></td></tr><tr><td><code>device1</code></td><td>19</td><td><code>(n_samples, len(t), n_ports, 19)</code></td></tr><tr><td><code>global</code></td><td>2: spatial mean, population variance</td><td><code>(n_samples, len(t), n_ports, 2)</code></td></tr></tbody></table></div>
-<p>Every value must be finite. No implicit broadcasting, missing ports, extra keys, NaNs, or infinities are accepted. Empty queries and time lists are supported with the corresponding empty outputs; scored cases contain observations. Exact keys and numeric types matter: booleans are not numeric IDs.</p>
-<h2 id="samples">Sample semantics</h2>
-<p>A member index represents one coherent trajectory across every time, query, and device in a call. Whole-member permutations leave the score unchanged. Independent shuffling across times or devices changes the joint distribution.</p>
-<p>The same request and predictor seed must reproduce output. Adding future actions or queries must preserve earlier samples. The seed controls only predictor randomness, and the function has no access to experimental or grader seeds.</p>
-<h2 id="limits">Current request caps</h2>
-<p>At most 256 predictive members, 128 actions, 32 queries, 256 times per query, 1,024 total query times, 2,000,000 combined prediction/truth scalar outputs, and 100,000,000 pairwise score operations. All caps apply together. The native model evaluation requests 64 members.</p>
-<p>Run profiles separately declare experiment counts, integrated simulation time, model limits, and artifact execution budgets. Public validation checks execution and shape, not forecast accuracy.</p>
-<p><a href="examples/AGENT_SPEC.md">Download the twelve-port example contract</a> · <a href="examples/predictor.py">Download a minimal predictor</a></p>
-<p><a href="try.html">Run an interface example</a></p>
-<p class="return-link"><a href="experiment.html">← Back to Experiment &amp; predict</a></p></main>
-</div>
-<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
-</body>
-</html>
+<meta name="robots" content="noindex"><title>Page moved · Physim</title>
+<link rel="stylesheet" href="./site.css"></head><body>
+<main style="margin:3rem auto;padding:1rem"><h1>Page moved</h1>
+<p><a href="experiment.html#actions">Continue to this page</a>.</p>
+<p><a href="./index.html">Current Physim documentation</a></p></main>
+<script>window.location.replace("experiment.html" + (window.location.hash || "#actions"));</script>
+</body></html>
