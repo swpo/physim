@@ -127,49 +127,60 @@ def render(mobile=False):
     with np.load(DATA, allow_pickle=False) as data:
         t, sham = data["times"], data["sham"]
         assert sham.shape == (3, 15, 13) and t[-1] == 50
-        fig, ax = plt.subplots(figsize=(4.6, 4.5) if mobile else (8.2, 4.2))
-        fig.subplots_adjust(left=0.19 if mobile else 0.11, right=0.97, bottom=0.16, top=0.76)
+        fig, axes = plt.subplots(2 if mobile else 1, 1 if mobile else 2, figsize=(4.8, 7.5) if mobile else (10.8, 4.5))
+        fig.subplots_adjust(
+            left=0.18 if mobile else 0.075,
+            right=0.97,
+            bottom=0.09 if mobile else 0.18,
+            top=0.86 if mobile else 0.73,
+            wspace=0.42,
+            hspace=0.63,
+        )
+        ax = axes[0]
+        ax.set_title("A  Sensor response", loc="left", fontsize=13, pad=54)
         ax.axvspan(0, 5, color="#e8ecef", zorder=0)
-        ax.text(2.5, 1.44, "Pulse", ha="center", fontsize=10, rotation=90 if mobile else 0)
+        ax.text(2.5, 1.38, "Pulse", ha="center", fontsize=10, rotation=90)
         for arm, amp, color, marker in (
             ("trail_low", 0.002, "#126e64", "o"),
             ("trail_mid", 0.01, "#075dad", "s"),
             ("trail_high", 0.05, "#b9510a", "^"),
         ):
             contrast = np.sqrt(np.mean((data[arm] - sham.mean(axis=0)) ** 2, axis=-1))
-            ax.plot(t, contrast.mean(axis=0), label=f"Amplitude {amp:g}", color=color, marker=marker, ms=3.5, lw=1.8)
-            ax.fill_between(t, contrast.min(axis=0), contrast.max(axis=0), color=color, alpha=0.16)
+            ax.plot(t, contrast.mean(axis=0), label=f"Amplitude {amp:g}", color=color, marker=marker, ms=3, lw=1.8)
             print(f"{arm}: final sensor contrast {contrast[:, -1].mean():.12g}")
         noise = np.array([np.sqrt(np.mean((sham[i] - sham[j]) ** 2, axis=-1)) for i, j in ((0, 1), (0, 2), (1, 2))])
         ax.plot(t, noise.mean(axis=0), "--", color="#303940", lw=1.7, label="No-pulse difference")
-        print(f"No-pulse pairwise difference: {noise[:, -1].mean():.12g}")
         ax.set(xlabel="Time after preparation", ylabel="Activator contrast (RMS)", xlim=(0, 50), ylim=(0, 1.6))
         ax.set_xticks([0, 10, 20, 30, 40, 50])
-        ax.grid(axis="y", color="#e4e8ec", lw=0.7)
-        ax.set_axisbelow(True)
-        fig.legend(
-            loc="upper center", ncol=2, frameon=False, fontsize=10 if mobile else 11, bbox_to_anchor=(0.53, 0.98)
+        ax.set_yticks([0, 0.4, 0.8, 1.2, 1.6])
+        ax.legend(
+            loc="lower left",
+            ncol=2,
+            frameon=False,
+            fontsize=9.5,
+            bbox_to_anchor=(-0.02, 1.02),
+            borderaxespad=0,
+            columnspacing=1,
         )
-        save(fig, "bf-sensor-response" + suffix)
 
-        fig, ax = plt.subplots(figsize=(4.6, 4.1) if mobile else (8.2, 3.5))
-        fig.subplots_adjust(left=0.19 if mobile else 0.11, right=0.97, bottom=0.20, top=0.90)
+        ax = axes[1]
+        ax.set_title("B  Feedback control", loc="left", fontsize=13, pad=54 if not mobile else 15)
         for i, (label, color) in enumerate((("coupled", "#126e64"), ("feedback_removed", "#68737e"))):
             effect = np.sqrt(np.mean((data[label + "_pulse"][:, -1] - data[label + "_sham"][:, -1]) ** 2, axis=-1))
-            ax.bar(i, effect.mean(), width=0.52, color=color, alpha=0.30, edgecolor=color, linewidth=1.3)
-            ax.scatter(i + np.array([-0.07, 0, 0.07]), effect, s=30, color=color, zorder=3, clip_on=False)
-            label_text = f"{effect.mean():.3f}" if i == 0 else "0 in all three repeats"
-            ax.text(i, effect.mean() + 0.065, label_text, ha="center", fontsize=11)
+            ax.bar(i, effect.mean(), width=0.52, color=color, alpha=0.45, edgecolor=color, linewidth=1.3)
+            ax.text(i, effect.mean() + 0.06, f"{effect.mean():.3f}" if i == 0 else "0", ha="center", fontsize=12)
         ax.set(
             xticks=[0, 1],
             xticklabels=["Original\nfeedback", "Feedback term\nremoved"],
             ylabel="Pulse effect at time 50 (RMS)",
-            ylim=(0, 1.5),
+            ylim=(0, 1.6),
             xlim=(-0.55, 1.55),
         )
-        ax.grid(axis="y", color="#e4e8ec", lw=0.7)
-        ax.set_axisbelow(True)
-        save(fig, "bf-feedback-control" + suffix)
+        ax.set_yticks([0, 0.4, 0.8, 1.2, 1.6])
+        for ax in axes:
+            ax.grid(axis="y", color="#e4e8ec", lw=0.7)
+            ax.set_axisbelow(True)
+        save(fig, "bf-response-and-feedback" + suffix)
 
 
 if __name__ == "__main__":
