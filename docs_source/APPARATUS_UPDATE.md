@@ -34,3 +34,10 @@ or reinterpret an old action request under the new protocol.
    and sync the finalized environment contribution to the Prime PR.
 
 No science campaign or model rollout is scheduled or launched by this change.
+
+## Documentation review convention
+
+Write the public explanatory chapters around the agreed apparatus, without
+temporary notices about review progress or pending reruns. Keep that work status
+in this plan. After the full page review, rerun the experiments and model
+rollouts and update the results page together; do not invent new scores.
