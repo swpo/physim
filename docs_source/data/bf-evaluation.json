@@ -1,0 +1,55 @@
+{
+  "study": "BF preparation study, 13\u201314 September 2026",
+  "apparatus": "fixed-source-v1; source six units from the probe center",
+  "data_sha256": "e2a2ee2393a8d566cba9f9b99aaa3da5c55c43004b0e7d3ceb0f5c1287d455b3",
+  "sources": [
+    {
+      "path": "outputs/eval-preparation-20260913/bf/preparation/apparatus.json",
+      "sha256": "2e96ff4e7a498c0fc1baae3e00410cfdc76bfce10c133d3bf2655d19c6f8dce5"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/sham/observations.npz",
+      "sha256": "b5e775554776a3d8489e161a8c12c561cc56dfb95ab7900473623924013ce647"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/sham/receipt.json",
+      "sha256": "8ee55df191979a5b6a8e18db16a92c4266d575cf9cef05736422fc18c3594f3f"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_low/observations.npz",
+      "sha256": "30648b5ca8cd57b020b10d43d78af90fab8d1af5a112059b9cfe2ae7a57343d8"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_low/receipt.json",
+      "sha256": "3c5543b8c7110267c83b039e7d02ac2635ef39a1deb694644796b0291d4974af"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_mid/observations.npz",
+      "sha256": "c34347e3dc39f21b3580e810a62dcfb9ce75e8eb635b87be741ab968dbed352f"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_mid/receipt.json",
+      "sha256": "380501768b9d976ff93ff92394f708b15bef26272a6dc1598b732fbdba1f6ed6"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_high/observations.npz",
+      "sha256": "89bf51b10a6d18f4e74ce0ecd51ffc91c96db4413dd78874bfda9f18a188811f"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/science/trail_high/receipt.json",
+      "sha256": "09483e715e0449eb10d973111829b611ee52d9d8651dcc175d87fd8b9af739fb"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/causal/readings.npz",
+      "sha256": "29da9e06247afd58c9f24530ae6f9550c763d821514dc2bdaeeadb23aab78c78"
+    },
+    {
+      "path": "outputs/eval-preparation-20260913/bf/causal/result.json",
+      "sha256": "1f18ab2af64de86412934feb6510872504b4b6764a07f1ab22b50a09a4daa08f"
+    }
+  ],
+  "selected_data": "Exact activator readings (public port 1), all 13 device-0 slots, all three repetitions.",
+  "ordinary_contrast": "Per-repetition RMS over slots versus the independent no-pulse ensemble mean.",
+  "noise_comparison": "Mean RMS over the three distinct no-pulse member pairs; pairs share members.",
+  "mechanism_effect": "Per-repetition pulse-minus-sham RMS with paired future noise, at time 50."
+}

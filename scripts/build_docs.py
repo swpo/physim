@@ -37,7 +37,7 @@ DESCRIPTIONS = {
     "index": "Physim evaluates agents learning physics through experiments; Blobkit discovers worlds through simulation and evolutionary search over field equations.",
     "worlds": "Field equations, numerical dynamics, emergent structures, and the generation of worlds with patterns, trails, and orbital motion.",
     "experiment": "Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.",
-    "scoring": "Joint energy scoring, independent truth realizations, fixed coordinate scales, marginal diagnostics, and limitations.",
+    "scoring": "Joint energy scoring and framework reward, with a worked BF investigation connecting physical effects, sensor evidence, and evaluation cases.",
     "try": "Find registry data, reproduce reference scores, run models, and generate worlds with pinned code and data.",
     "results": "Saved control scores and model attempts, with resource profiles, failures, and the limits of current evidence.",
     "contribute": "Requirements for contributing reproducible worlds, evaluation suites, predictors, and documentation.",
@@ -272,6 +272,8 @@ def build():
     for filename in ("worlds.json", "results.json", "registry.json"):
         (DOCS / "data").mkdir(exist_ok=True)
         shutil.copyfile(SOURCE / filename, DOCS / "data" / filename)
+    for filename in ("bf-evaluation.json", "bf-evaluation.npz"):
+        shutil.copyfile(SOURCE / "data" / filename, DOCS / "data" / filename)
     (DOCS / "examples").mkdir(exist_ok=True)
     for path in (SOURCE / "examples").iterdir():
         if path.is_file():

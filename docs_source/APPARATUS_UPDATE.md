@@ -32,6 +32,10 @@ or reinterpret an old action request under the new protocol.
    a new package release. Preserve the old bundles for reproducibility.
 6. Rerun model rollouts, update results/figures with explicit apparatus versions,
    and sync the finalized environment contribution to the Prime PR.
+   Refresh the BF investigation in `docs_source/pages/scoring.html` from the new
+   measurements, including the captured `bf-evaluation` data, figure captions,
+   response magnitudes, and suite groups. Its current recorded evidence is the
+   September 13–14 fixed-source study, identified in the figure captions.
 
 No science campaign or model rollout is scheduled or launched by this change.
 

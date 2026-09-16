@@ -113,6 +113,12 @@ def check():
     visual_source = json.loads((SOURCE / "data/world-visuals.json").read_text())
     if hashlib.sha256((SOURCE / "data/world-visuals.npz").read_bytes()).hexdigest() != visual_source["data_sha256"]:
         errors.append("World visual data changed; review and regenerate the figures")
+    bf_source = json.loads((SOURCE / "data/bf-evaluation.json").read_text())
+    if hashlib.sha256((SOURCE / "data/bf-evaluation.npz").read_bytes()).hexdigest() != bf_source["data_sha256"]:
+        errors.append("BF evaluation figure data changed; review and regenerate the figures")
+    for filename in ("bf-evaluation.json", "bf-evaluation.npz"):
+        if (SOURCE / "data" / filename).read_bytes() != (DOCS / "data" / filename).read_bytes():
+            errors.append(f"{filename}: published figure evidence is stale")
     for path in (SOURCE / "examples").iterdir():
         if path.is_file() and path.read_bytes() != (DOCS / "examples" / path.name).read_bytes():
             errors.append(f"{path.name}: example is stale")
