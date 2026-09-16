@@ -38,10 +38,10 @@ def read_prediction(sandbox, actions, queries, *, members=2, seed=11, roster=E.D
     return dict(samples=arrays), execution
 
 
-def public_validation_cases():
+def public_validation_cases(protocol=E.R6.APPARATUS_PROTOCOL):
     """Public API examples only; no case compiler, simulator or grading data."""
     mixed = [dict(sensor="device0", t=[0, 0.02]), dict(sensor="device1", t=[0]), dict(sensor="global", t=[0])]
-    return [
+    cases = [
         dict(name="mixed_sensors", actions=[], queries=deepcopy(mixed), n_samples=2, seed=11),
         dict(name="repeat_seed", actions=[], queries=deepcopy(mixed), n_samples=2, seed=11),
         dict(name="reordered_queries", actions=[], queries=list(reversed(deepcopy(mixed))), n_samples=2, seed=11),
@@ -75,11 +75,23 @@ def public_validation_cases():
             seed=23,
         ),
     ]
+    if protocol == E.R6.APPARATUS_PROTOCOL:
+        # Exercise both sources, both motion lanes, equal-time ordering and
+        # a move during a live pulse without exposing physical truth.
+        cases[5]["actions"] = [
+            dict(t=0, kind="inject", device=0, port=0, amp=1.0, dur=0.04),
+            dict(t=0, kind="adjust", device=0, u=[0.1, 0.0, 0.0]),
+            dict(t=0, kind="adjust", device=1, u=[0.0, 0.1, 0.0]),
+            dict(t=0, kind="inject", device=1, port=0, amp=0.5, dur=0.02),
+        ]
+    elif protocol != E.R6.LEGACY_PROTOCOL:
+        raise E.EvaluationError("unsupported apparatus protocol")
+    return cases
 
 
 def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER):
     """Run the public v5 gate; model code executes only inside Sandbox."""
-    cases = public_validation_cases()
+    cases = public_validation_cases(roster.protocol)
     report = dict(
         ok=False,
         gate=SUBMISSION_GATE_VERSION,
@@ -88,7 +100,7 @@ def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER):
         experiments_used=0,
         integrated_tu=0,
         scope="Public execution/interface checks only; no physical accuracy evaluation.",
-        public_roster=dict(n_ports=roster.n_ports, device_slots=list(roster.device_slots)),
+        public_roster=dict(n_ports=roster.n_ports, device_slots=list(roster.device_slots), protocol=roster.protocol),
     )
     box = Sandbox(observations, artifact=artifact)
     baseline = None
@@ -128,7 +140,7 @@ def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER):
     return report
 
 
-def runtime_identity():
+def runtime_identity(protocol=E.R6.APPARATUS_PROTOCOL):
     import platform
     from importlib.metadata import version
 
@@ -137,7 +149,14 @@ def runtime_identity():
 
     from . import __version__, blobround6, devices
 
+    scorer = E
+    if protocol == E.R6.LEGACY_PROTOCOL:
+        from .legacy_v1 import blobround6
+        from .legacy_v1 import blobround6_eval as scorer
+    elif protocol != E.R6.APPARATUS_PROTOCOL:
+        raise BundleError("unsupported apparatus protocol")
     return dict(
+        protocol=protocol,
         physim=__version__,
         blobkit=version("blobkit"),
         numpy=np.__version__,
@@ -145,7 +164,7 @@ def runtime_identity():
         python=platform.python_version(),
         platform=platform.platform(),
         source_sha256={
-            module.__name__: file_digest(module.__file__) for module in (sim_cpu, genome, devices, blobround6, E)
+            module.__name__: file_digest(module.__file__) for module in (sim_cpu, genome, devices, blobround6, scorer)
         },
     )
 
@@ -165,7 +184,7 @@ def score_frozen(bundle, output, saved, failures, *, members, predictor):
         arrays = load_arrays(path)
         pred = dict(samples=[arrays[f"query{i}"] for i in range(len(case["queries"]))])
         truth = bundle.truth(record)
-        score = E.score_case(
+        score = bundle.scoring.score_case(
             case,
             pred,
             truth,
@@ -200,7 +219,7 @@ def score_frozen(bundle, output, saved, failures, *, members, predictor):
         truth_policy="Retained independent native realizations; no truth/predictor seed pairing.",
         references=bundle.references(),
         predictor=predictor,
-        runtime=runtime_identity(),
+        runtime=runtime_identity(bundle.protocol),
         forecast_manifest_sha256=file_digest(output / "grading_predictions/manifest.json"),
         by_family={
             family: float(np.mean([r["joint_energy"] for r in results if r["family"] == family]))
@@ -327,7 +346,7 @@ def reference_demo(bundle, output):
     initial = bundle.make_oracle().sample_truth([], queries, n_samples=1, truth_seed=0)["samples"]
     model = E.PersistencePredictor(dict(zip(sensors, [a[0, 0] for a in initial])), roster=bundle.roster)
     checks, previous = [], None
-    for case in public_validation_cases():
+    for case in public_validation_cases(bundle.roster.protocol):
         pred = model.predict(case["actions"], case["queries"], n_samples=case["n_samples"], seed=case["seed"])
         shapes = E.validate_case(
             dict(id="interface-check", actions=case["actions"], queries=case["queries"]),

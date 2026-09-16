@@ -52,6 +52,9 @@ def export(output):
 def _export(output):
     origin_module = load_source("reference_origin_export", WORKED / "p4g2_044/origin.py")
     compiler = load_source("reference_case_export", WORKED / "p4g2_044/cases/build_cases.py")
+    from physim.legacy_v1 import blobround6
+
+    origin_module.R6 = blobround6
     oracle, origin = origin_module.make_origin()
     old_suite = compiler.build_suite("compact")
     output.mkdir(parents=True)
@@ -147,7 +150,7 @@ def _export(output):
             name="p4g2_044",
             genome_sha256=digest(output / "world.json"),
             numerics=NUMERICS,
-            implementation=implementation_identity(),
+            implementation=implementation_identity("fixed-source-v1"),
         ),
     )
     objects["preparation"] = identified(
@@ -168,7 +171,7 @@ def _export(output):
         dict(
             preparation_id=objects["preparation"]["id"],
             file_sha256=digest(output / "suite.json"),
-            scoring_source_sha256=digest(ROOT / "environments/physim/physim/blobround6_eval.py"),
+            scoring_source_sha256=digest(ROOT / "environments/physim/physim/legacy_v1/blobround6_eval.py"),
             truth_sha256={c["truth"]: digest(output / c["truth"]) for c in cases},
         ),
     )

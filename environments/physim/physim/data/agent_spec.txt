@@ -1,7 +1,7 @@
-# R6 executable prediction contract — worked example v2
+# Executable prediction contract — centered-pulse-v2
 
 You investigate an unfamiliar dynamical system using repeatable experiments,
-probe arrays, and a source. Your deliverable is Python code implementing:
+two instruments, each with a source at the center of its sensor array. Your deliverable is Python code implementing:
 
 ```python
 def predict(actions, queries, n_samples=64, seed=0):
@@ -41,36 +41,48 @@ may set different budgets, which must be announced before exploration begins.
 
 ## Actions
 
-An injection emits through one anonymous port at a fixed source location:
+Each instrument has a source at the center of its sensor array. You can use
+readings around a source to learn its spatial response. An injection selects
+an instrument and an anonymous port:
 
 ```json
-{"t": 1.0, "kind": "inject", "port": {example_port}, "amp": 0.7, "dur": 4.0}
+{"t": 1.0, "kind": "inject", "device": 0, "port": {example_port}, "amp": 0.7, "dur": 4.0}
 ```
 
-`port` is an integer0..{last_port}, amplitude is in[0,3], and duration is in(0,50]. The
-source is active on[t,t+dur). Its location stays fixed when probes move. Zero
-amplitude is permitted. Port identities are consistent across source and sensors.
+`device` is 0 or 1; `port` is an integer0..{last_port}. Amplitude is in [0,3]
+and duration in (0,50]. Launch is instantaneous: the pulse captures that
+instrument's current center. Forcing continues at that captured position on
+[t,t+dur), even if the instrument moves later. This is a finite-duration pulse,
+not an instantaneous addition of all its material. Port identities are
+consistent across both sources and all sensors. Zero amplitude is permitted.
 
-A probe adjustment changes one device's pose immediately:
+An adjustment repositions one entire instrument immediately:
 
 ```json
-{"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]}
+{"t": 2.0, "kind": "adjust", "device": 0, "u": [0.2, -0.4, 0.1]}
 ```
 
-`device` is0 or1. Each of the three controls is a finite number in[-1,1]. Their
-mapping to translation and array dilation is initially unknown. Dilation clips
-at the apparatus bounds; a valid command at a bound is accepted. The adjustment
-occupies the shared adjustment lane for5 time units, regardless of its size.
-Probes are passive: movement changes where you observe, not the physical fields.
+Each of the three controls is a finite number in [-1,1]. Their mapping to
+translation and array dilation is initially unknown. Dilation clips at the
+apparatus bounds; a valid command at a bound is accepted. Movement changes
+where the sensors read and where subsequent pulses start. Previously launched
+pulses and the fields they produced remain in the world. Dilation changes
+sensor spacing around the center, not the source width.
 
-Actions must be listed in strictly increasing start-time order. Simultaneous
-starts are unsupported. Two injection intervals cannot overlap; two adjustment
-intervals cannot overlap, including adjustments of different devices. Injection
-and adjustment intervals may overlap if their start times differ. Adjacent
-endpoints are permitted. A zero-effect command still occupies its declared lane.
-At each event time, the previous source interval ends, a starting action takes
-effect, then requested readings are taken. Intervals after the last query are
-validated but need not be simulated.
+Each instrument has separate movement and injection lanes. An adjustment
+occupies only that instrument's movement lane for 5 time units; a pulse
+occupies only its injection lane for `dur`. Movement and injection may overlap,
+and the two instruments operate independently. Intervals on the same lane must
+not overlap; adjacent endpoints are allowed. Zero-effect actions still occupy
+their lanes. Movement is instantaneous repositioning, not continuous travel.
+
+List actions in nondecreasing start-time order. At equal times, list order
+matters: inject then adjust starts a pulse at the old center; adjust then inject
+starts it at the new center. At each event time, ending pulses are removed,
+all starting actions execute in list order, then readings are taken. A newly
+launched pulse affects fields during subsequent simulation steps, not at the
+launch-time reading. Intervals after the last query are validated but need not
+be simulated.
 
 ## Queries and output
 

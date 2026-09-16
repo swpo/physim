@@ -42,7 +42,12 @@ def main():
         "probes/blobs/blobkit/blobkit/soup/sim_cpu.py",
         "probes/blobs/blobkit/blobkit/genome.py",
     ):
-        check(rel + " bytes unchanged", digest(ROOT / rel) == baseline[rel])
+        target = (
+            rel.replace("physim/physim/blobround6", "physim/physim/legacy_v1/blobround6")
+            if rel.endswith(("blobround6.py", "blobround6_eval.py"))
+            else rel
+        )
+        check(rel + " bytes unchanged", digest(ROOT / target) == baseline[rel])
     for name in ("soup/sim_cpu.py", "soup/sim_v1.py", "genome.py"):
         check(
             "installed blobkit/" + name + " bytes unchanged",
@@ -52,6 +57,9 @@ def main():
     spec = importlib.util.spec_from_file_location("old_origin", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    from physim.legacy_v1 import blobround6
+
+    module.R6 = blobround6
     original, meta = module.make_origin()
     bundle = Bundle(args.bundle)
     extracted = bundle.make_oracle()

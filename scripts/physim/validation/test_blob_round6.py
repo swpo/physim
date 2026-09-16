@@ -30,7 +30,7 @@ import numpy as np
 
 REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO / "environments" / "physim"))
-from physim import blobround6 as R6
+from physim.legacy_v1 import blobround6 as R6
 
 sys.path.insert(0, str(REPO / "generators/physim"))
 from _research import activate_research

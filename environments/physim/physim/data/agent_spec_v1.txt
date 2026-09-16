@@ -1,7 +1,7 @@
-# Executable prediction contract — centered-pulse-v2
+# R6 executable prediction contract — worked example v2
 
 You investigate an unfamiliar dynamical system using repeatable experiments,
-two instruments, each with a source at the center of its sensor array. Your deliverable is Python code implementing:
+probe arrays, and a source. Your deliverable is Python code implementing:
 
 ```python
 def predict(actions, queries, n_samples=64, seed=0):
@@ -32,7 +32,7 @@ tolerance1e-9). This example uses a maximum time of50. Each action's entire
 occupied interval must end by that maximum, even if all queries are earlier.
 
 The trusted host exposes `experiment(actions, queries)` and `usage()`. The
-development exploration budget is1000 experiments and50000 integrated time units.
+development exploration budget is{max_experiments} experiments and{max_total_tu} integrated time units.
 Each admitted request consumes one experiment and its largest query timestamp
 in time units. Empty requests consume a call but no simulated time. Invalid
 requests consume neither; an admitted execution that fails retains its charge.
@@ -41,48 +41,36 @@ may set different budgets, which must be announced before exploration begins.
 
 ## Actions
 
-Each instrument has a source at the center of its sensor array. You can use
-readings around a source to learn its spatial response. An injection selects
-an instrument and an anonymous port:
+An injection emits through one anonymous port at a fixed source location:
 
 ```json
-{"t": 1.0, "kind": "inject", "device": 0, "port": 2, "amp": 0.7, "dur": 4.0}
+{"t": 1.0, "kind": "inject", "port": {example_port}, "amp": 0.7, "dur": 4.0}
 ```
 
-`device` is 0 or 1; `port` is an integer0..11. Amplitude is in [0,3]
-and duration in (0,50]. Launch is instantaneous: the pulse captures that
-instrument's current center. Forcing continues at that captured position on
-[t,t+dur), even if the instrument moves later. This is a finite-duration pulse,
-not an instantaneous addition of all its material. Port identities are
-consistent across both sources and all sensors. Zero amplitude is permitted.
+`port` is an integer0..{last_port}, amplitude is in[0,3], and duration is in(0,50]. The
+source is active on[t,t+dur). Its location stays fixed when probes move. Zero
+amplitude is permitted. Port identities are consistent across source and sensors.
 
-An adjustment repositions one entire instrument immediately:
+A probe adjustment changes one device's pose immediately:
 
 ```json
-{"t": 2.0, "kind": "adjust", "device": 0, "u": [0.2, -0.4, 0.1]}
+{"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]}
 ```
 
-Each of the three controls is a finite number in [-1,1]. Their mapping to
-translation and array dilation is initially unknown. Dilation clips at the
-apparatus bounds; a valid command at a bound is accepted. Movement changes
-where the sensors read and where subsequent pulses start. Previously launched
-pulses and the fields they produced remain in the world. Dilation changes
-sensor spacing around the center, not the source width.
+`device` is0 or1. Each of the three controls is a finite number in[-1,1]. Their
+mapping to translation and array dilation is initially unknown. Dilation clips
+at the apparatus bounds; a valid command at a bound is accepted. The adjustment
+occupies the shared adjustment lane for5 time units, regardless of its size.
+Probes are passive: movement changes where you observe, not the physical fields.
 
-Each instrument has separate movement and injection lanes. An adjustment
-occupies only that instrument's movement lane for 5 time units; a pulse
-occupies only its injection lane for `dur`. Movement and injection may overlap,
-and the two instruments operate independently. Intervals on the same lane must
-not overlap; adjacent endpoints are allowed. Zero-effect actions still occupy
-their lanes. Movement is instantaneous repositioning, not continuous travel.
-
-List actions in nondecreasing start-time order. At equal times, list order
-matters: inject then adjust starts a pulse at the old center; adjust then inject
-starts it at the new center. At each event time, ending pulses are removed,
-all starting actions execute in list order, then readings are taken. A newly
-launched pulse affects fields during subsequent simulation steps, not at the
-launch-time reading. Intervals after the last query are validated but need not
-be simulated.
+Actions must be listed in strictly increasing start-time order. Simultaneous
+starts are unsupported. Two injection intervals cannot overlap; two adjustment
+intervals cannot overlap, including adjustments of different devices. Injection
+and adjustment intervals may overlap if their start times differ. Adjacent
+endpoints are permitted. A zero-effect command still occupies its declared lane.
+At each event time, the previous source interval ends, a starting action takes
+effect, then requested readings are taken. Intervals after the last query are
+validated but need not be simulated.
 
 ## Queries and output
 
@@ -94,14 +82,14 @@ be simulated.
 ]
 ```
 
-Every query returns all12 ports. `device0` has13 slots, `device1` has19, and
+Every query returns all{n_ports} ports. `device0` has13 slots, `device1` has19, and
 `global` has2 (spatial mean, then spatial population variance). Device geometry,
 spatial coordinates, field meanings and governing equations are not supplied.
 
 For each query, return a numeric array with shape:
 
 ```text
-(n_samples, number_of_requested_times, 12, number_of_sensor_slots)
+(n_samples, number_of_requested_times, {n_ports}, number_of_sensor_slots)
 ```
 
 Times within each query must be strictly increasing, with no duplicates.

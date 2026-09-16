@@ -1270,7 +1270,7 @@ wheels = [
 
 [[package]]
 name = "physim"
-version = "0.12.2"
+version = "0.13.0.dev0"
 source = { editable = "environments/physim" }
 dependencies = [
     { name = "blobkit" },

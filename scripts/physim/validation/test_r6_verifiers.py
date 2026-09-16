@@ -7,6 +7,7 @@ import json
 import tempfile
 import tomllib
 import unittest
+from copy import deepcopy
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -174,13 +175,11 @@ class NativeTaskTests(unittest.TestCase):
         )
         from physim import evaluation
 
-        new = ast.parse(Path(evaluation.__file__).read_text())
-        # The validator now receives a public roster. Its seven challenge
-        # programs remain exactly the same for the original reference world.
-        for name in ("public_validation_cases",):
-            a = next(n for n in old.body if isinstance(n, ast.FunctionDef) and n.name == name)
-            b = next(n for n in new.body if isinstance(n, ast.FunctionDef) and n.name == name)
-            self.assertEqual(ast.dump(a), ast.dump(b), name)
+        # Preserve the exact public requests for every historical bundle.
+        function = next(n for n in old.body if isinstance(n, ast.FunctionDef) and n.name == "public_validation_cases")
+        namespace = {"deepcopy": deepcopy}
+        exec(compile(ast.Module(body=[function], type_ignores=[]), "frozen-public-cases", "exec"), namespace)
+        self.assertEqual(namespace["public_validation_cases"](), evaluation.public_validation_cases("fixed-source-v1"))
 
     def test_ipython_uses_stock_rlm_and_changes_only_interface_description(self):
         config = harness_config_type("rlm")(id="rlm", max_depth=0, summarize_at_tokens=16000)

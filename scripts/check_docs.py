@@ -145,9 +145,17 @@ def check():
             errors.append("Control evidence source changed; review snapshot")
         if json.loads(control_source.read_text())["aggregate"] != evidence["controls"]["aggregate"]:
             errors.append("Control aggregates differ from source")
-    contract = ROOT / "probes/blobs/agentenv/round6/worked_example/AGENT_SPEC.md"
-    if contract.is_file() and contract.read_bytes() != (SOURCE / "examples/AGENT_SPEC.md").read_bytes():
-        errors.append("Downloadable agent contract differs from current worked example")
+    contract = (ROOT / "environments/physim/physim/data/agent_spec.txt").read_text()
+    for key, value in (
+        ("n_ports", "12"),
+        ("last_port", "11"),
+        ("example_port", "2"),
+        ("max_experiments", "1000"),
+        ("max_total_tu", "50000"),
+    ):
+        contract = contract.replace("{" + key + "}", value)
+    if contract != (SOURCE / "examples/AGENT_SPEC.md").read_text():
+        errors.append("Downloadable agent contract differs from the current runtime")
     summary = {
         "html_pages": len(pages),
         "current_pages": len(PAGES),

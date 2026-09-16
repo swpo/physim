@@ -21,7 +21,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "environments/physim"))
-from physim import blobround6_eval as E
+from physim.legacy_v1 import blobround6_eval as E
 
 ROSTER = E.PublicRoster(1, (1,))
 

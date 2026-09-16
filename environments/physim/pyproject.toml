@@ -1,6 +1,6 @@
 [project]
 name = "physim"
-version = "0.12.2"
+version = "0.13.0.dev0"
 description = "A Verifiers v1 taskset for experimental prediction in prepared physical worlds"
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
@@ -39,7 +39,7 @@ rollouts_per_example = 1
 [tool.ruff]
 line-length = 120
 # These four reference files are byte-bound by scientific manifests.
-extend-exclude = ["physim/blobround6.py", "physim/blobround6_eval.py", "physim/blobround6_explore.py", "physim/devices.py", "physim/blobdata"]
+extend-exclude = ["physim/blobround6.py", "physim/blobround6_eval.py", "physim/blobround6_explore.py", "physim/devices.py", "physim/blobdata", "physim/legacy_v1"]
 
 [tool.ruff.lint]
 select = ["F", "I"]

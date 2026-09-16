@@ -114,8 +114,10 @@ def public_roster(config: R6ToolsConfig):
 
 
 def public_prompt(config: R6ToolsConfig, coding_interface: str = "shell") -> str:
-    n_ports = public_roster(config).n_ports
-    spec = files("physim").joinpath("data/agent_spec.txt").read_text()
+    roster = public_roster(config)
+    n_ports = roster.n_ports
+    name = "agent_spec_v1.txt" if roster.protocol == E.E.R6.LEGACY_PROTOCOL else "agent_spec.txt"
+    spec = files("physim").joinpath("data", name).read_text()
     # The configured exploration budget is also written explicitly below.
     spec = spec.replace("{max_experiments}", str(config.max_experiments))
     spec = spec.replace("{max_total_tu}", f"{config.max_total_tu:g}")
@@ -130,8 +132,9 @@ NumPy, SciPy, scikit-learn and Matplotlib are installed. The working directory i
 - laboratory_experiment(actions, queries): run an independent experiment from the
   prepared start; save full NPZ observations in /observations and return their path.
 - laboratory_usage(): inspect the laboratory budget.
-- laboratory_validate(): test a snapshot of your predictor against public interface
-  examples; return errors to repair. Does not submit or test physical accuracy.
+- laboratory_validate(): run example requests to check that your predictor imports,
+  executes, and returns valid outputs; report errors to repair. Does not submit or
+  measure prediction accuracy.
 - laboratory_submit(): check and freeze the current predictor and supporting files.
   A failed check leaves the workspace open for repair; a successful submission ends
   exploration. Finish the coding session once submission is accepted.
@@ -328,8 +331,9 @@ class LaboratoryTools(vf.Toolset[R6ToolsConfig, R6State]):
     @vf.tool
     async def experiment(self, actions: list[dict], queries: list[dict]) -> str:
         """Run from the prepared start and save NPZ arrays. actions: inject
-        {t,kind:'inject',port:<public port index>,amp:0..3,dur} or adjust
-        {t,kind:'adjust',device:0..1,u:[-1..1,-1..1,-1..1]}. queries:
+        {t,kind:'inject',device:0..1,port:<public port index>,amp:0..3,dur}
+        in centered-pulse-v2 (omit device for the historical fixed-source-v1
+        contract). Adjust: {t,kind:'adjust',device:0..1,u:[-1..1,-1..1,-1..1]}. queries:
         [{sensor:'device0'|'device1'|'global',t:[strictly increasing times]}].
         All timestamps are absolute, 0..50 tu. Return path, shapes and usage.
         """
@@ -371,8 +375,8 @@ class LaboratoryTools(vf.Toolset[R6ToolsConfig, R6State]):
 
     @vf.tool
     async def validate(self) -> str:
-        """Check a predictor snapshot against public interface cases. No accuracy
-        feedback and no experiment cost. Does not submit; repair errors and retry."""
+        """Run example requests to check execution, output format and repeatability.
+        No accuracy feedback or experiment cost. Does not submit; repair and retry."""
         async with self.lock:
             return json.dumps(await asyncio.to_thread(_check, self.state, self.config, final=False))
 

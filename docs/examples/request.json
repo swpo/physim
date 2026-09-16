@@ -1,10 +1,10 @@
 {
   "actions": [
-    {"t": 1.0, "kind": "inject", "port": 2, "amp": 0.7, "dur": 4.0},
-    {"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]}
+    {"t": 1.0, "kind": "inject", "device": 0, "port": 2, "amp": 0.7, "dur": 4.0},
+    {"t": 2.0, "kind": "adjust", "device": 0, "u": [0.2, -0.4, 0.1]}
   ],
   "queries": [
-    {"sensor": "device0", "t": [0, 8, 12]},
+    {"sensor": "device0", "t": [0, 3, 12]},
     {"sensor": "device1", "t": [12, 20]},
     {"sensor": "global", "t": [20]}
   ],

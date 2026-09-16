@@ -5,6 +5,13 @@ suite and independently simulated truth. The BF and XV recipes establish this
 workflow; they are concrete scientific recipes, not automatic certification of
 arbitrary genomes.
 
+The development recipe now writes `centered-pulse-v2` apparatus and explicit
+`device` injection commands. Existing published BF/XV evidence uses
+`fixed-source-v1`; its saved preparations retain that behavior when loaded.
+The updated apparatus still needs fresh science, controls, truth and rollouts.
+These reruns are deferred until the documentation review is complete; see the
+[apparatus update plan](../../docs_source/APPARATUS_UPDATE.md).
+
 1. **Simulate afresh and preserve the origin.** Inspect full activator and channel
    fields with the current phenomenology. Keep initialization, seed, numerical
    settings, source hashes and the resulting fields. BF starts from its first
@@ -12,7 +19,10 @@ arbitrary genomes.
    for 2,500 tu without a kick. A fixed horizon does not establish convergence.
 2. **Prepare a measurable laboratory.** Preserve exact fields and position probes
    by a declared rule. Here, the activator-0 maximum sets both probe centers and
-   the source sits six units away. Expose only anonymous ports and observations.
+   each instrument has a source at its sensor-array center. A pulse captures that
+   position at launch; later movement affects only sensors and future launches.
+   The historical published apparatus instead has one source six units away.
+   Expose only anonymous ports and observations.
 3. **Demonstrate ordinary interventions.** Compare no-source observations, weak
    and strong pulses, different channels, delayed/composed pulses, translation
    and dilation. Use three independent future-noise realizations per program.

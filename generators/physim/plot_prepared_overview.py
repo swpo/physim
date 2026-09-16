@@ -44,7 +44,7 @@ def plot(source, output):
             )
             if name == "xv":
                 axis.contour(x_grid, y_grid, final[1][np.ix_(ys, xs)], levels=[0.5], colors="white", linewidths=1.2)
-            emitter = np.array(apparatus["emitter_yx"]) - center
+            emitter = np.array(apparatus.get("emitter_yx", center)) - center
             axis.plot(emitter[1], emitter[0], "+", color="#ff7777", ms=9, mew=1.5)
             axis.set_title(f"{name.upper()} · {label}", fontsize=12)
             if col == 0:
@@ -57,7 +57,7 @@ def plot(source, output):
     fig.text(
         0.5,
         0.035,
-        "Dashed gray: initial activator core.  White: XV partner at 50 tu.  Red cross: fixed source.\n"
+        "Dashed gray: initial activator core.  White: XV partner at 50 tu.  Red cross: pulse launch position.\n"
         "One representative fresh realization per program; each starts from its world's identical preparation.",
         ha="center",
         fontsize=10,

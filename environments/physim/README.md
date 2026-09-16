@@ -5,6 +5,22 @@ An agent uses a coding harness to collect observations, then submits
 `predict(actions, queries, n_samples=64, seed=0)`. The host grades coherent sample
 trajectories against independent retained physical realizations.
 
+## Apparatus update in development
+
+The development package is `0.13.0.dev0`. New preparations use `centered-pulse-v2`: each instrument has a source at its
+sensor-array center. `inject` requires `device`. Launch captures the current
+center; the finite-duration forcing stays there after later motion. Devices
+have independent movement/injection lanes. Equal-time actions execute in list
+order, so move-then-inject and inject-then-move select different launch positions.
+Sensor dilation leaves the source centered and does not change its width.
+
+Published configs and HF bundles still use `fixed-source-v1`. Loading one selects
+its frozen simulator, scoring implementation, agent instructions, and interface
+checks. Existing truth is never relabeled as the new apparatus. The updated
+apparatus has protocol tests; fresh science experiments, preparation/suite
+publication, model rollouts, and a new package release are deferred until the
+remaining documentation review is complete. See [the rerun plan](../../docs_source/APPARATUS_UPDATE.md).
+
 ## Installation
 
 Use Python 3.12 and install from the repository root:

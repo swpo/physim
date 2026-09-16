@@ -121,3 +121,19 @@ def test_prompt_advertises_only_the_public_roster():
     assert "all4 ports" in text and "0..3" in text and "times, 4," in text
     assert "all12" not in text and "0..11" not in text and "times, 12," not in text
     assert "private-bf-bundle" not in text and "bilinear" not in text
+
+
+def test_apparatus_versions_select_matching_runtime_and_source_geometry():
+    old = physics_fixture("bf")
+    old._validate_physics()
+    assert old.protocol == R6.LEGACY_PROTOCOL
+    assert old.runner.__name__ == "physim.legacy_v1.blobround6"
+    updated = physics_fixture("bf")
+    del updated.apparatus["emitter_yx"]
+    updated.apparatus["protocol"] = R6.APPARATUS_PROTOCOL
+    updated._validate_physics()
+    assert updated.runner is R6 and updated.scoring is scoring
+    # A detached source cannot silently survive the centered-apparatus change.
+    updated.apparatus["emitter_yx"] = [64, 70]
+    with pytest.raises(BundleError, match="apparatus"):
+        updated._validate_physics()

@@ -19,6 +19,7 @@
   checks.json         # reproduction and validation evidence</code></pre>
 <p>The loader requires a full dataset commit, downloads only the selected profile within byte caps, verifies hashes, and checks array headers before allocation. Verified cached bundles work with <code>--offline</code>. Bundles contain data rather than executable Python.</p>
 <p>Evaluation configs pin scientific data revision <code>dcd6abd5eae76a47f326c70518315d2d1e101d86</code>. Later dataset documentation updates preserve these payloads and catalog rows. All three preparations passed anonymous download, offline loading, reference-score reproduction, and short native simulation checks. Native reproduction pins NumPy 2.5.2 and SciPy 1.18.0 and verifies simulation source hashes.</p>
+<p>The published configs select the historical <code>fixed-source-v1</code> apparatus. Their source remains stationary while probes move; the <a href="examples/AGENT_SPEC_V1.md">original agent contract</a> describes that version. The updated <a href="experiment.html">centered-source apparatus</a> is implemented in the development code; new preparations, reference observations, and rollouts are pending. Selecting an old bundle preserves its original contract and results.</p>
 <h2 id="interface-example">Start with the prediction interface</h2>
 <p>This example returns zero for every requested reading. It demonstrates the exact array layout without a model API key, simulation cache, or running laboratory. It does not measure predictive accuracy.</p>
 <h3>Run from a checkout</h3>

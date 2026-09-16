@@ -18,7 +18,7 @@ from test_blob_round6 import _toy
 class ExplorationTests(unittest.TestCase):
     def make(self, **kwargs):
         oracle, calls, _, _ = _toy(noise=True)
-        return ExperimentService(oracle, roster=PublicRoster(2, (2, 3)), **kwargs), calls
+        return ExperimentService(oracle, roster=PublicRoster(2, (2, 3), protocol="fixed-source-v1"), **kwargs), calls
 
     def test_restarts_same_physical_state_with_fresh_noise(self):
         service, _ = self.make()
