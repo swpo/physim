@@ -1,4 +1,3 @@
-<p class="lead">A useful contribution makes a physical system easier to reproduce, investigate, or evaluate.</p>
 <h2>Contribute a world</h2>
 <p>A preserved world needs its genome, a name, attribution, license information, and available provenance. Include recipes, simulator settings, observations, and known gaps where available. Any world can be preserved, including simple controls and historical examples; an apparatus or evaluation suite is not required.</p>
 <p>Follow the <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/blob/main/CONTRIBUTING.md">world contribution guide</a> to package the files with Blobkit and open a Hugging Face pull request. A maintainer reviews the submission; you do not need write access to the main dataset. For help packaging a world, start in the dataset's <a href="https://huggingface.co/datasets/seanpohorence/physim-worlds/discussions">Community tab</a>.</p>
@@ -6,10 +5,9 @@
 <p>Eval-ready status applies to a validated preparation and suite. Add the exact starting state, numerical profile, measurement/control apparatus, reference trajectories, and validation evidence. The apparatus belongs to the preparation, and one world can support several preparations or suites.</p>
 <p>Use interventions and observations grounded in the world's measured behavior. Fix score groups and coordinate scales before evaluating agents. Include controls that remove particular capabilities, such as responding to later pulses or tracking probe motion, and verify that the intended errors affect the score.</p>
 <p>Record known measurement limits. Improvements to coverage should receive a new suite identity so existing results remain interpretable.</p>
-<h2>Contribute a predictor or result</h2>
-<p>Supply the executable predictor and supporting data, its observations, and exact world/preparation/suite references. Record model and harness settings, sampling, all resource budgets, stopping conditions, interface validity, and costs. Keep retries as separate attempts. Report scientific scores and framework outcomes separately, following the <a href="scoring.html#diagnostics">evaluation reporting rules</a>.</p>
 <h2>Contribute code and documentation</h2>
-<p>Blobkit, world-generation research, and this website live in <a href="https://github.com/swpo/physim">swpo/physim</a>. The installed evaluation environment is being contributed to <a href="https://github.com/PrimeIntellect-ai/residency-environments/pull/22">Prime Intellect's environments repository</a>. During review the local environment remains available; after integration, the plan is to maintain the environment upstream and consume Blobkit as a versioned dependency.</p>
-<p>The current public documentation is generated from <code>docs_source/</code> by <code>python3 scripts/build_docs.py</code>. Edit those sources, rebuild, and run <code>python3 scripts/check_docs.py</code>. The older generators write to the research archive.</p>
-<p>The installed environment supports the three eval-ready preparations listed in <a href="scoring.html#prepared-worlds">Evaluation</a>, selected explicitly in evaluation configs. Contributions should preserve world, preparation, suite, and run identities and add evidence for any new physical coverage.</p>
-<p><a href="https://github.com/swpo/physim">Open the source repository</a></p>
+<ul>
+<li><a href="https://github.com/swpo/physim">Physim and Blobkit</a></li>
+<li><a href="https://github.com/PrimeIntellect-ai/residency-environments">Prime Intellect environments</a></li>
+</ul>
+<p>Interested in getting involved? Reach out to <a href="https://x.com/the1pun1isher">@the1pun1isher</a>.</p>

@@ -41,7 +41,7 @@ DESCRIPTIONS = {
     "experiment": "Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.",
     "scoring": "Joint energy scoring and framework reward, with a worked BF investigation connecting physical effects, sensor evidence, and evaluation cases.",
     "results": "Seven BF case studies: experiments, submitted predictors, held-out scores, token use, and concrete prediction failures with Prime Agent.",
-    "contribute": "Requirements for contributing reproducible worlds, evaluation suites, predictors, and documentation.",
+    "contribute": "Contribute reproducible worlds, evaluation suites, code, and documentation.",
 }
 CONTROL_NAMES = {
     "zero": "Always zero",
