@@ -74,6 +74,7 @@ class NativeTaskTests(unittest.TestCase):
             (artifact / "unlisted_secret").write_text("must not copy")
             (obs / "experiment_001.npz").write_bytes(b"public data")
             state = dict(
+                prompt_condition=T.PROMPT_CONDITION,
                 checks=[
                     dict(
                         path="validate_01",
@@ -192,7 +193,7 @@ class NativeTaskTests(unittest.TestCase):
             )
         )
         self.assertEqual(task.data.image, "rlm-test")
-        self.assertEqual(task.data.protocol, "r6-verifiers-v1-ipython-1")
+        self.assertEqual(task.data.protocol, f"r6-verifiers-v1-ipython-1-{T.PROMPT_CONDITION}")
         self.assertIn("persistent IPython", task.data.system_prompt)
         self.assertIn("laboratory_validate", task.data.system_prompt)
         self.assertEqual(task.data.network_allow, [])

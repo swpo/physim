@@ -12,14 +12,15 @@ from pathlib import Path
 import numpy as np
 
 from . import blobround6_eval as E
+from .artifact_store import snapshot_artifact
 from .bundles import Bundle, BundleError, identified, load_arrays
 from .bundles import digest as file_digest
-from .sandbox import IMAGE, ExecutionLimits, Sandbox, SandboxError
+from .sandbox import IMAGE, ExecutionLimits, Sandbox, SandboxError, SandboxInfrastructureError
 from .sandbox import docker as docker
 
 LIMITS = replace(E.DEFAULT_LIMITS, max_horizon_tu=50.0)
 
-SUBMISSION_GATE_VERSION = "r6-gate-public-validation-v2-roster"
+SUBMISSION_GATE_VERSION = "r6-gate-public-validation-v3-interface"
 
 
 def dump(path, value):
@@ -99,8 +100,8 @@ def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER, execu
         checks_total=len(cases),
         experiments_used=0,
         integrated_tu=0,
-        scope="Public execution/interface checks only; no physical accuracy evaluation.",
-        public_roster=dict(n_ports=roster.n_ports, device_slots=list(roster.device_slots), protocol=roster.protocol),
+        scope="Public execution/interface checks only; no prediction accuracy evaluation.",
+        public_roster=dict(n_ports=roster.n_ports, device_slots=list(roster.device_slots)),
     )
     options = {} if execution_limits is None else {"limits": execution_limits}
     box = Sandbox(observations, artifact=artifact, **options)
@@ -129,6 +130,8 @@ def validate_predictor(artifact, observations, *, roster=E.DEFAULT_ROSTER, execu
                 record.update(
                     ok=True, actual_shapes=[list(a.shape) for a in arrays], wall_seconds=execution.get("wall_seconds")
                 )
+            except SandboxInfrastructureError:
+                raise
             except (SandboxError, E.EvaluationError, ValueError, TypeError) as exc:
                 record.update(ok=False, error_type=type(exc).__name__, error=str(exc)[-3000:])
                 report["checks"].append(record)
@@ -287,6 +290,8 @@ def _snapshot_inputs(source, target, *, observations=False, limits=None):
     """Freeze bounded public input files once for the entire evaluation."""
     source, target = Path(source).resolve(), Path(target)
     limits = limits or ExecutionLimits()
+    if not observations:
+        return snapshot_artifact(source, target, limits)["files"]
     if not source.is_dir():
         raise SandboxError("public input directory is missing")
     target.mkdir()

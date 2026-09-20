@@ -15,10 +15,34 @@ PREDICTOR = """from pathlib import Path
 import json
 import numpy as np
 def predict(actions, queries, n_samples=64, seed=0):
-    with np.load(next(Path('/observations').glob('*.npz'))) as data:
+    with np.load(sorted(Path('/observations').glob('*.npz'))[-1]) as data:
         request=json.loads(data['request'].item())
         initial={q['sensor']: data[f'query{i}'][0,0].copy() for i,q in enumerate(request['queries'])}
     return {'samples':[np.broadcast_to(initial[q['sensor']],(n_samples,len(q['t']),*initial[q['sensor']].shape)).copy() for q in queries]}
+"""
+
+# Printed results are booleans only: never dump environment values, process
+# arguments, framework connection credentials, or arbitrary runtime files.
+BOUNDARY_PROBE = """import importlib.util, json, os, socket, urllib.request
+from pathlib import Path
+checks = {}
+checks['private_packages_absent'] = all(importlib.util.find_spec(x) is None for x in ['physim', 'blobkit'])
+checks['private_mounts_absent'] = not any(Path(x).exists() for x in ['/var/run/docker.sock', '/Users', '/host_mnt', '/registry'])
+checks['provider_credentials_absent'] = not any(os.environ.get(x) for x in ['PRIME_API_KEY', 'OPENAI_API_KEY', 'HF_TOKEN', 'ANTHROPIC_API_KEY'])
+for name, url in [('hf', 'https://huggingface.co/'), ('github', 'https://github.com/'), ('host_preview', 'http://vf.host.internal:8765/')]:
+    try:
+        with urllib.request.urlopen(url, timeout=3) as response:
+            checks[name + '_blocked'] = response.status == 403
+    except Exception:
+        checks[name + '_blocked'] = True
+try:
+    connection = socket.create_connection(('1.1.1.1', 443), timeout=2)
+    connection.close()
+    checks['direct_network_blocked'] = False
+except OSError:
+    checks['direct_network_blocked'] = True
+print(json.dumps({'boundary_audit': checks}))
+assert all(checks.values())
 """
 
 
@@ -27,7 +51,25 @@ def main(args):
     root.mkdir(parents=True, exist_ok=False)
     bundle = Bundle(args.bundle)
     calls = []
-    steps = [
+    captured_requests = []
+    steps = []
+    if args.audit_boundary:
+        steps.extend(
+            [
+                ("bash", {"command": "python - <<'PY'\n" + BOUNDARY_PROBE + "PY\n"}),
+                ("laboratory_experiment", {"actions": [], "queries": [{"sensor": "global", "t": [0.013]}]}),
+                ("laboratory_usage", {}),
+            ]
+        )
+    if args.replay_trace:
+        episode = json.loads(args.replay_trace.read_text().splitlines()[-1])
+        for node in episode["traces"][-1]["nodes"]:
+            message = node["message"]
+            if message["role"] == "assistant":
+                for call in message.get("tool_calls") or []:
+                    steps.append((call["name"], json.loads(call["arguments"])))
+    replayed_tool_calls = len(steps)
+    steps += [
         (
             "laboratory_experiment",
             {"actions": [], "queries": [{"sensor": s, "t": [0]} for s in ["device0", "device1", "global"]]},
@@ -43,6 +85,8 @@ def main(args):
 
         def do_POST(self):
             body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+            if args.audit_boundary:
+                captured_requests.append({key: body[key] for key in ("messages", "tools") if key in body})
             index = len(calls)
             tools = [t["function"]["name"] for t in body.get("tools", [])]
             calls.append(dict(index=index, model=body["model"], tool_names=tools))
@@ -86,7 +130,7 @@ def main(args):
         specs=dict(context_window=10000, max_output_tokens=128),
         pricing=dict(input_usd_per_mtok=0, output_usd_per_mtok=0),
     )
-    config = configuration(root, root, model, args.bundle.resolve(), 1)
+    config = configuration(root, root, model, args.bundle.resolve())
     config["client"] = dict(
         type="eval",
         base_url=f"http://127.0.0.1:{server.server_port}/v1",
@@ -94,10 +138,19 @@ def main(args):
         headers={},
     )
     dump(root / "eval.json", config)
+    command = [
+        sys.executable,
+        str(Path(__file__).with_name("campaign_diagnostics.py")),
+        "--diagnostics",
+        str(root / "diagnostics"),
+    ]
+    if args.inject_schema_failure_at is not None:
+        command += ["--inject-schema-failure-at", str(args.inject_schema_failure_at)]
+    command += ["@", str(root / "eval.json")]
     try:
         with (root / "eval.log").open("w") as log:
             result = subprocess.run(
-                [str(Path(sys.executable).with_name("eval")), "@", str(root / "eval.json")],
+                command,
                 stdout=log,
                 stderr=subprocess.STDOUT,
             )
@@ -105,6 +158,8 @@ def main(args):
         server.shutdown()
         server.server_close()
     dump(root / "scripted_calls.json", calls)
+    if args.audit_boundary:
+        dump(root / "agent_visible_requests.json", captured_requests)
     if result.returncode:
         raise RuntimeError(f"Offline smoke failed; inspect {root / 'eval.log'}")
     paths = list((root / "runs").glob("*/traces.jsonl"))
@@ -116,6 +171,30 @@ def main(args):
     assert info["spend_final"]["accounted_cost_usd"] == 0
     assert not info["limit_audit"]["truncated"]
     assert info["grade"]["status"] == "COMPLETE"
+    if args.audit_boundary:
+        tool_outputs = [m.get("content", "") for r in captured_requests for m in r["messages"] if m["role"] == "tool"]
+        boundary = next((text for text in tool_outputs if '"boundary_audit"' in text), None)
+        assert boundary and "false" not in boundary.lower(), boundary
+        assert any("multiple of 0.02 time units" in text for text in tool_outputs)
+        # Look at what the actual native model request received, rather than
+        # assuming the task prompt/tool docstrings are the entire interface.
+        import re
+
+        forbidden = re.compile(
+            r"\b(spatial|fields?|grids?|geometry|translation|dilation|centered|sources?|pulses?|diffusion|periodic|lattice|activator|inhibitor|coordinates|poses?|blobkit|p4g2_044)\b",
+            re.I,
+        )
+        public = [
+            m.get("content", "")
+            for r in captured_requests
+            for m in r["messages"]
+            if m["role"] in ("system", "user", "tool")
+        ]
+        public += [json.dumps(r.get("tools", [])) for r in captured_requests]
+        assert not any(forbidden.search(text) for text in public), "Hidden-mechanism vocabulary reached the model"
+        system = next(m["content"] for m in captured_requests[0]["messages"] if m["role"] == "system")
+        assert system.lstrip().startswith("# Investigate and predict\n")
+        assert "You are a coding agent" not in system
     expected = json.loads(bundle.verified_path("checks.json").read_text())["reference"]["primary_joint_energy"]
     assert abs(info["primary_joint_energy"] - expected) < 1e-10
     report = dict(
@@ -126,7 +205,12 @@ def main(args):
         energy=info["primary_joint_energy"],
         stop_condition=trace["stop_condition"],
         audit=info["limit_audit"],
+        replayed_tool_calls=replayed_tool_calls,
+        injected_schema_failure_at=args.inject_schema_failure_at,
+        boundary_audited=args.audit_boundary,
     )
+    if args.expected_experiments is not None:
+        assert info["limit_audit"]["usage"]["experiments"] == args.expected_experiments
     dump(root / "report.json", report)
     print(json.dumps(report, indent=2))
 
@@ -135,4 +219,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bundle", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--replay-trace", type=Path)
+    parser.add_argument("--audit-boundary", action="store_true")
+    parser.add_argument("--inject-schema-failure-at", type=int)
+    parser.add_argument("--expected-experiments", type=int)
     main(parser.parse_args())

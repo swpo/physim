@@ -172,7 +172,10 @@ def test_public_service_and_validation_share_new_grammar_and_limits():
 def test_old_and_new_specs_and_validation_cases_do_not_mix():
     from unittest.mock import patch
 
-    for protocol, text in [(R6.LEGACY_PROTOCOL, "fixed source location"), (R6.APPARATUS_PROTOCOL, "center")]:
+    for protocol, text in [
+        (R6.LEGACY_PROTOCOL, "strictly increasing start-time"),
+        (R6.APPARATUS_PROTOCOL, "nondecreasing start-time"),
+    ]:
         roster = scoring.PublicRoster(protocol=protocol)
         with patch.object(taskset, "public_roster", return_value=roster):
             assert text in taskset.public_prompt(taskset.R6ToolsConfig())

@@ -1,78 +1,57 @@
-# R6 executable prediction contract — worked example v2
+# Investigate and predict
 
-You investigate an unfamiliar dynamical system using repeatable experiments,
-probe arrays, and a source. Your deliverable is Python code implementing:
+Learn how an unfamiliar world behaves by making observations and conducting
+experiments, then build a predictive model of it. You can investigate, analyze
+your observations, and revise your model iteratively. When you are ready, submit
+a single executable predictor that can handle new experiments. Evaluation tests
+that frozen predictor against measurements you have not seen.
 
-```python
-def predict(actions, queries, n_samples=64, seed=0):
-    return {"samples": [array_for_each_query]}
-```
+## Experiments
 
-Use observations collected during exploration to build the predictor. You may
-package learned data and model parameters with it. Prediction runs use that
-artifact without access to the experimental service. The evaluator supplies new
-action/query programs, calls your predictor, then compares its outputs with one
-or more fresh physical realizations. The prediction programs are fixed in advance
-within each call; adaptive actions based on future readings are outside this API.
+Your access to the world is an experimental apparatus with two adjustable devices.
+The interface lets you operate these devices, issue inputs that can affect the
+world, and request measurements. You must discover how the controls work, what
+the measurements mean, and how they relate to one another through experiments.
 
-## Experiments and time
+An experiment consists of two lists: `actions` describes what to do and when;
+`queries` describes which measurements to request and when. Submit both lists
+to `laboratory_experiment(actions, queries)`. Each experiment resets the world
+and apparatus to the same starting condition at time 0, then executes the
+specified program. Repeating a request can yield different measurements.
+Each program is supplied in full; actions cannot depend on readings obtained
+within that experiment.
 
-Each experiment starts from the same prepared physical state and apparatus poses
-at time0. Waiting is implicit in timestamps. Starting a new experiment restores
-that physical starting point. Ongoing random disturbances differ between
-experiments. Your task is to predict observable behavior, including meaningful
-uncertainty; reproducing those disturbances is not required or possible through
-the API. `seed` only controls your predictor's sampling.
+### Actions
 
-The local experimental service accepts the same `actions` and `queries` grammar
-as prediction, and returns one realization in the same `samples` structure. Both
-exploration and evaluation allow the ranges below. All times are absolute time
-units from the prepared start, nonnegative multiples of0.02 (representation
-tolerance1e-9). This example uses a maximum time of50. Each action's entire
-occupied interval must end by that maximum, even if all queries are earlier.
-
-The trusted host exposes `experiment(actions, queries)` and `usage()`. The
-development exploration budget is100 experiments and5000 integrated time units.
-Each admitted request consumes one experiment and its largest query timestamp
-in time units. Empty requests consume a call but no simulated time. Invalid
-requests consume neither; an admitted execution that fails retains its charge.
-`usage()` reports calls and time consumed and their configured limits. A pilot
-may set different budgets, which must be announced before exploration begins.
-
-## Actions
-
-An injection emits through one anonymous port at a fixed source location:
+The `inject` command accepts these keys:
 
 ```json
 {"t": 1.0, "kind": "inject", "port": 2, "amp": 0.7, "dur": 4.0}
 ```
 
-`port` is an integer0..11, amplitude is in[0,3], and duration is in(0,50]. The
-source is active on[t,t+dur). Its location stays fixed when probes move. Zero
-amplitude is permitted. Port identities are consistent across source and sensors.
+`port` is an integer from 0 to 11. `amp` is a finite
+number in [0,3]; zero is permitted. `dur` is in (0,50] and must be a multiple
+of 0.02. This command occupies the interval [t,t+dur) for scheduling purposes.
+Learn how these inputs affect subsequent measurements through experiments.
 
-A probe adjustment changes one device's pose immediately:
+The `adjust` command accepts these keys:
 
 ```json
-{"t": 2.0, "kind": "adjust", "device": 1, "u": [0.2, -0.4, 0.1]}
+{"t": 2.0, "kind": "adjust", "device": 0, "u": [0.2, -0.4, 0.1]}
 ```
 
-`device` is0 or1. Each of the three controls is a finite number in[-1,1]. Their
-mapping to translation and array dilation is initially unknown. Dilation clips
-at the apparatus bounds; a valid command at a bound is accepted. The adjustment
-occupies the shared adjustment lane for5 time units, regardless of its size.
-Probes are passive: movement changes where you observe, not the physical fields.
+`device` is 0 or 1. `u` contains exactly three finite numbers, each in [-1,1].
+An adjustment takes effect at its timestamp and occupies [t,t+5) for scheduling
+purposes. Discover what each control does from the measurements.
 
-Actions must be listed in strictly increasing start-time order. Simultaneous
-starts are unsupported. Two injection intervals cannot overlap; two adjustment
-intervals cannot overlap, including adjustments of different devices. Injection
-and adjustment intervals may overlap if their start times differ. Adjacent
-endpoints are permitted. A zero-effect command still occupies its declared lane.
-At each event time, the previous source interval ends, a starting action takes
-effect, then requested readings are taken. Intervals after the last query are
-validated but need not be simulated.
+Intervals of the same action kind must not overlap, including `adjust` commands
+for different devices. Intervals of different kinds may overlap. Adjacent
+endpoints are allowed. These constraints apply even when input values are zero.
 
-## Queries and output
+List actions in strictly increasing start-time order; simultaneous starts are
+unsupported. Actions execute before measurements requested at the same time.
+
+### Measurement requests
 
 ```json
 [
@@ -82,49 +61,120 @@ validated but need not be simulated.
 ]
 ```
 
-Every query returns all12 ports. `device0` has13 slots, `device1` has19, and
-`global` has2 (spatial mean, then spatial population variance). Device geometry,
-spatial coordinates, field meanings and governing equations are not supplied.
+Each measurement interface returns 12 channels. `device0` has 13 output
+slots per channel, `device1` has 19, and `global` has 2. Channel and slot indices
+are stable labels. Their behavior and relationships are for you to investigate.
 
-For each query, return a numeric array with shape:
+All times are absolute time units from the start, in [0,50], and must be
+multiples of 0.02 (with representation tolerance 1e-9). Waiting is implicit in
+timestamps. Every action's entire scheduling interval must end by 50, even if
+all queries are earlier. Intervals beyond the last query are still checked.
 
-```text
-(n_samples, number_of_requested_times, 12, number_of_sensor_slots)
-```
-
-Times within each query must be strictly increasing, with no duplicates.
-The same timestamp may appear in queries for different sensors. Each query's
-time list is independent; there is no ordering requirement between query objects.
-Preserve the input query order and each query's chronological time order.
-All values must be finite. No broadcasting, missing ports, extra keys, NaNs or
-infinities are accepted. A member index denotes one coherent predicted
-trajectory across every time, sensor and query in that call. Permuting whole
-members does not affect grading. Independently shuffling values at different
-times or devices changes the predicted joint behavior.
-
-A deterministic predictor may repeat its estimate in every member. A stochastic
-predictor may return an empirical distribution; it need not be Gaussian.
-Repeated calls with the same inputs and predictor seed must reproduce output.
-Predicted earlier behavior should not depend on adding later actions or queries.
-
-The protocol supports empty query/time lists with correspondingly empty outputs;
-graded examples always contain at least one observation. Exact object keys and
+Times within a query must be strictly increasing, with no duplicates. The same
+timestamp may appear in different queries. Each query's time list is independent;
+there is no ordering requirement between query objects. Exact object keys and
 JSON number types are required; booleans are not numbers or integer IDs.
 
-## Grading and operational limits
+### Reading observations
 
-The evaluator compares your empirical predictive distribution with independently
-simulated observations. It never pairs your member0 with physical member0.
-Marginal CRPS measures predicted scalar distributions; joint energy scores measure
-selected observable groups across times and sensor positions. Lower scores are
-better. Group definitions and scales are fixed before grading. There is no
-universal0–1 accuracy conversion or requirement to predict a microscopic noise
-path. The private phenomenon names and physical explanations are not inputs.
+`laboratory_experiment` saves measurements to an NPZ file in `/observations`
+and returns its path, array shapes, and experiment usage. Each file contains
+the request and one array per query. Read them together:
 
-The default request asks for64 predictive members; at most256 are accepted.
-The local evaluator caps128 actions,32 queries,256 times per query,1024 total
-query times,2,000,000 combined prediction/truth scalar outputs and100,000,000
-pairwise score operations. A request must satisfy every cap. Each pilot declares
-its model-response, experiment and submitted-artifact execution budgets before
-exploration. Submitted code runs in an isolated runtime with its frozen artifact
-and own observations; the physical service is unavailable during prediction.
+```python
+import json
+import numpy as np
+with np.load(observation_path, allow_pickle=False) as data:
+    request = json.loads(data["request"].item())
+    observations = [(query, data[f"query{i}"].copy())
+                    for i, query in enumerate(request["queries"])]
+```
+
+An observation array has shape `(1, number_of_requested_times, 12, slots)`.
+The leading dimension is one measured outcome. `query0` is the first query in
+that file, not a fixed measurement interface. Align query identities and times
+when comparing experiments. There is no separate metadata JSON file. Analyze
+saved arrays instead of printing them in full into the conversation.
+
+## Prediction
+
+Write `/workspace/predictor.py` with this function at module scope:
+
+```python
+def predict(actions, queries, n_samples=64, seed=0):
+    return {"samples": [array_for_each_query]}
+```
+
+The function receives an experiment using the same action/query interface.
+It must predict the requested measurements, including their uncertainty,
+without making further experimental calls. Package any learned data and
+parameters with your code.
+
+Return one numeric array for each query, in input order, with shape:
+
+```text
+(n_samples, number_of_requested_times, 12, number_of_output_slots)
+```
+
+Use the output slot counts defined above and preserve each query's chronological
+time order. A sample index denotes one complete possible outcome across every
+time, measurement interface, and query in that call. A deterministic predictor
+may repeat its estimate in every sample. `seed` controls only your predictor's
+sampling; identical inputs and seed must reproduce the same output. Predicted
+earlier behavior should not depend on adding later actions or queries.
+
+All values must be finite. No broadcasting, missing channels, extra keys, NaNs,
+or infinities are accepted. Handle different query orders, requested times,
+and sample counts. Empty query lists and empty time lists require correspondingly
+empty outputs; graded requests contain at least one measurement.
+
+Use `laboratory_validate()` while developing the predictor. It checks that the
+code imports, executes, and returns valid, repeatable outputs on example requests.
+It does not submit the predictor or provide prediction-accuracy feedback.
+
+When ready, call `laboratory_submit()`. It checks and freezes the current
+predictor and supporting files. A failed check leaves the workspace open for
+repair; a successful submission ends experimentation. Finish the session once
+submission is accepted. If the session ends with `predictor.py` written, its
+final snapshot is collected and checked as well.
+
+## Grading
+
+The evaluator calls your frozen predictor on undisclosed valid action/query
+programs and compares its predictions with independent experimental measurements.
+The joint distribution of predicted measurements is evaluated using energy
+scores. Output differences are divided by fixed scales before scoring. Scores
+are averaged over predeclared groups of outputs and test programs.
+
+Lower average energy S is better. Your reward is 1/(1+S). A missing or invalid
+predictor receives zero reward. Validation gives no feedback about this accuracy
+score; use your own experiments to assess and improve your predictions.
+
+## Limits and runtime
+
+Use the bash and edit tools to run commands and work with files.
+NumPy, SciPy, scikit-learn and Matplotlib are installed. Work in `/workspace`;
+your files persist throughout experimentation. Laboratory tools are your only
+access to the world.
+
+The experiment budget is 1000 experiments and 50000
+integrated time units. Each admitted request consumes one experiment and its
+largest query timestamp in time units. Empty requests consume one experiment
+and zero time units. Invalid requests consume neither; an admitted execution
+that fails retains its charge. `laboratory_usage()` reports consumption, limits,
+and validation/submission attempt counts. Validation attempts: 128;
+submission attempts: 128. Neither consumes experiments or
+time units.
+
+The default prediction request asks for 64 samples; at most 256 are accepted.
+Request caps are 128 actions, 32 queries, 256 times per query, 1024 total query
+times, 2,000,000 combined predicted and measured scalar values, and 100,000,000
+pairwise score operations. Every cap must be satisfied.
+
+During validation and grading, your predictor runs in a separate Docker container.
+Inside that container, `/workspace` contains your frozen submitted files and
+`/observations` contains your experimental data; both are read-only. `/tmp` is
+writable for temporary computation. No network access or further laboratory
+calls are available. Each predictor call can use 1 CPUs and
+1 GiB memory, with limits of 20 CPU seconds
+and 30 wall-clock seconds.

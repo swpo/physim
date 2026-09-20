@@ -21,13 +21,13 @@ requires = ["hatchling>=1.27,<2"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["physim", "physim_r6", "physim_r6_scaling"]
+packages = ["physim", "physim_r6", "physim_r6_scaling", "physim_prime_agent"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.sdist]
-include = ["physim", "physim_r6", "physim_r6_scaling", "pyproject.toml", "README.md", "LICENSE", "DATA_SOURCES.md"]
+include = ["physim", "physim_r6", "physim_r6_scaling", "physim_prime_agent", "pyproject.toml", "README.md", "PRIME_AGENT.md", "LICENSE", "DATA_SOURCES.md"]
 
 [tool.hatch.build]
 exclude = ["physim/blobdata"]

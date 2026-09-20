@@ -118,7 +118,7 @@ def test_prompt_advertises_only_the_public_roster():
     b = SimpleNamespace(roster=scoring.PublicRoster(n_ports=4))
     with patch.object(taskset, "Bundle", return_value=b):
         text = taskset.public_prompt(taskset.R6ToolsConfig(bundle=Path("private-bf-bundle")))
-    assert "all4 ports" in text and "0..3" in text and "times, 4," in text
+    assert "4 channels" in text and "0 to 3" in text and "times, 4," in text
     assert "all12" not in text and "0..11" not in text and "times, 12," not in text
     assert "private-bf-bundle" not in text and "bilinear" not in text
 

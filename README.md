@@ -24,8 +24,10 @@ BF case study's separate experimental condition.
 
 ## Install and run locally
 
-Use Python 3.12 for repository development. The two packages have one canonical version each:
-Physim 0.12.2 and its explicit simulator dependency, blobkit 0.3.5.
+Use Python 3.12 for repository development. The workspace contains Physim
+0.13.0.dev0 and its simulator dependency, blobkit 0.3.5. The latest published
+Physim release remains 0.12.2; its pinned preparations differ from the new BF
+case-study condition described in the [reproduction guide](REPRODUCING.md).
 
 ```sh
 uv venv --python 3.12
@@ -86,6 +88,11 @@ there is no automatic selection of all eval-ready worlds. Missing selection is
 an error before model execution.
 Its experiment budget is the single source for the prompt and service limits.
 Model runs require separately configured provider credentials and incur API costs.
+
+The development package also supports the full
+[Prime Agent harness](environments/physim/PRIME_AGENT.md), including native provider
+interfaces, caching, subagents, and an offline integration test. The campaign
+runner reports spend without automatically stopping an authorized run on dollars.
 
 ## Data identity and current scope
 

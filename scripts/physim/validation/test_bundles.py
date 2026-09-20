@@ -1,5 +1,6 @@
 """Bundle trust boundary and offline release workflow checks; no network/model calls."""
 
+import hashlib
 import io
 import json
 import os
@@ -15,7 +16,6 @@ from physim import hub
 from physim.bundles import (
     Bundle,
     BundleError,
-    digest,
     load_arrays,
     read_json,
     relative_path,
@@ -74,6 +74,7 @@ class DataBoundaryTests(unittest.TestCase):
                 load_arrays(p)
 
     def test_public_inputs_are_frozen_before_grading(self):
+        from physim.artifact_store import read_artifact_files
         from physim.evaluation import _snapshot_inputs
 
         with tempfile.TemporaryDirectory() as directory:
@@ -83,8 +84,9 @@ class DataBoundaryTests(unittest.TestCase):
             (source / "predictor.py").write_text("original")
             rows = _snapshot_inputs(source, root / "frozen")
             (source / "predictor.py").write_text("changed after freeze")
-            self.assertEqual((root / "frozen/predictor.py").read_text(), "original")
-            self.assertEqual(rows[0]["sha256"], digest(root / "frozen/predictor.py"))
+            frozen = dict(read_artifact_files(root / "frozen", rows))
+            self.assertEqual(frozen["predictor.py"], b"original")
+            self.assertEqual(rows[0]["sha256"], hashlib.sha256(b"original").hexdigest())
             (source / "link").symlink_to(source / "predictor.py")
             with self.assertRaises(RuntimeError):
                 _snapshot_inputs(source, root / "rejected")

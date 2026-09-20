@@ -15,6 +15,10 @@ from . import blobround6 as R6
 from .blobround6_eval import DEFAULT_LIMITS, DEFAULT_ROSTER, EvaluationError, validate_case
 
 
+class RequestError(EvaluationError):
+    """A public grammar/budget rejection, safe to return to the agent."""
+
+
 class ExperimentService:
     """One prepared physical origin; independent forcing on every experiment.
 
@@ -46,14 +50,23 @@ class ExperimentService:
         Caller-supplied seeds, fields, poses and hidden metadata are unsupported.
         """
         case = dict(id='experiment', actions=deepcopy(actions), queries=deepcopy(queries))
-        shapes = validate_case(case, roster=self._roster, limits=self._limits, allow_empty=True)
+        try:
+            shapes = validate_case(case, roster=self._roster, limits=self._limits, allow_empty=True)
+        except EvaluationError as exc:
+            # Describe admissible timestamps, not the numerical implementation.
+            # Keep the frozen simulator/parser bytes unchanged for existing bundles.
+            message = str(exc).replace(f"on the dt={R6.SIM_DT:g} grid", f"a multiple of {R6.SIM_DT:g} time units")
+            message = message.replace("at least one dt tick", f"at least {R6.SIM_DT:g} time units")
+            message = message.replace("exact tick representation range", "supported timestamp range")
+            message = message.replace("exact tick range", "supported timestamp range")
+            raise RequestError(message) from None
         if sum(t * p * s for t, p, s in shapes) > self._limits.max_output_values:
-            raise EvaluationError('experimental output exceeds the scalar-value cap')
+            raise RequestError('experimental output exceeds the scalar-value cap')
         ticks = max((round(t / R6.SIM_DT) for q in case['queries'] for t in q['t']), default=0)
         with self._lock:
             if ((self._max_experiments is not None and self._calls >= self._max_experiments)
                     or (self._max_ticks is not None and self._ticks + ticks > self._max_ticks)):
-                raise EvaluationError('experimental budget exhausted')
+                raise RequestError('experimental budget exhausted')
             self._calls += 1
             self._ticks += ticks
             seed = secrets.randbits(64)

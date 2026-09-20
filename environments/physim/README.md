@@ -17,9 +17,15 @@ Sensor dilation leaves the source centered and does not change its width.
 Published configs and HF bundles still use `fixed-source-v1`. Loading one selects
 its frozen simulator, scoring implementation, agent instructions, and interface
 checks. Existing truth is never relabeled as the new apparatus. The updated
-apparatus has protocol tests; fresh science experiments, preparation/suite
-publication, model rollouts, and a new package release are deferred until the
-remaining documentation review is complete. See [the rerun plan](../../docs_source/APPARATUS_UPDATE.md).
+apparatus has protocol tests and fresh local preparations and rollouts, including
+the [BF case study](../../BF_CASE_STUDY.md). Publishing those new bundles and a new
+package release are separate steps; the existing release pins retain their
+original scientific condition.
+
+The development package also includes the
+[Prime Agent harness adapter](PRIME_AGENT.md), interface-only prompts, and
+cross-platform artifact handling used for the newer rollouts. The adapter's
+guide covers Docker setup, a zero-cost integration check, and campaign tooling.
 
 ## Installation
 
@@ -35,7 +41,7 @@ An editable installation of just the packages is also supported:
 uv pip install -e ./packages/blobkit -e './environments/physim[reference,hub]'
 ```
 
-Physim 0.12.2 depends on blobkit 0.3.5 and Verifiers 0.3.1–0.3.x. The `reference`
+The published Physim 0.12.2 release depends on blobkit 0.3.5 and Verifiers 0.3.1–0.3.x. The `reference`
 extra pins NumPy 2.5.2 and SciPy 1.18.0; `hub` adds immutable Hugging Face downloads.
 The empty `agent` extra is retained for old installation commands.
 

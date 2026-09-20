@@ -24,7 +24,7 @@ def summarize(rows, worlds=WORLDS):
         if row["world"] not in worlds or not 0 <= row["reward"] <= 1:
             raise ValueError("Unexpected world or invalid reward")
         grouped[row["model"]][row["world"]].append(row)
-    complete, incomplete = [], []
+    complete, incomplete, pending_cost = [], [], []
     for model, by_world in sorted(grouped.items()):
         if set(by_world) != set(worlds):
             incomplete.append(dict(model=model, completed_worlds=sorted(by_world)))
@@ -32,24 +32,31 @@ def summarize(rows, worlds=WORLDS):
         means = {
             world: dict(
                 reward=mean(r["reward"] for r in by_world[world]),
-                cost_usd=mean(r["cost_usd"] for r in by_world[world]),
+                cost_usd=(
+                    mean(r["cost_usd"] for r in by_world[world])
+                    if all(r["cost_usd"] is not None for r in by_world[world])
+                    else None
+                ),
                 repetitions=len(by_world[world]),
                 rewards=[r["reward"] for r in by_world[world]],
             )
             for world in worlds
         }
-        complete.append(
+        priced = all(v["cost_usd"] is not None for v in means.values())
+        (complete if priced else pending_cost).append(
             dict(
                 model=model,
                 mean_reward=mean(v["reward"] for v in means.values()),
-                mean_cost_usd=mean(v["cost_usd"] for v in means.values()),
+                mean_cost_usd=mean(v["cost_usd"] for v in means.values()) if priced else None,
                 worlds=means,
             )
         )
-    return dict(models=complete, incomplete_models=incomplete)
+    return dict(models=complete, incomplete_models=incomplete, pending_cost_models=pending_cost)
 
 
 def collect(root):
+    if (root / "HOLD.json").exists():
+        raise ValueError("Campaign results are held; review HOLD.json before publishing or combining scores")
     rows, excluded, receipts = [], [], []
     for file in sorted((root / "attempts").glob("*/attempt.json")):
         attempt = json.loads(file.read_text())
@@ -62,8 +69,6 @@ def collect(root):
         audit = json.loads((artifact / "limit_audit.json").read_text())
         if audit["truncated"] or audit["length_finished_calls"]:
             raise ValueError(f"Attempt marked complete despite a binding limit: {file.parent.name}")
-        if spend["calls_missing_cost"]:
-            raise ValueError(f"Reconcile unreported provider cost before plotting: {file.parent.name}")
         reward = attempt["rewards"]["prediction_reward"]["score"]
         energy = attempt.get("energy")
         expected = 0 if energy is None else 1 / (1 + energy)
@@ -75,7 +80,10 @@ def collect(root):
             repetition=attempt["repetition"],
             reward=reward,
             energy=energy,
-            cost_usd=spend["reported_cost_usd"],
+            cost_usd=spend["reported_cost_usd"] if not spend["calls_missing_cost"] else None,
+            reported_cost_usd=spend["reported_cost_usd"],
+            unreported_cost_reserve_usd=spend.get("unreported_cost_reserve_usd", 0),
+            calls_missing_cost=spend["calls_missing_cost"],
             stop_condition=attempt["stop_condition"],
             usage=audit["usage"],
             source_id=attempt["source_id"],
@@ -91,7 +99,11 @@ def collect(root):
         excluded_attempts=excluded,
         sources=receipts,
         aggregation="Mean reward and cost within each world, then equal mean over BF, XV, and p4g2_044.",
-        cost="Reported inference dollars per eligible rollout. Retry/failed-attempt costs remain in the campaign ledger.",
+        cost=(
+            "Reported inference dollars per eligible rollout. Missing receipts leave cost null; "
+            "those scores are retained in rows and pending_cost_models but excluded from priced models. "
+            "Retry/failed-attempt costs remain in the campaign ledger. Reserves are not measured charges."
+        ),
     )
 
 
@@ -102,4 +114,9 @@ if __name__ == "__main__":
     result = collect(args.campaign.resolve())
     target = args.campaign / "results.json"
     target.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
-    print(json.dumps({k: result[k] for k in ("models", "incomplete_models", "excluded_attempts")}, indent=2))
+    print(
+        json.dumps(
+            {k: result[k] for k in ("models", "pending_cost_models", "incomplete_models", "excluded_attempts")},
+            indent=2,
+        )
+    )

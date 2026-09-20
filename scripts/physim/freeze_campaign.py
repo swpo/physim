@@ -19,7 +19,7 @@ def freeze(output):
         for path in (ROOT / directory).rglob("*"):
             if (
                 path.is_file()
-                and path.suffix in (".py", ".toml", ".md")
+                and (path.suffix in (".py", ".toml", ".md", ".txt", ".Dockerfile") or path.name == "Dockerfile")
                 and not any(part in (".venv", "__pycache__", "build", "dist") for part in path.parts)
             ):
                 paths.add(path)
@@ -33,9 +33,11 @@ def freeze(output):
     packages = {
         dist.metadata["Name"]: dist.version for dist in importlib.metadata.distributions() if dist.metadata.get("Name")
     }
-    images = json.loads(
-        subprocess.check_output(["docker", "image", "inspect", "physim-agent:0.12.2", "physim-predictor:0.12.0"])
-    )
+    tags = ["physim-agent:0.12.2", "physim-predictor:0.12.0"]
+    prime_agent = output / "prime_agent.json"
+    if prime_agent.exists():
+        tags.append(json.loads(prime_agent.read_text())["image"])
+    images = json.loads(subprocess.check_output(["docker", "image", "inspect", *tags]))
     record = dict(
         created_utc=datetime.now(timezone.utc).isoformat(),
         source_id=archive_id,
