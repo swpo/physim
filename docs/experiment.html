@@ -10,7 +10,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><a class="brand" href="index.html">physim<span>Experimental worlds for AI</span></a>
-<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html" aria-current="page">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="results.html">Results</a><a href="try.html">Reproduce</a><a href="contribute.html">Contribute</a></nav></header>
+<nav aria-label="Main navigation"><a href="index.html">Overview</a><a href="worlds.html">Worlds</a><a href="experiment.html" aria-current="page">Experiment &amp; predict</a><a href="scoring.html">Evaluation</a><a href="results.html">Results</a><a href="contribute.html">Contribute</a></nav></header>
 <div class="layout">
 <main id="main"><p class="eyebrow">Experiment &amp; predict</p><h1>Experiments become predictions</h1><p class="lead">A laboratory makes a world repeatable and observable. An agent uses its instruments to learn a predictive model.</p>
 <p>The investigator receives an anonymous instrument interface, a Python workspace, and declared resource budgets. It chooses interventions and measurements, analyzes the returned arrays, and writes a function that predicts the outcomes of further experiments.</p>
@@ -77,9 +77,9 @@ observations["query0"][0, 1, 2, :]  # 13 measured values</code></pre>
 <p>Validation runs a saved copy of the current predictor and supporting files. It checks imports and execution, output structure and dimensions, finite values, empty requests, and repeatability with the same seed. It does not compare predictions with simulated outcomes: a correctly formatted predictor that always returns zero can pass. After validation, the agent can continue editing; successful submission freezes the final artifact.</p>
 <p>The native agent tools expose these operations with a <code>laboratory_</code> prefix. Experiment, model, and execution budgets are specified for each run; they are not properties of the physical world.</p>
 <p>The predictor and any learned parameters or supporting data are saved in the submitted artifact. The evaluator calls the frozen function on further experimental programs in an isolated runtime, without access to the experimental service. Forecasts are finalized before truth observations are loaded for scoring.</p>
-<p>The next chapter defines how these distributions are scored and how a laboratory becomes an evaluation suite. For implementation, download the <a href="examples/AGENT_SPEC.md">twelve-port example contract</a> or use the <a href="try.html#interface-example">runnable interface example</a>.</p>
+<p>The next chapter defines how these distributions are scored and how a laboratory becomes an evaluation suite. For implementation, download the <a href="examples/AGENT_SPEC.md">twelve-port example contract</a> or use the <a href="https://github.com/swpo/physim/blob/main/REPRODUCING.md#prediction-interface-example">runnable interface example in the repository</a>.</p>
 <div class="page-continuation"><a class="previous" rel="prev" href="worlds.html"><span>Previous</span>← Worlds</a><a class="following" rel="next" href="scoring.html"><span>Next</span>Evaluation →</a></div></main>
 </div>
-<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="archive/index.html">Research archive</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
+<footer><span>Physim · Experimental science through prediction</span><div><a href="contribute.html">Contribute</a><a href="https://github.com/swpo/physim">GitHub</a></div></footer>
 </body>
 </html>

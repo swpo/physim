@@ -22,3 +22,6 @@ h2[id],h3[id]{scroll-margin-top:1.5rem}
 .world-equations{margin:1.6rem 0 2.3rem}.world-equations h4{font-size:1rem;margin:1.6rem 0 .6rem}.world-equations p{font-size:.95rem}
 .equation-lines .equation{white-space:normal;overflow-wrap:anywhere;line-height:2;padding:.7rem 1rem;margin:.5rem 0}.world-equations p:last-child{margin:1rem 0 0}
 @media(max-width:600px){.world-panels.two,.world-panels.three{grid-template-columns:1fr}.world-panels{gap:1.3rem}.world-equations{padding:.8rem}.equation-lines .equation{padding:.6rem}}
+
+/* Preserve legible matrix labels on narrow screens. */
+.score-matrix{overflow-x:auto}.score-matrix img{min-width:720px}

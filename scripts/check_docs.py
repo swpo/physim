@@ -116,12 +116,18 @@ def check():
     bf_source = json.loads((SOURCE / "data/bf-evaluation.json").read_text())
     if hashlib.sha256((SOURCE / "data/bf-evaluation.npz").read_bytes()).hexdigest() != bf_source["data_sha256"]:
         errors.append("BF evaluation figure data changed; review and regenerate the figures")
-    for filename in ("bf-evaluation.json", "bf-evaluation.npz"):
+    for filename in ("bf-evaluation.json", "bf-evaluation.npz", "bf-case-study.json"):
         if (SOURCE / "data" / filename).read_bytes() != (DOCS / "data" / filename).read_bytes():
             errors.append(f"{filename}: published figure evidence is stale")
     for path in (SOURCE / "examples").iterdir():
         if path.is_file() and path.read_bytes() != (DOCS / "examples" / path.name).read_bytes():
             errors.append(f"{path.name}: example is stale")
+    case_study = json.loads((SOURCE / "data/bf-case-study.json").read_text())
+    for row in case_study["models"]:
+        for source in row["predictor_sources"]:
+            for root in (SOURCE, DOCS):
+                if hashlib.sha256((root / source["file"]).read_bytes()).hexdigest() != source["sha256"]:
+                    errors.append(f"{source['file']}: submitted predictor source differs from evidence")
     records = json.loads((SOURCE / "archive-map.json").read_text())
     for record in records:
         archived = DOCS / record["archive"]
@@ -158,6 +164,13 @@ def check():
         ("example_port", "2"),
         ("max_experiments", "1000"),
         ("max_total_tu", "50000"),
+        ("max_validation_attempts", "128"),
+        ("max_submission_attempts", "128"),
+        ("predictor_cpus", "1"),
+        ("predictor_memory_gib", "1"),
+        ("predictor_cpu_seconds", "20"),
+        ("predictor_wall_seconds", "30"),
+        ("coding_tools", "Use the bash and edit tools to run commands and work with files."),
     ):
         contract = contract.replace("{" + key + "}", value)
     if contract != (SOURCE / "examples/AGENT_SPEC.md").read_text():

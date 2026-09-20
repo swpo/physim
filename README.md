@@ -18,6 +18,10 @@ lower is better.
 [Worlds](docs/worlds.html) · [Prediction API](docs/experiment.html#prediction) ·
 [Evaluation](docs/scoring.html) · [Results](docs/results.html)
 
+For agents and developers: [reproduction guide](REPRODUCING.md), including data
+identities, the runnable prediction example, released reference scores, and the
+BF case study's separate experimental condition.
+
 ## Install and run locally
 
 Use Python 3.12 for repository development. The two packages have one canonical version each:

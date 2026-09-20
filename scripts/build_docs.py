@@ -9,8 +9,9 @@ import os
 import re
 import shutil
 from decimal import Decimal
-from html import escape, unescape
+from html import escape
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from world_equations import render_equations
 
@@ -21,25 +22,25 @@ PAGES = {
     "worlds": ("Worlds", "Worlds made of interacting fields", "Worlds"),
     "experiment": ("Experiment & predict", "Experiments become predictions", "Experiment & predict"),
     "scoring": ("Evaluation", "Evaluating a prediction function", "Evaluation"),
-    "results": ("Results", "Evidence and current results", "Results"),
-    "try": ("Reproduce", "Reproducing worlds and experiments", "Reproduce"),
+    "results": ("Results", "BF evaluation case study", "Results"),
     "contribute": ("Contribute", "Contributing to Physim", "Contribute"),
 }
-MAIN = ("index", "worlds", "experiment", "scoring", "results", "try", "contribute")
+MAIN = ("index", "worlds", "experiment", "scoring", "results", "contribute")
 REDIRECTS = {
     "fields.html": "worlds.html#field-model",
     "generation.html": "worlds.html#generation",
     "simulator.html": "worlds.html#numerics",
     "api.html": "experiment.html#actions",
-    "registry.html": "try.html#registry",
+    "registry.html": "https://github.com/swpo/physim/blob/main/registry/README.md",
+    "try.html": "https://github.com/swpo/physim/blob/main/REPRODUCING.md",
+    "archive/index.html": "https://github.com/swpo/physim/tree/main/probes",
 }
 DESCRIPTIONS = {
     "index": "Physim evaluates agents learning physics through experiments; Blobkit discovers worlds through simulation and evolutionary search over field equations.",
     "worlds": "Field equations, numerical dynamics, emergent structures, and the generation of worlds with patterns, trails, and orbital motion.",
     "experiment": "Prepare a laboratory, measure and perturb its fields, and return predictions through a complete experimental interface.",
     "scoring": "Joint energy scoring and framework reward, with a worked BF investigation connecting physical effects, sensor evidence, and evaluation cases.",
-    "try": "Find registry data, reproduce reference scores, run models, and generate worlds with pinned code and data.",
-    "results": "Saved control scores and model attempts, with resource profiles, failures, and the limits of current evidence.",
+    "results": "Seven BF case studies: experiments, submitted predictors, held-out scores, token use, and concrete prediction failures with Prime Agent.",
     "contribute": "Requirements for contributing reproducible worlds, evaluation suites, predictors, and documentation.",
 }
 CONTROL_NAMES = {
@@ -206,6 +207,32 @@ def generated_content():
     predictor = (SOURCE / "examples/predictor.py").read_text()
     sample_code = predictor[predictor.index("SLOTS =") : predictor.index("\n\nif __name__")].strip()
     registry_counts = registry_content()
+    case_study = json.loads((SOURCE / "data/bf-case-study.json").read_text())
+    case_rows, token_rows = [], []
+    for row in case_study["models"]:
+        usage = row["usage"]
+        cost_note = ("†" if row["cost_basis"] == "estimate" else "") + (
+            "*" if usage["undiscounted_cache_estimate"] else ""
+        )
+        anchor = next(s["file"] for s in row["predictor_sources"] if s["file"].endswith("/predictor.py"))
+        name = f'<a href="{escape(anchor, quote=True)}">{escape(row["name"])}</a>'
+        case_rows.append(
+            (
+                name,
+                f"{row['reward']:.3f}",
+                f"{row['experiments']:,}",
+                f"{row['elapsed_minutes']:.0f}",
+                f"${row['cost_usd']:.2f}{cost_note}",
+            )
+        )
+        token_rows.append(
+            (
+                escape(row["name"]),
+                f"{usage['fresh_input_tokens']:,}",
+                f"{usage['cached_input_tokens']:,}",
+                f"{usage['output_tokens']:,}",
+            )
+        )
     return {
         **{
             f"{key}_equations": render_equations(
@@ -218,6 +245,16 @@ def generated_content():
         "model_tables": "\n".join(profiles),
         "predictor_code": escape(sample_code),
         "registry_counts": registry_counts,
+        "case_study_table": table(
+            ("Model / predictor source", "Reward ↑", "Experiments", "Minutes", "Cost"),
+            case_rows,
+            "One BF rollout per model · Prime Agent · 15 grading cases",
+        ),
+        "case_study_tokens": table(
+            ("Model", "Fresh input", "Cache reads", "Output"),
+            token_rows,
+            "Recorded token use for the displayed rollouts",
+        ),
     }
 
 
@@ -238,12 +275,15 @@ def render(key, heading, section, body, title=None, description=None, prefix="")
 
 def redirect(old, target):
     prefix = os.path.relpath(DOCS, (DOCS / old).parent) + "/"
-    target_page, _, fragment = target.partition("#")
-    relative = os.path.relpath(DOCS / target_page, (DOCS / old).parent)
-    fallback = f"#{fragment}" if fragment else ""
-    # JavaScript retains a deep-link fragment; the plain link works without JS.
+    if urlsplit(target).scheme:
+        relative, fallback, js_hash = target, "", '""'
+    else:
+        target_page, _, fragment = target.partition("#")
+        relative = os.path.relpath(DOCS / target_page, (DOCS / old).parent)
+        fallback = f"#{fragment}" if fragment else ""
+        # Retain deep links within the site; repository destinations have their own anchors.
+        js_hash = f"(window.location.hash || {json.dumps(fallback)})" if fallback else "window.location.hash"
     js_target = json.dumps(relative).replace("<", "\\u003c")
-    js_hash = f"(window.location.hash || {json.dumps(fallback)})" if fallback else "window.location.hash"
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex"><title>Page moved · Physim</title>
@@ -272,12 +312,13 @@ def build():
     for filename in ("worlds.json", "results.json", "registry.json"):
         (DOCS / "data").mkdir(exist_ok=True)
         shutil.copyfile(SOURCE / filename, DOCS / "data" / filename)
-    for filename in ("bf-evaluation.json", "bf-evaluation.npz"):
+    for filename in ("bf-evaluation.json", "bf-evaluation.npz", "bf-case-study.json"):
         shutil.copyfile(SOURCE / "data" / filename, DOCS / "data" / filename)
     (DOCS / "examples").mkdir(exist_ok=True)
     for path in (SOURCE / "examples").iterdir():
         if path.is_file():
             shutil.copyfile(path, DOCS / "examples" / path.name)
+    shutil.copytree(SOURCE / "examples/case-study", DOCS / "examples/case-study", dirs_exist_ok=True)
     # Only explicitly mapped old URLs are rewritten. Archive pages/media are inputs.
     records = json.loads((SOURCE / "archive-map.json").read_text())
     aliases = {"blobs.html": "worlds.html", "rollouts.html": "results.html"}
@@ -288,28 +329,7 @@ def build():
         path = DOCS / record["old"]
         path.parent.mkdir(exist_ok=True, parents=True)
         path.write_text(redirect(record["old"], target))
-    body = '<p class="lead">Earlier studies, preserved with their original scope and claims.</p><p>The current program uses blob-field worlds and prediction-function evaluation. Historical scoring rules and model comparisons below apply only to the studies that reported them.</p>'
-    for title, group in [
-        ("Earlier benchmark", [r for r in records if not r["old"].startswith("blobs")]),
-        ("Blob-field research", [r for r in records if r["old"].startswith("blobs")]),
-    ]:
-        body += f"<h2>{title}</h2><ul>"
-        for record in group:
-            link = record["archive"].removeprefix("archive/")
-            body += f'<li><a href="{escape(link)}">{escape(unescape(record["title"]))}</a></li>'
-        body += "</ul>"
-    (DOCS / "archive" / "index.html").write_text(
-        render(
-            "archive",
-            "Research archive",
-            "Archive",
-            body,
-            title="Research archive",
-            description="Historical Physim benchmarks and blob-field research.",
-            prefix="../",
-        )
-    )
-    print(f"Built {len(PAGES)} current pages, an archive index, and compatibility redirects.")
+    print(f"Built {len(PAGES)} current pages and compatibility redirects.")
 
 
 if __name__ == "__main__":
