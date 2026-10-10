@@ -1,0 +1,1023 @@
+{
+  "schema": "physim-bf-writeup-v2",
+  "campaign": "bf-case-study-20261006",
+  "selection": "Nine completed predictors from the verified ten-model batch. GLM's missing-predictor outcome is omitted from the writeup at the author's request and retained in the full campaign record.",
+  "prompt": "interface-only-v4-portable-tools",
+  "original_prompt_precision": 2.0,
+  "reward_precision": 2.7463054821343444,
+  "reward": "clip(-log10(mean of the 15 joint-energy scores), 0, K) / K; K=-log10(maximum calibrated native suite energy), with no rounding or margin",
+  "reward_note": "Retrospective fractional K with no margin; the investigations received K=2 in their prompts.",
+  "interpretation": "One independent BF investigation per model. Harnesses vary by model family; this is a set of case studies, not a replicated model-ranking benchmark.",
+  "forecast_members": 64,
+  "truth_members": 2,
+  "cost_note": "Costs cover the retained investigation only, excluding superseded attempts, smoke probes and sandbox compute. Reported charges and token-based estimates/reserves for unreported charges remain separate. Where available, a reviewed native-usage estimate replaces the budget reserve in the displayed table; the original reserve is preserved in the data.",
+  "references": {
+    "bundle": "bundle:sha256:38d159a8052bb0fc24d0d8feefe3985ac645fb19954f2c84aa54954a948b561e",
+    "manifest_sha256": "6796d01d07528fc49f70b3b64f51e9ecbab03634b99e738f78cd0a6b4c04b0db",
+    "world": "world:sha256:aa35f132db7ff9cc70280dc5af3be3f4b3c768a366a7d02be47c50a3479edb02",
+    "preparation": "preparation:sha256:579e736c902b534456a957ed03ba2d6a6190009f4887c37ce167b799487c9586",
+    "suite": "suite:sha256:4d1a8e77e4f9acad6e58d5dce9636e4ab5767f97092608a51487735b7edd7826"
+  },
+  "sources": [
+    {
+      "path": "outputs/bf-case-study-20261006/results/case-study.json",
+      "sha256": "1a9ae7ad6345a427cbf940c17ac36a2d364142695d1d6a06c54dabf9069d728b"
+    },
+    {
+      "path": "outputs/bf-case-study-20261006/results/verification.json",
+      "sha256": "e137334ae84e2f3007e3c85ab7088f87623b8eb0eb3dd7062c42fba64d2d6380"
+    },
+    {
+      "path": "outputs/bf-case-study-20261006/results/trajectory-notes.json",
+      "sha256": "2a23c7aaae1d8bd809e613d0235bd167fec2a51dcfc0c519a12caf1057455b9a"
+    },
+    {
+      "path": "outputs/bf-case-study-20261006/results/reward-policy-no-margin.json",
+      "sha256": "bb5c74fa7d6ece6553ba461cda2bacf37f5f8f9afd99dee1e37573661bc339e8"
+    }
+  ],
+  "cases": [
+    {
+      "id": "c001",
+      "family": "sham"
+    },
+    {
+      "id": "c002",
+      "family": "act_weak"
+    },
+    {
+      "id": "c003",
+      "family": "act_strong"
+    },
+    {
+      "id": "c004",
+      "family": "trail_low"
+    },
+    {
+      "id": "c005",
+      "family": "trail_mid"
+    },
+    {
+      "id": "c006",
+      "family": "trail_high"
+    },
+    {
+      "id": "c007",
+      "family": "act_then_trail"
+    },
+    {
+      "id": "c008",
+      "family": "act_delayed"
+    },
+    {
+      "id": "c009",
+      "family": "fast_inhibitor"
+    },
+    {
+      "id": "c010",
+      "family": "probe_shift"
+    },
+    {
+      "id": "c011",
+      "family": "probe_wide"
+    },
+    {
+      "id": "c012",
+      "family": "pulse_then_move"
+    },
+    {
+      "id": "c013",
+      "family": "move_then_pulse"
+    },
+    {
+      "id": "c014",
+      "family": "two_sources"
+    },
+    {
+      "id": "c015",
+      "family": "move_during_pulse"
+    }
+  ],
+  "models": [
+    {
+      "model": "qwen/qwen3.5-35b-a3b",
+      "name": "Qwen3.5 35B A3B",
+      "short": "Qwen3.5 35B A3B",
+      "plot_label": "Qwen3.5\n35B A3B",
+      "harness": "prime-agent",
+      "harness_label": "Prime Agent",
+      "trace_id": "80c3d67bc0aa4d1d915a76aff2a346be",
+      "energy": 0.6128226755255375,
+      "reward": 0.0774368236875909,
+      "experiments": 26,
+      "model_calls": 92,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 0.0,
+      "unreported_cost_reserve_usd": 0.9405875000000002,
+      "calls_missing_cost": 92,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.5705322651440521
+        },
+        {
+          "id": "c002",
+          "energy": 0.5744521679660892
+        },
+        {
+          "id": "c003",
+          "energy": 0.5885766383930059
+        },
+        {
+          "id": "c004",
+          "energy": 0.5836689503073667
+        },
+        {
+          "id": "c005",
+          "energy": 0.6433958205530841
+        },
+        {
+          "id": "c006",
+          "energy": 0.9420823497942319
+        },
+        {
+          "id": "c007",
+          "energy": 0.6384656302760425
+        },
+        {
+          "id": "c008",
+          "energy": 0.5553291090297774
+        },
+        {
+          "id": "c009",
+          "energy": 0.5588720282533082
+        },
+        {
+          "id": "c010",
+          "energy": 0.5847175227414333
+        },
+        {
+          "id": "c011",
+          "energy": 0.5602656089008238
+        },
+        {
+          "id": "c012",
+          "energy": 0.5996508265580232
+        },
+        {
+          "id": "c013",
+          "energy": 0.5902914628902005
+        },
+        {
+          "id": "c014",
+          "energy": 0.6023674007488127
+        },
+        {
+          "id": "c015",
+          "energy": 0.5996723513268118
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/qwen--qwen3.5-35b-a3b/predictor.py",
+          "sha256": "a9c558df8f9ca8b28bd863e9d34666481f24aa1bebc2360d6a8cb69856d3b7e9"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/qwen--qwen3.5-35b-a3b-bf-r1-attempt2",
+        "trace_sha256": "cb21e7cd3a1d9a32443c529f38969c7f0520737ce5c25dbf036cd4628798bb8e",
+        "workspace_sha256": "d5d2b5324212a2e48a4056a377ee492a507e27dad065799b678325f1c47ff2c4"
+      }
+    },
+    {
+      "model": "qwen/qwen3.5-397b-a17b",
+      "name": "Qwen3.5 397B A17B",
+      "short": "Qwen3.5 397B A17B",
+      "plot_label": "Qwen3.5\n397B A17B",
+      "harness": "prime-agent",
+      "harness_label": "Prime Agent",
+      "trace_id": "b622f203ae6c43ec9e4cee19972be11a",
+      "energy": 0.3541565620494682,
+      "reward": 0.16414951280011494,
+      "experiments": 224,
+      "model_calls": 74,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 0.0,
+      "unreported_cost_reserve_usd": 1.5726834,
+      "calls_missing_cost": 74,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.21220814228957552
+        },
+        {
+          "id": "c002",
+          "energy": 0.22865087319359725
+        },
+        {
+          "id": "c003",
+          "energy": 0.3019941542360332
+        },
+        {
+          "id": "c004",
+          "energy": 0.2206392934165493
+        },
+        {
+          "id": "c005",
+          "energy": 0.301243208661149
+        },
+        {
+          "id": "c006",
+          "energy": 0.7251604234002172
+        },
+        {
+          "id": "c007",
+          "energy": 0.35925369224140014
+        },
+        {
+          "id": "c008",
+          "energy": 0.480878532794302
+        },
+        {
+          "id": "c009",
+          "energy": 0.2808759734500519
+        },
+        {
+          "id": "c010",
+          "energy": 0.3603508334977906
+        },
+        {
+          "id": "c011",
+          "energy": 0.2024390868884623
+        },
+        {
+          "id": "c012",
+          "energy": 0.380328748791562
+        },
+        {
+          "id": "c013",
+          "energy": 0.42154686331695146
+        },
+        {
+          "id": "c014",
+          "energy": 0.4558677317439689
+        },
+        {
+          "id": "c015",
+          "energy": 0.38091087282041214
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/qwen--qwen3.5-397b-a17b/predictor.py",
+          "sha256": "1cd710b2efbc843b7bf3fbe0929f8cc276b6abb07a68f3c287269e1891a60665"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/qwen--qwen3.5-397b-a17b-bf-r1-attempt1",
+        "trace_sha256": "ca34e8f78571f1e18c0e0331445d9f87768075ea5d3396f7d5919ac7a9f21284",
+        "workspace_sha256": "fa2061aef5b9e742a53051871148f0367a90a5b4c989cb6b2bb3e9b9ac3e0ee2"
+      }
+    },
+    {
+      "model": "openai/gpt-6-luna",
+      "name": "GPT-6 Luna",
+      "short": "GPT-6 Luna",
+      "plot_label": "GPT-6\nLuna",
+      "harness": "codex",
+      "harness_label": "Codex",
+      "trace_id": "4fea4ff10e48476bb11223e39e343724",
+      "energy": 0.15898078165442145,
+      "reward": 0.29081082831620136,
+      "experiments": 536,
+      "model_calls": 443,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 1.1445000000000007,
+      "unreported_cost_reserve_usd": 0.0,
+      "calls_missing_cost": 0,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": true,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.0022675086747228307
+        },
+        {
+          "id": "c002",
+          "energy": 0.091618490479124
+        },
+        {
+          "id": "c003",
+          "energy": 0.04088346897323101
+        },
+        {
+          "id": "c004",
+          "energy": 0.38144172919194247
+        },
+        {
+          "id": "c005",
+          "energy": 0.3635957992155334
+        },
+        {
+          "id": "c006",
+          "energy": 0.2738328957011873
+        },
+        {
+          "id": "c007",
+          "energy": 0.27104141091401024
+        },
+        {
+          "id": "c008",
+          "energy": 0.13919619144144393
+        },
+        {
+          "id": "c009",
+          "energy": 0.06000962703473368
+        },
+        {
+          "id": "c010",
+          "energy": 0.011404066329932159
+        },
+        {
+          "id": "c011",
+          "energy": 0.01208324283650715
+        },
+        {
+          "id": "c012",
+          "energy": 0.042501003195167655
+        },
+        {
+          "id": "c013",
+          "energy": 0.19428056889424888
+        },
+        {
+          "id": "c014",
+          "energy": 0.458215570872797
+        },
+        {
+          "id": "c015",
+          "energy": 0.04234015106174023
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/openai--gpt-6-luna/predictor.py",
+          "sha256": "48c61c9a51aeeac52495df62c59dd49f704a867633e8b9f220480245d54232dd"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/openai--gpt-6-luna-bf-r1-attempt1",
+        "trace_sha256": "b4ebd6a3df33b8409945a4677dac2b0b1f97bbe88eac5d418bc98ca08157c409",
+        "workspace_sha256": "e2314aff8061900fb282a87007613f8fb3c034d4d041e61f28ce818d3db26f6b"
+      }
+    },
+    {
+      "model": "x-ai/grok-4.6",
+      "name": "Grok 4.6",
+      "short": "Grok 4.6",
+      "plot_label": "Grok\n4.6",
+      "harness": "prime-agent",
+      "harness_label": "Prime Agent",
+      "trace_id": "61c3b1c309ea4019887e463fe185227c",
+      "energy": 1.8575690149368316,
+      "reward": 0.0,
+      "experiments": 104,
+      "model_calls": 127,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 0.0,
+      "unreported_cost_reserve_usd": 42.75070199999999,
+      "calls_missing_cost": 127,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 1.7856943454428347
+        },
+        {
+          "id": "c002",
+          "energy": 1.7729154187008174
+        },
+        {
+          "id": "c003",
+          "energy": 1.856776784571162
+        },
+        {
+          "id": "c004",
+          "energy": 1.78437711087679
+        },
+        {
+          "id": "c005",
+          "energy": 1.7591701075753532
+        },
+        {
+          "id": "c006",
+          "energy": 1.7325147727052292
+        },
+        {
+          "id": "c007",
+          "energy": 1.8257326552757414
+        },
+        {
+          "id": "c008",
+          "energy": 1.955477937971
+        },
+        {
+          "id": "c009",
+          "energy": 1.825736008414189
+        },
+        {
+          "id": "c010",
+          "energy": 1.8605543912387337
+        },
+        {
+          "id": "c011",
+          "energy": 1.8215221098405647
+        },
+        {
+          "id": "c012",
+          "energy": 1.9641474554953628
+        },
+        {
+          "id": "c013",
+          "energy": 2.00962287574974
+        },
+        {
+          "id": "c014",
+          "energy": 1.9453214228033067
+        },
+        {
+          "id": "c015",
+          "energy": 1.9639718273916449
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/x-ai--grok-4.6/predictor.py",
+          "sha256": "60bcb56808182f36855e50a55c27d8fe86256f42881ad0e2580d855061a85eaf"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/x-ai--grok-4.6-bf-r1-attempt1",
+        "trace_sha256": "6a369282be95b0922b7cbaf258ce67682390de7ec3379968f9e746aa1da7792e",
+        "workspace_sha256": "27bb1a99cfa14175812c4480182d4fc4234cffa9baa0b2d24a21285e8954152b"
+      }
+    },
+    {
+      "model": "openai/gpt-5.6-terra",
+      "name": "GPT-5.6 Terra",
+      "short": "GPT-5.6 Terra",
+      "plot_label": "GPT-5.6\nTerra",
+      "harness": "codex",
+      "harness_label": "Codex",
+      "trace_id": "79a2071e3cee45ad8eb296b38441e67f",
+      "energy": 0.23273192266618642,
+      "reward": 0.23054392410405522,
+      "experiments": 100,
+      "model_calls": 401,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 16.757099999999973,
+      "unreported_cost_reserve_usd": 9.09,
+      "calls_missing_cost": 2,
+      "calls_missing_usage": 2,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.0030859869015238918
+        },
+        {
+          "id": "c002",
+          "energy": 0.09974005700373215
+        },
+        {
+          "id": "c003",
+          "energy": 0.16710874402274473
+        },
+        {
+          "id": "c004",
+          "energy": 0.088246153739266
+        },
+        {
+          "id": "c005",
+          "energy": 0.11851397060692884
+        },
+        {
+          "id": "c006",
+          "energy": 0.24089239296941184
+        },
+        {
+          "id": "c007",
+          "energy": 0.1904897367820415
+        },
+        {
+          "id": "c008",
+          "energy": 0.3734722432256429
+        },
+        {
+          "id": "c009",
+          "energy": 0.1655888487214291
+        },
+        {
+          "id": "c010",
+          "energy": 0.2027867822735583
+        },
+        {
+          "id": "c011",
+          "energy": 0.05440166798665296
+        },
+        {
+          "id": "c012",
+          "energy": 0.38046363813821343
+        },
+        {
+          "id": "c013",
+          "energy": 0.6768980977388706
+        },
+        {
+          "id": "c014",
+          "energy": 0.34818059333456813
+        },
+        {
+          "id": "c015",
+          "energy": 0.381109926548212
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/openai--gpt-5.6-terra/predictor.py",
+          "sha256": "0bfc156f3fda61b96bc38f0343a857fdc9986acc976dd4e624b3a5420ab06910"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/openai--gpt-5.6-terra-bf-r1-attempt4",
+        "trace_sha256": "e8b61214859e221465f44a10079ed064fa6d7d0f976a57be1dc2877e6677fc71",
+        "workspace_sha256": "04284c2c0321e22da888632ccd3856ea75c1b3a2f10c335a3eccac3888173c30"
+      }
+    },
+    {
+      "model": "anthropic/claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "short": "Claude Sonnet 5",
+      "plot_label": "Claude\nSonnet 5",
+      "harness": "claude-code",
+      "harness_label": "Claude Code",
+      "trace_id": "be4e429b3b6d4adc853ccd5fd6c0de75",
+      "energy": 0.12910478395148575,
+      "reward": 0.3237286130495783,
+      "experiments": 384,
+      "model_calls": 205,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 0.0,
+      "unreported_cost_reserve_usd": 100.3983899999999,
+      "calls_missing_cost": 205,
+      "calls_missing_usage": 1,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.05450173660963934
+        },
+        {
+          "id": "c002",
+          "energy": 0.05538598607098946
+        },
+        {
+          "id": "c003",
+          "energy": 0.06116459828651975
+        },
+        {
+          "id": "c004",
+          "energy": 0.059693391882278235
+        },
+        {
+          "id": "c005",
+          "energy": 0.09426493703823656
+        },
+        {
+          "id": "c006",
+          "energy": 0.14682105113185828
+        },
+        {
+          "id": "c007",
+          "energy": 0.08635323046468572
+        },
+        {
+          "id": "c008",
+          "energy": 0.42197826483393497
+        },
+        {
+          "id": "c009",
+          "energy": 0.058679838849618374
+        },
+        {
+          "id": "c010",
+          "energy": 0.06136421995958871
+        },
+        {
+          "id": "c011",
+          "energy": 0.06093552917682052
+        },
+        {
+          "id": "c012",
+          "energy": 0.08170077125532621
+        },
+        {
+          "id": "c013",
+          "energy": 0.4097363046095388
+        },
+        {
+          "id": "c014",
+          "energy": 0.20068706619490145
+        },
+        {
+          "id": "c015",
+          "energy": 0.08330483290834978
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/anthropic--claude-sonnet-5/predictor.py",
+          "sha256": "a2e1ae0c9899eca7b706e9e3afb0c62445690c31ac60d69c01941be17b0af8c7"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/anthropic--claude-sonnet-5-bf-r1-attempt1",
+        "trace_sha256": "fae9898231ed8d2bcbcc019ccf1ac9ccc405bb1fe2c1260147a8bb8d97c5f4fa",
+        "workspace_sha256": "67da4a03863f4c65fc36ea1b8013389a688632cc4fbc4aa83ace462ecc85f99f"
+      },
+      "estimated_unreported_inference_cost_range_usd": {
+        "lower": 11.3853185,
+        "upper": 12.704286
+      },
+      "estimated_unreported_inference_cost_usd": 11.424356,
+      "inference_cost_estimate": {
+        "method": "Latest native usage per request, with fresh input, five-minute cache writes, cache reads and output priced separately; output already includes thinking tokens.",
+        "pricing_reviewed_on": "2026-10-10",
+        "pricing_note": "Prime's recorded base rates and Anthropic's published Sonnet 5 cache rates; an estimate, not an invoice.",
+        "rates_usd_per_million_tokens": {
+          "input_tokens": 2.0,
+          "ephemeral_5m_input_tokens": 2.5,
+          "ephemeral_1h_input_tokens": 4.0,
+          "cache_read_input_tokens": 0.2,
+          "output_tokens": 10.0
+        },
+        "tokens": {
+          "input_tokens": 23486,
+          "ephemeral_5m_input_tokens": 770484,
+          "ephemeral_1h_input_tokens": 0,
+          "cache_read_input_tokens": 21885770,
+          "output_tokens": 507402
+        },
+        "components_usd": {
+          "input_tokens": 0.046972,
+          "ephemeral_5m_input_tokens": 1.92621,
+          "ephemeral_1h_input_tokens": 0.0,
+          "cache_read_input_tokens": 4.377154,
+          "output_tokens": 5.07402
+        },
+        "sources": [
+          {
+            "path": "outputs/bf-case-study-20261006/attempts/anthropic--claude-sonnet-5-bf-r1-attempt1/diagnostics/native-usage.jsonl",
+            "sha256": "95fa1e6ff58cdbec8a1471aeaecdd0b46bfee51dd7b819705cede2cb370445d0"
+          },
+          {
+            "path": "outputs/bf-case-study-20261006-preflight/candidate-plan.json",
+            "sha256": "accb37eda47f84b1a2f72f65beaa07d8f43567485741e022b1c3ccf68286e6ad"
+          },
+          {
+            "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+          }
+        ],
+        "limitations": [
+          "One of 205 requests has only initial usage. The range includes zero charge for that interrupted request through its configured maximum output, at the stated rates.",
+          "The range covers captured requests and assumes the published rates, without unrecorded provider adjustments or retries. It is not a reconciled billing total.",
+          "Costs exclude smoke probes, other investigations and sandbox compute."
+        ]
+      }
+    },
+    {
+      "model": "anthropic/claude-opus-5.5",
+      "name": "Claude Opus 5.5",
+      "short": "Claude Opus 5.5",
+      "plot_label": "Claude\nOpus 5.5",
+      "harness": "claude-code",
+      "harness_label": "Claude Code",
+      "trace_id": "8e8291d2e1b64ca4b33eea9df398fbf0",
+      "energy": 0.011447350102977658,
+      "reward": 0.7068751263285878,
+      "experiments": 227,
+      "model_calls": 1338,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 0.0,
+      "unreported_cost_reserve_usd": 1211.0179159999996,
+      "calls_missing_cost": 1338,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.0025993681118425737
+        },
+        {
+          "id": "c002",
+          "energy": 0.0029987747390951155
+        },
+        {
+          "id": "c003",
+          "energy": 0.011507485540895679
+        },
+        {
+          "id": "c004",
+          "energy": 0.0036094037084956976
+        },
+        {
+          "id": "c005",
+          "energy": 0.008590041981788823
+        },
+        {
+          "id": "c006",
+          "energy": 0.012974306935020474
+        },
+        {
+          "id": "c007",
+          "energy": 0.013198994863217548
+        },
+        {
+          "id": "c008",
+          "energy": 0.023498556002012456
+        },
+        {
+          "id": "c009",
+          "energy": 0.00946615204327019
+        },
+        {
+          "id": "c010",
+          "energy": 0.0016158566318632541
+        },
+        {
+          "id": "c011",
+          "energy": 0.011096693367423655
+        },
+        {
+          "id": "c012",
+          "energy": 0.009855000097912875
+        },
+        {
+          "id": "c013",
+          "energy": 0.021424600926055512
+        },
+        {
+          "id": "c014",
+          "energy": 0.02894378035877882
+        },
+        {
+          "id": "c015",
+          "energy": 0.010331236236992208
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/anthropic--claude-opus-5.5/predictor.py",
+          "sha256": "76ab7878d8730e09a1b7d5e2248a8f7bb1d996cf831f09e3354cc35cde081cdd"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/anthropic--claude-opus-5.5-bf-r1-attempt6",
+        "trace_sha256": "5d95ceb46d359e3872146f1369fb84da04aeec25649972b3a4d96095c2fd8602",
+        "workspace_sha256": "d1d128008b9de8bd645871ff889269158567e821edd465702af388773fe80689"
+      },
+      "estimated_unreported_inference_cost_usd": 90.9904622,
+      "inference_cost_estimate": {
+        "method": "Latest native usage per request, with fresh input, five-minute cache writes, cache reads and output priced separately; output already includes thinking tokens.",
+        "pricing_reviewed_on": "2026-10-10",
+        "pricing_note": "Prime's saved and current catalogs agree on $4 input and $20 output per million tokens but omit cache rates. Cache rates use the model-specific published Anthropic prices; this is an estimate, not a provider invoice.",
+        "rates_usd_per_million_tokens": {
+          "input_tokens": 4.0,
+          "ephemeral_5m_input_tokens": 5.0,
+          "ephemeral_1h_input_tokens": 8.0,
+          "cache_read_input_tokens": 0.2,
+          "output_tokens": 20.0
+        },
+        "tokens": {
+          "input_tokens": 117243,
+          "ephemeral_5m_input_tokens": 3993763,
+          "ephemeral_1h_input_tokens": 0,
+          "cache_read_input_tokens": 141997076,
+          "output_tokens": 2107663
+        },
+        "components_usd": {
+          "input_tokens": 0.468972,
+          "ephemeral_5m_input_tokens": 19.968815,
+          "ephemeral_1h_input_tokens": 0.0,
+          "cache_read_input_tokens": 28.3994152,
+          "output_tokens": 42.15326
+        },
+        "sources": [
+          {
+            "path": "outputs/bf-case-study-20261006/attempts/anthropic--claude-opus-5.5-bf-r1-attempt6/diagnostics/native-usage.jsonl",
+            "sha256": "356a85ce2c2c52974a75d11e2ed24ef878d282125b2a8853bed086a5fbd9a2c9"
+          },
+          {
+            "path": "outputs/bf-case-study-20261006-preflight/candidate-plan.json",
+            "sha256": "accb37eda47f84b1a2f72f65beaa07d8f43567485741e022b1c3ccf68286e6ad"
+          },
+          {
+            "url": "https://platform.claude.com/docs/en/about-claude/pricing"
+          }
+        ],
+        "limitations": [
+          "Estimate for the retained investigation only; not a reconciled provider invoice."
+        ]
+      }
+    },
+    {
+      "model": "openai/gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "short": "GPT-6 Astra",
+      "plot_label": "GPT-6\nAstra",
+      "harness": "codex",
+      "harness_label": "Codex",
+      "trace_id": "ef1eb73938664fcc84a602ca3eefcfbf",
+      "energy": 0.0065317333311550275,
+      "reward": 0.7956039736219609,
+      "experiments": 69,
+      "model_calls": 140,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 23.093699999999995,
+      "unreported_cost_reserve_usd": 0.0,
+      "calls_missing_cost": 0,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.002493173386551118
+        },
+        {
+          "id": "c002",
+          "energy": 0.002110482962741296
+        },
+        {
+          "id": "c003",
+          "energy": 0.006658497706869466
+        },
+        {
+          "id": "c004",
+          "energy": 0.0018761619034327994
+        },
+        {
+          "id": "c005",
+          "energy": 0.006436528887580034
+        },
+        {
+          "id": "c006",
+          "energy": 0.007237103364554405
+        },
+        {
+          "id": "c007",
+          "energy": 0.007922085376782923
+        },
+        {
+          "id": "c008",
+          "energy": 0.00880632007567848
+        },
+        {
+          "id": "c009",
+          "energy": 0.007776482860985246
+        },
+        {
+          "id": "c010",
+          "energy": 0.0028134857461810745
+        },
+        {
+          "id": "c011",
+          "energy": 0.003625567417766231
+        },
+        {
+          "id": "c012",
+          "energy": 0.007928850254402459
+        },
+        {
+          "id": "c013",
+          "energy": 0.015434497317198446
+        },
+        {
+          "id": "c014",
+          "energy": 0.008222644329890722
+        },
+        {
+          "id": "c015",
+          "energy": 0.0086341183767107
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/openai--gpt-6-astra/predictor.py",
+          "sha256": "11c8fbe1d60bba258c66a47267337a82699093d0affa7936db5bbfb1da154f22"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/openai--gpt-6-astra-bf-r1-attempt1",
+        "trace_sha256": "0a5ae2ea433b1b4fcd2b457b410edaa36ef58463b3b5f8e7593e8fe512ae364d",
+        "workspace_sha256": "3cb8a1357c01efc4432bc99adb0aac7ced059acadf6d80c1079f493a2ea64ce8"
+      }
+    },
+    {
+      "model": "openai/gpt-6.1-sol",
+      "name": "GPT-6.1 Sol",
+      "short": "GPT-6.1 Sol",
+      "plot_label": "GPT-6.1\nSol",
+      "harness": "codex",
+      "harness_label": "Codex",
+      "trace_id": "e205ac425dfd4cc7b855d6284672dbae",
+      "energy": 0.008969161922108282,
+      "reward": 0.7454553576889305,
+      "experiments": 142,
+      "model_calls": 164,
+      "valid_cases": 15,
+      "reported_inference_cost_usd": 7.557299999999999,
+      "unreported_cost_reserve_usd": 0.0,
+      "calls_missing_cost": 0,
+      "calls_missing_usage": 0,
+      "scoring_recovered_from_frozen_submission": false,
+      "cases": [
+        {
+          "id": "c001",
+          "energy": 0.002565256325070156
+        },
+        {
+          "id": "c002",
+          "energy": 0.002303577475922612
+        },
+        {
+          "id": "c003",
+          "energy": 0.006408172595094121
+        },
+        {
+          "id": "c004",
+          "energy": 0.002024545070787925
+        },
+        {
+          "id": "c005",
+          "energy": 0.0037288889238227653
+        },
+        {
+          "id": "c006",
+          "energy": 0.0066461782124041646
+        },
+        {
+          "id": "c007",
+          "energy": 0.00916846485469964
+        },
+        {
+          "id": "c008",
+          "energy": 0.007021184178213194
+        },
+        {
+          "id": "c009",
+          "energy": 0.010683904325445422
+        },
+        {
+          "id": "c010",
+          "energy": 0.0014356308035710405
+        },
+        {
+          "id": "c011",
+          "energy": 0.050933470139557915
+        },
+        {
+          "id": "c012",
+          "energy": 0.006681425077565353
+        },
+        {
+          "id": "c013",
+          "energy": 0.007865749430106603
+        },
+        {
+          "id": "c014",
+          "energy": 0.010419874433967783
+        },
+        {
+          "id": "c015",
+          "energy": 0.006651106985395528
+        }
+      ],
+      "predictor_sources": [
+        {
+          "file": "examples/case-study-20261006/openai--gpt-6.1-sol/predictor.py",
+          "sha256": "729f850b66c23e04a93e66f5fe1e6b2539eb66de1d7c10ce620a1a085691998f"
+        }
+      ],
+      "provenance": {
+        "attempt": "outputs/bf-case-study-20261006/attempts/openai--gpt-6.1-sol-bf-r1-attempt1",
+        "trace_sha256": "982a773b8669d9baacbfb0482d93ca2892eb4a3a11e92ba7873791e63b764d18",
+        "workspace_sha256": "65fd4e5ee575fbbf54e7841244855c8c76679cde94c4bbb3bea0b15453672be1"
+      }
+    }
+  ]
+}

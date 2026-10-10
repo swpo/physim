@@ -41,14 +41,14 @@
   </mtable>
 </math></div>
 </div>
-<p>Average equally over the <var>G</var><sub>c</sub> groups in each experiment, then over the <var>C</var> experiments. For BF, <var>G</var><sub>c</sub> = 4 for every experiment and <var>C</var> = 15:</p>
+<p>Average equally over the <var>G</var><sub>c</sub> groups in each experiment, then over the <var>C</var> experiments:</p>
 <div class="equation scoring-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Experiment score S c equals the mean of E c g over G c groups. Primary score S equals the mean of S c over C experiments.">
   <msub><mi>S</mi><mi>c</mi></msub><mo>=</mo><mfrac><mn>1</mn><msub><mi>G</mi><mi>c</mi></msub></mfrac>
   <munderover><mo>∑</mo><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow><msub><mi>G</mi><mi>c</mi></msub></munderover><msub><mi>E</mi><mrow><mi>c</mi><mi>g</mi></mrow></msub>
   <mo>,</mo><mspace width="2em"/>
   <mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mi>C</mi></mfrac><munderover><mo>∑</mo><mrow><mi>c</mi><mo>=</mo><mn>1</mn></mrow><mi>C</mi></munderover><msub><mi>S</mi><mi>c</mi></msub>
 </math></div>
-<p>BF uses <var>M</var> = 64 and <var>N</var> = 2. Apply the reward mapping once, to the mean energy <var>S</var>:</p>
+<p>For BF, <var>M</var> = 64, <var>N</var> = 2, <var>G</var><sub>c</sub> = 4 for every experiment, and <var>C</var> = 15. The quantity <var>S</var> defines the total energy, which can be interpreted as the prediction error. To shape this into a useful reward for training, we use the following formula:</p>
 <div class="equation scoring-math"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Reward equals max of zero and min of minus log base ten of S and K, divided by K.">
 <msub><mi>R</mi><mi>K</mi></msub><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo><mo>=</mo>
 <mfrac><mrow><mi>max</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>min</mi><mo>&#x2061;</mo><mo stretchy="false">(</mo><mrow><mo form="prefix">−</mo><msub><mi>log</mi><mn>10</mn></msub><mo rspace="0.1667em">&#x2061;</mo><mi>S</mi></mrow><mo>,</mo><mi>K</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><mi>K</mi></mfrac>
