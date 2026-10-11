@@ -6,6 +6,7 @@ No model, simulator, package manager, network access, or publishing is invoked.
 
 import hashlib
 import json
+import math
 import os
 import re
 import runpy
@@ -93,6 +94,30 @@ def table(headers, rows, caption, numeric=True):
     )
 
 
+def current_case_study_table():
+    """Render the reviewed October batch and its reporting conventions."""
+    data = json.loads((SOURCE / "data/bf-case-study-20261006.json").read_text())
+    rows = []
+    for row in sorted(data["models"], key=lambda model: model["reward"], reverse=True):
+        anchor = next(s["file"] for s in row["predictor_sources"] if s["file"].endswith("/predictor.py"))
+        name = (
+            f'<a href="{escape(anchor, quote=True)}">{escape(row["name"])}</a>'
+            f"<br><small>{escape(row['harness_label'])}</small>"
+        )
+        reported = row["reported_inference_cost_usd"]
+        estimate = row.get("estimated_unreported_inference_cost_usd", row["unreported_cost_reserve_usd"])
+        cost = f"${reported + estimate:,.2f}" + ("*" if estimate or row.get("calls_missing_cost", 0) else "")
+        rows.append((name, f"{row['reward']:.3f}", f"{row['energy']:.4f}", f"{row['experiments']:,}", cost))
+    return table(
+        ("Model / predictor source", "Reward ↑", "Energy ↓", "Experiments", "Inference cost"),
+        rows,
+        "One BF investigation per model · 15 held-out experiments · 6–7 October 2026",
+    ) + (
+        '<p class="figure-note">* Estimated from token usage and pricing rates. '
+        "Unmarked costs are reported directly by the API.</p>"
+    )
+
+
 def generated_content():
     case_study = json.loads((SOURCE / "data/bf-case-study.json").read_text())
     calibration_path = SOURCE / "data/reward-calibration.json"
@@ -135,15 +160,19 @@ def generated_content():
         bf_energy = calibration["worlds"]["bf"]["mean_energy"]["64"]
         if bf_energy != max(record["mean_energy"]["64"] for record in calibration["worlds"].values()):
             raise ValueError("The BF-only calibration note assumes BF sets the precision target")
+        current = json.loads((SOURCE / "data/bf-case-study-20261006.json").read_text())
+        precision = current["reward_precision"]
+        if not math.isclose(precision, -math.log10(bf_energy), rel_tol=0, abs_tol=1e-12):
+            raise ValueError("Current reward precision differs from the unrounded native calibration")
         calibration_text = (
-            f"<p>We use <var>K</var> = {PRECISION:g}, giving full reward at <var>S</var> ≤ {10**-PRECISION:g}. "
-            "The agent’s prompt states this target; it can be varied independently of the experiment and token budgets.</p>"
+            f"<p>For the results below, we use <var>K</var> ≈ {precision:.9f}, giving full reward at <var>S</var> ≤ {bf_energy:.9f}. "
+            f"These rewards are recomputed from saved predictions; the agents received <var>K</var> = {current['original_prompt_precision']:g} in their prompts.</p>"
             "<details><summary>Precision calibration</summary><p>We generated 64 forecast samples using the actual world equations, with independent realizations of the world’s noise. These "
-            f"were scored against two saved simulation realizations for every BF experiment. The mean energy was {bf_energy:.5f}. "
-            "We chose the largest integer K whose full-reward threshold is at least twice this simulator-based score. "
-            "This margin applies to this preparation and these measurement scales; "
-            'it is not a universal precision limit. <a href="data/reward-calibration.json">Calibration record</a> · '
-            '<a href="data/bf-reward-summary.json">Recomputed model rewards</a>.</p></details>'
+            "were scored against two saved simulation realizations for every experiment in the BF, XV, and p4g2_044 suites. "
+            f"BF had the largest mean energy, {bf_energy:.9f}. We set <var>K</var> to −log<sub>10</sub> of this energy, without integer rounding or a margin. "
+            "This makes the full-reward threshold equal to the largest native-simulator suite energy. Even a correct stochastic predictor can have nonzero energy; "
+            'this calibration is specific to these experiments and measurement scales. <a href="data/reward-calibration.json">Native calibration measurements (including the earlier integer-K rule)</a> · '
+            '<a href="data/bf-case-study-20261006.json">Current model rewards</a>.</p></details>'
         )
     return {
         "table_of_contents": table_of_contents(),
@@ -156,11 +185,7 @@ def generated_content():
             )
             for key, source in json.loads((SOURCE / "data/equation-sources.json").read_text()).items()
         },
-        "case_study_table": table(
-            ("Model / predictor source", "Reward ↑", "Energy ↓", "Experiments", "Cost"),
-            case_rows,
-            "One BF rollout per model · Prime Agent · 15 evaluation experiments",
-        ),
+        "case_study_table": current_case_study_table(),
     }
 
 
@@ -236,7 +261,13 @@ def build():
     for filename in ("worlds.json", "results.json", "registry.json"):
         (DOCS / "data").mkdir(exist_ok=True)
         shutil.copyfile(SOURCE / filename, DOCS / "data" / filename)
-    for filename in ("bf-evaluation.json", "bf-evaluation.npz", "bf-case-study.json", "reward-calibration.json"):
+    for filename in (
+        "bf-evaluation.json",
+        "bf-evaluation.npz",
+        "bf-case-study.json",
+        "bf-case-study-20261006.json",
+        "reward-calibration.json",
+    ):
         if not (SOURCE / "data" / filename).exists():
             continue
         shutil.copyfile(SOURCE / "data" / filename, DOCS / "data" / filename)
@@ -245,6 +276,7 @@ def build():
         if path.is_file():
             shutil.copyfile(path, DOCS / "examples" / path.name)
     shutil.copytree(SOURCE / "examples/case-study", DOCS / "examples/case-study", dirs_exist_ok=True)
+    shutil.copytree(SOURCE / "examples/case-study-20261006", DOCS / "examples/case-study-20261006", dirs_exist_ok=True)
     # Only explicitly mapped old URLs are rewritten. Archive pages/media are inputs.
     records = json.loads((SOURCE / "archive-map.json").read_text())
     aliases = {"blobs.html": "index.html#worlds", "rollouts.html": "index.html#results"}

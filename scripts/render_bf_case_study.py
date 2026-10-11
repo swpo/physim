@@ -206,8 +206,8 @@ def save(fig, name):
     plt.close(fig)
 
 
-def render(heatmap_only=False):
-    data = read(DATA)
+def render(heatmap_only=False, data_path=DATA):
+    data = read(data_path)
     plt.rcParams.update(
         {
             "font.family": "DejaVu Sans",
@@ -225,9 +225,11 @@ def render(heatmap_only=False):
             for i in range(15)
         ]
     )
-    fig, ax = plt.subplots(figsize=(10.8, 7.3), layout="constrained")
+    fig, ax = plt.subplots(figsize=(max(10.8, 4.1 + 0.9 * len(data["models"])), 7.3), layout="constrained")
     im = ax.imshow(values, cmap="viridis_r", norm=LogNorm(0.002, 5), aspect="auto")
-    ax.set_xticks(range(7), [r["short"].replace(" ", "\n") for r in data["models"]])
+    ax.set_xticks(
+        range(len(data["models"])), [r.get("plot_label", r["short"].replace(" ", "\n")) for r in data["models"]]
+    )
     ax.xaxis.tick_top()
     ax.tick_params(length=0, pad=9)
     ax.set_yticks(range(15), [DISPLAY_NAMES[c["id"]] for c in data["cases"]])
@@ -250,7 +252,7 @@ def render(heatmap_only=False):
                 fontsize=10,
                 color="white" if im.norm(value) > 0.58 else "#17242f",
             )
-    bar = fig.colorbar(im, ax=ax, fraction=0.027, pad=0.025)
+    bar = fig.colorbar(im, ax=ax, fraction=0.027, pad=0.025, extend="min" if np.nanmin(values) < 0.002 else "neither")
     bar.set_label("Experiment energy · lower is better (log color scale)")
     save(fig, "bf-case-energies")
     if heatmap_only:
@@ -295,14 +297,22 @@ def render(heatmap_only=False):
             ax.set_title("")
             ax.set_title(title, loc="left", fontsize=12, pad=12)
         save(fig, "bf-predictor-diagnostics" + ("-mobile" if mobile else ""))
-    print(f"Rendered BF case study from {DATA.relative_to(ROOT)}")
+    print(f"Rendered BF case study from {data_path.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--capture", action="store_true")
     parser.add_argument("--heatmap-only", action="store_true")
+    parser.add_argument(
+        "--data",
+        type=Path,
+        default=DATA,
+        help="Reviewed snapshot to render; alternate snapshots require --heatmap-only",
+    )
     args = parser.parse_args()
+    if args.data != DATA and (args.capture or not args.heatmap_only):
+        parser.error("--data requires --heatmap-only and cannot be combined with --capture")
     if args.capture:
         capture()
-    render(heatmap_only=args.heatmap_only)
+    render(heatmap_only=args.heatmap_only, data_path=args.data.resolve())

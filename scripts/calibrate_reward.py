@@ -26,6 +26,13 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def calibrated_precision(native_energy):
+    """Place full reward at the measured native energy, without rounding or margin."""
+    if not math.isfinite(native_energy) or not 0 < native_energy < 1:
+        raise ValueError("Native energy must be finite and strictly between zero and one")
+    return -math.log10(native_energy)
+
+
 def run_case(job):
     world, case_index, members, seed, output, source = job
     bundle = Bundle(source / world / "bundle")
@@ -110,22 +117,21 @@ def main():
             },
         )
     worst = max(w["mean_energy"][str(args.members)] for w in worlds.values())
-    # Integer precision targets with >=2x headroom above native score. This is
-    # an operational margin, not a confidence bound on all starting states.
-    target = math.floor(-math.log10(2 * worst))
-    if target < 1:
-        raise ValueError("No positive integer K satisfies the native-score margin")
+    target = calibrated_precision(worst)
     report = dict(
-        schema="physim-reward-calibration-v1",
+        schema="physim-reward-calibration-v2",
         members=args.members,
         truth_members=2,
         selection="All cases in all three frozen evaluation suites",
-        rule="Largest integer K with 10**(-K) >= 2 * maximum native suite energy",
+        rule="K = -log10(maximum native suite energy); no integer rounding or safety margin",
         recommended_k=target,
+        full_reward_threshold=worst,
+        margin_multiplier=1.0,
         worst_native_energy=worst,
         worlds=worlds,
         limitations="One fresh forecast ensemble against each saved pair of truths; "
-        "calibration applies to these preparations, scales and finite-ensemble scorer.",
+        "calibration applies to these preparations, scales and finite-ensemble scorer. "
+        "The measured native mean is a point estimate, not a confidence bound.",
     )
     (args.output / "calibration.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
     print(

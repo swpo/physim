@@ -3,6 +3,11 @@
 import json
 from pathlib import Path
 
+# Used only when the gateway catalog omits cache-read pricing. Reviewed against
+# https://platform.claude.com/docs/en/about-claude/pricing on 2026-10-10.
+# Explicit catalog prices always take precedence over these provider fallbacks.
+ANTHROPIC_CACHE_READ_MULTIPLIERS = {"anthropic/claude-opus-5.5": 0.05}
+
 
 def summarize(directory, prices):
     path = Path(directory) / "native-usage.jsonl"
@@ -36,12 +41,15 @@ def summarize(directory, prices):
             creation = u.get("cache_creation") or {}
             long = creation.get("ephemeral_1h_input_tokens", writes)
             short = creation.get("ephemeral_5m_input_tokens", 0)
+            cache_rate = p.get("cache_read_usd_per_mtok")
+            if cache_rate is None:
+                cache_rate = base * ANTHROPIC_CACHE_READ_MULTIPLIERS.get(event["model"], 0.1)
             # Anthropic's documented multipliers; retain the raw native buckets.
             estimate = (
                 (fresh - writes) * base
                 + long * 2 * base
                 + short * 1.25 * base
-                + cached * 0.1 * base
+                + cached * cache_rate
                 + generated * output
             ) / 1e6
         else:
