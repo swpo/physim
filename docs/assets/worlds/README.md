@@ -17,11 +17,6 @@ the slow preset, `+faststart`, and no metadata. `ds3_014-intro.jpg` is the frame
 at five seconds, used as the video's loading poster. These are static media
 inputs preserved by `scripts/build_docs.py`.
 
-`ds3_014-card.jpg` is the link-preview image named by the Open Graph and Twitter tags
-in `docs_source/template.html`: the same five-second frame, cropped to its middle
-418 × 219 band and scaled to 1200 × 630 with FFmpeg
-(`crop=418:219:0:100,scale=1200:630:flags=lanczos`, JPEG `-q:v 2`, no metadata).
-
 ## Earlier media
 
 The rest of this folder comes from earlier versions of the page and is not shown on
