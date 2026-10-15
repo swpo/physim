@@ -47,9 +47,10 @@ BF causal check bit for bit; that folder's README describes the display conventi
 the committed images and films.
 
 The page also uses the landing film `docs/assets/worlds/ds3_014-intro.mp4` (see that
-folder's README) and the results heatmap described below. A still of that film,
-`docs/assets/worlds/ds3_014-card.jpg`, is the link-preview image named by the Open Graph
-and Twitter tags in `template.html`; those tags use absolute `swpo.github.io/physim` URLs. The other media under
+folder's README) and the results heatmap described below. The link-preview image named by
+the Open Graph and Twitter tags in `template.html` is `docs/assets/social-card.png`, an
+abstract card drawn by `scripts/render_social_card.py` (synthetic curves, no world data);
+the tags use absolute `swpo.github.io/physim` URLs. The other media under
 `docs/assets/apparatus/` and `docs/assets/worlds/` come from earlier versions of the
 page. They are retained, and their generators are described below, but the current
 page does not show them.
