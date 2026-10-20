@@ -47,6 +47,18 @@ SOURCES = {
         "0006/results/l144-action-raw-evidence-audit-v1/summary.json",
         "907de2f88ba56c924e01a5b532f210e455bf73451f25b01576945ce83df7cf82",
     ),
+    "production-fields.npz": (
+        "0007/results/activity-paid-production-payment-v1/evidence.npz",
+        "2266bd76592dbac4f3fce7a587768f0e79716f7c83b239a8e6be449b3326c605",
+    ),
+    "production-observations.json": (
+        "0007/results/activity-paid-production-payment-v1/observations.json",
+        "32867285400d2fe73613f63683409a2b6f38ad8c3588135ac09e12fe70e3471e",
+    ),
+    "production-summary.json": (
+        "0007/results/activity-paid-production-payment-v1/summary.json",
+        "bb4c1f5189447287e3316167553dd9db48d67dcad9d4925253ab8b232f86991c",
+    ),
 }
 BG, PANEL = "#0b1421", "#111e2c"
 INK, MUTED, TEAL, GOLD = "#ecf3f7", "#b1c2d0", "#68d5bf", "#f2cf83"
@@ -84,9 +96,9 @@ def label(draw, xy, text, fonts, size=26, fill=INK):
     draw.text(xy, text, font=fonts[size], fill=fill)
 
 
-def field_image(values):
+def field_image(values, scale=(-1.5, 1.5)):
     """One fixed, clipped color scale for raw signed A; no per-frame rescaling."""
-    f = np.clip((values.astype(np.float64) + 1.5) / 3.0, 0, 1)
+    f = np.clip((values.astype(np.float64) - scale[0]) / (scale[1] - scale[0]), 0, 1)
     colors = np.array([tuple(bytes.fromhex(c[1:])) for c in PALETTE])
     pixels = np.stack([np.interp(f, np.linspace(0, 1, 5), colors[:, c]) for c in range(3)], axis=-1).astype(np.uint8)
     return Image.fromarray(pixels)
@@ -270,6 +282,73 @@ def protection_frames(evidence, fonts):
     return frames, times.tolist()
 
 
+def production_frames(evidence, fonts):
+    """Render saved A only; all area/status readouts come from recorded JSON."""
+    with np.load(evidence / "production-fields.npz", allow_pickle=False) as src:
+        fields, times = src["raw_A"], src["times"]
+    if fields.shape != (3, 31, 96, 96) or times.tolist() != list(range(0, 151, 5)):
+        raise ValueError("Unexpected saved production/payment panel")
+    summary = json.loads((evidence / "production-summary.json").read_text())
+    observations = json.loads((evidence / "production-observations.json").read_text())["arms"]
+    if not summary["technical_valid"] or summary["tail_states"] != {
+        "I": "persistent_presence",
+        "P": "persistent_absence",
+        "C": "persistent_absence",
+    }:
+        raise ValueError("Publication captions no longer match the reviewed summary")
+    headings = [
+        ("I", "Production + payment", "β = 0.1     γ = 0.1"),
+        ("P", "Production off", "β = 0        γ = 0.1"),
+        ("C", "Both terms off", "β = 0        γ = 0"),
+    ]
+    frames = []
+    scale = (-0.02, 0.45)
+    for j, t in enumerate(times):
+        im, d = base(
+            fonts,
+            "03",
+            "Removing the charge does not rescue production-off activity",
+            "Intact / production off / production and payment off. All stored fields are inherited.",
+            t,
+            150,
+        )
+        for c, (name, title, detail) in enumerate(headings):
+            row = observations[name][j]
+            if row["time"] != t or hashlib.sha256(fields[c, j].tobytes(order="C")).hexdigest() != row["raw_A_sha256"]:
+                raise ValueError("Displayed field does not match its recorded frame")
+            x = 50 + c * 630
+            d.rounded_rectangle((x, 190, x + 560, 882), radius=12, fill=PANEL)
+            label(d, (x + 20, 205), f"{name}   {title}", fonts, 30)
+            label(d, (x + 20, 249), detail, fonts, 26, MUTED)
+            im.paste(field_image(fields[c, j], scale).resize((512, 512), Image.Resampling.NEAREST), (x + 24, 290))
+            readout = row["geometry"][1]
+            if readout["threshold"] != 0.1:
+                raise ValueError("Unexpected primary display threshold")
+            label(d, (x + 20, 817), f"A > 0.1 area: {readout['raw_area']:g} units²", fonts, 26)
+            status = "Present at this sample" if readout["raw_area"] > 0 else "Absent at this sample"
+            label(d, (x + 20, 853), status, fonts, 22, TEAL if readout["raw_area"] > 0 else GOLD)
+        if t < 60:
+            caption = "Stored signal remains initially; these interventions change future production and payment laws."
+        elif t < 65:
+            caption = "P first shows sampled absence at 60; C still has above-threshold activity at this saved time."
+        else:
+            caption = "Both production-off paths show sampled absence; the intact pattern continues to expand."
+        label(d, (48, 905), caption, fonts, 28)
+        label(
+            d,
+            (48, 950),
+            "Full 48 × 48 periodic domains. Saved every 5 time units, held for 1 second; no interpolation. Area from saved JSON.",
+            fonts,
+            24,
+            MUTED,
+        )
+        im.paste(field_image(np.linspace(*scale, 280)[None, :], scale).resize((280, 16)), (48, 1000))
+        label(d, (346, 987), "Raw A: −0.02                       +0.45   (fixed clipped scale)", fonts, 22, MUTED)
+        label(d, (1170, 987), "Fixed γ does not mean equal realized payment.", fonts, 22, GOLD)
+        frames.append(im)
+    return frames, times.tolist()
+
+
 def encode(frames, times, path, poster_time, check_time):
     counts = [int(round((b - a) / 5 * FPS)) for a, b in zip(times, times[1:])] + [2 * FPS]
     if any(n <= 0 for n in counts):
@@ -422,6 +501,9 @@ def main():
     del frames
     frames, times = protection_frames(evidence, fonts)
     records["protective-action"] = encode(frames, times, args.assets / "protective-action.mp4", 150.0, 85.0)
+    del frames
+    frames, times = production_frames(evidence, fonts)
+    records["production-payment"] = encode(frames, times, args.assets / "production-payment.mp4", 65.0, 60.0)
     manifest = {
         "schema": "physim-research-publication-v1",
         "update_date": "2026-10-20",
@@ -437,6 +519,24 @@ def main():
             "ffmpeg": subprocess.check_output(["ffmpeg", "-version"], text=True).splitlines()[0],
         },
         "display": {
+            "production_payment": {
+                "field": "saved raw signed A",
+                "array": "raw_A",
+                "scale": [-0.02, 0.45],
+                "palette": PALETTE,
+                "pixel_interpolation": "nearest",
+                "panel_order": ["I", "P", "C"],
+                "view": "full domain, no crop",
+                "domain_physical_size": [48, 48],
+                "orientation": "array row increases downward; column increases rightward",
+                "area_and_status_source": "recorded observations geometry[1] at raw A > 0.1; not recomputed",
+                "displayed_array_frame_hashes_checked": 93,
+                "coefficients": {
+                    "I": {"beta": 0.1, "gamma": 0.1},
+                    "P": {"beta": 0, "gamma": 0.1},
+                    "C": {"beta": 0, "gamma": 0},
+                },
+            },
             "geometry": {
                 "field": "raw signed A, not Q or X1",
                 "scale": [-1.5, 1.5],
@@ -470,12 +570,13 @@ def main():
         },
         "videos": records,
         "limitations": [
-            "The two movies use different 19-field and 20-field preparations; they are not paired across movies.",
+            "The three comparisons use distinct preparations; the geometry and production models have 19 fields, protection has 20. They are not paired across movies.",
             "Geometry first-split intervals are sampled brackets, not exact event times or an exact delay.",
             "No original phase or material lineage is assigned after the first split.",
             "Protection concentrations at intermediate times 5 through 120 were not saved; those frames are masks.",
             "The evidence audit is not an independent dynamics replicate.",
             "Source-driven persistence and growth do not establish bounded homeostasis or autonomy.",
+            "Production/payment interventions preserve coefficients as stated, not realized fluxes or resource histories. P/C share late absence despite different sampled loss brackets.",
         ],
     }
     (args.assets / "provenance.json").write_text(json.dumps(manifest, indent=2, allow_nan=False) + "\n")

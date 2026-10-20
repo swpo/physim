@@ -64,7 +64,7 @@ REDIRECTS = {
     "archive/index.html": "https://github.com/swpo/physim/tree/main/probes",
 }
 DESCRIPTIONS = {
-    "research-2026-10-20": "Two controlled PhySim comparisons: initial surrounding-signal restoration fails to prevent branching, and protective-action removal causes sampled activity loss. Saved-frame videos, controls and source evidence.",
+    "research-2026-10-20": "Three controlled PhySim comparisons: surrounding signals, protective action, and signal production versus resource payment. Saved-frame videos, controls and source evidence.",
     "index": "Physim evaluates agents learning physics through experiments; Blobkit discovers worlds through simulation and evolutionary search over field equations.",
 }
 

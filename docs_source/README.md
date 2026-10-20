@@ -164,13 +164,13 @@ record beside it under `docs/assets/worlds/early-*.json`.
 ## Dated research updates
 
 `pages/research-2026-10-20.html` is a separate dated article registered in the
-documentation builder. It links two saved-evidence videos and their source files
+documentation builder. It links three saved-evidence videos and their source files
 under `docs/assets/research/2026-10-20/`. A concise GitHub-readable version and
 dated index live in `research/updates/`; the overview links to the latest article.
 Future updates should report meaningful reviewed findings, including negative
 results, with controls and limitations.
 
-`scripts/render_research_update.py` verifies the six committed evidence files,
+`scripts/render_research_update.py` verifies the nine committed evidence files,
 then renders only their existing frames and readouts. It never invokes native
 simulation. Its media README documents fixed scales, crops, threshold masks,
 frame holds and source limitations. Ordinary site builds use the committed

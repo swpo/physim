@@ -32,11 +32,26 @@
       "sha256": "907de2f88ba56c924e01a5b532f210e455bf73451f25b01576945ce83df7cf82",
       "bytes": 6206,
       "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0006/results/l144-action-raw-evidence-audit-v1/summary.json"
+    },
+    "production-fields.npz": {
+      "sha256": "2266bd76592dbac4f3fce7a587768f0e79716f7c83b239a8e6be449b3326c605",
+      "bytes": 14552834,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/evidence.npz"
+    },
+    "production-observations.json": {
+      "sha256": "32867285400d2fe73613f63683409a2b6f38ad8c3588135ac09e12fe70e3471e",
+      "bytes": 196882,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/observations.json"
+    },
+    "production-summary.json": {
+      "sha256": "bb4c1f5189447287e3316167553dd9db48d67dcad9d4925253ab8b232f86991c",
+      "bytes": 27723,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/summary.json"
     }
   },
   "renderer": {
     "path": "scripts/render_research_update.py",
-    "sha256": "8ae43d3cbea14648dc141ac6c0e3577cadf292ebccc78c42a5d55df1e3d49dc1",
+    "sha256": "f45b4b06d6773f2b4b9eb6f3ae511b201c617b23c59c4f99673a87cf2de3c443",
     "python": "3.12.14",
     "numpy": "2.3.5",
     "pillow": "12.3.0",
@@ -53,6 +68,49 @@
     "ffmpeg": "ffmpeg version 8.0.1 Copyright (c) 2000-2025 the FFmpeg developers"
   },
   "display": {
+    "production_payment": {
+      "field": "saved raw signed A",
+      "array": "raw_A",
+      "scale": [
+        -0.02,
+        0.45
+      ],
+      "palette": [
+        "#081220",
+        "#214863",
+        "#208f9b",
+        "#7ed3bb",
+        "#ffe28e"
+      ],
+      "pixel_interpolation": "nearest",
+      "panel_order": [
+        "I",
+        "P",
+        "C"
+      ],
+      "view": "full domain, no crop",
+      "domain_physical_size": [
+        48,
+        48
+      ],
+      "orientation": "array row increases downward; column increases rightward",
+      "area_and_status_source": "recorded observations geometry[1] at raw A > 0.1; not recomputed",
+      "displayed_array_frame_hashes_checked": 93,
+      "coefficients": {
+        "I": {
+          "beta": 0.1,
+          "gamma": 0.1
+        },
+        "P": {
+          "beta": 0,
+          "gamma": 0.1
+        },
+        "C": {
+          "beta": 0,
+          "gamma": 0
+        }
+      }
+    },
     "geometry": {
       "field": "raw signed A, not Q or X1",
       "scale": [
@@ -315,14 +373,121 @@
           "duration": "32.000000"
         }
       }
+    },
+    "production-payment": {
+      "file": "production-payment.mp4",
+      "sha256": "d3cda22c05e563027ad3ca73a32a57bb4aee06296bc45f13dc4db4e1840365d3",
+      "poster": "production-payment.jpg",
+      "poster_sha256": "ae5e1b524db69c6c15b57ddb1cf8e3f17662d50f3c2376399ac5979344cc1098",
+      "poster_simulation_time": 65.0,
+      "saved_times": [
+        0.0,
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0,
+        35.0,
+        40.0,
+        45.0,
+        50.0,
+        55.0,
+        60.0,
+        65.0,
+        70.0,
+        75.0,
+        80.0,
+        85.0,
+        90.0,
+        95.0,
+        100.0,
+        105.0,
+        110.0,
+        115.0,
+        120.0,
+        125.0,
+        130.0,
+        135.0,
+        140.0,
+        145.0,
+        150.0
+      ],
+      "hold_frames": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        40
+      ],
+      "fps": 20,
+      "last_frame_hold_seconds": 2,
+      "simulation_units_per_video_second": 5,
+      "interpolation": "none; zero-order frame hold",
+      "encoded_checks": {
+        "frame_indices": [
+          0,
+          240,
+          639
+        ],
+        "mean_absolute_rgb_errors": [
+          1.8010144997427984,
+          1.7811320087448559,
+          1.7729264724794238
+        ]
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "20/1",
+            "nb_frames": "640"
+          }
+        ],
+        "format": {
+          "duration": "32.000000"
+        }
+      }
     }
   },
   "limitations": [
-    "The two movies use different 19-field and 20-field preparations; they are not paired across movies.",
+    "The three comparisons use distinct preparations; the geometry and production models have 19 fields, protection has 20. They are not paired across movies.",
     "Geometry first-split intervals are sampled brackets, not exact event times or an exact delay.",
     "No original phase or material lineage is assigned after the first split.",
     "Protection concentrations at intermediate times 5 through 120 were not saved; those frames are masks.",
     "The evidence audit is not an independent dynamics replicate.",
-    "Source-driven persistence and growth do not establish bounded homeostasis or autonomy."
+    "Source-driven persistence and growth do not establish bounded homeostasis or autonomy.",
+    "Production/payment interventions preserve coefficients as stated, not realized fluxes or resource histories. P/C share late absence despite different sampled loss brackets."
   ]
 }
