@@ -20,7 +20,14 @@ from world_equations import render_equations
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE, DOCS = ROOT / "docs_source", ROOT / "docs"
-PAGES = {"index": ("PhySim", "PhySim: a virtual science environment", "")}
+PAGES = {
+    "index": ("PhySim", "PhySim: a virtual science environment", ""),
+    "research-2026-10-20": (
+        "What keeps a pattern going?",
+        "PhySim research update · 20 October 2026",
+        "research",
+    ),
+}
 MAIN = ("index",)
 SECTIONS = {
     "worlds": "PhySim Worlds",
@@ -57,6 +64,7 @@ REDIRECTS = {
     "archive/index.html": "https://github.com/swpo/physim/tree/main/probes",
 }
 DESCRIPTIONS = {
+    "research-2026-10-20": "Two controlled PhySim comparisons: initial surrounding-signal restoration fails to prevent branching, and protective-action removal causes sampled activity loss. Saved-frame videos, controls and source evidence.",
     "index": "Physim evaluates agents learning physics through experiments; Blobkit discovers worlds through simulation and evolutionary search over field equations.",
 }
 
@@ -192,6 +200,7 @@ def generated_content():
 def render(key, heading, section, body, title=None, description=None, prefix=""):
     values = {
         "root": prefix,
+        "canonical_url": "https://swpo.github.io/physim/" + ("" if key == "index" else f"{key}.html"),
         "stylesheet": prefix + "site.css?v=" + hashlib.sha256((SOURCE / "site.css").read_bytes()).hexdigest()[:12],
         "title": escape(title or PAGES[key][0]),
         "description": escape(description or DESCRIPTIONS[key], quote=True),

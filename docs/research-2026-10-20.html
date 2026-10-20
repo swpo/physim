@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Two controlled PhySim comparisons: initial surrounding-signal restoration fails to prevent branching, and protective-action removal causes sampled activity loss. Saved-frame videos, controls and source evidence.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PhySim">
+<meta property="og:title" content="PhySim research update · 20 October 2026">
+<meta property="og:description" content="Two controlled PhySim comparisons: initial surrounding-signal restoration fails to prevent branching, and protective-action removal causes sampled activity loss. Saved-frame videos, controls and source evidence.">
+<meta property="og:url" content="https://swpo.github.io/physim/research-2026-10-20.html">
+<meta property="og:image" content="https://swpo.github.io/physim/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PhySim, a virtual science environment for agents: a glowing measured path that fans out into many predicted futures">
+<meta name="twitter:card" content="summary_large_image">
+<title>PhySim research update · 20 October 2026</title>
+<link rel="stylesheet" href="site.css?v=1c0f75468e70">
+</head>
+<body class="article-page">
+<a class="skip" href="#main">Skip to content</a>
+<div class="layout">
+<main id="main"><hgroup class="article-title"><h1>What keeps a pattern going?</h1><p>A virtual science environment</p></hgroup><p class="eyebrow">Research update · 20 October 2026</p>
+<p class="lead">A pattern can persist because of its surroundings, its internal interactions, or both. Two recent comparisons probe those dependencies: restoring an initial surrounding signal did not stop branching, while removing a protective action caused activity to fade in a separate preparation.</p>
+<p>These are controlled experiments on spatial fields, in two different models with 19 and 20 fields respectively. The bright regions are localized field activity. Splitting shapes and sustained activity are useful observations; they do not, by themselves, establish reproduction or autonomous life.</p>
+<p><a href="index.html">About PhySim</a> · <a href="https://github.com/swpo/physim/tree/main/research/updates">Research update archive</a></p>
+<nav class="contents" aria-label="Table of contents"><p>In this update</p><ol><li><a href="#branching">Does restoring the initial surroundings prevent branching?</a></li><li><a href="#protection">What happens when protective action is removed?</a></li><li><a href="#next-questions">What these results leave open</a></li><li><a href="#evidence">Evidence and display conventions</a></li></ol></nav>
+
+<h2 id="branching">Does restoring the initial surroundings prevent branching?</h2>
+<p>We selected one already-existing pattern from a larger world and kept its local state and a four-unit neighborhood identical across four preparations. The whole-world control retained its surroundings. The isolated control replaced the exterior with the established bath. Two further arms restored only the exterior signal X₁ at the starting instant: either its original spatial profile or a uniform value with the same signed spatial mean.</p>
+<figure class="field-figure">
+<video controls muted playsinline preload="metadata" width="1920" height="1080" poster="assets/research/2026-10-20/initial-x1.jpg" aria-label="Four matched preparations: the selected original remains unbranched in the whole world, while the isolated and both restored-signal preparations branch. Saved times and identity status are labeled."><source src="assets/research/2026-10-20/initial-x1.mp4" type="video/mp4"></video>
+<figcaption>Raw activator A, on one fixed color scale, in the same 32 × 32 spatial-unit crop of each 64 × 64 periodic world. The white outline is the initial retained neighborhood, not a moving identity boundary. Q status comes from saved measurements; the color shows A. <a href="assets/research/2026-10-20/initial-x1.mp4">Download the 22-second video</a>.</figcaption>
+</figure>
+<div class="table-scroll"><table><caption>First observed split of the selected original; elapsed simulation time</caption><thead><tr><th scope="col">Preparation</th><th scope="col">Initial exterior</th><th scope="col">Observed outcome</th></tr></thead><tbody>
+<tr><td>W · Whole world</td><td>All surrounding fields and objects retained</td><td>No split observed at the saved samples through 100</td></tr>
+<tr><td>I · Isolated</td><td>Established bath outside the retained neighborhood</td><td>First split in (47.5, 50]</td></tr>
+<tr><td>S · Spatial X₁ restoration</td><td>I plus the saved exterior X₁ profile</td><td>First split in (50, 52.5]</td></tr>
+<tr><td>U · Uniform X₁</td><td>I plus the same signed exterior X₁ mean, uniformly distributed</td><td>First split in (50, 52.5]</td></tr>
+</tbody></table></div>
+<p>Here a “split” is a sampled threshold-component event: normalized A &gt; 0.45, periodic four-connectivity, and robust component area at least 2. The single tracked original gives way to two robust components that each overlap its previous sampled mask. This operational definition does not assign material ancestry.</p>
+<p><strong>The saved initial X₁ profile was insufficient to prevent branching in this preparation.</strong> Both restoration arms first split in the next sampled interval after the isolated control. The sampling does not establish an exact 2.5-unit delay, and equal intervals do not imply equal trajectories or that spatial gradients are irrelevant.</p>
+<p>X₁ inhibits A in these equations, but its future production still depends on the evolving A field. Restoring X₁ at time zero does not restore the exterior A sources that helped maintain it in the whole world. The result therefore leaves continued environmental influence, other exterior fields, and internal branching mechanisms unresolved.</p>
+<p>The original remained in the high-Q state at every sample where its identity was still defined. At the first split, tracking of that original ended permanently; later components were not assigned its identity or phase. This is evidence about sampled geometry, not a demonstration of material lineage, inheritance, or reproduction.</p>
+
+<h2 id="protection">What happens when protective action is removed?</h2>
+<p>A separate comparison began with two copies of an already-active, 20-field preparation, with matched initial fields and noise-generator state. One kept a protective action enabled. The other changed only its coefficient from 2 to 0, removing P’s protective effect on an adverse signal. The declared P-production law and the external source conditions remained in place.</p>
+<figure class="field-figure">
+<video controls muted playsinline preload="metadata" width="1920" height="1080" poster="assets/research/2026-10-20/protective-action.jpg" aria-label="Saved threshold masks for intact protection and protective action off. The intact preparation grows while activity disappears in the action-off preparation; saved active area and eligible-core counts accompany both panels."><source src="assets/research/2026-10-20/protective-action.mp4" type="video/mp4"></video>
+<figcaption>Saved binary masks of normalized U₀ &gt; 0.45, showing the full 144 × 144 spatial-unit domains. Every above-threshold pixel is displayed; the eligible-core count includes only components of area at least 2. These are masks, not concentration frames. <a href="assets/research/2026-10-20/protective-action.mp4">Download the 32-second video</a>.</figcaption>
+</figure>
+<p>The intact preparation retained eligible activity at all 31 sampled times and all three thresholds, 0.30, 0.45 and 0.60. With protective action removed, the first sampled absence of eligible cores at all three thresholds was time 85. The action-off arm also met the fixed late-loss criterion over times 125–150, including no raw primary-threshold activity at 150.</p>
+<p><strong>This supports dependence on the engineered protective-action term under these conditions.</strong> Keeping the production law does not mean that the amount actually produced was equal between the two evolving systems. It also does not establish reciprocal resource payment or exclusive mediation by this pathway.</p>
+<p>The intact primary active area grew from <strong>88.5 to 599.25</strong> spatial units² and ended with 13 eligible components. Persistence here includes substantial growth. Bounded size, recovery from collapse, and autonomy have not been demonstrated.</p>
+<p>A subsequent audit checked the saved evidence using an independent component reconstruction and found all 1,456 contracted consistency comparisons passing. These are correlated checks of the same experiment, not 1,456 independent replications or a new dynamics run. Intermediate U₀ concentration fields at times 5–120 were not saved, so those frames’ masks could be checked geometrically but could not be re-thresholded from the missing concentrations. Conditions and action histories between saved states remain supported by the original run’s diagnostics; the audit does not independently reconstruct those full trajectories.</p>
+
+<h2 id="next-questions">What these results leave open</h2>
+<p>The next useful discriminator is whether continued environmental influence can explain the branching restraint that a one-time X₁ restoration failed to reproduce, using admissible controls under the native equations. Separately, sustained growth raises the question of whether activity can maintain bounded functional conditions and recover from perturbations. Neither question is answered by the videos alone.</p>
+<p>Each result concerns one selected preparation and a finite sampled horizon. The models differ between the two comparisons. Neither result establishes population generality, numerical convergence, continuous-time persistence, or autonomous reproduction.</p>
+
+<h2 id="evidence">Evidence and display conventions</h2>
+<p>Both videos render existing saved outputs. No new simulation was run for this update. Recorded frames are held on screen at five simulation time units per video second, with a two-second hold on the final frame. No intermediate motion is synthesized. Spatial resampling uses nearest-neighbor display, and the color scale and spatial windows stay fixed.</p>
+<details><summary>Run settings and exact source files</summary>
+<p>The branching comparison used a 128 × 128 grid, dx = 0.5, dt = 0.02, float32 and no noise. Elapsed time zero corresponds to a source age of 150. The protection comparison used a 288 × 288 grid, dx = 0.5, dt = 0.02, float64 and noise amplitude 0.002, starting from a copied-edge preparation. Both native runs verified their 52 recorded physics locks. These checks establish implementation identity, not convergence.</p>
+<p>In the protection movie, normalization is (U₀ − u₀)/(√2 − u₀), with u₀ = −0.5897545123014584. The movie uses the saved 0.45 mask; the saved summaries retain all three thresholds. Area and count annotations are copied from those summaries.</p>
+<ul>
+<li><a href="assets/research/2026-10-20/provenance.json">Provenance, source hashes, display settings and encoded-video checks</a></li>
+<li>Branching: <a href="assets/research/2026-10-20/evidence/x1-fields.npz">raw A/Q frames and selection masks (14.5 MiB)</a>, <a href="assets/research/2026-10-20/evidence/x1-observations.json">observations</a>, <a href="assets/research/2026-10-20/evidence/x1-summary.json">experiment summary</a></li>
+<li>Protection: <a href="assets/research/2026-10-20/evidence/protection-masks.npz">saved masks (1.8 MiB)</a>, <a href="assets/research/2026-10-20/evidence/protection-summary.json">experiment summary</a>, <a href="assets/research/2026-10-20/evidence/protection-audit-summary.json">audit summary</a></li>
+<li><a href="https://github.com/swpo/physim/blob/main/scripts/render_research_update.py">Renderer source</a> — uses only the committed saved evidence, NumPy, Pillow and FFmpeg.</li>
+</ul>
+</details>
+<p class="return-link"><a href="index.html">Return to the PhySim overview</a></p>
+</main>
+</div>
+</body>
+</html>
