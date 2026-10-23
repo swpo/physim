@@ -1,0 +1,240 @@
+{
+  "date": "2026-10-23",
+  "evaluator_prose": "The Markdown assessment adds a heading, attribution and navigation to the exact publication-ready account. No scientific wording is changed.",
+  "exact_original_scientific_copies": [
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/decision.json",
+      "sha256": "65045d0b7dbdba1dc76be7c601c0b42966792829b845cc4197cda0544a328757",
+      "source": {
+        "bytes": 6845,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/decision.json",
+        "sha256": "65045d0b7dbdba1dc76be7c601c0b42966792829b845cc4197cda0544a328757"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/visual-observations.json",
+      "sha256": "9a6986cfa200a2b4afbcd5c1c0584a4afc1744aadb9ffe72f08f8ae814730229",
+      "source": {
+        "bytes": 113745,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/visual-observations.json",
+        "sha256": "9a6986cfa200a2b4afbcd5c1c0584a4afc1744aadb9ffe72f08f8ae814730229"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/human-report.txt",
+      "sha256": "88a2cf9ebb4e254c2e8343faaca4320956cc66de735ddde88315da41ecf5e742",
+      "source": {
+        "bytes": 1223,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/human-report.txt",
+        "sha256": "88a2cf9ebb4e254c2e8343faaca4320956cc66de735ddde88315da41ecf5e742"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/publication-ready-account.txt",
+      "sha256": "f87385164893b340180a3ba147f68a554279188bed05e9ba5d8b25a676b245b3",
+      "source": {
+        "bytes": 3332,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/publication-ready-account.txt",
+        "sha256": "f87385164893b340180a3ba147f68a554279188bed05e9ba5d8b25a676b245b3"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000000.png",
+      "sha256": "ccb6bfbd454664f220b25ec469705e2eb435a3f40433d5baf3bb514a928977fd",
+      "source": {
+        "bytes": 305859,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000000.png",
+        "sha256": "ccb6bfbd454664f220b25ec469705e2eb435a3f40433d5baf3bb514a928977fd"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000012.png",
+      "sha256": "8434e1681652c9e7966467574e56b3b5eae6f35a3b613cea525b0f7f13a4b5e2",
+      "source": {
+        "bytes": 480956,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000012.png",
+        "sha256": "8434e1681652c9e7966467574e56b3b5eae6f35a3b613cea525b0f7f13a4b5e2"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000060.png",
+      "sha256": "fd34bff05712159f514843dc52f4b000981d96c63e1e0200ca5ac10cbdcf2a61",
+      "source": {
+        "bytes": 983651,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000060.png",
+        "sha256": "fd34bff05712159f514843dc52f4b000981d96c63e1e0200ca5ac10cbdcf2a61"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000072.png",
+      "sha256": "696556cbb706cefdfea54e092361a5630f24afe87923b877977db72bff003da0",
+      "source": {
+        "bytes": 1003041,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000072.png",
+        "sha256": "696556cbb706cefdfea54e092361a5630f24afe87923b877977db72bff003da0"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000084.png",
+      "sha256": "165d2e27a203bb1fab71fa8ae755ab05ab9956c80c79fa2c41388f60dce89234",
+      "source": {
+        "bytes": 1018926,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000084.png",
+        "sha256": "165d2e27a203bb1fab71fa8ae755ab05ab9956c80c79fa2c41388f60dce89234"
+      }
+    },
+    {
+      "exact_copy": true,
+      "public_path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000100.png",
+      "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0",
+      "source": {
+        "bytes": 1041480,
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000100.png",
+        "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+      }
+    }
+  ],
+  "file_count": 22,
+  "files": [
+    {
+      "bytes": 8048,
+      "path": "README.md",
+      "sha256": "59271676704c0a69a3a06d913aca898cec70bc4e536d36c57e473b41d2dd1357"
+    },
+    {
+      "bytes": 5133,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/README.md",
+      "sha256": "72a69f4e69736bfaa285eafa920b24edd7fff62a0a0a9cd26af327bb6b6948e5"
+    },
+    {
+      "bytes": 6670640,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/early-history.mp4",
+      "sha256": "8bd6b9a2b194852929ed8bc1a72ce58634777dd7f8e4653b8f69950ffc054641"
+    },
+    {
+      "bytes": 6845,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/decision.json",
+      "sha256": "65045d0b7dbdba1dc76be7c601c0b42966792829b845cc4197cda0544a328757"
+    },
+    {
+      "bytes": 1223,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/human-report.txt",
+      "sha256": "88a2cf9ebb4e254c2e8343faaca4320956cc66de735ddde88315da41ecf5e742"
+    },
+    {
+      "bytes": 3332,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/publication-ready-account.txt",
+      "sha256": "f87385164893b340180a3ba147f68a554279188bed05e9ba5d8b25a676b245b3"
+    },
+    {
+      "bytes": 113745,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/evidence/visual-observations.json",
+      "sha256": "9a6986cfa200a2b4afbcd5c1c0584a4afc1744aadb9ffe72f08f8ae814730229"
+    },
+    {
+      "bytes": 305859,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000000.png",
+      "sha256": "ccb6bfbd454664f220b25ec469705e2eb435a3f40433d5baf3bb514a928977fd"
+    },
+    {
+      "bytes": 480956,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000012.png",
+      "sha256": "8434e1681652c9e7966467574e56b3b5eae6f35a3b613cea525b0f7f13a4b5e2"
+    },
+    {
+      "bytes": 983651,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000060.png",
+      "sha256": "fd34bff05712159f514843dc52f4b000981d96c63e1e0200ca5ac10cbdcf2a61"
+    },
+    {
+      "bytes": 1003041,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000072.png",
+      "sha256": "696556cbb706cefdfea54e092361a5630f24afe87923b877977db72bff003da0"
+    },
+    {
+      "bytes": 1018926,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000084.png",
+      "sha256": "165d2e27a203bb1fab71fa8ae755ab05ab9956c80c79fa2c41388f60dce89234"
+    },
+    {
+      "bytes": 1041480,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/keyframes/source-000100.png",
+      "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+    },
+    {
+      "bytes": 259386,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/overview.png",
+      "sha256": "f8ce2017203b15d3d3a15d9253caf8aba08645a405cd4400c779d4152a7c2675"
+    },
+    {
+      "bytes": 592371,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/poster.png",
+      "sha256": "d4156746be16b44fc38a472c2d6b4e632a18980e70423622316bdfacf4d4125a"
+    },
+    {
+      "bytes": 38650,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/presentation-provenance.json",
+      "sha256": "da78fd3473cdf02073083e815515e5a86a31bcc87181a9b68e57ffe7487ca48b"
+    },
+    {
+      "bytes": 4793,
+      "path": "docs/assets/research/2026-10-23-p7-ancestry/review-scope.json",
+      "sha256": "e0d9ddf47103971372cb561dda6fbb95005f237e20db1ea5b71ff63c30faaa97"
+    },
+    {
+      "bytes": 11534,
+      "path": "research/README.md",
+      "sha256": "76dc533a33c26b2b84190fafff70cfdd1d88a9ec229052f421e65a89d62252a7"
+    },
+    {
+      "bytes": 3717,
+      "path": "research/evaluation/2026-10-23-p7-ancestry.md",
+      "sha256": "755eb5963d0134e8119d8818efa2c3cdd3fe12af5307bd745fbf23d3b66b1cd5"
+    },
+    {
+      "bytes": 3140,
+      "path": "research/updates/2026-10-23-p7-ancestry.md",
+      "sha256": "89fc5783ba1c8a046a6d507b64d810514fe50f36ac5720e3a27db24bb313c28e"
+    },
+    {
+      "bytes": 2192,
+      "path": "research/updates/README.md",
+      "sha256": "1be3dbd12231934bc5018f621f18a5398969c73be6f461091e618d2609d9befb"
+    },
+    {
+      "bytes": 11510,
+      "path": "scripts/render_p7_ancestry.py",
+      "sha256": "e82000ed95940ac7258a90d8f5b8018568fce1638cd53e622ee271cb3debbd04"
+    }
+  ],
+  "paths": "Repository-relative paths; this manifest excludes itself to avoid a self-reference.",
+  "result": "P7 visible formation from an initialized spot; no qualifying parent-to-descendants event on the selected retained track.",
+  "reused_source": {
+    "bytes": 8411681,
+    "path": "docs/assets/research/2026-10-23-p7-persistence/native-context.mp4",
+    "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d"
+  },
+  "schema_version": 1,
+  "scope_excerpt": {
+    "note": "Scientific values excerpted; operating checks and local selection-file paths omitted.",
+    "original_protocol_sha256": "054c4edc55ff4a0eea8f9bda90fee3bae96b99b0a429e6eeade92ba1757cd7d5",
+    "path": "docs/assets/research/2026-10-23-p7-ancestry/review-scope.json"
+  },
+  "validation": {
+    "all101_encoded_movie_frames_compared": true,
+    "all101_presentation_frame_PNGs_reproduced_identically": true,
+    "all101_source_frame_hashes_match_evaluator_record": true,
+    "original_scientific_copies": 10,
+    "simulation_or_numerical_field_analysis": false,
+    "static_PNGs_and_movie_reproduced_identically": true
+  }
+}

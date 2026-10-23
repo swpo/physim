@@ -7,6 +7,10 @@ These notes describe what changed, what the controls establish, and what remains
 unresolved. Videos use saved scientific evidence with visible timestamps and
 documented display settings.
 
+- [23 October 2026 — P7 develops its curl from an initialized spot](2026-10-23-p7-ancestry.md):
+  all 101 early observations show one apparent precursor forming its nested feature;
+  no qualifying parent-to-descendants event appears on this selected track. Includes
+  a complete early-history movie and the evaluator's independent assessment.
 - [23 October 2026 — P7 does not restore its original feature after this interior pulse](2026-10-23-p7-recovery.md):
   all six executions completed; S/C retain the feature, D/DC regrow a different
   pattern, and B/DB remain censored. The evaluator stops this fixed claim as a

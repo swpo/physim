@@ -1,0 +1,90 @@
+{
+  "alternatives": [
+    "The named individual and feature form by differentiation or enclosure from the initialized pattern without an identifiable feature-bearing parent.",
+    "Ancestry is ambiguous or the event or channel/post-event context is absent."
+  ],
+  "decision_rules": {
+    "ambiguity_or_missing_evidence": "Record first backward ambiguity and interval, preserve unresolved ancestry; close without retuning or substituting an individual.",
+    "common": "Do not change the original t250..750 persistence verdict, claim replication, infer unobserved material ancestry or new spontaneous origin. State retrospective selection and finite sampling limitations.",
+    "formation_without_event": "Conclude this retained ancestry does not supply the prerequisite; close this bounded historical lineage route without a copying experiment.",
+    "readable_event": "Bind exact source indices, time interval, parent/descendant positions and available subsequent record. That satisfies an event-record prerequisite only; copying interpretation needs a separately fixed evidence question and adequate subsequent trajectory."
+  },
+  "display": {
+    "detail": {
+      "A0": [
+        220,
+        166,
+        316,
+        262
+      ],
+      "A1": [
+        812,
+        166,
+        908,
+        262
+      ]
+    },
+    "full_frames": "Retain all original four-panel frames; full A0/A1 context is primary and detail is supplementary. Do not infer missing context from the detail crop.",
+    "full_panels": {
+      "A0": [
+        158,
+        142,
+        482,
+        468
+      ],
+      "A1": [
+        750,
+        142,
+        1074,
+        468
+      ]
+    },
+    "source": "Existing encoded movie only; no fields.npy or checkpoint decoding",
+    "transforms": "Lossless video-to-PNG decoding, fixed existing panel/detail crops, nearest-neighbor enlargement, labels from fixed frame mapping; no field recoloring, tracking, segmentation, masks or numerical diagnostics"
+  },
+  "excerpt_note": "Operating checks and local selection-file paths are not copied here. The complete evaluator records preserve original hash bindings; no provider or account record is published.",
+  "frozen_at": "2026-10-23T18:53:49.777639+00:00",
+  "hypothesis": "The retained pre-t250 history may contain a traceable unimposed parent-to-descendants event on the ancestry of the already selected P7 individual.",
+  "kind": "Scientific-scope excerpt; full original frozen protocol identified by hash",
+  "original_protocol": {
+    "bytes": 8744,
+    "sha256": "054c4edc55ff4a0eea8f9bda90fee3bae96b99b0a429e6eeade92ba1757cd7d5"
+  },
+  "review_id": "p7-ancestry-prerequisite-v1",
+  "rubric": {
+    "sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b",
+    "version": "v0.1"
+  },
+  "schema_version": 1,
+  "scope": {
+    "cadence": 2.5,
+    "event_selector": "If more than one readable unimposed parent-to-descendants event lies on this exact unambiguous ancestry, report the latest one before t250 and disclose others; do not choose a favorable feature outcome or switch target.",
+    "later_evidence": "Reuse accepted t250..750 judgment: no observed split/merge/replacement in the selected track. Do not repeat that review or search another individual, trajectory, genome or source.",
+    "mapping": "simulation time=2.5*encoded frame index; movie16fps",
+    "novel_review_frames": [
+      0,
+      100
+    ],
+    "novel_times": [
+      0,
+      250
+    ],
+    "observations": 101,
+    "procedure": "Trace the already selected t250 entity backward through every retained t0..250 observation, then report the forward formation/ancestry sequence. Do not silently cross an ambiguous link. A qualifying candidate event must show a recognizable pre-event parent and multiple continuing apparent individuals, including the selected t250 lineage; generic closure/regrowth, imposed initialization or a nearby similar object is insufficient. This prerequisite does not judge whether copying succeeds.",
+    "source_trajectory": "Exact fresh CPU p7g2_009 already used for accepted persistence"
+  },
+  "selection": {
+    "candidate": "p7g2_009, fresh CPU realization",
+    "frame_uid": "fresh__p7g2_009__00250",
+    "position_xy": [
+      85.57890638518774,
+      200.899030974217
+    ],
+    "time": 250,
+    "visible_feature": "A separate internal hooked/curled A1 stripe with an interior low-A1 bay, lying inside a closed outer A1 boundary and separated from it by an A0-rich band. A0 is blue and A1 orange in the legacy composite; the existing native movie displays A0 cyan and A1 pale cream in separate fixed-scale panels."
+  },
+  "source_movie": {
+    "path": "../2026-10-23-p7-persistence/native-context.mp4",
+    "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d"
+  }
+}

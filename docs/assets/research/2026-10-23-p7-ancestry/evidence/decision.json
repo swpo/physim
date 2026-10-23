@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "review_id": "p7-ancestry-prerequisite-v1",
+  "author": "/root/loop_reviewer",
+  "recorded_at_utc": "2026-10-23T19:06:58.492757+00:00",
+  "input_bindings": {
+    "request": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-evaluator-request.json",
+      "bytes": 3207,
+      "sha256": "9db9fa1dd024d32cfc967887e846f186590efe1d1b6194ed7f36ca2cb5e62ac2"
+    },
+    "operational_gate": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-recovery-acceptance.json",
+      "bytes": 3937,
+      "sha256": "228974fdf2d623e70b8d5d6cf5008076d347dd63717b5e1f50e66bc64fb72750"
+    },
+    "presentation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/presentation-provenance.json",
+      "bytes": 42866,
+      "sha256": "3c45711ccf3316043cf463ec95958bd8b266631fbcd452f2f9f6a65170186d69"
+    },
+    "protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/selection-protocol.json",
+      "bytes": 8744,
+      "sha256": "054c4edc55ff4a0eea8f9bda90fee3bae96b99b0a429e6eeade92ba1757cd7d5"
+    },
+    "validation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-presentation-validation.json",
+      "bytes": 1440,
+      "sha256": "892edc02268586157b3aa53c7a6940e043cb96a9dcfc5531332e74b97d40d196"
+    }
+  },
+  "accepted_later_assessment_reused": {
+    "path": "handoff/swarm_continuous_20261017/evaluation/p7-retrospective/assessment.json",
+    "bytes": 7777,
+    "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7"
+  },
+  "source_movie": {
+    "path": "outputs/sebastian-worlds-20261011/videos/p7g2_009/01-native.mp4",
+    "bytes": 8411681,
+    "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d"
+  },
+  "candidate": {
+    "name": "p7g2_009, fresh CPU realization",
+    "selection_time": 250,
+    "selection_frame_uid": "fresh__p7g2_009__00250",
+    "selection_rank": 5,
+    "rank_is_identity": false,
+    "display_position_xy_physical": [
+      85.57890638518774,
+      200.899030974217
+    ]
+  },
+  "inspection_completed": {
+    "all_101_registered_earlier_observations": true,
+    "all_nine_fixed_sheets": true,
+    "complete_original_pngs_additionally_viewed": [
+      0,
+      12,
+      60,
+      72,
+      84,
+      100
+    ],
+    "later_segment_re_reviewed": false,
+    "new_scientific_arrays_or_numerical_diagnostics": false,
+    "additional_agent_review": false
+  },
+  "disposition": "formation_without_qualifying_event",
+  "findings": {
+    "readable_precursor_chain": "The selected t250 structure traces through one apparent spatial precursor to a localized A1 spot already present in the initialized t0 frame.",
+    "forward_sequence": "Local A0/A1 rings develop around the initial spot; the central A1 island later deforms into the curled interior feature visible at the accepted t250 anchor.",
+    "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+    "candidate_lineage_events": [],
+    "first_backward_ancestry_ambiguity": null,
+    "first_backward_ambiguity_interpretation": "No ambiguous saved link was observed within t0..250. The available record ends backward at the initialized t0 spot; no earlier or material ancestry is asserted.",
+    "early_state_status": "Visible precursor only; the initial spot is not credited with the mature nested feature or with all three accepted later gates.",
+    "accepted_t250_t750_result": "Reused unchanged: localized coherent apparent individual, distinguishing spatial feature and feature persistence attached to that same apparent individual are supported over the accepted 201 saved observations. No observed split, merge or replacement in that accepted track.",
+    "combined_scope": "The new t0..250 inspection and reused t250..750 judgment supply no observed parent-to-multiple-continuing-individuals event on this exact selected track. This is not a claim about all P7 individuals or all possible trajectories."
+  },
+  "consequential_next_decision": {
+    "action": "STOP",
+    "scope": "Close the bounded historical ancestry route for this selected P7 track.",
+    "reason": "The retained record shows local formation without the qualifying parent-to-descendants event required by the frozen prerequisite.",
+    "copying_experiment_admitted": false,
+    "automatic_fallback_or_horizon_extension_admitted": false,
+    "alternative_individual_or_source_search_admitted": false,
+    "prior_accepted_judgments_and_stopped_protocols_unchanged": true
+  },
+  "limits": [
+    "Retrospective selection; no held-out confirmation claim.",
+    "Finite observation spacing of 2.5 simulation time units; no resolution of events between samples.",
+    "Rendered A0/A1 spatial continuity is not material ancestry.",
+    "A localized A1 spot is present at initialization; no claim about unstructured full-field initialization or spontaneous origin.",
+    "No new causal, functional, copying or replication claim."
+  ],
+  "communication": {
+    "publication_ready_account": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/publication-ready-account.txt",
+      "bytes": 3332,
+      "sha256": "f87385164893b340180a3ba147f68a554279188bed05e9ba5d8b25a676b245b3"
+    },
+    "keyframe_indices": [
+      0,
+      12,
+      60,
+      72,
+      84,
+      100
+    ],
+    "keyframe_times": [
+      0,
+      30,
+      150,
+      180,
+      210,
+      250
+    ],
+    "exact_captions_and_source_hashes": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/visual-observations.json",
+      "bytes": 113745,
+      "sha256": "9a6986cfa200a2b4afbcd5c1c0584a4afc1744aadb9ffe72f08f8ae814730229"
+    }
+  },
+  "evaluator_outputs": {
+    "visual_observations": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/visual-observations.json",
+      "bytes": 113745,
+      "sha256": "9a6986cfa200a2b4afbcd5c1c0584a4afc1744aadb9ffe72f08f8ae814730229"
+    },
+    "human_report": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/human-report.txt",
+      "bytes": 1223,
+      "sha256": "88a2cf9ebb4e254c2e8343faaca4320956cc66de735ddde88315da41ecf5e742"
+    },
+    "publication_ready_account": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/evaluator/publication-ready-account.txt",
+      "bytes": 3332,
+      "sha256": "f87385164893b340180a3ba147f68a554279188bed05e9ba5d8b25a676b245b3"
+    }
+  },
+  "operational_scope": "No compute or new epoch was admitted. Operational status is inherited from the bound root gate; the evaluator performed only the registered visual inspection and report binding."
+}

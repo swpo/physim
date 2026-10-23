@@ -15,7 +15,26 @@ PhySim dynamics remain a reproducible reference. Explicitly versioned alternativ
 may be proposed and judged against the same organism target, with appropriate
 numerical checks.
 
-**Latest result · 23 October 2026 — the P7 recovery test:** Persistent visible organization survived in controls, but the specified original feature did not return after interior erasure in the two interpretable recovery cases.
+**Latest reviewed result · 23 October 2026 — P7's early formation:** The selected
+structure develops its curled interior from a localized spot already present at
+initialization. All 101 early observations were inspected. The evaluator found
+no parent producing multiple continuing individuals on this exact track and
+closed this historical copying route. The earlier persistence finding remains
+supported.
+
+[Read the formation result](updates/2026-10-23-p7-ancestry.md)
+· [Read the independent evaluator assessment](evaluation/2026-10-23-p7-ancestry.md)
+· [Inspect the original keyframes and evidence](../docs/assets/research/2026-10-23-p7-ancestry/README.md).
+
+[![The selected P7 neighborhood develops from an initialized spot into the curled internal pattern](../docs/assets/research/2026-10-23-p7-ancestry/overview.png)](updates/2026-10-23-p7-ancestry.md)
+
+[Watch the 12.625-second formation sequence](../docs/assets/research/2026-10-23-p7-ancestry/early-history.mp4).
+The movie includes every saved observation from time 0 to 250, with full A0/A1
+context and a fixed detail view. Cyan and cream are two interacting fields.
+This is a retrospective formation record; it establishes neither material ancestry
+nor spontaneous origin, and it supplies no replication event.
+
+**Earlier completed comparison · 23 October 2026 — the P7 recovery test:** Persistent visible organization survived in controls, but the specified original feature did not return after interior erasure in the two interpretable recovery cases.
 The boundary-only case and the interior-plus-boundary case are censored: their
 fixed readout or the apparent individual's continuation becomes ambiguous.
 They cannot establish selective nonrecovery. The standing evaluator recommends
@@ -108,17 +127,20 @@ influence remains unresolved.
 
 ## Current priority · 23 October 2026
 
-The fixed P7 recovery comparison is complete. The standing evaluator recommends
-stopping its recovery/conditional-boundary claim as a limited negative, preserving
-the earlier evidence of visible organization and sampled persistence. No automatic
-rerun, longer window, altered pulse, recentered readout or revised endpoint follows.
-Read the [outcome assessment](evaluation/2026-10-23-p7-recovery.md) for the exact
-decision and its limits.
+The selected P7 track now supplies a reviewed formation sequence and later
+persistence. All three essential rubric gates remain supported for the accepted
+later interval. Active maintenance is strengthening evidence, not a fourth gate
+before asking about feature copying.
 
-The open question remains what evidence can establish active maintenance of a
-localized, distinctive organization. A next study needs a distinct, consequential
-proposal with competing predictions and a result that can change that assessment.
-No new experiment is selected by this result.
+The complete retained history of this selected track supplies no observed parent
+producing multiple continuing individuals. The historical ancestry route closes
+without a copying experiment, horizon extension or substitute individual. Future
+copying work needs a traceable parent-to-descendants record with the distinguishing
+features visible through time. No new experiment follows automatically.
+
+The fixed recovery/conditional-boundary claim also remains stopped as a limited
+negative. Its [assessment](evaluation/2026-10-23-p7-recovery.md) and earlier
+conclusions remain unchanged.
 
 The prepared growth-feedback comparison remains held. Its current evidence plan
 would not by itself establish persistent distinctive organization, and no feedback
@@ -134,13 +156,15 @@ and next question. The evaluator authors independent progress assessments, inclu
 negative judgments, missing evidence and recommendations to stop marginal work. This page provides the current entry point; the dated notes
 preserve how the findings developed.
 
-- [Latest evaluator report: P7 recovery comparison](evaluation/2026-10-23-p7-recovery.md)
+- [Latest evaluator report: P7 formation and ancestry](evaluation/2026-10-23-p7-ancestry.md)
+- [P7 recovery comparison](evaluation/2026-10-23-p7-recovery.md)
 - [Earlier P7 feature-persistence assessment](evaluation/2026-10-23-p7-persistence.md)
 - [Initial calibration and earlier comparisons](evaluation/2026-10-23.md)
 - [Organism rubric v0.1](evaluation/rubric-v0.1.md)
 - [Calibration image provenance](../docs/assets/research/2026-10-23-evaluation/image-provenance.json)
 - [Dated research updates](updates/README.md)
-- [Latest completed comparison: P7 recovery](updates/2026-10-23-p7-recovery.md)
+- [Latest retained-evidence result: P7 formation](updates/2026-10-23-p7-ancestry.md)
+- [Completed controlled comparison: P7 recovery](updates/2026-10-23-p7-recovery.md)
 - [Earlier controlled demonstrations: 20 October 2026](updates/2026-10-20.md)
 - [Saved source evidence](../docs/assets/research/2026-10-20/evidence)
 - [Video provenance, exact hashes and display conventions](../docs/assets/research/2026-10-20/provenance.json)
