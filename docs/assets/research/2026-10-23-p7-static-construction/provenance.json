@@ -1,0 +1,665 @@
+{
+  "schema_version": 1,
+  "study_id": "p7-static-construction-v1",
+  "scientific_construction_pass": true,
+  "interpretation": "One preregistered fixed-view reading; no second final outcome review.",
+  "no_recovery_result": true,
+  "static_execution": {
+    "integration_steps": 0,
+    "random_draws": 0,
+    "automatic_checks_passed": 132,
+    "automatic_checks_total": 132
+  },
+  "bundle_manifest_sha256": "cdd6571beb051776207206c3328f55dede69d8082b909017ecc859669f0167ba",
+  "registered_spec_canonical_sha256": "b882e15fd9d8ade116b7642dd16a37360d5553f244a781308479f000726fccb0",
+  "source_bindings": {
+    "protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/protocol.txt",
+      "sha256": "fe523bd9e348d9d22064dbaee350230ab21638566f24d4b9b511103327e3af44",
+      "bytes": 8010
+    },
+    "construction_config": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/construction-config.json",
+      "sha256": "c095f278431b376db07130730d310d0548daa2ac45aaf09c1acd44df260fccc7",
+      "bytes": 9141
+    },
+    "owner_research_spec": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/research-spec.json",
+      "sha256": "356dca38a3fc824a8f329a40836238903d6685bb453e4f88cc8e53cf20dfb464",
+      "bytes": 4555
+    },
+    "implementation_review": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/runtime/implementation-review.json",
+      "sha256": "a2a638480becd5cd4ce851d0bc2aceed91e7c112ede44c9fdec466dbf44e359d",
+      "bytes": 12222
+    },
+    "summary": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/summary.json",
+      "sha256": "26f4bca90ab6396aaad7452f346fe18636fd0e4706d012e54da8022c52ac18b9",
+      "bytes": 34082
+    },
+    "checks": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/checks.json",
+      "sha256": "f46549a974f2c3bb84640b79f7a83d6f70f646d32006da59b156a87559ea8bb9",
+      "bytes": 9819
+    },
+    "saved_review_html": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/review.html",
+      "sha256": "39f5dd5062e027ab0abd2e119b05c9811a0e747a4c8039c31cc75cfb4f0fdcaf",
+      "bytes": 7250380
+    },
+    "rubric": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/rubric-v0.1.md",
+      "sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b",
+      "bytes": 5769
+    },
+    "accepted_p7_assessment": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-retrospective/assessment.json",
+      "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7",
+      "bytes": 7777
+    },
+    "maintenance_design_decision": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-maintenance-design/evaluator-decision.json",
+      "sha256": "733907f1b4f782cbb9f8e19d8b9ad51341358e33551e4d4d5dd3734e1913d84a",
+      "bytes": 12720
+    }
+  },
+  "saved_png_extraction": {
+    "source_html_sha256": "39f5dd5062e027ab0abd2e119b05c9811a0e747a4c8039c31cc75cfb4f0fdcaf",
+    "method": "Base64-decoded each existing img data URL in document order. PNG bytes unchanged; no pixel decoding, image manipulation, field recoloring or NPZ decoding.",
+    "images": [
+      {
+        "figure_index": 0,
+        "arm": "reference",
+        "caption": "Accepted t250 reference",
+        "width": 1600,
+        "height": 900,
+        "bytes": 1041480,
+        "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+      },
+      {
+        "figure_index": 1,
+        "arm": "reference",
+        "caption": "Exact pulse masks: D blue, B amber, C purple",
+        "width": 512,
+        "height": 512,
+        "bytes": 787072,
+        "sha256": "b1cc8409b462fd9ea5126ca803c047a06645382746408e4093573b562a217a32"
+      },
+      {
+        "figure_index": 2,
+        "arm": "S",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "e246748dc3fee135daf1a9fd3a7e52ff41b5f6e30a60a157b35673fcc84f64d5"
+      },
+      {
+        "figure_index": 3,
+        "arm": "S",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "7dabcd35a898fcf9ac38cec9753ecb3c173c4aa39a2ad0785d87f0262ccabc26"
+      },
+      {
+        "figure_index": 4,
+        "arm": "S",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+      },
+      {
+        "figure_index": 5,
+        "arm": "S",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+      },
+      {
+        "figure_index": 6,
+        "arm": "S",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "40f7b2e6dea55b9f91b3bf52be7d60903b6da3057c4515b657b18a63bea33f07"
+      },
+      {
+        "figure_index": 7,
+        "arm": "S",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "d2b02a5d84b484b79b1e776818bcb9ae6623b4ecd8513e6e1fa3891f3ebe16e9"
+      },
+      {
+        "figure_index": 8,
+        "arm": "B",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "18198ad1d04e4965861a87e133ee917b1b0f8832f577efc32515b48cbc6bd840"
+      },
+      {
+        "figure_index": 9,
+        "arm": "B",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "b46ebf4c42f3f4a3cf77e9e2c80907cc90319c08f6924e653a544b3407442c0c"
+      },
+      {
+        "figure_index": 10,
+        "arm": "B",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+      },
+      {
+        "figure_index": 11,
+        "arm": "B",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+      },
+      {
+        "figure_index": 12,
+        "arm": "B",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "f9f3676eb8b416f56b340aded4a2f6f09b555b84621a4debf83ae8825b6c3092"
+      },
+      {
+        "figure_index": 13,
+        "arm": "B",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "2a2a75e19a1a2e810536501e4372e2b4b5dffffe6f70ec2ac9edd67461214b9a"
+      },
+      {
+        "figure_index": 14,
+        "arm": "C",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "0a34aa240e12092fc88c6aed09458e2c308e2ed69760f0f3acb278c323663962"
+      },
+      {
+        "figure_index": 15,
+        "arm": "C",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "41c57616b33607f344e2e29706adb344432e3b69508024d957cf0ac46ab977f9"
+      },
+      {
+        "figure_index": 16,
+        "arm": "C",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+      },
+      {
+        "figure_index": 17,
+        "arm": "C",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+      },
+      {
+        "figure_index": 18,
+        "arm": "C",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "5d226ccf5ce42032cbeb643abbd46490d6b0982d38f85fb9e1921b639e6215ac"
+      },
+      {
+        "figure_index": 19,
+        "arm": "C",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "a88641d177ec9643719ab94b46c512eb3849a6679c4f5325c21a0e9c74576ec2"
+      },
+      {
+        "figure_index": 20,
+        "arm": "D",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "eaf1010695a348fb5a2019315128f898c5ee966ad1ab712761c394fc3e02fe0e"
+      },
+      {
+        "figure_index": 21,
+        "arm": "D",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "930cedc5f07cfea9e33e3c6625b6e7dc2c773fe5050e7cd16c5ac48027878b64"
+      },
+      {
+        "figure_index": 22,
+        "arm": "D",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 23,
+        "arm": "D",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 24,
+        "arm": "D",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "2a0e6ece6a5133f6e5051aafa1cff1ccee86b2e55e94b83a189bb0aa094312e9"
+      },
+      {
+        "figure_index": 25,
+        "arm": "D",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "c47c53f241b11ad13be7db1a50a30bedce51312097abdb7ff225f2b36ded2e3d"
+      },
+      {
+        "figure_index": 26,
+        "arm": "DB",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "679180623dd5fdd22565ceb7fe8f98f647cac3bc52f4755560a69efd0970dd3a"
+      },
+      {
+        "figure_index": 27,
+        "arm": "DB",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "d47f9661d1348b5fcbb6611d5e5814f692adfaffffa8e6a9b29a9a071c8c1254"
+      },
+      {
+        "figure_index": 28,
+        "arm": "DB",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 29,
+        "arm": "DB",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 30,
+        "arm": "DB",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "6b52a3a38fa12c4a0d5564ebc2a451c177ca9035ee3c8f3f263d7e9a9e87ab83"
+      },
+      {
+        "figure_index": 31,
+        "arm": "DB",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "0fd563bf718101dc46c82cd9eff3d493c4d9f090de260f4c7379888a38234935"
+      },
+      {
+        "figure_index": 32,
+        "arm": "DC",
+        "caption": "A0 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "4da35171b439b37303b789913fadb2ac4162cf6899809b447df133d54532fe0d"
+      },
+      {
+        "figure_index": 33,
+        "arm": "DC",
+        "caption": "A1 full-domain static context",
+        "width": 512,
+        "height": 512,
+        "bytes": 263524,
+        "sha256": "9e26ae501a21b944d9a900c7d60f37c70bf9e730b1c74db96e7e364e86b459be"
+      },
+      {
+        "figure_index": 34,
+        "arm": "DC",
+        "caption": "A0 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 35,
+        "arm": "DC",
+        "caption": "A1 interior readout",
+        "width": 80,
+        "height": 80,
+        "bytes": 19348,
+        "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+      },
+      {
+        "figure_index": 36,
+        "arm": "DC",
+        "caption": "A0 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "415eac34b18083b891a06dbdf737590fdc8b1fe7b87dd2a50b83dec588e697ed"
+      },
+      {
+        "figure_index": 37,
+        "arm": "DC",
+        "caption": "A1 future context representation",
+        "width": 128,
+        "height": 128,
+        "bytes": 17360,
+        "sha256": "53f7451bb25050d04399371fb441953b494c27655b6fa3a7f8edc03c3b0b4900"
+      }
+    ]
+  },
+  "presentation": {
+    "source_html_sha256": "39f5dd5062e027ab0abd2e119b05c9811a0e747a4c8039c31cc75cfb4f0fdcaf",
+    "source_index_sha256": "7efab86a8eef290b2677427e0e3da16bacda9e931cf8972860f13b11c4b31f9b",
+    "purpose": "Readable presentation of every fixed saved arm view for the single preregistered interpretation.",
+    "outputs": [
+      {
+        "file": "interior-contact.png",
+        "sha256": "6a48efa8cae7132c138e12b2e7e161a51fb551a39bfc7534fea3276b748bf4a6",
+        "scale": 4,
+        "method": "Whole existing PNG pixel enlargement by nearest neighbor and labeled composition only. No scientific array decoding, field recoloring, crop, numerical metric or alternate view.",
+        "sources": [
+          {
+            "figure_index": 4,
+            "source_png_sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+          },
+          {
+            "figure_index": 5,
+            "source_png_sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+          },
+          {
+            "figure_index": 10,
+            "source_png_sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+          },
+          {
+            "figure_index": 11,
+            "source_png_sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+          },
+          {
+            "figure_index": 16,
+            "source_png_sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+          },
+          {
+            "figure_index": 17,
+            "source_png_sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+          },
+          {
+            "figure_index": 22,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          },
+          {
+            "figure_index": 23,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          },
+          {
+            "figure_index": 28,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          },
+          {
+            "figure_index": 29,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          },
+          {
+            "figure_index": 34,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          },
+          {
+            "figure_index": 35,
+            "source_png_sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+          }
+        ]
+      },
+      {
+        "file": "native-context-contact.png",
+        "sha256": "cbd576a4f61e4004f088ebc7d29e7d63c3a096a43d6891b3d37d3eefac24e4be",
+        "scale": 1,
+        "method": "Whole existing PNG pixel enlargement by nearest neighbor and labeled composition only. No scientific array decoding, field recoloring, crop, numerical metric or alternate view.",
+        "sources": [
+          {
+            "figure_index": 2,
+            "source_png_sha256": "e246748dc3fee135daf1a9fd3a7e52ff41b5f6e30a60a157b35673fcc84f64d5"
+          },
+          {
+            "figure_index": 3,
+            "source_png_sha256": "7dabcd35a898fcf9ac38cec9753ecb3c173c4aa39a2ad0785d87f0262ccabc26"
+          },
+          {
+            "figure_index": 8,
+            "source_png_sha256": "18198ad1d04e4965861a87e133ee917b1b0f8832f577efc32515b48cbc6bd840"
+          },
+          {
+            "figure_index": 9,
+            "source_png_sha256": "b46ebf4c42f3f4a3cf77e9e2c80907cc90319c08f6924e653a544b3407442c0c"
+          },
+          {
+            "figure_index": 14,
+            "source_png_sha256": "0a34aa240e12092fc88c6aed09458e2c308e2ed69760f0f3acb278c323663962"
+          },
+          {
+            "figure_index": 15,
+            "source_png_sha256": "41c57616b33607f344e2e29706adb344432e3b69508024d957cf0ac46ab977f9"
+          },
+          {
+            "figure_index": 20,
+            "source_png_sha256": "eaf1010695a348fb5a2019315128f898c5ee966ad1ab712761c394fc3e02fe0e"
+          },
+          {
+            "figure_index": 21,
+            "source_png_sha256": "930cedc5f07cfea9e33e3c6625b6e7dc2c773fe5050e7cd16c5ac48027878b64"
+          },
+          {
+            "figure_index": 26,
+            "source_png_sha256": "679180623dd5fdd22565ceb7fe8f98f647cac3bc52f4755560a69efd0970dd3a"
+          },
+          {
+            "figure_index": 27,
+            "source_png_sha256": "d47f9661d1348b5fcbb6611d5e5814f692adfaffffa8e6a9b29a9a071c8c1254"
+          },
+          {
+            "figure_index": 32,
+            "source_png_sha256": "4da35171b439b37303b789913fadb2ac4162cf6899809b447df133d54532fe0d"
+          },
+          {
+            "figure_index": 33,
+            "source_png_sha256": "9e26ae501a21b944d9a900c7d60f37c70bf9e730b1c74db96e7e364e86b459be"
+          }
+        ]
+      },
+      {
+        "file": "coarse-context-contact.png",
+        "sha256": "8866eb30599308c64c352f60dda411f9d3d7385d7fcab7d2d7dd0911decc7221",
+        "scale": 3,
+        "method": "Whole existing PNG pixel enlargement by nearest neighbor and labeled composition only. No scientific array decoding, field recoloring, crop, numerical metric or alternate view.",
+        "sources": [
+          {
+            "figure_index": 6,
+            "source_png_sha256": "40f7b2e6dea55b9f91b3bf52be7d60903b6da3057c4515b657b18a63bea33f07"
+          },
+          {
+            "figure_index": 7,
+            "source_png_sha256": "d2b02a5d84b484b79b1e776818bcb9ae6623b4ecd8513e6e1fa3891f3ebe16e9"
+          },
+          {
+            "figure_index": 12,
+            "source_png_sha256": "f9f3676eb8b416f56b340aded4a2f6f09b555b84621a4debf83ae8825b6c3092"
+          },
+          {
+            "figure_index": 13,
+            "source_png_sha256": "2a2a75e19a1a2e810536501e4372e2b4b5dffffe6f70ec2ac9edd67461214b9a"
+          },
+          {
+            "figure_index": 18,
+            "source_png_sha256": "5d226ccf5ce42032cbeb643abbd46490d6b0982d38f85fb9e1921b639e6215ac"
+          },
+          {
+            "figure_index": 19,
+            "source_png_sha256": "a88641d177ec9643719ab94b46c512eb3849a6679c4f5325c21a0e9c74576ec2"
+          },
+          {
+            "figure_index": 24,
+            "source_png_sha256": "2a0e6ece6a5133f6e5051aafa1cff1ccee86b2e55e94b83a189bb0aa094312e9"
+          },
+          {
+            "figure_index": 25,
+            "source_png_sha256": "c47c53f241b11ad13be7db1a50a30bedce51312097abdb7ff225f2b36ded2e3d"
+          },
+          {
+            "figure_index": 30,
+            "source_png_sha256": "6b52a3a38fa12c4a0d5564ebc2a451c177ca9035ee3c8f3f263d7e9a9e87ab83"
+          },
+          {
+            "figure_index": 31,
+            "source_png_sha256": "0fd563bf718101dc46c82cd9eff3d493c4d9f090de260f4c7379888a38234935"
+          },
+          {
+            "figure_index": 36,
+            "source_png_sha256": "415eac34b18083b891a06dbdf737590fdc8b1fe7b87dd2a50b83dec588e697ed"
+          },
+          {
+            "figure_index": 37,
+            "source_png_sha256": "53f7451bb25050d04399371fb441953b494c27655b6fa3a7f8edc03c3b0b4900"
+          }
+        ]
+      }
+    ]
+  },
+  "public_assessment": {
+    "file": "assessment.json",
+    "sha256": "ddb9d0fc362fe6834ccff00c1b27757c957789dfdded79f8794055b9c50ab46e",
+    "source_assessment_sha256": "00cb8f213602a2724cd8e66031f3964560830e9b60bf885b9b0400d5a8a69755",
+    "metadata_omission": "Provider job identity only; no scientific wording or bindings changed."
+  },
+  "publication_files": {
+    "2026-10-23-p7-static-construction.md": {
+      "sha256": "f05235027cfacc54fd76cbc886821a7ccb076ddd0839b1fd6feb5400a183a697",
+      "bytes": 4148,
+      "path": "research/evaluation/2026-10-23-p7-static-construction.md",
+      "source_report": {
+        "sha256": "7a04a93436a8bbb5f5fd16b4b821228f9a29ca0b4944e81415996e2a5ce2d1a5",
+        "bytes": 4163
+      },
+      "transformation": "Only the original-saved-review hyperlink moved to research/evidence; scientific wording unchanged."
+    },
+    "interior-contact.png": {
+      "sha256": "6a48efa8cae7132c138e12b2e7e161a51fb551a39bfc7534fea3276b748bf4a6",
+      "bytes": 56341
+    },
+    "native-context-contact.png": {
+      "sha256": "cbd576a4f61e4004f088ebc7d29e7d63c3a096a43d6891b3d37d3eefac24e4be",
+      "bytes": 1351542
+    },
+    "coarse-context-contact.png": {
+      "sha256": "8866eb30599308c64c352f60dda411f9d3d7385d7fcab7d2d7dd0911decc7221",
+      "bytes": 152120
+    },
+    "summary.json": {
+      "sha256": "26f4bca90ab6396aaad7452f346fe18636fd0e4706d012e54da8022c52ac18b9",
+      "bytes": 34082
+    },
+    "checks.json": {
+      "sha256": "f46549a974f2c3bb84640b79f7a83d6f70f646d32006da59b156a87559ea8bb9",
+      "bytes": 9819
+    },
+    "review.html": {
+      "sha256": "39f5dd5062e027ab0abd2e119b05c9811a0e747a4c8039c31cc75cfb4f0fdcaf",
+      "bytes": 7250380,
+      "path": "research/evidence/2026-10-23-p7-static-construction/review.html"
+    }
+  },
+  "source_array_handling": "Original worker construction.npz remains in the scientific archive. It was not decoded locally for this assessment or presentation. Figure extraction used only the existing embedded PNG bytes.",
+  "limitations": [
+    "This is static distinguishability and manipulation validity, not recovery, active maintenance, autonomy, membrane function or material continuity.",
+    "Eight-bit interior and four-bit block-mean context are not full raw trajectories or full end checkpoints; readability here does not guarantee future readability.",
+    "Any feature exit from D, crop/quantization ambiguity, replacement or ambiguous continuation is censored/insufficient evidence, never selective nonrecovery. No recentering or precision/window revision.",
+    "B and C share translated geometry but differ in field state, gradients, distance and actual pulse dose. No equivalent-damage or unique-boundary-geometry claim.",
+    "The six other fields are retained, including chemical memory. A later conditional recovery interaction remains compatible with a stationary nonlinear attractor.",
+    "Missing historical RNG state, single new prospective noise branch, retrospective candidate selection and untested numerical convergence remain explicit."
+  ],
+  "presentation_renderer": {
+    "path": "scripts/render_p7_static_construction.py",
+    "sha256": "4a09b436ae0bcb0f6ae5c83ebabd896f4803c90779aebd7bde36cfd910064d9e",
+    "environment": {
+      "Pillow": "11.3.0",
+      "font_name": "Arial.ttf",
+      "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+      "font_sizes": [
+        24,
+        18
+      ]
+    },
+    "original_recipe_sha256": "09c1dec1238f6e55340f0adb872dac946d83eeb6e34e4b5f704b1eebfecc37a9",
+    "adaptation": "Original pixel operations and layout retained. Public HTML and hash-indexed PNG bytes replace private input paths; explicit output/font arguments and hash checks added."
+  },
+  "publication_packaging": {
+    "original_provenance_sha256": "bea29a1321ef117ad8465e763984952adbdbd066f82691853a1aa46ceba1b321",
+    "sealed_evaluator_assessment_sha256": "00cb8f213602a2724cd8e66031f3964560830e9b60bf885b9b0400d5a8a69755",
+    "public_assessment_unchanged": true,
+    "report_binding_note": "The unchanged public assessment binds the sealed source report. publication_files records the public report after its single hyperlink relocation.",
+    "scientific_wording_changed": false,
+    "raw_review_html_unchanged": true
+  }
+}

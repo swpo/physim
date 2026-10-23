@@ -15,7 +15,7 @@ PhySim dynamics remain a reproducible reference. Explicitly versioned alternativ
 may be proposed and judged against the same organism target, with appropriate
 numerical checks.
 
-**Latest evaluation · 23 October 2026:** one selected P7 enclosure and its
+**Persistence assessment · 23 October 2026:** one selected P7 enclosure and its
 specified internal curled stripe remain recognizable in all 201 saved observations
 from time 250 through 750. The standing evaluator judges all three rubric gates
 supported for this individual and sampled interval. This is an organism-like
@@ -29,6 +29,15 @@ island remains a competing explanation; active maintenance is untested.
 The selected interval starts 6.25 seconds into the movie. The full report identifies
 the chosen enclosure and feature and explains the retrospective selection and
 sampling limits.
+
+**Latest methods checkpoint · 23 October 2026:** the planned recovery test now
+has a validated intervention and readout. In six saved static cases, the interior
+feature is readable when preserved and absent after the interior pulse. No time
+evolution was run; recovery and active maintenance remain untested.
+[Read the six-case comparison](updates/2026-10-23-p7-static-construction.md)
+· [Read the evaluator's independent assessment](evaluation/2026-10-23-p7-static-construction.md).
+
+[![Six immediate intervention cases, with the same fixed interior view](../docs/assets/research/2026-10-23-p7-static-construction/interior-contact.png)](updates/2026-10-23-p7-static-construction.md)
 
 The earlier controlled demonstrations below show activity depending on protective
 action and signal production. Those active patterns still grow. They do not
@@ -78,11 +87,14 @@ influence remains unresolved.
 
 ## Current priority · 23 October 2026
 
-The saved-trajectory review is complete. The next design question concerns causal
-maintenance of this exact candidate: does its boundary help restore the internal
-feature after a local disturbance, compared with sham and matched damage controls? Recovery alone would not
-establish autonomy or life. The evaluator's report gives the next decision and its
-limits. No new run is admitted by the visual assessment.
+The static construction passes. The next step is to implement and register the
+same fixed six-case recovery comparison over 250 simulation-time units: does the
+named boundary-region intervention change sustained recovery of the internal
+feature? The exterior control has equal area but different field state and dose;
+it does not isolate geometry or match damage. A positive interaction would remain
+compatible with stable-pattern restoration and retained model state. The
+[static evaluator report](evaluation/2026-10-23-p7-static-construction.md) fixes the
+next decision and its limits. No recovery execution is admitted by this result.
 
 The prepared growth-feedback comparison remains held. Its current evidence plan
 would not by itself establish persistent distinctive organization, and no feedback

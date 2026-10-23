@@ -7,6 +7,9 @@ These notes describe what changed, what the controls establish, and what remains
 unresolved. Videos use saved scientific evidence with visible timestamps and
 documented display settings.
 
+- [23 October 2026 — Preparing a controlled P7 recovery test](2026-10-23-p7-static-construction.md):
+  the fixed static intervention and interior readout pass; six immediate cases
+  establish setup validity, with recovery still untested.
 - [23 October 2026 — Following one enclosure and its internal feature](../evaluation/2026-10-23-p7-persistence.md):
   the evaluator follows all 201 saved observations across 500 simulation units,
   supports visible persistence, and identifies causal maintenance as the next question.

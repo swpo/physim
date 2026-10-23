@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-23T14:08:09.234919+00:00",
+  "study_id": "p7-static-construction-v1",
+  "author": "Standing organism evaluator",
+  "interpretation": "One preregistered reading of the fixed saved result views; not a new conceptual-design review.",
+  "disposition": "static_construction_pass",
+  "scientific_construction_pass": true,
+  "automatic_construction_pass": true,
+  "future_dynamics_admitted": false,
+  "bundle_manifest_sha256": "cdd6571beb051776207206c3328f55dede69d8082b909017ecc859669f0167ba",
+  "inputs": {
+    "protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/protocol.txt",
+      "sha256": "fe523bd9e348d9d22064dbaee350230ab21638566f24d4b9b511103327e3af44",
+      "bytes": 8010
+    },
+    "construction_config": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/construction-config.json",
+      "sha256": "c095f278431b376db07130730d310d0548daa2ac45aaf09c1acd44df260fccc7",
+      "bytes": 9141
+    },
+    "owner_research_spec": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/research-spec.json",
+      "sha256": "356dca38a3fc824a8f329a40836238903d6685bb453e4f88cc8e53cf20dfb464",
+      "bytes": 4555
+    },
+    "implementation_review": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/runtime/implementation-review.json",
+      "sha256": "a2a638480becd5cd4ce851d0bc2aceed91e7c112ede44c9fdec466dbf44e359d",
+      "bytes": 12222
+    },
+    "summary": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/summary.json",
+      "sha256": "26f4bca90ab6396aaad7452f346fe18636fd0e4706d012e54da8022c52ac18b9",
+      "bytes": 34082
+    },
+    "checks": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/checks.json",
+      "sha256": "f46549a974f2c3bb84640b79f7a83d6f70f646d32006da59b156a87559ea8bb9",
+      "bytes": 9819
+    },
+    "saved_review_html": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/review.html",
+      "sha256": "39f5dd5062e027ab0abd2e119b05c9811a0e747a4c8039c31cc75cfb4f0fdcaf",
+      "bytes": 7250380
+    },
+    "saved_png_index": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/members/maintenance/saved-views/index.json",
+      "sha256": "7efab86a8eef290b2677427e0e3da16bacda9e931cf8972860f13b11c4b31f9b",
+      "bytes": 14105
+    },
+    "rubric": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/rubric-v0.1.md",
+      "sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b",
+      "bytes": 5769
+    },
+    "accepted_p7_assessment": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-retrospective/assessment.json",
+      "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7",
+      "bytes": 7777
+    },
+    "maintenance_design_decision": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-maintenance-design/evaluator-decision.json",
+      "sha256": "733907f1b4f782cbb9f8e19d8b9ad51341358e33551e4d4d5dd3734e1913d84a",
+      "bytes": 12720
+    }
+  },
+  "registered_spec_canonical_sha256": "b882e15fd9d8ade116b7642dd16a37360d5553f244a781308479f000726fccb0",
+  "automatic_evidence": {
+    "checks_passed": 132,
+    "checks_total": 132,
+    "source_preparation_link": "Exact byte equality of the source-normalized checkpoint A0/A1 to the bound legacy t250 extraction, whose frame/mask metadata refer to the same protocol-declared recording digest. The 1.26-GB recording was not transferred or rehashed. Other six fields are finite and retained from the complete bound checkpoint; they are not independently reconstructed from the movie.",
+    "source_decoding": "Performed on registered Prime worker; no scientific arrays decoded locally by evaluator.",
+    "native_initializations": 0,
+    "integration_steps": 0,
+    "future_rng_draws": 0,
+    "readout": {
+      "mask": "D",
+      "cells": 4748,
+      "indices_order": "ascending flattened row-major index",
+      "bbox_yx_half_open": [
+        368,
+        448,
+        132,
+        212
+      ],
+      "outer_closure_excluded": true
+    },
+    "other_six_fields_retained": true,
+    "B_C_damage_equivalent": false
+  },
+  "visual_criteria": {
+    "independent_named_feature": "Supported: the interior curled A1 stripe, low-A1 bay and adjacent A0-rich band are recognizable without outer-contour closure.",
+    "quantized_interior_view": "Supported for the static cases: the frozen eight-bit native-resolution saved images carry the required distinction.",
+    "S_B_C_retention": "Supported in each saved interior pair; exact all-eight-field equality is separately established by worker invariants.",
+    "D_DB_DC_erasure": "Supported in each saved interior pair; immediate identical activator pulse and retained other fields are separately established by worker invariants.",
+    "gray_mask": "Gray denotes pixels outside the fixed readout, not a material boundary. The mask shape is not counted as the named feature.",
+    "current_readability_ambiguity": false,
+    "no_view_or_construction_revision": true
+  },
+  "per_arm_observations": [
+    {
+      "arm": "S",
+      "feature_readability": "supported",
+      "named_feature_present": true,
+      "A0_observation": "The adjacent curved cyan band is recognizable.",
+      "A1_observation": "The curled cream stripe and its low-A1 bay remain distinguishable.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 4,
+          "arm": "S",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+        },
+        {
+          "figure_index": 5,
+          "arm": "S",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "feature_readability": "supported",
+      "named_feature_present": true,
+      "A0_observation": "The adjacent curved cyan band is recognizable.",
+      "A1_observation": "The curled cream stripe and its low-A1 bay remain distinguishable.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 10,
+          "arm": "B",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+        },
+        {
+          "figure_index": 11,
+          "arm": "B",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "feature_readability": "supported",
+      "named_feature_present": true,
+      "A0_observation": "The adjacent curved cyan band is recognizable.",
+      "A1_observation": "The curled cream stripe and its low-A1 bay remain distinguishable.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 16,
+          "arm": "C",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "ad3912aca99d0665bf87693cdeb3b4b5019138c061049415cd1a73ad5c5e7a12"
+        },
+        {
+          "figure_index": 17,
+          "arm": "C",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "20feb6913436204233f8a37c36fe8db35b9580c5adab596900fa613f9a9b2d1c"
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "feature_readability": "visible_feature_erasure_supported",
+      "named_feature_present": false,
+      "A0_observation": "The readout is uniform at the displayed vacuum level; the cyan band is absent.",
+      "A1_observation": "The readout is uniform at the displayed vacuum level; the curled stripe and bay organization are absent.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 22,
+          "arm": "D",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        },
+        {
+          "figure_index": 23,
+          "arm": "D",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        }
+      ]
+    },
+    {
+      "arm": "DB",
+      "feature_readability": "visible_feature_erasure_supported",
+      "named_feature_present": false,
+      "A0_observation": "The readout is uniform at the displayed vacuum level; the cyan band is absent.",
+      "A1_observation": "The readout is uniform at the displayed vacuum level; the curled stripe and bay organization are absent.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 28,
+          "arm": "DB",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        },
+        {
+          "figure_index": 29,
+          "arm": "DB",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        }
+      ]
+    },
+    {
+      "arm": "DC",
+      "feature_readability": "visible_feature_erasure_supported",
+      "named_feature_present": false,
+      "A0_observation": "The readout is uniform at the displayed vacuum level; the cyan band is absent.",
+      "A1_observation": "The readout is uniform at the displayed vacuum level; the curled stripe and bay organization are absent.",
+      "ambiguity_observed": false,
+      "source_figures": [
+        {
+          "figure_index": 34,
+          "arm": "DC",
+          "caption": "A0 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        },
+        {
+          "figure_index": 35,
+          "arm": "DC",
+          "caption": "A1 interior readout",
+          "width": 80,
+          "height": 80,
+          "sha256": "291f9c4be597a3d9b858c5cfda32afedfbfecf3ebd282e604f381514cae55f1b"
+        }
+      ]
+    }
+  ],
+  "viewing_scope": {
+    "fixed_interior_source_figures": [
+      4,
+      5,
+      10,
+      11,
+      16,
+      17,
+      22,
+      23,
+      28,
+      29,
+      34,
+      35
+    ],
+    "native_context_source_figures": [
+      2,
+      3,
+      8,
+      9,
+      14,
+      15,
+      20,
+      21,
+      26,
+      27,
+      32,
+      33
+    ],
+    "coarse_context_source_figures": [
+      6,
+      7,
+      12,
+      13,
+      18,
+      19,
+      24,
+      25,
+      30,
+      31,
+      36,
+      37
+    ],
+    "mask_figure": 1,
+    "historical_reference_figure": {
+      "index": 0,
+      "status": "Accepted prior reference reused; no new historical outcome review."
+    },
+    "context_use": "Surroundings only; native/coarse context did not substitute for independent feature readability.",
+    "presentation_only": "Exact extracted PNGs, plus whole-image nearest-neighbor display enlargement and labeled composition. No raw scientific-array decoding, altered crop, recoloring, threshold, dose or new numeric feature computation.",
+    "presentation_provenance": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/evaluator/presentation-provenance.json",
+      "sha256": "9ad10356f4ab4d651ae75fc3e1bc6cd9e5a6f8287a9396b985df250fd458310e",
+      "bytes": 6813
+    }
+  },
+  "limits_preserved": [
+    "This is static distinguishability and manipulation validity, not recovery, active maintenance, autonomy, membrane function or material continuity.",
+    "Eight-bit interior and four-bit block-mean context are not full raw trajectories or full end checkpoints; readability here does not guarantee future readability.",
+    "Any feature exit from D, crop/quantization ambiguity, replacement or ambiguous continuation is censored/insufficient evidence, never selective nonrecovery. No recentering or precision/window revision.",
+    "B and C share translated geometry but differ in field state, gradients, distance and actual pulse dose. No equivalent-damage or unique-boundary-geometry claim.",
+    "The six other fields are retained, including chemical memory. A later conditional recovery interaction remains compatible with a stationary nonlinear attractor.",
+    "Missing historical RNG state, single new prospective noise branch, retrospective candidate selection and untested numerical convergence remain explicit."
+  ],
+  "unchanged_p7_verdict": {
+    "rubric": "v0.1 unchanged",
+    "three_gates": "All supported for visible organization and sampled apparent identity in the accepted 201 observations from time 250 through 750.",
+    "new_organism_evidence_from_this_study": "No new persistence, replication, maintenance or autonomy result."
+  },
+  "next_consequential_decision": {
+    "action": "Advance the same fixed recovery comparison toward implementation and operational admission.",
+    "reason": "The one construction now supports an independently readable endpoint, an observable immediate erasure, unchanged interior controls and a bounded declared representation. These were the remaining scientific construction conditions.",
+    "protocol_status": "Recovery comparison is prebound; its executable bundle is not yet implemented or frozen.",
+    "preserve": "Exact I/D/B/C construction, activator vacuum pulse, six arms, fixed readout and context, one new paired noise branch, 250-unit horizon, 2.5 cadence and every-sample final-50-unit recovery requirement.",
+    "admission": "Root alone admits any later implementation/run under the appropriate fresh scope, source/numerical validity checks and operational limits. This result does not itself admit dynamics.",
+    "stop": "If the full fixed comparison cannot meet the declared validity, evidence, runtime or compute limits, stop or keep it unadmitted. No shortened horizon, revised masks/dose/readout, second construction, alternative candidate or automatic feedback fallback.",
+    "future_claim": "A valid selective recovery interaction could support conditional contribution of the named boundary-region intervention in this preparation, pulse, noise branch and window; no broader autonomy or geometry-specific attribution."
+  },
+  "publication": {
+    "meaningful_checkpoint": true,
+    "recommended_format": "Brief methods checkpoint attached to the existing P7 research/evaluation stream, with the six fixed interior pairs and a clear no-dynamics label.",
+    "reader_takeaway": "The proposed readout distinguishes the intact interior organization from its immediate erasure while leaving the readout unchanged in the two additional-lesion controls.",
+    "not_a_recovery_announcement": true,
+    "correction_to_prior_p7_visual_finding": false
+  },
+  "reports": {
+    "evaluator-report.md": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/evaluator/evaluator-report.md",
+      "sha256": "7a04a93436a8bbb5f5fd16b4b821228f9a29ca0b4944e81415996e2a5ce2d1a5",
+      "bytes": 4163
+    },
+    "human-chat-report.txt": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/evaluator/human-chat-report.txt",
+      "sha256": "effadd61d70fb764c7084f542c1b07171912d7494eb56ca99e4303697d7eb120",
+      "bytes": 1110
+    }
+  },
+  "public_copy": {
+    "source_assessment_sha256": "00cb8f213602a2724cd8e66031f3964560830e9b60bf885b9b0400d5a8a69755",
+    "changes": "Provider job identifier and its operational identity note omitted. Scientific assessment and all evidence bindings unchanged."
+  }
+}
