@@ -15,17 +15,20 @@ PhySim dynamics remain a reproducible reference. Explicitly versioned alternativ
 may be proposed and judged against the same organism target, with appropriate
 numerical checks.
 
-**Latest evaluation · 23 October 2026:** the inspected examples do not yet establish
-all three organism gates. Earlier multicolor enclosures are a more direct lead for
-structured interiors than the recent activity-only demonstrations. The key gap is
-whether the same enclosure and its distinguishing contents persist over time.
-[Read the evaluator's assessment and next decision](evaluation/2026-10-23.md).
+**Latest evaluation · 23 October 2026:** one selected P7 enclosure and its
+specified internal curled stripe remain recognizable in all 201 saved observations
+from time 250 through 750. The standing evaluator judges all three rubric gates
+supported for this individual and sampled interval. This is an organism-like
+candidate at the level of visible organization. A largely stationary patterned
+island remains a competing explanation; active maintenance is untested.
+[Read the evaluator's persistence assessment](evaluation/2026-10-23-p7-persistence.md).
 
-[![Saved multicolor field and detected enclosure interiors at time 750](../docs/assets/research/2026-10-23-evaluation/p7g2_009-t750.png)](evaluation/2026-10-23.md)
+[![The same selected enclosure and internal feature at six times from 250 through 750](../docs/assets/research/2026-10-23-p7-persistence/p7-persistence-overview.png)](evaluation/2026-10-23-p7-persistence.md)
 
-This is one saved frame of candidate `p7g2_009`, not proof of persistence. Colors
-identify activator fields, and numbered interiors are within-frame detection
-ranks, not tracked organisms. The evaluator report explains the evidence and limits.
+[Watch the original 19-second full-context movie](../docs/assets/research/2026-10-23-p7-persistence/native-context.mp4).
+The selected interval starts 6.25 seconds into the movie. The full report identifies
+the chosen enclosure and feature and explains the retrospective selection and
+sampling limits.
 
 The earlier controlled demonstrations below show activity depending on protective
 action and signal production. Those active patterns still grow. They do not
@@ -75,17 +78,16 @@ influence remains unresolved.
 
 ## Current priority · 23 October 2026
 
-The evaluator recommends one bounded review of the saved `p7g2_009` trajectory:
-track the same localized enclosure and ask whether its internal organization
-persists, rather than counting similar shapes in successive frames. This is an
-evidence question to resolve before another dynamics run. It does not commit
-future experiments to diffusion-led physics.
+The saved-trajectory review is complete. The next design question concerns causal
+maintenance of this exact candidate: does its boundary help restore the internal
+feature after a local disturbance, compared with sham and matched damage controls? Recovery alone would not
+establish autonomy or life. The evaluator's report gives the next decision and its
+limits. No new run is admitted by the visual assessment.
 
-The prepared growth-feedback comparison is held. It could test bounded activity,
-but its current evidence plan would not by itself establish persistent distinctive
-organization. The earlier startup failure remains a launch failure with no
-scientific outcome; no feedback result is available. See the evaluator's report
-for the recommendation and its limits.
+The prepared growth-feedback comparison remains held. Its current evidence plan
+would not by itself establish persistent distinctive organization, and no feedback
+outcome is available. Explicitly versioned alternative dynamics remain eligible
+for future work under the same organism rubric.
 
 ## Follow the work and inspect the evidence
 
@@ -96,7 +98,8 @@ and next question. The evaluator authors independent progress assessments, inclu
 negative judgments, missing evidence and recommendations to stop marginal work. This page provides the current entry point; the dated notes
 preserve how the findings developed.
 
-- [Latest evaluator report and calibrated examples](evaluation/2026-10-23.md)
+- [Latest evaluator report: P7 feature persistence](evaluation/2026-10-23-p7-persistence.md)
+- [Initial calibration and earlier comparisons](evaluation/2026-10-23.md)
 - [Organism rubric v0.1](evaluation/rubric-v0.1.md)
 - [Calibration image provenance](../docs/assets/research/2026-10-23-evaluation/image-provenance.json)
 - [Dated research updates](updates/README.md)
