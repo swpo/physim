@@ -49,6 +49,22 @@ def check():
         parser = Page()
         parser.feed(path.read_text())
         pages[path.resolve()] = parser
+    # Research media are committed evidence; ordinary docs checks stay stdlib-only.
+    research_media = DOCS / "assets/research/2026-10-20"
+    media_record = json.loads((research_media / "provenance.json").read_text())
+    for name, record in media_record["sources"].items():
+        path = research_media / "evidence" / name
+        if path.stat().st_size != record["bytes"] or hashlib.sha256(path.read_bytes()).hexdigest() != record["sha256"]:
+            errors.append(f"Research source differs from its recorded identity: {name}")
+    renderer = media_record["renderer"]
+    if hashlib.sha256((ROOT / renderer["path"]).read_bytes()).hexdigest() != renderer["sha256"]:
+        errors.append("Research renderer changed; review and regenerate the media provenance")
+    for movie in media_record["videos"].values():
+        for file_key, hash_key in (("file", "sha256"), ("poster", "poster_sha256")):
+            if hashlib.sha256((research_media / movie[file_key]).read_bytes()).hexdigest() != movie[hash_key]:
+                errors.append(f"Research media hash mismatch: {movie[file_key]}")
+        if max(movie["encoded_checks"]["mean_absolute_rgb_errors"]) > 5:
+            errors.append(f"Research movie failed decoded-frame validation: {movie['file']}")
     links = 0
     for path, page in pages.items():
         for raw in page.links:
@@ -237,6 +253,8 @@ def check():
         "local_links_checked": links,
         "archived_originals": len(records),
         "evidence_sources_checked": checked_sources,
+        "research_media_sources_checked": len(media_record["sources"]),
+        "research_videos_checked": len(media_record["videos"]),
         "errors": errors,
     }
     print(json.dumps(summary, indent=2))

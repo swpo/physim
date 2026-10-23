@@ -1,0 +1,296 @@
+{
+  "schema": "p7-fixed-recovery-six-arm-v1",
+  "arms": [
+    "S",
+    "B",
+    "C",
+    "D",
+    "DB",
+    "DC"
+  ],
+  "owner_queues": {
+    "maintenance": [
+      "S",
+      "C",
+      "DB"
+    ],
+    "resources": [
+      "B",
+      "D",
+      "DC"
+    ]
+  },
+  "pairs": [
+    [
+      "S",
+      "B"
+    ],
+    [
+      "C",
+      "D"
+    ],
+    [
+      "DB",
+      "DC"
+    ]
+  ],
+  "trajectory": {
+    "fields": 8,
+    "grid": [
+      512,
+      512
+    ],
+    "dtype": "float32",
+    "L": 256.0,
+    "dx": 0.5,
+    "dt": 0.02,
+    "noise": 0.002,
+    "source_time": 250.0,
+    "duration": 250.0,
+    "steps": 12500,
+    "cadence": 2.5,
+    "observation_stride": 125,
+    "observations": 101,
+    "late_start": 200.0,
+    "late_observations": 21
+  },
+  "rng": {
+    "bit_generator": "PCG64",
+    "seed": 2026102301,
+    "initial_state_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+    "normal_calls_per_arm": 12500,
+    "normal_shape": [
+      2,
+      512,
+      512
+    ],
+    "normal_values_per_arm": 6553600000
+  },
+  "readout_cells": 4748,
+  "accepted_masks": {
+    "I": {
+      "cells": 5779,
+      "area": 1444.75,
+      "bbox_yx_half_open": [
+        364,
+        452,
+        128,
+        216
+      ],
+      "pixel_center_yx_physical": [
+        201.149030974217,
+        85.82890638518775
+      ],
+      "packed_sha256": "bbf4a88d9b69a85d4b3710f747bc02849df0f92736e29cd432c769b9f217b579"
+    },
+    "D": {
+      "cells": 4748,
+      "area": 1187.0,
+      "bbox_yx_half_open": [
+        368,
+        448,
+        132,
+        212
+      ],
+      "pixel_center_yx_physical": [
+        201.1643850042123,
+        85.79686183656277
+      ],
+      "packed_sha256": "f7e387bf4e9423c64eaa22c2bdf16854b7d0cfe04a189f3b488a044095b4a6ee"
+    },
+    "B": {
+      "cells": 5265,
+      "area": 1316.25,
+      "bbox_yx_half_open": [
+        348,
+        468,
+        112,
+        232
+      ],
+      "pixel_center_yx_physical": [
+        201.25607787274453,
+        86.0059354226021
+      ],
+      "packed_sha256": "58f056a566ed1f2a9324017ea2ef420f21b63e8fb7649fa78b116130efcb0324"
+    },
+    "C": {
+      "cells": 5265,
+      "area": 1316.25,
+      "bbox_yx_half_open": [
+        348,
+        468,
+        272,
+        392
+      ],
+      "pixel_center_yx_physical": [
+        201.25607787274453,
+        166.00593542260208
+      ],
+      "packed_sha256": "66dbb9520f788991d10321d87a7c60850dd169321dc91d4f1251369a9b25596d"
+    }
+  },
+  "environment": {
+    "id": "281ab7979b3173bc74f8040b74f537f86893a432edc46bfbd4b270076b9e3c68",
+    "python": "3.12.12",
+    "packages": {
+      "numpy": "2.5.2",
+      "scipy": "1.18.0"
+    }
+  },
+  "canonical_source_hashes": {
+    "packages/blobkit/blobkit/genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "packages/blobkit/blobkit/soup/sim_cpu.py": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+    "packages/blobkit/blobkit/soup/sim_v1.py": "7f8f4f465a1aa65db5054623f18a6f3e749bd85465ae3e841a759af31c0f841f"
+  },
+  "sources": {
+    "checkpoint": {
+      "path": "outputs/sebastian-worlds-20261011/videos/p7g2_009/state-00250.npz",
+      "bytes": 7534182,
+      "sha256": "2966e4324a934942dd4ecc361806bbdcfaecaa7c30f2ea9655190e343da65367"
+    },
+    "genome": {
+      "path": "outputs/sebastian-worlds-20261011/videos/p7g2_009/genome.json",
+      "bytes": 1900,
+      "sha256": "6e10e5278293fea8f47ffe4c758c359074151a28a1354916381675c4f836e167"
+    },
+    "genome_source": {
+      "path": "outputs/sebastian-worlds-20261011/shortlisted-genomes/oct9_512__p7g2_009.json",
+      "bytes": 1900,
+      "sha256": "6e10e5278293fea8f47ffe4c758c359074151a28a1354916381675c4f836e167"
+    },
+    "capture_source": {
+      "path": "outputs/sebastian-worlds-20261011/capture_videos.py",
+      "bytes": 6860,
+      "sha256": "f13b675c14fbb98a4136243c06ff4c4c439214ef611c3448954c48b1f1a0f386"
+    },
+    "devices_source": {
+      "path": "outputs/residency-environments-pr22/environments/physim/physim/devices.py",
+      "bytes": 8962,
+      "sha256": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+    },
+    "capture_protocol": {
+      "path": "outputs/sebastian-worlds-20261011/videos/p7g2_009/protocol.json",
+      "bytes": 2069,
+      "sha256": "f2b577e74fcad8793375d211bd7f6038f3904bcea274cf7e24088c719c850291"
+    },
+    "static_config": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/construction-config.json",
+      "bytes": 9141,
+      "sha256": "c095f278431b376db07130730d310d0548daa2ac45aaf09c1acd44df260fccc7"
+    },
+    "static_helper": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/p7_static.py",
+      "bytes": 32821,
+      "sha256": "0989d054ec8f7b7f20912d40f6482053ed9366539b53dc690ceb4badedcf075f"
+    },
+    "construction_rules": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/construction_rules.py",
+      "bytes": 7528,
+      "sha256": "82c25230834f3b974c2d8d51b119e378fd908a2e7f8919ad29825aaea03a8610"
+    },
+    "static_protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/owner/protocol.txt",
+      "bytes": 8010,
+      "sha256": "fe523bd9e348d9d22064dbaee350230ab21638566f24d4b9b511103327e3af44"
+    },
+    "static_summary": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/summary.json",
+      "bytes": 34082,
+      "sha256": "26f4bca90ab6396aaad7452f346fe18636fd0e4706d012e54da8022c52ac18b9"
+    },
+    "static_checks": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/checks.json",
+      "bytes": 9819,
+      "sha256": "f46549a974f2c3bb84640b79f7a83d6f70f646d32006da59b156a87559ea8bb9"
+    },
+    "construction": {
+      "path": "handoff/swarm_continuous_20261017/epochs/0011/results/p7-static-construction-v1/construction.npz",
+      "bytes": 2784222,
+      "sha256": "ae0a42bb9276b83d0ba39861b074a713ca375eb9baa0df64614ab727b09489c6"
+    },
+    "static_assessment": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/evaluator/assessment.json",
+      "bytes": 16019,
+      "sha256": "00cb8f213602a2724cd8e66031f3964560830e9b60bf885b9b0400d5a8a69755"
+    }
+  },
+  "original_repository_root": "<REPOSITORY_ROOT>",
+  "caps_per_arm": {
+    "trajectory.npz": 2680000,
+    "observations.jsonl": 60000,
+    "summary.json": 25000,
+    "stdout.log": 10000
+  },
+  "joint_cap": 16650000,
+  "original_joint_plan": 16714000,
+  "timeout_seconds": 360,
+  "max_concurrent": 2,
+  "numerical_threads": 1,
+  "no_retry": true,
+  "censoring": "Feature leaving D, crop/quantization ambiguity, replacement or ambiguous continuation is insufficient evidence, never selective nonrecovery. Full-domain context cannot replace an unreadable interior view; no recentering or retrospective precision change.",
+  "limits": [
+    "One P7 checkpoint, pulse, new paired noise branch and fixed observation window. No historical RNG restart is claimed.",
+    "Equal-area B/C differ in state, gradients, distance and actual dose; no equal-damage or unique boundary-geometry inference.",
+    "A positive conditional regional effect remains compatible with nonlinear attractor recovery and retained chemical memory; no membrane, autonomy or material-identity claim.",
+    "Fixed native-resolution8-bit interior and4-bit block-mean context retain neither raw full trajectories nor final raw checkpoints. Quantization and fixed-readout limits apply.",
+    "A360-second cap and accepted source/configuration checks do not establish runtime completion or numerical convergence on Prime."
+  ],
+  "observation_schema": {
+    "format": "One compact JSON object per saved observation; all numeric extrema are exact IEEE754 float32 bits encoded as8 little-endian hexadecimal characters. Decode with struct.unpack(<f,bytes.fromhex(value)). Display errors are decimal .9g strings; bounds checked before formatting.",
+    "i": "zero-based saved observation index0..100",
+    "s": "native steps0..12500",
+    "t": "relative time0..250",
+    "a": "source-clock-labelled time250..500; new noise branch, not historical continuation",
+    "e": "eight [minimum,maximum] raw-field float32 bit-hex pairs, field order original checkpoint",
+    "c": "12 display out-of-range counts: full domain, D readout,4x4 block means; within each, A0 below0, A0 above1, A1 below0, A1 above1",
+    "q": "two validated max errors versus clipped display values: D8-bit; context4-bit block mean",
+    "r": "SHA256 of canonical PCG64 state after this observation; recording consumes zero RNG samples",
+    "row_cap_bytes_including_newline": 594
+  },
+  "joint_endpoint": "The sole evaluator checks continuity/loss/replacement/ambiguity across all101 observations for every arm. Sustained named interior curl/bay/A0-band recovery requires all21 observations at200..250. If S/B/C retain, D/DC recover and DB clearly does not, infer conditional named boundary-region contribution under the stated limitations. Outer-contour closure is excluded.",
+  "archive_schema": {
+    "readout_q8": {
+      "dtype": "|u1",
+      "shape": [
+        101,
+        2,
+        4748
+      ]
+    },
+    "context_q4": {
+      "dtype": "|u1",
+      "shape": [
+        101,
+        128,
+        128
+      ]
+    },
+    "readout_indices": {
+      "dtype": "<u4",
+      "shape": [
+        4748
+      ]
+    },
+    "baseline_readout_q8": {
+      "dtype": "|u1",
+      "shape": [
+        2,
+        4748
+      ]
+    },
+    "times": {
+      "dtype": "<f8",
+      "shape": [
+        101
+      ]
+    },
+    "arm_code": {
+      "dtype": "|u1",
+      "shape": [
+        2
+      ],
+      "encoding": "ASCII arm padded to2bytes with NUL"
+    }
+  },
+  "archive_partial_semantics": "First dimensions and times shrink to actually saved observations in a gracefully caught invalid run. Empty archive or incomplete output after timeout is never complete evidence. No padded fabricated observations."
+}

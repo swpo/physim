@@ -1,0 +1,2177 @@
+{
+  "schema_version": 1,
+  "review_id": "p7-retrospective-v0.1",
+  "scope": "Presentation and visual review of an existing movie. No source-field array decoding, numerical feature calculation, simulation, automatic tracker or extra evaluator.",
+  "source": {
+    "movie": {
+      "public_file": "native-context.mp4",
+      "original_filename": "01-native.mp4",
+      "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d",
+      "bytes": 8411681,
+      "encoded_frames": 301,
+      "frames_per_second": 16,
+      "frame_index_to_simulation_time": "2.5 * encoded_frame_index",
+      "simulation_units_per_video_second": 40
+    },
+    "display_metadata": {
+      "public_file": "native-display.json",
+      "sha256": "27caf5deae9b0b4c0e73f9b3d033efb2768502830a4dd449fcfc98037d066b6b",
+      "bytes": 409
+    },
+    "original_run_metadata": {
+      "original_filename": "protocol.json",
+      "sha256": "f2b577e74fcad8793375d211bd7f6038f3904bcea274cf7e24088c719c850291",
+      "public_file": "source-run-metadata.json",
+      "public_copy_note": "Publisher removes local filesystem prefixes; original source metadata hash remains recorded here."
+    },
+    "encoding_metadata": {
+      "original_filename": "01-native.encoding.json",
+      "sha256": "b27b1d28fada46c6e675e346b54453a8037eb4f7e1b3492f02d2a9751b6b1280"
+    },
+    "scientific_array": {
+      "original_filename": "fields.npy",
+      "sha256": "f0d2c08912f8f591c298758c74b9185c21c8c4d6aa608932c6d989e6373dbad1",
+      "verification": "Not newly read or decoded; protocol digest declaration only."
+    }
+  },
+  "frozen_selection": {
+    "original_protocol_sha256": "d27f2525cbfdbd75a438726bc3ae96a0a0dbeae3727599eefd8a92bf8f3c6ffc",
+    "frozen_at_utc": "2026-10-23T12:03:44.848976+00:00",
+    "rubric_sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b",
+    "frame_uid": "fresh__p7g2_009__00250",
+    "rank_at_selection_time": 5,
+    "rank_meaning": "1-based quality order in this frame only, not an identity label",
+    "display_position_xy_physical": [
+      85.57890638518774,
+      200.899030974217
+    ],
+    "feature": "A separate internal hooked/curled A1 stripe with an interior low-A1 bay, lying inside a closed outer A1 boundary and separated from it by an A0-rich band. A0 is blue and A1 orange in the legacy composite; the existing native movie displays A0 cyan and A1 pale cream in separate fixed-scale panels.",
+    "allowed_feature_changes": "Rotation, smooth deformation, motion and intensity variation may occur; exact outline and pixels need not be identical. The nested boundary/intermediate band/internal curled-stripe organization must remain discernible.",
+    "criteria": {
+      "after_first_loss_or_ambiguity": "Continue reporting all remaining saved samples as requested, but do not restart the original identity or choose another survivor. Later similar appearance cannot repair earlier failure.",
+      "ambiguity": "Resolution, changing surroundings, alternative matching or possible split/merge/replacement prevents an unambiguous visual continuation or feature judgment. Record the first affected interval; do not silently join the track across it.",
+      "boundary_loss": "A visible disappearance, opening that destroys the enclosure, or connection/merger that prevents separating the selected individual.",
+      "failure_bracket": "Last supported sample and first contradicted/ambiguous sample; unseen between-sample events remain unobserved.",
+      "feature_loss": "The internal curled stripe/bay and intermediate A0 region cease to be distinguishable as the frozen nested organization, even if a boundary or simple activity blob remains.",
+      "identity_supported": "The selected enclosure remains visually identifiable from one retained observation to the next by its position, boundary and surrounding pattern; no visible loss, split, merge or competing continuation. This is sampled apparent identity, not material continuity.",
+      "statuses": [
+        "supported",
+        "contradicted",
+        "insufficient_evidence"
+      ]
+    },
+    "selection_bias": "Selected retrospective review, not blinded confirmation. P7 snapshots at t25,250,750 were inspected before this selection; the final appearance influenced selection of a promising example. No prevalence or held-out success claim.",
+    "legacy_mask_binding": {
+      "archive_sha256": "895cc8ae063da3d49912ce662645ae2eb881bd116ade478b299a2a2dc41fea2a",
+      "array_key": "interiors",
+      "index_zero_based": 4,
+      "archive_decoded": false
+    },
+    "legacy_selection_metadata_sha256": "3dfd4d98aa5f70283b95ebed3cfbdc9eb50236529a7c19ef2ad4a4504b82ab51"
+  },
+  "review_window": {
+    "all_available_movie_samples": true,
+    "display_time_end_frame_start_seconds": 18.75,
+    "display_time_start_seconds": 6.25,
+    "end_time_inclusive": 750,
+    "frame_index_end": 300,
+    "frame_index_start": 100,
+    "movie_fps": 16,
+    "native_movie_saved_cadence": 2.5,
+    "note": "Legacy detector used every tenth saved state (25-unit cadence). The existing native movie contains301 states at2.5-unit cadence; this review includes all201 subsequent available states, not just21 detector states.",
+    "saved_observations": 201,
+    "simulation_time_formula": "t=2.5*encoded_frame_index",
+    "simulation_units_per_video_second": 40,
+    "start_time_inclusive": 250
+  },
+  "presentation": {
+    "method": "Lossless PNG extraction from the existing native MP4; fixed pixel panels/crops, nearest-neighbor detail enlargement, labeled contact sheets. No scientific arrays, metrics or automated identity tracking.",
+    "all_frames_visually_reviewed": true,
+    "review_completed_at_utc": "2026-10-23T12:12:07.603105+00:00",
+    "source_generation_record_sha256": "a71603f39dde7b0d0c52e7cd468ec8b2f383f23fd3f0cea548424cecafe82fce",
+    "generation_record_note": "Generated before inspection; completion and judgments are recorded separately in visual-observations.json.",
+    "contact_sheet_script_sha256": "1ab06b959b8ea1644ec52890ea695cbadc221dcda126453f24b3b17d665d37ee",
+    "full_panel_boxes_xyxy": {
+      "A0": [
+        158,
+        142,
+        482,
+        468
+      ],
+      "A1": [
+        750,
+        142,
+        1074,
+        468
+      ]
+    },
+    "fixed_detail_boxes_xyxy": {
+      "A0": [
+        220,
+        166,
+        316,
+        262
+      ],
+      "A1": [
+        812,
+        166,
+        908,
+        262
+      ]
+    },
+    "decoded_frames": [
+      {
+        "encoded_frame_index": 100,
+        "simulation_time": 250.0,
+        "source_display_second": 6.25,
+        "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0",
+        "archive_filename": "native-000100.png"
+      },
+      {
+        "encoded_frame_index": 101,
+        "simulation_time": 252.5,
+        "source_display_second": 6.3125,
+        "sha256": "4aa91f4fef13b3f6cb5907b54f39211d397eab7678fb12495b43c47304387a2c",
+        "archive_filename": "native-000101.png"
+      },
+      {
+        "encoded_frame_index": 102,
+        "simulation_time": 255.0,
+        "source_display_second": 6.375,
+        "sha256": "ad00214ec4dfc0b3a38b34d69f3b414e8326fd46cc8c0d20669018aa0506a754",
+        "archive_filename": "native-000102.png"
+      },
+      {
+        "encoded_frame_index": 103,
+        "simulation_time": 257.5,
+        "source_display_second": 6.4375,
+        "sha256": "0b1dc15e223a6b51ece84c526e5b96dfc9a070475d857689de55e886c7f7b9d8",
+        "archive_filename": "native-000103.png"
+      },
+      {
+        "encoded_frame_index": 104,
+        "simulation_time": 260.0,
+        "source_display_second": 6.5,
+        "sha256": "8cb288a9e551ae4380763029c1236aa7de0fd28e85ab9ba8806e651b80b7163e",
+        "archive_filename": "native-000104.png"
+      },
+      {
+        "encoded_frame_index": 105,
+        "simulation_time": 262.5,
+        "source_display_second": 6.5625,
+        "sha256": "73ac08595591688254f85939b8fdbdd7a1448d655249eb908d03e4a3612528d9",
+        "archive_filename": "native-000105.png"
+      },
+      {
+        "encoded_frame_index": 106,
+        "simulation_time": 265.0,
+        "source_display_second": 6.625,
+        "sha256": "7a813cad84f4fe7af611c3af268a8ce7fc6c0ca1bbeaeb1440feafb03704ba4a",
+        "archive_filename": "native-000106.png"
+      },
+      {
+        "encoded_frame_index": 107,
+        "simulation_time": 267.5,
+        "source_display_second": 6.6875,
+        "sha256": "117912bf1259fa28ec7d937ad5db2c123fa73f703fe8e97c37546c1528ec48bb",
+        "archive_filename": "native-000107.png"
+      },
+      {
+        "encoded_frame_index": 108,
+        "simulation_time": 270.0,
+        "source_display_second": 6.75,
+        "sha256": "e41d6e80526de43aa6733230f61da0e099c5512eceb2ef5af0cb6917c2e1ee42",
+        "archive_filename": "native-000108.png"
+      },
+      {
+        "encoded_frame_index": 109,
+        "simulation_time": 272.5,
+        "source_display_second": 6.8125,
+        "sha256": "e405581df1108d446044c1285f83645f3882562f3582e710a7ff06ad0798cdb8",
+        "archive_filename": "native-000109.png"
+      },
+      {
+        "encoded_frame_index": 110,
+        "simulation_time": 275.0,
+        "source_display_second": 6.875,
+        "sha256": "93c7443d7e76ca64fc523ab5f3ff44f5b94abf819649ce6187f588a17f8cbdac",
+        "archive_filename": "native-000110.png"
+      },
+      {
+        "encoded_frame_index": 111,
+        "simulation_time": 277.5,
+        "source_display_second": 6.9375,
+        "sha256": "41483093b9f3dfa13a9b813b20dd2874cf9a3775dd60e7e10796a8eae333d160",
+        "archive_filename": "native-000111.png"
+      },
+      {
+        "encoded_frame_index": 112,
+        "simulation_time": 280.0,
+        "source_display_second": 7.0,
+        "sha256": "82424b3328cfc9cc24001c66e502d01f9e32669b90efa7ac75dd415b9032c542",
+        "archive_filename": "native-000112.png"
+      },
+      {
+        "encoded_frame_index": 113,
+        "simulation_time": 282.5,
+        "source_display_second": 7.0625,
+        "sha256": "29e675dcf110f80fbeae3fe33ef39bbcdf902ac376bc249f8f2bd659e5897536",
+        "archive_filename": "native-000113.png"
+      },
+      {
+        "encoded_frame_index": 114,
+        "simulation_time": 285.0,
+        "source_display_second": 7.125,
+        "sha256": "e9ba036a2eab8255aa60942ddc16c7f1ebd1f007f1c30b164de139e3d5f2c191",
+        "archive_filename": "native-000114.png"
+      },
+      {
+        "encoded_frame_index": 115,
+        "simulation_time": 287.5,
+        "source_display_second": 7.1875,
+        "sha256": "44c0a9d8466951e5715f97c401cfb09d139855a2492ef2a260416aadf2401679",
+        "archive_filename": "native-000115.png"
+      },
+      {
+        "encoded_frame_index": 116,
+        "simulation_time": 290.0,
+        "source_display_second": 7.25,
+        "sha256": "6503bbec6319036f7bc9abdd4a4612d202f3650222198ee380bf3c40da5a12fd",
+        "archive_filename": "native-000116.png"
+      },
+      {
+        "encoded_frame_index": 117,
+        "simulation_time": 292.5,
+        "source_display_second": 7.3125,
+        "sha256": "a8245476aa74d05cebd14f546095cfbe5bfbcb70f4e58694e1453b3d95e1a38f",
+        "archive_filename": "native-000117.png"
+      },
+      {
+        "encoded_frame_index": 118,
+        "simulation_time": 295.0,
+        "source_display_second": 7.375,
+        "sha256": "69470c634abab1a8725a10f358ece95864786f1d99aeb4eea14f73302565e3ff",
+        "archive_filename": "native-000118.png"
+      },
+      {
+        "encoded_frame_index": 119,
+        "simulation_time": 297.5,
+        "source_display_second": 7.4375,
+        "sha256": "707518691caab6b6bbe5b2656055d82adf08e0a61b697f429c2ed2f181417008",
+        "archive_filename": "native-000119.png"
+      },
+      {
+        "encoded_frame_index": 120,
+        "simulation_time": 300.0,
+        "source_display_second": 7.5,
+        "sha256": "a3e156de53c4828ab974baf66f5674787389c910a62ec3e1953a31d41c11174c",
+        "archive_filename": "native-000120.png"
+      },
+      {
+        "encoded_frame_index": 121,
+        "simulation_time": 302.5,
+        "source_display_second": 7.5625,
+        "sha256": "3cb5835e92ec21666f9b094a0247cc5c2d6d85c1e8b1c95438ce4d472778063b",
+        "archive_filename": "native-000121.png"
+      },
+      {
+        "encoded_frame_index": 122,
+        "simulation_time": 305.0,
+        "source_display_second": 7.625,
+        "sha256": "3f2e0ee2da41a1bec964184cca5a3ed6e112e20f7c9ba286f7fd68a27248302d",
+        "archive_filename": "native-000122.png"
+      },
+      {
+        "encoded_frame_index": 123,
+        "simulation_time": 307.5,
+        "source_display_second": 7.6875,
+        "sha256": "dc491929f5a0c45904c6e4ef1e978693a7af6d12edd645500470e8151dd745b5",
+        "archive_filename": "native-000123.png"
+      },
+      {
+        "encoded_frame_index": 124,
+        "simulation_time": 310.0,
+        "source_display_second": 7.75,
+        "sha256": "6fbf5c5b6ef3cd07d9c0b86d140dd12db243c71f6c6b4e3658b3a78ffc14a5f1",
+        "archive_filename": "native-000124.png"
+      },
+      {
+        "encoded_frame_index": 125,
+        "simulation_time": 312.5,
+        "source_display_second": 7.8125,
+        "sha256": "257596d35df4c6ec1ff13874e2089f9739684bc55e94423b975197743a230341",
+        "archive_filename": "native-000125.png"
+      },
+      {
+        "encoded_frame_index": 126,
+        "simulation_time": 315.0,
+        "source_display_second": 7.875,
+        "sha256": "c659afaad3893eaaf9f301d040b74420f1a614dce1d9e9193ef4ed87dbff34ea",
+        "archive_filename": "native-000126.png"
+      },
+      {
+        "encoded_frame_index": 127,
+        "simulation_time": 317.5,
+        "source_display_second": 7.9375,
+        "sha256": "76b0a944c77bcfb34f706022696efd5e6a37efb021c005cb17e6a9f2c000aa41",
+        "archive_filename": "native-000127.png"
+      },
+      {
+        "encoded_frame_index": 128,
+        "simulation_time": 320.0,
+        "source_display_second": 8.0,
+        "sha256": "dfb1e79479bcef2e70e7312a7571c4a222077cba614d55b56dd7b473aa2abc7b",
+        "archive_filename": "native-000128.png"
+      },
+      {
+        "encoded_frame_index": 129,
+        "simulation_time": 322.5,
+        "source_display_second": 8.0625,
+        "sha256": "372d248f86a193942aeb9bb0c05121e69ab1cfefcb272e3767b7343be9539a63",
+        "archive_filename": "native-000129.png"
+      },
+      {
+        "encoded_frame_index": 130,
+        "simulation_time": 325.0,
+        "source_display_second": 8.125,
+        "sha256": "83bfbc20af4bc8fb9eb6ba699a00df3f3bfc5ab708ff7fe5abd647f1c4fee7d0",
+        "archive_filename": "native-000130.png"
+      },
+      {
+        "encoded_frame_index": 131,
+        "simulation_time": 327.5,
+        "source_display_second": 8.1875,
+        "sha256": "75a58a716b00fb56040ca67ad27ea585e286b32cfc38820ff48cb8681159f716",
+        "archive_filename": "native-000131.png"
+      },
+      {
+        "encoded_frame_index": 132,
+        "simulation_time": 330.0,
+        "source_display_second": 8.25,
+        "sha256": "a4463cea8bfca4bfbaf759f285aeb82a27f049107f4b09dedb8aeeaf0130eb7e",
+        "archive_filename": "native-000132.png"
+      },
+      {
+        "encoded_frame_index": 133,
+        "simulation_time": 332.5,
+        "source_display_second": 8.3125,
+        "sha256": "037c9855461e0ccaad09f7219ac6d321bc96c34c2cddd87d4ef2779a417c3d1c",
+        "archive_filename": "native-000133.png"
+      },
+      {
+        "encoded_frame_index": 134,
+        "simulation_time": 335.0,
+        "source_display_second": 8.375,
+        "sha256": "7d2b09285ced828ed29fdc11a574463974a9872ced6d619129c42a4e8f93982f",
+        "archive_filename": "native-000134.png"
+      },
+      {
+        "encoded_frame_index": 135,
+        "simulation_time": 337.5,
+        "source_display_second": 8.4375,
+        "sha256": "24169e4f3f24cc094e641a0c9b3affac1572939d1a0ac31da031129b9cac1f5d",
+        "archive_filename": "native-000135.png"
+      },
+      {
+        "encoded_frame_index": 136,
+        "simulation_time": 340.0,
+        "source_display_second": 8.5,
+        "sha256": "dc85436d85a01ec9d5342fd25a9135938c6033598bbcedcd3b4f3eb48be559f7",
+        "archive_filename": "native-000136.png"
+      },
+      {
+        "encoded_frame_index": 137,
+        "simulation_time": 342.5,
+        "source_display_second": 8.5625,
+        "sha256": "f8dedb35f115c7473206ef4015d3996fcb2fa4bfec80260de35553cabb0f16ec",
+        "archive_filename": "native-000137.png"
+      },
+      {
+        "encoded_frame_index": 138,
+        "simulation_time": 345.0,
+        "source_display_second": 8.625,
+        "sha256": "795193f3fcb4d840c061fba7393a4a048cc47c8c3e9fe013946592812bff066d",
+        "archive_filename": "native-000138.png"
+      },
+      {
+        "encoded_frame_index": 139,
+        "simulation_time": 347.5,
+        "source_display_second": 8.6875,
+        "sha256": "1f56c66cf25cb946ece4f168e56f5e45768659c6e3ff2b8afd9a144ab92d0c03",
+        "archive_filename": "native-000139.png"
+      },
+      {
+        "encoded_frame_index": 140,
+        "simulation_time": 350.0,
+        "source_display_second": 8.75,
+        "sha256": "f613741bd899ea2266b7b9c785b8e9aa6376cd74e11a77a433ebcdfbb8c53dd2",
+        "archive_filename": "native-000140.png"
+      },
+      {
+        "encoded_frame_index": 141,
+        "simulation_time": 352.5,
+        "source_display_second": 8.8125,
+        "sha256": "d08eb3329428b0f91b3a955f92957cab5b323cf5eb3533d1027442a59e18fa1e",
+        "archive_filename": "native-000141.png"
+      },
+      {
+        "encoded_frame_index": 142,
+        "simulation_time": 355.0,
+        "source_display_second": 8.875,
+        "sha256": "c00e438bbd3c204a0ce804e698d2e5c160c48bc14bec6008d90f429aeb7f18dc",
+        "archive_filename": "native-000142.png"
+      },
+      {
+        "encoded_frame_index": 143,
+        "simulation_time": 357.5,
+        "source_display_second": 8.9375,
+        "sha256": "e900e369097ce41cead3fb9b233a71692e24d393208037ff75556886c8d68e04",
+        "archive_filename": "native-000143.png"
+      },
+      {
+        "encoded_frame_index": 144,
+        "simulation_time": 360.0,
+        "source_display_second": 9.0,
+        "sha256": "f5cf34710d6970ce22caafd3fe3ca64c9a53254d2e77c9c5687ebd5b3ad02b2b",
+        "archive_filename": "native-000144.png"
+      },
+      {
+        "encoded_frame_index": 145,
+        "simulation_time": 362.5,
+        "source_display_second": 9.0625,
+        "sha256": "a461b6f9704fdd19a190f5216a2594bb0ac0b0015347f6a348a1b84a9b6a82a4",
+        "archive_filename": "native-000145.png"
+      },
+      {
+        "encoded_frame_index": 146,
+        "simulation_time": 365.0,
+        "source_display_second": 9.125,
+        "sha256": "794983c3fe3a1fc41947fe17dbc9de93f54f94f75d17ee8f118adf8d5f4636dd",
+        "archive_filename": "native-000146.png"
+      },
+      {
+        "encoded_frame_index": 147,
+        "simulation_time": 367.5,
+        "source_display_second": 9.1875,
+        "sha256": "4b3eb58c05520d21dc545ff6ec8f3bd72f19f3b3b578a4d84cd397e040e44a38",
+        "archive_filename": "native-000147.png"
+      },
+      {
+        "encoded_frame_index": 148,
+        "simulation_time": 370.0,
+        "source_display_second": 9.25,
+        "sha256": "d07e3cd879870a76180fef9cf9165f529a3ec2bcb3d9e0637fcf9907c81857d7",
+        "archive_filename": "native-000148.png"
+      },
+      {
+        "encoded_frame_index": 149,
+        "simulation_time": 372.5,
+        "source_display_second": 9.3125,
+        "sha256": "c7dbc9766ae8a492670be276edfffe8da3209411ce19f0b66bf18b4ffcbe1076",
+        "archive_filename": "native-000149.png"
+      },
+      {
+        "encoded_frame_index": 150,
+        "simulation_time": 375.0,
+        "source_display_second": 9.375,
+        "sha256": "2807b0ff9a0510bb2af3b6ca6f9ae5a5e40352a35880138c51cb70910ead7680",
+        "archive_filename": "native-000150.png"
+      },
+      {
+        "encoded_frame_index": 151,
+        "simulation_time": 377.5,
+        "source_display_second": 9.4375,
+        "sha256": "d865e1621effda01b743fcbef4cec9b056f59518a107151682e58a32c610bf5f",
+        "archive_filename": "native-000151.png"
+      },
+      {
+        "encoded_frame_index": 152,
+        "simulation_time": 380.0,
+        "source_display_second": 9.5,
+        "sha256": "9cf3c96c1b540e6ac123dfac1c34454b756c612627a7391b600d837731443467",
+        "archive_filename": "native-000152.png"
+      },
+      {
+        "encoded_frame_index": 153,
+        "simulation_time": 382.5,
+        "source_display_second": 9.5625,
+        "sha256": "d83fcf3397e087972d7fb88535222810cfde43a2c11da5d1a985763ebfa78163",
+        "archive_filename": "native-000153.png"
+      },
+      {
+        "encoded_frame_index": 154,
+        "simulation_time": 385.0,
+        "source_display_second": 9.625,
+        "sha256": "90993ddf52760b5648f2dbedaf7ef7cf958e5f2568ca5035c670c67822df518e",
+        "archive_filename": "native-000154.png"
+      },
+      {
+        "encoded_frame_index": 155,
+        "simulation_time": 387.5,
+        "source_display_second": 9.6875,
+        "sha256": "7d3967b0f4524ecb9312aaea63a387617a1177e267f69bbd7b4b8e955d10f413",
+        "archive_filename": "native-000155.png"
+      },
+      {
+        "encoded_frame_index": 156,
+        "simulation_time": 390.0,
+        "source_display_second": 9.75,
+        "sha256": "3d62f0dc549b0d6297f278a7ab4503b1c2c191f11d77c8ac15135252a48ac553",
+        "archive_filename": "native-000156.png"
+      },
+      {
+        "encoded_frame_index": 157,
+        "simulation_time": 392.5,
+        "source_display_second": 9.8125,
+        "sha256": "9f61815d46243eb01be7cce1fce3611d8c62e64fbe6d98444fb6ff914e45a111",
+        "archive_filename": "native-000157.png"
+      },
+      {
+        "encoded_frame_index": 158,
+        "simulation_time": 395.0,
+        "source_display_second": 9.875,
+        "sha256": "4064bcbf93f6f6f49cf7a5f3ce3480bdeb6a7da75a27937d59708335f1950c0b",
+        "archive_filename": "native-000158.png"
+      },
+      {
+        "encoded_frame_index": 159,
+        "simulation_time": 397.5,
+        "source_display_second": 9.9375,
+        "sha256": "5ab13e38dc738829241852c62dc78d3401c6d41be9099ae47ee3e54418619d41",
+        "archive_filename": "native-000159.png"
+      },
+      {
+        "encoded_frame_index": 160,
+        "simulation_time": 400.0,
+        "source_display_second": 10.0,
+        "sha256": "2763e9ba3782c4395b6e70db645cc34f6d963aa3f28e51cda457de50fedff712",
+        "archive_filename": "native-000160.png"
+      },
+      {
+        "encoded_frame_index": 161,
+        "simulation_time": 402.5,
+        "source_display_second": 10.0625,
+        "sha256": "5061a0700127d28b45aea1de38c7086b6dcb83c81aa2bcd645e8db72d61db194",
+        "archive_filename": "native-000161.png"
+      },
+      {
+        "encoded_frame_index": 162,
+        "simulation_time": 405.0,
+        "source_display_second": 10.125,
+        "sha256": "07d95d637d7aace4c3a5af540b6f31a166c672056460ef8a15439deb4531827a",
+        "archive_filename": "native-000162.png"
+      },
+      {
+        "encoded_frame_index": 163,
+        "simulation_time": 407.5,
+        "source_display_second": 10.1875,
+        "sha256": "0853a0e485f4493651b06615194e45a27ffc2b8cf131edb18a39fedfd8fad698",
+        "archive_filename": "native-000163.png"
+      },
+      {
+        "encoded_frame_index": 164,
+        "simulation_time": 410.0,
+        "source_display_second": 10.25,
+        "sha256": "36eb475a8c993133f2db1d3a2e47f4ac0c3b945e354a9afff85dcb9a9251d425",
+        "archive_filename": "native-000164.png"
+      },
+      {
+        "encoded_frame_index": 165,
+        "simulation_time": 412.5,
+        "source_display_second": 10.3125,
+        "sha256": "0be6f2ca8fa70d862dced12f53510dd296e374ba37d5e30578d6fbe15b959d8c",
+        "archive_filename": "native-000165.png"
+      },
+      {
+        "encoded_frame_index": 166,
+        "simulation_time": 415.0,
+        "source_display_second": 10.375,
+        "sha256": "38d5ea2cd018f6583448433302d12caa308dd038daa15d527c92b4245045c83a",
+        "archive_filename": "native-000166.png"
+      },
+      {
+        "encoded_frame_index": 167,
+        "simulation_time": 417.5,
+        "source_display_second": 10.4375,
+        "sha256": "047e9bf83d4a134227e4f8ceefd56dede93a41722276803ffa3ead85590d5279",
+        "archive_filename": "native-000167.png"
+      },
+      {
+        "encoded_frame_index": 168,
+        "simulation_time": 420.0,
+        "source_display_second": 10.5,
+        "sha256": "08d062e28aeb5033c9901a682f3fc97bc1d46770147ed1952ff7e2a4793ca4ed",
+        "archive_filename": "native-000168.png"
+      },
+      {
+        "encoded_frame_index": 169,
+        "simulation_time": 422.5,
+        "source_display_second": 10.5625,
+        "sha256": "7dfe59417f0e866f942971e94f79d7b23b201974027e5ad04f9b5872333bb58f",
+        "archive_filename": "native-000169.png"
+      },
+      {
+        "encoded_frame_index": 170,
+        "simulation_time": 425.0,
+        "source_display_second": 10.625,
+        "sha256": "2c814e26488d090aec8a5caf005e0f87532b8dd045e6f933ee454209424b26f2",
+        "archive_filename": "native-000170.png"
+      },
+      {
+        "encoded_frame_index": 171,
+        "simulation_time": 427.5,
+        "source_display_second": 10.6875,
+        "sha256": "89942990d152825f1c9686d9adcd51c0b489e9dcf85ec0836d43bb0c5fb630a2",
+        "archive_filename": "native-000171.png"
+      },
+      {
+        "encoded_frame_index": 172,
+        "simulation_time": 430.0,
+        "source_display_second": 10.75,
+        "sha256": "7812d3527328416ee23b0818f720376520ef70769e750a0642dea1bffede3745",
+        "archive_filename": "native-000172.png"
+      },
+      {
+        "encoded_frame_index": 173,
+        "simulation_time": 432.5,
+        "source_display_second": 10.8125,
+        "sha256": "5f2cf80f752bf724c2f6ccd5a1aecbc74f9181019759ee9575aabad504153014",
+        "archive_filename": "native-000173.png"
+      },
+      {
+        "encoded_frame_index": 174,
+        "simulation_time": 435.0,
+        "source_display_second": 10.875,
+        "sha256": "ec7add8154fe71e532c9effbb81179d0ead28b7560d95be2a062f004e8c16ad9",
+        "archive_filename": "native-000174.png"
+      },
+      {
+        "encoded_frame_index": 175,
+        "simulation_time": 437.5,
+        "source_display_second": 10.9375,
+        "sha256": "8b46b1a98d9e3cfc9ac8757370209357084f6b803c99d16e8c780aae978462d5",
+        "archive_filename": "native-000175.png"
+      },
+      {
+        "encoded_frame_index": 176,
+        "simulation_time": 440.0,
+        "source_display_second": 11.0,
+        "sha256": "0e8c3dd046f13b098b6b9e0cd6824aabc405fc2ebd464be33c8cc1bdd139c1fe",
+        "archive_filename": "native-000176.png"
+      },
+      {
+        "encoded_frame_index": 177,
+        "simulation_time": 442.5,
+        "source_display_second": 11.0625,
+        "sha256": "86f0f110f6330a55552f3b7e7d13e3f3bc311e49088f2b69460249502766dedb",
+        "archive_filename": "native-000177.png"
+      },
+      {
+        "encoded_frame_index": 178,
+        "simulation_time": 445.0,
+        "source_display_second": 11.125,
+        "sha256": "18eb8937da769757c9638990ba2eb06ed850435b369da4f2cc8af76a75f0695d",
+        "archive_filename": "native-000178.png"
+      },
+      {
+        "encoded_frame_index": 179,
+        "simulation_time": 447.5,
+        "source_display_second": 11.1875,
+        "sha256": "30fb6cd508300d565d839abfc788b7735924cff01188344e3cfa8609f9152ac5",
+        "archive_filename": "native-000179.png"
+      },
+      {
+        "encoded_frame_index": 180,
+        "simulation_time": 450.0,
+        "source_display_second": 11.25,
+        "sha256": "03c12f0b40ce78f5a19cba9afe0bd42b885a23fbaa18dbce645a96a6fe1905b3",
+        "archive_filename": "native-000180.png"
+      },
+      {
+        "encoded_frame_index": 181,
+        "simulation_time": 452.5,
+        "source_display_second": 11.3125,
+        "sha256": "01b7cf4a7b615ad1fa2fce78117068113647bd27a92207a92c7fc36abec54a14",
+        "archive_filename": "native-000181.png"
+      },
+      {
+        "encoded_frame_index": 182,
+        "simulation_time": 455.0,
+        "source_display_second": 11.375,
+        "sha256": "1638cbea05f8657c83a0e37ab90979d8f1ffbeea1152c7f90773fdc3650a9428",
+        "archive_filename": "native-000182.png"
+      },
+      {
+        "encoded_frame_index": 183,
+        "simulation_time": 457.5,
+        "source_display_second": 11.4375,
+        "sha256": "04ad61abfda3c6a159622b6ff8822b07e5c55a4402880cee661b50b83756a220",
+        "archive_filename": "native-000183.png"
+      },
+      {
+        "encoded_frame_index": 184,
+        "simulation_time": 460.0,
+        "source_display_second": 11.5,
+        "sha256": "86375fda994b072c7c3b795338c6d72b0401db2e8db13a53923185cb02d166ca",
+        "archive_filename": "native-000184.png"
+      },
+      {
+        "encoded_frame_index": 185,
+        "simulation_time": 462.5,
+        "source_display_second": 11.5625,
+        "sha256": "f99cd9619d7913dacc7ac3dc3a06be304c9277e252156ce1b5571272a924323d",
+        "archive_filename": "native-000185.png"
+      },
+      {
+        "encoded_frame_index": 186,
+        "simulation_time": 465.0,
+        "source_display_second": 11.625,
+        "sha256": "e1767d9c0012f2501a2b579cca8c0f2cdd768eaf0526d002f8ce242678ae3412",
+        "archive_filename": "native-000186.png"
+      },
+      {
+        "encoded_frame_index": 187,
+        "simulation_time": 467.5,
+        "source_display_second": 11.6875,
+        "sha256": "5a24c41a430914a726ad2622267ea628541630dec77c88c7448518afb40fc0c0",
+        "archive_filename": "native-000187.png"
+      },
+      {
+        "encoded_frame_index": 188,
+        "simulation_time": 470.0,
+        "source_display_second": 11.75,
+        "sha256": "9744ea985ca1fb288aec0bf0596e5ac5560d306c40e4fd5b4080f5d9bddf65c3",
+        "archive_filename": "native-000188.png"
+      },
+      {
+        "encoded_frame_index": 189,
+        "simulation_time": 472.5,
+        "source_display_second": 11.8125,
+        "sha256": "80e847b0131d1722312ad965bb8969abc3d894ddceb47c8074eddce4490bce94",
+        "archive_filename": "native-000189.png"
+      },
+      {
+        "encoded_frame_index": 190,
+        "simulation_time": 475.0,
+        "source_display_second": 11.875,
+        "sha256": "69c77db41d58d4003d85b075679ac86ec7b6c8ae83bd689c4efd83c9414f720a",
+        "archive_filename": "native-000190.png"
+      },
+      {
+        "encoded_frame_index": 191,
+        "simulation_time": 477.5,
+        "source_display_second": 11.9375,
+        "sha256": "5cf93403b7fd712d4227b54deb621a6f82300c0b1b5e7a11b3012f9d46556052",
+        "archive_filename": "native-000191.png"
+      },
+      {
+        "encoded_frame_index": 192,
+        "simulation_time": 480.0,
+        "source_display_second": 12.0,
+        "sha256": "4a01247106de1e17287fa8195a017cf94a9b60db42c20c0a5aabeb31e2b12625",
+        "archive_filename": "native-000192.png"
+      },
+      {
+        "encoded_frame_index": 193,
+        "simulation_time": 482.5,
+        "source_display_second": 12.0625,
+        "sha256": "d1e50213f20f7353888580fbc4b65aeb37d91b8c5f937c45b089b922969edf2e",
+        "archive_filename": "native-000193.png"
+      },
+      {
+        "encoded_frame_index": 194,
+        "simulation_time": 485.0,
+        "source_display_second": 12.125,
+        "sha256": "066b5e88e82e7588421bccb7eeb0d1d072560ef0872214dc6a1f0687d507676e",
+        "archive_filename": "native-000194.png"
+      },
+      {
+        "encoded_frame_index": 195,
+        "simulation_time": 487.5,
+        "source_display_second": 12.1875,
+        "sha256": "33c99f89c915b9137c3d6d99e4df61dc93dfbaea4488d5c18a4221b6d991b0a8",
+        "archive_filename": "native-000195.png"
+      },
+      {
+        "encoded_frame_index": 196,
+        "simulation_time": 490.0,
+        "source_display_second": 12.25,
+        "sha256": "509279e59133173b0005c83d635b8016b50dc24dba0c861655055bf73e7e8a43",
+        "archive_filename": "native-000196.png"
+      },
+      {
+        "encoded_frame_index": 197,
+        "simulation_time": 492.5,
+        "source_display_second": 12.3125,
+        "sha256": "f5059a4679ef1ce7939ddcd77da458f58d2d4a6d38dfdd7024e345c7dd7111f8",
+        "archive_filename": "native-000197.png"
+      },
+      {
+        "encoded_frame_index": 198,
+        "simulation_time": 495.0,
+        "source_display_second": 12.375,
+        "sha256": "b8a4f7a4b5ef47d66735731cff6e9c5e5a020791499deac5c8dc76918de25995",
+        "archive_filename": "native-000198.png"
+      },
+      {
+        "encoded_frame_index": 199,
+        "simulation_time": 497.5,
+        "source_display_second": 12.4375,
+        "sha256": "aa2a6d5a2f7fbb0b0bf3d4e76c8187691d233e6c845f0a059d359a9e1f7b553d",
+        "archive_filename": "native-000199.png"
+      },
+      {
+        "encoded_frame_index": 200,
+        "simulation_time": 500.0,
+        "source_display_second": 12.5,
+        "sha256": "0dae6217b5d30d7fff7e9df22e3f5829e147cfc42f522569f3d56f3b94b4c69d",
+        "archive_filename": "native-000200.png"
+      },
+      {
+        "encoded_frame_index": 201,
+        "simulation_time": 502.5,
+        "source_display_second": 12.5625,
+        "sha256": "99ce433ca013fefba9cd57c4164c7467ef3f64383e8480ef3406197dfe8ee27d",
+        "archive_filename": "native-000201.png"
+      },
+      {
+        "encoded_frame_index": 202,
+        "simulation_time": 505.0,
+        "source_display_second": 12.625,
+        "sha256": "f940f0818fb25b8ff58ebc19039e1b956f958cb824dac2de275fb25b0872dec9",
+        "archive_filename": "native-000202.png"
+      },
+      {
+        "encoded_frame_index": 203,
+        "simulation_time": 507.5,
+        "source_display_second": 12.6875,
+        "sha256": "7bbb3c493a49b9e54b859e88ac333f9ebdbba521d39aba00603fdcafcd1ea9a5",
+        "archive_filename": "native-000203.png"
+      },
+      {
+        "encoded_frame_index": 204,
+        "simulation_time": 510.0,
+        "source_display_second": 12.75,
+        "sha256": "dffb6abff3b12c1aecd1bfb57a8905ecb169308617a32b794b92449f3648f046",
+        "archive_filename": "native-000204.png"
+      },
+      {
+        "encoded_frame_index": 205,
+        "simulation_time": 512.5,
+        "source_display_second": 12.8125,
+        "sha256": "7e128da418aee9a7d2e3199c41c48c3490094e31f5169ec4612ecae47dd2d5dc",
+        "archive_filename": "native-000205.png"
+      },
+      {
+        "encoded_frame_index": 206,
+        "simulation_time": 515.0,
+        "source_display_second": 12.875,
+        "sha256": "ad2de1320b6988dd8cc467137332a2cf4704fe6531eb3d560bb0943718876312",
+        "archive_filename": "native-000206.png"
+      },
+      {
+        "encoded_frame_index": 207,
+        "simulation_time": 517.5,
+        "source_display_second": 12.9375,
+        "sha256": "9c5b57f110ebd9fc0b08c4be0ba7c98140d63628445d64b9751b6ef1e196020c",
+        "archive_filename": "native-000207.png"
+      },
+      {
+        "encoded_frame_index": 208,
+        "simulation_time": 520.0,
+        "source_display_second": 13.0,
+        "sha256": "c5254fb49386a551c32806e86c9408e9ddcfec24c76069f698ff5a3c9849bd58",
+        "archive_filename": "native-000208.png"
+      },
+      {
+        "encoded_frame_index": 209,
+        "simulation_time": 522.5,
+        "source_display_second": 13.0625,
+        "sha256": "c67d8529b3b1316fb16586805c197136485e850db64ef7130530e16c68aa63b5",
+        "archive_filename": "native-000209.png"
+      },
+      {
+        "encoded_frame_index": 210,
+        "simulation_time": 525.0,
+        "source_display_second": 13.125,
+        "sha256": "b6d93eb4ffb529545e13872939aeb87f1afa8b4cd12a107067a4fd6d7f2a69a5",
+        "archive_filename": "native-000210.png"
+      },
+      {
+        "encoded_frame_index": 211,
+        "simulation_time": 527.5,
+        "source_display_second": 13.1875,
+        "sha256": "1b610876d73576763f3c7c7c58fd41090a938d325bc18727262fa7c8550b0b77",
+        "archive_filename": "native-000211.png"
+      },
+      {
+        "encoded_frame_index": 212,
+        "simulation_time": 530.0,
+        "source_display_second": 13.25,
+        "sha256": "11b5e8a47d2aca36f620123b0b678c692502ae8602a107a7e3968ce99161f286",
+        "archive_filename": "native-000212.png"
+      },
+      {
+        "encoded_frame_index": 213,
+        "simulation_time": 532.5,
+        "source_display_second": 13.3125,
+        "sha256": "4c5745f9509eea8e01f73b82581fb436500adf86b64cfb2292fec38efbf8b6da",
+        "archive_filename": "native-000213.png"
+      },
+      {
+        "encoded_frame_index": 214,
+        "simulation_time": 535.0,
+        "source_display_second": 13.375,
+        "sha256": "411c72675af60b0444b93407d492ae0c1e273a0a3a4c356106776ff8461535dc",
+        "archive_filename": "native-000214.png"
+      },
+      {
+        "encoded_frame_index": 215,
+        "simulation_time": 537.5,
+        "source_display_second": 13.4375,
+        "sha256": "80f9a5057d177870b4175e1d761bba1ee2c566c5fabe7238cae80cd1c2e61c10",
+        "archive_filename": "native-000215.png"
+      },
+      {
+        "encoded_frame_index": 216,
+        "simulation_time": 540.0,
+        "source_display_second": 13.5,
+        "sha256": "01df794063681026aa1a0cec93568e688429e1c8633f2a5852abe5ee6c32ea6e",
+        "archive_filename": "native-000216.png"
+      },
+      {
+        "encoded_frame_index": 217,
+        "simulation_time": 542.5,
+        "source_display_second": 13.5625,
+        "sha256": "46fef2acc3e038345e43173c1fa10551810a94e654bd4518db5e8306a344a451",
+        "archive_filename": "native-000217.png"
+      },
+      {
+        "encoded_frame_index": 218,
+        "simulation_time": 545.0,
+        "source_display_second": 13.625,
+        "sha256": "a2ba1c69dfabd7ba0fce9c8f1c7126c80c5c51801d8c00573edd01b2f5c15ffe",
+        "archive_filename": "native-000218.png"
+      },
+      {
+        "encoded_frame_index": 219,
+        "simulation_time": 547.5,
+        "source_display_second": 13.6875,
+        "sha256": "595da79c9198201d8d2f06a1fbf8baf424dcb3fbeb2572c9bdffaa06d3e78037",
+        "archive_filename": "native-000219.png"
+      },
+      {
+        "encoded_frame_index": 220,
+        "simulation_time": 550.0,
+        "source_display_second": 13.75,
+        "sha256": "9235cd01c8892537e4175a68096d956ab669364b94e5b198e5437046dd470587",
+        "archive_filename": "native-000220.png"
+      },
+      {
+        "encoded_frame_index": 221,
+        "simulation_time": 552.5,
+        "source_display_second": 13.8125,
+        "sha256": "2a7e7df2fca75d4bcfd2b101a7da536039e4310eff9d0bbd187ac1c8cfb6b241",
+        "archive_filename": "native-000221.png"
+      },
+      {
+        "encoded_frame_index": 222,
+        "simulation_time": 555.0,
+        "source_display_second": 13.875,
+        "sha256": "aec994eca6dbcad376607588414e04dee2e868a8db769189e33ed20217e8ecbe",
+        "archive_filename": "native-000222.png"
+      },
+      {
+        "encoded_frame_index": 223,
+        "simulation_time": 557.5,
+        "source_display_second": 13.9375,
+        "sha256": "97cc0d5932f04884e50551f033ac1754c85d9cb096ca577544f68aa5f8fb52aa",
+        "archive_filename": "native-000223.png"
+      },
+      {
+        "encoded_frame_index": 224,
+        "simulation_time": 560.0,
+        "source_display_second": 14.0,
+        "sha256": "591a06f4cc8e70aecdd4905198757930dad0f71f1b4df22db21a6d23fe087429",
+        "archive_filename": "native-000224.png"
+      },
+      {
+        "encoded_frame_index": 225,
+        "simulation_time": 562.5,
+        "source_display_second": 14.0625,
+        "sha256": "111680b1aeb7ba0492080816c0b33e297dccee242a65d2b1092f3113ce5cfeaa",
+        "archive_filename": "native-000225.png"
+      },
+      {
+        "encoded_frame_index": 226,
+        "simulation_time": 565.0,
+        "source_display_second": 14.125,
+        "sha256": "a9dea1eaede4ea3e827952f166937ded7e8b611c7e8364f3b88921b0b95846e4",
+        "archive_filename": "native-000226.png"
+      },
+      {
+        "encoded_frame_index": 227,
+        "simulation_time": 567.5,
+        "source_display_second": 14.1875,
+        "sha256": "632f5b46aa6ab3feac786edeb7daabd7d848e90946aa946e4482baa45f26e7bf",
+        "archive_filename": "native-000227.png"
+      },
+      {
+        "encoded_frame_index": 228,
+        "simulation_time": 570.0,
+        "source_display_second": 14.25,
+        "sha256": "d64ac916285e8e6e219f70dcdd7f5435c7474405ee913957e94ef1646a022d8b",
+        "archive_filename": "native-000228.png"
+      },
+      {
+        "encoded_frame_index": 229,
+        "simulation_time": 572.5,
+        "source_display_second": 14.3125,
+        "sha256": "e022ac6b93f6c90958e19b6d2ab8533cdca3542323d6919f3d99cd4aca4f84f7",
+        "archive_filename": "native-000229.png"
+      },
+      {
+        "encoded_frame_index": 230,
+        "simulation_time": 575.0,
+        "source_display_second": 14.375,
+        "sha256": "443341461b7307ae81a12d34af768f17314d321e61f04a854a2917af9512665b",
+        "archive_filename": "native-000230.png"
+      },
+      {
+        "encoded_frame_index": 231,
+        "simulation_time": 577.5,
+        "source_display_second": 14.4375,
+        "sha256": "fc33629a88321cc31999e9b76accabaf928660b33ab4ea4e1791108466b7abc3",
+        "archive_filename": "native-000231.png"
+      },
+      {
+        "encoded_frame_index": 232,
+        "simulation_time": 580.0,
+        "source_display_second": 14.5,
+        "sha256": "4784c02b048238af09091594105f72f8f7de88ed22b0f10d3efd4e2fa9db11bb",
+        "archive_filename": "native-000232.png"
+      },
+      {
+        "encoded_frame_index": 233,
+        "simulation_time": 582.5,
+        "source_display_second": 14.5625,
+        "sha256": "7ec48fd454f3594560b1a2cdbc18d4f1aca9fefec2322d4dc834d0ad5540d60a",
+        "archive_filename": "native-000233.png"
+      },
+      {
+        "encoded_frame_index": 234,
+        "simulation_time": 585.0,
+        "source_display_second": 14.625,
+        "sha256": "e1406157fcc20fabe254d6cf991da7a926237afaf5a3393097bae5a4e7b3f793",
+        "archive_filename": "native-000234.png"
+      },
+      {
+        "encoded_frame_index": 235,
+        "simulation_time": 587.5,
+        "source_display_second": 14.6875,
+        "sha256": "29b15f75a08b2fcb4e04a291bfd416fb4c2dbac06514d703ac2df54c39c91659",
+        "archive_filename": "native-000235.png"
+      },
+      {
+        "encoded_frame_index": 236,
+        "simulation_time": 590.0,
+        "source_display_second": 14.75,
+        "sha256": "58f7009a7dd54c3b76a0c095a3b96ffc58ea7ab12b753a3b4caf5991a1063622",
+        "archive_filename": "native-000236.png"
+      },
+      {
+        "encoded_frame_index": 237,
+        "simulation_time": 592.5,
+        "source_display_second": 14.8125,
+        "sha256": "8643fe51ee11a2dbe0b23e45a84a2f5e502279aad8b357f38a0bcd858c13592b",
+        "archive_filename": "native-000237.png"
+      },
+      {
+        "encoded_frame_index": 238,
+        "simulation_time": 595.0,
+        "source_display_second": 14.875,
+        "sha256": "a7f95cfdb5d65d69edcf6fd12ac9300ed17eaf060c0a9c6a14792db5da0dcf8c",
+        "archive_filename": "native-000238.png"
+      },
+      {
+        "encoded_frame_index": 239,
+        "simulation_time": 597.5,
+        "source_display_second": 14.9375,
+        "sha256": "92d2f4220fcea4ace3c156654cb0fde728cca35ee6a4fc6d0b063771dd88b917",
+        "archive_filename": "native-000239.png"
+      },
+      {
+        "encoded_frame_index": 240,
+        "simulation_time": 600.0,
+        "source_display_second": 15.0,
+        "sha256": "f421e07c3e9d3750fd38ade550fb8c79be145112bc3bcbdf157e5ea8c1183951",
+        "archive_filename": "native-000240.png"
+      },
+      {
+        "encoded_frame_index": 241,
+        "simulation_time": 602.5,
+        "source_display_second": 15.0625,
+        "sha256": "22fb266849aecb05841d27f94c7d20804dc879262739c7bcff9119ad3c510699",
+        "archive_filename": "native-000241.png"
+      },
+      {
+        "encoded_frame_index": 242,
+        "simulation_time": 605.0,
+        "source_display_second": 15.125,
+        "sha256": "721eec635f42d9ed6f4e172a0573b6d6910c6a3e633a523f2d6b67047d6b01e2",
+        "archive_filename": "native-000242.png"
+      },
+      {
+        "encoded_frame_index": 243,
+        "simulation_time": 607.5,
+        "source_display_second": 15.1875,
+        "sha256": "987526d2636eb6722ff0eefce64fc695dd71bc681c4c4dedbf7e049c387b19f2",
+        "archive_filename": "native-000243.png"
+      },
+      {
+        "encoded_frame_index": 244,
+        "simulation_time": 610.0,
+        "source_display_second": 15.25,
+        "sha256": "73fe75057bff8da5091715569220a26dc5b48cd7c376ec8fa60bd9cccc47b20f",
+        "archive_filename": "native-000244.png"
+      },
+      {
+        "encoded_frame_index": 245,
+        "simulation_time": 612.5,
+        "source_display_second": 15.3125,
+        "sha256": "5dd783a7fa91d39e1200266091bbda41de6cb4fd42f6ec2bdb3b38eadc14fea9",
+        "archive_filename": "native-000245.png"
+      },
+      {
+        "encoded_frame_index": 246,
+        "simulation_time": 615.0,
+        "source_display_second": 15.375,
+        "sha256": "d999c30f81684e3b38abc4627ada37bc7d9128f8d0e71470762edfe0274dce01",
+        "archive_filename": "native-000246.png"
+      },
+      {
+        "encoded_frame_index": 247,
+        "simulation_time": 617.5,
+        "source_display_second": 15.4375,
+        "sha256": "c163f61c7e8602153c2806ee1cc1c783b1652ac33fad540030fa2bc7bac4b03d",
+        "archive_filename": "native-000247.png"
+      },
+      {
+        "encoded_frame_index": 248,
+        "simulation_time": 620.0,
+        "source_display_second": 15.5,
+        "sha256": "ab2fbf8ff2d0f0243da854e53cff582e6549c5642b01d1c111e855268bb972ff",
+        "archive_filename": "native-000248.png"
+      },
+      {
+        "encoded_frame_index": 249,
+        "simulation_time": 622.5,
+        "source_display_second": 15.5625,
+        "sha256": "ece33917a8f5b55c4cec80d371b4579ab9d1533cae56b5f6358000c6b11afa57",
+        "archive_filename": "native-000249.png"
+      },
+      {
+        "encoded_frame_index": 250,
+        "simulation_time": 625.0,
+        "source_display_second": 15.625,
+        "sha256": "212641692342ef659c2d246c6b8f022bfef98e7f44f6e33b96448d8406d10daf",
+        "archive_filename": "native-000250.png"
+      },
+      {
+        "encoded_frame_index": 251,
+        "simulation_time": 627.5,
+        "source_display_second": 15.6875,
+        "sha256": "e0d4b757447ce6fa94eb9ef6ad4abe4c06ca13684dd27a0ebbc8336b23d25088",
+        "archive_filename": "native-000251.png"
+      },
+      {
+        "encoded_frame_index": 252,
+        "simulation_time": 630.0,
+        "source_display_second": 15.75,
+        "sha256": "e5ceeb7a09950211fa3846b526aacef7408636c7fc80a4bb87ef4b1deb94c8ae",
+        "archive_filename": "native-000252.png"
+      },
+      {
+        "encoded_frame_index": 253,
+        "simulation_time": 632.5,
+        "source_display_second": 15.8125,
+        "sha256": "69f7e8e274f170023379e0e34a0cc70220093475a07ae40daaa7f73d23bce6fb",
+        "archive_filename": "native-000253.png"
+      },
+      {
+        "encoded_frame_index": 254,
+        "simulation_time": 635.0,
+        "source_display_second": 15.875,
+        "sha256": "8bfb31ec82bfb96f29bdab99dfb5331ed22f60734634e8440f67aa35710f2fec",
+        "archive_filename": "native-000254.png"
+      },
+      {
+        "encoded_frame_index": 255,
+        "simulation_time": 637.5,
+        "source_display_second": 15.9375,
+        "sha256": "a5196babf975709d8f4ddc215c2da48999424e42a2456a44e53056d36aac3c80",
+        "archive_filename": "native-000255.png"
+      },
+      {
+        "encoded_frame_index": 256,
+        "simulation_time": 640.0,
+        "source_display_second": 16.0,
+        "sha256": "f8a06eddff62b085b02365f87f26c47ac1955a0afa0c8cb0d97ab8d2783b3a77",
+        "archive_filename": "native-000256.png"
+      },
+      {
+        "encoded_frame_index": 257,
+        "simulation_time": 642.5,
+        "source_display_second": 16.0625,
+        "sha256": "ebf63307d64314761cf49e8c15ee646a565a10506fa921b8af210a22e8e99d89",
+        "archive_filename": "native-000257.png"
+      },
+      {
+        "encoded_frame_index": 258,
+        "simulation_time": 645.0,
+        "source_display_second": 16.125,
+        "sha256": "828a7848e3350936b6adb3e12c056ebef84b4ad10e3133667d4e73d83bc3db7e",
+        "archive_filename": "native-000258.png"
+      },
+      {
+        "encoded_frame_index": 259,
+        "simulation_time": 647.5,
+        "source_display_second": 16.1875,
+        "sha256": "e44bede8bd4079e1b846f660ae096593a380d9798a503e92486138e297412018",
+        "archive_filename": "native-000259.png"
+      },
+      {
+        "encoded_frame_index": 260,
+        "simulation_time": 650.0,
+        "source_display_second": 16.25,
+        "sha256": "225ea74d5a47888db5d194d018eabfeb2a0325c775ff83511dbcc73a1e61b87c",
+        "archive_filename": "native-000260.png"
+      },
+      {
+        "encoded_frame_index": 261,
+        "simulation_time": 652.5,
+        "source_display_second": 16.3125,
+        "sha256": "78285a112c80104bf95e9c783fce009d07e152d0a60283b91d5fde92d77baf7b",
+        "archive_filename": "native-000261.png"
+      },
+      {
+        "encoded_frame_index": 262,
+        "simulation_time": 655.0,
+        "source_display_second": 16.375,
+        "sha256": "2fc94934804f61b34099df88d4a86b73c0de12452097771948e8ba5646711bbd",
+        "archive_filename": "native-000262.png"
+      },
+      {
+        "encoded_frame_index": 263,
+        "simulation_time": 657.5,
+        "source_display_second": 16.4375,
+        "sha256": "7b2da9f90fbbb1ad7ddf7dd531f8214726550df911e95d9337f371c761b415a1",
+        "archive_filename": "native-000263.png"
+      },
+      {
+        "encoded_frame_index": 264,
+        "simulation_time": 660.0,
+        "source_display_second": 16.5,
+        "sha256": "d2106a63762cb39db6769c2fec70b85f1ab96a83c23379874be7c037dcc70341",
+        "archive_filename": "native-000264.png"
+      },
+      {
+        "encoded_frame_index": 265,
+        "simulation_time": 662.5,
+        "source_display_second": 16.5625,
+        "sha256": "bf6c65492351acd02700c39dde49d4912fce92f59119a48f6d55f5c827593c09",
+        "archive_filename": "native-000265.png"
+      },
+      {
+        "encoded_frame_index": 266,
+        "simulation_time": 665.0,
+        "source_display_second": 16.625,
+        "sha256": "538e718a9fc22c19ec331bf5c77295d8fec99911e4660889613c25aa47036946",
+        "archive_filename": "native-000266.png"
+      },
+      {
+        "encoded_frame_index": 267,
+        "simulation_time": 667.5,
+        "source_display_second": 16.6875,
+        "sha256": "090093450c3005199399379845d9efc4a4c53327447089b55e9735b99357fdb5",
+        "archive_filename": "native-000267.png"
+      },
+      {
+        "encoded_frame_index": 268,
+        "simulation_time": 670.0,
+        "source_display_second": 16.75,
+        "sha256": "9061b0cde683c361e9e38482a3b3254b375ed105ed82451deacade0208c0b0f5",
+        "archive_filename": "native-000268.png"
+      },
+      {
+        "encoded_frame_index": 269,
+        "simulation_time": 672.5,
+        "source_display_second": 16.8125,
+        "sha256": "353246881e80a7bbc32986108b058d99e998e452fe382c055a9670a0ab6ae127",
+        "archive_filename": "native-000269.png"
+      },
+      {
+        "encoded_frame_index": 270,
+        "simulation_time": 675.0,
+        "source_display_second": 16.875,
+        "sha256": "7b1e22fdf8270081f05e36e902a0f2a0cfa7bb02fb0cd2edc7ef5e6342152d3d",
+        "archive_filename": "native-000270.png"
+      },
+      {
+        "encoded_frame_index": 271,
+        "simulation_time": 677.5,
+        "source_display_second": 16.9375,
+        "sha256": "21655636fbfe3e3c1b110464bc22f53c84c3dd2a57eebda4f71f0ea51bf01228",
+        "archive_filename": "native-000271.png"
+      },
+      {
+        "encoded_frame_index": 272,
+        "simulation_time": 680.0,
+        "source_display_second": 17.0,
+        "sha256": "632d452b404b6e2b959dce756b7b840aea1e9695355607fac05777b31d7c485a",
+        "archive_filename": "native-000272.png"
+      },
+      {
+        "encoded_frame_index": 273,
+        "simulation_time": 682.5,
+        "source_display_second": 17.0625,
+        "sha256": "d99af2a7af65583c44beded64d5ed2d99c8369ed20ede2a7dc8cbdf936fc0c0c",
+        "archive_filename": "native-000273.png"
+      },
+      {
+        "encoded_frame_index": 274,
+        "simulation_time": 685.0,
+        "source_display_second": 17.125,
+        "sha256": "575ec1848f2df08feb52839cfda7f7ea0d882fbdc3e8720d7f3e89d3f9a7a56f",
+        "archive_filename": "native-000274.png"
+      },
+      {
+        "encoded_frame_index": 275,
+        "simulation_time": 687.5,
+        "source_display_second": 17.1875,
+        "sha256": "3177646be1c0d7f563063fd23d24d64aec65a4c6e55d42eea59b2db44a5c66a2",
+        "archive_filename": "native-000275.png"
+      },
+      {
+        "encoded_frame_index": 276,
+        "simulation_time": 690.0,
+        "source_display_second": 17.25,
+        "sha256": "e6b7ccf378038515d9a2521a0bf19ba8d571dba41ae2afff184218a27a10fcc7",
+        "archive_filename": "native-000276.png"
+      },
+      {
+        "encoded_frame_index": 277,
+        "simulation_time": 692.5,
+        "source_display_second": 17.3125,
+        "sha256": "481530c8b0ebb9ba4ad4568d37b1a20e11554df304656e6a4567ae2fdfa800f2",
+        "archive_filename": "native-000277.png"
+      },
+      {
+        "encoded_frame_index": 278,
+        "simulation_time": 695.0,
+        "source_display_second": 17.375,
+        "sha256": "05055e30287176e6f5c71a566266c462b3495e1c92e0d50ac4731b10198ad361",
+        "archive_filename": "native-000278.png"
+      },
+      {
+        "encoded_frame_index": 279,
+        "simulation_time": 697.5,
+        "source_display_second": 17.4375,
+        "sha256": "37bdba889e4ed13eb83fad5ffdd79926e566c748211685edbdaa38170bbf62ef",
+        "archive_filename": "native-000279.png"
+      },
+      {
+        "encoded_frame_index": 280,
+        "simulation_time": 700.0,
+        "source_display_second": 17.5,
+        "sha256": "189b6ad9d7859ecc60bb690b3fd9911f43fe70aaa39c4b5024289478865d90b8",
+        "archive_filename": "native-000280.png"
+      },
+      {
+        "encoded_frame_index": 281,
+        "simulation_time": 702.5,
+        "source_display_second": 17.5625,
+        "sha256": "12d268a959918d010943361e6cf39f993d6cd5a59f1aec3271560cee8805d012",
+        "archive_filename": "native-000281.png"
+      },
+      {
+        "encoded_frame_index": 282,
+        "simulation_time": 705.0,
+        "source_display_second": 17.625,
+        "sha256": "1e0475d57e7b6e58e2b949337551c3825d67c73161a9c07ca1aef3a633d2cd75",
+        "archive_filename": "native-000282.png"
+      },
+      {
+        "encoded_frame_index": 283,
+        "simulation_time": 707.5,
+        "source_display_second": 17.6875,
+        "sha256": "b2097836ceb746d0e4388e880d48258a1f4ec5e87b5618654dfe7fd0b83b7ae9",
+        "archive_filename": "native-000283.png"
+      },
+      {
+        "encoded_frame_index": 284,
+        "simulation_time": 710.0,
+        "source_display_second": 17.75,
+        "sha256": "45969be3ada179182ffd2c9e63027b3dc0241bae1875c5bb814803d8483a0dcf",
+        "archive_filename": "native-000284.png"
+      },
+      {
+        "encoded_frame_index": 285,
+        "simulation_time": 712.5,
+        "source_display_second": 17.8125,
+        "sha256": "918538dcb502dbc5c24d2dfb4683fe5aaa9688850abfdd657c90db017077b958",
+        "archive_filename": "native-000285.png"
+      },
+      {
+        "encoded_frame_index": 286,
+        "simulation_time": 715.0,
+        "source_display_second": 17.875,
+        "sha256": "8ad404c1f02ddfdf591d4413db3a709054e757f28d85e987cb6f49d74b7eafa4",
+        "archive_filename": "native-000286.png"
+      },
+      {
+        "encoded_frame_index": 287,
+        "simulation_time": 717.5,
+        "source_display_second": 17.9375,
+        "sha256": "12f92b6721987d523113f705b534d48900d3671e3b6ea1bbdb8921f4fd7ddd9a",
+        "archive_filename": "native-000287.png"
+      },
+      {
+        "encoded_frame_index": 288,
+        "simulation_time": 720.0,
+        "source_display_second": 18.0,
+        "sha256": "88ecb82850ff376f1a6bee03fab62113b507abfd048df0a250c3380624d7b886",
+        "archive_filename": "native-000288.png"
+      },
+      {
+        "encoded_frame_index": 289,
+        "simulation_time": 722.5,
+        "source_display_second": 18.0625,
+        "sha256": "3a0299c065688ace40d98593c114ae975e740ef0dcfc85d7e328d12dd2cf8dc9",
+        "archive_filename": "native-000289.png"
+      },
+      {
+        "encoded_frame_index": 290,
+        "simulation_time": 725.0,
+        "source_display_second": 18.125,
+        "sha256": "61f8f39493fca374cebd521469d92d2a82f137da314f6b06fa4d5cf4f5c05110",
+        "archive_filename": "native-000290.png"
+      },
+      {
+        "encoded_frame_index": 291,
+        "simulation_time": 727.5,
+        "source_display_second": 18.1875,
+        "sha256": "7c8c3a91296b54950d2fa6ff955e63b8ae3bf09c7722d30661c657d7904b1b95",
+        "archive_filename": "native-000291.png"
+      },
+      {
+        "encoded_frame_index": 292,
+        "simulation_time": 730.0,
+        "source_display_second": 18.25,
+        "sha256": "7bcc8081542b6bd2132556a6aec395035b0ea4da390c8b2f32c952a94456439b",
+        "archive_filename": "native-000292.png"
+      },
+      {
+        "encoded_frame_index": 293,
+        "simulation_time": 732.5,
+        "source_display_second": 18.3125,
+        "sha256": "7ea40f7c29673adbb6e6341e52b3a8cff794bfbe713b03c6bbafeb4f24fa1dfb",
+        "archive_filename": "native-000293.png"
+      },
+      {
+        "encoded_frame_index": 294,
+        "simulation_time": 735.0,
+        "source_display_second": 18.375,
+        "sha256": "573c967ec77699ceba022c2097a58efd0a2e644c2bf92db753a809bff8baa856",
+        "archive_filename": "native-000294.png"
+      },
+      {
+        "encoded_frame_index": 295,
+        "simulation_time": 737.5,
+        "source_display_second": 18.4375,
+        "sha256": "0cdba78ad77df4192f6e3411f53540d1641e0efe0eb9691e325aada9ffbedf88",
+        "archive_filename": "native-000295.png"
+      },
+      {
+        "encoded_frame_index": 296,
+        "simulation_time": 740.0,
+        "source_display_second": 18.5,
+        "sha256": "dd2ceb437d9ed46b23e01185c2088242f2eecad4427fd4a06f43fb5cf4e6ce0e",
+        "archive_filename": "native-000296.png"
+      },
+      {
+        "encoded_frame_index": 297,
+        "simulation_time": 742.5,
+        "source_display_second": 18.5625,
+        "sha256": "d1e9a49f4e2e726c1739a6b5abb6bdb423b2c60c45081ee2e92d17dd34bafa8e",
+        "archive_filename": "native-000297.png"
+      },
+      {
+        "encoded_frame_index": 298,
+        "simulation_time": 745.0,
+        "source_display_second": 18.625,
+        "sha256": "e57a090773c736aebeb700b5533a55ea51ea310e8390f72e7e8d08fbd450e97a",
+        "archive_filename": "native-000298.png"
+      },
+      {
+        "encoded_frame_index": 299,
+        "simulation_time": 747.5,
+        "source_display_second": 18.6875,
+        "sha256": "bcc3bfce65e7aa54533a943f52116baec26f42fc201d3a64c4ff8071164d7f15",
+        "archive_filename": "native-000299.png"
+      },
+      {
+        "encoded_frame_index": 300,
+        "simulation_time": 750.0,
+        "source_display_second": 18.75,
+        "sha256": "b40184cb9d41802b8a6ec93a15f30012ba8b1ba0d011567affb8e14952481317",
+        "archive_filename": "native-000300.png"
+      }
+    ],
+    "contact_sheets": [
+      {
+        "sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66",
+        "encoded_frame_indices": [
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111
+        ],
+        "simulation_times": [
+          250.0,
+          252.5,
+          255.0,
+          257.5,
+          260.0,
+          262.5,
+          265.0,
+          267.5,
+          270.0,
+          272.5,
+          275.0,
+          277.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000100-000111.jpg"
+      },
+      {
+        "sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427",
+        "encoded_frame_indices": [
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123
+        ],
+        "simulation_times": [
+          280.0,
+          282.5,
+          285.0,
+          287.5,
+          290.0,
+          292.5,
+          295.0,
+          297.5,
+          300.0,
+          302.5,
+          305.0,
+          307.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000112-000123.jpg"
+      },
+      {
+        "sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b",
+        "encoded_frame_indices": [
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135
+        ],
+        "simulation_times": [
+          310.0,
+          312.5,
+          315.0,
+          317.5,
+          320.0,
+          322.5,
+          325.0,
+          327.5,
+          330.0,
+          332.5,
+          335.0,
+          337.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000124-000135.jpg"
+      },
+      {
+        "sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5",
+        "encoded_frame_indices": [
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147
+        ],
+        "simulation_times": [
+          340.0,
+          342.5,
+          345.0,
+          347.5,
+          350.0,
+          352.5,
+          355.0,
+          357.5,
+          360.0,
+          362.5,
+          365.0,
+          367.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000136-000147.jpg"
+      },
+      {
+        "sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b",
+        "encoded_frame_indices": [
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "simulation_times": [
+          370.0,
+          372.5,
+          375.0,
+          377.5,
+          380.0,
+          382.5,
+          385.0,
+          387.5,
+          390.0,
+          392.5,
+          395.0,
+          397.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000148-000159.jpg"
+      },
+      {
+        "sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df",
+        "encoded_frame_indices": [
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171
+        ],
+        "simulation_times": [
+          400.0,
+          402.5,
+          405.0,
+          407.5,
+          410.0,
+          412.5,
+          415.0,
+          417.5,
+          420.0,
+          422.5,
+          425.0,
+          427.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000160-000171.jpg"
+      },
+      {
+        "sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c",
+        "encoded_frame_indices": [
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183
+        ],
+        "simulation_times": [
+          430.0,
+          432.5,
+          435.0,
+          437.5,
+          440.0,
+          442.5,
+          445.0,
+          447.5,
+          450.0,
+          452.5,
+          455.0,
+          457.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000172-000183.jpg"
+      },
+      {
+        "sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e",
+        "encoded_frame_indices": [
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195
+        ],
+        "simulation_times": [
+          460.0,
+          462.5,
+          465.0,
+          467.5,
+          470.0,
+          472.5,
+          475.0,
+          477.5,
+          480.0,
+          482.5,
+          485.0,
+          487.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000184-000195.jpg"
+      },
+      {
+        "sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce",
+        "encoded_frame_indices": [
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207
+        ],
+        "simulation_times": [
+          490.0,
+          492.5,
+          495.0,
+          497.5,
+          500.0,
+          502.5,
+          505.0,
+          507.5,
+          510.0,
+          512.5,
+          515.0,
+          517.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000196-000207.jpg"
+      },
+      {
+        "sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5",
+        "encoded_frame_indices": [
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219
+        ],
+        "simulation_times": [
+          520.0,
+          522.5,
+          525.0,
+          527.5,
+          530.0,
+          532.5,
+          535.0,
+          537.5,
+          540.0,
+          542.5,
+          545.0,
+          547.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000208-000219.jpg"
+      },
+      {
+        "sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57",
+        "encoded_frame_indices": [
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231
+        ],
+        "simulation_times": [
+          550.0,
+          552.5,
+          555.0,
+          557.5,
+          560.0,
+          562.5,
+          565.0,
+          567.5,
+          570.0,
+          572.5,
+          575.0,
+          577.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000220-000231.jpg"
+      },
+      {
+        "sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75",
+        "encoded_frame_indices": [
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243
+        ],
+        "simulation_times": [
+          580.0,
+          582.5,
+          585.0,
+          587.5,
+          590.0,
+          592.5,
+          595.0,
+          597.5,
+          600.0,
+          602.5,
+          605.0,
+          607.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000232-000243.jpg"
+      },
+      {
+        "sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99",
+        "encoded_frame_indices": [
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255
+        ],
+        "simulation_times": [
+          610.0,
+          612.5,
+          615.0,
+          617.5,
+          620.0,
+          622.5,
+          625.0,
+          627.5,
+          630.0,
+          632.5,
+          635.0,
+          637.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000244-000255.jpg"
+      },
+      {
+        "sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4",
+        "encoded_frame_indices": [
+          256,
+          257,
+          258,
+          259,
+          260,
+          261,
+          262,
+          263,
+          264,
+          265,
+          266,
+          267
+        ],
+        "simulation_times": [
+          640.0,
+          642.5,
+          645.0,
+          647.5,
+          650.0,
+          652.5,
+          655.0,
+          657.5,
+          660.0,
+          662.5,
+          665.0,
+          667.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000256-000267.jpg"
+      },
+      {
+        "sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc",
+        "encoded_frame_indices": [
+          268,
+          269,
+          270,
+          271,
+          272,
+          273,
+          274,
+          275,
+          276,
+          277,
+          278,
+          279
+        ],
+        "simulation_times": [
+          670.0,
+          672.5,
+          675.0,
+          677.5,
+          680.0,
+          682.5,
+          685.0,
+          687.5,
+          690.0,
+          692.5,
+          695.0,
+          697.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000268-000279.jpg"
+      },
+      {
+        "sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91",
+        "encoded_frame_indices": [
+          280,
+          281,
+          282,
+          283,
+          284,
+          285,
+          286,
+          287,
+          288,
+          289,
+          290,
+          291
+        ],
+        "simulation_times": [
+          700.0,
+          702.5,
+          705.0,
+          707.5,
+          710.0,
+          712.5,
+          715.0,
+          717.5,
+          720.0,
+          722.5,
+          725.0,
+          727.5
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000280-000291.jpg"
+      },
+      {
+        "sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7",
+        "encoded_frame_indices": [
+          292,
+          293,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300
+        ],
+        "simulation_times": [
+          730.0,
+          732.5,
+          735.0,
+          737.5,
+          740.0,
+          742.5,
+          745.0,
+          747.5,
+          750.0
+        ],
+        "reading_order": "left to right, top to bottom; blank cells are not observations",
+        "archive_filename": "review-sheet-000292-000300.jpg"
+      }
+    ],
+    "archive_note": "Decoded frames and contact sheets are retained in the review archive; the published original movie is sufficient to inspect every source sample.",
+    "overview": {
+      "method": "Six evenly spaced, already-reviewed observations. Fixed full-domain panels, fixed detail crops enlarged 2x by nearest-neighbor, yellow fixed-window rectangles only where visual identity is supported. No field decoding or numerical feature calculation.",
+      "sources": [
+        {
+          "encoded_frame_index": 100,
+          "simulation_time": 250.0,
+          "decoded_frame_sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+        },
+        {
+          "encoded_frame_index": 140,
+          "simulation_time": 350.0,
+          "decoded_frame_sha256": "f613741bd899ea2266b7b9c785b8e9aa6376cd74e11a77a433ebcdfbb8c53dd2"
+        },
+        {
+          "encoded_frame_index": 180,
+          "simulation_time": 450.0,
+          "decoded_frame_sha256": "03c12f0b40ce78f5a19cba9afe0bd42b885a23fbaa18dbce645a96a6fe1905b3"
+        },
+        {
+          "encoded_frame_index": 220,
+          "simulation_time": 550.0,
+          "decoded_frame_sha256": "9235cd01c8892537e4175a68096d956ab669364b94e5b198e5437046dd470587"
+        },
+        {
+          "encoded_frame_index": 260,
+          "simulation_time": 650.0,
+          "decoded_frame_sha256": "225ea74d5a47888db5d194d018eabfeb2a0325c775ff83511dbcc73a1e61b87c"
+        },
+        {
+          "encoded_frame_index": 300,
+          "simulation_time": 750.0,
+          "decoded_frame_sha256": "b40184cb9d41802b8a6ec93a15f30012ba8b1ba0d011567affb8e14952481317"
+        }
+      ],
+      "panel_boxes_xyxy": {
+        "A0": [
+          158,
+          142,
+          482,
+          468
+        ],
+        "A1": [
+          750,
+          142,
+          1074,
+          468
+        ]
+      },
+      "detail_boxes_xyxy": {
+        "A0": [
+          220,
+          166,
+          316,
+          262
+        ],
+        "A1": [
+          812,
+          166,
+          908,
+          262
+        ]
+      },
+      "script_sha256": "79e1d4f893a5e99f86e86a70f131fa4bd47daf1ffcb71d756894d4ccdeb13988",
+      "visually_checked_after_layout_repair": true
+    }
+  },
+  "published_review_artifacts": {
+    "2026-10-23-p7-persistence.md": {
+      "file": "2026-10-23-p7-persistence.md",
+      "sha256": "516d4d96041ab2673fb5c393e7c1ecd6c5d9160b858159e4dd2cdc2c9beffe3a",
+      "bytes": 5050
+    },
+    "p7-persistence-overview.png": {
+      "file": "p7-persistence-overview.png",
+      "sha256": "4ba356067d758dc17b94c5aa535c0a6ed6643666e4174890d6eaba10f24071fe",
+      "bytes": 2659990
+    },
+    "visual-observations.json": {
+      "file": "visual-observations.json",
+      "sha256": "f254e73a4b9e138987fc503d488a679b1f19c7827a1dc950e2527a01a900b092",
+      "bytes": 72491
+    },
+    "assessment.json": {
+      "file": "assessment.json",
+      "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7",
+      "bytes": 7777
+    }
+  }
+}

@@ -16,7 +16,10 @@ lower is better.
 
 **[Documentation](https://swpo.github.io/physim/)** ·
 [Worlds](docs/index.html#worlds) · [Prediction API](docs/index.html#prediction) ·
-[Evaluation](docs/index.html#evaluation) · [Results](docs/index.html#results)
+[Evaluation](docs/index.html#evaluation) · [Results](docs/index.html#results) ·
+[Research demonstrations and progress](research/README.md)
+
+Latest research: [how the selected P7 pattern forms, with a short movie](research/updates/2026-10-23-p7-ancestry.md).
 
 For agents and developers: [reproduction guide](REPRODUCING.md), including data
 identities, the runnable prediction example, released reference scores, and the

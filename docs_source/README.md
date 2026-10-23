@@ -10,7 +10,7 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory docs
 ```
 
 Edit `pages/index.html`, `partials/scoring.html`, `template.html`, and `site.css`, then rebuild.
-The public narrative is one page following the author's PDF draft: Worlds,
+The main public narrative is one page following the author's PDF draft: Worlds,
 Experiments, Evaluation, Preliminary Results, Discovering new worlds, What's next,
 Get Involved, and Credit.
 The vertical table of contents follows the introduction; its section links are
@@ -160,3 +160,18 @@ figures with larger type and stacked panels. The motion example is a fresh run
 of the historical equations; the binding example preserves the original field
 frames and uses the archived separation measurements. Each film has a source
 record beside it under `docs/assets/worlds/early-*.json`.
+
+## Dated research updates
+
+`pages/research-2026-10-20.html` is a separate dated article registered in the
+documentation builder. It links three saved-evidence videos and their source files
+under `docs/assets/research/2026-10-20/`. A concise GitHub-readable version and
+dated index live in `research/updates/`; the overview links to the latest article.
+Future updates should report meaningful reviewed findings, including negative
+results, with controls and limitations.
+
+`scripts/render_research_update.py` verifies the nine committed evidence files,
+then renders only their existing frames and readouts. It never invokes native
+simulation. Its media README documents fixed scales, crops, threshold masks,
+frame holds and source limitations. Ordinary site builds use the committed
+media and do not need NumPy, Pillow, FFmpeg or the original research cache.

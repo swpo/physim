@@ -1,0 +1,88 @@
+{
+  "schema": "p7-joint-opaque-checks-v1",
+  "passed": true,
+  "artifacts": 24,
+  "artifact_bytes": 16153039,
+  "observations": 606,
+  "per_arm": [
+    {
+      "arm": "S",
+      "artifacts": 4,
+      "artifact_bytes": 2692169,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    },
+    {
+      "arm": "B",
+      "artifacts": 4,
+      "artifact_bytes": 2692171,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    },
+    {
+      "arm": "C",
+      "artifacts": 4,
+      "artifact_bytes": 2692172,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    },
+    {
+      "arm": "D",
+      "artifacts": 4,
+      "artifact_bytes": 2692171,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    },
+    {
+      "arm": "DB",
+      "artifacts": 4,
+      "artifact_bytes": 2692182,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    },
+    {
+      "arm": "DC",
+      "artifacts": 4,
+      "artifact_bytes": 2692174,
+      "initial_field_matches_accepted_static": true,
+      "steps": 12500,
+      "observations": 101,
+      "late_observations": 21,
+      "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+      "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+      "source_and_schedule_match": true
+    }
+  ],
+  "paired_rng_all101_states_equal": true,
+  "final_rng_state_metadata_equal": true,
+  "same_exact_source_bindings": true,
+  "schedule_all101_match": true,
+  "initial_pixels_match_accepted_static": 24,
+  "presentation_files_hash_verified": 220,
+  "limits": "Opaque artifact hashing and joint source/RNG/schedule metadata only. Accepted owner execution checks reused. No raw scientific-array or float-bit-extrema decoding, numerical field analysis or integration."
+}

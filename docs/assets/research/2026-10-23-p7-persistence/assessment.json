@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "review_id": "p7-retrospective-v0.1",
+  "author": "Standing organism evaluator",
+  "recorded_at_utc": "2026-10-23T12:23:16.228253+00:00",
+  "rubric": {
+    "version": "0.1",
+    "sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b",
+    "changed_for_this_review": false
+  },
+  "selection_protocol": {
+    "sha256": "d27f2525cbfdbd75a438726bc3ae96a0a0dbeae3727599eefd8a92bf8f3c6ffc",
+    "frozen_at_utc": "2026-10-23T12:03:44.848976+00:00",
+    "status": "Unchanged since selection, before intervening observations were inspected."
+  },
+  "candidate": "p7g2_009, fresh CPU realization",
+  "selection": {
+    "frame_uid": "fresh__p7g2_009__00250",
+    "time": 250,
+    "rank_at_selection_time": 5,
+    "rank_meaning": "1-based quality order in this frame only, not an identity label",
+    "display_position_xy_physical": [
+      85.57890638518774,
+      200.899030974217
+    ],
+    "recorded_center_row_column_physical": [
+      200.899030974217,
+      85.57890638518774
+    ],
+    "position_description": "Upper-left quadrant, about one-third across and one-fifth down from the top in a full-domain view; rounded triangular outer enclosure with an internal curled pattern.",
+    "visible_feature": "A separate internal hooked/curled A1 stripe with an interior low-A1 bay, lying inside a closed outer A1 boundary and separated from it by an A0-rich band. A0 is blue and A1 orange in the legacy composite; the existing native movie displays A0 cyan and A1 pale cream in separate fixed-scale panels.",
+    "allowed_feature_changes": "Rotation, smooth deformation, motion and intensity variation may occur; exact outline and pixels need not be identical. The nested boundary/intermediate band/internal curled-stripe organization must remain discernible."
+  },
+  "selection_bias": "Selected retrospective review, not blinded confirmation. P7 snapshots at t25,250,750 were inspected before this selection; the final appearance influenced selection of a promising example. No prevalence or held-out success claim.",
+  "previously_seen_times": [
+    25,
+    250,
+    750
+  ],
+  "review_method": "Evaluator visual judgments from every full-domain A0/A1 panel and the same fixed supplementary detail crop; no numerical tracking or feature calculation. Status rows are manually assigned following visual inspection.",
+  "evidence_window": {
+    "retained_samples_reviewed": 201,
+    "declared_and_observed_window": [
+      250,
+      750
+    ],
+    "sample_interval": 2.5,
+    "observed_window_duration": 500,
+    "apparent_identity_supported_samples": 201,
+    "outer_boundary_supported_samples": 201,
+    "specified_feature_supported_samples": 201,
+    "first_observed_failure": null,
+    "first_observed_identity_ambiguity": null,
+    "unbroken_sampled_support_interval": [
+      250,
+      750
+    ],
+    "right_censored_at_recording_end": 750,
+    "ancestry_before250": "Not reviewed in this bounded study; earlier t25 snapshot was known before selection.",
+    "gate_assessment": {
+      "localized_coherent_individual": "supported",
+      "distinguishing_nontrivial_spatial_feature": "supported",
+      "same_individual_feature_persistence": "supported"
+    },
+    "gate_scope": "Support for visible organization and sampled apparent identity of this selected individual in this window. No material-continuity, confinement, autonomous-maintenance or replication claim."
+  },
+  "gates": {
+    "localized_coherent_individual": {
+      "verdict": "supported",
+      "evidence": "The selected outer A1 contour remains closed and visually separable from surrounding patterns in all 201 retained samples.",
+      "limit": "A rendered field contour does not establish material identity or a confining membrane."
+    },
+    "distinguishing_nontrivial_feature": {
+      "verdict": "supported",
+      "evidence": "A separate curled A1 stripe with a low-A1 bay and intermediate A0-rich band remains discernible inside the outer contour.",
+      "limit": "Spatial organization is observed; causal functional roles are not established."
+    },
+    "same_individual_feature_persistence": {
+      "verdict": "supported",
+      "evidence": "The same apparent enclosure and frozen nested feature are supported at every retained sample from time 250 through time 750. No observed failure or identity ambiguity.",
+      "limit": "Sampled apparent identity; right-censored at 750. Events between samples and material continuity are not resolved."
+    }
+  },
+  "promotion": {
+    "status": "Organism-like candidate at the level of visible organization and sampled apparent identity.",
+    "self_maintaining_organism_established": false,
+    "updates": "Initial calibration reported insufficient persistence evidence. This bounded review supplies that missing evidence without changing the rubric."
+  },
+  "interpretation_strength": {
+    "active_maintenance": "insufficient_evidence",
+    "boundary_confinement": "insufficient_evidence",
+    "material_continuity": "insufficient_evidence",
+    "perturbation_recovery": "not_tested",
+    "resource_dependence": "not_tested",
+    "autonomy": "not_established",
+    "replication_or_selection": "not_tested",
+    "competing_interpretation": "A mostly stationary stable patterned island remains a viable explanation.",
+    "initialization": "Fresh noisy CPU realization initialized with default dressed pokes and inhibitor-shadow kicks; not a reconstruction of the archived GPU trajectory.",
+    "ancestry": "Not reviewed before time 250. No spontaneous-origin claim.",
+    "display_scope": "Every full-domain A0/A1 panel and fixed detail crop reviewed. Source movie displays four of eight fields; complete chemistry not evaluated.",
+    "generalization": "One retrospectively selected candidate. No held-out success-rate or prevalence claim."
+  },
+  "next_design_recommendation": {
+    "priority": "Specify one bounded P7 boundary-dependent maintenance challenge before the held feedback experiment or replication work.",
+    "question": "Does the intact outer boundary help restore the specified internal feature after a standardized local interior disturbance?",
+    "comparison": "Apply the same interior disturbance with intact boundary, selective boundary lesion, and matched nonboundary damage, with sham controls. Freeze exact perturbations, recovery window and unchanged feature criterion before admission.",
+    "outcome_decisions": {
+      "selective_recovery_with_intact_boundary": "Supports boundary-dependent maintenance beyond matched damage and sham effects; advance this candidate while retaining autonomy limits.",
+      "equal_recovery_regardless_of_boundary_or_no_recovery": "Visual persistence remains supported; maintenance remains unsupported. Retain as visual benchmark, redirect priority, and do not automatically retune.",
+      "ambiguous_or_invalid_comparison": "Insufficient evidence. End this proposal without a parameter sweep."
+    },
+    "rubric_effect": "No fourth essential gate added; this tests strength of interpretation.",
+    "new_compute_admitted": false,
+    "new_simulation_started": false,
+    "held_experiment": "activity-paid-restoring-feedback-reference-v2 remains held; no automatic rewrite or run."
+  },
+  "evidence_bindings": {
+    "observations": {
+      "file": "visual-observations.json",
+      "sha256": "f254e73a4b9e138987fc503d488a679b1f19c7827a1dc950e2527a01a900b092",
+      "bytes": 72491
+    },
+    "overview": {
+      "file": "p7-persistence-overview.png",
+      "sha256": "4ba356067d758dc17b94c5aa535c0a6ed6643666e4174890d6eaba10f24071fe",
+      "bytes": 2659990
+    },
+    "source_movie": {
+      "file": "native-context.mp4",
+      "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d",
+      "bytes": 8411681
+    }
+  }
+}

@@ -1,0 +1,3256 @@
+{
+  "method": "Decode every encoded frame and compare corresponding presentation RGB pixels and title area. H.264 is lossy; original quantized evidence and PNG rendering remain authoritative.",
+  "scientific_values_interpreted": false,
+  "videos": [
+    {
+      "kind": "interior",
+      "video_sha256": "7863a0cce9016ce3f9b9478869f2fc0d380e2c83ff480d66870cb56ad35f308b",
+      "decoded_frames": 101,
+      "maximum_frame_mean_absolute_rgb_error": 1.8093623408564814,
+      "maximum_title_mean_absolute_rgb_error": 2.2029134114583333,
+      "frames": [
+        {
+          "frame": 0,
+          "relative_time": 0.0,
+          "source_png_sha256": "86664891b71ad12ff5798a27139d731938086aa747d09901fa31b8f0d69d0214",
+          "decoded_rgb_sha256": "f8e132af6e435f60c4f94ee34fc88416d2ada47d48def9a812ee08f6a069af4f",
+          "mean_absolute_rgb_error": [
+            1.4773202401620371,
+            1.2583776403356481,
+            1.4173448350694444
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.150740559895833,
+            1.9367838541666667,
+            2.1894124348958335
+          ]
+        },
+        {
+          "frame": 1,
+          "relative_time": 2.5,
+          "source_png_sha256": "65458e2ad1e758acb0215940a95fa60ec716e4ee37b6bbbc9e80917a61ae7897",
+          "decoded_rgb_sha256": "26b4aa5bcf9761e270f1a4b9668aae0f1fb5bf42ffdd9ed2b5b401b6d707c78e",
+          "mean_absolute_rgb_error": [
+            1.560841652199074,
+            1.3460241247106481,
+            1.4990785951967593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1564046223958333,
+            1.9368408203125,
+            2.188118489583333
+          ]
+        },
+        {
+          "frame": 2,
+          "relative_time": 5.0,
+          "source_png_sha256": "e5b547b65b3e96046f50c53dba2e7e1b27bb53d0e4947ff5f7be9d1af65653f6",
+          "decoded_rgb_sha256": "f08d56e5a242c3eb23f0627bc43d8891ae77ab4a2b65721dd29bc9c33550a115",
+          "mean_absolute_rgb_error": [
+            1.686820023148148,
+            1.4213957609953705,
+            1.593696650752315
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1483561197916665,
+            1.9381103515625,
+            2.185205078125
+          ]
+        },
+        {
+          "frame": 3,
+          "relative_time": 7.5,
+          "source_png_sha256": "2433bedf11a2028edbc047fa7d512a7203adbd2fc72e3cb40e18265fc6e5ec3c",
+          "decoded_rgb_sha256": "6ddfac8d21c167691147b9ae180d8ad014c225d1126e0f7c3463c59dd2615ead",
+          "mean_absolute_rgb_error": [
+            1.6585575810185185,
+            1.4158808955439814,
+            1.5991780598958334
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.156599934895833,
+            1.9348307291666667,
+            2.190543619791667
+          ]
+        },
+        {
+          "frame": 4,
+          "relative_time": 10.0,
+          "source_png_sha256": "e409a011e697b0b58f821c9b742e3127a1a8246e07bfafae2692086eaa5d1c39",
+          "decoded_rgb_sha256": "0080ef298c31555353be18c0f97197c47549e49ab5019e84814d00d2f7699960",
+          "mean_absolute_rgb_error": [
+            1.6823974609375,
+            1.393850368923611,
+            1.5982449001736112
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1488932291666667,
+            1.9345296223958333,
+            2.1864827473958335
+          ]
+        },
+        {
+          "frame": 5,
+          "relative_time": 12.5,
+          "source_png_sha256": "daed92c331ea185311dbeaed0e837f15566bef4ffd5ee3f00c4b7d3e3a17b41a",
+          "decoded_rgb_sha256": "90f924982bbdca752ab64a1c42b0b17fcf6448a7084b8cbc465c4aa00ec591ab",
+          "mean_absolute_rgb_error": [
+            1.6912932219328705,
+            1.4261546947337962,
+            1.6253806785300926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1661376953125,
+            1.9371907552083334,
+            2.1978759765625
+          ]
+        },
+        {
+          "frame": 6,
+          "relative_time": 15.0,
+          "source_png_sha256": "8227f8e3fd0507e84164e55eca2337baf706c0d9c637b5dc584ba15d402090ba",
+          "decoded_rgb_sha256": "5fedd6d0b5b468c01b078132752eccceb93a7927938601515c2dfaf09c197878",
+          "mean_absolute_rgb_error": [
+            1.723879665798611,
+            1.4314923321759259,
+            1.6622712311921297
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.151139322916667,
+            1.934033203125,
+            2.1864420572916665
+          ]
+        },
+        {
+          "frame": 7,
+          "relative_time": 17.5,
+          "source_png_sha256": "9c5e9be354cff28e2925faae39dbff455b0bf24bce7a6c4a9a9033c0b849b2bc",
+          "decoded_rgb_sha256": "0fc0ebc30644adb4d473c3ba48b18a600ec474126f43ffbb7df4f2b907e0ee65",
+          "mean_absolute_rgb_error": [
+            1.7530119719328703,
+            1.4645797164351853,
+            1.701734302662037
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164697265625,
+            1.9377278645833333,
+            2.194775390625
+          ]
+        },
+        {
+          "frame": 8,
+          "relative_time": 20.0,
+          "source_png_sha256": "913c82267b9fcc7b6da1b3bcfeb024c471795fdabf95e78b397c5068b5afaedd",
+          "decoded_rgb_sha256": "de5cd10919f79735db5036462b7182ef08ae441ba873e8d28a00fc443a20613a",
+          "mean_absolute_rgb_error": [
+            1.7757161458333333,
+            1.4361310040509259,
+            1.7171558521412038
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1495930989583334,
+            1.9344970703125,
+            2.1882731119791665
+          ]
+        },
+        {
+          "frame": 9,
+          "relative_time": 22.5,
+          "source_png_sha256": "e1cec8f61b4920ff4557ec005bac11dbce77d6a8b325697c3714c887f7f47c66",
+          "decoded_rgb_sha256": "85c055ecf40f3c6c5ddb0b13fb82cc020f5954cac54e524c70d88ed28e84323b",
+          "mean_absolute_rgb_error": [
+            1.7897542317708333,
+            1.485354275173611,
+            1.7270109953703703
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1658121744791665,
+            1.9404052734375,
+            2.201025390625
+          ]
+        },
+        {
+          "frame": 10,
+          "relative_time": 25.0,
+          "source_png_sha256": "6deb938cf869ef75b32dcaeffcf160c6c88e52a04fb952c8b616f6bdc6e67cf5",
+          "decoded_rgb_sha256": "77824a6bf85de4db2edaf6c2c06980314ffb5b563051c94bf0fe7c9b2a6ab92a",
+          "mean_absolute_rgb_error": [
+            1.7970811631944446,
+            1.471505172164352,
+            1.7303023726851852
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1519287109375,
+            1.934228515625,
+            2.1898518880208333
+          ]
+        },
+        {
+          "frame": 11,
+          "relative_time": 27.5,
+          "source_png_sha256": "4bdf9a7d589c3398453f900f67ee26db0c8d92fd7072f81fc85d32e3ff82c984",
+          "decoded_rgb_sha256": "2e1937c5984b0dcbedf65cc53150360d69784f50d44948ba58787c4ba5cbde68",
+          "mean_absolute_rgb_error": [
+            1.7793059172453705,
+            1.4810628255208333,
+            1.7147135416666666
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167236328125,
+            1.935791015625,
+            2.1930501302083334
+          ]
+        },
+        {
+          "frame": 12,
+          "relative_time": 30.0,
+          "source_png_sha256": "c723f0f3ccb16212c0f5311262e2f72830390893a0fbbc9ce6d5f2dde9a5d97f",
+          "decoded_rgb_sha256": "2ba9d47e9d401c1ca076eda86809a205e509b950bb5703aede5449e5eef36447",
+          "mean_absolute_rgb_error": [
+            1.7686858000578705,
+            1.435915798611111,
+            1.706371166087963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.149796549479167,
+            1.9352620442708333,
+            2.1872802734375
+          ]
+        },
+        {
+          "frame": 13,
+          "relative_time": 32.5,
+          "source_png_sha256": "d8166e182547f0291fb1119721dd0087b3c06a957d0a4d3c858e10f9d52e23e2",
+          "decoded_rgb_sha256": "ac5efab3970b7d9488c09f765d5c6d78e5ed684a02e34f0005d53cd1edb41a4b",
+          "mean_absolute_rgb_error": [
+            1.7587935836226851,
+            1.4702826605902777,
+            1.7005660445601851
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167854817708333,
+            1.9406412760416667,
+            2.1969319661458333
+          ]
+        },
+        {
+          "frame": 14,
+          "relative_time": 35.0,
+          "source_png_sha256": "8c3e88a39d0270ca982e938c80532ff6eb8f08b8555e5c506766706fdd0fadbc",
+          "decoded_rgb_sha256": "043d03a132922f92cd4f9b5ea31b69054e38a48f96abe715eaeb610f10f3a6c7",
+          "mean_absolute_rgb_error": [
+            1.7660734953703703,
+            1.4615813078703703,
+            1.7060682508680556
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1520345052083334,
+            1.9353108723958334,
+            2.187996419270833
+          ]
+        },
+        {
+          "frame": 15,
+          "relative_time": 37.5,
+          "source_png_sha256": "4060c92337f8ced3f62774296bed598eea395f4d56fd1fad2df4752df81d5c96",
+          "decoded_rgb_sha256": "1ca8a931a96f76338c47a9e83b8e9ca2d46c3302552c7eed98840f31f658cd07",
+          "mean_absolute_rgb_error": [
+            1.7631519458912037,
+            1.4831922743055554,
+            1.7134340639467593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16689453125,
+            1.9385416666666666,
+            2.196158854166667
+          ]
+        },
+        {
+          "frame": 16,
+          "relative_time": 40.0,
+          "source_png_sha256": "180973956dbd1b4ea6546fd85c6cccb763a853d5b624a3307debd3880600f154",
+          "decoded_rgb_sha256": "fa4b330d192679b2ec63aa8f617423d1d4f091aafe5fe95b6b1034ad18d68c03",
+          "mean_absolute_rgb_error": [
+            1.7751184534143518,
+            1.4454888237847223,
+            1.7182011357060185
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.150748697916667,
+            1.9342692057291666,
+            2.1879069010416665
+          ]
+        },
+        {
+          "frame": 17,
+          "relative_time": 42.5,
+          "source_png_sha256": "6f3b59143da80de788d89cc258cfa4f6235b93416ed552c1b96ed3a619dfad65",
+          "decoded_rgb_sha256": "f0e6695a8faaa79d93df36691e3ddd817b5940abee7fd0a9fb970a25e1075597",
+          "mean_absolute_rgb_error": [
+            1.7667824074074074,
+            1.4800401475694445,
+            1.7153121383101853
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.165291341145833,
+            1.9373453776041667,
+            2.2002766927083335
+          ]
+        },
+        {
+          "frame": 18,
+          "relative_time": 45.0,
+          "source_png_sha256": "2dbcfd31c8fd778cb2b07ce50d20eeb69e9777499ded3ca1679e07388e66596e",
+          "decoded_rgb_sha256": "3afd0869f88a26f679bc982c62147d369c29fadb512a382f52502f4228f9b00a",
+          "mean_absolute_rgb_error": [
+            1.7672516999421297,
+            1.462792064525463,
+            1.7136375144675926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1521647135416666,
+            1.93447265625,
+            2.1880126953125
+          ]
+        },
+        {
+          "frame": 19,
+          "relative_time": 47.5,
+          "source_png_sha256": "53eaaf3ae7578b30b6fd08b8e5ee028ac81fc083516d9de48cefb304d8713131",
+          "decoded_rgb_sha256": "38a4de45ce880e0a3e02b0efff4508e357065bdc28349056bc25a5095cd48a85",
+          "mean_absolute_rgb_error": [
+            1.7536557798032408,
+            1.4664975766782407,
+            1.7024251302083333
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16611328125,
+            1.9377360026041666,
+            2.1973876953125
+          ]
+        },
+        {
+          "frame": 20,
+          "relative_time": 50.0,
+          "source_png_sha256": "83d6790d607ecfaec52dc9f6b73d186fa876174533a67d093153f6f4d955b612",
+          "decoded_rgb_sha256": "eab21354f6c84211e196760b201058c1c5535b8b960683d9a98c3993d8dce161",
+          "mean_absolute_rgb_error": [
+            1.750728804976852,
+            1.4295907479745371,
+            1.7023310908564815
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1502278645833335,
+            1.9346923828125,
+            2.189347330729167
+          ]
+        },
+        {
+          "frame": 21,
+          "relative_time": 52.5,
+          "source_png_sha256": "fc963257e4db6d5c37297f608d5d36879510cd147b9a63a72552a0864094d7fd",
+          "decoded_rgb_sha256": "b5b16f7f191a2e573f755f4631656c30a2559203d2f001f7118364a21a9e2fc0",
+          "mean_absolute_rgb_error": [
+            1.7408600983796296,
+            1.4643192997685186,
+            1.6947129991319445
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1688639322916665,
+            1.9387532552083333,
+            2.2029134114583333
+          ]
+        },
+        {
+          "frame": 22,
+          "relative_time": 55.0,
+          "source_png_sha256": "5eccb3d23af0c7631de244d57cbf8d81ec186174f70a18093ba87210953f5d78",
+          "decoded_rgb_sha256": "6b87c9d3089b88cd9fd7de4a0a4c4ca80d8ecf589a1138db17b04e98328c0a81",
+          "mean_absolute_rgb_error": [
+            1.7531629774305555,
+            1.448976417824074,
+            1.696950954861111
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.152604166666667,
+            1.9343017578125,
+            2.1905110677083335
+          ]
+        },
+        {
+          "frame": 23,
+          "relative_time": 57.5,
+          "source_png_sha256": "56a5186f9243793db6bcda53f8a8899c146630a576c427c1833f4ab1c2b0ff84",
+          "decoded_rgb_sha256": "85134e8f4f4ff3246b343b1ef845a415ad52aa0321087fb371f6d909223a75f1",
+          "mean_absolute_rgb_error": [
+            1.7491002965856481,
+            1.4624674479166666,
+            1.6997649016203704
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1665445963541665,
+            1.9382731119791667,
+            2.1989339192708335
+          ]
+        },
+        {
+          "frame": 24,
+          "relative_time": 60.0,
+          "source_png_sha256": "f7345aaa334c38e00c2e666ff7b3acc8c3ea63a7b55fca855415410dde01f6e6",
+          "decoded_rgb_sha256": "8150e8cfe49632cf143370c3ec74b25b074d942aa5c057fcd344019edc99eb14",
+          "mean_absolute_rgb_error": [
+            1.7675636574074074,
+            1.437010814525463,
+            1.7066243489583333
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15068359375,
+            1.9347981770833333,
+            2.1896484375
+          ]
+        },
+        {
+          "frame": 25,
+          "relative_time": 62.5,
+          "source_png_sha256": "0a9aa2b650bda6a03f87e649c2bdad8c002e893097089c4dc6a6e2a137645dc2",
+          "decoded_rgb_sha256": "4b82fd28116a7022838036ab246b876aaba444c63521619156a5925179e2c66a",
+          "mean_absolute_rgb_error": [
+            1.7672607421875,
+            1.4759458188657408,
+            1.7116545500578704
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1655924479166666,
+            1.9374267578125,
+            2.2009847005208334
+          ]
+        },
+        {
+          "frame": 26,
+          "relative_time": 65.0,
+          "source_png_sha256": "5882925662ce724d2147d5db557f6c1500e26857480d164c91de5991fa1f254e",
+          "decoded_rgb_sha256": "00718cd605ebe4413787b69912dc72e1430e25595147ffe1d7af668fb77734be",
+          "mean_absolute_rgb_error": [
+            1.7934742115162037,
+            1.475341796875,
+            1.7286024305555556
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.152945963541667,
+            1.9347493489583334,
+            2.1905517578125
+          ]
+        },
+        {
+          "frame": 27,
+          "relative_time": 67.5,
+          "source_png_sha256": "214b3d74e55676d14d1b3c8147df592fb4aa1848b743a365d64451c684b18fa3",
+          "decoded_rgb_sha256": "2663e1f0a715b939767e4c4b126bae71acb493ae197d8a36cfdf6e0572ded4d0",
+          "mean_absolute_rgb_error": [
+            1.7960404007523147,
+            1.4953016493055555,
+            1.7385923032407407
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.166520182291667,
+            1.9378987630208333,
+            2.1977864583333333
+          ]
+        },
+        {
+          "frame": 28,
+          "relative_time": 70.0,
+          "source_png_sha256": "861b5de839e3ab6d3283dd6137d24bba6dd03f71cb27d228829ae3b512880465",
+          "decoded_rgb_sha256": "b046b74fb09ecdf11c014635a6d3a73903687a8e92e90d921455ed7b302a0a67",
+          "mean_absolute_rgb_error": [
+            1.8047489872685185,
+            1.4606363932291666,
+            1.7355604383680556
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1503173828125,
+            1.9344075520833333,
+            2.1878092447916666
+          ]
+        },
+        {
+          "frame": 29,
+          "relative_time": 72.5,
+          "source_png_sha256": "b8a264f180b89c7731eb4849ae5ee4010eb346fc460724e3ad34572162eed9ad",
+          "decoded_rgb_sha256": "5187c75205fb76916ee4b3a36b19f755671860343861a7b8e987a60ffd120460",
+          "mean_absolute_rgb_error": [
+            1.7800871672453704,
+            1.4809733072916667,
+            1.7226336443865742
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1687581380208334,
+            1.9394694010416667,
+            2.1938883463541665
+          ]
+        },
+        {
+          "frame": 30,
+          "relative_time": 75.0,
+          "source_png_sha256": "ac02b66a23439c5608f5a8d3043c8966357cc5d5c3397cb6f8c06c6637537bf4",
+          "decoded_rgb_sha256": "df5affdd9542341d39614daca3d53ba63d248d4a39a1d6eb9a0b9ca010bb9150",
+          "mean_absolute_rgb_error": [
+            1.781912796585648,
+            1.4641230830439815,
+            1.7159884982638889
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1520426432291666,
+            1.9345296223958333,
+            2.188338216145833
+          ]
+        },
+        {
+          "frame": 31,
+          "relative_time": 77.5,
+          "source_png_sha256": "7fb65b07a91ea591e12141435e3b268372348b6c67e4bfddacdfcc717fd185e8",
+          "decoded_rgb_sha256": "d923f49e8e5a7fd3ab276042a97a840348b45e64d741e4a66c007df2b5cffd9c",
+          "mean_absolute_rgb_error": [
+            1.7737892433449074,
+            1.4746355975115741,
+            1.7193277994791667
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1661376953125,
+            1.9376139322916666,
+            2.196525065104167
+          ]
+        },
+        {
+          "frame": 32,
+          "relative_time": 80.0,
+          "source_png_sha256": "7e54a3d00aedd1b9e1db0488cd0904c6ae99c6ecd4e7a267d29fa65284225730",
+          "decoded_rgb_sha256": "8ace32a70d65a2a081e02f31f1b071ce9f7ec3e649dbed1681bafc2d97567733",
+          "mean_absolute_rgb_error": [
+            1.7883237485532408,
+            1.4439326533564816,
+            1.7215467664930555
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.150341796875,
+            1.9343505859375,
+            2.1891357421875
+          ]
+        },
+        {
+          "frame": 33,
+          "relative_time": 82.5,
+          "source_png_sha256": "fc94924d96070cb03061b944d0fd7116c26f732025b5e76f231cc2c2eef53abb",
+          "decoded_rgb_sha256": "5f20a37974be725f2dd5d8c211d078a514f90fdfc46f6399079aeae15e4e2bd7",
+          "mean_absolute_rgb_error": [
+            1.7841236255787036,
+            1.4798195167824073,
+            1.7182165075231481
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16591796875,
+            1.9374104817708333,
+            2.2005940755208333
+          ]
+        },
+        {
+          "frame": 34,
+          "relative_time": 85.0,
+          "source_png_sha256": "7deaf13ba500a536ffa97b5b0456c771754bed2316c43d97751f39c5aae4a964",
+          "decoded_rgb_sha256": "8fbfa6284d4b647ea7f2f2c13f73f694182e2120be9bff38ab738b745d8a0690",
+          "mean_absolute_rgb_error": [
+            1.7899061414930555,
+            1.4646936487268518,
+            1.7162814670138888
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1524088541666666,
+            1.9339518229166666,
+            2.189404296875
+          ]
+        },
+        {
+          "frame": 35,
+          "relative_time": 87.5,
+          "source_png_sha256": "3157bb0225b766de3cadb0a57e793ac06ed886138386e8106e19062eee53c977",
+          "decoded_rgb_sha256": "a21994f00837d11f87cb9fde87fd2374dc72492379b46f8f27c5a67330e892db",
+          "mean_absolute_rgb_error": [
+            1.7781620732060186,
+            1.4716751663773149,
+            1.7092384620949075
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1654703776041666,
+            1.9385904947916666,
+            2.19931640625
+          ]
+        },
+        {
+          "frame": 36,
+          "relative_time": 90.0,
+          "source_png_sha256": "c4da5ca044226a4d14535e3cadf3d1714f09ddd432595d7b2448eb077ebe1834",
+          "decoded_rgb_sha256": "445ec63edb71d1eb244346ad655081e18cb1a8b1ab2a403fea1f0c68470b82be",
+          "mean_absolute_rgb_error": [
+            1.7848253038194444,
+            1.4440456814236111,
+            1.7159116391782407
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1504150390625,
+            1.9346028645833333,
+            2.1886393229166665
+          ]
+        },
+        {
+          "frame": 37,
+          "relative_time": 92.5,
+          "source_png_sha256": "692e370fbf587df511063130d62288f2b8ada5b154faecfb69bf86e4c5bbe6ee",
+          "decoded_rgb_sha256": "f12947a0de32454eb420b294dcdaae547cbb777c660834f8adb3d064364ab5d2",
+          "mean_absolute_rgb_error": [
+            1.7708333333333333,
+            1.4733968098958334,
+            1.7102439597800927
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1600016276041667,
+            1.9358968098958333,
+            2.197705078125
+          ]
+        },
+        {
+          "frame": 38,
+          "relative_time": 95.0,
+          "source_png_sha256": "4cf47105072b55f34ca1f6a17889517ff91ef11f2380de538604463dd5a08517",
+          "decoded_rgb_sha256": "397b4f1ed00bd4e5d4b07cb19c8b31923488e860fdb3529d576bb7bb65c2fdde",
+          "mean_absolute_rgb_error": [
+            1.781666847511574,
+            1.4626862702546297,
+            1.709763816550926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1529541015625,
+            1.9349527994791667,
+            2.1889078776041666
+          ]
+        },
+        {
+          "frame": 39,
+          "relative_time": 97.5,
+          "source_png_sha256": "7f654e6e313db2e9df75d90896c78fdc545c66243e0e1c8f59aba6939fbc5391",
+          "decoded_rgb_sha256": "9044a0934df896a3d896e0b5cda79690ac9e834cc105c982c7cc593c8732d7b3",
+          "mean_absolute_rgb_error": [
+            1.7628363715277777,
+            1.4638328269675926,
+            1.7041892722800926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1564127604166665,
+            1.9362874348958334,
+            2.1919759114583335
+          ]
+        },
+        {
+          "frame": 40,
+          "relative_time": 100.0,
+          "source_png_sha256": "def4fa0d3447d241a86b3cb206719d66a97a0d137a5b3eab16c92ddd1fdd7675",
+          "decoded_rgb_sha256": "381503a4a4aa53af666bb032897ee5b6fec0bc49333e6756951d209005974d50",
+          "mean_absolute_rgb_error": [
+            1.7781729239004629,
+            1.4324896918402779,
+            1.7050898799189815
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1499918619791667,
+            1.932861328125,
+            2.1890218098958334
+          ]
+        },
+        {
+          "frame": 41,
+          "relative_time": 102.5,
+          "source_png_sha256": "4751909888e1b4977986c2d0c41a163877f676d7b69cfc62d432ce1b7344978f",
+          "decoded_rgb_sha256": "5d5c911583882f9fdf9a6fe13962127b2b34236f469b8973d92c80775bc8929f",
+          "mean_absolute_rgb_error": [
+            1.7698052300347222,
+            1.4671585648148149,
+            1.7081145109953704
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1683349609375,
+            1.9375813802083333,
+            2.195442708333333
+          ]
+        },
+        {
+          "frame": 42,
+          "relative_time": 105.0,
+          "source_png_sha256": "0754286a87b191b546ac4427f75b65621ce791a15f23284c5ad99663d3517d8f",
+          "decoded_rgb_sha256": "71c3ee5ea54051bb9a6e59db9eff71f087bbc50bff6bbf1e5a9bbaf65cd2fac6",
+          "mean_absolute_rgb_error": [
+            1.7880696614583333,
+            1.4579933449074074,
+            1.7151294849537038
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.152482096354167,
+            1.9335205078125,
+            2.1898193359375
+          ]
+        },
+        {
+          "frame": 43,
+          "relative_time": 107.5,
+          "source_png_sha256": "6c55a2a5143d4fcd5e22d391c9f902ad15c319fcdd45f1619387cec3975dbd7d",
+          "decoded_rgb_sha256": "0e79a2c3ba1a2abf3cd24b590d9518c23bce7b9458f02f492e62f515d7085332",
+          "mean_absolute_rgb_error": [
+            1.7772063078703704,
+            1.4702193648726851,
+            1.7127595124421295
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164558919270833,
+            1.93486328125,
+            2.19208984375
+          ]
+        },
+        {
+          "frame": 44,
+          "relative_time": 110.0,
+          "source_png_sha256": "19247f71fc2553eb28aa9a041139a6e0e33c3bd80b0baf4117ff2af1c8b7ba8e",
+          "decoded_rgb_sha256": "851d02af933991c939876bb63ee846ad1bc2b93e090dbd379c9c5a2352a92df0",
+          "mean_absolute_rgb_error": [
+            1.7868281611689816,
+            1.4403464988425927,
+            1.7177001953125
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1519775390625,
+            1.93544921875,
+            2.191015625
+          ]
+        },
+        {
+          "frame": 45,
+          "relative_time": 112.5,
+          "source_png_sha256": "6a46740f0f073b460c9e57a86db3f940af7a02abb07d38030511c676ca65b7fb",
+          "decoded_rgb_sha256": "de934de431418e0fc5d63f3ce19ea63c86deda14969bc9881d63ec69500e5965",
+          "mean_absolute_rgb_error": [
+            1.7700023509837963,
+            1.4658356843171296,
+            1.708792679398148
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1673828125,
+            1.9402018229166667,
+            2.195792643229167
+          ]
+        },
+        {
+          "frame": 46,
+          "relative_time": 115.0,
+          "source_png_sha256": "9bfb5423e164e22a795a0b10fa8a56217c7bb6d9f62983b4837914fb26989230",
+          "decoded_rgb_sha256": "2af3c56a419a1efd782a4c3cd8ab80761f860f878caf366a3b84c18fa3fb542c",
+          "mean_absolute_rgb_error": [
+            1.775093135127315,
+            1.4554814091435184,
+            1.7094102647569445
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1519775390625,
+            1.9338623046875,
+            2.1898518880208333
+          ]
+        },
+        {
+          "frame": 47,
+          "relative_time": 117.5,
+          "source_png_sha256": "290d6874ce9273c0bb3ac110e73408a03a9f0063d86cd7785588c8c90f25981a",
+          "decoded_rgb_sha256": "9f91f05932ab8497b369049b9ebc972daae826841953a31c6b24866f43c20bce",
+          "mean_absolute_rgb_error": [
+            1.7634159794560185,
+            1.4607042100694445,
+            1.7062536168981481
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1677815755208334,
+            1.9361165364583333,
+            2.192732747395833
+          ]
+        },
+        {
+          "frame": 48,
+          "relative_time": 120.0,
+          "source_png_sha256": "a42c19dc6ac76bd389d160d2eb1e355b9e16a07516d971658e1172fd40bcefba",
+          "decoded_rgb_sha256": "83adaac62f2833931cd022d4285d1debb691cd9ea288faa4c46e91ce242fe46b",
+          "mean_absolute_rgb_error": [
+            1.7851372612847223,
+            1.4371889467592593,
+            1.716672996238426
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.149772135416667,
+            1.9322428385416666,
+            2.1882649739583333
+          ]
+        },
+        {
+          "frame": 49,
+          "relative_time": 122.5,
+          "source_png_sha256": "4c1f323782ec4e960b78818b49b4785ac6a096b7b95bb9f7d3b865f7c6aa9a6d",
+          "decoded_rgb_sha256": "e4d6987abbb69d8480f662fe1b6f070522f9f97f2964cc7e60ee8eabc8a35cd3",
+          "mean_absolute_rgb_error": [
+            1.7747441044560186,
+            1.4650300202546296,
+            1.7102991174768518
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1676025390625,
+            1.938818359375,
+            2.1940022786458333
+          ]
+        },
+        {
+          "frame": 50,
+          "relative_time": 125.0,
+          "source_png_sha256": "3ae424b0edb0390a32977509ff4f07ec76f13c946b75af94fb0e2578e87d86b7",
+          "decoded_rgb_sha256": "271599fe7e37beafdb3ca399416e59dc1082927eaa5e37b8e896cdfdbd88d7a6",
+          "mean_absolute_rgb_error": [
+            1.7826768663194446,
+            1.4561414930555556,
+            1.7082628038194445
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1521402994791665,
+            1.9330973307291666,
+            2.1890380859375
+          ]
+        },
+        {
+          "frame": 51,
+          "relative_time": 127.5,
+          "source_png_sha256": "6f9597c4b8748c9e84b97c0e7058a037e958769eb67a2e11db56312d9e04f2cf",
+          "decoded_rgb_sha256": "12db53c08a56422c91c8d2971df7922ec9597c69feb2d1b9d27c261d0e37fc89",
+          "mean_absolute_rgb_error": [
+            1.7752748842592592,
+            1.4625388816550926,
+            1.706979709201389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1666666666666665,
+            1.9355550130208334,
+            2.1936604817708334
+          ]
+        },
+        {
+          "frame": 52,
+          "relative_time": 130.0,
+          "source_png_sha256": "539c4ab9ffbb61f21184f9beca853e35517a7c2d14f302984fe43ea9bbc0a99f",
+          "decoded_rgb_sha256": "4c877aaf7efd6ff7538aad14c9ac28056e8057ab79980016f956353e7e1620c2",
+          "mean_absolute_rgb_error": [
+            1.7793122468171296,
+            1.4281656901041666,
+            1.704540111400463
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1504231770833333,
+            1.932373046875,
+            2.18916015625
+          ]
+        },
+        {
+          "frame": 53,
+          "relative_time": 132.5,
+          "source_png_sha256": "f42378c814fe6b41346f1e7ebd73272705e1f4202db5d7d9ffba45f13f5eeb3d",
+          "decoded_rgb_sha256": "52c09ffb30818e4a5395a19023cbe100ee577d6d4afaed6e439d10d781ccdee5",
+          "mean_absolute_rgb_error": [
+            1.771919307002315,
+            1.4626112196180556,
+            1.7074291087962963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1686767578125,
+            1.937548828125,
+            2.196337890625
+          ]
+        },
+        {
+          "frame": 54,
+          "relative_time": 135.0,
+          "source_png_sha256": "90332c26268862d86ce5f31ba1c334598b370a8799b22863cf9d289482ea1ed7",
+          "decoded_rgb_sha256": "71578b13b17e2bc24be3d6f76a0a7d9e599f5a59d36e429e943a033a18d1d78c",
+          "mean_absolute_rgb_error": [
+            1.7746681495949075,
+            1.4523048683449074,
+            1.707713939525463
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1529947916666665,
+            1.9330403645833334,
+            2.18994140625
+          ]
+        },
+        {
+          "frame": 55,
+          "relative_time": 137.5,
+          "source_png_sha256": "dbc9005c405f1b854efe8d4d9d3748a9d8c914a4f08f9bd56918167bf0192fc3",
+          "decoded_rgb_sha256": "367449924937753d291f4c1559dbaf5af37086bf032421745e5db995a26068dc",
+          "mean_absolute_rgb_error": [
+            1.7659450954861111,
+            1.4611861617476851,
+            1.7001175491898148
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1677001953125,
+            1.93544921875,
+            2.194099934895833
+          ]
+        },
+        {
+          "frame": 56,
+          "relative_time": 140.0,
+          "source_png_sha256": "755d439db6daac7aceb494fc034a1d71ff441abd0f6e4746c243329acaf3cce5",
+          "decoded_rgb_sha256": "d185d12dee3aecb87d1563194dd9629847a98850807b923af1d95e81ae00eb81",
+          "mean_absolute_rgb_error": [
+            1.7801405164930555,
+            1.435474537037037,
+            1.7087176287615742
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1481526692708335,
+            1.9329752604166666,
+            2.1882080078125
+          ]
+        },
+        {
+          "frame": 57,
+          "relative_time": 142.5,
+          "source_png_sha256": "ed82dc8cc2c83c4715194daa7b812560d81452a384a7b4df448e2ada7363f4e8",
+          "decoded_rgb_sha256": "6b7687f4728bd7205d4b00c677dcf4a1cccba3c5dbef879f7f2794242aa9d0f6",
+          "mean_absolute_rgb_error": [
+            1.7671178747106482,
+            1.4627595124421295,
+            1.706596317997685
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.166373697916667,
+            1.9377685546875,
+            2.1951578776041667
+          ]
+        },
+        {
+          "frame": 58,
+          "relative_time": 145.0,
+          "source_png_sha256": "5d7d62b6f565f9ecc24fe7508599fac2bea806871f22c9900f78ff16849df780",
+          "decoded_rgb_sha256": "2fa3b859d6825fddb2228ce975187c12d7793794d7d05f1e13d3267b950d0d03",
+          "mean_absolute_rgb_error": [
+            1.7783980758101852,
+            1.4550455729166667,
+            1.7099338107638888
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15087890625,
+            1.9338053385416667,
+            2.1890218098958334
+          ]
+        },
+        {
+          "frame": 59,
+          "relative_time": 147.5,
+          "source_png_sha256": "8da19b0ea8299ec220dd4991b2851c112654faa2c3a286a125b05a4f42c0d536",
+          "decoded_rgb_sha256": "14dc1bf63b2332c3fb2cbd953c6e9f0147e429eac35646bee38951b6cd1b4fca",
+          "mean_absolute_rgb_error": [
+            1.7755533854166667,
+            1.4681541160300926,
+            1.7121654369212962
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1662027994791666,
+            1.9355794270833333,
+            2.1921142578125
+          ]
+        },
+        {
+          "frame": 60,
+          "relative_time": 150.0,
+          "source_png_sha256": "ec2e32198524a6d8c401855c21f61fcacdc80d1b0abdd9cdb62c8817bcb5831c",
+          "decoded_rgb_sha256": "d6e18a26fdbe0d5aea801213a0cb119dcacecd422743bd18c766bb3f7d9ac883",
+          "mean_absolute_rgb_error": [
+            1.7855803313078704,
+            1.438162796585648,
+            1.717479564525463
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15,
+            1.9323567708333333,
+            2.1888997395833334
+          ]
+        },
+        {
+          "frame": 61,
+          "relative_time": 152.5,
+          "source_png_sha256": "f0bbf159f7d5cb8048681f427e10ce158929499325c8ca24fc193430aafff31d",
+          "decoded_rgb_sha256": "557d805615b45acaa634a90261fc979494a0a2cf9d032cafa818215418c66078",
+          "mean_absolute_rgb_error": [
+            1.7795997902199074,
+            1.4644323278356481,
+            1.7121934678819444
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1674153645833334,
+            1.9380940755208333,
+            2.1958902994791667
+          ]
+        },
+        {
+          "frame": 62,
+          "relative_time": 155.0,
+          "source_png_sha256": "215eda8df805df15bda03e0150600abc7c73a79d88fd9f16c3e425fd388cf56f",
+          "decoded_rgb_sha256": "a4f46261373e51e52730c6bd003bf529413fca5e5590dc4238ebc4a5a9f3c40a",
+          "mean_absolute_rgb_error": [
+            1.7808168764467593,
+            1.4550383391203703,
+            1.7092230902777779
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15263671875,
+            1.9331705729166666,
+            2.1896321614583334
+          ]
+        },
+        {
+          "frame": 63,
+          "relative_time": 157.5,
+          "source_png_sha256": "d54ee4bc0a41395f755e2430191c75d3d3c52c01216f94fa646558b9580d6063",
+          "decoded_rgb_sha256": "08c93431dc48f07bdbf9b9a94003df184dcb3490540a57ae1f14004ff684fbf9",
+          "mean_absolute_rgb_error": [
+            1.7720603660300926,
+            1.4608461733217593,
+            1.7043077256944446
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.166267903645833,
+            1.9352864583333333,
+            2.193253580729167
+          ]
+        },
+        {
+          "frame": 64,
+          "relative_time": 160.0,
+          "source_png_sha256": "d853c575ec6f0ee9036955450c51f53d617f60f4d48d5ca17fb508ad2835864b",
+          "decoded_rgb_sha256": "82906b6a91d96b34f2342aa60e1c25646bcd86b84b3720602762f9dc6f56f0fb",
+          "mean_absolute_rgb_error": [
+            1.7760498046875,
+            1.4271791811342593,
+            1.7025517216435184
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.151749674479167,
+            1.9326090494791666,
+            2.1900146484375
+          ]
+        },
+        {
+          "frame": 65,
+          "relative_time": 162.5,
+          "source_png_sha256": "b011ba3e4cce8edc3bcb8d7c4c1cc4654eb5644bcf37224a08d00954d9ef77cd",
+          "decoded_rgb_sha256": "8e843267b37b985a37313edabdd955e766688ae2a764278b65245003d35b8896",
+          "mean_absolute_rgb_error": [
+            1.7741871021412037,
+            1.4618580005787036,
+            1.7059072989004629
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.170149739583333,
+            1.9376871744791666,
+            2.1971110026041667
+          ]
+        },
+        {
+          "frame": 66,
+          "relative_time": 165.0,
+          "source_png_sha256": "a78fb8b0e7860cffee10cb1aca6fd7c289ea5b11ad43abb40496bb0afe0ec324",
+          "decoded_rgb_sha256": "4d51155a1327cfba6d9b87c24521ff5e0b5ec991e0706b12d36240bce7a96590",
+          "mean_absolute_rgb_error": [
+            1.7811957465277777,
+            1.4554669415509258,
+            1.7065619574652777
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15419921875,
+            1.9332763671875,
+            2.191023763020833
+          ]
+        },
+        {
+          "frame": 67,
+          "relative_time": 167.5,
+          "source_png_sha256": "697434ffcecfd83d4234a094f9ab9b68934b1bdb37df8b5bfa7b53bacc42d5c3",
+          "decoded_rgb_sha256": "f68f611819165e86f6c5b9a179eee83cb71def9ef5a6d7ec4cce48e1da11001b",
+          "mean_absolute_rgb_error": [
+            1.7740559895833334,
+            1.4617657696759259,
+            1.7016529224537038
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1680582682291667,
+            1.9361328125,
+            2.1954345703125
+          ]
+        },
+        {
+          "frame": 68,
+          "relative_time": 170.0,
+          "source_png_sha256": "48e9ce495a41c7f34c76e1a91c248343e038600417be71a6b5f09f821b9ba398",
+          "decoded_rgb_sha256": "6c2982744e6a7c2402450a07abf90d1999dd267fc346ab089586d42f1fbc88a1",
+          "mean_absolute_rgb_error": [
+            1.7821216724537037,
+            1.4305980541087964,
+            1.7073658130787037
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.149405924479167,
+            1.9324462890625,
+            2.1885498046875
+          ]
+        },
+        {
+          "frame": 69,
+          "relative_time": 172.5,
+          "source_png_sha256": "380aba49f0d8a0224d1011a2e7913ba880229c2e95103a4af1bbdb37032fcc1c",
+          "decoded_rgb_sha256": "e0c7827549a0d53991bd66daab3610a3787eada0dcfb16cd48c264778c550d7b",
+          "mean_absolute_rgb_error": [
+            1.7736626519097223,
+            1.4605486834490742,
+            1.702584273726852
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168326822916667,
+            1.9391276041666667,
+            2.1957275390625
+          ]
+        },
+        {
+          "frame": 70,
+          "relative_time": 175.0,
+          "source_png_sha256": "d8ea19da0d459ad032dadeacea7b8c32484298c170680748be2e9109afdb35bd",
+          "decoded_rgb_sha256": "a4312160382103858e06bdaf6f78766a8e2718d72248c5f06bfba58b7fa20991",
+          "mean_absolute_rgb_error": [
+            1.783254665798611,
+            1.4526059751157407,
+            1.709177879050926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1518798828125,
+            1.9332845052083334,
+            2.1896402994791666
+          ]
+        },
+        {
+          "frame": 71,
+          "relative_time": 177.5,
+          "source_png_sha256": "531bdd85903dba7469cbf954f2356f5a4fe88ddb3092622019d04dde55356412",
+          "decoded_rgb_sha256": "99a58c29f93111454bd18f8ebf1ca9f9da2a37787066cb44f635c44888c1913b",
+          "mean_absolute_rgb_error": [
+            1.7748969184027779,
+            1.4651529947916666,
+            1.7079481336805555
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1663167317708334,
+            1.9364990234375,
+            2.1927083333333335
+          ]
+        },
+        {
+          "frame": 72,
+          "relative_time": 180.0,
+          "source_png_sha256": "795035df6d09f2a1b20769f1437cc1d5f3d4139ed9750e5dad9a7cf32b9dd9b4",
+          "decoded_rgb_sha256": "c7797f6ac5f7ec465f337f5dcc07572cbc5e9a90b50eb39178ae44ba90542a9c",
+          "mean_absolute_rgb_error": [
+            1.7816966869212962,
+            1.434080222800926,
+            1.7108714916087964
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1505615234375,
+            1.9327799479166667,
+            2.1897623697916666
+          ]
+        },
+        {
+          "frame": 73,
+          "relative_time": 182.5,
+          "source_png_sha256": "09221a966b082a3a8ef784b8076e49576b01bc8e486d4ae866b3c00559e1e386",
+          "decoded_rgb_sha256": "3808df73cdfdeefb22751ad1867bb50bfda9da23bb1e5804f8f2fc6d5373f27c",
+          "mean_absolute_rgb_error": [
+            1.7744402850115741,
+            1.458687789351852,
+            1.7073884186921295
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168953450520833,
+            1.9381917317708333,
+            2.1966145833333335
+          ]
+        },
+        {
+          "frame": 74,
+          "relative_time": 185.0,
+          "source_png_sha256": "0e3d13c02517db6f9c8b15619abbd688a3eefaaa684aa578b84f9d510d022bfe",
+          "decoded_rgb_sha256": "670fce52702d4e5dbe533cee73af3279c9d000bafff025b34d70db2dccf3f4d8",
+          "mean_absolute_rgb_error": [
+            1.7865379050925927,
+            1.4513599537037036,
+            1.707760054976852
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.153092447916667,
+            1.933544921875,
+            2.1905192057291667
+          ]
+        },
+        {
+          "frame": 75,
+          "relative_time": 187.5,
+          "source_png_sha256": "7270bb8aa34efcda8e9ef27c21d45d3490cf525e49bdfde38723850730bf4f4e",
+          "decoded_rgb_sha256": "cd34949c5056391561e32d053734bfc999e9d875cb0bf704daa04f4229d6fef0",
+          "mean_absolute_rgb_error": [
+            1.7761338975694445,
+            1.4553313078703705,
+            1.7079454210069445
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1675374348958334,
+            1.9359456380208333,
+            2.19443359375
+          ]
+        },
+        {
+          "frame": 76,
+          "relative_time": 190.0,
+          "source_png_sha256": "5e2d7fb3be2ddde9c571bcd71e5cfe46184ed12eda4f3b2a1c11ffe01553fbd8",
+          "decoded_rgb_sha256": "c98cee260e60989aa70b8172cbf8bebf48091b67467807a24239365ca974941e",
+          "mean_absolute_rgb_error": [
+            1.7825638382523148,
+            1.4309380425347222,
+            1.7108036747685185
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1499674479166666,
+            1.9327718098958333,
+            2.189314778645833
+          ]
+        },
+        {
+          "frame": 77,
+          "relative_time": 192.5,
+          "source_png_sha256": "cd2aecb65559cd08bf1b6f251cb6f012191dea971c24a227ecfa751c69d9cca9",
+          "decoded_rgb_sha256": "c13f0ea9e9d2583cff2d42356917fcee012ffe375fd5836bc90d679263038796",
+          "mean_absolute_rgb_error": [
+            1.7764738859953704,
+            1.460813621238426,
+            1.7056595413773148
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1684895833333333,
+            1.9378987630208333,
+            2.1962076822916665
+          ]
+        },
+        {
+          "frame": 78,
+          "relative_time": 195.0,
+          "source_png_sha256": "8b8b0a262872b513821f2f9e738d1e304bd0f49cf7ed6a293d76e82e4d493350",
+          "decoded_rgb_sha256": "70a7699ca812ec2adb4240d78f899d591ca5b8666a71d3aafe35b117936483cc",
+          "mean_absolute_rgb_error": [
+            1.781002242476852,
+            1.4513129340277777,
+            1.7096137152777777
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1526123046875,
+            1.9336344401041667,
+            2.1905192057291667
+          ]
+        },
+        {
+          "frame": 79,
+          "relative_time": 197.5,
+          "source_png_sha256": "080dc4d6987dc007f7cc7cc7953ffbd77507d12f6de3afa884f13fde1738785f",
+          "decoded_rgb_sha256": "ede7473652f5d34b06c4b764233dbec841bee10a933bf9ce7c3f541f4e027ae4",
+          "mean_absolute_rgb_error": [
+            1.7717890986689815,
+            1.459591109664352,
+            1.7018862123842593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164794921875,
+            1.9346842447916666,
+            2.1926025390625
+          ]
+        },
+        {
+          "frame": 80,
+          "relative_time": 200.0,
+          "source_png_sha256": "61da2c3ac5f912c8c23a399379318aaa2a3c06db4e25afd43134b9f79425a828",
+          "decoded_rgb_sha256": "c88cf88c234eaae0976a1386b955f43035cce01e59a4a92aae5ea508ba18fdae",
+          "mean_absolute_rgb_error": [
+            1.7795066550925926,
+            1.4354031032986112,
+            1.7117006655092593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1519287109375,
+            1.9329915364583334,
+            2.1930419921875
+          ]
+        },
+        {
+          "frame": 81,
+          "relative_time": 202.5,
+          "source_png_sha256": "617c24bf50dca8350f7a64d3822314dc6f6a5755c6b3063c0f8367360d758f16",
+          "decoded_rgb_sha256": "2bcaa88c1bee83fdf0354e09a52779a273f28e3ffcfd6d64ff5811c826ad701d",
+          "mean_absolute_rgb_error": [
+            1.7755172164351851,
+            1.4619755497685185,
+            1.7044424551504629
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1707356770833335,
+            1.9381754557291666,
+            2.1999755859375
+          ]
+        },
+        {
+          "frame": 82,
+          "relative_time": 205.0,
+          "source_png_sha256": "ab925f5132a7f85b948ca88b1307e03dac7fd7c0f7a826b33b9360bd506d9a6e",
+          "decoded_rgb_sha256": "602bfb0b89e56fe8303e86fb8f9c6e280155c814fae31f869e1625125618cc70",
+          "mean_absolute_rgb_error": [
+            1.7824119285300926,
+            1.4551052517361112,
+            1.7089671947337963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1544921875,
+            1.9336344401041667,
+            2.1942545572916665
+          ]
+        },
+        {
+          "frame": 83,
+          "relative_time": 207.5,
+          "source_png_sha256": "c96318aa692dddc3745236f97ff03d90614a8eb96c20af21e3196dbbdad64e21",
+          "decoded_rgb_sha256": "646814d2f5de9a1fc35e4b44d9b30cf4ef89356735cd9ef7f20c5a4f77363a50",
+          "mean_absolute_rgb_error": [
+            1.7751708984375,
+            1.4618534794560185,
+            1.712598560474537
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1665852864583335,
+            1.9352457682291666,
+            2.196150716145833
+          ]
+        },
+        {
+          "frame": 84,
+          "relative_time": 210.0,
+          "source_png_sha256": "83f5d0f7bf73d4b40c182296bcde7a0256f28b8214845a72a025e9f71b149660",
+          "decoded_rgb_sha256": "24cd4809e1a80929f14f7b9a75af108b59b354cf62a32e362f321e9ea261a544",
+          "mean_absolute_rgb_error": [
+            1.7879096137152777,
+            1.4373218677662036,
+            1.7107693142361111
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1521402994791665,
+            1.9351643880208333,
+            2.19287109375
+          ]
+        },
+        {
+          "frame": 85,
+          "relative_time": 212.5,
+          "source_png_sha256": "f79aed5350e75c287b18af5f446a711d28aa8db2b4cae157cb29d9fe2d9d5243",
+          "decoded_rgb_sha256": "836f2f9b6c155cf80acae15052fa5f5a42205661290005b34e05ac3b4067b8ee",
+          "mean_absolute_rgb_error": [
+            1.7760054976851851,
+            1.4651340060763889,
+            1.7114619502314814
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1703287760416665,
+            1.9392496744791667,
+            2.198136393229167
+          ]
+        },
+        {
+          "frame": 86,
+          "relative_time": 215.0,
+          "source_png_sha256": "9385f7ba6b5f98bf529d29a82fc8c76bf9e387ec1e71c4b2abab9a643052286f",
+          "decoded_rgb_sha256": "1a351c5b34732925e5d7fc2a5f858130afac0820ff92847132c4405171281c58",
+          "mean_absolute_rgb_error": [
+            1.7781358506944445,
+            1.4505913628472222,
+            1.7062843605324074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1549397786458333,
+            1.9327799479166667,
+            2.1924072265625
+          ]
+        },
+        {
+          "frame": 87,
+          "relative_time": 217.5,
+          "source_png_sha256": "8124e9e1db813ddd5df09256cc28366cd17d98bc598853e578c9b01836a01c27",
+          "decoded_rgb_sha256": "9aeced72c820c9fd55ba52da27ff7625be52f4ddf9e9bce0b13777600dbf72cc",
+          "mean_absolute_rgb_error": [
+            1.7688087745949075,
+            1.4547037760416666,
+            1.7010244864004629
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.170458984375,
+            1.9348225911458334,
+            2.195052083333333
+          ]
+        },
+        {
+          "frame": 88,
+          "relative_time": 220.0,
+          "source_png_sha256": "aa5413f9d885d02a7bbb4869226cc9e24ef4f7a5e81c2e4418b443785f97e06b",
+          "decoded_rgb_sha256": "2cdbc8fc1a1cd57d6537764d9801aa7a1f0652873db432de4eaff53a67478468",
+          "mean_absolute_rgb_error": [
+            1.7789460358796296,
+            1.4306197554976852,
+            1.7085376880787038
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.151985677083333,
+            1.9332356770833334,
+            2.1921793619791665
+          ]
+        },
+        {
+          "frame": 89,
+          "relative_time": 222.5,
+          "source_png_sha256": "48f9574ad742830a3b7411513fa150f961746ff68c7bf9798810063bcee04e6d",
+          "decoded_rgb_sha256": "0118312d0e5b2420fedd8cbad590b0d766c54cd044dde2e7accfa40bcb547298",
+          "mean_absolute_rgb_error": [
+            1.7679371021412038,
+            1.451880787037037,
+            1.7009494357638888
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1705973307291666,
+            1.9383626302083334,
+            2.19873046875
+          ]
+        },
+        {
+          "frame": 90,
+          "relative_time": 225.0,
+          "source_png_sha256": "d6a383f16211aaf08efcfad8aeeff2a338e08b5d8aac66e65ed9a95ef0cdeab6",
+          "decoded_rgb_sha256": "dab945afe251be291eaeba52db32457727379694e5f2521fdab0c2a93e16ed3b",
+          "mean_absolute_rgb_error": [
+            1.7733271846064815,
+            1.4497983579282407,
+            1.7042579933449074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15380859375,
+            1.9334554036458333,
+            2.1929606119791667
+          ]
+        },
+        {
+          "frame": 91,
+          "relative_time": 227.5,
+          "source_png_sha256": "bc47326c039145d26928d86822b66149409b2c8015710c179b6c5a2a6793466b",
+          "decoded_rgb_sha256": "002f6adb8b7f057755be474788bdbcacb86225d41efc364c0b07284a01cb55f7",
+          "mean_absolute_rgb_error": [
+            1.7730568214699074,
+            1.4595657913773148,
+            1.7038727936921296
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167586263020833,
+            1.936181640625,
+            2.1966878255208333
+          ]
+        },
+        {
+          "frame": 92,
+          "relative_time": 230.0,
+          "source_png_sha256": "5bd1ce56ffa77a52da403887e9fc10bd0f1e8ae91bc2d91aa5c7e87cc1d98d38",
+          "decoded_rgb_sha256": "3114154606c294e505c3e3be5e6d56651fd02787eeb86c42888745cb951ba2a0",
+          "mean_absolute_rgb_error": [
+            1.7850893373842593,
+            1.4372296368634259,
+            1.7153962311921296
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1521321614583333,
+            1.9336669921875,
+            2.191748046875
+          ]
+        },
+        {
+          "frame": 93,
+          "relative_time": 232.5,
+          "source_png_sha256": "922a81d959edde3a0c8071104935be3d2413e123e5ce827606de9150e5659308",
+          "decoded_rgb_sha256": "e7d3035bb5200049d1ee1ff6fbc8638b6561d76b4c98beab434d1d8284535728",
+          "mean_absolute_rgb_error": [
+            1.7798249421296297,
+            1.468919994212963,
+            1.7170636212384258
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169921875,
+            1.9388427734375,
+            2.198974609375
+          ]
+        },
+        {
+          "frame": 94,
+          "relative_time": 235.0,
+          "source_png_sha256": "26257cf3f49bc7dce0cb7d39d6a222a6ed95b15d519fbf465537ab3458cb9a0b",
+          "decoded_rgb_sha256": "318b2d3ccd6f5673dc8ad5a0499551b4a8645450a5af4136f894c8f0a6075618",
+          "mean_absolute_rgb_error": [
+            1.785691550925926,
+            1.4585819950810186,
+            1.7170853226273148
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.154443359375,
+            1.93408203125,
+            2.1925048828125
+          ]
+        },
+        {
+          "frame": 95,
+          "relative_time": 237.5,
+          "source_png_sha256": "5916fe57a15c3fe9210e9faa9669bc4fbf118e3d3eddab4c797841597f965b05",
+          "decoded_rgb_sha256": "2891f5ea1c249d3d425846df324302830291519dde161edcc4d45123dd697d7d",
+          "mean_absolute_rgb_error": [
+            1.781862160011574,
+            1.4658311631944445,
+            1.710934787326389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167586263020833,
+            1.9353678385416666,
+            2.1949951171875
+          ]
+        },
+        {
+          "frame": 96,
+          "relative_time": 240.0,
+          "source_png_sha256": "b8bb5825a7c7976011a0d3181f8dc21f5ef3a5a5ee79b0e06f84c28cb7a8c904",
+          "decoded_rgb_sha256": "8260da9def4c229103a498245b1b2291e5aac9e5e0763d15801e007ce67aa988",
+          "mean_absolute_rgb_error": [
+            1.7966860170717593,
+            1.4505904586226852,
+            1.7227593315972223
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1514078776041665,
+            1.9324381510416666,
+            2.1906331380208335
+          ]
+        },
+        {
+          "frame": 97,
+          "relative_time": 242.5,
+          "source_png_sha256": "28126085cdbaee8ba49df9ab3afad94fb7c5c501407c95be7399738203d13668",
+          "decoded_rgb_sha256": "4869ad30fd6949ffe780161c09389be6f664afbaa17f30145c2aabd8aff89ee5",
+          "mean_absolute_rgb_error": [
+            1.7815818504050926,
+            1.472169777199074,
+            1.7150734230324074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16962890625,
+            1.9371663411458333,
+            2.1978352864583335
+          ]
+        },
+        {
+          "frame": 98,
+          "relative_time": 245.0,
+          "source_png_sha256": "4b985c4be22deb4d098b6d72c6959f8267a3a2c69e78ed702f2b2e24300205e0",
+          "decoded_rgb_sha256": "787d54a3c4184f9a1ed838b806955c28886782b2a590b7a7f45f36d966b22d30",
+          "mean_absolute_rgb_error": [
+            1.7872594762731482,
+            1.4599401403356482,
+            1.7140860098379629
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1538818359375,
+            1.9330810546875,
+            2.1914306640625
+          ]
+        },
+        {
+          "frame": 99,
+          "relative_time": 247.5,
+          "source_png_sha256": "05e8b8fdfb795be8fdff8f851f1783fe44d2e5e0a9384de83ddb2419d639ad3a",
+          "decoded_rgb_sha256": "024cb003b3215d81bf79266d8a29c61e745630d5acee0a66011c7b8c70b10d45",
+          "mean_absolute_rgb_error": [
+            1.780153175636574,
+            1.4742919921875,
+            1.717821361400463
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1679280598958335,
+            1.9357666015625,
+            2.1953857421875
+          ]
+        },
+        {
+          "frame": 100,
+          "relative_time": 250.0,
+          "source_png_sha256": "1ebec939435e9d1b6be66307e51286035ab72f600fa175a4b3f03b918c94fc49",
+          "decoded_rgb_sha256": "77bfcb0c5161598a46206e6e8510a7bb5f9feaa53c62f89944eeb6f799d3d9f1",
+          "mean_absolute_rgb_error": [
+            1.8093623408564814,
+            1.4786286530671295,
+            1.751611328125
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.153580729166667,
+            1.9340657552083333,
+            2.1934244791666666
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "context",
+      "video_sha256": "ff49291297a1f573490a5ad805846f33244550caf6e00a478b67e86820c3f2de",
+      "decoded_frames": 101,
+      "maximum_frame_mean_absolute_rgb_error": 3.392918113425926,
+      "maximum_title_mean_absolute_rgb_error": 2.1997314453125,
+      "frames": [
+        {
+          "frame": 0,
+          "relative_time": 0.0,
+          "source_png_sha256": "731d1168c33c469ea392e6d7f54ef834ffa0e25243a35b30d930801b60a30025",
+          "decoded_rgb_sha256": "a473e4cf95ca8fde47c36fa0812976e0dbbf9306cd65be0e43c3eba6913623d1",
+          "mean_absolute_rgb_error": [
+            2.634541377314815,
+            1.7543068214699074,
+            2.940813982928241
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1588704427083334,
+            1.9382242838541666,
+            2.190169270833333
+          ]
+        },
+        {
+          "frame": 1,
+          "relative_time": 2.5,
+          "source_png_sha256": "eb15db8a503e000e59f0404761282bd50a285b93171facbb80628539210814a5",
+          "decoded_rgb_sha256": "49a8e8b6d1df6b4c7036f121a22c797c322c58c87ec949e6d4ee2a86b1e54708",
+          "mean_absolute_rgb_error": [
+            2.664890769675926,
+            1.7551215277777779,
+            2.978998480902778
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1590250651041667,
+            1.9362874348958334,
+            2.191788736979167
+          ]
+        },
+        {
+          "frame": 2,
+          "relative_time": 5.0,
+          "source_png_sha256": "6549d126e67565d77b44eb136d75877038eeeb486536b14852fd8706e3fe595e",
+          "decoded_rgb_sha256": "d717276312a052d09549b36f34ba29a36d91eb5babb72ab7cee621f5870f6d56",
+          "mean_absolute_rgb_error": [
+            2.7162995515046298,
+            1.7798267505787038,
+            3.0189353660300924
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.158308919270833,
+            1.9359456380208333,
+            2.1892985026041667
+          ]
+        },
+        {
+          "frame": 3,
+          "relative_time": 7.5,
+          "source_png_sha256": "caf4db31b497775be20874658850d4a2cd0253636d7c840038e4f86b105c7dc9",
+          "decoded_rgb_sha256": "ba6487477860fae62e919b349257eed816d3b11ff4b1911e0432837d6ebbd7bb",
+          "mean_absolute_rgb_error": [
+            2.7241834852430555,
+            1.7884720413773147,
+            3.03269947193287
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.158585611979167,
+            1.9341064453125,
+            2.191056315104167
+          ]
+        },
+        {
+          "frame": 4,
+          "relative_time": 10.0,
+          "source_png_sha256": "0e9fd558187e3d4059e815884210a35358b5f53cd9b6c06b7f206f07cbcf07a0",
+          "decoded_rgb_sha256": "39f23fd39974c5126af6dbfbae3252ca5d32b091d172b534e29d8ea4822d886c",
+          "mean_absolute_rgb_error": [
+            2.739771412037037,
+            1.7924867983217592,
+            3.043072735821759
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.15751953125,
+            1.9380289713541667,
+            2.1903889973958335
+          ]
+        },
+        {
+          "frame": 5,
+          "relative_time": 12.5,
+          "source_png_sha256": "24cbaba2a59b071701293d867a4235c17fcab9a9dbcb510b859857bb855f12d9",
+          "decoded_rgb_sha256": "57c9d54d833f91435d50830f9d170fc45402e470cfe083ef05cd253200bbfd62",
+          "mean_absolute_rgb_error": [
+            2.7419741030092593,
+            1.7930510344328703,
+            3.048193359375
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1609537760416666,
+            1.9373372395833333,
+            2.196647135416667
+          ]
+        },
+        {
+          "frame": 6,
+          "relative_time": 15.0,
+          "source_png_sha256": "82961b3ccf252622029849f20c9ba428f2028787a45641f030966f30f1ad739e",
+          "decoded_rgb_sha256": "c5cb44e779c6396855868cf477e2618e093ab8ce57878582ee4ff11d2858afd5",
+          "mean_absolute_rgb_error": [
+            2.7475703486689813,
+            1.804006618923611,
+            3.0701777705439817
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1577718098958334,
+            1.936181640625,
+            2.188330078125
+          ]
+        },
+        {
+          "frame": 7,
+          "relative_time": 17.5,
+          "source_png_sha256": "2d2bc3326344bb26b98dbc1df5238fa8b435e15d17d3dd6458680336fda12d3d",
+          "decoded_rgb_sha256": "5ce037a85cd16536e82c2f5013defff2f213151dc4a7a532baa50128647e627f",
+          "mean_absolute_rgb_error": [
+            2.756690357349537,
+            1.8144829644097222,
+            3.0812165436921295
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1616943359375,
+            1.9363606770833333,
+            2.194677734375
+          ]
+        },
+        {
+          "frame": 8,
+          "relative_time": 20.0,
+          "source_png_sha256": "99b9b04287007f090e3d4fa7d391550a7e9989bf023f9e46ffda9111b81dfe8c",
+          "decoded_rgb_sha256": "c5dcf3ddcbf351154bf8a1484209566c502bd0aadf135ef9ed5b5c12f77ec484",
+          "mean_absolute_rgb_error": [
+            2.768670428240741,
+            1.8180284288194444,
+            3.086892361111111
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1550944010416666,
+            1.9370686848958334,
+            2.18837890625
+          ]
+        },
+        {
+          "frame": 9,
+          "relative_time": 22.5,
+          "source_png_sha256": "e88e81d534c30047fc39df59fb42f78dd091a27a5add62123b2fae8050f1b95e",
+          "decoded_rgb_sha256": "ed6be1fb2f4ff094c4c1e665d110687d9c79bd9efc28dbb96641e6449f841e74",
+          "mean_absolute_rgb_error": [
+            2.7579933449074074,
+            1.8166766131365741,
+            3.080783420138889
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.162858072916667,
+            1.93720703125,
+            2.193375651041667
+          ]
+        },
+        {
+          "frame": 10,
+          "relative_time": 25.0,
+          "source_png_sha256": "e421f5007c2f7fee3a15390e03ce3f03cf4781f200cfed793febd5440a038117",
+          "decoded_rgb_sha256": "d2daf760dfff3a63fe9b99a5305f9cf23cdf312c3cfea1e99e561d06f1d71bcf",
+          "mean_absolute_rgb_error": [
+            2.7550672743055555,
+            1.8147243923611112,
+            3.082745587384259
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1566731770833334,
+            1.9352213541666667,
+            2.190380859375
+          ]
+        },
+        {
+          "frame": 11,
+          "relative_time": 27.5,
+          "source_png_sha256": "23a3f48307c3e83fc0dddaae92513079328bee207bbebde359f35e7664bd0a80",
+          "decoded_rgb_sha256": "cc58633f327f18467e3a4cf248fc2052115c369bb9bece7e3ba36b6c579bceb9",
+          "mean_absolute_rgb_error": [
+            2.7373878761574075,
+            1.8111300998263888,
+            3.0735496238425926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.162589518229167,
+            1.9368896484375,
+            2.1930826822916667
+          ]
+        },
+        {
+          "frame": 12,
+          "relative_time": 30.0,
+          "source_png_sha256": "0ef8357677e24cce72bc1e6e5be9de032a7de5f3eeba36d12041fe657fab7fca",
+          "decoded_rgb_sha256": "70d846e79579ca429d1b9396992cf701a8223d6945b4547311ec355edd40501a",
+          "mean_absolute_rgb_error": [
+            2.7439507378472223,
+            1.8061206958912037,
+            3.0662263093171296
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.156119791666667,
+            1.9372884114583333,
+            2.1882568359375
+          ]
+        },
+        {
+          "frame": 13,
+          "relative_time": 32.5,
+          "source_png_sha256": "6a069463bf0f6a0020a61ae0169081de9bac377efd443f7f508b33c0db07abf8",
+          "decoded_rgb_sha256": "d362c5831cc60d158114c73c4f270724331ae2059cd04043bcdc6a3c9e9815c2",
+          "mean_absolute_rgb_error": [
+            2.750594075520833,
+            1.8106770833333334,
+            3.0734157986111112
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1623942057291665,
+            1.9368001302083333,
+            2.194205729166667
+          ]
+        },
+        {
+          "frame": 14,
+          "relative_time": 35.0,
+          "source_png_sha256": "3b097d1152946c7d32b99bb2c1e2390e98664fd2c78977a7ba1fa4e8f6d62942",
+          "decoded_rgb_sha256": "0d5f3a591be21623b5539efefedff7425b8742d2ab602f788da6c15b2835aceb",
+          "mean_absolute_rgb_error": [
+            2.7642135054976853,
+            1.8098732277199074,
+            3.0817283347800926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.157950846354167,
+            1.9360677083333333,
+            2.18798828125
+          ]
+        },
+        {
+          "frame": 15,
+          "relative_time": 37.5,
+          "source_png_sha256": "9f2852f3f3fd6cf52857f24ab6b2c7ac582b8097fc99361c97be4da455af230b",
+          "decoded_rgb_sha256": "7bc032f588abe192878892df27a5c42cfd2077364fe29e4dfadf5e2a939db9e1",
+          "mean_absolute_rgb_error": [
+            2.7674949363425925,
+            1.8135859736689814,
+            3.082403790509259
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1626790364583335,
+            1.9362955729166667,
+            2.1932373046875
+          ]
+        },
+        {
+          "frame": 16,
+          "relative_time": 40.0,
+          "source_png_sha256": "9a68116e23921e1694fecc135357e903cb47a5bff0a9b22e4941020994b614b3",
+          "decoded_rgb_sha256": "86bd9b9cb8c5f3a3f03a89a907d721425ec3b1901e06e828c937cb5d741a362f",
+          "mean_absolute_rgb_error": [
+            2.7693395543981483,
+            1.8147153501157407,
+            3.081768120659722
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1566487630208333,
+            1.9375162760416667,
+            2.188460286458333
+          ]
+        },
+        {
+          "frame": 17,
+          "relative_time": 42.5,
+          "source_png_sha256": "1556e0fcf41e33cce10ede18a75d044cc97fc0dd5ea368bb267433d2a400e96f",
+          "decoded_rgb_sha256": "8b57908be0dea3eaf3a2417b0b0ea3d047d471ca00e0f207e740cd609ed58c90",
+          "mean_absolute_rgb_error": [
+            2.7630995008680554,
+            1.8156141493055555,
+            3.0858642578125
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1626546223958334,
+            1.9368001302083333,
+            2.1936848958333335
+          ]
+        },
+        {
+          "frame": 18,
+          "relative_time": 45.0,
+          "source_png_sha256": "928cd12ef8bab240d4e2fbe86ef089239eae639c87d9d48600a0d3a7794dc3ae",
+          "decoded_rgb_sha256": "c695293f83f3055eac4f1b90aa96f0f9e34c71e164016ea3ca13f15ae2aeca6b",
+          "mean_absolute_rgb_error": [
+            2.774560546875,
+            1.8234619140625,
+            3.0915898075810184
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.156754557291667,
+            1.9360595703125,
+            2.1892333984375
+          ]
+        },
+        {
+          "frame": 19,
+          "relative_time": 47.5,
+          "source_png_sha256": "4fedf3f70161ad2500b233a6821851ab802deeb59c9642c311514e50de2a09a8",
+          "decoded_rgb_sha256": "ff6a23055011f8ef1a1a9d372eb81141fd55a67eccd01de592bec01f04561d61",
+          "mean_absolute_rgb_error": [
+            2.7808412905092594,
+            1.8254620587384258,
+            3.0987666377314813
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1612955729166665,
+            1.9367024739583334,
+            2.192529296875
+          ]
+        },
+        {
+          "frame": 20,
+          "relative_time": 50.0,
+          "source_png_sha256": "05472e26a2e099a43ab4e913a4ac591b6b36fb6bb2dfb8962f0d63f5d9c3040a",
+          "decoded_rgb_sha256": "9e45e1d9c32dc7740a77d28f1bef129ae2c8fcdea8dc99f809d50bcafcfec4ea",
+          "mean_absolute_rgb_error": [
+            2.775830078125,
+            1.8280201099537037,
+            3.105491355613426
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1573486328125,
+            1.9375732421875,
+            2.189192708333333
+          ]
+        },
+        {
+          "frame": 21,
+          "relative_time": 52.5,
+          "source_png_sha256": "daab5720616499638614ed6390ce882f9c29dbcc59b0d04c285a55a7f8b74cc2",
+          "decoded_rgb_sha256": "6d53089cbb9815cd82fb4f59e15a63fa6a65c4ad26d26f3dadc4e6ca38d6cd1d",
+          "mean_absolute_rgb_error": [
+            2.774797453703704,
+            1.8259467230902777,
+            3.0978199146412035
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1641438802083335,
+            1.9362386067708333,
+            2.1958984375
+          ]
+        },
+        {
+          "frame": 22,
+          "relative_time": 55.0,
+          "source_png_sha256": "0c5cfb9632b3bd7f2aac40eab3fec1ec6de27b15ff436cfdcc7b8b90852647fd",
+          "decoded_rgb_sha256": "b85ae726d152b5ad230c638fd86040adf9483af7d8dacbd51db3ff9850fcb52b",
+          "mean_absolute_rgb_error": [
+            2.766827618634259,
+            1.8279739945023148,
+            3.0966941550925924
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.155900065104167,
+            1.9368082682291667,
+            2.190299479166667
+          ]
+        },
+        {
+          "frame": 23,
+          "relative_time": 57.5,
+          "source_png_sha256": "3ad9979d1b38dd61ac781e6ae41dc12ed9bb98b1d2060c227fe9a5696cb94fba",
+          "decoded_rgb_sha256": "b82f82a74d64b4f1071ae23e9709266a007dd6a4323b32aded9c73e4b41640fd",
+          "mean_absolute_rgb_error": [
+            2.7617612485532406,
+            1.8266049985532407,
+            3.0968361183449074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1629964192708333,
+            1.9356852213541667,
+            2.194474283854167
+          ]
+        },
+        {
+          "frame": 24,
+          "relative_time": 60.0,
+          "source_png_sha256": "493809981952e04d5a4c7f39cf7be3f87a8b874db432446b3853ac55f8add08d",
+          "decoded_rgb_sha256": "31f3140c2b5e49c0ef62d226efbc868565b9e3874bbd54bdcad013ee17ee909d",
+          "mean_absolute_rgb_error": [
+            2.759503399884259,
+            1.819847728587963,
+            3.0909333405671298
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.156608072916667,
+            1.9368815104166666,
+            2.1900227864583335
+          ]
+        },
+        {
+          "frame": 25,
+          "relative_time": 62.5,
+          "source_png_sha256": "65aa1f5dd548d0a725040d771fa5fbb21627088ae02cb25781d6666646613ef5",
+          "decoded_rgb_sha256": "f212e2c00fcc90d43e4b61835463c4ba8b5a32e9f33b07368e18c28b45ac53d5",
+          "mean_absolute_rgb_error": [
+            2.764154730902778,
+            1.8180085358796296,
+            3.088180881076389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164542643229167,
+            1.9364827473958333,
+            2.195174153645833
+          ]
+        },
+        {
+          "frame": 26,
+          "relative_time": 65.0,
+          "source_png_sha256": "741dc7019f2aed05df9f4c619f8f6093a01efe56377d035ff6ab25d39abdf34b",
+          "decoded_rgb_sha256": "2c922e2a2bf9dfdab207ec57faeae476d6168dbfa9e4b3a45047009cb01d2403",
+          "mean_absolute_rgb_error": [
+            2.7741364655671297,
+            1.821414749710648,
+            3.0922227647569445
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1595458984375,
+            1.9365397135416667,
+            2.1908365885416665
+          ]
+        },
+        {
+          "frame": 27,
+          "relative_time": 67.5,
+          "source_png_sha256": "bf69b49fc0a12d6b91f0e742c07e02768f06e3ff10235d6f9be05123058cea69",
+          "decoded_rgb_sha256": "273d4f659d46965948eab58140616cc8532945d0d00e0ace5277988335f38e13",
+          "mean_absolute_rgb_error": [
+            2.784061234085648,
+            1.8300871672453705,
+            3.101778609664352
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164314778645833,
+            1.9368001302083333,
+            2.194930013020833
+          ]
+        },
+        {
+          "frame": 28,
+          "relative_time": 70.0,
+          "source_png_sha256": "f472296047fc0bfb98fd6037c4b89fea7f4007a15011e24d34d74cd46da620c4",
+          "decoded_rgb_sha256": "637fa685dbb9a6bb3fe0f40f98c690f841544fde8ee5efcdd73fc962b70cb521",
+          "mean_absolute_rgb_error": [
+            2.782463469328704,
+            1.8308666087962964,
+            3.101557978877315
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1561930338541666,
+            1.9364095052083334,
+            2.1888020833333335
+          ]
+        },
+        {
+          "frame": 29,
+          "relative_time": 72.5,
+          "source_png_sha256": "5b505b8ac8844c386293e1a571be3009663040b9a0e275d10d2498b5b989818f",
+          "decoded_rgb_sha256": "f37c459ceae1db50f35ec6536a315796979a9cc4ae21f79111355e52c58db350",
+          "mean_absolute_rgb_error": [
+            2.7839463975694443,
+            1.831957103587963,
+            3.108034035011574
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16376953125,
+            1.9363444010416666,
+            2.1959554036458333
+          ]
+        },
+        {
+          "frame": 30,
+          "relative_time": 75.0,
+          "source_png_sha256": "348b8be75f9c03d5819fb2ae795b9381fdcff54e5fd14a04c7a608f55b6659e5",
+          "decoded_rgb_sha256": "0caf6f3c330bd4d038a168344ba0a4c5cac1cd5b26717f5c49854c8e25dbb710",
+          "mean_absolute_rgb_error": [
+            2.7829463252314817,
+            1.8342646846064814,
+            3.1043330439814816
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.157096354166667,
+            1.9376546223958333,
+            2.1908772786458335
+          ]
+        },
+        {
+          "frame": 31,
+          "relative_time": 77.5,
+          "source_png_sha256": "bec5a88b6658192a3457d25c3896745f0934a510ecd730e51ad53fe42451e7fc",
+          "decoded_rgb_sha256": "1b2c89b10cbb04aa9f988bbf6a96af6375bda4a42f97366879e92443abc5b49a",
+          "mean_absolute_rgb_error": [
+            2.784812644675926,
+            1.8338026258680555,
+            3.1100468388310185
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.162581380208333,
+            1.9363037109375,
+            2.195540364583333
+          ]
+        },
+        {
+          "frame": 32,
+          "relative_time": 80.0,
+          "source_png_sha256": "a64e0e2d24fb2c7f26fe8e13996d387b92569157a434de46d6687281fd64a6ca",
+          "decoded_rgb_sha256": "106b97246d82a45d780adc50de744e9f7b9b0442cb1e644398feb9bb34505e4c",
+          "mean_absolute_rgb_error": [
+            2.784959129050926,
+            1.8367603443287037,
+            3.1064570674189813
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1555908203125,
+            1.9367919921875,
+            2.190559895833333
+          ]
+        },
+        {
+          "frame": 33,
+          "relative_time": 82.5,
+          "source_png_sha256": "0c32d38a576c4cddd54b1d3f99cc85a366cb3dba4d5514e2e4391ef47bca9ceb",
+          "decoded_rgb_sha256": "c0f486caa67af10461809b14d365eba6a6354de281408db8d8d422ecbdabd4aa",
+          "mean_absolute_rgb_error": [
+            2.774048755787037,
+            1.8369556568287038,
+            3.1082655164930557
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1642659505208335,
+            1.9356119791666666,
+            2.1977783203125
+          ]
+        },
+        {
+          "frame": 34,
+          "relative_time": 85.0,
+          "source_png_sha256": "64b0bfaccd3865fe111f8752651a6128c05d95bccc9c920d228537dfdd0b1cba",
+          "decoded_rgb_sha256": "1508500d26159d1c93896024cd30b1d6dc77b4a213bebc2a8807ef9ac763941d",
+          "mean_absolute_rgb_error": [
+            2.772950122974537,
+            1.8293538411458334,
+            3.1043701171875
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.155615234375,
+            1.9367024739583334,
+            2.1923095703125
+          ]
+        },
+        {
+          "frame": 35,
+          "relative_time": 87.5,
+          "source_png_sha256": "c07ec116bebcd4e3a4cfda53bc91d8d48dd933aa48e7218d18e59efd2f4b9b5c",
+          "decoded_rgb_sha256": "813a5d1d1dd03396f1f5bb4f82d6e280e4514631d72b201837de01414dddc962",
+          "mean_absolute_rgb_error": [
+            2.768937174479167,
+            1.8265064380787037,
+            3.1021303530092594
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.164599609375,
+            1.9358479817708334,
+            2.194091796875
+          ]
+        },
+        {
+          "frame": 36,
+          "relative_time": 90.0,
+          "source_png_sha256": "eb66bc0fbc355b3a2162ef3adadfcd327ffb512b25c63368b8c3d86c7b71fc27",
+          "decoded_rgb_sha256": "b88bdda7dc27097d2c5abfa6a63baeb3c06362f95dbfa182a375a870f30d4439",
+          "mean_absolute_rgb_error": [
+            2.7710838035300926,
+            1.822462745949074,
+            3.094970703125
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1560302734375,
+            1.936181640625,
+            2.191642252604167
+          ]
+        },
+        {
+          "frame": 37,
+          "relative_time": 92.5,
+          "source_png_sha256": "34929f3bd9315e7afc9927d678cb326c0c13966d8c82d5f5278df632098e85e7",
+          "decoded_rgb_sha256": "1441bafc8ed8f7da703e4ad305bfc97a276490c234f013510ab0166aa33e8b00",
+          "mean_absolute_rgb_error": [
+            2.7748914930555557,
+            1.8201605902777778,
+            3.0936794704861112
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1648518880208334,
+            1.93603515625,
+            2.197526041666667
+          ]
+        },
+        {
+          "frame": 38,
+          "relative_time": 95.0,
+          "source_png_sha256": "670d5402b213ceddb9258f7284fc36d4df11baecacd4f78285f9664977583f95",
+          "decoded_rgb_sha256": "a4891c489e90a06bdd6c69f03fbbfc0aad288075419cc47eb060225cff824f8f",
+          "mean_absolute_rgb_error": [
+            2.777215350115741,
+            1.825858109085648,
+            3.098603877314815
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1568277994791667,
+            1.9367838541666667,
+            2.192862955729167
+          ]
+        },
+        {
+          "frame": 39,
+          "relative_time": 97.5,
+          "source_png_sha256": "79bdc594e67e1c4733dac1c4d4f4af0dfb3c00bc53ac63b9871a6d1906439d3e",
+          "decoded_rgb_sha256": "63696b79cc58fc27210988fb49d401777d52e1ad5c6c21ec6087aca15facf703",
+          "mean_absolute_rgb_error": [
+            2.7868326822916667,
+            1.828908058449074,
+            3.1097077546296297
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1631184895833333,
+            1.9366373697916666,
+            2.1935465494791666
+          ]
+        },
+        {
+          "frame": 40,
+          "relative_time": 100.0,
+          "source_png_sha256": "0c32c2201aabbb14d330c053787caa13b7783f3c7edb0106a747c2c92b2ada19",
+          "decoded_rgb_sha256": "16591688eee49b76c75415de0ec5d1e8e06e1fe13dae3108ac04f7e3d25b6da2",
+          "mean_absolute_rgb_error": [
+            2.792135054976852,
+            1.8406928168402779,
+            3.116937934027778
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.161149088541667,
+            1.9380452473958334,
+            2.1939453125
+          ]
+        },
+        {
+          "frame": 41,
+          "relative_time": 102.5,
+          "source_png_sha256": "ca67d7d4fd7d013320352809f8310d43e6edc4c7c6249860caaa42c11a99515c",
+          "decoded_rgb_sha256": "09fe650e6bbbbbd4930ace1cd84460e5945cce5fcf56f028065c435c024f8a28",
+          "mean_absolute_rgb_error": [
+            2.7938901548032407,
+            1.837228732638889,
+            3.120506908275463
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169539388020833,
+            1.9339925130208333,
+            2.198592122395833
+          ]
+        },
+        {
+          "frame": 42,
+          "relative_time": 105.0,
+          "source_png_sha256": "78dd38bb59d642d7d0953a1837bfd959f42300bd7967e152d6c03d3ffd17d387",
+          "decoded_rgb_sha256": "bb8b17294f762ed56dc5156f88c6dc38837ba55a85510aa72b3560feb0faa730",
+          "mean_absolute_rgb_error": [
+            2.800096752025463,
+            1.8390335648148148,
+            3.1282045717592593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1630533854166667,
+            1.938330078125,
+            2.195182291666667
+          ]
+        },
+        {
+          "frame": 43,
+          "relative_time": 107.5,
+          "source_png_sha256": "eb0b875ae678a191156a0e2d6df3dd47e308718ec6d1ab9f0d8f2494fb7550ff",
+          "decoded_rgb_sha256": "ce5e2b062faa87085a63889411ebb9bc6280760b39a05c7f127d13c9e0e537c8",
+          "mean_absolute_rgb_error": [
+            2.7970784505208335,
+            1.837207935474537,
+            3.1194281684027776
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1696451822916667,
+            1.9347249348958333,
+            2.1967366536458335
+          ]
+        },
+        {
+          "frame": 44,
+          "relative_time": 110.0,
+          "source_png_sha256": "302c4fd76312c500891b2f898cd7c2bb813970047239961d55cf3300d1406fe2",
+          "decoded_rgb_sha256": "693c91b1f660d8cbdc29b21b3ebe880ca08189475fb092e5f858bc353d0f0f9a",
+          "mean_absolute_rgb_error": [
+            2.785983615451389,
+            1.835378689236111,
+            3.1197139033564816
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.159619140625,
+            1.9356852213541667,
+            2.1935221354166665
+          ]
+        },
+        {
+          "frame": 45,
+          "relative_time": 112.5,
+          "source_png_sha256": "40ca1f911643c9fdcd126b47973743ed281cefbed8786ae811ee566c285406de",
+          "decoded_rgb_sha256": "5b16db990aef9a65754697f03b989dd8632b865efc33ade9f1e053ebd10bee5d",
+          "mean_absolute_rgb_error": [
+            2.7833586516203703,
+            1.8371862340856482,
+            3.1216371889467593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1643636067708334,
+            1.9353190104166667,
+            2.195166015625
+          ]
+        },
+        {
+          "frame": 46,
+          "relative_time": 115.0,
+          "source_png_sha256": "543a3cc834d8d7e5688510d32a7b7bb2e69b631871c48ceca00abc3247e3aff6",
+          "decoded_rgb_sha256": "b89d459490b6f3cfb2d344578548309b374d58057d0c27fd685c71047707a14b",
+          "mean_absolute_rgb_error": [
+            2.788332790798611,
+            1.839403392650463,
+            3.1286955656828703
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1589599609375,
+            1.9353597005208334,
+            2.192635091145833
+          ]
+        },
+        {
+          "frame": 47,
+          "relative_time": 117.5,
+          "source_png_sha256": "e3c2d4213febc1664aaa281f03bc048cbddae2879accf5db00092bcdffd16909",
+          "decoded_rgb_sha256": "303e1b25a58f95a46c1a7f3c74aca74c502b095d4db1a7107d92e102f6a67526",
+          "mean_absolute_rgb_error": [
+            2.7851019965277777,
+            1.8355568214699074,
+            3.1203712745949073
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168221028645833,
+            1.933154296875,
+            2.1951009114583333
+          ]
+        },
+        {
+          "frame": 48,
+          "relative_time": 120.0,
+          "source_png_sha256": "fede9e9070b92b1bac653f3aed0ddde7bc3dfc80231b866dbca076f8bd09931d",
+          "decoded_rgb_sha256": "3d93f9fdddfe4a91abe459edc7f4fc00d68f6d873db930f35a531e9bec34107f",
+          "mean_absolute_rgb_error": [
+            2.775490089699074,
+            1.8293086299189816,
+            3.117214626736111
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1636555989583335,
+            1.9369954427083333,
+            2.1960774739583333
+          ]
+        },
+        {
+          "frame": 49,
+          "relative_time": 122.5,
+          "source_png_sha256": "b8f4653dc8433f9b1919b87dad686614bff09080abfc2bcf3fbc0dae5fecc114",
+          "decoded_rgb_sha256": "32b46010fe53fb90766664892612466067793a802ade77b46dd73ac6ca448a6b",
+          "mean_absolute_rgb_error": [
+            2.771014178240741,
+            1.8254503038194445,
+            3.1047987196180555
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1685465494791667,
+            1.9345540364583333,
+            2.197867838541667
+          ]
+        },
+        {
+          "frame": 50,
+          "relative_time": 125.0,
+          "source_png_sha256": "01ac09859bee932794e67f3ce2fc6a8d39f6c34ea2a425c8ecf1e35c9f5376ab",
+          "decoded_rgb_sha256": "956323324dcca24ced1341186dce85adf362022f6654c554d2a5f0e2429c123b",
+          "mean_absolute_rgb_error": [
+            2.781226490162037,
+            1.8305401837384259,
+            3.112934027777778
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.162369791666667,
+            1.93671875,
+            2.1966796875
+          ]
+        },
+        {
+          "frame": 51,
+          "relative_time": 127.5,
+          "source_png_sha256": "ce40f73243076ec7d3100b358a2f8a802b09c757e3a6e9333dd6811672e841ee",
+          "decoded_rgb_sha256": "487dcef86eb784213fad7a7b098d8ee26dd3a0a4835b81c61fde5c66e70bca8f",
+          "mean_absolute_rgb_error": [
+            2.7828007450810186,
+            1.8365804036458333,
+            3.1230043764467594
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169083658854167,
+            1.9347005208333334,
+            2.1960774739583333
+          ]
+        },
+        {
+          "frame": 52,
+          "relative_time": 130.0,
+          "source_png_sha256": "163ca05b42be9dfc85fa4712a134a5b48d50077567343716c85fd81547605528",
+          "decoded_rgb_sha256": "c628d8ea0dba8647b56bde7ac17637bff479e6e81b64becb82baff0dcc1a0836",
+          "mean_absolute_rgb_error": [
+            2.7894956235532407,
+            1.8384738498263888,
+            3.122653537326389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1601318359375,
+            1.9379720052083333,
+            2.194474283854167
+          ]
+        },
+        {
+          "frame": 53,
+          "relative_time": 132.5,
+          "source_png_sha256": "4dba9151ca6fcbf9df777d5ce0fb328e34048ae6e6a0a0282afd1075a94183eb",
+          "decoded_rgb_sha256": "5fec20210a73a75272312e6b457d6ecfa4cb32669c51ffa89ecc14c606709133",
+          "mean_absolute_rgb_error": [
+            2.7988416883680554,
+            1.8418384693287038,
+            3.131986038773148
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168709309895833,
+            1.9357421875,
+            2.1979085286458333
+          ]
+        },
+        {
+          "frame": 54,
+          "relative_time": 135.0,
+          "source_png_sha256": "5338d1486e9bd820ad76e7baf3164e7de950319b2753b4a756c41d7854757a3f",
+          "decoded_rgb_sha256": "19a0a516caf99508a3999e76bed6ce9fa36f17535c84be3c2995e721bfb04a55",
+          "mean_absolute_rgb_error": [
+            2.786330837673611,
+            1.8352927879050926,
+            3.128903537326389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.162467447916667,
+            1.937255859375,
+            2.195817057291667
+          ]
+        },
+        {
+          "frame": 55,
+          "relative_time": 137.5,
+          "source_png_sha256": "1c0e1180d6bf0a1f2a5e2a32dde8598a76502aac467e61a661711e020f468e3e",
+          "decoded_rgb_sha256": "f162a2f21dfc48c8082b29fef1e6a4eb3cd3268cfc31ebac3b1f64434e5b3d82",
+          "mean_absolute_rgb_error": [
+            2.7820674189814816,
+            1.8292109736689814,
+            3.1122947410300927
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1688639322916665,
+            1.9344482421875,
+            2.1985107421875
+          ]
+        },
+        {
+          "frame": 56,
+          "relative_time": 140.0,
+          "source_png_sha256": "f538b5f70cb237c3ab49840420364b7bdb80d4a41dfab1be0ab4e25dd87a77d4",
+          "decoded_rgb_sha256": "96476b0e583d47050517a4fca5ca71dc7fa9450e100a7ba90a671d5ac37987e2",
+          "mean_absolute_rgb_error": [
+            2.7738751446759258,
+            1.8281439887152777,
+            3.117914496527778
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1594482421875,
+            1.9369140625,
+            2.1950113932291666
+          ]
+        },
+        {
+          "frame": 57,
+          "relative_time": 142.5,
+          "source_png_sha256": "597cedfe495aaab5d0dbf7e1ee8419c120b702ff1f983da011c857e0ab1660a8",
+          "decoded_rgb_sha256": "0385865a38f6515291fea360f8f00549dbfe831b1e655f59649a1e136dd1119b",
+          "mean_absolute_rgb_error": [
+            2.7824408637152778,
+            1.8336371527777777,
+            3.1263563368055554
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.166129557291667,
+            1.9346028645833333,
+            2.1947998046875
+          ]
+        },
+        {
+          "frame": 58,
+          "relative_time": 145.0,
+          "source_png_sha256": "5542158b294a23c52883e627319561de3140101142852b0a21d96bf50c2f5566",
+          "decoded_rgb_sha256": "f2003f73812387f6019e04e9e46392c6a69648d34f81e25db0d109a5c5bf4252",
+          "mean_absolute_rgb_error": [
+            2.7807110821759258,
+            1.837039749710648,
+            3.1300464771412035
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1596272786458335,
+            1.9371744791666667,
+            2.195418294270833
+          ]
+        },
+        {
+          "frame": 59,
+          "relative_time": 147.5,
+          "source_png_sha256": "fdffda35c699611d390c3b2a237d34b8ddcc92cd8b867441f9d085ebf34f2660",
+          "decoded_rgb_sha256": "f7d69759caff6878b54bf31074338566149f11e1da09de67d3641a82d2472460",
+          "mean_absolute_rgb_error": [
+            2.772453703703704,
+            1.832151511863426,
+            3.1248200593171296
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168440755208333,
+            1.93408203125,
+            2.1985270182291665
+          ]
+        },
+        {
+          "frame": 60,
+          "relative_time": 150.0,
+          "source_png_sha256": "70d3c3d4039e730122af776d9f7cb0b972c10f3957987f8d5dd3813003e9a965",
+          "decoded_rgb_sha256": "b28184087558ba8548b67e4dc610bae5f819a9956b58b8070cb72cf2c107c890",
+          "mean_absolute_rgb_error": [
+            2.7839744285300925,
+            1.8368462456597223,
+            3.1280418113425927
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1628092447916667,
+            1.9360107421875,
+            2.1946207682291665
+          ]
+        },
+        {
+          "frame": 61,
+          "relative_time": 152.5,
+          "source_png_sha256": "e926fb08f0a3bb602942a9bdc4d342e4a8e426f7f4ccfc78e72e9b089fdf8950",
+          "decoded_rgb_sha256": "bc311663def854d3a93c009e1c9ca9841eda2849ee9707e0c1d7034100d69814",
+          "mean_absolute_rgb_error": [
+            2.7916558159722222,
+            1.8390263310185184,
+            3.131476960358796
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.170703125,
+            1.9344075520833333,
+            2.195182291666667
+          ]
+        },
+        {
+          "frame": 62,
+          "relative_time": 155.0,
+          "source_png_sha256": "d07fc89c4f1210e841951cd2e4cd15f93dec0b8ed7720eaa9d7ff029a70299da",
+          "decoded_rgb_sha256": "d270d7366e34096c293a1d500caaf189e8e20b2ad0a58c632cf2c225e0d9fb0b",
+          "mean_absolute_rgb_error": [
+            2.793337673611111,
+            1.8401177300347222,
+            3.1313865379050925
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1629150390625,
+            1.9362630208333333,
+            2.1954345703125
+          ]
+        },
+        {
+          "frame": 63,
+          "relative_time": 157.5,
+          "source_png_sha256": "0a4c8036e96207973e2b26a3cfb90af22037d16143016ee33e4e0422cafb9cf8",
+          "decoded_rgb_sha256": "214d0e6b6a6415120f41af72afa20aded30346ab0b2c10501d2055f7c5f0e910",
+          "mean_absolute_rgb_error": [
+            2.798211443865741,
+            1.8446216724537037,
+            3.1298927589699073
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169694010416667,
+            1.9347981770833333,
+            2.1983968098958333
+          ]
+        },
+        {
+          "frame": 64,
+          "relative_time": 160.0,
+          "source_png_sha256": "a5c7eb705ee0ce478b141c0bf7b78c6273f30bda4de830ff1dffbb549b9c05d2",
+          "decoded_rgb_sha256": "6a9d0b86eb142a2befb5db40a7b0e884e324b4aeff6a8383eb7e49aa3d9354b9",
+          "mean_absolute_rgb_error": [
+            2.800045211226852,
+            1.8468813295717592,
+            3.1423204210069446
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16298828125,
+            1.9381917317708333,
+            2.1960774739583333
+          ]
+        },
+        {
+          "frame": 65,
+          "relative_time": 162.5,
+          "source_png_sha256": "35600e16289c0bb3da7126bb3f28dafe473a4dad6ba2853bd48a845cfa787a82",
+          "decoded_rgb_sha256": "1b767aebaac54df79d504d6a64a13179b9943f5b7d12cc44deeaebb8bd6142ef",
+          "mean_absolute_rgb_error": [
+            2.796461769386574,
+            1.8416974103009258,
+            3.137377025462963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1716634114583333,
+            1.9358235677083333,
+            2.198136393229167
+          ]
+        },
+        {
+          "frame": 66,
+          "relative_time": 165.0,
+          "source_png_sha256": "d35521715d35182ecab1829bfb8b46cfc0c58bff45b9ef4a5eb19f66f531f3ab",
+          "decoded_rgb_sha256": "d46bb9876dc77c1d128dffcc518d3497f61dee698782a795e7b94387112d6618",
+          "mean_absolute_rgb_error": [
+            2.7894865813078704,
+            1.837840892650463,
+            3.1287986472800924
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1641031901041665,
+            1.9366617838541667,
+            2.1957356770833334
+          ]
+        },
+        {
+          "frame": 67,
+          "relative_time": 167.5,
+          "source_png_sha256": "04cf19494614ba2c519fadb04fd53cf8a9c268fb458ee16b7a98da1dabe9486b",
+          "decoded_rgb_sha256": "9d344d65fa66dbc2d50780ce67967957210faa0e0ed5f1512c77a20e7044f1e1",
+          "mean_absolute_rgb_error": [
+            2.7893780743634258,
+            1.8382667824074075,
+            3.132547562210648
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.170296223958333,
+            1.9353678385416666,
+            2.199576822916667
+          ]
+        },
+        {
+          "frame": 68,
+          "relative_time": 170.0,
+          "source_png_sha256": "ae9caa789225d9bad0a60cf0e37f4e7ffe5ac98fe9b4cff17969d695061da8b2",
+          "decoded_rgb_sha256": "f56c6eb6738b165677461320a59bd961acf0f15b6d17c5619506379ae9662e1f",
+          "mean_absolute_rgb_error": [
+            2.792086226851852,
+            1.8434850622106482,
+            3.1419325086805556
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1608235677083334,
+            1.9375895182291667,
+            2.1928955078125
+          ]
+        },
+        {
+          "frame": 69,
+          "relative_time": 172.5,
+          "source_png_sha256": "0194e138fd96a332e9bb5a4145640ecd46090eb108cf9f3edf91f7a29729697d",
+          "decoded_rgb_sha256": "daaf00bc3d2e4e080418f23d959befc1759e146e72ea501754ef8a895ae369ec",
+          "mean_absolute_rgb_error": [
+            2.791334816261574,
+            1.8403962311921296,
+            3.1392523871527778
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.168562825520833,
+            1.9349934895833334,
+            2.194482421875
+          ]
+        },
+        {
+          "frame": 70,
+          "relative_time": 175.0,
+          "source_png_sha256": "6621ae986436c0683d4885924dd7d70d11ba0f125c958dda52127e265455d7a0",
+          "decoded_rgb_sha256": "995836086eed78a8ece670ce7acf4f2709a9aa58bf0d543cf9eb96db6d654cb7",
+          "mean_absolute_rgb_error": [
+            2.78501880787037,
+            1.8416196469907407,
+            3.1362964771412036
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16015625,
+            1.9379475911458333,
+            2.1927734375
+          ]
+        },
+        {
+          "frame": 71,
+          "relative_time": 177.5,
+          "source_png_sha256": "e9df90405e080089e33541cbe0543267646f9cb9b1add43ea31e0c494cbe5c59",
+          "decoded_rgb_sha256": "f8fe08cbd0cec98d03cab363a5e9b66a993003d7db003324c2efb8c227f210fd",
+          "mean_absolute_rgb_error": [
+            2.782198531539352,
+            1.8384657118055556,
+            3.130884693287037
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1680338541666666,
+            1.9350911458333333,
+            2.1962890625
+          ]
+        },
+        {
+          "frame": 72,
+          "relative_time": 180.0,
+          "source_png_sha256": "f8ff559745f332f17411925d59e7a21b40ab1e7c674b5cc4d82e4580bcc573d3",
+          "decoded_rgb_sha256": "339ffe6e61b7731337c62bb87690767d002f07aa12860b2ab36de798af877e9a",
+          "mean_absolute_rgb_error": [
+            2.7941388165509258,
+            1.8406810619212963,
+            3.1344545717592593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.163590494791667,
+            1.9380208333333333,
+            2.1962565104166667
+          ]
+        },
+        {
+          "frame": 73,
+          "relative_time": 182.5,
+          "source_png_sha256": "d43ebcf7748d50207f7f5078c27275b7a94fb05c9ec4bdf04842dfe735517971",
+          "decoded_rgb_sha256": "cc03428668abf6ef4c80301fb7b1ef0e362d0e19bd22ca33e45a0f44d02054b7",
+          "mean_absolute_rgb_error": [
+            2.8004928023726854,
+            1.8474292896412037,
+            3.145760091145833
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1707194010416666,
+            1.9343912760416666,
+            2.1997314453125
+          ]
+        },
+        {
+          "frame": 74,
+          "relative_time": 185.0,
+          "source_png_sha256": "c1dfe9bdde0e6886b76f87345447270c854b2de4fb2c7bfd1cb1d8d48bbed43e",
+          "decoded_rgb_sha256": "20f591df2ad68184b7d0245e07f48ff149ccf5ca79e9d27851745107fcfe1321",
+          "mean_absolute_rgb_error": [
+            2.8120822482638888,
+            1.8536024305555556,
+            3.1492775245949076
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1628173828125,
+            1.9382242838541666,
+            2.1945231119791666
+          ]
+        },
+        {
+          "frame": 75,
+          "relative_time": 187.5,
+          "source_png_sha256": "a8ba855fdb8b506c756ae4d2541cafa3354957f1d85eed097e3319a93047003d",
+          "decoded_rgb_sha256": "a1310fa0856f57b4b0208757ccfcf92ef853680e7074afc89ccd6382a29ab11f",
+          "mean_absolute_rgb_error": [
+            2.8039189091435186,
+            1.8516583478009259,
+            3.1468171296296297
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.171402994791667,
+            1.9338704427083333,
+            2.198966471354167
+          ]
+        },
+        {
+          "frame": 76,
+          "relative_time": 190.0,
+          "source_png_sha256": "64826c61721ec1ea0d375010d0ffde473ac1abe443e8d2a3cee921b13c1ac646",
+          "decoded_rgb_sha256": "acaec0fa788f2d50f777369cdd1d77ef586b2c57585dd2c007e33fff4255eff0",
+          "mean_absolute_rgb_error": [
+            2.8055510344328702,
+            1.8495071976273147,
+            3.1389973958333335
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.161962890625,
+            1.9374674479166667,
+            2.1947509765625
+          ]
+        },
+        {
+          "frame": 77,
+          "relative_time": 192.5,
+          "source_png_sha256": "6447971f7c702d62cdfab5fddd19578bc1b860d547120add6c143df78ad5cb39",
+          "decoded_rgb_sha256": "8da4bd83ff3fcfa72f981c18327326ad672b6a5712664bf936ad5a02955cada3",
+          "mean_absolute_rgb_error": [
+            2.797483543113426,
+            1.8478054470486112,
+            3.138326461226852
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1716064453125,
+            1.9333902994791667,
+            2.1982991536458334
+          ]
+        },
+        {
+          "frame": 78,
+          "relative_time": 195.0,
+          "source_png_sha256": "c619e73acb724e5b9b46614357c2f86c63489ddb9b2fa0ce39cf90406d4952a4",
+          "decoded_rgb_sha256": "9eaedc47372eabed4f0a40bfba19e5ef2319ccc421f16fd0a32dcb1fde9e7094",
+          "mean_absolute_rgb_error": [
+            2.795903862847222,
+            1.8510461877893518,
+            3.142477756076389
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1636067708333333,
+            1.937646484375,
+            2.1949788411458333
+          ]
+        },
+        {
+          "frame": 79,
+          "relative_time": 197.5,
+          "source_png_sha256": "1eca7afaa4a33889dd2a9932bb2348333deafc4ca74abe687f26215a5fca0db7",
+          "decoded_rgb_sha256": "c893fab132a09f40800df238d555a48563d6c86127128b28f5d2659127703950",
+          "mean_absolute_rgb_error": [
+            2.8009856047453705,
+            1.8519730179398148,
+            3.1500551576967593
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1720621744791666,
+            1.9335530598958333,
+            2.1995035807291665
+          ]
+        },
+        {
+          "frame": 80,
+          "relative_time": 200.0,
+          "source_png_sha256": "8125a1333098225780e5d896e4dda24d21bda57a588ad15a86c338829ed54d5f",
+          "decoded_rgb_sha256": "921a2e8dc22543e1f2f9e8d7ec7770aa5400f0657a6f5eb7f07b2facad2e48ef",
+          "mean_absolute_rgb_error": [
+            2.802885380497685,
+            1.8510941116898147,
+            3.1481562861689816
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1644612630208333,
+            1.9386555989583334,
+            2.193839518229167
+          ]
+        },
+        {
+          "frame": 81,
+          "relative_time": 202.5,
+          "source_png_sha256": "e4ffb833feb71d0e6bb1630e00600ce1af9e4e2a90192b3c52939593ca20406a",
+          "decoded_rgb_sha256": "17a3d6dd27e6d019f7143e6f3da8ba174f3e935494318eeb3ee30ae3805dff17",
+          "mean_absolute_rgb_error": [
+            2.798093894675926,
+            1.8499430338541667,
+            3.150267650462963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.172412109375,
+            1.9346110026041667,
+            2.1947916666666667
+          ]
+        },
+        {
+          "frame": 82,
+          "relative_time": 205.0,
+          "source_png_sha256": "1f70ee8dd5d13669b3ff92d361ae1ccc8b01f066a221191eea8b3bc48a18ad2e",
+          "decoded_rgb_sha256": "1637d650ab2812cd18edff406af05c5223edc18fabbecaf03605606b9edf8e53",
+          "mean_absolute_rgb_error": [
+            2.7936225043402776,
+            1.852908890335648,
+            3.1435149016203705
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.163460286458333,
+            1.9373779296875,
+            2.1933186848958335
+          ]
+        },
+        {
+          "frame": 83,
+          "relative_time": 207.5,
+          "source_png_sha256": "819e05024994b15dc6f7c394a3ee4d71d422c2c9ed9056ff19d11cf134dc26df",
+          "decoded_rgb_sha256": "51f322eba4a3e2a586adfceac04273bacae9bbab20f9a6d69fc8ccbd616e9cc9",
+          "mean_absolute_rgb_error": [
+            2.7979645905671298,
+            1.852713577835648,
+            3.1509629991319446
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1723388671875,
+            1.9344970703125,
+            2.195548502604167
+          ]
+        },
+        {
+          "frame": 84,
+          "relative_time": 210.0,
+          "source_png_sha256": "4c17dda9f4e7482325853870931df66201fbaedd656ee1de55507f034c9905ec",
+          "decoded_rgb_sha256": "31f73967ce3a1e4dbd8a591ef88f49300c1fcaa9b7ee5145b058d26d22633eef",
+          "mean_absolute_rgb_error": [
+            2.808205837673611,
+            1.8606101707175926,
+            3.1624122902199074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1597005208333333,
+            1.9360677083333333,
+            2.1913492838541666
+          ]
+        },
+        {
+          "frame": 85,
+          "relative_time": 212.5,
+          "source_png_sha256": "8e0e6a397e9e456ea1cbd0c734d4ba5fe57a8d27e40cfd09cca51241b0edb79a",
+          "decoded_rgb_sha256": "6cfd55eefe954ce1795969e93b652f17b2d2a0bbed9056668e89886e0e71c64e",
+          "mean_absolute_rgb_error": [
+            2.8155418113425927,
+            1.8645625361689815,
+            3.1662941261574074
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1668294270833335,
+            1.933544921875,
+            2.1931722005208334
+          ]
+        },
+        {
+          "frame": 86,
+          "relative_time": 215.0,
+          "source_png_sha256": "7cb869a68938eaa3b5f863fb56095a81fd0966615499b80523056e59e8979969",
+          "decoded_rgb_sha256": "60f9a5964cde0848c8d247c100140c550089164541251dcc6caaa60458c95295",
+          "mean_absolute_rgb_error": [
+            2.823758499710648,
+            1.869117115162037,
+            3.1704743561921296
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1594645182291665,
+            1.9367431640625,
+            2.1900309244791667
+          ]
+        },
+        {
+          "frame": 87,
+          "relative_time": 217.5,
+          "source_png_sha256": "68933488c52cf2f823d616b89a32ab722fcaee9b7b0aa789731920046dfe30c9",
+          "decoded_rgb_sha256": "9724678784156c6d40b478941beeaa8aa079c08c8f07b25923460297da9f77f2",
+          "mean_absolute_rgb_error": [
+            2.818499529803241,
+            1.8654531973379629,
+            3.166476779513889
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167008463541667,
+            1.9347086588541667,
+            2.1937662760416665
+          ]
+        },
+        {
+          "frame": 88,
+          "relative_time": 220.0,
+          "source_png_sha256": "212bda6b55ac6ac6789e3f3edc6d42b69a79def0c1fd9eeb4599df951e90c7b1",
+          "decoded_rgb_sha256": "b57f1ea3c57ddc82c38d9b65fb240ebf3234bfc742cd7fa8f7dec6744ab1bbc2",
+          "mean_absolute_rgb_error": [
+            2.8134403935185186,
+            1.866751663773148,
+            3.1667914496527776
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1612874348958333,
+            1.9398356119791667,
+            2.1948893229166666
+          ]
+        },
+        {
+          "frame": 89,
+          "relative_time": 222.5,
+          "source_png_sha256": "18882f79b5179eb02c9df5a700de85d76ea8990bcb2259581e93aedd35789a97",
+          "decoded_rgb_sha256": "4f15b4f425eb473dba5e901b66a89d80307c50d39ca5109b103419b5b1ec4dd6",
+          "mean_absolute_rgb_error": [
+            2.824562355324074,
+            1.8676965784143518,
+            3.1656919126157406
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.167985026041667,
+            1.934912109375,
+            2.194970703125
+          ]
+        },
+        {
+          "frame": 90,
+          "relative_time": 225.0,
+          "source_png_sha256": "4b9119ebcd4067b6272767d0f98cc37778691eb2d373fad7664eef8190a1518e",
+          "decoded_rgb_sha256": "2e1f4816fa3ee1e9cc51a32ca9d59cdd5072fda6748f015a8c8c120670437146",
+          "mean_absolute_rgb_error": [
+            2.8275517216435184,
+            1.8746256510416666,
+            3.1773826316550924
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.161759440104167,
+            1.937158203125,
+            2.1929606119791667
+          ]
+        },
+        {
+          "frame": 91,
+          "relative_time": 227.5,
+          "source_png_sha256": "1b62149d500de0023fb356af542e2beb1fc701f9e15f3959ba801ec3df55052e",
+          "decoded_rgb_sha256": "7c521d06f13837e707b1932f721f6f3115ca5dd3f3042dd8cee5a260def463ca",
+          "mean_absolute_rgb_error": [
+            2.82801830150463,
+            1.8763861762152778,
+            3.177074291087963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169091796875,
+            1.9358317057291667,
+            2.1931722005208334
+          ]
+        },
+        {
+          "frame": 92,
+          "relative_time": 230.0,
+          "source_png_sha256": "b3ce41d2225374681796d14f7adbec67e878872b70f2cfa1e59a609cd262efd6",
+          "decoded_rgb_sha256": "cb4df2ed27db2f938b14ecaeb47a7988b8441888fe30010b47022489d0d18c95",
+          "mean_absolute_rgb_error": [
+            2.828266059027778,
+            1.8837031611689814,
+            3.1845458984375
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1627848307291666,
+            1.9377766927083333,
+            2.1924641927083335
+          ]
+        },
+        {
+          "frame": 93,
+          "relative_time": 232.5,
+          "source_png_sha256": "8bd97d8430eb7c1feee81deba5f1883336222c39937f8c1b82667e562f595341",
+          "decoded_rgb_sha256": "3608601cc865e5c0382e4b269ca69eb219edbd6037a743652a4fcb8aeec96663",
+          "mean_absolute_rgb_error": [
+            2.8329273365162035,
+            1.8904251663773148,
+            3.1892424406828703
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1704427083333333,
+            1.9356282552083333,
+            2.196630859375
+          ]
+        },
+        {
+          "frame": 94,
+          "relative_time": 235.0,
+          "source_png_sha256": "674d974c8069fc2f31cbf815fdaa1f24aa5b840ac2219198ec959925abc7861f",
+          "decoded_rgb_sha256": "91ce51d6b1c760f5a267c35621517c9eed5bd5ac0e4ea4ff3f9e433b6ff6ea62",
+          "mean_absolute_rgb_error": [
+            2.8421531394675927,
+            1.9052897135416667,
+            3.2024730541087965
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16328125,
+            1.9382649739583333,
+            2.1941731770833335
+          ]
+        },
+        {
+          "frame": 95,
+          "relative_time": 237.5,
+          "source_png_sha256": "a093b8ebe8a12aee6d2a3ebd379cfc0654d2539bd41df3d72a25c401466e87f4",
+          "decoded_rgb_sha256": "578b839b76926d0d3f202b72369275fb0309d1acca20ca103cf7a6304296ad87",
+          "mean_absolute_rgb_error": [
+            2.860739474826389,
+            1.917138671875,
+            3.215306712962963
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.169791666666667,
+            1.9347819010416667,
+            2.196785481770833
+          ]
+        },
+        {
+          "frame": 96,
+          "relative_time": 240.0,
+          "source_png_sha256": "dbd9d810967140c3a5635799c8adf3a6977641d384dbb817bc46f2c83ae16ba9",
+          "decoded_rgb_sha256": "230cf358b909023881ff521b7b31295eb0867923d67b88769c7f27b325fd0d72",
+          "mean_absolute_rgb_error": [
+            2.873639142071759,
+            1.9272370515046295,
+            3.2217339409722223
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16201171875,
+            1.9372395833333333,
+            2.1914713541666666
+          ]
+        },
+        {
+          "frame": 97,
+          "relative_time": 242.5,
+          "source_png_sha256": "c6d8fdd0b1a3ab41ee6ba1fdc2389cae61ced73393b4178a994e39efb5374016",
+          "decoded_rgb_sha256": "9a15468dd6008641f959ee6a191957605a05a8ce73d6a258adf9efef6c20e354",
+          "mean_absolute_rgb_error": [
+            2.8940067997685186,
+            1.9438060619212962,
+            3.240841109664352
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1671630859375,
+            1.9334065755208334,
+            2.1934244791666666
+          ]
+        },
+        {
+          "frame": 98,
+          "relative_time": 245.0,
+          "source_png_sha256": "726115b51b235d460661e9222e80818e7264de46e8e999a2e3f25193723215d8",
+          "decoded_rgb_sha256": "9bcce445f3726646f7cbe3a64285651725cc0a0ba9e1091214e0488b081b582f",
+          "mean_absolute_rgb_error": [
+            2.904051830150463,
+            1.9661593967013888,
+            3.2600450303819444
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.16181640625,
+            1.9377766927083333,
+            2.1918294270833334
+          ]
+        },
+        {
+          "frame": 99,
+          "relative_time": 247.5,
+          "source_png_sha256": "f65e5df0da95513f6dba78210ecd8bddef50c4d8e14af2c586e276d30bb71556",
+          "decoded_rgb_sha256": "f901d751143505d1fb60f13ffdb441b64165adb9ef3cec6713195d51477347d2",
+          "mean_absolute_rgb_error": [
+            2.9392786096643517,
+            2.0178114149305557,
+            3.2958640769675926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1693929036458335,
+            1.9352213541666667,
+            2.195939127604167
+          ]
+        },
+        {
+          "frame": 100,
+          "relative_time": 250.0,
+          "source_png_sha256": "b000ac8147b4ff136f3efd405174adc3f7968f43508d96effec37301141fcd36",
+          "decoded_rgb_sha256": "4950305502526b7d611f579a6b2ba7824bb36ba2e7abdaa5e777edee769db629",
+          "mean_absolute_rgb_error": [
+            3.035692455150463,
+            2.1447410300925926,
+            3.392918113425926
+          ],
+          "title_mean_absolute_rgb_error": [
+            2.1644938151041666,
+            1.9381917317708333,
+            2.1940266927083334
+          ]
+        }
+      ]
+    }
+  ]
+}

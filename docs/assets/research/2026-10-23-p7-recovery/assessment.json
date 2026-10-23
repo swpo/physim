@@ -1,0 +1,896 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-23T17:03:14.026216+00:00",
+  "study_id": "p7-fixed-recovery-six-arm-v1",
+  "author": "Standing organism evaluator",
+  "evaluator": "/root/loop_reviewer",
+  "interpretation": "One actual joint outcome judgment under unchanged rubric v0.1 and the frozen comparison; no second reviewer, renewed construction review or design authorization.",
+  "disposition": "complete_valid_comparison_original_recovery_not_supported_boundary_inference_insufficient",
+  "execution_complete_valid": true,
+  "scientific_conclusion": {
+    "original_feature_restoration": "Contradicted in D and DC for the specified pulse, paired-noise branch and every-sample final-50-unit endpoint.",
+    "conditional_boundary_region_contribution": "Not established: the required S/B/C-retain, D/DC-recover, DB-clearly-not conjunction is absent; B and DB are censored.",
+    "earlier_visible_organization": "Preserved. Recovery is strengthening evidence, not an added universal essential gate.",
+    "not_claimed": "Never-recovery, death, general inability to self-maintain, membrane function, autonomy, material identity, replication or numerical convergence."
+  },
+  "inputs": {
+    "root_evaluator_request": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/root-evaluator-request.json",
+      "bytes": 11107,
+      "sha256": "4e765e515053f9c87f726afb8c886cfe5bf2f3181cfcb8239c35bff37b841c84"
+    },
+    "accepted_static_assessment": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-static-construction/evaluator/assessment.json",
+      "bytes": 16019,
+      "sha256": "00cb8f213602a2724cd8e66031f3964560830e9b60bf885b9b0400d5a8a69755"
+    },
+    "comparison_config": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-implementation/six-arm/owner/comparison-config.json",
+      "bytes": 10067,
+      "sha256": "77f274391c1cc6b51346b584e57c04e905d29791ed5a0fcddff0adb7a3e52c46"
+    },
+    "fixed_protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-implementation/six-arm/owner/protocol.txt",
+      "bytes": 9143,
+      "sha256": "1e961be23c045cb90a05e4937d9b8d33946c3737355f2c0cf93ff79351811cae"
+    },
+    "presentation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/render-provenance.json",
+      "bytes": 40695,
+      "sha256": "77a813c4f747e77c4303d839a7e96704cd5306ffa86134c9f6d6bd169aba1daa"
+    },
+    "rubric": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/rubric-v0.1.md",
+      "bytes": 5769,
+      "sha256": "7bcf11b2c7e4bf4652d1913c969e28b5484bf1400e500563fdffcc462d35861b"
+    },
+    "accepted_p7_assessment": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-retrospective/assessment.json",
+      "bytes": 7777,
+      "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7"
+    },
+    "joint_metadata_checks": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/joint-metadata-checks.json",
+      "bytes": 3313,
+      "sha256": "d832e5d703bd614fe94f7ad31fd3b3f3ecf87f91f12351099e8740032dc018e0"
+    },
+    "evaluator_context_presentation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/provenance.json",
+      "bytes": 28503,
+      "sha256": "fbc8974cf424177e84f3d848c56982713cdc468ad649d80fc2eaea658c304d4e"
+    }
+  },
+  "receipt_bindings": [
+    {
+      "arm": "S",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-s-v1/trajectory.npz",
+          "sha256": "4ab760e772e5fef845a34de88f3b3275cafe148e58fddd3676e12fee0216a398"
+        },
+        {
+          "bytes": 40028,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-s-v1/observations.jsonl",
+          "sha256": "fb3f1fb3633d41dc4cfbe5a97cf8ee40f2defe7262db07636ddf2d26c500a3ff"
+        },
+        {
+          "bytes": 7360,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-s-v1/summary.json",
+          "sha256": "7e42eda22ae8ed8c0195eb1c752d99326db539973ac8cc76709c1b30c64f0c5a"
+        },
+        {
+          "bytes": 55,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-s-v1/stdout.log",
+          "sha256": "a51b6bd4329ff7445919cc8088ac4bd0454b2ca67ae957be82e8abbc7248a56b"
+        }
+      ],
+      "bundle_id": "86ccadb7f962615c4779b395eadf60a8512a256aa64ae756195746f029b98779",
+      "conclusion": {
+        "analysis_sha256": "c05de2a2ee4c16e7a0185d1b410457a308502dc0f7cf2c9f9189abe710092443",
+        "conclusion": "Arm S supports only the preregistered complete execution-validity hypothesis. No regional biological conclusion is made.",
+        "next_step": "Preserve this receipt; root may coordinate the next prebound C/D pair only after both current owners conclude and actual admission gates allow. After all six required receipts, obtain the one sole-evaluator joint judgment.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-s-v1",
+      "job_id": "ee542466835b4b95a61abbbe0886de0e",
+      "owner": "maintenance",
+      "state": "concluded"
+    },
+    {
+      "arm": "B",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-b-v1/trajectory.npz",
+          "sha256": "270392668e189f05a713e8223a0e2fc6e3199f20f69e07d77406228a4ac140e8"
+        },
+        {
+          "bytes": 40037,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-b-v1/observations.jsonl",
+          "sha256": "8ad2ed86fb1df63517ade859b0777523620f0ffdc3fc3f2e56b47abdf40542d0"
+        },
+        {
+          "bytes": 7353,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-b-v1/summary.json",
+          "sha256": "db74a75252279f3a3877b3731f1f2fadefab064aee883b3dc9b98b850b108439"
+        },
+        {
+          "bytes": 55,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-b-v1/stdout.log",
+          "sha256": "c7b313bab6b8532a3d8815a53fb69831946d0d048d2ea87b5d8b06f1efa0cdf6"
+        }
+      ],
+      "bundle_id": "4508fd75329be4571b91453b81bade953dad2a688212c49ffb6f145b319faa5f",
+      "conclusion": {
+        "analysis_sha256": "900e36ac208b05a663135bf07a6a0da67d25d4ccac868e01409c007ee27a61ce",
+        "conclusion": "Arm B supports only the preregistered complete execution-validity hypothesis. All required metadata and opaque evidence checks pass; no regional biological conclusion is made.",
+        "next_step": "Preserve this receipt. Root may follow the fixed C/D pair only after both S/B owner lifecycles are concluded and all actual admission gates pass, including more than420 seconds remaining. No retry, replacement or automatic extension; joint inference awaits all six and the sole evaluator.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-b-v1",
+      "job_id": "c059cf9f230e431f80a05a681be160f3",
+      "owner": "resources",
+      "state": "concluded"
+    },
+    {
+      "arm": "C",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-c-v1/trajectory.npz",
+          "sha256": "232d8430e75a0278c55a5ed78ddcc999cc4b27210ac924d78e8903e80832f963"
+        },
+        {
+          "bytes": 40036,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-c-v1/observations.jsonl",
+          "sha256": "de18c6630809e7f1ca5a1226300a916aec69e3fb69eb18f072ac4b674e74bd1c"
+        },
+        {
+          "bytes": 7355,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-c-v1/summary.json",
+          "sha256": "0248352bf59167aae758359562bc2055ab9585699cca65f729b6b44b6b2f235b"
+        },
+        {
+          "bytes": 55,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-c-v1/stdout.log",
+          "sha256": "b52857f93db572241e654287fb9ed0265ac6c0737c32a9a1eb0ee4fa4ac5c0f1"
+        }
+      ],
+      "bundle_id": "b31be70b09dbdff2fe6bab7601836bd39727b2c845cf2985198475e56c678be0",
+      "conclusion": {
+        "analysis_sha256": "b1f78fffdfbd37b049168e969f1cabc6b51e1a8c47e4e4cb951b0d6a03e40882",
+        "conclusion": "Arm C supports only the preregistered complete execution-validity hypothesis. No regional biological conclusion is made.",
+        "next_step": "Preserve this receipt; root may coordinate the next prebound DB/DC pair only after both current owners conclude and actual admission gates allow. After all six required receipts, obtain the one sole-evaluator joint judgment.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-c-v1",
+      "job_id": "c0fade59666c423facf9bfb30ed6246c",
+      "owner": "maintenance",
+      "state": "concluded"
+    },
+    {
+      "arm": "D",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-d-v1/trajectory.npz",
+          "sha256": "e18097142d016d90722f5bff6e75950ae66912980810b435175a4071d2c2e4e6"
+        },
+        {
+          "bytes": 40032,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-d-v1/observations.jsonl",
+          "sha256": "811d386fa82c2b3e23516080d3e84943091d03faa40364c373c49d0259b3f3c0"
+        },
+        {
+          "bytes": 7358,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-d-v1/summary.json",
+          "sha256": "25b63b417561d49ced689d7516b08bdf2ace8bd3303f6c52df60bac5736014a4"
+        },
+        {
+          "bytes": 55,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-d-v1/stdout.log",
+          "sha256": "5bec44a90d16dfb0867a859021d1ce94ffc0245591099a9b3ca27ea406e33c3f"
+        }
+      ],
+      "bundle_id": "7870076b30fef6ad192ddc3eb2c1793da471fde92b96ae2a2e12224e74908ac3",
+      "conclusion": {
+        "analysis_sha256": "0526150384a886ca95fbaca054454f71bc9c624360bc9cffd0bac0863c7a00d1",
+        "conclusion": "Arm D supports only the preregistered complete execution-validity hypothesis. All required metadata and opaque evidence checks pass; no regional biological conclusion is made.",
+        "next_step": "Preserve this receipt. Root may follow the fixed DB/DC pair only after both C/D owner lifecycles are concluded and all actual admission gates pass, including more than420 seconds remaining. No retry, replacement or automatic extension; joint inference awaits all six and the sole evaluator.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-d-v1",
+      "job_id": "af9100a940a94c7e9019ba816beb6964",
+      "owner": "resources",
+      "state": "concluded"
+    },
+    {
+      "arm": "DB",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-db-v1/trajectory.npz",
+          "sha256": "ce7a28f28ec35b2dddb752d6ca12fd4c1a06fdc022508a92237c0d528d76e4d0"
+        },
+        {
+          "bytes": 40037,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-db-v1/observations.jsonl",
+          "sha256": "fb9249cd822b30b0368fb11d038d7ab3d0c9159fe1b8298115a37587ce78bad6"
+        },
+        {
+          "bytes": 7362,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-db-v1/summary.json",
+          "sha256": "6c733377f79db3e63f827b30c84f24eb0dca475bba3215259ffcc14a7deede0e"
+        },
+        {
+          "bytes": 57,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-db-v1/stdout.log",
+          "sha256": "89ab964a68437998a280cc1504a1d0bcc4634c0fb836a657e3761b8797b70fe2"
+        }
+      ],
+      "bundle_id": "3fed5f41efd384aad6a5dd10247b973cceda60914670efae87c3f236786040c2",
+      "conclusion": {
+        "analysis_sha256": "44e06aa1e1dc342d85ea9a022135581c5e78e62dcabd2b35d02aa4b5394c22c9",
+        "conclusion": "Arm DB supports only the preregistered complete execution-validity hypothesis. No regional biological conclusion is made.",
+        "next_step": "The maintenance queue S/C/DB is complete. Preserve all receipts; root finishes teardown/cost reconciliation and obtains the one sole-evaluator joint judgment across all six complete components. No further owner job is authorized by this conclusion.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-db-v1",
+      "job_id": "a5ea920a3a1c46079bd082bdc8a8c06a",
+      "owner": "maintenance",
+      "state": "concluded"
+    },
+    {
+      "arm": "DC",
+      "artifacts": [
+        {
+          "bytes": 2644726,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-dc-v1/trajectory.npz",
+          "sha256": "bcb379e92db16e32f970a62e7056b264fe59edaeeccd3c1084ed6d861c98e7be"
+        },
+        {
+          "bytes": 40031,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-dc-v1/observations.jsonl",
+          "sha256": "f11b0bd36ad4aa41fab49320f586cb7a7f17845b3518ec20f45b016e88d82805"
+        },
+        {
+          "bytes": 7360,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-dc-v1/summary.json",
+          "sha256": "542be359b3ea41f787fd887c1fa49fc5908435408f15110ec81b4587948b5145"
+        },
+        {
+          "bytes": 57,
+          "path": "handoff/swarm_continuous_20261017/epochs/0012/results/p7-recovery-dc-v1/stdout.log",
+          "sha256": "02bb0b08ee064bb1d08e8c8609266228b56455b0b8fa279df9b50b521482bf09"
+        }
+      ],
+      "bundle_id": "f8a356ee5f53ca5de09597787b6246a07e04cac7791fe7ae16cd0e3133825276",
+      "conclusion": {
+        "analysis_sha256": "699d6f67548203dda5d639e16861f79c04b132dee36c1e5346e54112564b1c44",
+        "conclusion": "Arm DC supports only the preregistered complete execution-validity hypothesis. All required metadata and opaque evidence checks pass; no regional biological conclusion is made.",
+        "next_step": "Preserve the completed fixed owner queue B/D/DC and its receipts. No further job follows DC. Root/runtime resolve worker release and exact cost reconciliation; the sole evaluator performs the all-six completeness, paired RNG, quantized evidence and joint spatial-recovery assessment. No retry, replacement or automatic extension.",
+        "outcome": "supported"
+      },
+      "experiment": "p7-recovery-dc-v1",
+      "job_id": "5e5736a5de7541a894c818b66aaede7d",
+      "owner": "resources",
+      "state": "concluded"
+    }
+  ],
+  "fixed_configuration": {
+    "source_time": 250.0,
+    "relative_time_start": 0.0,
+    "relative_time_end": 250.0,
+    "source_clock_labels": "250..500 on a new noise branch, not the historical continuation",
+    "fields": 8,
+    "dtype": "float32",
+    "grid": [
+      512,
+      512
+    ],
+    "L": 256.0,
+    "dx": 0.5,
+    "dt": 0.02,
+    "noise": 0.002,
+    "pulse": "A0/A1 reset to the accepted float32 model vacuum within the specified fixed union mask; other six fields retained.",
+    "arm_order": [
+      "S",
+      "B",
+      "C",
+      "D",
+      "DB",
+      "DC"
+    ],
+    "steps_per_arm": 12500,
+    "observation_stride_steps": 125,
+    "observation_spacing": 2.5,
+    "observations_per_arm": 101,
+    "late_relative_times": [
+      200.0,
+      202.5,
+      205.0,
+      207.5,
+      210.0,
+      212.5,
+      215.0,
+      217.5,
+      220.0,
+      222.5,
+      225.0,
+      227.5,
+      230.0,
+      232.5,
+      235.0,
+      237.5,
+      240.0,
+      242.5,
+      245.0,
+      247.5,
+      250.0
+    ],
+    "noise_branch": "One fresh Generator(PCG64(2026102301)) state and matching call schedule in all six arms.",
+    "independent_replicates": false,
+    "historical_rng_restart": false,
+    "readout_cells": 4748,
+    "interior_encoding": "8-bit activator values on the fixed native-resolution D cells; 80x80 bounding display with excluded cells gray.",
+    "context_encoding": "128x128 full-domain 4x4 block means, packed 4-bit per activator.",
+    "display_clipping_only": true,
+    "evolving_field_clipping": false,
+    "full_raw_trajectory_claimed": false,
+    "full_final_checkpoint_claimed": false
+  },
+  "execution_evidence": {
+    "basis": "Accepted complete owner execution-validity checks plus the sole evaluator joint opaque metadata audit.",
+    "artifacts": 24,
+    "artifact_bytes": 16153039,
+    "joint_cap_bytes": 16650000,
+    "original_joint_plan_bytes": 16714000,
+    "all_artifact_hashes_matched": true,
+    "all_source_bindings_match_fixed_config": true,
+    "all_initial_full_field_hashes_match_accepted_static": true,
+    "same_runtime": "Python 3.12.12, NumPy 2.5.2, SciPy 1.18.0",
+    "accepted_checks": "52 canonical physics locks; genome validation returned []; finite float32 eight-field state checked after every step; no evolving-field clipping.",
+    "normal_calls_per_arm": 12500,
+    "requested_normal_values_per_arm": 6553600000,
+    "raw_pcg_draw_count_claimed": false,
+    "all101_observation_schedules_match": true,
+    "all101_opaque_rng_state_hashes_equal_across_arms": true,
+    "final_rng_state_metadata_equal": true,
+    "initial_rng_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+    "final_rng_sha256": "9437c3ca057e1d03e4d9482e046fc461c74577b9ace50111c15edaaebdfe344b",
+    "initial_pixel_matches_to_static": 24,
+    "rendered_png_hashes_verified": 220,
+    "scope_limit": "Opaque hashing and metadata only. No local scientific-array decoding, float-bit-extrema decoding, numerical field analysis, native initialization or integration."
+  },
+  "visual_endpoint": {
+    "named_feature": "Original curled A1 stripe, low-A1 bay and adjacent A0-rich band, independently readable inside D.",
+    "success_requirement": "Named feature in every one of 21 saved relative times 200..250.",
+    "outer_contour_closure_excluded": true,
+    "censor_rule": "Feature exit from D, crop/quantization ambiguity, replacement or ambiguous continuation is censored/insufficient evidence, never selective nonrecovery.",
+    "context_role": "Assess apparent continuity, surroundings and displacement; cannot rescue an unreadable fixed interior.",
+    "readout_or_endpoint_revised": false
+  },
+  "per_arm_outcomes": [
+    {
+      "arm": "S",
+      "pulse": "No pulse",
+      "endpoint_role": "retention",
+      "criterion_status": "supported",
+      "outcome": "retained",
+      "late_named_feature_present": true,
+      "censored": false,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "The curled A1 stripe, low-A1 bay and adjacent curved A0 band remain recognizable throughout all 101 observations, including every late observation.",
+      "identity_and_readability": "Supported apparent continuation at the original location; no essential readout or identity ambiguity observed.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/s-1.png",
+          "bytes": 369242,
+          "sha256": "cc0632ab13fe7c6e78c99374192931136070047cc0f56a9b3a93a50c2074827c"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/s-2.png",
+          "bytes": 360378,
+          "sha256": "1937aec66ccd55fa41dc51095dcab693c113a48576c7d9b3aa6ae6bad93a18d6"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/s-3.png",
+          "bytes": 299520,
+          "sha256": "96803f032fa293b70c32a294230fa0055ea09753efab25bd354254bab6d77cc4"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-s-1.png",
+          "bytes": 702691,
+          "sha256": "46cacbdd80d9208dc5f573c01888c686ba1296a392daa19405afcb03f2325081",
+          "arm": "S",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-s-2.png",
+          "bytes": 703601,
+          "sha256": "4253f0e818f122205764fb44080ad651e67d60e0dc6ac05b2bcb5798cce1bb72",
+          "arm": "S",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-s-3.png",
+          "bytes": 579674,
+          "sha256": "c0715dbc4a49e8a7efa62c7905a46fa71d0f4c6621053dc118f722fcfea9ebb0",
+          "arm": "S",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "B",
+      "pulse": "Boundary-region activator reset",
+      "endpoint_role": "retention",
+      "criterion_status": "insufficient evidence",
+      "outcome": "censored_readout_exit",
+      "late_named_feature_present": null,
+      "censored": true,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "The initially intact pattern expands/deforms beyond the fixed readout; A0 separates into patches. The late A1 stripe is cut by the readout.",
+      "identity_and_readability": "Feature exit and crop ambiguity prevent a sustained-retention verdict; do not count as selective nonrecovery.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/b-1.png",
+          "bytes": 368916,
+          "sha256": "a609a2aec2d2eeb9b8ffd6d4ddb3b28f51ce66d280003aea807b4db7405dacf3"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/b-2.png",
+          "bytes": 366117,
+          "sha256": "57cd11a0859fc34b00068268373173bbf0b125962421f6fc3289f348ac7e13e3"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/b-3.png",
+          "bytes": 305937,
+          "sha256": "6613c5cbd14f8a50c4111b01d0f13aaf7ddab8ddf97181391988c1326ff243fe"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-b-1.png",
+          "bytes": 707091,
+          "sha256": "2f3103483e30e784c7c7d083e1d11762dba6b1f30956c3f73c5ca5188de80834",
+          "arm": "B",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-b-2.png",
+          "bytes": 708071,
+          "sha256": "f75b7ae0c1a4c5616ff660da3da4cdc1fd7f02294b0ed758ded4e83eb8bc804b",
+          "arm": "B",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-b-3.png",
+          "bytes": 582608,
+          "sha256": "ebcace05ad501662f199ab5d64d80b44811dc645bd6f25901e9bb61263b535de",
+          "arm": "B",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "C",
+      "pulse": "Translated exterior-region activator reset",
+      "endpoint_role": "retention",
+      "criterion_status": "supported",
+      "outcome": "retained",
+      "late_named_feature_present": true,
+      "censored": false,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "The curled A1 stripe, low-A1 bay and adjacent A0 band remain recognizable throughout all 101 observations, including every late observation.",
+      "identity_and_readability": "Supported apparent continuation; qualitative similarity to S does not assert bitwise-identical trajectories.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/c-1.png",
+          "bytes": 369809,
+          "sha256": "f94cea310fc146053c23e3a4c3e844cd3cf45ad84af61791e8689c38b34234db"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/c-2.png",
+          "bytes": 363674,
+          "sha256": "4194485f7b4bedf2e012bf8949cf8d21181f5441145517259c57638aee899723"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/c-3.png",
+          "bytes": 300505,
+          "sha256": "d7884f80f3027607c432b252b50dd3834ef0e5247069c27da23cad9d4ce87987"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-c-1.png",
+          "bytes": 706497,
+          "sha256": "e268d5be5d1468a8e4d6f66efe60f29c1d8a788ff4c26dc9eecaa85165f14aff",
+          "arm": "C",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-c-2.png",
+          "bytes": 705204,
+          "sha256": "b95fb6ba7ee15a45633a91431498bccc48f19594938161c950a9389f6236a218",
+          "arm": "C",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-c-3.png",
+          "bytes": 580345,
+          "sha256": "a77f883890705fb49ce82f71de27a3b40460d26e005c69f71b6a0fa7d2511abb",
+          "arm": "C",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "D",
+      "pulse": "Interior activator reset",
+      "endpoint_role": "recovery",
+      "criterion_status": "contradicted",
+      "outcome": "original_feature_not_recovered",
+      "late_named_feature_present": false,
+      "censored": false,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "Immediate erasure is followed by a compact A1 focus and then a three-arm/Y-like A1 organization with separated A0 patches. The original curl, bay and adjacent band are absent in every late observation.",
+      "identity_and_readability": "The surrounding apparent enclosure remains at the original location. The distinct interior organization is readable; no displacement of the named curl/bay explaining its absence was observed at the declared resolution. Material identity is not established.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/d-1.png",
+          "bytes": 346679,
+          "sha256": "59c68eedcdbf9af2e6a89628e00fcdfd1ec0cb84742bd5e71e5e43809d4d5632"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/d-2.png",
+          "bytes": 387586,
+          "sha256": "8a183f6ae5d70ea38fdc428d998772ef9ba67e8390d466da0edca72aefa44f3c"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/d-3.png",
+          "bytes": 314549,
+          "sha256": "9a18d14043d24665b55249197d5f64949f9163239204c9eef45ca12cf8c70977"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-d-1.png",
+          "bytes": 702937,
+          "sha256": "62c67318834a4ee7a79c9cd5fbe85491c36dda7825e5cf288eb57abcec2fbf48",
+          "arm": "D",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-d-2.png",
+          "bytes": 707839,
+          "sha256": "0002b617578e86c21a55c511b017d2fac1643c4fa5f395d249a3bda0f3a3e86f",
+          "arm": "D",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-d-3.png",
+          "bytes": 584197,
+          "sha256": "cdc5fba1f6b5b0e578ed5f16fd5ba564a1540565b1a7e55dafd800f1f54d068d",
+          "arm": "D",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "DB",
+      "pulse": "Interior plus boundary-region activator reset",
+      "endpoint_role": "selective_nonrecovery",
+      "criterion_status": "insufficient evidence",
+      "outcome": "censored_continuation_ambiguity",
+      "late_named_feature_present": null,
+      "censored": true,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "Regrowth produces several A1 spots and A0 patches. The original apparent enclosure no longer has a secure continuing identity in the surrounding context.",
+      "identity_and_readability": "Replacement or ambiguous continuation is censored. The visibly different local pattern does not count as selective nonrecovery.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/db-1.png",
+          "bytes": 379714,
+          "sha256": "1cbcafcede320e32643ec5c0e10749939b6d4846f4abd473a5675952ee731231"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/db-2.png",
+          "bytes": 411615,
+          "sha256": "2e294c1df6c0756651eecd6f6ee3fbe3069ce2bc79930ef6c1d96d1ee0b8953d"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/db-3.png",
+          "bytes": 330325,
+          "sha256": "451c017d394c98a08e36ca6e84eed2e19966616203e2b6fa98ad65c6f1b1a76d"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-db-1.png",
+          "bytes": 708446,
+          "sha256": "c515b98a30349fe38dbc323918317a6a45497c052259d2de21af2ff5099e8f0b",
+          "arm": "DB",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-db-2.png",
+          "bytes": 711746,
+          "sha256": "b5085dcdf49f2cd51e85f431ca492fba5f1c8286fe29f3713c4ce6c93da2e922",
+          "arm": "DB",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-db-3.png",
+          "bytes": 585188,
+          "sha256": "7eab10f8f57d03c1eca9c620569d637f2b9d1b49b3d50a0acf736d49760ffb02",
+          "arm": "DB",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "DC",
+      "pulse": "Interior plus translated exterior-region activator reset",
+      "endpoint_role": "recovery",
+      "criterion_status": "contradicted",
+      "outcome": "original_feature_not_recovered",
+      "late_named_feature_present": false,
+      "censored": false,
+      "observed_samples": 101,
+      "late_observed_samples": 21,
+      "late_verdict_applies_to_every_sample": true,
+      "visual_observation": "Immediate erasure is followed by a compact A1 focus and then a three-arm/Y-like A1 organization with separated A0 patches. The original curl, bay and adjacent band are absent in every late observation.",
+      "identity_and_readability": "As in D, surrounding context retains an apparent enclosure at the original location while the original internal feature is not restored. The finding is limited to apparent organization at the declared resolution.",
+      "interior_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/dc-1.png",
+          "bytes": 347345,
+          "sha256": "35c7c033dd7baaf2a198a27cc3a69aa1b56225917497f70649ea3010ec288a4f"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/dc-2.png",
+          "bytes": 387372,
+          "sha256": "c59c0e756c5189d8f810321ae35f094bb489c227bae6d0ebe7ba90006e7c3f39"
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/atlases/dc-3.png",
+          "bytes": 317087,
+          "sha256": "02cae5c46f6f48e521acbb7007a69208f76973aad8aac3cbff2bfa4b1388f9a5"
+        }
+      ],
+      "context_atlases": [
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-dc-1.png",
+          "bytes": 707796,
+          "sha256": "d6e9119ea09805d2415100790ffd01d378b84605f71c1a641d71a2c17c546c45",
+          "arm": "DC",
+          "indices": [
+            0,
+            35
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-dc-2.png",
+          "bytes": 710557,
+          "sha256": "894319fe5b115f1e75cc178bb30e3c05b7344d0c951b63d41b460d05325faa69",
+          "arm": "DC",
+          "indices": [
+            36,
+            71
+          ]
+        },
+        {
+          "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/presentation/context-dc-3.png",
+          "bytes": 584446,
+          "sha256": "3063b83b567d4fd40d41cc584c31b03538de926a4112f3ad5e104f1e0ce1eb67",
+          "arm": "DC",
+          "indices": [
+            72,
+            100
+          ]
+        }
+      ]
+    }
+  ],
+  "viewing_scope": {
+    "all_six_full_declared_windows_viewed": true,
+    "interior_observations_viewed": 606,
+    "context_observations_viewed": 606,
+    "both_activators_each_observation": true,
+    "all_21_late_observations_per_arm_viewed": true,
+    "interior_atlas_count": 18,
+    "context_atlas_count": 18,
+    "atlas_pages": "Page 1 relative 0..87.5; page 2 90..177.5; page 3 180..250, including all late observations.",
+    "context_presentation_method": "Lossless layout extraction of both complete full-domain context panels from the already rendered PNG composites. Exact inverse nearest-neighbor enlargement to128x128, verified by reconstructing every240x240 source panel byte-for-byte. Labels and montage only; no spatial field crop, recentering, recoloring, scientific-array decode or numerical field analysis.",
+    "context_panel_roundtrip_checks": 1212,
+    "supplemental_original_composites": [
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/frames/interior/frame-005.png",
+        "bytes": 75201,
+        "sha256": "daed92c331ea185311dbeaed0e837f15566bef4ffd5ee3f00c4b7d3e3a17b41a"
+      },
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/frames/interior/frame-010.png",
+        "bytes": 82607,
+        "sha256": "6deb938cf869ef75b32dcaeffcf160c6c88e52a04fb952c8b616f6bdc6e67cf5"
+      },
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/frames/interior/frame-100.png",
+        "bytes": 97944,
+        "sha256": "1ebec939435e9d1b6be66307e51286035ab72f600fa175a4b3f03b918c94fc49"
+      },
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/frames/context/frame-100.png",
+        "bytes": 176998,
+        "sha256": "b000ac8147b4ff136f3efd405174adc3f7968f43508d96effec37301141fcd36"
+      }
+    ],
+    "primary_visual_authority": "Original rendered PNGs bound by render-provenance.json; no scientific outcome inferred from compressed movies.",
+    "essential_unreadability": "B readout exit and DB continuation ambiguity are essential to the boundary inference and explicitly censored. The S/C retention and D/DC nonrestoration distinctions are readable at the fixed interior encoding."
+  },
+  "unchanged_rubric": {
+    "version": "v0.1",
+    "changed": false,
+    "scope": "Accepted unperturbed P7 verdict retained; new S/C continuation supports the same visible-organization interpretation.",
+    "gates": [
+      {
+        "gate": "Localized coherent individual",
+        "status": "supported",
+        "observation": "Accepted historical localization and coherent inside/outside appearance continue in S and C.",
+        "limitation": "Apparent enclosure is not membrane function or material identity."
+      },
+      {
+        "gate": "Distinguishing nontrivial feature",
+        "status": "supported",
+        "observation": "Specified curl, bay and adjacent band remain independently recognizable in the S/C interior.",
+        "limitation": "Spatial organization does not demonstrate functional dependence or autonomy."
+      },
+      {
+        "gate": "Persistence of the feature with the individual",
+        "status": "supported",
+        "observation": "The accepted historical sampled persistence remains, and S/C retain the named feature through all 101 new paired-branch observations.",
+        "limitation": "One finite sampled branch; events between samples and material identity are unresolved."
+      }
+    ],
+    "strength_of_interpretation": "This recovery test does not establish recovery-based maintenance or conditional boundary function. It does not retroactively add a fourth essential gate."
+  },
+  "strongest_evidence": [
+    "Stable, distinctive original organization in S/C through all 101 observations, including the full late window.",
+    "Verified immediate interior erasure followed by renewed activity of a visibly different organization in D/DC, despite a continuing apparent enclosure.",
+    "Complete matched schedules and opaque RNG-state sequences permit the declared paired comparison; appearance did not control execution length."
+  ],
+  "missing_essentials_for_stronger_interpretation": [
+    "Restoration of the specified distinguishing feature after the defined interior pulse.",
+    "An interpretable selective comparison supporting the proposed conditional boundary-region contribution.",
+    "Evidence of autonomous functional organization and copying of the distinguishing feature; these are stronger or later claims, not newly imposed v0.1 gates."
+  ],
+  "limits_preserved": [
+    "Single retrospectively selected candidate and one new paired-noise branch; no independent biological replicates.",
+    "Finite 250-unit observation window at 2.5 cadence; later recovery and between-sample events remain unknown.",
+    "Quantized interior and coarse block-mean context do not provide full raw trajectories or final checkpoints.",
+    "B/C share equal-area translated geometry but differ in chemical state, gradients, distance and actual pulse dose; no equal-damage or unique-geometry attribution.",
+    "The other six fields retain chemical memory; even a positive result would remain compatible with nonlinear attractor restoration.",
+    "No numerical-convergence, membrane, material-identity, autonomy or replication claim.",
+    "Censored B and DB observations are not numerical failures and cannot count as selective nonrecovery."
+  ],
+  "next_consequential_decision": {
+    "decision": "stop",
+    "target": "This fixed P7 recovery comparison and its proposed conditional boundary-restoration claim.",
+    "reason": "The comparison completed, D/DC fail the required original-feature recovery endpoint, and B/DB censoring additionally prevents a clean selective boundary inference.",
+    "preserve": "All evidence and the prior supported visible-organization/sampled-persistence finding.",
+    "automatic_followup": "None: no rerun, horizon extension, pulse/mask/precision/readout/endpoint revision, replacement candidate or fallback is authorized by this judgment.",
+    "scope_limit": "Does not claim P7 can never recover or stop all future P7/model research."
+  },
+  "publication": {
+    "meaningful_checkpoint": true,
+    "scientific_text_final": true,
+    "reader_takeaway": "Persistent visible organization survived in controls, but the specified original feature did not return after interior erasure in the two interpretable recovery cases.",
+    "public_asset_prefix": "../../docs/assets/research/2026-10-23-p7-recovery/",
+    "media": [
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/interior.mp4",
+        "bytes": 1921302,
+        "sha256": "7863a0cce9016ce3f9b9478869f2fc0d380e2c83ff480d66870cb56ad35f308b",
+        "purpose": "Reader presentation only; original PNGs govern the visual judgment.",
+        "observations": 101,
+        "frames_per_second": 5,
+        "hold_seconds_per_observation": 0.2,
+        "time_interpolation": false,
+        "compression": "Lossy H.264; root supplied every-frame image comparison."
+      },
+      {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/context.mp4",
+        "bytes": 17328120,
+        "sha256": "ff49291297a1f573490a5ad805846f33244550caf6e00a478b67e86820c3f2de",
+        "purpose": "Reader presentation only; original PNGs govern the visual judgment.",
+        "observations": 101,
+        "frames_per_second": 5,
+        "hold_seconds_per_observation": 0.2,
+        "time_interpolation": false,
+        "compression": "Lossy H.264; root supplied every-frame image comparison."
+      }
+    ],
+    "video_frame_verification": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/presentation/video-frame-verification.json",
+      "bytes": 116069,
+      "sha256": "3f64c95c6b1de367ead93c8f190cb869070aa4b689dedef87114bb5c573786ec"
+    },
+    "staging_and_external_publication_owner": "Root; evaluator supplies the sealed scientific judgment and attributable text."
+  },
+  "reports": {
+    "evaluator-report.md": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/evaluator-report.md",
+      "bytes": 7951,
+      "sha256": "3aa05c03e21a872493ec41c67cb2a89dd4ec57a4026410e6d89f4748ce9bf598"
+    },
+    "human-chat-report.txt": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/human-chat-report.txt",
+      "bytes": 1428,
+      "sha256": "6949de4026fdb45b6665631458ad1c41088befdcd83b0d45882f91f04801000d"
+    },
+    "dated-update.md": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-recovery-outcome/evaluator/dated-update.md",
+      "bytes": 3907,
+      "sha256": "4fd074cb6639c66d39f2d661a1ab23f835395976c7c1f09f79cb508594ef1400"
+    }
+  }
+}

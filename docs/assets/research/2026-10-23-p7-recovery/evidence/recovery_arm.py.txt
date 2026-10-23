@@ -1,0 +1,435 @@
+"""One immutable component of the fixed P7 comparison; registered worker only.
+
+Importing this file is standard-library only. Local fixtures may use tiny fake
+states, but must never call the worker's native initialization or step function.
+"""
+from __future__ import annotations
+
+import contextlib
+import hashlib
+import importlib.metadata
+import importlib.util
+import io
+import json
+import os
+from pathlib import Path
+import platform
+import struct
+import sys
+import time
+import zipfile
+
+OWNER = "handoff/swarm_continuous_20261017/evaluation/p7-recovery-implementation/six-arm/owner"
+CONFIG = OWNER + "/comparison-config.json"
+ARMS = ("S", "B", "C", "D", "DB", "DC")
+QUEUES = {"maintenance": ["S", "C", "DB"], "resources": ["B", "D", "DC"]}
+PAIRS = [["S", "B"], ["C", "D"], ["DB", "DC"]]
+CAPS = {"trajectory.npz": 2680000, "observations.jsonl": 60000, "summary.json": 25000}
+STDOUT_CAP = 10000
+ROW_CAP = 594
+THREAD_KEYS = ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+               "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "BLIS_NUM_THREADS")
+
+
+class Invalid(ValueError):
+    pass
+
+
+def require(ok, label):
+    if not ok:
+        raise Invalid(label)
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def read_json(path):
+    return json.loads(Path(path).read_text())
+
+
+def safe_file(root, name):
+    part = Path(name)
+    require(not part.is_absolute() and bool(name) and part.as_posix() == name and
+            all(not p.startswith(".") for p in part.parts), "nonliteral payload path")
+    target = root / part
+    current = target
+    while current != root:
+        require(not current.is_symlink(), "payload symlink")
+        current = current.parent
+    require(target.is_file(), "missing payload file")
+    return target
+
+
+def load_module(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    require(Path(module.__file__).resolve() == path.resolve(), "module source path")
+    return module
+
+
+def validate_config(config, arm_config):
+    require(config["schema"] == "p7-fixed-recovery-six-arm-v1", "configuration schema")
+    require(config["arms"] == list(ARMS) and config["owner_queues"] == QUEUES and
+            config["pairs"] == PAIRS, "fixed order and ownership")
+    require(config["trajectory"] == {"fields": 8, "grid": [512, 512], "dtype": "float32",
+            "L": 256.0, "dx": 0.5, "dt": 0.02, "noise": 0.002, "source_time": 250.0,
+            "duration": 250.0, "steps": 12500, "cadence": 2.5, "observation_stride": 125,
+            "observations": 101, "late_start": 200.0, "late_observations": 21}, "fixed trajectory")
+    require(config["rng"] == {"bit_generator": "PCG64", "seed": 2026102301,
+            "initial_state_sha256": "e4353e930176f17486ce29c291b0ebc574bf62c6ce67859f6aae1cec50194c2f",
+            "normal_calls_per_arm": 12500, "normal_shape": [2, 512, 512],
+            "normal_values_per_arm": 6553600000}, "fixed paired noise")
+    require(config["readout_cells"] == 4748, "accepted readout size")
+    require(config["caps_per_arm"] == {**CAPS, "stdout.log": STDOUT_CAP} and
+            config["joint_cap"] == 16650000 and config["original_joint_plan"] == 16714000,
+            "joint output allocation")
+    require(config["timeout_seconds"] == 360 and config["max_concurrent"] == 2 and
+            config["numerical_threads"] == 1 and config["no_retry"] is True, "fixed execution constraints")
+    arm = arm_config["arm"]
+    require(arm in ARMS, "unknown arm")
+    owner = next(k for k, q in QUEUES.items() if arm in q)
+    expected = {"schema_version": 1, "arm": arm, "study_id": "p7-recovery-" + arm.lower() + "-v1",
+                "owner": owner, "pair_index": QUEUES[owner].index(arm), "timeout_seconds": 360,
+                "comparison_config_sha256": digest(canonical(config))}
+    require(arm_config == expected, "exact arm configuration")
+
+
+def verify_inputs(bundle, files, config):
+    manifest = read_json(bundle / "manifest.json")
+    spec = manifest["spec"]
+    require(spec["entrypoint"] == OWNER + "/recovery_arm.py", "manifest entrypoint")
+    ids = {"p7-recovery-" + a.lower() + "-v1": a for a in ARMS}
+    require(spec["id"] in ids, "manifest arm identity")
+    arm_path = OWNER + "/arm-" + ids[spec["id"]].lower() + ".json"
+    expected_inputs = {CONFIG, arm_path, OWNER + "/protocol.txt"}
+    expected_inputs.update(v["path"] for v in config["sources"].values())
+    require(set(spec["inputs"]) == expected_inputs and len(spec["inputs"]) == len(expected_inputs), "exact inputs")
+    require(set(spec["outputs"]) == set(CAPS) and spec["timeout_seconds"] == 360 and
+            spec["depends_on"] == [], "manifest outputs and independent preparation")
+    require(manifest["environment_id"] == config["environment"]["id"] and
+            manifest["max_result_bytes"] == 16777216 and
+            manifest["minimum_free_bytes"] >= 10737418240, "manifest environment and storage")
+    require(manifest["spec_sha256"] == digest(canonical(spec)), "manifest spec digest")
+    seen, total = set(), 0
+    for row in manifest["files"]:
+        require(row["path"] not in seen, "duplicate manifest entry")
+        data = safe_file(bundle, row["path"]).read_bytes()
+        require(len(data) == row["bytes"] and digest(data) == row["sha256"], "frozen payload bytes")
+        seen.add(row["path"])
+        total += len(data)
+    require(len(seen) <= 128 and total <= 33554432, "full bundle bounds")
+    require({"files/" + p for p in [spec["entrypoint"], *spec["inputs"]]} <= seen, "manifest contains explicit payload")
+    inputs = {}
+    for alias, row in config["sources"].items():
+        p = safe_file(files, row["path"])
+        data = p.read_bytes()
+        require(len(data) == row["bytes"] and digest(data) == row["sha256"], "source bytes: " + alias)
+        inputs[alias] = p
+    for name, wanted in config["canonical_source_hashes"].items():
+        require(digest(safe_file(files, name).read_bytes()) == wanted, "canonical source bytes")
+    arm_config = read_json(safe_file(files, arm_path))
+    validate_config(config, arm_config)
+    require(spec["id"] == arm_config["study_id"] and spec["owner"] == arm_config["owner"], "manifest owner")
+    return inputs, arm_config, {"bundle_id": digest(canonical(manifest)),
+            "spec_sha256": manifest["spec_sha256"], "files": len(seen), "bytes": total}
+
+
+class CountedRNG:
+    """Pass the identical call through to PCG64; count requests, never draw extra."""
+    def __init__(self, generator, dtype, shape):
+        self.generator, self.dtype, self.shape = generator, dtype, shape
+        self.calls = 0
+
+    @property
+    def bit_generator(self):
+        return self.generator.bit_generator
+
+    def standard_normal(self, shape, *, dtype):
+        require(shape == self.shape and dtype == self.dtype, "noise draw schedule")
+        self.calls += 1
+        return self.generator.standard_normal(shape, dtype=dtype)
+
+
+def evolve(state, step, finite, observe, total_steps, stride):
+    """Orchestration only. Fixtures supply fake state/callbacks, never a simulator."""
+    require(state["t_step"] == 0 and finite(state), "initial numerical validity")
+    observe(state, 0)
+    for index in range(1, total_steps + 1):
+        step(state, 1)
+        require(state["t_step"] == index, "one and only one native step")
+        require(finite(state), "nonfinite or changed numerical state at step " + str(index))
+        observe(state, index) if index % stride == 0 else None
+    require(state["t_step"] == total_steps, "complete native horizon")
+
+
+def write_bounded(output, name, data):
+    require(len(data) <= CAPS[name], "output cap: " + name)
+    with (output / name).open("wb") as stream:
+        stream.write(data)
+        stream.flush()
+
+
+def write_summary(output, summary):
+    write_bounded(output, "summary.json", canonical(summary) + b"\n")
+
+
+def empty_archive():
+    data = io.BytesIO()
+    with zipfile.ZipFile(data, "w", compression=zipfile.ZIP_STORED):
+        pass
+    return data.getvalue()
+
+
+def compact_observation(index, step, extrema, clips, errors, rng_hash):
+    row = {"i": index, "s": step, "t": step / 50, "a": 250 + step / 50,
+           "e": extrema, "c": clips, "q": [format(v, ".9g") for v in errors], "r": rng_hash}
+    data = canonical(row) + b"\n"
+    require(len(data) <= ROW_CAP, "observation row bound")
+    return data
+
+
+def save_archive(np, helper, output, arm, indices, baseline, detailed, context, times):
+    count = len(times)
+    arrays = {"readout_q8": np.asarray(detailed, dtype=np.uint8).reshape(count, 2, 4748),
+              "context_q4": np.asarray(context, dtype=np.uint8).reshape(count, 128, 128),
+              "readout_indices": indices, "baseline_readout_q8": baseline,
+              "times": np.asarray(times, dtype="<f8"),
+              "arm_code": np.frombuffer(arm.encode().ljust(2, b"\0"), dtype=np.uint8)}
+    data = io.BytesIO()
+    np.savez(data, **arrays)
+    raw = data.getvalue()
+    require(len(raw) <= CAPS["trajectory.npz"], "trajectory archive cap")
+    schema = {k: (v.dtype.str, v.shape) for k, v in arrays.items()}
+    write_bounded(output, "trajectory.npz", raw)
+    decoded = helper.read_npz(np, output / "trajectory.npz", schema)
+    require(all(decoded[k].tobytes() == arrays[k].tobytes() for k in arrays), "archive roundtrip")
+    return {"path": "trajectory.npz", "bytes": len(raw), "sha256": digest(raw), "observations": count}
+
+
+def worker_run(bundle, files, output):
+    # First numerical import is a deliberate interceptable local-fixture boundary.
+    import numpy as np
+    config = read_json(safe_file(files, CONFIG))
+    inputs, arm_config, manifest = verify_inputs(bundle, files, config)
+    arm = arm_config["arm"]
+    require(platform.system() == "Linux" and platform.python_version() == config["environment"]["python"], "pinned Python")
+    require(all(importlib.metadata.version(k) == v for k, v in config["environment"]["packages"].items()), "pinned packages")
+    require(all(os.environ[k] == "1" for k in THREAD_KEYS) and os.environ.get("BLOBKIT_SKIP_LOCK") != "1", "thread and lock settings")
+    sys.path.insert(0, str(files / "packages/blobkit"))
+    import blobkit
+    from blobkit import genome as G
+    require(Path(G.__file__).resolve() == (files / "packages/blobkit/blobkit/genome.py").resolve(), "genome import source")
+    locks = blobkit.verify_locks(strict=True)
+    require(locks["ok"] and locks["n_checked"] == 52, "all 52 canonical locks")
+    genome = read_json(inputs["genome"])
+    require(G.validate(genome) == [], "whole genome validation before native use")
+    require(len(genome["acts"]) == 2 and len(genome["chans"]) == 6, "all eight fields")
+    rules = load_module("construction_rules", inputs["construction_rules"])
+    helper = load_module("p7_static_reused", inputs["static_helper"])
+    static_config = read_json(inputs["static_config"])
+    helper.validate_config(static_config)
+    accepted = read_json(inputs["static_summary"])
+    require(accepted["automatic_construction_pass"] is True and
+            read_json(inputs["static_assessment"])["scientific_construction_pass"] is True,
+            "accepted static construction and sole evaluator pass")
+    require(all(r["passed"] for r in read_json(inputs["static_checks"])["checks"]), "static predicates")
+    require(accepted["interior_readout"]["cells"] == 4748 and accepted["masks"] == config["accepted_masks"], "exact accepted geometry")
+    protocol = read_json(inputs["capture_protocol"])
+    expected = {"candidate": "p7g2_009", "L": 256.0, "grid": [512, 512], "dx": 0.5,
+                "dt": 0.02, "noise": 0.002, "dtype": "float32", "na": 2, "nc": 6}
+    require(all(protocol[k] == v for k, v in expected.items()), "original numerical settings")
+    for name in ("capture_source", "devices_source", "genome_source"):
+        record = config["sources"][name]
+        require(protocol["sources"][config["original_repository_root"] + "/" + record["path"]] == record["sha256"], "capture source binding")
+    for name, wanted in config["canonical_source_hashes"].items():
+        if name.endswith(("genome.py", "sim_cpu.py")):
+            require(protocol["sources"][config["original_repository_root"] + "/" + name] == wanted, "capture canonical binding")
+    require(genome == read_json(inputs["genome_source"]), "whole genome source copy")
+    # Scientific arrays are decoded only on the registered worker, after gates.
+    checkpoint = helper.read_npz(np, inputs["checkpoint"], {"F": ("<f4", (8, 512, 512)), "t": ("<f8", ())})
+    original = checkpoint["F"]
+    require(float(checkpoint["t"]) == 250.0 and bool(np.isfinite(original).all()), "finite t250 checkpoint")
+    require(digest(original.tobytes()) == accepted["checkpoint"]["raw_all_fields_sha256"], "exact accepted complete checkpoint")
+    construction = helper.read_npz(np, inputs["construction"], {
+        "baseline_activators": ("<f4", (2, 512, 512)), "readout_before_all_fields": ("<f4", (8, 4748)),
+        "readout_after_activators": ("<f4", (6, 2, 4748)), "readout_indices": ("<u4", (4748,)),
+        "masks_packed_IDBC": ("|u1", (4, 32768)), "readout_q8": ("|u1", (6, 2, 4748)),
+        "context_q4": ("|u1", (6, 128, 128))})
+    require(original[:2].tobytes() == construction["baseline_activators"].tobytes(), "accepted baseline activators")
+    masks = {}
+    for i, key in enumerate(("I", "D", "B", "C")):
+        packed = construction["masks_packed_IDBC"][i]
+        require(digest(packed.tobytes()) == accepted["masks"][key]["packed_sha256"], "exact accepted packed mask " + key)
+        masks[key] = rules.unpack(packed.tobytes(), 512)
+        require(len(masks[key]) == accepted["masks"][key]["cells"], "accepted mask count")
+    # Reuse the accepted geometry rule for a consistency assertion, never select.
+    require(rules.construct(masks["I"]) == masks, "accepted construction rule parity")
+    indices = construction["readout_indices"]
+    require(indices.tolist() == sorted(masks["D"]) and len(indices) == 4748, "exact readout indices; no cell dropping")
+    require(original.reshape(8, -1)[:, indices].tobytes() == construction["readout_before_all_fields"].tobytes(), "accepted eight-field readout")
+    current = original.copy()
+    mi = np.asarray(sorted(rules.arm_masks(masks)[arm]), dtype=np.int64)
+    vacuum = np.asarray([a["u0"] for a in genome["acts"]], dtype="<f4")
+    current.reshape(8, -1)[:2, mi] = vacuum[:, None]
+    require(digest(current.tobytes()) == accepted["arms"][arm]["full_field_sha256"], "exact accepted postpulse full state")
+    require(current[2:].tobytes() == original[2:].tobytes(), "six other fields preserved")
+    require(current[:2].reshape(2, -1)[:, indices].tobytes() == construction["readout_after_activators"][ARMS.index(arm)].tobytes(), "immediate readout")
+    from blobkit.soup import sim_cpu
+    require(Path(sim_cpu.__file__).resolve() == (files / "packages/blobkit/blobkit/soup/sim_cpu.py").resolve(), "native initialization source")
+    devices = load_module("p7_bound_devices", inputs["devices_source"])
+    state = sim_cpu.init_soup(genome, L=256.0, seed=2026102301, n_soup=0, dtype="f32", noise=0.002, workers=1)
+    state["F"] = current
+    state["rng"] = CountedRNG(np.random.Generator(np.random.PCG64(2026102301)), np.float32, (2, 512, 512))
+    state["t_step"], state["recorded_at"] = 0, -1
+    rng = state["rng"]
+    require(digest(canonical(rng.bit_generator.state)) == config["rng"]["initial_state_sha256"], "identical prebound initial PCG64 state")
+    require(state["N"] == 512 and state["dt"] == 0.02 and state["dx"] == 0.5 and state["workers"] == 1 and state["noise"] == 0.002, "native cache settings")
+    u0 = np.asarray([a["u0"] for a in genome["acts"]], dtype=np.float64)
+    scales = np.sqrt(np.asarray([a["lam"] for a in genome["acts"]], dtype=np.float64)) - u0
+    require(bool((scales > 0).all()), "fixed display scales")
+    summary = {"schema": "p7-recovery-arm-result-v1", "study_id": arm_config["study_id"], "arm": arm,
+        "owner": arm_config["owner"], "complete": False, "execution_valid": False,
+        "disposition": "incomplete", "steps": 0, "finite_step_checks": 0, "observations": 0,
+        "late_observations": 0, "expected": config["trajectory"], "no_retry": True,
+        "joint_inference": "Pending all six complete receipts and one sole evaluator judgment; no per-arm regional conclusion.",
+        "censoring": config["censoring"], "limits": config["limits"], "manifest": manifest,
+        "source_bindings": config["sources"], "physics_locks": locks, "genome_validation_issues": [],
+        "initial_full_field_sha256": digest(current.tobytes()),
+        "initial_rng_state_sha256": config["rng"]["initial_state_sha256"],
+        "native_initializations": 1, "cache_initialization": "Canonical n_soup=0 caches; replace complete F and reset fresh PCG64 before any step.",
+        "numerical_kernel": "Exact bound devices.step_chunk(S,1) per step; no injection, field clipping, native records or adaptive termination.",
+        "rng_request_semantics": "Calls and requested normal values, not raw PCG64 integer draws; normal sampling may consume variable raw draws.",
+        "observation_schema": config["observation_schema"], "caps": {**CAPS, "stdout.log": STDOUT_CAP},
+        "runtime": {"python": platform.python_version(), "numpy": np.__version__, "scipy": importlib.metadata.version("scipy")}}
+    detailed, context, times = [], [], []
+    step_checks = 0
+    observation_bytes = 0
+
+    def finite(s):
+        nonlocal step_checks
+        F = s["F"]
+        ok = F.dtype == np.dtype("<f4") and F.shape == (8, 512, 512) and bool(np.isfinite(F).all())
+        require(rng.calls == s["t_step"], "one noise request per step")
+        if s["t_step"]:
+            step_checks += 1
+        return ok
+
+    with (output / "observations.jsonl").open("wb") as observations:
+        def observe(s, step):
+            nonlocal observation_bytes
+            F = s["F"]
+            normalized = ((F[:2] - u0[:, None, None]) / scales[:, None, None]).astype(np.float32)
+            require(bool(np.isfinite(normalized).all()), "display normalization finite")
+            local, coarse, qs = helper.encode_views(np, normalized, indices)
+            require(qs["interior_error_vs_clipped"] <= 1/510 + 1e-7 and qs["context_error_vs_clipped_block_mean"] <= 1/30 + 1e-12, "accepted display error bounds")
+            if step == 0:
+                require(local.tobytes() == construction["readout_q8"][ARMS.index(arm)].tobytes() and
+                        coarse.tobytes() == construction["context_q4"][ARMS.index(arm)].tobytes(), "exact static encoding at relative zero")
+            views = (normalized, normalized.reshape(2, -1)[:, indices],
+                     normalized.reshape(2, 128, 4, 128, 4).mean(axis=(2, 4), dtype=np.float64))
+            clips = [int((v[f] < 0).sum()) if side == 0 else int((v[f] > 1).sum())
+                     for v in views for f in range(2) for side in range(2)]
+            extrema = [[struct.pack("<f", float(v.min())).hex(), struct.pack("<f", float(v.max())).hex()] for v in F]
+            data = compact_observation(len(times), step, extrema, clips,
+                [qs["interior_error_vs_clipped"], qs["context_error_vs_clipped_block_mean"]], digest(canonical(rng.bit_generator.state)))
+            require(observation_bytes + len(data) <= CAPS["observations.jsonl"], "all observation bytes fit")
+            observations.write(data)
+            observations.flush()
+            observation_bytes += len(data)
+            detailed.append(local)
+            context.append(coarse)
+            times.append(step / 50)
+            summary.update(steps=step, finite_step_checks=step_checks, observations=len(times),
+                           late_observations=sum(t >= 200 for t in times), normal_calls=rng.calls)
+            write_summary(output, summary)
+
+        try:
+            evolve(state, devices.step_chunk, finite, observe, 12500, 125)
+        except Exception:
+            summary.update(steps=state["t_step"], finite_step_checks=step_checks, normal_calls=rng.calls,
+                           disposition="invalid_or_incomplete", execution_valid=False, complete=False)
+            summary["partial_archive"] = save_archive(np, helper, output, arm, indices, construction["readout_q8"][0], detailed, context, times)
+            write_summary(output, summary)
+            raise
+    require(len(times) == 101 and times == [i * 2.5 for i in range(101)] and sum(t >= 200 for t in times) == 21, "full fixed observations and late endpoint")
+    require(step_checks == 12500 and rng.calls == 12500 and state["t_step"] == 12500, "all steps finite and all noise calls")
+    archive = save_archive(np, helper, output, arm, indices, construction["readout_q8"][0], detailed, context, times)
+    observed = (output / "observations.jsonl").read_bytes()
+    require(len(observed) == observation_bytes and len(observed.splitlines()) == 101, "complete observation container")
+    require(digest(original.tobytes()) == accepted["checkpoint"]["raw_all_fields_sha256"], "immutable source state retained")
+    summary.update(archive=archive, observations_file={"bytes": len(observed), "sha256": digest(observed)},
+                   final_full_field_sha256=digest(state["F"].tobytes()),
+                   final_rng_state=rng.bit_generator.state,
+                   final_rng_state_sha256=digest(canonical(rng.bit_generator.state)),
+                   normal_values_requested=rng.calls * 2 * 512 * 512,
+                   display_only_clipping=True, dynamics_field_clipping=False,
+                   complete=True, execution_valid=True, disposition="complete_valid_arm_joint_inference_pending")
+    return summary
+
+
+class BoundedLog:
+    def __init__(self, stream, counter):
+        self.stream, self.counter = stream, counter
+
+    def write(self, text):
+        size = len(text.encode("utf-8"))
+        require(self.counter[0] + size <= 9000, "stdout/stderr Python log cap")
+        self.counter[0] += size
+        return self.stream.write(text)
+
+    def flush(self):
+        return self.stream.flush()
+
+
+def actual_stdout_bytes(stream):
+    try:
+        return os.fstat(stream.fileno()).st_size
+    except (AttributeError, OSError, io.UnsupportedOperation):
+        return 0  # In-memory synthetic fixture only; worker stdout is a file.
+
+
+def main():
+    bundle = Path(os.environ["RESEARCH_BUNDLE_ROOT"]).resolve()
+    files = bundle / "files"
+    output = Path(os.environ["PHYSIM_SWARM_OUTPUT"]).resolve()
+    require(files.is_dir() and output != bundle and bundle not in output.parents, "runner input/output directories")
+    output.mkdir(parents=True, exist_ok=True)
+    require(not any((output / name).exists() for name in CAPS), "output files already exist")
+    for key in THREAD_KEYS:
+        os.environ[key] = "1"
+    require(os.environ.get("BLOBKIT_SKIP_LOCK") != "1", "lock bypass forbidden")
+    write_summary(output, {"complete": False, "execution_valid": False, "disposition": "startup_incomplete", "no_retry": True})
+    write_bounded(output, "trajectory.npz", empty_archive())
+    write_bounded(output, "observations.jsonl", b"")
+    started, real_stdout = time.monotonic(), sys.stdout
+    counter = [0]
+    try:
+        with contextlib.redirect_stdout(BoundedLog(sys.stdout, counter)), contextlib.redirect_stderr(BoundedLog(sys.stderr, counter)):
+            summary = worker_run(bundle, files, output)
+        message = canonical({"study": summary["study_id"], "arm": summary["arm"], "complete": True}).decode() + "\n"
+        real_stdout.flush()
+        require(actual_stdout_bytes(real_stdout) + len(message.encode()) <= STDOUT_CAP, "actual stdout cap")
+        real_stdout.write(message)
+        real_stdout.flush()
+        require(actual_stdout_bytes(real_stdout) <= STDOUT_CAP, "final stdout cap")
+        summary["worker_wall_seconds"] = time.monotonic() - started
+        summary["stdout_python_bytes"] = counter[0] + len(message.encode())
+        write_summary(output, summary)  # Last write is the only complete-valid marker.
+        return 0
+    except Exception as exc:
+        summary = read_json(output / "summary.json")
+        summary.update(complete=False, execution_valid=False, disposition="invalid_or_incomplete", no_retry=True,
+                       error_type=type(exc).__name__, reason=str(exc)[:500], worker_wall_seconds=time.monotonic()-started)
+        write_summary(output, summary)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

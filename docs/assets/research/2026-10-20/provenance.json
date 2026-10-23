@@ -1,0 +1,493 @@
+{
+  "schema": "physim-research-publication-v1",
+  "update_date": "2026-10-20",
+  "scope": "Presentation of already reviewed saved evidence. No native dynamics or new scientific inference.",
+  "sources": {
+    "x1-fields.npz": {
+      "sha256": "32855845491af10adaf70f43322ca6717e13b7ca22524dcbc22bd34a44fd9853",
+      "bytes": 15209598,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0006/results/p07-exterior-x1-restoration-v1/evidence.npz"
+    },
+    "x1-observations.json": {
+      "sha256": "c09b0c1a64b774b02a7c43125c35532bdc2b941da5bff7285ec4e1b3f6dfb3f2",
+      "bytes": 142209,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0006/results/p07-exterior-x1-restoration-v1/observations.json"
+    },
+    "x1-summary.json": {
+      "sha256": "bc858fb867e8b5ea523adca1040bf6b0221c20ad700adf8107cbdb0561fded41",
+      "bytes": 39303,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0006/results/p07-exterior-x1-restoration-v1/summary.json"
+    },
+    "protection-masks.npz": {
+      "sha256": "25ba365bb1de25baebd448dad2374e336e4a631c70bb4e5213b7f452518d3295",
+      "bytes": 1930034,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0005/results/l144-protection-action-necessity-v1/core_masks.npz"
+    },
+    "protection-summary.json": {
+      "sha256": "60893be7fecd50f976236fec096a724f69386dd618021ab4788f6c7847ce99b2",
+      "bytes": 84557,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0005/results/l144-protection-action-necessity-v1/summary.json"
+    },
+    "protection-audit-summary.json": {
+      "sha256": "907de2f88ba56c924e01a5b532f210e455bf73451f25b01576945ce83df7cf82",
+      "bytes": 6206,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0006/results/l144-action-raw-evidence-audit-v1/summary.json"
+    },
+    "production-fields.npz": {
+      "sha256": "2266bd76592dbac4f3fce7a587768f0e79716f7c83b239a8e6be449b3326c605",
+      "bytes": 14552834,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/evidence.npz"
+    },
+    "production-observations.json": {
+      "sha256": "32867285400d2fe73613f63683409a2b6f38ad8c3588135ac09e12fe70e3471e",
+      "bytes": 196882,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/observations.json"
+    },
+    "production-summary.json": {
+      "sha256": "bb4c1f5189447287e3316167553dd9db48d67dcad9d4925253ab8b232f86991c",
+      "bytes": 27723,
+      "original_repository_relative_path": "handoff/swarm_continuous_20261017/epochs/0007/results/activity-paid-production-payment-v1/summary.json"
+    }
+  },
+  "renderer": {
+    "path": "scripts/render_research_update.py",
+    "sha256": "f45b4b06d6773f2b4b9eb6f3ae511b201c617b23c59c4f99673a87cf2de3c443",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "fonts": [
+      {
+        "name": "Arial.ttf",
+        "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+      },
+      {
+        "name": "Arial Bold.ttf",
+        "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+      }
+    ],
+    "ffmpeg": "ffmpeg version 8.0.1 Copyright (c) 2000-2025 the FFmpeg developers"
+  },
+  "display": {
+    "production_payment": {
+      "field": "saved raw signed A",
+      "array": "raw_A",
+      "scale": [
+        -0.02,
+        0.45
+      ],
+      "palette": [
+        "#081220",
+        "#214863",
+        "#208f9b",
+        "#7ed3bb",
+        "#ffe28e"
+      ],
+      "pixel_interpolation": "nearest",
+      "panel_order": [
+        "I",
+        "P",
+        "C"
+      ],
+      "view": "full domain, no crop",
+      "domain_physical_size": [
+        48,
+        48
+      ],
+      "orientation": "array row increases downward; column increases rightward",
+      "area_and_status_source": "recorded observations geometry[1] at raw A > 0.1; not recomputed",
+      "displayed_array_frame_hashes_checked": 93,
+      "coefficients": {
+        "I": {
+          "beta": 0.1,
+          "gamma": 0.1
+        },
+        "P": {
+          "beta": 0,
+          "gamma": 0.1
+        },
+        "C": {
+          "beta": 0,
+          "gamma": 0
+        }
+      }
+    },
+    "geometry": {
+      "field": "raw signed A, not Q or X1",
+      "scale": [
+        -1.5,
+        1.5
+      ],
+      "palette": [
+        "#081220",
+        "#214863",
+        "#208f9b",
+        "#7ed3bb",
+        "#ffe28e"
+      ],
+      "pixel_interpolation": "nearest",
+      "panel_order": [
+        "W",
+        "I",
+        "S",
+        "U"
+      ],
+      "array_rows": "[-6,58) modulo 128",
+      "array_columns": "[8,72)",
+      "orientation": "array row increases downward; column increases rightward",
+      "crop_physical_size": [
+        32,
+        32
+      ],
+      "domain_physical_size": [
+        64,
+        64
+      ],
+      "outline": "fixed original retained-neighborhood mask boundary; not a live tracker",
+      "status": "original identity and phase copied from saved summary/observations"
+    },
+    "protection": {
+      "field": "saved binary mask of normalized U0 > 0.45",
+      "normalization": "(U0-u0)/(sqrt(2)-u0)",
+      "u0": -0.5897545123014584,
+      "archive_threshold_index": 1,
+      "bit_order": "big",
+      "packed_axis": -1,
+      "pixel_interpolation": "nearest",
+      "all_raw_threshold_pixels_shown": true,
+      "view": "full domain, no crop",
+      "domain_physical_size": [
+        144,
+        144
+      ],
+      "orientation": "array row increases downward; column increases rightward",
+      "area_and_count_source": "recorded summary, not recomputed by renderer",
+      "eligible_component_minimum_area": 2,
+      "not_a_concentration_movie": true
+    }
+  },
+  "videos": {
+    "initial-x1": {
+      "file": "initial-x1.mp4",
+      "sha256": "4a29b78271305597e51f89ffbd76cbb0443776a19919dbeb9ee13b175fbfa7ba",
+      "poster": "initial-x1.jpg",
+      "poster_sha256": "ce56084c7afd6c16fb0179f95ae3bad13d4e9011260cb3dc0d03e27533c42ff2",
+      "poster_simulation_time": 52.5,
+      "saved_times": [
+        0.0,
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0,
+        32.5,
+        35.0,
+        37.5,
+        40.0,
+        42.5,
+        45.0,
+        47.5,
+        50.0,
+        52.5,
+        55.0,
+        57.5,
+        60.0,
+        62.5,
+        65.0,
+        67.5,
+        70.0,
+        75.0,
+        80.0,
+        85.0,
+        90.0,
+        95.0,
+        100.0
+      ],
+      "hold_frames": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        40
+      ],
+      "fps": 20,
+      "last_frame_hold_seconds": 2,
+      "simulation_units_per_video_second": 5,
+      "interpolation": "none; zero-order frame hold",
+      "encoded_checks": {
+        "frame_indices": [
+          0,
+          210,
+          439
+        ],
+        "mean_absolute_rgb_errors": [
+          1.8034122620884774,
+          1.8303047839506172,
+          1.8309228716563786
+        ]
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "20/1",
+            "nb_frames": "440"
+          }
+        ],
+        "format": {
+          "duration": "22.000000"
+        }
+      }
+    },
+    "protective-action": {
+      "file": "protective-action.mp4",
+      "sha256": "9f2be1e8e3ce3659e7a1454d9673ae89e2f534efa5f105672b0e7d86455d8070",
+      "poster": "protective-action.jpg",
+      "poster_sha256": "d32505002d7c56979a35f2252f17279127da389454dbb6a756b9562522ea92a9",
+      "poster_simulation_time": 150.0,
+      "saved_times": [
+        0.0,
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0,
+        35.0,
+        40.0,
+        45.0,
+        50.0,
+        55.0,
+        60.0,
+        65.0,
+        70.0,
+        75.0,
+        80.0,
+        85.0,
+        90.0,
+        95.0,
+        100.0,
+        105.0,
+        110.0,
+        115.0,
+        120.0,
+        125.0,
+        130.0,
+        135.0,
+        140.0,
+        145.0,
+        150.0
+      ],
+      "hold_frames": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        40
+      ],
+      "fps": 20,
+      "last_frame_hold_seconds": 2,
+      "simulation_units_per_video_second": 5,
+      "interpolation": "none; zero-order frame hold",
+      "encoded_checks": {
+        "frame_indices": [
+          0,
+          340,
+          639
+        ],
+        "mean_absolute_rgb_errors": [
+          1.7178978587962963,
+          1.7031626157407407,
+          1.71278018904321
+        ]
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "20/1",
+            "nb_frames": "640"
+          }
+        ],
+        "format": {
+          "duration": "32.000000"
+        }
+      }
+    },
+    "production-payment": {
+      "file": "production-payment.mp4",
+      "sha256": "d3cda22c05e563027ad3ca73a32a57bb4aee06296bc45f13dc4db4e1840365d3",
+      "poster": "production-payment.jpg",
+      "poster_sha256": "ae5e1b524db69c6c15b57ddb1cf8e3f17662d50f3c2376399ac5979344cc1098",
+      "poster_simulation_time": 65.0,
+      "saved_times": [
+        0.0,
+        5.0,
+        10.0,
+        15.0,
+        20.0,
+        25.0,
+        30.0,
+        35.0,
+        40.0,
+        45.0,
+        50.0,
+        55.0,
+        60.0,
+        65.0,
+        70.0,
+        75.0,
+        80.0,
+        85.0,
+        90.0,
+        95.0,
+        100.0,
+        105.0,
+        110.0,
+        115.0,
+        120.0,
+        125.0,
+        130.0,
+        135.0,
+        140.0,
+        145.0,
+        150.0
+      ],
+      "hold_frames": [
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        20,
+        40
+      ],
+      "fps": 20,
+      "last_frame_hold_seconds": 2,
+      "simulation_units_per_video_second": 5,
+      "interpolation": "none; zero-order frame hold",
+      "encoded_checks": {
+        "frame_indices": [
+          0,
+          240,
+          639
+        ],
+        "mean_absolute_rgb_errors": [
+          1.8010144997427984,
+          1.7811320087448559,
+          1.7729264724794238
+        ]
+      },
+      "ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "20/1",
+            "nb_frames": "640"
+          }
+        ],
+        "format": {
+          "duration": "32.000000"
+        }
+      }
+    }
+  },
+  "limitations": [
+    "The three comparisons use distinct preparations; the geometry and production models have 19 fields, protection has 20. They are not paired across movies.",
+    "Geometry first-split intervals are sampled brackets, not exact event times or an exact delay.",
+    "No original phase or material lineage is assigned after the first split.",
+    "Protection concentrations at intermediate times 5 through 120 were not saved; those frames are masks.",
+    "The evidence audit is not an independent dynamics replicate.",
+    "Source-driven persistence and growth do not establish bounded homeostasis or autonomy.",
+    "Production/payment interventions preserve coefficients as stated, not realized fluxes or resource histories. P/C share late absence despite different sampled loss brackets."
+  ]
+}

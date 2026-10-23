@@ -1,0 +1,59 @@
+{
+  "candidate": "p7g2_009",
+  "campaign": "oct9_512",
+  "seed": 1,
+  "backend": "repository-Blobkit CPU; physim.devices.step_chunk",
+  "L": 256.0,
+  "grid": [
+    512,
+    512
+  ],
+  "dx": 0.5,
+  "dt": 0.02,
+  "noise": 0.002,
+  "dtype": "float32",
+  "n_soup": 12,
+  "initialization": "Default dressed pokes with 0.5-pixel inhibitor-shadow kicks.",
+  "time_step_and_grid_unchanged": true,
+  "recorded_field_indices": [
+    0,
+    1,
+    4,
+    7
+  ],
+  "memch": [
+    2,
+    5
+  ],
+  "na": 2,
+  "nc": 6,
+  "duration": 750.0,
+  "cadence": 2.5,
+  "original_run_relation": "Fresh CPU realization. Original archived simulation used GPU noise; subsequent fields need not match.",
+  "size_note": "The 512-cell grid is chosen for this fresh visualization from the collection label; original complete numerical settings were not supplied.",
+  "sources": {
+    "outputs/sebastian-worlds-20261011/shortlisted-genomes/oct9_512__p7g2_009.json": "6e10e5278293fea8f47ffe4c758c359074151a28a1354916381675c4f836e167",
+    "outputs/sebastian-worlds-20261011/capture_videos.py": "f13b675c14fbb98a4136243c06ff4c4c439214ef611c3448954c48b1f1a0f386",
+    "packages/blobkit/blobkit/genome.py": "8f63c563b5beb75350ea3d06dbde74ca77898857425160a5347a0323810981c1",
+    "packages/blobkit/blobkit/soup/sim_cpu.py": "4cf2d9ea8d39ee8d7c4b34c4f13e7a9caa9d1e385287079f710e898388500f84",
+    "outputs/residency-environments-pr22/environments/physim/physim/devices.py": "43229b5040b4be428d7dbd35c99a680f5c8c6dbf83280a2620a73ffa706425b6"
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.0"
+  },
+  "wall_seconds": 736.5425324591342,
+  "finite_all_recorded_states": true,
+  "frames": 301,
+  "final_counts": [
+    242,
+    70
+  ],
+  "final_occupancy": [
+    0.2325897216796875,
+    0.481201171875
+  ],
+  "fields_sha256": "f0d2c08912f8f591c298758c74b9185c21c8c4d6aa608932c6d989e6373dbad1",
+  "publication_note": "Historical source metadata with local path prefixes removed. Saved visualization produced on 11 October 2026; no new simulation for the 23 October retrospective review. The scientific fields hash is a preserved declaration, not newly verified by reading the array.",
+  "original_protocol_sha256": "f2b577e74fcad8793375d211bd7f6038f3904bcea274cf7e24088c719c850291"
+}

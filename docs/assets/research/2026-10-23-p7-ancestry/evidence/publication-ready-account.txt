@@ -1,0 +1,24 @@
+Retained P7 formation before t250
+
+The earlier part of the retained P7 movie shows how the already selected body acquired its nested internal organization. Across all 101 saved observations from t0 to t250, one local A1 spot develops a surrounding ring, an A0 band and eventually the curled A1 interior used in the later persistence assessment. No recognizable parent producing multiple continuing apparent individuals was observed on this selected track.
+
+The assessment follows the exact fresh CPU p7g2_009 individual selected at t250, in the upper-left part of the full-domain view. Full A0 and A1 context was inspected at every saved time; fixed detail views supplemented that context. Tracing backward from t250 gave a readable spatial precursor at every sampled link, with no observed split, merge, disappearance or competing continuation. The record reaches a localized A1 spot already present at initialization. This describes apparent spatial continuity, not unobserved material ancestry, and the early spot does not yet have the mature named feature.
+
+Read forward, the sequence has several visible stages. A0 activity develops around the initial A1 spot, and an outer A1 ring emerges. By t30, a central spot, intervening A0 annulus and enclosing A1 ring are distinct. The central island is rounded triangular at t150 and increasingly lobed and indented at t180. By t210 the curled A1 stripe and low-A1 bay, beside the internal A0 band, are recognizable. That organization leads into the accepted t250 anchor. These stages summarize the visible sequence; they do not define exact feature-onset thresholds.
+
+Illustrative original frames
+
+| Encoded frame | Simulation time | Caption |
+| --- | --- | --- |
+| 0 | 0 | Localized A1 spot present at initialization; the mature enclosure and curled interior are absent. No earlier parent is visible. |
+| 12 | 30 | A distinct outer A1 ring surrounds the central spot, with an intervening A0 annulus. |
+| 60 | 150 | One enclosure contains a rounded triangular central A1 island. |
+| 72 | 180 | The internal A1 island is becoming lobed and indented within the continuing enclosure. |
+| 84 | 210 | The curled A1 stripe, low-A1 bay and adjacent A0 band are recognizable. |
+| 100 | 250 | The accepted selection anchor shows the nested organization used in the later persistence assessment. |
+
+These six frames illustrate a review of the complete 101-frame segment, rather than replacing it. The earlier accepted t250..750 assessment is reused unchanged: the same apparent body retains its distinguishing nested feature, with no observed split, merge or replacement on that track.
+
+The new result adds a visible formation sequence to that persistence finding. It does not supply the registered factual prerequisite for a copying study: a recognizable parent followed by multiple continuing apparent individuals. The bounded historical ancestry route therefore closes without a copying experiment or horizon extension.
+
+The evidence remains retrospective: t25, t250 and t750 were already seen before the original selection. Sampling every 2.5 simulation time units leaves intervening events unresolved. Inspecting these rendered A0/A1 panels does not establish how the full initial state was constructed, whether the full field was unstructured, or that the structure arose spontaneously.

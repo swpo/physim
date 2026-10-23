@@ -1,0 +1,532 @@
+{
+  "checks": [
+    {
+      "id": "manifest-study",
+      "passed": true
+    },
+    {
+      "id": "manifest-entrypoint",
+      "passed": true
+    },
+    {
+      "id": "manifest-environment",
+      "passed": true
+    },
+    {
+      "id": "exact-explicit-input-list",
+      "passed": true
+    },
+    {
+      "id": "manifest-result-bound",
+      "passed": true
+    },
+    {
+      "id": "manifest-storage-gate",
+      "passed": true
+    },
+    {
+      "id": "full-manifest-file-bounds",
+      "passed": true
+    },
+    {
+      "id": "source-checkpoint",
+      "passed": true
+    },
+    {
+      "id": "source-legacy_frame",
+      "passed": true
+    },
+    {
+      "id": "source-interiors",
+      "passed": true
+    },
+    {
+      "id": "source-legacy_frames_meta",
+      "passed": true
+    },
+    {
+      "id": "source-legacy_results_meta",
+      "passed": true
+    },
+    {
+      "id": "source-genome",
+      "passed": true
+    },
+    {
+      "id": "source-genome_source",
+      "passed": true
+    },
+    {
+      "id": "source-capture_source",
+      "passed": true
+    },
+    {
+      "id": "source-protocol",
+      "passed": true
+    },
+    {
+      "id": "source-devices_source",
+      "passed": true
+    },
+    {
+      "id": "source-selection",
+      "passed": true
+    },
+    {
+      "id": "source-reference_image",
+      "passed": true
+    },
+    {
+      "id": "source-display",
+      "passed": true
+    },
+    {
+      "id": "source-extraction_source",
+      "passed": true
+    },
+    {
+      "id": "source-detector_source",
+      "passed": true
+    },
+    {
+      "id": "source-mask_restore_source",
+      "passed": true
+    },
+    {
+      "id": "source-assessment",
+      "passed": true
+    },
+    {
+      "id": "source-evaluator_decision",
+      "passed": true
+    },
+    {
+      "id": "canonical-source-genome.py",
+      "passed": true
+    },
+    {
+      "id": "canonical-source-sim_cpu.py",
+      "passed": true
+    },
+    {
+      "id": "canonical-source-sim_v1.py",
+      "passed": true
+    },
+    {
+      "id": "pinned-runtime",
+      "passed": true
+    },
+    {
+      "id": "single-numerical-thread",
+      "passed": true
+    },
+    {
+      "id": "no-lock-bypass",
+      "passed": true
+    },
+    {
+      "id": "all-52-locks",
+      "passed": true
+    },
+    {
+      "id": "bound-genome-module",
+      "passed": true
+    },
+    {
+      "id": "complete-genome-validation",
+      "passed": true
+    },
+    {
+      "id": "original-genome-copy",
+      "passed": true
+    },
+    {
+      "id": "eight-field-model",
+      "passed": true
+    },
+    {
+      "id": "fixture-disk-zero",
+      "passed": true
+    },
+    {
+      "id": "fixture-disk-one-four-neighbors",
+      "passed": true
+    },
+    {
+      "id": "fixture-disk-integer-boundary",
+      "passed": true
+    },
+    {
+      "id": "fixture-periodic-translation",
+      "passed": true
+    },
+    {
+      "id": "fixture-erosion-square",
+      "passed": true
+    },
+    {
+      "id": "fixture-ring-excludes-interior",
+      "passed": true
+    },
+    {
+      "id": "fixture-control-is-exact-translation",
+      "passed": true
+    },
+    {
+      "id": "fixture-fixture-disjoint",
+      "passed": true
+    },
+    {
+      "id": "fixture-exact-six-arms",
+      "passed": true
+    },
+    {
+      "id": "fixture-union-DB",
+      "passed": true
+    },
+    {
+      "id": "fixture-union-DC",
+      "passed": true
+    },
+    {
+      "id": "fixture-sham-empty",
+      "passed": true
+    },
+    {
+      "id": "fixture-periodic-components",
+      "passed": true
+    },
+    {
+      "id": "fixture-separate-components",
+      "passed": true
+    },
+    {
+      "id": "fixture-packing-roundtrip",
+      "passed": true
+    },
+    {
+      "id": "fixture-packing-order",
+      "passed": true
+    },
+    {
+      "id": "fixture-input-not-mutated",
+      "passed": true
+    },
+    {
+      "id": "fixture-quant-vacuum",
+      "passed": true
+    },
+    {
+      "id": "fixture-quant-upper",
+      "passed": true
+    },
+    {
+      "id": "fixture-quant-half-ties-up",
+      "passed": true
+    },
+    {
+      "id": "fixture-quant-context-half",
+      "passed": true
+    },
+    {
+      "id": "fixture-display-clipping-explicit",
+      "passed": true
+    },
+    {
+      "id": "fixture-scalar-quantization-bound-15",
+      "passed": true
+    },
+    {
+      "id": "fixture-scalar-quantization-bound-255",
+      "passed": true
+    },
+    {
+      "id": "fixture-prospective-observation-count",
+      "passed": true
+    },
+    {
+      "id": "fixture-prospective-tail-count",
+      "passed": true
+    },
+    {
+      "id": "fixture-future-main-payload-bound",
+      "passed": true
+    },
+    {
+      "id": "fixture-future-caps-below-limit",
+      "passed": true
+    },
+    {
+      "id": "original-protocol-settings",
+      "passed": true
+    },
+    {
+      "id": "protocol-source-genome_source",
+      "passed": true
+    },
+    {
+      "id": "protocol-source-capture_source",
+      "passed": true
+    },
+    {
+      "id": "protocol-source-devices_source",
+      "passed": true
+    },
+    {
+      "id": "protocol-physics-genome.py",
+      "passed": true
+    },
+    {
+      "id": "protocol-physics-sim_cpu.py",
+      "passed": true
+    },
+    {
+      "id": "frame-source-semantics",
+      "passed": true
+    },
+    {
+      "id": "mask-source-semantics",
+      "passed": true
+    },
+    {
+      "id": "accepted-selection",
+      "passed": true
+    },
+    {
+      "id": "complete-field-finite",
+      "passed": true
+    },
+    {
+      "id": "checkpoint-time",
+      "passed": true
+    },
+    {
+      "id": "legacy-frame-finite",
+      "passed": true
+    },
+    {
+      "id": "positive-display-scales",
+      "passed": true
+    },
+    {
+      "id": "checkpoint-to-accepted-activators-exact",
+      "passed": true
+    },
+    {
+      "id": "legacy-interior-count",
+      "passed": true
+    },
+    {
+      "id": "legacy-interior-source",
+      "passed": true
+    },
+    {
+      "id": "legacy-interior-center",
+      "passed": true
+    },
+    {
+      "id": "legacy-interior-span",
+      "passed": true
+    },
+    {
+      "id": "boundary-ring-intersects-original-A1-contour",
+      "passed": true
+    },
+    {
+      "id": "B-contains-neighbor-contour",
+      "passed": true
+    },
+    {
+      "id": "necessary-interior-A0-band-pixels",
+      "passed": true
+    },
+    {
+      "id": "necessary-interior-A1-stripe-pixels",
+      "passed": true
+    },
+    {
+      "id": "necessary-interior-low-A1-pixels",
+      "passed": true
+    },
+    {
+      "id": "all-representative-inner-stripe-pixels-in-readout",
+      "passed": true
+    },
+    {
+      "id": "S-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "S-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "S-finite",
+      "passed": true
+    },
+    {
+      "id": "S-interior-unchanged",
+      "passed": true
+    },
+    {
+      "id": "S-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "S-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "B-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "B-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "B-finite",
+      "passed": true
+    },
+    {
+      "id": "B-interior-unchanged",
+      "passed": true
+    },
+    {
+      "id": "B-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "B-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "C-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "C-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "C-finite",
+      "passed": true
+    },
+    {
+      "id": "C-interior-unchanged",
+      "passed": true
+    },
+    {
+      "id": "C-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "C-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "D-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "D-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "D-finite",
+      "passed": true
+    },
+    {
+      "id": "D-interior-activators-vacuum",
+      "passed": true
+    },
+    {
+      "id": "D-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "D-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "D-coded-readout-erased",
+      "passed": true
+    },
+    {
+      "id": "DB-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "DB-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "DB-finite",
+      "passed": true
+    },
+    {
+      "id": "DB-interior-activators-vacuum",
+      "passed": true
+    },
+    {
+      "id": "DB-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "DB-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "DB-coded-readout-erased",
+      "passed": true
+    },
+    {
+      "id": "DC-all-six-other-fields-retained",
+      "passed": true
+    },
+    {
+      "id": "DC-outside-pulse-unchanged",
+      "passed": true
+    },
+    {
+      "id": "DC-finite",
+      "passed": true
+    },
+    {
+      "id": "DC-interior-activators-vacuum",
+      "passed": true
+    },
+    {
+      "id": "DC-interior-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "DC-context-quantization-bound",
+      "passed": true
+    },
+    {
+      "id": "DC-coded-readout-erased",
+      "passed": true
+    },
+    {
+      "id": "D-DB-DC-immediate-interior-equality",
+      "passed": true
+    },
+    {
+      "id": "checkpoint-remained-unchanged",
+      "passed": true
+    },
+    {
+      "id": "no-simulator-module-import",
+      "passed": true
+    },
+    {
+      "id": "static-archive-size",
+      "passed": true
+    },
+    {
+      "id": "static-review-size",
+      "passed": true
+    }
+  ]
+}

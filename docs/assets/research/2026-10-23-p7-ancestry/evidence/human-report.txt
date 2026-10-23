@@ -1,0 +1,7 @@
+The retained P7 history shows local formation from a spot already present at initialization. I inspected all 101 saved observations from t0 to t250, using full A0/A1 context and the fixed detail views. Tracing backward from the selected t250 body, I found one readable spatial precursor at every saved link, with no observed divide, merge, disappearance or competing continuation.
+
+Forward in time, a surrounding A0 band and outer A1 ring develop around the initial A1 spot. The central spot later becomes triangular, then indented, and finally takes on the curled A1 stripe and low-A1 bay recognizable at t250. The early spot does not already possess the mature feature.
+
+No recognizable parent producing multiple continuing apparent individuals appears on this track. The earlier t250..750 persistence judgment remains unchanged. This is a retrospective, finitely sampled formation record; it does not establish material ancestry, an unstructured full initial state or spontaneous origin.
+
+Decision: close this bounded historical ancestry route. It supplies no qualifying event for a copying experiment. Preserve the formation sequence as a descriptive result; do not extend the horizon or substitute another individual.

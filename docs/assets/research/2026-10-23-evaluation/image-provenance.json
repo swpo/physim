@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-23T11:41:10.252915+00:00",
+  "purpose": "Saved evidence for initial organism-evaluator calibration; no new simulation or field analysis.",
+  "images": [
+    {
+      "file": "p7g2_009-t750.png",
+      "source_archive_path": "outputs/compartment-detector-20261011/review/fresh__p7g2_009__00750.png",
+      "bytes": 719712,
+      "sha256": "4ec3d4c748f11799ac8d3e92276d3440feac1d16e553c547b1d1c8167811e4fb",
+      "width": 2100,
+      "height": 868,
+      "transform": "none; exact existing export"
+    },
+    {
+      "file": "p7g2_009-time-sampling.png",
+      "source_archive_path": "outputs/compartment-detector-20261011/time-sampling.png",
+      "bytes": 1185874,
+      "sha256": "43f0fea950fee86356d160e12fe739927dbe6345101a60ba35fc3da1c08c7ac8",
+      "width": 2102,
+      "height": 1493,
+      "transform": "none; exact existing export"
+    }
+  ],
+  "reading_limits": [
+    "Colors identify activator fields, not species.",
+    "Detector interior numbers are within-frame quality ranks, not tracked individual identities.",
+    "The t750 image is one snapshot; it cannot establish persistence.",
+    "The time-sampling image shows separate P7 snapshots at25,250,750 and per-frame score traces. Repeated enclosure detection does not establish survival of the same enclosure or its contents.",
+    "The legacy morphology score does not establish physical confinement, active maintenance or organism status."
+  ],
+  "raw_scientific_fields_in_this_publication": false,
+  "historical_detector_document_sha256": "7a074681203ecd234ef33630e431d0736f958232f7260d21eaaaf2a91318a128"
+}

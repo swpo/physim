@@ -1,0 +1,2227 @@
+{
+  "schema_version": 1,
+  "review_id": "p7-ancestry-prerequisite-v1",
+  "author": "/root/loop_reviewer",
+  "recorded_at_utc": "2026-10-23T19:06:58.492757+00:00",
+  "scope": "One bounded visual ancestry prerequisite for the already selected fresh CPU p7g2_009 t250 individual; no other individual, trajectory or source searched.",
+  "input_bindings": {
+    "request": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-evaluator-request.json",
+      "bytes": 3207,
+      "sha256": "9db9fa1dd024d32cfc967887e846f186590efe1d1b6194ed7f36ca2cb5e62ac2"
+    },
+    "operational_gate": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-recovery-acceptance.json",
+      "bytes": 3937,
+      "sha256": "228974fdf2d623e70b8d5d6cf5008076d347dd63717b5e1f50e66bc64fb72750"
+    },
+    "presentation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/presentation-provenance.json",
+      "bytes": 42866,
+      "sha256": "3c45711ccf3316043cf463ec95958bd8b266631fbcd452f2f9f6a65170186d69"
+    },
+    "protocol": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/selection-protocol.json",
+      "bytes": 8744,
+      "sha256": "054c4edc55ff4a0eea8f9bda90fee3bae96b99b0a429e6eeade92ba1757cd7d5"
+    },
+    "validation": {
+      "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/root-presentation-validation.json",
+      "bytes": 1440,
+      "sha256": "892edc02268586157b3aa53c7a6940e043cb96a9dcfc5531332e74b97d40d196"
+    }
+  },
+  "source_movie": {
+    "path": "outputs/sebastian-worlds-20261011/videos/p7g2_009/01-native.mp4",
+    "bytes": 8411681,
+    "sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d"
+  },
+  "accepted_later_assessment_reused": {
+    "path": "handoff/swarm_continuous_20261017/evaluation/p7-retrospective/assessment.json",
+    "bytes": 7777,
+    "sha256": "1dbe9f6918586059617cf8f900cf9e3773890a317d766e9b40a95ea52a804eb7"
+  },
+  "method": {
+    "inspection": "All nine fixed sheets were directly viewed, covering full A0/A1 panels and their frozen detail crops for every encoded frame 0..100. Complete original four-panel PNGs were additionally viewed at frames 0,12,60,72,84,100.",
+    "sheet_inspection_order": [
+      [
+        96,
+        100
+      ],
+      [
+        84,
+        95
+      ],
+      [
+        72,
+        83
+      ],
+      [
+        60,
+        71
+      ],
+      [
+        48,
+        59
+      ],
+      [
+        36,
+        47
+      ],
+      [
+        24,
+        35
+      ],
+      [
+        12,
+        23
+      ],
+      [
+        0,
+        11
+      ]
+    ],
+    "direction": "Trace backward from the already selected t250 anchor, then describe the sequence forward.",
+    "primary_context": "Full A0/A1 panels; fixed detail crops are supplementary.",
+    "display": "Existing cyan A0 and pale-cream A1 movie panels. Other displayed channels were retained in complete PNGs but not interpreted for this question.",
+    "qualitative_phase_definition": "Intervals summarize visually observed development; they are not numerical measurements, feature-onset thresholds or claims that every aspect appears at every frame of the interval.",
+    "scientific_arrays_accessed": false,
+    "new_simulation_or_numerical_feature_analysis": false,
+    "presentation_byte_integrity": {
+      "decoded_pngs_verified": 101,
+      "contact_sheets_verified": 9,
+      "all_hashes_match_frozen_provenance": true
+    },
+    "upstream_generation_flags": "The frozen presentation and root validation retain their pre-review false flags. This separate evaluator record records completed visual coverage without modifying those inputs."
+  },
+  "coverage": {
+    "encoded_frame_indices_inclusive": [
+      0,
+      100
+    ],
+    "simulation_times_inclusive": [
+      0,
+      250
+    ],
+    "cadence_simulation_time": 2.5,
+    "observations_reviewed": 101,
+    "contact_sheets_reviewed": 9,
+    "all_registered_observations_reviewed": true,
+    "complete_original_png_indices_additionally_viewed": [
+      0,
+      12,
+      60,
+      72,
+      84,
+      100
+    ]
+  },
+  "forward_formation_sequence": [
+    {
+      "id": "initialized_spot",
+      "frames": [
+        0,
+        0
+      ],
+      "times": [
+        0,
+        0
+      ],
+      "observation": "A localized A1 spot is already present at the selected spatial position in the initialized frame. The corresponding local A0 display is dark. The later enclosing ring and curled interior are not yet present."
+    },
+    {
+      "id": "rings_emerge",
+      "frames": [
+        1,
+        11
+      ],
+      "times": [
+        2.5,
+        27.5
+      ],
+      "observation": "Across this interval, A0 activity becomes visible around the same A1 spot, and an outer A1 ring emerges toward the end. This is local organization around the continuing spot, without a visible parent producing multiple continuing individuals."
+    },
+    {
+      "id": "concentric_organization",
+      "frames": [
+        12,
+        23
+      ],
+      "times": [
+        30,
+        57.5
+      ],
+      "observation": "A distinct outer A1 ring encloses the central A1 spot, with an intervening A0 annulus. Additional waves develop outside it; the selected inner enclosing ring does not visibly merge or divide."
+    },
+    {
+      "id": "enclosed_central_spot",
+      "frames": [
+        24,
+        47
+      ],
+      "times": [
+        60,
+        117.5
+      ],
+      "observation": "One enclosing ring, an intermediate A0 band and a solid central A1 spot remain recognizable. Surrounding waves and spots increase the exterior texture without creating an observed alternative continuation for the selected precursor."
+    },
+    {
+      "id": "central_deformation",
+      "frames": [
+        48,
+        59
+      ],
+      "times": [
+        120,
+        147.5
+      ],
+      "observation": "The central A1 spot gradually becomes triangular within the same enclosing organization."
+    },
+    {
+      "id": "triangular_lobed_island",
+      "frames": [
+        60,
+        71
+      ],
+      "times": [
+        150,
+        177.5
+      ],
+      "observation": "One enclosure contains a rounded triangular and then lobed central A1 island. There is no observed separation into multiple continuing apparent individuals."
+    },
+    {
+      "id": "interior_indentation",
+      "frames": [
+        72,
+        83
+      ],
+      "times": [
+        180,
+        207.5
+      ],
+      "observation": "Indentation of the central A1 island develops a low-A1 bay and a curled form while the same surrounding enclosure continues."
+    },
+    {
+      "id": "curled_interior_recognizable",
+      "frames": [
+        84,
+        100
+      ],
+      "times": [
+        210,
+        250
+      ],
+      "observation": "The curled A1 interior stripe and low-A1 bay, with an adjacent A0 band inside the enclosing A1 boundary, are recognizable and lead continuously to the accepted t250 selection anchor."
+    }
+  ],
+  "candidate_lineage_events": [],
+  "first_backward_ancestry_ambiguity": null,
+  "left_observation_boundary": {
+    "frame": 0,
+    "time": 0,
+    "status": "Localized A1 spot already present in initialized state. No earlier record or material ancestry is inferred."
+  },
+  "continuity_interpretation": "A unique apparent spatial precursor is readable across the saved links from t250 back to t0. The early spot does not yet possess the mature named feature. This is neither material identity nor evidence that an individual satisfying all three later gates exists from t0.",
+  "event_result": "No recognizable pre-event parent producing multiple continuing apparent individuals on the selected lineage was observed.",
+  "selection_and_sampling_limits": [
+    "Retrospective selected evidence: t25,t250,t750 were seen before the original selection. This is not held-out confirmation.",
+    "Observations are separated by 2.5 simulation time units; the movie does not resolve events between saved frames.",
+    "Only rendered A0/A1 history was evaluated. The full initialization and unobserved material ancestry are not established.",
+    "No extrapolation to unreviewed individuals, other trajectories or times beyond the retained movie."
+  ],
+  "communication_keyframes": [
+    {
+      "encoded_frame_index": 0,
+      "simulation_time": 0.0,
+      "source_display_second": 0.0,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000000.png",
+        "bytes": 305859,
+        "sha256": "ccb6bfbd454664f220b25ec469705e2eb435a3f40433d5baf3bb514a928977fd"
+      },
+      "caption": "Localized A1 spot present at initialization; the mature enclosure and curled interior are absent. No earlier parent is visible.",
+      "original_complete_png_directly_viewed": true
+    },
+    {
+      "encoded_frame_index": 12,
+      "simulation_time": 30.0,
+      "source_display_second": 0.75,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000012.png",
+        "bytes": 480956,
+        "sha256": "8434e1681652c9e7966467574e56b3b5eae6f35a3b613cea525b0f7f13a4b5e2"
+      },
+      "caption": "At t30, a distinct outer A1 ring surrounds the central spot, with an intervening A0 annulus.",
+      "original_complete_png_directly_viewed": true
+    },
+    {
+      "encoded_frame_index": 60,
+      "simulation_time": 150.0,
+      "source_display_second": 3.75,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000060.png",
+        "bytes": 983651,
+        "sha256": "fd34bff05712159f514843dc52f4b000981d96c63e1e0200ca5ac10cbdcf2a61"
+      },
+      "caption": "At t150, one enclosure contains a rounded triangular central A1 island.",
+      "original_complete_png_directly_viewed": true
+    },
+    {
+      "encoded_frame_index": 72,
+      "simulation_time": 180.0,
+      "source_display_second": 4.5,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000072.png",
+        "bytes": 1003041,
+        "sha256": "696556cbb706cefdfea54e092361a5630f24afe87923b877977db72bff003da0"
+      },
+      "caption": "At t180, the internal A1 island is becoming lobed and indented within the continuing enclosure.",
+      "original_complete_png_directly_viewed": true
+    },
+    {
+      "encoded_frame_index": 84,
+      "simulation_time": 210.0,
+      "source_display_second": 5.25,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000084.png",
+        "bytes": 1018926,
+        "sha256": "165d2e27a203bb1fab71fa8ae755ab05ab9956c80c79fa2c41388f60dce89234"
+      },
+      "caption": "At t210, the curled A1 stripe, low-A1 bay and adjacent A0 band are recognizable.",
+      "original_complete_png_directly_viewed": true
+    },
+    {
+      "encoded_frame_index": 100,
+      "simulation_time": 250.0,
+      "source_display_second": 6.25,
+      "image": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000100.png",
+        "bytes": 1041480,
+        "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+      },
+      "caption": "At t250, the accepted selection anchor shows the nested organization used in the later persistence assessment.",
+      "original_complete_png_directly_viewed": true
+    }
+  ],
+  "observations": [
+    {
+      "encoded_frame_index": 0,
+      "simulation_time": 0.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000000.png",
+        "bytes": 305859,
+        "sha256": "ccb6bfbd454664f220b25ec469705e2eb435a3f40433d5baf3bb514a928977fd"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "initialized_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "not_applicable_record_begins",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 1,
+      "simulation_time": 2.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000001.png",
+        "bytes": 310112,
+        "sha256": "fd7a04faa8d4200fe647620028bd4f11db5a3b20c7ba6fce4a3b23c9a3d9dbb5"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 2,
+      "simulation_time": 5.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000002.png",
+        "bytes": 326869,
+        "sha256": "dea0c03977c52c8bf5d7e519407d063de6528f40bd9b4ab4ac78fb32935bd3fc"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 3,
+      "simulation_time": 7.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000003.png",
+        "bytes": 334023,
+        "sha256": "d3f4e4b4a86d3eedb7ca009f8dce39223b91c472daef74683edfe12933431a29"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 4,
+      "simulation_time": 10.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000004.png",
+        "bytes": 339057,
+        "sha256": "0a1c0f805ccf8267fa5c3dea17fdc4be34865561ee4ac24609f22aa58c861e88"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 5,
+      "simulation_time": 12.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000005.png",
+        "bytes": 359062,
+        "sha256": "b7165cc4cbb70201a7da06258e55fa5f68a00534d6d685f002ad261f230f9870"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 6,
+      "simulation_time": 15.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000006.png",
+        "bytes": 381107,
+        "sha256": "65a91075c847d97275b86ee75d26812107014488e89019ed91ae1acb31e2c03c"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 7,
+      "simulation_time": 17.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000007.png",
+        "bytes": 397384,
+        "sha256": "d86f7284640fd0985d97f8cb29a0e4e75924bfe82e5b9bb5172ac5590949ab14"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 8,
+      "simulation_time": 20.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000008.png",
+        "bytes": 405470,
+        "sha256": "a457aa10300ff0efecb1cb81da8c450ddb68b1658078ce73b9bbac8f5b027ca7"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 9,
+      "simulation_time": 22.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000009.png",
+        "bytes": 431370,
+        "sha256": "e9fae5a8e7527b04393008575b5e91446f6fd53e9fdf9fc02e4f996ffebdd69d"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 10,
+      "simulation_time": 25.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000010.png",
+        "bytes": 448659,
+        "sha256": "f6b8245da0e002892ae05a9ee593093d0ae5fd384443dcba9826221732524d9b"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 11,
+      "simulation_time": 27.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000011.png",
+        "bytes": 469189,
+        "sha256": "16d447d9fbc2a7bc725391b0b541ca311f78f77162d23e5ffc7575034aa51983"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000000-000011.jpg",
+        "sha256": "e425ae6bec8c0db2829c55a41766b5cf9c855e691cbb63186a379e276662d958"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "rings_emerge",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 12,
+      "simulation_time": 30.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000012.png",
+        "bytes": 480956,
+        "sha256": "8434e1681652c9e7966467574e56b3b5eae6f35a3b613cea525b0f7f13a4b5e2"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 13,
+      "simulation_time": 32.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000013.png",
+        "bytes": 516583,
+        "sha256": "1ee24c794a8633805401cf04e9d40e0e7333001a8149b3ce341f7d9beed5e7b7"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 14,
+      "simulation_time": 35.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000014.png",
+        "bytes": 533045,
+        "sha256": "cc0805f56b4328f8363555b8a972976f0990c834d0097c3371028999ba23e5b3"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 15,
+      "simulation_time": 37.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000015.png",
+        "bytes": 561377,
+        "sha256": "f24e89703f23260dd5c598cd746fcd4355cce38310548955df90657c4aa8ae8a"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 16,
+      "simulation_time": 40.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000016.png",
+        "bytes": 587701,
+        "sha256": "b398e0c6cb15d1f5cc269d6dead3acfd357bd4e88a97098d07adbd0bc8d834f4"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 17,
+      "simulation_time": 42.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000017.png",
+        "bytes": 616601,
+        "sha256": "95d389e27f8d91149cbdf3fcb2ecb151e0cda4d89090922a6a9030b855166cd0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 18,
+      "simulation_time": 45.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000018.png",
+        "bytes": 628175,
+        "sha256": "e294008e9f43ea682ed299a1b36e957edd24ebebff2b136bfc2f07322146be83"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 19,
+      "simulation_time": 47.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000019.png",
+        "bytes": 653403,
+        "sha256": "7d22add81696978b04cfedbfa032879de21beebfb212377d59d8e4881be36277"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 20,
+      "simulation_time": 50.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000020.png",
+        "bytes": 671670,
+        "sha256": "018d1222a5693928a6543fe22d741eb982d95374ffa00701ee0bd9347fa7a975"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 21,
+      "simulation_time": 52.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000021.png",
+        "bytes": 694284,
+        "sha256": "bb17259744b2a6a13a203508e955d2d7f361e58a0c503c1250a3c8858ecc6c67"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 22,
+      "simulation_time": 55.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000022.png",
+        "bytes": 707609,
+        "sha256": "409c6e6de9384963939b17498556eada0c2231500e5cf25cffcf16b3cfda953b"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 23,
+      "simulation_time": 57.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000023.png",
+        "bytes": 734096,
+        "sha256": "acefda9665c8fd0718e6b4de2a4150d691dfba1529ce85971478f4909eba27d0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000012-000023.jpg",
+        "sha256": "1cc538edc5258c2000f9a10cf7d7ca439cae56262208b068014d0fa9213b13e9"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "concentric_organization",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 24,
+      "simulation_time": 60.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000024.png",
+        "bytes": 755037,
+        "sha256": "8830c75ca0a3ab117ca850376614ae97f89ad7b3959d479cbf25722cd0615315"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 25,
+      "simulation_time": 62.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000025.png",
+        "bytes": 775695,
+        "sha256": "53637f5f1ace56978fd03de835551bd1654b1bd07bcac0733be335af742bb2c2"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 26,
+      "simulation_time": 65.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000026.png",
+        "bytes": 793470,
+        "sha256": "014dff6a6df7b17482f2e29e17b5892000c6a704e0b282a6c66e4e7c6973ef3a"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 27,
+      "simulation_time": 67.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000027.png",
+        "bytes": 812053,
+        "sha256": "0bb7c8b8c47ecfd59d8a98edeefce84586b835d492300bedd5aab14345b2a4dc"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 28,
+      "simulation_time": 70.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000028.png",
+        "bytes": 828952,
+        "sha256": "d5b04bd7838a89c373d7b3f5faa04aec7eb3616f031bda73a74376ec1be43f39"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 29,
+      "simulation_time": 72.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000029.png",
+        "bytes": 843512,
+        "sha256": "5f8a825b69b24d13a53a5312440f07f0ad9586f587e15a700d8512fcfc345f3b"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 30,
+      "simulation_time": 75.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000030.png",
+        "bytes": 855429,
+        "sha256": "0ccb5c4cd0d66b2b28b606ec194de4a8278290a3bce976382bb3932893027489"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 31,
+      "simulation_time": 77.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000031.png",
+        "bytes": 867699,
+        "sha256": "8d51159bcca2d5ffb8775f6d8fdddc7c2cc41cac92912402420873411508c6df"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 32,
+      "simulation_time": 80.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000032.png",
+        "bytes": 879081,
+        "sha256": "b5213d258b1e49960311830c28f12b6f9d225fa6dad27b72fa045971119099b3"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 33,
+      "simulation_time": 82.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000033.png",
+        "bytes": 883309,
+        "sha256": "c92a83e605398cbb18630bc2e472610579c86b9e9611836cc1625e067ee6bf24"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 34,
+      "simulation_time": 85.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000034.png",
+        "bytes": 888482,
+        "sha256": "bc3fbd37b22ce82ff3ac6bab738968ee95e1556d7870b4a049d7f16d6dc53145"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 35,
+      "simulation_time": 87.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000035.png",
+        "bytes": 893478,
+        "sha256": "1e5086d4f24a9a75c26438a8ff0b6d51837a0c96f84eaa4eaffe45b32e1eb83e"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000024-000035.jpg",
+        "sha256": "dccf3cb552fccf5e125e9f275dd467a5144c4b4d4513733330e050c5a3152522"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 36,
+      "simulation_time": 90.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000036.png",
+        "bytes": 904573,
+        "sha256": "077f80662b70443d47738ebe95635527ebcb53e046177b5452fee7d956ac35a6"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 37,
+      "simulation_time": 92.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000037.png",
+        "bytes": 910734,
+        "sha256": "994887a07f0be239fbe5f6e5b2583f80818f53d92e143f153e2d3530efb58bc8"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 38,
+      "simulation_time": 95.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000038.png",
+        "bytes": 917422,
+        "sha256": "41b9aaeb0ed66851e4b83614feed3172f581fb99c91528b420236903a5f218bb"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 39,
+      "simulation_time": 97.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000039.png",
+        "bytes": 923133,
+        "sha256": "12ba5d699aa3a12a27bb3a90f92a208dd1c5f6d50c9c35cea939f2e9413be5b8"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 40,
+      "simulation_time": 100.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000040.png",
+        "bytes": 928530,
+        "sha256": "6ff6d3187e7146e03cd9461c09a8865c23937aab087415b1a48dcbf116846b14"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 41,
+      "simulation_time": 102.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000041.png",
+        "bytes": 932791,
+        "sha256": "ec3f077239ea7d3f33d67619df752cfe110e02b6a05350c80ca441e177057e02"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 42,
+      "simulation_time": 105.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000042.png",
+        "bytes": 938233,
+        "sha256": "74e74058df927fb7ee7aa72fe1b02a63f261f77d12d1d1928042876f360799a5"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 43,
+      "simulation_time": 107.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000043.png",
+        "bytes": 941407,
+        "sha256": "3cd4e5afa423e2867e277d7aad101c5d36f9ce3e2969c679c52428a88a7e9a1d"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 44,
+      "simulation_time": 110.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000044.png",
+        "bytes": 945444,
+        "sha256": "a57dd6cd7866b5d678b4fcb4c42d4781c8d5cd8a3c8da44a1eec837776198e16"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 45,
+      "simulation_time": 112.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000045.png",
+        "bytes": 949155,
+        "sha256": "50adc9cbbee5544a090f44bac702286829928a20659b1fe5b2732ae25cc659f9"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 46,
+      "simulation_time": 115.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000046.png",
+        "bytes": 952814,
+        "sha256": "0d1817478cdf6f985897a8286262b38912489ea03afdf37c7fb0411c95a97dd0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 47,
+      "simulation_time": 117.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000047.png",
+        "bytes": 955421,
+        "sha256": "a1e9d33f5f5897d25ffb7bd0f1c6c9e23f84ac9db86dd44e6c7b0ade3899b508"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000036-000047.jpg",
+        "sha256": "566d9e62575e992ac080ead1a814c1d03fb96dfc4df4c97e60e0aec1515ad863"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "enclosed_central_spot",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 48,
+      "simulation_time": 120.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000048.png",
+        "bytes": 957365,
+        "sha256": "b7084deef8072280d95be7fa9ab9e882929d5d25e16ca569ed3e2203dfd46ac6"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 49,
+      "simulation_time": 122.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000049.png",
+        "bytes": 960829,
+        "sha256": "eaf7ce20d7db1f753c5182a6e07af8bd2106ca727aee8aab5b8df95e3b7c8322"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 50,
+      "simulation_time": 125.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000050.png",
+        "bytes": 963629,
+        "sha256": "86366771d0a3d7b6a0cb79835b9c5b7830ad98b4ee8b6bdb622f40145b882e3a"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 51,
+      "simulation_time": 127.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000051.png",
+        "bytes": 965876,
+        "sha256": "83687dd2eb8358ff246bbc4536f995ba45f84d343c491d04086eb23799d7d7fc"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 52,
+      "simulation_time": 130.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000052.png",
+        "bytes": 968801,
+        "sha256": "027e87a373598350f7ef743ae6877c497793879ff3881d8cb36e849031e2cc68"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 53,
+      "simulation_time": 132.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000053.png",
+        "bytes": 971084,
+        "sha256": "e74654fb31495fad6b90bbdccb29a3559d5f5bfca9b7e192688123a1ddb19258"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 54,
+      "simulation_time": 135.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000054.png",
+        "bytes": 972337,
+        "sha256": "b4b2a61efe16e39dd434d741369e779bea6584c86ec9dfd705d82ff313fd514d"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 55,
+      "simulation_time": 137.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000055.png",
+        "bytes": 973417,
+        "sha256": "89e15abd0e148f7aea457812a657f8204569281a1e2743f120a240b8d9186e25"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 56,
+      "simulation_time": 140.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000056.png",
+        "bytes": 974713,
+        "sha256": "b01e0293d58708861fd49a08a6e92126f8a8b0f5722181aac457c95b7cb3dd84"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 57,
+      "simulation_time": 142.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000057.png",
+        "bytes": 977665,
+        "sha256": "5dc42184479ca160bd90e9afdfc8c88616879c50500cb3595842edcbc87cbb27"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 58,
+      "simulation_time": 145.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000058.png",
+        "bytes": 979514,
+        "sha256": "3e60f17153b71d5b1fc2c67a9d825938f83de5149cdd8e0ca7d7177d315871fa"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 59,
+      "simulation_time": 147.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000059.png",
+        "bytes": 981063,
+        "sha256": "66349c5bce138c116263e47e06ebfdbe9d2645a21021384625f223cf7e2ea435"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000048-000059.jpg",
+        "sha256": "63b137fcb3ad8d77e1735dd55df691d8f676120031726403892dc5e5c015e446"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "central_deformation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 60,
+      "simulation_time": 150.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000060.png",
+        "bytes": 983651,
+        "sha256": "fd34bff05712159f514843dc52f4b000981d96c63e1e0200ca5ac10cbdcf2a61"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 61,
+      "simulation_time": 152.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000061.png",
+        "bytes": 985566,
+        "sha256": "39a7d07e63ba4dc956bdae6232eff65201140432132c9470c019a8c66028291b"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 62,
+      "simulation_time": 155.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000062.png",
+        "bytes": 987643,
+        "sha256": "a6d33c3a035b5c72fefdeda99bcd899c67501f932a7fb20056b1cee21ac38058"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 63,
+      "simulation_time": 157.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000063.png",
+        "bytes": 989465,
+        "sha256": "83db8f96c9121e0e2d8fec9a8c282f28116292c91ace8265aff14372282416b1"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 64,
+      "simulation_time": 160.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000064.png",
+        "bytes": 991831,
+        "sha256": "9a734f6054feac633f6791a589f55dc5e439d691c13b0e2d80786a9521426441"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 65,
+      "simulation_time": 162.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000065.png",
+        "bytes": 994030,
+        "sha256": "f4d95f788eed02e6d0a82252d9f6c9dabf10e5a0d60c96d0e799c992ed65340f"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 66,
+      "simulation_time": 165.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000066.png",
+        "bytes": 995742,
+        "sha256": "267097219b158e065573f1d30b1f4c0ac335c463068bf91b0e36e30850944700"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 67,
+      "simulation_time": 167.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000067.png",
+        "bytes": 996899,
+        "sha256": "c70bd7382b484f3ff8115fd3b97bbe170944f7d1c522b6be357c604a950dc3e1"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 68,
+      "simulation_time": 170.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000068.png",
+        "bytes": 997474,
+        "sha256": "4813e8b858a32bedf235330ea2710b53060b1f28e8fdf5a75098617fcaf09783"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 69,
+      "simulation_time": 172.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000069.png",
+        "bytes": 997909,
+        "sha256": "02deec0ee46a73af2d45852542272acc3c741f29f912ce2cc5176fdc387404b8"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 70,
+      "simulation_time": 175.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000070.png",
+        "bytes": 999467,
+        "sha256": "4152ed21e081039efa3b0f3bd161a5565c7584117379704d687a78737d86052d"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 71,
+      "simulation_time": 177.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000071.png",
+        "bytes": 1001255,
+        "sha256": "7f5783a29d9ae52ba9d66a4684bd0d697157b0723467677320ae9d3755ef2bc3"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000060-000071.jpg",
+        "sha256": "c5e6576190a05264b40fd480fe76499637edee21b6ba2e41aec44c13636c5135"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "triangular_lobed_island",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 72,
+      "simulation_time": 180.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000072.png",
+        "bytes": 1003041,
+        "sha256": "696556cbb706cefdfea54e092361a5630f24afe87923b877977db72bff003da0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 73,
+      "simulation_time": 182.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000073.png",
+        "bytes": 1004257,
+        "sha256": "94ae030d343be793d756c872c9854afba3945f3c6bdb47cc075494f4eae385b0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 74,
+      "simulation_time": 185.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000074.png",
+        "bytes": 1005699,
+        "sha256": "97583b03e1e6a918f541be63dff92fed66b326311938370e016f8160b45cfc13"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 75,
+      "simulation_time": 187.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000075.png",
+        "bytes": 1009103,
+        "sha256": "c79a5cfd83bb01b1ff0af92577100b00544175a8e0addf7f9824100ba867a595"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 76,
+      "simulation_time": 190.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000076.png",
+        "bytes": 1011049,
+        "sha256": "99bd305b670d7bf44d41fb4571428630fe71c314feb65b9529f044a21a3287a8"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 77,
+      "simulation_time": 192.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000077.png",
+        "bytes": 1012173,
+        "sha256": "3a104e933e2f71b4e7fd2f56b4b4b2f9f5b819f937d4b93bddc84e2fb588ae17"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 78,
+      "simulation_time": 195.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000078.png",
+        "bytes": 1013692,
+        "sha256": "4f6c1300e5e3179db4445a9138476bef5369f6cd42b547517da5912f04f0214a"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 79,
+      "simulation_time": 197.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000079.png",
+        "bytes": 1013866,
+        "sha256": "da9ffad82301ece18abffdf340f09cc445042c9c4fe44e8dcf40e3c8e9ec1fde"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 80,
+      "simulation_time": 200.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000080.png",
+        "bytes": 1015764,
+        "sha256": "e9599c3267c4ab59b5012ec53052a52a2178fb56be3a34f45c0266738d4680eb"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 81,
+      "simulation_time": 202.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000081.png",
+        "bytes": 1016719,
+        "sha256": "d7423f7047f56f38d5849fcfdf42c4b81a58f0823f8fd3c77e03492f12dde454"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 82,
+      "simulation_time": 205.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000082.png",
+        "bytes": 1018940,
+        "sha256": "14228bb8741d94013f4535ded88f25c6e27af233395885c105d64a1a6dae58a4"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 83,
+      "simulation_time": 207.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000083.png",
+        "bytes": 1018996,
+        "sha256": "2d4dc7886b6f75555be885d37d908bd9f5af3c627cd0e53befbb73bbbb5a7b64"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000072-000083.jpg",
+        "sha256": "e6fa025632e6616e5d7be7b07a0a897c3e8f1c55e4cb4da95ef4c44a2160497c"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "interior_indentation",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 84,
+      "simulation_time": 210.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000084.png",
+        "bytes": 1018926,
+        "sha256": "165d2e27a203bb1fab71fa8ae755ab05ab9956c80c79fa2c41388f60dce89234"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 85,
+      "simulation_time": 212.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000085.png",
+        "bytes": 1020646,
+        "sha256": "3e25f0c85b36c31996f33806b32ab6dce60ed913930ccd2f7a7e9a9a899f1d0c"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 86,
+      "simulation_time": 215.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000086.png",
+        "bytes": 1022488,
+        "sha256": "99975a7b94031db4005b8038e15b0dfd44e568455311bc507d5fab951076b39f"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 87,
+      "simulation_time": 217.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000087.png",
+        "bytes": 1024244,
+        "sha256": "fba7f6452300ce396e90ef4c6391816fcc35dffa67b39e08ef7dca0ae4841063"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 88,
+      "simulation_time": 220.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000088.png",
+        "bytes": 1026983,
+        "sha256": "a855c7a44600249bf28fb3468f4f1524ae5cc1d5738936c8c42bae515fe46b7c"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 89,
+      "simulation_time": 222.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000089.png",
+        "bytes": 1029367,
+        "sha256": "0e330d65ca140c3cafeb7da015de6f187ca4bd19b0e0ddf8bcf93e61fbdf0422"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 90,
+      "simulation_time": 225.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000090.png",
+        "bytes": 1030424,
+        "sha256": "f0490f228cb6546aea17ea3b8875628ea5822728a328ddc495ae82ef476dacd7"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 91,
+      "simulation_time": 227.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000091.png",
+        "bytes": 1031323,
+        "sha256": "1721c67134eaa03f77917c37c4dfdc68f88f923ba017249deed4b37791a2e124"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 92,
+      "simulation_time": 230.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000092.png",
+        "bytes": 1031737,
+        "sha256": "63991081898c012e444b753bf0facb6d3123a4439da711d47647af730eeedca5"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 93,
+      "simulation_time": 232.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000093.png",
+        "bytes": 1033502,
+        "sha256": "14d2a44528b25789492445f9cd71d049355b3be8c85e3640c51f51bf622ee7ea"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 94,
+      "simulation_time": 235.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000094.png",
+        "bytes": 1035133,
+        "sha256": "7c614ab035b00ba38bffa2dc384490c887b46c693eeec2d2a9dd3c02de301bdd"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 95,
+      "simulation_time": 237.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000095.png",
+        "bytes": 1035939,
+        "sha256": "6cf72bada9c336cba1ce486b3b7053ad48458ffeaf5a9e08c247605ec4343940"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000084-000095.jpg",
+        "sha256": "5f40ad33ae3590b741e7fcbdf71cc6b66f5a3acbe8a8af97b0b14a2c7a023807"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 96,
+      "simulation_time": 240.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000096.png",
+        "bytes": 1036311,
+        "sha256": "d7f4d13ed02fb8fa0e22dfecbb6daf84052644d3414aaf7b9776d45616bf7391"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000096-000100.jpg",
+        "sha256": "ac7211cc7edf5769ba6faa5046f312c4d5c7580534ed7dded91acac0da9f5822"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 97,
+      "simulation_time": 242.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000097.png",
+        "bytes": 1037929,
+        "sha256": "9b8fde35019e30cfe8d4d98ba778cb408f5ef98c8e3a85e266519f2db06d0080"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000096-000100.jpg",
+        "sha256": "ac7211cc7edf5769ba6faa5046f312c4d5c7580534ed7dded91acac0da9f5822"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 98,
+      "simulation_time": 245.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000098.png",
+        "bytes": 1039368,
+        "sha256": "e4273ad6985af22030faf8acb1308513b2825fd7085bebebdd336e01661ce132"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000096-000100.jpg",
+        "sha256": "ac7211cc7edf5769ba6faa5046f312c4d5c7580534ed7dded91acac0da9f5822"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 99,
+      "simulation_time": 247.5,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000099.png",
+        "bytes": 1040339,
+        "sha256": "01eabc119692b98ee2690c25392fa8c016a17b0628505ead73b2d68d2fb91f53"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000096-000100.jpg",
+        "sha256": "ac7211cc7edf5769ba6faa5046f312c4d5c7580534ed7dded91acac0da9f5822"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": false,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    },
+    {
+      "encoded_frame_index": 100,
+      "simulation_time": 250.0,
+      "source_png": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/native-000100.png",
+        "bytes": 1041480,
+        "sha256": "bd85dc341f78d9a8730f2cc93249c1727e2b47cc1c7cbb339a8d798c6972f6b0"
+      },
+      "viewed_contact_sheet": {
+        "path": "handoff/swarm_continuous_20261017/evaluation/p7-ancestry-prerequisite/frames/review-sheet-000096-000100.jpg",
+        "sha256": "ac7211cc7edf5769ba6faa5046f312c4d5c7580534ed7dded91acac0da9f5822"
+      },
+      "full_A0_A1_context_and_fixed_detail_visually_reviewed": true,
+      "complete_original_png_additionally_viewed": true,
+      "qualitative_phase": "curled_interior_recognizable",
+      "apparent_spatial_precursor_link_to_previous_saved_observation": "readable_without_observed_ambiguity",
+      "qualifying_parent_to_multiple_continuing_individuals_event_observed": false,
+      "candidate_ancestry_ambiguity_observed": false
+    }
+  ]
+}

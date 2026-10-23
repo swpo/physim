@@ -1,0 +1,1866 @@
+{
+  "schema_version": 1,
+  "method": "Evaluator visual judgments from every full-domain A0/A1 panel and the same fixed supplementary detail crop; no numerical tracking or feature calculation. Status rows are manually assigned following visual inspection.",
+  "selection_protocol_sha256": "d27f2525cbfdbd75a438726bc3ae96a0a0dbeae3727599eefd8a92bf8f3c6ffc",
+  "source_movie_sha256": "b23e458f986f05e50c7df259b8b9e01d9634e872bf88e4eb2d8b7f94fbc99d3d",
+  "review_complete": true,
+  "observations": [
+    {
+      "encoded_frame_index": 100,
+      "simulation_time": 250.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 101,
+      "simulation_time": 252.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 102,
+      "simulation_time": 255.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 103,
+      "simulation_time": 257.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 104,
+      "simulation_time": 260.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 105,
+      "simulation_time": 262.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 106,
+      "simulation_time": 265.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 107,
+      "simulation_time": 267.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 108,
+      "simulation_time": 270.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 109,
+      "simulation_time": 272.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 110,
+      "simulation_time": 275.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 111,
+      "simulation_time": 277.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "100-111",
+      "contact_sheet_sha256": "53fa1ea727680a023c3d878c939404c3fa767c6456746cce4f228d46b9d05e66"
+    },
+    {
+      "encoded_frame_index": 112,
+      "simulation_time": 280.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 113,
+      "simulation_time": 282.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 114,
+      "simulation_time": 285.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 115,
+      "simulation_time": 287.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 116,
+      "simulation_time": 290.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 117,
+      "simulation_time": 292.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 118,
+      "simulation_time": 295.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 119,
+      "simulation_time": 297.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 120,
+      "simulation_time": 300.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 121,
+      "simulation_time": 302.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 122,
+      "simulation_time": 305.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 123,
+      "simulation_time": 307.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "112-123",
+      "contact_sheet_sha256": "64cf19d498e96611c61dd044d8da533ab4aabc940badc1a17eb0b3bf8125e427"
+    },
+    {
+      "encoded_frame_index": 124,
+      "simulation_time": 310.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 125,
+      "simulation_time": 312.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 126,
+      "simulation_time": 315.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 127,
+      "simulation_time": 317.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 128,
+      "simulation_time": 320.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 129,
+      "simulation_time": 322.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 130,
+      "simulation_time": 325.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 131,
+      "simulation_time": 327.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 132,
+      "simulation_time": 330.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 133,
+      "simulation_time": 332.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 134,
+      "simulation_time": 335.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 135,
+      "simulation_time": 337.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "124-135",
+      "contact_sheet_sha256": "9bd0650dcf44be474def2e38221d4ab2f4f8acae0068de44e205768ed25a781b"
+    },
+    {
+      "encoded_frame_index": 136,
+      "simulation_time": 340.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 137,
+      "simulation_time": 342.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 138,
+      "simulation_time": 345.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 139,
+      "simulation_time": 347.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 140,
+      "simulation_time": 350.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 141,
+      "simulation_time": 352.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 142,
+      "simulation_time": 355.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 143,
+      "simulation_time": 357.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 144,
+      "simulation_time": 360.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 145,
+      "simulation_time": 362.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 146,
+      "simulation_time": 365.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 147,
+      "simulation_time": 367.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "136-147",
+      "contact_sheet_sha256": "79bd4174ccf09dc024371767502de40146878cc3c8c5e6088e93160039f1c1c5"
+    },
+    {
+      "encoded_frame_index": 148,
+      "simulation_time": 370.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 149,
+      "simulation_time": 372.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 150,
+      "simulation_time": 375.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 151,
+      "simulation_time": 377.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 152,
+      "simulation_time": 380.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 153,
+      "simulation_time": 382.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 154,
+      "simulation_time": 385.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 155,
+      "simulation_time": 387.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 156,
+      "simulation_time": 390.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 157,
+      "simulation_time": 392.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 158,
+      "simulation_time": 395.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 159,
+      "simulation_time": 397.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "148-159",
+      "contact_sheet_sha256": "7bdf988465f3f8fed985fb2143ca9bceb91767d52029984b0ad08c07cd22056b"
+    },
+    {
+      "encoded_frame_index": 160,
+      "simulation_time": 400.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 161,
+      "simulation_time": 402.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 162,
+      "simulation_time": 405.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 163,
+      "simulation_time": 407.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 164,
+      "simulation_time": 410.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 165,
+      "simulation_time": 412.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 166,
+      "simulation_time": 415.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 167,
+      "simulation_time": 417.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 168,
+      "simulation_time": 420.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 169,
+      "simulation_time": 422.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 170,
+      "simulation_time": 425.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 171,
+      "simulation_time": 427.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "160-171",
+      "contact_sheet_sha256": "4a25c3ffe067312419cdd8a04a86f09150e00b8b4a4c6b70fb8969f046b3c9df"
+    },
+    {
+      "encoded_frame_index": 172,
+      "simulation_time": 430.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 173,
+      "simulation_time": 432.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 174,
+      "simulation_time": 435.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 175,
+      "simulation_time": 437.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 176,
+      "simulation_time": 440.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 177,
+      "simulation_time": 442.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 178,
+      "simulation_time": 445.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 179,
+      "simulation_time": 447.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 180,
+      "simulation_time": 450.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 181,
+      "simulation_time": 452.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 182,
+      "simulation_time": 455.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 183,
+      "simulation_time": 457.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "172-183",
+      "contact_sheet_sha256": "d1bca7fad57f15ea765aac0b1416749059da1772b9b1f4141b94a47b4122ff6c"
+    },
+    {
+      "encoded_frame_index": 184,
+      "simulation_time": 460.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 185,
+      "simulation_time": 462.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 186,
+      "simulation_time": 465.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 187,
+      "simulation_time": 467.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 188,
+      "simulation_time": 470.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 189,
+      "simulation_time": 472.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 190,
+      "simulation_time": 475.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 191,
+      "simulation_time": 477.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 192,
+      "simulation_time": 480.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 193,
+      "simulation_time": 482.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 194,
+      "simulation_time": 485.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 195,
+      "simulation_time": 487.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "184-195",
+      "contact_sheet_sha256": "d0bd8881916e375b81aa318dba3f96abf773f38ad26367ba5ef60147c835683e"
+    },
+    {
+      "encoded_frame_index": 196,
+      "simulation_time": 490.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 197,
+      "simulation_time": 492.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 198,
+      "simulation_time": 495.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 199,
+      "simulation_time": 497.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 200,
+      "simulation_time": 500.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 201,
+      "simulation_time": 502.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 202,
+      "simulation_time": 505.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 203,
+      "simulation_time": 507.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 204,
+      "simulation_time": 510.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 205,
+      "simulation_time": 512.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 206,
+      "simulation_time": 515.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 207,
+      "simulation_time": 517.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "196-207",
+      "contact_sheet_sha256": "fd8bdd2f0a5bbd7eabe6402c8a86c11ab3a4db95e5a974efc9a0364d19aa8fce"
+    },
+    {
+      "encoded_frame_index": 208,
+      "simulation_time": 520.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 209,
+      "simulation_time": 522.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 210,
+      "simulation_time": 525.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 211,
+      "simulation_time": 527.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 212,
+      "simulation_time": 530.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 213,
+      "simulation_time": 532.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 214,
+      "simulation_time": 535.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 215,
+      "simulation_time": 537.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 216,
+      "simulation_time": 540.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 217,
+      "simulation_time": 542.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 218,
+      "simulation_time": 545.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 219,
+      "simulation_time": 547.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "208-219",
+      "contact_sheet_sha256": "4c89159a778dcee042958265ee6ed1e219f9ce3cd891832c2d1ceacad3a696c5"
+    },
+    {
+      "encoded_frame_index": 220,
+      "simulation_time": 550.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 221,
+      "simulation_time": 552.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 222,
+      "simulation_time": 555.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 223,
+      "simulation_time": 557.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 224,
+      "simulation_time": 560.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 225,
+      "simulation_time": 562.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 226,
+      "simulation_time": 565.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 227,
+      "simulation_time": 567.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 228,
+      "simulation_time": 570.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 229,
+      "simulation_time": 572.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 230,
+      "simulation_time": 575.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 231,
+      "simulation_time": 577.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "220-231",
+      "contact_sheet_sha256": "a9215caffad25d9f34b9dc20ecc2d820df40d3812b4ab115c94409eb79bf7d57"
+    },
+    {
+      "encoded_frame_index": 232,
+      "simulation_time": 580.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 233,
+      "simulation_time": 582.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 234,
+      "simulation_time": 585.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 235,
+      "simulation_time": 587.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 236,
+      "simulation_time": 590.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 237,
+      "simulation_time": 592.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 238,
+      "simulation_time": 595.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 239,
+      "simulation_time": 597.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 240,
+      "simulation_time": 600.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 241,
+      "simulation_time": 602.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 242,
+      "simulation_time": 605.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 243,
+      "simulation_time": 607.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "232-243",
+      "contact_sheet_sha256": "5567ab3e491474ff07027e49bb224df1ad43efd37c95f65bec77a9bb53389b75"
+    },
+    {
+      "encoded_frame_index": 244,
+      "simulation_time": 610.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 245,
+      "simulation_time": 612.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 246,
+      "simulation_time": 615.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 247,
+      "simulation_time": 617.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 248,
+      "simulation_time": 620.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 249,
+      "simulation_time": 622.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 250,
+      "simulation_time": 625.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 251,
+      "simulation_time": 627.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 252,
+      "simulation_time": 630.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 253,
+      "simulation_time": 632.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 254,
+      "simulation_time": 635.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 255,
+      "simulation_time": 637.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "244-255",
+      "contact_sheet_sha256": "b1b892a1bf47e8c0538a0f4b04aafa488da3842825bdddf4d2b5764e910abc99"
+    },
+    {
+      "encoded_frame_index": 256,
+      "simulation_time": 640.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 257,
+      "simulation_time": 642.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 258,
+      "simulation_time": 645.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 259,
+      "simulation_time": 647.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 260,
+      "simulation_time": 650.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 261,
+      "simulation_time": 652.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 262,
+      "simulation_time": 655.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 263,
+      "simulation_time": 657.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 264,
+      "simulation_time": 660.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 265,
+      "simulation_time": 662.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 266,
+      "simulation_time": 665.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 267,
+      "simulation_time": 667.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "256-267",
+      "contact_sheet_sha256": "4115f05d0cbe99b9298e055980cb388ae758a84db0fbcbcca2a275d15b0fa8a4"
+    },
+    {
+      "encoded_frame_index": 268,
+      "simulation_time": 670.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 269,
+      "simulation_time": 672.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 270,
+      "simulation_time": 675.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 271,
+      "simulation_time": 677.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 272,
+      "simulation_time": 680.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 273,
+      "simulation_time": 682.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 274,
+      "simulation_time": 685.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 275,
+      "simulation_time": 687.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 276,
+      "simulation_time": 690.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 277,
+      "simulation_time": 692.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 278,
+      "simulation_time": 695.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 279,
+      "simulation_time": 697.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "268-279",
+      "contact_sheet_sha256": "930ce1c2bc701e1f0dad02cb510f4f3491c9ecca65a7b904bb51605413b93ecc"
+    },
+    {
+      "encoded_frame_index": 280,
+      "simulation_time": 700.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 281,
+      "simulation_time": 702.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 282,
+      "simulation_time": 705.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 283,
+      "simulation_time": 707.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 284,
+      "simulation_time": 710.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 285,
+      "simulation_time": 712.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 286,
+      "simulation_time": 715.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 287,
+      "simulation_time": 717.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 288,
+      "simulation_time": 720.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 289,
+      "simulation_time": 722.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 290,
+      "simulation_time": 725.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 291,
+      "simulation_time": 727.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "280-291",
+      "contact_sheet_sha256": "35fe4d35974f014e0a40b1babf602b37c559a199f4bfb4b9f9feb5d36ba06f91"
+    },
+    {
+      "encoded_frame_index": 292,
+      "simulation_time": 730.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 293,
+      "simulation_time": 732.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 294,
+      "simulation_time": 735.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 295,
+      "simulation_time": 737.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 296,
+      "simulation_time": 740.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 297,
+      "simulation_time": 742.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 298,
+      "simulation_time": 745.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 299,
+      "simulation_time": 747.5,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    },
+    {
+      "encoded_frame_index": 300,
+      "simulation_time": 750.0,
+      "apparent_identity": "supported",
+      "outer_boundary": "supported",
+      "specified_internal_feature": "supported",
+      "visual_note": "292-300",
+      "contact_sheet_sha256": "d004dc329b98cd1d386e5a052730a360952ac9722efd831f819db3dd5d862cd7"
+    }
+  ],
+  "visual_notes": {
+    "100-111": "All twelve samples show the selected closed outer A1 contour, separate internal curled A1 stripe/bay and corresponding A0 band. The individual remains at the selected location with no visible split, merge or replacement. Nearby A0 spots change slightly.",
+    "112-123": "All twelve samples retain the same nested organization and apparent individual. Boundary and internal motif remain recognizable as surrounding small spots vary; no visible failure or matching ambiguity.",
+    "124-135": "All twelve samples retain the closed outer contour and internal curled motif. Minor brightness/shape changes do not erase the specified organization. No visible identity interruption.",
+    "136-147": "All twelve samples retain the same individual and feature, with the internal A0/A1 geometry remaining distinguishable from nearby spots and open stripes. No visible split, merger or loss.",
+    "148-159": "All twelve samples retain the chosen outer A1 enclosure, separate curled A1 stripe and A0 band. Local exterior spots change, but no competing enclosure continuation or loss appears.",
+    "160-171": "All twelve samples retain the same nested feature. The enclosure remains spatially separable from adjacent A1 stripes; no observed opening, merger, split or identity interruption.",
+    "172-183": "All twelve samples show the selected closed boundary and internal low-A1 bay/curl with its corresponding A0 organization. Small smooth shape/intensity changes preserve the frozen feature.",
+    "184-195": "All twelve samples retain the same apparent individual and internal motif. Exterior patterns evolve while the target stays identifiable; no failure or identity ambiguity observed.",
+    "196-207": "All twelve samples retain the selected closed outer A1 contour and separate hooked interior, with the A0 band still visible. Smooth contour changes preserve the organization; no visible identity interruption.",
+    "208-219": "All twelve samples retain the same target and nested feature. The inner bay remains open and distinguishable from the outer boundary; no visible merger or feature loss.",
+    "220-231": "All twelve samples retain the closed boundary, internal curled A1 stripe and intermediate A0 pattern. Nearby small structures change, without a competing continuation of the selected individual.",
+    "232-243": "All twelve samples retain the specified organization and apparent identity. No visible disappearance, split, merger or boundary opening interrupts the selected track.",
+    "244-255": "All twelve samples retain the selected individual and nested A1/A0 feature. The outer A1 contour remains closed and distinct from neighboring stripes; no observed identity ambiguity.",
+    "256-267": "All twelve samples retain the separate curled A1 interior and its low-A1 bay, with the A0 band visible. Smooth contour changes preserve the feature and the same apparent individual.",
+    "268-279": "All twelve samples retain the same outer enclosure and internal motif despite changes in nearby small A0 spots. No visible split, merger, disappearance or loss of the nested organization.",
+    "280-291": "All twelve samples retain apparent identity and the specified feature. The interior remains separated from the outer A1 contour, with a visible bay; no interruption observed.",
+    "292-300": "All nine final samples, including t750, retain the selected closed boundary and internal curled organization. No visible failure or identity ambiguity occurs before the recording ends."
+  },
+  "first_failure_or_identity_ambiguity": null,
+  "uncertainty": "Supported apparent identity and feature at saved samples does not establish material identity or exclude unseen events between them.",
+  "completed_at_utc": "2026-10-23T12:12:07.603105+00:00",
+  "summary": {
+    "retained_samples_reviewed": 201,
+    "declared_and_observed_window": [
+      250,
+      750
+    ],
+    "sample_interval": 2.5,
+    "observed_window_duration": 500,
+    "apparent_identity_supported_samples": 201,
+    "outer_boundary_supported_samples": 201,
+    "specified_feature_supported_samples": 201,
+    "first_observed_failure": null,
+    "first_observed_identity_ambiguity": null,
+    "unbroken_sampled_support_interval": [
+      250,
+      750
+    ],
+    "right_censored_at_recording_end": 750,
+    "ancestry_before250": "Not reviewed in this bounded study; earlier t25 snapshot was known before selection.",
+    "gate_assessment": {
+      "localized_coherent_individual": "supported",
+      "distinguishing_nontrivial_spatial_feature": "supported",
+      "same_individual_feature_persistence": "supported"
+    },
+    "gate_scope": "Support for visible organization and sampled apparent identity of this selected individual in this window. No material-continuity, confinement, autonomous-maintenance or replication claim."
+  }
+}
