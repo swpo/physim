@@ -1,5 +1,7 @@
 # Research updates
 
+New to the work? Start with the [demonstrations and current research question](../README.md).
+
 Dated explanations and videos from completed, reviewed PhySim experiments.
 These notes describe what changed, what the controls establish, and what remains
 unresolved. Videos use saved scientific evidence with visible timestamps and
