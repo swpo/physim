@@ -1,18 +1,39 @@
-# Research demonstrations
+# Research demonstrations and organism evaluations
 
-Can interacting fields maintain an active pattern, limit its growth, produce new
-patterns, and pass on differences in how those patterns work? This research line
-builds and tests candidate organizations within the unchanged PhySim dynamics.
-The fields are quantities that react locally and spread across a spatial grid;
-“activity” is measured with a stated field threshold.
+Can a world produce localized organizations with distinguishing features that
+remain recognizable through time? That is the immediate target. Replication then
+means copying those features; selection is a later question. Generic blobs
+splitting or transient asymmetries in a soup do not establish organisms.
 
-**Current takeaway:** we have controlled examples of activity depending on
-protective action and signal production. Those active patterns still grow.
-These demonstrations do not establish bounded maintenance or inherited function.
-The comparisons below use different preparations, so their results should be
-read separately.
+One standing evaluator combines quantitative evidence with inspection of actual
+spatial trajectories. The [versioned rubric](evaluation/rubric-v0.1.md) asks about
+local individuality, distinctive organization and persistence of that organization.
+Missing essential evidence cannot be offset by a high aggregate score.
 
-## Start here: what keeps activity going?
+Diffusion-led field equations are one model class, not a requirement. The current
+PhySim dynamics remain a reproducible reference. Explicitly versioned alternatives
+may be proposed and judged against the same organism target, with appropriate
+numerical checks.
+
+**Latest evaluation · 23 October 2026:** the inspected examples do not yet establish
+all three organism gates. Earlier multicolor enclosures are a more direct lead for
+structured interiors than the recent activity-only demonstrations. The key gap is
+whether the same enclosure and its distinguishing contents persist over time.
+[Read the evaluator's assessment and next decision](evaluation/2026-10-23.md).
+
+[![Saved multicolor field and detected enclosure interiors at time 750](../docs/assets/research/2026-10-23-evaluation/p7g2_009-t750.png)](evaluation/2026-10-23.md)
+
+This is one saved frame of candidate `p7g2_009`, not proof of persistence. Colors
+identify activator fields, and numbered interiors are within-frame detection
+ranks, not tracked organisms. The evaluator report explains the evidence and limits.
+
+The earlier controlled demonstrations below show activity depending on protective
+action and signal production. Those active patterns still grow. They do not
+establish bounded maintenance or inherited function. The comparisons use different
+preparations and should be read separately. The fields are quantities that react
+locally and spread across a spatial grid; activity uses a stated field threshold.
+
+## A controlled demonstration: what keeps activity going?
 
 [![Intact activity expands while two production-off controls lose activity](../docs/assets/research/2026-10-20/production-payment.jpg)](../docs/assets/research/2026-10-20/production-payment.mp4)
 
@@ -52,28 +73,32 @@ influence remains unresolved.
 [Watch the 22-second comparison](../docs/assets/research/2026-10-20/initial-x1.mp4)
 · [Read the four matched preparations](updates/2026-10-20.md#restoring-the-initial-surrounding-signal-did-not-prevent-branching)
 
-## Current question · 23 October 2026
+## Current priority · 23 October 2026
 
-Can an added feedback restrain expansion while retaining activity and ongoing
-function? The fixed comparison uses a feedback signal that spreads across the
-grid, the same signal kept local, and a control with its feedback action removed.
-Each run lasts 150 simulation time units; qualification is assessed at fixed
-samples from time 100 to 150. Passing would support bounded function over those
-sampled times. Long-term stability would remain unproven, and recovery would
-require a separate test of whether bounded function returns after a disturbance.
+The evaluator recommends one bounded review of the saved `p7g2_009` trajectory:
+track the same localized enclosure and ask whether its internal organization
+persists, rather than counting similar shapes in successive frames. This is an
+evidence question to resolve before another dynamics run. It does not commit
+future experiments to diffusion-led physics.
 
-The first launch failed before simulation began. Its scientific outcome is
-unavailable, and a corrected launch is being prepared without changing the
-scientific protocol. No feedback result is available yet.
+The prepared growth-feedback comparison is held. It could test bounded activity,
+but its current evidence plan would not by itself establish persistent distinctive
+organization. The earlier startup failure remains a launch failure with no
+scientific outcome; no feedback result is available. See the evaluator's report
+for the recommendation and its limits.
 
 ## Follow the work and inspect the evidence
 
 We publish explanations and demonstrations when reviewed experiments provide a
 meaningful result, including informative failures. Each update states the
 question, intervention, controls, observed behavior, conclusion, remaining limits
-and next question. This page provides the current entry point; the dated notes
+and next question. The evaluator authors independent progress assessments, including
+negative judgments, missing evidence and recommendations to stop marginal work. This page provides the current entry point; the dated notes
 preserve how the findings developed.
 
+- [Latest evaluator report and calibrated examples](evaluation/2026-10-23.md)
+- [Organism rubric v0.1](evaluation/rubric-v0.1.md)
+- [Calibration image provenance](../docs/assets/research/2026-10-23-evaluation/image-provenance.json)
 - [Dated research updates](updates/README.md)
 - [Latest completed demonstration set: 20 October 2026](updates/2026-10-20.md)
 - [Saved source evidence](../docs/assets/research/2026-10-20/evidence)
