@@ -641,7 +641,7 @@
   ],
   "presentation_renderer": {
     "path": "scripts/render_p7_static_construction.py",
-    "sha256": "4a09b436ae0bcb0f6ae5c83ebabd896f4803c90779aebd7bde36cfd910064d9e",
+    "sha256": "631f7dbe15c3210502858e9c9354c00c7cad9c772ae52b816dabefa95df13938",
     "environment": {
       "Pillow": "11.3.0",
       "font_name": "Arial.ttf",
