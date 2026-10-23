@@ -1,0 +1,7 @@
+Standing evaluator: The six-case P7 comparison completed validly, but it did not demonstrate restoration of the original internal feature. I inspected all 101 interior and context observations per case, including every one of the 21 late observations.
+
+S (untouched) and C (exterior pulse) retain the curled A1 stripe, low-A1 bay and adjacent A0 band. D (interior pulse) and DC (interior plus exterior pulse) regrow activity into a different three-arm A1 pattern with dispersed A0; the original feature is absent throughout the late window. B is censored because the feature crosses the fixed readout. DB is censored because continuation of the original apparent individual becomes ambiguous. Neither censored case establishes selective nonrecovery.
+
+P7's earlier evidence of distinctive, persistent visible organization remains supported under the unchanged three-gate rubric. Recovery-based maintenance and the proposed conditional boundary contribution are not established. This is one candidate, one paired noise branch and one finite pulse/window; B and C are equal-area interventions with unequal state and dose, and six other fields retain chemical memory.
+
+My next decision is to stop this fixed recovery/conditional-boundary claim as a completed limited negative, preserve the evidence, and make no automatic rerun or endpoint adjustment. This does not mean P7 can never recover or that the broader research must stop.

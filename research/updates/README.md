@@ -7,6 +7,10 @@ These notes describe what changed, what the controls establish, and what remains
 unresolved. Videos use saved scientific evidence with visible timestamps and
 documented display settings.
 
+- [23 October 2026 — P7 does not restore its original feature after this interior pulse](2026-10-23-p7-recovery.md):
+  all six executions completed; S/C retain the feature, D/DC regrow a different
+  pattern, and B/DB remain censored. The evaluator stops this fixed claim as a
+  limited negative, with two movies and exact retained evidence.
 - [23 October 2026 — Preparing a controlled P7 recovery test](2026-10-23-p7-static-construction.md):
   the fixed static intervention and interior readout pass; six immediate cases
   establish setup validity, with recovery still untested.

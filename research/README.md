@@ -15,12 +15,33 @@ PhySim dynamics remain a reproducible reference. Explicitly versioned alternativ
 may be proposed and judged against the same organism target, with appropriate
 numerical checks.
 
+**Latest result · 23 October 2026 — the P7 recovery test:** Persistent visible organization survived in controls, but the specified original feature did not return after interior erasure in the two interpretable recovery cases.
+The boundary-only case and the interior-plus-boundary case are censored: their
+fixed readout or the apparent individual's continuation becomes ambiguous.
+They cannot establish selective nonrecovery. The standing evaluator recommends
+stopping this fixed claim as a completed limited negative.
+
+[Read the six-case result](updates/2026-10-23-p7-recovery.md)
+· [Read the independent evaluator report](evaluation/2026-10-23-p7-recovery.md)
+· [Inspect the exact evidence and display conventions](../docs/assets/research/2026-10-23-p7-recovery/README.md).
+
+[![All six P7 cases at the initial observation and the beginning and end of the fixed late window](../docs/assets/research/2026-10-23-p7-recovery/overview.png)](updates/2026-10-23-p7-recovery.md)
+
+[Watch the 20.2-second interior comparison](../docs/assets/research/2026-10-23-p7-recovery/interior.mp4)
+· [Watch the corresponding full-domain context](../docs/assets/research/2026-10-23-p7-recovery/context.mp4).
+Cyan and cream show the two activator fields; gray excludes pixels from the fixed
+interior readout. Both movies show all 101 saved observations without interpolating
+motion. The overview shows only three times; the report evaluates all 21 late
+observations per case. The earlier visible-organization finding below remains
+supported; recovery-based maintenance and a conditional boundary contribution
+are not established.
+
 **Persistence assessment · 23 October 2026:** one selected P7 enclosure and its
 specified internal curled stripe remain recognizable in all 201 saved observations
 from time 250 through 750. The standing evaluator judges all three rubric gates
 supported for this individual and sampled interval. This is an organism-like
 candidate at the level of visible organization. A largely stationary patterned
-island remains a competing explanation; active maintenance is untested.
+island remains a competing explanation; active maintenance remains unestablished.
 [Read the evaluator's persistence assessment](evaluation/2026-10-23-p7-persistence.md).
 
 [![The same selected enclosure and internal feature at six times from 250 through 750](../docs/assets/research/2026-10-23-p7-persistence/p7-persistence-overview.png)](evaluation/2026-10-23-p7-persistence.md)
@@ -30,10 +51,10 @@ The selected interval starts 6.25 seconds into the movie. The full report identi
 the chosen enclosure and feature and explains the retrospective selection and
 sampling limits.
 
-**Latest methods checkpoint · 23 October 2026:** the planned recovery test now
-has a validated intervention and readout. In six saved static cases, the interior
-feature is readable when preserved and absent after the interior pulse. No time
-evolution was run; recovery and active maintenance remain untested.
+**Earlier methods checkpoint · 23 October 2026:** the static construction
+validated the intervention and readout. In six saved static cases, the interior
+feature was readable when preserved and absent after the interior pulse. That
+earlier setup study ran no time evolution; the recovery result is reported above.
 [Read the six-case comparison](updates/2026-10-23-p7-static-construction.md)
 · [Read the evaluator's independent assessment](evaluation/2026-10-23-p7-static-construction.md).
 
@@ -87,14 +108,17 @@ influence remains unresolved.
 
 ## Current priority · 23 October 2026
 
-The static construction passes. The next step is to implement and register the
-same fixed six-case recovery comparison over 250 simulation-time units: does the
-named boundary-region intervention change sustained recovery of the internal
-feature? The exterior control has equal area but different field state and dose;
-it does not isolate geometry or match damage. A positive interaction would remain
-compatible with stable-pattern restoration and retained model state. The
-[static evaluator report](evaluation/2026-10-23-p7-static-construction.md) fixes the
-next decision and its limits. No recovery execution is admitted by this result.
+The fixed P7 recovery comparison is complete. The standing evaluator recommends
+stopping its recovery/conditional-boundary claim as a limited negative, preserving
+the earlier evidence of visible organization and sampled persistence. No automatic
+rerun, longer window, altered pulse, recentered readout or revised endpoint follows.
+Read the [outcome assessment](evaluation/2026-10-23-p7-recovery.md) for the exact
+decision and its limits.
+
+The open question remains what evidence can establish active maintenance of a
+localized, distinctive organization. A next study needs a distinct, consequential
+proposal with competing predictions and a result that can change that assessment.
+No new experiment is selected by this result.
 
 The prepared growth-feedback comparison remains held. Its current evidence plan
 would not by itself establish persistent distinctive organization, and no feedback
@@ -110,12 +134,14 @@ and next question. The evaluator authors independent progress assessments, inclu
 negative judgments, missing evidence and recommendations to stop marginal work. This page provides the current entry point; the dated notes
 preserve how the findings developed.
 
-- [Latest evaluator report: P7 feature persistence](evaluation/2026-10-23-p7-persistence.md)
+- [Latest evaluator report: P7 recovery comparison](evaluation/2026-10-23-p7-recovery.md)
+- [Earlier P7 feature-persistence assessment](evaluation/2026-10-23-p7-persistence.md)
 - [Initial calibration and earlier comparisons](evaluation/2026-10-23.md)
 - [Organism rubric v0.1](evaluation/rubric-v0.1.md)
 - [Calibration image provenance](../docs/assets/research/2026-10-23-evaluation/image-provenance.json)
 - [Dated research updates](updates/README.md)
-- [Latest completed demonstration set: 20 October 2026](updates/2026-10-20.md)
+- [Latest completed comparison: P7 recovery](updates/2026-10-23-p7-recovery.md)
+- [Earlier controlled demonstrations: 20 October 2026](updates/2026-10-20.md)
 - [Saved source evidence](../docs/assets/research/2026-10-20/evidence)
 - [Video provenance, exact hashes and display conventions](../docs/assets/research/2026-10-20/provenance.json)
 - [Reproducible presentation renderer](../scripts/render_research_update.py)
