@@ -194,3 +194,12 @@ released food.
     stiff core (rep*ff*dt overshoot) at dt=0.02. It does not converge as dt -> 0. The heredity,
     gate and predation results hold for the dt=0.02 discrete map only. This also applies to
     sprint 1's sporecell, which used the same dt and rep.
+
+## T5. Committee r1 main experiment, step (a): turnover screen (sporecell-turnover, seed 0, T=300)
+The review arrived at 17:37. World: sporecell (B on) + whole-cell dilution (rate delta per cell,
+particles returned as uniform food).
+- k_dec 0.02: food 1364, 35-39 cells, 24% ringed. k_dec 0.03: food 2954, 2-4 ringed cells until
+  t~200, then a burst to 40. k_dec 0.05: one ringed cell, no births.
+- delta 0.005: food 814, 38-39 cells with deaths and births (69), 5% ringed. delta 0.02: extinct by t=100.
+- No setting gives a stationary, ringed, reproducing population. The window, if any, is narrow
+  (k_dec~0.025 or delta~0.01). Steps (b) and (c) were not run.

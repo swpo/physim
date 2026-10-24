@@ -1,5 +1,41 @@
 # particle-life: sprint 2 report
 
+## 0. Response to the committee's r1 review (it arrived at 17:37, 60 min into the sprint)
+
+Sections 1–6 below were done on my own plan before the review arrived. In the remaining
+~40 minutes I re-planned around the review's decision.
+
+**Corrections accepted.**
+- L3 for `sporecell` is Weak: the ring is a reversible food-contact label.
+- Reproduction is L6[L2] Weak: generation 2 is 8/1/1 and the daughters are ringless.
+- I withdraw "gen 3–9". `lineage.py`'s rule (the majority label is the parent and the largest fragment continues it) ratchets through split/re-merge, so sprint-2 generation counts are also upper bounds.
+- L4a is Weak. My cut returns the removed particles as food at the wound. labkit's disk damage shattered its cell (t=97→104), which I omitted.
+- L4c is Weak (one seed, R2=1).
+- L7 for `sporecell-gene` is Contradicted.
+
+**The dt concern is confirmed, and it is the key fact for the main experiment.** I ran the committee's requested dt check on the sprint-2 world (same engine, dt and rep as sporecell). Spore emission does not converge: mean free spores are 127 / 40 / 6 at dt = 0.02 / 0.01 / 0.005, and core noise or a softer core does not fix it (§5). The turnover experiment below therefore measures the dt=0.02 map. Making spore release dt-converged has to come before any L6[L3] or L7 claim can be Supported.
+
+**Main experiment, step (a), done this sprint.** `worlds/sporecell-turnover`: sporecell with B on, plus whole-cell dilution (each cell is removed at rate δ and its particles return as uniform food). Screened at seed 0, T=300: k_dec ∈ {0.02, 0.03, 0.05} and δ ∈ {0.005, 0.02}. Results are in §0.1. Steps (b) and (c) (3+3 seeds at ≥600 t, merge-aware lineage with birth strips) were not done.
+
+### 0.1 Turnover screen (main experiment step a; sporecell-turnover, seed 0, T=300, dt=0.02)
+
+| setting | late free food (t≥150) | cells (t=50/100/200/300) | ringed-cell fraction (t≥150) | births / max gen |
+|---|---|---|---|---|
+| k_dec 0.02 | 1364 | 4/2/35/39 | 0.24 | 42 / 2 |
+| k_dec 0.03 | 2954 | 6/3/4/40 | 0.81 (mostly before the burst) | 39 / 2 |
+| k_dec 0.05 | 3923 | 5/2/1/1 | 1.00 (one cell) | 0 / 0 |
+| δ 0.005 (k_dec 0.01) | 814 | 6/14/38/39 | 0.05 | 69 / 3 |
+| δ 0.02 (k_dec 0.01) | 3978 | 3/0/0/0 (extinct) | – | 0 / 0 |
+
+Ringed cell = more than 20% of its particles are M. Generation counts come from the old, ratcheting lineage rule.
+
+**Reading.** No setting passes. Rings need free food above the induction threshold, and that requires a high maintenance cost or high dilution. But high cost or dilution keeps the population small or kills it.
+- k_dec 0.03 holds rings while there are only 2–4 cells, then bursts to 40 cells at t≈250–300, which will deplete the food and strip the rings.
+- Dilution δ=0.005 gives real deaths and the most births, but only 5% of cells are ringed.
+
+There may be a narrow window around k_dec 0.025 or δ≈0.01. Finding it and running step (b) (3+3 seeds, ≥600 t, k_diff=0 twin) is the first task for sprint 3. Step (c) needs a merge-aware lineage, and the dt problem should be fixed first.
+
+
 ## 1. Headline
 
 **Cell-level heredity from a single-particle spore bottleneck. It meets the lab's L7 bar at dt=0.02, but a dt-convergence check shows the spore emission behind it is mostly a numerical artifact.**
