@@ -6,7 +6,7 @@ import numpy as np
 
 
 def genome(arm="N", kb=0.25, kc=0.25, wch=0.2, kw=0.15, tw=40.0, Dw=2.0, beta=5.0,
-           Dh=0.3, DhL=0.05, k1h=-0.2, Kg=1.0):
+           Dh=0.3, DhL=0.05, k1h=-0.2, Kg=1.0, taug=10.0, Dg=100.0):
     with open("/home/user/physim/packages/blobkit/blobkit/data/worlds/m4.json") as f:
         m4 = json.load(f)
     body = dict(m4["acts"][0], name="u")
@@ -16,7 +16,7 @@ def genome(arm="N", kb=0.25, kc=0.25, wch=0.2, kw=0.15, tw=40.0, Dw=2.0, beta=5.
     ch = lambda name, tau, D, g="id", **e: dict(name=name, tau=tau, D=D, g=g, thr=0.0, sc=1.0, **e)
     chans = [dict(m4["chans"][0], name="v"), dict(m4["chans"][1], name="w"),
              dict(name="m", tau=2.0, D=0.0, g="band", thr=0.0, sc=0.6, ch={"M": 1.0, "k": 1.0, "h": 0.5}),
-             ch("glob", 10.0, 100.0), ch("bdep", 1.0, 0.5), ch("c", 5.0, 4.0), ch("q", tw, Dw)]
+             ch("glob", taug, Dg), ch("bdep", 1.0, 0.5), ch("c", 5.0, 4.0), ch("q", tw, Dw)]
     #      drive from:  u     h
     W = [[1, 0],                       # v
          [1, 0],                       # w

@@ -76,7 +76,7 @@ for k in range(1, len(cells)):
 t = fr * dtf
 out = dict(pack=d, n_on_start=n_on[0], n_off_start=n_off[0], n_on_end=n_on[-1], n_off_end=n_off[-1],
            switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births, switch_events=sw_events, deaths=deaths,
-           window_200={str(int(w0)): dict(splits=sum(w0 <= x < w0 + 200 for x in ev_t['split']), deaths=sum(w0 <= x < w0 + 200 for x in ev_t['death'])) for w0 in np.arange(0, t[-1], 200)},
+           window_200={str(int(w0)): dict(splits=int(sum(w0 <= x < w0 + 200 for x in ev_t['split'])), deaths=int(sum(w0 <= x < w0 + 200 for x in ev_t['death']))) for w0 in np.arange(0, t[-1], 200)},
            on_fraction_mean_last_quarter=float(np.mean([a / max(a + b, 1) for a, b in zip(n_on, n_off)][3 * len(n_on) // 4:])))
 print(json.dumps(out))
 json.dump(out | {"t": t.tolist(), "n_on": n_on, "n_off": n_off}, open(f"{d}/kinds.json", "w"))
