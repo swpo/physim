@@ -223,3 +223,33 @@ radius 5, rate 0.1), identical in all arms; kicks 0.005; selection wch=0.15 (S) 
   cell per 1000 t, an arisen on-cell gets about one chance to divide before dilution removes it.
 - The xcell-evo2 genome does not reach the division rate of xcell-her (its 11-14 splits came
   from a planted, synchronous founder burst).
+
+## Sprint 3 (start 2026-10-24 18:42 UTC) — final sprint
+
+Committee r2: CONTINUE narrowed (promise 5). L7 contradicted: arisen marks bred true 0/3.
+Main experiment = heredity assay of kick-arisen markers, gated vs resolved ungated arms, stop rule.
+
+**H1 assay setup (`assay.py`, `assay_an.py`).** Genome xcell-evo2-N (`evo.genome`). First try
+followed the committee's "dilution ~1.0": kill 0.5 per t + kick at t=100. That gave only 6-7
+divisions per run, none from an on-parent (a cell is erased every ~40 t, faster than it
+divides). Switched to the committee's "fewer founders" option: 4 founders in an empty 128² box
+(L=64), kick half of them at t=20 (before the first fission), no dilution, T=300. Arms
+(same IC, seeds and event RNG): gated (β_h=5, Dh=0.3); ungated Dh 0.05 and 0.1 (dx 0.5).
+Kicks: polar (σ 1.5 at a random interior point, ≤0.6 r from the centroid) and cell-filling
+(σ 3 at the centroid; this is the one allowed fix). Frames every 2 t (u, h deviations), in
+`assay/*.npz`.
+
+**H2 result.** `screens/assay_hcrops_s0.png` (absolute h scale 0..2.2). In every arm the kicked
+founder fills with h, elongates and pinches at t≈50-60.
+- Gated: the h domain collapses into ONE daughter as a small dot; that dot survives and
+  re-fills its cell (t=120-300); the sister is h-off. Arisen marks split asymmetrically.
+- Ungated (Dh 0.05, 0.1): h vanishes from both daughters by t≈90-120.
+- Cell-filling kick = polar kick in outcome. The loss happens at the pinch, not at the kick.
+A split-frame classifier (cell max h > 1.5 right at the split) scores these as "on+on" (2 per
+run in every arm) followed by on→off "conversions" (3-4 per run). It is fooled because both
+halves still contain h at the frame of the pinch. Per-time on-cell counts are the honest
+measure (`assay/summary_oncells.json`).
+**Stop rule triggered: gated marks still split after the one fix. L7 dropped.** The gate does
+retain a marker in one lineage where the ungated arms lose it completely, which is a
+retention effect, not heredity.
+The resolved Dh=0.02 at dx=0.25 arm was not run (8x cost; the stop rule had already fired).

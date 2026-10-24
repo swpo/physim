@@ -1,5 +1,5 @@
 """Analyse assay/<tag>.npz: every division whose parent is h-on, classified from the daughters'
-raw mean h deviation (on if > 1.0; the on-state deviation is ~2.0), plus conversions of intact
+raw max h deviation (on if > 1.5; the on-state deviation is ~2.2; noise-free runs), plus conversions of intact
 cells. Divisions within 6 t / 8 px of a kill are excluded (cuts, not fissions).
 python assay_an.py assay/<tag>  -> prints a JSON summary, writes <tag>_an.json"""
 import sys, json
@@ -35,16 +35,16 @@ for k in range(1, len(T)):
         children.setdefault(int(np.bincount(ov).argmax()), []).append(b)
     for p, kids in children.items():
         if p not in aids: continue
-        pm = A == p; hp = float(Hh[k - 1][pm].mean())
+        pm = A == p; hp = float(Hh[k - 1][pm].max()) - 0.5   # cell max of h dev; on-state ~2.2, so on <=> max > 1.5
         cy, cx = ndimage.center_of_mass(pm)
         if len(kids) >= 2:
             if near_kill(T[k], cy, cx): continue
-            hk = [float(Hh[k][B == b].mean()) for b in kids]
+            hk = [float(Hh[k][B == b].max()) - 0.5 for b in kids]
             divs.append(dict(t=float(T[k]), parent_h=hp, daughters_h=hk, cy=float(cy), cx=float(cx)))
         else:
-            hc = float(Hh[k][B == kids[0]].mean())
+            hc = float(Hh[k][B == kids[0]].max()) - 0.5
             kt = meta["args"].get("kick_t", 100.0)
-                if (hp > 1.0) != (hc > 1.0) and abs(T[k] - kt) > 20:
+            if (hp > 1.0) != (hc > 1.0) and abs(T[k] - kt) > 20:
                 conv.append(dict(t=float(T[k]), h_before=hp, h_after=hc, cy=float(cy), cx=float(cx)))
     prev = cur
 on_divs = [d for d in divs if d["parent_h"] > 1.0]
@@ -61,7 +61,7 @@ out = dict(tag=tag.split("/")[-1], n_div=len(divs), on_divisions=counts, off_div
            on_on_frac=(counts["on+on"] / max(1, len(on_divs))),
            conversions_intact=dict(off_to_on=sum(c["h_after"] > 1 for c in conv_intact), on_to_off=sum(c["h_after"] <= 1 for c in conv_intact)),
            kicks=len(meta["kicks"]), kick_offset_px_mean=float(np.mean([k_["offset_px"] / max(k_["radius_px"], 1) for k_ in meta["kicks"]])) if meta["kicks"] else None,
-           on_cells_end=int(sum(1 for b in lab_of(len(T) - 1)[1] if Hh[-1][lab_of(len(T) - 1)[0] == b].mean() > 1.0)),
+           on_cells_end=int(sum(1 for b in lab_of(len(T) - 1)[1] if Hh[-1][lab_of(len(T) - 1)[0] == b].max() > 1.5)),
            cells_end=len(lab_of(len(T) - 1)[1]))
 json.dump(dict(out, divisions=divs, conversions=conv_intact), open(tag + "_an.json", "w"))
 print(json.dumps(out))
