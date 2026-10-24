@@ -10,7 +10,7 @@
 
 | world | claim | strongest evidence | weaknesses |
 |---|---|---|---|
-| `sporecell3` (k_det=0.05, n_det=60) | **L6[L2], dt-converged** (gate: pass on seed 0, borderline on seed 1) | The two-seed dt table in §3. `screens/R3_s0_lin2.png` and `screens/R3_s1*_lin2.png`: merge-aware lineage with qualifying births at gen 1–2 (seed 0) and 1–3 (seed 1 at dt/2), and a stationary population of 28–31 cells from t≈75 | Release is a written-in detachment rule. t=200; dt pairs on 2 seeds, plus seed 11 at dt=0.02 only (consistent: 27 cells, gen 2). Deaths (16–23 per 100 t) exceed qualifying births (5–6 per 100 t), because the strict birth rule excludes early unlabelled spores and births that later merge. No ring claim, and no packs made with labkit v0.2. |
+| `sporecell3` (k_det=0.05, n_det=60) | **L6[L2], dt-converged** (gate: pass on seed 0, borderline on seed 1) | The two-seed dt table in §3. `screens/R3_s0_lin2.png` and `screens/R3_s1*_lin2.png`: merge-aware lineage with qualifying births at gen 1–2 (seed 0) and 1–3 (seed 1 at dt/2), and a stationary population of 28–31 cells from t≈75 | Release is a written-in detachment rule. t=200; dt pairs on 2 seeds, plus seed 11 at dt=0.02 only (consistent: 27 cells, gen 2). Deaths (16–23 per 100 t) exceed qualifying births (5–6 per 100 t), because the strict birth rule excludes early unlabelled spores and births that later merge. No ring claim. Pack: `packs/sporecell3-det` (labkit v0.2, seeds 0–1, with `lineage2.json`). |
 | `sporecell3` without explicit release | negative control for the instability diagnosis | 1 birth and 22 deaths by t=200, 3.4 free spores (127 before the integrator fix) | |
 | `sporecell3` selected vs neutral twin, seed 0 | see §3 (one pair only, T=300) | | not the full part (b) |
 
@@ -70,6 +70,5 @@
 - Part (b) at full scale (3+3 seeds plus seed 11, T≥600, dilution). Only one twin pair was run.
 - Birth strips at the deepest generation.
 - Secondary goals: the gated cycle at the converged step, event-matched lysis arms, and repair under rubric v2.
-- labkit v0.2 packs.
 
 See FINAL.md for the thread summary and the showcase movie.

@@ -240,3 +240,8 @@ with no previously clustered particle; qualifying birth >= 20 samples and not en
   are NOT far fewer than births, so the committee's (b) criterion fails on this pair. One seed only.
 - R3 seed 11 (the committee's skeptic seed), dt 0.02: 12 qualifying births (5.9/100 t), 24 deaths, gen 2,
   27 cells at t=200, 87 free spores. Consistent with seeds 0 and 1.
+
+## Program end (committee final review, r3: STOP)
+Final verdicts: sporecell3-det L2 (high), L6[L2] Weak (borderline; strict re-audit max gen 1 on seed 0,
+one 2-deep chain on seed 1 missed by lineage2), L3 Contradicted; twin L7[L2] Weak; lysis L5[L2] low
+(dt map); plife-m2 L3 (calibration). lineage2 needs parent-fusion and smin-hysteresis fixes.

@@ -11,6 +11,12 @@
 | `plife-m2` (S1) | a random particle-life matrix: concentric type shells | L3, as a calibration (known result) | |
 | `sporecell3` (S3) | sporecell2-sel with a step-safe integrator (displacement ≤ 0.05 per sub-step) and explicit surface detachment (k_det=0.05) | my claim: **L6[L2]** with dt-converged reproduction (pending committee). dt vs dt/2 agree within 6–12% on spores and cells; births within 8% (seed 0) and 20% (seed 1); merge-aware generation 2–3 | Short runs (t=200, 2 seeds). Release is a written-in rule. Deaths (16–23 per 100 t) outnumber qualifying births (5–6 per 100 t), with births counted conservatively. The displacement bound is active in dense cells. |
 
+**Committee final verdicts (r3, program stopped).**
+- `sporecell3-det`: L2 (high). L6[L2] is Weak (borderline). On a strict re-audit of `lineage2.json`, seed 0 reaches max gen 1 (#12 absorbs its parent #4; #90 is #82 crossing smin again). Seed 1 has one genuine 2-deep chain, #24→#33→#38, which `lineage2.py` scores gen None. The births form a colonization wave that freezes, and dt/2 with the displacement bound still active is not a full convergence test. L3 is Contradicted.
+- Twin: L7[L2] Weak (one pair, colonization only).
+- Earlier verdicts stand: sporecell2 with lysis L5[L2] (low, dt=0.02 map), `plife-m2` L3 (calibration), and L2 for every sporecell world.
+- Known `lineage2.py` defects to fix before reuse: parent fusion (a daughter absorbing its parent) and smin hysteresis (a cluster crossing the 15-particle threshold again counts as a new birth).
+
 ## Mechanisms that worked (with ablations)
 
 - **Closed particle chemistry gives reproduction through propagules.**
