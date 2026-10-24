@@ -182,6 +182,9 @@ def main():
           f"final clusters {pops[-1]}, gen hist {np.bincount(gens).tolist() if gens else []}")
     if KINDS:
         print("kind counts (0,1) at 10 times:", [KINDS[i] for i in np.linspace(0, len(KINDS) - 1, 10).astype(int)])
+    np.savez_compressed(f"scratch/{tag}_snaps.npz", x=np.stack([q[1] for q in snaps]).astype(np.float16),
+                        t=np.stack([q[2] for q in snaps]).astype(np.int8), clan=np.stack([q[3] for q in snaps]).astype(np.int32),
+                        L=s["p"]["L"], dt=every * W.META["dt"])
     tm, x, t, clan = snaps[-1]
     np.savez_compressed(f"scratch/{tag}_final.npz", x=x, t=t, clan=clan, g=s.get("g", np.zeros(len(t))), L=s["p"]["L"])
     Path(f"scratch/{tag}_lineage.json").write_text(json.dumps({str(k): v for k, v in ind.items()}))

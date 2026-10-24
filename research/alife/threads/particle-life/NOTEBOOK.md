@@ -106,3 +106,33 @@ probability mu. Cross-kind adhesion 0.2 (cells sort by kind); kind 1 self-adhesi
   nucleations), because the parent-to-daughter link is one particle below threshold.
 - sporecell (B on) lineage on seeds 1 and 2: max gen 2 but only 1 gen-2 individual each (34/36 births).
   So with B, reproduction is essentially one generation of ~35 daughters; multi-generation needs B off.
+
+# Sprint 2 (started 2026-10-24 16:37 UTC)
+
+## T1. sporecell2: cell-level heredity through a spore bottleneck
+Fork of sporecell-gene. Changes: (a) majority-vote conformity, so a core particle outnumbered
+by the other kind within 0.5 converts at rate k_conf (the brief's "types change by majority vote
+of neighbours"). In-cell mutants are erased, so a cell's kind is set when its spore germinates.
+(b) Kinds are mechanically identical (all C-C adhesion 1.0) and differ only in catalysis rate
+k_cat1. (c) A gated food mobility D_F exp(-beta nM), forked from the lab's gated-mobility
+convergence (off by default; tested below). R2=1 (no territory shell).
+- mu=0.01 or 0.05 with k_conf=1: purity 1.00, but no mutant cell is ever founded. Mutant
+  particles exist (2-5 at a time) but are erased before they can be shed. With identical
+  phenotypes, the neutral trajectory is identical to mu=0, as expected.
+- k_conf=0.1 or 0.03, mu=0.02: purity 0.97-1.0; one kind-1 cell founded in 400 time units, which
+  does not reproduce. Too rare.
+- mu=0.1, k_conf=1, k_cat1=0.065 (1.3x): a kind-1 cell founded at t~40 breeds true (64/66
+  children of kind-1 parents are kind 1, purity ~1.0, 1 switch in 70 births) and its lineage
+  takes over (18 vs 4 cells at t=400). mu=0.2: no founding event in this seed. Founding is a
+  rare event at spore germination.
+- **L7 test, 3 seeds selected (k_cat1=0.065) vs 3 seeds neutral (k_cat1=0.05), mu=0.1, k_conf=1, t=400:**
+  - final kind-1 / all cells: selected 18/22, 8/21, 11/16; neutral 0/19, 0/22, 1/17.
+  - kind-1 cells founded from kind-0 parents during the run: selected 1, 2, 2; neutral 2, 0, 1.
+    Neutral mutant cells never reproduce (0 births in 37 and 127 cell-samples).
+  - per-capita births per 100 cell-samples, k0 vs k1: selected 0.8/2.6, 1.9/2.2, 1.0/2.4; neutral 2.3/0.
+  - breeding true: median cell purity 0.99-1.00; children of kind-1 parents that are kind 1:
+    64/66, 22/28, 45/50. Kind switches at birth 3-8 per ~65 births (selected), 0-2 (neutral).
+  - caveat: faster catalysis also raises the founding rate of mutant cells (a fast mutant wins
+    the majority more easily while the spore group is small), so selection acts at germination
+    as well as on cell reproduction.
+  - `screens/K_{sel,neu}_s{0,1,2}_lineage.png`, `_types.png`; movie `screens/K_sel_s0.mp4`.
