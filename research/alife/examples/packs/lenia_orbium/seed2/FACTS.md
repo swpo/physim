@@ -13,18 +13,22 @@
 - enclosures: components with a hole mean 0.00, final 0; holes at thresholds 0.2/0.35/0.5 final [0, 0, 0]
 - persistent homology of matter (final frame, tau 0.1/0.25/0.5): H0 [3, 1, 1], H1 [2, 0, 0]
 - motion: 4 long-lived tracks moved >= 1 body length; max speed 6.07/time; max body lengths 15.1
-- replication: splits 9, persistent splits 0, max generation 0, merges 10, nucleations 16
+- replication (lineage window K = 20 frames = time 4, default): splits 9, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 10, merge/split ratio 1.11, nucleations 16
 - channel total drift (end/start - 1): [-0.677]
 - internal organization of top tracks (normalized channel means; rim = outer layer):
   - track 48 at frame 101: holes 0, rim-vs-core 0.14, rim-vs-outside 0.50, heterogeneity 0.13; core [0.997] rim [0.855]
   - track 11 at frame 24: holes 0, rim-vs-core 0.20, rim-vs-outside 0.56, heterogeneity 0.18; core [0.993] rim [0.792]
   - track 14 at frame 21: holes 0, rim-vs-core 0.13, rim-vs-outside 0.56, heterogeneity 0.14; core [0.997] rim [0.87]
   - track 10 at frame 20: holes 0, rim-vs-core 0.21, rim-vs-outside 0.40, heterogeneity 0.22; core [0.995] rim [0.78]
+- radial profiles (rho = r / R_eq around tracked centroids; fixed render scales; core rho<0.4, rim 0.6-1.3, outside 1.6-2.2; aggregate of 8 components >= 12 px at frames [25, 50, 76, 100, 125, 150]):
+  - radial A: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.862, rim/outside 4.54 (aggregate of 8 individuals; 0/8 membrane-like individually; rim level 0.86)
+- membrane-like channels (aggregate rim/core >= 1.5 and rim/outside >= 1.5; the peak position is not part of the test): none
+- membrane-like channels per top track at mid-life: #48 (t=20.2, R_eq 4.44): none; #11 (t=4.8, R_eq 4.48): none; #14 (t=4.2, R_eq 4.48): none; #10 (t=4, R_eq 4.65): none
 
 ## Warnings
 - a channel total changed by more than 50% (not conserved; may be fine if the model is open)
 
 ## Files
-sheet.png, tracks.png, lineage.png, timeseries.png, movie.mp4, metrics.json
+sheet.png, tracks.png, radial.png, lineage.png, timeseries.png, movie.mp4, metrics.json
 
 Measurements are screens, not verdicts: judge them against the images.
