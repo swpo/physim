@@ -263,3 +263,21 @@ the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic w
   hovers near 1.5 until ~40k, then mu 1.2 with cells 8 -> 19 (shift under way). So at kd=0.018
   3/3 seeds leave the motile regime within 48k, at kd >= 0.02 5/5 surviving seeds stay motile:
   a sharp evolutionary tipping point between 0.018 and 0.02 on this time scale.
+
+## 16. Committee r1 review (arrived 18:11) -> main experiment: membrane_kinds arms A-D
+`worlds/membrane_kinds` = phase_membrane (chi=2, noise IC) + K1/K2 + point mutation (p 3e-4, r 2).
+`kindtrack.py`: census every 100 steps from t=1000 (phi>1/2 components, periodic), overlap
+matching -> births/deaths per kind, merges, conversions (1:1 kind flips). 32k t, 3 seeds/arm,
+results in `runs/mk/*.json`.
+- A leaky (phi^2, growth ~phi): conv 22/17/20 vs mut 3/1/5; K2 births 74-102, deaths 104-133;
+  K1 extinct, 7-8 K2 cells at the end (crash). Infection confirmed.
+- B confined (phi^4, growth masked phi<1/2): conv 23/26/25 vs mut 8/5/10; K2 births 4-8;
+  final K1/K2 12/25, 7/33, 8/31. Still infection-driven.
+- B' hard gate (catalyst flux only inside phi>1/2): conv 13/8/16 vs mut 8/5/10; K2 births 3-5;
+  final 22/15, 26/8, 21/14; no crash.
+- C neutral (c2=c1) under B: no K2 cells ever (0 conversions, 23 mutations); under B' seed 0
+  also 0.
+- D parasite (b2=0) under B: conv 10/4/8 = K2 deaths; populations 1/13/0 cells at the end.
+- Conclusion: the leak is graded; L7 still Weak. Next: cross-inhibition or link-bound catalyst.
+- also: merged the lab branch (CI fix + committee files); conflicts were only in my own thread
+  files (older copies on the lab branch), kept this branch's versions.
