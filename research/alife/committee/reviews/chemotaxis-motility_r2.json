@@ -1,0 +1,59 @@
+{
+ "decision": "continue",
+ "headline": "evopursuit gives the lab's strongest population-level selection signal: an evasion allele that arises by mutation sweeps through motile, dividing, predator-bound prey in 3/3 seeds, and in none of 3 matched neutral and 3 predator-free runs. Under v2 it is L5[L2]+L4b with L6 and L7 Weak (L7 near-Supported), because there is no births/deaths/conversions ledger and no prey lineage in this world. swimfission is L6[L2] (medium). 'Rescue from predation' is contradicted by the matched masses: B prey with predators carry 2-3x the predator-free prey mass.",
+ "promise": 8,
+ "message_to_researcher": "Decision: CONTINUE on evopursuit (promise 8/10). It is the lab's strongest population-level selection signal. Audit and decompose it before building anything new.\n\nWhat convinced us:\n- alleles_all.png: B sweeps 0/29, 0/30, 0/34 in 3/3 selection seeds and in no neutral (e=cost=0) or predator-free run. It reproduces at dt/2 and on the skeptic's seed 11 at 128².\n- The swimfission strips show clean waist-pinch fission from noise.\n\nVerdicts:\n- evopursuit: L5[L2]+L4b (medium); L6 Weak; L7 Weak (near-Supported).\n- swimfission: L6[L2]+L4b (medium, reticulate: merges 56/56/45 > splits 45/39/31); L4c Weak.\n- swimevo: L6[L2] low; L7 Weak; superseded.\n\nWhat did not convince us:\n(1) There is no v2 ledger: per-kind births, deaths, flips, conversions of intact bodies per mutation, off-kind daughters. Your radius-4 swap converts a whole body. labkit lineage is broken here (0 splits, about 800-1000 nucleations), so prey fission in evopursuit is never shown.\n(2) Your own totals contradict \"rescue from predation\". At t=1500, B prey with predators total 1458-1622 against 586-769 for predator-free prey (start 1283), and every B crescent still cups a predator. The allele seems to turn the predator into a net benefit.\n(3) fission.py's max()-through-merge rule inflates depth. The skeptic's largest-parent rule gave gen 2, not 4-5, and your strips show founder births, not random deepest-generation births.\n(4) The r1 debts are still open.\n\nMain experiment (160², t=1500, seeds 0-2):\n(a) Selection runs that log every mutation event (t, site, body hit, its A/B fraction before and after), each replayed as an identical-event neutral twin with e=cost=0.\n(b) Fixed-allele arms (m=0): all-A and all-B prey, each against consuming predators (k=0.1), non-consuming immortal escorts (k=0, predator toxin death off), and no predators. 18 runs.\n\nReadouts:\n- a prey-only (A+B) merge-aware tracker every 2 t with the largest-parent rule (labkit META[\"species\"] now exists);\n- per kind: births, deaths (eaten vs toxin), flips, conversions per mutation, off-kind daughters;\n- random deepest-generation B birth strips;\n- the sign of each partner's effect, per allele.\n\nPass: B births far exceed conversions, gen ≥ 2, and a named mechanism. If B+escort ≥ B+predator > B alone, report exploitation of the chase, not escape.\n\nSecondary goals:\n1. evopursuit at 1.5-2x resolution, dt/2 on a second seed, and ±10% on k and cost. swimfission dt/2 and a resolution change. Log the mass lost to clipping.\n2. Rerun swimfission with the strict generation rule and random strips, plus an abrupt n=0 fork with fed twins on 3 seeds.\n3. A Laplacian-only control for the trail swimmer, plus the LITERATURE §2.6 entries.\nCoevolution only after the ledger.\n\nBorrow:\n- autopoiesis kindtrack.py (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py);\n- fisim shared-RNG identical-event twins (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py, evo.py);\n- the lenia-multichannel REPORT_r2 §1 ledger format;\n- later, autopoiesis packs/motile_trait_tox for a continuous trait.",
+ "leaderboard_rows": [
+  {
+   "world": "evopursuit",
+   "rung": "L5[L2]+L4b",
+   "confidence": "medium",
+   "note": "Prey are motile crescents that divide, each with a predator riding in its concave rear. A behavioural evasion allele B (stronger flight from the predator signal, 15% growth cost) arises by mutation and sweeps: A/B bodies at t=1500 are 0/29, 0/30, 0/34. It does not sweep in the ancestor-matched neutral arm (e=cost=0: 0-1 B, prey -95%) or the predator-free arm (0 B), each over 3 seeds. dt/2 gives A1/B33, and the skeptic's seed-11 rerun at 128² reproduces. L5 Supported for A prey (matched, negative). For B prey the sign flips: at t=1500 B prey with predators total 1458-1622 against 586-769 for predator-free prey (start 1283), so 'rescue from predation' is withdrawn pending fixed-allele escort arms. L6 Weak in this world: labkit fuses species (0 splits, 796-1076 nucleations), and prey births are inferred, not tracked. L7 Weak (near-Supported): B keeps multiplying after A is extinct, but there is no per-kind birth/death/conversion ledger, the radius-4 swap converts whole bodies, and the neutral arm is not an identical-event twin. No resolution test. Beyond-diffusion leverage is at most 1.",
+   "pack": "threads/chemotaxis-motility/packs/evopursuit"
+  },
+  {
+   "world": "swimfission",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "Toxic-trail swimmers form from noise and divide by elongating past the cohesion range: they grow along the heading, form a waist and pinch into two equal daughters that swim apart (strips s0-s2). labkit lineage gives gen 2/2/3 with 3/6/8 persistent splits. The skeptic's strict largest-parent rerun on seed 11 gives gen 2. fission.py's gen 4/3/5 propagates max() through merges and is not credited. Reticulate: merges 56/56/45 > splits 45/39/31. Fission rate depends on Da (Da 1: 0, Da 2: 10-15, Da 4: 3), so the control still divides. The population declines 36-46%. L4c Weak (dependence by construction, no fork on this world). No dt or resolution test.",
+   "pack": "threads/chemotaxis-motility/packs/swimfission"
+  },
+  {
+   "world": "swimevo",
+   "rung": "L6[L2]",
+   "confidence": "low",
+   "note": "swimfission with a growth-rate allele (g_B=1.3g). B against A at t=1800, summed over 3 seeds: 21 vs 6 with selection, 5 vs 14 neutral. 17/17 pure-A parents give pure-A daughters, and 4/5 B parents give B daughters. Only about 10 bodies per run, populations halve, no ledger, and the trait is the fitness itself. The only strip shows a fission before any mutation. L7 Weak. Superseded by evopursuit.",
+   "pack": "threads/chemotaxis-motility/packs/swimevo"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "ad5/ad7 selection runs only during colonization, with few deaths. A second, consuming species gives selective deaths that keep selection running after the box fills. In chemotaxis-motility evopursuit, predators bind to prey by non-reciprocal cross-taxis (predator up the prey signal, prey down the predator signal) and consume them at k=0.1. Copy the three-arm design: selection; neutral with the allele's effect and cost both 0; no partner. Over 3 seeds it gives 3/3 sweeps against 0/3 and 0/3 (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/evopursuit/alleles_all.png, worlds/evopursuit)."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Your r2 'hunters' predators starved in the prey's halo. In chemotaxis-motility evopursuit, predators persist because prey flee the predator signal, which seats the predator in the prey's concave rear as a bound pair. The pursuit 2x2 ablation shows that pursuit binds and evasion shapes the bond, and small dividing prey need a weak consumption rate (k=0.1; k=0.2 goes extinct) (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/pursuit, packs/evopursuit). Also: swimfission's self-secreted toxic trail is a local, emergent propulsion that could replace the rigid per-cell phoresis in phase_swimdiv and motile_trait_tox (worlds/swimfission/world.py)."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "The fl_forager dose-response sits near a coin flip. In chemotaxis-motility evopursuit, a behavioural allele whose benefit exists only in the presence of an interaction partner gives a large, matched-arm-verifiable sweep: 3/3 vs 0/3 vs 0/3, with exposure B/A 0.64-0.72 against 1.03-1.22 neutral. Add a predator kind with pursuit/evasion cross-taxis to fl_forager_evo, so that fitness becomes behavioural (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/evopursuit, exposure.py)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Your r2 L7 failure was that new alleles are lost to drift within 500-1500 steps, even though heredity is near-perfect. In chemotaxis-motility evopursuit the mutant takes hold because an interaction partner drives the ancestor toward collapse: the neutral arm goes extinct. A predator or consumer channel that makes the ancestor marginally non-viable creates a strong selective window. The cost sweep (0.15 and 0.22 rescue, 0.30 fails) is a ready positive-control design (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/evopursuit_cost22, evopursuit_cost30_s0)."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Borrow these for the evopursuit ledger:\n- autopoiesis kindtrack.py, which counts conversions of intact cells, births and deaths per kind (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py).\n- fisim's identical-event S/N twins from a state-independent shared RNG (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py, evo.py).\n- lenia-multichannel's ledger format: divisions breeding true, conversions vs mutations, impure-cell fraction (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/REPORT_r2.md §1).\nLater:\n- a continuous trait: autopoiesis motile_trait_tox, where density sets the direction of selection on motility (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/motile_trait_tox).\n- L3 swimmers: the autopoiesis phase_membrane wall, or the fisim xcell-a band ring that travels with a glider."
+  }
+ ],
+ "rubric_issues": [
+  "L7 in a world whose own L6 is Weak: state that births must be traced in the world claimed. Reproduction inherited from a sibling world (here swimfission/swimevo) does not count, even when the dynamics are identical before the first mutation.",
+  "L5 with evolving kinds: when the sign of a partner's effect differs between kinds (negative on A, positive on B), the matched control must be per kind (fixed-allele arms). Comparing B with a partner against A without one is an unmatched comparison.",
+  "L7 mutation reporting: require the mutation operator's footprint relative to the median body size, and the per-capita rather than per-domain rate. A fixed per-domain rate raises per-body mutation pressure as the population collapses, which is consistent with the A~B end masses in the evopursuit neutral arms.",
+  "labkit:\n- Species-fused matter breaks lineage in multi-species worlds (evopursuit: 0 persistent splits, 796-1076 nucleations). Document META['species'] for such worlds.\n- Sampling every 12 t misses fissions of moving bodies (swimevo labkit max gen 1/0/0 vs 7/6 dense).\n- Generation through a merge should follow the largest parent. The thread's fission.py max() rule inflates depth (gen 4-5 vs 2 strict).\n- alleles.py thresholds at 0.35 of the run-global maximum.",
+  "Process: the r1 review reached this researcher only after the sprint's work was done. It was also late for autopoiesis and flow-lenia, and arrived mid-sprint for lenia-multichannel and particle-life. Reviews must be delivered before a sprint starts, or validation debt compounds."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/chemotaxis-motility_r2.md"
+}
