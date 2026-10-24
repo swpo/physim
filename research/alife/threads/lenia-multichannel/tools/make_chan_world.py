@@ -84,7 +84,7 @@ def step(s):
         # food spent = matter built / Y; decay just dissipates. Behaviour is unchanged where F is plentiful.
         F = s["F"]
         inc = np.clip(np.minimum(L.dt * G, 1 - A), 0, None)
-        dec = np.clip(L.dt * G, None, 0)
+        dec = np.clip(L.dt * G, None, 0) - L.dt * FOOD.get("decay", 0.0) * A   # optional maintenance cost
         need = inc.sum(0) / FOOD["Y"]
         scale = np.minimum(1, F / np.maximum(need, 1e-12))
         A_new = np.clip(A + inc * scale + dec, 0, 1)

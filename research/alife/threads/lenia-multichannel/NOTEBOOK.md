@@ -186,3 +186,44 @@ field (build-from-food) and space exclusion (positive growth x (1 - other's occu
 (screens/eco-MIRd-Rplus_both_128.png). R+'s catalogue pattern is already a 4-cell cluster, so the
 start is unequal. Coexistence under competition is a first L5 candidate and a stepping stone to
 selection.
+
+**R6. Long runs of mcf-MIRd (128², 8000-10000 steps, seed 1).**
+- rho=0.01, D=2: boom to 15 cells (food 0.14), decline, **extinct by step ~4500**; food recovers to 1.
+- rho=0.01, D=8: grows to confluence (~30 cells), then a static dormant lattice; food -> 0.90.
+- rho=0.0125, D=4: same dormant lattice (~33 cells), food -> 0.96.
+- rho=0.015, D=2: same dormant lattice (~27 cells), food -> 0.97.
+The colony either crashes before it reaches confluence (extinction), or reaches confluence and goes
+dormant (jammed cells stop turning over, so they stop eating). So far there is no dynamic
+steady state in which cells keep dividing and dying. That steady state is the target for
+sprint 2: add a maintenance cost or death rate for dormant cells, or a spatially patchy food
+supply.
+
+## Spontaneous replication screen (negative)
+
+**S4. 150 random 'two' graphs from a small 24 px noise patch (128², 1500 steps;
+tools/screen_replicators.py, screen_data/rep_two_s0.json, screens/rep_screen_two_hits.png).**
+7 flagged (individual count rising). 6 of them are **expanding dot or ring lattices** that tile
+space from a front (L1/L2 tissue growth, like Gray-Scott spot fronts), not division of individuals.
+The 7th (#144, worlds/r-rep144) breaks the patch into 3-4 orange C-shaped gliders whose count stays
+flat over 3000 steps: the same C-glider class as r-two-s1-60. **0/150 spontaneous cell
+replicators.** The C-shaped glider is a recurring attractor of 2-channel random rules.
+
+## Population cycles (end of sprint)
+
+**C1. mcf-MIRd at 192² (rho=0.01, D=2, no decay), 20000 steps
+(screens/mcf-MIRd_192_20000steps_cycles.png).** Cells: 3 -> 34 (step 2600, food 0.22) -> 3
+(step 5200-6100, food 0.74) -> 32 (step 8700, food 0.26) -> 2 -> **extinct at ~11300**. Two
+consumer-resource boom-bust cycles with growing amplitude, then extinction. At 128² the first
+crash is already fatal: the larger grid holds enough survivors to recolonise once.
+
+**C2. Maintenance cost (new mutation): all matter decays at rate `decay` and must be rebuilt from
+food (worlds/mcfd-MIRd).**
+- decay 0.01 (rho 0.02, 128²): the cells still form the white lattice, but now pay for it.
+  Food stays at 0.79 instead of recovering to 0.97, and the count is steady at 30-35.
+- **decay 0.03 (rho 0.02, 128², 14000 steps): no dormant lattice. The population oscillates
+  with continual division and death**: cells 19 (step 2000), 7 (4000-5000), 15 (6000), 12 (8000),
+  7 (9000), 18 (10000), 2 (12000), 12 (14000). Food oscillates in antiphase between 0.23 and 0.73.
+  3+ cycles without extinction (screens/mcfd-MIRd_decay0.03_14000steps.png).
+
+  So a maintenance cost removes free dormancy and turns the boom-to-dormancy or boom-to-extinction
+  outcomes into a sustained consumer-resource cycle. Pack: `packs/mcfd-MIRd`.
