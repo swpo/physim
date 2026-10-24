@@ -33,3 +33,45 @@ Reference PL kernel (mu_k=4, sigma_k=1, w=0.022, mu_g=0.6, sigma_g=0.15), period
   count roughly doubles (~20 -> ~35, e6). Mechanism from the sheet: clusters near max size shed
   small streams of C, which catalyse food into new clusters ("spores"), not binary fission.
   labkit pack (scratch/p_eatbud1) under-segments small clusters: 0 splits, 15 nucleations.
+- Core repulsion strength matters: with the soft core (rep=1) clusters collapse to points
+  (>200 particles within 0.4 r_max), leaving no room for structure. rep=10 gives loose cells
+  ~1 r_max across, and the count roughly doubles under feeding (`screens/r10.png`).
+
+## S5. Membrane by differentiation (eatbud-m1, eatbud-m2)
+- Rule "C -> M if few C neighbours": every isolated seed becomes M at once and the run dies.
+  Adding "and >= n_body matter neighbours": cells still end up all-M (`screens/m1a.png`). Negative.
+- Rule "C -> M where it touches food (>= f_surf F within 0.4), M -> C where it no longer does"
+  (m1, f_surf=4/f_bury=2): spontaneous membrane-coated cells (orange M rim, cyan C core) that
+  multiply 1-2 -> ~25 by t=80 (`screens/m1d.png`). Pack `scratch/p_m1`: once food is depleted
+  (t>96) the rim reverts to C. So the membrane is environment-induced, not intrinsic.
+- Geometric rule (partial neighbourhood = surface; m2 mrule=geom): cells become mostly M,
+  too small to ever count as "buried"; they stop growing (`screens/m2a.png`). Negative.
+
+## S6. Particle-level lineage (lineage.py)
+New C inherits the clan label of its nearest catalysing C, so lineage follows matter identity,
+not image overlap. Per sample (every 100 steps), clusters (link 0.35, >= 15 particles) take the
+majority label of their particles as parent; the largest child continues the parent.
+- Food-membrane cells, k_dec 0.002 (L_food): founders give rise to up to ~18 daughters each, but
+  all daughters are generation 1, because the burst exhausts food. Mode, from the clan sheet:
+  a cell sheds single C particles ("spores") which catalyse food into new cells. Labkit's
+  image tracker sees these as nucleations, because spores are below the segmentation threshold.
+- k_dec 0.01 (more turnover; promoted as `sporecell`): max gen 2; daughters reach the parent's
+  size (median 80 vs 98 particles) and live to the end. One founder clan sweeps most of the box.
+  The population saturates at ~40 cells, a lattice whose spacing is the B shell (R2=2.5):
+  space, not food, is the cap, and reproduction stops (`screens/L_food_kd01_*.png`).
+- ABLATION: B off (R2=1): more generations (seeds 0/1/2: max gen 5/4/3), with deaths
+  and births throughout, and spatially coherent clan fronts. Daughters are born at ~25 particles
+  and grow (median 76-146, parents ~300), but have short median lives (9-13 samples) because
+  many re-merge. So B is not needed for reproduction; it freezes population turnover.
+  `screens/A_noB*_lineage.png`, `screens/A_noB_clans.png`.
+- Designed two-type chase matrices (A01>0, A10<0) at 8 per r_max^2: the types segregate, median
+  cluster motion <= 0.7 body lengths per 20 time units. No swimmers. Negative. `screens/s06_swim.png`.
+- Compute note: from ~15:12 to 15:24 I had 3-4 simulations running at once (pack + damage pack +
+  lineage runs), over the 2-at-a-time etiquette. Since then, back to 2.
+
+## S7. Heredity: sporecell-gene (two heritable core kinds)
+Core type 1 (gene 0) or 3 (gene 1); a new C copies its catalyst's gene and flips it with
+probability mu. Cross-kind adhesion 0.2 (cells sort by kind); kind 1 self-adhesion 0.6 vs 1.0.
+- All seeds kind 0, mu=0.002, t=300: max gen 8 (good turnover), but kind 1 never founds a cell.
+- Half/half seeds, mu=0: kind 1 (looser) drives kind 0 extinct (0 vs 11 cells). Symmetric control
+  (A11=1) drifts to 4 vs 10, so this needs seeds before any selection claim.
