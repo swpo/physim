@@ -93,41 +93,41 @@
   "world": "xcell-turn",
   "rung": "L3",
   "confidence": "low",
-  "note": "RETRACTED by the researcher in r2, and withdrawn as the family's L6 evidence. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors, not turnover. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
+  "note": "RETRACTED (r2), final. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-a": {
   "world": "xcell-a",
   "rung": "L4b[L3]",
   "confidence": "medium",
-  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of the m field is a trailing wake. L4a Weak: one cell, 29.6% erased. Unchanged in sprint 2. Biologist dissent from r1: L3 Weak.",
+  "note": "FINAL (unchanged since r1). m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of m is a trailing wake. The gate-off control keeps D=4, not a lowered uniform D. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-a",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-her": {
   "world": "xcell-her",
   "rung": "L3",
   "confidence": "high",
-  "note": "Two planted kinds breed true: 46 divisions in r1, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. Sprint-2 arm L (ungated, Dh=0.02) loses all markers by t~100, reproduced by the skeptic on seed 11 at 64\u00b2. The ungated fronts are ~1 px wide and blocky, though, so this is not yet a matched Laplacian control. Kick-arisen markers in xcell-evo2 bred true in 0 of 3 divisions, so heredity is shown only for planted, cell-filling domains. L6 Weak (one counted generation). L7 Contradicted.",
+  "note": "FINAL (r3). Two planted kinds breed true: 46 divisions, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. In r3 the heredity was shown to be regime-conditional: the same planted, cell-filling marker in the sister genome xcell-evo2-N under free-space, faster fission fails like a kicked one (skeptic, seed 11). The h bridge at the pinch neck is also seen here, but both remnants regrow. Untested candidates: the waste channel and division speed. There is no resolved Laplacian twin in this regime, so beyond-diffusion stays 1. L6 Weak (one counted generation). L7 Contradicted. The thread's showcase world.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-her",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-div": {
   "world": "xcell-div",
   "rung": "L3",
   "confidence": "high",
-  "note": "Membrane-ringed cells divide by Gray-Scott-class RD (8 splits even with the gate off): 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+  "note": "FINAL (unchanged since r1). Membrane-ringed cells divide by Gray-Scott-class RD, still giving 8 splits with the gate off: 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-div",
   "thread": "fisim-beyond-laplacian",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "flow-lenia/fl_forager": {
   "world": "fl_forager",
@@ -303,11 +303,11 @@
   "world": "xcell-evo2-S",
   "rung": "L6[L3]",
   "confidence": "low",
-  "note": "Selection experiment, arms S and N: identical-event twins (kicks and dilution from one shared RNG), 3+3 seeds, T=2000. L6: S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4. The biologist's merge-aware movie tracker and birth crops confirm clean rod->dumbbell->two ringed daughters in the S0 chain (t=450/510/570/960). Only 2/6 runs reach gen>=3 by labkit, the bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. L7 Contradicted: on->on+on 0 in 6 runs, and all 3 on-divisions (2 independent kicks) were on->on+off, by polar segregation of a fresh kick. Final on-cells S 1/0/2 vs N 1/1/0. About 0.7 dilution generations per run, so the test is underpowered. L3 rests on the band ring plus r1 gate ablations, which were not repeated in evo2.",
+  "note": "FINAL (r3). S/N identical-event twins, 3+3 seeds, T=2000. S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4, but only 2/6 runs reach gen>=3. Bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. In the r3 heredity assay (22 runs) on the N genome, every arm gives 8-11 ringed fissions per run. L7 Contradicted: no arisen mark ever reached both daughters, gated or ungated, including a resolved Dh 0.02 arm at dx=0.25 (reproduced on seed 11). The marker is stranded in the neck as the body grows out from under it. The gate keeps it in one daughter in 1 of 4 seeds (retention, not heredity). L3 qualifier: band ring plus the gate ablation in the assay; the skeptic dissents (Weak). Beyond-diffusion 1.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-evo2-S",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/membrane_kinds": {
   "world": "membrane_kinds",
