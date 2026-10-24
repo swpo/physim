@@ -1,0 +1,5 @@
+.labenv/
+__pycache__/
+*.pyc
+frames.npz
+scratch/
