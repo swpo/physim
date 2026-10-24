@@ -7,3 +7,4 @@ seed 2 ['body_pheno=True']: events 46 final mean log g -0.060
 seed 3 []: events 51 final mean log g 0.989
 seed 3 ['body_pheno=True']: events 51 final mean log g -0.504
 seed 4 []: events 45 final mean log g 0.074
+seed 4 ['body_pheno=True']: events 45 final mean log g 0.096

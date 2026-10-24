@@ -34,8 +34,10 @@ own rung for the heredity line: L5 (infection), not L7.**
    bounded but the continuous ring breaks into dots.
 4. **Genes carried by stochastic-sampling transport stay discrete inside bodies** and are
    partitioned at fission, so heredity comes for free from the Flow-Lenia transport step.
-   A gene acting on the birth-death balance (uptake) is selected against identical-event neutral
-   twins; genes that only reshape the body (m, s, h, ±25%, h×0.5) were coin flips in 40+12 runs.
+   A gene acting on the birth-death balance (uptake) shifts the matter-weighted mean against
+   identical-event neutral twins (5/5 paired seeds). The sprint 3 audit shows that the shift runs
+   through takeover and fusion, not reproducing individuals (see "failed"). Genes that only reshape
+   the body (m, s, h ±25%, h×0.5) were coin flips in 40+12 runs.
 5. **Pursuit and evasion are both needed for predator-prey coexistence.** chase=0: predators
    starve; flee=0: prey are exterminated, then the predators.
 
@@ -47,6 +49,10 @@ own rung for the heredity line: L5 (infection), not L7.**
 - Maintenance cost on the uptake gene (decay ∝ g^1.5): did not reverse the selection.
 - Layered cells + food: grow into a "morula" and shed spores that are not the parent kind (L6[L3]
   Contradicted); fixed-ratio uptake makes them grow into a domain-wrapping tube.
+- **Body-level heredity is undone by fusion.** Bodies fuse about as often as they persistently divide.
+  A high-g lineage spreads by absorbing neighbours and by taking over a giant from inside, so
+  per-parcel genes act like an infection. Neither a body-scale phenotype (g_eff = blur(A·g)/blur(A))
+  nor a maintenance cost fixed this.
 - dt/2 is not a convergence test for reintegration tracking (fixed σ per step doubles numerical
   diffusion); resolution changes are.
 

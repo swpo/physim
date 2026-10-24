@@ -284,3 +284,22 @@ Results so far are in evo3/audit*.json and the REPORT_r3 table.
   phenotype does not prevent gigantism.
 - Seed 2: S -0.198 vs N -0.224. The twins end nearly identical: in this seed selection did
   nothing measurable.
+- Final (5 seeds per arm; evo3/audit.txt, REPORT_r3 table). Paired S−N: +0.54, +0.43, +0.03,
+  +1.32, +0.33 (5/5 positive). S_body−N: +0.57, +0.25, +0.16, −0.17, +0.35. Formal
+  "between > within+fusion": S 4/5, and the neutral twins 3/5 as well (between-body terms up to
+  +0.62 in N). High-g persistent births vs conversions: 38/51, 4/11, 0/0, 3/2, 0/1. All 18 final
+  high bodies of S0 trace back to fusion links. Verdict: L5 (infection/takeover), not L7.
+  Anti-fusion is the prerequisite.
+
+## S3-E2. fl_predator arms on seed 11 (packs/fl_predator*/seed11, 12000 steps, t=2400)
+- Reference: predators extinct by t~704 (reproduces the skeptic); prey grow to 1469.
+- flee=0: prey extinct t~784, then predators t~888.
+- chase=0: predators extinct t~376.
+- Prey only: prey end at 1195.
+Coexistence is 3/4 seeds at 128² (0, 1, 2 yes; 11 no).
+- 192² seed 0 (the showcase run, movies/showcase_totals.json): coexists to t=2400. Predator
+  matter minimum 11 (near extinction). Prey peaks at t~830 and 2200.
+
+## S3-E3. Showcase movie
+movies/showcase.mp4: fl_predator, 192², seed 0, 301 frames every 40 steps, fixed scales,
+scale x3, 3.8 MB. Sprint 3 ended ~21:10 UTC.
