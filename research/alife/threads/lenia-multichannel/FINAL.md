@@ -12,7 +12,7 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 | `mcfd-MIRd` | **L6[L2]+L4c+L5**, medium | the same plus maintenance decay 0.03: intermittent boom-bust with fission after troughs. Decay 0/0.01/0.03 gives dormant / static fed / boom-bust | Not a regular cycle; damped at 192²; dt/2 extinct in 1/2 |
 | `mcf-fastcell` | **L4b[L3]+L4c**, medium | Chan's shelled glider (A0 shell at r 14-22, empty inside r<8) carving food wakes; dies without refill | Planted; no dt/R test |
 | `r-two56` | **L3**, high | one of 2/420 random 2-channel rules: shelled cells (white centre, cyan core, orange cog shell) form from noise and persist; survive dt/2 and R=15-20 | Static fixed points with no turnover. L4a Contradicted (core damage kills) |
-| `mca-MIRd` (+ branch test) | L6[L2]; L7 Not tested (r2), **L7[L2] candidate (r3)** | discrete majority-inherited alleles; with whole-body flips a 15%-yield allele spreads from one cell to 40-72% of mass in 10/12 paired branches vs neutral drift | Mutation imposed once per run; full S/N rerun with mutation arising not done; contact zones leak |
+| `mca-MIRd` (+ branch test) | L6[L2]; **L7 not met** (r3) | discrete majority-inherited alleles; with whole-body flips a 15%-yield allele spreads from one cell to 40-72% of mass in 10/12 paired branches vs neutral drift | Heredity leaks at contacts: 47% of allele-1 divisions give pure daughters (bar 90%); mutation imposed once per run |
 
 ## Mechanisms that worked (with the ablation that shows it)
 
@@ -34,7 +34,9 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 4. **Heredity by growth.** In Lenia matter is built, not moved. Labels are inherited if built
    matter copies the label of the matter that built it (kernel-weighted majority for discrete
    alleles). Mutations must act on whole bodies: partial flips erode from the cell's own periphery
-   (committee skeptic; REPORT_r3).
+   (old operator lost in 9/12 branch runs). With whole-body flips, selection on yield is visible in
+   500 t (S>N 10/12). But neighbourhood majority leaks across touching cells: only 47% of
+   allele-1 divisions give pure daughters. Inheritance must be confined to the body.
 
 ## What failed
 
@@ -42,7 +44,10 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 - Repair: r-two56 regrows 10-20% shell cuts, but any core damage kills.
 - Adaptive selection on yield: beneficial mutations push the colony into the static lattice and
   turnover stops (3/3 runs). Not yet separated from the Jensen effect.
-- Continuous traits blend at contacts. The first discrete-allele operator hit halo dots.
+- Continuous traits blend at contacts. The first discrete-allele operator hit halo dots. Discrete
+  neighbourhood-majority alleles still leak at contacts (47% pure allele-1 divisions).
+- r-two56 on food with decay: cells still form from noise (decay 0.01) but barely eat (mean food
+  0.99); decay 0.03 leaves at most 1 cell. L4c on L3 not reached.
 
 ## What transfers to PhySim
 
@@ -54,8 +59,9 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 
 ## What a next lab should try
 
-1. The whole-body allele test (REPORT_r3) at ≥5 seeds per arm with a per-kind ledger, in the
-   boom-bust regime at ≥256², so drift (1/N) is small enough to see s=0.15.
+1. Per-body inheritance: new matter takes the allele of its own cell's territory, not of the
+   blurred neighbourhood. Then the full S/N test with mutation arising, ≥5 seeds per arm, and the
+   per-division ledger (tools/division_ledger.py).
 2. Put r-two56 cells on food with decay (spontaneous L3 that must eat), and look for fission
    by weakening the size limiter while food is scarce.
 3. Penalize jamming (crowding-dependent decay) so that efficiency cannot switch off turnover.

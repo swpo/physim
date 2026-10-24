@@ -410,3 +410,15 @@ carriers (p>0.5), mixed (0.1<p<0.9), allele-1 mass fraction.
 - decay 0.03: 1, 1 and 0 cells.
 Formation survives the metabolism. L4c is not shown: no no-food ablation, and consumption is barely
 measurable.
+
+**B4. Division ledger (tools/division_ledger.py; screen_data/ledger; 3 branch points × S/N,
+whole-body flip, 500 t, territories every 5 t).** Allele-1 divisions with both daughters pure
+(p>=0.9): S 28/56, 34/76, 37/79; N 6/13, 17/30, 4/14. That is 47% in both arms. Mixed daughters are
+many (28-44 per S run). Allele-0 divisions are 77-94% pure. Kind changes without division: 0-8 per
+run. **Contact leakage: L7 fails the 90% bar.** Showcase movie: movies/showcase.mp4 (mcfd-MIRd seed 2,
+128², t 0-1400, 2.7 MB). Pack packs/mca-MIRd-branch (labkit v0.2, 3 branch states, S arm, allele
+colour in the sheet): the yellow allele-1 colony spreads from one cell over t=500.
+
+**B5. Per-body confinement, the committee's single allowed retry (worlds/mca-MIRd-body).** New
+matter inside a cell territory takes that territory's mass-majority allele. Ledger rerun on the same
+3 points × S/N.
