@@ -1,0 +1,70 @@
+{
+ "decision": "continue",
+ "headline": "ad5-evolve is the lab's first L7 that survives a contagion audit: in-run mutant alleles breed true and the faster ones out-divide the rest (a2+a3 separate selection from neutral over 6+6 seeds). It is L7[L2] at low confidence, because selection is a one-shot colonization race from a sterile ancestor against an unmatched neutral. The dividing droplets are Gray-Scott mitosis in a Cahn-Hilliard body (L6[L2], high), and the amphiphile shell is real but inert (L6[L3], low). Phase separation has not yet done anything that reaction-diffusion could not.",
+ "promise": 7,
+ "message_to_researcher": "DECISION: CONTINUE (promise 7/10), consolidating on ad5-evolve.\n\nWHAT CONVINCED US\n- ad5-evolve: L7[L2], low confidence. This is the lab's first L7 that survives a contagion audit.\n  - All 3 judges audited seed 11: every conversion of a living droplet follows a same-allele mutation patch, destinations are unbiased, and there are 0 deaths. Divisions by allele are [0,0,2,4].\n  - Over 6+6 seeds, a2+a3 separates the two arms (p~0.001).\n- ad1-fuel: L6[L2], high confidence. It reproduces and converges at dt/2 and dx=0.5.\n- ad3-membrane/ad3s: L6[L3], low confidence. The psi shell is self-made, vanishes at chi=0, and wraps every daughter.\n\nWHAT DID NOT\n1. Beyond diffusion. Two judges swapped CH for linear diffusion (Dv=M=0.03, or D=0.015 with no double well). Spots still hollow and divide, and the psi drift still rings them. ad1 is Gray-Scott mitosis in a CH body. Catalysts are confined by reaction gating, not by partitioning.\n2. The ad5 controls.\n   - The neutral arm used k=0.13 against an ancestor at 0.10, which confounds the ancestor share. A matched neutral (all k=0.10) gives 0 divisions, so the ancestor is sterile.\n   - The rm=5 patch rewrites half a droplet (9 flips against 6 divisions).\n   - 2 of 6 divisions gave off-kind daughters.\n   - There are 0 deaths, so selection is a one-shot colonization race.\n3. The shell is inert: psi~1.56|grad phi|^2+0.12c (R^2=0.98). Both damage packs cut a droplet that was already dividing.\n4. L4c is Weak: removing the global feed (F=0) would kill any RD spot too.\n\nMAIN EXPERIMENT: selection with turnover among fertile kinds\n- ad5 at 192^2, beta=1.1. Fertile ancestor k=0.13; mutants {0.11,0.12,0.14,0.15}.\n- First, a <=30 min screen for a regime with >=1 death per ~2000 t after the box fills and no extinction. Candidates: F~0.002-0.003, higher kd, or partly arrested Ostwald ripening.\n- Mutation as a logged droplet-scale event: a copy error on one daughter at division, or a whole-droplet flip.\n- Arms, 3 seeds each, >=40k t:\n  - S: selection.\n  - N: the identical mutation events replayed with all k=0.13.\n  - R: S with the CH flux replaced by linear diffusion at Dv=M.\n- Report per allele: births, deaths, flips, off-kind daughters.\n- Pass: deaths continue after the box fills, and in 3/3 seeds beneficial alleles rise and deleterious ones fall through births and deaths, beyond N.\n- If R matches S, that is a law.\n\nSECONDARY\n1. Gate fuel permeability Du*exp(-gamma*psi). Compare gamma=0 with gamma>0 on division rate over 3 seeds; test the shell at dx=0.5.\n2. Wound mature round droplets on 2 seeds against twins, with side and central wounds.\n\nSTOP ad4 and the ad0/ad1 sweeps. PAUSE motility.\n\nBORROW\n- fisim perm operator: origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/XGENOME_SPEC.md, xgenome.py\n- flow-lenia identical-event twin: origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo/mut_neutral_muller.png\n- lenia maintenance-decay threshold: origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd\n- autopoiesis load-bearing ring: origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/phase_membrane",
+ "leaderboard_rows": [
+  {
+   "world": "ad5-evolve",
+   "rung": "L7[L2]",
+   "confidence": "low",
+   "note": "The lab's first L7 to pass the contagion audit. All 3 judges checked seed 11: every living-droplet conversion traces to a same-allele mutation patch, destinations are unbiased, and there are 0 deaths and 0 merges. Divisions by allele [a0..a3] = [0,0,2,4]; an ancestor-matched neutral (all k=0.10) has 0 divisions. Over 6+6 seeds (biologist), fast alleles a2+a3 number 10,6,9,9,9,7 vs 2,1,3,4,3,4 under neutral, and the a1<a2<a3 ordering appears under selection only. Minimal: the ancestor is sterile, and the shipped neutral arm is unmatched (k=0.13 vs 0.10). Mutation is a 5-px half-droplet transplant (flips >= divisions), and 1-2 of 6 divisions give an off-kind daughter. About 6 divisions and 12 droplets per run, all during colonization, then a frozen lattice.",
+   "pack": "threads/active-droplets/packs/ad5-evolve"
+  },
+  {
+   "world": "ad3-membrane (+ ad3s-soup)",
+   "rung": "L6[L3]",
+   "confidence": "low",
+   "note": "A self-made amphiphile shell in its own channel. psi is 0.18 in the core, 0.82-0.95 at the interface and about 0.05 outside (2 judges' seed-11 profiles). The shell lines both faces of the ring stage, wraps every daughter, forms from psi=0 in 9/9 runs including random-blob soups, and fills the body at chi=0. It is inert (s=0, no back-reaction; s=0.3 blows up), 98% explained by |grad phi|^2 + c, and 1-2 px wide with no resolution test. The same drift rings RD spots without CH. Division is ad1's (gen 2-4 in 3 seeds; gen 2 on 2 judge reruns). L4a Weak: a 44% side chop heals into one cell, and a 52% central wound kills (1 seed). Skeptic dissent: L3 Weak.",
+   "pack": "threads/active-droplets/packs/ad3-membrane"
+  },
+  {
+   "world": "ad1-fuel",
+   "rung": "L6[L2]",
+   "confidence": "high",
+   "note": "Planted disks hollow into rings that break up. The fragments then divide by dumbbell pinch for 2 rounds (lineage gen 2-4, 12-16 persistent splits) and end in a static lattice of about 18 droplets. Three judges' seed-11 reruns match. dt/2 and dx=0.5 converge. This is Gray-Scott mitosis in a Cahn-Hilliard body: Laplacian-only twins (D=0.015, and Dv=M=0.03) also hollow and divide, while D=0.06 gives static spots. L4c Weak (global F=0 only). Uniform starts go extinct.",
+   "pack": "threads/active-droplets/packs/ad1-fuel"
+  },
+  {
+   "world": "ad4-protocell",
+   "rung": "L3",
+   "confidence": "low",
+   "note": "Two planted catalyst kinds with the inert ad3 shell. They breed true (mixed=0), but max gen is 2 from directly dividing founders in all 3 seeds (L6 Weak), and the population is frozen by t~8000. The kind difference (A 3->6, B 3->5) is within noise. Superseded by ad5.",
+   "pack": "threads/active-droplets/packs/ad4-protocell"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Core-starvation fission does not need Cahn-Hilliard. With ad1's kinetics (u c^2 autocatalysis, F(1-u) feed, linear decay) and the double well removed, the committee's Laplacian twin divides at body diffusivity D=0.015 and gives static spots at D=0.06. With CH replaced by linear diffusion at Dv=0.03, spots still hollow, split and dumbbell-divide (judge-scratch/active-droplets-r1-curator/ch_vs_rd.png). For fed crescents: keep the body's own diffusivity low relative to the chemistry, and make production cooperative (c^2 rather than c), which keeps the dilute phase from nucleating (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md, Mechanisms 1-2)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "For your L7 attempt on mcfd-MIRd, take the ad5 control lessons (committee/reviews/active-droplets_r1.md). ad5's neutral arm used a different baseline (k=0.13) from its selection ancestor (k=0.10), which confounded the ancestor-share statistic. In a matched arm the ancestor never divided, so 'selection' was fertile mutants against a sterile ancestor. Use a fertile ancestor, mutations in both directions (yield up and down), and an N arm at the ancestor's yield, ideally replaying the identical mutation events. Report per-allele births, deaths, mutation flips and off-kind daughters."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Wound geometry decides the repair verdict. On a mature, round ad3-membrane droplet with an identical-state twin, a 44% side chop healed into one re-wrapped cell of control size within 8 frames. A 52% central wound left a thin annulus that dissolved within one frame (judge-scratch/active-droplets-r1-biologist/wound/wound_seed1.png). Run both geometries in the phase_membrane repair packs, so that L4a reports which wounds a starvation-fission cell survives."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "If your Laplacian arm matches the gate and you need an independent membrane, the active-droplets interface-seeking drift chi*psi*grad|grad phi|^2 (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/worlds/ad3-membrane) paints a self-made shell on any body edge. That includes soft RD spots without CH (rim/core 1.6 vs about 3 with CH; judge-scratch/active-droplets-r1-curator/ad3-rd003) and new faces made by division or cuts, which it coats within about one frame. On its own it is inert, so gate your cargo or marker with it."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "From fisim-beyond-laplacian: the perm operator div(D exp(-beta*psi) grad u), an exact Fourier step plus a bounded explicit correction that is stable at dt=0.02 (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/XGENOME_SPEC.md, xgenome.py), is a ready implementation of psi-gated fuel permeability and gives the ad3 shell a job. From autopoiesis: phase_membrane's ring is meant to be load-bearing through a phi-tilt by the cell's own product (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/phase_membrane). That is a saturating alternative to your kappa_eff = kappa - 2 s psi back-reaction, which blew up at s=0.3."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "For turnover and a fair neutral arm: lenia-multichannel found a sharp maintenance-decay threshold (0.025 static lattice vs 0.03 boom-bust) that turns frozen fed lattices into birth-death dynamics (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd, REPORT_r1.md section 4). Try the analogue in kd/F. flow-lenia's identical-event neutral twin replays the same mutation events with zero effect, which cancels seed noise pairwise in about 10-droplet populations (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo/mut_neutral_muller.png)."
+  }
+ ],
+ "rubric_issues": [
+  "L3 (clarification): a self-produced channel that sits in quasi-equilibrium with the interface (ad3 psi ~ 1.56|grad phi|^2 + 0.12c, R^2=0.98) still counts as a boundary layer if it is dynamically independent (its own production and transport) and an ablation (chi=0) removes the shell. Whether the layer does work is scored under the mechanism and beyond-diffusion modifiers, not the rung. This is consistent with autopoiesis phase_membrane.",
+  "L7: the neutral arm must share the ancestor's baseline fitness, ideally as an identical-event twin. In ad5 an unmatched neutral (k=0.13 vs 0.10) confounded the headline ancestor share. Require per-kind births, deaths, mutation flips and off-kind daughters. Selection during colonization only, with 0 deaths, caps confidence at low.",
+  "L4c: removing a global feed (F=0) is passed by any open reaction-diffusion spot. Require a local ablation (one individual's supply cut while neighbours keep theirs) or a flux budget per individual.",
+  "labkit lineage: max_generation depends on fragment lifetime. ad1's ring break-up fragments stay gen 0, while ad4 founders' first fission is gen 1, so the planted-template rule is applied inconsistently. Report 'generations after the founders' first division' explicitly.",
+  "labkit: rim_vs_core on the matter channel reads 0.20-0.36 for ad1 droplets with no membrane (diffuse interface only), so per-channel radial profiles are needed. --damage targets the largest component, which in a dividing world is the droplet about to divide (also raised by autopoiesis)."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/active-droplets_r1.md"
+}

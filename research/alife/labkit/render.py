@@ -1,7 +1,9 @@
 """Rendering: fixed-scale channel compositing, contact sheets, track biographies, movies.
 
 Colour scales are fixed for the whole run (global percentiles), never per frame, so
-brightness changes on a sheet are real changes in the fields.
+brightness changes on a sheet are real changes in the fields. The same scales
+(channel_scales + normalize) are the units of the radial profiles in metrics.json and
+radial.png: 0 = the channel's 1st percentile over the run, 1 = its 99.5th percentile.
 """
 from __future__ import annotations
 
@@ -119,6 +121,14 @@ def crop_periodic(img, cy, cx, half):
     ys = (np.arange(int(cy) - half, int(cy) + half) % H)
     xs = (np.arange(int(cx) - half, int(cx) + half) % W)
     return img[np.ix_(ys, xs)]
+
+
+def outline(img, mask, color=(255, 40, 40)):
+    """Copy of an (H, W, 3) image with the (periodic) boundary pixels of a boolean mask painted."""
+    inner = mask & np.roll(mask, 1, 0) & np.roll(mask, -1, 0) & np.roll(mask, 1, 1) & np.roll(mask, -1, 1)
+    out = img.copy()
+    out[mask & ~inner] = color
+    return out
 
 
 def save_movie(rgb_frames, path, fps=12):

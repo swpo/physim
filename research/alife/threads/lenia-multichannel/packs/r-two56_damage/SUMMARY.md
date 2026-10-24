@@ -1,0 +1,7 @@
+# threads/lenia-multichannel/worlds/r-two56/world.py across seeds
+
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 5 | 4 | 181 | 5 | 0 | 1 | 1 | 0.03 |
+| 1 | ok | 5 | 2 | 151 | 3 | 0 | 2 | 1 | 0.04 |
+| 2 | ok | 3 | 3 | 146 | 3 | 0 | 0 | 0 | 0.02 |
