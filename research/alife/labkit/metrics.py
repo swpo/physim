@@ -31,8 +31,16 @@ so judges know exactly what a number means:
   track centroid) and R_eq = sqrt(area / pi) of the component. Neighbouring components
   are NOT masked out. Per track: the top tracks at their middle-life render frame.
   Aggregate: mean +- std over all components with area >= 2 * min_area at up to 6
-  render frames spread over the run (the initial frame excluded). R_eq follows the
-  matter segmentation: if the threshold cuts an individual into a core and a separate
+  render frames spread over the run (the initial frame excluded), leaving out, from the
+  damage frame on, the damaged individual and every track descended from it (through
+  splits and merges; their count is reported). Flagged in FACTS: ring members (the
+  centroid pixel is outside the component's own mask, e.g. a membrane segmented apart
+  from its core, so one individual is counted twice and the ring's profile is centred on
+  the hole) and truncated members (< half of the pixels of the outside annulus
+  1.6-2.2 R_eq sampled: on a periodic grid the window is capped below half the grid, so
+  the annulus is clipped for R_eq > (min(H, W) - 1) / 4.4 and holds only corner pixels or
+  none for R_eq > (min(H, W) - 1) / 3.2; an open boundary also clips it). R_eq follows
+  the matter segmentation: if the threshold cuts an individual into a core and a separate
   ring (a low gap between them), R_eq is the core's and the ring sits at rho > 1.3,
   where only its inner flank is in the rim band; raise META "smooth" or set META
   "matter" so that one component covers the whole individual.
@@ -40,7 +48,9 @@ so judges know exactly what a number means:
   (in the rim band if 0.5 <= rho_peak <= 1.5); rim = max of p over 0.6 <= rho <= 1.3;
   core = mean of p over rho < 0.4; outside = mean of p over 1.6 <= rho <= 2.2 (means of
   bin means); rim/core = (rim + 0.01) / (core + 0.01), rim/outside likewise, capped at
-  999 (1 = no contrast or an absent channel; ~100 = the denominator is ~0).
+  999 (1 = no contrast or an absent channel; ~100 = the denominator is ~0). A flat
+  profile (max - min <= 1e-6, e.g. an absent channel) is reported as flat: its rho_peak
+  is meaningless. peak_in_rim is reported next to the verdict but is not part of it.
   MEMBRANE-LIKE = rim/core >= 1.5 AND rim/outside >= 1.5 on the aggregate profile; the
   number of individuals that pass on their own profile is reported alongside.
 - damage target (--damage FRAME:FRAC[:MODE]): frames 0..FRAME (pre-cut) are segmented
@@ -48,7 +58,9 @@ so judges know exactly what a number means:
   track has existed >= K frames and whose area is within [0.5, 1.6] x the median area,
   the most compact one (lowest aspect ratio = sqrt of the eigenvalue ratio of the pixel
   second-moment matrix, so elongating or pinching bodies are avoided); if none
-  qualifies, the largest component. A = target area, R_eq = sqrt(A / pi).
+  qualifies, the largest component; FACTS warns when the chosen target's aspect ratio
+  is > 1.5 (likely elongating or pinching). A = target area, R_eq = sqrt(A / pi).
+  FRAC must be in (0, 1].
   core: disk of area FRAC*A at the centroid. rim: a disk of the same area centred on
   the boundary pixel farthest from other components. half: pixels of the component
   (dilated by ~R_eq/4 so a layer just outside the threshold contour is cut too) beyond
@@ -61,7 +73,9 @@ so judges know exactly what a number means:
   in area, preferring mature ones at a boundary gap >= R_eq from the target. After the
   cut both are followed as individuals: through their own splits and through merges of
   their own pieces (threshold flicker), not through merges with other individuals;
-  "area rel" = area of the largest piece / area just before the cut.
+  "area rel" = area of the largest piece / area just before the cut (recorded frame
+  FRAME - 1; for FRAME = 0, which is recorded after the cut, the pre-cut field segmented
+  with the run's normalization).
 - species (META "species" = {name: [channels]}): segmentation, tracking and lineage as
   above, run separately on each species' channel sum with its own robust range.
 """
@@ -78,6 +92,8 @@ RHO = 0.5 * (RHO_EDGES[1:] + RHO_EDGES[:-1])     # bin centres 0.05 .. 2.45
 CORE_RHO, RIM_RHO, OUT_RHO, PEAK_RHO = (0.0, 0.4), (0.6, 1.3), (1.6, 2.2), (0.5, 1.5)
 RATIO_EPS, RATIO_CAP, MEMBRANE_RATIO = 0.01, 999.0, 1.5
 DAMAGE_AREA_BAND = (0.5, 1.6)   # target area / median component area
+DAMAGE_ASPECT_WARN = 1.5        # FACTS warns when the damage target is more elongated than this
+FLAT_EPS = 1e-6                 # a radial profile with max - min <= this is flat (no peak)
 
 
 # ------------------------------------------------------------------ segmentation
@@ -291,6 +307,14 @@ def radial_profile(fields_norm, cy, cx, r_eq, periodic=True):
     return prof, cnt
 
 
+def band_coverage(cnt, r_eq, band=OUT_RHO):
+    """Pixels sampled in the bins of `band` / the annulus area they should hold (1 = fully sampled;
+    < 1 when the window is capped on a small periodic grid or cut by an open boundary)."""
+    sel = (RHO >= band[0]) & (RHO <= band[1])
+    lo, hi = RHO_EDGES[:-1][sel].min(), RHO_EDGES[1:][sel].max()
+    return float(np.asarray(cnt)[sel].sum() / max(np.pi * r_eq ** 2 * (hi ** 2 - lo ** 2), 1e-9))
+
+
 def _ratio(a, b):
     if not (np.isfinite(a) and np.isfinite(b)):
         return None
@@ -308,7 +332,8 @@ def boundary_score(prof):
     core = float(_quiet(np.nanmean, prof[RHO < CORE_RHO[1]]))
     out = float(_quiet(np.nanmean, prof[band(*OUT_RHO)]))
     rc, ro = _ratio(rim, core), _ratio(rim, out)
-    return {"rho_peak": round(float(RHO[k]), 2), "peak_in_rim": bool(PEAK_RHO[0] <= RHO[k] <= PEAK_RHO[1]),
+    flat = bool(_quiet(np.nanmax, prof) - _quiet(np.nanmin, prof) <= FLAT_EPS)
+    return {"rho_peak": round(float(RHO[k]), 2), "peak_in_rim": bool(PEAK_RHO[0] <= RHO[k] <= PEAK_RHO[1]), "flat": flat,
             "rim_max": None if np.isnan(rim) else round(rim, 4), "core_mean": None if np.isnan(core) else round(core, 4),
             "outside_mean": None if np.isnan(out) else round(out, 4),
             "rim_core": None if rc is None else round(rc, 3), "rim_outside": None if ro is None else round(ro, 3),
