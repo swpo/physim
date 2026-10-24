@@ -217,3 +217,15 @@ U_pred += chase·blur12(prey). Flee: U_prey -= flee·blur12(pred). Total mass is
   (packs/fl_predator/populations.png). Minimum predator matter 25-57, minimum prey 182-283.
 - Ablations (8000 steps): chase=0 -> predators starve by t~2700 and prey persist alone. flee=0 ->
   prey exterminated, then predators die (extinction). Coexistence needs pursuit AND evasion.
+
+## S2-E3. Heritable prey flee gene under predation (`worlds/fl_predator_gene`, evo2/pgene.png)
+The prey carry log f (flee *= f), transported with prey matter by sampling. Mutation p=0.004/step,
+N(0, 0.3). 8000 steps, 3+3 seeds. Selection: +0.19, +0.16, +0.23. Neutral: +0.24, +0.25, +0.29.
+No difference. All 6 drift up, controls included: an unexplained bias (the uptake-gene controls
+centre on 0). Coexistence held in all 6 runs. Negative / inconclusive.
+
+## S2-E4. Maintenance cost on the uptake gene (cost 1.5: decay *= g^1.5; evo2/gene_cost.log)
+Prediction from R* (break-even food = k_dec g^0.5 / k_eat): mean log g should fall. Result after
+8000 steps: +0.14, -0.23, +0.32. Not supported; the outcome looks like the no-cost runs. Selection
+on g probably acts through growth during colonization, not through the steady-state food level.
+Sprint 2 ended ~18:25 UTC.
