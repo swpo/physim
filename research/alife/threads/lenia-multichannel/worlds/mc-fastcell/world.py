@@ -108,7 +108,9 @@ META = {
     "size": (192, 192),
     "steps_per_frame": 5,
     "dt": 0.1,
-    "channels": ["A0", "A1", "A2"][:3],
+    "channels": ["A0", "A1", "A2"][:3] + (["F"] if None else []),
+    "matter": [1, 2],   # track the compact core (A1+A2); the cyan shell sheds debris
+    "smooth": 2.0,
 }
 
 R, T = 20, 10
@@ -135,11 +137,23 @@ CELLS = [
     "51.$51.$51.$51.$51.$51.$51.$51.$24.AHKHC22.$23.OpDpGpHpRqIqSqTqKpLLCEFEB12.$19.I2.XpRpXqDrKtUuDsPrVrUsFsQsIqSpBQKD11.$18.ABpID.GRrBvKwMtMsQsGsCsHsTtEtFsVqTpBNE10.$25.tHyOvWvBuQuCtPtQuDuRuVuItNrNpDLC9.$24.rEyOxXuJvHvXwA2vUwEwOwSwHvCtRqXUGA8.$22.rLuSvTtGrSuOxAyIyOyNyM3yOyDwSuUsVpLIB8.$15.pGsVtKuEtIpNA3.JsJwFyL8yOyDvUtQqOJB8.$19.M4.MrRvDwWxVyL8yOwOtWrKIA8.$17.SK3.JpWrUuGvVwKxCxSyI7yOwTtWrPK9.$15.BWpWrLsMtLuMvNwMxDxCwPwJwMwWxNyH6yOwNtQrMK9.$15.GpXrLtVvFwIxExUyJ2yOxXwSwFwHwTxR6yOvUtGrHG9.$15.LpItFvJwTxPyCyL4yOxOwIvXwHxEyK4yOxQuVsSrCA9.$15.OpOtXvXxFxTyCyJ5yOwUvXwBwWyG4yOwGtSsHqQ10.$14.J.rAuCvWxBxNxTyF5yOxKwFwBwTyC3yOxEuPsLsCpP10.$14.M.rNuBvQwSxHxPyCyN4yOxPwGwBvEuKvMwSwKuXsUrHsIG10.$14.K.rDuBvKwLxDxOyCyN4yOxFvUuSrRqXsMuAuGtArGqQrS11.$12.qIqHqQpUrJuCvGwHxCxQyEyN3yOxXvXuQrEMPrEsWsRrJqFrIpO11.$11.qUsIsRuAtHsHtIvDwBwXxQyFyM2yOxSvQtOqA2.pGrUsGrNqPqNrJC11.$11.qJrXsUuEvBsSsIuCvPwMxHxUyCxUwRuOsC3.xDyEvXuGsUrRrDqC12.$11.PqTsItLuLsJpWqTtQvMwDwJwAuTsDB3.yOvNsKtGtHsJrFqGpG12.$12.pUrQsMtCpUA.FrDsNsTsAX4.tOrO.VsGsCqUpTpFR12.$12.pHrHrUpDCPK3.G3.B2.I.pKsDrIpUpA2OF12.$13.pI4.LS2WR2LA4.CrPrKpTWLKH13.$20.WrVpHA2.rE3.FpLrIqDpEOC14.$21.sBuQpU2.pQ3.FqVpVH17.$20.UqMsGDS.2L2.CpL19.$21.pErJ.rKpSpLQ2.R20.$22.S.rVrHrD24.$51.$51.$51.$51.$51.$51.$51.$51.$51.$51.$51.!",
 ]
 N_SEED = 3
+C = 3
+NOISE = 0.6
+# Optional metabolism: food field F (diffusing with D, regrowing at rate rho toward Fmax).
+#  mode "conserve": matter can only be built from local food (yield Y); see step().
+#  otherwise ("gate"): positive growth multiplied by F^gate, eating at eat*mass*F, starving at starve*(1-F).
+FOOD = None
 
 
 def init(seed, size):
     rng = np.random.default_rng(seed)
     H, W = size
+    if CELLS is None:   # spontaneous: random noise in a square patch covering NOISE of the grid side
+        A = np.zeros((C, H, W))
+        p = int(NOISE * min(H, W))
+        A[:, :p, :p] = rng.random((C, p, p))
+        A = np.roll(A, (int(rng.integers(H)), int(rng.integers(W))), (1, 2))
+        return _finish(A, size)
     cr = _creature(CELLS)
     A = np.zeros((len(CELLS), H, W))
     h, w = cr.shape[1:]
@@ -153,16 +167,55 @@ def init(seed, size):
         placed.append((y, x))
         c = np.rot90(cr, int(rng.integers(4)), axes=(1, 2))
         A = np.maximum(A, np.roll(np.pad(c, ((0, 0), (0, H - c.shape[1]), (0, W - c.shape[2]))), (y, x), (1, 2)))
-    return {"A": A, "L": Lenia(RULE, len(CELLS), size, R, T)}
+    return _finish(A, size)
+
+
+def _finish(A, size):
+    H, W = size
+    st = {"A": A, "L": Lenia(RULE, C, size, R, T)}
+    if FOOD:
+        st["F"] = np.full((H, W), FOOD.get("F0", 1.0))
+        ky = 2 * np.pi * np.fft.fftfreq(H)[:, None]
+        kx = 2 * np.pi * np.fft.rfftfreq(W)[None, :]
+        st["lapK"] = -(kx ** 2 + ky ** 2)
+    return st
 
 
 def step(s):
-    s["A"] = np.clip(s["A"] + s["L"].dt * s["L"].growth(s["A"]), 0, 1)
+    L, A = s["L"], s["A"]
+    G = L.growth(A)
+    if FOOD and FOOD.get("mode") == "conserve":
+        # matter is built from food: positive growth is capped by the local food F (yield Y),
+        # food spent = matter built / Y; decay just dissipates. Behaviour is unchanged where F is plentiful.
+        F = s["F"]
+        inc = np.clip(np.minimum(L.dt * G, 1 - A), 0, None)
+        dec = np.clip(L.dt * G, None, 0)
+        need = inc.sum(0) / FOOD["Y"]
+        scale = np.minimum(1, F / np.maximum(need, 1e-12))
+        A_new = np.clip(A + inc * scale + dec, 0, 1)
+        F = F - need * scale + L.dt * FOOD["rho"] * (FOOD.get("Fmax", 1.0) - F)
+        if FOOD["D"] > 0:   # implicit spectral diffusion
+            F = _irfft2(_rfft2(F) / (1 - L.dt * FOOD["D"] * s["lapK"]), F.shape)
+        s["F"] = np.clip(F, 0, None)
+        s["A"] = A_new
+    elif FOOD:
+        F = s["F"]
+        G = np.where(G > 0, G * F ** FOOD["gate"], G) - FOOD["starve"] * (1 - F) * A
+        A_new = np.clip(A + L.dt * G, 0, 1)
+        mass = A_new.sum(0)
+        dF = FOOD["rho"] * (1 - F) - FOOD["eat"] * mass * F
+        F = F + L.dt * dF
+        if FOOD["D"] > 0:   # implicit spectral diffusion
+            F = _irfft2(_rfft2(F) / (1 - L.dt * FOOD["D"] * s["lapK"]), F.shape)
+        s["F"] = np.clip(F, 0, 1)
+        s["A"] = A_new
+    else:
+        s["A"] = np.clip(A + L.dt * G, 0, 1)
     return s
 
 
 def fields(s):
-    return s["A"]
+    return np.concatenate([s["A"], s["F"][None]]) if FOOD else s["A"]
 
 
 def damage(s, mask):

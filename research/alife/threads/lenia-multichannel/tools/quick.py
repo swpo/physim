@@ -45,7 +45,7 @@ def main(argv=None):
     W = load_world(a.world)
     for kv in a.set:
         k, v = kv.split("=", 1)
-        setattr(W, k, eval(v, vars(np) | {"np": np}))
+        setattr(W, k, eval(v, vars(np) | dict(vars(W)) | {"np": np}))
     s = W.init(a.seed, (a.size, a.size))
     C = len(W.META["matter"]) if W.META.get("matter") else None
     every = max(1, a.steps // (a.frames - 1))

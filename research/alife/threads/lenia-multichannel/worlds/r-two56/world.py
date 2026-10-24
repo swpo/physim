@@ -104,7 +104,7 @@ META = {
     "family": "lenia",
     "parent": 'screen:two#56',
     "mutation": "random 'two' channel/kernel graph",
-    "size": (128, 128),
+    "size": (192, 192),
     "steps_per_frame": 5,
     "dt": 0.1,
     "channels": ["A0", "A1", "A2"][:2] + (["F"] if None else []),

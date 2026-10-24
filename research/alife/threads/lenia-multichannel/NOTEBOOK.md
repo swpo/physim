@@ -56,3 +56,53 @@ dissipates; food regrows (rho) and diffuses (D).** Where food is plentiful the d
 unchanged. With rho=0.005 the replicators dig food wells and starve (screens/food_mirde_starve.png).
 rho=0.02 D=2: population ~2-8 blobs, food mean 0.65-0.75; rho=0.05 D=2: 20-30 blobs, food ~0.75.
 Population size follows the food supply. Needs a no-food ablation and longer runs.
+
+## r-two56: spontaneous shelled cells (promoted)
+
+**P1. Pack `packs/r-two56` (192², 3 seeds, t=100).** All seeds: the noise square first grows a
+two-layer rim (cyan inside, orange outside) around the whole tissue (t=4-9), then the tissue
+breaks up and **cells pinch off the rim**: white centre, cyan ring, orange spiky shell, diameter
+~20 px (2R). 4-8 cells per seed survive to the end, stationary; some cells stay bound in pairs via
+orange bridges (seed 0). Seed 1 makes a large hollow vesicle (cyan ring, orange coat, empty
+interior) that lives t=40-65 then tears into a crescent. FACTS rim-vs-core 0.5-0.75,
+rim-vs-outside 0.46-0.53: shell = channel 1 high, core = channel 0 high.
+
+**P2. Ablations (screens/r-two56_ablations.png, rows: none, -k0..-k5, -k4&k5).**
+- k0 (0->0, single ring r=0.59R, m=0.15, narrow): **size limiter**. Without it the cells never stop
+  growing: bilayer worms (cyan core, orange coat) that invade everything.
+- k1 (0->0, 3 rings, m=0.47): without it, sea.
+- k2, k3 (1->1): without either, everything dies.
+- k4 (0->1, shell grows where ring-sensed core density ~0.23): without it, orange labyrinth sea.
+  This is the **membrane mechanism**: the shell can only exist at the distance from the core where
+  the nonlocally sensed core density hits k4's set point.
+- k5 (1->0, broad, m=0.5): without it, the core dies: **the core needs its shell**.
+- both cross edges: orange labyrinth only.
+So the cell is a mutual dependence: core makes shell at a set distance, shell feeds core.
+
+**P3. Damage (screens/r-two56_damage_side_vs_core.png; dmg script in scratch).** Single isolated
+cell at t=100. Side cut 10% and 20% of the cell area: full regrowth within ~t=10. Side cut 30%
+or 50%: cell dies. Any core disk, even 10%: the cyan core collapses to a ring and the whole cell
+dies. labkit `--damage 120:0.5` packs (`packs/r-two56_damage`): damaged cells die. **L4a not met**
+(threshold < 30%). Interesting asymmetry: the shell is repairable, the core is not.
+
+**P4. Mutating the size limiter (k0 weight h0 0.413 -> 0.05-0.33, from noise).** h0 <= 0.33 gives
+**expanding hollow vesicles** (cyan ring coated with orange on both sides) that grow, buckle and
+shed small cells from their surface; h0=0.05 gives worms. A single planted cell
+(`worlds/r-two56-cell`) is unchanged for h0 in [0.1, 0.413] and m0 in [0.13, 0.19]: the cell is
+a very robust attractor (k0 is inactive inside a formed cell). No binary fission found.
+
+## Metabolism, continued
+
+**M3. Static cells don't eat.** r-two56 + conserve food: food dips while cells form, then returns
+to 1.0: a formed static Lenia cell has zero matter turnover, so a "build from food" metabolism
+never charges it. Only things that move or grow pay.
+
+**M4. Motile shelled glider + food (mcf-fastcell, Y=2).** Starves in ~500 steps (turnover at the
+moving front is large). **Y=5, rho=0.01, D=1: two gliders persist for 6000 steps with mean food
+0.65, leaving dark depletion trails** (foraging). Ablations: rho=0 -> both die at step ~2000 when
+mean food reaches 0.3-0.35; Fmax=F0=0.5 -> die by 1300; 0.25 -> die by 430; 0.1 -> die by 210.
+The glider depends on the food it consumes: L4c candidate on an L3 (shell + core) creature.
+
+**M5. Replicator + food, 128², 4000 steps.** no food coupling: 3 -> 19-26 blobs; rho=0.02 D=2:
+bounded at 1-4 blobs (food 0.65-0.85); rho=0.01 D=4: extinct at ~1450; rho=0: extinct by 726
+while mean food is still 0.75 (local wells). Population size is set by food supply.
