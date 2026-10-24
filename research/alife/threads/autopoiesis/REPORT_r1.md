@@ -50,7 +50,9 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
    F ≥ 0.01 → sea.
 5. **Two levels of selection.** Within a cell, the faster catalyst wins. Between cells, a cell
    whose catalyst makes no links loses its wall. A parasite-advantage threshold separates purging
-   (0.24) from collapse (≥ 0.27).
+   (0.24) from collapse (≥ 0.27). With a continuous trait the balance sets an optimum c*, and
+   the prediction "steeper trade-off → lower c*" holds. End means at t=32k from starts 0.15 / 0.20
+   (1 seed each): β=1.5 → 0.182 / 0.202; β=3 → 0.165 / 0.188; β=6 → 0.150 / 0.166.
 6. **Autophoretic swimming.** Above a mobility threshold, a cell's symmetric depletion halo is
    unstable and the cell runs away into a crescent swimmer. Moving keeps it fed, so it stops
    dividing: a motility/reproduction trade-off.
@@ -77,9 +79,8 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
 
 1. Pearling or budding division through a wall-tension term that depends on adsorbed links
    (phase_membrane), instead of starvation fission.
-2. Continuous trait (`phase_trait`): run to convergence, measure the optimum's dependence on the
-   trade-off slope β (prediction: steeper trade-off → lower c*), and add a second trait axis for
-   diversification → L7 Supported, a first L8 probe.
+2. Continuous trait (`phase_trait`): run to convergence with 3 seeds per β to pin c*(β), then
+   add a second trait axis to look for diversification → L7 Supported, a first L8 probe.
 3. Local phoresis (wall slip plus a Darcy flow) for isotropic swimming with bounded size, then a
    swim/divide cycle.
 4. Lattice SCL with chain-based bond inhibition (LITERATURE §2.7.1): a cheap check of whether the

@@ -164,3 +164,6 @@ Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
   48k time units (160 frames x 300). End means: 0.165/0.155/0.164 vs 0.179/0.182/0.179
   (`screens/trait_convergence.png`). Both directions in all seeds -> stabilizing selection toward
   c* ~ 0.17. 36-42 cells, persistent splits 21-39, gen 3-6.
+- trade-off slope test (1 seed, 32k, starts 0.15 / 0.20): beta=1.5 -> 0.182 / 0.202; beta=3 ->
+  0.165 / 0.188; beta=6 -> 0.150 / 0.166. Steeper trade-off -> lower evolved c, as predicted by
+  the two-level balance.
