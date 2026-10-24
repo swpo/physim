@@ -1,5 +1,8 @@
 name: Research workspace and reference checks
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 jobs:
   checks:
     runs-on: ubuntu-latest
