@@ -207,3 +207,23 @@ particles returned as uniform food).
   cells, 81 births, rings 0.09. k_dec 0.025 + delta 0.01: extinct. k_dec 0.02 + delta 0.005:
   25-39 cells, rings 0.38. No passing setting: a food-contact ring and a food-limited population
   are incompatible.
+
+# Sprint 3 (final; started 2026-10-24 19:42 UTC)
+
+## U1. Step-safe integrator (sporecell3) and the release-route gate
+sporecell3 = sporecell2-sel + adaptive sub-steps (max displacement <= 0.05 per sub-step, forces
+recomputed each sub-step, displacement clipped and logged if velocity grows inside a sub-step)
++ every RNG draw unconditional (identical-event twins) + surface detachment route (k_det: a core
+particle with 3 <= matter neighbours < n_det jumps d_det=1.5 in a random direction).
+Merge-aware lineage `lineage2.py` (continuation by particle overlap; births only from clusters
+with no previously clustered particle; qualifying birth >= 20 samples and not ending in a merge).
+- seed 0, dt=0.02, t=200, no release route (R0): 1 qualifying birth, 22 deaths, 3 cells at t=200,
+  free spores 3.4 (vs 127 with the old integrator). Sub-steps 3-52 per step (dense cells are very
+  stiff), 9508 displacement clips. With converged motion, spontaneous spore release is ~gone:
+  this confirms the committee's "size-triggered instability" diagnosis.
+- k_det=0.003, n_det=25 (R1): only 7 detachments (dense cells rarely have < 25 neighbours);
+  0 births, 3 cells.
+- k_det=0.01, n_det=25 (R1b): 28 detachments, 5 qualifying births, max gen 1, 33 deaths, 8 cells at t=200.
+- SALR (B=-1 on all core pairs to R2=2.5; R2): 4 qualifying births, gen 1, 30 deaths, 5 cells, 0.4 free spores.
+- With converged motion, every route so far gives deaths >> births (15-16 vs 2-2.5 per 100 t):
+  the populations decline. Neither reaches gen >= 2 by t=200.
