@@ -249,3 +249,15 @@ The variant always makes more, smaller bodies (8-15 vs 0-11). Neutral (x1.0001):
 3/6. Even halving h is not a clear fitness difference under sampling: the coin-flip outcome the
 committee named as "redesign heredity first", though only for one rule and 6 seeds. Contrast with
 S2-E1: the uptake gene acts on the birth-death balance directly and IS selected (p~0.008).
+
+# Sprint 3 (final; started 19:36 UTC)
+
+## Corrections after the sprint 2 review
+- S2-E1: Mann-Whitney U = 31/36 gives an exact one-sided p of 19/924 = **0.021**, not 0.008.
+  REPORT_r2 is corrected.
+- S2-E1: the neutral arm was rate-matched, not identical-event (seed 0: 99 vs 83 events).
+  Fixed in fl_forager_gene2: mutation times, location quantiles and effect draws come from their
+  own RNG stream, so S and N share every event time and draw.
+- S2-E2: ablation times were given in steps. In t (dt = 0.2): predators starve by t~540
+  (chase=0), and extinction comes by t~540 (flee=0).
+- labkit v0.2 dropped the META["threshold"] fix again; re-applied in its own commit (03676da).

@@ -1,0 +1,2 @@
+seed 0 ['gene_active=False']: events 52 final mean log g -0.008
+seed 0 ['gene_active=False', 'body_pheno=True']: events 52 final mean log g -0.008

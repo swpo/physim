@@ -14,7 +14,7 @@ differs from the founder only in localized h.
 
 So halving h is close to a coin flip under stochastic sampling, the case the committee named as
 "redesign heredity first". It is answered in part by section 1: a gene that acts on the
-birth-death balance (uptake) is selected against its neutral twin (p≈0.008, 6+6 runs). This
+birth-death balance (uptake) is selected against its neutral twin (exact one-sided p=0.021, 6+6 runs). This
 substrate can show selection, but not for parameters that only reshape the body.
 
 Still to do from the review: the x0.9 and x0.75 doses, 12 seeds per arm, the negotiation rule,
@@ -28,7 +28,7 @@ foragers, and it shows selection that a neutral control does not.** Every parcel
 carries an uptake gene that travels with it through transport and division and mutates during
 the run. With the gene active, the matter-weighted mean log g rises in 5/6 runs (to +0.34…+0.73).
 With the gene as a neutral marker (same mutation process, no effect), it wanders around 0
-(−0.24…+0.11). Mann-Whitney U = 31/36, one-sided p≈0.008, over 6+6 runs. What wins is not a
+(−0.24…+0.11). Mann-Whitney U = 31/36, one-sided exact p=0.021 (corrected in sprint 3 from 0.008), over 6+6 runs. What wins is not a
 better glider: fast eaters overgrow into large, slow multi-ring cells.
 
 **Second result: a predator-prey ecology of gliders** (`fl_predator`). Predator gliders chase
