@@ -167,3 +167,14 @@ Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
 - trade-off slope test (1 seed, 32k, starts 0.15 / 0.20): beta=1.5 -> 0.182 / 0.202; beta=3 ->
   0.165 / 0.188; beta=6 -> 0.150 / 0.166. Steeper trade-off -> lower evolved c, as predicted by
   the two-level balance.
+
+## 10. Swim/divide (`worlds/phase_swimdiv`, mu=1.5)
+- slow swimmers still starve centrally and divide: 1 -> 4 at t~2400, daughters swim off as
+  crescents, grow and divide again; 6-12 motile cells at t=8000 (3 seeds). Labkit's tracks break
+  for movers (persistent splits 1-4), so the sheet is the evidence.
+- artifact found and fixed: labelling phi > 0.05 merged touching halos into one rigid body (pairs
+  dragged together, dying low-phi regions smeared into tattered ghosts, `screens/swimdiv_tatter.png`).
+  Now label phi > 0.5 bodies and grow labels 3 px into their own halo. phase_swim re-run: the
+  numbers are unchanged (a single cell either way).
+- reproducibility: re-running phase_protocell_noise s1, phase_protocell s2 and phase_swim s2
+  from the committed files reproduces FACTS exactly.

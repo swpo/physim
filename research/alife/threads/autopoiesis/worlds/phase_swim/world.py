@@ -118,11 +118,15 @@ def step(s):
     s["phi"] = np.clip(phi + h * s2 * P["Dp"] * lap(phi) + h * P["r"] * phi * (1 - phi) * (phi - 0.5 + P["a"] * (L - P["th"])), 0, 1)
     if P["mu"]:
         from scipy import ndimage
-        lab, n = ndimage.label(s["phi"] > 0.05)
+        lab, n = ndimage.label(s["phi"] > 0.5)  # cell bodies
         for a, b in ((lab[0], lab[-1]), (lab[:, 0], lab[:, -1])):  # periodic: merge across edges
             for u, w in set(zip(a.tolist(), b.tolist())):
                 if u and w and u != w:
                     lab[lab == w] = u
+        halo = s["phi"] > 0.05
+        for _ in range(3):  # grow each body's label into its own wall/halo (3 px), never across bodies
+            grown = ndimage.grey_dilation(lab, size=3, mode="wrap")
+            lab = np.where((lab == 0) & halo, grown, lab)
         if n:
             gy = 0.5 * (np.roll(S, -1, 0) - np.roll(S, 1, 0))
             gx = 0.5 * (np.roll(S, -1, 1) - np.roll(S, 1, 1))
