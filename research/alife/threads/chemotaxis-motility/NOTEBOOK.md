@@ -163,3 +163,20 @@ survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a
   Selection world: g_B = 1.3 g. **Neutral control `swimevo_neutral`: s = 0, identical mutation process.** Start: all A.
 - Screen (128², t=1200, seed 0): B swimmers appear from t≈470. Bodies are almost always pure (A or B); mixed bodies are transient after a
   mutation. A/B counts 17/0 (t=144) → 9/1 (+5 mixed, t=600) → 6/6 (t=1200).
+- **Packs** `packs/swimevo` (s = 0.3) and `packs/swimevo_neutral` (s = 0), 160², t=1800, seeds 0-2; `packs/swimevo/alleles.png` has all 6 runs.
+  Bodies A/B (mixed) at t=1800: selection 2/6 (2), 1/11 (0), 3/4 (0) → **B 21 vs A 6**; neutral 3/3 (3), 5/2 (1), 6/0 (0) →
+  **B 5 vs A 14**. B also arises later and more rarely in the neutral runs (first B body at t≈1200-1500 against ≈600-1200).
+  The effect is in the right direction in all 3 pairs but the counts are small (~10 bodies per run). seed1 sheet: visible orange sweep from t≈1300.
+  Population declines over the run (~20 → ~10 bodies) in all 6, probably because own-density growth is lower for mixed bodies.
+- **Breeding true** (`fission.py` with composition, `packs/fission_swimevo_s{0,1}.json`, t=1800): 14 / 15 clean fissions, **max generation 7 / 6**.
+  17/17 pure-A parents → two pure-A daughters. Parents with B ≥ 0.77 → daughters 1.00/1.00, 0.98/0.98, 0.91/0.86, 0.88/0.83, but one gave
+  [0.28, 1.00]. Mixed parents (B 0.5-0.6) → mixed daughters (0.38-0.76) that purify later.
+
+## evopursuit: heritable evasion under predation (fork of ecology + swimevo; prey divide with Da_p 2)
+- Prey allele B multiplies the body's evasion chi_x by (1 + e fB), with e = 1, at a 15% growth cost. Symmetric patch mutations. Predators
+  as in ecology.
+- k 0.2 (the ecology value): prey extinct by t≈1000 (small dividing prey are easy to catch). k 0.05: B rises slowly (A14 / B6 / mix6 at
+  t=1200). **k 0.1: complete B sweep**, A/B bodies 29/0 (t=144) → 7/5 (t=600) → 1/28 (t=900) → 0/29 (t=1200). After the sweep both
+  prey and predator totals rise (predator +70%). No predators (pred 0, t=1800): A holds 10-15 bodies and B never exceeds 1 body.
+  Sheet `/tmp ep_k1`: cyan A prey ridden by magenta predators, then orange B crescents take over. Full 3-seed experiment with neutral
+  and no-predator controls running.
