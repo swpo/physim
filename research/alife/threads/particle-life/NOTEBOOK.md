@@ -177,3 +177,20 @@ released food.
   against 6/17, 12/13, 14/18 at 50%. Confirmed: a priority effect, bistable territories. The
   predator kind cannot invade from rare, so this interaction cannot be reached by mutation in
   this design.
+
+## T4. Robustness and numerics of the L7 result
+- Jitter (advantage 1.2x instead of 1.3x, mu 0.09), seeds 0/1/2: final kind-1 cells 6/18, 0/17, 3/17;
+  per-capita births k0 vs k1 1.8/2.4, 1.9/0, 2.6/0.9. The weaker advantage does not reliably
+  sweep. Not robust to a -10% change of the advantage.
+- dt/2 (dt=0.01, same simulated time 400): seed 0, births 15 (vs 70 at dt=0.02); kind 1 3/13 cells,
+  per-capita 1.4 vs 0.5, 6/7 breed true. Seed 1: births 22 (vs 61), gen 1, kind 1 1/14, no
+  kind-1 births. dt=0.015, seed 0: births 59, gen 9, kind 1 3/16, per-capita 2.7 vs 2.2.
+- Convergence of spore emission (`scratch/dtconv.py`, sporecell2-sel seed 0, mean free core
+  particles over t=60-200):
+  - dt 0.02 / 0.01 / 0.005: 127 / 40 / 6; cells at t=200: 24 / 14 / 5.
+  - Adding core Brownian noise (D_C=0.005): 95 / 39 / 4. D_C=0.05: 146 / 77 / 8 (cells 19 / 15 / 11).
+  - Softer core (rep=3): extinct at every dt.
+  - CONCLUSION: spore emission, and so the reproduction rate, is largely numerical heating of the
+    stiff core (rep*ff*dt overshoot) at dt=0.02. It does not converge as dt -> 0. The heredity,
+    gate and predation results hold for the dt=0.02 discrete map only. This also applies to
+    sprint 1's sporecell, which used the same dt and rep.
