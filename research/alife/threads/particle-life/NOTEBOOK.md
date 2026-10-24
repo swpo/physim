@@ -203,3 +203,7 @@ particles returned as uniform food).
 - delta 0.005: food 814, 38-39 cells with deaths and births (69), 5% ringed. delta 0.02: extinct by t=100.
 - No setting gives a stationary, ringed, reproducing population. The window, if any, is narrow
   (k_dec~0.025 or delta~0.01). Steps (b) and (c) were not run.
+- Window probe: k_dec 0.025: rings 0.69, but growing 11 -> 36 (a burst). delta 0.01: stationary 33-38
+  cells, 81 births, rings 0.09. k_dec 0.025 + delta 0.01: extinct. k_dec 0.02 + delta 0.005:
+  25-39 cells, rings 0.38. No passing setting: a food-contact ring and a food-limited population
+  are incompatible.

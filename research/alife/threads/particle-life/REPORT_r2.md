@@ -26,6 +26,10 @@ Sections 1–6 below were done on my own plan before the review arrived. In the 
 | k_dec 0.05 | 3923 | 5/2/1/1 | 1.00 (one cell) | 0 / 0 |
 | δ 0.005 (k_dec 0.01) | 814 | 6/14/38/39 | 0.05 | 69 / 3 |
 | δ 0.02 (k_dec 0.01) | 3978 | 3/0/0/0 (extinct) | – | 0 / 0 |
+| k_dec 0.025 | 2632 | 6/2/11/36 (still growing) | 0.69 | 40 / 2 |
+| δ 0.01 (k_dec 0.01) | 970 | 4/18/38/34 (stationary) | 0.09 | 81 / 3 |
+| k_dec 0.025 + δ 0.01 | 3986 | 5/2/0/0 (extinct) | – | 0 / 0 |
+| k_dec 0.02 + δ 0.005 | 1728 | 4/4/29/38 | 0.38 | 59 / 2 |
 
 Ringed cell = more than 20% of its particles are M. Generation counts come from the old, ratcheting lineage rule.
 
@@ -33,7 +37,7 @@ Ringed cell = more than 20% of its particles are M. Generation counts come from 
 - k_dec 0.03 holds rings while there are only 2–4 cells, then bursts to 40 cells at t≈250–300, which will deplete the food and strip the rings.
 - Dilution δ=0.005 gives real deaths and the most births, but only 5% of cells are ringed.
 
-There may be a narrow window around k_dec 0.025 or δ≈0.01. Finding it and running step (b) (3+3 seeds, ≥600 t, k_diff=0 twin) is the first task for sprint 3. Step (c) needs a merge-aware lineage, and the dt problem should be fixed first.
+Probing that window (4 more runs) found none. Dilution gives a stationary population with deaths, but too little food for rings (δ=0.01: 34–38 cells, 9% ringed). Cost gives rings but a delayed burst (k_dec 0.025: 69% ringed, still growing). Combining both kills the population or leaves 38% ringed. My reading: the ring, as a food-contact label, cannot be the steady state of a food-limited population, so the pass criterion needs a membrane that the cell makes itself. Running step (b) (3+3 seeds, ≥600 t, k_diff=0 twin) is the first task for sprint 3. Step (c) needs a merge-aware lineage, and the dt problem should be fixed first.
 
 
 ## 1. Headline
