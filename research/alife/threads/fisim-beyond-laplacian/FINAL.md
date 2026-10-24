@@ -10,7 +10,7 @@ IMEX-FFT numerics and interpretable parameters?
 | world | rung (committee) | what it is |
 |---|---|---|
 | `xcell-a` | **L4b[L3]**, medium; L4a Weak | An m4 glider carrying a membrane ring and a contained, fast-diffusing cargo. 30% damage heals in ~10 t. |
-| `xcell-her` | **L3**, high; heredity of planted kinds Supported; L6 Weak | Membrane cells divide. A bistable marker held by the membrane gate breeds true: 46 divisions, 0 mixed, 0 switches, 3 seeds. |
+| `xcell-her` | **L3**, high; heredity of planted kinds Supported; L6 Weak | Membrane cells divide. A bistable marker held by the membrane gate breeds true when planted: 46 divisions, 0 mixed (committee count; my tracker: 33 kind-preserving, 0 mixed), 3 seeds. |
 | `xcell-evo2-S/N` | **L6[L3]**, low | Membrane cells divide through ≥3 generations under imposed dilution (S0 gen 6). Ringed fissions verified by a judge. |
 | `xcell-div` | L3; L6 Weak | First dividing membrane cells. Damage unjams a stuck rod. |
 | `xcell-turn` | retracted | Waste gated by the wrong channel and planted in founders (my bug). |
