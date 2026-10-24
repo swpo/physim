@@ -51,7 +51,9 @@ so judges know exactly what a number means:
   FRAC of the component's pixels are erased. Other components are never in the mask.
   Reported loss = matter lost inside the target's component mask (raw matter field just
   before minus just after the world's damage() call) / its matter before, whatever the
-  hook actually erases.
+  hook actually erases; also reported: the share of all lost matter that was under the
+  mask (low = the hook cut somewhere else). Comparator = the undamaged component closest
+  in area, preferring mature ones that are not neighbours of the target.
 - species (META "species" = {name: [channels]}): segmentation, tracking and lineage as
   above, run separately on each species' channel sum with its own robust range.
 """
@@ -365,13 +367,24 @@ def choose_damage_target(seg, spans, K, periodic=True):
     return int(np.argmax(seg["area"])), "fallback-largest", asp
 
 
-def choose_comparator(seg, j, spans, K):
-    """Undamaged control: the other component closest in area (log ratio), mature ones first."""
+def choose_comparator(seg, j, spans, K, periodic=True):
+    """Undamaged control: the other component closest in area (log ratio), preferring mature
+    ones (track >= K frames) that are not neighbours of the target (centroid distance
+    > 2 (R_eq target + R_eq other))."""
     others = [q for q in range(seg["n"]) if q != j]
     if not others:
         return None
-    mature = [q for q in others if spans[q] >= K] or others
-    return min(mature, key=lambda q: abs(np.log(seg["area"][q] / max(seg["area"][j], 1))))
+    H, W = seg["lab"].shape
+    r = np.sqrt(seg["area"] / np.pi)
+
+    def far(q):
+        dy, dx = seg["cy"][q] - seg["cy"][j], seg["cx"][q] - seg["cx"][j]
+        if periodic:
+            dy, dx = _wrap(dy, H), _wrap(dx, W)
+        return np.hypot(dy, dx) > 2 * (r[j] + r[q])
+    mature = [q for q in others if spans[q] >= K]
+    pool = [q for q in mature if far(q)] or mature or others
+    return min(pool, key=lambda q: abs(np.log(seg["area"][q] / max(seg["area"][j], 1))))
 
 
 def _outward(seg, j, periodic=True):
@@ -512,15 +525,16 @@ def track(comps, links, shape=None, periodic=True):
     return tracks, events
 
 
-def descendants(tracks, tid, fmax=None):
-    """Track ids reachable from tid through children (splits AND merges), started <= fmax."""
+def descendants(tracks, tid, fmax=None, split_only=False):
+    """Track ids reachable from tid through children (splits AND merges unless split_only),
+    started <= fmax. tid itself is included."""
     seen, stack = set(), [tid]
     while stack:
         i = stack.pop()
         if i in seen or (fmax is not None and tracks[i]["start"] > fmax):
             continue
         seen.add(i)
-        stack.extend(tracks[i]["children"])
+        stack.extend(c for c in tracks[i]["children"] if not split_only or tracks[c]["birth"] == "split")
     return seen
 
 
