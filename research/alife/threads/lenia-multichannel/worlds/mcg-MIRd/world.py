@@ -163,6 +163,7 @@ GENE_MODE = "yield"   # "yield": g sets food yield; "m": g shifts the growth cen
 GENE_K = [0, 3, 6]    # kernels whose m is shifted by ALPHA*g in mode "m"
 ALPHA = 0.01
 ONE_SIDED = True      # yield = Y*exp(SEL*min(g, 0)): wild type optimal, mutations can only hurt (False: two-sided)
+TRADEOFF = False      # True: g also scales the maintenance decay by exp(SEL*g) (cheap building, fast turnover)
 G_INIT = [0.0]        # trait of each planted creature (competition assays plant several kinds)
 
 
@@ -206,7 +207,8 @@ def step(s):
     else:
         G = L.growth(A)
     inc = np.clip(np.minimum(L.dt * G, 1 - A), 0, None)
-    dec = np.clip(L.dt * G, None, 0) - L.dt * FOOD.get("decay", 0.0) * A
+    dk = FOOD.get("decay", 0.0) * (np.exp(SEL * np.clip(gl, -G_CLIP, G_CLIP)) if TRADEOFF else 1.0)
+    dec = np.clip(L.dt * G, None, 0) - L.dt * dk * A
     Yeff = FOOD["Y"] * np.exp(SEL * np.clip(gl, -G_CLIP, 0.0 if ONE_SIDED else G_CLIP)) if GENE_MODE == "yield" else FOOD["Y"]
     need = inc.sum(0) / Yeff
     scale = np.minimum(1, F / np.maximum(need, 1e-12))

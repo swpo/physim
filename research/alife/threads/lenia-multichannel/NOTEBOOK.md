@@ -322,3 +322,22 @@ mcg_purifying_neutral_seed0.png, mcg_purifying_sel_seed0.png).**
 World defaults are now this setting (MU 0.012, ONE_SIDED). The neutral control is
 worlds/mcg-MIRd-neutral (SEL=0).
 Movie: movies/mcg_selection_vs_neutral_seed0.mp4 (same seed and mutation sequence, side by side).
+
+**H7. Packs.** `packs/mcg-MIRd` and `packs/mcg-MIRd-neutral` (160², 3 seeds, 10000 steps = t 1000,
+no movies). They are deterministic, so they are identical to the H6 runs. The sheets show the g+
+(yellow) overlay spreading and population crashes and recoveries (seed0 t≈436-522). labkit lineage
+counts 0 persistent splits at this frame spacing (spf 20); division is visible on the sheets and in
+the mc-MIRd packs.
+
+**H8. Parameter-localized trait (GENE_MODE "m": g shifts the growth centre m of kernels 0, 3, 6 by
+0.02*g; two-sided mutation, MU .012, 128², seed 0, 8000 steps).** Mean g rises to +0.6-0.64
+(steps 6000-6700), then the population falls to 1 cell at step 8000 (food 0.79). That's one run,
+and +0.6 is within the neutral range (H6 neutral means -0.33 to +0.38, extremes ±0.9). Exploratory
+only; a possible evolutionary decline that needs 3 seeds.
+
+**H9. Trade-off trait (TRADEOFF: g scales yield and maintenance decay by e^g; two-sided mutations,
+MU .012, 160², 10000 steps, 3 seeds vs the H6 neutral runs).** All 3 selection runs settle into a
+static lattice (30-34 cells, food 0.52-0.57), the same tipping as H2. Mean g in the second half is
+0.13/0.23/0.25 vs neutral -0.33/0.38/0.31; the fraction of cells with g>0.3 is ~1/3 in selection
+vs 2/56, 49/86, 51/95 in neutral. No adaptive signal. Faster construction still brings the
+colony to confluence, and then turnover stops.
