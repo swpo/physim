@@ -128,5 +128,85 @@
   "thread": "fisim-beyond-laplacian",
   "round": 1,
   "decision": "continue"
+ },
+ "flow-lenia/fl_forager": {
+  "world": "fl_forager",
+  "rung": "L6[L2]+L4b",
+  "confidence": "medium",
+  "note": "One 12x12 noise patch becomes 8-14 motile crescent foragers with food-depletion wakes, with 0 nucleations in 4 seeds (3 packs plus skeptic seed 11). 2-generation chains appear in seeds 1, 2 and 11 (labkit gen 3 on seed 11). Propulsion is emergent: the parent rule glides without food. Behaviour survives 2x resolution, but crescents become ring-in-halo shapes there. Fission-fusion: merges are about 80% of splits, so lineages are reticulate (biologist dissent: L6 Weak). L4c Weak (one-seed screen; dependence built in by the decay k_dec). Selection not detected.",
+  "pack": "threads/flow-lenia/packs/fl_forager",
+  "thread": "flow-lenia",
+  "round": 1,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_cells": {
+  "world": "fl_cells",
+  "rung": "L4a[L3]",
+  "confidence": "medium",
+  "note": "Noise patches condense into 3-channel cells: an A0 core, a 1.5-px A1 ring that is 0 inside and outside, and A2 shells. Radii agree at 2x resolution (skeptic). 38-44% cuts re-form ring and crown against twins in 3 seeds, but the cells end smaller with a hollow core (generic re-condensation; mass is closed). Static, one cell per planted patch, and the beaded crown is numerical (gone at dt/2). Close to the Particle Lenia control.",
+  "pack": "threads/flow-lenia/packs/fl_cells_damage",
+  "thread": "flow-lenia",
+  "round": 1,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_morph257": {
+  "world": "fl_morph257",
+  "rung": "L2",
+  "confidence": "low",
+  "note": "One patch sorts into orange A1 rings and cyan A0 crescents that multiply with 0 nucleations. Crescents cup rings for 500-650 t, and a cyan ring encloses orange cells and reopens. 20/30 composite divisions give one of each kind, and pure parents divide true 5/6. One seed, so L5, L4b and L6 are Weak. Composition heredity is partly built into uptake proportional to A_c.",
+  "pack": "threads/flow-lenia/packs/fl_morph257",
+  "thread": "flow-lenia",
+  "round": 1,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_forager_mut": {
+  "world": "fl_forager_mut",
+  "rung": "L2",
+  "confidence": "low",
+  "note": "Parameter-localized foragers with body-scale mutations: 62 mutations, phylogeny depth 7, and new morphs persist (a compact solid body; a target-ring cell). A neutral twin replaying the same events with mut_size 0 shows as much clade turnover (root share 9% vs 36%), on one pair. Fusion dominates (177 splits vs 169 merges, gen 0). L6 and L7 Weak. The 40-run founder tournament (fl_forager_evo) was a coin flip.",
+  "pack": "threads/flow-lenia/packs/fl_forager_mut",
+  "thread": "flow-lenia",
+  "round": 1,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_cells_food": {
+  "world": "fl_cells_food",
+  "rung": "L2",
+  "confidence": "medium",
+  "note": "Layered cells eat, turn binucleate and form a 6-8-compartment 'morula' (t about 1040-1200), then A1 dots tile the domain. There are 257 nucleations, and A0/A2 are down 99.8%/97.6% before the 'spores' appear, so they condense from shed matter rather than budding. L6[L3] Contradicted; L3 Weak (transient). One seed. A striking movie.",
+  "pack": "threads/flow-lenia/packs/fl_cells_food",
+  "thread": "flow-lenia",
+  "round": 1,
+  "decision": "continue"
+ },
+ "particle-life/sporecell": {
+  "world": "sporecell",
+  "rung": "L2",
+  "confidence": "high",
+  "note": "Forms spontaneously from ~20 random catalyst particles in a closed food gas. Ringed founders shed single-particle spores while staying intact, and the spores grow into 34-40 parent-size daughters per seed. The population then freezes into a ~40-cell lattice set by the B shell (3 seeds; the skeptic's seed-11 rerun ends with 39 cells against 38-41). L3 Weak: the one-particle M ring is a food-contact label that every cell loses at depletion (t~146-157) while the cells live about 100 t longer, and cells form and reproduce without it (L_nomem). L6[L2] Weak: gen 2 is 8/1/1, and deeper counts come from a fragment/re-merge ratchet in lineage.py. L4a Weak: the cut turns debris into food at the wound, and labkit's disk cut shattered the cell. L4c Weak: one seed, R2=1 variant, and the decline equals the imposed decay. No dt check.",
+  "pack": "threads/particle-life/packs/sporecell",
+  "thread": "particle-life",
+  "round": 1,
+  "decision": "continue"
+ },
+ "particle-life/sporecell-gene": {
+  "world": "sporecell-gene",
+  "rung": "L2",
+  "confidence": "medium",
+  "note": "Kind 1 arises by mutation and ends as the majority in 7/10, 11/11 and 6/11 cells, against 3/9, 0/9 and 1/10 for a neutral mutant (3 seeds). This is selection among particles inside cells, through two-sector Janus cells, not heredity between cells. L7 Contradicted: purity 0.55-0.88, parent-child agreement 0.58-0.93. The gen-9 lineage is a staircase of fragments. The evidence is in screens at mu=0.01, while the pack runs at mu=0.002.",
+  "pack": "threads/particle-life/packs/sporecell-gene",
+  "thread": "particle-life",
+  "round": 1,
+  "decision": "continue"
+ },
+ "particle-life/plife-m2": {
+  "world": "plife-m2",
+  "rung": "L3",
+  "confidence": "medium",
+  "note": "Known Mohr/Ventrella particle-life cells, used as calibration. Concentric type-sorted shells (white on a green core, pink on cyan) form from random types by t~3.5 and persist to t=80 in 3 seeds. One random matrix, a short run, and no dt check. The raster cannot resolve the shells. labkit flags movers at 8.9-13.2 BL that have not been examined (an L4b lead).",
+  "pack": "threads/particle-life/packs/plife-m2",
+  "thread": "particle-life",
+  "round": 1,
+  "decision": "continue"
  }
 }
