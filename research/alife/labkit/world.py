@@ -34,11 +34,15 @@ Optional hooks:
     def damage(state, mask) -> state         # erase matter where mask (H, W) bool is True
 
 damage() is called by `--damage FRAME:FRAC[:MODE]`. labkit chooses the target (a mature,
-compact individual of about median size, see labkit/metrics.py) and builds the mask (core
-disk, rim disk or half-plane cut). The hook should erase matter under the mask (remove
-it, or reset it to the background state); it should not turn it into the individual's
-resource. Whatever the hook does, labkit MEASURES the loss as the drop of the matter
-field inside the target's component just before vs just after the call and reports that.
+compact individual of about median size, see labkit/metrics.py; an individual is a
+component with everything it encloses, so a membrane ring and the core inside it are one
+individual) and builds the mask (core disk, rim disk or half-plane cut). The hook should
+erase matter under the mask (remove it, or reset it to the background state); it should
+not turn it into the individual's resource. Whatever the hook does, labkit MEASURES the
+loss as the drop of the matter field inside the target individual just before vs just
+after the call and reports that. If the matter channels include something the hook
+resets UP (a substrate set back to its bath value), the measured loss nets gains against
+losses: set META "matter" to the channels that make up the individuals.
 
 Species: META["species"] maps a name to channel indices (or names). Each species is
 segmented, tracked and given a lineage on its own channel sum with its own robust range,
