@@ -39,9 +39,11 @@ def ic(g, N, seed, n=8, frac_on=0.5, dx=0.5):
 
 if __name__ == "__main__":
     args = json.loads(sys.argv[1]); T = float(sys.argv[2]) if len(sys.argv) > 2 else 300
+    NOISE = args.pop("noise", 0.0)
     g = her(**args)
     N = 128
-    sn, ts, w = run(g, N=N, T=T, F=ic(g, N, 0))
+    noise = args.pop("_noise", 0.0) if False else NOISE
+    sn, ts, w = run(g, N=N, T=T, F=ic(g, N, 0), noise=noise)
     u0 = g["acts"][0]["u0"]; u0h = g["acts"][1]["u0"]
     nb = [blobs(s[0], u0)[0] for s in sn]
     from scipy import ndimage
@@ -50,7 +52,7 @@ if __name__ == "__main__":
         lab, k = ndimage.label(s[0] - u0 > 0.45 * (np.sqrt(2) - u0))
         hm = ndimage.maximum(s[1] - u0h, lab, range(1, k + 1)) if k else []
         non.append(int(np.sum(np.array(hm) > 1.0)))
-    tag = "her_" + "_".join(f"{k}{v}" for k, v in args.items())
+    tag = "her_" + "_".join(f"{k}{v}" for k, v in args.items()) + (f"_noise{NOISE}" if NOISE else "")
     line = f"{tag}: wall {w:.0f}s cells {nb} h-on cells {non}"
     print(line); open("screens/log.txt", "a").write(line + "\n")
     strip(sn, ts, ["u", "h", "v", "w", "m", "glob", "bdep", "hdep"], f"screens/{tag}.png", line)

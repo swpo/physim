@@ -127,3 +127,19 @@ xcell-her seed 0: on 6→12 (6 on→on+on splits), off 4→9 (5 off→off+off sp
 switches, 0 mixed splits (`packs/xcell-her/seed0/kinds.png`, `kinds.json`). Discrete kinds
 breed true through two generations. No variation arises (no switching) and with kh=0
 there is no selection, by construction.
+
+**P2 xcell-her, 3 seeds** (`packs/xcell-her/seed*/kinds.json`): on 6/5/5→12/9/9, off
+4/5/5→9/14/10; on→on+on 6/4/4, off→off+off 5/9/5; mixed splits 0, switches 0 in every seed.
+**xcell-her-sel (kh=0.1)**: on-cells never divide (they become rods): 6/5/5→6/5/5; off
+4/5/5→9/11/12. Differential growth between true-breeding kinds, but through a morphology
+failure.
+
+**P3 xcell-turn, 3 seeds, T=800 (N=128)**: 18/19/16 persistent splits, max generation 5/6/4.
+Seed 0: 6 of 8 planted cells die by t≈30 (ghost membranes visible), the 2 survivors
+re-populate to 20 cells by t≈350, then the population is static. **xcell-turn-leaky**
+(waste not gated): 8 cells, 0 splits, static. So the gated waste is needed for division in
+this genome. Unexplained.
+
+**D3 damage xcell-a 30% at t=200** (`packs/xcell-a-damage30`, `screens/damage30_crop.png`):
+the struck cell survives; the membrane briefly fills the erased core (t=202), then body,
+ring and contained cargo are restored by t≈210. All 8 cells live to the end.

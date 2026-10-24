@@ -7,7 +7,7 @@ membrane channel, a Cahn-Hilliard term, and membrane-gated diffusion. With them,
 become membrane-bounded cells that keep a fast-diffusing cargo inside. With one more
 feedback and a global cap, the cells divide, and the daughters inherit both the membrane
 and the contents. Adding a bistable marker gives two kinds of cells that breed true
-through two generations: 11 on→on+on, 0 mixed, 0 switches (xcell-her, seeds 0-1).** The
+through two generations: over 3 seeds, 14 on→on+on and 19 off→off+off divisions, with 0 mixed divisions and 0 switches (xcell-her).** The
 genome keeps blobkit's conventions: the exact vacuum, IMEX-FFT, dx=0.5, dt=0.02. The
 stepper matches blobkit m4 to 4e-14. The spec is in `XGENOME_SPEC.md`.
 
@@ -15,11 +15,11 @@ stepper matches blobkit m4 to 4e-14. The spec is in `XGENOME_SPEC.md`.
 
 | world | claimed level | strongest evidence | known weaknesses |
 |---|---|---|---|
-| `xcell-a` | **L4b[L3]**: motile membrane-bounded cells with contained cargo | `packs/xcell-a/seed{0,1,2}`: 8/8/8 cells alive start to end, 7.9-8.6 body lengths; sheet/tracks show an orange membrane ring around a white body+cargo core. Containment: `screens/profiles_containment.png` (cargo 1.24 at the centre, ≈0 beyond the ring; 0.44 with a smooth tail when the gate is ablated) | Bodies are planted (pokes); motility is inherited from m4 (an RD drift instability), not new. The membrane is deposited by a local function of u, so it can only exist where a body front is. 50% damage kills the struck cell (no repair). |
+| `xcell-a` | **L4b[L3]**, L4a weak: motile membrane-bounded cells with contained cargo | `packs/xcell-a/seed{0,1,2}`: 8/8/8 cells alive start to end, 7.9-8.6 body lengths; sheet/tracks show an orange membrane ring around a white body+cargo core. Containment: `screens/profiles_containment.png` (cargo 1.24 at the centre, ≈0 beyond the ring; 0.44 with a smooth tail when the gate is ablated) | Bodies are planted (pokes); motility is inherited from m4 (an RD drift instability), not new. The membrane is deposited by a local function of u, so it can only exist where a body front is. Repair (L4a): 30% erasure of all fields is healed (body, ring, cargo) within ~10 time units (`packs/xcell-a-damage30`, `screens/damage30_crop.png`), but this is cheap because membrane and cargo are slaved to the body. 50% damage kills the cell. |
 | `xcell-div` | **L6[L3]**: membrane cells divide, daughters carry membrane + cargo, 2 generations | `packs/xcell-div/seed{0,1,2}`: 13/15/15 persistent splits, max generation 2, 21-23 cells; lineage.png; sheet t=54-88 dumbbell membranes pinch | The population saturates by t≈200 (global cap), so it stops at 2 generations. One rod per seed fails to divide. The gate is not required for division (see §3). |
-| `xcell-her` | **L6[L3] with true-breeding kinds**, partial L7 (heredity only) | `packs/xcell-her/seed{0..2}` + `kinds.json/png`: FILL_HER | No variation arises during the run (no switching) and kh=0 means no selection. Kinds are assigned at seeding (half the cells get an h poke). |
-| `xcell-her-sel` | L7 attempt (selection) | FILL_SEL | FILL_SEL_W |
-| `xcell-turn` | L6 with turnover (death + division) | FILL_TURN | FILL_TURN_W |
+| `xcell-her` | **L6[L3] with true-breeding kinds**, partial L7 (heredity only) | `packs/xcell-her/seed{0..2}` + `kinds.json/png`: on-cells 6/5/5 → 12/9/9, off-cells 4/5/5 → 9/14/10; splits on→on+on 6/4/4, off→off+off 5/9/5, mixed 0, switches 0 (all seeds); sheet: white (body+h) vs cyan-centred (h-off) cells, both kinds pinch with their membrane at t≈70-90 | No variation arises during the run (no switching) and kh=0 means no selection. Kinds are assigned at seeding (half the cells get an h poke). |
+| `xcell-her-sel` | **L7 Weak**: true-breeding kinds with different growth | `packs/xcell-her-sel/seed{0,1,2}/kinds.json`: h-on 6/5/5 → 6/5/5 (0 divisions; they become long rods); h-off 4/5/5 → 9/11/12. Sheet: rods (on) vs round dividing cells (off) | Kinds planted, no variation arising, and the 'selection' is the on-kind's morphological failure to divide rather than a graded fitness difference. |
+| `xcell-turn` | **L6[L3]**, 4-6 generations | `packs/xcell-turn/seed{0,1,2}`: 18/19/16 persistent splits, max generation 5/6/4; seed0 lineage: 2 founders (6 of 8 planted cells die by t≈30, leaving ghost membranes) → 20 cells | Not sustained turnover: divisions stop once the population saturates (t≈350-550). The early die-off is an IC transient. |
 
 Spontaneity: the xcell-div genome forms ~26 membrane cells from smoothed noise on u alone
 (`screens/cellpop_noise_a1.0_s4.0.png`). The packs use planted pokes.
@@ -49,7 +49,7 @@ count, 14-15 cells at t=200 (`screens/cellpop_num_*.png`).
   die. kb≥0.32 or kh≥0.25: the h front keeps invading and stretches cells into rods that
   never pinch. Inheritance works in a window (kb≈0.25, kh small).
 - **Turnover = membrane-trapped waste.** A slow, gated, inhibiting waste channel ages
-  cells. Cells shrink or die while others divide (screen counts 22→19→23→24). FILL_TURN_MECH
+  cells. In the packs it mainly kills most planted cells early and lets the survivors re-expand through 4-6 generations. Ablation `xcell-turn-leaky` (waste not gated): 8 cells, 0 splits, almost static. Gated waste, oddly, *enables* division here, presumably because the trapped waste and the trapped cargo together destabilize the cell shape. The mechanism is unexplained.
 
 ## 4. Negative results (one line each)
 
