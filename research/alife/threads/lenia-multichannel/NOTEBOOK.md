@@ -246,3 +246,39 @@ population at the trough can be lost. A bigger grid or a spatially patchy food s
   damped, presumably because local cycles fall out of phase and average out.
 - **dt/2, seed 0** (28000 steps = t 1400): persists the whole run, 5-28 cells, food 0.24-0.59.
   The dt/2 extinction in C3 is seed-specific: dt/2 survives in 1/2 seeds.
+
+---
+
+# Sprint 2 (started 2026-10-24 16:37 UTC)
+
+Committee digest: the L7 bar is variation arising during the run + a neutral control with the same
+mutation rate + >=3 seeds. Challenge: fork a mechanism from another thread. I have reproduction and
+metabolism, so I add heredity, forking the active-droplets idea (ad5-evolve: body-confined alleles,
+mutation as droplet-scale events, because pixel-white noise averages out over a body).
+
+**H1. mcg-MIRd (worlds/mcg-MIRd).** Base mcfd-MIRd (food + maintenance decay 0.03, cycling
+population). New trait field g(x) carried by matter.
+- Inheritance: matter built at x takes g_loc = blur(g*M)/blur(M) (Gaussian, 3 px), so new matter
+  copies the trait of the cell it grows from; surviving matter keeps its g.
+- Mutation: replication-error events at rate MU per step, adding N(0, DELTA) to g in a disk of radius
+  MUT_R at a random matter pixel.
+- Phenotype: yield Y*exp(SEL*g). SEL=0 is the neutral control with identical mutation.
+First try (MU .002, DELTA .3, r 5, 128², 6000 steps): per-cell sd only 0.04, because the disk covers
+a fraction of a cell and blur averages it away. With MU .004, DELTA .5, r 8 (8000 steps, seed 0):
+- selection: mean g 0 -> +0.25, cell range [-0.14, +0.82]. High-g (orange) cells spread and take a
+  region. By the end the efficient population is confluent and the dormant lattice is back
+  (food 0.62): evolving efficiency pushes the ecology out of the cycling regime.
+- neutral: mean drifts -0.11..+0.16, range [-0.5, +0.5].
+Now running 3+3 seeds at 160², 12000 steps.
+
+**H2. mcg-MIRd yield gene, 3 selection + 3 neutral seeds (160², 12000 steps; MU .004, DELTA .5,
+MUT_R 8; screens/mcg_yield_selection_vs_neutral.png).**
+- Ecology diverges cleanly. Selection runs reach 30-35 cells and a fed static lattice (food
+  0.55-0.63) in 3/3; neutral runs keep cycling (5-22 cells, food 0.25-0.78) in 3/3.
+- **The trait itself barely differs:** mean g over the second half is 0.22/0.11/0.08 (selection)
+  vs 0.02/0.27/-0.01 (neutral), and the fraction of cells with g>0.2 is about 1/3 in both.
+- The divergence appears by step 2000-3000, when mean g is still ~0.05. The base point (decay 0.03)
+  sits at the cycle/lattice boundary (0.025 gives a lattice), so a small yield gain in a few cells
+  tips the whole ecology into dormancy, which then stops turnover and selection.
+- No cell-level selection demonstrated. Next: stronger selection, higher base decay to keep
+  turnover, and a two-kind competition assay.
