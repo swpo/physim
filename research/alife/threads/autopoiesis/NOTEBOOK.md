@@ -160,3 +160,7 @@ Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
   between within-cell (faster) and between-cell (more links) selection. c0=0.25 is not viable.
   Not promoted to a pack; first thing to firm up next sprint (longer runs, 3 seeds, trait
   histograms over time).
+- promoted: `packs/phase_trait` (c0=0.15) and `packs/phase_trait_c20` (c0=0.20), 3 seeds each,
+  48k time units (160 frames x 300). End means: 0.165/0.155/0.164 vs 0.179/0.182/0.179
+  (`screens/trait_convergence.png`). Both directions in all seeds -> stabilizing selection toward
+  c* ~ 0.17. 36-42 cells, persistent splits 21-39, gen 3-6.

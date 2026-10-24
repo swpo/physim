@@ -13,6 +13,9 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
   that sweeps the population (3/3 seeds; a neutral mutant never establishes in 3/3).
 - **Parasites:** a link-less selfish mutant is purged below a threshold advantage and drives the
   population extinct above it.
+- **Continuous trait:** with a heritable growth-rate trait, lineages started above and below
+  evolve toward an intermediate optimum (3+3 seeds), a balance between within-cell and
+  between-cell selection.
 - **Swimming:** with phoretic drift, a lone cell breaks symmetry into a self-propelled crescent
   swimmer (about 18 body lengths).
 
@@ -26,6 +29,7 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
 | `phase_swim` | **L4b[L3] Weak** | `packs/phase_swim/seed{0,1,2}`: per-cell phoretic drift μ⟨∇S⟩. A lone round cell is still until t≈1200, then swims as a crescent with a depletion wake at 0.10-0.11 px per time unit, 17.7-18.5 body lengths. μ=1 still, μ ≥ 2 swims (a threshold); μ=0 is the static parent; jitter of μ and F keeps swimming | Heading is locked to lattice directions (upwind anisotropy). The swimmer grows into an arc: shape is not preserved and it does not divide. The operator uses a per-cell label (nonlocal). |
 | `phase_kinds` | **L7[L3] Weak** | `packs/phase_kinds/seed{0,1,2}/kinds.png`: K2 (c2 = 0.3 vs 0.2, same link output) arises by ~10 point mutations, breeds true and replaces K1 (49 → 0 K1 cells, 28-33 K2 cells) in 3/3 seeds; gen 5-6. Controls: neutral mutant (c2 = c1) never forms a cell, 51-52 K1 cells at t=32k in 3/3 seeds. No mutation: 52 cells, stable | Two kinds only; one-way mutation written in as a rule. |
 | `phase_kinds_parasite` | L7 (cell-level selection), Weak | `packs/phase_kinds_parasite/seed{0,1,2}`: link-less K2 (c2 = 0.3) → infected cells die, population extinct by t≈25k in 3/3 seeds. Screens: c2 = 0.24 purged (3/3 seeds, 38-51 cells at t=32k); c2 = 0.27 collapses | Why uninfected cells also die is a hypothesis (infected cells hog substrate). |
+| `phase_trait` + `phase_trait_c20` | L7[L3] Weak (continuous trait, stabilizing selection) | `screens/trait_convergence.png`, `packs/phase_trait*/seed{0,1,2}`: catalyst carries a heritable growth rate c (faster c → fewer links); ±0.1 point mutations. Over 48k time units, 3/3 lineages started at c=0.20 fall to 0.179-0.182 and 3/3 started at c=0.15 rise to 0.155-0.165: selection toward an intermediate c from both sides. Cells with high c lose their walls and die | Not yet converged. Mutation is a written-in rule. Trait variance inside a cell blends away, so the effective unit of selection is the cell. Trait is not visible in sheet.png (see the plot). |
 | `scl_lattice` | L3 Weak (planted); L4a **Contradicted** for 30% wounds | `packs/scl_lattice/seed{0,1,2}`: planted link ring maintained 3000 sweeps by decay + splice; `screens/scl_damage_strip.png`: the wound never closes | Closure only 67-76% of the time; the catalyst sometimes escapes. |
 
 ## 3. Mechanisms learned (with ablations)
@@ -73,11 +77,9 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
 
 1. Pearling or budding division through a wall-tension term that depends on adsorbed links
    (phase_membrane), instead of starvation fission.
-2. Continuous heritable trait (`worlds/phase_trait`, prototype): growth rate c is carried by the
-   catalyst, and faster c means fewer links. In a first screen, starts at c=0.15 and c=0.20
-   converge toward about 0.17-0.18 over 32k steps (2 seeds each): a hint of stabilizing
-   selection between within-cell and between-cell levels. Small mutations blend away inside a
-   cell. Firm this up (longer runs, trait histograms) → L7 Supported and a first L8 probe.
+2. Continuous trait (`phase_trait`): run to convergence, measure the optimum's dependence on the
+   trade-off slope β (prediction: steeper trade-off → lower c*), and add a second trait axis for
+   diversification → L7 Supported, a first L8 probe.
 3. Local phoresis (wall slip plus a Darcy flow) for isotropic swimming with bounded size, then a
    swim/divide cycle.
 4. Lattice SCL with chain-based bond inhibition (LITERATURE §2.7.1): a cheap check of whether the
