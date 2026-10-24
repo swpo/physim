@@ -303,3 +303,16 @@ Coexistence is 3/4 seeds at 128² (0, 1, 2 yes; 11 no).
 ## S3-E3. Showcase movie
 movies/showcase.mp4: fl_predator, 192², seed 0, 301 frames every 40 steps, fixed scales,
 scale x3, 3.8 MB. Sprint 3 ended ~21:10 UTC.
+
+## Program end (committee final review, 21:39 UTC): STOP
+Final verdicts:
+- fl_forager: L6[L2]+L4b (best world).
+- fl_forager_gene2: L4b[L2], L7 Contradicted.
+- fl_predator: L4b[L2], L5 Weak.
+- fl_cells: L4a[L3].
+Committee corrections to my reading of the audit:
+- The between-body and fusion terms cancel by bookkeeping (r = -0.90). Taken together, the paired
+  body-level excess is ~+0.17, and the within-body term (+0.36) carries the sweep.
+- Net conversions are within ±3 in 13/15 runs, so this is somatic turnover with zero deaths,
+  not infection.
+- My persistence window was t = 40 (10 intervals x 20 steps x dt 0.2), not t >= 160.
