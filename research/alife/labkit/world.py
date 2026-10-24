@@ -46,6 +46,9 @@ in addition to the main matter tracking. META["radial_channels"] selects the cha
 the radial boundary profiles (default: all channels, including ones outside the matter
 set, since a membrane channel is often not the tracked one).
 
+Loading a world through labkit never writes __pycache__ next to the world file (importing
+labkit sets sys.dont_write_bytecode first; see labkit/__init__.py).
+
 Everything else (numerics, parameters, RNG) lives inside the state. A world must be
 deterministic given the seed. Keep world files self-contained so anyone can fork one
 by copying the file.

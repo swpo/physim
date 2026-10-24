@@ -825,9 +825,10 @@ def _radial_facts(A, warn):
                     f"half of the outside band (rho 1.6-2.2) was sampled (window capped on this grid, or an open "
                     f"boundary): their rim/outside is unreliable, and the aggregate outside level comes mostly from "
                     f"the smaller members")
-    ml = rad["membrane_like"]
+    ml = [n + ("" if agg["scores"][n]["peak_in_rim"] else f" (peak at rho={agg['scores'][n]['rho_peak']:.2f}, "
+                                                          f"outside the peak band)") for n in rad["membrane_like"]]
     lines.append(f"- membrane-like channels (aggregate rim/core >= {M.MEMBRANE_RATIO:g} and rim/outside >= "
-                 f"{M.MEMBRANE_RATIO:g}): {', '.join(ml) if ml else 'none'}")
+                 f"{M.MEMBRANE_RATIO:g}; the peak position is not part of the test): {', '.join(ml) if ml else 'none'}")
     if rad["tracks"]:
         per = "; ".join(f"#{t['track']} (t={t['frame'] * A['dt_frame']:g}, R_eq {t['R_eq']:g}"
                         f"{', ring' if t.get('ring') else ''}{', DAMAGED' if t.get('damaged') else ''}): "
@@ -880,8 +881,8 @@ def _damage_facts(A, rec, warn):
         cmp_ = [fu["comparator_area_rel"][i] for i in idx] if fu.get("comparator_area_rel") else None
         lines.append(f"- after damage, area of the individual's largest piece / area before the cut at t={times}: "
                      f"target #{fu['target_track']} {tgt}; "
-                     f"{'comparator #' + str(fu['comparator_track']) if fu['comparator_track'] is not None else 'no comparator'} "
-                     f"{cmp_ if cmp_ else 'n/a'} "
+                     + (f"comparator #{fu['comparator_track']} {cmp_ if cmp_ else 'n/a'} " if fu["comparator_track"] is not None
+                        else "no comparator ") +
                      f"(followed through its own splits and re-merges; None = died or merged with another individual); "
                      f"target lineage tracks {fu.get('target_descendants', [])[:12]}; baseline {fu.get('baseline')} "
                      f"(damage.png)")
