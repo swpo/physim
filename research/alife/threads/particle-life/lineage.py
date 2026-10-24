@@ -151,6 +151,8 @@ def figures(ind, snaps, pops, every, dt, L, tag, title, min_life=5):
         ims.append(R.particle_canvas(x[m], (col[m] % 7) + 1, (0, 0, L, L), 240, radius=1.0))
         labs.append(f"t={tm:g}")
     R.contact_sheet(ims, labs, ncols=6, title=f"{tag}: matter coloured by founding clan (food hidden)").save(f"screens/{tag}_clans.png")
+    ims = [R.particle_canvas(snaps[k][1][snaps[k][2] > 0], snaps[k][2][snaps[k][2] > 0], (0, 0, L, L), 240, radius=1.0) for k in pick]
+    R.contact_sheet(ims, labs, ncols=6, title=f"{tag}: matter coloured by type (cyan C / C kind 0, orange M, pink C kind 1; food hidden)").save(f"screens/{tag}_types.png")
 
 
 def main():
@@ -180,6 +182,8 @@ def main():
           f"final clusters {pops[-1]}, gen hist {np.bincount(gens).tolist() if gens else []}")
     if KINDS:
         print("kind counts (0,1) at 10 times:", [KINDS[i] for i in np.linspace(0, len(KINDS) - 1, 10).astype(int)])
+    tm, x, t, clan = snaps[-1]
+    np.savez_compressed(f"scratch/{tag}_final.npz", x=x, t=t, clan=clan, g=s.get("g", np.zeros(len(t))), L=s["p"]["L"])
     Path(f"scratch/{tag}_lineage.json").write_text(json.dumps({str(k): v for k, v in ind.items()}))
 
 

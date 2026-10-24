@@ -75,3 +75,32 @@ probability mu. Cross-kind adhesion 0.2 (cells sort by kind); kind 1 self-adhesi
 - All seeds kind 0, mu=0.002, t=300: max gen 8 (good turnover), but kind 1 never founds a cell.
 - Half/half seeds, mu=0: kind 1 (looser) drives kind 0 extinct (0 vs 11 cells). Symmetric control
   (A11=1) drifts to 4 vs 10, so this needs seeds before any selection claim.
+- Mutation runs, all seeds start kind 0, mu=0.01, t=400 (kind-1 cells / all cells at the end):
+  looser mutant (A11=0.6): 7/10, 11/11, 6/11 (seeds 0/1/2); neutral mutant (A11=1.0): 3/9, 0/9, 1/10.
+  The looser mutant spreads; the neutral one stays rare. `screens/G_mu01*_lineage.png`, `N_mu01*`.
+- But kinds do NOT breed true: median kind purity of cells 0.55-0.75, parent-child same kind
+  0.58-0.92, and kind-1 cells mostly arise by gene frequency drifting inside existing kind-0 cells
+  (mu=0.003, t=600: of 4 kind-1 individuals, only 1 child came from a kind-1 parent). So this is
+  particle-level gene spread inside cells, not cell-level heredity. L7 not supported.
+- Hypothesis "less-adhesive kind sorts to the rim (Steinberg), touches food, and is copied more":
+  REJECTED. In mixed cells, mean normalized radius of kind 1 vs kind 0 is 0.45 vs 0.47
+  (`scratch/radial.py`). Why the looser kind wins is open.
+
+## S8. Damage biographies (damage_bio.py; sporecell, half-plane cut, 50% of particles -> food)
+- seed 0, cut at t=110: within 6 time units the half-cell re-rounds into a complete cell with a
+  full M ring and regrows by eating; undamaged control alongside. `screens/D_sporecell.png`.
+- seed 2: same (membrane fraction of the cut cell 0.18 -> 0.48 at +6, because the newly exposed
+  core touches food). `screens/D_sporecell_s2.png`.
+- seed 1: food was already depleted at t=110 and both cells were bare cores, so not a valid
+  membrane-repair test (bare core does re-round). `screens/D_sporecell_s1.png`.
+
+## S9. Ablations and promoted packs
+- k_cat=0 from start: the 15 seeds just decay (`screens/abl_nocat.png`). Catalysis off at t=100
+  after cells exist (R2=1, seed 0): matter 488 -> 226 and cells 5 -> 3 by t=180, shrinking at the
+  decay rate (`screens/abl_starve.png`).
+- Packs: `packs/sporecell` (3 seeds, t=240), `packs/sporecell_damage` (labkit disk damage at
+  frame 100, one 64 px cell), `packs/sporecell-gene` (3 seeds, mu=0.002 default, t=400; pink kind-1
+  sectors appear from t~190 in seed 0 and form two-sector "Janus" cells), `packs/plife-m2`
+  (3 seeds; known shell-around-core particle-life cells as an L3 baseline).
+- Labkit metric note: spore reproduction is invisible to the image tracker (0 splits, many
+  nucleations), because the parent-to-daughter link is one particle below threshold.
