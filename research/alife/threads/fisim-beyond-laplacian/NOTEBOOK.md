@@ -197,3 +197,17 @@ New main experiment (committee design): `evo.py` genome = xcell-her − hdep + m
 (named channels). Arms: **S** gated h, marker adds cargo production W[c,h]=wch;
 **N** gated h, neutral; **L** no gate on h, Dh lowered. Variation: no planted h; Poisson
 cell-scale h kicks (σ 1.5, amp 2.5) anywhere in the box (`mkevo2.sh`, KICK_RATE per time unit).
+
+**E2 screens for the committee design (17:05-17:21).**
+- `screen-evo-N-T1000` (N arm, kicks 0.02, unplanted waste kw=0.15): 12 cells, 2 splits, 0 deaths,
+  static after t≈300. **Without planted channels there is no turnover.** Kicks work: 4 off→on
+  gains in 1000 t (≈35% of ~11 lineages; too high), all held (on 0→4).
+- Heredity window, L arm Dh=0.02, kb 0.225/0.25/0.275 (T=400, half the cells h-poked): marker lost
+  in every cell by t=100 at all three kb (identical rows, because h does not feed back on cells).
+  The rest of the grid was stopped for CPU.
+- Slow food (glob τ=200, K=1.5 / τ=300, K=1.0; T=1000): grows to 20-21 cells and freezes. No
+  overshoot, no deaths. Negative: these spot-cells essentially never die on their own.
+
+**E3 decision (17:22):** turnover is IMPOSED by chemostat-style dilution (Poisson disk erasure,
+radius 5, rate 0.1), identical in all arms; kicks 0.005; selection wch=0.15 (S) vs 0 (N).
+`xcell-evo2-S`, `xcell-evo2-N`: 3 seeds each, T=2000, 128². The L arm is not run this sprint (CPU).
