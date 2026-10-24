@@ -68,3 +68,13 @@ Orange cells are larger, survive random disk deaths (black holes that appear and
 divide into orange daughters, and by t≈30000 the high-yield lineage holds most of the
 biomass, while small blue cells persist between them. Every event is a birth, death, flip or
 disk death. Catalyst essentially does not cross between cells (1 conversion against 8 flips in this run's ledger, `runs/evo_hi/up_s4.json`).
+
+## Committee final review (added after the program ended)
+Final rungs: membrane_evo L7[L3] (low confidence, disturbance-mediated; the skeptic dissents:
+Weak); phase_membrane L6[L3] (medium; the χ=0 ablation backs the ring); mature damage L4a[L3]
+(low); phase_membrane_chi0 L6[L2]. Correction to my mechanism: most K2 births coincide with a
+disk hit on the parent (30/38 on s4, 43/43 on the skeptic's s11). The r=14 disk is 2.4x a
+median K1 cell. High link yield wins because big bodies are cut rather than erased, and their
+fragments reseal and regrow. That is real selection, but its sign depends on the disturbance
+kernel (consistent with the batch-1 reversal), and the sweep goes through births in 8/10 seeds,
+not 9/10. For a future lab: whole-body deaths, a birth-cause ledger, and χ as the heritable trait.
