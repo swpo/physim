@@ -41,6 +41,7 @@ switch_on_off = switch_off_on = 0
 splits = {"on->on+on": 0, "on->on+off": 0, "on->off+off": 0, "off->off+off": 0, "off->on+x": 0}
 births = 0
 sw_events = []
+deaths = {"on": 0, "off": 0}
 for k in range(1, len(cells)):
     A, B = cells[k - 1], cells[k]
     ch = {}
@@ -51,6 +52,9 @@ for k in range(1, len(cells)):
         pid = np.bincount(ov).argmax()
         if pid in A["ids"]:
             ch.setdefault(pid, []).append(B["on"][j])
+    for q, pid in enumerate(A["ids"]):
+        if pid not in ch:
+            deaths["on" if A["on"][q] else "off"] += 1
     for pid, kids in ch.items():
         pk = A["on"][A["ids"].index(pid)]
         if len(kids) == 1:
@@ -68,7 +72,8 @@ for k in range(1, len(cells)):
                 splits["off->off+off" if non == 0 else "off->on+x"] += 1
 t = fr * dtf
 out = dict(pack=d, n_on_start=n_on[0], n_off_start=n_off[0], n_on_end=n_on[-1], n_off_end=n_off[-1],
-           switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births, switch_events=sw_events)
+           switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births, switch_events=sw_events, deaths=deaths,
+           on_fraction_mean_last_quarter=float(np.mean([a / max(a + b, 1) for a, b in zip(n_on, n_off)][3 * len(n_on) // 4:])))
 print(json.dumps(out))
 json.dump(out | {"t": t.tolist(), "n_on": n_on, "n_off": n_off}, open(f"{d}/kinds.json", "w"))
 plt.figure(figsize=(5, 3)); plt.plot(t, n_on, label="h-on cells"); plt.plot(t, n_off, label="h-off cells")

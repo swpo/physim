@@ -164,3 +164,19 @@ fork a mechanism from another thread. Plan: (1) turnover (consumed/regrowing res
 maintenance cost) so selection keeps acting; (2) graded, *private* marker fitness (h-on
 cells make less membrane-trapped waste) instead of kh (which made rods); (3) selection vs
 neutral at the same noise, 3 seeds each; (4) one good movie.
+
+**T1 turnover screens (cellpop/cellwaste family, T=600, N=128).**
+- slow local resource (glob τ=100, D=5, K=1.5): all cells starve and die by t≈50. Negative.
+- slow resource, D=20: crash to 2 cells, then regrowth to 17 and a static lattice. A bottleneck, not turnover.
+- waste kw=0.3, τ_q=100: 15-21 cells fluctuating.
+- **waste kw=0.15 (τ_q=40)**: 18-24 cells fluctuating to t=600, with dividing cells still present at
+  t=250 and t=500 and positions rearranging between frames. Chosen as the turnover engine.
+  (`screens/cellpop2_*`, `screens/cellwaste_kw0.15_T600.png`, `cellwaste_kw0.3_tw100.0_T600.png`)
+
+**E1 evolution test design.** `xcell-evo` = xcell-her + noise 0.3 (in-run variation by
+marker loss at unequal division, S14) + gated waste kw=0.15 (turnover). Selection: the
+marker halves waste production (W[q,h]=-0.5, a *private* maintenance benefit, since the
+waste is trapped by the cell's own membrane). Neutral control `xcell-evo-neutral`: W[q,h]=0,
+otherwise identical (same noise, same loss process). Screens (T=600, seed 0) of both: stable
+15-19 cells with turnover. Packs: 3 seeds each, T=800, 160². `kinds.py` now also counts
+deaths by kind and the mean on-fraction over the last quarter.

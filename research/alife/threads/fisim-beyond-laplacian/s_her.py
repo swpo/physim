@@ -6,7 +6,8 @@ from screen import *
 import xgenome as X
 
 def her(kb=0.15, kh=0.25, k1h=-0.2, Dh=0.3, beta=5.0, Kg=1.0, M=1.0, kc=0.0,
-        Dg=100.0, taug=10.0, kw=0.0, tw=40.0, Dw=2.0, wqh=0.0):
+        Dg=100.0, taug=10.0, kw=0.0, tw=40.0, Dw=2.0, wqh=0.0,
+        chit=0.0, taut=50.0, Dt=0.2, cargo_beta=None):
     g = load("m4")
     roots = np.roots([-1.0, 0.0, 1.0, k1h]); u0h = float(min(r.real for r in roots if abs(r.imag) < 1e-9))
     g["acts"].append(dict(lam=1.0, k1=k1h, Du=Dh, u0=u0h))
@@ -22,11 +23,15 @@ def her(kb=0.15, kh=0.25, k1h=-0.2, Dh=0.3, beta=5.0, Kg=1.0, M=1.0, kc=0.0,
     if kc:   # xcell-div division drive: gated diffusive cargo produced by the body
         g["chans"].append(ch(5.0, 4.0)); g["W"].append([1, 0])
         g["K"][0].append(-kc); g["K"][1].append(0.0)
-        g["perm"].append([2 + 6, 2, beta])
+        g["perm"].append([2 + 6, 2, beta if cargo_beta is None else cargo_beta])
     if kw:   # membrane-trapped waste q: made by the body, reduced by the marker (wqh<0), inhibits the body
         g["chans"].append(ch(tw, Dw)); g["W"].append([1, wqh])
         g["K"][0].append(kw); g["K"][1].append(0.0)
         g["perm"].append([2 + len(g["chans"]) - 1, 2, beta])
+    if chit:  # fork of chemotaxis-motility's propulsion: body flees a slow trail it secretes
+        g["chans"].append(ch(taut, Dt)); g["W"].append([1, 0])
+        g["K"][0].append(0.0); g["K"][1].append(0.0)
+        g.setdefault("taxis", []).append([0, len(g["chans"]) - 1, -abs(chit)])
     return g
 
 def ic(g, N, seed, n=8, frac_on=0.5, dx=0.5):
