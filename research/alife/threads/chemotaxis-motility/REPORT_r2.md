@@ -11,8 +11,8 @@ evolve are motile, eating, dividing and interacting.
 ## Claims
 | world | rung | strongest evidence | known weaknesses |
 |---|---|---|---|
-| `evopursuit` (+ `_neutral`, `_nopred`) | **L7[L2]** with L4b, L5 and L6 individuals | `packs/evopursuit/alleles_all.png` (9 runs). A/B bodies at t=1500: selection 0/29, 0/30, 0/34. Neutral: prey collapse (0-1 B bodies, prey -95%). No predators: 7-9 A bodies and 0 B. Exposure B/A 0.64-0.72 (selection) vs 1.03-1.22 (neutral). Sheets: `evopursuit/seed2/sheet.png` (cyan A eaten down by t≈700; orange B crescents take over by t≈1200). **Movie: `packs/evopursuit/seed0/movie.mp4`.** | Numerics: dt/2 reproduces the rescue (`evopursuit_dthalf`: A1/B33 at t=1500, predators +63%, exposure B/A 0.73). Only 2 alleles and one trait. Mutation is a planted operator (symmetric patch swaps), not a copying error. Rescue has a cost threshold: cost 0.22 rescues (1 seed, 33 B bodies), cost 0.30 fails (2/2 seeds). Prey bodies have no internal structure beyond front/back (L2). |
-| `swimfission` | **L6[L2]** + L4b + L4c | `fission.py` (dense tracker, lone parent, both daughters survive ≥ 40 t): 10/10/15 clean fissions, **max generation 4/3/5** (`packs/fission_swimfission_s*.json`). Strips `*_strip.png` show a swimmer elongating and pinching at the waist into two equal daughters that swim apart. labkit pack `packs/swimfission`: 43-45 moving tracks per seed. | labkit's own lineage under-counts (max gen 2-3) because of its 6-t sampling. Collisions still cause merges and debris. |
+| `evopursuit` (+ `_neutral`, `_nopred`) | **L7[L2]** with L4b, L5 and L6 individuals | `packs/evopursuit/alleles_all.png` (9 runs). A/B bodies at t=1500: selection 0/29, 0/30, 0/34. Neutral: prey collapse (0-1 B bodies, prey -95%). No predators: 7-9 A bodies and 0 B. Exposure B/A 0.64-0.72 (selection) vs 1.03-1.22 (neutral). Sheets: `evopursuit/seed2/sheet.png` (cyan A eaten down by t≈700; orange B crescents take over by t≈1200). **Movie: `packs/evopursuit/seed0/movie.mp4`.** | Numerics: dt/2 reproduces the rescue (`evopursuit_dthalf`: A1/B33 at t=1500, predators +63%, exposure B/A 0.73). Only 2 alleles and one trait. Mutation is a planted operator (symmetric patch swaps), not a copying error. Rescue has a cost threshold: cost 0.22 rescues (1 seed, 33 B bodies), cost 0.30 fails (2/2 seeds). Prey bodies have no internal structure beyond front/back (L2). **No k=0 escort arm was run** (see the review response), so the claim that predation causes the prey decline rests on neutral vs no-predator (0-2 vs 7-9 prey bodies) and predator growth (+60%), not on the decomposition the committee asked for. |
+| `swimfission` | **L6[L2]** + L4b + L4c | `fission.py` (dense tracker, lone parent, both daughters survive ≥ 40 t): 10/10/15 clean fissions, **max generation 4/3/5** (`packs/fission_swimfission_s*.json`). Strips `*_strip.png` show a swimmer elongating and pinching at the waist into two equal daughters that swim apart. Daughter sizes: smaller/larger daughter median 0.94 / 0.82 / 0.80, and **26/35 pairs within 30% of each other**. The two daughters together are 1.08-1.12x the parent 10 t after the split (each starts at about half and regrows). From noise, 3 seeds. labkit pack `packs/swimfission`: 43-45 moving tracks per seed. | **The ablated control still divides, rarely**: parent toxforage (Da 4) gives 3 clean fissions (max gen 2) in `fission_toxforage_ctrl_s0`, against 10-15. Da 2 raises the rate rather than creating fission, so the review's "no divisions in the control" criterion is not met. labkit's own lineage under-counts (max gen 2-3) because of its 6-t sampling. Collisions still cause merges and debris. |
 | `swimevo` (+ `_neutral`) | L7[L2] **Weak** | Breeding true: 17/17 pure-A parents → pure-A daughters. Parents with B ≥ 0.77 → daughters 0.83-1.00 (4/5). Generations 6-7 (`packs/fission_swimevo_s*.json`). Growth-rate allele: B 21 vs A 6 bodies (selection) vs B 5 vs A 14 (neutral) at t=1800. | Only ~10 bodies per run. The signal holds in 3/3 pairs but has small numbers. The population slowly declines. |
 
 ## Mechanisms learned (with ablations)
@@ -39,7 +39,23 @@ evolve are motile, eating, dividing and interacting.
 - (From sprint 1, still true) mass-conserving trail swimmers coarsen into immotile aggregates. Toxic trails, growth and fission keep the
   swimmer phase alive.
 
+## Response to the sprint-1 review
+The review was queued at 16:54 but reached this session only at 18:16, after this sprint's work was done. The sprint therefore followed my own plan
+plus the lab digest. Mapping the review's requests onto what was done:
+- **Main experiment, fed swimmer reproduces (L6).** Done by a different route from the one suggested: elongation past the cohesion range, not
+  core starvation. From noise on 3 seeds: 10-15 clean crescent → 2 crescent fissions per run, lineages 3-5 generations deep, and daughters
+  near-equal (26/35 pairs within 30%). Not met: (i) the control (Da 4) still divides at a low rate (3 per 1200 t); (ii) the single-crescent
+  life-history assay at 256² with a per-body uptake/toxin budget (part a) was not run.
+- **Ecology.** I accept the matched-control result. The sprint-1 "predation lowers prey" claim (-24%) came from a mismatched grid and is
+  withdrawn. The decomposition (full / k=0 / escort / chi_y=0 / prey alone, species-aware) was not run this sprint. The same caveat applies
+  to evopursuit.
+- **Not done:** the n=0 starvation packs (3 seeds), the clipping-loss log, the Laplacian-only slow-inhibitor RD control, the LITERATURE additions.
+  Done partly: dt/2 for a kinetic world (evopursuit) and species-aware analysis via my own scripts (`alleles.py`, `exposure.py`, `fission.py`).
+
 ## Next sprint
+0. The review's open items first: ecology/evopursuit decomposition with a k=0 escort arm (192², 3 seeds, species-aware); n=0 starvation
+   packs; the single-crescent life-history assay with a per-body budget; core-starvation fission with an ablation that gives *zero* divisions;
+   the slow-inhibitor RD control and the literature.
 1. Map the rescue: a cost × predation-rate grid with ≥ 3 seeds per point, and the timing of the first B mutant against collapse.
 2. Coevolution: give predators a heritable pursuit allele (chi_y) as well. Look for arms-race cycling (Red Queen), and use the
    gated-mobility membrane from the autopoiesis and fisim threads for an internal compartment (L3 swimmers).

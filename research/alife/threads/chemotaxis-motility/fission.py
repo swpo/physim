@@ -177,9 +177,29 @@ if allele_src:
     res_comp = comp
 else:
     res_comp = []
+# body sizes: parent mass 2 t before the split, each surviving child's mass 10 t after
+def bmass(fi, tid):
+    lab = frames[fi][1]
+    js = [j for j, t_ in maps[fi].items() if t_ == tid]
+    if not js:
+        return None
+    return float(crops_src[fi].astype(np.float32)[np.isin(lab, js)].sum())
+
+
+sizes = []
+for tt, p, ch in clean:
+    fi = int(round(tt / every))
+    fc = min(fi + int(10 / every), len(frames) - 1)
+    pm = bmass(fi - 1, p)
+    cm = [bmass(fc, c) for c in ch]
+    sizes.append({"t": tt, "parent": pm, "children": cm})
+res_sizes = sizes
 # clean fissions per generation of the dividing parent
 res["fissions_by_parent_gen"] = np.bincount([gen.get(p, 0) for tt, p, ch in clean]).tolist() if clean else []
 res["composition"] = res_comp
+res["sizes"] = res_sizes
+rat = [c / max(sum(x for x in d["children"] if x), 1e-9) for d in res_sizes for c in d["children"] if c]
+res["daughter_share_of_pair"] = rat
 json.dump(res, open(out + ".json", "w"), indent=1, default=int)
 print(f"{out}: splits {len(events)}, clean fissions {len(clean)}, max generation {res['max_generation']}, "
       f"bodies late {res['bodies_mean_late']:.1f}, fissions by parent generation {res['fissions_by_parent_gen']}")
