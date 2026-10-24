@@ -281,3 +281,38 @@ results in `runs/mk/*.json`.
 - Conclusion: the leak is graded; L7 still Weak. Next: cross-inhibition or link-bound catalyst.
 - also: merged the lab branch (CI fix + committee files); conflicts were only in my own thread
   files (older copies on the lab branch), kept this branch's versions.
+
+# Sprint 3 (final; start 19:03 UTC)
+Committee r2: CONTINUE narrowed, with a stop rule. Main experiment: arm E.
+
+## 17. membrane_evo (arm E)
+`worlds/membrane_evo` (twin, b2=b) and `membrane_evo_up` (b2=1.3b), `membrane_evo_down` (0.7b).
+Sealed catalyst channel: face mobility D min(g_i, g_j) with g=[phi>1/2]; autocatalysis only
+inside; catalyst decays at d_out=0.2 outside bodies. c2=c1; kinds differ only in b2. Events from a
+state-independent RNG (same draws in every arm with the same seed), from t_on=8000: whole-cell
+kind flips both ways (p 5e-4), whole-cell neutral-tag mutations (+-0.3, p 5e-4), disk deaths.
+Tracker `evotrack.py` (census every 100 steps): births/deaths by kind (deaths split into
+disk-hit and other), flips, conversions (1:1 kind change without a flip), first acquisitions
+(minority kind > 1% in a never-flipped lineage), off-kind daughters.
+- pure-culture pre-screen (t=16k, no flips): b=0.035 extinct; 0.05 one cell; 0.065 20 cells;
+  0.08 6 large cells. The sealed channel costs viability, so b=0.065 is the base. b matters.
+- batch 1 (p_death 0.003, r 10; 5 seeds x 3 arms, 40k with 32k of events, `runs/evo/`):
+  hygiene: conversions 0 in 14/15 runs (1 in down s2), first acquisitions 0/15, off-kind
+  daughters 0/15. Selection vs twin:
+  down (0.7b): K2 deaths 5-8 vs twin 0-1; K2 extinct in 4/5 (1 cell in s2) vs twin 5-9 K2 cells.
+  up (1.3b): K2 ends 2/0/4/2/2 cells vs twin 9/8/5/9/7; K2 births 0-2 vs 1-6; K2 deaths 0 in both;
+  K2 biomass mixed (898/37/820/1139/456 vs 814/937/559/690/781): fewer, bigger K2 cells.
+  Confound: K2->K1 back-flips 1-4 in up vs 0-1 in twin (flips hit cells by location, so bigger
+  cells are hit more often).
+  Turnover too low: ~9 body deaths and ~15-26 births per run, about 1 generation.
+- batch 2 (p_death 0.01, r 14; now the world-file default; `runs/evo_hi/`): ~25-40 body deaths
+  and 30-60 births per run (about 2-3 replacement generations for ~15 cells).
+  hygiene: first acquisitions 0/15; conversions 0 in 13/15 (up s1: 4 with 10 flips, up s4: 1 with
+  8 flips; always <= flips); off-kind daughters 0 except up s1 (2), up s2 (1).
+  down (0.7b): K2 cells at the end 0/0/1/0/0 vs twin 3/5/2/0/4; K2 births 0-1, deaths 1-7.
+  Departs from the twin in 4/5 (s3 twin also 0), through deaths and missing births.
+  up (1.3b): K2 sweeps in 3/5 seeds (end K1/K2 2/8, 2/7, 2/15; K2 births 12/18/31) and is lost in
+  2/5 (1, 0). K2 biomass 443/2144/1963/0/2114 vs twin 284/546/290/0/352 (higher in 4/5, tie in s3).
+  The sign of selection on b2 flips with turnover: under low turnover (batch 1), high-yield K2
+  ends with fewer cells than the twin in 5/5 (fewer, bigger cells that divide less in a crowd);
+  under high turnover it sweeps in 3/5 (bigger cells recolonize cleared space faster?). Hypothesis.
