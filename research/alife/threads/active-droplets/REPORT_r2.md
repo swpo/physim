@@ -50,3 +50,23 @@ Fork recorded in META: fisim-beyond-laplacian's gated diffusion `div(D e^{-βm}�
 4. **Numerics.** A resolution test (dx=0.5) for ad7.
 
 Tools added: `protocell_movie.py` (readable movies from pack frames), and `allele_plot.py --offset`. No labkit changes.
+
+## 6. Response to the sprint 1 review (it reached this session at 18:20, after the sprint-2 work above)
+
+The review's decision is CONTINUE, consolidating on ad5 with turnover and three arms. It arrived after sprint 2 had been run on my own plan, so the main experiment it asks for is **not done yet**. It becomes sprint 3's first task, as specified:
+- 192² box, fertile ancestor k=0.13, mutants {0.11, 0.12, 0.14, 0.15}.
+- A screen for a regime with deaths after the box fills.
+- Logged droplet-scale mutation: a copy error at division, or a whole-droplet flip.
+- Arms S / N (identical events replayed) / R (linear diffusion), 3 seeds each, ≥40k t.
+- Per-allele births, deaths, flips and off-kind daughters.
+
+What sprint 2 already speaks to:
+- **Secondary 1 (fuel gating by psi):** done as ad7 (`Du e^{-0.5 psi}`, plus catalyst gating `Dc e^{-3 psi}`). The shell is no longer inert: the bc=0 and bu=0 ablations move the outcome in the predicted directions. Not yet done: gamma=0 vs >0 on division rate over 3 seeds, and the shell at dx=0.5.
+- **Turnover:** the ad7 runs confirm the review's point. Without deaths, selection is a colonization race (ad7 at dil=0.0005). The d4 runs used imposed dilution; endogenous deaths are still missing.
+- **Matched neutral controls:** ad7's neutral arms share the ancestor phenotype (all kp=0, or all kp=4). They showed that mutation churn alone moves labels a lot, which is why the ad7 claim is Weak.
+- **R arm, one quick check on ad7** (CH replaced by linear diffusion at D=M, `linear=1`, seed 0, t=8000):
+  - kp=0.5: 5 droplets and essentially no division, vs 12 with CH. Spots form but stay single (`screens/R_ad7_kp0.5.png`).
+  - kp=4: 6 droplets vs 6 with CH.
+  - So in the gated, leaky-catalyst world the double well does work that diffusion does not. This differs from the judges' ad1 finding. One seed; it needs the full 3-seed R arm.
+
+Stopped as instructed: ad4, the ad0/ad1 sweeps, motility (paused; sprint-2 motility screens were already negative).

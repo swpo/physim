@@ -182,3 +182,10 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
 - Landscape seed 1: kp 0/0.5/1.5/4 -> 5/12/12/6 droplets at t=8000 (broad peak 0.5-1.5).
 
 Sprint 2 ended ~18:22 UTC. Report: `REPORT_r2.md`.
+
+## Committee review r1 (read 18:20, after sprint 2) and quick R-arm check
+- Decision: CONTINUE, consolidate on ad5 with turnover; arms S/N/R; stop ad4 and ad0/ad1 sweeps; pause motility.
+- R arm on ad7 (`linear=1`: CH replaced by linear diffusion of phi at D=M=0.03), seed 0, t=8000: kp=0.5 -> 5 droplets,
+  ~no division (CH: 12); kp=4 -> 6 (CH: 6). `screens/R_ad7_kp*.png`. In ad7 the double well matters for division.
+- Merge note: the lab branch held an older snapshot of 4 files in this thread dir (add/add conflicts); kept this
+  branch's versions.

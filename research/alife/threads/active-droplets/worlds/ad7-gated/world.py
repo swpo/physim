@@ -35,7 +35,7 @@ META = {
 
 P = dict(M=0.03, kappa=1.0, k=0.15, kd=0.02, F=0.004, Du=2.0, bu=0.5, Dc=0.3, bc=3.0, r=0.05, beta=1.1, g=0.05,
          kp="0.0,0.5,1.5,4.0", Dp=0.3, chi=8.0, gp=0.01, mut=0.002, rm=5.0, dil=0.0005, rd=10.0,
-         dt=0.5, A=2.0, phi0=-0.95, noise=0.01, seeds=6, r0=6.0, allele0=0)
+         dt=0.5, A=2.0, phi0=-0.95, noise=0.01, seeds=6, r0=6.0, allele0=0, linear=0)
 
 
 def kpvec():
@@ -81,8 +81,11 @@ def step(s):
     c = np.clip((1 + phi) / 2, 0, 1)
     tot = a.sum(0)
     prod = P["k"] * u * c ** 2 * tot
-    ph = (ops.rfft2(phi) - dt * M * k2 * ops.rfft2(phi ** 3 - phi - P["A"] * phi)
-          + dt * ops.rfft2(prod - P["kd"] * c)) / s["den"]
+    if P["linear"]:  # R arm (committee): CH flux replaced by linear diffusion with D = M
+        ph = (ops.rfft2(phi) + dt * ops.rfft2(prod - P["kd"] * c)) / (1 + dt * M * k2)
+    else:
+        ph = (ops.rfft2(phi) - dt * M * k2 * ops.rfft2(phi ** 3 - phi - P["A"] * phi)
+              + dt * ops.rfft2(prod - P["kd"] * c)) / s["den"]
     s["phi"] = ops.irfft2(ph, sh)
     # gated fuel: implicit ungated Du, explicit (gated - ungated) correction
     Dgu = P["Du"] * np.exp(-P["bu"] * psi)
