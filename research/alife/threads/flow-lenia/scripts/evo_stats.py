@@ -24,7 +24,7 @@ def hard_kind(s):
     return d.argmin(0), d.min(0)
 
 
-def run(world, seed, steps, every, sets):
+def run(world, seed, steps, every, sets, size=None):
     W = load_world(world)
     for kv in sets:
         k, v = kv.split("=", 1)
@@ -33,7 +33,7 @@ def run(world, seed, steps, every, sets):
         except Exception:
             pass
         W.CFG[k] = v
-    s = W.init(seed, tuple(W.META["size"]))
+    s = W.init(seed, tuple(size or W.META["size"]))
     nk = len(s["founders"])
     rec = {"t": [], "mass": [], "bodies": [], "food": [], "dist": [], "gid_mass": []}
     thr = W.META.get("threshold") or 0.15
@@ -71,9 +71,15 @@ if __name__ == "__main__":
     ap.add_argument("--every", type=int, default=50)
     ap.add_argument("--seeds", type=int, nargs="+", default=[0])
     ap.add_argument("--set", nargs="*", default=[])
+    ap.add_argument("--size", type=int, nargs=2)
+    ap.add_argument("--noplot", action="store_true")
     a = ap.parse_args()
-    recs = {sd: run(a.world, sd, a.steps, a.every, a.set) for sd in a.seeds}
+    recs = {sd: run(a.world, sd, a.steps, a.every, a.set, a.size) for sd in a.seeds}
     Path(a.out + ".json").write_text(json.dumps({"args": vars(a), "runs": recs}))
+    if a.noplot:
+        for sd, r in recs.items():
+            print(sd, "final mass by kind", [round(x) for x in r["mass"][-1]], "bodies", r["bodies"][-1], flush=True)
+        sys.exit()
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt

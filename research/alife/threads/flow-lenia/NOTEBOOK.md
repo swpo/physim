@@ -75,3 +75,31 @@ split by nearest founder (orange = kind0, cyan = kind1).
   crescents): by t=4000 almost all bodies are cyan.
 - founder_seed 1 (screens/evo_fs1): both kinds persist to t=4000 with distinct morphologies.
 - 18 ms/step at 128^2 (sampling uses a lexsort), so 4000 steps ~ 75-170 s.
+
+## E7. Forager ablations and 3-seed pack (packs/fl_forager, screens/abl_forager_*)
+- **No food (k_eat=0)**: gliders shrink and dissolve by t~250 (1300 steps); all matter returns to
+  food. -> the bodies depend on uptake (metabolism, L4c ablation).
+- Linear uptake (n=1): only a few large gliders + faint diffuse matter (worse).
+- packs/fl_forager seeds 0-2 (4000 steps, 128^2): 1 patch -> 10-14 gliders, **0 nucleations in every
+  seed** (every body descends from the patch by division), 40-49 splits, 29-40 merges, max generation
+  1-2 by the labkit tracker. Food falls to ~50% and the population levels off.
+- scripts/division_chain.py: clean divisions (both daughters live >= 10 frames 1-to-1): 18/22/13 per
+  seed; two-generation chains 0/3/1. packs/fl_forager/seed1/divisions.png shows patch -> split ->
+  daughter divides again (f49), and an elongated body dividing (f65) whose daughter divides (f136).
+  Daughters are the same kind of crescent/ring glider, but morphology is somewhat variable
+  (crescent, C-ring with a nucleus, small ring).
+
+## E8. Two-kind competition (evo/fs1.png, evo/fs2.png; 6000 steps, seeds 0-2)
+Total matter saturates near 1500 (food ~750): a closed resource. In 5/6 runs one kind ends with >85%
+of the matter (competitive exclusion); fs1 seed 0 still coexists. But the winner depends on the seed
+(fs1: kind1 wins 2/3; fs2: kind0 wins 2/3), so these runs do not separate selection from drift.
+fs2 seed 1: the winning kind1 makes ~50 small bodies vs ~15 for kind0: body size is heritable
+with the parameters.
+
+## E9. Mutation with genotype ids (`worlds/fl_forager_mut`, evo/mut_muller.png)
+One founder; with probability 0.003 per step a disk of radius 12 around a mass-weighted random cell
+(about one body) gets (m,s,h) *= exp(0.15 N); every genotype id inside gets a new child id (parent
+table). Sampling transport keeps P and id exactly paired, so genotypes are discrete and heritable.
+8000 steps: 62 mutations, phylogeny depth 7; at the end the root holds 36% of the matter, and
+derived genotypes at depth 2-4 hold the rest (top: id 36 depth 4, 19%). Many lineages go extinct.
+Needs the neutral control (same events, mut_size 0) before any selection claim.
