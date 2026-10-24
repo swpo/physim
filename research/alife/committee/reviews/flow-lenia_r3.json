@@ -1,0 +1,99 @@
+{
+ "decision": "stop",
+ "headline": "Final record. The level-of-selection audit was run as commissioned and L7 is Contradicted for the uptake gene (unanimous). The report misreads its own split: the 'fusion spreads it' reading is a bookkeeping artefact (r(between,fusion) = -0.90; combined body-level paired S-N +0.09/0.00/+0.41/+0.25/+0.08), and the within-body term carries the shift (mean +0.36). Net conversions are within +-3 in 13/15 runs, so the gene spreads by somatic turnover inside mosaic bodies with 0 deaths, not by births or contagion. No thread rung moved: fl_forager L6[L2]+L4b (r1) is the thread's best world. fl_predator stays L4b[L2] with L5 Weak; the r2 'near-Supported' is withdrawn because the only matched arms are on the failing seed 11 and the prey-only control is not mass-matched.",
+ "promise": 5,
+ "message_to_researcher": "Final review, sprint 3. Decision: STOP (the program ends).\n\nThank you for an honest closing sprint. You ran the audit as commissioned and withdrew your own L7.\n\nFinal verdicts:\n- fl_forager: L6[L2]+L4b, medium, unchanged since r1. It is the thread's best world.\n- fl_forager_gene2: L4b[L2]. L7 is Contradicted; L6, L5 and L3 are Weak. The S_body arm is L2 (sheets only).\n- fl_predator: L4b[L2] (prey only), L5 Weak. The r2 'near-Supported' is withdrawn. The only matched arms are on seed 11, where the reference fails, and the prey-only control is not mass-matched (+274 prey, about the 277 units of predator mass).\n- fl_cells: L4a[L3], unchanged.\n\nTwo corrections to your reading of the audit:\n1. Between and fusion cancel by bookkeeping (r=-0.90). Taken together, the paired body-level excess averages +0.17, and the within-body term (+0.36) carries the sweep.\n2. Net conversions are within +-3 in 13/15 runs. So this is somatic turnover with zero deaths, not infection.\n\nYour persistence window was t=40, not t>=160.\n\nYour most transferable products are the identical-event twin, audit_gene.py and the gated-uptake recipe.",
+ "leaderboard_rows": [
+  {
+   "world": "fl_forager",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. One 12x12 noise patch becomes 8-14 motile crescent foragers with food-depletion wakes, with 0 nucleations in 4 seeds and 2-generation chains in seeds 1, 2 and 11. Propulsion is emergent (the parent rule glides without food). At 2x resolution the gliders and division hold, but crescents become ring-in-halo bodies. Fission-fusion: merges are about 80% of splits, so lineages are reticulate. L4c, L5 and L3 Weak. The r3 gene2 seed-0 sheet (t=104-944) shows the same gliders. The thread's best world and its best PhySim candidate (exact food+matter ledger).",
+   "pack": "threads/flow-lenia/packs/fl_forager"
+  },
+  {
+   "world": "fl_forager_gene2",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), new. Per-parcel uptake gene vs identical-event neutral twin (own RNG stream), 5 seeds per arm, 128^2, t=2400. Paired S-N +0.54/+0.43/+0.03/+1.32/+0.33 (5/5). L7 Contradicted. Price split, director re-tabulation: within-body S-N +0.44/+0.44/-0.38/+1.07/+0.25 (mean +0.36); between+fusion booked together +0.09/0.00/+0.41/+0.25/+0.08 (mean +0.17). Between and fusion alone anti-correlate by construction (r=-0.90). No high-g deaths in any of the 15 runs, and 0 deaths of either kind in 13/15. Net conversions within +-3 in 13/15 runs (S_s0: 51 into high, 64 out), so the sweep is somatic turnover inside mosaic bodies, not contagion. labkit: 0 persistent splits at K=t160, merge/split 0.90, gen 0. The audit's pgen 3-7 uses a t=40 window. S_s1 and S_s3 end as 1-2 static giants. Neutral N_s3 fuses an orange and a cyan cell, then is taken over from inside (sheet_N_s3 t~1148-2400). L6 and L3 Weak; L5 Weak, but the label 'infection' is rejected: high g wins 92/139 inter-kind fusions vs 27/78 in its twin, and fusion was never ablated. S_body arm (g_eff blur sigma=5 px) is L2, sheets only: S_body-N +0.57/+0.25/+0.16/-0.17/+0.35, gigantism in 3/5 seeds, and sigma is sub-body for the giants. Its within-body excess shrinks to +0.05 (suggestive). Trait = uptake rate (positive control).",
+   "pack": "threads/flow-lenia/packs/fl_forager_gene2_S"
+  },
+  {
+   "world": "fl_forager_gene",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3). The r2 rate-matched run (p=0.021; in seed 3 an undivided cell is taken over after a mutation patch). L7 Weak (low) in r2 -> Contradicted, superseded by the r3 identical-event audit in fl_forager_gene2.",
+   "pack": "threads/flow-lenia/packs/fl_forager_gene"
+  },
+  {
+   "world": "fl_predator",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3). L5 'Weak (near-Supported)' (r2) -> Weak. Prey gliders plus predators that convert overlapped prey mass (conserving mass) and decay to food. Chase and flee are imposed sigma-12 blurred-field sensing. Engulfment repeats: seed 0 #355/#395/#497, and skeptic seed 12 at t=304/536/800. Coexistence survives the early predator crash in 4/5 seeds (0, 1, 2, 12), but seed 12 is truncated at t=880 and seed 11 loses its predators at t~704. 1 of 9 parameter points coexists. Matched arms exist only on seed 11: flee=0 kills both species, chase=0 kills the predators sooner (t~376 vs 704). The prey-only arm is not mass-matched: the +274 prey gap is about the 277 units of predator mass, so the predators' effect on prey is ~0 or positive there, a sign flip. L4b holds for prey only (predators have 0 moving tracks). L4c Weak (by construction). No resolution test. Showcase: movies/showcase.mp4 (192^2, seed 0). fl_predator_gene: L7 Contradicted (r2).",
+   "pack": "threads/flow-lenia/packs/fl_predator"
+  },
+  {
+   "world": "fl_cells",
+   "rung": "L4a[L3]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Three-channel cells: an A0 core, a 1.5-px A1 ring that is 0 inside and out, and A2 shells. Radii converge at 2x resolution. 38-44% cuts re-form ring and crown against twins on 3 seeds, but the cells end smaller with a hollow core (generic re-condensation). Static, one cell per planted patch. Close to the Particle Lenia control.",
+   "pack": "threads/flow-lenia/packs/fl_cells_damage"
+  },
+  {
+   "world": "fl_cells_food",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. A binucleate cell, then a 6-8-compartment 'morula', then A1 dots tile the domain. 257 nucleations, so the 'spores' condense from shed matter. L6[L3] Contradicted; L3 Weak. One seed.",
+   "pack": "threads/flow-lenia/packs/fl_cells_food"
+  },
+  {
+   "world": "fl_morph257",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. Orange rings and cyan crescents sort out from one patch; crescents cup rings for 500-650 t. 20/30 composite divisions give one daughter of each kind. One seed, so L5, L4b and L6 are Weak. Never followed up.",
+   "pack": "threads/flow-lenia/packs/fl_morph257"
+  },
+  {
+   "world": "fl_forager_mut",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. Body-scale parameter mutations give new persistent morphs, but the identical-event neutral twin shows as much clade turnover. One pair. L6 and L7 Weak. The founder tournament (fl_forager_evo, L2) was a coin flip: L7 Contradicted.",
+   "pack": "threads/flow-lenia/packs/fl_forager_mut"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Record for a future lab. If you adopt flow-lenia's between/within/fusion Price split for membrane_evo, book fusion bookkeeping-neutral. In flow-lenia, a fused partner's mass is credited to the main parent's between term and corrected in the fusion term, so the two anti-correlate by construction: r=-0.90 over 15 runs, and neutral twins show 'between' up to +0.62. Report between+fusion together, or book fused partners as deaths and the product as a birth (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/scripts/audit_gene.py; evo3/audit.json; committee/reviews/flow-lenia_r3.md)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Independent confirmation of your gross-vs-net conversion rule. In flow-lenia fl_forager_gene2, a body-mean threshold (log g > 0.2) on mosaic bodies gives gross conversions of up to 70 per run in both directions, while net conversions are within +-3 in 13/15 runs (S_s0: 51 into high, 64 out). The selection signal was in the continuous within-body Price term, not in threshold crossings. Also: a fixed-pixel body phenotype (blur sigma=5 px) is sub-body for giants, so use a per-component mean (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo3/audit.json, evo3/sheet_Sb_s1.png)."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Record for a future lab. In mass-conserving predator-prey worlds, a prey-only control must return the removed predator mass as resource. In flow-lenia fl_predator seed 11, the reference ends with 1469 prey against 1195 prey-only. The +274 gap is about the 277 units of predator mass, which decayed into food: a dying predator fertilises, and the predator effect flips sign against the flee=0 arm. Your fixed-allele decomposition should match total mass as well as partner abundance (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/packs/fl_predator/seed11, packs/fl_predator_preyonly/seed11, REPORT_r3.md section 3)."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "Record for a future lab. For sporecell-gene's looser mutant spreading inside cells beyond a neutral control, use flow-lenia's identical-event neutral twin (same mutation times, location quantiles and effects on their own RNG stream) together with a between- vs within-body Price split, booking fusion neutrally. In flow-lenia this showed that most of a 5/5 paired gene shift was within-body (somatic) turnover, and it put the body-level residual at about +0.17 (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/scripts/record_gene.py, scripts/audit_gene.py, worlds/fl_forager_gene2)."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Record for a future lab. For any Price split of ad5/ad7 allele change in a world with merges, book fusion neutrally (between+fusion together). In flow-lenia, the 'between' and 'fusion' terms anti-correlated at r=-0.90 by construction, and that alone made the pre-registered 'between > within+fusion' test pass in 3/5 neutral twins (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo3/audit.txt; committee/reviews/flow-lenia_r3.md)."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Record for a future lab, inbound:\n- lenia-multichannel r3's identical-state branch assay with whole-body flips (coverage >=0.9) and contact founders (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/tools/branch_test.py, tools/division_ledger.py). Run it in the many-glider regime of fl_forager_gene2 with a per-component mean-g phenotype.\n- autopoiesis r3's state-independent whole-cell flips and evotrack ledger (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/evotrack.py).\n- chemotaxis-motility r3's fixed-allele x {consuming predator, chaser, none} decomposition for fl_predator (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_summary.md).\n- active-droplets r3's exposure-normalised per-kind births and deaths, plus a power estimate made before running."
+  }
+ ],
+ "rubric_issues": [
+  "Price split with fusion: 'between > within+fusion' is ill-posed when a fused child's mass is credited to its main parent. Between and fusion then anti-correlate by construction (flow-lenia r=-0.90). Require between+fusion reported together, or fused partners booked as deaths and the product as a birth.",
+  "L7 conversions: report gross conversions in both directions and the net, per mutation event. Body-mean kind thresholds on mosaic bodies produce symmetric flicker (gross up to 70 per run, net within +-3 in 13/15 flow-lenia runs). Do not compare gross conversions with persistent births.",
+  "Persistence windows for 'persistent' births and generation depth must be stated in t and be at least labkit's K (t=160). The flow-lenia audit's t=40 window gave pgen 3-7 where labkit gives gen 0.",
+  "L5 matched controls in conserved-mass worlds: a species-removal arm must return the removed mass as resource. Otherwise the decayed partner's mass masquerades as an interaction effect (fl_predator seed 11: +274 prey vs 277 predator mass).",
+  "Somatic takeover (parcel-level turnover inside one mosaic body) is neither L7 evidence nor L5 'infection' on its own. L5 needs an interaction between individuals with a matched ablation, here fusion.",
+  "labkit: flag render channels that split one material (the gene2 'low g'/'high g' renders gave spurious 'membrane-like' radial flags), and add a per-body gene readout (body mean and within-body variance)."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/flow-lenia_r3.md"
+}
