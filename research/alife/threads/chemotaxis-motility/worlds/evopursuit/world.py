@@ -28,13 +28,14 @@ META = {
     "channels": ["preyA", "preyB", "predator", "n"],
     "matter": [0, 1, 2],
     "smooth": 1.0,
+    "species": {"prey": [0, 1], "predator": [2]},
 }
 
 P = {
     "Dr": 1.2, "Da_p": 2.0, "Da_q": 4.0, "ka": 0.1, "Dh": 0.2, "kh": 0.05, "beta": 1.0,
     "chi_a": 24.0, "chi_h": 4.8, "chi_x": 8.0, "chi_y": 8.0,
     "k": 0.1, "e_yield": 0.5, "g": 0.1, "rh": 0.3, "r": 0.06, "c": 2.0, "Dn": 0.5, "kd": 0.005,
-    "e": 1.0, "cost": 0.15, "m": 0.02, "Rm": 4.0, "pred": 1.0,
+    "e": 1.0, "cost": 0.15, "m": 0.02, "Rm": 4.0, "pred": 1.0, "B0": 0.0, "qdeath": 1.0, "pdeath": 1.0,
     "t_on": 150.0, "rho0": 0.05, "qfrac": 0.5, "noise": 0.02, "dt": 0.05,
 }
 P.update(json.loads(os.environ.get("WORLD_P", "{}")))  # screening override only; packs use the defaults above
@@ -95,7 +96,7 @@ def init(seed, size):
     L = ops.lap_symbol(H, W)
     dt = P["dt"]
     La = np.stack([1.0 / (1 - dt * (P["Da_p"] * L - P["ka"])), 1.0 / (1 - dt * (P["Da_q"] * L - P["ka"]))])
-    return {"A": rho[0].copy(), "B": np.zeros((H, W)), "q": rho[1].copy(),
+    return {"A": (1 - P["B0"]) * rho[0], "B": P["B0"] * rho[0], "q": rho[1].copy(),
             "a": rho / P["ka"], "h": P["beta"] * rho / P["kh"], "n": np.ones((H, W)),
             "La": La, "Lh": 1.0 / (1 - dt * (P["Dh"] * L - P["kh"])),
             "Ln": 1.0 / (1 - dt * (P["Dn"] * L - P["r"])), "shape": (H, W), "p": dict(P),
@@ -123,9 +124,9 @@ def step(s):
     faces = vf_face_fluxes(pr, vyp, vxp)
     divB = allele_flux_div(pr, fB, faces)
     divT = sum(fl - np.roll(fl, 1, ax_) for ax_, fl, _ in faces)
-    B = B + dt * (p["Dr"] * ops.laplacian(B) - divB + gB - kk * B * q - kd * h[0] * B)
-    A = A + dt * (p["Dr"] * ops.laplacian(A) - (divT - divB) + gA - kk * A * q - kd * h[0] * A)
-    q = q + dt * (p["Dr"] * ops.laplacian(q) - vf_flux_div(q, vyq, vxq) + p["e_yield"] * kk * pr * q - kd * h[1] * q)
+    B = B + dt * (p["Dr"] * ops.laplacian(B) - divB + gB - kk * B * q - p["pdeath"] * kd * h[0] * B)
+    A = A + dt * (p["Dr"] * ops.laplacian(A) - (divT - divB) + gA - kk * A * q - p["pdeath"] * kd * h[0] * A)
+    q = q + dt * (p["Dr"] * ops.laplacian(q) - vf_flux_div(q, vyq, vxq) + p["e_yield"] * kk * pr * q - p["qdeath"] * kd * h[1] * q)
     A, B, q = np.clip(A, 0, None), np.clip(B, 0, None), np.clip(q, 0, 1)
     tot = A + B
     over = np.where(tot > 1, 1 / np.maximum(tot, 1e-9), 1.0)
@@ -139,8 +140,14 @@ def step(s):
             yy = np.minimum(np.abs(np.arange(H) - cy), H - np.abs(np.arange(H) - cy))[:, None]
             xx = np.minimum(np.abs(np.arange(W) - cx), W - np.abs(np.arange(W) - cx))[None, :]
             d = yy ** 2 + xx ** 2 <= p["Rm"] ** 2
+            from scipy import ndimage
+            lab, _ = ndimage.label(tot > 0.35)
+            body = lab == lab[cy, cx]
+            fb0 = float(B[body].sum() / max(tot[body].sum(), 1e-9))
             A[d], B[d] = B[d].copy(), A[d].copy()
-            s["mutations"].append((round(s["t"], 2), int(cy), int(cx)))
+            fb1 = float(B[body].sum() / max((A + B)[body].sum(), 1e-9))
+            # ledger: time, site, body area, body B fraction before and after the swap
+            s["mutations"].append((round(s["t"], 2), int(cy), int(cx), int(body.sum()), round(fb0, 3), round(fb1, 3)))
     rho = np.stack([A + B, q])
     s["a"] = ops.irfft2(ops.rfft2(a + dt * rho) * s["La"], s["shape"])
     s["h"] = ops.irfft2(ops.rfft2(h + dt * p["beta"] * rho) * s["Lh"], s["shape"])
@@ -148,6 +155,11 @@ def step(s):
     s["n"] = np.clip(ops.irfft2(ops.rfft2(n + dt * (p["r"] - p["c"] * food)) * s["Ln"], s["shape"]), 0, None)
     s["A"], s["B"], s["q"] = A, B, q
     return s
+
+
+def ledger(s):
+    """Mutation ledger (list of events); a conversion is an event that flips its body's majority allele."""
+    return s["mutations"]
 
 
 def fields(s):

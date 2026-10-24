@@ -200,3 +200,22 @@ survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a
   (alleles.py prints times doubled for this run because it assumes dt 0.05).
 
 Sprint 2 ended ~18:20 UTC.
+
+# Sprint 3 (final; started 19:04 UTC)
+Committee r2: evopursuit L5[L2]+L4b, L6 Weak, L7 Weak (near-Supported). Main concern: B prey + predators end with MORE prey (1458-1622)
+than predator-free prey (586-769), so the allele may turn the predator into a net benefit rather than an escape. Also: no ledger
+(conversions vs births), fission depth inflated by the max()-through-merge rule.
+- evopursuit gains default-preserving parameters: `B0` (initial B fraction), `qdeath` (predator toxin death on/off), META species
+  {prey: [0,1], predator: [2]}, and a mutation ledger (t, site, body area, body B fraction before/after; `ledger(s)`).
+- `preytrack.py`: prey-only tracker every 2 t with the largest-parent generation rule, ledger by kind, and random deepest-generation B-birth strips.
+- Fixed-allele arms (m = 0), 160², t=1500, seeds 0-2: {all-A, all-B} x {consuming predators k 0.1, immortal non-consuming escorts
+  k 0 + qdeath 0, no predators}. Results via `arms_summary.py`.
+- **Arm results** (prey mass t=1500 / t=150; predator mass ratio; prey bodies t 1000-1500), 3 seeds each:
+  - A + consuming predators: prey 0.15 / 0.12 / 0.11 (collapse), predators 0.32 / 0.23 / 0.20, 4-5 bodies.
+  - B + consuming predators: prey 1.28 / 1.32 / 1.28, predators 1.75 / 1.81 / 1.88, 33-36 bodies.
+  - A + non-consuming immortal escorts: prey 1.62 / 1.41 / 1.22, 21-23 bodies.
+  - B + escorts: prey **2.43 / 2.54 / 2.43**, 35-38 bodies.
+  - prey alone: the all-A arm was skipped to save time; `evopursuit_nopred` (all-A start, B never established) gives 0.46-0.52. B alone: see below.
+  - **The committee's suspicion is right: B + escort > B + predator > prey alone.** Being chased is itself a large benefit, B gains
+    more from it than A, and consumption subtracts from it (fatal for A, tolerable for B). The sweep is exploitation of the chase, not
+    escape from predation.
