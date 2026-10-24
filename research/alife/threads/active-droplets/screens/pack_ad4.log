@@ -1,0 +1,41 @@
+[ad4-protocell] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  24.5s
+  frame 40/200  49.2s
+  frame 60/200  72.7s
+  frame 80/200  96.7s
+  frame 100/200  120.3s
+  frame 120/200  144.5s
+  frame 140/200  167.5s
+  frame 160/200  191.1s
+  frame 180/200  215.0s
+  frame 200/200  238.7s
+  -> threads/active-droplets/packs/ad4-protocell/seed0/FACTS.md  (239s sim)
+[ad4-protocell] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  25.1s
+  frame 40/200  50.5s
+  frame 60/200  75.0s
+  frame 80/200  98.0s
+  frame 100/200  122.3s
+  frame 120/200  145.5s
+  frame 140/200  168.7s
+  frame 160/200  190.4s
+  frame 180/200  213.1s
+  frame 200/200  235.4s
+  -> threads/active-droplets/packs/ad4-protocell/seed1/FACTS.md  (235s sim)
+[ad4-protocell] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  23.6s
+  frame 40/200  47.2s
+  frame 60/200  71.3s
+  frame 80/200  96.2s
+  frame 100/200  119.9s
+  frame 120/200  142.1s
+  frame 140/200  167.0s
+  frame 160/200  190.8s
+  frame 180/200  214.6s
+  frame 200/200  238.1s
+  -> threads/active-droplets/packs/ad4-protocell/seed2/FACTS.md  (238s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 11 | 11 | 196 | 0 | 4 | 6 | 2 | 0.13 |
+| 1 | ok | 11 | 11 | 201 | 0 | 4 | 6 | 2 | 0.13 |
+| 2 | ok | 11 | 11 | 201 | 0 | 5 | 5 | 2 | 0.13 |

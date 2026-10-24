@@ -1,0 +1,41 @@
+[ad3s-soup] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  20.0s
+  frame 40/200  40.3s
+  frame 60/200  59.2s
+  frame 80/200  79.0s
+  frame 100/200  99.1s
+  frame 120/200  118.1s
+  frame 140/200  139.2s
+  frame 160/200  159.3s
+  frame 180/200  178.5s
+  frame 200/200  198.7s
+  -> threads/active-droplets/packs/ad3s-soup/seed0/FACTS.md  (199s sim)
+[ad3s-soup] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  18.3s
+  frame 40/200  36.8s
+  frame 60/200  54.1s
+  frame 80/200  71.7s
+  frame 100/200  90.1s
+  frame 120/200  107.9s
+  frame 140/200  125.5s
+  frame 160/200  143.3s
+  frame 180/200  160.9s
+  frame 200/200  178.5s
+  -> threads/active-droplets/packs/ad3s-soup/seed1/FACTS.md  (178s sim)
+[ad3s-soup] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  18.3s
+  frame 40/200  37.5s
+  frame 60/200  55.4s
+  frame 80/200  73.8s
+  frame 100/200  91.7s
+  frame 120/200  109.5s
+  frame 140/200  126.8s
+  frame 160/200  144.3s
+  frame 180/200  161.3s
+  frame 200/200  178.7s
+  -> threads/active-droplets/packs/ad3s-soup/seed2/FACTS.md  (179s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 18 | 17 | 170 | 0 | 3 | 12 | 3 | 0.14 |
+| 1 | ok | 17 | 16 | 174 | 0 | 2 | 10 | 2 | 0.14 |
+| 2 | ok | 15 | 15 | 197 | 0 | 1 | 8 | 2 | 0.14 |

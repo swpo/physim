@@ -1,0 +1,81 @@
+{
+ "decision": "continue",
+ "headline": "Continue, redirected to heredity. Chan's MIRd+ replicators on a food-plus-maintenance metabolism are a solid L6[L2]+L4c+L5 (medium): a dense rerun shows binary fission in later generations. The 'sustained consumer-resource cycle' is in fact intermittent boom-bust near the dormant-lattice boundary, and every L4+ result uses a planted Chan creature. Spontaneous r-two56 is a static but resolution-converged L3. Next: an L7 attempt with a metabolic allele, a neutral arm and a horizontal-transfer audit at 192².",
+ "promise": 6,
+ "message_to_researcher": "Decision: CONTINUE (promise 6), redirected from cycle refinement to heredity. Honest notebook; every judge rerun reproduced.\n\nVerdicts:\n- mcfd-MIRd: L6[L2]+L4c+L5, medium. labkit reads gen 0, but the biologist's dense rerun of seed 2 (t=548-579) shows two binary fissions after a trough, with daughters re-forming core, cap and dots. L5 is Supported as food competition setting the dynamics (no food fills the grid; norefill dies; decay 0/0.01/0.03 gives dormant/static/boom-bust). NOT supported: \"sustained regular cycle that removes dormancy\". Seed 11 sat ~650 t as a static lattice (3 judges), peak spacing is 530/290/260, troughs hit 2 cells, it damps at 192² and dies at dt/2 in 1/2 seeds. Call it intermittent boom-bust.\n- mcf-MIRd: L6[L2]+L4c, high; L5 Weak.\n- mcf-fastcell: L4b[L3]+L4c, medium. The A0 shell is real (0 inside r<8, peak at r 14-22). Planted; no dt/R test.\n- r-two56: L3, spontaneous, high, better than you reported. At dt/2 from noise 6 cells remain, and formed cells survive R=15 and R=20 with the same ~10 teeth. Static: no turnover, and L4a Contradicted.\n- MIRd+ L3 is Weak everywhere: the halo is 1-2 px dots. r-two-s1-60 is the known single-channel glider (L4b[L2]). eco: L5 Weak.\nAll L4+ results use planted Chan creatures; your distinct assets are free dormancy and the set-point membrane.\n\nMAIN EXPERIMENT: L7 on mcfd-MIRd at 192² (decay 0.03, rho 0.02).\n1. Add a discrete allele field carried by matter. New matter takes the kernel-weighted MAJORITY allele of the matter that built it; never average.\n2. Allele 1 is metabolic: Y x1.15 or mu x0.85, whichever leaves morphology intact in a T=300 check.\n3. Mutation flips one whole cell (an A0 component), at ~5-10% of cells per 1000 t. Plant nothing.\n4. Arms: S (effect on) and N (label only, same mutation rate), 3 seeds each, t>=2000.\n5. Readouts:\n   - allele as a sheet colour;\n   - mass-weighted allele fraction;\n   - per-division inheritance (dense frames, fixed K~20);\n   - allele changes of living cells without division vs mutations.\nPass: allele 1 arises during the run, >=90% of divisions breed true, conversions <= mutations, and allele 1 rises in 3/3 S seeds beyond N's spread. Leakage across touching halos is an equally decisive result.\n\nSECONDARY:\n1. Is the cycle real? Use the N series, plus 2 seeds at 256² and one dt/2 run at 192². Report minimum count, extinction times, and amplitude/spectral peak vs area.\n2. Put r-two56 on build-from-food plus decay (mu 0.01, 0.03). Shelled cells from noise that must eat would be L4c[L3]. Retest formation at R=15 with smoothed noise.\nSTOP: cycle sweeps, random-graph screens, r-two-s1-*. PAUSE: eco.\n\nBORROW:\n- active-droplets, cell-scale mutation and a neutral arm: origin/claude/alife-active-droplets:research/alife/threads/active-droplets/packs/ad5-evolve, ad5n-neutral.\n- autopoiesis, contagion audit (45 conversions vs 8 mutations): research/alife/committee/reviews/autopoiesis_r1.md; origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds.\n- flow-lenia, the negotiation rule and why its competition was near-neutral: origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/REPORT_r1.md §4.\n- fisim-beyond-laplacian, per-division kinds accounting: origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json.",
+ "leaderboard_rows": [
+  {
+   "world": "mcfd-MIRd",
+   "rung": "L6[L2]+L4c+L5",
+   "confidence": "medium",
+   "note": "Planted MIRd+ fed by regrowing food with maintenance decay 0.03. labkit reads gen 0 (K=10% of run). A judge's dense rerun of seed 2 shows two binary fissions after a trough (4->17 cells in ~100 t), with daughters re-forming core, cap and dots. Food competition sets the dynamics (no food: fills the grid; norefill: extinct; decay 0/0.01/0.03: dormant/static/boom-bust). The 'regular cycle' is not robust: peak spacing 530/290/260, a ~650 t static plateau on seed 11, troughs of 2 cells, damped at 192², extinct at dt/2 in 1/2 seeds. L3 Weak (1-2 px halo dots).",
+   "pack": "threads/lenia-multichannel/packs/mcfd-MIRd"
+  },
+  {
+   "world": "mcf-MIRd",
+   "rung": "L6[L2]+L4c",
+   "confidence": "high",
+   "note": "Chan's planted replicator with build-from-food: 6 persistent splits, gen 3 (seeds 0 and 2). Norefill is extinct in 3/3 seeds by t~230-310, against 11-16 survivors with refill. L5 Weak: a single boom and decline in 400 t; long runs end in extinction or a dormant lattice. Replication itself is Chan's result (no-food control reaches gen 4).",
+   "pack": "threads/lenia-multichannel/packs/mcf-MIRd"
+  },
+  {
+   "world": "mcf-fastcell",
+   "rung": "L4b[L3]+L4c",
+   "confidence": "medium",
+   "note": "Planted Chan 'fast cell' gliders (8-15 BL, 3 seeds plus seed 11) carve food wakes. A radial profile shows a real A0 shell at r 14-22 with A0=0 inside r<8. Norefill leaves 0/0/1 survivors vs 3/4/3. Spontaneity 0. Baseline attrition without food. No dt/R test.",
+   "pack": "threads/lenia-multichannel/packs/mcf-fastcell"
+  },
+  {
+   "world": "r-two56",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "One of 2/420 random 2-channel rules: cells with a white centre, cyan core and orange cog shell form from noise (3 pack seeds plus 3 judge seeds) and stay unchanged to t=400-500. dt/2 from noise keeps 6 cells. Formed cells survive R=15 and R=20 with the same ~10 teeth. Static fixed points with no turnover. Narrow island (1/5 jitter draws). L4a Contradicted (core damage kills).",
+   "pack": "threads/lenia-multichannel/packs/r-two56"
+  },
+  {
+   "world": "r-two-s1-60",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "C-gliders peel off a jammed crowd of ~45 bodies that forms from noise (3.0-3.8 BL). The second channel is dead by t~2-6 and constant-k5 keeps the glider, so this is the known single-channel Lenia class. Grid-aligned bricks. L5 Weak (jamming shown by one planting test).",
+   "pack": "threads/lenia-multichannel/packs/r-two-s1-60"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "particle-life",
+   "suggestion": "Free dormancy: when metabolism charges only turnover, jammed or static bodies pay nothing, and populations freeze into lattices (sporecell's ~40-cell territory lattice with B on). lenia-multichannel broke this with a maintenance decay of all body matter that must be rebuilt from food. Decay 0 gave a dormant lattice, 0.01 a fed static lattice, and 0.03 boom-bust turnover, with a sharp threshold (0.025 static) (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/screens/mcfd-MIRd_decay0.01_128.png, mcfd-MIRd_decay0.03_14000steps.png; packs/mcfd-MIRd). Sweep k_dec upward together with your planned chemostat inflow."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "ad1 and ad5 return to a static lattice once the box is full, so selection acts only during colonization. lenia-multichannel's maintenance decay (body material decays and must be rebuilt from the resource) turned a dormant MIRd+ lattice into ongoing birth and death, with a sharp threshold (decay 0.025 static vs 0.03 boom-bust; origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd, REPORT_r1.md §3). Sweep a droplet-material decay in ad5-evolve to get repeated sweeps rather than one colonization wave."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "For your layered-cell life-cycle goal (fl_cells_food spores regrowing into ringed cells): borrow lenia-multichannel's distance-set-point membrane. Kernel k4 (core->shell) grows the shell only where ring-sensed core density ~0.23, k5 (shell->core) feeds the core, and a narrow k0 caps size; constant-k5 kills the core (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/screens/r-two56_ablations.png, worlds/r-two56). It forms from noise, and the committee skeptic showed that formed cells are converged at dt/2 and at 1.5x/2x resolution."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Add a nonlocal ring-kernel set-point operator to the genome: shell growth G(K_ring * core) peaking at a fixed ring-sensed core density, so the membrane sits at a fixed distance from the core, plus a shell->core feed that makes the two mutually dependent (lenia-multichannel r-two56; origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/screens/r-two56_ablations.png). It places a membrane by distance rather than by front deposition, and it is a genuinely beyond-Laplacian operator."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "phase_trait's population freezes after ~12k, so selection cannot act. lenia-multichannel's diagnosis is that turnover-charged metabolism makes static bodies free. A maintenance decay of cell material rebuilt from substrate restores birth and death (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd; decay sweep in screens/mcfd-MIRd_decay*.png). Add it before rerunning trait selection against a neutral arm."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "For the L7 attempt, take active-droplets' cell-scale mutation, matched neutral arm and argmax allele assignment, and their finding that pixel noise averages out and strong within-body majority erases sub-body mutants (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/packs/ad5-evolve, ad5n-neutral; REPORT_r1.md §3.4). Also take autopoiesis's horizontal-transfer audit: 45 conversions of living cells against 8 mutations drove a fake sweep (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds; committee/reviews/autopoiesis_r1.md)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "From flow-lenia: averaging and passive sampling of localized parameters gave near-neutral competition, so use a negotiation or majority inheritance rule and a trait with a clear fitness effect (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/REPORT_r1.md §4 and §5.1). From fisim-beyond-laplacian: per-division kinds accounting (on->on+on, mixed, switches) as the output format (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json)."
+  }
+ ],
+ "rubric_issues": [
+  "labkit lineage_stats uses K = 10% of n_frames, so long runs with turnover read 0 persistent splits and generation 0 even when fission is plainly visible (mcfd-MIRd, K = 140 t). A judge's fixed K = 20 frames recovered gen 2. Proposal: use an absolute K tied to the division time, and do not end a lineage at a brief merge or halo contact. persistent_splits is not comparable across run lengths until this is fixed.",
+  "labkit rim metrics follow only the 'matter' channel(s). For multi-channel creatures the claimed membrane channel (the fast-cell A0 shell, the MIRd+ halo) lies outside the mask, so rim_vs_* does not measure the L3 claim. Proposal: FACTS should report per-channel radial profiles per tracked cell (as in judge-scratch/lenia-multichannel-r1-biologist/viz/radial.py).",
+  "L3 in kernel worlds: boundary features of 1-2 px, far below the kernel radius (MIRd+ halo dots at R=15), should not count as a membrane unless they survive a 1.5x resolution continuation.",
+  "L4c: the ablation must be run on the world claimed. The mcfd-MIRd evidence came from its parent world without decay. When the rule makes matter buildable only from the resource, L4c holds by construction; score that under mechanism and novelty.",
+  "L5 oscillation claims ('cycles') should report peak spacing across >=3 seeds and a grid-size check (relative amplitude vs area) before being called a limit cycle rather than demographic noise near a bifurcation."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/lenia-multichannel_r1.md"
+}

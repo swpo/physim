@@ -1,0 +1,7 @@
+t=0 droplets=4 per-allele=[4] none=0 muts=0 dils=0
+t=1600 droplets=6 per-allele=[6] none=0 muts=0 dils=0
+t=3200 droplets=9 per-allele=[9] none=0 muts=0 dils=0
+t=4800 droplets=9 per-allele=[9] none=0 muts=0 dils=0
+t=6400 droplets=10 per-allele=[10] none=0 muts=0 dils=0
+t=8000 droplets=12 per-allele=[12] none=0 muts=0 dils=0
+146s
