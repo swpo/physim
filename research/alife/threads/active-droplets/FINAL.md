@@ -9,7 +9,13 @@
 | `ad1-fuel` | **L6[L2] high** | Core starvation plus slow interior transport divides droplets, via ring break-up or dumbbell fission. Converged at dt/2 and dx=0.5. |
 | `ad3-membrane` / `ad3s-soup` | L6[L3] low (superseded by ad7) | Self-made ψ shell that wraps every daughter. It was inert until ad7 gave it a job. |
 
-SPRINT3_SUMMARY
+Sprint 3 (`ad9-ledger`) ran the committee protocol:
+- birth-coupled ±1-rung copy errors;
+- Moran deaths, so births = kills;
+- identical-event neutral twins;
+- a 3-seed landscape with a peak at kp 0.5-1.5.
+
+It did **not** pass at 128² and t=30000. There were only ~2-5 mutations per run, and S stayed within N's envelope. The selection term pointed toward the optimum in all 3 S runs where it was non-zero. Conversions and off-kind daughters were 0. The consensus L7[L3] therefore stays **Weak**.
 
 ## 2. Mechanisms that worked (with the ablation that shows it)
 

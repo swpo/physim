@@ -213,3 +213,8 @@ move the turnover protocol to ad7. Final deliverables: REPORT_r3, FINAL.md, movi
   identical end states (12 droplets all rung 5). At carrying capacity births are fuel-limited, so no turnover.
   `runs/cap12/`. Aborted the queue; restarted with cap=6 (below carrying capacity: cells keep dividing and every
   birth forces a Moran kill).
+- cap=6 arms done (`runs/{S,N}_a{1,5}_s*`, `screens/ad9_evo.png`, table in REPORT_r3): births = kills, 0 conversions,
+  0 off-kind daughters, 2-5 mutations per run. Mean kp never enters 0.5-1.5; S within N's envelope. FAIL at this
+  scale; mutation supply is the bottleneck (need ~10x births). The between-droplet term in S is non-zero in 3/6 runs,
+  all toward the optimum.
+- Sprint 3 ended ~21:00 UTC. FINAL.md and movies/showcase.mp4 delivered.
