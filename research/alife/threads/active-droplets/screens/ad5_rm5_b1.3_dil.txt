@@ -1,0 +1,13 @@
+t=0 droplets=4 per-allele=[4, 0, 0, 0] none=0 muts=0 dils=0
+t=1818 droplets=5 per-allele=[4, 1, 0, 0] none=0 muts=4 dils=2
+t=3636 droplets=5 per-allele=[2, 2, 0, 1] none=0 muts=11 dils=2
+t=5454 droplets=6 per-allele=[2, 2, 0, 2] none=0 muts=11 dils=5
+t=7272 droplets=6 per-allele=[1, 2, 1, 2] none=0 muts=12 dils=5
+t=9090 droplets=7 per-allele=[2, 1, 2, 2] none=0 muts=16 dils=7
+t=10908 droplets=6 per-allele=[1, 2, 1, 2] none=0 muts=21 dils=11
+t=12726 droplets=8 per-allele=[1, 2, 1, 4] none=0 muts=22 dils=11
+t=14544 droplets=8 per-allele=[1, 2, 1, 4] none=0 muts=24 dils=11
+t=16362 droplets=8 per-allele=[1, 2, 1, 4] none=0 muts=25 dils=13
+t=18180 droplets=8 per-allele=[2, 1, 1, 4] none=0 muts=27 dils=16
+t=19998 droplets=8 per-allele=[2, 1, 2, 3] none=0 muts=31 dils=20
+281s
