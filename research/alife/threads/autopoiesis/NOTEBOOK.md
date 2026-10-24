@@ -340,3 +340,7 @@ disk-hit and other), flips, conversions (1:1 kind change without a flip), first 
 - reading: the r2 criteria for L7[L3] are met (my claim). The batch-1 "sign flip" of the up
   arm was underpowered (about 1 generation), not a reversal: with 2.5-4 generations high yield wins.
 - figure `screens/membrane_evo_selection.png`.
+- dt/2 check (`runs/evo_dt/`, dt=0.5 with per-step event probabilities halved and t_on doubled,
+  so a different realization of the event stream; 2 seeds): K2 biomass share up 0.93/0.80 vs
+  twin 0.64/0.29; K2 births 37/45 vs 6/17. Hygiene: conversions 0/6 (<= flips 5/12), first
+  acquisitions 0/1. Same direction as dt=1.
