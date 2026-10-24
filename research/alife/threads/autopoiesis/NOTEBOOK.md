@@ -252,10 +252,14 @@ the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic w
   swimming arc. Pretty, but the symmetry is from the grid and the ending is a die-off.
 - dt check (dt=0.5, p_mut halved per step to keep the rate per time, seed 1, `runs/mtdt_*`): kd=0
   mu 1.20 (dt=1: 1.21), kd=0.02 mu 1.81 (dt=1: 1.85). Same outcome.
-- kd jitter (seed 1): kd=0.022 sparse (2-6 cells), mu 1.73 vs tag 1.52 (up). kd=0.018: mu first
+- kd jitter (seed 1): kd=0.022 sparse (2-6 cells), mu 1.73 vs tag 1.52 (up). kd=0.018 (mu starts to fall at t~15k while still ~6 cells; the population grows only after ~22k, so loss of motility comes first and density follows): mu first
   rises while sparse (1.73 at 12k), then from t~24k falls to 0.82 while the population explodes
   9 -> 42 cells (`screens/motility_regime_shift.png`). A regime shift: a lineage that loses
   motility founds a dense sessile population, crowding dilutes the waste, and sessility wins.
   So the direction of selection is set by population density, and toxicity sets which regime
   a population starts in. Direct support for the two-regime hypothesis (sparse/motile vs
   dense/sessile), and a limit on robustness: the kd=0.02 result is not guaranteed at -10%.
+- kd=0.018 seeds 0 and 2: seed 0 shifts too (mu 1.5 -> 0.81 from t~12k, cells 7 -> 36); seed 2
+  hovers near 1.5 until ~40k, then mu 1.2 with cells 8 -> 19 (shift under way). So at kd=0.018
+  3/3 seeds leave the motile regime within 48k, at kd >= 0.02 5/5 surviving seeds stay motile:
+  a sharp evolutionary tipping point between 0.018 and 0.02 on this time scale.
