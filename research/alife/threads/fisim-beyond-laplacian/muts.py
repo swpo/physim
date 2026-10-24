@@ -61,3 +61,7 @@ def cellwaste(kw=0.3, tw=40.0, Dw=2.0, bw=5.0, Kg=1.0, kc=0.25, **kw2):
     g["W"].append([1.0]); g["K"][0].append(kw)
     g["perm"].append([1 + 5, 3, bw])
     return g
+
+def cellpop2(Kg=1.5, Dg=5.0, taug=100.0, **kw):
+    """cellpop with a slow, local resource depletion (turnover by local starvation)."""
+    return cellpop(Kg=Kg, Dg=Dg, taug=taug, **kw)

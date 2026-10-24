@@ -155,3 +155,12 @@ t=68-78. The crops (`screens/her_noise_switch_crops.png`) show these are real: a
 the whole h domain goes to one daughter, and the other emerges h-off and stays off
 (unequal partitioning, i.e. loss of the marker at division). noise 0.5: 15 nucleations
 (new cells from noise), only 4 splits. Too noisy.
+
+## Sprint 2 (start 2026-10-24 16:37 UTC)
+
+Committee digest: gated mobility is the lab's convergent containment operator; L7 bar =
+in-run variation + neutral control with the same mutation rate + >=3 seeds; challenge:
+fork a mechanism from another thread. Plan: (1) turnover (consumed/regrowing resource or
+maintenance cost) so selection keeps acting; (2) graded, *private* marker fitness (h-on
+cells make less membrane-trapped waste) instead of kh (which made rods); (3) selection vs
+neutral at the same noise, 3 seeds each; (4) one good movie.
