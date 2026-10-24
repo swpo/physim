@@ -1,0 +1,65 @@
+{
+ "decision": "continue",
+ "headline": "Continue: the lab's only spontaneous populations of self-propelled individuals. kstrail is a numerically validated L4b[L2]; ecology reaches L5[L2] with low confidence, because the prey effect flipped sign in matched reruns. Next rung: make a fed trail swimmer divide (L6).",
+ "promise": 7,
+ "message_to_researcher": "Decision: CONTINUE (promise 7). Your slow-repellent operator is the lab's only spontaneous source of self-propelled populations, and your write-up was accurate.\n\nVerdicts:\n- kstrail: L4b[L2], high confidence. chi_h=0 gives static spots. The skeptic's 2x-resolution rerun matched body size and speed within ~10%, with no heading lock. L3 is Weak: the h cloud is a wake, not a boundary.\n- pursuit: L4b[L2], L5 Weak. The 2x2 ablation is clean, but conserved species cannot change populations.\n- toxforage: L4b[L2]; L4c Weak (near-Supported); L4a Weak. The biologist forked seed 11 at t=500. With n=0, every body was dead by +200 t; with kd=0 the bodies merged into one sea. Right test, one seed. Your r=0 run left 4 swimmers living on leftover food.\n- ecology: L5[L2], low confidence. Pairing reproduces (0.94 on seed 11), and predators fall 93% at k=0. But two judges ran a matched control (seed 11, 128², t=600): prey changed by -7% with predators and -35% without, the opposite of your -24%. Your k=0 run used a different grid. Drop the \"predation\" label until the decomposition below is done; the predator may be an obligate escort.\n\nMAIN EXPERIMENT: make a fed swimmer reproduce (L6).\n(a) toxforage life-history assay. Seed one crescent at 256² on uniform food. Sweep r over 0.03, 0.06, 0.1 and 0.2, run at least 2000 t, and keep a per-body budget (uptake vs toxin loss). Report whether the body holds steady, divides or bloats.\n(b) If it bloats, add a fission route and run its ablation as the control. Preferred route is core starvation: growth needs a nutrient whose penetration length is smaller than the body radius, so a grown body hollows into your ring stage and ruptures into two crescents. Fallback is AMB+ or a nonlocal area constraint.\n(c) Pass criteria, from noise on 3 seeds, with prey-channel lineage: at least 2 generations of crescent -> 2 crescents, offspring within ~30% of the parent's size, and no divisions in the ablated control.\n\nSECONDARY GOALS:\n1. Ecology decomposition: 192², t=1000, 3 seeds, species-aware tracking. Arms: full; k=0; non-consuming escort (k=0, predator death off); chi_y=0; prey alone. Report per-species counts and lifetimes.\n2. Run the n=0 starvation fork as 3-seed labkit packs; this upgrades L4c. Add one dt/2 check of a kinetic world and log the mass lost to rho clipping.\n3. Laplacian-only slow-inhibitor RD control: do travelling spots form from noise, and do they bind? Add Krischer & Mikhailov 1994, Soto & Golestanian 2014, Agudo-Canalejo & Golestanian 2019 and Tsyganov et al. 2003 to LITERATURE §2.6.\nTooling: only per-channel matter, run-dt time axis, median-body damage.\n\nBORROW:\n- active-droplets core-starvation fission: origin/claude/alife-active-droplets:research/alife/threads/active-droplets/packs/ad1-fuel and REPORT_r1.md §3.1\n- autopoiesis swim/divide cycle: origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_swimdiv\n- flow-lenia Hill-gated uptake (n=3): origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/packs/fl_forager\n- lenia-multichannel maintenance cost (cycles): origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd",
+ "leaderboard_rows": [
+  {
+   "world": "kstrail",
+   "rung": "L4b[L2]",
+   "confidence": "high",
+   "note": "Crescent swimmers form spontaneously from noise (spot -> ring -> rupture -> crescent). The chi_h=0 ablation gives static spots. Passes dt/2 and 2x resolution with no heading lock. The swimmer phase coarsens to immotile aggregates by t=1800. L3 Weak (wake, not membrane). Known drift-bifurcation physics.",
+   "pack": "threads/chemotaxis-motility/packs/kstrail"
+  },
+  {
+   "world": "ecology",
+   "rung": "L5[L2]",
+   "confidence": "low",
+   "note": "Prey-predator pairs, contact 0.93-0.96 vs null ~0.33 (4 seeds). Predators fall 93-95% at k=0 (2 seeds). In matched reruns prey do better WITH predators: an obligate escort or parasite, not demonstrated predation. No cycles. Provisional pending the matched decomposition.",
+   "pack": "threads/chemotaxis-motility/packs/ecology"
+  },
+  {
+   "world": "toxforage",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "Toxic self-waste acts as size control and keeps 9-14 swimmers with turnover to t=1500. L4c Weak (near-Supported): the judge's n=0 fork kills every body within 200 t and kd=0 gives a sea, but on one seed only. L4a Weak.",
+   "pack": "threads/chemotaxis-motility/packs/toxforage"
+  },
+  {
+   "world": "pursuit",
+   "rung": "L4b[L2]",
+   "confidence": "high",
+   "note": "Non-reciprocal cross-taxis binds chaser-fleer composites (contact 0.76-0.91 vs null 0.27-0.31). A clean 2x2 ablation shows pursuit binds and evasion shapes the bond. L5 Weak: conserved species, so no population dynamics.",
+   "pack": "threads/chemotaxis-motility/packs/pursuit"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "phase_swim headings lock to the lattice. chemotaxis-motility fixed the same diagonal snapping with a van Leer MUSCL volume-filling face flux v*rho_up*(1-rho_down), plus a body radius of at least ~6 px (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r1.md, Mechanism 5). Also test their law 'only unsaturated bodies swim' (size control is a precondition for gradient-driven motility) against swimmers that stall as they grow."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Add a slow self-secreted repellent h (decays slowly, diffuses little, flux chi_h*rho(1-rho)*grad h) to the dividing ad5-evolve droplets. This turns them into motile heritable individuals, the digest's sprint-2 target. Watch for the saturation-stops-motility law."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Use non-reciprocal cross-taxis (predator up the prey signal, prey down the predator signal) as an explicit predation channel between the two cell species in eco-MIRd-Rplus. Compare chemotaxis-motility's toxic self-waste size control with your maintenance cost: both penalize standing still."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Give heritable forager kinds a pursuit/evasion cross-taxis coupling (the chemotaxis-motility pursuit world, 2x2 ablation) so that kinds interact by predation, not only by competition for shared food. This may make the near-neutral selection in fl_forager_evo non-neutral."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Borrow core-starvation fission from active-droplets (packs/ad1-fuel; division when nutrient penetration is shorter than body radius) and the swim/divide cycle from autopoiesis (packs/phase_swimdiv) to make fed crescents divide. Borrow lenia-multichannel's maintenance cost (packs/mcfd-MIRd) and flow-lenia's Hill-gated uptake (packs/fl_forager) to break the 1:1 pair lock and get cycles."
+  }
+ ],
+ "rubric_issues": [
+  "L4c does not say which ablation counts. Removing the supply (r=0) leaves residual resource and only thins the population. Proposal: abruptly remove the resource at a fork with the fed control alongside, require death of individuals rather than population decline, and require at least 2 seeds.",
+  "L5 'changes population dynamics' should require a matched ablation (same grid, duration and seeds, at least 2 seeds) and a report of the sign of the effect on each partner. Here an unmatched comparison (160² ablation vs 192² main runs) produced a prey effect whose sign reversed under matched control.",
+  "L2 'tracked through most of the run' fails for colliding swimmer populations, where bodies are plainly discrete but identities churn through merge and split (0 persistent tracks in toxforage and ecology). Allow body lifetime between collisions to be much longer than formation time, judged from images.",
+  "labkit: the frame-to-time conversion uses META dt, so dt overrides show doubled times and halved speeds. persistent_area_ratio includes nucleation growth. Multi-channel matter fuses species, so there are no per-species tracks or lineage. --damage targets the largest component, which is usually a clump. Judges should run with PYTHONDONTWRITEBYTECODE=1, because one run wrote __pycache__ into the read-only mirror."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/chemotaxis-motility_r1.md"
+}
