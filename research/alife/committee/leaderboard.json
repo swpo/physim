@@ -368,5 +368,45 @@
   "thread": "chemotaxis-motility",
   "round": 2,
   "decision": "continue"
+ },
+ "lenia-multichannel/mca-MIRd": {
+  "world": "mca-MIRd",
+  "rung": "L6[L2]",
+  "confidence": "low",
+  "note": "The committee's discrete-allele L7 test: majority inheritance, S EFF=0.15 vs an identical-event N arm, 3+3 seeds, 192\u00b2, 20000 steps. L7 Not tested. The operator picks uniformly among A0>0.3 components, so 13/18 events flipped 1-19 px halo dots. The 4 independent cell-scale events (step 507 is shared by S_0 and N_0) flipped only the A0 core + 4 px, ~30-50% of the body's matter. All were lost in 50-150 t in both arms; the 507 event was lost identically in S and N during growth. Skeptic branches from one seed-11 state: a 29% flip erodes 0.037->0.006 in 80 t, while whole-body flips persist 4/4 (one 1->2 division, both daughters allele 1). 'Resident heredity 2932/2933' is null by construction. L6 is inherited from mcfd-MIRd; the skeptic's labkit rerun gives gen 2 and 5 persistent splits by t=150. No pack or sheet.",
+  "pack": "threads/lenia-multichannel/screen_data/mca",
+  "thread": "lenia-multichannel",
+  "round": 2,
+  "decision": "continue"
+ },
+ "lenia-multichannel/mcg-MIRd (+ mcg-MIRd-neutral)": {
+  "world": "mcg-MIRd (+ mcg-MIRd-neutral)",
+  "rung": "L6[L2]",
+  "confidence": "medium",
+  "note": "Continuous yield trait g carried by matter (3-px blur inheritance), with one-sided harmful mutations, 3+3 seeds at 160\u00b2. The planted MIRd+ booms to ~30 cells, crashes to 3-4 (t~436-522) and regrows by fission (sheet). labkit reads gen 0, and merges are 74% of splits. L7 Weak: harmful cell-samples 1/256 vs 34/237, but 29 of the 34 come from one neutral seed, 2 of 3 neutral mean-g curves overlap selection, the fitness effect is designed, the trait blends at contacts, and there is no ledger. Competition assay (planted g=0 vs -0.3, 128\u00b2): L7 Weak; one neutral seed loses the low kind as fast as selection. Two-sided yield: 3/3 selection runs freeze into a fed lattice vs 3/3 neutral runs cycling, with no mean-g difference. L7 Contradicted; the eco-evolutionary shift is Weak (Jensen: variance in e^g raises mean yield; no non-heritable control). L3 Weak (1-2 px halo dots), so the [L3?] is dropped.",
+  "pack": "threads/lenia-multichannel/packs/mcg-MIRd",
+  "thread": "lenia-multichannel",
+  "round": 2,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_forager_gene": {
+  "world": "fl_forager_gene",
+  "rung": "L4b[L2]",
+  "confidence": "medium",
+  "note": "Heritable uptake gene (eat *= g per parcel), moved with matter by stochastic sampling and mutated by radius-8 disks during the run. Final matter-weighted log g is +0.34..+0.73 in 5/6 selection runs vs -0.24..+0.11 in 6 rate-matched neutral runs (exact one-sided p=0.021, not the reported 0.008). High-g bodies take the body count in seeds 2, 4 and 5 (13/17, 21/21, 19/21). But in the only imaged seed (3) the central cell turns cream to orange without dividing after a mutation patch (t~780-940), and a cyan glider fuses into an orange cell and is relabelled; 0 persistent splits, gen 0. There is no births/deaths/conversions ledger, the neutral arm is not identical-event (seed 0: 99 vs 83 events), and the trait is the uptake rate itself (positive control). L7 Weak (low; Contradicted in seed 3); L6 Weak in this world. Gliders with food wakes early; winners become static multi-ring giants (also seen in one neutral run).",
+  "pack": "threads/flow-lenia/packs/fl_forager_gene",
+  "thread": "flow-lenia",
+  "round": 2,
+  "decision": "continue"
+ },
+ "flow-lenia/fl_predator": {
+  "world": "fl_predator",
+  "rung": "L4b[L2]",
+  "confidence": "medium",
+  "note": "fl_forager gliders as prey plus a predator species that converts the prey matter it overlaps (mass-conserving) and decays to food. Chase and flee are imposed sigma-12 blurred-field sensing. Engulfment in every pack seed (seed 0 #355, #395, #497), and prey peaks lead predator rises in 3/3 seeds. Single-seed ablations run 8000 steps against 12000-step references: chase=0 starves the predators, flee=0 gives total extinction. Skeptic seed 11: predators extinct by t~900, prey x5.3. Coexistence 3/4 seeds at 1 of 9 parameter points; 1-3 peaks per seed, no grid-size check. L5 Weak (near-Supported); L4c Weak (decay by construction); L4b holds for prey only. labkit fuses the species. The heritable flee gene (fl_predator_gene, no pack, evo2/pgene.png) is L7 Contradicted: selection +0.16..+0.23 vs neutral +0.24..+0.29, with an unexplained upward drift in all arms.",
+  "pack": "threads/flow-lenia/packs/fl_predator",
+  "thread": "flow-lenia",
+  "round": 2,
+  "decision": "continue"
  }
 }
