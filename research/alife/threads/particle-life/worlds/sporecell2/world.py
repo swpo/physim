@@ -45,7 +45,7 @@ P = dict(
        [0.0, 1.0, 0.5, 1.0]],
     B=[[0.0] * 4] * 4,
     D=[0.2, 0.0, 0.0, 0.0],
-    mu=0.002, seed_kind1=0.0, k_conf=1.0, k_cat1=0.05, gate_beta=0.0,
+    mu=0.002, seed_kind1=0.0, k_conf=1.0, k_cat1=0.05, gate_beta=0.0, k_lys=0.0, n_lys=3,
     k_cat=0.05, r_cat=0.5, k_dec=0.01,
     k_diff=2.0, r_s=0.4, n_body=10, n_surf=35, n_bury=45, k_mdec=0.01,
     mrule="food", f_surf=4, f_bury=2,
@@ -186,6 +186,10 @@ def chemistry(s, Cn, dtc):
     c = (t == 1) | (t == 3)
     dec = c & (u < 1 - np.exp(-p["k_dec"] * dtc))
     new[dec] = 0
+    if p["k_lys"] > 0:  # predation: kind-0 core touching >= n_lys kind-1 core lyses into food
+        lys = (t == 1) & ~dec & (Cn[:, 3] >= p["n_lys"]) & (rng.random(len(t)) < 1 - np.exp(-p["k_lys"] * dtc))
+        new[lys] = 0
+        dec = dec | lys
     if p["k_conf"] > 0:  # majority vote: a core particle outnumbered by the other kind converts
         own = np.where(t == 3, Cn[:, 3], Cn[:, 1])
         other = np.where(t == 3, Cn[:, 1], Cn[:, 3])

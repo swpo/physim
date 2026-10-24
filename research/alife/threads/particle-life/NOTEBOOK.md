@@ -160,3 +160,20 @@ is dense, so it piles up against cells. (sporecell2, mu=0.1, k_cat1=0.065, seed 
   higher turnover because its membrane also slows food in. Negative.
 - Movie: `screens/lifecycle.mp4` (seed 1, a snapshot every 40 steps, t=0-240) shows ring cells
   growing, bursting into magenta spore clouds, and the kind-1 colony spreading.
+
+## T3. Predation between heritable kinds (contact lysis)
+Rule: a kind-0 core particle with >= 3 kind-1 core particles within 0.5 lyses into food at rate
+k_lys=2. Kind 1 is a worse grazer (k_cat1=0.035 vs 0.05) that kills on contact and eats the
+released food.
+- half/half seeds, mu=0, t=300, final kind-1 / all cells: with lysis 6/17, 12/13, 14/18
+  (seeds 0/1/2); ablation without lysis 1/18, 0/19, 2/12. Contact killing reverses the
+  competitive outcome in 3/3 seeds. The kinds hold separate territories with a front between
+  them (`screens/P_half_types.png`).
+- Predator arising by mutation (all kind 0 at start, mu=0.1, t=400): predator cells are founded
+  1-3 times per seed but never reproduce. Final kind-1 cells with lysis 0/18, 0/14, 0/19;
+  control (same worse-grazer mutant, no lysis) 1/18, 0/21, 2/18. No invasion.
+- Prediction "contact killing gives a frequency-dependent (territorial) advantage, so a rare
+  predator loses": seeded at 15% with lysis, kind-1 cells at t=300 are 0/17, 0/17, 2/15 (3/3 lose),
+  against 6/17, 12/13, 14/18 at 50%. Confirmed: a priority effect, bistable territories. The
+  predator kind cannot invade from rare, so this interaction cannot be reached by mutation in
+  this design.
