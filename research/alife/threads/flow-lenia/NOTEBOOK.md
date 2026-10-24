@@ -155,3 +155,29 @@ the parent kind: negative for L6[L3] so far, the most interesting lead for sprin
 ## E16. Lower food for cleaner forager lineages (food0 0.075, seed 1, 6000 steps; not kept)
 7 gliders at the end, 24 splits / 18 merges, 14 clean divisions, 0 two-generation chains. Fewer
 bodies does not stop the split/merge churn: daughters usually re-merge or collide before dividing.
+
+## E17. Layered cells + food as a pack (`worlds/fl_cells_food`, packs/fl_cells_food)
+A full sequence over 10000 steps: layered cell -> binucleate (t~270-440) -> the composition shifts
+to orange -> multi-compartment "morula" (6-8 ringed compartments, t~1040-1200) -> releases dozens of
+small ring "spores" (t~1300-1480) and shrinks to a small ringed cell -> the spores tile the domain.
+The composition shift happens because the three channels move with different flows and uptake is
+proportional to A_c, so the channel that grows fastest takes over.
+- Mutation `eat_split=[.34,.33,.33]` (new matter made in fixed channel proportions;
+  screens/cellfood_split.png, 8000 steps): no morula and no spores. The cells keep the
+  core/ring/crown layering while growing slowly into long rods. A 20000-step run with food0 0.3 is
+  in screens/cellfood_split_long.png (see report).
+- cellfood_split_long (food0 0.3, 20000 steps): the cells grow into a layered tube that wraps the
+  periodic domain; there are internal "nuclei" but no division. Negative.
+
+## E18. fl_morph257 pack (packs/fl_morph257, 6000 steps)
+The patch sorts into orange rings and cyan crescents (0 nucleations; 13 bodies at the end).
+Crescents often cup a ring (composites). t~790-1100: a big cyan ring closes around 1-2 orange cells
+(a vesicle with inclusions), then opens again (t~1150). Interaction motif for sprint 2.
+
+## E14 (final). Founder tournament, 96^2, 3000 steps, 10 seeds per pair
+kind0 : kind1 wins = fs1 7:3, fs2 6:4, fs3 3:7, fs4 6:4. 40 runs, nothing distinguishable from a
+coin flip (best 7/10, one-sided p~0.17). Exclusion (one kind >80% of matter) in most runs. Reading:
+with sampling transport and 25% (m,s,h) differences, competition outcome is set by stochastic
+history (which bodies collide/merge first), not by the parameters. Sprint 2 needs either larger
+effects (different kernels, speed) or a mixing rule that lets fitter matter win at contacts.
+Sprint 1 ended 16:19 UTC.

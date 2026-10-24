@@ -46,7 +46,7 @@ CFG = {
     "mut_size": 0.1,           # relative std of the mutation on (m, s, h)
     "R_scale": 0.4, "n_patches": 2, "patch": 16,
     "food0": 0.2,              # initial food per cell
-    "k_eat": 0.05, "K_eat": 0.6, "eat_n": 4, "k_dec": 0.002, "D_food": 0.2,
+    "k_eat": 0.05, "K_eat": 0.6, "eat_n": 4, "eat_split": None, "k_dec": 0.002, "D_food": 0.2,
 }
 
 WORKERS = 2
@@ -229,6 +229,8 @@ def metabolism(s):
     q = (As / CFG["K_eat"]) ** CFG["eat_n"]
     eat = CFG["k_eat"] * phi * As * q / (1 + q) / np.maximum(As, 1e-12)
     frac = A / np.maximum(As, 1e-12)
+    if CFG.get("eat_split") is not None:  # new matter made in fixed channel proportions
+        frac = np.asarray(CFG["eat_split"], float)[:, None, None] * np.ones_like(A)
     dec = CFG["k_dec"] * A
     s["A"] = A + eat * frac - dec
     phi = phi - eat + dec.sum(0)
