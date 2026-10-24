@@ -93,3 +93,35 @@ Screens are in `screens/`, and file names encode the parameter overrides.
   (collisions → clumps → clumps poisoned and re-shed swimmers). No track spans the whole run.
 - Ablation r = 0 (`packs/toxforage_abl_r0`): rho falls to 0.14 and bodies 11 → 4 by t=1200, still falling. **The population depends
   on the regrowing nutrient.** Note: the global nutrient stays ~0.9 at r 0.06; food is depleted only locally (the wakes).
+
+## Damage tests
+- labkit `--damage 100:0.5` on toxforage seed0 (`packs/toxforage_damage`) hit the largest component, which is a 416-px clump, not a
+  swimmer. The hole closed within one frame and the clump re-shed crescents within ~30 t (`damage_crops.png`). Not a clean test.
+- `damage1.py` damages ONE median-size swimmer (~40-47% of its mass erased through the centroid) and follows it next to the undamaged run.
+  toxforage seeds 0 and 2 (`screens/damage1_toxforage*.png`): the body re-forms a compact polar crescent within ~12-18 t and is
+  indistinguishable in size from the control by ~50 t (growth refills it). Seed 1: the damaged body was attached to a clump and
+  follows the control's fate. kstrail seed 1 (`screens/damage1_kstrail.png`, mass conserved): it re-forms a smaller swimmer
+  that goes through the same polarity phases as the control.
+
+## kstrail ±10% jitter (seed 0, 160², t=600; /tmp only, not packed)
+- chi_h 4.32 / 5.28, chi_a 21.6 / 26.4, rho0 0.045 / 0.055: every variant gives spontaneous swimmers that move 8.9-15.5 body lengths
+  (13-19 moving tracks). chi_a 21.6 condenses later and shows the expanding-ring stage most clearly (t 210-234).
+
+## ecology: pursuit + toxforage kinetics (predation k 0.2, yield 0.5, toxic trails for both)
+- `packs/ecology` (192², t=1000, 3 seeds): coexistence in all seeds, ~21-24 prey and ~18-20 predator bodies after t=250.
+  Predators touching prey 0.93 / 0.96 / 0.94 (null 0.30-0.34): almost every predator rides a prey crescent while depleting
+  its food (black nutrient wakes).
+- `packs/ecology_long_160` (t=2000): stable coexistence, ~14 prey and 12 predator bodies, small fluctuations, **no sustained
+  Lotka-Volterra cycles**. One overshoot peak after kinetics switch on (prey peak t~210, predators t~270), then damped.
+  Totals are strongly correlated with a lag of 20-35 t (r 0.86-0.95), but that is dominated by pairs moving as one unit.
+- Ablation k = 0 (`packs/ecology_abl_k0`, t=800): predators -95% (they die without prey), prey +1%, against prey -24% at t=800
+  with predation. **Predators depend on eating prey, and predation lowers prey abundance.**
+- The tracker merges a pursuing predator and its prey into one component (matter = both channels), so labkit tracks are short
+  and the lineage panel is not meaningful for this world.
+- Invalid control: qfrac = 0 does not remove predators (initial noise seeds predator mass, which grew 7.8x).
+
+## kstrail long run (seed 0, 192², t=1800) — `packs/kstrail_long`
+- **Swimmers are transient in the mass-conserving world.** Body count 14 → 9 (t=600) → 5 (t=1200) → 2 (t=1800). Collisions build
+  saturated triangular aggregates that never move again and absorb swimmers. Final state: 2 immotile blobs.
+- Compare `packs/toxforage_long_128` (r 0.06, t=1500): stationary 6-7 swimmers. Self-toxicity is the size control that keeps the
+  swimmer phase alive (clumps poison themselves and re-shed swimmers).
