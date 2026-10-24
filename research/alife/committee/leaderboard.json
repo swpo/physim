@@ -3,41 +3,41 @@
   "world": "kstrail",
   "rung": "L4b[L2]",
   "confidence": "high",
-  "note": "Crescent swimmers form spontaneously from noise (spot -> ring -> rupture -> crescent). The chi_h=0 ablation gives static spots. Passes dt/2 and 2x resolution with no heading lock. The swimmer phase coarsens to immotile aggregates by t=1800. L3 Weak (wake, not membrane). Known drift-bifurcation physics.",
+  "note": "FINAL (r3), unchanged since r1. Spontaneous crescent swimmers (spot -> ring -> crescent). chi_h=0 gives static spots. Passes dt/2 and 2x resolution. Coarsens by t=1800. L3 Weak. Known drift-bifurcation physics. No Laplacian-only control.",
   "pack": "threads/chemotaxis-motility/packs/kstrail",
   "thread": "chemotaxis-motility",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "chemotaxis-motility/ecology": {
   "world": "ecology",
-  "rung": "L5[L2]",
-  "confidence": "low",
-  "note": "Prey-predator pairs, contact 0.93-0.96 vs null ~0.33 (4 seeds). Predators fall 93-95% at k=0 (2 seeds). In matched reruns prey do better WITH predators: an obligate escort or parasite, not demonstrated predation. No cycles. Provisional pending the matched decomposition.",
+  "rung": "L4b[L2]",
+  "confidence": "medium",
+  "note": "FINAL (r3). Moved from L5[L2] low (r1, provisional). The matched decomposition it was provisional on ran in evopursuit, not here. Prey-predator composites, contact 0.93-0.96 vs null ~0.33. L5 Weak. Superseded by evopursuit.",
   "pack": "threads/chemotaxis-motility/packs/ecology",
   "thread": "chemotaxis-motility",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "chemotaxis-motility/toxforage": {
   "world": "toxforage",
   "rung": "L4b[L2]",
   "confidence": "medium",
-  "note": "Toxic self-waste acts as size control and keeps 9-14 swimmers with turnover to t=1500. L4c Weak (near-Supported): the judge's n=0 fork kills every body within 200 t and kd=0 gives a sea, but on one seed only. L4a Weak.",
+  "note": "FINAL (r3), unchanged since r1. Toxic self-trail acts as size control and keeps 9-14 swimmers with turnover. L4c Weak (near-Supported; n=0 fork on 1 seed). L4a Weak.",
   "pack": "threads/chemotaxis-motility/packs/toxforage",
   "thread": "chemotaxis-motility",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "chemotaxis-motility/pursuit": {
   "world": "pursuit",
   "rung": "L4b[L2]",
   "confidence": "high",
-  "note": "Non-reciprocal cross-taxis binds chaser-fleer composites (contact 0.76-0.91 vs null 0.27-0.31). A clean 2x2 ablation shows pursuit binds and evasion shapes the bond. L5 Weak: conserved species, so no population dynamics.",
+  "note": "FINAL (r3), unchanged since r1. Non-reciprocal cross-taxis binds chaser-fleer composites; the 2x2 ablation shows pursuit binds and evasion shapes the bond. L5 Weak (conserved species).",
   "pack": "threads/chemotaxis-motility/packs/pursuit",
   "thread": "chemotaxis-motility",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/phase_membrane": {
   "world": "phase_membrane",
@@ -353,21 +353,21 @@
   "world": "swimfission",
   "rung": "L6[L2]+L4b",
   "confidence": "medium",
-  "note": "Toxic-trail swimmers form from noise and divide by elongating past the cohesion range: they grow along the heading, form a waist and pinch into two equal daughters that swim apart (strips s0-s2). labkit lineage gives gen 2/2/3 with 3/6/8 persistent splits. The skeptic's strict largest-parent rerun on seed 11 gives gen 2. fission.py's gen 4/3/5 propagates max() through merges and is not credited. Reticulate: merges 56/56/45 > splits 45/39/31. Fission rate depends on Da (Da 1: 0, Da 2: 10-15, Da 4: 3), so the control still divides. The population declines 36-46%. L4c Weak (dependence by construction, no fork on this world). No dt or resolution test.",
+  "note": "FINAL (r3), rung unchanged since r2. Waist-pinch fission into equal swimming ovals. Strict largest-parent rule: 10/10/15 clean fissions and gen 3/3/3. dt/2 gives gen 3 with 12 fissions, and the first five fission times are identical. Reticulate: merges 56/56/45 > splits 45/39/31. The 'strict' strips are byte-identical to the r2 founder-fission strips, so deepest-generation strips are not shown. 6/47 events have a daughter heavier than its parent. No resolution change. L4c Weak.",
   "pack": "threads/chemotaxis-motility/packs/swimfission",
   "thread": "chemotaxis-motility",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "chemotaxis-motility/swimevo": {
   "world": "swimevo",
   "rung": "L6[L2]",
   "confidence": "low",
-  "note": "swimfission with a growth-rate allele (g_B=1.3g). B against A at t=1800, summed over 3 seeds: 21 vs 6 with selection, 5 vs 14 neutral. 17/17 pure-A parents give pure-A daughters, and 4/5 B parents give B daughters. Only about 10 bodies per run, populations halve, no ledger, and the trait is the fitness itself. The only strip shows a fission before any mutation. L7 Weak. Superseded by evopursuit.",
+  "note": "FINAL (r3), unchanged since r2. Growth-rate allele with ~10 bodies per run and no ledger. L7 Weak. Superseded by evopursuit.",
   "pack": "threads/chemotaxis-motility/packs/swimevo",
   "thread": "chemotaxis-motility",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/mca-MIRd": {
   "world": "mca-MIRd",
@@ -486,6 +486,16 @@
   "note": "FINAL (r3), new. r-two56 on build-from-food with maintenance decay 0.01 (192\u00b2). Shelled cog cells form from noise in 4/4 seeds: 3 researcher seeds plus skeptic seed 11, with 7/3/2 survivors to t=300. Skeptic radial: A0 ~1 to rho 0.55; A1 ~0 at rho 0.25-0.55 and ~0.9 at rho 0.75-1.0 (rim/out 78). labkit's band test fails (A1 rim/core 1.24) only because of a central A1 dot. Static fixed points with attrition. Survivors sit in shallow food wells (F ~0.7 at the centre vs 0.9 at 2.5 R; mean food 0.99). Decay 0.03 leaves <=1 cell. L4c Not tested: no fork, no local cut, no flux budget. One unlabelled researcher screen, no researcher pack, and no resolution check on the fed variant (base r-two56 passed dt/2 and R=15/20).",
   "pack": "threads/lenia-multichannel/screens/rf-two56_food_decay.png",
   "thread": "lenia-multichannel",
+  "round": 3,
+  "decision": "stop"
+ },
+ "chemotaxis-motility/evopursuit (+ arms_*, preytrack_*, _neutral, _nopred, _dthalf, _cost*)": {
+  "world": "evopursuit (+ arms_*, preytrack_*, _neutral, _nopred, _dthalf, _cost*)",
+  "rung": "L5[L2]+L4b",
+  "confidence": "high",
+  "note": "FINAL (r3). Arms (m=0, 160\u00b2, t=1500, 3 seeds each): prey mass t1500/t150 is B+pred 1.28-1.32, B+escort 2.43-2.54, B alone 0.36-0.54, A+pred 0.11-0.15, A+escort 1.22-1.62, A alone 0.41-0.76. Predators reach 1.75-1.88x on B and 0.20-0.32x on A. The predator's net effect is positive on B (2.4-3.5x prey alone) and lethal on A (0.15-0.36x). In the arms_B_pred_s0 sheet, ~30-35 crescents each cup a predator. Skeptic seed 11 at 96\u00b2: B+esc 2.19 > B+pred 1.55 > B alone 0.57, dt/2 holds, clip mass <=0.005. B beats A mainly by retention under consumption (5.8-6.2x), with a smaller chase gain (1.7-2.8x). Partner abundance is unmatched. L6 Weak and L7 Weak (both near-Supported): 23 clean B fission events (strict gen 3/2/4) vs 28 A->B conversions, net conversion +5 against ~90 B bodies gained, 158 B deaths replaced mostly by unclassified splits. preytrack credits near-contacts as daughters, about half of the random birth strips involve a second body, there is no identical-event twin, and the 49-px swap is about the size of a body. No resolution change. Beyond-diffusion 1. L3 Contradicted.",
+  "pack": "threads/chemotaxis-motility/packs/evopursuit",
+  "thread": "chemotaxis-motility",
   "round": 3,
   "decision": "stop"
  }
