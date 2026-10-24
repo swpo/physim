@@ -16,7 +16,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("arm"); ap.add_argument("seed", type=int)
 ap.add_argument("--kick", default="polar"); ap.add_argument("--T", type=float, default=600)
 ap.add_argument("--dx", type=float, default=0.5); ap.add_argument("--kill", type=float, default=0.5)
-ap.add_argument("--founders", type=int, default=4); ap.add_argument("--L", type=float, default=64.0)
+ap.add_argument("--founders", type=int, default=4); ap.add_argument("--kick_t", type=float, default=100.0); ap.add_argument("--L", type=float, default=64.0)
 a = ap.parse_args()
 g = evo.genome("N") if a.arm == "gated" else evo.genome("L", DhL=float(a.arm[1:]))
 dx = a.dx; N = int(round(a.L / dx)); dt = 0.02 if dx >= 0.5 else 0.01
@@ -31,7 +31,7 @@ def disk(cy, cx, r_px):
 def cells(F):
     lab, n = ndimage.label(F[0] - u0 > 0.45 * (np.sqrt(2) - u0))
     return lab, n
-rec_every = int(round(2.0 / dt)); steps = int(round(a.T / dt)); kick_step = int(round(100 / dt))
+rec_every = int(round(2.0 / dt)); steps = int(round(a.T / dt)); kick_step = int(round(a.kick_t / dt))
 frames_u, frames_h, times, kicks, kills = [], [], [], [], []
 t0 = time.time()
 for k in range(steps + 1):
@@ -62,7 +62,7 @@ for k in range(steps + 1):
         S["F"][:, msk] = 0.0; S["F"][:2, msk] = np.array([u0, u0h])[:, None]
         kills.append((k * dt, float(cy), float(cx)))
 os.makedirs("assay", exist_ok=True)
-tag = f"{a.arm}_{a.kick}_s{a.seed}" + (f"_dx{dx}" if dx != 0.5 else "")
+tag = f"{a.arm}_{a.kick}_s{a.seed}_k{int(a.kick_t)}_kill{a.kill}" + (f"_dx{dx}" if dx != 0.5 else "")
 np.savez_compressed(f"assay/{tag}.npz", u=np.array(frames_u), h=np.array(frames_h), t=np.array(times), dx=dx)
 json.dump(dict(args=vars(a), kicks=kicks, kills=kills, wall=time.time() - t0), open(f"assay/{tag}.json", "w"))
 print(tag, "wall", round(time.time() - t0), "kicks", len(kicks), "kills", len(kills))

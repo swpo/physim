@@ -43,7 +43,8 @@ for k in range(1, len(T)):
             divs.append(dict(t=float(T[k]), parent_h=hp, daughters_h=hk, cy=float(cy), cx=float(cx)))
         else:
             hc = float(Hh[k][B == kids[0]].mean())
-            if (hp > 1.0) != (hc > 1.0) and abs(T[k] - 100) > 6:
+            kt = meta["args"].get("kick_t", 100.0)
+                if (hp > 1.0) != (hc > 1.0) and abs(T[k] - kt) > 20:
                 conv.append(dict(t=float(T[k]), h_before=hp, h_after=hc, cy=float(cy), cx=float(cx)))
     prev = cur
 on_divs = [d for d in divs if d["parent_h"] > 1.0]
