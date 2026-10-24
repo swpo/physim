@@ -219,3 +219,13 @@ than predator-free prey (586-769), so the allele may turn the predator into a ne
   - **The committee's suspicion is right: B + escort > B + predator > prey alone.** Being chased is itself a large benefit, B gains
     more from it than A, and consumption subtracts from it (fatal for A, tolerable for B). The sweep is exploitation of the chase, not
     escape from predation.
+- Full arm table: `packs/arms_summary.md`. A alone 0.41 / 0.56 / 0.76, B alone 0.36 / 0.46 / 0.54 (B costs a little without a pursuer).
+  Chase benefit: escort / alone ≈ 2.6x (A), 5.4x (B). Consumption: predator / escort ≈ 0.09 (A), 0.53 (B).
+- Prey speed (`preyspeed.py`, t ≥ 300): alone 0.27; A + escort 0.32; B + escort 0.41; with consuming predators 0.53-0.57 px/t.
+- Toxicity-off probe (pdeath 0, seed 0, t=1000): prey fill the whole box (20x mass, one body), with or without escorts. Uninformative.
+- `preytrack.py` on evopursuit seeds 0-2 (t=1500): clean fissions 6 / 7 / 12; B births by clean fission 10 / 14 / 22 vs A→B conversions 10 / 8 / 10
+  (B→A 7 / 7 / 9); off-kind daughters 1 / 0 / 0; B deaths 55 / 46 / 57; strict max generation 3 / 2 / 4. Random deepest-gen B-birth strips show
+  crescents pinching into two.
+- Showcase: `movies/showcase.mp4` (192², seed 0): A32/B0 at t=200 → A8/B7 at t=750 → A0/B45 at t=1460, which also reproduces the sweep on a larger domain.
+
+Sprint 3 ended ~20:15 UTC.

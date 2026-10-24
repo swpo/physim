@@ -6,7 +6,7 @@
 | `kstrail` | **L4b[L2]** (high confidence); L3 Weak | Spontaneous self-propelled crescent swimmers from noise. A fast attractant holds the body, and a slow self-secreted repellent pushes it off its own wake. Formation route: spot → expanding ring → rupture → crescent. | `packs/kstrail`, `kstrail_abl_noh` (chi_h=0: static spots), `kstrail_dthalf` |
 | `toxforage` | L4b[L2]; L4c Weak (near-Supported); L4a Weak | The trail is also toxic waste and growth needs a regrowing nutrient. A stationary population of swimmers with turnover: clumps poison themselves and re-shed swimmers. | `packs/toxforage`, `toxforage_abl_r0` |
 | `swimfission` | **L6[L2]** + L4b (medium; reticulate: merges outnumber splits) | Fed swimmers divide by waist pinching once they outgrow the attractant's range (Da 4 → 2). | `packs/swimfission`, `fission_swimfission_s*` |
-| `evopursuit` | **L5[L2]** + L4b (medium); L6 Weak; L7 Weak (near-Supported) | Prey swimmers carry a heritable evasion allele. It sweeps in 3/3 seeds with predators, never with a neutral allele or without predators. Sprint 3 decomposes *why* (see REPORT_r3). | `packs/evopursuit*`, `packs/arms_*` |
+| `evopursuit` | **L5[L2]** + L4b (medium); L6 Weak; L7 Weak (near-Supported) (r2 consensus; r3 not yet reviewed) | Prey swimmers carry a heritable evasion allele. It sweeps in 3/3 seeds with predators, never with a neutral allele or without predators. Sprint 3: the allele exploits the chase (escorts help more than consuming predators) rather than escaping predation. | `packs/evopursuit*`, `packs/arms_*` |
 | `pursuit`, `ecology` | L4b[L2], L5 Weak / low | Non-reciprocal cross-taxis binds chaser-fleer pairs. The ecology's "predation lowers prey" claim was withdrawn after the committee's matched control. | `packs/pursuit*`, `packs/ecology*` |
 
 ## Mechanisms that worked (with the ablation that shows it)
@@ -21,7 +21,10 @@
 5. **Own-density cooperative growth purifies bodies**, so alleles confined in a body are inherited through fission (borrowed from active-droplets).
 6. **Selection through behaviour, decomposed in sprint 3.** The evasion allele does not "escape predation". Being chased by
    non-consuming escorts more than doubles prey mass, and B gains more than A. Consumption then subtracts (A collapses, B survives).
-   MECH_TOX
+   18 fixed-allele runs: prey mass ×2.4-2.5 (B + escort) > ×1.3 (B + predator) > ×0.4-0.5 (B alone), and A + predator collapses.
+   Being chased raises prey speed (0.27 → 0.41 px/t for B with escorts). The benefit plausibly comes from leaving the self-toxic wake and
+   reaching fresh food, but that causal step was not isolated. In the evolving runs, B births by clean fission exceed mutation conversions
+   only 1.6x (46 vs 28, 3 seeds), so this is selection with real but partial fission heredity (L7 Weak).
 
 ## Mechanisms that failed
 - Plain Keller-Segel with clipping (mass loss); explicit cubic pressure (NaN); nutrient chemotaxis alone (static lattice or extinction);
@@ -45,4 +48,11 @@
 - Identical-event neutral twins with a shared mutation schedule (fisim) and per-event conversion accounting from the start.
 
 
-SECTION_SHOWCASE
+## Showcase movie: `movies/showcase.mp4`
+**evopursuit, seed 0, 192², t = 0-1500 (301 frames, 20 fps, fixed colours).** A uniform noisy soup of prey (cyan) and predator (magenta)
+material condenses into self-propelled crescent swimmers within ~150 time units. Predators chase prey and ride in their concave rears. The
+dark green wakes are food the prey have eaten; prey grow, poison themselves with their own trail, and divide by pinching. The ancestral A
+prey are eaten down (32 bodies at t=200, 8 at t=750) while mutant prey carrying the B evasion allele (orange) appear by rare patch
+mutations, divide true and spread, until at t≈1460 there are 45 B prey and no A. The strip at the bottom shows prey-A, prey-B and predator
+mass. Watch for the reversal: once prey flee hard enough, the predator population grows *with* them. The decomposition in REPORT_r3 shows
+that the chase itself is what B exploits.
