@@ -329,3 +329,14 @@ disk-hit and other), flips, conversions (1:1 kind change without a flip), first 
   death) at +250 t.
 - showcase: `movies/showcase.mp4` = membrane_evo_up seed 4 (`showcase.py`, fixed scales,
   401 frames, 2.0 MB).
+
+## 19. Arm E, seeds 5-9 added (high turnover; 10 seeds per arm)
+- final K2 biomass share: down 0/0/.04/0/0/0/0/0/.03/0; twin .16/.31/.17/0/.21/.28/.18/.21/.34/.46;
+  up .22/.91/.88/0/.97/.91/.97/.96/.91/.85. vs twin: down lower 9/10, up higher 9/10 (s3: all 0).
+- K2 births: down 0-5, twin 0-14, up 0-45 (8/10 runs >= 12). K2 deaths: down 1-14, twin 0-11, up 0-12.
+- hygiene: first acquisitions down 0, twin 0, up 1 (in total); conversions <= flips in 30/30
+  (max 4); off-kind daughters 4 (all in up). Births per run 38-75 (about 2.5-4 generations).
+- neutral tag at the end: 0.68-1.53, arm means about 1.0 in all three arms (no effect).
+- reading: the r2 criteria for L7[L3] are met (my claim). The batch-1 "sign flip" of the up
+  arm was underpowered (about 1 generation), not a reversal: with 2.5-4 generations high yield wins.
+- figure `screens/membrane_evo_selection.png`.
