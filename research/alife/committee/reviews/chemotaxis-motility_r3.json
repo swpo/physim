@@ -1,0 +1,91 @@
+{
+ "decision": "stop",
+ "headline": "STOP: the program ends. The lab's clearest eco-evolutionary law: a heritable flight allele flips the sign of a predator's effect on prey. In 18 matched fixed-allele arms (3 seeds, reproduced by the skeptic at seed 11), consuming predators are lethal to A prey (x0.15-0.36 of prey alone) and a net benefit to B prey (x2.4-3.5). B both gains more from the chase and loses far less to consumption, so the report's 'does not escape predation' is withdrawn. The judges reviewed a stale snapshot. The ledger pushed afterwards traces clean B fissions to strict generation 2-4, so evopursuit moves to L6[L2]+L5+L4b (L6 low). L7 stays Weak (near-Supported): mutation conversions are symmetric (28 A->B vs 23 B->A; on the director's seed-11 rerun, -2 net while B goes from 0 to 22 bodies), so contagion is excluded. But clean B births exceed conversions only 1.6x, most B bodies arise by unclean splits, and no identical-event twin was run.",
+ "promise": 7,
+ "message_to_researcher": "Final verdict: STOP. The program ends. The judges reviewed your 19:58 snapshot; I read REPORT_r3, the ledger, the strips, the showcase and the 20:23 robustness commit, and arbitrated from those. Final rungs:\n- evopursuit: L6[L2]+L5+L4b. L5 is high confidence: the 18 matched arms give a per-kind sign table, reproduced on seed 11. L6 is Supported at low confidence: strict generation 3/2/4, and the random B-birth strips show crescents pinching in two.\n- evopursuit L7 stays Weak (near-Supported). Conversions are symmetric (28 vs 23), and my seed-11 rerun sweeps to B22 with net conversion -2, so contagion is excluded. But clean B births exceed conversions only 1.6x, most B bodies come from unclean splits, fusion is unaudited, and there is no identical-event twin.\n- swimfission: L6[L2]+L4b, medium. Strict generation 3/3/3, and dt/2 passes on seed 0.\n- kstrail, pursuit and toxforage: L4b[L2]. ecology drops to L4b[L2] (L5 Weak).\nOne correction for the record: 'does not escape predation' is withdrawn. Your own numbers show B keeps 52-53% of its escorted mass under consumption, against 8-9% for A. B gains more from the chase and loses far less to consumption. Our r2 wording invited that error.\nBeyond-diffusion stays at 1, because the Laplacian twin was never run. Thank you for an honest final sprint and a strong showcase.",
+ "leaderboard_rows": [
+  {
+   "world": "evopursuit",
+   "rung": "L6[L2]+L5+L4b",
+   "confidence": "low",
+   "note": "FINAL (r3). L5 high: 18 matched fixed-allele arms (160^2, t=1500, seeds 0-2, m=0). Prey mass t=1500/t=150 (arms_summary.md): A+pred 0.11-0.15, B+pred 1.28-1.32, A+escort 1.22-1.62, B+escort 2.43-2.54, A alone 0.41-0.76, B alone 0.36-0.54. Predators end at 0.20-0.32x on A and 1.75-1.88x on B. The predator's net sign on prey flips with the allele, and the skeptic's seed-11 96^2 rerun reproduces the order. B gains about 2x more from being chased and keeps about 6x more of its mass under consumption, so 'does not escape' is withdrawn (confounded by partner abundance). L6 Supported, low (director, from the post-snapshot ledger preytrack_evopursuit_s0-2): clean B fissions 5/7/11, strict max generation 3/2/4 (seed 11: 2), random deepest-generation strips show crescents pinching in two, 1 off-kind daughter in 50. Most B bodies come from unclean splits (B deaths 41-57 per run). L7 Weak (near-Supported): conversions are symmetric (28 A->B vs 23 B->A; director seed 11 at 128^2: B 2->22 bodies over t=600-1500 at net -8). But only 0.55-0.76 conversions per event (bodies hit 35-47 px, inside the ~50 px swap), clean births are only 1.6x conversions, there is no identical-event twin and no Price split, and deaths are not split eaten vs toxin. L3 Contradicted. Numerics: dt/2 on 1 seed, k +-10% on 1 seed, no resolution test, clip mass unlogged. Beyond-diffusion 1.",
+   "pack": "threads/chemotaxis-motility/packs/arms_B_pred_s0"
+  },
+  {
+   "world": "swimfission",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "FINAL (r3). Toxic-trail swimmers from noise divide by elongating past the attractant's cohesion range (Da 2), forming a waist and pinching into equal daughters that swim apart (strips s0-s2). The strict largest-parent rule gives 10/10/15 clean fissions and max generation 3 in 3/3 seeds. The sprint-2 depths of 4/3/5 were inflated. dt/2 (seed 0) gives 12 clean fissions and generation 3, so the fission rate is not an integrator artifact on that seed. Reticulate: merges 56/56/45 > splits 45/39/31. The Da 4 control still divides. L4c Weak. No resolution test, although division is set by a ~4.5 px length.",
+   "pack": "threads/chemotaxis-motility/packs/swimfission"
+  },
+  {
+   "world": "kstrail",
+   "rung": "L4b[L2]",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. Crescent swimmers form spontaneously from noise by spot -> ring -> rupture -> crescent, with a fast attractant body and a slow self-secreted repellent wake. The chi_h=0 ablation gives static spots. Passes dt/2 and 2x resolution with no heading lock. The swimmer phase coarsens to immotile aggregates by t=1800. L3 Weak (wake, not membrane). Known drift-bifurcation physics (Krischer-Mikhailov). The Laplacian-only twin was never run (beyond-diffusion 1).",
+   "pack": "threads/chemotaxis-motility/packs/kstrail"
+  },
+  {
+   "world": "pursuit",
+   "rung": "L4b[L2]",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. Non-reciprocal cross-taxis binds chaser-fleer composites (contact 0.76-0.91 vs null 0.27-0.31). A 2x2 ablation shows pursuit binds and evasion shapes the bond. L5 Weak: both species are conserved, so there are no population dynamics. Known physics (Soto-Golestanian chaser-fleer).",
+   "pack": "threads/chemotaxis-motility/packs/pursuit"
+  },
+  {
+   "world": "toxforage",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Toxic self-waste acts as size control, keeping 9-14 swimmers with turnover to t=1200: clumps poison themselves and re-shed swimmers. L4c Weak (the n=0 fork kills all bodies within 200 t, but on one seed; the population is toxin-limited, not food-limited). L4a Weak (damage refilled by growth).",
+   "pack": "threads/chemotaxis-motility/packs/toxforage"
+  },
+  {
+   "world": "ecology",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3): moved from L5[L2] low (r1) to L4b[L2] with L5 Weak, unanimously under v2. Prey-predator composites (contact 0.93-0.96 vs null ~0.33). Predators fall 93-95% at k=0. The sign of the effect on prey was never established in this world: matched reruns showed prey doing better with predators, and the decomposition was run on evopursuit, not here. No cycles. Superseded by evopursuit.",
+   "pack": "threads/chemotaxis-motility/packs/ecology"
+  },
+  {
+   "world": "swimevo",
+   "rung": "L6[L2]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r2. swimfission with a growth-rate allele: about 10 bodies per run, no ledger, and the trait is fitness itself. L7 Weak. Superseded by evopursuit.",
+   "pack": "threads/chemotaxis-motility/packs/swimevo"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "For the record, a candidate lab-level law to test jointly with your motile_trait_tox result (mobility selected up under self-toxin). In chemotaxis-motility's fixed-allele arms, harmless non-consuming chasers multiply prey mass 1.6-6.7x over prey alone and raise prey speed from 0.27 to 0.41 px/t. With prey self-toxin off, prey become one sea (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_summary.md, packs/arms_tox0_Besc_s0/sheet.png, REPORT_r3.md). If the escort benefit is escape from the body's own toxic wake, both threads share one cause. A future lab should run one design that measures toxin exposure at body matter against imposed speed."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "For fl_predator, use the consumptive vs non-consumptive decomposition: fixed kinds x {consuming predator, non-consuming immortal escort, no partner}, matched by seed over 3 seeds (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_*, arms_summary.py). Two lessons. First, compare kinds on each component, not only the ordering within one kind: a within-kind ordering led to a wrong 'not escape' headline. Second, match partner abundance: escorts stay at 1.0x while consuming predators run 0.2-1.9x."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "ad7 has about 40 r=5 patch flips against 6-9 splits per run. Score whole-body flips the way chemotaxis-motility's ledger allows: net conversion flux into the winning kind against its final count, plus the fate of founder lineages from each flip direction. In evopursuit, 28 A->B founders produced the sweep while 23 later B->A back-mutants founded no lasting A lineage (A=0 at t=1500 in 3/3 seeds). That is an in-run reciprocal invasion test, cheaper than an identical-event twin (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/preytrack_evopursuit_s*.json, field 'mutations' = t, y, x, body area, B fraction before and after; preytrack.py)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Two transferable results. (1) The reciprocal-flip ledger (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/preytrack.py, packs/preytrack_evopursuit_s*.json) separates selection from mutation pressure when alleles flip whole bodies. (2) Self-toxic waste turns a domain-filling sea into individuals: evopursuit's prey with toxin death off fill 160^2 completely (packs/arms_tox0_Besc_s0). This is a cheap cap for mcf/mcfd regimes that fill the grid without food limits."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Confirmation of your neck-stranding law from the opposite side. evopursuit's allele fraction is advected with the prey body's own volume-filling flux (allele_flux_div in origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/worlds/evopursuit/world.py), and motile dividing prey breed true: 1 off-kind daughter in 50 clean births over 3 seeds (packs/preytrack_evopursuit_s*.json). A marker carried by the body flux is not left at the division plane."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "For a future lab closing evopursuit's L7, borrow three things. (1) flow-lenia's own-RNG identical-event twin (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/worlds/fl_forager_gene2/world.py, mutate()), which solves 'mutation sites depend on state': draw the schedule from a dedicated RNG and apply events as no-ops where there is no prey. (2) The Price split (between-body, within-body and fusion) in flow-lenia scripts/audit_gene.py. (3) fisim r3's per-daughter allele purity at t_pinch+10 and +30 (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/screens/assay_hcrops_s0.png). preytrack.py currently reads the daughter's kind at its first frame."
+  }
+ ],
+ "rubric_issues": [
+  "Process: all three judges reviewed mirror commit 68a2e3e (19:58 UTC), but REPORT_r3, the prey ledger, the B-birth strips, showcase.mp4, strict-rule swimfission, dt/2 and k +-10% landed at 20:11-20:23 (cb370be, 0196106). This is the second time this round, after flow-lenia r3. Snapshot only after REPORT_rN.md exists, or the director must diff the thread branch against the judged commit before arbitrating.",
+  "L7 with a symmetric whole-body mutation operator: 'births far exceed conversions' (the r2 pass criterion) is the wrong test. Require four things: the net conversion flux into the winning kind against its final count; the fate of founder lineages from each flip direction (reciprocal invasion); a Price split that includes fusion relabelling; and the operator's footprint relative to the median body hit (here a ~50 px swap against 35-47 px bodies). Also require total births per kind, clean and unclean, so that the ledger closes.",
+  "L5 decomposition: a within-kind ordering of partner arms (escort >= predator > alone) does not show 'exploitation, not escape'. Compare kinds on each component, and match partner abundance across arms. The committee's own r2 pass wording was at fault.",
+  "Leaderboard consistency: ad5-evolve's L7[L2] low (colonization only, 0 deaths, unmatched neutral) passes a weaker bar than evopursuit's L7 Weak (selective deaths, ancestor-matched neutral in 3/3, symmetric conversions, fixed-allele fitness assays). A future lab should regrade every L7 row under one rule.",
+  "labkit: at 12-t sampling, fast composites break motion and lineage readouts. In the B_pred arms max speed reads 0 and tracks are 16 frames or shorter, and species-aware lineage gives 0 persistent splits while prey multiply 3-6x. Port the 2-t strict largest-parent rule from preytrack.py/fission.py into labkit."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/chemotaxis-motility_r3.md"
+}
