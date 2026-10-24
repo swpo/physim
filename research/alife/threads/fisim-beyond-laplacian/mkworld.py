@@ -10,6 +10,7 @@ ap.add_argument("id"); ap.add_argument("parent"); ap.add_argument("mutation"); a
 ap.add_argument("--n", type=int, default=160); ap.add_argument("--spf", type=int, default=100)
 ap.add_argument("--soup", type=int, default=8); ap.add_argument("--acts", default=None)
 ap.add_argument("--doc", default="")
+ap.add_argument("--dress", default=None, help="json list of channel indices that get the blobkit dressed poke (default: all id channels driven by the poked act)")
 ap.add_argument("--channels", default=None)
 ap.add_argument("--render", default=None, help="json list of state indices returned by fields()")
 a = ap.parse_args()
@@ -19,6 +20,7 @@ na, nc = len(g["acts"]), len(g["chans"])
 chans = json.loads(a.channels) if a.channels else [f"u{i}" for i in range(na)] + [f"x{c}" for c in range(nc)]
 acts = json.loads(a.acts) if a.acts else list(range(na))
 render = json.loads(a.render) if a.render else list(range(na + nc))
+dress = json.loads(a.dress) if a.dress else None
 src = f'''"""{a.id}: extended PhySim/blobkit genome world (thread fisim-beyond-laplacian).
 
 {textwrap.fill(a.mutation, 88)}
@@ -48,6 +50,7 @@ META = {{
 SOUP_N = {a.soup}
 SOUP_ACTS = {acts}
 RENDER = {render}            # state indices shown/measured by labkit (all others are hidden)
+DRESS = {dress}            # channels given the dressed poke at t=0 (None = all id channels; others start at vacuum)
 {core}
 
 def init(seed, size):
@@ -74,7 +77,7 @@ def init(seed, size):
         tmp = np.zeros_like(F)
         poke(tmp, 0, p[0] - 0.5 * np.sin(ang), p[1] - 0.5 * np.cos(ang), 1.2, 3.0, dx)
         for c, ch in enumerate(g["chans"]):
-            if ch["g"] == "id" and W[c, a] != 0:
+            if ch["g"] == "id" and W[c, a] != 0 and (DRESS is None or c in DRESS):
                 F[na + c] += W[c, a] * tmp[0]
     F[:na] += 0.01 * rng.standard_normal(F[:na].shape)
     return S

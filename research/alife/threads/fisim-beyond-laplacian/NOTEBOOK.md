@@ -180,3 +180,20 @@ waste is trapped by the cell's own membrane). Neutral control `xcell-evo-neutral
 otherwise identical (same noise, same loss process). Screens (T=600, seed 0) of both: stable
 15-19 cells with turnover. Packs: 3 seeds each, T=800, 160². `kinds.py` now also counts
 deaths by kind and the mean on-fraction over the last quarter.
+
+### Committee review r1 (17:03): CONTINUE, promise 6. Re-plan.
+
+Corrections accepted and verified in code:
+- `muts.cellwaste` gated the waste by channel 3 = **cargo** (`perm [6, 3, bw]`), not by the
+  membrane (channel 2). xcell-turn's "membrane-trapped waste" claim is **retracted**.
+- `mkworld` dressed every id channel driven by the body, so founders started with planted
+  cargo, global, bdep **and waste (q=1.2)**. The xcell-turn die-off was poisoned founders.
+- First split of a planted founder doesn't count: xcell-div / xcell-her have one counted generation.
+- The xcell-evo packs started at 16:50 also planted waste and h. **Stopped, not used.**
+Fixes: `xgenome` perm/taxis accept channel **names** (parity unchanged, 3.8e-14);
+`mkworld --dress` restricts the t=0 dressed poke to v, w (all other channels start at vacuum).
+
+New main experiment (committee design): `evo.py` genome = xcell-her − hdep + membrane-gated waste q
+(named channels). Arms: **S** gated h, marker adds cargo production W[c,h]=wch;
+**N** gated h, neutral; **L** no gate on h, Dh lowered. Variation: no planted h; Poisson
+cell-scale h kicks (σ 1.5, amp 2.5) anywhere in the box (`mkevo2.sh`, KICK_RATE per time unit).

@@ -42,6 +42,7 @@ splits = {"on->on+on": 0, "on->on+off": 0, "on->off+off": 0, "off->off+off": 0, 
 births = 0
 sw_events = []
 deaths = {"on": 0, "off": 0}
+ev_t = {"split": [], "death": []}
 for k in range(1, len(cells)):
     A, B = cells[k - 1], cells[k]
     ch = {}
@@ -55,6 +56,7 @@ for k in range(1, len(cells)):
     for q, pid in enumerate(A["ids"]):
         if pid not in ch:
             deaths["on" if A["on"][q] else "off"] += 1
+            ev_t["death"].append(float(fr[k] * dtf))
     for pid, kids in ch.items():
         pk = A["on"][A["ids"].index(pid)]
         if len(kids) == 1:
@@ -65,6 +67,7 @@ for k in range(1, len(cells)):
                 ys, xs = np.nonzero(m)
                 sw_events.append(dict(frame=int(fr[k]), t=float(fr[k] * dtf), to_on=bool(kids[0]), cy=int(np.median(ys)), cx=int(np.median(xs))))
         else:
+            ev_t["split"].append(float(fr[k] * dtf))
             non = sum(kids)
             if pk:
                 splits["on->on+on" if non == len(kids) else ("on->off+off" if non == 0 else "on->on+off")] += 1
@@ -73,6 +76,7 @@ for k in range(1, len(cells)):
 t = fr * dtf
 out = dict(pack=d, n_on_start=n_on[0], n_off_start=n_off[0], n_on_end=n_on[-1], n_off_end=n_off[-1],
            switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births, switch_events=sw_events, deaths=deaths,
+           window_200={str(int(w0)): dict(splits=sum(w0 <= x < w0 + 200 for x in ev_t['split']), deaths=sum(w0 <= x < w0 + 200 for x in ev_t['death'])) for w0 in np.arange(0, t[-1], 200)},
            on_fraction_mean_last_quarter=float(np.mean([a / max(a + b, 1) for a, b in zip(n_on, n_off)][3 * len(n_on) // 4:])))
 print(json.dumps(out))
 json.dump(out | {"t": t.tolist(), "n_on": n_on, "n_off": n_off}, open(f"{d}/kinds.json", "w"))
