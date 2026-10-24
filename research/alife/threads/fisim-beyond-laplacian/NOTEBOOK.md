@@ -111,3 +111,19 @@ the initial cells get an h poke.
 generation 2, 16 cells at T=400, and they stay motile (23 tracks ≥1 body length, max 8.7)
 (`packs/xcell-div-nogate`). The division engine is the RD cargo feedback + global cap;
 the gate roughly doubles the number of divisions (13-15 vs 8) and stops motility.
+
+**A2 ablation xcell-div-nofb (kc=0)**: 8 cells, 0 splits, slow motility (3.6 body
+lengths). Cargo→body feedback is necessary for division. (`packs/xcell-div-nofb`)
+
+**D2 damage xcell-div, 26% of the largest component at t=200** (`packs/xcell-div-damage`):
+the largest component is the stuck rod; after the cut it resolves into round cells and the
+count goes 21→22, the rest unaffected. Not repair of the original; damage unjams a rod.
+
+**S13 neutral marker (kb=0.25, kh=0, + xcell-div drive kc=0.25)**: on-cells divide and
+both daughters keep h; off-cells divide and stay off (`screens/her_kb0.25_kh0.0_kc0.25.png`).
+Promoted as `xcell-her` (+ `xcell-her-sel`, kh=0.1). `kinds.py` tracks cells between
+rendered frames and classifies each cell by max h > 0.5.
+xcell-her seed 0: on 6→12 (6 on→on+on splits), off 4→9 (5 off→off+off splits), 0 kind
+switches, 0 mixed splits (`packs/xcell-her/seed0/kinds.png`, `kinds.json`). Discrete kinds
+breed true through two generations. No variation arises (no switching) and with kh=0
+there is no selection, by construction.
