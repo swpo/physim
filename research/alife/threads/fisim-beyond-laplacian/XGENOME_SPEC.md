@@ -23,7 +23,8 @@ explicit anti-diffusion bounded by D_f and is stable together with the exact ste
 Minimal "cell" recipe (worlds/xcell-*): m4 + one band/CH membrane channel (W=2, τ=2,
 D=0) + one cargo channel (W=1, τ=5, D=4) gated by the membrane (β=5). Add
 K[u,cargo] = −0.25 and a global channel (τ=10, D=100, K=1) for division with a population
-cap; add a gated waste channel (τ=40, D=2, K=+0.3) for turnover.
+cap. (Sprint 1 also listed "a gated waste channel for turnover". That is RETRACTED: the
+xcell-turn waste was gated by the cargo channel, not by m, and was planted in the founders.)
 
 ## v0.1 (sprint 2): named channels, and the xcell-evo genome
 
