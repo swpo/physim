@@ -23,7 +23,7 @@ Modifiers (consensus): spontaneity 3 (1-2 for lysis, whose kinds are planted), r
 
 ## Judges and arbitration
 
-**Biologist (promise 5).** No rerun. Extracted all 201 frames of `K_sel_s0.mp4`. The zoom shows real propagule budding: an intact kind-0 parent buds compact daughters at t≈144, 168, 204, 300 and 396, a mode no other thread has. Seen as organisms, though, the selected individuals are bare, porous clouds, and the sweep is a race for empty food. The label-neutral mutant cells had 0 births in 164 cell-samples, against about 4 expected (the rare-kind handicap of conformity). Read lysis as L5 Supported (low): contact interference, close to bacteriocin killing.
+**Biologist (promise 5).** No rerun. Extracted all 201 frames of `K_sel_s0.mp4`. The zoom shows real propagule budding: an intact kind-0 parent buds compact daughters at t≈144, 168, 204, 300 and 396, a mode no other thread has. But the selected individuals are bare, porous clouds, and the sweep is a race for empty food. Neutral mutant cells had 0 births in 164 cell-samples, against about 4 expected. Read lysis as L5 Supported (low): contact interference, close to bacteriocin killing.
 
 **Skeptic (promise 5).** Wrote their own driver: seed 11 at dt=0.02 to t=200, and at dt=0.01 to t=80.
 - Seed 11 founds no kind-1 cell.
@@ -37,12 +37,12 @@ Alone in calling L5 Weak: the lysis branch draws extra random numbers only when 
 - The kind-1 share is flat or falling through 280 t of turnover.
 - REPORT §5 leaves out the dt=0.015 and dt=0.01 minority outcomes recorded in NOTEBOOK T4.
 - Credits the label-neutral arm as an exact ancestor copy.
-- Warns of rule accretion: the membrane, heredity, membrane persistence and predation are all hand-written, and the one emergent property turned out to be numerical.
+- Warns of rule accretion: four hand-written rules, and the one emergent property turned out to be numerical.
 
 **Arbitration.**
-1. *L5, Supported (2 judges) vs Weak (skeptic).* I compared `P_half_s1_types.png` with `P_half_nolys_s1_types.png`. The skeptic is right that seed 1 diverges by t=28, before cells meet. At t=28 the lysis arm has only loose M clumps, while the no-lysis arm has three ringed cells. A cyan no-lysis founder sprays at t≈82-110 and fills the box. Some of the divergence may be lysis acting inside mixed early clumps, and some is RNG; the arms cannot separate the two. Two things weigh the other way. The sign holds in 3/3 seeds with a large effect, and the v2 L5 match (same grid, duration and seeds, with signs reported) is met. And in the lysis arm the cyan founder sprays first (t≈136) yet pink still takes the box, which fits the killing of incoming spores. **Verdict: Supported, low, flagged as the dt=0.02 map.**
+1. *L5, Supported (2 judges) vs Weak (skeptic).* I compared `P_half_s1_types.png` with `P_half_nolys_s1_types.png`. The skeptic is right that seed 1 diverges by t=28, before cells meet: loose M clumps in the lysis arm, three ringed cells without lysis. Lysis inside mixed early clumps and RNG can both explain this, and the arms cannot separate them. Two things weigh the other way. The sign holds in 3/3 seeds with a large effect, and the v2 L5 match (same grid, duration and seeds, with signs reported) is met. And in the lysis arm the cyan founder sprays first (t≈136) yet pink still takes the box, which fits the killing of incoming spores. **Verdict: Supported, low, flagged as the dt=0.02 map.**
 2. *[L3] qualifier.* In `seed2/sheet.png` the rings are gone by t≈104, while selection runs from t≈70 to 400. **Contradicted.**
-3. *L7: Weak, unanimous.* The kind mix changes only during colonization, and deaths are not reported. The headline claim that this "meets the lab's L7 bar at dt=0.02" does not hold under v2, even on that map.
+3. *L7: Weak, unanimous.* The kind mix changes only during colonization, and deaths are not reported. The headline's "meets the lab's L7 bar at dt=0.02" does not hold under v2, even on that map.
 4. *Neutral arm.* It is the correct v2 neutral. Because conformity penalizes rare kinds, the next report must give births per founded cell, founding time and founding size by kind.
 5. *Numerics.* I checked the skeptic's `sel_s11_dt02.json`: the displacement crosses 0.5 exactly when the mean cell size passes about 70 particles (t=60). Numerical validity is 0 for the whole thread.
 
