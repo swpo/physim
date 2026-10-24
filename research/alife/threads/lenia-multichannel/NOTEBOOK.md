@@ -341,3 +341,8 @@ static lattice (30-34 cells, food 0.52-0.57), the same tipping as H2. Mean g in 
 0.13/0.23/0.25 vs neutral -0.33/0.38/0.31; the fraction of cells with g>0.3 is ~1/3 in selection
 vs 2/56, 49/86, 51/95 in neutral. No adaptive signal. Faster construction still brings the
 colony to confluence, and then turnover stops.
+
+**H10. Crowding-dependent maintenance (CROWD 0.5, blur 12 px, base decay 0.02, two-sided yield
+gene, 128², 8000 steps, seed 0 only).** Selection: a steady ~19-20 cells from step 2000 on, food
+rising to 0.57, mean g +0.15-0.24, so probably static again. Neutral: cycles, extinct at step 8000.
+Inconclusive with one seed. CROWD is implemented (default 0) for sprint 3.

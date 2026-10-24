@@ -52,6 +52,8 @@ purged; the right one is taken over by a blue harmful lineage.
   the ecology freezes before selection acts.
 - A trade-off trait (yield and decay both scaled by e^g) also tips 3/3 selection runs into the
   lattice, with no trait difference from neutral (H9).
+- Crowding-dependent maintenance (one seed): the selection run still settles to a steady ~20
+  cells; inconclusive (H10).
 - Parameter-localized trait (kernel growth centres shifted by g): one run, mean g rose to +0.6 and
   then the population collapsed. Within the neutral range; exploratory (H8).
 - Competition at decay 0.04: the neutral baseline goes extinct by step 3300 (3/3), and the
