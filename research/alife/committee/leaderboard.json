@@ -88,5 +88,45 @@
   "thread": "autopoiesis",
   "round": 1,
   "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-turn": {
+  "world": "xcell-turn",
+  "rung": "L6[L3]",
+  "confidence": "medium",
+  "note": "1-2 surviving planted founders re-populate the box through gen 5/6/4 (3 seeds); two judges' seed-11 reruns reach gen 4. But the waste is gated by cargo through an index bug (perm [6,3,5.0]), and the membrane-gated version goes extinct by t~32 (2 reruns). Founders start poisoned (q=1.2 planted). No deaths after t~30 and the lattice is static after t~350.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-a": {
+  "world": "xcell-a",
+  "rung": "L4b[L3]",
+  "confidence": "medium",
+  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside) that holds a fast D=4 cargo: centre 1.24 vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-a",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-her": {
+  "world": "xcell-her",
+  "rung": "L3",
+  "confidence": "high",
+  "note": "Two planted kinds breed true: 46 divisions (3 seeds plus a seed-11 rerun), 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage (3 judges, seeds 0 and 11) while body and division are unchanged. kb -10% breaks it. No matched Laplacian control yet. L6 Weak (max gen 2/2/1 from planted founders, saturates by t~200). L7 Contradicted (planted kinds, no variation).",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-her",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-div": {
+  "world": "xcell-div",
+  "rung": "L3",
+  "confidence": "high",
+  "note": "Membrane-ringed cells divide by Gray-Scott-class RD (8 splits even with the gate off): 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-div",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
  }
 }
