@@ -18,16 +18,21 @@
   "smooth": 1.0,
   "periodic": true,
   "domain": null,
+  "lineage_k": null,
+  "radial_channels": null,
+  "species": null,
   "path": "/home/user/physim/research/alife/examples/lenia_orbium/world.py"
  },
  "seed": 1,
  "steps_per_frame": 2,
+ "dt": 0.1,
  "status": "ok",
- "wall_seconds": 0.21473240852355957,
+ "wall_seconds": 0.1858971118927002,
  "damage": null,
  "summary": {
   "frames": 151,
   "time": 30.0,
+  "dt": 0.1,
   "grid": [
    128,
    128
@@ -60,12 +65,16 @@
    "0.35": 0.08333333333333333,
    "0.5": 0.0
   },
+  "K_frames": 20,
+  "K_source": "default",
   "splits": 18,
   "persistent_splits": 0,
+  "remerged_splits": 0,
   "max_generation": 0,
   "merges": 8,
+  "merge_split_ratio": 0.444,
   "nucleations": 3,
-  "moving_tracks": 5,
+  "moving_tracks": 3,
   "max_speed": 5.857348403618041,
   "max_body_lengths": 18.23327440400617,
   "channel_total_drift": [
@@ -82,10 +91,12 @@
     1,
     0
    ]
-  }
+  },
+  "membrane_like_channels": []
  },
  "warnings": [
-  "a channel total changed by more than 50% (not conserved; may be fine if the model is open)"
+  "a channel total changed by more than 50% (not conserved; may be fine if the model is open)",
+  "radial: 3 of 25 aggregate members are rings (centroid outside their own mask): the threshold may cut individuals into a core and a separate ring, so one individual is counted twice and the ring's profile is centred on its hole; check radial.png and raise META smooth or set META matter so one component covers each individual"
  ],
  "structure": [
   {
@@ -161,6 +172,359 @@
    ]
   }
  ],
+ "radial": {
+  "rho": [
+   0.05,
+   0.15,
+   0.25,
+   0.35,
+   0.45,
+   0.55,
+   0.65,
+   0.75,
+   0.85,
+   0.95,
+   1.05,
+   1.15,
+   1.25,
+   1.35,
+   1.45,
+   1.55,
+   1.65,
+   1.75,
+   1.85,
+   1.95,
+   2.05,
+   2.15,
+   2.25,
+   2.35,
+   2.45
+  ],
+  "channels": [
+   "A"
+  ],
+  "channel_index": [
+   0
+  ],
+  "bands": {
+   "core": [
+    0.0,
+    0.4
+   ],
+   "rim": [
+    0.6,
+    1.3
+   ],
+   "outside": [
+    1.6,
+    2.2
+   ],
+   "peak": [
+    0.5,
+    1.5
+   ]
+  },
+  "eps": 0.01,
+  "cap": 999.0,
+  "membrane_ratio": 1.5,
+  "aggregate": {
+   "n_individuals": 25,
+   "frames": [
+    25,
+    50,
+    76,
+    100,
+    125,
+    150
+   ],
+   "min_area": 12,
+   "mean": [
+    [
+     0.85,
+     0.7563,
+     0.8115,
+     0.8498,
+     0.8222,
+     0.7974,
+     0.7172,
+     0.584,
+     0.4664,
+     0.3831,
+     0.2786,
+     0.2775,
+     0.2409,
+     0.1831,
+     0.1726,
+     0.1416,
+     0.1276,
+     0.118,
+     0.0947,
+     0.1073,
+     0.1106,
+     0.099,
+     0.0842,
+     0.0888,
+     0.0677
+    ]
+   ],
+   "std": [
+    [
+     0.1887,
+     0.324,
+     0.3128,
+     0.1947,
+     0.2257,
+     0.1908,
+     0.2194,
+     0.1391,
+     0.1177,
+     0.0956,
+     0.0951,
+     0.103,
+     0.0765,
+     0.0776,
+     0.0586,
+     0.0681,
+     0.0425,
+     0.0753,
+     0.0379,
+     0.0699,
+     0.063,
+     0.0514,
+     0.047,
+     0.0429,
+     0.0587
+    ]
+   ],
+   "scores": {
+    "A": {
+     "rho_peak": 0.05,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.7172,
+     "core_mean": 0.8169,
+     "outside_mean": 0.1095,
+     "rim_core": 0.879,
+     "rim_outside": 6.083,
+     "membrane_like": false
+    }
+   },
+   "n_membrane_like_individually": {
+    "A": 4
+   },
+   "n_ring": 3,
+   "n_outside_truncated": 0
+  },
+  "tracks": [
+   {
+    "track": 1,
+    "frame": 63,
+    "area": 61.0,
+    "R_eq": 4.41,
+    "profile": [
+     [
+      0.885,
+      0.9375,
+      1.0,
+      0.9669,
+      1.0,
+      0.9735,
+      0.9587,
+      0.5508,
+      0.5992,
+      0.3922,
+      0.2458,
+      0.3056,
+      0.1843,
+      0.1918,
+      0.1425,
+      0.1522,
+      0.0957,
+      0.096,
+      0.1508,
+      0.1231,
+      0.0995,
+      0.1293,
+      0.1703,
+      0.0401,
+      0.0637
+     ]
+    ],
+    "scores": {
+     "A": {
+      "rho_peak": 0.25,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.9587,
+      "core_mean": 0.9473,
+      "outside_mean": 0.1158,
+      "rim_core": 1.012,
+      "rim_outside": 7.703,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.007,
+    "damaged": false
+   },
+   {
+    "track": 0,
+    "frame": 55,
+    "area": 61.0,
+    "R_eq": 4.41,
+    "profile": [
+     [
+      0.8141,
+      1.0,
+      1.0,
+      0.9488,
+      0.9848,
+      0.9704,
+      0.9379,
+      0.7094,
+      0.5263,
+      0.2764,
+      0.3927,
+      0.128,
+      0.3103,
+      0.1525,
+      0.1668,
+      0.1009,
+      0.1221,
+      0.1098,
+      0.1259,
+      0.075,
+      0.2161,
+      0.0889,
+      0.1192,
+      0.0848,
+      0.0384
+     ]
+    ],
+    "scores": {
+     "A": {
+      "rho_peak": 0.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.9379,
+      "core_mean": 0.9407,
+      "outside_mean": 0.1229,
+      "rim_core": 0.997,
+      "rim_outside": 7.13,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.999,
+    "damaged": false
+   },
+   {
+    "track": 2,
+    "frame": 55,
+    "area": 61.0,
+    "R_eq": 4.41,
+    "profile": [
+     [
+      0.8141,
+      1.0,
+      1.0,
+      0.9488,
+      0.9848,
+      0.9704,
+      0.9379,
+      0.7094,
+      0.5263,
+      0.2764,
+      0.3927,
+      0.128,
+      0.3103,
+      0.1525,
+      0.1668,
+      0.1009,
+      0.1221,
+      0.1098,
+      0.1259,
+      0.075,
+      0.2161,
+      0.0889,
+      0.1192,
+      0.0848,
+      0.0384
+     ]
+    ],
+    "scores": {
+     "A": {
+      "rho_peak": 0.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.9379,
+      "core_mean": 0.9407,
+      "outside_mean": 0.1229,
+      "rim_core": 0.997,
+      "rim_outside": 7.13,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.999,
+    "damaged": false
+   },
+   {
+    "track": 23,
+    "frame": 142,
+    "area": 63.0,
+    "R_eq": 4.48,
+    "profile": [
+     [
+      null,
+      1.0,
+      null,
+      1.0,
+      1.0,
+      0.9145,
+      0.8147,
+      0.6313,
+      0.4232,
+      0.4046,
+      0.2621,
+      0.2697,
+      0.2546,
+      0.137,
+      0.1775,
+      0.1136,
+      0.1578,
+      0.0586,
+      0.0484,
+      0.0996,
+      0.0478,
+      0.0838,
+      0.1435,
+      0.0979,
+      0.0949
+     ]
+    ],
+    "scores": {
+     "A": {
+      "rho_peak": 0.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.8147,
+      "core_mean": 1.0,
+      "outside_mean": 0.0827,
+      "rim_core": 0.817,
+      "rim_outside": 8.898,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.003,
+    "damaged": false
+   }
+  ],
+  "membrane_like": [],
+  "n_damaged_excluded": 0
+ },
+ "species": {},
  "top_tracks": [
   {
    "id": 1,
@@ -804,6 +1168,7 @@
   }
  ],
  "persistent_splits": [],
+ "remerged_splits": [],
  "motion_top": [
   {
    "id": 1,

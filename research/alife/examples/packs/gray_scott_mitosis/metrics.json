@@ -21,16 +21,21 @@
   "smooth": 1.0,
   "periodic": true,
   "domain": null,
+  "lineage_k": null,
+  "radial_channels": null,
+  "species": null,
   "path": "/home/user/physim/research/alife/examples/gray_scott_mitosis/world.py"
  },
  "seed": 0,
  "steps_per_frame": 50,
+ "dt": 1.0,
  "status": "ok",
- "wall_seconds": 4.133206844329834,
+ "wall_seconds": 3.924328565597534,
  "damage": null,
  "summary": {
   "frames": 161,
   "time": 8000.0,
+  "dt": 1.0,
   "grid": [
    128,
    128
@@ -63,10 +68,14 @@
    "0.35": 0.0,
    "0.5": 0.0
   },
+  "K_frames": 20,
+  "K_source": "default",
   "splits": 68,
-  "persistent_splits": 63,
+  "persistent_splits": 61,
+  "remerged_splits": 0,
   "max_generation": 5,
   "merges": 0,
+  "merge_split_ratio": 0.0,
   "nucleations": 0,
   "moving_tracks": 5,
   "max_speed": 0.005433299123091637,
@@ -86,7 +95,8 @@
     0,
     0
    ]
-  }
+  },
+  "membrane_like_channels": []
  },
  "warnings": [
   "a channel total changed by more than 50% (not conserved; may be fine if the model is open)"
@@ -177,6 +187,579 @@
    ]
   }
  ],
+ "radial": {
+  "rho": [
+   0.05,
+   0.15,
+   0.25,
+   0.35,
+   0.45,
+   0.55,
+   0.65,
+   0.75,
+   0.85,
+   0.95,
+   1.05,
+   1.15,
+   1.25,
+   1.35,
+   1.45,
+   1.55,
+   1.65,
+   1.75,
+   1.85,
+   1.95,
+   2.05,
+   2.15,
+   2.25,
+   2.35,
+   2.45
+  ],
+  "channels": [
+   "u (substrate)",
+   "v (autocatalyst)"
+  ],
+  "channel_index": [
+   0,
+   1
+  ],
+  "bands": {
+   "core": [
+    0.0,
+    0.4
+   ],
+   "rim": [
+    0.6,
+    1.3
+   ],
+   "outside": [
+    1.6,
+    2.2
+   ],
+   "peak": [
+    0.5,
+    1.5
+   ]
+  },
+  "eps": 0.01,
+  "cap": 999.0,
+  "membrane_ratio": 1.5,
+  "aggregate": {
+   "n_individuals": 231,
+   "frames": [
+    27,
+    54,
+    81,
+    106,
+    133,
+    160
+   ],
+   "min_area": 12,
+   "mean": [
+    [
+     0.0087,
+     0.0066,
+     0.0096,
+     0.0247,
+     0.0636,
+     0.1182,
+     0.1896,
+     0.2757,
+     0.372,
+     0.4663,
+     0.5562,
+     0.6304,
+     0.6926,
+     0.7418,
+     0.7778,
+     0.8056,
+     0.8238,
+     0.8359,
+     0.8388,
+     0.8394,
+     0.8313,
+     0.8196,
+     0.8051,
+     0.7836,
+     0.7629
+    ],
+    [
+     0.9506,
+     0.9594,
+     0.9578,
+     0.9541,
+     0.9296,
+     0.8809,
+     0.7979,
+     0.6839,
+     0.5473,
+     0.4145,
+     0.2941,
+     0.2033,
+     0.1359,
+     0.0899,
+     0.0605,
+     0.0418,
+     0.032,
+     0.0275,
+     0.029,
+     0.0337,
+     0.044,
+     0.0581,
+     0.0762,
+     0.1,
+     0.1259
+    ]
+   ],
+   "std": [
+    [
+     0.0373,
+     0.0309,
+     0.0365,
+     0.0347,
+     0.0337,
+     0.0308,
+     0.029,
+     0.0212,
+     0.0182,
+     0.0181,
+     0.0184,
+     0.0205,
+     0.0201,
+     0.0232,
+     0.0242,
+     0.0259,
+     0.0289,
+     0.0315,
+     0.0345,
+     0.0392,
+     0.0456,
+     0.05,
+     0.0546,
+     0.0654,
+     0.066
+    ],
+    [
+     0.0747,
+     0.0641,
+     0.0682,
+     0.0637,
+     0.0624,
+     0.058,
+     0.0527,
+     0.0372,
+     0.0284,
+     0.0262,
+     0.0272,
+     0.0271,
+     0.0201,
+     0.0188,
+     0.0134,
+     0.0101,
+     0.0109,
+     0.0123,
+     0.0147,
+     0.02,
+     0.0264,
+     0.0312,
+     0.0386,
+     0.0467,
+     0.0495
+    ]
+   ],
+   "scores": {
+    "u (substrate)": {
+     "rho_peak": 1.95,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.6926,
+     "core_mean": 0.0124,
+     "outside_mean": 0.8315,
+     "rim_core": 31.344,
+     "rim_outside": 0.835,
+     "membrane_like": false
+    },
+    "v (autocatalyst)": {
+     "rho_peak": 0.15,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.7979,
+     "core_mean": 0.9554,
+     "outside_mean": 0.0374,
+     "rim_core": 0.837,
+     "rim_outside": 17.048,
+     "membrane_like": false
+    }
+   },
+   "n_membrane_like_individually": {
+    "u (substrate)": 0,
+    "v (autocatalyst)": 0
+   },
+   "n_ring": 0,
+   "n_outside_truncated": 0
+  },
+  "tracks": [
+   {
+    "track": 14,
+    "frame": 105,
+    "area": 65.0,
+    "R_eq": 4.55,
+    "profile": [
+     [
+      null,
+      0.0,
+      0.0017,
+      0.0125,
+      0.0616,
+      0.113,
+      0.1815,
+      0.2818,
+      0.3762,
+      0.4831,
+      0.5638,
+      0.6437,
+      0.692,
+      0.7482,
+      0.7787,
+      0.8094,
+      0.8253,
+      0.8351,
+      0.8425,
+      0.8367,
+      0.8159,
+      0.8316,
+      0.7767,
+      0.774,
+      0.7483
+     ],
+     [
+      null,
+      0.9811,
+      0.9765,
+      0.9786,
+      0.9365,
+      0.897,
+      0.8135,
+      0.678,
+      0.5428,
+      0.3877,
+      0.2834,
+      0.1808,
+      0.1357,
+      0.0794,
+      0.056,
+      0.0368,
+      0.0271,
+      0.0226,
+      0.0226,
+      0.0255,
+      0.0434,
+      0.0384,
+      0.0811,
+      0.0933,
+      0.1248
+     ]
+    ],
+    "scores": {
+     "u (substrate)": {
+      "rho_peak": 1.85,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.692,
+      "core_mean": 0.0047,
+      "outside_mean": 0.8312,
+      "rim_core": 47.74,
+      "rim_outside": 0.835,
+      "membrane_like": false
+     },
+     "v (autocatalyst)": {
+      "rho_peak": 0.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.8135,
+      "core_mean": 0.9787,
+      "outside_mean": 0.0299,
+      "rim_core": 0.833,
+      "rim_outside": 20.622,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.019,
+    "damaged": false
+   },
+   {
+    "track": 34,
+    "frame": 117,
+    "area": 59.0,
+    "R_eq": 4.33,
+    "profile": [
+     [
+      null,
+      0.0,
+      0.0,
+      0.022,
+      0.0434,
+      0.1113,
+      0.1665,
+      0.2564,
+      0.3566,
+      0.4363,
+      0.5434,
+      0.6067,
+      0.6749,
+      0.7241,
+      0.7524,
+      0.783,
+      0.8069,
+      0.8084,
+      0.8265,
+      0.804,
+      0.7979,
+      0.808,
+      0.7545,
+      0.7595,
+      0.708
+     ],
+     [
+      null,
+      0.9977,
+      0.9949,
+      0.9795,
+      0.9673,
+      0.9009,
+      0.834,
+      0.7162,
+      0.565,
+      0.4511,
+      0.3003,
+      0.221,
+      0.1431,
+      0.0958,
+      0.0684,
+      0.0458,
+      0.0331,
+      0.0307,
+      0.0243,
+      0.0373,
+      0.0495,
+      0.0446,
+      0.0933,
+      0.0988,
+      0.1449
+     ]
+    ],
+    "scores": {
+     "u (substrate)": {
+      "rho_peak": 1.85,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.6749,
+      "core_mean": 0.0073,
+      "outside_mean": 0.8086,
+      "rim_core": 39.545,
+      "rim_outside": 0.837,
+      "membrane_like": false
+     },
+     "v (autocatalyst)": {
+      "rho_peak": 0.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.834,
+      "core_mean": 0.9907,
+      "outside_mean": 0.0366,
+      "rim_core": 0.843,
+      "rim_outside": 18.113,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.974,
+    "damaged": false
+   },
+   {
+    "track": 36,
+    "frame": 117,
+    "area": 70.0,
+    "R_eq": 4.72,
+    "profile": [
+     [
+      0.0,
+      0.0,
+      0.0035,
+      0.0207,
+      0.0619,
+      0.1009,
+      0.1865,
+      0.2677,
+      0.3713,
+      0.4739,
+      0.5732,
+      0.643,
+      0.7099,
+      0.7674,
+      0.795,
+      0.8337,
+      0.8391,
+      0.8625,
+      0.8636,
+      0.8626,
+      0.8587,
+      0.8557,
+      0.8257,
+      0.8126,
+      0.8095
+     ],
+     [
+      0.951,
+      0.9471,
+      0.9564,
+      0.9508,
+      0.9242,
+      0.9041,
+      0.7995,
+      0.6978,
+      0.5531,
+      0.4127,
+      0.2724,
+      0.1999,
+      0.1218,
+      0.0721,
+      0.0518,
+      0.0309,
+      0.0235,
+      0.0173,
+      0.0169,
+      0.0191,
+      0.0274,
+      0.0293,
+      0.0586,
+      0.0694,
+      0.0814
+     ]
+    ],
+    "scores": {
+     "u (substrate)": {
+      "rho_peak": 1.85,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.7099,
+      "core_mean": 0.006,
+      "outside_mean": 0.857,
+      "rim_core": 44.895,
+      "rim_outside": 0.83,
+      "membrane_like": false
+     },
+     "v (autocatalyst)": {
+      "rho_peak": 0.25,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.7995,
+      "core_mean": 0.9513,
+      "outside_mean": 0.0222,
+      "rim_core": 0.842,
+      "rim_outside": 25.1,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.003,
+    "damaged": false
+   },
+   {
+    "track": 100,
+    "frame": 143,
+    "area": 73.0,
+    "R_eq": 4.82,
+    "profile": [
+     [
+      0.0,
+      0.0,
+      0.0007,
+      0.0236,
+      0.0519,
+      0.0912,
+      0.1672,
+      0.2812,
+      0.3573,
+      0.4625,
+      0.5753,
+      0.6505,
+      0.7127,
+      0.7698,
+      0.8082,
+      0.8402,
+      0.8619,
+      0.8771,
+      0.891,
+      0.8872,
+      0.8912,
+      0.895,
+      0.8713,
+      0.8779,
+      0.8548
+     ],
+     [
+      0.9184,
+      0.9167,
+      0.9348,
+      0.9254,
+      0.92,
+      0.904,
+      0.8258,
+      0.6749,
+      0.5782,
+      0.4293,
+      0.28,
+      0.1942,
+      0.1279,
+      0.0785,
+      0.0513,
+      0.0322,
+      0.0214,
+      0.0157,
+      0.0118,
+      0.0153,
+      0.0166,
+      0.0203,
+      0.0378,
+      0.0409,
+      0.0619
+     ]
+    ],
+    "scores": {
+     "u (substrate)": {
+      "rho_peak": 2.15,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.7127,
+      "core_mean": 0.0061,
+      "outside_mean": 0.8839,
+      "rim_core": 44.951,
+      "rim_outside": 0.809,
+      "membrane_like": false
+     },
+     "v (autocatalyst)": {
+      "rho_peak": 0.25,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.8258,
+      "core_mean": 0.9238,
+      "outside_mean": 0.0169,
+      "rim_core": 0.895,
+      "rim_outside": 31.119,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.009,
+    "damaged": false
+   }
+  ],
+  "membrane_like": [],
+  "n_damaged_excluded": 0
+ },
+ "species": {},
  "top_tracks": [
   {
    "id": 14,
@@ -1065,7 +1648,8 @@
    "surviving_children": [
     4,
     5
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 33,
@@ -1078,7 +1662,8 @@
    "surviving_children": [
     6,
     7
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 34,
@@ -1091,7 +1676,8 @@
    "surviving_children": [
     8,
     9
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 38,
@@ -1104,7 +1690,8 @@
    "surviving_children": [
     10,
     11
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 48,
@@ -1117,7 +1704,8 @@
    "surviving_children": [
     12,
     13
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 49,
@@ -1130,7 +1718,8 @@
    "surviving_children": [
     14,
     15
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 50,
@@ -1143,7 +1732,8 @@
    "surviving_children": [
     16,
     17
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 50,
@@ -1156,7 +1746,8 @@
    "surviving_children": [
     18,
     19
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 51,
@@ -1169,7 +1760,8 @@
    "surviving_children": [
     20,
     21
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 51,
@@ -1182,7 +1774,8 @@
    "surviving_children": [
     22,
     23
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 54,
@@ -1195,7 +1788,8 @@
    "surviving_children": [
     24,
     25
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 57,
@@ -1208,7 +1802,8 @@
    "surviving_children": [
     26,
     27
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 71,
@@ -1221,7 +1816,8 @@
    "surviving_children": [
     28,
     29
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 72,
@@ -1234,7 +1830,8 @@
    "surviving_children": [
     30,
     33
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 72,
@@ -1247,7 +1844,8 @@
    "surviving_children": [
     31,
     32
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 73,
@@ -1260,7 +1858,8 @@
    "surviving_children": [
     34,
     35
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 73,
@@ -1273,7 +1872,8 @@
    "surviving_children": [
     36,
     37
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 73,
@@ -1286,7 +1886,8 @@
    "surviving_children": [
     38,
     40
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 73,
@@ -1299,7 +1900,8 @@
    "surviving_children": [
     39,
     41
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 74,
@@ -1312,7 +1914,8 @@
    "surviving_children": [
     42,
     43
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 74,
@@ -1325,7 +1928,8 @@
    "surviving_children": [
     44,
     45
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 74,
@@ -1338,7 +1942,8 @@
    "surviving_children": [
     46,
     47
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 76,
@@ -1351,7 +1956,8 @@
    "surviving_children": [
     48,
     49
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 79,
@@ -1364,7 +1970,8 @@
    "surviving_children": [
     50,
     51
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 80,
@@ -1377,7 +1984,8 @@
    "surviving_children": [
     52,
     53
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 84,
@@ -1390,7 +1998,8 @@
    "surviving_children": [
     54,
     55
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 91,
@@ -1403,7 +2012,8 @@
    "surviving_children": [
     56,
     57
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 96,
@@ -1416,7 +2026,8 @@
    "surviving_children": [
     58,
     65
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 96,
@@ -1429,7 +2040,8 @@
    "surviving_children": [
     59,
     60
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 96,
@@ -1442,7 +2054,8 @@
    "surviving_children": [
     61,
     63
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 96,
@@ -1455,7 +2068,8 @@
    "surviving_children": [
     62,
     64
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 97,
@@ -1468,7 +2082,8 @@
    "surviving_children": [
     66,
     67
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1481,7 +2096,8 @@
    "surviving_children": [
     68,
     69
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1494,7 +2110,8 @@
    "surviving_children": [
     70,
     71
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1507,7 +2124,8 @@
    "surviving_children": [
     72,
     74
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1520,7 +2138,8 @@
    "surviving_children": [
     73,
     75
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1533,7 +2152,8 @@
    "surviving_children": [
     76,
     77
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 98,
@@ -1546,7 +2166,8 @@
    "surviving_children": [
     78,
     79
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 99,
@@ -1559,7 +2180,8 @@
    "surviving_children": [
     80,
     81
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 100,
@@ -1572,7 +2194,8 @@
    "surviving_children": [
     82,
     83
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 101,
@@ -1585,7 +2208,8 @@
    "surviving_children": [
     84,
     85
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 104,
@@ -1598,7 +2222,8 @@
    "surviving_children": [
     86,
     87
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 105,
@@ -1611,7 +2236,8 @@
    "surviving_children": [
     88,
     89
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 111,
@@ -1624,7 +2250,8 @@
    "surviving_children": [
     90,
     91
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 113,
@@ -1637,7 +2264,8 @@
    "surviving_children": [
     92,
     93
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 116,
@@ -1650,7 +2278,8 @@
    "surviving_children": [
     94,
     95
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 116,
@@ -1663,7 +2292,8 @@
    "surviving_children": [
     96,
     97
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 122,
@@ -1676,7 +2306,8 @@
    "surviving_children": [
     98,
     99
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 123,
@@ -1689,7 +2320,8 @@
    "surviving_children": [
     100,
     101
-   ]
+   ],
+   "groups": 2
   },
   {
    "frame": 124,
@@ -1702,9 +2334,11 @@
    "surviving_children": [
     102,
     103
-   ]
+   ],
+   "groups": 2
   }
  ],
+ "remerged_splits": [],
  "motion_top": [
   {
    "id": 42,
