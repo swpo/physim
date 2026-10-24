@@ -422,3 +422,14 @@ colour in the sheet): the yellow allele-1 colony spreads from one cell over t=50
 **B5. Per-body confinement, the committee's single allowed retry (worlds/mca-MIRd-body).** New
 matter inside a cell territory takes that territory's mass-majority allele. Ledger rerun on the same
 3 points × S/N.
+First version had no effect: newly built matter sits at pixels with M<=0.03 (halo dots, fronts), which
+were outside the territory mask, so they fell back to the blurred majority. That is where the leak
+is. Fixed: every pixel within 15 px (R) of a core belongs to that core's territory (verified: allele
+fields now differ).
+**Result (screen_data/ledger_body):** allele-1 divisions with both daughters pure: S 62/86, 62/90,
+47/81 = **171/257 (67%)**; N 6/12, 17/27, 4/13 = **27/52 (52%)**. Before confinement: 47% and 47%.
+Kind changes without division: 11 (S) and 2 (N). Confinement helps, but heredity stays well below the
+90% bar. **Stop rule reached: L7 on MIRd+ stopped.** The law: in Lenia, matter at a contact is
+rebuilt from whichever body's kernel field reaches it. A daughter born touching another kind is
+partly built by that neighbour, so labels carried by matter leak at contacts unless bodies are
+separated.

@@ -111,7 +111,7 @@ META = {
     "name": "mca-MIRd-body",
     "family": "lenia",
     "parent": "mca-MIRd",
-    "mutation": "per-body inheritance: new matter takes the mass-majority allele of its own cell territory (nearest A0 core within matter), not of the blurred neighbourhood",
+    "mutation": "per-body inheritance: new matter takes the mass-majority allele of its own cell territory (every pixel within 15 px of the nearest A0 core), not of the blurred neighbourhood",
     "size": (192, 192),
     "steps_per_frame": 20,
     "dt": 0.1,
@@ -153,6 +153,7 @@ FOOD = {'mode': 'conserve', 'Y': 2, 'rho': 0.02, 'D': 2, 'decay': 0.03}
 
 
 
+BODY_R = 15         # per-body territory radius (px) = kernel radius R
 EFF = 0.15          # yield advantage of allele 1; 0 = neutral arm
 MU_CELL = 7.5e-6    # whole-cell flips per cell per step (7.5% of cells per 1000 t at dt 0.1)
 SIG = 3.0           # inheritance kernel (px)
@@ -193,8 +194,8 @@ def step(s):
     from scipy import ndimage as _nd
     core, n = _nd.label(A[0] > 0.3)
     if n:
-        _, (iy, ix) = _nd.distance_transform_edt(core == 0, return_indices=True)
-        terr = core[iy, ix] * (M > 0.03)
+        dist, (iy, ix) = _nd.distance_transform_edt(core == 0, return_indices=True)
+        terr = core[iy, ix] * (dist <= BODY_R)   # every pixel within BODY_R of a core belongs to it (incl. halo dots)
         m1 = _nd.sum(M * a, terr, range(1, n + 1))
         mt = _nd.sum(M, terr, range(1, n + 1))
         tmaj = np.concatenate([[0.0], (m1 > 0.5 * mt).astype(float)])

@@ -12,7 +12,7 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 | `mcfd-MIRd` | **L6[L2]+L4c+L5**, medium | the same plus maintenance decay 0.03: intermittent boom-bust with fission after troughs. Decay 0/0.01/0.03 gives dormant / static fed / boom-bust | Not a regular cycle; damped at 192²; dt/2 extinct in 1/2 |
 | `mcf-fastcell` | **L4b[L3]+L4c**, medium | Chan's shelled glider (A0 shell at r 14-22, empty inside r<8) carving food wakes; dies without refill | Planted; no dt/R test |
 | `r-two56` | **L3**, high | one of 2/420 random 2-channel rules: shelled cells (white centre, cyan core, orange cog shell) form from noise and persist; survive dt/2 and R=15-20 | Static fixed points with no turnover. L4a Contradicted (core damage kills) |
-| `mca-MIRd` (+ branch test) | L6[L2]; **L7 not met** (r3) | discrete majority-inherited alleles; with whole-body flips a 15%-yield allele spreads from one cell to 40-72% of mass in 10/12 paired branches vs neutral drift | Heredity leaks at contacts: 47% of allele-1 divisions give pure daughters (bar 90%); mutation imposed once per run |
+| `mca-MIRd` (+ branch test) | L6[L2]; **L7 not met** (r3) | discrete majority-inherited alleles; with whole-body flips a 15%-yield allele spreads from one cell to 40-72% of mass in 10/12 paired branches vs neutral drift | Heredity leaks at contacts: 47% of allele-1 divisions give pure daughters, 67% with per-body confinement (bar 90%); mutation imposed once per run; L7 stopped |
 
 ## Mechanisms that worked (with the ablation that shows it)
 
@@ -35,8 +35,9 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
    matter copies the label of the matter that built it (kernel-weighted majority for discrete
    alleles). Mutations must act on whole bodies: partial flips erode from the cell's own periphery
    (old operator lost in 9/12 branch runs). With whole-body flips, selection on yield is visible in
-   500 t (S>N 10/12). But neighbourhood majority leaks across touching cells: only 47% of
-   allele-1 divisions give pure daughters. Inheritance must be confined to the body.
+   500 t (S>N 10/12). But labels leak across touching cells: 47% of allele-1 divisions give pure
+   daughters, 67% with per-body confinement. In Lenia, matter at a contact is rebuilt by whichever
+   body's field reaches it, so passive tags on matter cannot breed true while bodies touch.
 
 ## What failed
 
@@ -59,11 +60,12 @@ in `packs/`, the log is in `NOTEBOOK.md`, reports are `REPORT_r1..r3.md`.
 
 ## What a next lab should try
 
-1. Per-body inheritance: new matter takes the allele of its own cell's territory, not of the
-   blurred neighbourhood. Then the full S/N test with mutation arising, ≥5 seeds per arm, and the
-   per-division ledger (tools/division_ledger.py).
-2. Put r-two56 cells on food with decay (spontaneous L3 that must eat), and look for fission
-   by weakening the size limiter while food is scarce.
+1. Heredity as dynamics, not as a tag: an allele that is a channel the body's own kernels
+   regenerate (two self-sustaining variants of the same cell), so that a touching neighbour cannot
+   overwrite it. Or worlds whose bodies repel and never touch. Measure with tools/division_ledger.py.
+2. Make the spontaneous r-two56 cells measurably dependent on food. On food with decay 0.01 they
+   form but barely eat; try a lower yield, then a no-food ablation after formation. Look for
+   fission by weakening the size limiter while food is scarce.
 3. Penalize jamming (crowding-dependent decay) so that efficiency cannot switch off turnover.
 
 ## Showcase movie

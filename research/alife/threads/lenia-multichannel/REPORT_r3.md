@@ -4,7 +4,8 @@
 
 **With a whole-body mutation operator, a 15%-yield allele that starts in one cell spreads in the
 food-limited MIRd+ population, and the neutral label does not. But heredity leaks: only 47% of
-allele-1 divisions give two pure daughters, so L7 fails the committee's ≥90% bar.** Branch-point test, committee r2
+allele-1 divisions give two pure daughters, so L7 fails the committee's ≥90% bar. The one allowed retry, per-body confinement, raises that
+to 67% (S) and 52% (N), still below the bar. Stop rule reached: L7 on MIRd+ is stopped.** Branch-point test, committee r2
 design: 12 mature isolated cells from 2 neutral-arm runs (192², decay 0.03, mutation off), each
 flipped whole and continued for 500 t under S and N from the identical state.
 - S beats N in 10/12 paired branch points. In the other 2 the allele was lost in both arms.
@@ -41,6 +42,12 @@ daughters born touching the other kind take part of their matter from the neighb
 allele spreads under selection, but it does not breed true by the committee's criterion. Leakage is
 the decisive result here.
 
+**Per-body confinement (worlds/mca-MIRd-body, the single allowed retry).** New matter within 15 px of
+a cell core takes that cell's mass-majority allele. A first version restricted territories to
+M>0.03 and had no effect: new matter is built at low-M halo pixels, exactly where the leak is.
+Rerun (screen_data/ledger_body): pure allele-1 divisions S 171/257 (67%), N 27/52 (52%);
+conversions 11 and 2. Better, still below 90%. **Stop rule reached; L7 on MIRd+ is stopped.**
+
 ## 3. Mechanisms learned
 
 - **A mutation must replace a whole body, or the body's own periphery erases it.** Inheritance is
@@ -49,9 +56,10 @@ the decisive result here.
   the same "multilevel" lesson active-droplets found (a patch must win inside its body first).
 - **With whole-body variants, selection on yield is visible within 500 t at 192².** At s=0.15 and
   N≈20 cells the fixation advantage is large enough to beat drift in 10/12 pairs.
-- **Contact zones leak.** Mixed territories are 22-35% of allele-bearing samples in S. These are
-  cells in contact with the other kind, where majority inheritance over the neighbours' halos
-  mixes. Per-body confinement (majority over the cell's own core) is the obvious next fix.
+- **Contact zones leak, and that is a property of Lenia.** Matter at a contact is rebuilt from
+  whichever body's kernel field reaches it. A daughter born touching another kind is partly built
+  by that neighbour, so any label carried by built matter mixes there. Per-body confinement cuts
+  the leak (47%→67% pure in S) but cannot remove it while cells touch: their fields overlap.
 
 ## 4. Negative results
 
@@ -62,9 +70,10 @@ the decisive result here.
 
 ## 5. If the lab continued
 
-1. Run the full S/N test with the whole-body operator (mutation arising during the run), ≥5 seeds per
-   arm at 192-256², with a per-kind birth/death/conversion ledger.
-2. **First**, restrict majority inheritance to the cell's own body (territory) to stop contact
-   leakage. The committee's stop rule says: try per-body confinement once, then stop L7 on MIRd+.
+1. L7 on MIRd+ is stopped (stop rule). Heredity in Lenia needs bodies that do not touch, or a
+   label that is part of the dynamics (a channel the body's own kernels regenerate) instead of a
+   passive tag on matter.
+2. If continued: the full S/N test with mutation arising (whole-body operator, per-body
+   inheritance) would measure selection, but not clean heredity.
 3. Make r-two56 cells measurably dependent on food: higher yield cost, or a no-food ablation after
    formation.
