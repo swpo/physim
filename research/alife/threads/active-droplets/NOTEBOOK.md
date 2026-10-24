@@ -145,3 +145,17 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
   permeability (fuel in) vs retention (catalyst kept). Classic protocell trade-off, from one operator.
 - Evolution test: all droplets start as allele 0 (no membrane), alleles kp = 0/0.5/1.5/4, mutation + dilution as
   ad5. Prediction: allele 1 (kp=0.5) wins, not the thickest. Neutral control ad7n: all alleles kp=0.
+- Result `packs/ad7-gated` vs `packs/ad7n-neutral` (dil 0.0005, 3 seeds each, t=20000; `packs/ad7-gated/alleles.png`):
+  end counts [kp0, kp0.5, kp1.5, kp4]: selection [5,1,1,0], [4,2,1,1], [2,4,1,3]; neutral [5,0,0,0], [3,1,0,1],
+  [1,2,0,1]. WEAK: ancestor share 11/25 vs 9/14. The leaky ancestor barely divides AND never dies, so it simply
+  persists; most allele counts are mutation events, not divisions.
+- But the phenotypes are striking and distinct (`packs/ad7-gated/seed2/protocells.png`, new renderer):
+  kp=0.5 (green) = thin white membrane, divides by dumbbell fission (t~5400, 16300); kp=4 (red) = thick bright
+  membrane, small, never divides (starved: fuel gate); kp=0 (blue) = large diffuse leaky blob with a catalyst halo,
+  does not divide. Genotype -> membrane -> metabolism -> fitness is visible in single frames.
+- Rerun with 4x dilution (ad7-gated-d4 / ad7n-neutral-d4) so non-dividers get removed and space is re-colonized.
+
+## protocell_movie.py
+- Custom renderer from pack frames: fuel = background brightness, body colour = dominant allele, amphiphile =
+  white rim. `packs/ad5-evolve/seed0/protocells.{mp4,png}`, `packs/ad7-gated/seed2/protocells.{mp4,png}`.
+  ad5: a mutant shows up as half of an ancestral droplet (t=3700) before taking it over.

@@ -1,1 +1,41 @@
 [ad7n-neutral] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  42.6s
+  frame 40/200  84.4s
+  frame 60/200  126.4s
+  frame 80/200  169.7s
+  frame 100/200  212.4s
+  frame 120/200  256.2s
+  frame 140/200  296.0s
+  frame 160/200  338.4s
+  frame 180/200  380.5s
+  frame 200/200  420.6s
+  -> threads/active-droplets/packs/ad7n-neutral/seed0/FACTS.md  (421s sim)
+[ad7n-neutral] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  42.6s
+  frame 40/200  84.1s
+  frame 60/200  128.3s
+  frame 80/200  172.2s
+  frame 100/200  217.1s
+  frame 120/200  258.7s
+  frame 140/200  300.7s
+  frame 160/200  342.5s
+  frame 180/200  383.0s
+  frame 200/200  426.1s
+  -> threads/active-droplets/packs/ad7n-neutral/seed1/FACTS.md  (426s sim)
+[ad7n-neutral] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  45.4s
+  frame 40/200  90.7s
+  frame 60/200  138.1s
+  frame 80/200  186.9s
+  frame 100/200  230.8s
+  frame 120/200  273.4s
+  frame 140/200  316.3s
+  frame 160/200  359.7s
+  frame 180/200  401.4s
+  frame 200/200  441.5s
+  -> threads/active-droplets/packs/ad7n-neutral/seed2/FACTS.md  (442s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 5 | 4 | 201 | 0 | 1 | 2 | 1 | 0.09 |
+| 1 | ok | 5 | 5 | 201 | 0 | 3 | 0 | 0 | 0.09 |
+| 2 | ok | 4 | 5 | 201 | 0 | 2 | 0 | 0 | 0.08 |
