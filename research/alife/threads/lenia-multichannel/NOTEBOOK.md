@@ -375,3 +375,38 @@ screen_data/mca).** Spec rate (MU_CELL 7.5e-6, about 3 events per run):
 true), N 3 (0 true); conversions 2 and 1; mean allele-1 share 0.005 in both arms.
 **Verdict: L7 fails.** Minority alleles don't persist or breed true. The resident allele breeds
 true trivially.
+
+---
+
+# Sprint 3 (final; started 2026-10-24 19:35 UTC)
+
+Committee r2: mca-MIRd L7 is Not tested, because the old operator flipped halo dots or only 30-50%
+of a body. Main task: a branch-point test of a whole-body flip vs the old operator, under S and N.
+
+**B1. Design (tools/branch_states.py, tools/branch_test.py).** N-arm runs of mca-MIRd (EFF 0,
+mutation off, 192², seeds 0 and 1) saved every 200 t. Branch points at t = 400..1400 (steps
+4000..14000), giving 12 states. Territories: A0 cores (>0.3, >=30 px), every matter pixel (M>0.03)
+assigned to its nearest core, kept if >=100 px. Target: the most isolated mature territory.
+- whole: flip the territory dilated 2 px (flipped mass fraction 1.0 by construction);
+- old: the A0>0.3 component + 4 px (0.58 in the test state).
+Then 500 t with mutation off, S (EFF .15) or N. Readouts every 5 t on territories: pure1 (p>=0.9),
+carriers (p>0.5), mixed (0.1<p<0.9), allele-1 mass fraction.
+
+**B2. Branch results (screens/branch_test.png; screen_data/branch_rows.json).**
+- **Whole-body flip:** S > N in 10/12 paired branch points; the other 2 were lost in both arms.
+  S ends at allele-1 mass fraction 0.40-0.72 with 8-22 pure allele-1 cells, from an initial
+  0.012-0.115. N ends at 0, 0, 0, 0, 0.06, 0.08, 0.10, 0.11, 0.18, 0.24, 0.56 (drift: N mean 0.11
+  vs mean start 0.05).
+- Leak proxy (mixed territories / allele-bearing territory samples): 0.22-0.35 in S, 0.23-0.62 in
+  N, from contact zones between colonies of different alleles.
+- **Old operator** (flipped mass 0.50-0.79): lost in 4/6 S and 5/6 N, S > N in 2/6. So the
+  sprint-2 negative came from the operator: partial flips erode, as the committee skeptic found.
+
+**B3. r-two56 on build-from-food + decay (worlds/rf-two56-mu0.01, -mu0.03; 192², 3000 steps,
+3 seeds; screens/rf-two56_food_decay.png).**
+- decay 0.01: shelled cells form from noise exactly as before and persist (7, 3, 2 cells to
+  t=300). Faint food wells appear early, but mean food is 0.99: the maintenance cost is small and
+  diffusion refills.
+- decay 0.03: 1, 1 and 0 cells.
+Formation survives the metabolism. L4c is not shown: no no-food ablation, and consumption is barely
+measurable.
