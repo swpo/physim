@@ -31,3 +31,7 @@ her_kb0.32_kh0.1_kc0.25: wall 157s cells [11, 13, 13, 15, 15, 14, 14, 14] h-on c
 her_kb0.25_kh0.0_kc0.25: wall 163s cells [11, 12, 14, 18, 21, 19, 18, 18] h-on cells [8, 7, 8, 12, 13, 12, 11, 11]
 her_kb0.25_kh0.0_kc0.25_noise0.8: wall 179s cells [11, 24, 23, 28, 27, 26, 27, 25] h-on cells [8, 23, 23, 28, 26, 26, 25, 25]
 her_kb0.25_kh0.0_kc0.25_noise0.3: wall 184s cells [11, 12, 15, 15, 18, 17, 19, 18] h-on cells [8, 7, 8, 9, 10, 11, 12, 12]
+cellpop2_Kg1.5_Dg20.0_taug100.0_T600: wall 144s cells [9, 2, 2, 2, 3, 6, 11, 14, 15, 17, 17, 17, 17]
+cellpop2_Kg1.5_Dg5.0_taug100.0_T600: wall 150s cells [9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cellwaste_kw0.3_tw100.0_T600: wall 162s cells [9, 8, 15, 17, 20, 17, 21, 17, 19, 20, 21, 21, 19]
+cellwaste_kw0.15_T600: wall 162s cells [9, 14, 18, 20, 19, 20, 19, 20, 19, 20, 24, 19, 18]
