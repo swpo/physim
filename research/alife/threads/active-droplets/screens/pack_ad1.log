@@ -1,0 +1,41 @@
+[ad1-fuel] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  13.5s
+  frame 40/200  27.0s
+  frame 60/200  39.9s
+  frame 80/200  53.6s
+  frame 100/200  66.5s
+  frame 120/200  79.1s
+  frame 140/200  92.3s
+  frame 160/200  105.8s
+  frame 180/200  119.3s
+  frame 200/200  132.9s
+  -> threads/active-droplets/packs/ad1-fuel/seed0/FACTS.md  (133s sim)
+[ad1-fuel] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  14.2s
+  frame 40/200  28.7s
+  frame 60/200  42.8s
+  frame 80/200  56.0s
+  frame 100/200  69.7s
+  frame 120/200  83.3s
+  frame 140/200  97.7s
+  frame 160/200  111.5s
+  frame 180/200  125.2s
+  frame 200/200  138.4s
+  -> threads/active-droplets/packs/ad1-fuel/seed1/FACTS.md  (138s sim)
+[ad1-fuel] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  15.1s
+  frame 40/200  29.2s
+  frame 60/200  43.8s
+  frame 80/200  57.9s
+  frame 100/200  71.6s
+  frame 120/200  85.6s
+  frame 140/200  99.6s
+  frame 160/200  113.6s
+  frame 180/200  127.9s
+  frame 200/200  142.1s
+  -> threads/active-droplets/packs/ad1-fuel/seed2/FACTS.md  (142s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 18 | 10 | 156 | 0 | 4 | 12 | 2 | 0.13 |
+| 1 | ok | 18 | 10 | 157 | 0 | 6 | 16 | 4 | 0.13 |
+| 2 | ok | 18 | 10 | 155 | 0 | 6 | 12 | 2 | 0.13 |
