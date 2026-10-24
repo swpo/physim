@@ -118,3 +118,15 @@ front, adsorbed links ARE the wall's support: a molecular membrane layer.
   from central starvation.
 - damage at t=2000 (35% of a 597 px cell incl. wall arc): crescent re-walled with a full link ring
   within ~100 time units, regrown by ~350 (`screens/pm_damage_strip.png`).
+
+## 7. Phase swim (`worlds/phase_swim`): rigid-droplet phoresis
+Each cell (component of phi > 0.05, labels merged across periodic edges) is advected (upwind)
+with v = mu <grad S>_cell. No external gradient.
+- slow S diffusion alone (DS 0.03-0.1) gives no motion: cells swell and invaginate (`screens/mot_*`).
+- first version with non-periodic labels tore cells at the domain edge (artifact). Fixed.
+- 2 seeds at mu=1: speed ~0 until t~2500, then 0.09 (neighbour halos break symmetry). mu=8-400
+  saturates the velocity clip, giving diagonal worm-like streaks (artifact; `screens/swim_mu-400*`).
+- single cell: mu=1 never moves (to t=3000); mu=3 breaks symmetry at t~1200 and swims a crescent
+  with a depletion wake at 0.094-0.11 px per time unit, 17.7-18.5 body lengths over 6000 (3 seeds,
+  `packs/phase_swim`). Headings: diagonal, -y, +x: locked to lattice directions. The swimmer grows
+  into an arc and never divides (it never starves).
