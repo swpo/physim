@@ -1,0 +1,21 @@
+kern_w_R4.0: wall 30s blobs [9, 38, 38, 41, 42, 43, 44, 44] occ 0.285 width 2.91 finite True
+kern_new_R6.0: wall 36s blobs [9, 29, 33, 32, 37, 38, 38, 38] occ 0.211 width 3.10 finite True
+taxis_chi-2.0: wall 33s blobs [9, 16, 14, 13, 15, 12, 15, 10] occ 0.291 width 3.58 finite True
+taxis_chi2.0: wall 41s blobs [9, 1, 1, 1, 1, 1, 1, 1] occ 0.004 width 1.37 finite True
+porous_: wall 27s blobs [9, 31, 40, 44, 45, 47, 47, 48] occ 0.414 width 2.39 finite True
+ch_mem_: wall 39s blobs [9, 6, 6, 6, 6, 6, 7, 7] occ 0.048 width 3.39 finite True
+adv_c0_alpha-1.0: wall 47s blobs [9, 6, 7, 7, 7, 7, 7, 6] occ 0.030 width 3.29 finite True
+adv_c0_alpha1.0: wall 43s blobs [9, 16, 26, 27, 28, 24, 25, 23] occ 0.228 width 3.52 finite True
+cell_beta0.0: wall 46s blobs [9, 6, 6, 6, 6, 6, 7, 7] width 3.39 cargo in/far 0.353/0.0128 ratio 27.6 m rim 0.200 m in 0.434
+cell_beta5.0: wall 47s blobs [9, 6, 6, 6, 6, 6, 7, 7] width 3.39 cargo in/far 0.955/-0.0199 ratio 48.0 m rim 0.200 m in 0.434
+cell_beta5.0_Km-0.5: wall 40s blobs [9, 17, 17, 16, 17, 17, 17, 17] width 3.11 cargo in/far 0.871/-0.0042 ratio 208.3 m rim 0.208 m in 0.404
+cell_beta5.0_Km0.5: wall 48s blobs [9, 0, 0, 0, 0, 0, 0, 0] width 5.33 cargo in/far nan/0.0000 ratio nan m rim nan m in nan
+cellfb_kc0.5: wall 42s blobs [9, 9, 12, 14, 17, 16, 16, 16] width 3.04 cargo in/far 0.948/-0.0380 ratio 25.0 m rim 0.167 m in 0.315
+cellfb_kc0.5_beta0.0: wall 41s blobs [9, 11, 21, 23, 24, 25, 24, 25] width 3.22 cargo in/far 0.504/0.2136 ratio 2.4 m rim 0.192 m in 0.378
+cellfb_kc0.35: wall 42s blobs [9, 9, 14, 16, 17, 17, 17, 17] width 3.11 cargo in/far 0.909/-0.0538 ratio 16.9 m rim 0.170 m in 0.354
+cellfb_kc0.25: wall 43s blobs [9, 7, 16, 19, 20, 22, 21, 21] width 3.17 cargo in/far 0.896/-0.0610 ratio 14.7 m rim 0.167 m in 0.379
+cellpop_Kg1.0: wall 47s blobs [9, 7, 7, 13, 15, 15, 15, 16] width 3.23 cargo in/far 0.959/-0.1014 ratio 9.5 m rim 0.174 m in 0.367
+cellpop_Kg3.0: wall 48s blobs [9, 6, 6, 6, 6, 6, 6, 6] width 3.22 cargo in/far 0.986/-0.0520 ratio 19.0 m rim 0.176 m in 0.364
+cellpop_Kg1.0_M0.0: wall 47s blobs [9, 7, 7, 12, 15, 15, 16, 17] width 3.24 cargo in/far 0.732/-0.0493 ratio 14.9 m rim 0.007 m in 0.136
+taxis_chi0.5: wall 39s blobs [9, 6, 6, 6, 6, 6, 6, 6] occ 0.038 width 3.38 finite True
+taxis_chi1.0: wall 37s blobs [9, 6, 7, 7, 7, 7, 7, 7] occ 0.032 width 3.32 finite True
