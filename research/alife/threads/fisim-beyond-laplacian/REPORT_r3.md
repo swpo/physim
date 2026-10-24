@@ -11,6 +11,15 @@ alive in one lineage in 1/3 seeds where every ungated arm loses it in 3/3. That 
 not heredity. The cell-filling kick (the one allowed fix) did not change the outcome. L7 is
 dropped. Planted, cell-filling markers (xcell-her) remain the thread's only true-breeding kinds.
 
+> **Correction after the committee's final review.** (1) `assay/summary_oncells.json` labels cells
+> without periodic merging, so cells cut by the box edge are counted twice: gated_fill seed 0 has 1
+> on-cell at t=300, not 2. (2) The split-frame `on_on_frac` from `assay_an.py` must not be quoted.
+> (3) My fission mechanism below is wrong. In all three judges' frames the body grows and glides out
+> from under a nearly stationary h domain, h is stranded in the neck, both daughters get a dot at the
+> inner pole, and at most one dot survives. A planted poke at t=0 in the evo2-N genome fails the same
+> way, so "planted vs arisen" is not the variable. The xcell-her success holds only in its own regime
+> (its genome and the timing of its planted, cell-filling marks).
+
 ## 2. Claims
 
 | world / assay | claimed level | strongest evidence | known weaknesses |

@@ -56,6 +56,15 @@ dynamics.
 - Arisen markers: in sprint 2, 3 on→on+off and 0 on→on+on. A small polar kick has not filled the cell before it pinches. Sprint-3 assay: the gated mark collapses into ONE daughter at the pinch (kept in 1/3 seeds); ungated Dh 0.05/0.1 lose it in 3/3, and resolved Dh 0.02 at dx=0.25 in 2/2 (so not grid pinning). A cell-filling kick gives the same result.
 - Selection S vs N (sprint 2): no difference, underpowered (~1 division per cell per 1000 t).
 
+**Committee final verdict on the arisen-marker failure.** The body glides out from under a
+stationary h domain during fission; h is stranded in the neck and at most one daughter keeps a
+dot. A planted poke in the evo2-N genome fails the same way, so planted-kind heredity (xcell-her)
+holds only in its own regime. Beyond-diffusion score: 1 (the resolved ungated arm was run only
+where the gate also fails). Final rungs: xcell-a L4b[L3] medium; xcell-evo2 L6[L3] low; xcell-her
+L3 high; xcell-div L3 high; xcell-turn retracted; L7 contradicted. Committee suggestion for a
+future lab: cross the genome with division speed, and add a taxis-carrier rescue arm (the marker
+carried along by the moving body).
+
 ## What transfers to PhySim worlds
 
 - The x-genome spec (`XGENOME_SPEC.md`): four vacuum-exact keys (band g, ch, perm with named
