@@ -141,3 +141,22 @@ chi 1.8/2.2: 22/16 cells; F 0.0054/0.0066: 11/28; th 0.135/0.165: 8 (large) / 6 
 Bounded walled cells survive every +-10% jitter; th is the most sensitive knob.
 
 Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
+
+## 9. Late checks
+- Lattice SCL, chain-based bond inhibition (my reading: a free link touching a doubly bonded link
+  may only splice): closure 0.15/0.60 (p_ext 0.05) and 0.15/0.89 (p_ext 0.5) vs 0.67/0.76
+  without. No robust gain. Also found that p_ext has **no effect** in the MIN_SEP=3 regime: the
+  single-end extension branch is never reached in 3000 sweeps (identical runs for p_ext
+  0.05/0.5/1.0); splice does all repair. McMullin's exact inhibition rule is still to check.
+- `worlds/phase_trait` (prototype for next sprint): catalyst carries a continuous trait c
+  (growth rate, Q = cK), link output b0 max(0, 1 - 3 (c - 0.2)), +-delta point mutations in a disk.
+  delta=0.03, r=2: the trait is blended away inside cells (cell traits 0.196-0.204 after 16k).
+  delta=0.1, r=5: spread grows (10-90%: 0.147-0.223 at 32k), mean drifts 0.200 -> 0.188.
+  c0=0.4 is not viable (dies by 4k). Blending inheritance in a well-mixed cell interior is the
+  obstacle: variation between cells needs discrete, cell-wide mutations.
+- phase_trait convergence test (delta=0.1, r=5, 32k steps): start c0=0.15 -> mean 0.166 (seed 0) /
+  0.164 (seed 1); start c0=0.20 -> 0.188 / 0.191. The two start points approach each other (gap
+  0.05 -> 0.025 in both seeds): preliminary sign of stabilizing selection toward c ~ 0.17-0.18,
+  between within-cell (faster) and between-cell (more links) selection. c0=0.25 is not viable.
+  Not promoted to a pack; first thing to firm up next sprint (longer runs, 3 seeds, trait
+  histograms over time).

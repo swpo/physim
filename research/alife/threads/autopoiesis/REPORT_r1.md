@@ -73,8 +73,11 @@ mobility gating, the link→phase tilt, or the phase itself. Three variants exte
 
 1. Pearling or budding division through a wall-tension term that depends on adsorbed links
    (phase_membrane), instead of starvation fission.
-2. Continuous heritable traits (c, b carried by catalyst fields, mutation noise): trait
-   trajectories and the cooperation/selfishness balance → L7 Supported, a first L8 probe.
+2. Continuous heritable trait (`worlds/phase_trait`, prototype): growth rate c is carried by the
+   catalyst, and faster c means fewer links. In a first screen, starts at c=0.15 and c=0.20
+   converge toward about 0.17-0.18 over 32k steps (2 seeds each): a hint of stabilizing
+   selection between within-cell and between-cell levels. Small mutations blend away inside a
+   cell. Firm this up (longer runs, trait histograms) → L7 Supported and a first L8 probe.
 3. Local phoresis (wall slip plus a Darcy flow) for isotropic swimming with bounded size, then a
    swim/divide cycle.
 4. Lattice SCL with chain-based bond inhibition (LITERATURE §2.7.1): a cheap check of whether the

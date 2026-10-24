@@ -37,7 +37,7 @@ META = {
 }
 
 P = dict(p_move=1.0, p_perm=0.5, p_prod=0.05, p_ext=0.05, p_init=0.002, p_join=0.9, p_splice=1.0, p_dis=0.0002, p_disf=0.005, p_bb=0.0,
-         MIN_SEP=3, s_density=0.7, n_cat=1, ring_r=9, IC="cell")
+         MIN_SEP=3, inhibit=0, s_density=0.7, n_cat=1, ring_r=9, IC="cell")
 
 DY = np.array([-1, -1, 0, 1, 1, 1, 0, -1], np.int64)   # direction d: 0=N,1=NE,2=E,...,7=NW (clockwise)
 DX = np.array([0, 1, 1, 1, 0, -1, -1, -1], np.int64)
@@ -145,7 +145,18 @@ def _try_splice(T, B, y, x, H, W, p_splice, min_sep):
 
 
 @nb.njit(cache=True)
-def _sweep(T, B, p_move, p_perm, p_prod, p_ext, p_init, p_join, p_splice, p_dis, p_disf, p_bb, min_sep):
+def _near_chain(T, B, y, x, H, W):
+    # chain-based bond inhibition (McMullin): a free link touching a doubly bonded link
+    # may only splice, not initiate or extend
+    for d in range(8):
+        ny, nx = _nb(y, x, d, H, W)
+        if T[ny, nx] == 3 and _nbonds(B[ny, nx]) == 2:
+            return True
+    return False
+
+
+@nb.njit(cache=True)
+def _sweep(T, B, p_move, p_perm, p_prod, p_ext, p_init, p_join, p_splice, p_dis, p_disf, p_bb, min_sep, inhibit):
     H, W = T.shape
     for _ in range(H * W):
         y = np.random.randint(H)
@@ -168,7 +179,7 @@ def _sweep(T, B, p_move, p_perm, p_prod, p_ext, p_init, p_join, p_splice, p_dis,
             # bonding attempt with a random Moore neighbour
             if B[y, x] == 0 and p_splice > 0:
                 _try_splice(T, B, y, x, H, W, p_splice, min_sep)
-            if B[y, x] == 0 or np.random.random() < 0.5:
+            if (B[y, x] == 0 or np.random.random() < 0.5) and not (inhibit and B[y, x] == 0 and _near_chain(T, B, y, x, H, W)):
                 d = np.random.randint(8)
                 _try_bond(T, B, y, x, d, H, W, p_ext, p_init, p_join, min_sep)
             if B[y, x] != 0:
@@ -258,7 +269,7 @@ def _plant_ring(T, B, cy, cx, r):
 
 def step(s):
     _sweep(s["T"], s["B"], P["p_move"], P["p_perm"], P["p_prod"], P["p_ext"], P["p_init"],
-           P["p_join"], P["p_splice"], P["p_dis"], P["p_disf"], P["p_bb"], P["MIN_SEP"])
+           P["p_join"], P["p_splice"], P["p_dis"], P["p_disf"], P["p_bb"], P["MIN_SEP"], P["inhibit"])
     s["t"] += 1
     return s
 
