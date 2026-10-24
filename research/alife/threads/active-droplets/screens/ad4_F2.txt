@@ -1,0 +1,13 @@
+t=0 A=2 B=2 mixed=0
+t=1818 A=2 B=3 mixed=0
+t=3636 A=2 B=2 mixed=0
+t=5454 A=2 B=2 mixed=0
+t=7272 A=3 B=2 mixed=0
+t=9090 A=3 B=2 mixed=0
+t=10908 A=3 B=2 mixed=0
+t=12726 A=3 B=2 mixed=0
+t=14544 A=3 B=2 mixed=0
+t=16362 A=3 B=2 mixed=0
+t=18180 A=3 B=2 mixed=0
+t=19998 A=3 B=2 mixed=0
+244s

@@ -1,0 +1,12 @@
+[ad3-membrane] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  19.8s
+  frame 40/200  40.0s
+  frame 60/200  59.8s
+  frame 80/200  79.6s
+  frame 100/200  99.6s
+  frame 120/200  119.8s
+  frame 140/200  139.5s
+  frame 160/200  159.5s
+  frame 180/200  179.7s
+  frame 200/200  199.7s
+  -> threads/active-droplets/packs/ad3-membrane-damage/FACTS.md  (200s sim)
