@@ -261,3 +261,26 @@ S2-E1: the uptake gene acts on the birth-death balance directly and IS selected 
 - S2-E2: ablation times were given in steps. In t (dt = 0.2): predators starve by t~540
   (chase=0), and extinction comes by t~540 (flee=0).
 - labkit v0.2 dropped the META["threshold"] fix again; re-applied in its own commit (03676da).
+
+## S3-E1. Level-of-selection audit (`worlds/fl_forager_gene2`, scripts/record_gene.py, audit_gene.py)
+Arms (128^2, 12000 steps): S (gene, per-parcel uptake), N (identical-event neutral twin: same
+event times, location quantiles and effects from rng_mut), S_body (uptake uses
+g_eff = blur5(A g)/blur5(A), so parcels within a body share one rate). N_body is not run: with
+the gene inactive, body_pheno has nothing to act on, so N_body is bit-identical to N (checked on
+seed 0: -0.008 for both).
+Snapshots every 20 steps. Bodies are periodic components of blur1(A) > 0.15. Main parent =
+largest overlap. Price split per interval (exact identity, checked: the terms sum to the total):
+between-body (growth, fission and death of bodies), within-body (1-parent children), fusion
+(>=2-parent children). "Persistent" fission = >= 2 daughters that each continue 1-to-1 for
+>= 10 intervals (200 steps). The raw labkit-style generation counts (40-49) are flicker.
+Results so far are in evo3/audit*.json and the REPORT_r3 table.
+- Seed 0: S +0.527 = between +0.689, within +0.472, fusion -0.634. 18 bodies, all high-g, at the
+  end. Visually (evo3/sheet_S_s0.png) a gradual sweep of small orange gliders through ~20 motile
+  gliders. Twin N -0.008 (between -0.233, within +0.031, fusion +0.195: noise of order 0.2).
+- Seed 1: S +0.582 = between +0.256, within +0.526, fusion -0.199. 1 body at the end.
+  evo3/sheet_S_s1.png: orange gliders appear and multiply (t~312-416), grow into multi-ring
+  giants, fuse, and absorb the last pale cell (t~1880): gigantism, then within-body dominance.
+- S_body seed 0: +0.559, but 2 bodies at the end (within +0.51 dominates). The body-scale
+  phenotype does not prevent gigantism.
+- Seed 2: S -0.198 vs N -0.224. The twins end nearly identical: in this seed selection did
+  nothing measurable.

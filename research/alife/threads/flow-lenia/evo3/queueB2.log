@@ -1,0 +1,5 @@
+seed 1 N done (orphan run)
+seed 2 ['gene_active=False']: events 46 final mean log g -0.224
+seed 3 ['gene_active=False']: events 51 final mean log g -0.334
+seed 4 ['gene_active=False']: events 45 final mean log g -0.251
+queued

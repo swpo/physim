@@ -15,7 +15,12 @@ conserves mass to 1e-12.
 | `fl_predator` | L4b[L2], L5 Weak near-Supported (r2) | prey gliders and predator gliders; predators engulf prey, prey flee | `packs/fl_predator`, `movies/showcase.mp4` |
 | `fl_cells` | L4a[L3], medium (r1) | three-channel layered cells (core, 1.5-px ring absent inside and out, crown) that re-form after 38-44% cuts | `packs/fl_cells_damage` |
 
-SPRINT3_RESULT_PLACEHOLDER
+**Sprint 3 audit (the decisive test of heredity here).** The uptake gene still shifts more than its
+identical-event neutral twin (paired S−N +0.54, +0.43, +0.03, +1.32, +0.33 over 5 seeds). But the
+body-level audit (`REPORT_r3.md`, `evo3/audit.txt`) shows that the shift is carried by within-body
+takeover and by fusion of giant bodies. High-g births do not outnumber conversions, the neutral
+twins have Price terms of the same size, and a body-scale phenotype does not change this. **My
+own rung for the heredity line: L5 (infection), not L7.**
 
 ## Mechanisms that worked (with the ablation that shows it)
 
@@ -65,4 +70,11 @@ SPRINT3_RESULT_PLACEHOLDER
 
 ## Showcase movie
 
-SHOWCASE_PLACEHOLDER
+`movies/showcase.mp4` (3.8 MB, 301 frames, 192², t = 0…2400, fixed colour scales; frames in
+`movies/showcase_sheet.png`). **Predator-prey Flow-Lenia.**
+- Two glider species run under the same mass-conserving Flow-Lenia rule (rule C2_r202) in separate channel pairs.
+- Cyan prey gliders eat a diffusing food field (magenta) and divide. They leave dark depletion wakes and flee a blurred image of the predators.
+- Orange predators are drawn up a blurred image of the prey. They absorb the prey mass they overlap and decay back into food, so the total mass is conserved.
+- Prey multiply from two noise patches to a crowd of ~30 by t≈800. The predators then grow and run them down (engulfments are visible as orange rings closing on cyan gliders), and the prey decline.
+- Predators nearly die out (minimum matter 11) but persist. The prey recover to a second peak at t≈2200.
+- One seed is shown. At 128², coexistence held in 3 of 4 seeds.
