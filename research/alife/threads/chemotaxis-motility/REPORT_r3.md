@@ -24,11 +24,16 @@ So the committee's pass criterion (births *far* exceed conversions) is **not met
 4. Prediction this makes (not run): lowering the consumption rate k toward 0 should raise prey mass continuously up to the escort level,
    and an allele that *weakens* flight should be selected only where predators are absent.
 
+## Robustness and the strict generation rule
+- evopursuit with mutation, k ±10% (seed 0): k 0.09 → 0 A / 29 B bodies; k 0.11 → 0 A / 26 B (slower). Cost 0.22 rescues; 0.30 fails (sprint 2).
+- swimfission with the strict largest-parent rule: 10 / 10 / 15 clean fissions, **max generation 3 in all 3 seeds** (the max()-rule had given 4 / 3 / 5).
+  dt/2: 12 clean fissions, generation 3 (`packs/fission_strict_swimfission_*`). My sprint-2 depths were inflated, as the committee said.
+
 ## Negative results
 - Prey-toxicity-off probe (pdeath 0): prey fill the box (prey mass 20x, one body), so it cannot separate the toxin route from the food route.
 - Births vs conversions: the committee's pass criterion fails (see the ledger).
 - Not done this sprint: identical-event neutral twins (the mutation sites depend on the state, so I could not share a schedule in time), evopursuit
-  at 1.5-2x resolution and ±10% k/cost, swimfission dt/2 and a resolution change, the clipping-loss log, the n=0 fork packs, and the Laplacian-only
+  at 1.5-2x resolution, the ±10% cost check (k ±10% done), a swimfission resolution change (dt/2 done), the clipping-loss log, the n=0 fork packs, and the Laplacian-only
   slow-inhibitor control. Literature entries for §2.6 are in `LITERATURE_2.6_additions.md` (thread directory; not merged into LITERATURE.md).
 
 ## Deliverables

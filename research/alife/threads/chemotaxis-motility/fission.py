@@ -24,7 +24,8 @@ from labkit.world import load_world  # noqa: E402
 
 args = [a for a in sys.argv[1:] if "=" not in a]
 kv = dict(a.split("=") for a in sys.argv[1:] if "=" in a)
-opt = {k: float(kv.pop(k)) for k in ("every", "quiet", "surv", "thr", "size") if k in kv}
+opt = {k: float(kv.pop(k)) for k in ("every", "quiet", "surv", "thr", "size", "strict") if k in kv}
+STRICT = bool(opt.get("strict", 1))
 W = load_world(args[0])
 for k, v in kv.items():
     W.P[k] = float(v)
@@ -111,7 +112,10 @@ for fi, (tt, lab, n) in enumerate(frames):
             tracks[ps[0]]["end"] = tt
             continue
         # birth of a new track: by split (one parent, several children), merge, or nucleation
-        tracks[nid] = {"birth": tt, "end": tt, "parents": ps, "last_merge": -1e9}
+        parea = np.bincount(prev_lab.ravel(), minlength=prev_lab.max() + 1)
+        big = [p for p in links[j] if p in cur]
+        tracks[nid] = {"birth": tt, "end": tt, "parents": ps, "last_merge": -1e9,
+                       "largest": cur[max(big, key=lambda p: parea[p])] if big else None}
         if len(ps) == 0:
             tracks[nid]["born_by"] = "nucleation"
         elif len(ps) > 1:
@@ -152,7 +156,8 @@ for tid in sorted(tracks):          # track ids increase with birth time, so par
     if tid in clean_parent:
         gen[tid] = gen.get(clean_parent[tid], 0) + 1
     elif tr["parents"]:
-        gen[tid] = max(gen.get(q, 0) for q in tr["parents"])
+        # strict rule (committee r2): inherit the LARGEST parent's generation, not the max over parents
+        gen[tid] = gen.get(tr.get("largest"), 0) if STRICT else max(gen.get(q, 0) for q in tr["parents"])
     else:
         gen[tid] = 0
 ncomp = [f[2] for f in frames]

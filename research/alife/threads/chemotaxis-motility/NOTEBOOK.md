@@ -229,3 +229,7 @@ than predator-free prey (586-769), so the allele may turn the predator into a ne
 - Showcase: `movies/showcase.mp4` (192², seed 0): A32/B0 at t=200 → A8/B7 at t=750 → A0/B45 at t=1460, which also reproduces the sweep on a larger domain.
 
 Sprint 3 ended ~20:15 UTC.
+- Robustness, evopursuit k ±10% (seed 0, with mutation, t=1500): k 0.09 → A0/B29 (predators +62%); k 0.11 → A0/B26 (slower sweep, predators +12%).
+  Cost +47% (0.22) already rescued in sprint 2; cost 0.30 fails.
+- swimfission with the strict largest-parent rule (`fission.py`, now default strict=1): clean fissions 10 / 10 / 15, **max generation 3 / 3 / 3**
+  (the old max()-rule gave 4 / 3 / 5). dt/2 (seed 0): 12 clean fissions, max generation 3. `packs/fission_strict_swimfission_*`.
