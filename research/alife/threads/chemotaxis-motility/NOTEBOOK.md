@@ -132,3 +132,26 @@ Screens are in `screens/`, and file names encode the parameter overrides.
   next sprint needs an explicit size-selection operator.
 
 Sprint 1 ended ~16:05 UTC.
+
+# Sprint 2 (started 16:37 UTC)
+Committee digest: division needs core starvation + slow interior transport (active-droplets, autopoiesis); L7 bar = variation
+during the run + neutral control + 3 seeds. Challenge: fork a mechanism from another thread.
+
+## fission.py: dense tracker for clean fission
+labkit samples every 6 t and cannot separate division from collision debris. `fission.py` samples every 2 t, links by overlap
+of 2-px-dilated masks, and calls a split CLEAN when the parent's lineage had no merge for >= 40 t and >= 2 children
+survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a crop strip of the first 4 clean fissions.
+(Fixed a bug where generations were assigned before propagation.)
+
+- toxforage (Da 4), 128², t=1200: 58 splits, **3 clean fissions** (strip: an elongated hook swimmer pinches into two). Max gen 1.
+  So the sprint-1 world already reproduces, rarely.
+- Screens (128², t=1200, seed 0): g 0.15 / kd 0.0075 → 2 clean fissions; ka 0.2 / chi_a 48 → 8; **Da 2 → 11 (gen 5)**; Da 1 → 0
+  (bodies too small to grow); r 0.1 / g 0.15 → 707 splits, 0 clean (fragmenting mess).
+
+## swimfission = toxforage with Da 2 (attractant range 6.3 → 4.5 px) — `worlds/swimfission`, `packs/swimfission`
+- `packs/fission_swimfission_s{0,1,2}.json/_strip.png` (160², t=1200): **10 / 10 / 15 clean fissions, max generation 4 / 3 / 5**,
+  ~11 bodies late. Strips show binary fission: a swimmer elongates along its heading, pinches at the waist into two equal
+  daughters, and they swim apart.
+- labkit pack: 43-45 moving tracks per seed (up to 27 body lengths), persistent splits 3-8, labkit max generation 2-3.
+- Mechanism: growth at the front lengthens the body along its axis. Once the length exceeds ~2x the attractant range, the
+  cohesion cannot hold the two ends and the waist thins (the active-droplets rule "body > internal transport length").
