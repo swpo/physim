@@ -136,3 +136,27 @@ convergence (off by default; tested below). R2=1 (no territory shell).
     the majority more easily while the spore group is small), so selection acts at germination
     as well as on cell reproduction.
   - `screens/K_{sel,neu}_s{0,1,2}_lineage.png`, `_types.png`; movie `screens/K_sel_s0.mp4`.
+
+## T2. Fork: gated food mobility at the membrane (lab convergence #1)
+D_F -> D_F exp(-beta nM), nM = membrane particles within 0.5. Food is slowed where membrane
+is dense, so it piles up against cells. (sporecell2, mu=0.1, k_cat1=0.065, seed 0, t=240.)
+- beta=0.3: thick membrane-coated cells; most early cells die (12 -> 2) and none reproduces
+  during the run. The 2 survivors keep a full orange ring to t=240, so the membrane no longer
+  disappears when free food runs low. At t=240 one bursts into a spore cloud.
+  `screens/gate2_types.png`.
+- beta=1.0: a life cycle. Membrane-coated cells grow slowly (t=88-152), then one bursts
+  (t~174) into a cloud of spores that colonise the box as bare cells (2 -> 13 cells, gen 3).
+  `screens/gate5_types.png`, movie `screens/gate5.mp4`.
+- Reading: the gate keeps food in contact with the rim, and contact is the membrane's induction
+  signal, so the ring is maintained. But it also keeps food away from the catalytic core.
+  The membrane becomes a growth-limiting barrier, and reproduction comes in bursts.
+- gated beta=1 seeds 1 and 2 (t=300): the same cycle (ringed cells t=28-110, bursts at ~110-136,
+  then bare daughters), gen 6 and 6, kind 1 takes over (13/17, 18/23). After the burst, free
+  food is too low to induce rings on the daughters.
+- damage on a gated ring cell (seed 1, t=80, half the particles -> food): resealed to a full
+  thick ring within 6 time units, and the ring held for 54 time units, like the control
+  (membrane fraction 0.6-0.78 throughout). `screens/D_gate.png`.
+- maintenance cost with the gate: k_dec=0.015 or 0.03 -> extinct. The gated cell cannot pay a
+  higher turnover because its membrane also slows food in. Negative.
+- Movie: `screens/lifecycle.mp4` (seed 1, a snapshot every 40 steps, t=0-240) shows ring cells
+  growing, bursting into magenta spore clouds, and the kind-1 colony spreading.

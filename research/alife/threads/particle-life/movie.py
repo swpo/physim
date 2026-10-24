@@ -30,7 +30,11 @@ def main():
     L, dt = float(z["L"]), float(z["dt"])
     X, T = z["x"].astype(np.float32), z["t"]
     frames = [frame(X[k], T[k], L, size, f"{tag}  t={k * dt:.0f}") for k in range(len(X))]
-    R.save_movie(frames, f"screens/{tag}.mp4", fps=15)
+    R.save_movie(frames, f"scratch/{tag}_raw.mp4", fps=15)
+    import subprocess
+    import imageio_ffmpeg
+    subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(), "-loglevel", "error", "-y", "-i", f"scratch/{tag}_raw.mp4",
+                    "-c:v", "libx264", "-crf", "32", "-preset", "slow", "-pix_fmt", "yuv420p", f"screens/{tag}.mp4"], check=True)
     pick = np.linspace(0, len(frames) - 1, 6).astype(int)
     R.contact_sheet([frames[k] for k in pick], [f"t={k * dt:.0f}" for k in pick], ncols=6,
                     title=f"{tag}: grey food, cyan core (kind 0), orange membrane, magenta core (kind 1)").save(f"screens/{tag}_poster.png")
