@@ -1,0 +1,41 @@
+[ad7t-thick] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  39.0s
+  frame 40/200  82.0s
+  frame 60/200  125.7s
+  frame 80/200  167.5s
+  frame 100/200  208.0s
+  frame 120/200  252.4s
+  frame 140/200  296.1s
+  frame 160/200  343.0s
+  frame 180/200  388.9s
+  frame 200/200  433.4s
+  -> threads/active-droplets/packs/ad7t-thick/seed0/FACTS.md  (433s sim)
+[ad7t-thick] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  46.2s
+  frame 40/200  90.6s
+  frame 60/200  133.9s
+  frame 80/200  174.9s
+  frame 100/200  221.6s
+  frame 120/200  266.3s
+  frame 140/200  314.6s
+  frame 160/200  361.1s
+  frame 180/200  404.1s
+  frame 200/200  450.7s
+  -> threads/active-droplets/packs/ad7t-thick/seed1/FACTS.md  (451s sim)
+[ad7t-thick] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  52.2s
+  frame 40/200  93.8s
+  frame 60/200  136.1s
+  frame 80/200  175.5s
+  frame 100/200  215.6s
+  frame 120/200  252.7s
+  frame 140/200  290.7s
+  frame 160/200  329.9s
+  frame 180/200  368.9s
+  frame 200/200  405.9s
+  -> threads/active-droplets/packs/ad7t-thick/seed2/FACTS.md  (406s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 12 | 6 | 198 | 0 | 3 | 7 | 4 | 0.11 |
+| 1 | ok | 11 | 4 | 201 | 0 | 5 | 6 | 2 | 0.12 |
+| 2 | ok | 13 | 6 | 201 | 0 | 3 | 9 | 3 | 0.1 |

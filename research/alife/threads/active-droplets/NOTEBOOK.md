@@ -159,3 +159,20 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
 - Custom renderer from pack frames: fuel = background brightness, body colour = dominant allele, amphiphile =
   white rim. `packs/ad5-evolve/seed0/protocells.{mp4,png}`, `packs/ad7-gated/seed2/protocells.{mp4,png}`.
   ad5: a mutant shows up as half of an ancestral droplet (t=3700) before taking it over.
+
+## ad7 with 4x dilution (ad7-gated-d4 vs ad7n-neutral-d4), 3+3 seeds, `packs/ad7-gated-d4/alleles.png`
+- End [kp0, kp0.5, kp1.5, kp4]: selection [3,0,2,0], [1,4,3,2], [3,3,0,2] (23 droplets); neutral (all kp=0)
+  [2,0,0,0], [2,2,0,0], [2,0,0,2] (10 droplets). Membrane alleles take 16/23 and the population is 2.3x larger
+  than the membrane-less control, which dwindles under dilution. Allele 1 (predicted optimum) 7/23, allele 2 5/23,
+  allele 3 4/23: the optimum is not resolved from this side.
+
+## Fitness landscape and mechanism ablations (single allele, no mutation, seed 0, droplets at t=8000)
+- kp: 0 -> 4, 0.2 -> 7, 0.5 -> 12, 1.0 -> 11, 1.5 -> 10, 2.5 -> 9, 4 -> 6 (`screens/ad7_landscape.png`). Single peak.
+- Ablate catalyst gating (bc=0) at kp=0.5: 3 droplets (benefit gone; only the fuel cost remains).
+- Ablate fuel gating (bu=0) at kp=4: 12 droplets (cost gone; thick = optimum). Both predictions confirmed:
+  the optimum = retention benefit (bc) vs uptake cost (bu) of one gating operator.
+
+## ad7t-thick: two-sided test, ancestor = thick membrane allele 3 (kp=4), dil 0.002
+- End [kp0, kp0.5, kp1.5, kp4]: [1,5,4,2], [0,7,3,1], [2,2,4,5] (36 droplets). Intermediate alleles 25/36,
+  thick ancestor 8/36. `packs/ad7t-thick/seed1/protocells.{mp4,png}`: red thick-shelled small cells are replaced by
+  green/yellow thinner-membrane cells that divide. Neutral control (all kp=4) running: ad7tn-neutral.
