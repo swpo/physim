@@ -136,35 +136,9 @@ def stats(s):
 
 
 def damage(s, mask):
-    """labkit gives a disk at the centroid of the largest component (only the interior of a
-    walled cell, and mis-placed for cells wrapping the periodic edge). We use it only to pick
-    the cell: take the phi > 1/2 component under the mask, compute its periodic centre and
-    equivalent radius R, and reset to bath (S=1, catalysts=L=phi=0) a disk of radius 0.8 R
-    centred 0.8 R from the cell centre along +x. That cuts the wall and ~30% of the cell; the
-    erased fraction is stored in s["damage_frac"]."""
-    from scipy import ndimage
-    phi = s["phi"]
-    H, W = phi.shape
-    lab, n = ndimage.label(phi > 0.5)
-    for ax in (0, 1):  # merge labels across the periodic edges
-        a, b = (lab[0], lab[-1]) if ax == 0 else (lab[:, 0], lab[:, -1])
-        for u, v in zip(a, b):
-            if u and v and u != v:
-                lab[lab == v] = u
-    ids = lab[mask & (lab > 0)]
-    if len(ids) == 0:
-        return s
-    cell = lab == np.bincount(ids).argmax()
-    ys, xs = np.nonzero(cell)
-    cy = np.angle(np.exp(2j * np.pi * ys / H).mean()) * H / (2 * np.pi) % H
-    cx = np.angle(np.exp(2j * np.pi * xs / W).mean()) * W / (2 * np.pi) % W
-    R = np.sqrt(cell.sum() / np.pi)
-    yy, xx = np.mgrid[0:H, 0:W]
-    dy = (yy - cy + H / 2) % H - H / 2
-    dx = (xx - cx - 0.8 * R + W / 2) % W - W / 2
-    hole = dy ** 2 + dx ** 2 <= (0.8 * R) ** 2
-    s["damage_frac"] = float((hole & cell).sum() / cell.sum())
-    s["S"][hole] = 1
+    """Honour labkit's mask (labkit v0.2 places it on a mature cell, core/rim/half): reset the
+    masked pixels to the bath (S=1, catalyst = links = phi = 0)."""
+    s["S"][mask] = 1
     for k in ("K", "L", "phi"):
-        s[k][hole] = 0
+        s[k][mask] = 0
     return s

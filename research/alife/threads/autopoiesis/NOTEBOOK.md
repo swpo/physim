@@ -344,3 +344,7 @@ disk-hit and other), flips, conversions (1:1 kind change without a flip), first 
   so a different realization of the event stream; 2 seeds): K2 biomass share up 0.93/0.80 vs
   twin 0.64/0.29; K2 births 37/45 vs 6/17. Hygiene: conversions 0/6 (<= flips 5/12), first
   acquisitions 0/1. Same direction as dt=1.
+- committee note (labkit v0.2): phase_membrane's damage() now honours labkit's mask (reset
+  the masked pixels to bath). Rerun with `--damage 120:0.5:rim` on 3 seeds: measured loss
+  21.4/24.9/40.9%; s2 recovers to 0.94x by +400 t and divides, s0 to 0.99x, s1 lost by +400 t.
+  The earlier packs (own-disk hook, 30-32%) are replaced.
