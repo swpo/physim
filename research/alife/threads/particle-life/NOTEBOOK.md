@@ -227,3 +227,14 @@ with no previously clustered particle; qualifying birth >= 20 samples and not en
 - SALR (B=-1 on all core pairs to R2=2.5; R2): 4 qualifying births, gen 1, 30 deaths, 5 cells, 0.4 free spores.
 - With converged motion, every route so far gives deaths >> births (15-16 vs 2-2.5 per 100 t):
   the populations decline. Neither reaches gen >= 2 by t=200.
+- **Strong detachment k_det=0.05, n_det=60 (R3), seed 0, dt 0.02 vs dt 0.01 (both step-safe), t=200:**
+  free spores 116 vs 124 (+6%); qualifying births per 100 t 5.9 vs 6.4 (+8%); cells at t=200
+  31 vs 29 (-6%); merge-aware max gen 2 vs 2. Deaths 16 vs 23 per 100 t; merges 50/45,
+  fragments 52/52. Passes the committee's 20% gate on this seed.
+- R3 seed 1, dt 0.02 vs 0.01: free spores 110 vs 96 (-12%); births/100 t 4.95 vs 5.94 (+20%, the
+  limit; 10 vs 12 births); cells at t=200 28 vs 28; max gen 2 vs 3. Borderline pass.
+- Lineage caveat: spores shed before the parent first reaches 15 particles carry no parent label
+  and count as founders (gen-0 counts 25-31), so generation counts are lower bounds.
+- Twin, seed 0, T=300 (k_det=0.05 route): selected kind-1 share 0.36 (t<100) -> 0.45 (t>=100), final 14/29;
+  neutral 0.18 -> 0.15, final 4/30. Kind-1 births 5 vs intact-cell conversions 4 (selected): conversions
+  are NOT far fewer than births, so the committee's (b) criterion fails on this pair. One seed only.
