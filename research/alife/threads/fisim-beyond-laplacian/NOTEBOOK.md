@@ -100,3 +100,14 @@ the initial cells get an h poke.
 - kb=0.25 / 0.32 (kh=0.25): two kinds coexist for 300 time units: h-on cells (larger)
   and h-off cells (small) — neither switches. On-cells start to elongate and divide only
   at t≈250-300 (`screens/her_kb0.32.png`).
+- kb=0.32, kh=0.4, T=500: on-cells grow into long rods (membrane-wrapped, h fills them)
+  that do not pinch; off-cells shrink and vanish under the global cap. Selection between
+  kinds, but no reproduction (`screens/her_kb0.32_kh0.4.png`).
+- kb=0.32, kh=0.1 + xcell-div cargo drive (kc=0.25): same rods. The bistable h domain is a
+  front with positive drive inside the body; it keeps invading and stretches the cell
+  instead of letting it pinch (`screens/her_kb0.32_kh0.1_kc0.25.png`). Negative.
+
+**A1 ablation pack xcell-div-nogate (β=0)**: cells STILL divide: 8 persistent splits, max
+generation 2, 16 cells at T=400, and they stay motile (23 tracks ≥1 body length, max 8.7)
+(`packs/xcell-div-nogate`). The division engine is the RD cargo feedback + global cap;
+the gate roughly doubles the number of divisions (13-15 vs 8) and stops motility.
