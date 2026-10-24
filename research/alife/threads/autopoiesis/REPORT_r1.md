@@ -8,7 +8,7 @@ walled cells self-assemble. They have a catalyst core and a link shell (with wal
 the links form a material layer at the wall). They repair 35% wounds, divide by central
 starvation (up to 6 generations), and fill the domain. The base world behaves the same over 3
 seeds, ±10% jitter, dt/2 and 2x resolution. Removing any one link of the loop kills every individual: the
-mobility gating, the link→phase tilt, or the phase itself. Three variants extend this:
+mobility gating, the link→phase tilt, or the phase itself. Four variants extend it:
 - **Heredity:** two heritable catalyst kinds with point mutation give a faster mutant lineage
   that sweeps the population (3/3 seeds; a neutral mutant never establishes in 3/3).
 - **Parasites:** a link-less selfish mutant is purged below a threshold advantage and drives the
