@@ -112,3 +112,10 @@ Sprint 1 started 2026-10-24 14:29 UTC. Tools: `screen.py` (quick strip of all ch
   `screens/ad3_damage_vs_ctrl.png` (top control, bottom damaged).
 - Numerics: ad1 with dt 0.25 vs 0.5, same simulated time: identical droplet counts at every frame and identical field
   ranges (`screens/num_ad1_dt*.png`). Resolution change not tested.
+
+## ad3s-soup: membrane droplets from an unstructured start
+- 8 random blobs (random radius 1.5-6, random amplitude), no planted disks. `packs/ad3s-soup`, 3 seeds: blobs grow,
+  hollow, break up and pinch into 15-18 membrane-wrapped droplets; 8-12 persistent splits, gen 2-3; psi rim
+  0.69-0.73 vs core 0.18. All division before t~5000, then a static lattice (same limitation as ad1).
+
+Sprint 1 ended 16:15 UTC. Report: `REPORT_r1.md`.
