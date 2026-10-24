@@ -211,3 +211,15 @@ cell-scale h kicks (σ 1.5, amp 2.5) anywhere in the box (`mkevo2.sh`, KICK_RATE
 **E3 decision (17:22):** turnover is IMPOSED by chemostat-style dilution (Poisson disk erasure,
 radius 5, rate 0.1), identical in all arms; kicks 0.005; selection wch=0.15 (S) vs 0 (N).
 `xcell-evo2-S`, `xcell-evo2-N`: 3 seeds each, T=2000, 128². The L arm is not run this sprint (CPU).
+
+**E4 result: xcell-evo2 S vs N (3 seeds each, T=2000, 128², imposed dilution).** `packs/xcell-evo2-{S,N}/seed*/kinds.json`.
+- Turnover: splits and deaths in most 200-t windows after t=400, but slow: 9-13 splits and
+  6-11 deaths per run among ~10-12 cells (roughly 1 division per cell per 1000 t).
+- Variation: on-kinds arise in-run from kicks: gains S 3/1/2, N 1/2/0. An arisen on-cell
+  persists for up to ~1200 t (S seed 0, sheet t=790-2000, white cell bottom left).
+- Heredity in-run: **0 on→on+on divisions in all 6 runs**; 1 on→on+off in S0, S1 and N1.
+- Selection: final on-cells S 1/0/2 vs N 1/1/0; on-fraction over the last quarter S
+  0.09/0.00/0.11 vs N 0.09/0.04/0.00. **No difference.** Underpowered: with ~1 division per
+  cell per 1000 t, an arisen on-cell gets about one chance to divide before dilution removes it.
+- The xcell-evo2 genome does not reach the division rate of xcell-her (its 11-14 splits came
+  from a planted, synchronous founder burst).
