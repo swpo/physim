@@ -227,3 +227,15 @@ food (worlds/mcfd-MIRd).**
 
   So a maintenance cost removes free dormancy and turns the boom-to-dormancy or boom-to-extinction
   outcomes into a sustained consumer-resource cycle. Pack: `packs/mcfd-MIRd`.
+
+**C3. Packs and robustness of the cycle.** `packs/mcfd-MIRd` (128², 3 seeds, 14000 steps): all
+seeds persist (3, 6 and 10 cells at the end; peaks of 25-28). Seed 2 shows 4 clean cycles with
+period ≈380 time units, with matter and food in antiphase.
+- **decay 0.025:** static fed lattice (~32 cells, food 0.6).
+- **decay 0.035:** oscillating, 4-13 cells, alive at step 10000.
+- **dt/2 (T=20, seed 2, 28000 steps = same 1400 time units):** about 2.5 cycles (troughs of 5-6
+  cells), then **extinct at t≈1000** at a trough.
+
+The cycle needs decay of about 0.03 or more, and survival through troughs is fragile: a small
+population at the trough can be lost. A bigger grid or a spatially patchy food supply should help
+(next sprint).
