@@ -217,3 +217,20 @@ phoresis; fusion should let K2 take over prey cells.
   Diagnosis: moving toward prey means moving into the prey's substrate-depletion halo; hunters
   starve before contact. An ecological negative: chemotaxis to prey is suicidal for a predator
   that eats substrate, not prey.
+
+## 14. motile_trait: evolution of motility itself (`worlds/motile_trait`, `worlds/motile_trait_tox`)
+Catalyst carries mu (phoretic mobility) and a neutral tag as co-moving masses (Qm = mu K,
+Qt = tag K); per-cell mu drives rigid phoresis up <grad S>. Each step, p=0.002 for a +-delta
+mutation of mu in a 4-px disk, and independently the same for the tag (same rate, same size:
+the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic waste kd.
+- delta=0.3, 32k steps: mu - tag at the end = +0.03/-0.03/-0.18 (kd=0) and +0.13/+0.20/+0.04
+  (kd=0.02). Direction as predicted under toxin, but weak. Logs in `runs/mt_*.log`.
+- delta=0.6, 48k steps (`runs/mt6_*.log`, `screens/motility_evolution.png`):
+  kd=0.02: mu 1.98/1.85/2.08 vs tag 1.09/1.43/0.75 -> mu - tag = +0.89/+0.42/+1.33 (3/3 up).
+  kd=0: mu 1.21/1.01 vs tag 1.39/1.47 in seeds 1 and 2 (populations grow to 48-52 cells);
+  seed 0 instead: mu rises to 2.33 while its population falls 14 -> 3 cells.
+- reading: waste toxicity selects for motility (a swimmer leaves its waste behind); without
+  waste, motility costs reproduction and declines in large populations. The odd seed suggests a
+  positive feedback (motile -> fewer divisions -> sparse population -> swimming toward food pays):
+  possibly two evolutionary attractors. Hypothesis only; populations at kd=0.02 are small
+  (2-10 cells) so drift is strong (see the tag).

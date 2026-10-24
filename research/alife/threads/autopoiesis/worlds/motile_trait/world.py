@@ -26,7 +26,7 @@ META = {
 }
 
 P = dict(DS=0.2, DK=0.1, DL=0.1, Dp=0.1, r=0.2, a=4.0, th=0.15, F=0.006, k=0.0649, b=0.05, dL=0.02,
-         gate=1, gateK=1, nophase=0, noise_amp=0.3, noise_mean=0.5, noise_KL=0.5, dt=1.0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=4, R0=6, IC="spots", p_mut=0.002, mut_r=4, mu0=1.5, tag0=1.5, delta_mu=0.3, mu_max=5.0, Dw=0.05, pw=0.01, dw=0.005, kd=0.0, vclip=0.4)
+         gate=1, gateK=1, nophase=0, noise_amp=0.3, noise_mean=0.5, noise_KL=0.5, dt=1.0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=4, R0=6, IC="spots", p_mut=0.002, mut_r=4, mu0=1.5, tag0=1.5, delta_mu=0.6, mu_max=5.0, Dw=0.05, pw=0.01, dw=0.005, kd=0.0, vclip=0.4)
 
 
 def lap(u):
