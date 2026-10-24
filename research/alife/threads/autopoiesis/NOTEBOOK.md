@@ -82,3 +82,27 @@ blobs (phi profile radius 6, K and L in radius 4); everything else self-organize
 - the labkit damage disk sits at the centroid of the largest component: for a walled cell it
   only hits the interior, and for a cell wrapped over the periodic edge the mask is misplaced.
   My worlds' damage() hooks re-find the cell and cut its wall (documented in the hook).
+- 2x resolution (256^2, D x4, dt 0.25, same layout): cells 8/10/16/22/31/35/38/49 at
+  t=1k..8k vs 8/10/-/24/-/36/-/47 at base. Qualitatively and quantitatively the same.
+- **from noise** (`worlds/phase_protocell_noise`, φ = smoothed Gaussian noise with mean 0 and sd
+  0.15-0.25, K ~ U[0,0.6], L ~ U[0,0.1]): 6/6 tries reach 44-51 cells at t=8000, even from a
+  3-8 px initial nucleus. Pack: 22-24 blobs at t=350, 11-19 survivors at t=650, 42-43 cells and
+  gen 3-4 at t=8000.
+- after LITERATURE.md arrived: closest prior art is the chemoton/vesicle line (Macia & Sole:
+  Turing instability inside a vesicle drives division; Ono & Ikegami lattice cells divide).
+  The specific construction (Allen-Cahn wall tilted by an internal product + phi^2 mobility
+  gating) is not in the file.
+
+## 5. Heredity: phase_kinds (two catalyst kinds, stochastic point mutation K1 -> K2)
+- K2 faster (c2=0.3 vs 0.2), same link output: K2 lineage sweeps in 3/3 seeds
+  (`packs/phase_kinds/seed*/kinds.png`): K1 cells peak ~49 at t~11k, then fall to 0 by t~25k,
+  while K2 cells rise to 28-33. Mixed cells are rare and transient (within-cell takeover is fast).
+- parasite K2 (c2=0.3, b2=0, no links): infected cells turn pale and die before becoming pure
+  K2; the population declines to extinction by t~25k in 3/3 seeds (`packs/phase_kinds_parasite`).
+- parasite threshold (screens, 32k steps): c2=0.24 -> purged in 3/3 seeds (45-51 cells); c2=0.27
+  -> seed 0 extinct at 32k, seed 1 down to 3 cells; c2=0.30 -> extinct ~25k.
+- controls: no mutation (c2 irrelevant): 52 cells, stable to t=32k. Neutral mutant (c2=c1=0.2):
+  K2 never forms a cell, 52 K1 cells at 32k (seed 0). So the sweep needs the advantage and the
+  collapse needs the parasite.
+- open question: why do K1 cells die faster than mutation events hit them in the parasite runs?
+  Hypothesis: infected cells grow fast, hog substrate and starve neighbours before dying.
