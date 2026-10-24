@@ -104,3 +104,5 @@ probability mu. Cross-kind adhesion 0.2 (cells sort by kind); kind 1 self-adhesi
   (3 seeds; known shell-around-core particle-life cells as an L3 baseline).
 - Labkit metric note: spore reproduction is invisible to the image tracker (0 splits, many
   nucleations), because the parent-to-daughter link is one particle below threshold.
+- sporecell (B on) lineage on seeds 1 and 2: max gen 2 but only 1 gen-2 individual each (34/36 births).
+  So with B, reproduction is essentially one generation of ~35 daughters; multi-generation needs B off.
