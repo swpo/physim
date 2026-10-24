@@ -32,7 +32,7 @@ META = {
 }
 
 P = dict(DS=0.2, DK=0.1, DL=0.1, Dp=0.1, r=0.2, a=4.0, th=0.15, F=0.006, k=0.0649, b=0.05, dL=0.02,
-         gate=1, gateK=1, nophase=0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=4, R0=6, IC="spots")
+         gate=1, gateK=1, nophase=0, scale=1, noise_amp=0.3, noise_mean=0.5, noise_KL=0.5, noise_K=0.5, dt=1.0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=4, R0=6, IC="spots")
 
 
 def lap(u):
@@ -55,15 +55,18 @@ def init(seed, size):
     yy, xx = np.mgrid[0:H, 0:W]
     if P["IC"] == "spots":
         for _ in range(P["nspots"]):
-            y, x = rng.integers(0, H), rng.integers(0, W)
+            sc = P["scale"]  # resolution test: same layout, lengths x sc, diffusivities x sc^2
+            y, x = rng.integers(0, int(H / sc)) * sc, rng.integers(0, int(W / sc)) * sc
             d2 = ((yy - y + H / 2) % H - H / 2) ** 2 + ((xx - x + W / 2) % W - W / 2) ** 2
-            m = d2 <= 16
+            m = d2 <= 16 * sc * sc
             S[m], K[m], L[m] = 0.5, P["K0"], 0.5
-            phi = np.maximum(phi, 0.5 * (1 - np.tanh((np.sqrt(d2) - P["R0"]) / 1.5)))
-    else:  # noise: random patches of catalyst, no phase
-        K = 0.3 * (rng.random((H, W)) < 0.002)
-        L = K.copy()
-        phi = K.copy()
+            phi = np.maximum(phi, 0.5 * (1 - np.tanh((np.sqrt(d2) - P["R0"] * sc) / (1.5 * sc))))
+    else:  # noise: smoothed random fields everywhere, no planted structure
+        from scipy import ndimage
+        n = ndimage.gaussian_filter(rng.standard_normal((H, W)), 3, mode="wrap")
+        phi = np.clip(P["noise_mean"] + n / n.std() * P["noise_amp"], 0, 1)
+        K = P["noise_K"] * rng.random((H, W))
+        L = P["noise_KL"] * rng.random((H, W))
     K += 0.01 * rng.random((H, W)) * phi
     return {"S": S, "K": K, "L": L, "phi": phi}
 
@@ -78,14 +81,16 @@ def step(s):
         auto = P["c"] * S * K * (1 - K) * phi
         kdec = P["dK"]
     prodL = P["b"] * K * S
-    lim = np.minimum(1.0, 0.5 * S / np.maximum(auto + prodL, 1e-12))
+    lim = np.minimum(1.0, 0.5 * S / np.maximum(P["dt"] * (auto + prodL), 1e-12))
     auto, prodL = auto * lim, prodL * lim
-    s["S"] = np.maximum(S + P["DS"] * lap(S) - auto - prodL + P["F"] * (1 - S), 0)
-    s["K"] = np.maximum(K + mob_div(K, g if P["gateK"] else np.ones_like(g), P["DK"]) + auto - kdec * K, 0)
-    s["L"] = np.maximum(L + mob_div(L, g, P["DL"]) + prodL - P["dL"] * L, 0)
+    h = P["dt"]
+    s2 = P["scale"] ** 2
+    s["S"] = np.maximum(S + h * (s2 * P["DS"] * lap(S) - auto - prodL + P["F"] * (1 - S)), 0)
+    s["K"] = np.maximum(K + h * (mob_div(K, g if P["gateK"] else np.ones_like(g), s2 * P["DK"]) + auto - kdec * K), 0)
+    s["L"] = np.maximum(L + h * (mob_div(L, g, s2 * P["DL"]) + prodL - P["dL"] * L), 0)
     if P["nophase"]:
         s["phi"] = np.ones_like(phi); return s
-    s["phi"] = np.clip(phi + P["Dp"] * lap(phi) + P["r"] * phi * (1 - phi) * (phi - 0.5 + P["a"] * (L - P["th"])), 0, 1)
+    s["phi"] = np.clip(phi + h * s2 * P["Dp"] * lap(phi) + h * P["r"] * phi * (1 - phi) * (phi - 0.5 + P["a"] * (L - P["th"])), 0, 1)
     return s
 
 
@@ -107,18 +112,35 @@ def stats(s):
 
 
 def damage(s, mask):
-    """move labkit's centroid disk outward by the cell's equivalent radius along +x so it
-    removes part of the wall and interior; reset to bath inside the disk."""
-    H, W = mask.shape
-    ys, xs = np.nonzero(mask)
-    if len(ys) == 0:
+    """labkit gives a disk at the centroid of the largest component (only the interior of a
+    walled cell, and mis-placed for cells wrapping the periodic edge). We use it only to pick
+    the cell: take the phi > 1/2 component under the mask, compute its periodic centre and
+    equivalent radius R, and reset to bath (S=1, catalysts=L=phi=0) a disk of radius 0.8 R
+    centred 0.8 R from the cell centre along +x. That cuts the wall and ~30% of the cell; the
+    erased fraction is stored in s["damage_frac"]."""
+    from scipy import ndimage
+    phi = s["phi"]
+    H, W = phi.shape
+    lab, n = ndimage.label(phi > 0.5)
+    for ax in (0, 1):  # merge labels across the periodic edges
+        a, b = (lab[0], lab[-1]) if ax == 0 else (lab[:, 0], lab[:, -1])
+        for u, v in zip(a, b):
+            if u and v and u != v:
+                lab[lab == v] = u
+    ids = lab[mask & (lab > 0)]
+    if len(ids) == 0:
         return s
-    r = np.sqrt(len(ys) / np.pi)
-    R = r / np.sqrt(0.3)
-    cy, cx = ys.mean(), xs.mean() + 0.8 * R
+    cell = lab == np.bincount(ids).argmax()
+    ys, xs = np.nonzero(cell)
+    cy = np.angle(np.exp(2j * np.pi * ys / H).mean()) * H / (2 * np.pi) % H
+    cx = np.angle(np.exp(2j * np.pi * xs / W).mean()) * W / (2 * np.pi) % W
+    R = np.sqrt(cell.sum() / np.pi)
     yy, xx = np.mgrid[0:H, 0:W]
     dy = (yy - cy + H / 2) % H - H / 2
-    dx = (xx - cx + W / 2) % W - W / 2
-    hole = dy ** 2 + dx ** 2 <= (1.2 * r) ** 2
-    s["S"][hole], s["K"][hole], s["L"][hole], s["phi"][hole] = 1, 0, 0, 0
+    dx = (xx - cx - 0.8 * R + W / 2) % W - W / 2
+    hole = dy ** 2 + dx ** 2 <= (0.8 * R) ** 2
+    s["damage_frac"] = float((hole & cell).sum() / cell.sum())
+    s["S"][hole] = 1
+    for k in ("K", "L", "phi"):
+        s[k][hole] = 0
     return s

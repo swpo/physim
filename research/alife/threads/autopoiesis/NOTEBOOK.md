@@ -32,3 +32,53 @@ the membrane holds links in.
   in a steady state: no growth, no division (`screens/gp_L0-0.1_b-0.2.png`). L3 morphology but static.
 - membrane ablation (cM=0, no polymerization): L diffuses away, h(L) falls, K dies everywhere
   within ~1500 steps (`screens/gp5_*cM-0.0*`). The membrane is necessary for the catalyst.
+- K autocatalysis gated off outside the wall: membrane-trapped GS cells freeze (no growth); with
+  K ungated or weakly gated, the GS spots die before a wall forms (8 configs, `screens/gp6_*`,
+  `screens/gp4_*`). Gray-Scott kinetics are too fragile to share a cell with a barrier. Parked.
+
+## 3. scl_divide: flexible lattice membranes (`worlds/scl_divide`)
+Added to the lattice SCL: K pore block (K cannot step onto a site touching >= 2 chain ends),
+bond-fluctuation moves of bonded links (hop to a neighbouring hole/S if all bonds stay valid),
+link insertion into an existing bond (A-B -> A-L-B), and segment reconnection (A-A', B-B' touching
+-> A-B, A'-B': fission of one loop / fusion of two), K replication from free links.
+- moves into holes only: production creates holes inside, so the membrane drifts INWARD and the
+  cell shrinks (225 -> 161 px, `screens/sd1.png`). Osmotic intuition reversed.
+- moves into holes or S: membrane random-walks, gaps' ends drift apart and never re-splice;
+  reconnection at p=0.5 shatters the cell into many tiny loops (`screens/sd2.png`).
+- chain ends immobile + reconnection forbidden for loops < 16 links: closure fraction 0.01-0.93,
+  no setting robust across 2 seeds (16 configs). **Negative:** in the lattice, membrane
+  flexibility and gap repair pull against each other; I did not find a regime with both.
+
+## 4. Phase protocell (`worlds/phase_protocell`): membrane = Allen-Cahn domain wall
+Idea: make closure topological. phi is an inside-phase order parameter with Allen-Cahn dynamics;
+its double well is tilted by links L (a (L - th)), so the inside phase only spreads where the
+cell's own links are; K and L mobility ~ phi^2 (held in); K autocatalysis (logistic) ~ phi;
+links made by K from substrate S; S fed from a bath (F (1-S)). Initial condition: 4 planted
+blobs (phi profile radius 6, K and L in radius 4); everything else self-organizes.
+- GS kinetics inside the phase: dies in all 6 tried settings, even with K ungated (spot rims
+  need growth outside the phase). Switched to logistic K.
+- logistic K: F >= 0.01 -> one sea; F = 0.002-0.005 -> extinction; **F = 0.006-0.008 -> bounded
+  cells that grow and divide**, 5 -> 47 cells by t=8000 (`packs/phase_protocell`). Lineage to
+  generation 5, 22-33 persistent splits per seed, 3 seeds.
+- structure (`screens/pp6_chan.png`): S depleted inside, K fills the interior, L is highest just
+  inside the wall (a link-rich shell), wall = 2 px ring of 4 phi(1-phi).
+- division mechanism: big cells starve at the centre (S dips), L drops below th in the middle,
+  the phase there loses its tilt and the wall pinches through. Prediction: more feed -> bigger
+  cells before division. Cell area at t=8000: F=0.0054: 71 px/cell, 0.006: 66, 0.0066: 88,
+  0.008: 405 (with occasional large compound cells). Roughly holds; not monotone at the low end.
+- ablations (all from the same 4 blobs): no mobility gating (gate=0) -> all dies by t~400;
+  gating L but not K (gateK=0) -> dies; no link tilt (a=0) -> domains shrink by curvature and
+  die; no phase (phi = 1) -> uniform K sea, no individuals. Packs `phase_protocell_nogate`,
+  `phase_protocell_notilt`. Every link of the loop is necessary.
+- jitter: F +-10% and th +-10% keep the same behaviour (24-45 cells at t=8000).
+- dt halving (dt=0.5, 16000 steps): cell counts 10/24/36/47 at t=2000/4000/6000/8000,
+  identical to dt=1 to 3 digits.
+- damage (`packs/phase_protocell_damage`, `screens/damage_strip.png`): at t=1500 the largest cell
+  (a horseshoe about to divide) loses a disk cutting its wall and 36% of its area. Both pieces
+  re-close their walls within ~100-250 time units, regrow and keep dividing; by t~2800 the crop
+  looks like the undamaged control.
+- noise initial conditions (smoothed random phi, random K and L everywhere; 6 tries): always one
+  sea first, then a synchronous starvation crash to extinction. Not spontaneous yet.
+- the labkit damage disk sits at the centroid of the largest component: for a walled cell it
+  only hits the interior, and for a cell wrapped over the periodic edge the mask is misplaced.
+  My worlds' damage() hooks re-find the cell and cut its wall (documented in the hook).

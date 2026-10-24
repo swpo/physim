@@ -36,8 +36,8 @@ META = {
     "periodic": True,
 }
 
-P = dict(p_move=1.0, p_perm=0.5, p_prod=0.05, p_ext=0.05, p_init=0.002, p_join=0.9, p_splice=1.0, p_dis=0.0005, p_disf=0.0005, p_bb=0.0,
-         MIN_SEP=2, s_density=0.7, n_cat=1, ring_r=9, IC="cell")
+P = dict(p_move=1.0, p_perm=0.5, p_prod=0.05, p_ext=0.05, p_init=0.002, p_join=0.9, p_splice=1.0, p_dis=0.0002, p_disf=0.005, p_bb=0.0,
+         MIN_SEP=3, s_density=0.7, n_cat=1, ring_r=9, IC="cell")
 
 DY = np.array([-1, -1, 0, 1, 1, 1, 0, -1], np.int64)   # direction d: 0=N,1=NE,2=E,...,7=NW (clockwise)
 DX = np.array([0, 1, 1, 1, 0, -1, -1, -1], np.int64)
