@@ -209,8 +209,9 @@ def simulate(W, seed, frames, spf, size, render_max=120, damage=None, log=print,
             rec["status"] = f"non-finite fields at frame {f}"
             log(rec["status"])
             break
-        if species is None:
+        if species is None:  # validate the optional META channel lists at frame 0, not after the run
             species = _species(W.META, F.shape[0])
+            _channel_list(W.META.get("radial_channels"), _channel_names(W.META, F.shape[0]), F.shape[0], "radial_channels")
             rec["species"] = {k: [] for k in species}
         for k, idx in species.items():
             rec["species"][k].append(F[idx].sum(0))
@@ -351,13 +352,14 @@ def _track_at(comps, tracks, mask, f):
     return None
 
 
-def _follow(tracks, tid, f, split_only=True):
-    """Largest descendant of tid alive at frame f as (track id, area, cy, cx), and the number alive.
+def _follow(tracks, tid, f, own=True):
+    """Largest member of tid's lineage alive at frame f as (track id, area, cy, cx), and the number alive.
 
-    split_only: the lineage as in lineage_stats (a merge ends it); else also through merges.
+    own: the individual (splits and re-merges of its own pieces, M.individual_lineage); else every
+    descendant, also through merges with other individuals.
     """
     alive = []
-    for i in M.descendants(tracks, tid, f, split_only):
+    for i in (M.individual_lineage(tracks, tid, f) if own else M.descendants(tracks, tid, f)):
         t = tracks[i]
         if t["start"] <= f <= t["end"]:
             k = f - t["start"]
@@ -388,9 +390,9 @@ def _damage_followup(rec, comps, tracks, T):
             rel.append(None if big is None else round(big[1] / a0, 3))
             pieces.append(n)
         out[f"{key}_area_pre"] = a0
-        out[f"{key}_area_rel"] = rel  # largest split-descendant area / area just before the cut, frames f0..end
-        out[f"{key}_pieces"] = pieces  # split-descendants alive per frame (None area = lineage ended or merged)
-        out[f"{key}_descendants"] = sorted(M.descendants(tracks, tid, split_only=True) - {tid})
+        out[f"{key}_area_rel"] = rel  # largest piece / area just before the cut, frames f0..end (None = gone)
+        out[f"{key}_pieces"] = pieces  # pieces of the individual alive per frame
+        out[f"{key}_descendants"] = sorted(M.individual_lineage(tracks, tid) - {tid})
     return out
 
 
@@ -594,7 +596,7 @@ def _damage_figure(meta, rec, A, rgb, out):
                 big = (big[0], big[1], cy0, cx0)
             tag = ""
             if big is None:  # lineage ended: keep the camera on what it merged into, if anything
-                big, _ = _follow(tracks, tid, rf[k], split_only=False)
+                big, _ = _follow(tracks, tid, rf[k], own=False)
                 tag = "into "
             if big is None:
                 tiles.append(np.zeros((112, 112, 3), np.uint8))
@@ -604,7 +606,7 @@ def _damage_figure(meta, rec, A, rgb, out):
             labels.append(f"{tag}#{big[0]}{'+' + str(nalive - 1) if nalive > 1 else ''} t={rf[k] * dt_frame:g}")
     loss = d.get("erased_frac")
     title = (f"damage {d['mode']} {d['frac_requested']:.2f} t={f0 * dt_frame:g}: top target #{fu['target_track']} "
-             f"(lost {'?' if loss is None else f'{loss:.0%}'} of matter, red = cut) + split-descendants; "
+             f"(lost {'?' if loss is None else f'{loss:.0%}'} of matter, red = cut) and its pieces; "
              f"bottom comparator #{fu['comparator_track']}")
     R.contact_sheet(tiles, labels, ncols=len(sel) + 1, title=title).save(out / "damage.png")
 
@@ -790,9 +792,10 @@ def _damage_facts(A, rec, warn):
         times = [round((d["frame"] + int(i)) * dt_frame, 3) for i in idx]
         tgt = [fu["target_area_rel"][i] for i in idx]
         cmp_ = [fu["comparator_area_rel"][i] for i in idx] if fu.get("comparator_area_rel") else None
-        lines.append(f"- after damage, largest descendant area / area before the cut at t={times}: target #{fu['target_track']} "
-                     f"{tgt}; comparator #{fu['comparator_track']} {cmp_ if cmp_ else 'n/a'}; target descendants "
-                     f"{fu.get('target_descendants', [])[:12]} (damage.png)")
+        lines.append(f"- after damage, area of the individual's largest piece / area before the cut at t={times}: "
+                     f"target #{fu['target_track']} {tgt}; comparator #{fu['comparator_track']} {cmp_ if cmp_ else 'n/a'} "
+                     f"(followed through its own splits and re-merges; None = died or merged with another individual); "
+                     f"target lineage tracks {fu.get('target_descendants', [])[:12]} (damage.png)")
     return lines
 
 

@@ -31,7 +31,11 @@ so judges know exactly what a number means:
   track centroid) and R_eq = sqrt(area / pi) of the component. Neighbouring components
   are NOT masked out. Per track: the top tracks at their middle-life render frame.
   Aggregate: mean +- std over all components with area >= 2 * min_area at up to 6
-  render frames spread over the run (the initial frame excluded).
+  render frames spread over the run (the initial frame excluded). R_eq follows the
+  matter segmentation: if the threshold cuts an individual into a core and a separate
+  ring (a low gap between them), R_eq is the core's and the ring sits at rho > 1.3,
+  where only its inner flank is in the rim band; raise META "smooth" or set META
+  "matter" so that one component covers the whole individual.
 - boundary score of one channel's profile p: rho_peak = rho of the global maximum
   (in the rim band if 0.5 <= rho_peak <= 1.5); rim = max of p over 0.6 <= rho <= 1.3;
   core = mean of p over rho < 0.4; outside = mean of p over 1.6 <= rho <= 2.2 (means of
@@ -39,8 +43,9 @@ so judges know exactly what a number means:
   999 (1 = no contrast or an absent channel; ~100 = the denominator is ~0).
   MEMBRANE-LIKE = rim/core >= 1.5 AND rim/outside >= 1.5 on the aggregate profile; the
   number of individuals that pass on their own profile is reported alongside.
-- damage target (--damage FRAME:FRAC[:MODE]): among components at FRAME whose track has
-  existed >= K frames and whose area is within [0.5, 1.6] x the median component area,
+- damage target (--damage FRAME:FRAC[:MODE]): frames 0..FRAME (pre-cut) are segmented
+  and tracked as above (robust range of those frames); among components at FRAME whose
+  track has existed >= K frames and whose area is within [0.5, 1.6] x the median area,
   the most compact one (lowest aspect ratio = sqrt of the eigenvalue ratio of the pixel
   second-moment matrix, so elongating or pinching bodies are avoided); if none
   qualifies, the largest component. A = target area, R_eq = sqrt(A / pi).
@@ -53,7 +58,10 @@ so judges know exactly what a number means:
   before minus just after the world's damage() call) / its matter before, whatever the
   hook actually erases; also reported: the share of all lost matter that was under the
   mask (low = the hook cut somewhere else). Comparator = the undamaged component closest
-  in area, preferring mature ones that are not neighbours of the target.
+  in area, preferring mature ones at a boundary gap >= R_eq from the target. After the
+  cut both are followed as individuals: through their own splits and through merges of
+  their own pieces (threshold flicker), not through merges with other individuals;
+  "area rel" = area of the largest piece / area just before the cut.
 - species (META "species" = {name: [channels]}): segmentation, tracking and lineage as
   above, run separately on each species' channel sum with its own robust range.
 """
@@ -369,8 +377,8 @@ def choose_damage_target(seg, spans, K, periodic=True):
 
 def choose_comparator(seg, j, spans, K, periodic=True):
     """Undamaged control: the other component closest in area (log ratio), preferring mature
-    ones (track >= K frames) that are not neighbours of the target (centroid distance
-    > 2 (R_eq target + R_eq other))."""
+    ones (track >= K frames) that are not touching the target (boundary gap, centroid
+    distance - R_eq target - R_eq other, of at least one target R_eq)."""
     others = [q for q in range(seg["n"]) if q != j]
     if not others:
         return None
@@ -381,7 +389,7 @@ def choose_comparator(seg, j, spans, K, periodic=True):
         dy, dx = seg["cy"][q] - seg["cy"][j], seg["cx"][q] - seg["cx"][j]
         if periodic:
             dy, dx = _wrap(dy, H), _wrap(dx, W)
-        return np.hypot(dy, dx) > 2 * (r[j] + r[q])
+        return np.hypot(dy, dx) - r[j] - r[q] >= r[j]
     mature = [q for q in others if spans[q] >= K]
     pool = [q for q in mature if far(q)] or mature or others
     return min(pool, key=lambda q: abs(np.log(seg["area"][q] / max(seg["area"][j], 1))))
@@ -525,16 +533,36 @@ def track(comps, links, shape=None, periodic=True):
     return tracks, events
 
 
-def descendants(tracks, tid, fmax=None, split_only=False):
-    """Track ids reachable from tid through children (splits AND merges unless split_only),
-    started <= fmax. tid itself is included."""
+def descendants(tracks, tid, fmax=None):
+    """Track ids reachable from tid through children (splits AND merges), started <= fmax.
+    tid itself is included."""
     seen, stack = set(), [tid]
     while stack:
         i = stack.pop()
         if i in seen or (fmax is not None and tracks[i]["start"] > fmax):
             continue
         seen.add(i)
-        stack.extend(c for c in tracks[i]["children"] if not split_only or tracks[c]["birth"] == "split")
+        stack.extend(tracks[i]["children"])
+    return seen
+
+
+def individual_lineage(tracks, tid, fmax=None):
+    """tid plus its descendants through splits AND through merges of its own pieces (every
+    parent already in the set): one individual followed across threshold flicker and fission.
+    A merge with any outside track ends it. Used to follow a damaged individual."""
+    import heapq
+
+    seen, heap = {tid}, [(tracks[c]["start"], c) for c in tracks[tid]["children"]]
+    heapq.heapify(heap)
+    while heap:  # pops in non-decreasing start, so all parents of a merge are decided first
+        start, c = heapq.heappop(heap)
+        if c in seen or (fmax is not None and start > fmax):
+            continue
+        t = tracks[c]
+        if t["birth"] == "split" or all(q in seen for q in t["parents"]):
+            seen.add(c)
+            for cc in t["children"]:
+                heapq.heappush(heap, (tracks[cc]["start"], cc))
     return seen
 
 
