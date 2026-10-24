@@ -382,6 +382,8 @@ def run_pack(world_path, out, seed=0, frames=200, spf=None, size=None, damage=No
         (out / "FACTS.md").write_text(f"# {W.META['name']} seed {seed}\n\nRUN FAILED: {rec['status']}\n")
         return {"seed": seed, "status": rec["status"]}
     periodic = W.META.get("periodic", True)
+    if threshold is None:
+        threshold = W.META.get("threshold")  # META documents an absolute threshold; honour it
     A = analyze(W, rec, spf, periodic, threshold, min_area)
     figures(W, rec, A, out, spf, movie)
     warn = facts(W, rec, A, out, seed, spf, args_line)
