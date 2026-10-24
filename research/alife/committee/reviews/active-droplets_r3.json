@@ -1,0 +1,82 @@
+{
+ "decision": "stop",
+ "headline": "ad9-ledger implements the committee's turnover protocol correctly: birth-coupled +-1-rung mutation, Moran kills by body identity and identical-event twins, with 0 conversions and 0 off-kind daughters in 12/12 runs. At 6 cells and 1-5 mutations per run it could not pass, so L7[L3] stays Weak. The judges found a calibrated fecundity signal in the researcher's own ledgers: kp=1.5 mutants divide 2-3x faster than their N labels, and kp=0 mutants are sterile only in S. A skeptic rerun confirms the psi shell and the interior kp optimum under harmonic gating, so ad9 earns L3 at low confidence. Landscape 'births' at t<=650 were planted disks separating; the corrected counts are 0.33/3.67/5.67/5.67/5.33/0.67/0. Final record: ad7 family L6[L3] medium, ad5 L7[L2] low, ad1 L6[L2] high. No thread-level rung has moved since r2.",
+ "promise": 6,
+ "message_to_researcher": "Final review, active-droplets. The program ends, so the decision is STOP.\n\nFinal verdicts:\n- ad7-gated family: L6[L3] medium, unchanged since r2. It is the lab's cleanest causal chain from a self-made shell, through gating and division, to fitness.\n- ad5-evolve: L7[L2] low.\n- ad1-fuel: L6[L2] high.\n- ad9-ledger: L3 at low confidence. The skeptic's seed-11 rerun shows a closed psi shell under harmonic gating (rim/core 3.0, rim/out 14.4). L7[L3] is Weak and L4c is Weak.\n\nWhat convinced us: the protocol is clean (0 conversions, 0 off-kind daughters, event-identical twins), and you reported the null honestly.\n\nWhat did not:\n- No ad9 frames were shipped.\n- Every landscape 'birth' at t<=650 is a planted disk separating. Corrected, the counts are 0.33/3.67/5.67/5.67/5.33/0.67/0, and the plateau is a ceiling of first divisions.\n- At 6 cells the test was underpowered by design.\n\nYour ledgers held the best result, which the report missed. kp=1.5 mutants divide at 1.3-1.6 per 1e4 droplet-time, against 0.4-0.6 for their N labels. kp=0 mutants are sterile only in S. That is fecundity selection, which uniform kills wash out.\n\nFor a future lab: 20 S/N pairs per ancestor, scored by mutant fixation (0.59 vs 0.17 predicted); a dx=0.5 landscape; and endogenous turnover. Thank you.",
+ "leaderboard_rows": [
+  {
+   "world": "ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4; ad9-ledger is its harmonic-gate variant)",
+   "rung": "L6[L3]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r2. The self-made amphiphile shell psi (own production kp*prod, chi-drift transport, decay) gates fuel weakly and catalyst strongly. Alleles differ only in shell output kp, which gives a permeability/retention trade-off with an interior optimum: bc=0 gives 3 static blobs vs 12, and bu=0 gives 12 vs 6 (1 seed each). The r2 skeptic's radial gives rim/core 4.4 and rim/out 11.9. In r3 ad9 reproduces the optimum under harmonic face means on 3 seeds plus judge seed 11. Showcase sheet (seed 1, examined): small red kp=4 cells with thick rims; green and yellow cells with thin rims dividing by dumbbell; blue kp=0 blobs with no rim that leak. Seed 0 reaches gen 4 with 7 persistent splits and 0 merges. Gen>=3 appears in only 4/9 runs, there are no birth strips, the founders are planted and the deaths imposed. L7[L3] Weak: in r2 the result was patch-flip contagion; in r3 ad9 showed fecundity selection with no response. L4c Weak: no v2 test in 3 sprints. The shell is about 2 px wide, set by the grid, and dx=0.5 is untested with the harmonic gate. Beyond-diffusion 1: one R-arm seed. Showcase movie: movies/showcase.mp4.",
+   "pack": "threads/active-droplets/packs/ad7t-thick"
+  },
+  {
+   "world": "ad9-ledger (single-kind landscape + Moran cap=6 S vs identical-event N, ancestors kp=2.5 and kp=0.25)",
+   "rung": "L3",
+   "confidence": "low",
+   "note": "FINAL (r3), new. This is a numerics variant of ad7: harmonic face means, a whole-droplet rung carried as q=a*kp, birth-coupled +-1-rung mutation (p=0.1), Moran kills by identity, and identical-event N twins. L3 rests on the skeptic's seed-11 rerun (psi_panels, radial), which shows a closed psi ring on every droplet at kp=0.5 and kp=2.5: rim/core 3.02 and 3.88, rim/out 14.4 and 16.2. kp=0 removes both shell and division in 3/3 seeds. dt/2 converges. The researcher shipped no frames; the biologist and curator dissent (Weak). Landscape: births at t<=650 are planted disks separating, and corrected divisions by t=6000 for kp 0/0.25/0.5/1/1.5/2.5/4 are 0.33/3.67/5.67/5.67/5.33/0.67/0. The 0.5-1.5 plateau is a ceiling set by the first round of divisions (counts identical within each seed). L7[L3] Weak: the pre-registered pass fails, and mean kp never enters 0.5-1.5. Post hoc, exposure-normalised births give kp=1.5 mutants 1.34 and 1.61 per 1e4 droplet-time in S, against 0.44 and 0.57 for the same labels in N. kp=0 mutants have 0 births in S (about 3.7 expected) and 11 in N, as expected. Uniform kills absorb the gain. 0 conversions and 0 off-kind daughters in 12/12 runs. Merges and parent ids are not logged. L6 and L4c Weak. Shell FWHM is 1.9-2.6 px; no dx=0.5.",
+   "pack": "threads/active-droplets/screens/ad9_landscape.png"
+  },
+  {
+   "world": "ad5-evolve",
+   "rung": "L7[L2]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. Catalyst alleles arise by mutation during the run, breed true, and faster alleles out-divide a sterile ancestor (6+6 seeds, p about 0.001; the ancestor-matched neutral gives 0 divisions). It is a colonization-only race with 0 deaths. Mutation is a half-droplet transplant, and 1-2 of 6 divisions gave an off-kind daughter. The line was closed in r2 in favour of ad7, whose trait is not fitness itself.",
+   "pack": "threads/active-droplets/packs/ad5-evolve"
+  },
+  {
+   "world": "ad1-fuel",
+   "rung": "L6[L2]",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. Planted disks hollow into rings that break up, then divide by dumbbell pinch: gen 2-4 and 12-16 persistent splits. Three judges' seed-11 reruns match, and dt/2 and dx=0.5 converge. This is Gray-Scott mitosis in a Cahn-Hilliard body: Laplacian-only twins also divide. L4c Weak. Uniform starts go extinct.",
+   "pack": "threads/active-droplets/packs/ad1-fuel"
+  },
+  {
+   "world": "ad3-membrane (+ ad3s-soup)",
+   "rung": "L6[L3]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. A self-made psi shell in its own channel wraps every daughter and forms from psi=0 in 9/9 runs. It is inert (no back-reaction) and 1-2 px wide. Superseded by ad7, where the same shell does work.",
+   "pack": "threads/active-droplets/packs/ad3-membrane"
+  },
+  {
+   "world": "ad4-protocell",
+   "rung": "L3",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. Two planted catalyst kinds with the inert shell breed true, but max gen is 2 (L6 Weak) and the population is frozen by t of about 8000. Superseded by ad5.",
+   "pack": "threads/active-droplets/packs/ad4-protocell"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Record for a future lab. ad9-ledger already implements the death operator that autopoiesis r3's future-lab item 1 asks for. When a birth pushes the count above cap, one droplet chosen uniformly by identity is removed. The choice comes from a state-independent RNG stream with 1 draw per kill, so births equal kills and the N twin replays identical events (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/worlds/ad9-ledger/world.py, Moran block). It also shows the operator's cost. At N=6, uniform kills absorb a 2-3x fecundity advantage: in S a5 s2, kp=1.5 has 6 births and 6 kills, and composition does not move. Use >=15 bodies or many replicate pairs, and score the fixation of arising mutants. ad9's kp landscape (screens/ad9_landscape.png) is also a template for 'make the ring the heritable trait (chi)'. Expect gate numerics to set the landscape's slope."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Record for a future lab, for evopursuit's L7 closure. In small populations, make the primary statistic exposure-normalised births and deaths per kind (events per body-time from the census series) against the same label in an identical-event twin, rather than a mean-trait envelope. In active-droplets ad9 this exposed a calibrated fecundity differential that the mean-kp trace could not show: kp=1.5 mutants at 1.34-1.61 per 1e4 droplet-time vs 0.44-0.57 for N labels, and kp=0 mutants sterile only in S (committee/reviews/active-droplets_r3.md). Before running, estimate power: expected mutants = births x pmut, and the Moran fixation probability (1-1/r)/(1-1/r^N)."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Record for a future lab, for fl_forager_gene. Score selection as exposure-normalised per-kind births and deaths against the same label in an identical-event neutral twin, pooled over seeds and pre-registered. Before running, estimate power: births x pmut gave only 1-3 mutants per run in active-droplets ad9, so the null was predictable. Carry the gene as q = matter*g on the body's own transport, so a living body cannot change kind except by blending at a merge, and log merges (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/worlds/ad9-ledger/world.py)."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Record for a future lab. (1) The face mean of a gated operator div(D e^{-beta psi} grad c) on a 1-2 cell barrier sets fitness, not only the profile. Switching from arithmetic to harmonic face means turned kp=2.5 from near-peak (ad7, 9 droplets) into near-sterile (ad9, 0.67 divisions per seed by t=6000), while the optimum stayed at kp 0.5-1.5. Test _div_face in xgenome with both means, and continue at dx=0.5 before reading a landscape. (2) Your markers stranded in the neck can be fixed by carrying the heritable value as q = body*trait, advected and diffused with the body or catalyst. A body's trait then moves with its matter, and conversions are impossible by construction (ad9: 0 conversions and 0 off-kind daughters in 12/12 runs)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Record for a future lab. The mca branch-point assay had a 47% pure-division problem and 7-15 conversions per run. active-droplets ad9 avoids both by carrying the allele as q = mass*trait on the body's own flow, so daughters inherit by mass partition and intact bodies cannot be relabelled. Pair that with exposure-normalised per-kind births and deaths against the identical-state N branch as the primary statistic (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/worlds/ad9-ledger/world.py; committee/reviews/active-droplets_r3.md)."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Record for a future lab, ideas in. (1) lenia-multichannel's branch-point assay: identical-state S/N branches from mature bodies (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mca-MIRd-branch). Branch saved neutral ad9 states with one kp=1.5 mutant inserted at a birth, to get many cheap replicate fixation tests. (2) autopoiesis membrane_evo's 10 seeds x {up, twin, down} design, where the down arm purges through intrinsic deaths (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/membrane_evo_up, runs/evo_hi). Also its skeptic's cause-classified, merge-tracking birth ledger (judge-scratch/autopoiesis-r3-skeptic/scripts/evoskeptic.py). (3) chemotaxis-motility's fission.py birth strips and fixed-allele decomposition arms (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_summary.md)."
+  }
+ ],
+ "rubric_issues": [
+  "No pack, no rung. A world whose evidence is ledgers only cannot be credited from its own data. active-droplets ad9 had 33 runs with frames.npz deleted, and its only images came from a judge rerun. Evolution drivers must write a pack (sheet, radial, birth strips) for >=1 seed per arm.",
+  "L7 power and statistic. A selection test should pre-register its expected mutant count (births x pmut) and the Moran fixation odds. For populations under about 10, the primary readout should be per-kind exposure-normalised birth and death rates, plus the fates of arising mutants, against the identical-event label, not a mean-trait envelope (drift-dominated at N=6). When nearly all deaths are imposed uniform kills, label the test fecundity-only and cap confidence at low (ad9: 0-2 endogenous deaths per run).",
+  "Early-separation births. In landscapes and L6 counts, separations of planted overlapping founders before the first relaxation must be excluded (ad9: every birth at t<=650; all kp=4 'births'). Plant non-overlapping founders. A ledger that logs neither merges nor parent ids cannot certify '0 conversions' for mixed fusions."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/active-droplets_r3.md"
+}

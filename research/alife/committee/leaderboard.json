@@ -263,41 +263,41 @@
   "world": "ad5-evolve",
   "rung": "L7[L2]",
   "confidence": "low",
-  "note": "Unchanged from r1; sprint 2 added only a readable protocells movie (seed0), in which the t=3700 half-droplet transplant takes over its host. Still a colonization-only race (0 deaths) from a sterile ancestor, with an unmatched shipped neutral (k=0.13 vs 0.10). The committee audit holds: divisions by allele [0,0,2,4], and 0 divisions in the ancestor-matched neutral. Line closed in r2: the turnover experiment moves to ad7, whose trait is not fitness itself.",
+  "note": "FINAL (r3), unchanged since r1. Catalyst alleles arise by mutation during the run, breed true, and faster alleles out-divide a sterile ancestor (6+6 seeds, p about 0.001; the ancestor-matched neutral gives 0 divisions). It is a colonization-only race with 0 deaths. Mutation is a half-droplet transplant, and 1-2 of 6 divisions gave an off-kind daughter. The line was closed in r2 in favour of ad7, whose trait is not fitness itself.",
   "pack": "threads/active-droplets/packs/ad5-evolve",
   "thread": "active-droplets",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "active-droplets/ad3-membrane (+ ad3s-soup)": {
   "world": "ad3-membrane (+ ad3s-soup)",
   "rung": "L6[L3]",
   "confidence": "low",
-  "note": "A self-made amphiphile shell in its own channel. psi is 0.18 in the core, 0.82-0.95 at the interface and about 0.05 outside (2 judges' seed-11 profiles). The shell lines both faces of the ring stage, wraps every daughter, forms from psi=0 in 9/9 runs including random-blob soups, and fills the body at chi=0. It is inert (s=0, no back-reaction; s=0.3 blows up), 98% explained by |grad phi|^2 + c, and 1-2 px wide with no resolution test. The same drift rings RD spots without CH. Division is ad1's (gen 2-4 in 3 seeds; gen 2 on 2 judge reruns). L4a Weak: a 44% side chop heals into one cell, and a 52% central wound kills (1 seed). Skeptic dissent: L3 Weak.",
+  "note": "FINAL (r3), unchanged since r1. A self-made psi shell in its own channel wraps every daughter and forms from psi=0 in 9/9 runs. It is inert (no back-reaction) and 1-2 px wide. Superseded by ad7, where the same shell does work.",
   "pack": "threads/active-droplets/packs/ad3-membrane",
   "thread": "active-droplets",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "active-droplets/ad1-fuel": {
   "world": "ad1-fuel",
   "rung": "L6[L2]",
   "confidence": "high",
-  "note": "Planted disks hollow into rings that break up. The fragments then divide by dumbbell pinch for 2 rounds (lineage gen 2-4, 12-16 persistent splits) and end in a static lattice of about 18 droplets. Three judges' seed-11 reruns match. dt/2 and dx=0.5 converge. This is Gray-Scott mitosis in a Cahn-Hilliard body: Laplacian-only twins (D=0.015, and Dv=M=0.03) also hollow and divide, while D=0.06 gives static spots. L4c Weak (global F=0 only). Uniform starts go extinct.",
+  "note": "FINAL (r3), unchanged since r1. Planted disks hollow into rings that break up, then divide by dumbbell pinch: gen 2-4 and 12-16 persistent splits. Three judges' seed-11 reruns match, and dt/2 and dx=0.5 converge. This is Gray-Scott mitosis in a Cahn-Hilliard body: Laplacian-only twins also divide. L4c Weak. Uniform starts go extinct.",
   "pack": "threads/active-droplets/packs/ad1-fuel",
   "thread": "active-droplets",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "active-droplets/ad4-protocell": {
   "world": "ad4-protocell",
   "rung": "L3",
   "confidence": "low",
-  "note": "Two planted catalyst kinds with the inert ad3 shell. They breed true (mixed=0), but max gen is 2 from directly dividing founders in all 3 seeds (L6 Weak), and the population is frozen by t~8000. The kind difference (A 3->6, B 3->5) is within noise. Superseded by ad5.",
+  "note": "FINAL (r3), unchanged since r1. Two planted catalyst kinds with the inert shell breed true, but max gen is 2 (L6 Weak) and the population is frozen by t of about 8000. Superseded by ad5.",
   "pack": "threads/active-droplets/packs/ad4-protocell",
   "thread": "active-droplets",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-evo2-S": {
   "world": "xcell-evo2-S",
@@ -496,6 +496,26 @@
   "note": "FINAL (r3). Arms (m=0, 160\u00b2, t=1500, 3 seeds each): prey mass t1500/t150 is B+pred 1.28-1.32, B+escort 2.43-2.54, B alone 0.36-0.54, A+pred 0.11-0.15, A+escort 1.22-1.62, A alone 0.41-0.76. Predators reach 1.75-1.88x on B and 0.20-0.32x on A. The predator's net effect is positive on B (2.4-3.5x prey alone) and lethal on A (0.15-0.36x). In the arms_B_pred_s0 sheet, ~30-35 crescents each cup a predator. Skeptic seed 11 at 96\u00b2: B+esc 2.19 > B+pred 1.55 > B alone 0.57, dt/2 holds, clip mass <=0.005. B beats A mainly by retention under consumption (5.8-6.2x), with a smaller chase gain (1.7-2.8x). Partner abundance is unmatched. L6 Weak and L7 Weak (both near-Supported): 23 clean B fission events (strict gen 3/2/4) vs 28 A->B conversions, net conversion +5 against ~90 B bodies gained, 158 B deaths replaced mostly by unclassified splits. preytrack credits near-contacts as daughters, about half of the random birth strips involve a second body, there is no identical-event twin, and the 49-px swap is about the size of a body. No resolution change. Beyond-diffusion 1. L3 Contradicted.",
   "pack": "threads/chemotaxis-motility/packs/evopursuit",
   "thread": "chemotaxis-motility",
+  "round": 3,
+  "decision": "stop"
+ },
+ "active-droplets/ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4; ad9-ledger is its harmonic-gate variant)": {
+  "world": "ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4; ad9-ledger is its harmonic-gate variant)",
+  "rung": "L6[L3]",
+  "confidence": "medium",
+  "note": "FINAL (r3), unchanged since r2. The self-made amphiphile shell psi (own production kp*prod, chi-drift transport, decay) gates fuel weakly and catalyst strongly. Alleles differ only in shell output kp, which gives a permeability/retention trade-off with an interior optimum: bc=0 gives 3 static blobs vs 12, and bu=0 gives 12 vs 6 (1 seed each). The r2 skeptic's radial gives rim/core 4.4 and rim/out 11.9. In r3 ad9 reproduces the optimum under harmonic face means on 3 seeds plus judge seed 11. Showcase sheet (seed 1, examined): small red kp=4 cells with thick rims; green and yellow cells with thin rims dividing by dumbbell; blue kp=0 blobs with no rim that leak. Seed 0 reaches gen 4 with 7 persistent splits and 0 merges. Gen>=3 appears in only 4/9 runs, there are no birth strips, the founders are planted and the deaths imposed. L7[L3] Weak: in r2 the result was patch-flip contagion; in r3 ad9 showed fecundity selection with no response. L4c Weak: no v2 test in 3 sprints. The shell is about 2 px wide, set by the grid, and dx=0.5 is untested with the harmonic gate. Beyond-diffusion 1: one R-arm seed. Showcase movie: movies/showcase.mp4.",
+  "pack": "threads/active-droplets/packs/ad7t-thick",
+  "thread": "active-droplets",
+  "round": 3,
+  "decision": "stop"
+ },
+ "active-droplets/ad9-ledger (single-kind landscape + Moran cap=6 S vs identical-event N, ancestors kp=2.5 and kp=0.25)": {
+  "world": "ad9-ledger (single-kind landscape + Moran cap=6 S vs identical-event N, ancestors kp=2.5 and kp=0.25)",
+  "rung": "L3",
+  "confidence": "low",
+  "note": "FINAL (r3), new. This is a numerics variant of ad7: harmonic face means, a whole-droplet rung carried as q=a*kp, birth-coupled +-1-rung mutation (p=0.1), Moran kills by identity, and identical-event N twins. L3 rests on the skeptic's seed-11 rerun (psi_panels, radial), which shows a closed psi ring on every droplet at kp=0.5 and kp=2.5: rim/core 3.02 and 3.88, rim/out 14.4 and 16.2. kp=0 removes both shell and division in 3/3 seeds. dt/2 converges. The researcher shipped no frames; the biologist and curator dissent (Weak). Landscape: births at t<=650 are planted disks separating, and corrected divisions by t=6000 for kp 0/0.25/0.5/1/1.5/2.5/4 are 0.33/3.67/5.67/5.67/5.33/0.67/0. The 0.5-1.5 plateau is a ceiling set by the first round of divisions (counts identical within each seed). L7[L3] Weak: the pre-registered pass fails, and mean kp never enters 0.5-1.5. Post hoc, exposure-normalised births give kp=1.5 mutants 1.34 and 1.61 per 1e4 droplet-time in S, against 0.44 and 0.57 for the same labels in N. kp=0 mutants have 0 births in S (about 3.7 expected) and 11 in N, as expected. Uniform kills absorb the gain. 0 conversions and 0 off-kind daughters in 12/12 runs. Merges and parent ids are not logged. L6 and L4c Weak. Shell FWHM is 1.9-2.6 px; no dx=0.5.",
+  "pack": "threads/active-droplets/screens/ad9_landscape.png",
+  "thread": "active-droplets",
   "round": 3,
   "decision": "stop"
  }
