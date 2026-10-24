@@ -1,0 +1,41 @@
+[ad3-membrane] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  20.4s
+  frame 40/200  40.1s
+  frame 60/200  59.5s
+  frame 80/200  78.7s
+  frame 100/200  98.7s
+  frame 120/200  119.5s
+  frame 140/200  140.4s
+  frame 160/200  161.0s
+  frame 180/200  182.7s
+  frame 200/200  202.4s
+  -> threads/active-droplets/packs/ad3-membrane/seed0/FACTS.md  (202s sim)
+[ad3-membrane] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  20.4s
+  frame 40/200  41.1s
+  frame 60/200  61.1s
+  frame 80/200  81.1s
+  frame 100/200  100.2s
+  frame 120/200  120.5s
+  frame 140/200  139.2s
+  frame 160/200  158.1s
+  frame 180/200  178.1s
+  frame 200/200  197.5s
+  -> threads/active-droplets/packs/ad3-membrane/seed1/FACTS.md  (198s sim)
+[ad3-membrane] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  20.9s
+  frame 40/200  40.5s
+  frame 60/200  59.8s
+  frame 80/200  78.7s
+  frame 100/200  97.7s
+  frame 120/200  116.5s
+  frame 140/200  135.5s
+  frame 160/200  154.4s
+  frame 180/200  173.5s
+  frame 200/200  191.3s
+  -> threads/active-droplets/packs/ad3-membrane/seed2/FACTS.md  (191s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 18 | 6 | 143 | 0 | 0 | 12 | 2 | 0.14 |
+| 1 | ok | 16 | 12 | 143 | 0 | 6 | 10 | 4 | 0.14 |
+| 2 | ok | 16 | 8 | 141 | 0 | 6 | 14 | 4 | 0.14 |

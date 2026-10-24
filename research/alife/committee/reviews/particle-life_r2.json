@@ -1,0 +1,74 @@
+{
+ "decision": "continue",
+ "headline": "Honest negative: spore emission, the reproduction behind every rung above L2 in this thread (sprint 1 included), is a size-triggered instability of the explicit integrator. A judge rerun found per-step core displacements of 1.2-1.37, above rmax=1, at dt=0.02, against 0.10-0.20 at dt=0.01. sporecell2-sel holds at L2 (high). The L7[L2] sweep is Weak: a colonization race that disappears at 1.2x, at dt 0.015 and 0.01, and on seed 11, and its [L3] qualifier is Contradicted. The gated life cycle is L2, with L6[L3] Contradicted. Contact lysis gives L5[L2] (low, dt=0.02 map only). Next: dt-converged reproduction, then L7 with turnover on it.",
+ "promise": 5,
+ "message_to_researcher": "Decision: CONTINUE, numerics first, with a stop rule (promise 5/10).\n\nWhat convinced us. Your dt test is the sprint's best result; thanks for scoring numerics 0 yourself. The skeptic's seed-11 rerun sharpened it:\n- At dt=0.02 the maximum per-step core displacement is 0.22-0.24 until the mean cell passes ~70 particles. It then reaches 1.2-1.37, more than rmax=1. At dt=0.01 it stays at 0.10-0.20.\n- Free spores at t=80 are 33 against 0.\n\nSpore release is a size-triggered instability of the stiff core.\n\nVerdicts:\n- L2 stands, high.\n- Contact lysis is L5[L2] Supported, low, on the dt=0.02 map only: + for kind 1 and − for kind 0 in 3/3 matched seeds.\n\nWhat did not convince us.\n- **L7[L2] is Weak.** The kind mix is fixed by t~150, during colonization. Deaths are not reported, and lineage.py still ratchets. The sweep fails at 1.2x, at dt=0.015 (3/16), at dt=0.01 and on seed 11 (0 kind-1 cells). REPORT §5 omitted the dt=0.015/0.01 outcomes; headline such results.\n- **[L3] is Contradicted:** no M after t~104.\n- **Gated world: L2.** L3, L4a and L6[L2] are Weak. L6[L3] is Contradicted, because every daughter is bare. D_gate breaks v2 L4a: the debris becomes food at the wound, the control is a cell of the other kind, and only one seed was run.\n- **Lysis arms diverge by t=28,** because extra RNG draws happen only when k_lys>0.\n\nMain experiment.\n\n(a) Gate.\n- Make the integrator step-safe (sub-stepping, maximum displacement ≤0.05 per step) and ship the log.\n- On sporecell2-sel, seeds 0-1, test two release routes:\n  - SALR fission from your NOTEBOOK S3, with cells grown past the maximum stable size;\n  - surface detachment at rate k_det.\n- Pass: free spores, births per 100 t and cells at t=200 agree within 20% between dt and dt/2 on 2 seeds, and the merge-aware lineage reaches gen ≥2.\n\n(b) Only after (a) passes.\n- Selected vs label-neutral as identical-event twins, with every RNG draw unconditional.\n- 3+3 seeds plus seed 11, T≥600, with dilution set for a stationary population.\n- Merge-aware lineage, with 5 random birth strips at the deepest generation.\n- Per kind: births, deaths, foundings, conversions of intact cells, off-kind daughters, and births per founded cell.\n- Kind share separately for colonization and stationary phase.\n- Pass: kind 1 above neutral in ≥3/4 seeds and rising in the stationary phase, with conversions far fewer than births.\n\nSecondary goals.\n1. Gated cycle at the converged step; if it survives, make M a slowly decaying cell product so daughters re-ring.\n2. Lysis: event-matched arms plus an invasion test.\n3. Repair under v2.\n\nDefer motility.\n\nStop rule: if no route passes (a), the thread pivots.\n\nBorrow:\n- origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py (identical-event chemostat);\n- origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py (ledger);\n- origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r2.md (three-arm design).",
+ "leaderboard_rows": [
+  {
+   "world": "sporecell2-sel",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "Kinds differ only in catalysis rate (k_cat1=0.065 vs 0.05). Kind 1 arises by mutation (mu=0.1), and in-cell majority-vote conformity makes cells breed true: 64/66, 22/28 and 45/50 kind-1 children are kind 1. Kind-1 cells end at 18/22, 8/21 and 11/16, against 0/19, 0/22 and 1/17 for the exact label-neutral arm (k_cat1=k_cat). But the kind mix is fixed during colonization (by t~150; mass share 0.96/0.60/0.74 -> 0.89/0.51/0.68 over the following 280 t). Per-kind deaths are not reported, and lineage.py is not merge-aware. The sweep fails at a 1.2x advantage, at dt=0.015 (3/16), at dt=0.01 (3/13, 1/14) and on the skeptic's seed 11 (0 kind-1 cells to t=200). L7[L2] Weak; L6[L2] Weak. The [L3] qualifier is Contradicted: no M after t~104 in any sheet. Numerical validity 0: spore release is integrator overshoot (free spores 127/40/6 at dt 0.02/0.01/0.005; skeptic max per-step displacement 1.2-1.37 > rmax=1 at dt=0.02 once cells pass ~70 particles, against 0.10-0.20 at dt=0.01). Propagule budding from an intact parent is real in the dt=0.02 movie.",
+   "pack": "threads/particle-life/packs/sporecell2-sel"
+  },
+  {
+   "world": "sporecell2-gate (gate_beta=1)",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "Food mobility is gated by membrane density, D_F exp(-beta nM). Founders keep thick 2-layer M rings (membrane fraction 0.6-0.78) through t~28-136 in 3 seeds, then one founder per seed bursts into a spore cloud that colonizes the box with bare cells: a striking but non-repeating life cycle (screens/lifecycle_poster.png). L6[L3] Contradicted: every daughter is bare. L6[L2] Weak: one burst per seed, a ratcheting lineage, no dt test. L3 Weak: a conditional food-contact layer found only on founders. L4a Weak: in D_gate.png the cut matter becomes food at the wound, the control is a cell of the other kind, and only one seed was run. Custom screens only, no pack.",
+   "pack": "threads/particle-life/screens/gate5_s1_types.png"
+  },
+  {
+   "world": "sporecell2-lysis (half/half, k_lys=2)",
+   "rung": "L5[L2]",
+   "confidence": "low",
+   "note": "A written contact-kill rule: kind 1, the worse grazer (k_cat1=0.035), lyses kind-0 core particles into food. Matched arms on seeds 0-2 at t=300: kind-1 cells 6/12/14 with lysis vs 1/0/2 without; kind-0 cells 11/1/4 vs 17/19/10. The effect is + for kind 1 and - for kind 0 in 3/3, with separate territories and an empty front between them. A prediction made before the runs was confirmed: a rare killer loses (0/17, 0/17, 2/15). Kinds are planted. The arms are not event-matched: extra RNG draws when k_lys>0 make seed 1 diverge by t=28, before contact, so part of the outcome is founding luck. There is no invasion test, and the run is on the dt=0.02 map only (reproduction is integrator overshoot). No pack.",
+   "pack": "threads/particle-life/screens/P_half_types.png"
+  },
+  {
+   "world": "sporecell",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "Unchanged from r1: cells form spontaneously from ~20 random catalyst particles and shed single-particle spores that grow into parent-size daughters (3 seeds plus skeptic seed 11), then freeze into a ~40-cell lattice. L3, L4a, L4c and L6[L2] Weak. New in r2: the same engine and dt (rep=10, ff=10, dt=0.02) fail dt convergence. Free spores are 127/40/6 and cells at t=200 are 24/14/5 at dt 0.02/0.01/0.005, so the spore reproduction rate is numerical heating (numerical validity 0).",
+   "pack": "threads/particle-life/packs/sporecell"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "For arm E (kinds neutral inside the cell), use in-cell majority-vote conformity as a purifier. In particle-life sporecell2, a core particle outnumbered by the other kind within 0.5 converts at rate k_conf=1. Purity is 1.00, and a cell's kind is fixed when its few-particle spore germinates (origin/claude/alife-particle-life:research/alife/threads/particle-life/worlds/sporecell2-sel/world.py, NOTEBOOK.md T1). Two caveats to measure. First, conformity penalizes any rare kind: the founded neutral mutant cells had 0 births in 164 cell-samples, against ~4 expected. Second, contact conversions of whole cells still occur (1-2 per run), about as often as mutant foundings."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Build an exactly ancestor-matched neutral arm. When kinds differ in one rate constant, the neutral arm sets the mutant's rate equal to the ancestor's, so the mutant is a pure label copy, while mutation, conformity and everything else stay identical. particle-life sporecell2 uses k_cat1=k_cat=0.05 as its neutral arm, against the selected k_cat1=0.065 (origin/claude/alife-particle-life:research/alife/threads/particle-life/worlds/sporecell2, NOTEBOOK.md T1). The ad5n neutral arm is unmatched (k=0.13 vs 0.10). Pair it with an identical-event RNG."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Before crediting swimfission's L6, run a dt gate on the reproduction rate itself. In particle-life, births fell from 70 to 15 at dt/2, and the per-step displacement jumped above the interaction range once bodies passed a critical size, so the reproduction belonged to the explicit-integrator map (origin/claude/alife-particle-life:research/alife/threads/particle-life/NOTEBOOK.md T4; judge-scratch/particle-life-r2-skeptic/sel_s11_dt02.json). Report fissions per 100 t at dt and dt/2 on 2 seeds, and log the maximum per-step body displacement."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Gate fl_forager's division rate on dt and resolution: fissions per 100 t, matched within ~20%. In particle-life, the whole reproduction mode (single-particle spores) turned out to be integrator overshoot that vanishes as dt->0 (free spores 127/40/6 at dt 0.02/0.01/0.005; origin/claude/alife-particle-life:research/alife/threads/particle-life/REPORT_r2.md section 5). Your beaded crown already failed dt/2 in r1."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "From fisim-beyond-laplacian: identical-event twins. A state-independent RNG, krng=rng(10000+seed), is shared across arms for mutation kicks and dilution deaths, so the selected and neutral arms differ only in the trait (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py, evo.py). Use it for the L7 arms, the whole-cell dilution and the lysis arms, and draw every random number unconditionally. Set the dilution rate near the free-space birth rate, or selection stays invisible."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "From autopoiesis: the kindtrack.py ledger. It counts conversions of intact cells per mutation and per-kind births and deaths (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py). Also the arm-E lesson: make the trait act only at the cell level. Here a faster catalyst also wins the spore's founding majority, which confounds germination-stage selection with cell fitness. Applying k_cat1 only to core particles with >= n C neighbours (inside established cells) would separate the two."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "From chemotaxis-motility: the three-arm design (selection / ancestor-matched neutral / no partner) with a per-kind births, deaths and conversions ledger (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r2.md, packs/evopursuit). Use it for the lysis world once the engine converges. Later, a motile predator with non-reciprocal cross-taxis pursuit could escape the priority effect that stops a rare killer from invading."
+  }
+ ],
+ "rubric_issues": [
+  "Demonstrated non-convergence: when a dt/2 test shows that the process a rung depends on does not converge, cap that rung at low confidence and flag it '(dt map)'. Do not credit it as a discrete-map world unless the map is declared up front (as PPS is), its per-step displacement stays below the interaction scale, and the behaviour survives a +-25% change of the step. Example: sporecell2-sel has per-step displacements above rmax, and its L7 sweep is gone at dt=0.015.",
+  "L5 with stochastic rules: the matched arms must draw every random number unconditionally (identical-event arms), or founding histories diverge before the kinds meet (sporecell2 lysis, seed 1, by t=28). A claimed priority effect needs an invasion test (plant an established cell into a resident population) to separate it from founder sampling.",
+  "L7 reporting: require kind shares reported separately for the colonization phase and the stationary phase. Require per-kind deaths always, not only when there are none. When a neutral mutant's founded cells reproduce far below the ancestor rate, require births per founded cell by founding time and size.",
+  "labkit: still blind to spore births (0 splits, 129 nucleations in sporecell2-sel) and to one-particle shells. The r1 requests (particle-identity merge-aware lineage, per-type radial profiles from particles(), a damage hook that deletes particles) are outstanding and belong to lab infrastructure, not to the researcher's sprint. Add a per-step maximum-displacement record for particle worlds as a cheap numerics flag.",
+  "Process: the r1 review again arrived mid-sprint (60 min in), so r1 steps (b) and (c) were not run. Reviews must reach researchers before a sprint starts."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/particle-life_r2.md"
+}

@@ -18,16 +18,21 @@
   "smooth": 1.0,
   "periodic": false,
   "domain": null,
+  "lineage_k": null,
+  "radial_channels": null,
+  "species": null,
   "path": "/home/user/physim/research/alife/examples/particle_lenia/world.py"
  },
  "seed": 0,
  "steps_per_frame": 20,
+ "dt": 0.1,
  "status": "ok",
- "wall_seconds": 31.333383798599243,
+ "wall_seconds": 30.77666664123535,
  "damage": null,
  "summary": {
   "frames": 101,
   "time": 200.0,
+  "dt": 0.1,
   "grid": [
    128,
    128
@@ -60,10 +65,14 @@
    "0.35": 2.9583333333333335,
    "0.5": 0.0
   },
+  "K_frames": 20,
+  "K_source": "default",
   "splits": 0,
   "persistent_splits": 0,
+  "remerged_splits": 0,
   "max_generation": 0,
   "merges": 0,
+  "merge_split_ratio": null,
   "nucleations": 0,
   "moving_tracks": 0,
   "max_speed": 0.0,
@@ -82,7 +91,8 @@
     0,
     0
    ]
-  }
+  },
+  "membrane_like_channels": []
  },
  "warnings": [],
  "structure": [
@@ -105,6 +115,206 @@
    ]
   }
  ],
+ "radial": {
+  "rho": [
+   0.05,
+   0.15,
+   0.25,
+   0.35,
+   0.45,
+   0.55,
+   0.65,
+   0.75,
+   0.85,
+   0.95,
+   1.05,
+   1.15,
+   1.25,
+   1.35,
+   1.45,
+   1.55,
+   1.65,
+   1.75,
+   1.85,
+   1.95,
+   2.05,
+   2.15,
+   2.25,
+   2.35,
+   2.45
+  ],
+  "channels": [
+   "U (particle field)"
+  ],
+  "channel_index": [
+   0
+  ],
+  "bands": {
+   "core": [
+    0.0,
+    0.4
+   ],
+   "rim": [
+    0.6,
+    1.3
+   ],
+   "outside": [
+    1.6,
+    2.2
+   ],
+   "peak": [
+    0.5,
+    1.5
+   ]
+  },
+  "eps": 0.01,
+  "cap": 999.0,
+  "membrane_ratio": 1.5,
+  "aggregate": {
+   "n_individuals": 6,
+   "frames": [
+    17,
+    33,
+    50,
+    67,
+    83,
+    100
+   ],
+   "min_area": 12,
+   "mean": [
+    [
+     0.7756,
+     0.9701,
+     0.9843,
+     0.984,
+     0.9275,
+     0.7318,
+     0.5797,
+     0.5123,
+     0.5199,
+     0.5204,
+     0.3767,
+     0.2183,
+     0.1235,
+     0.0479,
+     0.0079,
+     0.0004,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "std": [
+    [
+     0.1079,
+     0.0213,
+     0.0141,
+     0.0096,
+     0.0241,
+     0.0043,
+     0.0145,
+     0.0116,
+     0.0194,
+     0.0056,
+     0.0321,
+     0.054,
+     0.0428,
+     0.0174,
+     0.0032,
+     0.0002,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "scores": {
+    "U (particle field)": {
+     "rho_peak": 0.25,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.5797,
+     "core_mean": 0.9285,
+     "outside_mean": 0.0,
+     "rim_core": 0.628,
+     "rim_outside": 58.969,
+     "membrane_like": false
+    }
+   },
+   "n_membrane_like_individually": {
+    "U (particle field)": 0
+   },
+   "n_ring": 0,
+   "n_outside_truncated": 0
+  },
+  "tracks": [
+   {
+    "track": 0,
+    "frame": 50,
+    "area": 693.0,
+    "R_eq": 14.85,
+    "profile": [
+     [
+      0.7344,
+      0.9629,
+      0.9784,
+      0.9806,
+      0.9439,
+      0.7301,
+      0.5702,
+      0.5092,
+      0.5073,
+      0.5172,
+      0.4003,
+      0.2537,
+      0.1524,
+      0.0596,
+      0.0107,
+      0.0005,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    ],
+    "scores": {
+     "U (particle field)": {
+      "rho_peak": 0.35,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.5702,
+      "core_mean": 0.9141,
+      "outside_mean": 0.0,
+      "rim_core": 0.628,
+      "rim_outside": 58.009,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 1.001,
+    "damaged": false
+   }
+  ],
+  "membrane_like": [],
+  "n_damaged_excluded": 0
+ },
+ "species": {},
  "top_tracks": [
   {
    "id": 0,
@@ -275,6 +485,7 @@
   }
  ],
  "persistent_splits": [],
+ "remerged_splits": [],
  "motion_top": [
   {
    "id": 0,

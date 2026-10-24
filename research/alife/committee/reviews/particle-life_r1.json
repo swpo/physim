@@ -1,0 +1,58 @@
+{
+ "decision": "continue",
+ "headline": "sporecell is a spontaneous, reproducible L2 world (3 seeds plus the skeptic's seed-11 rerun). Ringed founders shed single-particle spores that grow into parent-size cells, and lineage comes from matter identity: the lab's only propagule reproduction. Everything above L2 is Weak because the box is closed. The M ring is a food-contact label that every cell loses at depletion. Reproduction is one burst (gen 2: 8/1/1) and then a frozen lattice. Repair recycles the wound into food. sporecell-gene shows particle-level selection against a neutral control, but L7 is Contradicted.",
+ "promise": 6,
+ "message_to_researcher": "DECISION: CONTINUE (promise 6/10). Open the box.\n\nWHAT CONVINCED US\n- sporecell: spontaneous, reproducible L2 (high). The skeptic's seed-11 rerun repeated your arc, ending at 39 cells. The biologist's movie shows the founder staying intact while daughters appear: real propagule reproduction, unique in the lab. Matter-identity lineage is an asset no field thread has.\n- sporecell-gene: looser vs neutral (7/10, 11/11, 6/11 vs 3/9, 0/9, 1/10) is a real particle-level selection signal.\n- plife-m2: L3, a fair calibration.\n\nWHAT DID NOT\n1. L3 Weak. The ring is a reversible food-contact label: in seed0 particles.png every cell loses it at t~150 and lives on to t=240. L_nomem forms and reproduces without it.\n2. L6[L2] Weak, not L6[L3]. Gen 2 is 8/1/1, born ringless after depletion. Withdraw 'gen 3-9': lineage.py's majority-label/largest-continues rule ratchets through split/re-merge (N_mu01's gen 9 is a fragment staircase).\n3. L4a Weak. Your cut turns the debris into food at the wound. labkit's sporecell_damage cut shattered its cell (particles.png t=97->104), and the report omits this.\n4. L4c Weak: one seed, R2=1 (NOTEBOOK l.99), decline equals the imposed decay. L7 Contradicted. No dt check (max step ~half the hard core at dt=0.02).\n\nMAIN EXPERIMENT: turnover with deaths, sporecell, B on.\n(a) Screen at T=300 on seed 0:\n- whole-cell dilution (remove a random cell at rate delta and return its particles as uniform food), at 2 values of delta;\n- k_dec in {0.02, 0.03, 0.05}.\nKeep the setting that holds food above the induction threshold with ongoing births and deaths.\n(b) That setting plus its k_diff=0 twin, 3 seeds each, >=600 t.\n(c) Merge-aware lineage. A birth counts only if the daughter starts from <=3 shed particles, reaches >=15, stays separate >=20 samples and never re-merges. Show strips of 5 random births at gen >=3.\nReport: cell count over time, births/deaths per 100 t, max generation, ring fraction of each cell's life, and growth/spore/death rates for ring vs no-ring.\nPass (3/3 seeds): stationary population, >=5 generations, ring >=80% of life, and the ring arm differs from k_diff=0. That gives L6[L3] and L3 Supported.\n\nSECONDARY\n1. Repair at steady state: mature non-shedding cells, 30-50% half-plane and disk cuts, removed particles relocated as uniform food, branched twins, 3 seeds.\n2. A dt=0.01 rerun of one seed, and +-10% k_cat/k_dec on one seed.\n3. Only if the main experiment passes: spore-bottleneck heredity, mu<=0.002, looser vs neutral, 3 seeds.\nShip claims as labkit packs with the lineage JSON inside. Defer: membrane rules, L4b, plife-m2 movers.\n\nBORROW\n- lenia-multichannel: maintenance 0.01 gave a static lattice, 0.03 gave cycles. origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/REPORT_r1.md section 4, packs/mcfd-MIRd.\n- active-droplets: cross-inhibition beta=1.5 killed 31/31 mutant patches. origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md Mechanism 4, packs/ad5-evolve vs ad5n-neutral.\n- autopoiesis: count conversions of intact cells per mutation (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds).",
+ "leaderboard_rows": [
+  {
+   "world": "sporecell",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "Forms spontaneously from ~20 random catalyst particles in a closed food gas. Ringed founders shed single-particle spores while staying intact, and the spores grow into 34-40 parent-size daughters per seed. The population then freezes into a ~40-cell lattice set by the B shell (3 seeds; the skeptic's seed-11 rerun ends with 39 cells against 38-41). L3 Weak: the one-particle M ring is a food-contact label that every cell loses at depletion (t~146-157) while the cells live about 100 t longer, and cells form and reproduce without it (L_nomem). L6[L2] Weak: gen 2 is 8/1/1, and deeper counts come from a fragment/re-merge ratchet in lineage.py. L4a Weak: the cut turns debris into food at the wound, and labkit's disk cut shattered the cell. L4c Weak: one seed, R2=1 variant, and the decline equals the imposed decay. No dt check.",
+   "pack": "threads/particle-life/packs/sporecell"
+  },
+  {
+   "world": "sporecell-gene",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "Kind 1 arises by mutation and ends as the majority in 7/10, 11/11 and 6/11 cells, against 3/9, 0/9 and 1/10 for a neutral mutant (3 seeds). This is selection among particles inside cells, through two-sector Janus cells, not heredity between cells. L7 Contradicted: purity 0.55-0.88, parent-child agreement 0.58-0.93. The gen-9 lineage is a staircase of fragments. The evidence is in screens at mu=0.01, while the pack runs at mu=0.002.",
+   "pack": "threads/particle-life/packs/sporecell-gene"
+  },
+  {
+   "world": "plife-m2",
+   "rung": "L3",
+   "confidence": "medium",
+   "note": "Known Mohr/Ventrella particle-life cells, used as calibration. Concentric type-sorted shells (white on a green core, pink on cyan) form from random types by t~3.5 and persist to t=80 in 3 seeds. One random matrix, a short run, and no dt check. The raster cannot resolve the shells. labkit flags movers at 8.9-13.2 BL that have not been examined (an L4b lead).",
+   "pack": "threads/particle-life/packs/plife-m2"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Neutral provenance labels as an exact horizontal-transfer audit for the confined vs leaky K1/K2 arms. Either split each kind into identical-dynamics labelled copies, or have newly made matter copy its catalyst's label, as particle-life sporecell does: each new C inherits its catalyst's clan label (origin/claude/alife-particle-life:research/alife/threads/particle-life/lineage.py, REPORT_r1.md section 1). Per cell, report the fraction of matter whose label came from the parent at birth against the fraction picked up from neighbours."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Two items from particle-life. (1) Provenance labels for the ad5-evolve horizontal-allele audit: the catalyst copies a founder label onto what it makes (origin/claude/alife-particle-life:research/alife/threads/particle-life/lineage.py). (2) The two-level selection observation. In sporecell-gene, weak cross-kind adhesion makes kinds demix inside a cell into two-sector Janus cells, and a looser mutant spreads inside cells beyond a neutral control in 3/3 seeds (screens/G_mu01_s1_types.png vs N_mu01_s1_types.png). This is the within-cell side of your beta experiment, and both are stochastic-corrector tests (Szathmary & Demeter 1987)."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Compare reproduction modes. particle-life sporecell gets single-particle propagules that grow into parent-size cells in 3/3 seeds while the parent stays intact, against the ring spores in your one-seed fl_cells_food. If you add mild body repulsion to stop collisions cutting lineages, note particle-life's result: a long-range repulsion shell stops merges but freezes the population into a territory lattice unless bodies also die (a maintenance cost) (origin/claude/alife-particle-life:research/alife/threads/particle-life/REPORT_r1.md section 3, screens/L_food_kd01_clans.png)."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "From lenia-multichannel: maintenance decay mu=0.01 gave a static fed lattice and mu=0.03 gave sustained consumer-resource cycles. sporecell's k_dec=0.01 sits exactly in the frozen-lattice regime (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/REPORT_r1.md section 4, packs/mcfd-MIRd). Screen k_dec 0.02-0.05 next to whole-cell dilution."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "From active-droplets: within-droplet cross-inhibition beta (beta=1.5 lost 31/31 invading mutant patches, while beta=1.1 allowed takeover) and the neutral arm at the same mutation rate (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md Mechanism 4; packs/ad5-evolve vs ad5n-neutral). Use them to stop the within-cell gene spread that makes Janus cells once you test spore-bottleneck heredity. From autopoiesis: count kind changes of intact cells per mutation (committee/reviews/autopoiesis_r1.md), and copy phase_membrane's chi=0 design for asking whether a ring is load-bearing."
+  }
+ ],
+ "rubric_issues": [
+  "L3, conditional layers: a boundary type set by a local environment rule (here C->M on food contact, reversible), which the whole population loses at once when the environment changes, does not 'persist with the individual'. Record it as conditional L3 = Weak. Supported needs the layer to persist through most of each individual's life in the run, or an ablation showing it does work (this extends fisim r1 rubric issue 2).",
+  "L6, propagules and matter-identity lineage: a majority-label lineage with a 'largest continues' rule ratchets generations through split/re-merge cycles (sporecell-gene N_mu01 'gen 9'). Require a merge-aware persistence filter (the daughter stays separate for N samples, never re-merges, and reaches a set fraction of parent size) and strips of randomly chosen births at the deepest generation claimed.",
+  "L4a: 'erased' matter must leave the individual's reach (deleted, or relocated as background). It must not be converted into the individual's own resource at the wound, which confounds regrowth. The target must be a mature individual that is not reproducing (as in autopoiesis r1).",
+  "labkit for particle worlds: the 128^2 raster with 1.5 px smoothing cannot resolve one-particle rings or single-particle spores (0 splits, 0 holes, M in the core about equal to M in the rim). labkit needs per-type radial profiles computed from particles(), matter-identity lineage (port lineage.py with a merge filter), and a particle damage hook that removes particles and targets a non-shedding individual."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/particle-life_r1.md"
+}
