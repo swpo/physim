@@ -12,6 +12,11 @@
 
 ## 1. Headline
 
+> **Correction (sprint 3, after review r2):** this headline omits that `kinds.json` logs
+> on→on+off divisions in S0, S1 and N1 (from 2 independent kicks). Arisen markers bred true
+> in 0 of 3 divisions, they did not merely fail to divide. The sprint-3 assay shows why: at the pinch the
+> marker goes to one daughter only (REPORT_r3).
+
 **I ran the committee's selection experiment and it came out negative, for a reason that is
 itself a finding. Once nothing is planted, these membrane cells (m4 dissipative solitons)
 essentially never die. Three intrinsic turnover routes all froze at 12-21 cells. With imposed

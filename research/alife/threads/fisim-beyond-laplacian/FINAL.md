@@ -14,7 +14,7 @@ IMEX-FFT numerics and interpretable parameters?
 | `xcell-evo2-S/N` | **L6[L3]**, low | Membrane cells divide through ≥3 generations under imposed dilution (S0 gen 6). Ringed fissions verified by a judge. |
 | `xcell-div` | L3; L6 Weak | First dividing membrane cells. Damage unjams a stuck rod. |
 | `xcell-turn` | retracted | Waste gated by the wrong channel and planted in founders (my bug). |
-| L7 (all attempts) | **Contradicted** | ASSAY_ONE_LINE |
+| L7 (all attempts) | **Contradicted** | Kick-arisen markers are not inherited. At fission the gated mark collapses into one daughter; ungated marks vanish (sprint-3 assay, stop rule fired). |
 
 Showcase: `movies/showcase.mp4` (0.8 MB, 12 s). xcell-her seed 0, 160², t = 0-400, with
 fixed colour scales over the whole run. Cyan is the body activator u, orange the
@@ -53,7 +53,7 @@ dynamics.
 - Ring-kernel coupling, porous diffusion, advection by −α∇v, and taxis χ<0 all tile space; taxis χ>0 collapses to one spot.
 - The marker feeding the body (kh ≥0.1) makes rods that don't divide ("selection" by sterility).
 - Intrinsic turnover: unplanted gated waste, slow global food and slow local food all freeze or starve. m4 cells essentially never die on their own.
-- Arisen markers: in sprint 2, 3 on→on+off and 0 on→on+on. A small polar kick has not filled the cell before it pinches. ASSAY_FAIL_LINE
+- Arisen markers: in sprint 2, 3 on→on+off and 0 on→on+on. A small polar kick has not filled the cell before it pinches. Sprint-3 assay: the gated mark collapses into ONE daughter at the pinch (kept in 1/3 seeds); ungated Dh 0.05/0.1 lose it in 3/3. A cell-filling kick gives the same result.
 - Selection S vs N (sprint 2): no difference, underpowered (~1 division per cell per 1000 t).
 
 ## What transfers to PhySim worlds
