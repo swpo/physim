@@ -38,5 +38,95 @@
   "thread": "chemotaxis-motility",
   "round": 1,
   "decision": "continue"
+ },
+ "autopoiesis/phase_membrane": {
+  "world": "phase_membrane",
+  "rung": "L6[L3]+L4a",
+  "confidence": "medium",
+  "note": "Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside (three judges' seed-11 profiles). Two judges traced divisions (to gen 3) in which both daughters carry a complete ring. 9-12 persistent splits (gen 2-3) in 3 seeds. dt/2 and 2x resolution keep the ring and gen 3. 35-41% cuts re-ring within 100-150 t against twins (2 seeds). Starvation fission with high fusion and mortality. The ring comes from a designed adsorption drift. A chi=0 control (load-bearing ring?) is pending.",
+  "pack": "threads/autopoiesis/packs/phase_membrane",
+  "thread": "autopoiesis",
+  "round": 1,
+  "decision": "continue"
+ },
+ "autopoiesis/phase_swimdiv": {
+  "world": "phase_swimdiv",
+  "rung": "L6[L2]+L4b",
+  "confidence": "medium",
+  "note": "The lab's first dividing swimmers. The planted cell splits 4-fold, and crescent daughters with depletion wakes divide again and again (10 and 5 divisions on judge seeds 11 and 12; segments up to 7.9 BL). Reproduces with an isotropic stencil. Propulsion is a hand-coded nonlocal per-body rigid drift. Headings cluster on lattice diagonals in some seeds. L3 Weak (no material membrane). labkit tracks break for swimmers.",
+  "pack": "threads/autopoiesis/packs/phase_swimdiv",
+  "thread": "autopoiesis",
+  "round": 1,
+  "decision": "continue"
+ },
+ "autopoiesis/phase_protocell_noise": {
+  "world": "phase_protocell_noise",
+  "rung": "L6[L2]",
+  "confidence": "high",
+  "note": "Walled droplets form from noise and divide by central starvation: 42-46 cells, 28-33 persistent splits, gen 3-4, in 3 seeds plus seed 11. dt/2 and 2x resolution match. The 'membrane' is 4phi(1-phi), a contour of phi, and L is a filled disk (wall/core about 1.1), so L3 is Weak. L4a is Weak (near-Supported): 3/3 round cells healed to their twins' area, on one seed. Close to Gray-Scott mitosis and Zwicker droplets.",
+  "pack": "threads/autopoiesis/packs/phase_protocell_noise",
+  "thread": "autopoiesis",
+  "round": 1,
+  "decision": "continue"
+ },
+ "autopoiesis/phase_kinds": {
+  "world": "phase_kinds",
+  "rung": "L6[L2]",
+  "confidence": "medium",
+  "note": "A faster K2 mutant replaces K1 in 3/3 seeds plus seed 11, and divisions breed true. But the sweep is mostly contagion: 45 intact K1 cells converted without division against 8 mutations, K2 still swept with mutation off, and K1 cells had 0 deaths vs 174 for K2. L7 Weak. The parasite variant (extinction above a threshold) reads best as an infection model.",
+  "pack": "threads/autopoiesis/packs/phase_kinds",
+  "thread": "autopoiesis",
+  "round": 1,
+  "decision": "continue"
+ },
+ "autopoiesis/phase_trait": {
+  "world": "phase_trait",
+  "rung": "L6[L2]",
+  "confidence": "low",
+  "note": "Heritable growth-rate trait: means drift toward about 0.16-0.18 from both starts (3+3 seeds) but have not converged and have overlapping bands. No neutral control, the trait is invisible in the sheets, and the population is frozen after about 12k. L7 Weak.",
+  "pack": "threads/autopoiesis/packs/phase_trait",
+  "thread": "autopoiesis",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-turn": {
+  "world": "xcell-turn",
+  "rung": "L6[L3]",
+  "confidence": "medium",
+  "note": "1-2 surviving planted founders re-populate the box through gen 5/6/4 (3 seeds); two judges' seed-11 reruns reach gen 4. But the waste is gated by cargo through an index bug (perm [6,3,5.0]), and the membrane-gated version goes extinct by t~32 (2 reruns). Founders start poisoned (q=1.2 planted). No deaths after t~30 and the lattice is static after t~350.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-a": {
+  "world": "xcell-a",
+  "rung": "L4b[L3]",
+  "confidence": "medium",
+  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside) that holds a fast D=4 cargo: centre 1.24 vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-a",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-her": {
+  "world": "xcell-her",
+  "rung": "L3",
+  "confidence": "high",
+  "note": "Two planted kinds breed true: 46 divisions (3 seeds plus a seed-11 rerun), 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage (3 judges, seeds 0 and 11) while body and division are unchanged. kb -10% breaks it. No matched Laplacian control yet. L6 Weak (max gen 2/2/1 from planted founders, saturates by t~200). L7 Contradicted (planted kinds, no variation).",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-her",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-div": {
+  "world": "xcell-div",
+  "rung": "L3",
+  "confidence": "high",
+  "note": "Membrane-ringed cells divide by Gray-Scott-class RD (8 splits even with the gate off): 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-div",
+  "thread": "fisim-beyond-laplacian",
+  "round": 1,
+  "decision": "continue"
  }
 }
