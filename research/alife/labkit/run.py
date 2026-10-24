@@ -1080,6 +1080,8 @@ def run_pack(world_path, out, seed=0, frames=200, spf=None, size=None, damage=No
              threshold=None, min_area=None, save_frames=True, quiet=False, args_line="", lineage_k=None, dt=None):
     log = (lambda *a: None) if quiet else print
     W = load_world(world_path)
+    if threshold is None:
+        threshold = W.META.get("threshold")  # META documents an absolute threshold; honour it
     spf = int(spf or W.META["steps_per_frame"])
     size = tuple(size or W.META["size"])
     out = Path(out)
