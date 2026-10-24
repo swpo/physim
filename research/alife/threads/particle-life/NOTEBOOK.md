@@ -238,3 +238,5 @@ with no previously clustered particle; qualifying birth >= 20 samples and not en
 - Twin, seed 0, T=300 (k_det=0.05 route): selected kind-1 share 0.36 (t<100) -> 0.45 (t>=100), final 14/29;
   neutral 0.18 -> 0.15, final 4/30. Kind-1 births 5 vs intact-cell conversions 4 (selected): conversions
   are NOT far fewer than births, so the committee's (b) criterion fails on this pair. One seed only.
+- R3 seed 11 (the committee's skeptic seed), dt 0.02: 12 qualifying births (5.9/100 t), 24 deaths, gen 2,
+  27 cells at t=200, 87 free spores. Consistent with seeds 0 and 1.

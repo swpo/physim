@@ -10,7 +10,7 @@
 
 | world | claim | strongest evidence | weaknesses |
 |---|---|---|---|
-| `sporecell3` (k_det=0.05, n_det=60) | **L6[L2], dt-converged** (gate: pass on seed 0, borderline on seed 1) | The two-seed dt table in §3. `screens/R3_s0_lin2.png` and `screens/R3_s1*_lin2.png`: merge-aware lineage with qualifying births at gen 1–2 (seed 0) and 1–3 (seed 1 at dt/2), and a stationary population of 28–31 cells from t≈75 | Release is a written-in detachment rule. t=200 and 2 seeds only. Deaths (16–23 per 100 t) exceed qualifying births (5–6 per 100 t), because the strict birth rule excludes early unlabelled spores and births that later merge. No ring claim, and no packs made with labkit v0.2. |
+| `sporecell3` (k_det=0.05, n_det=60) | **L6[L2], dt-converged** (gate: pass on seed 0, borderline on seed 1) | The two-seed dt table in §3. `screens/R3_s0_lin2.png` and `screens/R3_s1*_lin2.png`: merge-aware lineage with qualifying births at gen 1–2 (seed 0) and 1–3 (seed 1 at dt/2), and a stationary population of 28–31 cells from t≈75 | Release is a written-in detachment rule. t=200; dt pairs on 2 seeds, plus seed 11 at dt=0.02 only (consistent: 27 cells, gen 2). Deaths (16–23 per 100 t) exceed qualifying births (5–6 per 100 t), because the strict birth rule excludes early unlabelled spores and births that later merge. No ring claim, and no packs made with labkit v0.2. |
 | `sporecell3` without explicit release | negative control for the instability diagnosis | 1 birth and 22 deaths by t=200, 3.4 free spores (127 before the integrator fix) | |
 | `sporecell3` selected vs neutral twin, seed 0 | see §3 (one pair only, T=300) | | not the full part (b) |
 
@@ -33,6 +33,13 @@
 | **same** | 0.01 | 124 | 6.4 | 22.8 | 29 | 2 |
 | detachment k_det=0.05, n_det=60, seed 1 | 0.02 | 110 | 4.95 | 16.8 | 28 | 2 |
 | same, seed 1 | 0.01 | 96 | 5.94 | 17.8 | 28 | 3 |
+| same, seed 11 | 0.02 | 87 | 5.94 | 11.9 | 27 | 2 |
+
+**Images.** `packs/sporecell3-det/seed0/particles.png` (labkit v0.2, same trajectory as R3_s0):
+- Membrane-ringed cells form from the 15 seeds at t≈26–52.
+- From t≈60 there is a stationary population of about 30 compact core cells of both kinds, with small loose daughter clusters growing from detached spores.
+- Rings are gone after t≈60, so there is no L3 claim.
+- The lineage JSON of each seed is copied into the pack as `lineage2.json`.
 
 **Merge-aware lineage (`lineage2.py`).**
 - Continuation is by particle overlap. A birth is counted only for a cluster none of whose particles were in a cluster at the previous sample; fragments are tracked separately and are not births.
