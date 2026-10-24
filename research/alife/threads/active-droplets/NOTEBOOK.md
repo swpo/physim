@@ -69,3 +69,46 @@ Sprint 1 started 2026-10-24 14:29 UTC. Tools: `screen.py` (quick strip of all ch
 - ka=0.15, kb=0.12, 40k steps: A 3 -> 6, B 3 -> 5 (`screens/ad4_F4.png`); low fuel F=0.002: A 2 -> 3, B 2 -> 2.
   Kinds breed true, but the selection signal is weak because populations are tiny at 128^2 and freeze into a
   static lattice. Motivates ad5 (dilution for turnover + mutation for variation).
+
+## Packs (15:00-15:40)
+- `packs/ad1-fuel` (3 seeds, t=20000): 12-16 persistent splits, max generation 2-4, 18 droplets final in every seed,
+  occupancy 0.13. Sheet: ring break-up of the seeds, then binary dumbbell fission, then a static lattice.
+- `packs/ad1-fuel-damage` (seed 0, 50% of the largest component erased at frame 60): the cut happened to hit a
+  droplet in mid-division (cut through the neck); both halves regrew to the control size within ~4-8 frames
+  (droplet area 1487 -> 1608 px vs control 1599; `screens/ad1_damage_vs_ctrl.png`, top control, bottom damaged).
+- `packs/ad3-membrane` (3 seeds): same division sequence; every droplet carries an amphiphile rim at all times
+  (FACTS: psi rim 0.50-0.69 vs core 0.17-0.20, outside ~0; tracks.png shows a magenta shell on every tracked droplet
+  through t=20000). 10-14 persistent splits, generation 2-4.
+- `packs/ad4-protocell` (3 seeds): 11 droplets final, 5-6 persistent splits, gen 2. Kinds visible as colour in the
+  sheet (A whitish, B cyan); B droplets mostly do not divide. Sheet colouring with 5 channels is hard to read.
+
+## ad5-evolve: alleles + mutation patches + dilution
+- 4 alleles k = 0.10/0.12/0.14/0.16, all droplets start as allele 0; mutation patch (disk -> another allele) at
+  rate 0.002/time; dilution disk (r=10) at 0.0005/time.
+- beta=1.5, rm=3: 31 mutation patches, NONE fixed (`screens/ad5_base.txt`): a small minority patch always loses the
+  intra-droplet competition (bistability). NEGATIVE but informative: strong winner-take-all blocks innovation.
+- beta=1.1, rm=5: mutants fix. Allele 3 (fastest) rises 0 -> 9 of 12 droplets, ancestor 4 -> 0 by t=20000
+  (`screens/ad5_rm5_b1.1.png`, `.txt`). Mutant droplets visibly larger (size set by k). With beta=1.3, dil=0.001,
+  F=0.003 the population stays mixed (8 droplets, [2,1,2,3]): more dilution + lower fuel = more drift.
+
+## ad5 packs and controls (15:40-16:05)
+- `packs/ad5-evolve` vs `packs/ad5n-neutral` (all alleles k=0.13), 3 seeds each, t=20000; `packs/ad5-evolve/alleles.png`.
+  End counts [a0,a1,a2,a3]: selection s0 [0,2,1,9], s1 [4,1,2,4], s2 [1,1,3,6]; neutral s0 [7,0,0,2], s1 [8,1,1,0],
+  s2 [4,4,2,1]. Fastest allele share 19/34 (selection) vs 3/30 (neutral); ancestor share 5/34 vs 19/30.
+  Sheet (seed 0): a blue a3 mutant arises inside an ancestral droplet at t~3000, takes it over, and its descendants
+  divide repeatedly (blue -> blue + blue); ancestral droplets stay small and mostly stop dividing.
+- Ablation dil=0 (no dilution): seed 0 [1,0,0,12], seed 1 [3,1,4,3] (`screens/abl_ad5_nodil*.txt`). Dilution is
+  not what drives the shift; selection acts through faster growth/division during colonization.
+
+## Ablations and checks
+- ad1 F=0 (no fuel feed): all droplets dissolve by t~6000 (`screens/abl_ad1_nofuelfeed.png`). Metabolic dependence.
+- ad1 M=1 (fast interior transport): no division at any Du in 0.5-4 (earlier screens). Slow M is necessary.
+- ad1 order n=1 (linear production): dilute phase unstable, background nucleates (`screens/ad1_early.png`).
+- ad3 chi=0: amphiphile fills the droplet body instead of forming thin shells (`screens/abl_ad3_chi0.png`).
+  The interfacial coupling makes the membrane.
+- ad3 damage (`packs/ad3-membrane-damage`, seed 1, frame 120, 95 of 191 px erased): the elongated droplet is cut
+  into two; each fragment closes a full amphiphile shell over its cut face within ~2 frames and regrows; droplet
+  area back to control in 5 frames (1916 vs 1902 px). Control divides on its own at frame ~160.
+  `screens/ad3_damage_vs_ctrl.png` (top control, bottom damaged).
+- Numerics: ad1 with dt 0.25 vs 0.5, same simulated time: identical droplet counts at every frame and identical field
+  ranges (`screens/num_ad1_dt*.png`). Resolution change not tested.
