@@ -1,7 +1,7 @@
 """Chan (2020) multi-channel Lenia creature '*mIRde' (code A39RG5<3G9TC1) from Chakazul/Lenia Python/found/233s.json, catalogue index 2728.
 
 Positive control for the multi-channel engine: 3 channels, 15 kernels, R=15.
-2 planted copies (random rotations); the structure is planted, not spontaneous."""
+3 planted copies (random rotations); the structure is planted, not spontaneous."""
 # ---- multi-channel Lenia engine (Chan 2020 update rule; copied into each world) ----
 import numpy as np
 import scipy.fft as sfft
@@ -104,11 +104,11 @@ META = {
     "name": "mcf-mIRde",
     "family": "lenia",
     "parent": 'mc-mIRde',
-    "mutation": 'matter is built from a consumed, regrowing, diffusing food field F (closed metabolism)',
+    "mutation": 'matter can only be built from a consumed, regrowing, diffusing food field F (yield 2): population limited by food supply',
     "size": (192, 192),
-    "steps_per_frame": 5,
+    "steps_per_frame": 10,
     "dt": 0.1,
-    "channels": ["A0", "A1", "A2"][:3] + (["F"] if {'mode': 'conserve', 'Y': 1.0, 'rho': 0.005, 'D': 0.5, 'Fmax': 1.0} else []),
+    "channels": ["A0", "A1", "A2"][:3] + (["F"] if {'mode': 'conserve', 'Y': 2, 'rho': 0.02, 'D': 2} else []),
     "matter": list(range(3)),
 }
 
@@ -135,16 +135,24 @@ CELLS = [
     "32.$32.$32.$32.$32.$13.DEC16.$10.DQ2pBOC16.$8.GTpKpUpSpIRH2CEGIGA9.$6.BNpFqAqPqIpNpCpApEpMpRpUpRpIWNC8.$5.AMpHqBqQqIpJUTpDpTpVpKpLqOqJpOpDQG7.$5.FXpQ2qEpLRLQpApUqVqUqPrFrRqNpQpERI6.$5.LpGpTqBpUpFSRQHqGtFuOvEvUvSuSrKqApLWI5.$4.ARpKpVqBpSpIpBT.AqGuCwRyOxTsDrXuSrPpXpIRC4.$4.CXpPqAqCpU2pNpEKXsFxJyOwBqUpVpFsAqUqApERB4.$4.FpFpSqDqEpVpSqFrArMtFxBuKrAqLqMrCqNrDqNqKpAKA4.$4.GpIpWqMqKpXpVqSsOuLyAxAsTsFtIvXyOxQqJqFrBpDEB4.$4.GpIqFrDrCqKqCqWtCwDyOuOuCwT3yOyDqHpRqTpTqIqVqX3.$4.DpFqIrTsHrRqPqIsPwWwTuXxV2yOyCtNpEpFpGpTsJuBrGqKpD2.$4.ApAqFrWtDsUrLrQtItRrJuQ3yOsHpMpFpJ2rKrCsKVB3.$5.RpSrHsQuLwMyOxEuEqEtDwAwPvWpJpKpFqWwPvSrIC5.$5.JpBqNtNxG4yOsGqQrCvEwCsNpIpJsByCwAqB6.$5.CIqCtHvP4yOtSpHpTvRwLxJtMsTtRvUqF7.$7.qCsPsIrBpTvXxSsM2pPuPxPyOxE2yOyLpW7.$7.WvKtKTpCpEsUrMqIpArSuQvPxR2yOvL8.$8.uDyOuHPUsJrMrLqBpIsIwByCyMwPrT.B6.$8.BuKyOvEsHtXtVtPsIpUsEwExOwKtIIpB7.$9.EtMvEtTtNuIuLtNrIrKtGtIqS10.$12.XpKpFqLrLrNqQQ12.$16.TpW14.$32.$32.$32.$32.$32.!",
     "32.$32.$32.$11.4AB2DB13.$8.BINJ2.DpApOpMWG12.$7.HpBpGL3.CpKpTpDC13.$6.OpPpTO3.pAqCpVS15.$5.LpMqBpFF.SrFsOsDqSJ5.BV8.$4.EpAqApXpPOqBtGvUwHvKpUC7.pQpR6.$4.UqBqNqOpLqCtMxM2yOtVqQpXqOqVqJpLN3.BqFF4.$3.QqFrFqUqCpFrVwM2yOxTvLxN3yOyDvXtQrTpV2.pNqMB3.$2.BpQrJrDqCQpOtS3yOwL7yOwBsSqFJ.pGsKqIA2.$2.MqGrDpMP.qSvX2yOxExT6yOxFtKqM4.rCsKpO2.$.ATqEpUA.LsOyE2yOxH7yOuWpV6.pNrVH.$.DTpVpD2.pOuJ11yOyDqS7.qSrF.$.EQpUpS.HqLvG12yOsOpI6.qOsVM$.BJpKpR.DqGuR12yOwPsNqOwHuHsI.pFtItNpW$2.FT3.WsSxB10yOwTvJyOyLxEuK2.pOvJtEpJ$2.DC4.qAuDyD7yOwWuHtMtKtLyDrJ4.vUtQD$2.B6.qUuTyE7yOtAqJpVpI6.NuO.$2.A7.rAuIvXwDxL3yOvUpMC9.pF.$6.pX4.qOsNsRtTwPwKtKqF7.qT2.CpAL$6.X5.2pGpHqQrBD7.JsAABV.W$7.pJ16.CpXpT.JpBuR.$7.rMqC15.qBqOU.pPtIrX.$7.rWyKrN8.WD3.CsBUA2DtH2.$5.G2.wDuH9.U3.qIuIqOON.qJ2.$5.F2.S4.pW9.SpKVPNrC3.$6.J.pR4.yOvU8.AFHGpC4.$7.rCxCwF4.rJ8.A.A6.$8.sPyOvR6.rDsKpGFGM4.pE4.$9.rUyHwT2.FSqFsTsJrTRFsXtVsBqV6.$10.pWuByJyNwCtNsVqUqBrJD2.sErAqB6.$15.C16.!",
 ]
-N_SEED = 2
+N_SEED = 3
+C = 3
+NOISE = 0.6
 # Optional metabolism: food field F (diffusing with D, regrowing at rate rho toward Fmax).
 #  mode "conserve": matter can only be built from local food (yield Y); see step().
 #  otherwise ("gate"): positive growth multiplied by F^gate, eating at eat*mass*F, starving at starve*(1-F).
-FOOD = {'mode': 'conserve', 'Y': 1.0, 'rho': 0.005, 'D': 0.5, 'Fmax': 1.0}
+FOOD = {'mode': 'conserve', 'Y': 2, 'rho': 0.02, 'D': 2}
 
 
 def init(seed, size):
     rng = np.random.default_rng(seed)
     H, W = size
+    if CELLS is None:   # spontaneous: random noise in a square patch covering NOISE of the grid side
+        A = np.zeros((C, H, W))
+        p = int(NOISE * min(H, W))
+        A[:, :p, :p] = rng.random((C, p, p))
+        A = np.roll(A, (int(rng.integers(H)), int(rng.integers(W))), (1, 2))
+        return _finish(A, size)
     cr = _creature(CELLS)
     A = np.zeros((len(CELLS), H, W))
     h, w = cr.shape[1:]
@@ -158,7 +166,12 @@ def init(seed, size):
         placed.append((y, x))
         c = np.rot90(cr, int(rng.integers(4)), axes=(1, 2))
         A = np.maximum(A, np.roll(np.pad(c, ((0, 0), (0, H - c.shape[1]), (0, W - c.shape[2]))), (y, x), (1, 2)))
-    st = {"A": A, "L": Lenia(RULE, len(CELLS), size, R, T)}
+    return _finish(A, size)
+
+
+def _finish(A, size):
+    H, W = size
+    st = {"A": A, "L": Lenia(RULE, C, size, R, T)}
     if FOOD:
         st["F"] = np.full((H, W), FOOD.get("F0", 1.0))
         ky = 2 * np.pi * np.fft.fftfreq(H)[:, None]

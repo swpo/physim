@@ -106,3 +106,83 @@ The glider depends on the food it consumes: L4c candidate on an L3 (shell + core
 **M5. Replicator + food, 128², 4000 steps.** no food coupling: 3 -> 19-26 blobs; rho=0.02 D=2:
 bounded at 1-4 blobs (food 0.65-0.85); rho=0.01 D=4: extinct at ~1450; rho=0: extinct by 726
 while mean food is still 0.75 (local wells). Population size is set by food supply.
+
+## More random rules (screen 2) and two new spontaneous worlds
+
+**S3. 'two' family, 120 more rules (screen_data/two_s1.json, screens/rnd_two_individuals.png
+is screen 1; screen 2 gallery in screens/ as rnd_two_s1).** dead 47, sea 25, blob/pattern 17,
+transient 6, classifier-"individuals" 25. By eye: discrete individuals in 4 (#11, #60, #66, #85);
+#66 is a sea with another noise seed (spontaneity is IC-sensitive for some rules).
+Over both screens: **discrete individuals in ~10/420 random graphs (2.4%); shelled
+(core + shell) cells in 2/420 (two#56, two-s1#85), all in the 2-channel family.**
+
+**P5. r-two-s1-85 pack (192², 3 seeds, t=150).** Noise -> a packed, frozen "tissue" of ~30 shelled
+cells (cyan core + white centre + orange shell, same morphology as r-two56) that stays inside the
+seeded square. Lineage "splits" (up to generation 2) are flickering bridges between touching
+cells, not division: count is flat. L3 cells, no motion, no reproduction.
+
+**P6. r-two-s1-60 pack (192², 3 seeds, t=150).** Noise -> ~45 cyan individuals. Inside the crowd
+they are static "bricks"/hourglasses; at the crowd edge round C-shaped gliders peel off and
+wander (15-26 moving tracks per seed, more gliders over time). Planting either a brick or a glider
+alone (screens/r-two-s1-60_planted_brick_and_glider.png): **both become the same glider**, so the
+bricks are gliders arrested by crowding (jamming). Ablations (screens/r-two-s1-60_ablations.png):
+k1 (0->0 ring) essential; k0 removal -> sea; k5 removal -> dense dot lattice, but replacing k5 by a
+constant (m=5, screens/r-two-s1-60_k5_constant.png) keeps the gliders: **the orange channel only
+supplies a constant decay bias; the glider is effectively single-channel Lenia.** The same
+k5->constant test kills r-two56 (its shell really feeds its core).
+
+## Robustness / numerics of r-two56
+
+**N1. +-10% random jitter of every m, s, h (5 draws, 128², t=100):** 1/5 same behaviour,
+1/5 a growing blob/worm, 3/5 die. Not robust in the full 18-parameter space.
+**N2. dt/2 (T=20):** same formation (rim, budding cells) but cells die off slowly (6 -> 1 by
+t=100). **R = 11, 12, 13 (grid scaled):** same cells, 2-3 survive. **R = 15:** everything dies by
+t=67. (screens/r-two56_numerics_dthalf_R11_R13.png). Formation is qualitatively resolution- and
+dt-robust over a small range; long-term cell survival is marginal and partly a discretization
+effect. Numerical validity: weak.
+
+## Replicators x food (the main line by the end of the sprint)
+
+**R1. Screen of 47 catalogue creatures with R/r in their name (128², 1500 steps;
+screens/chan_replicators_screen.png rows: #224, #331 *mR, #1121 Mird+, #1129 *mIRde,
+#1130 MIRd+, #1187 *MIrd, #1195 R+).** Strong exponential replicators: #1130 `MIRd+` (1 -> 33
+cells), #1195 `R+` (-> 29), #224 (fills grid as a dotted tissue). #1130 is a structured cell: white
+core, orange cap on one side, dotted magenta halo; it elongates and splits (planted, from Chan).
+
+**R2. mc-MIRd (#1130, no food, 192²).** 1 -> 65 cells by step 2000. With seed jitter 0.05 and
+tracking on channel 0 only, labkit sees 11 persistent splits and generation 4 by t=150.
+(Without jitter the 3 seeds are identical: one planted creature on a torus, rotations by 90
+degrees are exact symmetries. Without core-only tracking the dotted halos fuse all cells into
+one component and lineage reads generation 0.)
+
+**R3. mcf-MIRd: MIRd+ + build-from-food metabolism (Y=2, D=2).** The colony becomes a
+**front of dividing cells advancing into fresh food with a depleted interior behind it**
+(screens/mcf-MIRd_rho0.01_160.png). Supply sets the regime:
+- rho=0 (no regrowth): grows, eats the food, extinct by step ~2660 (screens/mcf-MIRd_rho0_160.png).
+- rho=0.005: boom, overshoot to 19 cells, bust, extinct by step 5000 (128²).
+- rho=0.01: persistent colony, ~20-26 cells at 160², food mean ~0.2.
+- rho=0.02: space-limited; at confluence the cells turn into a **static white lattice that stops
+  eating** (food recovers to 0.87; screens/mcf-MIRd_rho0.02_128.png). Same "jammed cells are
+  metabolically inert" effect as M3.
+
+**R4. mcf-mIRde at 192² (rho .02, D 2, 3 copies):** extinct in 2/3 seeds by t=300. The 128²
+result (M5) was marginal. Negative/fragile.
+
+**R5. Packs.** `packs/mc-MIRd` (no food, jitter 0.05, core-channel tracking): 16-17 persistent
+splits, generation 4, ~40 cells by t=200 in all 3 seeds. `packs/mcf-MIRd` (rho=0.01, t=400):
+boom to ~40 cells at t≈200 with food at ~0.2, then decline to 11-16 cells by t=400, which gather
+into one compact colony; starving cells grow orange rings. `packs/mcf-MIRd-norefill` (rho=0):
+extinct in 3/3 seeds (seed0 at t≈230), mean food still ~0.4 (local depletion).
+`packs/mcf-fastcell-norefill`: gliders die one by one; 0, 0, 1 left at t=300.
+mc-MIRd at dt/2 (T=20) still replicates: 2 -> 32 cells over the same simulated time.
+
+## Two-species ecology (new mutation, end of sprint)
+
+**E1. eco-MIRd-Rplus (tools/make_eco_world.py).** Two catalogue replicators, MIRd+ (#1130) and R+
+(#1195), each with its own 3 channels and 15-kernel rule, coupled only through one shared food
+field (build-from-food) and space exclusion (positive growth x (1 - other's occupancy)).
+128², 4000 steps, seed 1: A alone 1 -> 13 -> 6 cells (food 0.18-0.36); B alone ~36-52 cells
+(food ~0.15); together: B ~35-50, A persists as a 3-6-cell enclave
+(screens/eco-MIRd-Rplus_both_128.png). R+'s catalogue pattern is already a 4-cell cluster, so the
+start is unequal. Coexistence under competition is a first L5 candidate and a stepping stone to
+selection.

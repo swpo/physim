@@ -47,7 +47,7 @@ def main(argv=None):
         k, v = kv.split("=", 1)
         setattr(W, k, eval(v, vars(np) | dict(vars(W)) | {"np": np}))
     s = W.init(a.seed, (a.size, a.size))
-    C = len(W.META["matter"]) if W.META.get("matter") else None
+    C = getattr(W, "C", None) or (len(W.META["matter"]) if W.META.get("matter") else None)
     every = max(1, a.steps // (a.frames - 1))
     tiles, log = [], []
     for t in range(a.steps + 1):

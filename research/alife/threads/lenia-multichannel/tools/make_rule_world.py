@@ -33,7 +33,7 @@ if __name__ == "__main__":
                           parent=a.parent or f"screen:{row['fam']}#{a.idx}",
                           mutation=a.mutation or f"random '{row['fam']}' channel/kernel graph",
                           food=json.loads(a.food) if a.food else None, size=a.size, spf=a.spf, dt=0.1,
-                          C=row["C"], R=a.R, T=10, rule=rule_src, cells="None", n=0)
+                          C=row["C"], R=a.R, T=10, rule=rule_src, cells="None", n=0, jitter=0.0)
     src = src.replace("NOISE = 0.6", f"NOISE = {a.noise}")
     (out / "world.py").write_text(src)
     print(out / "world.py")

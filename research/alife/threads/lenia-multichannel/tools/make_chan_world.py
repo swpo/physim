@@ -31,6 +31,7 @@ CELLS = {cells}
 N_SEED = {n}
 C = {C}
 NOISE = 0.6
+JITTER = {jitter}   # multiplicative noise on planted creatures, so seeds differ beyond exact symmetries
 # Optional metabolism: food field F (diffusing with D, regrowing at rate rho toward Fmax).
 #  mode "conserve": matter can only be built from local food (yield Y); see step().
 #  otherwise ("gate"): positive growth multiplied by F^gate, eating at eat*mass*F, starving at starve*(1-F).
@@ -59,6 +60,8 @@ def init(seed, size):
         placed.append((y, x))
         c = np.rot90(cr, int(rng.integers(4)), axes=(1, 2))
         A = np.maximum(A, np.roll(np.pad(c, ((0, 0), (0, H - c.shape[1]), (0, W - c.shape[2]))), (y, x), (1, 2)))
+    if JITTER:
+        A = np.clip(A * (1 + JITTER * rng.standard_normal(A.shape)), 0, 1)
     return _finish(A, size)
 
 
@@ -127,6 +130,8 @@ if __name__ == "__main__":
     ap.add_argument("--food", type=str, default=None, help="JSON dict: gate, starve, rho, eat, D, F0")
     ap.add_argument("--mutation", type=str, default="reference creature in this thread's multi-channel engine")
     ap.add_argument("--parent", type=str, default=None)
+    ap.add_argument("--jitter", type=float, default=0.0)
+    ap.add_argument("--matter", type=str, default=None, help="python list of channel indices to track")
     a = ap.parse_args()
     e = json.load(open(a.cat))[a.idx]
     T = e["params"][0]["T"]
@@ -142,5 +147,9 @@ if __name__ == "__main__":
     (out / "world.py").write_text(TEMPLATE.format(
         doc=doc, engine=(HERE / "engine_src.py").read_text(), name=a.wid, parent=a.parent or f"Chakazul/Lenia {e['file']}#{e['code']}",
         mutation=a.mutation, food=json.loads(a.food) if a.food else None, size=a.size, spf=a.spf, dt=1.0 / T,
-        C=len(e["cells"]), R=e["R"], T=T, rule=rule_src, cells=cells_src, n=a.n))
+        jitter=a.jitter, C=len(e["cells"]), R=e["R"], T=T, rule=rule_src, cells=cells_src, n=a.n))
+    if a.matter:
+        src = (out / "world.py").read_text().replace(f'"matter": list(range({len(e["cells"])})),',
+                                                     f'"matter": {a.matter},')
+        (out / "world.py").write_text(src)
     print(out / "world.py")
