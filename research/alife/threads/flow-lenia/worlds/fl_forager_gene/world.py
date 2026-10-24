@@ -28,7 +28,7 @@ META = {
     "parent": "flow-lenia/fl_forager + fork of the heritable-rate-allele protocol of active-droplets/ad5-evolve and autopoiesis/phase_trait (gene carried by matter, mutation during the run, neutral control)",
     "mutation": "every parcel carries a heritable uptake gene log g (eat *= g) and a genotype id, both moved with the matter by stochastic sampling; body-scale mutations log g += N(0, mut_size); gene_active=False is the neutral-marker control",
     "size": (128, 128),
-    "steps_per_frame": 10,
+    "steps_per_frame": 40,
     "dt": 0.2,
     "channels": ["low g", "high g", "food"],
     "matter": [0, 1],

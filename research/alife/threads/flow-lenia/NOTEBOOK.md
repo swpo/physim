@@ -181,3 +181,39 @@ with sampling transport and 25% (m,s,h) differences, competition outcome is set 
 history (which bodies collide/merge first), not by the parameters. Sprint 2 needs either larger
 effects (different kernels, speed) or a mixing rule that lets fitter matter win at contacts.
 Sprint 1 ended 16:19 UTC.
+
+# Sprint 2 (started 16:37 UTC)
+
+Committee digest read. Lab convergences: gated mobility for containment; consumed resource plus
+maintenance cost; L7 bar = variation arising in the run + neutral control at the same mutation
+rate + >= 3 seeds. Challenge: fork a mechanism from another thread.
+
+## S2-E1. Heritable uptake gene (`worlds/fl_forager_gene`), forked protocol
+Fork: the "heritable rate allele carried by the body, mutated during the run, plus a neutral
+control" protocol of active-droplets/ad5-evolve and autopoiesis/phase_trait, ported into the
+forager. Every parcel carries log g (eat *= g) and a genotype id, moved with the matter by the
+same stochastic sampling as sprint 1. Mutation: with p=0.004/step, a radius-8 disk around a
+mass-weighted random cell (about one body) gets log g += N(0, 0.2), one draw per event. Neutral
+control: gene_active=False, so the same mutation process runs but g has no effect (a marker).
+- 3 seeds x 8000 steps + 3 seeds x 12000 steps per condition (evo2/gene_all.png).
+  Final matter-weighted mean log g. Selection: -0.17, +0.34, +0.45 (8k); +0.73, +0.68, +0.54 (12k).
+  Neutral: -0.07, -0.06, +0.11 (8k); -0.05, -0.24, +0.01 (12k). Mann-Whitney U = 31/36,
+  one-sided p~0.008. The selection trajectories rise steadily; the neutral ones wander around 0.
+- Phenotype (packs/fl_forager_gene/seed3 sheet): the high-g (orange) lineages that win overgrow
+  into a few large, slow multi-ring cells. The small, low-g (cyan) gliders disappear. Selection
+  for uptake drives gigantism and loss of motility in this seed; seeds 4-5 kept ~20 bodies.
+- One selection seed (0) went down (-0.17): the population fell to 3-7 bodies, so drift dominates.
+
+## S2-E2. Predator-prey Flow-Lenia (`worlds/fl_predator`)
+Two glider species, both with rule C2_r202, in separate channel pairs with their own pressure
+term. Prey eat food (Hill uptake). Predator matter converts the prey matter it overlaps (kill =
+k_pred·prey·q_pred/(1+q_pred), mass-conserving) and decays to food at 0.003. Chase:
+U_pred += chase·blur12(prey). Flee: U_prey -= flee·blur12(pred). Total mass is conserved to 6e-13.
+- Screens (screens/pred_*.png): chase 2 -> the predator cannot find prey and dies. chase 30,
+  k_pred 0.05 -> prey exterminated by t~1800, then the predators starve (total extinction).
+  Weak predators die early. **flee 60 with chase 20, k_pred 0.03: coexistence.**
+- packs/fl_predator seed0-2 (12000 steps): coexistence in 3/3. Prey go through 2-3 boom-and-crash
+  cycles (to ~3.6x, crashing when predators peak), and predator matter tracks prey with a lag
+  (packs/fl_predator/populations.png). Minimum predator matter 25-57, minimum prey 182-283.
+- Ablations (8000 steps): chase=0 -> predators starve by t~2700 and prey persist alone. flee=0 ->
+  prey exterminated, then predators die (extinction). Coexistence needs pursuit AND evasion.
