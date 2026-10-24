@@ -179,6 +179,8 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
 - ad7tn-neutral (all kp=4, same mutation/dilution), 3 seeds: end [0,2,2,2], [2,1,3,2], [2,3,1,1] = 21 droplets.
   IMPORTANT: mutation churn alone drops the ancestor label to 24% (5/21), about the same as with selection (8/36).
   The real differences vs neutral: population 36 vs 21, intermediate alleles 69% vs 43%. Claim downgraded to Weak.
+  CORRECTION (sprint 3, from committee r2): neutral intermediates are 2+2+1+3+3+1 = 12/21 = 57%, not 9/21.
+  Per-seed shares overlap (75/91/46% vs 67/50/57%); the intermediate shift is not distinguishable from neutral.
 - Landscape seed 1: kp 0/0.5/1.5/4 -> 5/12/12/6 droplets at t=8000 (broad peak 0.5-1.5).
 
 Sprint 2 ended ~18:22 UTC. Report: `REPORT_r2.md`.
@@ -189,3 +191,18 @@ Sprint 2 ended ~18:22 UTC. Report: `REPORT_r2.md`.
   ~no division (CH: 12); kp=4 -> 6 (CH: 6). `screens/R_ad7_kp*.png`. In ad7 the double well matters for division.
 - Merge note: the lab branch held an older snapshot of 4 files in this thread dir (add/add conflicts); kept this
   branch's versions.
+
+# Sprint 3 (final; started 19:42 UTC)
+Committee r2: CONTINUE on ad7; L6[L3] medium for the ad7 family; L7[L3] Weak; correct the 9/21 count (done above);
+move the turnover protocol to ad7. Final deliverables: REPORT_r3, FINAL.md, movies/showcase.mp4.
+- ad8-parasite: written at the end of sprint 2 (producer/parasite alleles, fork of ad5), never run. Deleted: the
+  autopoiesis thread already has a parasite threshold and the committee asked to log or delete.
+
+## ad9-ledger (protocol world)
+- ad7 + harmonic face means in gated_div; rung trait carried by the catalyst (fields a and q = a*rung, same transport,
+  so q/a is uniform inside a droplet); in-world tracking every 100 steps logs birth/death/kill/mut/convert/offkind/
+  nucleate; mutation only at birth (p=0.1, one daughter, +-1 rung, whole-droplet relabel); Moran dilution
+  (cap droplets; each excess -> one uniform random droplet erased); identical-event RNG streams per birth index
+  (3 draws per birth) and per kill (1 draw); neutral twin = every rung has the ancestor's kp.
+- KP ladder [0, 0.25, 0.5, 1, 1.5, 2.5, 4]. Scaled down from the committee spec to fit the sprint: 128^2 (not 192^2),
+  t = 30000 (not >= 40000), landscape at t = 6000.
