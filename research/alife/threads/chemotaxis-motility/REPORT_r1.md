@@ -46,6 +46,7 @@ predator-prey ecology that coexists stably for t = 2000. Removing the trail kill
 - Prey growth without toxicity leads to swimmers growing into large immotile amoeboid blobs (no fission).
 - Mass-conserving trail swimmers (kstrail) do not last: they coarsen into immotile aggregates by t~1800.
 - Predator-prey kinetics give stable coexistence, not oscillations, in every run so far.
+- Stronger growth + toxicity (g 0.2-0.3, kd 0.01-0.015) speeds turnover but gives no fission (max generation ≤ 1).
 - Novelty caveat: self-propulsion by self-generated chemorepellent trails is known for single particles (e.g. "autochemotactic"
   walkers and active droplets). What I have not seen in our LITERATURE.md is the field version with formation from noise, pursuit pairs and
   toxic-trail metabolism.

@@ -125,3 +125,10 @@ Screens are in `screens/`, and file names encode the parameter overrides.
   saturated triangular aggregates that never move again and absorb swimmers. Final state: 2 immotile blobs.
 - Compare `packs/toxforage_long_128` (r 0.06, t=1500): stationary 6-7 swimmers. Self-toxicity is the size control that keeps the
   swimmer phase alive (clumps poison themselves and re-shed swimmers).
+
+## Fission screens (end of sprint, 128², t=1050, /tmp only)
+- toxforage g 0.2 / kd 0.01 and g 0.3 / kd 0.015 / r 0.1: faster turnover but no fission. Persistent splits 2 and 0, max generation ≤ 1;
+  splits are collision debris re-separating, not a grown swimmer dividing. Stronger kinetics alone do not give L6, so the
+  next sprint needs an explicit size-selection operator.
+
+Sprint 1 ended ~16:05 UTC.
