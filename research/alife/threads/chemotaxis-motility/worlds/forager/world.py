@@ -13,6 +13,9 @@ Hypothesis: a cluster eats the nutrient under itself, so the nutrient gradient a
 points away from where it has been: the depletion zone is a self-made repulsive trail
 (cf. kstrail) and also the cell's food, so motion, size and survival are coupled.
 """
+import json
+import os
+
 import numpy as np
 
 from labkit import ops
@@ -34,6 +37,7 @@ P = {
     "Dr": 0.3, "Da": 1.0, "ka": 0.1, "Dn": 0.3, "r": 0.02, "c": 1.0,
     "chi_a": 3.0, "chi_n": 3.0, "g": 0.2, "m": 1.0, "rh": 0.3, "d": 0.05, "kp": 0.0, "rho0": 0.15, "noise": 0.05, "dt": 0.05,
 }
+P.update(json.loads(os.environ.get("WORLD_P", "{}")))  # screening override only; packs use the defaults above
 
 
 def vf_flux_div(rho, vy, vx):

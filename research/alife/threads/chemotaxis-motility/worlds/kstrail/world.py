@@ -11,6 +11,9 @@ h   : slow, long-lived repellent secreted by rho    -> self-repulsive trail (pro
 Hypothesis: the spot sits on top of its own accumulating repellent; any displacement
 puts the old trail behind it and the gradient pushes it forward (symmetry breaking).
 """
+import json
+import os
+
 import numpy as np
 
 from labkit import ops
@@ -20,7 +23,7 @@ META = {
     "family": "chemotaxis",
     "parent": None,
     "mutation": "Keller-Segel with volume filling + second, slow self-secreted repellent (trail)",
-    "size": (128, 128),
+    "size": (192, 192),
     "steps_per_frame": 60,
     "dt": 0.05,
     "channels": ["rho", "a", "h"],
@@ -34,6 +37,7 @@ P = {
     "Dr": 1.2, "Da": 4.0, "ka": 0.1, "Dh": 0.2, "kh": 0.05, "beta": 1.0,
     "chi_a": 24.0, "chi_h": 4.8, "rho0": 0.05, "noise": 0.02, "dt": 0.05, "growth": 0.0,
 }
+P.update(json.loads(os.environ.get("WORLD_P", "{}")))  # screening override only; packs use the defaults above
 
 
 def _faces(u, ax):

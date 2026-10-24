@@ -34,3 +34,23 @@ Screens are in `screens/`, and file names encode the parameter overrides.
   instability/NaN at high density. Hill growth + volume filling: large, static, saturated blobs that grow.
   Fast nutrient diffusion keeps depletion symmetric, so spots do not move (fo_e/f lattice).
   Slow nutrient diffusion leads to extinction (fi/fh). All at scale 1 (under-resolved). To revisit at scale 2 and low density.
+
+## kstrail promoted (192², 3 seeds) — `packs/kstrail`
+- Defaults: scale-2 lengths, chi_a 24, chi_h 4.8, rho0 0.05. All three seeds: spontaneous swimmers (9-11 at the end),
+  22-25 tracks moving >= 1 body length, up to 23 body lengths, speed ~0.5/t. seed1 tracks.png: #15 is the same
+  polar crescent from t=132 to 600 (rho front, h cloud behind); #33 is born from a two-lobed body at t~261 and persists.
+- Weaknesses seen: collisions merge swimmers, and large merged bodies (the triangle in seed1, top-left) become
+  saturated and immotile. They can re-shed swimmers ("persistent splits" 3-5), but over long runs immotile
+  aggregates may win. Not tested beyond t=600.
+
+## pursuit: two kstrail species with cross-taxis — `worlds/pursuit`, `packs/pursuit` (160², 3 seeds)
+- Predators (q) climb the prey attractant (chi_y 8); prey descend the predator attractant (chi_x 8). No kinetics
+  (k = g = 0): pure pursuit and evasion, each species conserved.
+- Swimmers of both species form from noise. **Predators lodge in the concave rear of prey crescents and the pair
+  travels together** (chaser and fleer at equal speed: a bound pursuit composite). Pairs dominate the late frames.
+- `pairing.py`: late-half fraction of predator bodies touching prey is 0.86 / 0.91 / 0.76 (seeds 0-1-2), against
+  a shuffled-prey null of 0.27 / 0.27 / 0.31.
+- Ecology attempts (predation k, yield e, Allee prey growth on nutrient): every combination tried so far goes extinct
+  (pp1, pp2, gr1, gr3, gr4). The prey die in the diffuse phase before swimmers condense (Allee growth is ~0 at rho0=0.05).
+  gr2 survived but grew into large immotile amoeboid blobs. Added a `t_on` switch (kinetics start after
+  condensation) to separate the two phases.
