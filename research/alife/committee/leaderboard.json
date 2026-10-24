@@ -93,41 +93,41 @@
   "world": "xcell-turn",
   "rung": "L3",
   "confidence": "low",
-  "note": "RETRACTED by the researcher in r2, and withdrawn as the family's L6 evidence. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors, not turnover. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
+  "note": "RETRACTED (r2), final. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-a": {
   "world": "xcell-a",
   "rung": "L4b[L3]",
   "confidence": "medium",
-  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of the m field is a trailing wake. L4a Weak: one cell, 29.6% erased. Unchanged in sprint 2. Biologist dissent from r1: L3 Weak.",
+  "note": "FINAL (unchanged since r1). m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of m is a trailing wake. The gate-off control keeps D=4, not a lowered uniform D. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-a",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-her": {
   "world": "xcell-her",
   "rung": "L3",
   "confidence": "high",
-  "note": "Two planted kinds breed true: 46 divisions in r1, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. Sprint-2 arm L (ungated, Dh=0.02) loses all markers by t~100, reproduced by the skeptic on seed 11 at 64\u00b2. The ungated fronts are ~1 px wide and blocky, though, so this is not yet a matched Laplacian control. Kick-arisen markers in xcell-evo2 bred true in 0 of 3 divisions, so heredity is shown only for planted, cell-filling domains. L6 Weak (one counted generation). L7 Contradicted.",
+  "note": "FINAL (r3). Two planted kinds breed true: 46 divisions, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. In r3 the heredity was shown to be regime-conditional: the same planted, cell-filling marker in the sister genome xcell-evo2-N under free-space, faster fission fails like a kicked one (skeptic, seed 11). The h bridge at the pinch neck is also seen here, but both remnants regrow. Untested candidates: the waste channel and division speed. There is no resolved Laplacian twin in this regime, so beyond-diffusion stays 1. L6 Weak (one counted generation). L7 Contradicted. The thread's showcase world.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-her",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-div": {
   "world": "xcell-div",
   "rung": "L3",
   "confidence": "high",
-  "note": "Membrane-ringed cells divide by Gray-Scott-class RD (8 splits even with the gate off): 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+  "note": "FINAL (unchanged since r1). Membrane-ringed cells divide by Gray-Scott-class RD, still giving 8 splits with the gate off: 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-div",
   "thread": "fisim-beyond-laplacian",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "flow-lenia/fl_forager": {
   "world": "fl_forager",
@@ -183,10 +183,10 @@
   "world": "sporecell",
   "rung": "L2",
   "confidence": "high",
-  "note": "Forms spontaneously from ~20 random catalyst particles in a closed food gas. Ringed founders shed single-particle spores while staying intact, and the spores grow into 34-40 parent-size daughters per seed. The population then freezes into a ~40-cell lattice set by the B shell (3 seeds; the skeptic's seed-11 rerun ends with 39 cells against 38-41). L3 Weak: the one-particle M ring is a food-contact label that every cell loses at depletion (t~146-157) while the cells live about 100 t longer, and cells form and reproduce without it (L_nomem). L6[L2] Weak: gen 2 is 8/1/1, and deeper counts come from a fragment/re-merge ratchet in lineage.py. L4a Weak: the cut turns debris into food at the wound, and labkit's disk cut shattered the cell. L4c Weak: one seed, R2=1 variant, and the decline equals the imposed decay. No dt check.",
+  "note": "Unchanged from r1: cells form spontaneously from ~20 random catalyst particles and shed single-particle spores that grow into parent-size daughters (3 seeds plus skeptic seed 11), then freeze into a ~40-cell lattice. L3, L4a, L4c and L6[L2] Weak. New in r2: the same engine and dt (rep=10, ff=10, dt=0.02) fail dt convergence. Free spores are 127/40/6 and cells at t=200 are 24/14/5 at dt 0.02/0.01/0.005, so the spore reproduction rate is numerical heating (numerical validity 0).",
   "pack": "threads/particle-life/packs/sporecell",
   "thread": "particle-life",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "particle-life/sporecell-gene": {
@@ -263,10 +263,10 @@
   "world": "ad5-evolve",
   "rung": "L7[L2]",
   "confidence": "low",
-  "note": "The lab's first L7 to pass the contagion audit. All 3 judges checked seed 11: every living-droplet conversion traces to a same-allele mutation patch, destinations are unbiased, and there are 0 deaths and 0 merges. Divisions by allele [a0..a3] = [0,0,2,4]; an ancestor-matched neutral (all k=0.10) has 0 divisions. Over 6+6 seeds (biologist), fast alleles a2+a3 number 10,6,9,9,9,7 vs 2,1,3,4,3,4 under neutral, and the a1<a2<a3 ordering appears under selection only. Minimal: the ancestor is sterile, and the shipped neutral arm is unmatched (k=0.13 vs 0.10). Mutation is a 5-px half-droplet transplant (flips >= divisions), and 1-2 of 6 divisions give an off-kind daughter. About 6 divisions and 12 droplets per run, all during colonization, then a frozen lattice.",
+  "note": "Unchanged from r1; sprint 2 added only a readable protocells movie (seed0), in which the t=3700 half-droplet transplant takes over its host. Still a colonization-only race (0 deaths) from a sterile ancestor, with an unmatched shipped neutral (k=0.13 vs 0.10). The committee audit holds: divisions by allele [0,0,2,4], and 0 divisions in the ancestor-matched neutral. Line closed in r2: the turnover experiment moves to ad7, whose trait is not fitness itself.",
   "pack": "threads/active-droplets/packs/ad5-evolve",
   "thread": "active-droplets",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "active-droplets/ad3-membrane (+ ad3s-soup)": {
@@ -303,11 +303,11 @@
   "world": "xcell-evo2-S",
   "rung": "L6[L3]",
   "confidence": "low",
-  "note": "Selection experiment, arms S and N: identical-event twins (kicks and dilution from one shared RNG), 3+3 seeds, T=2000. L6: S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4. The biologist's merge-aware movie tracker and birth crops confirm clean rod->dumbbell->two ringed daughters in the S0 chain (t=450/510/570/960). Only 2/6 runs reach gen>=3 by labkit, the bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. L7 Contradicted: on->on+on 0 in 6 runs, and all 3 on-divisions (2 independent kicks) were on->on+off, by polar segregation of a fresh kick. Final on-cells S 1/0/2 vs N 1/1/0. About 0.7 dilution generations per run, so the test is underpowered. L3 rests on the band ring plus r1 gate ablations, which were not repeated in evo2.",
+  "note": "FINAL (r3). S/N identical-event twins, 3+3 seeds, T=2000. S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4, but only 2/6 runs reach gen>=3. Bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. In the r3 heredity assay (22 runs) on the N genome, every arm gives 8-11 ringed fissions per run. L7 Contradicted: no arisen mark ever reached both daughters, gated or ungated, including a resolved Dh 0.02 arm at dx=0.25 (reproduced on seed 11). The marker is stranded in the neck as the body grows out from under it. The gate keeps it in one daughter in 1 of 4 seeds (retention, not heredity). L3 qualifier: band ring plus the gate ablation in the assay; the skeptic dissents (Weak). Beyond-diffusion 1.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-evo2-S",
   "thread": "fisim-beyond-laplacian",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/membrane_kinds": {
   "world": "membrane_kinds",
@@ -406,6 +406,46 @@
   "note": "fl_forager gliders as prey plus a predator species that converts the prey matter it overlaps (mass-conserving) and decays to food. Chase and flee are imposed sigma-12 blurred-field sensing. Engulfment in every pack seed (seed 0 #355, #395, #497), and prey peaks lead predator rises in 3/3 seeds. Single-seed ablations run 8000 steps against 12000-step references: chase=0 starves the predators, flee=0 gives total extinction. Skeptic seed 11: predators extinct by t~900, prey x5.3. Coexistence 3/4 seeds at 1 of 9 parameter points; 1-3 peaks per seed, no grid-size check. L5 Weak (near-Supported); L4c Weak (decay by construction); L4b holds for prey only. labkit fuses the species. The heritable flee gene (fl_predator_gene, no pack, evo2/pgene.png) is L7 Contradicted: selection +0.16..+0.23 vs neutral +0.24..+0.29, with an unexplained upward drift in all arms.",
   "pack": "threads/flow-lenia/packs/fl_predator",
   "thread": "flow-lenia",
+  "round": 2,
+  "decision": "continue"
+ },
+ "particle-life/sporecell2-sel": {
+  "world": "sporecell2-sel",
+  "rung": "L2",
+  "confidence": "high",
+  "note": "Kinds differ only in catalysis rate (k_cat1=0.065 vs 0.05). Kind 1 arises by mutation (mu=0.1), and in-cell majority-vote conformity makes cells breed true: 64/66, 22/28 and 45/50 kind-1 children are kind 1. Kind-1 cells end at 18/22, 8/21 and 11/16, against 0/19, 0/22 and 1/17 for the exact label-neutral arm (k_cat1=k_cat). But the kind mix is fixed during colonization (by t~150; mass share 0.96/0.60/0.74 -> 0.89/0.51/0.68 over the following 280 t). Per-kind deaths are not reported, and lineage.py is not merge-aware. The sweep fails at a 1.2x advantage, at dt=0.015 (3/16), at dt=0.01 (3/13, 1/14) and on the skeptic's seed 11 (0 kind-1 cells to t=200). L7[L2] Weak; L6[L2] Weak. The [L3] qualifier is Contradicted: no M after t~104 in any sheet. Numerical validity 0: spore release is integrator overshoot (free spores 127/40/6 at dt 0.02/0.01/0.005; skeptic max per-step displacement 1.2-1.37 > rmax=1 at dt=0.02 once cells pass ~70 particles, against 0.10-0.20 at dt=0.01). Propagule budding from an intact parent is real in the dt=0.02 movie.",
+  "pack": "threads/particle-life/packs/sporecell2-sel",
+  "thread": "particle-life",
+  "round": 2,
+  "decision": "continue"
+ },
+ "particle-life/sporecell2-gate (gate_beta=1)": {
+  "world": "sporecell2-gate (gate_beta=1)",
+  "rung": "L2",
+  "confidence": "medium",
+  "note": "Food mobility is gated by membrane density, D_F exp(-beta nM). Founders keep thick 2-layer M rings (membrane fraction 0.6-0.78) through t~28-136 in 3 seeds, then one founder per seed bursts into a spore cloud that colonizes the box with bare cells: a striking but non-repeating life cycle (screens/lifecycle_poster.png). L6[L3] Contradicted: every daughter is bare. L6[L2] Weak: one burst per seed, a ratcheting lineage, no dt test. L3 Weak: a conditional food-contact layer found only on founders. L4a Weak: in D_gate.png the cut matter becomes food at the wound, the control is a cell of the other kind, and only one seed was run. Custom screens only, no pack.",
+  "pack": "threads/particle-life/screens/gate5_s1_types.png",
+  "thread": "particle-life",
+  "round": 2,
+  "decision": "continue"
+ },
+ "particle-life/sporecell2-lysis (half/half, k_lys=2)": {
+  "world": "sporecell2-lysis (half/half, k_lys=2)",
+  "rung": "L5[L2]",
+  "confidence": "low",
+  "note": "A written contact-kill rule: kind 1, the worse grazer (k_cat1=0.035), lyses kind-0 core particles into food. Matched arms on seeds 0-2 at t=300: kind-1 cells 6/12/14 with lysis vs 1/0/2 without; kind-0 cells 11/1/4 vs 17/19/10. The effect is + for kind 1 and - for kind 0 in 3/3, with separate territories and an empty front between them. A prediction made before the runs was confirmed: a rare killer loses (0/17, 0/17, 2/15). Kinds are planted. The arms are not event-matched: extra RNG draws when k_lys>0 make seed 1 diverge by t=28, before contact, so part of the outcome is founding luck. There is no invasion test, and the run is on the dt=0.02 map only (reproduction is integrator overshoot). No pack.",
+  "pack": "threads/particle-life/screens/P_half_types.png",
+  "thread": "particle-life",
+  "round": 2,
+  "decision": "continue"
+ },
+ "active-droplets/ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4)": {
+  "world": "ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4)",
+  "rung": "L6[L3]",
+  "confidence": "medium",
+  "note": "The self-made amphiphile shell psi (own production prod*kp, chi-drift transport, decay) now gates fuel (Du e^{-0.5psi}) and catalyst (Dc e^{-3psi}); alleles differ only in shell output kp. One operator gives a permeability/retention trade-off: bc=0 at kp=0.5 gives 3 static blobs vs 12, and bu=0 at kp=4 gives 12 vs 6 (1 seed each). The landscape peaks at kp 0.5-1.5 (seeds 0-1; t=8000 colonization counts). Phenotypes read in single frames (seed1 protocells.png): rimless leaky kp=0 blobs, thin-rimmed dividing kp=0.5-1.5 cells, small thick-walled kp=4 cells. Skeptic's seed-11 rerun: psi rim/core 4.4, rim/outside 11.9 (26/29). L6: seed0 gen 4, 7 persistent splits, 0 merges; gen>=3 in 4/9 selection runs; no birth strips; planted founders. L7[L3] Weak: membrane mutants out-multiply the slow ancestor in 6/6 seed pairs (36 vs 21 and 23 vs 10 droplets), but the neutral intermediate share is 12/21 (57%), not the reported 9/21; per-seed shares overlap (75/91/46 vs 67/50/57%) and the ancestor share matches neutral (22 vs 24%). About 40 r=5 patch flips vs 6-9 splits per run, intact droplets relabelled, off-kind daughters, no ledger, not identical-event twins. L4c Weak (by construction, no v2 test). dt/2 exact; at dx=0.5 kp=4 area -30% and the shell is ~2 px wide at both resolutions (grid-set). R arm (CH->linear at D=M, 1 seed): kp=0.5 stops dividing (5 vs 12), the thread's first hint that CH does work. Supersedes ad3-membrane as the thread's L3 world.",
+  "pack": "threads/active-droplets/packs/ad7t-thick",
+  "thread": "active-droplets",
   "round": 2,
   "decision": "continue"
  }

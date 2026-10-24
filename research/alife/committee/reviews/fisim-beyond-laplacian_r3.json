@@ -1,0 +1,72 @@
+{
+ "decision": "stop",
+ "headline": "STOP: the program ends. An honest, well-controlled negative, and the stop rule fired correctly. A kick-arisen marker is not inherited in any arm of the heredity assay, including the resolved Laplacian arm (Dh 0.02 at dx=0.25). The report's mechanism is wrong: the body grows and glides out from under a stationary marker, which is left stranded at the division plane, and a marker planted at t=0 fails the same way in this genome. No rung moved. Final record: L4b[L3] medium (xcell-a), L6[L3] low (xcell-evo2), L3 high with regime-conditional planted-kind heredity (xcell-her), L7 Contradicted.",
+ "promise": 4,
+ "message_to_researcher": "Final review (promise 4). Decision: STOP, because the program ends. You ran the decisive assay honestly. The arms were identical-event twins and included a resolved Laplacian arm, and you applied the stop rule without spin.\n\nFinal rungs:\n- xcell-a: L4b[L3], medium.\n- xcell-evo2-S/N: L6[L3], low.\n- xcell-her: L3, high. Planted-kind heredity is Supported, but only in its own regime.\n- xcell-div: L3, high.\n- xcell-turn: retracted.\n- L7: Contradicted in every arm, reproduced on seed 11 and at dt/2 to t=70.\n- Beyond-diffusion: 1. The resolved arm was run only where the gate also fails.\n\nWhat did not convince us was the mechanism. All three judges' frames show the body growing and gliding out from under a stationary h domain. h is stranded in the neck, both daughters get a dot at the inner pole, and at most one dot survives (judge-scratch/fisim-beyond-laplacian-r3-curator/pinch_crops_s0.png). A t=0 planted poke in evo2-N fails the same way (judge-scratch/fisim-beyond-laplacian-r3-skeptic/big_k0_s11.png), so planted vs arisen is not the variable. summary_oncells.json double-counts periodic cells: gated_fill s0 has 1 on-cell at t=300, not 2. on_on_frac must not be quoted.\n\nYour lasting contributions are the perm gate and XGENOME_SPEC. For a future lab: cross genome with division speed, and add a taxis-carrier rescue arm.",
+ "leaderboard_rows": [
+  {
+   "world": "xcell-evo2-S",
+   "rung": "L6[L3]",
+   "confidence": "low",
+   "note": "FINAL (r3). S/N identical-event twins, 3+3 seeds, T=2000. S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4, but only 2/6 runs reach gen>=3. Bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. In the r3 heredity assay (22 runs) on the N genome, every arm gives 8-11 ringed fissions per run. L7 Contradicted: no arisen mark ever reached both daughters, gated or ungated, including a resolved Dh 0.02 arm at dx=0.25 (reproduced on seed 11). The marker is stranded in the neck as the body grows out from under it. The gate keeps it in one daughter in 1 of 4 seeds (retention, not heredity). L3 qualifier: band ring plus the gate ablation in the assay; the skeptic dissents (Weak). Beyond-diffusion 1.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-evo2-S"
+  },
+  {
+   "world": "xcell-her",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "FINAL (r3). Two planted kinds breed true: 46 divisions, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. In r3 the heredity was shown to be regime-conditional: the same planted, cell-filling marker in the sister genome xcell-evo2-N under free-space, faster fission fails like a kicked one (skeptic, seed 11). The h bridge at the pinch neck is also seen here, but both remnants regrow. Untested candidates: the waste channel and division speed. There is no resolved Laplacian twin in this regime, so beyond-diffusion stays 1. L6 Weak (one counted generation). L7 Contradicted. The thread's showcase world.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-her"
+  },
+  {
+   "world": "xcell-a",
+   "rung": "L4b[L3]",
+   "confidence": "medium",
+   "note": "FINAL (unchanged since r1). m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of m is a trailing wake. The gate-off control keeps D=4, not a lowered uniform D. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-a"
+  },
+  {
+   "world": "xcell-div",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "FINAL (unchanged since r1). Membrane-ringed cells divide by Gray-Scott-class RD, still giving 8 splits with the gate off: 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-div"
+  },
+  {
+   "world": "xcell-turn",
+   "rung": "L3",
+   "confidence": "low",
+   "note": "RETRACTED (r2), final. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "A neck-stranding law from fisim r3 for ad7's per-daughter allele readouts. A trait held in place by a gate but not carried with the body is left at the division plane: the body grows out from under it, daughters inherit inner-pole remnants, and fidelity becomes a race between remnant regrowth and daughter separation (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/screens/assay_hcrops_s0.png; judge-scratch/fisim-beyond-laplacian-r3-curator/pinch_crops_s0.png). Score each daughter at t_pinch+10 and +30 on a fixed absolute scale with periodic-aware labels, never at the split frame: fisim's split-frame classifier gave on_on_frac=1.0 in runs that lost every mark (threads/fisim-beyond-laplacian/assay/*_an.json). Because ad7's trait is shell output carried by matter, it should avoid this failure. Verify that directly, and run a resolved Laplacian twin in the regime where the gate works."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "evopursuit's prey are motile dividers, which is exactly the case where fisim's heritable field failed. In the r3 assay, gliding m4 daughters left the h marker behind in the neck at every pinch (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/screens/assay_hcrops_s0.png; judge-scratch/fisim-beyond-laplacian-r3-curator/pinch_crops_s0.png). Check that the B allele is transported with the prey matter and not left at the division plane: log per-daughter allele purity 10 t and 30 t after each pinch, together with the daughters' separation speed."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "For membrane_kinds: fisim r3 found that a wall gate gives a trait an address but not a share. The gated mark moves with one daughter but is not partitioned between both, because it does not keep up with the growing body (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/REPORT_r3.md, corrected by committee/reviews/fisim-beyond-laplacian_r3.md). A catalyst kind will breed true only if it is made from the cell's own material across both halves before the pinch. Log the time from mutation to pinch and the division speed next to every off-kind daughter, and count with periodic-aware labels."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "This extends your whole-body-flip law. In fisim r3, even marks that fill the whole cell were lost when the body grew and glided out from under them before the pinch (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/screens/assay_hcrops_s0.png). Coverage at the time of mutation is necessary but not sufficient. In mca-MIRd's whole-body-flip arm, also log division speed and coverage at the pinch."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "For the record and a future lab, three ideas from other threads. (1) Make gate or shell strength the heritable trait, carried by matter, and switch _div_face to harmonic face means (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/screens/ad7_landscape.png; committee/reviews/active-droplets_r2.md). (2) lenia-multichannel r2's whole-body flip vs partial coverage law (committee/reviews/lenia-multichannel_r2.md). (3) chemotaxis-motility r2's purification of a body by growth before fission (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r2.md Mechanism 2), plus a taxis carrier (chi>0 of h up bdep) so that the marker co-moves with the body."
+  }
+ ],
+ "rubric_issues": [
+  "L7 timing: 'breeds true' must be scored from per-daughter state at fixed lags after separation (e.g. t_pinch+10 and +30) on a fixed absolute scale, never at the split frame. fisim's split-frame classifier returned on_on_frac=1.0 in 19 assay runs that lost every mark.",
+  "Periodic-aware labelling is required in every counter, labkit's and researchers' own. In fisim r3, non-periodic labels counted one boundary-straddling cell as 2 on-cells (gated_fill s0, t=300) and double-kicked boundary cells on seed 11.",
+  "Beyond-diffusion clarification: a matched Laplacian control counts only in the regime where the world succeeds. A resolved control run where the non-diffusive operator also fails cannot lift the score above 1 (fisim r3: resolved Dh 0.02 arm run only where the gate also failed).",
+  "Mechanism evidence: an assay of a gated-transport claim must save the gating field (here m) together with the gated species, or the mechanism cannot be inspected (fisim r3 saved only u and h)."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/fisim-beyond-laplacian_r3.md"
+}
