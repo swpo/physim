@@ -45,5 +45,36 @@ img = (np.concatenate(rows, 0) * 255).astype(np.uint8)
 Image.fromarray(img).save(a.out)
 m = S[:, 0]; mid = 0.5 * (m.min() + m.max())
 counts = [ndimage.label(fr > mid)[1] for fr in m]
+# motion: link components frame to frame by nearest periodic centroid; report max path in body diameters
+from scipy import ndimage as ndi
+def cents(fr):
+    lab, n = ndi.label(fr > 0)
+    if n == 0: return np.zeros((0, 2)), np.zeros(0)
+    H, Wd = fr.shape
+    out = []
+    ar = ndi.sum(np.ones_like(fr), lab, range(1, n + 1))
+    for i in range(1, n + 1):
+        yy, xx = np.nonzero(lab == i)
+        ang_y = np.angle(np.exp(2j*np.pi*yy/H).mean())*H/(2*np.pi) % H
+        ang_x = np.angle(np.exp(2j*np.pi*xx/Wd).mean())*Wd/(2*np.pi) % Wd
+        out.append((ang_y, ang_x))
+    return np.array(out), np.array(ar)
+paths = None
+H = m.shape[1]
+prevc = None
+best = 0.0
+for fr in m[1:]:
+    c, ar = cents(fr)
+    if prevc is not None and len(c) and len(prevc):
+        d = c[:, None, :] - prevc[0][None]
+        d = (d + H/2) % H - H/2
+        dist = np.sqrt((d**2).sum(-1)); j = dist.argmin(1); step = dist[np.arange(len(c)), j]
+        cum = prevc[2][j] + np.where(step < 6, step, 0)
+        diam = 2*np.sqrt(ar/np.pi)
+        best = max(best, float((cum/diam).max()))
+        prevc = (c, ar, cum)
+    elif len(c):
+        prevc = (c, ar, np.zeros(len(c)))
+print(f"max path {best:.2f} body diameters;", end=" ")
 print(f"{Path(a.out).name}: {time.time()-t0:.0f}s counts {counts} range [{m[-1].min():.2f},{m[-1].max():.2f}] " +
       " ".join(f"tot{c}={S[-1,c].mean():.3f}" for c in range(S.shape[1])))

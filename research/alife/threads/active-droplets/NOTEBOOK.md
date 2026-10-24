@@ -119,3 +119,29 @@ Sprint 1 started 2026-10-24 14:29 UTC. Tools: `screen.py` (quick strip of all ch
   0.69-0.73 vs core 0.18. All division before t~5000, then a static lattice (same limitation as ad1).
 
 Sprint 1 ended 16:15 UTC. Report: `REPORT_r1.md`.
+
+# Sprint 2 (started 16:36 UTC)
+Committee digest: convergence on gated mobility at boundaries; L7 bar = in-run variation + neutral control + 3 seeds;
+challenge = fork a mechanism from another thread; go for motile or interacting heritable individuals.
+
+## ad6-motile / ad6b-repellent: attempts at self-propulsion (NEGATIVE)
+- ad6: Frey-type affinity of droplet material to fuel, mu += chi_u u (chi_u = -1, -3). Division as before, no
+  motion (labkit: max 0.7 body lengths). My quick path metric in screen.py said 20 body diameters: an artifact of
+  non-periodic labels at the box edge; use labkit tracking for motion.
+- ad6b (fork of the chemotaxis-motility thread's slow self-secreted repellent): waste w made by the fuel reaction,
+  mu += chi_w w. chi_w=10: droplets balloon and dissolve within t=700 (waste is made INSIDE the droplet, so it
+  raises mu of the whole droplet). chi_w=1, 3 with faster waste decay: divide normally, <= 0.8 body lengths.
+- Pure treadmilling (low Du 0.5-1, low F): no motion; Du=0.5 F=0.002 goes extinct.
+- Interpretation: the regime that divides (slow condensate mobility M=0.03, so the core starves) is the opposite of
+  the regime where Frey condensates swim (M >> D). Division and motility pull M in opposite directions here.
+  Next idea if revisited: let an allele or a second component control local mobility.
+
+## ad7-gated: membrane gates diffusion (fork of fisim's div(D e^{-beta m} grad c))
+- ad3's self-made amphiphile shell now gates diffusion: fuel D_u e^{-0.5 psi} (weak gate), catalyst
+  D_c e^{-3 psi} (strong gate); catalyst now diffuses (Dc=0.3) and dies outside droplets, so leakage is lethal.
+  Alleles differ only in amphiphile output kp_i (all catalyse equally).
+- Single-allele screens (no mutation, t=8000, `screens/ad7_kp*.png/.txt`): kp=0 -> 4 droplets (leaky: blurred
+  catalyst halo, no growth); kp=0.5 -> 12; kp=1.5 -> 10; kp=4 -> 6 small starved droplets. An INTERIOR optimum:
+  permeability (fuel in) vs retention (catalyst kept). Classic protocell trade-off, from one operator.
+- Evolution test: all droplets start as allele 0 (no membrane), alleles kp = 0/0.5/1.5/4, mutation + dilution as
+  ad5. Prediction: allele 1 (kp=0.5) wins, not the thickest. Neutral control ad7n: all alleles kp=0.
