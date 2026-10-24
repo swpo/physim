@@ -8,7 +8,7 @@
 | `phase_protocell_noise` | **L6[L2]** (high) | The same loop without adsorption: 42-46 cells, gen 3-4, dt/2 and 2x resolution converged. |
 | `phase_swimdiv` | **L6[L2] + L4b** (medium) | The lab's first dividing swimmers. Per-cell phoresis up the substrate gradient gives crescents with depletion wakes that divide repeatedly. |
 | `motile_trait(_tox)` | L6[L2]; L4b[L2] (medium) | Heritable phoretic mobility with a co-mutated neutral tag. Mobility is selected up under self-made toxic waste and down in dense populations, with a tipping point at kd 0.018-0.02. L7 Weak. |
-| `membrane_evo` (+`_up`, `_down`) | **L7[L3], my claim (sprint 3, unreviewed)** | Kinds differ only in link yield. The channel is sealed, mutations are whole-cell flips, and identical-event twins share deaths and flips. Over 30 runs: first acquisitions 0/30, conversions ≤ flips in 30/30. A low-yield kind is purged through deaths (extinct in 8/10 seeds vs the twin's 0-9 cells). A high-yield kind sweeps in 3/5 seeds under high turnover but loses under low turnover. |
+| `membrane_evo` (+`_up`, `_down`) | **L7[L3], my claim (sprint 3, unreviewed)** | Kinds differ only in link yield, the channel is sealed, mutations are whole-cell flips, and identical-event twins share flips and deaths. Over 10 seeds per arm (about 2.5-4 generations), K2 biomass share departs from the twin in 9/10 for both 0.7b (purged through deaths) and 1.3b (sweeps to 85-97% in 8/10 through births). First acquisitions are 1 in 30 runs and conversions ≤ flips in 30/30. A co-mutated neutral tag shows no arm effect. |
 | `membrane_kinds` | L7 Contradicted; L5[L3] Weak | The infection law (below). |
 
 ## Mechanisms that worked (with ablations)
@@ -25,7 +25,8 @@
 5. **Per-body phoresis gives swimming above a threshold** (1 < μ < 3), and swimming suppresses
    division (a swimmer never starves). Near threshold, swimmers swim and divide.
 6. **Sealing horizontal transfer needs both a min face mean for binary gates and fast decay of
-   stranded catalyst.** With it, conversions drop from 8-26 per run to 0 in 27/30 runs.
+   stranded catalyst.** With it (and c2 = c1), conversions drop from 8-26 per run to ≤ flips, and
+   selection on a membrane trait shows up through births and deaths (membrane_evo).
 
 ## What failed (and why)
 - Lattice SCL (numba, McMullin rules + splice): leaky membranes (closure 0.2-0.8), and 30%
@@ -49,8 +50,10 @@
   law (conversion rate vs gate exponent); the sign of selection on link yield vs turnover.
 
 ## What a next lab should try
-- Run membrane_evo longer (≥5 generations) at intermediate turnover to map where selection on
-  link yield changes sign. Add a second heritable axis (growth rate) to look for coexistence.
+- Map selection on link yield against turnover (about 1 generation does not resolve it; 2.5-4
+  does). Add a second heritable axis (growth rate vs link yield) to look for coexistence and
+  trade-off-driven diversification (an L8 probe). Replace whole-cell flips by copying errors at
+  division.
 - Local phoresis (wall slip plus incompressible interior flow) to replace the per-body label.
 - Make wall tension depend on the adsorbed ring (budding or pearling division).
 - Start from noise with heredity on: let catalyst kinds arise by flip in established cells only.
