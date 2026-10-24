@@ -106,3 +106,15 @@ blobs (phi profile radius 6, K and L in radius 4); everything else self-organize
   collapse needs the parasite.
 - open question: why do K1 cells die faster than mutation events hit them in the parasite runs?
   Hypothesis: infected cells grow fast, hog substrate and starve neighbours before dying.
+
+## 6. Phase membrane (`worlds/phase_membrane`): links adsorb to the wall
+Links drift up grad w, w = 4 phi(1-phi) (upwind flux, chi). Since only L at the wall tilts the
+front, adsorbed links ARE the wall's support: a molecular membrane layer.
+- chi=2: links form a 2-3 px ring at the wall, 3-4x interior (`screens/pm2_chan.png`); cells
+  larger and irregular, with deaths, fusions (merges 7-12) and divisions; 15-17 cells at t=8000
+  (3 seeds); persistent splits 9-12, gen 2-3 (`packs/phase_membrane`).
+- chi=3: 14 bigger cells. chi=5 or 10 at th=0.15 -> one sea; chi=5 with th 0.2-0.45, or chi=10
+  with th 0.5 -> extinction. A narrow window: adsorbed links make walls pushy and decouple them
+  from central starvation.
+- damage at t=2000 (35% of a 597 px cell incl. wall arc): crescent re-walled with a full link ring
+  within ~100 time units, regrown by ~350 (`screens/pm_damage_strip.png`).
