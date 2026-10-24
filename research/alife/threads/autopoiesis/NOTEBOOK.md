@@ -178,3 +178,42 @@ Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
   numbers are unchanged (a single cell either way).
 - reproducibility: re-running phase_protocell_noise s1, phase_protocell s2 and phase_swim s2
   from the committed files reproduces FACTS exactly.
+
+# Sprint 2 (start 16:36 UTC)
+Committee start message: fork a mechanism from another thread; with heredity in hand, aim for
+motile or interacting heritable individuals; one striking movie. Pulled the lab branch (CI fix).
+
+## 11. phase_trail: local self-repellent propulsion (fork of chemotaxis-motility kstrail) -- negative
+Catalyst secretes slow h; the cell's material is advected by v = -chi grad h (local, no labels).
+- plain local flow: the symmetric trail hill under a cell gives an outward flow on all sides; the
+  Allen-Cahn wall cannot hold against it and the cell tears apart in ~100 steps (chi 2-40).
+- phi-weighted Gaussian-averaged force (sigma 8): still net outward divergence near the edges;
+  phi max decays from 1 to 0 by t~90.
+- trail as wall tilt (- bh h, treadmilling): h piles up under the still cell (h_ss ~ ph K/dh ~ 25);
+  bh >= 0.01 kills the cell, bh = 0.005 just shrinks it. No motility.
+  Lesson: a phase-field cell needs a rigid-body (cell-averaged) drive; a local divergent flow is
+  read by the wall as stretching, not translation. Keller-Segel bodies hold together by an
+  aggregation term that the phase cell lacks.
+
+## 12. motile_kinds: sessile vs motile kinds under toxic waste (fork of chemotaxis-motility toxforage)
+Kinds differ only in phoretic mobility; catalysts excrete waste w that adds decay kd w K.
+- pure populations from 4 blobs, t=8000: kd=0.01 sessile 34 cells, motile 8; kd=0.015 sessile
+  extinct, motile 8; kd=0.02 sessile extinct, motile 4; kd=0.03 both extinct. So swimming rescues
+  sparse populations from their own waste, but costs reproduction when the waste is mild.
+- evolutionary rescue at constant kd=0.015 (p_mut=0.001): sessile ancestors die before t=4000
+  with only one mutation; no rescue (mu2 1.5 or neutral 0).
+- toxicity ramp 0 -> 0.02 over 20k steps: the dense sessile population survives kd=0.02 (crowded
+  cells share and dilute waste), and mutant K2 cells rise to 3 in both the motile and the neutral
+  run. No selection for motility. Negative.
+
+## 13. hunters: chemotactic predator cells (fork of chemotaxis-motility pursuit) -- negative
+Predator catalyst K2 (faster c2, fewer links b2) chases a prey odour (made by K1) by per-cell
+phoresis; fusion should let K2 take over prey cells.
+- c2=0.3 predator cells die alone even with b2=b: a fast catalyst depletes its own substrate,
+  link production falls and the wall loses its tilt. c2=0.23 is viable (23 cells at t=4000).
+- odour range sqrt(Dw/dw) ~ 3 px: predators never sense prey. With dw=0.0005 (range ~14 px) and
+  mu2=200-1000, predators move and die by t~1200 (area falls from t~450) at every speed cap
+  (0.4, 0.15, 0.08, 0.05), while static predators (mu2=0) coexist with prey (25 vs 29 cells).
+  Diagnosis: moving toward prey means moving into the prey's substrate-depletion halo; hunters
+  starve before contact. An ecological negative: chemotaxis to prey is suicidal for a predator
+  that eats substrate, not prey.
