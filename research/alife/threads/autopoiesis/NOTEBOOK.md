@@ -250,3 +250,12 @@ the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic w
 - `packs/phase_swimdiv_movie` (192^2, 1 cell, 12k): symmetric 1 -> 4 -> 8 expansion, then 4-fold
   head-on collisions across the periodic edge (t~5250-5750) crash the population to one long
   swimming arc. Pretty, but the symmetry is from the grid and the ending is a die-off.
+- dt check (dt=0.5, p_mut halved per step to keep the rate per time, seed 1, `runs/mtdt_*`): kd=0
+  mu 1.20 (dt=1: 1.21), kd=0.02 mu 1.81 (dt=1: 1.85). Same outcome.
+- kd jitter (seed 1): kd=0.022 sparse (2-6 cells), mu 1.73 vs tag 1.52 (up). kd=0.018: mu first
+  rises while sparse (1.73 at 12k), then from t~24k falls to 0.82 while the population explodes
+  9 -> 42 cells (`screens/motility_regime_shift.png`). A regime shift: a lineage that loses
+  motility founds a dense sessile population, crowding dilutes the waste, and sessility wins.
+  So the direction of selection is set by population density, and toxicity sets which regime
+  a population starts in. Direct support for the two-regime hypothesis (sparse/motile vs
+  dense/sessile), and a limit on robustness: the kd=0.02 result is not guaranteed at -10%.
