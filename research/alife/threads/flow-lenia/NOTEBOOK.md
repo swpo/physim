@@ -42,3 +42,36 @@ conserved to 8e-12 (checked over 1500 steps).
   gone. r8 becomes a population of **worm-like chains with a cyan sheath around a bead core** that
   grow, break and merge; they stay where food is depleted and leave food-rich patches. r0 still
   makes the background dot lattice (its shed dots are dense enough to pass the Hill gate): negative.
+
+## E4. Random-rule search for self-propelled bodies (scripts/motion_search.py, screens/mot/)
+One 20x20 noise patch, 96^2, R_scale 0.4, 800 steps; ~60 C=2 rules (r200-259) and 7 C=3 rules.
+C=2 is much richer than C=3 at this scale. Hits (looked at every image of the top 12):
+- r202: the patch breaks into ~7 small crescent gliders (orange cap, cyan body) that persist and
+  travel far. **Chosen for the forager line.**
+- r226: several morphs at once (ring with nucleus, two-dot cell, crescent), all moving.
+- r253: two bilateral gliders; r201: a symmetric body that bends into a moving chevron;
+  r206: slow bilateral crawler; r208: a big cell with an orange "handle" and cyan internal lobes.
+- r257: one rule, **two coexisting morphs** (orange rings, cyan ellipses) from one patch.
+- r232, r222: the body crumbles into 6-8 small round cells.
+- Most C=3 rules at R_scale 0.4 stay one static body. COM travel of total mass is a poor screen
+  with several bodies (they cancel); images were needed.
+
+## E5. Gliders + food = foragers that divide (`worlds/fl_forager`, packs/scr_forager)
+fl_food operator on rule C2_r202, food0=0.1, Hill uptake n=3, K=0.3, k_eat 0.05, k_dec 0.002.
+- food0 0.3: gliders eat, grow and become a space-filling foam of nucleated cells (screens/glfood_a,
+  pretty but a sea). food0 0.06: only 2-3 gliders survive (screens/glfood_f0.06).
+- food0 0.1: 1 patch -> 3 gliders -> grow -> elongate -> **split**; ~12-15 crescent gliders at t=800,
+  each leaving a dark food-depletion wake. matter still rising slowly at the end (x5-8 per channel).
+- tracking needed an absolute threshold (0.15); labkit ignored META["threshold"] (bug, fixed in a
+  separate commit 80b2742). With it: 139 tracks, 49 splits, 40 merges, 2 persistent splits, max
+  generation 2. Gliders collide and merge often, which resets tracks; lineage.png is a staircase.
+
+## E6. Heredity: parameter localization on the forager (`worlds/fl_forager_evo`)
+Every cell carries (m, s, h) of all 10 kernels, mixed by stochastic sampling (one incoming parcel
+wins per cell, p ~ mass). Two founders on the same kernels: founder 0 = rule 202, founder 1 =
+rule 202 with (m,s,h) * exp(0.25 N(0,1)) (founder_seed). Two patches of each. Rendering: matter
+split by nearest founder (orange = kind0, cyan = kind1).
+- founder_seed 2 (screens/evo_fs2): kind1 (cyan, ring/ellipse morphs) displaces kind0 (orange
+  crescents): by t=4000 almost all bodies are cyan.
+- founder_seed 1 (screens/evo_fs1): both kinds persist to t=4000 with distinct morphologies.
+- 18 ms/step at 128^2 (sampling uses a lexsort), so 4000 steps ~ 75-170 s.
