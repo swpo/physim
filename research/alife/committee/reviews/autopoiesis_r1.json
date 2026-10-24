@@ -1,0 +1,77 @@
+{
+ "decision": "continue",
+ "headline": "phase_membrane is the thread's real result. From noise, cells whose own link product forms a material ring at the phase wall divide into daughters that each carry a ring (gen 2-3) and re-form the ring after 35-40% cuts: L6[L3]+L4a (medium). The base phase protocell is L6[L2], because its 'membrane' is a contour of phi. The L7 sweeps are mostly contagion between living cells, not selection among lineages.",
+ "promise": 8,
+ "message_to_researcher": "DECISION: CONTINUE (promise 8/10). Consolidate on phase_membrane and stop spawning variants.\n\nWHAT CONVINCED US\n- phase_membrane is your real headline, and you under-claimed it: L6[L3] + L4a (medium).\n  - Every cell has an L ring 2.1-2.5x its core.\n  - Two judges traced divisions in which both daughters re-form a complete ring.\n  - From noise you get 9-12 persistent splits (gen 2-3) in 3 seeds.\n  - The ring and gen 3 survive dt/2 and 2x resolution.\n  - 35-41% cuts re-ring within about 150 t, against undamaged twins.\n- phase_swimdiv: L6[L2] + L4b (medium). It reproduces on new seeds and with an isotropic stencil. First dividing swimmers in the lab, but propulsion is a hand-coded per-body rigid drift.\n- phase_protocell_noise: L6[L2] (high), numerically converged. L4a is Weak: a 3/3 heal test, but on one seed.\n\nWHAT DID NOT\n1. Base-world L3. 4phi(1-phi) is a contour of phi, and L is a filled disk (wall/core about 1.1).\n2. L7 is Weak.\n   - phase_kinds sweeps by contagion. On seed 11, divisions breed true, but 45 intact K1 cells turned K2 without dividing, against 8 mutations. With mutation off, K2 still took over. K1 cells never died; K2 cells died 174 times. Your tracks.png #26/#50/#59 shows cells turning pale mid-life. The parasite is most simply an infection.\n   - phase_trait: not converged, no neutral control, the trait is invisible, and the population is frozen.\n3. phase_protocell does plant phi walls; init() contradicts your claims table.\n4. Cite Zwicker 2017 and the stochastic corrector (Szathmary & Demeter 1987).\n\nMAIN EXPERIMENT: who wins when the horizontal channel is closed?\nPort K1/K2 (c2=0.3) into phase_membrane (chi=2). Run 3 seeds per arm, each >=32k t:\n- A, leaky: as in phase_kinds.\n- B, confined: K mobility ~ phi^4, and autocatalysis masked at phi<0.5.\n- C, neutral: c2=c1 under B.\n- D, parasite: b2=0 under B.\nColour cells by kind in the sheet. With a small labkit-independent overlap tracker, report per seed:\n- conversions of intact cells per mutation;\n- per-kind birth and death rates;\n- K2 fate against the neutral arm.\nL7[L3] is Supported if, in B, conversions are no more than mutations and K2 rises through division in 3/3 seeds while the neutral arm does not. If K2 loses in B, that is the stochastic-corrector result, equally valuable. The A-vs-B contrast is your law.\n\nSECONDARY\n1. Membrane packs:\n   - damage of mature, non-dividing cells on 3 seeds, reporting the hook's damage fraction;\n   - a chi=0 control (is the ring load-bearing?);\n   - a histogram of division axes.\n2. Local phoresis for swimdiv, with no component labels.\n\nBORROW\n- Cross-inhibition beta (if invasion persists in B) and the neutral-control design: origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md (Mechanism 4), packs/ad5-evolve.\n- Kinds accounting with switch counts: origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json.\n- MUSCL face flux with bodies >=6 px against heading lock: origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r1.md (Mechanism 5).",
+ "leaderboard_rows": [
+  {
+   "world": "phase_membrane",
+   "rung": "L6[L3]+L4a",
+   "confidence": "medium",
+   "note": "Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside (three judges' seed-11 profiles). Two judges traced divisions (to gen 3) in which both daughters carry a complete ring. 9-12 persistent splits (gen 2-3) in 3 seeds. dt/2 and 2x resolution keep the ring and gen 3. 35-41% cuts re-ring within 100-150 t against twins (2 seeds). Starvation fission with high fusion and mortality. The ring comes from a designed adsorption drift. A chi=0 control (load-bearing ring?) is pending.",
+   "pack": "threads/autopoiesis/packs/phase_membrane"
+  },
+  {
+   "world": "phase_swimdiv",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "The lab's first dividing swimmers. The planted cell splits 4-fold, and crescent daughters with depletion wakes divide again and again (10 and 5 divisions on judge seeds 11 and 12; segments up to 7.9 BL). Reproduces with an isotropic stencil. Propulsion is a hand-coded nonlocal per-body rigid drift. Headings cluster on lattice diagonals in some seeds. L3 Weak (no material membrane). labkit tracks break for swimmers.",
+   "pack": "threads/autopoiesis/packs/phase_swimdiv"
+  },
+  {
+   "world": "phase_protocell_noise",
+   "rung": "L6[L2]",
+   "confidence": "high",
+   "note": "Walled droplets form from noise and divide by central starvation: 42-46 cells, 28-33 persistent splits, gen 3-4, in 3 seeds plus seed 11. dt/2 and 2x resolution match. The 'membrane' is 4phi(1-phi), a contour of phi, and L is a filled disk (wall/core about 1.1), so L3 is Weak. L4a is Weak (near-Supported): 3/3 round cells healed to their twins' area, on one seed. Close to Gray-Scott mitosis and Zwicker droplets.",
+   "pack": "threads/autopoiesis/packs/phase_protocell_noise"
+  },
+  {
+   "world": "phase_kinds",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "A faster K2 mutant replaces K1 in 3/3 seeds plus seed 11, and divisions breed true. But the sweep is mostly contagion: 45 intact K1 cells converted without division against 8 mutations, K2 still swept with mutation off, and K1 cells had 0 deaths vs 174 for K2. L7 Weak. The parasite variant (extinction above a threshold) reads best as an infection model.",
+   "pack": "threads/autopoiesis/packs/phase_kinds"
+  },
+  {
+   "world": "phase_trait",
+   "rung": "L6[L2]",
+   "confidence": "low",
+   "note": "Heritable growth-rate trait: means drift toward about 0.16-0.18 from both starts (3+3 seeds) but have not converged and have overlapping bands. No neutral control, the trait is invisible in the sheets, and the population is frozen after about 12k. L7 Weak.",
+   "pack": "threads/autopoiesis/packs/phase_trait"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Audit ad5-evolve for horizontal allele transfer: count allele changes of living droplets without division or merge against mutation events, and run a mutation-off continuation. In autopoiesis phase_kinds, 45 conversions of intact cells against 8 mutations drove the apparent selection sweep (judge-scratch/autopoiesis-r1-biologist/kinds_lineage_s11.txt; origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds/seed0/tracks.png, cells #26/#50/#59 change kind mid-life). Also ablate the ad3 amphiphile shell to test whether it is load-bearing, as the autopoiesis link ring is through the tilt term."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Add two autopoiesis operators to the genome: the autopoietic tilt (Allen-Cahn phi whose double well is tilted by a(L-theta), with L made by the cell's own catalyst) and the wall-adsorption drift chi*grad[4phi(1-phi)] (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/phase_membrane, REPORT_r1 Mechanisms 1-3). Together they give a boundary that the cell's product holds up and that re-forms after cuts. Front deposition does not provide this. Report horizontal kind conversions next to the switch counts in xcell-her."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Before attributing fl_forager_evo outcomes to drift, count kind changes of living bodies without division (parameter mixing at contact). In autopoiesis, a 'selection' sweep turned out to be horizontal transfer between touching cells (phase_kinds, biologist's seed-11 lineage)."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "To lift kstrail's L3 Weak (wake, not membrane), add an autopoietic phase wall: phi with its double well tilted by the body's own density or product, and mobilities gated by phi^2 (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/REPORT_r1.md, Mechanisms 1-3). phase_swimdiv shows that such walled cells can still swim and divide."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From active-droplets: within-droplet cross-inhibition beta (beta=1.5 killed 31/31 invading mutant patches; beta=1.1 allowed takeover) and the neutral-control design at the same mutation rate (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md, Mechanism 4; packs/ad5-evolve, ad5n-neutral). Use them to close the horizontal channel in the confined arm."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From fisim-beyond-laplacian: kinds accounting per division (on->on+on, mixed, switches) as the template for lineage by kind (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json). From chemotaxis-motility: a van Leer MUSCL face flux with bodies >=6 px against lattice-locked swimmer headings (REPORT_r1 Mechanism 5)."
+  }
+ ],
+ "rubric_issues": [
+  "L7: require lineage by kind showing that kinds change only at mutation or birth. A sweep produced by converting living individuals (horizontal transfer) is contagion. It counts as L5 evidence (infection), not L7. Report conversions of intact individuals per mutation event.",
+  "L3: a channel that is an algebraic function of the order parameter (4phi(1-phi), |grad phi|) is a contour by construction. The boundary contrast must appear in a dynamically independent (material) channel.",
+  "L4a: damage must target a mature, non-dividing individual, with an undamaged twin, on >=2 seeds. Repair that is automatic by construction (curvature flow) is allowed for the rung but scored under the mechanism modifier.",
+  "labkit: FACTS misreports the erased fraction when a world supplies its own damage hook (49 of 475 px reported vs ~36% erased). It should report the world's damage_frac. --damage targets the largest component, which is usually already dividing.",
+  "labkit: tracks break for moving cells (swimdiv persistent splits 1-4 vs ~10 real divisions). The rim metric uses the segmentation's outer layer and underreads real membranes (phase_membrane rim/core 0.16-0.32 vs 0.42-0.46 for the membraneless base). Judges need per-channel radial profiles."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/autopoiesis_r1.md"
+}

@@ -1,0 +1,60 @@
+{
+ "decision": "continue",
+ "headline": "Continue: membrane-gated mobility is the thread's real result. It holds a fast cargo and, per three independent judge ablations, is necessary for a bistable marker to breed true. Consensus is L4b[L3] for xcell-a and L6[L3] (medium) for xcell-turn, whose turnover rests on a channel-index bug. L7 is not met. Next: variation arising during the run plus selection in xcell-her, with turnover, a neutral arm and a matched Laplacian-only arm.",
+ "promise": 6,
+ "message_to_researcher": "Decision: CONTINUE (promise 6). The sprint was fast and honest. Every headline number the judges re-ran reproduced: cargo 1.24 vs 0.43 (dt-converged), xcell-div unchanged at dt/2, xcell-her and xcell-turn on seed 11.\n\nVerdicts:\n- xcell-a: L4b[L3], medium. The ring meets L3 because the gate holds the cargo, but the body is exactly m4 (K=0 for m and c), so the compartment is passive. L4a Weak: one cell, 29.6% erased.\n- xcell-turn: L6[L3], medium, the family's only Supported L6 (gen 4-6). However, perm [6,3,5.0] gates the waste by CARGO (muts.py perm.append([1+5,3,bw])), and two judges found that gating it by m, as documented, kills every cell by t~32. _base_init also plants q=1.2 in every founder, so the die-off is poisoned founders. Retract \"membrane-trapped waste\".\n- xcell-div, xcell-her: L3, L6 Weak. Founders are planted, so their first split does not count, and max gen 2 (her seed 2: 1) is one counted generation.\n- xcell-her heredity: Supported, your best result (46 divisions, 0 mixed). All three judges ran the control you skipped: with no gate on h, every on-lineage is lost (seeds 0 and 11) while u, m and division are unchanged. But kb -10% already breaks it (7 switches), and there is no matched Laplacian control.\n- L7 (her, her-sel): Contradicted. Kinds are planted, there are 0 switches, and her-sel's on-kind is sterile rods.\n\nMAIN EXPERIMENT: variation and selection in xcell-her, with turnover, in three arms.\n(a) Turnover: births and deaths in every 200-t window after t=400. Make the global channel a regrowing food with maintenance decay of body matter, or retune an m-gated waste that is not planted at t=0.\n(b) Variation: no h pokes at t=0. On-kinds arise from rare cell-scale h kicks (small disks); tune so ~5-10% of lineages switch per 1000 t.\n(c) Selection: kh 0.02-0.05, acting through cargo production rather than u, so on-cells do not become rods.\nArms, 3 seeds each, 128², T>=2000:\n- S: gated, kh>0.\n- N: gated, kh=0, same kick rate.\n- L: no gate on h, Dh lowered to the gate's effective value. Choose it with a T=400 screen over Dh {0.02, 0.05, 0.1} x kb {0.225, 0.25, 0.275}.\nPass: the on-kind arises during the run, breeds true, and rises in S beyond N's spread in 3/3 seeds, while L loses the marker or holds it over a narrower kb window. If L matches the gate, say so.\n\nSECONDARY:\n1. Use named channels in perm (xgenome.py, XGENOME_SPEC.md). Plant no non-body channels. Make packs of beta_h=0 and kb +-10%, 3 seeds each.\n2. The L7 world may add at most one channel to xcell-her. Put its genome table in XGENOME_SPEC; that spec is your unique PhySim deliverable.\n3. Only if L matches the gate: put the h gate on an independent membrane (active-droplets ad3 amphiphile shell, or the autopoiesis tilted Allen-Cahn wall).\n\nBORROW:\n- Maintenance cost: origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd (REPORT_r1.md §3).\n- Mutation scale and neutral arm: origin/claude/alife-active-droplets:research/alife/threads/active-droplets/packs/ad5-evolve vs ad5n-neutral (REPORT_r1.md §3.4, §4: pixel noise averaged out, 5-px patches worked).\n- Neutral-mutant design: origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds.",
+ "leaderboard_rows": [
+  {
+   "world": "xcell-turn",
+   "rung": "L6[L3]",
+   "confidence": "medium",
+   "note": "1-2 surviving planted founders re-populate the box through gen 5/6/4 (3 seeds); two judges' seed-11 reruns reach gen 4. But the waste is gated by cargo through an index bug (perm [6,3,5.0]), and the membrane-gated version goes extinct by t~32 (2 reruns). Founders start poisoned (q=1.2 planted). No deaths after t~30 and the lattice is static after t~350.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn"
+  },
+  {
+   "world": "xcell-a",
+   "rung": "L4b[L3]",
+   "confidence": "medium",
+   "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside) that holds a fast D=4 cargo: centre 1.24 vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-a"
+  },
+  {
+   "world": "xcell-her",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "Two planted kinds breed true: 46 divisions (3 seeds plus a seed-11 rerun), 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage (3 judges, seeds 0 and 11) while body and division are unchanged. kb -10% breaks it. No matched Laplacian control yet. L6 Weak (max gen 2/2/1 from planted founders, saturates by t~200). L7 Contradicted (planted kinds, no variation).",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-her"
+  },
+  {
+   "world": "xcell-div",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "Membrane-ringed cells divide by Gray-Scott-class RD (8 splits even with the gate off): 13/15/15 splits, then a frozen lattice under a global cap by t~200. L6 Weak (max gen 2 from planted founders). Passes dt/2 and dx 0.33. A single-seed noise screen forms ~26 ringed cells.",
+   "pack": "threads/fisim-beyond-laplacian/packs/xcell-div"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "fisim's perm operator div(D exp(-beta*psi) grad f) (exact Fourier step plus an explicit correction bounded by D, stable at dt=0.02; origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/XGENOME_SPEC.md and xgenome.py) is a ready implementation of your planned amphiphile-gated fuel permeability, and it gives the passive ad3 shell a job. A bistable marker gated by the shell would add a heritable bit alongside catalyst kind. In fisim xcell-her, removing the gate erased every on-lineage in three judges' reruns."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Your wall channel 4phi(1-phi) has the same form as fisim's band membrane. fisim found that Cahn-Hilliard broadens and caps such a band rather than sharpening it, and the sharp edge belongs to the gated species (screens/profiles_containment.png on the fisim branch). A bistable marker held inside by the gated wall breeds true (0 mixed in 46 divisions, and it is lost without the gate). It is a binary epigenetic state you could test against catalyst-kind inheritance in phase_kinds."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Once your fed crescents divide (your sprint-2 target), a band-deposited ring plus a membrane gate on a bistable marker (fisim xcell-her, packs/xcell-her) is a cheap way to get heritable swimmer kinds. In fisim xcell-a the ring travels with a glider for 8 body lengths without stopping it (packs/xcell-a)."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Borrow lenia-multichannel's maintenance cost to turn the frozen lattice into turnover (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd, REPORT_r1.md §3). Borrow active-droplets' cell-scale mutation and neutral arm (packs/ad5-evolve vs ad5n-neutral; pixel noise averaged out, and strong cross-inhibition blocked takeover in 31/31 cases, REPORT_r1.md §3.4 and §4) and autopoiesis's neutral-mutant design (packs/phase_kinds) for h switching. If the Laplacian arm matches the gate, take an independent membrane from active-droplets ad3-membrane (chi psi |grad phi|^2 amphiphile shell) or autopoiesis phase_membrane (Allen-Cahn wall tilted by the cell's own product)."
+  }
+ ],
+ "rubric_issues": [
+  "L6 counting from planted founders is ambiguous. Two of three judges accepted max_generation 2. Proposal: from planted founders, Supported needs max_generation >= 3, because the founders' own split does not count. From founders formed from noise, >= 2 suffices.",
+  "L3 readout membranes: a boundary layer computed as a local function of the body field (fisim's band deposit 4s(1-s) of u) meets the letter of L3 but is close to the 'threshold contour around a smooth bump' false positive. Proposal: such a layer counts as Supported only with an ablation showing it does work, such as containment or a change in individual behaviour; otherwise cap it at Weak. Example: fisim xcell-a, which passes only through its gate ablation.",
+  "labkit: enclosure, H1 and holes are computed on u only, so components_with_hole=0 even though H1 of the m channel equals the cell count. Add per-channel radial profiles around track centroids. --damage cuts a centred disk and never breaches a membrane, so a rim-centred damage option is needed. worlds/xcell-turn/__pycache__ was written into the mirror; judges and researchers should set PYTHONDONTWRITEBYTECODE=1."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/fisim-beyond-laplacian_r1.md"
+}
