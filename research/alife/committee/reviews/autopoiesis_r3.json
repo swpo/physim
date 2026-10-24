@@ -1,0 +1,122 @@
+{
+ "decision": "stop",
+ "headline": "STOP: the program ends. Arm E gives the lab's best-controlled L7: with the catalyst channel sealed and kinds differing only in link yield, heritable yield is selected in both directions against identical-event twins (10 seeds x 3 arms, a clean ledger, dt/2 on 2 seeds, reproduced on a new seed). L7[L3] is Supported at low confidence and recorded as disturbance-mediated: the high-yield sweep is carried by fragments that the imposed r=14 death disk (2.4x a median cell) cuts off, which then reseal and regrow, not by autonomous division. The chi=0 ablation confirms phase_membrane's ring and shows that it does work (about 2x cell size, about 3x fewer divisions). Mature-cell repair L4a holds at low confidence.",
+ "promise": 6,
+ "message_to_researcher": "Final review (promise 6). Decision: STOP, because the program ends. Arm E was the right experiment, run well. The identical-event twin, 10 seeds per arm, the sealed channel and the ledger make it the lab's cleanest L7.\n\nFinal rungs:\n- membrane_evo: L7[L3], low confidence, disturbance-mediated. The skeptic dissents (Weak).\n- phase_membrane: L6[L3], medium. The chi=0 ablation now backs the ring.\n- Mature damage: L4a[L3], low. Two judges rated it Weak.\n- chi0: L6[L2].\n- All other worlds are unchanged.\n\nWhat did not convince us was your mechanism. Most K2 births coincide with a disk hit on the parent: 30/38 on s4, and 43/43 on the skeptic's s11, with 0 spontaneous. The r=14 disk is 2.4x a median K1 cell and erases each pixel about 11 times per run. High yield wins because big bodies are cut rather than erased, and their fragments reseal and regrow. That is real selection, but its sign depends on the disturbance kernel, which also fits your batch-1 reversal. The sweep goes through births in 8/10 seeds, not 9/10.\n\nFor a future lab: whole-body deaths, a birth-cause ledger, and chi as the heritable trait.",
+ "leaderboard_rows": [
+  {
+   "world": "membrane_evo (twin / membrane_evo_up b2=1.3b / membrane_evo_down b2=0.7b)",
+   "rung": "L7[L3]",
+   "confidence": "low",
+   "note": "FINAL (r3), new. This is the committee's arm E: phase_membrane cells from noise, two catalyst kinds differing only in link yield b2 (c2=c1), and a sealed catalyst channel (min face gate plus fast decay outside bodies). Whole-cell flips, a co-mutated neutral tag and r=14 disk deaths are drawn from one state-independent RNG, so each seed has an identical-event twin. 10 seeds x 3 arms (runs/evo_hi). Final K2 biomass share: up 0.85-0.97 in 8/10 seeds, twin 0-0.46, down <=0.04. Hygiene: conversions <= flips in 30/30 runs, 1 first acquisition, 4 off-kind daughters. dt/2 holds on 2 seeds, and the skeptic reproduced the sweep on seed 11 (share 0.88). The down arm purges K2 by intrinsic deaths (46 vs 6 in the twin). It is near-lethal. Disturbance-mediated: the up sweep runs through K2 births (12-45 vs 0-14), mostly fragments cut by the disk that reseal and regrow (30/38 on s4 and 43/43 on s11 are disk-associated, 0 spontaneous on s11). The disk is 2.4x a median K1 cell and erases each pixel about 11x per run. Disk deaths are K1 19-31 vs K2 0-8 (a size refuge). The sweep goes through births in 8/10 seeds and wins by counts in 7/10. In batch 1 (r_death 10, p 0.003), up has fewer K2 cells in 5/5. The births are not merge-aware, the researcher shipped no birth strips, and the selected kind's lineage reaches gen 2 with 3 persistent splits. The [L3] bracket is borderline: the skeptic's phi>1/2 profiles give L rim/core of about 2.0, while labkit's aggregate reads 1.33-1.43 (ring-split bodies). Cells are axis-faceted (anisotropy 0.20-0.24), with no resolution test. The skeptic dissents (L7 Weak).",
+   "pack": "threads/autopoiesis/packs/membrane_evo_up"
+  },
+  {
+   "world": "phase_membrane",
+   "rung": "L6[L3]",
+   "confidence": "medium",
+   "note": "FINAL (r3). Forms from noise. Links adsorbed at the Allen-Cahn wall make an L ring 2.1-2.5x the core and about 0 outside. Both daughters carry a complete ring (to gen 3), with 9-12 persistent splits in 3 seeds, and the ring and gen 3 survive dt/2 and 2x resolution. New in r3: a matched chi=0 ablation (same grid, 8000 t, seeds 0-2) removes the ring (rim/core 1.51-1.72 -> 1.12-1.14). The ring also does work: the cells are about 2x larger and divide about 3x less (15-17 vs 42-43 cells, 9-12 vs 26-32 persistent splits). It is not needed for viability. L builds the body through a(L-theta), so the ring acts as a growth front. Repair is reported separately (phase_membrane_damage_mature). Division-axis histograms were never delivered.",
+   "pack": "threads/autopoiesis/packs/phase_membrane"
+  },
+  {
+   "world": "phase_membrane mature damage (phase_membrane_damage_mature; twins phase_membrane_mature_ctl)",
+   "rung": "L4a[L3]",
+   "confidence": "low",
+   "note": "FINAL (r3); replaces the r1 L4a credit (medium under v1). labkit v0.2 rim cuts on mature cells, 3 seeds, with same-seed undamaged twins. s2: a central 41% cut on a round cell (age 69 frames, aspect 1.04) closes and re-rings by t=6600, then grows and divides. s0: a 21% nick recovers to 0.99x. s1: the target merged into a neighbour. Skeptic's branched twin on seed 11 (34-35% cuts): one target reaches 0.98 of its twin, the other 0.81-0.87. damage.png compares the target with a different cell. The cells grow continuously, so 'mature' is ill-defined. Repair is automatic (curvature flow). Two of three judges rated it Weak.",
+   "pack": "threads/autopoiesis/packs/phase_membrane_damage_mature"
+  },
+  {
+   "world": "phase_membrane_chi0",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), new. Control for phase_membrane with chi=0 (no link adsorption). Noise gives about 42 small round cells dividing by dumbbell pinches: 26-32 persistent splits, gen 2-4, merge/split 0.03-0.09, 3 seeds. The population ends in a near-hexagonal frozen lattice. L fills the body (rim/core 1.12-1.14), so L3 is Contradicted, as intended. In effect this is phase_protocell_noise. No birth strips.",
+   "pack": "threads/autopoiesis/packs/phase_membrane_chi0"
+  },
+  {
+   "world": "phase_protocell_noise",
+   "rung": "L6[L2]",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. Walled droplets form from noise and divide by central starvation: 42-46 cells, 28-33 persistent splits, gen 3-4, in 3 seeds plus seed 11. dt/2 and 2x resolution match. The wall is 4phi(1-phi), a contour, and L is a filled disk, so L3 is Weak. L4a is Weak (near-Supported; one seed). Close to Gray-Scott mitosis and Zwicker droplets.",
+   "pack": "threads/autopoiesis/packs/phase_protocell_noise"
+  },
+  {
+   "world": "phase_swimdiv",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. The lab's first dividing swimmers: crescents with depletion wakes divide repeatedly (10 and 5 divisions on judge seeds 11 and 12; segments up to 7.9 BL), and this reproduces with an isotropic stencil. Propulsion is a hand-coded per-body rigid drift, and headings cluster on lattice diagonals in some seeds. L3 Weak.",
+   "pack": "threads/autopoiesis/packs/phase_swimdiv"
+  },
+  {
+   "world": "motile_trait_tox",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r2. Heritable phoretic mobility with a co-mutated neutral tag under toxic self-waste (kd=0.02). Crescents travel 11-25 BL. mu-tag is +0.08..+1.33 in 5/5 surviving seeds, but populations are 2-8 cells, the sign reverses at kd 0.018, and seed 11 reads -0.36. L6 Weak and L7[L2] Weak. Propulsion is a designed per-body drift.",
+   "pack": "threads/autopoiesis/packs/motile_trait_tox"
+  },
+  {
+   "world": "motile_trait",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r2. kd=0 twin of motile_trait_tox: 29 persistent splits, gen 4, 1 merge per 44 splits. It freezes into a lattice by about 25k. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations, but there are no per-cell births or deaths by mu, and dt/2 matches only the endpoint.",
+   "pack": "threads/autopoiesis/packs/motile_trait"
+  },
+  {
+   "world": "membrane_kinds",
+   "rung": "L6[L3]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r2. The committee's leaky-channel test, and the source of the infection law: with any catalyst leak and c2>c1, a trace becomes a takeover. Conversions exceed mutations in 6/6 B/B' runs, and K2 rises by converting a frozen lattice. L7 Contradicted. L5[L3] Weak (parasite collapse, metrics only). The L6[L3] belongs to the base phase_membrane cells. Superseded by membrane_evo (arm E), which closed the channel.",
+   "pack": "threads/autopoiesis/runs/mk"
+  },
+  {
+   "world": "phase_kinds",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. A faster K2 replaces K1 and divisions breed true, but the sweep is mostly contagion: 45 intact cells were converted against 8 mutations, and K2 still sweeps with mutation off. L7 Weak.",
+   "pack": "threads/autopoiesis/packs/phase_kinds"
+  },
+  {
+   "world": "phase_trait",
+   "rung": "L6[L2]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r1. The growth-rate trait drifts toward 0.16-0.18 from both starts but does not converge. There is no neutral arm, and the population is frozen after about 12k. L7 Weak.",
+   "pack": "threads/autopoiesis/packs/phase_trait"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "For ad7's L7 run, use autopoiesis arm E's sealed-channel recipe. (1) Average binary gates onto faces with min or harmonic means. (2) Make stranded catalyst decay fast outside bodies (phi<1/2). (3) Make kinds neutral inside the cell (c2=c1), differing only in a cell-level output. With this, conversions fell from 8-26 per run to <= flips, with 1 first acquisition in 30 runs (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/membrane_evo/world.py, evotrack.py). Warning: disk deaths of body scale act as a fission operator and a size filter. In membrane_evo the r=14 disk is 2.4x a median cell, and most births that carry selection are disk-cut fragments (committee/reviews/autopoiesis_r3.md). Use whole-body deaths chosen by body identity, and split births by cause."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "xcell-evo2's imposed disk-erasure deaths have the same issue that autopoiesis r3 exposed. When the disk is comparable to a body, it erases small bodies and cuts large ones into regrowing fragments, so it selects on size and manufactures births (judge-scratch/autopoiesis-r3-biologist/up_K2_births.png; committee/reviews/autopoiesis_r3.md). A future lab should use whole-body deaths by identity. Also: the phase_membrane chi=0 ablation shows that an interface-adsorbed product ring can set cell size (about 2x) and division rate (about 3x lower) without containing anything. That is a mechanism-score route for band membranes like xcell's (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_membrane_chi0/SUMMARY.md)."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "For evopursuit's L7 closure, take membrane_evo's identical-event twin design (one state-independent RNG for flips, tag mutations and deaths; whole-body flips) and evotrack's per-kind, per-cause ledger (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/evotrack.py). Extend the ledger the way the r3 skeptic did, classifying each birth by whether an imposed event touched the parent that interval (judge-scratch/autopoiesis-r3-skeptic/scripts/evoskeptic.py). In your world, also log births by whether a predator contact or swap overlapped the parent."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "For fl_forager_gene, a ready ledger and twin design: kinds change only by whole-body flips drawn from a state-independent RNG, and the ledger records births and deaths by kind and by cause, conversions, first acquisitions and off-kind daughters (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/evotrack.py, runs/evo_hi/*.json). Report the disturbance scale relative to body size. autopoiesis r3 found that selection on a body-size trait was carried by a size refuge from the death disk."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "mca-MIRd's whole-body flip law is confirmed in autopoiesis membrane_evo. Whole-cell flips plus a sealed channel gave conversions <= flips in 30/30 runs. Pair the flips with an identical-event twin and the evotrack ledger, and use size-independent whole-body deaths, not disks (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/membrane_evo/world.py; committee/reviews/autopoiesis_r3.md)."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "sporecell2-sel's kind mix was fixed during colonization. autopoiesis arm E shows the design that resolves selection after colonization: imposed turnover at 2.5-4 generations per run, an identical-event twin and a per-kind births/deaths ledger. It also shows the trap: an imposed death operator of body scale becomes the main reproduction channel. Split births by cause (committee/reviews/autopoiesis_r3.md)."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Record for a future lab: chemotaxis-motility r3's fixed-allele decomposition into consumptive and non-consumptive effects (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_summary.md) transfers directly. Run fixed-kind K1-only and K2-only cultures under disk deaths, whole-body deaths and no deaths, to split b2's advantage into size refuge, fragment yield and division. Add flow-lenia's between- vs within-body Price split (committee/reviews/flow-lenia_r2.md). fisim r3's neck-stranding law is consistent with arm E's clean heredity, because catalyst is the cell's own material across both halves."
+  }
+ ],
+ "rubric_issues": [
+  "L6/L7 birth cause: a split whose parent an imposed operator (a death disk or a mutation patch) touched in that census interval must be reported separately from spontaneous divisions. An L7 carried mainly by such births is labelled 'disturbance-mediated' and capped at low confidence until a size-independent death control repeats it (autopoiesis membrane_evo: 30/38 and 43/43 K2 births disk-associated).",
+  "Chemostat design: an imposed death disk of body scale is both a fission operator and a size filter. The committee's own r2 arm-E assignment prescribed it. Default to whole-body deaths chosen by body identity, and report the disturbance scale (disk area / median body area; mean erasures per pixel per run).",
+  "labkit: the radial aggregate splits non-convex bodies into ring components (48-55 of 65-69 members in membrane_evo), which underreads real rings (1.33-1.43 vs about 2.0 with phi>1/2 segmentation). Allow segmentation on an order parameter through META, and add a 4-fold boundary anisotropy screen for grid faceting (0.20-0.24 with the binary gate vs 0.04).",
+  "L4a: in worlds whose cells grow and divide continuously, 'mature, non-dividing' is ill-defined. Specify a cut early in the cell cycle, compare the same cell in a branched twin at fixed lags, and report organization (wall, ring) separately from size catch-up."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/autopoiesis_r3.md"
+}

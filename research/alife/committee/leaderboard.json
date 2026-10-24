@@ -41,53 +41,53 @@
  },
  "autopoiesis/phase_membrane": {
   "world": "phase_membrane",
-  "rung": "L6[L3]+L4a",
+  "rung": "L6[L3]",
   "confidence": "medium",
-  "note": "Unchanged from r1. Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside. Both daughters carry a complete ring (to gen 3), with 9-12 persistent splits in 3 seeds. Ring and gen 3 survive dt/2 and 2x resolution, and 35-41% cuts re-ring against twins (2 seeds). The ring comes from a designed adsorption drift. Still owed after r2: the chi=0 control (is the ring load-bearing?), damage of mature non-dividing cells on 3 seeds, and division-axis histograms.",
+  "note": "FINAL (r3). Forms from noise. Links adsorbed at the Allen-Cahn wall make an L ring 2.1-2.5x the core and about 0 outside. Both daughters carry a complete ring (to gen 3), with 9-12 persistent splits in 3 seeds, and the ring and gen 3 survive dt/2 and 2x resolution. New in r3: a matched chi=0 ablation (same grid, 8000 t, seeds 0-2) removes the ring (rim/core 1.51-1.72 -> 1.12-1.14). The ring also does work: the cells are about 2x larger and divide about 3x less (15-17 vs 42-43 cells, 9-12 vs 26-32 persistent splits). It is not needed for viability. L builds the body through a(L-theta), so the ring acts as a growth front. Repair is reported separately (phase_membrane_damage_mature). Division-axis histograms were never delivered.",
   "pack": "threads/autopoiesis/packs/phase_membrane",
   "thread": "autopoiesis",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/phase_swimdiv": {
   "world": "phase_swimdiv",
   "rung": "L6[L2]+L4b",
   "confidence": "medium",
-  "note": "The lab's first dividing swimmers. The planted cell splits 4-fold, and crescent daughters with depletion wakes divide again and again (10 and 5 divisions on judge seeds 11 and 12; segments up to 7.9 BL). Reproduces with an isotropic stencil. Propulsion is a hand-coded nonlocal per-body rigid drift. Headings cluster on lattice diagonals in some seeds. L3 Weak (no material membrane). labkit tracks break for swimmers.",
+  "note": "FINAL (r3), unchanged since r1. The lab's first dividing swimmers: crescents with depletion wakes divide repeatedly (10 and 5 divisions on judge seeds 11 and 12; segments up to 7.9 BL), and this reproduces with an isotropic stencil. Propulsion is a hand-coded per-body rigid drift, and headings cluster on lattice diagonals in some seeds. L3 Weak.",
   "pack": "threads/autopoiesis/packs/phase_swimdiv",
   "thread": "autopoiesis",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/phase_protocell_noise": {
   "world": "phase_protocell_noise",
   "rung": "L6[L2]",
   "confidence": "high",
-  "note": "Walled droplets form from noise and divide by central starvation: 42-46 cells, 28-33 persistent splits, gen 3-4, in 3 seeds plus seed 11. dt/2 and 2x resolution match. The 'membrane' is 4phi(1-phi), a contour of phi, and L is a filled disk (wall/core about 1.1), so L3 is Weak. L4a is Weak (near-Supported): 3/3 round cells healed to their twins' area, on one seed. Close to Gray-Scott mitosis and Zwicker droplets.",
+  "note": "FINAL (r3), unchanged since r1. Walled droplets form from noise and divide by central starvation: 42-46 cells, 28-33 persistent splits, gen 3-4, in 3 seeds plus seed 11. dt/2 and 2x resolution match. The wall is 4phi(1-phi), a contour, and L is a filled disk, so L3 is Weak. L4a is Weak (near-Supported; one seed). Close to Gray-Scott mitosis and Zwicker droplets.",
   "pack": "threads/autopoiesis/packs/phase_protocell_noise",
   "thread": "autopoiesis",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/phase_kinds": {
   "world": "phase_kinds",
   "rung": "L6[L2]",
   "confidence": "medium",
-  "note": "A faster K2 mutant replaces K1 in 3/3 seeds plus seed 11, and divisions breed true. But the sweep is mostly contagion: 45 intact K1 cells converted without division against 8 mutations, K2 still swept with mutation off, and K1 cells had 0 deaths vs 174 for K2. L7 Weak. The parasite variant (extinction above a threshold) reads best as an infection model.",
+  "note": "FINAL (r3), unchanged since r1. A faster K2 replaces K1 and divisions breed true, but the sweep is mostly contagion: 45 intact cells were converted against 8 mutations, and K2 still sweeps with mutation off. L7 Weak.",
   "pack": "threads/autopoiesis/packs/phase_kinds",
   "thread": "autopoiesis",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/phase_trait": {
   "world": "phase_trait",
   "rung": "L6[L2]",
   "confidence": "low",
-  "note": "Heritable growth-rate trait: means drift toward about 0.16-0.18 from both starts (3+3 seeds) but have not converged and have overlapping bands. No neutral control, the trait is invisible in the sheets, and the population is frozen after about 12k. L7 Weak.",
+  "note": "FINAL (r3), unchanged since r1. The growth-rate trait drifts toward 0.16-0.18 from both starts but does not converge. There is no neutral arm, and the population is frozen after about 12k. L7 Weak.",
   "pack": "threads/autopoiesis/packs/phase_trait",
   "thread": "autopoiesis",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "fisim-beyond-laplacian/xcell-turn": {
   "world": "xcell-turn",
@@ -313,31 +313,31 @@
   "world": "membrane_kinds",
   "rung": "L6[L3]",
   "confidence": "low",
-  "note": "The committee's horizontal-channel test (arms A leaky / B phi^4 / B' hard gate / C neutral / D parasite, 3 seeds x 32k t, from noise). L6[L3] is the rung of the base phase_membrane cells (arm A is that code), not re-shown here: no lineage, packs or birth strips. L7 Contradicted: in B and B' conversions exceed mutations in 6/6 seeds (23/26/25 and 13/8/16 vs 8/5/10), with K2 births 3-8 and K1 deaths 0-1 in a frozen lattice. The skeptic's kind-coloured B' rerun on seed 11 (the only image) shows cells turning pink, then violet, in place. K2 sweeps 32:10, with 19/28 conversions in never-mutated lineages, so the graded A>B>B' closure is not robust. The hard gate face-averages [phi>1/2] (1-px leak), mutations can hit stranded catalyst, and c2>c1 turns any trace into a within-cell takeover. K2 cells are half the K1 area (56 vs 109-119 px). L5[L3] Weak: parasite D vs B (only b2 differs) gives 1/13/0 vs 37-40 cells and K1 deaths 56-63 vs 0-1, metrics only. Arm C is null by construction.",
+  "note": "FINAL (r3), unchanged since r2. The committee's leaky-channel test, and the source of the infection law: with any catalyst leak and c2>c1, a trace becomes a takeover. Conversions exceed mutations in 6/6 B/B' runs, and K2 rises by converting a frozen lattice. L7 Contradicted. L5[L3] Weak (parasite collapse, metrics only). The L6[L3] belongs to the base phase_membrane cells. Superseded by membrane_evo (arm E), which closed the channel.",
   "pack": "threads/autopoiesis/runs/mk",
   "thread": "autopoiesis",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/motile_trait_tox": {
   "world": "motile_trait_tox",
   "rung": "L4b[L2]",
   "confidence": "medium",
-  "note": "Phase protocells with a heritable phoretic mobility mu and a co-mutated neutral tag, under toxic self-waste (kd=0.02), from 4 planted founders. Crescents with waste wakes travel 11-16 BL (pack seed 0) and 11.5-25 BL (skeptic seed 11). Propulsion is a designed per-body rigid drift up a self-made gradient. Headings are shared population-wide in both seeds (a diagonal in seed 0, off-diagonal in seed 11): inherited or aligned heading, with lattice bias not excluded. L6 Weak: arcs fragment into crescent daughters in the movie, but labkit reads 371 nucleations and 0 splits. L7[L2] Weak: mu-tag +0.08..+1.33 in 5/5 surviving seeds, but 2-8 cells, no per-cell births or deaths by mu, the sign reverses at kd 0.018, and seed 11 reads -0.36 at t=14k. L3 Weak: no chi term, L fills the body (wall/core 0.90). The report's [L3] label is wrong.",
+  "note": "FINAL (r3), unchanged since r2. Heritable phoretic mobility with a co-mutated neutral tag under toxic self-waste (kd=0.02). Crescents travel 11-25 BL. mu-tag is +0.08..+1.33 in 5/5 surviving seeds, but populations are 2-8 cells, the sign reverses at kd 0.018, and seed 11 reads -0.36. L6 Weak and L7[L2] Weak. Propulsion is a designed per-body drift.",
   "pack": "threads/autopoiesis/packs/motile_trait_tox",
   "thread": "autopoiesis",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "autopoiesis/motile_trait": {
   "world": "motile_trait",
   "rung": "L6[L2]",
   "confidence": "medium",
-  "note": "kd=0 twin of motile_trait_tox. 4 planted founders give 29 persistent splits, max gen 4 and 1 merge per 44 splits (seed 1 lineage). Dumbbell divisions show in the sheet, and 5 more seeds reach 43-52 cells (logs). The population freezes into a hexagonal lattice by t~25k. L4b Weak: early swimmers move up to 5.1 BL before ~16k, then become sessile. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations (density-driven sessility), but there are no per-cell births or deaths, the lattice is frozen, and dt/2 matches only the endpoint (population 26 vs 52).",
+  "note": "FINAL (r3), unchanged since r2. kd=0 twin of motile_trait_tox: 29 persistent splits, gen 4, 1 merge per 44 splits. It freezes into a lattice by about 25k. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations, but there are no per-cell births or deaths by mu, and dt/2 matches only the endpoint.",
   "pack": "threads/autopoiesis/packs/motile_trait",
   "thread": "autopoiesis",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "chemotaxis-motility/evopursuit": {
   "world": "evopursuit",
@@ -448,5 +448,35 @@
   "thread": "active-droplets",
   "round": 2,
   "decision": "continue"
+ },
+ "autopoiesis/membrane_evo (twin / membrane_evo_up b2=1.3b / membrane_evo_down b2=0.7b)": {
+  "world": "membrane_evo (twin / membrane_evo_up b2=1.3b / membrane_evo_down b2=0.7b)",
+  "rung": "L7[L3]",
+  "confidence": "low",
+  "note": "FINAL (r3), new. This is the committee's arm E: phase_membrane cells from noise, two catalyst kinds differing only in link yield b2 (c2=c1), and a sealed catalyst channel (min face gate plus fast decay outside bodies). Whole-cell flips, a co-mutated neutral tag and r=14 disk deaths are drawn from one state-independent RNG, so each seed has an identical-event twin. 10 seeds x 3 arms (runs/evo_hi). Final K2 biomass share: up 0.85-0.97 in 8/10 seeds, twin 0-0.46, down <=0.04. Hygiene: conversions <= flips in 30/30 runs, 1 first acquisition, 4 off-kind daughters. dt/2 holds on 2 seeds, and the skeptic reproduced the sweep on seed 11 (share 0.88). The down arm purges K2 by intrinsic deaths (46 vs 6 in the twin). It is near-lethal. Disturbance-mediated: the up sweep runs through K2 births (12-45 vs 0-14), mostly fragments cut by the disk that reseal and regrow (30/38 on s4 and 43/43 on s11 are disk-associated, 0 spontaneous on s11). The disk is 2.4x a median K1 cell and erases each pixel about 11x per run. Disk deaths are K1 19-31 vs K2 0-8 (a size refuge). The sweep goes through births in 8/10 seeds and wins by counts in 7/10. In batch 1 (r_death 10, p 0.003), up has fewer K2 cells in 5/5. The births are not merge-aware, the researcher shipped no birth strips, and the selected kind's lineage reaches gen 2 with 3 persistent splits. The [L3] bracket is borderline: the skeptic's phi>1/2 profiles give L rim/core of about 2.0, while labkit's aggregate reads 1.33-1.43 (ring-split bodies). Cells are axis-faceted (anisotropy 0.20-0.24), with no resolution test. The skeptic dissents (L7 Weak).",
+  "pack": "threads/autopoiesis/packs/membrane_evo_up",
+  "thread": "autopoiesis",
+  "round": 3,
+  "decision": "stop"
+ },
+ "autopoiesis/phase_membrane mature damage (phase_membrane_damage_mature; twins phase_membrane_mature_ctl)": {
+  "world": "phase_membrane mature damage (phase_membrane_damage_mature; twins phase_membrane_mature_ctl)",
+  "rung": "L4a[L3]",
+  "confidence": "low",
+  "note": "FINAL (r3); replaces the r1 L4a credit (medium under v1). labkit v0.2 rim cuts on mature cells, 3 seeds, with same-seed undamaged twins. s2: a central 41% cut on a round cell (age 69 frames, aspect 1.04) closes and re-rings by t=6600, then grows and divides. s0: a 21% nick recovers to 0.99x. s1: the target merged into a neighbour. Skeptic's branched twin on seed 11 (34-35% cuts): one target reaches 0.98 of its twin, the other 0.81-0.87. damage.png compares the target with a different cell. The cells grow continuously, so 'mature' is ill-defined. Repair is automatic (curvature flow). Two of three judges rated it Weak.",
+  "pack": "threads/autopoiesis/packs/phase_membrane_damage_mature",
+  "thread": "autopoiesis",
+  "round": 3,
+  "decision": "stop"
+ },
+ "autopoiesis/phase_membrane_chi0": {
+  "world": "phase_membrane_chi0",
+  "rung": "L6[L2]",
+  "confidence": "medium",
+  "note": "FINAL (r3), new. Control for phase_membrane with chi=0 (no link adsorption). Noise gives about 42 small round cells dividing by dumbbell pinches: 26-32 persistent splits, gen 2-4, merge/split 0.03-0.09, 3 seeds. The population ends in a near-hexagonal frozen lattice. L fills the body (rim/core 1.12-1.14), so L3 is Contradicted, as intended. In effect this is phase_protocell_noise. No birth strips.",
+  "pack": "threads/autopoiesis/packs/phase_membrane_chi0",
+  "thread": "autopoiesis",
+  "round": 3,
+  "decision": "stop"
  }
 }
