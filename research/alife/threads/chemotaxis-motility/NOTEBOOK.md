@@ -180,3 +180,19 @@ survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a
   prey and predator totals rise (predator +70%). No predators (pred 0, t=1800): A holds 10-15 bodies and B never exceeds 1 body.
   Sheet `/tmp ep_k1`: cyan A prey ridden by magenta predators, then orange B crescents take over. Full 3-seed experiment with neutral
   and no-predator controls running.
+- **Controlled experiment** (160², t=1500, seeds 0-2 each; `packs/evopursuit`, `packs/evopursuit_neutral`, `packs/evopursuit_nopred`;
+  all 9 curves in `packs/evopursuit/alleles_all.png`):
+
+| world | A / B bodies at t=1500 (3 seeds) | prey mass end/start | predator mass end/start | exposure B/A |
+|---|---|---|---|---|
+| evopursuit (e 1, cost 0.15, k 0.1) | 0/29, 0/30, 0/34 | (A -98..-99%; B took over) | +61%, +60%, +67% | 0.72, 0.64, 0.72 (B<A in 86-98% of frames) |
+| evopursuit_neutral (e = cost = 0) | 0/0(+1 mixed), 1/1, 0/1 | -95%, -95%, -96% | -75%, -78%, -83% | 1.22, 1.14, 1.03 |
+| evopursuit_nopred (pred 0) | 7/0, 9/0, 9/0 | -48%, -54%, -49% | — | — |
+
+  **Evolutionary rescue.** In every run the all-A prey are eaten down (≈8 bodies by t≈700). Where the evasion allele helps, mutant B bodies
+  arise around t≈450-700, breed true, sweep, and the prey population recovers to ~30 bodies, carrying ~60% more predator mass than at the start.
+  With the same mutations but no benefit (neutral), prey and predators collapse together. Without predators the costly B never spreads
+  (≤ 1 B body). The mechanism is confirmed by exposure: B allele mass sits in 28-36% less predator density than A in the same frames
+  (neutral: no difference).
+- Cost 0.30 (seed 0, /tmp): B did not spread and the system collapsed like the neutral runs. Rescue needs a cheap enough evasion allele, or luck in
+  the timing of the first B mutant. (Seed 1 at cost 0.30 and seed 0 at cost 0.22 running.)
