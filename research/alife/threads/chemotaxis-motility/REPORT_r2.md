@@ -11,7 +11,7 @@ evolve are motile, eating, dividing and interacting.
 ## Claims
 | world | rung | strongest evidence | known weaknesses |
 |---|---|---|---|
-| `evopursuit` (+ `_neutral`, `_nopred`) | **L7[L2]** with L4b, L5 and L6 individuals | `packs/evopursuit/alleles_all.png` (9 runs). A/B bodies at t=1500: selection 0/29, 0/30, 0/34. Neutral: prey collapse (0-1 B bodies, prey -95%). No predators: 7-9 A bodies and 0 B. Exposure B/A 0.64-0.72 (selection) vs 1.03-1.22 (neutral). Sheets: `evopursuit/seed2/sheet.png` (cyan A eaten down by t≈700; orange B crescents take over by t≈1200). **Movie: `packs/evopursuit/seed0/movie.mp4`.** | Only 2 alleles and one trait. Mutation is a planted operator (symmetric patch swaps), not a copying error. Cost 0.30 failed to rescue in 1 seed (threshold not mapped). Prey bodies have no internal structure beyond front/back (L2). |
+| `evopursuit` (+ `_neutral`, `_nopred`) | **L7[L2]** with L4b, L5 and L6 individuals | `packs/evopursuit/alleles_all.png` (9 runs). A/B bodies at t=1500: selection 0/29, 0/30, 0/34. Neutral: prey collapse (0-1 B bodies, prey -95%). No predators: 7-9 A bodies and 0 B. Exposure B/A 0.64-0.72 (selection) vs 1.03-1.22 (neutral). Sheets: `evopursuit/seed2/sheet.png` (cyan A eaten down by t≈700; orange B crescents take over by t≈1200). **Movie: `packs/evopursuit/seed0/movie.mp4`.** | Numerics: dt/2 reproduces the rescue (`evopursuit_dthalf`: A1/B33 at t=1500, predators +63%, exposure B/A 0.73). Only 2 alleles and one trait. Mutation is a planted operator (symmetric patch swaps), not a copying error. Rescue has a cost threshold: cost 0.22 rescues (1 seed, 33 B bodies), cost 0.30 fails (2/2 seeds). Prey bodies have no internal structure beyond front/back (L2). |
 | `swimfission` | **L6[L2]** + L4b + L4c | `fission.py` (dense tracker, lone parent, both daughters survive ≥ 40 t): 10/10/15 clean fissions, **max generation 4/3/5** (`packs/fission_swimfission_s*.json`). Strips `*_strip.png` show a swimmer elongating and pinching at the waist into two equal daughters that swim apart. labkit pack `packs/swimfission`: 43-45 moving tracks per seed. | labkit's own lineage under-counts (max gen 2-3) because of its 6-t sampling. Collisions still cause merges and debris. |
 | `swimevo` (+ `_neutral`) | L7[L2] **Weak** | Breeding true: 17/17 pure-A parents → pure-A daughters. Parents with B ≥ 0.77 → daughters 0.83-1.00 (4/5). Generations 6-7 (`packs/fission_swimevo_s*.json`). Growth-rate allele: B 21 vs A 6 bodies (selection) vs B 5 vs A 14 (neutral) at t=1800. | Only ~10 bodies per run. The signal holds in 3/3 pairs but has small numbers. The population slowly declines. |
 
@@ -28,7 +28,7 @@ evolve are motile, eating, dividing and interacting.
    (15% growth cost, never spreads). The fitness of a kind is set by an interaction between motile individuals.
 4. **Rescue.** At k 0.1 the base prey-predator system is not viable: it collapses in all neutral runs. The evasion allele moves it
    to a viable state with *more* predators (+60-67%). At k 0.2 the prey die before any mutant arises. At k 0.05 B rises
-   slowly. At cost 0.30 (1 seed) no rescue.
+   slowly. Cost 0.22 still rescues (`evopursuit_cost22`); cost 0.30 fails in 2/2 seeds (`evopursuit_cost30_s*`).
 
 ## Negative results
 - k 0.2 (the sprint-1 ecology value) with small dividing prey: extinct by t≈1000 in screens. Predation must be weaker for small prey.
@@ -44,4 +44,4 @@ evolve are motile, eating, dividing and interacting.
 2. Coevolution: give predators a heritable pursuit allele (chi_y) as well. Look for arms-race cycling (Red Queen), and use the
    gated-mobility membrane from the autopoiesis and fisim threads for an internal compartment (L3 swimmers).
 3. Continuous traits (evasion strength as a carried concentration) to see whether it evolves to an optimum that depends on predator density.
-4. Numerics: dt/2 and 2x resolution for evopursuit, and a long run (t ≥ 4000) for whether B fixes or A returns by back-mutation.
+4. Numerics: 2x resolution for evopursuit (dt/2 done), and a long run (t ≥ 4000) for whether B fixes or A returns by back-mutation.

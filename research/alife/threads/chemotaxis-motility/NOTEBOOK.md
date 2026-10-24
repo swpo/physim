@@ -195,4 +195,8 @@ survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a
   (≤ 1 B body). The mechanism is confirmed by exposure: B allele mass sits in 28-36% less predator density than A in the same frames
   (neutral: no difference).
 - Cost 0.30 (seed 0, /tmp): B did not spread and the system collapsed like the neutral runs. Rescue needs a cheap enough evasion allele, or luck in
-  the timing of the first B mutant. (Seed 1 at cost 0.30 and seed 0 at cost 0.22 running.)
+  the timing of the first B mutant. Seed 1 at cost 0.30: no rescue either (A2 B0, predators -66%). Cost 0.22, seed 0: rescue (A0 B33, predators +41%). The threshold lies between 0.22 and 0.30.
+- dt/2 (`packs/evopursuit_dthalf`, seed 0, dt 0.025, spf 480): same outcome, A1/B33 at t=1500, predators +63%, exposure B/A 0.73
+  (alleles.py prints times doubled for this run because it assumes dt 0.05).
+
+Sprint 2 ended ~18:20 UTC.
