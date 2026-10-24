@@ -181,3 +181,138 @@ with sampling transport and 25% (m,s,h) differences, competition outcome is set 
 history (which bodies collide/merge first), not by the parameters. Sprint 2 needs either larger
 effects (different kernels, speed) or a mixing rule that lets fitter matter win at contacts.
 Sprint 1 ended 16:19 UTC.
+
+# Sprint 2 (started 16:37 UTC)
+
+Committee digest read. Lab convergences: gated mobility for containment; consumed resource plus
+maintenance cost; L7 bar = variation arising in the run + neutral control at the same mutation
+rate + >= 3 seeds. Challenge: fork a mechanism from another thread.
+
+## S2-E1. Heritable uptake gene (`worlds/fl_forager_gene`), forked protocol
+Fork: the "heritable rate allele carried by the body, mutated during the run, plus a neutral
+control" protocol of active-droplets/ad5-evolve and autopoiesis/phase_trait, ported into the
+forager. Every parcel carries log g (eat *= g) and a genotype id, moved with the matter by the
+same stochastic sampling as sprint 1. Mutation: with p=0.004/step, a radius-8 disk around a
+mass-weighted random cell (about one body) gets log g += N(0, 0.2), one draw per event. Neutral
+control: gene_active=False, so the same mutation process runs but g has no effect (a marker).
+- 3 seeds x 8000 steps + 3 seeds x 12000 steps per condition (evo2/gene_all.png).
+  Final matter-weighted mean log g. Selection: -0.17, +0.34, +0.45 (8k); +0.73, +0.68, +0.54 (12k).
+  Neutral: -0.07, -0.06, +0.11 (8k); -0.05, -0.24, +0.01 (12k). Mann-Whitney U = 31/36,
+  one-sided p~0.008. The selection trajectories rise steadily; the neutral ones wander around 0.
+- Phenotype (packs/fl_forager_gene/seed3 sheet): the high-g (orange) lineages that win overgrow
+  into a few large, slow multi-ring cells. The small, low-g (cyan) gliders disappear. Selection
+  for uptake drives gigantism and loss of motility in this seed; seeds 4-5 kept ~20 bodies.
+- One selection seed (0) went down (-0.17): the population fell to 3-7 bodies, so drift dominates.
+
+## S2-E2. Predator-prey Flow-Lenia (`worlds/fl_predator`)
+Two glider species, both with rule C2_r202, in separate channel pairs with their own pressure
+term. Prey eat food (Hill uptake). Predator matter converts the prey matter it overlaps (kill =
+k_pred·prey·q_pred/(1+q_pred), mass-conserving) and decays to food at 0.003. Chase:
+U_pred += chase·blur12(prey). Flee: U_prey -= flee·blur12(pred). Total mass is conserved to 6e-13.
+- Screens (screens/pred_*.png): chase 2 -> the predator cannot find prey and dies. chase 30,
+  k_pred 0.05 -> prey exterminated by t~1800, then the predators starve (total extinction).
+  Weak predators die early. **flee 60 with chase 20, k_pred 0.03: coexistence.**
+- packs/fl_predator seed0-2 (12000 steps): coexistence in 3/3. Prey go through 2-3 boom-and-crash
+  cycles (to ~3.6x, crashing when predators peak), and predator matter tracks prey with a lag
+  (packs/fl_predator/populations.png). Minimum predator matter 25-57, minimum prey 182-283.
+- Ablations (8000 steps): chase=0 -> predators starve by t~2700 and prey persist alone. flee=0 ->
+  prey exterminated, then predators die (extinction). Coexistence needs pursuit AND evasion.
+
+## S2-E3. Heritable prey flee gene under predation (`worlds/fl_predator_gene`, evo2/pgene.png)
+The prey carry log f (flee *= f), transported with prey matter by sampling. Mutation p=0.004/step,
+N(0, 0.3). 8000 steps, 3+3 seeds. Selection: +0.19, +0.16, +0.23. Neutral: +0.24, +0.25, +0.29.
+No difference. All 6 drift up, controls included: an unexplained bias (the uptake-gene controls
+centre on 0). Coexistence held in all 6 runs. Negative / inconclusive.
+
+## S2-E4. Maintenance cost on the uptake gene (cost 1.5: decay *= g^1.5; evo2/gene_cost.log)
+Prediction from R* (break-even food = k_dec g^0.5 / k_eat): mean log g should fall. Result after
+8000 steps: +0.14, -0.23, +0.32. Not supported; the outcome looks like the no-cost runs. Selection
+on g probably acts through growth during colonization, not through the steady-state food level.
+Sprint 2 ended ~18:25 UTC.
+
+## Corrections after the sprint 1 review (append-only; the earlier entries stand as written)
+- E13/E18: in fl_morph257, channel A0 renders **cyan**, not orange (labkit palette: channel 0 is
+  cyan, channel 1 orange). So "pure A0 rings" are the cyan bodies; the O/C labels are by
+  composition, not colour.
+- E6: the kind names are swapped. In the evo renders kind0 (founder) is cyan and kind1 (variant)
+  orange. The text of E6 says the opposite.
+- E12: the "identical-event" neutral twin is not identical: it had 74 events vs 62, because the
+  event times come from the same rng, whose stream diverges once the dynamics differ.
+
+## S2-E5. Committee main experiment, cut-down first pass (review reached this session 18:23)
+fl_forager_evo with `h_factor`: the variant differs from the founder only in localized h. Arms:
+h x0.5 and a same-founder neutral arm (h x1.0001, so the kinds stay distinguishable). 96^2,
+3000 steps, 6 seeds each, stochastic sampling only. Negotiation not run yet.
+Result (evo2/dose_*.log; kind1 = variant). h x0.5: variant/founder matter 99/1020, 736/339,
+542/571, 1049/69, 559/558, 565/516, so the variant has the majority in 4/6 (two of those are 50:50).
+The variant always makes more, smaller bodies (8-15 vs 0-11). Neutral (x1.0001): kind1 majority
+3/6. Even halving h is not a clear fitness difference under sampling: the coin-flip outcome the
+committee named as "redesign heredity first", though only for one rule and 6 seeds. Contrast with
+S2-E1: the uptake gene acts on the birth-death balance directly and IS selected (p~0.008).
+
+# Sprint 3 (final; started 19:36 UTC)
+
+## Corrections after the sprint 2 review
+- S2-E1: Mann-Whitney U = 31/36 gives an exact one-sided p of 19/924 = **0.021**, not 0.008.
+  REPORT_r2 is corrected.
+- S2-E1: the neutral arm was rate-matched, not identical-event (seed 0: 99 vs 83 events).
+  Fixed in fl_forager_gene2: mutation times, location quantiles and effect draws come from their
+  own RNG stream, so S and N share every event time and draw.
+- S2-E2: ablation times were given in steps. In t (dt = 0.2): predators starve by t~540
+  (chase=0), and extinction comes by t~540 (flee=0).
+- labkit v0.2 dropped the META["threshold"] fix again; re-applied in its own commit (03676da).
+
+## S3-E1. Level-of-selection audit (`worlds/fl_forager_gene2`, scripts/record_gene.py, audit_gene.py)
+Arms (128^2, 12000 steps): S (gene, per-parcel uptake), N (identical-event neutral twin: same
+event times, location quantiles and effects from rng_mut), S_body (uptake uses
+g_eff = blur5(A g)/blur5(A), so parcels within a body share one rate). N_body is not run: with
+the gene inactive, body_pheno has nothing to act on, so N_body is bit-identical to N (checked on
+seed 0: -0.008 for both).
+Snapshots every 20 steps. Bodies are periodic components of blur1(A) > 0.15. Main parent =
+largest overlap. Price split per interval (exact identity, checked: the terms sum to the total):
+between-body (growth, fission and death of bodies), within-body (1-parent children), fusion
+(>=2-parent children). "Persistent" fission = >= 2 daughters that each continue 1-to-1 for
+>= 10 intervals (200 steps). The raw labkit-style generation counts (40-49) are flicker.
+Results so far are in evo3/audit*.json and the REPORT_r3 table.
+- Seed 0: S +0.527 = between +0.689, within +0.472, fusion -0.634. 18 bodies, all high-g, at the
+  end. Visually (evo3/sheet_S_s0.png) a gradual sweep of small orange gliders through ~20 motile
+  gliders. Twin N -0.008 (between -0.233, within +0.031, fusion +0.195: noise of order 0.2).
+- Seed 1: S +0.582 = between +0.256, within +0.526, fusion -0.199. 1 body at the end.
+  evo3/sheet_S_s1.png: orange gliders appear and multiply (t~312-416), grow into multi-ring
+  giants, fuse, and absorb the last pale cell (t~1880): gigantism, then within-body dominance.
+- S_body seed 0: +0.559, but 2 bodies at the end (within +0.51 dominates). The body-scale
+  phenotype does not prevent gigantism.
+- Seed 2: S -0.198 vs N -0.224. The twins end nearly identical: in this seed selection did
+  nothing measurable.
+- Final (5 seeds per arm; evo3/audit.txt, REPORT_r3 table). Paired S−N: +0.54, +0.43, +0.03,
+  +1.32, +0.33 (5/5 positive). S_body−N: +0.57, +0.25, +0.16, −0.17, +0.35. Formal
+  "between > within+fusion": S 4/5, and the neutral twins 3/5 as well (between-body terms up to
+  +0.62 in N). High-g persistent births vs conversions: 38/51, 4/11, 0/0, 3/2, 0/1. All 18 final
+  high bodies of S0 trace back to fusion links. Verdict: L5 (infection/takeover), not L7.
+  Anti-fusion is the prerequisite.
+
+## S3-E2. fl_predator arms on seed 11 (packs/fl_predator*/seed11, 12000 steps, t=2400)
+- Reference: predators extinct by t~704 (reproduces the skeptic); prey grow to 1469.
+- flee=0: prey extinct t~784, then predators t~888.
+- chase=0: predators extinct t~376.
+- Prey only: prey end at 1195.
+Coexistence is 3/4 seeds at 128² (0, 1, 2 yes; 11 no).
+- 192² seed 0 (the showcase run, movies/showcase_totals.json): coexists to t=2400. Predator
+  matter minimum 11 (near extinction). Prey peaks at t~830 and 2200.
+
+## S3-E3. Showcase movie
+movies/showcase.mp4: fl_predator, 192², seed 0, 301 frames every 40 steps, fixed scales,
+scale x3, 3.8 MB. Sprint 3 ended ~21:10 UTC.
+
+## Program end (committee final review, 21:39 UTC): STOP
+Final verdicts:
+- fl_forager: L6[L2]+L4b (best world).
+- fl_forager_gene2: L4b[L2], L7 Contradicted.
+- fl_predator: L4b[L2], L5 Weak.
+- fl_cells: L4a[L3].
+Committee corrections to my reading of the audit:
+- The between-body and fusion terms cancel by bookkeeping (r = -0.90). Taken together, the paired
+  body-level excess is ~+0.17, and the within-body term (+0.36) carries the sweep.
+- Net conversions are within ±3 in 13/15 runs, so this is somatic turnover with zero deaths,
+  not infection.
+- My persistence window was t = 40 (10 intervals x 20 steps x dt 0.2), not t >= 160.

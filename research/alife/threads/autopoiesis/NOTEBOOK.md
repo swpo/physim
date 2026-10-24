@@ -178,3 +178,173 @@ Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.
   numbers are unchanged (a single cell either way).
 - reproducibility: re-running phase_protocell_noise s1, phase_protocell s2 and phase_swim s2
   from the committed files reproduces FACTS exactly.
+
+# Sprint 2 (start 16:36 UTC)
+Committee start message: fork a mechanism from another thread; with heredity in hand, aim for
+motile or interacting heritable individuals; one striking movie. Pulled the lab branch (CI fix).
+
+## 11. phase_trail: local self-repellent propulsion (fork of chemotaxis-motility kstrail) -- negative
+Catalyst secretes slow h; the cell's material is advected by v = -chi grad h (local, no labels).
+- plain local flow: the symmetric trail hill under a cell gives an outward flow on all sides; the
+  Allen-Cahn wall cannot hold against it and the cell tears apart in ~100 steps (chi 2-40).
+- phi-weighted Gaussian-averaged force (sigma 8): still net outward divergence near the edges;
+  phi max decays from 1 to 0 by t~90.
+- trail as wall tilt (- bh h, treadmilling): h piles up under the still cell (h_ss ~ ph K/dh ~ 25);
+  bh >= 0.01 kills the cell, bh = 0.005 just shrinks it. No motility.
+  Lesson: a phase-field cell needs a rigid-body (cell-averaged) drive; a local divergent flow is
+  read by the wall as stretching, not translation. Keller-Segel bodies hold together by an
+  aggregation term that the phase cell lacks.
+
+## 12. motile_kinds: sessile vs motile kinds under toxic waste (fork of chemotaxis-motility toxforage)
+Kinds differ only in phoretic mobility; catalysts excrete waste w that adds decay kd w K.
+- pure populations from 4 blobs, t=8000: kd=0.01 sessile 34 cells, motile 8; kd=0.015 sessile
+  extinct, motile 8; kd=0.02 sessile extinct, motile 4; kd=0.03 both extinct. So swimming rescues
+  sparse populations from their own waste, but costs reproduction when the waste is mild.
+- evolutionary rescue at constant kd=0.015 (p_mut=0.001): sessile ancestors die before t=4000
+  with only one mutation; no rescue (mu2 1.5 or neutral 0).
+- toxicity ramp 0 -> 0.02 over 20k steps: the dense sessile population survives kd=0.02 (crowded
+  cells share and dilute waste), and mutant K2 cells rise to 3 in both the motile and the neutral
+  run. No selection for motility. Negative.
+
+## 13. hunters: chemotactic predator cells (fork of chemotaxis-motility pursuit) -- negative
+Predator catalyst K2 (faster c2, fewer links b2) chases a prey odour (made by K1) by per-cell
+phoresis; fusion should let K2 take over prey cells.
+- c2=0.3 predator cells die alone even with b2=b: a fast catalyst depletes its own substrate,
+  link production falls and the wall loses its tilt. c2=0.23 is viable (23 cells at t=4000).
+- odour range sqrt(Dw/dw) ~ 3 px: predators never sense prey. With dw=0.0005 (range ~14 px) and
+  mu2=200-1000, predators move and die by t~1200 (area falls from t~450) at every speed cap
+  (0.4, 0.15, 0.08, 0.05), while static predators (mu2=0) coexist with prey (25 vs 29 cells).
+  Diagnosis: moving toward prey means moving into the prey's substrate-depletion halo; hunters
+  starve before contact. An ecological negative: chemotaxis to prey is suicidal for a predator
+  that eats substrate, not prey.
+
+## 14. motile_trait: evolution of motility itself (`worlds/motile_trait`, `worlds/motile_trait_tox`)
+Catalyst carries mu (phoretic mobility) and a neutral tag as co-moving masses (Qm = mu K,
+Qt = tag K); per-cell mu drives rigid phoresis up <grad S>. Each step, p=0.002 for a +-delta
+mutation of mu in a 4-px disk, and independently the same for the tag (same rate, same size:
+the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic waste kd.
+- delta=0.3, 32k steps: mu - tag at the end = +0.03/-0.03/-0.18 (kd=0) and +0.13/+0.20/+0.04
+  (kd=0.02). Direction as predicted under toxin, but weak. Logs in `runs/mt_*.log`.
+- delta=0.6, 48k steps (`runs/mt6_*.log`, `screens/motility_evolution.png`):
+  kd=0.02: mu 1.98/1.85/2.08 vs tag 1.09/1.43/0.75 -> mu - tag = +0.89/+0.42/+1.33 (3/3 up).
+  kd=0: mu 1.21/1.01 vs tag 1.39/1.47 in seeds 1 and 2 (populations grow to 48-52 cells);
+  seed 0 instead: mu rises to 2.33 while its population falls 14 -> 3 cells.
+- reading: waste toxicity selects for motility (a swimmer leaves its waste behind); without
+  waste, motility costs reproduction and declines in large populations. The odd seed suggests a
+  positive feedback (motile -> fewer divisions -> sparse population -> swimming toward food pays):
+  possibly two evolutionary attractors. Hypothesis only; populations at kd=0.02 are small
+  (2-10 cells) so drift is strong (see the tag).
+- 3 more seeds each (seeds 3-5), same settings: kd=0.02: seed 3 extinct by t~4000; others
+  mu 2.24/1.81 vs tag 0.95/1.73. kd=0: mu 1.01/1.17/1.22 vs tag 1.64/1.18/1.52, populations 43-46.
+  Totals over 6 seeds: toxic, mu - tag > 0 in 5/5 surviving (+0.08..+1.33), all end mu >= 1.8;
+  no toxin, mu falls to 1.01-1.22 in 5/5 large populations (tag mean 1.44), the 6th (crashed to 3
+  cells) rises to 2.33. `screens/motility_evolution.png` (12 runs).
+- start mu = tag = 3.0 at kd=0 (`runs/mthi_*.log`, 3 seeds): populations stay at 2-4 cells
+  (fast swimmers rarely divide) and mu does not fall (3.04/3.18/2.85 vs tag 3.12/2.96/3.06).
+  Consistent with a sparse, motile regime where too few divisions let selection act; it is not
+  proof of a second attractor.
+
+## 15. Movies
+- `packs/motile_trait_tox/movie.mp4`: swimmers with waste wakes grow, split and evolve higher
+  mobility (the thread's movie for sprint 2).
+- `packs/phase_swimdiv_movie` (192^2, 1 cell, 12k): symmetric 1 -> 4 -> 8 expansion, then 4-fold
+  head-on collisions across the periodic edge (t~5250-5750) crash the population to one long
+  swimming arc. Pretty, but the symmetry is from the grid and the ending is a die-off.
+- dt check (dt=0.5, p_mut halved per step to keep the rate per time, seed 1, `runs/mtdt_*`): kd=0
+  mu 1.20 (dt=1: 1.21), kd=0.02 mu 1.81 (dt=1: 1.85). Same outcome.
+- kd jitter (seed 1): kd=0.022 sparse (2-6 cells), mu 1.73 vs tag 1.52 (up). kd=0.018 (mu starts to fall at t~15k while still ~6 cells; the population grows only after ~22k, so loss of motility comes first and density follows): mu first
+  rises while sparse (1.73 at 12k), then from t~24k falls to 0.82 while the population explodes
+  9 -> 42 cells (`screens/motility_regime_shift.png`). A regime shift: a lineage that loses
+  motility founds a dense sessile population, crowding dilutes the waste, and sessility wins.
+  So the direction of selection is set by population density, and toxicity sets which regime
+  a population starts in. Direct support for the two-regime hypothesis (sparse/motile vs
+  dense/sessile), and a limit on robustness: the kd=0.02 result is not guaranteed at -10%.
+- kd=0.018 seeds 0 and 2: seed 0 shifts too (mu 1.5 -> 0.81 from t~12k, cells 7 -> 36); seed 2
+  hovers near 1.5 until ~40k, then mu 1.2 with cells 8 -> 19 (shift under way). So at kd=0.018
+  3/3 seeds leave the motile regime within 48k, at kd >= 0.02 5/5 surviving seeds stay motile:
+  a sharp evolutionary tipping point between 0.018 and 0.02 on this time scale.
+
+## 16. Committee r1 review (arrived 18:11) -> main experiment: membrane_kinds arms A-D
+`worlds/membrane_kinds` = phase_membrane (chi=2, noise IC) + K1/K2 + point mutation (p 3e-4, r 2).
+`kindtrack.py`: census every 100 steps from t=1000 (phi>1/2 components, periodic), overlap
+matching -> births/deaths per kind, merges, conversions (1:1 kind flips). 32k t, 3 seeds/arm,
+results in `runs/mk/*.json`.
+- A leaky (phi^2, growth ~phi): conv 22/17/20 vs mut 3/1/5; K2 births 74-102, deaths 104-133;
+  K1 extinct, 7-8 K2 cells at the end (crash). Infection confirmed.
+- B confined (phi^4, growth masked phi<1/2): conv 23/26/25 vs mut 8/5/10; K2 births 4-8;
+  final K1/K2 12/25, 7/33, 8/31. Still infection-driven.
+- B' hard gate (catalyst flux only inside phi>1/2): conv 13/8/16 vs mut 8/5/10; K2 births 3-5;
+  final 22/15, 26/8, 21/14; no crash.
+- C neutral (c2=c1) under B: no K2 cells ever (0 conversions, 23 mutations); under B' seed 0
+  also 0.
+- D parasite (b2=0) under B: conv 10/4/8 = K2 deaths; populations 1/13/0 cells at the end.
+- Conclusion: the leak is graded; L7 still Weak. Next: cross-inhibition or link-bound catalyst.
+- also: merged the lab branch (CI fix + committee files); conflicts were only in my own thread
+  files (older copies on the lab branch), kept this branch's versions.
+
+# Sprint 3 (final; start 19:03 UTC)
+Committee r2: CONTINUE narrowed, with a stop rule. Main experiment: arm E.
+
+## 17. membrane_evo (arm E)
+`worlds/membrane_evo` (twin, b2=b) and `membrane_evo_up` (b2=1.3b), `membrane_evo_down` (0.7b).
+Sealed catalyst channel: face mobility D min(g_i, g_j) with g=[phi>1/2]; autocatalysis only
+inside; catalyst decays at d_out=0.2 outside bodies. c2=c1; kinds differ only in b2. Events from a
+state-independent RNG (same draws in every arm with the same seed), from t_on=8000: whole-cell
+kind flips both ways (p 5e-4), whole-cell neutral-tag mutations (+-0.3, p 5e-4), disk deaths.
+Tracker `evotrack.py` (census every 100 steps): births/deaths by kind (deaths split into
+disk-hit and other), flips, conversions (1:1 kind change without a flip), first acquisitions
+(minority kind > 1% in a never-flipped lineage), off-kind daughters.
+- pure-culture pre-screen (t=16k, no flips): b=0.035 extinct; 0.05 one cell; 0.065 20 cells;
+  0.08 6 large cells. The sealed channel costs viability, so b=0.065 is the base. b matters.
+- batch 1 (p_death 0.003, r 10; 5 seeds x 3 arms, 40k with 32k of events, `runs/evo/`):
+  hygiene: conversions 0 in 14/15 runs (1 in down s2), first acquisitions 0/15, off-kind
+  daughters 0/15. Selection vs twin:
+  down (0.7b): K2 deaths 5-8 vs twin 0-1; K2 extinct in 4/5 (1 cell in s2) vs twin 5-9 K2 cells.
+  up (1.3b): K2 ends 2/0/4/2/2 cells vs twin 9/8/5/9/7; K2 births 0-2 vs 1-6; K2 deaths 0 in both;
+  K2 biomass mixed (898/37/820/1139/456 vs 814/937/559/690/781): fewer, bigger K2 cells.
+  Confound: K2->K1 back-flips 1-4 in up vs 0-1 in twin (flips hit cells by location, so bigger
+  cells are hit more often).
+  Turnover too low: ~9 body deaths and ~15-26 births per run, about 1 generation.
+- batch 2 (p_death 0.01, r 14; now the world-file default; `runs/evo_hi/`): ~25-40 body deaths
+  and 30-60 births per run (about 2-3 replacement generations for ~15 cells).
+  hygiene: first acquisitions 0/15; conversions 0 in 13/15 (up s1: 4 with 10 flips, up s4: 1 with
+  8 flips; always <= flips); off-kind daughters 0 except up s1 (2), up s2 (1).
+  down (0.7b): K2 cells at the end 0/0/1/0/0 vs twin 3/5/2/0/4; K2 births 0-1, deaths 1-7.
+  Departs from the twin in 4/5 (s3 twin also 0), through deaths and missing births.
+  up (1.3b): K2 sweeps in 3/5 seeds (end K1/K2 2/8, 2/7, 2/15; K2 births 12/18/31) and is lost in
+  2/5 (1, 0). K2 biomass 443/2144/1963/0/2114 vs twin 284/546/290/0/352 (higher in 4/5, tie in s3).
+  The sign of selection on b2 flips with turnover: under low turnover (batch 1), high-yield K2
+  ends with fewer cells than the twin in 5/5 (fewer, bigger cells that divide less in a crowd);
+  under high turnover it sweeps in 3/5 (bigger cells recolonize cleared space faster?). Hypothesis.
+- packs (kind-coloured: K1 cyan, K2 orange, L magenta, wall green): `packs/membrane_evo_up` (s4,
+  K2 sweep), `packs/membrane_evo_twin` (s4), `packs/membrane_evo_down` (s1).
+
+## 18. Committee secondaries
+- chi=0 control (`packs/phase_membrane_chi0`, 3 seeds): 42-43 cells, 26-32 persistent splits,
+  gen 2-4. Identical to phase_protocell_noise. The ring is not load-bearing for persistence or
+  division; it makes bigger, irregular, fusing cells.
+- mature-cell damage (labkit's new mature-compact target, 3 seeds; twins in
+  `packs/phase_membrane_mature_ctl`): measured loss 30.3/31.7/31.8%. s0 and s2 regrow to
+  pre-cut area (+50 t, +350 t), then divide; s1 regrows to 1.37x, then disappears (merge or
+  death) at +250 t.
+- showcase: `movies/showcase.mp4` = membrane_evo_up seed 4 (`showcase.py`, fixed scales,
+  401 frames, 2.0 MB).
+
+## 19. Arm E, seeds 5-9 added (high turnover; 10 seeds per arm)
+- final K2 biomass share: down 0/0/.04/0/0/0/0/0/.03/0; twin .16/.31/.17/0/.21/.28/.18/.21/.34/.46;
+  up .22/.91/.88/0/.97/.91/.97/.96/.91/.85. vs twin: down lower 9/10, up higher 9/10 (s3: all 0).
+- K2 births: down 0-5, twin 0-14, up 0-45 (8/10 runs >= 12). K2 deaths: down 1-14, twin 0-11, up 0-12.
+- hygiene: first acquisitions down 0, twin 0, up 1 (in total); conversions <= flips in 30/30
+  (max 4); off-kind daughters 4 (all in up). Births per run 38-75 (about 2.5-4 generations).
+- neutral tag at the end: 0.68-1.53, arm means about 1.0 in all three arms (no effect).
+- reading: the r2 criteria for L7[L3] are met (my claim). The batch-1 "sign flip" of the up
+  arm was underpowered (about 1 generation), not a reversal: with 2.5-4 generations high yield wins.
+- figure `screens/membrane_evo_selection.png`.
+- dt/2 check (`runs/evo_dt/`, dt=0.5 with per-step event probabilities halved and t_on doubled,
+  so a different realization of the event stream; 2 seeds): K2 biomass share up 0.93/0.80 vs
+  twin 0.64/0.29; K2 births 37/45 vs 6/17. Hygiene: conversions 0/6 (<= flips 5/12), first
+  acquisitions 0/1. Same direction as dt=1.
+- committee note (labkit v0.2): phase_membrane's damage() now honours labkit's mask (reset
+  the masked pixels to bath). Rerun with `--damage 120:0.5:rim` on 3 seeds: measured loss
+  21.4/24.9/40.9%; s2 recovers to 0.94x by +400 t and divides, s0 to 0.99x, s1 lost by +400 t.
+  The earlier packs (own-disk hook, 30-32%) are replaced.

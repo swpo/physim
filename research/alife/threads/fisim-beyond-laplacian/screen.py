@@ -13,7 +13,7 @@ def load(name):
     return json.load(open(WORLDS + name + ".json"))
 
 
-def soup(g, N, seed, n=6, dx=0.5, dmin=14.0, dress=0.6, kick=0.5, acts=None):
+def soup(g, N, seed, n=6, dx=0.5, dmin=14.0, dress=0.6, kick=0.5, acts=None, dress_chans=None):
     rng = np.random.default_rng(seed)
     S = X.make_state(g, N)
     F = S["F"]
@@ -36,7 +36,7 @@ def soup(g, N, seed, n=6, dx=0.5, dmin=14.0, dress=0.6, kick=0.5, acts=None):
         tmp = np.zeros_like(F)
         X.poke(tmp, 0, sy, sx, 2.0 * dress, 3.0, dx)
         for c, ch in enumerate(g["chans"]):
-            if ch["g"] == "id" and W[c, a] != 0:
+            if ch["g"] == "id" and W[c, a] != 0 and (dress_chans is None or c in dress_chans):
                 F[na + c] += W[c, a] * tmp[0]
     F[:na] += 0.01 * rng.standard_normal(F[:na].shape)
     return F

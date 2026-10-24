@@ -177,3 +177,71 @@ released food.
   against 6/17, 12/13, 14/18 at 50%. Confirmed: a priority effect, bistable territories. The
   predator kind cannot invade from rare, so this interaction cannot be reached by mutation in
   this design.
+
+## T4. Robustness and numerics of the L7 result
+- Jitter (advantage 1.2x instead of 1.3x, mu 0.09), seeds 0/1/2: final kind-1 cells 6/18, 0/17, 3/17;
+  per-capita births k0 vs k1 1.8/2.4, 1.9/0, 2.6/0.9. The weaker advantage does not reliably
+  sweep. Not robust to a -10% change of the advantage.
+- dt/2 (dt=0.01, same simulated time 400): seed 0, births 15 (vs 70 at dt=0.02); kind 1 3/13 cells,
+  per-capita 1.4 vs 0.5, 6/7 breed true. Seed 1: births 22 (vs 61), gen 1, kind 1 1/14, no
+  kind-1 births. dt=0.015, seed 0: births 59, gen 9, kind 1 3/16, per-capita 2.7 vs 2.2.
+- Convergence of spore emission (`scratch/dtconv.py`, sporecell2-sel seed 0, mean free core
+  particles over t=60-200):
+  - dt 0.02 / 0.01 / 0.005: 127 / 40 / 6; cells at t=200: 24 / 14 / 5.
+  - Adding core Brownian noise (D_C=0.005): 95 / 39 / 4. D_C=0.05: 146 / 77 / 8 (cells 19 / 15 / 11).
+  - Softer core (rep=3): extinct at every dt.
+  - CONCLUSION: spore emission, and so the reproduction rate, is largely numerical heating of the
+    stiff core (rep*ff*dt overshoot) at dt=0.02. It does not converge as dt -> 0. The heredity,
+    gate and predation results hold for the dt=0.02 discrete map only. This also applies to
+    sprint 1's sporecell, which used the same dt and rep.
+
+## T5. Committee r1 main experiment, step (a): turnover screen (sporecell-turnover, seed 0, T=300)
+The review arrived at 17:37. World: sporecell (B on) + whole-cell dilution (rate delta per cell,
+particles returned as uniform food).
+- k_dec 0.02: food 1364, 35-39 cells, 24% ringed. k_dec 0.03: food 2954, 2-4 ringed cells until
+  t~200, then a burst to 40. k_dec 0.05: one ringed cell, no births.
+- delta 0.005: food 814, 38-39 cells with deaths and births (69), 5% ringed. delta 0.02: extinct by t=100.
+- No setting gives a stationary, ringed, reproducing population. The window, if any, is narrow
+  (k_dec~0.025 or delta~0.01). Steps (b) and (c) were not run.
+- Window probe: k_dec 0.025: rings 0.69, but growing 11 -> 36 (a burst). delta 0.01: stationary 33-38
+  cells, 81 births, rings 0.09. k_dec 0.025 + delta 0.01: extinct. k_dec 0.02 + delta 0.005:
+  25-39 cells, rings 0.38. No passing setting: a food-contact ring and a food-limited population
+  are incompatible.
+
+# Sprint 3 (final; started 2026-10-24 19:42 UTC)
+
+## U1. Step-safe integrator (sporecell3) and the release-route gate
+sporecell3 = sporecell2-sel + adaptive sub-steps (max displacement <= 0.05 per sub-step, forces
+recomputed each sub-step, displacement clipped and logged if velocity grows inside a sub-step)
++ every RNG draw unconditional (identical-event twins) + surface detachment route (k_det: a core
+particle with 3 <= matter neighbours < n_det jumps d_det=1.5 in a random direction).
+Merge-aware lineage `lineage2.py` (continuation by particle overlap; births only from clusters
+with no previously clustered particle; qualifying birth >= 20 samples and not ending in a merge).
+- seed 0, dt=0.02, t=200, no release route (R0): 1 qualifying birth, 22 deaths, 3 cells at t=200,
+  free spores 3.4 (vs 127 with the old integrator). Sub-steps 3-52 per step (dense cells are very
+  stiff), 9508 displacement clips. With converged motion, spontaneous spore release is ~gone:
+  this confirms the committee's "size-triggered instability" diagnosis.
+- k_det=0.003, n_det=25 (R1): only 7 detachments (dense cells rarely have < 25 neighbours);
+  0 births, 3 cells.
+- k_det=0.01, n_det=25 (R1b): 28 detachments, 5 qualifying births, max gen 1, 33 deaths, 8 cells at t=200.
+- SALR (B=-1 on all core pairs to R2=2.5; R2): 4 qualifying births, gen 1, 30 deaths, 5 cells, 0.4 free spores.
+- With converged motion, every route so far gives deaths >> births (15-16 vs 2-2.5 per 100 t):
+  the populations decline. Neither reaches gen >= 2 by t=200.
+- **Strong detachment k_det=0.05, n_det=60 (R3), seed 0, dt 0.02 vs dt 0.01 (both step-safe), t=200:**
+  free spores 116 vs 124 (+6%); qualifying births per 100 t 5.9 vs 6.4 (+8%); cells at t=200
+  31 vs 29 (-6%); merge-aware max gen 2 vs 2. Deaths 16 vs 23 per 100 t; merges 50/45,
+  fragments 52/52. Passes the committee's 20% gate on this seed.
+- R3 seed 1, dt 0.02 vs 0.01: free spores 110 vs 96 (-12%); births/100 t 4.95 vs 5.94 (+20%, the
+  limit; 10 vs 12 births); cells at t=200 28 vs 28; max gen 2 vs 3. Borderline pass.
+- Lineage caveat: spores shed before the parent first reaches 15 particles carry no parent label
+  and count as founders (gen-0 counts 25-31), so generation counts are lower bounds.
+- Twin, seed 0, T=300 (k_det=0.05 route): selected kind-1 share 0.36 (t<100) -> 0.45 (t>=100), final 14/29;
+  neutral 0.18 -> 0.15, final 4/30. Kind-1 births 5 vs intact-cell conversions 4 (selected): conversions
+  are NOT far fewer than births, so the committee's (b) criterion fails on this pair. One seed only.
+- R3 seed 11 (the committee's skeptic seed), dt 0.02: 12 qualifying births (5.9/100 t), 24 deaths, gen 2,
+  27 cells at t=200, 87 free spores. Consistent with seeds 0 and 1.
+
+## Program end (committee final review, r3: STOP)
+Final verdicts: sporecell3-det L2 (high), L6[L2] Weak (borderline; strict re-audit max gen 1 on seed 0,
+one 2-deep chain on seed 1 missed by lineage2), L3 Contradicted; twin L7[L2] Weak; lysis L5[L2] low
+(dt map); plife-m2 L3 (calibration). lineage2 needs parent-fusion and smin-hysteresis fixes.

@@ -4,7 +4,7 @@ from screen import *
 mod, fn = sys.argv[1], sys.argv[2]; args = json.loads(sys.argv[3]); T = float(sys.argv[4])
 nsnap = int(sys.argv[5]) if len(sys.argv) > 5 else 10; noise = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
 M = importlib.import_module(mod); g = getattr(M, fn)(**args)
-F = M.ic(g, 128, 0) if hasattr(M, "ic") and mod == "s_her" else None
+F = M.ic(g, 128, 0) if hasattr(M, "ic") and mod == "s_her" else (soup(g, 128, 0, n=10, acts=[0], dress_chans=[0, 1]) if mod == "evo" else None)
 sn, ts, w = run(g, N=128, T=T, seed=0, nsnap=nsnap, F=F, noise=noise)
 u0 = g["acts"][0]["u0"]
 tag = f"{fn}_" + "_".join(f"{k}{v}" for k, v in args.items()) + (f"_n{noise}" if noise else "") + f"_T{T:.0f}"

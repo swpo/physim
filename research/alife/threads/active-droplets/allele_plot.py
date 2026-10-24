@@ -9,6 +9,9 @@ import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from labkit.metrics import periodic_label
 COL = ["#4f8fff", "#3ccf5a", "#e8b923", "#e8403f"]
+off = 2
+if sys.argv[1].startswith("--offset="):
+    off = int(sys.argv.pop(1).split("=")[1])
 out, packs = sys.argv[1], sys.argv[2:]
 seeds = sorted({p.name for pk in packs for p in Path(pk.split(":")[0]).glob("seed*")})
 fig, axs = plt.subplots(len(packs), len(seeds), figsize=(4 * len(seeds), 3 * len(packs)), squeeze=False, sharey=True)
@@ -21,13 +24,13 @@ for i, pk in enumerate(packs):
             continue
         z = np.load(f); R = z["render"].astype(np.float32); fr = z["render_f"]
         spf_dt = json.load(open(Path(d) / sd / "metrics.json")).get("dt_frame", 100.0) if (Path(d) / sd / "metrics.json").exists() else 100.0
-        N = R.shape[1] - 2
+        N = R.shape[1] - off
         C = np.zeros((len(R), N), int)
         for t, F in enumerate(R):
             lab, n = periodic_label(F[0] > 0)
             if n == 0:
                 continue
-            m = np.stack([ndimage.mean(F[2 + k], lab, range(1, n + 1)) for k in range(N)])
+            m = np.stack([ndimage.mean(F[off + k], lab, range(1, n + 1)) for k in range(N)])
             ok = m.max(0) > 0.05
             C[t] = np.bincount(m.argmax(0)[ok], minlength=N)
         ax = axs[i, j]

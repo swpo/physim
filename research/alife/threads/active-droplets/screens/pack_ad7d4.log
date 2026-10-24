@@ -1,1 +1,41 @@
 [ad7-gated-d4] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  42.0s
+  frame 40/200  83.2s
+  frame 60/200  124.2s
+  frame 80/200  167.2s
+  frame 100/200  209.8s
+  frame 120/200  250.9s
+  frame 140/200  293.2s
+  frame 160/200  335.6s
+  frame 180/200  377.9s
+  frame 200/200  419.9s
+  -> threads/active-droplets/packs/ad7-gated-d4/seed0/FACTS.md  (420s sim)
+[ad7-gated-d4] seed 1: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  41.6s
+  frame 40/200  80.4s
+  frame 60/200  121.4s
+  frame 80/200  162.2s
+  frame 100/200  201.0s
+  frame 120/200  240.3s
+  frame 140/200  278.5s
+  frame 160/200  315.8s
+  frame 180/200  352.8s
+  frame 200/200  390.4s
+  -> threads/active-droplets/packs/ad7-gated-d4/seed1/FACTS.md  (390s sim)
+[ad7-gated-d4] seed 2: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  40.6s
+  frame 40/200  80.8s
+  frame 60/200  123.7s
+  frame 80/200  164.8s
+  frame 100/200  204.1s
+  frame 120/200  243.4s
+  frame 140/200  286.3s
+  frame 160/200  327.0s
+  frame 180/200  366.3s
+  frame 200/200  403.7s
+  -> threads/active-droplets/packs/ad7-gated-d4/seed2/FACTS.md  (404s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | occupancy_final |
+|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 5 | 6 | 173 | 0 | 4 | 4 | 2 | 0.08 |
+| 1 | ok | 10 | 5 | 201 | 0 | 1 | 6 | 2 | 0.11 |
+| 2 | ok | 8 | 4 | 201 | 0 | 0 | 4 | 1 | 0.09 |

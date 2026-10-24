@@ -1,0 +1,50 @@
+[fl_predator] seed 11: 300 frames x 40 steps, grid (128, 128)
+  frame 30/300  26.7s
+  frame 60/300  53.0s
+  frame 90/300  80.3s
+  frame 120/300  106.7s
+  frame 150/300  132.8s
+  frame 180/300  159.0s
+  frame 210/300  185.7s
+  frame 240/300  212.5s
+  frame 270/300  239.5s
+  frame 300/300  266.1s
+  -> threads/flow-lenia/packs/fl_predator/seed11/FACTS.md  (266s sim)
+[fl_predator_noflee] seed 11: 300 frames x 40 steps, grid (128, 128)
+  frame 30/300  26.3s
+  frame 60/300  52.7s
+  frame 90/300  78.8s
+  frame 120/300  104.9s
+  frame 150/300  131.0s
+  frame 180/300  157.5s
+  frame 210/300  183.8s
+  frame 240/300  210.0s
+  frame 270/300  236.1s
+  frame 300/300  262.2s
+  -> threads/flow-lenia/packs/fl_predator_noflee/seed11/FACTS.md  (262s sim)
+[fl_predator_nochase] seed 11: 300 frames x 40 steps, grid (128, 128)
+  frame 30/300  26.8s
+  frame 60/300  53.6s
+  frame 90/300  80.3s
+  frame 120/300  106.6s
+  frame 150/300  132.9s
+  frame 180/300  158.8s
+  frame 210/300  185.1s
+  frame 240/300  211.2s
+  frame 270/300  237.2s
+  frame 300/300  263.3s
+  -> threads/flow-lenia/packs/fl_predator_nochase/seed11/FACTS.md  (263s sim)
+[fl_predator_preyonly] seed 11: 300 frames x 40 steps, grid (128, 128)
+  frame 30/300  26.9s
+  frame 60/300  54.2s
+  frame 90/300  81.2s
+  frame 120/300  107.8s
+  frame 150/300  134.6s
+  frame 180/300  161.3s
+  frame 210/300  188.1s
+  frame 240/300  214.4s
+  frame 270/300  241.3s
+  frame 300/300  267.9s
+  -> threads/flow-lenia/packs/fl_predator_preyonly/seed11/FACTS.md  (268s sim)
+wrote threads/flow-lenia/movies/showcase.mp4 301 frames 3832 KB
+SHOWCASE_DONE

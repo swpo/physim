@@ -32,6 +32,7 @@ META = {
     "dt": 0.2,
     "channels": ["prey", "predator", "food"],
     "matter": [0, 1],
+    "species": {"prey": [0], "predator": [1]},
     "smooth": 1.0, "threshold": 0.15,
 }
 

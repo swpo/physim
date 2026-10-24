@@ -1,0 +1,4 @@
+S_a5_s0: wall 436s counts {'birth': 9, 'mut': 1, 'kill': 1}  final n=12 meankp=2.50 rungs=[0, 0, 0, 0, 0, 12, 0]
+N_a5_s0: wall 417s counts {'birth': 9, 'mut': 1, 'kill': 1}  final n=12 meankp=2.50 rungs=[0, 0, 0, 0, 0, 12, 0]
+Terminated
+Terminated

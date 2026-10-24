@@ -132,3 +132,104 @@ Screens are in `screens/`, and file names encode the parameter overrides.
   next sprint needs an explicit size-selection operator.
 
 Sprint 1 ended ~16:05 UTC.
+
+# Sprint 2 (started 16:37 UTC)
+Committee digest: division needs core starvation + slow interior transport (active-droplets, autopoiesis); L7 bar = variation
+during the run + neutral control + 3 seeds. Challenge: fork a mechanism from another thread.
+
+## fission.py: dense tracker for clean fission
+labkit samples every 6 t and cannot separate division from collision debris. `fission.py` samples every 2 t, links by overlap
+of 2-px-dilated masks, and calls a split CLEAN when the parent's lineage had no merge for >= 40 t and >= 2 children
+survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a crop strip of the first 4 clean fissions.
+(Fixed a bug where generations were assigned before propagation.)
+
+- toxforage (Da 4), 128², t=1200: 58 splits, **3 clean fissions** (strip: an elongated hook swimmer pinches into two). Max gen 1.
+  So the sprint-1 world already reproduces, rarely.
+- Screens (128², t=1200, seed 0): g 0.15 / kd 0.0075 → 2 clean fissions; ka 0.2 / chi_a 48 → 8; **Da 2 → 11 (gen 5)**; Da 1 → 0
+  (bodies too small to grow); r 0.1 / g 0.15 → 707 splits, 0 clean (fragmenting mess).
+
+## swimfission = toxforage with Da 2 (attractant range 6.3 → 4.5 px) — `worlds/swimfission`, `packs/swimfission`
+- `packs/fission_swimfission_s{0,1,2}.json/_strip.png` (160², t=1200): **10 / 10 / 15 clean fissions, max generation 4 / 3 / 5**,
+  ~11 bodies late. Strips show binary fission: a swimmer elongates along its heading, pinches at the waist into two equal
+  daughters, and they swim apart.
+- labkit pack: 43-45 moving tracks per seed (up to 27 body lengths), persistent splits 3-8, labkit max generation 2-3.
+- Mechanism: growth at the front lengthens the body along its axis. Once the length exceeds ~2x the attractant range, the
+  cohesion cannot hold the two ends and the waist thins (the active-droplets rule "body > internal transport length").
+
+## swimevo: heritable alleles in dividing swimmers (fork of swimfission + active-droplets ad5 confined alleles)
+- rho = A + B. The alleles share the body's face flux (split by upwind fraction) and diffuse identically. Growth is cooperative in
+  the allele's OWN density (k^3/(rh^2+k^2)), so the majority allele purifies a mixed body (the analogue of ad5's within-droplet
+  competition). Mutation: rare symmetric patch events (rate m = 0.02/t after t_on, radius 4 px) swap A↔B inside a body.
+  Selection world: g_B = 1.3 g. **Neutral control `swimevo_neutral`: s = 0, identical mutation process.** Start: all A.
+- Screen (128², t=1200, seed 0): B swimmers appear from t≈470. Bodies are almost always pure (A or B); mixed bodies are transient after a
+  mutation. A/B counts 17/0 (t=144) → 9/1 (+5 mixed, t=600) → 6/6 (t=1200).
+- **Packs** `packs/swimevo` (s = 0.3) and `packs/swimevo_neutral` (s = 0), 160², t=1800, seeds 0-2; `packs/swimevo/alleles.png` has all 6 runs.
+  Bodies A/B (mixed) at t=1800: selection 2/6 (2), 1/11 (0), 3/4 (0) → **B 21 vs A 6**; neutral 3/3 (3), 5/2 (1), 6/0 (0) →
+  **B 5 vs A 14**. B also arises later and more rarely in the neutral runs (first B body at t≈1200-1500 against ≈600-1200).
+  The effect is in the right direction in all 3 pairs but the counts are small (~10 bodies per run). seed1 sheet: visible orange sweep from t≈1300.
+  Population declines over the run (~20 → ~10 bodies) in all 6, probably because own-density growth is lower for mixed bodies.
+- **Breeding true** (`fission.py` with composition, `packs/fission_swimevo_s{0,1}.json`, t=1800): 14 / 15 clean fissions, **max generation 7 / 6**.
+  17/17 pure-A parents → two pure-A daughters. Parents with B ≥ 0.77 → daughters 1.00/1.00, 0.98/0.98, 0.91/0.86, 0.88/0.83, but one gave
+  [0.28, 1.00]. Mixed parents (B 0.5-0.6) → mixed daughters (0.38-0.76) that purify later.
+
+## evopursuit: heritable evasion under predation (fork of ecology + swimevo; prey divide with Da_p 2)
+- Prey allele B multiplies the body's evasion chi_x by (1 + e fB), with e = 1, at a 15% growth cost. Symmetric patch mutations. Predators
+  as in ecology.
+- k 0.2 (the ecology value): prey extinct by t≈1000 (small dividing prey are easy to catch). k 0.05: B rises slowly (A14 / B6 / mix6 at
+  t=1200). **k 0.1: complete B sweep**, A/B bodies 29/0 (t=144) → 7/5 (t=600) → 1/28 (t=900) → 0/29 (t=1200). After the sweep both
+  prey and predator totals rise (predator +70%). No predators (pred 0, t=1800): A holds 10-15 bodies and B never exceeds 1 body.
+  Sheet `/tmp ep_k1`: cyan A prey ridden by magenta predators, then orange B crescents take over. Full 3-seed experiment with neutral
+  and no-predator controls running.
+- **Controlled experiment** (160², t=1500, seeds 0-2 each; `packs/evopursuit`, `packs/evopursuit_neutral`, `packs/evopursuit_nopred`;
+  all 9 curves in `packs/evopursuit/alleles_all.png`):
+
+| world | A / B bodies at t=1500 (3 seeds) | prey mass end/start | predator mass end/start | exposure B/A |
+|---|---|---|---|---|
+| evopursuit (e 1, cost 0.15, k 0.1) | 0/29, 0/30, 0/34 | (A -98..-99%; B took over) | +61%, +60%, +67% | 0.72, 0.64, 0.72 (B<A in 86-98% of frames) |
+| evopursuit_neutral (e = cost = 0) | 0/0(+1 mixed), 1/1, 0/1 | -95%, -95%, -96% | -75%, -78%, -83% | 1.22, 1.14, 1.03 |
+| evopursuit_nopred (pred 0) | 7/0, 9/0, 9/0 | -48%, -54%, -49% | — | — |
+
+  **Evolutionary rescue.** In every run the all-A prey are eaten down (≈8 bodies by t≈700). Where the evasion allele helps, mutant B bodies
+  arise around t≈450-700, breed true, sweep, and the prey population recovers to ~30 bodies, carrying ~60% more predator mass than at the start.
+  With the same mutations but no benefit (neutral), prey and predators collapse together. Without predators the costly B never spreads
+  (≤ 1 B body). The mechanism is confirmed by exposure: B allele mass sits in 28-36% less predator density than A in the same frames
+  (neutral: no difference).
+- Cost 0.30 (seed 0, /tmp): B did not spread and the system collapsed like the neutral runs. Rescue needs a cheap enough evasion allele, or luck in
+  the timing of the first B mutant. Seed 1 at cost 0.30: no rescue either (A2 B0, predators -66%). Cost 0.22, seed 0: rescue (A0 B33, predators +41%). The threshold lies between 0.22 and 0.30.
+- dt/2 (`packs/evopursuit_dthalf`, seed 0, dt 0.025, spf 480): same outcome, A1/B33 at t=1500, predators +63%, exposure B/A 0.73
+  (alleles.py prints times doubled for this run because it assumes dt 0.05).
+
+Sprint 2 ended ~18:20 UTC.
+
+# Sprint 3 (final; started 19:04 UTC)
+Committee r2: evopursuit L5[L2]+L4b, L6 Weak, L7 Weak (near-Supported). Main concern: B prey + predators end with MORE prey (1458-1622)
+than predator-free prey (586-769), so the allele may turn the predator into a net benefit rather than an escape. Also: no ledger
+(conversions vs births), fission depth inflated by the max()-through-merge rule.
+- evopursuit gains default-preserving parameters: `B0` (initial B fraction), `qdeath` (predator toxin death on/off), META species
+  {prey: [0,1], predator: [2]}, and a mutation ledger (t, site, body area, body B fraction before/after; `ledger(s)`).
+- `preytrack.py`: prey-only tracker every 2 t with the largest-parent generation rule, ledger by kind, and random deepest-generation B-birth strips.
+- Fixed-allele arms (m = 0), 160², t=1500, seeds 0-2: {all-A, all-B} x {consuming predators k 0.1, immortal non-consuming escorts
+  k 0 + qdeath 0, no predators}. Results via `arms_summary.py`.
+- **Arm results** (prey mass t=1500 / t=150; predator mass ratio; prey bodies t 1000-1500), 3 seeds each:
+  - A + consuming predators: prey 0.15 / 0.12 / 0.11 (collapse), predators 0.32 / 0.23 / 0.20, 4-5 bodies.
+  - B + consuming predators: prey 1.28 / 1.32 / 1.28, predators 1.75 / 1.81 / 1.88, 33-36 bodies.
+  - A + non-consuming immortal escorts: prey 1.62 / 1.41 / 1.22, 21-23 bodies.
+  - B + escorts: prey **2.43 / 2.54 / 2.43**, 35-38 bodies.
+  - prey alone: the all-A arm was skipped to save time; `evopursuit_nopred` (all-A start, B never established) gives 0.46-0.52. B alone: see below.
+  - **The committee's suspicion is right: B + escort > B + predator > prey alone.** Being chased is itself a large benefit, B gains
+    more from it than A, and consumption subtracts from it (fatal for A, tolerable for B). The sweep is exploitation of the chase, not
+    escape from predation.
+- Full arm table: `packs/arms_summary.md`. A alone 0.41 / 0.56 / 0.76, B alone 0.36 / 0.46 / 0.54 (B costs a little without a pursuer).
+  Chase benefit: escort / alone ≈ 2.6x (A), 5.4x (B). Consumption: predator / escort ≈ 0.09 (A), 0.53 (B).
+- Prey speed (`preyspeed.py`, t ≥ 300): alone 0.27; A + escort 0.32; B + escort 0.41; with consuming predators 0.53-0.57 px/t.
+- Toxicity-off probe (pdeath 0, seed 0, t=1000): prey fill the whole box (20x mass, one body), with or without escorts. Uninformative.
+- `preytrack.py` on evopursuit seeds 0-2 (t=1500): clean fissions 6 / 7 / 12; B births by clean fission 10 / 14 / 22 vs A→B conversions 10 / 8 / 10
+  (B→A 7 / 7 / 9); off-kind daughters 1 / 0 / 0; B deaths 55 / 46 / 57; strict max generation 3 / 2 / 4. Random deepest-gen B-birth strips show
+  crescents pinching into two.
+- Showcase: `movies/showcase.mp4` (192², seed 0): A32/B0 at t=200 → A8/B7 at t=750 → A0/B45 at t=1460, which also reproduces the sweep on a larger domain.
+
+Sprint 3 ended ~20:15 UTC.
+- Robustness, evopursuit k ±10% (seed 0, with mutation, t=1500): k 0.09 → A0/B29 (predators +62%); k 0.11 → A0/B26 (slower sweep, predators +12%).
+  Cost +47% (0.22) already rescued in sprint 2; cost 0.30 fails.
+- swimfission with the strict largest-parent rule (`fission.py`, now default strict=1): clean fissions 10 / 10 / 15, **max generation 3 / 3 / 3**
+  (the old max()-rule gave 4 / 3 / 5). dt/2 (seed 0): 12 clean fissions, max generation 3. `packs/fission_strict_swimfission_*`.

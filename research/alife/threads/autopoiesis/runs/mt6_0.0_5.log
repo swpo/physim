@@ -1,0 +1,27 @@
+{"cells": 5, "nmut": 0, "mu": 1.5, "tag": 1.5, "t": 0}
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/scipy/ndimage/_measurements.py:810: RuntimeWarning: invalid value encountered in divide
+  return sum / np.asanyarray(count).astype(np.float64)
+{"cells": 9, "nmut": 11, "mu": 1.487, "tag": 1.54, "t": 2000}
+{"cells": 11, "nmut": 14, "mu": 1.518, "tag": 1.54, "t": 4000}
+{"cells": 11, "nmut": 21, "mu": 1.513, "tag": 1.611, "t": 6000}
+{"cells": 12, "nmut": 31, "mu": 1.51, "tag": 1.62, "t": 8000}
+{"cells": 16, "nmut": 38, "mu": 1.502, "tag": 1.606, "t": 10000}
+{"cells": 15, "nmut": 50, "mu": 1.516, "tag": 1.586, "t": 12000}
+{"cells": 14, "nmut": 59, "mu": 1.495, "tag": 1.559, "t": 14000}
+{"cells": 18, "nmut": 70, "mu": 1.522, "tag": 1.538, "t": 16000}
+{"cells": 17, "nmut": 77, "mu": 1.539, "tag": 1.529, "t": 18000}
+{"cells": 19, "nmut": 81, "mu": 1.511, "tag": 1.539, "t": 20000}
+{"cells": 14, "nmut": 93, "mu": 1.48, "tag": 1.514, "t": 22000}
+{"cells": 16, "nmut": 101, "mu": 1.418, "tag": 1.51, "t": 24000}
+{"cells": 20, "nmut": 113, "mu": 1.395, "tag": 1.586, "t": 26000}
+{"cells": 18, "nmut": 122, "mu": 1.352, "tag": 1.583, "t": 28000}
+{"cells": 21, "nmut": 128, "mu": 1.309, "tag": 1.605, "t": 30000}
+{"cells": 23, "nmut": 133, "mu": 1.296, "tag": 1.586, "t": 32000}
+{"cells": 22, "nmut": 137, "mu": 1.304, "tag": 1.597, "t": 34000}
+{"cells": 23, "nmut": 144, "mu": 1.265, "tag": 1.572, "t": 36000}
+{"cells": 25, "nmut": 151, "mu": 1.259, "tag": 1.514, "t": 38000}
+{"cells": 29, "nmut": 155, "mu": 1.236, "tag": 1.518, "t": 40000}
+{"cells": 32, "nmut": 167, "mu": 1.222, "tag": 1.539, "t": 42000}
+{"cells": 33, "nmut": 176, "mu": 1.23, "tag": 1.519, "t": 44000}
+{"cells": 36, "nmut": 185, "mu": 1.214, "tag": 1.537, "t": 46000}
+{"cells": 44, "nmut": 193, "mu": 1.221, "tag": 1.52, "t": 48000}

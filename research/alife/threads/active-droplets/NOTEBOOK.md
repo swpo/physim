@@ -159,3 +159,67 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
 - Custom renderer from pack frames: fuel = background brightness, body colour = dominant allele, amphiphile =
   white rim. `packs/ad5-evolve/seed0/protocells.{mp4,png}`, `packs/ad7-gated/seed2/protocells.{mp4,png}`.
   ad5: a mutant shows up as half of an ancestral droplet (t=3700) before taking it over.
+
+## ad7 with 4x dilution (ad7-gated-d4 vs ad7n-neutral-d4), 3+3 seeds, `packs/ad7-gated-d4/alleles.png`
+- End [kp0, kp0.5, kp1.5, kp4]: selection [3,0,2,0], [1,4,3,2], [3,3,0,2] (23 droplets); neutral (all kp=0)
+  [2,0,0,0], [2,2,0,0], [2,0,0,2] (10 droplets). Membrane alleles take 16/23 and the population is 2.3x larger
+  than the membrane-less control, which dwindles under dilution. Allele 1 (predicted optimum) 7/23, allele 2 5/23,
+  allele 3 4/23: the optimum is not resolved from this side.
+
+## Fitness landscape and mechanism ablations (single allele, no mutation, seed 0, droplets at t=8000)
+- kp: 0 -> 4, 0.2 -> 7, 0.5 -> 12, 1.0 -> 11, 1.5 -> 10, 2.5 -> 9, 4 -> 6 (`screens/ad7_landscape.png`). Single peak.
+- Ablate catalyst gating (bc=0) at kp=0.5: 3 droplets (benefit gone; only the fuel cost remains).
+- Ablate fuel gating (bu=0) at kp=4: 12 droplets (cost gone; thick = optimum). Both predictions confirmed:
+  the optimum = retention benefit (bc) vs uptake cost (bu) of one gating operator.
+
+## ad7t-thick: two-sided test, ancestor = thick membrane allele 3 (kp=4), dil 0.002
+- End [kp0, kp0.5, kp1.5, kp4]: [1,5,4,2], [0,7,3,1], [2,2,4,5] (36 droplets). Intermediate alleles 25/36,
+  thick ancestor 8/36. `packs/ad7t-thick/seed1/protocells.{mp4,png}`: red thick-shelled small cells are replaced by
+  green/yellow thinner-membrane cells that divide. Neutral control (all kp=4) running: ad7tn-neutral.
+- ad7tn-neutral (all kp=4, same mutation/dilution), 3 seeds: end [0,2,2,2], [2,1,3,2], [2,3,1,1] = 21 droplets.
+  IMPORTANT: mutation churn alone drops the ancestor label to 24% (5/21), about the same as with selection (8/36).
+  The real differences vs neutral: population 36 vs 21, intermediate alleles 69% vs 43%. Claim downgraded to Weak.
+  CORRECTION (sprint 3, from committee r2): neutral intermediates are 2+2+1+3+3+1 = 12/21 = 57%, not 9/21.
+  Per-seed shares overlap (75/91/46% vs 67/50/57%); the intermediate shift is not distinguishable from neutral.
+- Landscape seed 1: kp 0/0.5/1.5/4 -> 5/12/12/6 droplets at t=8000 (broad peak 0.5-1.5).
+
+Sprint 2 ended ~18:22 UTC. Report: `REPORT_r2.md`.
+
+## Committee review r1 (read 18:20, after sprint 2) and quick R-arm check
+- Decision: CONTINUE, consolidate on ad5 with turnover; arms S/N/R; stop ad4 and ad0/ad1 sweeps; pause motility.
+- R arm on ad7 (`linear=1`: CH replaced by linear diffusion of phi at D=M=0.03), seed 0, t=8000: kp=0.5 -> 5 droplets,
+  ~no division (CH: 12); kp=4 -> 6 (CH: 6). `screens/R_ad7_kp*.png`. In ad7 the double well matters for division.
+- Merge note: the lab branch held an older snapshot of 4 files in this thread dir (add/add conflicts); kept this
+  branch's versions.
+
+# Sprint 3 (final; started 19:42 UTC)
+Committee r2: CONTINUE on ad7; L6[L3] medium for the ad7 family; L7[L3] Weak; correct the 9/21 count (done above);
+move the turnover protocol to ad7. Final deliverables: REPORT_r3, FINAL.md, movies/showcase.mp4.
+- ad8-parasite: written at the end of sprint 2 (producer/parasite alleles, fork of ad5), never run. Deleted: the
+  autopoiesis thread already has a parasite threshold and the committee asked to log or delete.
+
+## ad9-ledger (protocol world)
+- ad7 + harmonic face means in gated_div; rung trait carried by the catalyst (fields a and q = a*rung, same transport,
+  so q/a is uniform inside a droplet); in-world tracking every 100 steps logs birth/death/kill/mut/convert/offkind/
+  nucleate; mutation only at birth (p=0.1, one daughter, +-1 rung, whole-droplet relabel); Moran dilution
+  (cap droplets; each excess -> one uniform random droplet erased); identical-event RNG streams per birth index
+  (3 draws per birth) and per kill (1 draw); neutral twin = every rung has the ancestor's kp.
+- KP ladder [0, 0.25, 0.5, 1, 1.5, 2.5, 4]. Scaled down from the committee spec to fit the sprint: 128^2 (not 192^2),
+  t = 30000 (not >= 40000), landscape at t = 6000.
+- Landscape (ad9, single kind, no mutation/dilution, t=6000, 3 seeds; `screens/ad9_landscape.png`, `runs/land_*`):
+  births by kp 0/0.25/0.5/1/1.5/2.5/4 = 0.3/4.7/6.7/6.7/6.3/1.7/1.0 (means of 3 seeds); droplets 4.7/9.0/11.7/11.7/11.3/6.7/6.0.
+  Plateau 0.5-1.5, both ancestors (0.25 and 2.5) fertile but 2.5 only marginally (births 3, 2, 0).
+- Main run attempt 1, cap=12 (kp=2.5 ancestor, seed 0, t=30000): only 9 births, 1 mutation, 1 kill; S and N
+  identical end states (12 droplets all rung 5). At carrying capacity births are fuel-limited, so no turnover.
+  `runs/cap12/`. Aborted the queue; restarted with cap=6 (below carrying capacity: cells keep dividing and every
+  birth forces a Moran kill).
+- cap=6 arms done (`runs/{S,N}_a{1,5}_s*`, `screens/ad9_evo.png`, table in REPORT_r3): births = kills, 0 conversions,
+  0 off-kind daughters, 2-5 mutations per run. Mean kp never enters 0.5-1.5; S within N's envelope. FAIL at this
+  scale; mutation supply is the bottleneck (need ~10x births). The between-droplet term in S is non-zero in 3/6 runs,
+  all toward the optimum.
+- Sprint 3 ended ~21:00 UTC. FINAL.md and movies/showcase.mp4 delivered.
+
+## Committee final review (program ended, decision STOP)
+Corrections recorded in FINAL.md section 7: landscape births at t<=650 are planted disks separating (corrected
+0.33/3.67/5.67/5.67/5.33/0.67/0); the ledgers show fecundity selection (kp=1.5 mutants 1.3-1.6 divisions per 1e4
+droplet-time vs 0.4-0.6 as N labels) that the mean-kp readout missed.

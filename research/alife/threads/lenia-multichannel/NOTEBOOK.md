@@ -322,3 +322,114 @@ mcg_purifying_neutral_seed0.png, mcg_purifying_sel_seed0.png).**
 World defaults are now this setting (MU 0.012, ONE_SIDED). The neutral control is
 worlds/mcg-MIRd-neutral (SEL=0).
 Movie: movies/mcg_selection_vs_neutral_seed0.mp4 (same seed and mutation sequence, side by side).
+
+**H7. Packs.** `packs/mcg-MIRd` and `packs/mcg-MIRd-neutral` (160², 3 seeds, 10000 steps = t 1000,
+no movies). They are deterministic, so they are identical to the H6 runs. The sheets show the g+
+(yellow) overlay spreading and population crashes and recoveries (seed0 t≈436-522). labkit lineage
+counts 0 persistent splits at this frame spacing (spf 20); division is visible on the sheets and in
+the mc-MIRd packs.
+
+**H8. Parameter-localized trait (GENE_MODE "m": g shifts the growth centre m of kernels 0, 3, 6 by
+0.02*g; two-sided mutation, MU .012, 128², seed 0, 8000 steps).** Mean g rises to +0.6-0.64
+(steps 6000-6700), then the population falls to 1 cell at step 8000 (food 0.79). That's one run,
+and +0.6 is within the neutral range (H6 neutral means -0.33 to +0.38, extremes ±0.9). Exploratory
+only; a possible evolutionary decline that needs 3 seeds.
+
+**H9. Trade-off trait (TRADEOFF: g scales yield and maintenance decay by e^g; two-sided mutations,
+MU .012, 160², 10000 steps, 3 seeds vs the H6 neutral runs).** All 3 selection runs settle into a
+static lattice (30-34 cells, food 0.52-0.57), the same tipping as H2. Mean g in the second half is
+0.13/0.23/0.25 vs neutral -0.33/0.38/0.31; the fraction of cells with g>0.3 is ~1/3 in selection
+vs 2/56, 49/86, 51/95 in neutral. No adaptive signal. Faster construction still brings the
+colony to confluence, and then turnover stops.
+
+**H10. Crowding-dependent maintenance (CROWD 0.5, blur 12 px, base decay 0.02, two-sided yield
+gene, 128², 8000 steps, seed 0 only).** Selection: a steady ~19-20 cells from step 2000 on, food
+rising to 0.57, mean g +0.15-0.24, so probably static again. Neutral: cycles, extinct at step 8000.
+Inconclusive with one seed. CROWD is implemented (default 0) for sprint 3.
+
+## Committee review r1 arrived at ~17:45 (queued); re-plan
+
+Decision: CONTINUE, redirected to heredity, with an exact design: discrete alleles,
+kernel-weighted majority inheritance (never averaged), whole-cell mutation at 5-10% of cells per
+1000 t, nothing planted, arms S (yield x1.15) and N (label only), 3 seeds each, 192², t>=2000. Audit
+division inheritance and conversions vs mutations.
+The mcg-MIRd work above (continuous trait, blurred inheritance) predates the review. Its
+continuous g is averaged at contacts, which the committee rules out.
+
+**A1. mca-MIRd (worlds/mca-MIRd, tools/audit_alleles.py).** Allele a in {0,1} per pixel. Pixels
+where built matter exceeds surviving matter take the majority allele (Gaussian 3 px over matter).
+Mutation flips one A0 component (dilated 4 px) to the other allele, at MU_CELL 7.5e-6 per cell per
+step x N_EST 20. Allele 1 builds with yield x(1+EFF).
+Smoke test at 10x the rate (128², 1200 steps): 9 divisions seen, 7 breed true; 3 conversions vs 9
+mutations; 32% of cell samples are impure (<90% one allele). Leakage across touching halos looks
+likely. Real runs: 3 S + 3 N, 192², 20000 steps.
+
+**A2. Committee L7 test results (mca-MIRd, 192², 20000 steps; screens/mca_alleles_S_vs_N.png,
+screen_data/mca).** Spec rate (MU_CELL 7.5e-6, about 3 events per run):
+- S seeds: mutations 2/4/3; allele-1 peak share 0.136/0.175/0.048; all lost (last present at
+  steps 11250/17700/19800).
+- N seeds: same mutation times (paired); peaks 0.136/0.017/0.021; all lost.
+- Divisions true 2932/2933; conversions 1 vs 18 mutations; impure samples 56/42034.
+- Populations persist: minimum 3-7 cells after step 2000, no extinction.
+10x rate (MU_CELL 7.5e-5, seed 0 per arm): 30 mutations each. Allele-1 parent divisions S 2 (1
+true), N 3 (0 true); conversions 2 and 1; mean allele-1 share 0.005 in both arms.
+**Verdict: L7 fails.** Minority alleles don't persist or breed true. The resident allele breeds
+true trivially.
+
+---
+
+# Sprint 3 (final; started 2026-10-24 19:35 UTC)
+
+Committee r2: mca-MIRd L7 is Not tested, because the old operator flipped halo dots or only 30-50%
+of a body. Main task: a branch-point test of a whole-body flip vs the old operator, under S and N.
+
+**B1. Design (tools/branch_states.py, tools/branch_test.py).** N-arm runs of mca-MIRd (EFF 0,
+mutation off, 192², seeds 0 and 1) saved every 200 t. Branch points at t = 400..1400 (steps
+4000..14000), giving 12 states. Territories: A0 cores (>0.3, >=30 px), every matter pixel (M>0.03)
+assigned to its nearest core, kept if >=100 px. Target: the most isolated mature territory.
+- whole: flip the territory dilated 2 px (flipped mass fraction 1.0 by construction);
+- old: the A0>0.3 component + 4 px (0.58 in the test state).
+Then 500 t with mutation off, S (EFF .15) or N. Readouts every 5 t on territories: pure1 (p>=0.9),
+carriers (p>0.5), mixed (0.1<p<0.9), allele-1 mass fraction.
+
+**B2. Branch results (screens/branch_test.png; screen_data/branch_rows.json).**
+- **Whole-body flip:** S > N in 10/12 paired branch points; the other 2 were lost in both arms.
+  S ends at allele-1 mass fraction 0.40-0.72 with 8-22 pure allele-1 cells, from an initial
+  0.012-0.115. N ends at 0, 0, 0, 0, 0.06, 0.08, 0.10, 0.11, 0.18, 0.24, 0.56 (drift: N mean 0.11
+  vs mean start 0.05).
+- Leak proxy (mixed territories / allele-bearing territory samples): 0.22-0.35 in S, 0.23-0.62 in
+  N, from contact zones between colonies of different alleles.
+- **Old operator** (flipped mass 0.50-0.79): lost in 4/6 S and 5/6 N, S > N in 2/6. So the
+  sprint-2 negative came from the operator: partial flips erode, as the committee skeptic found.
+
+**B3. r-two56 on build-from-food + decay (worlds/rf-two56-mu0.01, -mu0.03; 192², 3000 steps,
+3 seeds; screens/rf-two56_food_decay.png).**
+- decay 0.01: shelled cells form from noise exactly as before and persist (7, 3, 2 cells to
+  t=300). Faint food wells appear early, but mean food is 0.99: the maintenance cost is small and
+  diffusion refills.
+- decay 0.03: 1, 1 and 0 cells.
+Formation survives the metabolism. L4c is not shown: no no-food ablation, and consumption is barely
+measurable.
+
+**B4. Division ledger (tools/division_ledger.py; screen_data/ledger; 3 branch points × S/N,
+whole-body flip, 500 t, territories every 5 t).** Allele-1 divisions with both daughters pure
+(p>=0.9): S 28/56, 34/76, 37/79; N 6/13, 17/30, 4/14. That is 47% in both arms. Mixed daughters are
+many (28-44 per S run). Allele-0 divisions are 77-94% pure. Kind changes without division: 0-8 per
+run. **Contact leakage: L7 fails the 90% bar.** Showcase movie: movies/showcase.mp4 (mcfd-MIRd seed 2,
+128², t 0-1400, 2.7 MB). Pack packs/mca-MIRd-branch (labkit v0.2, 3 branch states, S arm, allele
+colour in the sheet): the yellow allele-1 colony spreads from one cell over t=500.
+
+**B5. Per-body confinement, the committee's single allowed retry (worlds/mca-MIRd-body).** New
+matter inside a cell territory takes that territory's mass-majority allele. Ledger rerun on the same
+3 points × S/N.
+First version had no effect: newly built matter sits at pixels with M<=0.03 (halo dots, fronts), which
+were outside the territory mask, so they fell back to the blurred majority. That is where the leak
+is. Fixed: every pixel within 15 px (R) of a core belongs to that core's territory (verified: allele
+fields now differ).
+**Result (screen_data/ledger_body):** allele-1 divisions with both daughters pure: S 62/86, 62/90,
+47/81 = **171/257 (67%)**; N 6/12, 17/27, 4/13 = **27/52 (52%)**. Before confinement: 47% and 47%.
+Kind changes without division: 11 (S) and 2 (N). Confinement helps, but heredity stays well below the
+90% bar. **Stop rule reached: L7 on MIRd+ stopped.** The law: in Lenia, matter at a contact is
+rebuilt from whichever body's kernel field reaches it. A daughter born touching another kind is
+partly built by that neighbour, so labels carried by matter leak at contacts unless bodies are
+separated.

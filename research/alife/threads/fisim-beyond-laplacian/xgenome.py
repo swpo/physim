@@ -22,8 +22,8 @@ exact rest state for any coefficients). Each is an optional genome key:
   "porous": [[i, Dm, p]]            u_i += div( Dm max(z_i,0)^p grad u_i )
                                      (density-dependent diffusion)
   "adv": [c, alpha]                 every field f += -div( f_dev v ), v = -alpha grad x_c
-  "perm": [[f, c, beta]]            diffusion of field f (activator or channel index in the
-                                     stacked state) through channel c is gated:
+  "perm": [[f, c, beta]]            diffusion of field f (act/channel NAME, or index in the
+                                     stacked state) through channel c (NAME or channel index) is gated:
                                      div( D_f exp(-beta max(x_c,0)) grad f )
                                      (a membrane that blocks transport)
 """
@@ -73,8 +73,23 @@ def ring_kernel_hat(N, dx, R, w):
     return sfft.rfft2(k)
 
 
+def _resolve(g):
+    """Allow names in perm/taxis entries: a field is an act or channel name (state index),
+    a gate/gradient channel is a channel name (channel index). Numbers pass through."""
+    na = len(g["acts"])
+    an = {a.get("name"): i for i, a in enumerate(g["acts"]) if a.get("name")}
+    cn = {c.get("name"): j for j, c in enumerate(g["chans"]) if c.get("name")}
+    fld = lambda x: x if not isinstance(x, str) else (an[x] if x in an else na + cn[x])
+    chn = lambda x: x if not isinstance(x, str) else cn[x]
+    act = lambda x: x if not isinstance(x, str) else an[x]
+    perm = [[fld(f), chn(c), b] for f, c, b in g.get("perm", [])]
+    taxis = [[act(i), chn(c), k] for i, c, k in g.get("taxis", [])]
+    return perm, taxis
+
+
 def make_state(g, N, dx=0.5, dt=0.02, noise=0.0, seed=0, F=None):
     na, nc = len(g["acts"]), len(g["chans"])
+    perm, taxis = _resolve(g)
     if F is None:
         F = np.zeros((na + nc, N, N))
         for i, a in enumerate(g["acts"]):
@@ -90,7 +105,7 @@ def make_state(g, N, dx=0.5, dt=0.02, noise=0.0, seed=0, F=None):
     E = np.exp(-expo * dt)
     khat = {c: ring_kernel_hat(N, dx, ch["kern"]["R"], ch["kern"]["w"])
             for c, ch in enumerate(g["chans"]) if "kern" in ch}
-    return dict(g=g, F=np.array(F, float), E=E, Ds=Ds, khat=khat, N=N, dx=dx, dt=dt, na=na, nc=nc,
+    return dict(g=g, F=np.array(F, float), E=E, Ds=Ds, perm=perm, taxis=taxis, khat=khat, N=N, dx=dx, dt=dt, na=na, nc=nc,
                 W=np.asarray(g["W"], float), K=np.asarray(g["K"], float),
                 lam=np.array([a["lam"] for a in g["acts"]])[:, None, None],
                 k1=np.array([a["k1"] for a in g["acts"]])[:, None, None],
@@ -132,13 +147,13 @@ def rhs(S, F):
             M, h = ch["ch"]["M"], ch["ch"]["h"]
             x = X[c]
             R[na + c] += M * _lap(x * (x - h) * (x - 1.0), dx)
-    for (i, c, chi) in g.get("taxis", []):
+    for (i, c, chi) in S["taxis"]:
         gy, gx = _roll_grad(X[c], dx)
         m = np.clip(Z[i], 0, None)
         R[i] -= chi * _upwind_div(m, gy, gx, dx)
     for (i, Dm, p) in g.get("porous", []):
         R[i] += _div_face(U[i], Dm * np.clip(Z[i], 0, None) ** p, dx)
-    for (f, c, beta) in g.get("perm", []):
+    for (f, c, beta) in S["perm"]:
         R[f] += _div_face(F[f], S["Ds"][f] * (np.exp(-beta * np.clip(X[c], 0, None)) - 1.0), dx)
     if g.get("adv"):
         c, alpha = g["adv"]

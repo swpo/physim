@@ -180,3 +180,80 @@ waste is trapped by the cell's own membrane). Neutral control `xcell-evo-neutral
 otherwise identical (same noise, same loss process). Screens (T=600, seed 0) of both: stable
 15-19 cells with turnover. Packs: 3 seeds each, T=800, 160². `kinds.py` now also counts
 deaths by kind and the mean on-fraction over the last quarter.
+
+### Committee review r1 (17:03): CONTINUE, promise 6. Re-plan.
+
+Corrections accepted and verified in code:
+- `muts.cellwaste` gated the waste by channel 3 = **cargo** (`perm [6, 3, bw]`), not by the
+  membrane (channel 2). xcell-turn's "membrane-trapped waste" claim is **retracted**.
+- `mkworld` dressed every id channel driven by the body, so founders started with planted
+  cargo, global, bdep **and waste (q=1.2)**. The xcell-turn die-off was poisoned founders.
+- First split of a planted founder doesn't count: xcell-div / xcell-her have one counted generation.
+- The xcell-evo packs started at 16:50 also planted waste and h. **Stopped, not used.**
+Fixes: `xgenome` perm/taxis accept channel **names** (parity unchanged, 3.8e-14);
+`mkworld --dress` restricts the t=0 dressed poke to v, w (all other channels start at vacuum).
+
+New main experiment (committee design): `evo.py` genome = xcell-her − hdep + membrane-gated waste q
+(named channels). Arms: **S** gated h, marker adds cargo production W[c,h]=wch;
+**N** gated h, neutral; **L** no gate on h, Dh lowered. Variation: no planted h; Poisson
+cell-scale h kicks (σ 1.5, amp 2.5) anywhere in the box (`mkevo2.sh`, KICK_RATE per time unit).
+
+**E2 screens for the committee design (17:05-17:21).**
+- `screen-evo-N-T1000` (N arm, kicks 0.02, unplanted waste kw=0.15): 12 cells, 2 splits, 0 deaths,
+  static after t≈300. **Without planted channels there is no turnover.** Kicks work: 4 off→on
+  gains in 1000 t (≈35% of ~11 lineages; too high), all held (on 0→4).
+- Heredity window, L arm Dh=0.02, kb 0.225/0.25/0.275 (T=400, half the cells h-poked): marker lost
+  in every cell by t=100 at all three kb (identical rows, because h does not feed back on cells).
+  The rest of the grid was stopped for CPU.
+- Slow food (glob τ=200, K=1.5 / τ=300, K=1.0; T=1000): grows to 20-21 cells and freezes. No
+  overshoot, no deaths. Negative: these spot-cells essentially never die on their own.
+
+**E3 decision (17:22):** turnover is IMPOSED by chemostat-style dilution (Poisson disk erasure,
+radius 5, rate 0.1), identical in all arms; kicks 0.005; selection wch=0.15 (S) vs 0 (N).
+`xcell-evo2-S`, `xcell-evo2-N`: 3 seeds each, T=2000, 128². The L arm is not run this sprint (CPU).
+
+**E4 result: xcell-evo2 S vs N (3 seeds each, T=2000, 128², imposed dilution).** `packs/xcell-evo2-{S,N}/seed*/kinds.json`.
+- Turnover: splits and deaths in most 200-t windows after t=400, but slow: 9-13 splits and
+  6-11 deaths per run among ~10-12 cells (roughly 1 division per cell per 1000 t).
+- Variation: on-kinds arise in-run from kicks: gains S 3/1/2, N 1/2/0. An arisen on-cell
+  persists for up to ~1200 t (S seed 0, sheet t=790-2000, white cell bottom left).
+- Heredity in-run: **0 on→on+on divisions in all 6 runs**; 1 on→on+off in S0, S1 and N1.
+- Selection: final on-cells S 1/0/2 vs N 1/1/0; on-fraction over the last quarter S
+  0.09/0.00/0.11 vs N 0.09/0.04/0.00. **No difference.** Underpowered: with ~1 division per
+  cell per 1000 t, an arisen on-cell gets about one chance to divide before dilution removes it.
+- The xcell-evo2 genome does not reach the division rate of xcell-her (its 11-14 splits came
+  from a planted, synchronous founder burst).
+
+## Sprint 3 (start 2026-10-24 18:42 UTC) — final sprint
+
+Committee r2: CONTINUE narrowed (promise 5). L7 contradicted: arisen marks bred true 0/3.
+Main experiment = heredity assay of kick-arisen markers, gated vs resolved ungated arms, stop rule.
+
+**H1 assay setup (`assay.py`, `assay_an.py`).** Genome xcell-evo2-N (`evo.genome`). First try
+followed the committee's "dilution ~1.0": kill 0.5 per t + kick at t=100. That gave only 6-7
+divisions per run, none from an on-parent (a cell is erased every ~40 t, faster than it
+divides). Switched to the committee's "fewer founders" option: 4 founders in an empty 128² box
+(L=64), kick half of them at t=20 (before the first fission), no dilution, T=300. Arms
+(same IC, seeds and event RNG): gated (β_h=5, Dh=0.3); ungated Dh 0.05 and 0.1 (dx 0.5).
+Kicks: polar (σ 1.5 at a random interior point, ≤0.6 r from the centroid) and cell-filling
+(σ 3 at the centroid; this is the one allowed fix). Frames every 2 t (u, h deviations), in
+`assay/*.npz`.
+
+**H2 result.** `screens/assay_hcrops_s0.png` (absolute h scale 0..2.2). In every arm the kicked
+founder fills with h, elongates and pinches at t≈50-60.
+- Gated: the h domain collapses into ONE daughter as a small dot; that dot survives and
+  re-fills its cell (t=120-300); the sister is h-off. Arisen marks split asymmetrically.
+- Ungated (Dh 0.05, 0.1): h vanishes from both daughters by t≈90-120.
+- Cell-filling kick = polar kick in outcome. The loss happens at the pinch, not at the kick.
+A split-frame classifier (cell max h > 1.5 right at the split) scores these as "on+on" (2 per
+run in every arm) followed by on→off "conversions" (3-4 per run). It is fooled because both
+halves still contain h at the frame of the pinch. Per-time on-cell counts are the honest
+measure (`assay/summary_oncells.json`).
+**Stop rule triggered: gated marks still split after the one fix. L7 dropped.** The gate does
+retain a marker in one lineage where the ungated arms lose it completely, which is a
+retention effect, not heredity.
+The resolved Dh=0.02 at dx=0.25 arm was not run (8x cost; the stop rule had already fired).
+
+**H3 resolved ungated arm** (Dh 0.02, dx=0.25, dt=0.01, cell-filling kick, seeds 0-1; 931 s per
+run): on-cells [3,3,0,0,0,0] and [2,2,0,0,0,0] at t=40/60/90/120/200/300. The marker is lost by
+t=90 in both seeds, as at Dh 0.05/0.1 with dx=0.5. Ungated loss is not grid pinning.
