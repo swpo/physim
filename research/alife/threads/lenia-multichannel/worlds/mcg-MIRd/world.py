@@ -154,7 +154,7 @@ FOOD = {'mode': 'conserve', 'Y': 2, 'rho': 0.02, 'D': 2, 'decay': 0.03}
 
 
 SEL = 1.0         # selection strength on yield; 0 = neutral control
-MU = 0.004        # mutation events per step
+MU = 0.012        # mutation events per step
 DELTA = 0.5       # mutation size (std of the trait jump)
 MUT_R = 8         # mutation disk radius (px), about a cell core
 SIG_INH = 3.0     # inheritance blur (px)
@@ -162,6 +162,7 @@ G_CLIP = 2.0
 GENE_MODE = "yield"   # "yield": g sets food yield; "m": g shifts the growth centre m of kernels GENE_K
 GENE_K = [0, 3, 6]    # kernels whose m is shifted by ALPHA*g in mode "m"
 ALPHA = 0.01
+ONE_SIDED = True      # yield = Y*exp(SEL*min(g, 0)): wild type optimal, mutations can only hurt (False: two-sided)
 G_INIT = [0.0]        # trait of each planted creature (competition assays plant several kinds)
 
 
@@ -206,7 +207,7 @@ def step(s):
         G = L.growth(A)
     inc = np.clip(np.minimum(L.dt * G, 1 - A), 0, None)
     dec = np.clip(L.dt * G, None, 0) - L.dt * FOOD.get("decay", 0.0) * A
-    Yeff = FOOD["Y"] * np.exp(SEL * np.clip(gl, -G_CLIP, G_CLIP)) if GENE_MODE == "yield" else FOOD["Y"]
+    Yeff = FOOD["Y"] * np.exp(SEL * np.clip(gl, -G_CLIP, 0.0 if ONE_SIDED else G_CLIP)) if GENE_MODE == "yield" else FOOD["Y"]
     need = inc.sum(0) / Yeff
     scale = np.minimum(1, F / np.maximum(need, 1e-12))
     built = inc * scale

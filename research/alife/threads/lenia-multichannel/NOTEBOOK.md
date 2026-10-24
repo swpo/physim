@@ -282,3 +282,43 @@ MUT_R 8; screens/mcg_yield_selection_vs_neutral.png).**
   tips the whole ecology into dormancy, which then stops turnover and selection.
 - No cell-level selection demonstrated. Next: stronger selection, higher base decay to keep
   turnover, and a two-kind competition assay.
+
+**H3. Competition assay, decay 0.04 (two planted kinds g=0 and g=0.5, MU=0, SEL=3 vs 0, 128²,
+10000 steps, 3 seeds each).** Kinds breed true: traits stay exactly 0 and 0.5. Neutral (yield
+Y=2): extinct by step 3332 in 3/3 (decay 0.04 is too costly for the baseline). Selection:
+both kinds form a mixed, static lattice by step ~1700, and the kind frequencies freeze at their
+colonization values (B fraction 0.39/0.60/0.67). **Once confluent, Lenia cells stop turning
+over, so selection stops.** Selection needs the cycling regime (ongoing death and recolonization).
+
+**H4. Competition assay in the cycling regime (decay 0.03; kinds g=0 and g=-0.3, MU=0, 128², 12000
+steps; screens/mcg_competition_cycling.png, mcg_competition_sel_seed0.png).**
+- Selection (SEL=1, so kind A has e^-0.3 = 74% yield): A's mass fraction falls 0.50 -> 0.07-0.08
+  by step 2000 and to 0.01-0.05 afterwards, in 3/3 seeds. The population keeps cycling (2-14 cells).
+  The residual 0.01-0.05 is probably intermediate-g matter at cell contacts.
+- Neutral (SEL=0): A's fraction drifts: 0.50 -> 0.04 (seed 0), -> 0.1-0.2 (seed 1), -> **0.92**
+  (seed 2, A takes over by drift).
+- Neutral seeds 1 and 2 go extinct at step ~12000 (whole population, the known 128² fragility).
+**Kinds breed true through division, and differential persistence follows the yield difference only
+when it matters (selection vs neutral, 3+3 seeds).** The variation here is planted, not arising.
+
+**H5. Purifying selection with mutations arising (ONE_SIDED: yield = Y*exp(SEL*min(g,0)), so
+positive mutations are neutral and negative ones harmful; MU .004, 160², 10000 steps, 3+3).**
+Cells with g < -0.2 in the second half: selection 1/75, 1/74, 0/92 vs neutral 0/56, 1/86, 13/95.
+Mean g is the same in both, as designed. The direction fits purging, but 13 of the 14 come from
+one neutral seed, so this is inconclusive. Rerunning at MU 0.012.
+
+**H6. Purifying selection at MU 0.012 (160², 10000 steps, 3+3; screens/mcg_purifying_mu012.png,
+mcg_purifying_neutral_seed0.png, mcg_purifying_sel_seed0.png).**
+- Cells with g < -0.2 in the second half: **selection 0/86, 1/73, 0/97 vs neutral 29/56, 0/86, 5/95.**
+- Mean g in the second half: selection +0.46/+0.40/+0.51 vs neutral -0.33/+0.38/+0.31.
+- Neutral seed 0: a blue low-g lineage takes over by drift (mean g reaches -0.9 at step 9000).
+  Selection never allows this.
+- Under selection the mean ratchets upward: harmful variants are purged, while positive ones are
+  neutral and drift freely.
+- Pooled with H5 (MU .004): harmful cells 3/497 (selection) vs 48/474 (neutral). Seeds with ≥5
+  harmful cells: 0/6 vs 3/6. The ecology keeps cycling in all 12 runs (no dormant lattice, because
+  positive g carries no benefit).
+
+World defaults are now this setting (MU 0.012, ONE_SIDED). The neutral control is
+worlds/mcg-MIRd-neutral (SEL=0).
+Movie: movies/mcg_selection_vs_neutral_seed0.mp4 (same seed and mutation sequence, side by side).
