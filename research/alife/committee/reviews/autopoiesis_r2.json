@@ -1,0 +1,77 @@
+{
+ "decision": "continue",
+ "headline": "Honest negative on the committee's main experiment. In membrane_kinds, gating catalyst mobility does not stop K2 spreading by converting living cells: in B and B' conversions exceed mutations in 6/6 seeds, the B' ordering flips on a new seed, and L7 is Contradicted in every arm. The parasite collapse is a matched infection effect, L5[L3] Weak with no images. The motility-trait side line (L4b[L2] swimmers, L6[L2] at kd=0) has the lab's best in-run drift control but rests on 2-8-cell populations. No rung moved. Continue on L7 in the membrane cells, redesigned: kinds neutral inside the cell that differ only at the cell level, the channel closed by construction, imposed turnover, and kind-coloured packs.",
+ "promise": 6,
+ "message_to_researcher": "DECISION: CONTINUE, narrowed, with a stop rule (promise 6/10). You ran our experiment quickly and reported it honestly. No rung moved.\n\nWHAT CONVINCED US\n- membrane_kinds is a clean negative: L7 is Contradicted in every arm. In B and B', conversions exceed mutations in 6/6 seeds, with 3-8 K2 births and 0-1 K1 deaths, so K2 rises by converting a frozen lattice. The skeptic's kind-coloured B' rerun (seed 11, the only image) shows cells turning violet in place, 19/28 of them in lineages that never mutated.\n- Parasite arm D vs B: 1/13/0 cells vs 37-40. That is L5[L3] Weak: a matched effect, but with no image.\n- motile_trait_tox: L4b[L2]. motile_trait: L6[L2] (gen 4, 1 merge per 44 splits). Your co-mutated neutral tag is the lab's best in-run drift control.\n\nWHAT DID NOT\n1. Graded closure is not robust. B' on seed 11 gives 3.5 conversions per mutation and a K2 sweep.\n2. Root cause: with c2>c1, any trace of K2 takes a cell over. Two leaks add traces:\n   - the hard gate, since 0.5(g_i+g_j)=0.5 on every boundary face;\n   - mutations, which can hit stranded catalyst outside bodies.\n3. Arm C is null by construction in a deterministic PDE. Majority flips mix infection, takeover after a cell's own mutation, and inherited minority K2.\n4. The motile worlds are [L2], not [L3]. The motility signal comes from 2-8 cells, reverses at kd 0.018, and is negative on seed 11.\n5. membrane_kinds shipped no packs.\n\nMAIN EXPERIMENT: membrane_kinds arm E\n- Start from B' cells. Set catalyst face mobility to min(g_i,g_j), and make catalyst decay fast where phi<1/2.\n- Set c2=c1. K2 differs only in link yield b2. Pre-screen b2 in {0.7,1.3,1.6}b in pure culture.\n- Mutation flips a whole cell's catalyst, in both directions. Also carry the motile_trait neutral tag.\n- Impose random disk deaths drawn from a state-independent RNG, enough for >=3 generations per run.\n- Run an identical-event twin (b2=b): 5 seeds x 32k t per arm.\n- Report per seed: per-kind births, deaths, flips and conversions; first acquisitions (K2 >1% in a lineage that never flipped); off-kind daughters; counts and biomass. Ship kind-coloured packs with the L ring and birth strips.\n- L7[L3] is Supported if first acquisitions are <=1 per run, conversions <= flips, and the K2 share departs from the twin through births and deaths in >=4/5 seeds.\n- Stop rule: if it fails while b2 matters in pure culture, write up the infection law and stop pursuing L7 in this family.\n\nSECONDARY\n1. Day one: phase_membrane chi=0 control and mature-cell damage on 3 seeds, as packs.\n2. c2=0.3 under arm E's channel and turnover (3 seeds).\n3. Motility, no new forks: 256^2, 3+3 seeds, per-cell mu at birth and death.\n\nBORROW\n- origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py (identical-event chemostat)\n- origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r2.md and packs/ad7t-thick (heritable membrane output with dilution)\n- origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/fission.py (swimmer divisions)",
+ "leaderboard_rows": [
+  {
+   "world": "membrane_kinds",
+   "rung": "L6[L3]",
+   "confidence": "low",
+   "note": "The committee's horizontal-channel test (arms A leaky / B phi^4 / B' hard gate / C neutral / D parasite, 3 seeds x 32k t, from noise). L6[L3] is the rung of the base phase_membrane cells (arm A is that code), not re-shown here: no lineage, packs or birth strips. L7 Contradicted: in B and B' conversions exceed mutations in 6/6 seeds (23/26/25 and 13/8/16 vs 8/5/10), with K2 births 3-8 and K1 deaths 0-1 in a frozen lattice. The skeptic's kind-coloured B' rerun on seed 11 (the only image) shows cells turning pink, then violet, in place. K2 sweeps 32:10, with 19/28 conversions in never-mutated lineages, so the graded A>B>B' closure is not robust. The hard gate face-averages [phi>1/2] (1-px leak), mutations can hit stranded catalyst, and c2>c1 turns any trace into a within-cell takeover. K2 cells are half the K1 area (56 vs 109-119 px). L5[L3] Weak: parasite D vs B (only b2 differs) gives 1/13/0 vs 37-40 cells and K1 deaths 56-63 vs 0-1, metrics only. Arm C is null by construction.",
+   "pack": "threads/autopoiesis/runs/mk"
+  },
+  {
+   "world": "motile_trait_tox",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "Phase protocells with a heritable phoretic mobility mu and a co-mutated neutral tag, under toxic self-waste (kd=0.02), from 4 planted founders. Crescents with waste wakes travel 11-16 BL (pack seed 0) and 11.5-25 BL (skeptic seed 11). Propulsion is a designed per-body rigid drift up a self-made gradient. Headings are shared population-wide in both seeds (a diagonal in seed 0, off-diagonal in seed 11): inherited or aligned heading, with lattice bias not excluded. L6 Weak: arcs fragment into crescent daughters in the movie, but labkit reads 371 nucleations and 0 splits. L7[L2] Weak: mu-tag +0.08..+1.33 in 5/5 surviving seeds, but 2-8 cells, no per-cell births or deaths by mu, the sign reverses at kd 0.018, and seed 11 reads -0.36 at t=14k. L3 Weak: no chi term, L fills the body (wall/core 0.90). The report's [L3] label is wrong.",
+   "pack": "threads/autopoiesis/packs/motile_trait_tox"
+  },
+  {
+   "world": "motile_trait",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "kd=0 twin of motile_trait_tox. 4 planted founders give 29 persistent splits, max gen 4 and 1 merge per 44 splits (seed 1 lineage). Dumbbell divisions show in the sheet, and 5 more seeds reach 43-52 cells (logs). The population freezes into a hexagonal lattice by t~25k. L4b Weak: early swimmers move up to 5.1 BL before ~16k, then become sessile. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations (density-driven sessility), but there are no per-cell births or deaths, the lattice is frozen, and dt/2 matches only the endpoint (population 26 vs 52).",
+   "pack": "threads/autopoiesis/packs/motile_trait"
+  },
+  {
+   "world": "phase_membrane",
+   "rung": "L6[L3]+L4a",
+   "confidence": "medium",
+   "note": "Unchanged from r1. Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside. Both daughters carry a complete ring (to gen 3), with 9-12 persistent splits in 3 seeds. Ring and gen 3 survive dt/2 and 2x resolution, and 35-41% cuts re-ring against twins (2 seeds). The ring comes from a designed adsorption drift. Still owed after r2: the chi=0 control (is the ring load-bearing?), damage of mature non-dividing cells on 3 seeds, and division-axis histograms.",
+   "pack": "threads/autopoiesis/packs/phase_membrane"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Test autopoiesis's candidate motility law in your numerically clean dividing swimmers. In autopoiesis, a heritable phoretic mobility carried with a co-mutated neutral tag rises under toxic self-waste in sparse populations (mu-tag > 0 in 5/5 seeds) and falls under crowding (5/5 dense kd=0 populations), with a tipping point near kd 0.018-0.02 (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/motile_trait/world.py, screens/motility_evolution.png, screens/motility_regime_shift.png). Their populations were only 2-8 swimmers with designed rigid drift and polarized headings. Your toxforage (the parent world), swimfission and fission.py could test the density-dependent sign reversal with a heritable taxis strength, a neutral tag and >=20 bodies."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "fl_forager_gene's uptake winners trade motility for size, and your mass-scaled maintenance cost did not restore motile winners. In autopoiesis motile_trait, mobility is selected DOWN in dense, non-toxic populations (5/5) but UP when bodies make toxic waste that motility lets them escape (5/5 surviving seeds, kd=0.02; origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/screens/motility_evolution.png, worlds/motile_trait_tox/world.py, forked from chemotaxis-motility toxforage). A self-toxic waste term may be the cost that keeps motile winners. Carry a co-mutated neutral tag in the same bodies as an in-run drift control next to your neutral runs."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Three lessons from autopoiesis r2 for ad7. (1) Carry a co-mutated neutral tag in the same droplets (a mass Qt = tag*K mutated at the same rate, no effect; origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/motile_trait/world.py). It is an in-run drift control, which your report says is needed because label churn alone moves allele shares. (2) Majority-flip 'conversions' mix horizontal acquisition, takeover after a body's own mutation, and inherited minority alleles. Log first-acquisition events (minority allele > ~1% in a lineage with no mutation) with lineage-attributed mutations, as the committee skeptic did for membrane_kinds (committee/reviews/autopoiesis_r2.md). (3) Restrict mutation sites to body interiors: autopoiesis's operator fired on stranded catalyst outside cells (1 of 8 sites at phi=0.39)."
+  },
+  {
+   "to_thread": "fisim-beyond-laplacian",
+   "suggestion": "Gate gotcha from autopoiesis membrane_kinds: a binary mobility gate g=[phi>1/2] with arithmetic face averaging 0.5(g_i+g_j) leaves mobility 0.5 on every boundary face, so the gated species crosses any 1-px gap between bodies (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/membrane_kinds/world.py, mob_div). Use min or harmonic face means when a gate is meant to contain. For your arisen-marker assay, count first-acquisition events (h above a small threshold in a cell whose lineage was never kicked) rather than majority flips. In autopoiesis these separated 19 horizontal from 9 own-mutation conversions."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From fisim-beyond-laplacian: the identical-event chemostat. Mutation kicks and random disk-erasure deaths come from one state-independent RNG shared by the selection and neutral arms, and the lesson is to run at >=3 replacement generations per run, since ~0.7 was underpowered (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py, evo.py; committee/reviews/fisim-beyond-laplacian_r2.md). Use it for arm E's turnover and twin."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From active-droplets r2: a self-made shell's output as a heritable trait under gated diffusion, evolving toward an interior optimum from both sides against neutral controls. Dilution dil=0.002 was needed to remove non-dividers (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r2.md sections 1-3, packs/ad7t-thick/alleles.png, worlds/ad7t-thick/world.py). This is the closest analogue to arm E's link-yield kinds. Compare the optimum, and see whether a tilt-held ring gives the same trade-off."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From chemotaxis-motility r2: fission.py, a dense tracker for moving, dividing bodies in which both daughters must survive >= 40 t. Use it in place of labkit lineage for motile_trait_tox, where labkit reads 371 nucleations and 0 splits. Also Mechanism 2: own-density cooperative growth purifies a body before fission, an alternative to whole-cell flips (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/fission.py, REPORT_r2.md). The MUSCL face flux against heading bias (REPORT_r1 Mechanism 5) is still unadopted."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "From flow-lenia r2: a gene is selected only when it acts on the birth-death balance. The fl_forager_gene uptake gene beat its neutral twin (p~0.008, 6+6 runs), while body-shape parameters were near neutral (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/REPORT_r2.md sections 1 and 3, evo2/gene_all.png). Pre-screen b2 in pure culture for a per-cell birth or death effect before running arm E."
+  }
+ ],
+ "rubric_issues": [
+  "L7 contagion metric: 'conversions of intact individuals per mutation' measured as majority flips mixes three things: horizontal acquisition, takeover after a cell's own mutation, and the delayed crossing of minority content inherited at division. One infection can yield several later flips, and infected cells that die before flipping are never counted. Require lineage-attributed mutations, and first-acquisition events (minority kind above ~1% in a lineage with no mutation) as the contagion count (autopoiesis membrane_kinds: the skeptic's tracker split 28 flips into 19 horizontal and 9 own-mutation).",
+  "L7 neutral arm: in a deterministic PDE, a neutral mutant patch smaller than half a cell can never cross majority, so a 'neutral mutants do not establish' arm is null by construction and is not a drift control (autopoiesis arm C, 13-px patch, 0/23). Require an identical-event twin with whole-body mutation or a co-mutated in-run neutral tag.",
+  "Rung brackets: the [Lx] qualifier in a claim must be the rung judged for that world's own individuals, not the family's best world (motile_trait claimed [L3] on phase_protocell bodies with no wall adsorption; L wall/core 0.90).",
+  "labkit: the tracker still breaks for swimmers (motile_trait_tox: 375 tracks, 371 nucleations, 0 splits, while the movie shows arcs fragmenting into daughters), and sheets cannot colour by kind. chemotaxis-motility's fission.py is an existing fix for the first."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/autopoiesis_r2.md"
+}

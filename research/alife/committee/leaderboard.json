@@ -43,10 +43,10 @@
   "world": "phase_membrane",
   "rung": "L6[L3]+L4a",
   "confidence": "medium",
-  "note": "Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside (three judges' seed-11 profiles). Two judges traced divisions (to gen 3) in which both daughters carry a complete ring. 9-12 persistent splits (gen 2-3) in 3 seeds. dt/2 and 2x resolution keep the ring and gen 3. 35-41% cuts re-ring within 100-150 t against twins (2 seeds). Starvation fission with high fusion and mortality. The ring comes from a designed adsorption drift. A chi=0 control (load-bearing ring?) is pending.",
+  "note": "Unchanged from r1. Forms from noise. Links adsorbed at the wall make an L ring 2.1-2.5x the core and about 0 outside. Both daughters carry a complete ring (to gen 3), with 9-12 persistent splits in 3 seeds. Ring and gen 3 survive dt/2 and 2x resolution, and 35-41% cuts re-ring against twins (2 seeds). The ring comes from a designed adsorption drift. Still owed after r2: the chi=0 control (is the ring load-bearing?), damage of mature non-dividing cells on 3 seeds, and division-axis histograms.",
   "pack": "threads/autopoiesis/packs/phase_membrane",
   "thread": "autopoiesis",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "autopoiesis/phase_swimdiv": {
@@ -91,32 +91,32 @@
  },
  "fisim-beyond-laplacian/xcell-turn": {
   "world": "xcell-turn",
-  "rung": "L6[L3]",
-  "confidence": "medium",
-  "note": "1-2 surviving planted founders re-populate the box through gen 5/6/4 (3 seeds); two judges' seed-11 reruns reach gen 4. But the waste is gated by cargo through an index bug (perm [6,3,5.0]), and the membrane-gated version goes extinct by t~32 (2 reruns). Founders start poisoned (q=1.2 planted). No deaths after t~30 and the lattice is static after t~350.",
+  "rung": "L3",
+  "confidence": "low",
+  "note": "RETRACTED by the researcher in r2, and withdrawn as the family's L6 evidence. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors, not turnover. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn",
   "thread": "fisim-beyond-laplacian",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "fisim-beyond-laplacian/xcell-a": {
   "world": "xcell-a",
   "rung": "L4b[L3]",
   "confidence": "medium",
-  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside) that holds a fast D=4 cargo: centre 1.24 vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. L4a Weak: one cell, 29.6% erased. Biologist dissent: L3 Weak.",
+  "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of the m field is a trailing wake. L4a Weak: one cell, 29.6% erased. Unchanged in sprint 2. Biologist dissent from r1: L3 Weak.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-a",
   "thread": "fisim-beyond-laplacian",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "fisim-beyond-laplacian/xcell-her": {
   "world": "xcell-her",
   "rung": "L3",
   "confidence": "high",
-  "note": "Two planted kinds breed true: 46 divisions (3 seeds plus a seed-11 rerun), 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage (3 judges, seeds 0 and 11) while body and division are unchanged. kb -10% breaks it. No matched Laplacian control yet. L6 Weak (max gen 2/2/1 from planted founders, saturates by t~200). L7 Contradicted (planted kinds, no variation).",
+  "note": "Two planted kinds breed true: 46 divisions in r1, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. Sprint-2 arm L (ungated, Dh=0.02) loses all markers by t~100, reproduced by the skeptic on seed 11 at 64\u00b2. The ungated fronts are ~1 px wide and blocky, though, so this is not yet a matched Laplacian control. Kick-arisen markers in xcell-evo2 bred true in 0 of 3 divisions, so heredity is shown only for planted, cell-filling domains. L6 Weak (one counted generation). L7 Contradicted.",
   "pack": "threads/fisim-beyond-laplacian/packs/xcell-her",
   "thread": "fisim-beyond-laplacian",
-  "round": 1,
+  "round": 2,
   "decision": "continue"
  },
  "fisim-beyond-laplacian/xcell-div": {
@@ -297,6 +297,76 @@
   "pack": "threads/active-droplets/packs/ad4-protocell",
   "thread": "active-droplets",
   "round": 1,
+  "decision": "continue"
+ },
+ "fisim-beyond-laplacian/xcell-evo2-S": {
+  "world": "xcell-evo2-S",
+  "rung": "L6[L3]",
+  "confidence": "low",
+  "note": "Selection experiment, arms S and N: identical-event twins (kicks and dilution from one shared RNG), 3+3 seeds, T=2000. L6: S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4. The biologist's merge-aware movie tracker and birth crops confirm clean rod->dumbbell->two ringed daughters in the S0 chain (t=450/510/570/960). Only 2/6 runs reach gen>=3 by labkit, the bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. L7 Contradicted: on->on+on 0 in 6 runs, and all 3 on-divisions (2 independent kicks) were on->on+off, by polar segregation of a fresh kick. Final on-cells S 1/0/2 vs N 1/1/0. About 0.7 dilution generations per run, so the test is underpowered. L3 rests on the band ring plus r1 gate ablations, which were not repeated in evo2.",
+  "pack": "threads/fisim-beyond-laplacian/packs/xcell-evo2-S",
+  "thread": "fisim-beyond-laplacian",
+  "round": 2,
+  "decision": "continue"
+ },
+ "autopoiesis/membrane_kinds": {
+  "world": "membrane_kinds",
+  "rung": "L6[L3]",
+  "confidence": "low",
+  "note": "The committee's horizontal-channel test (arms A leaky / B phi^4 / B' hard gate / C neutral / D parasite, 3 seeds x 32k t, from noise). L6[L3] is the rung of the base phase_membrane cells (arm A is that code), not re-shown here: no lineage, packs or birth strips. L7 Contradicted: in B and B' conversions exceed mutations in 6/6 seeds (23/26/25 and 13/8/16 vs 8/5/10), with K2 births 3-8 and K1 deaths 0-1 in a frozen lattice. The skeptic's kind-coloured B' rerun on seed 11 (the only image) shows cells turning pink, then violet, in place. K2 sweeps 32:10, with 19/28 conversions in never-mutated lineages, so the graded A>B>B' closure is not robust. The hard gate face-averages [phi>1/2] (1-px leak), mutations can hit stranded catalyst, and c2>c1 turns any trace into a within-cell takeover. K2 cells are half the K1 area (56 vs 109-119 px). L5[L3] Weak: parasite D vs B (only b2 differs) gives 1/13/0 vs 37-40 cells and K1 deaths 56-63 vs 0-1, metrics only. Arm C is null by construction.",
+  "pack": "threads/autopoiesis/runs/mk",
+  "thread": "autopoiesis",
+  "round": 2,
+  "decision": "continue"
+ },
+ "autopoiesis/motile_trait_tox": {
+  "world": "motile_trait_tox",
+  "rung": "L4b[L2]",
+  "confidence": "medium",
+  "note": "Phase protocells with a heritable phoretic mobility mu and a co-mutated neutral tag, under toxic self-waste (kd=0.02), from 4 planted founders. Crescents with waste wakes travel 11-16 BL (pack seed 0) and 11.5-25 BL (skeptic seed 11). Propulsion is a designed per-body rigid drift up a self-made gradient. Headings are shared population-wide in both seeds (a diagonal in seed 0, off-diagonal in seed 11): inherited or aligned heading, with lattice bias not excluded. L6 Weak: arcs fragment into crescent daughters in the movie, but labkit reads 371 nucleations and 0 splits. L7[L2] Weak: mu-tag +0.08..+1.33 in 5/5 surviving seeds, but 2-8 cells, no per-cell births or deaths by mu, the sign reverses at kd 0.018, and seed 11 reads -0.36 at t=14k. L3 Weak: no chi term, L fills the body (wall/core 0.90). The report's [L3] label is wrong.",
+  "pack": "threads/autopoiesis/packs/motile_trait_tox",
+  "thread": "autopoiesis",
+  "round": 2,
+  "decision": "continue"
+ },
+ "autopoiesis/motile_trait": {
+  "world": "motile_trait",
+  "rung": "L6[L2]",
+  "confidence": "medium",
+  "note": "kd=0 twin of motile_trait_tox. 4 planted founders give 29 persistent splits, max gen 4 and 1 merge per 44 splits (seed 1 lineage). Dumbbell divisions show in the sheet, and 5 more seeds reach 43-52 cells (logs). The population freezes into a hexagonal lattice by t~25k. L4b Weak: early swimmers move up to 5.1 BL before ~16k, then become sessile. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations (density-driven sessility), but there are no per-cell births or deaths, the lattice is frozen, and dt/2 matches only the endpoint (population 26 vs 52).",
+  "pack": "threads/autopoiesis/packs/motile_trait",
+  "thread": "autopoiesis",
+  "round": 2,
+  "decision": "continue"
+ },
+ "chemotaxis-motility/evopursuit": {
+  "world": "evopursuit",
+  "rung": "L5[L2]+L4b",
+  "confidence": "medium",
+  "note": "Prey are motile crescents that divide, each with a predator riding in its concave rear. A behavioural evasion allele B (stronger flight from the predator signal, 15% growth cost) arises by mutation and sweeps: A/B bodies at t=1500 are 0/29, 0/30, 0/34. It does not sweep in the ancestor-matched neutral arm (e=cost=0: 0-1 B, prey -95%) or the predator-free arm (0 B), each over 3 seeds. dt/2 gives A1/B33, and the skeptic's seed-11 rerun at 128\u00b2 reproduces. L5 Supported for A prey (matched, negative). For B prey the sign flips: at t=1500 B prey with predators total 1458-1622 against 586-769 for predator-free prey (start 1283), so 'rescue from predation' is withdrawn pending fixed-allele escort arms. L6 Weak in this world: labkit fuses species (0 splits, 796-1076 nucleations), and prey births are inferred, not tracked. L7 Weak (near-Supported): B keeps multiplying after A is extinct, but there is no per-kind birth/death/conversion ledger, the radius-4 swap converts whole bodies, and the neutral arm is not an identical-event twin. No resolution test. Beyond-diffusion leverage is at most 1.",
+  "pack": "threads/chemotaxis-motility/packs/evopursuit",
+  "thread": "chemotaxis-motility",
+  "round": 2,
+  "decision": "continue"
+ },
+ "chemotaxis-motility/swimfission": {
+  "world": "swimfission",
+  "rung": "L6[L2]+L4b",
+  "confidence": "medium",
+  "note": "Toxic-trail swimmers form from noise and divide by elongating past the cohesion range: they grow along the heading, form a waist and pinch into two equal daughters that swim apart (strips s0-s2). labkit lineage gives gen 2/2/3 with 3/6/8 persistent splits. The skeptic's strict largest-parent rerun on seed 11 gives gen 2. fission.py's gen 4/3/5 propagates max() through merges and is not credited. Reticulate: merges 56/56/45 > splits 45/39/31. Fission rate depends on Da (Da 1: 0, Da 2: 10-15, Da 4: 3), so the control still divides. The population declines 36-46%. L4c Weak (dependence by construction, no fork on this world). No dt or resolution test.",
+  "pack": "threads/chemotaxis-motility/packs/swimfission",
+  "thread": "chemotaxis-motility",
+  "round": 2,
+  "decision": "continue"
+ },
+ "chemotaxis-motility/swimevo": {
+  "world": "swimevo",
+  "rung": "L6[L2]",
+  "confidence": "low",
+  "note": "swimfission with a growth-rate allele (g_B=1.3g). B against A at t=1800, summed over 3 seeds: 21 vs 6 with selection, 5 vs 14 neutral. 17/17 pure-A parents give pure-A daughters, and 4/5 B parents give B daughters. Only about 10 bodies per run, populations halve, no ledger, and the trait is the fitness itself. The only strip shows a fission before any mutation. L7 Weak. Superseded by evopursuit.",
+  "pack": "threads/chemotaxis-motility/packs/swimevo",
+  "thread": "chemotaxis-motility",
+  "round": 2,
   "decision": "continue"
  }
 }

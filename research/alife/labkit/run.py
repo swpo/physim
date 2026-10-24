@@ -31,13 +31,18 @@ Options:
                     own numerics are untouched).
 Optional META keys: "lineage_k", "radial_channels" (channels for radial.png, default all),
 "species" ({name: [channels]}: separate tracking and lineage per species).
-Runs never write __pycache__ (sys.dont_write_bytecode), so read-only mirrors stay clean.
+Bytecode: runs leave no __pycache__ behind, neither in labkit/ nor next to world files, so
+read-only mirrors stay clean. labkit/__init__.py sets sys.dont_write_bytecode before any
+other labkit module or the world is imported (`python -m` imports the package before this
+file), and removes the one cache file the import system writes before that line runs
+(its own). Inside mirrors, `python -B -m labkit.run ...` or PYTHONDONTWRITEBYTECODE=1
+avoids even that transient write.
 """
 from __future__ import annotations
 
 import sys
 
-sys.dont_write_bytecode = True  # never write __pycache__ next to world files (read-only mirrors)
+sys.dont_write_bytecode = True  # already set by labkit/__init__.py; kept in case run.py is loaded another way
 
 import argparse  # noqa: E402
 import json  # noqa: E402
@@ -76,6 +81,10 @@ def _channel_list(spec, names, C, what):
     """Channel indices from a list of indices and/or names (None = all channels)."""
     if spec is None:
         return list(range(C))
+    if isinstance(spec, (str, int, np.integer)):
+        spec = [spec]
+    if len(spec) == 0:
+        raise ValueError(f"META {what}: empty channel list (omit the key or use None for all channels)")
     out = []
     for c in spec:
         k = names.index(c) if isinstance(c, str) and c in names else c
@@ -88,7 +97,7 @@ def _channel_list(spec, names, C, what):
 def _species(meta, C):
     sp = meta.get("species") or {}
     names = _channel_names(meta, C)
-    return {str(k): _channel_list(v, names, C, "species") for k, v in sp.items()}
+    return {str(k): _channel_list(v, names, C, f"species[{k!r}]") for k, v in sp.items()}
 
 
 def _lineage_k(meta, K=None):
@@ -104,11 +113,16 @@ def _default_min_area(H, W):
     return max(6, int(H * W / 20000))
 
 
-def _normalize_matter(mat, meta, periodic, threshold=None):
-    """Robust-range normalization (+ light blur) of a (T, H, W) matter stack; returns mn, thr, lo, hi."""
+def _normalize_matter(mat, meta, periodic, threshold=None, rng=None):
+    """Robust-range normalization (+ light blur) of a (T, H, W) matter stack; returns mn, thr, lo, hi.
+
+    rng: (lo, hi) to reuse a range computed elsewhere (default: this stack's 1st..99.9th percentile)."""
     T = len(mat)
-    lo = float(np.percentile(mat[:: max(1, T // 40)], 1))
-    hi = float(np.percentile(mat[:: max(1, T // 40)], 99.9))
+    if rng is not None:
+        lo, hi = (float(v) for v in rng)
+    else:
+        lo = float(np.percentile(mat[:: max(1, T // 40)], 1))
+        hi = float(np.percentile(mat[:: max(1, T // 40)], 99.9))
     span = max(hi - lo, 1e-12)
     mn = (mat - lo) / span
     sm = float(meta.get("smooth", 1.0))  # light blur so thin filaments do not flicker as debris
@@ -178,7 +192,7 @@ def _apply_damage(W, state, F, rec, damage, K, seg_opts):
         "comparator_cy": float(seg["cy"][q]) if q is not None else None,
         "comparator_cx": float(seg["cx"][q]) if q is not None else None,
     })
-    arrays = {"pre": F.astype(np.float16), "mask": mask, "target": target,
+    arrays = {"pre": F.astype(np.float16), "pre_matter": m0, "mask": mask, "target": target,
               "comparator": (seg["lab"] == q + 1) if q is not None else None}
     return state, info, arrays
 
@@ -188,6 +202,8 @@ def simulate(W, seed, frames, spf, size, render_max=120, damage=None, log=print,
     """Advance the world, keeping every matter field and up to render_max full frames."""
     if damage is not None and len(damage) == 2:
         damage = (damage[0], damage[1], "core")
+    if damage is not None:
+        _check_damage(*damage)
     K = _lineage_k(W.META, K)[0]
     state = W.init(seed, size)
     render_idx = set(np.unique(np.linspace(0, frames, min(render_max, frames + 1)).round().astype(int)).tolist())
@@ -209,8 +225,9 @@ def simulate(W, seed, frames, spf, size, render_max=120, damage=None, log=print,
             rec["status"] = f"non-finite fields at frame {f}"
             log(rec["status"])
             break
-        if species is None:
+        if species is None:  # validate the optional META channel lists at frame 0, not after the run
             species = _species(W.META, F.shape[0])
+            _channel_list(W.META.get("radial_channels"), _channel_names(W.META, F.shape[0]), F.shape[0], "radial_channels")
             rec["species"] = {k: [] for k in species}
         for k, idx in species.items():
             rec["species"][k].append(F[idx].sum(0))
@@ -239,8 +256,11 @@ def _jl(a, nd=4):
     return [_jl(x, nd) for x in a]
 
 
-def _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic):
-    """Per-channel radial profiles: top tracks at mid-life and an aggregate over individuals."""
+def _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic, exclude=()):
+    """Per-channel radial profiles: top tracks at mid-life and an aggregate over individuals.
+
+    exclude: (frame, component) pairs left out of the aggregate (the damaged lineage after the cut).
+    """
     C = render.shape[1]
     names = _channel_names(meta, C)
     sel = _channel_list(meta.get("radial_channels"), names, C, "radial_channels")
@@ -253,8 +273,15 @@ def _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic):
         return cache[k]
 
     def prof(k, f, j):
+        """(profile, outside-band coverage, ring: the centroid pixel is not in the component's own mask)."""
         seg = comps[f]
-        return M.radial_profile(norm(k), seg["cy"][j], seg["cx"][j], np.sqrt(seg["area"][j] / np.pi), periodic)[0]
+        cy, cx, r_eq = seg["cy"][j], seg["cx"][j], np.sqrt(seg["area"][j] / np.pi)
+        p, cnt = M.radial_profile(norm(k), cy, cx, r_eq, periodic)
+        H, Wd = seg["lab"].shape
+        iy, ix = int(round(cy)), int(round(cx))
+        inside = periodic or (0 <= iy < H and 0 <= ix < Wd)
+        ring = not (inside and seg["lab"][iy % H, ix % Wd] == j + 1)
+        return p, M.band_coverage(cnt, r_eq), ring
 
     def scores(p):
         return {names[c]: M.boundary_score(p[n]) for n, c in enumerate(sel)}
@@ -268,17 +295,24 @@ def _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic):
         k = cand[len(cand) // 2]
         f = rf[k]
         j = t["comp"][f - t["start"]]
-        p = prof(k, f, j)
+        p, cov, ring = prof(k, f, j)
         per_track.append({"track": int(i), "frame": int(f), "area": float(comps[f]["area"][j]),
-                          "R_eq": round(float(np.sqrt(comps[f]["area"][j] / np.pi)), 2), "profile": p, "scores": scores(p)})
+                          "R_eq": round(float(np.sqrt(comps[f]["area"][j] / np.pi)), 2), "profile": p, "scores": scores(p),
+                          "ring": ring, "outside_coverage": round(cov, 3), "damaged": (int(f), int(j)) in exclude})
     ks = [k for k in np.unique(np.linspace(0, len(rf) - 1, 7).round().astype(int)) if k > 0] or [0]
-    profs, who = [], []
+    profs, who, rings, trunc, n_excl = [], [], 0, 0, 0
     for k in ks:
         f = rf[k]
         for j in range(comps[f]["n"]):
             if comps[f]["area"][j] >= 2 * min_area:
-                profs.append(prof(k, f, j))
+                if (int(f), int(j)) in exclude:
+                    n_excl += 1
+                    continue
+                p, cov, ring = prof(k, f, j)
+                profs.append(p)
                 who.append((int(f), int(j)))
+                rings += ring
+                trunc += cov < 0.5
     agg = None
     if profs:
         mean, std = M.radial_aggregate(profs)
@@ -289,12 +323,13 @@ def _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic):
                 s = M.boundary_score(p[n])
                 indiv[names[c]] += bool(s and s["membrane_like"])
         agg = {"n_individuals": len(profs), "frames": sorted({f for f, _ in who}), "min_area": int(2 * min_area),
-               "mean": mean, "std": std, "scores": sc, "n_membrane_like_individually": indiv}
+               "mean": mean, "std": std, "scores": sc, "n_membrane_like_individually": indiv,
+               "n_ring": int(rings), "n_outside_truncated": int(trunc)}
     membrane = [names[c] for c in sel if agg and agg["scores"][names[c]] and agg["scores"][names[c]]["membrane_like"]]
     return {"rho": [round(float(r), 3) for r in M.RHO], "channels": [names[c] for c in sel], "channel_index": sel,
             "bands": {"core": list(M.CORE_RHO), "rim": list(M.RIM_RHO), "outside": list(M.OUT_RHO), "peak": list(M.PEAK_RHO)},
             "eps": M.RATIO_EPS, "cap": M.RATIO_CAP, "membrane_ratio": M.MEMBRANE_RATIO,
-            "aggregate": agg, "tracks": per_track, "membrane_like": membrane, "_profiles": profs}
+            "aggregate": agg, "tracks": per_track, "membrane_like": membrane, "n_damaged_excluded": int(n_excl), "_profiles": profs}
 
 
 def _radial_json(rad):
@@ -351,13 +386,14 @@ def _track_at(comps, tracks, mask, f):
     return None
 
 
-def _follow(tracks, tid, f, split_only=True):
-    """Largest descendant of tid alive at frame f as (track id, area, cy, cx), and the number alive.
+def _follow(tracks, tid, f, own=True):
+    """Largest member of tid's lineage alive at frame f as (track id, area, cy, cx), and the number alive.
 
-    split_only: the lineage as in lineage_stats (a merge ends it); else also through merges.
+    own: the individual (splits and re-merges of its own pieces, M.individual_lineage); else every
+    descendant, also through merges with other individuals.
     """
     alive = []
-    for i in M.descendants(tracks, tid, f, split_only):
+    for i in (M.individual_lineage(tracks, tid, f) if own else M.descendants(tracks, tid, f)):
         t = tracks[i]
         if t["start"] <= f <= t["end"]:
             k = f - t["start"]
@@ -368,29 +404,42 @@ def _follow(tracks, tid, f, split_only=True):
     return (i, float(a), float(cy), float(cx)), len(alive)
 
 
-def _damage_followup(rec, comps, tracks, T):
+def _area_under(seg, mask):
+    """Area of the component of seg that overlaps `mask` most (None if none does)."""
+    if seg is None or mask is None:
+        return None
+    ids = seg["lab"][mask]
+    ids = ids[ids > 0]
+    return float(seg["area"][int(np.bincount(ids).argmax()) - 1]) if len(ids) else None
+
+
+def _damage_followup(rec, comps, tracks, T, pre_seg=None):
+    """pre_seg: for a cut at frame 0 (recorded AFTER the cut), the pre-cut field segmented like the run."""
     d, arr = rec["damage"], rec["damage_arrays"]
     if not d or arr is None:
         return None
     f0 = d["frame"]
-    fp = max(f0 - 1, 0)  # the last recorded frame before the cut
+    fp = max(f0 - 1, 0)  # the last recorded frame before the cut (f0 = 0: frame 0, already cut)
     out = {"target_track": _track_at(comps, tracks, arr["target"], fp),
-           "comparator_track": _track_at(comps, tracks, arr["comparator"], fp)}
+           "comparator_track": _track_at(comps, tracks, arr["comparator"], fp),
+           "baseline": f"recorded frame {fp}" if f0 > 0 else "pre-cut field at frame 0 (segmented like the run)"}
     for key in ("target", "comparator"):
         tid = out[f"{key}_track"]
         if tid is None:
             continue
         t = tracks[tid]
         a0 = float(t["area"][fp - t["start"]])
+        if f0 == 0:
+            a0 = _area_under(pre_seg, arr[key]) or a0
         rel, pieces = [], []
         for f in range(f0, T):
             big, n = _follow(tracks, tid, f)
             rel.append(None if big is None else round(big[1] / a0, 3))
             pieces.append(n)
         out[f"{key}_area_pre"] = a0
-        out[f"{key}_area_rel"] = rel  # largest split-descendant area / area just before the cut, frames f0..end
-        out[f"{key}_pieces"] = pieces  # split-descendants alive per frame (None area = lineage ended or merged)
-        out[f"{key}_descendants"] = sorted(M.descendants(tracks, tid, split_only=True) - {tid})
+        out[f"{key}_area_rel"] = rel  # largest piece / area just before the cut, frames f0..end (None = gone)
+        out[f"{key}_pieces"] = pieces  # pieces of the individual alive per frame
+        out[f"{key}_descendants"] = sorted(M.individual_lineage(tracks, tid) - {tid})
     return out
 
 
@@ -456,9 +505,19 @@ def analyze(W, rec, spf, periodic=True, threshold=None, min_area=None, K=None, d
         s = M.structure(R.normalize(render[k], scales), seg["lab"] == j + 1)
         if s:
             struct.append({"track": i, "frame": int(f), "holes": int(seg_holes(seg, j, periodic)), **s})
-    radial = _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic)
+    pre_seg = None
+    if rec.get("damage_arrays") is not None and rec["damage"]["frame"] == 0:
+        pm = _normalize_matter(rec["damage_arrays"]["pre_matter"][None], meta, periodic, threshold, rng=(lo, hi))[0]
+        pre_seg = M.segment(pm[0], thr, min_area, periodic)
+    dmg = _damage_followup(rec, comps, tracks, T, pre_seg)
+    excl = set()  # the damaged individual and its descendants after the cut stay out of the radial aggregate
+    if dmg and dmg["target_track"] is not None:
+        f0 = rec["damage"]["frame"]
+        for i in M.descendants(tracks, dmg["target_track"]):
+            t = tracks[i]
+            excl.update((f, t["comp"][f - t["start"]]) for f in range(max(t["start"], f0), t["end"] + 1))
+    radial = _radial(meta, rec, comps, tracks, top, render, scales, min_area, periodic, excl)
     species = _species_stats(meta, rec, periodic, min_area, K, dt_frame, (H, Wd)) if rec.get("species") else {}
-    dmg = _damage_followup(rec, comps, tracks, T)
 
     totals = np.stack(rec["totals"])
     ok_tot = np.abs(totals[0]) > 1e-9
@@ -594,7 +653,7 @@ def _damage_figure(meta, rec, A, rgb, out):
                 big = (big[0], big[1], cy0, cx0)
             tag = ""
             if big is None:  # lineage ended: keep the camera on what it merged into, if anything
-                big, _ = _follow(tracks, tid, rf[k], split_only=False)
+                big, _ = _follow(tracks, tid, rf[k], own=False)
                 tag = "into "
             if big is None:
                 tiles.append(np.zeros((112, 112, 3), np.uint8))
@@ -604,8 +663,8 @@ def _damage_figure(meta, rec, A, rgb, out):
             labels.append(f"{tag}#{big[0]}{'+' + str(nalive - 1) if nalive > 1 else ''} t={rf[k] * dt_frame:g}")
     loss = d.get("erased_frac")
     title = (f"damage {d['mode']} {d['frac_requested']:.2f} t={f0 * dt_frame:g}: top target #{fu['target_track']} "
-             f"(lost {'?' if loss is None else f'{loss:.0%}'} of matter, red = cut) + split-descendants; "
-             f"bottom comparator #{fu['comparator_track']}")
+             f"(lost {'?' if loss is None else f'{loss:.0%}'} of matter, red = cut) and its pieces; "
+             + (f"bottom comparator #{fu['comparator_track']}" if fu["comparator_track"] is not None else "no comparator"))
     R.contact_sheet(tiles, labels, ncols=len(sel) + 1, title=title).save(out / "damage.png")
 
 
@@ -729,28 +788,50 @@ def figures(W, rec, A, out, spf, movie=True):
 
 
 # ------------------------------------------------------------------ facts
-def _radial_facts(A):
+def _radial_facts(A, warn):
     rad, lines = A["radial"], []
     agg = rad["aggregate"]
+    excl = rad.get("n_damaged_excluded", 0)
+    excl_note = (f"; {excl} components of the damaged lineage after the cut left out" if excl else "")
     if not agg:
-        return [f"- radial profiles: no component with area >= {2 * A['summary']['min_area']} px at the sampled frames"]
+        return [f"- radial profiles: no component with area >= {2 * A['summary']['min_area']} px at the sampled frames"
+                f"{excl_note}"]
     lines.append(f"- radial profiles (rho = r / R_eq around tracked centroids; fixed render scales; core rho<0.4, "
                  f"rim 0.6-1.3, outside 1.6-2.2; aggregate of {agg['n_individuals']} components >= {agg['min_area']} px "
-                 f"at frames {agg['frames']}):")
+                 f"at frames {agg['frames']}{excl_note}):")
+    lo, hi = M.PEAK_RHO
     for name in rad["channels"]:
         sc = agg["scores"][name]
         if not sc:
             lines.append(f"  - radial {name}: empty profile")
             continue
-        lines.append(f"  - radial {name}: peak at rho={sc['rho_peak']:.2f}, rim/core {_g(sc['rim_core'])}, "
-                     f"rim/outside {_g(sc['rim_outside'])} (aggregate of {agg['n_individuals']} individuals; "
+        if sc.get("flat"):
+            lines.append(f"  - radial {name}: flat profile (no radial structure; level {_g(sc['rim_max'])}; "
+                         f"aggregate of {agg['n_individuals']} individuals)")
+            continue
+        peak = "in" if sc["peak_in_rim"] else "OUTSIDE"
+        lines.append(f"  - radial {name}: peak at rho={sc['rho_peak']:.2f} ({peak} the peak band {lo:g}-{hi:g}), "
+                     f"rim/core {_g(sc['rim_core'])}, rim/outside {_g(sc['rim_outside'])} (aggregate of "
+                     f"{agg['n_individuals']} individuals; "
                      f"{agg['n_membrane_like_individually'][name]}/{agg['n_individuals']} membrane-like individually; "
                      f"rim level {_g(sc['rim_max'])})" + ("  MEMBRANE-LIKE" if sc["membrane_like"] else ""))
-    ml = rad["membrane_like"]
+    if agg.get("n_ring"):
+        warn.append(f"radial: {agg['n_ring']} of {agg['n_individuals']} aggregate members are rings (centroid outside "
+                    f"their own mask): the threshold may cut individuals into a core and a separate ring, so one "
+                    f"individual is counted twice and the ring's profile is centred on its hole; check radial.png and "
+                    f"raise META smooth or set META matter so one component covers each individual")
+    if agg.get("n_outside_truncated"):
+        warn.append(f"radial: for {agg['n_outside_truncated']} of {agg['n_individuals']} aggregate members less than "
+                    f"half of the outside band (rho 1.6-2.2) was sampled (window capped on this grid, or an open "
+                    f"boundary): their rim/outside is unreliable, and the aggregate outside level comes mostly from "
+                    f"the smaller members")
+    ml = [n + ("" if agg["scores"][n]["peak_in_rim"] else f" (peak at rho={agg['scores'][n]['rho_peak']:.2f}, "
+                                                          f"outside the peak band)") for n in rad["membrane_like"]]
     lines.append(f"- membrane-like channels (aggregate rim/core >= {M.MEMBRANE_RATIO:g} and rim/outside >= "
-                 f"{M.MEMBRANE_RATIO:g}): {', '.join(ml) if ml else 'none'}")
+                 f"{M.MEMBRANE_RATIO:g}; the peak position is not part of the test): {', '.join(ml) if ml else 'none'}")
     if rad["tracks"]:
-        per = "; ".join(f"#{t['track']} (t={t['frame'] * A['dt_frame']:g}, R_eq {t['R_eq']:g}): "
+        per = "; ".join(f"#{t['track']} (t={t['frame'] * A['dt_frame']:g}, R_eq {t['R_eq']:g}"
+                        f"{', ring' if t.get('ring') else ''}{', DAMAGED' if t.get('damaged') else ''}): "
                         f"{[n for n, s in t['scores'].items() if s and s['membrane_like']] or 'none'}" for t in rad["tracks"])
         lines.append(f"- membrane-like channels per top track at mid-life: {per}")
     return lines
@@ -776,6 +857,10 @@ def _damage_facts(A, rec, warn):
     if d.get("lost_under_mask_share") is not None and d["lost_under_mask_share"] < 0.5:
         warn.append(f"the world's damage() hook did not erase where labkit's mask was (only "
                     f"{d['lost_under_mask_share']:.0%} of the lost matter was under it): the MEASURED loss is what counts")
+    if d["aspect"] > M.DAMAGE_ASPECT_WARN:
+        warn.append(f"damage target is elongated (aspect {d['aspect']:.2f} > {M.DAMAGE_ASPECT_WARN:g}; rule {d['rule']}): "
+                    f"it may be elongating or pinching (dividing) rather than a compact individual; check damage.png "
+                    f"or damage at another frame")
     if d["rule"] != "mature-compact":
         warn.append(f"damage target is NOT a mature compact individual (rule {d['rule']}): no component at frame "
                     f"{d['frame']} had a track >= K={d['K_frames']} frames and an area within "
@@ -785,14 +870,22 @@ def _damage_facts(A, rec, warn):
                      "lies outside the matter component and cuts the layer at the edge)")
     elif loss is not None and loss < 0.5 * d["frac_requested"]:
         warn.append(f"damage erased only {loss:.0%} of the target's matter against {d['frac_requested']:.0%} requested")
+    if d["mode"] == "half":
+        lines.append(f"- (half mode: the mask is the cut side of the component DILATED by ~R_eq/4, so it also erases a "
+                     f"layer just outside the threshold contour: {d['mask_px'] - d['mask_px_in_component']} of the "
+                     f"{d['mask_px']} mask px are outside the component; that loss is the 'outside' figure above)")
     if fu:
         idx = np.unique(np.linspace(0, len(fu.get("target_area_rel", [])) - 1, 6).round().astype(int)) if fu.get("target_area_rel") else []
         times = [round((d["frame"] + int(i)) * dt_frame, 3) for i in idx]
         tgt = [fu["target_area_rel"][i] for i in idx]
         cmp_ = [fu["comparator_area_rel"][i] for i in idx] if fu.get("comparator_area_rel") else None
-        lines.append(f"- after damage, largest descendant area / area before the cut at t={times}: target #{fu['target_track']} "
-                     f"{tgt}; comparator #{fu['comparator_track']} {cmp_ if cmp_ else 'n/a'}; target descendants "
-                     f"{fu.get('target_descendants', [])[:12]} (damage.png)")
+        lines.append(f"- after damage, area of the individual's largest piece / area before the cut at t={times}: "
+                     f"target #{fu['target_track']} {tgt}; "
+                     + (f"comparator #{fu['comparator_track']} {cmp_ if cmp_ else 'n/a'} " if fu["comparator_track"] is not None
+                        else "no comparator ") +
+                     f"(followed through its own splits and re-merges; None = died or merged with another individual); "
+                     f"target lineage tracks {fu.get('target_descendants', [])[:12]}; baseline {fu.get('baseline')} "
+                     f"(damage.png)")
     return lines
 
 
@@ -850,7 +943,7 @@ def facts(W, rec, A, out, seed, spf, args_line):
             lines.append(f"  - track {st['track']} at frame {st['frame']}: holes {st['holes']}, "
                          f"rim-vs-core {st['rim_vs_core']:.2f}, rim-vs-outside {st['rim_vs_outside']:.2f}, "
                          f"heterogeneity {st['heterogeneity']:.2f}; core {st['core_mean']} rim {st['rim_mean']}")
-    lines += _radial_facts(A)
+    lines += _radial_facts(A, warn)
     for name, sp in (A.get("species") or {}).items():
         lines.append(f"- species `{name}` (channels {sp['channel_names']}, own threshold): components final "
                      f"{sp['components_final']}, mean {sp['components_mean']:.1f}, max {sp['components_max']}; tracks "
@@ -884,7 +977,8 @@ def run_pack(world_path, out, seed=0, frames=200, spf=None, size=None, damage=No
     rec = simulate(W, seed, frames, spf, size, damage=damage, log=log, K=K, periodic=periodic,
                    threshold=threshold, min_area=min_area)
     if len(rec["matter"]) < 2:
-        (out / "FACTS.md").write_text(f"# {W.META['name']} seed {seed}\n\nRUN FAILED: {rec['status']}\n")
+        why = rec["status"] if rec["status"] != "ok" else f"only {len(rec['matter'])} recorded frame (use --frames >= 1)"
+        (out / "FACTS.md").write_text(f"# {W.META['name']} seed {seed}\n\nRUN FAILED: {why}\n")
         return {"seed": seed, "status": rec["status"]}
     A = analyze(W, rec, spf, periodic, threshold, min_area, K=lineage_k, dt=dt)
     figures(W, rec, A, out, spf, movie)
@@ -914,15 +1008,28 @@ def run_pack(world_path, out, seed=0, frames=200, spf=None, size=None, damage=No
     return {"seed": seed, "status": rec["status"], **A["summary"]}
 
 
+def _check_damage(frame, frac, mode="core"):
+    """Reject a damage spec that cannot be applied (before anything is simulated)."""
+    if mode not in DAMAGE_MODES:
+        raise ValueError(f"--damage mode {mode!r}: use one of {', '.join(DAMAGE_MODES)}")
+    if not 0 < float(frac) <= 1:
+        raise ValueError(f"--damage FRAC {frac!r}: the fraction of the area to cut must be in (0, 1]")
+    if int(frame) < 0:
+        raise ValueError(f"--damage FRAME {frame!r}: the recorded frame must be >= 0")
+
+
 def parse_damage(text):
     """'FRAME:FRAC[:MODE]' -> (frame, frac, mode)."""
     parts = text.split(":")
     if len(parts) not in (2, 3):
         raise argparse.ArgumentTypeError(f"--damage {text!r}: use FRAME:FRAC[:MODE]")
     mode = parts[2] if len(parts) == 3 else "core"
-    if mode not in DAMAGE_MODES:
-        raise argparse.ArgumentTypeError(f"--damage mode {mode!r}: use one of {', '.join(DAMAGE_MODES)}")
-    return int(float(parts[0])), float(parts[1]), mode
+    try:
+        frame, frac = int(float(parts[0])), float(parts[1])
+        _check_damage(frame, frac, mode)
+    except ValueError as e:
+        raise argparse.ArgumentTypeError(str(e) if str(e).startswith("--damage") else f"--damage {text!r}: {e}")
+    return frame, frac, mode
 
 
 def main(argv=None):
