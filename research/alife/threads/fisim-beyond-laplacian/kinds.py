@@ -1,4 +1,4 @@
-"""Per-kind analysis of a heredity pack: kind = marker h on/off inside each body.
+"""Per-kind analysis of a heredity pack: kind = cell-mean of marker h > 0.5 (on) or not (off).
 Uses frames.npz 'render' (channels u, m, h as positive deviations). Tracks cells by overlap
 between consecutive rendered frames, counts cells per kind, kind switches, and splits by
 parent kind -> daughter kinds.   python kinds.py packs/xcell-her/seed0"""
@@ -33,13 +33,14 @@ cells = []
 for k in range(len(R)):
     lab, n = label_periodic(ndimage.gaussian_filter(R[k, 0], 1, mode="wrap") > thr)
     sizes = ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))
-    hmax = ndimage.maximum(R[k, 2], lab, range(1, n + 1)) if n else []
+    hmax = ndimage.mean(R[k, 2], lab, range(1, n + 1)) if n else []   # cell-mean h (robust to noise spikes)
     keep = [i for i in range(n) if sizes[i] >= 10]
     cells.append(dict(lab=lab, ids=[i + 1 for i in keep], on=[bool(hmax[i] > 0.5) for i in keep]))
 n_on = [sum(c["on"]) for c in cells]; n_off = [len(c["on"]) - sum(c["on"]) for c in cells]
 switch_on_off = switch_off_on = 0
 splits = {"on->on+on": 0, "on->on+off": 0, "on->off+off": 0, "off->off+off": 0, "off->on+x": 0}
 births = 0
+sw_events = []
 for k in range(1, len(cells)):
     A, B = cells[k - 1], cells[k]
     ch = {}
@@ -53,8 +54,12 @@ for k in range(1, len(cells)):
     for pid, kids in ch.items():
         pk = A["on"][A["ids"].index(pid)]
         if len(kids) == 1:
-            if pk and not kids[0]: switch_on_off += 1
-            if not pk and kids[0]: switch_off_on += 1
+            if pk != kids[0]:
+                if pk: switch_on_off += 1
+                else: switch_off_on += 1
+                m = A["lab"] == pid
+                ys, xs = np.nonzero(m)
+                sw_events.append(dict(frame=int(fr[k]), t=float(fr[k] * dtf), to_on=bool(kids[0]), cy=int(np.median(ys)), cx=int(np.median(xs))))
         else:
             non = sum(kids)
             if pk:
@@ -63,7 +68,7 @@ for k in range(1, len(cells)):
                 splits["off->off+off" if non == 0 else "off->on+x"] += 1
 t = fr * dtf
 out = dict(pack=d, n_on_start=n_on[0], n_off_start=n_off[0], n_on_end=n_on[-1], n_off_end=n_off[-1],
-           switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births)
+           switches_on_to_off=switch_on_off, switches_off_to_on=switch_off_on, splits=splits, births=births, switch_events=sw_events)
 print(json.dumps(out))
 json.dump(out | {"t": t.tolist(), "n_on": n_on, "n_off": n_off}, open(f"{d}/kinds.json", "w"))
 plt.figure(figsize=(5, 3)); plt.plot(t, n_on, label="h-on cells"); plt.plot(t, n_off, label="h-off cells")

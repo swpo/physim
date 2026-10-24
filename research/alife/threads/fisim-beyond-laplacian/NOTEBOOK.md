@@ -143,3 +143,15 @@ this genome. Unexplained.
 **D3 damage xcell-a 30% at t=200** (`packs/xcell-a-damage30`, `screens/damage30_crop.png`):
 the struck cell survives; the membrane briefly fills the erased core (t=202), then body,
 ring and contained cargo are restored by t≈210. All 8 cells live to the end.
+
+**S14 variation by noise (xcell-her + additive activator noise).** Screens: noise 0.8 →
+every cell on, plus nucleation of new cells (24-28); noise 0.3 → structure intact.
+Packs `xcell-her-noise0.3`, `xcell-her-noise0.5` (seed 0). First `kinds.py` (cell *max* h)
+gave 273 "switches" each way, which is flicker from noise spikes. I changed it to the
+cell *mean* of h > 0.5 and re-ran it on all heredity packs (numbers above unchanged except
+the start counts, now 5/5, and one t=4 off→on event per pack, which is the IC poke settling).
+noise 0.3: on 5→12, off 5→12; on→on+on 9, off→off+off 4, mixed 0; 3 on→off events at
+t=68-78. The crops (`screens/her_noise_switch_crops.png`) show these are real: at a pinch
+the whole h domain goes to one daughter, and the other emerges h-off and stays off
+(unequal partitioning, i.e. loss of the marker at division). noise 0.5: 15 nucleations
+(new cells from noise), only 4 splits. Too noisy.
