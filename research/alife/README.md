@@ -6,6 +6,12 @@ reviews and funds them. It goes beyond the reaction-diffusion worlds used by Phy
 nonlocal kernels, mass-conserving flows, particles, sharp interfaces, advection and
 autopoiesis.
 
+**Status (24 October 2026): the program has ended.** Start with [REPORT.md](REPORT.md), the final
+lab report, which is fact-checked against the committee record. The final consensus is in
+[committee/LEADERBOARD.md](committee/LEADERBOARD.md), and every thread has a `FINAL.md` and a
+`movies/showcase.mp4`.
+
+- [REPORT.md](REPORT.md): findings, the three questions (judge, agent mutation, teams), open problems
 - [CHARTER.md](CHARTER.md): mission, how the lab works, norms, sprint deliverables
 - [RUBRIC.md](RUBRIC.md): the judges' rubric (ladder of organization, modifiers, promise)
 - [LITERATURE.md](LITERATURE.md): equations and reference parameters per family
@@ -24,5 +30,5 @@ autopoiesis.
 | fisim-beyond-laplacian | PhySim genome + non-diffusive operators | `claude/alife-fisim-beyond-laplacian` |
 | autopoiesis | SCL and continuous autopoiesis | `claude/alife-autopoiesis` |
 
-Researchers work on their own branches. The committee merges reviewed thread
-directories into this branch (`claude/fisim-agent-world-research-hepmlz`).
+Researchers worked on their own branches. The final state of every thread directory is merged
+into this branch (`claude/fisim-agent-world-research-hepmlz`).

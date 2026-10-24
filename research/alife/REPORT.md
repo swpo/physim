@@ -8,8 +8,8 @@ differ this report follows the committee. The rung notation is defined in `RUBRI
 
 **The run.** There were 7 independent researcher agents, each with its own thread, plus a
 central committee of 3 lens judges and a director. The lab ran 3 sprints in about 8 hours
-of wall-clock time, from 14:03 to 21:45 UTC. It produced about 130 world directories, 58
-leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equivalent.
+of wall-clock time, from 14:03 to 21:45 UTC. It produced about 130 world directories, 54
+final leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equivalent.
 
 ---
 
@@ -27,21 +27,21 @@ leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equiva
 2. **No thread got far on heredity with selection.** Only two L7 rows exist, and both are
    low confidence:
    - autopoiesis `membrane_evo`, **L7[L3] low**, recorded as *disturbance-mediated*: the
-     sweep runs mostly through fragments that the imposed death disk cuts off;
+     sweep runs mostly through fragments that the imposed death disk cuts off, and the skeptic dissents (L7 Weak);
    - active-droplets `ad5-evolve`, **L7[L2] low**: selection happens only during
      colonization, against a sterile ancestor.
 
-   The other five threads ended with L7 Weak, Contradicted or Not tested. The same four
+   The other five threads ended with L7 Weak or Contradicted. The same four
    causes recur:
    - heritable labels leak between field bodies that touch (contagion);
    - cells have no death of their own;
    - mutation operators do not match the shape and size of the bodies;
-   - tests were underpowered, with 6-40 bodies and 1-5 mutations per run.
+   - tests were underpowered, with as few as 2-8 bodies (motile_trait_tox) or 6 cells and 1-5 mutations per run (ad9).
 3. **The strongest behavioural result is ecological.** In chemotaxis `evopursuit`,
    self-propelled prey form spontaneously and predators ride in the rear of prey crescents.
    An evasion allele that arises by mutation flips the sign of the predator's net effect on
    prey: it is lethal to allele-A prey (0.15-0.36x prey alone) and a net benefit to allele-B
-   prey (2.4-3.5x). This holds in 18 matched fixed-allele arms. Consensus **L5[L2]+L4b,
+   prey (2.4-3.5x). This holds in 18 matched fixed-allele arms, though partner abundance was not matched. Consensus **L5[L2]+L4b,
    high**, with L6 and L7 Weak.
 4. **Beyond diffusion, we found one transferable operator but proved little against
    diffusion.**
@@ -50,26 +50,28 @@ leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equiva
      its own ablations.
    - Only one matched control that replaces the non-diffusive operator with linear
      diffusion ever failed where the world succeeded: the ad7 "R arm", on 1 seed. It was
-     scored 2 provisional.
+     scored 2 provisional in r2, but the final (r3) record keeps the ad7 family's beyond-diffusion at 1.
    - Several apparent non-diffusive wins turned out to be Gray-Scott chemistry in disguise:
      `ad1-fuel`, `mcfd-MIRd` and `xcell-div`.
    - Sharp boundaries were cheap to get and were not the bottleneck. The hard parts were
      containing heritable state and getting turnover.
 5. **Question 1 (the judge): a rubric-driven judge works, but only if it re-runs worlds
    and demands matched controls.** The ladder plus modifiers plus promise held up across
-   seven very different families. The judges downgraded more than two dozen researcher
-   claims and upgraded about 7. Among other things, they caught:
+   seven very different families. The judges downgraded many researcher
+   claims and upgraded a few. Among other things, they caught:
    - a channel-index bug;
    - a timestep artifact behind one thread's entire reproduction mode;
    - three sign flips under matched controls;
    - label conversions (contagion or leakage) undermining selection claims in five
      threads.
 
-   Rubric v2 (16 rule changes) was written from those counterexamples. Review was the
-   expensive part: 64% of total spend.
+   Rubric v2 (16 rule changes) was written after sprint 1 from the first of those counterexamples. Later catches were raised as rubric issues but never folded into a v3. Review was the
+   expensive part: the coordinator session, which ran every review (and also the literature
+   scout and labkit v0.2), was about 64% of total spend (386 of 605 USD), more than all seven
+   researchers together (about 219).
 6. **Question 2 (agent mutation): it is more expressive, but the hit rate is low and the
    gains came early.**
-   - Every rung above L3 came from structural edits that a parameter-mutation EA cannot
+   - Every rung above L3 except `r-two-s1-60` (a known C-glider class found by the random rule screen, L4b[L2] medium) came from structural edits that a parameter-mutation EA cannot
      make: new fields, conservation laws, operator swaps, gates and cross-thread forks.
    - Random rule screens inside one family gave shelled cells in 2/420 rules and 0 cell
      replicators in 150.
@@ -82,13 +84,13 @@ leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equiva
    - Ideas really did move between threads. The gate, identical-event twins and confined
      alleles each went to 2-4 other threads, and forks produced the best rungs in
      active-droplets and autopoiesis.
-   - But the sprint-1 reviews arrived 60-105 minutes into sprint 2, after that sprint's
-     work was already finished in three threads.
+   - But the sprint-1 reviews reached six threads 60-106 minutes into sprint 2 (fisim after about 26), and in four
+     threads that sprint's work was already finished.
    - The committee was CPU-bound.
-   - Three sprints of about 1.5 hours each were too short to reach L7.
+   - Three sprints of about 1.5 hours each were too short to reach L7 above low confidence.
 8. **Numerical artifacts can look like life.**
    - In particle-life, spore reproduction was overshoot by the explicit integrator, and
-     every rung above L2 in that thread had rested on it for two sprints.
+     every reproduction-based rung in that thread had rested on it for two sprints (only the plife-m2 calibration L3 did not, and sporecell2-lysis still keeps L5[L2] low on that non-converged dt map).
    - Halving dt is not a convergence test under reintegration tracking or with a clipped
      integrator.
    - ad7's 2-px shell has its width set by the grid.
@@ -104,9 +106,9 @@ leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equiva
 | Thread (family) | World | Rung (confidence) | What it does | Origin | Pack |
 |---|---|---|---|---|---|
 | autopoiesis (continuous autopoiesis) | `phase_membrane` | L6[L3] (medium) | Allen-Cahn wall tilted by the cell's own link product, a(L-theta). phi^2-gated mobility. Links adsorb at the wall into a ring that sets cell size (~2x) and division rate (~3x). Cells divide by central starvation. | noise | `threads/autopoiesis/packs/phase_membrane` |
-| | `membrane_evo` (up / twin / down) | L7[L3] (low, disturbance-mediated) | Two kinds that differ only in link yield, with a sealed catalyst channel and identical-event twins (10 seeds x 3 arms). High yield sweeps (0.85-0.97 biomass share in 8/10 seeds); low yield is purged. | noise | `threads/autopoiesis/packs/membrane_evo_up` |
+| | `membrane_evo` (up / twin / down) | L7[L3] (low, disturbance-mediated; skeptic dissents, L7 Weak) | Two kinds that differ only in link yield, with a sealed catalyst channel and identical-event twins (10 seeds x 3 arms). High yield sweeps (0.85-0.97 biomass share in 8/10 seeds); low yield is purged. | noise | `threads/autopoiesis/packs/membrane_evo_up` |
 | | `phase_protocell_noise` | L6[L2] (high) | The wall loop without adsorption. 42-46 cells, gen 3-4, converged at dt/2 and 2x resolution. | noise | `threads/autopoiesis/packs/phase_protocell_noise` |
-| active-droplets (Cahn-Hilliard + reactions) | `ad7-gated` family | L6[L3] (medium) | A self-made amphiphile shell psi gates fuel (weakly) and catalyst (strongly). Shell output has an interior optimum (seed 0: 4/7/12/11/10/9/6 droplets at kp 0-4). | planted | `threads/active-droplets/packs/ad7t-thick` |
+| active-droplets (Cahn-Hilliard + reactions) | `ad7-gated` family | L6[L3] (medium) | A self-made amphiphile shell psi gates fuel (weakly) and catalyst (strongly). Shell output has an interior optimum (seed 0, t=8000 colonization counts from planted disks: 4/7/12/11/10/9/6 droplets at kp 0-4). | planted | `threads/active-droplets/packs/ad7t-thick` |
 | | `ad5-evolve` | L7[L2] (low) | Confined catalyst alleles mutate during the run, breed true, and out-divide a sterile ancestor (p≈0.001). Colonization only, 0 deaths. | planted | `threads/active-droplets/packs/ad5-evolve` |
 | | `ad1-fuel` | L6[L2] (high) | Core starvation splits droplets into ring fragments and dumbbells, gen 2-4. Converged in dt and dx. It is Gray-Scott mitosis in a CH body. | planted | `threads/active-droplets/packs/ad1-fuel` |
 | chemotaxis-motility (Keller-Segel, advection) | `evopursuit` | L5[L2]+L4b (high); L6, L7 Weak | Toxic-trail prey swimmers divide. Predators ride and consume them. An evasion allele flips the sign of the predator's effect. | noise | `threads/chemotaxis-motility/packs/evopursuit` |
@@ -116,12 +118,12 @@ leaderboard rows and 21 committee reviews, at a cost of about 605 USD API-equiva
 | | `mcfd-MIRd` | L6[L2]+L4c+L5 (medium) | Adds maintenance decay. Turnover 0 / 0.01 / 0.03 gives a dormant lattice / a fed static lattice / intermittent boom-bust. | planted | `threads/lenia-multichannel/packs/mcfd-MIRd` |
 | | `r-two56` | L3 (high) | 2 of 420 random 2-channel rules. Static shelled "cog" cells from noise, whose shell sits at a set distance set by a ring kernel. Converged at dt/2 and R=15/20. | noise | `threads/lenia-multichannel/packs/r-two56` |
 | flow-lenia (mass-conserving Lenia) | `fl_forager` | L6[L2]+L4b (medium) | One noise patch becomes 8-14 crescent gliders. They eat a conserved, Hill-gated food field, carve wakes and divide. Matter plus food is conserved to 8e-12. | noise | `threads/flow-lenia/packs/fl_forager` |
-| | `fl_cells` | L4a[L3] (medium) | Static three-layer cells that re-form core, ring and crown after 38-44% cuts. | planted | `threads/flow-lenia/packs/fl_cells_damage` |
+| | `fl_cells` | L4a[L3] (medium) | Static three-layer cells that re-form ring and crown after 38-44% cuts, but end smaller with a hollow core. | planted | `threads/flow-lenia/packs/fl_cells_damage` |
 | fisim-beyond-laplacian (PhySim genome) | `xcell-a` | L4b[L3] (medium) | Unmodified m4 gliders carry a membrane ring. The ring gates a fast cargo: 1.24 vs 0.43 at the centre, dt-converged. | planted | `threads/fisim-beyond-laplacian/packs/xcell-a` |
 | | `xcell-evo2-S/N` | L6[L3] (low); L7 Contradicted | Membrane cells divide under imposed dilution, reaching gen 6 in one run. Marks that arise in the run never breed true. | planted | `threads/fisim-beyond-laplacian/packs/xcell-evo2-S` |
 | | `xcell-her` | L3 (high) | Planted bistable-marker kinds breed true in 46/46 divisions. The gate is necessary: beta_h=0 erases every on-lineage. Holds only in this genome and division regime. | planted | `threads/fisim-beyond-laplacian/packs/xcell-her` |
 | particle-life (particles, chemistry) | `sporecell3-det` | L2 (high); L6[L2] Weak | Catalytic particle cells with exact matter-identity lineage. At a step-safe integrator step, births need a written detachment rule and stop at confluence. | noise | `threads/particle-life/packs/sporecell3-det` |
-| | `sporecell2-lysis` | L5[L2] (low, non-converged dt map) | A written contact-kill rule reverses the competitive outcome in 3/3 matched seeds. | planted kinds | `threads/particle-life/screens/P_half_types.png` (no pack) |
+| | `sporecell2-lysis` | L5[L2] (low, non-converged dt map) | A written contact-kill rule helps the killer kind and hurts the other in 3/3 seeds (matched arms, not event-matched; the winner changes in 2/3). | planted kinds | `threads/particle-life/screens/P_half_types.png` (no pack) |
 
 **The lab's highest rungs:**
 
@@ -169,9 +171,9 @@ ablated operator, not against a true Laplacian-only twin. The last column says w
 | Cahn-Hilliard in place of linear diffusion, inside the gated droplet | `ad7` R arm | With linear diffusion at D=M, kp=0.5 gives 5 spots that essentially do not divide, against 12 dividing droplets with CH. kp=4: 6 vs 6. | The lab's only true Laplacian control to fail, but 1 seed and D=M only (CH bulk diffusivity is 2M). The 3-seed D=M/2M replication was never run. |
 | Wall-adsorption drift chi up grad[4phi(1-phi)] | autopoiesis `phase_membrane` | Matched chi=0 control (same grid, seeds, duration): rim/core 1.51-1.72 drops to 1.12-1.14; 15-17 vs 42-43 cells; 9-12 vs 26-32 persistent splits. | The ring does work, setting size and division rate. It is not needed for viability. Credited under mechanism. |
 | Allen-Cahn wall tilted by the cell's own product | autopoiesis | a=0: domains shrink by curvature and all die by t≈350. | Researcher's ablation; not re-run by the committee. |
-| Min (not arithmetic) face mean, plus decay outside bodies | autopoiesis `membrane_evo` | An arithmetic gate leaked 0.5 on every boundary face (conversions > mutations in 6/6 seeds). Sealed: conversions ≤ flips in 30/30 runs. | Supported. A discretization choice decided whether heredity worked. |
+| Min (not arithmetic) face mean, plus decay outside bodies | autopoiesis `membrane_evo` | An arithmetic gate leaked 0.5 on every boundary face (conversions > mutations in 6/6 seeds). Sealed: conversions ≤ flips in 30/30 runs. | Supported as part of the sealed-channel recipe, together with fast decay outside bodies and kinds that are neutral inside the cell (c2=c1). The r2 committee ruled that a tighter gate alone would not stop takeover. |
 | Pressure term -alpha grad A; Hill-gated uptake | flow-lenia `fl_cells`, `fl_forager` | Without pressure, the ring breaks into dots. Linear uptake gives "grey goo" tiling the grid. | Within-family only; capped at 1. |
-| Ring-kernel set-point membrane | lenia `r-two56` | Knocking out k4, k5 or k0 removes the shell, kills the core, or gives endless worms. | No DoG or Laplacian control; the r3 review calls it "the thread's only route to a beyond-diffusion score". |
+| Ring-kernel set-point membrane | lenia `r-two56` | Knocking out k4 gives a sea of shell (no set-point band), knocking out k5 kills the core, and knocking out k0 gives endless worms (researcher's r1 ablations). | No DoG or Laplacian control; the r3 review calls it "the thread's only route to a beyond-diffusion score". |
 | Slow self-secreted repellent (advective trail) | chemotaxis `kstrail` | chi_h=0 gives 30-60 static spots. | The Laplacian-only slow-inhibitor twin was requested in all 3 sprints and never run (it is the known drift bifurcation, Krischer & Mikhailov 1994). Score 1. |
 | Non-reciprocal cross-taxis | chemotaxis `pursuit` | Without pursuit, contact falls to chance (0.58 vs null 0.58). Without evasion, predators are carried inside prey. | Within-model; underlies L5 high in evopursuit. |
 
@@ -203,29 +205,30 @@ ablated operator, not against a true Laplacian-only twin. The last column says w
    profile.
 2. **Allen-Cahn walls held up by the cell's own product.** Adding phi^2-gated mobility
    gives a container that cannot have a hole, repairs itself by curvature flow, and
-   divides by starvation. Cell size against feed is a clean law: 71/66/88/405 px at
+   divides by starvation. Cell size rises roughly with feed (researcher's r1 data on the base phase protocell; not monotone at the low end): 71/66/88/405 px at
    F=0.0054-0.008. The tilt and the chi drift were sent to fisim as genome operators in r1
    but were never implemented there.
 3. **Self-repellent trails for propulsion.** One added field makes an aggregating
    advective field swim. The conditions: bodies must be unsaturated, the volume-filling
    face flux must be conservative (van Leer MUSCL), and bodies need radius ≥6 px, or the
-   heading locks to the grid and up to 80% of mass is lost. A toxic trail acts as a
+   heading locks to the grid. A cell-centred volume-filling factor with clipping lost 80% of the
+   mass. A toxic trail acts as a
    homeostat that keeps a motile phase alive.
 4. **Consumed regrowing resources with maintenance costs.**
    - Build-from-food plus decay has three regimes and a sharp turnover threshold (0.025
      gives a static lattice, 0.03 gives boom-bust).
    - The conserved, Hill-gated food in fl_forager gives growth-division cycles without a
      global cap.
-   - Across threads, selection acted only where there was turnover.
+   - Apart from colonization races such as ad5, selection acted only where there was turnover.
 5. **Mass conservation.** Reintegration tracking holds mass to about 1e-12 and gives
    bounded bodies for almost any rule. Check convergence by changing resolution, not dt:
    the scheme adds numerical diffusion. An exact food plus matter ledger is a ready-made
    hidden law for an agent to find.
 6. **Identity-carrying particles and matter.**
    - Catalytic provenance labels give exact lineage (particle-life).
-   - Genes can ride on parcels (flow-lenia).
+   - Genes can ride on parcels (flow-lenia), though there they spread by turnover inside fused mosaic bodies (L7 Contradicted).
    - A trait carried on the body's own transport, q=a*trait, makes conversions impossible
-     by construction: ad9 had 0 conversions in 12/12 runs.
+     by construction: ad9 had 0 conversions in 12/12 runs, though merges were not logged, so mixed fusions are not certified.
 
    Passive tags on built matter leak wherever bodies touch: lenia had 47% pure divisions.
 
@@ -264,7 +267,7 @@ Good discovery worlds already exist:
 - `evopursuit`: the sign flip;
 - `fl_forager`: the exact ledger;
 - `mcfd-MIRd`: three regimes and a threshold;
-- `phase_membrane`: cell size against feed;
+- `phase_membrane`: the chi switch that sets cell size (~2x) and division rate (~3x);
 - `ad7`: the interior optimum with a signature in two ablations.
 
 ---
@@ -325,7 +328,7 @@ arbitrated, funded and cross-pollinated.
 | Kind | Examples (thread, sprint) |
 |---|---|
 | Code bugs | fisim r1: `perm [6,3,5.0]` gated waste by *cargo*, not membrane, and every founder was planted with waste q=1.2. With the documented gate the world dies by t≈32, and `xcell-turn` (then the family's only L6 Supported) was retracted. Also: particle-life `lineage.py` ratcheted generations ("gen 3-9" withdrawn); chemotaxis `preytrack.py` credited merge products as daughters; `fission.py`'s max()-through-merge rule inflated depth (claimed 4/3/5, strict 3/3/3); fisim counted cells that straddle the periodic boundary twice. |
-| Numerical artifacts | particle-life r2: per-step displacement 1.2-1.37 > r_max=1 at dt=0.02, so spore emission was overshoot. The step-safe control in r3 dropped free spores from 127 to 3.4. Flow-Lenia: dt/2 doubles numerical diffusion under reintegration tracking, so it is not a convergence test. The fl_cells beaded crown was numerical. ad7's shell width is set by the grid. |
+| Numerical artifacts | particle-life r2 (the researcher found the dt failure; the skeptic traced its cause): per-step displacement 1.2-1.37 > r_max=1 at dt=0.02, so spore emission was overshoot. The step-safe control in r3 dropped free spores from 127 to 3.4. Flow-Lenia: dt/2 doubles numerical diffusion under reintegration tracking, so it is not a convergence test. The fl_cells beaded crown was numerical. ad7's shell width is set by the grid. |
 | Sign flips under matched controls | chemotaxis `ecology`: the researcher's -24% prey effect came from mismatched grids; matched, it was -7% with predators vs -35% without. `evopursuit` "rescue from predation" was contradicted by the prey masses. `fl_predator`: the prey-only arm was not mass-matched (+274 prey ≈ 277 units of predator mass). |
 | Contagion and label leakage posing as selection | autopoiesis `phase_kinds`: 45 intact cells converted against 8 mutations, and the sweep happened with mutation off. `membrane_kinds`: an arithmetic face-mean leak. lenia `mca`: 7-15 gross conversions vs 1 mutation. flow-lenia gene2: within-body somatic turnover, 0 deaths in 13/15 runs. ad5/ad7: patch flips outnumber births (9 vs 6; ~40 vs 6-9). |
 | Unmatched or null controls | ad5 neutral at k=0.13 vs ancestor 0.10, and the matched neutral showed the ancestor is sterile. lenia's L4c ablation ran on the parent world. particle-life's lysis arms drew random numbers conditionally, so they diverged before contact. autopoiesis arm C was null by construction (a sub-majority patch in a deterministic PDE). fisim's gate-off kept D=4. |
@@ -405,7 +408,7 @@ per-species tracking.
    - Autopoiesis arm E prescribed a death disk the size of a body, which then acted as a
      fission operator and a size filter.
    - Chemotaxis's "births far exceed conversions" criterion was mis-posed.
-   - fisim's stop rule fired on the least diagnostic fix.
+   - fisim's stop rule, in the curator's view, fired on the least diagnostic fix (the director ruled that it fired correctly).
 4. **Readiness and snapshot errors.**
    - Two final reviews ran on unfinished snapshots and were discarded.
    - Chemotaxis's provisional r3 record was written before the judges saw REPORT_r3.
@@ -422,9 +425,9 @@ per-species tracking.
    - autopoiesis L4a medium;
    - the ad9 row placed inside the ad7 family.
 
-   The leaderboard also carries duplicate r2 and r3 rows.
+   `leaderboard.json` also still carries four stale r2 entries next to their r3 replacements (evopursuit, sporecell, sporecell2-gate, the ad7 family).
 7. **Cost.** The committee ran 21 reviews with 4 agents each, every judge read images, and
-   the skeptic re-ran simulations. That cost about 386 USD against 219 for all seven
+   the skeptic re-ran simulations. The coordinator session that ran the committee (and also the literature scout and labkit v0.2) cost about 386 USD before this synthesis, against 219 for all seven
    researchers. Each review took 25-80 minutes.
 
 ### 4.5 Recommendations for a judge inside an automated evolutionary loop
@@ -448,8 +451,8 @@ per-species tracking.
    The judge then runs controls mechanically instead of asking for them. Asked-for
    controls were the experiments least often delivered.
 3. **Make worlds emit a ledger.** Each world should log births, deaths, merges, mutations
-   and conversions with parent ids, merge-aware and periodic-aware. Every L6 and L7 error
-   above was a bookkeeping error.
+   and conversions with parent ids, merge-aware and periodic-aware. Most L6 and L7 errors
+   above were bookkeeping errors.
 4. **Score into an archive, not a scalar.** Use niches of rung x individual-rung x
    spontaneity (MAP-Elites style). Let confidence weight the selection probability, and
    use novelty and mechanism as diversity pressure. Planted structure and rule accretion
@@ -470,7 +473,7 @@ per-species tracking.
 
 ## 5. Question 2: is agent-driven mutation more expressive?
 
-**Yes, structurally.** Every rung above L3 came from edits that change the form of the
+**Yes, structurally.** Every rung above L3, except the known C-glider r-two-s1-60 (L4b[L2]) from lenia's random kernel screen, came from edits that change the form of the
 equations, which a parameter-mutation EA cannot make. The cost is a low hit rate and gains
 that came early. Most effort went into heredity, and those edits mostly failed.
 
@@ -485,7 +488,7 @@ files:
 | autopoiesis | 24 | lattice SCL replaced by an Allen-Cahn wall tilted by own product (s1; ancestor of every rung-bearing world), chi adsorption drift (s1), sealed-channel arm E (s3) |
 | active-droplets | 18 | consumed fuel with cooperative u c^2 and M 1→0.03 (s1), amphiphile drift (s1), confined alleles (s1), fisim gate forked onto the self-made shell (s2) |
 | flow-lenia | 18 | conserved non-flowing food with a Hill gate on glider rule C2_r202 (s1); 0 of 5 heredity edits paid off |
-| fisim-beyond-laplacian | 16 | band/CH membrane and perm gate (2 of 11 single-operator screens, s1); xcell-evo2 (s2, L6[L3] low) |
+| fisim-beyond-laplacian | 16 | band/CH membrane and perm gate (the two hits among the sprint-1 single-operator screens); xcell-evo2 (s2, L6[L3] low) |
 | particle-life | 14 | written contact lysis (s2, on a non-converged dt map), the only rung above L2 from about 13 edits |
 | chemotaxis-motility | 12 | slow repellent trail (s1), Da 4→2 (s2), evasion allele plus predators (s2); 7 of 9 lineage nodes reached the leaderboard |
 
@@ -498,7 +501,7 @@ files:
 | New constraint on growth | lenia: positive growth capped by local food at yield Y, then a decay term | L4c; three regimes; the free-dormancy law |
 | New advective field | chemotaxis: a slow repellent h added to Keller-Segel; then trail toxicity, regrowing nutrient, non-reciprocal cross-taxis | spontaneous swimmers, then dividing swimmers, then L5 high |
 | Cross-thread operator transplant | active-droplets ad7: fisim's gated diffusion acting on ad3's inert, self-made shell | the shell now does work, L6[L3] medium |
-| Change of representation | ad9: trait carried as q=a*kp on the catalyst's own transport; particle-life: identity-carrying catalytic labels | conversions impossible by construction; exact lineage |
+| Change of representation | ad9: trait carried as q=a*kp on the catalyst's own transport; particle-life: identity-carrying catalytic labels | ad9: conversions impossible by construction; particle-life: exact matter provenance, but conformity still converted intact cells (4 against 5 kind-1 births, r3) |
 | Discretization edit | chemotaxis: MUSCL face flux; autopoiesis: min face gate | removed heading lock and 80% mass loss; sealed heredity |
 | Diagnostic edit | particle-life: step-safe integrator with a k_det=0 control | falsified the thread's own reproduction mechanism |
 
@@ -552,8 +555,8 @@ physical, and they recur across threads:
    - flow-lenia: mosaic bodies with somatic turnover.
 
    Heredity worked only with confinement by construction: a min gate plus decay outside
-   bodies, a trait carried on the body's own transport, or particle identity plus
-   majority-vote conformity.
+   bodies, or a trait carried on the body's own transport. Particle identity plus
+   majority-vote conformity still leaked (4 intact-cell conversions against 5 kind-1 births in r3).
 2. **No intrinsic death.**
    - m4 solitons never die.
    - Confluent lattices freeze in lenia, active-droplets, particle-life and autopoiesis.
@@ -565,19 +568,19 @@ physical, and they recur across threads:
    droplets, or discs larger than a median body (49 px against 35-47). The lenia
    "coverage law" says a mutant must replace about the whole body (≥0.9 of its mass) to
    persist.
-4. **Power.** Runs had 6-40 bodies, 1-5 mutations and about 1 generation of turnover. The
+4. **Power.** Runs were small: ad9 had 6 cells and 1-5 mutations, motile_trait_tox 2-8 cells, and most runs about 1 generation of turnover. The
    ad9 null was predictable from births x p_mut ≈ 1-3.
 5. **Positive-control traits.** Uptake and growth-rate genes make selection true by
    construction. They test the machinery, not the biology.
 
 The agents also showed typical failure patterns:
 
-- headlines oversold relative to the evidence, and more than two dozen claims were
+- headlines oversold relative to the evidence, and many claims were
   downgraded;
 - controls requested in several sprints went unrun, such as the Laplacian twins and the
   L4c forks;
 - rules accreted, and tooling drift crept in (ad9);
-- reports were incomplete (lenia's B5 coded but not reported).
+- reports were incomplete at review time (the committee recorded lenia's B5 retry as coded but unreported; its result landed 17 minutes before the review).
 
 They were also strong at honest negatives and self-correction. The researchers retracted
 `xcell-turn`, reported particle-life's dt failure themselves, withdrew flow-lenia's L7,
@@ -603,7 +606,7 @@ Timeline (UTC):
 | 14:25 | kit, rubric, charter and briefs pushed |
 | 15:20-16:15 | sprint-1 reports |
 | 15:49-17:45 | sprint-1 reviews |
-| 16:45 | sprint 2 started on the researchers' own plans |
+| 16:37 | sprint 2 started on the researchers' own plans, right after the sprint-1 digest |
 | 17:45 | rubric v2 |
 | 17:45-19:40 | labkit v0.2 |
 | 18:10-19:30 | sprint-2 reviews |
@@ -612,21 +615,21 @@ Timeline (UTC):
 
 ### 6.2 What worked
 
-- **Independent review with re-runs.** Every major error in §4.2 was found by a judge who
+- **Independent review with re-runs.** Nearly every major error in §4.2 was found by a judge who
   re-ran a world or re-tabulated a ledger, not by reading prose.
 - **Convergence across threads.** Three threads arrived independently at gated mobility,
   which made it credible as a general operator. The digest turned it into a lab-wide
   pointer.
 - **Committee-designed experiments.** They produced the lab's best-controlled results:
-  - autopoiesis arm E gave the only L7[L3];
+  - autopoiesis arm E gave the only L7[L3] (low, disturbance-mediated, with the skeptic dissenting);
   - the lenia branch-point assay gave the coverage law;
   - chemotaxis's 18 fixed-allele arms lifted L5 to high;
   - the flow-lenia Price audit gave the correct reading of its gene sweep.
-- **Stop rules and time boxes.** They made negatives clean in fisim, lenia and
-  particle-life.
+- **Stop rules and time boxes.** They made negatives clean in fisim and
+  particle-life. In lenia the decisive B5 retry was recorded as unreported, so its L7 line ended at Weak, not at a clean negative.
 - **Shared evidence packs and calibration controls.** These gave seven very different
   families a common currency, and judges could compare across threads.
-- **Spend did not predict results.** Researcher cost ranged from 21 to 42.5 USD.
+- **Spend did not predict results.** Researcher cost ranged from 21.3 to 42.5 USD.
   active-droplets, the cheapest, holds L6[L3] and L7[L2]. lenia and autopoiesis cost the
   same: one stalled after r1, and the other produced the lab's only L7[L3].
 
@@ -635,7 +638,7 @@ Timeline (UTC):
 1. **CPU bottleneck.** The committee shared 4 cores while judges re-ran simulations, with
    load average 11-18 and 25-80 minutes per review. The fix was that only the skeptic
    re-runs. It worked, but it reduced independent reproduction.
-2. **Review latency.** Sprint-1 reviews reached researchers 60-105 minutes into sprint 2:
+2. **Review latency.** Six of seven sprint-1 reviews reached researchers 60-105 minutes into sprint 2 (fisim's arrived at 17:03):
    particle-life at 17:37, lenia at about 17:45, autopoiesis at 18:11, chemotaxis at 18:16,
    active-droplets at 18:20, flow-lenia at 18:23. For active-droplets, chemotaxis and
    flow-lenia the sprint-2 work was already done. Commissioned experiments slipped a sprint
@@ -654,7 +657,7 @@ Timeline (UTC):
    placeholders, no "draft" commit, 10 quiet minutes.
 6. **The digest relayed claims before review.** DIGEST_r1 (16:36) told every thread that
    autopoiesis and active-droplets had "met" the L7 bar and that particle-life reached
-   3-9 generations. All three were later downgraded.
+   3-9 generations. The autopoiesis L7 and the particle-life generations were later withdrawn, and ad5's L7 stood only at low confidence.
 7. **Infrastructure lagged.** labkit v0.1's lineage window, rim metrics, damage targeting
    and species tracking were fixed only in sprint 2. Tracker gaps for propagules,
    swimmers and mixed species persisted to the end, and each thread wrote its own
@@ -701,10 +704,10 @@ under "What a future lab should do next".
 
    These are cheap, and they answer the project's original question directly.
 4. **Run a powered fixation test on the ad9 machinery (active-droplets).** Use 20
-   identical-event S/N pairs at 128², with non-overlapping founders. Pre-register mutant
+   identical-event S/N pairs per ancestor at 128², with non-overlapping founders. Pre-register mutant
    fates (predicted 0.59 vs 0.17 fixation) and ship one pack.
 5. **Endogenous death.** Build a conserved, extensive maintenance cost split at division,
-   in the PhySim genome and in the CH droplets. Every run without imposed deaths froze
+   in the PhySim genome and in the CH droplets. Most runs without imposed deaths froze
    into a lattice, and this blocks L7 everywhere.
 6. **Emergent release from non-reciprocal forces (particle-life).** Run against an
    (A+Aᵀ)/2 symmetrized twin. This is the thread's untested beyond-diffusion lever.
@@ -727,13 +730,13 @@ under "What a future lab should do next".
 |---|---|
 | Charter, rubric v2, literature | `CHARTER.md`, `RUBRIC.md`, `LITERATURE.md` |
 | Rubric changes and their counterexamples | `committee/RUBRIC_CHANGES.md` |
-| Leaderboard (58 rows; machine-readable copy) | `committee/LEADERBOARD.md`, `committee/leaderboard.json` |
+| Leaderboard (54 rows; the machine-readable copy has 58 entries, 4 of them stale r2 duplicates) | `committee/LEADERBOARD.md`, `committee/leaderboard.json` |
 | All 21 reviews (prose and JSON) | `committee/reviews/<thread>_r{1,2,3}.md` and `.json` |
 | Sprint-1 digest; cross-pollination log | `committee/DIGEST_r1.md`; `committee/CROSS_POLLINATION.md` |
 | Per thread: brief, notebook, reports, final | `threads/<thread>/{BRIEF,NOTEBOOK,REPORT_r1,REPORT_r2,REPORT_r3,FINAL}.md` (FINAL.md tables are partly superseded by r3; the leaderboard is authoritative) |
 | Worlds (forkable, with META.parent) and packs | `threads/<thread>/worlds/<world>/world.py`; `threads/<thread>/packs/<world>/` |
 | PhySim genome extension | `threads/fisim-beyond-laplacian/XGENOME_SPEC.md`, `xgenome.py` |
-| Reusable assays | `threads/lenia-multichannel/tools/{branch_test,branch_states,division_ledger}.py`; `threads/autopoiesis/{evotrack,kindtrack}.py`; `threads/flow-lenia/scripts/audit_gene.py`; `threads/active-droplets/protocell_movie.py`; `threads/chemotaxis-motility/{fission,preytrack}.py` (both have the merge-daughter bug) |
+| Reusable assays | `threads/lenia-multichannel/tools/{branch_test,branch_states,division_ledger}.py`; `threads/autopoiesis/{evotrack,kindtrack}.py`; `threads/flow-lenia/scripts/audit_gene.py`; `threads/active-droplets/protocell_movie.py`; `threads/chemotaxis-motility/{fission,preytrack}.py` (preytrack.py has the merge-daughter bug; fission.py's old max()-through-merge depth rule is replaced by its strict mode) |
 | labkit (world contract, ops, metrics, packs) | `labkit/` (`python -m labkit.run <world.py> --out <dir> --seeds 0 1 2`); calibration packs in `examples/packs/` |
 
 Judge working files cited in reviews as `judge-scratch/...` were not committed to this
@@ -746,7 +749,7 @@ branch.
 | autopoiesis | `membrane_evo_up`, seed 4 | L7[L3] low | High-yield orange cells take over the area. The black disk deaths are the mechanism. |
 | active-droplets | `ad7t-thick`, seed 1 | L6[L3] | Thin-rimmed green and yellow cells divide and fill the box. Two-colour cells are imposed patch relabels. Poster: `showcase_sheet.png`. |
 | chemotaxis-motility | `evopursuit`, seed 0 | L5[L2]+L4b | Prey bodies go from A8/B7 at t=750 to A0/B45 at t=1450, with predators riding the crescents. It reads without explanation. |
-| flow-lenia | `fl_predator` | L4b[L2], L5 Weak | Predator-prey Flow-Lenia, one seed; coexistence is a knife edge. The stronger world is fl_forager (`packs/fl_forager/seed1/sheet.png`). |
+| flow-lenia | `fl_predator` | L4b[L2] (prey only), L5 Weak | Predator-prey Flow-Lenia, one seed; coexistence is a knife edge. The stronger world is fl_forager (`packs/fl_forager/seed1/sheet.png`). |
 | lenia-multichannel | `mcfd-MIRd`, seed 2 | L6[L2]+L4c+L5 | Intermittent boom-bust of Chan's planted MIRd+ cells on food. |
 | fisim-beyond-laplacian | `xcell-her`, seed 0 | L3 | Two planted kinds divide and breed true, then freeze into a lattice. |
 | particle-life | `sporecell2-gate` | L2 | The thread's most life-like image, but its spore burst is integrator overshoot. Poster: `showcase_frame.png`. |
