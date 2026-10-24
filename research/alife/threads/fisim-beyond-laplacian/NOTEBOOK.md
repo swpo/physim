@@ -54,3 +54,49 @@ divide via a dumbbell-shaped membrane, and the population saturates at ~16 discr
 membrane-bounded cells (L=64); each daughter carries its own ring and cargo.
 Kg=3 → no division, 6 cells. (`screens/cellpop_Kg1.0.png`, `cellpop_Kg3.0.png`).
 Promoted as `worlds/xcell-div` (ablations `xcell-div-nogate`, `xcell-div-nofb`).
+
+**Render fix.** First xcell-div pack rendered state indices [0,4,5] (body, cargo, global)
+instead of [0,3,4] (body, membrane, cargo); regenerated. Worlds now render only
+[body, membrane, cargo(, waste)], positive parts of deviations.
+
+**N1 numerics (cellpop Kg=1).** dt 0.02→0.01: same division sequence, 14-15 cells at
+t=200 (`screens/cellpop_num_dt.png`). dx 0.5→0.333 (N=192, dt=0.01): 15 cells, same
+sequence (`screens/cellpop_num_dx.png`).
+
+**S9 spontaneity.** cellpop from smoothed Gaussian noise on u only (amp 1, σ=4 px, no
+planted bodies, channels at vacuum) → 23 cells by t=43, 26-27 by t=300, every one with
+its own membrane ring and cargo, packed in a near-hexagonal array
+(`screens/cellpop_noise_a1.0_s4.0.png`).
+
+**S10 what does the CH term do?** Radial profiles averaged over cells
+(`screens/profiles_containment.png/json`), xcell-a genome, t=150:
+- gate β=5 + CH: cargo 1.24 at centre → ≈0 by r≈4 (units); membrane peak 0.56 at r=3
+  (the body's half-max radius), FWHM 8 px; m≈0.22 even at the centre.
+- β=0: cargo 0.44 at centre, smooth √(Dτ) tail; same membrane.
+- β=5, CH off (M=0): membrane is a 3-px line, peak 1.38; cargo 0.90 at centre.
+So the band deposit makes the ring; CH *broadens* it to its interface width and caps
+it near the m=1 well, which seals better (1.24 vs 0.90). CH is not the sharpening agent
+here — the gate (nonlinear mobility) is what makes the cargo boundary sharp.
+
+**P1 packs.** xcell-a (3 seeds): 8/8/8 persistent motile cells, 7.9-8.6 body lengths, no
+splits, membrane ring visible in sheet and tracks. xcell-div (3 seeds): 13/15/15
+persistent splits, max generation 2, 21-23 cells at T=400, saturation by t≈200; one
+cell per seed sometimes becomes a long rod that never divides.
+
+**D1 damage xcell-a, 50% at t=200** (`packs/xcell-a-damage`): the struck cell dies
+(8→7); its CH membrane persists ~20 time units as an empty ring ("ghost envelope") then
+fades. No repair at 50%. 30% queued.
+
+**S11 turnover: + waste channel q (τ=40, D=2, membrane-gated, inhibits body K=0.3)**,
+T=400: cell counts 22 → 19 → 23 → 24; some cells shrink and die while others divide.
+(`screens/cellwaste_kw0.3.png`). Promoted as `xcell-turn` (T=800, N=128) with ablation
+`xcell-turn-leaky` (waste not gated).
+
+**S12 heredity prototype (`s_her.py`)**: body + membrane + global cap + a *bistable*
+cargo activator h (-h³+h-0.2, vacuum = low root), promoted inside bodies by a body
+deposit (tilt kb), gated by the membrane, and activating the body when on (kh). Half
+the initial cells get an h poke.
+- kb=0.15: h-domains shrink to dots and die by t≈200 (curvature beats tilt). Negative.
+- kb=0.25 / 0.32 (kh=0.25): two kinds coexist for 300 time units: h-on cells (larger)
+  and h-off cells (small) — neither switches. On-cells start to elongate and divide only
+  at t≈250-300 (`screens/her_kb0.32.png`).

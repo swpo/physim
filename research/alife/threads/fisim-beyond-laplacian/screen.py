@@ -42,9 +42,9 @@ def soup(g, N, seed, n=6, dx=0.5, dmin=14.0, dress=0.6, kick=0.5, acts=None):
     return F
 
 
-def run(g, N=128, T=200.0, seed=0, nsnap=8, F=None, noise=0.0, **kw):
-    F = soup(g, N, seed, **kw) if F is None else F
-    S = X.make_state(g, N, F=F, noise=noise, seed=seed)
+def run(g, N=128, T=200.0, seed=0, nsnap=8, F=None, noise=0.0, dt=0.02, dx=0.5, **kw):
+    F = soup(g, N, seed, dx=dx, **kw) if F is None else F
+    S = X.make_state(g, N, F=F, noise=noise, seed=seed, dt=dt, dx=dx)
     steps = int(round(T / S["dt"]))
     at = set(np.linspace(0, steps, nsnap).round().astype(int).tolist())
     snaps, ts = [], []

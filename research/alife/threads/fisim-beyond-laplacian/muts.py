@@ -52,3 +52,12 @@ def cellpop(kc=0.25, Kg=1.0, Dg=100.0, taug=10.0, **kw):
     g = cellfb(kc=kc, **kw)
     g["chans"].append(dict(tau=taug, D=Dg, g="id", thr=0.0, sc=1.0))
     g["W"].append([1.0]); g["K"][0].append(Kg); return g
+
+def cellwaste(kw=0.3, tw=40.0, Dw=2.0, bw=5.0, Kg=1.0, kc=0.25, **kw2):
+    """cellpop + waste channel (slow, produced by the body, gated by the membrane, inhibits u).
+    Trapped waste should age cells; division dilutes it."""
+    g = cellpop(Kg=Kg, kc=kc, **kw2)
+    g["chans"].append(dict(tau=tw, D=Dw, g="id", thr=0.0, sc=1.0))
+    g["W"].append([1.0]); g["K"][0].append(kw)
+    g["perm"].append([1 + 5, 3, bw])
+    return g

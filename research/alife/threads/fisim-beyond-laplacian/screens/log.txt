@@ -19,3 +19,11 @@ cellpop_Kg3.0: wall 48s blobs [9, 6, 6, 6, 6, 6, 6, 6] width 3.22 cargo in/far 0
 cellpop_Kg1.0_M0.0: wall 47s blobs [9, 7, 7, 12, 15, 15, 16, 17] width 3.24 cargo in/far 0.732/-0.0493 ratio 14.9 m rim 0.007 m in 0.136
 taxis_chi0.5: wall 39s blobs [9, 6, 6, 6, 6, 6, 6, 6] occ 0.038 width 3.38 finite True
 taxis_chi1.0: wall 37s blobs [9, 6, 7, 7, 7, 7, 7, 7] occ 0.032 width 3.32 finite True
+cellpop numerics dt: wall 94s blobs [9, 7, 7, 11, 15, 15, 15, 14]
+cellpop noise IC amp1.0 sig4.0: wall 71s blobs [0, 23, 26, 26, 26, 26, 26, 27]
+cellpop numerics dx: wall 201s blobs [9, 7, 7, 11, 15, 15, 15, 15]
+cellwaste_kw0.3: wall 111s blobs [9, 10, 15, 22, 22, 19, 23, 24] width 3.28 cargo in/far 0.869/-0.1149 ratio 7.6 m rim 0.172 m in 0.416
+her_: wall 114s cells [11, 10, 11, 11, 11, 11, 11, 11] h-on cells [8, 8, 8, 7, 7, 2, 0, 0]
+her_kb0.32: wall 116s cells [11, 11, 12, 13, 13, 13, 14, 14] h-on cells [8, 8, 8, 8, 8, 8, 9, 9]
+her_kb0.25: wall 118s cells [11, 11, 12, 12, 13, 13, 13, 13] h-on cells [8, 8, 8, 8, 8, 8, 8, 8]
+her_kb0.32_kh0.4: wall 175s cells [11, 12, 13, 14, 14, 14, 15, 13] h-on cells [8, 8, 8, 9, 9, 9, 9, 9]

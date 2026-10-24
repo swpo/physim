@@ -14,4 +14,4 @@ far = ~ndimage.binary_dilation(body, iterations=8)
 ratio = c[body].mean() / max(abs(c[far].mean()), 1e-6)
 line = f"{tag}: wall {w:.0f}s blobs {[blobs(s[0], u0)[0] for s in sn]} width {front_width(F[0], u0):.2f} cargo in/far {c[body].mean():.3f}/{c[far].mean():.4f} ratio {ratio:.1f} m rim {m[near].mean():.3f} m in {m[body].mean():.3f}"
 print(line); open("screens/log.txt", "a").write(line + "\n")
-strip(sn, ts, ["u", "v", "w", "m (CH)", "cargo", "glob"], f"screens/{tag}.png", tag)
+strip(sn, ts, ["u", "v", "w", "m (CH)", "cargo", "glob", "waste"], f"screens/{tag}.png", tag)
