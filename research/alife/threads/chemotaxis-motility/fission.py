@@ -64,12 +64,16 @@ def label(m):
 
 frames = []          # (t, lab, n)
 crops_src = []       # keep matter for crop strips (every frame, float16)
+allele_src = []      # B channel per frame, for heritable worlds
 t = 0.0
 while t <= T + 1e-9:
     m = matter(s)
     lab, n = label(m)
     frames.append((t, lab, n))
     crops_src.append(m.astype(np.float16))
+    if "B" in (W.META["channels"] or []):
+        Fx = np.asarray(W.fields(s), np.float32)
+        allele_src.append(Fx[1].astype(np.float16))
     for _ in range(nsub):
         s = W.step(s)
     t += every
@@ -155,8 +159,27 @@ ncomp = [f[2] for f in frames]
 res = {"world": W.META["name"], "seed": seed, "T": T, "overrides": kv, "every": every, "quiet": quiet, "surv": surv,
        "splits_all": len(events), "clean_fissions": len(clean), "max_generation": max(gen.values()) if gen else 0,
        "bodies_mean_late": float(np.mean(ncomp[len(ncomp) // 2:])), "clean": [(round(a, 1), b, c) for a, b, c in clean]}
+# allele composition of parent (frame before split) and children (10 t after split)
+if allele_src:
+    def bfrac(fi, tid):
+        lab = frames[fi][1]
+        js = [j for j, t_ in maps[fi].items() if t_ == tid]
+        if not js:
+            return None
+        msk = np.isin(lab, js)
+        b = allele_src[fi].astype(np.float32)[msk].sum()
+        return float(b / max(crops_src[fi].astype(np.float32)[msk].sum(), 1e-9))
+    comp = []
+    for tt, p, ch in clean:
+        fi = int(round(tt / every))
+        fc = min(fi + int(10 / every), len(frames) - 1)
+        comp.append({"t": tt, "parent_B": bfrac(fi - 1, p), "children_B": [bfrac(fc, c) for c in ch]})
+    res_comp = comp
+else:
+    res_comp = []
 # clean fissions per generation of the dividing parent
 res["fissions_by_parent_gen"] = np.bincount([gen.get(p, 0) for tt, p, ch in clean]).tolist() if clean else []
+res["composition"] = res_comp
 json.dump(res, open(out + ".json", "w"), indent=1, default=int)
 print(f"{out}: splits {len(events)}, clean fissions {len(clean)}, max generation {res['max_generation']}, "
       f"bodies late {res['bodies_mean_late']:.1f}, fissions by parent generation {res['fissions_by_parent_gen']}")

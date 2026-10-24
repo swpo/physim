@@ -155,3 +155,11 @@ survive >= 40 t. Generation = number of clean fissions in the ancestry. Writes a
 - labkit pack: 43-45 moving tracks per seed (up to 27 body lengths), persistent splits 3-8, labkit max generation 2-3.
 - Mechanism: growth at the front lengthens the body along its axis. Once the length exceeds ~2x the attractant range, the
   cohesion cannot hold the two ends and the waist thins (the active-droplets rule "body > internal transport length").
+
+## swimevo: heritable alleles in dividing swimmers (fork of swimfission + active-droplets ad5 confined alleles)
+- rho = A + B. The alleles share the body's face flux (split by upwind fraction) and diffuse identically. Growth is cooperative in
+  the allele's OWN density (k^3/(rh^2+k^2)), so the majority allele purifies a mixed body (the analogue of ad5's within-droplet
+  competition). Mutation: rare symmetric patch events (rate m = 0.02/t after t_on, radius 4 px) swap A↔B inside a body.
+  Selection world: g_B = 1.3 g. **Neutral control `swimevo_neutral`: s = 0, identical mutation process.** Start: all A.
+- Screen (128², t=1200, seed 0): B swimmers appear from t≈470. Bodies are almost always pure (A or B); mixed bodies are transient after a
+  mutation. A/B counts 17/0 (t=144) → 9/1 (+5 mixed, t=600) → 6/6 (t=1200).
