@@ -213,51 +213,51 @@
   "world": "mcfd-MIRd",
   "rung": "L6[L2]+L4c+L5",
   "confidence": "medium",
-  "note": "Planted MIRd+ fed by regrowing food with maintenance decay 0.03. labkit reads gen 0 (K=10% of run). A judge's dense rerun of seed 2 shows two binary fissions after a trough (4->17 cells in ~100 t), with daughters re-forming core, cap and dots. Food competition sets the dynamics (no food: fills the grid; norefill: extinct; decay 0/0.01/0.03: dormant/static/boom-bust). The 'regular cycle' is not robust: peak spacing 530/290/260, a ~650 t static plateau on seed 11, troughs of 2 cells, damped at 192\u00b2, extinct at dt/2 in 1/2 seeds. L3 Weak (1-2 px halo dots).",
+  "note": "FINAL (r3), unchanged since r1. Planted MIRd+ fed by regrowing food with maintenance decay 0.03. A judge's dense rerun shows binary fissions after a trough (4->17 cells in ~100 t), with daughters re-forming core, cap and dots. Food competition sets the dynamics: decay 0/0.01/0.03 gives dormant/static/boom-bust. The cycle is intermittent, not regular: damped at 192\u00b2, and extinct at dt/2 in 1/2 seeds. L3 Weak (1-2 px halo dots). Showcase movie movies/showcase.mp4 (seed 2, 128\u00b2, t 0-1400).",
   "pack": "threads/lenia-multichannel/packs/mcfd-MIRd",
   "thread": "lenia-multichannel",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/mcf-MIRd": {
   "world": "mcf-MIRd",
   "rung": "L6[L2]+L4c",
   "confidence": "high",
-  "note": "Chan's planted replicator with build-from-food: 6 persistent splits, gen 3 (seeds 0 and 2). Norefill is extinct in 3/3 seeds by t~230-310, against 11-16 survivors with refill. L5 Weak: a single boom and decline in 400 t; long runs end in extinction or a dormant lattice. Replication itself is Chan's result (no-food control reaches gen 4).",
+  "note": "FINAL (r3), unchanged since r1. Chan's planted replicator with build-from-food: 6 persistent splits, gen 3 (seeds 0 and 2). Norefill is extinct in 3/3 seeds against 11-16 survivors with refill. L5 Weak. Replication itself is Chan's result.",
   "pack": "threads/lenia-multichannel/packs/mcf-MIRd",
   "thread": "lenia-multichannel",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/mcf-fastcell": {
   "world": "mcf-fastcell",
   "rung": "L4b[L3]+L4c",
   "confidence": "medium",
-  "note": "Planted Chan 'fast cell' gliders (8-15 BL, 3 seeds plus seed 11) carve food wakes. A radial profile shows a real A0 shell at r 14-22 with A0=0 inside r<8. Norefill leaves 0/0/1 survivors vs 3/4/3. Spontaneity 0. Baseline attrition without food. No dt/R test.",
+  "note": "FINAL (r3), unchanged since r1. Planted Chan 'fast cell' gliders (8-15 BL) carve food wakes. Real A0 shell at r 14-22 with A0=0 inside r<8. Norefill leaves 0/0/1 survivors vs 3/4/3. Spontaneity 0; no dt/R test.",
   "pack": "threads/lenia-multichannel/packs/mcf-fastcell",
   "thread": "lenia-multichannel",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/r-two56": {
   "world": "r-two56",
   "rung": "L3",
   "confidence": "high",
-  "note": "One of 2/420 random 2-channel rules: cells with a white centre, cyan core and orange cog shell form from noise (3 pack seeds plus 3 judge seeds) and stay unchanged to t=400-500. dt/2 from noise keeps 6 cells. Formed cells survive R=15 and R=20 with the same ~10 teeth. Static fixed points with no turnover. Narrow island (1/5 jitter draws). L4a Contradicted (core damage kills).",
+  "note": "FINAL (r3), unchanged since r1. 2/420 random 2-channel rules give cells with a white centre, cyan core and orange cog shell. They form from noise in 6 seeds, survive dt/2 and R=15/20, and the ring-kernel set-point shell is backed by ablations. Static, with no turnover. L4a Contradicted. The r3 food variant is listed separately (rf-two56-mu0.01).",
   "pack": "threads/lenia-multichannel/packs/r-two56",
   "thread": "lenia-multichannel",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/r-two-s1-60": {
   "world": "r-two-s1-60",
   "rung": "L4b[L2]",
   "confidence": "medium",
-  "note": "C-gliders peel off a jammed crowd of ~45 bodies that forms from noise (3.0-3.8 BL). The second channel is dead by t~2-6 and constant-k5 keeps the glider, so this is the known single-channel Lenia class. Grid-aligned bricks. L5 Weak (jamming shown by one planting test).",
+  "note": "FINAL (r3), unchanged since r1. Known single-channel C-glider class (the second channel is dead; constant-k5 keeps the glider). Grid-aligned bricks.",
   "pack": "threads/lenia-multichannel/packs/r-two-s1-60",
   "thread": "lenia-multichannel",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "active-droplets/ad5-evolve": {
   "world": "ad5-evolve",
@@ -372,22 +372,22 @@
  "lenia-multichannel/mca-MIRd": {
   "world": "mca-MIRd",
   "rung": "L6[L2]",
-  "confidence": "low",
-  "note": "The committee's discrete-allele L7 test: majority inheritance, S EFF=0.15 vs an identical-event N arm, 3+3 seeds, 192\u00b2, 20000 steps. L7 Not tested. The operator picks uniformly among A0>0.3 components, so 13/18 events flipped 1-19 px halo dots. The 4 independent cell-scale events (step 507 is shared by S_0 and N_0) flipped only the A0 core + 4 px, ~30-50% of the body's matter. All were lost in 50-150 t in both arms; the 507 event was lost identically in S and N during growth. Skeptic branches from one seed-11 state: a 29% flip erodes 0.037->0.006 in 80 t, while whole-body flips persist 4/4 (one 1->2 division, both daughters allele 1). 'Resident heredity 2932/2933' is null by construction. L6 is inherited from mcfd-MIRd; the skeptic's labkit rerun gives gen 2 and 5 persistent splits by t=150. No pack or sheet.",
-  "pack": "threads/lenia-multichannel/screen_data/mca",
+  "confidence": "medium",
+  "note": "FINAL (r3); L7 Not tested (r2) -> Weak (r3). This is the committee's branch-point assay. 12 mature isolated cells from 2 neutral runs (192\u00b2, decay 0.03, mutation off) were each flipped whole (coverage 1.0) and run 500 t under S (EFF 0.15) and N from the identical state. S>N in 10/10 informative pairs; the 2 smallest starts (0.012, 0.014) were lost in both arms. S ends at allele-1 fraction 0.40-0.72 with 8-22 pure cells, N at 0-0.56 with 0-8. Ledger (3 points x S/N): allele-1 deaths/divisions are 0.30-0.43 under S vs 0.63-0.78 for allele 0, and matched under N (0.46-0.65). Net conversions +1 to +3 against net allele-1 births +36 to +55, so the sweep is not contagion. It fails the L7 bar on four counts. (1) 47% pure allele-1 divisions (99/211 S, 27/57 N), against a 90% bar. (2) Gross living-cell conversions of 7-15 per S run against 1 mutation. (3) Imposed variation. (4) Isolated founders only: the skeptic's contact founder was lost in both arms. Further caveats: the ledger is not merge-aware (allele 0 logs 133 divisions and 83 deaths in ~18 cells), labkit reads gen <=1 with merge/split 0.56-0.66, and S raises population size (27.5 vs 18.1). The seed-0 S sheet sets into a static allele-1 lattice by t~350-500 (candidate self-dormancy). Per-body retry B5 coded, unreported. Same 6 states, old operator (partial flips 0.50-0.79): lost 9/12 arm-runs vs 1/12 for whole-body flips (coverage law).",
+  "pack": "threads/lenia-multichannel/packs/mca-MIRd-branch",
   "thread": "lenia-multichannel",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/mcg-MIRd (+ mcg-MIRd-neutral)": {
   "world": "mcg-MIRd (+ mcg-MIRd-neutral)",
   "rung": "L6[L2]",
   "confidence": "medium",
-  "note": "Continuous yield trait g carried by matter (3-px blur inheritance), with one-sided harmful mutations, 3+3 seeds at 160\u00b2. The planted MIRd+ booms to ~30 cells, crashes to 3-4 (t~436-522) and regrows by fission (sheet). labkit reads gen 0, and merges are 74% of splits. L7 Weak: harmful cell-samples 1/256 vs 34/237, but 29 of the 34 come from one neutral seed, 2 of 3 neutral mean-g curves overlap selection, the fitness effect is designed, the trait blends at contacts, and there is no ledger. Competition assay (planted g=0 vs -0.3, 128\u00b2): L7 Weak; one neutral seed loses the low kind as fast as selection. Two-sided yield: 3/3 selection runs freeze into a fed lattice vs 3/3 neutral runs cycling, with no mean-g difference. L7 Contradicted; the eco-evolutionary shift is Weak (Jensen: variance in e^g raises mean yield; no non-heritable control). L3 Weak (1-2 px halo dots), so the [L3?] is dropped.",
+  "note": "FINAL (r3), unchanged since r2. Continuous yield trait with blur inheritance, which blends at contacts. L7 Weak. Two-sided yield: L7 Contradicted. Eco-evolutionary freeze Weak (no Jensen control); r3's mca branch lattice is a second instance.",
   "pack": "threads/lenia-multichannel/packs/mcg-MIRd",
   "thread": "lenia-multichannel",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "flow-lenia/fl_forager_gene": {
   "world": "fl_forager_gene",
@@ -476,6 +476,16 @@
   "note": "FINAL (r3), new. Control for phase_membrane with chi=0 (no link adsorption). Noise gives about 42 small round cells dividing by dumbbell pinches: 26-32 persistent splits, gen 2-4, merge/split 0.03-0.09, 3 seeds. The population ends in a near-hexagonal frozen lattice. L fills the body (rim/core 1.12-1.14), so L3 is Contradicted, as intended. In effect this is phase_protocell_noise. No birth strips.",
   "pack": "threads/autopoiesis/packs/phase_membrane_chi0",
   "thread": "autopoiesis",
+  "round": 3,
+  "decision": "stop"
+ },
+ "lenia-multichannel/rf-two56-mu0.01": {
+  "world": "rf-two56-mu0.01",
+  "rung": "L3",
+  "confidence": "medium",
+  "note": "FINAL (r3), new. r-two56 on build-from-food with maintenance decay 0.01 (192\u00b2). Shelled cog cells form from noise in 4/4 seeds: 3 researcher seeds plus skeptic seed 11, with 7/3/2 survivors to t=300. Skeptic radial: A0 ~1 to rho 0.55; A1 ~0 at rho 0.25-0.55 and ~0.9 at rho 0.75-1.0 (rim/out 78). labkit's band test fails (A1 rim/core 1.24) only because of a central A1 dot. Static fixed points with attrition. Survivors sit in shallow food wells (F ~0.7 at the centre vs 0.9 at 2.5 R; mean food 0.99). Decay 0.03 leaves <=1 cell. L4c Not tested: no fork, no local cut, no flux budget. One unlabelled researcher screen, no researcher pack, and no resolution check on the fed variant (base r-two56 passed dt/2 and R=15/20).",
+  "pack": "threads/lenia-multichannel/screens/rf-two56_food_decay.png",
+  "thread": "lenia-multichannel",
   "round": 3,
   "decision": "stop"
  }

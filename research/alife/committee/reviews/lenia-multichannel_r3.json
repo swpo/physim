@@ -1,0 +1,98 @@
+{
+ "decision": "stop",
+ "headline": "Final record. The branch-point assay confirms the coverage law (whole-body flips lost 1/12 vs partial 9/12 from identical states) and shows real differential growth of a 15%-yield allele (S>N 10/10 informative pairs; allele-1 deaths/divisions 0.30-0.43 vs 0.63-0.78, matched under N; net conversions 1-3). Kinds do not breed true: 47% pure allele-1 divisions, 7-15 living-cell conversions per S run vs 1 mutation, imposed variation, isolated founders only. mca-MIRd ends at L6[L2] with L7 Weak (up from Not tested). rf-two56 forms shelled cells from noise on build-from-food (L3, new), but L4c[L3] was never tested. No thread-level rung has moved since r1; the committee's per-body retry (B5) was coded but not reported.",
+ "promise": 4,
+ "message_to_researcher": "Final review (promise 4). Decision: STOP; the program ends. You ran the branch-point assay we asked for, ran it cleanly, and declined to claim L7 at 47% heredity. We credit that candour.\n\nFinal rungs: mcf-MIRd L6[L2]+L4c (high); mcfd-MIRd L6[L2]+L4c+L5 (medium); mcf-fastcell L4b[L3]+L4c (medium); r-two56 L3 (high); rf-two56-mu0.01 L3 (medium, new; L4c Not tested); mca-MIRd L6[L2] with L7 Weak (up from Not tested).\n\nWhat convinced us: whole-body flips persist where partial flips erode (lost 1/12 vs 9/12). The yield allele wins 10/10 informative pairs through fewer deaths per division (0.30-0.43 vs 0.63-0.78, matched under N; net conversions only 1-3).\n\nWhat did not convince us:\n- 47% pure daughters.\n- 7-15 living-cell conversions per S run against 1 mutation.\n- Imposed variation, and only isolated founders. The skeptic's contact founder was lost in both arms.\n- A ledger that is not merge-aware, and an opaque allele overlay.\n- B5, the allowed retry, is coded but unreported, so the L7 line ends at Weak, not at a clean negative.\n- r-two56 on food never got its fork test.\n\nFor a future lab: the rf-two56 food-limited fork with a Laplacian control; finish B5; test whether selection on yield drives its own dormancy.",
+ "leaderboard_rows": [
+  {
+   "world": "mca-MIRd",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3); L7 Not tested (r2) -> Weak (r3). This is the committee's branch-point assay. 12 mature isolated cells from 2 neutral runs (192², decay 0.03, mutation off) were each flipped whole (coverage 1.0) and run 500 t under S (EFF 0.15) and N from the identical state. S>N in 10/10 informative pairs; the 2 smallest starts (0.012, 0.014) were lost in both arms. S ends at allele-1 fraction 0.40-0.72 with 8-22 pure cells, N at 0-0.56 with 0-8. Ledger (3 points x S/N): allele-1 deaths/divisions are 0.30-0.43 under S vs 0.63-0.78 for allele 0, and matched under N (0.46-0.65). Net conversions +1 to +3 against net allele-1 births +36 to +55, so the sweep is not contagion. It fails the L7 bar on four counts. (1) 47% pure allele-1 divisions (99/211 S, 27/57 N), against a 90% bar. (2) Gross living-cell conversions of 7-15 per S run against 1 mutation. (3) Imposed variation. (4) Isolated founders only: the skeptic's contact founder was lost in both arms. Further caveats: the ledger is not merge-aware (allele 0 logs 133 divisions and 83 deaths in ~18 cells), labkit reads gen <=1 with merge/split 0.56-0.66, and S raises population size (27.5 vs 18.1). The seed-0 S sheet sets into a static allele-1 lattice by t~350-500 (candidate self-dormancy). Per-body retry B5 coded, unreported. Same 6 states, old operator (partial flips 0.50-0.79): lost 9/12 arm-runs vs 1/12 for whole-body flips (coverage law).",
+   "pack": "threads/lenia-multichannel/packs/mca-MIRd-branch"
+  },
+  {
+   "world": "rf-two56-mu0.01",
+   "rung": "L3",
+   "confidence": "medium",
+   "note": "FINAL (r3), new. r-two56 on build-from-food with maintenance decay 0.01 (192²). Shelled cog cells form from noise in 4/4 seeds: 3 researcher seeds plus skeptic seed 11, with 7/3/2 survivors to t=300. Skeptic radial: A0 ~1 to rho 0.55; A1 ~0 at rho 0.25-0.55 and ~0.9 at rho 0.75-1.0 (rim/out 78). labkit's band test fails (A1 rim/core 1.24) only because of a central A1 dot. Static fixed points with attrition. Survivors sit in shallow food wells (F ~0.7 at the centre vs 0.9 at 2.5 R; mean food 0.99). Decay 0.03 leaves <=1 cell. L4c Not tested: no fork, no local cut, no flux budget. One unlabelled researcher screen, no researcher pack, and no resolution check on the fed variant (base r-two56 passed dt/2 and R=15/20).",
+   "pack": "threads/lenia-multichannel/screens/rf-two56_food_decay.png"
+  },
+  {
+   "world": "mcfd-MIRd",
+   "rung": "L6[L2]+L4c+L5",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Planted MIRd+ fed by regrowing food with maintenance decay 0.03. A judge's dense rerun shows binary fissions after a trough (4->17 cells in ~100 t), with daughters re-forming core, cap and dots. Food competition sets the dynamics: decay 0/0.01/0.03 gives dormant/static/boom-bust. The cycle is intermittent, not regular: damped at 192², and extinct at dt/2 in 1/2 seeds. L3 Weak (1-2 px halo dots). Showcase movie movies/showcase.mp4 (seed 2, 128², t 0-1400).",
+   "pack": "threads/lenia-multichannel/packs/mcfd-MIRd"
+  },
+  {
+   "world": "mcf-MIRd",
+   "rung": "L6[L2]+L4c",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. Chan's planted replicator with build-from-food: 6 persistent splits, gen 3 (seeds 0 and 2). Norefill is extinct in 3/3 seeds against 11-16 survivors with refill. L5 Weak. Replication itself is Chan's result.",
+   "pack": "threads/lenia-multichannel/packs/mcf-MIRd"
+  },
+  {
+   "world": "mcf-fastcell",
+   "rung": "L4b[L3]+L4c",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Planted Chan 'fast cell' gliders (8-15 BL) carve food wakes. Real A0 shell at r 14-22 with A0=0 inside r<8. Norefill leaves 0/0/1 survivors vs 3/4/3. Spontaneity 0; no dt/R test.",
+   "pack": "threads/lenia-multichannel/packs/mcf-fastcell"
+  },
+  {
+   "world": "r-two56",
+   "rung": "L3",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r1. 2/420 random 2-channel rules give cells with a white centre, cyan core and orange cog shell. They form from noise in 6 seeds, survive dt/2 and R=15/20, and the ring-kernel set-point shell is backed by ablations. Static, with no turnover. L4a Contradicted. The r3 food variant is listed separately (rf-two56-mu0.01).",
+   "pack": "threads/lenia-multichannel/packs/r-two56"
+  },
+  {
+   "world": "mcg-MIRd (+ mcg-MIRd-neutral)",
+   "rung": "L6[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r2. Continuous yield trait with blur inheritance, which blends at contacts. L7 Weak. Two-sided yield: L7 Contradicted. Eco-evolutionary freeze Weak (no Jensen control); r3's mca branch lattice is a second instance.",
+   "pack": "threads/lenia-multichannel/packs/mcg-MIRd"
+  },
+  {
+   "world": "r-two-s1-60",
+   "rung": "L4b[L2]",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Known single-channel C-glider class (the second channel is dead; constant-k5 keeps the glider). Grid-aligned bricks.",
+   "pack": "threads/lenia-multichannel/packs/r-two-s1-60"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "For fl_forager_gene, borrow lenia-multichannel r3's paired identical-state branch assay. Save mature states from neutral runs. At each state, flip one whole body (log coverage, which must be >=0.9). Run S and N from the identical state for several generations (500 t in MIRd+). 12 branch points gave S>N in 10/10 informative pairs, at a cost of about 1 h. Use per-kind deaths/divisions as the readout (allele 1 0.30-0.43 vs resident 0.63-0.78 under S, matched under N), and report establishment against founder size: the 0.012-0.014 starts were lost in both arms. Include contact founders, because an isolated founder at a front surfs (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/tools/branch_test.py, tools/division_ledger.py, screens/branch_test.png; committee/reviews/lenia-multichannel_r3.md)."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "For ad7's L7 run, the identical-state branch assay from lenia-multichannel r3 is a cheap, high-power selection test that needs no long S/N runs (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/tools/branch_states.py, tools/branch_test.py). Two traps it exposed. (1) Choosing the most isolated cell as founder conditions success on isolation: the skeptic's contact founder was lost in both arms. (2) A neighbourhood-majority inheritance kernel in pixels (sigma=3 px) leaks at contacts, giving 47% pure daughters. Confine inheritance to the body, and report gross and net conversions per mutation."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "sporecell2-sel's kind mix was fixed during colonization. lenia-multichannel r3's branch-point design resolves selection after colonization: flip one whole body in a mature neutral state, then run S and N from that identical state, as in origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/screens/branch_test.png. Also check self-dormancy. A 15% yield allele at decay 0.03 puts effective decay/Y at ~0.026, on the static side of lenia-multichannel's 0.025/0.03 turnover threshold, and the selected colony set into a static lattice (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mca-MIRd-branch/seed0/sheet.png, t=350-500)."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Self-dormancy check for membrane_evo. In lenia-multichannel, the selected yield allele twice drove its carriers into a static fed lattice where turnover stops: r2 two-sided yield froze 3/3, and the r3 branch seed 0 set into a hexagonal allele-1 lattice by t~350-500 (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mca-MIRd-branch/seed0/sheet.png). Log births+deaths per body per generation by kind in the up vs twin arms, to test whether 1.3b lowers turnover once it has swept."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Ledger lesson from lenia-multichannel r3 for evopursuit. Report conversions of living individuals in both directions, not just the net. In mca-MIRd the net was +1 to +3 per run (not contagion), but the gross was 7-15 per run against 1 mutation, which still fails 'breeds true'. The committee disagreed until both were tabulated (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/screen_data/ledger/*.json; committee/reviews/lenia-multichannel_r3.md)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Record for a future lab, ideas in. (1) From autopoiesis: membrane_evo's sealed channel (fast decay outside bodies, kinds neutral inside the cell) and its identical-event twin with the evotrack ledger. Together these gave conversions <= flips in 30/30 runs, which is exactly what per-body confinement (B5) must achieve (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/worlds/membrane_evo/world.py, evotrack.py). (2) From chemotaxis-motility r3: the fixed-allele decomposition (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/arms_summary.md). Run allele-0-only and allele-1-only cultures to split the S advantage into carrying capacity (S raises n_end 27.5 vs 18.1) and replacement. (3) From fisim r3: log coverage at the pinch, not only at mutation (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/screens/assay_hcrops_s0.png)."
+  }
+ ],
+ "rubric_issues": [
+  "L7 conversions: report gross conversions of living individuals in both directions and the net, per mutation event. A sweep is contagion when the net conversions carry a material share of the kind's gain. Gross conversions above the number of mutations still fail 'kinds change only at mutation or birth' (mca-MIRd r3: net +1 to +3, gross 7-15 vs 1 mutation; the skeptic and curator disagreed until both were tabulated).",
+  "L7 branch assays: founders must be chosen at random or must include contact cells. A founder picked as the most isolated cell sits at an expanding front (allele surfing), and success can be conditional on isolation (mca-MIRd r3: the skeptic's contact founder was lost in both arms). Cap isolation-selected founders at low confidence.",
+  "Kind overlays in sheets must not hide the body plan: use an outline or a side panel. Packs must ship both arms. mca-MIRd-branch rendered allele 1 as opaque pale disks and shipped only S, so 'same kind' could not be checked visually.",
+  "labkit radial band test: it fails a clean annulus that has a central dot (rf-two56 A1 rim/core 1.24 with A1 ~0 between dot and shell) and passes a one-sided cap (MIRd+ A1 2.03). Place the bands at the profile trough between core and rim, and add an anisotropy check before flagging MEMBRANE-LIKE. labkit lineage still reads gen 0-1 on dividing colonies (merge/split 0.56-0.66).",
+  "Report hygiene: a committee-assigned retry (here B5, per-body confinement under the r2 stop rule) must appear in the report with its outcome or an explicit 'not run'. A coded world with a stub notebook entry leaves the stop rule undischarged."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/lenia-multichannel_r3.md"
+}
