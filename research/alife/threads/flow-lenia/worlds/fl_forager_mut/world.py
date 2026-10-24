@@ -45,7 +45,7 @@ CFG = {
     "mut_rate": 0.0,           # per-step probability of a mutation event (needs localize)
     "mut_size": 0.1,           # relative std of the mutation on (m, s, h)
     "R_scale": 0.4, "n_patches": 2, "patch": 12,
-    "localize": "sample", "species": 1, "founder_spread": 0.25, "mut_rate": 0.002, "mut_size": 0.15,
+    "localize": "sample", "species": 1, "founder_spread": 0.25, "mut_rate": 0.003, "mut_size": 0.15,
     "food0": 0.1,              # initial food per cell
     "k_eat": 0.05, "K_eat": 0.3, "eat_n": 3, "k_dec": 0.002, "D_food": 0.2,
 }

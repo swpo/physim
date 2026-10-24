@@ -103,3 +103,55 @@ table). Sampling transport keeps P and id exactly paired, so genotypes are discr
 8000 steps: 62 mutations, phylogeny depth 7; at the end the root holds 36% of the matter, and
 derived genotypes at depth 2-4 hold the rest (top: id 36 depth 4, 19%). Many lineages go extinct.
 Needs the neutral control (same events, mut_size 0) before any selection claim.
+
+## E10. Layered cells (`worlds/fl_cells`, packs/fl_cells, packs/fl_cells_damage)
+C=3 rule 0 at R_scale 0.4, 6 noise patches. Every patch condenses (t<16) into a cell with three
+radial layers in different channels: cyan core, thin continuous orange ring, magenta outer crown of
+beads. 5-9 persistent tracks per seed, live the whole run, constant size. Two overlapping patches
+make a stable elongated two-nucleus cell; in seed 1 two touching cells fuse into one at t~240.
+- Damage (packs/fl_cells_damage, seeds 0-2, 38-44% of the largest body erased at t=120): the body
+  re-forms core/ring/crown within ~40-90 time units, smaller (mass is lost). Undamaged controls =
+  packs/fl_cells same seeds.
+- Ablations (screens/abl_cells_*): no pressure term (theta=1000, alpha~0): bodies stay bounded but the
+  continuous ring breaks into dots and the core clumps -> the -grad(A) pressure makes the smooth
+  membrane. sigma 0.45: smaller dotted cells. **dt halved (0.1, 2x steps): core/ring/halo layering
+  is kept but the beaded crown becomes a smooth halo** -> the beads are a dt-dependent feature.
+
+## E11. Numerical / robustness checks on the forager
+- dt halved (0.1) with all metabolic rates halved (same physical time): gliders form, forage and
+  multiply to ~20 (screens/abl_forager_dthalf.png). Survives.
+- +-10% on food0, k_eat, k_dec, D_food, K_eat (screens/jit_forager_*.png): same behaviour; at +10%
+  some bodies overgrow into large static target-ring cells.
+
+## E12. Neutral control for mutation (evo/mut_neutral*.png)
+Same seed, same mutation events (rng draws identical), mut_size 0: 74 neutral "mutations", phylogeny
+depth 7, final root share 9% vs 36% with real mutations; mean matter-weighted depth 2.9 vs 1.7.
+Clade turnover is at least as large without any parameter change -> the genealogy of the real run
+is consistent with drift; if anything real mutations are purged (root keeps more). No positive
+selection detected (one paired run; needs replicates).
+
+## E13. One rule, two morphs, food (`worlds/fl_morph257`, evo/morph257_s0.png)
+Rule C2_r257 in the forager world: 1 patch -> ~25 bodies of two morphs: pure-A0 rings ("O") and
+pure-A1 crescents ("C"); body composition is strongly bimodal. 30 clean divisions in 6000 steps:
+20 are O+C composites coming apart into one O and one C (binding/unbinding, an interaction), pure O
+parents gave O+O 4/5 times, pure C gave C+C 1/1. Caveat: uptake is proportional to A_c, so a pure
+body can only make its own channel: composition heredity is built into the metabolism operator.
+
+## E14. Founder tournament at 96^2 (evo/t96_fs*.log, 3000 steps, 10 seeds per pair)
+Winner = kind with more matter at the end. fs1: kind0 7/10 (at 128^2 it was kind1 2/3).
+(more pairs below when finished)
+fs2: kind0 6/10 at 96^2 (6/9 at 128^2; pooled 12/19, one-sided binomial p~0.18). When kind1 wins it
+holds its matter in 2-3x more bodies (10-14 vs 1-3 kind0 bodies at similar mass): body size breeds
+true with the parameters even though fitness is not detectably different.
+
+## E15. Layered cells + food (screens/cellfood_*.png)
+fl_food on the fl_cells rule (C=3 rule 0) with a steeper gate (n=4, K=0.6): no grey goo at food0
+0.15. Cells eat and elongate into rods with an axial core (cellfood_a, 4000 steps); with k_dec x2
+they stay round. food0 0.2 for 10000 steps (cellfood_long): a cell grows into a multi-compartment
+"morula" (~6 internal compartments with their own rings, t~5500), then breaks up into ~100 small
+orange dots that tile the domain (L1 sea by t~8000). Sporulation-like, but the offspring are not
+the parent kind: negative for L6[L3] so far, the most interesting lead for sprint 2.
+
+## E16. Lower food for cleaner forager lineages (food0 0.075, seed 1, 6000 steps; not kept)
+7 gliders at the end, 24 splits / 18 merges, 14 clean divisions, 0 two-generation chains. Fewer
+bodies does not stop the split/merge churn: daughters usually re-merge or collide before dividing.
