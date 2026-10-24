@@ -176,3 +176,9 @@ challenge = fork a mechanism from another thread; go for motile or interacting h
 - End [kp0, kp0.5, kp1.5, kp4]: [1,5,4,2], [0,7,3,1], [2,2,4,5] (36 droplets). Intermediate alleles 25/36,
   thick ancestor 8/36. `packs/ad7t-thick/seed1/protocells.{mp4,png}`: red thick-shelled small cells are replaced by
   green/yellow thinner-membrane cells that divide. Neutral control (all kp=4) running: ad7tn-neutral.
+- ad7tn-neutral (all kp=4, same mutation/dilution), 3 seeds: end [0,2,2,2], [2,1,3,2], [2,3,1,1] = 21 droplets.
+  IMPORTANT: mutation churn alone drops the ancestor label to 24% (5/21), about the same as with selection (8/36).
+  The real differences vs neutral: population 36 vs 21, intermediate alleles 69% vs 43%. Claim downgraded to Weak.
+- Landscape seed 1: kp 0/0.5/1.5/4 -> 5/12/12/6 droplets at t=8000 (broad peak 0.5-1.5).
+
+Sprint 2 ended ~18:22 UTC. Report: `REPORT_r2.md`.
