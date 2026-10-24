@@ -8,6 +8,7 @@ from PIL import Image
 from scipy import ndimage
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from labkit.world import load_world
+from labkit.metrics import periodic_label
 ap = argparse.ArgumentParser(); ap.add_argument("world"); ap.add_argument("out")
 ap.add_argument("--steps", type=int, default=20000); ap.add_argument("--frames", type=int, default=10)
 ap.add_argument("--size", type=int, default=128); ap.add_argument("--seed", type=int, default=0)
@@ -18,7 +19,7 @@ for kv in a.set:
 s = W.init(a.seed, (a.size, a.size)); per = a.steps // (a.frames - 1); imgs = []; t0 = time.time()
 def look(s):
     phi, A, B = s["phi"], s["a"], s["b"]
-    lab, n = ndimage.label(phi > 0)
+    lab, n = periodic_label(phi > 0)
     if n == 0: return 0, 0, 0
     ma = ndimage.mean(A, lab, range(1, n + 1)); mb = ndimage.mean(B, lab, range(1, n + 1))
     mixed = np.sum(np.minimum(ma, mb) > 0.3 * np.maximum(ma, mb))

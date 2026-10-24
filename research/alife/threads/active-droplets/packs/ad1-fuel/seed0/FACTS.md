@@ -1,9 +1,9 @@
 # Evidence pack: ad1-fuel (seed 0)
 
-- world: `../../worlds/ad1-fuel/world.py`, family `phase-field`
+- world: `../../../worlds/ad1-fuel/world.py`, family `phase-field`
 - parent: ad0-zwicker; mutation: production needs a diffusing, consumed fuel u and is autocatalytic in phi; decay first order
-- run: 201 frames x 200 steps x dt 0.5 = time 20000; grid [128, 128]; wall 140s; status ok
-- command: `python -m labkit.run threads/active-droplets/worlds/ad1-fuel/world.py --out threads/active-droplets/packs/ad1-fuel-try --frames 200 --no-movie`
+- run: 201 frames x 200 steps x dt 0.5 = time 20000; grid [128, 128]; wall 133s; status ok
+- command: `python -m labkit.run threads/active-droplets/worlds/ad1-fuel/world.py --out threads/active-droplets/packs/ad1-fuel --seeds 0 1 2 --frames 200`
 - segmentation: matter > 0.35 of robust range [-1.0489, 1.2739], min area 6 px
 
 ## Measurements

@@ -29,7 +29,7 @@ META = {
 }
 
 P = dict(M=0.03, kappa=1.0, k=0.1, kd=0.02, F=0.004, Du=2.0, Dp=0.3, chi=8.0, kp=0.5, gp=0.01, s=0.0,
-         dt=0.5, A=2.0, phi0=-0.95, noise=0.01, seeds=2, r0=6.0)
+         dt=0.5, A=2.0, phi0=-0.95, noise=0.01, soup=0, seeds=2, r0=6.0)
 
 
 def init(seed, size):
@@ -39,6 +39,9 @@ def init(seed, size):
     for _ in range(P["seeds"]):
         m = ops.disk(H, W, rng.integers(0, H), rng.integers(0, W), P["r0"])
         phi[m] = 0.9
+    for _ in range(P["soup"]):  # random blobs of random size/amplitude: unstructured start
+        m = ops.disk(H, W, rng.integers(0, H), rng.integers(0, W), rng.uniform(1.5, 6))
+        phi[m] = rng.uniform(-0.6, 0.9)
     ky, kx = ops.wavenumbers(H, W)
     k2 = kx ** 2 + ky ** 2
     dt, M = P["dt"], P["M"]

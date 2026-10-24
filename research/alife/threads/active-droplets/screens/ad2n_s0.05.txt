@@ -7,3 +7,5 @@ t=8332 A=7 B=6 mixed=0
 t=9999 A=7 B=6 mixed=0
 t=11666 A=7 B=6 mixed=0
 t=13332 A=8 B=6 mixed=0
+t=14998 A=8 B=6 mixed=0
+163s
