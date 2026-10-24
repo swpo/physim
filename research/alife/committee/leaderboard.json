@@ -193,21 +193,21 @@
   "world": "sporecell-gene",
   "rung": "L2",
   "confidence": "medium",
-  "note": "Kind 1 arises by mutation and ends as the majority in 7/10, 11/11 and 6/11 cells, against 3/9, 0/9 and 1/10 for a neutral mutant (3 seeds). This is selection among particles inside cells, through two-sector Janus cells, not heredity between cells. L7 Contradicted: purity 0.55-0.88, parent-child agreement 0.58-0.93. The gen-9 lineage is a staircase of fragments. The evidence is in screens at mu=0.01, while the pack runs at mu=0.002.",
+  "note": "FINAL (r3), unchanged since r1. Within-cell Janus selection of a looser mutant against a neutral control (3 seeds). L7 Contradicted: purity 0.55-0.88. L6[L2] Weak (ratchet lineage).",
   "pack": "threads/particle-life/packs/sporecell-gene",
   "thread": "particle-life",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "particle-life/plife-m2": {
   "world": "plife-m2",
   "rung": "L3",
   "confidence": "medium",
-  "note": "Known Mohr/Ventrella particle-life cells, used as calibration. Concentric type-sorted shells (white on a green core, pink on cyan) form from random types by t~3.5 and persist to t=80 in 3 seeds. One random matrix, a short run, and no dt check. The raster cannot resolve the shells. labkit flags movers at 8.9-13.2 BL that have not been examined (an L4b lead).",
+  "note": "FINAL (r3), unchanged since r1. Known Mohr/Ventrella concentric type-sorted cells, used as calibration (3 seeds, short run, no dt check). The movers at 8.9-13.2 BL were never examined: an open L4b lead for the brief's non-reciprocal line.",
   "pack": "threads/particle-life/packs/plife-m2",
   "thread": "particle-life",
-  "round": 1,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "lenia-multichannel/mcfd-MIRd": {
   "world": "mcfd-MIRd",
@@ -413,11 +413,11 @@
   "world": "sporecell2-sel",
   "rung": "L2",
   "confidence": "high",
-  "note": "Kinds differ only in catalysis rate (k_cat1=0.065 vs 0.05). Kind 1 arises by mutation (mu=0.1), and in-cell majority-vote conformity makes cells breed true: 64/66, 22/28 and 45/50 kind-1 children are kind 1. Kind-1 cells end at 18/22, 8/21 and 11/16, against 0/19, 0/22 and 1/17 for the exact label-neutral arm (k_cat1=k_cat). But the kind mix is fixed during colonization (by t~150; mass share 0.96/0.60/0.74 -> 0.89/0.51/0.68 over the following 280 t). Per-kind deaths are not reported, and lineage.py is not merge-aware. The sweep fails at a 1.2x advantage, at dt=0.015 (3/16), at dt=0.01 (3/13, 1/14) and on the skeptic's seed 11 (0 kind-1 cells to t=200). L7[L2] Weak; L6[L2] Weak. The [L3] qualifier is Contradicted: no M after t~104 in any sheet. Numerical validity 0: spore release is integrator overshoot (free spores 127/40/6 at dt 0.02/0.01/0.005; skeptic max per-step displacement 1.2-1.37 > rmax=1 at dt=0.02 once cells pass ~70 particles, against 0.10-0.20 at dt=0.01). Propagule budding from an intact parent is real in the dt=0.02 movie.",
+  "note": "FINAL (r3), unchanged since r2. L7[L2] Weak (the mix is fixed during colonization; fails at dt 0.015/0.01 and on seed 11). L6[L2] Weak. [L3] Contradicted. Numerical validity 0. The converged r3 twin (sporecell3-det) does not rescue it.",
   "pack": "threads/particle-life/packs/sporecell2-sel",
   "thread": "particle-life",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "particle-life/sporecell2-gate (gate_beta=1)": {
   "world": "sporecell2-gate (gate_beta=1)",
@@ -433,11 +433,11 @@
   "world": "sporecell2-lysis (half/half, k_lys=2)",
   "rung": "L5[L2]",
   "confidence": "low",
-  "note": "A written contact-kill rule: kind 1, the worse grazer (k_cat1=0.035), lyses kind-0 core particles into food. Matched arms on seeds 0-2 at t=300: kind-1 cells 6/12/14 with lysis vs 1/0/2 without; kind-0 cells 11/1/4 vs 17/19/10. The effect is + for kind 1 and - for kind 0 in 3/3, with separate territories and an empty front between them. A prediction made before the runs was confirmed: a rare killer loses (0/17, 0/17, 2/15). Kinds are planted. The arms are not event-matched: extra RNG draws when k_lys>0 make seed 1 diverge by t=28, before contact, so part of the outcome is founding luck. There is no invasion test, and the run is on the dt=0.02 map only (reproduction is integrator overshoot). No pack.",
+  "note": "FINAL (r3), unchanged since r2; dt=0.02 map only. Matched arms on 3/3 seeds: + for kind 1, - for kind 0, and a rare killer loses. Kinds are planted, the arms are not event-matched, and there is no invasion test. Never rerun at the step-safe step, where r3's control shows that the reproduction it rests on vanishes. No pack.",
   "pack": "threads/particle-life/screens/P_half_types.png",
   "thread": "particle-life",
-  "round": 2,
-  "decision": "continue"
+  "round": 3,
+  "decision": "stop"
  },
  "active-droplets/ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4)": {
   "world": "ad7-gated family (ad7t-thick, ad7-gated-d4; neutral arms ad7tn-neutral, ad7n-neutral-d4)",
@@ -526,6 +526,56 @@
   "note": "FINAL (r3), new. Per-parcel uptake gene vs identical-event neutral twin (own RNG stream), 5 seeds per arm, 128^2, t=2400. Paired S-N +0.54/+0.43/+0.03/+1.32/+0.33 (5/5). L7 Contradicted. Price split, director re-tabulation: within-body S-N +0.44/+0.44/-0.38/+1.07/+0.25 (mean +0.36); between+fusion booked together +0.09/0.00/+0.41/+0.25/+0.08 (mean +0.17). Between and fusion alone anti-correlate by construction (r=-0.90). No high-g deaths in any of the 15 runs, and 0 deaths of either kind in 13/15. Net conversions within +-3 in 13/15 runs (S_s0: 51 into high, 64 out), so the sweep is somatic turnover inside mosaic bodies, not contagion. labkit: 0 persistent splits at K=t160, merge/split 0.90, gen 0. The audit's pgen 3-7 uses a t=40 window. S_s1 and S_s3 end as 1-2 static giants. Neutral N_s3 fuses an orange and a cyan cell, then is taken over from inside (sheet_N_s3 t~1148-2400). L6 and L3 Weak; L5 Weak, but the label 'infection' is rejected: high g wins 92/139 inter-kind fusions vs 27/78 in its twin, and fusion was never ablated. S_body arm (g_eff blur sigma=5 px) is L2, sheets only: S_body-N +0.57/+0.25/+0.16/-0.17/+0.35, gigantism in 3/5 seeds, and sigma is sub-body for the giants. Its within-body excess shrinks to +0.05 (suggestive). Trait = uptake rate (positive control).",
   "pack": "threads/flow-lenia/packs/fl_forager_gene2_S",
   "thread": "flow-lenia",
+  "round": 3,
+  "decision": "stop"
+ },
+ "particle-life/sporecell3-det (step-safe integrator, surface detachment k_det=0.05, n_det=60)": {
+  "world": "sporecell3-det (step-safe integrator, surface detachment k_det=0.05, n_det=60)",
+  "rung": "L2",
+  "confidence": "high",
+  "note": "FINAL (r3), new; L6[L2] claim (dt-converged) -> Weak (borderline). Founders form from ~20 random catalysts on 2 pack seeds (the skeptic's seed 23 reproduces this to t=50). Compact disks hold fixed size and position from t~66 to 200. Strict re-audit (daughter >=50% of parent, parent not fused into daughter, no smin re-crossing): seed 0 reaches gen 1 (#12 absorbed its parent #4; #90 is #82 re-crossing smin=15), and seed 1 has one genuine 2-deep chain (#24->#33 (209)->#38 (166, same kind), #42 (155, off-kind)). Colonization only: every parent-size birth comes before t~90, 1 qualifying birth (<=37 particles) per seed after t=100, and no body that reached 100 particles dies. Adults are sterile because release needs <60 neighbours. merge/(births+fragments) is 0.78 and 0.64. No birth strips. Release is a written teleport (d_det=1.5 > rmax). dt/2 runs at a fixed, active dx_max (~5,200 clips); seed-0 deaths differ 44%, seed-1 births by 20%. L3 Contradicted (founder rings lost by t~60), L4c Weak, L5 Not tested. Numerical validity 1, beyond-diffusion 1.",
+  "pack": "threads/particle-life/packs/sporecell3-det",
+  "thread": "particle-life",
+  "round": 3,
+  "decision": "stop"
+ },
+ "particle-life/sporecell3 without a release route (k_det=0; negative control)": {
+  "world": "sporecell3 without a release route (k_det=0; negative control)",
+  "rung": "L2",
+  "confidence": "low",
+  "note": "FINAL (r3), new. With step-safe motion, free spores fall 127 -> 3.4. There is 1 birth against 22 deaths, max gen 0, and cells go 9 -> 3 by t=200. L6 Contradicted at the converged step. This closes the r2 numerics question: spontaneous spore release in sprints 1-2 was integrator overshoot. One seed and a lineage plot only (no pack), so L2 is Weak.",
+  "pack": "threads/particle-life/screens/R0_s0_lin2.png",
+  "thread": "particle-life",
+  "round": 3,
+  "decision": "stop"
+ },
+ "particle-life/sporecell3-det selected (k_cat1=0.065) vs neutral (0.05) identical-event twin, seed 0, T=300": {
+  "world": "sporecell3-det selected (k_cat1=0.065) vs neutral (0.05) identical-event twin, seed 0, T=300",
+  "rung": "L2",
+  "confidence": "low",
+  "note": "FINAL (r3), new. L7[L2] Weak: one pair, colonization only (kind-1 share 0.36 vs 0.18). The stationary-phase rise (0.36 -> 0.45 vs 0.18 -> 0.15) is Contradicted as selection. No solid lineage starts after t~50, the pack JSON on the same trajectory has 1 qualifying birth after t=100, and the twin ledger has 11 births in 300 t vs 12 in the pack by t=200. The rise is matter moving between sterile standing cells, plus 4 intact-cell conversions against 5 kind-1 births (L5-type, Weak). Off-kind daughters: seed-1 kind-1 #33 -> kind-0 #42. The ledger and JSONs are not in the branch.",
+  "pack": "threads/particle-life/screens/TW_sel_s0_lin2.png",
+  "thread": "particle-life",
+  "round": 3,
+  "decision": "stop"
+ },
+ "particle-life/sporecell2-gate (gate_beta=1; showcase movie)": {
+  "world": "sporecell2-gate (gate_beta=1; showcase movie)",
+  "rung": "L2",
+  "confidence": "medium",
+  "note": "FINAL (r3), unchanged since r2. Thick membrane-ringed founders burst into spore clouds of bare daughters (movies/showcase.mp4, showcase_frame.png at t=120). This is the thread's most life-like image, but it is on the dt=0.02 map, where the burst is integrator overshoot. It was never rerun at the step-safe step. L3, L4a and L6[L2] Weak; L6[L3] Contradicted. No pack.",
+  "pack": "threads/particle-life/screens/gate5_s1_types.png",
+  "thread": "particle-life",
+  "round": 3,
+  "decision": "stop"
+ },
+ "particle-life/sporecell (+ sporecell_damage)": {
+  "world": "sporecell (+ sporecell_damage)",
+  "rung": "L2",
+  "confidence": "high",
+  "note": "FINAL (r3), unchanged since r2. Ringed founders from ~20 random catalysts burst into spores, then freeze into a ~40-cell lattice, and the rings are lost population-wide at depletion. L3, L4a, L4c and L6[L2] Weak. Numerical validity 0 (free spores 127/40/6 at dt 0.02/0.01/0.005), confirmed by r3's step-safe control.",
+  "pack": "threads/particle-life/packs/sporecell",
+  "thread": "particle-life",
   "round": 3,
   "decision": "stop"
  }

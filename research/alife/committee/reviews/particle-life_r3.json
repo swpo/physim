@@ -1,0 +1,105 @@
+{
+ "decision": "stop",
+ "headline": "Final record. The step-safe integrator removes spontaneous spore release: with k_det=0, free spores fall 127 -> 3.4 and births to 1 against 22 deaths. That confirms that sprint 1-2 reproduction was integrator overshoot, and it is the sprint's best result. The written surface teleport (k_det=0.05, n_det=60) gives a colonization wave of real propagule births that stops at confluence. sporecell3-det is L2 (high), with L6[L2] Weak, unanimous. A strict re-audit gives gen 1 on seed 0, where the gen-2 labels are a parent fusing into its daughter and a re-crossing of smin, and one genuine 2-deep chain on seed 1. Every parent-size birth comes before t~90, and no body that reached 100 particles dies. The twin's L7[L2] is Weak: one pair, and the stationary-phase rise has no births behind it. No rung moved. Every converged world ends at L2; sporecell2-lysis L5[L2] (low, dt=0.02 map) and plife-m2 L3 (calibration) stand.",
+ "promise": 3,
+ "message_to_researcher": "Final review, sprint 3. Decision: STOP (the program ends).\n\nThank you for running the numerics experiment as commissioned and reporting its negative result plainly. The k_det=0 control (free spores 127 -> 3.4, 1 birth vs 22 deaths) is the sprint's best result: sprint 1-2 reproduction was integrator overshoot.\n\nFinal verdicts:\n- sporecell3-det: L2 (high). L6[L2] is Weak (borderline). A strict re-audit of lineage2.json gives max gen 1 on seed 0: #12 absorbs its parent #4, and #90 is #82 crossing smin again. Seed 1 has one genuine 2-deep chain, #24->#33->#38, which your tool scores gen None. Every parent-size birth comes before t~90, and no 100-particle body dies, so this is a colonization wave that freezes. dt/2 at a fixed, active dx_max (about 5,200 clips) is not a full convergence test. L3 is Contradicted.\n- Twin: L7[L2] Weak (one pair, colonization only). The stationary-phase rise has about 0 births behind it, so it is not selection.\n- Earlier rungs stand: sporecell2-lysis L5[L2] low (dt map), plife-m2 L3 (calibration), and L2 for every sporecell world.\n\nYour most transferable products:\n- the dt gate on reproduction;\n- bounded-displacement sub-stepping with a clip log;\n- unconditional RNG draws for identical-event twins;\n- catalytic provenance labels, once lineage2 gets its parent-fusion and smin-hysteresis fixes.",
+ "leaderboard_rows": [
+  {
+   "world": "sporecell3-det (step-safe integrator, surface detachment k_det=0.05, n_det=60)",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "FINAL (r3), new; L6[L2] claim (dt-converged) -> Weak (borderline). Founders form from ~20 random catalysts on 2 pack seeds (the skeptic's seed 23 reproduces this to t=50). Compact disks hold fixed size and position from t~66 to 200. Strict re-audit (daughter >=50% of parent, parent not fused into daughter, no smin re-crossing): seed 0 reaches gen 1 (#12 absorbed its parent #4; #90 is #82 re-crossing smin=15), and seed 1 has one genuine 2-deep chain (#24->#33 (209)->#38 (166, same kind), #42 (155, off-kind)). Colonization only: every parent-size birth comes before t~90, 1 qualifying birth (<=37 particles) per seed after t=100, and no body that reached 100 particles dies. Adults are sterile because release needs <60 neighbours. merge/(births+fragments) is 0.78 and 0.64. No birth strips. Release is a written teleport (d_det=1.5 > rmax). dt/2 runs at a fixed, active dx_max (~5,200 clips); seed-0 deaths differ 44%, seed-1 births by 20%. L3 Contradicted (founder rings lost by t~60), L4c Weak, L5 Not tested. Numerical validity 1, beyond-diffusion 1.",
+   "pack": "threads/particle-life/packs/sporecell3-det"
+  },
+  {
+   "world": "sporecell3 without a release route (k_det=0; negative control)",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "FINAL (r3), new. With step-safe motion, free spores fall 127 -> 3.4. There is 1 birth against 22 deaths, max gen 0, and cells go 9 -> 3 by t=200. L6 Contradicted at the converged step. This closes the r2 numerics question: spontaneous spore release in sprints 1-2 was integrator overshoot. One seed and a lineage plot only (no pack), so L2 is Weak.",
+   "pack": "threads/particle-life/screens/R0_s0_lin2.png"
+  },
+  {
+   "world": "sporecell3-det selected (k_cat1=0.065) vs neutral (0.05) identical-event twin, seed 0, T=300",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "FINAL (r3), new. L7[L2] Weak: one pair, colonization only (kind-1 share 0.36 vs 0.18). The stationary-phase rise (0.36 -> 0.45 vs 0.18 -> 0.15) is Contradicted as selection. No solid lineage starts after t~50, the pack JSON on the same trajectory has 1 qualifying birth after t=100, and the twin ledger has 11 births in 300 t vs 12 in the pack by t=200. The rise is matter moving between sterile standing cells, plus 4 intact-cell conversions against 5 kind-1 births (L5-type, Weak). Off-kind daughters: seed-1 kind-1 #33 -> kind-0 #42. The ledger and JSONs are not in the branch.",
+   "pack": "threads/particle-life/screens/TW_sel_s0_lin2.png"
+  },
+  {
+   "world": "sporecell2-lysis (half/half, k_lys=2)",
+   "rung": "L5[L2]",
+   "confidence": "low",
+   "note": "FINAL (r3), unchanged since r2; dt=0.02 map only. Matched arms on 3/3 seeds: + for kind 1, - for kind 0, and a rare killer loses. Kinds are planted, the arms are not event-matched, and there is no invasion test. Never rerun at the step-safe step, where r3's control shows that the reproduction it rests on vanishes. No pack.",
+   "pack": "threads/particle-life/screens/P_half_types.png"
+  },
+  {
+   "world": "sporecell2-sel",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r2. L7[L2] Weak (the mix is fixed during colonization; fails at dt 0.015/0.01 and on seed 11). L6[L2] Weak. [L3] Contradicted. Numerical validity 0. The converged r3 twin (sporecell3-det) does not rescue it.",
+   "pack": "threads/particle-life/packs/sporecell2-sel"
+  },
+  {
+   "world": "sporecell2-gate (gate_beta=1; showcase movie)",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r2. Thick membrane-ringed founders burst into spore clouds of bare daughters (movies/showcase.mp4, showcase_frame.png at t=120). This is the thread's most life-like image, but it is on the dt=0.02 map, where the burst is integrator overshoot. It was never rerun at the step-safe step. L3, L4a and L6[L2] Weak; L6[L3] Contradicted. No pack.",
+   "pack": "threads/particle-life/screens/gate5_s1_types.png"
+  },
+  {
+   "world": "sporecell (+ sporecell_damage)",
+   "rung": "L2",
+   "confidence": "high",
+   "note": "FINAL (r3), unchanged since r2. Ringed founders from ~20 random catalysts burst into spores, then freeze into a ~40-cell lattice, and the rings are lost population-wide at depletion. L3, L4a, L4c and L6[L2] Weak. Numerical validity 0 (free spores 127/40/6 at dt 0.02/0.01/0.005), confirmed by r3's step-safe control.",
+   "pack": "threads/particle-life/packs/sporecell"
+  },
+  {
+   "world": "sporecell-gene",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Within-cell Janus selection of a looser mutant against a neutral control (3 seeds). L7 Contradicted: purity 0.55-0.88. L6[L2] Weak (ratchet lineage).",
+   "pack": "threads/particle-life/packs/sporecell-gene"
+  },
+  {
+   "world": "plife-m2",
+   "rung": "L3",
+   "confidence": "medium",
+   "note": "FINAL (r3), unchanged since r1. Known Mohr/Ventrella concentric type-sorted cells, used as calibration (3 seeds, short run, no dt check). The movers at 8.9-13.2 BL were never examined: an open L4b lead for the brief's non-reciprocal line.",
+   "pack": "threads/particle-life/packs/plife-m2"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "Record for a future lab: two lineage audits from particle-life r3. (1) Void a birth whose parent merges into it within K samples. (2) Let a cluster that dips below the size threshold and returns with most of its particles within K samples keep its identity, so it is not counted as its own daughter. Together these produced every gen-2 label on particle-life seed 0 (#4->#12 parent fusion; #82->#90 threshold flicker), and 6 of 20 parent-labelled new clusters in the skeptic's seed-23 rerun (origin/claude/alife-particle-life:research/alife/threads/particle-life/packs/sporecell3-det/seed0/lineage2.json; lineage2.py). Apply them to membrane_evo's resealed disk-cut fragments before counting K2 births."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "Record for a future lab. Apply the same two audits (parent-fusion void; threshold hysteresis) to preytrack, which credits near-contacts as daughters. A second lesson for any clipped or bounded integrator: dt/2 at a fixed, active displacement bound is not a convergence test, so halve the bound itself. particle-life sporecell3 clipped ~5,200 times per run (about 7% of sub-steps) and rescaled all displacements, a global time warp. Seed-0 deaths differed 44% between dt and dt/2 (origin/claude/alife-particle-life:research/alife/threads/particle-life/REPORT_r3.md section 3; committee/reviews/particle-life_r3.md)."
+  },
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Record for a future lab: another instance of the confluence freeze, alongside your mca branch lattice and self-dormancy. In particle-life sporecell3-det, release needs fewer than 60 neighbours, and a mature core's surface particle has ~140. So adults are sterile and immortal, every parent-size birth comes before t~90, and food falls 91%. The law: when immobile bodies pay no intrinsic cost and reproduction is size-capped, birth-death turnover stops at confluence. Any post-colonization L7 design needs a cell-level death channel (origin/claude/alife-particle-life:research/alife/threads/particle-life/packs/sporecell3-det/seed1/particles.png; committee/reviews/particle-life_r3.md)."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "Record for a future lab. From chemotaxis-motility: the 2x2 non-reciprocal cross-taxis ablation (pursuit binds, evasion shapes the bond) as the template for emergent chaser-fleer propagule release (C attracts M, M repels C), with an (A+A^T)/2 symmetrized twin as the matched control (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/packs/pursuit; committee/reviews/chemotaxis-motility_r3.md)."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "Record for a future lab. From autopoiesis: strip.py for randomly chosen birth strips at the deepest generation, and the evotrack.py ledger with whole-cell deaths drawn from a state-independent RNG, so arms are identical-event twins (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/strip.py, evotrack.py; packs/membrane_evo_up). Heed its warning: a death operator of body scale becomes the main reproduction channel, so split births by cause."
+  },
+  {
+   "to_thread": "particle-life",
+   "suggestion": "Record for a future lab. From lenia-multichannel: the maintenance-decay turnover threshold (decay 0.025 gives a static lattice, 0.03 boom-bust turnover) to unfreeze sporecell3-det, and the identical-state branch assay for a post-colonization L7 test: flip one whole mature cell, then run S and N from the same state (origin/claude/alife-lenia-multichannel:research/alife/threads/lenia-multichannel/packs/mcfd-MIRd; tools/branch_test.py)."
+  }
+ ],
+ "rubric_issues": [
+  "L6 propagules: fix the daughter size fraction (the judges used >=50% of the parent's size). lineage2's 15-particle threshold is 5-10% of a 150-300-particle parent.",
+  "L6 lineage hygiene: void a birth whose parent merges into it within K samples, and apply hysteresis at the size threshold so a cluster that dips below it and returns keeps its identity. These two artifacts carried every gen-2 label on particle-life seed 0. Lineage plots must also draw births whose parent chain is broken (gen None), or say they are lower bounds.",
+  "L6 'repeatedly': report births by phase. Reproduction confined to colonization (no parent-size births and no deaths of mature bodies in the stationary window) should be flagged and capped at low confidence, mirroring the L7 colonization rule. sporecell3-det: every parent-size birth before t~90, and no 100-particle body ever dies.",
+  "Numerics for clipped or bounded integrators: dt/2 at a fixed, active displacement bound is not a convergence test. Require a halved bound and reported clip counts, by analogy with the Flow-Lenia resolution rule. The r2 request to flag rungs on non-converged maps as '(dt map)' and cap them at low is still not in the rubric.",
+  "labkit: still 0 splits and max_generation 0 on propagule worlds. Upstream a particle-identity, merge-aware lineage with the fixes above, and record the maximum per-step displacement for particle worlds. This is lab infrastructure, not thread work."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/particle-life_r3.md"
+}
