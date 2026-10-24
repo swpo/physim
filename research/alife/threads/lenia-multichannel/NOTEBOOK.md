@@ -239,3 +239,10 @@ period ≈380 time units, with matter and food in antiphase.
 The cycle needs decay of about 0.03 or more, and survival through troughs is fragile: a small
 population at the trough can be lost. A bigger grid or a spatially patchy food supply should help
 (next sprint).
+
+**C4. Two more checks.**
+- mcfd-MIRd at **192²** (seed 0, 14000 steps): boom to 32, bust to 13, then a **noisy steady
+  population of 20-28 cells with food ~0.4** through the end. On the larger grid the cycle is
+  damped, presumably because local cycles fall out of phase and average out.
+- **dt/2, seed 0** (28000 steps = t 1400): persists the whole run, 5-28 cells, food 0.24-0.59.
+  The dt/2 extinction in C3 is seed-specific: dt/2 survives in 1/2 seeds.
