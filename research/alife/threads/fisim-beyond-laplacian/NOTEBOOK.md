@@ -253,3 +253,7 @@ measure (`assay/summary_oncells.json`).
 retain a marker in one lineage where the ungated arms lose it completely, which is a
 retention effect, not heredity.
 The resolved Dh=0.02 at dx=0.25 arm was not run (8x cost; the stop rule had already fired).
+
+**H3 resolved ungated arm** (Dh 0.02, dx=0.25, dt=0.01, cell-filling kick, seeds 0-1; 931 s per
+run): on-cells [3,3,0,0,0,0] and [2,2,0,0,0,0] at t=40/60/90/120/200/300. The marker is lost by
+t=90 in both seeds, as at Dh 0.05/0.1 with dx=0.5. Ungated loss is not grid pinning.

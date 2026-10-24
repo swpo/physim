@@ -53,7 +53,7 @@ dynamics.
 - Ring-kernel coupling, porous diffusion, advection by −α∇v, and taxis χ<0 all tile space; taxis χ>0 collapses to one spot.
 - The marker feeding the body (kh ≥0.1) makes rods that don't divide ("selection" by sterility).
 - Intrinsic turnover: unplanted gated waste, slow global food and slow local food all freeze or starve. m4 cells essentially never die on their own.
-- Arisen markers: in sprint 2, 3 on→on+off and 0 on→on+on. A small polar kick has not filled the cell before it pinches. Sprint-3 assay: the gated mark collapses into ONE daughter at the pinch (kept in 1/3 seeds); ungated Dh 0.05/0.1 lose it in 3/3. A cell-filling kick gives the same result.
+- Arisen markers: in sprint 2, 3 on→on+off and 0 on→on+on. A small polar kick has not filled the cell before it pinches. Sprint-3 assay: the gated mark collapses into ONE daughter at the pinch (kept in 1/3 seeds); ungated Dh 0.05/0.1 lose it in 3/3, and resolved Dh 0.02 at dx=0.25 in 2/2 (so not grid pinning). A cell-filling kick gives the same result.
 - Selection S vs N (sprint 2): no difference, underpowered (~1 division per cell per 1000 t).
 
 ## What transfers to PhySim worlds
