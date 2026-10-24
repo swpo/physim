@@ -1,0 +1,65 @@
+{
+  "decision": "continue",
+  "headline": "Continue, narrowed, with a stop rule. An honest negative selection run: kick-arisen markers bred true in 0 of 3 on-divisions (2 independent kicks), the cells never die on their own, and the gate still has no resolved Laplacian control. xcell-evo2 takes over the family's L6[L3] (low) from the retracted xcell-turn. Next: one decisive heredity assay of arisen markers, gated vs resolved ungated arms, in the fast-division regime. L7 is retried only if it passes.",
+  "promise": 5,
+  "message_to_researcher": "Decision: CONTINUE, narrowed, with a stop rule (promise 5). This was an honest, well-corrected sprint: every r1 fix landed and xcell-turn is retracted. S and N share one kick/kill RNG, which makes them identical-event twins. Good design.\n\nVerdicts:\n- xcell-evo2-S/N: L6[L3], low confidence. It is now the family's L6. S0 reaches gen 6 (0 merges) and N1 gen 4. The biologist's crops (judge-scratch/fisim-beyond-laplacian-r2-biologist/S0_chain.png) show clean ringed fissions at t=450/510/570/960. Confidence is low because only 2/6 runs reach gen>=3, bodies are planted, deaths are imposed and division is Gray-Scott-class. Ship birth strips.\n- L7: Contradicted, and your headline is wrong. kinds.json logs on->on+off in S0, S1 and N1, from 2 independent kicks. Arisen marks bred true 0/3: a fresh polar kick had not filled the cell before the pinch (S1_kick115.png). Faster division alone makes this worse.\n- xcell-her: L3, high confidence. Arm L is not a control yet: one Dh, no image, and no gated rows. Its Dh=0.02 fronts are ~1 px wide and blocky, and get stranded behind drifting bodies (judge-scratch/fisim-beyond-laplacian-r2-skeptic/larm_check.png). Beyond-diffusion stays <=1.\n- xcell-a: L4b[L3], medium, unchanged. xcell-turn: L6 withdrawn.\n\nMAIN EXPERIMENT: heredity of kick-arisen markers, gated vs resolved Laplacian arms.\n- Use the xcell-evo2-N genome. Division is limited by space, not kc: free-space daughters re-divide every 50-70 t. Use ~10x dilution (KILL_RATE~1.0) or fewer founders; kc 0.35-0.5 only as a fallback.\n- At t~100, kick (sigma 1.5, amp 2.5) a random interior point of half the cells. Log the centroid offset and the time to the next pinch.\n- Arms (same grid, IC, seeds and event RNG; 3 seeds; T~600): gated (beta_h=5, Dh=0.3); ungated Dh 0.05 and 0.1 at dx=0.5; ungated Dh 0.02 at dx=0.25.\n- Classify each on-division from raw per-daughter h, and count conversions of intact cells. Ship h crops on a fixed absolute scale, plus frames.npz.\n- Pass: >=20 on-divisions per arm, gated on+on >=80%, and every resolved ungated arm clearly worse.\n- Stop rule: one fix is allowed (a cell-filling kick, faster h spread inside the ring, or within-cell purification). If gated marks still split, or an ungated arm matches the gate, drop L7. Return to the brief instead: an independent self-made membrane field carrying the gate.\n\nSECONDARY\n1. Only if the assay passes: S/N twins at fast dilution, 3 seeds per arm, T=2000. Use a thresholded g so off-cells are exactly neutral, and measure s as per-kind inter-division time. Pass: an arisen lineage with >=3 consecutive on+on, and S above N's spread in 3/3 seeds.\n2. Intrinsic death inside the genome: screen one conserved cost split at division, to replace disk erasure.\n3. Correct the r2 headline.\n\nBORROW:\n- origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r2.md Mechanism 2 (growth purifies a body before fission), plus fission.py.\n- origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md Mechanism 4 (cross-inhibition).\n- origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py (conversion counts). Their REPORT_r2 shows contagion through phi tails, which your gate may fix.",
+  "leaderboard_rows": [
+    {
+      "world": "xcell-evo2-S",
+      "rung": "L6[L3]",
+      "confidence": "low",
+      "note": "Selection experiment, arms S and N: identical-event twins (kicks and dilution from one shared RNG), 3+3 seeds, T=2000. L6: S0 reaches gen 6 (11 persistent splits, 0 merges) and N1 gen 4. The biologist's merge-aware movie tracker and birth crops confirm clean rod->dumbbell->two ringed daughters in the S0 chain (t=450/510/570/960). Only 2/6 runs reach gen>=3 by labkit, the bodies are planted, every death is an imposed disk erasure, and division is Gray-Scott-class. L7 Contradicted: on->on+on 0 in 6 runs, and all 3 on-divisions (2 independent kicks) were on->on+off, by polar segregation of a fresh kick. Final on-cells S 1/0/2 vs N 1/1/0. About 0.7 dilution generations per run, so the test is underpowered. L3 rests on the band ring plus r1 gate ablations, which were not repeated in evo2.",
+      "pack": "threads/fisim-beyond-laplacian/packs/xcell-evo2-S"
+    },
+    {
+      "world": "xcell-her",
+      "rung": "L3",
+      "confidence": "high",
+      "note": "Two planted kinds breed true: 46 divisions in r1, 0 mixed, 0 switches. Removing the membrane gate on h erases every on-lineage while body and division are unchanged (3 judges). kb -10% breaks it. Sprint-2 arm L (ungated, Dh=0.02) loses all markers by t~100, reproduced by the skeptic on seed 11 at 64². The ungated fronts are ~1 px wide and blocky, though, so this is not yet a matched Laplacian control. Kick-arisen markers in xcell-evo2 bred true in 0 of 3 divisions, so heredity is shown only for planted, cell-filling domains. L6 Weak (one counted generation). L7 Contradicted.",
+      "pack": "threads/fisim-beyond-laplacian/packs/xcell-her"
+    },
+    {
+      "world": "xcell-a",
+      "rung": "L4b[L3]",
+      "confidence": "medium",
+      "note": "m4 gliders (8/8 cells, 7.9-8.6 body lengths, 3 seeds) with a band-deposited membrane ring (m 0.55 at the rim, 0.22 at the centre, ~0 outside). The ring holds a fast D=4 cargo: 1.24 at the centre vs 0.43 with the gate off, dt-converged. The body is exactly m4 (K=0), so the compartment is passive. Part of the m field is a trailing wake. L4a Weak: one cell, 29.6% erased. Unchanged in sprint 2. Biologist dissent from r1: L3 Weak.",
+      "pack": "threads/fisim-beyond-laplacian/packs/xcell-a"
+    },
+    {
+      "world": "xcell-turn",
+      "rung": "L3",
+      "confidence": "low",
+      "note": "RETRACTED by the researcher in r2, and withdrawn as the family's L6 evidence. The waste was gated by cargo through a channel-index bug, and every founder was planted with q=1.2. Its gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors, not turnover. With m-gated waste the world goes extinct by t~32. Superseded by xcell-evo2.",
+      "pack": "threads/fisim-beyond-laplacian/packs/xcell-turn"
+    }
+  ],
+  "cross_pollination": [
+    {
+      "to_thread": "autopoiesis",
+      "suggestion": "Your r2 membrane_kinds result is that catalyst crosses between touching cells through their phi tails: conversions exceed mutations in 6/6 seeds, even under phi^4 and the hard gate. fisim's perm operator div(D exp(-beta*m) grad f) gates the flux at the wall itself. In xcell-her, on and off cells sit interleaved in a touching lattice with 0 switches in 46 divisions, and removing the gate erases every on-lineage (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/xgenome.py, XGENOME_SPEC.md, packs/xcell-her/seed0/sheet.png). Try gating catalyst mobility by exp(-beta*4phi(1-phi)) in arms B and C. Also log the time from each mutation to the next division: fisim's kick-arisen marks split unequally (0/3 on+on) when the mutation had not filled the cell before the pinch."
+    },
+    {
+      "to_thread": "active-droplets",
+      "suggestion": "ad5-evolve's L7 is capped at low because selection happens only during colonization, with 0 deaths. fisim r2 has a cheap fix that comes with an exact neutral arm. It draws the mutation kicks and the chemostat deaths (random disk erasure) from one state-independent RNG shared by the S and N arms, so the arms are identical-event twins (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py and evo.py). Their lesson: at ~0.7 dilution generations per run, the S/N test could not see selection. Set dilution near your free-space division rate."
+    },
+    {
+      "to_thread": "lenia-multichannel",
+      "suggestion": "A lab lesson from fisim r2 (REPORT_r2.md sections 3-4 on origin/claude/alife-fisim-beyond-laplacian). Unplanted m4-type dissipative-soliton cells never died under gated waste, slow global food or a cap, and froze at 12-21 cells, because division does not dilute a concentration-type waste. Intrinsic death needs an extensive cost that is split at division, such as the maintenance decay of body matter in your mcfd-MIRd. Check whether your dormant-lattice long runs lack exactly this, before tuning cycles."
+    },
+    {
+      "to_thread": "particle-life",
+      "suggestion": "sporecell freezes into a ~40-cell lattice. fisim r2's identical-event chemostat, random disk erasure drawn from a state-independent RNG shared across arms (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py), would keep births going. It would also pair sporecell-gene with an exact neutral twin. Set the dilution rate near the free-space division rate, or selection stays invisible."
+    },
+    {
+      "to_thread": "fisim-beyond-laplacian",
+      "suggestion": "Make a fresh mark take the whole cell before it pinches, using one of two mechanisms. (1) chemotaxis-motility's own-density cooperative growth, which purifies a body before fission (origin/claude/alife-chemotaxis-motility:research/alife/threads/chemotaxis-motility/REPORT_r2.md Mechanism 2). (2) active-droplets' within-droplet cross-inhibition (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md Mechanism 4). For per-daughter readouts and birth strips, use chemotaxis-motility's fission.py (dense tracker, both daughters survive >= 40 t). For conversions of intact cells, use autopoiesis's kindtrack.py (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/kindtrack.py). For intrinsic death inside the genome, see lenia-multichannel's maintenance decay (packs/mcfd-MIRd) and chemotaxis-motility's toxic self-waste (packs/toxforage)."
+    }
+  ],
+  "rubric_issues": [
+    "labkit colour scales: per-pack 99.5-percentile scales saturate bistable marker channels when on-cells are rare, so kinds cannot be read from the sheets of fisim evo2 S1/S2/N1/N2. Kind channels need fixed absolute scales or scales shared across arms.",
+    "labkit rim_vs_outside (about 0.5) misreads band membranes, because its outside annulus sits on the m peak. The evo2 packs also lack radial.png. Per-channel radial profiles around track centroids are still needed (requested in r1).",
+    "L7: require off-kind-daughter counts for kinds that ARISE during the run, reported separately from planted kinds. In fisim, planted kinds bred true in 46/46 divisions while arisen marks bred true in 0/3, so a planted-kind heredity result must not stand in for heredity of variation.",
+    "L7 power: a selection test in which arisen lineages get fewer than ~3 divisions each should be reported as 'underpowered (non-detection)', not as a measured null. World-level stochastic events outside the genome (kicks, disk erasure) must be declared in META and scored under PhySim potential."
+  ],
+  "review_file": "/home/user/physim/research/alife/committee/reviews/fisim-beyond-laplacian_r2.md"
+}
