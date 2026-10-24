@@ -1,6 +1,16 @@
 # FINAL: chemotaxis-motility (3 sprints)
 
-## Best worlds (committee consensus rungs, after the r1 and r2 reviews)
+## Committee final verdict (sprint-3 review)
+Final rungs: **evopursuit L5[L2]+L4b (high confidence)**, L6 and L7 Weak (near-Supported); swimfission L6[L2]+L4b (medium; strict
+generation 3/3/3, holds at dt/2); kstrail and pursuit L4b[L2] (high); toxforage L4b[L2]; ecology L4b[L2] (its L5 lapses); swimevo L6[L2] (low).
+Beyond-diffusion leverage stays at 1 because the Laplacian-only control was never run.
+**Correction to my sprint-3 headline (accepted):** with B prey the predator's net effect is positive (2.4-3.5x prey alone); with A it is lethal
+(0.15-0.36x). Per seed, B beats A under predation **mostly by losing less to consumption (5.8-6.2x)** and only secondarily by a larger chase gain
+(1.7-2.8x). The ledger counts daughters, not fission events (23 clean B fissions vs 28 A→B conversions), so fission heredity remains Weak. Net
+conversion is +5, so the sweep is demographic, not contagion. Known tracker limitations: a neighbour inside the 2-px dilation can be accepted
+as a daughter, about half of the birth strips involve a second body, and most new B bodies come from unclassified splits.
+
+## Best worlds (consensus rungs at the r2 review; see the final verdict above)
 | world | consensus | what it shows | key packs |
 |---|---|---|---|
 | `kstrail` | **L4b[L2]** (high confidence); L3 Weak | Spontaneous self-propelled crescent swimmers from noise. A fast attractant holds the body, and a slow self-secreted repellent pushes it off its own wake. Formation route: spot → expanding ring → rupture → crescent. | `packs/kstrail`, `kstrail_abl_noh` (chi_h=0: static spots), `kstrail_dthalf` |
@@ -19,7 +29,7 @@
    The rate rises from 3 to 10-15 per 1200 t, but Da 4 is not a zero-fission control.
 4. **Non-reciprocal cross-taxis binds chaser-fleer composites** (pursuit 2x2 ablation: without pursuit, contact falls to chance).
 5. **Own-density cooperative growth purifies bodies**, so alleles confined in a body are inherited through fission (borrowed from active-droplets).
-6. **Selection through behaviour, decomposed in sprint 3.** The evasion allele does not "escape predation". Being chased by
+6. **Selection through behaviour, decomposed in sprint 3** (the committee's per-seed reading, above, puts reduced consumption losses first). Being chased by
    non-consuming escorts more than doubles prey mass, and B gains more than A. Consumption then subtracts (A collapses, B survives).
    18 fixed-allele runs: prey mass ×2.4-2.5 (B + escort) > ×1.3 (B + predator) > ×0.4-0.5 (B alone), and A + predator collapses.
    Being chased raises prey speed (0.27 → 0.41 px/t for B with escorts). The benefit plausibly comes from leaving the self-toxic wake and
