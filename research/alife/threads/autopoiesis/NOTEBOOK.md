@@ -102,7 +102,7 @@ blobs (phi profile radius 6, K and L in radius 4); everything else self-organize
 - parasite threshold (screens, 32k steps): c2=0.24 -> purged in 3/3 seeds (45-51 cells); c2=0.27
   -> seed 0 extinct at 32k, seed 1 down to 3 cells; c2=0.30 -> extinct ~25k.
 - controls: no mutation (c2 irrelevant): 52 cells, stable to t=32k. Neutral mutant (c2=c1=0.2):
-  K2 never forms a cell, 52 K1 cells at 32k (seed 0). So the sweep needs the advantage and the
+  K2 never forms a cell; 52, 51 and 52 K1 cells at 32k (seeds 0, 1, 2). So the sweep needs the advantage and the
   collapse needs the parasite.
 - open question: why do K1 cells die faster than mutation events hit them in the parasite runs?
   Hypothesis: infected cells grow fast, hog substrate and starve neighbours before dying.
@@ -130,3 +130,14 @@ with v = mu <grad S>_cell. No external gradient.
   with a depletion wake at 0.094-0.11 px per time unit, 17.7-18.5 body lengths over 6000 (3 seeds,
   `packs/phase_swim`). Headings: diagonal, -y, +x: locked to lattice directions. The swimmer grows
   into an arc and never divides (it never starves).
+- jitter (seed 1, 4000 steps): mu 2.7 / 3.3 / F 0.0054 / F 0.0066 all swim at 0.085-0.10 px/time;
+  mu=2.0 swims after t~2000. Area keeps growing (109 -> 1400-1900 px by t=4000) in every case.
+- swim + divide attempts: lower feed (F 0.005-0.0055) -> swimmers become long bands wrapping the
+  domain, no division. Adding wall adsorption (chi=2) -> big grid-aligned square cells that later
+  collapse (`screens/swimchi_*`). Negative for now; swimmers need a size limit.
+
+## 8. Robustness of phase_membrane (seed 0, t=8000)
+chi 1.8/2.2: 22/16 cells; F 0.0054/0.0066: 11/28; th 0.135/0.165: 8 (large) / 6 (small) cells.
+Bounded walled cells survive every +-10% jitter; th is the most sensitive knob.
+
+Sprint 1 wall-clock: 14:28 -> ~15:50 UTC of simulation work, then report.

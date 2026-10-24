@@ -41,7 +41,7 @@ META = {
 }
 
 P = dict(DS=0.2, DK=0.1, DL=0.1, Dp=0.1, r=0.2, a=4.0, th=0.15, F=0.006, k=0.0649, b=0.05, dL=0.02,
-         gate=1, gateK=1, nophase=0, scale=1, noise_amp=0.3, noise_mean=0.5, noise_KL=0.5, noise_K=0.5, dt=1.0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=1, R0=6, IC="spots", mu=3.0)
+         gate=1, gateK=1, nophase=0, scale=1, noise_amp=0.3, noise_mean=0.5, noise_KL=0.5, noise_K=0.5, dt=1.0, K0=0.5, kin="logistic", c=0.2, dK=0.02, nspots=1, R0=6, IC="spots", mu=3.0, chi=0.0)
 
 
 def lap(u):
@@ -106,7 +106,13 @@ def step(s):
     s2 = P["scale"] ** 2
     s["S"] = np.maximum(S + h * (s2 * P["DS"] * lap(S) - auto - prodL + P["F"] * (1 - S)), 0)
     s["K"] = np.maximum(K + h * (mob_div(K, g if P["gateK"] else np.ones_like(g), s2 * P["DK"]) + auto - kdec * K), 0)
-    s["L"] = np.maximum(L + h * (mob_div(L, g, s2 * P["DL"]) + prodL - P["dL"] * L), 0)
+    adv = 0.0
+    if P["chi"]:  # optional link adsorption to the wall (from phase_membrane)
+        w = 4 * phi * (1 - phi)
+        avy = s2 * P["DL"] * P["chi"] * g * 0.5 * (np.roll(w, -1, 0) - np.roll(w, 1, 0))
+        avx = s2 * P["DL"] * P["chi"] * g * 0.5 * (np.roll(w, -1, 1) - np.roll(w, 1, 1))
+        adv = upwind_div(L, avy, avx)
+    s["L"] = np.maximum(L + h * (mob_div(L, g, s2 * P["DL"]) - adv + prodL - P["dL"] * L), 0)
     if P["nophase"]:
         s["phi"] = np.ones_like(phi); return s
     s["phi"] = np.clip(phi + h * s2 * P["Dp"] * lap(phi) + h * P["r"] * phi * (1 - phi) * (phi - 0.5 + P["a"] * (L - P["th"])), 0, 1)
