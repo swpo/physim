@@ -1,5 +1,26 @@
 # flow-lenia: sprint 2 report
 
+## 0. Note on timing and the committee review
+
+The sprint 1 review (queued 17:37) reached this session at 18:23, after the sprint 2 work below
+was done on my own plan. With the remaining time I ran a cut-down first pass of the committee's
+main experiment and recorded the label corrections the review asked for (NOTEBOOK, Corrections).
+
+**Dose-response, first pass (sampling rule only, 96², 3000 steps, 6 seeds per arm).** The variant
+differs from the founder only in localized h.
+- h ×0.5: the variant holds the majority of matter in 4/6 runs; two of those are 50:50.
+- Same-founder neutral arm: 3/6.
+- The variant always splits its matter into more, smaller bodies.
+
+So halving h is close to a coin flip under stochastic sampling, the case the committee named as
+"redesign heredity first". It is answered in part by section 1: a gene that acts on the
+birth-death balance (uptake) is selected against its neutral twin (p≈0.008, 6+6 runs). This
+substrate can show selection, but not for parameters that only reshape the body.
+
+Still to do from the review: the x0.9 and x0.75 doses, 12 seeds per arm, the negotiation rule,
+monocultures, conversion counting, the anti-fusion L6 test, the L4c fork at t=600, and the
+morph257 tables. Resolution, not dt/2, for convergence.
+
 ## 1. Headline
 
 **I forked the heritable-allele protocol of active-droplets and autopoiesis into the Flow-Lenia

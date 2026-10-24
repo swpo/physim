@@ -229,3 +229,23 @@ Prediction from R* (break-even food = k_dec g^0.5 / k_eat): mean log g should fa
 8000 steps: +0.14, -0.23, +0.32. Not supported; the outcome looks like the no-cost runs. Selection
 on g probably acts through growth during colonization, not through the steady-state food level.
 Sprint 2 ended ~18:25 UTC.
+
+## Corrections after the sprint 1 review (append-only; the earlier entries stand as written)
+- E13/E18: in fl_morph257, channel A0 renders **cyan**, not orange (labkit palette: channel 0 is
+  cyan, channel 1 orange). So "pure A0 rings" are the cyan bodies; the O/C labels are by
+  composition, not colour.
+- E6: the kind names are swapped. In the evo renders kind0 (founder) is cyan and kind1 (variant)
+  orange. The text of E6 says the opposite.
+- E12: the "identical-event" neutral twin is not identical: it had 74 events vs 62, because the
+  event times come from the same rng, whose stream diverges once the dynamics differ.
+
+## S2-E5. Committee main experiment, cut-down first pass (review reached this session 18:23)
+fl_forager_evo with `h_factor`: the variant differs from the founder only in localized h. Arms:
+h x0.5 and a same-founder neutral arm (h x1.0001, so the kinds stay distinguishable). 96^2,
+3000 steps, 6 seeds each, stochastic sampling only. Negotiation not run yet.
+Result (evo2/dose_*.log; kind1 = variant). h x0.5: variant/founder matter 99/1020, 736/339,
+542/571, 1049/69, 559/558, 565/516, so the variant has the majority in 4/6 (two of those are 50:50).
+The variant always makes more, smaller bodies (8-15 vs 0-11). Neutral (x1.0001): kind1 majority
+3/6. Even halving h is not a clear fitness difference under sampling: the coin-flip outcome the
+committee named as "redesign heredity first", though only for one rule and 6 seeds. Contrast with
+S2-E1: the uptake gene acts on the birth-death balance directly and IS selected (p~0.008).

@@ -134,8 +134,11 @@ def init(seed, size):
     rules = [base]
     for _ in range(CFG["species"] - 1):
         r = dict(base)
-        for key in ("m", "s", "h"):
-            r[key] = base[key] * np.exp(CFG["founder_spread"] * frng.standard_normal(k))
+        if CFG.get("h_factor") is not None:  # dose-response arm: variant differs only in h
+            r["h"] = base["h"] * CFG["h_factor"]
+        else:
+            for key in ("m", "s", "h"):
+                r[key] = base[key] * np.exp(CFG["founder_spread"] * frng.standard_normal(k))
         rules.append(r)
     Kf = kernels_fft(H, W, base, CFG["R_scale"])
     A = np.zeros((C, H, W))
