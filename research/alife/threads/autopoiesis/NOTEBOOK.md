@@ -234,3 +234,19 @@ the tag is the drift control). Start mu = tag = 1.5 (swimmers). Optional toxic w
   positive feedback (motile -> fewer divisions -> sparse population -> swimming toward food pays):
   possibly two evolutionary attractors. Hypothesis only; populations at kd=0.02 are small
   (2-10 cells) so drift is strong (see the tag).
+- 3 more seeds each (seeds 3-5), same settings: kd=0.02: seed 3 extinct by t~4000; others
+  mu 2.24/1.81 vs tag 0.95/1.73. kd=0: mu 1.01/1.17/1.22 vs tag 1.64/1.18/1.52, populations 43-46.
+  Totals over 6 seeds: toxic, mu - tag > 0 in 5/5 surviving (+0.08..+1.33), all end mu >= 1.8;
+  no toxin, mu falls to 1.01-1.22 in 5/5 large populations (tag mean 1.44), the 6th (crashed to 3
+  cells) rises to 2.33. `screens/motility_evolution.png` (12 runs).
+- start mu = tag = 3.0 at kd=0 (`runs/mthi_*.log`, 3 seeds): populations stay at 2-4 cells
+  (fast swimmers rarely divide) and mu does not fall (3.04/3.18/2.85 vs tag 3.12/2.96/3.06).
+  Consistent with a sparse, motile regime where too few divisions let selection act; it is not
+  proof of a second attractor.
+
+## 15. Movies
+- `packs/motile_trait_tox/movie.mp4`: swimmers with waste wakes grow, split and evolve higher
+  mobility (the thread's movie for sprint 2).
+- `packs/phase_swimdiv_movie` (192^2, 1 cell, 12k): symmetric 1 -> 4 -> 8 expansion, then 4-fold
+  head-on collisions across the periodic edge (t~5250-5750) crash the population to one long
+  swimming arc. Pretty, but the symmetry is from the grid and the ending is a die-off.
