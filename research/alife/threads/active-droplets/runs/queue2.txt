@@ -1,0 +1,12 @@
+runs/S_a1_s0 --seed 0 --steps 60000 --set rung0=1 cap=6
+runs/N_a1_s0 --seed 0 --steps 60000 --set rung0=1 cap=6 neutral=1
+runs/S_a1_s1 --seed 1 --steps 60000 --set rung0=1 cap=6
+runs/N_a1_s1 --seed 1 --steps 60000 --set rung0=1 cap=6 neutral=1
+runs/S_a1_s2 --seed 2 --steps 60000 --set rung0=1 cap=6
+runs/N_a1_s2 --seed 2 --steps 60000 --set rung0=1 cap=6 neutral=1
+runs/S_a5_s0 --seed 0 --steps 60000 --set rung0=5 cap=6
+runs/N_a5_s0 --seed 0 --steps 60000 --set rung0=5 cap=6 neutral=1
+runs/S_a5_s1 --seed 1 --steps 60000 --set rung0=5 cap=6
+runs/N_a5_s1 --seed 1 --steps 60000 --set rung0=5 cap=6 neutral=1
+runs/S_a5_s2 --seed 2 --steps 60000 --set rung0=5 cap=6
+runs/N_a5_s2 --seed 2 --steps 60000 --set rung0=5 cap=6 neutral=1

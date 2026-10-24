@@ -206,3 +206,10 @@ move the turnover protocol to ad7. Final deliverables: REPORT_r3, FINAL.md, movi
   (3 draws per birth) and per kill (1 draw); neutral twin = every rung has the ancestor's kp.
 - KP ladder [0, 0.25, 0.5, 1, 1.5, 2.5, 4]. Scaled down from the committee spec to fit the sprint: 128^2 (not 192^2),
   t = 30000 (not >= 40000), landscape at t = 6000.
+- Landscape (ad9, single kind, no mutation/dilution, t=6000, 3 seeds; `screens/ad9_landscape.png`, `runs/land_*`):
+  births by kp 0/0.25/0.5/1/1.5/2.5/4 = 0.3/4.7/6.7/6.7/6.3/1.7/1.0 (means of 3 seeds); droplets 4.7/9.0/11.7/11.7/11.3/6.7/6.0.
+  Plateau 0.5-1.5, both ancestors (0.25 and 2.5) fertile but 2.5 only marginally (births 3, 2, 0).
+- Main run attempt 1, cap=12 (kp=2.5 ancestor, seed 0, t=30000): only 9 births, 1 mutation, 1 kill; S and N
+  identical end states (12 droplets all rung 5). At carrying capacity births are fuel-limited, so no turnover.
+  `runs/cap12/`. Aborted the queue; restarted with cap=6 (below carrying capacity: cells keep dividing and every
+  birth forces a Moran kill).
