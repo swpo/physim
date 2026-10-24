@@ -316,3 +316,16 @@ disk-hit and other), flips, conversions (1:1 kind change without a flip), first 
   The sign of selection on b2 flips with turnover: under low turnover (batch 1), high-yield K2
   ends with fewer cells than the twin in 5/5 (fewer, bigger cells that divide less in a crowd);
   under high turnover it sweeps in 3/5 (bigger cells recolonize cleared space faster?). Hypothesis.
+- packs (kind-coloured: K1 cyan, K2 orange, L magenta, wall green): `packs/membrane_evo_up` (s4,
+  K2 sweep), `packs/membrane_evo_twin` (s4), `packs/membrane_evo_down` (s1).
+
+## 18. Committee secondaries
+- chi=0 control (`packs/phase_membrane_chi0`, 3 seeds): 42-43 cells, 26-32 persistent splits,
+  gen 2-4. Identical to phase_protocell_noise. The ring is not load-bearing for persistence or
+  division; it makes bigger, irregular, fusing cells.
+- mature-cell damage (labkit's new mature-compact target, 3 seeds; twins in
+  `packs/phase_membrane_mature_ctl`): measured loss 30.3/31.7/31.8%. s0 and s2 regrow to
+  pre-cut area (+50 t, +350 t), then divide; s1 regrows to 1.37x, then disappears (merge or
+  death) at +250 t.
+- showcase: `movies/showcase.mp4` = membrane_evo_up seed 4 (`showcase.py`, fixed scales,
+  401 frames, 2.0 MB).

@@ -21,7 +21,8 @@ exceed flips, and off-kind daughters are 0 in 28/30. Results:
 | world | claimed | strongest evidence | known weaknesses |
 |---|---|---|---|
 | `membrane_evo` (+`_up`, `_down`; identical-event twins) | **L7[L3]**, against the committee's r2 criteria | `runs/evo_hi/*.json`, `runs/evo/*.json` (15+15 runs, ledgers per seed: births, deaths by cause, flips, conversions, first acquisitions, off-kind daughters, counts, biomass, tag). Down arm departs from the twin in 4/5 (high turnover) and 5/5 (low) through deaths and missing births. Packs: `packs/membrane_evo_up` (s4, sweep), `packs/membrane_evo_twin` (s4), `packs/membrane_evo_down` (s1): K1 cyan, K2 orange, L magenta, wall green | About 2-3 replacement generations under high turnover, 1 under low. Flips hit cells by location, so big cells are flipped more often (K2→K1 back-flips 1-6 in the up arm). The up-arm sign depends on turnover (a hypothesis about recolonization is untested). The sealed channel needs b=0.065: b=0.05 leaves 1 cell. Birth strips not made (labkit tracks.png only). |
-| `phase_membrane_chi0` (control) | control for phase_membrane L3 | `packs/phase_membrane_chi0` (3 seeds), see §3 | |
+| `phase_membrane_chi0` (control) | control for phase_membrane L3 | `packs/phase_membrane_chi0` (3 seeds): 42-43 cells, 26-32 persistent splits, gen 2-4. This is the parent noise world, so the ring is not load-bearing | |
+| `phase_membrane` mature damage | L4a for mature cells | `packs/phase_membrane_damage_mature/seed{0,1,2}` (new labkit mature-compact target; undamaged twins in `packs/phase_membrane_mature_ctl`). Measured loss 30.3/31.7/31.8%. Area back to 1.04x by +50 t (s0) and 1.0x by +350 t (s2), both later dividing (damage.png s2: resealed wall and ring by t=6250, division at ~7750). s1 regrows to 1.37x, then is lost to a merge or death at +250 t | 2/3 clean recoveries |
 
 ## 3. Mechanisms learned
 
@@ -35,10 +36,13 @@ exceed flips, and off-kind daughters are 0 in 28/30. Results:
    (t=16k): b=0.035 extinct, 0.05 one cell, 0.065 20 cells, 0.08 6 large cells. In a crowd,
    high-yield cells are bigger and divide less. After frequent disk deaths they win, presumably by
    refilling cleared space faster.
-4. **χ=0 control:** see §3a.
+4. **χ=0 control and mature damage:** see §3a.
 
-### 3a. phase_membrane χ=0 control
-(filled below)
+### 3a. phase_membrane χ=0 control and mature damage
+With χ=0 (no adsorption) the world is phase_protocell_noise: cells form, divide (26-32
+persistent splits vs 9-12 with χ=2) and fill the domain. The ring changes morphology (bigger,
+irregular cells with fusions) but life does not depend on it. The L3 claim for phase_membrane
+rests on the ring being a self-made, inherited layer, not a load-bearing one.
 
 ## 4. Negative results
 
