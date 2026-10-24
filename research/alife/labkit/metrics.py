@@ -1,4 +1,5 @@
-"""Measurements for evidence packs: segmentation, enclosures, topology, tracking, lineage.
+"""Measurements for evidence packs: segmentation, enclosures, topology, tracking, lineage,
+radial boundary profiles and damage targeting.
 
 Everything is periodic unless stated. Definitions are deliberately simple and stated
 so judges know exactly what a number means:
@@ -10,19 +11,89 @@ so judges know exactly what a number means:
   is >= min_hole pixels, and is not the largest low region (the background).
 - track: a component followed through recorded frames by pixel overlap (centroid
   fallback for fast movers). A split is one component becoming >= 2 significant
-  components; a merge is the reverse.
+  components; a merge is the reverse. merge/split ratio = merge events / split events
+  (near 1 = reticulate genealogy: what divides mostly fuses again).
 - persistent split: a split of a stable parent (>= K/3 frames) into >= 2 stable children
   (each >= K/3 frames as a single component) whose split-only lineages survive >= K
-  frames (K = 10% of the run, min 5). Lineages do not continue through merges.
+  frames after the split, AND that stay apart: surviving children whose descendants
+  (through splits or merges) take part in the same merge within K frames of the split
+  count as one, and >= 2 such groups must remain (sibling re-merge filter). K = 20
+  recorded frames by default (absolute, independent of run length; META "lineage_k",
+  CLI --lineage-k). Lineages do not continue through merges.
 - generation: number of persistent splits on the ancestry path of a track.
 - persistent homology: superlevel filtration of a normalized field (gudhi periodic
   cubical complex). H0 = blobs, H1 = loops (enclosed low regions); counts are of
   finite features with persistence above tau (fraction of the field range).
+- radial profile: for one component, the mean of EVERY channel (fixed render
+  normalization: 0..1 = the channel's 1st..99.5th percentile over the run, so it works
+  for channels outside the matter set) in 25 bins of rho = r / R_eq over [0, 2.5],
+  where r = periodic distance from the component's matter-weighted centroid (= the
+  track centroid) and R_eq = sqrt(area / pi) of the component. Neighbouring components
+  are NOT masked out. Per track: the top tracks at their middle-life render frame.
+  Aggregate: mean +- std over all components with area >= 2 * min_area at up to 6
+  render frames spread over the run (the initial frame excluded), leaving out, from the
+  damage frame on, the damaged individual and every track descended from it (through
+  splits and merges; their count is reported). Flagged in FACTS: ring members (the
+  centroid pixel is outside the component's own mask, e.g. a membrane segmented apart
+  from its core, so one individual is counted twice and the ring's profile is centred on
+  the hole) and truncated members (< half of the pixels of the outside annulus
+  1.6-2.2 R_eq sampled: on a periodic grid the window is capped below half the grid, so
+  the annulus is clipped for R_eq > (min(H, W) - 1) / 4.4 and holds only corner pixels or
+  none for R_eq > (min(H, W) - 1) / 3.2; an open boundary also clips it). R_eq follows
+  the matter segmentation: if the threshold cuts an individual into a core and a separate
+  ring (a low gap between them), R_eq is the core's and the ring sits at rho > 1.3,
+  where only its inner flank is in the rim band; raise META "smooth" or set META
+  "matter" so that one component covers the whole individual.
+- boundary score of one channel's profile p: rho_peak = rho of the global maximum
+  (in the rim band if 0.5 <= rho_peak <= 1.5); rim = max of p over 0.6 <= rho <= 1.3;
+  core = mean of p over rho < 0.4; outside = mean of p over 1.6 <= rho <= 2.2 (means of
+  bin means); rim/core = (rim + 0.01) / (core + 0.01), rim/outside likewise, capped at
+  999 (1 = no contrast or an absent channel; ~100 = the denominator is ~0). A flat
+  profile (max - min <= 1e-6, e.g. an absent channel) is reported as flat: its rho_peak
+  is meaningless. peak_in_rim is reported next to the verdict but is not part of it.
+  MEMBRANE-LIKE = rim/core >= 1.5 AND rim/outside >= 1.5 on the aggregate profile; the
+  number of individuals that pass on their own profile is reported alongside.
+- damage target (--damage FRAME:FRAC[:MODE]): frames 0..FRAME (pre-cut) are segmented
+  and tracked as above (robust range of those frames); among components at FRAME whose
+  track has existed >= K frames and whose area is within [0.5, 1.6] x the median area,
+  the most compact one (lowest aspect ratio = sqrt of the eigenvalue ratio of the pixel
+  second-moment matrix, so elongating or pinching bodies are avoided); if none
+  qualifies, the largest component; FACTS warns when the chosen target's aspect ratio
+  is > 1.5 (likely elongating or pinching). A = target area, R_eq = sqrt(A / pi).
+  FRAC must be in (0, 1].
+  core: disk of area FRAC*A at the centroid. rim: a disk of the same area centred on
+  the boundary pixel farthest from other components. half: pixels of the component
+  (dilated by ~R_eq/4 so a layer just outside the threshold contour is cut too) beyond
+  a line perpendicular to the same outward direction, offset from the centroid so that
+  FRAC of the component's pixels are erased. Other components are never in the mask.
+  Reported loss = matter lost inside the target's component mask (raw matter field just
+  before minus just after the world's damage() call) / its matter before, whatever the
+  hook actually erases; also reported: the share of all lost matter that was under the
+  mask (low = the hook cut somewhere else). Comparator = the undamaged component closest
+  in area, preferring mature ones at a boundary gap >= R_eq from the target. After the
+  cut both are followed as individuals: through their own splits and through merges of
+  their own pieces (threshold flicker), not through merges with other individuals;
+  "area rel" = area of the largest piece / area just before the cut (recorded frame
+  FRAME - 1; for FRAME = 0, which is recorded after the cut, the pre-cut field segmented
+  with the run's normalization).
+- species (META "species" = {name: [channels]}): segmentation, tracking and lineage as
+  above, run separately on each species' channel sum with its own robust range.
 """
 from __future__ import annotations
 
+import warnings
+
 import numpy as np
 from scipy import ndimage
+
+LINEAGE_K = 20            # default lineage window (recorded frames) for persistent splits
+RHO_EDGES = np.linspace(0.0, 2.5, 26)            # 25 radial bins in rho = r / R_eq
+RHO = 0.5 * (RHO_EDGES[1:] + RHO_EDGES[:-1])     # bin centres 0.05 .. 2.45
+CORE_RHO, RIM_RHO, OUT_RHO, PEAK_RHO = (0.0, 0.4), (0.6, 1.3), (1.6, 2.2), (0.5, 1.5)
+RATIO_EPS, RATIO_CAP, MEMBRANE_RATIO = 0.01, 999.0, 1.5
+DAMAGE_AREA_BAND = (0.5, 1.6)   # target area / median component area
+DAMAGE_ASPECT_WARN = 1.5        # FACTS warns when the damage target is more elongated than this
+FLAT_EPS = 1e-6                 # a radial profile with max - min <= this is flat (no peak)
 
 
 # ------------------------------------------------------------------ segmentation
@@ -198,6 +269,209 @@ def structure(fields_norm, mask):
     }
 
 
+# ------------------------------------------------------------------ radial profiles
+def _quiet(fn, x, axis=None):
+    """nan-aware reduction without all-nan warnings (returns nan)."""
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", RuntimeWarning)
+        return fn(x, axis=axis)
+
+
+def radial_profile(fields_norm, cy, cx, r_eq, periodic=True):
+    """Mean of each channel in the RHO bins around (cy, cx), rho = r / r_eq.
+
+    fields_norm: (C, H, W). Returns (profile (C, nbins) with nan in empty bins, pixel counts).
+    Only a window of half-size 2.5 r_eq is read (capped below half the grid when periodic).
+    """
+    C, H, W = fields_norm.shape
+    h = int(np.ceil(RHO_EDGES[-1] * r_eq)) + 1
+    if periodic:
+        h = min(h, (min(H, W) - 1) // 2)
+    ys = np.arange(int(round(cy)) - h, int(round(cy)) + h + 1)
+    xs = np.arange(int(round(cx)) - h, int(round(cx)) + h + 1)
+    if periodic:
+        dy, dx = _wrap(ys - cy, H), _wrap(xs - cx, W)
+        ys, xs = ys % H, xs % W
+    else:
+        ys, xs = ys[(ys >= 0) & (ys < H)], xs[(xs >= 0) & (xs < W)]
+        dy, dx = ys - cy, xs - cx
+    b = (np.hypot(dy[:, None], dx[None, :]) / max(r_eq, 1e-9) / (RHO_EDGES[1] - RHO_EDGES[0])).astype(int).ravel()
+    ok = b < len(RHO)
+    b = b[ok]
+    cnt = np.bincount(b, minlength=len(RHO))
+    win = fields_norm[:, ys[:, None], xs[None, :]].reshape(C, -1)[:, ok]
+    prof = np.full((C, len(RHO)), np.nan)
+    has = cnt > 0
+    for c in range(C):
+        prof[c, has] = np.bincount(b, weights=win[c], minlength=len(RHO))[has] / cnt[has]
+    return prof, cnt
+
+
+def band_coverage(cnt, r_eq, band=OUT_RHO):
+    """Pixels sampled in the bins of `band` / the annulus area they should hold (1 = fully sampled;
+    < 1 when the window is capped on a small periodic grid or cut by an open boundary)."""
+    sel = (RHO >= band[0]) & (RHO <= band[1])
+    lo, hi = RHO_EDGES[:-1][sel].min(), RHO_EDGES[1:][sel].max()
+    return float(np.asarray(cnt)[sel].sum() / max(np.pi * r_eq ** 2 * (hi ** 2 - lo ** 2), 1e-9))
+
+
+def _ratio(a, b):
+    if not (np.isfinite(a) and np.isfinite(b)):
+        return None
+    return float(min((a + RATIO_EPS) / max(b + RATIO_EPS, 1e-12), RATIO_CAP))
+
+
+def boundary_score(prof):
+    """Boundary score of one channel's radial profile (length len(RHO)); None if empty."""
+    prof = np.asarray(prof, float)
+    if not np.isfinite(prof).any():
+        return None
+    band = lambda lo, hi: (RHO >= lo) & (RHO <= hi)  # noqa: E731
+    k = int(np.nanargmax(prof))
+    rim = float(_quiet(np.nanmax, prof[band(*RIM_RHO)])) if np.isfinite(prof[band(*RIM_RHO)]).any() else np.nan
+    core = float(_quiet(np.nanmean, prof[RHO < CORE_RHO[1]]))
+    out = float(_quiet(np.nanmean, prof[band(*OUT_RHO)]))
+    rc, ro = _ratio(rim, core), _ratio(rim, out)
+    flat = bool(_quiet(np.nanmax, prof) - _quiet(np.nanmin, prof) <= FLAT_EPS)
+    return {"rho_peak": round(float(RHO[k]), 2), "peak_in_rim": bool(PEAK_RHO[0] <= RHO[k] <= PEAK_RHO[1]), "flat": flat,
+            "rim_max": None if np.isnan(rim) else round(rim, 4), "core_mean": None if np.isnan(core) else round(core, 4),
+            "outside_mean": None if np.isnan(out) else round(out, 4),
+            "rim_core": None if rc is None else round(rc, 3), "rim_outside": None if ro is None else round(ro, 3),
+            "membrane_like": bool(rc is not None and ro is not None and rc >= MEMBRANE_RATIO and ro >= MEMBRANE_RATIO)}
+
+
+def radial_aggregate(profiles):
+    """Mean and std over individuals of (C, nbins) profiles (nan-aware)."""
+    P = np.stack(profiles)
+    return _quiet(np.nanmean, P, 0), _quiet(np.nanstd, P, 0)
+
+
+# ------------------------------------------------------------------ damage geometry
+def _erode1(m, periodic=True):
+    if not periodic:
+        return ndimage.binary_erosion(m)
+    return m & np.roll(m, 1, 0) & np.roll(m, -1, 0) & np.roll(m, 1, 1) & np.roll(m, -1, 1)
+
+
+def _dilate(m, it, periodic=True):
+    if not periodic:
+        return ndimage.binary_dilation(m, iterations=it) if it > 0 else m
+    for _ in range(it):
+        m = m | np.roll(m, 1, 0) | np.roll(m, -1, 0) | np.roll(m, 1, 1) | np.roll(m, -1, 1)
+    return m
+
+
+def _offsets(shape, cy, cx, periodic=True):
+    H, W = shape
+    dy = np.arange(H)[:, None] - cy
+    dx = np.arange(W)[None, :] - cx
+    if periodic:
+        dy, dx = _wrap(dy, H), _wrap(dx, W)
+    return dy, dx
+
+
+def aspect_ratio(mask, cy, cx, periodic=True):
+    """sqrt(largest / smallest eigenvalue) of the pixel second-moment matrix (1 = round)."""
+    ys, xs = np.nonzero(mask)
+    if len(ys) < 3:
+        return float("inf")
+    H, W = mask.shape
+    dy, dx = ys - cy, xs - cx
+    if periodic:
+        dy, dx = _wrap(dy, H), _wrap(dx, W)
+    ev = np.linalg.eigvalsh(np.cov(np.stack([dy, dx]), bias=True))
+    return float(np.sqrt(max(ev[1], 1e-12) / max(ev[0], 1e-12)))
+
+
+def choose_damage_target(seg, spans, K, periodic=True):
+    """Pick the component to damage (see the module definitions).
+
+    spans[j]: frames the track owning component j has existed. Returns (j, rule, aspect[j]).
+    """
+    n = seg["n"]
+    if n == 0:
+        return None, "no components", []
+    asp = [aspect_ratio(seg["lab"] == j + 1, seg["cy"][j], seg["cx"][j], periodic) for j in range(n)]
+    med = float(np.median(seg["area"]))
+    cand = [j for j in range(n) if spans[j] >= K
+            and DAMAGE_AREA_BAND[0] * med <= seg["area"][j] <= DAMAGE_AREA_BAND[1] * med]
+    if cand:
+        return min(cand, key=lambda j: asp[j]), "mature-compact", asp
+    return int(np.argmax(seg["area"])), "fallback-largest", asp
+
+
+def choose_comparator(seg, j, spans, K, periodic=True):
+    """Undamaged control: the other component closest in area (log ratio), preferring mature
+    ones (track >= K frames) that are not touching the target (boundary gap, centroid
+    distance - R_eq target - R_eq other, of at least one target R_eq)."""
+    others = [q for q in range(seg["n"]) if q != j]
+    if not others:
+        return None
+    H, W = seg["lab"].shape
+    r = np.sqrt(seg["area"] / np.pi)
+
+    def far(q):
+        dy, dx = seg["cy"][q] - seg["cy"][j], seg["cx"][q] - seg["cx"][j]
+        if periodic:
+            dy, dx = _wrap(dy, H), _wrap(dx, W)
+        return np.hypot(dy, dx) - r[j] - r[q] >= r[j]
+    mature = [q for q in others if spans[q] >= K]
+    pool = [q for q in mature if far(q)] or mature or others
+    return min(pool, key=lambda q: abs(np.log(seg["area"][q] / max(seg["area"][j], 1))))
+
+
+def _outward(seg, j, periodic=True):
+    """Boundary pixel of component j farthest from every other component (+ unit direction)."""
+    lab = seg["lab"]
+    H, W = lab.shape
+    m = lab == j + 1
+    by, bx = np.nonzero(m & ~_erode1(m, periodic))
+    cy, cx = seg["cy"][j], seg["cx"][j]
+    oy, ox = np.nonzero((lab > 0) & ~m)
+    if len(oy) and len(by):
+        from scipy.spatial import cKDTree
+
+        pts = np.stack([oy, ox], 1).astype(float)
+        tree = cKDTree(pts, boxsize=(H, W)) if periodic else cKDTree(pts)
+        k = int(np.argmax(tree.query(np.stack([by, bx], 1).astype(float))[0]))
+    elif len(by):  # no neighbours: the boundary pixel farthest along +x
+        k = int(np.argmax(_wrap(bx - cx, W) if periodic else bx - cx))
+    else:
+        return (cy, cx), (0.0, 1.0)
+    py, px = float(by[k]), float(bx[k])
+    vy, vx = (_wrap(py - cy, H), _wrap(px - cx, W)) if periodic else (py - cy, px - cx)
+    nrm = float(np.hypot(vy, vx)) or 1.0
+    return (py, px), (vy / nrm, vx / nrm)
+
+
+def damage_mask(seg, j, frac, mode="core", periodic=True):
+    """Boolean mask to hand to the world's damage() hook, and a description of it."""
+    lab = seg["lab"]
+    m = lab == j + 1
+    others = (lab > 0) & ~m
+    A = float(seg["area"][j])
+    r_eq = np.sqrt(A / np.pi)
+    rad = float(np.sqrt(frac * A / np.pi))
+    info = {"mode": mode, "frac_requested": float(frac), "radius": rad}
+    if mode == "core":
+        cy, cx = seg["cy"][j], seg["cx"][j]
+    elif mode == "rim":
+        (cy, cx), _ = _outward(seg, j, periodic)
+    elif mode == "half":
+        _, (ny, nx) = _outward(seg, j, periodic)
+        dy, dx = _offsets(lab.shape, seg["cy"][j], seg["cx"][j], periodic)
+        proj = dy * ny + dx * nx
+        cut = float(np.quantile(proj[m], 1 - frac))
+        region = _dilate(m, max(1, int(round(0.25 * r_eq))), periodic) & ~others
+        info.update({"direction": [round(float(ny), 3), round(float(nx), 3)], "offset": round(cut, 2)})
+        return region & (proj >= cut), info
+    else:
+        raise ValueError(f"damage mode {mode!r}: use core, rim or half")
+    dy, dx = _offsets(lab.shape, cy, cx, periodic)
+    info["center"] = [round(float(cy), 2), round(float(cx), 2)]
+    return (dy ** 2 + dx ** 2 <= rad ** 2) & ~others, info
+
+
 # ------------------------------------------------------------------ tracking
 def _wrap(d, L):
     return d if L is None else (d + L / 2) % L - L / 2
@@ -208,7 +482,7 @@ def track(comps, links, shape=None, periodic=True):
 
     comps[f]: dict with arrays area, cy, cx (length n_f).
     links[f] (f >= 1): (prev_idx, next_idx, overlap_count) between frames f-1 and f.
-    Returns (tracks, events).
+    Returns (tracks, events). tracks[i]["comp"][k] is the component index in frame start + k.
     """
     H, W = (shape if (periodic and shape is not None) else (None, None))
     tracks, events = [], []
@@ -218,7 +492,7 @@ def track(comps, links, shape=None, periodic=True):
         tid = len(tracks)
         tracks.append({"id": tid, "start": f, "end": f, "birth": kind, "parents": parents,
                        "children": [], "area": [comps[f]["area"][i]],
-                       "cy": [comps[f]["cy"][i]], "cx": [comps[f]["cx"][i]]})
+                       "cy": [comps[f]["cy"][i]], "cx": [comps[f]["cx"][i]], "comp": [int(i)]})
         for p in parents:
             tracks[p]["children"].append(tid)
         return tid
@@ -266,6 +540,7 @@ def track(comps, links, shape=None, periodic=True):
                 t["area"].append(B["area"][n_])
                 t["cy"].append(B["cy"][n_])
                 t["cx"].append(B["cx"][n_])
+                t["comp"].append(int(n_))
                 new_owner[n_] = tid
             else:
                 kind = "nucleation" if not P else ("split" if len(P) == 1 else "merge")
@@ -283,10 +558,43 @@ def track(comps, links, shape=None, periodic=True):
     return tracks, events
 
 
+def descendants(tracks, tid, fmax=None):
+    """Track ids reachable from tid through children (splits AND merges), started <= fmax.
+    tid itself is included."""
+    seen, stack = set(), [tid]
+    while stack:
+        i = stack.pop()
+        if i in seen or (fmax is not None and tracks[i]["start"] > fmax):
+            continue
+        seen.add(i)
+        stack.extend(tracks[i]["children"])
+    return seen
+
+
+def individual_lineage(tracks, tid, fmax=None):
+    """tid plus its descendants through splits AND through merges of its own pieces (every
+    parent already in the set): one individual followed across threshold flicker and fission.
+    A merge with any outside track ends it. Used to follow a damaged individual."""
+    import heapq
+
+    seen, heap = {tid}, [(tracks[c]["start"], c) for c in tracks[tid]["children"]]
+    heapq.heapify(heap)
+    while heap:  # pops in non-decreasing start, so all parents of a merge are decided first
+        start, c = heapq.heappop(heap)
+        if c in seen or (fmax is not None and start > fmax):
+            continue
+        t = tracks[c]
+        if t["birth"] == "split" or all(q in seen for q in t["parents"]):
+            seen.add(c)
+            for cc in t["children"]:
+                heapq.heappush(heap, (tracks[cc]["start"], cc))
+    return seen
+
+
 def lineage_stats(tracks, events, n_frames, dt_frame, shape=None, periodic=True, K=None):
-    """Lifetimes, persistent splits, generations and motility from tracks/events."""
+    """Lifetimes, persistent splits (with the sibling re-merge filter), generations and motility."""
     H, W = (shape if (periodic and shape is not None) else (None, None))
-    K = K if K is not None else max(5, int(0.1 * n_frames))
+    K = int(K) if K is not None else LINEAGE_K
     ind_min = max(3, K // 3)  # an "individual" must stay a single stable component this long
 
     def span(t):
@@ -296,13 +604,43 @@ def lineage_stats(tracks, events, n_frames, dt_frame, shape=None, periodic=True,
     lin_end = {}
     for t in reversed(tracks):
         lin_end[t["id"]] = max([t["end"]] + [lin_end[c] for c in t["children"] if tracks[c]["birth"] == "split"])
-    persistent_splits = []
+    merges_at = {}
+    for e in events:
+        if e["type"] == "merge":
+            merges_at.setdefault(e["frame"], []).append(e)
+    persistent_splits, remerged_splits = [], []
     for e in events:
         if e["type"] != "split" or span(tracks[e["parent"]]) < ind_min:
             continue
         surv = [c for c in e["children"] if span(tracks[c]) >= ind_min and lin_end[c] - e["frame"] >= K]
-        if len(surv) >= 2:
-            persistent_splits.append({**e, "surviving_children": surv})
+        if len(surv) < 2:
+            continue
+        # sibling re-merge filter: survivors whose descendants merge together within K are one group
+        f0, f1 = e["frame"], e["frame"] + K
+        owner = {}
+        for k, c in enumerate(surv):
+            for d in descendants(tracks, c, f1):
+                owner.setdefault(d, set()).add(k)
+        group = list(range(len(surv)))
+
+        def root(k):
+            while group[k] != k:
+                k = group[k]
+            return k
+        rejoined = []
+        for g in range(f0 + 1, f1 + 1):
+            for m in merges_at.get(g, []):
+                ks = sorted(set().union(*[owner.get(p, set()) for p in m["parents"]]))
+                for k in ks[1:]:
+                    a, b = root(ks[0]), root(k)
+                    if a != b:
+                        group[max(a, b)] = min(a, b)
+                        rejoined.append({"frame": g, "children": [surv[ks[0]], surv[k]]})
+        n_groups = len({root(k) for k in range(len(surv))})
+        if n_groups >= 2:
+            persistent_splits.append({**e, "surviving_children": surv, "groups": n_groups})
+        else:
+            remerged_splits.append({**e, "surviving_children": surv, "remerged": rejoined})
     ps_children = {c for e in persistent_splits for c in e["children"]}
     gen = {}
     for t in tracks:
@@ -329,6 +667,7 @@ def lineage_stats(tracks, events, n_frames, dt_frame, shape=None, periodic=True,
         "K_frames": K,
         "lifetimes": life,
         "persistent_splits": persistent_splits,
+        "remerged_splits": remerged_splits,
         "generation": gen,
         "max_generation": max(gen.values()) if gen else 0,
         "motion": motion,

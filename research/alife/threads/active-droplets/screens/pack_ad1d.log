@@ -1,0 +1,12 @@
+[ad1-fuel] seed 0: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  13.8s
+  frame 40/200  28.0s
+  frame 60/200  42.4s
+  frame 80/200  56.5s
+  frame 100/200  70.3s
+  frame 120/200  84.4s
+  frame 140/200  97.9s
+  frame 160/200  112.3s
+  frame 180/200  125.6s
+  frame 200/200  139.5s
+  -> threads/active-droplets/packs/ad1-fuel-damage/FACTS.md  (139s sim)

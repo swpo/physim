@@ -1,0 +1,73 @@
+{
+ "decision": "continue",
+ "headline": "fl_forager is a reproduced L6[L2]+L4b (medium). Hill-gated uptake from a conserved, non-flowing food pool turns a gliding Flow-Lenia rule into motile crescents that multiply by fission from one noise patch: 0 nucleations in 4 seeds, reproduced by the skeptic on seed 11 and at 2x resolution. fl_cells is L4a[L3] (layering converges at 2x resolution). Selection is not yet detectable: the 40-run tournament is a coin flip and mutation matches its neutral twin. Sprint 2 must find out whether this substrate can show selection at all.",
+ "promise": 7,
+ "message_to_researcher": "DECISION: CONTINUE (promise 7/10). Sprint 2: can this substrate show selection at all?\n\nWHAT CONVINCED US\n- fl_forager: L6[L2]+L4b (medium). 0 nucleations in 4 seeds. The skeptic reproduced it on seed 11: chain #2->#4->#22, labkit gen 3, 13.7 BL. It also survives 2x resolution (R_scale 0.8, flow x4). State emergent propulsion as the claim (r202 glides without food); it separates you from Plantec Fig. 6f and phase_swimdiv's hand-coded drift.\n- fl_cells: L4a[L3] (medium). The A1 ring is 0 inside and out, radii converge at 2x, repair holds on 3 seeds vs twins.\n- The 40-run tournament and identical-event neutral twin are exemplary.\n\nWHAT DID NOT\n- L6 lineages are reticulate: merges are ~80% of splits, with 1-3 persistent splits per seed. The biologist dissented (Weak).\n- L4c is Weak: one seed, uptake off from t=0, and your k_dec builds in the dependence.\n- fl_cells is static, one cell per planted patch, novelty ~0; the beaded crown is numerical.\n- dt/2 is not a convergence test for your RT (a fixed sigma per step doubles numerical diffusion). Use resolution changes (judge-scratch/flow-lenia-r1-skeptic/mkres2.py).\n- fl_cells_food: L6[L3] Contradicted (257 nucleations; A0/A2 gone before the spores; ends as an L2 spot lattice).\n- fl_forager_evo and fl_forager_mut: L2 (L7 Contradicted / Weak). fl_morph257: L2 (one seed).\n- Fix labels: morph257 A0 renders cyan; E6 kind names swapped; neutral twin has 74 vs 62 events.\n\nMAIN EXPERIMENT: selection dose-response with a positive control\nfl_forager_evo at 96², >=3000 steps. A founder competes against a variant that differs only in localized h, at x0.9, x0.75 and x0.5, plus a same-founder neutral arm. Run every arm under stochastic sampling AND under negotiation (Michel et al., beta=100, V = local growth; see the LITERATURE Flow-Lenia section), with >=12 seeds per arm, plus 3-seed monocultures of each variant.\nReport per run: winner and share, conversions of living bodies without division, true-breeding per division.\nPass: a monotone win rate, >=10/12 at the largest dose under one rule, neutral near 6/12, and the sweep carried by divisions.\nIf it passes, run fl_forager_mut against identical-event neutral twins (>=5 pairs) in that rule. If x0.5 is a coin flip under both rules, redesign heredity first.\n\nSECONDARY\n1. Clean L6 and L4c: a local anti-fusion term (no body labels), 3 seeds x 2000 t, merge-aware lineage. Pass: >=3 generations of crescent -> 2 crescents, daughters within 30% of parent area, merges <25% of splits. Fork k_eat=0 at t=600 in a twin of each seed.\n2. fl_morph257 on 3 seeds: a contact-vs-null rate for cupped pairs, and a division table (O->O+O, C->C+C, OC->O+C).\n3. Pause fl_cells_food, rule screens and cell variants.\n\nBORROW\n- Conversion counting: origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds\n- Within-body competition beta: origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md (Mechanism 4), packs/ad5-evolve vs ad5n-neutral\n- Kinds accounting: origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json",
+ "leaderboard_rows": [
+  {
+   "world": "fl_forager",
+   "rung": "L6[L2]+L4b",
+   "confidence": "medium",
+   "note": "One 12x12 noise patch becomes 8-14 motile crescent foragers with food-depletion wakes, with 0 nucleations in 4 seeds (3 packs plus skeptic seed 11). 2-generation chains appear in seeds 1, 2 and 11 (labkit gen 3 on seed 11). Propulsion is emergent: the parent rule glides without food. Behaviour survives 2x resolution, but crescents become ring-in-halo shapes there. Fission-fusion: merges are about 80% of splits, so lineages are reticulate (biologist dissent: L6 Weak). L4c Weak (one-seed screen; dependence built in by the decay k_dec). Selection not detected.",
+   "pack": "threads/flow-lenia/packs/fl_forager"
+  },
+  {
+   "world": "fl_cells",
+   "rung": "L4a[L3]",
+   "confidence": "medium",
+   "note": "Noise patches condense into 3-channel cells: an A0 core, a 1.5-px A1 ring that is 0 inside and outside, and A2 shells. Radii agree at 2x resolution (skeptic). 38-44% cuts re-form ring and crown against twins in 3 seeds, but the cells end smaller with a hollow core (generic re-condensation; mass is closed). Static, one cell per planted patch, and the beaded crown is numerical (gone at dt/2). Close to the Particle Lenia control.",
+   "pack": "threads/flow-lenia/packs/fl_cells_damage"
+  },
+  {
+   "world": "fl_morph257",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "One patch sorts into orange A1 rings and cyan A0 crescents that multiply with 0 nucleations. Crescents cup rings for 500-650 t, and a cyan ring encloses orange cells and reopens. 20/30 composite divisions give one of each kind, and pure parents divide true 5/6. One seed, so L5, L4b and L6 are Weak. Composition heredity is partly built into uptake proportional to A_c.",
+   "pack": "threads/flow-lenia/packs/fl_morph257"
+  },
+  {
+   "world": "fl_forager_mut",
+   "rung": "L2",
+   "confidence": "low",
+   "note": "Parameter-localized foragers with body-scale mutations: 62 mutations, phylogeny depth 7, and new morphs persist (a compact solid body; a target-ring cell). A neutral twin replaying the same events with mut_size 0 shows as much clade turnover (root share 9% vs 36%), on one pair. Fusion dominates (177 splits vs 169 merges, gen 0). L6 and L7 Weak. The 40-run founder tournament (fl_forager_evo) was a coin flip.",
+   "pack": "threads/flow-lenia/packs/fl_forager_mut"
+  },
+  {
+   "world": "fl_cells_food",
+   "rung": "L2",
+   "confidence": "medium",
+   "note": "Layered cells eat, turn binucleate and form a 6-8-compartment 'morula' (t about 1040-1200), then A1 dots tile the domain. There are 257 nucleations, and A0/A2 are down 99.8%/97.6% before the 'spores' appear, so they condense from shed matter rather than budding. L6[L3] Contradicted; L3 Weak (transient). One seed. A striking movie.",
+   "pack": "threads/flow-lenia/packs/fl_cells_food"
+  }
+ ],
+ "cross_pollination": [
+  {
+   "to_thread": "lenia-multichannel",
+   "suggestion": "Before localizing kernel parameters for heredity, take flow-lenia's negative result: stochastic-sampling parameter mixing with 15-25% (m,s,h) differences gave coin-flip founder contests (40 runs, 7:3/6:4/3:7/6:4) because fusing bodies become chimeric. Carry an exact genotype id with the matter, and use a neutral twin that replays the identical mutation event stream with mut_size 0 (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo/mut_neutral_muller.png, NOTEBOOK E14)."
+  },
+  {
+   "to_thread": "chemotaxis-motility",
+   "suggestion": "For your sprint-2 dividing fed crescents: in flow-lenia fl_forager, food that diffuses but does not flow (so a body cannot re-graze its own trail), plus a conserved matter+food closure (uptake k*phi*q/(1+q), q=(A/K)^3, decay back to food), gives birth-death balance with no regrowth parameter. Fed crescents elongate, pass a figure-8 stage and pinch (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/worlds/fl_forager/world.py; packs/fl_forager/seed1/divisions.png)."
+  },
+  {
+   "to_thread": "autopoiesis",
+   "suggestion": "For the neutral arm of the confined-vs-leaky kinds experiment: replay the identical mutation event stream (same times, places and patches) with zero effect size, rather than only matching the rate. This pairs each selection run with its own drift baseline (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo/mut_muller.png vs mut_neutral_muller.png)."
+  },
+  {
+   "to_thread": "active-droplets",
+   "suggestion": "Use an identical-event neutral twin (the same mutation events replayed with zero effect) alongside ad5n-neutral, so that seed-level noise in a ~10-droplet population cancels pairwise (origin/claude/alife-flow-lenia:research/alife/threads/flow-lenia/evo/mut_neutral_muller.png). flow-lenia will test whether negotiation mixing plays the role of your within-droplet cross-inhibition beta; compare notes."
+  },
+  {
+   "to_thread": "flow-lenia",
+   "suggestion": "Borrow from other threads:\n- autopoiesis: count conversions of living bodies without division before calling any sweep selection (origin/claude/alife-autopoiesis:research/alife/threads/autopoiesis/packs/phase_kinds).\n- active-droplets: within-body competition beta decides whether a mutant can take over a body; negotiation beta is your analogue (origin/claude/alife-active-droplets:research/alife/threads/active-droplets/REPORT_r1.md Mechanism 4, packs/ad5-evolve vs ad5n-neutral).\n- fisim-beyond-laplacian: per-division kinds accounting (origin/claude/alife-fisim-beyond-laplacian:research/alife/threads/fisim-beyond-laplacian/packs/xcell-her/seed0/kinds.json).\n- chemotaxis-motility: pursuit/evasion cross-taxis between kinds (packs/pursuit), once selection is detectable."
+  }
+ ],
+ "rubric_issues": [
+  "Numerical validity for reintegration-tracking (Flow-Lenia) transport: halving dt with a fixed RT spread sigma doubles numerical diffusion, so dt/2 is not a convergence test. Require a resolution change with kernels and flow scaled (R_scale x2, flow x4), or sigma scaled with dt.",
+  "L6 in fission-fusion populations: report the merge/split ratio. Supported needs >=2-generation chains in >=2 seeds (judge-traced or labkit) and 0 or explained nucleations. Cap confidence at medium when merges exceed 50% of splits. 'Same kind' means the same body plan (channel arrangement), not the same instantaneous shape.",
+  "L4c: when the researcher adds the maintenance cost (a decay term), and the same rule without it keeps its bodies indefinitely, the dependence is designed. It counts for the rung but is scored under mechanism. This combines with the chemotaxis-motility proposal for an abrupt starvation fork on >=2 seeds.",
+  "labkit: lineages end at merges, while generation propagates through merges as the maximum of the parents. persistent_tracks = 0 for clearly discrete motile foragers. Static fl_cells seed 0 scores 2 persistent splits with no visible division.",
+  "labkit: in layered fl_cells the thin A1 ring is segmented as a separate component from the core, so the rim/core channel means miss the membrane; per-channel radial profiles around track centroids are needed. frames.npz is stored as float16, so conservation cannot be audited from packs."
+ ],
+ "review_file": "/home/user/physim/research/alife/committee/reviews/flow-lenia_r1.md"
+}

@@ -1,0 +1,11 @@
+t=0 A=6 B=10 mixed=1
+t=1333 A=4 B=6 mixed=0
+t=2666 A=4 B=5 mixed=0
+t=3999 A=5 B=5 mixed=0
+t=5332 A=5 B=5 mixed=0
+t=6665 A=5 B=5 mixed=0
+t=7998 A=6 B=5 mixed=0
+t=9331 A=6 B=5 mixed=0
+t=10664 A=6 B=5 mixed=0
+t=11997 A=6 B=5 mixed=0
+140s
