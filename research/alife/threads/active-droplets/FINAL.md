@@ -59,3 +59,12 @@ It did **not** pass at 128² and t=30000. There were only ~2-5 mutations per run
 `movies/showcase.mp4` (sheet: `movies/showcase_sheet.png`).
 
 Caption: World `ad7t-thick`, seed 1, 128x128 periodic box, t = 0-20000, 120 frames, whole box, fixed colour scales (rendered by `protocell_movie.py` from the evidence-pack frames). Background brightness = fuel (dark = depleted around consumers); cell body colour = dominant catalyst allele; white rim = the amphiphile shell each cell makes for itself. Six planted cells all carry the thick-membrane allele kp=4 (red: small, bright thick shell, fuel-starved, rarely divide). Mutation patches (imposed stochastic events, visible as two-coloured cells) introduce kp=0 (blue: no shell, leaky, a blurred catalyst halo, does not divide), kp=0.5 (green, thin shell) and kp=1.5 (yellow). Green and yellow cells grow and divide by dumbbell fission, and random dilution disks (also imposed) clear space that they recolonize. By t=20000 the box is mostly thin- and medium-membrane cells. Caveat: the neutral control (all kp=4) also relabels most cells through mutation churn; what differs is population size (36 vs 21 over 3 seeds) and the fact that only green/yellow cells divide repeatedly.
+
+## 7. Committee final-review corrections (recorded after the program ended)
+
+- **Landscape counts were inflated.** Every "birth" in the ad9 landscape at t ≤ 650 is a planted disk separating. Corrected births for kp 0/0.25/0.5/1/1.5/2.5/4 are 0.33/3.67/5.67/5.67/5.33/0.67/0. The plateau is a ceiling on first divisions.
+- **The ledgers held a fecundity result that REPORT_r3 missed** (committee analysis). kp=1.5 mutants divide at 1.3-1.6 per 1e4 droplet-time, vs 0.4-0.6 for the same labels in N. kp=0 mutants are sterile only in S. This is fecundity selection, which uniform Moran kills wash out of the mean-kp readout.
+- **Frames were not shipped.** No ad9 frames or packs were committed (frames.npz is git-ignored; no labkit pack was made for ad9).
+- **Recommended next design:** 20 S/N pairs per ancestor, scored by mutant fixation (predicted 0.59 vs 0.17).
+
+Final verdicts: ad7 family L6[L3] medium; ad5 L7[L2] low; ad1 L6[L2] high; ad9 L3 low (L7[L3] Weak, L4c Weak).

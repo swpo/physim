@@ -218,3 +218,8 @@ move the turnover protocol to ad7. Final deliverables: REPORT_r3, FINAL.md, movi
   scale; mutation supply is the bottleneck (need ~10x births). The between-droplet term in S is non-zero in 3/6 runs,
   all toward the optimum.
 - Sprint 3 ended ~21:00 UTC. FINAL.md and movies/showcase.mp4 delivered.
+
+## Committee final review (program ended, decision STOP)
+Corrections recorded in FINAL.md section 7: landscape births at t<=650 are planted disks separating (corrected
+0.33/3.67/5.67/5.67/5.33/0.67/0); the ledgers show fecundity selection (kp=1.5 mutants 1.3-1.6 divisions per 1e4
+droplet-time vs 0.4-0.6 as N labels) that the mean-kp readout missed.
