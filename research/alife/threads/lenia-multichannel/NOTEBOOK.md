@@ -346,3 +346,32 @@ colony to confluence, and then turnover stops.
 gene, 128², 8000 steps, seed 0 only).** Selection: a steady ~19-20 cells from step 2000 on, food
 rising to 0.57, mean g +0.15-0.24, so probably static again. Neutral: cycles, extinct at step 8000.
 Inconclusive with one seed. CROWD is implemented (default 0) for sprint 3.
+
+## Committee review r1 arrived at ~17:45 (queued); re-plan
+
+Decision: CONTINUE, redirected to heredity, with an exact design: discrete alleles,
+kernel-weighted majority inheritance (never averaged), whole-cell mutation at 5-10% of cells per
+1000 t, nothing planted, arms S (yield x1.15) and N (label only), 3 seeds each, 192², t>=2000. Audit
+division inheritance and conversions vs mutations.
+The mcg-MIRd work above (continuous trait, blurred inheritance) predates the review. Its
+continuous g is averaged at contacts, which the committee rules out.
+
+**A1. mca-MIRd (worlds/mca-MIRd, tools/audit_alleles.py).** Allele a in {0,1} per pixel. Pixels
+where built matter exceeds surviving matter take the majority allele (Gaussian 3 px over matter).
+Mutation flips one A0 component (dilated 4 px) to the other allele, at MU_CELL 7.5e-6 per cell per
+step x N_EST 20. Allele 1 builds with yield x(1+EFF).
+Smoke test at 10x the rate (128², 1200 steps): 9 divisions seen, 7 breed true; 3 conversions vs 9
+mutations; 32% of cell samples are impure (<90% one allele). Leakage across touching halos looks
+likely. Real runs: 3 S + 3 N, 192², 20000 steps.
+
+**A2. Committee L7 test results (mca-MIRd, 192², 20000 steps; screens/mca_alleles_S_vs_N.png,
+screen_data/mca).** Spec rate (MU_CELL 7.5e-6, about 3 events per run):
+- S seeds: mutations 2/4/3; allele-1 peak share 0.136/0.175/0.048; all lost (last present at
+  steps 11250/17700/19800).
+- N seeds: same mutation times (paired); peaks 0.136/0.017/0.021; all lost.
+- Divisions true 2932/2933; conversions 1 vs 18 mutations; impure samples 56/42034.
+- Populations persist: minimum 3-7 cells after step 2000, no extinction.
+10x rate (MU_CELL 7.5e-5, seed 0 per arm): 30 mutations each. Allele-1 parent divisions S 2 (1
+true), N 3 (0 true); conversions 2 and 1; mean allele-1 share 0.005 in both arms.
+**Verdict: L7 fails.** Minority alleles don't persist or breed true. The resident allele breeds
+true trivially.

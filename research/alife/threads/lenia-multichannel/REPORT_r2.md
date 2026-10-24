@@ -1,24 +1,34 @@
 # lenia-multichannel: Sprint 2 report
 
+The committee's r1 review arrived mid-sprint (~17:45, sprint start 16:37). I re-planned to its main
+experiment for the last ~40 minutes. The work done before the review follows below it.
+
 ## 1. Headline
 
-**The cycling, food-limited Lenia replicators now carry a heritable trait, and selection against
-neutral control is visible at the cell level.** The mechanism is forked from active-droplets'
-body-confined alleles. Matter built inside a cell copies the trait of the cell it grows from, and
-rare cell-scale replication errors change it.
-- When harmful mutations cost food yield, harmful lineages are purged: 3/497 harmful cells
-  vs 48/474 in the neutral control, 6+6 seeds.
-- In the neutral twin (same seed, same mutation sequence) a harmful lineage can take over the whole
-  population by drift.
-- A planted two-kind competition breeds true and is decided by yield only when yield matters.
-- An ecological finding: *beneficial* mutations tip the population out of its turnover cycle into
-  a fed, static lattice, which stops selection. Evolving efficiency switches the ecology off.
+**The committee's L7 test on the food-limited MIRd+ replicator fails: new alleles arise but never
+take hold.** Setup: discrete alleles carried by matter (kernel-weighted majority inheritance, never
+averaged), whole-cell mutation, nothing planted, S vs N arms, 3 seeds each, 192², t=2000.
+- Heredity of the resident allele is near perfect: 2932/2933 divisions breed true, 1 conversion vs
+  18 mutations, <0.25% impure cell samples.
+- But all 18 allele-1 lineages are lost in both arms, typically within 500-1500 steps (peak share
+  0.14/0.18/0.05 under S vs 0.14/0.02/0.02 under N, paired seeds).
+- At 10x the mutation rate (30 mutations per run, 1 seed per arm), allele-1 cells divided only 2-3
+  times and kept the allele in 1 of 5 divisions. Mean allele-1 share was 0.005 in both arms.
+- So minority alleles neither persist nor breed true. The likely causes are population size (5-30
+  cells with crashes to 3-7) and swamping of mutant cells by the majority at contacts.
 
-The striking movie for this thread is `movies/mcg_selection_vs_neutral_seed0.mp4`: selection (left)
-vs neutral (right), same seed and same mutations. The left colony reddens as harmful variants are
-purged; the right one is taken over by a blue harmful lineage.
+Before the review I had shown purifying selection with a *continuous*, blurred trait (mcg-MIRd:
+harmful cells 3/497 vs 48/474 neutral, 6+6 seeds, and a selection|neutral movie). The committee's
+discrete-majority design rules out that averaging. Under it, the evidence for heritable kinds at the
+cell level is negative.
 
 ## 2. Claims
+
+| world | claimed rung | strongest evidence | known weaknesses |
+|---|---|---|---|
+| `mca-MIRd` (committee design; EFF=0.15 S vs EFF=0 N) | **L7 Contradicted** for this design. Resident heredity Supported (2932/2933 true divisions, 1 conversion vs 18 mutations) | `screens/mca_alleles_S_vs_N.png` (3+3 seeds, 192², 20000 steps): allele-1 share spikes after each mutation and returns to 0 in both arms. Audit data in `screen_data/mca/*.json`. 10x-rate pair: NOTEBOOK A2 | Spec mutation rate gives only 2-4 events per run. True-division counts are dominated by allele-0 parents. The allele-1 division audit (5 events) exists only for the 10x pair. No labkit packs: time ran out |
+
+### Earlier sprint-2 work (before the review): continuous trait, mcg-MIRd
 
 | world | claimed rung | strongest evidence | known weaknesses |
 |---|---|---|---|
@@ -63,11 +73,13 @@ purged; the right one is taken over by a blue harmful lineage.
 
 ## 5. Next sprint
 
-1. **Adaptive (not only purifying) selection while keeping turnover.** Give the trait a trade-off,
-   that cannot reach confluence. Yield against maintenance cost failed (H9). Two options: penalise
-   jamming directly, for example decay that rises with local crowding, or use 192²+ grids, where
-   the cycle damps into a noisy steady state with continual turnover. GENE_MODE "m" (localized
-   kernel parameters) is implemented and needs 3+3 seeds.
-2. **Heritable morphology.** Localize a kernel parameter so that kinds differ in shape or division
-   mode (dynamic phenotype, endogenous fitness): a step toward L8.
-3. **Spontaneous replicators** remain open (0/150 in sprint 1).
+1. **Find out why minority alleles fail.** Check whether mutant cells are swamped at contacts
+   (majority kernel over neighbours' halos) or whether this is plain drift: run larger populations
+   (256²), restrict the majority to the cell's own core (A0) mass, and seed one mutant at a fixed
+   time across 10+ replicate seeds to measure fixation probability against the drift expectation
+   1/N.
+2. **Committee secondary items not done this sprint:** whether the cycle is real (256² and dt/2
+   using the N series, which are now available in `screen_data/mca`), and r-two56 on
+   build-from-food plus decay.
+3. If heredity holds in step 1, repeat the S/N test with ≥3 seeds and labkit packs, and add allele
+   colours to the sheets.
