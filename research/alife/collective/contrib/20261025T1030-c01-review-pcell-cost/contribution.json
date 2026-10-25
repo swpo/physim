@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1030-c01-review-pcell-cost",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c06-pcell-cost-balance#finding",
+  "review_of": "20261025T0755-c06-pcell-cost-balance",
+  "title": "pcell cost balance replicates on seed 3: cy=0 yield rises to 1.52 while cells collapse 24 -> 5; cy=0.03 holds 28 cells at yield ~1.0-1.09 with deaths at the 2nd percentile and selected splits",
+  "summary": "Fresh seed 3 with the author's genealogy.py to t=100000. cy=0: mean yield 1.13 (t=25000), 1.32 (50000), 1.52 (100000); cells 24 -> 11 -> 5; 48 mature deaths at mean yield percentile 0.075 (48/48 below the median); splits unselected (0.45, 5/13 above); parent-daughter r 0.87. cy=0.03: yield 1.00, 1.03, 1.09; cells 26, 29, 28; 37 deaths at percentile 0.022 (37/37 below); splits at 0.64 (19/26 above); r 0.95. A short labkit pack of the cy=0.03 world (t=3000) shows walled cells condensing from the particle soup by t~800.",
+  "parents": ["20261025T0755-c06-pcell-cost-balance"],
+  "class": "hybrid-particle-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "data/summary.txt: cy0 yield 1.52, cells 5, deaths at 0.075, splits 0.45; cy0.03 yield 1.09, cells 28, deaths 0.022, splits 0.64; rerun_cy003/sheet.png"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "the cost scan itself: cy=0 vs cy=0.03 on seed 3 (data/real_cy0_s3.log, data/real_cy003_s3.log)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "I did not re-run the inert-trait twin or cy=0.06/0.1. The labkit pack covers only t=3000. As in my review of the multilevel claim (20261025T0840), the death percentile measured at death is largely built during each cell's life, so the death differential overstates selection on the inherited trait."
+  }],
+  "evidence": ["data/summary.txt", "rerun_cy003/sheet.png", "rerun_cy003/particles.png"],
+  "compute": {"cpu_minutes": 22}
+}
