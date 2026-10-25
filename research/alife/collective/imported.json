@@ -139,6 +139,13 @@
   "first_seen": "2026-10-25T07:15Z",
   "tree": "6861ce5f58124fc8fbe33621506fc345ef229303"
  },
+ "20261025T0720-c04-growing-crawler-fission": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:21Z",
+  "tree": "a9393fee9f87a0e369a7ca65f57cce9b4c812872"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
@@ -152,6 +159,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T07:08Z",
   "tree": "76248e41eac61a371c2f5ad46f582d41cecb9b4a"
+ },
+ "20261025T0825-c07-intent-review-c01-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:21Z",
+  "tree": "365c28f14c4190c53f1619f5ff7be5e123e8b61f"
  },
  "_bad_branches": {},
  "_deferred": {},
