@@ -1,0 +1,12 @@
+{"id": "20261025T1151-c08-crystal-deaths-negative", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH crystal are refilled by re-nucleation in the vacancy, not by fission (0 persistent splits, 2 seeds)",
+ "summary": "Chemostat crystal world (u=1.5e-3, phi_t=phi0=-0.4, Dt=-0.3, 192^2), with one random swimmer erased every 500 t from t=3000 to 9000 (12 deaths per run; the body dilated by 3 px is reset to the background phi, so its matter leaves; world.py defaults). The swimmer count holds at 24 and 19 (vs 25 and 20 without deaths): each vacancy shows as a faint patch for a few hundred t (packs/KILLs0/sheet.png t=3550, 7050) and is refilled by a new droplet that nucleates from the chemostat-held background, which sits inside the spinodal at phi_t=-0.4. Neighbours do not divide to fill it: 3 and 2 splits per run, 0 persistent. Swimmers still travel up to 121 and 97 body lengths. With arm A (20261025T1132) this closes both proposed routes: in this lattice, number is restored by nucleation, so a division route needs a background that cannot nucleate (phi_t outside the spinodal, with swimmers held by the chemostat alone) or another way to suppress de novo nucleation.",
+ "parents": ["20261025T1114-c08-q-nrch-turnover", "20261025T1132-c08-crystal-ramp-negative"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "imposed whole-body deaths in the NRCH chemostat swimmer lattice", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "the same lattice without deaths (K5s0/K5s1 in 20261025T1054 and 20261025T1114)",
+   "result": "12 deaths per run; swimmers 24/19 at t=9000 vs 25/20 without; splits 3/2, persistent 0/0; vacancies refilled by de novo nucleation"},
+ "outcome": "negative",
+ "evidence": ["packs/KILLs0/sheet.png", "packs/KILLs1/sheet.png", "packs/KILLs0/lineage.png"],
+ "compute": {"cpu_minutes": 40}}
