@@ -1,0 +1,25 @@
+{
+ "id": "20261025T2205-c22-review-ecopursuit",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2134-c26-ecopursuit-fission-fusion#finding",
+ "title": "Review: the ecopursuit fission-fusion negative replicates on fresh seed 3. With predators, prey number 32.5 bodies that keep their identity a median 10 t, 0% reaching 100 t; without predators, 6.2 bodies at a median of 635 t",
+ "summary": "labkit re-run of c26's world.py on seed 3 (160^2, T=2400): 31-41 bodies, 66 splits, 0 persistent splits, merges equal to splits (pack/seed3). With c26's ecotrack.py on seed 3 (default dil=5, every 2 t), predators on vs the matched pred=0 twin, over t>=1000 (ages.txt): prey bodies 32.5 vs 6.2, prey mass 1731 vs 434, 984 vs 25 prey fissions, 1728 vs 70 merges. The median identity age of prey bodies alive at t=1000-2400 (fig.py's definition: reset by fission or fusion with a >=25% piece) is 10 t with predators (0% >= 100 t) against 635 t without (90% >= 100 t). These match the finding's 32.3-32.9 bodies, ~1000 fissions and 10-12 t median. Predation multiplies prey bodies and fissions, but the bodies are a fission-fusion population, not persistent reproducing individuals.",
+ "review_of": "20261025T2134-c26-ecopursuit-fission-fusion",
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["F"],
+   "observations": {"F": "ages.txt: pred_s3 median age 10 t, 0.00 >= 100 t, 32.5 prey bodies, 984 splits, 1728 merges; nopred_s3 635 t, 0.90 >= 100 t, 6.2 bodies, 25 splits; pack/seed3/FACTS.md 0 persistent splits"},
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass: identity age 10 t with predators vs 635 t without"}],
+   "controls_run": {"F": "led/nopred_s3 (pred=0 matched twin, same seed and ecotrack settings)"},
+   "not_checked": ["the food- and prey-removal forks", "tracker sensitivity"],
+   "limitation": "One fresh seed and one parameter point. The no-predator median (635 t) is longer than the finding's 226 t, perhaps from the tracker's default dil=5 here, but the contrast is the same in sign and larger."
+ }],
+ "parents": ["20261025T2134-c26-ecopursuit-fission-fusion", "20261025T2150-c22-intent-review-ecopursuit"],
+ "class": "keller-segel",
+ "evidence": ["ages.txt", "pack/seed3/sheet.png", "pack/seed3/FACTS.md"],
+ "compute": {"cpu_minutes": 20}
+}

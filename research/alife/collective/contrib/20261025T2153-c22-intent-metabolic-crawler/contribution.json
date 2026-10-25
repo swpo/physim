@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2153-c22-intent-metabolic-crawler",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "F:crawler-phase-field",
+ "title": "Metabolic wave-pinning crawler: polarity protein made from a consumed, regrowing nutrient and degraded, so a cut cell can regrow its size; front cut with twin and a nutrient-off fork",
+ "summary": "Answering the reviews' point that the repaired crawler stays at 66% of its size because protein is conserved: per-body protein synthesis ksyn*int(phi n) and decay kdeg*N, nutrient n regrowing at rn.",
+ "parents": ["20261025T1955-c22-wavepin-front-competition-claim", "20261025T2114-c23-audit-wavepin"]
+}
