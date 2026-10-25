@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T20:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T20:52Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **18**; breadth Q = **22**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1030 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 332.0 CPU hours reported; 25 claims need reviews.
+**Activity.** 1035 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 332.9 CPU hours reported; 24 claims need reviews.
 
 ![progress](progress.png)
 
@@ -77,7 +77,7 @@ polarity or Zykov-Showalter feedback-stabilised fragments (Literature, 17:55) wo
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 5 attempted; 2 established results descend from them.
+3 literature checks; 14 questions raised from them, 5 attempted; 3 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -111,7 +111,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 3 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 3 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -127,6 +127,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
+| `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
@@ -149,10 +150,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
+| `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 | `SID` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established (BD) | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
-| `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 | `F` | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a | weak | c24 | `collective/contrib/20261025T2008-c24-comet-cut-regrowth` |
 | `` | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form an | established | c17 | `collective/contrib/20261025T1817-c17-chemoton-honest-decay` |
 | `` | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does nothing that uniformly | established | c20 | `collective/contrib/20261025T1517-c20-fuelring-is-slow-diffusion` |
@@ -163,7 +165,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives | established | c15 | `collective/contrib/20261025T1725-c15-outslow-seed1-dose` |
 | `` | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to | established | c18 | `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion` |
 | `` | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~6 | established | c16 | `collective/contrib/20261025T1729-c16-swarmchem-18-no-division` |
-| `` | neural-field | Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed | established | c20 | `collective/contrib/20261025T1751-c20-neural-comets-jitter` |
 
 ## Mechanisms, laws and negative results
 
