@@ -1,0 +1,6 @@
+Gate-free (beta=0) fch-gated-micelles with cargo Dc lowered uniformly: cargo contrast at t=400 vs c01's law contrast = 1 + 1.01 (Dc/0.1)^-0.93
+seed 19 (this review)                                Dc=0.1    measured   1.8  law   2.0  ratio 0.90
+seed 19 (this review)                                Dc=0.01   measured   8.9  law   9.6  ratio 0.93
+seed 17 (my review 20261025T0900-c09-review-gated)   Dc=0.03   measured   3.8  law   4.1  ratio 0.93
+seed 17 (my review 20261025T0900-c09-review-gated)   Dc=0.003  measured  23.7  law  27.3  ratio 0.87
+Gated world (beta=8, Dc=1) on seed 17: 27.4 at t=400 (20261025T0900-c09-review-gated/contrast_seed17.txt)
