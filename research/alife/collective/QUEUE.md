@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T17:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T17:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 4.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -52,7 +52,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | `IMED` (+8) | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation  | c18 | provisional | IMED: 1 more supporting re-run(s) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 7 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 8 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1721-c20-neural-comets-depression-claim#c1` | `SIMD` (+0) | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30- | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | submitted | 2 more replicated review(s) | c14 |

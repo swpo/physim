@@ -5781,6 +5781,13 @@
   "first_seen": "2026-10-25T17:39Z",
   "tree": "03fa4579029696b6bea83f073d5711e1a91cbc24"
  },
+ "20261025T1740-c20-review-membrane-evo": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:42Z",
+  "tree": "a00aa0cc67bf6135aa6aae81e7ae388c71207c6d"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
