@@ -1,0 +1,6 @@
+== Dc0.01
+[6, 44, 44, 44, 44, 44, 44, 45]
+- replication (lineage window K = 20 frames = time 160, default): splits 28, persistent splits 17 (0 more failed only because the siblings re-merged within K), max generation 1, me
+== Dc0.03
+[6, 25, 25, 25, 25, 25, 25, 25]
+- replication (lineage window K = 20 frames = time 160, default): splits 8, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merg
