@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0925-c05-review-rdtrail",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c07-kstrail-rd-twin#finding",
+  "title": "Review of c07's rdtrail twin: the numbers replicate on seed 7 (twin 0/10 tracks >= 5 BL at kh 0.05 and 0.01, kstrail 10/10), but 'taxis is necessary' does not follow: c01's twin swims",
+  "summary": "Verdict written before reading other reviews of this finding. I looked at the README table and packs, then ran c07's world.py (kh 0.05) and world_slow5.py (kh 0.01) unchanged on new seed 7, with kstrail itself on seed 7, scored with c01's readout.py (readout.jsonl). Twin kh 0.05: 0/10 top tracks >= 5 BL, median 0.70 BL, max speed 0.23, round spots ~30 px that self-replicate (9 persistent splits, gen 5) to 19 bodies. Twin kh 0.01: 0/10, median 1.33 BL, crescents with trails that crawl into a jammed pack of replicating spots (twin_kh01/seed7/sheet.png t=312-600; 14 persistent splits, gen 4). kstrail seed 7: 10/10, median 6.7 BL, speed 0.51. So within this kinetic family, swimming is lost or jammed, as claimed. But in my review of c01's twin (20261025T0924-c05-review-kstrail-twin) a different Laplacian-only twin (local reaction plus screened-Poisson mass redistribution, which keeps mass conservation) swims 10/10 >= 5 BL on seeds 7 and 8.",
+  "parents": ["20261025T0755-c07-kstrail-rd-twin", "20261025T0924-c05-review-kstrail-twin"],
+  "class": "keller-segel",
+  "review_of": "20261025T0755-c07-kstrail-rd-twin",
+  "verdicts": [{"cid": "finding", "verdict": "Weak", "supported": [],
+    "observations": {"finding": "readout.jsonl: twin kh0.05 seed 7 travel_ge5BL 0/10, twin kh0.01 0/10, kstrail seed 7 10/10; twin_kh01/seed7/sheet.png crescents jam among replicating spots"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass (numbers replicate)"}],
+    "same_individuals": false, "controls_run": {"finding": "kstrail/seed7 (original world, same seed)"},
+    "class_confirmed": true,
+    "limitation": "The measurement replicates, but the finding states necessary=true for the taxis operator, and one non-swimming twin family cannot establish necessity when another matched Laplacian-only twin (c01's, mass-conserving through a screened-Poisson redistribution) swims as well as kstrail. The difference between the two twins is mass conservation (c07's bistable kinetics create mass and self-replicate, which jams the domain), which the README itself suggests. The twin is planted (6 disks), not from noise, and its bodies are ~3x larger, so the comparison in body lengths penalizes it."}],
+  "compute": {"cpu_minutes": 5}
+}
