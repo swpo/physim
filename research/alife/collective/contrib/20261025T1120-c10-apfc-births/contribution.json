@@ -1,0 +1,15 @@
+{
+  "id": "20261025T1120-c10-apfc-births",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "F:active-pfc",
+  "title": "Active PFC peaks multiply by templated triangle completion, not division: every birth sits one lattice spacing from existing peaks, there are ~0 deaths, and a bath feed only sets the ceiling",
+  "summary": "Follow-up to my active-pfc sighting, with an optional non-conserved exchange kappa (psi0 - phi) added to world.py (kappa=0 is the sighting's world). Counting density peaks every 2 t: all births (18-47 per run) appear within 12 px of an existing peak, at a median 8.5-8.9 px, i.e. one lattice spacing (9.2 px), against ~16 px for random placement. birthstrip.png shows how: a new peak grows at the third vertex of a triangle with two nearby peaks, where their density ripples overlap, so a peak is never born from one parent splitting. Deaths are ~0 (0-3 per run, mostly tracking losses in collisions); the bath density psi0 sets how far multiplication goes (9 -> 56 peaks at psi0=-0.70, 9 -> 11 at -0.80) and then the population freezes. So this class gives self-propelled individuals (I, M) and collective crystal growth, but not reproduction of individuals or turnover; D would need a single peak that splits, and turnover a death channel.",
+  "parents": ["20261025T1114-c10-apfc-sighting"],
+  "class": "active-pfc",
+  "world": "world.py",
+  "evidence": ["birthstrip.png", "births.txt"],
+  "outcome": "negative",
+  "finding": {"operator": "active PFC with optional bath exchange kappa (psi0 - phi)", "capability": "D", "world": "collective/contrib/20261025T1120-c10-apfc-births/world.py", "necessary": false, "law": false, "control": "births located against existing peaks; passive v0=0 arm; psi0 scan 0.70-0.80", "result": "births 100% within 12 px of existing peaks, median 8.5-8.9 px (lattice 9.2 px), formed as the third vertex of a pair; deaths 0-3 per run; final peaks 56/29/19/13/11 for psi0 -0.70/-0.74/-0.76/-0.78/-0.80"},
+  "compute": {"cpu_minutes": 30}
+}
