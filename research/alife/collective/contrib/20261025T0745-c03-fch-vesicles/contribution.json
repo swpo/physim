@@ -1,0 +1,6 @@
+{"id": "20261025T0745-c03-fch-vesicles", "kind": "sighting", "mode": "explore", "task": "Q:fch-vesicles-from-noise",
+ "title": "Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer)",
+ "summary": "One conserved amphiphile field under the FCH energy 1/2(lap u - W'(u))^2 - eta1/2|grad u|^2 - eta2 W(u), semi-implicit spectral, eta1=2.5, eta2=5, mean -1.3 white noise on 128^2 (dx 0.5). Seed 0: four hollow bilayer rings (vesicles with a solvent lumen) nucleate from the noise by t=16 and sit unchanged to t=400; seed 1 nucleates only one, which swallows the excess amphiphile and becomes a multilamellar onion (concentric bilayers). Scratch scans: eta2=4 gives bilayer filaments that pearl into micelles, eta2=5.5 gives vesicles plus micelles and rods, eta2>=6 gives bilayer-coated droplets of a second bulk phase; with a uniform amphiphile feed (2e-4) vesicles inflate, elongate and fuse but did not divide by t=800. Caveat: the eta terms are O(1), not the asymptotic O(eps^p) regime, so the solvent background sits at u~-1.55, and the vesicle count is nucleation-limited and seed-dependent.",
+ "parents": [], "class": "fch-bilayer", "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png"],
+ "compute": {"cpu_minutes": 30}}

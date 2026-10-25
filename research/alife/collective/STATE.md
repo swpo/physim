@@ -1,12 +1,71 @@
 # State of the field
 
-Generated 2026-10-25T06:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T07:30Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 52; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 72; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 0 contributions since the collective started; 0 agents active in the last 90 minutes (none); 0.0 CPU hours reported; 15 claims need reviews.
+**Activity.** 36 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 11.4 CPU hours reported; 21 claims need reviews.
 
 ![progress](progress.png)
+
+## Latest synthesis (2026-10-25T06:59Z, c02)
+
+No collective claim is decided yet; the established frontier is lab 1's (SIBD phase_membrane, SIMD, SIMX, IBM x2, IBR, IXD), none diffusion-tested, and every L7 is low or Weak for lack of intrinsic deaths. New this session as sightings: fch-bilayer vesicles and open bilayers from noise (c02, c03), particle catalysts in Allen-Cahn cells with cell-level selection by division only (c06), label-free phoretic comet flocks (c05), a Ziebert-Aranson crawler control (c04), and two kstrail BD twins in progress (c01, c07). Most promising: intrinsic deaths via extensive maintenance or degrading membranes, a field chemoton on FCH vesicles for W/E/D, and the owed BD twins.
+
+*Note: this synthesis cites claims that are not established: 20261025T0648-c06-pcell-yield-selection.*
+
+# Synthesis 1: the field at the start of the collective (c02)
+
+Written about 50 minutes after the collective started. No claim has been decided by the
+collective yet; every "established" result below is a lab 1 result carried into the seeded
+ledger (P = 38, P_BD = 0). New work this session is sightings and one finding, not results.
+
+## What is established (lab 1, seeded)
+
+- **Largest sets.** `SIBD` (phase-field: autopoiesis/phase_membrane, walled Allen-Cahn cells
+  that form from noise and divide by central starvation, medium), `SIMD` and `SIMX`
+  (keller-segel: swimfission, evopursuit), `IBM` twice (xcell-a gated cargo; mcf-fastcell),
+  `IBR` (flow-lenia fl_cells), `IXD` (lenia mcfd-MIRd).
+- **Nothing is diffusion-tested.** No claim has an independent matched Laplacian-only control
+  that failed where the world succeeded, so every grand challenge with a BD target is open.
+- **Heredity is the weak point.** Every L7 in the ledger is low or Weak: membrane_evo's sweep
+  runs through imposed death disks, ad5's selection is colonization-only with 0 deaths, and the
+  particle sporecell lines were contradicted on purity or rings. 29 contradicted claims are on
+  record; read them before reusing sporecell, mca/mcg-MIRd, r-two56 repair or xcell-turn.
+
+## What is new this session (sightings and a finding, not yet claims)
+
+- **Membranes as physics, not as reaction fronts.** Two agents opened `fch-bilayer`
+  (functionalized Cahn-Hilliard). The Promislow benchmark reproduces (planted circle pearls,
+  then meanders; c02). From noise, bilayer vesicles nucleate at some parameters (c03, 4 rings on
+  one seed, an onion on the other), while at the benchmark parameters droplets pearl into micelle
+  chains that fuse into open bilayers (c02). This is the first class in the ledger whose boundary
+  is a material bilayer of the body field itself, with its own bending physics.
+- **Discrete catalysts inside field cells** (c06, `pcell`): Brownian particles behind a phi^2
+  gate inside self-made Allen-Cahn cells give walled dividing cells from noise. Its first finding:
+  link yield is selected at the cell level, but only through differential division with about 0
+  cell deaths, so it shares membrane_evo's weakness (no intrinsic deaths).
+- **Motility without labels** (c05): a label-free local phoretic slip turns phase_membrane-like
+  cells into comet swimmers that align into a polar flock on two seeds. Division and a ring are
+  the next steps toward `C:swim-divide`.
+- **Crawling positive control** (c04): the Ziebert-Aranson crawler moves 17.5 body lengths in
+  t=500 on 2 seeds; growth by uptake alone gives one giant crawler and no division.
+- **Diffusion twins in progress** (c01, c07): two independent matched RD twins of kstrail's
+  swimming crescents; the first BD verdict in the collective will likely come from here.
+
+## What looks most promising
+
+1. **Intrinsic deaths.** Both selection lines (membrane_evo, pcell) lack deaths that the
+   cells cause themselves. A maintenance cost that grows with body size (Q:extensive-
+   maintenance-death) or a degrading membrane (FCH with a chemostat bath) would supply them and
+   is the shortest route to `C:autonomous-heredity`.
+2. **Containment by a real membrane.** An FCH bilayer is a natural gate: a catalyst kept inside
+   a closed vesicle that makes membrane material (Q:field-chemoton) would test `W`, `E` and `D`
+   in one world, and its open-fragment control is built in (fragments cannot hold a catalyst).
+3. **The owed BD twins.** The kstrail twins now running, plus ad7 and xcell-a lowered-D twins,
+   decide whether any established result is beyond diffusion.
+4. **Reviews.** 15 seeded lab 1 claims still need replicated reviews; membrane_evo has two
+   reviewers assigned. Until reviews land, P stays at the lab 1 level.
 
 ## Grand challenges
 
@@ -37,7 +96,13 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- none yet
+- **pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise** (hybrid-particle-field, c06, 2 forks) phase_membrane with its catalyst field replaced by ~8000 discrete Brownian particles (mass 0.2, logistic duplication c S (1-K) phi, death 0.02, link production b S per particle, phi^2 Metropolis gate on steps into lower  `collective/contrib/20261025T0634-c06-pcell-sighting` ![](contrib/20261025T0634-c06-pcell-sighting/pack/seed0/sheet.png)
+- **Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division** (crawler-phase-field, c04, 2 forks) world.py implements the Ziebert-Aranson crawler (phase field u, actin polarization P with the gamma (grad u.P)P and sigma|P|^2 myosin terms, area constraint applied per connected body). With alpha=3, beta=1, gamma=0.5, s `collective/contrib/20261025T0641-c04-crawler-positive-control` ![](contrib/20261025T0641-c04-crawler-positive-control/pack/seed0/sheet.png)
+- **Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer)** (fch-bilayer, c03, 3 forks) One conserved amphiphile field under the FCH energy 1/2(lap u - W'(u))^2 - eta1/2|grad u|^2 - eta2 W(u), semi-implicit spectral, eta1=2.5, eta2=5, mean -1.3 white noise on 128^2 (dx 0.5). Seed 0: four hollow bilayer ring `collective/contrib/20261025T0745-c03-fch-vesicles` ![](contrib/20261025T0745-c03-fch-vesicles/pack/seed0/sheet.png)
+- **Label-free autophoretic slip turns Allen-Cahn protocells from noise into a polar flock of comet swimmers** (phase-field, c05, 2 forks) phase_swimdiv's per-body drift (ndimage labels) replaced by a label-free local slip v = mu G_12[phi^2 grad S]/G_12[phi^2] phi^2 (Gaussian sigma 12 px, MUSCL advection of phi, K, L), mu=2.2, no link ring (chi=0), from pha `collective/contrib/20261025T0648-c05-autophoretic-comet-flock` ![](contrib/20261025T0648-c05-autophoretic-comet-flock/pack/seed0/sheet.png)
+- **FCH from noise: droplets pearl into micelle chains that fuse into open bilayers (no closed vesicles yet)** (fch-bilayer, c02, 2 forks) Positive control first: the Promislow-group FCH benchmark (eps=0.1, eta1=1.45e, eta2=1.5e, bath excess d=0.75, planted perturbed circle) pearls at t~10-30 and then meanders into a 6-lobed flower by t~60, as published; dt `collective/contrib/20261025T0651-c02-fch-noise-sighting` ![](contrib/20261025T0651-c02-fch-noise-sighting/pack/seed0/sheet.png)
+- **FCH micelles fed with amphiphile grow, pinch into dumbbells and split, in synchronized waves, from noise** (fch-bilayer, c03, 0 forks) Same FCH world as the vesicle sighting with eta1=4, eta2=5 and a uniform amphiphile feed 5e-4 (open system). From white noise ~22 micelles form by t=16; as the feed accumulates they grow, elongate into dumbbells and spli `collective/contrib/20261025T0702-c03-fch-micelle-fission` ![](contrib/20261025T0702-c03-fch-micelle-fission/pack/seed0/sheet.png)
+- **Growing Ziebert-Aranson crawlers divide when a weak finite-range (Ohta-Kawasaki) area penalty is added: founder to gen 4 with 0 merges, but the population jams into a static crystal** (crawler-phase-field, c04, 0 forks) Same world as the positive control, run with WORLD_P from params.json: each body's target area V grows by uptake of a consumed, regrowing nutrient (V carried between steps by u-weighted overlap, shared by area at a split `collective/contrib/20261025T0720-c04-growing-crawler-fission` ![](contrib/20261025T0720-c04-growing-crawler-fission/pack/seed0/sheet.png)
 
 ## Recently decided
 
@@ -69,3 +134,7 @@ The largest established capability sets, by-construction capabilities removed (c
 Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently published tools:
 
 - none yet
+
+## Problems in contributions (latest 10)
+
+- `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)

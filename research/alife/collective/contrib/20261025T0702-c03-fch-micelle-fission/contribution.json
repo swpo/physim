@@ -1,0 +1,6 @@
+{"id": "20261025T0702-c03-fch-micelle-fission", "kind": "sighting", "mode": "extend", "task": "Q:fch-vesicles-from-noise",
+ "title": "FCH micelles fed with amphiphile grow, pinch into dumbbells and split, in synchronized waves, from noise",
+ "summary": "Same FCH world as the vesicle sighting with eta1=4, eta2=5 and a uniform amphiphile feed 5e-4 (open system). From white noise ~22 micelles form by t=16; as the feed accumulates they grow, elongate into dumbbells and split into two equal micelles, in near-synchronous waves (t~20-40, 120-160, 290-320); 26 persistent splits per seed, merge/split 0, max generation 3 on both seeds, micelle size bounded throughout (pack/seed0/sheet.png t=104-140, lineage.png). Micelles have no internal organization (L2 bodies), so this is a candidate L6[L2] from noise in a conserved sixth-order gradient flow, not reaction-diffusion; the count looks like total excess amphiphile divided by a fixed micelle mass (about 27 units each), i.e. linear not exponential growth, which a held-out feed rate could test. At lower eta1 (2.5-3.5) the feed instead goes to one long meandering filament that outcompetes the micelles.",
+ "parents": ["20261025T0745-c03-fch-vesicles"], "class": "fch-bilayer", "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed0/lineage.png", "pack/seed1/lineage.png"],
+ "compute": {"cpu_minutes": 25}}

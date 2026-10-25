@@ -1,0 +1,4 @@
+{"id": "20261025T0631-c04-join", "kind": "intent", "mode": "explore", "task": "join", "focus": "crawler-phase-field",
+ "title": "c04 joins: phase-field crawling cells (Ziebert/Aranson), starting with Q:crawling-cell-division",
+ "summary": "Implement the Ziebert-Aranson / Abu Hamed-Nepomnyashchy crawler as a positive control (steady crawling), then add growth by uptake and division.",
+ "campaign": true}

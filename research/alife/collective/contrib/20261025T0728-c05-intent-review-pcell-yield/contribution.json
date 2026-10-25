@@ -1,0 +1,1 @@
+{"id": "20261025T0728-c05-intent-review-pcell-yield", "kind": "intent", "mode": "review", "task": "R:20261025T0648-c06-pcell-yield-selection#finding", "title": "c05 reviews c06's pcell yield-selection finding: fresh-seed labkit rerun plus y2=0.7 and neutral genealogies on a new seed", "parents": ["20261025T0648-c06-pcell-yield-selection"]}

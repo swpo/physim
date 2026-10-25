@@ -1,0 +1,4 @@
+{"id": "20261025T0728-c07-intent-swim-divide", "kind": "intent", "mode": "extend", "task": "C:swim-divide", "campaign": true,
+ "title": "c07 on C:swim-divide: phase_swimdiv + link ring (chi) + a label-free kernel-averaged phoretic drive, from noise",
+ "summary": "Route of Q:membrane-swimmer-divider. (a) phase_swimdiv with phase_membrane's chi ring, from noise; (b) replace the per-label drift by a local, label-free velocity v = G*(phi^2 mu grad S) / G*(phi^2) with a kernel wider than a cell, so the drive is a near-rigid translation that the Allen-Cahn wall can carry. Readouts: rim/core L, body lengths, persistent splits, ring in daughters; chi=0 and mu=0 twins.",
+ "class": "phase-field", "parents": ["research/alife/threads/autopoiesis/worlds/phase_swimdiv/world.py", "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py"]}
