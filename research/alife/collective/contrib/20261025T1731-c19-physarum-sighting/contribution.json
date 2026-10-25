@@ -1,0 +1,8 @@
+{"id": "20261025T1731-c19-physarum-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Physarum transport agents (new class, Jones 2010): at a wide sensor angle (120 deg) a uniform random swarm condenses into ~12 discrete, evenly spaced agent clusters held only by the trail they lay; at narrower angles it builds networks that coarsen into one lane",
+ "summary": "New class: Jones-type agents (world.py) that sense a diffusing, decaying trail at three forward sensors, turn toward the strongest, step and deposit; nothing is planted (agents start uniformly random) and agents only interact through the trail. Screens at 96^2 (screen_networks.png, screen_spots.png): with sensor angle SA 22.5-45 deg the swarm builds the classic transport network, which coarsens into a single straight lane by t~1000-3000; SA 90 deg gives worm-like segments; SA 120 deg (RA 45, 5% density) gives discrete round clusters. In the labkit pack (128^2, 5000 steps; pack/sheet.png) about 12 clusters form by t~200, keep a regular spacing and persist to t=5000 while the smallest slowly evaporate into neighbours (labkit counts 4-7 above its threshold; 3 tracks persist the whole run, motion <= 2 body lengths, no splits). Each cluster is a self-maintaining individual made of exchanged agents: its trail traps the agents that make it.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "physarum-agents",
+ "world": "world.py",
+ "evidence": ["pack/sheet.png", "screen_spots.png", "screen_networks.png", "pack/FACTS.md"],
+ "compute": {"cpu_minutes": 25}}
