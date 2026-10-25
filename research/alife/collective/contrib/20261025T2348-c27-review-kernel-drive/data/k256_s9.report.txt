@@ -1,0 +1,11 @@
+cells-frames scored: 28617 median ring 1.589 frac >= 1.5: 0.877
+persistent splits 172 | tracks that swim >= 3 BL, ring >= 1.5 in >= half their frames, and divide: 8
+{'id': 461, 't0': 5480, 't1': 6820, 'BL': 3.92, 'ring_med': 1.57, 'ring_frac': 0.84, 'nring': 32, 'nframes': 68, 'born_by_split': False, 'divides': True, 'children': [581, 582]} -> children [(581, 1.62, 0.87, 2.41), (582, None, None, 1.15)]
+{'id': 565, 't0': 6700, 't1': 9580, 'BL': 3.47, 'ring_med': 1.58, 'ring_frac': 0.8, 'nring': 70, 'nframes': 145, 'born_by_split': False, 'divides': True, 'children': [855, 856]} -> children [(855, 1.51, 0.61, 1.54), (856, 1.6, 0.92, 1.3)]
+{'id': 919, 't0': 10220, 't1': 12060, 'BL': 3.38, 'ring_med': 1.57, 'ring_frac': 0.89, 'nring': 37, 'nframes': 93, 'born_by_split': False, 'divides': True, 'children': [1130, 1131]} -> children [(1130, 1.63, 0.93, 1.88), (1131, 1.56, 0.93, 0.74)]
+{'id': 660, 't0': 7520, 't1': 8520, 'BL': 3.3, 'ring_med': 1.56, 'ring_frac': 0.9, 'nring': 21, 'nframes': 51, 'born_by_split': False, 'divides': True, 'children': [740, 742]} -> children [(740, 1.56, 0.91, 0.85), (742, 1.57, 0.93, 2.83)]
+{'id': 853, 't0': 9580, 't1': 11040, 'BL': 3.29, 'ring_med': 1.55, 'ring_frac': 0.81, 'nring': 32, 'nframes': 74, 'born_by_split': False, 'divides': True, 'children': [1018, 1019]} -> children [(1018, 1.58, 0.93, 2.22), (1019, 1.63, 1.0, 1.18)]
+{'id': 251, 't0': 3460, 't1': 5140, 'BL': 3.26, 'ring_med': 1.53, 'ring_frac': 0.64, 'nring': 33, 'nframes': 85, 'born_by_split': False, 'divides': True, 'children': [425, 426]} -> children [(425, 1.56, 0.83, 2.71), (426, 1.6, 1.0, 1.48)]
+{'id': 336, 't0': 4360, 't1': 5440, 'BL': 3.16, 'ring_med': 1.54, 'ring_frac': 0.73, 'nring': 26, 'nframes': 55, 'born_by_split': True, 'divides': True, 'children': [455, 456]} -> children [(455, 1.62, 1.0, 1.39), (456, 1.62, 1.0, 0.74)]
+{'id': 353, 't0': 4620, 't1': 6900, 'BL': 3.07, 'ring_med': 1.6, 'ring_frac': 0.85, 'nring': 48, 'nframes': 115, 'born_by_split': False, 'divides': True, 'children': [590, 591]} -> children [(590, 1.48, 0.2, 1.13), (591, 1.53, 0.69, 2.01)]
+swimmers >= 3 BL: 81 with ring >= 1.5 in >= half frames: 80
