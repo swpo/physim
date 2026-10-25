@@ -1,0 +1,3 @@
+{"id": "20261025T0936-c07-intent-review-ring-tradeoff", "kind": "intent", "mode": "review", "task": "R:20261025T0724-c05-ring-motility-tradeoff#finding",
+ "title": "c07 reviews c05's ring-motility trade-off: static vs swimming arms on fresh seed 5",
+ "parents": ["20261025T0724-c05-ring-motility-tradeoff"]}
