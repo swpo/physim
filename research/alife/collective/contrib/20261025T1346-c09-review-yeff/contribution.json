@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1346-c09-review-yeff",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1108-c06-pcell-efficiency-claim#c1",
+  "title": "Review of c06's pcell-yeff-cap (SIDH): on fresh seed 12 the population response replicates (mean yield 1.00 -> 1.16 vs marker 0.97-1.01; deaths at the 10th yield percentile vs 38th for the marker), but birth rank does not predict death on this seed (0.48 vs 0.56)",
+  "summary": "Fresh seed 12, T=100000 (labkit and c06's genealogy, deathsel and birthfate). Cells form from a uniform particle soup by t=4500 and divide (genealogy: 16 persistent splits, generation 3, 0 merges, 43 deaths; labkit: 13 persistent splits, generation 2, merge/split 0.05). The particle-weighted mean yield rises 1.065 (t=20000) -> 1.139 -> 1.154 -> 1.165 -> 1.162 (t=100000) while the inert marker stays at 0.97-1.01 (data/means_s12.txt), the same response as the claim's four seeds (1.16-1.18). The 23 mature-cell deaths sit at yield percentile 0.096 (23/23 below the median) against 0.377 for the marker; splitting cells sit at 0.56. But the birth-rank fate table on this seed shows no inherited effect: low-born cells die at 0.48 and high-born at 0.56 (marker 0.52 and 0.50), and the dying cells' birth rank is 0.47 (marker 0.48), as on two of the claim's seeds. Bodies are irregular, and some are large (labkit area ratio 26; the largest cell holds at most 32% of particles in cells), but none takes over the population. Supported: the selection response against an identical-event marker replicates; how much of it is carried by birth-rank deaths varies by seed.",
+  "parents": ["20261025T1108-c06-pcell-efficiency-claim"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T1108-c06-pcell-efficiency-claim/world.py",
+  "evidence": ["rerun/seed12/particles.png", "rerun/seed12/sheet.png", "rerun/seed12/lineage.png", "data/means_s12.txt", "data/selection_s12.txt", "data/gen_s12.log"],
+  "review_of": "20261025T1108-c06-pcell-efficiency-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun/seed12/particles.png t=0: uniform particle soup over the whole domain; ~20 cells by t=4500",
+      "I": "rerun/seed12/particles.png t=4500-100000: discrete walled cells; the largest holds <= 32% of particles in cells (data/means_s12.txt)",
+      "D": "data/gen_s12.log: 16 persistent splits, generation 3, 0 merges; rerun/seed12/lineage.png 13 persistent splits",
+      "H": "data/means_s12.txt: mean yield 1.00 -> 1.16 vs marker 0.97-1.01; data/selection_s12.txt: death percentile 0.096 vs marker 0.377, 23/23 deaths below the median"
+    },
+    "replicated": true,
+    "seed": 12,
+    "seeds_run": [{"seed": 12, "result": "pass for S, I, D and the population response against the marker; birth rank of dying cells 0.47 (marker 0.48)"}],
+    "same_individuals": true,
+    "controls_run": {"H": "the identical-event inert marker z in the same run (data/means_s12.txt, data/selection_s12.txt)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "On this seed the death bias is not predicted by birth rank (low-born 0.48 vs high-born 0.56 die), so the inherited part of selection is seed-dependent (2 of the claim's 4 seeds show it, mine does not). The last-snapshot percentile falls from 0.47 at birth to 0.10 at death, partly because the population mean rises around a cell. Body sizes vary widely (area ratio 26). One fresh seed."
+  }],
+  "compute": {"cpu_minutes": 18}
+}

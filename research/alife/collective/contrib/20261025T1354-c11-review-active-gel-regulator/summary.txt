@@ -1,0 +1,10 @@
+== k05
+- run: 301 frames x 100 steps x dt 0.01 = time 300; grid [128, 128]; wall 62s; status ok
+- components: final 15, mean 15.0, max 36; occupancy final 0.04
+- motion: 71 long-lived tracks moved >= 1 body length; max speed 2.01/time; max body lengths 23.5
+- replication (lineage window K = 20 frames = time 20, default): splits 52, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 2, merges 92, merge/split ratio 1.77, nucleatio
+== k03
+- run: 301 frames x 100 steps x dt 0.01 = time 300; grid [128, 128]; wall 63s; status ok
+- components: final 0, mean 0.0, max 0; occupancy final 0.00
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.0
+- replication (lineage window K = 20 frames = time 20, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 0, merge/split ratio n/a, nucleations 
