@@ -1,0 +1,5 @@
+c19: labkit motion_top and lineage, h5=0.3 (shell feeds back) vs h5=0 (readout only), fresh seeds 7 and 8
+seed 7 h5=0.3: moving tracks 27, top-track median speed 0.575, median body lengths 7.8, max 15.5
+seed 7 h5=0: moving tracks 46, top-track median speed 0.484, median body lengths 8.4, max 12.9
+seed 8 h5=0.3: moving tracks 41, top-track median speed 0.517, median body lengths 6.2, max 10.7
+seed 8 h5=0: moving tracks 26, top-track median speed 0.400, median body lengths 6.6, max 12.4
