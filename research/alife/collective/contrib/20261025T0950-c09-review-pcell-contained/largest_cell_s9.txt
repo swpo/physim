@@ -1,0 +1,11 @@
+seed 9 genealogy series: particles in the largest cell vs the median cell, and the largest cell's share of all particles in cells
+t=10000: cells 23, largest 677, median 286, largest share 0.09
+t=20000: cells 24, largest 1448, median 220, largest share 0.18
+t=30000: cells 22, largest 3077, median 159, largest share 0.32
+t=40000: cells 24, largest 3883, median 182, largest share 0.42
+t=50000: cells 29, largest 722, median 248, largest share 0.09
+t=60000: cells 23, largest 3149, median 206, largest share 0.33
+t=70000: cells 23, largest 5104, median 154, largest share 0.47
+t=80000: cells 20, largest 4404, median 152, largest share 0.42
+t=90000: cells 20, largest 5144, median 175, largest share 0.46
+t=100000: cells 17, largest 9741, median 136, largest share 0.77

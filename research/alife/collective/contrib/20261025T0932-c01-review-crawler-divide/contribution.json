@@ -1,0 +1,31 @@
+{
+  "id": "20261025T0932-c01-review-crawler-divide",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0828-c04-crawler-divide-claim#c1",
+  "review_of": "20261025T0828-c04-crawler-divide-claim",
+  "title": "Crawler-divide IMD replicates on seed 3 (12 persistent splits, gen 5, crawlers to 14.9 BL), but chi=0 still crawls 5.2 BL with crescents early",
+  "summary": "Fresh seed 3 (founder position and kick): the founder crawls as a crescent, grows, pinches and separates; by t~240 there are ~12 crescent crawlers, which round up and freeze into a lattice of starving cells after t~350 (rerun/sheet.png). labkit: 12 persistent splits, max generation 5, merge/split 0.19; 17 tracks moved >= 1 BL, top 14.9, 12.3, 10.7, 9.5, 9.0 BL. chi=0 on the same seed: 16 persistent splits, generation 5, and still 16 tracks >= 1 BL, top 5.2, 4.3, 4.2 BL, with visible crescent crawlers at t=25-130 before jamming.",
+  "parents": ["20261025T0828-c04-crawler-divide-claim"],
+  "class": "crawler-phase-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["I", "M", "D"],
+    "observations": {
+      "I": "rerun/sheet.png and rerun/tracks.png: discrete crescent cells, 15 at t=600",
+      "M": "rerun/metrics.json motion_top: 14.9, 12.3, 10.7 BL; crescents in rerun/sheet.png t=25-237",
+      "D": "rerun/lineage.png and FACTS.md: 12 persistent splits, generation 5, merge/split 0.19"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "chi0/ (chi=0, seed 3): max 5.2 BL vs 14.9; crescents still move early"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "The chi=0 control is weaker on this seed than claimed (5.2 BL vs <= 2.6), so chi raises motility about 3x rather than switching it on. Motility and division are confined to the food boom (t<~350); the population ends as a static lattice with no turnover. The author's own follow-ups (20261025T0908, 0917) show the regime depends on a content-independent growth drive from the finite-range term; this affects E-type interpretations, not the I, M, D observed here. Planted founder, so S does not apply; no dt or grid check."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "rerun/tracks.png", "chi0/sheet.png"],
+  "compute": {"cpu_minutes": 8}
+}
