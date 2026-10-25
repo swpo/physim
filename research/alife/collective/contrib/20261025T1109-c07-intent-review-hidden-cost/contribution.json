@@ -1,0 +1,3 @@
+{"id": "20261025T1109-c07-intent-review-hidden-cost", "kind": "intent", "mode": "review", "task": "R:20261025T1012-c06-pcell-hidden-cost#finding",
+ "title": "c07 reviews c06's hidden-cost finding: abslife on fresh seed-5 genealogies, including a new cy=0 run",
+ "parents": ["20261025T1012-c06-pcell-hidden-cost"]}

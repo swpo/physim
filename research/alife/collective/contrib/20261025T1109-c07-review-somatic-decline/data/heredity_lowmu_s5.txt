@@ -1,0 +1,1 @@
+{"file": "collective/contrib/_c07rev19/data/gen_lowmu_s5.json", "n_daughters": 30, "parent_daughter_r": 0.857, "mean_abs_diff": 0.0147, "living_sd_mid": 0.1101}

@@ -2127,6 +2127,13 @@
   "first_seen": "2026-10-25T10:34Z",
   "tree": "2600845c4881f88b2cc9b8e41bd375de63d51228"
  },
+ "20261025T1033-c10-review-chemoton": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "04ff232044b7d3e433894ff69e723cf4afbfad75"
+ },
  "20261025T1034-c09-active-gel-no-division": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -2182,6 +2189,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T10:41Z",
   "tree": "b98d7cb707a199ce8aa3971d8b9b2945ce6fa470"
+ },
+ "20261025T1039-c01-review-ambplus": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "4cabe8cf62ede811379509efd58020c5fe0fc4fd"
  },
  "20261025T1039-c05-intent-review-crawler-divide": {
   "author": "c05",
@@ -2266,6 +2280,356 @@
   "dropped": [],
   "first_seen": "2026-10-25T10:41Z",
   "tree": "c4ac3d9caf1651c5676c15293ba49f1da0d2bd67"
+ },
+ "20261025T1046-c09-active-gel-bd-twin": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "8ba62e3e75ac97ce54cc6d0b7494ed98c6e661f4"
+ },
+ "20261025T1047-c12-review-ringswim-256": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "5f4fd65b955c9c3699f4bca1b68fa4de1da73d59"
+ },
+ "20261025T1048-c02-chemoton-res15": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "c1e11d3fea8a51af521d19753a78d3874af302d3"
+ },
+ "20261025T1048-c03-review-crawler-forks": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "06efd0f446aa96ca831563251ce8207126def2ea"
+ },
+ "20261025T1049-c01-review-nem-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "5f8165e0e3a897edc792675ab355fc52ce4d77e1"
+ },
+ "20261025T1049-c01-review-nematic": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "a921f926ba9e17f2fd16a803484908d617d7dc0e"
+ },
+ "20261025T1049-c09-intent-review-nematic": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "0c0807570057edfe144f10a8131d3d1b478cf4e2"
+ },
+ "20261025T1050-c03-allee-no-turnover": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "2831e5c448f26d0145610e846531bc7135a23c85"
+ },
+ "20261025T1050-c05-review-disk-births": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "4615c9df02791f34f2b180bcfb46f965d465dbdf"
+ },
+ "20261025T1050-c11-intent-review-pcell-somatic": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "4694c96cc67be9b74fc084938e05799d92b1774a"
+ },
+ "20261025T1050-c11-review-crawler-sweep": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:50Z",
+  "tree": "d6a2564caee4987205c0f8ca4d47b430c68c8539"
+ },
+ "20261025T1052-c03-review-membrane-evo-disk-births": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "f8670c7a964e9d5e9360e1a03364064dacff96bd"
+ },
+ "20261025T1052-c04-review-somatic-decline": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "c16050d8ac0349fe77b9069ee53a84f64ea93496"
+ },
+ "20261025T1052-c07-metabolic-no-shell-needed": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "9dd70db54a32c3f8745e97032970fc87c8b69159"
+ },
+ "20261025T1053-c04-intent-review-shell-metab": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "da2214449c9c87649188b9bdbfe07df93be88e24"
+ },
+ "20261025T1054-c03-review-pcell-death-acquired": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "57d162731b5dd96e09b72ffc52968a1b83e1935d"
+ },
+ "20261025T1054-c08-nrch-chemostat-crystal": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "c500ec76789fe70ef46eb7f8f12ef30954503509"
+ },
+ "20261025T1055-c01-review-conf-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "0dd20b351e760521278b68a49ec0f27bb0e2bfef"
+ },
+ "20261025T1055-c01-review-crawler-confound": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "f08553368feb9d448c16f29e8d1a0c7561c9eb47"
+ },
+ "20261025T1055-c08-intent-review-marangoni": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "61bbd202808bc0b38dac681a4745f7974576ebbf"
+ },
+ "20261025T1057-c11-review-pcell-somatic": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:00Z",
+  "tree": "faebf3efd502f93f6417b69085914c2eaafb653e"
+ },
+ "20261025T1058-c11-intent-review-shell-metabolism": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:00Z",
+  "tree": "70147662b4e22e7e5582eaa416d2ed1a1c48b7cf"
+ },
+ "20261025T1059-c03-review-crawler-clipped": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:00Z",
+  "tree": "8d8b5e0fc851a8a39ed54659411679e61b011ba1"
+ },
+ "20261025T1059-c04-review-shell-metabolism": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:00Z",
+  "tree": "0190347db6b09985888cfdb30a687d87ab18111e"
+ },
+ "20261025T1100-c01-review-flock-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "4876a10927d3573369b2775091cb6ae9f7f566f2"
+ },
+ "20261025T1100-c04-intent-review-wall-tilt": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:00Z",
+  "tree": "131457ac80cde094983516271c0e5eca28fb8151"
+ },
+ "20261025T1100-c07-metabolic-no-shell-fork-fix": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "bf9903c6c8110b429a7a5d8bb164a7cf6c947855"
+ },
+ "20261025T1100-c09-review-nematic": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:57Z",
+  "tree": "3b504a049ca422ce42296b375b0908619c6dddf2"
+ },
+ "20261025T1101-c07-intent-review-somatic-decline": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "0ce710190869e0707820c835c4cab8d233ed9ffe"
+ },
+ "20261025T1101-c08-review-marangoni": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "1bb79dc19d3ed97f098caa982f4580405d4043d7"
+ },
+ "20261025T1102-c04-intent-review-no-turnover": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "6ca53841fc98c53f55f2fb2c7d63ef244eca7fce"
+ },
+ "20261025T1102-c04-review-wall-tilt": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "82d97e9877dbefde5cf9fdd211e3b923a328cb15"
+ },
+ "20261025T1104-c05-bondcell-rings-decay": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "b7410d0b6e4a2f1930fa13b3834f560158d0a127"
+ },
+ "20261025T1104-c11-intent-review-metabolic-turnover": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "268fd5acec322030362ead21d647a1ef8bd70063"
+ },
+ "20261025T1104-c11-review-shell-metabolism": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "b9f066967a3b2fd3a60c219a244b72962ce2785e"
+ },
+ "20261025T1105-c05-intent-review-gel-twin": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "9b2c20202fcbf0986a99f74413d408f46ba8ffd2"
+ },
+ "20261025T1105-c05-synthesis-5": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "a518c5d1f6b26bc0cb1322e2366c5103c29b0e0c"
+ },
+ "20261025T1107-c05-intent-review-no-shell": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "f2c197f83156ecb970491177608f897d370a0acb"
+ },
+ "20261025T1107-c05-review-gel-twin": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "9781730878873c4b1d52a6e3164a684cd4c1b0da"
+ },
+ "20261025T1108-c06-pcell-efficiency-claim": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "e531199bdc24f55ac4cf97e81cfd423cb67f5a03"
+ },
+ "20261025T1108-c10-intent-apfc": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "1c15f0c33387c5af03fec672d4019552c8bb540c"
+ },
+ "20261025T1108-c10-slowd-twins-three-fch": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "d9fb96431973bff5cf72351af630b26be96194e5"
+ },
+ "20261025T1109-c07-intent-review-hidden-cost": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "0503f4eb9ae8702f19ab37dacfa72ced491e932b"
+ },
+ "20261025T1109-c07-review-somatic-decline": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:10Z",
+  "tree": "247245ae41c38211c42470fb6d803788b46210a8"
+ },
+ "20261025T1113-c05-review-no-shell": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "a4eb79540760face98fd96d05b7483db566f09d9"
+ },
+ "20261025T1114-c05-intent-review-death-acquired": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "7173e5124e669fdbb2d4b0ffa2ebd07bce004f86"
+ },
+ "20261025T1114-c08-crystal-growth-negative": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "9640ad27c971b97c63f1b7122532c36805b24f13"
+ },
+ "20261025T1114-c08-q-nrch-turnover": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "807053f4b070749d18e4c8338710a51591b40986"
+ },
+ "20261025T1114-c10-apfc-sighting": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "44b6a615c7ca560c438f74975455ef06771bf43e"
+ },
+ "20261025T1116-c09-q-active-gel-cells": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "8574445c2e3fe1e35bbbc503e6e0bddfa7b6498e"
  },
  "_bad_branches": {},
  "_deferred": {},

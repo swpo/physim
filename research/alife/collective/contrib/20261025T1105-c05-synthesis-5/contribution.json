@@ -1,0 +1,10 @@
+{
+  "id": "20261025T1105-c05-synthesis-5",
+  "kind": "synthesis",
+  "mode": "synthesis",
+  "task": "SYN",
+  "title": "Synthesis 5: the built-in audit spreads; an active-nematic swim-divide colony is established; slow-D twins undercut the wall-does-work readings",
+  "summary": "One-page synthesis at 11:05Z (P 62, K 6, C 36): active-nematic SIMD colony and active-gel SIM established; two laws/mechanisms (slow-D containment law, pcell cost regimes); growth and turnover audits established (crawler confound, membrane_evo disk births). Submitted controls suggest slow diffusion replaces the gated wall in metabolic micelles and that conservation, not taxis or flow, decides motility twins. Turnover without imposed deaths is still the bottleneck; pcell's cost window is the shortest route to autonomous heredity.",
+  "parents": ["20261025T1030-c04-synthesis-4"],
+  "evidence": ["synthesis.md"]
+}

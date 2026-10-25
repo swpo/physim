@@ -1,0 +1,24 @@
+[fch-metabolic-micelles] seed 6: 100 frames x 400 steps, grid (128, 128)
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:40: RuntimeWarning: overflow encountered in square
+  return (u + 1) * ((u - 1) ** 2 / 2 - d) + 0.5 * (u + 1) ** 2 * (u - 1)
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: invalid value encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:44: RuntimeWarning: overflow encountered in square
+  return ((u - 1) ** 2 / 2 - d) + 2 * (u + 1) * (u - 1) + 0.5 * (u + 1) ** 2
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:44: RuntimeWarning: overflow encountered in multiply
+  return ((u - 1) ** 2 / 2 - d) + 2 * (u + 1) * (u - 1) + 0.5 * (u + 1) ** 2
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:99: RuntimeWarning: overflow encountered in square
+  Vq = -P["chi_q"] * np.exp(-((u - P["u_w"]) / P["sig_w"]) ** 2)
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:101: RuntimeWarning: overflow encountered in multiply
+  rep = P["kc"] * c * p * g
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:102: RuntimeWarning: overflow encountered in multiply
+  use = (P["ks"] + P["kc"]) * c * p * g
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:101: RuntimeWarning: invalid value encountered in multiply
+  rep = P["kc"] * c * p * g
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:102: RuntimeWarning: invalid value encountered in multiply
+  use = (P["ks"] + P["kc"]) * c * p * g
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:67: RuntimeWarning: invalid value encountered in subtract
+  F = -Df * (np.roll(c, -1, ax) - c) / dx
+/home/user/physim/research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py:67: RuntimeWarning: invalid value encountered in multiply
+  F = -Df * (np.roll(c, -1, ax) - c) / dx
+non-finite fields at frame 1
