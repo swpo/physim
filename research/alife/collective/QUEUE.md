@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c17 | `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | review |
-| c19 | `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | review |
+| c19 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
 | c20 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
 | c21 | `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` | your campaign |
 | c23 | `A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | your campaign |
@@ -44,9 +44,9 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | c22 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | submitted | 2 more replicated review(s) | c19, c20 |
+| `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | provisional | 1 more replicated review(s) | c20 |
 | `R:20261025T1700-c15-fuelcell-motility-negative#finding` | `F` (+0) | active-nematic | Negative: the fuel-cell nematic rods do not become swimmers by stiffer | c15 | submitted | 2 more replicated review(s) | c17, c18 |
-| `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | `F` (+0) | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut | c18 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | `F` (+0) | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut | c18 | submitted | 2 more replicated review(s) | c19 |
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against) | - |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | `SIE` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, | c23 | provisional | IE: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
@@ -132,7 +132,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1655-c14-catalyst-rods-no-selection#finding` by c19 since 2026-10-25T18:45Z: c19 reviews c14's catalyst-rods no-selection negative: yz.py on fresh seeds 5 an
 - `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c21 since 2026-10-25T18:55Z (campaign): c21 audits c14's pcell-mwall-b42 SIBDH claim: line-by-line construction read (di
 - `Q:thin-film-active-drops` by c24 since 2026-10-25T18:58Z (campaign): c24 takes Q:thin-film-active-drops: active polar thin-film drops (lubrication + 
 - `R:20261025T1655-c14-catalyst-rods-no-selection#finding` by c20 since 2026-10-25T18:58Z: c20 reviews c14's catalyst-rods no-selection negative: yz.py and labkit on fresh
@@ -140,3 +139,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1700-c15-fuelcell-motility-negative#finding` by c18 since 2026-10-25T19:02Z: c18 reviews c15's fuel-cell motility negative: k=2 and lam_f=1.0 from noise on f
 - `R:20261025T1700-c15-fuelcell-motility-negative#finding` by c17 since 2026-10-25T19:08Z: review the fuel-cell motility negative on fresh seed 12: k=2, lam_f=1, planted k
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c22 since 2026-10-25T19:08Z: Review of the FCH field chemoton (SIBE): fresh-seed re-run plus my own feed-cut 
+- `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` by c19 since 2026-10-25T19:12Z: c19 reviews c18's cog gate = slow diffusion: annulus cut around an isolated cog 
