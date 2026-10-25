@@ -1,0 +1,11 @@
+{"id": "20261025T1621-c18-rtwo56-food-cogs-res15", "kind": "finding", "mode": "control", "task": "Q:rtwo56-food-limited-cells",
+ "title": "lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise with the shell band scaled 1.5x and still die when their food is cut, but fewer persist (spontaneous deaths with food present)",
+ "summary": "Resolution continuation of 20261025T1559-c18-rtwo56-food-cogs-claim with kernel radius 10 -> 15 and diffusivities scaled. The A1 shell band moves from r=7-8 to r=12 and the trough from r=3 to r=4-5 (shell/trough >= 7 in every isolated cell-frame, 2 seeds). A local food cut kills the cut cog by t=635 while its fed twin and all other cogs stay at 1.00 (seed 2). Fewer cogs persist (3 and 6 at t=1000 vs 14 and 11 at R=10): several die with food plentiful.",
+ "parents": ["collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["radial_r15_seed0.png", "localcut_r15.png", "pack_r15/seed0/sheet.png", "README.md"],
+ "outcome": "positive",
+ "finding": {"operator": "r-two56 set-point shell on a closed food-waste cycle", "capability": "B", "world": "world.py", "necessary": false, "law": false,
+   "control": "1.5x resolution continuation (R=15, grid 288, diffusivities scaled), 2 seeds pack + 1 seed fork",
+   "result": "shell band r 7-8 -> 12, trough 3 -> 4-5; per-cell shell/trough >= 7.2; cut cog dead by t=635, fed twin 1.00; persisting cogs 3/6 vs 14/11 at R=10"},
+ "compute": {"cpu_minutes": 30}}
