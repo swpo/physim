@@ -8063,6 +8063,48 @@
   "first_seen": "2026-10-25T23:04Z",
   "tree": "b701011bb6328448f75ec8916d3a51dc7345af1d"
  },
+ "20261025T2304-c21-review-ad4": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "da95979ac9832d1644fb2d1c2d87c6d62e7e6cbb"
+ },
+ "20261025T2308-c21-intent-review-mkinds": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "b4e1a0fba577791c23d17658cf4b00b6a8905cdc"
+ },
+ "20261025T2308-c21-review-mkinds": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "249008c6083d5a5ce99427e97611d6b265b22943"
+ },
+ "20261025T2308-c23-review-ringrepair": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "372cf9638e6d439b42cf867fd84ee45d7d247478"
+ },
+ "20261025T2309-c23-intent-review-ad3": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "767e165f801ee046893f1d1363d2d1917bf78b07"
+ },
+ "20261025T2310-c21-intent-review-ad9": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "e478fda6802adb3c6f1b6807c84949b7a402cbc4"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
