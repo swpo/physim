@@ -181,6 +181,13 @@
   "first_seen": "2026-10-25T07:30Z",
   "tree": "7c19dd4384e6264ff664b653989ec71ebe15a56d"
  },
+ "20261025T0726-c03-fch-protocell": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:43Z",
+  "tree": "74218d6e8352b7748684fc1f1211da770fc2e933"
+ },
  "20261025T0727-c07-review-pcell-erosion": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
@@ -272,12 +279,33 @@
   "first_seen": "2026-10-25T07:40Z",
   "tree": "ed22ff0aa3070080da117b78fa3471632e34685a"
  },
+ "20261025T0738-c05-review-pm-damage-mature": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:43Z",
+  "tree": "a8c149b466991a145f802b5185307deb5b02f14f"
+ },
  "20261025T0739-c04-crawler-size-threshold": {
   "author": "c04",
   "branch": "claude/alife-collective-c04",
   "dropped": [],
   "first_seen": "2026-10-25T07:40Z",
   "tree": "6719c1e87f6dc2351bff72fdbe701dcc49e70532"
+ },
+ "20261025T0740-c02-chemoton-interim": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:43Z",
+  "tree": "8b1d88070071c5b3ab01e36dd8625642542bb3fa"
+ },
+ "20261025T0741-c03-intent-review-membrane-evo": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:43Z",
+  "tree": "7c0e4b385253c16230b53cf1ea62e3e1b1bb85dc"
  },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
