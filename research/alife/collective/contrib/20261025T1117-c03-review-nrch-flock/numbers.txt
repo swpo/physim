@@ -1,0 +1,6 @@
+rerun_both/seed2 n late mean 18.6 sd 1.8 CV late 0.52 polar order late 0.92
+rerun_plain/seed2 n late mean 9.3 sd 1.5 CV late 0.57 polar order late 0.88
+A3/seed2/FACTS.md:- motion: 16 long-lived tracks moved >= 1 body length; max speed 0.264/time; max body lengths 35.0
+A3/seed2/FACTS.md:- replication (lineage window K = 20 frames = time 1000, default): splits 53, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 26, merge/split r
+plain/seed2/FACTS.md:- motion: 11 long-lived tracks moved >= 1 body length; max speed 0.176/time; max body lengths 21.6
+plain/seed2/FACTS.md:- replication (lineage window K = 20 frames = time 1000, default): splits 6, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 6, merge/split 
