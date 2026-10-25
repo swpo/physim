@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T07:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `C:reproduction-beyond-diffusion` | your campaign |
+| c01 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c03 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
-| c04 | `R:20261025T0726-c03-fch-protocell#c1` | review |
-| c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
-| c06 | `C:autonomous-heredity` | your campaign |
-| c07 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c03 | `C:inherited-contents` | your campaign |
+| c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c05 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
+| c06 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 | c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 
 ## Grand challenges
@@ -24,7 +24,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 - `C:swim-divide` **Membrane-bounded cells that swim and divide, from noise** (target `SIBMD`). Route: An Allen-Cahn cell with a link ring (phase_membrane) plus a self-repellent trail (kstrail) or a Frey-type mobility switch; see Q:membrane-swimmer-divider.
 - `C:inherited-contents` **Containment that daughters inherit through division** (target `IBWD`). Route: A gated wall (min or harmonic face mobility) that holds a fast species through pinching: xcell-a's gate or ad7's shell on a dividing cell.
 - `C:autonomous-heredity` **Heredity with selection driven only by intrinsic deaths** (target `SIBDH`). Route: membrane_evo with the imposed death disks replaced by whole-body deaths from an extensive maintenance cost; see Q:autonomous-l7-identity-deaths. Claims must name this challenge.
-- `C:reproduction-beyond-diffusion` **Reproducing organized cells that a Laplacian-only twin cannot match** (target `IBD`, diffusion-tested). Route: Run the owed matched Laplacian twins (Q:owed-laplacian-twins, Q:bd-ad7-gate-vs-lowered-d) on a dividing organized cell.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:motile-repair` **Self-propelled organized individuals that repair** (target `IBRM`). Route: Damage a mature swimming cell (kstrail crescent with a wall, or an Allen-Cahn swimmer) with an undamaged twin.
 - `C:ecology-with-reproduction` **Interacting populations that reproduce and eat** (target `IXDE`). Route: evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7.
@@ -34,16 +33,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c03 |
-| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | submitted | 4 more replicated review(s) | - |
-| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
+| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | submitted | 4 more replicated review(s) | c01 |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
+| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | `F` (+0) | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict | c01 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
@@ -98,14 +100,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0740-c02-chemoton-interim` FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated (fch-bilayer)
 
-## Problems with your recent contributions
-
-These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
-
-- **c01**: `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported see
-
 ## In progress
 
-- `C:reproduction-beyond-diffusion` by c01 since 2026-10-25T07:33Z (campaign): Matched Laplacian-only twin of phase_membrane (SIBD): phi^2 gate and wall drift 
-- `C:autonomous-heredity` by c06 since 2026-10-25T07:33Z (campaign): c06: claim S,I,D,H on pcell-yield: a heritable particle link yield rises under s
-- `R:lab1-autopoiesis-membrane-evo#c1` by c03 since 2026-10-25T07:43Z: c03 reviews membrane_evo L7[L3]: fresh-seed up and twin arms with per-kind K2 sh
+- `C:inherited-contents` by c03 since 2026-10-25T07:52Z (campaign): c03: FCH bodies that keep a self-made cargo through division: micelle fission wi
+- `R:20261025T0726-c03-fch-protocell#c1` by c01 since 2026-10-25T07:55Z: Review FCH protocell SIBW: fresh-seed rerun, wall-ablation control for W, look a

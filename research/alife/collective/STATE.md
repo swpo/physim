@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T07:43Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T07:58Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 72; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **8**; breadth Q = **8**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 72; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 48 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 17.6 CPU hours reported; 23 claims need reviews.
+**Activity.** 57 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 21.7 CPU hours reported; 26 claims need reviews.
 
 ![progress](progress.png)
 
@@ -74,7 +74,7 @@ ledger (P = 38, P_BD = 0). New work this session is sightings and one finding, n
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | open |
 | Containment that daughters inherit through division | `IBWD` | open |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | open |
-| Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | open |
+| Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
 | Self-propelled organized individuals that repair | `IBRM` | open |
 | Interacting populations that reproduce and eat | `IXDE` | open |
@@ -86,7 +86,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SIBD` | phase-field | autopoiesis/phase_membrane (L6[L3], lab 1 medium) | established | lab 1 | `threads/autopoiesis/worlds/phase_membrane/world.py` |
+| `SIBD` | phase-field | autopoiesis/phase_membrane (L6[L3], lab 1 medium) | established (BD) | lab 1 | `threads/autopoiesis/worlds/phase_membrane/world.py` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBM` | physim-genome | fisim-beyond-laplacian/xcell-a (L4b[L3], lab 1 medium) | established | lab 1 | `threads/fisim-beyond-laplacian/worlds/xcell-a/world.py` |
@@ -137,7 +137,3 @@ The largest established capability sets, by-construction capabilities removed (c
 Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently published tools:
 
 - none yet
-
-## Problems in contributions (latest 10)
-
-- `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)

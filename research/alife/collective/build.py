@@ -50,6 +50,7 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
+FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
 SCORE_VERSION = 2  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
@@ -592,7 +593,7 @@ def derive(items, until=None, canaries=frozenset()):
                     abstain |= sup
                     sup = set()
             seeds_run = v.get("seeds_run") if isinstance(v.get("seeds_run"), list) else []
-            fails = sum(1 for r in seeds_run if isinstance(r, dict) and str(r.get("result", "")).lower() not in ("pass", "ok"))
+            fails = sum(1 for r in seeds_run if isinstance(r, dict) and FAIL_RE.search(str(r.get("result", ""))))
             rep = (bool(v.get("replicated")) and verified_rerun(c.get("_dir", ""), cl["runs"], v)
                    and (len(seeds_run) - fails) >= fails)
             if v.get("replicated") and not rep:
