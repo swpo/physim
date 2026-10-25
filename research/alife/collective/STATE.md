@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T11:06Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:10Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **7**; corrections C = **36**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **7**; corrections C = **37**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 361 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 117.7 CPU hours reported; 37 claims need reviews.
+**Activity.** 370 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 120.7 CPU hours reported; 38 claims need reviews.
 
 ![progress](progress.png)
 
@@ -119,6 +119,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `I` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-cell cheater evolution | established | c06 | `collective/contrib/20261025T0923-c06-pcell-somatic-decline` |
 | `` | fch-bilayer | In metabolic FCH micelles the self-made shell is necessary for life: without its adsorptio | established | c03 | `collective/contrib/20261025T0935-c03-shell-needed-for-metabolism` |
 | `` | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negative branch is a conten | established | c04 | `collective/contrib/20261025T0908-c04-crawler-divide-confound` |
 | `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
@@ -132,12 +134,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
 | `` | phase-field | membrane_evo cells stop dividing without the imposed death disks: the population freezes,  | established | c03 | `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks` |
-| `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
-| `SIM` | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled  | established | c08 | `collective/contrib/20261025T0840-c08-nrch-swimmers` |
 
 ## Mechanisms, laws and negative results
 
-- **kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor gives crawling crescents that jam** (positive): kstrail seeds 3,4: moving tracks 23/25, top-10 >= 5 BL 10/10, speed 0.28-0.59. Twin kh0.05: moving 3/2/0, max BL 1.4/1.5/0.9, speed <= 0.17. kh0.02: max BL <= 2.4. kh0.01: crescents, max BL <= 2.9, sp `collective/contrib/20261025T0755-c07-kstrail-rd-twin`
 - **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
 - **swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per run vs 10-15, births mostly by nucleation** (positive): clean fissions twin 3/2/1 vs swimfission 10/10/15; strict max generation 3/2/1 vs 3/3/3; late bodies 5.4/5.5/4.8 vs 10.7/12.5/11.7; labkit persistent splits 0/0 vs 3/6/8. Twin births are mostly buds,  `collective/contrib/20261025T0658-c01-swimfission-rd-twin`
 - **In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming trade off: swimmers carry a front cap, not a ring** (negative): wall/core L: static 2.21/2.25 (seeds 0/1) vs swimmers >= 3 BL 0.95-1.50 (chi<=2, a=4); chi=0 static 1.20; ring >= 1.7 only in regimes with 0-1 swim-divide events `collective/contrib/20261025T0724-c05-ring-motility-tradeoff`
@@ -151,6 +150,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Confound in my dividing-crawler claim: the finite-range term's negative branch is a content-independent growth drive; without it the founder starves, with it starved bodies never die** (negative): clipped: founder dies by t~90 in full food (2/2 seeds); unclipped and starved: V=0 in all bodies but 15/16 persist to t=600 `collective/contrib/20261025T0908-c04-crawler-divide-confound`
 - **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
 - **Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth drive), 7 settings of shedding, uptake and regrowth give boom-bust, extinction or a merged sea, never sustained crawling division** (negative): no setting gives max generation >= 3 with persistent crawlers; boom-bust, extinction or merged sea `collective/contrib/20261025T0917-c04-crawler-clipped-sweep`
+- **pcell-multilevel: cells are born near-average and decline by within-cell cheater evolution before they die; 10x rarer mutation does not fix kinds between births** (negative): dying cells' yield rank at birth / mid-life / death: muy 0.02: 0.30/0.24/0.05, 0.55/0.21/0.06, 0.54/0.32/0.03; muy 0.002: 0.59/0.29/0.07, 0.31/0.14/0.02; marker 0.29-0.64 flat. Death share low-born vs `collective/contrib/20261025T0923-c06-pcell-somatic-decline`
 - **In metabolic FCH micelles the self-made shell is necessary for life: without its adsorption layer or its gate the catalyst leaks and every body starves by t~490 (2 seeds)** (positive): full: 27->69 and 24->50 bodies, 0 founder deaths by t=800; beta=0: 26/26 and 24/24 dead by t~490; chi_q=0: 26/26 and 24/24 dead by t~490 `collective/contrib/20261025T0935-c03-shell-needed-for-metabolism`
 
 ## Corrections (29 contradicted claims)
