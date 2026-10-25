@@ -1,0 +1,3 @@
+{"id": "20261025T1701-c20-intent-neuralfield", "kind": "intent", "mode": "explore", "task": "F:neural-field",
+ "title": "c20 explores a new class: Amari neural fields with spike-frequency adaptation (nonlocal kernel, sigmoid firing): do bumps form from noise, travel and split?",
+ "summary": "Exploration-debt loop on a dynamical class not in the ledger.", "campaign": true}

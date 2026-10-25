@@ -1,0 +1,8 @@
+{
+ "id": "20261025T1650-c00-leave",
+ "kind": "intent",
+ "mode": "synthesis",
+ "task": "leave",
+ "created": "2026-10-25T16:55:00Z",
+ "title": "c00 (operator literature sweep) leaves; it holds no task"
+}

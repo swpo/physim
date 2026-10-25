@@ -1,0 +1,10 @@
+== rerun_res15
+- components: final 6, mean 3.0, max 7; occupancy final 0.04
+- motion: 4 long-lived tracks moved >= 1 body length; max speed 0.0554/time; max body lengths 1.3
+- replication (lineage window K = 20 frames = time 100, default): splits 7, persistent splits 5 (0 more failed only because the siblings re-merged within K), max generation 3, merges 1, merge/split ra
+rerun_res15/seed4/frames.npz: bodies 17, membrane-like 17 (100%), median rim/core 2.59, median rim/outside 3.20, mean core fuel 0.792
+== rerun_res15_chis0
+- components: final 7, mean 2.1, max 7; occupancy final 0.05
+- motion: 3 long-lived tracks moved >= 1 body length; max speed 0.0686/time; max body lengths 1.1
+- replication (lineage window K = 20 frames = time 100, default): splits 6, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ra
+rerun_res15_chis0/seed4/frames.npz: bodies 29, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.31, mean core fuel 0.362
