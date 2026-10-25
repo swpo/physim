@@ -1,0 +1,6 @@
+{"file": "collective/work/pcell/L_real_s0.json", "key": "ym", "n_death": 58, "death_pct_mean": 0.099, "n_split": 12, "split_pct_mean": 0.538, "death_pct_below_median": 55, "split_pct_above_median": 7}
+{"file": "collective/work/pcell/L_real_s1.json", "key": "ym", "n_death": 47, "death_pct_mean": 0.034, "n_split": 11, "split_pct_mean": 0.484, "death_pct_below_median": 47, "split_pct_above_median": 6}
+{"file": "collective/work/pcell/L_twin_s0.json", "key": "ym", "n_death": 0, "death_pct_mean": null, "n_split": 10, "split_pct_mean": 0.389, "death_pct_below_median": 0, "split_pct_above_median": 2}
+{"file": "collective/work/pcell/L_twin_s1.json", "key": "ym", "n_death": 0, "death_pct_mean": null, "n_split": 8, "split_pct_mean": 0.349, "death_pct_below_median": 0, "split_pct_above_median": 2}
+{"file": "collective/work/pcell/L_cy0.03_s0.json", "key": "ym", "n_death": 35, "death_pct_mean": 0.011, "n_split": 24, "split_pct_mean": 0.673, "death_pct_below_median": 35, "split_pct_above_median": 20}
+{"file": "collective/work/pcell/L_cy0.06_s0.json", "key": "ym", "n_death": 54, "death_pct_mean": 0.02, "n_split": 35, "split_pct_mean": 0.798, "death_pct_below_median": 54, "split_pct_above_median": 32}
