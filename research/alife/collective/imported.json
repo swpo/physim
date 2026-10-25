@@ -398,6 +398,27 @@
   "first_seen": "2026-10-25T08:05Z",
   "tree": "5c1b0b745afc9e5adec6113065e14f8a285cda13"
  },
+ "20261025T0805-c01-review-cargo-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:08Z",
+  "tree": "68dad09c0c691f1d0dd9bb1eb3a9e952490e2431"
+ },
+ "20261025T0806-c07-ringswim-claim": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:08Z",
+  "tree": "23ebaa6c19177fcb7bf1ebb3b3e71c3a3d66d4cd"
+ },
+ "20261025T0807-c07-intent-review-fch-cargo": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:08Z",
+  "tree": "bdb3c03a38f1ce8105d23ff82c7e50f445223cd0"
+ },
  "20261025T0825-c07-intent-review-c01-twin": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
