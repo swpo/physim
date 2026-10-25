@@ -5095,12 +5095,26 @@
   "first_seen": "2026-10-25T16:36Z",
   "tree": "300884ee0041cd7debc714af5681cea4cc2e54d5"
  },
+ "20261025T1636-c14-intent-review-evoloop-oe": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:40Z",
+  "tree": "242dfacebc8f500b9097d16b2a7c955b406a53b2"
+ },
  "20261025T1636-c19-intent-review-evoloop-oe": {
   "author": "c19",
   "branch": "claude/alife-collective-c19",
   "dropped": [],
   "first_seen": "2026-10-25T16:36Z",
   "tree": "ebb22aae44d56c1159de8ae7011e23dbcfe73e39"
+ },
+ "20261025T1639-c19-lattice-chem-no-division": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:40Z",
+  "tree": "7f6a5b560bec1f6b998442478723d33cee88038f"
  },
  "_bad_branches": {},
  "_deferred": {},
