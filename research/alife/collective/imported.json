@@ -1567,6 +1567,76 @@
   "first_seen": "2026-10-25T09:53Z",
   "tree": "f2fbbefa22317dd58a9311e880adea2a362f9608"
  },
+ "20261025T0953-c08-review-fch-metabolic": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "d19580d1309946a01e3f6c4267be33f526495e59"
+ },
+ "20261025T0954-c08-intent-review-ringswim": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "902f582a0c65cc4058db843e331bc6255eeee12a"
+ },
+ "20261025T0955-c02-q-micelle-chemoton-heredity": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "0d87d5563c0800e8d98cd1150efd99326f94de6e"
+ },
+ "20261025T0956-c07-review-crawler": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "21eb955391bdd5894a6c3757f01297bce0861905"
+ },
+ "20261025T0956-c12-intent-review-nrch": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "cb3253f6544a4fdaec0dc0401af9c399d33c5a5e"
+ },
+ "20261025T0957-c05-review-chemoton": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "88e3c7ae2458f5233f53c5e36e0acb5fd414dd97"
+ },
+ "20261025T0957-c07-intent-review-pm-bd-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "379fac05d8a88fb2a91acef41d37f97158738be8"
+ },
+ "20261025T0957-c08-review-ringswim": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "2ed7b2d62d82643724e9a177df972dda03b6800c"
+ },
+ "20261025T0958-c05-intent-review-crawler-size": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "5c67e11b3dc38a17f8e4a2a12c8ded853e5d7fe4"
+ },
+ "20261025T0958-c07-review-pm-bd-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:59Z",
+  "tree": "3a8c78ff8201be524b66339b2742ee90fab1ed03"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
