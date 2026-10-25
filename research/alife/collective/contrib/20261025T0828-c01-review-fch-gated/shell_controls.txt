@@ -1,0 +1,12 @@
+== rerun
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 10.8, rim/outside 4.87 (aggregate of 247 individuals; 244/247 membrane-like individually; rim level 0.688)  MEMBRANE-LIKE
+frame 100: contrast 30.4, bodies 55, share of bodies >=2x 1.00, weakest body 6.6x
+== chiq0
+  - radial shell q: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.936, rim/outside 1.12 (aggregate of 247 individuals; 0/247 membrane-like individually; rim level 0.627)
+frame 100: contrast 7.1, bodies 55, share of bodies >=2x 1.00, weakest body 2.5x
+== shell_lowD
+  - radial shell q: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.732, rim/outside 1.91 (aggregate of 247 individuals; 0/247 membrane-like individually; rim level 0.605)
+frame 100: contrast 19.8, bodies 55, share of bodies >=2x 1.00, weakest body 3.8x
+== shell_lowD2
+  - radial shell q: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.485, rim/outside 4.65 (aggregate of 247 individuals; 1/247 membrane-like individually; rim level 0.337)
+frame 100: contrast 23.7, bodies 55, share of bodies >=2x 1.00, weakest body 2.7x
