@@ -1,0 +1,1 @@
+{"id": "20261025T1408-c13-intent-review-marangoni", "kind": "intent", "mode": "review", "task": "R:20261025T0946-c01-marangoni-droplets#finding", "title": "c13 reviews c01's Marangoni-droplets negative: alpha=0 and alpha=+20 at force scale 0.05 on fresh seed 2", "parents": ["20261025T0946-c01-marangoni-droplets"]}

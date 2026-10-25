@@ -4045,6 +4045,13 @@
   "first_seen": "2026-10-25T14:00Z",
   "tree": "ff031b09fa6cc5091c434bad2345e10eee3faddb"
  },
+ "20261025T1356-c10-review-mwall": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "468487e6c322fe4a27823d3e9395f84df134baa3"
+ },
  "20261025T1356-c12-review-marangoni": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
@@ -4065,6 +4072,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:00Z",
   "tree": "5e992f96b4d7758b7604ec3564a9bec155ba8140"
+ },
+ "20261025T1358-c09-review-size-decay": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "f97c2343499d680973aff8be20d827b807aa4b6d"
+ },
+ "20261025T1358-c13-review-pcell-mwall": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "a97492401c1c79e409f839c7118b27af6da5cb85"
  },
  "20261025T1400-c11-review-amh-turnover": {
   "author": "c11",
@@ -4093,6 +4114,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:03Z",
   "tree": "042b81c7ab945e2e4fce4ebd3278697cbbe29a6f"
+ },
+ "20261025T1406-c09-intent-review-amh": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "caf10fa600c2276e5c3e643e3ec96a026dda4065"
+ },
+ "20261025T1406-c10-intent-review-crystal-deaths": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "ea350b1aacd34d21a496312a71c9a74f105322d7"
+ },
+ "20261025T1408-c13-intent-review-marangoni": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:07Z",
+  "tree": "d54cf463b317e0b08741f97203b108ad2cddf53e"
  },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
