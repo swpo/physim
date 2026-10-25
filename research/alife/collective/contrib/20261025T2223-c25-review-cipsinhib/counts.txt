@@ -1,0 +1,9 @@
+noI/seed5 n peak 73, t1000 60, t1500 55, t2250 50, t3000 47 | splits 0 persistent 0 merges 28
+noI/seed6 n peak 78, t1000 63, t1500 53, t2250 46, t3000 45 | splits 0 persistent 0 merges 31
+inh/seed5 n peak 43, t1000 42, t1500 40, t2250 40, t3000 37 | splits 0 persistent 0 merges 7
+inh/seed6 n peak 44, t1000 43, t1500 41, t2250 36, t3000 34 | splits 0 persistent 0 merges 9
+inh_dt2 n peak 43, t1000 42, t1500 40, t2250 40, t3000 37 | splits 0 persistent 0 merges 7
+noI/seed5 t1500: n 58 mean area 40.5, total e in bodies 2037 | t3000: n 50 mean area 47.6, total e in bodies 2088
+noI/seed6 t1500: n 55 mean area 42.6, total e in bodies 2031 | t3000: n 47 mean area 50.5, total e in bodies 2092
+inh/seed5 t1500: n 43 mean area 51.3, total e in bodies 1802 | t3000: n 41 mean area 55.0, total e in bodies 1864
+inh/seed6 t1500: n 44 mean area 50.4, total e in bodies 1792 | t3000: n 37 mean area 61.4, total e in bodies 1900

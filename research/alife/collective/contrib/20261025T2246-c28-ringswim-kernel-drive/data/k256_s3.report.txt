@@ -1,0 +1,8 @@
+cells-frames scored: 27746 median ring 1.586 frac >= 1.5: 0.875
+persistent splits 148 | tracks that swim >= 3 BL, ring >= 1.5 in >= half their frames, and divide: 5
+{'id': 1077, 't0': 12360, 't1': 15200, 'BL': 4.58, 'ring_med': 1.55, 'ring_frac': 0.75, 'nring': 53, 'nframes': 143, 'born_by_split': False, 'divides': True, 'children': [1364, 1365]} -> children [(1364, 1.5, 0.5, 1.88), (1365, 1.63, 0.93, 2.96)]
+{'id': 979, 't0': 11240, 't1': 12560, 'BL': 3.96, 'ring_med': 1.56, 'ring_frac': 0.93, 'nring': 29, 'nframes': 67, 'born_by_split': False, 'divides': True, 'children': [1098, 1099]} -> children [(1098, 1.64, 0.92, 0.91), (1099, 1.59, 0.93, 0.58)]
+{'id': 33, 't0': 1240, 't1': 3540, 'BL': 3.31, 'ring_med': 1.58, 'ring_frac': 0.92, 'nring': 51, 'nframes': 116, 'born_by_split': True, 'divides': True, 'children': [266, 267]} -> children [(266, 1.51, 0.7, 0.89), (267, 1.62, 0.83, 2.01)]
+{'id': 383, 't0': 4760, 't1': 6820, 'BL': 3.26, 'ring_med': 1.58, 'ring_frac': 0.82, 'nring': 34, 'nframes': 104, 'born_by_split': False, 'divides': True, 'children': [594, 595]} -> children [(594, 1.63, 0.96, 3.63), (595, 1.58, 1.0, 0.71)]
+{'id': 1502, 't0': 16680, 't1': 17700, 'BL': 3.23, 'ring_med': 1.58, 'ring_frac': 0.8, 'nring': 20, 'nframes': 52, 'born_by_split': True, 'divides': True, 'children': [1578, 1581]} -> children [(1578, None, None, 1.39), (1581, None, None, 0.45)]
+swimmers >= 3 BL: 80 with ring >= 1.5 in >= half frames: 80

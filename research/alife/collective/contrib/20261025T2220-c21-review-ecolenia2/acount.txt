@@ -1,0 +1,2 @@
+pack/metrics.json: A reaches 20 cells at t=278.0; A mean t=100-400 14.6; A at t=600 28; B mean t>=300 57.4
+pack_sep/metrics.json: A reaches 20 cells at t=128.0; A mean t=100-400 26.5; A at t=600 31; B mean t>=300 50.4

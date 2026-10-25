@@ -1,0 +1,27 @@
+{
+ "candidates": [],
+ "persistent_splits": 3,
+ "max_generation": 3,
+ "splits": 32,
+ "merges": 34,
+ "deaths": 3,
+ "tracks_ge3BL": 0,
+ "tracks_ge5BL": 0,
+ "split_times": [
+  4620,
+  5360,
+  6160
+ ],
+ "gen_hist": {
+  "0": 70,
+  "1": 3,
+  "2": 3,
+  "3": 29
+ },
+ "world": "world.py",
+ "seed": 0,
+ "T": 12000,
+ "params": {
+  "drive": "kernel"
+ }
+}
