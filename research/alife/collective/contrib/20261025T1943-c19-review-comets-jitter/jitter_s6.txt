@@ -1,0 +1,16 @@
+g2.25: components: final 40, persistent splits 20, max generation 4, merges 106, max body lengths 27.1
+g2.75: components: final 37, persistent splits 17, max generation 3, merges 89, max body lengths 48.7
+kd0.045: components: final 44, persistent splits 28, max generation 4, merges 125, max body lengths 32.5
+kd0.055: components: final 33, persistent splits 20, max generation 4, merges 64, max body lengths 32.3
+theta0.38: components: final 54, persistent splits 26, max generation 4, merges 162, max body lengths 24.7
+theta0.42: components: final 24, persistent splits 26, max generation 5, merges 44, max body lengths 53.1
+tr45: components: final 51, persistent splits 25, max generation 4, merges 102, max body lengths 55.4
+tr55: components: final 37, persistent splits 28, max generation 5, merges 65, max body lengths 55.1
+g2.25: merge/split ratio 0.307
+g2.75: merge/split ratio 0.301
+kd0.045: merge/split ratio 0.345
+kd0.055: merge/split ratio 0.239
+theta0.38: merge/split ratio 0.309
+theta0.42: merge/split ratio 0.267
+tr45: merge/split ratio 0.274
+tr55: merge/split ratio 0.256
