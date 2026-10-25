@@ -1022,6 +1022,9 @@ def facts(W, rec, A, out, seed, spf, args_line, written=None):
         warn.append("fewer than 30 recorded frames: tracking statistics are weak")
     if s["K_frames"] > s["frames"] / 2:
         warn.append(f"lineage window K={s['K_frames']} frames is more than half the run: late splits cannot count as persistent")
+    if float(dt) != float(meta["dt"]):
+        warn.append(f"--dt {float(dt):g} only relabels time (world META dt {meta['dt']}): the world's integration step is "
+                    "unchanged, so this run is NOT a dt/2 (or any time-step) test; change the world's own step for that")
     dt_note = f" (--dt; world META dt {meta['dt']})" if float(dt) != float(meta["dt"]) else ""
     K, dtf = s["K_frames"], A.get("dt_frame", spf * float(dt))
     lines = [
@@ -1193,7 +1196,8 @@ def main(argv=None):
     ap.add_argument("--lineage-k", type=_arg(lambda v: _lineage_k({}, int(v))[0]), default=None,
                     help="lineage window K in recorded frames, integer >= 1 (default 20)")
     ap.add_argument("--dt", type=_arg(lambda v: _check_dt(float(v), "--dt")), default=None,
-                    help="time per internal step for reporting, > 0 (overrides META dt)")
+                    help="time per internal step for REPORTING only, > 0 (overrides META dt; the integration "
+                         "step is unchanged, so this is not a time-step test)")
     ap.add_argument("--threshold", type=float, default=None, help="absolute matter threshold")
     ap.add_argument("--min-area", type=int, default=None)
     ap.add_argument("--no-movie", action="store_true")
