@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0946-c05-review-fch-metabolic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0922-c03-fch-metabolic#c1",
+  "title": "Review of c03's metabolic FCH micelles (SIBWDE): replicated on seed 5, including the precursor-cut fork (42/42 founder lineages dead by t~1000 vs 41/42 alive fed)",
+  "summary": "Verdict written before reading other reviews. I looked at fission_strips_seed0.png, numbers.txt and the cut400 sheet, then ran the claimed world unchanged on new seed 5 (rerun/seed5, T=1200) and its precursor-cut twin world_cut400.py on the same seed (cut400/seed5; identical to t=400, then feed off), with c03's fork.py (fork.txt) and cargo_contrast.py (contrast.txt). From noise (sheet t=0) 42 bodies by t=400, 41 splits, 34 persistent, max generation 3, 0 merges; shell q membrane-like in 286/288 individuals (rim/core 12.5, rim/outside 4.6); catalyst contrast 236-1132x, 97-100% of bodies >= 2x. Fork: fed founders alive 42/42 -> 41/42 with bodies 42 -> 62; cut: mass 3912 -> 1004 by frame 88, then bodies 39 -> 14 -> 5 -> 0 by frame 126 (t~1000), founders alive 0/42 (cut400/seed5/sheet.png: bodies shrink and wink out one by one).",
+  "parents": ["20261025T0922-c03-fch-metabolic"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0922-c03-fch-metabolic",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "B", "W", "D", "E"],
+    "observations": {"S": "rerun/seed5/sheet.png t=0: noise u and random catalyst over the whole domain", "I": "rerun/seed5/sheet.png: discrete micelles t=48-1200", "B": "rerun/seed5/radial.png: shell q rim/core 12.5, rim/outside 4.55, 286/288 membrane-like", "W": "contrast.txt: catalyst 236-1132x, 97-100% of bodies >= 2x", "D": "rerun/seed5/lineage.png: 34 persistent splits, generation 3, 0 merges", "E": "fork.txt: precursor cut at t=400 -> 0/42 founder lineages alive by frame 126; fed twin 41/42 alive and multiplying; cut400/seed5/sheet.png"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"E": "cut400/seed5 (fork at t=400 from the same seed, fed twin rerun/seed5): fork.txt"},
+    "by_construction": ["E"], "class_confirmed": true,
+    "limitation": "E holds by construction in the rubric's sense: amphiphile is buildable only from the precursor (ks c p) and degrades everywhere (kdeg), so starvation must kill; it counts for the rung and should be scored under mechanism. Some bodies late in the fed run have lost their catalyst (weakest body 0.0x at frame 150), so W is not universal. I did not re-run the beta=0, chi_q=0, kc=0 ablations or the resolution check; one new seed. The bodies are static micelles."}],
+  "compute": {"cpu_minutes": 18}
+}

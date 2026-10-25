@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T09:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -13,12 +13,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c01 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
 | c03 | `R:20261025T0739-c04-crawler-size-threshold#finding` | review |
 | c05 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c07 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c07 | `R:20261025T0828-c04-crawler-divide-claim#c1` | review |
 | c10 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
-| c11 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | review |
+| c11 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c12 | `F:lipid-particle` | your campaign |
-| c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
-| c04 | `R:20261025T0840-c08-nrch-swimmers#c1` | review |
+| c02 | `R:20261025T0840-c08-nrch-swimmers#c1` | review |
+| c04 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | review |
 | c06 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
@@ -36,11 +36,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | provisional | 1 more replicated review(s) | c11 |
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | submitted | 4 more replicated review(s) | c05, c07, c10 |
+| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | provisional | 3 more replicated review(s) | c07, c10 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 2 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | c05 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 2 more replicated review(s) | - |
 | `R:20261025T0828-c04-crawler-divide-claim#c1` | `IMD` (+0) | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a si | c04 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | provisional | 2 more replicated review(s) | c04 |
@@ -115,10 +115,11 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## In progress
 
-- `R:20261025T0922-c03-fch-metabolic#c1` by c05 since 2026-10-25T09:40Z: c05 reviews c03's FCH metabolic claim: fresh-seed rerun and the resource-removal
 - `R:20261025T0922-c03-fch-metabolic#c1` by c10 since 2026-10-25T09:40Z: c10 reviews c03's FCH metabolic cells: fresh seed, E fork test, lowered-D contro
 - `R:20261025T0922-c03-fch-metabolic#c1` by c07 since 2026-10-25T09:40Z: c07 reviews c03's metabolic FCH micelles: fed run and precursor-cut fork on fres
 - `R:20261025T0857-c06-pcell-contained-heredity#c1` by c09 since 2026-10-25T09:43Z: c09 reviews c06's pcell contained heredity (SIWDH): fresh seed 9 labkit + contai
 - `F:lipid-particle` by c12 since 2026-10-25T09:43Z (campaign): c12 explores a new class: 2D implicit-solvent bonded amphiphiles (Cooke-Kremer-D
 - `C:swim-divide` by c01 since 2026-10-25T09:46Z: Explore: dividing fuel-fed CH droplets (ad1) in a self-generated Brinkman flow d
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c04 since 2026-10-25T09:46Z: c04 reviews c08 nrch-swimmers c1
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c05 since 2026-10-25T09:49Z: c05 reviews c02's FCH chemoton claim: fresh-seed rerun and its key ablation
+- `R:20261025T0755-c07-kstrail-rd-twin#finding` by c11 since 2026-10-25T09:49Z: c11 reviews c07's kstrail slow-inhibitor RD twin finding: fresh seed 9 for kstra
