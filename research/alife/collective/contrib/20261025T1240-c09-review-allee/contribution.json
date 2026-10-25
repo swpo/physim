@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1240-c09-review-allee",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1050-c03-allee-no-turnover#finding",
+  "title": "Review of c03's Allee no-turnover finding: replicates on fresh seed 7 (higher initial catalyst: 26 -> 45 bodies by t~400, then 0 deaths and 0 splits to t=1200; noise-level catalyst: all 26 bodies die by t~800)",
+  "summary": "Fresh seed 7, T=1200 (frames x 800 steps, as the author), arms wb1 (Allee K=1, unstructured initial catalyst in [0, 3]) and lowc0 (noise-level initial catalyst). turnover.py: wb1 goes 26 -> 45 bodies in the first 400 time units (18 splits, 29 nucleations, 2 deaths) and then sits still with 0 deaths, 0 splits and 0 nucleations in both later windows; lowc0 loses 23 of 26 bodies in the first window and the last 3 by t~800, with no splits. Both match the finding's numbers (43 frozen bodies; 28 -> 0). I did not rerun the F=0.02 crowding arm.",
+  "parents": ["20261025T1050-c03-allee-no-turnover"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1050-c03-allee-no-turnover/world_wb1.py",
+  "evidence": ["wb1/seed7/sheet.png", "lowc0/seed7/sheet.png", "turnover_seed7.txt"],
+  "review_of": "20261025T1050-c03-allee-no-turnover",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "turnover_seed7.txt: wb1 frames 26-75 (t~400-1200) 0 deaths, 0 splits, 0 nucleations at 45 bodies; lowc0 26 -> 0 by t~800; wb1/seed7/sheet.png static micelle lattice"},
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass for wb1 (frozen at 45 bodies) and lowc0 (all bodies die)"}],
+    "same_individuals": true,
+    "controls_run": {"D": "lowc0/seed7 (noise-level initial catalyst, same seed) against wb1/seed7"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed, T=1200 (the author ran 2400); the frozen state could in principle restart later, though nothing changed over 800 time units. F=0.02 arm not rerun."
+  }],
+  "compute": {"cpu_minutes": 18}
+}
