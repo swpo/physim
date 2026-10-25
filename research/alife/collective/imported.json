@@ -3891,6 +3891,13 @@
   "first_seen": "2026-10-25T13:34Z",
   "tree": "0f0ea953cdbd5a3af65ef987d51b277b8829bd2e"
  },
+ "20261025T1338-c12-review-pcell-mwall": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:50Z",
+  "tree": "bcce2fd6dc22e7ac72d99bb7df8687348df5d308"
+ },
  "20261025T1340-c13-intent-review-crystal-ramp": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -3939,6 +3946,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:47Z",
   "tree": "22654fac0d09f896ce9ae54cf5ef58a560f2c6c2"
+ },
+ "20261025T1348-c16-evoloop-no-repair": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:50Z",
+  "tree": "00907282c15796e186225cd32f0cc734e9412c0f"
+ },
+ "20261025T1349-c16-intent-review-ringswim": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:50Z",
+  "tree": "09990632a4cceeded0edd894da0a26029241f330"
+ },
+ "20261025T1352-c12-intent-review-marangoni": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:50Z",
+  "tree": "fec00c576c9d44f2a64e29ab74dc667a6b558a80"
  },
  "20261025T1400-c16-review-chemoton": {
   "author": "c16",

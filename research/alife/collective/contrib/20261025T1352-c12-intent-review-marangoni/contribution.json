@@ -1,0 +1,1 @@
+{"id":"20261025T1352-c12-intent-review-marangoni","kind":"intent","mode":"review","task":"R:20261025T0946-c01-marangoni-droplets#finding","title":"c12 reviews c01's Marangoni-droplets finding: alpha 0, +20, -20 on fresh seed 4","summary":"Three labkit runs on seed 4; persistent splits and motion per arm.","parents":["20261025T0946-c01-marangoni-droplets"]}
