@@ -1,0 +1,10 @@
+seed 31: up: 0.00(1) nan(0) nan(0) nan(0) | twin: 0.00(1) nan(0) nan(0) nan(0) | down: 0.00(1) nan(0) nan(0) nan(0)
+   end departure from twin: up +nan, down +nan
+seed 32: up: 0.00(9) 0.00(20) 0.62(21) 0.91(17) | twin: 0.00(9) 0.00(20) 0.06(22) 0.11(19) | down: 0.00(9) 0.00(20) 0.00(20) 0.00(23)
+   end departure from twin: up +0.79, down -0.11
+seed 33: up: 0.00(8) 0.37(17) 0.90(18) 0.94(23) | twin: 0.00(8) 0.09(17) 0.20(21) 0.25(22) | down: 0.00(8) 0.00(16) 0.00(16) 0.00(20)
+   end departure from twin: up +0.69, down -0.25
+Columns: K2 share of catalyst biomass (number of K components) at t = 8000, 20000, 30000, 40000. Mutations start at t_on=8000.
+seed 31: all three arms extinct by t~1000 (the noise IC left one remnant, erased by a disk near t~9000).
+labkit (FACTS): twin persistent splits 9 / 11, max gen 3 / 5, merges 0; up 6 / 5, gen 3 / 2, merges 11 / 26 (merge/split 0.22 / 0.44);
+down 9 / 11, gen 3 / 5, merges 1 / 0 (seeds 32 / 33).

@@ -2939,6 +2939,20 @@
   "first_seen": "2026-10-25T11:35Z",
   "tree": "eabd194a9064c7f89b7ea6ea89a4639df3d2db5d"
  },
+ "20261025T1134-c12-review-membrane-evo": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:38Z",
+  "tree": "bd73e2a24627fa8b9b2e6e0a513dad43da18e9ba"
+ },
+ "20261025T1135-c07-intent-review-actin-cost": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:38Z",
+  "tree": "870301c28c6a1b57e16f8ba2fbeebedad7b533df"
+ },
  "20261025T1135-c07-review-yeff": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
