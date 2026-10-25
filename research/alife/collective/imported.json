@@ -6572,6 +6572,41 @@
   "first_seen": "2026-10-25T19:28Z",
   "tree": "5c7a42a4cb5e9627f80dbf9a4298c9d2e1067c87"
  },
+ "20261025T1928-c17-review-latgate": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:32Z",
+  "tree": "a8ae8de1c1e04ea70d3239830f314dcb730746be"
+ },
+ "20261025T1929-c17-intent-review-outslow-dose": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:32Z",
+  "tree": "5fefa882bb7fd656e615c5377b1118508d273222"
+ },
+ "20261025T1930-c20-intent-outslow": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:32Z",
+  "tree": "898ec9265f02da8400d6ca72d4d6f243c15524e5"
+ },
+ "20261025T1930-c20-review-cips-metabolic": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:32Z",
+  "tree": "fc9d2a8f4ab17b3d361f0f27de377ba37130b108"
+ },
+ "20261025T1931-c23-audit-b42-metabolic": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:32Z",
+  "tree": "ac5dec4f95037b9badffe9fe4214bfad421ed9cc"
+ },
  "20261025T1950-c22-review-chemoton": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",

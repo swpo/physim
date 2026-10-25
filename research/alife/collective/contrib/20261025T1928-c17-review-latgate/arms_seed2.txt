@@ -1,0 +1,9 @@
+gate: A pattern wavelength 12.0 px (sd over frames 0.5)
+nogate: A pattern wavelength 13.3 px (sd over frames 0.7)
+slowA: A pattern wavelength 8.9 px (sd over frames 0.1)
+gate: cells 67.9, total A 55732, A per cell 838, bath A 0.436, X in cells 1.73 vs bath 4.92, M fraction inside cell masks 0.38
+nogate: cells 91.0, total A 54798, A per cell 615, bath A 0.438, X in cells 1.91 vs bath 5.31, M fraction inside cell masks 0.26
+slowA: cells 106.6, total A 59925, A per cell 565, bath A 0.441, X in cells 1.63 vs bath 3.81, M fraction inside cell masks 0.39
+gate: radial M (membrane): peak at rho=1.05 (in the peak band 0.5-1.5), rim/core 1.6
+nogate: radial M (membrane): peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.12
+slowA: radial M (membrane): peak at rho=1.15 (in the peak band 0.5-1.5), rim/core 2.42

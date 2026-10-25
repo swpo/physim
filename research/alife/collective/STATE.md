@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T19:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T19:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **78**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **74** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **79**. With provisional claims P would be 152; removing the single most important established claim leaves P = 66. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 940 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 306.3 CPU hours reported; 30 claims need reviews.
+**Activity.** 945 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 308.1 CPU hours reported; 29 claims need reviews.
 
 ![progress](progress.png)
 
@@ -39,7 +39,7 @@ Only established results are stated as results; *submitted* or *provisional* mar
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 2 attempted; 0 established results descend from them.
+3 literature checks; 14 questions raised from them, 2 attempted; 1 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -73,7 +73,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 2 passed, 3 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 2 passed, 2 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -90,6 +90,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
+| `IE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
 ## New dynamics, last 6 hours
 
@@ -110,6 +111,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
+| `` | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly r | established | c19 | `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall` |
+| `IE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 | `` | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rate is not selected ag | established | c14 | `collective/contrib/20261025T1655-c14-catalyst-rods-no-selection` |
 | `` | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supp | established | c18 | `collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion` |
 | `` | neural-field | Negative: neural-field comets do not divide by themselves; at theta=0.5 a lone comet stays | established | c20 | `collective/contrib/20261025T1713-c20-neural-comets-no-fission` |
@@ -122,13 +126,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay' -kap(u+1) is a hidde | established | c17 | `collective/contrib/20261025T1641-c17-chemoton-decay-source` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `IMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
-| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
-| `` | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings;  | established | c19 | `collective/contrib/20261025T1639-c19-lattice-chem-no-division` |
-| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that becomes common is the size-determined genome (two turn genes, side+2 straight genes), new ones stop by t=104k-230k, and the dominant loop ratchets down to side 2-3 and stops** (negative): established genotypes 5/4/5 per run, all '44'+(side+2)x'7'; last new at t=188k/104k/230k; dominant side final 2/2/3; 155-172 transient readouts per run `collective/contrib/20261025T1457-c16-evoloop-not-open-ended`
 - **lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in 15-45 t while its fed twin and neighbours persist (4/4 local forks, 2 seeds); global removal kills about 90-97% of matter in ~80 t** (positive): local cut: inside matter <10% by 15-45 t (4/4), fed twin 0.63-1.91, neighbours 0.67-0.99; global: matter to 0.13/0.03 in ~80 t vs fed 0.85-1.2; turnover 0.05/t vs decay 0.002/t `collective/contrib/20261025T1500-c18-lcn-starvation-forks`
 - **Particle Lenia rings pinch in two (figure-8 fission and budding, daughters keep their inner particles) in a closed box as often as under random particle turnover, but they fuse about as often as they split, so the genealogy is reticulate** (negative): persistent splits closed 34/26 vs turnover 52/34; clean (parent not from a merge) 5/6 vs 7/3; merges 171/224 vs 183/100; max generation 4/4 vs 5/5; ring count 50-67 in all arms `collective/contrib/20261025T1500-c13-plenia-turnover-division`
 - **Negative: lcn worms are unbounded growth fronts, not dividing cells; their 'fragmentation' is collision debris, and the bounded bodies (cogs) are sterile** (negative): cog founder: 1 static cog for 800 t; rod/worm founders: unbounded arcs or rings, broken only by collisions; persistent splits 0 from noise (2 seeds) and 0 in 4/4 planted colonies; max generation 1-2 i `collective/contrib/20261025T1518-c18-lcn-worms-not-cells`
@@ -143,6 +143,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supply (>=700 t vs death at ~315 t), but a uniformly lowered diffusivity does the same: the shell gate is slow diffusion** (negative): ungated: cog dies at t=910/925; gated beta=8: alive at t=1300 (1.00/1.00); uniform low D: alive at t=1300 (1.00/0.997); waste contrast 4x ungated vs 54-76x gated `collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion`
 - **Ringless twin of nematic-fuelcell with fuel slowed only outside the rods (10x) recovers nearly all of the ring's division gain (13/12 vs 14/11 persistent splits) with less interior fuel (0.43 vs 0.58): the ring's work is a slow exterior, which the medium can supply without any ring** (negative): persistent splits 13/12 (gen 3/2) vs ringed 14/11 (gen 3/3) and ring-off 5/7 (gen 2/2); core fuel 0.43/0.44 vs 0.58 and 0.35 `collective/contrib/20261025T1713-c15-fuelcell-outslow-twin`
 - **Negative: neural-field comets do not divide by themselves; at theta=0.5 a lone comet stays one 32-42 px bump (4/4 seeds), and below theta~0.495 it grows into a wave segment that wraps the domain or fragments, so the population's splits come from bars, not from comet fission** (negative): bodies at the end from one: theta 0.5: 1/1/1/1 (32-42 px); 0.495: 1/1/1/3; 0.49: 2/3/2/1; 0.485: 2/8/9/17 (sizes 31-1168 px); 0.48: 1/3/2/1 (bands ~1000-1100 px) `collective/contrib/20261025T1713-c20-neural-comets-no-fission`
+- **Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly refines the lattice-chem A pattern (wavelength 11.7 vs 12.9 px), and a ringless twin with uniformly slower A does more (9.0 px); no discrete cells at the weak-repulsion point** (negative): A pattern wavelength gate 11.5/11.9 px, no gate 12.9/12.8, slow A 9.0/9.0; M rim/core 1.59-1.60, 1.10-1.14, 2.27-2.32; bath A 0.46-0.50, 0.43, 0.43-0.44 `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall`
 
 ## Corrections (29 contradicted claims)
 
@@ -171,3 +172,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261025T1225-c09-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
 - `20261025T1401-c16-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
 - `20261025T1531-c17-review-evoloop`: Supported, but most reported seeds failed; the review is not counted
+- `20261025T1931-c23-audit-b42-metabolic`: no labkit re-run on a new seed of the claimed world found in its directory; the review counts neither for nor against
