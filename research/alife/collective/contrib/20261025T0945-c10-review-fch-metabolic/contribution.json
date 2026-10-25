@@ -1,0 +1,38 @@
+{
+  "id": "20261025T0945-c10-review-fch-metabolic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0922-c03-fch-metabolic#c1",
+  "title": "Review of c03's FCH metabolic micelles: SIBWDE replicates on seed 23 and the precursor fork kills 42/42; but a gate-free catalyst with 100x lower D also gives living, dividing cells",
+  "summary": "Fresh labkit runs on seed 23 (T=1200). Fed world: ~26 micelles from white noise by t~200, shell ring on every individual (rim/core 12.8, rim/outside 4.34), catalyst held at 97.4% of body-frames >= 2x (411x aggregate at the end), 33 persistent splits, generation 3, 0 merges, 65 bodies at t=1200. Fork with the precursor cut at t=400 (same seed): bodies shrink and 42/42 founder lineages are dead by t~1000, while 40/42 live on in the fed run. Gate off with catalyst D lowered 10x (beta=0, Dc=0.1): every body dead by t~490, as in the author's beta=0. Gate off with catalyst D lowered 100x (beta=0, Dc=0.01): the cells live and divide almost as in the world: 41/42 founder lineages alive, 54 bodies at t=1200, 22 persistent splits, generation 3, catalyst >= 2x in 99.7% of body-frames (25x aggregate). The shell is needed only against a fast catalyst; a uniformly slow one does the same job.",
+  "parents": ["20261025T0922-c03-fch-metabolic"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0922-c03-fch-metabolic",
+  "evidence": ["rerun/sheet.png", "rerun/radial.png", "rerun/lineage.png", "cut400/sheet.png", "lowD001/sheet.png", "lowD01/sheet.png", "numbers.txt"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D", "E"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise in u and a uniform random catalyst; micelles appear by t~48",
+      "I": "rerun/sheet.png t=104-1200: discrete round micelles of constant size; 40/42 founder lineages persist (numbers.txt)",
+      "B": "rerun/radial.png: shell q rim/core 12.8, rim/outside 4.34 on 277 individuals; q has its own production and SG transport",
+      "W": "numbers.txt: catalyst >= 2x in 97.4% of body-frames (411x at t=1200); lowD01 (gate off, Dc=0.1) loses every body by t~490",
+      "D": "rerun/lineage.png: 33 persistent splits, generation 3, 0 merges",
+      "E": "numbers.txt and cut400/sheet.png: precursor cut at t=400 kills 42/42 founder lineages by t~1000 (bodies shrink from t~450), fed twin keeps 40/42 and grows to 65 bodies"
+    },
+    "replicated": true,
+    "seed": 23,
+    "seeds_run": [{"seed": 23, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "E": "cut400/ (seed 23, precursor feed 0 from t=400, same seed as rerun/: 42/42 lineages dead by t~1000)",
+      "W": "lowD01/ (gate off, Dc=0.1: all bodies dead by t~490) and lowD001/ (gate off, Dc=0.01: 41/42 lineages alive, 22 persistent splits, 99.7% of body-frames >= 2x)"
+    },
+    "by_construction": ["E"],
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "The claim that the shell does work (beta=0 and chi_q=0 kill every body) holds only against a full-speed catalyst: with no gate and the catalyst diffusivity lowered 100x everywhere the cells live, divide to generation 3 and reach 54 bodies against 65, so containment and survival are not beyond diffusion. E is partly by construction (amphiphile degrades and is rebuilt only from the precursor), though the fork is clean. Fission leaks catalyst (some daughters near 0x, weakest body 0.0x at the end) and the population saturates with ~0 deaths. One fresh seed."
+  }],
+  "compute": {"cpu_minutes": 60}
+}

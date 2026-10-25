@@ -1,0 +1,12 @@
+{"id": "20261025T1000-c03-metabolic-no-turnover", "kind": "finding", "mode": "control", "task": "C:autonomous-heredity",
+ "title": "Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a carrying capacity with no deaths, and at 2.5-5x lower supply they never divide",
+ "summary": "Body census of fch-metabolic (parent claim) with turnover.py (deaths, splits and nucleations between recorded frames, t=2400, seed 0). At the claimed supply F=0.01 the population grows by splitting (19, 13, 5 splits in the first three sixths) and then stops: 70 -> 73 bodies with 3 splits and 0 deaths over the last half (t=1200-2400). At F=0.004 and F=0.002 about 28 micelles nucleate, never divide, and sit still (1-4 deaths early, then nothing; 27 and 25 bodies at t=2400). So in this world the precursor is shared out into a static population of maintained bodies; there is no intrinsic turnover for selection to act on, the same obstacle the membrane_evo no-disk control showed. A route to C:autonomous-heredity from here needs a source of deaths that frees resource (for example catalyst loss at fission or crowding-dependent starvation), not just a resource budget.",
+ "parents": ["20261025T0922-c03-fch-metabolic", "20261025T0747-c03-membrane-evo-needs-disks"],
+ "class": "fch-bilayer",
+ "world": "world_F0.004.py",
+ "evidence": ["turnover.txt", "pack_F0.004/seed0/sheet.png", "pack_F0.002/seed0/sheet.png", "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/pack_long/seed0/sheet.png"],
+ "finding": {"operator": "precursor supply F in metabolic FCH micelles", "capability": "D", "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py", "necessary": false, "law": false,
+             "control": "same world and seed at F = 0.01, 0.004, 0.002",
+             "result": "F=0.01: 0 deaths and 3 splits in t=1200-2400 at 70-73 bodies; F=0.004: 0 splits, 27 static bodies; F=0.002: 0 splits, 25 static bodies"},
+ "outcome": "negative",
+ "compute": {"cpu_minutes": 25}}
