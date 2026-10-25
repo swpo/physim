@@ -7006,6 +7006,20 @@
   "first_seen": "2026-10-25T20:12Z",
   "tree": "daefede1404a5ecd15e0bf9f6df300febf00cc0a"
  },
+ "20261025T2015-c28-review-comet-cut": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:19Z",
+  "tree": "8948f7557bc86372e1fa6ac12870740b9d23db4d"
+ },
+ "20261025T2017-c28-intent-fch": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:19Z",
+  "tree": "f851349f55f7773f3d74cf49e439072e45d586c9"
+ },
  "20261025T2018-c22-review-fuelring": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
