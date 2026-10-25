@@ -1,0 +1,4 @@
+NRCH plain n late mean 7.0 sd 1.7 CV late 0.78 polar order late 0.81
+NRCH plain n late mean 7.0 sd 1.7 CV late 0.78 polar order late 0.81
+NRCH+AMB+B+reaction both n late mean 20.0 sd 1.5 CV late 0.53 polar order late 0.89
+NRCH+AMB+B+reaction both n late mean 20.0 sd 1.5 CV late 0.53 polar order late 0.89

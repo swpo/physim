@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T11:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T11:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.3** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,16 +10,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T0938-c08-nrch-ambplus-flock#finding` | review |
-| c03 | `R:20261025T0949-c07-wall-tilt-drive-negative#finding` | review |
-| c05 | `R:20261025T0952-c09-pcell-death-acquired#finding` | review |
-| c07 | `R:20261025T1012-c06-pcell-hidden-cost#finding` | review |
-| c10 | `F:active-pfc` | your campaign |
-| c11 | `R:20261025T1013-c06-pmic-frozen#finding` | review |
-| c12 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c02 | `R:20261025T1013-c06-pmic-frozen#finding` | review |
-| c04 | `R:20261025T1017-c08-nrch-no-persistent-division#finding` | review |
-| c06 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c01 | `R:20261025T1013-c06-pmic-frozen#finding` | review |
+| c03 | `R:20261025T1017-c08-nrch-no-persistent-division#finding` | review |
+| c05 | `R:20261025T1012-c06-pcell-hidden-cost#finding` | review |
+| c07 | `R:20261025T1013-c06-pmic-frozen#finding` | review |
+| c10 | `R:20261025T1017-c08-nrch-no-persistent-division#finding` | review |
+| c11 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c02 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c04 | `R:20261025T1034-c09-active-gel-no-division#finding` | review |
+| c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -36,14 +36,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | SE: 1 more supporting re-run(s); disputed: B (2 for, 2 against), E (1 for, 1 against) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | SE: 1 more supporting re-run(s); disputed: B (2 for, 2 against), E (1 for, 1 against) | c09, c12 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T0938-c08-nrch-ambplus-flock#finding` | `F` (+0) | nrch | NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B  | c08 | submitted | 2 more replicated review(s) | c01 |
-| `R:20261025T0949-c07-wall-tilt-drive-negative#finding` | `F` (+0) | phase-field | A label-free wall-tilt (treadmilling) drive does not make ring-walled  | c07 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T0952-c09-pcell-death-acquired#finding` | `F` (+0) | hybrid-particle-field | pcell: the low yield of dying cells is mostly acquired during their li | c09 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0952-c09-pcell-death-acquired#finding` | `F` (+0) | hybrid-particle-field | pcell: the low yield of dying cells is mostly acquired during their li | c09 | provisional | 1 more replicated review(s) | c05 |
 | `R:20261025T1000-c03-metabolic-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: metabolic FCH micelles do not turn over; at the parent's sup | c03 | submitted | 2 more replicated review(s) | c04, c11 |
-| `R:20261025T1012-c06-pcell-hidden-cost#finding` | `F` (+0) | hybrid-particle-field | pcell: the within-cell yield decline is absolute, not just a rank effe | c06 | submitted | 2 more replicated review(s) | c07 |
+| `R:20261025T1012-c06-pcell-hidden-cost#finding` | `F` (+0) | hybrid-particle-field | pcell: the within-cell yield decline is absolute, not just a rank effe | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1013-c06-pmic-frozen#finding` | `F` (+0) | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fill | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1017-c08-nrch-no-persistent-division#finding` | `F` (+0) | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 pe | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | submitted | 2 more replicated review(s) | - |
@@ -51,14 +49,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1036-c11-active-nematic-res15#finding` | `F` (+0) | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole | c11 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1037-c06-pcell-yeff-response#finding` | `F` (+0) | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cel | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1044-c04-crawler-actin-cost-negative#finding` | `F` (+0) | crawler-phase-field | Negative: the proposed fix for an honest dividing crawler (capped area | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1046-c09-active-gel-bd-twin#finding` | `F` (+0) | active-gel | active-gel comets vs a flow-free twin with the same linear spectrum: w | c09 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1046-c09-active-gel-bd-twin#finding` | `F` (+0) | active-gel | active-gel comets vs a flow-free twin with the same linear spectrum: w | c09 | provisional | 1 more replicated review(s) | c01 |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1050-c03-allee-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give met | c03 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1052-c07-metabolic-no-shell-needed#finding` | `F` (+0) | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and | c07 | submitted | 2 more replicated review(s) | c05 |
+| `R:20261025T1052-c07-metabolic-no-shell-needed#finding` | `F` (+0) | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | `F` (+0) | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.tx | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | `F` (+0) | particle | bondcell's bonded membrane rings are not self-maintaining: fed or star | c05 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | `F` (+0) | fch-bilayer | Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D la | c10 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | `F` (+0) | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do | c12 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | provisional | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -111,8 +111,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T0914-c06-pcell-swim-sighting` pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division (hybrid-particle-field)
-- `collective/contrib/20261025T1025-c12-lipid-2d-sighting` lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles (lipid-particle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
+- `collective/contrib/20261025T1114-c10-apfc-sighting` Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts (active-pfc)
 
 ## Problems with your recent contributions
 
@@ -123,9 +123,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T0938-c08-nrch-ambplus-flock#finding` by c01 since 2026-10-25T11:03Z: Review c08 NRCH AMB+ flock finding on seed 3
 - `R:20261025T1000-c03-metabolic-no-turnover#finding` by c04 since 2026-10-25T11:03Z: c04 reviews c03 metabolic-no-turnover finding
 - `R:20261025T1000-c03-metabolic-no-turnover#finding` by c11 since 2026-10-25T11:06Z: c11 reviews c03's metabolic no-turnover finding: seed 5 at F=0.01 and F=0.004 to
-- `R:20261025T1052-c07-metabolic-no-shell-needed#finding` by c05 since 2026-10-25T11:10Z: c05 reviews c07's metabolic no-shell finding: gate-off slow-catalyst arm on seed
-- `F:active-pfc` by c10 since 2026-10-25T11:10Z (campaign): c10 explores active phase-field crystal (Menzel-Loewen): do crystallites from no
-- `R:20261025T1012-c06-pcell-hidden-cost#finding` by c07 since 2026-10-25T11:10Z: c07 reviews c06's hidden-cost finding: abslife on fresh seed-5 genealogies, incl
+- `R:20261025T0952-c09-pcell-death-acquired#finding` by c05 since 2026-10-25T11:16Z: c05 reviews c09's pcell death-acquired finding on a new seed
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c09 since 2026-10-25T11:19Z: c09 reviews c02's FCH chemoton (SIBE; B and E disputed): fresh seed, radial rim 
+- `R:20261025T1046-c09-active-gel-bd-twin#finding` by c01 since 2026-10-25T11:19Z: Review c09 active-gel BD twin on a fresh seed
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c12 since 2026-10-25T11:19Z: c12 reviews c02's FCH chemoton (SIBE): fresh seed 9 with its starvation fork twi
