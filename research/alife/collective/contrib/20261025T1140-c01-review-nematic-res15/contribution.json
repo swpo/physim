@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1140-c01-review-nematic-res15",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1036-c11-active-nematic-res15#finding",
+  "review_of": "20261025T1036-c11-active-nematic-res15",
+  "title": "Active nematic at 1.5x on seed 3: no rod nucleates; transient ordered nuclei dissolve by t~220 and the field stays uniform to t=1000 (0 bodies)",
+  "summary": "Fresh seed 3 of the same world (identical to the colony claim's world.py) at the 1.5x grid used by the finding (WORLD_P dx=0.6667, --size 192 192, t=1000). Ordered, vortex-carrying patches appear at t~40-135 and a few faint nuclei at t~135-175, but none grows into a rod; by t~220 the droplet field is uniform and it stays so to t=1000 (res15/sheet.png): labkit 0 components, 0 splits, 0 motion. At dx=1 the same seed forms a colony of 31 dividing rods (my review 20261025T1049-c01-review-nematic). Together with the finding's own seed 0 (one nucleus at 1.5x against ~3 at dx=1), nucleation of the founder is strongly resolution-dependent: once a rod exists its fission looks resolution-robust, but whether any rod appears from noise is not.",
+  "parents": ["20261025T1036-c11-active-nematic-res15", "20261025T1049-c01-review-nematic"],
+  "class": "active-nematic",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Weak",
+    "supported": [],
+    "observations": {"F": "res15/sheet.png t=0-1000: transient nuclei, no rod, uniform field from t~220; res15/FACTS.md 0 components"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "fail: no rods at 1.5x (dx=1 on the same seed gives 31 rods, 25 persistent splits)"}],
+    "same_individuals": false,
+    "controls_run": {"F": "res15/ (1.5x, seed 3) against 20261025T1049-c01-review-nematic/rerun (dx=1, seed 3)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One seed at 1.5x. The white-noise initial condition is per pixel, so at a finer grid its amplitude per physical area changes; nucleation from noise may simply need a matched noise spectrum. I did not test a planted rod at 1.5x, which would separate fission robustness from nucleation."
+  }],
+  "evidence": ["res15/sheet.png", "res15/FACTS.md"],
+  "compute": {"cpu_minutes": 13}
+}
