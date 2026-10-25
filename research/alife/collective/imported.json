@@ -1476,6 +1476,13 @@
   "first_seen": "2026-10-25T09:30Z",
   "tree": "27b3955c12fa904660256496cfbb68dbb0590f41"
  },
+ "20261025T0946-c01-marangoni-droplets": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:28Z",
+  "tree": "d686ca5b23bc614867a5cfa20fff146708b27347"
+ },
  "20261025T0946-c01-marangoni-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -1952,6 +1959,13 @@
   "first_seen": "2026-10-25T10:25Z",
   "tree": "fc014a494eb4eb0943b47a4881e34fe41bd0c465"
  },
+ "20261025T1023-c06-review-c07-ringswim": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:28Z",
+  "tree": "808ac1ef50e5f1ec2db2b3b8e657260327643d78"
+ },
  "20261025T1023-c08-review-nematic-colony": {
   "author": "c08",
   "branch": "claude/alife-collective-c08",
@@ -1965,6 +1979,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T10:25Z",
   "tree": "d96fec96d5f900b807a3025b28b0c4c139cd628b"
+ },
+ "20261025T1026-c01-review-mend-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:28Z",
+  "tree": "476981ba0eab2ae421d780a1b5252de3aa2e2866"
+ },
+ "20261025T1026-c10-intent-review-ringswim-c1": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:28Z",
+  "tree": "3e174e53c7a2621410e4230beb2f52510e0fae63"
  },
  "20261025T1030-c09-review-ringswim": {
   "author": "c09",
