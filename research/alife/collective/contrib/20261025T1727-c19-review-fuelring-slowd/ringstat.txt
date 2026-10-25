@@ -1,0 +1,5 @@
+world/seed13/frames.npz: bodies 77, membrane-like 77 (100%), median rim/core 3.14, median rim/outside 4.00, mean core fuel 0.640
+slowD03/seed13/frames.npz: bodies 62, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.36, mean core fuel 0.682
+slowD03/seed0/frames.npz: bodies 37, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.36, mean core fuel 0.647
+slowD03/seed1/frames.npz: bodies 24, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.35, mean core fuel 0.723
+slowD03/seed2/frames.npz: bodies 36, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.36, mean core fuel 0.692

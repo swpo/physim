@@ -1,0 +1,8 @@
+lam25: cells 80.5, total A 57713, A per cell 720, bath A 0.024, X in cells 1.17 vs bath 4.15, M fraction inside cell masks 0.57
+lam0: cells 67.5, total A 59128, A per cell 893, bath A 0.023, X in cells 1.15 vs bath 4.00, M fraction inside cell masks 0.65
+- components: final 50, mean 68.1, max 150; occupancy final 0.17
+  - radial M (membrane): peak at rho=0.95 (in the peak band 0.5-1.5), rim/core 1.04, rim/outside 2.89 (aggregate of 376 individuals; 162/376 membrane-like individually; rim level 0.334)
+- components: final 62, mean 73.7, max 143; occupancy final 0.15
+  - radial M (membrane): peak at rho=1.25 (in the peak band 0.5-1.5), rim/core 3.47, rim/outside 4.43 (aggregate of 415 individuals; 387/415 membrane-like individually; rim level 0.349)  MEMBRANE-LIKE
+
+[exited with code 0]

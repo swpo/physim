@@ -1,0 +1,12 @@
+[nematic-fuelcell] seed 24: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  67.3s
+  frame 40/200  138.1s
+  frame 60/200  207.2s
+  frame 80/200  272.1s
+  frame 100/200  336.1s
+  frame 120/200  401.2s
+  frame 140/200  468.2s
+  frame 160/200  534.5s
+  frame 180/200  600.3s
+  frame 200/200  666.7s
+  -> collective/contrib/20261025T1834-c24-review-fuelring/world/seed24/FACTS.md  (667s sim)

@@ -1,0 +1,44 @@
+== fed_clip/seed0
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1005, bath min -0.200, total u+1   3706.0, K 18416
+t=    71: bodies   4, body amphiphile   6584.0, bath mean u+1 -0.0074, bath min -0.020, total u+1   6376.0, K 2526
+t=   146: bodies   4, body amphiphile   4508.0, bath mean u+1 -0.0129, bath min -0.021, total u+1   4112.0, K 3052
+t=   222: bodies   4, body amphiphile   3890.0, bath mean u+1 -0.0135, bath min -0.021, total u+1   3462.0, K 3776
+t=   297: bodies   4, body amphiphile   3778.0, bath mean u+1 -0.0136, bath min -0.020, total u+1   3348.0, K 4078
+t=   373: bodies   4, body amphiphile   3794.0, bath mean u+1 -0.0135, bath min -0.020, total u+1   3364.0, K 4088
+t=   449: bodies   4, body amphiphile   3798.0, bath mean u+1 -0.0134, bath min -0.020, total u+1   3372.0, K 4076
+t=   524: bodies   4, body amphiphile   3778.0, bath mean u+1 -0.0134, bath min -0.020, total u+1   3352.0, K 4054
+t=   600: bodies   4, body amphiphile   3756.0, bath mean u+1 -0.0136, bath min -0.020, total u+1   3324.0, K 4052
+== fed_clip/seed2
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1004, bath min -0.200, total u+1   3700.0, K 18384
+t=    71: bodies   5, body amphiphile   6556.0, bath mean u+1 -0.0088, bath min -0.021, total u+1   6312.0, K 2512
+t=   146: bodies   3, body amphiphile   4412.0, bath mean u+1 -0.0134, bath min -0.020, total u+1   3998.0, K 3948
+t=   222: bodies   4, body amphiphile   4104.0, bath mean u+1 -0.0136, bath min -0.020, total u+1   3678.0, K 3898
+t=   297: bodies   6, body amphiphile   3906.0, bath mean u+1 -0.0141, bath min -0.020, total u+1   3460.0, K 3904
+t=   373: bodies   6, body amphiphile   3840.0, bath mean u+1 -0.0143, bath min -0.020, total u+1   3384.0, K 3850
+t=   449: bodies   6, body amphiphile   3776.0, bath mean u+1 -0.0145, bath min -0.021, total u+1   3314.0, K 3806
+t=   524: bodies   6, body amphiphile   3716.0, bath mean u+1 -0.0145, bath min -0.021, total u+1   3254.0, K 3768
+t=   600: bodies   7, body amphiphile   3690.0, bath mean u+1 -0.0152, bath min -0.021, total u+1   3206.0, K 3740
+== starve_clip/seed0
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1005, bath min -0.200, total u+1   3706.0, K 18416
+t=    71: bodies   4, body amphiphile   6584.0, bath mean u+1 -0.0074, bath min -0.020, total u+1   6376.0, K 2526
+t=   146: bodies   4, body amphiphile   4508.0, bath mean u+1 -0.0129, bath min -0.021, total u+1   4112.0, K 3052
+t=   222: bodies   4, body amphiphile   3890.0, bath mean u+1 -0.0135, bath min -0.021, total u+1   3462.0, K 3776
+t=   297: bodies   4, body amphiphile   3778.0, bath mean u+1 -0.0136, bath min -0.020, total u+1   3348.0, K 4078
+t=   373: bodies   4, body amphiphile   2496.0, bath mean u+1 -0.0174, bath min -0.022, total u+1   1915.0, K 333
+t=   449: bodies   4, body amphiphile   1328.0, bath mean u+1 -0.0203, bath min -0.023, total u+1    618.0, K 296
+t=   524: bodies   3, body amphiphile    670.0, bath mean u+1 -0.0203, bath min -0.023, total u+1    -59.7, K 265
+t=   600: bodies   4, body amphiphile    387.2, bath mean u+1 -0.0214, bath min -0.023, total u+1   -387.5, K 187
+== starve_clip/seed2
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1004, bath min -0.200, total u+1   3700.0, K 18384
+t=    71: bodies   5, body amphiphile   6556.0, bath mean u+1 -0.0088, bath min -0.021, total u+1   6312.0, K 2512
+t=   146: bodies   3, body amphiphile   4412.0, bath mean u+1 -0.0134, bath min -0.020, total u+1   3998.0, K 3948
+t=   222: bodies   4, body amphiphile   4104.0, bath mean u+1 -0.0136, bath min -0.020, total u+1   3678.0, K 3898
+t=   297: bodies   6, body amphiphile   3906.0, bath mean u+1 -0.0141, bath min -0.020, total u+1   3460.0, K 3904
+t=   373: bodies   6, body amphiphile   2568.0, bath mean u+1 -0.0183, bath min -0.022, total u+1   1958.0, K 327
+t=   449: bodies   3, body amphiphile   1324.0, bath mean u+1 -0.0202, bath min -0.023, total u+1    616.0, K 213
+t=   524: bodies   3, body amphiphile    663.0, bath mean u+1 -0.0208, bath min -0.023, total u+1    -82.2, K 195
+t=   600: bodies   3, body amphiphile    383.0, bath mean u+1 -0.0219, bath min -0.023, total u+1   -409.5, K 6
+== fed_clip/seed0 per body
+frame 59 (t~297): total u+1 3348, total K 4078, mean P 0.700; bodies (area, u, K, y, x): [(2123, 2320, 1873.0, 81, 125), (714, 862, 1019.5, 131, 83), (308, 377, 1.6, 56, 8), (182, 220, 4.0, 56, 187)]
+frame 90 (t~454): total u+1 3376, total K 4074, mean P 0.697; bodies (area, u, K, y, x): [(2039, 2232, 1721.0, 80, 125), (764, 936, 1090.0, 132, 81), (334, 409, 1.5, 57, 9), (181, 221, 4.1, 57, 187)]
+frame 119 (t~600): total u+1 3324, total K 4052, mean P 0.699; bodies (area, u, K, y, x): [(1994, 2178, 1771.0, 80, 124), (787, 958, 1112.0, 134, 79), (336, 413, 1.3, 57, 9), (172, 207, 3.7, 57, 187)]
