@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1022-c05-review-cost-balance",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c06-pcell-cost-balance#finding",
+  "title": "Review of c06's pcell cost-balance finding: the cy=0 runaway and the cy=0.03 stationary regime both replicate on seed 5; deaths strongly yield-selected, births only weakly",
+  "summary": "Verdict written before reading other reviews. I looked at cost_scan.png, death_pct.png and yield_rise.png, then ran c06's genealogy.py on new seed 5 for T=100000 at cy=0.03 and at cy=0 (ytrait=1, muy=0.02, sy=0.05; data/*.log), scored with c06's deathsel.py (data/deathsel.txt), and made a labkit pack of the cy=0.03 arm (world_cy003.py wrapper, rerun/seed5). cy=0: mean yield 1.00 -> 1.47 while the population falls from 25 to 4 cells after t~40000 (giants), 52 deaths at mean percentile 0.087 (50/52 below the median), 9 splits at 0.50, max generation 2. cy=0.03: 22-27 cells throughout, mean yield 0.97-1.03, 31 persistent splits, generation 5, 0 merges, 61 deaths; 58/58 scored deaths below the median (mean percentile 0.057) and splits at mean percentile 0.575 (20/33 above the median). labkit (cy=0.03): 23-29 bounded walled cells to t=100000, 17 persistent splits, generation 3, merges 3.",
+  "parents": ["20261025T0755-c06-pcell-cost-balance"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T0755-c06-pcell-cost-balance",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "data/deathsel.txt: cy0.03 deaths 58/58 below median (0.057), splits 0.575; cy0 deaths 0.087, splits 0.50; data/L_cy0_s5.log 4 final cells vs data/L_cy0.03_s5.log 23; rerun/seed5/sheet.png bounded population to t=100000"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "cy=0 arm on the same seed (data/L_cy0_s5.log)"},
+    "class_confirmed": true,
+    "limitation": "Birth selection at cy=0.03 is weaker on my seed (split percentile 0.575, 20/33 above the median) than on c06's (0.67, 20/24); death selection is as strong. I did not run the inert-trait twin, so the neutral baseline for deaths (0 deaths in c06's twins) is not re-checked; with no deaths in the twin, death selection cannot be compared to a neutral death rate. Cost scan at one seed per cy value; mean yield under cy=0.03 is held near 1, so this is stabilizing balance, not a rising trait."}],
+  "compute": {"cpu_minutes": 25}
+}

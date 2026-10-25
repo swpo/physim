@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1044-c11-review-slowd-law",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0901-c01-slowd-containment-law#finding",
+  "title": "Review of c01's slow-D containment law: the fitted law predicts fresh seed 7 within 3-7% (3.8/9.9/26.2 vs 4.1/9.6/27.3), but 'every body >= 2x' fails there (98%, weakest 0.8-1.8x)",
+  "summary": "Ran world_lowD.py (chi=0, cargo made only inside the micelles) on fresh seed 7 at Dc = 0.03, 0.01, 0.003 (T=400) and measured with the same cargo_contrast.py (threshold 0.8). Aggregate body/outside contrast at t=400: 3.8, 9.9, 26.2, against the law 1 + 1.01 (Dc/0.1)^-0.93 = 4.1, 9.6, 27.3. The share of bodies >= 2x at t=400 is 0.98 at every Dc, with the weakest body at 1.8x, 1.6x and 0.8x, so the claim that every body holds >= 2x once Dc <= 0.03 does not hold on this seed. The sheet at Dc=0.003 shows why: after fission the cargo stays in an orange bridge between the two daughters, and the daughters (cyan) are cargo-poor for a while; the slower the cargo, the longer the newborns stay below the mean.",
+  "parents": ["20261025T0901-c01-slowd-containment-law"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0901-c01-slowd-containment-law/world_lowD.py",
+  "evidence": ["law_s7.txt", "rerun/D0.003/seed7/sheet.png", "rerun/D0.03/seed7/sheet.png"],
+  "review_of": "20261025T0901-c01-slowd-containment-law",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["W"],
+    "observations": {
+      "W": "law_s7.txt: contrast 3.8 / 9.9 / 26.2 at Dc 0.03 / 0.01 / 0.003 vs law 4.1 / 9.6 / 27.3; rerun/D0.003/seed7/sheet.png t=156-400: cargo bridges between daughters"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "law holds within 7% at 3 Dc values"}, {"seed": 7, "result": "every-body >= 2x clause fails: 98% of bodies, weakest 0.8x at Dc=0.003"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun/D0.03, D0.01, D0.003 on seed 7 (the sweep itself)"},
+    "class_confirmed": true,
+    "limitation": "The aggregate law replicates; the per-body statement does not on seed 7, and the weakest body gets worse as Dc falls, because slow cargo is stranded at the fission neck: lowering D raises aggregate contrast but slows refilling of newborn daughters. The law is at a single time (t=400) off steady state, as the author notes. Practical point stands: a self-made cargo needs a matched lowered-D twin before W is called beyond diffusion."
+  }],
+  "compute": {"cpu_minutes": 12}
+}

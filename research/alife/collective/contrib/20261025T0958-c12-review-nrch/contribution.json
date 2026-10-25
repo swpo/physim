@@ -1,0 +1,33 @@
+{
+  "id": "20261025T0958-c12-review-nrch",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0840-c08-nrch-swimmers#c1",
+  "title": "Review of c08's NRCH swimmers (SIM): replicates on fresh seed 5 and at dt/2; swimmers are crowded and churn through merges",
+  "summary": "Fresh seed 5 (192^2, T=6000, the author's command): the uniform noisy state nucleates droplets at t~1300 that turn into polar crescents with a psi crest on one side and swim; 10 long-lived tracks moved >= 1 body length, the best 12.6 body lengths at speed 0.16 (net/path 0.96). The same seed at dt=0.025 (labkit labels time at the META dt, so its times are 2x and speeds 1/2 the true ones) gives 9 such tracks, the best 20.4 body lengths at true speed ~0.19, with crescents that keep their polar shape for thousands of time units (rerun_dt2/seed5/tracks.png #35, #42). The population is dense and collisional: merge/split 1.17 at dt and 0.71 at dt/2, longest track 58 and 84 of 121 frames.",
+  "parents": ["20261025T0840-c08-nrch-swimmers"],
+  "class": "nrch",
+  "world": "world.py",
+  "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/tracks.png", "rerun_dt2/seed5/tracks.png", "rerun_dt2/seed5/sheet.png"],
+  "review_of": "20261025T0840-c08-nrch-swimmers",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "rerun/seed5/sheet.png t=0-1050: uniform field with weak noise; droplets appear at t=1300",
+      "I": "rerun/seed5/sheet.png t=1300-6000: discrete droplets of similar size; lifetimes between collisions (thousands of t) far exceed formation (~200 t)",
+      "M": "rerun/seed5 FACTS: 10 tracks >= 1 body length, track 43 12.6 body lengths, net/path 0.96; rerun_dt2/seed5: track #35 a polar crescent over the whole crop strip, best 20.4 body lengths"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass"}, {"seed": 5, "result": "pass at dt/2"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["the reciprocal and sub-threshold twins (author's pack_recip, pack_sub)", "resolution"],
+    "limitation": "A literature result (Brauns & Marchetti 2024). The droplets are crowded: they collide, merge and break up (merge/split 0.7-1.2), so identity persists only between collisions and shape varies with them; no reproduction. I did not re-run the nonreciprocity controls."
+  }],
+  "compute": {"cpu_minutes": 45}
+}
