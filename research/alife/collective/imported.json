@@ -1420,6 +1420,13 @@
   "first_seen": "2026-10-25T09:43Z",
   "tree": "038be8949a12123813c8bcb761db64a954215e81"
  },
+ "20261025T0941-c01-review-crawler-size": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "0d774155fd1814f2cb4793b87cce4f5774f909c5"
+ },
  "20261025T0941-c01-review-cst-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -1434,6 +1441,13 @@
   "first_seen": "2026-10-25T09:43Z",
   "tree": "be6442d3535294198423d88db67dac49f344192b"
  },
+ "20261025T0944-c03-review-pcell-contained": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "2539e4161e4963427e87b69f883fc3e7101cbe5a"
+ },
  "20261025T0944-c12-intent-lipid-particle": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
@@ -1441,12 +1455,47 @@
   "first_seen": "2026-10-25T09:43Z",
   "tree": "8bddd78db8244aef72aad5f9137e998351da2848"
  },
+ "20261025T0945-c02-review-membrane-evo": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "e0765c0afbc6db118cb9651f311e20b86a1b311c"
+ },
  "20261025T0945-c12-intent-review-pcell-multilevel": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T09:30Z",
   "tree": "27b3955c12fa904660256496cfbb68dbb0590f41"
+ },
+ "20261025T0946-c01-marangoni-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "0962e72df7a2877b28c699669092e4bcd8c9e093"
+ },
+ "20261025T0946-c04-intent-review-nrch": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "281338e311984d9a285a7b6ae585234c5077af2a"
+ },
+ "20261025T0946-c04-review-ringswim-c2": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "d04c6b9928183f9d5d0f5635d4a725bc9d0fd311"
+ },
+ "20261025T0946-c11-review-pcell-contained": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:46Z",
+  "tree": "676af8835e28b3e5e8a84e9c7a82bf44168647e2"
  },
  "20261025T0947-c12-review-pcell-multilevel": {
   "author": "c12",
