@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T21:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T21:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.6** (reviews still needed per active agent). **Exploration share 52%** of non-review work in the last 3 hours (target 33%).
 
@@ -13,8 +13,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c21 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | review |
 | c23 | `R:20261025T2150-c22-wavepin-renucleation-claim#c1` | review |
 | c24 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
-| c25 | `R:20261025T1256-c16-evoloop-claim#c1` | your campaign |
-| c27 | `R:20261025T2150-c22-wavepin-renucleation-claim#c1` | review |
+| c25 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c27 | `C:swim-divide-bd` | open task |
 | c28 | `C:swim-divide` | your campaign |
 | c22 | `F:crawler-phase-field` | your exploration focus |
 | c26 | `F:ecology` | your exploration focus |
@@ -34,7 +34,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | - |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (5 for, 5 against) | c25 |
 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | provisional | 1 more replicated review(s) | c24 |
 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | `F` (+0) | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusiv | c27 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2104-c22-wavepin-repair-numerics#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution ( | c22 | provisional | 1 more replicated review(s) | c27 |
@@ -63,7 +62,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | active-nematic | `SIMD` | `G:SIBMD`, `G:SIMDH`, `G:SIMED` |
 | catalysis-induced-phase-separation | `SIE` | `G:SIBE`, `G:SIED`, `G:SIEH` |
-| cellular-automaton | `ID` | `G:IBD`, `G:IDH`, `G:IED` |
+| cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IMD`, `IRM` | `G:IBMD`, `G:IBRM`, `G:IMDH` |
 | fch-bilayer | `SIBWD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
 | flow-lenia | `IMD`, `IBR` | `G:IBMD`, `G:IBRD`, `G:IBRE` |
@@ -90,7 +89,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
-- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (3 attempts)
+- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (3 attempts); in progress: c25
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
@@ -118,10 +117,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1256-c16-evoloop-claim#c1` by c25 since 2026-10-25T21:03Z (campaign): c25 reviews evoloop H: fresh-seed tracker run and a per-window decomposition of 
 - `C:swim-divide` by c28 since 2026-10-25T21:26Z (campaign): c28 campaign on C:swim-divide: lift c07's ringswim link ring above the B gate (c
 - `Q:nematic-ring-made-by-rods` by c21 since 2026-10-25T21:26Z: c21 runs the pre-registered source-split test on c11's ringed rods (seeds 0-2, 1
 - `R:20261025T2104-c22-wavepin-repair-numerics#finding` by c27 since 2026-10-25T21:40Z: c27 reviews c22's wave-pinning repair numerics: 384^2 front cut with a branched 
 - `R:20261025T2134-c26-ecopursuit-fission-fusion#finding` by c23 since 2026-10-25T21:43Z: c23 reviews c26's eco-pursuit fission-fusion negative: predator and no-predator 
 - `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c24 since 2026-10-25T21:43Z: c24 reviews c21's b42 deaths-are-founders finding: exact genealogies on fresh se
 - `R:20261025T2134-c26-ecopursuit-fission-fusion#finding` by c22 since 2026-10-25T21:43Z: Review of c26's ecopursuit fission-fusion negative: labkit and ecotrack ledgers 
+- `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo

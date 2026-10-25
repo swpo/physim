@@ -1,0 +1,223 @@
+[
+{
+"window": [
+0,
+200000
+],
+"kind": 2,
+"mean_loops": 0.4,
+"own": 175,
+"inflow": 1841,
+"conv_in": 33,
+"conv_out": 34,
+"deaths": 2022,
+"own_birth_rate": 2.24,
+"death_rate": 25.92,
+"own_net_rate": -23.68,
+"inflow_rate": 24.03
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 3,
+"mean_loops": 1.4,
+"own": 30,
+"inflow": 1605,
+"conv_in": 59,
+"conv_out": 57,
+"deaths": 1639,
+"own_birth_rate": 0.1,
+"death_rate": 5.71,
+"own_net_rate": -5.61,
+"inflow_rate": 5.8
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 4,
+"mean_loops": 0.7,
+"own": 21,
+"inflow": 1035,
+"conv_in": 44,
+"conv_out": 85,
+"deaths": 1015,
+"own_birth_rate": 0.14,
+"death_rate": 7.0,
+"own_net_rate": -6.86,
+"inflow_rate": 7.44
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 5,
+"mean_loops": 1.4,
+"own": 58,
+"inflow": 633,
+"conv_in": 78,
+"conv_out": 88,
+"deaths": 680,
+"own_birth_rate": 0.21,
+"death_rate": 2.49,
+"own_net_rate": -2.28,
+"inflow_rate": 2.6
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 6,
+"mean_loops": 1.2,
+"own": 30,
+"inflow": 546,
+"conv_in": 111,
+"conv_out": 87,
+"deaths": 601,
+"own_birth_rate": 0.13,
+"death_rate": 2.57,
+"own_net_rate": -2.44,
+"inflow_rate": 2.81
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 7,
+"mean_loops": 1.8,
+"own": 60,
+"inflow": 681,
+"conv_in": 42,
+"conv_out": 51,
+"deaths": 741,
+"own_birth_rate": 0.17,
+"death_rate": 2.11,
+"own_net_rate": -1.94,
+"inflow_rate": 2.06
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 8,
+"mean_loops": 1.1,
+"own": 22,
+"inflow": 2152,
+"conv_in": 56,
+"conv_out": 21,
+"deaths": 2209,
+"own_birth_rate": 0.1,
+"death_rate": 10.18,
+"own_net_rate": -10.08,
+"inflow_rate": 10.18
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 9,
+"mean_loops": 1.4,
+"own": 76,
+"inflow": 558,
+"conv_in": 14,
+"conv_out": 8,
+"deaths": 646,
+"own_birth_rate": 0.28,
+"death_rate": 2.34,
+"own_net_rate": -2.07,
+"inflow_rate": 2.07
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 10,
+"mean_loops": 1.4,
+"own": 69,
+"inflow": 864,
+"conv_in": 67,
+"conv_out": 9,
+"deaths": 1017,
+"own_birth_rate": 0.24,
+"death_rate": 3.59,
+"own_net_rate": -3.35,
+"inflow_rate": 3.29
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 11,
+"mean_loops": 45.5,
+"own": 12687,
+"inflow": 908,
+"conv_in": 53,
+"conv_out": 72,
+"deaths": 13580,
+"own_birth_rate": 1.39,
+"death_rate": 1.49,
+"own_net_rate": -0.1,
+"inflow_rate": 0.11
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 12,
+"mean_loops": 10.3,
+"own": 2318,
+"inflow": 810,
+"conv_in": 12,
+"conv_out": 55,
+"deaths": 3073,
+"own_birth_rate": 1.13,
+"death_rate": 1.5,
+"own_net_rate": -0.37,
+"inflow_rate": 0.4
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 13,
+"mean_loops": 0.8,
+"own": 73,
+"inflow": 244,
+"conv_in": 4,
+"conv_out": 13,
+"deaths": 308,
+"own_birth_rate": 0.47,
+"death_rate": 2.0,
+"own_net_rate": -1.53,
+"inflow_rate": 1.61
+},
+{
+"window": [
+0,
+200000
+],
+"kind": 14,
+"mean_loops": 0.1,
+"own": 5,
+"inflow": 79,
+"conv_in": 5,
+"conv_out": 0,
+"deaths": 89,
+"own_birth_rate": 0.17,
+"death_rate": 3.07,
+"own_net_rate": -2.9,
+"inflow_rate": 2.9
+}
+]

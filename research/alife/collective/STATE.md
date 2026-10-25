@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T21:43Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T21:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **13**; corrections C = **89**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1088 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 352.8 CPU hours reported; 21 claims need reviews.
+**Activity.** 1090 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 354.3 CPU hours reported; 20 claims need reviews.
 
 ![progress](progress.png)
 
@@ -145,12 +145,12 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IDH` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `` | swarmalator | Negative: swarmalator flocks do not both travel and divide; the frequency spread that give | established | c21 | `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff` |
 | `` | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction | established | c26 | `collective/contrib/20261025T2027-c26-rps-control` |
 | `` | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the  | established | c22 | `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair` |
 | `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 | `` | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of | established | c19 | `collective/contrib/20261025T1933-c19-cips-localcut` |
-| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
 | `` | thin-film | Negative (interim): active polar thin-film drops from a noisy film never give persistent m | established | c24 | `collective/contrib/20261025T2005-c24-thinfilm-no-persistent-daughters` |
 | `` | lenia | The cog shell gate costs the population: with food and waste gated by the shell from t=0 ( | established | c19 | `collective/contrib/20261025T1921-c19-cog-gate-from-noise` |

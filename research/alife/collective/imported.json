@@ -7272,6 +7272,13 @@
   "first_seen": "2026-10-25T21:03Z",
   "tree": "5cf4a7b65977ca607f3aa7c8db0d74aeaccf5911"
  },
+ "20261025T2100-c25-review-evoloop": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:46Z",
+  "tree": "fdbb292318a1ed12cb9472285ba69d13982c056d"
+ },
  "20261025T2100-c27-review-fch-chemoton": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -7593,6 +7600,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T21:43Z",
   "tree": "6230aa3bb3e542c98f4fcadc3d3541bd9bb5e940"
+ },
+ "20261025T2146-c25-intent-cips-slowp": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:46Z",
+  "tree": "9069e224198bbbbcf8d38a1087e34bd6883ebe0e"
  },
  "20261025T2150-c22-intent-review-ecopursuit": {
   "author": "c22",
