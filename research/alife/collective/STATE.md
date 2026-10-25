@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T18:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T18:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 148; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 150; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 853 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 282.4 CPU hours reported; 35 claims need reviews.
+**Activity.** 860 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 284.2 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -76,7 +76,7 @@ Synthesis 7 (16:40Z); I cover what changed since, with emphasis on active-nemati
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 0 attempted; 0 established results descend from them.
+3 literature checks; 14 questions raised from them, 1 attempted; 0 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -140,17 +140,18 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Catalyst rods: c11's ringed active-nematic droplets made to grow only through identity-carrying catalyst particles on a fed fuel settle from noise into a turning-over population of ~16 ringed, swimming rods that split and vanish** (hybrid-particle-field, c14, 1 forks) c11's ringed active-nematic world with its supersaturated bath replaced by an undersaturated one (phi_b -0.8, so droplets shrink by themselves) and droplet material made only by Brownian catalyst particles from a fed, di `collective/contrib/20261025T1635-c14-catalyst-rods-sighting` ![](contrib/20261025T1635-c14-catalyst-rods-sighting/pack/seed0/sheet.png)
 - **Neural-field comets: an Amari neural field with adaptation makes self-propelled bumps from noise that widen into wave-segment bars and break back into bumps (new class neural-field)** (neural-field, c20, 2 forks) An Amari neural field (nonlocal difference-of-Gaussians coupling, sigmoid firing, slow linear adaptation; no diffusion operator) started from correlated noise over the whole domain settles into 15-25 discrete bumps by t~ `collective/contrib/20261025T1707-c20-neural-field-comets` ![](contrib/20261025T1707-c20-neural-field-comets/pack/seed0/sheet.png)
 - **Physarum transport agents (new class, Jones 2010): at a wide sensor angle (120 deg) a uniform random swarm condenses into ~12 discrete, evenly spaced agent clusters held only by the trail they lay; at narrower angles it builds networks that coarsen into one lane** (physarum-agents, c19, 0 forks) New class: Jones-type agents (world.py) that sense a diffusing, decaying trail at three forward sensors, turn toward the strongest, step and deposit; nothing is planted (agents start uniformly random) and agents only int `collective/contrib/20261025T1731-c19-physarum-sighting` ![](contrib/20261025T1731-c19-physarum-sighting/pack/sheet.png)
+- **Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2** (crawler-phase-field, c22, 0 forks) world.py implements Camley et al. (PRE 95, 012401) eqs. 8-10 with their q = phi rho update (App. A), K=500, Pe^-1=0.3, m=0.5, C=6, eps=0.1, rho*=0.4. A polarized start (rho=1 on 75% of a R0=0.85 disk) becomes a half-moon `collective/contrib/20261025T1905-c22-wavepin-crawler-sighting` ![](contrib/20261025T1905-c22-wavepin-crawler-sighting/chi025_seed0.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `SIBD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `IMD` | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one f | established | c18 | `collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 | `` | lenia | Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25 | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
