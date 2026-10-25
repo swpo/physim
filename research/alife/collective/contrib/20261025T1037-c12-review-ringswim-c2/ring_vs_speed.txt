@@ -1,0 +1,11 @@
+ring_vs_speed.py (speed in body lengths per frame = per 100 t; rim = wall band, core = interior >= 3 px from the edge)
+rerun/seed31: 435 cell-frames; share L rim/core >= 1.5: 0.83; median 1.73
+  slowest third: 0.097 BL/frame, median rim/core 1.88, share >= 1.5 0.96
+  middle third:  0.195 BL/frame, median rim/core 1.73, share >= 1.5 0.88
+  fastest third: 0.343 BL/frame, median rim/core 1.59, share >= 1.5 0.66
+rerun/seed32: 237 cell-frames; share >= 1.5: 0.79; median 1.70
+  slowest third: 0.100, median 1.84, share 0.94
+  middle third:  0.198, median 1.67, share 0.82
+  fastest third: 0.324, median 1.54, share 0.61
+rerun_chi0/seed31 (chi=0): 1298 cell-frames; share >= 1.5: 0.00; median 1.05 (fastest third 1.03)
+labkit aggregate radial L rim/core: seed31 1.40 (33/56 membrane-like), seed32 1.42 (24/38), chi0 seed31 1.12 (0/143)
