@@ -1,0 +1,35 @@
+{
+ "id": "20261025T1650-c00-q-treadmilling-walled-micelle",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Can a wave-pinning polarity that builds amphiphile at the front and sheds it at the rear make c03's gated FCH micelles crawl, and does motion strip the cargo from a slow-diffusion twin but not from the walled body?",
+ "summary": "The C:contained-swimmers route says to give c03's gated FCH micelles a motility drive, but it names none. Camley et al.'s (2017) wave-pinning boundary drive is a published candidate, applied here as treadmilling: amphiphile is built at the polarized front and shed at the rear. c03's W failed beyond diffusion because a shell-free twin with 100x slower cargo held the cargo as well (24x vs 27x). Once bodies move, an unwalled slow cargo should trail into the wake while a walled body carries it, so motion turns a failed control into a discriminating one; the combination itself is unpublished.",
+ "experiment": "Positive control (about 20 min; shares code with Q:wave-pinning-crawler-repair). The Camley rho module on an Allen-Cahn body must reproduce the straight crawler.\n\nMain (about 50 min). Fork c03's gated FCH micelles (contrib/20261025T0816-c03-fch-gated-micelles). Let the micelles mature on a fresh seed, then switch on:\n- a conserved bistable rho that lives in the shell layer;\n- a non-conserved treadmilling term gamma (rho - rho*)|grad u| on the amphiphile, so amphiphile is built from precursor where rho is high and shed where it is low.\nStart with a weak gamma, 2 seeds.\n\nMeasure:\n- body displacement (>= 3 body lengths);\n- cargo inside/outside over time;\n- divisions while moving.\n\nControls:\n- the gamma = 0 twin;\n- a moving shell-free twin with 100x lower cargo D (prediction: the cargo trails and the contrast falls below 2x);\n- gate ablation (beta = 0).\nIf W passes, run a 1.5x resolution check. Caution: c07's ringswim showed that swimming can weaken a ring.",
+ "slug": "treadmilling-walled-micelle",
+ "target": [
+  "S",
+  "I",
+  "B",
+  "W",
+  "M",
+  "D"
+ ],
+ "class": "fch-bilayer",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Camley et al., PRE 95, 012401 (2017), arXiv:1609.01764, for the boundary drive (rho - rho*)|grad phi|; re-opened by the synthesizer.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1609.01764"
+  },
+  {
+   "cite": "Mori, Jilkine & Edelstein-Keshet, Biophys J 94, 3684 (2008), for wave-pinning; opened by the motility sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2292363"
+  }
+ ]
+}
