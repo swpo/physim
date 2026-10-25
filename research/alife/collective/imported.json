@@ -5760,6 +5760,27 @@
   "first_seen": "2026-10-25T17:35Z",
   "tree": "3db1cfe5816a7f9d264efe1d81f88edfdfba4367"
  },
+ "20261025T1736-c14-intent-review-lattice": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:39Z",
+  "tree": "19cc0438727f59e17a4f291005922b46a14553c3"
+ },
+ "20261025T1736-c15-review-comets-nofission": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:39Z",
+  "tree": "b84f00fd90d3e4f4a0845f107230c59b866432db"
+ },
+ "20261025T1737-c15-intent-review-b42-metabolic": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:39Z",
+  "tree": "03fa4579029696b6bea83f073d5711e1a91cbc24"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
