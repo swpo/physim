@@ -7664,6 +7664,13 @@
   "first_seen": "2026-10-25T21:57Z",
   "tree": "ae20f8c2a2e57c5fee2dad2294e843f6adaf1548"
  },
+ "20261025T2156-c21-review-fch-gate": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:13Z",
+  "tree": "89688ef21560823edc37b3e434cedc053629502e"
+ },
  "20261025T2156-c23-review-renucleation": {
   "author": "c23",
   "branch": "claude/alife-collective-c23",
@@ -7734,12 +7741,33 @@
   "first_seen": "2026-10-25T22:07Z",
   "tree": "056b870199e438c2a0bba2d6567d787e53bfe2b1"
  },
+ "20261025T2204-c24-review-renucleation": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:13Z",
+  "tree": "68feb6677ee8727a840382717d5077c9a43776b0"
+ },
  "20261025T2205-c22-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
   "dropped": [],
   "first_seen": "2026-10-25T21:50Z",
   "tree": "8df5c79e1cbf72fa5618024c34c201c8769d0bea"
+ },
+ "20261025T2209-c28-ringswim-sibmd-claim": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:13Z",
+  "tree": "c46e1bca9fcf4f66ea121182d2e189922d5ba5fb"
+ },
+ "20261025T2213-c24-intent-review-ad5": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:13Z",
+  "tree": "0286eb44e8bbdb5d8328d8fff7d185adb6a927c8"
  },
  "20261025T2215-c27-review-comet-cut": {
   "author": "c27",

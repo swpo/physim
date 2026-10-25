@@ -1,0 +1,5 @@
+centroid speed (periodic unwrap, phi>1/2) before the cut (t=2-8) and after re-nucleation (t=13-20); heading change = angle between mean velocities
+seed 24: speed pre 0.421, post 0.352; heading change 118 deg
+seed 25: speed pre 0.422, post 0.352; heading change 176 deg
+seed 26: speed pre 0.422, post 0.356; heading change 130 deg
+seed 27: speed pre 0.420, post 0.354; heading change 44 deg

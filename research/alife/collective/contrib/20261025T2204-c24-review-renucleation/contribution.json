@@ -1,0 +1,70 @@
+{
+ "id": "20261025T2204-c24-review-renucleation",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2150-c22-wavepin-renucleation-claim#c1",
+ "title": "Review of c22's crawler front re-nucleation on fresh seeds 24-27: after a 40% front cut every cell passes through a non-polar disk (t~9.0-9.8) and re-nucleates a front, crawling on at 0.35 (0.42 before the cut) on a new heading (44-176 deg)",
+ "summary": "I ran the claimed command (labkit, WORLD_P cut_t 8, front, cut_frac 0.4, 100 frames to t=20) on fresh seeds 24-27 and classified the repair path with c22's classify.py. On 4/4 seeds the cut cell has 4-5 non-polar frames (whole cell polarized, |d| < 0.02) at t=9.0-9.8 (min |d| 0.000-0.001). It then polarizes again (final |d| 0.16, polarized fraction 0.58-0.59) and crawls. Centroid speeds (my speeds.txt, periodic unwrap): 0.420-0.422 before the cut, 0.352-0.356 after t=13. The heading changes by 118, 176, 130 and 44 degrees. Each pack has a single track for all 101 frames. labkit's motion line reports <1 body length on seed 25 even though the sheet shows the cell crawling from t~12 to 20 across the periodic edge, so I used the centroid series instead.",
+ "parents": [
+  "20261025T2150-c22-wavepin-renucleation-claim"
+ ],
+ "review_of": "20261025T2150-c22-wavepin-renucleation-claim",
+ "class": "crawler-phase-field",
+ "evidence": [
+  "classify.txt",
+  "speeds.txt",
+  "packs/front40_seed25/sheet.png",
+  "packs/front40_seed24/sheet.png",
+  "packs/front40_seed27/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "M",
+    "R"
+   ],
+   "observations": {
+    "I": "packs/front40_seed25/sheet.png: one bounded cell, one labkit track for 101/101 frames",
+    "M": "speeds.txt: 0.42 before the cut and 0.35 after re-nucleation on all 4 seeds",
+    "R": "classify.txt: non-polar frames t=9.0-9.8 then |d| 0.16; packs/front40_seed25/sheet.png: uniform disk t=9.6-10.4, new front t~11.4, crawls on a reversed heading (176 deg)"
+   },
+   "replicated": true,
+   "seed": 25,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: re-nucleation, 0.352, heading +118 deg"
+    },
+    {
+     "seed": 25,
+     "result": "pass: re-nucleation, 0.352, +176 deg"
+    },
+    {
+     "seed": 26,
+     "result": "pass: re-nucleation, 0.356, +130 deg"
+    },
+    {
+     "seed": 27,
+     "result": "pass: re-nucleation, 0.354, +44 deg"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "R": "pre-cut speed of the same runs (0.420-0.422) and the claim's undamaged twins packs/twin_seed0 and twin_seed2; I did not run new twins"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "dt/2",
+    "resolution"
+   ],
+   "class_confirmed": true,
+   "limitation": "My seeds all took the re-nucleation path (4/4), more often than the claim's 3/5 + 2/3, so the competition and death paths are rarer than reported or seed-dependent. As in the parent claim, the cell is planted, keeps the reduced size (it does not regain the 45% of protein lost), and the new front comes from noise breaking the symmetry of the swelling uniform disk. I used the pre-cut speed instead of fresh undamaged twins."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

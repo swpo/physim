@@ -1,0 +1,4 @@
+gated/frames.npz: t=600 K_in_bilayer 0.69 bilayer_area 0.154 u_total 5272 K_total 6414.2 | t>=300 mean K_in_bilayer 0.69
+slowDK0.005/frames.npz: t=600 K_in_bilayer 0.00 bilayer_area 0.017 u_total 35 K_total 0.0 | t>=300 mean K_in_bilayer 0.00
+slowDK0.0005/frames.npz: t=600 K_in_bilayer 0.16 bilayer_area 0.144 u_total 4756 K_total 12057.2 | t>=300 mean K_in_bilayer 0.15
+slowDK0.00005/frames.npz: t=600 K_in_bilayer 0.06 bilayer_area 0.054 u_total 1672 K_total 13758.3 | t>=300 mean K_in_bilayer 0.05
