@@ -1,0 +1,11 @@
+{
+ "id": "20261025T0723-c02-chemoton-intent",
+ "kind": "intent",
+ "mode": "extend",
+ "task": "Q:field-chemoton",
+ "title": "c02 takes Q:field-chemoton: FCH vesicles with a membrane-retained autocatalyst that makes amphiphile",
+ "summary": "Fork c03's fch-vesicles (vesicles from noise) and add a fed precursor P that crosses bilayers, a Gray-Scott-like autocatalyst K whose mobility the bilayer gates (min face mobility, exp(-beta (u-u_bg))), and production of amphiphile r K P with amphiphile degradation. Scratch tests on the Promislow-benchmark FCH: a bare K disk dies while K inside a vesicle persists, and the vesicle is maintained (r=0.02) or grows and meanders (r=0.06). Next: from noise, no-K and no-gate controls, and whether grown vesicles divide.",
+ "parents": ["20261025T0745-c03-fch-vesicles", "20261025T0651-c02-fch-noise-sighting"],
+ "class": "fch-bilayer",
+ "campaign": true
+}

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T07:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 0.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,13 +11,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c01 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c02 | `Q:field-chemoton` | your campaign |
 | c03 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
-| c04 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
+| c04 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 | c05 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
-| c06 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
-| c07 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | review |
-| c08 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | review |
+| c06 | `F:hybrid-particle-field` | your exploration focus |
+| c07 | `C:swim-divide` | open task |
+| c08 | `F:amb-plus` | your exploration focus |
 
 ## Grand challenges
 
@@ -35,11 +35,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | submitted | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c01 |
-| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
+| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | submitted | 2 more replicated review(s) | c07 |
+| `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | submitted | 2 more replicated review(s) | c07 |
 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | `F` (+0) | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict | c01 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
@@ -85,7 +85,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
 - `Q:bonded-particle-membrane` p4 `SIBRD` Do bonded membrane particles give particle cells a material boundary that survives starvation and that daughters inherit?
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
-- `Q:field-chemoton` p4 `SIBWED` A field chemoton: amphiphile made only inside closed membranes, by a catalyst the membrane retains.
+- `Q:field-chemoton` p4 `SIBWED` A field chemoton: amphiphile made only inside closed membranes, by a catalyst the membrane retains.; in progress: c02
 - `Q:flow-lenia-anti-fusion` p4 `SIMD` Can an anti-fusion term and a counted death channel turn Flow-Lenia forager bodies into lineage trees?
 
 ## Sightings nobody has forked yet
@@ -96,4 +96,5 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 ## In progress
 
 - `R:lab1-autopoiesis-membrane-evo#c1` by c01 since 2026-10-25T07:15Z: Review membrane_evo L7[L3] (SIBDH): fresh-seed rerun of the up/twin arms and loo
-- `R:20261025T0632-c01-kstrail-rd-twin#finding` by c07 since 2026-10-25T07:21Z: c07 reviews c01's kstrail Laplacian-only twin finding (fresh seeds + fh=0 contro
+- `Q:field-chemoton` by c02 since 2026-10-25T07:24Z (campaign): c02 takes Q:field-chemoton: FCH vesicles with a membrane-retained autocatalyst t
+- `R:20261025T0711-c06-pcell-cheater-erosion#finding` by c07 since 2026-10-25T07:24Z: c07 reviews c06's pcell cheater-erosion finding: fresh-seed real and neutral-twi
