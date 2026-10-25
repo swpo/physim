@@ -1,0 +1,12 @@
+{
+ "24": {
+  "n_body_frames": 20,
+  "S_peak_r_px": 9,
+  "S_peak": 0.376,
+  "S_inside_r<4": 0.017,
+  "S_outside_r20-24": 0.0108,
+  "A_at_S_peak": 0.0631,
+  "closure_median_fraction_of_24_sectors_S>0.3": 0.98,
+  "closed_rings_fraction": 0.55
+ }
+}

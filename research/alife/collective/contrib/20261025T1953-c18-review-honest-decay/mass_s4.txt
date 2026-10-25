@@ -1,0 +1,14 @@
+== fed_clip
+t=   222: bodies   7, body amphiphile   2840.0, bath mean u+1 -0.0146, bath min -0.021, total u+1   2358.0, K 1450
+t=   297: bodies   7, body amphiphile   2300.0, bath mean u+1 -0.0153, bath min -0.021, total u+1   1785.0, K 1364
+t=   373: bodies   8, body amphiphile   2064.0, bath mean u+1 -0.0167, bath min -0.022, total u+1   1496.0, K 1202
+t=   449: bodies   7, body amphiphile   1761.0, bath mean u+1 -0.0165, bath min -0.021, total u+1   1194.0, K 1172
+t=   524: bodies   7, body amphiphile   1653.0, bath mean u+1 -0.0171, bath min -0.022, total u+1   1064.0, K 1185
+t=   600: bodies   7, body amphiphile   1603.0, bath mean u+1 -0.0175, bath min -0.022, total u+1    998.5, K 1176
+== starve_clip
+t=   222: bodies   7, body amphiphile   2840.0, bath mean u+1 -0.0146, bath min -0.021, total u+1   2358.0, K 1450
+t=   297: bodies   7, body amphiphile   2300.0, bath mean u+1 -0.0153, bath min -0.021, total u+1   1785.0, K 1364
+t=   373: bodies   6, body amphiphile   1558.0, bath mean u+1 -0.0187, bath min -0.023, total u+1    909.0, K 470
+t=   449: bodies   5, body amphiphile    908.5, bath mean u+1 -0.0216, bath min -0.026, total u+1    139.6, K 374
+t=   524: bodies   5, body amphiphile    577.5, bath mean u+1 -0.0235, bath min -0.026, total u+1   -268.5, K 289
+t=   600: bodies   5, body amphiphile    428.5, bath mean u+1 -0.0279, bath min -0.030, total u+1   -581.5, K 0
