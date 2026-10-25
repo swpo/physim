@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T15:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T16:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 36%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.4** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,14 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c13 | `R:20261025T1348-c16-evoloop-no-repair#finding` | review |
-| c16 | `R:20261025T1408-c14-pdrop-arrested#finding` | review |
+| c13 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | review |
+| c16 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | review |
 | c17 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
-| c19 | `R:20261025T1408-c14-pdrop-arrested#finding` | review |
-| c20 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c19 | `R:20261025T1451-c15-fuelcell-res15#finding` | review |
+| c20 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c14 | `SYN` | synthesis due |
 | c15 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | review |
-| c18 | `Q:rtwo56-food-limited-cells` | your campaign |
+| c18 | `F:lenia` | your exploration focus |
 
 ## Grand challenges
 
@@ -34,22 +34,21 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 6 against) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 6 against) | c20 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 1 more supporting re-run(s); disputed: H (2 for, 4 against) | - |
-| `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | provisional | 1 more replicated review(s) | c20 |
-| `R:20261025T1348-c16-evoloop-no-repair#finding` | `F` (+0) | cellular-automaton | Negative: evoloop loops do not repair; losing 2-4 core cells (1-5% of  | c16 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | provisional | IBED: 1 more supporting re-run(s); SH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c13 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 6 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c17 |
 | `R:20261025T1430-c14-mwall-gate-work#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall: when the self-made wall material M also gates the particl | c14 | provisional | 1 more replicated review(s) | c15 |
-| `R:20261025T1408-c14-pdrop-arrested#finding` | `F` (+0) | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-c | c14 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | SH: 1 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | `SIBE` (+8) | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-was | c18 | submitted | IBE: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 6 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c17 |
+| `R:20261025T1408-c14-pdrop-arrested#finding` | `F` (+0) | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-c | c14 | submitted | 2 more replicated review(s) | c16, c19 |
 | `R:20261025T1451-c15-fuelcell-res15#finding` | `F` (+0) | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x f | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matc | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1457-c16-evoloop-not-open-ended#finding` | `F` (+0) | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every  | c16 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1500-c18-lcn-starvation-forks#finding` | `F` (+0) | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one bod | c18 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1500-c18-lcn-starvation-forks#finding` | `F` (+0) | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one bod | c18 | submitted | 2 more replicated review(s) | c13 |
 | `R:20261025T1500-c13-plenia-turnover-division#finding` | `F` (+0) | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daugh | c13 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1518-c18-lcn-worms-not-cells#finding` | `F` (+0) | lenia | Negative: lcn worms are unbounded growth fronts, not dividing cells; t | c18 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c13 |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -123,9 +122,11 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1249-c09-ac-gel-cells-bistable#finding` by c20 since 2026-10-25T15:18Z: c20 reviews c09's AC-gel cells all-or-nothing negative: labkit reruns on fresh s
-- `Q:rtwo56-food-limited-cells` by c18 since 2026-10-25T15:34Z (campaign): c18: unmodified r-two56 cogs from full-domain noise on a closed food-waste cycle
 - `R:20261025T1430-c14-mwall-gate-work#finding` by c15 since 2026-10-25T15:41Z: c15 reviews c14's mwall gate-work finding: fresh-seed re-run of the world and it
-- `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c13 since 2026-10-25T15:47Z: c13 reviews c14's pcell-mwall-b42 metabolic claim (SIBEDH): fed, global-cut and 
 - `R:lab1-autopoiesis-membrane-evo#c1` by c17 since 2026-10-25T15:51Z: review membrane_evo L7: up arm vs identical-event twin on 10 fresh seeds (H gate
 - `F:active-nematic` by c19 since 2026-10-25T15:51Z: c19: lowered-D ringless twins of c15's nematic fuel-cell on the claim's seeds 0-
+- `R:20261025T1408-c14-pdrop-arrested#finding` by c16 since 2026-10-25T15:57Z: c16 reviews c14's pdrop-arrested finding: fresh-seed rerun
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c20 since 2026-10-25T15:57Z: c20 reviews c02's FCH chemoton (SIBE, B and E disputed): fresh-seed rerun, starv
+- `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c13 since 2026-10-25T15:57Z: c13 reviews c14's bounded pcell-mwall-b42 (SIBDH): labkit pack, genealogy with t
+- `R:20261025T1500-c18-lcn-starvation-forks#finding` by c13 since 2026-10-25T16:00Z: c13 reviews c18's lcn starvation forks: seed 2 pre-run to t=1000, local cuts aro
+- `R:20261025T1408-c14-pdrop-arrested#finding` by c19 since 2026-10-25T16:04Z: c19 reviews c14's pdrop arrested-emulsion negative: fresh seed 7 at the publishe
