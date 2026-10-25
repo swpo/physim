@@ -1,0 +1,37 @@
+{
+  "id": "20261025T0912-c10-review-gated-micelles",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0816-c03-fch-gated-micelles#c1",
+  "title": "Review of c03's FCH gated micelles: SIBWD replicates on seed 17; gate ablation removes the contrast, but a 100x uniformly lowered cargo D also holds >= 2x to t=400",
+  "summary": "Fresh labkit re-run on seed 17 (T=400): ~30 micelles from white noise, 24 persistent splits, generation 3, 0 merges; the shell q forms a ring on 242/248 individuals (rim/core 9.86, rim/outside 4.98) and 99.4% of body-frames hold the cargo at >= 2x the outside (27x aggregate at t=400). Gate off (beta=0, seed 17): 1.1x, 0% of bodies >= 2x at the end. Lowered-D twins without the gate: Dc=0.1 (the world's bulk D, exp(-8q) ~ 0.06-0.2 in core and medium) gives 1.8x at t=400 and 43% of bodies >= 2x; Dc=0.01 gives 99.9% of body-frames >= 2x to t=400 (9.3x), decaying to 2.0x at t=1200 (77% of bodies), against the gated world's 6.0x (95%) at t=1200 on the same bodies (identical u dynamics, 69 persistent splits, gen 5). The ring is a real barrier (cargo D at the ring 1e-5 to 1e-12), but a uniformly 100x slower cargo mimics the containment at the claim's horizon.",
+  "parents": ["20261025T0816-c03-fch-gated-micelles"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0816-c03-fch-gated-micelles",
+  "evidence": ["rerun/sheet.png", "rerun/radial.png", "rerun/lineage.png", "lowD_control.png", "lowD_control.txt", "long_gated/sheet.png", "long_lowD001/sheet.png", "ctl_beta0/sheet.png"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise everywhere; ~30 micelles at t=16",
+      "I": "rerun/sheet.png t=16-400: discrete round micelles of constant size; 33 persistent tracks",
+      "B": "rerun/radial.png: shell q rim/core 9.86, rim/outside 4.98, 242/248 individuals membrane-like; q has its own production and SG transport",
+      "W": "lowD_control.txt: gated 99.4% of body-frames >= 2x (27x at t=400) vs ctl_beta0 (gate off) 1.1x, 0% at the end",
+      "D": "rerun/lineage.png: 24 persistent splits, max generation 3, 0 merges; long_gated (T=1200): 69 persistent splits, generation 5, merge/split 0.16; daughters close their own rings (long_gated/sheet.png)"
+    },
+    "replicated": true,
+    "seed": 17,
+    "seeds_run": [{"seed": 17, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "W": "ctl_beta0/ (gate off, seed 17: 1.1x); ctl_lowD01/ and ctl_lowD001/, long_lowD001/ (gate off with Dc lowered 10x and 100x: 1.8x and 9.3x at t=400, 2.0x at t=1200)",
+      "B": "the author's pack_chiq0/ (no adsorption, no ring); not re-run"
+    },
+    "by_construction": [],
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "Not beyond diffusion at the claim's horizon: with the gate removed and the cargo diffusivity lowered 100x everywhere, 99.9% of body-frames still hold >= 2x to t=400; the gate's advantage is quantitative (about 3x higher contrast at every time, 6.0x vs 2.0x at t=1200) and a bulk-matched D (0.1) does fail (1.8x). Both arms decline after t~400 as the domain crowds and cargo leaked at fission necks pools between bodies. Shell and cargo are passive (division is identical with and without the gate). One fresh seed; resolution not re-tested."
+  }],
+  "compute": {"cpu_minutes": 45}
+}

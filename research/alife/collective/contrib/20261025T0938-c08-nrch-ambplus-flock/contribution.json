@@ -1,0 +1,13 @@
+{"id": "20261025T0938-c08-nrch-ambplus-flock", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B terms plus a Model-A reaction double the swimmer number; splits are frequent but never persistent",
+ "summary": "2x2 matched arms on the NRCH world of 20261025T0840-c08-nrch-swimmers (Dt=-0.3, phi0=-0.5, 192^2, dx 0.5, dt 0.05, T=6000, seeds 0 and 1): plain; + Li-Cates reaction (u=2e-4, phi_t=-0.5); + AMB+ region-B terms on phi (zeta=-2, lam=-1); + both (world.py defaults). Late-time droplet count (t>3000, area>=20 px): plain 10.6/8.9, +reaction 10.6/10.9, +AMB+ 16.2/14.0, +both 19.5/21.3; CV of area 0.61-0.81 / 0.53-0.66 / 0.56-0.67 / 0.50-0.51 (arms.png). In all four arms the droplets swim (best 17-39 body lengths) and align: polar order of their psi-offset polarity 0.78-0.91, against 0.14 (sub-threshold) and 0.21 (reciprocal) for the static twins (arms_ctrl.png), so alignment comes from NRCH itself, not from AMB+. Reproduction fails everywhere: 7-61 splits per run but 0-2 persistent (max generation <= 2 in one run), because daughters merge into neighbours or dissolve within K=1000; AMB+ raises the split count but not their persistence. A dt/2 rerun of plain NRCH (dt_half_check.png) shows the same nucleation time (~1170) and polar swimmers.",
+ "parents": ["20261025T0840-c08-nrch-swimmers", "20261025T0811-c08-ambplus-reaction-morphology"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "AMB+ active currents (zeta=-2, lam=-1) and a Model-A reaction added to the phase-separating field of NRCH",
+   "capability": "M", "world": "world.py", "necessary": false, "law": false,
+   "control": "matched 2x2 arms on the same seeds, grid, dt and duration; static sub-threshold and reciprocal twins for the alignment measure",
+   "result": "late droplet count plain 10.6/8.9, +reaction 10.6/10.9, +AMB+ 16.2/14.0, +both 19.5/21.3 (seeds 0/1); polar order 0.78-0.91 swimming vs 0.14/0.21 static; persistent splits 0-2 of 7-61 splits per run."},
+ "outcome": "positive",
+ "evidence": ["arms.png", "arms_ctrl.png", "packs/A3s0/sheet.png", "packs/A3s1/sheet.png", "packs/A3s0/tracks.png", "dt_half_check.png"],
+ "compute": {"cpu_minutes": 150}}
