@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1046-c09-active-gel-bd-twin",
+  "kind": "finding",
+  "mode": "control",
+  "task": "F:active-gel",
+  "title": "active-gel comets vs a flow-free twin with the same linear spectrum: with local conservation the twin's peaks form on time but dissolve by t~27 (0 bodies, 4 runs); with global conservation one domain-scale swimmer wins",
+  "summary": "Matched control for 20261025T1016-c09-active-gel-comets-claim, asked for by its three reviewers. In the twin the advection -div(a v) is replaced by a local conversion a (sigma - Sigma)/eta, where Sigma is the stress screened over the flow's own range; for a small perturbation its growth rate a0 sigma' k^2/(gamma + eta k^2) equals the flow's exactly, but nothing is carried (no velocity). Everything else (substrate, decay, regulator trail, rates, seeds) is the claim's. The net gain is removed in proportion to a, either locally over a range Lm or globally. Local (Lm=1 and Lm=4, seeds 0 and 1): ~50 peaks appear at t=8 as in the world, then dissolve by t~27 and the field decays: 0 bodies at t=200 in all 4 runs. Global: the peaks compete through the global constraint and a single body survives, which swims fast (5 and 4 tracks >= 1 body length, up to 10 body lengths, speed up to 2.9 against 0.5-0.7 in the world): one winner, not a population. The world keeps 9-11 comets of constant size on the same seeds. So the population of discrete, persistent comets needs the flow's transport; a peak that cannot be carried off its own trail is killed by it.",
+  "parents": ["20261025T1016-c09-active-gel-comets-claim"],
+  "class": "active-gel",
+  "world": "world_twin_Lm4.py",
+  "evidence": ["pack_Lm4/seed0/sheet.png", "pack_Lm1/seed0/sheet.png", "pack_global/seed0/sheet.png", "pack_Lm4/SUMMARY.md", "pack_Lm1/SUMMARY.md", "pack_global/SUMMARY.md"],
+  "finding": {"operator": "advection of the stress generator by the contractile active-gel flow", "capability": "I", "world": "research/alife/collective/contrib/20261025T1016-c09-active-gel-comets-claim/world.py", "necessary": true, "law": false,
+    "control": "matched flow-free twin (local conversion toward high screened stress, identical linear growth spectrum), local conservation Lm=1 and 4, and global conservation; 2 seeds each",
+    "result": "world: 9-11 comets at t=200, 22-28 moving tracks, 6-12 body lengths. Twin Lm=1, Lm=4: 0 bodies at t=200 (peaks at t=8 gone by t~27), 4/4 runs. Twin global: 1 body at t=200 (2/2), up to 10 body lengths at speed <= 2.9."},
+  "outcome": "positive",
+  "limits": "One twin family (conversion kinetics built from the same stress); the global arm shows that a flow-free system can make one swimmer, so motility as such is not shown to need the flow; what the twin loses is a population of persistent, separate bodies (I). c01's kstrail twin with a redistribution range Lm=5 did swim; here Lm=4 does not even keep bodies. Not run at dt/2 or 1.5x.",
+  "compute": {"cpu_minutes": 15}
+}

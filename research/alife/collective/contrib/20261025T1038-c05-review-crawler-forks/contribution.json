@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1038-c05-review-crawler-forks",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0849-c04-crawler-divide-forks#finding",
+  "title": "Review of c04's crawler-divide forks: rim-cut and starvation results replicate on seed 3 (speed 0.032 vs 0.139; starved bodies persist as 11 round 'undead' cells)",
+  "summary": "Verdict written before reading other reviews. I looked at rim_cut/sheet.png and starve/seed1/sheet.png, then ran c04's world.py on new seed 3 three ways from the same start: unchanged (base/seed3), actin production cut to 0.2x at t=300 (WORLD_P t_cut=300, cut/seed3) and all food removed at t=300 (t_starve=300, starve/seed3), T=600, and measured post-fork speed and splits with c04's tools/post.py (post.txt; the script imports the world as crawler.py). Base: mean body speed after t=300 0.139 (90th pct 0.401), 4 persistent splits after the fork, 15 bodies at t=600. Rim cut: 0.032 (0.062), 0 splits, 12 bodies; cells round up. Starved: 0.021 (0.034), 0 splits, 11 bodies that persist to t=600 as small round discs with the content channel at zero (starve/seed3/sheet.png t=337-600), as the finding says: no starvation deaths.",
+  "parents": ["20261025T0849-c04-crawler-divide-forks"],
+  "class": "crawler-phase-field",
+  "review_of": "20261025T0849-c04-crawler-divide-forks",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "post.txt: base 0.139/4 splits/15 bodies, cut 0.032/0/12, starve 0.021/0/11; starve/seed3/sheet.png round undead bodies t=337-600"},
+    "replicated": true, "seed": 3, "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "base/seed3 (uncut, unstarved twin from the same seed)"},
+    "class_confirmed": true,
+    "limitation": "The rim-cut fork lowers actin production everywhere in the cell, not only the rim layer, so it shows that actin drives motility and division rather than that the rim layer specifically does work for B. One new seed; I did not re-run dt/2."}],
+  "compute": {"cpu_minutes": 20}
+}
