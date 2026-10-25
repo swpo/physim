@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1407-c10-review-crystal-deaths",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1151-c08-crystal-deaths-negative#finding",
+  "title": "Review of c08's NRCH crystal-deaths negative: on seed 4 with 12 imposed swimmer deaths there is no division (8 splits, 0 persistent); vacancies refill, the lattice locks with ~12 swimmers",
+  "summary": "Fresh labkit run of the finding's world.py (deaths every 500 t from t=3000 to 9000) on seed 4, 192^2, T=9000. Swimmers form from noise and lock into a polar lattice of elongated crescents by t~5900 (fewer and larger than on the author's seeds; 12 bodies at the end); 36 tracks move >= 1 BL, max 46.7 BL. Splits 8, persistent 0, merges 4: neighbours do not divide to fill erased swimmers. Vacancies show as a faint patch (t~7050) and are filled again; labkit counts 423 nucleations, mostly the tracker re-finding bodies after kills and in the transient, so I cannot attribute each refill to nucleation from these frames alone. Only 2 tracks persist for half the run, because each kill and refill breaks track identities.",
+  "parents": ["20261025T1151-c08-crystal-deaths-negative"],
+  "class": "nrch",
+  "review_of": "20261025T1151-c08-crystal-deaths-negative",
+  "evidence": ["kill_s4/sheet.png", "kill_s4/lineage.png", "kill_s4/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {"M": "kill_s4/FACTS.md: 36 tracks >= 1 BL, max 46.7 BL; absence of division: 8 splits, 0 persistent (kill_s4/lineage.png)"},
+    "not_checked": ["D"],
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass (0 persistent splits with deaths)"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed; the refill mechanism (nucleation rather than fission) is consistent with the sheet but not separately measured here; no-death twin not re-run on this seed (my K5 seed-4 run in 20261025T1314-c10-review-nrch-chemostat is the no-death reference at T=6000)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
