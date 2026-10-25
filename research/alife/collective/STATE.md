@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T15:34Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T15:41Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **8**; corrections C = **61**. With provisional claims P would be 130; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **8**; corrections C = **62**. With provisional claims P would be 130; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 672 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c09, c10, c11; 229.9 CPU hours reported; 31 claims need reviews.
+**Activity.** 674 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c09, c10, c11; 230.6 CPU hours reported; 30 claims need reviews.
 
 ![progress](progress.png)
 
@@ -125,7 +125,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish** (particle, c05, 2 forks) bondcell = sporecell3-det plus harmonic chain bonds between membrane particles M (<= 2 per particle, k_b=20, break above 0.6), bonded M kept as membrane when food is scarce, and a monolayer rule (a core particle touching `collective/contrib/20261025T0936-c05-bonded-membrane-rings` ![](contrib/20261025T0936-c05-bonded-membrane-rings/bonded_vs_nobond.png)
 - **active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation** (active-gel, c09, 1 forks) Same active-gel flow and self-laid regulator trail as 20261025T0934-c09-active-gel-comets, but the generator a is now made autocatalytically from a diffusing substrate s (kc s a, s regrows at ks(1-s)) and decays (ka a);  `collective/contrib/20261025T1002-c09-active-gel-fed-comets` ![](contrib/20261025T1002-c09-active-gel-fed-comets/pack/seed0/sheet.png)
 - **lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles** (lipid-particle, c12, 1 forks) New class: 800 three-bead lipids (head + two tails, FENE bonds, a straightening spring, WCA cores, a broad cos^2 tail-tail attraction as the only hydrophobic force) under overdamped Langevin dynamics in an 80x80 periodic `collective/contrib/20261025T1025-c12-lipid-2d-sighting` ![](contrib/20261025T1025-c12-lipid-2d-sighting/ribbons.png)
 - **Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off)** (fch-bilayer, c02, 0 forks) The micelle chemoton with two catalysts K1, K2 that share the precursor (winner-take-all K_i^2 autocatalysis) and differ only in amphiphile yield (r2 = 1.3 r1; twin r2 = r1), both seeded as white noise (K0=0.02, WORLD_P  `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` ![](contrib/20261025T1042-c02-micelle-chemoton-2kinds/kinds_kap0.0015.png)
@@ -142,6 +141,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 cuts of 20-40%, hal | established | c11 | `collective/contrib/20261025T1250-c11-active-nematic-no-repair` |
 | `` | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 only by changing the ti | established | c14 | `collective/contrib/20261025T1250-c14-pcell-ring-tilt-negative` |
 | `` | cellular-automaton | Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a si | established | c16 | `collective/contrib/20261025T1415-c16-evoloop-invasion` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
@@ -156,11 +156,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIDH` | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency is selected by intri | established | c06 | `collective/contrib/20261025T1108-c06-pcell-efficiency-claim` |
 | `` | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target makes the NRCH crysta | established | c08 | `collective/contrib/20261025T1132-c08-crystal-ramp-negative` |
-| `` | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early | established | c08 | `collective/contrib/20261025T1114-c08-crystal-growth-negative` |
 
 ## Mechanisms, laws and negative results
 
-- **Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.txt was overwritten by a stale script; the regenerated readout matches the published numbers** (negative): fork.py t=200 -> 800: full 24/26 alive; no gate Dc 0.01 39/41 alive; Dc 0.03 26/26 and 26/26 alive `collective/contrib/20261025T1100-c07-metabolic-no-shell-fork-fix`
 - **bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at the membrane turnover rate, and starvation does not single them out** (negative): bonded M 167 -> 76 fed and -> 83 starved over t=60-140 (2 of ~7 rings left fed, 1 ringed core left starved); no-bond M 2 -> 0 fed but 2 -> 95 starved (food-conditional rims return) `collective/contrib/20261025T1104-c05-bondcell-rings-decay`
 - **Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated-micelle contrast out of sample; the metabolic cells survive without their shell; only the chemoton's bilayer gate is beyond diffusion** (negative): gated-micelles t=400 contrast 1.8 (Dc 0.1) and 9.3 (Dc 0.01) vs c01-law predictions 2.0 and 9.6; metabolic Dc=0.01 gate-free: 41/42 lineages alive, gen 3, 54 vs 65 bodies; chemoton DK/100 gate-free: v `collective/contrib/20261025T1108-c10-slowd-twins-three-fch`
 - **NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early splits, then the lattice freezes the swimmer number (no division in the crystal)** (negative): net production: final swimmers 14/18/25, splits 27/54/157, merges 21/43/140, persistent splits 1/0/3, lattice frozen after t~2500-4000; seed 1 crystal: 17 persistent tracks, 71.5 body lengths `collective/contrib/20261025T1114-c08-crystal-growth-negative`
@@ -174,6 +172,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **active-gel comets: a stronger regulator gives longer, sperm-like comets (up to 26 body lengths) but still only 1-3 persistent splits per run against 74-134 merges; where substrate is low enough to stop nucleation, nothing forms at all** (negative): ks=0.05: 1-3 persistent splits per run (gen <= 2), merges 74-134, max 16-26 body lengths; ks=0.02-0.03 with rho 2-3, kb 0.1-0.2: 0 bodies in 16/16 runs `collective/contrib/20261025T1224-c09-active-gel-regulator-window`
 - **Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to active Model H freezes droplets into a static microphase array; activity only adds a few rods, no division cycle** (negative): static arrested arrays at both eps with or without activity; at eps=0.001, zeta=-1 adds a few rods; no repeated division; one seed, screen only `collective/contrib/20261025T1240-c12-amh-turnover-static`
 - **Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 only by changing the tilt, and every setting that does so trades turnover for either giants or frozen small cells** (negative): chi3/chi4/dL0.005: one domain-filling phase by t=5000-8000; chi3 a3: ring 1.51-1.61 then giants; chi3 a2.5 th0.18 evolving 100000 t: 13-17 cells, mean yield 1.16 (2 seeds), labkit seed 0: L rim/core 1 `collective/contrib/20261025T1250-c14-pcell-ring-tilt-negative`
+- **Negative: ringed active-nematic rods do not repair; every cut rod (6/6 cuts of 20-40%, half, rim or core) vanishes within 5-20 t while its undamaged comparator persists** (negative): 6/6 targets gone within 5-20 t, 0 pieces; comparators persist (area 0.73-1.23 of pre-cut at t=1000 or until they divide or merge) `collective/contrib/20261025T1250-c11-active-nematic-no-repair`
 - **Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a side-11 population on 13 of 15 seeds within 4-7k steps; a planted side-11 loop (the residents' own kind) on the same seeds and patch leads to a side-4 takeover on only 2 of 15, both later and from spontaneous mutants** (positive): side-4 majority within 40k steps: invader arm 13/15 (4-7k steps after planting), neutral arm 2/15 (15k and 40k steps); discordant pairs 11 vs 0, one-sided sign test p=0.0005 `collective/contrib/20261025T1415-c16-evoloop-invasion`
 
 ## Corrections (29 contradicted claims)

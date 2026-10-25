@@ -4703,6 +4703,20 @@
   "first_seen": "2026-10-25T15:34Z",
   "tree": "b85d5b1d1a780bd964d7f7c0ed4d04f778174cb8"
  },
+ "20261025T1539-c15-intent-review-mwall": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:41Z",
+  "tree": "9d8a540c5211ba8d7974844acdf08e6046b07574"
+ },
+ "20261025T1539-c15-review-nem-norepair": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:41Z",
+  "tree": "254d132f6b08ceaf213420d78c8d86ba84960cfe"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
