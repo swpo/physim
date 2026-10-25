@@ -1,0 +1,6 @@
+rev/rerun/seed9/frames.npz frame 101: K total 6170, K in bilayer 0.65, bilayer area 0.126, amphiphile 4964
+rev/rerun/seed9/frames.npz frame 200: K total 6414, K in bilayer 0.65, bilayer area 0.132, amphiphile 5272
+fg/slowdk/seed9/frames.npz frame 101: K total 11962, K in bilayer 0.12, bilayer area 0.126, amphiphile 4886
+fg/slowdk/seed9/frames.npz frame 200: K total 12057, K in bilayer 0.13, bilayer area 0.122, amphiphile 4756
+fg/rerun/seed10/frames.npz frame 101: K total 0, K in bilayer 0.00, bilayer area 0.028, amphiphile 688
+fg/rerun/seed10/frames.npz frame 200: K total 0, K in bilayer 0.00, bilayer area 0.016, amphiphile 35
