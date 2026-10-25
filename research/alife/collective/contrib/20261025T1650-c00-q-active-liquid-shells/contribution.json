@@ -1,0 +1,34 @@
+{
+ "id": "20261025T1650-c00-q-active-liquid-shells",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Do chemically active droplets hollow into self-made liquid shells from noise, and does a shell's lumen hold a cargo better than a slow-diffusion twin?",
+ "summary": "Bauermann, Bartolucci, Boekhoven, Weber & J\u00fclicher (arXiv:2306.10852) and Bergmann et al. (Nat Commun 14, 6552, 2023) show that when an active droplet makes its material outside and degrades it inside, the core falls below the spinodal and hollows into a stable liquid shell. Many shells coexist, Ostwald ripening is suppressed, and large growing shells fold and split. The active-emulsion class has no hollow bodies, and the ledger's only self-made wall around cargo (the FCH shell) failed its slow-D twin. This is a second, non-amphiphile route to a wall, in a class that already swims and divides.",
+ "experiment": "Positive control (about 20 min). Bauermann et al.'s binary model:\n- f = b(c - c_dil)^2 (c - c_den)^2/(2 dc^2) and j = -Gamma(c) grad mu;\n- piecewise-linear reactions r = -k c + s in each phase, with a cubic interpolation between;\n- Fig. 1 parameters: b = kappa = 1, c_dil = 0, c_den = 1, eta = 0.003, eps = 0.19.\nExpected: a planted droplet stays a droplet at k = 0.0025 and hollows into a shell at k = 0.01. Use D_dil > D_den, which the text says facilitates shells; one figure caption appears to say the reverse.\n\nMain (about 45 min). Uniform start plus noise on 256^2 (the paper's 2D emulsions used 512^2), 2 seeds.\n- Detect shells as bodies with an enclosed hole (labkit holes or the Euler number).\n- Count shells against droplets; record shell lifetimes, the size at the mode-2 instability, and splits.\n\nCargo (about 20 min). Add a passive q produced at a rate proportional to the loss flux k c (mostly inside the droplets), with 10-100x lower mobility in the dense phase. W gate: lumen/bath >= 2 for most of a shell's life.\n\nControls:\n- equal q mobility in both phases (ablation);\n- a shell-free droplet with a uniformly slowed q (slow-D twin);\n- linear diffusion in place of Cahn-Hilliard (expect no shells).",
+ "slug": "active-liquid-shells",
+ "target": [
+  "S",
+  "I",
+  "B",
+  "W"
+ ],
+ "class": "active-emulsion",
+ "priority": 3,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Bauermann, Bartolucci, Boekhoven, Weber & J\u00fclicher, Formation of liquid shells in active droplet systems, arXiv:2306.10852 (2023). The synthesizer re-opened the abstract and HTML (Fig. 1 parameters). The arXiv page shows no journal reference; PRR 5, 043246 comes from a search listing.",
+   "url": "https://arxiv.org/html/2306.10852v1"
+  },
+  {
+   "cite": "Bergmann et al., Liquid spherical shells are a non-equilibrium steady state of active droplets, Nat Commun 14, 6552 (2023); opened by the prior-art and metabolism sweeps.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10582082/"
+  }
+ ],
+ "notes": "Citation fix: the journal reference for Bauermann et al. is now confirmed from the publisher page. It is Phys. Rev. Research 5, 043246 (published 14 Dec 2023), doi:10.1103/PhysRevResearch.5.043246, https://link.aps.org/doi/10.1103/PhysRevResearch.5.043246, and should be cited alongside arXiv:2306.10852. Corrected summary: Bauermann, Bartolucci, Boekhoven, Weber & J\u00fclicher (Phys. Rev. Research 5, 043246, 2023; arXiv:2306.10852) show the following in a binary Cahn-Hilliard model with piecewise-linear turnover. When the dense-phase turnover is raised, the droplet core falls below the spinodal and hollows into a stable liquid shell. In emulsions seeded with random droplets and shells, many shells coexist and Ostwald ripening is suppressed. Growing shells in an unbounded system go through an l = 2 shape instability, fold and split. Bergmann et al. (Nat Commun 14, 6552, 2023) confirm the mechanism experimentally in fueled coacervates. Activation happens mostly outside the droplet and deactivation inside, which depletes the core and leaves a stationary shell. Their model predicts that droplets and shells can coexist, but each microreactor showed only one object. Whether shells form from a uniform noisy start is untested in either paper. Fig. 1 uses equal mobilities; D_dil > D_den is suggested in the text as making shells easier. Citation check: https://pmc.ncbi.nlm.nih.gov/articles/PMC10582082/ partly: Opened. This is Bergmann, Bauermann, Bartolucci, Donau, Stasi, Holtmannsp\u00f6tter, J\u00fclicher, Weber & Boekhoven, 'Liquid spherical shells are a non-equilibrium steady state of active droplets', Nat Commun 14, 6552 (2023), doi:10.1038/s41467-023-42344-w.\n\nWhat it supports:\n- The hollowing mechanism: 'activation predominantly occurs outside, whereas deactivation occurs inside the droplets.'\n- A depleted"
+}
