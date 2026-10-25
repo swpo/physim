@@ -1,0 +1,5 @@
+t=4000 cells=26 N=4168 rimcore=1.51 rimout=19.21 area=40 y=1.000 (16s)
+t=8000 cells=28 N=4711 rimcore=1.53 rimout=19.93 area=42 y=1.000 (31s)
+t=12000 cells=28 N=4442 rimcore=1.54 rimout=26.78 area=44 y=1.000 (48s)
+t=16000 cells=29 N=4502 rimcore=1.53 rimout=24.62 area=42 y=1.000 (65s)
+t=20000 cells=31 N=4720 rimcore=1.58 rimout=30.89 area=46 y=1.000 (82s)

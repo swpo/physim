@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1255-c11-review-lipid2d",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1117-c12-lipid-2d-no-vesicles#finding",
+  "title": "Review of c12's lipid-2d no-vesicles negative: replicates on fresh seed 3 (default and half-density settings to t=2400: open ribbons, H1 = 0 at every threshold)",
+  "summary": "Ran the lipid-2d sighting's world.py on seed 3 from the random lipid gas with labkit to t=2400 (8000 frames) at the default setting (v4, kT 0.55) and at half density (v6: L=110, kT 0.6, wc 1.8). Both form bilayer ribbons by t~200 that lengthen, bend and occasionally join (v6 sheet), but no ribbon closes: labkit's persistent homology of the lipid field at the final frame has H1 = 0 at tau 0.1/0.25/0.5 in both runs and no component with a hole (H0 76 and 69 pieces at tau 0.1). This matches the finding's 0-1 small enclosures in its non-jammed runs.",
+  "parents": ["20261025T1117-c12-lipid-2d-no-vesicles"],
+  "class": "lipid-particle",
+  "world": "research/alife/collective/contrib/20261025T1025-c12-lipid-2d-sighting/world.py",
+  "evidence": ["rerun/v6/seed3/sheet.png", "rerun/v6/seed3/FACTS.md", "rerun/v4/seed3/FACTS.md"],
+  "review_of": "20261025T1117-c12-lipid-2d-no-vesicles",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["B"],
+    "observations": {"B": "rerun/v6/seed3/sheet.png t=200-2400: open bilayer ribbons, none closed; FACTS (both runs): H1 [0, 0, 0], components with a hole 0"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "default: no enclosure"}, {"seed": 3, "result": "half density: no enclosure"}],
+    "same_individuals": true,
+    "controls_run": {"B": "two of the finding's parameter points on a fresh seed"},
+    "class_confirmed": true,
+    "limitation": "Two of seven settings, to t=2400 rather than 6000, and I used labkit's homology on the rendered field rather than holes.py on particle positions. labkit's segmentation reports 0 components for the default run (threshold issue) although the field has ribbons (H0 = 76)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

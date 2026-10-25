@@ -1,0 +1,26 @@
+{
+  "id": "20261025T1250-c13-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Review of lab 1's membrane_evo L7: on fresh seeds 21 and 22 high-yield K2 ends with more biomass than its identical-event twin (0.93 vs 0.46, 0.78 vs 0.30), but the share is carried by one or two giant bodies, collapses at single back-flips, and every up-arm K2 birth is a disk cut",
+  "summary": "Verdict written before reading other reviews. I ran evotrack (copied, plus a birth-cause ledger: a birth counts as disk-associated when a death disk hit the parent in the same 100-step census) on membrane_evo_up (b2=1.3b) and its identical-event twin (b2=b) on new seeds 21 and 22 to t=40000, and a labkit pack of the up arm on seed 21. Final K2 biomass share up/twin: 0.93/0.46 and 0.78/0.30. K2 births up/twin 10/7 and 4/9, of which disk-associated 10/7 and 4/7; K2 deaths 1/6 and 1/5; K1 births are 70-90% disk-associated in all four runs. share_c13.png: after each K1->K2 flip the up-arm share rises steeply (0.26 -> 0.93 in 6000 t on seed 21), but it drops to ~0 at t~33000 (seed 21) and at t~16000, ~21000 and 22000-35000 (seed 22) when a back-flip or disk hits the one giant K2 body; rerun/seed21/sheet.png shows K2 as one or two domain-scale bodies from t~26000. The twin's share drifts at 0.1-0.5.",
+  "parents": ["lab1-autopoiesis-membrane-evo"],
+  "class": "phase-field",
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "evidence": ["share_c13.png", "rerun/seed21/sheet.png", "data/bc_up_s21.json", "data/bc_twin_s21.json", "data/bc_up_s22.json", "data/bc_twin_s22.json"],
+  "verdicts": [{"cid": "c1", "verdict": "Weak",
+    "supported": ["S", "I", "D"],
+    "observations": {
+      "S": "rerun/seed21/sheet.png t=0: noise over the whole domain; walled cells by t=1600",
+      "I": "rerun/seed21/sheet.png t=8800-24200: 13-15 walled cells that keep their identity between disk events",
+      "D": "rerun/seed21/FACTS.md: 14 persistent splits, max generation 3, merge/split 0.24; but data/bc_*.json: 70-100% of births have a disk hit on the parent in the same census",
+      "H": "share_c13.png: final K2 share up > twin on both seeds, with steep rises after each flip, but the share is held by 1-2 giant bodies and collapses at single flip or disk events; K2 births are not higher in the up arm on seed 22 (4 vs 9)"},
+    "replicated": true, "seed": 21,
+    "seeds_run": [{"seed": 21, "result": "up > twin at t=40000 (0.93 vs 0.46); labkit pack"}, {"seed": 22, "result": "up > twin at t=40000 (0.78 vs 0.30), but up K2 absent t=22000-35000 while the twin kept 0.28-0.36"}],
+    "same_individuals": false,
+    "controls_run": {"H": "identical-event twin membrane_evo (b2=b) on seeds 21 and 22 (data/bc_twin_s21.json, data/bc_twin_s22.json); birth-cause ledger evotrack_bc.py"},
+    "class_confirmed": true,
+    "limitation": "Two seeds only. The up arm's advantage is real as biomass growth (high-yield bodies grow larger and survive disks: K2 deaths 1 vs 5-6), but it is not selection among many individuals: K2 is one or two domain-scale bodies, the final share depends on when the last flip landed (flips hit cells by area, so giant bodies are flipped more often: up flips 3 and 9 vs twin 4 and 5), and every up-arm K2 birth is a disk cut, so heredity runs through imposed fragmentation (the committee's disturbance-mediated reading holds on these seeds). The [L3] bracket is borderline: L rim/core 1.46 on seed 21. I did not run the down arm."}],
+  "compute": {"cpu_minutes": 40}
+}
