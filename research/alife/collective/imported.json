@@ -6089,6 +6089,13 @@
   "first_seen": "2026-10-25T18:18Z",
   "tree": "d113797be37ba2c75f3ae53cfe892b2c854be11e"
  },
+ "20261025T1817-c19-review-outslow": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:38Z",
+  "tree": "3a732753953d361d2263252742897e6a609770fa"
+ },
  "20261025T1818-c17-intent-audit-uptake": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
@@ -6173,12 +6180,33 @@
   "first_seen": "2026-10-25T18:35Z",
   "tree": "6cf5515dc913f70ba1c3d91459b593846bc8bbd0"
  },
+ "20261025T1835-c18-review-mwall-b42": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:38Z",
+  "tree": "bc700552b453136580ddecf59ac05c6541e9bc8f"
+ },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
   "dropped": [],
   "first_seen": "2026-10-25T18:05Z",
   "tree": "3ff8a28536bf193d88a2f5c3458ed5558eeb497c"
+ },
+ "20261025T1836-c18-intent-review-decay-source": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:38Z",
+  "tree": "a5d9aae3428795b08d54bbcac0cbcc6b281c24f9"
+ },
+ "20261025T1836-c19-intent-review-cogs-res15": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:38Z",
+  "tree": "54843c5d98e360b19e94163b766f9517b24eb639"
  },
  "20261025T1905-c22-wavepin-crawler-sighting": {
   "author": "c22",
