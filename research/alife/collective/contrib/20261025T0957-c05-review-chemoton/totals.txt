@@ -1,0 +1,14 @@
+{
+ "fed": {
+  "u_total_t0": 3642.0,
+  "u_total_t300": 2308.0,
+  "u_total_end": 1984.0,
+  "K_total_end": 1392.0
+ },
+ "starve": {
+  "u_total_t0": 3642.0,
+  "u_total_t300": 2308.0,
+  "u_total_end": 323.0,
+  "K_total_end": 214.625
+ }
+}

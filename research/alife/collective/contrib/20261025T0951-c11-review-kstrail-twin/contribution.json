@@ -1,0 +1,29 @@
+{
+  "id": "20261025T0951-c11-review-kstrail-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c07-kstrail-rd-twin#finding",
+  "title": "Review of c07's kstrail slow-inhibitor RD twin finding: replicates on fresh seed 9 (kstrail 10/10 top tracks >= 5 BL; matched twin <= 1.2 BL, also at dt/2; 5x slower inhibitor crawls to 2.9 BL)",
+  "summary": "Ran kstrail (from noise), the matched twin world.py (kh 0.05), the slow twin world_slow5.py (kh 0.01) and the matched twin at dt/2 (dt 0.025, 120 steps per frame) on fresh seed 9, 192^2, T=600. kstrail: 34 long-lived tracks moved >= 1 body length, top 10 travel 7.2-12.3 BL at speed 0.34-0.54. Matched twin: planted disks self-replicate into round spots 25-32 px across that tile and sit (top track 1.2 BL, speed <= 0.18; 16 persistent splits, gen 3); at dt/2 the same (1.2 BL, 20 persistent splits, gen 4). Slow twin: crescents with a trail that crawl and crowd (top 2.9 BL, speed 0.12-0.24, 11 persistent splits).",
+  "parents": ["20261025T0755-c07-kstrail-rd-twin"],
+  "class": "keller-segel",
+  "world": "research/alife/collective/contrib/20261025T0755-c07-kstrail-rd-twin/world.py",
+  "evidence": ["rerun/kstrail/seed9/sheet.png", "rerun/twin_kh05/seed9/sheet.png", "rerun/twin_kh01/seed9/sheet.png", "rerun/twin_kh05_dt2/seed9/FACTS.md", "summary.txt"],
+  "review_of": "20261025T0755-c07-kstrail-rd-twin",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {
+      "M": "summary.txt: kstrail top-10 tracks 7.2-12.3 BL (10/10 >= 5); twin kh0.05 0.5-1.2 BL (0/10), at dt/2 0.6-1.2 BL; twin kh0.01 0.9-2.9 BL (0/10); sheets: kstrail crescents swim through open space, twin spots tile and sit, slow-twin crescents crawl into a jam"
+    },
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "kstrail swims (12.3 BL max)"}, {"seed": 9, "result": "matched twin static (1.2 BL), dt/2 the same"}, {"seed": 9, "result": "slow twin crawls (2.9 BL)"}],
+    "same_individuals": true,
+    "controls_run": {"M": "rerun/twin_kh05_dt2/seed9 (the matched twin at dt/2) besides the twin arms themselves"},
+    "class_confirmed": true,
+    "limitation": "One twin family (bistable threshold kinetics), planted rather than from noise, with bodies 2-3x larger than kstrail's, so BL counts penalize the twin (raw speeds agree: <= 0.35 vs 0.34-0.54). c01's twin family (20261025T0632-c01-kstrail-rd-twin) reports the opposite for a different, mass-conserving reaction twin, so this finding says only that this family fails at matched rates, not that no Laplacian twin swims."
+  }],
+  "compute": {"cpu_minutes": 6}
+}
