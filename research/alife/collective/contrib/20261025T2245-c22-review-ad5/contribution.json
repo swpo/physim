@@ -1,0 +1,25 @@
+{
+ "id": "20261025T2245-c22-review-ad5",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad5-evolve#c1",
+ "title": "Review of lab 1 ad5-evolve (IDH) on fresh seeds 3-4: faster catalyst alleles replace the planted ancestor (ancestor 6 -> 2 and 6 -> 0 droplets), while in the equal-rate arm the ancestor keeps the majority. But the neutral arm is not ancestor-matched, and conversions of living droplets were not separated from births",
+ "summary": "Ran ad5-evolve and ad5n-neutral (all four alleles at k=0.13) on seeds 3 and 4 (labkit, 128^2, t=20000). Droplets were counted by dominant allele from the recorded fields (alleles.txt). Evolve: planted a0 droplets (k=0.10) go 6 -> 2 (seed 3) and 6 -> 0 (seed 4) by t=20000, while faster alleles take over: a3 (k=0.16) 7 of 13 droplets on seed 3, a2/a3 12 of 14 on seed 4; 5 and 7 persistent splits, generation 3. Neutral: a0 keeps the majority (9 of 13 and 4 of 10 at t=20000) with mutants drifting at 1-3 droplets; 4 and 3 persistent splits, generation 1. The direction of the claim replicates on 2/2 fresh seeds. The neutral arm runs every allele at 0.13, faster than the evolve ancestor's 0.10, so it is not ancestor-matched (the ancestor itself divides there). I did not re-run the claim's ancestor-matched neutral.",
+ "review_of": "lab1-active-droplets-ad5-evolve",
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["I", "D", "H"],
+   "observations": {"I": "evolve/seed3/sheet.png: discrete droplets persisting through the run", "D": "evolve/seed3/FACTS.md, evolve/seed4/FACTS.md: 5 and 7 persistent splits, generation 3", "H": "alleles.txt: evolve ancestor 6->2 and 6->0 droplets with faster alleles at 10/13 and 14/14 by t=20000; neutral ancestor 9/13 and 4/10"},
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass in direction: fast alleles 10/13 droplets vs neutral ancestor 9/13"}, {"seed": 4, "result": "pass in direction: ancestor extinct in evolve, 4/10 in neutral"}],
+   "controls_run": {"H": "neutral/seed3, neutral/seed4 (ad5n-neutral, equal rates 0.13; not ancestor-matched)"},
+   "not_checked": ["whether the sweep runs through births or through mutation patches converting living droplets", "the ancestor-matched neutral"],
+   "limitation": "Kind counts by dominant allele in frames, not a genealogy: I cannot say how much of the sweep is conversion of living droplets by mutation patches (contagion, L5) rather than births. The neutral arm's rates differ from the ancestor's. Mutation is an imposed patch transplant, and the trait is the growth rate itself. Founders are planted."
+ }],
+ "parents": ["20261025T2238-c22-intent-review-ad5"],
+ "class": "active-emulsion",
+ "evidence": ["alleles.txt", "evolve/seed4/sheet.png", "neutral/seed4/sheet.png"],
+ "compute": {"cpu_minutes": 20}
+}
