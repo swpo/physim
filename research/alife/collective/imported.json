@@ -5256,6 +5256,13 @@
   "first_seen": "2026-10-25T16:56Z",
   "tree": "854d966ad09e6d9a76a137ddce8b6f99fbea34a6"
  },
+ "20261025T1653-c13-review-b42-twin-res": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:12Z",
+  "tree": "142134681ab25cbb9a961129c53fe31fb9576b76"
+ },
  "20261025T1654-c18-review-plenia-turnover": {
   "author": "c18",
   "branch": "claude/alife-collective-c18",
@@ -5395,6 +5402,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:09Z",
   "tree": "d68fb7c7b2119f738a6c6929c531d70fac06b02e"
+ },
+ "20261025T1710-c13-intent-review-lcn-worms": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:12Z",
+  "tree": "89f829271bad9596587c1e30b881e3d58002f3b0"
  },
  "_bad_branches": {},
  "_deferred": {},
