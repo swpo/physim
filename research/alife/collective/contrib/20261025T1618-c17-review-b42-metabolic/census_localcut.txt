@@ -1,0 +1,23 @@
+== localcut23/seed2
+t=59412: cells 34, target area 381 K 106.5, other cells within r+12: 6 (areas [67, 86, 481, 80, 245, 283]), S in disk 0.375, S outside 0.541
+t=60000: cells 34, target area 358 K 103.4, other cells within r+12: 6 (areas [60, 88, 450, 75, 272, 313]), S in disk 0.394, S outside 0.542
+t=60588: cells 33, target area 0 K 0.0, other cells within r+12: 6 (areas [61, 89, 449, 90, 266, 300]), S in disk 0.620, S outside 0.545
+t=61176: cells 33, target area 0 K 0.0, other cells within r+12: 6 (areas [74, 105, 489, 100, 284, 304]), S in disk 0.732, S outside 0.534
+t=62353: cells 33, target area 0 K 0.0, other cells within r+12: 6 (areas [52, 114, 464, 90, 278, 335]), S in disk 0.728, S outside 0.535
+t=63529: cells 35, target area 0 K 0.0, other cells within r+12: 6 (areas [60, 97, 230, 86, 299, 302]), S in disk 0.705, S outside 0.533
+t=65882: cells 35, target area 0 K 0.0, other cells within r+12: 6 (areas [259, 52, 90, 79, 290, 329]), S in disk 0.703, S outside 0.533
+t=70000: cells 38, target area 0 K 0.0, other cells within r+12: 6 (areas [279, 51, 108, 79, 256, 356]), S in disk 0.694, S outside 0.528
+== localcut13/seed2
+t=59412: cells 34, target area 370 K 100.8, other cells within r+12: 5 (areas [228, 311, 85, 86, 66]), S in disk 0.352, S outside 0.539
+t=60000: cells 34, target area 364 K 102.4, other cells within r+12: 5 (areas [197, 289, 75, 88, 65]), S in disk 0.354, S outside 0.539
+t=60588: cells 33, target area 0 K 0.0, other cells within r+12: 5 (areas [282, 161, 75, 96, 73]), S in disk 0.650, S outside 0.544
+t=61176: cells 33, target area 0 K 0.0, other cells within r+12: 5 (areas [328, 205, 105, 100, 94]), S in disk 0.781, S outside 0.539
+t=62353: cells 33, target area 0 K 0.0, other cells within r+12: 6 (areas [276, 389, 84, 65, 103, 92]), S in disk 0.758, S outside 0.534
+t=63529: cells 34, target area 0 K 0.0, other cells within r+12: 5 (areas [410, 250, 88, 83, 81]), S in disk 0.748, S outside 0.532
+t=65882: cells 36, target area 0 K 0.0, other cells within r+12: 5 (areas [321, 270, 74, 97, 73]), S in disk 0.719, S outside 0.530
+t=70000: cells 34, target area 0 K 0.0, other cells within r+12: 6 (areas [336, 291, 94, 87, 93, 114]), S in disk 0.732, S outside 0.532
+== fed/seed2 (target cell 23)
+t=59664: cells 34, target area 381 K 106.5, other cells within r+12: 6 (areas [67, 86, 481, 80, 245, 283]), S in disk 0.375, S outside 0.541
+t=60504: cells 34, target area 348 K 94.7, other cells within r+12: 6 (areas [56, 82, 451, 94, 272, 307]), S in disk 0.394, S outside 0.539
+t=63866: cells 35, target area 328 K 95.8, other cells within r+12: 6 (areas [100, 73, 193, 98, 300, 340]), S in disk 0.411, S outside 0.538
+t=69748: cells 40, target area 354 K 95.9, other cells within r+12: 6 (areas [371, 68, 84, 120, 198, 332]), S in disk 0.397, S outside 0.534
