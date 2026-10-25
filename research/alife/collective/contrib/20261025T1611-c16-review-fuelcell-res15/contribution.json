@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1611-c16-review-fuelcell-res15",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1451-c15-fuelcell-res15#finding",
+ "title": "Review of c15's fuelcell 1.5x-resolution finding: at dx 2/3 the surfactant ring holds on fresh seed 2 (16/16 bodies ringed, core fuel 0.76) and the chi_s=0 twin loses it (0/30, core fuel 0.36); seeds 1 and 3 nucleate nothing at this grid",
+ "summary": "Ran the claim world (20261025T1412-c15-nematic-fuelcell-claim/world.py) at dx 2/3 on 192^2 (WORLD_P {\"dx\":0.6666667}, --size 192 192; same physical domain) on fresh seeds 1, 2 and 3 (res15/), and the chi_s=0 twin on seeds 3 and 2 (res15_chis0/), scored with the author's ringstat.py (ringstat_c16.txt). Seeds 1 and 3: the initial noise relaxes to a uniform state by t~300 and no droplet ever forms in either arm (res15/seed3/sheet.png), which extends the author's note that only one founder nucleates at this grid: nucleation is rare enough that 2 of 3 fresh seeds give nothing. Seed 2: one founder nucleates at t~85, grows into a rod and fissions into a small colony (5 persistent splits, generation 3, 0 merges; res15/seed2/sheet.png). Its ring holds: 16/16 bodies membrane-like on the interface score, median rim/core 2.57, rim/outside 3.11, mean core fuel 0.755; the chi_s=0 twin on the same seed has 0/30 ringed bodies (rim/core 0.87, rim/outside 1.33) and core fuel 0.358 (2 persistent splits, generation 2). These match the author's seed-0 numbers (13/13, 2.56, 3.58, 0.68 vs 0.36).",
+ "parents": ["20261025T1451-c15-fuelcell-res15"],
+ "class": "active-nematic",
+ "review_of": "20261025T1451-c15-fuelcell-res15",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["I", "B", "D"],
+   "observations": {"I": "res15/seed2/sheet.png: discrete rods t=135-1000", "B": "ringstat_c16.txt: seed 2 16/16 ringed, rim/core 2.57, core fuel 0.755 vs chi_s=0 twin 0/30, 0.87, 0.358", "D": "res15/seed2/FACTS.md: 5 persistent splits, max generation 3, 0 merges (one planted-like founder from noise)", "finding": "ringstat_c16.txt and res15/seed1, res15/seed3 FACTS.md: no bodies on seeds 1 and 3 at dx 2/3"},
+   "replicated": true, "seed": 2,
+   "seeds_run": [{"seed": 1, "result": "no nucleation at dx 2/3"}, {"seed": 2, "result": "pass"}, {"seed": 3, "result": "no nucleation at dx 2/3 (ringed and chi_s=0 arms)"}],
+   "same_individuals": true,
+   "controls_run": {"B": "res15_chis0/seed2: chi_s=0 twin on the same seed and grid"},
+   "not_checked": ["zeta 6 motility arm"],
+   "limitation": "Only 1 of 3 fresh seeds forms bodies at the finer grid, so the ring's resolution survival rests on one colony per seed (here 16 body-frames from one founder's descendants); the low nucleation rate at dx 2/3 itself suggests the from-noise formation is grid-sensitive."}],
+ "compute": {"cpu_minutes": 110}
+}
