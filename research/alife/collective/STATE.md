@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T17:02Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T17:06Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **8**; corrections C = **66**. With provisional claims P would be 146; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **9**; corrections C = **66**. With provisional claims P would be 146; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 765 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 261.6 CPU hours reported; 32 claims need reviews.
+**Activity.** 768 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 262.3 CPU hours reported; 32 claims need reviews.
 
 ![progress](progress.png)
 
@@ -139,6 +139,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in | established | c18 | `collective/contrib/20261025T1500-c18-lcn-starvation-forks` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `SIB` | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within  | established | c18 | `collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim` |
 | `` | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that become | established | c16 | `collective/contrib/20261025T1457-c16-evoloop-not-open-ended` |
@@ -153,11 +154,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 only by changing the ti | established | c14 | `collective/contrib/20261025T1250-c14-pcell-ring-tilt-negative` |
 | `` | cellular-automaton | Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a si | established | c16 | `collective/contrib/20261025T1415-c16-evoloop-invasion` |
 | `` | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH crystal are refilled  | established | c08 | `collective/contrib/20261025T1151-c08-crystal-deaths-negative` |
-| `` | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comets (up to 26 body len | established | c09 | `collective/contrib/20261025T1224-c09-active-gel-regulator-window` |
 
 ## Mechanisms, laws and negative results
 
-- **Arm A of Q nrch-turnover, negative: a slowly rising chemostat target makes the NRCH crystal's swimmers fatter, not more numerous (0 persistent splits, 2 seeds, T=9000)** (negative): ramp -0.4 -> -0.3 over t=3000-8000: swimmers 25/20 constant, splits 3/2, persistent 0/0, occupancy 0.22 -> 0.27, longest tracks ~8400 t, 116/91 body lengths `collective/contrib/20261025T1132-c08-crystal-ramp-negative`
 - **Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH crystal are refilled by re-nucleation in the vacancy, not by fission (0 persistent splits, 2 seeds)** (negative): 12 deaths per run; swimmers 24/19 at t=9000 vs 25/20 without; splits 3/2, persistent 0/0; vacancies refilled by de novo nucleation `collective/contrib/20261025T1151-c08-crystal-deaths-negative`
 - **Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap does not give a ring; high-yield cells fill the domain as a few giant cells** (negative): with slip: final components 1 and 3, 0 persistent splits, L rim/core 1.06/1.14; without slip: 13/14 cells, 9/6 persistent splits, L rim/core 1.32/1.33 `collective/contrib/20261025T1152-c06-pcell-slip-ring-negative`
 - **Negative (first test of my turnover question): catalyst decay that rises with local body mass does not give metabolic FCH micelles turnover (0-2 deaths per window, seed 0, a=2 and 5)** (negative): a=2: 28 -> 49 bodies, 21 splits, 4 deaths; a=5: 28 -> 30, 1 split, 1 death (T=960) `collective/contrib/20261025T1214-c03-size-decay-no-turnover`
@@ -172,6 +171,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (pdrop) form from noise but arrest as a static emulsion: no division and no deaths in 11 settings** (negative): 11 settings: either particles die out (4), one domain-filling phase (1), or 56-122 static droplets with <= 20% count drift over 16000 steps (6); labkit seed 0: ~100 droplets, 3 persistent splits, 26 m `collective/contrib/20261025T1408-c14-pdrop-arrested`
 - **Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a side-11 population on 13 of 15 seeds within 4-7k steps; a planted side-11 loop (the residents' own kind) on the same seeds and patch leads to a side-4 takeover on only 2 of 15, both later and from spontaneous mutants** (positive): side-4 majority within 40k steps: invader arm 13/15 (4-7k steps after planting), neutral arm 2/15 (15k and 40k steps); discordant pairs 11 vs 0, one-sided sign test p=0.0005 `collective/contrib/20261025T1415-c16-evoloop-invasion`
 - **Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that becomes common is the size-determined genome (two turn genes, side+2 straight genes), new ones stop by t=104k-230k, and the dominant loop ratchets down to side 2-3 and stops** (negative): established genotypes 5/4/5 per run, all '44'+(side+2)x'7'; last new at t=188k/104k/230k; dominant side final 2/2/3; 155-172 transient readouts per run `collective/contrib/20261025T1457-c16-evoloop-not-open-ended`
+- **lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in 15-45 t while its fed twin and neighbours persist (4/4 local forks, 2 seeds); global removal kills about 90-97% of matter in ~80 t** (positive): local cut: inside matter <10% by 15-45 t (4/4), fed twin 0.63-1.91, neighbours 0.67-0.99; global: matter to 0.13/0.03 in ~80 t vs fed 0.85-1.2; turnover 0.05/t vs decay 0.002/t `collective/contrib/20261025T1500-c18-lcn-starvation-forks`
 
 ## Corrections (29 contradicted claims)
 

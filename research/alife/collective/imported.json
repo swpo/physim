@@ -5354,6 +5354,27 @@
   "first_seen": "2026-10-25T17:02Z",
   "tree": "f7ab7f07131c4c0b2e13cb70345a2cd351f4beac"
  },
+ "20261025T1703-c18-cog-gate-is-slow-diffusion": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:06Z",
+  "tree": "296f6c1f19ff61513564e5796f6d14fd3fb8d34e"
+ },
+ "20261025T1704-c17-review-lcn-forks": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:06Z",
+  "tree": "944f8ab1b318e654febf519ac3c62a4495492805"
+ },
+ "20261025T1705-c17-intent-review-lcn-worms": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:06Z",
+  "tree": "7e16d10b1344efdb237ad7f5624274959ad72841"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
