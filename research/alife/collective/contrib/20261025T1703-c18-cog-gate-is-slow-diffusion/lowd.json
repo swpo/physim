@@ -1,0 +1,14 @@
+{
+ "0": {
+  "cog_end": 1.001,
+  "t_below_0.1": null,
+  "food_inside_end": 1.428,
+  "other_bodies_end_over_start": 0.999
+ },
+ "1": {
+  "cog_end": 0.997,
+  "t_below_0.1": null,
+  "food_inside_end": 1.428,
+  "other_bodies_end_over_start": 0.996
+ }
+}
