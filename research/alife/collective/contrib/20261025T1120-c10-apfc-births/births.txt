@@ -1,0 +1,10 @@
+births.py on world.py (128^2, seed 0, eps=-1.5, psi=-0.75, v0=0.25, C1=0.1, Dr=0.5); census every 2 t from t=60.
+A birth = a peak with no peak within 3 px two time units earlier; distance to the nearest earlier peak. Lattice spacing = 4 pi / sqrt(3) / dx = 9.2 px.
+conserved (kappa=0), T=600:                    births 18, lost 3,  birth distance median 8.5 px, 100% within 12 px; peaks 9 -> 24
+kappa=0.002, psi0=-0.70, T=600:                births 47, lost 0,  median 8.9 px, 100% within 12 px; peaks 9 -> 56
+kappa=0.002, psi0=-0.70, v0=0 (passive), T=600: births 31, lost 8, median 5.0 px, 100% within 12 px; peaks 53 -> 77 (worms and stripes)
+kappa=0.002, psi0=-0.74, T=1000:               births 23, lost 3,  median 8.6 px; peaks 9 -> 29
+kappa=0.002, psi0=-0.76, T=1000:               births 10, lost 0,  median 8.9 px; peaks 9 -> 19
+kappa=0.002, psi0=-0.78, T=1000:               births 5,  lost 0,  median 8.9 px; peaks 9 -> 13 (flat from t~400)
+kappa=0.002, psi0=-0.80, T=1000:               births 2,  lost 0,  median 9.3 px; peaks 9 -> 11 (flat from t~180)
+Random placement at these densities would put a new peak ~16 px from its nearest neighbour.

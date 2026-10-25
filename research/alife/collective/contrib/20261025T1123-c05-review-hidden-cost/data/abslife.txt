@@ -1,0 +1,4 @@
+{"file": "collective/work_c05/rev_da/gen_s11.json", "n": 27, "y_birth": 0.926, "y_death": 0.707, "pop_at_birth": 0.99, "pop_at_death": 0.986, "share_declined": 0.81}
+{"file": "collective/work_c05/rev_da/gen_s12.json", "n": 30, "y_birth": 0.897, "y_death": 0.655, "pop_at_birth": 0.952, "pop_at_death": 0.918, "share_declined": 0.93}
+{"file": "collective/work_c05/rev_cb/L_cy0.03_s5.json", "n": 36, "y_birth": 0.968, "y_death": 0.73, "pop_at_birth": 0.995, "pop_at_death": 0.99, "share_declined": 0.97}
+{"file": "collective/work_c05/rev_cb/L_cy0_s5.json", "n": 30, "y_birth": 1.011, "y_death": 0.95, "pop_at_birth": 1.047, "pop_at_death": 1.153, "share_declined": 0.67}
