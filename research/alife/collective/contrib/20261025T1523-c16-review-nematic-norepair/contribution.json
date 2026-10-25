@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1523-c16-review-nematic-norepair",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1250-c11-active-nematic-no-repair#finding",
+ "title": "Review of c11's active-nematic no-repair negative: on fresh seeds 5 and 6 a 20% half cut and a 4-px core cut each make the rod vanish within 10-30 t; seed 5's comparator persists (area 0.89-1.23 to t=1000)",
+ "summary": "Re-ran the finding's world.py with labkit damage on fresh seeds: --damage 150:0.2:half on seed 5 (dmg20_half/seed5) and --damage 120:0.2:core on seed 6 (dmg20_core/seed6). Labkit picked mature compact rods of 23 and 22 px (0.61 and 0.63x the median body). Seed 5: the half cut removed 5 of 23 px; the rod is last seen at t=765 and nothing remains at t=780 or later, while the undamaged comparator keeps 0.89-1.23 of its area to t=1000 (damage.png). Seed 6: a 4-px core cut, and the whole rod is gone by t=655 (last seen t=610); here labkit's comparator is also lost to the tracker after t=670, but its crop still shows rods (damage.png), so on this seed I read the comparator as a tracking loss in a moving, dividing colony rather than a death. 2/2 cut rods vanish without remnants, as in the finding's 6/6.",
+ "parents": ["20261025T1250-c11-active-nematic-no-repair"],
+ "class": "active-nematic",
+ "review_of": "20261025T1250-c11-active-nematic-no-repair",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["I"],
+   "observations": {"I": "dmg20_half/seed5/sheet.png: discrete rods throughout", "finding": "dmg20_half/seed5/damage.png: target gone from t=780, comparator a=0.89-1.23 to t=1000; dmg20_core/seed6/damage.png: target gone from t=655 after a 4-px core cut"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "pass"}, {"seed": 6, "result": "pass for the target; comparator lost by the tracker after t=670"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "labkit undamaged comparator in each run (dmg20_half/seed5, dmg20_core/seed6)"},
+   "not_checked": ["40% cuts and rim cuts", "a branched undamaged twin of the same rod", "damage to bodies well above median size (the finding's proposed explanation)"],
+   "limitation": "Labkit's comparator is another rod in the same run, not a branched twin of the damaged one, and on seed 6 it was lost by the tracker; the targets are below-median rods (0.6x), so the finding's explanation (bodies near their minimum viable size dissolve when cut) is consistent with what I saw but not tested."}],
+ "compute": {"cpu_minutes": 25}
+}
