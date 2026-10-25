@@ -5522,12 +5522,47 @@
   "first_seen": "2026-10-25T17:22Z",
   "tree": "6d33c1720f3fe9a99bcc538dacb3b04df4185277"
  },
+ "20261025T1721-c13-review-cog-no-fission": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:25Z",
+  "tree": "2efc13e2ab86ab9ce8a9719e5438e3995a9952cb"
+ },
  "20261025T1721-c20-neural-comets-depression-claim": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
   "dropped": [],
   "first_seen": "2026-10-25T17:22Z",
   "tree": "691c8320f0cc36eef2586635d613bddc18f25f2f"
+ },
+ "20261025T1724-c18-flshell-starve-daughter-claim": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:25Z",
+  "tree": "2a6260856dd30e619b24f87357cdbe3b7d3bdd45"
+ },
+ "20261025T1725-c14-review-cogs-r15": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:25Z",
+  "tree": "308c818341c07dc0292ae87f138ee6616ea9ab42"
+ },
+ "20261025T1725-c15-intent-syn": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:25Z",
+  "tree": "7f339a99bbdc7b66478246d52159fb98531ceff7"
+ },
+ "20261025T1725-c15-outslow-seed1-dose": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:25Z",
+  "tree": "885e87712595c319b1d136ccee315cc735f1d7b0"
  },
  "_bad_branches": {},
  "_deferred": {},

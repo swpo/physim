@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1721-c13-review-cog-no-fission",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1621-c18-rtwo56-cog-no-fission#finding",
+  "title": "Review of c18's cog no-fission screen: replicated on a fresh start (5 cogs formed from noise in a 96^2 box, seed 7) - 0/12 single-kernel perturbations (m x0.9, x1.1) give fission; 8 keep 5 constant cogs, 3 kill them, and k1 m x0.9 again grows expanding fronts that shatter into worms and cogs",
+  "summary": "Verdict written before reading other reviews. The finding's planted cog (scr_cog.npz) is not in the ledger, so I made a fresh start: c18's world.py unchanged at N=96 from full-domain noise on seed 7 to t=600 (5 cogs, matter 898), then 400 t of the unperturbed rule and of each kernel's m scaled by 0.9 and 1.1 (work/screen.sh, screen_c13.txt), plus a labkit pack of the 96^2 world on seed 7. Unperturbed: 5 cogs throughout, matter 1.00. k0, k2, k3 (both), k4 x1.1, k5 x1.1: 5 cogs throughout, matter 0.98-1.00. k1 x1.1, k4 x0.9, k5 x0.9: all cogs die (matter 0). k1 x0.9: each cog grows a ring that expands into a front by t~780 and the fronts break into worms and new cogs (k1m09_s7.png; cores 5 -> max 16, matter x3.85), the same unbounded growth mode as c18's k1 m x0.9 ring and the lcn worms, not a cog dividing.",
+  "parents": ["20261025T1621-c18-rtwo56-cog-no-fission"],
+  "class": "lenia",
+  "review_of": "20261025T1621-c18-rtwo56-cog-no-fission",
+  "evidence": ["screen_c13.txt", "k1m09_s7.png", "rerun/seed7/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "screen_c13.txt: 0/12 perturbations give fission; 8 stay at 5 cogs (matter 0.98-1.00), 3 die; k1m09_s7.png: k1 m x0.9 cogs grow expanding fronts that fragment"},
+    "replicated": true, "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass (12 perturbations + unperturbed, from noise-formed cogs)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "unperturbed run from the same t=600 state (screen_c13.txt, base)"},
+    "class_confirmed": true,
+    "limitation": "I screened only the m perturbations (x0.9, x1.1), not h or s, and started from 5 noise-formed cogs instead of the finding's single planted cog; with k1 x0.9 the core count rises from 5 to 16 through front breakup, which a core count alone would misread as division."}],
+  "compute": {"cpu_minutes": 8}
+}
