@@ -1,0 +1,24 @@
+{
+  "id": "20261025T1016-c09-active-gel-comets-claim",
+  "kind": "claim",
+  "mode": "explore",
+  "task": "F:active-gel",
+  "title": "active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths on a self-laid trail and die when their substrate is removed; none form without the gel flow (SIME, L4b+L4c[L2])",
+  "summary": "A compressible active gel (gamma v - eta lap v = grad sigma, sigma = zeta a/(1+a)/(1+rho b)) advects a stress generator a, which is made autocatalytically from a diffusing, regrowing substrate s and decays; a lays down a non-advected regulator b that weakens the stress. From white noise ~50 contractile peaks form by t=8, most starve, and 5-9 isolated comets persist from t~20 to the end at a constant ~5 px body (area 18-25 px), each a head with a b tail, moving 6-12 body lengths in t=180 (3 seeds); the population refills to ~10 by nucleation. Fork at t=120 with the substrate removed: all 5 (seed 0) and 7 (seed 1) comets are gone by t=130 while every comet of the fed twin survives. The same comets appear at dt/2 and at 1.5x resolution. With zeta=0 (no gel flow, same reactions and diffusion) nothing forms: uniform fields on 2 seeds.",
+  "parents": ["20261025T1002-c09-active-gel-fed-comets", "20261025T0934-c09-active-gel-comets"],
+  "class": "active-gel",
+  "world": "world.py",
+  "evidence": ["pack/seed0/sheet.png", "pack/seed0/tracks.png", "pack/seed1/sheet.png", "pack_starve/seed0/sheet.png", "starve_counts.txt", "motion_tracks.txt", "pack_zeta0/seed0/sheet.png", "pack_res15/sheet.png", "pack_dt2/sheet.png"],
+  "claims": [{
+    "cid": "c1",
+    "capabilities": ["S", "I", "M", "E"],
+    "rung": "L4b+L4c[L2]",
+    "statement": "On 3/3 seeds, comets that form from white noise persist as discrete bodies of constant size (~5 px, area 18-25 px) for 130-180 time units, swim 6-12 body lengths with the body plan kept (head plus regulator tail), and live on the substrate they consume: at a fork that removes the substrate (t=120, seeds 0 and 1) every comet dies within 10 time units while the fed twin keeps all of them.",
+    "track": "seed 0, track 88 (pack/seed0/tracks.png, motion_tracks.txt): formed by t=21, constant area ~21 px from t~40, path 50 px = 9.6 body lengths by t=200 in the fed run; in the starved fork (pack_starve/seed0) the same comet, identical up to t=120, is gone by t=130",
+    "evidence": ["pack/seed0/tracks.png", "motion_tracks.txt", "starve_counts.txt", "pack_starve/seed0/sheet.png"],
+    "controls_run": {"E": "pack_starve/ (seeds 0, 1: substrate removed at t=120 against the fed twin pack/seed0-1: 5 -> 0 and 7 -> 0 comets by t=130, fed 5 -> 11 and 7 -> 10)", "M": "pack_dt2/ (dt/2: 26 moving tracks, up to 9.2 body lengths) and pack_res15/ (1.5x grid: 24 moving tracks, up to 10.1 body lengths)"},
+    "bd_control": "pack_zeta0/ (zeta=0: no gel flow, the same reactions, substrate and diffusion): uniform on seeds 0 and 1, no individuals at all. This is an ablation of the non-diffusive operator; a stronger twin (an activator-inhibitor RD with a slow trail, as for kstrail) was not run."
+  }],
+  "limits": "The substrate dependence holds by construction (a is made only from s and decays), so E counts for the rung and is scored under mechanism. Comets are small (about 5 px, 2.5 length units) and the 1.5x resolution check keeps them at the same physical size. Early bodies arise from merges (all top tracks are born by merge in the first t~20) and new ones by nucleation; collisions fuse comets (merge/split 5-6), and there is no division. The motility is a self-repellent trail (as kstrail) with a contractile flow in place of chemotaxis; a slow-inhibitor RD twin might also swim. No B: the regulator tail is behind the head, not a boundary.",
+  "compute": {"cpu_minutes": 30}
+}

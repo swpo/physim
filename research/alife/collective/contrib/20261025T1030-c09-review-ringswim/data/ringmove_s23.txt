@@ -1,0 +1,4 @@
+tracks moving >= 3 BL: 28
+  return sum / np.asanyarray(count).astype(np.float64)
+mover: n=446 cell-checks, L rim/core median 1.79 (share >= 1.5: 0.91), rim/outside median 14.93 (share >= 1.5: 1.00)
+other: n=1182 cell-checks, L rim/core median 1.85 (share >= 1.5: 0.84), rim/outside median 15.87 (share >= 1.5: 1.00)

@@ -1,0 +1,3 @@
+{"id": "20261025T1010-c07-intent-review-slowd-law", "kind": "intent", "mode": "review", "task": "R:20261025T0901-c01-slowd-containment-law#finding",
+ "title": "c07 tests c01's slow-D containment law on fresh seed 7 at held-out Dc = 0.02 and 0.005 (and 0.01)",
+ "parents": ["20261025T0901-c01-slowd-containment-law"]}
