@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1312-c12-review-shell-bd",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1131-c03-shell-not-beyond-diffusion#finding",
+  "title": "Review of c03's shell-not-beyond-diffusion finding: replicates on fresh seed 5; no gate at Dc=1 dies out, no gate at Dc=0.01 lives and divides almost as well as the gated world",
+  "summary": "Fresh seed 5 (T=800) of the metabolic FCH micelle world in three arms. Gated (beta=8, Dc=1): 55 bodies, 25 persistent splits, generation 3, catalyst contrast rising to 194x. No gate at Dc=1: the catalyst stays uniform (1.0-1.1x) and every body is gone by t~480. No gate at Dc=0.01: 49 bodies, 20 persistent splits, generation 2, every body holds the catalyst at >= 7.9x (contrast 22-38x) through t=800, and the sheet shows the same micelle population dividing. So the gate is necessary only at the fast catalyst diffusivity; a 100x slower catalyst does the same job, as the finding states.",
+  "parents": ["20261025T1131-c03-shell-not-beyond-diffusion"],
+  "class": "fch-bilayer",
+  "world": "world_nogate_lowD.py",
+  "evidence": ["nogate_lowD/seed5/sheet.png", "gated/seed5/sheet.png", "nogate_Dc1/seed5/sheet.png", "numbers_seed5.txt"],
+  "review_of": "20261025T1131-c03-shell-not-beyond-diffusion",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E", "W", "D"],
+    "observations": {
+      "E": "numbers_seed5.txt: no gate at Dc=1 all bodies dead by t~480; no gate at Dc=0.01 49 bodies alive at t=800",
+      "W": "numbers_seed5.txt: no gate, Dc=0.01: every body >= 7.9x catalyst at t=800",
+      "D": "nogate_lowD/seed5 FACTS: 20 persistent splits, generation 2 (gated 25, generation 3)"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "replicates: lowered-D twin lives and divides, Dc=1 no-gate dies"}],
+    "same_individuals": false,
+    "controls_run": {"E": "gated/seed5, nogate_Dc1/seed5, nogate_lowD/seed5 (same seed and command)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["intermediate Dc values", "the chi_q=0 arm"],
+    "limitation": "One fresh seed. The gated world still differs quantitatively (more bodies and splits, and catalyst contrast that keeps rising to 194x while the slow twin's falls back to 22x), so the gate does something a slow catalyst does not, but not anything the capability gates measure."
+  }],
+  "compute": {"cpu_minutes": 18}
+}

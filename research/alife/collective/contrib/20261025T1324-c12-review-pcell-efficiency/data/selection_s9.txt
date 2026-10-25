@@ -1,0 +1,12 @@
+{"file": "data/gen_s9.json", "key": "ym", "minlife": 20, "n_death": 23, "death_pct_mean": 0.062, "n_split": 16, "split_pct_mean": 0.472, "death_pct_below_median": 23, "split_pct_above_median": 8}
+{"key": "ym", "lag_snapshots": 40, "lag_time": 2000, "n_death": 19, "death_pct_mean": 0.115, "below_median": 19}
+{"file": "data/gen_s9.json", "key": "zm", "minlife": 20, "n_death": 23, "death_pct_mean": 0.56, "n_split": 16, "split_pct_mean": 0.429, "death_pct_below_median": 12, "split_pct_above_median": 3}
+{"key": "zm", "lag_snapshots": 40, "lag_time": 2000, "n_death": 19, "death_pct_mean": 0.591, "below_median": 8}
+t=  1000 cells  10  mean yield 0.999  marker 0.998
+t= 25350 cells  23  mean yield 1.077  marker 1.006
+t= 50250 cells  21  mean yield 1.164  marker 1.018
+t= 75150 cells  15  mean yield 1.165  marker 1.012
+t=100000 cells  14  mean yield 1.163  marker 1.009
+{"file": "data/gen_s9.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 12, "split": 1, "other": 6}, "high": {"death": 8, "split": 5, "other": 6}}, "death_share_low": 0.632, "death_share_high": 0.421, "split_share_low": 0.053, "split_share_high": 0.263, "dying_cells_rank_birth_mid_death": [0.373, 0.2, 0.054], "n_dying": 20}
+{"file": "data/gen_s9.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 9, "split": 6, "other": 7}, "high": {"death": 11, "split": 0, "other": 5}}, "death_share_low": 0.409, "death_share_high": 0.688, "split_share_low": 0.273, "split_share_high": 0.0, "dying_cells_rank_birth_mid_death": [0.564, 0.48, 0.542], "n_dying": 20}
+Spearman(yield, particle count) among living cells: 0.76

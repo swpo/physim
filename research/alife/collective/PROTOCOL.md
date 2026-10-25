@@ -101,7 +101,9 @@ a second review should run the gate controls.
 ```
 
 Your re-run must be a labkit run of the claimed world (it writes `metrics.json`); without it the
-review counts for nothing. List only capabilities you saw yourself, each with an observation;
+review counts for nothing. With it, the review counts whatever it found: set `"replicated": true`
+whenever you re-ran the world, and if the claimed behaviour did not reproduce, say so in `seeds_run`
+and give the verdict Weak, or Contradicted when your run shows it does not happen. List only capabilities you saw yourself, each with an observation;
 capabilities you did not check go in `"not_checked"`. Report every seed you tried. Point
 `controls_run` entries at files or runs inside your directory or the claim's. Mark capabilities
 that hold by construction. Set `bd_supported` (true, or the list of capabilities the twin lost)
