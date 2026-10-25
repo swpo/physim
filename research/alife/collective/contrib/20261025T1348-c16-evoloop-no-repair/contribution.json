@@ -1,0 +1,17 @@
+{
+ "id": "20261025T1348-c16-evoloop-no-repair",
+ "kind": "finding",
+ "mode": "control",
+ "task": "F:evoloop",
+ "title": "Negative: evoloop loops do not repair; losing 2-4 core cells (1-5% of the loop) erases the genome and the loop dissolves within 300 steps (side-11 founders and evolved side-4 loops, 2 seeds each)",
+ "summary": "Wound test on the evoloop world of the claim 20261025T1256-c16-evoloop-claim. At t=20000 (side-11 loops, founders m=15) or t=5000 (side-4 loops, founders m=8), up to 10 mature closed loops per seed are wounded one at a time by setting k random core (state-1) cells to empty, each against an untouched twin branched from the same state (wound.py; summary.json). After 300 steps: side 11, k=1 leaves 7/16 alive, k=2 2/16, k=4 0/16 (twins alive 16/16 by construction of the comparison); side 4, k=1 2/8, k=2 1/8, k=4 1/8. A longer 600-step window for k=1 gives 2/6. woundstrip_s2_k2.png shows what happens: within 60 steps the wounded loop's core goes blank (its circulating genome is lost), leaving an empty sheath that dissolves, while the twin keeps its genome and keeps building. The claim's ablations (sheath removed, or 8 core cells removed) killed 16/16. So in this class individuals die from any wound above one cell; there is no repair, only replacement by reproduction.",
+ "parents": ["20261025T1256-c16-evoloop-claim"],
+ "class": "cellular-automaton",
+ "world": "world.py",
+ "evidence": ["woundstrip_s2_k2.png", "summary.json"],
+ "outcome": "negative",
+ "finding": {"operator": "evoloop transition table (Sayama 1999): structural dissolution of damaged loops", "capability": "R", "world": "collective/contrib/20261025T1348-c16-evoloop-no-repair/world.py", "necessary": false, "law": false,
+             "control": "untouched twin of each wounded loop branched from the same state; 2 seeds; wound sizes 1, 2 and 4 core cells; side-11 and side-4 loops",
+             "result": "alive after 300 steps: side 11 k=1 7/16, k=2 2/16, k=4 0/16; side 4 k=1 2/8, k=2 1/8, k=4 1/8; twins all alive; the wounded loop's genome blanks within ~60 steps"},
+ "compute": {"cpu_minutes": 25}
+}

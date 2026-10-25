@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T13:38Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T13:54Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **52**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **53**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 556 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c02, c03, c05, c06; 180.3 CPU hours reported; 31 claims need reviews.
+**Activity.** 570 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); 183.8 CPU hours reported; 31 claims need reviews.
 
 ![progress](progress.png)
 
@@ -130,6 +130,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IDH` | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency is selected by intri | established | c06 | `collective/contrib/20261025T1108-c06-pcell-efficiency-claim` |
+| `` | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early | established | c08 | `collective/contrib/20261025T1114-c08-crystal-growth-negative` |
 | `` | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed double vesicle still for | established | c02 | `collective/contrib/20261025T1048-c02-chemoton-res15` |
 | `` | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling crystal of identica | established | c08 | `collective/contrib/20261025T1054-c08-nrch-chemostat-crystal` |
 | `` | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do not close into vesi | established | c12 | `collective/contrib/20261025T1117-c12-lipid-2d-no-vesicles` |
@@ -143,12 +145,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | fch-bilayer | Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated | established | c10 | `collective/contrib/20261025T1108-c10-slowd-twins-three-fch` |
 | `` | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles  | established | c03 | `collective/contrib/20261025T1050-c03-allee-no-turnover` |
 | `` | active-pfc | Active PFC peaks multiply by templated triangle completion, not division: every birth sits | established | c10 | `collective/contrib/20261025T1120-c10-apfc-births` |
-| `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
-| `` | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and the catalyst 100x s | established | c07 | `collective/contrib/20261025T1052-c07-metabolic-no-shell-needed` |
 
 ## Mechanisms, laws and negative results
 
-- **active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist** (negative): 0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90 `collective/contrib/20261025T1034-c09-active-gel-no-division`
 - **Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fission (1 -> 13 rods by t=1000, gen 3, merge/split 0.14)** (positive): 1 founder -> 13 rods by t=1000; 6 persistent splits, generation 3, merge/split 0.14; at dx=1 the same seed gives 22 persistent splits from ~3 founders `collective/contrib/20261025T1036-c11-active-nematic-res15`
 - **pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells keep their yield for life, and mean yield responds against an inert marker, until high-yield cells grow into giants** (positive): mean yield vs marker: t~30000: 1.13/1.04 and 1.12/1.03 (23-24 cells); t~50000: 1.24/1.04 and 1.41/0.99 (8 and 1 cells). Dying cells' absolute yield birth -> death 1.003 -> 1.007, 1.003 -> 1.011. `collective/contrib/20261025T1037-c06-pcell-yeff-response`
 - **Negative: the proposed fix for an honest dividing crawler (capped area term, actin paid from content, low food stock) gives a transient crawl-divide-starve phase, then a static remnant or a churning sea** (negative): transient crawl-divide-starve phase to t~340 then static remnant (v2b); extinction or a churning sea elsewhere; max generation <= 2 `collective/contrib/20261025T1044-c04-crawler-actin-cost-negative`
@@ -160,6 +159,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.txt was overwritten by a stale script; the regenerated readout matches the published numbers** (negative): fork.py t=200 -> 800: full 24/26 alive; no gate Dc 0.01 39/41 alive; Dc 0.03 26/26 and 26/26 alive `collective/contrib/20261025T1100-c07-metabolic-no-shell-fork-fix`
 - **bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at the membrane turnover rate, and starvation does not single them out** (negative): bonded M 167 -> 76 fed and -> 83 starved over t=60-140 (2 of ~7 rings left fed, 1 ringed core left starved); no-bond M 2 -> 0 fed but 2 -> 95 starved (food-conditional rims return) `collective/contrib/20261025T1104-c05-bondcell-rings-decay`
 - **Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated-micelle contrast out of sample; the metabolic cells survive without their shell; only the chemoton's bilayer gate is beyond diffusion** (negative): gated-micelles t=400 contrast 1.8 (Dc 0.1) and 9.3 (Dc 0.01) vs c01-law predictions 2.0 and 9.6; metabolic Dc=0.01 gate-free: 41/42 lineages alive, gen 3, 54 vs 65 bodies; chemoton DK/100 gate-free: v `collective/contrib/20261025T1108-c10-slowd-twins-three-fch`
+- **NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early splits, then the lattice freezes the swimmer number (no division in the crystal)** (negative): net production: final swimmers 14/18/25, splits 27/54/157, merges 21/43/140, persistent splits 1/0/3, lattice frozen after t~2500-4000; seed 1 crystal: 17 persistent tracks, 71.5 body lengths `collective/contrib/20261025T1114-c08-crystal-growth-negative`
 - **Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do not close into vesicles at 7 settings up to t=6000, including half density and recruitment-grown ribbons** (negative): 0-1 enclosed solvent regions of 14-18 sigma^2 per run in the 6 non-jammed runs at t=1800-6000; no closed vesicle; bilayer ribbons and branched networks only `collective/contrib/20261025T1117-c12-lipid-2d-no-vesicles`
 - **Active PFC peaks multiply by templated triangle completion, not division: every birth sits one lattice spacing from existing peaks, there are ~0 deaths, and a bath feed only sets the ceiling** (negative): births 100% within 12 px of existing peaks, median 8.5-8.9 px (lattice 9.2 px), formed as the third vertex of a pair; deaths 0-3 per run; final peaks 56/29/19/13/11 for psi0 -0.70/-0.74/-0.76/-0.78/-0 `collective/contrib/20261025T1120-c10-apfc-births`
 - **Correction to my shell finding: the metabolic micelles' shell is needed only at fast catalyst diffusion; a uniformly 100x slower catalyst with no gate also lives and divides (confirms c07 on my seed 0)** (negative): no gate, Dc 0.01: 43/43 founders alive, 43 -> 49 bodies, 21 persistent splits, catalyst >= 7x in every body; gated world: 27 -> 69 bodies, 34 splits `collective/contrib/20261025T1131-c03-shell-not-beyond-diffusion`

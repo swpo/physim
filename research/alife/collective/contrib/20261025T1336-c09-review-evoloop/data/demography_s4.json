@@ -1,0 +1,414 @@
+[
+ {
+  "file": "trk200_s4.json",
+  "window": [
+   0,
+   200000
+  ],
+  "births_with_parent": 28828,
+  "orphan_births": 124,
+  "off_kind_daughters": 12775,
+  "conversions_of_living": 513,
+  "conversions_per_off_kind_birth": 0.04,
+  "per_kind": [
+   {
+    "kind": 2,
+    "births_by_parents": 245,
+    "on_kind": 182,
+    "breed_true": 0.743,
+    "deaths": 2405,
+    "mean_kids_at_death": 0.11,
+    "mean_age_at_death": 45,
+    "births_per_1000_loop_steps": 2.27
+   },
+   {
+    "kind": 3,
+    "births_by_parents": 335,
+    "on_kind": 22,
+    "breed_true": 0.066,
+    "deaths": 1871,
+    "mean_kids_at_death": 0.17,
+    "mean_age_at_death": 176,
+    "births_per_1000_loop_steps": 1.02
+   },
+   {
+    "kind": 4,
+    "births_by_parents": 336,
+    "on_kind": 36,
+    "breed_true": 0.107,
+    "deaths": 1098,
+    "mean_kids_at_death": 0.31,
+    "mean_age_at_death": 132,
+    "births_per_1000_loop_steps": 2.32
+   },
+   {
+    "kind": 5,
+    "births_by_parents": 1732,
+    "on_kind": 35,
+    "breed_true": 0.02,
+    "deaths": 677,
+    "mean_kids_at_death": 2.48,
+    "mean_age_at_death": 475,
+    "births_per_1000_loop_steps": 5.38
+   },
+   {
+    "kind": 6,
+    "births_by_parents": 1284,
+    "on_kind": 15,
+    "breed_true": 0.012,
+    "deaths": 581,
+    "mean_kids_at_death": 2.25,
+    "mean_age_at_death": 485,
+    "births_per_1000_loop_steps": 4.56
+   },
+   {
+    "kind": 7,
+    "births_by_parents": 1161,
+    "on_kind": 75,
+    "breed_true": 0.065,
+    "deaths": 760,
+    "mean_kids_at_death": 1.52,
+    "mean_age_at_death": 424,
+    "births_per_1000_loop_steps": 3.6
+   },
+   {
+    "kind": 8,
+    "births_by_parents": 575,
+    "on_kind": 12,
+    "breed_true": 0.021,
+    "deaths": 2443,
+    "mean_kids_at_death": 0.24,
+    "mean_age_at_death": 96,
+    "births_per_1000_loop_steps": 2.45
+   },
+   {
+    "kind": 9,
+    "births_by_parents": 574,
+    "on_kind": 82,
+    "breed_true": 0.143,
+    "deaths": 665,
+    "mean_kids_at_death": 0.86,
+    "mean_age_at_death": 424,
+    "births_per_1000_loop_steps": 2.03
+   },
+   {
+    "kind": 10,
+    "births_by_parents": 553,
+    "on_kind": 79,
+    "breed_true": 0.143,
+    "deaths": 1061,
+    "mean_kids_at_death": 0.53,
+    "mean_age_at_death": 248,
+    "births_per_1000_loop_steps": 2.1
+   },
+   {
+    "kind": 11,
+    "births_by_parents": 19844,
+    "on_kind": 14162,
+    "breed_true": 0.714,
+    "deaths": 14927,
+    "mean_kids_at_death": 1.33,
+    "mean_age_at_death": 670,
+    "births_per_1000_loop_steps": 1.99
+   },
+   {
+    "kind": 12,
+    "births_by_parents": 1846,
+    "on_kind": 1217,
+    "breed_true": 0.659,
+    "deaths": 1847,
+    "mean_kids_at_death": 1.0,
+    "mean_age_at_death": 599,
+    "births_per_1000_loop_steps": 1.67
+   },
+   {
+    "kind": 13,
+    "births_by_parents": 329,
+    "on_kind": 136,
+    "breed_true": 0.413,
+    "deaths": 375,
+    "mean_kids_at_death": 0.87,
+    "mean_age_at_death": 603,
+    "births_per_1000_loop_steps": 1.46
+   },
+   {
+    "kind": 14,
+    "births_by_parents": 5,
+    "on_kind": 0,
+    "breed_true": 0.0,
+    "deaths": 42,
+    "mean_kids_at_death": 0.12,
+    "mean_age_at_death": 239,
+    "births_per_1000_loop_steps": 0.5
+   },
+   {
+    "kind": 15,
+    "births_by_parents": 4,
+    "on_kind": 0,
+    "breed_true": 0.0,
+    "deaths": 26,
+    "mean_kids_at_death": 0.15,
+    "mean_age_at_death": 189,
+    "births_per_1000_loop_steps": 0.81
+   },
+   {
+    "kind": 16,
+    "births_by_parents": 2,
+    "on_kind": 0,
+    "breed_true": 0.0,
+    "deaths": 36,
+    "mean_kids_at_death": 0.06,
+    "mean_age_at_death": 103,
+    "births_per_1000_loop_steps": 0.54
+   },
+   {
+    "kind": 17,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 14,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 21,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 18,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 7,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 43,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 19,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 4,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 220,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 20,
+    "births_by_parents": 2,
+    "on_kind": 0,
+    "breed_true": 0.0,
+    "deaths": 14,
+    "mean_kids_at_death": 0.14,
+    "mean_age_at_death": 236,
+    "births_per_1000_loop_steps": 0.61
+   },
+   {
+    "kind": 21,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 5,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 264,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 22,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 8,
+    "mean_kids_at_death": 0.25,
+    "mean_age_at_death": 280,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 23,
+    "births_by_parents": 1,
+    "on_kind": 0,
+    "breed_true": 0.0,
+    "deaths": 3,
+    "mean_kids_at_death": 0.33,
+    "mean_age_at_death": 20,
+    "births_per_1000_loop_steps": 16.67
+   },
+   {
+    "kind": 24,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 1,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 20,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 25,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 3,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 87,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 27,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 1,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 20,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 28,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 1,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 20,
+    "births_per_1000_loop_steps": 0.0
+   },
+   {
+    "kind": 29,
+    "births_by_parents": 0,
+    "on_kind": 0,
+    "breed_true": null,
+    "deaths": 1,
+    "mean_kids_at_death": 0.0,
+    "mean_age_at_death": 80,
+    "births_per_1000_loop_steps": 0.0
+   }
+  ],
+  "top_off_kind": [
+   [
+    11,
+    8,
+    2158
+   ],
+   [
+    5,
+    2,
+    931
+   ],
+   [
+    11,
+    10,
+    727
+   ],
+   [
+    5,
+    3,
+    562
+   ],
+   [
+    6,
+    3,
+    558
+   ],
+   [
+    11,
+    2,
+    500
+   ],
+   [
+    11,
+    12,
+    461
+   ],
+   [
+    7,
+    4,
+    410
+   ],
+   [
+    11,
+    3,
+    333
+   ],
+   [
+    11,
+    9,
+    325
+   ],
+   [
+    6,
+    4,
+    295
+   ],
+   [
+    11,
+    7,
+    285
+   ]
+  ],
+  "top_conversions": [
+   [
+    11,
+    10,
+    73
+   ],
+   [
+    12,
+    11,
+    38
+   ],
+   [
+    5,
+    6,
+    36
+   ],
+   [
+    3,
+    5,
+    29
+   ],
+   [
+    6,
+    5,
+    25
+   ],
+   [
+    4,
+    6,
+    25
+   ],
+   [
+    6,
+    4,
+    19
+   ],
+   [
+    4,
+    3,
+    18
+   ]
+  ],
+  "final_census": {
+   "t": 200000,
+   "n": 78,
+   "areas": [
+    2,
+    4,
+    5,
+    7,
+    10,
+    11,
+    12,
+    13
+   ],
+   "counts": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    66,
+    1,
+    1
+   ]
+  }
+ }
+]
