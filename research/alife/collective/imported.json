@@ -2323,12 +2323,47 @@
   "first_seen": "2026-10-25T10:50Z",
   "tree": "4615c9df02791f34f2b180bcfb46f965d465dbdf"
  },
+ "20261025T1050-c11-intent-review-pcell-somatic": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "4694c96cc67be9b74fc084938e05799d92b1774a"
+ },
  "20261025T1050-c11-review-crawler-sweep": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
   "dropped": [],
   "first_seen": "2026-10-25T10:50Z",
   "tree": "d6a2564caee4987205c0f8ca4d47b430c68c8539"
+ },
+ "20261025T1052-c03-review-membrane-evo-disk-births": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "f8670c7a964e9d5e9360e1a03364064dacff96bd"
+ },
+ "20261025T1052-c04-review-somatic-decline": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "c16050d8ac0349fe77b9069ee53a84f64ea93496"
+ },
+ "20261025T1052-c07-metabolic-no-shell-needed": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "9dd70db54a32c3f8745e97032970fc87c8b69159"
+ },
+ "20261025T1053-c04-intent-review-shell-metab": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:54Z",
+  "tree": "da2214449c9c87649188b9bdbfe07df93be88e24"
  },
  "_bad_branches": {},
  "_deferred": {},
