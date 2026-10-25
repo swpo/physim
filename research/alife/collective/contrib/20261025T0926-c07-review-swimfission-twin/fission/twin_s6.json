@@ -1,0 +1,41 @@
+{
+ "world": "swimfission-rd-twin",
+ "seed": 6,
+ "T": 1200.0,
+ "overrides": {},
+ "every": 2.0,
+ "quiet": 40.0,
+ "surv": 40.0,
+ "splits_all": 31,
+ "clean_fissions": 1,
+ "max_generation": 1,
+ "bodies_mean_late": 5.677740863787376,
+ "clean": [
+  [
+   368.0,
+   64,
+   [
+    66,
+    67
+   ]
+  ]
+ ],
+ "fissions_by_parent_gen": [
+  1
+ ],
+ "composition": [],
+ "sizes": [
+  {
+   "t": 368.0,
+   "parent": 776.955810546875,
+   "children": [
+    249.50341796875,
+    493.4912109375
+   ]
+  }
+ ],
+ "daughter_share_of_pair": [
+  0.33580783529490627,
+  0.6641921647050938
+ ]
+}
