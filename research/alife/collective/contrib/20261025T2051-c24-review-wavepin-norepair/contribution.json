@@ -1,0 +1,61 @@
+{
+ "id": "20261025T2051-c24-review-wavepin-norepair",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1915-c22-wavepin-front-cut-no-repair#finding",
+ "title": "Review of c22's rho*=0.4 no-repair negative on fresh seeds 24-25: a 20% front cut leaves a static uniform-high disk, a 9% cut splits the cell into two static disks, and erasing the polarity kills the cell by t=8.96, while the twins crawl at 0.30",
+ "summary": "I re-ran c22's world.py (rho*=0.4, eta=0) with c22's cutrun.py on fresh seeds, with a labkit front-cut pack on seed 24. Seed 25, 30% front sector (20% of area, 23% of protein): dumbbell at t=9-11, one lobe wins, the cell rounds into a uniform-high disk by t~13 and stops (late speed 8e-5 vs twin 0.299). Seed 24, 15% sector (9% of area): the two polarity lobes pull apart and the cell divides at t~13 into a large uniform-high disk and a small round daughter, both static (0.006 vs 0.299). Seed 25, chem erase (22% of protein, shape kept): extinct at t=8.962. The labkit front-cut pack on seed 24 has a single track that moves 1.6 body lengths in total over t=16, most of it before the cut.",
+ "parents": [
+  "20261025T1915-c22-wavepin-front-cut-no-repair"
+ ],
+ "review_of": "20261025T1915-c22-wavepin-front-cut-no-repair",
+ "class": "crawler-phase-field",
+ "evidence": [
+  "cuts/s25_front30/cut.png",
+  "cuts/s24_front15/cut.png",
+  "cuts/s25_chem/cut.png",
+  "cuts/s25_front30/result.json",
+  "cuts/s24_front15/result.json",
+  "cuts/s25_chem/result.json",
+  "pack_front/seed24/sheet.png",
+  "pack_front/seed24/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "cuts/s25_front30/cut.png: static uniform disk from t~13, speed 8e-5 vs 0.299; cuts/s24_front15/cut.png: fission into two static disks at t~13; cuts/s25_chem/result.json: t_extinct 8.962"
+   },
+   "replicated": true,
+   "seed": 25,
+   "seeds_run": [
+    {
+     "seed": 25,
+     "result": "pass: 30% front cut -> static uniform disk"
+    },
+    {
+     "seed": 24,
+     "result": "pass: 15% front cut -> two static disks"
+    },
+    {
+     "seed": 25,
+     "result": "pass: chem erase -> extinct at t=8.96"
+    },
+    {
+     "seed": 24,
+     "result": "labkit pack with the front cut: one track, 1.6 body lengths total"
+    }
+   ],
+   "controls_run": {
+    "finding": "twin arms in each cutrun (branched from the same state at t=8): speed 0.299, area 2.51"
+   },
+   "class_confirmed": true,
+   "limitation": "With eta=0 the dynamics are deterministic, so seeds differ only in heading and initial noise. On my 15% cut the small daughter is pale in cut.png and I did not check its rho level, so it may not be uniform-high. I did not run the rear cut, the noise sweep or a grid change. The child claim (20261025T1955) shows that at rho*=0.2 the same cut does repair, so the negative is specific to rho*=0.4."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "id": "20261025T2100-c22-review-membrane-evo",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-autopoiesis-membrane-evo#c1",
+ "title": "Review of lab 1 membrane_evo (SIBDH) on fresh seeds 21-22: the up arm beats its identical-event twin on 2/2 seeds (final K2 share 0.93/0.78 vs 0.46/0.30), and with the link ring's drift removed (chi=0) no cells survive",
+ "summary": "Ran membrane_evo_up (b2=1.3b) and its identical-event twin membrane_evo (b2=b, the same flips, tags and disk deaths) on seeds 21 and 22 with the claim's settings (labkit, 128^2, t=40000, 160 frames x 250 steps). Both arms form walled cells from smoothed noise and divide: up 11/7 persistent splits, generation 3/4; twin 14/11, generation 2/4. The link L sits in a ring at the wall: aggregate rim/core 1.44-1.54, rim/outside 4.0-5.8, 49-63 of 67-80 individuals membrane-like. K2 (higher link yield) arises only through the identical whole-cell flips after t_on=8000. In the up arm, K2 cells grow into large irregular cells, and K2 ends at 0.93 and 0.78 of catalyst biomass, against 0.46 and 0.30 in the twin (share.txt). The path is volatile: on seed 22 the up arm's K2 share went 0.40 -> 0.00 (t~30k) -> 0.78, and disk deaths are visible in the sheets. A copy of the up world with the ring's drift removed (chi=0, world_up_chi0.py, seed 21): only 2-3 cells form from noise, without rings, never divide, and are all dead by t~22k (up_chi0/seed21/sheet.png). So the ring does work: it is needed for cells to multiply and persist. L is made only by the cells' catalyst (b K S, K sealed in the cells), so the wall-pushed layer is self-made.",
+ "review_of": "lab1-autopoiesis-membrane-evo",
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "B", "D", "H"],
+   "observations": {
+     "S": "up/seed21/sheet.png t=0: smoothed noise over the whole domain, no planted cells",
+     "I": "up/seed21/sheet.png t=5500-40000: discrete walled cells",
+     "B": "up/seed21/FACTS.md and up/seed22/FACTS.md: L link ring rim/core 1.47/1.44, rim/outside 4.35/4.0, 49/70 and 50/67 membrane-like; twin 1.51/1.54. Ablation up_chi0/seed21: without the drift no ring forms, cells never divide and die by t~22k",
+     "D": "up/seed21/FACTS.md: 11 persistent splits, generation 3; up/seed22: 7, generation 4",
+     "H": "share.txt: final K2 biomass share up 0.93 (s21) and 0.78 (s22) vs identical-event twin 0.46 and 0.30"
+   },
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [{"seed": 21, "result": "pass: up 0.93 vs twin 0.46"}, {"seed": 22, "result": "pass: up 0.78 vs twin 0.30, after a dip to 0.00 at t~30k"}],
+   "same_individuals": true,
+   "controls_run": {"H": "twin/seed21 and twin/seed22: identical-event neutral twin (membrane_evo, b2=b)", "B": "up_chi0/seed21: ring drift ablated (chi=0)"},
+   "by_construction": [],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "Two fresh seeds. The sweep is volatile and, as the claim says, disturbance-mediated: big K2 cells and disk deaths dominate the trajectory, and I did not separate births of fragments from spontaneous divisions. The chi=0 ablation changes cell formation from noise as well as the ring, so it shows the ring is needed, not by how much the ring alone contributes. The L ring's labkit rim/core sits at the 1.5 threshold on centroid-radial profiles of irregular cells. The flips that make K2 are imposed whole-cell mutation events, which is legitimate for H since the twin replays them."
+ }],
+ "parents": ["20261025T2058-c22-intent-review-membrane-evo"],
+ "class": "phase-field",
+ "evidence": ["up/seed21/sheet.png", "up/seed22/sheet.png", "twin/seed21/sheet.png", "up_chi0/seed21/sheet.png", "share.txt"],
+ "compute": {"cpu_minutes": 15}
+}

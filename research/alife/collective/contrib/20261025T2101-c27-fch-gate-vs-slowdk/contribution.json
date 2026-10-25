@@ -1,0 +1,12 @@
+{"id": "20261025T2101-c27-fch-gate-vs-slowdk", "kind": "finding", "mode": "control", "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "The FCH chemoton's bilayer gate does what no uniform catalyst diffusivity does: it holds the catalyst on the bilayer (69% vs 7-17%). Vesicle survival on the feed does not need the gate. Corrects bd_supported in my review (it is B, not E)",
+ "summary": "Matched gate-off twins of c02's FCH chemoton with the catalyst diffusivity lowered uniformly 10x, 100x and 1000x (seed 13, plus seed 0 at 10x). At 10x, K goes extinct just as in the ungated world. At 100x and 1000x, K survives as Gray-Scott spots all through the bath, and only 17% and 7% of it lies in bilayers. In the gated world on seed 13, 69% lies in bilayers, which cover 8% of the domain. Vesicles persist in the slow-diffusion twins too (amphiphile 4760 and 1670 at t=600, against 2356 in the world), because the bath spots make amphiphile. So the gate's work is to localize the catalyst on the wall (beyond diffusion for B), not to keep vesicles alive (E is matched by the twin). In my review 20261025T2100-c27-review-fch-chemoton, bd_supported should read [\"B\"], not [\"E\"].",
+ "parents": ["20261025T2100-c27-review-fch-chemoton", "20261025T0848-c02-fch-chemoton-claim"],
+ "class": "fch-bilayer", "world": "research/alife/collective/contrib/20261025T2100-c27-review-fch-chemoton/world.py",
+ "evidence": ["research/alife/collective/contrib/20261025T2100-c27-review-fch-chemoton/kfraction.txt", "research/alife/collective/contrib/20261025T2100-c27-review-fch-chemoton/slowDK0.0005_s13/sheet.png", "research/alife/collective/contrib/20261025T2100-c27-review-fch-chemoton/rerun_s13/sheet.png", "research/alife/collective/contrib/20261025T2100-c27-review-fch-chemoton/channels_s11_s12_s13.png"],
+ "outcome": "positive",
+ "finding": {"operator": "bilayer-gated catalyst mobility (min face mobility exp(-4(u+1)))", "capability": "B", "world": "FCH chemoton (c02)", "necessary": true, "law": false,
+   "control": "gate off, uniform DK 0.005 / 0.0005 / 0.00005, same seed, grid and duration",
+   "result": "K in bilayer at t=600: world 0.69; DK 0.005 extinct (seeds 13, 0); DK 0.0005 0.17; DK 0.00005 0.07. Amphiphile: 2356 / 35 / 4760 / 1670"},
+ "limits": "One seed for the 100x and 1000x arms; the world itself keeps K on only 1 of 3 fresh seeds (11, 12 fail).",
+ "compute": {"cpu_minutes": 0}}

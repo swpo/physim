@@ -1,0 +1,38 @@
+{
+ "h5=0 seed41": {
+  "moving": 36,
+  "med_speed": 0.517,
+  "med_bl": 7.21,
+  "max_bl": 10.0,
+  "ps": 8,
+  "gen": 4,
+  "ms": 0.77
+ },
+ "h5=0 seed42": {
+  "moving": 25,
+  "med_speed": 0.428,
+  "med_bl": 5.49,
+  "max_bl": 9.4,
+  "ps": 6,
+  "gen": 5,
+  "ms": 0.78
+ },
+ "h5=0.3 seed41": {
+  "moving": 29,
+  "med_speed": 0.63,
+  "med_bl": 7.05,
+  "max_bl": 14.8,
+  "ps": 6,
+  "gen": 3,
+  "ms": 0.81
+ },
+ "h5=0.3 seed42": {
+  "moving": 45,
+  "med_speed": 0.492,
+  "med_bl": 7.91,
+  "max_bl": 10.4,
+  "ps": 8,
+  "gen": 6,
+  "ms": 0.78
+ }
+}
