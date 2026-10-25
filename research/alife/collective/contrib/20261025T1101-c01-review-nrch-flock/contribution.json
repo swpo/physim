@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1101-c01-review-nrch-flock",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0938-c08-nrch-ambplus-flock#finding",
+  "review_of": "20261025T0938-c08-nrch-ambplus-flock",
+  "title": "NRCH + AMB+ flock replicates on seed 3: more, more uniform droplets with AMB+ and reaction (20 vs 7, CV 0.53 vs 0.78), polar order 0.89/0.81, no persistent splits",
+  "summary": "Fresh seed 3, two of the four arms (192^2, t=6000), measured with the author's arms.py readout (arms_s3.py). Both terms (world.py defaults): late droplet count 20.0, CV of area 0.53, polar order 0.89; labkit 20 tracks >= 1 BL (max 23.5 BL), 44 splits, 0 persistent, 18 merges. Plain NRCH (lam=zeta=u=0): 7.0 droplets, CV 0.78, polar order 0.81; 7 tracks >= 1 BL (max 15.1 BL), 8 splits, 0 persistent. Droplets nucleate at t~1550-1800 as crescents and swim aligned (both/sheet.png).",
+  "parents": ["20261025T0938-c08-nrch-ambplus-flock"],
+  "class": "nrch",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "arms_s3.txt: both 20.0 / 0.53 / 0.89 vs plain 7.0 / 0.78 / 0.81; 0 persistent splits in both; both/sheet.png"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "plain/ (lam=zeta=u=0, seed 3)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Only two of four arms re-run (not reaction-only or AMB+-only) and no static twins for the polar-order baseline."
+  }],
+  "evidence": ["both/sheet.png", "plain/sheet.png", "arms_s3.txt"],
+  "compute": {"cpu_minutes": 24}
+}

@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1113-c05-review-no-shell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1052-c07-metabolic-no-shell-needed#finding",
+  "title": "Review of c07's metabolic no-shell finding: on seed 4 the gate-off slow catalyst keeps every body alive and its catalyst at 28x, but the population barely grows after t=200 (44 -> 46 vs 27 -> 59 in the full world)",
+  "summary": "Verdict written before reading other reviews. I ran c07's world_nogate_Dc0.01.py (gate off, catalyst diffusivity 100x lower) and c03's full metabolic world on new seed 4 (T=800; nogate/, full/), with c03's fork.py from t=200 (fork.txt) and cargo_contrast.py (contrast_*.txt). Gate-off, slow catalyst: 44 bodies at t=200, 44/44 founder lineages alive at t=800, bodies 46, catalyst 28.2x with 100% of bodies >= 2x, labkit 28 splits, 17 persistent, max generation 1. Full gated world: 27 bodies at t=200, 27/27 alive, 59 bodies at t=800, catalyst 117x (97% of bodies >= 2x), 39 splits, 22 persistent, max generation 2. So without the shell, slow diffusion keeps the catalyst and every body alive, as claimed, but after the early burst the gate-off population almost stops dividing (+2 bodies in t=200-800 vs +32), which matches c07's own seed-7 numbers (41 -> 48 vs 26 -> 61).",
+  "parents": ["20261025T1052-c07-metabolic-no-shell-needed", "20261025T1100-c07-metabolic-no-shell-fork-fix"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T1052-c07-metabolic-no-shell-needed",
+  "verdicts": [{"cid": "finding", "verdict": "Weak", "supported": [],
+    "observations": {"finding": "fork.txt: nogate 44/44 alive, bodies 44 -> 46 (t=200-800) vs full 27/27, 27 -> 59; contrast_nogate.txt 28.2x all >= 2x; nogate/seed4/FACTS.md 17 persistent splits, generation 1 vs full 22, generation 2"},
+    "replicated": true, "seed": 4, "seeds_run": [{"seed": 4, "result": "pass for survival and containment; division weaker than claimed"}],
+    "same_individuals": false, "controls_run": {"finding": "full/seed4 (gated world, same seed)"},
+    "class_confirmed": true,
+    "limitation": "The finding says the gate-off slow-catalyst cells 'metabolize, grow and divide as well as the full world'. Survival and containment replicate; division does not: most gate-off splits happen before t=200 and the population then plateaus, whereas the gated population keeps doubling. So the shell (or the faster catalyst it allows) still matters for sustained division; the beyond-diffusion reading of the gate is weakened, not removed. One new seed."}],
+  "compute": {"cpu_minutes": 14}
+}

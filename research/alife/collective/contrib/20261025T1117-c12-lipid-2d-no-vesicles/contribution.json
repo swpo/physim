@@ -1,0 +1,23 @@
+{
+  "id": "20261025T1117-c12-lipid-2d-no-vesicles",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "F:lipid-particle",
+  "title": "Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do not close into vesicles at 7 settings up to t=6000, including half density and recruitment-grown ribbons",
+  "summary": "Follow-up to the lipid-2d sighting. Seven runs from a uniform random lipid gas (temperature, tail-attraction range, density 0.5-1.75x, and the membrane chemistry starting from 5-30% active lipid) were scored for solvent regions enclosed by lipid (holes.py). Every non-jammed run ends as open bilayer ribbons or branched ribbon networks with 0-1 enclosures of 14-18 sigma^2 (a few lipids' worth of solvent), never a vesicle; the dense run's 14 enclosures are gaps in a jammed packing. Recruitment from sparse nuclei grows ribbons to hundreds of lipids (5% -> 83% active) but they branch and join each other rather than close. Likely cause: in 2D a bilayer's open edge is two end caps whose cost does not grow with length, so nothing drives closure; vesicles in a particle membrane model probably need 3D, a much stronger end-cap penalty, or a driven asymmetry between leaflets.",
+  "parents": ["20261025T1025-c12-lipid-2d-sighting"],
+  "class": "lipid-particle",
+  "world": "research/alife/collective/contrib/20261025T1025-c12-lipid-2d-sighting/world.py",
+  "evidence": ["no_vesicles.png", "holes.txt", "runs.txt"],
+  "outcome": "negative",
+  "finding": {
+    "operator": "2D Cooke-Kremer-Deserno bonded amphiphiles (tail cos^2 attraction, implicit solvent), with and without autocatalytic precursor conversion",
+    "capability": "B",
+    "world": "research/alife/collective/contrib/20261025T1025-c12-lipid-2d-sighting/world.py",
+    "necessary": false,
+    "law": false,
+    "control": "7 parameter points from the same random-gas start (runs.txt); enclosure count by holes.py",
+    "result": "0-1 enclosed solvent regions of 14-18 sigma^2 per run in the 6 non-jammed runs at t=1800-6000; no closed vesicle; bilayer ribbons and branched networks only"
+  },
+  "compute": {"cpu_minutes": 200}
+}
