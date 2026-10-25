@@ -1,0 +1,30 @@
+{
+ "id": "20261025T1650-c00-q-spot-tail-rd-baseline",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Does Virgo's spot-tail Gray-Scott system give swimming, dividing spots with a losable heritable tail, and so set the reaction-diffusion bar that beyond-diffusion swim-and-divide claims must beat?",
+ "summary": "Froese, Virgo & Ikegami (Artificial Life 2014; the system is from N. Virgo's 2011 thesis) describe a pure reaction-diffusion world with two autocatalysts. A Gray-Scott spot carries a tail of a second autocatalyst that feeds on it; together they swim away from the tail at about 4e-4 units per time unit, and they duplicate. Tails usually pass to the daughters ('limited heredity with variation'), and tailed spots win only where cataclysms clear space. C:swim-divide-bd and P_BD assume that plain reaction-diffusion cannot swim and divide, so this baseline should be reproduced once and its scores recorded as the bar.",
+ "experiment": "Positive control (about 10 min). C-free Gray-Scott at Pearson's self-replicating-spot parameters (LITERATURE.md 2.8.1) must give dividing spots.\n\nMain (about 50 min). The three-species system, reconstructed from its reactions (A + 2B -> 3B, B -> P, B + 2C -> 3C, C -> P):\n- a_t = DA lap a - a b^2 + r(1-a);\n- b_t = DB lap b + a b^2 - k1 b - k2 b c^2;\n- c_t = DC lap c + k2 b c^2 - k3 c.\nThe PDF's equation glyphs did not extract. If spots die, check Virgo 2011, ch. 5.\n\nSetup: Fig. 4 parameters DA = 2e-5, DB = 1e-5, DC = 1e-6, r = 0.0347, k1 = 0.2, k2 = 0.8, k3 = 0.005, on a periodic 2x2 domain at 256^2. Seed spots plus one small C patch; separately, try a noise start.\n\nMeasure:\n- tailed-spot speed (paper: ~4e-4 per time unit);\n- the fraction of duplications in which both daughters keep a tail;\n- tailed against tailless share, with and without cataclysms (food zeroed in a random 0.5x0.5 box every 1000 t, in one half only);\n- tail acquisitions by contact. Those are contagion under RUBRIC L7, so they count as L5 evidence, not L7.\n\nRun labkit's D and H gates. Record what this pure-Laplacian world scores as the reference arm for Q:owed-laplacian-twins and C:swim-divide-bd.",
+ "slug": "spot-tail-rd-baseline",
+ "target": [
+  "S",
+  "I",
+  "M",
+  "D",
+  "H"
+ ],
+ "class": "reaction-diffusion",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": false,
+ "sources": [
+  {
+   "cite": "Froese, Virgo & Ikegami, Motility at the origin of life: its characterization and a model, Artificial Life (2014), arXiv:1311.2531. The synthesizer re-opened the abstract and checked the sweep's saved PDF text: parameters, speed ~4e-4, limited heredity, cataclysms, infection.",
+   "url": "https://arxiv.org/abs/1311.2531"
+  }
+ ]
+}

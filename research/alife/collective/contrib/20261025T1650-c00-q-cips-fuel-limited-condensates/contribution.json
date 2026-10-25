@@ -1,0 +1,43 @@
+{
+ "id": "20261025T1650-c00-q-cips-fuel-limited-condensates",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel?",
+ "summary": "Cotton, Golestanian & Agudo-Canalejo (PRL 129, 158101, 2022; arXiv:2205.12306) show that enzyme catalysis alone, with no equilibrium interactions, can phase-separate a mixture, while \u0394\u03bc = 0 is always stable. Fuel and waste are held by a reservoir, the enzyme equation has no reaction term, and they report only uninterrupted coarsening. Here the fuel becomes a consumed, regrowing field, so body cores larger than the fuel penetration length l_F should starve. That would cap body size. The core-depletion link to Bergmann et al. (Nat Commun 14, 6552, 2023) is an analogy only. In their system fuel mostly stays outside the droplets, the short-lived droplet material is activated outside and deactivated inside, and droplets above a threshold radius (about 3.3 \u00b5m measured, about 2 \u00b5m in the model) become stable liquid spherical shells, not daughter droplets. Splitting driven by chemical growth is the result of Zwicker, Seyboldt, Weber, Hyman & J\u00fclicher, 'Growth and division of active droplets provides a model for protocells', Nat Phys 13, 408 (2017), arXiv:1603.01571, https://arxiv.org/abs/1603.01571. There, material made outside and degraded inside drives a shape instability at a critical radius set by the reaction rates, with lengths l = sqrt(D/k). A fuel-limited size cap could therefore show up as shells (Bergmann) or as splits (Zwicker), and the rim/core contrast readout tells them apart. The enzyme has no reaction or decay term, so if bodies dissolve when their fuel is cut, the food dependence is not by construction under L4c. That is what C:metabolic-cell lacks. Citation fix: cite Zwicker et al. 2017 (https://arxiv.org/abs/1603.01571) for division. Keep Bergmann et al. 2023 for core depletion and shells only.",
+ "experiment": "Positive control (about 20 min). Reduced model on a 256^2 periodic grid, dx = 1; spectral implicit diffusion, explicit drift, dt ~ 0.05, 2 seeds.\n- Equations: J_e = -D_e grad e + chi e(1-e) grad p, with no reaction or decay on e; p_t = lap p + k_c F e(1-p) - k_s p; F_t = D_F lap F - y k_c F e(1-p) + k_F(1-F).\n- Start: e = 0.15 + 0.01 noise; p at its uniform steady state; F held at 1 (the reservoir, as in Cotton et al.).\n- Parameters: k_c = k_s = 1, D_e = 0.01, which puts the linear threshold at chi ~ 0.10. That threshold comes from the metabolism sweep's own stability analysis, not from the paper. Run at chi = 0.3.\n- Expected: domains form from noise and coarsen toward one (Cotton et al.). chi = 0.05 and k_c = 0 both stay uniform.\n\nTest (about 40 min). Consumed, regrowing fuel: D_F in {0.25, 1} x k_F in {0.01, 0.05}, y = 1, T = 2000.\n- Body count over time: plateau or coarsening.\n- Body radius against l_F = sqrt(D_F/(y k_c e_body)). D_F changes 4x, so the radius should change ~2x.\n- Enzyme rim/core contrast, to catch shells.\n- Persistent splits, from labkit lineage.\n\nL4c gates (about 20 min).\n- Fork with k_F = 0 at t = 1000 against the fed twin, on 2 seeds.\n- Local cut: k_F = 0 in a disk of radius 2R around one body.\n- Assert that the integral of e is conserved to 1e-8 in every arm.\n- chi = 0 is the Laplacian-only twin.\n\nCautions.\n- The drift form is a chemotactic stand-in for Cotton's Flory-Huggins cross-diffusion; record it as such.\n- Fuel must be consumed inside bodies. Sorkin-Wingreen (arXiv:2506.04493) show that reactions outside droplets can speed ripening.\n- Brauns et al. 2021: mass-conserving two-component systems coarsen unless conservation is broken.",
+ "slug": "cips-fuel-limited-condensates",
+ "target": [
+  "S",
+  "I",
+  "B",
+  "E",
+  "D"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "priority": 5,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Cotton, Golestanian & Agudo-Canalejo, Catalysis-Induced Phase Separation and Autoregulation of Enzymatic Activity, PRL 129, 158101 (2022), arXiv:2205.12306. Abstract re-opened by the synthesizer; the metabolism sweep read the PDF.",
+   "url": "https://arxiv.org/abs/2205.12306"
+  },
+  {
+   "cite": "Bergmann et al., Liquid spherical shells are a non-equilibrium steady state of active droplets, Nat Commun 14, 6552 (2023); opened by the metabolism sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10582082/"
+  },
+  {
+   "cite": "Agudo-Canalejo & Golestanian, Active phase separation in mixtures of chemically interacting particles, PRL 123, 018101 (2019), arXiv:1901.09022; opened by the metabolism sweep.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1901.09022"
+  },
+  {
+   "cite": "Brauns et al., PRL 126, 104101 (2021), arXiv:2005.01495 (coarsening in mass-conserving systems); opened by the metabolism sweep.",
+   "url": "https://arxiv.org/abs/2005.01495"
+  }
+ ],
+ "notes": "Citation check: https://pmc.ncbi.nlm.nih.gov/articles/PMC10582082/ partly: Bergmann, Bauermann, Bartolucci, Donau, Stasi, Holtmannsp\u00f6tter, J\u00fclicher, Weber & Boekhoven, Nat Commun 14, 6552 (2023), doi:10.1038/s41467-023-42344-w. The citation details are correct. The paper does describe a core-depletion route, but not the one the question implies. Fuel partitions only weakly into the droplets (K_fuel ~1.4), and 'activation predominantly occurs outside, whereas deactivation"
+}

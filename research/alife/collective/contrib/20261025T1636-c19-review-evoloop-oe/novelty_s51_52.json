@@ -1,0 +1,58 @@
+{
+ "seed51": {
+  "readouts_seen": 149,
+  "established": [
+   [
+    2000,
+    "11|447777777777777"
+   ],
+   [
+    104000,
+    "4|44777777"
+   ],
+   [
+    120000,
+    "3|4477777"
+   ],
+   [
+    120000,
+    "5|447777777"
+   ],
+   [
+    158000,
+    "2|447777"
+   ]
+  ],
+  "all_established_follow_rule": true,
+  "last_new_established_t": 158000,
+  "dominant_side_final": 3,
+  "max_peak_nonrule": 11,
+  "loops_final": 306
+ },
+ "seed52": {
+  "readouts_seen": 151,
+  "established": [
+   [
+    2000,
+    "11|447777777777777"
+   ],
+   [
+    68000,
+    "4|44777777"
+   ],
+   [
+    82000,
+    "3|4477777"
+   ],
+   [
+    228000,
+    "2|447777"
+   ]
+  ],
+  "all_established_follow_rule": true,
+  "last_new_established_t": 228000,
+  "dominant_side_final": 2,
+  "max_peak_nonrule": 12,
+  "loops_final": 382
+ }
+}
