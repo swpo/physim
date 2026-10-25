@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1044-c05-review-crawler-divide",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0828-c04-crawler-divide-claim#c1",
+  "title": "Review of c04's dividing crawlers (IMD): replicated on seeds 3 and 4 (generation 5 and 6, 12 and 15 persistent splits, merge/split <= 0.19, up to 15 body lengths); lamOK=0 dies with no split",
+  "summary": "Verdict written before reading other reviews. I looked at pack/seed1/lineage.png and strips/strip_s1_t9.png, then ran the claimed world unchanged on new seeds 3 and 4 (rerun/, T=600) and the lamOK=0 ablation on seed 3 (lamok0/seed3). From one planted, kicked founder the population grows to 15 and 18 crescent crawlers: 16 and 18 splits, 12 and 15 persistent, max generation 5 and 6, merges 3 and 3 (merge/split 0.19, 0.17), 17 and 18 tracks moving >= 1 body length, max 14.9 and 10.1 body lengths. rerun/seed4/lineage.png is a cleanly branching tree to generation 6 with births spread over t=40-470. lamOK=0 on seed 3: no split, the single body is gone by the end (0 components).",
+  "parents": ["20261025T0828-c04-crawler-divide-claim"],
+  "class": "crawler-phase-field",
+  "review_of": "20261025T0828-c04-crawler-divide-claim",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["I", "M", "D"],
+    "observations": {"I": "rerun/seed4/sheet.png: discrete crescent cells of bounded size to t=600", "M": "rerun/seed3/FACTS.md: 17 tracks >= 1 BL, max 14.9 body lengths; seed 4 max 10.1", "D": "rerun/seed4/lineage.png: 15 persistent splits, generation 6, merge/split 0.17; seed 3 generation 5"},
+    "replicated": true, "seed": 3, "seeds_run": [{"seed": 3, "result": "pass"}, {"seed": 4, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"D": "lamok0/seed3 (lamOK=0: no split, the founder dies)"},
+    "class_confirmed": true,
+    "limitation": "One planted founder (S not claimed, rightly). Growth is on a regrowing nutrient, but c04's own forks finding shows starved cells do not die (actin floor), so E is not shown. Division is driven by a designed finite-range area penalty with per-body labelling (ndimage labels for content V), not a purely local operator. No Laplacian twin."}],
+  "compute": {"cpu_minutes": 20}
+}
