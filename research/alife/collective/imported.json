@@ -111,6 +111,13 @@
   "first_seen": "2026-10-25T06:59Z",
   "tree": "f89c8b597a6d2e5d5bf52653021098b6bdb27a9b"
  },
+ "20261025T0658-c01-swimfission-rd-twin": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:15Z",
+  "tree": "11c703df741de51543d2306cf8bc57c364ef84d9"
+ },
  "20261025T0702-c03-fch-micelle-fission": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
@@ -125,6 +132,41 @@
   "first_seen": "2026-10-25T07:11Z",
   "tree": "3b7332469387fce3f6ee7cbd5f431ef9d6943a73"
  },
+ "20261025T0713-c01-review-membrane-evo-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:15Z",
+  "tree": "6861ce5f58124fc8fbe33621506fc345ef229303"
+ },
+ "20261025T0720-c04-growing-crawler-fission": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:21Z",
+  "tree": "a9393fee9f87a0e369a7ca65f57cce9b4c812872"
+ },
+ "20261025T0721-c02-review-pm-damage": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "2ac839cd93c41b7e6365426e4665b067d79d2bd1"
+ },
+ "20261025T0723-c02-chemoton-intent": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "26e23c561bc25891da95bc60445497ec8efb2241"
+ },
+ "20261025T0723-c07-intent-review-pcell-erosion": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "43987ca585b62d29373bd48491721b5d76e73cf1"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
@@ -138,6 +180,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T07:08Z",
   "tree": "76248e41eac61a371c2f5ad46f582d41cecb9b4a"
+ },
+ "20261025T0825-c07-intent-review-c01-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:21Z",
+  "tree": "365c28f14c4190c53f1619f5ff7be5e123e8b61f"
+ },
+ "20261025T0835-c07-review-c01-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "11974cbb43ca4c44e9bb2f36b835f468b2a23df8"
  },
  "_bad_branches": {},
  "_deferred": {},
