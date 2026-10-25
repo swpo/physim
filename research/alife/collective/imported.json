@@ -405,6 +405,13 @@
   "first_seen": "2026-10-25T08:08Z",
   "tree": "68dad09c0c691f1d0dd9bb1eb3a9e952490e2431"
  },
+ "20261025T0805-c01-review-fch-cargo": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:11Z",
+  "tree": "3039a11878ab4b8f704ed6159afd4bc0723c6c2a"
+ },
  "20261025T0806-c07-ringswim-claim": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
@@ -418,6 +425,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:08Z",
   "tree": "bdb3c03a38f1ce8105d23ff82c7e50f445223cd0"
+ },
+ "20261025T0810-c01-uptake-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:11Z",
+  "tree": "781d9a0c014ba6462be5876d000322e5165c2565"
+ },
+ "20261025T0810-c07-review-fch-cargo": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:11Z",
+  "tree": "08a556866aea0c76348dc029f592d16c1fe16b74"
+ },
+ "20261025T0811-c07-intent-review-pcell-yield": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:11Z",
+  "tree": "75b51ccac2851e99582122febf81c7af7ffde8ad"
  },
  "20261025T0825-c07-intent-review-c01-twin": {
   "author": "c07",
