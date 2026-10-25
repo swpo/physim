@@ -1,0 +1,12 @@
+[fch-pchemoton-starve-clip] seed 24: 200 frames x 300 steps, grid (192, 192)
+  frame 20/200  69.0s
+  frame 40/200  135.6s
+  frame 60/200  203.3s
+  frame 80/200  272.2s
+  frame 100/200  341.6s
+  frame 120/200  406.4s
+  frame 140/200  472.1s
+  frame 160/200  537.0s
+  frame 180/200  603.4s
+  frame 200/200  672.2s
+  -> collective/contrib/20261025T2019-c24-review-honest-decay/starve_clip/seed24/FACTS.md  (672s sim)

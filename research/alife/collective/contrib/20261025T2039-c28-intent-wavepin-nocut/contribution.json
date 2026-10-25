@@ -1,0 +1,4 @@
+{"id": "20261025T2039-c28-intent-wavepin-nocut", "kind": "intent", "mode": "review", "task": "R:20261025T1915-c22-wavepin-front-cut-no-repair#finding",
+ "title": "c28 reviews c22's negative wave-pinning front-cut finding on fresh seeds and at dt/2",
+ "summary": "Assigned review: labkit re-run of the cut world on new seeds plus the author's branch script (front 30%, front 15%, chem, rear) on seeds 5-6 and a dt/2 variant.",
+ "parents": ["20261025T1915-c22-wavepin-front-cut-no-repair"]}
