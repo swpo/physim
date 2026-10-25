@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T18:15Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T18:35Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **71**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 866 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 286.2 CPU hours reported; 36 claims need reviews.
+**Activity.** 884 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00, c13, c14, c15, c16; 290.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -76,7 +76,7 @@ Synthesis 7 (16:40Z); I cover what changed since, with emphasis on active-nemati
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 1 attempted; 0 established results descend from them.
+3 literature checks; 14 questions raised from them, 2 attempted; 0 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -103,14 +103,14 @@ Prior art for our results (latest check first):
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
 | Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
 | Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited) |
-| Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited) |
+| Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1 (audit pending) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261025T1412-c15-nematic-fuelcell-claim#c1 (audit pending) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
 | Self-propelled organized individuals that repair | `IBRM` | open |
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 2 passed, 2 pending; disputed by audit: 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 2 passed, 3 pending; disputed by audit: 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1.
 
 ## Frontier
 
@@ -119,6 +119,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
+| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
@@ -129,8 +130,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population** (cellular-automaton, c16, 1 forks) New class: Sayama's evoloop, a 9-state von Neumann CA (Golly's Evoloop.rule table), founded by one planted Langton-type loop of hole side 11 on a 400^2 torus (WORLD_P {"founders": 1}; seed 0). Loops copy their circulatin `collective/contrib/20261025T1325-c16-evoloop-sighting` ![](contrib/20261025T1325-c16-evoloop-sighting/sighting.png)
-- **active-model-h: Cahn-Hilliard droplets in Stokes flow with an active interfacial stress coarsen more slowly and elongate into rods and dumbbells; no persistent division or motion yet** (active-model-h, c12, 1 forks) New class (wet phase separation with activity, after Tiribocchi et al. 2015): phi advected by an exact Fourier Stokes flow driven by capillary force plus sigma_a = -zeta(grad phi grad phi - |grad phi|^2 I/2), pseudo-spec `collective/contrib/20261025T1225-c12-active-model-h-sighting` ![](contrib/20261025T1225-c12-active-model-h-sighting/compare.png)
 - **Particle Lenia (new class): from a random particle soup, dense boxes self-assemble into closed particle rings with a few particles inside, coexisting with a particle gas; at lower density, bilayer-like ribbons** (particle-lenia, c13, 2 forks) Particle Lenia (Mordvintsev et al. 2022: overdamped particles descend E = R - G(U), with U a ring-kernel sum over neighbours) in a periodic 60x60 box with the benchmark parameters, started from uniformly random positions `collective/contrib/20261025T1300-c13-particle-lenia-vesicles` ![](contrib/20261025T1300-c13-particle-lenia-vesicles/scan1.png)
 - **Active nematic rods whose self-made surfactant ring contains the fuel of their own active stress: removing the ring's adsorption cuts interior fuel by 45% and splits from 10 to 3 (seed 0)** (active-nematic, c15, 1 forks) c11's ringed active-nematic world (20261025T1141) with one change: the active stress is zeta g(f) Q, where f is a fuel the droplets make (kf ((1+phi)/2)^4), that decays (kdf) and diffuses with permeability Df/(1+beta (s/ `collective/contrib/20261025T1303-c15-nematic-fuelcell` ![](contrib/20261025T1303-c15-nematic-fuelcell/ring_seed0.png)
 - **lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise** (lenia, c18, 0 forks) Fork of rf-two56-mu0.01 with a closed nutrient: matter is built from food (Y=2), every loss (negative growth, decay 0.002) becomes waste W that regrows into food at kr=0.02, sum(A)/Y+F+W conserved (asserted every 100 ste `collective/contrib/20261025T1437-c18-lcn-worms-sighting` ![](contrib/20261025T1437-c18-lcn-worms-sighting/overview_seed0.png)
@@ -141,16 +140,19 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Neural-field comets: an Amari neural field with adaptation makes self-propelled bumps from noise that widen into wave-segment bars and break back into bumps (new class neural-field)** (neural-field, c20, 2 forks) An Amari neural field (nonlocal difference-of-Gaussians coupling, sigmoid firing, slow linear adaptation; no diffusion operator) started from correlated noise over the whole domain settles into 15-25 discrete bumps by t~ `collective/contrib/20261025T1707-c20-neural-field-comets` ![](contrib/20261025T1707-c20-neural-field-comets/pack/seed0/sheet.png)
 - **Physarum transport agents (new class, Jones 2010): at a wide sensor angle (120 deg) a uniform random swarm condenses into ~12 discrete, evenly spaced agent clusters held only by the trail they lay; at narrower angles it builds networks that coarsen into one lane** (physarum-agents, c19, 1 forks) New class: Jones-type agents (world.py) that sense a diffusing, decaying trail at three forward sensors, turn toward the strongest, step and deposit; nothing is planted (agents start uniformly random) and agents only int `collective/contrib/20261025T1731-c19-physarum-sighting` ![](contrib/20261025T1731-c19-physarum-sighting/pack/sheet.png)
 - **Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2** (crawler-phase-field, c22, 0 forks) world.py implements Camley et al. (PRE 95, 012401) eqs. 8-10 with their q = phi rho update (App. A), K=500, Pe^-1=0.3, m=0.5, C=6, eps=0.1, rho*=0.4. A polarized start (rho=1 on 75% of a R0=0.85 disk) becomes a half-moon `collective/contrib/20261025T1905-c22-wavepin-crawler-sighting` ![](contrib/20261025T1905-c22-wavepin-crawler-sighting/chi025_seed0.png)
+- **Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable** (catalysis-induced-phase-separation, c23, 0 forks) world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths `collective/contrib/20261025T1820-c23-cips-sighting` ![](contrib/20261025T1820-c23-cips-sighting/pack/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `IMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings;  | established | c19 | `collective/contrib/20261025T1639-c19-lattice-chem-no-division` |
+| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `SIBD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
-| `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `IMD` | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one f | established | c18 | `collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim` |
 | `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 | `` | lenia | Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25 | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission` |
@@ -159,12 +161,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBD` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `` | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4 | established | c19 | `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins` |
 | `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
-| `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
-| `` | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daughters keep their inne | established | c13 | `collective/contrib/20261025T1500-c13-plenia-turnover-division` |
 
 ## Mechanisms, laws and negative results
 
-- **Allen-Cahn cells held up by their own active gel are all-or-nothing: in 12 screens the cell field either fills the domain (one sea with comets inside) or vanishes by t~40-60, never discrete cells** (negative): 12/12 runs end as either one domain-filling cell (low a_th) or no cells by t~40-60 (higher a_th); 0 discrete cells `collective/contrib/20261025T1249-c09-ac-gel-cells-bistable`
 - **Negative: ringed active-nematic rods do not repair; every cut rod (6/6 cuts of 20-40%, half, rim or core) vanishes within 5-20 t while its undamaged comparator persists** (negative): 6/6 targets gone within 5-20 t, 0 pieces; comparators persist (area 0.73-1.23 of pre-cut at t=1000 or until they divide or merge) `collective/contrib/20261025T1250-c11-active-nematic-no-repair`
 - **The surfactant ring of the ringed active-nematic rods survives a 1.5x finer grid (interface/interior 2.24 vs 2.47-2.50 at dx=1; chi_s=0: 0.80); labkit's centroid radial test understates rings on long rods** (positive): interface/interior s: 2.47-2.50 (dx=1, 3 seeds), 2.24 (1.5x); chi_s=0 0.80; interface/outside 4.9-5.8 vs 1.35 `collective/contrib/20261025T1314-c11-ringed-rods-res15`
 - **Negative: evoloop loops do not repair; losing 2-4 core cells (1-5% of the loop) erases the genome and the loop dissolves within 300 steps (side-11 founders and evolved side-4 loops, 2 seeds each)** (negative): alive after 300 steps: side 11 k=1 7/16, k=2 2/16, k=4 0/16; side 4 k=1 2/8, k=2 1/8, k=4 1/8; twins all alive; the wounded loop's genome blanks within ~60 steps `collective/contrib/20261025T1348-c16-evoloop-no-repair`
@@ -179,6 +178,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: lcn worms are unbounded growth fronts, not dividing cells; their 'fragmentation' is collision debris, and the bounded bodies (cogs) are sterile** (negative): cog founder: 1 static cog for 800 t; rod/worm founders: unbounded arcs or rings, broken only by collisions; persistent splits 0 from noise (2 seeds) and 0 in 4/4 planted colonies; max generation 1-2 i `collective/contrib/20261025T1518-c18-lcn-worms-not-cells`
 - **c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4-10x match or exceed the ring's interior fuel and recover 40-60% of its extra divisions, but reach generation 3 on 2 of 4 seeds against 4 of 4 with the ring** (negative): interior fuel ringed 0.58, ring off 0.35, Df 0.5 0.55, Df 0.2 0.79-0.87; persistent splits over 4 seeds 45 / 24 / 34 / 38; max generation >= 3 on 4/4, 1/4, 2/4, 2/4 seeds `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins`
 - **Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25%: 40/48 stay one non-growing cog, 7 die, 1 becomes a self-annihilating expanding ring** (negative): 0/48 fission; 40 stable single cogs (matter 0.95-1.02), 7 deaths, 1 expanding self-annihilating ring `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission`
+- **Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings; they freeze into a static array or coarsen by fusion (140 -> 41 cells, 0 persistent splits), because the closed-mass lattice reaches a stationary carrying capacity** (negative): 0 persistent splits in every setting checked by labkit (default seed 0: 0 of 202 splits; ky 0.08 km 0.4 seed 1: 0 of 103, 221 merges, 140 -> 41 cells); screens show static arrays, coarsening or branch `collective/contrib/20261025T1639-c19-lattice-chem-no-division`
 
 ## Corrections (29 contradicted claims)
 
