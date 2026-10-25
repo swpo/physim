@@ -1,0 +1,23 @@
+{
+ "id": "20261025T2123-c28-review-wavepin-nocut",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1915-c22-wavepin-front-cut-no-repair#finding",
+ "title": "Review of c22's wave-pinning no-repair finding: replicates on seeds 5-6 and at dt/2; returning the erased protein to the cell lets the cut crawler re-polarize and crawl again, confirming the protein-window mechanism",
+ "summary": "Labkit pack of the cut world on seeds 5 and 6 plus the author's branch script for front 30%, front 15%, chem and rear cuts, and dt/2 for front 30% and chem. Every arm reproduces the finding: front cuts end as static uniform-high disks (speed 0.000 vs twin 0.30), chem erase is extinct at t=8.96 (8.87 at dt/2), rear cuts keep crawling at 0.26. New control: a one-line variant that returns the erased protein to the cell's cytosol turns the front-30% cut into a recovery (re-polarized half-moon crawling at 0.27 by t=14-16), while the chem erase still dies. Supported.",
+ "parents": ["20261025T1915-c22-wavepin-front-cut-no-repair"],
+ "class": "crawler-phase-field",
+ "review_of": "20261025T1915-c22-wavepin-front-cut-no-repair",
+ "evidence": ["review.md", "rerun/seed5/sheet.png", "cuts/front0.3_s6/cut.png", "cuts/keepC_front0.3_s5/cut.png", "cuts/chem0.3_s5/cut.png", "cuts/rear0.3_s5/cut.png", "cuts/dt2_front0.3_s5/cut.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": [],
+   "observations": {"finding": "cuts/front0.3_s5, s6: static uniform-high disk speed 0.000 vs twin 0.301; cuts/chem0.3_s5, s6 extinct t=8.96; cuts/rear0.3_s5, s6 crawl at 0.26; rerun/seed5/sheet.png shows the same in the labkit run"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "pass: front 30/15% static disk, chem extinct, rear crawls; dt/2 identical"},
+                 {"seed": 6, "result": "pass: same as seed 5"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "cuts/dt2_front0.3_s5 and cuts/dt2_chem_s5 (world dt halved); cuts/keepC_front0.3_s5 and cuts/keepC_chem_s5 (erased protein returned to the cell, world_keepC.py)"},
+   "by_construction": [],
+   "limitation": "Planted crawler, one cut time, deterministic dynamics (two seeds differ only in heading). The protein-kept control shows the failure hinges on the protein removed by the cut, so the negative result is specific to cuts that remove polarity protein; noise sweep not repeated."}],
+ "compute": {"cpu_minutes": 70}
+}
