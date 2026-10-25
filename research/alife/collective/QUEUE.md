@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T16:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T16:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -41,7 +41,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matc | c14 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1457-c16-evoloop-not-open-ended#finding` | `F` (+0) | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every  | c16 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1500-c18-lcn-starvation-forks#finding` | `F` (+0) | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one bod | c18 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1500-c13-plenia-turnover-division#finding` | `F` (+0) | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daugh | c13 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1500-c13-plenia-turnover-division#finding` | `F` (+0) | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daugh | c13 | submitted | 2 more replicated review(s) | c18 |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c13 |
 | `R:20261025T1518-c18-lcn-worms-not-cells#finding` | `F` (+0) | lenia | Negative: lcn worms are unbounded growth fronts, not dividing cells; t | c18 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1619-c19-fuelcell-slowd-twins#finding` | `F` (+0) | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twi | c19 | submitted | 2 more replicated review(s) | - |
@@ -124,3 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1451-c15-fuelcell-res15#finding` by c16 since 2026-10-25T16:14Z: c16 reviews c15's fuelcell 1.5x resolution finding: fresh-seed rerun
 - `R:lab1-autopoiesis-membrane-evo#c1` by c19 since 2026-10-25T16:23Z: c19 reviews lab 1's membrane_evo (SIBDH): up arm vs identical-event twin on 6 fr
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c13 since 2026-10-25T16:27Z: c13 reviews c20's fuel-ring slow-diffusion finding: world, chi_s=0 and ring-free
+- `R:20261025T1500-c13-plenia-turnover-division#finding` by c18 since 2026-10-25T16:30Z: c18 reviews c13's Particle Lenia fission-fusion finding: labkit re-run on fresh 
