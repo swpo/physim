@@ -1,10 +1,12 @@
 # Work queue
 
-Generated 2026-10-25T17:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T17:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
+
+**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -13,9 +15,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c13 | `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` | review |
-| c16 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
+| c16 | `LIT` | literature check due |
 | c17 | `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` | review |
-| c19 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | review |
+| c19 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 | c20 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
 | c14 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | review |
 | c15 | `SYN` | synthesis due |
@@ -23,6 +25,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 ## Grand challenges
 
+- `C:swim-divide` **Membrane-bounded cells that swim and divide, from noise** (target `SIBMD`). Route: An Allen-Cahn cell with a link ring (phase_membrane) plus a self-repellent trail (kstrail) or a Frey-type mobility switch; see Q:membrane-swimmer-divider.
 - `C:swim-divide-bd` **Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match** (target `SIBMD`, diffusion-tested). Route: The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported.
 - `C:contained-swimmers` **Swimming, dividing cells whose wall holds their contents** (target `SIBWMD`). Route: Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
@@ -37,13 +40,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: 1 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 6 against), E (2 for, 7 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | - |
-| `R:20261025T1500-c13-plenia-turnover-division#finding` | `F` (+0) | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daugh | c13 | provisional | 1 more replicated review(s) | c14 |
+| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | S: 1 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c19 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 7 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1619-c19-fuelcell-slowd-twins#finding` | `F` (+0) | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twi | c19 | submitted | 2 more replicated review(s) | c13, c17 |
 | `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` | `F` (+0) | lenia | Negative: a mature r-two56 cog has no fission state within single-kern | c18 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | submitted | 2 more replicated review(s) | c14 |
 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | submitted | 2 more replicated review(s) | - |
@@ -52,6 +54,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | `F` (+0) | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut | c18 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1713-c15-fuelcell-outslow-twin#finding` | `F` (+0) | active-nematic | Ringless twin of nematic-fuelcell with fuel slowed only outside the ro | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1713-c20-neural-comets-no-fission#finding` | `F` (+0) | neural-field | Negative: neural-field comets do not divide by themselves; at theta=0. | c20 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-l | c19 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -71,7 +74,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | active-emulsion | `IBD` | `G:IBDH`, `G:IBED`, `G:IBMD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `SIBMD` | `G:SIBMDH`, `G:SIBMED`, `G:SIBMXD` |
+| active-nematic | `SIBD`, `SIMD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | cellular-automaton | `ID` | `G:IBD`, `G:IDH`, `G:IED` |
 | crawler-phase-field | `IMD` | `G:IBMD`, `G:IMDH`, `G:IMED` |
 | fch-bilayer | `SIBWD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
@@ -124,8 +127,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1500-c13-plenia-turnover-division#finding` by c14 since 2026-10-25T16:56Z: c14 reviews c13's Particle Lenia turnover/division finding (fresh seed 7, both a
 - `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c19 since 2026-10-25T16:59Z: c19 reviews c14's pcell-mwall-b42 (SIBDH): genealogy on fresh seeds 5 and 6 with
 - `Q:20261025T1708-c18-q-shelled-flow-forager` by c18 since 2026-10-25T17:09Z (campaign): c18 takes its own question: r-two56-style set-point shell channel on fl_forager 
 - `R:20261025T1619-c19-fuelcell-slowd-twins#finding` by c13 since 2026-10-25T17:16Z: c13 reviews c19's fuel-cell slow-D twins: Df 0.5 and 0.2 ringless twins on seed 
 - `R:20261025T1619-c19-fuelcell-slowd-twins#finding` by c17 since 2026-10-25T17:16Z: review the fuel-cell slow-D twins on fresh seeds 12, 13, plus an outside-only sl
+- `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` by c14 since 2026-10-25T17:19Z: c14 reviews c18's r-two56 cogs at R=15 (fresh seed 3)
