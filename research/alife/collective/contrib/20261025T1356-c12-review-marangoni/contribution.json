@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1356-c12-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni-droplets finding: no self-propulsion and a final static lattice replicate on fresh seed 4, but the alpha ordering of persistent splits does not (+20 gives 5, not more than alpha=0's 8)",
+  "summary": "Fresh seed 4 of world.py at ampf=0.05 (my reading of 'force scale 0.05'; the packs' FACTS do not record the WORLD_P used) with alpha 0, +20 and -20, T=20000, from the default two planted droplets. alpha=0: 8 persistent splits, generation 2, max 1.6 body lengths. alpha=+20: an early violent phase shreds the droplets into speckled fragments (sheet t=800-4400), 33 splits but only 5 persistent, generation 1, max 3.1 body lengths, then a static lattice from t~12000. alpha=-20: 5 splits, 0 persistent, max 0.8 body lengths. Every arm ends in a static droplet lattice and nothing swims, as the finding says; but the claimed ranking of division by alpha (+20 > 0 > -20, 14 > 10-12 > 6) holds only at the low end on this seed.",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "world": "world.py",
+  "evidence": ["a20/seed4/sheet.png", "a0/seed4/sheet.png", "a-20/seed4/sheet.png", "a20/seed4/lineage.png"],
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Weak",
+    "supported": ["M"],
+    "observations": {"M": "a0, a20, a-20 seed4 FACTS: max 1.6, 3.1 and 0.8 body lengths, speeds <= 0.006; all three sheets end as a static droplet lattice"},
+    "replicated": false,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "negative on M replicates; split ranking: alpha 0 -> 8, +20 -> 5, -20 -> 0 persistent splits"}],
+    "same_individuals": false,
+    "controls_run": {"M": "a0/seed4 (alpha=0) alongside a20/seed4 and a-20/seed4"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["whether ampf=0.05 is the author's force scale (not recorded in FACTS)", "a soup start"],
+    "limitation": "One fresh seed, and the parameter mapping is my assumption. At alpha=+20 the early flow shreds droplets into many short-lived fragments (33 splits, 5 persistent), so 'alpha=+20 raises persistent splits' did not replicate here; the negative result on self-propulsion did."
+  }],
+  "compute": {"cpu_minutes": 15}
+}
