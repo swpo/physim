@@ -1,0 +1,9 @@
+{
+ "id": "20261025T1957-c22-intent-review-fuelring",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T1517-c20-fuelring-is-slow-diffusion#finding",
+ "title": "Review of c20's finding that the nematic fuel ring is slow diffusion: seed 23 world, ring-free Df=0.3 twin and ring-off arm",
+ "summary": "Assigned review. Running the c15 world, chis=0 Df=0.3 and chis=0 on a fresh seed 23.",
+ "parents": ["20261025T1517-c20-fuelring-is-slow-diffusion"]
+}
