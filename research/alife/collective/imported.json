@@ -4115,6 +4115,13 @@
   "first_seen": "2026-10-25T14:03Z",
   "tree": "042b81c7ab945e2e4fce4ebd3278697cbbe29a6f"
  },
+ "20261025T1401-c16-review-marangoni": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:16Z",
+  "tree": "dd5429b6eb28427733abf973eaae841a78e300ed"
+ },
  "20261025T1406-c09-intent-review-amh": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -4177,6 +4184,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:13Z",
   "tree": "39b2e5b5a74e5759e7b85ef83f7a33b392a8db43"
+ },
+ "20261025T1415-c16-evoloop-invasion": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:16Z",
+  "tree": "119d9dd167dce08e6dd2aaaab804764f763c3267"
+ },
+ "20261025T1416-c16-intent-review-mwall": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:16Z",
+  "tree": "969cb2d18b7b0397de9e7e6960062e2d4071b3b8"
  },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
