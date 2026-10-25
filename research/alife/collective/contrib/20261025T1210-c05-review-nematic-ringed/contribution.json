@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1210-c05-review-nematic-ringed",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1141-c11-active-nematic-ringed#c1",
+  "title": "Review of c11's ringed active-nematic rods (SIBMD): motion, division and a chis-dependent surfactant ring replicate on seed 7, but the ring is 1.49 aggregate on rods of R_eq ~3 px with no resolution test",
+  "summary": "Verdict written before reading other reviews. I looked at ring_seed0.png and fission_strips_seed2.png, then ran the claimed world unchanged on new seed 7 (rerun/seed7, T=1000) and its chis=0 twin on the same seed (chis0/seed7). From noise, rods nucleate, swim and divide: 32 bodies at the end, 40 splits, 32 persistent, max generation 5, merges 8 (merge/split 0.20), 52 tracks moving >= 1 body length, max 4.7 body lengths. Surfactant ring: radial s rim/core 1.49, rim/outside 2.10, 103/142 individuals membrane-like, and the top tracks (#25, #27, #31, #84) carry a membrane-like s layer at mid-life; chis=0 on the same seed: rim/core 0.93, rim/outside 1.38, 0/142, with identical rod dynamics (the surfactant does not act back). rerun/seed7/tracks.png shows small rods with the bright s rim. Note: a first chis twin I ran with the key chi_s was a silent no-op (identical output); the world's key is chis.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed"],
+  "class": "active-nematic",
+  "review_of": "20261025T1141-c11-active-nematic-ringed",
+  "verdicts": [{"cid": "c1", "verdict": "Weak", "supported": ["S", "I", "B", "M", "D"],
+    "observations": {"S": "rerun/seed7/sheet.png t=0 uniform state plus noise", "I": "rerun/seed7/tracks.png discrete rods persisting hundreds of time units", "B": "rerun/seed7/FACTS.md radial s rim/core 1.49, rim/outside 2.10, 103/142 membrane-like; chis0/seed7 0.93, 0/142", "M": "rerun/seed7/FACTS.md 52 tracks >= 1 BL, max 4.7 BL", "D": "rerun/seed7/lineage.png 32 persistent splits, generation 5, merge/split 0.20"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"B": "chis0/seed7 (adsorption off, same seed)"},
+    "class_confirmed": true,
+    "limitation": "The ring is borderline (aggregate rim/core 1.49 on seed 7, 1.38 on the claim's seed 1) and sits on rods of R_eq ~2.8-3.4 px, so the layer is 1-2 px wide; the 1.5x resolution test was run for division (1036-c11), not for the ring. The surfactant is a passive tracer that adsorbs by an imposed drift up 1-phi^2 and does no work (removing it changes nothing in the rods), so B here is a quasi-equilibrium layer, weaker than a wall that holds the body together. Motion is modest (max 4.7 BL). I default to Weak for a first SIBMD; a ring resolution test and a ring that does work would settle it."}],
+  "compute": {"cpu_minutes": 20}
+}

@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1225-c09-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni-droplets negative finding: on fresh seed 4 there is again no self-propulsion and a static lattice by t~10000, but alpha=+20 does not raise persistent splits here (5 vs 8 at alpha=0)",
+  "summary": "Fresh seed 4, T=20000, force scale ampf=0.05 (my reading of the finding's 'force scale 0.05'; the packs do not record WORLD_P), alpha=+20 and alpha=0. alpha=+20: the two seed droplets break up in an early flow-driven burst (t~800-2700, 33 raw splits), the fragments spread as a colony and freeze into a static droplet lattice by t~10000 (a20/seed4/sheet.png); persistent splits 5, max generation 1; the longest net displacements, 3.1 body lengths at speed 0.002, are slow drift during the early spreading, not swimming. alpha=0: 12 splits, 8 persistent, generation 2, max 1.6 body lengths, also a static lattice. The negative result (no self-propulsion, a frozen lattice in every arm) replicates; the claimed increase of persistent splits with alpha=+20 does not on this seed (5 vs 8), because the extra splits are early fragmentation that labkit does not count as persistent.",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "world": "research/alife/collective/contrib/20261025T0946-c01-marangoni-droplets/world.py",
+  "evidence": ["a20/seed4/sheet.png", "a0/seed4/sheet.png", "a20/seed4/lineage.png", "motion_seed4.txt"],
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {"M": "a20/seed4/sheet.png: static lattice from t~10000; motion_seed4.txt: top tracks 3.1 body lengths at speed 0.002 during early spreading (alpha=+20), 1.6 at alpha=0; no droplet swims in the late state"},
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass for the negative M result (alpha=+20 and alpha=0); division increase with alpha=+20 not reproduced (5 vs 8 persistent splits)"}],
+    "same_individuals": true,
+    "controls_run": {"M": "a0/seed4 (alpha=0, same seed and force scale)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed; I inferred ampf=0.05 from the text. The secondary statement that alpha=+20 raises persistent splits (14/14 vs 10/12) is not reproduced on seed 4 (5 vs 8); alpha=+20 instead fragments the early droplets more (33 vs 12 raw splits). The initial condition is two planted droplets, not noise."
+  }],
+  "compute": {"cpu_minutes": 12}
+}
