@@ -1,0 +1,25 @@
+{
+  "id": "20261025T0833-c05-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c1",
+  "title": "Review of c07's ringswim claim: swim-and-divide replicates on seed 8, but seed 7 fuses into one domain-wrapping band by t~8700; the ring stays below 1.5",
+  "summary": "Verdict written before reading other reviews. I looked at strip_s1.png, README.md and the pack, then re-ran world_claim.py unchanged on new seeds 7 and 8 (labkit, T=20000, rerun/seed7, rerun/seed8), c07's celltrack.py on both (data/ct7.log, ct8.log), world_mu0.py on seed 7 (data/ctm7.log) and world_chi0.py on seed 7 (chi0/seed7). Seed 8 matches the claim: a bounded population of 6-24 walled cells, 23 persistent splits, max generation 13, 33 segments >= 3 BL (11 >= 5 BL), merges/splits 55/75, L rim/core 1.44 (27/47 cells membrane-like). Seed 7 does not: crescents join head to tail into a chain by t~6900 and into one band wrapping the periodic domain from t~8700 to 20000 (rerun/seed7/sheet.png); all 8 persistent splits happen before t=7400, merges exceed splits (22/17), and the '19.5 BL' longest segment is that band. mu=0 on seed 7: 0 segments >= 3 BL (33 persistent splits), confirming the drive is needed for motion. chi=0 on seed 7: L rim/core 1.11 (0/139 membrane-like) vs 1.32 with the ring.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "verdicts": [
+   {"cid": "c1", "verdict": "Weak", "supported": ["S", "I", "M", "D"],
+    "observations": {"S": "rerun/seed8/sheet.png t=0 noise", "I": "rerun/seed8/sheet.png: 6-24 bounded walled cells to t=20000", "M": "data/ct8.log: 33 segments >= 3 BL; data/ctm7.log: 0 with mu=0", "D": "data/ct8.log: 23 persistent splits, max generation 13, splits spread over t=1880-18940"},
+    "replicated": true, "seed": 8, "seeds_run": [{"seed": 8, "result": "pass"}, {"seed": 7, "result": "fail: fuses into one domain-wrapping band from t~8700; no splits after t=7400"}],
+    "same_individuals": true, "controls_run": {"M": "data/ctm7.log (mu=0, seed 7)"},
+    "class_confirmed": true,
+    "limitation": "1 of 2 new seeds ends as a single band (the claim's own waste=0 failure mode, so the waste term does not prevent it reliably); with c07's s1 band at waste=0 this is the dominant risk. Genealogy is reticulate (merges 73% of splits on seed 8) and many pinches are of fusion products. The drive is the per-body label average, not a local operator. Single parameter point, no dt/resolution check."},
+   {"cid": "c2", "verdict": "Weak", "supported": ["S", "I", "B", "M"],
+    "observations": {"S": "rerun/seed8/sheet.png t=0 noise", "I": "rerun/seed8/sheet.png", "B": "rerun/seed8/radial.png L rim/core 1.44, rim/outside 7.22 (27/47 cells membrane-like); seed 7 1.32; chi0/seed7 1.11", "M": "data/ct8.log 33 segments >= 3 BL"},
+    "replicated": true, "seed": 8, "seeds_run": [{"seed": 8, "result": "pass (ring 1.44, below the 1.5 aggregate gate)"}, {"seed": 7, "result": "fail: ring 1.32 and the population becomes one band"}],
+    "same_individuals": false, "controls_run": {"B": "chi0/seed7 (chi=0: L rim/core 1.11)"},
+    "class_confirmed": true,
+    "limitation": "The aggregate L ring is below the rubric's 1.5 on both new seeds (1.32, 1.44), as on c07's seed 1 (1.27); it is the swimming cells that lose it (front cap), consistent with 20261025T0724-c05-ring-motility-tradeoff. I did not verify that the cells that swim >= 3 BL are the membrane-like ones, so same_individuals is not established."}],
+  "compute": {"cpu_minutes": 30}
+}
