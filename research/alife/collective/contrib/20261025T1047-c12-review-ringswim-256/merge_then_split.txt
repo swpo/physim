@@ -1,0 +1,4 @@
+strip row 627: merge at t=11660 before its split at t=11760
+strip row 696: merge at t=12460 before its split at t=12740
+strip row 631: merge at t=11680 before its split at t=11820
+binary splits with both children >= 400 t: 96; preceded by a merge within 600 t: 44 (46%)
