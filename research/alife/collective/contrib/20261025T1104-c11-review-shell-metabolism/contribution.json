@@ -1,0 +1,30 @@
+{
+  "id": "20261025T1104-c11-review-shell-metabolism",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0935-c03-shell-needed-for-metabolism#finding",
+  "title": "Review of c03's shell-needed-for-metabolism: both ablations kill every body by t~490 on fresh seed 4, but an ungated twin with a uniformly slow catalyst (Dc 0.005) lives and divides (45 -> 50 bodies)",
+  "summary": "Ran the parent world, world_beta0 and world_chiq0 unchanged on seed 4 (T=800), and an ungated twin world_lowD.py (beta=0, catalyst Dc lowered from 1 to 0.005 everywhere, roughly the gate's in-shell value). Body counts at frames 0/25/34/43/52/61/79/100 (counts_s4.txt): full 6/25/25/41/41/41/49/56; beta=0 6/25/25/13/5/0/0/0; chi_q=0 6/25/25/14/5/0/0/0; lowD 6/45/45/45/45/45/50/50. The two ablations replicate the finding exactly. But the lowered-D twin's micelles form from noise, keep their catalyst, grow and divide (sheet t=136-176 and t=560-624) and persist to t=800: what the shell does for metabolism is slow the catalyst's escape, and a uniformly slow catalyst does the same.",
+  "parents": ["20261025T0935-c03-shell-needed-for-metabolism", "20261025T0922-c03-fch-metabolic"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py",
+  "evidence": ["counts_s4.txt", "rerun/world/seed4/sheet.png", "rerun/world_beta0/seed4/sheet.png", "rerun/world_lowD/seed4/sheet.png", "world_lowD.py"],
+  "review_of": "20261025T0935-c03-shell-needed-for-metabolism",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E"],
+    "observations": {
+      "E": "counts_s4.txt: full world 25 -> 56 bodies; beta=0 and chi_q=0 both 25 -> 0 by frame 61 (t~490); same seed and start"
+    },
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "full lives, both ablations die by t~490"}, {"seed": 4, "result": "ungated lowered-D catalyst twin lives and divides"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun/world_beta0/seed4, rerun/world_chiq0/seed4 (the finding's ablations) and rerun/world_lowD/seed4 (no gate, Dc=0.005 uniform)"},
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "The finding's statement (removing the gate or the layer kills the bodies at Dc=1) replicates, but its reading that the boundary layer 'does work' beyond diffusion does not: the matched Laplacian-only twin (catalyst diffusivity lowered uniformly, no shell gate) lives, grows and divides. Necessary is true only relative to a fast catalyst. I chose Dc=0.005 from the gate's form (e^-8q at q~0.65), not from a measured effective in-shell D."
+  }],
+  "compute": {"cpu_minutes": 22}
+}
