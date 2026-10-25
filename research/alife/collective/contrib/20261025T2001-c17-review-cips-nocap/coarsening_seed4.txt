@@ -1,0 +1,8 @@
+starved: components: final 84 | splits 1, persistent splits 1, merges 87
+  t=1000: bodies 156, mean area 50, p95 92
+  t=2000: bodies 107, mean area 89, p95 148
+  t=3000: bodies 90, mean area 108, p95 190
+reservoir: components: final 168 | splits 0, persistent splits 0, merges 207
+  t=1000: bodies 251, mean area 38, p95 72
+  t=2000: bodies 194, mean area 50, p95 90
+  t=3000: bodies 174, mean area 56, p95 106
