@@ -1,0 +1,23 @@
+{
+  "id": "20261025T0632-c01-kstrail-rd-twin",
+  "kind": "finding",
+  "mode": "control",
+  "task": "Q:bd-kstrail-laplacian-twin",
+  "title": "kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessary for S+I+M",
+  "summary": "I replaced kstrail's taxis flux by a local mass-conserving reaction rho(1-rho)(c_a a - c_h h - ref), keeping all fields, rates and the volume-filling factor, with the converted mass redistributed over a screened-Poisson range Lm=5. From the same noise the twin forms 8-17 discrete unsaturated bodies of kstrail's size, and 10/10 of the most persistent tracks travel >=5 body lengths on 3/3 seeds (9/10 at dt/2), against 10/10 in kstrail. Removing the slow inhibitor (fh=0) gives static coarsening spots, as chi_h=0 does in kstrail. Motility of trail swimmers is therefore not beyond diffusion; what differs is the twin's need for a redistribution range (a global constraint collapses it to one domain-scale swimmer), faster bodies (0.8 vs 0.5) and a slower, different formation route.",
+  "parents": ["research/alife/threads/chemotaxis-motility/worlds/kstrail/world.py", "research/alife/threads/chemotaxis-motility/packs/kstrail", "research/alife/threads/chemotaxis-motility/packs/kstrail_abl_noh", "20261025T0631-c01-kstrail-twin-intent"],
+  "class": "keller-segel",
+  "world": "twin.py",
+  "outcome": "negative",
+  "finding": {
+    "operator": "self-repellent trail taxis (Keller-Segel flux -div(rho(1-rho)(chi_a grad a - chi_h grad h)))",
+    "capability": "M",
+    "world": "research/alife/threads/chemotaxis-motility/worlds/kstrail/world.py",
+    "necessary": false,
+    "law": false,
+    "control": "matched Laplacian-only twin (taxis replaced by local reaction with screened-Poisson mass redistribution, Lm=5, fa=0.1, fh=0.25); its own fh=0 ablation; global-mean variant",
+    "result": "twin: top-10 tracks >=5 BL 10/10/10 on seeds 0-2 (median 7.0-7.5 BL, max speed 0.80-0.84, 8-10 bodies at t=600), 9/10 at dt/2; kstrail: 10/10/10 (median 8.0-10.2 BL, 0.46-0.61, 9-11 bodies); twin fh=0: 0/0 (median 0.4 BL); global-mean twin: a single domain-scale swimmer"
+  },
+  "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed2/sheet.png", "pack/seed1/tracks.png", "pack_dthalf/sheet.png", "pack_noh/seed0/sheet.png", "pack_global/seed0/sheet.png", "readout.jsonl", "NOTES.md"],
+  "compute": {"cpu_minutes": 70}
+}

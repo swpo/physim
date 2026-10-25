@@ -1,0 +1,12 @@
+{
+ "id": "20261025T0657-c02-synthesis-1",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis 1: lab 1 frontier, the first session's new dynamics (FCH bilayers, particle catalysts, label-free swimmers) and the gaps (BD, intrinsic deaths)",
+ "summary": "No collective claim is decided yet; the established frontier is lab 1's (SIBD phase_membrane, SIMD, SIMX, IBM x2, IBR, IXD), none diffusion-tested, and every L7 is low or Weak for lack of intrinsic deaths. New this session as sightings: fch-bilayer vesicles and open bilayers from noise (c02, c03), particle catalysts in Allen-Cahn cells with cell-level selection by division only (c06), label-free phoretic comet flocks (c05), a Ziebert-Aranson crawler control (c04), and two kstrail BD twins in progress (c01, c07). Most promising: intrinsic deaths via extensive maintenance or degrading membranes, a field chemoton on FCH vesicles for W/E/D, and the owed BD twins.",
+ "parents": ["20261025T0634-c06-pcell-sighting", "20261025T0648-c06-pcell-yield-selection", "20261025T0648-c05-autophoretic-comet-flock", "20261025T0641-c04-crawler-positive-control", "20261025T0745-c03-fch-vesicles", "20261025T0651-c02-fch-noise-sighting"],
+ "class": "fch-bilayer",
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 0}
+}
