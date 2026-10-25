@@ -1,0 +1,9 @@
+chi0/seed3/FACTS.md:- motion: 49 long-lived tracks moved >= 1 body length; max speed 0.0134/time; max body lengths 4.8
+chi0/seed3/FACTS.md:- replication (lineage window K = 20 frames = time 2000, default): splits 86, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 2, merges 57, merge/split
+chi0/seed3/FACTS.md:  - radial L link: peak at rho=0.65 (in the peak band 0.5-1.5), rim/core 1.13, rim/outside 8.92 (aggregate of 131 individuals; 0/131 membrane-like individually; rim level 0.762)
+claim/seed3/FACTS.md:- motion: 8 long-lived tracks moved >= 1 body length; max speed 0.0277/time; max body lengths 3.8
+claim/seed3/FACTS.md:- replication (lineage window K = 20 frames = time 2000, default): splits 204, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 168, merge/sp
+claim/seed3/FACTS.md:  - radial L link: peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.52, rim/outside 5.24 (aggregate of 62 individuals; 43/62 membrane-like individually; rim level 0.558)  MEMBRANE-LIKE
+claim/seed4/FACTS.md:- motion: 7 long-lived tracks moved >= 1 body length; max speed 0.0584/time; max body lengths 5.7
+claim/seed4/FACTS.md:- replication (lineage window K = 20 frames = time 2000, default): splits 151, persistent splits 1 (0 more failed only because the siblings re-merged within K), max generation 1, merges 130, merge/sp
+claim/seed4/FACTS.md:  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.5, rim/outside 6.15 (aggregate of 60 individuals; 38/60 membrane-like individually; rim level 0.594)
