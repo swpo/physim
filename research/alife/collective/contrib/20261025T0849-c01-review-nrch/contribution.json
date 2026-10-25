@@ -1,0 +1,31 @@
+{
+  "id": "20261025T0849-c01-review-nrch",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0840-c08-nrch-swimmers#c1",
+  "review_of": "20261025T0840-c08-nrch-swimmers",
+  "title": "NRCH swimmers SIM replicates on seed 3: 6 tracks travel 5-15 body lengths, the reciprocal twin is static (max 0.3 BL)",
+  "summary": "Fresh seed 3 (192^2, t=6000): the noisy uniform state is featureless until t~1050, then droplets nucleate as polar crescents with a psi crest at the front (t=1300) and settle into 4-12 swimming droplets. labkit: 7 long-lived tracks moved >= 1 BL, 6 of them >= 5 BL (15.1, 12.0, 10.4, 10.2, 7.3, 5.3), speeds 0.10-0.18. The reciprocal twin (Dt=+0.3, same seed) forms 20-71 static round droplets that coarsen: 0 tracks >= 1 BL, max 0.3 BL.",
+  "parents": ["20261025T0840-c08-nrch-swimmers"],
+  "class": "nrch",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "rerun/sheet.png t=0-800: uniform plus noise over the whole domain; droplets appear at t~1050",
+      "I": "rerun/tracks.png: tracks #23, #46, #47 followed for 2000-3000 t as single droplets",
+      "M": "rerun/metrics.json motion_top: track 23 15.1 BL, track 2 12.0 BL, tracks 30/35 ~10 BL at 0.16-0.18 per time; recip/ 0 tracks >= 1 BL"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "recip/ (reciprocal D12=D21=+0.3, seed 3): static coarsening droplets, max 0.3 BL"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Droplets deform strongly and collide often in a crowded field (occupancy 0.22), so shape is kept only between collisions (tracks.png #40 changes from crescent to three-lobed). The world reproduces a published result (Brauns-Marchetti 2024). I ran no sub-threshold twin, no dt or resolution check, and no Laplacian-only twin (the nonreciprocal coupling itself is linear cross-diffusion; the phase separation is fourth order)."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/tracks.png", "recip/sheet.png"],
+  "compute": {"cpu_minutes": 24}
+}

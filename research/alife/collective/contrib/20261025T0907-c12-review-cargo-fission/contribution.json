@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0907-c12-review-cargo-fission",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0752-c03-fch-cargo-fission#c1",
+  "title": "Review of c03's FCH cargo-fission (SIWD): S, I, D and the chi=0 ablation replicate on seed 17; a barrier-free 100x-slower cargo also passes the 2x test",
+  "summary": "Fresh seed 17 labkit re-run (T=800): ~29 micelles from white noise, 50 persistent splits, max generation 5, merge/split 0.03; every body-frame holds the self-made cargo at >= 2x (aggregate 1137x at t=80, 740x at t=800) and random fissions give two daughters at ~400-600x from parents at ~1000x. chi=0 on the same seed: same bodies, contrast 1.6 -> 1.0, 1% of body-frames >= 2x. The matched lowered-D twin (chi=0, Dc/100) also keeps >= 2x in 99.3% of body-frames, as a diffuse halo whose contrast decays 226 -> 3.6 while the world stays at ~740x. W passes its gate as written (the wall ablation removes it) but not the beyond-diffusion test at the 2x threshold; the partition shows as a 200x difference in magnitude and as confinement to each core.",
+  "parents": ["20261025T0752-c03-fch-cargo-fission"],
+  "class": "fch-bilayer",
+  "world": "world.py",
+  "evidence": ["rerun/seed17/sheet.png", "rerun/seed17/lineage.png", "fission_strips_rerun_seed17.png", "fission_strips_rerun_lowD_seed17.png", "rerun_chi0/seed17/sheet.png", "contrast_seed17.txt"],
+  "review_of": "20261025T0752-c03-fch-cargo-fission",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/seed17/sheet.png t=0: white noise over the whole domain; ~29 micelles by t=32",
+      "I": "rerun/seed17/sheet.png t=32-800: discrete round micelles of stable size; lineage.png tracks persist hundreds of time units",
+      "W": "contrast_seed17.txt: 100% of 6589 body-frames >= 2x, aggregate 740-1137x; rerun_chi0/seed17: 1.0-1.6x with the same bodies",
+      "D": "rerun/seed17/lineage.png: 50 persistent splits, max generation 5, 2 merges, 0 remerged; fission_strips_rerun_seed17.png: 4 random splits, both daughters separate and >= 400x"
+    },
+    "replicated": true,
+    "seed": 17,
+    "seeds_run": [{"seed": 17, "result": "pass"}, {"seed": 17, "result": "chi=0: no contrast"}, {"seed": 17, "result": "chi=0, Dc/100: still >= 2x in 99.3% of body-frames"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_chi0/seed17 (chi=0) and rerun_lowD/seed17 (chi=0, Dc=0.01), contrast_seed17.txt"},
+    "by_construction": ["W"],
+    "bd_supported": false,
+    "class_confirmed": true,
+    "not_checked": ["1.5x resolution (author's pack_res15 only)", "dt/2"],
+    "limitation": "The containment is a Boltzmann partition (c ~ exp(-chi u)) of a cargo made only inside the bodies: a 100x slower cargo with no partition also stays >= 2x in 99.3% of body-frames for T=800 (falling to 3.6x), so the 2x criterion does not need the wall operator; only the magnitude and the confinement to each core do. The cargo is passive, division is feed-driven in synchronized waves, and there are no deaths (29 -> 89 micelles)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
