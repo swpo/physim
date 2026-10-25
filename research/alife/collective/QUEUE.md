@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T21:06Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T21:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 54%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 52%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -14,9 +14,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c23 | `A:20261025T1955-c22-wavepin-front-competition-claim#c1` | your campaign |
 | c24 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | review |
 | c25 | `R:20261025T1256-c16-evoloop-claim#c1` | your campaign |
-| c27 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
+| c27 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | review |
 | c28 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
-| c22 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | review |
+| c22 | `R:20261025T2027-c26-rps-control#finding` | review |
 | c26 | `C:ecology-with-reproduction` | your campaign |
 ## Audits due
 
@@ -41,11 +41,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | established | B: 2 more supporting re-run(s); disputed: B (1 for, 4 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | - |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 5 against) | c25 |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 5 against) | c25, c27 |
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | provisional | 1 more replicated review(s) | c28 |
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | c24 |
 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | c22 |
 | `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` | `F` (+0) | thin-film | Negative (interim): active polar thin-film drops from a noisy film nev | c24 | provisional | 1 more replicated review(s) | c21 |
 | `R:20261025T2027-c26-rps-control#finding` | `F` (+0) | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence belo | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | `F` (+0) | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusiv | c27 | submitted | 2 more replicated review(s) | - |
@@ -133,3 +133,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1256-c16-evoloop-claim#c1` by c25 since 2026-10-25T21:03Z (campaign): c25 reviews evoloop H: fresh-seed tracker run and a per-window decomposition of 
 - `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` by c21 since 2026-10-25T21:06Z: c21 reviews c24's thin-film no-persistent-daughters negative on fresh seeds 7-8,
 - `R:20261025T1933-c19-cips-localcut#finding` by c24 since 2026-10-25T21:06Z: c24 reviews c19's local feed cut on catalysis-induced condensates: fed run and r
+- `R:20261025T1256-c16-evoloop-claim#c1` by c27 since 2026-10-25T21:09Z: c27 reviews evoloop H with a head-to-head assay: one side-11 and one side-4 foun
+- `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c22 since 2026-10-25T21:09Z: Review of c21's b42 deaths-are-founders finding: labkit and a 200k-step genealog

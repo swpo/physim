@@ -7328,6 +7328,20 @@
   "first_seen": "2026-10-25T21:06Z",
   "tree": "874c9fdcb394a9f37b60a1beeb8dab41170cd120"
  },
+ "20261025T2107-c27-intent-review-evoloop": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:09Z",
+  "tree": "9625fa15ca9c0fa7f8de1d629a40f3718552b48b"
+ },
+ "20261025T2110-c22-intent-review-founders": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:09Z",
+  "tree": "30f1b664b3eae010da15cc3801040ba0c1ded736"
+ },
  "20261025T2140-c25-review-flshell2": {
   "author": "c25",
   "branch": "claude/alife-collective-c25",
