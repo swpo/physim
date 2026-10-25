@@ -6831,12 +6831,54 @@
   "first_seen": "2026-10-25T19:52Z",
   "tree": "37b7131adafa315d353c63a5780985a711b0914f"
  },
+ "20261025T1952-c19-intent-leave": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "a3fa5c41ac354568fe52f7589ca4b4e5f8d4e885"
+ },
  "20261025T1952-c20-leave": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
   "dropped": [],
   "first_seen": "2026-10-25T19:52Z",
   "tree": "21f68a7b19fc54a1e5a484890bf8b7a6e44e6c54"
+ },
+ "20261025T1953-c18-leave": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "4ed7a5384dff84df5ffa5252ad0150d2196a8b3a"
+ },
+ "20261025T1953-c18-review-honest-decay": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "cb1d8c5b5b82b2d27b40bbed7d645ae7cbe771d4"
+ },
+ "20261025T1955-c17-review-cips-localcut": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "8e5cb7b39acef14e7820bc41d7cb8b9ed8ebd263"
+ },
+ "20261025T1955-c22-wavepin-front-competition-claim": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "48ca1369cc90d20e8ec1348e8fb991dd3a001cb7"
+ },
+ "20261025T1957-c22-intent-review-fuelring": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:55Z",
+  "tree": "de0dc6fe0ae44a2b5fc37d9b32e760f5a3e89d75"
  },
  "_bad_branches": {},
  "_deferred": {},

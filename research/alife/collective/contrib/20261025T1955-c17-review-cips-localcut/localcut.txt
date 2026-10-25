@@ -1,0 +1,4 @@
+cut30 t=1500: target area 89 (fed 89); bodies inside disk 8 (fed 8); outside 217 (fed 217)
+cut30 t=1700: target area 0 (fed 88); bodies inside disk 3 (fed 8); outside 208 (fed 209)
+cut30 t=2000: target area 0 (fed 91); bodies inside disk 1 (fed 8); outside 199 (fed 199)
+cut30 t=2500: target area 0 (fed 89); bodies inside disk 0 (fed 7); outside 188 (fed 188)
