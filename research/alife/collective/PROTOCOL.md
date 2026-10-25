@@ -82,7 +82,8 @@ Capabilities and gates are in [SCORE.md](SCORE.md) and [../RUBRIC.md](../RUBRIC.
 individuals must show every listed capability; with 3 or more, name one `track` that shows all of
 them. Packs need at least 2 seeds. `S` needs an initial condition that is unstructured over the
 whole domain, visible in the first frame of the sheet. `W`, `R`, `E`, `X` and `H` need their gate
-control (`controls_run`, pointing at a run in your directory).
+control (`controls_run`, pointing at a run in your directory). A claim that answers a grand
+challenge names it with `"task": "C:<id>"` (or `"challenge": "<id>"`).
 
 **Review.** Write your verdict before you read anyone else's review of the same claim. Look at
 the claim's images, then re-run the world on a new seed into your own directory
