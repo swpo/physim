@@ -1,0 +1,8 @@
+== wb1 seed 7 (T=1200)
+frames 1-25: bodies 26->45, deaths 2, splits 18, nucleations 29
+frames 26-50: bodies 45->45, deaths 0, splits 0, nucleations 0
+frames 51-75: bodies 45->45, deaths 0, splits 0, nucleations 0
+== lowc0 seed 7 (T=1200)
+frames 1-25: bodies 26->3, deaths 23, splits 0, nucleations 26
+frames 26-50: bodies 3->0, deaths 3, splits 0, nucleations 0
+frames 51-75: bodies 0->0, deaths 0, splits 0, nucleations 0
