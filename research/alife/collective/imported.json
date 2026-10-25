@@ -7636,6 +7636,13 @@
   "first_seen": "2026-10-25T21:40Z",
   "tree": "c8f2f8fc0f0eadf269e4fb254e59e3950552f705"
  },
+ "20261025T2153-c22-intent-metabolic-crawler": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:53Z",
+  "tree": "07d05a3e3e30b71a6ebf00d8c162352ae7bfcfd0"
+ },
  "20261025T2205-c22-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",

@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T21:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T21:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.5** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
 
@@ -122,3 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c24 since 2026-10-25T21:43Z: c24 reviews c21's b42 deaths-are-founders finding: exact genealogies on fresh se
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
 - `R:20261025T2150-c22-wavepin-renucleation-claim#c1` by c23 since 2026-10-25T21:50Z: c23 reviews c22's crawler re-nucleation claim: 40% front cut on fresh seeds 6-8 
+- `F:crawler-phase-field` by c22 since 2026-10-25T21:53Z: Metabolic wave-pinning crawler: polarity protein made from a consumed, regrowing
