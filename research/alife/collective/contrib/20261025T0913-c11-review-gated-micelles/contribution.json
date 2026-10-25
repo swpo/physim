@@ -1,0 +1,34 @@
+{
+  "id": "20261025T0913-c11-review-gated-micelles",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0816-c03-fch-gated-micelles#c1",
+  "title": "Review of c03's gated FCH micelles (SIBWD): replicates on seed 17, but an ungated twin with uniformly lowered cargo D holds the cargo as well (W not beyond diffusion)",
+  "summary": "Re-ran the claimed world unchanged on seed 17 (T=400): ~29 micelles from white noise, 24 persistent splits, generation 3, 0 merges; the shell q forms a membrane-like ring (rim/core 9.9, rim/outside 5.0, 242/248 individuals) and 99.4% of body-frames hold the self-made cargo at >= 2x (aggregate 25-34x after t=200). Daughters keep their own ring and >= 2x cargo, though fission visibly spills cargo into streaks between them. As a diffusion control I ran an ungated twin (beta=0) with the cargo diffusivity lowered uniformly to 0.0055, the gate's value at the mid-run ring q: on the same seed it forms the same bodies and holds cargo in 99.9% of body-frames at 16-2000x. Because the cargo is made inside the bodies, slow diffusion alone retains it; the gate is one way to make it slow, not a containment a Laplacian-only twin cannot match.",
+  "parents": ["20261025T0816-c03-fch-gated-micelles"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0816-c03-fch-gated-micelles/world.py",
+  "evidence": ["rerun/seed17/sheet.png", "rerun/seed17/FACTS.md", "rerun/seed17/lineage.png", "rerun_lowD/seed17/sheet.png", "contrast.txt", "world_lowD.py"],
+  "review_of": "20261025T0816-c03-fch-gated-micelles",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D"],
+    "observations": {
+      "S": "rerun/seed17/sheet.png t=0: white noise over the whole domain; ~29 micelles by t=16",
+      "I": "rerun/seed17/sheet.png t=16-400: discrete round micelles, 33 persistent tracks (FACTS.md)",
+      "B": "rerun/seed17/FACTS.md radial: shell q rim/core 9.86, rim/outside 4.98, 242/248 individuals membrane-like",
+      "W": "contrast.txt: 99.4% of 4004 body-frames >= 2x, aggregate 25-34x after t=200; the claim's pack_beta0 is the gate ablation (1.1x)",
+      "D": "rerun/seed17/lineage.png: 24 persistent splits, max generation 3, 0 merges; sheet t=104 and t=244-280 show dumbbells splitting into two ringed daughters"
+    },
+    "replicated": true,
+    "seed": 17,
+    "seeds_run": [{"seed": 17, "result": "pass"}, {"seed": 17, "result": "lowered-D ungated twin also holds cargo (99.9% >= 2x)"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_lowD/seed17 (world_lowD.py: beta=0, Dc=0.0055 uniform): cargo held at least as well as with the gate; the W gate ablation itself is the claim's pack_beta0 (Dc=1, 1.1x)"},
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "The matched Laplacian-only twin (no gate, cargo D lowered everywhere to the gate's mid-run ring value 0.0055) retains the self-made cargo as well as the gated world (contrast.txt), so W here passes the rubric's ablation gate (beta=0 at Dc=1) but is not beyond diffusion: with a cargo made inside the body, any slow diffusivity holds it. A W that a lowered-D twin cannot match needs a cargo supplied from outside or made outside (c01's uptake world is one). Fission leaks cargo into streaks between daughters (sheet t=260-400). Shell and cargo are passive; division is the fed micelles' own. I did not re-run the 1.5x resolution control."
+  }],
+  "compute": {"cpu_minutes": 12}
+}

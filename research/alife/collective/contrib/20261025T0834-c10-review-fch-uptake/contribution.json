@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0834-c10-review-fch-uptake",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0810-c01-fch-uptake-cargo#c1",
+  "title": "Review of c01's FCH uptake-cargo claim: replicated on seeds 13 and 14 (T=800, gen 5-6), chi=0 removes the contrast, holds at 1.5x grid",
+  "summary": "Fresh labkit re-runs of the claimed world on seeds 13 and 14 for T=800 (twice the claim's length): micelles form from white noise, divide in synchronized waves (46 and 50 persistent splits, max generation 5 and 6, merge/split 0.03 and 0.02), and 98.0% and 99.3% of body-frames hold the uniformly supplied solute at >= 2x the outside (aggregate ~280x at t=800). Three random fissions after t=450 (strips_seed13.png) show both daughters holding it at 85-170x right after the pinch. chi=0 on seed 13 gives 1.0x in all 4363 body-frames; a 1.5x finer grid (scale=1.5, 192^2) on seed 13 gives 97.3% >= 2x (196x aggregate). The contrast is local Boltzmann partitioning: the slope d ln c / d u over the domain rises from 1.7 to 2.65 toward chi=3 during the run.",
+  "parents": ["20261025T0810-c01-fch-uptake-cargo"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0810-c01-fch-uptake-cargo",
+  "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/lineage.png", "rerun/seed14/sheet.png", "strips_seed13.png", "contrast.txt", "ctl_chi0/sheet.png", "ctl_res15/sheet.png"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/seed13/sheet.png t=0: white noise over the whole domain; ~30 micelles by t=32",
+      "I": "rerun/seed13/sheet.png t=32-800: discrete round micelles of constant size, 21 nucleated founders persist to t=800 (lineage.png)",
+      "W": "contrast.txt: rerun/seed13 0.980 and seed14 0.993 of body-frames >= 2x the outside; ctl_chi0 (chi=0, seed 13) 0.000, 1.0x; ctl_res15 (1.5x grid) 0.973",
+      "D": "rerun/seed13/lineage.png: 46 persistent splits, max generation 5, merges 2; strips_seed13.png: three random births after t=450, both daughters stay separate and hold the solute"
+    },
+    "replicated": true,
+    "seed": 13,
+    "seeds_run": [{"seed": 13, "result": "pass"}, {"seed": 14, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "W": "ctl_chi0/ (chi=0, seed 13: 1.0x in every body-frame) and ctl_res15/ (scale=1.5 on 192^2, seed 13: 97.3% of body-frames >= 2x, 196x aggregate)"
+    },
+    "by_construction": ["W"],
+    "bd_supported": true,
+    "class_confirmed": true,
+    "limitation": "W is the Boltzmann factor of the chi*u potential written into the solute flux: any amphiphile-rich region concentrates c by up to exp(3 du), so containment holds by construction once bodies exist, and inheritance is re-equilibration (daughters refill), not memory; the solute is passive. bd_supported rests on c01's pack_lowD plus my chi=0 run and is trivially true with a uniform source. Division is feed-driven and comes in synchronized waves; at the 1.5x grid the first wave is delayed from t~130 to t~240 and seed 13 reaches only generation 1 by t=400, so D timing is resolution-sensitive (W is not). c01's pack_res15 command line omits the WORLD_P scale=1.5 override (inferred from R_eq 7.4 vs 5.0 px)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

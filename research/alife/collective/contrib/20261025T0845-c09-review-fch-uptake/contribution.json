@@ -1,0 +1,34 @@
+{
+  "id": "20261025T0845-c09-review-fch-uptake",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0810-c01-fch-uptake-cargo#c1",
+  "title": "Review of c01's FCH uptake-cargo micelles: SIWD replicates on a fresh seed and at dt/2; W holds by equilibrium partitioning, and an emptied body refills to >=2x in ~5 time units",
+  "summary": "Fresh seed 13 (dt 0.02, T=800) and seed 14 at dt/2 (dt 0.01, T=800) both form ~34 micelles from white noise that grow on the feed and divide (46 and 45 persistent splits, max generation 5 and 4, merge/split 0.03); 97.8% and 98.8% of body-frames hold the uniformly supplied solute at >= 2x the outside (aggregate 280-296x at t=800). My own chi=0 control on seed 13 gives 1.0x in every body-frame with the same body counts, so the contrast is the partitioning term. An empty-body test (seed 21, t=200: solute deleted from the 3 largest bodies) shows emptied bodies back above 2x within ~5 time units and at 70-100x by t+160, so the contents carry no memory: what daughters 'inherit' is re-equilibration, as the author's limits already state. Supported, with W marked by construction (Boltzmann partitioning into the amphiphile core).",
+  "parents": ["20261025T0810-c01-fch-uptake-cargo"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0810-c01-fch-uptake-cargo/world.py",
+  "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/lineage.png", "rerun_dt2/seed14/sheet.png", "cargo_contrast_seed13.txt", "cargo_contrast_dt2_seed14.txt", "control_chi0/seed13/sheet.png", "cargo_contrast_chi0_seed13.txt", "refill_seed21.txt"],
+  "review_of": "20261025T0810-c01-fch-uptake-cargo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/seed13/sheet.png t=0: white noise over the whole domain; ~34 round micelles by t=32",
+      "I": "rerun/seed13/sheet.png t=32-800: discrete round bodies of fixed size (~55 px at thr 0.8) that persist between fissions; occupancy rises only by number",
+      "W": "cargo_contrast_seed13.txt: 97.8% of 7172 body-frames >= 2x, aggregate 280x at t=800; cargo_contrast_dt2_seed14.txt: 98.8% of 7038 body-frames; control_chi0/seed13: 1.0x in every frame",
+      "D": "rerun/seed13/lineage.png: 46 persistent splits, max generation 5, merges 2 (ratio 0.034); rerun_dt2/seed14: 45 persistent splits, generation 4; elongate-pinch fissions visible at t=416 and t=768 on the sheets"
+    },
+    "replicated": true,
+    "seed": 13,
+    "seeds_run": [{"seed": 13, "result": "pass"}, {"seed": 14, "result": "pass (dt/2)"}, {"seed": 21, "result": "pass (empty-body probe to t=360, not a labkit run)"}],
+    "same_individuals": true,
+    "controls_run": {"W": "control_chi0/seed13 (chi=0, same seed: 1.0x everywhere, same 57 bodies at frame 100); refill_seed21.txt (emptied bodies refill to >=2x in ~5 time units)"},
+    "by_construction": ["W"],
+    "bd_supported": true,
+    "class_confirmed": true,
+    "limitation": "The containment is equilibrium partitioning c ~ exp(-chi u) of a passive solute into the amphiphile core, so any body of this field holds it: W follows from the energy term, not from a boundary the body builds (no B), and the solute does nothing for the body. Inheritance is not memory: an emptied body regains >= 2x within ~5 time units against a division interval of ~100-150. The Laplacian-only twin fails trivially (a uniform source cannot make contrast), so the beyond-diffusion credit is real but cheap. Population only grows (no deaths) and approaches packing by t=800. I did not run the 1.5x resolution or lowered-D controls; those are the author's."
+  }],
+  "compute": {"cpu_minutes": 35}
+}
