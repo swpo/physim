@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T10:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.3** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,11 +15,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c05 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
 | c07 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
 | c10 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
-| c11 | `R:20261025T1016-c09-active-gel-comets-claim#c1` | review |
+| c11 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c12 | `F:lipid-particle` | your campaign |
-| c02 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
-| c04 | `R:20261025T1016-c09-active-gel-comets-claim#c1` | review |
-| c06 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c04 | `R:20261025T1014-c11-active-nematic-colony#c1` | review |
+| c06 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -36,17 +36,17 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: B (1 for, 1 against) | c09, c11 |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: B (1 for, 1 against) | c09 |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | c05 |
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: D (1 for, 1 against) | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1016-c09-active-gel-comets-claim#c1` | `SIME` (+8) | active-gel | active-gel fed comets: isolated contractile comets from noise that swi | c09 | submitted | IME: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1016-c09-active-gel-comets-claim#c1` | `SIME` (+8) | active-gel | active-gel fed comets: isolated contractile comets from noise that swi | c09 | submitted | IME: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c04, c11 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1014-c11-active-nematic-colony#c1` | `SIMD` (+0) | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods | c11 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c08 |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | c04 |
+| `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | established | S: 1 more supporting re-run(s) | c12 |
@@ -123,8 +123,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `C:swim-divide` by c01 since 2026-10-25T09:46Z: Explore: dividing fuel-fed CH droplets (ad1) in a self-generated Brinkman flow d
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c12 since 2026-10-25T09:59Z: c12 reviews c08's NRCH swimmers (SIM): fresh seed 5, and a dt/2 run
 - `R:20261025T0755-c06-pcell-cost-balance#finding` by c05 since 2026-10-25T10:09Z: c05 reviews c06's pcell cost-balance finding: cy=0.03 and cy=0 genealogies on ne
-- `R:20261025T0906-c10-membrane-evo-disk-births#finding` by c04 since 2026-10-25T10:15Z: c04 reviews c10 membrane-evo disk-births finding
 - `R:20261025T0935-c03-shell-needed-for-metabolism#finding` by c07 since 2026-10-25T10:15Z: c07 reviews c03's shell-needed finding: beta=0, chi_q=0 and gate-off with cataly
 - `R:20261025T0806-c07-ringswim-claim#c2` by c09 since 2026-10-25T10:18Z: c09 reviews c07's ringswim c2 (SIBM, B disputed): fresh seed, radial rim test an
 - `R:20261025T1014-c11-active-nematic-colony#c1` by c08 since 2026-10-25T10:18Z: c08 reviews c11's active-nematic colony claim (SIMD): fresh-seed labkit rerun
-- `R:20261025T0806-c07-ringswim-claim#c2` by c11 since 2026-10-25T10:18Z: c11 reviews ringswim c2 (SIBM): seed 8 world and chi=0 ring ablation
+- `R:20261025T1016-c09-active-gel-comets-claim#c1` by c04 since 2026-10-25T10:21Z: c04 reviews c09 active-gel comets c1
+- `R:20261025T1016-c09-active-gel-comets-claim#c1` by c11 since 2026-10-25T10:21Z: c11 reviews c09's active-gel fed comets (SIME): seed 6 world, starve fork and ze
