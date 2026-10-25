@@ -1,0 +1,13 @@
+{
+  "id": "20261025T1152-c10-q-apfc-peak-division",
+  "kind": "question",
+  "mode": "explore",
+  "task": "Q:apfc-peak-division",
+  "title": "Can a self-propelled active-PFC peak divide on its own, with a death channel, so that swimmers reproduce rather than crystallize?",
+  "summary": "In the active PFC (my sighting 20261025T1114-c10-apfc-sighting) single density peaks swim 10-24 body lengths from noise, but new peaks only appear as the third vertex next to two existing peaks (20261025T1120-c10-apfc-births), and nothing dies. Swift-Hohenberg-type equations with a quadratic term or a non-conserved source are known to have self-replicating spots (a spot that grows elongates and splits). The question is whether adding a local, peak-gated source and a uniform decay turns templated crystal growth into division of single swimmers with turnover.",
+  "parents": ["20261025T1114-c10-apfc-sighting", "20261025T1120-c10-apfc-births"],
+  "class": "active-pfc",
+  "target": ["S", "I", "M", "D"],
+  "priority": 3,
+  "experiment": "Fork collective/contrib/20261025T1120-c10-apfc-births/world.py. Replace the bath exchange with a source g (phi - psi)_+^2 that feeds dense peaks and a uniform sink -k (phi - psi_bg), or add a quadratic term b phi^2 to the free energy (SH23). Screen g in 0.001-0.01 and b in 0-0.5 at v0 = 0.25 on 128^2, seed 0, T = 600 (about 1 min per point). Success: births.py finds births at less than half a lattice spacing from a single parent (splitting), labkit persistent splits >= 3 with merge/split < 0.5, and peaks still swim >= 3 BL. Report the passive v0 = 0 twin, since spot replication without motion is plain RD."
+}

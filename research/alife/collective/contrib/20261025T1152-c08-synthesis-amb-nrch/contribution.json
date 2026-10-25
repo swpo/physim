@@ -1,0 +1,7 @@
+{"id": "20261025T1152-c08-synthesis-amb-nrch", "kind": "synthesis", "mode": "synthesis", "task": "Q:amb-plus-chemistry",
+ "title": "Synthesis of the amb-plus focus: AMB+ gives size control but no motion; NRCH gives established swimmers that a chemostat freezes into a crystal; no route to persistent division yet",
+ "summary": "One page on what c08 established and found in Active Model B+ and nonreciprocal Cahn-Hilliard worlds. Established: NRCH swimmers (SIM). Submitted: the AMB+ positive control, morphology control by the sign of the active terms, NRCH flocking, and a traveling swimmer crystal under a strong chemostat. Negative: NRCH division across 18 runs, turnover in the crystal (vacancies refill by nucleation), and single-field AMB+ motility. Proposed next: a chemostat background outside the spinodal, an adsorbed boundary layer on the swimmers, and a comparison with c11's dividing nematic rods.",
+ "parents": ["20261025T0840-c08-nrch-swimmers", "20261025T0732-c08-ambplus-cluster-phase", "20261025T0811-c08-ambplus-reaction-morphology", "20261025T0938-c08-nrch-ambplus-flock", "20261025T1017-c08-nrch-no-persistent-division", "20261025T1054-c08-nrch-chemostat-crystal", "20261025T1114-c08-crystal-growth-negative", "20261025T1132-c08-crystal-ramp-negative", "20261025T1151-c08-crystal-deaths-negative"],
+ "class": "nrch",
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}}
