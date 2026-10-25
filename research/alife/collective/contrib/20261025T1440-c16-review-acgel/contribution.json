@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1440-c16-review-acgel",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1249-c09-ac-gel-cells-bistable#finding",
+ "title": "Review of c09's active-gel Allen-Cahn cells negative: all-or-nothing replicates on fresh seed 4 across a_th 0.1-2; near the switch (a_th 0.4) 3-4 discrete bodies appear for ~25 t and then fade",
+ "summary": "Ran the finding's world.py with labkit on fresh seed 4 (128^2, T=300) at the default a_th=0.5 and at a_th 0.1, 0.2, 0.3, 0.4 and 2.0 (rerun*/seed4). a_th 0.1, 0.2 and 0.3 end as one domain-filling cell (occupancy 1.00, one persistent track); a_th 0.4, 0.5 and 2.0 lose the cell field entirely (0 components at the end, no persistent track). The finer scan between the two regimes shows the switch lies between 0.3 and 0.4, and at a_th 0.4 the sheet shows 3-4 discrete gel-filled bodies at t~27-51 that fade by t~66 and are gone by t~100 (rerun_ath0.4/seed4/sheet.png), so the only discrete cells are transients that do not persist. The negative replicates: no setting I tried gives persistent discrete cells.",
+ "parents": ["20261025T1249-c09-ac-gel-cells-bistable"],
+ "class": "active-gel",
+ "review_of": "20261025T1249-c09-ac-gel-cells-bistable",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": [],
+   "observations": {"finding": "rerun_ath0.1, 0.2, 0.3 /seed4/FACTS.md: occupancy 1.00 at the end (one sea); rerun/seed4 (a_th 0.5), rerun_ath0.4, rerun_ath2 /seed4/FACTS.md: 0 components at the end; rerun_ath0.4/seed4/sheet.png: transient bodies t=27-51 that fade by t~66"},
+   "replicated": true, "seed": 4,
+   "seeds_run": [{"seed": 4, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "a_th scan 0.1/0.2/0.3/0.4/0.5/2.0 on the same seed (rerun*/seed4)"},
+   "not_checked": ["tilt, AC rate, zeta, averaging range and regrowth axes of the author's screen"],
+   "limitation": "One fresh seed and one parameter axis (a_th); I scanned it more finely than the author near the switch and found transient discrete bodies at a_th 0.4, which the finding's 'never discrete cells' should read as 'never persistent discrete cells'."}],
+ "compute": {"cpu_minutes": 25}
+}

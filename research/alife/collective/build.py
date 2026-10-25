@@ -488,6 +488,17 @@ def norm_target(review_of, cid):
     return t, cid
 
 
+def challenge_of(c, cl):
+    """The grand challenge a claim names: its own or its contribution's `challenge`, or a `C:<id>` task."""
+    for v, is_task in ((cl.get("challenge"), False), (c.get("challenge"), False), (c.get("task"), True)):
+        v = text(v).strip()
+        if v.startswith("C:"):
+            return v[2:]
+        if v and not is_task:
+            return v
+    return ""
+
+
 def lineage(cid, by_id):
     """Authors of every contribution this one builds on, transitively."""
     out, seen, stack = set(), set(), list(by_id.get(cid, {}).get("parents", []))
@@ -551,7 +562,7 @@ def derive(items, until=None, canaries=frozenset()):
                 "outcome": (c.get("outcome") or "").lower(), "world": c.get("world", "") or c.get("pack", ""),
                 "t": c["_t"], "dir": c.get("_dir", ""), "seed_status": cl.get("seed_status") if c.get("_seed") else None,
                 "seed_bc": set(caps_list(cl.get("by_construction", []))[0]) if c.get("_seed") else set(),
-                "requires": cl.get("requires", ""), "challenge": c.get("challenge", ""), "bd_control": cl.get("bd_control", ""),
+                "requires": cl.get("requires", ""), "challenge": challenge_of(c, cl), "bd_control": cl.get("bd_control", ""),
                 "runs": runs, "seeds": {s for _, s in runs if s is not None}, "lineage": lineage(c["id"], by_id),
                 "votes": {}, "canary": c["id"] in canaries, "track": cl.get("track", ""),
             }

@@ -1,0 +1,12 @@
+[nematic-fuelcell] seed 11: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  60.3s
+  frame 40/200  119.8s
+  frame 60/200  177.2s
+  frame 80/200  234.9s
+  frame 100/200  294.0s
+  frame 120/200  354.8s
+  frame 140/200  414.7s
+  frame 160/200  476.2s
+  frame 180/200  534.3s
+  frame 200/200  594.3s
+  -> collective/contrib/20261025T1425-c19-review-fuelcell/rerun_chis0_Df02/seed11/FACTS.md  (594s sim)
