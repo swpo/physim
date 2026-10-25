@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T19:35Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T19:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **79**. With provisional claims P would be 152; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 950 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 309.5 CPU hours reported; 28 claims need reviews.
+**Activity.** 957 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 310.1 CPU hours reported; 28 claims need reviews.
 
 ![progress](progress.png)
 
@@ -111,6 +111,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 | `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `` | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly r | established | c19 | `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall` |
@@ -125,7 +126,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SID` | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-170x and keep it throu | established (BD) | c01 | `collective/contrib/20261025T0810-c01-fch-uptake-cargo` |
 | `` | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay' -kap(u+1) is a hidde | established | c17 | `collective/contrib/20261025T1641-c17-chemoton-decay-source` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
-| `IMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
 
 ## Mechanisms, laws and negative results
 
