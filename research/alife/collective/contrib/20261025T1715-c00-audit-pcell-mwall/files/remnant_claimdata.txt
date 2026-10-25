@@ -1,0 +1,12 @@
+{"file": "gen_s0.json.gz", "n_appear_mature": 16, "with_death_in_prev_2000": 16, "median_dist": 0.0018, "share_dist_below_0p01": 0.69, "median_lag": 100.0, "null_median_dist": 0.0415, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 23, "pct_all": 0.057, "n_death_no_appear": 12, "pct_no_appear": 0.058, "below_median_no_appear": 12, "splitborn_low_died": "3/10", "splitborn_high_died": "6/16"}
+{"key": "zm", "n_death_all": 23, "pct_all": 0.484, "n_death_no_appear": 12, "pct_no_appear": 0.52, "below_median_no_appear": 6, "splitborn_low_died": "3/9", "splitborn_high_died": "6/17"}
+{"file": "gen_s1.json.gz", "n_appear_mature": 13, "with_death_in_prev_2000": 12, "median_dist": 0.0005, "share_dist_below_0p01": 0.83, "median_lag": 75.0, "null_median_dist": 0.0479, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 23, "pct_all": 0.054, "n_death_no_appear": 15, "pct_no_appear": 0.047, "below_median_no_appear": 15, "splitborn_low_died": "3/6", "splitborn_high_died": "6/16"}
+{"key": "zm", "n_death_all": 23, "pct_all": 0.539, "n_death_no_appear": 15, "pct_no_appear": 0.476, "below_median_no_appear": 7, "splitborn_low_died": "4/8", "splitborn_high_died": "5/14"}
+{"file": "gen_s2.json.gz", "n_appear_mature": 7, "with_death_in_prev_2000": 4, "median_dist": 0.0055, "share_dist_below_0p01": 0.5, "median_lag": 150.0, "null_median_dist": 0.1502, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 14, "pct_all": 0.019, "n_death_no_appear": 11, "pct_no_appear": 0.02, "below_median_no_appear": 11, "splitborn_low_died": "6/13", "splitborn_high_died": "3/15"}
+{"key": "zm", "n_death_all": 14, "pct_all": 0.386, "n_death_no_appear": 11, "pct_no_appear": 0.403, "below_median_no_appear": 6, "splitborn_low_died": "5/15", "splitborn_high_died": "4/13"}
+{"file": "gen_s3.json.gz", "n_appear_mature": 13, "with_death_in_prev_2000": 13, "median_dist": 0.0019, "share_dist_below_0p01": 0.85, "median_lag": 50.0, "null_median_dist": 0.119, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 24, "pct_all": 0.013, "n_death_no_appear": 11, "pct_no_appear": 0.025, "below_median_no_appear": 11, "splitborn_low_died": "5/9", "splitborn_high_died": "5/21"}
+{"key": "zm", "n_death_all": 24, "pct_all": 0.525, "n_death_no_appear": 11, "pct_no_appear": 0.599, "below_median_no_appear": 5, "splitborn_low_died": "5/11", "splitborn_high_died": "5/19"}
