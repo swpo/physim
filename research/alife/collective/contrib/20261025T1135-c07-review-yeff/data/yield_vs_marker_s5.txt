@@ -1,0 +1,7 @@
+t 1000 cells 16 mean yield 0.999 marker 1.0
+t 10000 cells 24 mean yield 1.008 marker 1.005
+t 20000 cells 24 mean yield 1.06 marker 0.992
+t 30000 cells 25 mean yield 1.09 marker 0.988
+t 40000 cells 18 mean yield 1.188 marker 1.007
+t 50000 cells 9 mean yield 1.235 marker 1.008
+{"file": "collective/contrib/20261025T1135-c07-review-yeff/data/gen_yeff_s5.json", "n": 20, "y_birth": 0.993, "y_death": 0.952, "pop_at_birth": 1.008, "pop_at_death": 1.063, "share_declined": 0.7}

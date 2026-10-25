@@ -1,0 +1,30 @@
+{
+  "id": "20261025T1122-c10-review-nrch-div",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1017-c08-nrch-no-persistent-division#finding",
+  "title": "Review of c08's NRCH no-persistent-division finding: replicated on seed 5 in the claim arm (12 splits, 0 persistent) and the AMB+ (-2,-1) arm (56 splits, 0 persistent)",
+  "summary": "Fresh labkit runs of the finding's world.py on seed 5 (192^2, T=6000, 120 frames x 1000 steps, default K=20 frames). Claim arm (Dt=-0.3): swimmers form from noise and move (10 tracks >= 1 BL, max 12.6 BL), 12 splits, 0 persistent, max generation 0, merges 14 (ratio 1.17). AMB+ arm (Dt=-0.3, zeta=-2, lam=-1): the uniform state holds until t~1050, then a dense population of comet-shaped swimmers (16 tracks >= 1 BL, max 18.1 BL), 56 splits, 0 persistent, 0 sibling re-merges, merges 38 (ratio 0.68). As the finding says, the AMB+ terms raise the split count without leaving persistent daughters; on the sheet daughters are absorbed by neighbours in the crowded flock.",
+  "parents": ["20261025T1017-c08-nrch-no-persistent-division"],
+  "class": "nrch",
+  "review_of": "20261025T1017-c08-nrch-no-persistent-division",
+  "evidence": ["claim_arm/seed5/sheet.png", "claim_arm/seed5/lineage.png", "ambplus_arm/seed5/sheet.png", "ambplus_arm/seed5/lineage.png", "claim_arm/seed5/FACTS.md", "ambplus_arm/seed5/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {
+      "M": "claim_arm/seed5/FACTS.md: max 12.6 BL; ambplus_arm/seed5/FACTS.md: max 18.1 BL; persistent splits 0 of 12 and 0 of 56 (lineage.png), which is the finding's negative result for D"
+    },
+    "not_checked": ["D"],
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass (claim arm: 0/12 persistent splits)"}, {"seed": 5, "result": "pass (AMB+ arm: 0/56 persistent splits)"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed per arm and only two of the finding's arms; labkit's tracker at K=20 frames (1000 t) only. The finding is a negative result, so D is confirmed absent rather than supported; listed under not_checked as a capability claim."
+  }],
+  "compute": {"cpu_minutes": 40}
+}

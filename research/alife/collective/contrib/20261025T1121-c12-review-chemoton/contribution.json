@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1121-c12-review-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "title": "Review of c02's FCH chemoton (SIBE): S, I and the catalyst layer (B) replicate on fresh seed 9; at the starvation fork vesicles shrink ~80% but 3 of 4 are still alive 300 t later, so E is seen, not passed",
+  "summary": "Fresh seed 9 (192^2, T=600) of world.py and world_starve.py (identical to t=300). From the noisy bath, amphiphile blobs at t~24 turn into multilamellar vesicles by t~150 with catalyst beads along their bilayers; four persist to t=600, all carrying K (kbodies_seed9.txt: 4 K-bearing bodies, 0 K-free, bilayer area 4464 -> 4879 px). labkit radial: K rim/core 3.61, rim/outside 2.69, 15/23 membrane-like; u itself 1.40 (5/23). After the feed cut at t=300 the catalyst collapses within ~50 t (total K 5796 -> 266) and the bilayer area falls 4615 -> 925 px by t=600 while the fed twin holds 4879; but 3 of the 4 bodies are still present at t=600 as small rings, 2 of them now K-free.",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "world": "world.py",
+  "evidence": ["rerun/seed9/sheet.png", "rerun/seed9/radial.png", "rerun_starve/seed9/sheet.png", "kbodies_seed9.txt"],
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B"],
+    "observations": {
+      "S": "rerun/seed9/sheet.png t=0: noise over the whole domain",
+      "I": "rerun/seed9/sheet.png t=150-600: four discrete multilamellar vesicles at fixed positions and near-constant size",
+      "B": "rerun/seed9/FACTS.md radial: catalyst K rim/core 3.61, rim/outside 2.69, 15/23 membrane-like; white K beads on the bilayers in sheet.png"
+    },
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "pass for S, I, B"}, {"seed": 9, "result": "starve fork at t=300: shrink 80%, 3/4 bodies alive at t=600"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun_starve/seed9 vs rerun/seed9 (fed twin), kbodies_seed9.txt"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "not_checked": ["E as passed: individuals did not die within 300 t of the cut", "no-gate and no-K controls (author's)", "resolution"],
+    "limitation": "E is seen but not passed on this seed: starving vesicles lose ~80% of bilayer and their catalyst, yet 3 of 4 are still present 300 t after the cut (2 of them K-free), so the fork shows decline, not death; it also holds largely by construction (amphiphile made only by K from P, decaying at kap). The bilayer's own u rim/core is 1.40; the layer that passes the gate is the catalyst. No division."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
