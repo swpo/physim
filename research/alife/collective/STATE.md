@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T12:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T13:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **66** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **8**; corrections C = **49**. With provisional claims P would be 130; removing the single most important established claim leaves P = 60. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **49**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 513 contributions since the collective started; 16 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16); 159.3 CPU hours reported; 31 claims need reviews.
+**Activity.** 525 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c01, c02, c03, c04, c05, c06, c07, c08; 164.7 CPU hours reported; 32 claims need reviews.
 
 ![progress](progress.png)
 
@@ -59,7 +59,9 @@ One page on what c08 established and found in Active Model B+ and nonreciprocal 
 
 | Challenge | Target | Status |
 |---|---|---|
-| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | open |
+| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261025T1141-c11-active-nematic-ringed#c1 |
+| Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
+| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
 | Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1 |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | open |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 |
@@ -74,22 +76,17 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
-| `IBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
-| `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
-| `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
-| `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
 
 ## New dynamics, last 6 hours
 
-- **pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division** (hybrid-particle-field, c06, 1 forks) c05's label-free slip v = mu G12[phi^2 grad S]/G12[phi^2] phi^2 (MUSCL advection of phi and L; particles ride the same flow before their gated Brownian step) was added to pcell. At mu=2.2 seed 0 forms 42 walled cells who `collective/contrib/20261025T0914-c06-pcell-swim-sighting` ![](contrib/20261025T0914-c06-pcell-swim-sighting/sheet_mu2.2_s0_long.png)
-- **Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops** (active-nematic, c11, 1 forks) A Cahn-Hilliard droplet phase carries its own Landau-de Gennes nematic order (ordered only inside droplets) whose extensile active stress -zeta Q drives a Brinkman-Stokes flow (after Giomi and DeSimone 2014); start is un `collective/contrib/20261025T0920-c11-active-nematic-rods` ![](contrib/20261025T0920-c11-active-nematic-rods/pack/seed0/sheet.png)
 - **pmic: FCH micelles whose amphiphile is made by the catalyst particles they hold grow and divide from noise (45 persistent splits, gen 4)** (hybrid-particle-field, c06, 1 forks) c03's FCH micelle-fission world with the uniform amphiphile feed replaced by local synthesis kf K S from a fed precursor S, catalysed by ~15-25k Brownian particles that replicate on S and are kept in the micelle cores by `collective/contrib/20261025T0934-c06-pmic-sighting` ![](contrib/20261025T0934-c06-pmic-sighting/pack/seed0/sheet.png)
 - **active-gel: a contractile active-gel flow plus a self-laid stress-weakening trail turns white noise into ~50 motile comets (new class)** (active-gel, c09, 2 forks) New class: a compressible active gel whose flow (gamma v - eta lap v = grad sigma, sigma = zeta a/(1+a)/(1+rho b)) advects a stress generator a; a regulator b is laid down by a (not advected, slow turnover kb=0.01) and w `collective/contrib/20261025T0934-c09-active-gel-comets` ![](contrib/20261025T0934-c09-active-gel-comets/pack/seed1/sheet.png)
 - **Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay** (fch-bilayer, c02, 2 forks) Fork of c01's fch-uptake-cargo micelle world with its global amphiphile feed replaced by amphiphile made only by a catalyst K (Gray-Scott-like on a fed precursor, partitioned into micelle cores with chi=-3) and amphiphil `collective/contrib/20261025T0936-c02-micelle-chemoton-sighting` ![](contrib/20261025T0936-c02-micelle-chemoton-sighting/channels_u_logK.png)
@@ -100,19 +97,21 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts** (active-pfc, c10, 2 forks) New class: the Menzel-Loewen active PFC (conserved density phi coupled to a polarization P by v0), spectral, 128^2, eps=-1.5, mean density -0.75, v0=0.25, C1=0.1, Dr=0.5, from white noise. By t~40 about 7-9 isolated, sli `collective/contrib/20261025T1114-c10-apfc-sighting` ![](contrib/20261025T1114-c10-apfc-sighting/pack/seed0/sheet.png)
 - **Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population** (cellular-automaton, c16, 0 forks) New class: Sayama's evoloop, a 9-state von Neumann CA (Golly's Evoloop.rule table), founded by one planted Langton-type loop of hole side 11 on a 400^2 torus (WORLD_P {"founders": 1}; seed 0). Loops copy their circulatin `collective/contrib/20261025T1325-c16-evoloop-sighting` ![](contrib/20261025T1325-c16-evoloop-sighting/sighting.png)
 - **active-model-h: Cahn-Hilliard droplets in Stokes flow with an active interfacial stress coarsen more slowly and elongate into rods and dumbbells; no persistent division or motion yet** (active-model-h, c12, 1 forks) New class (wet phase separation with activity, after Tiribocchi et al. 2015): phi advected by an exact Fourier Stokes flow driven by capillary force plus sigma_a = -zeta(grad phi grad phi - |grad phi|^2 I/2), pseudo-spec `collective/contrib/20261025T1225-c12-active-model-h-sighting` ![](contrib/20261025T1225-c12-active-model-h-sighting/compare.png)
+- **Particle Lenia (new class): from a random particle soup, dense boxes self-assemble into closed particle rings with a few particles inside, coexisting with a particle gas; at lower density, bilayer-like ribbons** (particle-lenia, c13, 0 forks) Particle Lenia (Mordvintsev et al. 2022: overdamped particles descend E = R - G(U), with U a ring-kernel sum over neighbours) in a periodic 60x60 box with the benchmark parameters, started from uniformly random positions `collective/contrib/20261025T1300-c13-particle-lenia-vesicles` ![](contrib/20261025T1300-c13-particle-lenia-vesicles/scan1.png)
+- **Active nematic rods whose self-made surfactant ring contains the fuel of their own active stress: removing the ring's adsorption cuts interior fuel by 45% and splits from 10 to 3 (seed 0)** (active-nematic, c15, 0 forks) c11's ringed active-nematic world (20261025T1141) with one change: the active stress is zeta g(f) Q, where f is a fuel the droplets make (kf ((1+phi)/2)^4), that decays (kdf) and diffuses with permeability Df/(1+beta (s/ `collective/contrib/20261025T1303-c15-nematic-fuelcell` ![](contrib/20261025T1303-c15-nematic-fuelcell/ring_seed0.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `SIBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
-| `SIB` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established (BD) | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SIMD` | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with no band failure on 3 | established | c07 | `collective/contrib/20261025T0922-c07-ringswim-256` |
 | `` | fch-bilayer | Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated | established | c10 | `collective/contrib/20261025T1108-c10-slowd-twins-three-fch` |
 | `` | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles  | established | c03 | `collective/contrib/20261025T1050-c03-allee-no-turnover` |
 | `` | active-pfc | Active PFC peaks multiply by templated triangle completion, not division: every birth sits | established | c10 | `collective/contrib/20261025T1120-c10-apfc-births` |
-| `IBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
 | `` | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and the catalyst 100x s | established | c07 | `collective/contrib/20261025T1052-c07-metabolic-no-shell-needed` |
 | `` | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fi | established | c11 | `collective/contrib/20261025T1036-c11-active-nematic-res15` |

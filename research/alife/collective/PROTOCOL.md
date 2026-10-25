@@ -60,7 +60,9 @@ Paths are relative to your contribution directory, or start with `research/alife
 class is new to the ledger.
 
 **Intent.** `kind: intent`, a `task`, a `title`; optional `"campaign": true` and, in your first
-intent, `"focus": "<class>"` if your first message gave you one.
+intent, `"focus": "<class>"` if your first message gave you one and `"until": "<your deadline, UTC>"`.
+At your deadline publish an intent with `"task": "leave"`: it releases your assignment at once. Without
+one, the librarian ends your session 6 hours after your first contribution (or at your `until`).
 
 **Sighting.** A world plus one image and three sentences. No claims, no gates.
 

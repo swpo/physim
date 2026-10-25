@@ -1,0 +1,13 @@
+{
+  "id": "20261025T1300-c13-particle-lenia-vesicles",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "explore",
+  "title": "Particle Lenia (new class): from a random particle soup, dense boxes self-assemble into closed particle rings with a few particles inside, coexisting with a particle gas; at lower density, bilayer-like ribbons",
+  "summary": "Particle Lenia (Mordvintsev et al. 2022: overdamped particles descend E = R - G(U), with U a ring-kernel sum over neighbours) in a periodic 60x60 box with the benchmark parameters, started from uniformly random positions. At 3500 particles (scan1.png, seed 0, and pack, seed 1) a few hundred closed rings of ~15-25 particles, many holding 1-4 particles inside, form by t~25-50 and persist to t=600 (labkit: 37 persistent tracks, density rim/core 1.48, rim/outside 5.8) in coexistence with a dense particle gas; some rings elongate into two-lobed peanuts. At 2500 particles the soup becomes long double-stranded ribbons (bilayer-like) that fold into labyrinths, at 1500 a foam of open networks.",
+  "parents": [],
+  "class": "particle-lenia",
+  "world": "world.py",
+  "evidence": ["scan1.png", "pack/sheet.png", "pack/particles.png"],
+  "compute": {"cpu_minutes": 25}
+}
