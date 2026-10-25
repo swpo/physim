@@ -1,0 +1,113 @@
+{
+"candidates": [],
+"persistent_splits": 6,
+"max_generation": 4,
+"splits": 24,
+"merges": 21,
+"deaths": 21,
+"tracks_ge3BL": 18,
+"tracks_ge5BL": 5,
+"top_motion": [
+{
+"id": 87,
+"life": 10900,
+"net": 881.1,
+"BL": 19.74,
+"size": 44.6,
+"speed": 0.0808
+},
+{
+"id": 74,
+"life": 1760,
+"net": 124.8,
+"BL": 7.02,
+"size": 17.8,
+"speed": 0.0709
+},
+{
+"id": 10,
+"life": 3240,
+"net": 93.7,
+"BL": 6.06,
+"size": 15.5,
+"speed": 0.0289
+},
+{
+"id": 53,
+"life": 2900,
+"net": 108.9,
+"BL": 5.89,
+"size": 18.5,
+"speed": 0.0376
+},
+{
+"id": 6,
+"life": 1920,
+"net": 90.3,
+"BL": 5.38,
+"size": 16.8,
+"speed": 0.047
+},
+{
+"id": 23,
+"life": 1760,
+"net": 72.4,
+"BL": 4.75,
+"size": 15.2,
+"speed": 0.0411
+},
+{
+"id": 18,
+"life": 1380,
+"net": 71.9,
+"BL": 4.67,
+"size": 15.4,
+"speed": 0.0521
+},
+{
+"id": 57,
+"life": 1160,
+"net": 65.6,
+"BL": 4.63,
+"size": 14.2,
+"speed": 0.0566
+},
+{
+"id": 1,
+"life": 2840,
+"net": 67.6,
+"BL": 4.5,
+"size": 15.0,
+"speed": 0.0238
+},
+{
+"id": 55,
+"life": 1420,
+"net": 84.9,
+"BL": 4.33,
+"size": 19.6,
+"speed": 0.0598
+}
+],
+"split_times": [
+1900,
+4260,
+4860,
+4980,
+6860,
+6960
+],
+"gen_hist": {
+"0": 30,
+"1": 34,
+"2": 12,
+"3": 2,
+"4": 10
+},
+"world": "collective/contrib/20261025T0806-c07-ringswim-claim/world_claim.py",
+"seed": 11,
+"T": 20000,
+"params": {
+"kd": "0.06"
+}
+}

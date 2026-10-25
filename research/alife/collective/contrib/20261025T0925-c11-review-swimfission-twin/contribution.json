@@ -1,0 +1,29 @@
+{
+  "id": "20261025T0925-c11-review-swimfission-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0658-c01-swimfission-rd-twin#finding",
+  "title": "Review of c01's swimfission Laplacian-twin finding: replicates on fresh seed 5 (twin 2 clean fissions, gen 2, vs swimfission 11 and 8, gen 3)",
+  "summary": "Ran the twin (twin_sf.py, unchanged) on seed 5 with labkit and with the lab's strict tracker (threads/chemotaxis-motility/fission.py, T=1200), and swimfission itself on seed 5 with the tracker at its default t_on=150 and at the twin's t_on=400. Twin: 2 clean fissions, strict generation 2, 3.2 bodies late (labkit: 2 persistent splits, 98 nucleations); swimfission: 11 clean fissions, generation 3, 8.6 bodies (t_on=400: 8, generation 3, 8.3 bodies). In the twin strip one 'fission' is a small body nucleating beside a long band and the other is a long worm breaking in two, while swimfission's strip shows four compact swimmers pinching at the waist. The twin's bodies swim (13 body lengths) and, as on the claim's seed 1, one long band dominates mid-run before breaking up.",
+  "parents": ["20261025T0658-c01-swimfission-rd-twin"],
+  "class": "keller-segel",
+  "world": "research/alife/collective/contrib/20261025T0658-c01-swimfission-rd-twin/twin_sf.py",
+  "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/FACTS.md", "fission/twin_s5_strip.png", "fission/swimfission_ton400_s5_strip.png", "fission/swimfission_s5_strip.png"],
+  "review_of": "20261025T0658-c01-swimfission-rd-twin",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {
+      "D": "fission/twin_s5.json: 2 clean fissions, max generation 2, bodies late 3.2 (one is a bud beside a band, twin_s5_strip.png row 1); fission/swimfission_s5.json: 11, generation 3, 8.6; swimfission_ton400_s5.json: 8, generation 3, 8.3, strip shows binary waist fissions"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "twin: 2 clean fissions, gen 2 (labkit pack and strict tracker)"}, {"seed": 5, "result": "swimfission t_on=150: 11 clean fissions, gen 3"}, {"seed": 5, "result": "swimfission t_on=400: 8 clean fissions, gen 3"}],
+    "same_individuals": true,
+    "controls_run": {"D": "fission/swimfission_ton400_s5 (the world with the twin's growth delay) and fission/swimfission_s5 (default), both on seed 5"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed. The ratio here (11 or 8 vs 2) is ~4-5x, as claimed; the twin still makes some divisions, so taxis is not strictly necessary for D, which the finding states. As the author says, this is one twin family; a different Laplacian twin might divide better. I did not run dt/2."
+  }],
+  "compute": {"cpu_minutes": 30}
+}

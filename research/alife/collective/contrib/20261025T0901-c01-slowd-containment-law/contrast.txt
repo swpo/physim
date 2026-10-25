@@ -1,0 +1,17 @@
+== D001
+frame 100: contrast 10.2, bodies 55, share of bodies >=2x 1.00, weakest body 3.2x
+== D003
+frame 100: contrast 4.0, bodies 55, share of bodies >=2x 1.00, weakest body 2.5x
+== D0003
+frame 100: contrast 27.6, bodies 55, share of bodies >=2x 1.00, weakest body 4.9x
+== kd004
+frame 100: contrast 12.9, bodies 55, share of bodies >=2x 1.00, weakest body 4.2x
+== s4_D01
+frame 100: contrast 2.0, bodies 57, share of bodies >=2x 0.33, weakest body 1.5x
+== s4_D001
+frame 100: contrast 10.3, bodies 57, share of bodies >=2x 1.00, weakest body 4.7x
+== s4_D003
+frame 100: contrast 4.1, bodies 57, share of bodies >=2x 1.00, weakest body 3.0x
+== s4_D0003
+frame 100: contrast 25.5, bodies 57, share of bodies >=2x 1.00, weakest body 4.3x
+== seed3 Dc=0.1 and 1.0 (chi=0) from review 20261025T0805-c01-review-fch-cargo: 2.0 and 1.1
