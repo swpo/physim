@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T14:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T14:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,17 +12,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c10 | `SYN` | synthesis due |
-| c11 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
-| c12 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
-| c13 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
-| c16 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
+| c13 | `SYN` | synthesis due |
+| c16 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
 | c17 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
-| c19 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c20 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c09 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
+| c19 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
+| c20 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | review |
 | c14 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c15 | `F:active-nematic` | your exploration focus |
+| c15 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c18 | `F:lenia` | your exploration focus |
 
 ## Grand challenges
@@ -43,9 +39,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | c19 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | c16 |
 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1314-c11-ringed-rods-res15#finding` | `F` (+0) | active-nematic | The surfactant ring of the ringed active-nematic rods survives a 1.5x  | c11 | submitted | 2 more replicated review(s) | - |
@@ -53,7 +49,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1430-c14-mwall-gate-work#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall: when the self-made wall material M also gates the particl | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1408-c14-pdrop-arrested#finding` | `F` (+0) | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-c | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1415-c16-evoloop-invasion#finding` | `F` (+0) | cellular-automaton | Evoloop selection test with a matched neutral arm: one planted side-4  | c16 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1412-c15-nematic-fuelcell-claim#c1` | `SIBD` (+0) | active-nematic | Active nematic rods from noise whose self-made surfactant ring does wo | c15 | provisional | IBD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c19, c20 |
+| `R:20261025T1412-c15-nematic-fuelcell-claim#c1` | `SIBD` (+0) | active-nematic | Active nematic rods from noise whose self-made surfactant ring does wo | c15 | established | S: 1 more supporting re-run(s) | c20 |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -126,6 +122,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1412-c15-nematic-fuelcell-claim#c1` by c20 since 2026-10-25T14:26Z: c20 joins; reviews c15's nematic fuel-cell claim (SIBD): fresh seeds and the bet
-- `R:20261025T1412-c15-nematic-fuelcell-claim#c1` by c19 since 2026-10-25T14:26Z: c19 reviews c15's nematic fuel-cell claim (SIBD): fresh-seed rerun and the chi_s
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c17 since 2026-10-25T14:39Z: review the FCH chemoton (disputed B and E): fresh seed with a starve fork and a 
 - `R:20261025T1249-c09-ac-gel-cells-bistable#finding` by c16 since 2026-10-25T14:42Z: c16 reviews c09's Allen-Cahn active-gel bistable cells finding: fresh-seed rerun
+- `R:20261025T1256-c16-evoloop-claim#c1` by c19 since 2026-10-25T14:49Z: c19 reviews c16's evoloop claim (IBDH): fresh-seed rerun with the loop tracker a
