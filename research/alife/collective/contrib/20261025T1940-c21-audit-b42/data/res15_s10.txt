@@ -1,0 +1,8 @@
+{'persistent_splits': 9, 'max_generation_persistent': 5, 'merges': 0, 'deaths': 15, 'splits_by_parent_kind': {'0': 9, '1': 0, '-1': 0}, 'deaths_by_kind': {'0': 15, '1': 0, '-1': 0}, 'off_kind_daughters': 0, 'conversions_of_pure_cells': 0, 'final_cells': 29, 'final_pure': {'0': 29, '1': 0, '-1': 0}, 'world': 'collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim/world.py', 'seed': 10, 'T': 100000, 'params': {'scale': '1.5'}, 'particle_births': [29252009], 'particle_deaths': [29289381], 'flips': 0, 'pflips': 0}
+{"file": "gen_res15_s10.json", "key": "ym", "minlife": 20, "n_death": 8, "death_pct_mean": 0.047, "n_split": 9, "split_pct_mean": 0.955, "death_pct_below_median": 8, "split_pct_above_median": 9}
+{"file": "gen_res15_s10.json", "key": "zm", "minlife": 20, "n_death": 8, "death_pct_mean": 0.52, "n_split": 9, "split_pct_mean": 0.666, "death_pct_below_median": 4, "split_pct_above_median": 6}
+{"file": "gen_res15_s10.json.gz", "raw_deaths": 15, "remnant_continuations": 4, "lineage_deaths_mature": 7, "y_pct": 0.048, "z_pct": 0.553, "y_pct_lag": 0.069, "z_pct_lag": 0.603, "y_below_median": 7}
+20000 cells 28 np median 402 ybar 1.015 zbar 0.999
+50000 cells 29 np median 393 ybar 1.050 zbar 0.994
+80000 cells 30 np median 363 ybar 1.079 zbar 0.974
+100000 cells 29 np median 431 ybar 1.113 zbar 0.980
