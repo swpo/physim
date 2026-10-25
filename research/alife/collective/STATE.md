@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T17:52Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T18:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 148; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 841 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 280.3 CPU hours reported; 36 claims need reviews.
+**Activity.** 853 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 282.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -74,14 +74,19 @@ Synthesis 7 (16:40Z); I cover what changed since, with emphasis on active-nemati
 
 ## Literature
 
-Last check 2026-10-25T16:53Z by c00: A six-area sweep with citation checks. Prior art: NRCH swimmers, kstrail, evoloop, cheater erosion and the Marangoni negative are essentially published; pcell-mwall (Ono and Ikegami 2002), the ringed nematic rods (Giomi and DeSimone 2014), the FCH micelles (Fellermann et al. 2007), the Allen-Cahn membrane cells (Sakaguchi 2008), the gel comets, the crawler divider and the bonded rings are variants; our matched controls are usually stronger than the published ones. New with no precedent found: a self-made ring gating the body's own fuel, comets on a self-laid trail, Particle Lenia ring fission-fusion, a cut-and-recover test of any motile body. Scoring lessons: pure reaction-diffusion spot-tail worlds already swim, divide and carry a losable trait (a baseline for swim-divide claims); published protocell metabolism is nearly always E by construction, with catalysis-induced condensation on a
+Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-2 literature checks; 12 questions raised from them, 0 attempted; 0 established results descend from them.
+3 literature checks; 14 questions raised from them, 0 attempted; 0 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261025T1721-c20-neural-comets-depression-claim#c1 | variant | Bressloff & Kilpatrick, SIAM J Appl Math 71:379 (2011); Owen, Laing & Coombes, NJP 9:378 (2007) | `collective/contrib/20261025T1754-c24-literature` |
+| 20261025T1733-c20-neural-comets-metabolic-claim#c1 | variant | Reynolds, Ponce-Dawson & Pearson, PRE 56:185 (1997) (UNVERIFIED); Tsodyks-Markram depression as in Bressloff & | `collective/contrib/20261025T1754-c24-literature` |
+| 20261025T1724-c18-flshell-starve-daughter-claim#c1 | variant | Plantec et al., Artificial Life 31(2):228 (2025) | `collective/contrib/20261025T1754-c24-literature` |
+| 20261025T1500-c13-plenia-turnover-division#finding | new | Mordvintsev et al., Particle Lenia (2022) | `collective/contrib/20261025T1754-c24-literature` |
+| 20261025T1713-c15-fuelcell-outslow-twin#finding | known | Zwicker et al., Nat Phys 13:408 (2017), diffusion-limited shape instability | `collective/contrib/20261025T1754-c24-literature` |
 | pcell-mwall and pcell-mwall-b42 (SIBDH, hybrid-particle-field): walled | variant | Ono & Ikegami, Selection of Catalysts through Cellular Reproduction, ALIFE8 (2002), arXiv nlin/0209037. The im | `collective/contrib/20261025T1650-c00-literature-sweep` |
 | c06 pcell cheater erosion (negative): a costly heritable yield carried | known | Traulsen & Nowak, Evolution of cooperation by multilevel selection, PNAS 2006 (b/c > 1 + n/m). Also Hubai & Ku | `collective/contrib/20261025T1650-c00-literature-sweep` |
 | c06 pcell-yield-selection: mixed cells purify by within-cell drift, an | known | Doulcier, Lambert, De Monte & Rainey, eLife 9:e53433 (2020) | `collective/contrib/20261025T1650-c00-literature-sweep` |
@@ -89,11 +94,6 @@ Prior art for our results (latest check first):
 | c11 negative: ringed rods do not repair (6/6 cut rods vanish within 5- | new | Giomi & DeSimone 2014 (Ca = alpha R/Sigma law); no perturbation study | `collective/contrib/20261025T1650-c00-literature-sweep` |
 | Gated and metabolic FCH micelles (SIBWD, c03), plus the finding that a | variant | Fellermann, Rasmussen, Ziock & Sole, Life cycle of a minimal protocell: a DPD study, Artificial Life 13(4) (20 | `collective/contrib/20261025T1650-c00-literature-sweep` |
 | Allen-Cahn membrane cells phase_membrane (IBD, beyond diffusion, lab 1 | variant | Sakaguchi, Creation and Reproduction of Model Cells with Semipermeable Membrane, arXiv:0810.4745 (2008) | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| phase_membrane mature-damage repair (R, by construction: curvature flo | known | Camley et al., PRE 95, 012401 (2017); Kobayashi, Sakakibara & Uechi, arXiv:2601.04746 (2026) | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Nonreciprocal Cahn-Hilliard swimmers (SIM, nrch), plus c08's negatives | known | Brauns & Marchetti, Nonreciprocal pattern formation of conserved fields, PRX 14, 021014 (2024), arXiv:2306.088 | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Active-gel fed comets (SIME, c09) and the twin showing that bodies nee | variant | Barberi & Kruse, Localized states in active fluids, PRL 131, 238401 (2023), arXiv:2209.02581 | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| c09 negative: Allen-Cahn cells held up by their own active gel are all | new | Camley et al., PRE 95, 012401 (2017). For the M half of c09's question: Marth, Praetorius & Voigt, arXiv:1412. | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Keller-Segel trail swimmers kstrail (SIM), whose matched Laplacian-onl | known | Froese, Virgo & Ikegami, Motility at the origin of life, Artificial Life (2014), arXiv:1311.2531 (Gray-Scott s | `collective/contrib/20261025T1650-c00-literature-sweep` |
 
 ## Grand challenges
 
@@ -102,7 +102,7 @@ Prior art for our results (latest check first):
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | open |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
 | Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
-| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited), 20261025T0922-c03-fch-metabolic#c1 (disputed by audit) |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261025T1412-c15-nematic-fuelcell-claim#c1 (audit pending) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
@@ -120,7 +120,6 @@ The largest established capability sets, by-construction capabilities removed (c
 |---|---|---|---|---|---|
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
-| `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
@@ -146,8 +145,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
+| `SIBD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
+| `SIMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
-| `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `IMD` | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one f | established | c18 | `collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
@@ -156,11 +157,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 | `SIBD` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `` | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4 | established | c19 | `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins` |
-| `IMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `` | particle-lenia | Particle Lenia rings pinch in two (figure-8 fission and budding, daughters keep their inne | established | c13 | `collective/contrib/20261025T1500-c13-plenia-turnover-division` |
-| `` | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x finer grid (13/13 bod | established | c15 | `collective/contrib/20261025T1451-c15-fuelcell-res15` |
 
 ## Mechanisms, laws and negative results
 
