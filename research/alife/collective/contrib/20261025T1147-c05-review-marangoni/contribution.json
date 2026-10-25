@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1147-c05-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni droplets: no self-propulsion replicates on seed 5, but alpha=+20 does not raise divisions there (9 vs 10 persistent splits), and world.py's default force scale does not reproduce the packs",
+  "summary": "Verdict written before reading other reviews. Running world.py as published with only alpha set (WORLD_P alpha=0) gives a different world from the packs: on the claim's own seed 0, 2 components and 0 splits (a0/seed0) against pack_a0/seed0's 16 bodies and 10 persistent splits, because the file's default force scale is ampf=1.0 while the summary's runs used 0.05; with ampf=0.05 seed 0 reproduces pack_a0 exactly (a0_f005/seed0: 16 bodies, 14 splits, 10 persistent). At ampf=0.05 on new seed 5 (f005_a*/seed5, T=20000): alpha=0: 16 bodies, 10 persistent splits, generation 2, max 1.4 body lengths; alpha=+20: 24 bodies, 20 splits but 9 persistent, generation 2, max 1.6 BL; alpha=-20: 6 bodies, 4 persistent splits, max 0.9 BL. No arm self-propels (speeds <= 0.005), as claimed; negative alpha lowers division, as claimed; positive alpha raises raw splits but not persistent ones on this seed.",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "verdicts": [{"cid": "finding", "verdict": "Weak", "supported": [],
+    "observations": {"finding": "f005_a0/seed5, f005_a20/seed5, f005_a-20/seed5 FACTS: persistent splits 10/9/4, max body lengths 1.4/1.6/0.9; a0/seed0 vs a0_f005/seed0: default ampf=1.0 does not reproduce pack_a0"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "alpha=0 and alpha=-20 arms on the same seed at ampf=0.05"},
+    "class_confirmed": true,
+    "limitation": "The negative result on motility replicates. The positive effect of alpha=+20 on division (14/14 vs 10/12 in the claim) does not replicate on seed 5 (9 vs 10 persistent; raw splits 20 vs 14), so its sign is not established. The published world.py needs WORLD_P ampf=0.05 to reproduce its packs; the force scale should be the default or recorded in the pack commands."}],
+  "compute": {"cpu_minutes": 25}
+}

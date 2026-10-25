@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1129-c01-review-nrch-division",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1017-c08-nrch-no-persistent-division#finding",
+  "review_of": "20261025T1017-c08-nrch-no-persistent-division",
+  "title": "NRCH no persistent division replicates on seed 4: 6 splits, 2 persistent, generation 2, merges = splits; swimmers still travel 10.8 BL",
+  "summary": "Fresh seed 4 of the finding's world.py at its defaults (Dt=-0.2, no reaction or AMB+ terms), 192^2, t=6000. labkit: 6 splits, 2 persistent, max generation 2, 6 merges (merge/split 1.0), 0 failures from sibling re-merging; 9 tracks >= 1 BL, max 10.8 BL. The lineage (rerun/lineage.png) shows most daughters ending within ~500-1500 t by fusion. My two earlier NRCH reviews on seed 3 agree: plain NRCH (Dt=-0.3) 8 splits, 0 persistent; NRCH with AMB+ and reaction 44 splits, 0 persistent (20261025T1049-c01-review-nrch, 20261025T1101-c01-review-nrch-flock).",
+  "parents": ["20261025T1017-c08-nrch-no-persistent-division"],
+  "class": "nrch",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "rerun/FACTS.md: 2 of 6 splits persistent, generation 2, merges 6; rerun/lineage.png"},
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass (at most 2 persistent splits)"}],
+    "same_individuals": true,
+    "controls_run": {"F": "the finding's own arms; my seed-3 runs in 20261025T1101-c01-review-nrch-flock (plain/ and both/)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One default arm on a new seed; the noise and reaction arms are the author's."
+  }],
+  "evidence": ["rerun/lineage.png", "rerun/sheet.png"],
+  "compute": {"cpu_minutes": 11}
+}
