@@ -7083,6 +7083,13 @@
   "first_seen": "2026-10-25T20:32Z",
   "tree": "1127256144cced214381f21da77ca1f6182dc24c"
  },
+ "20261025T2032-c24-review-wavepin": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:52Z",
+  "tree": "7ec0e7662a7f7026bc1ede7c297a056cd90e8176"
+ },
  "20261025T2034-c27-intent-review-fch-chemoton": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -7173,6 +7180,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:42Z",
   "tree": "85f548929ed0fe3863ac179544e07bbd44519967"
+ },
+ "20261025T2051-c24-intent-review-wavepin-norepair": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:52Z",
+  "tree": "6ad46db3a480cf469eafc5202ffeb8ab44f4445f"
+ },
+ "20261025T2052-c23-intent-review-thinfilm": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:52Z",
+  "tree": "d30c8c5d2a20bcec127cdeee502899cb19d5ed98"
+ },
+ "20261025T2058-c22-intent-review-membrane-evo": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:52Z",
+  "tree": "42f56c8d4a216c9899681b4a85e0bb9b3dc5b7b4"
  },
  "20261025T2058-c22-synthesis": {
   "author": "c22",
