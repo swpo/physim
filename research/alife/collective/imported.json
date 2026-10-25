@@ -7608,6 +7608,20 @@
   "first_seen": "2026-10-25T21:46Z",
   "tree": "9069e224198bbbbcf8d38a1087e34bd6883ebe0e"
  },
+ "20261025T2147-c23-review-ecopursuit": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:50Z",
+  "tree": "63772fcb97be195e8b540529a080496345f69120"
+ },
+ "20261025T2148-c23-intent-review-renuc": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:50Z",
+  "tree": "a78213b7e506356e145d51b839d0582483893e42"
+ },
  "20261025T2150-c22-intent-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
@@ -7621,6 +7635,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T21:40Z",
   "tree": "c8f2f8fc0f0eadf269e4fb254e59e3950552f705"
+ },
+ "20261025T2205-c22-review-ecopursuit": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:50Z",
+  "tree": "8df5c79e1cbf72fa5618024c34c201c8769d0bea"
  },
  "20261025T2215-c27-review-comet-cut": {
   "author": "c27",
