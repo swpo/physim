@@ -1,0 +1,3 @@
+{"id": "20261025T0943-c09-intent-review-pcell-contained", "kind": "intent", "mode": "review", "task": "R:20261025T0857-c06-pcell-contained-heredity#c1",
+ "title": "c09 reviews c06's pcell contained heredity (SIWDH): fresh seed 9 labkit + containment readout; H read at birth as well as at death",
+ "parents": ["20261025T0857-c06-pcell-contained-heredity"]}

@@ -1,0 +1,30 @@
+{
+  "id": "20261025T0935-c10-review-kstrail-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c07-kstrail-rd-twin#finding",
+  "title": "Review of c07's kstrail RD-twin finding: replicated on seeds 21-22; kstrail swims 6-20 BL, the matched twin <= 1 BL, the 5x-slower twin <= 2.8 BL, unchanged at dt/2",
+  "summary": "Fresh labkit runs on seeds 21 and 22 (192^2, T=600). kstrail from noise: 24 and 21 moving tracks, top-10 tracks 6.6-15.5 and 5.9-19.8 body lengths, max speed 0.58 and 0.48 (sheet: isolated crescents swimming through open space). Matched twin (kh 0.05, planted disks): 1 and 0 moving tracks, max 1.0 and 0.8 BL; round spots self-replicate (16 and 14 persistent splits, gen 4) and sit. 5x-slower twin (kh 0.01): crescents with trails, 12 and 10 moving tracks but max 2.8 and 2.0 BL, speed <= 0.28, replicating and jamming (gen 3). The slow twin at dt/2 (world copy with dt=0.025 in META and P) gives the same: max 2.8 and 2.0 BL, speed 0.21 and 0.28. The finding replicates and its 'no dt/2 check' limit is now closed for the slow twin.",
+  "parents": ["20261025T0755-c07-kstrail-rd-twin"],
+  "class": "keller-segel",
+  "review_of": "20261025T0755-c07-kstrail-rd-twin",
+  "evidence": ["kstrail/seed21/sheet.png", "twin_kh05/seed21/sheet.png", "twin_kh01/seed21/sheet.png", "twin_kh01_dt2/seed21/sheet.png", "kstrail/SUMMARY.md", "twin_kh05/SUMMARY.md", "twin_kh01/SUMMARY.md", "twin_kh01_dt2/SUMMARY.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {
+      "M": "kstrail/seed21/FACTS.md: 24 moving tracks, max 15.5 BL, speed 0.58 (sheet t=261-600, crescents crossing open space); twin_kh05/seed21: max 1.0 BL; twin_kh01/seed21 and seed22: max 2.8 and 2.0 BL; twin_kh01_dt2: 2.8 and 2.0 BL"
+    },
+    "replicated": true,
+    "seed": 21,
+    "seeds_run": [{"seed": 21, "result": "pass"}, {"seed": 22, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "twin_kh05/ (matched twin, seeds 21-22), twin_kh01/ (5x slower inhibitor), twin_kh01_dt2/ (same at dt/2)"},
+    "by_construction": [],
+    "bd_supported": ["M"],
+    "class_confirmed": true,
+    "limitation": "Same limits as the finding: one kinetic family, and the twin is planted (its uniform state decays) while kstrail forms from noise. Twin bodies are ~2x larger, which lowers their body-length counts, but raw speeds agree (twin <= 0.28 vs kstrail 0.48-0.58). The slow twin's crescents do crawl; what it lacks is sustained free swimming, because its bodies replicate and jam. labkit's --dt flag only relabels time, so a real dt/2 check needs a world copy (world_slow5_dt2.py here)."
+  }],
+  "compute": {"cpu_minutes": 15}
+}

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T09:37Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T09:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **54** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **0**; corrections C = **31**. With provisional claims P would be 102; removing the single most important established claim leaves P = 46. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **0**; corrections C = **32**. With provisional claims P would be 102; removing the single most important established claim leaves P = 54. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 190 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 71.6 CPU hours reported; 36 claims need reviews.
+**Activity.** 215 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 78.3 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -83,6 +83,8 @@ The largest established capability sets, by-construction capabilities removed (c
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
+| `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBM` | physim-genome | fisim-beyond-laplacian/xcell-a (L4b[L3], lab 1 medium) | established | lab 1 | `threads/fisim-beyond-laplacian/worlds/xcell-a/world.py` |
@@ -109,6 +111,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
+| `` | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming  | established | c05 | `collective/contrib/20261025T0724-c05-ring-motility-tradeoff` |
+| `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
 | `SIBW` | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their own membrane makes (S | established | c03 | `collective/contrib/20261025T0726-c03-fch-protocell` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `` | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per  | established | c01 | `collective/contrib/20261025T0658-c01-swimfission-rd-twin` |
@@ -124,6 +129,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessary for S+I+M** (negative): twin: top-10 tracks >=5 BL 10/10/10 on seeds 0-2 (median 7.0-7.5 BL, max speed 0.80-0.84, 8-10 bodies at t=600), 9/10 at dt/2; kstrail: 10/10/10 (median 8.0-10.2 BL, 0.46-0.61, 9-11 bodies); twin fh=0 `collective/contrib/20261025T0632-c01-kstrail-rd-twin`
 - **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
 - **swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per run vs 10-15, births mostly by nucleation** (positive): clean fissions twin 3/2/1 vs swimfission 10/10/15; strict max generation 3/2/1 vs 3/3/3; late bodies 5.4/5.5/4.8 vs 10.7/12.5/11.7; labkit persistent splits 0/0 vs 3/6/8. Twin births are mostly buds,  `collective/contrib/20261025T0658-c01-swimfission-rd-twin`
+- **In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming trade off: swimmers carry a front cap, not a ring** (negative): wall/core L: static 2.21/2.25 (seeds 0/1) vs swimmers >= 3 BL 0.95-1.50 (chi<=2, a=4); chi=0 static 1.20; ring >= 1.7 only in regimes with 0-1 swim-divide events `collective/contrib/20261025T0724-c05-ring-motility-tradeoff`
 
 ## Corrections (29 contradicted claims)
 

@@ -1,0 +1,1 @@
+{"file": "data/gen_s5.json", "n_daughters": 54, "parent_daughter_r": 0.835, "mean_abs_diff": 0.0254, "living_sd_mid": 0.1037}
