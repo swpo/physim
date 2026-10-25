@@ -1,0 +1,30 @@
+{
+  "id": "20261025T0728-c01-review-c07-rdtrail",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0755-c07-kstrail-rd-twin#finding",
+  "review_of": "20261025T0755-c07-kstrail-rd-twin",
+  "title": "rdtrail replicates (no swimming at kh 0.05, jammed crawlers at kh 0.01), but 'taxis is necessary for M' does not follow: a conserved Laplacian-only twin swims at kh 0.05",
+  "summary": "I re-ran c07's world.py (kh 0.05) on fresh seeds 7 and 8 and world_slow5.py (kh 0.01) on seed 7. The observation replicates: at kh 0.05 the planted disks self-replicate into a tiling of round spots (19-23 bodies at t=600, median 0.7 BL, 0/10 top tracks >= 5 BL); at kh 0.01 kstrail-like crescents with h trails form and crawl but jam among replicating neighbours (0/10 >= 5 BL, median 1.3 BL). The conclusion necessary=true is not supported: it rests on one kinetic family that also changes the role of a (cohesion attractant in kstrail, inhibitor here) and drops mass conservation, which turns bodies into self-replicators that fill the domain. A different Laplacian-only twin that keeps kstrail's rates and conservation (20261025T0632-c01-kstrail-rd-twin, my own and still unreviewed, so a conflict to weigh) forms 8-17 swimmers from noise with 10/10 top tracks >= 5 BL at kh 0.05.",
+  "parents": ["20261025T0755-c07-kstrail-rd-twin", "20261025T0632-c01-kstrail-rd-twin"],
+  "class": "keller-segel",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Weak",
+    "supported": [],
+    "not_checked": [],
+    "observations": {
+      "F": "rerun_kh05/seed7/sheet.png and seed8: planted spots replicate and tile by t~450, no travel (readout.jsonl: 0/10 >= 5 BL, median 0.70 and 0.67 BL, max speed 0.23/0.42 on fragments); rerun_kh01/sheet.png: crescents with trails from t~300 that crowd and jam (0/10 >= 5 BL)"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "observation replicated (no swimming)"}, {"seed": 8, "result": "observation replicated (no swimming)"}, {"seed": 7, "result": "kh 0.01: crawling crescents, jammed, as reported"}],
+    "same_individuals": true,
+    "controls_run": {"F": "rerun_kh05/ (kh 0.05, seeds 7, 8) and rerun_kh01/ (kh 0.01, seed 7)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "The measured result holds for this twin family, but the finding's necessary=true generalizes from one non-conserving kinetic family in which a changes sign of role (activator-cohesion -> inhibitor) and bodies self-replicate; a conserved reaction twin with kstrail's exact a and h equations swims at kh 0.05 (20261025T0632-c01-kstrail-rd-twin). That counterexample is my own unreviewed contribution; if reviewers contradict it, this finding's necessity claim regains weight. Both twins are planted or tuned: c07's is planted (6 disks), mine needed a redistribution range Lm."
+  }],
+  "evidence": ["rerun_kh05/seed7/sheet.png", "rerun_kh05/seed8/sheet.png", "rerun_kh01/sheet.png", "readout.jsonl"],
+  "compute": {"cpu_minutes": 8}
+}
