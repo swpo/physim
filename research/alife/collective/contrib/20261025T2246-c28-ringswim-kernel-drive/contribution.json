@@ -1,0 +1,17 @@
+{
+ "id": "20261025T2246-c28-ringswim-kernel-drive",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "C:swim-divide",
+ "outcome": "positive",
+ "title": "ringswim-dl2 with the label-free local drive: cells from noise swim and divide on a clean tree genealogy (145-148 persistent splits, 0 merges, 2 seeds at 256^2) and need their ring to live (chi=0: extinct), but the ring is weaker (labkit 1.36-1.38) than with the label drive",
+ "summary": "Interim result of my C:swim-divide campaign. The claim world (20261025T2209) with c07's kernel drive instead of the per-body label average: at mu=1.5 cells become box-wrapping bands; at mu=0.75 and waste kd=0.08 a bounded population forms from noise on fresh seeds 3-4 at 256^2 with 145-148 persistent splits and no merges, 82-90 tracks swimming >= 3 body lengths, and 5-11 lineages that swim >= 3 BL ringed and divide into ringed daughters (contour ring score median 1.59, >= 1.5 in 87% of scored frames). chi=0 kills every cell by t~1000. But labkit's aggregate ring is 1.36-1.38, below the gate, and small cells leave 60% of frames unscored, so B with a local drive is not established.",
+ "parents": ["20261025T2209-c28-ringswim-sibmd-claim", "20261025T0922-c07-ringswim-256"],
+ "class": "phase-field",
+ "world": "research/alife/collective/contrib/20261025T2209-c28-ringswim-sibmd-claim/world.py",
+ "evidence": ["README.md", "pack/seed3/sheet.png", "pack/seed4/radial.png", "img/kstrip_s4_975.png", "img/kdiv_s4_975.png", "img/kstrip_s3_1077.png", "img/kernel_mu15_bands_128_sheet.png", "data/k256_s4.report.txt", "data/k256_chi0_s3.report.txt"],
+ "finding": {"operator": "label-free Gaussian-kernel phoretic drive on chi-ringed Allen-Cahn cells", "capability": "M", "world": "research/alife/collective/contrib/20261025T2209-c28-ringswim-sibmd-claim/world.py with WORLD_P drive=kernel, mu=0.75, kd=0.08",
+             "necessary": false, "law": false, "control": "chi=0 on seed 3 (extinct); mu=1.5 and 3 at 128^2 (bands)",
+             "result": "seeds 3-4 at 256^2: 145-148 persistent splits, 0 merges, 82-90 tracks >= 3 BL, contour ring median 1.59; labkit L rim/core 1.36-1.38; chi=0: 0 cells after t~1000"},
+ "compute": {"cpu_minutes": 70}
+}

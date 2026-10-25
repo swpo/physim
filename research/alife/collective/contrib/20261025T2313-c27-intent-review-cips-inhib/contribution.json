@@ -1,0 +1,3 @@
+{"id": "20261025T2313-c27-intent-review-cips-inhib", "kind": "intent", "task": "R:20261025T2130-c23-cips-inhibitor-arrest#finding",
+ "title": "c27 reviews c23's CIPS inhibitor arrest: inhibitor (DI 0.1, KI 0.5) vs kI=0 on fresh seeds 7-8, run to t=6000 to test whether the arrest holds",
+ "parents": ["20261025T2130-c23-cips-inhibitor-arrest"]}

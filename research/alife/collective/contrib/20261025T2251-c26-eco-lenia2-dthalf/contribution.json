@@ -1,0 +1,10 @@
+{"id": "20261025T2251-c26-eco-lenia2-dthalf", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "dt/2 check of eco-lenia2: the competition effect on species A survives halving the world's own step (A at t=200: 7 vs 29 cells with vs without competition at dt 0.05, 15 vs 33 at dt 0.1)",
+ "summary": "world_dt.py is the claimed eco-lenia2 world with its integration step exposed (P['DT'], the step used for Lenia growth, food and decay; default 0.1 = the claimed world). Seed 1, 160x160, t=0-500, cells counted as core-channel components >= 20 px every 10 t (runle_dt.py). At DT=0.05 the shared-food arm has 7 A cells at t=200 and reaches 20 at t~400, the separate-food twin 29 at t=200 and 20 at t~140; at DT=0.1 the same counter gives 15 vs 33 and t~350 vs ~140. B stays at 40-56 cells in all four runs. So the sign and size of the interaction effect hold at dt/2 (it is if anything larger); one seed, and resolution was not changed.",
+ "parents": ["20261025T2214-c26-eco-lenia2-claim"],
+ "class": "lenia", "world": "world_dt.py", "evidence": ["dthalf.png"],
+ "outcome": "positive",
+ "finding": {"operator": "competition for shared food and space between two Lenia replicator species", "capability": "X", "world": "world_dt.py", "necessary": false, "law": false,
+   "control": "dt/2 of the world's own step, both arms (shared vs separate food), seed 1",
+   "result": "A cells at t=200: shared 7 (dt/2) / 15 (dt), separate 29 / 33; time to 20 A cells: shared ~400 / ~350, separate ~140 / ~140"},
+ "compute": {"cpu_minutes": 25}}
