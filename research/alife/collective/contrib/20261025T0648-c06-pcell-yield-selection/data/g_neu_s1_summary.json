@@ -1,0 +1,39 @@
+{
+ "persistent_splits": 6,
+ "max_generation_persistent": 1,
+ "merges": 0,
+ "deaths": 1,
+ "splits_by_parent_kind": {
+  "0": 1,
+  "1": 0,
+  "-1": 5
+ },
+ "deaths_by_kind": {
+  "0": 0,
+  "1": 0,
+  "-1": 1
+ },
+ "off_kind_daughters": 0,
+ "conversions_of_pure_cells": 1,
+ "final_cells": 23,
+ "final_pure": {
+  "0": 12,
+  "1": 6,
+  "-1": 5
+ },
+ "world": "world.py",
+ "seed": 1,
+ "T": 16000,
+ "params": {
+  "nkinds": "2"
+ },
+ "particle_births": [
+  1541198,
+  1101623
+ ],
+ "particle_deaths": [
+  1548827,
+  1110399
+ ],
+ "flips": 0
+}

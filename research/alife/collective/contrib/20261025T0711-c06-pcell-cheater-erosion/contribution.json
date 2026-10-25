@@ -1,0 +1,12 @@
+{"id": "20261025T0711-c06-pcell-cheater-erosion", "kind": "finding", "mode": "extend", "task": "Q:particle-catalysts-in-phase-cells",
+ "title": "pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)",
+ "summary": "Link yield became a continuous trait of each catalyst particle (mutation at duplication with prob muy, Gaussian step sy), and yield costs replication (dup x (1 + cy (1 - y))). From a monoculture y=1.0, mean yield in cells falls to 0.52 and 0.50 by t=30000 (2 seeds, muy=0.02, sy=0.05, cy=0.5): cells shrink, 39 and 25 whole cells die, and the population falls from ~23 to 7 and 13 cells (yield_snap_s0.png). In the neutral twin (the trait is inherited and mutates the same way, but every particle acts with y=1.0) yield drifts to 1.06 and 0.96 with 2 and 1 cell deaths. With rarer, larger mutations (muy=0.002, sy=0.1) yield still falls to 0.62 by t=40000 (28 deaths); with a weaker cost (cy=0.2, muy=0.005) it falls to 0.88 (4 deaths). Within-cell selection for cheaters wins over between-cell selection because cells divide only ~10 times per 30000 t while particles turn over every ~50 t. Lowering dK to slow particle turnover (0.01, 0.005) gives one sea instead of cells. A discrete parasite kind (y=0, replication x1.5) arising by mutation at 2e-5 gives 22 intrinsic whole-cell deaths and 16 persistent splits in 20000 t, a route to turnover for C:autonomous-heredity.",
+ "parents": ["20261025T0648-c06-pcell-yield-selection"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "per-particle heritable public-good yield with a replication cost inside self-made Allen-Cahn cells", "capability": "H", "world": "world.py", "necessary": false, "law": false,
+   "control": "neutral twin ytrait=2 (trait inherited and mutated identically, no effect on dynamics), same seeds 0 and 1",
+   "result": "mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (seed 0 only)."},
+ "outcome": "negative",
+ "evidence": ["yield_erosion.png", "yield_snap_s0.png", "data/ytr1.log", "data/ytr2.log"],
+ "compute": {"cpu_minutes": 60}}

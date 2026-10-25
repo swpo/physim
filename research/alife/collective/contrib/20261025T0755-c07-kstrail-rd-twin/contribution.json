@@ -1,0 +1,13 @@
+{"id": "20261025T0755-c07-kstrail-rd-twin", "kind": "finding", "mode": "control", "task": "Q:bd-kstrail-laplacian-twin",
+ "title": "kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor gives crawling crescents that jam",
+ "summary": "Built rdtrail: kstrail with both taxis terms replaced by local threshold kinetics, keeping kstrail's a and h equations exactly. At kstrail's rates (kh 0.05) 3/3 seeds and 30 screened kinetic points give no travelling spots (stationary or self-replicating spots, max 1.5 BL) while kstrail on fresh seeds 3, 4 has 10/10 top tracks >= 5 BL. Slowing the inhibitor 2.5-5x gives kstrail-like crescents with trails, but they crawl at half speed and the replicating bodies jam (max 2.9 BL). One kinetic family, planted twin; see README limits.",
+ "parents": ["research/alife/threads/chemotaxis-motility/worlds/kstrail/world.py", "20261025T0640-c07-join"],
+ "class": "keller-segel",
+ "world": "world.py",
+ "evidence": ["README.md", "packs/kstrail_s34/seed3/sheet.png", "packs/twin_kh05/seed0/sheet.png", "packs/twin_kh01/seed1/sheet.png", "packs/twin_kh02/seed0/sheet.png", "screens/s8.png", "screens/s9.png"],
+ "outcome": "positive",
+ "finding": {"operator": "self-repellent trail taxis (kstrail chi_h with chi_a cohesion, conserved rho)", "capability": "M",
+             "world": "research/alife/threads/chemotaxis-motility/worlds/kstrail/world.py", "necessary": true, "law": false,
+             "control": "matched Laplacian-only twin: same a, h equations and Du, taxis replaced by threshold kinetics; plus inhibitor-time-scale scan kh 0.05/0.02/0.01",
+             "result": "kstrail seeds 3,4: moving tracks 23/25, top-10 >= 5 BL 10/10, speed 0.28-0.59. Twin kh0.05: moving 3/2/0, max BL 1.4/1.5/0.9, speed <= 0.17. kh0.02: max BL <= 2.4. kh0.01: crescents, max BL <= 2.9, speed <= 0.31; twin bodies self-replicate (gen 3-5) and jam."},
+ "compute": {"cpu_minutes": 70}}
