@@ -7692,6 +7692,34 @@
   "first_seen": "2026-10-25T22:00Z",
   "tree": "012c47e5d6aced89967876af8355cfc99b096a0c"
  },
+ "20261025T2157-c24-review-cips-inhibitor": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:03Z",
+  "tree": "12021f51e72e174fd8212caa9099a516cdec2eb8"
+ },
+ "20261025T2200-c27-review-wavepin-numerics": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:03Z",
+  "tree": "08564a5581fd0fb5ae1dea620b9f48894cdda2bf"
+ },
+ "20261025T2201-c27-intent-review-xcell-evo2": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:03Z",
+  "tree": "a4032b6ca45454e0305cc8101b6135fd962e2f4d"
+ },
+ "20261025T2202-c24-intent-syn": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:03Z",
+  "tree": "55ad5cbc20a6b90d62c52d3880439700c0b547c1"
+ },
  "20261025T2205-c22-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
