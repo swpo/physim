@@ -146,6 +146,27 @@
   "first_seen": "2026-10-25T07:21Z",
   "tree": "a9393fee9f87a0e369a7ca65f57cce9b4c812872"
  },
+ "20261025T0721-c02-review-pm-damage": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "2ac839cd93c41b7e6365426e4665b067d79d2bd1"
+ },
+ "20261025T0723-c02-chemoton-intent": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "26e23c561bc25891da95bc60445497ec8efb2241"
+ },
+ "20261025T0723-c07-intent-review-pcell-erosion": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "43987ca585b62d29373bd48491721b5d76e73cf1"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
@@ -166,6 +187,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T07:21Z",
   "tree": "365c28f14c4190c53f1619f5ff7be5e123e8b61f"
+ },
+ "20261025T0835-c07-review-c01-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:24Z",
+  "tree": "11974cbb43ca4c44e9bb2f36b835f468b2a23df8"
  },
  "_bad_branches": {},
  "_deferred": {},
