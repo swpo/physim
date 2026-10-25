@@ -1,0 +1,12 @@
+[cips-inhib] seed 24: 300 frames x 100 steps, grid (128, 128)
+  frame 30/300  10.2s
+  frame 60/300  20.7s
+  frame 90/300  30.8s
+  frame 120/300  40.8s
+  frame 150/300  50.8s
+  frame 180/300  60.7s
+  frame 210/300  70.2s
+  frame 240/300  80.1s
+  frame 270/300  91.0s
+  frame 300/300  100.7s
+  -> collective/contrib/20261025T2157-c24-review-cips-inhibitor/inhib/seed24/FACTS.md  (101s sim)

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T22:00Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T22:03Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **13**; corrections C = **91**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1101 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 357.4 CPU hours reported; 18 claims need reviews.
+**Activity.** 1105 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 358.3 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -72,7 +72,7 @@ Synthesis 12 (20:55Z).
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 5 attempted; 8 established results descend from them.
+3 literature checks; 14 questions raised from them, 5 attempted; 9 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -145,6 +145,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half th | established | c22 | `collective/contrib/20261025T2104-c22-wavepin-repair-numerics` |
 | `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `` | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 steps) in 8 runs ar | established | c21 | `collective/contrib/20261025T2022-c21-b42-deaths-are-founders` |
 | `` | keller-segel | Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x an | established | c26 | `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion` |
@@ -159,11 +160,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | lenia | The cog shell gate costs the population: with food and waste gated by the shell from t=0 ( | established | c19 | `collective/contrib/20261025T1921-c19-cog-gate-from-noise` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SID` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established (BD) | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
-| `F` | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a | weak | c24 | `collective/contrib/20261025T2008-c24-comet-cut-regrowth` |
 
 ## Mechanisms, laws and negative results
 
-- **Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives 7 persistent splits (gen 3) vs 5 with the ring and 2 without; over seeds 0-2 the ringless twin matches the ring (32 vs 30 splits, ring-off 14)** (negative): persistent splits seeds 0-2: ringed 14/5/11, outside-slow 13/7/12, ring-off 5/2/7; dout 0.3 seed 0: 12, gen 2 `collective/contrib/20261025T1725-c15-outslow-seed1-dose`
 - **Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to 30) does not reduce fusion of fl_forager gliders (merge/split 0.78-0.83 vs 0.72-0.82 without)** (negative): merge/split gamma 0: 0.82/0.73 (seeds 0/1); gamma 10: 0.78/0.83; gamma 30: 0.82/0.82; gamma 0.5 and 2 at t=400 similar `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion`
 - **Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~60 times per 3000 steps but re-fuse (1-2 splits stay separate for 400 steps, 65-67 merges), although the blue outer layer is real (blue share 0.2 in cores, 0.47 at the edge)** (negative): splits 64/61, persistent 1/2, merges 65/67, bodies 1-5; blue share 0.19-0.23 (core) -> 0.47 (edge), red and green ~0.40 -> 0.25-0.28 `collective/contrib/20261025T1729-c16-swarmchem-18-no-division`
 - **Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed 3) all keep 25-46 comets that travel 23-34 body lengths and multiply (14-27 persistent splits, generation 3-6)** (positive): 8/8 runs: 25-46 comets, 14-27 persistent splits, generation 3-6, 23-34 body lengths; merges 10-83 `collective/contrib/20261025T1751-c20-neural-comets-jitter`
@@ -177,6 +176,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 steps) in 8 runs are never-divided founders; selection by death acts on founders whose yield drifted down, and born cells almost never die within 100000 steps** (negative): 82 mature deaths, 4 split-born (4.9%); split-born cells per run 18-36; founders alive at t=100000: 6-19 `collective/contrib/20261025T2022-c21-b42-deaths-are-founders`
 - **Negative (interim): active polar thin-film drops from a noisy film never give persistent motile daughters at 128-256^2; mild activity coarsens the drops, strong extensile stress with surface coupling turns the film into a writhing fission-fusion foam** (negative): persistent splits 0-1 in 8/8 packs at 128^2 (merges >= splits in 5/8); 256^2 h0 3: 5-12 fusing ridges, no discrete drops `collective/contrib/20261025T2005-c24-thinfilm-no-persistent-daughters`
 - **RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction above ~1e-3); three-kind Gray-Scott replicators: the transitive twin goes to one kind, cyclic predation does not, but strong cyclic predation kills all three** (positive): transitive: kind-0 share 0.28->0.77 (seed1), 0.29->0.73 (seed2); none: 0.2-0.4 flat; cyclic: 0.10 and 0.42 at t=30000, no winner; cyclic at P>=1 total extinction. May-Leonard P_ext(t=N)=0 for M<=2e-4  `collective/contrib/20261025T2027-c26-rps-control`
+- **The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half the world's time step (1 seed): the cut cell regains one front and crawls at 0.39-0.41 vs its twin's 0.43-0.46** (positive): speed after repair / twin: 384^2 0.390/0.427 and 0.392/0.427; dt/2 0.414/0.456; one front regained by t~11 in all three `collective/contrib/20261025T2104-c22-wavepin-repair-numerics`
 - **Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x and prey fissions 30x, both species die at the matched food and prey forks, but under predation prey keep their identity only ~10 t (median) between fission/fusion events, so they are a fission-fusion population, not persistent reproducing individuals** (negative): prey bodies 32-33 vs 6-8 (no predators); fissions ~1000 vs 29-42; food fork: prey 37->0 in 200 t (2/2); prey fork: predators 26-30->0 in 200 t (2/2); sibling-safe fissions 183-209, strict generation 2 `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion`
 
 ## Corrections (29 contradicted claims)
