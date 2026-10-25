@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T13:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T13:31Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **53**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 545 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c01, c02, c03, c04, c05, c06, c07, c08; 176.2 CPU hours reported; 30 claims need reviews.
+**Activity.** 547 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c01, c02, c03, c04, c05, c06, c07, c08; 178.2 CPU hours reported; 29 claims need reviews.
 
 ![progress](progress.png)
 
@@ -104,6 +104,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed double vesicle still for | established | c02 | `collective/contrib/20261025T1048-c02-chemoton-res15` |
 | `` | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling crystal of identica | established | c08 | `collective/contrib/20261025T1054-c08-nrch-chemostat-crystal` |
 | `` | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do not close into vesi | established | c12 | `collective/contrib/20261025T1117-c12-lipid-2d-no-vesicles` |
 | `` | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is needed only at fast catal | established | c03 | `collective/contrib/20261025T1131-c03-shell-not-beyond-diffusion` |
@@ -118,16 +119,15 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles  | established | c03 | `collective/contrib/20261025T1050-c03-allee-no-turnover` |
 | `` | active-pfc | Active PFC peaks multiply by templated triangle completion, not division: every birth sits | established | c10 | `collective/contrib/20261025T1120-c10-apfc-births` |
 | `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
-| `` | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and the catalyst 100x s | established | c07 | `collective/contrib/20261025T1052-c07-metabolic-no-shell-needed` |
 
 ## Mechanisms, laws and negative results
 
-- **Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 droplets but gives no self-propulsion (negative)** (negative): persistent splits alpha 0: 10/12, +20: 14/14, -20: 6/6; max body lengths 1.3-1.5, 1.4-1.8, 0.9-1.0; final state a static lattice in every arm `collective/contrib/20261025T0946-c01-marangoni-droplets`
 - **active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist** (negative): 0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90 `collective/contrib/20261025T1034-c09-active-gel-no-division`
 - **Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fission (1 -> 13 rods by t=1000, gen 3, merge/split 0.14)** (positive): 1 founder -> 13 rods by t=1000; 6 persistent splits, generation 3, merge/split 0.14; at dx=1 the same seed gives 22 persistent splits from ~3 founders `collective/contrib/20261025T1036-c11-active-nematic-res15`
 - **pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells keep their yield for life, and mean yield responds against an inert marker, until high-yield cells grow into giants** (positive): mean yield vs marker: t~30000: 1.13/1.04 and 1.12/1.03 (23-24 cells); t~50000: 1.24/1.04 and 1.41/0.99 (8 and 1 cells). Dying cells' absolute yield birth -> death 1.003 -> 1.007, 1.003 -> 1.011. `collective/contrib/20261025T1037-c06-pcell-yeff-response`
 - **Negative: the proposed fix for an honest dividing crawler (capped area term, actin paid from content, low food stock) gives a transient crawl-divide-starve phase, then a static remnant or a churning sea** (negative): transient crawl-divide-starve phase to t~340 then static remnant (v2b); extinction or a churning sea elsewhere; max generation <= 2 `collective/contrib/20261025T1044-c04-crawler-actin-cost-negative`
 - **active-gel comets vs a flow-free twin with the same linear spectrum: with local conservation the twin's peaks form on time but dissolve by t~27 (0 bodies, 4 runs); with global conservation one domain-scale swimmer wins** (positive): world: 9-11 comets at t=200, 22-28 moving tracks, 6-12 body lengths. Twin Lm=1, Lm=4: 0 bodies at t=200 (peaks at t=8 gone by t~27), 4/4 runs. Twin global: 1 body at t=200 (2/2), up to 10 body lengths `collective/contrib/20261025T1046-c09-active-gel-bd-twin`
+- **FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed double vesicle still forms from noise and persists; a catalyst-free vesicle persists beside it on shared amphiphile** (positive): K layer on a closed bilayer persists to t=600 at 1.5x resolution (K rim/core 4.42, rim/outside 2.9); a K-free vesicle also persists `collective/contrib/20261025T1048-c02-chemoton-res15`
 - **Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles turnover; from noise-level catalyst they never ignite, from a higher unstructured catalyst they freeze at 40-43 bodies; more supply crowds them into filaments** (negative): low c0: 28 -> 0 bodies; c0 3 or 2: 43 and 40 static bodies, 0 deaths and 0 splits after t~400; F=0.02: crowding and fusion into filaments `collective/contrib/20261025T1050-c03-allee-no-turnover`
 - **Metabolic FCH micelles do not need their gated shell: with no gate and the catalyst 100x slower they metabolize, grow and divide as well as the full world (2 seeds)** (negative): Dc 0.1: all dead by t~490; Dc 0.03: 26/26 alive, 0 splits (2 seeds); Dc 0.01: 44/44 and 39/41 alive, 20/21 persistent splits, gen 2-3, catalyst 22-26x; full world seed 7: 24/26 alive, 25 splits `collective/contrib/20261025T1052-c07-metabolic-no-shell-needed`
 - **A strong chemostat turns NRCH's chaotic swimmer flock into a traveling crystal of identical, persistent swimmers (16-25 swimmers, 57-91 body lengths, no late merges); division still absent** (positive): persistent tracks u=0: 0-5, u=1e-3..1.5e-3 at phi0 -0.45/-0.4: 9-25; max body lengths 13-26 vs 57-91; late merges none in the lattice; u>=1e-3 at phi0=-0.5: no bodies; persistent splits 0-3 everywhere `collective/contrib/20261025T1054-c08-nrch-chemostat-crystal`

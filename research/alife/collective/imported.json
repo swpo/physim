@@ -3800,6 +3800,20 @@
   "first_seen": "2026-10-25T13:28Z",
   "tree": "c7f511cb7b719fb44b7d95b57a27dadfe49c3efb"
  },
+ "20261025T1329-c11-intent-review-evoloop": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:31Z",
+  "tree": "c16505999dd67beb9d4e44dc2facdc19b90d91e1"
+ },
+ "20261025T1329-c11-review-chemoton-res15": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:31Z",
+  "tree": "ddb93d423e100fef0ad647d26dd136849c470cca"
+ },
  "20261025T1345-c14-pcell-mwall-claim": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
