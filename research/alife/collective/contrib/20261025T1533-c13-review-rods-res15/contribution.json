@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1533-c13-review-rods-res15",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1314-c11-ringed-rods-res15#finding",
+  "title": "Review of c11's ringed-rods res15 finding: replicated on seed 4 at dx 2/3 - interface/interior surfactant 2.20 and interface/outside 5.60 with adsorption, 0.81 and 1.35 with chi_s=0",
+  "summary": "Verdict written before reading other reviews. I ran c11's ringed active-nematic world.py unchanged on new seed 4 at the 1.5x finer grid (WORLD_P dx=2/3, 192^2, same physical size, T=1000) with and without adsorption (chi_s=0), and c11's bandring.py (scale 1.5, frames >= 100). As in the finding, one nucleus forms by t~135 and grows into a rod that fissions into a colony (7 persistent splits, generation 4, 0 merges, 14 bodies at the end). Band measure: interface/interior 2.20, interface/outside 5.60 (finding at res15: 2.24 and 5.76); chi_s=0: 0.81 and 1.35. The two arms give identical labkit body counts, splits and motion (the ring is passive, as established), so the ablation removes only the ring.",
+  "parents": ["20261025T1314-c11-ringed-rods-res15"],
+  "class": "active-nematic",
+  "review_of": "20261025T1314-c11-ringed-rods-res15",
+  "evidence": ["bandring_c13.txt", "rerun_res15/seed4/sheet.png", "rerun_res15_chis0/seed4/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "bandring_c13.txt: interface/interior 2.20 (chi_s 3) vs 0.81 (chi_s 0) at dx 2/3, seed 4; rerun_res15/seed4/sheet.png t=175-1000: rods fission into a colony"},
+    "replicated": true, "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass (dx 2/3, both arms)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "chi_s=0 twin at dx 2/3 on seed 4 (rerun_res15_chis0/seed4)"},
+    "class_confirmed": true,
+    "limitation": "One seed at the finer grid; only one nucleus forms at this resolution, so the colony is one lineage, and motion is marginal (max 2.8 body lengths). I did not run labkit's radial test comparison beyond FACTS.md."}],
+  "compute": {"cpu_minutes": 60}
+}
