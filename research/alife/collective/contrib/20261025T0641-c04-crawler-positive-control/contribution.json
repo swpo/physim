@@ -1,0 +1,8 @@
+{"id": "20261025T0641-c04-crawler-positive-control", "kind": "sighting", "mode": "explore", "task": "Q:crawling-cell-division",
+ "title": "Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division",
+ "summary": "world.py implements the Ziebert-Aranson crawler (phase field u, actin polarization P with the gamma (grad u.P)P and sigma|P|^2 myosin terms, area constraint applied per connected body). With alpha=3, beta=1, gamma=0.5, sigma=0.6, tau1=10 and an initial uniform kick, a keratocyte-like crescent crawls at ~0.9-1.6 per unit time with constant area (max/min 1.14), 17.5-17.7 body lengths in t=500 on seeds 0 and 1; |P| forms a rim layer (rim/core 1.95, rim/outside 27) because actin is made at the interface. Without gamma and sigma (minimal model) the kick decays and the cell stops (prototype scan, alpha 2-4, beta 0.5-2). With GROW=1 (body content V grows by uptake of a regrowing nutrient, carried between steps by overlap) the cell grows 36x into a slow triangular crawler that fills the domain without ever dividing (growth_probe/sheet.png): size growth alone is not a division mechanism here.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed0/radial.png", "growth_probe/sheet.png"],
+ "compute": {"cpu_minutes": 25}}

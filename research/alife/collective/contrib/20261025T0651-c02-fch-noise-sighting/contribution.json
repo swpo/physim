@@ -1,0 +1,13 @@
+{
+ "id": "20261025T0651-c02-fch-noise-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "Q:fch-vesicles-from-noise",
+ "title": "FCH from noise: droplets pearl into micelle chains that fuse into open bilayers (no closed vesicles yet)",
+ "summary": "Positive control first: the Promislow-group FCH benchmark (eps=0.1, eta1=1.45e, eta2=1.5e, bath excess d=0.75, planted perturbed circle) pearls at t~10-30 and then meanders into a 6-lobed flower by t~60, as published; dt 5e-3 and 1e-2 agree (positive_control_benchmark.png). From an unstructured noisy bath (u=-1+0.1+0.3*U(-1,1), eta2=3e) about nine amphiphile droplets nucleate, each elongates and pearls into a 2-3 micelle chain, the chains fuse into open bilayer strips with endcaps, and the strips lengthen until the bath is depleted (t~60) and then freeze (pack/seed0/sheet.png). Higher bath excess gives micelle lattices or a bilayer network with a few closed loops, lower eta2 gives stable droplets (noise_sweep_bath_excess.png); no isolated closed vesicle formed from noise in these runs.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "positive_control_benchmark.png", "noise_sweep_bath_excess.png"],
+ "compute": {"cpu_minutes": 45}
+}
