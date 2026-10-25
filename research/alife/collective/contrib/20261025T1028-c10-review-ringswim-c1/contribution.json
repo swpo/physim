@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1028-c10-review-ringswim-c1",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c1",
+  "title": "Review of c07's ringswim c1 (SIMD): walled cells swim and divide on fresh seeds 25-27 (celltrack 10-25 persistent splits, gen 5-14), reticulate (merge/split ~0.8); 2 of 3 seeds coarsen into bands",
+  "summary": "Fresh labkit run of world_claim.py on seed 27 plus the claim's celltrack.py (unchanged, run from the claim directory) on seeds 25, 26, 27 (T=20000; packs of 25 and 26 are in my c2 review 20261025T1010-c10-review-ringswim). Persistent splits 21/10/25, max generation 12/5/14, tracks >= 3 BL 28/17/40 and >= 5 BL 9/11/11. Genealogy is reticulate: merges 40/33/57 against splits 45/41/73 (merge/split 0.89/0.80/0.78). On seed 27 celltrack names one track (86, generation 6) that swims 6.65 BL over 2940 t and then divides into 111 and 112, so the same individuals swim and divide. Seed 26 fuses into one band by t~13900 (no persistent split after t~9500) and seed 25 by t~18300; seed 27 stays a population of crescents and round cells to t=20000, lining up into columns at the end.",
+  "parents": ["20261025T0806-c07-ringswim-claim", "20261025T1010-c10-review-ringswim"],
+  "class": "phase-field",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "ct/claim_s25.summary.txt", "ct/claim_s26.summary.txt", "ct/claim_s27.summary.txt", "research/alife/collective/contrib/20261025T1010-c10-review-ringswim/rerun/seed26/sheet.png"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: smoothed noise over the whole domain; ~15 walled cells by t=800",
+      "I": "rerun/sheet.png t=800-20000: discrete walled cells and crescents on seed 27 throughout",
+      "M": "ct/claim_s27.summary.txt: 40 track segments >= 3 BL, 11 >= 5 BL; crescents with depletion wakes in rerun/sheet.png t=6100-16500",
+      "D": "ct/claim_s27.summary.txt: 25 persistent splits (daughters survive 400 t without re-merging), max generation 14; candidate track 86 (gen 6) swims 6.65 BL then splits into 111 and 112"
+    },
+    "replicated": true,
+    "seed": 27,
+    "seeds_run": [{"seed": 25, "result": "pass until a band forms at t~18300 (21 persistent splits, gen 12)"}, {"seed": 26, "result": "partial: 10 persistent splits, gen 5, band by t~13900"}, {"seed": 27, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "the author's pack_mu0/ (not re-run)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Reticulate: merges are 78-89% of splits on fresh seeds, so many divisions are pinches of recent fusion products (confidence capped at medium by the L6 rule). Two of three fresh seeds coarsen into one domain-wrapping band before t=20000 despite the waste term, ending individuality there. Divisions rest on celltrack.py, not labkit's tracker. The drive is a nonlocal per-body label average; no BD twin."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

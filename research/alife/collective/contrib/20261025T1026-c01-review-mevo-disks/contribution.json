@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1026-c01-review-mevo-disks",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0747-c03-membrane-evo-needs-disks#finding",
+  "review_of": "20261025T0747-c03-membrane-evo-needs-disks",
+  "title": "membrane_evo needs its death disks: on seed 24, p_death=0 gives 1 persistent split and a frozen lattice vs 11 splits with disks",
+  "summary": "Fresh seed 24, t=40000. membrane_evo_up with p_death=0 (world_up_nodisk.py): walled cells form from noise, fill the box and freeze into a square lattice by t~10000 (up_nodisk/sheet.png); labkit 1 split, 1 persistent split, generation 1; later kind changes are whole-cell flips of frozen cells. Same seed with the disks (membrane_evo_up as published): 54 splits, 11 persistent, generation 4. evotrack with p_death=0: up K2 share 0.22 with 1 birth and 0 deaths; twin 0.50 with 0 births and 0 deaths, so up and twin no longer separate (and the up arm is even lower).",
+  "parents": ["20261025T0747-c03-membrane-evo-needs-disks", "20261025T0713-c01-review-membrane-evo"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "up_nodisk/sheet.png frozen lattice from t~10000; up_nodisk/FACTS.md 1 persistent split vs up_disk/FACTS.md 11; evo/*.json births 0-1, deaths 0"},
+    "replicated": true,
+    "seed": 24,
+    "seeds_run": [{"seed": 24, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "up_disk/ (disks on, seed 24) against up_nodisk/ (p_death=0)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One new seed. The finding's necessary=true is for this parameter point; a different feed or a maintenance cost might restore turnover without disks, which is the open question for C:autonomous-heredity."
+  }],
+  "evidence": ["up_nodisk/sheet.png", "up_disk/sheet.png", "up_nodisk/lineage.png"],
+  "compute": {"cpu_minutes": 8}
+}

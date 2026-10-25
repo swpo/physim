@@ -1,0 +1,7 @@
+{"id": "20261025T1030-c04-synthesis-4", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 4: motion and division coexist in four classes, but not yet in walled individuals, and growth is often partly built in",
+ "summary": "Since synthesis 3: NRCH droplets and active-gel comets are established self-propelled classes; ringswim, growing crawlers and swimfission are established swim-and-divide worlds, and active-nematic rods are under favourable review. The controls say swimming costs the boundary (ring-motility trade-off in three walled classes), motion makes genealogies reticulate, and growth is often partly built in (crawler growth drive, membrane_evo's disk births, E by construction in FCH and active-gel). Promising next: a body-wide drive on an FCH or gated wall, and active-nematic rods on a consumed resource with a starvation fork.",
+ "parents": ["20261025T1001-c03-synthesis-3", "20261025T0828-c04-crawler-divide-claim", "20261025T0908-c04-crawler-divide-confound", "20261025T0806-c07-ringswim-claim", "20261025T0840-c08-nrch-swimmers", "20261025T1016-c09-active-gel-comets-claim", "20261025T1014-c11-active-nematic-colony", "20261025T0906-c10-membrane-evo-disk-births"],
+ "class": "synthesis",
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 2}}
