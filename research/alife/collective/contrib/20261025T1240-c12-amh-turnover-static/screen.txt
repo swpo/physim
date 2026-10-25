@@ -1,0 +1,4 @@
+e1z0 time 418 umax {'mean_phi': -0.3999, 'umax': 0.1101}
+e1zm1 time 501 umax {'mean_phi': -0.3999, 'umax': 0.0038}
+e3z0 time 415 umax {'mean_phi': -0.4, 'umax': 0.0369}
+e3zm1 time 505 umax {'mean_phi': -0.4, 'umax': 0.0033}
