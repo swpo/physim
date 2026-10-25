@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1107-c05-review-gel-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1046-c09-active-gel-bd-twin#finding",
+  "title": "Review of c09's active-gel flow-free twin: replicated on seed 7 (local twins: 0 bodies by t=20; global twin: 1 winner; the world keeps 7-9 comets)",
+  "summary": "Verdict written before reading other reviews. I ran the three twin worlds unchanged on new seed 7 (Lm1/, Lm4/, global/; T=200) and compared with my run of the claimed world on the same seed (in 20261025T1032-c05-review-gel-comets: components 44, 28, 24, 11, 7, 9 at t=8, 20, 30, 50, 100, 200). Twin Lm=4: 38 peaks at t=8, 0 from t=20 on. Twin Lm=1: no component above threshold at any recorded time on this seed (peaks, if any, dissolve before t=8). Twin global: 39 -> 19 -> 13 -> 3 -> 2 -> 1 body, the survivor swims (5 tracks >= 1 BL, max 5.3 BL, speed up to 1.6).",
+  "parents": ["20261025T1046-c09-active-gel-bd-twin", "20261025T1032-c05-review-gel-comets"],
+  "class": "active-gel",
+  "review_of": "20261025T1046-c09-active-gel-bd-twin",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "Lm4/seed7/metrics.json n_comp 38 (t=8) -> 0 (t=20); Lm1/seed7 0 throughout; global/seed7 39 -> 1 with one fast swimmer (FACTS max 5.3 BL); world seed 7 keeps 7-9 comets"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "the claimed world on seed 7 in 20261025T1032-c05-review-gel-comets/world/seed7"},
+    "class_confirmed": true,
+    "limitation": "The twin conserves mass by subtracting the gain over a range Lm (or globally), a nonlocal step, so this is a matched no-flow twin rather than a strictly local reaction-diffusion one; with c01's kstrail twin (which swims with screened-Poisson redistribution) the outcome depends on the conservation scheme. One new seed."}],
+  "compute": {"cpu_minutes": 4}
+}

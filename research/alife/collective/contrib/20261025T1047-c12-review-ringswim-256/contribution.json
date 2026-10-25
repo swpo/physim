@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1047-c12-review-ringswim-256",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0922-c07-ringswim-256#c1",
+  "title": "Review of c07's ringswim-256 (SIMD): swimming and a bounded, band-free population replicate on seed 43, but all 3 random 'divisions' are re-separations of cells that had just collided (46% of qualifying splits)",
+  "summary": "Fresh seed 43 at 256^2, T=20000: walled cells form from noise and stay a bounded population of ~35-45 crescents and round cells with no domain-wrapping band (sheet.png). The author's celltrack gives 144 persistent splits, max generation 15, splits/merges 353/237, 100 track segments >= 3 BL (best 10.5 BL); labkit counts 771 splits, 647 merges and 0 persistent splits at its K=2000 window. Strips of 3 randomly drawn late binary splits (both children living >= 1000 t; strip_s43.png) all show two cells that had touched pulling apart, and in each case the parent track was a merge product of the previous 100-280 t. Over all binary splits whose children live >= 400 t, 44/96 (46%) follow a merge within 600 t (merge_then_split.py), so the persistent-split count and the generation depth are inflated by collision re-separations; the remaining ~52 are candidates for genuine pinching that I did not inspect.",
+  "parents": ["20261025T0922-c07-ringswim-256"],
+  "class": "phase-field",
+  "world": "world.py",
+  "evidence": ["rerun/seed43/sheet.png", "rerun/seed43/tracks.png", "strip_s43.png", "merge_then_split.txt", "data/celltrack_s43.log"],
+  "review_of": "20261025T0922-c07-ringswim-256",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "rerun/seed43/sheet.png t=0: noise over the whole domain; cells by t=800",
+      "I": "rerun/seed43/sheet.png: a bounded population of walled cells of similar size to t=20000, no band",
+      "M": "data/celltrack_s43.log: 100 segments >= 3 BL, 19 >= 5 BL, best 10.5 BL; crescents with depletion wakes in sheet.png"
+    },
+    "replicated": true,
+    "seed": 43,
+    "seeds_run": [{"seed": 43, "result": "S, I, M pass; D counts inflated by re-separations"}],
+    "same_individuals": false,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["D on the ~52 splits not preceded by a merge (not inspected)", "mu=0 control", "resolution, dt"],
+    "limitation": "Division is not established on this seed: all three randomly drawn splits are cells separating after a collision (strip_s43.png rows 627, 696, 631; merge 100-280 t earlier), 46% of qualifying splits follow a merge within 600 t, and labkit finds 0 persistent splits. celltrack's generation depth (15) counts these re-separations. A split count that excludes merge products of the last ~600 t, and strips drawn from that set, are needed before D. The drive is a per-body averaged gradient."
+  }],
+  "compute": {"cpu_minutes": 45}
+}
