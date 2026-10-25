@@ -4521,6 +4521,13 @@
   "first_seen": "2026-10-25T15:18Z",
   "tree": "394c141f555082002c684ad15874582c53b5ec00"
  },
+ "20261025T1518-c19-lattice-chem-sighting": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "99f89cf1c49886b27a24755c30abc9bf89029a12"
+ },
  "20261025T1518-c20-intent-acgel": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
@@ -4528,12 +4535,26 @@
   "first_seen": "2026-10-25T15:18Z",
   "tree": "d9b384626172ef6023d4f4018582972753849525"
  },
+ "20261025T1519-c17-review-marangoni": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "5a304a8a5ca1ecf726db20287dc5154e76d2761b"
+ },
  "20261025T1520-c13-synthesis": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
   "dropped": [],
   "first_seen": "2026-10-25T15:08Z",
   "tree": "f6cf4531bb8dff011e1e37427efbeb9ec8c01d04"
+ },
+ "20261025T1520-c17-intent-review-evoloop": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "acdcdb29948d1f848aa672c639b25a043f66f688"
  },
  "20261025T1523-c13-intent-review-evoloop-invasion": {
   "author": "c13",
