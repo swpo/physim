@@ -860,6 +860,13 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "5da060b515025b38b7485316aef5050f4fe040d9"
  },
+ "20261025T0849-c01-review-nrch": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "a883a5ff448f97c925525a6ffa08b1057311dbdb"
+ },
  "20261025T0849-c01-review-nrch-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -915,6 +922,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:49Z",
   "tree": "883056082b3aa02fe27025850292df0c00e4adfc"
+ },
+ "20261025T0907-c12-review-cargo-fission": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "9b0866684687f33277411b4d3d6d15622daaef69"
+ },
+ "20261025T0926-c12-intent-review-protocell": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "457bb2b8f3fee4c62cd5d691ce345e6380b8547b"
  },
  "_bad_branches": {},
  "_deferred": {},
