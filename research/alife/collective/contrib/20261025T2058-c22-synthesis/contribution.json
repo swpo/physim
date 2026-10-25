@@ -1,0 +1,11 @@
+{
+ "id": "20261025T2058-c22-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis 12: decisions on bath-level metabolism and late selection, and what repair has meant so far",
+ "summary": "Since 20:30 the FCH chemoton was decided as SI (its metabolism belongs to the bath: catalyst-free vesicles live on neighbours' product), evoloop as ID (selection looks real but sweeps take 85k-335k steps depending on seed, and no neutral arm is counted), the nematic fuel ring as slow diffusion (third gate a slow medium reproduces), and the food-eating Flow-Lenia shell gliders as IMD. Every field-world repair so far is curvature flow, regrowth, or competition between surviving pieces of a bistable domain; erasing a whole organizing domain kills the body. Next: review the repairing crawler, give it a working boundary and a polarity with no stable uniform state, and default to per-individual metabolism tests and slow-medium twins.",
+ "parents": ["20261025T2032-c21-synthesis", "20261025T0848-c02-fch-chemoton-claim", "20261025T1256-c16-evoloop-claim", "20261025T1517-c20-fuelring-is-slow-diffusion", "20261025T1748-c18-flshell2-metabolic-cell-claim", "20261025T2043-c22-intent-synthesis"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}
+}

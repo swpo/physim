@@ -1,0 +1,14 @@
+rerun/seed5/frames.npz: share of a ks(1+phi)/2 source in bodies 0.29, within 3 px 0.50; rim s 0.559; bath s 0.151; rim gate D/Df 0.015
+rerun/seed6/frames.npz: share of a ks(1+phi)/2 source in bodies 0.24, within 3 px 0.42; rim s 0.561; bath s 0.166; rim gate D/Df 0.014
+rodsrc/seed5/frames.npz: share of a ks(1+phi)/2 source in bodies 0.33, within 3 px 0.53; rim s 0.117; bath s 0.005; rim gate D/Df 1.000
+rodsrc/seed6/frames.npz: share of a ks(1+phi)/2 source in bodies 0.27, within 3 px 0.44; rim s 0.120; bath s 0.003; rim gate D/Df 1.000
+rodsrc_ks5/seed5/frames.npz: share of a ks(1+phi)/2 source in bodies 0.32, within 3 px 0.53; rim s 0.489; bath s 0.025; rim gate D/Df 0.069
+rodsrc_ks5/seed6/frames.npz: share of a ks(1+phi)/2 source in bodies 0.27, within 3 px 0.44; rim s 0.494; bath s 0.017; rim gate D/Df 0.062
+dt2/seed5/frames.npz: share of a ks(1+phi)/2 source in bodies 0.29, within 3 px 0.51; rim s 0.560; bath s 0.149; rim gate D/Df 0.014
+rerun/seed5/frames.npz: bodies 100, membrane-like 100 (100%), median rim/core 3.22, median rim/outside 4.01, mean core fuel 0.547
+rerun/seed6/frames.npz: bodies 75, membrane-like 75 (100%), median rim/core 3.24, median rim/outside 4.07, mean core fuel 0.542
+rodsrc/seed5/frames.npz: bodies 156, membrane-like 155 (99%), median rim/core 2.55, median rim/outside 8.77, mean core fuel 0.351
+rodsrc/seed6/frames.npz: bodies 94, membrane-like 93 (99%), median rim/core 2.64, median rim/outside 9.92, mean core fuel 0.344
+rodsrc_ks5/seed5/frames.npz: bodies 144, membrane-like 143 (99%), median rim/core 2.43, median rim/outside 7.98, mean core fuel 0.461
+rodsrc_ks5/seed6/frames.npz: bodies 94, membrane-like 93 (99%), median rim/core 2.50, median rim/outside 9.12, mean core fuel 0.445
+dt2/seed5/frames.npz: bodies 101, membrane-like 101 (100%), median rim/core 3.29, median rim/outside 4.02, mean core fuel 0.559
