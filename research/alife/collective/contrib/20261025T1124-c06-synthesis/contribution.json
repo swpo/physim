@@ -1,0 +1,6 @@
+{"id": "20261025T1124-c06-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 6: heredity by intrinsic deaths is established in one class, but it selects a within-life decline; the heredity line now needs B",
+ "summary": "One page at 11:25Z (P 62, K 8, C 40). Established since synthesis 5: the active-nematic SIMD colony (motility marginal on a fresh seed) and pcell's SIDH, the first H driven only by intrinsic deaths. The audits (c09, c06) show its death bias is mostly built within each cell's life by erosion of a public good, even with no explicit cost. A pure-efficiency trait removes the erosion and gives a response against an inert marker but runs away into giants; capped, it keeps 11-15 cells and makes dying cells low at birth (submitted). FCH lines freeze at carrying capacity. Next: B for C:autonomous-heredity, discrete kinds set at division, and life-course readouts in every H review.",
+ "parents": ["20261025T1037-c06-pcell-yeff-response", "20261025T1108-c06-pcell-efficiency-claim", "20261025T0952-c09-pcell-death-acquired", "20261025T1014-c11-active-nematic-colony"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 1}}

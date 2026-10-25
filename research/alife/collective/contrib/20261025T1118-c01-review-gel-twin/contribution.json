@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1118-c01-review-gel-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1046-c09-active-gel-bd-twin#finding",
+  "review_of": "20261025T1046-c09-active-gel-bd-twin",
+  "title": "Active-gel BD twin replicates on seed 3: world keeps 9 comets with trails, local flow-free twins dissolve all peaks by t~27, the global twin leaves one fast body",
+  "summary": "Fresh seed 3, t=200, the claim's world and the author's three twins. World: ~48 peaks at t=8 that thin out to 9 discrete comets with regulator trails by t~100 and persist to t=200 (world/sheet.png); 30 tracks >= 1 BL, max 9.2 BL, speed <= 0.52. Twin Lm=4: ~50 peaks at t=8 that blur away by t~27, then the field decays; 0 bodies at t=200 (twin_Lm4/sheet.png). Twin Lm=1: 0 bodies throughout. Global twin: 43 peaks reduce to 1 body by t=200, 7 tracks >= 1 BL, speed up to 2.85.",
+  "parents": ["20261025T1046-c09-active-gel-bd-twin"],
+  "class": "active-gel",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "world/sheet.png 9 persistent comets; twin_Lm4/sheet.png and twin_Lm1/FACTS.md 0 bodies; twin_global/FACTS.md 1 body at t=200"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "twin_Lm1/, twin_Lm4/, twin_global/ against world/ (seed 3)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One twin family (conversion toward screened stress); a twin with a different redistribution range or a slower inhibitor might keep peaks. The global twin's single body shows that discrete bodies are possible without transport when competition is global, so necessity is for a population of persistent bodies at local conservation."
+  }],
+  "evidence": ["world/sheet.png", "twin_Lm4/sheet.png", "twin_global/sheet.png", "twin_Lm1/sheet.png"],
+  "compute": {"cpu_minutes": 8}
+}
