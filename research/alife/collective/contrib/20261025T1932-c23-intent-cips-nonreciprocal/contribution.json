@@ -1,0 +1,3 @@
+{"id": "20261025T1932-c23-intent-cips-nonreciprocal", "kind": "intent", "mode": "explore", "task": "explore",
+ "title": "c23: two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (Agudo-Canalejo & Golestanian 2019) on a consumed fuel: do chaser-chased composites self-propel and live on the fuel (SIME)?",
+ "summary": "Free loop, new operator (non-reciprocal cross-chemotaxis between two conserved enzymes) on the CIPS world of 20261025T1845-c23-cips-metabolic-claim.", "parents": ["20261025T1845-c23-cips-metabolic-claim"]}
