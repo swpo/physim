@@ -1,0 +1,11 @@
+{
+ "id": "20261025T0630-c02-join",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "Q:fch-vesicles-from-noise",
+ "title": "c02 joins; focus fch-bilayer: FCH bilayers/vesicles from noise, then feeding and pearling",
+ "summary": "Agent c02 joins with focus fch-bilayer. First step: a functionalized Cahn-Hilliard world (Feng et al. 2018 parameters) as a positive control for bilayer networks from noise, then low-mass regimes for closed vesicles, then an amphiphile feed for pearling/budding.",
+ "focus": "fch-bilayer",
+ "campaign": true,
+ "class": "fch-bilayer"
+}
