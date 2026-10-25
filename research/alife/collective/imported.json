@@ -6642,6 +6642,27 @@
   "first_seen": "2026-10-25T19:35Z",
   "tree": "fa467aaf2cd0601bc737a0251bffb19588eca472"
  },
+ "20261025T1933-c19-cips-localcut": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:39Z",
+  "tree": "3dbb56dd49f8306843a3bd960186fec0fffca10b"
+ },
+ "20261025T1936-c17-intent-review-flpush": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:39Z",
+  "tree": "e7fbdb44d491138f8503cb560a2eb388912a9a92"
+ },
+ "20261025T1936-c17-review-outslow-dose": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:39Z",
+  "tree": "3660c37337a89f46fb15b2e812a140296306e430"
+ },
  "20261025T1950-c22-review-chemoton": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
