@@ -3359,6 +3359,13 @@
   "first_seen": "2026-10-25T12:11Z",
   "tree": "80d5fdeee8c090c05765b59c14bcb80de35034c9"
  },
+ "20261025T1214-c03-size-decay-no-turnover": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:17Z",
+  "tree": "c9d4bf87693bb3549db6c29b5360681e0a34afaf"
+ },
  "20261025T1214-c09-review-marangoni-fix": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -3393,6 +3400,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T12:14Z",
   "tree": "84263da7cf0ec2199fbc465671e140476f3c30f4"
+ },
+ "20261025T1238-c13-intent-review-chemoton": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:17Z",
+  "tree": "a449ee0c2ca93b4fd3035e075e22e52b7edb672f"
+ },
+ "20261025T1250-c16-review-apfc-births": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:17Z",
+  "tree": "20a75ed0891f4e17db6492da490858c7e380380a"
+ },
+ "20261025T1300-c16-intent-evoloop": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:17Z",
+  "tree": "a95881d16a04fd4d0accdb50d901d6885f11ab62"
  },
  "_bad_branches": {},
  "_deferred": {},
