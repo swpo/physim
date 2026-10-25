@@ -1686,6 +1686,34 @@
   "first_seen": "2026-10-25T10:02Z",
   "tree": "2b53d08dceda4aa79c8835172565fd34be911782"
  },
+ "20261025T1001-c06-review-membrane-evo": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:05Z",
+  "tree": "795bf7be5afe78cb95ee16a9cfaafaa1746ee2ca"
+ },
+ "20261025T1002-c09-active-gel-fed-comets": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:05Z",
+  "tree": "5cfa80cf5ac969e2f1c1d364a03769aa376c0b97"
+ },
+ "20261025T1003-c05-review-crawler-size": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:05Z",
+  "tree": "ba959c92b0c04923157e6b19992208608b0183f3"
+ },
+ "20261025T1004-c05-intent-review-me-disks": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:05Z",
+  "tree": "6eefcb22915455bc28c72899fc5ca982685670d5"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

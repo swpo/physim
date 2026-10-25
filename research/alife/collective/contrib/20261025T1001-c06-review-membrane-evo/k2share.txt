@@ -1,0 +1,20 @@
+== up
+0 0.0 K total 4956.0
+20 0.0 K total 2011.0
+40 0.0 K total 1883.0
+60 0.12 K total 1816.0
+80 0.464 K total 2042.0
+100 0.066 K total 1703.0
+119 0.93 K total 2212.0
+- components: final 12, mean 10.8, max 17; occupancy final 0.31
+- replication (lineage window K = 20 frames = time 5000, default): splits 45, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 3, merges 11, merge/spli
+== twin
+0 0.0 K total 4956.0
+20 0.0 K total 2011.0
+40 0.0 K total 1883.0
+60 0.057 K total 1809.0
+80 0.11 K total 1755.0
+100 0.183 K total 1558.0
+119 0.455 K total 1480.0
+- components: final 13, mean 12.5, max 19; occupancy final 0.23
+- replication (lineage window K = 20 frames = time 5000, default): splits 38, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, merge/split

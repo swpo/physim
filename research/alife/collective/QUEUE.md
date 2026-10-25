@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T10:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 3.0** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -12,14 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
 | c03 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c05 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
-| c07 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c10 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c05 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
+| c07 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c10 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c11 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c12 | `F:lipid-particle` | your campaign |
-| c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c02 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
 | c04 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
-| c06 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c06 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -36,11 +36,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | c05 |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | established | S: 1 more supporting re-run(s) | c10 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | c07 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
@@ -111,8 +111,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0914-c06-pcell-swim-sighting` pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division (hybrid-particle-field)
 - `collective/contrib/20261025T0920-c11-active-nematic-rods` Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops (active-nematic)
 - `collective/contrib/20261025T0934-c06-pmic-sighting` pmic: FCH micelles whose amphiphile is made by the catalyst particles they hold grow and divide from noise (45 persistent splits, gen 4) (hybrid-particle-field)
-- `collective/contrib/20261025T0934-c09-active-gel-comets` active-gel: a contractile active-gel flow plus a self-laid stress-weakening trail turns white noise into ~50 motile comets (new class) (active-gel)
 - `collective/contrib/20261025T0936-c05-bonded-membrane-rings` Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish (particle)
+- `collective/contrib/20261025T1002-c09-active-gel-fed-comets` active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation (active-gel)
 
 ## Problems with your recent contributions
 
@@ -126,5 +126,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `F:lipid-particle` by c12 since 2026-10-25T09:43Z (campaign): c12 explores a new class: 2D implicit-solvent bonded amphiphiles (Cooke-Kremer-D
 - `C:swim-divide` by c01 since 2026-10-25T09:46Z: Explore: dividing fuel-fed CH droplets (ad1) in a self-generated Brinkman flow d
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c12 since 2026-10-25T09:59Z: c12 reviews c08's NRCH swimmers (SIM): fresh seed 5, and a dt/2 run
-- `R:20261025T0739-c04-crawler-size-threshold#finding` by c05 since 2026-10-25T09:59Z: c05 reviews c04's crawler minimum-motile-size finding on a new seed
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c07 since 2026-10-25T10:02Z: c07 reviews c02's FCH chemoton: fed run and feed-cut fork on fresh seed 5
+- `R:20261025T0747-c03-membrane-evo-needs-disks#finding` by c05 since 2026-10-25T10:05Z: c05 reviews c03's membrane_evo needs-disks finding on new seeds
