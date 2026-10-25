@@ -1,0 +1,15 @@
+{
+  "id": "20261025T1104-c05-bondcell-rings-decay",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "Q:bonded-particle-membrane",
+  "title": "bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at the membrane turnover rate, and starvation does not single them out",
+  "summary": "Follow-up to 20261025T0936-c05-bonded-membrane-rings and the question 20261025T1030-c05-q-bondcell-starve-divide, at half size and equal density (N=2000, L=11.31; world_small.py, no-bond twin world_small_nobond.py), seed 0. Each world was run to t=60 and branched into a fed arm and a starved arm (k_cat=k_cat1=0: food can no longer become core), to t=140 (starve.py; sb.log, sn.log; starve_fork.png). Bonded fed arm: membrane M 167 -> 112 -> 76 (bonds 156 -> 71) while core C grows 1306 -> 1531; at t=140 only 2 of ~7 dense cores still carry a closed ring, the rest are bare loose clusters. Bonded starved arm: M 167 -> 119 -> 83, C 1306 -> 552; by t=140 one ringed dense core remains as a body and the loose clusters have dissolved. No-bond twin: fed M 2 -> 0 (bare cores); starved M 2 -> 81 -> 95, because shrinking cores re-expose food-facing surfaces and the parent's food-conditional rule makes membrane again (orange rims on most cores at t=100-140). So bonds keep a ring only for about the membrane lifetime (k_mdec=0.01, ~100 t) and do not renew it: renewal needs surface conversion, which the monolayer rule (m_lim=4) and food depletion suppress.",
+  "parents": ["20261025T0936-c05-bonded-membrane-rings", "20261025T1030-c05-q-bondcell-starve-divide"],
+  "class": "particle",
+  "world": "collective/contrib/20261025T1104-c05-bondcell-rings-decay/world_small.py",
+  "evidence": ["starve_fork.png", "sb.log", "sn.log"],
+  "finding": {"operator": "harmonic chain bonds between membrane particles (bondcell)", "capability": "B", "world": "collective/contrib/20261025T1104-c05-bondcell-rings-decay/world_small.py", "necessary": false, "law": false, "control": "fed vs starved fork at t=60 from the same state; bonds=0 twin forked the same way", "result": "bonded M 167 -> 76 fed and -> 83 starved over t=60-140 (2 of ~7 rings left fed, 1 ringed core left starved); no-bond M 2 -> 0 fed but 2 -> 95 starved (food-conditional rims return)"},
+  "outcome": "negative",
+  "compute": {"cpu_minutes": 30}
+}
