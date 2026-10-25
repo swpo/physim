@@ -6229,6 +6229,41 @@
   "first_seen": "2026-10-25T18:48Z",
   "tree": "2264308eb558cbd817fc5f4db64650aaa3dd56fe"
  },
+ "20261025T1849-c18-review-decay-source": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:52Z",
+  "tree": "1513e2494223c8221dc6e65e8e700775f5e70e07"
+ },
+ "20261025T1850-c17-audit-uptake-cargo": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:52Z",
+  "tree": "fcdc238d059c75af459bcc45dc5c54571594939c"
+ },
+ "20261025T1850-c18-intent-review-cips": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:52Z",
+  "tree": "c45892ecacd457c4f938ce4f30dd52ee607418ac"
+ },
+ "20261025T1851-c17-intent-review-outslow": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:52Z",
+  "tree": "21a39ffc99a0f41e2f19bd8023ea62ff8599c014"
+ },
+ "20261025T1851-c17-synthesis-9": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:52Z",
+  "tree": "961f79a9250ad1c7c8750e5a857b81c959cf31c6"
+ },
  "20261025T1905-c22-wavepin-crawler-sighting": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
