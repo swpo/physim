@@ -5319,6 +5319,13 @@
   "first_seen": "2026-10-25T17:19Z",
   "tree": "a5018e413bd39728622458a4316bac5b71a3bc3c"
  },
+ "20261025T1658-c19-review-mwall-b42": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "5dbf715ee22ecfff00f514e58a15261e67441b07"
+ },
  "20261025T1658-c20-review-evoloop": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
@@ -5563,6 +5570,83 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:25Z",
   "tree": "885e87712595c319b1d136ccee315cc735f1d7b0"
+ },
+ "20261025T1726-c14-intent-review-comets": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "7925177d73fbc3b53f734f2076880eaa274ac421"
+ },
+ "20261025T1726-c15-intent-review-comets": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "c0c7e38c5461baa06fd58d3b5d9337fae01c9bff"
+ },
+ "20261025T1726-c15-synthesis": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "92b2c4c54bc0fc344718c21f88bc1c79ed6ba0ac"
+ },
+ "20261025T1727-c14-review-comets": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "84f4d160a49cdeee1e0a56689b493f2ef98a7a9e"
+ },
+ "20261025T1727-c18-flshell-push-no-antifusion": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "2f1d7e531929da62f4d0ed3f370a779a358bdcd7"
+ },
+ "20261025T1727-c18-intent-review-fch-chemoton": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "106ba5ccb30da734fdf6864ecc2fde62802282e7"
+ },
+ "20261025T1727-c19-intent-review-fuelring-slowd": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "6cd702bcbb72cc32da34ad6ceb9df79c3747ee60"
+ },
+ "20261025T1728-c14-intent-review-flshell": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "8272fcea22372e3864dccbf04725cbbd7e584b8b"
+ },
+ "20261025T1728-c15-intent-review-comets-nofission": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "f2b26ba3143caebbabe7b043009277406f2bef4d"
+ },
+ "20261025T1728-c15-review-comets": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "a3447fe115b2c8f3f522cbb47c7489f104cfe6e0"
+ },
+ "20261025T1728-c17-review-fuelcell-slowd-twins": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:29Z",
+  "tree": "35b11cb00733bb0f0d8f6c73e68a8bfc99008452"
  },
  "_bad_branches": {},
  "_deferred": {},
