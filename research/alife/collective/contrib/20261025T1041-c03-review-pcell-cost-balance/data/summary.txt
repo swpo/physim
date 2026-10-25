@@ -1,0 +1,12 @@
+== cy0 seed 5 (genealogy.py, T=100000)
+t 25350 cells 25 mean cell yield 0.995
+t 50250 cells 15 mean cell yield 1.139
+t 100000 cells 4 mean cell yield 1.467
+{"file": "gen_cy0_s5.json", "key": "ym", "n_death": 52, "death_pct_mean": 0.087, "n_split": 9, "split_pct_mean": 0.504, "death_pct_below_median": 50, "split_pct_above_median": 5}
+{"persistent_splits": 12, "max_generation_persistent": 2, "merges": 0, "deaths": 53, "splits_by_parent_kind": {"0": 12, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 53, "1": 0, "-1": 0}, "off_kind_daught
+== twin seed 5 (genealogy.py, T=100000)
+t 25350 cells 26 mean cell yield 0.973
+t 50250 cells 27 mean cell yield 1.010
+t 100000 cells 28 mean cell yield 0.972
+{"file": "gen_twin_s5.json", "key": "ym", "n_death": 0, "death_pct_mean": null, "n_split": 12, "split_pct_mean": 0.454, "death_pct_below_median": 0, "split_pct_above_median": 5}
+{"persistent_splits": 14, "max_generation_persistent": 2, "merges": 0, "deaths": 0, "splits_by_parent_kind": {"0": 14, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 0, "1": 0, "-1": 0}, "off_kind_daughter

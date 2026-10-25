@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1029-c05-review-ambplus",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0811-c08-ambplus-reaction-morphology#finding",
+  "title": "Review of c08's AMB+ reaction-morphology finding: replicated on seed 7 at the high-supersaturation setting (B 44 arrested round droplets, passive 34, C 6-body worm labyrinth; 0 splits, 0 motion)",
+  "summary": "Verdict written before reading other reviews. I looked at morphology_final.png and runs/*_hi_s1.png, then ran c08's world.py with c08's screen.py on new seed 7 at u=3e-4, phi_t=-0.2 for the three arms (passive zeta=lam=0, region B zeta=-1.6 lam=-0.8, region C zeta=+1.6 lam=+0.8; T=3000; *_hi_s7.png/log) and a labkit pack of the default (region B) world on seed 7 (rerun/seed7). Region B: 43 droplets by t=750 that stay at 43-45 to t=3000, round and evenly sized (B_hi_s7.png). Passive: 34 at t=3000 with larger median area (166 vs 132). Region C: 34 bodies at t=750 that elongate and merge into a labyrinth of 5-6 worms by t=1750 (C_hi_s7.png). labkit on region B: 38 components at the end, 0 splits, 1 merge, max displacement 0.5 body lengths.",
+  "parents": ["20261025T0811-c08-ambplus-reaction-morphology"],
+  "class": "amb-plus",
+  "review_of": "20261025T0811-c08-ambplus-reaction-morphology",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "B_hi_s7.png 43-45 arrested round droplets t=750-3000; P_hi_s7.log n=34; C_hi_s7.png worm labyrinth n 34 -> 6; rerun/seed7/FACTS.md 0 splits, max 0.5 BL"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "passive arm P_hi_s7 and opposite-sign arm C_hi_s7 on the same seed"},
+    "class_confirmed": true,
+    "limitation": "One new seed and only the high-supersaturation reaction setting; I did not compute CV(area) or aspect, only counts and the montages. The negative part (no split, no motion) is a statement about this parameter region; region B droplets are the Li-Cates arrested state, a known result for AMB+ with reactions."}],
+  "compute": {"cpu_minutes": 20}
+}

@@ -1,0 +1,12 @@
+{"id": "20261025T1037-c06-pcell-yeff-response", "kind": "finding", "mode": "extend", "task": "C:autonomous-heredity",
+ "title": "pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells keep their yield for life, and mean yield responds against an inert marker, until high-yield cells grow into giants",
+ "summary": "Follow-up to 20261025T1012-c06-pcell-hidden-cost. With yeff=1 every particle draws the same substrate for link making whatever its yield, and there is no explicit cost (cy=0), so yield is neutral inside a cell and helps only the cell; mutation 0.002 per duplication, step 0.1, inert marker z alongside. Dying mature cells keep their absolute yield (1.003 -> 1.007 and 1.003 -> 1.011 from birth to death; 42-53% declined), so the within-cell erosion of the costed runs is gone. The population responds: with ~23-24 stationary cells, mean yield is 1.13 and 1.12 at t~30000 against 1.04 and 1.03 for the marker; by t~50000 it is 1.24 and 1.41 (marker 1.04, 0.99). Dying cells are average at birth (rank 0.46, 0.63) and die when the population has moved past them (rank 0.11, 0.20 at death). But the response makes cells bigger: after t~35000 a few high-yield cells grow into giants and the population crashes (24 -> 6 and 24 -> 1 cells by t~50000). So the two regimes bracket the target: with a within-cell cost the kinds are not fixed between births, and without one the response runs away into giant cells. A capped trait (ymax 1.2) is running.",
+ "parents": ["20261025T1012-c06-pcell-hidden-cost"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "particle-borne heritable link efficiency (no substrate or replication cost) inside self-made Allen-Cahn cells", "capability": "H", "world": "world.py", "necessary": false, "law": false,
+   "control": "identical-event inert marker z in the same runs (2 seeds)",
+   "result": "mean yield vs marker: t~30000: 1.13/1.04 and 1.12/1.03 (23-24 cells); t~50000: 1.24/1.04 and 1.41/0.99 (8 and 1 cells). Dying cells' absolute yield birth -> death 1.003 -> 1.007, 1.003 -> 1.011."},
+ "outcome": "positive",
+ "evidence": ["yeff_response.png", "data/summary.txt"],
+ "compute": {"cpu_minutes": 15}}
