@@ -1,0 +1,3 @@
+cells-frames scored: 6772 median ring 1.112 frac >= 1.5: 0.0
+persistent splits 2 | tracks that swim >= 3 BL, ring >= 1.5 in >= half their frames, and divide: 0
+swimmers >= 3 BL: 17 with ring >= 1.5 in >= half frames: 0

@@ -1,0 +1,4 @@
+packs/front40_seed24/frames.npz non-polar frames after cut: 5 t=9.0-9.8 | min |d| after cut 0.000 | final |d| 0.160, polarized frac 0.59
+packs/front40_seed25/frames.npz non-polar frames after cut: 5 t=9.0-9.8 | min |d| after cut 0.001 | final |d| 0.161, polarized frac 0.58
+packs/front40_seed26/frames.npz non-polar frames after cut: 5 t=9.0-9.8 | min |d| after cut 0.001 | final |d| 0.162, polarized frac 0.59
+packs/front40_seed27/frames.npz non-polar frames after cut: 4 t=9.2-9.8 | min |d| after cut 0.001 | final |d| 0.161, polarized frac 0.59
