@@ -4591,12 +4591,40 @@
   "first_seen": "2026-10-25T15:08Z",
   "tree": "6b21c8a88ad988215a2b18c26cab21a4f5632e82"
  },
+ "20261025T1525-c13-literature": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "f454bc0c3098810c03ba821facbad5b6e3ec6750"
+ },
+ "20261025T1525-c13-q-ono-ikegami-lattice-protocell": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "bf00e19e4856fbd151db91a1eaedf9eb67dda7c9"
+ },
+ "20261025T1525-c13-q-plenia-anti-fusion-coat": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "776c2e4a457fc86e82e2043162ced156cf145c62"
+ },
  "20261025T1525-c13-review-evoloop-invasion": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
   "dropped": [],
   "first_seen": "2026-10-25T15:18Z",
   "tree": "c231483abe46c301eb2bca5c5cb5c5d2a7b4dad7"
+ },
+ "20261025T1526-c13-intent-review-ring-tilt": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "05cc4b996cea67c1f2b3cfcc0799f913317fc3cc"
  },
  "_bad_branches": {},
  "_deferred": {},
