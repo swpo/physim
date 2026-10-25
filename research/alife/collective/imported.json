@@ -1868,6 +1868,34 @@
   "first_seen": "2026-10-25T10:18Z",
   "tree": "0d14b1ef221a9d17c615163260153327d3f251e8"
  },
+ "20261025T1020-c04-intent-review-active-gel": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "597f5168aab9188d45e9d648b40977b2b0c1570c"
+ },
+ "20261025T1020-c04-review-disk-births": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "33daada62235b4e728219e43afa58b72ebbdd5b4"
+ },
+ "20261025T1020-c11-intent-review-active-gel": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "84cffeab52ac83fcb78a131242a41ec7b1a79975"
+ },
+ "20261025T1020-c11-review-ringswim-c2": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "f7c1fc5c910eb0b2701cc66bf2eb61ae28b3297a"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
