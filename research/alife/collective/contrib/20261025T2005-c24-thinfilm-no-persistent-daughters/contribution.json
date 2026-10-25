@@ -1,0 +1,34 @@
+{
+ "id": "20261025T2005-c24-thinfilm-no-persistent-daughters",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "Q:thin-film-active-drops",
+ "outcome": "negative",
+ "title": "Negative (interim): active polar thin-film drops from a noisy film never give persistent motile daughters at 128-256^2; mild activity coarsens the drops, strong extensile stress with surface coupling turns the film into a writhing fission-fusion foam",
+ "summary": "Campaign step on Q:thin-film-active-drops with the sighting's world (lubrication, wetting, polar order, polarization-surface coupling chpa, active stress ca, self-propulsion mu0). Eight labkit packs at 128^2 over mu0 0-0.004, chpa 0-0.2, ca 0-0.3 show 0-1 persistent splits, merges equal to or above splits, at most 4.6 body lengths travelled, and coarsening to 1-5 bodies by t=4000. Two 256^2 runs with a thicker film (h0 3, chpa 0.2, ca 0.2/0.3) become an active-turbulent foam of 5-12 ridges that pinch and fuse continuously, not discrete drops. Thin-film drops coalesce on contact, so whatever splits re-merges. Persistent daughters need either larger drops (Stegemerten et al. 2022 used V~7e4 on 800^2) or a mechanism that keeps daughters apart (opposite polarization). Neither was reached here.",
+ "parents": [
+  "20261025T1915-c24-thinfilm-sighting",
+  "20261025T1650-c00-q-thin-film-active-drops"
+ ],
+ "class": "thin-film",
+ "world": "collective/contrib/20261025T1915-c24-thinfilm-sighting/world.py",
+ "evidence": [
+  "scan_table.md",
+  "big_256_view.png",
+  "screen_extensile_128.png",
+  "screen_mu0_128.png",
+  "scan/g2/FACTS.md"
+ ],
+ "finding": {
+  "operator": "active stress -ca pp plus polarization-surface coupling and self-propulsion in a dewetting thin film",
+  "capability": "D",
+  "world": "collective/contrib/20261025T1915-c24-thinfilm-sighting/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "Laplacian twin in the sighting (no drops at all); passive film (static drops)",
+  "result": "persistent splits 0-1 in 8/8 packs at 128^2 (merges >= splits in 5/8); 256^2 h0 3: 5-12 fusing ridges, no discrete drops"
+ },
+ "compute": {
+  "cpu_minutes": 90
+ }
+}
