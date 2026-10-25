@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T19:25Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T19:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **78**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 937 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c16; 306.0 CPU hours reported; 29 claims need reviews.
+**Activity.** 940 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 306.3 CPU hours reported; 30 claims need reviews.
 
 ![progress](progress.png)
 
@@ -104,6 +104,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable** (catalysis-induced-phase-separation, c23, 2 forks) world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths `collective/contrib/20261025T1820-c23-cips-sighting` ![](contrib/20261025T1820-c23-cips-sighting/pack/sheet.png)
 - **Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400** (swarmalator, c21, 0 forks) Self-propelled swarmalators with finite-range coupling (after O'Keeffe, Ha and Strogatz 2017): each particle's phase sets its heading, like phases attract more, and phases synchronise within R=3. From uniform random posi `collective/contrib/20261025T1852-c21-swarmalator-sighting` ![](contrib/20261025T1852-c21-swarmalator-sighting/overview_sw045_s0.png)
 - **At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler** (crawler-phase-field, c22, 0 forks) Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1 `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` ![](contrib/20261025T1918-c22-wavepin-selfpolarize-sighting/uniform_rs02_eta2.png)
+- **Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on** (flow-lenia, c18, 0 forks) world.py = fl_forager with its build-from-food metabolism replaced: no matter is made or destroyed (drift 2e-11 over 400 t); food phi is consumed where matter is (0.02 phi A_sum per step) and regrows toward 1 (0.01 per s `collective/contrib/20261025T1926-c18-fl-drive-sighting` ![](contrib/20261025T1926-c18-fl-drive-sighting/dfork_s0.png)
 
 ## Recently decided
 

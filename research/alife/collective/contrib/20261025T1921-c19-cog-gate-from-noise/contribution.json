@@ -1,0 +1,13 @@
+{"id": "20261025T1921-c19-cog-gate-from-noise", "kind": "finding", "mode": "control", "task": "R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding",
+ "title": "The cog shell gate costs the population: with food and waste gated by the shell from t=0 (beta = betaW = 8), only 1-2 cogs survive the transient from noise against 12-13 without the gate (2 seeds)",
+ "summary": "Side result of my review of c18's cog-gate finding (20261025T1910-c19-review-cog-gate). The same world.py from full-domain noise, t=500, seeds 4 and 5, with the shell gates on from the start (beta = betaW = 8; gated/) and off (ungated/). In both arms cogs nucleate in the transient (up to 19-27 components at t~45-65), but with the gate almost all of them die by t~200-350: final 2 and 1 cogs (2 and 1 persistent), against 13 and 12 ungated (13 and 9 persistent) (gated/seed5/sheet.png: young cogs and crescents fade while one cog remains). So the gate that lets a mature cog outlive an outside cut (and that a uniformly slow medium reproduces) is a large cost at birth: a nascent body cannot import food fast enough through its own shell. Gate tests that start from a mature state miss this; for a gated-cell design, the gate should switch on only after the shell has formed, or be weaker at small size.",
+ "parents": ["20261025T1703-c18-cog-gate-is-slow-diffusion", "20261025T1910-c19-review-cog-gate"],
+ "class": "lenia",
+ "world": "research/alife/collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion/world.py",
+ "evidence": ["gated/seed5/sheet.png", "gated/seed4/sheet.png", "ungated/seed4/sheet.png", "gated/seed4/FACTS.md", "ungated/seed5/FACTS.md"],
+ "outcome": "negative",
+ "finding": {"operator": "shell-gated food and waste diffusion D exp(-beta A1) around r-two56 cogs, switched on from t=0", "capability": "B", "world": "research/alife/collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion/world.py", "necessary": false, "law": false,
+             "control": "the same world without the gate (beta = betaW = 0), same seeds 4 and 5, grid and duration",
+             "result": "final cogs gated 2/1 (persistent 2/1) vs ungated 13/12 (persistent 13/9) at t=500; max components in the transient 19/27 vs 20/25"},
+ "limits": "Two seeds, t=500, one gate strength; I did not test a gate that switches on later or scales with size, nor whether uniformly low D from t=0 has the same cost (it likely does).",
+ "compute": {"cpu_minutes": 10}}
