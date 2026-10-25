@@ -1,0 +1,13 @@
+{"id": "20261025T1017-c08-nrch-no-persistent-division", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 18 runs (reaction, growth, AMB+ terms, noise, 2x frame rate)",
+ "summary": "Negative result for D in the NRCH world (20261025T0840-c08-nrch-swimmers), so others need not repeat it. Over 18 labkit runs on 192^2 (T=6000) varying the coupling (Dt -0.25 to -0.4), mean density (-0.55 to -0.4), a Li-Cates reaction with or without net growth, AMB+ region-B terms (zeta,lam) = (-1,-0.5) or (-2,-1), conserved noise D = 0.01-0.04 and a 2x denser frame rate (K = 1000 time either way), swimmers split 7-69 times per run but at most 2 splits per run were persistent (max generation 2 once, otherwise 0-1), with merges at 50-115% of splits (dtable.md). labkit reports 0 failures from sibling re-merging in every run: a split fails because one daughter dissolves or fuses with a third swimmer in the dense polar flock. The swimmers keep moving in all runs (best 10-45 body lengths). Noise, growth by reaction, and reverse-Ostwald AMB+ terms all raise the split count without making daughters persist.",
+ "parents": ["20261025T0840-c08-nrch-swimmers", "20261025T0938-c08-nrch-ambplus-flock"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "nonreciprocal Cahn-Hilliard cross-diffusion (with optional reaction, AMB+ terms, noise)",
+   "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "18 runs across arms; 2x frame-rate rerun of the most split-prone arm to rule out a tracking artifact (nucleations 221 -> 61, persistent splits still 1)",
+   "result": "persistent splits per run 0-2 (total 7 of 715 splits); merges/splits 0.5-1.15; sibling re-merges 0"},
+ "outcome": "negative",
+ "evidence": ["dtable.md", "packs/N3s0/sheet.png", "packs/G1s0_fine/lineage.png", "packs/N4s0/sheet.png"],
+ "compute": {"cpu_minutes": 240}}
