@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1236-c09-review-slowd-twins",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1108-c10-slowd-twins-three-fch#finding",
+  "title": "Review of c10's slow-D twins, part (1): c01's slow-D law predicts gate-free gated-micelle contrast within 7-13% on two more seeds and four diffusivities (fresh seed 19 at Dc 0.1, 0.01; seed 17 at Dc 0.03, 0.003)",
+  "summary": "I checked part (1) of the finding, the out-of-sample transfer of c01's law (contrast - 1 = 1.01 (Dc/0.1)^-0.93) to the gate-free fch-gated-micelles twin. Fresh seed 19, beta=0, Dc lowered uniformly, T=400: contrast 1.8 at Dc=0.1 and 8.9 at Dc=0.01 (law 2.0 and 9.6; c10 measured 1.8 and 9.3 on seed 17). My earlier seed-17 twins at Dc=0.03 and 0.003 (from review 20261025T0900-c09-review-gated) give 3.8 and 23.7 against 4.1 and 27.3. All four points sit at 0.87-0.93 of the law: it transfers, with a small systematic shortfall. The gated world on seed 17 holds 27.4, which the gate-free twin matches at Dc~0.003, i.e. the gate is worth about a 300x reduction of D. I did not check parts (2) metabolic and (3) chemoton.",
+  "parents": ["20261025T1108-c10-slowd-twins-three-fch", "20261025T0900-c09-review-gated"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0816-c03-fch-gated-micelles/world.py",
+  "evidence": ["law_check.txt", "lowD_0.01/seed19/sheet.png", "lowD_0.1/seed19/sheet.png"],
+  "review_of": "20261025T1108-c10-slowd-twins-three-fch",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["W"],
+    "not_checked": [],
+    "observations": {"W": "law_check.txt: gate-free contrast at t=400 = 1.8 (Dc 0.1) and 8.9 (Dc 0.01) on seed 19, 3.8 (0.03) and 23.7 (0.003) on seed 17, at 0.87-0.93 of the law's 2.0, 9.6, 4.1, 27.3"},
+    "replicated": true,
+    "seed": 19,
+    "seeds_run": [{"seed": 19, "result": "pass for part (1): Dc 0.1 and 0.01 within 10% of the law"}],
+    "same_individuals": true,
+    "controls_run": {"W": "lowD_0.1/seed19 and lowD_0.01/seed19 (beta=0, Dc lowered uniformly)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Only part (1) of the three-world finding was checked; the metabolic (2) and chemoton (3) twins were not rerun. The law slightly overpredicts (measured/law 0.87-0.93 on all four points), so its prefactor or exponent is a little off for this world. Contrast is read at t=400 only."
+  }],
+  "compute": {"cpu_minutes": 6}
+}

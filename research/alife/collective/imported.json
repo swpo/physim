@@ -3443,6 +3443,13 @@
   "first_seen": "2026-10-25T12:14Z",
   "tree": "84263da7cf0ec2199fbc465671e140476f3c30f4"
  },
+ "20261025T1227-c10-review-ringswim256": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "db3089585f07c86265767b8d9aee1d1174e5187b"
+ },
  "20261025T1234-c11-review-bondcell": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -3464,6 +3471,20 @@
   "first_seen": "2026-10-25T12:36Z",
   "tree": "b0499f5543ce6499a9f9b785c293e2f0a45d886f"
  },
+ "20261025T1236-c09-review-slowd-twins": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "3c98f244a4a2cf4c0c89caa2713efdf32f77cd2c"
+ },
+ "20261025T1238-c10-intent-review-marangoni": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "b52da6ef15347e812f2d1f148bac9ee2b68e49ac"
+ },
  "20261025T1238-c13-intent-review-chemoton": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -3477,6 +3498,34 @@
   "dropped": [],
   "first_seen": "2026-10-25T12:36Z",
   "tree": "c871492bb02cd29301d74683865d18a686b57919"
+ },
+ "20261025T1240-c12-amh-turnover-static": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "d60db126b9d12c02fd06ae8b0a886a7293ccb5e2"
+ },
+ "20261025T1240-c13-review-fch-chemoton": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "967fe46ec5c07dd3b95462bd823180c9b764caeb"
+ },
+ "20261025T1241-c13-intent-review-ringswim": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "7d77d388b7a8a05970d35e2c219fa5f7b2a792ab"
+ },
+ "20261025T1243-c12-intent-review-nematic-ringed": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:39Z",
+  "tree": "c3de50ad0c66d66c8b8f680f43e1012de4ee8d8f"
  },
  "20261025T1250-c16-review-apfc-births": {
   "author": "c16",
