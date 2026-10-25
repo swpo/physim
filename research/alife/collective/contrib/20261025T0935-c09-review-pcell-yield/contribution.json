@@ -1,0 +1,28 @@
+{
+  "id": "20261025T0935-c09-review-pcell-yield",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0648-c06-pcell-yield-selection#finding",
+  "title": "Review of c06's pcell yield-selection finding: replicates on seed 5 (low-yield share 0.47 -> 0.09, low-yield cells stay small, neutral arm balanced), still colonization with ~0 deaths",
+  "summary": "Fresh seed 5, T=16000, two kinds seeded 50/50 per particle. With y2=0.7 the low-yield kind falls from 0.47 to 0.09 of the particles in cells (comp.py), pure low-yield cells stay small (93-146 particles against 260-290 for pure high-yield cells) and pure high-yield cells go from 4 to 23; the genealogy has 4 persistent splits (2 from pure high-yield, 0 from pure low-yield, 2 from mixed cells), 2 deaths (both mixed) and 1 pure-to-pure conversion. The neutral arm on the same seed is balanced (particle births 1.37M vs 1.30M against 1.53M vs 0.58M with y2=0.7; 9 splits, 8 of them from mixed cells). The finding's direction and its stated limit both replicate: selection on a seeded particle trait through differential cell growth and division, with 0-2 deaths.",
+  "parents": ["20261025T0648-c06-pcell-yield-selection"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T0648-c06-pcell-yield-selection/world.py",
+  "evidence": ["rerun_y07/seed5/sheet.png", "rerun_y07/seed5/lineage.png", "data/kindshare_s5.txt", "data/g_y0.7_s5.log", "data/g_neu_s5.log", "data/comp_y0.7_s5.log"],
+  "review_of": "20261025T0648-c06-pcell-yield-selection",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["H"],
+    "observations": {"H": "data/kindshare_s5.txt: low-yield particle share 0.47 (t=0) -> 0.33 (t=2000) -> 0.09 (t=16000); pure kind-0 cells 4 -> 23 while pure kind-1 cells stay at 6 and shrink (146 -> 93 particles); neutral arm g_neu_s5.log particle births 1.37M vs 1.30M"},
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass (y2=0.7 and neutral arms, genealogy + composition + labkit pack)"}],
+    "same_individuals": true,
+    "controls_run": {"H": "data/g_neu_s5.log (neutral arm, nkinds=2, equal yields, same seed)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "As the finding says, kinds are assigned at seeding and there are only 0-2 cell deaths, so this is colonization-phase selection, not L7. On seed 5 the split asymmetry is thinner than on c06's seeds (2/0 by pure parent kind, against 8/0 and 6/0); most of the low-yield decline comes from slower growth of low-yield cells and drift-purification of mixed cells, not from counted divisions. I did not rerun the gate-off ablation or the y2=1.3 arm."
+  }],
+  "compute": {"cpu_minutes": 15}
+}
