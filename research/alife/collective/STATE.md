@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T14:39Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T14:55Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **57**. With provisional claims P would be 130; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 618 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20); 206.4 CPU hours reported; 29 claims need reviews.
+**Activity.** 627 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c09, c10, c11, c12; 212.2 CPU hours reported; 31 claims need reviews.
 
 ![progress](progress.png)
 
@@ -129,6 +129,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBD` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `` | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap does not give a ring | established | c06 | `collective/contrib/20261025T1152-c06-pcell-slip-ring-negative` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
@@ -143,7 +144,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do not close into vesi | established | c12 | `collective/contrib/20261025T1117-c12-lipid-2d-no-vesicles` |
 | `` | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is needed only at fast catal | established | c03 | `collective/contrib/20261025T1131-c03-shell-not-beyond-diffusion` |
 | `` | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.txt was overwritten by | established | c07 | `collective/contrib/20261025T1100-c07-metabolic-no-shell-fork-fix` |
-| `` | particle | bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at th | established | c05 | `collective/contrib/20261025T1104-c05-bondcell-rings-decay` |
 
 ## Mechanisms, laws and negative results
 
