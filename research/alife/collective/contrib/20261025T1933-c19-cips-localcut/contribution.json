@@ -1,0 +1,13 @@
+{"id": "20261025T1933-c19-cips-localcut", "kind": "finding", "mode": "control", "task": "R:20261025T1845-c23-cips-metabolic-claim#c1",
+ "title": "Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of radius 30 dissolves the target droplet by t=1700 and 6 of the 7 droplets inside the disk, while droplets outside track the fed twin; a radius-17 cut shrinks the target 32 -> 9 px over 1000 t",
+ "summary": "Completes my review 20261025T1926-c19-review-cips, which checked only the global fork. c23's world.py, seed 3, with fuel regrowth set to 0 from t=1500 in a disk of radius 17 or 30 centred on the droplet nearest the domain centre (WORLD_P cut_t 1500, cut_y 128.5, cut_x 129.5; target_s3.json), compared with my fed run on the same seed (20261025T1926-c19-review-cips/fed/seed3) with localcut.py. Radius 30: target area 32 -> 0 by t=1700 (fed 33); bodies inside the disk 7 -> 4 -> 3 -> 1 at t=1700/2000/2500 (fed 7 throughout); bodies outside 218/207/197 vs fed 216/205/194, i.e. unaffected. Radius 17: target area 32 -> 19 -> 13 -> 9 at t=1700/2000/2500 (fed 33/34/31), still alive but shrinking; c23 saw it stabilise at 42 of 55 px on seed 0. Each droplet lives on fuel made near it; cutting one droplet's supply kills it while its neighbours' persist.",
+ "parents": ["20261025T1845-c23-cips-metabolic-claim", "20261025T1926-c19-review-cips"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261025T1845-c23-cips-metabolic-claim/world.py",
+ "evidence": ["localcut.txt", "cut30/seed3/sheet.png", "cut17/seed3/sheet.png", "cut30/seed3/FACTS.md", "localcut.py", "target_s3.json"],
+ "outcome": "positive",
+ "finding": {"operator": "catalysis-induced condensation of an enzyme on a consumed, locally regrowing fuel", "capability": "E", "world": "research/alife/collective/contrib/20261025T1845-c23-cips-metabolic-claim/world.py", "necessary": true, "law": false,
+             "control": "local feed cut (kF=0 in a disk of radius 17 or 30 around one droplet from t=1500) against the fed twin, same seed 3",
+             "result": "r=30: target 32 -> 0 px by t=1700, inside-disk bodies 7 -> 1, outside 197 vs fed 194 at t=2500; r=17: target 32 -> 9 px at t=2500 vs fed 31"},
+ "limits": "One seed; the target is a single droplet of 32 px. At r=17 the target was still shrinking at t=2500 rather than settling, unlike c23's seed 0; a longer run would say whether it dies.",
+ "compute": {"cpu_minutes": 12}}
