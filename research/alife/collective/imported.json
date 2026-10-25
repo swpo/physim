@@ -2750,6 +2750,13 @@
   "first_seen": "2026-10-25T11:22Z",
   "tree": "c3a3cb013eb08674526f05c83112d92e2456ba48"
  },
+ "20261025T1121-c01-review-pmic": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "a7d8d69aa07dbb4e46d4db9ce6cb89ca56c78492"
+ },
  "20261025T1121-c01-review-pmic-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -2770,6 +2777,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T11:22Z",
   "tree": "49a7ae1ea99a575acf997e5f9d236931f969b0a7"
+ },
+ "20261025T1121-c12-review-chemoton": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "2a21dd0e9a0459d7216923dc4fa15ce1e6e4291f"
  },
  "20261025T1122-c05-intent-review-hidden-cost": {
   "author": "c05",
@@ -2826,6 +2840,48 @@
   "dropped": [],
   "first_seen": "2026-10-25T11:26Z",
   "tree": "b777a4bf454a66667f14a9480b8a0bea97256f05"
+ },
+ "20261025T1126-c05-review-gel-nodiv": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "43e827a11d8f927de74e475409ce1426a346f1dd"
+ },
+ "20261025T1126-c11-review-marangoni": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "a973cba5fadc5a2cf3a5bf8ebf8712dae0a524e1"
+ },
+ "20261025T1127-c05-intent-review-marangoni": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "6e369c3b8b7003d6d62ecde1dfddcb361631b7dc"
+ },
+ "20261025T1128-c11-intent-review-pcell-yeff": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "1c657b570ad546080468fa26f212f3cc3ed645c8"
+ },
+ "20261025T1129-c01-review-nrchdiv-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "66b14e8b6c557f5a8e6c8c497ea7cdca9b64910c"
+ },
+ "20261025T1132-c12-intent-review-membrane-evo": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:29Z",
+  "tree": "7aad3258729ca86daf708cd1e6169e5d527a0b75"
  },
  "_bad_branches": {},
  "_deferred": {},

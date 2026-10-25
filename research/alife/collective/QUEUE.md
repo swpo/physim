@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T11:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T11:29Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.6** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,15 +10,15 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T1017-c08-nrch-no-persistent-division#finding` | review |
+| c01 | `R:20261025T1036-c11-active-nematic-res15#finding` | review |
 | c03 | `R:20261025T0922-c07-ringswim-256#c1` | review |
-| c05 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
-| c07 | `R:20261025T1036-c11-active-nematic-res15#finding` | review |
+| c05 | `R:20261025T1036-c11-active-nematic-res15#finding` | review |
+| c07 | `R:20261025T1037-c06-pcell-yeff-response#finding` | review |
 | c10 | `R:20261025T0922-c07-ringswim-256#c1` | review |
-| c11 | `R:20261025T1037-c06-pcell-yeff-response#finding` | review |
+| c11 | `R:20261025T1044-c04-crawler-actin-cost-negative#finding` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:20261025T1036-c11-active-nematic-res15#finding` | review |
-| c04 | `R:20261025T1037-c06-pcell-yeff-response#finding` | review |
+| c02 | `R:20261025T1044-c04-crawler-actin-cost-negative#finding` | review |
+| c04 | `R:20261025T1048-c02-chemoton-res15#finding` | review |
 | c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
@@ -36,16 +36,15 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | SE: 1 more supporting re-run(s); disputed: B (2 for, 2 against), E (1 for, 1 against) | c09, c12 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | E: 1 more supporting re-run(s); disputed: E (1 for, 2 against) | c09 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | provisional | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1013-c06-pmic-frozen#finding` | `F` (+0) | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fill | c06 | submitted | 2 more replicated review(s) | c01, c07 |
-| `R:20261025T1017-c08-nrch-no-persistent-division#finding` | `F` (+0) | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 pe | c08 | submitted | 2 more replicated review(s) | c10 |
-| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | submitted | 2 more replicated review(s) | c11 |
-| `R:20261025T1034-c09-active-gel-no-division#finding` | `F` (+0) | active-gel | active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 a | c09 | provisional | 1 more replicated review(s) | c05 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c12 |
+| `R:20261025T1013-c06-pmic-frozen#finding` | `F` (+0) | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fill | c06 | provisional | 1 more replicated review(s) | c07 |
+| `R:20261025T1017-c08-nrch-no-persistent-division#finding` | `F` (+0) | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 pe | c08 | submitted | 2 more replicated review(s) | c01, c10 |
+| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | c05 |
 | `R:20261025T1036-c11-active-nematic-res15#finding` | `F` (+0) | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole | c11 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1037-c06-pcell-yeff-response#finding` | `F` (+0) | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cel | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1037-c06-pcell-yeff-response#finding` | `F` (+0) | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cel | c06 | submitted | 2 more replicated review(s) | c11 |
 | `R:20261025T1044-c04-crawler-actin-cost-negative#finding` | `F` (+0) | crawler-phase-field | Negative: the proposed fix for an honest dividing crawler (capped area | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | submitted | 2 more replicated review(s) | c04 |
 | `R:20261025T1050-c03-allee-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give met | c03 | submitted | 2 more replicated review(s) | - |
@@ -66,6 +65,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
+| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 
 ## Next rung for each class
 
@@ -123,10 +123,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c09 since 2026-10-25T11:19Z: c09 reviews c02's FCH chemoton (SIBE; B and E disputed): fresh seed, radial rim 
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c12 since 2026-10-25T11:19Z: c12 reviews c02's FCH chemoton (SIBE): fresh seed 9 with its starvation fork twi
 - `R:20261025T1013-c06-pmic-frozen#finding` by c07 since 2026-10-25T11:22Z: c07 reviews c06's pmic frozen micelles: F=0.01 and F=0.005 on fresh seed 5
 - `R:20261025T1017-c08-nrch-no-persistent-division#finding` by c10 since 2026-10-25T11:22Z: c10 reviews c08's NRCH no-persistent-division finding: fresh seeds
-- `R:20261025T1013-c06-pmic-frozen#finding` by c01 since 2026-10-25T11:22Z: Review c06 pmic frozen finding on a fresh seed
-- `R:20261025T0946-c01-marangoni-droplets#finding` by c11 since 2026-10-25T11:22Z: c11 reviews c01's Marangoni droplets negative: alpha +20 and 0 on fresh seed 3
-- `R:20261025T1034-c09-active-gel-no-division#finding` by c05 since 2026-10-25T11:26Z: c05 reviews c09's active-gel no-division finding at two scan points on a new see
 - `R:20261025T1048-c02-chemoton-res15#finding` by c04 since 2026-10-25T11:26Z: c04 reviews c02 chemoton-res15 finding
+- `R:20261025T0946-c01-marangoni-droplets#finding` by c05 since 2026-10-25T11:29Z: c05 reviews c01's Marangoni droplets finding on a new seed
+- `R:20261025T1037-c06-pcell-yeff-response#finding` by c11 since 2026-10-25T11:29Z: c11 reviews c06's pcell yeff response: seed 7 to t=60000, labkit and genealogy
+- `R:20261025T1017-c08-nrch-no-persistent-division#finding` by c01 since 2026-10-25T11:29Z: Review c08 NRCH no-persistent-division on a fresh seed
+- `R:lab1-autopoiesis-membrane-evo#c1` by c12 since 2026-10-25T11:29Z: c12 reviews lab1 membrane_evo (SIBDH): up / identical-event twin / down arms on 

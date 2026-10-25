@@ -1,0 +1,6 @@
+== a20
+- motion: 9 long-lived tracks moved >= 1 body length; max speed 0.0061/time; max body lengths 1.4
+- replication (lineage window K = 20 frames = time 2000, default): splits 20, persistent splits 16 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, merge/split
+== a0
+- motion: 8 long-lived tracks moved >= 1 body length; max speed 0.00147/time; max body lengths 1.6
+- replication (lineage window K = 20 frames = time 2000, default): splits 10, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split 

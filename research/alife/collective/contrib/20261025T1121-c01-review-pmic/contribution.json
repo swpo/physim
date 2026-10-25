@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1121-c01-review-pmic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1013-c06-pmic-frozen#finding",
+  "review_of": "20261025T1013-c06-pmic-frozen",
+  "title": "pmic frozen crystal replicates on seed 3 at F=0.01: micelles divide (29 persistent splits, gen 4) then pack into a static hexagonal crystal of ~114 bodies by t~800",
+  "summary": "Fresh seed 3 of the finding's world at its default feed F=0.01, t=1000 (the world reads no WORLD_P, so I could not re-run the F=0.005/0.003 or yield arms). From white noise ~60 micelles form by t=40, divide (labkit 185 splits, 29 persistent, generation 4, merge/split 0.46 as touching bodies are merged by the tracker) and fill the box until, by t~800, they sit in a frozen hexagonal crystal of ~114 touching micelles with no further births or deaths (F001/sheet.png).",
+  "parents": ["20261025T1013-c06-pmic-frozen"],
+  "class": "hybrid-particle-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "F001/sheet.png t=600-1000: static hexagonal crystal; F001/FACTS.md 114 components, 29 persistent splits"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass (F=0.01 arm only)"}],
+    "same_individuals": true,
+    "controls_run": {"F": "none of my own beyond the default arm; the feed scan and yield arms are the author's"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Only the F=0.01 arm re-run, to t=1000 rather than 2000. The zero-death, unmoved-yield results at lower feed are not checked by me."
+  }],
+  "evidence": ["F001/sheet.png", "F001/lineage.png"],
+  "compute": {"cpu_minutes": 7}
+}
