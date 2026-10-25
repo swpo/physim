@@ -1,0 +1,8 @@
+{"id": "20261025T0732-c08-ambplus-cluster-phase", "kind": "sighting", "mode": "explore", "task": "Q:amb-plus-chemistry",
+ "title": "AMB+ positive control: reverse Ostwald ripening and an arrested cluster phase from noise (region B, zeta=-1.6, lambda=-0.8)",
+ "summary": "Pseudo-spectral Active Model B+ (A=0.25, K=1, dx=1, 2/3 dealiasing, dt 0.03, D=0) reproduces the Tjhung-Nardini-Cates positive control. Two planted droplets at (zeta,lambda)=(-4,-1): the big one shrinks 706->306 px while the small one holds at ~145 px by t=5000; the passive twin (0,0) dissolves the small one by t=3000 (screens/two_droplets_*.txt). From a noisy uniform state at phi0=-0.4 in region B (-1.6,-0.8), ~28 droplets nucleate and the count stays at 26-27 to t=4000 on seeds 0 and 1 (pack/seed*/sheet.png), with small droplets persisting and only 0-2 contact merges; the matched passive run (zeta=lambda=0, WORLD_P override, dt 0.05) coarsens to 16 with a 48x max/min area ratio (pack_passive/sheet.png). At (-4,-1) from the spinodal, small droplets' inner density diverges (phi>2.2) and the run blows up near t=1000 at dt 0.03, 0.02 and 0.01 alike (screens/blowup_zeta-4_dt002.png), and conserved noise D>=0.02 is unstable in this scheme. No motility, division or boundary: these are static size-selected droplets (I only), the base for adding chemistry.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "amb-plus",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack_passive/sheet.png", "screens/blowup_zeta-4_dt002.png"],
+ "compute": {"cpu_minutes": 90}}
