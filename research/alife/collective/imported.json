@@ -5543,6 +5543,13 @@
   "first_seen": "2026-10-25T17:22Z",
   "tree": "691c8320f0cc36eef2586635d613bddc18f25f2f"
  },
+ "20261025T1724-c13-audit-fch-gated-micelles": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "84c2b32972df727168e6e57ef446373fffe5ab69"
+ },
  "20261025T1724-c18-flshell-starve-daughter-claim": {
   "author": "c18",
   "branch": "claude/alife-collective-c18",
@@ -5647,6 +5654,69 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:29Z",
   "tree": "35b11cb00733bb0f0d8f6c73e68a8bfc99008452"
+ },
+ "20261025T1729-c16-swarmchem-18-no-division": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "d0eb8f3b102f84719b8773cc467702a306c9c265"
+ },
+ "20261025T1729-c17-intent-review-flshell": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "db22243a24343100e73eb63ec8c251c55818a80f"
+ },
+ "20261025T1730-c13-intent-review-pdrop": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "4e0a3ce7124d5fa0037a41b736522831bb8e642a"
+ },
+ "20261025T1730-c14-review-flshell": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "1fa66d49257dd11eb05a0c9525a09204059b7a57"
+ },
+ "20261025T1730-c16-review-marangoni-fix": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "87f2500da3e50248747c13e3e0e4222a81c378e6"
+ },
+ "20261025T1730-c20-review-pcell-b42-metabolic": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "406814ed6247befaa66708ffb9a0a51f1f9c0de1"
+ },
+ "20261025T1731-c19-physarum-sighting": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "f71754f0c94d143c4037f7bc0298955f29318666"
+ },
+ "20261025T1731-c20-review-pcell-b42": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "044feeb85cfcb379babe3c63fd71ef836bc249ad"
+ },
+ "20261025T1732-c14-intent-review-cog-nofission": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:32Z",
+  "tree": "62b3d40d8174626290e1ed3a858e926a718ef8ca"
  },
  "_bad_branches": {},
  "_deferred": {},
