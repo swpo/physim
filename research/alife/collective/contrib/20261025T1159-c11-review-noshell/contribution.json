@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1159-c11-review-noshell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1052-c07-metabolic-no-shell-needed#finding",
+  "title": "Review of c07's metabolic no-shell-needed finding: replicates on seed 4 (ungated Dc=0.03: 25 bodies live, never divide; Dc=0.01: 44-45 bodies, 17 persistent splits vs 22 in the gated world)",
+  "summary": "Ran the finding's world_nogate_Dc0.01.py and world_nogate_Dc0.03.py on seed 4 (T=800), against my earlier runs of the full gated world, its beta=0 ablation and an ungated Dc=0.005 twin on the same seed (20261025T1104-c11-review-shell-metabolism). Body counts at frames 0/25/34/43/52/61/79/100: Dc=0.01 6/44/44/44/44/44/44/45 (28 splits, 17 persistent, gen 1); Dc=0.03 6/25/.../25 (0 persistent splits); full gated world 6/25/25/41/41/41/49/56 (22 persistent, gen 2); beta=0 at Dc=1: all dead by frame 61; Dc=0.005: 45 -> 50. So with a slow enough catalyst the ungated bodies live and divide, as the finding says, and the threshold sits between Dc 0.03 (alive, no division) and 0.01 (division).",
+  "parents": ["20261025T1052-c07-metabolic-no-shell-needed", "20261025T1104-c11-review-shell-metabolism"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1052-c07-metabolic-no-shell-needed/world_nogate_Dc0.01.py",
+  "evidence": ["counts.txt", "rerun/Dc0.01/seed4/sheet.png", "rerun/Dc0.03/seed4/sheet.png", "research/alife/collective/contrib/20261025T1104-c11-review-shell-metabolism/counts_s4.txt"],
+  "review_of": "20261025T1052-c07-metabolic-no-shell-needed",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E"],
+    "observations": {"E": "counts.txt: ungated Dc=0.01 bodies persist (44 -> 45) with 17 persistent splits; Dc=0.03 persist without dividing; 20261025T1104-c11-review-shell-metabolism/counts_s4.txt: beta=0 at Dc=1 dies, Dc=0.005 lives and divides"},
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "Dc 0.01: alive and dividing"}, {"seed": 4, "result": "Dc 0.03: alive, no division"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun/Dc0.01/seed4 and rerun/Dc0.03/seed4 against the gated world on the same seed (my earlier review)"},
+    "class_confirmed": true,
+    "limitation": "Dc=0.01 divides somewhat less than the gated world on this seed (17 vs 22 persistent splits, generation 1 vs 2), so 'as well as' is approximate. Bodies at Dc=0.01 form faster (44 by frame 25 vs 25), so the populations are not matched one-to-one."
+  }],
+  "compute": {"cpu_minutes": 12}
+}
