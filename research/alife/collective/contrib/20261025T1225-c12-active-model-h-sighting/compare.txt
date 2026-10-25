@@ -1,0 +1,3 @@
+passive zeta=0, seed 0 droplets t=750: 87 t=2000: 41
+active zeta=-1, seed 0 droplets t=750: 103 t=2000: 68
+active zeta=-1, seed 1 droplets t=750: 95 t=2000: 72
