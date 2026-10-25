@@ -1,0 +1,14 @@
+== F0.01 (seed 5, t=2400)
+frames 1-25: bodies 24->42, deaths 0, splits 16, nucleations 26
+frames 26-50: bodies 42->57, deaths 2, splits 15, nucleations 2
+frames 52-76: bodies 57->69, deaths 0, splits 10, nucleations 2
+frames 77-101: bodies 69->69, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 69->70, deaths 0, splits 0, nucleations 1
+frames 127-150: bodies 70->70, deaths 0, splits 0, nucleations 0
+== F0.004 (seed 5, t=2400)
+frames 1-25: bodies 24->26, deaths 0, splits 2, nucleations 24
+frames 26-50: bodies 26->26, deaths 0, splits 0, nucleations 0
+frames 52-76: bodies 26->26, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 26->26, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 26->26, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 26->26, deaths 0, splits 0, nucleations 0
