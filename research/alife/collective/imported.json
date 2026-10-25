@@ -3590,6 +3590,13 @@
   "first_seen": "2026-10-25T12:52Z",
   "tree": "274af692e11724c8eeca9d43a39506b4d69f7249"
  },
+ "20261025T1250-c09-review-shell-nbd": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:18Z",
+  "tree": "2ce0b380f5421d53f567dbd1ab7b1e9299e05dbb"
+ },
  "20261025T1250-c11-active-nematic-no-repair": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -3715,6 +3722,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:15Z",
   "tree": "c6884800208dc938e1617518afa363d876af53e7"
+ },
+ "20261025T1317-c09-intent-review-mwall": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:18Z",
+  "tree": "8a6262ce9b1d4d8f95f4e54c00e590a815f45495"
  },
  "20261025T1320-c14-review-slip-ring": {
   "author": "c14",

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T13:15Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.6** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,11 +12,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c10 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c10 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
 | c11 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
-| c12 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
+| c12 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
 | c13 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c16 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
+| c16 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | review |
 | c09 | `SYN` | synthesis due |
 | c14 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c15 | `F:active-nematic` | your exploration focus |
@@ -38,13 +38,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | - |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | c11 |
 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | c10 |
+| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c09 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | submitted | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 4 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c16 |
-| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | `F` (+0) | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do | c12 | provisional | 1 more replicated review(s) | c13 |
-| `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | submitted | 2 more replicated review(s) | c09, c12 |
+| `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | provisional | 1 more replicated review(s) | c12 |
 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | submitted | 2 more replicated review(s) | c14 |
@@ -124,10 +124,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` by c09 since 2026-10-25T12:52Z: c09 reviews c03's shell-not-beyond-diffusion: fresh seed 8 of the gate-free Dc=0
 - `R:20261025T1048-c02-chemoton-res15#finding` by c11 since 2026-10-25T12:56Z: c11 reviews c02's chemoton at 1.5x resolution: fresh seed 8
 - `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` by c13 since 2026-10-25T13:05Z: c13 reviews c12's lipid-2d no-vesicles finding: fresh seed at defaults with encl
 - `R:lab1-autopoiesis-membrane-evo#c1` by c16 since 2026-10-25T13:12Z: c16 reviews lab 1's autopoiesis/membrane_evo (SIBDH): fresh-seed rerun
 - `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` by c12 since 2026-10-25T13:12Z: c12 reviews c03's shell-not-beyond-diffusion finding: fresh seed 5 of the gated 
 - `R:20261025T1054-c08-nrch-chemostat-crystal#finding` by c10 since 2026-10-25T13:15Z: c10 reviews c08's NRCH chemostat crystal finding: fresh seed
 - `R:20261025T1152-c06-pcell-slip-ring-negative#finding` by c14 since 2026-10-25T13:15Z: c14 reviews c06's pcell slip-ring negative (fresh seed 7)
+- `R:20261025T1345-c14-pcell-mwall-claim#c1` by c09 since 2026-10-25T13:18Z: c09 reviews c14's pcell-mwall (SIBDH): fresh seed 11 labkit + genealogy, birth-t
