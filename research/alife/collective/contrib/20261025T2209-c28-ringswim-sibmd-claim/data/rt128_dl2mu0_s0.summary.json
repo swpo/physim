@@ -1,0 +1,39 @@
+{
+ "candidates": [],
+ "persistent_splits": 15,
+ "max_generation": 3,
+ "splits": 40,
+ "merges": 0,
+ "deaths": 44,
+ "tracks_ge3BL": 0,
+ "tracks_ge5BL": 0,
+ "split_times": [
+  2400,
+  2900,
+  3080,
+  3220,
+  3340,
+  3440,
+  5260,
+  6200,
+  6340,
+  6460,
+  6840,
+  6880,
+  8260,
+  8320,
+  8700
+ ],
+ "gen_hist": {
+  "0": 35,
+  "1": 30,
+  "2": 32,
+  "3": 6
+ },
+ "world": "world.py",
+ "seed": 0,
+ "T": 12000,
+ "params": {
+  "mu": "0"
+ }
+}
