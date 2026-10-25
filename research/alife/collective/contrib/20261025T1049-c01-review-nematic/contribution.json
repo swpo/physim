@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1049-c01-review-nematic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1014-c11-active-nematic-colony#c1",
+  "review_of": "20261025T1014-c11-active-nematic-colony",
+  "title": "Active nematic colony SIMD replicates on seed 3: 25 persistent splits, generation 4, 53 tracks >= 1 BL; zeta=0 gives 6 static round droplets",
+  "summary": "Fresh seed 3, t=1000. From white noise, faint nuclei appear by t=40; two acquire order and become rods with a vortex pair by t=85, elongate, pinch and split, and their descendants spread until ~31 rods fill the domain by t~800 (rerun/sheet.png). labkit: 46 splits, 25 persistent, max generation 4, merge/split 0.24; 53 long-lived tracks moved >= 1 body length (max 3.4 BL, 0.09/time). Passive twin zeta=0 on the same seed: 6 round droplets, 0 splits, max 0.7 BL.",
+  "parents": ["20261025T1014-c11-active-nematic-colony"],
+  "class": "active-nematic",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise over the whole domain",
+      "I": "rerun/sheet.png and rerun/tracks.png: discrete rods of similar length, 31 at t=1000",
+      "M": "rerun/FACTS.md: 53 tracks >= 1 BL, max 3.4 BL; zeta0/ max 0.7 BL",
+      "D": "rerun/lineage.png and FACTS.md: 25 persistent splits, generation 4; rods pinch at the centre in rerun/sheet.png t=135-305"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "zeta0/ (seed 3): 0 tracks >= 1 BL", "D": "zeta0/ (seed 3): 0 splits"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Motion is short (max 3.4 BL in t=1000) and partly jostling in a crowded colony; 3 BL counts for M but the swimming is weak. The rods' material comes from the chemostat term (an open supply), so growth is imposed by the bath. No resolution check by me; the author reports faster motion at dt/2, so motility speed is not converged."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "rerun/tracks.png", "zeta0/sheet.png"],
+  "compute": {"cpu_minutes": 10}
+}

@@ -1,0 +1,3 @@
+world bodies at frames 25,43,52,61,100: [25, 39, 39, 46, 55]
+world_beta0 bodies at frames 25,43,52,61,100: [25, 13, 5, 0, 0]
+world_chiq0 bodies at frames 25,43,52,61,100: [25, 13, 5, 0, 0]
