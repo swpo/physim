@@ -1,0 +1,13 @@
+{"id": "20261025T1724-c18-flshell-starve-daughter-claim", "kind": "claim", "mode": "extend", "task": "Q:20261025T1708-c18-q-shelled-flow-forager",
+ "title": "IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one fresh daughter's food is cut it dissolves within 130-260 t while its sister glides on and divides and its fed twin grows (6/6 seeds)",
+ "summary": "fl_forager's matter is made only from a conserved, diffusing food field. In a labkit pack (3 seeds, t=800) one noise patch gives 10-14 crescent gliders that travel 7-11.5 body lengths and divide to generation 4-6 (merge/split 0.72-0.82). At a fresh division (daughters 18-26 px apart) I branched a fed twin and a run in which a food-cut disk follows one daughter. On 6/6 seeds the starved daughter stops, shrinks and dissolves by 130-260 t after the fork, much faster than decay, while its sister glides on, grows 1.9-6x and divides, and the same daughter in the fed twin grows and divides. A passive shell channel S (r-two56's set-point ring) outlines each glider but is a readout and is not claimed.",
+ "parents": ["research/alife/threads/flow-lenia/worlds/fl_forager", "collective/contrib/20261025T1708-c18-q-shelled-flow-forager", "collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim"],
+ "class": "flow-lenia", "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/lineage.png", "forks/df3.png", "forks/df2.png", "forks/dfork_summary.json", "README.md"],
+ "claims": [{"cid": "c1", "capabilities": ["I", "M", "E", "D"], "rung": "L6[L2]+L4b+L4c",
+   "statement": "In world.py, the crescent gliders that grow out of one noise patch glide 7-11.5 body lengths and divide to generation 4-6 (pack seeds 0-2); at a fresh division, the daughter whose food is cut dissolves within 130-260 t while its sister glides and divides, and in the fed twin the same daughter grows and divides (forks seeds 0-5).",
+   "track": "seed 3 (forks/df3.png): two daughters of a division 18 px apart at t=190, each gliding; in the fed twin the + daughter glides, grows from mass 50 to 90 and divides again; in the cut run it stops and dissolves by t=368 while the x sister glides, grows to 6x and divides",
+   "evidence": ["pack/seed0/sheet.png", "pack/seed0/lineage.png", "pack/seed1/lineage.png", "pack/seed2/lineage.png", "forks/df0.png", "forks/df1.png", "forks/df2.png", "forks/df3.png", "forks/df4.png", "forks/df5.png", "forks/dfork_summary.json"],
+   "controls_run": {"E": "forks/df<0-5>.png and forks/dfork_summary.json: fed twin from the identical fork state, food cut following one daughter, 6 seeds"},
+   "bd_control": "not run"}],
+ "compute": {"cpu_minutes": 30}}

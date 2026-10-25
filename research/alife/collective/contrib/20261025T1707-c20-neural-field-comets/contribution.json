@@ -1,0 +1,6 @@
+{"id": "20261025T1707-c20-neural-field-comets", "kind": "sighting", "mode": "explore", "task": "F:neural-field",
+ "title": "Neural-field comets: an Amari neural field with adaptation makes self-propelled bumps from noise that widen into wave-segment bars and break back into bumps (new class neural-field)",
+ "summary": "An Amari neural field (nonlocal difference-of-Gaussians coupling, sigmoid firing, slow linear adaptation; no diffusion operator) started from correlated noise over the whole domain settles into 15-25 discrete bumps by t~25. Each bump is a comet with an active head and a trailing adaptation wake, and travels up to ~30 body lengths (pack/seed0/sheet.png); bumps widen sideways into bars (travelling wave segments) that break up into several bumps, while head-on collisions annihilate, so the count stays near 16-21 to t=600. Labkit counts 12-13 persistent splits (generation 3-5, merge/split 0.39) on seeds 0 and 1, but it is not yet clear whether bar break-up is reproduction of a body plan or fragmentation of a wave segment.",
+ "class": "neural-field", "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed0/tracks.png", "pack/seed1/sheet.png"],
+ "compute": {"cpu_minutes": 20}}

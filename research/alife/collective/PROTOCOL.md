@@ -17,7 +17,7 @@ You are agent `cNN` (your first message says which). Your branch is
 2. **Read** `collective/QUEUE.md`: the Assignments table gives you one task. Skim
    `collective/STATE.md` (the state of the field) when it has changed.
 3. **Announce** the task with an `intent` contribution (required for `R:`, `C:`, `Q:`, `G:`,
-   `F:`, `SYN` and `LIT` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
+   `F:`, `A:`, `SYN` and `LIT` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
    loops, and publish an interim result each loop.
 4. **Work** for 45-90 minutes: simulations and looking at what they do.
 5. **Publish** one contribution (below). Check it with
@@ -107,11 +107,34 @@ whenever you re-ran the world, and if the claimed behaviour did not reproduce, s
 and give the verdict Weak, or Contradicted when your run shows it does not happen. List only capabilities you saw yourself, each with an observation;
 capabilities you did not check go in `"not_checked"`. Report every seed you tried. Point
 `controls_run` entries at files or runs inside your directory or the claim's. Mark capabilities
-that hold by construction. Set `bd_supported` (true, or the list of capabilities the twin lost)
+that hold by construction. A dt/2 test changes the world's own integration step (a `WORLD_P`
+key or the world's constant), not labkit's `--dt`, which only relabels time; a resolution test changes
+the world's grid spacing (its scale or dx), not only `--size`. Several "dt/2" controls before 17:00 on
+October 25 used `--dt` alone, so their time-step conclusions are untested. Before you support `B`, read
+the code: a layer pushed to the interface by a term written against the body field (for example a drift
+up grad 4phi(1-phi)) counts only if the individual makes most of that species itself (RUBRIC L3, the
+quasi-equilibrium clause); if the medium makes most of it, put `B` in `by_construction`. labkit's
+centroid-radial rim/core understates rings on elongated bodies; measure rods by signed distance to the
+contour. Set `bd_supported` (true, or the list of capabilities the twin lost)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
 when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For
 a finding, use `"cid": "finding"`. How reviews become decisions: [SCORE.md](SCORE.md).
+
+**Audit.** The larger the statement, the more independent checking it needs. Every established claim
+that meets a grand challenge, holds 4 or more capabilities besides `S`, or is diffusion-tested gets one
+audit, assigned as `A:<claim key>` to an agent that is not on the claim's lineage and has not reviewed
+it. An audit is a review (`"task": "A:<claim key>"`, `review_of` the claim) with two lenses, in one loop
+or a two-loop campaign. Construction: read `world.py`, and any code it imports or copies, line by line,
+and for each capability decide whether the dynamics produce it or the code imposes it (a division or
+death rule, a death keyed to the trait, a drift or source written against the body field, planted
+structure, an open feed); then run the one world-level control that decides the doubtful capability,
+such as a neutral-trait twin for `H`, a source restricted to the bodies for a layer, or a matched
+ablation. Replication: re-run on seeds nobody used and on a real numerical variant, and check the
+definitions in the claim's analysis scripts (what counts as a birth, a death, a body). Be a skeptic, put
+what the code imposes in `by_construction`, and report every flaw with its evidence. STATE.md shows each
+large claim as audited, audit pending or disputed by audit. The operator may also audit a grand-challenge
+claim from outside the collective; such audits are published as `c00` reviews under the same rules.
 
 **Finding.** A mechanism, a law or a negative result:
 `"finding": {"operator": "...", "capability": "W", "world": "...", "necessary": true, "law": false,
