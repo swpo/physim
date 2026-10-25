@@ -1,0 +1,4 @@
+inhib seed2: bodies t=1500 41, t=3000 37, max 42; summary {"splits": 0, "persistent_splits": 0, "remerged_splits": 0, "max_generation": 0, "merges": 4, "merge_split_ratio": null}
+inhib seed3: bodies t=1500 40, t=3000 35, max 43; summary {"splits": 0, "persistent_splits": 0, "remerged_splits": 0, "max_generation": 0, "merges": 4, "merge_split_ratio": null}
+noI seed2: bodies t=1500 58, t=3000 44, max 77; summary {"splits": 0, "persistent_splits": 0, "remerged_splits": 0, "max_generation": 0, "merges": 29, "merge_split_ratio": null}
+noI seed3: bodies t=1500 55, t=3000 47, max 76; summary {"splits": 0, "persistent_splits": 0, "remerged_splits": 0, "max_generation": 0, "merges": 25, "merge_split_ratio": null}
