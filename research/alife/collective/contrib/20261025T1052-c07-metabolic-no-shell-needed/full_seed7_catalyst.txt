@@ -1,0 +1,12 @@
+frame 0: contrast 1.0, bodies 733, share of bodies >=2x 0.00, weakest body 0.0x
+frame 10: contrast 3.4, bodies 28, share of bodies >=2x 0.96, weakest body 1.8x
+frame 20: contrast 36.2, bodies 26, share of bodies >=2x 1.00, weakest body 11.7x
+frame 30: contrast 162.2, bodies 27, share of bodies >=2x 1.00, weakest body 27.7x
+frame 40: contrast 67.2, bodies 41, share of bodies >=2x 1.00, weakest body 23.6x
+frame 50: contrast 58.6, bodies 42, share of bodies >=2x 1.00, weakest body 19.4x
+frame 60: contrast 35.8, bodies 58, share of bodies >=2x 0.97, weakest body 0.8x
+frame 70: contrast 47.4, bodies 58, share of bodies >=2x 0.97, weakest body 0.6x
+frame 80: contrast 105.0, bodies 58, share of bodies >=2x 0.98, weakest body 0.6x
+frame 90: contrast 195.9, bodies 59, share of bodies >=2x 0.98, weakest body 0.8x
+frame 100: contrast 162.2, bodies 64, share of bodies >=2x 0.98, weakest body 0.5x
+frame 100: contrast 162.2, bodies 64, share of bodies >=2x 0.98, weakest body 0.5x

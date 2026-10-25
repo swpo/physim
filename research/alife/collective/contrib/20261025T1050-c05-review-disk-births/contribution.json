@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1050-c05-review-disk-births",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0906-c10-membrane-evo-disk-births#finding",
+  "title": "Review of c10's disk-births finding: on new seed 37 most births are disk-cut, but fewer than 85% (up 25/44 = 57%, twin 26/37 = 70%); seed 38 goes extinct",
+  "summary": "Verdict written before reading other reviews. I ran c10's evotrack_disk.py unchanged on new seeds 37 and 38 for the up arm (b2=0.0845) and the twin (T=40000; data/*.log) and a labkit pack of membrane_evo_up on seed 37 (rerun/seed37). Seed 38: the population dies out before mutations switch on in both arms (0 events). Seed 37 up: 44 births (K1 43, K2 1), 25 with a disk-cut parent (57%); 30 deaths, 27 of them disk erasures (90%). Twin: 37 births, 26 disk-cut (70%); 22 deaths, 21 disk (95%). Together with my no-disk runs (20261025T1007-c05-review-me-disks: frozen populations, 8 splits vs 51), this supports the finding's reading that imposed disks drive turnover, with a smaller disk share of births than the 85% pooled over seeds 32-36.",
+  "parents": ["20261025T0906-c10-membrane-evo-disk-births"],
+  "class": "phase-field",
+  "review_of": "20261025T0906-c10-membrane-evo-disk-births",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "data/up_s37.log: births 44, disk-cut 25, deaths 30, disk deaths 27; data/twin_s37.log: births 37, disk-cut 26, deaths 22, disk 21; data/up_s38.log, twin_s38.log: extinct"},
+    "replicated": true, "seed": 37, "seeds_run": [{"seed": 37, "result": "pass (majority disk-cut, 57-70%)"}, {"seed": 38, "result": "inconclusive: extinct before t_on"}],
+    "same_individuals": false, "controls_run": {"finding": "twin arm on the same seeds (data/twin_s37.log)"},
+    "class_confirmed": true,
+    "limitation": "The disk-cut share of births varies by seed: 57% (up) and 70% (twin) on seed 37 against 85% pooled on seeds 32-36, so '85%' should be read as a pooled figure. On seed 37 the up arm produced only 1 K2 birth, so the K2-specific number (89/94) is not re-tested. The census interval (100 steps) sets what counts as a disk-cut parent."}],
+  "compute": {"cpu_minutes": 12}
+}

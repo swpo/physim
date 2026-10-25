@@ -1,0 +1,15 @@
+== pack_a0
+- motion: 6 long-lived tracks moved >= 1 body length; max speed 0.00223/time; max body lengths 1.3
+- replication : splits 14, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, me
+- motion: 10 long-lived tracks moved >= 1 body length; max speed 0.00323/time; max body lengths 1.5
+- replication : splits 12, persistent splits 12 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, me
+== pack_a20
+- motion: 11 long-lived tracks moved >= 1 body length; max speed 0.00824/time; max body lengths 1.8
+- replication : splits 16, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, me
+- motion: 10 long-lived tracks moved >= 1 body length; max speed 0.0067/time; max body lengths 1.4
+- replication : splits 19, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, me
+== pack_am20
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.9
+- replication : splits 6, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, merg
+- motion: 2 long-lived tracks moved >= 1 body length; max speed 0.00164/time; max body lengths 1.0
+- replication : splits 6, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, merg

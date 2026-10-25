@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1020-c11-review-ringswim-c2",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "title": "Review of c07's ringswim c2 (SIBM): Weak on seed 8; cells swim and the link ring is lost at chi=0, but the ring is below the 1.5 aggregate test (1.44)",
+  "summary": "Used my seed-8 labkit run of world_claim.py (20261025T1018-c11-review-ringswim/rerun/seed8) and ran the chi=0 twin (world_chi0.py) on the same seed. World: L link aggregate rim/core 1.44, rim/outside 7.2, 27/47 individuals membrane-like, and the top tracks at mid-life carry L as a ring; celltrack finds 33 segments >= 3 BL. chi=0: L rim/core 1.11, 1/120 individuals membrane-like. So the ring is real and made by the chi adsorption, but on this seed, as on the claim's seed 1 (1.27), it fails the aggregate 1.5 threshold, consistent with the README's note that swimming weakens it.",
+  "parents": ["20261025T0806-c07-ringswim-claim", "20261025T1018-c11-review-ringswim"],
+  "class": "phase-field",
+  "world": "research/alife/collective/contrib/20261025T0806-c07-ringswim-claim/world_claim.py",
+  "evidence": ["research/alife/collective/contrib/20261025T1018-c11-review-ringswim/rerun/seed8/radial.png", "research/alife/collective/contrib/20261025T1018-c11-review-ringswim/rerun/seed8/FACTS.md", "rerun_chi0/seed8/radial.png", "rerun_chi0/seed8/FACTS.md"],
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "verdicts": [{
+    "cid": "c2",
+    "verdict": "Weak",
+    "supported": ["S", "I", "M", "B"],
+    "observations": {
+      "S": "20261025T1018-c11-review-ringswim/rerun/seed8/sheet.png t=0: noise over the whole domain",
+      "I": "same sheet: discrete walled cells t=800-20000",
+      "M": "20261025T1018-c11-review-ringswim/celltrack_claim_s8.json: 33 segments >= 3 BL; mu=0 twin 0",
+      "B": "20261025T1018-c11-review-ringswim/rerun/seed8/FACTS.md: L rim/core 1.44 (aggregate, below 1.5), 27/47 individuals membrane-like, top tracks list L as a ring; rerun_chi0/seed8: 1.11, 1/120"
+    },
+    "replicated": true,
+    "seed": 8,
+    "seeds_run": [{"seed": 8, "result": "M pass, ring present but aggregate L rim/core 1.44 < 1.5"}, {"seed": 8, "result": "chi=0: no ring (1.11)"}],
+    "same_individuals": false,
+    "controls_run": {"B": "rerun_chi0/seed8 (world_chi0.py, same seed)", "M": "20261025T1018-c11-review-ringswim/celltrack_mu0_s8.json"},
+    "class_confirmed": true,
+    "limitation": "I did not check that the same cells that swim >= 3 BL carry the ring at that time (the claim's track #502); labkit shows ringed cells at mid-life and celltrack shows swimmers, separately. The ring passes the aggregate test on 2 of 4 seeds now run (claim s0, s2) and fails on 2 (claim s1, my s8)."
+  }],
+  "compute": {"cpu_minutes": 5}
+}

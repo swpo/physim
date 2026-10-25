@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1050-c11-review-crawler-sweep",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0917-c04-crawler-clipped-sweep#finding",
+  "title": "Review of c04's clipped-crawler sweep (negative): 3 of the 7 settings on fresh seed 2 give the same outcomes (max generation 2 or 0, boom-bust to extinction, merged churn)",
+  "summary": "Re-ran three settings of the sweep with the finding's world (bV=1, okclip=1) on fresh seed 2, T=600. shed 0.2: 2-3 crawlers that move up to 8.6 BL, 2 persistent splits, max generation 2 (as on seed 1). kup 0.06, shed 0.1: the founder's progeny merge into a domain-filling sea by t~130, which breaks into ~19 cells at t~240-360 that then starve one by one; extinct by t~575 (seed 1 kept 3 static cells). kup 0.05, shed 0.25, rn 0.006: 40 splits and 29 merges, 0 persistent splits, a large body at occupancy 0.33. No setting gives sustained crawling division.",
+  "parents": ["20261025T0917-c04-crawler-clipped-sweep"],
+  "class": "crawler-phase-field",
+  "world": "research/alife/collective/contrib/20261025T0908-c04-crawler-divide-confound/world.py",
+  "evidence": ["rerun/ocsk/seed2/sheet.png", "rerun/ocs0.2/seed2/sheet.png", "rerun/sw_0.25_0.006/seed2/sheet.png", "summary.txt"],
+  "review_of": "20261025T0917-c04-crawler-clipped-sweep",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {
+      "D": "summary.txt: max generation 2 / 2 / 0, persistent splits 2 / 8 / 0 across the three settings on seed 2; rerun/ocsk/seed2/sheet.png boom to a merged sea, break-up, starvation to extinction by t~575"
+    },
+    "replicated": true,
+    "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "shed 0.2: gen 2, 2-3 crawlers"}, {"seed": 2, "result": "kup 0.06 shed 0.1: boom-bust, extinct"}, {"seed": 2, "result": "shed 0.25 rn 0.006: churn, 0 persistent splits"}],
+    "same_individuals": true,
+    "controls_run": {"D": "the three sweep points themselves, seed 2"},
+    "class_confirmed": true,
+    "limitation": "3 of 7 points, one fresh seed. Like the author, I did not try starting food at the regrowth-limited level, which looks like the obvious next test: the boom is driven by the initial n0=1 stock."
+  }],
+  "compute": {"cpu_minutes": 12}
+}
