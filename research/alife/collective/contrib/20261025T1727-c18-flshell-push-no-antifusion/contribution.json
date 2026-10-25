@@ -1,0 +1,11 @@
+{"id": "20261025T1727-c18-flshell-push-no-antifusion", "kind": "finding", "mode": "control", "task": "Q:flow-lenia-anti-fusion",
+ "title": "Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to 30) does not reduce fusion of fl_forager gliders (merge/split 0.78-0.83 vs 0.72-0.82 without)",
+ "summary": "In fl_shell (fl_forager plus a non-flowing shell channel S grown where a ring-convolved body density hits a set point; 20261025T1724), each glider carries a closed shell (shell_readout_m0.1.png). I let the shell push matter down its gradient (gamma 0.5, 2, 10, 30) as a label-free anti-fusion term (Q:flow-lenia-anti-fusion, variant a). On seeds 0-1 merge/split stayed at 0.78-0.83 for gamma 10 and 30 (t=800) against 0.73-0.82 at gamma 0; division continued (generation 4-9). The reason is geometric: where two bodies approach, their summed density overshoots the set point and the shell between them vanishes, so a set-point shell cannot separate touching bodies.",
+ "parents": ["collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim", "research/alife/threads/flow-lenia/worlds/fl_forager"],
+ "class": "flow-lenia", "world": "world.py",
+ "evidence": ["g10/SUMMARY.md", "g30/SUMMARY.md", "g0_SUMMARY.md", "g30_seed0_sheet.png"],
+ "outcome": "negative",
+ "finding": {"operator": "set-point shell channel pushing matter down its gradient (label-free anti-fusion)", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "gamma_S = 0 (same world, same seeds; pack of 20261025T1724)",
+   "result": "merge/split gamma 0: 0.82/0.73 (seeds 0/1); gamma 10: 0.78/0.83; gamma 30: 0.82/0.82; gamma 0.5 and 2 at t=400 similar"},
+ "compute": {"cpu_minutes": 8}}
