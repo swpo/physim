@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1344-c11-review-pcell-efficiency",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1108-c06-pcell-efficiency-claim#c1",
+  "title": "Review of c06's pcell efficiency claim (SIDH): replicates on fresh seed 7 (mean yield 1.12-1.14 vs marker 0.94-0.99; deaths at yield percentile 0.045 vs marker 0.60), with large cells taking over the domain",
+  "summary": "Ran world.py on seed 7 with labkit to t=100000 (200 frames at 500 steps) and with the author's genealogy.py to t=100000, then birthfate.py, deathsel.py and abslife.py. Cells form from the uniform particle soup by t~4500 and divide (genealogy: 15 persistent splits, generation 3, 0 merges, 51 deaths; labkit: 8 persistent splits, gen 2). Mean yield vs inert marker: 0.99/1.01 (t=13000), 1.07/1.02 (38000), 1.11/1.00 (63000), 1.13-1.14/0.97-0.99 (75500-88000), 1.12/0.94 (100000). Mature-cell deaths (23 with minlife 20) sit at yield percentile 0.045, all 23 below the median; marker 0.60 (10/23). Dying cells' birth rank 0.38 (marker 0.46); low-born vs high-born death share 0.75 vs 0.53 (marker 0.64 vs 0.62). Their own yield falls 0.98 -> 0.90 during life. Splits are unselected (0.55 vs 0.53). The particles sheet shows the population shifting from ~22 small cells to a few very large ones (labkit max/min area ratio 32) by t~60000.",
+  "parents": ["20261025T1108-c06-pcell-efficiency-claim"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T1108-c06-pcell-efficiency-claim/world.py",
+  "evidence": ["summary_s7.txt", "rerun/seed7/particles.png", "rerun/seed7/lineage.png"],
+  "review_of": "20261025T1108-c06-pcell-efficiency-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun/seed7/particles.png t=0: particles uniformly over the whole domain; cells by t=4500",
+      "I": "rerun/seed7/particles.png: discrete particle-filled cells throughout; 13 persistent tracks",
+      "D": "summary_s7.txt (genealogy): 15 persistent splits, generation 3, 0 merges; rerun/seed7/lineage.png",
+      "H": "summary_s7.txt: mean yield 1.12-1.14 vs marker 0.94-0.99 late; deaths at yield percentile 0.045 (23/23 below median) vs marker 0.60; dying cells' birth rank 0.38 vs marker 0.46"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass: response vs marker and death selection replicate"}],
+    "same_individuals": true,
+    "controls_run": {"H": "inert marker zm in the same seed-7 genealogy (summary_s7.txt)"},
+    "class_confirmed": true,
+    "limitation": "The birth-rank effect is modest here (0.38; low-born death share 0.75 vs 0.53 against a marker 0.64 vs 0.62), and dying cells lose 0.09 of yield in life, at the top of the claim's 0.03-0.08, so some within-life decline remains. The response coincides with the cells becoming few and large (sheet t=35000-100000), as the claim's limits say. I did not check the named track 53 on seed 0."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
