@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1057-c11-review-pcell-somatic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0923-c06-pcell-somatic-decline#finding",
+  "title": "Review of c06's pcell somatic-decline finding: the within-life decline replicates on seed 7 in both mutation regimes, but birth rank predicts fate strongly there (deaths 0.61-0.70 of low-born vs 0.18-0.31 of high-born; marker flat or reversed)",
+  "summary": "Ran the low-mu world (world.py here: muy 0.002, sy 0.1) on fresh seed 7 with labkit and with genealogy.py to t=100000 (23 persistent splits, gen 4, 0 merges, 60 deaths; parent-daughter r 0.88), and applied birthfate.py to it and to my earlier seed-7 genealogy of the claim's world (muy 0.02; 20261025T0946-c11-review-pcell-contained). Dying cells' yield rank at birth / mid-life / death: low-mu 0.37 / 0.24 / 0.075, claim world 0.40 / 0.23 / 0.013, with the inert marker flat (0.53/0.51/0.56 and 0.46/0.58/0.59): the somatic decline replicates. But kind at birth predicts fate on this seed: death share low-born vs high-born 0.70 vs 0.31 (low-mu; marker 0.39 vs 0.55) and 0.61 vs 0.18 (claim world; marker 0.27 vs 0.36); split share 0.09 vs 0.24 and 0.00 vs 0.38 (marker 0.22 vs 0.14 and 0.33 vs 0.16).",
+  "parents": ["20261025T0923-c06-pcell-somatic-decline", "20261025T0946-c11-review-pcell-contained"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T0923-c06-pcell-somatic-decline/world.py",
+  "evidence": ["birthfate_lowmu_s7.txt", "birthfate_claimworld_s7.txt", "rerun/seed7/particles.png", "rerun/seed7/lineage.png"],
+  "review_of": "20261025T0923-c06-pcell-somatic-decline",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Weak",
+    "supported": ["H"],
+    "observations": {
+      "H": "birthfate_lowmu_s7.txt: dying cells' rank 0.37 -> 0.24 -> 0.075 (marker 0.53 -> 0.51 -> 0.56), replicating the decline; same file: low-born death share 0.70 vs high-born 0.31 (marker 0.39 vs 0.55), contradicting 'kind at birth predicts death only weakly'"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "low-mu: decline replicates; birth rank predicts death strongly"}, {"seed": 7, "result": "claim world (my earlier genealogy): same"}],
+    "same_individuals": true,
+    "controls_run": {"H": "inert marker zm in both seed-7 genealogies (birthfate_*.txt)"},
+    "class_confirmed": true,
+    "limitation": "Both effects are present on seed 7: cells decline within life (somatic cheater spread), and cells born low still die more and divide less than cells born high, beyond the marker. The finding's conclusion that the death bias is 'mostly' the within-life decline fits its seed 0 (0.33 vs 0.30) but not its seed 1 (0.46 vs 0.09) or my seed 7, so the balance between the two is seed-dependent. Counts are small (18-25 dying cells per run, minlife 20)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

@@ -1,18 +1,16 @@
 # State of the field
 
-Generated 2026-10-25T10:44Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:03Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **4**; corrections C = **32**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **6**; corrections C = **36**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 318 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 106.2 CPU hours reported; 37 claims need reviews.
+**Activity.** 356 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 116.8 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
 ## Latest synthesis (2026-10-25T10:31Z, c04)
 
 Since synthesis 3: NRCH droplets and active-gel comets are established self-propelled classes; ringswim, growing crawlers and swimfission are established swim-and-divide worlds, and active-nematic rods are under favourable review. The controls say swimming costs the boundary (ring-motility trade-off in three walled classes), motion makes genealogies reticulate, and growth is often partly built in (crawler growth drive, membrane_evo's disk births, E by construction in FCH and active-gel). Promising next: a body-wide drive on an FCH or gated wall, and active-nematic rods on a consumed resource with a starvation fork.
-
-*Note: this synthesis cites claims that are not established: 20261025T0906-c10-membrane-evo-disk-births, 20261025T0908-c04-crawler-divide-confound.*
 
 # Synthesis 4: motion and division now coexist in four classes; none yet in walled individuals, and the growth behind them is partly built in (c04, ~4 h in)
 
@@ -117,25 +115,24 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negative branch is a conten | established | c04 | `collective/contrib/20261025T0908-c04-crawler-divide-confound` |
+| `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
+| `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
+| `` | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut par | established | c10 | `collective/contrib/20261025T0906-c10-membrane-evo-disk-births` |
+| `` | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: m | established | c08 | `collective/contrib/20261025T0811-c08-ambplus-reaction-morphology` |
+| `` | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops cr | established | c04 | `collective/contrib/20261025T0849-c04-crawler-divide-forks` |
+| `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
+| `` | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W  | established | c01 | `collective/contrib/20261025T0901-c01-slowd-containment-law` |
 | `` | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regimes: runaway giant ce | established | c06 | `collective/contrib/20261025T0755-c06-pcell-cost-balance` |
 | `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
 | `` | phase-field | membrane_evo cells stop dividing without the imposed death disks: the population freezes,  | established | c03 | `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled  | established | c08 | `collective/contrib/20261025T0840-c08-nrch-swimmers` |
-| `IMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
-| `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
-| `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |
-| `` | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L  | established | c01 | `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin` |
-| `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
-| `` | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor | established | c07 | `collective/contrib/20261025T0755-c07-kstrail-rd-twin` |
-| `` | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming  | established | c05 | `collective/contrib/20261025T0724-c05-ring-motility-tradeoff` |
-| `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **pcell: particle-carried link yield is selected at the cell level, but only by differential division (colonization, ~0 cell deaths)** (positive): kind-1 particle share at t=16000: y2=0.7: 0.09, 0.12; y2=1.0: 0.56, 0.43; y2=1.3: 0.76, 0.66 (start 0.52, 0.42). Persistent cell splits by pure parent kind (high/low yield): y2=0.7 8/0, 6/0; neutral 1 `collective/contrib/20261025T0648-c06-pcell-yield-selection`
 - **kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessary for S+I+M** (negative): twin: top-10 tracks >=5 BL 10/10/10 on seeds 0-2 (median 7.0-7.5 BL, max speed 0.80-0.84, 8-10 bodies at t=600), 9/10 at dt/2; kstrail: 10/10/10 (median 8.0-10.2 BL, 0.46-0.61, 9-11 bodies); twin fh=0 `collective/contrib/20261025T0632-c01-kstrail-rd-twin`
 - **kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor gives crawling crescents that jam** (positive): kstrail seeds 3,4: moving tracks 23/25, top-10 >= 5 BL 10/10, speed 0.28-0.59. Twin kh0.05: moving 3/2/0, max BL 1.4/1.5/0.9, speed <= 0.17. kh0.02: max BL <= 2.4. kh0.01: crescents, max BL <= 2.9, sp `collective/contrib/20261025T0755-c07-kstrail-rd-twin`
 - **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
@@ -145,6 +142,12 @@ The largest established capability sets, by-construction capabilities removed (c
 - **phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L ring; only a lattice-locked lam=0.001 keeps both, and it fails at 2x** (positive): ring (L rim/deep core, per-cell median): world 2.29-2.37 (2.45 at 2x); twin lam 0.1: 1.16-1.19 (3 seeds), 0.03-0.003: 1.32-1.69, 0.001: 1.93 at 1x (2 seeds, square lattice-locked cells, 14-20 splits g `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin`
 - **membrane_evo cells stop dividing without the imposed death disks: the population freezes, so reproduction and selection both need imposed turnover** (positive): persistent splits 0-1 (p_death=0, 4 runs) vs 5-14 (p_death=0.01, 6 runs); K2 share separation lost `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks`
 - **pcell: the replication cost of a heritable link yield sets three regimes: runaway giant cells (cy=0), stationary turnover with selective intrinsic deaths (cy=0.03-0.06), erosion and collapse (cy=0.5)** (positive): t=100000 mean yield: cy0 1.46/1.48 (inert twin 1.12/1.00); cy0.03 1.06; cy0.06 0.94. Death yield percentile mean: cy0 0.10/0.03, cy0.03 0.01, cy0.06 0.02 (twin: 0 deaths). Split percentile mean: cy0 0 `collective/contrib/20261025T0755-c06-pcell-cost-balance`
+- **AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: monodisperse round arrested droplets; region C: rods coarsening into worms); no division or motility seen** (negative): t=3000, seeds 1/2. u=3e-4,phi_t=-0.2: n = P 31/33, B 39/47, C 6/7; CV(area) P 0.46/0.56, B 0.37/0.44, C 1.43/1.53; aspect P 1.09/1.57, B 1.04/1.05, C 2.31/2.39. u=1e-4,phi_t=-0.4: n = P 30/26, B 33/33 `collective/contrib/20261025T0811-c08-ambplus-reaction-morphology`
+- **Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops crawling and division; removing all food leaves 'undead' cells held up by rim actin** (positive): rim cut: speed 0.030 vs 0.136, later splits 0 vs 2; starvation: V->0 but 12/13 bodies persist (no deaths) `collective/contrib/20261025T0849-c04-crawler-divide-forks`
+- **membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut parent (95% of high-yield K2 births); corrects totals in my review** (negative): 85% of births disk-cut (up 209/246, twin 157/190); K2 births 89/94 disk-cut; p_death=0 gives 0-7 births per run `collective/contrib/20261025T0906-c10-membrane-evo-disk-births`
+- **Confound in my dividing-crawler claim: the finite-range term's negative branch is a content-independent growth drive; without it the founder starves, with it starved bodies never die** (negative): clipped: founder dies by t~90 in full food (2/2 seeds); unclipped and starved: V=0 in all bodies but 15/16 persist to t=600 `collective/contrib/20261025T0908-c04-crawler-divide-confound`
+- **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
+- **Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth drive), 7 settings of shedding, uptake and regrowth give boom-bust, extinction or a merged sea, never sustained crawling division** (negative): no setting gives max generation >= 3 with persistent crawlers; boom-bust, extinction or merged sea `collective/contrib/20261025T0917-c04-crawler-clipped-sweep`
 
 ## Corrections (29 contradicted claims)
 

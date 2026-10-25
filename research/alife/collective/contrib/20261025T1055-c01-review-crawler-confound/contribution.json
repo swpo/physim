@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1055-c01-review-crawler-confound",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0908-c04-crawler-divide-confound#finding",
+  "review_of": "20261025T0908-c04-crawler-divide-confound",
+  "title": "Crawler-divide confound replicates on seed 3: clipped term kills the founder (0 bodies); starved content-scaled bodies persist as 14 static bumps",
+  "summary": "Fresh seed 3 with the claim's params.json plus the confound switches. okclip=1 (penalty only for oversized bodies), full food: the founder dies early, 0 components for almost the whole run (okclip_fed/FACTS.md: mean 0.1, final 0). bV=1 with all food removed at t=300: before the cut the colony grows and divides normally (11 persistent splits, generation 4); after the cut the bodies lose their content and polarization within ~60 t but 14 of them persist to t=600 as static, round, faint bumps (bV_starve/sheet.png t=362-600), i.e. bodies without content do not die.",
+  "parents": ["20261025T0908-c04-crawler-divide-confound"],
+  "class": "crawler-phase-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "okclip_fed/FACTS.md: 0 bodies; bV_starve/sheet.png t=362-600: 14 content-free static bodies persist"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "okclip_fed/ and bV_starve/ (seed 3) against the unclipped, fed claim world (my review 20261025T0932-c01-review-crawler-divide, seed 3: 12 persistent splits)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "I did not run the author's ghost_probe to read V and delta inside the persisting bodies; the persistence is read from the images and component counts."
+  }],
+  "evidence": ["okclip_fed/sheet.png", "bV_starve/sheet.png", "bV_starve/timeseries.png"],
+  "compute": {"cpu_minutes": 8}
+}
