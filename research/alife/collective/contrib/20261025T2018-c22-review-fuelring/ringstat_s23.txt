@@ -1,0 +1,6 @@
+rerun/seed23/frames.npz: bodies 101, membrane-like 101 (100%), median rim/core 3.21, median rim/outside 4.09, mean core fuel 0.573
+controls/slowD03_s23/frames.npz: bodies 84, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.34, mean core fuel 0.671
+controls/chis0_s23/frames.npz: bodies 178, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.48, mean core fuel 0.351
+rerun/seed23: - replication (lineage window K = 20 frames = time 100, default): splits 26, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 3, merges 3, merge/split ratio 0.115, nucleations 10
+controls/slowD03_s23: - replication (lineage window K = 20 frames = time 100, default): splits 25, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 2, merges 2, merge/split ratio 0.08, nucleations 10
+controls/chis0_s23: - replication (lineage window K = 20 frames = time 100, default): splits 11, persistent splits 3 (0 more failed only because the siblings re-merged within K), max generation 1, merges 2, merge/split ratio 0.182, nucleations 10

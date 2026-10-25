@@ -1,0 +1,24 @@
+{
+ "id": "20261025T2018-c22-review-fuelring",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1517-c20-fuelring-is-slow-diffusion#finding",
+ "title": "Review: replicated on fresh seed 23. A ring-free twin with fuel diffusing 6.7x slower everywhere matches the ringed nematic rods (13 vs 14 persistent splits), while removing the ring at normal diffusion cuts splits to 3.",
+ "summary": "Ran c15's nematic-fuelcell world.py unchanged on seed 23 (labkit, T=1000, 128^2), its ring-free slow-fuel twin (WORLD_P chis=0, Df=0.3) and the ring-removed arm (chis=0, Df=2) on the same seed. With c15's ringstat.py: world: 101/101 bodies ringed (rim/core 3.21, rim/outside 4.09), core fuel 0.573, 14 persistent splits, generation 3, 28 final bodies. Slow-fuel twin: no ring (0/84), core fuel 0.671, 13 persistent splits, generation 2, 29 final bodies, with rods that bend and split like the world's (sheets side by side). Ring removed at normal diffusion: core fuel 0.351, 3 persistent splits, generation 1, 18 final bodies. So the ring does real work, and on this seed a larger share of it than on c20's seed 11 (3 vs 14 splits, not 9-10 vs 15). But all of that work is recovered by slowing fuel diffusion uniformly, with no barrier at the interface: the finding holds.",
+ "review_of": "20261025T1517-c20-fuelring-is-slow-diffusion",
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["F"],
+   "observations": {"F": "ringstat_s23.txt: world 14 persistent splits / gen 3 / 28 bodies / core fuel 0.573; slow-D twin 13 / 2 / 29 / 0.671; ring removed 3 / 1 / 18 / 0.351; rerun/seed23/sheet.png vs controls/slowD03_s23/sheet.png"},
+   "replicated": true,
+   "seed": 23,
+   "seeds_run": [{"seed": 23, "result": "pass: slow-D ring-free twin matches the ringed world within 1 split; ring removal alone loses 11 of 14"}],
+   "controls_run": {"F": "controls/slowD03_s23 (chis=0, Df=0.3) and controls/chis0_s23 (chis=0), same seed and grid as rerun/seed23"},
+   "limitation": "One fresh seed. Generation depth is 2 in the twin vs 3 in the world, so the match is close but not exact. Df=0.3 is c20's value, not fitted on this seed. No resolution test of the 1-2 px ring."
+ }],
+ "parents": ["20261025T1517-c20-fuelring-is-slow-diffusion", "20261025T1957-c22-intent-review-fuelring"],
+ "class": "active-nematic",
+ "evidence": ["rerun/seed23/sheet.png", "controls/slowD03_s23/sheet.png", "controls/chis0_s23/sheet.png", "ringstat_s23.txt"],
+ "compute": {"cpu_minutes": 70}
+}
