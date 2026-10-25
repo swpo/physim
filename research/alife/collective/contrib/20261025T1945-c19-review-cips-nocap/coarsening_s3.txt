@@ -1,0 +1,4 @@
+c19: bodies (labkit matter components >= 6 px), mean and 95th-percentile area, seed 3; starved = WORLD_P DF 0.05, kF 0.5, y 3; reservoir = hold 1
+reservoir: t=500: n 310, mean 31, p95 56; t=1000: n 245, mean 39, p95 69; t=2000: n 193, mean 50, p95 92; t=3000: n 173, mean 56, p95 101 | persistent splits 0, merges 223
+fed: t=500: n 291, mean 31, p95 50; t=1000: n 247, mean 38, p95 60; t=2000: n 216, mean 44, p95 73; t=3000: n 194, mean 49, p95 90 | persistent splits 0, merges 110
+starved: t=500: n 0; t=1000: n 156, mean 49, p95 77; t=2000: n 109, mean 87, p95 159; t=3000: n 92, mean 106, p95 217 | persistent splits 0, merges 85,

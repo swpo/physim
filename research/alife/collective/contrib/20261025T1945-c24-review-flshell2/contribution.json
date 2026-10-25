@@ -1,0 +1,73 @@
+{
+ "id": "20261025T1945-c24-review-flshell2",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1",
+ "title": "Review of c18's shelled Flow-Lenia foragers on fresh seeds 24-25: shelled gliders divide to generation 6 and travel 12 body lengths, and in both fresh starve-one-daughter forks the starved daughter dies while the same daughter in the fed twin persists",
+ "summary": "I re-ran world.py on fresh seed 24 (labkit, 128^2, t=800): 16 shelled bodies at the end, 12 persistent splits, max generation 6, merge/split 0.80, 57 tracks moving >= 1 body length, up to 12.2. The author's shellprof on my frames gives the S ring at 9 px: S 0.38 vs 0.017 inside and 0.011 outside, median closure 0.98 of 24 sectors, 55% fully closed. With the author's dfork.py (fork at the first fresh division after t=150, run 300 t) on fresh seeds 24 and 25, the starved daughter falls below 10% of its fork matter about 250 t (seed 24, 104 -> ~0) and 135 t (seed 25, 49.6 -> <5) after the cut. In the fed twins the same daughter keeps or grows its matter (104 -> 103; 49.7 -> 95, then divides). In both cut runs the sister grows.",
+ "parents": [
+  "20261025T1748-c18-flshell2-metabolic-cell-claim"
+ ],
+ "review_of": "20261025T1748-c18-flshell2-metabolic-cell-claim",
+ "class": "flow-lenia",
+ "evidence": [
+  "rerun/seed24/tracks.png",
+  "rerun/seed24/FACTS.md",
+  "rerun/seed24/lineage.png",
+  "shellprof_s24.png",
+  "shellprof_s24.json",
+  "forks/df24.png",
+  "forks/df25.png",
+  "forks/log24.txt",
+  "forks/log25.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "M",
+    "E",
+    "D"
+   ],
+   "observations": {
+    "I": "rerun/seed24/tracks.png: discrete bodies, each inside its own green S ring",
+    "B": "shellprof_s24.json: S peak 0.376 at r=9 px vs 0.017 inside and 0.011 at 20-24 px; median closure 0.98; tracks.png #7 t=256-404 shows a closed ring",
+    "M": "rerun/seed24/FACTS.md: 57 long-lived tracks moved >= 1 body length, max 12.2 body lengths",
+    "D": "rerun/seed24/FACTS.md: 12 persistent splits, max generation 6, merge/split 0.797",
+    "E": "forks/df24.png and df25.png: the starved daughter (+) shrinks to <10% by t~400 (seed 24) and t~290 (seed 25), while in the fed twin the same daughter persists (seed 24) or grows and divides (seed 25)"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: labkit pack (I, B, M, D)"
+    },
+    {
+     "seed": 24,
+     "result": "pass: starve-one-daughter fork, daughter dies ~250 t after the cut, fed twin persists"
+    },
+    {
+     "seed": 25,
+     "result": "pass: starve-one-daughter fork, daughter below 10% ~135 t after the cut, fed twin grows and divides"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "E": "forks/df24_*, forks/df25_* (dfork.py: fed twin vs a food cut following one daughter, from the identical fork state)"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "S"
+   ],
+   "class_confirmed": true,
+   "limitation": "Matter is made only from food and decays back into it, so dependence on food holds by construction. The forks show that the dependence is individual: one daughter dies while its sister and its fed twin live. That meets the L4c gate but does not by itself make metabolism non-trivial. B: S is grown from a ring convolution of the body density (a set-point readout) and feeds back on growth. I did not rerun the h5=0 ablation, so its work (speed) rests on the author's control. Merges stay at ~0.8 of splits, so genealogies are reticulate. The founder is a planted noise patch, so no S. After the starved daughter is gone, the following disk hops onto passing bodies (seed 25 late rises); only the first dip counts. Two fresh fork seeds, 128^2, no dt or resolution variant."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}
