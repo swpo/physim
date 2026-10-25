@@ -1,0 +1,29 @@
+== pack_wb1
+frames 1-25: bodies 28->43, deaths 1, splits 15, nucleations 29
+frames 26-50: bodies 43->43, deaths 0, splits 0, nucleations 0
+frames 52-76: bodies 43->43, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 43->43, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 43->43, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 43->43, deaths 0, splits 0, nucleations 0
+== pack_wb2
+frames 1-25: bodies 28->40, deaths 1, splits 12, nucleations 29
+frames 26-50: bodies 40->40, deaths 0, splits 0, nucleations 0
+frames 52-76: bodies 40->40, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 40->40, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 40->40, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 40->40, deaths 0, splits 0, nucleations 0
+== pack_lowc0
+frames 1-25: bodies 28->3, deaths 25, splits 0, nucleations 28
+frames 26-50: bodies 3->0, deaths 3, splits 0, nucleations 0
+frames 52-76: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 0->0, deaths 0, splits 0, nucleations 0
+
+== F=0.02 without Allee (crowding: micelles pack, then fuse into filaments)
+frames 1-25: bodies 28->71, deaths 3, splits 41, nucleations 33
+frames 26-50: bodies 71->141, deaths 7, splits 64, nucleations 13
+frames 52-76: bodies 143->163, deaths 7, splits 41, nucleations 9
+frames 77-101: bodies 162->107, deaths 8, splits 18, nucleations 6
+frames 102-126: bodies 106->92, deaths 2, splits 6, nucleations 3
+frames 127-150: bodies 91->75, deaths 2, splits 6, nucleations 2

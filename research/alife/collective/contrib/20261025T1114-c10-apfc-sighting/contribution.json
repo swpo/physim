@@ -1,0 +1,13 @@
+{
+  "id": "20261025T1114-c10-apfc-sighting",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "F:active-pfc",
+  "title": "Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts",
+  "summary": "New class: the Menzel-Loewen active PFC (conserved density phi coupled to a polarization P by v0), spectral, 128^2, eps=-1.5, mean density -0.75, v0=0.25, C1=0.1, Dr=0.5, from white noise. By t~40 about 7-9 isolated, slightly elongated density peaks remain and swim (labkit: 24 and 17 tracks >= 1 body length, max 23.6 BL, speed up to 0.3); new peaks keep appearing next to existing ones (9 -> 25 and 7 -> 23 by t~900), and peaks bind into chains and hexagonal rafts that travel, break apart and rejoin (merge/split ~1.0). At eps=-0.98 activity either leaves crystallites at rest or melts them, so the travelling regime needs a deep quench (notes.txt).",
+  "parents": [],
+  "class": "active-pfc",
+  "world": "world.py",
+  "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/SUMMARY.md", "notes.txt"],
+  "compute": {"cpu_minutes": 40}
+}

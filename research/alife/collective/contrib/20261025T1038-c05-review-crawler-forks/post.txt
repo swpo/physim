@@ -1,0 +1,3 @@
+base/seed3 mean speed after frame 120 = 0.139 | 90th pct 0.401 | persistent splits after: 4 | bodies at end: 15
+cut/seed3 mean speed after frame 120 = 0.032 | 90th pct 0.062 | persistent splits after: 0 | bodies at end: 12
+starve/seed3 mean speed after frame 120 = 0.021 | 90th pct 0.034 | persistent splits after: 0 | bodies at end: 11

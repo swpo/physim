@@ -1,0 +1,12 @@
+{"id": "20261025T1050-c03-allee-no-turnover", "kind": "finding", "mode": "control", "task": "C:autonomous-heredity",
+ "title": "Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles turnover; from noise-level catalyst they never ignite, from a higher unstructured catalyst they freeze at 40-43 bodies; more supply crowds them into filaments",
+ "summary": "Follow-up to 20261025T1000-c03-metabolic-no-turnover, testing whether a threshold in catalyst replication (rep = kc c p g c/(c+K)) lets daughters that receive too little catalyst die and free precursor. With the parent's noise-level initial catalyst (c in [0, 0.2]) every body dies by t~400 at K=1-3, kc=0.1-0.15 (pack_lowc0: 28 -> 0, the catalyst never ignites). With an unstructured but higher initial catalyst (c in [0, 3], K=1; c in [0, 2], K=0.5) the bodies grow, divide 12-15 times by t~400 and then sit still to t=2400 with 0 deaths and 0 splits (43 and 40 bodies). Without the threshold, a 2x higher supply (F=0.02) gives a dense micelle crystal that fuses into worm-like filaments (163 -> 75 bodies, deaths 2-8 per window are mostly fusions; pack_F0.02/seed0/sheet.png). None of the four mechanisms gives a stationary population with ongoing births and deaths.",
+ "parents": ["20261025T1000-c03-metabolic-no-turnover", "20261025T0922-c03-fch-metabolic"],
+ "class": "fch-bilayer",
+ "world": "world_wb1.py",
+ "evidence": ["turnover.txt", "pack_wb1/seed0/sheet.png", "pack_lowc0/seed0/sheet.png", "pack_F0.02/seed0/sheet.png"],
+ "finding": {"operator": "Allee threshold on catalyst autocatalysis (c/(c+K)); precursor supply F", "capability": "D", "world": "world_wb1.py", "necessary": false, "law": false,
+             "control": "same seed and world with K = 0 (parent), noise-level vs higher unstructured initial catalyst, F = 0.01 vs 0.02",
+             "result": "low c0: 28 -> 0 bodies; c0 3 or 2: 43 and 40 static bodies, 0 deaths and 0 splits after t~400; F=0.02: crowding and fusion into filaments"},
+ "outcome": "negative",
+ "compute": {"cpu_minutes": 60}}

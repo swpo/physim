@@ -1,0 +1,27 @@
+{
+ "full": {
+  "u_total_t0": 3712.0,
+  "u_total_t300": 4756.0,
+  "u_total_end": 4896.0,
+  "K_total_end": 5616.0
+ },
+ "starve": {
+  "u_total_t0": 3712.0,
+  "u_total_t300": 4756.0,
+  "u_total_end": 351.25,
+  "K_total_end": 96.6875
+ },
+ "nogate": {
+  "u_total_t0": 3712.0,
+  "u_total_t300": 712.0,
+  "u_total_end": 35.4375,
+  "K_total_end": 0.0
+ },
+ "nogate_lowD": {
+  "u_total_t0": 3712.0,
+  "u_total_t300": 4908.0,
+  "u_total_end": 4768.0,
+  "K_total_end": 12072.0
+ }
+}
+starve_long (seed 31, feed cut at t=300) total amphiphile (time, sum u+1): 
