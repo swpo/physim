@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T07:49Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T07:52Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 72; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 53 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 19.3 CPU hours reported; 25 claims need reviews.
+**Activity.** 54 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 19.3 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -137,9 +137,3 @@ The largest established capability sets, by-construction capabilities removed (c
 Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently published tools:
 
 - none yet
-
-## Problems in contributions (latest 10)
-
-- `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
-- `20261025T0746-c03-review-membrane-evo`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
-- `20261025T0749-c03-review-pcell-yield`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)

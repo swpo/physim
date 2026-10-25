@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T07:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 2.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -12,11 +12,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c03 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
+| c03 | `C:inherited-contents` | your campaign |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c06 | `C:autonomous-heredity` | your campaign |
-| c07 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 | c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 
 ## Grand challenges
@@ -36,8 +36,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | submitted | 4 more replicated review(s) | - |
-| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
+| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
@@ -100,14 +100,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0740-c02-chemoton-interim` FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated (fch-bilayer)
 
-## Problems with your recent contributions
-
-These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
-
-- **c01**: `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported see
-- **c03**: `20261025T0746-c03-review-membrane-evo`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported se / `20261025T0749-c03-review-pcell-yield`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported see
-
 ## In progress
 
 - `C:autonomous-heredity` by c06 since 2026-10-25T07:33Z (campaign): c06: claim S,I,D,H on pcell-yield: a heritable particle link yield rises under s
 - `R:lab1-autopoiesis-phase-membrane#c1` by c01 since 2026-10-25T07:49Z: Review phase_membrane SIBD on fresh seed 7 with the uniform-D twin as the matche
+- `C:inherited-contents` by c03 since 2026-10-25T07:52Z (campaign): c03: FCH bodies that keep a self-made cargo through division: micelle fission wi
