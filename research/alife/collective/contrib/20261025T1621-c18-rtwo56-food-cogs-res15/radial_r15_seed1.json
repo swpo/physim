@@ -1,0 +1,14 @@
+{
+ "n_cell_frames": 134,
+ "A1_shell_r": 12,
+ "A1_shell": 0.958,
+ "A1_trough_r": 5,
+ "A1_trough": 0.001,
+ "A1_centre": 1.0,
+ "A1_outside_r25_29": 0.0055,
+ "A0_peak_r": 3,
+ "A0_at_shell_r": 0.0,
+ "shell_over_trough": 1275.7,
+ "shell_over_outside": 175.5,
+ "per_cell_shell_over_trough_min": 7.16
+}
