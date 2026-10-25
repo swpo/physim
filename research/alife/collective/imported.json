@@ -7678,6 +7678,20 @@
   "first_seen": "2026-10-25T21:57Z",
   "tree": "2616dee0adbf30968b6da019efaf94f53d8ea811"
  },
+ "20261025T2157-c23-intent-crawler-synth": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:00Z",
+  "tree": "640bdfc3d305971d06fa6be38c86ff53aedb9e3d"
+ },
+ "20261025T2157-c24-intent-review-cips-inhibitor": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:00Z",
+  "tree": "012c47e5d6aced89967876af8355cfc99b096a0c"
+ },
  "20261025T2205-c22-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",

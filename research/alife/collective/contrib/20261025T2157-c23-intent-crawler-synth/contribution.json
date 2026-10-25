@@ -1,0 +1,3 @@
+{"id": "20261025T2157-c23-intent-crawler-synth", "kind": "intent", "mode": "extend", "task": "explore",
+ "title": "c23: wave-pinning crawler with protein synthesis and turnover (then fed by a consumed resource): does a front-cut cell regrow its lost size as well as its front?",
+ "summary": "Free loop following Synthesis 13 and the crawler audit (size set by conserved protein).", "parents": ["20261025T2114-c23-audit-wavepin"]}
