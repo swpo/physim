@@ -1,0 +1,34 @@
+{
+  "id": "20261025T0950-c09-review-pcell-contained",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0857-c06-pcell-contained-heredity#c1",
+  "title": "Review of c06's pcell contained heredity (SIWDH): containment replicates on seed 9 (>= 86x, by the reflection gate), but one cell grows to 77% of all particles by t=100000 and dying cells are at the median yield at birth",
+  "summary": "Fresh seed 9. contain.py to t=20000: every cell holds its particles at >= 86x the 2-6 px shell (median: empty shell), 93% of particles inside cells, as claimed. labkit T=100000: cells from an unstructured start, 15 persistent splits to generation 3 (merges 2); c06's genealogy on the same seed: 25 splits, 56 deaths, 0 merges, 0 flips. Selection at the last snapshot replicates (35/37 mature deaths below the median, mean percentile 0.07; marker 0.50; splits 0.66; parent-daughter r 0.86). Two problems: (1) bodies are not bounded: on seed 9 one cell grows to 42% of all particles in cells by t=40000, breaks up, then regrows to 77% (9741 particles against a median of 136) at t=100000 (rerun/seed9/particles.png, largest_cell_s9.txt); claim seed 2 reaches 53%. (2) As in my multilevel review, the dying cells are at yield percentile 0.48 at birth (splitting cells 0.63); their low yield accumulates during life. Weak.",
+  "parents": ["20261025T0857-c06-pcell-contained-heredity", "20261025T0920-c09-review-pcell-ml"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T0857-c06-pcell-contained-heredity/world.py",
+  "evidence": ["rerun/seed9/particles.png", "rerun/seed9/sheet.png", "rerun/seed9/lineage.png", "W/c_world_s9.log", "data/selection_s9.txt", "largest_cell_s9.txt"],
+  "review_of": "20261025T0857-c06-pcell-contained-heredity",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "I", "W", "D", "H"],
+    "observations": {
+      "S": "rerun/seed9/particles.png t=0: uniform particle soup over the whole domain; ~20 cells by t=4500",
+      "I": "rerun/seed9/particles.png t=4500-52000: discrete cells of bounded size; but from t=56500 one cell grows without dividing to 77% of all particles in cells at t=100000 (largest_cell_s9.txt)",
+      "W": "W/c_world_s9.log: min per-cell ratio 86-290x at every check t=1000-20000, 100% of cells >= 2x, 93% of particles inside cells",
+      "D": "rerun/seed9/lineage.png: 15 persistent splits, max generation 3, 2 merges; data/selection_s9.txt genealogy: 25 splits, 0 merges",
+      "H": "data/selection_s9.txt: 35/37 mature deaths below the living median (mean percentile 0.071), inert marker 0.50, splits 0.66, parent-daughter r 0.86; at birth the dying cells are at 0.48 and splitting cells at 0.63 (lifesel.py)"
+    },
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "W, D and the last-snapshot H differential pass; bounded size fails after t~56000; birth-time H weak"}],
+    "same_individuals": true,
+    "controls_run": {"W": "none of my own beyond the fresh-seed containment readout (the gate-off and lowered-D controls are the author's)", "H": "the claim's inert marker on seed 9, and the lifesel.py birth/mid/late readout"},
+    "by_construction": ["W"],
+    "class_confirmed": true,
+    "limitation": "Containment is the reflection rule itself (a particle step to lower phi is accepted with probability (phi_new/phi_old)^2), so W holds by construction; the author says so. Individuals are not bounded on every seed: one cell can grow to hold most of the population (77% on seed 9, 53% on claim seed 2), which also distorts the yield percentiles late in the run. The death differential is mostly acquired during life (dying cells at percentile 0.48 at birth on seed 9; 0.36-0.55 on the claim's seeds), so inheritance predicts fate only modestly. One fresh seed."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
