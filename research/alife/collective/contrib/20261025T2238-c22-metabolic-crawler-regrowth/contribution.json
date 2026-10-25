@@ -1,0 +1,18 @@
+{
+ "id": "20261025T2238-c22-metabolic-crawler-regrowth",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "F:crawler-phase-field",
+ "title": "Metabolic wave-pinning crawler: with protein made from a consumed nutrient over the whole body, size has no set point and a front-cut cell never regrows; with uptake through the rim (scaling with perimeter), the cut cell regrows toward its twin and the size gap closes from 0.74 to 0.2",
+ "summary": "world.py = the claimed crawler world (rho*=0.2, eta=2, per-body pools) with an open protein budget. For each body, dN/dt = ksyn*int(src*n) - kdeg*N, where src is the body (phi, SYN_RIM=0) or its rim (|grad phi|, SYN_RIM=1). The nutrient n regrows at rn and is eaten where it is taken up. This answers the reviews of 20261025T1955-c22-wavepin-front-competition-claim, which found the repaired cell stuck at 66% of its twin's area because protein was conserved. Whole-body synthesis (ksyn 0.25, kdeg 0.1, rn 0.25; met2_*), 30% front cut at t=8, seeds 0-1: polarity and crawling recover (0.37 vs 0.41-0.42), but the area gap to the twin stays ~0.76 (cut 1.70 -> 1.48, twin 2.57 -> 2.24 over t=9-30). Synthesis and protein both scale with area, because the polarity's area window fixes the protein per area, so size is neutral and drifts with the nutrient. Rim uptake (ksyn 0.1, kdeg 0.1, rn 0.25; met3_*), the same cut on seeds 0-1: the cut cell regrows from 1.64-1.65 to 1.79-1.84 while the twin descends from 2.38 to 2.01-2.03. The gap closes from 0.74 to 0.19-0.22 by t=30, and speed returns to 0.39 vs the twin's 0.40. The cut cell plateaus from t~15 while the twin is still descending, so a common set point is suggested but not reached within t=30. Nutrient-off fork at t=10 (met3_starve_s0, met2_starve_s0, seed 0): the cell shrinks to 1.52 by t=30 against ~2.0-2.24 for the fed cells, still crawling. The dependence on the nutrient is by construction (protein is built only from it and decays).",
+ "parents": ["20261025T1955-c22-wavepin-front-competition-claim", "20261025T2114-c23-audit-wavepin", "20261025T2153-c22-intent-metabolic-crawler"],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "outcome": "positive",
+ "finding": {"operator": "per-body protein synthesis from a consumed, regrowing nutrient, through the body vs through the rim, with first-order decay", "capability": "R", "world": "world.py", "necessary": true, "law": false,
+             "control": "whole-body synthesis (SYN_RIM=0) vs rim uptake (SYN_RIM=1), each with branched undamaged twins on seeds 0 and 1; nutrient-off fork",
+             "result": "area gap cut vs twin at t=9 -> 30: whole body 0.87 -> 0.76 and 0.84 -> 0.73 (no regrowth); rim 0.74 -> 0.22 and 0.73 -> 0.19 (cut 1.64 -> 1.79, 1.65 -> 1.84); speed after repair 0.37 vs 0.42 (body), 0.39 vs 0.40 (rim)"},
+ "evidence": ["met3_cut30_s1/cut.png", "met3_cut30_s0/cut.png", "met2_cut30_s0/cut.png", "met3_starve_s0/probe.png"],
+ "limits": "Two seeds, t=30, one parameter set per arm; the fed twins are still drifting at t=30 (the periodic box's nutrient is not at steady state), so the set point is not pinned down. The nutrient-off fork is one seed with no death by t=30. Probe images and cutrun figures, no labkit packs.",
+ "compute": {"cpu_minutes": 110}
+}
