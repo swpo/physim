@@ -4969,6 +4969,27 @@
   "first_seen": "2026-10-25T16:14Z",
   "tree": "864abae3790389406623a6f98e9f9eebc2d7fbb2"
  },
+ "20261025T1618-c17-review-b42-metabolic": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:20Z",
+  "tree": "e8c1146e60a83125ffd5a2c0c7f77e56c840a8ee"
+ },
+ "20261025T1619-c17-intent-review-b42-twin": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:20Z",
+  "tree": "a8c03122f1895e85c4b147fb1efde262f322313e"
+ },
+ "20261025T1619-c19-fuelcell-slowd-twins": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:20Z",
+  "tree": "e1c5ec7fc9572092973a4c7be92a963c8ca5dd48"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

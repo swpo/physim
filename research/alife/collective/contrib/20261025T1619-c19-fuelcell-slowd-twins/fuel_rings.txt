@@ -1,0 +1,12 @@
+chis0_Df0.2/seed0/frames.npz: bodies 121, ring-like 0 (0%), median rim/axis 0.90, median rim/outside 1.43, mean axis fuel 0.687
+chis0_Df0.2/seed0/frames.npz: bodies 41, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.35, mean core fuel 0.787
+chis0_Df0.2/seed1/frames.npz: bodies 78, ring-like 0 (0%), median rim/axis 0.90, median rim/outside 1.43, mean axis fuel 0.713
+chis0_Df0.2/seed1/frames.npz: bodies 25, membrane-like 0 (0%), median rim/core 0.86, median rim/outside 1.39, mean core fuel 0.871
+chis0_Df0.2/seed2/frames.npz: bodies 143, ring-like 0 (0%), median rim/axis 0.90, median rim/outside 1.43, mean axis fuel 0.668
+chis0_Df0.2/seed2/frames.npz: bodies 50, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.33, mean core fuel 0.771
+chis0_Df0.5/seed0/frames.npz: bodies 142, ring-like 0 (0%), median rim/axis 0.88, median rim/outside 1.41, mean axis fuel 0.514
+chis0_Df0.5/seed0/frames.npz: bodies 111, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.36, mean core fuel 0.535
+chis0_Df0.5/seed1/frames.npz: bodies 69, ring-like 0 (0%), median rim/axis 0.91, median rim/outside 1.48, mean axis fuel 0.518
+chis0_Df0.5/seed1/frames.npz: bodies 35, membrane-like 0 (0%), median rim/core 0.90, median rim/outside 1.42, mean core fuel 0.561
+chis0_Df0.5/seed2/frames.npz: bodies 130, ring-like 0 (0%), median rim/axis 0.90, median rim/outside 1.47, mean axis fuel 0.514
+chis0_Df0.5/seed2/frames.npz: bodies 84, membrane-like 0 (0%), median rim/core 0.89, median rim/outside 1.40, mean core fuel 0.544
