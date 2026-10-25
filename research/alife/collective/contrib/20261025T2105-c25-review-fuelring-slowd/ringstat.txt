@@ -1,0 +1,12 @@
+== rerun/seed31: - components: final 22, mean 11.9, max 22; occupancy final 0.09
+- replication (lineage window K = 20 frames = time 100, default): splits 18, persistent splits 8 (0 more failed only because the siblings re-merged within K), max generation 2, merges 2, merge/split ratio 0.111, nucleations 7
+rerun/seed31/frames.npz: bodies 66, membrane-like 66 (100%), median rim/core 3.18, median rim/outside 3.98, mean core fuel 0.566
+== controls/chis0_s31: - components: final 13, mean 7.5, max 13; occupancy final 0.11
+- replication (lineage window K = 20 frames = time 100, default): splits 6, persistent splits 4 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 7
+controls/chis0_s31/frames.npz: bodies 97, membrane-like 0 (0%), median rim/core 0.89, median rim/outside 1.51, mean core fuel 0.349
+== controls/slowD03_s31: - components: final 22, mean 9.8, max 22; occupancy final 0.09
+- replication (lineage window K = 20 frames = time 100, default): splits 20, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 3, merges 2, merge/split ratio 0.1, nucleations 7
+controls/slowD03_s31/frames.npz: bodies 30, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.37, mean core fuel 0.677
+== controls/slowD06_s31: - components: final 21, mean 9.2, max 21; occupancy final 0.10
+- replication (lineage window K = 20 frames = time 100, default): splits 14, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 7
+controls/slowD06_s31/frames.npz: bodies 84, membrane-like 0 (0%), median rim/core 0.90, median rim/outside 1.44, mean core fuel 0.504
