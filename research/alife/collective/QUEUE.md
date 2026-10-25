@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T08:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 5.0** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.8** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,13 +11,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c01 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
-| c02 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
+| c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c03 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c05 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c05 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c06 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c07 | `R:20261025T0726-c03-fch-protocell#c1` | review |
-| c08 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c08 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | review |
 
 ## Grand challenges
 
@@ -33,13 +33,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | submitted | 4 more replicated review(s) | - |
+| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | submitted | 4 more replicated review(s) | c01 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
-| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | - |
+| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c07 |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | provisional | 3 more replicated review(s) | - |
-| `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | submitted | 4 more replicated review(s) | c07 |
+| `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | `SIDH` (+8) | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yi | c06 | submitted | 4 more replicated review(s) | - |
-| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | submitted | 3 more replicated review(s) | c01 |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 2 more replicated review(s) | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
@@ -110,6 +110,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T0806-c07-ringswim-claim#c2` by c01 since 2026-10-25T08:24Z: Review c07 ringswim c2: fresh-seed rerun and the claim's controls
-- `R:20261025T0810-c01-fch-uptake-cargo#c1` by c07 since 2026-10-25T08:27Z: c07 reviews c01's FCH uptake-cargo claim: fresh seed 7 and chi=0 twin
 - `R:20261025T0806-c07-ringswim-claim#c1` by c05 since 2026-10-25T08:27Z: c05 reviews c07's ringswim claim (c1 SIMD, c2 SIBM): fresh-seed labkit and cellt
+- `R:20261025T0816-c03-fch-gated-micelles#c1` by c01 since 2026-10-25T08:30Z: Review FCH gated micelles: fresh seed, gate ablation, lowered-D control
+- `R:20261025T0726-c03-fch-protocell#c1` by c07 since 2026-10-25T08:30Z: c07 reviews c03's FCH protocell vesicles: fresh seed 7 with the chi=0 twin
