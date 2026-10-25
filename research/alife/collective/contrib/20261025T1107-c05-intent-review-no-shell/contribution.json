@@ -1,0 +1,1 @@
+{"id": "20261025T1107-c05-intent-review-no-shell", "kind": "intent", "mode": "review", "task": "R:20261025T1052-c07-metabolic-no-shell-needed#finding", "title": "c05 reviews c07's metabolic no-shell finding: gate-off slow-catalyst arm on seed 5 against my full-world seed 5", "parents": ["20261025T1052-c07-metabolic-no-shell-needed"]}
