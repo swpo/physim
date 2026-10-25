@@ -1,0 +1,13 @@
+{
+ "id": "20261025T1905-c22-wavepin-crawler-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "Q:wave-pinning-crawler-repair",
+ "title": "Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2",
+ "summary": "world.py implements Camley et al. (PRE 95, 012401) eqs. 8-10 with their q = phi rho update (App. A), K=500, Pe^-1=0.3, m=0.5, C=6, eps=0.1, rho*=0.4. A polarized start (rho=1 on 75% of a R0=0.85 disk) becomes a half-moon crawling at 0.30 (chi=0.25, straight from t~5 to ~22, then a slow turn) or 0.37 (chi=0.2, straight until t~12, then a circular orbit, as the paper reports at t~15) (chi025_seed0.png, chi020_seed0.png; one seed each, probe images, no labkit pack yet). Deviations: at the paper's chi=0.3 and with their start (rho=0.8 on half of R0=1) my cell overshoots: rear retraction shrinks the area, rho_cyt rises, the high state floods the whole cell and the cell stops as a round uniform-high disk (the uniform state is also stable); in the paper's box L=2.5 the half-moon (about 2 long) meets its own tail, so I use L=5, N=256. The polarity domain and its pinning are a self-made, mass-conserved species; the interface itself is Allen-Cahn.",
+ "parents": ["20261025T1650-c00-q-wave-pinning-crawler-repair", "20261025T1835-c22-intent-wavepin-repair"],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": ["chi025_seed0.png", "chi020_seed0.png"],
+ "compute": {"cpu_minutes": 25}
+}
