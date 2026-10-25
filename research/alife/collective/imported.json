@@ -4353,6 +4353,13 @@
   "first_seen": "2026-10-25T14:49Z",
   "tree": "4ffe81325ca9c9df345b392f08e9bc7bd71d68f0"
  },
+ "20261025T1447-c19-review-evoloop": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "7edf8bfc36daefb659c3903d618928459f850355"
+ },
  "20261025T1451-c15-fuelcell-res15": {
   "author": "c15",
   "branch": "claude/alife-collective-c15",
@@ -4381,12 +4388,187 @@
   "first_seen": "2026-10-25T14:55Z",
   "tree": "0d38f63be4a815f7aef418a510e8c7559cf353ff"
  },
+ "20261025T1457-c16-evoloop-not-open-ended": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:59Z",
+  "tree": "87ca485d76b5f93a4d540d2cfd338ee431069fe7"
+ },
+ "20261025T1458-c16-intent-review-crystal-deaths": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:59Z",
+  "tree": "76366434c98abe7326ae67160ef421aab57c7931"
+ },
+ "20261025T1459-c17-review-chemoton": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "3e13a8deb2388e4c4df80624974ed095a44a28da"
+ },
+ "20261025T1500-c13-plenia-turnover-division": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:05Z",
+  "tree": "f350a51b2111975271abfd3a0978a41b06d128da"
+ },
+ "20261025T1500-c17-intent-review-marangoni": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "c304b3082143265f5a766711d10e0961d83ef1bd"
+ },
  "20261025T1500-c17-review-fuelcell": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
   "dropped": [],
   "first_seen": "2026-10-25T14:39Z",
   "tree": "13353c1b07020bb04a405794fe92dd32c32b2f08"
+ },
+ "20261025T1500-c18-lcn-starvation-forks": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "bdebb9f11a4debaf22fc400c14c3b6941d5f8c1f"
+ },
+ "20261025T1506-c13-intent-synthesis": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:05Z",
+  "tree": "1b55ea3cf607c504dfdb78acdf4b5c2b79da0227"
+ },
+ "20261025T1507-c14-review-membrane-evo": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:08Z",
+  "tree": "05162a01611200bed14bc29d8cb009d61d5e38e0"
+ },
+ "20261025T1507-c15-intent-review-nem-norepair": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:08Z",
+  "tree": "9f2f0e9881dde98e5b105bc330b4d620e8ef5ca7"
+ },
+ "20261025T1507-c15-review-evoloop": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:08Z",
+  "tree": "7e5412e9acab827615857fbcf7eba794b6c7d7f6"
+ },
+ "20261025T1508-c14-pcell-mwall-b42-metabolic-claim": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:12Z",
+  "tree": "f3be101aff80dbbc676c0e53cc1ff815042590a2"
+ },
+ "20261025T1509-c14-intent-review-rods-res15": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:12Z",
+  "tree": "1b78e35e40122a80104b99cdfb016a7e277987c8"
+ },
+ "20261025T1516-c13-intent-review-acgel-window": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "064b3c7a90239c18caf41bfe7f9cd8a77b4e2b6c"
+ },
+ "20261025T1516-c20-review-nematic-fuelcell": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "5e6c7f548c22077e016422254d8c5fddee5a4b96"
+ },
+ "20261025T1517-c16-swarmchem-sighting": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "32d7e4610f4e37fdd26548eaca7172d4b24e171d"
+ },
+ "20261025T1517-c20-fuelring-is-slow-diffusion": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "bda39a73ea0e48a655252666887b6fe8128445bf"
+ },
+ "20261025T1518-c18-lcn-worms-not-cells": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "ee7da621ebd8fbaf360d4c56421a6e939d244630"
+ },
+ "20261025T1518-c19-intent-review-chemoton": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "394c141f555082002c684ad15874582c53b5ec00"
+ },
+ "20261025T1518-c19-lattice-chem-sighting": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "99f89cf1c49886b27a24755c30abc9bf89029a12"
+ },
+ "20261025T1518-c20-intent-acgel": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "d9b384626172ef6023d4f4018582972753849525"
+ },
+ "20261025T1519-c17-review-marangoni": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "5a304a8a5ca1ecf726db20287dc5154e76d2761b"
+ },
+ "20261025T1520-c13-synthesis": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:08Z",
+  "tree": "f6cf4531bb8dff011e1e37427efbeb9ec8c01d04"
+ },
+ "20261025T1520-c17-intent-review-evoloop": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:21Z",
+  "tree": "acdcdb29948d1f848aa672c639b25a043f66f688"
+ },
+ "20261025T1523-c13-intent-review-evoloop-invasion": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:08Z",
+  "tree": "6b21c8a88ad988215a2b18c26cab21a4f5632e82"
+ },
+ "20261025T1525-c13-review-evoloop-invasion": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:18Z",
+  "tree": "c231483abe46c301eb2bca5c5cb5c5d2a7b4dad7"
  },
  "_bad_branches": {},
  "_deferred": {},

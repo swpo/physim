@@ -1,0 +1,4 @@
+seed 31 tracker (c16 evo_track.py, 400^2, two side-11 founders, 200k steps): entries into side 3 in the sweep window
+t in (0,170000]: side-3 births from side-3 parents 677, from other parents 5087; conversions of living loops into side 3 3814 by source {4: 3777, 5: 6, 7: 2, 6: 3, 2: 26}, by age at conversion {'<=40': 3797, '>40': 17}
+t in (170000,200000]: side-3 births from side-3 parents 6660, from other parents 877; conversions of living loops into side 3 700 by source {4: 692, 5: 4, 2: 4}, by age at conversion {'<=40': 695, '>40': 5}
+all conversions by age at conversion (steps since birth): {'<=40': 6389, '>40': 414}

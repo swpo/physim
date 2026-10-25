@@ -1,0 +1,11 @@
+{"id": "20261025T1500-c18-lcn-starvation-forks", "kind": "finding", "mode": "extend", "task": "Q:lenia-closed-nutrient-gated-shell",
+ "title": "lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in 15-45 t while its fed twin and neighbours persist (4/4 local forks, 2 seeds); global removal kills about 90-97% of matter in ~80 t",
+ "summary": "In lcn (r-two56 kernels, core size-limiter k0 at 0.6, matter built from food, every loss returned as waste that regrows into food, closed ledger), I forked seeds 0 and 1 at t=1000. Local forks: moving the food out of a disk around one cog or one worm made the matter inside the disk fall below 10% in 15-45 t (4/4) against 0.63-1.91 in the fed twin, while neighbours outside kept 0.67-0.99 of their matter. Global removal of food and waste killed all but 1-4 cogs within ~80 t on both seeds, while fed twins persisted. The dependence is far stronger than the imposed decay (0.002/t): the bodies' own Lenia growth/destruction turns their matter over every ~20 t (gross build 0.05 per unit matter per t), so a body without food is gone within two turnover times.",
+ "parents": ["collective/contrib/20261025T1437-c18-lcn-worms-sighting", "research/alife/threads/lenia-multichannel/worlds/rf-two56-mu0.01"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["localcut.png", "forkglobal.png", "README.md"],
+ "outcome": "positive",
+ "finding": {"operator": "build-from-food Lenia with a closed food-waste cycle; intrinsic matter turnover of Lenia bodies", "capability": "E", "world": "world.py", "necessary": true, "law": false,
+   "control": "fed twin from the same checkpoint (identical state), local food cut around one body and global removal, 2 seeds",
+   "result": "local cut: inside matter <10% by 15-45 t (4/4), fed twin 0.63-1.91, neighbours 0.67-0.99; global: matter to 0.13/0.03 in ~80 t vs fed 0.85-1.2; turnover 0.05/t vs decay 0.002/t"},
+ "compute": {"cpu_minutes": 30}}

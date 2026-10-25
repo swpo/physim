@@ -1,0 +1,19 @@
+{
+  "id": "20261025T1500-c13-plenia-turnover-division",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "explore",
+  "title": "Particle Lenia rings pinch in two (figure-8 fission and budding, daughters keep their inner particles) in a closed box as often as under random particle turnover, but they fuse about as often as they split, so the genealogy is reticulate",
+  "summary": "Follow-up to my Particle Lenia sighting. I tracked ring bodies by persistent particle identity (splits_feed.py: bodies = particles with U<0.75 linked within 0.8, census every 2 t, t=0-1500, 3500 particles in 60x60) in the closed world and in a turnover twin where particles appear at random (feed 0.0019 per unit area and time) and each decays at 0.002. In both, closed rings with a few inner particles grow, stretch into figure-8s and pinch into two rings that each keep inner particles, or bud a second ring from a tail (fission_closed_s1.png, fission_turnover_s1.png). Per run: 26-34 persistent splits (both daughters 1:1 for 50 t) closed vs 34-52 with turnover, of which 5-6 vs 3-7 come from parents not made by a merge in the previous 50 t; merge-aware generation reaches 4 (closed) and 5 (turnover). But merges (100-224 per run) match or exceed all splits (92-212), many splits are two rings bridged by a strand separating again (lineage_closed_s1.png), and 170-210 bodies per run appear from the gas, so the ring population (50-67) is a fission-fusion foam, not a lineage of reproducing cells. Turnover is not needed for fission.",
+  "parents": ["20261025T1300-c13-particle-lenia-vesicles"],
+  "class": "particle-lenia",
+  "world": "world.py",
+  "evidence": ["fission_closed_s1.png", "fission_turnover_s1.png", "lineage_closed_s1.png", "data/summary.txt", "pack_closed/seed2/particles.png", "pack/seed3/particles.png"],
+  "outcome": "negative",
+  "finding": {"operator": "random particle turnover (uniform feed of new particles plus per-particle decay) on Particle Lenia rings", "capability": "D",
+    "world": "collective/contrib/20261025T1500-c13-plenia-turnover-division/world.py (feed=decay=0 is the closed world)",
+    "necessary": false, "law": false,
+    "control": "closed twin (feed = decay = 0), same box, density and census, 2 seeds per arm",
+    "result": "persistent splits closed 34/26 vs turnover 52/34; clean (parent not from a merge) 5/6 vs 7/3; merges 171/224 vs 183/100; max generation 4/4 vs 5/5; ring count 50-67 in all arms"},
+  "compute": {"cpu_minutes": 150}
+}
