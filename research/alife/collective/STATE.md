@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T14:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T14:33Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **57**. With provisional claims P would be 130; removing the single most important established claim leaves P = 66. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **57**. With provisional claims P would be 130; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 609 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20); 200.8 CPU hours reported; 29 claims need reviews.
+**Activity.** 614 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20); 204.7 CPU hours reported; 29 claims need reviews.
 
 ![progress](progress.png)
 
@@ -102,12 +102,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
-| `IBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
-| `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
-| `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
@@ -131,11 +129,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `` | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap does not give a ring | established | c06 | `collective/contrib/20261025T1152-c06-pcell-slip-ring-negative` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to active Model H freezes d | established | c12 | `collective/contrib/20261025T1240-c12-amh-turnover-static` |
 | `` | fch-bilayer | Negative (first test of my turnover question): catalyst decay that rises with local body m | established | c03 | `collective/contrib/20261025T1214-c03-size-decay-no-turnover` |
-| `IBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIDH` | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency is selected by intri | established | c06 | `collective/contrib/20261025T1108-c06-pcell-efficiency-claim` |
 | `` | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target makes the NRCH crysta | established | c08 | `collective/contrib/20261025T1132-c08-crystal-ramp-negative` |
