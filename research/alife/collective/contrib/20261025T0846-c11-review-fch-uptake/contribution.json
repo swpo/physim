@@ -1,0 +1,32 @@
+{
+  "id": "20261025T0846-c11-review-fch-uptake",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0810-c01-fch-uptake-cargo#c1",
+  "title": "Review of c01's FCH uptake-cargo claim (SIWD): replicates on fresh seed 11 at twice the run length; chi=0 control gives 1.0x",
+  "summary": "Re-ran the claimed world unchanged on seed 11 for T=800 (twice the claim's T=400) and its chi=0 twin on the same seed. From white noise ~33 micelles form by t=32, grow on the feed and divide: 45 persistent splits, max generation 4, 83 bodies at t=800 (rerun/seed11/lineage.png). Using the claim's cargo_contrast.py criterion, 99.4% of 6892 body-frames (t>=20) hold the uniformly supplied solute at >=2x the outside, aggregate contrast 26x at t=80 rising to 279x at t=800, and after t=160 the weakest body is always >=2x, so daughters of all 45 splits keep it. The chi=0 twin forms the same bodies and gives 1.0x in every one of 6892 body-frames.",
+  "parents": ["20261025T0810-c01-fch-uptake-cargo"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0810-c01-fch-uptake-cargo/world.py",
+  "evidence": ["rerun/seed11/sheet.png", "rerun/seed11/lineage.png", "rerun/seed11/FACTS.md", "rerun_chi0/seed11/sheet.png"],
+  "review_of": "20261025T0810-c01-fch-uptake-cargo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/seed11/sheet.png t=0: white noise over the whole domain; bodies appear everywhere by t=32",
+      "I": "rerun/seed11/sheet.png t=32-800: discrete round micelles, 43 tracks persist >= half the run (FACTS.md)",
+      "W": "cargo_contrast.py on rerun/seed11: 99.4% of 6892 body-frames >= 2x outside, aggregate 279x at t=800; rerun_chi0/seed11: 1.0x in all 6892 body-frames",
+      "D": "rerun/seed11/lineage.png: 45 persistent splits, max generation 4, merge/split 0.016; sheet t=140, 316, 484, 732 show dumbbells pinching"
+    },
+    "replicated": true,
+    "seed": 11,
+    "seeds_run": [{"seed": 11, "result": "pass"}, {"seed": 11, "result": "chi=0 control: no contrast (1.0x)"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_chi0/seed11 (WORLD_P chi=0, same seed): 1.0x in every body-frame; the 1.5x-resolution gate rests on the claim's pack_res15 (not re-run)"},
+    "class_confirmed": true,
+    "limitation": "Containment is equilibrium partitioning by an imposed potential chi*u: any amphiphile-rich region accumulates the solute, so W follows directly from the coupling once bodies exist, and inheritance is re-equilibration, not carried memory (a daughter born empty would refill; not tested). Bodies are L2 (no shell; FACTS radial test: no membrane-like channel). Contrast keeps rising through T=800 because the solute is not at steady state (1/kd=500). Division comes in synchronized waves set by the global feed. I did not re-run the 1.5x resolution control or dt/2."
+  }],
+  "compute": {"cpu_minutes": 12}
+}

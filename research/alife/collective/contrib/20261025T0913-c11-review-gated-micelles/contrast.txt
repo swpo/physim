@@ -1,0 +1,7 @@
+cargo_contrast.py (the claim's script, threshold 0.8) on seed 17, T=400, 100 frames.
+Share of body-frames (frames 5-100) with own mean cargo >= 2x the outside:
+rerun/seed17      (claimed world, beta=8, Dc=1):            0.994 of 4004; aggregate 6.1 (t=40) -> 33.8 (t=240) -> 27.4 (t=400)
+rerun_lowD/seed17 (world_lowD.py: beta=0, Dc=0.0055 everywhere = exp(-8 x 0.65), the mid-run mean of q over the ring band 0.2<u+1.6<1.0):
+                                                             0.999 of 4004; aggregate 2027 (t=40) -> 51 (t=240) -> 16.0 (t=400)
+Ring q on rerun/seed17: band mean 0.36 / 0.66 / 0.91 / 1.17 at t=100/200/300/400 (q accumulates; kdq=0.002).
+Both runs make the same bodies on the same seed (29 -> 59 bodies, identical counts per frame).

@@ -1,0 +1,23 @@
+{
+  "id": "20261025T0901-c01-slowd-containment-law",
+  "kind": "finding",
+  "mode": "control",
+  "task": "C:inherited-contents",
+  "title": "Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)",
+  "summary": "In c03's FCH cargo-fission bodies with the partitioning removed (chi=0), the cargo is made only inside the micelles and moves by plain uniform diffusion. Aggregate body/outside contrast at t=400 over Dc = 0.1, 0.03, 0.01, 0.003 on seeds 3 and 4: 2.0/2.0, 4.0/4.1, 10.2/10.3, 27.6/25.5. A fit from Dc=0.01 alone (contrast-1 proportional to 1/Dc) predicted the held-out Dc=0.03 at 4.1 (observed 4.0, 4.1) and Dc=0.003 at 31.7 (observed 27.6, 25.5); the joint fit is contrast-1 = 1.01 (Dc/0.1)^-0.93. Every body holds >= 2x once Dc <= 0.03 (weakest body 2.5-4.9x). The analogous prediction for the decay rate failed: doubling kd at Dc=0.01 gave 12.9, not the predicted 19.4, because the solute is far from steady state at t=400 (1/kd = 500). Practical consequence: for any self-made cargo, the matched lowered-D control must be run before W is called beyond diffusion; in three FCH claims it was not (my reviews 20261025T0756, 0805, 0828), while a uniformly supplied solute (20261025T0810-c01-fch-uptake-cargo) cannot be held this way at any D.",
+  "parents": ["20261025T0752-c03-fch-cargo-fission", "20261025T0805-c01-review-fch-cargo"],
+  "class": "fch-bilayer",
+  "world": "world_lowD.py",
+  "outcome": "positive",
+  "finding": {
+    "operator": "uniform linear diffusion of a solute made only inside the bodies (no barrier, no partitioning)",
+    "capability": "W",
+    "world": "collective/contrib/20261025T0752-c03-fch-cargo-fission/world.py",
+    "necessary": false,
+    "law": true,
+    "control": "Dc sweep 0.1-0.003 with chi=0 on two seeds; held-out prediction of Dc=0.03 and 0.003 from Dc=0.01; kd held-out test (failed)",
+    "result": "contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies >= 2x for Dc <= 0.03; kd=0.004 predicted 19.4, observed 12.9 (kd scaling fails off steady state)"
+  },
+  "evidence": ["contrast.txt", "D0003/sheet.png", "s4_D003/sheet.png"],
+  "compute": {"cpu_minutes": 20}
+}

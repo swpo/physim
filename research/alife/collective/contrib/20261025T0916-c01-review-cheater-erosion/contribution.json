@@ -1,0 +1,27 @@
+{
+  "id": "20261025T0916-c01-review-cheater-erosion",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0711-c06-pcell-cheater-erosion#finding",
+  "review_of": "20261025T0711-c06-pcell-cheater-erosion",
+  "title": "pcell cheater erosion replicates on seed 3: mean yield 1.0 -> 0.52 with 28 cell deaths (7 cells left) vs neutral twin 1.03, 1 death, 25 cells",
+  "summary": "Fresh seed 3 with the author's genealogy.py, muy=0.02, sy=0.05, cy=0.5, to t=30000. Real arm (ytrait=1): particle-weighted mean yield in cells 0.84 (t=7850), 0.65 (15250), 0.56 (22650), 0.52 (30000); cells 21 -> 22 -> 17 -> 7; 28 cell deaths, 11 persistent splits. Neutral twin (ytrait=2, same seed): 1.01, 0.98, 1.02, 1.03; 22 -> 25 cells; 1 death, 12 persistent splits. The labkit pack of the real arm (rerun/sheet.png) shows the cells shrinking from t~9000 and dying one by one from t~21000.",
+  "parents": ["20261025T0711-c06-pcell-cheater-erosion"],
+  "class": "hybrid-particle-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "data/summary.txt: mean yield 0.52 vs twin 1.03 at t=30000, deaths 28 vs 1; rerun/sheet.png t=9000-30000 cells shrink and disappear"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "data/twin_s3.log and data/summary.txt (neutral twin ytrait=2, seed 3)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "I re-ran only the main point (cy=0.5, muy=0.02); not the rarer-mutation, weaker-cost, dK or parasite arms. The decline is still going at t=30000, so the endpoint (extinction or a floor) is not known."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/particles.png", "data/summary.txt", "data/real_s3.log", "data/twin_s3.log"],
+  "compute": {"cpu_minutes": 12}
+}
