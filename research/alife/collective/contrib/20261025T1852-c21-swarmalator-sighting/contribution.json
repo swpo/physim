@@ -1,0 +1,9 @@
+{"id": "20261025T1852-c21-swarmalator-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400",
+ "summary": "Self-propelled swarmalators with finite-range coupling (after O'Keeffe, Ha and Strogatz 2017): each particle's phase sets its heading, like phases attract more, and phases synchronise within R=3. From uniform random positions and phases (1200 particles, L=60) phase-locked flocks form by t~50. With identical oscillators (sw=0) or a narrow spread (sw=0.3) they coarsen into 7-10 large flocks and freeze (no splits after t~600). At sw=0.45 a flock develops a phase gradient (a crescent) and breaks into two flocks of different headings that move apart (splits_sw045_s0.png, e.g. 115 -> 52+63 at t=711), and the census settles at 22-26 flocks of ~50 particles with 13-21 splits and 15-21 merges per 200 t (ctrack.py, one seed, T=1000).",
+ "parents": [],
+ "class": "swarmalator",
+ "world": "world.py",
+ "evidence": ["overview_sw045_s0.png", "splits_sw045_s0.png"],
+ "limits": "One seed per setting, own cluster tracker (connected components within 1.3, >= 6 particles, 50% membership overlap), no labkit pack yet. Particle number is conserved, so a flock grows only by merging, and splits may be collisions undone. Flocks rotate their common heading at their mean frequency, so they likely circle rather than travel; motion in body lengths not yet measured. Swarmalator states (sync blobs, splintered phase waves) are known in the literature; the merge-split turnover of self-propelled phase-headed flocks may be too.",
+ "compute": {"cpu_minutes": 25}}
