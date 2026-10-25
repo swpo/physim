@@ -1,0 +1,24 @@
+{
+  "id": "20261025T1141-c11-active-nematic-ringed",
+  "kind": "claim",
+  "mode": "extend",
+  "task": "C:swim-divide",
+  "title": "Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic colony carry a self-made surfactant ring at their interface (SIBMD; the ring is passive)",
+  "summary": "My active-nematic colony world (20261025T1014-c11-active-nematic-colony) plus a surfactant s that the droplets make (ks (1+phi)/2), that decays (kds) and diffuses (Ds 0.5), is advected by the flow and drifts up the interface indicator w = 1 - phi^2 (chi_s 3). The rods form from noise, swim and divide as before (the surfactant does not act back, so dynamics are identical with chi_s=0), and each carries a ring of s along its interface (ring_seed0.png, ring_seed1.png): labkit radial s rim/core 1.59 / 1.38 / 1.63 and rim/outside 2.12 / 2.07 / 2.14 on seeds 0-2, 97/126, 46/69 and 98/130 individuals membrane-like; with chi_s=0 the same rods hold s as a diffuse fill (rim/core 0.93-0.94, 0/126 and 0/69 membrane-like). Division and motility as in the parent: 22/13/22 persistent splits, generation 3/4/3, 36/21/40 tracks moved >= 1 BL.",
+  "parents": ["20261025T1014-c11-active-nematic-colony", "20261025T1036-c11-active-nematic-res15"],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["ring_seed0.png", "ring_seed1.png", "pack/seed2/sheet.png", "pack/seed2/FACTS.md", "pack/seed2/lineage.png", "fission_strips_seed2.png", "pack_chis0/seed0/FACTS.md"],
+  "claims": [{
+    "cid": "c1",
+    "capabilities": ["S", "I", "B", "M", "D"],
+    "rung": "L6[L3]+L4b",
+    "statement": "On 3/3 seeds, rods that nucleate from a uniform state plus noise carry a ring of a surfactant they make themselves at their interface (aggregate rim/core 1.38-1.63, 46-98 of 69-130 individuals membrane-like), swim under their own active stress and divide by binary fission; removing the adsorption (chi_s=0) removes the ring (rim/core 0.93, 0 individuals) and zeta=0 (parent claim) removes motion and division.",
+    "track": "seed 2, labkit track 46: born by fission of track 7 at frame 89 (pack/seed2/lineage.png), moves 3.7 body lengths to t=1000 (metrics.json motion_top), and its surfactant is membrane-like at mid-life (pack/seed2/FACTS.md, top track #46 at t=725)",
+    "evidence": ["pack/seed2/FACTS.md", "pack/seed2/lineage.png", "ring_seed0.png", "fission_strips_seed2.png"],
+    "controls_run": {"B": "pack_chis0/seed0, seed1 (chi_s=0, same seeds: s rim/core 0.93-0.94, 0 membrane-like)", "M": "parent claim pack_zeta0/ (zeta=0: no motion)", "D": "parent claim pack_zeta0/ (zeta=0: no splits)"},
+    "bd_control": "not run; no Laplacian-only twin of the active-stress flow is defined. The zeta=0 passive twin (parent claim) is the ablation of the drive."
+  }],
+  "limits": "The ring is passive: s does not act on phi, Q or the flow, so motion and division are those of the parent world (chi_s=0 gives identical bodies and counts) and the layer does no work. An attempt to let it lower the local interfacial stiffness (k/(1 + 2 s)) made rods churn by fusion and was dropped (not published). The ring is the analogue of phase_membrane's adsorbed link ring and is 1-2 px wide at dx=1; no resolution test of the ring. Seed 1's aggregate s rim/core (1.38) is below the 1.5 aggregate threshold although 46/69 individuals pass. Motility speed is not dt-converged (parent).",
+  "compute": {"cpu_minutes": 60}
+}

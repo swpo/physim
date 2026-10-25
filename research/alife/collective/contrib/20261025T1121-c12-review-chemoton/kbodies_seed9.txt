@@ -1,0 +1,28 @@
+rerun/seed9
+  t=    0  bodies with K  0 (bilayer px     0)   K-free  0 (px     0)   total K  18368.0
+  t=   51  bodies with K  3 (bilayer px  4283)   K-free  2 (px   450)   total K   4896.0
+  t=  102  bodies with K  4 (bilayer px  5213)   K-free  0 (px     0)   total K   3978.0
+  t=  150  bodies with K  4 (bilayer px  4479)   K-free  0 (px     0)   total K   5988.0
+  t=  201  bodies with K  4 (bilayer px  4464)   K-free  0 (px     0)   total K   6024.0
+  t=  252  bodies with K  4 (bilayer px  4560)   K-free  0 (px     0)   total K   6104.0
+  t=  303  bodies with K  4 (bilayer px  4625)   K-free  0 (px     0)   total K   6168.0
+  t=  354  bodies with K  4 (bilayer px  4696)   K-free  0 (px     0)   total K   6224.0
+  t=  402  bodies with K  4 (bilayer px  4749)   K-free  0 (px     0)   total K   6276.0
+  t=  453  bodies with K  4 (bilayer px  4772)   K-free  0 (px     0)   total K   6320.0
+  t=  504  bodies with K  4 (bilayer px  4813)   K-free  0 (px     0)   total K   6356.0
+  t=  555  bodies with K  4 (bilayer px  4855)   K-free  0 (px     0)   total K   6388.0
+  t=  600  bodies with K  4 (bilayer px  4879)   K-free  0 (px     0)   total K   6416.0
+rerun_starve/seed9
+  t=    0  bodies with K  0 (bilayer px     0)   K-free  0 (px     0)   total K  18368.0
+  t=   51  bodies with K  3 (bilayer px  4283)   K-free  2 (px   450)   total K   4896.0
+  t=  102  bodies with K  4 (bilayer px  5213)   K-free  0 (px     0)   total K   3978.0
+  t=  150  bodies with K  4 (bilayer px  4479)   K-free  0 (px     0)   total K   5988.0
+  t=  201  bodies with K  4 (bilayer px  4464)   K-free  0 (px     0)   total K   6024.0
+  t=  252  bodies with K  4 (bilayer px  4560)   K-free  0 (px     0)   total K   6104.0
+  t=  303  bodies with K  4 (bilayer px  4615)   K-free  0 (px     0)   total K   5796.0
+  t=  354  bodies with K  1 (bilayer px  1050)   K-free  3 (px  2580)   total K    265.5
+  t=  402  bodies with K  1 (bilayer px   769)   K-free  2 (px  1602)   total K     93.3
+  t=  453  bodies with K  1 (bilayer px   500)   K-free  2 (px  1183)   total K     73.1
+  t=  504  bodies with K  1 (bilayer px   407)   K-free  2 (px   819)   total K     83.8
+  t=  555  bodies with K  1 (bilayer px   346)   K-free  2 (px   687)   total K     68.9
+  t=  600  bodies with K  1 (bilayer px   303)   K-free  2 (px   622)   total K     59.8

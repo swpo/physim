@@ -1,73 +1,70 @@
 # State of the field
 
-Generated 2026-10-25T11:16Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **7**; corrections C = **37**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **43**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 376 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 123.0 CPU hours reported; 39 claims need reviews.
+**Activity.** 433 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 138.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
-## Latest synthesis (2026-10-25T11:06Z, c05)
+## Latest synthesis (2026-10-25T11:26Z, c06)
 
-One-page synthesis at 11:05Z (P 62, K 6, C 36): active-nematic SIMD colony and active-gel SIM established; two laws/mechanisms (slow-D containment law, pcell cost regimes); growth and turnover audits established (crawler confound, membrane_evo disk births). Submitted controls suggest slow diffusion replaces the gated wall in metabolic micelles and that conservation, not taxis or flow, decides motility twins. Turnover without imposed deaths is still the bottleneck; pcell's cost window is the shortest route to autonomous heredity.
+One page at 11:25Z (P 62, K 8, C 40). Established since synthesis 5: the active-nematic SIMD colony (motility marginal on a fresh seed) and pcell's SIDH, the first H driven only by intrinsic deaths. The audits (c09, c06) show its death bias is mostly built within each cell's life by erosion of a public good, even with no explicit cost. A pure-efficiency trait removes the erosion and gives a response against an inert marker but runs away into giants; capped, it keeps 11-15 cells and makes dying cells low at birth (submitted). FCH lines freeze at carrying capacity. Next: B for C:autonomous-heredity, discrete kinds set at division, and life-course readouts in every H review.
 
-# Synthesis 5: the "built-in" audit spreads; one swim-and-divide colony in a new class is established; two promising walls lose their beyond-diffusion story (c05, ~4.5 h in)
+*Note: this synthesis cites claims that are not established: 20261025T1037-c06-pcell-yeff-response, 20261025T1108-c06-pcell-efficiency-claim.*
 
-Score at writing (STATE.md, 11:03Z): P = 62, P_BD = 12, Q = 12, K = 6, C = 36 (synthesis 4 at 10:28Z: K = 3, C = 32).
-Only established results are stated as results. Everything marked *submitted* still needs reviews.
+# Synthesis 6: heredity by intrinsic deaths is established in one class, but what it selects is a within-life decline; the heredity line now needs B, not more H (c06, ~5 h in)
 
-## Established since synthesis 4
+Score at writing (STATE.md, 11:22Z): P = 62, P_BD = 12, Q = 12, K = 8, C = 40 (synthesis 5 at 11:05Z: K = 6, C = 36).
+Only established results are stated as results; *submitted* marks work still under review.
 
-- **Active-nematic rods: a swim-and-divide colony from noise in a fourth class (`SIMD`, c11, 1014).**
-  A few nuclei become self-stirring rods that swim, grow on the bath and split by binary fission.
-  Resolution check (*submitted*, 1036-c11): at 1.5x one nucleus founds a 13-rod colony (generation 3).
-  Like the other swim-divide worlds, it has no organized boundary.
-- **Active-gel comets (`SIM`, c09, 1016).** Replicated on new seeds (my review: 7 persistent comets,
-  up to 9 body lengths; substrate fork kills 8/8 within 10 t). E is recorded by construction.
-- **Two laws/mechanisms raised K:** cargo held without any barrier rises as contrast-1 ~ Dc^-0.93 and
-  passes the W gate for Dc <= 0.03 (c01, 0901), and pcell's replication cost sets three regimes
-  (runaway giants, stationary turnover with deaths at the 1st-10th yield percentile, erosion; c06, 0755;
-  replicated on seed 5 in my review, with birth selection weaker than claimed: split percentile 0.58).
-- **Audits of growth and turnover, now established:** the dividing crawler's growth came from a
-  content-independent branch of its area term, and starved crawlers never die (c04, 0849/0908);
-  with the term clipped, no setting gives sustained crawl-divide (c04, 0917); membrane_evo's
-  reproduction runs through its imposed disks (c10, 0906; c03, 0747). My fresh-seed reviews agree
-  in direction but give smaller shares (disk-cut births 57-70% on seed 37, against 85% pooled).
+## Established since synthesis 5
+
+- **Active-nematic rod colony (`SIMD`, c11, 1014).** My fresh-seed review agrees (seed 5: 26 persistent
+  splits, generation 4; zeta = 0 gives 10 static drops, 0 splits), but motility is marginal (best track
+  3.3 body lengths, speed not dt-converged).
+- **pcell `SIDH` (c06, 0820) and its containment version (0857).** Walled Allen-Cahn cells whose catalyst
+  is ~8000 identity-carrying particles; a heritable link yield arises by mutation, and the cells that die
+  without any imposed death are the low-yield ones (3rd-5th yield percentile; inert marker 0.29-0.55).
+  It is the first established claim with H driven only by intrinsic deaths.
+- **What that H actually is (established negatives and audits).** Dying cells are born near-average and
+  decline during life (c09, 0952; c06, 0923): rank at birth 0.30-0.59, at death 0.02-0.07. The decline
+  is absolute, not relative to an improving population, and it happens even with no explicit replication
+  cost, because link making draws on the substrate that each particle's own replication uses
+  (c06, 1012, *submitted*). The selected unit is therefore partly the cell lineage and partly the
+  particle inside it: cells age by within-cell erosion of a public good.
+- **Containment without a gate (c01's law, established).** Cargo with no barrier is held at
+  contrast - 1 ~ Dc^-0.93. In pcell the gate matters less for contrast than for individuality: the
+  lowered-D no-gate twin still holds particles 4-37x but its cells fuse into one body (0857).
 
 ## What changed in the reading
 
-1. **Walls that do work may not need a wall.** The new matched controls (*submitted*) say slow
-   diffusion does the same job: metabolic FCH micelles with the gate off and the catalyst 100x slower
-   live, grow and divide as well as the gated world (c07, 1052, fork numbers corrected in 1100), and
-   c01's law gives the same picture for cargo. The IBWD and metabolic-micelle results stand, but
-   their beyond-diffusion credit does not follow; the honest statement is "a slow self-made species",
-   not "a gate".
-2. **Motility is not specific to advection either, except where conservation matters.** Two kstrail
-   twins disagree (c01's mass-conserving twin swims 10/10 on my seeds 7-8; c07's mass-creating twin
-   jams at 0/10); c09's flow-free active-gel twin with matched linear spectrum (*submitted*, 1046)
-   dissolves its peaks with local conservation and gives one domain-scale swimmer with global
-   conservation. Across three classes the deciding ingredient is how mass is conserved and
-   redistributed, not the taxis or flow term itself.
-3. **Turnover without imposed deaths is still the bottleneck.** No division in active-gel comets
-   (c09, 1034, *submitted*); Allee thresholds freeze metabolic micelles (c03, 1050, *submitted*); a
-   chemostat turns NRCH flocks into a traveling crystal with no division (c08, 1054, *submitted*);
-   crawler fixes give boom-bust (c04, 1044, *submitted*). Material membranes in particles (my bondcell
-   sighting 0936) do not renew: bonded rings decay at the membrane turnover rate, fed or starved
-   (1104, *submitted*).
-4. **The ring/motion trade-off holds on fresh seeds** (ringswim c2: ring 1.32/1.44 on my seeds 7/8,
-   and seed 7 coarsens into one domain-wrapping band), so `SIBMD` remains open.
+1. **Heredity needs kinds fixed between births, and the cost that makes deaths also erodes kinds.** With
+   a cost, cells turn over but decline during life. Without one (yield as pure efficiency,
+   c06 1037 *submitted*), cells keep their yield for life and the mean responds against an inert marker
+   (1.13 vs 1.04 at t ~30000), but the response runs away into giant cells. A capped trait
+   (c06 1108, *submitted*, 4 seeds) keeps 11-15 bounded cells. There, dying cells are below the median
+   already at birth (rank 0.25-0.40; marker 0.42-0.63) and lose only 0.03-0.08 during life, though
+   low- vs high-born death rates differ on only 2 of 4 seeds.
+2. **Turnover remains the bottleneck everywhere else.** Particle-fed FCH micelles (c06 1013) and
+   metabolic FCH micelles (c03 1000) both freeze at a carrying capacity with no deaths. Starving FCH
+   bodies shrink to a stable size instead of dying, so FCH lines will not give H until something
+   destabilizes small bodies.
+3. **Rings and motion still trade off.** In pcell with c05's label-free slip, the link ring passes
+   (rim/core 1.62) only below the swimming transition. Above it cells swim 40-90 body lengths but lose
+   ring and division (c06 0914, as c05 0724 found for the field version).
 
 ## Most promising next steps
 
-- **Turnover first.** Every heredity and metabolism result now waits on intrinsic deaths that free
-  space. pcell's cost window (cy 0.03-0.06) is the only world with selective intrinsic deaths and
-  bounded cells; the yeff variant (*submitted*, 1037) shows a response against an inert marker.
-  A claim on that window with a powered neutral arm is the shortest route to `C:autonomous-heredity`.
-- **Ask for the slow-D twin** on every W or wall-does-work claim (a uniformly lowered D), and for the
-  conservation-matched twin on every motility claim; both are cheap and decided two readings today.
-- **Swim-divide with a wall:** active-nematic rods or NRCH swimmers inside an FCH bilayer remain
-  untried; Allen-Cahn rings lose to motion in every variant tried.
+- **`C:autonomous-heredity` now lacks B, not H.** pcell's L ring sits at rim/core 1.4-1.5. Two cheap
+  leads to test on the capped-efficiency world: the slip drive at mu ~2.2, which raised the ring to 1.62
+  without making cells swim far (one seed), and a stronger chi with a lower tilt to keep cells alive.
+- **Make kinds discrete at birth.** For example, mutate only at division (one particle reseeds a
+  daughter), so the L7 rule "kinds change only at mutation or birth" holds by design; then run a powered
+  identical-event neutral arm.
+- **Reviews should keep asking for the life-course readout** (rank at birth vs at death,
+  `birthfate.py`) on every H claim. It separated "selected kinds" from "aging cells" in one reading.
 
 ## Grand challenges
 
@@ -111,47 +108,47 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay** (fch-bilayer, c02, 2 forks) Fork of c01's fch-uptake-cargo micelle world with its global amphiphile feed replaced by amphiphile made only by a catalyst K (Gray-Scott-like on a fed precursor, partitioned into micelle cores with chi=-3) and amphiphil `collective/contrib/20261025T0936-c02-micelle-chemoton-sighting` ![](contrib/20261025T0936-c02-micelle-chemoton-sighting/channels_u_logK.png)
 - **Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish** (particle, c05, 2 forks) bondcell = sporecell3-det plus harmonic chain bonds between membrane particles M (<= 2 per particle, k_b=20, break above 0.6), bonded M kept as membrane when food is scarce, and a monolayer rule (a core particle touching `collective/contrib/20261025T0936-c05-bonded-membrane-rings` ![](contrib/20261025T0936-c05-bonded-membrane-rings/bonded_vs_nobond.png)
 - **active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation** (active-gel, c09, 1 forks) Same active-gel flow and self-laid regulator trail as 20261025T0934-c09-active-gel-comets, but the generator a is now made autocatalytically from a diffusing substrate s (kc s a, s regrows at ks(1-s)) and decays (ka a);  `collective/contrib/20261025T1002-c09-active-gel-fed-comets` ![](contrib/20261025T1002-c09-active-gel-fed-comets/pack/seed0/sheet.png)
-- **lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles** (lipid-particle, c12, 0 forks) New class: 800 three-bead lipids (head + two tails, FENE bonds, a straightening spring, WCA cores, a broad cos^2 tail-tail attraction as the only hydrophobic force) under overdamped Langevin dynamics in an 80x80 periodic `collective/contrib/20261025T1025-c12-lipid-2d-sighting` ![](contrib/20261025T1025-c12-lipid-2d-sighting/ribbons.png)
+- **lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles** (lipid-particle, c12, 1 forks) New class: 800 three-bead lipids (head + two tails, FENE bonds, a straightening spring, WCA cores, a broad cos^2 tail-tail attraction as the only hydrophobic force) under overdamped Langevin dynamics in an 80x80 periodic `collective/contrib/20261025T1025-c12-lipid-2d-sighting` ![](contrib/20261025T1025-c12-lipid-2d-sighting/ribbons.png)
 - **Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off)** (fch-bilayer, c02, 0 forks) The micelle chemoton with two catalysts K1, K2 that share the precursor (winner-take-all K_i^2 autocatalysis) and differ only in amphiphile yield (r2 = 1.3 r1; twin r2 = r1), both seeded as white noise (K0=0.02, WORLD_P  `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` ![](contrib/20261025T1042-c02-micelle-chemoton-2kinds/kinds_kap0.0015.png)
-- **Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts** (active-pfc, c10, 0 forks) New class: the Menzel-Loewen active PFC (conserved density phi coupled to a polarization P by v0), spectral, 128^2, eps=-1.5, mean density -0.75, v0=0.25, C1=0.1, Dr=0.5, from white noise. By t~40 about 7-9 isolated, sli `collective/contrib/20261025T1114-c10-apfc-sighting` ![](contrib/20261025T1114-c10-apfc-sighting/pack/seed0/sheet.png)
+- **Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts** (active-pfc, c10, 1 forks) New class: the Menzel-Loewen active PFC (conserved density phi coupled to a polarization P by v0), spectral, 128^2, eps=-1.5, mean density -0.75, v0=0.25, C1=0.1, Dr=0.5, from white noise. By t~40 about 7-9 isolated, sli `collective/contrib/20261025T1114-c10-apfc-sighting` ![](contrib/20261025T1114-c10-apfc-sighting/pack/seed0/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `I` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 1 | established | c08 | `collective/contrib/20261025T1017-c08-nrch-no-persistent-division` |
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deat | established | c06 | `collective/contrib/20261025T1013-c06-pmic-frozen` |
+| `` | active-gel | active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the popula | established | c09 | `collective/contrib/20261025T1034-c09-active-gel-no-division` |
+| `` | hybrid-particle-field | pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens e | established | c06 | `collective/contrib/20261025T1012-c06-pcell-hidden-cost` |
+| `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
+| `` | hybrid-particle-field | pcell: the low yield of dying cells is mostly acquired during their life (birth percentile | established | c09 | `collective/contrib/20261025T0952-c09-pcell-death-acquired` |
+| `` | fch-bilayer | Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a c | established | c03 | `collective/contrib/20261025T1000-c03-metabolic-no-turnover` |
+| `` | active-gel | active-gel comets vs a flow-free twin with the same linear spectrum: with local conservati | established | c09 | `collective/contrib/20261025T1046-c09-active-gel-bd-twin` |
+| `` | nrch | NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B terms plus a Model-A | established | c08 | `collective/contrib/20261025T0938-c08-nrch-ambplus-flock` |
+| `` | phase-field | A label-free wall-tilt (treadmilling) drive does not make ring-walled Allen-Cahn cells swi | established | c07 | `collective/contrib/20261025T0949-c07-wall-tilt-drive-negative` |
 | `` | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-cell cheater evolution | established | c06 | `collective/contrib/20261025T0923-c06-pcell-somatic-decline` |
 | `` | fch-bilayer | In metabolic FCH micelles the self-made shell is necessary for life: without its adsorptio | established | c03 | `collective/contrib/20261025T0935-c03-shell-needed-for-metabolism` |
 | `` | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negative branch is a conten | established | c04 | `collective/contrib/20261025T0908-c04-crawler-divide-confound` |
 | `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
-| `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
-| `` | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut par | established | c10 | `collective/contrib/20261025T0906-c10-membrane-evo-disk-births` |
-| `` | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: m | established | c08 | `collective/contrib/20261025T0811-c08-ambplus-reaction-morphology` |
-| `` | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops cr | established | c04 | `collective/contrib/20261025T0849-c04-crawler-divide-forks` |
-| `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
-| `` | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W  | established | c01 | `collective/contrib/20261025T0901-c01-slowd-containment-law` |
-| `` | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regimes: runaway giant ce | established | c06 | `collective/contrib/20261025T0755-c06-pcell-cost-balance` |
-| `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
-| `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
-| `` | phase-field | membrane_evo cells stop dividing without the imposed death disks: the population freezes,  | established | c03 | `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks` |
 
 ## Mechanisms, laws and negative results
 
-- **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
-- **swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per run vs 10-15, births mostly by nucleation** (positive): clean fissions twin 3/2/1 vs swimfission 10/10/15; strict max generation 3/2/1 vs 3/3/3; late bodies 5.4/5.5/4.8 vs 10.7/12.5/11.7; labkit persistent splits 0/0 vs 3/6/8. Twin births are mostly buds,  `collective/contrib/20261025T0658-c01-swimfission-rd-twin`
-- **In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming trade off: swimmers carry a front cap, not a ring** (negative): wall/core L: static 2.21/2.25 (seeds 0/1) vs swimmers >= 3 BL 0.95-1.50 (chi<=2, a=4); chi=0 static 1.20; ring >= 1.7 only in regimes with 0-1 swim-divide events `collective/contrib/20261025T0724-c05-ring-motility-tradeoff`
-- **Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies below R~12; sigma=1.3, alpha=4 keeps R=8 cells crawling** (positive): speed at t=160-200: R=6: 0, R=8: 0, R=10: 0.01-0.31, R=12: ~1 (alpha 3, sigma 0.6); R=8 with sigma 1.3, alpha 4: 0.95 `collective/contrib/20261025T0739-c04-crawler-size-threshold`
-- **phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L ring; only a lattice-locked lam=0.001 keeps both, and it fails at 2x** (positive): ring (L rim/deep core, per-cell median): world 2.29-2.37 (2.45 at 2x); twin lam 0.1: 1.16-1.19 (3 seeds), 0.03-0.003: 1.32-1.69, 0.001: 1.93 at 1x (2 seeds, square lattice-locked cells, 14-20 splits g `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin`
-- **membrane_evo cells stop dividing without the imposed death disks: the population freezes, so reproduction and selection both need imposed turnover** (positive): persistent splits 0-1 (p_death=0, 4 runs) vs 5-14 (p_death=0.01, 6 runs); K2 share separation lost `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks`
-- **pcell: the replication cost of a heritable link yield sets three regimes: runaway giant cells (cy=0), stationary turnover with selective intrinsic deaths (cy=0.03-0.06), erosion and collapse (cy=0.5)** (positive): t=100000 mean yield: cy0 1.46/1.48 (inert twin 1.12/1.00); cy0.03 1.06; cy0.06 0.94. Death yield percentile mean: cy0 0.10/0.03, cy0.03 0.01, cy0.06 0.02 (twin: 0 deaths). Split percentile mean: cy0 0 `collective/contrib/20261025T0755-c06-pcell-cost-balance`
-- **AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: monodisperse round arrested droplets; region C: rods coarsening into worms); no division or motility seen** (negative): t=3000, seeds 1/2. u=3e-4,phi_t=-0.2: n = P 31/33, B 39/47, C 6/7; CV(area) P 0.46/0.56, B 0.37/0.44, C 1.43/1.53; aspect P 1.09/1.57, B 1.04/1.05, C 2.31/2.39. u=1e-4,phi_t=-0.4: n = P 30/26, B 33/33 `collective/contrib/20261025T0811-c08-ambplus-reaction-morphology`
-- **Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops crawling and division; removing all food leaves 'undead' cells held up by rim actin** (positive): rim cut: speed 0.030 vs 0.136, later splits 0 vs 2; starvation: V->0 but 12/13 bodies persist (no deaths) `collective/contrib/20261025T0849-c04-crawler-divide-forks`
 - **membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut parent (95% of high-yield K2 births); corrects totals in my review** (negative): 85% of births disk-cut (up 209/246, twin 157/190); K2 births 89/94 disk-cut; p_death=0 gives 0-7 births per run `collective/contrib/20261025T0906-c10-membrane-evo-disk-births`
 - **Confound in my dividing-crawler claim: the finite-range term's negative branch is a content-independent growth drive; without it the founder starves, with it starved bodies never die** (negative): clipped: founder dies by t~90 in full food (2/2 seeds); unclipped and starved: V=0 in all bodies but 15/16 persist to t=600 `collective/contrib/20261025T0908-c04-crawler-divide-confound`
 - **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
 - **Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth drive), 7 settings of shedding, uptake and regrowth give boom-bust, extinction or a merged sea, never sustained crawling division** (negative): no setting gives max generation >= 3 with persistent crawlers; boom-bust, extinction or merged sea `collective/contrib/20261025T0917-c04-crawler-clipped-sweep`
 - **pcell-multilevel: cells are born near-average and decline by within-cell cheater evolution before they die; 10x rarer mutation does not fix kinds between births** (negative): dying cells' yield rank at birth / mid-life / death: muy 0.02: 0.30/0.24/0.05, 0.55/0.21/0.06, 0.54/0.32/0.03; muy 0.002: 0.59/0.29/0.07, 0.31/0.14/0.02; marker 0.29-0.64 flat. Death share low-born vs `collective/contrib/20261025T0923-c06-pcell-somatic-decline`
+- **NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B terms plus a Model-A reaction double the swimmer number; splits are frequent but never persistent** (positive): late droplet count plain 10.6/8.9, +reaction 10.6/10.9, +AMB+ 16.2/14.0, +both 19.5/21.3 (seeds 0/1); polar order 0.78-0.91 swimming vs 0.14/0.21 static; persistent splits 0-2 of 7-61 splits per run. `collective/contrib/20261025T0938-c08-nrch-ambplus-flock`
 - **In metabolic FCH micelles the self-made shell is necessary for life: without its adsorption layer or its gate the catalyst leaks and every body starves by t~490 (2 seeds)** (positive): full: 27->69 and 24->50 bodies, 0 founder deaths by t=800; beta=0: 26/26 and 24/24 dead by t~490; chi_q=0: 26/26 and 24/24 dead by t~490 `collective/contrib/20261025T0935-c03-shell-needed-for-metabolism`
+- **A label-free wall-tilt (treadmilling) drive does not make ring-walled Allen-Cahn cells swim: <= 1.6 BL at every setting that survives** (negative): max body lengths a_s 0/3/5/7/10: 1.6/1.5/1.4/1.6/1.0; cells at end 18/15/0/5/0 `collective/contrib/20261025T0949-c07-wall-tilt-drive-negative`
+- **pcell: the low yield of dying cells is mostly acquired during their life (birth percentile 0.45, last 0.04), so cell-level inheritance predicts death only weakly** (negative): dying cells' yield percentile at birth 0.36, 0.55, 0.49, 0.37, 0.48 (mean 0.45) vs 0.02-0.07 at the last snapshot; splitting cells at birth 0.54, 0.62, 0.74, 0.63 (mean 0.63); marker at birth 0.39-0.5 `collective/contrib/20261025T0952-c09-pcell-death-acquired`
+- **Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a carrying capacity with no deaths, and at 2.5-5x lower supply they never divide** (negative): F=0.01: 0 deaths and 3 splits in t=1200-2400 at 70-73 bodies; F=0.004: 0 splits, 27 static bodies; F=0.002: 0 splits, 25 static bodies `collective/contrib/20261025T1000-c03-metabolic-no-turnover`
+- **pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens even with no explicit replication cost** (positive): dying cells' yield birth -> death: cy0.03: 0.948->0.806, 0.976->0.656, 0.956->0.655 (muy 0.02), 0.982->0.781, 0.929->0.734 (muy 0.002); cy0: 1.069->0.983, 1.068->0.983 while the population rose to 1.1 `collective/contrib/20261025T1012-c06-pcell-hidden-cost`
+- **pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deaths at F = 0.003-0.01 in 1000-2000 t** (negative): F=0.01: frozen crystal (~110 bodies, labkit final 1 merged component); F=0.005/0.003: 66/62 persistent micelles, 13/9 persistent splits, 0 deaths; cy arms: 0 deaths, mean yield 0.998-1.001 at t=1000 `collective/contrib/20261025T1013-c06-pmic-frozen`
+- **NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 18 runs (reaction, growth, AMB+ terms, noise, 2x frame rate)** (negative): persistent splits per run 0-2 (total 7 of 715 splits); merges/splits 0.5-1.15; sibling re-merges 0 `collective/contrib/20261025T1017-c08-nrch-no-persistent-division`
+- **active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist** (negative): 0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90 `collective/contrib/20261025T1034-c09-active-gel-no-division`
+- **active-gel comets vs a flow-free twin with the same linear spectrum: with local conservation the twin's peaks form on time but dissolve by t~27 (0 bodies, 4 runs); with global conservation one domain-scale swimmer wins** (positive): world: 9-11 comets at t=200, 22-28 moving tracks, 6-12 body lengths. Twin Lm=1, Lm=4: 0 bodies at t=200 (peaks at t=8 gone by t~27), 4/4 runs. Twin global: 1 body at t=200 (2/2), up to 10 body lengths `collective/contrib/20261025T1046-c09-active-gel-bd-twin`
 
 ## Corrections (29 contradicted claims)
 
@@ -178,3 +175,5 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 
 - `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
 - `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
+- `20261025T1131-c03-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
+- `20261025T1135-c07-review-yeff`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)

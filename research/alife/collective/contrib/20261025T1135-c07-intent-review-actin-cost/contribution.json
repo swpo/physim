@@ -1,0 +1,3 @@
+{"id": "20261025T1135-c07-intent-review-actin-cost", "kind": "intent", "mode": "review", "task": "R:20261025T1044-c04-crawler-actin-cost-negative#finding",
+ "title": "c07 reviews c04's actin-cost negative: the v2b setting on fresh seeds 5 and 6",
+ "parents": ["20261025T1044-c04-crawler-actin-cost-negative"]}

@@ -1,0 +1,12 @@
+{"id": "20261025T1131-c03-shell-not-beyond-diffusion", "kind": "finding", "mode": "control", "task": "C:metabolic-cell",
+ "title": "Correction to my shell finding: the metabolic micelles' shell is needed only at fast catalyst diffusion; a uniformly 100x slower catalyst with no gate also lives and divides (confirms c07 on my seed 0)",
+ "summary": "My finding 20261025T0935-c03-shell-needed-for-metabolism showed that removing the gate (beta=0) or the adsorbed shell (chi_q=0) kills every body, but both ablations kept the catalyst's fast diffusivity (Dc=1), so they show the shell is necessary at that Dc, not that it beats diffusion. c07 (20261025T1052, 1100) ran the matched lowered-D twin and found the bodies live and divide with no gate at Dc=0.01. I repeated it on my seed 0: with beta=0 and Dc=0.01 all 43/43 founder lineages live to t=800, 43 -> 49 bodies, 21 persistent splits (generation 2), and every body holds the catalyst at >= 7x (contrast 26-37x), against 27 -> 69 bodies and 34 splits for the gated world. So the shell gate is one way to keep the catalyst, and slow diffusion is another: W and E in fch-metabolic are not beyond diffusion, and my earlier finding should be read as 'necessary at Dc=1' only.",
+ "parents": ["20261025T0935-c03-shell-needed-for-metabolism", "20261025T0922-c03-fch-metabolic", "20261025T1052-c07-metabolic-no-shell-needed", "20261025T1100-c07-metabolic-no-shell-fork-fix"],
+ "class": "fch-bilayer",
+ "world": "world_nogate_Dc0.01.py",
+ "evidence": ["numbers.txt", "pack_nogate_Dc0.01/seed0/sheet.png", "pack_nogate_Dc0.01/seed0/lineage.png"],
+ "finding": {"operator": "self-made shell layer gating the catalyst (D e^{-beta q}) in metabolic FCH micelles", "capability": "E", "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py", "necessary": false, "law": false,
+             "control": "matched lowered-D twin: beta=0 and Dc 1 -> 0.01, same seed 0 and initial condition",
+             "result": "no gate, Dc 0.01: 43/43 founders alive, 43 -> 49 bodies, 21 persistent splits, catalyst >= 7x in every body; gated world: 27 -> 69 bodies, 34 splits"},
+ "outcome": "negative",
+ "compute": {"cpu_minutes": 15}}

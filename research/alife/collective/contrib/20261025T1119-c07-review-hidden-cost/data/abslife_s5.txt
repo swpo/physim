@@ -1,0 +1,3 @@
+{"file": "collective/contrib/20261025T0935-c07-review-pcell-contained/data/gen_s5.json.gz", "n": 39, "y_birth": 0.93, "y_death": 0.705, "pop_at_birth": 0.972, "pop_at_death": 0.973, "share_declined": 0.87}
+{"file": "collective/contrib/20261025T1109-c07-review-somatic-decline/data/gen_lowmu_s5.json.gz", "n": 11, "y_birth": 0.884, "y_death": 0.676, "pop_at_birth": 0.971, "pop_at_death": 0.939, "share_declined": 0.73}
+{"file": "collective/contrib/20261025T1119-c07-review-hidden-cost/data/gen_cy0_s5.json", "n": 32, "y_birth": 1.02, "y_death": 0.948, "pop_at_birth": 1.054, "pop_at_death": 1.144, "share_declined": 0.75}

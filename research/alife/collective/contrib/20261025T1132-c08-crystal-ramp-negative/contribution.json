@@ -1,0 +1,12 @@
+{"id": "20261025T1132-c08-crystal-ramp-negative", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "Arm A of Q nrch-turnover, negative: a slowly rising chemostat target makes the NRCH crystal's swimmers fatter, not more numerous (0 persistent splits, 2 seeds, T=9000)",
+ "summary": "Chemostat crystal world (u=1.5e-3, phi0=-0.4, Dt=-0.3, 192^2) with phi_t ramped linearly from -0.4 to -0.3 between t=3000 and 8000 (world.py defaults). On seeds 0 and 1 the polar lattice forms by t~2400 and keeps its 25 and 20 swimmers to t=9000; the ramp adds material (occupancy 0.22 -> 0.27) by swelling every swimmer evenly (packs/RAMPs0/sheet.png t=4300-9000), with 3 and 2 splits in the whole run, 0 persistent. The swimmers themselves are the most persistent individuals of this class so far: 25 and 20 tracks alive >= 50% of the run, the longest ~8400 t, and up to 116 and 91 body lengths travelled. So in this lattice the feed sets swimmer size, not number: division needs a removal process (arm B: whole-body deaths) or a size threshold for fission, which a slow ramp to phi_t=-0.3 does not reach.",
+ "parents": ["20261025T1114-c08-q-nrch-turnover", "20261025T1054-c08-nrch-chemostat-crystal"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "slowly ramped Model-A chemostat target on the NRCH swimmer lattice", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "unramped lattice at the same u and phi0 (K5s0, K5s1 in 20261025T1054 and 20261025T1114)",
+   "result": "ramp -0.4 -> -0.3 over t=3000-8000: swimmers 25/20 constant, splits 3/2, persistent 0/0, occupancy 0.22 -> 0.27, longest tracks ~8400 t, 116/91 body lengths"},
+ "outcome": "negative",
+ "evidence": ["packs/RAMPs0/sheet.png", "packs/RAMPs1/sheet.png", "packs/RAMPs0/timeseries.png"],
+ "compute": {"cpu_minutes": 50}}

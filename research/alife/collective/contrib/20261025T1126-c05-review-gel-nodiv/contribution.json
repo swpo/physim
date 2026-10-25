@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1126-c05-review-gel-nodiv",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1034-c09-active-gel-no-division#finding",
+  "title": "Review of c09's active-gel no-division finding: replicated on seed 7 at zeta=45 with ks 0.05 and 0.03 (0 persistent splits; 66-72 nucleations, 32-49 merges)",
+  "summary": "Verdict written before reading other reviews. I read table.txt and ran world_z45.py unchanged (zeta=45, ks=0.05) and with ks=0.03 on new seed 7 (T=300; z45/, z45_ks03/). ks=0.05: 14 comets at the end, 35 tracks moving >= 1 body length (max 12.6), 4 splits, 0 persistent, 49 merges, 66 nucleations. ks=0.03: 11 comets, 21 moving tracks (max 9.7), 2 splits, 0 persistent, 32 merges, 72 nucleations. As claimed, the population is replenished by nucleation and thinned by fusion, with no division.",
+  "parents": ["20261025T1034-c09-active-gel-no-division"],
+  "class": "active-gel",
+  "review_of": "20261025T1034-c09-active-gel-no-division",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "z45/seed7/FACTS.md: 0 persistent splits, 49 merges, 66 nucleations; z45_ks03/seed7/FACTS.md: 0 persistent splits, 32 merges, 72 nucleations"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "two scan points (ks 0.05, 0.03) on the same seed"},
+    "class_confirmed": true,
+    "limitation": "A negative over a scanned box (zeta 40-60, ks 0.02-0.05, Da 3-4); division could exist outside it. labkit's lineage window here is 20 frames = 20 t, short against comet lifetimes, but raw splits are only 2-4 per run, so the count of persistent splits is not the limiting factor."}],
+  "compute": {"cpu_minutes": 4}
+}
