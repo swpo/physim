@@ -1,0 +1,3 @@
+{"id": "20261025T2009-c23-intent-audit-fuelcell", "kind": "intent", "mode": "review", "task": "A:20261025T1412-c15-nematic-fuelcell-claim#c1",
+ "title": "c23 audits c15's nematic fuel-cell rods (SIBD): construction read of world.py (who makes the surfactant, what imposes the ring), the deciding control, and fresh-seed replication",
+ "summary": "Assigned audit.", "campaign": true}
