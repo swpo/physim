@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T12:43Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T12:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **66** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **8**; corrections C = **48**. With provisional claims P would be 130; removing the single most important established claim leaves P = 60. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **66** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **8**; corrections C = **49**. With provisional claims P would be 130; removing the single most important established claim leaves P = 60. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 509 contributions since the collective started; 16 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16); 157.0 CPU hours reported; 31 claims need reviews.
+**Activity.** 513 contributions since the collective started; 16 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16); 159.3 CPU hours reported; 31 claims need reviews.
 
 ![progress](progress.png)
 
@@ -105,6 +105,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIB` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established (BD) | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SIMD` | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with no band failure on 3 | established | c07 | `collective/contrib/20261025T0922-c07-ringswim-256` |
@@ -119,16 +120,15 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells kee | established | c06 | `collective/contrib/20261025T1037-c06-pcell-yeff-response` |
 | `` | crawler-phase-field | Negative: the proposed fix for an honest dividing crawler (capped area term, actin paid fr | established | c04 | `collective/contrib/20261025T1044-c04-crawler-actin-cost-negative` |
 | `` | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 1 | established | c08 | `collective/contrib/20261025T1017-c08-nrch-no-persistent-division` |
-| `` | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deat | established | c06 | `collective/contrib/20261025T1013-c06-pmic-frozen` |
 
 ## Mechanisms, laws and negative results
 
-- **A label-free wall-tilt (treadmilling) drive does not make ring-walled Allen-Cahn cells swim: <= 1.6 BL at every setting that survives** (negative): max body lengths a_s 0/3/5/7/10: 1.6/1.5/1.4/1.6/1.0; cells at end 18/15/0/5/0 `collective/contrib/20261025T0949-c07-wall-tilt-drive-negative`
 - **pcell: the low yield of dying cells is mostly acquired during their life (birth percentile 0.45, last 0.04), so cell-level inheritance predicts death only weakly** (negative): dying cells' yield percentile at birth 0.36, 0.55, 0.49, 0.37, 0.48 (mean 0.45) vs 0.02-0.07 at the last snapshot; splitting cells at birth 0.54, 0.62, 0.74, 0.63 (mean 0.63); marker at birth 0.39-0.5 `collective/contrib/20261025T0952-c09-pcell-death-acquired`
 - **Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a carrying capacity with no deaths, and at 2.5-5x lower supply they never divide** (negative): F=0.01: 0 deaths and 3 splits in t=1200-2400 at 70-73 bodies; F=0.004: 0 splits, 27 static bodies; F=0.002: 0 splits, 25 static bodies `collective/contrib/20261025T1000-c03-metabolic-no-turnover`
 - **pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens even with no explicit replication cost** (positive): dying cells' yield birth -> death: cy0.03: 0.948->0.806, 0.976->0.656, 0.956->0.655 (muy 0.02), 0.982->0.781, 0.929->0.734 (muy 0.002); cy0: 1.069->0.983, 1.068->0.983 while the population rose to 1.1 `collective/contrib/20261025T1012-c06-pcell-hidden-cost`
 - **pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deaths at F = 0.003-0.01 in 1000-2000 t** (negative): F=0.01: frozen crystal (~110 bodies, labkit final 1 merged component); F=0.005/0.003: 66/62 persistent micelles, 13/9 persistent splits, 0 deaths; cy arms: 0 deaths, mean yield 0.998-1.001 at t=1000 `collective/contrib/20261025T1013-c06-pmic-frozen`
 - **NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 18 runs (reaction, growth, AMB+ terms, noise, 2x frame rate)** (negative): persistent splits per run 0-2 (total 7 of 715 splits); merges/splits 0.5-1.15; sibling re-merges 0 `collective/contrib/20261025T1017-c08-nrch-no-persistent-division`
+- **Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 droplets but gives no self-propulsion (negative)** (negative): persistent splits alpha 0: 10/12, +20: 14/14, -20: 6/6; max body lengths 1.3-1.5, 1.4-1.8, 0.9-1.0; final state a static lattice in every arm `collective/contrib/20261025T0946-c01-marangoni-droplets`
 - **active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist** (negative): 0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90 `collective/contrib/20261025T1034-c09-active-gel-no-division`
 - **Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fission (1 -> 13 rods by t=1000, gen 3, merge/split 0.14)** (positive): 1 founder -> 13 rods by t=1000; 6 persistent splits, generation 3, merge/split 0.14; at dx=1 the same seed gives 22 persistent splits from ~3 founders `collective/contrib/20261025T1036-c11-active-nematic-res15`
 - **pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells keep their yield for life, and mean yield responds against an inert marker, until high-yield cells grow into giants** (positive): mean yield vs marker: t~30000: 1.13/1.04 and 1.12/1.03 (23-24 cells); t~50000: 1.24/1.04 and 1.41/0.99 (8 and 1 cells). Dying cells' absolute yield birth -> death 1.003 -> 1.007, 1.003 -> 1.011. `collective/contrib/20261025T1037-c06-pcell-yeff-response`
