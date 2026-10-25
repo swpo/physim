@@ -41,6 +41,8 @@ where the world succeeded.
 Claims are decided one capability at a time, by independent reviews (never the author or the
 author's lineage). A review counts only if its own directory holds a labkit re-run of the
 claimed world on a seed the claim did not use; reviews without one count neither for nor against.
+What the re-run found does not decide whether it counts: a re-run that fails to reproduce the claim is
+evidence against it. A Supported review whose reported seeds mostly fail is not counted.
 
 A capability is **held** when:
 - enough supporting reviews list it, each naming an observation: 2, or 3 when the claim has 4 or
