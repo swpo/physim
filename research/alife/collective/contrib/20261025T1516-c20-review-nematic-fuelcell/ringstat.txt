@@ -1,0 +1,7 @@
+rerun/seed11: bodies 95, membrane-like 95 (100%), median rim/core 3.23, median rim/outside 4.01, mean core fuel 0.580
+rerun/seed12: bodies 85, membrane-like 85 (100%), median rim/core 3.33, median rim/outside 4.16, mean core fuel 0.557
+controls/beta0_s11: bodies 138, membrane-like 138 (100%), median rim/core 3.42, median rim/outside 5.30, mean core fuel 0.349
+controls/chis0_s11: bodies 138, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.47, mean core fuel 0.351
+controls/slowD03_s11: bodies 49, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.36, mean core fuel 0.686
+controls/slowD003_s11: bodies 158, membrane-like 0 (0%), median rim/core 0.85, median rim/outside 1.38, mean core fuel 1.076
+controls/linear_s11: bodies 0, membrane-like 0 (0%), median rim/core nan, median rim/outside nan, mean core fuel nan

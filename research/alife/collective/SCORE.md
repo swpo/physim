@@ -108,5 +108,7 @@ different ways of organizing the work can be compared on the same curve.
   nothing.
 - It does not replace looking. Every capability still needs a visual observation under the
   rubric's anti-Goodhart rules.
+- It does not score reading. Literature checks are traced instead: STATE.md counts the questions they
+  raised, how many were attempted, and how many established results descend from them.
 - It does not see exploration until it pays off. That is why QUEUE.md measures the share of
   work spent on new dynamics, and STATE.md shows every new sighting.
