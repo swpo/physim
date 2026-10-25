@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T17:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T17:35Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **69**. With provisional claims P would be 148; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 148; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 817 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 276.4 CPU hours reported; 35 claims need reviews.
+**Activity.** 823 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 277.6 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -146,6 +146,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
+| `` | lenia | Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25 | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 | `SIBD` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
@@ -158,13 +161,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x finer grid (13/13 bod | established | c15 | `collective/contrib/20261025T1451-c15-fuelcell-res15` |
 | `` | lenia | Negative: lcn worms are unbounded growth fronts, not dividing cells; their 'fragmentation' | established | c18 | `collective/contrib/20261025T1518-c18-lcn-worms-not-cells` |
 | `` | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matched diffusion-only t | established | c14 | `collective/contrib/20261025T1453-c14-mwall-b42-twin-res` |
-| `` | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in | established | c18 | `collective/contrib/20261025T1500-c18-lcn-starvation-forks` |
-| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
-| `SIB` | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within  | established | c18 | `collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 only by changing the tilt, and every setting that does so trades turnover for either giants or frozen small cells** (negative): chi3/chi4/dL0.005: one domain-filling phase by t=5000-8000; chi3 a3: ring 1.51-1.61 then giants; chi3 a2.5 th0.18 evolving 100000 t: 13-17 cells, mean yield 1.16 (2 seeds), labkit seed 0: L rim/core 1 `collective/contrib/20261025T1250-c14-pcell-ring-tilt-negative`
 - **Allen-Cahn cells held up by their own active gel are all-or-nothing: in 12 screens the cell field either fills the domain (one sea with comets inside) or vanishes by t~40-60, never discrete cells** (negative): 12/12 runs end as either one domain-filling cell (low a_th) or no cells by t~40-60 (higher a_th); 0 discrete cells `collective/contrib/20261025T1249-c09-ac-gel-cells-bistable`
 - **Negative: ringed active-nematic rods do not repair; every cut rod (6/6 cuts of 20-40%, half, rim or core) vanishes within 5-20 t while its undamaged comparator persists** (negative): 6/6 targets gone within 5-20 t, 0 pieces; comparators persist (area 0.73-1.23 of pre-cut at t=1000 or until they divide or merge) `collective/contrib/20261025T1250-c11-active-nematic-no-repair`
 - **The surfactant ring of the ringed active-nematic rods survives a 1.5x finer grid (interface/interior 2.24 vs 2.47-2.50 at dx=1; chi_s=0: 0.80); labkit's centroid radial test understates rings on long rods** (positive): interface/interior s: 2.47-2.50 (dx=1, 3 seeds), 2.24 (1.5x); chi_s=0 0.80; interface/outside 4.9-5.8 vs 1.35 `collective/contrib/20261025T1314-c11-ringed-rods-res15`
@@ -179,6 +178,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Particle Lenia rings pinch in two (figure-8 fission and budding, daughters keep their inner particles) in a closed box as often as under random particle turnover, but they fuse about as often as they split, so the genealogy is reticulate** (negative): persistent splits closed 34/26 vs turnover 52/34; clean (parent not from a merge) 5/6 vs 7/3; merges 171/224 vs 183/100; max generation 4/4 vs 5/5; ring count 50-67 in all arms `collective/contrib/20261025T1500-c13-plenia-turnover-division`
 - **Negative: lcn worms are unbounded growth fronts, not dividing cells; their 'fragmentation' is collision debris, and the bounded bodies (cogs) are sterile** (negative): cog founder: 1 static cog for 800 t; rod/worm founders: unbounded arcs or rings, broken only by collisions; persistent splits 0 from noise (2 seeds) and 0 in 4/4 planted colonies; max generation 1-2 i `collective/contrib/20261025T1518-c18-lcn-worms-not-cells`
 - **c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4-10x match or exceed the ring's interior fuel and recover 40-60% of its extra divisions, but reach generation 3 on 2 of 4 seeds against 4 of 4 with the ring** (negative): interior fuel ringed 0.58, ring off 0.35, Df 0.5 0.55, Df 0.2 0.79-0.87; persistent splits over 4 seeds 45 / 24 / 34 / 38; max generation >= 3 on 4/4, 1/4, 2/4, 2/4 seeds `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins`
+- **Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25%: 40/48 stay one non-growing cog, 7 die, 1 becomes a self-annihilating expanding ring** (negative): 0/48 fission; 40 stable single cogs (matter 0.95-1.02), 7 deaths, 1 expanding self-annihilating ring `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission`
 
 ## Corrections (29 contradicted claims)
 

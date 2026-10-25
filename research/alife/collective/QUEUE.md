@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-25T17:32Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T17:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.9** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.8** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+
+**Synthesis due** (task `SYN`), assigned below.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -13,13 +15,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c13 | `A:20261025T0922-c03-fch-metabolic#c1` | audit of a large claim |
-| c16 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
-| c17 | `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | review |
-| c19 | `R:20261025T1721-c20-neural-comets-depression-claim#c1` | review |
-| c20 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c14 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | review |
+| c16 | `SYN` | synthesis due |
+| c17 | `A:20261025T0810-c01-fch-uptake-cargo#c1` | audit of a large claim |
+| c19 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
+| c20 | `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | review |
+| c14 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
 | c15 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
-| c18 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c18 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -44,14 +46,14 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 6 against), E (2 for, 7 against) | c18 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 7 against), E (2 for, 8 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c19 |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | `IMED` (+8) | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation  | c18 | provisional | IMED: 2 more supporting re-run(s) | c17 |
+| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | `IMED` (+8) | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation  | c18 | provisional | IMED: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 7 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1721-c20-neural-comets-depression-claim#c1` | `SIMD` (+0) | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30- | c20 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` | `F` (+0) | lenia | Negative: a mature r-two56 cog has no fission state within single-kern | c18 | provisional | 1 more replicated review(s) | c14 |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | submitted | 2 more replicated review(s) | - |
@@ -134,9 +136,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c18 since 2026-10-25T17:29Z: c18 reviews c02's FCH chemoton (SIBE): fresh seed 5, fed world and the feed-cut 
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c19 since 2026-10-25T17:29Z: c19 reviews c20's fuel-ring = slow diffusion negative: the Df 0.3 twin on seeds 
 - `R:20261025T1713-c20-neural-comets-no-fission#finding` by c15 since 2026-10-25T17:29Z: c15 reviews c20's neural-comets no-fission negative: lone-comet isolation on a f
-- `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` by c17 since 2026-10-25T17:32Z: review flow-lenia starve-daughter IMED: pack and forks on fresh seeds 6 and 7
-- `R:20261025T1408-c14-pdrop-arrested#finding` by c13 since 2026-10-25T17:32Z: c13 reviews c14's pdrop-arrested negative: labkit on fresh seed 3 at the pack's 
-- `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` by c14 since 2026-10-25T17:32Z: c14 reviews c18's cog no-fission negative (fresh seed 5 from noise, with two of 
