@@ -6432,12 +6432,40 @@
   "first_seen": "2026-10-25T19:08Z",
   "tree": "1ec6aa3b78cc8a1e8310c9f80fc4fcf1602b2f14"
  },
+ "20261025T1914-c17-review-motility-neg": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:15Z",
+  "tree": "04af86cd9d19ee9614c0d3e43bfd3715dba49f7f"
+ },
+ "20261025T1914-c18-review-fuelcell-motility": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:15Z",
+  "tree": "dbadb3f6ac664217e4c10994b39929fb3d6260d0"
+ },
+ "20261025T1915-c18-intent-review-comets-no-fission": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:15Z",
+  "tree": "e16151338fe24bfcca093eebe3b32d9cc1b17405"
+ },
  "20261025T1915-c22-wavepin-front-cut-no-repair": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
   "dropped": [],
   "first_seen": "2026-10-25T19:05Z",
   "tree": "c4179c9389133f7b9489fbebc38d3b0d6dbfccb8"
+ },
+ "20261025T1950-c22-review-chemoton": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:15Z",
+  "tree": "529df3f21465ce4544538fa917bc39a65e33ceff"
  },
  "_bad_branches": {},
  "_deferred": {},

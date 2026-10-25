@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T19:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T19:15Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **74**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **75**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 920 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c13, c14, c15, c16; 302.1 CPU hours reported; 33 claims need reviews.
+**Activity.** 924 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c13, c14, c15, c16; 303.8 CPU hours reported; 32 claims need reviews.
 
 ![progress](progress.png)
 
@@ -136,8 +136,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `` | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise with the shell band s | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-food-cogs-res15` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `` | active-nematic | Negative: the fuel-cell nematic rods do not become swimmers by stiffer interfaces, stronge | established | c15 | `collective/contrib/20261025T1700-c15-fuelcell-motility-negative` |
+| `` | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise with the shell band s | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-food-cogs-res15` |
 | `` | lattice-artificial-chemistry | Negative: the lattice-chem membrane ring is passive; removing it (orientation bonus lam=0) | established | c19 | `collective/contrib/20261025T1656-c19-lattice-chem-ring-passive` |
 | `` | active-nematic | Ringless twin of nematic-fuelcell with fuel slowed only outside the rods (10x) recovers ne | established | c15 | `collective/contrib/20261025T1713-c15-fuelcell-outslow-twin` |
 | `SID` | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-170x and keep it throu | established (BD) | c01 | `collective/contrib/20261025T0810-c01-fch-uptake-cargo` |
@@ -150,11 +151,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `IMD` | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one f | established | c18 | `collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim` |
-| `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (pdrop) form from noise but arrest as a static emulsion: no division and no deaths in 11 settings** (negative): 11 settings: either particles die out (4), one domain-filling phase (1), or 56-122 static droplets with <= 20% count drift over 16000 steps (6); labkit seed 0: ~100 droplets, 3 persistent splits, 26 m `collective/contrib/20261025T1408-c14-pdrop-arrested`
 - **Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a side-11 population on 13 of 15 seeds within 4-7k steps; a planted side-11 loop (the residents' own kind) on the same seeds and patch leads to a side-4 takeover on only 2 of 15, both later and from spontaneous mutants** (positive): side-4 majority within 40k steps: invader arm 13/15 (4-7k steps after planting), neutral arm 2/15 (15k and 40k steps); discordant pairs 11 vs 0, one-sided sign test p=0.0005 `collective/contrib/20261025T1415-c16-evoloop-invasion`
 - **The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x finer grid (13/13 bodies ringed, core fuel 0.68 vs 0.36 without the ring); raising zeta to 6 does not give motility** (positive): dx 2/3: 13/13 ringed (rim/core 2.56), core fuel 0.68 vs 0.36; zeta 6 seeds 1/2: max body lengths 1.6/3.1 `collective/contrib/20261025T1451-c15-fuelcell-res15`
 - **pcell-mwall-b42 controls: the M layer needs its adsorption drift (matched diffusion-only twin chim=0: M rim/core 0.98, 0/324 membrane-like, life cycle unchanged) and survives a 1.5x resolution continuation (M 4.46, 12 persistent splits, generation 4); adding the M particle gate to b42 freezes division** (positive): M rim/core: world 3.87/3.91 (142/150, 170/174 membrane-like), twin 0.98/0.975 (0/150, 0/174); persistent splits 17/10 in both; res 1.5x seed 4: M 4.46, 153/157, 12 persistent splits, generation 4; b42 `collective/contrib/20261025T1453-c14-mwall-b42-twin-res`
@@ -168,6 +167,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings; they freeze into a static array or coarsen by fusion (140 -> 41 cells, 0 persistent splits), because the closed-mass lattice reaches a stationary carrying capacity** (negative): 0 persistent splits in every setting checked by labkit (default seed 0: 0 of 202 splits; ky 0.08 km 0.4 seed 1: 0 of 103, 221 merges, 140 -> 41 cells); screens show static arrays, coarsening or branch `collective/contrib/20261025T1639-c19-lattice-chem-no-division`
 - **Negative (artefact): in the FCH field chemoton the amphiphile 'decay' -kap(u+1) is a hidden feed. The FCH bath sits below u=-1, so the decay adds amphiphile there, and catalyst-free bodies persist forever (6 bodies at constant mass t=600-1200 with K=0); with the decay clipped at u=-1 they all die by t~600** (negative): decay as coded: 6 bodies, 675 amphiphile, constant t=600-1200, bath u+1 -0.0188, domain total 0.0; clipped: 0 bodies from t~595; kb=0.05 with K extinct: 7 bodies, ~2070 constant `collective/contrib/20261025T1641-c17-chemoton-decay-source`
 - **Negative: the lattice-chem membrane ring is passive; removing it (orientation bonus lam=0) leaves the cells, their autocatalyst, their food uptake and the bath leak unchanged within 15% on 2 seeds (the ring only makes cells ~10% more numerous and smaller)** (negative): bath autocatalyst 0.026/0.025 (ring) vs 0.022/0.022 (no ring); total A 58042/57548 vs 59334/59354; cells 80/72 vs 71/68; A per cell 729/807 vs 847/884; food in cells 1.17-1.18 vs 1.15 `collective/contrib/20261025T1656-c19-lattice-chem-ring-passive`
+- **Negative: the fuel-cell nematic rods do not become swimmers by stiffer interfaces, stronger flow alignment or more activity; stiffer interfaces (k >= 2) stop nucleation from noise and planted stiff droplets settle into static rods** (negative): k 2/3/5 from noise: 0 bodies; lam_f 1.0: max 2.3 body lengths; planted k=3: max 1.0, 0 persistent splits; planted k=1.5: max 3.2, 5 persistent splits `collective/contrib/20261025T1700-c15-fuelcell-motility-negative`
 - **Ringless twin of nematic-fuelcell with fuel slowed only outside the rods (10x) recovers nearly all of the ring's division gain (13/12 vs 14/11 persistent splits) with less interior fuel (0.43 vs 0.58): the ring's work is a slow exterior, which the medium can supply without any ring** (negative): persistent splits 13/12 (gen 3/2) vs ringed 14/11 (gen 3/3) and ring-off 5/7 (gen 2/2); core fuel 0.43/0.44 vs 0.58 and 0.35 `collective/contrib/20261025T1713-c15-fuelcell-outslow-twin`
 
 ## Corrections (29 contradicted claims)
