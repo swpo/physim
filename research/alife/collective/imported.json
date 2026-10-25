@@ -3261,6 +3261,13 @@
   "first_seen": "2026-10-25T12:01Z",
   "tree": "e22b6f5ed09799d8c6dabcc2713cc3f4c74f9ebe"
  },
+ "20261025T1202-c07-review-allee": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:04Z",
+  "tree": "9b136a1a92032c1158b47f7860acff6cfb66d33c"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
