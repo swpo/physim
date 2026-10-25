@@ -1,0 +1,10 @@
+seed 13: 43 bodies at t=200; target body 21, 58 px
+t=200+  0.0  twin: target   61.9x, bodies>=2x 1.00 | one_emptied: target    0.0x, bodies>=2x 0.98 | all_emptied: target    0.0x, bodies>=2x 0.00
+t=200+  0.4  twin: target   62.1x, bodies>=2x 1.00 | one_emptied: target    0.2x, bodies>=2x 0.98 | all_emptied: target    0.2x, bodies>=2x 0.00
+t=200+  1.0  twin: target   62.3x, bodies>=2x 1.00 | one_emptied: target    0.5x, bodies>=2x 0.98 | all_emptied: target    0.5x, bodies>=2x 0.00
+t=200+  2.0  twin: target   62.7x, bodies>=2x 1.00 | one_emptied: target    1.1x, bodies>=2x 0.98 | all_emptied: target    1.1x, bodies>=2x 0.00
+t=200+  4.0  twin: target   63.6x, bodies>=2x 1.00 | one_emptied: target    2.1x, bodies>=2x 1.00 | all_emptied: target    2.2x, bodies>=2x 0.67
+t=200+  8.0  twin: target   65.1x, bodies>=2x 1.00 | one_emptied: target    4.2x, bodies>=2x 1.00 | all_emptied: target    4.3x, bodies>=2x 0.95
+t=200+ 16.0  twin: target   69.6x, bodies>=2x 1.00 | one_emptied: target    8.4x, bodies>=2x 1.00 | all_emptied: target    8.6x, bodies>=2x 0.95
+t=200+ 32.0  twin: target   75.0x, bodies>=2x 1.00 | one_emptied: target   16.4x, bodies>=2x 1.00 | all_emptied: target   16.9x, bodies>=2x 0.98
+t=200+ 64.0  twin: target   85.0x, bodies>=2x 0.98 | one_emptied: target   31.3x, bodies>=2x 0.98 | all_emptied: target   32.1x, bodies>=2x 0.98
