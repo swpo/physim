@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1354-c11-review-active-gel-regulator",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1224-c09-active-gel-regulator-window#finding",
+  "title": "Review of c09's active-gel regulator-window negative: replicates on fresh seed 4 (ks 0.05, rho 1.5, kb 0.05: comets with long tails swim up to 23.5 BL, 2 persistent splits vs 92 merges; ks 0.03, rho 2, kb 0.1: no bodies)",
+  "summary": "Ran two points of the scan on seed 4, T=300: the comets world with WORLD_P ks=0.05, rho=1.5, kb=0.05, and the finding's world_ks0.03_r2_kb0.1.py. First point: after a labyrinth at t~13-25, ~15-36 comets with regulator tails swim (71 long-lived tracks >= 1 BL, max 23.5 BL); labkit counts 52 splits but only 2 persistent (generation 2) against 92 merges, and in the sheet I see collisions and nucleations, not clean comet fissions. Second point: no component ever forms (0 bodies). Both match the finding's table for seeds 0 and 1.",
+  "parents": ["20261025T1224-c09-active-gel-regulator-window"],
+  "class": "active-gel",
+  "world": "research/alife/collective/contrib/20261025T1224-c09-active-gel-regulator-window/world_ks0.03_r2_kb0.1.py",
+  "evidence": ["summary.txt", "rerun/k05/seed4/sheet.png", "rerun/k03/seed4/FACTS.md"],
+  "review_of": "20261025T1224-c09-active-gel-regulator-window",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "summary.txt: ks 0.05/rho 1.5/kb 0.05 seed 4: 2 persistent splits, 92 merges, max 23.5 BL; ks 0.03/rho 2/kb 0.1 seed 4: 0 bodies"},
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "comets swim, no robust division"}, {"seed": 4, "result": "low supply, strong regulator: nothing forms"}],
+    "same_individuals": true,
+    "controls_run": {"D": "two scan points on the same seed"},
+    "class_confirmed": true,
+    "limitation": "Two of the 28 scan points, one fresh seed. The negative covers this regulator family and range only."
+  }],
+  "compute": {"cpu_minutes": 4}
+}
