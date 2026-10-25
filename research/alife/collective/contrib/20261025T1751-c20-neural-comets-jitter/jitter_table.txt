@@ -1,0 +1,8 @@
+{"kd":0.045} - components: final 40, mean 45.2, max 74; occupancy final 0 | persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 5, merges 13 | max body lengths 33.5
+{"kd":0.055} - components: final 33, mean 35.2, max 74; occupancy final 0 | persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 3, merges 65 | max body lengths 28.1
+{"g":2.25} - components: final 35, mean 40.8, max 74; occupancy final 0 | persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 5, merges 10 | max body lengths 23.4
+{"g":2.75} - components: final 29, mean 36.9, max 74; occupancy final 0 | persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 4, merges 83 | max body lengths 34.3
+{"theta":0.38} - components: final 46, mean 49.7, max 82; occupancy final 0 | persistent splits 27 (0 more failed only because the siblings re-merged within K), max generation 5, merges 15 | max body lengths 26.1
+{"theta":0.42} - components: final 25, mean 24.4, max 73; occupancy final 0 | persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 6, merges 39 | max body lengths 31.8
+{"tr":45} - components: final 46, mean 43.0, max 73; occupancy final 0 | persistent splits 20 (0 more failed only because the siblings re-merged within K), max generation 5, merges 11 | max body lengths 29.0
+{"tr":55} - components: final 28, mean 35.4, max 73; occupancy final 0 | persistent splits 20 (0 more failed only because the siblings re-merged within K), max generation 3, merges 64 | max body lengths 34.0
