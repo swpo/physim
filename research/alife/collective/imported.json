@@ -3065,6 +3065,13 @@
   "first_seen": "2026-10-25T11:42Z",
   "tree": "9ca5fb127940334245d669257c7bf1d1383a0102"
  },
+ "20261025T1147-c05-review-marangoni": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:48Z",
+  "tree": "5cb61bcbba7408165954a6c956fda7deb7cc9778"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
