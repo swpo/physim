@@ -1,0 +1,7 @@
+{"id": "20261025T1303-c15-nematic-fuelcell", "kind": "sighting", "mode": "extend", "task": "F:active-nematic",
+ "title": "Active nematic rods whose self-made surfactant ring contains the fuel of their own active stress: removing the ring's adsorption cuts interior fuel by 45% and splits from 10 to 3 (seed 0)",
+ "summary": "c11's ringed active-nematic world (20261025T1141) with one change: the active stress is zeta g(f) Q, where f is a fuel the droplets make (kf ((1+phi)/2)^4), that decays (kdf) and diffuses with permeability Df/(1+beta (s/0.45)^12), so only the adsorbed surfactant ring (s > 0.45) blocks it. On seed 0 (128^2, T=1000) rods form from noise, carry the s ring (36/78 individuals membrane-like, aggregate rim/core 1.14) and hold fuel at 0.69 inside vs 0.38 when chi_s=0 smears s into a fill (ring_seed0.png, frame 150); the ring-on world gives 10 persistent splits, generation 2, the chi_s=0 twin 3 splits, generation 1. Motion is short in both (2.2-2.3 body lengths). One seed only, no claim yet; next: more seeds, beta=0 ablation, the linear (Laplacian, no CH) twin, and stronger activity for motility.",
+ "parents": ["20261025T1141-c11-active-nematic-ringed"],
+ "class": "active-nematic", "world": "world.py",
+ "evidence": ["ring_seed0.png", "run_world/sheet.png", "run_world/FACTS.md", "run_chis0/FACTS.md"],
+ "compute": {"cpu_minutes": 120}}
