@@ -1,0 +1,8 @@
+seed 24 up: final K1/K2 cells 10/6, K2 biomass share 0.65; births K1/K2 36/20; deaths (other) 2/0; disk deaths 31/4; flips K1->K2/K2->K1 1/5; conversions 0/0; first acquisitions 0; off-kind daughters 0
+seed 24 twin: final K1/K2 cells 9/7, K2 biomass share 0.48; births K1/K2 26/13; deaths (other) 1/1; disk deaths 20/5; flips K1->K2/K2->K1 3/2; conversions 0/0; first acquisitions 0; off-kind daughters 0
+seed 25 up: final K1/K2 cells 0/12, K2 biomass share 0.98; births K1/K2 19/35; deaths (other) 2/3; disk deaths 23/4; flips K1->K2/K2->K1 2/4; conversions 1/0; first acquisitions 0; off-kind daughters 0
+seed 25 twin: final K1/K2 cells 9/4, K2 biomass share 0.28; births K1/K2 31/6; deaths (other) 4/0; disk deaths 19/3; flips K1->K2/K2->K1 2/1; conversions 1/0; first acquisitions 1; off-kind daughters 0
+seed 26 up: final K1/K2 cells 0/13, K2 biomass share 0.97; births K1/K2 22/37; deaths (other) 4/3; disk deaths 22/6; flips K1->K2/K2->K1 2/5; conversions 0/1; first acquisitions 0; off-kind daughters 1
+seed 26 twin: final K1/K2 cells 10/7, K2 biomass share 0.35; births K1/K2 29/14; deaths (other) 3/2; disk deaths 17/6; flips K1->K2/K2->K1 2/1; conversions 0/0; first acquisitions 0; off-kind daughters 0
+seed 27 up: final K1/K2 cells 1/12, K2 biomass share 0.99; births K1/K2 32/36; deaths (other) 4/0; disk deaths 28/6; flips K1->K2/K2->K1 2/2; conversions 0/0; first acquisitions 0; off-kind daughters 1
+seed 27 twin: final K1/K2 cells 13/1, K2 biomass share 0.06; births K1/K2 44/2; deaths (other) 1/0; disk deaths 27/3; flips K1->K2/K2->K1 2/0; conversions 0/0; first acquisitions 0; off-kind daughters 0

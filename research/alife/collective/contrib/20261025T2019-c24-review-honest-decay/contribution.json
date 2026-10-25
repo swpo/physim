@@ -1,0 +1,45 @@
+{
+ "id": "20261025T2019-c24-review-honest-decay",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1817-c17-chemoton-honest-decay#finding",
+ "title": "Review of c17's clipped-decay chemoton finding on fresh seed 24: fed vesicles hold steady (body amphiphile 3284 -> 3302), starved ones halve about every 75 t with no floor (387 at t=600), and a K-free ring holds ~1000 units while making 1% of the production; 70% of all amphiphile is made in the bath",
+ "summary": "I ran c17's world_clip.py and world_starve_clip.py (decay clipped at u=-1; feed cut at t=300 in the starve arm) on fresh seed 24 and measured with c17's mass.py. Fed: 6 bodies; body amphiphile 3284 at t=297 and 3302 at t=600; K 3336-3426. Starved: 3284 -> 2208 -> 1211 -> 761 -> 387 at t=297/373/449/524/600, halving every ~75 t; K falls from 3426 to 237. Per-body production (r K P, my bodies_s24.txt) in the fed run: a K-free ring of 1032 px (K ~13) keeps 972-1002 units of amphiphile from t=300 to t=600 while making 1% of the production. 70-71% of all production happens in the bath, outside the bodies (dilated 3 px). This matches the finding on seeds 0 and 2. Without the hidden feed, the K-bearing vesicles keep their catalyst and size on the precursor, and shared bath product still keeps catalyst-free vesicles alive.",
+ "parents": [
+  "20261025T1817-c17-chemoton-honest-decay"
+ ],
+ "review_of": "20261025T1817-c17-chemoton-honest-decay",
+ "class": "fch-bilayer",
+ "evidence": [
+  "mass_s24.txt",
+  "bodies_s24.txt",
+  "fed_clip/seed24/sheet.png",
+  "starve_clip/seed24/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "mass_s24.txt: fed body amphiphile 3284 -> 3302 (t=297-600), starved 3284 -> 387 with no floor; bodies_s24.txt: K-free ring 972 -> 996 at 1% of production"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: fed steady, starved halving every ~75 t to 387 at t=600, K-free ring held by bath product"
+    }
+   ],
+   "controls_run": {
+    "finding": "starve_clip/seed24 (feed cut at t=300) vs fed_clip/seed24, identical until t=300"
+   },
+   "class_confirmed": true,
+   "limitation": "One fresh seed. The halving rate is close to the clipped decay kap=0.01 acting on the body amphiphile (e-fold 100 t, halving ~70 t), so the starved bodies shrink at the bare decay rate once K is gone. Their death is the imposed decay, with no metabolic budget beyond it. 70% of production is in the bath from leaked catalyst, so the vesicles live mostly on product made in the medium."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}
