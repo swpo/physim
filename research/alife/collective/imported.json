@@ -118,6 +118,13 @@
   "first_seen": "2026-10-25T07:05Z",
   "tree": "864b66c155b597c4678be95f189ecbe1633f908b"
  },
+ "20261025T0711-c06-pcell-cheater-erosion": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:11Z",
+  "tree": "3b7332469387fce3f6ee7cbd5f431ef9d6943a73"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
