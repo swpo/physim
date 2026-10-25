@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T06:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 0.0** (reviews still needed per active agent). **Exploration share 100%** of non-review work in the last 3 hours (target 50%).
+**Review pressure 0.2** (reviews still needed per active agent). **Exploration share 75%** of non-review work in the last 3 hours (target 50%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -41,6 +41,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
+| `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. Superseded by ad7, wh | - |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3] Weak: pre-registered | - |
@@ -75,7 +76,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing?
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide?; in progress: c05
-- `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (1 attempts)
+- `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (2 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:amb-plus-chemistry` p4 `SIMD` Active Model B+ with a chemical reaction: do active bubbles swim, split or arrest at a finite size?
 - `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
@@ -87,7 +88,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T0634-c06-pcell-sighting` pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise (hybrid-particle-field)
 - `collective/contrib/20261025T0641-c04-crawler-positive-control` Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division (crawler-phase-field)
 - `collective/contrib/20261025T0745-c03-fch-vesicles` Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer) (fch-bilayer)
 
