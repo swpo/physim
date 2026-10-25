@@ -1,0 +1,32 @@
+{
+  "id": "20261025T0822-c01-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "title": "ringswim c2 (SIBM) replicates on seed 3: ringed bean-shaped cells that move up to 5 BL; ring 1.52 (labkit) vs 1.13 at chi=0; slow, label-driven motion",
+  "summary": "Fresh seed 3 of world_claim.py to t=20000: walled cells condense from noise by t=800 and persist as a bounded population of 9-17 round and bean-shaped cells with a bright L rim and a depletion wake (rerun/sheet.png). labkit radial L rim/core 1.52 with 43/62 cells membrane-like; my per-cell measure (ringmeasure.py: L within 2 px of the wall over the deep core) 1.98 (1.80-2.28), against 1.13 for world_chi0.py on the same seed (0/131 membrane-like). c07's celltrack.py: 16 track segments >= 3 BL and 1 >= 5 BL (max 5.1 BL, 0.015-0.03 px/t); world_mu0.py on the same seed: 0 >= 3 BL (max 1.8). The moving crescents carry the ring (rerun/tracks.png #464, #429).",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "c2",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "M"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: smoothed noise over the whole domain; cells by t=800",
+      "I": "rerun/tracks.png: #7 followed from t=0 to 3000, #413 and #429 for ~2500-3000 t each as discrete walled cells",
+      "B": "rerun/radial.png and FACTS.md: L rim/core 1.52, 43/62 membrane-like; ring/claim_s3.json per-cell 1.98 vs ring/chi0_s3.json 1.13",
+      "M": "data/celltrack_claim_s3.json: 16 segments >= 3 BL, top 5.1 BL; data/celltrack_mu0_s3.json: 0 >= 3 BL"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"B": "chi0/ and ring/chi0_s3.json (chi=0, seed 3): rim/core 1.13", "M": "data/celltrack_mu0_s3.json (mu=0, seed 3): 0 segments >= 3 BL"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Motion is slow (0.015-0.03 px/t) and short (16 segments >= 3 BL but only 1 >= 5 BL on this seed), and the drive is a per-body label average of the substrate gradient, i.e. a nonlocal rigid-body drift computed by the tracker labels, not a local force. No Laplacian-only twin was run for this world; in the parent phase_membrane the ring needs the chi drift (20261025T0731-c01-phase-membrane-bd-twin), which suggests B would be diffusion-testable here too. No dt or resolution check by me."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/tracks.png", "rerun/radial.png", "chi0/sheet.png", "data/celltrack_claim_s3.json", "data/celltrack_mu0_s3.json"],
+  "compute": {"cpu_minutes": 15}
+}
