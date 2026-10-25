@@ -1,0 +1,17 @@
+{
+ "id": "20261025T2104-c22-wavepin-repair-numerics",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:motile-repair",
+ "title": "The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half the world's time step (1 seed): the cut cell regains one front and crawls at 0.39-0.41 vs its twin's 0.43-0.46",
+ "summary": "Numerical checks on the claim 20261025T1955-c22-wavepin-front-competition-claim, with the same cut (30% front sector at t=8, 26-27% of the area, 32% of the protein) and branched twins (cutrun.py from the claim). Grid 384^2 instead of 256^2 on the same L=5 (dx 0.013 instead of 0.0195; WORLD_P N=384), seeds 0 and 1: the split polarity resolves to one front by t~11 and the cell crawls at 0.390 and 0.392, against the twin's 0.427 (claim at 256^2: 0.385-0.386 vs 0.42). The world's own step halved (WORLD_P dt=5e-4), seed 0: 0.414 vs 0.456. Twin speeds shift by ~8% with dt, so absolute speeds are not converged in dt at this level. The damaged/twin speed ratio (0.91-0.92) and the sequence (two lobes, one wins, single-front crawler) are unchanged.",
+ "parents": ["20261025T1955-c22-wavepin-front-competition-claim"],
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261025T1955-c22-wavepin-front-competition-claim/world.py",
+ "outcome": "positive",
+ "finding": {"operator": "wave-pinning polarity domain competition after a front cut", "capability": "R", "world": "20261025T1955-c22-wavepin-front-competition-claim/world.py", "necessary": false, "law": false,
+             "control": "1.5x grid (2 seeds) and dt/2 of the world's own step (1 seed), each with a branched undamaged twin",
+             "result": "speed after repair / twin: 384^2 0.390/0.427 and 0.392/0.427; dt/2 0.414/0.456; one front regained by t~11 in all three"},
+ "evidence": ["r2_s1_front30_N384/cut.png", "r2_s0_front30_N384/cut.png", "r2_s0_front30_dthalf/cut.png"],
+ "compute": {"cpu_minutes": 40}
+}
