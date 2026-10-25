@@ -1,0 +1,10 @@
+tracks >= 20 t: 41 ; top by path (id, life, size, radius, net/diam, path/diam, polar):
+(78, 599, 43, np.float32(0.62), np.float32(230.5), np.float32(243.4), np.float32(0.98))
+(109, 597, 143, np.float32(0.63), np.float32(222.7), np.float32(238.3), np.float32(0.99))
+(23, 601, 289, np.float32(0.65), np.float32(198.1), np.float32(233.7), np.float32(0.98))
+(75, 599, 369, np.float32(0.72), np.float32(198.2), np.float32(212.1), np.float32(0.98))
+(162, 450, 167, np.float32(0.62), np.float32(163.5), np.float32(179.2), np.float32(0.99))
+(88, 294, 56, np.float32(0.74), np.float32(93.7), np.float32(101.2), np.float32(0.98))
+(80, 246, 151, np.float32(0.69), np.float32(85.7), np.float32(91.0), np.float32(0.98))
+(151, 141, 19, np.float32(0.59), np.float32(57.5), np.float32(58.6), np.float32(0.99))
+median path/diam over tracks >= 20 t: 22.1, median net/diam 19.2
