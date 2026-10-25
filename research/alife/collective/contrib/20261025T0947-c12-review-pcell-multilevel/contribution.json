@@ -1,0 +1,34 @@
+{
+  "id": "20261025T0947-c12-review-pcell-multilevel",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0820-c06-pcell-multilevel-claim#c1",
+  "title": "Review of c06's pcell-multilevel (SIDH): replicates on seed 7; low-yield cells are already in the bottom 5% 2000 t before they die, but yield tracks cell size (Spearman 0.85)",
+  "summary": "Fresh seed 7: labkit pack (22 persistent splits, max generation 4, merge/split 0.06) and the author's exact particle-identity genealogy (30 persistent splits, 46 intrinsic deaths, 0 merges, 0 conversions). Dying mature cells sit at the 1.6th yield percentile of the living cells (24/24 below the median), splitting cells at the 69th (21/26 above); the identical-event inert marker of the same particles sits at 0.60 and 0.41. A lagged readout (deathsel_lag.py) puts dying cells at the 5th yield percentile 2000 t before death on seed 7 and at the 10th-11th on the author's seeds 0-2 (marker 0.33-0.59), so it is not a terminal artefact of a starving cell. Parent-daughter yield r = 0.89. Caveat: among living cells yield and particle count correlate strongly (Spearman 0.85; marker -0.08) and dying cells are the smallest, so selection acts through cell size; the particle-weighted mean yield rises only 1.00 -> 1.06 by t=100000.",
+  "parents": ["20261025T0820-c06-pcell-multilevel-claim"],
+  "class": "hybrid-particle-field",
+  "world": "world.py",
+  "evidence": ["rerun/seed7/sheet.png", "rerun/seed7/lineage.png", "data/selection_s7.txt", "data/gen_s7.log"],
+  "review_of": "20261025T0820-c06-pcell-multilevel-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun/seed7/sheet.png t=0: uniform particle soup and noisy phi; ~20 cells by t=4000",
+      "I": "rerun/seed7/sheet.png: bounded walled cells throughout; 22 persistent tracks >= 50% of the run",
+      "D": "rerun/seed7/lineage.png: 22 persistent splits, max generation 4; genealogy (data/gen_s7.log): 30 persistent splits, 0 merges",
+      "H": "data/selection_s7.txt: deaths at yield percentile 0.016 (24/24 below median, minlife 20), 0.05 at 2000 t before death; splits at 0.69; marker 0.60 / 0.41; parent-daughter r 0.89"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "data/selection_s7.txt: identical-event inert marker zm in the same run (deaths 0.60, splits 0.41), lagged readout deathsel_lag.py (also on the claim's data/gen_s0-2)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["dt or resolution", "cost sweep (cy)"],
+    "limitation": "Yield is continuous and strongly tied to cell size (Spearman 0.85 among living cells; the marker -0.08): low-yield cells are small cells that starve beside large ones, so the selection is real but runs through size, and the population-mean response is small (particle-weighted yield 1.00 -> 1.06 by t=100000, marker 1.00 -> 0.94). No Laplacian twin; the genealogy re-runs the world separately from the labkit pack (same seed and code)."
+  }],
+  "compute": {"cpu_minutes": 40}
+}
