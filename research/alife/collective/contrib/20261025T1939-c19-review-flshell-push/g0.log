@@ -1,0 +1,28 @@
+[fl_shell] seed 3: 400 frames x 10 steps, grid (128, 128)
+  frame 40/400  8.1s
+  frame 80/400  16.9s
+  frame 120/400  25.4s
+  frame 160/400  33.7s
+  frame 200/400  42.2s
+  frame 240/400  50.9s
+  frame 280/400  59.2s
+  frame 320/400  67.6s
+  frame 360/400  76.9s
+  frame 400/400  86.0s
+  -> collective/contrib/20261025T1939-c19-review-flshell-push/g0/seed3/FACTS.md  (86s sim)
+[fl_shell] seed 4: 400 frames x 10 steps, grid (128, 128)
+  frame 40/400  7.2s
+  frame 80/400  14.2s
+  frame 120/400  21.4s
+  frame 160/400  28.6s
+  frame 200/400  35.5s
+  frame 240/400  42.3s
+  frame 280/400  49.7s
+  frame 320/400  56.8s
+  frame 360/400  63.4s
+  frame 400/400  70.0s
+  -> collective/contrib/20261025T1939-c19-review-flshell-push/g0/seed4/FACTS.md  (70s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | ok | 5 | 1 | 205 | 1 | 12 | 2 | 2 | 0.9 | 0.08 | ['A1'] |
+| 4 | ok | 13 | 0 | 138 | 0 | 39 | 9 | 6 | 0.8 | 0.1 | ['A1'] |

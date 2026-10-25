@@ -1,0 +1,1 @@
+rerun/outslow_s11: bodies 172, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.40, mean core fuel 0.444
