@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1609-c13-review-food-cogs",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1559-c18-rtwo56-food-cogs-claim#c1",
+  "title": "Review of c18's food-cogs (SIBE): replicated on fresh seed 5 - 11 shelled cogs from noise (shell/trough 22.8), the isolated cog dies by t=650 after its food is cut at t=600 while its fed twin stays at 1.00 and other bodies are unaffected; removing k4 spills the shell into a labyrinth",
+  "summary": "Verdict written before reading other reviews. On new seed 5 I ran c18's world.py and scripts unchanged: a labkit pack to t=1000, radial_cog.py on its frames, runsave.py to t=600, mkcut.py (most isolated cog at y=19 x=108, nearest other core 53 px), 300 t of fed twin and local cut (CUT=1, r=18), cutplot.py, and the shell-source ablation k4=0 on the t=600 state for 100 t. From full-domain noise (sheet t=0) cogs form by t~85 and 11 persist to t=1000 (11 tracks alive >= 50% of the run). Shell profile over 67 isolated cell-frames: A1 0.875 at r=8 vs 0.038 in the trough at r=4 and 0.017 outside (shell/trough 22.8, shell/outside 52; per-cell minimum 0.52). Local cut (localcut_s5.txt): the cut cog falls below 10% at t=650 and is gone by t=900 while the same cog in the fed twin stays at 1.00; all other bodies 0.923 in both runs. k4=0: A1 total 2474 -> 15973 within 25 t (k4_ablation_s5.txt), cores persist (A0 1063 -> 1120).",
+  "parents": ["20261025T1559-c18-rtwo56-food-cogs-claim"],
+  "class": "lenia",
+  "review_of": "20261025T1559-c18-rtwo56-food-cogs-claim",
+  "evidence": ["rerun/seed5/sheet.png", "radial_s5.png", "radial_s5.txt", "localcut_s5.png", "localcut_s5.txt", "k4_ablation_s5.png", "k4_ablation_s5.txt"],
+  "verdicts": [{"cid": "c1", "verdict": "Supported",
+    "supported": ["S", "I", "B", "E"],
+    "observations": {
+      "S": "rerun/seed5/sheet.png t=0: uniform noise over the whole domain; cogs by t=85",
+      "I": "rerun/seed5/FACTS.md: 11 tracks alive >= 50% of the run, area ratio 2.18; sheet.png t=345-1000: the same 11 cogs",
+      "B": "radial_s5.txt: A1 shell 0.875 at r=8 vs trough 0.038 and outside 0.017 (22.8x, 52x); k4_ablation_s5.txt: k4=0 spills A1 2474 -> 15973",
+      "E": "localcut_s5.txt: cut cog < 10% at t=650 (cut at 600), fed twin 1.00, other bodies 0.923 in both"},
+    "replicated": true, "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"E": "fed twin from the same t=600 state (work runs fed5 vs cutrun5, localcut_s5.png)", "B": "k4=0 on the mature t=600 state (k4_ablation_s5.png)"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "limitation": "E holds by construction (matter built only from food, decay 0.002); the fork shows the cog collapses after a small deficit, far sooner than its stock would last. After t~400 the population is static: cogs neither move, divide nor die while fed, so this is metabolism of frozen individuals, not turnover. The cut disk is a permanent sink. One new seed; I did not run dt/2 or a resolution test of the 4-5 px shell."}],
+  "compute": {"cpu_minutes": 15}
+}
