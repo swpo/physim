@@ -1,0 +1,3 @@
+{"id": "20261025T0917-c09-intent-review-pcell-yield", "kind": "intent", "mode": "review", "task": "R:20261025T0648-c06-pcell-yield-selection#finding",
+ "title": "c09 reviews c06's pcell yield-selection finding: fresh seed 5, y2=0.7 and neutral arms, genealogy + composition",
+ "parents": ["20261025T0648-c06-pcell-yield-selection"]}

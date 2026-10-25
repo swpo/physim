@@ -1,0 +1,19 @@
+{"file": "data/gen_s7.json", "key": "ym", "minlife": 0, "n_death": 45, "death_pct_mean": 0.017, "n_split": 26, "split_pct_mean": 0.693, "death_pct_below_median": 45, "split_pct_above_median": 21}
+{"file": "data/gen_s7.json", "key": "ym", "minlife": 20, "n_death": 24, "death_pct_mean": 0.016, "n_split": 26, "split_pct_mean": 0.693, "death_pct_below_median": 24, "split_pct_above_median": 21}
+{"file": "data/gen_s7.json", "key": "zm", "minlife": 0, "n_death": 45, "death_pct_mean": 0.591, "n_split": 26, "split_pct_mean": 0.409, "death_pct_below_median": 19, "split_pct_above_median": 9}
+{"file": "data/gen_s7.json", "key": "zm", "minlife": 20, "n_death": 24, "death_pct_mean": 0.597, "n_split": 26, "split_pct_mean": 0.409, "death_pct_below_median": 9, "split_pct_above_median": 9}
+{"key": "ym", "lag_snapshots": 0, "lag_time": 0, "n_death": 29, "death_pct_mean": 0.013, "below_median": 29}
+{"key": "ym", "lag_snapshots": 10, "lag_time": 500, "n_death": 26, "death_pct_mean": 0.028, "below_median": 26}
+{"key": "ym", "lag_snapshots": 40, "lag_time": 2000, "n_death": 21, "death_pct_mean": 0.05, "below_median": 21}
+{"key": "zm", "lag_snapshots": 0, "lag_time": 0, "n_death": 29, "death_pct_mean": 0.55, "below_median": 13}
+{"key": "zm", "lag_snapshots": 10, "lag_time": 500, "n_death": 26, "death_pct_mean": 0.562, "below_median": 11}
+{"key": "zm", "lag_snapshots": 40, "lag_time": 2000, "n_death": 21, "death_pct_mean": 0.586, "below_median": 7}
+{"file": "data/gen_s7.json", "n_daughters": 54, "parent_daughter_r": 0.889, "mean_abs_diff": 0.0189, "living_sd_mid": 0.0978}
+{"key": "np", "lag_snapshots": 40, "lag_time": 2000, "n_death": 21, "death_pct_mean": 0.08, "below_median": 21}
+{"key": "np", "lag_snapshots": 0, "lag_time": 0, "n_death": 29, "death_pct_mean": 0.0, "below_median": 29}
+living cells, Spearman(yield, particle count) mean 0.85; Spearman(marker, particle count) -0.08 over 99 snapshots
+t=  1500 cells  17  particle-weighted mean yield 0.998  marker 0.995  between-cell SD yield 0.009
+t= 25350 cells  28  particle-weighted mean yield 1.000  marker 1.009  between-cell SD yield 0.124
+t= 50250 cells  26  particle-weighted mean yield 1.081  marker 0.986  between-cell SD yield 0.098
+t= 75150 cells  29  particle-weighted mean yield 1.042  marker 0.959  between-cell SD yield 0.124
+t=100000 cells  27  particle-weighted mean yield 1.064  marker 0.940  between-cell SD yield 0.102

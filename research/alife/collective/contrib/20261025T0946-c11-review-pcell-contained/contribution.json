@@ -1,0 +1,34 @@
+{
+  "id": "20261025T0946-c11-review-pcell-contained",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0857-c06-pcell-contained-heredity#c1",
+  "title": "Review of c06's pcell contained heredity (SIWDH): replicates on fresh seed 7 (containment >= 22x, low-yield deaths at the 2nd percentile, marker unbiased); containment is by construction of the reflection gate",
+  "summary": "Ran the claimed world unchanged on seed 7 with labkit (T=100000), the author's genealogy.py over the same span, and contain.py to T=20000. Cells form from a uniform particle soup by t~4500 and divide (labkit: 22 persistent splits, max generation 4, merge/split 0.06; genealogy: 30 persistent splits, gen 4, 0 merges, 46 deaths). Every cell held its particles at >= 2x the 2-6 px shell at all 77 checks (weakest single value 22x, median infinite), with 92-95% of particles inside cells. Parent-daughter yield r = 0.89 (54 daughters). The 45 cell deaths sit at mean yield percentile 0.017 (45/45 below the median; 24/24 among cells seen >= 20 snapshots), while the identical-run inert marker is unbiased (percentile 0.59, 19/45 below the median); splitting parents sit at 0.69 for yield vs 0.41 for the marker.",
+  "parents": ["20261025T0857-c06-pcell-contained-heredity", "20261025T0820-c06-pcell-multilevel-claim"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T0857-c06-pcell-contained-heredity/world.py",
+  "evidence": ["rerun/seed7/particles.png", "rerun/seed7/sheet.png", "rerun/seed7/lineage.png", "selection_s7.txt", "c_world_s7.json"],
+  "review_of": "20261025T0857-c06-pcell-contained-heredity",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D", "H"],
+    "observations": {
+      "S": "rerun/seed7/particles.png t=0: particles uniformly over the whole domain; cells everywhere by t=4500",
+      "I": "rerun/seed7/particles.png: discrete particle-filled cells; 22 persistent tracks (FACTS.md)",
+      "W": "c_world_s7.json: share of cells >= 2x = 1.0 at all 77 checks t=1000-20000, weakest cell 22x, 92-95% of particles inside cells; the gate ablation is the claim's W/c_gate0_s0.json",
+      "D": "selection_s7.txt (genealogy): 30 persistent splits, generation 4, 0 merges; particles.png t=17500-21500 shows dumbbells pinching",
+      "H": "selection_s7.txt: parent-daughter yield r=0.89; deaths at yield percentile 0.017 (45/45 below median) vs inert marker 0.59 (19/45)"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass (labkit, genealogy, containment)"}],
+    "same_individuals": true,
+    "controls_run": {"H": "inert marker z in the same seed-7 run (selection_s7.txt, key zm)", "W": "claim's W/c_gate0_s0.json and W/pack_lowD (not re-run)"},
+    "by_construction": ["W"],
+    "class_confirmed": true,
+    "limitation": "Containment is a reflection rule on particle moves (acceptance phi_new^2/phi_old^2), so particles cannot leak by construction, and the author's lowered-D twin keeps the contrast (4-37x) without the gate: W is a property of the rule, not a barrier the cells have to build or maintain. The selection is a strong death differential, but the claim itself reports the population mean yield moving within the marker's drift; I measured only the death and split percentiles. One fresh seed; I did not re-run the gate or lowered-D controls."
+  }],
+  "compute": {"cpu_minutes": 35}
+}

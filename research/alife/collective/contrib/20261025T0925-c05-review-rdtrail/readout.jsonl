@@ -1,0 +1,3 @@
+{"run": "collective/work_c05/rev_rd/twin_kh05/seed7", "n_comp_t150_300_450_600": [7, 10, 15, 19], "tracks_scored": 10, "travel_ge5BL": 0, "median_BL": 0.7008845560700823, "max_speed": 0.231, "median_size": 29.6}
+{"run": "collective/work_c05/rev_rd/twin_kh01/seed7", "n_comp_t150_300_450_600": [3, 4, 10, 9], "tracks_scored": 10, "travel_ge5BL": 0, "median_BL": 1.3293710158226903, "max_speed": 0.236, "median_size": 26.2}
+{"run": "collective/work_c05/rev_kt/kstrail/seed7", "n_comp_t150_300_450_600": [14, 11, 11, 13], "tracks_scored": 10, "travel_ge5BL": 10, "median_BL": 6.723459119920901, "max_speed": 0.507, "median_size": 9.4}
