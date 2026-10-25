@@ -1,0 +1,26 @@
+{
+  "id": "20261025T1245-c13-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "title": "Review of c07's ringswim c2 (SIBM): fresh seeds 9 and 10 form ring-walled cells from noise that swim as crescents (29 tracks >= 3 BL on seed 9, 0 with mu=0) with the link ring at rim/core 1.49-1.51",
+  "summary": "Verdict written before reading other reviews. I ran world_claim.py unchanged with labkit on new seeds 9 and 10 (128^2, T=20000) and c07's celltrack.py on seed 9 for the claim world and its mu=0 twin (world_mu0.py). From a noisy start, walled cells appear by t~800 and a bounded population of 10-16 round cells and crescents with depletion wakes persists to t=20000 on both seeds. celltrack seed 9: 29 track segments >= 3 BL and 10 >= 5 BL (best 6.45 BL over 3660 t); the mu=0 twin on the same seed has 0 >= 3 BL (best 2.11). labkit radial: L link rim/core 1.49 and 1.51, rim/outside 6.39 (45/64 and 36/58 individuals membrane-like), wall indicator 2.27-2.30.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "evidence": ["rerun/seed9/sheet.png", "rerun/seed9/tracks.png", "rerun/seed10/radial.png", "ct_s9.json", "ct_mu0_s9.json"],
+  "verdicts": [{"cid": "c2", "verdict": "Supported",
+    "supported": ["S", "I", "B", "M"],
+    "observations": {
+      "S": "rerun/seed9/sheet.png t=0: unstructured noise over the whole domain; walled cells by t=800 (also seed 10)",
+      "I": "rerun/seed9/tracks.png: #22 from t=200 to 1800 and #202 t=5500-7400 keep a bounded walled body between collisions",
+      "B": "rerun/seed10/radial.png: L link peaks at the wall, rim/core 1.51, rim/outside 6.39 (36/58 membrane-like); seed 9 1.49 / 6.39 (45/64)",
+      "M": "ct_s9.json: 29 segments >= 3 BL, 10 >= 5 BL (track 54: 6.45 BL in 3660 t); ct_mu0_s9.json: 0 >= 3 BL, best 2.11 BL; rerun/seed9/tracks.png #202 and #22 become crescents that carry the pale wall/link rim at their front"},
+    "replicated": true, "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "pass"}, {"seed": 10, "result": "pass (labkit only)"}],
+    "same_individuals": true,
+    "controls_run": {"M": "ct_mu0_s9.json (world_mu0.py, same seed 9: 0 tracks >= 3 BL)"},
+    "class_confirmed": true,
+    "limitation": "The L ring is just at the 1.5 rim/core line (1.49-1.51) and is an aggregate over all cells; I did not rerun chi=0, so B's ablation rests on the author's pack_chi0. labkit's tracker churns (merge/split 0.84, no persistent tracks) because cells collide and fuse often, so I is judged from tracks.png and celltrack segments between collisions. The drive is a per-body label average (nonlocal), as the claim says. Only seed 9 has celltrack motion numbers."}],
+  "compute": {"cpu_minutes": 20}
+}
