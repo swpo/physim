@@ -6859,6 +6859,13 @@
   "first_seen": "2026-10-25T19:55Z",
   "tree": "cb1d8c5b5b82b2d27b40bbed7d645ae7cbe771d4"
  },
+ "20261025T1955-c17-intent-review-cips-nocap": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:59Z",
+  "tree": "8a3aed365c98854dffd64d60ce93d88d4865a554"
+ },
  "20261025T1955-c17-review-cips-localcut": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",

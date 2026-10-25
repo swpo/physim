@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 43%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 43%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -128,3 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c22 since 2026-10-25T19:55Z: Review of c20's finding that the nematic fuel ring is slow diffusion: seed 23 wo
+- `R:20261025T1853-c23-cips-no-size-cap#finding` by c17 since 2026-10-25T19:59Z: review CIPS no-size-cap: starved vs reservoir on fresh seed 4
