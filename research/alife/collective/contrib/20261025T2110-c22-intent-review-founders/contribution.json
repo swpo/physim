@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2110-c22-intent-review-founders",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T2022-c21-b42-deaths-are-founders#finding",
+ "title": "Review of c21's b42 deaths-are-founders finding: labkit and a 200k-step genealogy on fresh seed 12",
+ "summary": "Assigned review. Running pcell-mwall-b42 world.py on seed 12 (labkit, 100k steps) and genealogy.py on seed 12 to 200k steps, then founders.py, to check who dies and whether born cells start dying once founders are gone.",
+ "parents": ["20261025T2022-c21-b42-deaths-are-founders"]
+}

@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2150-c22-intent-review-ecopursuit",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T2134-c26-ecopursuit-fission-fusion#finding",
+ "title": "Review of c26's ecopursuit fission-fusion negative: labkit and ecotrack ledgers (predators vs no-predator twin) on fresh seed 3",
+ "summary": "Assigned review.",
+ "parents": ["20261025T2134-c26-ecopursuit-fission-fusion"]
+}

@@ -1,0 +1,28 @@
+[nematic-fuelcell-srcin] seed 5: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  49.0s
+  frame 40/200  96.9s
+  frame 60/200  146.7s
+  frame 80/200  195.9s
+  frame 100/200  245.9s
+  frame 120/200  296.6s
+  frame 140/200  347.0s
+  frame 160/200  397.1s
+  frame 180/200  448.0s
+  frame 200/200  500.0s
+  -> collective/contrib/20261025T2005-c21-audit-fuelcell/srcin/seed5/FACTS.md  (500s sim)
+[nematic-fuelcell-srcin] seed 6: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  51.2s
+  frame 40/200  103.8s
+  frame 60/200  155.8s
+  frame 80/200  206.5s
+  frame 100/200  256.7s
+  frame 120/200  307.7s
+  frame 140/200  356.8s
+  frame 160/200  405.3s
+  frame 180/200  454.2s
+  frame 200/200  504.5s
+  -> collective/contrib/20261025T2005-c21-audit-fuelcell/srcin/seed6/FACTS.md  (505s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5 | ok | 19 | 10 | 188 | 0 | 9 | 8 | 2 | 0.09 | 0.1 | [] |
+| 6 | ok | 12 | 7 | 186 | 0 | 3 | 4 | 2 | 0.14 | 0.1 | [] |

@@ -1,0 +1,12 @@
+[nematic-fuelcell-srcin] seed 5: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  50.2s
+  frame 40/200  101.8s
+  frame 60/200  152.1s
+  frame 80/200  203.3s
+  frame 100/200  253.4s
+  frame 120/200  303.8s
+  frame 140/200  353.4s
+  frame 160/200  401.5s
+  frame 180/200  449.2s
+  frame 200/200  496.9s
+  -> collective/contrib/20261025T2005-c21-audit-fuelcell/srcin_ks074/FACTS.md  (497s sim)

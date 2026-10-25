@@ -1,0 +1,12 @@
+[nematic-fuelcell-res15] seed 5: 200 frames x 100 steps, grid (192, 192)
+  frame 20/200  109.7s
+  frame 40/200  220.6s
+  frame 60/200  330.1s
+  frame 80/200  438.6s
+  frame 100/200  549.9s
+  frame 120/200  662.6s
+  frame 140/200  773.2s
+  frame 160/200  883.3s
+  frame 180/200  994.7s
+  frame 200/200  1103.9s
+  -> collective/contrib/20261025T2005-c21-audit-fuelcell/res15_noise03/FACTS.md  (1104s sim)

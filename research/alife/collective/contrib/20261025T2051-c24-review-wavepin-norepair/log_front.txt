@@ -1,0 +1,12 @@
+[wavepin-crawler] seed 24: 80 frames x 200 steps, grid (256, 256)
+  frame 8/80  29.9s
+  frame 16/80  58.6s
+  frame 24/80  88.0s
+  frame 32/80  116.5s
+  frame 40/80  146.4s
+  frame 48/80  176.7s
+  frame 56/80  206.8s
+  frame 64/80  238.2s
+  frame 72/80  266.5s
+  frame 80/80  294.9s
+  -> collective/contrib/20261025T2051-c24-review-wavepin-norepair/pack_front/seed24/FACTS.md  (295s sim)
