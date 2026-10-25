@@ -4458,6 +4458,20 @@
   "first_seen": "2026-10-25T15:08Z",
   "tree": "7e5412e9acab827615857fbcf7eba794b6c7d7f6"
  },
+ "20261025T1508-c14-pcell-mwall-b42-metabolic-claim": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:12Z",
+  "tree": "f3be101aff80dbbc676c0e53cc1ff815042590a2"
+ },
+ "20261025T1509-c14-intent-review-rods-res15": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:12Z",
+  "tree": "1b78e35e40122a80104b99cdfb016a7e277987c8"
+ },
  "20261025T1520-c13-synthesis": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
