@@ -1,0 +1,10 @@
+== rerun
+frame 141: contrast 228.8, bodies 69, share of bodies >=2x 1.00, weakest body 3.5x
+frame 161: contrast 255.5, bodies 75, share of bodies >=2x 1.00, weakest body 21.4x
+frame 182: contrast 281.8, bodies 85, share of bodies >=2x 1.00, weakest body 2.7x
+frame 200: contrast 318.0, bodies 89, share of bodies >=2x 1.00, weakest body 4.6x
+== rerun_dt2
+frame 141: contrast 139.8, bodies 73, share of bodies >=2x 1.00, weakest body 2.6x
+frame 161: contrast 163.8, bodies 77, share of bodies >=2x 1.00, weakest body 3.5x
+frame 182: contrast 197.9, bodies 83, share of bodies >=2x 1.00, weakest body 5.1x
+frame 200: contrast 232.2, bodies 88, share of bodies >=2x 0.99, weakest body 2.0x

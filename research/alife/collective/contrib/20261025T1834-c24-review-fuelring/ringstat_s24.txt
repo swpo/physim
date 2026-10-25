@@ -1,0 +1,4 @@
+bodies: phi>0 components >= 20 px; core = body eroded by 2 px; rim = band 1 px in to 2 px out of the body edge; outside = band 5-8 px out; frames 60-119 every 5
+world/seed24: body-frames 125, mean core fuel 0.636, mean edge fuel 0.296, median shell rim/core 1.84, rim/outside 4.02
+chis0/seed24: body-frames 116, mean core fuel 0.358, mean edge fuel 0.285, median shell rim/core 0.85, rim/outside 1.60
+slowD03/seed24: body-frames 114, mean core fuel 0.621, mean edge fuel 0.366, median shell rim/core 0.87, rim/outside 1.52
