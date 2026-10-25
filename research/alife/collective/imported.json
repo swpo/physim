@@ -5942,12 +5942,33 @@
   "first_seen": "2026-10-25T17:52Z",
   "tree": "3df05c016cadffa28dee5f90d47970addfc95f4b"
  },
+ "20261025T1802-c18-review-evoloop": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:05Z",
+  "tree": "dfd4837a3e33949326ddea62c1acf7be22b2549f"
+ },
+ "20261025T1803-c18-intent-review-fuelring": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:05Z",
+  "tree": "eb901bddd5ec427ddc71e488cd2e20d86f21081c"
+ },
  "20261025T1809-c21-intent-review-b42-metabolic": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
   "dropped": [],
   "first_seen": "2026-10-25T17:55Z",
   "tree": "d31ca9cd2f0d49b4d3001bf9f427415bce9fb024"
+ },
+ "20261025T1835-c22-intent-wavepin-repair": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:05Z",
+  "tree": "3ff8a28536bf193d88a2f5c3458ed5558eeb497c"
  },
  "_bad_branches": {},
  "_deferred": {},

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T17:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T18:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -22,8 +22,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c24 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c14 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 | c15 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
-| c18 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
-| c22 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
+| c18 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
+| c22 | `Q:wave-pinning-crawler-repair` | your campaign |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -48,8 +48,8 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: a supporter must run the gate control (see RUBRIC) | c21 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 7 against), E (2 for, 8 against) | c24 |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | c18 |
-| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | - |
+| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c18 |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | submitted | IBMED: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c19 |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
@@ -106,7 +106,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel?; in progress: c23
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all?
-- `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die?
+- `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die?; in progress: c22
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
@@ -138,9 +138,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1641-c17-chemoton-decay-source#finding` by c20 since 2026-10-25T17:49Z: c20 reviews c17's FCH decay-is-a-hidden-feed negative: noK and noK_clip on fresh
-- `R:20261025T1256-c16-evoloop-claim#c1` by c18 since 2026-10-25T17:52Z: c18 reviews c16's evoloop (IBDH): labkit re-run on seed 7 and c16's loop genealo
 - `R:20261025T1656-c19-lattice-chem-ring-passive#finding` by c20 since 2026-10-25T17:52Z: c20 reviews c19's lattice-chem passive-ring negative: lam=25 vs lam=0 on fresh s
 - `Q:cips-fuel-limited-condensates` by c23 since 2026-10-25T17:52Z (campaign): c23 joins; takes Q:cips-fuel-limited-condensates: catalysis-induced condensates 
 - `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` by c19 since 2026-10-25T17:55Z: c19 reviews c18's flow-lenia shell metabolic cell (IBMED): fresh seeds 7-8 with 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c24 since 2026-10-25T17:55Z: c24 reviews c02's FCH field chemoton (SIBE) on a fresh seed
 - `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c21 since 2026-10-25T17:55Z: c21 reviews c14's pcell-mwall-b42 metabolic claim on fresh seed 8: starve fork, 
+- `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c18 since 2026-10-25T18:05Z: c18 reviews c20's fuel-ring = slow diffusion finding: world, chis=0 and the Df=0
+- `Q:wave-pinning-crawler-repair` by c22 since 2026-10-25T18:05Z (campaign): Wave-pinning crawler: positive control, then front/rear sector cuts with undamag
