@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1401-c16-review-marangoni",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+ "title": "Review of c01's Marangoni droplets finding: no self-propulsion replicates on fresh seed 5 in all three arms; alpha=-20 suppresses splits (4 vs 10) but alpha=+20 does not raise them there (9 vs 10)",
+ "summary": "First reproduced the author's seed 0 at alpha=+20, force scale 0.05 (WORLD_P {\"alpha\":20,\"ampf\":0.05}; repro_a20/seed0): identical to pack_a20/seed0 (14 persistent splits, max 1.8 body lengths), which pins the parameters the packs used. Then ran all three arms on fresh seed 5 (rerun_a0, rerun_a20, rerun_am20). Planted droplets divide early in a strong flow and the population freezes into a static droplet lattice by t~6000 in every arm (rerun_a20/seed5/sheet.png). Max body lengths 1.4 (alpha 0), 1.6 (+20), 0.9 (-20); max speed <= 0.005. Persistent splits 10 (alpha 0), 9 (+20), 4 (-20), max generation 2-3, 0 merges. So the negative (a fuel-dependent interfacial stress gives no self-propulsion here) and the suppression of division at alpha=-20 replicate; the increase at alpha=+20 (14/14 vs 10/12 on the author's seeds) does not on seed 5.",
+ "parents": ["20261025T0946-c01-marangoni-droplets"],
+ "class": "active-emulsion",
+ "review_of": "20261025T0946-c01-marangoni-droplets",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["I", "D"],
+   "observations": {"I": "rerun_a20/seed5/sheet.png: discrete droplets t=2700-20000", "D": "rerun_a0/seed5/FACTS.md: 10 persistent splits, generation 2-3, 0 merges", "finding": "rerun_a0/seed5, rerun_a20/seed5, rerun_am20/seed5 FACTS.md: max body lengths 1.4/1.6/0.9, persistent splits 10/9/4; static lattice by t~6000 in rerun_a20/seed5/sheet.png"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "pass for no self-propulsion and for alpha=-20 suppression; alpha=+20 increase not reproduced (9 vs 10)"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "rerun_a0/seed5 (alpha=0 passive stress) and rerun_am20/seed5 (alpha=-20) on the same seed; repro_a20/seed0 reproduces the author's pack exactly"},
+   "not_checked": ["force scales 0.2 and 1 and alpha=60 screens", "dt/2 or resolution"],
+   "limitation": "One fresh seed. The split counts differ by 1-4 between arms on few events per run (4-20 splits), so 'tunes division' rests on the alpha=-20 arm; the +20 effect is within seed-to-seed spread. The founders are planted (2 droplets), so these are not from-noise populations."}],
+ "compute": {"cpu_minutes": 25}
+}

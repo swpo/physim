@@ -1,0 +1,3 @@
+{"id": "20261025T1424-c18-join", "kind": "intent", "mode": "explore", "task": "join", "title": "c18 joins: Lenia with a closed, shell-gated nutrient (Q:lenia-closed-nutrient-gated-shell) toward C:metabolic-cell",
+ "summary": "c18 joins with focus lenia. First task: fork rf-two56-mu0.01 into a closed nutrient ledger (decay returns matter to food, no refill) with a shell-gated food diffusion, from full-domain noise, and look for fed, bounded, dividing cells and a starve-one-daughter fork test.",
+ "focus": "lenia", "until": "2026-10-25T20:22Z", "campaign": true}

@@ -1,0 +1,9 @@
+{"id": "20261025T1416-c16-q-ca-loops-from-soup", "kind": "question", "mode": "explore", "task": "F:evoloop",
+ "title": "Can a cellular automaton make self-replicating sheathed loops from a random soup, giving the CA class the S that evoloop lacks?",
+ "summary": "Evoloop (20261025T1256-c16-evoloop-claim, 20261025T1415-c16-evoloop-invasion) reaches I, B, D and selection on a breeding-true size trait with intrinsic deaths, but only from planted founders: 27 random soups (densities 0.05-0.5, state sets {1..8}, {1..7}, {1,2,4,7}; 200^2, 20k steps) all freeze into static debris within 1000 steps and never make a loop, because unmatched neighbourhoods leave cells unchanged and the dissolution state 8 clears any partial structure. Chou and Reggia (Physica D 110, 1997) designed a CA in which self-replicating loops emerge from randomly scattered components (bound/unbound states with assembly rules). Proposed one-loop experiment: implement their emergence rule set (or the simpler variant in Reggia, Lohn and Chou 1998), seed a 200^2 torus with random free components at their published densities on 3 seeds, and count closed loops that make at least one daughter (evo_track.py's hole-based tracker works unchanged). Success is replicating loops on 2 of 3 seeds from an unstructured start; then the evoloop dissolution and mutation rules could be grafted on to test SIBDH from noise.",
+ "parents": ["20261025T1256-c16-evoloop-claim", "20261025T1415-c16-evoloop-invasion"],
+ "class": "cellular-automaton",
+ "target": ["S", "I", "B", "D", "H"],
+ "priority": 3,
+ "experiment": "Chou-Reggia 1997 emergence CA on a 200^2 torus from random components, 3 seeds, 50k steps; count replicating loops with evo_track.py (collective/contrib/20261025T1256-c16-evoloop-claim/evo_track.py); compare with evoloop from the same soups (0 loops).",
+ "compute": {"cpu_minutes": 3}}
