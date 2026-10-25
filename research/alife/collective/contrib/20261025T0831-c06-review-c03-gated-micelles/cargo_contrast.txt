@@ -1,0 +1,39 @@
+== rerun
+frame 0: contrast nan, bodies 735, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 6.3, bodies 31, share of bodies >=2x 1.00, weakest body 4.2x
+frame 20: contrast 10.2, bodies 34, share of bodies >=2x 1.00, weakest body 4.7x
+frame 30: contrast 15.9, bodies 38, share of bodies >=2x 1.00, weakest body 4.3x
+frame 40: contrast 21.5, bodies 43, share of bodies >=2x 0.98, weakest body 1.0x
+frame 50: contrast 23.2, bodies 46, share of bodies >=2x 1.00, weakest body 7.5x
+frame 60: contrast 28.9, bodies 46, share of bodies >=2x 1.00, weakest body 13.4x
+frame 70: contrast 27.5, bodies 54, share of bodies >=2x 1.00, weakest body 7.9x
+frame 80: contrast 27.0, bodies 53, share of bodies >=2x 1.00, weakest body 11.6x
+frame 90: contrast 30.5, bodies 53, share of bodies >=2x 1.00, weakest body 16.0x
+frame 100: contrast 26.8, bodies 61, share of bodies >=2x 1.00, weakest body 3.5x
+frame 100: contrast 26.8, bodies 61, share of bodies >=2x 1.00, weakest body 3.5x
+== rerun_beta0
+frame 0: contrast nan, bodies 735, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 2.2, bodies 31, share of bodies >=2x 0.90, weakest body 1.9x
+frame 20: contrast 1.5, bodies 34, share of bodies >=2x 0.00, weakest body 1.3x
+frame 30: contrast 1.3, bodies 38, share of bodies >=2x 0.00, weakest body 1.2x
+frame 40: contrast 1.3, bodies 43, share of bodies >=2x 0.00, weakest body 1.1x
+frame 50: contrast 1.2, bodies 46, share of bodies >=2x 0.00, weakest body 1.1x
+frame 60: contrast 1.2, bodies 46, share of bodies >=2x 0.00, weakest body 1.0x
+frame 70: contrast 1.1, bodies 54, share of bodies >=2x 0.00, weakest body 1.0x
+frame 80: contrast 1.1, bodies 53, share of bodies >=2x 0.00, weakest body 1.0x
+frame 90: contrast 1.1, bodies 53, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 61, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 61, share of bodies >=2x 0.00, weakest body 1.0x
+== rerun_chiq0
+frame 0: contrast nan, bodies 735, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 3.3, bodies 31, share of bodies >=2x 1.00, weakest body 2.8x
+frame 20: contrast 2.7, bodies 34, share of bodies >=2x 1.00, weakest body 2.0x
+frame 30: contrast 2.6, bodies 38, share of bodies >=2x 0.97, weakest body 1.9x
+frame 40: contrast 2.8, bodies 43, share of bodies >=2x 0.95, weakest body 1.4x
+frame 50: contrast 3.1, bodies 46, share of bodies >=2x 1.00, weakest body 2.2x
+frame 60: contrast 3.7, bodies 46, share of bodies >=2x 1.00, weakest body 2.9x
+frame 70: contrast 3.9, bodies 54, share of bodies >=2x 1.00, weakest body 2.3x
+frame 80: contrast 4.8, bodies 53, share of bodies >=2x 1.00, weakest body 3.5x
+frame 90: contrast 6.0, bodies 53, share of bodies >=2x 1.00, weakest body 4.4x
+frame 100: contrast 6.3, bodies 61, share of bodies >=2x 0.97, weakest body 1.5x
+frame 100: contrast 6.3, bodies 61, share of bodies >=2x 0.97, weakest body 1.5x

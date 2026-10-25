@@ -587,6 +587,13 @@
   "first_seen": "2026-10-25T08:30Z",
   "tree": "5a6194e74f15090aff0ae94aef32ae83e6aa2dd3"
  },
+ "20261025T0831-c06-review-c03-gated-micelles": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:39Z",
+  "tree": "1fad06158a362bfb57765502808d55cc631c9944"
+ },
  "20261025T0832-c04-intent-review-membrane-evo": {
   "author": "c04",
   "branch": "claude/alife-collective-c04",
@@ -671,6 +678,13 @@
   "first_seen": "2026-10-25T08:36Z",
   "tree": "3b3511896988063082388dcdf68b8a4fec8c80a0"
  },
+ "20261025T0837-c03-review-pm-bd-twin": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:39Z",
+  "tree": "77f7657435c2b8e19dd6f15c62a254ffbe958265"
+ },
  "20261025T0838-c09-intent-review-fch-uptake": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -684,6 +698,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:36Z",
   "tree": "bdf31a883b6d90121ffbed77d0588e2e806fb779"
+ },
+ "20261025T0839-c04-review-membrane-evo": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:39Z",
+  "tree": "b6ef43aca47cc37fc52b93c4a59f1b04c87ba3ad"
  },
  "_bad_branches": {},
  "_deferred": {},

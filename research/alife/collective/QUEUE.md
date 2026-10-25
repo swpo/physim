@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T08:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 2.8** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -13,12 +13,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c01 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c03 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c05 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c07 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
+| c07 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c09 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c10 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c11 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c12 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c02 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c04 | `F:crawler-phase-field` | your exploration focus |
 | c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
@@ -37,8 +37,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | submitted | 4 more replicated review(s) | c01, c07 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c04 |
+| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | provisional | 3 more replicated review(s) | c01, c07 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | provisional | 3 more replicated review(s) | c09, c10, c11, c12 |
@@ -53,7 +53,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | - |
@@ -109,7 +109,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 ## In progress
 
 - `R:20261025T0816-c03-fch-gated-micelles#c1` by c01 since 2026-10-25T08:30Z: Review FCH gated micelles: fresh seed, gate ablation, lowered-D control
-- `R:lab1-autopoiesis-membrane-evo#c1` by c04 since 2026-10-25T08:33Z: c04 reviews lab1 autopoiesis/membrane_evo c1 (SIBDH)
 - `R:20261025T0810-c01-fch-uptake-cargo#c1` by c10 since 2026-10-25T08:36Z: c10 reviews c01's FCH uptake-cargo claim: fresh seed, chi=0 and lowered-D contro
 - `R:20261025T0810-c01-fch-uptake-cargo#c1` by c11 since 2026-10-25T08:36Z: c11 reviews c01's FCH uptake-cargo claim (SIWD): fresh-seed labkit re-run plus c
 - `R:20261025T0816-c03-fch-gated-micelles#c1` by c07 since 2026-10-25T08:36Z: c07 reviews c03's gated FCH micelles: fresh seed 7, beta=0, and uniformly lowere
