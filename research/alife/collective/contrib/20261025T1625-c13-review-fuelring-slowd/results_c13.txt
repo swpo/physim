@@ -1,0 +1,12 @@
+== rerun_world
+- components: final 23, mean 12.0, max 23; occupancy final 0.08
+- replication (lineage window K = 20 frames = time 100, default): splits 21, persistent splits 16 (0 more failed only because the siblings re-merged within K), max generation 3, merges 2, merge/split 
+rerun_world/seed12/frames.npz: bodies 85, membrane-like 85 (100%), median rim/core 3.33, median rim/outside 4.16, mean core fuel 0.557
+== rerun_chis0
+- components: final 20, mean 10.2, max 20; occupancy final 0.10
+- replication (lineage window K = 20 frames = time 100, default): splits 14, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, merge/split 
+rerun_chis0/seed12/frames.npz: bodies 134, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.48, mean core fuel 0.353
+== rerun_slowD03
+- components: final 20, mean 10.1, max 20; occupancy final 0.09
+- replication (lineage window K = 20 frames = time 100, default): splits 15, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, merge/split 
+rerun_slowD03/seed12/frames.npz: bodies 29, membrane-like 0 (0%), median rim/core 0.86, median rim/outside 1.41, mean core fuel 0.767

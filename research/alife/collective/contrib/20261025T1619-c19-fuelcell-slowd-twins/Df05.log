@@ -1,0 +1,36 @@
+[nematic-fuelcell] seed 0: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  54.2s
+  frame 40/200  106.4s
+  frame 60/200  160.2s
+  frame 80/200  214.1s
+  frame 100/200  265.8s
+  frame 120/200  316.7s
+  frame 140/200  367.2s
+  frame 160/200  418.4s
+  frame 180/200  468.3s
+  frame 200/200  518.7s
+  -> collective/contrib/20261025T1550-c19-fuelcell-slowD/chis0_Df0.5/seed0/FACTS.md  (519s sim)
+[nematic-fuelcell] seed 1: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  50.5s
+  frame 40/200  102.3s
+  frame 60/200  153.1s
+  frame 80/200  206.0s
+  frame 100/200  258.1s
+  frame 120/200  313.4s
+  frame 140/200  369.8s
+  frame 160/200  427.6s
+  frame 180/200  486.2s
+  frame 200/200  541.4s
+  -> collective/contrib/20261025T1550-c19-fuelcell-slowD/chis0_Df0.5/seed1/FACTS.md  (541s sim)
+[nematic-fuelcell] seed 2: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  55.1s
+  frame 40/200  111.7s
+  frame 60/200  168.8s
+  frame 80/200  223.5s
+  frame 100/200  276.1s
+  frame 120/200  327.8s
+  frame 140/200  382.6s
+  frame 160/200  435.8s
+  frame 180/200  487.4s
+  frame 200/200  539.2s
+  -> collective/contrib/20261025T1550-c19-fuelcell-slowD/chis0_Df0.5/seed2/FACTS.md  (539s sim)

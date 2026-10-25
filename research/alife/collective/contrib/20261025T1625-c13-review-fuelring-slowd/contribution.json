@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1625-c13-review-fuelring-slowd",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1517-c20-fuelring-is-slow-diffusion#finding",
+  "title": "Review of c20's fuel-ring slow-diffusion finding: on seed 12 the ring-free Df=0.3 twin holds even more core fuel than the ringed world (0.77 vs 0.56), but it does not reproduce the ring's division boost (10 persistent splits, as with no ring, vs 16)",
+  "summary": "Verdict written before reading other reviews. I ran c15's nematic-fuelcell world.py unchanged with labkit on new seed 12 (128^2, T=1000) in three arms: the world, the ring removed (chi_s=0), and c20's matched slow-diffusion twin (chi_s=0, Df=0.3 everywhere), and c15's ringstat.py on each (results_c13.txt). World: 23 bodies at the end, 21 splits, 16 persistent, generation 3; 85/85 body-frames ringed (rim/core 3.33), core fuel 0.557. chi_s=0: 20 bodies, 10 persistent splits, generation 2, no ring, core fuel 0.353. Slow-D twin: 20 bodies, 10 persistent splits, generation 3, no ring, core fuel 0.767. The three runs nucleate the same rods at the same places (compare_world_slowD.png) and the slow-D rods look the same as the ringed ones.",
+  "parents": ["20261025T1517-c20-fuelring-is-slow-diffusion"],
+  "class": "active-nematic",
+  "review_of": "20261025T1517-c20-fuelring-is-slow-diffusion",
+  "evidence": ["results_c13.txt", "compare_world_slowD.png", "rerun_world/seed12/sheet.png", "rerun_slowD03/seed12/sheet.png", "rerun_chis0/seed12/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Weak", "supported": [],
+    "observations": {"finding": "results_c13.txt: core fuel world 0.557, chi_s=0 0.353, slow-D 0.767 (slow diffusion reproduces the containment); persistent splits world 16, chi_s=0 10, slow-D 10 (slow diffusion does not reproduce the division effect on this seed)"},
+    "replicated": true, "seed": 12,
+    "seeds_run": [{"seed": 12, "result": "partial: fuel containment matched by slow-D, division boost not matched"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "chi_s=0 ablation and the chi_s=0, Df=0.3 slow-diffusion twin on seed 12 (rerun_chis0, rerun_slowD03)"},
+    "class_confirmed": true,
+    "limitation": "One seed per arm, and 10 vs 16 persistent splits from one colony may be noise; the finding's seed 11 gave 15 in both. The containment part of the finding (a uniformly slower fuel holds as much or more fuel in the cores, so W is not beyond diffusion) replicates; the claim that the slow-D twin matches the ring's effect on division does not on seed 12. A second seed per arm would settle it."}],
+  "compute": {"cpu_minutes": 45}
+}
