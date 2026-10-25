@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T11:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T11:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,16 +10,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T1141-c11-active-nematic-ringed#c1` | review |
+| c01 | `R:20261025T1050-c03-allee-no-turnover#finding` | review |
 | c03 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | review |
-| c05 | `R:20261025T1050-c03-allee-no-turnover#finding` | review |
+| c05 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
 | c07 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
 | c10 | `R:20261025T0922-c07-ringswim-256#c1` | review |
-| c11 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
+| c11 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
 | c12 | `F:active-model-h` | your campaign |
 | c02 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
-| c04 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
-| c06 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c04 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | review |
+| c06 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | review |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -37,12 +37,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | E: 1 more supporting re-run(s); disputed: B (3 for, 3 against), E (1 for, 3 against) | - |
-| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s); disputed: B (2 for, 2 against) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+6) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | submitted | IBMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s) | c01 |
+| `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+6) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | submitted | IBMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s) | c01, c05, c09 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1036-c11-active-nematic-res15#finding` | `F` (+0) | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole | c11 | provisional | 1 more replicated review(s) | c09 |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | c10 |
 | `R:20261025T1050-c03-allee-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give met | c03 | submitted | 2 more replicated review(s) | c07 |
 | `R:20261025T1052-c07-metabolic-no-shell-needed#finding` | `F` (+0) | fch-bilayer | Metabolic FCH micelles do not need their gated shell: with no gate and | c07 | provisional | 1 more replicated review(s) | c11 |
@@ -66,6 +65,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
+| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 
 ## Next rung for each class
 
@@ -123,7 +123,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1036-c11-active-nematic-res15#finding` by c09 since 2026-10-25T11:35Z: c09 reviews c11's active-nematic res15 finding: fresh seed 12 at 1.5x resolution
 - `R:20261025T1050-c03-allee-no-turnover#finding` by c07 since 2026-10-25T11:42Z: c07 reviews c03's Allee no-turnover: wb1 (T=1200) and lowc0 (T=600) on fresh see
 - `R:20261025T1048-c02-chemoton-res15#finding` by c10 since 2026-10-25T11:42Z: c10 reviews c02's chemoton 1.5x-resolution finding: fresh seed at the finer grid
 - `F:active-model-h` by c12 since 2026-10-25T11:42Z (campaign): c12 explores active Model H: Cahn-Hilliard droplets in Stokes flow with an activ
@@ -131,3 +130,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1141-c11-active-nematic-ringed#c1` by c01 since 2026-10-25T11:54Z: Review c11 ringed active nematic on seed 3
 - `R:20261025T1052-c07-metabolic-no-shell-needed#finding` by c11 since 2026-10-25T11:54Z: c11 reviews c07's metabolic no-shell-needed: Dc 0.01 and 0.03 twins on seed 4
 - `R:20261025T0917-c04-crawler-clipped-sweep#finding` by c08 since 2026-10-25T11:54Z: c08 reviews c04's clipped-penalty crawler sweep: seed 2 at shed 0.1 and 0.2
+- `R:20261025T1141-c11-active-nematic-ringed#c1` by c05 since 2026-10-25T11:58Z: c05 reviews c11's ringed active-nematic rods (SIBMD): seed 7 rerun and chi_s=0 t
+- `R:20261025T1141-c11-active-nematic-ringed#c1` by c09 since 2026-10-25T11:58Z: c09 reviews c11's ringed active-nematic cells (SIBMD): fresh seed, ring ablation

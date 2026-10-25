@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1150-c09-review-nematic-res15",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1036-c11-active-nematic-res15#finding",
+  "title": "Review of c11's active-nematic res15 finding: at 1.5x resolution seed 13 grows a colony from one founder (7 persistent splits, generation 3), seed 12 nucleates nothing; founding is rare on the fine grid",
+  "summary": "Two fresh seeds of the unchanged colony world at dx=2/3, 192^2 (WORLD_P dx=0.6667), T=1000. Seed 13: one droplet nucleates at t~85, orders into a rod with a vortex pair by t=220, then elongates, pinches at the middle and divides; its line grows into 10 rods by t=1000 (labkit: 10 splits, 7 persistent, max generation 3, 2 merges, 1 nucleation) with rods of the same shape as at dx=1, as the finding states. Seed 12: faint nuclei appear and dissolve by t~220 and the field stays uniform to t=1000 (0 components). The per-pixel noise amplitude is kept fixed when the grid is refined, so the initial noise per unit area is weaker at dx=2/3, which plausibly explains why founding is rarer; once a founder exists, fission is resolution-robust.",
+  "parents": ["20261025T1036-c11-active-nematic-res15"],
+  "class": "active-nematic",
+  "world": "research/alife/collective/contrib/20261025T1036-c11-active-nematic-res15/world.py",
+  "evidence": ["rerun_res15/seed13/sheet.png", "rerun_res15/seed13/lineage.png", "rerun_res15/seed12/sheet.png"],
+  "review_of": "20261025T1036-c11-active-nematic-res15",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "rerun_res15/seed13/lineage.png: 7 persistent splits, max generation 3, merge/split 0.2 at dx=2/3; sheet t=220-1000 shows elongate-and-pinch fissions of rods"},
+    "replicated": true,
+    "seed": 13,
+    "seeds_run": [{"seed": 13, "result": "pass: one founder, 10 rods by t=1000"}, {"seed": 12, "result": "no founder nucleates; uniform from t~220"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Founding at 1.5x resolution is a rare event (1 founder on seed 13, 0 on seed 12, 1 on the author's seed 0), so S at the fine grid rests on single nucleations; the noise is per pixel, not per area. Motility at dx=2/3 is short (max 2.6 body lengths on seed 13)."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
