@@ -1,0 +1,61 @@
+== fresh seed 5 (deathsel.py ym/zm minlife 20, heredity.py, lagsel.py)
+{"file": "gen_s5.json", "key": "ym", "minlife": 20, "n_death": 39, "death_pct_mean": 0.026, "n_split": 27, "split_pct_mean": 0.627, "death_pct_below_median": 39, "split_pct_above_median": 19}
+{"file": "gen_s5.json", "key": "zm", "minlife": 20, "n_death": 39, "death_pct_mean": 0.686, "n_split": 27, "split_pct_mean": 0.443, "death_pct_below_median": 7, "split_pct_above_median": 12}
+{"file": "gen_s5.json", "n_daughters": 54, "parent_daughter_r": 0.835, "mean_abs_diff": 0.0254, "living_sd_mid": 0.1037}
+lag      0 ym: n= 64 mean pct 0.039  below median 64/64
+lag      0 zm: n= 64 mean pct 0.697  below median 10/64
+lag   2000 ym: n= 33 mean pct 0.068  below median 33/33
+lag   2000 zm: n= 33 mean pct 0.639  below median 9/33
+lag   5000 ym: n= 29 mean pct 0.148  below median 28/29
+lag   5000 zm: n= 29 mean pct 0.632  below median 8/29
+lag  10000 ym: n= 28 mean pct 0.200  below median 27/28
+lag  10000 zm: n= 28 mean pct 0.636  below median 9/28
+lag  20000 ym: n= 26 mean pct 0.373  below median 16/26
+lag  20000 zm: n= 26 mean pct 0.575  below median 10/26
+== fresh seed 6 (deathsel.py ym/zm minlife 20, heredity.py, lagsel.py)
+{"file": "gen_s6.json", "key": "ym", "minlife": 20, "n_death": 24, "death_pct_mean": 0.044, "n_split": 23, "split_pct_mean": 0.767, "death_pct_below_median": 23, "split_pct_above_median": 22}
+{"file": "gen_s6.json", "key": "zm", "minlife": 20, "n_death": 24, "death_pct_mean": 0.416, "n_split": 23, "split_pct_mean": 0.546, "death_pct_below_median": 14, "split_pct_above_median": 14}
+{"file": "gen_s6.json", "n_daughters": 48, "parent_daughter_r": 0.879, "mean_abs_diff": 0.0218, "living_sd_mid": 0.1265}
+lag      0 ym: n= 48 mean pct 0.047  below median 45/48
+lag      0 zm: n= 48 mean pct 0.437  below median 28/48
+lag   2000 ym: n= 24 mean pct 0.064  below median 23/24
+lag   2000 zm: n= 24 mean pct 0.424  below median 14/24
+lag   5000 ym: n= 22 mean pct 0.143  below median 21/22
+lag   5000 zm: n= 22 mean pct 0.439  below median 12/22
+lag  10000 ym: n= 20 mean pct 0.276  below median 15/20
+lag  10000 zm: n= 20 mean pct 0.399  below median 12/20
+lag  20000 ym: n= 18 mean pct 0.426  below median 9/18
+lag  20000 zm: n= 18 mean pct 0.476  below median 9/18
+== author's seed 0 data, lagsel.py
+lag      0 ym: n= 43 mean pct 0.044  below median 43/43
+lag      0 zm: n= 43 mean pct 0.538  below median 17/43
+lag   2000 ym: n= 24 mean pct 0.097  below median 23/24
+lag   2000 zm: n= 24 mean pct 0.496  below median 13/24
+lag   5000 ym: n= 22 mean pct 0.143  below median 22/22
+lag   5000 zm: n= 22 mean pct 0.551  below median 8/22
+lag  10000 ym: n= 21 mean pct 0.249  below median 19/21
+lag  10000 zm: n= 21 mean pct 0.542  below median 8/21
+lag  20000 ym: n= 14 mean pct 0.440  below median 9/14
+lag  20000 zm: n= 14 mean pct 0.624  below median 5/14
+== author's seed 1 data, lagsel.py
+lag      0 ym: n= 43 mean pct 0.050  below median 43/43
+lag      0 zm: n= 43 mean pct 0.483  below median 19/43
+lag   2000 ym: n= 24 mean pct 0.112  below median 23/24
+lag   2000 zm: n= 24 mean pct 0.513  below median 9/24
+lag   5000 ym: n= 23 mean pct 0.158  below median 22/23
+lag   5000 zm: n= 23 mean pct 0.535  below median 9/23
+lag  10000 ym: n= 23 mean pct 0.238  below median 20/23
+lag  10000 zm: n= 23 mean pct 0.558  below median 10/23
+lag  20000 ym: n= 21 mean pct 0.347  below median 15/21
+lag  20000 zm: n= 21 mean pct 0.557  below median 9/21
+== author's seed 2 data, lagsel.py
+lag      0 ym: n= 48 mean pct 0.021  below median 48/48
+lag      0 zm: n= 48 mean pct 0.252  below median 40/48
+lag   2000 ym: n= 29 mean pct 0.112  below median 27/29
+lag   2000 zm: n= 29 mean pct 0.321  below median 21/29
+lag   5000 ym: n= 24 mean pct 0.223  below median 20/24
+lag   5000 zm: n= 24 mean pct 0.367  below median 17/24
+lag  10000 ym: n= 21 mean pct 0.311  below median 18/21
+lag  10000 zm: n= 21 mean pct 0.410  below median 13/21
+lag  20000 ym: n= 18 mean pct 0.360  below median 12/18
+lag  20000 zm: n= 18 mean pct 0.466  below median 9/18
