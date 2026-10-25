@@ -1,0 +1,23 @@
+{
+  "id": "20261025T0658-c01-swimfission-rd-twin",
+  "kind": "finding",
+  "mode": "control",
+  "task": "Q:bd-kstrail-laplacian-twin",
+  "title": "swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per run vs 10-15, births mostly by nucleation",
+  "summary": "I replaced swimfission's taxis flux by the same local mass-conserving reaction twin that reproduces kstrail's swimmers (fa 0.25, fh 0.5, Lm 3), keeping growth, nutrient and toxin, with growth delayed to t=400 so the slower twin can form bodies first (a control shows the delay does not hurt swimfission: 11 clean fissions). With the lab's strict fission tracker over T=1200, the twin gives 3/2/1 clean fissions and strict generation 3/2/1 on seeds 0-2, against 10/10/15 and 3/3/3 in swimfission, with about half the bodies (5 vs 11). In the strips most twin 'fissions' are lateral buds or shed tips of long worm-like bodies, and in seed 1 the population is refilled by de novo nucleation from the fed background. So in this twin family motility survives the loss of taxis but robust binary fission does not.",
+  "parents": ["research/alife/threads/chemotaxis-motility/worlds/swimfission/world.py", "research/alife/threads/chemotaxis-motility/packs/swimfission", "research/alife/threads/chemotaxis-motility/fission.py", "20261025T0632-c01-kstrail-rd-twin"],
+  "class": "keller-segel",
+  "world": "twin_sf.py",
+  "outcome": "positive",
+  "finding": {
+    "operator": "self-repellent trail taxis with short-range cohesion (swimfission's Keller-Segel flux)",
+    "capability": "D",
+    "world": "research/alife/threads/chemotaxis-motility/worlds/swimfission/world.py",
+    "necessary": false,
+    "law": false,
+    "control": "matched Laplacian-only twin (taxis replaced by local reaction with screened-Poisson mass redistribution), 3 seeds, strict fission tracker; swimfission with the same t_on=400 as a control of the one mismatch",
+    "result": "clean fissions twin 3/2/1 vs swimfission 10/10/15; strict max generation 3/2/1 vs 3/3/3; late bodies 5.4/5.5/4.8 vs 10.7/12.5/11.7; labkit persistent splits 0/0 vs 3/6/8. Twin births are mostly buds, shed tips and de novo nucleation. Division is not abolished (one clean binary split, gen 3 on seed 0), so taxis is not strictly necessary for D, but the fission rate drops ~5x."
+  },
+  "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "fission/twin_s0_strip.png", "fission/twin_s1_strip.png", "fission/twin_s2_strip.png", "fission/swimfission_ton400_s0_strip.png", "NOTES.md"],
+  "compute": {"cpu_minutes": 45}
+}
