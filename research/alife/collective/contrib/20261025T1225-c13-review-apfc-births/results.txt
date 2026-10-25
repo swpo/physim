@@ -1,0 +1,15 @@
+c13 review of 20261025T1120-c10-apfc-births (world.py and births.py copied unchanged; births_n.py = births.py with grid size NGRID).
+Census every 2 t from t=60 to t=600, births.py rule (birth = peak with no peak within 3 px 2 t earlier).
+conserved, seed 5, 128^2:                     births 11, lost 0, median 8.6 px, 100% within 12 px; peaks 13 -> 24
+conserved, seed 6, 128^2:                     births 14, lost 0, median 8.9 px, 100% within 12 px; peaks 15 -> 29
+kappa=0.002 psi0=-0.70, seed 5, 128^2:        births 44, lost 1, median 8.6 px, 100% within 12 px; peaks 13 -> 55
+kappa=0.002 psi0=-0.70, seed 8, 192^2:        births 102, lost 0, median 8.75 px, 100% within 12 px; peaks 21 -> 121
+nbrs.py: number of earlier peaks within 12 px of each birth
+conserved seed 5:  {2: 6, 3: 4, 4: 1}  (all >= 2: consistent with triangle completion)
+fed seed 5:        {1: 9, 2: 15, 3: 16, 4: 4}  (9 of 44 have a single earlier peak within 12 px)
+single_fed_s5.png: the 9 single-neighbour births. 8 of 9 are chain-end extensions: a faint satellite grows in the
+density ripple at the end of a 2-3 peak chain (second peak 12-20 px behind; k20 >= 2 in all 9), the parents are
+unchanged. One (t~344-350) is an elongated peak resolving into two maxima, i.e. possibly a fused pair re-separating
+or a peak fission; the only such event in 44 births.
+labkit (component tracking, crystallites as bodies): seeds 5, 6 conserved and seed 5 fed: persistent tracks 0,
+merge/split 0.99-1.07, max generation 1, persistent splits 1 each.

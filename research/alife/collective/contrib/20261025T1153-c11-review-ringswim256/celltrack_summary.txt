@@ -1,0 +1,2 @@
+"persistent_splits": 117, "max_generation": 19, "splits": 331, "merges": 229, "deaths": 213, "tracks_ge3BL": 96, "tracks_ge5BL": 19
+"persistent_splits": 110, "max_generation": 4, "splits": 423, "merges": 0, "deaths": 578, "tracks_ge3BL": 0, "tracks_ge5BL": 0

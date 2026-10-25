@@ -1,0 +1,12 @@
+[apfc] seed 7: 120 frames x 50 steps, grid (128, 128)
+  frame 12/120  3.6s
+  frame 24/120  7.1s
+  frame 36/120  11.0s
+  frame 48/120  14.6s
+  frame 60/120  18.2s
+  frame 72/120  21.8s
+  frame 84/120  25.1s
+  frame 96/120  28.4s
+  frame 108/120  31.7s
+  frame 120/120  35.2s
+  -> collective/contrib/20261025T1250-c16-review-apfc-births/rerun/FACTS.md  (35s sim)

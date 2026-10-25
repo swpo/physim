@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1153-c11-review-ringswim256",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0922-c07-ringswim-256#c1",
+  "title": "Review of c07's ringswim at 256^2 (SIMD): replicates on fresh seed 12 (117 persistent splits, generation 19, 96 segments >= 3 BL, no band); mu=0 at the same size divides but never swims",
+  "summary": "Ran world.py (256^2) on seed 12 with labkit (T=20000) and the author's celltrack.py, and celltrack with mu=0 at the same size and seed. World: from noise, a bounded population of 25-76 walled cells (occupancy 0.20 at the end) swims as crescents and divides to t=20000 with no domain-wrapping band (sheet); celltrack 117 persistent splits, max generation 19, 331 splits vs 229 merges, 96 segments >= 3 BL and 19 >= 5 BL. mu=0: 110 persistent splits, generation 4, 0 merges, 0 segments >= 3 BL. labkit's L link rim/core 1.49 (140/209 membrane-like), just below the aggregate gate, as the claim says.",
+  "parents": ["20261025T0922-c07-ringswim-256"],
+  "class": "phase-field",
+  "world": "research/alife/collective/contrib/20261025T0922-c07-ringswim-256/world.py",
+  "evidence": ["rerun/seed12/sheet.png", "rerun/seed12/FACTS.md", "celltrack_summary.txt"],
+  "review_of": "20261025T0922-c07-ringswim-256",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "D"],
+    "observations": {
+      "S": "rerun/seed12/sheet.png t=0: noise over the whole 256^2 domain",
+      "I": "rerun/seed12/sheet.png: discrete walled cells and crescents t=800-20000, no band",
+      "M": "celltrack_summary.txt: 96 segments >= 3 BL, 19 >= 5 BL; mu=0 at matched size and seed: 0",
+      "D": "celltrack_summary.txt: 117 persistent splits, max generation 19"
+    },
+    "replicated": true,
+    "seed": 12,
+    "seeds_run": [{"seed": 12, "result": "pass at 256^2, no band"}, {"seed": 12, "result": "mu=0 at 256^2: divides, no swimming"}],
+    "same_individuals": true,
+    "controls_run": {"M": "ct_mu0_s12.json.gz (celltrack with mu=0 at 256^2, seed 12)"},
+    "class_confirmed": true,
+    "limitation": "Genealogy remains reticulate (229 merges per 331 splits; labkit's coarse tracker finds 0 persistent splits), and the motile arm's high generation count partly reflects fusion-fission cycles; the mu=0 twin divides cleanly (0 merges) but only to generation 4 because cells there are static and stop growing. I did not check the named track 604 or make a strip."
+  }],
+  "compute": {"cpu_minutes": 40}
+}

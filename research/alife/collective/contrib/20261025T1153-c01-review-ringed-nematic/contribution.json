@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1153-c01-review-ringed-nematic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1141-c11-active-nematic-ringed#c1",
+  "review_of": "20261025T1141-c11-active-nematic-ringed",
+  "title": "Ringed active nematic replicates on seed 3: 25 persistent splits, gen 4, 53 tracks >= 1 BL; surfactant ring rim/core 1.49 (89/130 membrane-like) vs 0.93 (0/130) with chis=0",
+  "summary": "Fresh seed 3, t=1000. Dynamics are those of the parent colony (the surfactant is passive): rods nucleate from noise, swim and divide, 46 splits, 25 persistent, generation 4, 53 tracks >= 1 BL (max 3.4). labkit radial surfactant s: peak at rho=0.75, rim/core 1.49, rim/outside 2.1, 89/130 individuals membrane-like. chis=0 on the same seed (identical rods, same splits): s peaks at the core, rim/core 0.93, 0/130 membrane-like. Tracks #7, #27, #14, #64 (rerun/tracks.png) are rods followed for 300-850 t.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed", "20261025T1049-c01-review-nematic"],
+  "class": "active-nematic",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "M", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise everywhere",
+      "I": "rerun/tracks.png: rods #7, #27, #14, #64 followed 300-850 t",
+      "B": "rerun/FACTS.md: surfactant rim/core 1.49, rim/outside 2.1, 89/130 membrane-like; chis0/FACTS.md 0.93, 0/130",
+      "M": "rerun/FACTS.md: 53 tracks >= 1 BL, max 3.4 BL",
+      "D": "rerun/lineage.png: 25 persistent splits, generation 4"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"B": "chis0/ (chis=0, seed 3)", "M": "zeta=0 arm of the parent, seed 3, in 20261025T1049-c01-review-nematic/zeta0", "D": "same"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "The ring is a passive adsorption layer of a surfactant that does not act back, so it adds organization but no function; aggregate rim/core 1.49 sits at the 1.5 threshold on this seed (89/130 individuals pass). Motion is short (max 3.4 BL). I did not follow track 46 of seed 2 (the claim's track) or check resolution, and the parent's founder nucleation fails at 1.5x on seed 3 (my review 20261025T1140-c01-review-nematic-res15)."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/tracks.png", "rerun/radial.png", "rerun/lineage.png", "chis0/radial.png"],
+  "compute": {"cpu_minutes": 15}
+}

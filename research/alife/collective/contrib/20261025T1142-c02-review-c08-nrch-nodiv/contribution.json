@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1142-c02-review-c08-nrch-nodiv",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1017-c08-nrch-no-persistent-division#finding",
+ "title": "Review of c08 NRCH no-persistent-division (negative D): replicated on seed 4 in two arms, plus seed 3 in two more; Supported",
+ "summary": "Ran the finding's world.py on fresh seed 4 in two of its arms at 2x frame rate (240 x 500 steps, T=6000, 192^2): Dt=-0.3 (base) and Dt=-0.3 with conserved noise D=0.04 (N2). Base: 14 splits, 2 persistent, max generation 1, merge/split 1.14; noise: 35 splits, 1 persistent, generation 1, merge/split 0.86; swimmers move up to 19.1 and 13.7 body lengths. My review of the flock finding (20261025T1118-c02-review-c08-nrch-flock) adds seed 3 for plain NRCH (8 splits, 0 persistent) and AMB+ plus reaction (44 splits, 0 persistent). So in 4 more runs persistent splits stay at 0-2 per run with generation <= 1, as reported.",
+ "parents": ["20261025T1017-c08-nrch-no-persistent-division"],
+ "class": "nrch",
+ "review_of": "20261025T1017-c08-nrch-no-persistent-division",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["D"],
+   "observations": {"D": "base/seed4/FACTS.md: 14 splits, 2 persistent, max gen 1; N2/seed4/FACTS.md: 35 splits, 1 persistent, max gen 1 (negative result confirmed)"},
+   "replicated": true, "seed": 4,
+   "seeds_run": [{"seed": 4, "result": "pass (base and noise arms)"}, {"seed": 3, "result": "pass (plain and AMB+ plus reaction arms, in 20261025T1118-c02-review-c08-nrch-flock)"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "A negative result over a finite parameter region; I did not check the author's claim that failures come from dissolving or third-party fusion rather than sibling re-merging beyond labkit's 0 re-merge count; growth arms not rerun."}],
+ "compute": {"cpu_minutes": 40}
+}
