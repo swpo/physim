@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1356-c10-review-mwall",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1345-c14-pcell-mwall-claim#c1",
+  "title": "Review of c14's pcell-mwall (SIBDH): replicated on seed 5: M wall layer rim/core 3.28 on 120/131 cells, 12 persistent splits, yield selected by intrinsic deaths (death percentile 0.025 vs marker 0.55, birth rank 0.21 vs 0.46)",
+  "summary": "Fresh labkit run of the claim's world.py on seed 5 (128^2, T=100000) and the claim's genealogy.py, deathsel.py and birthfate.py on the same seed (minlife 20). From the unstructured soup, ~20 cells form by t=4000 and the population stays at 21-24 cells to t=100000 (no giant body on this seed). labkit: M wall material rim/core 3.28, rim/outside 3.88, 120/131 individuals membrane-like; 19 splits, 8 persistent, generation 2, merge/split 0.16. Genealogy: 12 persistent splits, generation 2, 0 merges, 35 deaths (none imposed), 0 off-kind daughters, 0 conversions. Mean cell yield rises 1.00 -> 1.14 while the identical-event marker drifts to 0.95. Dying cells (n=17) sit at yield percentile 0.025 (all 17 below the median) against 0.549 for the marker; dying cells born after the founders had birth rank 0.205 in yield (marker 0.458), and low-born cells died more often than high-born ones (0.50 vs 0.17; marker 0.43 vs 0.33). Splits are not selected (percentile 0.46).",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1345-c14-pcell-mwall-claim",
+  "evidence": ["rerun/sheet.png", "rerun/radial.png", "rerun/lineage.png", "rerun/tracks.png", "rerun/FACTS.md", "data/summary.txt", "data/gen_s5.json.gz"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "D", "H"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: unstructured soup everywhere (M = 0); cells by t=4000",
+      "I": "rerun/sheet.png t=4000-100000: 21-24 discrete walled cells",
+      "B": "rerun/radial.png: M wall material rim/core 3.28, rim/outside 3.88, 120/131 individuals membrane-like",
+      "D": "genealogy seed 5: 12 persistent splits, generation 2, 0 merges; labkit 8 persistent, generation 2 (rerun/lineage.png)",
+      "H": "data/summary.txt: death percentile 0.025 (yield) vs 0.549 (marker); birth rank of dying cells 0.205 vs 0.458; low-born death share 0.50 vs high-born 0.17; mean yield 1.00 -> 1.14 vs marker 0.95"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "identical-event inert marker zm in the same run (data/gen_s5.json.gz, data/summary.txt)", "B": "the claim's bm=0 parent (pcell-yeff-cap) has no M; not re-run here"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "The M layer is passive (no feedback on phi, links or particles), an adsorption ring up the wall indicator: it qualifies as a material layer but does no work. Kinds are ranks of a continuous capped trait. Generation reaches only 2 on this seed; the birth-rank signal rests on the cells that died after the founders (n~12-15). One fresh seed; no dt or resolution test."
+  }],
+  "compute": {"cpu_minutes": 45}
+}
