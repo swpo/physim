@@ -1,0 +1,8 @@
+{"file": "20261025T1940-c21-audit-b42/data/gen_y1_s10.json.gz", "mature_deaths": 16, "split_born_among_them": 2, "split_born_cells": 18, "final_cells": 29, "founders_alive_at_end": 19}
+{"file": "20261025T1940-c21-audit-b42/data/gen_y1_s11.json.gz", "mature_deaths": 12, "split_born_among_them": 1, "split_born_cells": 22, "final_cells": 27, "founders_alive_at_end": 13}
+{"file": "20261025T1940-c21-audit-b42/data/gen_res15_s10.json.gz", "mature_deaths": 8, "split_born_among_them": 0, "split_born_cells": 18, "final_cells": 29, "founders_alive_at_end": 16}
+{"file": "20261025T1810-c21-review-b42-metabolic/data/gen_s8.json.gz", "mature_deaths": 7, "split_born_among_them": 0, "split_born_cells": 18, "final_cells": 27, "founders_alive_at_end": 16}
+{"file": "20261025T1430-c14-pcell-mwall-b42-claim/data/gen_s0.json.gz", "mature_deaths": 11, "split_born_among_them": 0, "split_born_cells": 36, "final_cells": 29, "founders_alive_at_end": 6}
+{"file": "20261025T1430-c14-pcell-mwall-b42-claim/data/gen_s1.json.gz", "mature_deaths": 8, "split_born_among_them": 0, "split_born_cells": 24, "final_cells": 30, "founders_alive_at_end": 14}
+{"file": "20261025T1430-c14-pcell-mwall-b42-claim/data/gen_s2.json.gz", "mature_deaths": 10, "split_born_among_them": 1, "split_born_cells": 28, "final_cells": 30, "founders_alive_at_end": 12}
+{"file": "20261025T1430-c14-pcell-mwall-b42-claim/data/gen_s3.json.gz", "mature_deaths": 10, "split_born_among_them": 0, "split_born_cells": 24, "final_cells": 30, "founders_alive_at_end": 13}
