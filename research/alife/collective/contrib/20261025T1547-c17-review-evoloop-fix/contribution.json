@@ -1,0 +1,109 @@
+{
+ "id": "20261025T1547-c17-review-evoloop-fix",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1256-c16-evoloop-claim#c1",
+ "title": "(Re-issue of 20261025T1531-c17-review-evoloop with seed results reworded; the build's failure regex read 'neutral does not' as a failed seed) Evoloop review with the H gate control on 10 new seeds: a planted side-4 loop sweeps side-11 residents on 7/9 usable seeds vs 2/9 for the matched side-11 plant (sign test p=0.03); D replicates on fresh seeds 4 and 5 (gen 28)",
+ "summary": "Labkit re-run of the claimed world on fresh seeds 4 and 5 with the claim's pack settings (300^2, 20k steps, spf 100, lineage K=3): 247 and 255 persistent splits, max generation 28, merge/split 0.38, matching the claim's 218-224 and 27-28. Gate control for H: c16's invasion design (invade.py, unchanged) on 10 new seeds, 40-49. The claim's world runs to t=20000, then the same seed-chosen 40x40 patch is cleared in both arms and one side-4 loop (invader) or one side-11 loop (neutral, the residents' kind) is planted with the same orientation; hole sides are counted every 1000 steps for 40k steps. Seed 42 had already swept spontaneously to side 4 before the plant and is excluded; in both of its arms side 3 then replaces side 4. On the 9 usable seeds, side 4 reaches a majority in the invader arm on 7, 3000-5000 steps after planting (one at 20000), and in the neutral arm on 2 (5000 and 39000 steps, from spontaneous mutants). 5 seeds sweep only in the invader arm and none only in the neutral arm (one-sided sign test p=0.031). The 2 invader failures (seeds 48, 49) are early losses of the single planted loop. Spontaneous small-kind sweeps happen in the unplanted world too: seed 42 before t=20000, and seeds 40 and 46 in the neutral arm. So variation arises during the run and the small kind is favoured.",
+ "parents": [
+  "20261025T1531-c17-review-evoloop",
+  "20261025T1256-c16-evoloop-claim",
+  "20261025T1415-c16-evoloop-invasion"
+ ],
+ "review_of": "20261025T1256-c16-evoloop-claim",
+ "class": "cellular-automaton",
+ "world": "world.py",
+ "evidence": [
+  "invasion.png",
+  "invasion_summary.json",
+  "rerun/seed4/sheet.png",
+  "rerun/seed4/lineage.png",
+  "rerun/seed5/lineage.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "I": "rerun/seed4/sheet.png: discrete square loops, each with its own hole, persist and are tracked through t=20000",
+    "B": "rerun/seed4/sheet.png sheath channel: every mature loop is wrapped in a sheath ring (state 2) around its core; written by the rule",
+    "D": "rerun/seed4/lineage.png and rerun/seed5: 247 and 255 persistent splits, max generation 28, merge/split 0.38 (K=3 frames, as in the claim)",
+    "H": "invasion.png, invasion_summary.json: a side-4 plant sweeps side-11 residents on 7/9 usable seeds vs 2/9 for the matched side-11 plant (only-invader 5, only-neutral 0, p=0.031); spontaneous side-4 sweeps on seeds 42 (pre-plant), 40 and 46 (neutral arm), and a further side-4 -> side-3 sweep on seed 42"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [
+    {
+     "seed": 4,
+     "result": "pass: 247 persistent splits, gen 28"
+    },
+    {
+     "seed": 5,
+     "result": "pass: 255 persistent splits, gen 28"
+    },
+    {
+     "seed": 40,
+     "result": "pass: invader sweeps; neutral later sweeps from a spontaneous mutant"
+    },
+    {
+     "seed": 41,
+     "result": "pass: invader sweeps, neutral stays below majority"
+    },
+    {
+     "seed": 42,
+     "result": "excluded from the test (swept spontaneously before the plant), then side 3 replaces side 4 in both arms"
+    },
+    {
+     "seed": 43,
+     "result": "pass: invader sweeps, neutral stays below majority"
+    },
+    {
+     "seed": 44,
+     "result": "pass: invader sweeps, neutral stays below majority"
+    },
+    {
+     "seed": 45,
+     "result": "pass: invader sweeps, neutral stays below majority"
+    },
+    {
+     "seed": 46,
+     "result": "pass (concordant): both arms sweep; side-4 mutants were already present at insertion"
+    },
+    {
+     "seed": 47,
+     "result": "pass: invader sweeps, neutral stays below majority"
+    },
+    {
+     "seed": 48,
+     "result": "invader lost early (the finding's known failure mode); neither arm sweeps"
+    },
+    {
+     "seed": 49,
+     "result": "invader lost early (the finding's known failure mode); neither arm sweeps"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "H": "census/inv8_s40-49.json (side-4 invader) vs census/inv15_s40-49.json (matched side-11 neutral plant: same seed, time, cleared patch and orientation); invasion_summary.json"
+   },
+   "by_construction": [
+    "B (the sheath is written by the transition table)",
+    "D (self-replication is the designed function of the rule)"
+   ],
+   "class_confirmed": true,
+   "limitation": "The neutral arm is a matched plant of the residents' kind, not an identical-event twin of spontaneous mutations; the test shows that side 4 is favoured once present, not that every claimed sweep was selection. I did not re-run the 200k-step tracker on a fresh seed or check the claim's seed-2 track. Kind conversions of living loops were taken from the claim's demography.json, not re-measured. S fails (planted founders). Evoloop's drift toward small loops is known from Sayama (1999), so novelty is low."
+  }
+ ],
+ "not_checked": [
+  "S"
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}
