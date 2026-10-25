@@ -1,0 +1,26 @@
+{
+  "id": "20261025T0810-c01-fch-uptake-cargo",
+  "kind": "claim",
+  "mode": "extend",
+  "task": "C:inherited-contents",
+  "title": "FCH micelles from noise concentrate a uniformly supplied solute 140-170x and keep it through fission; no uniform-D twin can hold it (SIWD, W diffusion-testable)",
+  "summary": "Fork of c03's cargo-fission world (FCH micelle regime, amphiphile feed) with one change: the solute is supplied uniformly everywhere (kp0 = 0.002 at every site, decay kd = 0.002) instead of being made by the amphiphile, and it partitions into the micelle cores (chi = -3, Scharfetter-Gummel flux). From white noise ~33 micelles form by t=16, grow on the feed and divide (18-26 persistent splits, generation 2-3, 3 seeds). On every seed 99.1-99.9% of body-frames hold the solute at >= 2x the outside (aggregate 141-169x at t=400), and both daughters of each fission keep it (fission_strips_seed1.png: a parent at 131x splits into daughters at 61x and 66x). With chi = 0, and with chi = 0 plus Dc lowered 100x, the solute stays uniform: 1.0x in every body-frame. At 1.5x resolution 97.5% of body-frames hold >= 2x (164x aggregate) through 19 splits. Because the source is uniform, any contrast must come from transport, so a uniformly lowered D cannot reproduce it; the earlier self-made-cargo worlds did not have this property (my reviews 20261025T0756 and 20261025T0805 found a 100x slower barrier-free cargo also held >= 2x).",
+  "parents": ["20261025T0752-c03-fch-cargo-fission", "20261025T0805-c01-review-fch-cargo"],
+  "class": "fch-bilayer",
+  "world": "world.py",
+  "evidence": ["pack/seed1/sheet.png", "pack/seed0/lineage.png", "fission_strips_seed1.png", "fission_strips_seed0.png", "bodyframes.txt", "cargo_contrast.txt", "pack_chi0/sheet.png", "pack_lowD/sheet.png", "pack_res15/sheet.png"],
+  "claims": [{
+    "cid": "c1",
+    "capabilities": ["S", "I", "W", "D"],
+    "rung": "L6[L2]+W",
+    "statement": "In all three seeds, micelles that form from white noise grow on the amphiphile feed and divide repeatedly (18-26 persistent splits, generation 2-3), and they hold a solute that is supplied uniformly to the whole domain at >= 2x the outside in 99.1-99.9% of body-frames (aggregate 141-169x by t=400); both daughters of each fission keep it. Removing the partitioning (chi=0) gives exactly uniform solute (1.0x), also with its diffusivity lowered 100x.",
+    "track": "seed 1, fission_strips_seed1.png row 2 (t=260-304): a micelle formed from noise holding the solute at ~131x elongates, pinches and splits into two daughters at 61x and 66x that stay separate",
+    "evidence": ["fission_strips_seed1.png", "pack/seed1/sheet.png", "pack/seed1/lineage.png", "bodyframes.txt"],
+    "controls_run": {
+      "W": "pack_chi0/ (chi=0, seed 0: 1.0x in every body-frame, same bodies) and pack_res15/ (1.5x finer grid: 97.5% of body-frames >= 2x, 164x aggregate, 19 persistent splits)"
+    },
+    "bd_control": "pack_lowD/ (chi=0 and Dc lowered 100x, the matched uniformly-lowered-D twin): 1.0x in all 4249 body-frames against 99.3% >= 2x for the world on the same seed. With a uniform source and decay, linear diffusion of any D keeps the solute uniform, so the contrast cannot be matched by a Laplacian-only transport."
+  }],
+  "limits": "Containment is equilibrium partitioning into the amphiphile core (a potential chi u), not a boundary layer: the bodies are L2 and no B is claimed. The solute is passive (osm=0), so it does not affect growth or division and its inheritance is re-equilibration rather than memory: a daughter would refill even if it were born empty. Division is driven by the global amphiphile feed and comes in synchronized waves. Contrast grows through the run because total solute has not reached steady state (1/kd = 500 > T = 400). A few newborn or nucleating bodies sit below 2x for a frame (0.1-2.5% of body-frames).",
+  "compute": {"cpu_minutes": 30}
+}

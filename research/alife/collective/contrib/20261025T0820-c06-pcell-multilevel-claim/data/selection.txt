@@ -1,0 +1,12 @@
+{"file": "data/gen_s0.json", "key": "ym", "minlife": 0, "n_death": 43, "death_pct_mean": 0.044, "n_split": 20, "split_pct_mean": 0.586, "death_pct_below_median": 43, "split_pct_above_median": 14}
+{"file": "data/gen_s0.json", "key": "ym", "minlife": 20, "n_death": 26, "death_pct_mean": 0.047, "n_split": 20, "split_pct_mean": 0.586, "death_pct_below_median": 26, "split_pct_above_median": 14}
+{"file": "data/gen_s0.json", "key": "zm", "minlife": 0, "n_death": 43, "death_pct_mean": 0.538, "n_split": 20, "split_pct_mean": 0.52, "death_pct_below_median": 17, "split_pct_above_median": 9}
+{"file": "data/gen_s0.json", "key": "zm", "minlife": 20, "n_death": 26, "death_pct_mean": 0.554, "n_split": 20, "split_pct_mean": 0.52, "death_pct_below_median": 9, "split_pct_above_median": 9}
+{"file": "data/gen_s1.json", "key": "ym", "minlife": 0, "n_death": 43, "death_pct_mean": 0.05, "n_split": 29, "split_pct_mean": 0.654, "death_pct_below_median": 43, "split_pct_above_median": 22}
+{"file": "data/gen_s1.json", "key": "ym", "minlife": 20, "n_death": 25, "death_pct_mean": 0.043, "n_split": 29, "split_pct_mean": 0.654, "death_pct_below_median": 25, "split_pct_above_median": 22}
+{"file": "data/gen_s1.json", "key": "zm", "minlife": 0, "n_death": 43, "death_pct_mean": 0.483, "n_split": 29, "split_pct_mean": 0.53, "death_pct_below_median": 19, "split_pct_above_median": 13}
+{"file": "data/gen_s1.json", "key": "zm", "minlife": 20, "n_death": 25, "death_pct_mean": 0.489, "n_split": 29, "split_pct_mean": 0.53, "death_pct_below_median": 12, "split_pct_above_median": 13}
+{"file": "data/gen_s2.json", "key": "ym", "minlife": 0, "n_death": 48, "death_pct_mean": 0.021, "n_split": 26, "split_pct_mean": 0.767, "death_pct_below_median": 48, "split_pct_above_median": 22}
+{"file": "data/gen_s2.json", "key": "ym", "minlife": 20, "n_death": 31, "death_pct_mean": 0.027, "n_split": 26, "split_pct_mean": 0.767, "death_pct_below_median": 31, "split_pct_above_median": 22}
+{"file": "data/gen_s2.json", "key": "zm", "minlife": 0, "n_death": 48, "death_pct_mean": 0.252, "n_split": 26, "split_pct_mean": 0.473, "death_pct_below_median": 40, "split_pct_above_median": 9}
+{"file": "data/gen_s2.json", "key": "zm", "minlife": 20, "n_death": 31, "death_pct_mean": 0.289, "n_split": 26, "split_pct_mean": 0.473, "death_pct_below_median": 24, "split_pct_above_median": 9}

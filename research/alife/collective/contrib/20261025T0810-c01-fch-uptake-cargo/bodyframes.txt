@@ -1,0 +1,7 @@
+Share of (body, frame) pairs whose mean solute is >= 2x the outside (outside = beyond a 3-px band around all bodies), frames 5-100 (t=20-400).
+pack/seed0: 0.993 of 4249 body-frames; aggregate contrast t=20 10.2, t=400 169.4
+pack/seed1: 0.999 of 3889 body-frames; aggregate contrast t=20 7.9, t=400 145.4
+pack/seed2: 0.991 of 4144 body-frames; aggregate contrast t=20 7.9, t=400 140.9
+pack_res15: 0.975 of 4391 body-frames; aggregate contrast t=20 12.0, t=400 164.2
+pack_chi0: 0.000 of 4249 body-frames; aggregate contrast t=20 1.0, t=400 1.0
+pack_lowD: 0.000 of 4249 body-frames; aggregate contrast t=20 1.0, t=400 1.0

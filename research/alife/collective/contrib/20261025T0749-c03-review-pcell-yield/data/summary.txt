@@ -1,0 +1,30 @@
+comp_y0.7_s5
+  t0: kind1 0.47, pure 0.00, cells 2
+  t2000: kind1 0.33, pure 0.19, cells 26
+  t4000: kind1 0.36, pure 0.23, cells 26
+  t6000: kind1 0.33, pure 0.42, cells 26
+  t8000: kind1 0.30, pure 0.45, cells 29
+  t10000: kind1 0.27, pure 0.47, cells 30
+  t12000: kind1 0.18, pure 0.73, cells 30
+  t14000: kind1 0.13, pure 0.90, cells 30
+  t16000: kind1 0.09, pure 0.91, cells 32
+comp_y0.7_s6
+  t0: kind1 0.53, pure 0.00, cells 2
+  t2000: kind1 0.34, pure 0.11, cells 19
+  t4000: kind1 0.29, pure 0.26, cells 19
+  t6000: kind1 0.25, pure 0.35, cells 20
+  t8000: kind1 0.24, pure 0.50, cells 24
+  t10000: kind1 0.22, pure 0.59, cells 27
+  t12000: kind1 0.17, pure 0.69, cells 29
+  t14000: kind1 0.17, pure 0.70, cells 30
+  t16000: kind1 0.15, pure 0.82, cells 33
+comp_neu_s5
+  t0: kind1 0.47, pure 0.00, cells 2
+  t2000: kind1 0.39, pure 0.00, cells 25
+  t4000: kind1 0.43, pure 0.04, cells 26
+  t6000: kind1 0.50, pure 0.14, cells 28
+  t8000: kind1 0.53, pure 0.32, cells 28
+  t10000: kind1 0.52, pure 0.36, cells 28
+  t12000: kind1 0.53, pure 0.54, cells 28
+  t14000: kind1 0.51, pure 0.56, cells 27
+  t16000: kind1 0.54, pure 0.75, cells 28

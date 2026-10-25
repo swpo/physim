@@ -1,0 +1,12 @@
+pre-cut area 349
+frame 120: damaged a=0.76 ring=None | twin a=1.00 ring=None | ratio 0.76
+frame 124: damaged a=0.83 ring=1.9 | twin a=1.07 ring=None | ratio 0.78
+frame 128: damaged a=0.42 ring=1.56 | twin a=0.91 ring=1.63 | ratio 0.46
+frame 132: damaged a=0.45 ring=1.63 | twin a=0.31 ring=1.44 | ratio 1.45
+frame 136: damaged a=0.66 ring=None | twin a=0.59 ring=None | ratio 1.13
+frame 140: damaged a=0.88 ring=None | twin a=0.81 ring=None | ratio 1.08
+frame 144: damaged a=1.04 ring=None | twin a=1.00 ring=None | ratio 1.04
+frame 148: damaged a=1.23 ring=None | twin a=1.20 ring=None | ratio 1.02
+frame 152: damaged a=1.36 ring=None | twin a=1.45 ring=None | ratio 0.93
+frame 156: damaged a=1.45 ring=None | twin a=1.75 ring=1.63 | ratio 0.83
+frame 160: damaged a=0.52 ring=1.6 | twin a=0.54 ring=1.63 | ratio 0.96

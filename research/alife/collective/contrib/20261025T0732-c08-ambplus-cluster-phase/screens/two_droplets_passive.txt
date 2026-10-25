@@ -1,0 +1,22 @@
+t=0 small 253 big 706 bg -1.000 max 1.000
+t=250 small 221 big 673 bg -0.996 max 1.036
+t=500 small 198 big 667 bg -0.991 max 1.033
+t=750 small 183 big 663 bg -0.988 max 1.033
+t=1000 small 175 big 651 bg -0.984 max 1.033
+t=1250 small 152 big 645 bg -0.982 max 1.032
+t=1500 small 141 big 637 bg -0.979 max 1.032
+t=1750 small 129 big 633 bg -0.977 max 1.032
+t=2000 small 108 big 626 bg -0.975 max 1.032
+t=2250 small 93 big 620 bg -0.973 max 1.032
+t=2500 small 72 big 620 bg -0.971 max 1.032
+t=2750 small 44 big 620 bg -0.969 max 1.031
+t=3000 small 0 big 627 bg -0.967 max 1.031
+t=3250 small 0 big 631 bg -0.964 max 1.031
+t=3500 small 0 big 635 bg -0.961 max 1.030
+t=3750 small 0 big 641 bg -0.959 max 1.030
+t=4000 small 0 big 653 bg -0.959 max 1.030
+t=4250 small 0 big 653 bg -0.958 max 1.030
+t=4500 small 0 big 657 bg -0.958 max 1.030
+t=4750 small 0 big 657 bg -0.958 max 1.030
+t=5000 small 0 big 659 bg -0.958 max 1.030
+wall 353.14661979675293

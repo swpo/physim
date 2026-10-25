@@ -1,0 +1,20 @@
+cell 4 area0 328 aspect 1.15 erased 0.36
+  t 6000 dam (210, 1.65, 1) twin (328, 1.94, 1) ratio 0.64
+  t 6200 dam (72, 1.59, 1) twin (289, 1.92, 1) ratio 0.25
+  t 6400 dam (99, 1.71, 1) twin (131, 1.67, 1) ratio 0.76
+  t 6600 dam (158, 1.78, 1) twin None ratio None
+  t 6800 dam (213, 1.91, 1) twin None ratio None
+  t 7000 dam (241, 1.94, 1) twin None ratio None
+  t 7200 dam (255, 1.95, 1) twin None ratio None
+  t 7400 dam (288, 1.96, 1) twin None ratio None
+  t 7600 dam (358, 2.01, 1) twin None ratio None
+cell 10 area0 323 aspect 1.23 erased 0.378
+  t 6000 dam (201, 1.68, 1) twin (323, 1.97, 1) ratio 0.62
+  t 6200 dam (72, 1.6, 1) twin (334, 1.93, 1) ratio 0.22
+  t 6400 dam (80, 1.63, 1) twin (299, 1.84, 1) ratio 0.27
+  t 6600 dam (129, 1.79, 1) twin (178, 1.79, 1) ratio 0.72
+  t 6800 dam (158, 1.82, 1) twin (123, 1.68, 1) ratio 1.28
+  t 7000 dam (192, 1.86, 1) twin (171, 1.81, 1) ratio 1.12
+  t 7200 dam (190, 1.88, 1) twin (234, 1.91, 1) ratio 0.81
+  t 7400 dam (136, 1.75, 1) twin (282, 1.95, 1) ratio 0.48
+  t 7600 dam (57, None, 1) twin (318, 1.98, 1) ratio 0.18

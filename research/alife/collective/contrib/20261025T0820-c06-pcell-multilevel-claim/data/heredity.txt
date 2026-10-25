@@ -1,0 +1,3 @@
+{"file": "data/gen_s0.json", "n_daughters": 40, "parent_daughter_r": 0.969, "mean_abs_diff": 0.0135, "living_sd_mid": 0.1272}
+{"file": "data/gen_s1.json", "n_daughters": 58, "parent_daughter_r": 0.862, "mean_abs_diff": 0.019, "living_sd_mid": 0.1345}
+{"file": "data/gen_s2.json", "n_daughters": 52, "parent_daughter_r": 0.916, "mean_abs_diff": 0.0166, "living_sd_mid": 0.135}

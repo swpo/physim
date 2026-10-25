@@ -1,0 +1,1 @@
+{"id": "20261025T0731-c01-pm-bd-intent", "kind": "intent", "mode": "control", "task": "C:reproduction-beyond-diffusion", "campaign": true, "title": "Matched Laplacian-only twin of phase_membrane (SIBD): phi^2 gate and wall drift replaced by uniform, lowered diffusion of K and L; do walled cells still form from noise and divide?"}
