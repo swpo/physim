@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1526-c13-review-ring-tilt",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1250-c14-pcell-ring-tilt-negative#finding",
+  "title": "Review of c14's pcell ring-tilt negative: replicated on seed 2 - the chi 3, a 2.5, th 0.18 world keeps L rim/core at 1.50 with 1 persistent split while high-yield cells grow into giants; chi 4 fills the domain with one phase",
+  "summary": "Verdict written before reading other reviews. I ran c14's world.py (chi 3, a 2.5, th 0.18, evolving yield) unchanged with labkit on new seed 2 to t=100000, and c14's screen.py on the same seed for the claim world (t=20000) and for chi 4 with the parent tilt (t=8000). labkit: L link rim/core 1.50, rim/outside 24.2 (70/120 membrane-like), 22 persistent tracks, 6 splits, 1 persistent, generation 1, 0 merges, persistent-track area ratio 35.5; the sheet shows 25-30 small round cells to t~13500, then a few cells growing into elongated and blocky giants (t=22000-100000) beside small static ones. screen.py: per-cell ring 1.58-1.66 at t=4000-20000 with 19-29 cells and mean yield 1.00 -> 1.12; chi 4 gives a single domain-filling phase from t=1600.",
+  "parents": ["20261025T1250-c14-pcell-ring-tilt-negative"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1250-c14-pcell-ring-tilt-negative",
+  "evidence": ["rerun/seed2/sheet.png", "rerun/seed2/FACTS.md", "screen_claimworld_s2.txt", "screen_chi4_s2.txt"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed2/FACTS.md: L rim/core 1.50, 1 persistent split, area ratio 35.5; sheet.png t=22000-100000: giants beside small static cells; screen_chi4_s2.txt: one phase (area 16384) at every census"},
+    "replicated": true, "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "pass"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "chi 4 with the parent tilt (screen_chi4_s2.txt) on the same seed"},
+    "class_confirmed": true,
+    "limitation": "One seed. My per-cell screen ring (1.58-1.66 up to t=20000) is above 1.5 while labkit's aggregate over the whole run is 1.50, so the ring is lost mainly once giants form; I did not rerun dL 0.005 or the fixed-yield genealogy arms."}],
+  "compute": {"cpu_minutes": 15}
+}

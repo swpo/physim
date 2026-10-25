@@ -1,0 +1,8 @@
+{"id": "20261025T1518-c19-lattice-chem-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Lattice artificial chemistry (new class, Ono-Ikegami type): reacting particle counts with pairwise repulsion turn noise into ~70 membrane-ringed autocatalyst cells and rods that eat a regrowing food; the ring needs the oriented-membrane term",
+ "summary": "New class: integer counts of five particle species (water W, food X, autocatalyst A, membrane M, waste Y) on a 128^2 periodic lattice, hopping with Metropolis acceptance on pairwise repulsion energies, reacting X+2A->3A and X+2A->M+2A, decaying A,M->Y and recharging Y->X (closed mass, nothing planted; world.py). From uniform noise A condenses within t~400 into ~70 discrete cells and rods whose M sits in a closed ring at the A/W interface (labkit radial M rim/core 3.6, rim/outside 4.7, 403/439 bodies membrane-like; pack/sheet.png) and which deplete the food around them. The ring needs the mean-field orientation term for M (energy bonus lam |grad(rho_A - rho_W)|, standing in for Ono-Ikegami's oriented membrane particles): at lam=0 M stays diffuse in and around the cells (rings_lam.png); the population freezes after t~3000 with no persistent splits and no motion (merge/split 1.5) at this parameter point.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "lattice-artificial-chemistry",
+ "world": "world.py",
+ "evidence": ["rings_lam.png", "pack/sheet.png", "pack/radial.png", "pack/FACTS.md"],
+ "compute": {"cpu_minutes": 40}}

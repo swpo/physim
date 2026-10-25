@@ -1,0 +1,9 @@
+/home/user/physim/research/alife/collective/contrib/20261025T1526-c13-review-ring-tilt/screen.py:22: RuntimeWarning: Mean of empty slice
+  rc.append(L[rim].mean() / max(L[core].mean(), 1e-9)); ro.append(L[rim].mean() / max(L[out].mean(), 1e-9)); ar.append(m.sum())
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+t=1600 cells=1 N=19740 Mrc=0.00 rimcore=1.02 rimout=nan area=16384 y=0.999 (9s)
+t=3200 cells=1 N=19565 Mrc=0.00 rimcore=1.00 rimout=nan area=16384 y=1.000 (18s)
+t=4800 cells=1 N=19456 Mrc=0.00 rimcore=1.02 rimout=nan area=16384 y=0.996 (28s)
+t=6400 cells=1 N=19908 Mrc=0.00 rimcore=1.02 rimout=nan area=16384 y=0.993 (37s)
+t=8000 cells=1 N=19670 Mrc=0.00 rimcore=0.97 rimout=nan area=16384 y=0.989 (46s)

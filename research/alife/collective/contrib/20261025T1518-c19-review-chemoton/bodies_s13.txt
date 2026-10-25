@@ -1,0 +1,16 @@
+== rerun/seed13/frames.npz
+t=150: total u 3586, total K 2153.6; (6,23) area 460 mass 525 K 0.2; (72,99) area 1708 mass 1836 K 1919.8; (175,30) area 1688 mass 1696 K 0.1
+t=297: total u 2489, total K 2319.8; (2,27) area 155 mass 187 K 0.2; (73,100) area 1166 mass 1393 K 1662.2; (73,99) area 520 mass 612 K 178.0; (177,29) area 731 mass 887 K 0.3
+t=327: total u 2403, total K 2348.4; (2,28) area 132 mass 162 K 0.2; (73,100) area 1158 mass 1397 K 1674.5; (73,100) area 522 mass 616 K 173.5; (177,29) area 592 mass 714 K 0.3; (180,29) area 101 mass 150 K 0.0
+t=387: total u 2367, total K 2364.0; (2,29) area 130 mass 159 K 0.2; (73,100) area 1159 mass 1395 K 1645.2; (73,100) area 521 mass 615 K 153.5; (177,29) area 577 mass 695 K 0.3; (180,29) area 97 mass 143 K 0.0
+t=450: total u 2362, total K 2361.9; (2,29) area 132 mass 160 K 0.2; (73,100) area 1149 mass 1388 K 1639.3; (73,100) area 524 mass 614 K 152.0; (177,29) area 571 mass 692 K 0.3; (180,29) area 98 mass 145 K 0.0
+t=519: total u 2359, total K 2359.8; (2,29) area 133 mass 162 K 0.2; (73,100) area 1156 mass 1392 K 1641.5; (73,100) area 519 mass 613 K 151.7; (177,29) area 569 mass 690 K 0.3; (180,29) area 98 mass 145 K 0.0
+t=600: total u 2356, total K 2357.5; (2,29) area 133 mass 163 K 0.2; (73,100) area 1161 mass 1392 K 1640.9; (73,101) area 517 mass 612 K 153.0; (177,29) area 565 mass 686 K 0.3; (180,29) area 96 mass 144 K 0.0
+== starve/seed13/frames.npz
+t=150: total u 3586, total K 2153.6; (6,23) area 460 mass 525 K 0.2; (72,99) area 1708 mass 1836 K 1919.8; (175,30) area 1688 mass 1696 K 0.1
+t=297: total u 2489, total K 2319.8; (2,27) area 155 mass 187 K 0.2; (73,100) area 1166 mass 1393 K 1662.2; (73,99) area 520 mass 612 K 178.0; (177,29) area 731 mass 887 K 0.3
+t=327: total u 2234, total K 798.5; (2,28) area 123 mass 153 K 0.2; (73,100) area 1109 mass 1333 K 487.4; (73,100) area 483 mass 567 K 61.9; (177,29) area 585 mass 706 K 0.2; (180,29) area 94 mass 144 K 0.0
+t=387: total u 1399, total K 272.3; (2,28) area 96 mass 120 K 0.0; (73,100) area 790 mass 962 K 180.9; (73,100) area 113 mass 164 K 2.3; (178,29) area 560 mass 664 K 0.0; (180,29) area 85 mass 131 K 0.0
+t=450: total u 869, total K 317.4; (1,28) area 45 mass 64 K 0.0; (73,101) area 643 mass 765 K 243.8; (73,101) area 87 mass 131 K 23.2; (179,29) area 490 mass 595 K 0.0
+t=519: total u 547, total K 304.3; (73,102) area 618 mass 733 K 243.9; (73,102) area 80 mass 122 K 33.2; (180,28) area 375 mass 445 K 0.0
+t=600: total u 352, total K 258.3; (73,102) area 428 mass 524 K 203.0; (180,28) area 404 mass 480 K 0.0
