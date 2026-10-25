@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0846-c12-review-fch-uptake",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0810-c01-fch-uptake-cargo#c1",
+  "title": "Review of c01's FCH uptake-cargo (SIWD): replicates on seed 13 with its chi=0 twin; cargo refills after deletion at ~0.5x per time unit",
+  "summary": "Fresh seed 13 labkit re-run of the claimed world (T=800, twice the claim's span): ~34 micelles from white noise, 46 persistent splits, max generation 5, merge/split 0.03; 98.0% of 7050 body-frames hold the uniformly supplied solute at >= 2x the outside, aggregate 31x at t=80 rising to 280x at t=800. The chi=0 twin on the same seed gives 1.0x in every body-frame with the same body counts. Four random pinching bodies (fission_strips_seed13.png) each give two daughters that both keep 50-150x. A deletion test (refill.py) shows the contents are partly memory: a body whose solute is deleted at t=200 regains >= 2x within 4 time units but only 31x after 64 (its untouched twin: 62 -> 85x), so the magnitude carries history over a division interval while the 2x threshold does not distinguish inheritance from re-uptake.",
+  "parents": ["20261025T0810-c01-fch-uptake-cargo"],
+  "class": "fch-bilayer",
+  "world": "world.py",
+  "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/lineage.png", "fission_strips_seed13.png", "rerun_chi0/seed13/sheet.png", "refill13.txt"],
+  "review_of": "20261025T0810-c01-fch-uptake-cargo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/seed13/sheet.png t=0 white noise over the whole domain; ~34 micelles by t=32",
+      "I": "rerun/seed13/sheet.png: discrete round micelles of stable size t=32-800; tracks persist hundreds of time units (lineage.png)",
+      "W": "fission_strips_seed13.png and strips.py: 98.0% of 7050 body-frames >= 2x the outside (aggregate 280x at t=800); rerun_chi0/seed13: 0.000 of 7050, 1.0x everywhere",
+      "D": "rerun/seed13/lineage.png: 46 persistent splits, max generation 5, 2 merges (ratio 0.034), 0 remerged; fission_strips_seed13.png: 4 random splits, both daughters separate and >= 50x"
+    },
+    "replicated": true,
+    "seed": 13,
+    "seeds_run": [{"seed": 13, "result": "pass"}, {"seed": 13, "result": "chi=0 control: no contrast (1.0x)"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_chi0/seed13/ (chi=0, same seed: 1.0x in all 7050 body-frames) and refill13.txt (deletion branch)"},
+    "by_construction": ["W"],
+    "bd_supported": true,
+    "class_confirmed": true,
+    "not_checked": ["1.5x resolution (author's pack_res15 only)", "dt/2"],
+    "limitation": "Containment is a Boltzmann partition into the amphiphile core set by chi (c ~ exp(-chi u)), not a wall: the contrast holds by construction for any chi<0, and the BD control passes trivially because a uniform source with linear diffusion of any D is uniform. Division comes in feed-synchronized waves (lineage t~120, 280, 440...) and there are no deaths, so the micelle count only rises (34 -> 92). Inheritance is partly re-uptake: an emptied body passes the 2x threshold again in 4 time units, though its full level takes > 100 (refill13.txt), so the 2x metric alone does not show inherited contents; a magnitude-based test (daughter vs a deleted twin) does."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
