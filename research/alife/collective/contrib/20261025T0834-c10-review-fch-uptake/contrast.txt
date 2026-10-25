@@ -1,0 +1,4 @@
+rerun/seed13: 0.980 of 7050 body-frames >= 2x; aggregate t-index 5 13.3, final 279.5; weakest body final 1.7x
+rerun/seed14: 0.993 of 6850 body-frames >= 2x; aggregate t-index 5 14.2, final 281.5; weakest body final 3.9x
+ctl_chi0: 0.000 of 4363 body-frames >= 2x; aggregate t-index 5 1.0, final 1.0; weakest body final 1.0x
+ctl_res15: 0.973 of 4657 body-frames >= 2x; aggregate t-index 5 15.5, final 196.5; weakest body final 3.1x
