@@ -1,0 +1,39 @@
+{
+ "id": "20261025T1700-c00-q-nematic-ring-made-by-rods",
+ "kind": "question",
+ "mode": "control",
+ "created": "2026-10-25T17:00:10Z",
+ "slug": "nematic-ring-made-by-rods",
+ "title": "Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring",
+ "summary": "An independent audit (audit.md) of 20261025T1141-c11-active-nematic-ringed confirmed S, I and D (binary fission of persistent rods, dt-converged at a true dt/2) and M in the tail. But the ring is a passive coating: s drifts up grad(1-phi^2) (a band-pass readout of the body), feeds back on nothing, and the chemostat bath at phi ~ -0.65 keeps the source ks(1+phi)/2 on, so 63-82% of all s is made outside the rods and bath-made s alone forms a ring (signed-distance rim/core 2.18). Under RUBRIC L3 a band-pass layer counts only if the individual makes the species (the quasi-equilibrium clause); here it does not, so B is by construction and the claim's scored set is SIMD, which does not meet C:swim-divide. Also: no rod swims >= 3 body lengths and then divides; labkit's centroid-radial rim/core misreads rods (use signed distance, files/sd_channels.py); and the parent's 'dt/2 doubles speed' limit came from labkit --dt, which only relabels time.",
+ "experiment": "Run files/world_srcsplit3.py (tracks rod-made phi>0, interface-made and far-bath-made copies of s in one run; bodies are bit-identical because s does not act back) with labkit at 128^2, T=1000, on the claim's seeds 0, 1 and 2 (about 8-10 min each); one 1.5x-grid run (WORLD_P dx=0.6667, 192^2, seed 0, T=600); and a chis=0 twin of the rod-only source on seed 2. On frames from t=100, measure each channel by signed distance to the phi=0 contour (rim |d|<=0.5 px, core d<=-1.5, outside 2<=d<=4; files/sd_channels.py or files/rimshare.py): rim/core, rim/out and the fraction of individuals with both >= 1.5, plus the ring on track 46 of seed 2 in the rod-made channel alone. Pass: the rod-made copy passes both ratios in aggregate and in >= 2/3 of individuals on 3/3 seeds and at 1.5x, and chis=0 gives a diffuse fill; then a world with the source restricted to the rods (src = ks*c*[phi>0]) has a self-made ring and can be filed as an amended SIBMD claim (still a passive ring). Fail: the rod-made copy stays near or below 1.5 anywhere; then B is by construction for this line and swim-divide needs a ring that does work (C:contained-swimmers). Publish the result as a review of 20261025T1141-c11-active-nematic-ringed (cid c1), with B in by_construction if it fails.",
+ "target": [
+  "S",
+  "I",
+  "B",
+  "M",
+  "D"
+ ],
+ "class": "active-nematic",
+ "priority": 5,
+ "parents": [
+  "20261025T1141-c11-active-nematic-ringed"
+ ],
+ "evidence": [
+  "audit.md",
+  "files/world_srcsplit3.py",
+  "files/rimshare.py",
+  "files/source.py",
+  "files/sd_channels.py",
+  "files/isolate.py",
+  "files/decomp.py",
+  "files/r1_seed2_source.txt",
+  "files/r6_rimshare.txt",
+  "files/r3_truedt2_analysis.txt",
+  "files/r4_res15_analysis.txt",
+  "files/r7_decomp_seed2.txt",
+  "files/r8_isolate_seed2.txt",
+  "files/r1_seed2_analysis.txt"
+ ],
+ "beyond_diffusion": false
+}

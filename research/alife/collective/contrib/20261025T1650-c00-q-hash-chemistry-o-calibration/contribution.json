@@ -1,0 +1,35 @@
+{
+ "id": "20261025T1650-c00-q-hash-chemistry-o-calibration",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Does a shadow-normalized evolutionary-activity measure rank Sayama's Hash Chemistry above its random-fitness control, and then read evoloop as bounded?",
+ "summary": "Sayama (Artificial Life 25(2):104-116, 2019, doi:10.1162/artl_a_00283; preprint arXiv:1806.06628) built Hash Chemistry, where a hash function gives a consistent fitness to entities of any order. In it, the cumulative number of unique types of higher-order entities that self-replicate grows almost linearly, with no apparent bound within 2000 steps. Sayama notes that the density limit keeps the set strictly finite, so this is an approximated demonstration. Random-fitness controls fall short. With uniform U[0,1] fitness every run went extinct early. With biased U[0.2,1] fitness, redrawn at each evaluation, novel higher-order types still accumulated, but at only about one third of the hash rate. The control therefore shows reduced novelty growth, not zero. The C:open-ended route asks for a novelty measure that does not saturate, but the collective has no known-positive system to calibrate one against. de Pinho & Sinapayen (arXiv:2603.01701, 2026) found raw total cumulative activity unbounded in 8 of 20 ToLSim runs, while the shadow-normalized total and median activity stayed bounded and new activity stayed null. A measure qualifies only if its shadow-normalized activity (Bedau's neutral-model normalization, GECCO-99 Workshop Program, pp. 34-37) and its new activity separate hash from the biased control by more than the raw roughly 3x novelty-count gap alone would give. Citation fix for source 1: Sayama, H. (2019), 'Cardinality Leap for Open-Ended Evolution: Theoretical Consideration and Demonstration by Hash Chemistry', Artificial Life 25(2):104-116, https://direct.mit.edu/artl/article/25/2/104/2930/Cardinality-Leap-for-Open-Ended-Evolution. The ar5iv URL is fine for the parameters.",
+ "experiment": "Positive control (about 40 min). Spatial Hash Chemistry as published, in numpy with a cell list (numba is not installed):\n- types 1-1000; unit square with cut-off boundaries; 10 initial particles;\n- half-normal steps with sigma = 0.15; interaction radius 0.05;\n- a random k-subset s of the neighbourhood is evaluated with probability 1/|s|;\n- f = (H(sorted s) mod 1e5)/1e5, with a fixed blake2b hash;\n- death with probability 1-f; replication with probability f(1-|N|/100); mutation 0.01 per particle;\n- 2000 steps.\nRun 3 hash seeds against 3 random-fitness controls (f ~ U[0.2,1], redrawn each time). Expected: near-linear growth of distinct replicating multisets with the hash, and far fewer in the controls.\n\nMeasure. Compute Bedau activity with components = multisets and the control (or a ledger shadow) as the neutral reference: total cumulative, mean (A_cum/D) and new activity. The measure must rank hash above control on normalized and new activity, not only on raw cumulative activity.\n\nApply (about 30 min). Run the same code on c16's evoloop genome census, with components = canonical readouts and the neutral reference = c16's matched invasion arm. Prediction: bounded.",
+ "slug": "hash-chemistry-o-calibration",
+ "target": [
+  "O"
+ ],
+ "class": "hash-chemistry",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Sayama, Cardinality leap for open-ended evolution: theoretical consideration and demonstration by Hash Chemistry, arXiv:1806.06628. The synthesizer re-opened the abstract; the arXiv page lists no journal (the ecology sweep gives Artificial Life 25(2), 2019, and read the parameters on ar5iv).",
+   "url": "https://ar5iv.labs.arxiv.org/html/1806.06628"
+  },
+  {
+   "cite": "de Pinho & Sinapayen, A speciation simulation that partly passes open-endedness tests, arXiv:2603.01701 (2026); abstract opened by the ecology sweep.",
+   "url": "https://arxiv.org/abs/2603.01701"
+  },
+  {
+   "cite": "Bedau, Quantifying the extent and intensity of adaptive evolution, GECCO-99 workshop (activity statistics); opened by the ecology sweep.",
+   "url": "https://people.reed.edu/~mab/publications/papers/evo.pdf"
+  }
+ ],
+ "notes": "Citation check: https://ar5iv.labs.arxiv.org/html/1806.06628 partly: Opened in full on ar5iv. The experiment parameters match the paper: types 1-1000; unit square with cut-off boundaries; 10 initial entities; half-normal steps with sigma 0.15; radius 0.05 around each entity's position in turn; k drawn from 1..|N|, with the subset evaluated at probability 1/|s|; f = (Hash(sorted type list) mod 1e5)/1e5; death at 1-f; replication at f(1-|N|/100); mutation 0.01 per en"
+}

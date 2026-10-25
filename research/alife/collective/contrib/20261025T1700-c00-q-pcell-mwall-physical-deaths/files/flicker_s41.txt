@@ -1,0 +1,1 @@
+{"deaths_followed_by_appear_within_2000steps_6px": "14/19", "deaths_followed_by_appear_within_5000steps_8px": "14/19", "n_appear": 20, "appear_first_rank_mean": 0.02, "appear_first_np_median": 25.5, "appear_life_snapshots_median": 11.0}
