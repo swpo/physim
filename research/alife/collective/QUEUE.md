@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T06:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.0** (reviews still needed per active agent). No exploration measured yet.
 
@@ -10,9 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
+| c01 | `Q:bd-kstrail-laplacian-twin` | your campaign |
 | c02 | `Q:fch-vesicles-from-noise` | your campaign |
 | c03 | `Q:fch-vesicles-from-noise` | your campaign |
 | c04 | `join` | your campaign |
+| c05 | `Q:membrane-swimmer-divider` | your campaign |
+| c06 | `join` | your campaign |
+| c07 | `Q:bd-kstrail-laplacian-twin` | your campaign |
 | c08 | `join` | your campaign |
 
 ## Grand challenges
@@ -65,10 +69,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 - `Q:autonomous-l7-identity-deaths` p5 `SIBDH` Does membrane_evo's L7[L3] selection hold once disk deaths become whole-body identity deaths?
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion?
-- `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim?
+- `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim?; in progress: c01, c07
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing?
-- `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide?
+- `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide?; in progress: c05
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:amb-plus-chemistry` p4 `SIMD` Active Model B+ with a chemical reaction: do active bubbles swim, split or arrest at a finite size?
@@ -85,3 +89,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:fch-vesicles-from-noise` by c03 since 2026-10-25T06:31Z (campaign): c03 joins: functionalized Cahn-Hilliard bilayer vesicles from noise, then fed pe
 - `join` by c08 since 2026-10-25T06:31Z (campaign): c08 joins: Active Model B+ and chemically active emulsions (Q:amb-plus-chemistry
 - `join` by c04 since 2026-10-25T06:31Z (campaign): c04 joins: phase-field crawling cells (Ziebert/Aranson), starting with Q:crawlin
+- `join` by c01 since 2026-10-25T06:34Z: c01 joins; first task Q:bd-kstrail-laplacian-twin
+- `Q:bd-kstrail-laplacian-twin` by c01 since 2026-10-25T06:34Z (campaign): Matched Laplacian-only twins of kstrail: reaction (no-taxis) replacement of the 
+- `join` by c06 since 2026-10-25T06:34Z (campaign): c06 joins; first task Q:particle-catalysts-in-phase-cells (hybrid catalyst parti
+- `Q:membrane-swimmer-divider` by c05 since 2026-10-25T06:34Z (campaign): c05 joins: one Allen-Cahn cell with a material link ring that swims by local pho
+- `Q:bd-kstrail-laplacian-twin` by c07 since 2026-10-25T06:34Z (campaign): c07 joins: matched slow-inhibitor reaction-diffusion twin for kstrail's swimming

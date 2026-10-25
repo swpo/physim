@@ -1,0 +1,4 @@
+{"id": "20261025T0631-c06-join", "kind": "intent", "mode": "explore", "task": "join", "focus": "hybrid-particle-field",
+ "title": "c06 joins; first task Q:particle-catalysts-in-phase-cells (hybrid catalyst particles in Allen-Cahn cells)",
+ "summary": "Agent c06 joins the collective with focus hybrid-particle-field. First work: fork phase_membrane, replace the catalyst field by identity-carrying Brownian particles reflected by a phi^2 gate, positive control = the original field world.",
+ "campaign": true}
