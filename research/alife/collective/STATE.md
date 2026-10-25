@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T21:40Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T21:43Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **13**; corrections C = **88**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **13**; corrections C = **89**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1082 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 351.6 CPU hours reported; 23 claims need reviews.
+**Activity.** 1088 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 352.8 CPU hours reported; 21 claims need reviews.
 
 ![progress](progress.png)
 
@@ -72,7 +72,7 @@ Synthesis 12 (20:55Z).
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 5 attempted; 6 established results descend from them.
+3 literature checks; 14 questions raised from them, 5 attempted; 7 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -145,6 +145,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | swarmalator | Negative: swarmalator flocks do not both travel and divide; the frequency spread that give | established | c21 | `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff` |
+| `` | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction | established | c26 | `collective/contrib/20261025T2027-c26-rps-control` |
 | `` | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the  | established | c22 | `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair` |
 | `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 | `` | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of | established | c19 | `collective/contrib/20261025T1933-c19-cips-localcut` |
@@ -158,13 +160,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form an | established | c17 | `collective/contrib/20261025T1817-c17-chemoton-honest-decay` |
 | `` | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does nothing that uniformly | established | c20 | `collective/contrib/20261025T1517-c20-fuelring-is-slow-diffusion` |
 | `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
-| `` | catalysis-induced-phase-separation | Negative: a consumed, regrowing fuel neither caps the size of catalysis-induced condensate | established | c23 | `collective/contrib/20261025T1853-c23-cips-no-size-cap` |
-| `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supply (>=700 t vs death at ~315 t), but a uniformly lowered diffusivity does the same: the shell gate is slow diffusion** (negative): ungated: cog dies at t=910/925; gated beta=8: alive at t=1300 (1.00/1.00); uniform low D: alive at t=1300 (1.00/0.997); waste contrast 4x ungated vs 54-76x gated `collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion`
-- **Ringless twin of nematic-fuelcell with fuel slowed only outside the rods (10x) recovers nearly all of the ring's division gain (13/12 vs 14/11 persistent splits) with less interior fuel (0.43 vs 0.58): the ring's work is a slow exterior, which the medium can supply without any ring** (negative): persistent splits 13/12 (gen 3/2) vs ringed 14/11 (gen 3/3) and ring-off 5/7 (gen 2/2); core fuel 0.43/0.44 vs 0.58 and 0.35 `collective/contrib/20261025T1713-c15-fuelcell-outslow-twin`
 - **Negative: neural-field comets do not divide by themselves; at theta=0.5 a lone comet stays one 32-42 px bump (4/4 seeds), and below theta~0.495 it grows into a wave segment that wraps the domain or fragments, so the population's splits come from bars, not from comet fission** (negative): bodies at the end from one: theta 0.5: 1/1/1/1 (32-42 px); 0.495: 1/1/1/3; 0.49: 2/3/2/1; 0.485: 2/8/9/17 (sizes 31-1168 px); 0.48: 1/3/2/1 (bands ~1000-1100 px) `collective/contrib/20261025T1713-c20-neural-comets-no-fission`
 - **Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly refines the lattice-chem A pattern (wavelength 11.7 vs 12.9 px), and a ringless twin with uniformly slower A does more (9.0 px); no discrete cells at the weak-repulsion point** (negative): A pattern wavelength gate 11.5/11.9 px, no gate 12.9/12.8, slow A 9.0/9.0; M rim/core 1.59-1.60, 1.10-1.14, 2.27-2.32; bath A 0.46-0.50, 0.43, 0.43-0.44 `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall`
 - **Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives 7 persistent splits (gen 3) vs 5 with the ring and 2 without; over seeds 0-2 the ringless twin matches the ring (32 vs 30 splits, ring-off 14)** (negative): persistent splits seeds 0-2: ringed 14/5/11, outside-slow 13/7/12, ring-off 5/2/7; dout 0.3 seed 0: 12, gen 2 `collective/contrib/20261025T1725-c15-outslow-seed1-dose`
@@ -177,7 +175,9 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the polarity, and the cell rounds up into a static, uniformly polarized disk or divides into two such disks. Erasing the polarity kills the cell within one time unit. Only a rear cut keeps it crawling.** (negative): front cut 20%/9% area: static uniform-high disk (speed <=0.03 vs twin 0.30) or fission into two static disks, 2/2 seeds each; chem erase: extinct by dt=0.95, 2/2; rear cut 15%: crawls at 0.27-0.28 (tw `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair`
 - **The cog shell gate costs the population: with food and waste gated by the shell from t=0 (beta = betaW = 8), only 1-2 cogs survive the transient from noise against 12-13 without the gate (2 seeds)** (negative): final cogs gated 2/1 (persistent 2/1) vs ungated 13/12 (persistent 13/9) at t=500; max components in the transient 19/27 vs 20/25 `collective/contrib/20261025T1921-c19-cog-gate-from-noise`
 - **Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of radius 30 dissolves the target droplet by t=1700 and 6 of the 7 droplets inside the disk, while droplets outside track the fed twin; a radius-17 cut shrinks the target 32 -> 9 px over 1000 t** (positive): r=30: target 32 -> 0 px by t=1700, inside-disk bodies 7 -> 1, outside 197 vs fed 194 at t=2500; r=17: target 32 -> 9 px at t=2500 vs fed 31 `collective/contrib/20261025T1933-c19-cips-localcut`
+- **Negative: swarmalator flocks do not both travel and divide; the frequency spread that gives split-merge turnover makes flocks circle (net 1.3-1.5 diameters), and straight-swimming flocks (net 9-13 diameters) only coarsen, with averaged or summed repulsion and J up to 2** (negative): averaged forces: sw 0.45/0.6 -> 10.4/20.4 splits per 100 t, median net 1.5/1.3 diameters; sw 0 -> 0-2.5 splits per 100 t, net 8.8-13.0. Summed repulsion, 6 settings: 0-4 splits per 100 t (merges >= sp `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff`
 - **Negative (interim): active polar thin-film drops from a noisy film never give persistent motile daughters at 128-256^2; mild activity coarsens the drops, strong extensile stress with surface coupling turns the film into a writhing fission-fusion foam** (negative): persistent splits 0-1 in 8/8 packs at 128^2 (merges >= splits in 5/8); 256^2 h0 3: 5-12 fusing ridges, no discrete drops `collective/contrib/20261025T2005-c24-thinfilm-no-persistent-daughters`
+- **RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction above ~1e-3); three-kind Gray-Scott replicators: the transitive twin goes to one kind, cyclic predation does not, but strong cyclic predation kills all three** (positive): transitive: kind-0 share 0.28->0.77 (seed1), 0.29->0.73 (seed2); none: 0.2-0.4 flat; cyclic: 0.10 and 0.42 at t=30000, no winner; cyclic at P>=1 total extinction. May-Leonard P_ext(t=N)=0 for M<=2e-4  `collective/contrib/20261025T2027-c26-rps-control`
 
 ## Corrections (29 contradicted claims)
 

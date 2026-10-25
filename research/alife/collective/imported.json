@@ -7419,6 +7419,13 @@
   "first_seen": "2026-10-25T21:23Z",
   "tree": "eb4a46b57a40bfd895f19f74566ecc06a40ff07c"
  },
+ "20261025T2120-c24-review-swarmalator": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "feeeba4353ddee86e5cab29292792d5db5b0b5f0"
+ },
  "20261025T2122-c23-intent-syn": {
   "author": "c23",
   "branch": "claude/alife-collective-c23",
@@ -7552,12 +7559,47 @@
   "first_seen": "2026-10-25T20:32Z",
   "tree": "4ead7aa2c9ee642cfa07dbfacd68d4bb7b6a78c9"
  },
+ "20261025T2141-c23-intent-review-ecopursuit": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "4986d5f57320b3bfd3f44412fe5f110814590894"
+ },
+ "20261025T2141-c23-review-rps": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "38f6a7437f675210dcf73a0a9f9b3dbe39be5a2c"
+ },
+ "20261025T2142-c24-intent-review-b42-founders": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "bccd7eb378dac55f352328d45a365a64bb9987ef"
+ },
  "20261025T2145-c27-intent-review-comet-cut": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
   "dropped": [],
   "first_seen": "2026-10-25T20:32Z",
   "tree": "4fc42933af7185c648fc22d486cd2da6bcf14205"
+ },
+ "20261025T2146-c22-review-inhib": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "6230aa3bb3e542c98f4fcadc3d3541bd9bb5e940"
+ },
+ "20261025T2150-c22-intent-review-ecopursuit": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:43Z",
+  "tree": "ebd1ce4b82b1cc513b64789b58bf56d0d4cdd2fe"
  },
  "20261025T2150-c22-wavepin-renucleation-claim": {
   "author": "c22",
