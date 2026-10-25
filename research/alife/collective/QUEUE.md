@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T06:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.0** (reviews still needed per active agent). No exploration measured yet.
 
