@@ -1,0 +1,20 @@
+== pack_slip_s0
+- components: final 1, mean 5.6, max 40; occupancy final 0.17
+- motion: 15 long-lived tracks moved >= 1 body length; max speed 0.00452/time; max body lengths 4.2
+- replication (lineage window K = 20 frames = time 10000, default): splits 34, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 29, merge/split ratio 0.853, nucleations 85
+  - radial L link: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 1.06, rim/outside 1.3 (aggregate of 7 individuals; 0/7 membrane-like individually; rim level 0.477)
+== pack_slip_s1
+- components: final 3, mean 2.7, max 23; occupancy final 0.17
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 3.6
+- replication (lineage window K = 20 frames = time 10000, default): splits 15, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 14, merge/split ratio 0.933, nucleations 170
+  - radial L link: peak at rho=0.55 (in the peak band 0.5-1.5), rim/core 1.14, rim/outside 1 (aggregate of 8 individuals; 0/8 membrane-like individually; rim level 0.45)
+== pack_s0
+- components: final 13, mean 18.2, max 26; occupancy final 0.38
+- motion: 13 long-lived tracks moved >= 1 body length; max speed 0.000737/time; max body lengths 3.1
+- replication (lineage window K = 20 frames = time 10000, default): splits 16, persistent splits 9 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, merge/split ratio 0.062, nucleations 9
+  - radial L link: peak at rho=0.65 (in the peak band 0.5-1.5), rim/core 1.32, rim/outside 4.57 (aggregate of 106 individuals; 47/106 membrane-like individually; rim level 0.729)
+== pack_s1
+- components: final 14, mean 16.5, max 25; occupancy final 0.38
+- motion: 11 long-lived tracks moved >= 1 body length; max speed 0.000476/time; max body lengths 3.1
+- replication (lineage window K = 20 frames = time 10000, default): splits 12, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 2, merges 3, merge/split ratio 0.25, nucleations 19
+  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.33, rim/outside 3.33 (aggregate of 96 individuals; 44/96 membrane-like individually; rim level 0.703)

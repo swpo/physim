@@ -1,0 +1,7 @@
+10000 cells 24 mean_ym 1.003 mean_zm 1.006
+20000 cells 24 mean_ym 1.013 mean_zm 0.996
+30000 cells 25 mean_ym 1.022 mean_zm 0.986
+40000 cells 18 mean_ym 1.070 mean_zm 1.003
+50000 cells 9 mean_ym 1.116 mean_zm 1.045
+60000 cells 4 mean_ym 1.248 mean_zm 0.987
+{"file": "collective/work_c05/rev_ye/gen_s5.json", "n": 25, "y_birth": 0.998, "y_death": 0.972, "pop_at_birth": 1.008, "pop_at_death": 1.082, "share_declined": 0.56}
