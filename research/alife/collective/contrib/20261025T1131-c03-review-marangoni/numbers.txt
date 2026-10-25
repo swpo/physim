@@ -1,0 +1,3 @@
+alpha=0, ampf=0.05, seed 2: motion: 6 long-lived tracks moved >= 1 body length; max speed 0.00318/time; max body lengths 1.4 | persistent splits 10, max generation 2, merges 0
+alpha=20, ampf=0.05, seed 2: motion: 4 long-lived tracks moved >= 1 body length; max speed 0.00115/time; max body lengths 2.0 | persistent splits 10, max generation 2, merges 0
+alpha=-20, ampf=0.05, seed 2: motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.9 | persistent splits 6, max generation 3, merges 0
