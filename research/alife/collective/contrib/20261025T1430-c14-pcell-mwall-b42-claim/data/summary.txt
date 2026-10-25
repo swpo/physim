@@ -1,0 +1,36 @@
+m42_s0 splits 18 gen 5 deaths 20 merges 0 cells 29 np med 279 ymean 1.131
+{"file": "data/g_m42_s0.json", "key": "ym", "minlife": 20, "n_death": 13, "death_pct_mean": 0.003, "n_split": 18, "split_pct_mean": 0.825, "death_pct_below_median": 13, "split_pct_above_median": 17}
+{"file": "data/g_m42_s0.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 3, "split": 0, "other": 4}, "high": {"death": 0, "split": 13, "other": 20}}, "death_share_low": 0.429, "death_share_high": 0.0, "split_share_low": 0.0, "split_share_high": 0.394, "dying_cells_rank_birth_mid_death": [0.014, 0.049, 0.0], "n_dying": 3}
+{"file": "data/g_m42_s0.json", "key": "zm", "minlife": 20, "n_death": 13, "death_pct_mean": 0.409, "n_split": 18, "split_pct_mean": 0.382, "death_pct_below_median": 8, "split_pct_above_median": 7}
+{"file": "data/g_m42_s0.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 3, "split": 11, "other": 12}, "high": {"death": 0, "split": 2, "other": 12}}, "death_share_low": 0.115, "death_share_high": 0.0, "split_share_low": 0.423, "split_share_high": 0.143, "dying_cells_rank_birth_mid_death": [0.142, 0.181, 0.194], "n_dying": 3}
+{"file": "data/g_m42_s0.json", "n": 13, "y_birth": 0.973, "y_death": 0.823, "pop_at_birth": 1.026, "pop_at_death": 1.083, "share_declined": 0.77}
+m42_s1 splits 12 gen 3 deaths 21 merges 0 cells 30 np med 238 ymean 1.13
+{"file": "data/g_m42_s1.json", "key": "ym", "minlife": 20, "n_death": 12, "death_pct_mean": 0.019, "n_split": 12, "split_pct_mean": 0.874, "death_pct_below_median": 12, "split_pct_above_median": 12}
+{"file": "data/g_m42_s1.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 5, "split": 0, "other": 0}, "high": {"death": 0, "split": 8, "other": 14}}, "death_share_low": 1.0, "death_share_high": 0.0, "split_share_low": 0.0, "split_share_high": 0.364, "dying_cells_rank_birth_mid_death": [0.027, 0.026, 0.019], "n_dying": 5}
+{"file": "data/g_m42_s1.json", "key": "zm", "minlife": 20, "n_death": 12, "death_pct_mean": 0.379, "n_split": 12, "split_pct_mean": 0.475, "death_pct_below_median": 6, "split_pct_above_median": 5}
+{"file": "data/g_m42_s1.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 2, "split": 4, "other": 9}, "high": {"death": 3, "split": 4, "other": 5}}, "death_share_low": 0.133, "death_share_high": 0.25, "split_share_low": 0.267, "split_share_high": 0.333, "dying_cells_rank_birth_mid_death": [0.449, 0.455, 0.421], "n_dying": 5}
+{"file": "data/g_m42_s1.json", "n": 12, "y_birth": 0.962, "y_death": 0.879, "pop_at_birth": 1.039, "pop_at_death": 1.091, "share_declined": 0.92}
+m42_s2 splits 14 gen 4 deaths 40 merges 0 cells 30 np med 254 ymean 1.113
+{"file": "data/g_m42_s2.json", "key": "ym", "minlife": 20, "n_death": 16, "death_pct_mean": 0.018, "n_split": 14, "split_pct_mean": 0.872, "death_pct_below_median": 16, "split_pct_above_median": 14}
+{"file": "data/g_m42_s2.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 7, "split": 0, "other": 1}, "high": {"death": 1, "split": 9, "other": 18}}, "death_share_low": 0.875, "death_share_high": 0.036, "split_share_low": 0.0, "split_share_high": 0.321, "dying_cells_rank_birth_mid_death": [0.124, 0.032, 0.014], "n_dying": 8}
+{"file": "data/g_m42_s2.json", "key": "zm", "minlife": 20, "n_death": 16, "death_pct_mean": 0.427, "n_split": 14, "split_pct_mean": 0.583, "death_pct_below_median": 11, "split_pct_above_median": 9}
+{"file": "data/g_m42_s2.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 5, "split": 3, "other": 5}, "high": {"death": 3, "split": 6, "other": 14}}, "death_share_low": 0.385, "death_share_high": 0.13, "split_share_low": 0.231, "split_share_high": 0.261, "dying_cells_rank_birth_mid_death": [0.466, 0.401, 0.388], "n_dying": 8}
+{"file": "data/g_m42_s2.json", "n": 16, "y_birth": 0.937, "y_death": 0.851, "pop_at_birth": 1.025, "pop_at_death": 1.065, "share_declined": 0.69}
+m42_s3 splits 12 gen 4 deaths 23 merges 0 cells 30 np med 269 ymean 1.102
+{"file": "data/g_m42_s3.json", "key": "ym", "minlife": 20, "n_death": 14, "death_pct_mean": 0.013, "n_split": 12, "split_pct_mean": 0.885, "death_pct_below_median": 14, "split_pct_above_median": 12}
+{"file": "data/g_m42_s3.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 4, "split": 0, "other": 1}, "high": {"death": 0, "split": 7, "other": 18}}, "death_share_low": 0.8, "death_share_high": 0.0, "split_share_low": 0.0, "split_share_high": 0.28, "dying_cells_rank_birth_mid_death": [0.026, 0.0, 0.009], "n_dying": 4}
+{"file": "data/g_m42_s3.json", "key": "zm", "minlife": 20, "n_death": 14, "death_pct_mean": 0.362, "n_split": 12, "split_pct_mean": 0.41, "death_pct_below_median": 9, "split_pct_above_median": 5}
+{"file": "data/g_m42_s3.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 2, "split": 5, "other": 11}, "high": {"death": 2, "split": 2, "other": 8}}, "death_share_low": 0.111, "death_share_high": 0.167, "split_share_low": 0.278, "split_share_high": 0.167, "dying_cells_rank_birth_mid_death": [0.442, 0.327, 0.303], "n_dying": 4}
+{"file": "data/g_m42_s3.json", "n": 14, "y_birth": 0.968, "y_death": 0.823, "pop_at_birth": 1.027, "pop_at_death": 1.057, "share_declined": 0.79}
+== largest-cell share
+data/g_m42_s0.json largest share t>=20000: median 0.08 max 0.18; frac of time > 0.3: 0.00; cells median 26
+data/g_m42_s1.json largest share t>=20000: median 0.07 max 0.14; frac of time > 0.3: 0.00; cells median 29
+data/g_m42_s2.json largest share t>=20000: median 0.08 max 0.12; frac of time > 0.3: 0.00; cells median 29
+data/g_m42_s3.json largest share t>=20000: median 0.08 max 0.16; frac of time > 0.3: 0.00; cells median 29
+== fixed-yield screens at b=0.042 / 0.045 (20000 t, seed 0 unless s1)
+b42y10 splits 0 gen 0 deaths 0 merges 0 cells 24 np med 186 ymean 1.0
+b42y11 splits 9 gen 2 deaths 5 merges 1 cells 23 np med 281 ymean 1.1
+b42y12 splits 17 gen 4 deaths 0 merges 0 cells 24 np med 315 ymean 1.2
+b42y12s1 splits 7 gen 3 deaths 2 merges 0 cells 22 np med 394 ymean 1.2
+b45y10 splits 1 gen 1 deaths 2 merges 0 cells 19 np med 252 ymean 1.0
+b45y12 splits 2 gen 2 deaths 0 merges 0 cells 7 np med 1262 ymean 1.2
