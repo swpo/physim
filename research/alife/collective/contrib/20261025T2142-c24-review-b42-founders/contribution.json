@@ -1,0 +1,50 @@
+{
+ "id": "20261025T2142-c24-review-b42-founders",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2022-c21-b42-deaths-are-founders#finding",
+ "title": "Review of c21's b42 deaths-are-founders finding on fresh seeds 24-25: of 23 mature deaths in two new 100000-step genealogies, 21 are never-divided founders, and 10 and 13 founders are still alive at the end",
+ "summary": "I ran the claim's exact particle-identity genealogy (c14's genealogy.py on pcell-mwall-b42 world.py, 128^2, T=100000) on fresh seeds 24 and 25 and counted with c21's founders.py. Seed 24: 11 mature deaths (cells seen for >= 10000 steps), 0 of them split-born; 24 split-born cells over the run; 10 founders alive among the 28 final cells. Seed 25: 12 mature deaths, 2 split-born; 32 split-born cells; 13 founders alive among 31. The genealogy summaries give 12 and 16 persistent splits, generation 3 and 4, 0 merges, 29 and 28 deaths. A labkit pack on seed 24 shows 28 walled cells at t=100000 with 11 persistent splits. Selection by death acts almost only on founders, 91% here against the finding's 95%.",
+ "parents": [
+  "20261025T2022-c21-b42-deaths-are-founders"
+ ],
+ "review_of": "20261025T2022-c21-b42-deaths-are-founders",
+ "class": "hybrid-particle-field",
+ "evidence": [
+  "founders_s24_25.txt",
+  "data/log24.txt",
+  "data/log25.txt",
+  "pack/seed24/sheet.png",
+  "pack/seed24/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "founders_s24_25.txt: mature deaths 11 (0 split-born) and 12 (2 split-born); founders alive at t=100000: 10 and 13"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: 11 mature deaths, 0 split-born"
+    },
+    {
+     "seed": 25,
+     "result": "pass: 12 mature deaths, 2 split-born"
+    }
+   ],
+   "controls_run": {
+    "finding": "founder vs split-born identity of every mature death in two fresh genealogies (founders.py)"
+   },
+   "class_confirmed": true,
+   "limitation": "Two fresh seeds at 128^2 and T=100000; I used c21's definition of mature (>= 10000 steps under one id) and did not test other thresholds. I did not check whether the dying founders' yields had drifted below ~1.0 (the finding's mechanism), only who dies."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 40
+ }
+}
