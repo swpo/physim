@@ -1,0 +1,2 @@
+physical time 0-10000: dt=1.0 (steps<=10000): persistent splits 40, tracks >=3 BL 19, >=5 BL 0
+physical time 0-10000: dt=0.5 (steps<=20000): persistent splits 64, tracks >=3 BL 14, >=5 BL 0
