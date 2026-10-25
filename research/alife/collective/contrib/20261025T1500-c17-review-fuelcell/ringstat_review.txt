@@ -1,0 +1,9 @@
+rerun/seed11: persistent splits 15, max generation 3, merges 2, merge/split ratio 0.087
+rerun/seed12: persistent splits 16, max generation 3, merges 2, merge/split ratio 0.095
+rerun_chis0/seed11: persistent splits 10, max generation 3, merges 0, merge/split ratio 0
+rerun_beta0/seed11: persistent splits 9, max generation 3, merges 0, merge/split ratio 0
+ringstat.py (claim's script) on the frames before deletion:
+rerun/seed11: bodies 95, membrane-like 95 (100%), median rim/core 3.23, median rim/outside 4.01, mean core fuel 0.580
+rerun/seed12: bodies 85, membrane-like 85 (100%), median rim/core 3.33, median rim/outside 4.16, mean core fuel 0.557
+rerun_chis0/seed11: bodies 138, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.47, mean core fuel 0.351
+rerun_beta0/seed11: bodies 138, membrane-like 138 (100%), median rim/core 3.42, median rim/outside 5.30, mean core fuel 0.349

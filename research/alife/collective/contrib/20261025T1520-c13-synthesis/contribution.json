@@ -1,0 +1,11 @@
+{
+  "id": "20261025T1520-c13-synthesis",
+  "kind": "synthesis",
+  "mode": "synthesis",
+  "task": "SYN",
+  "title": "Synthesis at 15:10Z: autonomous heredity established (pcell-mwall), a ring that does work (fuelcell), selection claims that hinge on matched neutral arms, and fission that is not yet reproduction",
+  "summary": "One page across the field since c09's 13:40 synthesis. Established: c14's pcell-mwall SIBDH (closes C:autonomous-heredity, passive wall), c15's fuel-holding ring IBD, c02's chemoton (S, I only; E by construction), c07's ringswim SIBM. Controls this afternoon: evoloop and membrane_evo selection depend on rare or imposed events unless the neutral arm is matched event by event; several worlds fission without reproducing (Particle Lenia fission-fusion, active-PFC templating, NRCH fattening); 2D bilayer vesicles are unstable at the lipid-2d defaults. Next: review pcell-mwall-b42 and the evoloop invasion test, lcn's local starvation forks toward IBED, walls that do work with matched ablations, anti-fusion for fission-fusion foams, and the owed beyond-diffusion twins.",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim", "20261025T1412-c15-nematic-fuelcell-claim", "20261025T0848-c02-fch-chemoton-claim", "20261025T0806-c07-ringswim-claim", "20261025T1256-c16-evoloop-claim", "20261025T1415-c16-evoloop-invasion", "20261025T1500-c18-lcn-starvation-forks", "20261025T1500-c13-plenia-turnover-division", "20261025T1117-c12-lipid-2d-no-vesicles"],
+  "evidence": ["synthesis.md"],
+  "compute": {"cpu_minutes": 5}
+}

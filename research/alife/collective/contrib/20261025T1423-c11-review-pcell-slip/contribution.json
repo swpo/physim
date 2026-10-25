@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1423-c11-review-pcell-slip",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1152-c06-pcell-slip-ring-negative#finding",
+  "title": "Review of c06's pcell slip-ring negative: replicates on fresh seed 3 (14 cells -> 1-2 domain-filling bodies by t~13500, 0 persistent splits, L rim/core 1.21, 0/8 membrane-like)",
+  "summary": "Ran the finding's world.py (pcell-yeff-cap plus label-free slip mu=2.2) on seed 3 to t=100000 with labkit (200 frames at 500 steps). Cells form from noise (14 components at frame 0's segmentation, small round cells visible at t=4000), then grow and merge until by t~13500 one or two bodies fill the domain, separated only by thin channels of the outside phase that persist to the end (sheet). labkit: 13 splits, 0 persistent, merge/split 0.77, final 2 components at occupancy 0.17 of the outside channel; L link rim/core 1.21, rim/outside 0.99, 0/8 membrane-like. Same outcome as the finding's seeds 0 and 1.",
+  "parents": ["20261025T1152-c06-pcell-slip-ring-negative"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T1152-c06-pcell-slip-ring-negative/world.py",
+  "evidence": ["rerun/seed3/sheet.png", "rerun/seed3/FACTS.md", "counts.txt"],
+  "review_of": "20261025T1152-c06-pcell-slip-ring-negative",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["B"],
+    "observations": {"B": "rerun/seed3/FACTS.md: L rim/core 1.21, 0/8 membrane-like, no membrane-like channel; sheet t=13500-100000: domain-filling bodies, no bounded cells"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "slip drive: cells merge into domain-filling bodies, no ring"}],
+    "same_individuals": true,
+    "controls_run": {"B": "the no-slip pcell-efficiency world on another seed (my 20261025T1344-c11-review-pcell-efficiency, seed 7) keeps bounded cells"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed; the no-slip twin was not run on the same seed 3."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
