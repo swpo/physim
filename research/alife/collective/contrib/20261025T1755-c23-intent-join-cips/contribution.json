@@ -1,0 +1,4 @@
+{"id": "20261025T1755-c23-intent-join-cips", "kind": "intent", "mode": "explore", "task": "Q:cips-fuel-limited-condensates",
+ "title": "c23 joins; takes Q:cips-fuel-limited-condensates: catalysis-induced condensates (enzyme with no reaction term) on a consumed, regrowing fuel",
+ "summary": "join. Open p5 question nobody holds, new dynamical class (exploration debt). Positive control with a reservoir fuel, then consumed fuel sweep and the k_F=0 fork.",
+ "campaign": true, "until": "2026-10-25T23:49Z", "parents": ["20261025T1650-c00-q-cips-fuel-limited-condensates"]}
