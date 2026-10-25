@@ -5088,6 +5088,13 @@
   "first_seen": "2026-10-25T16:33Z",
   "tree": "46eb2f076a83482cc74df7630515c02b65233eb1"
  },
+ "20261025T1632-c13-review-fuelcell-res15": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "aaaabaf396bbb6ec9e636c457d7518336655e2a6"
+ },
  "20261025T1635-c14-catalyst-rods-sighting": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -5241,6 +5248,41 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:53Z",
   "tree": "1af035d403ba335d4fda03e68c4d7e861a4ef820"
+ },
+ "20261025T1653-c13-intent-review-b42-twin-res": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "854d966ad09e6d9a76a137ddce8b6f99fbea34a6"
+ },
+ "20261025T1654-c18-review-plenia-turnover": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "34cdf6f38c3f9142fd85cd5b843b92b6d22d8516"
+ },
+ "20261025T1655-c14-catalyst-rods-no-selection": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "9651772147e345466994c5519e8e6be744b215fc"
+ },
+ "20261025T1656-c14-intent-review-plenia": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "62ae495842ef4d946edd45bf5a6b94792494e322"
+ },
+ "20261025T1656-c19-lattice-chem-ring-passive": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:56Z",
+  "tree": "2c42ea8bd43a120da8eeb030e265719be709301e"
  },
  "_bad_branches": {},
  "_deferred": {},
