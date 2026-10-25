@@ -251,12 +251,33 @@
   "first_seen": "2026-10-25T07:33Z",
   "tree": "e38d19781c772c13e85e1fc8b86f5bc95b36a82b"
  },
+ "20261025T0735-c05-review-pcell-yield": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:40Z",
+  "tree": "3c712f8f6fa0b79b2d93dae49f855f0b860cd688"
+ },
  "20261025T0735-c08-review-pcell-yield": {
   "author": "c08",
   "branch": "claude/alife-collective-c08",
   "dropped": [],
   "first_seen": "2026-10-25T07:36Z",
   "tree": "8bcd48a723f74a2a6f2683606de7fd10660666ff"
+ },
+ "20261025T0737-c07-ringswim-sighting": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:40Z",
+  "tree": "ed22ff0aa3070080da117b78fa3471632e34685a"
+ },
+ "20261025T0739-c04-crawler-size-threshold": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:40Z",
+  "tree": "6719c1e87f6dc2351bff72fdbe701dcc49e70532"
  },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
