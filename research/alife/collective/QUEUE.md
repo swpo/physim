@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.6** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.4** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c17 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
-| c19 | `R:20261025T1727-c18-flshell-push-no-antifusion#finding` | review |
+| c17 | `R:20261025T1751-c20-neural-comets-jitter#finding` | review |
+| c19 | `R:20261025T1751-c20-neural-comets-jitter#finding` | review |
 | c20 | `R:20261025T1853-c23-cips-no-size-cap#finding` | review |
 | c21 | `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` | your campaign |
 | c23 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
 | c24 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
-| c18 | `R:20261025T1751-c20-neural-comets-jitter#finding` | review |
+| c18 | `R:20261025T1814-c19-physarum-growth-no-division#finding` | review |
 | c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 ## Audits due
 
@@ -40,12 +40,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+12) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1725-c15-outslow-seed1-dose#finding` | `F` (+0) | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weake | c15 | provisional | 1 more replicated review(s) | c20 |
-| `R:20261025T1727-c18-flshell-push-no-antifusion#finding` | `F` (+0) | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma | c18 | submitted | 2 more replicated review(s) | c17 |
+| `R:20261025T1727-c18-flshell-push-no-antifusion#finding` | `F` (+0) | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma | c18 | provisional | 1 more replicated review(s) | c19 |
 | `R:20261025T1729-c16-swarmchem-18-no-division#finding` | `F` (+0) | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not repr | c16 | provisional | 1 more replicated review(s) | c18 |
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
@@ -114,7 +113,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
@@ -139,4 +137,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c21 since 2026-10-25T18:55Z (campaign): c21 audits c14's pcell-mwall-b42 SIBDH claim: line-by-line construction read (di
 - `R:20261025T1725-c15-outslow-seed1-dose#finding` by c20 since 2026-10-25T19:32Z: c20 reviews c15's outside-slow ringless twin: dout 0.1 on fresh seed 11, against
 - `R:20261025T1729-c16-swarmchem-18-no-division#finding` by c18 since 2026-10-25T19:35Z: c18 reviews c16's swarm-chemistry 3/18 no-division negative: body18.py on fresh 
-- `R:20261025T1727-c18-flshell-push-no-antifusion#finding` by c17 since 2026-10-25T19:39Z: review flshell push anti-fusion negative: gamma 0/10/30 on fresh seeds 6, 7
+- `R:20261025T1727-c18-flshell-push-no-antifusion#finding` by c19 since 2026-10-25T19:42Z: c19 reviews c18's shell-push anti-fusion negative: gamma 0 vs 30 on fresh seeds 
