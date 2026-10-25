@@ -1,0 +1,37 @@
+{
+ "id": "20261025T1650-c00-q-wave-pinning-crawler-repair",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die?",
+ "summary": "Camley et al. (PRE 95, 012401, 2017) push a phase-field cell out by a mass-conserved bistable (wave-pinning) polarity protein, whose total C also sets a window of allowed cell area. No published cut-and-recover test of any motile model turned up. Removing the front leaves the linearly stable low state everywhere, so repair is a race against retraction rather than automatic. The linear-kinetics twin cannot polarize at all, which makes it a built-in control beyond diffusion.",
+ "experiment": "Positive control (about 20 min). Camley et al.'s crawler:\n- Grid and numerics: Lx = Ly = 2.5, 256^2, semi-implicit spectral, dt = 5e-4.\n- Parameters: Pe^-1 = 0.3, K = 500, chi = 0.3, rho* = 0.4, m = 0.5, C = 6, eps = 0.1, G = 18 phi^2 (1-phi)^2.\n- Equations: dphi/dt = (rho - rho*)|grad phi| + chi(lap phi - G'/eps^2); d(phi rho)/dt = Pe^-1 div(phi grad rho) - K phi rho (rho - 1/2)(rho - m rho_cyt); rho_cyt = (C - int rho phi)/int phi.\n- Start: a circle of R0 = 1, with rho = 0.8 on the front half plus N(0, 0.2) noise.\n- Expected: a half-moon crawling straight; at chi = 0.2 it turns into circles.\n- Add weak ongoing noise on rho, small enough that the undamaged twin stays straight.\n\nDamage (about 40 min). At t = 20, on 2 seeds, each with a branched undamaged twin, erase:\n- (a) a 30% sector at the leading edge;\n- (b) a 30% sector at the rear.\nRemove the erased matter from C: C' = C - int_cut phi(rho + rho_cyt).\nReadout:\n- time for the front to re-form (a connected patch with rho > 1/2);\n- speed relative to the twin;\n- survival or retraction;\n- for (a), a 3-point noise-amplitude sweep.\n\nTwin (about 15 min). Replace the cubic kinetics with linear relaxation at the same rate. Expect no polarity and no motion.\n\nScoring. Credit only re-nucleation of the front. Its later smoothing is area-preserving curvature flow (Kobayashi, Sakakibara & Uechi 2026), which counts as by construction.\n\nOptional arm. Mori-type Hill kinetics, where the shrinking fragment's concentrating pool may destabilize the low state deterministically.",
+ "slug": "wave-pinning-crawler-repair",
+ "target": [
+  "I",
+  "B",
+  "R",
+  "M"
+ ],
+ "class": "crawler-phase-field",
+ "priority": 5,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Camley, Zhao, Li, Levine & Rappel, Crawling and turning in a minimal reaction-diffusion cell motility model, PRE 95, 012401 (2017), arXiv:1609.01764. Abstract, equations and parameters re-opened by the synthesizer.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1609.01764"
+  },
+  {
+   "cite": "Mori, Jilkine & Edelstein-Keshet, Wave-pinning and cell polarity from a bistable reaction-diffusion system, Biophys J 94, 3684 (2008); opened by the motility sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2292363"
+  },
+  {
+   "cite": "Kobayashi, Sakakibara & Uechi, arXiv:2601.04746 (2026): wave-pinning interfaces evolve by area-preserving curvature flow on the slow timescale; abstract opened by the motility sweep.",
+   "url": "https://arxiv.org/abs/2601.04746"
+  }
+ ]
+}

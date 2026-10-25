@@ -1,0 +1,35 @@
+{"file": "gen_s7.json", "key": "ym", "minlife": 20, "n_death": 17, "death_pct_mean": 0.026, "n_split": 13, "split_pct_mean": 0.692, "death_pct_below_median": 17, "split_pct_above_median": 11}
+{"file": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/pcell-mwall/construction/gen_s7.json.gz", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 5, "split": 0, "other": 3}, "high": {"death": 7, "split": 4, "other": 12}}, "death_share_low": 0.625, "death_share_high": 0.304, "split_share_low": 0.0, "split_share_high": 0.174, "dying_cells_rank_birth_mid_death": [0.523, 0.292, 0.034], "n_dying": 12}
+{"file": "gen_s7.json.gz", "key": "ym", "t0": 1000, "Ybar_t0": 0.9998, "Ybar_end": 1.1689, "dY": 0.1691, "sel": 0.2062, "trans": -0.025, "resid": -0.0121, "sel_death": 0.0937, "sel_split": 0.0573, "sel_other": 0.0552}
+{"file": "gen_s7.json.gz", "key": "ym", "cellmean_t0": 0.9998, "cellmean_end": 1.1143, "d": 0.1145, "within": -0.0149, "removal_death": 0.2756, "removal_other": -0.0245, "addition": -0.1217, "spearman_size_trait": 0.897}
+{"file": "gen_s7.json.gz", "key": "ym", "split": {"n": 26, "death": 9, "split": 4, "other": 13, "birth_rank": 0.69, "np_at_birth": 253}, "bud": {"n": 1, "death": 1, "split": 0, "other": 0, "birth_rank": 0.864, "np_at_birth": 535}, "appear": {"n": 4, "death": 2, "split": 0, "other": 2, "birth_rank": 0.012, "np_at_birth": 28}}
+{"file": "gen_s7.json", "key": "zm", "minlife": 20, "n_death": 17, "death_pct_mean": 0.399, "n_split": 13, "split_pct_mean": 0.487, "death_pct_below_median": 10, "split_pct_above_median": 6}
+{"file": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/pcell-mwall/construction/gen_s7.json.gz", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 6, "split": 4, "other": 6}, "high": {"death": 6, "split": 0, "other": 9}}, "death_share_low": 0.375, "death_share_high": 0.4, "split_share_low": 0.25, "split_share_high": 0.0, "dying_cells_rank_birth_mid_death": [0.522, 0.319, 0.354], "n_dying": 12}
+{"file": "gen_s7.json.gz", "key": "zm", "t0": 1000, "Ybar_t0": 1.0004, "Ybar_end": 1.0045, "dY": 0.0041, "sel": 0.0039, "trans": 0.0057, "resid": -0.0055, "sel_death": 0.0086, "sel_split": -0.0106, "sel_other": 0.0059}
+{"file": "gen_s7.json.gz", "key": "zm", "cellmean_t0": 1.0005, "cellmean_end": 1.0056, "d": 0.005, "within": -0.0058, "removal_death": 0.1073, "removal_other": 0.0028, "addition": -0.0993, "spearman_size_trait": -0.016}
+{"file": "gen_s7.json.gz", "key": "zm", "split": {"n": 26, "death": 9, "split": 4, "other": 13, "birth_rank": 0.481, "np_at_birth": 253}, "bud": {"n": 1, "death": 1, "split": 0, "other": 0, "birth_rank": 0.182, "np_at_birth": 535}, "appear": {"n": 4, "death": 2, "split": 0, "other": 2, "birth_rank": 0.373, "np_at_birth": 28}}
+{"file": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/pcell-mwall/construction/gen_s7.json.gz", "n": 17, "y_birth": 0.998, "y_death": 0.908, "pop_at_birth": 1.006, "pop_at_death": 1.066, "share_declined": 0.88}
+{"file": "gen_s7.json.gz", "KS_steps": 10000, "strict_splits": 12, "max_gen": 2, "after_20000": 5, "merges": 0, "gens": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2], "times": [3600, 5450, 5800, 6900, 7600, 8600, 15450, 50500, 51300, 59400, 69200, 86800]}
+{"file": "gen_s7.json.gz", "n_appear_mature": 4, "with_death_in_prev_2000": 4, "median_dist": 0.00625, "share_dist_below_0p01": 0.5, "median_lag": 50.0, "null_median_dist": 0.1215, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 17, "pct_all": 0.026, "n_death_no_appear": 15, "pct_no_appear": 0.03, "below_median_no_appear": 15, "splitborn_low_died": "3/4", "splitborn_high_died": "6/22"}
+{"key": "zm", "n_death_all": 17, "pct_all": 0.399, "n_death_no_appear": 15, "pct_no_appear": 0.385, "below_median_no_appear": 9, "splitborn_low_died": "3/12", "splitborn_high_died": "6/14"}
+{"file": "gen_s7.json.gz", "mode": "appear", "key": "ym", "n": 2, "rank_birth_mid_death": [0.0, 0.025, 0.0]}
+{"file": "gen_s7.json.gz", "mode": "appear", "key": "zm", "n": 2, "rank_birth_mid_death": [0.261, 0.25, 0.5]}
+{"file": "gen_s7.json.gz", "mode": "bud", "key": "ym", "n": 1, "rank_birth_mid_death": [0.864, 0.2, 0.111]}
+{"file": "gen_s7.json.gz", "mode": "bud", "key": "zm", "n": 1, "rank_birth_mid_death": [0.182, 0.08, 0.167]}
+{"file": "gen_s7.json.gz", "mode": "split", "key": "ym", "n": 9, "rank_birth_mid_death": [0.602, 0.361, 0.032]}
+{"file": "gen_s7.json.gz", "mode": "split", "key": "zm", "n": 9, "rank_birth_mid_death": [0.618, 0.361, 0.343]}
+{"file": "gen_s7.json.gz", "key": "ym", "n": 26, "r": 0.982, "mean_abs_change": 0.0089, "between_cell_sd": 0.0451}
+{"file": "gen_s7.json.gz", "key": "zm", "n": 26, "r": 0.941, "mean_abs_change": 0.01, "between_cell_sd": 0.0425}
+---- mech
+{"per_interval_foreign_frac": 0.0, "per_interval_from_free_frac": 0.04785, "mean_y_immigrant_minus_host": 0.011, "mean_ysource_cell_minus_host": 0.0035, "n_imm": 13}
+{"mature_cells": 47, "median_life_snapshots": 975, "median_life_steps": 48750}
+{"lag_snapshots_before_death": 40, "n": 17, "Lwall": 0.1786, "Lwall_med": 0.1549, "Lin": 0.2343, "Lin_med": 0.1761, "area": 24.7059, "area_med": 90.0, "Lwall_rank": 0.8715, "area_rank": 0.0778, "y_rank": 0.0689, "share_Lwall_below_th": 0.0}
+{"lag_snapshots_before_death": 10, "n": 17, "Lwall": 0.1849, "Lwall_med": 0.1545, "Lin": 0.2549, "Lin_med": 0.1739, "area": 18.6471, "area_med": 90.6471, "Lwall_rank": 0.8988, "area_rank": 0.0325, "y_rank": 0.0507, "share_Lwall_below_th": 0.0}
+{"lag_snapshots_before_death": 1, "n": 17, "Lwall": 0.2017, "Lwall_med": 0.1545, "Lin": 0.2698, "Lin_med": 0.1741, "area": 9.2353, "area_med": 93.8529, "Lwall_rank": 0.9521, "area_rank": 0.0, "y_rank": 0.0251, "share_Lwall_below_th": 0.0}
+{"spearman_y_Lwall": -0.859, "spearman_y_area": 0.908, "spearman_z_Lwall": 0.062, "share_living_Lwall_below_th": 0.397}
+{"death_fates_n": 17, "dying_cell_size_last": 27.1, "dead": 0.713, "free": 0.279, "in_some_cell": 0.007, "max_to_one_cell": 0.007}
+{"t": 20000, "ncell": 22, "r2_median": 0.929, "r2_min": 0.809, "slope_median": 2.349, "r2_fixed_chim_median": 0.476}
+{"t": 50000, "ncell": 23, "r2_median": 0.911, "r2_min": 0.739, "slope_median": 2.266, "r2_fixed_chim_median": 0.375}
+{"t": 100000, "ncell": 15, "r2_median": 0.93, "r2_min": 0.848, "slope_median": 2.174, "r2_fixed_chim_median": 0.281}
+{"persistent_splits": 15, "max_generation_persistent": 3, "merges": 0, "deaths": 36, "splits_by_parent_kind": {"0": 15, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 36, "1": 0, "-1": 0}, "off_kind_daughters": 0, "conversions_of_pure_cells": 0, "final_cells": 17, "final_pure": {"0": 17, "1": 0, "-1": 0}, "seed": 7, "T": 100000, "particle_births": [19633608], "particle_deaths": [19646160]}

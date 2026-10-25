@@ -1,0 +1,360 @@
+{
+ "id": "20261025T1650-c00-literature-sweep",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:00Z",
+ "title": "Literature sweep: every established highlight has published precedent (mostly variants); ten checked questions for the open challenges",
+ "summary": "A six-area sweep with citation checks. Prior art: NRCH swimmers, kstrail, evoloop, cheater erosion and the Marangoni negative are essentially published; pcell-mwall (Ono and Ikegami 2002), the ringed nematic rods (Giomi and DeSimone 2014), the FCH micelles (Fellermann et al. 2007), the Allen-Cahn membrane cells (Sakaguchi 2008), the gel comets, the crawler divider and the bonded rings are variants; our matched controls are usually stronger than the published ones. New with no precedent found: a self-made ring gating the body's own fuel, comets on a self-laid trail, Particle Lenia ring fission-fusion, a cut-and-recover test of any motile body. Scoring lessons: pure reaction-diffusion spot-tail worlds already swim, divide and carry a losable trait (a baseline for swim-divide claims); published protocell metabolism is nearly always E by construction, with catalysis-induced condensation on a consumed fuel the best-posed exception; raw cumulative activity misleads for O. Ten questions follow.",
+ "parents": [
+  "20261025T1525-c13-literature"
+ ],
+ "sources": [
+  {
+   "cite": "Cotton, Golestanian & Agudo-Canalejo, Catalysis-Induced Phase Separation and Autoregulation of Enzymatic Activity, PRL 129, 158101 (2022), arXiv:2205.12306. Abstract re-opened by the synthesizer; the metabolism sweep read the PDF.",
+   "url": "https://arxiv.org/abs/2205.12306",
+   "note": "source for Q:cips-fuel-limited-condensates"
+  },
+  {
+   "cite": "Bergmann et al., Liquid spherical shells are a non-equilibrium steady state of active droplets, Nat Commun 14, 6552 (2023); opened by the metabolism sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10582082/",
+   "note": "source for Q:cips-fuel-limited-condensates"
+  },
+  {
+   "cite": "Agudo-Canalejo & Golestanian, Active phase separation in mixtures of chemically interacting particles, PRL 123, 018101 (2019), arXiv:1901.09022; opened by the metabolism sweep.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1901.09022",
+   "note": "source for Q:cips-fuel-limited-condensates"
+  },
+  {
+   "cite": "Brauns et al., PRL 126, 104101 (2021), arXiv:2005.01495 (coarsening in mass-conserving systems); opened by the metabolism sweep.",
+   "url": "https://arxiv.org/abs/2005.01495",
+   "note": "source for Q:cips-fuel-limited-condensates"
+  },
+  {
+   "cite": "Camley, Zhao, Li, Levine & Rappel, Crawling and turning in a minimal reaction-diffusion cell motility model, PRE 95, 012401 (2017), arXiv:1609.01764. Abstract, equations and parameters re-opened by the synthesizer.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1609.01764",
+   "note": "source for Q:wave-pinning-crawler-repair"
+  },
+  {
+   "cite": "Mori, Jilkine & Edelstein-Keshet, Wave-pinning and cell polarity from a bistable reaction-diffusion system, Biophys J 94, 3684 (2008); opened by the motility sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2292363",
+   "note": "source for Q:wave-pinning-crawler-repair"
+  },
+  {
+   "cite": "Kobayashi, Sakakibara & Uechi, arXiv:2601.04746 (2026): wave-pinning interfaces evolve by area-preserving curvature flow on the slow timescale; abstract opened by the motility sweep.",
+   "url": "https://arxiv.org/abs/2601.04746",
+   "note": "source for Q:wave-pinning-crawler-repair"
+  },
+  {
+   "cite": "Trinschek, Stegemerten, John & Thiele, Thin-film modelling of resting and moving active droplets, PRE 101, 062802 (2020), arXiv:1911.08258. The synthesizer re-opened the full text and confirmed splitting in Figs 16-17 at c_a = -0.05, on 1D substrates only.",
+   "url": "https://ar5iv.labs.arxiv.org/html/1911.08258",
+   "note": "source for Q:thin-film-active-drops"
+  },
+  {
+   "cite": "Stegemerten, John & Thiele, Soft Matter 18, 5823 (2022), arXiv:2107.08961 (motility from polarization gradients; search snippet only, not opened).",
+   "url": "https://arxiv.org/abs/2107.08961",
+   "note": "source for Q:thin-film-active-drops"
+  },
+  {
+   "cite": "Reichenbach, Mobilia & Frey, Mobility promotes and jeopardizes biodiversity in rock-paper-scissors games, Nature 448, 1046-1049 (2007), arXiv:0709.0217. The synthesizer re-opened the PDF and confirmed M_c = (4.5 \u00b1 0.5)e-4 and that wavelength scales with mobility up to a universal lambda_c.",
+   "url": "https://arxiv.org/abs/0709.0217",
+   "note": "source for Q:rps-replicator-ecology"
+  },
+  {
+   "cite": "Froese, Virgo & Ikegami, Motility at the origin of life: its characterization and a model, Artificial Life (2014), arXiv:1311.2531. The synthesizer re-opened the abstract and checked the sweep's saved PDF text: parameters, speed ~4e-4, limited heredity, cataclysms, infection.",
+   "url": "https://arxiv.org/abs/1311.2531",
+   "note": "source for Q:spot-tail-rd-baseline"
+  },
+  {
+   "cite": "Matsubara, Ameta, Thutupalli, Nghe & Krishna, Conditions for Darwinian evolution in compartmentalized autocatalytic reaction networks, arXiv:2211.03155 (v2, Jul 2026). Abstract re-opened by the synthesizer; the heredity sweep read the PDF (the r(x) condition, the Fig. 6 reversal).",
+   "url": "https://arxiv.org/abs/2211.03155",
+   "note": "source for Q:bistable-autocatalytic-kinds"
+  },
+  {
+   "cite": "Doulcier, Lambert, De Monte & Rainey, eLife 9:e53433 (2020): the newborn-to-adult composition map and developmental correction; opened by the heredity sweep.",
+   "url": "https://elifesciences.org/articles/53433",
+   "note": "source for Q:bistable-autocatalytic-kinds"
+  },
+  {
+   "cite": "Singh & Jain, Life 13:2327 (2023): noise-driven switching between bistable autocatalytic states in dividing protocells; opened by the heredity sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10744544/",
+   "note": "source for Q:bistable-autocatalytic-kinds"
+  },
+  {
+   "cite": "Rechtsteiner & Bedau, A generic neutral model for quantitative comparison of genotypic evolutionary activity, ECAL'99, LNCS pp. 109-118. The synthesizer re-opened the PDF text and confirmed the shadow definition.",
+   "url": "https://people.reed.edu/~mab/publications/papers/ecal99.pdf",
+   "note": "source for Q:ledger-shadow-price-judge"
+  },
+  {
+   "cite": "Markovitch, Witkowski & Virgo, Chemical heredity as group selection at the molecular level, arXiv:1802.08024 (2018); abstract re-opened by the synthesizer.",
+   "url": "https://arxiv.org/abs/1802.08024",
+   "note": "source for Q:ledger-shadow-price-judge"
+  },
+  {
+   "cite": "Rice, A stochastic version of the Price equation, BMC Evol Biol 8:262 (2008); opened by the heredity sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2577117/",
+   "note": "source for Q:ledger-shadow-price-judge"
+  },
+  {
+   "cite": "Sayama, Cardinality leap for open-ended evolution: theoretical consideration and demonstration by Hash Chemistry, arXiv:1806.06628. The synthesizer re-opened the abstract; the arXiv page lists no journal (the ecology sweep gives Artificial Life 25(2), 2019, and read the parameters on ar5iv).",
+   "url": "https://ar5iv.labs.arxiv.org/html/1806.06628",
+   "note": "source for Q:hash-chemistry-o-calibration"
+  },
+  {
+   "cite": "de Pinho & Sinapayen, A speciation simulation that partly passes open-endedness tests, arXiv:2603.01701 (2026); abstract opened by the ecology sweep.",
+   "url": "https://arxiv.org/abs/2603.01701",
+   "note": "source for Q:hash-chemistry-o-calibration"
+  },
+  {
+   "cite": "Bedau, Quantifying the extent and intensity of adaptive evolution, GECCO-99 workshop (activity statistics); opened by the ecology sweep.",
+   "url": "https://people.reed.edu/~mab/publications/papers/evo.pdf",
+   "note": "source for Q:hash-chemistry-o-calibration"
+  },
+  {
+   "cite": "Bauermann, Bartolucci, Boekhoven, Weber & J\u00fclicher, Formation of liquid shells in active droplet systems, arXiv:2306.10852 (2023). The synthesizer re-opened the abstract and HTML (Fig. 1 parameters). The arXiv page shows no journal reference; PRR 5, 043246 comes from a search listing.",
+   "url": "https://arxiv.org/html/2306.10852v1",
+   "note": "source for Q:active-liquid-shells"
+  },
+  {
+   "cite": "Ono & Ikegami, Selection of Catalysts through Cellular Reproduction, ALIFE8 (2002), arXiv nlin/0209037. The imposed-compartment version is Takeuchi & Hogeweg, PLoS Comput Biol 5:e1000542 (2009).",
+   "url": "https://ar5iv.labs.arxiv.org/html/nlin/0209037",
+   "note": "prior art for pcell-mwall and pcell-mwall-b42 (SIBDH, hybrid-particle-field): walled cells from noise whose particle-borne link yield "
+  },
+  {
+   "cite": "Traulsen & Nowak, Evolution of cooperation by multilevel selection, PNAS 2006 (b/c > 1 + n/m). Also Hubai & Kun, J Theor Biol 2016: the stochastic corrector tolerates about 10% replication asymmetry.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1544155",
+   "note": "prior art for c06 pcell cheater erosion (negative): a costly heritable yield carried by ~300 particles per cell erodes"
+  },
+  {
+   "cite": "Giomi & DeSimone, Spontaneous division and motility in active nematic droplets, PRL 112, 147802 (2014), arXiv:1310.1908. Second precedent: Trinschek et al., PRE 101, 062802 (2020), where contractile stress splits a thin-film drop into motile daughters on a 1D substrate.",
+   "url": "https://ar5iv.arxiv.org/html/1310.1908",
+   "note": "prior art for Ringed active-nematic rods from noise (SIBMD, c11), and the fuel-holding ring (IBD, beyond diffusion, c15)"
+  },
+  {
+   "cite": "Fellermann, Rasmussen, Ziock & Sole, Life cycle of a minimal protocell: a DPD study, Artificial Life 13(4) (2007), arXiv nlin/0612024. Non-amphiphile walls: Bauermann et al. 2023 and Bergmann et al. 2023 (liquid shells).",
+   "url": "https://ar5iv.labs.arxiv.org/html/nlin/0612024",
+   "note": "prior art for Gated and metabolic FCH micelles (SIBWD, c03), plus the finding that a 100x slower ungated catalyst or cargo holds just "
+  },
+  {
+   "cite": "Sakaguchi, Creation and Reproduction of Model Cells with Semipermeable Membrane, arXiv:0810.4745 (2008)",
+   "url": "https://ar5iv.labs.arxiv.org/html/0810.4745",
+   "note": "prior art for Allen-Cahn membrane cells phase_membrane (IBD, beyond diffusion, lab 1): a catalyst holds up its phase, product links ad"
+  },
+  {
+   "cite": "Brauns & Marchetti, Nonreciprocal pattern formation of conserved fields, PRX 14, 021014 (2024), arXiv:2306.08868",
+   "url": "https://ar5iv.labs.arxiv.org/html/2306.08868",
+   "note": "prior art for Nonreciprocal Cahn-Hilliard swimmers (SIM, nrch), plus c08's negatives (fatter, not more numerous; vacancies refilled by"
+  },
+  {
+   "cite": "Barberi & Kruse, Localized states in active fluids, PRL 131, 238401 (2023), arXiv:2209.02581",
+   "url": "https://ar5iv.labs.arxiv.org/html/2209.02581",
+   "note": "prior art for Active-gel fed comets (SIME, c09) and the twin showing that bodies need flow transport"
+  },
+  {
+   "cite": "Sayama, A new structurally dissolvable self-reproducing loop evolving in a simple cellular automata space, Artificial Life 5(4), 343-365 (1999)",
+   "url": "https://necsi.edu/a-new-structurally-dissolvable-selfreproducing-loop-evolving-in-a-simple-cellular-automata-space",
+   "note": "prior art for Evoloop (cellular-automaton): small-loop sweep, matched-neutral invasion test, no-repair, and not-open-ended negatives ("
+  },
+  {
+   "cite": "Flemming, Font, Alonso & Beta, How cortical waves drive fission of motile cells, PNAS 117, 6330 (2020)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7104017",
+   "note": "prior art for c04 crawler-divide (IMD, crawler-phase-field), where division rests on a finite-range area penalty that acts as a hidden"
+  },
+  {
+   "cite": "Paoluzzi, Di Leonardo, Marchetti & Angelani, Sci Rep 6, 34146 (2016), arXiv:1605.02086",
+   "url": "https://ar5iv.arxiv.org/html/1605.02086",
+   "note": "prior art for c05 bonded membrane particles wrap particle-life cores into persistent closed rings (the no-bond twin's rings vanish)"
+  },
+  {
+   "cite": "Tsyganov, Brindley, Holden & Biktashev, Quasi-soliton interaction of pursuit-evasion waves in a predator-prey system, PRL 91, 218102 (2003)",
+   "url": "https://empslocal.ex.ac.uk/people/staff/vnb262/publ/qs/index.html",
+   "note": "prior art for Keller-Segel predator-prey worlds pursuit, ecology and evopursuit (SIMX, lab 1)"
+  },
+  {
+   "cite": "Kamimura & Kaneko, PRL 105, 268103 (2010) and Life (2014); Kaneko, J Biol Phys 2002 (minority-molecule control)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4284459/",
+   "note": "prior art for lab 1 fisim xcell-her and xcell-evo2 (negative): marks that arise in the run are stranded in the neck and never reach bo"
+  },
+  {
+   "cite": "Michelin, Lauga & Bartolo, Spontaneous autophoretic motion of isotropic particles, Phys Fluids 25, 061701 (2013), arXiv:1211.6935",
+   "url": "https://arxiv.org/abs/1211.6935",
+   "note": "prior art for c01 Marangoni droplets (negative, established): a fuel-dependent interfacial stress tunes division but never self-propel"
+  },
+  {
+   "cite": "Soto & Golestanian, Self-assembly of active colloidal molecules with dynamic function, PRE 91, 052304 (2015), arXiv:1502.07144",
+   "url": "https://arxiv.org/abs/1502.07144",
+   "note": "prior art for Particle-life cells and motile composites built from asymmetric pair forces (particle, SIB)"
+  },
+  {
+   "cite": "Takagi & Kaneko, Differentiation and replication of spots in a reaction diffusion system with many chemicals, EPL (2001), arXiv nlin/0104058",
+   "url": "https://arxiv.org/abs/nlin/0104058",
+   "note": "prior art for LITERATURE.md 2.4.1 and 2.8.1: active droplets and Gray-Scott spots have 'no heredity' because every body is one attract"
+  }
+ ],
+ "prior_art": [
+  {
+   "result": "pcell-mwall and pcell-mwall-b42 (SIBDH, hybrid-particle-field): walled cells from noise whose particle-borne link yield is selected by intrinsic whole-cell deaths, against an identical-event inert marker",
+   "nearest": "Ono & Ikegami, Selection of Catalysts through Cellular Reproduction, ALIFE8 (2002), arXiv nlin/0209037. The imposed-compartment version is Takeuchi & Hogeweg, PLoS Comput Biol 5:e1000542 (2009).",
+   "url": "https://ar5iv.labs.arxiv.org/html/nlin/0209037",
+   "relation": "variant",
+   "note": "Published: lattice proto-cells form from a random start. A catalyst's heritable membrane-production activity is selected through cell births and deaths, with no ad hoc rules. Low-activity mutants act as within-cell parasites, and selection is clearer at 0.75x supply. c13's 15:25 check already filed this as a variant. Ours adds continuum Allen-Cahn cells, an exact particle genealogy, the identical-event marker and intrinsic deaths. Still owed: a multilevel Price split (Q:ledger-shadow-price-judge) and, later, Takeuchi-Hogeweg's mutation-rate and supply sweep."
+  },
+  {
+   "result": "c06 pcell cheater erosion (negative): a costly heritable yield carried by ~300 particles per cell erodes",
+   "nearest": "Traulsen & Nowak, Evolution of cooperation by multilevel selection, PNAS 2006 (b/c > 1 + n/m). Also Hubai & Kun, J Theor Biol 2016: the stochastic corrector tolerates about 10% replication asymmetry.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1544155",
+   "relation": "known",
+   "note": "With n ~300 and m ~23, the bar is b/c > ~14. c06's costs of 20-50% exceed the corrector's tolerance, so erosion is the published prediction. New fact: ~60 particle generations per cell generation, a turnover ratio the published models lack."
+  },
+  {
+   "result": "c06 pcell-yield-selection: mixed cells purify by within-cell drift, and selection acts only during colonization",
+   "nearest": "Doulcier, Lambert, De Monte & Rainey, eLife 9:e53433 (2020)",
+   "url": "https://elifesciences.org/articles/53433",
+   "relation": "known",
+   "note": "Without developmental correction, collectives turn monochromatic within ~6 generations, so pure kinds 'breed true' only because pure states absorb. The G-map test (composition at birth against composition at division) is owed."
+  },
+  {
+   "result": "Ringed active-nematic rods from noise (SIBMD, c11), and the fuel-holding ring (IBD, beyond diffusion, c15)",
+   "nearest": "Giomi & DeSimone, Spontaneous division and motility in active nematic droplets, PRL 112, 147802 (2014), arXiv:1310.1908. Second precedent: Trinschek et al., PRE 101, 062802 (2020), where contractile stress splits a thin-film drop into motile daughters on a 1D substrate.",
+   "url": "https://ar5iv.arxiv.org/html/1310.1908",
+   "relation": "variant",
+   "note": "Giomi-DeSimone: motility at active capillary number Ca ~4.5 (supercritical), division at 11.4 < Ca < 16. Their stress is contractile, the droplet is planted, there is no growth, and repeated division is only conjectured. Ours is extensile, runs from noise, grows on a bath and divides repeatedly. A self-made ring that gates fuel has no precedent found. LITERATURE.md 2.6.4 lacks the thresholds. The Ca-collapse test is deferred."
+  },
+  {
+   "result": "c11 negative: ringed rods do not repair (6/6 cut rods vanish within 5-20 t)",
+   "nearest": "Giomi & DeSimone 2014 (Ca = alpha R/Sigma law); no perturbation study",
+   "url": "https://ar5iv.arxiv.org/html/1310.1908",
+   "relation": "new",
+   "note": "Neither sweep found a published cut-and-recover test for any motile active droplet, crawler or fragment. The Ca law predicts that motility after cutting a fraction f needs sqrt(1-f) Ca > 4.5, unless the body regrows across the threshold."
+  },
+  {
+   "result": "Gated and metabolic FCH micelles (SIBWD, c03), plus the finding that a 100x slower ungated catalyst or cargo holds just as well",
+   "nearest": "Fellermann, Rasmussen, Ziock & Sole, Life cycle of a minimal protocell: a DPD study, Artificial Life 13(4) (2007), arXiv nlin/0612024. Non-amphiphile walls: Bauermann et al. 2023 and Bergmann et al. 2023 (liquid shells).",
+   "url": "https://ar5iv.labs.arxiv.org/html/nlin/0612024",
+   "relation": "variant",
+   "note": "Fellermann's micelles fission while metabolizing, but the start is planted, the division trigger is external, and partitioning is unreliable (7 of 10 near-even splits with 4 sensitizers). Ours runs from noise and divides repeatedly under constant feed. Report Fellermann's own statistic: the per-fission cargo split, plus a parent-offspring regression."
+  },
+  {
+   "result": "Allen-Cahn membrane cells phase_membrane (IBD, beyond diffusion, lab 1): a catalyst holds up its phase, product links adsorb into a ring, and cells divide from noise",
+   "nearest": "Sakaguchi, Creation and Reproduction of Model Cells with Semipermeable Membrane, arXiv:0810.4745 (2008)",
+   "url": "https://ar5iv.labs.arxiv.org/html/0810.4745",
+   "relation": "variant",
+   "note": "Sakaguchi's cell makes its own lipid, which lowers diffusivity ~100x into a semipermeable membrane. Activity arises by a stochastic jump and spreads, but there is no bounded dividing body and no heredity. A self-made local low-D layer is thus itself a published membrane mechanism: the uniform slow-D twin stays the right null, but local low-D is not 'just diffusion'."
+  },
+  {
+   "result": "phase_membrane mature-damage repair (R, by construction: curvature flow plus tilt)",
+   "nearest": "Camley et al., PRE 95, 012401 (2017); Kobayashi, Sakakibara & Uechi, arXiv:2601.04746 (2026)",
+   "url": "https://arxiv.org/abs/2601.04746",
+   "relation": "known",
+   "note": "Curvature-driven healing is generic in phase-field bodies, and even wave-pinning fronts relax by area-preserving curvature flow. The by-construction ruling matches the literature."
+  },
+  {
+   "result": "Nonreciprocal Cahn-Hilliard swimmers (SIM, nrch), plus c08's negatives (fatter, not more numerous; vacancies refilled by nucleation)",
+   "nearest": "Brauns & Marchetti, Nonreciprocal pattern formation of conserved fields, PRX 14, 021014 (2024), arXiv:2306.08868",
+   "url": "https://ar5iv.labs.arxiv.org/html/2306.08868",
+   "relation": "known",
+   "note": "Same equations. Their Appendix E, at our mean density of -0.5, shows droplets that continually collide and break up, with a Gamma-distributed area histogram, plus travelling droplet lattices. 'Splits without persistent daughters' is the expected behaviour. Cheap cross-check: fit our area histogram to the Gamma form."
+  },
+  {
+   "result": "Active-gel fed comets (SIME, c09) and the twin showing that bodies need flow transport",
+   "nearest": "Barberi & Kruse, Localized states in active fluids, PRL 131, 238401 (2023), arXiv:2209.02581",
+   "url": "https://ar5iv.labs.arxiv.org/html/2209.02581",
+   "relation": "variant",
+   "note": "Localized states that exist only through advective coupling of a regulator are their central claim, so c09's twin result is a rediscovery and should cite them. Their states are stationary. No published self-propelled comet on a non-advected, self-laid trail was found, so that part may be new. Numerical continuation would show whether the comets sit on a subcritical, snaking branch."
+  },
+  {
+   "result": "c09 negative: Allen-Cahn cells held up by their own active gel are all-or-nothing (they fill the domain or vanish)",
+   "nearest": "Camley et al., PRE 95, 012401 (2017). For the M half of c09's question: Marth, Praetorius & Voigt, arXiv:1412.5296 (J R Soc Interface 2015).",
+   "url": "https://ar5iv.labs.arxiv.org/html/1609.01764",
+   "relation": "new",
+   "note": "The negative itself is unpublished. The published self-pushing cell avoids it with a conserved limiting pool C that sets an area window (|Omega|/m <= C <= ((m+1)/m)|Omega|), an ingredient c09's screens lacked. Marth et al. show that an active polar gel inside a phase-field membrane swims; division is not studied."
+  },
+  {
+   "result": "Keller-Segel trail swimmers kstrail (SIM), whose matched Laplacian-only twin also swims",
+   "nearest": "Froese, Virgo & Ikegami, Motility at the origin of life, Artificial Life (2014), arXiv:1311.2531 (Gray-Scott spots fleeing their own slowly decaying waste). Also Krischer & Mikhailov, PRL 73, 3165 (1994).",
+   "url": "https://arxiv.org/abs/1311.2531",
+   "relation": "known",
+   "note": "A pure reaction-diffusion trail swimmer is published, so the twin result was predictable. The same paper's spot-tail system already swims, duplicates and carries a losable tail (Q:spot-tail-rd-baseline). Fix: threads/chemotaxis-motility/LITERATURE_2.6_additions.md miscites Kranz et al.; the correct reference is Kranz, Gelimson, Zhao, Wong & Golestanian, PRL 117, 038101 (2016)."
+  },
+  {
+   "result": "Evoloop (cellular-automaton): small-loop sweep, matched-neutral invasion test, no-repair, and not-open-ended negatives (c16)",
+   "nearest": "Sayama, A new structurally dissolvable self-reproducing loop evolving in a simple cellular automata space, Artificial Life 5(4), 343-365 (1999)",
+   "url": "https://necsi.edu/a-new-structurally-dissolvable-selfreproducing-loop-evolving-in-a-simple-cellular-automata-space",
+   "relation": "known",
+   "note": "The ratchet to the smallest loops is Sayama's own result; c16's matched invasion arm is a stronger measurement of it. Salzberg, Antony & Sayama report a combinatorial genotype space and genetic diversification (secondary only; the PDF returned 403). That conflicts with c16's 'one-dimensional genotype space', so check it, and run a genotype-level genealogy, before calling evoloop closed."
+  },
+  {
+   "result": "c04 crawler-divide (IMD, crawler-phase-field), where division rests on a finite-range area penalty that acts as a hidden growth drive",
+   "nearest": "Flemming, Font, Alonso & Beta, How cortical waves drive fission of motile cells, PNAS 117, 6330 (2020)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7104017",
+   "relation": "variant",
+   "note": "Published phase-field cells divide because a bistable wave segment drives a protrusion that pinches off, and each daughter inherits its motor. Growth there is imposed through A0. Deferred as a question because the SI parameter table was not retrieved."
+  },
+  {
+   "result": "c05 bonded membrane particles wrap particle-life cores into persistent closed rings (the no-bond twin's rings vanish)",
+   "nearest": "Paoluzzi, Di Leonardo, Marchetti & Angelani, Sci Rep 6, 34146 (2016), arXiv:1605.02086",
+   "url": "https://ar5iv.arxiv.org/html/1605.02086",
+   "relation": "variant",
+   "note": "Bead-spring rings that enclose particles are standard, but the published rings are planted and their cargo is active, so the ring becomes a persistent walker. c05's rings wrap passive cores by themselves."
+  },
+  {
+   "result": "Keller-Segel predator-prey worlds pursuit, ecology and evopursuit (SIMX, lab 1)",
+   "nearest": "Tsyganov, Brindley, Holden & Biktashev, Quasi-soliton interaction of pursuit-evasion waves in a predator-prey system, PRL 91, 218102 (2003)",
+   "url": "https://empslocal.ex.ac.uk/people/staff/vnb262/publ/qs/index.html",
+   "relation": "variant",
+   "note": "Taxis waves pass through each other and reflect from walls, while the same reaction-diffusion pulses annihilate. Already cited, from memory, in the chemotaxis thread's LITERATURE_2.6_additions.md, but not in LITERATURE.md. The taxis-off arm belongs in Q:owed-laplacian-twins."
+  },
+  {
+   "result": "Matched neutral arms: c14's identical-event inert marker and c16's same-kind planted loop",
+   "nearest": "Rechtsteiner & Bedau, A generic neutral model for quantitative comparison of genotypic evolutionary activity, ECAL'99 (neutral shadows). Also Bedau's GECCO-99 activity statistics.",
+   "url": "https://people.reed.edu/~mab/publications/papers/ecal99.pdf",
+   "relation": "known",
+   "note": "A shadow replays the target's births, deaths and mutation rate with random parents and victims, so 'all selection in the neutral shadow is random' (confirmed in the PDF). Our in-world twin is stricter. The two controls complement each other. LITERATURE.md 4.6 has the activity statistics but not the shadow."
+  },
+  {
+   "result": "lab 1 mcg-MIRd (contradicted L7): a convex yield Y e^g lets mutational variance alone raise the mean yield",
+   "nearest": "Rice, A stochastic version of the Price equation, BMC Evol Biol 8:262 (2008)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2577117/",
+   "relation": "known",
+   "note": "A textbook confound. Report the covariance term and the transmission term separately (Q:ledger-shadow-price-judge)."
+  },
+  {
+   "result": "lab 1 fisim xcell-her and xcell-evo2 (negative): marks that arise in the run are stranded in the neck and never reach both daughters",
+   "nearest": "Kamimura & Kaneko, PRL 105, 268103 (2010) and Life (2014); Kaneko, J Biol Phys 2002 (minority-molecule control)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4284459/",
+   "relation": "variant",
+   "note": "The published remedy is to make the mark a slowly replicating minority species whose doubling precedes or drives fission. Those lattice cells were never started from soup."
+  },
+  {
+   "result": "lab 1 ad5-evolve (IDH, submitted, low): catalyst alleles that arise by imposed mutation breed true in planted droplets",
+   "nearest": "Singh & Jain, Life 13:2327 (2023)",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10744544/",
+   "relation": "variant",
+   "note": "In Singh-Jain, chemical noise alone flips cells between bistable autocatalytic states, with no explicit mutation. That is the stronger reading of 'variation arises during the run', and Q:bistable-autocatalytic-kinds tests it."
+  },
+  {
+   "result": "c01 Marangoni droplets (negative, established): a fuel-dependent interfacial stress tunes division but never self-propels",
+   "nearest": "Michelin, Lauga & Bartolo, Spontaneous autophoretic motion of isotropic particles, Phys Fluids 25, 061701 (2013), arXiv:1211.6935",
+   "url": "https://arxiv.org/abs/1211.6935",
+   "relation": "known",
+   "note": "Isotropic reactive particles swim only above a critical Peclet number, so c01's diagnosis is published theory. A threshold-free route is internal excitable waves (Kitahata et al., PRE 84, 015101, 2011), deferred."
+  },
+  {
+   "result": "Particle-life cells and motile composites built from asymmetric pair forces (particle, SIB)",
+   "nearest": "Soto & Golestanian, Self-assembly of active colloidal molecules with dynamic function, PRE 91, 052304 (2015), arXiv:1502.07144",
+   "url": "https://arxiv.org/abs/1502.07144",
+   "relation": "known",
+   "note": "Catalytic colloids with broken action-reaction symmetry bond into molecules that oscillate or run and tumble. Particle-life's force matrix is an ad hoc version of the same physics."
+  },
+  {
+   "result": "LITERATURE.md 2.4.1 and 2.8.1: active droplets and Gray-Scott spots have 'no heredity' because every body is one attractor",
+   "nearest": "Takagi & Kaneko, Differentiation and replication of spots in a reaction diffusion system with many chemicals, EPL (2001), arXiv nlin/0104058",
+   "url": "https://arxiv.org/abs/nlin/0104058",
+   "relation": "known",
+   "note": "Random many-chemical networks give several spot types and multipotent spots that differentiate irreversibly. The work is 1D, with no lineage or selection measurement. The reference should cite it; the question is deferred."
+  }
+ ],
+ "evidence": [
+  "literature.md"
+ ]
+}

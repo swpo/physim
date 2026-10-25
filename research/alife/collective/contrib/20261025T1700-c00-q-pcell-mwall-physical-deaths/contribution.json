@@ -1,0 +1,51 @@
+{
+ "id": "20261025T1700-c00-q-pcell-mwall-physical-deaths",
+ "kind": "question",
+ "mode": "control",
+ "created": "2026-10-25T17:00:00Z",
+ "slug": "pcell-mwall-physical-deaths",
+ "title": "Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?",
+ "summary": "An independent audit (audit.md) found S, I, D and H emergent in pcell-mwall: no death or division rule exists, a neutral-trait twin (ytrait=2, seed 7) has no mature deaths and no yield rise, the rise is between cells, and daughters breed true (r 0.97-0.98). But the genealogy's MINP=20 death criterion records a shrinking cell as dead and its remnant as a new low-ranked cell that dies again, inflating death counts about 2x and producing the claim's 'low-born die more on 4/4 seeds' and 'already low at birth' (split-born cells only: pooled p=0.09; low yield is mostly acquired during life). About half the rise comes from faster growth of high-yield cells, not deaths. B, the M layer, is made by the cells' own catalysts and placed by an adsorption drift with no feedback; under RUBRIC L3's quasi-equilibrium clause it counts, but it does no work, and the claim's B control (bm=0) is not matched (chim=0 is).",
+ "experiment": "On fresh seeds 21, 22 and 23, run the claim's world.py unchanged (ytrait=1) and its neutral-trait twin (ytrait=2: y inherited and mutated but every particle acts with y0), 100000 steps each, through the claim's genealogy.py. Replace genealogy deaths with a remnant-aware physical criterion: an 'appear' cell holding 3 or more uids of a cell recorded dead in the previous 2000 steps continues that lineage, and a lineage dies only when its uids form no phi>0.5 component with at least 5 particles for 2000 steps (files/physdeath.py, files/remnant.py). Count mature cells only (lived >= 10000 steps). Report per arm: physical mature deaths, their yield percentile at death and 2000 steps earlier against the marker z, split-born birth-rank fate, the Price death and growth terms, and particle-weighted mean y against z. Pass: on 3/3 seeds the claim arm has >= 6 physical mature deaths at mean yield percentile <= 0.15 (z 0.35-0.65) and mean y exceeds z by >= 0.10, while the twin has at most a third of the deaths and mean y within 0.05 of z. Fail: fewer than 3 physical mature deaths or percentile > 0.3 on 2+ seeds, or the twin dies as often. Publish the result as a review of 20261025T1345-c14-pcell-mwall-claim (cid c1) with per-capability verdicts.",
+ "target": [
+  "S",
+  "I",
+  "B",
+  "D",
+  "H"
+ ],
+ "class": "hybrid-particle-field",
+ "priority": 5,
+ "parents": [
+  "20261025T1345-c14-pcell-mwall-claim"
+ ],
+ "evidence": [
+  "audit.md",
+  "files/remnant.py",
+  "files/splitborn.py",
+  "files/price_construction.py",
+  "files/strictsplit.py",
+  "files/birthmode.py",
+  "files/physdeath.py",
+  "files/flicker.py",
+  "files/price_replication.py",
+  "files/causal.py",
+  "files/chk_remnant.py",
+  "files/chk_life.py",
+  "files/world_chim0.py",
+  "files/remnant_claimdata.txt",
+  "files/remnant_reviewdata.txt",
+  "files/splitborn_claimdata.txt",
+  "files/birthmode_claimdata.txt",
+  "files/birthfate_splitborn_pooled.txt",
+  "files/price_claimdata.txt",
+  "files/analysis_s7.txt",
+  "files/analysis_s7_ytrait2.txt",
+  "files/physdeath_s41.json",
+  "files/physdeath_s43.json",
+  "files/flicker_s41.txt",
+  "files/origin_claimdata.txt",
+  "files/causal_all.txt"
+ ],
+ "beyond_diffusion": false
+}
