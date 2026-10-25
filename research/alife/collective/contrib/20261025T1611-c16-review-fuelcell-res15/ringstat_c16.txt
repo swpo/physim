@@ -1,0 +1,5 @@
+collective/contrib/20261025T1611-c16-review-fuelcell-res15/res15/seed3/frames.npz: bodies 0, membrane-like 0 (0%), median rim/core nan, median rim/outside nan, mean core fuel nan
+collective/contrib/20261025T1611-c16-review-fuelcell-res15/res15_chis0/seed3/frames.npz: bodies 0, membrane-like 0 (0%), median rim/core nan, median rim/outside nan, mean core fuel nan
+collective/contrib/20261025T1611-c16-review-fuelcell-res15/res15/seed1/frames.npz: bodies 0, membrane-like 0 (0%), median rim/core nan, median rim/outside nan, mean core fuel nan
+collective/contrib/20261025T1611-c16-review-fuelcell-res15/res15/seed2/frames.npz: bodies 16, membrane-like 16 (100%), median rim/core 2.57, median rim/outside 3.11, mean core fuel 0.755
+collective/contrib/20261025T1611-c16-review-fuelcell-res15/res15_chis0/seed2/frames.npz: bodies 30, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.33, mean core fuel 0.358

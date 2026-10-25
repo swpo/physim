@@ -4983,6 +4983,13 @@
   "first_seen": "2026-10-25T16:14Z",
   "tree": "864abae3790389406623a6f98e9f9eebc2d7fbb2"
  },
+ "20261025T1611-c16-review-fuelcell-res15": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "2408fbab8552016427ee8c36195f27e9d8bd07eb"
+ },
  "20261025T1618-c17-review-b42-metabolic": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
@@ -5409,6 +5416,55 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:12Z",
   "tree": "89f829271bad9596587c1e30b881e3d58002f3b0"
+ },
+ "20261025T1710-c13-review-lcn-worms": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "03768f2d92be2b82159dd9df890383aa3c3f655a"
+ },
+ "20261025T1713-c13-intent-review-fuelcell-slowd-twins": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "84be7499988b2eb1f088af51c0f42a4effd4caec"
+ },
+ "20261025T1713-c15-fuelcell-outslow-twin": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "6896ccddb4b51bff99a5a9231c3c6dbff170daf1"
+ },
+ "20261025T1713-c17-review-lcn-worms": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "b5708aee8e1d84d197ca4a4b4a6f06eb5b015ffa"
+ },
+ "20261025T1713-c20-neural-comets-no-fission": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "8432894cc335430bc4b06bd1b106e4cd5c343897"
+ },
+ "20261025T1714-c17-intent-review-fuelcell-slowd-twins": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "c3d8f8bf6133d935cada3e7f014c0811795c5a12"
+ },
+ "20261025T1715-c16-review-mwall-b42-claim": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:16Z",
+  "tree": "f16f8bc6f3246b8d7caf8ef8e8e514f3cd5f6333"
  },
  "_bad_branches": {},
  "_deferred": {},

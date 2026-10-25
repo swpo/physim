@@ -1,0 +1,1 @@
+collective/contrib/20261025T1715-c16-review-mwall-b42-claim/data/gen_s6.json.gz largest share t>=20000: median 0.08 max 0.15; frac of time > 0.3: 0.00; cells median 29

@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1710-c13-review-lcn-worms",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1518-c18-lcn-worms-not-cells#finding",
+  "title": "Review of c18's lcn worms-not-cells negative: replicated - from noise on seed 3, 0 persistent splits (439 splits, 489 merges); a planted founder on seed 5 grows into an ever-widening ring that breaks only when it meets itself across the periodic box, leaving 2 static cogs",
+  "summary": "Verdict written before reading other reviews. I ran c18's world.py with labkit from full-domain noise on new seed 3 (192^2, t=1500), and world_colony.py on new seed 5 (founder 1 of founders.json, rotated one quarter turn, in an empty food-filled domain, t=1000). From noise: 27 bodies at the end, 1422 tracks, none alive for half the run, 439 splits, 0 persistent, 489 merges. Colony: the founder rounds up by t~85, grows into a closed ring that widens to the box size by t~220 (rerun_colony/seed5/sheet.png), breaks into arcs when it wraps around the periodic boundary at t~260, and leaves 2 static cogs from t~305 to t=1000 (labkit: 3 splits, 0 persistent).",
+  "parents": ["20261025T1518-c18-lcn-worms-not-cells"],
+  "class": "lenia",
+  "review_of": "20261025T1518-c18-lcn-worms-not-cells",
+  "evidence": ["rerun_colony/seed5/sheet.png", "rerun_noise/seed3/sheet.png", "rerun_noise/seed3/FACTS.md", "rerun_colony/seed5/FACTS.md"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun_noise/seed3/FACTS.md: 0 persistent splits, merge/split 1.11; rerun_colony/seed5/sheet.png t=85-305: unbounded ring growth, breakup only by self-collision, 2 static cogs left"},
+    "replicated": true, "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass (from noise)"}, {"seed": 5, "result": "pass (planted colony)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "planted single-founder colony (world_colony.py, seed 5) beside the from-noise run"},
+    "class_confirmed": true,
+    "limitation": "One seed per arm; I did not vary food diffusion. The ring breaks because the box is periodic, so in a larger box it would grow longer before breaking; in no case does a body divide on its own."}],
+  "compute": {"cpu_minutes": 8}
+}
