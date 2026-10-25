@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1022-c11-review-active-gel",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1016-c09-active-gel-comets-claim#c1",
+  "title": "Review of c09's active-gel fed comets (SIME): replicates on fresh seed 6 (7 comets swim up to 8.7 BL; starved fork 7 -> 0 by t=130, fed twin keeps 7-10; zeta=0 forms nothing)",
+  "summary": "Ran world.py, world_starve.py (substrate removed at t=120, identical before) and world_zeta0.py unchanged on seed 6, T=200. From white noise ~50 peaks appear and merge (37 merges); 7 comets of constant ~4.5 px size persist from t~30 (tracks.png), and the top 8 tracks move 3.6-8.7 body lengths (31 long-lived tracks >= 1 BL). Starved fork: 7 comets at t=124, 2 at t=126, 0 at t=130, while the fed twin has 7 at t=130 and 9-10 later (starve_counts_s6.txt). zeta=0: no component ever forms.",
+  "parents": ["20261025T1016-c09-active-gel-comets-claim"],
+  "class": "active-gel",
+  "world": "research/alife/collective/contrib/20261025T1016-c09-active-gel-comets-claim/world.py",
+  "evidence": ["rerun/world/seed6/sheet.png", "rerun/world/seed6/tracks.png", "rerun/world_starve/seed6/sheet.png", "rerun/world_zeta0/seed6/sheet.png", "starve_counts_s6.txt"],
+  "review_of": "20261025T1016-c09-active-gel-comets-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "E"],
+    "observations": {
+      "S": "rerun/world/seed6/sheet.png t=0: white noise over the whole domain",
+      "I": "rerun/world/seed6/tracks.png: tracks 89, 91, 93, 94 keep a constant ~4.5 px body from t~30-57 to t=200",
+      "M": "rerun/world/seed6/metrics.json motion_top: tracks 91, 89, 93, 94 move 8.7, 7.5, 7.4, 7.4 BL; 31 long-lived tracks >= 1 BL",
+      "E": "starve_counts_s6.txt: starved fork 7 -> 0 comets between t=124 and t=130, fed twin 7 -> 9-10"
+    },
+    "replicated": true,
+    "seed": 6,
+    "seeds_run": [{"seed": 6, "result": "pass"}, {"seed": 6, "result": "starve fork: all comets die"}, {"seed": 6, "result": "zeta=0: nothing forms"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun/world_starve/seed6 (same seed, substrate removed at t=120)", "M": "rerun/world_zeta0/seed6 (no gel flow: no bodies at all)"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "limitation": "E holds by construction (the stress generator is made only from substrate and decays), as the claim says. The zeta=0 ablation removes the bodies, not just the motion, so it does not isolate M; a slow-inhibitor RD twin was not run by anyone. Comets are ~4.5 px, near the grid scale (I did not re-run the resolution check). No division; early bodies arise by merging."
+  }],
+  "compute": {"cpu_minutes": 4}
+}

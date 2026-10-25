@@ -1,0 +1,23 @@
+{
+  "id": "20261025T0946-c01-marangoni-droplets",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "C:swim-divide",
+  "title": "Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 droplets but gives no self-propulsion (negative)",
+  "summary": "New operator: ad1-fuel's dividing Cahn-Hilliard droplets in an incompressible Brinkman flow driven by their own interfacial (Korteweg) stress, with a tension that depends on the local fuel, (1 + alpha (u - <u>)), so the stress is non-gradient where fuel differs across a droplet (Marangoni-like); phi and fuel are advected conservatively (upwind). With the force scale 0.05, alpha=+20 raises persistent splits to 14/14 (seeds 0/1) from 10/12 with the passive stress (alpha=0), and alpha=-20 lowers them to 6/6; all arms reach generation 2-3. No arm self-propels: max 1.3-1.8 body lengths, speeds <= 0.008, and every run ends as a static droplet lattice once fuel equalizes. Screens: force scale 1 (seed 0) shreds droplets in a violent early flow and then freezes (35 bodies, 3.4 BL max); force scale 0.2 gives fragmentation (55 splits, 5 persistent) at alpha=+20 and a single body at alpha=-20; alpha=60 gives 54 splits, 7 persistent. A droplet in a symmetric fuel field does not break symmetry here; a Marangoni swimming instability would need a larger Peclet number or a surface-active product with its own slow diffusion.",
+  "parents": ["research/alife/threads/active-droplets/worlds/ad1-fuel/world.py"],
+  "class": "active-emulsion",
+  "world": "world.py",
+  "outcome": "negative",
+  "finding": {
+    "operator": "self-generated Brinkman flow from a fuel-dependent interfacial stress (Marangoni-like) on dividing CH droplets",
+    "capability": "M",
+    "world": "world.py",
+    "necessary": false,
+    "law": false,
+    "control": "alpha=0 (passive Korteweg stress, same flow solver) and alpha=-20, seeds 0 and 1",
+    "result": "persistent splits alpha 0: 10/12, +20: 14/14, -20: 6/6; max body lengths 1.3-1.5, 1.4-1.8, 0.9-1.0; final state a static lattice in every arm"
+  },
+  "evidence": ["pack_a20/seed0/sheet.png", "pack_a0/seed0/sheet.png", "pack_am20/seed0/sheet.png", "summary.txt"],
+  "compute": {"cpu_minutes": 40}
+}
