@@ -1,0 +1,12 @@
+rerun_long/seed13 (claimed world unchanged, seed 13, T=2000). Columns: t, lumen areas in px (enclosed components of u+1.6 <= 0.8,
+contrast.py's definition), lumen/outside solute contrast.
+t=200   lumens [16,19,31,44,52,55,88]  27.2x
+t=400   lumens [2,4,32,33,34,36,64]    27.3x   (two corner vesicles fuse into a multilamellar body, losing their lumens)
+t=608   lumens [17,19,22,23,32]        33.3x
+t=808   lumens [11,13,15,16,16]        27.8x
+t=1008  lumens [9,10,11,11,12]         16.1x
+t=1208  lumens [7,8,8,8,8]              9.8x
+t=1408  lumens [7,7,7,8,8]              6.8x
+t=1616  lumens [6,7,7,7,7]              5.8x
+t=1816  lumens [6,7,7,7,7]              5.2x
+t=2000                                  5.0x   (all 120 recorded frames >= 2x)
