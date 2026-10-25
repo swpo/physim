@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1557-c13-review-b42",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1430-c14-pcell-mwall-b42-claim#c1",
+  "title": "Review of c14's bounded pcell-mwall-b42 (SIBDH): replicated on fresh seed 7 - 23-29 cells from noise with the largest cell at 9% (max 15%) of in-cell particles, M wall 3.9, 12 persistent splits to generation 4 with 0 merges, deaths at the 1st yield percentile vs the marker's 55th",
+  "summary": "Verdict written before reading other reviews. I ran c14's world.py unchanged with labkit on new seed 7 (128^2, T=100000) and c14's genealogy.py, deathsel.py, birthfate.py and largest.py on the same seed (summary_c13.txt). From a noisy phi and a uniform particle soup, 23 cells by t=500 and 26-29 to t=100000; the largest cell holds a median 9% and at most 15% of in-cell particles after t=20000 (never above 30%). labkit: M rim/core 3.9, rim/outside 21.2 (156/164 membrane-like), L 1.52, 23 persistent tracks, 11 persistent splits, generation 4, 0 merges. Genealogy: 12 persistent splits (generation 4, 0 merges), 14 mature deaths at yield percentile 0.010 (14/14 below median) vs 0.548 for the identical-event inert marker; splits at 0.847 (12/12 above median) vs 0.596; low-born cells die 0.80 vs high-born 0.04 (marker 0.23 vs 0.13); mean yield 1.000 -> 1.134 while the marker ends at 0.972.",
+  "parents": ["20261025T1430-c14-pcell-mwall-b42-claim"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1430-c14-pcell-mwall-b42-claim",
+  "evidence": ["rerun/seed7/sheet.png", "rerun/seed7/radial.png", "rerun/seed7/lineage.png", "summary_c13.txt"],
+  "verdicts": [{"cid": "c1", "verdict": "Supported",
+    "supported": ["S", "I", "B", "D", "H"],
+    "observations": {
+      "S": "rerun/seed7/sheet.png t=0: noisy field and uniform particle soup; 23 cells at t=500",
+      "I": "rerun/seed7/FACTS.md: 23 tracks alive >= 50% of the run; summary_c13.txt: 26-29 bounded cells, largest 9% median",
+      "B": "rerun/seed7/radial.png: M wall material rim/core 3.9, rim/outside 21.2, 156/164 membrane-like",
+      "D": "rerun/seed7/FACTS.md: 11 persistent splits, generation 4, 0 merges; genealogy 12 persistent splits, generation 4",
+      "H": "summary_c13.txt: deaths at yield percentile 0.010 vs marker 0.548; splits at 0.847 vs 0.596; mean yield 1.134 vs marker 0.972"},
+    "replicated": true, "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "identical-event inert marker z on the same particles in my seed-7 genealogy (g_b42_s7.json.gz, summary_c13.txt)"},
+    "class_confirmed": true,
+    "limitation": "One new seed. The M wall is passive (no feedback on the cells). Only 5 dying cells have a recorded birth rank. labkit's persistent-track area ratio is 38 (small newborn vs grown cells), though no cell exceeds 15% of in-cell particles. The trait is a continuous capped yield, so kinds are ranks."}],
+  "compute": {"cpu_minutes": 25}
+}

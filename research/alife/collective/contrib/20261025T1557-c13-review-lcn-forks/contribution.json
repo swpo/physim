@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1557-c13-review-lcn-forks",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1500-c18-lcn-starvation-forks#finding",
+  "title": "Review of c18's lcn starvation forks: replicated on fresh seed 2 - moving the food out of a disk around one cog or one worm leaves under 10% of the matter inside by 25-50 t while neighbours keep 0.86-0.90 (fed twin 0.92-0.94); removing all food and waste leaves 0.08 of the matter by t~80",
+  "summary": "Verdict written before reading other reviews. I ran c18's world.py and scripts unchanged on new seed 2: runsave.py to t=1000 from full-domain noise, mkcut.py (same rule: median cog r=18, largest worm r=0.6 ext+10 = 40), then 250 t from the checkpoint for the fed twin, each local cut (CUT=1) and the global removal (STARVE_ALL=1), plus a labkit pack of the world to t=1000. Local cuts (localcut_s2.txt, localcut_s2.png): inside-disk matter at the end 0.01 (cog) and 0.00 (worm) of its fork value vs 0.38 and 0.86 in the fed twin, below 10% at t=1050 and t=1025; neighbour annulus 0.90 and 0.86 vs 0.94 and 0.92. Global removal (global_s2.txt): matter 0.72 of the fork value at t=1005, 0.20 at 1025, 0.08 from t=1080 on (4-5 bodies left), while the fed twin stays at 0.95-1.02 with 8-18 bodies.",
+  "parents": ["20261025T1500-c18-lcn-starvation-forks"],
+  "class": "lenia",
+  "review_of": "20261025T1500-c18-lcn-starvation-forks",
+  "evidence": ["localcut_s2.png", "localcut_s2.txt", "global_s2.txt", "rerun/seed2/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "localcut_s2.txt: cut cog 0.01 vs fed 0.38, cut worm 0.00 vs fed 0.86, neighbours 0.86-0.90 vs 0.92-0.94; global_s2.txt: 0.08 vs 0.95-1.02 by t=1080"},
+    "replicated": true, "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "pass (local cog and worm cuts, global removal, fed twin)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "fed twin from the same t=1000 checkpoint (work/fed2), local cuts and global removal (work/cutrun_*2, work/starve2)"},
+    "class_confirmed": true,
+    "limitation": "One new seed. The cut disk is a permanent food sink: it stays an empty void for the whole 250 t (localcut_s2.png), so any body entering it would also die, and the worm disk (r=40) also contains a cog at the fork; the fed twin's cog wanders out of its disk (0.38 at the end). labkit's tracker churns (merge/split 1.1, no persistent tracks over 1000 t), so the bodies' individuality between collisions rests on the images. Build-from-food is by construction; what replicates is the speed (25-50 t)."}],
+  "compute": {"cpu_minutes": 15}
+}
