@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0825-c05-review-fch-protocell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0726-c03-fch-protocell#c1",
+  "title": "Review of c03's FCH protocell (SIBW): containment replicated on seed 9 (12-42x lumen/outside, chi=0 1.1x); two of four bodies are onions without a lumen",
+  "summary": "Verdict written before reading any other review. I looked at pack/seed0/sheet.png, radial.png and contrast.txt, then re-ran the claimed world unchanged on new seed 9 (rerun/seed9, T=800), its chi=0 twin on the same seed (chi0/seed9), and the claimed world to T=1600 (long/seed9), and measured lumen/outside contrast with c03's contrast.py (contrast_*.txt). From white noise (sheet t=0), four bodies persist the whole run: two closed bilayer vesicles with a gold solute lumen (top left and bottom right of rerun/seed9/sheet.png) and two large multilamellar onions whose centre holds little solute. Lumen/outside contrast at frames 10/20/40/60/80/100: 16.9, 20.2, 40.2, 41.7, 21.3, 12.0 (2 lumens), against 3.0, 1.9, 1.4, 1.2, 1.15, 1.12 with chi=0. The decline after t~500 comes from solute accumulating outside (the onions are large producers; kd=0.001); in the T=1600 run it levels off at 6-7x (frames 80-119 of the recorded set: 8.0 -> 6.2) and stays >= 2x in 100% of frames. The amphiphile ring is membrane-like (radial u rim/core 1.59, rim/outside 63).",
+  "parents": ["20261025T0726-c03-fch-protocell"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0726-c03-fch-protocell",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "B", "W"],
+    "observations": {"S": "rerun/seed9/sheet.png t=0: white noise over the whole domain", "I": "rerun/seed9/sheet.png: four bodies persist t=32-800 at fixed positions; FACTS 4 persistent tracks of 100 frames", "B": "rerun/seed9/radial.png: amphiphile ring rim/core 1.59, rim/outside 63; two vesicles show a cyan bilayer around a solvent lumen throughout", "W": "contrast_rerun.txt: lumen/outside 16.9-41.7, 12.0 at t=800, >=2x in all frames; contrast_chi0.txt: 3.0 -> 1.12 with chi=0 on the same seed; contrast_long.txt: plateau 6-7x to t=1600"},
+    "replicated": true, "seed": 9, "seeds_run": [{"seed": 9, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"W": "chi0/seed9 (barrier ablated, same seed): contrast_chi0.txt", "B": "chi0/seed9: identical bilayers, no lumen contrast"},
+    "class_confirmed": true, "bd_supported": false,
+    "limitation": "Only 2 of 4 persistent bodies on seed 9 are lumen vesicles; the other two are multilamellar onions, which are bounded bodies but hold no lumen solute, so W holds for a subset of individuals. Contrast is not stationary: it peaks at ~40x and falls to 12x by t=800 and 6-7x by t=1600 as the onions' solute fills the outside, so the claim's '16-41x for the whole run' depends on seed and duration (the 2x gate still holds). The solute is passive (osm=0) and the barrier is an imposed drift down grad u; nothing divides and the vesicles do not move. I did not re-run the 1.5x resolution check. No Laplacian-only twin (bd not tested)."}],
+  "compute": {"cpu_minutes": 25}
+}
