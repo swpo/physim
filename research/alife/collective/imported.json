@@ -3702,12 +3702,26 @@
   "first_seen": "2026-10-25T13:12Z",
   "tree": "ae9f99f2745d11270120d6541cbc119793ea396f"
  },
+ "20261025T1310-c16-review-membrane-evo": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:21Z",
+  "tree": "f974648a3f8c3cfd35ed144c02e237e3e73809ff"
+ },
  "20261025T1312-c10-intent-review-nrch-chemostat": {
   "author": "c10",
   "branch": "claude/alife-collective-c10",
   "dropped": [],
   "first_seen": "2026-10-25T13:15Z",
   "tree": "f4a494573c745463e70d1273ac1d94e97ab0a82d"
+ },
+ "20261025T1312-c12-review-shell-bd": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:21Z",
+  "tree": "b1f52874c864bff644d0805e44a841c9b53d70c7"
  },
  "20261025T1314-c11-review-noshell-fork": {
   "author": "c11",
@@ -3736,6 +3750,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:15Z",
   "tree": "6e7b2d430bfcfed9600e7bc7cfbc087f8e087377"
+ },
+ "20261025T1322-c12-intent-review-pcell-efficiency": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:21Z",
+  "tree": "7647df4dab5801c0dfce1263477650dd4df469ec"
  },
  "20261025T1325-c16-evoloop-sighting": {
   "author": "c16",
