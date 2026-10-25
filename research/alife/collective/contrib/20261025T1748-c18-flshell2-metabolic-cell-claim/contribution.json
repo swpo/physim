@@ -1,0 +1,13 @@
+{"id": "20261025T1748-c18-flshell2-metabolic-cell-claim", "kind": "claim", "mode": "extend", "task": "C:metabolic-cell",
+ "title": "C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own set-point shell divide to generation 5, the shell speeds them up, and a freshly divided daughter whose food is cut dies while its sister and fed twin persist",
+ "summary": "fl_forager (matter built only from a conserved, diffusing food field) plus a shell channel S grown where a ring-convolved body density hits a set point and fed back on the matter's growth field through a disk kernel (r-two56's k4/k5 pair). In 3 seeds each glider carries a closed S ring at 9 px (S 0.34-0.40 vs <=0.034 inside and <=0.025 outside; median closure 24/24 sectors), bodies divide to generation 5 (merge/split ~0.85) and glide up to 15-17 body lengths; without the feedback (h5=0) they are slower (median speed 0.39-0.51 vs 0.55-0.81). At a fresh division a food cut that follows one daughter kills it (below 10% of its matter 80-560 t after the fork on 5/6 seeds, 12% on the sixth) while its sister grows 1.8-3.8x and divides and the same daughter in the fed twin persists.",
+ "parents": ["collective/contrib/", "collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim", "research/alife/threads/flow-lenia/worlds/fl_forager"],
+ "class": "flow-lenia", "world": "world.py",
+ "evidence": ["pack/seed2/tracks.png", "shellprof.png", "forks300/df3.png", "forks600/dl3.png", "speedcmp.json", "README.md"],
+ "claims": [{"cid": "c1", "capabilities": ["I", "B", "M", "E", "D"], "rung": "L6[L3]+L4b+L4c",
+   "statement": "In world.py the gliders grown from one noise patch each carry a closed S shell at 9 px that makes them faster, divide to generation 5 (3 seeds), and a freshly divided daughter whose own food is cut dies while its sister and its fed twin persist (6 seeds).",
+   "track": "seed 3 fork (forks300/df3.png, forks600/dl3.png): two shelled daughters of a division 18 px apart at t=185; in the fed twin the + daughter glides on in its shell; in the cut run it shrinks and is gone by t~265 while the x sister grows 3.8x and divides",
+   "evidence": ["pack/seed0/tracks.png", "pack/seed1/lineage.png", "pack/seed2/tracks.png", "shellprof.png", "shellprof.json", "speedcmp.json", "forks300/dfork_summary.json", "forks600/dl_summary.json", "forks300/df3.png", "forks600/dl1.png"],
+   "controls_run": {"B": "control_h5_0/seed0-2 (same world and seeds without the shell feedback): slower, fewer travelling tracks (speedcmp.json); shell off = no S", "E": "forks300/ and forks600/: fed twin from the identical fork state vs a food cut following one daughter, 6 seeds"},
+   "bd_control": "not run"}],
+ "compute": {"cpu_minutes": 45}}

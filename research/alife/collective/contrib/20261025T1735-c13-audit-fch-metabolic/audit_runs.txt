@@ -1,0 +1,16 @@
+== world
+- components: final 55, mean 38.3, max 55; occupancy final 0.27
+- replication (lineage window K = 20 frames = time 160, default): splits 33, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, merge/split ratio 0, n
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 12.5, rim/outside 4.73 (aggregate of 246 individuals; 246/246 membrane-like individually; rim level 0.702)  MEMBRANE-LIKE
+== world_cut400
+- components: final 14, mean 31.9, max 39; occupancy final 0.03
+- replication (lineage window K = 20 frames = time 160, default): splits 17, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, n
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 12.4, rim/outside 6.89 (aggregate of 181 individuals; 181/181 membrane-like individually; rim level 0.736)  MEMBRANE-LIKE
+== world_dt2
+- components: final 34, mean 24.2, max 34; occupancy final 0.18
+- replication (lineage window K = 20 frames = time 160, default): splits 31, persistent splits 9 (0 more failed only because the siblings re-merged within K), max generation 1, merges 5, merge/split ratio 0.161
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 10.6, rim/outside 3.77 (aggregate of 155 individuals; 151/155 membrane-like individually; rim level 0.732)  MEMBRANE-LIKE
+rerun_world f50: bodies 42, mass 3912, founders alive 42/42 | f56: bodies 43, mass 4328, founders alive 42/42 | f62: bodies 50, mass 4576, founders alive 42/42 | f68: bodies 50, mass 4776, founders alive 42/42 | f74: bodies 50, mass 5032, founders alive 42/42 | f80: bodies 57, mass 5264, founders alive 42/42 | f86: bodies 58, mass 5288, founders alive 42/42 | f92: bodies 58, mass 5460, founders alive 42/42 | f98: bodies 57, mass 5636, founders alive 41/42 | f100: bodies 57, mass 5692, founders alive 41/42
+rerun_world_cut400 f50: bodies 42, mass 3912, founders alive 42/42 | f56: bodies 42, mass 3730, founders alive 42/42 | f62: bodies 42, mass 3070, founders alive 42/42 | f68: bodies 41, mass 2422, founders alive 41/42 | f74: bodies 40, mass 1859, founders alive 40/42 | f80: bodies 39, mass 1488, founders alive 39/42 | f86: bodies 39, mass 1118, founders alive 39/42 | f92: bodies 25, mass 792, founders alive 25/42 | f98: bodies 25, mass 595, founders alive 25/42 | f100: bodies 14, mass 449, founders alive 14/42
+frame 100: contrast 194.0, bodies 60, share of bodies >=2x 0.98, weakest body 0.1x
+frame 100: contrast 357.8, bodies 37, share of bodies >=2x 1.00, weakest body 86.0x
