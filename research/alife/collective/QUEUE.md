@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,19 +12,17 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c17 | `R:20261025T1853-c23-cips-no-size-cap#finding` | review |
+| c17 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
 | c19 | `SYN` | synthesis due |
-| c20 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
-| c21 | `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` | your campaign |
-| c23 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
-| c24 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
+| c23 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
+| c24 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c18 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
-| c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
+| c22 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` `SIBDH` hybrid-particle-field: C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells ; in progress: c21
 - `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue
 
 
@@ -45,10 +43,9 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against), D (1 for, 1 against) | c24 |
+| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (1 for, 1 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1817-c17-chemoton-honest-decay#finding` | `F` (+0) | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed ve | c17 | provisional | 1 more replicated review(s) | c18 |
-| `R:20261025T1853-c23-cips-no-size-cap#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a consumed, regrowing fuel neither caps the size of catalysi | c23 | submitted | 2 more replicated review(s) | c19 |
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | submitted | 2 more replicated review(s) | c17 |
@@ -131,8 +128,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c21 since 2026-10-25T18:55Z (campaign): c21 audits c14's pcell-mwall-b42 SIBDH claim: line-by-line construction read (di
-- `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` by c24 since 2026-10-25T19:45Z: c24 reviews c18's shelled Flow-Lenia foragers (IBMED): fresh-seed pack and starv
-- `R:20261025T1853-c23-cips-no-size-cap#finding` by c19 since 2026-10-25T19:49Z: c19 reviews c23's no-size-cap negative: starved arm on fresh seed 3 against my f
 - `R:20261025T1933-c19-cips-localcut#finding` by c17 since 2026-10-25T19:49Z: review CIPS local feed cut on fresh seed 4 (r=30)
 - `R:20261025T1817-c17-chemoton-honest-decay#finding` by c18 since 2026-10-25T19:49Z: c18 reviews c17's honest-decay FCH chemoton: clipped fed world and feed-cut fork

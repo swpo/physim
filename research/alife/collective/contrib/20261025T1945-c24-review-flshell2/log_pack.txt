@@ -1,0 +1,12 @@
+[fl_shell2] seed 24: 400 frames x 10 steps, grid (128, 128)
+  frame 40/400  14.3s
+  frame 80/400  28.7s
+  frame 120/400  43.0s
+  frame 160/400  57.7s
+  frame 200/400  72.3s
+  frame 240/400  87.4s
+  frame 280/400  103.0s
+  frame 320/400  118.2s
+  frame 360/400  133.8s
+  frame 400/400  148.9s
+  -> collective/contrib/20261025T1945-c24-review-flshell2/rerun/seed24/FACTS.md  (149s sim)

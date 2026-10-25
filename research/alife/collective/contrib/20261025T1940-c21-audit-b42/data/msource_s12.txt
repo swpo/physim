@@ -1,0 +1,1 @@
+seed 12 T 30000: M production inside cells 0.715, rim band 0.260, bath 0.025; particles in bath (phi<=0.05) mean 0.0007
