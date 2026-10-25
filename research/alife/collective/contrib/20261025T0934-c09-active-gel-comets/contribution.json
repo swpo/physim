@@ -1,0 +1,14 @@
+{
+  "id": "20261025T0934-c09-active-gel-comets",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "F:active-gel",
+  "title": "active-gel: a contractile active-gel flow plus a self-laid stress-weakening trail turns white noise into ~50 motile comets (new class)",
+  "summary": "New class: a compressible active gel whose flow (gamma v - eta lap v = grad sigma, sigma = zeta a/(1+a)/(1+rho b)) advects a stress generator a; a regulator b is laid down by a (not advected, slow turnover kb=0.01) and weakens the stress, so each contractile peak of a is pushed off its own trail. From white noise, ~50 discrete a-peaks form by t=20 and travel as comets with a bright head at the front of a b halo (pack/seed*/tracks.png): 48-57 tracks move >= 1 body length, up to 4.7 body lengths in t=150, on 2 seeds, and the same at 1.5x resolution (53 tracks, 3.5 body lengths). The population is crowded: comets collide, merge and renucleate (merge/split 2.1-3.3), so lineages are reticulate and no division is claimed. With a regulator that is advected like a (badv=1, constant turnover target) the pattern inverts into gel-free voids that grow, curl and burst (voids_regime_advected_regulator.png).",
+  "parents": [],
+  "class": "active-gel",
+  "world": "world.py",
+  "evidence": ["pack/seed1/sheet.png", "pack/seed0/tracks.png", "pack_res15/sheet.png", "voids_regime_advected_regulator.png"],
+  "limits": "Comets are 4-8 px across at dx=0.5 and need 2/3 dealiasing (without it, grid stripes appear after t~110). The motility mechanism is a self-repellent trail as in kstrail, with a nonlocal flow in place of chemotaxis; no Laplacian-only twin yet. Dense packing: individuals are L2 at best, with many merges.",
+  "compute": {"cpu_minutes": 40}
+}

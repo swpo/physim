@@ -1,0 +1,15 @@
+0 {'F': 3985, 'C': 15, 'M': 0, 'bonds': 0} mean nsub 0.0 max 0 vmax 0.00 0
+5 {'F': 3937, 'C': 60, 'M': 3, 'bonds': 3} mean nsub 3.0 max 4 vmax 4.98 9
+10 {'F': 3846, 'C': 115, 'M': 39, 'bonds': 32} mean nsub 3.0 max 4 vmax 5.35 12
+15 {'F': 3689, 'C': 220, 'M': 91, 'bonds': 80} mean nsub 3.1 max 4 vmax 5.23 16
+20 {'F': 3488, 'C': 378, 'M': 134, 'bonds': 115} mean nsub 3.2 max 5 vmax 5.34 20
+25 {'F': 3215, 'C': 600, 'M': 185, 'bonds': 164} mean nsub 3.9 max 6 vmax 7.67 25
+30 {'F': 2935, 'C': 852, 'M': 213, 'bonds': 191} mean nsub 4.8 max 10 vmax 11.83 31
+35 {'F': 2612, 'C': 1131, 'M': 257, 'bonds': 229} mean nsub 6.3 max 12 vmax 8.75 40
+40 {'F': 2267, 'C': 1425, 'M': 308, 'bonds': 276} mean nsub 6.5 max 15 vmax 16.76 49
+45 {'F': 1966, 'C': 1698, 'M': 336, 'bonds': 307} mean nsub 7.6 max 16 vmax 7.51 63
+50 {'F': 1742, 'C': 1915, 'M': 343, 'bonds': 320} mean nsub 8.5 max 18 vmax 7.57 80
+55 {'F': 1585, 'C': 2070, 'M': 345, 'bonds': 326} mean nsub 12.1 max 31 vmax 6.48 114
+60 {'F': 1455, 'C': 2211, 'M': 334, 'bonds': 317} mean nsub 13.4 max 35 vmax 41.76 161
+65 {'F': 1352, 'C': 2321, 'M': 327, 'bonds': 313} mean nsub 15.4 max 37 vmax 9.45 221
+70 {'F': 1300, 'C': 2379, 'M': 321, 'bonds': 309} mean nsub 13.4 max 33 vmax 10.05 275

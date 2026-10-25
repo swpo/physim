@@ -1,0 +1,33 @@
+{
+  "id": "20261025T0936-c11-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Review of lab1 membrane_evo (SIBDH): on fresh seeds 21-23 the up arm ends above its identical-event twin 3/3 and the down arm is purged 3/3, but late-window shares reverse on one seed",
+  "summary": "Ran the three identical-event arms (membrane_evo_up b2=1.3b, membrane_evo twin b2=b, membrane_evo_down) unchanged on fresh seeds 21, 22, 23 (T=40000, as the lab-1 pack). Walled cells form from the noise start, divide (11 persistent splits, gen 3 on up s21; 9-13 on the down arm) and are cut by the imposed death disks (black disks on the sheets). Final K2 biomass share up vs twin: 0.93 vs 0.46, 0.78 vs 0.30, 0.82 vs 0.03; down arm 0.00 on all three (late mean <= 0.006) where the twin keeps 0.08-0.39. Mean over the last quarter of the run, up vs twin: 0.62 vs 0.28, 0.32 vs 0.39 (reversed), 0.70 vs 0.08; on seed 22 the up arm's K2 nearly vanished mid-run (0.77 -> 0.00) and returned by flips. On the sheets the high-yield K2 cells are visibly larger than K1 cells and than the twin's K2 cells.",
+  "parents": ["lab1-autopoiesis-membrane-evo"],
+  "class": "phase-field",
+  "world": "research/alife/threads/autopoiesis/worlds/membrane_evo_up/world.py",
+  "evidence": ["rerun/membrane_evo_up_s23/sheet.png", "rerun/membrane_evo_s23/sheet.png", "share.txt", "rerun/membrane_evo_up_s21/FACTS.md", "rerun/membrane_evo_down_s21/sheet.png"],
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "D", "H"],
+    "observations": {
+      "S": "rerun/membrane_evo_up_s23/sheet.png t=0: noise over the whole domain (smoothed phi, random K, L); walled cells by t=1750",
+      "I": "rerun/membrane_evo_up_s23/sheet.png: discrete walled cells throughout",
+      "B": "rerun/membrane_evo_up_s21-23/FACTS.md: membrane (wall) channel rim/core 3.6-4.4, rim/outside 2.5-3.2, MEMBRANE-LIKE in 53-57 of ~70 individuals",
+      "D": "rerun/membrane_evo_up_s21/FACTS.md: 45 splits, 11 persistent, max generation 3, merge/split 0.24",
+      "H": "share.txt: final K2 share up > twin on 3/3 seeds (0.93/0.78/0.82 vs 0.46/0.30/0.03), down arm 0.00 on 3/3 vs twin 0.03-0.46; same event RNG per seed across arms"
+    },
+    "replicated": true,
+    "seed": 21,
+    "seeds_run": [{"seed": 21, "result": "pass (up 0.93, twin 0.46, down 0.00)"}, {"seed": 22, "result": "final pass (0.78 vs 0.30), late-quarter mean reversed (0.32 vs 0.39)"}, {"seed": 23, "result": "pass (up 0.82, twin 0.03, down 0.00)"}],
+    "same_individuals": true,
+    "controls_run": {"H": "rerun/membrane_evo_s21-23 (identical-event neutral twin) and rerun/membrane_evo_down_s21-23, same seeds"},
+    "class_confirmed": true,
+    "limitation": "Selection is real in direction (up rises, down is purged against the same events) but noisy: the K2 share swings by 0.5-0.8 within a run, and on seed 22 the time-averaged late share is lower than the twin's. Every death here is an imposed disk (sheets show the disks cutting cells), so this is not autonomous heredity, and I did not dissect how much of the sweep runs through disk fragments (the lab-1 caveat). share.py counts biomass and K2-majority components without merge-aware births. Lineage depth is gen 3 by labkit."
+  }],
+  "compute": {"cpu_minutes": 20}
+}

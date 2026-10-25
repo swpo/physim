@@ -1,0 +1,31 @@
+{
+  "id": "20261025T0920-c01-review-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "title": "FCH chemoton replicates on seed 3 (K layer rim/core 2.51, fed 2198 vs starved 357 amphiphile), but K-free rings also persist when fed; E holds by construction",
+  "summary": "Fresh seed 3 (192^2, t=600): micelles condense from the noisy bath by t=24, open into bilayers and by t~200 settle into one double-walled vesicle with the catalyst beaded on its bilayer and two catalyst-free rings (rerun/sheet.png). labkit: K rim/core 2.51, rim/outside 6.49, membrane-like in aggregate; track #14 has K membrane-like at mid-life. Starvation fork on the same seed (world_starve.py, feed cut at t=300): total amphiphile 2542 at t=300 falls to 357 by t=600 against 2198 for the fed run; K 219 vs 1921 (totals_s3.txt); the K vesicle shrinks to a small ring. In the fed run the two K-free rings also persist to t=600, living on amphiphile from the bath.",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: noisy bath over the whole domain",
+      "I": "rerun/sheet.png t=207-600: three discrete vesicles that keep their identity",
+      "B": "rerun/FACTS.md: catalyst K rim/core 2.51, rim/outside 6.49, membrane-like; sheet shows K beads along the bilayer of the double vesicle"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass for S, I, B; fork replicates"}],
+    "same_individuals": true,
+    "controls_run": {"E": "starve/ (feed cut at t=300, seed 3) vs rerun/: amphiphile 357 vs 2198 at t=600 (totals_s3.txt, totals_s3.png)"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "limitation": "E holds by construction (amphiphile is made only by K from the fed precursor and decays everywhere), as the claim itself says; the fork confirms the dependence but not an emergent metabolism. Only 3 individuals on this seed, and two of them carry no catalyst yet persist as long as the K vesicle, so persistence is not specific to the K-bearing vesicle here. I did not re-run the no-catalyst or no-gate arms."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/radial.png", "starve/sheet.png", "totals_s3.png", "totals_s3.txt"],
+  "compute": {"cpu_minutes": 26}
+}
