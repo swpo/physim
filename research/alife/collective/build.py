@@ -49,6 +49,7 @@ ID_RE = re.compile(r"^\d{8}T\d{4}-(c\d+)-[a-z0-9][a-z0-9-]*$")
 SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
+MAX_AUDITS = 2  # audits running at once
 LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the last one, or when a grand challenge is met
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
@@ -839,7 +840,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW and c.get("author") not in gone]
     closed = {(c.get("author"), c.get("task")) for c in recent if c.get("kind") != "intent" and c.get("task")}
     live = [c for c in intents if (c.get("author"), c.get("task")) not in closed
-            and re.match(r"^(R|C|Q|G|F):|^(SYN|LIT)$", c.get("task") or "")]  # a join intent holds no task
+            and re.match(r"^(R|C|Q|G|F|A):|^(SYN|LIT)$", c.get("task") or "")]  # a join intent holds no task
     busy = {}
     for c in live:
         busy.setdefault(c["task"], set()).add(c["author"])
@@ -884,6 +885,36 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
                           and (cl["scored"] & tgt) == tgt and (not ch.get("bd") or cl["bd"])
                           and (not ch.get("named") or cl["challenge"] == ch["id"])]
 
+    # audits: an independent check of each large statement (a grand challenge met, 4+ capabilities besides S,
+    # or beyond diffusion) by an agent outside its lineage that had not reviewed it before
+    in_challenge = {k for ch in challenges for k in ch["achieved"]}
+    large = {k: cl for k, cl in claims.items() if cl["status"] == "established" and not cl["seed_status"] and not cl["finding"]
+             and not cl["canary"] and (k in in_challenge or bin(cl["scored"] & ~S_BIT).count("1") >= 4 or cl["bd"])}
+    first_review, audits = {}, {}
+    for c in recent:  # time order
+        if c.get("kind") != "review":
+            continue
+        for v in c.get("verdicts", []):
+            tid, cid = norm_target(c.get("review_of"), v.get("cid"))
+            if not cid or f"{tid}#{cid}" not in claims:
+                cid = "finding" if f"{tid}#finding" in claims else (cid or "c1")
+            key = f"{tid}#{cid}"
+            first_review.setdefault((c.get("author"), key), c["id"])
+            task = c.get("task") or ""
+            if task.startswith("A:") and norm_target(task[2:], cid) == (tid, cid) and key in claims:
+                cl = claims[key]
+                independent = (first_review[(c.get("author"), key)] == c["id"] and c.get("author") != cl["author"]
+                               and c.get("author") not in cl["lineage"])
+                ok = (v.get("verdict") == "Supported" and set(cl["claimed"]) <= set(v.get("supported", [])) | {"S"}
+                      and not set(v.get("by_construction") or []) & set(cl["claimed"]))
+                audits.setdefault(key, []).append({"id": c["id"], "author": c.get("author"), "t": c["_t"],
+                                                   "independent": independent, "passed": ok})
+    def audit_status(key):
+        good = [a for a in audits.get(key, []) if a["independent"]]
+        return None if not good else ("passed" if good[-1]["passed"] else "disputed")
+    audits_due = sorted([k for k in large if audit_status(k) is None],
+                        key=lambda k: (k not in in_challenge, -bin(claims[k]["scored"]).count("1"), claims[k]["t"]))
+
     lit = [c for c in recent if c.get("kind") == "literature"]
     last_lit = lit[-1] if lit else None
     met_at = [min(max([v["t"] for v in claims[k]["votes"].values()], default=parse_t(LAB_START)) for k in ch["achieved"])
@@ -917,6 +948,8 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     lit_order = sorted([a for a in active if a not in campaign and (syn_given or a != syn_order[0])],
                        key=lambda a: (a in focus, max([c["_t"] for c in lit if c["author"] == a], default=parse_t(LAB_START)), a))
     n_rev = 0
+    assigned_audits = set()
+    n_audit = sum(1 for t in busy if t.startswith("A:"))
     for a in sorted(active, key=lambda a: (a in focus, a)):  # agents without an exploration focus review first
         if a in campaign:
             assign[a] = (campaign[a], "your campaign")
@@ -925,6 +958,14 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
             assign[a] = ("SYN", "synthesis due")
             syn_given = True
             continue
+        if n_audit < MAX_AUDITS:
+            k = next((k for k in audits_due if f"A:{k}" not in busy and f"A:{k}" not in assigned_audits
+                      and a != claims[k]["author"] and a not in claims[k]["lineage"] and a not in claims[k]["votes"]), None)
+            if k is not None:
+                assign[a] = (f"A:{k}", "audit of a large claim")
+                assigned_audits.add(f"A:{k}")
+                n_audit += 1
+                continue
         if not lit_given and lit_order and a == lit_order[0]:
             assign[a] = ("LIT", "literature check due")
             lit_given = True
@@ -1055,8 +1096,18 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     else:
         S += ["No literature check yet" + (" (task `LIT` is due)." if lit_due else "."), ""]
     S += ["## Grand challenges", "", "| Challenge | Target | Status |", "|---|---|---|"]
+    def met(k):
+        st = audit_status(k)
+        if st is None and claims[k]["seed_status"]:
+            return f"{k} (lab 1 committee)"
+        return f"{k} ({'audited' if st == 'passed' else 'disputed by audit' if st == 'disputed' else 'audit pending'})"
     S += [f"| {ch['title']} | `{ch.get('target', '')}`{' (BD)' if ch.get('bd') else ''} | "
-          f"{'achieved: ' + ', '.join(ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
+          f"{'achieved: ' + ', '.join(met(k) for k in ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
+    n_pass = sum(1 for k in large if audit_status(k) == "passed")
+    n_disp = [k for k in claims if audit_status(k) == "disputed"]
+    S += ["", f"**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an "
+          f"independent audit (PROTOCOL.md): {n_pass} passed, {len(audits_due)} pending"
+          + (f"; disputed by audit: {', '.join(n_disp[:6])}" if n_disp else "") + "."]
     S += ["", "## Frontier", "", "The largest established capability sets, by-construction capabilities removed (codes: [SCORE.md](SCORE.md)).", "",
           "| Set | Class | Result | Status | By | Where |", "|---|---|---|---|---|---|"]
     for m in maxi[:20]:
@@ -1102,6 +1153,10 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     Q += ["## Assignments", "", "One distinct task per active agent. Take yours. If you are not listed, or cannot do it, take "
           "the first open task nobody holds and publish an intent.", "", "| Agent | Task | Why |", "|---|---|---|"]
     Q += [f"| {a} | `{t}` | {why} |" for a, (t, why) in assign.items()] or ["| (no active agents yet) | | |"]
+    if audits_due:
+        Q += ["## Audits due", "", f"Independent audits of large claims, at most {MAX_AUDITS} at a time (PROTOCOL.md, Audit).", ""]
+        Q += [f"- `A:{k}` `{caps_of(claims[k]['scored'])}` {claims[k]['class']}: {(claims[k]['title'] or '')[:90]}"
+              + (f"; in progress: {', '.join(sorted(busy['A:' + k]))}" if f"A:{k}" in busy else "") for k in audits_due[:10]] + [""]
     Q += ["", "## Grand challenges", ""]
     Q += [f"- `C:{ch['id']}` **{ch['title']}** (target `{ch.get('target', '')}`{', diffusion-tested' if ch.get('bd') else ''}). "
           f"Route: {ch.get('route', '')}" for ch in challenges if not ch["achieved"]] or ["- none open"]

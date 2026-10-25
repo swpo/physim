@@ -1,0 +1,8 @@
+== rerun_Df05
+- components: final 20, mean 10.2, max 20; occupancy final 0.09
+- replication (lineage window K = 20 frames = time 100, default): splits 14, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split r
+rerun_Df05/seed12/frames.npz: bodies 66, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.41, mean core fuel 0.554
+== rerun_Df02
+- components: final 24, mean 13.0, max 24; occupancy final 0.07
+- replication (lineage window K = 20 frames = time 100, default): splits 25, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 3, merges 2, merge/split 
+rerun_Df02/seed12/frames.npz: bodies 60, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.35, mean core fuel 0.805

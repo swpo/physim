@@ -1,0 +1,13 @@
+base cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 1.00
+k0_m1.1 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 1.00
+k0_m0.9 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 1.00
+k1_m0.9 cores every 50t [5, 5, 5, 5, 6, 7, 11, 10] final 10 max 16 matter end/start 3.85
+k1_m1.1 cores every 50t [5, 0, 0, 0, 0, 0, 0, 0] final 0 max 5 matter end/start 0.00
+k2_m1.1 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 1.00
+k2_m0.9 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 0.98
+k3_m1.1 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 0.98
+k3_m0.9 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 1.00
+k4_m1.1 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 0.98
+k4_m0.9 cores every 50t [5, 1, 1, 1, 0, 0, 0, 0] final 0 max 5 matter end/start 0.00
+k5_m1.1 cores every 50t [5, 5, 5, 5, 5, 5, 5, 5] final 5 max 5 matter end/start 0.99
+k5_m0.9 cores every 50t [5, 0, 0, 0, 0, 0, 0, 0] final 0 max 5 matter end/start 0.00

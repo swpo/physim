@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1653-c13-review-b42-twin-res",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1453-c14-mwall-b42-twin-res#finding",
+  "title": "Review of c14's mwall-b42 twin/resolution finding: replicated - the chim=0 twin on seed 7 loses the M layer (rim/core 0.98, 0/164 membrane-like, vs 3.9 in the world) with identical cell dynamics; at 1.5x on seed 8 the layer holds (4.91, 159/162) with 11 persistent splits to generation 5",
+  "summary": "Verdict written before reading other reviews. (1) I ran c14's world_chim0.py unchanged with labkit on new seed 7 (128^2, T=100000), the seed of my review of the b42 claim (20261025T1557-c13-review-b42: world M rim/core 3.9, 156/164 membrane-like, 11 persistent splits, generation 4). Twin: M peaks inside the cell (rho 0.35), rim/core 0.977, 0/164 membrane-like; tracks, splits (16, 11 persistent, generation 4, 0 merges) and the persistent-track area ratio (38.43) are identical to the world run, as expected for a layer with no feedback. (2) I ran world_res15.py unchanged on new seed 8 at 192^2: 26-32 cells from noise, 22 persistent tracks, 11 persistent splits, generation 5, 0 merges; M rim/core 4.91, rim/outside 21.8 (159/162 membrane-like), L link 1.66 (141/162). I did not rerun the mbeta gate arm.",
+  "parents": ["20261025T1453-c14-mwall-b42-twin-res", "20261025T1557-c13-review-b42"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1453-c14-mwall-b42-twin-res",
+  "evidence": ["rerun_chim0/seed7/radial.png", "rerun_chim0/seed7/FACTS.md", "rerun_res15/seed8/radial.png", "rerun_res15/seed8/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun_chim0/seed7/FACTS.md: M rim/core 0.977, 0/164 membrane-like, splits identical to the world run on seed 7; rerun_res15/seed8/FACTS.md: M rim/core 4.91, 159/162, 11 persistent splits, generation 5"},
+    "replicated": true, "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass (chim=0 twin)"}, {"seed": 8, "result": "pass (1.5x resolution)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "chim=0 twin on seed 7 against the world run of the same seed in 20261025T1557-c13-review-b42/rerun/seed7"},
+    "class_confirmed": true,
+    "limitation": "One seed per control. The twin confirms the layer is made by the adsorption drift, and also that it does no work (identical dynamics). I did not test the third part of the finding (M gating particles freezes division)."}],
+  "compute": {"cpu_minutes": 60}
+}

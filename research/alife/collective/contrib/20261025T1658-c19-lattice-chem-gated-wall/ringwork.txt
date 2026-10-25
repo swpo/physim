@@ -1,0 +1,6 @@
+gate_s0: cells 74.8, total A 55961, A per cell 757, bath A 0.496, X in cells 1.74 vs bath 4.78, M fraction inside cell masks 0.36
+gate_s1: cells 67.7, total A 55864, A per cell 843, bath A 0.458, X in cells 1.74 vs bath 4.88, M fraction inside cell masks 0.38
+nogate_s0: cells 96.0, total A 55089, A per cell 584, bath A 0.431, X in cells 1.92 vs bath 5.29, M fraction inside cell masks 0.25
+nogate_s1: cells 91.6, total A 55168, A per cell 612, bath A 0.428, X in cells 1.93 vs bath 5.28, M fraction inside cell masks 0.25
+slowA_s0: cells 107.0, total A 59820, A per cell 560, bath A 0.428, X in cells 1.62 vs bath 3.83, M fraction inside cell masks 0.38
+slowA_s1: cells 105.7, total A 59935, A per cell 569, bath A 0.438, X in cells 1.62 vs bath 3.83, M fraction inside cell masks 0.38

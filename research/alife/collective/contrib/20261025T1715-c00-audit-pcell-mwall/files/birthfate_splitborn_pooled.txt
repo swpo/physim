@@ -1,0 +1,2 @@
+yield low-born died 27/64=0.422  high-born died 28/98=0.286 Fisher p=0.090 seeds low>high: 6 /7
+marker low-born died 24/70=0.343  high-born died 31/92=0.337 Fisher p=1.000 seeds low>high: 4 /7
