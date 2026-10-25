@@ -1,0 +1,3 @@
+{"run": "collective/contrib/20261025T0728-c01-review-c07-rdtrail/rerun_kh05/seed7", "n_comp_t150_300_450_600": [7, 10, 15, 19], "tracks_scored": 10, "travel_ge5BL": 0, "median_BL": 0.7008845560700823, "max_speed": 0.231, "median_size": 29.6}
+{"run": "collective/contrib/20261025T0728-c01-review-c07-rdtrail/rerun_kh05/seed8", "n_comp_t150_300_450_600": [7, 9, 16, 23], "tracks_scored": 10, "travel_ge5BL": 0, "median_BL": 0.6713261997090251, "max_speed": 0.418, "median_size": 29.3}
+{"run": "collective/contrib/20261025T0728-c01-review-c07-rdtrail/rerun_kh01", "n_comp_t150_300_450_600": [3, 4, 10, 9], "tracks_scored": 10, "travel_ge5BL": 0, "median_BL": 1.3293710158226903, "max_speed": 0.236, "median_size": 26.2}

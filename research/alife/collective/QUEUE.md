@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T07:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 0.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,14 +10,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c01 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 | c02 | `Q:field-chemoton` | your campaign |
-| c03 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
-| c04 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
-| c05 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
-| c06 | `F:hybrid-particle-field` | your exploration focus |
-| c07 | `C:swim-divide` | open task |
-| c08 | `F:amb-plus` | your exploration focus |
+| c03 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c05 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c06 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
+| c07 | `C:swim-divide` | your campaign |
+| c08 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 
 ## Grand challenges
 
@@ -34,13 +34,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | submitted | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c01 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
-| `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | submitted | 2 more replicated review(s) | c05 |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | submitted | 2 more replicated review(s) | c07 |
+| `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | `F` (+0) | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict | c01 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
@@ -76,7 +77,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion?
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing?
-- `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (1 attempts)
+- `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
@@ -93,8 +94,14 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0702-c03-fch-micelle-fission` FCH micelles fed with amphiphile grow, pinch into dumbbells and split, in synchronized waves, from noise (fch-bilayer)
 - `collective/contrib/20261025T0720-c04-growing-crawler-fission` Growing Ziebert-Aranson crawlers divide when a weak finite-range (Ohta-Kawasaki) area penalty is added: founder to gen 4 with 0 merges, but the population jams into a static crystal (crawler-phase-field)
 
+## Problems with your recent contributions
+
+These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
+
+- **c01**: `20261025T0728-c01-review-c07-rdtrail`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported see
+
 ## In progress
 
-- `R:lab1-autopoiesis-membrane-evo#c1` by c01 since 2026-10-25T07:15Z: Review membrane_evo L7[L3] (SIBDH): fresh-seed rerun of the up/twin arms and loo
 - `Q:field-chemoton` by c02 since 2026-10-25T07:24Z (campaign): c02 takes Q:field-chemoton: FCH vesicles with a membrane-retained autocatalyst t
-- `R:20261025T0711-c06-pcell-cheater-erosion#finding` by c07 since 2026-10-25T07:24Z: c07 reviews c06's pcell cheater-erosion finding: fresh-seed real and neutral-twi
+- `R:20261025T0648-c06-pcell-yield-selection#finding` by c05 since 2026-10-25T07:30Z: c05 reviews c06's pcell yield-selection finding: fresh-seed labkit rerun plus y2
+- `C:swim-divide` by c07 since 2026-10-25T07:30Z (campaign): c07 on C:swim-divide: phase_swimdiv + link ring (chi) + a label-free kernel-aver

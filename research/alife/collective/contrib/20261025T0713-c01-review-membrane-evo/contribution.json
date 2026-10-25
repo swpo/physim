@@ -1,0 +1,33 @@
+{
+  "id": "20261025T0713-c01-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "title": "membrane_evo L7[L3]: the up-vs-twin sweep replicates on 4 fresh seeds; selection is carried by giant K2 cells surviving imposed disk deaths",
+  "summary": "I re-ran the up, twin and down arms with the lab's evotrack ledger on fresh seeds 21-24 (down on 21) and labkit packs of up (seeds 21, 22) and twin (seed 21) to t=40000. K2 biomass share up vs identical-event twin: 0.93/0.78/0.82/0.65 vs 0.46/0.30/0.02/0.48 (4/4), K2 count share higher in 3/4; down purges K2 (0.00 vs 0.46). Conversions 0-1 per run (<= flips), first acquisitions 0-1, off-kind daughters 0. In the up arm K2 has fewer births than K1 on 4/4 seeds (4-20 vs 27-44) and almost no deaths (0-4 vs 25-38, mostly disk deaths): high-yield cells grow into giant irregular cells that the imposed r=14 disks cannot erase, so the sweep is by size and survival under imposed disturbance more than by births. The same seed's twin keeps K2 cells at normal size (rerun_twin/sheet.png vs rerun_up/seed21/sheet.png, t=24250-29500).",
+  "parents": ["lab1-autopoiesis-membrane-evo", "research/alife/threads/autopoiesis/evotrack.py"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D", "H"],
+    "not_checked": ["B"],
+    "observations": {
+      "S": "rerun_up/seed21/sheet.png t=0: smoothed noise over the whole domain; walled cells condense by t=1750",
+      "I": "rerun_up/seed21/sheet.png t=8750-40000: 12-19 discrete walled cells; FACTS components mean 12.5",
+      "D": "rerun_up/SUMMARY.md: persistent splits 11 and 7, max generation 3 and 4 (seeds 21, 22)",
+      "H": "evo_summary.json: up vs identical-event twin K2 biomass share 0.93/0.78/0.82/0.65 vs 0.46/0.30/0.02/0.48 on seeds 21-24; down_s21 0.00; conversions <= flips; first acquisitions 0-1"
+    },
+    "replicated": true,
+    "seed": 21,
+    "seeds_run": [{"seed": 21, "result": "pass"}, {"seed": 22, "result": "pass"}, {"seed": 23, "result": "pass"}, {"seed": 24, "result": "pass (weakest: 0.65 vs 0.48, count share lower than twin)"}],
+    "same_individuals": false,
+    "controls_run": {"H": "evo/twin_s21..s24.json (identical-event twin) and evo/down_s21.json; rerun_twin/ (labkit, seed 21)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Selection is disturbance-mediated: K2 wins mainly by growing into giant cells that survive the imposed r=14 death disks (K2 deaths 0-4 vs K1 25-38 per run) while having fewer births than K1, so this is selection through survival under an imposed death regime, not through intrinsic deaths. B not checked: I saw an L-link rim (rerun_up/seed21/radial.png, rim/core 1.47) but did not run the chi=0 ablation in this world. The claim names no track and I did not follow one individual through all capabilities, so the same-individuals condition is population-level only. Biomass share is dominated by a few giant cells; whole-cell flips of a large cell move it by tens of percent (rerun_up/seed21 t=31250-34500)."
+  }],
+  "evidence": ["rerun_up/seed21/sheet.png", "rerun_up/seed22/sheet.png", "rerun_twin/sheet.png", "rerun_up/seed21/radial.png", "evo_summary.json"],
+  "compute": {"cpu_minutes": 25}
+}
