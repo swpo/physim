@@ -1,0 +1,5 @@
+{"file": "gen_s12.json.gz", "mature_deaths": 12, "split_born_among_them": 4, "split_born_cells": 32, "final_cells": 28, "founders_alive_at_end": 11}
+{"window": [0, 100000], "mature_deaths": 6, "split_born_among_mature": 2, "all_deaths": 25, "split_born_among_all": 2, "splits": 13}
+{"window": [100000, 200000], "mature_deaths": 6, "split_born_among_mature": 2, "all_deaths": 23, "split_born_among_all": 2, "splits": 3}
+founders alive at t=100000: 16 of 32
+founders alive at t=200000: 11 of 28
