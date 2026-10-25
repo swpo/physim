@@ -1,0 +1,8 @@
+r30 t=1500: target area 39 (fed 39); bodies inside disk 8 (fed 8); outside 203 (fed 203)
+r30 t=1700: target area 0 (fed 39); bodies inside disk 2 (fed 8); outside 197 (fed 196)
+r30 t=2000: target area 0 (fed 39); bodies inside disk 3 (fed 7); outside 192 (fed 190)
+r30 t=2500: target area 0 (fed 39); bodies inside disk 0 (fed 7); outside 180 (fed 178)
+r17 t=1500: target area 39 (fed 39); bodies inside disk 1 (fed 1); outside 210 (fed 210)
+r17 t=1700: target area 24 (fed 39); bodies inside disk 1 (fed 1); outside 203 (fed 203)
+r17 t=2000: target area 18 (fed 39); bodies inside disk 1 (fed 1); outside 196 (fed 196)
+r17 t=2500: target area 14 (fed 39); bodies inside disk 1 (fed 1); outside 186 (fed 183)
