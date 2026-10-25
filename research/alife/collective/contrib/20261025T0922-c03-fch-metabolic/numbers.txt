@@ -1,0 +1,41 @@
+## fork.py 50 (t=400): fed twin vs precursor cut at t=400, seeds 0 and 1
+pack f50: bodies 46, mass 3888, founders alive 46/46 | f63: bodies 50, mass 4852, founders alive 46/46 | f76: bodies 56, mass 5228, founders alive 46/46 | f88: bodies 60, mass 5636, founders alive 46/46 | f101: bodies 62, mass 5872, founders alive 46/46 | f113: bodies 64, mass 6104, founders alive 46/46 | f126: bodies 65, mass 6232, founders alive 46/46 | f139: bodies 69, mass 6376, founders alive 46/46 | f150: bodies 69, mass 6420, founders alive 46/46
+pack_cut400 f50: bodies 46, mass 3888, founders alive 46/46 | f63: bodies 45, mass 3000, founders alive 45/46 | f76: bodies 45, mass 1781, founders alive 45/46 | f88: bodies 44, mass 973, founders alive 44/46 | f101: bodies 18, mass 488, founders alive 18/46 | f113: bodies 7, mass 186, founders alive 7/46 | f126: bodies 0, mass 0, founders alive 0/46 | f139: bodies 0, mass 0, founders alive 0/46 | f150: bodies 0, mass 0, founders alive 0/46
+pack f50: bodies 41, mass 3824, founders alive 41/41 | f63: bodies 50, mass 4524, founders alive 41/41 | f76: bodies 50, mass 5024, founders alive 41/41 | f88: bodies 56, mass 5356, founders alive 41/41 | f101: bodies 56, mass 5660, founders alive 40/41 | f113: bodies 62, mass 5836, founders alive 40/41 | f126: bodies 62, mass 6020, founders alive 40/41 | f139: bodies 63, mass 6232, founders alive 40/41 | f150: bodies 64, mass 6308, founders alive 40/41
+pack_cut400 f50: bodies 41, mass 3824, founders alive 41/41 | f63: bodies 41, mass 2924, founders alive 41/41 | f76: bodies 41, mass 1739, founders alive 41/41 | f88: bodies 41, mass 996, founders alive 41/41 | f101: bodies 14, mass 438, founders alive 14/41 | f113: bodies 4, mass 121, founders alive 4/41 | f126: bodies 0, mass 0, founders alive 0/41 | f139: bodies 0, mass 0, founders alive 0/41 | f150: bodies 0, mass 0, founders alive 0/41
+
+## fork.py 25 (t=200): full world vs ablations, seed 0 (kc=0 from t=0: only 3 bodies at t=400)
+pack f25: bodies 27, mass 1649, founders alive 27/27 | f40: bodies 46, mass 3378, founders alive 27/27 | f55: bodies 46, mass 4264, founders alive 27/27 | f71: bodies 56, mass 5044, founders alive 27/27 | f86: bodies 59, mass 5608, founders alive 27/27 | f101: bodies 62, mass 5872, founders alive 27/27 | f116: bodies 65, mass 6112, founders alive 27/27 | f131: bodies 65, mass 6296, founders alive 27/27 | f146: bodies 69, mass 6384, founders alive 27/27 | f150: bodies 69, mass 6420, founders alive 27/27
+pack_beta0 f25: bodies 26, mass 874, founders alive 26/26 | f34: bodies 25, mass 518, founders alive 25/26 | f43: bodies 6, mass 101, founders alive 6/26 | f52: bodies 3, mass 82, founders alive 3/26 | f61: bodies 0, mass 0, founders alive 0/26 | f70: bodies 0, mass 0, founders alive 0/26 | f79: bodies 0, mass 0, founders alive 0/26 | f88: bodies 0, mass 0, founders alive 0/26 | f97: bodies 0, mass 0, founders alive 0/26 | f100: bodies 0, mass 0, founders alive 0/26
+pack_chiq0 f25: bodies 26, mass 882, founders alive 26/26 | f34: bodies 25, mass 536, founders alive 25/26 | f43: bodies 14, mass 258, founders alive 14/26 | f52: bodies 3, mass 84, founders alive 3/26 | f61: bodies 0, mass 0, founders alive 0/26 | f70: bodies 0, mass 0, founders alive 0/26 | f79: bodies 0, mass 0, founders alive 0/26 | f88: bodies 0, mass 0, founders alive 0/26 | f97: bodies 0, mass 0, founders alive 0/26 | f100: bodies 0, mass 0, founders alive 0/26
+pack_kc0 f50: bodies 3, mass 90, founders alive 3/3 | f63: bodies 0, mass 0, founders alive 0/3 | f76: bodies 0, mass 0, founders alive 0/3 | f88: bodies 0, mass 0, founders alive 0/3 | f101: bodies 0, mass 0, founders alive 0/3 | f113: bodies 0, mass 0, founders alive 0/3 | f126: bodies 0, mass 0, founders alive 0/3 | f139: bodies 0, mass 0, founders alive 0/3 | f150: bodies 0, mass 0, founders alive 0/3
+
+## long run (t=2400, 16 t per frame)
+pack_long f25: bodies 46, mass 3888, founders alive 46/46 | f40: bodies 56, mass 5392, founders alive 46/46 | f55: bodies 62, mass 6064, founders alive 46/46 | f71: bodies 69, mass 6364, founders alive 46/46 | f86: bodies 69, mass 6616, founders alive 46/46 | f101: bodies 70, mass 6736, founders alive 46/46 | f116: bodies 73, mass 6768, founders alive 46/46 | f131: bodies 73, mass 6856, founders alive 46/46 | f146: bodies 73, mass 6916, founders alive 46/46 | f150: bodies 73, mass 6920, founders alive 46/46
+
+## catalyst c inside bodies / outside (cargo_contrast.py)
+pack/seed0
+frame 15: contrast 10.0, bodies 28, share of bodies >=2x 1.00, weakest body 3.6x
+frame 45: contrast 25.8, bodies 48, share of bodies >=2x 1.00, weakest body 13.3x
+frame 76: contrast 91.9, bodies 57, share of bodies >=2x 1.00, weakest body 13.9x
+frame 106: contrast 280.5, bodies 63, share of bodies >=2x 0.98, weakest body 0.9x
+frame 136: contrast 686.5, bodies 66, share of bodies >=2x 0.98, weakest body 0.3x
+frame 150: contrast 343.2, bodies 69, share of bodies >=2x 1.00, weakest body 20.8x
+pack/seed1
+frame 15: contrast 11.5, bodies 24, share of bodies >=2x 1.00, weakest body 8.2x
+frame 45: contrast 41.9, bodies 41, share of bodies >=2x 1.00, weakest body 18.0x
+frame 76: contrast 123.4, bodies 51, share of bodies >=2x 0.98, weakest body 0.5x
+frame 106: contrast 273.5, bodies 62, share of bodies >=2x 0.94, weakest body 0.1x
+frame 136: contrast 691.5, bodies 64, share of bodies >=2x 0.98, weakest body 0.0x
+frame 150: contrast 889.5, bodies 67, share of bodies >=2x 0.97, weakest body 0.0x
+
+## 1.5x resolution (pack_res15, dx 0.333, 192^2, t=800)
+pack_res15 f25: bodies 32, mass 3590, founders alive 32/32 | f34: bodies 35, mass 5920, founders alive 32/32 | f43: bodies 45, mass 8384, founders alive 31/32 | f52: bodies 50, mass 9080, founders alive 31/32 | f61: bodies 51, mass 10296, founders alive 31/32 | f70: bodies 57, mass 11088, founders alive 31/32 | f79: bodies 57, mass 11776, founders alive 31/32 | f88: bodies 61, mass 12528, founders alive 31/32 | f97: bodies 68, mass 12552, founders alive 31/32 | f100: bodies 68, mass 12696, founders alive 31/32
+frame 10: contrast 2.9, bodies 35, share of bodies >=2x 1.00, weakest body 2.0x
+frame 30: contrast 179.0, bodies 35, share of bodies >=2x 1.00, weakest body 9.5x
+frame 50: contrast 35.1, bodies 51, share of bodies >=2x 0.96, weakest body 0.1x
+frame 70: contrast 51.5, bodies 57, share of bodies >=2x 1.00, weakest body 9.9x
+frame 90: contrast 67.0, bodies 67, share of bodies >=2x 0.97, weakest body 0.0x
+frame 100: contrast 67.2, bodies 69, share of bodies >=2x 0.97, weakest body 0.0x
+- replication (lineage window K = 20 frames = time 160, default): splits 30, persistent splits 21 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split 
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 11.8, rim/outside 4.92 (aggregate of 260 individuals; 260/260 membrane-like individually; rim level 0.637)  MEMBRANE-LIKE
