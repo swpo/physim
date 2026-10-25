@@ -1,0 +1,9 @@
+kd0.045: components: final 39 | persistent splits 27 max generation 4, merges 99, merge/split ratio 0.379 | max body lengths 22.3
+kd0.055: components: final 35 | persistent splits 37 max generation 4, merges 81, merge/split ratio 0.372 | max body lengths 29.2
+tr45: components: final 40 | persistent splits 36 max generation 5, merges 93, merge/split ratio 0.384 | max body lengths 27.0
+tr55: components: final 24 | persistent splits 23 max generation 4, merges 85, merge/split ratio 0.376 | max body lengths 22.3
+g2.25: components: final 41 | persistent splits 23 max generation 5, merges 73, merge/split ratio 0.3 | max body lengths 20.5
+g2.75: components: final 44 | persistent splits 28 max generation 4, merges 96, merge/split ratio 0.384 | max body lengths 25.2
+theta0.38: components: final 48 | persistent splits 31 (1 more failed only because the siblings re-merged within K), max generation 4, merges 137, merge/split ratio 0.333 | max body lengths 22.1
+theta0.42: components: final 19 | persistent splits 24 max generation 5, merges 31, merge/split ratio 0.267 | max body lengths 36.4
+base: components: final 34 | persistent splits 32 max generation 5, merges 87, merge/split ratio 0.37 | max body lengths 34.7

@@ -1,0 +1,6 @@
+# collective/contrib/wip-c22/world_r2.py across seeds
+
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | ok | 1 | 1 | 51 | 0 | 0 | 0 | 0 | None | 0.1 | [] |
+| 1 | ok | 1 | 1 | 51 | 0 | 0 | 0 | 0 | None | 0.1 | [] |

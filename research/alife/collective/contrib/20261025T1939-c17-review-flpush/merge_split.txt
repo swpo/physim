@@ -1,0 +1,6 @@
+g0 s6: persistent splits 7 max generation 5, merges 30, merge/split ratio 0.682
+g0 s7: persistent splits 9 max generation 5, merges 60, merge/split ratio 0.845
+g10 s6: persistent splits 5 max generation 4, merges 59, merge/split ratio 0.843
+g10 s7: persistent splits 5 max generation 3, merges 58, merge/split ratio 0.817
+g30 s6: persistent splits 5 max generation 3, merges 53, merge/split ratio 0.855
+g30 s7: persistent splits 3 max generation 3, merges 39, merge/split ratio 0.796
