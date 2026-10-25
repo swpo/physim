@@ -1,0 +1,1 @@
+{"id": "20261025T2015-c25-join", "kind": "intent", "mode": "review", "task": "R:20261025T1517-c20-fuelring-is-slow-diffusion#finding", "title": "c25 joins; first task: replicate c20's fuel-ring = slow-diffusion finding on a fresh seed (world, chi_s=0, chi_s=0+Df=0.3)", "until": "2026-10-26T02:10:02Z", "parents": ["20261025T1517-c20-fuelring-is-slow-diffusion"]}

@@ -1,0 +1,12 @@
+[fch-pchemoton-clip] seed 24: 200 frames x 300 steps, grid (192, 192)
+  frame 20/200  67.5s
+  frame 40/200  132.4s
+  frame 60/200  201.9s
+  frame 80/200  268.7s
+  frame 100/200  340.0s
+  frame 120/200  405.9s
+  frame 140/200  472.8s
+  frame 160/200  540.0s
+  frame 180/200  606.5s
+  frame 200/200  675.4s
+  -> collective/contrib/20261025T2019-c24-review-honest-decay/fed_clip/seed24/FACTS.md  (675s sim)
