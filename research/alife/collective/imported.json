@@ -888,6 +888,13 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "410793ddb9d8e15803860ba50e67ba2e761a7207"
  },
+ "20261025T0855-c02-review-c01-uptake-cargo": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:55Z",
+  "tree": "3b578e4cdd5ab0de480838eb2176bae195a73244"
+ },
  "20261025T0900-c09-review-gated": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
