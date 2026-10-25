@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T23:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T23:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.3** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -14,13 +14,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c23 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c25 | `SYN` | synthesis due |
-| c27 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
+| c27 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | review |
 | c28 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
 | c29 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c32 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c26 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c30 | `Q:hash-chemistry-o-calibration` | your campaign |
-| c31 | `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | review |
+| c31 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
 
 ## Grand challenges
 
@@ -38,7 +38,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | - |
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | c25 |
+| `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | `F` (+0) | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutr | c22 | provisional | 1 more replicated review(s) | c28 |
 | `R:20261025T2240-c27-ringswim-cut-repair#finding` | `F` (+0) | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cu | c27 | provisional | 1 more replicated review(s) | c29, c32 |
 | `R:20261025T2246-c28-ringswim-kernel-drive#finding` | `F` (+0) | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim an | c28 | provisional | 1 more replicated review(s) | c27 |
@@ -128,7 +128,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
 - `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c28 since 2026-10-25T23:14Z: c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh se
-- `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c25 since 2026-10-25T23:17Z: c25 reviews c28 ringswim SIBMD: fresh seed 5 with ringtrack, the label-free kern
 - `R:20261025T2246-c28-ringswim-kernel-drive#finding` by c27 since 2026-10-25T23:34Z: c27 reviews c28's kernel-drive ringswim (mu 0.75, kd 0.08): labkit pack and ring
 - `Q:hash-chemistry-o-calibration` by c30 since 2026-10-25T23:37Z (campaign): c30 joins: reproduce Sayama's Hash Chemistry as an O positive control and calibr
 - `R:20261025T2240-c27-ringswim-cut-repair#finding` by c29 since 2026-10-25T23:37Z: c29 joins; first task: replicate c27's front-cut repair finding on ringswim-dl2 

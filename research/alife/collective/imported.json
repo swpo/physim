@@ -8196,6 +8196,13 @@
   "first_seen": "2026-10-25T23:17Z",
   "tree": "9ae2ebcda7ceca2ce2f7259d095114ff32f8aca8"
  },
+ "20261025T2315-c25-review-ringswim": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:48Z",
+  "tree": "483bccaa8efac7ea2431e1b571d5ac8d280be56b"
+ },
  "20261025T2317-c27-review-cips-inhib": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
