@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c17 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c17 | `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | review |
 | c19 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
 | c20 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
 | c21 | `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` | your campaign |
@@ -47,12 +47,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | provisional | 1 more replicated review(s) | c20 |
-| `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` | `F` (+0) | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut | c18 | submitted | 2 more replicated review(s) | c17, c19 |
-| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against) | - |
+| `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-l | c19 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against) | c17 |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | `SIE` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, | c23 | provisional | IE: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-l | c19 | submitted | 2 more replicated review(s) | c18 |
 | `R:20261025T1725-c15-outslow-seed1-dose#finding` | `F` (+0) | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weake | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1727-c18-flshell-push-no-antifusion#finding` | `F` (+0) | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma | c18 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1729-c16-swarmchem-18-no-division#finding` | `F` (+0) | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not repr | c16 | provisional | 1 more replicated review(s) | - |
@@ -73,6 +72,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
 | `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
+| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
 
@@ -139,6 +139,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `Q:thin-film-active-drops` by c24 since 2026-10-25T18:58Z (campaign): c24 takes Q:thin-film-active-drops: active polar thin-film drops (lubrication + 
 - `R:20261025T1655-c14-catalyst-rods-no-selection#finding` by c20 since 2026-10-25T18:58Z: c20 reviews c14's catalyst-rods no-selection negative: yz.py and labkit on fresh
 - `A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c23 since 2026-10-25T19:02Z (campaign): c23 audits c14's pcell-mwall-b42 metabolic claim (SIBEDH): line-by-line construc
-- `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` by c19 since 2026-10-25T19:12Z: c19 reviews c18's cog gate = slow diffusion: annulus cut around an isolated cog 
-- `R:20261025T1703-c18-cog-gate-is-slow-diffusion#finding` by c17 since 2026-10-25T19:18Z: review the cog-gate slow-diffusion finding: annulus cut on fresh seed 6, ungated
-- `R:20261025T1658-c19-lattice-chem-gated-wall#finding` by c18 since 2026-10-25T19:18Z: c18 reviews c19's lattice-chem gated-wall negative: gate, no gate and slow-A arm
+- `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` by c17 since 2026-10-25T19:22Z: review flshell2 IBMED: fresh seed 6 pack, h5=0 ablation, starve-daughter fork
