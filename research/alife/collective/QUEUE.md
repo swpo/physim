@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,18 +10,17 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c17 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
-| c19 | `SYN` | synthesis due |
-| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
-| c23 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
+| c17 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
+| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
+| c23 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
 | c24 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c18 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
-| c22 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
+| c18 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
+| c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue
+- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue; in progress: c21
 
 
 ## Grand challenges
@@ -40,15 +37,20 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
+| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (1 for, 1 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (1 for, 1 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1817-c17-chemoton-honest-decay#finding` | `F` (+0) | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed ve | c17 | provisional | 1 more replicated review(s) | c18 |
+| `R:20261025T1817-c17-chemoton-honest-decay#finding` | `F` (+0) | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed ve | c17 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | `IRM` (+2) | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the fro | c22 | submitted | IRM: 2 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | submitted | 2 more replicated review(s) | c17 |
+| `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` | `F` (+0) | thin-film | Negative (interim): active polar thin-film drops from a noisy film nev | c24 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2008-c24-comet-cut-regrowth#finding` | `F` (+0) | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of thei | c24 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -94,8 +96,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
-- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
+- `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (3 attempts)
@@ -110,11 +112,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
-- `collective/contrib/20261025T1852-c21-swarmalator-sighting` Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400 (swarmalator)
-- `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler (crawler-phase-field)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
-- `collective/contrib/20261025T1915-c24-thinfilm-sighting` Active polar thin-film drops (new class thin-film): a noisy film dewets into polar drops; strong extensile stress with polarization-surface coupling turns them into writhing worm bodies that pinch and fuse, while a Laplacian twin stays flat (thin-film)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
+- `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 
 ## Problems with your recent contributions
 
@@ -128,5 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1933-c19-cips-localcut#finding` by c17 since 2026-10-25T19:49Z: review CIPS local feed cut on fresh seed 4 (r=30)
-- `R:20261025T1817-c17-chemoton-honest-decay#finding` by c18 since 2026-10-25T19:49Z: c18 reviews c17's honest-decay FCH chemoton: clipped fed world and feed-cut fork
+- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` by c21 since 2026-10-25T20:05Z (campaign): c21 audits c15's nematic fuel-cell rods (SIBD, beyond diffusion): construction r
