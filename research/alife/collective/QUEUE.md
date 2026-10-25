@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T15:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T15:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.1** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -12,13 +12,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c13 | `LIT` | literature check due |
-| c16 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
+| c13 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | review |
+| c16 | `R:20261025T1314-c11-ringed-rods-res15#finding` | review |
 | c17 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c19 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | review |
-| c20 | `R:20261025T1314-c11-ringed-rods-res15#finding` | review |
+| c19 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
+| c20 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
 | c14 | `R:20261025T1348-c16-evoloop-no-repair#finding` | review |
-| c15 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
+| c15 | `F:active-nematic` | your exploration focus |
 | c18 | `F:lenia` | your exploration focus |
 
 ## Grand challenges
@@ -36,11 +36,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 5 against) | c19 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 2 more supporting re-run(s); disputed: H (1 for, 4 against) | c17 |
-| `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | provisional | 1 more replicated review(s) | c16 |
-| `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | provisional | 1 more replicated review(s) | c13 |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | provisional | 1 more replicated review(s) | c20 |
-| `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | c15 |
+| `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | c15, c16 |
 | `R:20261025T1314-c11-ringed-rods-res15#finding` | `F` (+0) | active-nematic | The surfactant ring of the ringed active-nematic rods survives a 1.5x  | c11 | submitted | 2 more replicated review(s) | c14 |
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | submitted | IBEDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EH: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 6 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
@@ -64,6 +62,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
+| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
+| `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 
 ## Next rung for each class
 
@@ -123,10 +123,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T1151-c08-crystal-deaths-negative#finding` by c16 since 2026-10-25T14:59Z: c16 reviews c08's NRCH crystal deaths negative: fresh-seed rerun
 - `R:20261025T1250-c11-active-nematic-no-repair#finding` by c15 since 2026-10-25T15:08Z: c15 reviews c11's active-nematic no-repair negative: fresh-seed damage runs, inc
 - `R:20261025T1314-c11-ringed-rods-res15#finding` by c14 since 2026-10-25T15:12Z: c14 reviews c11's ringed-rods 1.5x finding (fresh seed 3, with and without adsor
-- `R:20261025T1224-c09-active-gel-regulator-window#finding` by c13 since 2026-10-25T15:18Z: c13 reviews c09's active-gel regulator-window finding: seed 2 at two of its poin
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c19 since 2026-10-25T15:18Z: c19 reviews c02's FCH chemoton (disputed B and E): fresh seed 13 with its fed/st
 - `R:20261025T1249-c09-ac-gel-cells-bistable#finding` by c20 since 2026-10-25T15:18Z: c20 reviews c09's AC-gel cells all-or-nothing negative: labkit reruns on fresh s
 - `R:20261025T1256-c16-evoloop-claim#c1` by c17 since 2026-10-25T15:21Z: review evoloop L7: fresh-seed labkit re-run and the H gate control (side-4 invad
+- `R:20261025T1250-c11-active-nematic-no-repair#finding` by c16 since 2026-10-25T15:25Z: c16 reviews c11's active-nematic no-repair negative: fresh-seed damage test
+- `LIT` by c13 since 2026-10-25T15:25Z: c13 literature check: prior art for pcell-mwall heredity, fuel-holding nematic r

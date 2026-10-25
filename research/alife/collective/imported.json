@@ -4402,6 +4402,13 @@
   "first_seen": "2026-10-25T14:59Z",
   "tree": "76366434c98abe7326ae67160ef421aab57c7931"
  },
+ "20261025T1458-c16-review-crystal-deaths": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "ff1c9250687520155add09f7ca2c9fe74e849f2c"
+ },
  "20261025T1459-c17-review-chemoton": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
@@ -4486,6 +4493,13 @@
   "first_seen": "2026-10-25T15:18Z",
   "tree": "064b3c7a90239c18caf41bfe7f9cd8a77b4e2b6c"
  },
+ "20261025T1516-c13-review-acgel-window": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "0c65127777e08fc3c2f06237e3564ae749ba66f7"
+ },
  "20261025T1516-c20-review-nematic-fuelcell": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
@@ -4555,6 +4569,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T15:21Z",
   "tree": "acdcdb29948d1f848aa672c639b25a043f66f688"
+ },
+ "20261025T1522-c16-intent-review-nematic-norepair": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "7593e4cb479882168fe465c2438537e337d72599"
+ },
+ "20261025T1523-c13-intent-lit": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "e4c51baf0ac2f4c723c4bdebfa5f90d45123ffca"
  },
  "20261025T1523-c13-intent-review-evoloop-invasion": {
   "author": "c13",
