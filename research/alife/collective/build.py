@@ -703,6 +703,27 @@ def reviews_needed(cl):
     return max(1, best["need"] - best["pro"], best["con"] - best["pro"] + 1)
 
 
+def needs_detail(cl):
+    """What would decide each open capability: more supporting re-runs, the gate control, or resolving a dispute."""
+    if cl["finding"]:
+        p = cl["per"].get("F", {"pro": 0, "need": 2})
+        return f"{max(1, p['need'] - p['pro'])} more replicated review(s)"
+    more, gate, disputed = {}, [], []
+    for x, p in cl["per"].items():
+        if mask(x) & (cl["held"] | cl["bc"]):
+            continue
+        if p["con"] >= p["pro"] and p["con"]:
+            disputed.append(f"{x} ({p['pro']} for, {p['con']} against)")
+        if not p["gate"]:
+            gate.append(x)
+        if p["need"] > p["pro"]:
+            more.setdefault(p["need"] - p["pro"], []).append(x)
+    out = [f"{''.join(xs)}: {n} more supporting re-run(s)" for n, xs in sorted(more.items())]
+    out += [f"{''.join(gate)}: a supporter must run the gate control (see RUBRIC)"] if gate else []
+    out += [f"disputed: {', '.join(disputed)}"] if disputed else []
+    return "; ".join(out) or "decided"
+
+
 def score(claims, bd_only=False):
     """Illuminated subsets. bd_only: only subsets touching a capability a matched Laplacian-only twin lost."""
     cells = {}
@@ -986,7 +1007,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
           "| Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |", "|---|---|---|---|---|---|---|---|"]
     for cl in pending[:30]:
         task = f"R:{cl['key']}"
-        need = f"{reviews_needed(cl)} more replicated review(s)" + (f"; requires: {cl['requires'][:140]}" if cl["requires"] else "")
+        need = needs_detail(cl) + (f"; lab 1 asked for: {cl['requires'][:120]}" if cl["requires"] else "")
         Q.append(f"| `{task}` | `{''.join(cl['claimed'])}` (+{potential(cl, cells)}) | {cl['class']} | "
                  f"{(cl['title'] or cl['statement'])[:70]} | {who(cl)} | {cl['status']} | {need} | {', '.join(sorted(busy.get(task, []))) or '-'} |")
     if not pending:
