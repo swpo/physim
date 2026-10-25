@@ -1,0 +1,14 @@
+== a2 (seed 3, T=960)
+frames 1-20: bodies 24->27, deaths 0, splits 3, nucleations 24
+frames 21-40: bodies 27->28, deaths 0, splits 0, nucleations 1
+frames 41-61: bodies 28->42, deaths 2, splits 14, nucleations 2
+frames 62-81: bodies 42->45, deaths 0, splits 3, nucleations 0
+frames 82-101: bodies 45->48, deaths 0, splits 2, nucleations 1
+frames 102-120: bodies 48->53, deaths 1, splits 6, nucleations 0
+== a5 (seed 3, T=960)
+frames 1-20: bodies 24->27, deaths 0, splits 3, nucleations 24
+frames 21-40: bodies 27->27, deaths 0, splits 0, nucleations 0
+frames 41-61: bodies 27->28, deaths 0, splits 0, nucleations 1
+frames 62-81: bodies 28->29, deaths 0, splits 0, nucleations 1
+frames 82-101: bodies 29->29, deaths 0, splits 0, nucleations 0
+frames 102-120: bodies 29->29, deaths 0, splits 0, nucleations 0

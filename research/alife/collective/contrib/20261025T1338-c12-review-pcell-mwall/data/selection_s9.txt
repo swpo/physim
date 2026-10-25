@@ -1,0 +1,10 @@
+{"file": "data/gen_s9.json", "key": "ym", "minlife": 20, "n_death": 23, "death_pct_mean": 0.041, "n_split": 11, "split_pct_mean": 0.606, "death_pct_below_median": 23, "split_pct_above_median": 8}
+{"key": "ym", "lag_snapshots": 40, "lag_time": 2000, "n_death": 19, "death_pct_mean": 0.061, "below_median": 19}
+{"file": "data/gen_s9.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 10, "split": 0, "other": 7}, "high": {"death": 5, "split": 3, "other": 8}}, "death_share_low": 0.588, "death_share_high": 0.312, "split_share_low": 0.0, "split_share_high": 0.188, "dying_cells_rank_birth_mid_death": [0.356, 0.278, 0.032], "n_dying": 15}
+{"file": "data/gen_s9.json", "key": "zm", "minlife": 20, "n_death": 23, "death_pct_mean": 0.636, "n_split": 11, "split_pct_mean": 0.55, "death_pct_below_median": 8, "split_pct_above_median": 7}
+{"key": "zm", "lag_snapshots": 40, "lag_time": 2000, "n_death": 19, "death_pct_mean": 0.575, "below_median": 10}
+{"file": "data/gen_s9.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 3, "split": 3, "other": 7}, "high": {"death": 12, "split": 0, "other": 8}}, "death_share_low": 0.231, "death_share_high": 0.6, "split_share_low": 0.231, "split_share_high": 0.0, "dying_cells_rank_birth_mid_death": [0.722, 0.504, 0.71], "n_dying": 15}
+t=  1000 cells  21  mean yield 1.001  marker 1.000
+t= 50250 cells  20  mean yield 1.134  marker 0.926
+t=100000 cells  18  mean yield 1.167  marker 0.873
+Spearman(yield, particle count) among living cells: 0.81
