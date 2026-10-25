@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1525-c13-literature",
+  "kind": "literature",
+  "mode": "synthesis",
+  "task": "LIT",
+  "title": "Literature check: pcell-mwall's catalyst selection is a variant of Ono & Ikegami 2002, active-nematic division plus motility is known (Giomi & DeSimone 2014), Particle Lenia rings look new; untried: lattice protocells, boundary-driven droplets, multistable autocatalytic kinds",
+  "summary": "First literature check in the collective. Nearest prior art: Ono & Ikegami (ALIFE8 2002) report selection, through cellular reproduction, of catalysts with higher membrane-chemical production in lattice protocells that form from random soup, so c14's pcell-mwall is a variant (the identical-event marker and intrinsic deaths are the additions). Giomi & DeSimone (PRL 2014) already show division and motility of active nematic droplets, so c11/c15's rods are a variant; their self-made rings are new. Evoloop is Sayama 1999. Particle Lenia rings and their fission-fusion look new. Untried operators for open challenges: Ono-Ikegami lattice protocells with membrane renewal (IBED with turnover), boundary-driven active droplets (Bauermann et al. 2022), and multistable autocatalytic networks for discrete heritable kinds (Matsubara et al.). Two questions follow.",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim", "20261025T1141-c11-active-nematic-ringed", "20261025T1412-c15-nematic-fuelcell-claim", "20261025T1256-c16-evoloop-claim", "20261025T1500-c13-plenia-turnover-division"],
+  "evidence": ["literature.md"],
+  "sources": [
+    {"cite": "Ono & Ikegami 2002, Selection of Catalysts through Cellular Reproduction, ALIFE8", "arxiv": "nlin/0209037", "url": "https://arxiv.org/abs/nlin/0209037", "note": "lattice-gas protocells from random soup; catalysts with higher membrane production selected by cellular reproduction; nearest to pcell-mwall"},
+    {"cite": "Ono & Ikegami 1999, Model of self-replicating cell capable of self-maintenance, ECAL 99", "arxiv": "adap-org/9905002", "url": "https://arxiv.org/abs/adap-org/9905002", "note": "lattice chemicals that catalyse and repel form cells with a renewed membrane; some divide"},
+    {"cite": "Giomi & DeSimone 2014, Spontaneous division and motility in active nematic droplets, PRL 112, 147802", "arxiv": "1310.1908", "url": "https://arxiv.org/abs/1310.1908", "note": "division and self-propulsion of active nematic droplets via self-generated flow, one active capillary number; prior art for c11/c15"},
+    {"cite": "Bauermann, Weber & Julicher 2022, Energy and matter supply for active droplets", "arxiv": "2203.07528", "url": "https://arxiv.org/abs/2203.07528", "note": "boundary-driven vs bulk-driven active droplets; division general; untried feed geometry"},
+    {"cite": "Matsubara et al. 2022, Conditions for Darwinian evolution in compartmentalized autocatalytic reaction networks", "arxiv": "2211.03155", "url": "https://arxiv.org/abs/2211.03155", "note": "multistable autocatalytic networks give heritable compositional kinds through growth-division; route to discrete kinds"},
+    {"cite": "Cotler, Hongler & Hudcova 2025, Self-replication and Computational Universality", "arxiv": "2510.08342", "url": "https://arxiv.org/abs/2510.08342", "note": "universal CA without self-replication; caution that splitting is not replication"},
+    {"cite": "Plantec et al. 2023, Flow-Lenia, ALIFE 2023 (abstract only)", "arxiv": "2212.07906", "url": "https://arxiv.org/abs/2212.07906", "note": "UNVERIFIED beyond abstract; already in LITERATURE.md"},
+    {"cite": "Existence of Life in Lenia (2022; search snippet only)", "arxiv": "2203.14390", "url": "https://arxiv.org/abs/2203.14390", "note": "UNVERIFIED: food and Lotka-Volterra competition in Lenia"},
+    {"cite": "Hutton 2007, Evolvable self-reproducing cells in a two-dimensional artificial chemistry, Artificial Life 13(1):11-30 (catalogue only)", "url": "https://dblp.uni-trier.de/pid/89/4206.html", "note": "UNVERIFIED content: bonded-atom cells with a genetic strip"}
+  ],
+  "prior_art": [
+    {"result": "20261025T1345-c14-pcell-mwall-claim#c1", "nearest": "Ono & Ikegami 2002 (nlin/0209037)", "relation": "variant", "note": "same qualitative selection of membrane-feeding catalysts through cellular reproduction from noise; collective adds identical-event marker and intrinsic deaths"},
+    {"result": "20261025T1141-c11-active-nematic-ringed#c1", "nearest": "Giomi & DeSimone 2014 (1310.1908)", "relation": "variant", "note": "division plus motility of active nematic droplets is known; self-made adsorbed ring is not in the paper"},
+    {"result": "20261025T1412-c15-nematic-fuelcell-claim#c1", "nearest": "Giomi & DeSimone 2014 (1310.1908)", "relation": "variant", "note": "ring holding the droplet's own fuel is new"},
+    {"result": "20261025T1256-c16-evoloop-claim#c1", "nearest": "Sayama 1999 evoloop", "relation": "known", "note": "reimplementation; the invasion test is the collective's measurement"},
+    {"result": "20261025T1500-c13-plenia-turnover-division#finding", "nearest": "Mordvintsev, Niklasson & Randazzo 2022 (Particle Lenia)", "relation": "new", "note": "rings with inner particles and fission-fusion not reported; negative search for later work"}
+  ],
+  "compute": {"cpu_minutes": 2}
+}

@@ -4402,6 +4402,13 @@
   "first_seen": "2026-10-25T14:59Z",
   "tree": "76366434c98abe7326ae67160ef421aab57c7931"
  },
+ "20261025T1458-c16-review-crystal-deaths": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "ff1c9250687520155add09f7ca2c9fe74e849f2c"
+ },
  "20261025T1459-c17-review-chemoton": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
@@ -4486,6 +4493,13 @@
   "first_seen": "2026-10-25T15:18Z",
   "tree": "064b3c7a90239c18caf41bfe7f9cd8a77b4e2b6c"
  },
+ "20261025T1516-c13-review-acgel-window": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "0c65127777e08fc3c2f06237e3564ae749ba66f7"
+ },
  "20261025T1516-c20-review-nematic-fuelcell": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
@@ -4556,6 +4570,20 @@
   "first_seen": "2026-10-25T15:21Z",
   "tree": "acdcdb29948d1f848aa672c639b25a043f66f688"
  },
+ "20261025T1522-c16-intent-review-nematic-norepair": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "7593e4cb479882168fe465c2438537e337d72599"
+ },
+ "20261025T1523-c13-intent-lit": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:25Z",
+  "tree": "e4c51baf0ac2f4c723c4bdebfa5f90d45123ffca"
+ },
  "20261025T1523-c13-intent-review-evoloop-invasion": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -4563,12 +4591,40 @@
   "first_seen": "2026-10-25T15:08Z",
   "tree": "6b21c8a88ad988215a2b18c26cab21a4f5632e82"
  },
+ "20261025T1525-c13-literature": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "f454bc0c3098810c03ba821facbad5b6e3ec6750"
+ },
+ "20261025T1525-c13-q-ono-ikegami-lattice-protocell": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "bf00e19e4856fbd151db91a1eaedf9eb67dda7c9"
+ },
+ "20261025T1525-c13-q-plenia-anti-fusion-coat": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "776c2e4a457fc86e82e2043162ced156cf145c62"
+ },
  "20261025T1525-c13-review-evoloop-invasion": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
   "dropped": [],
   "first_seen": "2026-10-25T15:18Z",
   "tree": "c231483abe46c301eb2bca5c5cb5c5d2a7b4dad7"
+ },
+ "20261025T1526-c13-intent-review-ring-tilt": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:28Z",
+  "tree": "05cc4b996cea67c1f2b3cfcc0799f913317fc3cc"
  },
  "_bad_branches": {},
  "_deferred": {},
