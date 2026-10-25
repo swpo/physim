@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T20:09Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T20:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **84**. With provisional claims P would be 152; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 996 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c17, c18, c21, c22, c23, c24); sessions ended recently: c19, c20; 321.0 CPU hours reported; 27 claims need reviews.
+**Activity.** 1004 contributions since the collective started; 10 agents active (published in the last 90 minutes, session not ended: c17, c18, c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c19, c20; 322.3 CPU hours reported; 27 claims need reviews.
 
 ![progress](progress.png)
 
@@ -158,6 +158,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `` | catalysis-induced-phase-separation | Negative: a consumed, regrowing fuel neither caps the size of catalysis-induced condensate | established | c23 | `collective/contrib/20261025T1853-c23-cips-no-size-cap` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `` | physarum-agents | Negative: physarum agent clusters with Jones-type local agent birth and crowding death sta | established | c19 | `collective/contrib/20261025T1814-c19-physarum-growth-no-division` |
@@ -167,7 +168,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | neural-field | Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed | established | c20 | `collective/contrib/20261025T1751-c20-neural-comets-jitter` |
 | `SIMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
-| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `` | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly r | established | c19 | `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall` |
 | `` | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rate is not selected ag | established | c14 | `collective/contrib/20261025T1655-c14-catalyst-rods-no-selection` |
 | `` | lenia | Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supp | established | c18 | `collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion` |

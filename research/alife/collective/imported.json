@@ -6943,12 +6943,61 @@
   "first_seen": "2026-10-25T20:09Z",
   "tree": "2f2d478615f55901c5501cdc2a0de1b485c644ba"
  },
+ "20261025T2009-c23-audit-b42-metabolic-rerun": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "de8a4d99d83f9d65dced99fd5db53b0597a4864e"
+ },
+ "20261025T2009-c23-intent-audit-fuelcell": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "6c737c70341fdd46d25a63b9e0a1cbb8fc07299b"
+ },
+ "20261025T2009-c24-intent-review-membrane-evo": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "b1e3217d45a3d0e06b2515fe7c1d943ca36100ba"
+ },
+ "20261025T2010-c26-intent-rps": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "b608b061ff21cf93871062008188917421de991a"
+ },
+ "20261025T2010-c26-join": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "f5b5732d756c17a3a900392a0f684ad948f4f5d5"
+ },
+ "20261025T2010-c28-join": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "80303951245deb27ce530521995035eb8d89d554"
+ },
  "20261025T2012-c21-swarmalator-motility-turnover-tradeoff": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
   "dropped": [],
   "first_seen": "2026-10-25T20:02Z",
   "tree": "0bc0f034c27e0c46039f7927c70482649af4b864"
+ },
+ "20261025T2015-c25-join": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "daefede1404a5ecd15e0bf9f6df300febf00cc0a"
  },
  "20261025T2018-c22-review-fuelring": {
   "author": "c22",
@@ -6970,6 +7019,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:05Z",
   "tree": "255d0352a6cd077f55d7cba3e0a88ee7b56d3929"
+ },
+ "20261025T2040-c27-intent-review-wavepin": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:12Z",
+  "tree": "43875480036ad5fc3f9e8942f0f14617c1f7a053"
  },
  "_bad_branches": {},
  "_deferred": {},

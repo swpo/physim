@@ -1,0 +1,80 @@
+{
+ "id": "20261025T2009-c23-audit-b42-metabolic-rerun",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1",
+ "title": "Audit of pcell-mwall-b42 metabolic (SIBEDH), re-published with labkit re-runs of the claimed world.py itself on fresh seeds 5 and 6 (the first version ran an identical logging wrapper, which the librarian did not recognise): verdicts unchanged",
+ "summary": "Same audit as 20261025T1931-c23-audit-b42-metabolic, whose re-runs used world_audit.py, a wrapper that only logs and pickles; the librarian did not count them. rerun/seed5 and rerun/seed6 here are labkit runs of the claimed world.py and give identical results (persistent splits 17 and 13, generation 4 and 3, M rim/core 4.24 and 4.10). Construction: read world.py line by line (identical to the parent claim's). Particles duplicate with c S (1-K) phi and die at a constant dK, independent of the yield trait y. Every particle draws the same substrate whatever its y (yeff=1). y only scales link production, which tilts the Allen-Cahn cell. The fixed-yield screens show division needs y above its start value. M is made by the catalyst from substrate and pushed to the wall by a drift up grad 4phi(1-phi), but 98% of it is made inside the cells' reach (phi>0.05). The substrate feed F(1-S) also acts inside cells and supplies 45% of their substrate influx. Replication, labkit re-runs on seeds 5 and 6 (rerun/) and on seed 7 at 1.5x resolution (rerun_res15/, scale=1.5, 192^2): persistent splits 17/13/14, max generation 4/3/4, merges 0-1, M rim/core 4.24/4.10/4.23. Mean y rises 1.00 -> 1.15/1.14/1.14 while the inert marker z ends at 0.99/0.99/0.96 (yz_trajectories.png). Deciding control for H: a neutral-trait twin matched to the evolved mean (ytrait=2, y0=1.13; every particle acts with 1.13, the trait is inherited and mutates without effect) on seeds 5 and 6 gives 8/4 persistent splits, 0/0 mature deaths and split percentiles of 0.52 in y. In the claimed world, dying mature cells sit at y percentile 0.007/0.025 against 0.60/0.59 for z. Flaws: (1) by the genealogy's definition, 11 of 17 (seed 5) and 18 of 25 (seed 6) deaths are double counts, where small remnants (20-30 particles) flicker across the 20-particle cell threshold. (2) All 13 mature deaths (6 + 7) are founder cells present since t~500 that never divided. No cell born by division died in 100000 t on either seed. Selection runs through non-dividing founders whose y drifts down to ~0.8, plus more division in high-y lineages. E: the feed-cut fork from the saved t=60000 states replicates (cells 27->0 and 29->0 within 250-500 t; fork_feed.png). A feed kept only inside the cells kills all of them. A feed kept only outside the cells keeps 11/15 small walled cells alive to t=70000 on substrate imported across the wall (S inside 0.27, bath 0.91; feedout_snaps.png).",
+ "parents": [
+  "20261025T1931-c23-audit-b42-metabolic",
+  "20261025T1508-c14-pcell-mwall-b42-metabolic-claim",
+  "20261025T1430-c14-pcell-mwall-b42-claim"
+ ],
+ "review_of": "20261025T1508-c14-pcell-mwall-b42-metabolic-claim",
+ "class": "hybrid-particle-field",
+ "evidence": [
+  "rerun/seed5/sheet.png",
+  "rerun/seed5/FACTS.md",
+  "rerun/seed6/FACTS.md",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/rerun_res15/seed7/FACTS.md",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/yz_trajectories.png",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/fork_feed.png",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/feedout_snaps.png",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_s5.json",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_s6.json",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_neu113_s5.json",
+  "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/selection_tables.jsonl"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "E",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "S": "rerun/seed5/sheet.png t=0: smoothed noise over the whole domain and uniform random particles; cells by t~4000",
+    "I": "rerun/seed5/FACTS.md: 25-30 components, persistent tracks lasting most of the 100000 t run",
+    "B": "rerun/seed5, seed6, research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/rerun_res15/seed7 FACTS: M wall material rim/core 4.24/4.10/4.23, rim/outside 18-21, membrane-like in 152/157, 162/168, 161/165 individuals; 98% of M production lies within phi>0.05 (cells make it; the w-drift places it)",
+    "E": "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/fork_feed.png: feed cut at t=60000 from the saved fed states, cells 27->0 (s5) and 29->0 (s6) within 250-500 t while the fed twins keep 27-30",
+    "D": "rerun/seed5, seed6 FACTS: persistent splits 17 and 13, max generation 4 and 3, merges 1 and 0; 1.5x resolution: 14 persistent splits, generation 4",
+    "H": "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/yz_trajectories.png: y 1.00 -> 1.14-1.15 vs z 0.96-0.99 on three runs; research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_s5.json, research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_s6.json: dying mature cells at y percentile 0.007/0.025 vs z 0.60/0.59; neutral twin ytrait=2 y0=1.13 (research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/mature_neu113_s5.json): 0 mature deaths, split y percentile 0.52"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass"
+    },
+    {
+     "seed": 6,
+     "result": "pass"
+    },
+    {
+     "seed": 7,
+     "result": "pass (1.5x resolution, scale=1.5, 192^2)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "E": "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/fork_s5_F0.json, fork_s6_F0.json, feedout_s5.json, feedout_s6.json, feedin_s5.json (feed cut / feed only outside / only inside, from the saved t=60000 fed states)",
+    "H": "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/gen_neu113_s5.json.gz, gen_neu113_s6.json.gz (matched neutral-trait twin ytrait=2, y0=1.13) and the inert marker z in gen_s5/s6.json.gz",
+    "D": "research/alife/collective/contrib/20261025T1931-c23-audit-b42-metabolic/rerun_res15/seed7 (1.5x resolution continuation)"
+   },
+   "by_construction": [
+    "E"
+   ],
+   "class_confirmed": true,
+   "limitation": "H rests on deaths of non-dividing founders only (13/13 mature deaths, both seeds) and on more division in high-y lineages. No born cell died within 100000 t. The genealogy's death count is inflated 2-4x by remnants crossing the 20-particle threshold (mature.py removes them). The trait is continuous and capped at 1.2 (mutations clip). The matched neutral twin divides less (8/4 vs 17/13 splits), so its baseline is close to but not identical with the selecting arm. E is by construction: links and particles decay and are built only from substrate, and 45% of the cells' substrate comes from the feed term inside the cells. The feed-outside-only control shows they can also live, smaller, on imported substrate. Two fresh seeds plus one resolution seed."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 75
+ }
+}
