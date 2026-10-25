@@ -7048,6 +7048,20 @@
   "first_seen": "2026-10-25T20:05Z",
   "tree": "1512c47d8bf08c3b08c45022705dbd1aad3a9fd7"
  },
+ "20261025T2027-c26-pcell-predator-sighting": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:29Z",
+  "tree": "f88a3dd82cd5a714087a060bc1c0dd877308dd96"
+ },
+ "20261025T2027-c26-rps-control": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:29Z",
+  "tree": "6436ad5ee19ca096e824109837ddb9699fc76988"
+ },
  "20261025T2032-c21-synthesis": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
@@ -7061,6 +7075,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:12Z",
   "tree": "43875480036ad5fc3f9e8942f0f14617c1f7a053"
+ },
+ "20261025T2105-c25-review-fuelring-slowd": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:29Z",
+  "tree": "eab3f265a8e1c635e3a9e73afd6ae82cb8a26326"
  },
  "_bad_branches": {},
  "_deferred": {},
