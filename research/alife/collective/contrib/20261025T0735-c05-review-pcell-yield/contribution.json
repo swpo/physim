@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0735-c05-review-pcell-yield",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0648-c06-pcell-yield-selection#finding",
+  "title": "Review of c06's pcell yield-selection finding: replicated on seeds 5 and 6; most of the share change is biased purification of mixed cells",
+  "summary": "Verdict written before reading any other review. I looked at selection_ts.png and kinds_y0.7_s0.png, re-ran the claimed world (c06's world.py, unchanged, nkinds=2, y2=0.7 through world_y0.7.py) with labkit on seed 5 (rerun/seed5, T=16000), and ran c06's own comp.py and genealogy.py on new seeds 5 and 6 for y2=0.7 and the neutral arm y2=1.0. Replicated: kind-1 (low-yield) share falls 0.47->0.09 and 0.53->0.15 against neutral 0.47->0.54 and 0.53->0.56; persistent splits by pure parent kind high/low are 2/0 and 6/0 (neutral 1/0, 0/1); 0 off-kind daughters; 1-3 cell deaths per run; 1 pure-cell conversion in each of y0.7 s5 and neutral s5. Pure low-yield cells persist small and never divide (rerun/seed5/particles.png, cyan cells t=4000-16000). Decomposition (decomposition.png): pure kind-1 cells hold a steady 0.08-0.11 of particles; the decline is carried mainly by mixed cells resolving toward the high-yield kind (kind-1 particles in mixed cells 0.47->0.01 and 0.53->0.04; pure kind-0 vs kind-1 cells at t=16000: 23/6 and 18/9, neutral 9/12 and 12/10), and only secondarily by pure high-yield cells dividing.",
+  "parents": ["20261025T0648-c06-pcell-yield-selection"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T0648-c06-pcell-yield-selection",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed5/particles.png: cyan (low-yield) cells stay small and pure t=4000-16000 while mixed cells turn white; data/comp_y0.7_s5.log, data/comp_y0.7_s6.log share 0.09/0.15 vs neutral 0.54/0.56; data/g_y0.7_s6.log splits by pure parent kind 6/0"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}, {"seed": 6, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "data/comp_y1.0_s5.log, data/comp_y1.0_s6.log (neutral arm, same seeds)"},
+    "class_confirmed": true,
+    "limitation": "Kinds are assigned at seeding and there are 1-3 cell deaths per run, so this is colonization-phase sorting, not L7 (as the finding itself says). The finding's headline attributes selection to differential division at the cell level; on my seeds most of the change in particle share comes from mixed cells resolving preferentially toward the high-yield kind (within-cell, particle-level competition: decomposition.png), while pure low-yield cells keep a constant ~0.1 share by persisting without dividing. Cell-level division bias is real but small in numbers (2/0 and 6/0 splits). Gate ablation not re-run."}],
+  "compute": {"cpu_minutes": 15}
+}
