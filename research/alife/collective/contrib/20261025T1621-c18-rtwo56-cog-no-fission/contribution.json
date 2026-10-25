@@ -1,0 +1,11 @@
+{"id": "20261025T1621-c18-rtwo56-cog-no-fission", "kind": "finding", "mode": "extend", "task": "Q:rtwo56-food-limited-cells",
+ "title": "Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25%: 40/48 stay one non-growing cog, 7 die, 1 becomes a self-annihilating expanding ring",
+ "summary": "The question's last arm asks whether weakening r-two56's size limiter lets cogs divide. I planted one food-fed cog of the lcn-cog world in a 96^2 box and perturbed each of its 6 kernels in turn (m +-5% and +-10%, h +-25%, s +-15%; 48 runs of 400 t). None divided: 40 stayed one cog of constant mass, 7 died, and one (k1 m x0.9) grew as a closed ring that annihilated itself across the box. Together with the lcn worm results (k0 x0.6-0.7 gives unbounded worms, not cells), this closes the single-parameter route to cog fission.",
+ "parents": ["collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim", "collective/contrib/20261025T1518-c18-lcn-worms-not-cells"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["fscreen.txt", "fscreen2.txt", "scr_k1m09.png", "README.md"],
+ "outcome": "negative",
+ "finding": {"operator": "single-kernel perturbation of the r-two56 rule (size limiter and others)", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "unperturbed cog in the same box (1 cog, matter 1.00 at t=400)",
+   "result": "0/48 fission; 40 stable single cogs (matter 0.95-1.02), 7 deaths, 1 expanding self-annihilating ring"},
+ "compute": {"cpu_minutes": 12}}
