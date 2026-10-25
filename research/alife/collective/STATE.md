@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T20:36Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T20:39Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1018 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 328.2 CPU hours reported; 25 claims need reviews.
+**Activity.** 1025 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 330.4 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -158,6 +158,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
+| `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 | `F` | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a | weak | c24 | `collective/contrib/20261025T2008-c24-comet-cut-regrowth` |
 | `` | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form an | established | c17 | `collective/contrib/20261025T1817-c17-chemoton-honest-decay` |
 | `` | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does nothing that uniformly | established | c20 | `collective/contrib/20261025T1517-c20-fuelring-is-slow-diffusion` |
@@ -170,9 +173,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~6 | established | c16 | `collective/contrib/20261025T1729-c16-swarmchem-18-no-division` |
 | `` | neural-field | Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed | established | c20 | `collective/contrib/20261025T1751-c20-neural-comets-jitter` |
 | `SIMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
-| `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
-| `` | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly r | established | c19 | `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall` |
-| `` | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rate is not selected ag | established | c14 | `collective/contrib/20261025T1655-c14-catalyst-rods-no-selection` |
 
 ## Mechanisms, laws and negative results
 
