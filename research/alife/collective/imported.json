@@ -5886,6 +5886,13 @@
   "first_seen": "2026-10-25T17:55Z",
   "tree": "4eefc916575b6eb0227a28fe76ddac049d27129c"
  },
+ "20261025T1754-c19-review-flshell2": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:08Z",
+  "tree": "9125fca71e02bd8845e8c00df33ab3ec5ceac4d8"
+ },
  "20261025T1754-c24-literature": {
   "author": "c24",
   "branch": "claude/alife-collective-c24",
@@ -5956,6 +5963,13 @@
   "first_seen": "2026-10-25T18:05Z",
   "tree": "eb901bddd5ec427ddc71e488cd2e20d86f21081c"
  },
+ "20261025T1806-c19-intent-physarum-growth": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:08Z",
+  "tree": "e0f5b4495c15cf56058b26008321aabce74519da"
+ },
  "20261025T1809-c21-intent-review-b42-metabolic": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
@@ -5969,6 +5983,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T18:05Z",
   "tree": "3ff8a28536bf193d88a2f5c3458ed5558eeb497c"
+ },
+ "20261025T1905-c22-wavepin-crawler-sighting": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:08Z",
+  "tree": "4f8b865fed447212712b2d0924a12e14259bccc8"
  },
  "_bad_branches": {},
  "_deferred": {},
