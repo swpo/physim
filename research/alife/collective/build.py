@@ -42,13 +42,14 @@ CAP_NAMES = {"S": "spontaneous", "I": "individuals", "B": "organized", "W": "con
              "M": "motility", "E": "metabolism", "X": "interaction", "D": "reproduction", "H": "heredity+selection",
              "O": "open-ended", "F": "finding"}
 GATED = set("WREXH")  # a supporting review must point to the gate control it ran or checked
-KINDS = {"world", "claim", "review", "finding", "question", "synthesis", "tool", "intent", "sighting"}
+KINDS = {"world", "claim", "review", "finding", "question", "synthesis", "tool", "intent", "sighting", "literature"}
 MODES = {"explore", "extend", "control", "review", "synthesis"}
 VERDICTS = {"Supported", "Weak", "Contradicted"}
 ID_RE = re.compile(r"^\d{8}T\d{4}-(c\d+)-[a-z0-9][a-z0-9-]*$")
 SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
+LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the last one, or when a grand challenge is met
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
@@ -126,6 +127,11 @@ def coerce(c):
         elif not isinstance(v, list):
             errs.append(f"{k} is not a list")
             c[k] = []
+    for k in ("sources", "prior_art"):
+        v = c.get(k)
+        c[k] = [dict(x) for x in v if isinstance(x, dict)] if isinstance(v, list) else []
+        if v is not None and len(c[k]) != (len(v) if isinstance(v, list) else -1):
+            errs.append(f"{k}: must be a list of objects")
     for k in ("claims", "verdicts"):
         good = [dict(x) for x in c[k] if isinstance(x, dict)]
         if len(good) != len(c[k]):
@@ -236,6 +242,8 @@ def validate(c, cid, worker, files, exists, known_ids):
         errs.append("no claims with capabilities (claims must be objects with a capabilities list)")
     if kind == "finding" and not c.get("finding"):
         errs.append("no finding object")
+    if kind == "literature" and not any(text(x.get("url") or x.get("doi") or x.get("arxiv")).strip() for x in c["sources"]):
+        errs.append("no sources with a url, doi or arxiv id")
     if kind == "review":
         if not c.get("verdicts"):
             errs.append("no verdicts")
@@ -508,6 +516,17 @@ def lineage(cid, by_id):
             seen.add(p)
             out.add(by_id[p].get("author"))
             stack += by_id[p].get("parents", [])
+    return out
+
+
+def ancestors(cid, by_id):
+    """Ids of every contribution this one builds on, transitively (parents, world and evidence paths)."""
+    ids, out, stack = set(by_id), set(), [cid]
+    while stack:
+        for p in ref_ids(by_id.get(stack.pop(), {}), ids):
+            if p not in out:
+                out.add(p)
+                stack.append(p)
     return out
 
 
@@ -820,7 +839,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW and c.get("author") not in gone]
     closed = {(c.get("author"), c.get("task")) for c in recent if c.get("kind") != "intent" and c.get("task")}
     live = [c for c in intents if (c.get("author"), c.get("task")) not in closed
-            and re.match(r"^(R|C|Q|G|F):|^SYN$", c.get("task") or "")]  # a join intent holds no task
+            and re.match(r"^(R|C|Q|G|F):|^(SYN|LIT)$", c.get("task") or "")]  # a join intent holds no task
     busy = {}
     for c in live:
         busy.setdefault(c["task"], set()).add(c["author"])
@@ -845,7 +864,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     pressure = max(0, needed - in_review) / max(1, len(active))
 
     since = now - timedelta(hours=3)
-    nonrev = [c for c in recent if c["_t"] >= since and c.get("kind") not in ("review", "intent", "synthesis")]
+    nonrev = [c for c in recent if c["_t"] >= since and c.get("kind") not in ("review", "intent", "synthesis", "literature")]
     explore_share = (sum(1 for c in nonrev if c.get("mode") == "explore") / len(nonrev)) if nonrev else None
     started = min([c["_t"] for c in recent], default=now)
     target_share = 0.5 if now - started < timedelta(hours=6) else 0.33
@@ -864,6 +883,13 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
         ch["achieved"] = [cl["key"] for cl in claims.values() if cl["status"] == "established" and not cl["canary"]
                           and (cl["scored"] & tgt) == tgt and (not ch.get("bd") or cl["bd"])
                           and (not ch.get("named") or cl["challenge"] == ch["id"])]
+
+    lit = [c for c in recent if c.get("kind") == "literature"]
+    last_lit = lit[-1] if lit else None
+    met_at = [min(max([v["t"] for v in claims[k]["votes"].values()], default=parse_t(LAB_START)) for k in ch["achieved"])
+              for ch in challenges if ch["achieved"]]  # when each challenge was met: new results need a prior-art check
+    lit_due = (last_lit is None and len(recent) >= 10) or (last_lit is not None and (
+        now - last_lit["_t"] > LIT_EVERY or any(t > last_lit["_t"] for t in met_at)))
 
     ladders = []  # next rung for each dynamical class
     for cls in sorted(cells_by_class):
@@ -884,9 +910,12 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
             tried.setdefault(c["task"], []).append(c)
     qs.sort(key=lambda c: (-c.get("priority", 3), len(tried.get(f"Q:{c.get('slug') or c['id']}", [])), c["_t"]))
     open_tasks = [f"C:{ch['id']}" for ch in challenges if not ch["achieved"]] + [f"Q:{c.get('slug') or c['id']}" for c in qs]
-    syn_given = not syn_due
+    syn_given = not syn_due or "SYN" in busy
     syn_order = sorted([a for a in active if a not in campaign],
                        key=lambda a: max([c["_t"] for c in syn if c["author"] == a], default=parse_t(LAB_START)))
+    lit_given = not lit_due or "LIT" in busy
+    lit_order = sorted([a for a in active if a not in campaign and (syn_given or a != syn_order[0])],
+                       key=lambda a: (a in focus, max([c["_t"] for c in lit if c["author"] == a], default=parse_t(LAB_START)), a))
     n_rev = 0
     for a in sorted(active, key=lambda a: (a in focus, a)):  # agents without an exploration focus review first
         if a in campaign:
@@ -895,6 +924,10 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
         if not syn_given and syn_order and a == syn_order[0]:
             assign[a] = ("SYN", "synthesis due")
             syn_given = True
+            continue
+        if not lit_given and lit_order and a == lit_order[0]:
+            assign[a] = ("LIT", "literature check due")
+            lit_given = True
             continue
         if n_rev < max_reviewers:
             slot = next((s for s in review_slots if s[1] > 0 and s[0]["author"] != a and a not in s[0]["lineage"]
@@ -996,6 +1029,31 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
         if body.is_file() and not body.is_symlink():
             with body.open(errors="replace") as fh:
                 S += [fh.read(6000).strip(), ""]
+    # ---- literature: prior art for new results, and ideas that came from published work
+    by_id = {c["id"]: c for c in items}
+    lit_ids = {c["id"] for c in lit}
+    lit_qs = [c for c in recent if c.get("kind") == "question" and ref_ids(c, set(by_id)) & lit_ids]
+    lit_tasks = {f"Q:{q.get('slug') or q['id']}" for q in lit_qs}
+    lit_roots = lit_ids | {q["id"] for q in lit_qs}
+    from_lit = [cl for cl in claims.values() if cl["status"] == "established" and not cl["seed_status"] and (
+        by_id.get(cl["contribution"], {}).get("task") in lit_tasks or ancestors(cl["contribution"], by_id) & lit_roots)]
+    S += ["## Literature", ""]
+    if last_lit:
+        S += [f"Last check {fmt_t(last_lit['_t'])} by {last_lit.get('author')}: {last_lit.get('summary', '').strip()[:900]}", "",
+              f"{len(lit)} literature checks; {len(lit_qs)} questions raised from them, {sum(1 for t in lit_tasks if tried.get(t))} "
+              f"attempted; {len(from_lit)} established results descend from them.", ""]
+        seen, rows = set(), []
+        for c in reversed(lit):
+            for x in c.get("prior_art", []):
+                key = text(x.get("result")).strip()
+                if key and key not in seen:
+                    seen.add(key)
+                    rows.append(f"| {key[:70]} | {text(x.get('relation'))[:12]} | {text(x.get('nearest'))[:110]} | `{c['_dir']}` |")
+        if rows:
+            S += ["Prior art for our results (latest check first):", "", "| Result | Relation | Nearest published work | Where |",
+                  "|---|---|---|---|"] + rows[:12] + [""]
+    else:
+        S += ["No literature check yet" + (" (task `LIT` is due)." if lit_due else "."), ""]
     S += ["## Grand challenges", "", "| Challenge | Target | Status |", "|---|---|---|"]
     S += [f"| {ch['title']} | `{ch.get('target', '')}`{' (BD)' if ch.get('bd') else ''} | "
           f"{'achieved: ' + ', '.join(ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
@@ -1039,6 +1097,8 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
             if explore_share is not None else "No exploration measured yet."), ""]
     if syn_due:
         Q += ["**Synthesis due** (task `SYN`), assigned below.", ""]
+    if lit_due:
+        Q += ["**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.", ""]
     Q += ["## Assignments", "", "One distinct task per active agent. Take yours. If you are not listed, or cannot do it, take "
           "the first open task nobody holds and publish an intent.", "", "| Agent | Task | Why |", "|---|---|---|"]
     Q += [f"| {a} | `{t}` | {why} |" for a, (t, why) in assign.items()] or ["| (no active agents yet) | | |"]
