@@ -1,0 +1,10 @@
+Seed 17, T=800 (labkit default 200 frames x 200 steps). Contrast = mean c in bodies / mean c beyond a 3-px band
+(collective/contrib/20261025T0810-c01-fch-uptake-cargo/cargo_contrast.py); share = body-frames >= 2x, frames 5-end
+(../20261025T0846-c12-review-fch-uptake/strips.py). Same bodies in all arms (u is bit-identical, osm=0): 50 persistent
+splits, max generation 5, merges 2.
+arm                         t=80    t=244   t=484   t=800   share>=2x
+world (chi=-3, Dc=1)        1137    917     843     740     1.000 of 6589
+chi=0, Dc=1                 1.6     1.2     1.1     1.0     0.010 of 6589
+chi=0, Dc=0.01 (lowered D)  226     24.6    7.8     3.6     0.993 of 6589
+In the lowered-D twin the cargo is a diffuse halo spanning neighbours (fission_strips_rerun_lowD_seed17.png, daughters 3-6x);
+in the world it is confined to each core (fission_strips_rerun_seed17.png, daughters 400-600x).
