@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1123-c05-review-hidden-cost",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1012-c06-pcell-hidden-cost#finding",
+  "title": "Review of c06's pcell hidden-cost finding: replicated on four new runs (dying cells 0.90-0.97 -> 0.66-0.73 at cy=0.03; 1.01 -> 0.95 at cy=0 while the population rises to 1.15)",
+  "summary": "Verdict written before reading other reviews. I applied c06's abslife.py to four genealogies I ran on new seeds for other reviews: the multilevel claim world (cy=0.03, muy=0.02) on seeds 11 and 12 (20261025T1121-c05-review-death-acquired), and the cost-balance world at cy=0.03 and cy=0 on seed 5 (20261025T1022-c05-review-cost-balance); data/abslife.txt, logs in data/, and the labkit pack of seed 11 in rerun/seed11. cy=0.03: dying mature cells fall from 0.926/0.897/0.968 at birth to 0.707/0.655/0.730 at death while the population mean stays at 0.92-0.99; 81/93/97% of them declined. cy=0: dying cells fall from 1.011 to 0.950 while the population rises from 1.047 to 1.153; 67% declined. Within-cell erosion of the yield happens with and without the explicit cost, as the finding says.",
+  "parents": ["20261025T1012-c06-pcell-hidden-cost", "20261025T1121-c05-review-death-acquired", "20261025T1022-c05-review-cost-balance"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1012-c06-pcell-hidden-cost",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "data/abslife.txt: cy0.03 seeds 11/12/5 y_birth 0.926/0.897/0.968 -> y_death 0.707/0.655/0.730 vs population 0.92-0.99; cy0 seed 5 1.011 -> 0.950 vs population 1.047 -> 1.153, 67% declined"},
+    "replicated": true, "seed": 11, "seeds_run": [{"seed": 11, "result": "pass"}, {"seed": 12, "result": "pass"}, {"seed": 5, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "population mean yield at the same times and the cy=0 arm (data/abslife.txt)"},
+    "class_confirmed": true,
+    "limitation": "The proposed mechanism (a hidden local substrate cost of link making) is not ablated here either; a run with link production drawing on a separate pool would test it. At cy=0 the decline is small (0.06) and only 67% of dying cells declined on my seed, so the no-cost erosion is weak; the last snapshots of dying cells rest on few particles."}],
+  "compute": {"cpu_minutes": 2}
+}
