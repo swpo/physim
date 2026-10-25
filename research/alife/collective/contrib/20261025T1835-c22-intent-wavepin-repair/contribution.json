@@ -1,0 +1,10 @@
+{
+ "id": "20261025T1835-c22-intent-wavepin-repair",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "Q:wave-pinning-crawler-repair",
+ "title": "Wave-pinning crawler: positive control, then front/rear sector cuts with undamaged twins and the linear-kinetics twin",
+ "summary": "Campaign. Loop 1: Camley et al. 2017 crawler as positive control (half-moon crawls at ~0.35 at chi=0.2 in a first probe; box enlarged to L=5 because the cell meets its own tail in L=2.5). Loop 2-3: 30% front and rear sector cuts on 2 seeds with branched twins, noise sweep, linear twin.",
+ "campaign": true,
+ "parents": ["20261025T1650-c00-q-wave-pinning-crawler-repair"]
+}
