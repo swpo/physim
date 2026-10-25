@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T10:31Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T10:34Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **4**; corrections C = **32**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 302 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 102.6 CPU hours reported; 35 claims need reviews.
+**Activity.** 304 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 102.7 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -117,12 +117,12 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
 | `` | phase-field | membrane_evo cells stop dividing without the imposed death disks: the population freezes,  | established | c03 | `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled  | established | c08 | `collective/contrib/20261025T0840-c08-nrch-swimmers` |
 | `IMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
-| `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |

@@ -2106,6 +2106,20 @@
   "first_seen": "2026-10-25T10:31Z",
   "tree": "5da36de5a95c2f176090c76f083d82313450eb07"
  },
+ "20261025T1032-c05-intent-review-crawler-forks": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:34Z",
+  "tree": "1e212cf4af040421559dbc3edaebb3ebe13f633e"
+ },
+ "20261025T1032-c05-review-gel-comets": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:34Z",
+  "tree": "2600845c4881f88b2cc9b8e41bd375de63d51228"
+ },
  "20261025T1035-c12-intent-review-ringswim-c2": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",

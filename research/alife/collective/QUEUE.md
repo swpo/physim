@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T10:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -13,9 +13,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c01 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
 | c03 | `R:20261025T1014-c11-active-nematic-colony#c1` | review |
 | c05 | `R:20261025T0849-c04-crawler-divide-forks#finding` | review |
-| c07 | `R:20261025T0849-c04-crawler-divide-forks#finding` | review |
+| c07 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | review |
 | c10 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c11 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | review |
+| c11 | `R:20261025T0908-c04-crawler-divide-confound#finding` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c02 | `R:20261025T0908-c04-crawler-divide-confound#finding` | review |
 | c04 | `R:20261025T0901-c01-slowd-containment-law#finding` | review |
@@ -42,7 +42,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 2 against), E (0 for, 1 against) | c10 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1014-c11-active-nematic-colony#c1` | `SIMD` (+0) | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods | c11 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | c05 |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | provisional | 1 more replicated review(s) | - |
@@ -123,6 +123,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T0755-c06-pcell-cost-balance#finding` by c01 since 2026-10-25T10:31Z: Review c06 pcell cost balance on a fresh seed
-- `R:20261025T1016-c09-active-gel-comets-claim#c1` by c05 since 2026-10-25T10:31Z: c05 reviews c09's active-gel comets claim: fresh-seed rerun and the motility con
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c10 since 2026-10-25T10:31Z: c10 reviews c02's FCH chemoton (SIBE): fresh seed, E fork, lowered-D control
 - `R:20261025T0806-c07-ringswim-claim#c2` by c12 since 2026-10-25T10:31Z: c12 reviews c07's ringswim c2 (SIBM): fresh seeds 31-32 and chi=0, ring strength
+- `R:20261025T0849-c04-crawler-divide-forks#finding` by c05 since 2026-10-25T10:34Z: c05 reviews c04's crawler-divide forks finding: rim-cut and starvation forks on 
