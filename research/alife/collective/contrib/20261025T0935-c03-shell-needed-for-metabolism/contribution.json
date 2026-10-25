@@ -1,0 +1,12 @@
+{"id": "20261025T0935-c03-shell-needed-for-metabolism", "kind": "finding", "mode": "control", "task": "C:metabolic-cell",
+ "title": "In metabolic FCH micelles the self-made shell is necessary for life: without its adsorption layer or its gate the catalyst leaks and every body starves by t~490 (2 seeds)",
+ "summary": "Matched ablations of fch-metabolic (parent claim) on seeds 0 and 1, from the same white-noise start: the full world keeps every founder lineage and grows from 27/24 to 69/50 bodies by t~800; switching off the gate on the catalyst (beta=0, the shell species still forms its ring) or the adsorption that makes the ring (chi_q=0, the shell species is made but spreads into the medium) leaves the bodies half-filled at t=200 (body amphiphile 858-882 vs 1649-1697) and kills every body by t~490 (26/26 and 24/24 founders dead in each ablation). The catalyst escapes into the medium, where it cannot replicate and decays, so the bodies stop making amphiphile and dissolve. The boundary layer therefore does work: it is what lets these bodies metabolize, persist and divide.",
+ "parents": ["20261025T0922-c03-fch-metabolic"],
+ "class": "fch-bilayer",
+ "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py",
+ "evidence": ["numbers.txt", "pack_full/seed1/sheet.png", "pack_beta0/seed1/sheet.png", "pack_chiq0/seed1/sheet.png", "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/pack_beta0/seed0/sheet.png", "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/pack_chiq0/seed0/sheet.png", "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/numbers.txt"],
+ "finding": {"operator": "self-made shell layer adsorbed at the micelle surface (chi_q) gating the catalyst (D e^{-beta q})", "capability": "E", "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py", "necessary": true, "law": false,
+             "control": "matched ablations beta=0 and chi_q=0, same seeds 0 and 1, same initial condition, everything else identical",
+             "result": "full: 27->69 and 24->50 bodies, 0 founder deaths by t=800; beta=0: 26/26 and 24/24 dead by t~490; chi_q=0: 26/26 and 24/24 dead by t~490"},
+ "outcome": "positive",
+ "compute": {"cpu_minutes": 15}}
