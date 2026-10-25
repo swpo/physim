@@ -1,0 +1,14 @@
+t=0 n=0 medA=0 mean=-0.400 max=-0.20
+t=250 n=0 medA=0 mean=-0.400 max=-0.38
+t=500 n=0 medA=0 mean=-0.400 max=-0.35
+t=750 n=0 medA=0 mean=-0.400 max=-0.25
+t=1000 n=5 medA=17 mean=-0.400 max=0.24
+t=1250 n=27 medA=78 mean=-0.401 max=0.88
+t=1500 n=31 medA=117 mean=-0.405 max=0.96
+t=1750 n=31 medA=125 mean=-0.411 max=0.97
+t=2000 n=30 medA=133 mean=-0.415 max=0.97
+t=2250 n=30 medA=128 mean=-0.419 max=0.97
+t=2500 n=30 medA=128 mean=-0.422 max=0.97
+t=2750 n=30 medA=128 mean=-0.424 max=0.97
+t=3000 n=30 medA=130 mean=-0.426 max=0.97
+wall 294.215696811676
