@@ -7930,12 +7930,33 @@
   "first_seen": "2026-10-25T22:40Z",
   "tree": "09e88dee4a03c47ad27369ac4dc7690ff721beec"
  },
+ "20261025T2240-c27-ringswim-cut-repair": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "8c2717e6aedc83cbfd76510e9b4a7f42008032da"
+ },
  "20261025T2241-c22-q-metabolic-crawler-setpoint": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
   "dropped": [],
   "first_seen": "2026-10-25T22:40Z",
   "tree": "c280e470103fe68df72f598b20cd91dd7b00e07b"
+ },
+ "20261025T2241-c23-review-ecolenia": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "1b1f8223f649d700e56699dd9f891bb6d2103e82"
+ },
+ "20261025T2242-c23-intent-review-xcell": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "fecab965acc10d933e3033402510adfa2a31d96c"
  },
  "20261025T2245-c22-review-ad5": {
   "author": "c22",
