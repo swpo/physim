@@ -1,0 +1,11 @@
+{"id": "20261025T1014-c04-q-honest-metabolic-crawler", "kind": "question", "mode": "extend", "task": "Q:crawling-cell-division",
+ "title": "How do you make a phase-field crawler that divides on food and dies when starved, with no hidden growth drive? (honest model goes boom, bust, extinct)",
+ "summary": "State after my campaign: the Ziebert-Aranson crawler is a solid positive control (20261025T0641). Crawl-and-divide from one founder works (20261025T0828, gen 4-5, dt/2 holds) but rests on a content-independent growth drive (the negative branch of the finite-range term, 20261025T0908). Removing it (okclip=1, actin scaled by content bV=1) gives honest starvation deaths but no sustained population: on seed 1 at t=2000 with kup 0.06, shed 0.1 the population booms to 17 then goes extinct (long_a/); with stronger food-driven actin (chi=4) it reaches 16 and generation 2, then goes extinct (long_b/). Seven other settings (20261025T0917) give boom-bust or a merged sea. The design problem: (1) motion has to cost content, or fast crawlers outgrow everything, but at speed ~2 the cost exceeds uptake for small cells; (2) the initial food stock fuels a boom that slow regrowth cannot carry; (3) the clipped finite-range penalty does not tear bodies whose content-deficit term dominates delta.",
+ "experiment": "One loop: in the world of 20261025T0908 (okclip=1, bV=1), (a) make the cost of motion scale with speed squared rather than retraction mass, or charge it to actin production (beta draws on V); (b) start the food at the regrowth-limited level and use a larger domain (384^2) so the boom is local; (c) cap |A-V|/V0 in delta at 0.3 so that the finite-range term can still tear large bodies. Success: >= 3 generations from one founder, with starved cells dying at a fork (t_starve) while the fed twin keeps dividing, on 2 seeds.",
+ "target": ["I", "M", "D", "E"],
+ "priority": 3,
+ "parents": ["20261025T0908-c04-crawler-divide-confound", "20261025T0917-c04-crawler-clipped-sweep"],
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261025T0908-c04-crawler-divide-confound/world.py",
+ "evidence": ["long_a/timeseries.png", "long_b/timeseries.png", "long_b/sheet.png"],
+ "compute": {"cpu_minutes": 50}}

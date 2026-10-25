@@ -1,0 +1,12 @@
+{"id": "20261025T1012-c06-pcell-hidden-cost", "kind": "finding", "mode": "extend", "task": "C:autonomous-heredity",
+ "title": "pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens even with no explicit replication cost",
+ "summary": "Follow-up to 20261025T0923-c06-pcell-somatic-decline. Rank declines could arise only because the population improves around a constant cell, so abslife.py compares each dying mature cell's absolute mean yield at birth and at death with the population mean at the same times. With cost cy=0.03 (3 seeds at muy 0.02, 2 at muy 0.002), dying cells fall from 0.93-0.98 to 0.66-0.81 while the population mean stays at 0.93-1.05; 77-100% of them declined. With no explicit cost (cy=0, 2 seeds) they still fall, from 1.07 to 0.98, while the population rises from 1.08-1.10 to 1.19-1.21 (64-86% declined). Low yield is therefore favoured inside a cell even without the explicit cost, plausibly because a particle's link production b y S m draws on the substrate S at its own position, which its own duplication rate c S (1-K) also needs (a hidden local cost; not separately ablated). Cells in this world age by within-cell erosion of the public good at any cost value tested.",
+ "parents": ["20261025T0923-c06-pcell-somatic-decline"],
+ "class": "hybrid-particle-field",
+ "world": "research/alife/collective/contrib/20261025T0820-c06-pcell-multilevel-claim/world.py",
+ "finding": {"operator": "particle-level public-good link yield inside self-made cells", "capability": "H", "world": "research/alife/collective/contrib/20261025T0820-c06-pcell-multilevel-claim/world.py", "necessary": false, "law": false,
+   "control": "population mean yield at the same times (abslife.txt); cy=0 arm",
+   "result": "dying cells' yield birth -> death: cy0.03: 0.948->0.806, 0.976->0.656, 0.956->0.655 (muy 0.02), 0.982->0.781, 0.929->0.734 (muy 0.002); cy0: 1.069->0.983, 1.068->0.983 while the population rose to 1.19-1.21."},
+ "outcome": "positive",
+ "evidence": ["abslife.txt"],
+ "compute": {"cpu_minutes": 1}}

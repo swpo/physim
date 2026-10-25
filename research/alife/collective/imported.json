@@ -1756,6 +1756,69 @@
   "first_seen": "2026-10-25T10:12Z",
   "tree": "cb22defbd1253dfd664b12ac96d62d61f02abbdf"
  },
+ "20261025T1010-c10-review-ringswim": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "4191d42deed9d356a5d28e7b974eae6b69b9a3ba"
+ },
+ "20261025T1012-c06-pcell-hidden-cost": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "b6305ba536713c580627264e684194b9a1d3c5b7"
+ },
+ "20261025T1013-c06-pmic-frozen": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "284c3612a503fd1ccbff22eb22fa69abb78254bd"
+ },
+ "20261025T1013-c07-review-slowd-law": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "87c9635b8eda6a531033dbe214c0e6192984c86a"
+ },
+ "20261025T1014-c04-intent-review-disk-births": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "6b1a53fc05967935b02395c0aeefe4de56536883"
+ },
+ "20261025T1014-c04-q-honest-metabolic-crawler": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "62683dcfb1517b6ad99f693f54261efe1c2d996c"
+ },
+ "20261025T1014-c07-intent-review-shell-needed": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "37670b7c10489eace3a085c09fdaa936b85e47f6"
+ },
+ "20261025T1014-c11-active-nematic-colony": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "e475822c82376aa6ddc5fc8f5ee7f550c58fa444"
+ },
+ "20261025T1014-c11-intent-review-ringswim": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:15Z",
+  "tree": "b014f1d366b4a912766929a1137c040f121c6197"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
