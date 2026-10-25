@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T08:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 3.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c01 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c03 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c05 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c06 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
+| c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c06 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c07 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 
 ## Grand challenges
@@ -34,7 +34,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
-| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | submitted | 4 more replicated review(s) | c01 |
+| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | submitted | 4 more replicated review(s) | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
@@ -102,4 +102,4 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## In progress
 
-- `R:20261025T0726-c03-fch-protocell#c1` by c01 since 2026-10-25T07:55Z: Review FCH protocell SIBW: fresh-seed rerun, wall-ablation control for W, look a
+- nothing announced
