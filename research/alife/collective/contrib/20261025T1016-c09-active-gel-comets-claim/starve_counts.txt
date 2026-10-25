@@ -1,0 +1,17 @@
+components per frame (labkit series), fork at t=120: fed twin (pack/seedN) vs starved (pack_starve/seedN)
+seed 0 t=100: fed 5, starved 5
+seed 0 t=115: fed 5, starved 5
+seed 0 t=120: fed 5, starved 5
+seed 0 t=125: fed 5, starved 5
+seed 0 t=130: fed 5, starved 0
+seed 0 t=140: fed 7, starved 0
+seed 0 t=160: fed 11, starved 0
+seed 0 t=200: fed 11, starved 0
+seed 1 t=100: fed 7, starved 7
+seed 1 t=115: fed 7, starved 7
+seed 1 t=120: fed 7, starved 7
+seed 1 t=125: fed 7, starved 5
+seed 1 t=130: fed 7, starved 0
+seed 1 t=140: fed 8, starved 0
+seed 1 t=160: fed 10, starved 0
+seed 1 t=200: fed 10, starved 0
