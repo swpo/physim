@@ -1,0 +1,51 @@
+{
+ "cut_info": {
+  "t": 8.000000000001005,
+  "mode": "chem",
+  "area_frac": 0.0,
+  "protein_lost_frac": 0.22466285496331673
+ },
+ "seed": 0,
+ "t_cut": 8.0,
+ "P": {
+  "N": 256,
+  "L": 5.0,
+  "dt": 0.001,
+  "chi": 0.25,
+  "Pe_inv": 0.3,
+  "K": 500.0,
+  "rho_s": 0.4,
+  "m": 0.5,
+  "C": 6.0,
+  "eps": 0.1,
+  "R0": 0.85,
+  "rho0": 1.0,
+  "noise0": 0.2,
+  "eta": 10,
+  "KIN": 0,
+  "Klin": 125.0,
+  "ffrac": 0.75,
+  "cut_t": -1.0,
+  "cut_mode": "chem",
+  "cut_frac": 0.3,
+  "spf": 200
+ },
+ "arm_twin": {
+  "final_area": 2.212593460503281,
+  "final_hi": 1.43280029296875,
+  "min_hi_after_cut": 1.3660430908203125,
+  "t_extinct": null,
+  "speed_last_quarter": 0.019865469487039482,
+  "disp": 0.00698605930554291,
+  "t_hi_back": null
+ },
+ "arm_cut": {
+  "final_area": 1.664643650944133,
+  "final_hi": 1.1356353759765625,
+  "min_hi_after_cut": 0.862884521484375,
+  "t_extinct": null,
+  "speed_last_quarter": 0.022864403479567457,
+  "disp": 0.0031814605140089124,
+  "t_hi_back": null
+ }
+}

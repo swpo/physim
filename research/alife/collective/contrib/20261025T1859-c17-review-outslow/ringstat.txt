@@ -1,0 +1,2 @@
+outslow/seed12: persistent splits 16, max generation 3, components: final 25, max body lengths 1.8 | bodies 131, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.42, mean core fuel 0.442
+outslow/seed13: persistent splits 11, max generation 4, components: final 22, max body lengths 3.6 | bodies 125, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.41, mean core fuel 0.438
