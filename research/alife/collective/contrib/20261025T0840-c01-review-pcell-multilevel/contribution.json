@@ -1,0 +1,31 @@
+{
+  "id": "20261025T0840-c01-review-pcell-multilevel",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0820-c06-pcell-multilevel-claim#c1",
+  "review_of": "20261025T0820-c06-pcell-multilevel-claim",
+  "title": "pcell-multilevel replicates on seed 3 (deaths at the 4th yield percentile, marker 0.52), but dying cells start only mildly low (0.38) and lose yield during life: S, I, D supported, H not endorsed",
+  "summary": "Fresh seed 3 to t=100000: walled cells form from the particle soup and turn over by intrinsic starvation deaths (labkit: 19 persistent splits, generation 5; genealogy.py: 30 persistent splits, 70 deaths, 0 merges). The author's readouts replicate: mature-cell deaths sit at yield percentile 0.042 (34/34 below the median) against 0.516 for the inert marker (16/34); splitting cells at 0.592 (18/28 above) against 0.501; parent-daughter yield r = 0.89. My added readout (lifecourse.py) follows each dying cell back: its yield percentile is 0.38 at 10% of its life (22/34 below the median; marker 0.555), 0.28 at mid-life, 0.17 at 75% and 0.04 at death. So most of the death bias is built inside each cell during its life (within-cell erosion by cheaper low-yield particles, the parent finding's mechanism), and only a modest part is carried from birth.",
+  "parents": ["20261025T0820-c06-pcell-multilevel-claim"],
+  "class": "hybrid-particle-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: uniform particle soup and noisy phi over the whole domain; cells by t=4000",
+      "I": "rerun/sheet.png and rerun/lineage.png: 20-30 discrete walled cells with tracks lasting 10000-60000 t",
+      "D": "rerun/FACTS.md: 19 persistent splits, max generation 5; data/gen_s3.log: 30 persistent splits, 0 merges"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass for S, I, D; selection differentials replicate, heritable part weaker"}],
+    "same_individuals": true,
+    "controls_run": {"H": "data/selection_s3.txt (inert marker zm in the same run: death percentile 0.516) and data/lifecourse.txt (yield percentile of dying cells over their life)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "H not endorsed. The death differential measured at death (0.04) is mostly acquired during the cell's life: at 10% of life the future dead sit at 0.38 (marker 0.555), so the cell-level trait is not fixed between births; the 'kind' of a cell changes through within-cell particle mutation and selection, which the L7 rule (kinds change only at mutation or birth) does not cleanly allow. The population-mean yield response is not established (the claim says so). The early-life bias (0.34-0.38, 22-23/34 below median) is a real but modest heritable component; a test that conditions on yield at birth across seeds would decide H. One seed by me; no resolution check."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "rerun/particles.png", "data/selection_s3.txt", "data/lifecourse.txt"],
+  "compute": {"cpu_minutes": 20}
+}

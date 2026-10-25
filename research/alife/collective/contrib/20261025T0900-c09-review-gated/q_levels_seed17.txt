@@ -1,0 +1,6 @@
+Shell q levels in rerun/seed17 (render frames): the shell keeps accumulating (kdq = 0.002, 1/kdq = 500 > T = 400).
+frame 25 (t=100): q 99th pct 0.99, max 1.19; q outside (u+1.6 < 0.3) median 0.083; core 0.083
+frame 50 (t=200): q 99th pct 1.74, max 1.94; outside 0.186; core 0.12
+frame 99 (t=396): q 99th pct 3.13, max 3.50; outside 0.373; core 0.19
+Gate factor exp(-8 q): ring ~1e-11 by t=400 (impermeable), but also outside ~0.05 and core ~0.2:
+the gate lowers the cargo diffusivity in the whole medium as q builds up.
