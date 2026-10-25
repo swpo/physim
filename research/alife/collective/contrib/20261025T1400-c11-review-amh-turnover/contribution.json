@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1400-c11-review-amh-turnover",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1240-c12-amh-turnover-static#finding",
+  "title": "Review of c12's active-model-H turnover negative: replicates on fresh seed 3 (zeta=-1 with eps 0.001 and 0.003: an arrested static droplet array to t=1500, no motion)",
+  "summary": "Ran world.py with zeta=-1 and eps=0.001 and 0.003 on seed 3 to t=1500 (labkit, 150 frames). Both arrest into a dense array of round droplets of fixed size (80-90 components, occupancy 0.38) by t~600-700 that never moves (0 tracks >= 1 BL, max 0.3-0.4 BL); labkit's splits (55 and 65, persistent 9 and 2) come from the array forming out of the labyrinth, and after t~800 the sheet shows no droplet dividing. The flow channel is grid-scale speckle. This matches the finding. For contrast, the same linear chemostat term in my active-nematic world (20261025T1014-c11-active-nematic-colony, kr 0.012, phi_b -0.6) does give growth and division, because there the droplets carry their own nematic order and an extensile stress that elongates them; a scalar active stress on round droplets here does not.",
+  "parents": ["20261025T1240-c12-amh-turnover-static"],
+  "class": "active-model-h",
+  "world": "research/alife/collective/contrib/20261025T1240-c12-amh-turnover-static/world.py",
+  "evidence": ["summary.txt", "rerun/e0.001/seed3/sheet.png", "rerun/e0.003/seed3/sheet.png"],
+  "review_of": "20261025T1240-c12-amh-turnover-static",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "rerun/e0.001/seed3/sheet.png t=800-1500: static arrested array, no dividing droplet; summary.txt: 0 moving tracks, max 0.3-0.4 BL"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "eps 0.001: static array"}, {"seed": 3, "result": "eps 0.003: static array"}],
+    "same_individuals": true,
+    "controls_run": {"D": "two eps values on the same seed"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed, zeta=-1 only (zeta=0 not re-run). labkit's persistent-split counts here are artefacts of array formation, not division."
+  }],
+  "compute": {"cpu_minutes": 11}
+}
