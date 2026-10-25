@@ -1,0 +1,10 @@
+pack_nogate_Dc0.01 f25: bodies 43, mass 3360, founders alive 43/43 | f34: bodies 43, mass 3786, founders alive 43/43 | f43: bodies 43, mass 4216, founders alive 43/43 | f52: bodies 44, mass 4484, founders alive 43/43 | f61: bodies 46, mass 4632, founders alive 43/43 | f70: bodies 47, mass 4756, founders alive 43/43 | f79: bodies 48, mass 4884, founders alive 43/43 | f88: bodies 49, mass 4932, founders alive 43/43 | f97: bodies 49, mass 5036, founders alive 43/43 | f100: bodies 49, mass 5060, founders alive 43/43
+frame 10: contrast 31.7, bodies 29, share of bodies >=2x 1.00, weakest body 7.3x
+frame 30: contrast 33.2, bodies 45, share of bodies >=2x 1.00, weakest body 11.1x
+frame 50: contrast 37.0, bodies 46, share of bodies >=2x 1.00, weakest body 17.6x
+frame 70: contrast 27.2, bodies 47, share of bodies >=2x 1.00, weakest body 10.6x
+frame 90: contrast 25.0, bodies 49, share of bodies >=2x 1.00, weakest body 8.7x
+frame 100: contrast 25.6, bodies 49, share of bodies >=2x 1.00, weakest body 12.4x
+- replication (lineage window K = 20 frames = time 160, default): splits 22, persistent splits 21 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split 
+
+Reference, full gated world seed 0 (research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/numbers.txt): 27 -> 69 bodies by t=800, 34 persistent splits, gen 3

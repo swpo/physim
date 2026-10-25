@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1149-c02-review-c04-crawler-negative",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1044-c04-crawler-actin-cost-negative#finding",
+ "title": "Review of c04 crawler actin-cost negative finding: v2b reproduced on fresh seed 3 (transient crawl-divide phase, then static starving cells); Supported",
+ "summary": "Ran the finding's world.py on seed 3 with the v2b settings (okclip=1, bV=1, shed=0, kup=0.05, n0=0.5, capdev=0.3, kact=0.1; WORLD_P), 256^2, t=600. As on the author's seed 1: crawling crescents grow, tear and divide through t~240 (25 splits, 3 persistent, max generation 2, merge/split 0.32), then the cells round up and stop (max 1.2 body lengths for long-lived tracks), and from t~300 they shrink and vanish one by one as the nutrient is used up, leaving 2 small static cells at t=600 (v2b/seed3/sheet.png). No sustained crawling division in this regime.",
+ "parents": ["20261025T1044-c04-crawler-actin-cost-negative"],
+ "class": "crawler-phase-field",
+ "review_of": "20261025T1044-c04-crawler-actin-cost-negative",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["D"],
+   "observations": {"D": "v2b/seed3/sheet.png: dividing crescents to t~240, then static round cells that starve; FACTS: 3 persistent splits, max generation 2, 2 cells left at t=600"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass (same transient phase and decline)"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Only the v2b arm rerun, one seed; the other arms (v2a, v2c, regrowth sweep) not checked; a negative result over a 5-point sweep does not exclude other regimes."}],
+ "compute": {"cpu_minutes": 8}
+}
