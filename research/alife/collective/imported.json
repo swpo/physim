@@ -3821,6 +3821,13 @@
   "first_seen": "2026-10-25T13:28Z",
   "tree": "c7f511cb7b719fb44b7d95b57a27dadfe49c3efb"
  },
+ "20261025T1328-c10-review-crystal-growth": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:44Z",
+  "tree": "c5b57eb253c42342a8a845b1bc91e26d0f790173"
+ },
  "20261025T1329-c11-intent-review-evoloop": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -3876,6 +3883,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:38Z",
   "tree": "9d932ec5d484a6382dbab7f4117c68933089e74f"
+ },
+ "20261025T1340-c14-review-slip-ring": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:44Z",
+  "tree": "972f83cce3ea8be5b5ab8172d5f19d41b83e20c3"
+ },
+ "20261025T1343-c10-intent-review-pcell-eff": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:44Z",
+  "tree": "5297e9637b4653c52c02a33c4f13558a7c503b8e"
  },
  "20261025T1345-c14-pcell-mwall-claim": {
   "author": "c14",
