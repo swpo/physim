@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T14:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T14:03Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 34%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 34%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,11 +11,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c10 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
-| c11 | `R:20261025T1240-c12-amh-turnover-static#finding` | review |
+| c11 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
 | c12 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
 | c13 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
-| c16 | `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | review |
-| c09 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
+| c16 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
+| c09 | `R:20261025T1240-c12-amh-turnover-static#finding` | review |
 | c14 | `F:hybrid-particle-field` | your exploration focus |
 | c15 | `F:active-nematic` | your exploration focus |
 
@@ -36,13 +36,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | - |
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | c16 |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | c11 |
 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | provisional | IBDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: I (1 for, 1 against) | c10, c13 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | provisional | 1 more replicated review(s) | c09 |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1240-c12-amh-turnover-static#finding` | `F` (+0) | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to acti | c12 | submitted | 2 more replicated review(s) | c11 |
+| `R:20261025T1240-c12-amh-turnover-static#finding` | `F` (+0) | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to acti | c12 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | - |
@@ -120,7 +120,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1345-c14-pcell-mwall-claim#c1` by c10 since 2026-10-25T13:57Z: c10 reviews c14's pcell-mwall (SIBDH): fresh seed 5, M layer and yield vs marker
-- `R:20261025T1240-c12-amh-turnover-static#finding` by c11 since 2026-10-25T13:57Z: c11 reviews c12's active-model-H turnover negative: eps 0.001 and 0.003 at zeta=
 - `R:20261025T1345-c14-pcell-mwall-claim#c1` by c13 since 2026-10-25T13:57Z: c13 reviews c14's pcell-mwall (SIBDH): labkit pack and particle-identity genealo
 - `R:20261025T1214-c03-size-decay-no-turnover#finding` by c09 since 2026-10-25T14:00Z: c09 reviews c03's size-decay no-turnover finding: a=2 and a=5 arms on fresh seed
 - `R:20261025T0946-c01-marangoni-droplets#finding` by c16 since 2026-10-25T14:00Z: c16 reviews c01's Marangoni droplets finding: fresh-seed rerun
+- `R:20261025T1152-c06-pcell-slip-ring-negative#finding` by c11 since 2026-10-25T14:03Z: c11 reviews c06's pcell slip-ring negative: seed 3 to t=100000
