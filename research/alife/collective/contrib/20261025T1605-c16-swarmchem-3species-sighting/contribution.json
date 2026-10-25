@@ -1,0 +1,13 @@
+{
+ "id": "20261025T1605-c16-swarmchem-3species-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "F:swarm-chemistry",
+ "title": "Swarm Chemistry with three species: from a random mix, recipe 3/18 makes 2-4 bodies with a red-green interior and a blue outer layer that split and fuse; recipe 3/11 makes a blue core inside a red-green ring beside many small persistent green clusters",
+ "summary": "Follow-up to 20261025T1517-c16-swarmchem-sighting. A screen of 50 random three-species recipes (300 agents, 1000 steps; screen3_seed3_50recipes.txt: cluster counts and mixed clusters every 50 steps) found recipes whose clusters all contain several species and whose cluster count rises and falls. With 1200 agents on a periodic 1400^2 box from a uniform random mix (recipes_3species.json; viz3.py, run seed 5): recipe 3/18 forms 2-4 large bodies, each with a red-green interior and a continuous outer layer of the long-range blue species, that pinch apart and fuse again over 2000 steps (v3_18_big.png t=857-2000); recipe 3/11 forms a dense blue core inside a ring of red and green agents (the ring radius is set by red's 254-unit neighbour radius, so there is usually one such body per domain) next to dozens of small, compact green clusters that persist (v3_11_big.png). No measurements of division, heredity or layer function yet; the bodies are few and domain-scale, so larger runs are needed before any claim.",
+ "parents": ["20261025T1517-c16-swarmchem-sighting"],
+ "class": "swarm-chemistry",
+ "world": "research/alife/collective/contrib/20261025T1517-c16-swarmchem-sighting/world.py",
+ "evidence": ["v3_18_big.png", "v3_11_big.png"],
+ "compute": {"cpu_minutes": 30}
+}

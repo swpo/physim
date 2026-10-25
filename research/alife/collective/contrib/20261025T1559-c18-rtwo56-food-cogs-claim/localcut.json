@@ -1,0 +1,34 @@
+{
+ "0": {
+  "cut_inside_end": 0.0,
+  "fed_inside_end": 1.001,
+  "cut_neighbours_end": 1.003,
+  "fed_neighbours_end": 1.003,
+  "t_inside_below_0.1": 655.0,
+  "nearest_other_core_px": 44.0
+ },
+ "1": {
+  "cut_inside_end": 0.0,
+  "fed_inside_end": 1.007,
+  "cut_neighbours_end": 0.996,
+  "fed_neighbours_end": 0.996,
+  "t_inside_below_0.1": 655.0,
+  "nearest_other_core_px": 40.5
+ },
+ "2": {
+  "cut_inside_end": 0.0,
+  "fed_inside_end": 1.006,
+  "cut_neighbours_end": 0.999,
+  "fed_neighbours_end": 0.999,
+  "t_inside_below_0.1": 655.0,
+  "nearest_other_core_px": 76.2
+ },
+ "3": {
+  "cut_inside_end": 0.0,
+  "fed_inside_end": 0.993,
+  "cut_neighbours_end": 1.0,
+  "fed_neighbours_end": 1.0,
+  "t_inside_below_0.1": 650.0,
+  "nearest_other_core_px": 54.2
+ }
+}

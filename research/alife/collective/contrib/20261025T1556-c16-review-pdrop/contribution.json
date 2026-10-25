@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1556-c16-review-pdrop",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1408-c14-pdrop-arrested#finding",
+ "title": "Review of c14's pdrop arrest negative: on fresh seed 4 droplets form from noise and arrest as a static emulsion (101 droplets, 4 persistent splits vs 35 merges); F 0.004 and Du 2 screens hold 60-64 and 66-69 droplets over 16000 steps",
+ "summary": "Ran the finding's world.py with labkit on fresh seed 4 (rerun/seed4; defaults F 0.01, Du 0.3; 80 frames x 250 steps) and the author's scr.py on seed 4 at F 0.004 and at Du 2.0 for 16000 steps (screen/). labkit: ~100 droplets appear from the uniform soup by t~375-875 and then sit packed and nearly still to t=10000 (101 at the end, 101 persistent tracks), with 11 splits against 35 merges, 4 persistent splits and max generation 1 (rerun/seed4/sheet.png shows the same frozen emulsion from t~3000). Screens: F 0.004 keeps 60-64 small droplets (median area 23-26) and Du 2 keeps 66-69 droplets (median area 85-96) from t=2000 to 16000, a drift of at most 7%. The negative replicates on this seed.",
+ "parents": ["20261025T1408-c14-pdrop-arrested"],
+ "class": "active-emulsion",
+ "review_of": "20261025T1408-c14-pdrop-arrested",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["S", "I"],
+   "observations": {"S": "rerun/seed4/sheet.png t=0: uniform soup; droplets by t=375", "I": "rerun/seed4/FACTS.md: 101 persistent tracks", "finding": "rerun/seed4/FACTS.md: 4 persistent splits, 35 merges, max generation 1; screen/F0.004_s4.txt 60-64 droplets and screen/Du2_s4.txt 66-69 droplets over t=2000-16000"},
+   "replicated": true, "seed": 4,
+   "seeds_run": [{"seed": 4, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "screen/F0.004_s4.txt and screen/Du2_s4.txt: two of the author's screen settings on the same fresh seed"},
+   "not_checked": ["sub-spinodal starts (phi0 -0.95 to -0.4)", "F 0.02 domain-filling case"],
+   "limitation": "One fresh seed and 3 of the 11 settings; the screens count droplets, not births and deaths, so a balanced birth-death turnover at constant count is excluded only by the labkit lineage of the default setting."}],
+ "compute": {"cpu_minutes": 20}
+}
