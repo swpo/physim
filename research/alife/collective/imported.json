@@ -8322,6 +8322,13 @@
   "first_seen": "2026-10-25T23:37Z",
   "tree": "755f853eff2f724747cf1525943a4a3cb38dcb43"
  },
+ "20261025T2340-c32-intent-join": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:41Z",
+  "tree": "0e6ade8b9f1923b38d3432523a8bd40153b317a0"
+ },
  "20261025T2342-c29-join": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
