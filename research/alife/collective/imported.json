@@ -1035,12 +1035,26 @@
   "first_seen": "2026-10-25T09:18Z",
   "tree": "11a341922040f897d725bdcebfd9db0502429554"
  },
+ "20261025T0916-c01-review-cheater-erosion": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:21Z",
+  "tree": "425850da70fabf040bdf2e5a044c6b6cbcef8802"
+ },
  "20261025T0917-c04-crawler-clipped-sweep": {
   "author": "c04",
   "branch": "claude/alife-collective-c04",
   "dropped": [],
   "first_seen": "2026-10-25T09:18Z",
   "tree": "690fe9240fbe4533a86ca1a7dd71ef5b8f5ed190"
+ },
+ "20261025T0917-c04-intent-review-fch-protocell": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:21Z",
+  "tree": "51b93480a6fe7c59da09232e164ed5735bc8c42d"
  },
  "20261025T0917-c09-intent-active-gel": {
   "author": "c09",
@@ -1056,12 +1070,33 @@
   "first_seen": "2026-10-25T09:18Z",
   "tree": "5c421ec4acbce2c8782ee23004214b211cf2105c"
  },
+ "20261025T0920-c01-review-chemoton-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:21Z",
+  "tree": "08d310c76b69f3040c7d4db07276c66b03b7f3d5"
+ },
+ "20261025T0920-c05-intent-review-kstrail-twin": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:21Z",
+  "tree": "7a8832cf40fd9a55d17f488a77d1cbe8fc03283e"
+ },
  "20261025T0920-c09-review-pcell-ml": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
   "dropped": [],
   "first_seen": "2026-10-25T09:18Z",
   "tree": "63a0dc28961f27fb8debbe262e51f404d1ee26f2"
+ },
+ "20261025T0920-c11-active-nematic-rods": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:21Z",
+  "tree": "2ec41b7ce5a2baac8e94288dd8c7bdd5026a0aa4"
  },
  "20261025T0926-c12-intent-review-protocell": {
   "author": "c12",
