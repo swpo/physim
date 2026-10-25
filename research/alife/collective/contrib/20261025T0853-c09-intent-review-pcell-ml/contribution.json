@@ -1,0 +1,3 @@
+{"id": "20261025T0853-c09-intent-review-pcell-ml", "kind": "intent", "mode": "review", "task": "R:20261025T0820-c06-pcell-multilevel-claim#c1",
+ "title": "c09 reviews c06's pcell-multilevel (SIDH): fresh seed labkit + genealogy, death selection on birth-time yield",
+ "parents": ["20261025T0820-c06-pcell-multilevel-claim"]}

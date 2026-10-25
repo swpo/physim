@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0850-c10-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Review of lab1 membrane_evo (SIBDH): the K2 sweep replicates on fresh seeds, but 95% of K2 births are fragments cut by the imposed death disks (Weak)",
+  "summary": "Fresh seeds 31-36 of the up arm (b2=1.3b) and its identical-event twin (b2=b), with lab 1's tracker plus one addition (births whose parent a death disk overlapped in the same census interval), and labkit packs of the up arm on seeds 31-32. Seed 31 went extinct in both arms (the noise IC collapses to one cell, which a disk erased). On seeds 32-36 the high-yield kind beats its twin in 4/5 (final K2 biomass share 0.91/0.94/0.00/0.88/0.91 vs twin 0.11/0.25/0.10/0.12/0.34); hygiene is clean (conversions <= flips, off-kind daughters 0-1, first acquisitions 0-2). But 89 of 94 K2 births in the up arm (95%) come from parents cut by an imposed disk, and 135 of 166 deaths are disk erasures; with p_death=0 (seeds 31-32) there are 0-7 births in 32000 time units and K2 never reproduces. Selection is real against the twin but runs on imposed fragmentation and imposed deaths, so D and H are seen but not autonomous.",
+  "parents": ["lab1-autopoiesis-membrane-evo"],
+  "class": "phase-field",
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "evidence": ["selection_c10.png", "evo/summary.txt", "rerun_up/seed32/sheet.png", "rerun_up/seed32/lineage.png", "rerun_up/seed31/sheet.png", "evotrack_disk.py"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun_up/seed32/sheet.png t=0: smoothed noise over the whole domain; cells condense by t=1750 (K2 starts at zero)",
+      "I": "rerun_up/seed32/sheet.png t=10500-40000: discrete walled cells, 11-18 at a time, irregular and sometimes fusing (merge/split 0.22)",
+      "D": "rerun_up/seed32/lineage.png: 6 persistent splits, max generation 3; but evo/summary.txt: 152 of 182 up-arm births on seeds 32-36 have a disk-cut parent, and with p_death=0 births drop to 0-7 per run",
+      "H": "selection_c10.png and evo/summary.txt: K2 share above the identical-event twin in 4/5 fresh seeds (0.88-0.94 vs 0.11-0.34), lost in s34; K2 births 18/30/1/11/34 vs twin 1/3/1/2/10"
+    },
+    "not_checked": [],
+    "replicated": true,
+    "seed": 32,
+    "seeds_run": [{"seed": 31, "result": "fail: extinct in both arms by a disk hit on the single surviving cell"}, {"seed": 32, "result": "pass"}, {"seed": 33, "result": "pass"}, {"seed": 34, "result": "fail: K2 lost (1 birth)"}, {"seed": 35, "result": "pass"}, {"seed": 36, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "H": "evo/twin_s32..36 (identical-event twin b2=b, same event RNG) and evo/up_nodisk_s31, s32 (p_death=0: 0 and 7 births, K2 never reproduces)"
+    },
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Disturbance-mediated, and more strongly than the claim's caveat says: 89/94 K2 births (95%) and 120/152 K1 births in the up arm are fragments of disk-cut parents, so differential reproduction is differential regrowth of imposed fragments, and deaths are 81% imposed. B is not supported here: the wall channel is 4phi(1-phi), an algebraic contour, and the independent link channel L has rim/core 1.40 on seed 32 (FACTS), below 1.5. One of 6 fresh seeds went extinct and one lost K2, so success is 4/6. The fix route is the open challenge C:autonomous-heredity."
+  }],
+  "compute": {"cpu_minutes": 50}
+}
