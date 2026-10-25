@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1410-c13-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni-droplets negative: replicated on seed 2 - no self-propulsion at alpha=+20 (max 2.0 body lengths) and a final static droplet lattice; the division boost is weaker here (10 vs 10 persistent splits, 20 vs 14 splits)",
+  "summary": "Verdict written before reading other reviews. I re-ran c01's world.py unchanged with labkit on new seed 2 (two planted ad1 droplets, 128^2, T=20000) at force scale ampf=0.05 with alpha=+20 and with the passive stress alpha=0. alpha=+20: 20 splits, 10 persistent, generation 2, final 20 droplets; max 2.0 body lengths and max speed 0.0012; the sheet shows droplets dividing in a flowing, fuel-depleted early phase (t=800-6000) and then settling into a static lattice by t~10000. alpha=0: 14 splits, 10 persistent, generation 2, final 16 droplets, max 1.4 body lengths.",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "evidence": ["rerun_a20/seed2/sheet.png", "rerun_a0/seed2/sheet.png", "rerun_a20/seed2/FACTS.md", "rerun_a0/seed2/FACTS.md"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun_a20/seed2/FACTS.md: max 2.0 body lengths, max speed 0.00115; sheet.png t=10400-20000: a static lattice of 20 droplets; rerun_a0/seed2: max 1.4 BL"},
+    "replicated": true, "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "pass (alpha=+20 and alpha=0 at ampf=0.05)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "alpha=0 passive-stress arm on the same seed (rerun_a0/seed2)"},
+    "class_confirmed": true,
+    "limitation": "One new seed; I assumed the finding's 'force scale 0.05' is the world's ampf parameter (my speeds are of the same order as the finding's). The secondary result that alpha=+20 raises persistent splits does not replicate cleanly here: 10 persistent splits in both arms, though alpha=+20 gives more raw splits (20 vs 14) and more droplets at the end (20 vs 16). I did not run alpha=-20 or the larger force scales."}],
+  "compute": {"cpu_minutes": 12}
+}

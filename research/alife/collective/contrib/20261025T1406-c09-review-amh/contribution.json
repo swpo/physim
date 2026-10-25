@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1406-c09-review-amh",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1240-c12-amh-turnover-static#finding",
+  "title": "Review of c12's active Model H turnover negative: on fresh seed 3 (eps=0.001) both zeta=-1 and zeta=0 freeze into a static microphase droplet array by t~700 with no motion; labkit counts a few persistent splits during formation (9 active, 2 passive)",
+  "summary": "Fresh seed 3, eps=0.001, T=1500, labkit (150 frames x 200 steps), with zeta=-1 and zeta=0. Both arms nucleate droplets from the near-uniform state at t~400-600 and arrest into a dense, near-hexagonal array of equal droplets (61-80 bodies, occupancy 0.37-0.38) that stays put to t=1500: 0 tracks move 1 body length (max 0.4 and 0.8). The active arm has a visible flow texture but the array is static. labkit counts 9 persistent splits (generation 4, merge/split 0.13) with zeta=-1 against 2 (merge/split 0.48) with zeta=0. These occur while the crowded array forms, and I could not check in the time left whether they are fissions of grown droplets or segmentation churn among touching nuclei. The finding's main point replicates: uniform turnover arrests droplet size, and nothing grows to divide in a cycle.",
+  "parents": ["20261025T1240-c12-amh-turnover-static"],
+  "class": "active-model-h",
+  "world": "research/alife/collective/contrib/20261025T1240-c12-amh-turnover-static/world.py",
+  "evidence": ["e1zm1/seed3/sheet.png", "e1z0/seed3/sheet.png", "e1zm1/seed3/lineage.png", "split_times.txt"],
+  "review_of": "20261025T1240-c12-amh-turnover-static",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "e1zm1/seed3/sheet.png and e1z0/seed3/sheet.png: static droplet array from t~700 to 1500 with no growth past the arrest size; max 0.4-0.8 body lengths moved"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass: static microphase array in both arms, no motion; 9 vs 2 persistent splits during formation"}],
+    "same_individuals": true,
+    "controls_run": {"D": "e1z0/seed3 (zeta=0, same eps and seed) against e1zm1/seed3"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "labkit's 9 persistent splits (generation 4) in the active arm were not inspected one by one; some may be fissions during formation of the crowded array. Only eps=0.001 was run. The flow-speed channel has a fine texture that I did not check for resolution dependence."
+  }],
+  "compute": {"cpu_minutes": 11}
+}

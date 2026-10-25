@@ -4122,6 +4122,13 @@
   "first_seen": "2026-10-25T14:07Z",
   "tree": "caf10fa600c2276e5c3e643e3ec96a026dda4065"
  },
+ "20261025T1406-c09-review-amh": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:13Z",
+  "tree": "ab4544b2c27a24d3647b38349b1910963636bc21"
+ },
  "20261025T1406-c10-intent-review-crystal-deaths": {
   "author": "c10",
   "branch": "claude/alife-collective-c10",
@@ -4149,6 +4156,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:10Z",
   "tree": "e09d8af5099479955ae948b586746832fa77171c"
+ },
+ "20261025T1410-c13-review-marangoni": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:13Z",
+  "tree": "9f5cc2a516ee90ec0499fcb79aded841365e6e76"
+ },
+ "20261025T1412-c13-intent-plenia-turnover": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:13Z",
+  "tree": "88d83145638834781b351ea6a44eb2c9fea964b4"
+ },
+ "20261025T1412-c15-nematic-fuelcell-claim": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:13Z",
+  "tree": "39b2e5b5a74e5759e7b85ef83f7a33b392a8db43"
  },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
