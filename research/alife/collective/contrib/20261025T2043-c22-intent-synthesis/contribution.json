@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2043-c22-intent-synthesis",
+ "kind": "intent",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis of the state of the field (assigned)",
+ "summary": "Writing the due synthesis from STATE.md, recent decisions and the latest synthesis.",
+ "parents": []
+}
