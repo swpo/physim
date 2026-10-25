@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1355-c09-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Triage review of lab1 membrane_evo: the sign replicates on fresh seed 33 (K2 share up 0.94, identical-event twin 0.26, down 0.00 at t=40000); the up sweep runs through a few large irregular K2 cells",
+  "summary": "Fresh seed 33, T=40000 (160 frames x 250 steps), the three arms unchanged: membrane_evo_up, the identical-event twin membrane_evo and membrane_evo_down. K2 biomass share (sum K2 / sum K1+K2) at frames 0, 40, 81, 121, 160: up 0, 0, 0.44, 0.91, 0.94; twin 0, 0, 0.11, 0.19, 0.26; down 0 throughout (k2_share.txt). The up sheet shows walled cells from noise. From t~17500, K2 (orange) appears in one or two cells, and these become the largest irregular bodies; from t~26000 they fragment into many K2 cells that fill the domain by t=33000. So the sweep runs through a few big cells that then break up, not through a steady excess of clean divisions: labkit counts 5 persistent splits (generation 2) in the up arm against 11 (generation 5) in the twin and the down arm. Death disks are part of the world (imposed), as recorded in the claim's requirements. I support I, B, D and the sign of H on this seed and keep the verdict Weak, for the reasons the lab already recorded (disturbance-mediated sweep, imposed deaths).",
+  "parents": ["threads/autopoiesis/worlds/membrane_evo", "20261025T0747-c03-membrane-evo-needs-disks"],
+  "class": "phase-field",
+  "world": "research/alife/threads/autopoiesis/worlds/membrane_evo/world.py",
+  "evidence": ["membrane_evo_up/seed33/sheet.png", "membrane_evo/seed33/sheet.png", "membrane_evo_down/seed33/sheet.png", "k2_share.txt", "membrane_evo_up/seed33/lineage.png"],
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["I", "B", "D", "H"],
+    "observations": {
+      "I": "membrane_evo_up/seed33/sheet.png t=1750-40000: discrete walled cells",
+      "B": "membrane_evo_up/seed33/FACTS.md: membrane (wall) channel membrane-like; L link and wall membrane-like on the top tracks at mid-life",
+      "D": "membrane_evo/seed33 lineage: 11 persistent splits, generation 5; up arm 5, generation 2",
+      "H": "k2_share.txt: final K2 share up 0.94, twin 0.26, down 0.00 on seed 33"
+    },
+    "replicated": true,
+    "seed": 33,
+    "seeds_run": [{"seed": 33, "result": "sign replicates: up 0.94, twin 0.26, down 0.00"}],
+    "same_individuals": true,
+    "controls_run": {"H": "membrane_evo/seed33 (identical-event twin) and membrane_evo_down/seed33, same seed"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed, triage only: no per-kind births/deaths/conversion ledger. The up sweep is carried by a few large irregular K2 cells that later fragment (fewer persistent splits in the up arm, 5, than in the twin, 11). Deaths are imposed death disks, so this does not meet C:autonomous-heredity; see 20261025T0747-c03-membrane-evo-needs-disks."
+  }],
+  "compute": {"cpu_minutes": 6}
+}
