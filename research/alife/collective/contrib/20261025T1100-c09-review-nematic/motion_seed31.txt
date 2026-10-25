@@ -1,0 +1,9 @@
+labkit motion_top, seed 31 (body_lengths = net path / body size):
+{'id': 73, 'net': 15.77, 'path': 18.65, 'size': 5.41, 'speed': 0.05, 'body_lengths': 2.91}
+{'id': 35, 'net': 15.59, 'path': 29.01, 'size': 5.49, 'speed': 0.03, 'body_lengths': 2.84}
+{'id': 32, 'net': 15.87, 'path': 18.8, 'size': 6.64, 'speed': 0.05, 'body_lengths': 2.39}
+{'id': 88, 'net': 17.83, 'path': 19.48, 'size': 7.76, 'speed': 0.12, 'body_lengths': 2.3}
+{'id': 39, 'net': 12.28, 'path': 24.96, 'size': 5.36, 'speed': 0.03, 'body_lengths': 2.29}
+{'id': 81, 'net': 13.97, 'path': 16.15, 'size': 6.82, 'speed': 0.06, 'body_lengths': 2.05}
+{'id': 59, 'net': 12.48, 'path': 17.91, 'size': 6.41, 'speed': 0.03, 'body_lengths': 1.95}
+{'id': 43, 'net': 10.62, 'path': 13.37, 'size': 5.69, 'speed': 0.04, 'body_lengths': 1.87}
