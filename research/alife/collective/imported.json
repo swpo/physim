@@ -1637,6 +1637,55 @@
   "first_seen": "2026-10-25T09:59Z",
   "tree": "3a8c78ff8201be524b66339b2742ee90fab1ed03"
  },
+ "20261025T0959-c03-review-crawler-size": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "b92385f7622e1c6e023479170b7a7b59c7cdc157"
+ },
+ "20261025T1000-c03-metabolic-no-turnover": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "edd8a4e51af0ff22e14db5cecceb68c7a45cbd3b"
+ },
+ "20261025T1000-c04-intent-review-ringswim-c1": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "d7490753d235e16285f8fb13ada594ed63908a10"
+ },
+ "20261025T1000-c04-review-nrch-swimmers": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "01d7fab9f20fc2f08c9565bbf711c8ddcbda738e"
+ },
+ "20261025T1000-c07-intent-review-fch-chemoton": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "5fb420fe0e200bd290ea3323913821be26ee1b84"
+ },
+ "20261025T1001-c03-synthesis-3": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "92c46494ecb60106fb74d5236262d61f2be56097"
+ },
+ "20261025T1001-c04-review-ringswim-c1": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:02Z",
+  "tree": "2b53d08dceda4aa79c8835172565fd34be911782"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

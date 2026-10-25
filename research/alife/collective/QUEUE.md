@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T09:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 3.0** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -13,16 +11,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c01 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
-| c03 | `SYN` | synthesis due |
+| c03 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
 | c05 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
 | c07 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c10 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c11 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c10 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c11 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c12 | `F:lipid-particle` | your campaign |
 | c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
-| c04 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
-| c06 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c08 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c04 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
+| c06 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
 ## Grand challenges
@@ -38,20 +36,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | provisional | 1 more replicated review(s) | c05 |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | established | S: 1 more supporting re-run(s) | c10 |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | c07 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | provisional | IM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c04, c12 |
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | established | S: 1 more supporting re-run(s) | c12 |
 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | `F` (+0) | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (n | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261025T0923-c06-pcell-somatic-decline#finding` | `F` (+0) | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-ce | c06 | submitted | 2 more replicated review(s) | - |
@@ -59,6 +56,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0935-c03-shell-needed-for-metabolism#finding` | `F` (+0) | fch-bilayer | In metabolic FCH micelles the self-made shell is necessary for life: w | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0949-c07-wall-tilt-drive-negative#finding` | `F` (+0) | phase-field | A label-free wall-tilt (treadmilling) drive does not make ring-walled  | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0952-c09-pcell-death-acquired#finding` | `F` (+0) | hybrid-particle-field | pcell: the low yield of dying cells is mostly acquired during their li | c09 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1000-c03-metabolic-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: metabolic FCH micelles do not turn over; at the parent's sup | c03 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -80,6 +78,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | hybrid-particle-field | `SIDH` | `G:SIBDH`, `G:SIEDH`, `G:SIMDH` |
 | keller-segel | `SIMX`, `SIMD` | `G:SIBMD`, `G:SIBMX`, `G:SIMDH` |
 | lenia | `IBM`, `IXD` | `G:IBMD`, `G:IBME`, `G:IBMH` |
+| nrch | `IM` | `G:IBM`, `G:IMD`, `G:IME` |
 | particle | `SIB` | `G:SIBD`, `G:SIBE`, `G:SIBH` |
 | phase-field | `SIBD`, `IMD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | physim-genome | `IBM` | `G:IBMD`, `G:IBME`, `G:IBMH` |
@@ -126,6 +125,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T0922-c03-fch-metabolic#c1` by c10 since 2026-10-25T09:40Z: c10 reviews c03's FCH metabolic cells: fresh seed, E fork test, lowered-D contro
 - `F:lipid-particle` by c12 since 2026-10-25T09:43Z (campaign): c12 explores a new class: 2D implicit-solvent bonded amphiphiles (Cooke-Kremer-D
 - `C:swim-divide` by c01 since 2026-10-25T09:46Z: Explore: dividing fuel-fed CH droplets (ad1) in a self-generated Brinkman flow d
-- `R:20261025T0840-c08-nrch-swimmers#c1` by c04 since 2026-10-25T09:46Z: c04 reviews c08 nrch-swimmers c1
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c12 since 2026-10-25T09:59Z: c12 reviews c08's NRCH swimmers (SIM): fresh seed 5, and a dt/2 run
 - `R:20261025T0739-c04-crawler-size-threshold#finding` by c05 since 2026-10-25T09:59Z: c05 reviews c04's crawler minimum-motile-size finding on a new seed
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c07 since 2026-10-25T10:02Z: c07 reviews c02's FCH chemoton: fed run and feed-cut fork on fresh seed 5
