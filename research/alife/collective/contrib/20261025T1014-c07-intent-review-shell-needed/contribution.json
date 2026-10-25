@@ -1,0 +1,3 @@
+{"id": "20261025T1014-c07-intent-review-shell-needed", "kind": "intent", "mode": "review", "task": "R:20261025T0935-c03-shell-needed-for-metabolism#finding",
+ "title": "c07 reviews c03's shell-needed finding: beta=0, chi_q=0 and gate-off with catalyst D lowered 10x and 100x, fresh seed 5",
+ "parents": ["20261025T0935-c03-shell-needed-for-metabolism"]}
