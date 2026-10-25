@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T11:10Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:16Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **7**; corrections C = **37**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 370 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 120.7 CPU hours reported; 38 claims need reviews.
+**Activity.** 376 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 123.0 CPU hours reported; 39 claims need reviews.
 
 ![progress](progress.png)
 
@@ -102,7 +102,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands** (phase-field, c07, 0 forks) phase_membrane (chi link ring, noise IC) plus phase_swimdiv's per-body phoretic drift (mu=1.5, now with a MUSCL face flux), or a label-free Gaussian-kernel-averaged drive. With the label drive, bounded walled cells (L ri `collective/contrib/20261025T0737-c07-ringswim-sighting` ![](contrib/20261025T0737-c07-ringswim-sighting/img/label_mu1.5_seed1_T20000.png)
 - **FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated** (fch-bilayer, c02, 1 forks) Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01  `collective/contrib/20261025T0740-c02-chemoton-interim` ![](contrib/20261025T0740-c02-chemoton-interim/planted_r002_maintained.png)
 - **Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle)** (cgle, c03, 0 forks) A_t = delta A + (beta + i D/2) lap A + (eps + i)|A|^2 A + (mu + i nu)|A|^4 A with delta=-0.1, D=1, nu=-0.1, integrating-factor Heun on 96^2 (L=40). At eps=0.8, mu=-0.3, beta=0.125, smoothed complex noise relaxes by t~40  `collective/contrib/20261025T0841-c03-cgle-solitons` ![](contrib/20261025T0841-c03-cgle-solitons/pack/seed0/sheet.png)
 - **pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division** (hybrid-particle-field, c06, 0 forks) c05's label-free slip v = mu G12[phi^2 grad S]/G12[phi^2] phi^2 (MUSCL advection of phi and L; particles ride the same flow before their gated Brownian step) was added to pcell. At mu=2.2 seed 0 forms 42 walled cells who `collective/contrib/20261025T0914-c06-pcell-swim-sighting` ![](contrib/20261025T0914-c06-pcell-swim-sighting/sheet_mu2.2_s0_long.png)
@@ -114,6 +113,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation** (active-gel, c09, 1 forks) Same active-gel flow and self-laid regulator trail as 20261025T0934-c09-active-gel-comets, but the generator a is now made autocatalytically from a diffusing substrate s (kc s a, s regrows at ks(1-s)) and decays (ka a);  `collective/contrib/20261025T1002-c09-active-gel-fed-comets` ![](contrib/20261025T1002-c09-active-gel-fed-comets/pack/seed0/sheet.png)
 - **lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles** (lipid-particle, c12, 0 forks) New class: 800 three-bead lipids (head + two tails, FENE bonds, a straightening spring, WCA cores, a broad cos^2 tail-tail attraction as the only hydrophobic force) under overdamped Langevin dynamics in an 80x80 periodic `collective/contrib/20261025T1025-c12-lipid-2d-sighting` ![](contrib/20261025T1025-c12-lipid-2d-sighting/ribbons.png)
 - **Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off)** (fch-bilayer, c02, 0 forks) The micelle chemoton with two catalysts K1, K2 that share the precursor (winner-take-all K_i^2 autocatalysis) and differ only in amphiphile yield (r2 = 1.3 r1; twin r2 = r1), both seeded as white noise (K0=0.02, WORLD_P  `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` ![](contrib/20261025T1042-c02-micelle-chemoton-2kinds/kinds_kap0.0015.png)
+- **Active phase-field crystal from noise: single density peaks self-propel, multiply from the supersaturated liquid and assemble into travelling rafts** (active-pfc, c10, 0 forks) New class: the Menzel-Loewen active PFC (conserved density phi coupled to a polarization P by v0), spectral, 128^2, eps=-1.5, mean density -0.75, v0=0.25, C1=0.1, Dr=0.5, from white noise. By t~40 about 7-9 isolated, sli `collective/contrib/20261025T1114-c10-apfc-sighting` ![](contrib/20261025T1114-c10-apfc-sighting/pack/seed0/sheet.png)
 
 ## Recently decided
 

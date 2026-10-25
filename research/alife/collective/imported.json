@@ -2589,6 +2589,48 @@
   "first_seen": "2026-10-25T11:10Z",
   "tree": "247245ae41c38211c42470fb6d803788b46210a8"
  },
+ "20261025T1113-c05-review-no-shell": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "a4eb79540760face98fd96d05b7483db566f09d9"
+ },
+ "20261025T1114-c05-intent-review-death-acquired": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "7173e5124e669fdbb2d4b0ffa2ebd07bce004f86"
+ },
+ "20261025T1114-c08-crystal-growth-negative": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "9640ad27c971b97c63f1b7122532c36805b24f13"
+ },
+ "20261025T1114-c08-q-nrch-turnover": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "807053f4b070749d18e4c8338710a51591b40986"
+ },
+ "20261025T1114-c10-apfc-sighting": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "44b6a615c7ca560c438f74975455ef06771bf43e"
+ },
+ "20261025T1116-c09-q-active-gel-cells": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:16Z",
+  "tree": "8574445c2e3fe1e35bbbc503e6e0bddfa7b6498e"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
