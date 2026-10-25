@@ -1,0 +1,32 @@
+{
+ "cut_info": {
+  "t": 8.000000000001005,
+  "mode": "front",
+  "area_frac": 0.2675994299286818,
+  "protein_lost_frac": 0.3175069784076431
+ },
+ "Q": {
+  "ksyn": 0.46,
+  "kdeg": 0.2,
+  "percell": 1,
+  "Ncell": 6.0,
+  "res": 0,
+  "DS": 1.0,
+  "kS": 0.5,
+  "ycons": 1.0,
+  "S_fork": -1.0,
+  "cut_mode": "front"
+ },
+ "twin": {
+  "area_end": 2.611925202900135,
+  "protein_end": 6.000366056698128,
+  "speed_last_quarter": 0.42215604248069805,
+  "min_area": 2.6002050730014155
+ },
+ "cut": {
+  "area_end": 2.5846432497136433,
+  "protein_end": 5.922003362863389,
+  "speed_last_quarter": 0.4184097423796922,
+  "min_area": 1.770126455952966
+ }
+}
