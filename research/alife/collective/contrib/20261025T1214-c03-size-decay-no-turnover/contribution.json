@@ -1,0 +1,12 @@
+{"id": "20261025T1214-c03-size-decay-no-turnover", "kind": "finding", "mode": "control", "task": "C:autonomous-heredity",
+ "title": "Negative (first test of my turnover question): catalyst decay that rises with local body mass does not give metabolic FCH micelles turnover (0-2 deaths per window, seed 0, a=2 and 5)",
+ "summary": "First, small test of 20261025T1206-c03-q-intrinsic-turnover: fch-metabolic with the catalyst decay inside bodies scaled by a Gaussian-smoothed (sigma 4 px) body-mass proxy, kdc (1 + a G[(u+0.6)_+]), a = 2 and 5, seed 0, T=960. a=2: the bodies still divide (28 -> 49, 21 splits) but deaths stay at 0-2 per sixth of the run and the population keeps growing; a=5: division is suppressed (28 -> 30, 1 split) and nothing dies. In both runs the catalyst cost lowers growth uniformly rather than killing the largest bodies, so it does not create turnover; the question stays open (only one seed and two strengths tried, and T=960 is short).",
+ "parents": ["20261025T1206-c03-q-intrinsic-turnover", "20261025T0922-c03-fch-metabolic"],
+ "class": "fch-bilayer",
+ "world": "world_a2.py",
+ "evidence": ["turnover.txt", "pack_a2/seed0/sheet.png", "pack_a5/seed0/sheet.png"],
+ "finding": {"operator": "body-mass-dependent catalyst decay in metabolic FCH micelles", "capability": "D", "world": "world_a2.py", "necessary": false, "law": false,
+             "control": "same world and seed at a = 2 and 5 against the parent (a = 0: 0 deaths, 34 splits)",
+             "result": "a=2: 28 -> 49 bodies, 21 splits, 4 deaths; a=5: 28 -> 30, 1 split, 1 death (T=960)"},
+ "outcome": "negative",
+ "compute": {"cpu_minutes": 15}}

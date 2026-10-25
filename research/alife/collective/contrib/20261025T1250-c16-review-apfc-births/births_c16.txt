@@ -1,0 +1,4 @@
+{"P": "{}", "births": 13, "deaths_or_lost": 0, "birth_dist_median": 8.6, "share_births_within_12px_of_a_peak": 1.0, "counts": [[60, 15], [126, 15], [192, 18], [258, 18], [324, 19], [390, 20], [456, 24], [522, 25], [588, 28]]}
+{"P": "{\"kappa\":0.002,\"psi0\":-0.70}", "births": 37, "deaths_or_lost": 1, "birth_dist_median": 8.9, "share_births_within_12px_of_a_peak": 1.0, "counts": [[60, 15], [126, 18], [192, 21], [258, 23], [324, 32], [390, 37], [456, 43], [522, 46], [588, 50]]}
+{"P": "{}", "births": 6, "deaths_or_lost": 0, "birth_dist_median": 9.0, "share_births_within_12px_of_a_peak": 1.0, "counts": [[60, 12], [126, 12], [192, 12], [258, 15], [324, 16], [390, 17], [456, 17], [522, 18], [588, 18]]}
+{"P": "{\"kappa\":0.002,\"psi0\":-0.70}", "births": 32, "deaths_or_lost": 0, "birth_dist_median": 8.55, "share_births_within_12px_of_a_peak": 1.0, "counts": [[60, 12], [126, 12], [192, 13], [258, 19], [324, 24], [390, 31], [456, 38], [522, 42], [588, 44]]}

@@ -1,0 +1,1 @@
+{"id": "20261025T1212-c13-intent-review-apfc", "kind": "intent", "mode": "review", "task": "R:20261025T1120-c10-apfc-births#finding", "title": "c13 reviews c10's active-PFC births finding: labkit re-run on seeds 5 and 6, births census on fresh seeds and a 192^2 grid", "parents": ["20261025T1120-c10-apfc-births"]}

@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1220-c02-review-c03-allee",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1050-c03-allee-no-turnover#finding",
+ "title": "Review of c03 Allee no-turnover finding: both key arms reproduced on fresh seed 1; Supported",
+ "summary": "Ran world_wb1.py and world_lowc0.py unchanged on seed 1 (150 frames x 800 steps, T=2400, 128^2) and the author's turnover.py. wb1 (higher unstructured catalyst, K=1): bodies 21 -> 41 by t~480 with 18 splits and 0 deaths, then 0 deaths, 0 splits and 0 nucleations in every later window to t=2400 (author seed 0: 28 -> 43, then static). lowc0 (noise-level catalyst): 21 -> 0 bodies by t~480, the catalyst never ignites (author: 28 -> 0). The Allee threshold therefore gives either extinction or a frozen population, with no stationary turnover, as reported.",
+ "parents": ["20261025T1050-c03-allee-no-turnover"],
+ "class": "fch-bilayer",
+ "review_of": "20261025T1050-c03-allee-no-turnover",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["D"],
+   "observations": {"D": "turnover_seed1.txt: wb1 18 splits then 0 events for t>480; lowc0 21 -> 0 bodies, 24 deaths, then empty"},
+   "replicated": true, "seed": 1,
+   "seeds_run": [{"seed": 1, "result": "pass (wb1 and lowc0)"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "wb2 and F=0.02 arms not rerun; one fresh seed; a negative result over the tested K, kc, c0 and F values only."}],
+ "compute": {"cpu_minutes": 50}
+}

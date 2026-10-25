@@ -1,0 +1,20 @@
+{
+  "id": "20261025T1225-c13-review-apfc-births",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1120-c10-apfc-births#finding",
+  "title": "Review of c10's active-PFC births finding: replicated on seeds 5, 6 and a 192^2 grid (all births within 12 px of earlier peaks, ~0 deaths); about 1 in 5 fed-arm births are chain-end extensions rather than triangle completions",
+  "summary": "Verdict written before reading other reviews. I re-ran c10's world.py unchanged with labkit (conserved seeds 5, 6; fed kappa=0.002 psi0=-0.70 seed 5) and the births.py census on the same runs plus a fed run on a 192^2 grid (seed 8). Every birth lies within 12 px of an earlier peak (median 8.6-8.9 px vs lattice 9.2), losses are 0-1 per run, and peaks grow 13 -> 24/29 (conserved) and 13 -> 55 (fed), 21 -> 121 at 192^2. Counting earlier peaks within 12 px of each birth, all conserved-arm births have >= 2 (triangle completion), but 9 of 44 fed-arm births have only 1: the crops (single_fed_s5.png) show 8 of them are chain-end extensions templated by the ripple of a 2-3 peak chain, and one is an elongated peak resolving into two maxima. labkit's crystallite tracks churn (merge/split ~1, max generation 1), with no reproduction of bodies.",
+  "parents": ["20261025T1120-c10-apfc-births"],
+  "class": "active-pfc",
+  "review_of": "20261025T1120-c10-apfc-births",
+  "evidence": ["rerun/seed5/sheet.png", "rerun_fed/sheet.png", "single_fed_s5.png", "results.txt"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "results.txt: births 11/14 (conserved s5/s6), 44 (fed s5), 102 (fed s8 192^2), 100% within 12 px, median 8.6-8.9 px, lost 0-1; single_fed_s5.png: births grow next to existing peaks, which stay put; rerun/seed5/sheet.png and rerun_fed/sheet.png t=0-1000: peaks only accumulate into crystallites"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}, {"seed": 6, "result": "pass"}, {"seed": 8, "result": "pass (192^2 grid, fed arm, births census only)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "conserved vs fed arm on the same seed (rerun/seed5, rerun_fed); 192^2 grid (results.txt); parent-count census nbrs.py"},
+    "class_confirmed": true,
+    "limitation": "The mechanism wording is too narrow: in the fed arm 9 of 44 births have a single earlier peak within 12 px; 8 are chain-end extensions (still templated, by two collinear peaks) and one (t~344-350, seed 5) is an elongated peak that resolves into two maxima, which I could not tell apart from a fused pair re-separating. So single-peak fission is rare, not shown impossible. I did not rerun the psi0 scan or the passive arm; the 12 px criterion is close to the lattice spacing in crowded crystallites, so it alone does not exclude division, which is why I looked at the crops."}],
+  "compute": {"cpu_minutes": 15}
+}
