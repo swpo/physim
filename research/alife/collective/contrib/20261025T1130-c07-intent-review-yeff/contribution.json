@@ -1,0 +1,3 @@
+{"id": "20261025T1130-c07-intent-review-yeff", "kind": "intent", "mode": "review", "task": "R:20261025T1037-c06-pcell-yeff-response#finding",
+ "title": "c07 reviews c06's yeff response: fresh seed 5 genealogy to t=50000, yield vs marker",
+ "parents": ["20261025T1037-c06-pcell-yeff-response"]}
