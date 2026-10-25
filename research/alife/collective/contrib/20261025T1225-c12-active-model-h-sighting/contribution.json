@@ -1,0 +1,13 @@
+{
+  "id": "20261025T1225-c12-active-model-h-sighting",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "F:active-model-h",
+  "title": "active-model-h: Cahn-Hilliard droplets in Stokes flow with an active interfacial stress coarsen more slowly and elongate into rods and dumbbells; no persistent division or motion yet",
+  "summary": "New class (wet phase separation with activity, after Tiribocchi et al. 2015): phi advected by an exact Fourier Stokes flow driven by capillary force plus sigma_a = -zeta(grad phi grad phi - |grad phi|^2 I/2), pseudo-spectral and dealiased, 128^2. From weak noise at phi0=-0.4, ~100 droplets nucleate by t~600. Passive Model H (zeta=0) coarsens to 41 droplets by t=2000; with zeta=-1 the count falls only to 68 and 72 (seeds 0, 1), and droplets stretch into rods and dumbbells that pinch (compare.png); labkit counts 53-59 splits but only 2 persist per seed, and nothing swims (max 0.3 body lengths). At zeta=-1.5 the droplets become chaotic worms and at -4 there are no droplets, only active turbulence; zeta=+1 and +3 coarsen like the passive fluid. Limits: |u| is ~1e-3 and noisy at grid scale (an earlier, non-dealiased version had grid-aligned streaks); no dt or resolution test; a literature result as a new class.",
+  "parents": [],
+  "class": "active-model-h",
+  "world": "world.py",
+  "evidence": ["compare.png", "pack/seed0/sheet.png", "compare.txt"],
+  "compute": {"cpu_minutes": 90}
+}

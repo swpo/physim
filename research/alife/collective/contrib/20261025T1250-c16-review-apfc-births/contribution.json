@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1250-c16-review-apfc-births",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1120-c10-apfc-births#finding",
+ "title": "Review of c10's active-PFC births finding: replicated on fresh seeds 7 and 8, births are templated next to existing peaks, never a split",
+ "summary": "Re-ran the claimed world (kappa=0) with labkit on seed 7 (rerun/seed7, 120 frames to t=600) and ran the author's births.py census, unchanged, on seeds 7 and 8 for both the conserved world and kappa=0.002, psi0=-0.70 (births_c16.txt). Every birth on both seeds and both arms lies within 12 px of a peak that existed 2 t earlier (median 8.55-9.0 px against the 9.2 px lattice spacing), with 0-1 losses per run; peaks grow 15->28 and 12->18 (conserved) and 15->50 and 12->44 (kappa 0.002). The labkit lineage on seed 7 shows 31 splits with 32 merges and only 1 persistent split (max generation 1), and the sheet shows new peaks appearing on the flank of existing pairs and rafts, never one peak becoming two. The finding replicates: the class gives I and M plus templated crystal growth, not reproduction.",
+ "parents": ["20261025T1120-c10-apfc-births"],
+ "class": "active-pfc",
+ "review_of": "20261025T1120-c10-apfc-births",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["I", "M"],
+   "observations": {"I": "rerun/seed7/sheet.png: 15 isolated round peaks by t=25 persist, joined by later ones, to t=600", "M": "rerun/seed7/sheet.png: single peaks and rafts change position between frames t=25-600", "finding": "births_c16.txt: 13/37/6/32 births, 100% within 12 px of an earlier peak, median 8.6/8.9/9.0/8.55 px; rerun/seed7/lineage.png: 1 persistent split, max gen 1"},
+   "replicated": true, "seed": 7,
+   "seeds_run": [{"seed": 7, "result": "pass"}, {"seed": 8, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "births_c16.txt: kappa=0 and kappa=0.002/psi0=-0.70 arms on seeds 7 and 8 (author's births.py, unchanged)"},
+   "not_checked": ["passive v0=0 arm", "psi0 scan below -0.70"],
+   "limitation": "Same census code and grid as the author; I did not vary dt or resolution, and 'never a split' rests on the census rule (new peak with no peak within 3 px) plus the labkit lineage and visual inspection of seed 7, not on a per-event birth strip of my own."}],
+ "compute": {"cpu_minutes": 12}
+}

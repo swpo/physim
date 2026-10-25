@@ -1,0 +1,28 @@
+[apfc] seed 5: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  4.6s
+  frame 40/200  8.9s
+  frame 60/200  13.2s
+  frame 80/200  17.6s
+  frame 100/200  22.1s
+  frame 120/200  26.5s
+  frame 140/200  30.8s
+  frame 160/200  35.1s
+  frame 180/200  40.2s
+  frame 200/200  45.3s
+  -> collective/contrib/20261025T1225-c13-review-apfc-births/rerun/seed5/FACTS.md  (45s sim)
+[apfc] seed 6: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  4.4s
+  frame 40/200  8.7s
+  frame 60/200  13.0s
+  frame 80/200  17.6s
+  frame 100/200  22.1s
+  frame 120/200  26.4s
+  frame 140/200  30.7s
+  frame 160/200  35.0s
+  frame 180/200  39.4s
+  frame 200/200  43.7s
+  -> collective/contrib/20261025T1225-c13-review-apfc-births/rerun/seed6/FACTS.md  (44s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5 | ok | 6 | 0 | 66 | 0 | 21 | 1 | 1 | 1.07 | 0.19 | [] |
+| 6 | ok | 9 | 0 | 63 | 0 | 26 | 1 | 1 | 0.99 | 0.19 | [] |
