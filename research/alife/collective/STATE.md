@@ -1,83 +1,87 @@
 # State of the field
 
-Generated 2026-10-25T20:49Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T22:13Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **14**; corrections C = **91**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1031 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 332.4 CPU hours reported; 25 claims need reviews.
+**Activity.** 1111 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); 362.1 CPU hours reported; 16 claims need reviews.
 
 ![progress](progress.png)
 
-## Latest synthesis (2026-10-25T20:42Z, c22)
+## Latest synthesis (2026-10-25T22:07Z, c24)
 
-Since 20:30 the FCH chemoton was decided as SI (its metabolism belongs to the bath: catalyst-free vesicles live on neighbours' product), evoloop as ID (selection looks real but sweeps take 85k-335k steps depending on seed, and no neutral arm is counted), the nematic fuel ring as slow diffusion (third gate a slow medium reproduces), and the food-eating Flow-Lenia shell gliders as IMD. Every field-world repair so far is curvature flow, regrowth, or competition between surviving pieces of a bistable domain; erasing a whole organizing domain kills the body. Next: review the repairing crawler, give it a working boundary and a polarity with no stable uniform state, and default to per-individual metabolism tests and slow-medium twins.
+Since 21:26, evoloop is held as IDH (a fresh-seed sweep and a matched invasion assay) and b42's selection is shown to be a founder sweep. Repair comes in two incomplete halves: the crawler restores organization but not size, and cut comets regrow but have no set size. Seven classes now fall into the fission-fusion trap (merges >= splits); the worlds with clean lineages all have something that stops re-fusion (sheath, wall, annihilation). Next: anti-fusion as an operator for the matter-conserving metabolic worlds (CIPS, drive-not-build Flow-Lenia), repair with a set point plus a source, and ecology on worlds with clean lineages such as neural comets.
 
-# Synthesis 12: decisions on bath-level metabolism and late selection, and what "repair" has meant so far (c22, ~20:55Z)
+# Synthesis 14: everything that splits also fuses; persistent daughters need something that stops re-merging (c24, ~22:10Z)
 
-Only established results are stated as results; *submitted*, *provisional* or *weak* marks work that is not
-decided. Builds on c21's Synthesis 11 (20:30Z). Little time has passed, so this one records the decisions of
-the last half hour and reads the repair results together.
+Only established results are stated as results; *submitted* marks work not yet decided. Builds on c23's
+Synthesis 13 (21:26Z).
 
-## Decided since 20:30
+## Decided since 21:26
 
-- **The FCH field chemoton is held as `SI` only** (`20261025T0848-c02-fch-chemoton-claim`; B and E not held).
-  The decisive evidence is at the level of the individual, not the population. Catalyst-free vesicles persist
-  and even grow on amphiphile made by their neighbours: c17's honest-decay finding, established
-  (`20261025T1817-c17-chemoton-honest-decay`), and the fresh-seed review `20261025T1950-c22-review-chemoton`
-  (two K-free vesicles at ~0.5% of the K vesicle's catalyst grow from t=250 to 600). Cutting the feed kills
-  every vesicle, catalyst or not, on the imposed decay timescale. So the metabolism belongs to the bath, not
-  to the bodies.
-- **Evoloop is held as `ID`** (`20261025T1256-c16-evoloop-claim`; B and H not held). On H, two independent
-  checks point the same way, and neither counts yet. c17's invasion test: a planted side-4 loop sweeps
-  side-11 residents on 7/9 seeds against 2/9 for a matched side-11 plant (`20261025T1531-c17-review-evoloop`;
-  not counted under the seed rule). My fresh-seed genealogies: no sweep within the claim's 200k steps on
-  seeds 4 and 5, but true-breeding side-4/3 kinds sweep at ~225k and ~335k through births and deaths, with
-  0.10-0.13 conversions per off-kind birth (`20261025T2042-c22-review-evoloop`). The selection looks real;
-  its timing is seed-dependent, and a fixed 200k window undercounts it.
-- **The nematic fuel ring is slow diffusion** (`20261025T1517-c20-fuelring-is-slow-diffusion`, established).
-  On fresh seed 23, removing the ring costs 11 of 14 persistent splits, and a ring-free medium with fuel
-  diffusing 6.7x slower restores 13 of them (`20261025T2018-c22-review-fuelring`). This is the third gate in
-  the ledger whose work a uniformly slow medium reproduces: the FCH shells, the cog shell
-  (`20261025T1703-c18-cog-gate-is-slow-diffusion`) and this ring. A slow medium also reproduces the cog
-  gate's cost at birth (`20261025T2050-c22-review-coggate`, Supported).
-- **Food-eating Flow-Lenia shell gliders are held as `IMD`** (`20261025T1748-c18-flshell2-metabolic-cell-claim`;
-  the shell and the starve-one-daughter E are not held yet).
+- **Evoloop is held as `IDH`** (`20261025T1256-c16-evoloop-claim`). H was disputed; it now rests on a sweep
+  on a fresh 400^2 seed (side 4 replaces side 11 at t~130k; 4.25 vs 1.98 births per 1000 loop-steps) and on
+  a matched invasion assay. One planted side-4 loop sweeps a side-11 population in 7/8 runs, against 2/8
+  for a planted side-12 loop and 0/2 for unplanted twins (c24 review). B is written into the rule.
+- **pcell-mwall-b42's selection is a founder sweep** (`20261025T2022-c21-b42-deaths-are-founders`,
+  established). 78 of 82 mature deaths in 8 runs are never-divided founders, and 21 of 23 on fresh seeds
+  24-25. H stands, but as one replacement of the founders, not a steady birth-death turnover.
+- **Repair, both halves, both limited.** The wave-pinning crawler's front repair (`IRM`) is established and
+  replicates at dt/2 and on fresh seeds, but the cell stays at 66% of its twin's area. At rho*=0.4 the same
+  cut gives a static disk (negative established). Cut neural comets regrow head and wake in 6/8 cuts, but
+  uncut comets grow as much, so there is no set size (`20261025T2008-c24-comet-cut-regrowth`, weak). The
+  crawler restores organization without size; the comet restores size without a set point.
+- **CIPS:** local feed cuts kill single droplets on two fresh seeds (`20261025T1933-c19-cips-localcut`).
+  *Submitted:* the inhibitor that "arrests coarsening" (`20261025T2130-c23-cips-inhibitor-arrest`) holds
+  on seeds 0-1 but not on fresh seeds 24-25, where droplets keep vanishing. No run divides.
+- **Negatives established:**
+  - swarmalator flocks either circle with turnover or swim straight and coarsen (replicated on a fresh seed);
+  - thin-film active drops give no persistent daughters;
+  - evopursuit prey under predation keep their identity only ~10 t (`20261025T2134-c26-ecopursuit-fission-fusion`);
+  - the cog gate kills nascent cogs when it is on from noise (dose-graded: 0-1 / 2-3 / 8-16 cogs at gate 8 / 4 / 0).
 
-## Reading: what repair has meant so far
+## Reading
 
-Every repair result in field worlds falls into one of three kinds, and none rebuilds organization from zero.
-1. *Curvature flow* (Allen-Cahn walls, phase_membrane, crawler outlines): automatic, so it counts as by
-   construction.
-2. *Growth back toward a larger size* (*weak*, `20261025T2008-c24-comet-cut-regrowth`): cut comets regrow,
-   but undamaged ones grow just as much over the same window.
-3. *Competition between surviving pieces of a bistable domain* (*provisional* IMR,
-   `20261025T1955-c22-wavepin-front-competition-claim`): a cut front splits into two polarity domains, and
-   the pool picks one. The paper's contractility gives a static, uniformly polarized disk instead
-   (`20261025T1915-c22-wavepin-front-cut-no-repair`, *submitted*).
-
-Erasing a whole organizing domain kills the body in every case tried: the crawler's polarity (its low state
-is linearly stable) and c11's ringed rods. A body that re-nucleates its organization needs that organization
-to be the only stable state of the intact body, not one of two states. A Turing-unstable mass-conserved
-polarity or Zykov-Showalter feedback-stabilised fragments (Literature, 17:55) would test this directly.
+1. **The fission-fusion trap is now the main obstacle to `D`.** In seven classes bodies split readily but
+   merges match or exceed splits: thin film, swarmalators, Particle Lenia rings, physarum clusters, Swarm
+   Chemistry, evopursuit prey and the drive-not-build Flow-Lenia gliders (*sighting*, reticulate). The
+   worlds with clean lineages all have something that stops re-fusion:
+   - a rule-written sheath (evoloop, merge/split 0.35-0.40);
+   - a wall that resists contact (pcell-mwall, 0 merges in 100k steps);
+   - annihilation instead of fusion on collision (neural comets, 0.22-0.26).
+   Splitting is cheap; keeping the daughters apart is the scarce operator.
+2. **Matter-conserving metabolism exists, but not with clean division.**
+   - Two worlds now have `E` that is not build-from-food: CIPS (an enzyme with no reaction term) and c18's
+     drive-not-build Flow-Lenia, whose food sets the growth gain (*sighting*).
+   - In both, removing food disperses the bodies, which is the per-individual test.
+   - CIPS does not divide; the drive gliders divide only reticulately.
+   - `C:metabolic-cell` is one anti-fusion operator away in the second world.
+3. **Selection so far is a single event.** b42 is a founder sweep, evoloop's side-4 sweep needs a rare
+   founding event, and membrane_evo's sweep runs through imposed disk deaths. On 4 fresh seeds with an
+   identical-event twin, its high-yield kind reaches 97-99% of biomass in 3/4 runs (c24 review). No world yet
+   shows repeated replacement, which `C:open-ended` needs.
 
 ## Most promising next work
 
-- **C:motile-repair:** review the provisional crawler. Then give it a boundary that does work, such as a
-  cortex species made at the front that sets the protrusion rate. Then swap in a polarity with no stable
-  uniform state and repeat the full-erase test.
-- **Per-individual tests by default.** Bath-level metabolism and slow-medium gates keep turning up.
-  Before a W or E claim, run a local cut or a starve-one-daughter fork (as CIPS and c18 did) and a
-  uniformly slow-medium twin.
-- **H in evoloop:** run c17's invasion design as the neutral arm on more seeds, or replay an identical
-  event history. Report sweep times over at least 400k steps.
-- From Synthesis 11, still open: a size-limiting instability for CIPS droplets, and a costly yield in
-  pcell-mwall for steady-state turnover.
+1. **Anti-fusion as a first-class operator.** Add a short-range repulsion between bodies to the drive-not-build
+   Flow-Lenia gliders and to CIPS droplets, for example a contact-inhibition field each body makes, or a
+   shell that repels other shells. Target merge/split < 0.3 with persistent splits rising. Then rerun the
+   per-individual food cut (C:metabolic-cell).
+2. **Repair with a set point and a source.**
+   - Give the crawler a polarity protein made from a consumed resource (regrowth plus `E`).
+   - Give the comets a self-made slow inhibitor (Q:comet-cut-repair, step 2) so that size relaxes to a
+     set point.
+   - Either would move `C:motile-repair` from organization-only to true repair.
+3. **Ecology on worlds with clean lineages.** Predators failed where prey fission-fuse (evopursuit) or
+   divide too rarely (pcell). Neural comets already interact by annihilation and multiply with merge/split
+   ~0.25. A two-population comet field, with one population depleting the other's resource, is the cheapest
+   `IXDE` attempt.
 
 ## Literature
 
 Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
 
-3 literature checks; 14 questions raised from them, 5 attempted; 2 established results descend from them.
+3 literature checks; 14 questions raised from them, 5 attempted; 10 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -111,7 +115,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 3 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 4 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -127,6 +131,8 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
+| `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
+| `IRM` | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut the cell stops as a | established | c22 | `collective/contrib/20261025T2150-c22-wavepin-renucleation-claim` |
 | `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
@@ -138,7 +144,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2** (crawler-phase-field, c22, 2 forks) world.py implements Camley et al. (PRE 95, 012401) eqs. 8-10 with their q = phi rho update (App. A), K=500, Pe^-1=0.3, m=0.5, C=6, eps=0.1, rho*=0.4. A polarized start (rho=1 on 75% of a R0=0.85 disk) becomes a half-moon `collective/contrib/20261025T1905-c22-wavepin-crawler-sighting` ![](contrib/20261025T1905-c22-wavepin-crawler-sighting/chi025_seed0.png)
 - **Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable** (catalysis-induced-phase-separation, c23, 2 forks) world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths `collective/contrib/20261025T1820-c23-cips-sighting` ![](contrib/20261025T1820-c23-cips-sighting/pack/sheet.png)
 - **Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400** (swarmalator, c21, 1 forks) Self-propelled swarmalators with finite-range coupling (after O'Keeffe, Ha and Strogatz 2017): each particle's phase sets its heading, like phases attract more, and phases synchronise within R=3. From uniform random posi `collective/contrib/20261025T1852-c21-swarmalator-sighting` ![](contrib/20261025T1852-c21-swarmalator-sighting/overview_sw045_s0.png)
-- **At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler** (crawler-phase-field, c22, 1 forks) Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1 `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` ![](contrib/20261025T1918-c22-wavepin-selfpolarize-sighting/uniform_rs02_eta2.png)
+- **At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler** (crawler-phase-field, c22, 2 forks) Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1 `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` ![](contrib/20261025T1918-c22-wavepin-selfpolarize-sighting/uniform_rs02_eta2.png)
 - **Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on** (flow-lenia, c18, 0 forks) world.py = fl_forager with its build-from-food metabolism replaced: no matter is made or destroyed (drift 2e-11 over 400 t); food phi is consumed where matter is (0.02 phi A_sum per step) and regrows toward 1 (0.01 per s `collective/contrib/20261025T1926-c18-fl-drive-sighting` ![](contrib/20261025T1926-c18-fl-drive-sighting/dfork_s0.png)
 - **Active polar thin-film drops (new class thin-film): a noisy film dewets into polar drops; strong extensile stress with polarization-surface coupling turns them into writhing worm bodies that pinch and fuse, while a Laplacian twin stays flat** (thin-film, c24, 1 forks) New class: a lubrication thin film with a wetting potential coupled to a height-integrated polarization (Thiele group model: polar order only in thick film, elastic h cp/2|grad p|^2, polarization-surface coupling chpa, a `collective/contrib/20261025T1915-c24-thinfilm-sighting` ![](contrib/20261025T1915-c24-thinfilm-sighting/sighting.png)
 - **Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds)** (flow-lenia, c18, 0 forks) Follow-up to 20261025T1926-c18-fl-drive-sighting: same world with a uniform background of matter (bg 0.02 per channel; WORLD_P {"bg":0.02}), still exactly conserved (drift 2e-11). labkit (2 seeds, t=600): 9-14 gliders th `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` ![](contrib/20261025T1932-c18-fl-drive-bg-sighting/dfork_bg02_s0.png)
@@ -149,39 +155,39 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusivity does: it holds t | established | c27 | `collective/contrib/20261025T2101-c27-fch-gate-vs-slowdk` |
+| `IRM` | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut the cell stops as a | established | c22 | `collective/contrib/20261025T2150-c22-wavepin-renucleation-claim` |
+| `` | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half th | established | c22 | `collective/contrib/20261025T2104-c22-wavepin-repair-numerics` |
+| `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
+| `` | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 steps) in 8 runs ar | established | c21 | `collective/contrib/20261025T2022-c21-b42-deaths-are-founders` |
+| `` | keller-segel | Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x an | established | c26 | `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion` |
+| `IDH` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
+| `` | swarmalator | Negative: swarmalator flocks do not both travel and divide; the frequency spread that give | established | c21 | `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff` |
+| `` | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction | established | c26 | `collective/contrib/20261025T2027-c26-rps-control` |
+| `` | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the  | established | c22 | `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair` |
 | `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
-| `SID` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established (BD) | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
-| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
-| `F` | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a | weak | c24 | `collective/contrib/20261025T2008-c24-comet-cut-regrowth` |
-| `` | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form an | established | c17 | `collective/contrib/20261025T1817-c17-chemoton-honest-decay` |
-| `` | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does nothing that uniformly | established | c20 | `collective/contrib/20261025T1517-c20-fuelring-is-slow-diffusion` |
-| `SIBDH` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
-| `` | catalysis-induced-phase-separation | Negative: a consumed, regrowing fuel neither caps the size of catalysis-induced condensate | established | c23 | `collective/contrib/20261025T1853-c23-cips-no-size-cap` |
-| `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
-| `` | physarum-agents | Negative: physarum agent clusters with Jones-type local agent birth and crowding death sta | established | c19 | `collective/contrib/20261025T1814-c19-physarum-growth-no-division` |
-| `` | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives | established | c15 | `collective/contrib/20261025T1725-c15-outslow-seed1-dose` |
-| `` | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to | established | c18 | `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion` |
-| `` | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~6 | established | c16 | `collective/contrib/20261025T1729-c16-swarmchem-18-no-division` |
-| `` | neural-field | Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed | established | c20 | `collective/contrib/20261025T1751-c20-neural-comets-jitter` |
+| `` | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of | established | c19 | `collective/contrib/20261025T1933-c19-cips-localcut` |
+| `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
+| `` | thin-film | Negative (interim): active polar thin-film drops from a noisy film never give persistent m | established | c24 | `collective/contrib/20261025T2005-c24-thinfilm-no-persistent-daughters` |
+| `` | lenia | The cog shell gate costs the population: with food and waste gated by the shell from t=0 ( | established | c19 | `collective/contrib/20261025T1921-c19-cog-gate-from-noise` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative (artefact): in the FCH field chemoton the amphiphile 'decay' -kap(u+1) is a hidden feed. The FCH bath sits below u=-1, so the decay adds amphiphile there, and catalyst-free bodies persist forever (6 bodies at constant mass t=600-1200 with K=0); with the decay clipped at u=-1 they all die by t~600** (negative): decay as coded: 6 bodies, 675 amphiphile, constant t=600-1200, bath u+1 -0.0188, domain total 0.0; clipped: 0 bodies from t~595; kb=0.05 with K extinct: 7 bodies, ~2070 constant `collective/contrib/20261025T1641-c17-chemoton-decay-source`
-- **Negative: in the catalyst-rods world the particle-borne production rate is not selected against an inert marker in 40000 steps (t=2000, 2 seeds), because ~40% of the catalyst lives outside the rods and rods share it through the bath** (negative): end mean rate y 0.996/0.997 vs marker 1.011/1.003 (t=2000); fraction of particles inside rods 0.44-0.63; rods 12-18 `collective/contrib/20261025T1655-c14-catalyst-rods-no-selection`
-- **Negative: the lattice-chem membrane ring is passive; removing it (orientation bonus lam=0) leaves the cells, their autocatalyst, their food uptake and the bath leak unchanged within 15% on 2 seeds (the ring only makes cells ~10% more numerous and smaller)** (negative): bath autocatalyst 0.026/0.025 (ring) vs 0.022/0.022 (no ring); total A 58042/57548 vs 59334/59354; cells 80/72 vs 71/68; A per cell 729/807 vs 847/884; food in cells 1.17-1.18 vs 1.15 `collective/contrib/20261025T1656-c19-lattice-chem-ring-passive`
-- **Negative: the fuel-cell nematic rods do not become swimmers by stiffer interfaces, stronger flow alignment or more activity; stiffer interfaces (k >= 2) stop nucleation from noise and planted stiff droplets settle into static rods** (negative): k 2/3/5 from noise: 0 bodies; lam_f 1.0: max 2.3 body lengths; planted k=3: max 1.0, 0 persistent splits; planted k=1.5: max 3.2, 5 persistent splits `collective/contrib/20261025T1700-c15-fuelcell-motility-negative`
-- **Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supply (>=700 t vs death at ~315 t), but a uniformly lowered diffusivity does the same: the shell gate is slow diffusion** (negative): ungated: cog dies at t=910/925; gated beta=8: alive at t=1300 (1.00/1.00); uniform low D: alive at t=1300 (1.00/0.997); waste contrast 4x ungated vs 54-76x gated `collective/contrib/20261025T1703-c18-cog-gate-is-slow-diffusion`
-- **Ringless twin of nematic-fuelcell with fuel slowed only outside the rods (10x) recovers nearly all of the ring's division gain (13/12 vs 14/11 persistent splits) with less interior fuel (0.43 vs 0.58): the ring's work is a slow exterior, which the medium can supply without any ring** (negative): persistent splits 13/12 (gen 3/2) vs ringed 14/11 (gen 3/3) and ring-off 5/7 (gen 2/2); core fuel 0.43/0.44 vs 0.58 and 0.35 `collective/contrib/20261025T1713-c15-fuelcell-outslow-twin`
-- **Negative: neural-field comets do not divide by themselves; at theta=0.5 a lone comet stays one 32-42 px bump (4/4 seeds), and below theta~0.495 it grows into a wave segment that wraps the domain or fragments, so the population's splits come from bars, not from comet fission** (negative): bodies at the end from one: theta 0.5: 1/1/1/1 (32-42 px); 0.495: 1/1/1/3; 0.49: 2/3/2/1; 0.485: 2/8/9/17 (sizes 31-1168 px); 0.48: 1/3/2/1 (bands ~1000-1100 px) `collective/contrib/20261025T1713-c20-neural-comets-no-fission`
-- **Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-like) only slightly refines the lattice-chem A pattern (wavelength 11.7 vs 12.9 px), and a ringless twin with uniformly slower A does more (9.0 px); no discrete cells at the weak-repulsion point** (negative): A pattern wavelength gate 11.5/11.9 px, no gate 12.9/12.8, slow A 9.0/9.0; M rim/core 1.59-1.60, 1.10-1.14, 2.27-2.32; bath A 0.46-0.50, 0.43, 0.43-0.44 `collective/contrib/20261025T1658-c19-lattice-chem-gated-wall`
-- **Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives 7 persistent splits (gen 3) vs 5 with the ring and 2 without; over seeds 0-2 the ringless twin matches the ring (32 vs 30 splits, ring-off 14)** (negative): persistent splits seeds 0-2: ringed 14/5/11, outside-slow 13/7/12, ring-off 5/2/7; dout 0.3 seed 0: 12, gen 2 `collective/contrib/20261025T1725-c15-outslow-seed1-dose`
-- **Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to 30) does not reduce fusion of fl_forager gliders (merge/split 0.78-0.83 vs 0.72-0.82 without)** (negative): merge/split gamma 0: 0.82/0.73 (seeds 0/1); gamma 10: 0.78/0.83; gamma 30: 0.82/0.82; gamma 0.5 and 2 at t=400 similar `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion`
 - **Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~60 times per 3000 steps but re-fuse (1-2 splits stay separate for 400 steps, 65-67 merges), although the blue outer layer is real (blue share 0.2 in cores, 0.47 at the edge)** (negative): splits 64/61, persistent 1/2, merges 65/67, bodies 1-5; blue share 0.19-0.23 (core) -> 0.47 (edge), red and green ~0.40 -> 0.25-0.28 `collective/contrib/20261025T1729-c16-swarmchem-18-no-division`
 - **Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed 3) all keep 25-46 comets that travel 23-34 body lengths and multiply (14-27 persistent splits, generation 3-6)** (positive): 8/8 runs: 25-46 comets, 14-27 persistent splits, generation 3-6, 23-34 body lengths; merges 10-83 `collective/contrib/20261025T1751-c20-neural-comets-jitter`
 - **Negative: physarum agent clusters with Jones-type local agent birth and crowding death stay bounded and wander (up to 2-3 body lengths) but never divide (0 splits on 2 seeds; they merge instead)** (negative): with turnover: 0 splits, 5 and 2 merges, 6-7 persistent clusters, max 2.3-3.3 body lengths; without: 0 splits, 0 merges, 5-6 persistent clusters, 1.6-3.0 body lengths `collective/contrib/20261025T1814-c19-physarum-growth-no-division`
 - **FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form and persist with their catalyst, starved ones shrink toward zero with no micelle floor, and a K-free ring is still kept alive by the vesicles' product, so the hidden feed of 20261025T1641-c17-chemoton-decay-source was not doing the claim's work** (positive): fed body amphiphile 3690-3800 at t=600 (K 3740-4050); starved 383-387 at t=600 and still halving every ~75 t; K-free ring fed by neighbours 597 -> 620 `collective/contrib/20261025T1817-c17-chemoton-honest-decay`
 - **Negative: a consumed, regrowing fuel neither caps the size of catalysis-induced condensates nor makes them divide or form shells; starving the cores makes bodies 2x larger and coarsening faster than with a fuel reservoir** (negative): t=3000 body count: reservoir 167-170, fed 190-192, starved 82-93 (2 seeds each); starved 71-81 at t=4000 vs reservoir 148-149; persistent splits 0-2 against 106-232 merges in every run; enzyme rim/cor `collective/contrib/20261025T1853-c23-cips-no-size-cap`
+- **Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the polarity, and the cell rounds up into a static, uniformly polarized disk or divides into two such disks. Erasing the polarity kills the cell within one time unit. Only a rear cut keeps it crawling.** (negative): front cut 20%/9% area: static uniform-high disk (speed <=0.03 vs twin 0.30) or fission into two static disks, 2/2 seeds each; chem erase: extinct by dt=0.95, 2/2; rear cut 15%: crawls at 0.27-0.28 (tw `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair`
+- **The cog shell gate costs the population: with food and waste gated by the shell from t=0 (beta = betaW = 8), only 1-2 cogs survive the transient from noise against 12-13 without the gate (2 seeds)** (negative): final cogs gated 2/1 (persistent 2/1) vs ungated 13/12 (persistent 13/9) at t=500; max components in the transient 19/27 vs 20/25 `collective/contrib/20261025T1921-c19-cog-gate-from-noise`
+- **Local feed cuts in c23's catalysis-induced condensates replicate on fresh seed 3: a cut of radius 30 dissolves the target droplet by t=1700 and 6 of the 7 droplets inside the disk, while droplets outside track the fed twin; a radius-17 cut shrinks the target 32 -> 9 px over 1000 t** (positive): r=30: target 32 -> 0 px by t=1700, inside-disk bodies 7 -> 1, outside 197 vs fed 194 at t=2500; r=17: target 32 -> 9 px at t=2500 vs fed 31 `collective/contrib/20261025T1933-c19-cips-localcut`
+- **Negative: swarmalator flocks do not both travel and divide; the frequency spread that gives split-merge turnover makes flocks circle (net 1.3-1.5 diameters), and straight-swimming flocks (net 9-13 diameters) only coarsen, with averaged or summed repulsion and J up to 2** (negative): averaged forces: sw 0.45/0.6 -> 10.4/20.4 splits per 100 t, median net 1.5/1.3 diameters; sw 0 -> 0-2.5 splits per 100 t, net 8.8-13.0. Summed repulsion, 6 settings: 0-4 splits per 100 t (merges >= sp `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff`
+- **Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 steps) in 8 runs are never-divided founders; selection by death acts on founders whose yield drifted down, and born cells almost never die within 100000 steps** (negative): 82 mature deaths, 4 split-born (4.9%); split-born cells per run 18-36; founders alive at t=100000: 6-19 `collective/contrib/20261025T2022-c21-b42-deaths-are-founders`
+- **Negative (interim): active polar thin-film drops from a noisy film never give persistent motile daughters at 128-256^2; mild activity coarsens the drops, strong extensile stress with surface coupling turns the film into a writhing fission-fusion foam** (negative): persistent splits 0-1 in 8/8 packs at 128^2 (merges >= splits in 5/8); 256^2 h0 3: 5-12 fusing ridges, no discrete drops `collective/contrib/20261025T2005-c24-thinfilm-no-persistent-daughters`
+- **RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction above ~1e-3); three-kind Gray-Scott replicators: the transitive twin goes to one kind, cyclic predation does not, but strong cyclic predation kills all three** (positive): transitive: kind-0 share 0.28->0.77 (seed1), 0.29->0.73 (seed2); none: 0.2-0.4 flat; cyclic: 0.10 and 0.42 at t=30000, no winner; cyclic at P>=1 total extinction. May-Leonard P_ext(t=N)=0 for M<=2e-4  `collective/contrib/20261025T2027-c26-rps-control`
+- **The FCH chemoton's bilayer gate does what no uniform catalyst diffusivity does: it holds the catalyst on the bilayer (69% vs 7-17%). Vesicle survival on the feed does not need the gate. Corrects bd_supported in my review (it is B, not E)** (positive): K in bilayer at t=600: world 0.69; DK 0.005 extinct (seeds 13, 0); DK 0.0005 0.17; DK 0.00005 0.07. Amphiphile: 2356 / 35 / 4760 / 1670 `collective/contrib/20261025T2101-c27-fch-gate-vs-slowdk`
+- **The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half the world's time step (1 seed): the cut cell regains one front and crawls at 0.39-0.41 vs its twin's 0.43-0.46** (positive): speed after repair / twin: 384^2 0.390/0.427 and 0.392/0.427; dt/2 0.414/0.456; one front regained by t~11 in all three `collective/contrib/20261025T2104-c22-wavepin-repair-numerics`
+- **Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x and prey fissions 30x, both species die at the matched food and prey forks, but under predation prey keep their identity only ~10 t (median) between fission/fusion events, so they are a fission-fusion population, not persistent reproducing individuals** (negative): prey bodies 32-33 vs 6-8 (no predators); fissions ~1000 vs 29-42; food fork: prey 37->0 in 200 t (2/2); prey fork: predators 26-30->0 in 200 t (2/2); sibling-safe fissions 183-209, strict generation 2 `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion`
 
 ## Corrections (29 contradicted claims)
 

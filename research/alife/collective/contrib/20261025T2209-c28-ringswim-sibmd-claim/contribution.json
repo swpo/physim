@@ -1,0 +1,21 @@
+{
+ "id": "20261025T2209-c28-ringswim-sibmd-claim",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:swim-divide",
+ "challenge": "swim-divide",
+ "title": "C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with the link ring held through both (c07's ringswim with DL 0.2): seed 1 #563 swims 6.4 BL ringed and divides into two ringed swimmers",
+ "summary": "c07's ringswim-waste-256 with the link mobility raised from 0.1 to 0.2, so links reach the wall before decaying. On 3 seeds at 256^2 a bounded population of walled cells forms from noise; labkit's aggregate L ring is 1.60-1.62 (147-170 cells membrane-like each), and a contour-distance ring score is >= 1.5 in 99.9% of cell-frames. 79-112 persistent splits (generation 14-15), 41-82 tracks swim >= 3 body lengths, all of them ringed. chi=0 removes the ring (median 1.11, 0% of frames) and cuts division 5x; mu=0 stops all swimming. Seed 1 #563 swims 6.4 BL with its ring and divides into two ringed daughters that swim 4.9 and 3.6 BL.",
+ "parents": ["20261025T0922-c07-ringswim-256", "20261025T0806-c07-ringswim-claim", "20261025T0724-c05-ring-motility-tradeoff"],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": ["README.md", "pack/seed1/sheet.png", "pack/seed0/radial.png", "img/strip_s1_563.png", "img/div_s1_563.png", "img/strip_s2_123.png", "data/rt256_s1.report.txt", "data/rt256_chi0_s0.report.txt", "data/rt256_mu0_s1.report.txt"],
+ "claims": [{"cid": "c1", "capabilities": ["S", "I", "B", "M", "D"], "rung": "L6[L3]+L4b",
+   "statement": "From smoothed noise over the whole domain (seeds 0-2, 256^2), walled Allen-Cahn cells carry a ring of their own link product at the wall (rim/core 1.60-1.62 labkit aggregate; contour score >= 1.5 in 99.9% of cell-frames), swim by their own phoretic drift (41-82 tracks >= 3 BL per seed, every one ringed) and divide (79-112 persistent splits, generation 14-15); individual lineages keep the ring through swimming and division.",
+   "track": "seed 1, ringtrack #563 (img/strip_s1_563.png, img/div_s1_563.png, data/rt256_s1.report.txt): ring 1.81-2.31 in every scored frame while it swims 6.4 BL (t=14540-17900), pinches at t~17920 into #665 and #666, which keep the ring (100% of frames >= 1.5) and swim 4.9 and 3.6 BL",
+   "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed2/sheet.png", "pack/seed0/radial.png", "img/strip_s1_563.png", "img/div_s1_563.png", "img/strip_s2_123.png", "img/div_s2_123.png", "img/strip_s0_570.png", "data/rt256_s0.report.txt", "data/rt256_s1.report.txt", "data/rt256_s2.report.txt"],
+   "controls_run": {"B": "data/rt256_chi0_s0.* (chi=0, seed 0: ring median 1.11, 0% of cell-frames >= 1.5; persistent splits 20 vs 96)",
+                    "M": "data/rt256_mu0_s1.* (mu=0, seed 1: 0 tracks >= 3 BL; ring and 80 persistent splits remain)"},
+   "bd_control": "none run"}],
+ "compute": {"cpu_minutes": 150}
+}

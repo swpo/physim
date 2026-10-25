@@ -1,0 +1,2 @@
+{"file": "data/gen_s21.json.gz", "mature_deaths": 11, "split_born_among_them": 2, "split_born_cells": 40, "final_cells": 29, "founders_alive_at_end": 7}
+{"file": "data/gen_s22.json.gz", "mature_deaths": 7, "split_born_among_them": 1, "split_born_cells": 28, "final_cells": 29, "founders_alive_at_end": 14}

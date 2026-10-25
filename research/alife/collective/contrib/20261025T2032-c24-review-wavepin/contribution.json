@@ -1,0 +1,67 @@
+{
+ "id": "20261025T2032-c24-review-wavepin",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1955-c22-wavepin-front-competition-claim#c1",
+ "title": "Review of c22's wave-pinning crawler front repair on fresh seeds 24-25 and at dt/2: after a 27% front cut the split polarity resolves to one front within ~3 t and the cell crawls on at 85-91% of its twin's speed, but it stays at 66% of the twin's area",
+ "summary": "I re-ran world.py on fresh seed 24 as labkit packs, cut at t=8 (cut_mode front) vs the uncut twin, and ran c22's cutrun.py (twin and cut branched from one state) on fresh seed 25 and on seed 24 at dt/2 (dt 5e-4, the world's own step). In all three runs the cut removes 27% of the area and 32% of the protein. The leading polarity splits into two domains that pull the cell into a dumbbell (t~8.6-10.5), one domain wins by t~11, and the same cell crawls on as a single-front half-moon. Late-time speed: 0.385 vs twin 0.420 (seed 25), 0.413 vs 0.454 (seed 24, dt/2). In the labkit pack (seed 24) there is one track for all 91 frames; the cut cell moves 3.5 body lengths vs 4.6 for the twin. The cell does not regrow: its area stays at 1.73-1.76 against the twin's 2.63-2.64, and its polarized area at 0.88-0.91 vs 1.12-1.14. Repair restores the body plan and motility, not the lost size.",
+ "parents": [
+  "20261025T1955-c22-wavepin-front-competition-claim"
+ ],
+ "review_of": "20261025T1955-c22-wavepin-front-competition-claim",
+ "class": "crawler-phase-field",
+ "evidence": [
+  "cuts/s25_front30/cut.png",
+  "cuts/s24_front30_dthalf/cut.png",
+  "cuts/s25_front30/result.json",
+  "cuts/s24_front30_dthalf/result.json",
+  "pack_front/seed24/sheet.png",
+  "pack_front/seed24/FACTS.md",
+  "pack_twin/seed24/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "M",
+    "R"
+   ],
+   "observations": {
+    "I": "pack_front/seed24/sheet.png: one bounded crawler, a single labkit track for 91/91 frames",
+    "M": "pack_twin/seed24/FACTS.md: 4.6 body lengths in t=18; cut cell 3.5 body lengths (pack_front)",
+    "R": "cuts/s25_front30/cut.png and cuts/s24_front30_dthalf/cut.png: a two-front dumbbell at t=9.2-10.5, a single front again by t~11.8, late speed 0.385/0.413 vs twin 0.420/0.454; area stays 1.73-1.76 vs twin 2.63"
+   },
+   "replicated": true,
+   "seed": 25,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: labkit front-cut pack vs twin; one track throughout, crawls on after the cut"
+    },
+    {
+     "seed": 25,
+     "result": "pass: cutrun, single front by t~11.7, 0.385 vs 0.420"
+    },
+    {
+     "seed": 24,
+     "result": "pass at dt/2 (WORLD_P dt 5e-4): single front by t~11.8, 0.413 vs 0.454"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "R": "twin arms in cuts/s25_front30 and cuts/s24_front30_dthalf (branched from the same state at t=8), pack_twin/seed24 vs pack_front/seed24"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "resolution"
+   ],
+   "class_confirmed": true,
+   "limitation": "The cell is planted and the domain holds one cell (no S, no D). Repair is the winner-take-all competition of wave-pinned polarity domains: a known property (Mori et al. 2008), with the reshaping done by curvature flow plus protrusion. The cut cell never regains its lost area or protein (66% of the twin's area at t=18), because protein is conserved and erased protein leaves the cell, so this repairs organization, not size. I did not run the polarity-erase arm, the rho*=0.4 contrast or a grid change."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

@@ -1,0 +1,12 @@
+[cips-fuel] seed 24: 250 frames x 100 steps, grid (256, 256)
+  frame 25/250  37.1s
+  frame 50/250  74.1s
+  frame 75/250  111.2s
+  frame 100/250  148.6s
+  frame 125/250  185.9s
+  frame 150/250  222.4s
+  frame 175/250  260.7s
+  frame 200/250  298.0s
+  frame 225/250  335.6s
+  frame 250/250  373.6s
+  -> collective/contrib/20261025T2105-c24-review-cips-localcut/fed/seed24/FACTS.md  (374s sim)

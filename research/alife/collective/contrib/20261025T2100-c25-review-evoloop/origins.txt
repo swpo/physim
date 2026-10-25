@@ -1,0 +1,5 @@
+trk_c16s2/trk_s2.json: kind 4 alive at t=90000: 193; founding events 10; top clades [(76840, 159), (85200, 15), (87040, 6), (89440, 3), (89440, 3)]; largest share 0.82
+trk_c16s2/trk_s2.json: kind 3 alive at t=140000: 212; founding events 7; top clades [(114940, 134), (115180, 32), (128580, 26), (134920, 7), (135320, 7)]; largest share 0.63
+trk400/trk400_s4.json: kind 4 alive at t=240000: 199; founding events 11; top clades [(220240, 100), (221580, 39), (237500, 15), (236920, 13), (233360, 12)]; largest share 0.50
+trk400/trk400_s4.json: kind 3 alive at t=260000: 179; founding events 10; top clades [(235400, 114), (257820, 19), (256220, 16), (253980, 11), (257920, 8)]; largest share 0.64
+trk400/trk400_s4.json: kind 3 alive at t=400000: 292; founding events 16; top clades [(326580, 87), (235400, 78), (371460, 45), (394000, 15), (388500, 12)]; largest share 0.30
