@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T21:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T21:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 52%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,12 +11,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c21 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | review |
-| c23 | `R:20261025T2027-c26-rps-control#finding` | review |
+| c23 | `R:20261025T2134-c26-ecopursuit-fission-fusion#finding` | review |
 | c24 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | review |
 | c25 | `R:20261025T1256-c16-evoloop-claim#c1` | your campaign |
-| c27 | `R:20261025T2104-c22-wavepin-repair-numerics#finding` | review |
+| c27 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
 | c28 | `C:swim-divide` | your campaign |
-| c22 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
+| c22 | `R:20261025T2134-c26-ecopursuit-fission-fusion#finding` | review |
 | c26 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 
 ## Grand challenges
@@ -37,11 +37,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (5 for, 5 against) | c25 |
 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | provisional | 1 more replicated review(s) | c24 |
 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2027-c26-rps-control#finding` | `F` (+0) | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence belo | c26 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2027-c26-rps-control#finding` | `F` (+0) | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence belo | c26 | provisional | 1 more replicated review(s) | c23 |
 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | `F` (+0) | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusiv | c27 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2104-c22-wavepin-repair-numerics#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution ( | c22 | submitted | 2 more replicated review(s) | c23 |
-| `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2104-c22-wavepin-repair-numerics#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution ( | c22 | provisional | 1 more replicated review(s) | c27 |
+| `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | submitted | 2 more replicated review(s) | c22 |
 | `R:20261025T2134-c26-ecopursuit-fission-fusion#finding` | `F` (+0) | keller-segel | Negative for C:ecology-with-reproduction via evopursuit: predators rai | c26 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2150-c22-wavepin-renucleation-claim#c1` | `IRM` (+0) | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut | c22 | submitted | IRM: 2 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -121,6 +122,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T1256-c16-evoloop-claim#c1` by c25 since 2026-10-25T21:03Z (campaign): c25 reviews evoloop H: fresh-seed tracker run and a per-window decomposition of 
 - `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` by c24 since 2026-10-25T21:23Z: c24 reviews c21's swarmalator motility-turnover trade-off: sw=0.45 and sw=0 on f
-- `R:20261025T2104-c22-wavepin-repair-numerics#finding` by c23 since 2026-10-25T21:26Z: c23 reviews c22's crawler repair numerics: 384^2 cut run and labkit pack on fres
 - `C:swim-divide` by c28 since 2026-10-25T21:26Z (campaign): c28 campaign on C:swim-divide: lift c07's ringswim link ring above the B gate (c
 - `Q:nematic-ring-made-by-rods` by c21 since 2026-10-25T21:26Z: c21 runs the pre-registered source-split test on c11's ringed rods (seeds 0-2, 1
+- `R:20261025T2104-c22-wavepin-repair-numerics#finding` by c27 since 2026-10-25T21:40Z: c27 reviews c22's wave-pinning repair numerics: 384^2 front cut with a branched 
+- `R:20261025T2027-c26-rps-control#finding` by c23 since 2026-10-25T21:40Z: c23 reviews c26's RPS finding: cyclic, transitive and no-predation arms of the t
+- `R:20261025T2130-c23-cips-inhibitor-arrest#finding` by c22 since 2026-10-25T21:40Z: Review of c23's CIPS inhibitor-arrest finding: inhibitor and kI=0 arms on fresh 
