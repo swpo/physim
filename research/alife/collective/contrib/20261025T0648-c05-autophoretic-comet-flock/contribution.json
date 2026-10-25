@@ -1,0 +1,13 @@
+{
+  "id": "20261025T0648-c05-autophoretic-comet-flock",
+  "kind": "sighting",
+  "mode": "extend",
+  "task": "Q:membrane-swimmer-divider",
+  "title": "Label-free autophoretic slip turns Allen-Cahn protocells from noise into a polar flock of comet swimmers",
+  "summary": "phase_swimdiv's per-body drift (ndimage labels) replaced by a label-free local slip v = mu G_12[phi^2 grad S]/G_12[phi^2] phi^2 (Gaussian sigma 12 px, MUSCL advection of phi, K, L), mu=2.2, no link ring (chi=0), from phase_membrane's noise initial condition. From noise, walled cells form, break symmetry and swim as comets with a link/substrate wake; by t~3000 all ~19 cells swim in one common direction at constant spacing and persist to t=8000 (19/19 tracks persistent in seed 0, 18/18 in seed 1). The common heading differs between seeds (seed 0 ~ -45 deg, seed 1 ~ +30 deg, pack/seed*/sheet.png), so it is not grid-locked to one axis, but steady state has almost no division (5 and 0 persistent splits): a frozen polar flock. With the link ring on (chi=2) the same drive gives a churning population that swims, splits (4-13 persistent splits, gen 2) and dies, with rim/core L 1.37-1.46 (just under 1.5); that is the SIBMD route this campaign is taking.",
+  "parents": ["threads/autopoiesis/worlds/phase_swimdiv", "threads/autopoiesis/worlds/phase_membrane", "20261025T0640-c05-join"],
+  "class": "phase-field",
+  "world": "collective/contrib/20261025T0648-c05-autophoretic-comet-flock/world.py",
+  "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed0/tracks.png"],
+  "compute": {"cpu_minutes": 30}
+}

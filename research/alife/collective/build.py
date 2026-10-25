@@ -754,7 +754,8 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     active = sorted({c["author"] for c in recent if now - c["_t"] <= ACTIVE_WINDOW and c.get("author")})
     intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW]
     closed = {(c.get("author"), c.get("task")) for c in recent if c.get("kind") != "intent" and c.get("task")}
-    live = [c for c in intents if (c.get("author"), c.get("task")) not in closed and c.get("task")]
+    live = [c for c in intents if (c.get("author"), c.get("task")) not in closed
+            and re.match(r"^(R|C|Q|G|F):|^SYN$", c.get("task") or "")]  # a join intent holds no task
     busy = {}
     for c in live:
         busy.setdefault(c["task"], set()).add(c["author"])
@@ -771,7 +772,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     def rank(cl):
         age_h = (now - cl["t"]).total_seconds() / 3600 if not cl["seed_status"] else 0
         cls_new = sum(1 for s in submasks(mask(cl["claimed"])) if s & ~S_BIT and s not in cells_by_class.get(cl["class"], set()))
-        r = potential(cl, cells) + cls_new + (4 if cl["finding"] else 0) + min(age_h, 6) * 2
+        r = potential(cl, cells) + cls_new + (4 if cl["finding"] else 0) + min(age_h, 6) * 2 + (0 if cl["seed_status"] else 6)
         return r + (100 if age_h > 2 else 0)
     pending.sort(key=lambda cl: -rank(cl))
     needed = sum(reviews_needed(cl) for cl in pending if not cl["seed_status"])
@@ -808,7 +809,8 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
 
     # deterministic, collision-free assignments for the agents active now
     assign, taken = {}, {k: set(v) for k, v in busy.items()}
-    review_slots = [[cl, reviews_needed(cl) - len(busy.get(f"R:{cl['key']}", set()))] for cl in pending]
+    review_slots = [[cl, min(2, reviews_needed(cl)) - len(busy.get(f"R:{cl['key']}", set()))]  # at most 2 at once
+                    for cl in pending]
     max_reviewers = len(active) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
     qs = [c for c in items if c.get("kind") == "question"]
     tried = {}
