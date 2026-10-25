@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0738-c05-review-pm-damage-mature",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-phase-membrane-damage-mature#c1",
+  "title": "Review of lab 1 phase_membrane mature-damage repair (SIBR): repair to the undamaged twin within ~500 t on 2 of 3 new seeds; R by construction",
+  "summary": "Verdict written before reading other reviews. I looked at the claim's seed2 damage.png, then ran phase_membrane (unchanged, noise IC) with --damage rim 0.5 on new seeds 14 and 15 (frame 120) and 13 (frame 100; at frame 120 labkit fell back to an elongated 4.3x-median cell, so I moved the cut), plus same-seed undamaged twins (twin/seed13-15), and followed the same cell in the twin (twin_compare.py, twin_compare.png). Seed 14: a mature compact cell (age 23 frames, aspect 1.11) lost 24.9%; its wall closes by t=6250 and its area/pre goes 0.64 -> 1.02 at +10 frames against the twin's 1.04, and it then divides when the twin's cell does (+25-30 frames). Seed 15: 25.2% erased, 0.71 -> 1.49 at +10 frames against the twin's 1.53. Seed 13: 22.7% erased; the cut cell pinched into two by t=5850 and the followed piece stayed at 0.44-0.52 while the twin's cell was at 0.8-1.0, inconclusive. The link ring is present in all three reruns (radial L rim/core 1.75-1.83, rim/outside 3.9-5.0).",
+  "parents": ["threads/autopoiesis/packs/phase_membrane_damage_mature"],
+  "class": "phase-field",
+  "review_of": "lab1-autopoiesis-phase-membrane-damage-mature",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "B", "R"],
+    "observations": {"S": "rerun/seed14/sheet.png t=0: noise over the whole domain", "I": "rerun/seed14/tracks.png: walled cells persist hundreds of frames between splits", "B": "rerun/seed14/radial.png: L rim/core 1.75, rim/outside 4.98; the repaired target shows its bright wall again at t=6600 (rerun/seed14/damage.png)", "R": "rerun/seed14/damage.png and twin_compare.png: 25% cut closes by t=6250, area 1.02 of pre-cut at +10 frames vs 1.04 for the same cell in twin/seed14; seed 15 1.49 vs 1.53"},
+    "replicated": true, "seed": 14, "seeds_run": [{"seed": 14, "result": "pass"}, {"seed": 15, "result": "pass"}, {"seed": 13, "result": "inconclusive: target pinched into two right after the cut; the followed piece diverged from the twin"}],
+    "same_individuals": true, "controls_run": {"R": "twin/seed14, twin/seed15, twin/seed13 (same seed, undamaged) with twin_compare.json"},
+    "by_construction": ["R"], "class_confirmed": true,
+    "limitation": "Repair is curvature flow plus tilt, automatic by construction (so R is recorded, not scored, unless a mechanism finding shows it does work). Cells grow continuously and divide every ~1500 t, so 'mature, non-dividing' holds only for a window: both successful targets divided ~1300-1500 t after the cut, as their twins did. Erased fractions are 23-25%, not the 41% of the claim's seed 2. Twin areas are component-only (twin_compare.py) while labkit's damaged follow-up includes enclosed holes, so the ratios compare shapes of curves, not exact areas."}],
+  "compute": {"cpu_minutes": 12}
+}

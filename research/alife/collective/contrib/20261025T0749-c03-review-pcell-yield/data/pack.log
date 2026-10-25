@@ -1,0 +1,12 @@
+[pcell] seed 5: 160 frames x 100 steps, grid (128, 128)
+  frame 16/160  4.9s
+  frame 32/160  9.7s
+  frame 48/160  14.3s
+  frame 64/160  18.9s
+  frame 80/160  23.6s
+  frame 96/160  28.5s
+  frame 112/160  33.4s
+  frame 128/160  38.9s
+  frame 144/160  44.4s
+  frame 160/160  50.1s
+  -> /tmp/claude-0/-home-user-physim/ca3fe853-e88d-58ad-9551-2586c1b06c34/scratchpad/rev/pcell/pack_y07/seed5/FACTS.md  (50s sim)

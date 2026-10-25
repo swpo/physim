@@ -1,0 +1,281 @@
+[
+ {
+  "run": "down_s21",
+  "K2_biomass_share": 0.0,
+  "final_counts": {
+   "K1": 15,
+   "K2": 0
+  },
+  "birth": {
+   "K1": 38,
+   "K2": 1
+  },
+  "death": {
+   "K1": 6,
+   "K2": 3
+  },
+  "death_disk": {
+   "K1": 20,
+   "K2": 2
+  },
+  "merge": 4,
+  "flip": {
+   "K1->K2": 4,
+   "K2->K1": 0
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "twin_s21",
+  "K2_biomass_share": 0.455,
+  "final_counts": {
+   "K1": 8,
+   "K2": 5
+  },
+  "birth": {
+   "K1": 37,
+   "K2": 7
+  },
+  "death": {
+   "K1": 6,
+   "K2": 5
+  },
+  "death_disk": {
+   "K1": 22,
+   "K2": 1
+  },
+  "merge": 5,
+  "flip": {
+   "K1->K2": 4,
+   "K2->K1": 0
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "twin_s22",
+  "K2_biomass_share": 0.301,
+  "final_counts": {
+   "K1": 10,
+   "K2": 5
+  },
+  "birth": {
+   "K1": 29,
+   "K2": 9
+  },
+  "death": {
+   "K1": 7,
+   "K2": 0
+  },
+  "death_disk": {
+   "K1": 13,
+   "K2": 5
+  },
+  "merge": 4,
+  "flip": {
+   "K1->K2": 4,
+   "K2->K1": 1
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "twin_s23",
+  "K2_biomass_share": 0.025,
+  "final_counts": {
+   "K1": 12,
+   "K2": 1
+  },
+  "birth": {
+   "K1": 40,
+   "K2": 2
+  },
+  "death": {
+   "K1": 6,
+   "K2": 0
+  },
+  "death_disk": {
+   "K1": 23,
+   "K2": 3
+  },
+  "merge": 7,
+  "flip": {
+   "K1->K2": 4,
+   "K2->K1": 2
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "twin_s24",
+  "K2_biomass_share": 0.478,
+  "final_counts": {
+   "K1": 9,
+   "K2": 7
+  },
+  "birth": {
+   "K1": 26,
+   "K2": 13
+  },
+  "death": {
+   "K1": 1,
+   "K2": 1
+  },
+  "death_disk": {
+   "K1": 20,
+   "K2": 5
+  },
+  "merge": 2,
+  "flip": {
+   "K1->K2": 3,
+   "K2->K1": 2
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "up_s21",
+  "K2_biomass_share": 0.931,
+  "final_counts": {
+   "K1": 4,
+   "K2": 8
+  },
+  "birth": {
+   "K1": 27,
+   "K2": 10
+  },
+  "death": {
+   "K1": 4,
+   "K2": 0
+  },
+  "death_disk": {
+   "K1": 23,
+   "K2": 1
+  },
+  "merge": 4,
+  "flip": {
+   "K1->K2": 2,
+   "K2->K1": 1
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ },
+ {
+  "run": "up_s22",
+  "K2_biomass_share": 0.776,
+  "final_counts": {
+   "K1": 7,
+   "K2": 5
+  },
+  "birth": {
+   "K1": 44,
+   "K2": 4
+  },
+  "death": {
+   "K1": 5,
+   "K2": 1
+  },
+  "death_disk": {
+   "K1": 33,
+   "K2": 0
+  },
+  "merge": 7,
+  "flip": {
+   "K1->K2": 6,
+   "K2->K1": 3
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 3
+ },
+ {
+  "run": "up_s23",
+  "K2_biomass_share": 0.823,
+  "final_counts": {
+   "K1": 3,
+   "K2": 10
+  },
+  "birth": {
+   "K1": 37,
+   "K2": 18
+  },
+  "death": {
+   "K1": 4,
+   "K2": 0
+  },
+  "death_disk": {
+   "K1": 31,
+   "K2": 2
+  },
+  "merge": 15,
+  "flip": {
+   "K1->K2": 2,
+   "K2->K1": 5
+  },
+  "conversion": {
+   "K1->K2": 1,
+   "K2->K1": 1
+  },
+  "first_acq": 1,
+  "offkind_daughters": 2
+ },
+ {
+  "run": "up_s24",
+  "K2_biomass_share": 0.651,
+  "final_counts": {
+   "K1": 10,
+   "K2": 6
+  },
+  "birth": {
+   "K1": 36,
+   "K2": 20
+  },
+  "death": {
+   "K1": 2,
+   "K2": 0
+  },
+  "death_disk": {
+   "K1": 31,
+   "K2": 4
+  },
+  "merge": 19,
+  "flip": {
+   "K1->K2": 1,
+   "K2->K1": 5
+  },
+  "conversion": {
+   "K1->K2": 0,
+   "K2->K1": 0
+  },
+  "first_acq": 0,
+  "offkind_daughters": 0
+ }
+]

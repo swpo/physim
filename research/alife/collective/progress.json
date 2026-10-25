@@ -110,6 +110,138 @@
 "P_prov": 52,
 "contributions": 19,
 "cpu_hours": 5.8
+},
+{
+"t": "2026-10-25T07:11Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 20,
+"cpu_hours": 6.8
+},
+{
+"t": "2026-10-25T07:15Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 22,
+"cpu_hours": 7.55
+},
+{
+"t": "2026-10-25T07:21Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 24,
+"cpu_hours": 8.55
+},
+{
+"t": "2026-10-25T07:24Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 56,
+"contributions": 28,
+"cpu_hours": 8.97
+},
+{
+"t": "2026-10-25T07:30Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 36,
+"cpu_hours": 11.45
+},
+{
+"t": "2026-10-25T07:33Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 40,
+"cpu_hours": 12.95
+},
+{
+"t": "2026-10-25T07:36Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 41,
+"cpu_hours": 13.37
+},
+{
+"t": "2026-10-25T07:40Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 44,
+"cpu_hours": 14.28
+},
+{
+"t": "2026-10-25T07:43Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 48,
+"cpu_hours": 17.57
+},
+{
+"t": "2026-10-25T07:49Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 53,
+"cpu_hours": 19.32
+},
+{
+"t": "2026-10-25T07:52Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 54,
+"cpu_hours": 19.32
+},
+{
+"t": "2026-10-25T07:55Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 56,
+"cpu_hours": 19.73
 }
 ]
 }

@@ -1,0 +1,23 @@
+{
+  "id": "20261025T0731-c01-phase-membrane-bd-twin",
+  "kind": "finding",
+  "mode": "control",
+  "task": "C:reproduction-beyond-diffusion",
+  "title": "phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L ring; only a lattice-locked lam=0.001 keeps both, and it fails at 2x",
+  "summary": "I replaced phase_membrane's phi^2-gated mobility and wall-adsorption drift by uniform diffusion of K and L scaled by lam (1 to 0). For lam <= 0.1 the twin still forms walled cells from noise that divide (14-40 persistent splits, gen 2-3), so S, I and D do not need the gate. The per-cell L ring (rim/deep core) is 2.29-2.37 in phase_membrane (2.45 at 2x) but 1.16-1.69 in the twin for lam 0.003-0.1 (1.14 for the gated chi=0 ablation); at lam 0 a rim of about 2 appears but the population freezes (gen 1). Only lam 0.001 gives rim 1.93 with slow division at 1x, with lattice-locked square cells; at 2x the same twin hollows into catalyst-free L arcs that fragment and its rim decays to 1.67. B in phase_membrane therefore depends on non-diffusive transport (the drift), while its reproduction does not.",
+  "parents": ["research/alife/threads/autopoiesis/worlds/phase_membrane/world.py", "research/alife/threads/autopoiesis/packs/phase_membrane", "research/alife/threads/autopoiesis/packs/phase_membrane_chi0", "lab1-autopoiesis-phase-membrane"],
+  "class": "phase-field",
+  "world": "twin_pm.py",
+  "outcome": "positive",
+  "finding": {
+    "operator": "phi^2-gated mobility plus wall-adsorption drift of the link L (phase_membrane)",
+    "capability": "B",
+    "world": "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py",
+    "necessary": true,
+    "law": false,
+    "control": "matched Laplacian-only twin: gate=0, chi=0, D_K and D_L uniform x lam, lam in {1, 0.3, 0.1, 0.03, 0.01, 0.003, 0.001, 0}; 2x resolution at lam 0.001; gated chi=0 ablation",
+    "result": "ring (L rim/deep core, per-cell median): world 2.29-2.37 (2.45 at 2x); twin lam 0.1: 1.16-1.19 (3 seeds), 0.03-0.003: 1.32-1.69, 0.001: 1.93 at 1x (2 seeds, square lattice-locked cells, 14-20 splits gen 2) but 2.9->1.7 decaying at 2x with cells hollowing into fragmenting L arcs, 0: 2.0-2.1 frozen (2 splits, gen 1). Division is not lost: lam<=0.1 gives 14-40 persistent splits, gen 2-3 (world: 10, gen 2-3). Necessity is for B together with D at a resolution-robust setting; D, I and S alone survive the twin."
+  },
+  "evidence": ["L_compare.png", "rerun_pm/seed5/sheet.png", "pack_twin/seed5/sheet.png", "pack_twin_lam0001/seed5/sheet.png", "pack_twin_lam0001/seed5/lineage.png", "pack_twin_lam0001_x2/sheet.png", "pack_twin_lam0/seed5/sheet.png", "ring_summary.json", "NOTES.md"],
+  "compute": {"cpu_minutes": 60}
+}

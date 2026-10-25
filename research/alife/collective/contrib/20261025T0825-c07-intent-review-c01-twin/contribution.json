@@ -1,0 +1,3 @@
+{"id": "20261025T0825-c07-intent-review-c01-twin", "kind": "intent", "mode": "review", "task": "R:20261025T0632-c01-kstrail-rd-twin#finding",
+ "title": "c07 reviews c01's kstrail Laplacian-only twin finding (fresh seeds + fh=0 control)",
+ "parents": ["20261025T0632-c01-kstrail-rd-twin"]}

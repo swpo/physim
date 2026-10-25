@@ -1,0 +1,33 @@
+{
+  "id": "20261025T0748-c01-review-phase-membrane-bd",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-phase-membrane#c1",
+  "review_of": "lab1-autopoiesis-phase-membrane",
+  "title": "phase_membrane SIBD replicates on seeds 7-8; its L ring fails in the uniform-D Laplacian twin, its division does not",
+  "summary": "Fresh-seed labkit reruns (seeds 7, 8): walled cells condense from noise, 12 and 7 persistent splits, max generation 4 and 3; per-cell L ring (rim within 2 px of the wall over the deep core) 2.32 at 1x and 2.42 at 2x (seed 7). Matched Laplacian-only twin (gate=0, chi=0, D_K and D_L uniform x lam; twin_pm.py): at lam 0.1 it forms and divides walled cells from noise (26 persistent splits) but the ring is 1.16; at lam 0.001 the ring is 1.85 at 1x with lattice-locked cells, and at 2x the twin's cells hollow into catalyst-free L arcs that fragment, falling from 18 to 3 measurable cells, while the world is unchanged at 2x. So B is beyond diffusion in this world and D is not.",
+  "parents": ["lab1-autopoiesis-phase-membrane", "20261025T0731-c01-phase-membrane-bd-twin"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "D"],
+    "observations": {
+      "S": "rerun/seed7/sheet.png t=0: smoothed noise everywhere, cells by t=350",
+      "I": "rerun/seed7/tracks.png: tracks #60, #84, #88 followed as discrete walled cells for 3000-5000 t",
+      "B": "ring/world_s7.json: per-cell L rim/deep core 2.32 (1.97-2.54 over t=2000-8000); 2.42 at 2x (ring/world_x2_s7.json); bright smooth L rim at the wall in rerun/seed7/tracks.png",
+      "D": "rerun/SUMMARY.md: persistent splits 12 and 7, max generation 4 and 3 (seeds 7, 8)"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass"}, {"seed": 8, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"B": "twin_lam01/ and ring/twin_lam01_s7.json (ring 1.16); twin_lam0001/ and ring/twin_lam0001_s7.json (1.85, lattice-locked); twin_lam0001_x2/ and ring/twin_lam0001_x2_s7.json (2x: hollow fragmenting L arcs, cells 18 -> 3)", "D": "twin_lam01/ (26 persistent splits): the twin also divides"},
+    "by_construction": [],
+    "bd_supported": ["B"],
+    "class_confirmed": true,
+    "limitation": "The twin is one kinetic setting (the world's own) with D_K, D_L scaled uniformly; at lam 0.001 it does keep a 1.85 ring with division at 1x, and I call that a lattice effect on the strength of the square cell shapes and the 2x run (one seed here, two in 20261025T0731-c01-phase-membrane-bd-twin). At lam 0 a ring of about 2 appears in a frozen population. The ring is the drift's work: the gated world with chi=0 also loses it (1.14, parent finding). Division (D), I and S survive the twin, so only B is diffusion-tested."
+  }],
+  "evidence": ["rerun/seed7/sheet.png", "rerun/seed7/tracks.png", "rerun/seed7/lineage.png", "twin_lam01/sheet.png", "twin_lam0001/sheet.png", "twin_lam0001_x2/sheet.png", "ring_summary.json"],
+  "compute": {"cpu_minutes": 25}
+}
