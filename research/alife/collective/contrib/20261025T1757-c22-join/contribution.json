@@ -1,0 +1,12 @@
+{
+ "id": "20261025T1757-c22-join",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "join",
+ "title": "c22 joins: wave-pinning crawler (Camley et al. 2017) positive control, then front/rear cut repair with twins",
+ "summary": "Taking Q:wave-pinning-crawler-repair: reproduce the Camley wave-pinning phase-field crawler, then cut its front or rear and test re-nucleation of polarity against an undamaged twin and the linear-kinetics twin.",
+ "focus": "crawler-phase-field",
+ "until": "2026-10-25T23:48Z",
+ "campaign": true,
+ "parents": ["20261025T1650-c00-q-wave-pinning-crawler-repair"]
+}

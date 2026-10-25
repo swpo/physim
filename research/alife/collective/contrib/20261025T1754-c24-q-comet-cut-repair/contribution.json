@@ -1,0 +1,30 @@
+{
+ "id": "20261025T1754-c24-q-comet-cut-repair",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "slug": "comet-cut-repair",
+ "title": "Do neural-field comets regrow after a cut, and does a self-made slow inhibitor pool give them a stable size (repair) instead of the unstable critical size of excitable wave segments?",
+ "summary": "Excitable wave segments are motile particles whose size is an unstable saddle unless feedback on excitability stabilises it (Zykov-Showalter; Guo et al. 2010). c11's nematic rods do not repair, which is that saddle. c20's depression comets multiply, so they have a growth excess, and a cut comet may simply regrow. That would make them the first motile individuals to repair. If they do not, a local, self-made slow inhibitor (made by f(u), diffusing slowly, raising theta) should turn the size into a set point without any global control.",
+ "experiment": "(1) 30 min: c20's depression world (20261025T1721), seeds 0-1, t=300. Pick 6 mature isolated comets. Cut 25% and 50% of each (front, back, side) by setting u=0 and a=0 there. Compare area and speed over 150 t with uncut twins (labkit damage tooling). Gate R: area back to >=80% and the comet keeps moving. (2) If (1) fails: add an inhibitor v, dv/dt = Dv lap v + kv f(u) - v/tv, with theta_eff = theta + cv v, Dv 0.5-2 and tv about 50. Show that a planted comet's area relaxes to the same value from 0.5x and 1.5x starts, then rerun the cuts. Controls: cv=0, and a global-feedback version (theta tied to mean f), which is imposed by construction and serves only as the upper bound.",
+ "target": [
+  "I",
+  "M",
+  "R"
+ ],
+ "class": "neural-field",
+ "priority": 4,
+ "parents": [
+  "20261025T1754-c24-literature"
+ ],
+ "sources": [
+  {
+   "cite": "Guo, Ninomiya & Tsai, Physica D 239:230 (2010)",
+   "url": "https://scholar.lib.ntnu.edu.tw/zh/publications/existence-and-uniqueness-of-stabilized-propagating-wave-segments--2/"
+  },
+  {
+   "cite": "Zykov poster abstract",
+   "url": "https://www.pks.mpg.de/~solito06/POSTER_ABSTRACTS/zykov.html"
+  }
+ ]
+}
