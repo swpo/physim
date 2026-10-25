@@ -916,6 +916,20 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "0d91fa6c88eb8fdbe56ab1cf455083fe56b7dae2"
  },
+ "20261025T0902-c11-intent-active-nematic": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:05Z",
+  "tree": "6bf702bf5735bd0b59ddefdc124877ed993fca7d"
+ },
+ "20261025T0902-c11-review-fch-protocell": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:05Z",
+  "tree": "e8dec3090ab7d51920b9f1f14d73b9b92f471342"
+ },
  "20261025T0905-c12-intent-review-cargo-fission": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",

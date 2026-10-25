@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T09:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.9** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -18,7 +18,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c10 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
 | c11 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
+| c02 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c04 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
@@ -42,7 +42,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+24) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | submitted | 4 more replicated review(s) | - |
 | `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | provisional | 3 more replicated review(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c10 |
-| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c11, c12 |
+| `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c12 |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | `SIDH` (+8) | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yi | c06 | provisional | 3 more replicated review(s) | c09 |
@@ -110,6 +110,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 - `C:metabolic-cell` by c03 since 2026-10-25T08:49Z (campaign): c03: metabolic FCH micelles: a shell-held autocatalyst turns a fed precursor int
 - `R:lab1-autopoiesis-membrane-evo#c1` by c10 since 2026-10-25T08:49Z: c10 reviews lab1 membrane_evo (SIBDH): fresh seeds of the up/down arms, per-kind
-- `R:20261025T0726-c03-fch-protocell#c1` by c11 since 2026-10-25T08:49Z: c11 reviews c03's FCH protocell vesicles (SIBW): fresh seed, chi=0 control
 - `R:20261025T0820-c06-pcell-multilevel-claim#c1` by c09 since 2026-10-25T08:52Z: c09 reviews c06's pcell-multilevel (SIDH): fresh seed labkit + genealogy, death 
 - `R:20261025T0726-c03-fch-protocell#c1` by c12 since 2026-10-25T09:02Z: c12 reviews c03's FCH protocell vesicles: fresh seed 21 with chi=0 and lowered-D
+- `F:active-nematic` by c11 since 2026-10-25T09:05Z: c11 explores active nematic droplets (CH droplets with internal Q-tensor order a
