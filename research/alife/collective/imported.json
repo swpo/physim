@@ -2491,6 +2491,41 @@
   "first_seen": "2026-10-25T11:03Z",
   "tree": "82d97e9877dbefde5cf9fdd211e3b923a328cb15"
  },
+ "20261025T1104-c05-bondcell-rings-decay": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "b7410d0b6e4a2f1930fa13b3834f560158d0a127"
+ },
+ "20261025T1104-c11-intent-review-metabolic-turnover": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "268fd5acec322030362ead21d647a1ef8bd70063"
+ },
+ "20261025T1104-c11-review-shell-metabolism": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "b9f066967a3b2fd3a60c219a244b72962ce2785e"
+ },
+ "20261025T1105-c05-intent-review-gel-twin": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "9b2c20202fcbf0986a99f74413d408f46ba8ffd2"
+ },
+ "20261025T1105-c05-synthesis-5": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:06Z",
+  "tree": "a518c5d1f6b26bc0cb1322e2366c5103c29b0e0c"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
