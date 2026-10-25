@@ -1,0 +1,4 @@
+{"file": "collective/work/pcell/L_real_s0.json", "n_daughters": 26, "parent_daughter_r": 0.966, "mean_abs_diff": 0.0239, "living_sd_mid": 0.1533}
+{"file": "collective/work/pcell/L_real_s1.json", "n_daughters": 22, "parent_daughter_r": 0.923, "mean_abs_diff": 0.0251, "living_sd_mid": 0.0901}
+{"file": "collective/work/pcell/L_twin_s0.json", "n_daughters": 20, "parent_daughter_r": 0.975, "mean_abs_diff": 0.0143, "living_sd_mid": 0.2161}
+{"file": "collective/work/pcell/L_twin_s1.json", "n_daughters": 16, "parent_daughter_r": 0.961, "mean_abs_diff": 0.0118, "living_sd_mid": 0.2285}

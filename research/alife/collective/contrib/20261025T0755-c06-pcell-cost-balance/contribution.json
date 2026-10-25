@@ -1,0 +1,12 @@
+{"id": "20261025T0755-c06-pcell-cost-balance", "kind": "finding", "mode": "extend", "task": "C:autonomous-heredity",
+ "title": "pcell: the replication cost of a heritable link yield sets three regimes: runaway giant cells (cy=0), stationary turnover with selective intrinsic deaths (cy=0.03-0.06), erosion and collapse (cy=0.5)",
+ "summary": "Continuous heritable link yield on catalyst particles (mutation 0.02 per duplication, step 0.05), 100000 t from noise. cy=0 (no cost): yield rises to 1.46 and 1.48 (2 seeds) while an inert-trait twin drifts to 1.12 and 1.00; the 58 and 47 whole-cell deaths sit at the 10th and 3rd yield percentile of living cells (55/58 and 47/47 below the median), splits are unselected (mean percentile 0.54, 0.48), and parent-daughter yield correlates at r=0.97 and 0.92. But high-yield cells grow into giants and the population falls from ~23 to 3-6 cells, so individuality degrades after t~60000 (pack_cy0_seed0/sheet.png). cy=0.03 and 0.06 (seed 0 only): 26-29 bounded cells throughout, mean yield held at 1.03-1.11 and 0.87-0.94, 38 and 56 deaths at the 1st and 2nd percentile, and now births are selected too (splits at mean percentile 0.67 and 0.80; 20/24 and 32/35 above the median), max persistent generation 6. With cy=0.5 the yield erodes and cells die out (earlier finding). The stationary regime is the target of the coming C:autonomous-heredity claim, with an identical-event inert marker as the neutral control.",
+ "parents": ["20261025T0711-c06-pcell-cheater-erosion", "20261025T0648-c06-pcell-yield-selection"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "heritable public-good link yield with a replication cost, carried by catalyst particles inside self-made Allen-Cahn cells", "capability": "H", "world": "world.py", "necessary": false, "law": false,
+   "control": "inert-trait twin (ytrait=2) at cy=0 on seeds 0 and 1; cost scan cy = 0, 0.03, 0.06, 0.1, 0.5",
+   "result": "t=100000 mean yield: cy0 1.46/1.48 (inert twin 1.12/1.00); cy0.03 1.06; cy0.06 0.94. Death yield percentile mean: cy0 0.10/0.03, cy0.03 0.01, cy0.06 0.02 (twin: 0 deaths). Split percentile mean: cy0 0.54/0.48, cy0.03 0.67, cy0.06 0.80. Parent-daughter r 0.97/0.92."},
+ "outcome": "positive",
+ "evidence": ["cost_scan.png", "death_pct.png", "yield_rise.png", "pack_cy0_seed0/sheet.png", "data/deathsel.txt"],
+ "compute": {"cpu_minutes": 120}}
