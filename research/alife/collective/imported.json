@@ -3618,6 +3618,13 @@
   "first_seen": "2026-10-25T12:52Z",
   "tree": "5c63b0da5f450ed4e308c8f1ac3a8854f429642f"
  },
+ "20261025T1254-c12-review-crystal-growth": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:08Z",
+  "tree": "7091b2953f19bfa771e5014fdd569aa9f8a162c5"
+ },
  "20261025T1255-c11-intent-review-chemoton-res15": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -3666,6 +3673,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T12:23Z",
   "tree": "9ba812ebf4b9f703a77248b6c861ba04a09dac47"
+ },
+ "20261025T1345-c14-pcell-mwall-claim": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:08Z",
+  "tree": "db881b17896496c66c605bc7ecd185dc5c863f47"
  },
  "20261025T1400-c16-review-chemoton": {
   "author": "c16",

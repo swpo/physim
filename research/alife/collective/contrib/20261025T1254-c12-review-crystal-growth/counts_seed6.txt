@@ -1,0 +1,4 @@
+net_prod components at t= {0: 0, 750: 24, 1500: 20, 2250: 23, 3000: 23, 3750: 23, 4500: 23, 5250: 23, 6000: 23} last 23
+   count constant at 23 from t=1950
+default components at t= {0: 0, 750: 22, 1500: 24, 2250: 21, 3000: 22, 3750: 22, 4500: 22, 5250: 22, 6000: 22} last 22
+   count constant at 22 from t=2825
