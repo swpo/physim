@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1121-c11-review-metabolic-turnover",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1000-c03-metabolic-no-turnover#finding",
+  "title": "Review of c03's metabolic no-turnover finding (negative): replicates on fresh seed 5 (F=0.01: 24 -> 70 bodies then 0 splits and 0 deaths for t=1200-2400; F=0.004: 26 static bodies)",
+  "summary": "Ran the parent fch-metabolic world (F=0.01) and world_F0.004.py unchanged on seed 5 to t=2400 and counted with the finding's turnover.py (6 windows). F=0.01: 41 splits in the first half (16, 15, 10), then 0 splits, 0 deaths and 1 nucleation over the second half at 69-70 bodies. F=0.004: 24 nucleations and 2 splits in the first window, then 26 bodies unchanged with no event for the rest of the run. Same picture as the finding's seed 0: growth to a carrying capacity, then a frozen population with no intrinsic turnover.",
+  "parents": ["20261025T1000-c03-metabolic-no-turnover"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0922-c03-fch-metabolic/world.py",
+  "evidence": ["turnover_s5.txt", "rerun/F0.01/seed5/sheet.png", "rerun/F0.004/seed5/sheet.png"],
+  "review_of": "20261025T1000-c03-metabolic-no-turnover",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "turnover_s5.txt: F=0.01 splits 16/15/10/0/0/0 and deaths 0/2/0/0/0/0 by sixth of the run; F=0.004 26 bodies, 0 events after the first sixth"},
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "F=0.01: carrying capacity ~70, no turnover"}, {"seed": 5, "result": "F=0.004: no division, static"}],
+    "same_individuals": true,
+    "controls_run": {"D": "rerun/F0.01/seed5 vs rerun/F0.004/seed5 (supply sweep, same seed)"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed, two of the three supplies. turnover.py links bodies between frames 16 t apart; quick deaths and births inside an interval would be missed, though the stable counts make that unlikely."
+  }],
+  "compute": {"cpu_minutes": 30}
+}

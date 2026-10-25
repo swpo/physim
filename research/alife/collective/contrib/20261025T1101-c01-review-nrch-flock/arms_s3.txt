@@ -1,0 +1,8 @@
+both n late mean 20.0 CV late 0.53 polar order late 0.89
+plain n late mean 7.0 CV late 0.78 polar order late 0.81
+== both
+- motion: 20 long-lived tracks moved >= 1 body length; max speed 0.258/time; max body lengths 23.5
+- replication : splits 44, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 18, merge/split 
+== plain
+- motion: 7 long-lived tracks moved >= 1 body length; max speed 0.178/time; max body lengths 15.1
+- replication : splits 8, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 8, merge/split ra
