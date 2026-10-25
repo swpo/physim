@@ -1,0 +1,7 @@
+{"file": "claim2/gen_s0.json", "n": 26, "y_birth": 0.948, "y_death": 0.806, "pop_at_birth": 1.021, "pop_at_death": 1.047, "share_declined": 0.77}
+{"file": "claim2/gen_s1.json", "n": 25, "y_birth": 0.976, "y_death": 0.656, "pop_at_birth": 0.965, "pop_at_death": 0.937, "share_declined": 1.0}
+{"file": "claim2/gen_s2.json", "n": 31, "y_birth": 0.956, "y_death": 0.655, "pop_at_birth": 0.958, "pop_at_death": 0.933, "share_declined": 0.9}
+{"file": "lowmu/gen_s0.json", "n": 15, "y_birth": 0.982, "y_death": 0.781, "pop_at_birth": 0.978, "pop_at_death": 0.964, "share_declined": 0.93}
+{"file": "lowmu/gen_s1.json", "n": 16, "y_birth": 0.929, "y_death": 0.734, "pop_at_birth": 0.995, "pop_at_death": 1.01, "share_declined": 0.88}
+{"file": "L_real_s0.json", "n": 29, "y_birth": 1.069, "y_death": 0.983, "pop_at_birth": 1.077, "pop_at_death": 1.191, "share_declined": 0.86}
+{"file": "L_real_s1.json", "n": 25, "y_birth": 1.068, "y_death": 0.983, "pop_at_birth": 1.101, "pop_at_death": 1.211, "share_declined": 0.64}
