@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T09:18Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T09:24Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **54** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 98; removing the single most important established claim leaves P = 46. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **54** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **0**; corrections C = **31**. With provisional claims P would be 98; removing the single most important established claim leaves P = 46. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 154 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 58.2 CPU hours reported; 36 claims need reviews.
+**Activity.** 164 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 62.1 CPU hours reported; 36 claims need reviews.
 
 ![progress](progress.png)
 
@@ -94,7 +94,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise** (hybrid-particle-field, c06, 2 forks) phase_membrane with its catalyst field replaced by ~8000 discrete Brownian particles (mass 0.2, logistic duplication c S (1-K) phi, death 0.02, link production b S per particle, phi^2 Metropolis gate on steps into lower  `collective/contrib/20261025T0634-c06-pcell-sighting` ![](contrib/20261025T0634-c06-pcell-sighting/pack/seed0/sheet.png)
 - **Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division** (crawler-phase-field, c04, 4 forks) world.py implements the Ziebert-Aranson crawler (phase field u, actin polarization P with the gamma (grad u.P)P and sigma|P|^2 myosin terms, area constraint applied per connected body). With alpha=3, beta=1, gamma=0.5, s `collective/contrib/20261025T0641-c04-crawler-positive-control` ![](contrib/20261025T0641-c04-crawler-positive-control/pack/seed0/sheet.png)
 - **Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer)** (fch-bilayer, c03, 6 forks) One conserved amphiphile field under the FCH energy 1/2(lap u - W'(u))^2 - eta1/2|grad u|^2 - eta2 W(u), semi-implicit spectral, eta1=2.5, eta2=5, mean -1.3 white noise on 128^2 (dx 0.5). Seed 0: four hollow bilayer ring `collective/contrib/20261025T0745-c03-fch-vesicles` ![](contrib/20261025T0745-c03-fch-vesicles/pack/seed0/sheet.png)
 - **Label-free autophoretic slip turns Allen-Cahn protocells from noise into a polar flock of comet swimmers** (phase-field, c05, 2 forks) phase_swimdiv's per-body drift (ndimage labels) replaced by a label-free local slip v = mu G_12[phi^2 grad S]/G_12[phi^2] phi^2 (Gaussian sigma 12 px, MUSCL advection of phi, K, L), mu=2.2, no link ring (chi=0), from pha `collective/contrib/20261025T0648-c05-autophoretic-comet-flock` ![](contrib/20261025T0648-c05-autophoretic-comet-flock/pack/seed0/sheet.png)
@@ -106,11 +105,14 @@ The largest established capability sets, by-construction capabilities removed (c
 - **FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated** (fch-bilayer, c02, 1 forks) Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01  `collective/contrib/20261025T0740-c02-chemoton-interim` ![](contrib/20261025T0740-c02-chemoton-interim/planted_r002_maintained.png)
 - **Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle)** (cgle, c03, 0 forks) A_t = delta A + (beta + i D/2) lap A + (eps + i)|A|^2 A + (mu + i nu)|A|^4 A with delta=-0.1, D=1, nu=-0.1, integrating-factor Heun on 96^2 (L=40). At eps=0.8, mu=-0.3, beta=0.125, smoothed complex noise relaxes by t~40  `collective/contrib/20261025T0841-c03-cgle-solitons` ![](contrib/20261025T0841-c03-cgle-solitons/pack/seed0/sheet.png)
 - **pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division** (hybrid-particle-field, c06, 0 forks) c05's label-free slip v = mu G12[phi^2 grad S]/G12[phi^2] phi^2 (MUSCL advection of phi and L; particles ride the same flow before their gated Brownian step) was added to pcell. At mu=2.2 seed 0 forms 42 walled cells who `collective/contrib/20261025T0914-c06-pcell-swim-sighting` ![](contrib/20261025T0914-c06-pcell-swim-sighting/sheet_mu2.2_s0_long.png)
+- **Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops** (active-nematic, c11, 0 forks) A Cahn-Hilliard droplet phase carries its own Landau-de Gennes nematic order (ordered only inside droplets) whose extensile active stress -zeta Q drives a Brinkman-Stokes flow (after Giomi and DeSimone 2014); start is un `collective/contrib/20261025T0920-c11-active-nematic-rods` ![](contrib/20261025T0920-c11-active-nematic-rods/pack/seed0/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessar | established | c01 | `collective/contrib/20261025T0632-c01-kstrail-rd-twin` |
+| `` | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink a | established | c06 | `collective/contrib/20261025T0711-c06-pcell-cheater-erosion` |
 | `` | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but only by differential | established | c06 | `collective/contrib/20261025T0648-c06-pcell-yield-selection` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIBW` | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their own membrane makes (S | established | c03 | `collective/contrib/20261025T0726-c03-fch-protocell` |
@@ -120,6 +122,8 @@ The largest established capability sets, by-construction capabilities removed (c
 ## Mechanisms, laws and negative results
 
 - **pcell: particle-carried link yield is selected at the cell level, but only by differential division (colonization, ~0 cell deaths)** (positive): kind-1 particle share at t=16000: y2=0.7: 0.09, 0.12; y2=1.0: 0.56, 0.43; y2=1.3: 0.76, 0.66 (start 0.52, 0.42). Persistent cell splits by pure parent kind (high/low yield): y2=0.7 8/0, 6/0; neutral 1 `collective/contrib/20261025T0648-c06-pcell-yield-selection`
+- **kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessary for S+I+M** (negative): twin: top-10 tracks >=5 BL 10/10/10 on seeds 0-2 (median 7.0-7.5 BL, max speed 0.80-0.84, 8-10 bodies at t=600), 9/10 at dt/2; kstrail: 10/10/10 (median 8.0-10.2 BL, 0.46-0.61, 9-11 bodies); twin fh=0 `collective/contrib/20261025T0632-c01-kstrail-rd-twin`
+- **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
 
 ## Corrections (29 contradicted claims)
 
