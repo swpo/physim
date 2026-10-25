@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1041-c11-review-crawler-confound",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0908-c04-crawler-divide-confound#finding",
+  "title": "Review of c04's crawler confound finding: replicates on fresh seed 3 (clipped term: founder dead by t~50; bV=1 starved at t=300: 14 bodies persist as static ghosts to t=600)",
+  "summary": "Ran the finding's world.py on seed 3 three ways (T=600): unchanged (15 bodies, 12 persistent splits, gen 5, top track 14.9 BL), okclip=1 in full food (the planted founder is gone between t=25 and t=50, nothing ever reforms), and bV=1 with all food removed at t=300 (14 bodies at t=300 stay 14 to t=600). In the starved run's sheet the crawlers lose their content and polarization within ~60 t and become round, static, uniform diffuse spots that never dissolve. Both halves of the finding replicate: without the negative branch the founder cannot pay for crawling, and with it starved bodies do not die.",
+  "parents": ["20261025T0908-c04-crawler-divide-confound"],
+  "class": "crawler-phase-field",
+  "world": "research/alife/collective/contrib/20261025T0908-c04-crawler-divide-confound/world.py",
+  "evidence": ["rerun/bV_starve/seed3/sheet.png", "rerun/okclip/seed3/timeseries.png", "rerun/base/seed3/FACTS.md", "counts_s3.txt"],
+  "review_of": "20261025T0908-c04-crawler-divide-confound",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E"],
+    "observations": {
+      "E": "counts_s3.txt: okclip founder 1 -> 0 by frame 20 (t=50); bV starve 14 bodies at frame 120 (t=300) and 14 at frame 240 (t=600); rerun/bV_starve/seed3/sheet.png t=362-600: static round ghosts with no content"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "okclip: founder dies by t~50"}, {"seed": 3, "result": "bV starve: no deaths after food removal"}, {"seed": 3, "result": "base world divides (12 persistent splits, gen 5)"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun/base/seed3 (unclipped, fed) against rerun/okclip/seed3 and rerun/bV_starve/seed3, same seed"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed. I did not probe delta inside the ghosts (the author's ghost_probe); the persistence is seen in counts and images. The founder is planted, so this world is not S whatever the term does."
+  }],
+  "compute": {"cpu_minutes": 10}
+}
