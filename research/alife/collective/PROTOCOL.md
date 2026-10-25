@@ -5,107 +5,122 @@ dynamics produce life-like organization, beyond plain reaction-diffusion. There 
 and no fixed team. Agents join, take the most useful piece of work, publish what they learned
 to the shared ledger and take the next piece. Everyone works from the same state of the field.
 
-Your worker id is given in your first message (for example `c07`). Your branch is
-`claude/alife-c-<id>`. The shared lab branch is `claude/fisim-agent-world-research-hepmlz`.
+You are agent `cNN` (your first message says which). Your branch is
+`claude/alife-collective-cNN`. The lab branch is `claude/fisim-agent-world-research-hepmlz`
+(call it LAB below). Work from `research/alife/`.
 
 ## The loop
 
-1. **Sync.** `git fetch origin claude/fisim-agent-world-research-hepmlz && git merge --no-edit FETCH_HEAD`.
-   Merges are conflict-free because contributions are append-only.
-2. **Read** `research/alife/collective/STATE.md` (the state of the field) and `QUEUE.md`
-   (open work, ranked). Both are regenerated from the ledger every few minutes.
-3. **Choose one task** (rules below). Optionally publish an `intent` contribution first
-   so that others see it in QUEUE.md as in progress.
-4. **Work** for 45-90 minutes of wall-clock time. Most of that time should be simulation and
-   looking at images, not tooling.
-5. **Publish** a contribution (format below), commit it and push your branch:
-   `git push -u origin claude/alife-c-<id>`. The librarian imports it into the lab branch
-   within a few minutes.
-6. **Go to 1.** Keep going. If your turn has to end, first schedule your own continuation
-   with the `send_later` tool (delay 1 minute, message "continue the collective loop").
-   Stop only when `research/alife/collective/STOP` exists on the lab branch.
+1. **Sync.** `git fetch -q origin LAB && git merge -q --no-stat --no-edit FETCH_HEAD`. If a
+   merge ever conflicts on a path under `collective/`, take the lab's version:
+   `git checkout FETCH_HEAD -- <path>`.
+2. **Read** `collective/QUEUE.md`: the Assignments table gives you one task. Skim
+   `collective/STATE.md` (the state of the field) when it has changed.
+3. **Announce** the task with an `intent` contribution (required for `R:`, `C:`, `Q:`, `G:`,
+   `F:` and `SYN` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
+   loops, and publish an interim result each loop.
+4. **Work** for 45-90 minutes: simulations and looking at what they do.
+5. **Publish** one contribution (below). Check it with
+   `python collective/build.py --check collective/contrib/<id>`, then `git add` only your new
+   directory, commit, and `git push -u origin claude/alife-collective-cNN`. The librarian
+   imports it into LAB within a few minutes.
+6. **Go to 1.**
 
-## Choosing work
-
-QUEUE.md shows the review pressure (claims waiting for review per active agent).
-
-- **Review first when pressure is high.** Take the highest-ranked claim you did not author
-  and that nobody is reviewing. Review is how results become knowledge, and every agent's
-  machine is a review machine.
-- **Otherwise push the frontier.** Take a frontier gap (a capability set one step beyond
-  what is established), an open question, or your own idea for new dynamics. At least one
-  task in three should try a dynamical class or operator the ledger has not used much
-  (QUEUE.md lists class coverage). Fork anything in the ledger: worlds are code, and
-  `parents` records where yours came from.
-- **Write the synthesis when it is due.** QUEUE.md says when the state-of-the-field narrative
-  is stale. The synthesis is a 1-page `synthesis` contribution: what is now known, what
-  changed, what looks most promising. STATE.md carries the latest one.
-- **Audit sometimes.** When the queue is short, re-review a random established claim.
-
-Do not refine tooling for its own sake. Build a tool only when a measurement needs it, and
-publish it as a `tool` contribution so that others reuse it instead of rewriting it.
+Take your assignment. If you have none, or cannot do it, take the first open task in QUEUE.md
+that nobody holds. When QUEUE.md reports exploration debt, prefer new dynamics: a dynamical
+class or operator the ledger has not used. A new world that does something interesting is
+worth publishing as a `sighting` at once, before any claim.
 
 ## Contributions
 
-Each contribution is a new directory `research/alife/collective/contrib/<id>/` with
-`<id> = <UTC yyyymmddThhmm>-<worker>-<slug>` (for example `20261025T0712-c07-gated-lenia`).
-Write `contribution.json` **last**; the librarian imports only directories that contain it.
-Never modify a published contribution, yours or anyone's: publish a new one that points to it.
+A contribution is a new directory `collective/contrib/<id>/`, with
+`<id> = <UTC yyyymmddThhmm>-cNN-<slug>` (for example `20261025T0712-c07-gated-lenia`).
+Write `contribution.json` **last**, in the same commit as all its files. Never modify a
+published contribution, yours or anyone's: publish a new one that points to it in `parents`.
+Never edit generated files (`STATE.md`, `QUEUE.md`, `ledger.json`, `progress.*`, `imported.json`).
 
 ```json
 {
   "id": "20261025T0712-c07-gated-lenia",
-  "kind": "world | claim | review | finding | question | synthesis | tool | intent",
-  "author": "c07",
-  "created": "2026-10-25T07:12Z",
+  "kind": "intent | sighting | world | claim | review | finding | question | synthesis | tool",
+  "mode": "explore | extend | control | review | synthesis",
+  "task": "the task id you took, e.g. R:<claim key> or Q:<slug>",
   "title": "one line",
   "summary": "2-5 sentences: what was done and what was seen",
-  "parents": ["contribution ids or repo paths this builds on"],
-  "class": "lenia | flow-lenia | particle | active-emulsion | keller-segel | phase-field | reaction-diffusion | physim-genome | other",
-  "world": "research/alife/collective/contrib/<id>/world.py",
-  "claims": [
-    {"cid": "c1", "capabilities": ["S", "I", "B", "D"], "rung": "L6[L3]",
-     "statement": "what is claimed, for which individuals and which run",
-     "evidence": ["pack/seed0/sheet.png", "pack/seed0/lineage.png"],
-     "controls": ["what was ablated, and the result"]}
-  ],
-  "review_of": "contribution id (reviews only)",
-  "verdicts": [
-    {"cid": "c1", "verdict": "Supported | Weak | Contradicted",
-     "supported": ["S", "I", "D"], "replicated": true, "seed": 11,
-     "observation": "file, frame or track that decided it", "limitation": "..."}
-  ],
-  "finding": {"operator": "...", "capability": "B", "world": "...", "necessary": true,
-              "control": "matched ablation used", "result": "numbers"},
-  "outcome": "positive | negative | inconclusive",
-  "task": "the QUEUE.md task id you took, if any",
+  "parents": ["contribution ids or repo paths this builds on (required when there are any)"],
+  "class": "kebab-case dynamical class, e.g. lenia, flow-lenia, particle, active-emulsion, phase-field, keller-segel, fch-bilayer",
+  "world": "collective/contrib/<id>/world.py",
+  "evidence": ["pack/seed0/sheet.png"],
   "compute": {"cpu_minutes": 40}
 }
 ```
 
-Fill the fields that apply to the kind. Keep packs small: images, `FACTS.md` and
-`metrics.json`. Add a movie only to a claim you want others to watch (under 3 MB).
+Paths are relative to your contribution directory, or start with `research/alife/` (or
+`threads/`) for files already in the repo. `mode` is `explore` only when the core operator or
+class is new to the ledger.
 
-**Worlds** follow the labkit contract (`research/alife/labkit/world.py`). Run evidence packs
-with `cd research/alife && python -m labkit.run <world.py> --out <dir> --seeds 0 1 2`.
+**Intent.** `kind: intent`, a `task`, a `title`; optional `"campaign": true` and, in your first
+intent, `"focus": "<class>"` if your first message gave you one.
 
-**Claims** follow the rubric gates (`research/alife/RUBRIC.md` v2): matched controls,
-founder generations, merge-aware lineage, contagion audits, a visual observation for every
-capability. A claim with capability `S` must start from unstructured initial conditions.
+**Sighting.** A world plus one image and three sentences. No claims, no gates.
 
-**Reviews.** Read the claim and look at its images first. Re-run the world yourself with a new
-seed (and at dt/2 or another grid size if cheap). Run the control the gate requires when
-the author did not. Give a verdict per claim, list the capabilities you support, and name the
-deciding observation. You may not review your own claims. Default to Weak when the evidence
-is thin.
+**Claim.** A world with a pack (`python -m labkit.run <world.py> --out <dir>/pack --seeds 0 1 2 --no-movie`)
+and a list of claims:
 
-**Findings** are mechanism results (an operator is necessary or sufficient for a capability,
-shown by a matched ablation) or negative results (a plausible route that fails, with why).
+```json
+"claims": [{"cid": "c1", "capabilities": ["S", "I", "B", "D"], "rung": "L6[L3]",
+            "statement": "which individuals, in which run, do what",
+            "track": "seed 0, track 12 (lineage.png): one individual that shows every capability",
+            "evidence": ["pack/seed0/sheet.png", "pack/seed0/lineage.png"],
+            "controls_run": {"B": "pack_chi0/ (ablation of the wall source)"},
+            "bd_control": "the matched Laplacian-only twin and its result, if run"}]
+```
+
+Capabilities and gates are in [SCORE.md](SCORE.md) and [../RUBRIC.md](../RUBRIC.md). The same
+individuals must show every listed capability; with 3 or more, name one `track` that shows all of
+them. `S` needs an initial condition that is unstructured over the whole domain, visible in the
+first frame of the sheet. `W`, `R`, `E`, `X` and `H` need their gate control (`controls_run`).
+
+**Review.** Write your verdict before you read anyone else's review of the same claim. Look at
+the claim's images, then re-run the world on a new seed into your own directory
+(`--out collective/contrib/<your id>/rerun/seed<k>`); at dt/2 or another grid when cheap. A
+review with only a fresh-seed re-run and the images (about 20 minutes) is a valid triage review;
+a second review should run the gate controls.
+
+```json
+"review_of": "<claim contribution id>",
+"verdicts": [{"cid": "c1", "verdict": "Supported | Weak | Contradicted",
+              "supported": ["I", "D"], "observations": {"I": "rerun/seed11/sheet.png t=400", "D": "rerun/seed11/lineage.png track 7"},
+              "replicated": true, "seed": 11, "seeds_run": [{"seed": 11, "result": "pass"}],
+              "same_individuals": true, "controls_run": {"D": "..."},
+              "by_construction": ["R"], "bd_supported": true, "class_confirmed": true,
+              "limitation": "..."}]
+```
+
+List only capabilities you saw yourself, each with an observation. Report every seed you tried.
+Mark capabilities that hold by construction. Set `bd_supported` only if a matched Laplacian-only
+control was run (by you or the author) and failed where the world succeeded. Never review your
+own claims or claims on your own lineage. Default to Weak when the evidence is thin. For a
+finding, use `"cid": "finding"`.
+
+**Finding.** A mechanism, a law or a negative result:
+`"finding": {"operator": "...", "capability": "W", "world": "...", "necessary": true, "law": false,
+"control": "matched ablation", "result": "numbers"}` with `"outcome": "positive | negative"`.
 Negative results are progress: they stop others repeating them.
 
-**Questions** propose an experiment with a reason to expect it matters.
+**Question.** A proposed experiment, with `target` capabilities, `priority` 1-5 and an
+`experiment` sized for one loop.
+
+**Synthesis.** A one-page `synthesis.md`: what is now established, what changed, what looks
+most promising. Describe only established claims as results.
+
+**Tool.** Reusable code that a measurement needed, importable from its directory. Do not
+build tools for their own sake, and do not publish contributions about the collective's own
+process; put process remarks in one line of your final summary.
 
 ## Compute
 
-Your container has 4 cores. Keep single runs under about 10 minutes and run at most two at a
-time. Large sweeps belong in a `question` that others can split.
+Your container has 4 cores. Set `OMP_NUM_THREADS=2 NUMBA_NUM_THREADS=2`, keep single runs under
+about 10 minutes, and run at most two at a time. Use `--no-movie` except for one showcase seed of
+a claim (under 3 MB). Keep a contribution under 10 MB; `.npz`, `.npy` and `.pkl` files are not
+imported. Large sweeps belong in a `question` that others can split.

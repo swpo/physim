@@ -1,0 +1,969 @@
+[
+ {
+  "id": "lab1-q-autonomous-l7-identity-deaths",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "autonomous-l7-identity-deaths",
+  "title": "Does membrane_evo's L7[L3] selection hold once disk deaths become whole-body identity deaths?",
+  "summary": "The lab's only L7[L3] (autopoiesis membrane_evo, low, disturbance-mediated, skeptic dissents) sweeps mostly through births on parents that the r=14 death disk cut: 30/38 (biologist, s4) and 43/43 (skeptic, s11) K2 births coincide with a disk hit, so the disk works as both a fission operator and a size filter (committee/reviews/autopoiesis_r3.md). All three judges and REPORT.md section 7 item 1 rank swapping the death operator first. active-droplets ad9-ledger already has a Moran kill by body identity (committee/reviews/active-droplets_r3.md, cross-pollination). An autonomous pass would establish {S,I,B,D,H}, the largest capability set in the ledger.",
+  "experiment": "Fork threads/autopoiesis/worlds/membrane_evo. Replace the disk with removal of one whole body (a phi>0.5 component, with labels merged across the periodic edges) chosen by identity from the state-independent RNG, at a per-body rate matched to the disk arm's realized death rate. Keep the identical-event twin: same flips, same death draws by body rank. First pass: 5 seeds x {twin, 1.3b} at 128^2, t as in runs/evo_hi (time one run first; expect about 6-8 min, two at a time, about 50-60 min in all). The 0.7b arm and seeds 5-9 are a follow-up. Ledger every birth with evotrack.py and the r3 skeptic's cause split: count a birth only if the daughter stays separate for >=2000 t and reaches >=25% of parent area, and tag it as disturbance-associated if any operator touched the parent in that interval. Pass: in >=4/5 seeds the 1.3b K2 share departs from the twin, carried by spontaneous K2 births, with conversions <= flips. Otherwise record the law: the sign of selection on yield against the grain of disturbance.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D",
+   "H"
+  ],
+  "class": "phase-field",
+  "parents": [
+   "threads/autopoiesis/worlds/membrane_evo",
+   "threads/autopoiesis/worlds/membrane_evo_up",
+   "threads/autopoiesis/evotrack.py",
+   "threads/active-droplets/worlds/ad9-ledger",
+   "committee/reviews/autopoiesis_r3.md",
+   "REPORT.md"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-evopursuit-closed-ledger-l7",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "evopursuit-closed-ledger-l7",
+  "title": "Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?",
+  "summary": "evopursuit is the lab's strongest behavioural result: L5[L2]+L4b high, from noise, with an evasion allele that flips the sign of the predator's effect in 18 fixed-allele arms (threads/chemotaxis-motility/packs/arms_summary.md). L6 and L7 stayed Weak because preytrack.py links merge products as daughters and counts births per daughter, not per event (committee/reviews/chemotaxis-motility_r3.md, item 1 and rubric issues 1-2; REPORT.md section 7 item 2). A clean ledger plus a twin could establish {S,I,M,X,D,H}, six capabilities in a Keller-Segel world. The follow-on is coevolution with a heritable pursuit allele in predators (threads/chemotaxis-motility/FINAL.md).",
+  "experiment": "Fix preytrack.py first. A merge product is never a daughter, a daughter carries >=25% of parent mass and survives >=200 t, births are counted per event, tracking is species-aware with 2-t sampling, and labels merge across periodic edges. Fork threads/chemotaxis-motility/worlds/evopursuit. Mutations flip whole prey bodies chosen by identity from a state-independent RNG. The e=cost=0 twin replays the same flip and noise schedule. Run 4 seeds x {selected, twin} at 160^2 (about 8-10 min each, two at a time, about 45 min). Classify every origin and every end, and split deaths into eaten vs toxin. Check final + deaths = sources per kind. Report per-capita birth minus death per kind and arm, plus gross and net conversions against the winner's final count. Pass: in >=3/4 seeds B's growth over the twin is carried by births, not conversions.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "X",
+   "D",
+   "H"
+  ],
+  "class": "keller-segel",
+  "parents": [
+   "threads/chemotaxis-motility/worlds/evopursuit",
+   "threads/chemotaxis-motility/worlds/evopursuit_neutral",
+   "threads/chemotaxis-motility/preytrack.py",
+   "threads/chemotaxis-motility/fission.py",
+   "threads/chemotaxis-motility/packs/arms_summary.md",
+   "committee/reviews/chemotaxis-motility_r3.md"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-membrane-swimmer-divider",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "membrane-swimmer-divider",
+  "title": "Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide?",
+  "summary": "No world combines a material boundary, self-propulsion and reproduction (REPORT.md section 2 'What no thread reached'; section 7 item 9). The parts exist in one family. phase_membrane's chi-adsorbed link ring is L6[L3] medium from noise (threads/autopoiesis/packs/phase_membrane). phase_swimdiv's dividing crescents are L6[L2]+L4b medium, but their drift is a designed per-body velocity on ndimage labels (threads/autopoiesis/worlds/phase_swimdiv/world.py), and swimming suppresses division because a swimmer never starves. A self-repellent trail tore the wall (threads/autopoiesis/FINAL.md), which proposes local phoresis instead; chemotaxis and active-droplets asked for the same combination (threads/chemotaxis-motility/FINAL.md, threads/active-droplets/FINAL.md). Reaching {S,I,B,M,D} adds 16 new subsets to P.",
+  "experiment": "Two forks of threads/autopoiesis/worlds/phase_swimdiv, at 128^2 from noise, 3 seeds each. (a) Add phase_membrane's chi drift (chi up grad[4 phi(1-phi)]) and leave the per-body drift unchanged. This is a cheap check that the ring survives swimming and that both daughters inherit it. (b) Replace the per-body drift with a label-free local phoretic slip: advect phi, L and K with v = -mu_p phi^2 grad(S), smoothed over one wall width, with a conservative MUSCL face flux, and keep chi on. Add matched chi=0 twins for (b). That is about 12 runs x 5-7 min, about 40-50 min two at a time. Readouts: rim/core L on moving cells (>=1.5, against about 1.1 at chi=0), body lengths travelled (>=5 BL), persistent splits and gen>=2 with merge-aware lineage, and the ring in both daughters at +10 t and +30 t after the pinch. Sweep mu_p near the swim/divide threshold (1<mu<3 in phase_swim).",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "M",
+   "D"
+  ],
+  "class": "phase-field",
+  "parents": [
+   "threads/autopoiesis/worlds/phase_swimdiv",
+   "threads/autopoiesis/worlds/phase_membrane",
+   "threads/autopoiesis/worlds/phase_swim",
+   "threads/autopoiesis/FINAL.md",
+   "REPORT.md"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-ad9-powered-fixation",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "ad9-powered-fixation",
+  "title": "Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?",
+  "summary": "ad9 carries its trait on the catalyst's own transport (q=a*kp), so conversions are impossible by construction (0 in 12/12 runs). But it ran 6 cells and 1-5 mutations per run, so its null result was predictable from births x p_mut of about 1-3 (REPORT.md section 5.4; committee/reviews/active-droplets_r3.md item 1). The ad7 shell landscape has an interior optimum (4/7/12/11/10/9/6 droplets at kp 0-4), so selection has a predicted direction: fixation odds 0.59 vs 0.17 for kp=1.5. A powered test would lift active-droplets from ad5's L7[L2] low (colonization only) to an organized {I,B,D,H}.",
+  "experiment": "Use threads/active-droplets/worlds/ad9-ledger unchanged, with non-overlapping planted founders, at 128^2, cap=6, t=30000 (about 7 min per run). First pass: 6 identical-event S/N pairs, 12 runs, about 45 min two at a time. Use these to compute the power estimate that sizes the full 20 pairs per ancestor. Pre-register three readouts: exposure-normalised births per kind against the same label in N; the fate of every arising mutant against the predicted 0.59/0.17; and the share of seeds ending in kp 0.5-1.5. Log parent ids and merges, and exclude separations before t~1000. Ship one S pack with sheet, radial and birth strips.",
+  "target": [
+   "I",
+   "B",
+   "D",
+   "H"
+  ],
+  "class": "active-emulsion",
+  "parents": [
+   "threads/active-droplets/worlds/ad9-ledger",
+   "threads/active-droplets/worlds/ad7t-thick",
+   "threads/active-droplets/worlds/ad5-evolve",
+   "committee/reviews/active-droplets_r3.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-extensive-maintenance-death",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "extensive-maintenance-death",
+  "title": "Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?",
+  "summary": "Most runs without imposed deaths froze into confluent lattices (lenia, active-droplets, particle-life, autopoiesis). m4 solitons never die on their own, so every death in xcell-evo2 was imposed disk erasure (REPORT.md sections 1.2, 5.4 and 7 item 5; threads/fisim-beyond-laplacian/FINAL.md). fisim showed that concentration-type waste never kills m4 solitons. The cost must therefore be extensive, proportional to body mass, and split at division (REPORT.md section 3, recommendation (c)). active-droplets also asks for a local fuel cut toward L4c[L3], which no class has under rubric v2 (committee/reviews/active-droplets_r3.md item 3; committee/reviews/fisim-beyond-laplacian_r3.md item 3).",
+  "experiment": "In threads/active-droplets/worlds/ad7t-thick, add a maintenance sink: droplet material phi consumes fuel u at rate k_m*phi with fixed stoichiometry, and when fuel flux falls short the material converts to the dilute phase. Turn off the imposed dilution. Sweep k_m in {0, 0.5, 1, 2} x the base uptake, 2 seeds each, at 128^2 and t=20000: 8 runs of about 6 min, about 25 min two at a time. At the k_m with the most deaths and a non-zero population, run 3 seeds. Branch one local fuel-cut arm at t=8000 around an isolated droplet (pass for E: it dies while its twin persists). If time remains, port the same term as an XGENOME key into xcell-evo2-N with disk erasure off, 2 seeds. Pass: >=1 intrinsic death per 2 droplets per 10^4 t in the stationary window, and births continue after confluence, on 3/3 seeds.",
+  "target": [
+   "I",
+   "B",
+   "E",
+   "D"
+  ],
+  "class": "active-emulsion",
+  "parents": [
+   "threads/active-droplets/worlds/ad7t-thick",
+   "threads/fisim-beyond-laplacian/worlds/xcell-evo2-N",
+   "threads/fisim-beyond-laplacian/XGENOME_SPEC.md",
+   "committee/reviews/active-droplets_r3.md",
+   "committee/reviews/fisim-beyond-laplacian_r3.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-flow-lenia-anti-fusion",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "flow-lenia-anti-fusion",
+  "title": "Can an anti-fusion term and a counted death channel turn Flow-Lenia forager bodies into lineage trees?",
+  "summary": "fl_forager is L6[L2]+L4b medium from noise, with an exact matter+food ledger (8e-12). But bodies fuse about as often as they persistently divide, so per-parcel genes spread like an infection and L7 was Contradicted (threads/flow-lenia/FINAL.md; committee/reviews/flow-lenia_r3.md item 2; REPORT.md section 7 item 7). Lineage trees come before any H in this class. The resolution continuation has been owed since r1, because dt/2 is not a convergence test under reintegration tracking.",
+  "experiment": "Fork threads/flow-lenia/worlds/fl_forager with two anti-fusion variants. (a) Label-free: add a negative contact-range ring kernel to the affinity U, so the flow pushes matter away from other bodies' rims. (b) The r3 design: parcel-carried body ids assigned at birth, plus pressure F -= gamma grad(blur(A_other-id)). Count starvation dissolution as death: a body below 0.3 of its birth mass for >=160 t. Sweep strength {0, 0.5, 1, 2} x 2 seeds for each variant at 128^2, 16 runs of about 3-4 min. Then run the best setting on 3 seeds plus one 1.5x resolution continuation (192^2, kernels and flow scaled). About 60-80 min. Gate: merge/split <0.5 and labkit persistent gen >=2 on 3 seeds, with gliders still travelling >=5 BL.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D"
+  ],
+  "class": "flow-lenia",
+  "parents": [
+   "threads/flow-lenia/worlds/fl_forager",
+   "threads/flow-lenia/worlds/fl_forager_gene2",
+   "committee/reviews/flow-lenia_r3.md",
+   "threads/flow-lenia/FINAL.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-owed-laplacian-twins",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "owed-laplacian-twins",
+  "title": "Do the lab's three non-diffusive operators beat a matched Laplacian-only twin in the regime where they work?",
+  "summary": "Across 21 reviews, only one Laplacian control ever failed where the world succeeded: the ad7 R arm, on 1 seed, at D=M only, although CH bulk diffusivity is 2M. So beyond-diffusion stayed at 1 almost everywhere (REPORT.md section 3 and section 7 item 3). Three twins were requested and never run. The first is kstrail's activator + slow-inhibitor RD twin, owed for 3 sprints; it is the known Krischer-Mikhailov drift bifurcation (committee/reviews/chemotaxis-motility_r3.md item 3). The second is the ad7 R arm at D=M and 2M on 3 seeds (committee/reviews/active-droplets_r3.md item 3). The third is a DoG/Laplacian control for r-two56's ring-kernel set-point membrane (committee/reviews/lenia-multichannel_r3.md item 1). Each outcome is a K finding or a C correction, and together they answer the project's original question.",
+  "experiment": "Three sub-runs that can be split between agents. (a) kstrail: replace the -chi_h u grad h repulsion with an activator-inhibitor RD in which h is slow (large tau_h) and diffuses with kstrail's D_h. Run 3 seeds at 192^2, about 8 min each. Readout: the fraction of spots that travel >=5 BL, against kstrail's crescents. (b) ad7 R arm: replace CH with linear diffusion at D=M and at D=2M, kp=0.5, 3 seeds each (6 runs of about 6 min), against the CH arm's 12 dividing droplets. Add one dx=0.5 anchor at kp=0.5 with M, kappa, D and chi rescaled (about 25 min). (c) r-two56: replace the set-point ring kernel with a difference of Gaussians matched in first two radial moments, and with a screened-Poisson pair (1 - D_j lap)^-1 solved spectrally (LITERATURE.md section 2.1.7 idea 9). Run 2 seeds each at 192^2. About 75-90 min in all. Per the r3 ruling, a control counts only in the regime where the world succeeds.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "M",
+   "D"
+  ],
+  "class": "any",
+  "parents": [
+   "threads/chemotaxis-motility/worlds/kstrail",
+   "threads/active-droplets/worlds/ad7-gated",
+   "threads/lenia-multichannel/worlds/r-two56",
+   "committee/reviews/chemotaxis-motility_r3.md",
+   "committee/reviews/active-droplets_r3.md",
+   "committee/reviews/lenia-multichannel_r3.md",
+   "REPORT.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-fisim-heredity-division-speed",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "fisim-heredity-division-speed",
+  "title": "Is division speed the variable behind xcell-her's heredity, and can a marker carried with the body rescue arisen marks?",
+  "summary": "xcell-her's planted marks breed true in 46/46 divisions, and the gate is necessary: beta_h=0 erases every on-lineage. Marks that arise in the run never breed true. The body glides out from under a stationary h domain and leaves it stranded in the neck, so at most one daughter keeps a dot (committee/reviews/fisim-beyond-laplacian_r3.md; threads/fisim-beyond-laplacian/FINAL.md). REPORT.md section 7 items 3 and 8 also ask for a resolved, uniformly lowered-D Laplacian twin in the regime where the gate works. That is the missing beyond-diffusion control for the PhySim genome.",
+  "experiment": "Cross genome {xcell-her, xcell-evo2-N} with division speed {slow: 10 founders in 80^2; fast: 4 founders in 64^2}. Use planted cell-filling marks at t=0, gated, dx 0.5, T=150, 3 seeds: 12 runs of about 2 min. Save m with u and h every 2 t and merge labels across periodic edges. Read per-daughter h on a fixed absolute scale at t_pinch+10 and t_pinch+30, and the time from neck to separation. In the failing cell, add two rescue arms of 3 seeds each: h taxis up bdep (chi>0) with its chi=0 twin, and higher interior Dh with beta raised so the rim diffusivity stays fixed. Add the beyond-diffusion twin: ungated, with Dh lowered uniformly to match the gated cell's retention, at dx 0.25, in the regime where the gate works, 2 seeds. About 30 runs of 2-4 min, about 60 min.",
+  "target": [
+   "I",
+   "B",
+   "D",
+   "H"
+  ],
+  "class": "physim-genome",
+  "parents": [
+   "threads/fisim-beyond-laplacian/worlds/xcell-her",
+   "threads/fisim-beyond-laplacian/worlds/xcell-evo2-N",
+   "threads/fisim-beyond-laplacian/xgenome.py",
+   "committee/reviews/fisim-beyond-laplacian_r3.md",
+   "threads/fisim-beyond-laplacian/FINAL.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-fisim-self-made-membrane",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "fisim-self-made-membrane",
+  "title": "Can a PhySim genome cell make its own membrane field (a tilted Allen-Cahn wall) that carries the gate, repairs itself and divides?",
+  "summary": "fisim's gate rides on m4's band ring, which is part of the soliton, so membrane repair and division are not the membrane's own dynamics. That was the brief's unrealized goal (threads/fisim-beyond-laplacian/FINAL.md, 'What a next lab should try' item 1; committee/reviews/fisim-beyond-laplacian_r3.md item 2). The autopoiesis tilt a(L-theta) and the chi drift were sent to fisim as genome operators in r1 and never implemented (REPORT.md section 3, operator 2 and recommendation (b)). A genome-level membrane would move the PhySim class from {I,B,M} (xcell-a L4b[L3]) toward {I,B,R,M,D}.",
+  "experiment": "Add an XGENOME key 'wall' to xgenome.py: dphi = Dp lap phi + r phi(1-phi)(phi - 1/2 + a(u - theta)), with phi^2-gated cargo mobility applied through perm with a harmonic face mean in _div_face. Check vacuum parity first: without the key, the genome reproduces m4 to about 1e-13 after 1000 steps. On xcell-a's genome at 160^2, 3 seeds, test four things. (1) Does phi wrap each m4 glider? (2) The a=0 ablation. (3) A 40% rim cut at t=100, for repair. (4) In xcell-evo2's division regime, does phi divide with the body? About 14 runs of 3-5 min, 45-60 min.",
+  "target": [
+   "I",
+   "B",
+   "R",
+   "M",
+   "D"
+  ],
+  "class": "physim-genome",
+  "parents": [
+   "threads/fisim-beyond-laplacian/xgenome.py",
+   "threads/fisim-beyond-laplacian/XGENOME_SPEC.md",
+   "threads/fisim-beyond-laplacian/worlds/xcell-a",
+   "threads/autopoiesis/worlds/phase_membrane",
+   "committee/reviews/fisim-beyond-laplacian_r3.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-flow-lenia-glider-branch-assay",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "flow-lenia-glider-branch-assay",
+  "title": "Is there selection on a body-level gene in Flow-Lenia gliders, measured by the identical-state branch-point assay?",
+  "summary": "The flow-lenia gene sweep read correctly only after a Price split: the takeover was somatic, inside fused mosaic bodies, not between bodies (committee/reviews/flow-lenia_r3.md item 1; REPORT.md section 7 item 7). Uptake genes make selection true by construction (REPORT.md section 5.4, point 5), so the gene should set a body-plan trait such as speed or a size set-point, read through the body-scale phenotype g_eff = blur(A g)/blur(A) (threads/flow-lenia/FINAL.md item 3). lenia's branch_test.py is a cheap, high-power selection test.",
+  "experiment": "In threads/flow-lenia/worlds/fl_forager_gene, or in its anti-fusion fork if flow-lenia-anti-fusion passes, make the gene scale the critical mass theta_A (a size set-point) or the growth-kernel radius, not uptake. Take neutral seed-0-like states at 5 times between t=800 and t=1600. In each, flip 3 random whole gliders (coverage 1.0, including contact founders) and branch S/N for 500 t: 10 pairs, 20 runs of about 2-3 min. Readouts: a per-component mean-g phenotype, a persistence window of t>=160, per-kind births and deaths per body-time, gross and net conversions, and between+fusion booked together. Pass: S>N in >=8/10 informative pairs, high-g births exceed net conversions, and the within-body term stays near 0.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D",
+   "H"
+  ],
+  "class": "flow-lenia",
+  "parents": [
+   "threads/flow-lenia/worlds/fl_forager_gene",
+   "threads/lenia-multichannel/tools/branch_test.py",
+   "threads/flow-lenia/scripts/audit_gene.py",
+   "committee/reviews/flow-lenia_r3.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-fl-predator-mass-matched",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "fl-predator-mass-matched",
+  "title": "Does Flow-Lenia predator-prey coexistence survive world-made sensing, mass-matched arms and a 256^2 domain?",
+  "summary": "fl_predator has L4b[L2] prey and L5 Weak on one seed. Coexistence was a knife edge at 128^2, and chase and flee read imposed blurred fields. In a mass-conserving world, removal controls must return the removed mass, because a dying predator fertilises (committee/reviews/flow-lenia_r3.md item 3; threads/flow-lenia/FINAL.md items 2 and 4). In chemotaxis, the sign flip appeared only in a decomposition that compared kinds on each component (threads/chemotaxis-motility/packs/arms_summary.md).",
+  "experiment": "In threads/flow-lenia/worlds/fl_predator, replace imposed blur sensing with secreted, diffusing signals: prey emit s_p, predators flow up grad s_p, and prey flow down grad s_q. Run 4 arms {full; prey-only with the predators' mass returned as food; no-chase; no-flee} x 3 seeds at 256^2 (time one run first; expect 6-8 min). 12 runs take about 45 min two at a time. Use per-species segmentation and report peak spacing. Readouts: prey per-capita growth by arm, decomposed into consumption and chase components; predator persistence through >=3 cycles; and the time courses.",
+  "target": [
+   "I",
+   "M",
+   "X"
+  ],
+  "class": "flow-lenia",
+  "parents": [
+   "threads/flow-lenia/worlds/fl_predator",
+   "threads/flow-lenia/worlds/fl_predator_preyonly",
+   "threads/chemotaxis-motility/packs/arms_summary.md",
+   "committee/reviews/flow-lenia_r3.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-rtwo56-food-limited-cells",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "rtwo56-food-limited-cells",
+  "title": "Do r-two56's spontaneous shelled cogs become food-dependent (L4c[L3]), and do they divide when food is scarce?",
+  "summary": "r-two56 is the only spontaneous shelled kernel cell (L3 high; 2 of 420 random rules; threads/lenia-multichannel/packs/r-two56). On food with decay 0.01 the cells barely eat (mean food 0.99), and decay 0.03 leaves at most 1 cell (threads/lenia-multichannel/FINAL.md). L4c was never supported under rubric v2 (REPORT.md section 2). The curator's design would give {S,I,B,E} in Lenia (committee/reviews/lenia-multichannel_r3.md item 1). The FINAL names weakening the size limiter under scarcity as the route to fission.",
+  "experiment": "Fork threads/lenia-multichannel/worlds/rf-two56-mu0.01 with decay 0.015-0.02, rho 0.005 and food D 0.5, so that formed cogs sit in wells with F<0.8. Check with a scan of 3 decay values at 192^2 (about 5 min each). At t=300, branch three arms: a fed twin; a local supply cut (F=0 and rho=0 in a disk of 1.5 cell radii around one isolated cog); and global refill off. Run 3 seeds, 9 branch runs of 3-5 min. Pass: the cut cell dies or loses its shell while its twin and neighbours persist, on >=2/3 seeds. With the remaining time, lower the size-limiting kernel's weight by 10-20% under scarcity (2 runs) and look for fission.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "E"
+  ],
+  "class": "lenia",
+  "parents": [
+   "threads/lenia-multichannel/worlds/rf-two56-mu0.01",
+   "threads/lenia-multichannel/worlds/r-two56",
+   "committee/reviews/lenia-multichannel_r3.md",
+   "threads/lenia-multichannel/FINAL.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-plife-nonreciprocal-release",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "plife-nonreciprocal-release",
+  "title": "Can non-reciprocal surface forces make particle cells release propagules under their own motion, tested against an (A+A^T)/2 twin?",
+  "summary": "particle-life's spore reproduction was overshoot by the explicit integrator. At a step-safe step, births need a written detachment rule and stop at confluence (sporecell3-det is L2 high, L6 Weak; REPORT.md sections 1.8 and 7 item 6). Non-reciprocity is the thread's untested beyond-diffusion lever and the way particle life breaks Newton's third law (LITERATURE.md section 2.3.2). Non-reciprocal cross-taxis made the lab's best L5 (threads/chemotaxis-motility/packs/pursuit).",
+  "experiment": "This is the design of committee/reviews/particle-life_r3.md item 1. Start from sporecell3 at k_det=0 with step-safe motion. Make M a surface type, produced where a C particle has few C neighbours, with A[C,M]=+1 and A[M,C]=-1, so that surface pairs propel themselves off the parent. Run against a symmetrized twin with A=(A+A^T)/2. Add whole-cell death at delta of about 0.005-0.01 from a state-independent RNG. Use seeds 0, 1, 2 and 11 at T=400, plus one arm at dx_max=0.025: 9 runs of about 6-8 min, about 35-40 min two at a time. Pass: in t=150-400 the non-reciprocal arm reaches gen>=2 on >=3/4 seeds with daughters >=50% of parent size; births agree within 20% at dx_max/2; the symmetrized arm stays at gen<=1; and birth strips show propagules leaving under their own motion.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D"
+  ],
+  "class": "particle",
+  "parents": [
+   "threads/particle-life/worlds/sporecell3-det",
+   "threads/particle-life/worlds/sporecell3",
+   "threads/particle-life/worlds/plife-m2",
+   "threads/particle-life/lineage2.py",
+   "committee/reviews/particle-life_r3.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-plife-turnover-flickerproof",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "plife-turnover-flickerproof",
+  "title": "Does whole-cell death give sporecell3-det stationary turnover with gen>=3, read by a flicker-proof lineage?",
+  "summary": "sporecell3-det stops reproducing at confluence. A size-capped release rule makes adults sterile and immortal, so births stop at t~90 while food falls 91% (committee/reviews/particle-life_r3.md, cross-pollination). Two lineage artifacts, parent fusion and threshold flicker, account for every gen-2 label on seed 0 (threads/particle-life/packs/sporecell3-det/seed0/lineage2.json). The r3 review rules that any L7 contrast in particles comes only after this test.",
+  "experiment": "Add whole-cell death or dilution from a state-independent RNG to threads/particle-life/worlds/sporecell3-det, and make conformity count only same-clan neighbours. Use a lineage with the parent-fusion void and smin hysteresis. Run seeds 0, 1 and 11 at dt and dt/2, plus one dx_max/2 arm, at T>=600: 7 runs of about 8-10 min, about 40 min. Pass: >=3 parent-size births per 100 t after t=200, mature cells die, and gen>=3 after t=200, on 3/3 seeds.",
+  "target": [
+   "S",
+   "I",
+   "D"
+  ],
+  "class": "particle",
+  "parents": [
+   "threads/particle-life/worlds/sporecell3-det",
+   "threads/particle-life/lineage2.py",
+   "threads/particle-life/packs/sporecell3-det",
+   "committee/reviews/particle-life_r3.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-chi-ring-heritable-trait",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "chi-ring-heritable-trait",
+  "title": "Is the adsorbed ring strength chi a heritable body-plan trait under selection, with copying errors at division?",
+  "summary": "In phase_membrane, chi=0 gives 15-17 cells against 42-43 and 9-12 persistent splits against 26-32 (committee/reviews/autopoiesis_r3.md). The ring is a switch of about 2x in cell size and about 3x in division rate. That makes chi a body-plan trait, unlike the uptake genes that make selection true by construction (REPORT.md section 5.4, point 5). autopoiesis r3 item 2 and threads/autopoiesis/FINAL.md propose copying errors at division instead of whole-cell flips, plus a second axis (growth rate vs link yield) as an L8 probe for trade-off-driven diversification.",
+  "experiment": "Fork the sealed channel of threads/autopoiesis/worlds/membrane_evo: min face gate, fast decay of catalyst outside bodies, and kinds neutral inside the cell. Carry chi as a catalyst-borne trait q = K*chi transported with K (the ad9 construction), so each cell's adsorption strength is the mean chi of its catalyst. Replace whole-cell flips with copying errors: at each tracker-detected pinch, shift one daughter's catalyst chi by N(0, 0.1 chi0). In the identical-event twin, adsorption stays at chi0 whatever q is. Run 4 seeds x {S, N} at 128^2, t=32000: 8 runs of about 6-8 min, about 35 min. Use the identity-death operator from autonomous-l7-identity-deaths if it is published, otherwise the disk, with births classified by cause. Readouts: mean chi trajectory S vs N, per-kind births and deaths, conversions, and bimodality of the chi distribution (L8 probe).",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D",
+   "H",
+   "O"
+  ],
+  "class": "phase-field",
+  "parents": [
+   "threads/autopoiesis/worlds/membrane_evo",
+   "threads/autopoiesis/worlds/phase_membrane",
+   "threads/active-droplets/worlds/ad9-ledger",
+   "committee/reviews/autopoiesis_r3.md",
+   "threads/autopoiesis/FINAL.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-membrane-sets-division-geometry",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "membrane-sets-division-geometry",
+  "title": "Can the membrane's own composition set how a cell divides (budding or pearling), so that division becomes a membrane property?",
+  "summary": "Every dividing field cell in the lab divides by core starvation, which is Gray-Scott/Zwicker class. ad1-fuel divides without CH, xcell-div divides with the gate off, and phase_membrane divides by central starvation (REPORT.md section 3; threads/autopoiesis/FINAL.md). autopoiesis proposes making wall tension depend on the adsorbed ring. active-droplets proposes a saturating surfactant back-reaction, because kappa - 2 s psi blew up at s=0.3 (threads/active-droplets/FINAL.md). In the literature, FCH bilayers pearl when free amphiphile is in excess, and phase-field vesicles bud when a surface species changes spontaneous curvature (LITERATURE.md sections 2.5.1, 2.5.2 and 2.5.5 ideas 2-3).",
+  "experiment": "Fork threads/autopoiesis/worlds/phase_membrane and write the wall's diffusive term as div(Dp_eff grad phi), with a saturating Dp_eff = Dp (1 - s_L L_ring/(1 + L_ring)), so that ring-rich walls have lower line tension. Sweep s_L in {0, 0.3, 0.6, 0.9} x 2 seeds at 128^2 from noise: 8 runs of about 6 min, about 25 min two at a time. Readouts at each persistent split: aspect ratio at the pinch, daughter size ratio (budding if <0.5), daughters per event, and division rate against the s_L=0 twin. Run the best s_L on 3 seeds with a chi=0 ablation, which should restore starvation division if the ring sets the geometry. About 50-60 min.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "phase-field",
+  "parents": [
+   "threads/autopoiesis/worlds/phase_membrane",
+   "threads/active-droplets/worlds/ad3-membrane",
+   "threads/autopoiesis/FINAL.md",
+   "threads/active-droplets/FINAL.md",
+   "LITERATURE.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-shared-lineage-ledger",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "shared-lineage-ledger",
+  "title": "One merge-aware, periodic-aware, species-aware birth and death ledger for every class",
+  "summary": "Every thread wrote its own trackers, and several were buggy. preytrack.py has the merge-daughter bug. fission.py used max() through merges. labkit reads 0 splits on propagule worlds and gen 0-1 on dividing colonies, and periodic labels went unmerged. Lineage artifacts accounted for every gen-2 label in sporecell3-det (REPORT.md sections 6.3 point 7 and 7 item 10; rubric issues in committee/reviews/particle-life_r3.md, chemotaxis-motility_r3.md and lenia-multichannel_r3.md). D and H claims in the collective need one audited ledger. Without it, every review re-derives the counts.",
+  "experiment": "Build a collective tool from threads/particle-life/lineage2.py and threads/lenia-multichannel/tools/division_ledger.py, with these rules: continuation by mass overlap, with labels merged across periodic edges; a birth is void if its parent merges into it within K samples; smin hysteresis; a daughter needs >=25% (fields) or >=50% (particles) of parent mass; persistence >=160 t; species awareness; birth-cause tags (spontaneous or operator-touched); gross and net conversions; and a closed budget check (final + deaths = sources). Validate it in 45-60 min on four packs with known answers: phase_protocell_noise (gen 3-4), sporecell3-det seed 0 (the artifact gen-2 labels must vanish), swimfission strict (gen 3/3/3) and mcf-MIRd. Publish it as a tool contribution with the validation table.",
+  "target": [
+   "D",
+   "H"
+  ],
+  "class": "any",
+  "parents": [
+   "threads/particle-life/lineage2.py",
+   "threads/lenia-multichannel/tools/division_ledger.py",
+   "threads/autopoiesis/evotrack.py",
+   "threads/chemotaxis-motility/fission.py",
+   "labkit/metrics.py",
+   "REPORT.md"
+  ],
+  "priority": 2,
+  "beyond_diffusion": false
+ },
+ {
+  "id": "lab1-q-lenia-mirdplus-selection",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "lenia-mirdplus-selection",
+  "title": "Does MIRd+ show per-body heredity (B5), and does selection on yield push a population across its own turnover threshold?",
+  "summary": "mcfd-MIRd has three regimes and a sharp turnover threshold: 0.025 gives a static lattice and 0.03 gives boom-bust. Adaptive selection on yield pushed colonies into the static lattice in 3/3 runs (self-dormancy), which has not yet been separated from the Jensen effect (threads/lenia-multichannel/FINAL.md). B5 (worlds/mca-MIRd-body) was coded but its outcome was never reported, and passive alleles leak at contacts (47% pure divisions). committee/reviews/lenia-multichannel_r3.md items 2-3 give the pass rule and the stop rule.",
+  "experiment": "Run B5: per-body inheritance from the 12 branch states plus >=6 contact founders, with a merge-aware ledger (daughters separate for >=50 t with >=50% of parent mass), gross and net conversions per mutation, and a two-panel sheet per arm (raw channels | allele outline). 12 S/N pairs of about 2-3 min take about 40 min. Pass: >=90% pure divisions, conversions <= mutations, and S>N in >=10/12. Otherwise stop L7 on MIRd+. With the remaining time, run fixed-allele cultures across mu/Y 0.02-0.035 with a Jensen control (mixed yields vs the mean yield) to test self-dormancy.",
+  "target": [
+   "I",
+   "E",
+   "D",
+   "H"
+  ],
+  "class": "lenia",
+  "parents": [
+   "threads/lenia-multichannel/worlds/mca-MIRd-body",
+   "threads/lenia-multichannel/worlds/mca-MIRd-branch",
+   "threads/lenia-multichannel/worlds/mcfd-MIRd",
+   "threads/lenia-multichannel/tools/branch_test.py",
+   "committee/reviews/lenia-multichannel_r3.md"
+  ],
+  "priority": 2,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-chase-benefit-law",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "chase-benefit-law",
+  "title": "Is evopursuit's chase benefit just speed, with motility acting as a self-toxin homeostat?",
+  "summary": "Harmless chasers multiply prey (B 2.4-2.5x, A 1.2-1.6x, against 0.36-0.76x alone) and raise prey speed from 0.27 to 0.41 px/t (committee/reviews/chemotaxis-motility_r3.md item 2 and cross-pollination). If speed alone reproduces the gain, the law 'motility is a self-toxin homeostat' would explain autopoiesis motile_trait_tox, where mobility is selected up under self-made toxic waste with a tipping point at kd 0.018-0.02 (threads/autopoiesis/FINAL.md). That would be a cross-class K finding.",
+  "experiment": "Arms on threads/chemotaxis-motility/worlds/evopursuit, 3 seeds each at 160^2 (about 8 min per run): speed-matched lone prey (chi_h raised until prey move at 0.41 px/t); a non-chasing escort (chi_y=0) at the predators' realized abundance; a k->0 consumption titration (k in {0, 0.25, 0.5} x base); and the full arm. 18 runs take about 70-80 min two at a time; drop the 0.5 titration point if time is short. Readouts: prey per-capita growth, and toxin and food under each body over time.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "X"
+  ],
+  "class": "keller-segel",
+  "parents": [
+   "threads/chemotaxis-motility/worlds/evopursuit",
+   "threads/chemotaxis-motility/worlds/evopursuit_nopred",
+   "threads/autopoiesis/worlds/motile_trait_tox",
+   "committee/reviews/chemotaxis-motility_r3.md"
+  ],
+  "priority": 2,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-resolution-continuation-audit",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "resolution-continuation-audit",
+  "title": "Do the imported motile claims survive a 1.5x resolution continuation?",
+  "summary": "Several imported established claims were validated only at dt/2, which is not a convergence test under reintegration tracking or with clipped integrators (REPORT.md section 1, point 8). The r3 reviews list what is owed: evopursuit and swimfission at 1.5-2x with lengths scaled (committee/reviews/chemotaxis-motility_r3.md item 3), fl_forager's resolution continuation, owed since r1 (committee/reviews/flow-lenia_r3.md item 2), and one membrane_evo up/twin pair at 1.5x (committee/reviews/autopoiesis_r3.md item 3). A replicated contradiction reopens an established claim (collective/SCORE.md), and a confirmation supports the claim.",
+  "experiment": "Run 1.5x continuations, with lengths, rates and diffusivities scaled so that bodies keep the same size in physical units: swimfission, 2 seeds; fl_forager (192^2, kernel radius and flow scaled), 2 seeds; evopursuit, 1 seed. Checkpoint long runs into segments of <=10 min. About 70-90 min in all. Readouts are the claim's own: strict generation depth for swimfission, glider count and division cycles for fl_forager, and prey crescent speed and allele dynamics for evopursuit, each compared with the 1x pack.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D"
+  ],
+  "class": "any",
+  "parents": [
+   "threads/chemotaxis-motility/worlds/swimfission",
+   "threads/chemotaxis-motility/worlds/evopursuit",
+   "threads/flow-lenia/worlds/fl_forager",
+   "committee/reviews/chemotaxis-motility_r3.md",
+   "committee/reviews/flow-lenia_r3.md"
+  ],
+  "priority": 2,
+  "beyond_diffusion": false
+ },
+ {
+  "id": "lab1-q-lenia-closed-nutrient-gated-shell",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "lenia-closed-nutrient-gated-shell",
+  "title": "Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing?",
+  "summary": "Lenia's metabolism so far is open: food regrows toward Fmax and decay dissipates matter (threads/lenia-multichannel/worlds/rf-two56-mu0.01/world.py). As a result, r-two56 cells barely eat, and L4c on L3 was never reached (threads/lenia-multichannel/FINAL.md). Two operators that worked in other classes have not been tried in a kernel world. One is an exact matter+nutrient ledger, which gave fl_forager growth-division cycles without a global cap. The other is gated mobility at a self-made boundary, which did the work in three threads (REPORT.md section 3, operators 1, 4 and 5). Lenia's membrane/nucleus division of labour makes the shell a natural gate (LITERATURE.md sections 2.1.2 and 2.1.7 ideas 4 and 6). A closed ledger makes cells depend on the resource, and the gate gives the shell a job, as ad7 gave ad3's inert shell a job. The target {S,I,B,E,D} would be new in a class that so far reaches only {I,E,D}.",
+  "experiment": "Fork threads/lenia-multichannel/worlds/rf-two56-mu0.01. Set rho=0 (no refill) and route maintenance decay back into food (F += dt*decay*sum(A)/Y), so that sum(A)/Y + sum(F) is conserved to round-off; assert it every frame. Move F with gated diffusion div(D_F exp(-beta A_shell) grad F), using harmonic face means (implicit ungated part plus an explicit correction, as in ad7). Run at 192^2 from noise, 3 arms {beta=0; beta=4; ungated with D_F lowered uniformly to match the beta=4 interior retention} x 3 seeds: 9 runs of about 5 min, about 25 min two at a time. Then sweep total nutrient over 3 values on the best arm (6 runs). At t=300, branch a local supply cut around one cell (the E test). About 60-75 min. Readouts: cells from noise, shell present (radial band test at the profile trough), core vs outside nutrient, ledger closure, births and deaths per cell per 1000 t.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "E",
+   "D"
+  ],
+  "class": "lenia",
+  "parents": [
+   "threads/lenia-multichannel/worlds/rf-two56-mu0.01",
+   "threads/lenia-multichannel/worlds/r-two56",
+   "threads/active-droplets/worlds/ad7-gated",
+   "threads/flow-lenia/worlds/fl_forager",
+   "LITERATURE.md",
+   "REPORT.md"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-particle-catalysts-in-phase-cells",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "particle-catalysts-in-phase-cells",
+  "title": "Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion",
+  "summary": "In every field world, heredity leaked wherever bodies touched: lenia had 47% pure divisions, conversions rivalled births in autopoiesis and chemotaxis, and flow-lenia made mosaic bodies. Heredity worked only with confinement by construction (REPORT.md section 5.4, point 1). particle-life's catalytic provenance labels give exact lineage, but its membranes were labels, not material (threads/particle-life/FINAL.md). A hybrid combines the two strengths. phase_membrane's container cannot have a hole, repairs itself by curvature flow and divides by starvation (REPORT.md section 3, operator 2). Inside it, discrete catalyst particles carry kind and lineage and are reflected by the wall. A neighbour's field cannot overwrite a particle, so conversions are impossible by construction, and kinds can differ in link yield as in membrane_evo. Particle death plus wall dissolution supplies turnover.",
+  "experiment": "Fork threads/autopoiesis/worlds/phase_membrane at 128^2. Replace the catalyst field K with N of about 1500-3000 Brownian catalyst particles (numba). Each deposits link production into L through a Gaussian (sigma 1 px) at a rate set by local substrate, duplicates at a rate set by local substrate (the daughter copies the parent's kind; small mutation rate), and dies at a constant rate. A step into lower phi is rejected with probability 1 - phi(target)^2, the phi^2 gate as reflection. Start from noise (particles uniform, phi noisy), 3 seeds. Two ablations: gate off (particles leave and cells should die) and the original field world. Then run two kinds with yield 1.0 vs 1.3 against an identical-event twin with equal yields, 2 seeds each. About 12 runs of 5 min, 45-60 min. Readouts: cells from noise, persistent splits with particle partition at division, conversions (must be 0), and per-kind births against the twin.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D",
+   "H"
+  ],
+  "class": "other",
+  "parents": [
+   "threads/autopoiesis/worlds/phase_membrane",
+   "threads/autopoiesis/worlds/membrane_evo",
+   "threads/particle-life/worlds/sporecell3-det",
+   "threads/particle-life/lineage2.py",
+   "REPORT.md"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bonded-particle-membrane",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bonded-particle-membrane",
+  "title": "Do bonded membrane particles give particle cells a material boundary that survives starvation and that daughters inherit?",
+  "summary": "Every particle-life membrane rule was a label, not a material. Rings vanished when food was depleted, gating food at the membrane starved the core, and every daughter was bare (L6[L3] Contradicted; threads/particle-life/FINAL.md; REPORT.md section 3). The particle protocells in the literature that grow, repair and divide all have material membranes. Cabaret's oriented surfactants have a side-by-side potential that builds curvature and a head-to-head repulsion that favours fission over fusion. Hutton's cells are bonded atoms, and ALIEN builds bonded soft bodies (LITERATURE.md section 2.3.4). particle-life FINAL's own next step is an M made from food, slow to decay, adhesive to C and repelling F. Bonds would also stop particle bodies from fusing silently.",
+  "experiment": "Fork threads/particle-life/worlds/sporecell3-det (numba, step-safe). Keep the rule by which C converts to M at the body surface. Add harmonic bonds between M particles: each M bonds to up to 2 M neighbours within r_b (forming chains), and a bond breaks above strain 1.5 r_b or at rate k_break. Bonded M repels F (k_rep) and weakly attracts C, so chains wrap the body and food enters through the gaps; M decays slowly. Arms: bonds on vs off with the same chemistry, 3 seeds, T=400 at 128^2: 6 runs of about 8 min, about 25 min. On the bonds-on arm, add a starvation branch (food removed at t=200) and a 30% ring cut at t=200, 2 seeds each. Check one seed with a halved displacement bound. About 60-80 min. Readouts: fraction of cells with closed rings (>=80% angular coverage), ring survival under starvation, a ring on both daughters at +10 t and +30 t, and food flux into the core.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "R",
+   "D"
+  ],
+  "class": "particle",
+  "parents": [
+   "threads/particle-life/worlds/sporecell3-det",
+   "threads/particle-life/worlds/sporecell2",
+   "threads/particle-life/FINAL.md",
+   "LITERATURE.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-flow-lenia-negotiated-genomes",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "flow-lenia-negotiated-genomes",
+  "title": "Do localized rule parameters with negotiation mixing and matter turnover give body-coherent genomes and selection in Flow-Lenia?",
+  "summary": "The first lab carried a single uptake gene with stochastic sampling (threads/flow-lenia/worlds/fl_forager_gene/world.py) and found genes spreading by turnover inside fused mosaic bodies (L7 Contradicted). In the literature, parameter localization carries the whole rule, the per-kernel weights h, with the matter. In Michel et al., negotiation mixing (a second carried map Q decides which incoming parameters win, beta=100) gave the highest evolutionary activity, while averaging rules gave almost none (LITERATURE.md section 2.2). Negotiation is close to winner-take-all per cell, so it may produce body-coherent genomes without a designed body-level phenotype. Matter decay to food supplies the turnover that selection needs.",
+  "experiment": "Fork threads/flow-lenia/worlds/fl_forager. Localize h (the per-kernel weights) as a parameter map P, and add a competition map Q; both move with the matter. Implement three mixing rules: average; stochastic sampling proportional to incoming mass; and negotiation with beta=100. Draw a fresh RNG key every step, because the official code reuses PRNGKey(42). Add matter decay into food at rate r_decay, keeping matter+food exact. Mutate with 10x10 beams N(0, 0.05) every 500 steps. Run at 128^2, 3 seeds per rule: 9 runs of about 8 min, about 40 min. Add a neutral twin for negotiation (P mutated but the dynamics read the founder h), 3 seeds. Readouts: within-body parameter variance per component, body count, merge/split ratio, non-neutral evolutionary activity (journal Eqs. 9-11), and a Price split with between+fusion booked together.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D",
+   "H"
+  ],
+  "class": "flow-lenia",
+  "parents": [
+   "threads/flow-lenia/worlds/fl_forager",
+   "threads/flow-lenia/worlds/fl_forager_gene",
+   "threads/flow-lenia/scripts/audit_gene.py",
+   "LITERATURE.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-three-body-operators-one-chemistry",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "three-body-operators-one-chemistry",
+  "title": "Same chemistry, three body operators: does dividing with a retained catalyst need diffusion, Cahn-Hilliard or kernel transport?",
+  "summary": "The score rewards reaching a capability set in new dynamical classes (collective/SCORE.md, breadth Q), and the lab never compared operators on a matched chemistry. ad1-fuel turned out to be Gray-Scott mitosis in a CH body: with CH replaced by linear diffusion at D=0.015 it still divides, and at D=0.06 it does not. xcell-div divides with the gate off, and the only failing Laplacian control ran on 1 seed (REPORT.md sections 1 point 4 and 3). In the literature, sharp interfaces come from a double well plus a gradient penalty, and plain RD has no surface tension (LITERATURE.md section 2.0). Flow-Lenia transport (F = (1-alpha) grad U - alpha grad u_sum, moved by reintegration tracking) is proposed as the direct replacement for D lap u (section 2.2, idea 1). A three-way test on one chemistry shows which operator lets a body own its contents, which is the heredity bottleneck.",
+  "experiment": "Fix the ad2-catalysts chemistry: fuel-driven cooperative production of body material, and two cross-inhibiting catalysts that replicate inside the body. Vary only how the body field c moves: (1) linear diffusion at D in {0.015, 0.03}; (2) Cahn-Hilliard with ad2's M and kappa; (3) reintegration-tracking flow, with affinity U = the production rate blurred by a ring kernel, plus the alpha pressure (theta_A in {1, 2}; rt() from fl_forager). Run at 128^2 with planted disks of both catalyst kinds, 2 seeds each, and one from-noise seed per operator: about 18 runs of 3-5 min, 45-60 min. Readouts: interface width (10-90%), division count and generation depth (merge-aware), per-daughter catalyst purity at +10 t and +30 t, and conversions at contacts. Check the winner at dt/2 and on a 1.5x grid. Each operator that reaches {I,D} or {I,B,D} is a separate class reach.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "any",
+  "parents": [
+   "threads/active-droplets/worlds/ad2-catalysts",
+   "threads/active-droplets/worlds/ad1-fuel",
+   "threads/flow-lenia/worlds/fl_forager",
+   "LITERATURE.md",
+   "REPORT.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-pps-turnover-heritable-recipes",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "pps-turnover-heritable-recipes",
+  "title": "Does the Primordial Particle System's own life cycle (spores, ringed cells, division, death) support heredity when particles carry their own (alpha, beta)?",
+  "summary": "PPS is the best-documented particle system whose cells form from noise, have a membrane-like ring, divide and die. Spores of about 18 particles germinate into cells; cells average about 48 particles with a dense outer ring and divide at about 61; populations grow logistically; and dying cells release free particles as nutrients (LITERATURE.md section 2.3.3; Schmickl et al. 2016). That is the intrinsic turnover the lab lacked in every class (REPORT.md section 5.4, point 2). Behaviour under synchronous updates is unverified, because the paper used asynchronous random-order updates; this is also a direct test of asynchronous dynamics. Swarm Chemistry passes kinetic recipes between particles locally (LITERATURE.md section 2.3.4), a route to heredity without field contagion.",
+  "experiment": "Implement PPS in numba with a cell list, float64 and the published parameters: r=5, alpha=180 deg, beta=17 deg, v=0.67, density 0.08 (5000 particles on a 250x250 torus). (1) Benchmark asynchronous random-order against synchronous updates, 2 seeds each, 30k steps (about 5-8 min each). Count spores, cells, divisions and deaths with the PPS colour classes and a merge-aware tracker. Pass: logistic growth to about 50 cells, with divisions near 61 particles, in the asynchronous arm. (2) Heredity arm: each particle carries (alpha, beta). Clustered particles adopt the majority recipe of their r-neighbours at rate k_c, and each particle mutates at rate 1e-5 per step. Plant two founder recipes 50/50 (beta 17 deg vs 16 deg), against a neutral twin in which the recipe does not change motion. Run 2 seeds x 2 arms. About 60-80 min. Readouts: per-recipe cell counts, births and deaths per cell, and recipe purity of daughters.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D",
+   "H"
+  ],
+  "class": "particle",
+  "parents": [
+   "LITERATURE.md",
+   "threads/particle-life/lineage2.py",
+   "threads/particle-life/FINAL.md",
+   "REPORT.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-frey-condensate-swim-divide",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "frey-condensate-swim-divide",
+  "title": "Can a condensate whose mobility its own product sets switch between Frey-type swimming and dividing, and carry the ad7 shell?",
+  "summary": "active-droplets failed to get self-propulsion in 6 attempts. ad6-motile's chi_u coupling to fuel ran in the slow-mobility regime (M=0.03) that division needs, while Frey-type swimming needs fast mobility (threads/active-droplets/FINAL.md, worlds/ad6-motile). Its next-lab list proposes letting a component set local CH mobility, so that swimmers switch to dividers. Demarchi, Goychuk, Maryshev and Frey (2023) give a three-field model: a catalytic condensate coupled to substrate and product through Flory-Huggins chi self-propels above a mobility threshold, interrupts coarsening and divides in 3D (LITERATURE.md section 2.4.3; section 2.9 ranks chi coupling second). No world has {B, M, D} together (REPORT.md section 2), and active-emulsion reaches only {I,B,D}.",
+  "experiment": "Implement the three-field model in 2D: CH for c with a semi-implicit spectral step, and s, p by RD with s+p conserved. Use chi_s=-0.05r, chi_p=-0.01r, k1=k2/c+ and w=sqrt(2 kappa/r)=0.1 l0, R=l0, L=5 l0, with dx<=w/2 (128^2). Sweep M in {10, 30, 100, 300} D/eps0 x 2 seeds from one planted droplet (8 runs of about 4 min) to locate the propulsion threshold. Then make mobility depend on product: M_c = M_lo + (M_hi - M_lo) p^2/(p0^2 + p^2), bracketing the threshold, so a large droplet whose core is starved of product slows and divides. Run 3 seeds from noise in L=10 l0. If the switch works, add ad3's amphiphile psi drifting to the interface, with the ad7 gate on catalyst, 2 seeds. About 60-75 min. Readouts: speed in BL per unit time, division events, coarsening arrest, and shell rim/core.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "M",
+   "D"
+  ],
+  "class": "active-emulsion",
+  "parents": [
+   "threads/active-droplets/worlds/ad6-motile",
+   "threads/active-droplets/worlds/ad3-membrane",
+   "threads/active-droplets/worlds/ad7-gated",
+   "threads/active-droplets/FINAL.md",
+   "LITERATURE.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-retained-waste-senescence",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "retained-waste-senescence",
+  "title": "Can waste that the cell retains, diluted only by growth, make confluent cells age and die, giving intrinsic turnover in phase cells?",
+  "summary": "Turnover is the precondition for H in every class, and imposed deaths confounded the tests: the autopoiesis disk acted as both fission operator and size filter (REPORT.md section 5.4, point 2). Concentration-type waste never killed m4 solitons (REPORT.md section 3 (c)), and chemotaxis's self-toxic trail acted as a homeostat rather than a killer, because the waste escapes the body (threads/chemotaxis-motility/FINAL.md). Waste held in by the phi^2 gate, like membrane_evo's sealed catalyst, is diluted only when the cell grows and divides. Confluent cells cannot grow, so waste accumulates and lowers the wall tilt until the cell dissolves, releasing space and substrate to its neighbours. Death then follows from the cell's own history, not from an RNG, which makes heredity tests autonomous.",
+  "experiment": "Fork threads/autopoiesis/worlds/phase_membrane. Add waste W produced in proportion to link production (dW = y_w*prodL), with phi^2-gated mobility and min face means like the sealed catalyst, decay k_w only outside cells, and a tilt term a(L - theta) - a_w W in the wall potential. Sweep y_w in {0, 0.5, 1, 2} at fixed a_w, 2 seeds each, at 128^2 from noise, t=32000: 8 runs of about 6 min, about 25 min two at a time. At the value with stationary turnover, run 3 seeds with an age-resolved death ledger (age and W at death), plus a matched twin in which W is ungated and washes out. About 60 min. Pass, on 3/3 seeds: deaths mainly in old, non-dividing cells (age at death > median inter-division time), births continue after confluence, and the cell number is stationary, while the ungated-W twin freezes.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "phase-field",
+  "parents": [
+   "threads/autopoiesis/worlds/phase_membrane",
+   "threads/autopoiesis/worlds/membrane_evo",
+   "threads/chemotaxis-motility/worlds/toxtrail",
+   "REPORT.md"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-model-ab-ripening-turnover",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "model-ab-ripening-turnover",
+  "title": "Can a reacting emulsion poised between Ostwald ripening and arrest give intrinsic births (splits) and deaths (dissolution) from noise?",
+  "summary": "Active emulsions suppress ripening, so the lab's droplets froze into size-selected lattices, every death was imposed, and uniform starts went extinct (REPORT.md section 5.4, point 2; threads/active-droplets/FINAL.md). In Li and Cates' canonical Model AB, reactions set droplet size, droplets stretch and split, and noise sets the droplet number through nucleation (LITERATURE.md section 2.4.2). AMB+'s zeta term gives reverse Ostwald ripening and size selection with no chemistry (section 2.6.2). Near the boundary between ripening, where small droplets dissolve (deaths), and reaction-driven splitting (births), stationary turnover could come from the physics itself. That would make ad5's confined alleles (L7[L2] low, colonization only) testable after colonization.",
+  "experiment": "Implement Model AB pseudospectrally with a semi-implicit stabilizer, 2/3 dealiasing and Euler-Maruyama noise, at the Li-Cates Fig. 9 parameters: phi_t=-0.6, phi_a=-10, alpha=beta=0.2, kappa=1, noise 0.01, 256^2 periodic, from uniform noise. Sweep uM_A in {1, 2, 4, 8}e-5 x noise {0.005, 0.01, 0.02}, 1 seed each (12 runs of about 4 min). Then run 3 seeds at the 2 most active points. Readouts per 10^4 t in the stationary window: splits, dissolutions, fusions, droplet number and the width of the size distribution. Pass: >=0.5 births and >=0.5 deaths per droplet per window at constant mean number. The follow-up adds ad5's confined catalyst allele inside the droplets. About 60-70 min.",
+  "target": [
+   "S",
+   "I",
+   "D"
+  ],
+  "class": "active-emulsion",
+  "parents": [
+   "threads/active-droplets/worlds/ad0-zwicker",
+   "threads/active-droplets/worlds/ad5-evolve",
+   "LITERATURE.md",
+   "REPORT.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-lenia-async-continuous-time",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "lenia-async-continuous-time",
+  "title": "Do asynchronous or continuous-time updates turn Lenia's frozen confluent lattices into turnover, and do the cells survive the change?",
+  "summary": "Confluent lattices froze in lenia, active-droplets, particle-life and autopoiesis, and the lenia thread stated that selection needs turnover (REPORT.md section 5.4, point 2): mcfd-MIRd gives a dormant or fed static lattice at turnover 0-0.01. Lenia results depend on dt and on the hard clip, and VT049W replicates under one normalization convention only (LITERATURE.md sections 2.1.1 pitfalls and 2.1.2 local check). Asymptotic Lenia removes the clip and is a true ODE, suited to adaptive integration (sections 2.1.4 and 2.1.7 idea 8). Sensorimotor Lenia agents survive masked asynchronous updates (section 2.1.5), and PPS was built on asynchronous updates (section 2.3.3). Update-scheme noise is uniform, state-independent and part of the dynamics, unlike disk kills, so it could give demographic turnover without an imposed death operator.",
+  "experiment": "Run four arms on threads/lenia-multichannel/worlds/mcfd-MIRd (turnover 0.01, the fed static lattice) and on r-two56: (a) synchronous, the base; (b) asynchronous, where each cell updates with probability p in {0.5, 0.25} per step and dt is scaled by 1/p; (c) Asymptotic, du/dt = T(K*u) - u with no clip, integrated by RK45 at tolerance 1e-4; (d) additive noise matched to (b)'s per-step variance, the 'just noise' control. Run 2 seeds each at 192^2 (about 3-6 min each): 16-20 runs, about 50-60 min. Readouts: persisting cells, births and deaths per cell per 1000 t in the stationary window, lattice order (pair correlation) and mass. Pass: (b) or (c) gives turnover >=0.2 per cell per 1000 t where (a) gives about 0 and (d) does not.",
+  "target": [
+   "I",
+   "E",
+   "D"
+  ],
+  "class": "lenia",
+  "parents": [
+   "threads/lenia-multichannel/worlds/mcfd-MIRd",
+   "threads/lenia-multichannel/worlds/r-two56",
+   "threads/lenia-multichannel/tools/division_ledger.py",
+   "LITERATURE.md"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bd-ad7-gate-vs-lowered-d",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bd-ad7-gate-vs-lowered-d",
+  "title": "Is the ad7 shell's containment beyond diffusion?",
+  "summary": "Is the ad7 shell's containment beyond diffusion?",
+  "experiment": "Run ad7t-thick's R arm at a uniformly lowered D equal to the gated mobility M and at 2M (no gate), 3 seeds plus a dx=0.5 anchor; compare retention and division against the gated world. If the gated world divides with a retained catalyst where uniform-D twins do not, the claim becomes diffusion-tested.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "active-emulsion",
+  "parents": [
+   "threads/active-droplets/worlds/ad7t-thick/world.py"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bd-kstrail-laplacian-twin",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bd-kstrail-laplacian-twin",
+  "title": "Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim?",
+  "summary": "Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim?",
+  "experiment": "Build the matched reaction-diffusion twin (activator-inhibitor with a slow third species at the same rates, no advection term) and scan its inhibitor time scale over the range where travelling spots are known; run kstrail and the twin on 3 seeds at 192^2 and compare speed and shape.",
+  "target": [
+   "S",
+   "I",
+   "M"
+  ],
+  "class": "keller-segel",
+  "parents": [
+   "threads/chemotaxis-motility/worlds/kstrail/world.py"
+  ],
+  "priority": 5,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bd-rtwo56-dog-twin",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bd-rtwo56-dog-twin",
+  "title": "Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?",
+  "summary": "Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?",
+  "experiment": "Replace each ring kernel with the Laplacian-truncated (second-order) expansion or a DoG of matched first two moments; run 3 seeds from noise and compare the shell's rim/core and rim/out.",
+  "target": [
+   "S",
+   "I",
+   "B"
+  ],
+  "class": "lenia",
+  "parents": [
+   "threads/lenia-multichannel/worlds/r-two56/world.py"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bd-xcell-a-lowered-d",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bd-xcell-a-lowered-d",
+  "title": "Is xcell-a's cargo containment a gate effect, or just slower diffusion?",
+  "summary": "Is xcell-a's cargo containment a gate effect, or just slower diffusion?",
+  "experiment": "Run xcell-a with the gate replaced by a uniform cargo D equal to the gated D at the membrane and at the body average; 3 seeds; measure centre cargo and the in/out ratio. This is also the first containment (W) test.",
+  "target": [
+   "I",
+   "B",
+   "W",
+   "M"
+  ],
+  "class": "physim-genome",
+  "parents": [
+   "threads/fisim-beyond-laplacian/worlds/xcell-a/world.py"
+  ],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-bd-particle-symmetrized",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "bd-particle-symmetrized",
+  "title": "Do particle-life cells need non-reciprocal forces? Symmetrize the interaction matrix and compare.",
+  "summary": "Do particle-life cells need non-reciprocal forces? Symmetrize the interaction matrix and compare.",
+  "experiment": "Run sporecell3-det with A replaced by (A + A^T)/2 at the step-safe integrator, 2 seeds; compare cell formation, size and births.",
+  "target": [
+   "S",
+   "I",
+   "D"
+  ],
+  "class": "particle",
+  "parents": [
+   "threads/particle-life/worlds/sporecell3-det/world.py"
+  ],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-fch-vesicles-from-noise",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "fch-vesicles-from-noise",
+  "title": "Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?",
+  "summary": "Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?",
+  "experiment": "Implement FCH (Promislow/Gavish) with standard parameters; check bilayer vesicles from noise as the positive control, then add a feed of amphiphile and look for pearling or budding divisions.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "fch-bilayer",
+  "parents": [],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-field-chemoton",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "field-chemoton",
+  "title": "A field chemoton: amphiphile made only inside closed membranes, by a catalyst the membrane retains.",
+  "summary": "A field chemoton: amphiphile made only inside closed membranes, by a catalyst the membrane retains.",
+  "experiment": "On an FCH or Allen-Cahn membrane, let an internal autocatalyst make membrane material; test whether closed vesicles grow and divide while open fragments die.",
+  "target": [
+   "S",
+   "I",
+   "B",
+   "W",
+   "E",
+   "D"
+  ],
+  "class": "fch-bilayer",
+  "parents": [],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-amb-plus-chemistry",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "amb-plus-chemistry",
+  "title": "Active Model B+ with a chemical reaction: do active bubbles swim, split or arrest at a finite size?",
+  "summary": "Active Model B+ with a chemical reaction: do active bubbles swim, split or arrest at a finite size?",
+  "experiment": "Implement AMB+ (Tjhung, Nardini, Cates) with a production/decay reaction; positive control: reverse Ostwald ripening; then scan reaction rate for dividing or motile droplets.",
+  "target": [
+   "S",
+   "I",
+   "M",
+   "D"
+  ],
+  "class": "amb-plus",
+  "parents": [],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-crawling-cell-division",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "crawling-cell-division",
+  "title": "A phase-field crawling cell (Ziebert/Aranson) that grows by uptake and divides when too large.",
+  "summary": "A phase-field crawling cell (Ziebert/Aranson) that grows by uptake and divides when too large.",
+  "experiment": "Implement the Ziebert-Aranson crawler (phase field plus polarization); positive control: steady crawling; add area growth from a consumed field and look for division.",
+  "target": [
+   "I",
+   "B",
+   "M",
+   "D"
+  ],
+  "class": "crawler-phase-field",
+  "parents": [],
+  "priority": 4,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-helfrich-composition-vesicle",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "helfrich-composition-vesicle",
+  "title": "A vesicle whose surface species sets its spontaneous curvature: can composition drive budding?",
+  "summary": "A vesicle whose surface species sets its spontaneous curvature: can composition drive budding?",
+  "experiment": "Phase-field Helfrich membrane with a surface composition field coupled to H0; look for composition-driven budding as a division route.",
+  "target": [
+   "I",
+   "B",
+   "D"
+  ],
+  "class": "helfrich",
+  "parents": [],
+  "priority": 3,
+  "beyond_diffusion": true
+ },
+ {
+  "id": "lab1-q-active-model-h-swimmers",
+  "kind": "question",
+  "author": "lab1",
+  "slug": "active-model-h-swimmers",
+  "title": "Hydrodynamics: do droplets with an active stress swim in Active Model H (or a lattice-Boltzmann fluid)?",
+  "summary": "Hydrodynamics: do droplets with an active stress swim in Active Model H (or a lattice-Boltzmann fluid)?",
+  "experiment": "Implement Active Model H on a small grid (Stokes solve by FFT); positive control: a contractile or extensile droplet that self-propels.",
+  "target": [
+   "I",
+   "M"
+  ],
+  "class": "hydrodynamic",
+  "parents": [],
+  "priority": 3,
+  "beyond_diffusion": true
+ }
+]

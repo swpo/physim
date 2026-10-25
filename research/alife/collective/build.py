@@ -1,22 +1,26 @@
 """Librarian for the ALife collective: derive the state of the field from the ledger.
 
-The ledger is the set of contribution directories under collective/contrib/ plus the claims and
-questions carried over from the first lab (collective/seed/). Everything here is derived: claim
-statuses come from reviews, the score from established claims (SCORE.md), the queue from what is
-open. Nothing depends on which agent did what or on how many agents there are. Run from
-research/alife/:
+The ledger is the set of contribution directories under collective/contrib/ plus the first lab's
+verdicts and open questions (collective/seed/). Everything here is derived: claim statuses come
+from independent reviews, the score from established claims (SCORE.md), the queue and the task
+assignments from what is open. Nothing depends on which agent did what or how many there are.
+Run from research/alife/:
 
-    python collective/build.py                    # rebuild STATE.md, QUEUE.md, ledger.json, progress.*
-    python collective/build.py --import-branches  # first import new contributions from worker branches
+    python collective/build.py --check collective/contrib/<id>   # validate one contribution, write nothing
+    python collective/build.py --write                            # rebuild STATE.md, QUEUE.md, ledger.json, progress.*
+    python collective/build.py --import-branches                  # librarian: import from agent branches, then rebuild
 """
 from __future__ import annotations
 
 import argparse
 import json
+import math
+import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timedelta, timezone
-from itertools import combinations
 from pathlib import Path
 
 sys.dont_write_bytecode = True
@@ -26,18 +30,24 @@ REPO = LAB.parents[1]
 CONTRIB = HERE / "contrib"
 SEED = HERE / "seed"
 IMPORTED = HERE / "imported.json"
-LAB_START = "2026-10-24T21:45Z"  # end of the first lab: the seed claims' time
+REL = "research/alife/collective/contrib"
+BRANCH_PREFIX = "claude/alife-collective-"
+LAB_START = "2026-10-24T21:45Z"  # end of the first lab: the time of the seed entries
 
-CAPS = "SIBRMEXDHO"
-CAP_NAMES = {"S": "spontaneous", "I": "individuals", "B": "organized boundary", "R": "repair", "M": "motility",
-             "E": "metabolism", "X": "interaction", "D": "reproduction", "H": "heredity+selection",
-             "O": "open-ended"}
-CLASSES = ["lenia", "flow-lenia", "particle", "active-emulsion", "keller-segel", "phase-field",
-           "reaction-diffusion", "physim-genome", "other"]
-KINDS = {"world", "claim", "review", "finding", "question", "synthesis", "tool", "intent"}
+CAPS = "SIBWRMEXDHO"
+CAP_NAMES = {"S": "spontaneous", "I": "individuals", "B": "organized", "W": "containment", "R": "repair",
+             "M": "motility", "E": "metabolism", "X": "interaction", "D": "reproduction", "H": "heredity+selection",
+             "O": "open-ended", "F": "finding"}
+GATED = set("WREXH")  # a supporting review must point to the gate control it ran or checked
+KINDS = {"world", "claim", "review", "finding", "question", "synthesis", "tool", "intent", "sighting"}
+MODES = {"explore", "extend", "control", "review", "synthesis"}
 VERDICTS = {"Supported", "Weak", "Contradicted"}
+ID_RE = re.compile(r"^\d{8}T\d{4}-(c\d+)-[a-z0-9][a-z0-9-]*$")
+SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
-MAX_FILE_MB = 15
+INTENT_WINDOW = timedelta(hours=3)
+MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
+DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
 # ------------------------------------------------------------------ time
@@ -65,87 +75,271 @@ def now_utc():
     return datetime.now(timezone.utc).replace(second=0, microsecond=0)
 
 
-# ------------------------------------------------------------------ import from worker branches
+# ------------------------------------------------------------------ validation
+def caps_list(v):
+    """Capabilities from a list or a string like 'S I D' or 'SID'; unknown letters are reported."""
+    if isinstance(v, str):
+        v = list(v.replace(",", " ").replace(" ", ""))
+    if not isinstance(v, list):
+        return [], [f"capabilities {v!r} is not a list"]
+    out, bad = [], []
+    for x in v:
+        x = str(x).strip().upper()
+        (out if x in CAPS else bad).append(x)
+    return sorted(set(out), key=CAPS.index), ([f"unknown capabilities {bad}"] if bad else [])
+
+
+def coerce(c):
+    """Type-check one contribution.json; returns (clean dict, errors). Never raises."""
+    errs = []
+    if not isinstance(c, dict):
+        return None, ["the top level is not a JSON object"]
+    c = dict(c)
+    for k in ("id", "author", "review_of", "task", "title", "summary", "class", "kind", "mode", "world", "outcome",
+              "created", "slug", "experiment", "challenge", "focus"):
+        if k in c and c[k] is not None and not isinstance(c[k], str):
+            c[k] = json.dumps(c[k]) if isinstance(c[k], (list, dict)) else str(c[k])
+    for k in ("claims", "verdicts", "parents", "target", "evidence"):
+        v = c.get(k)
+        if v is None:
+            c[k] = []
+        elif isinstance(v, str):
+            c[k] = [v]
+        elif not isinstance(v, list):
+            errs.append(f"{k} is not a list")
+            c[k] = []
+    for k in ("claims", "verdicts"):
+        good = [x for x in c[k] if isinstance(x, dict)]
+        if len(good) != len(c[k]):
+            errs.append(f"{k}: entries must be objects")
+        c[k] = good
+    c["parents"] = [str(p) for p in c["parents"]]
+    if "finding" in c and not isinstance(c["finding"], dict):
+        errs.append("finding is not an object")
+        c.pop("finding")
+    try:
+        c["priority"] = int(c.get("priority", 3))
+    except (TypeError, ValueError):
+        c["priority"] = 3
+    comp = c.get("compute") if isinstance(c.get("compute"), dict) else {}
+    try:
+        c["compute"] = {"cpu_minutes": float(str(comp.get("cpu_minutes", 0)).strip("~ ") or 0)}
+    except ValueError:
+        c["compute"] = {"cpu_minutes": 0.0}
+    if c.get("kind") not in KINDS:
+        errs.append(f"unknown kind {c.get('kind')!r}")
+    if c.get("mode") and c["mode"] not in MODES:
+        errs.append(f"unknown mode {c['mode']!r}")
+    if c.get("class"):
+        c["class"] = c["class"].strip().lower()
+        if not SLUG_RE.match(c["class"]):
+            errs.append(f"class {c['class']!r} is not a kebab-case slug")
+    for cl in c["claims"]:
+        cl["capabilities"], e = caps_list(cl.get("capabilities", []))
+        errs += [f"claim {cl.get('cid', '?')}: {x}" for x in e]
+        cl["cid"] = str(cl.get("cid", "c1"))
+        if not isinstance(cl.get("controls_run", {}), dict):
+            cl["controls_run"] = {}
+    for v in c["verdicts"]:
+        if v.get("verdict") not in VERDICTS:
+            errs.append(f"verdict {v.get('verdict')!r} (cid {v.get('cid')})")
+        v["supported"], e = caps_list(v.get("supported", []))
+        errs += e
+        for k in ("observations", "controls_run"):
+            if not isinstance(v.get(k, {}), dict):
+                errs.append(f"verdict {k} is not an object")
+                v[k] = {}
+        v["by_construction"], _ = caps_list(v.get("by_construction", []))
+        if v.get("verdict") == "Supported" and not v["supported"]:
+            errs.append(f"Supported verdict for {v.get('cid')} lists no supported capabilities")
+    return c, errs
+
+
+def check_paths(c, exists):
+    """Evidence and world paths must exist. exists(path relative to research/alife) -> bool."""
+    errs = []
+    base = f"collective/contrib/{c.get('id')}"
+    paths = list(c.get("evidence", []))
+    for cl in c.get("claims", []):
+        paths += [p for p in cl.get("evidence", []) if isinstance(p, str)]
+    if c.get("world"):
+        paths.append(c["world"])
+    for p in paths:
+        p = str(p).split("#")[0].strip()
+        if not p:
+            continue
+        cand = [p[len("research/alife/"):]] if p.startswith("research/alife/") else [f"{base}/{p}", p]
+        if not any(exists(q) for q in cand):
+            errs.append(f"path not found: {p}")
+    return errs
+
+
+# ------------------------------------------------------------------ import from agent branches
 def git(*a, check=True):
-    return subprocess.run(["git", "-C", str(REPO), *a], capture_output=True, text=True, check=check).stdout
+    return subprocess.run(["git", "-C", str(REPO), *a], capture_output=True, check=check, text=True).stdout
 
 
-def import_branches(prefix="claude/alife-c-", log=print):
-    """Copy new contribution directories from worker branches (never overwrite existing ones)."""
-    seen = json.loads(IMPORTED.read_text()) if IMPORTED.exists() else {}
+def read_imported():
+    d = json.loads(IMPORTED.read_text()) if IMPORTED.exists() else {}
+    d.setdefault("_deferred", {})
+    d.setdefault("_retracted", [])
+    return d
+
+
+def write_imported(d):
+    IMPORTED.write_text(json.dumps(d, indent=1, sort_keys=True) + "\n")
+
+
+def import_branches(log=print):
+    """Copy new, valid contribution directories from agent branches. Never overwrites, never re-imports."""
+    seen = read_imported()
     CONTRIB.mkdir(exist_ok=True)
-    rel = "research/alife/collective/contrib"
-    refs = [r.strip() for r in git("for-each-ref", "--format=%(refname:short)", f"refs/remotes/origin/{prefix}*").split()]
+    refs = git("for-each-ref", "--format=%(refname:short)", f"refs/remotes/origin/{BRANCH_PREFIX}*").split()
     stamp = fmt_t(now_utc())
     new = []
     for ref in refs:
-        out = git("ls-tree", "-d", "--name-only", f"{ref}:{rel}", check=False)
-        for cid in out.split():
-            if (CONTRIB / cid).exists():
+        worker = ref.split(BRANCH_PREFIX, 1)[1]
+        for cid in git("ls-tree", "-d", "--name-only", f"{ref}:{REL}", check=False).split():
+            if cid in seen or cid in seen["_retracted"] or (CONTRIB / cid).exists():
                 continue
-            if subprocess.run(["git", "-C", str(REPO), "cat-file", "-e", f"{ref}:{rel}/{cid}/contribution.json"],
+            m = ID_RE.match(cid)
+            if not m or m.group(1) != worker:
+                continue  # another agent's contribution merged into this branch, or not a contribution
+            if subprocess.run(["git", "-C", str(REPO), "cat-file", "-e", f"{ref}:{REL}/{cid}/contribution.json"],
                               capture_output=True).returncode:
                 continue  # still being written
-            sizes = git("ls-tree", "-r", "-l", f"{ref}:{rel}/{cid}").split("\n")
-            big = [ln.split()[-1] for ln in sizes if ln.strip() and ln.split()[3] != "-"
-                   and int(ln.split()[3]) > MAX_FILE_MB * 2 ** 20]
-            arch = subprocess.run(["git", "-C", str(REPO), "archive", ref, f"{rel}/{cid}"], capture_output=True, check=True)
-            subprocess.run(["tar", "-x", "-C", str(REPO)] + [f"--exclude={rel}/{cid}/{b}" for b in big],
-                           input=arch.stdout, check=True)
-            seen[cid] = {"first_seen": stamp, "branch": ref.replace("origin/", ""), "dropped_large_files": big}
+            reason, c, drop = None, {}, []
+            try:
+                raw = json.loads(git("show", f"{ref}:{REL}/{cid}/contribution.json"))
+                c, errs = coerce(raw)
+                if c is None:
+                    raise ValueError("; ".join(errs))
+                if c.get("id") != cid:
+                    errs.append(f"id {c.get('id')!r} differs from the directory name")
+                if c.get("author") and c["author"] != worker:
+                    errs.append(f"author {c['author']!r} is not the branch's agent {worker}")
+                listing = [ln.split(None, 4) for ln in git("ls-tree", "-r", "-l", f"{ref}:{REL}/{cid}").splitlines() if ln]
+                files = {ln[4]: (int(ln[3]) if ln[3] != "-" else 0) for ln in listing if len(ln) == 5}
+
+                def exists(p, files=files, ref=ref, cid=cid):
+                    pre = f"collective/contrib/{cid}/"
+                    if p.startswith(pre):
+                        q = p[len(pre):]
+                        return q in files or any(f.startswith(q.rstrip("/") + "/") for f in files)
+                    return (LAB / p).exists() or subprocess.run(
+                        ["git", "-C", str(REPO), "cat-file", "-e", f"{ref}:research/alife/{p}"], capture_output=True).returncode == 0
+                errs += check_paths(c, exists)
+                drop = [f for f, s in files.items() if f.endswith(DROP_EXT) or s > MAX_FILE_MB * 2 ** 20
+                        or (f.endswith(".mp4") and (s > MAX_MOVIE_MB * 2 ** 20 or c.get("kind") not in ("claim", "sighting", "world")))]
+                if sum(s for f, s in files.items() if f not in drop) > MAX_CONTRIB_MB * 2 ** 20:
+                    errs.append(f"contribution is over {MAX_CONTRIB_MB} MB")
+                hard = [e for e in errs if e.startswith(("id ", "author ", "path not found", "contribution is over",
+                                                         "unknown kind", "the top level"))]
+                if hard:
+                    reason = "; ".join(hard)
+            except (ValueError, subprocess.CalledProcessError) as e:
+                reason = f"unreadable contribution.json ({e})"
+            if reason:
+                if seen["_deferred"].get(cid) != reason:
+                    log(f"DEFER {cid}: {reason}")
+                seen["_deferred"][cid] = reason
+                write_imported(seen)
+                continue
+            tmp = Path(tempfile.mkdtemp(dir=CONTRIB.parent, prefix=".import-"))
+            try:
+                arch = subprocess.run(["git", "-C", str(REPO), "archive", ref, f"{REL}/{cid}"], capture_output=True, check=True)
+                subprocess.run(["tar", "-x", "-C", str(tmp)] + [f"--exclude={REL}/{cid}/{f}" for f in drop],
+                               input=arch.stdout, check=True, capture_output=True)
+                shutil.move(str(tmp / REL / cid), str(CONTRIB / cid))
+            finally:
+                shutil.rmtree(tmp, ignore_errors=True)
+            seen["_deferred"].pop(cid, None)
+            seen[cid] = {"first_seen": stamp, "branch": ref.replace("origin/", ""), "author": worker, "dropped": drop}
+            write_imported(seen)
             new.append(cid)
-            log(f"IMPORT {cid} from {ref.replace('origin/', '')}" + (f" (dropped {big})" if big else ""))
-    IMPORTED.write_text(json.dumps(seen, indent=1, sort_keys=True) + "\n")
+            log(f"IMPORT {cid} ({c.get('kind')}) from {worker}" + (f", dropped {drop}" if drop else ""))
     return new
 
 
 # ------------------------------------------------------------------ loading
 def load(now):
-    """All contributions (seed + contrib/), with first-seen times and validation problems."""
-    seen = json.loads(IMPORTED.read_text()) if IMPORTED.exists() else {}
+    """All contributions (seed + contrib/), with librarian first-seen times and validation problems."""
+    seen = read_imported()
     items, problems = [], []
     lab_start = parse_t(LAB_START)
-    for f in sorted(SEED.glob("*.json")):
-        for c in json.loads(f.read_text()):
-            c.setdefault("author", "lab1")
-            c["_t"] = lab_start
-            c["_seed"] = True
-            items.append(c)
+    for name in ("claims.json", "questions.json"):
+        f = SEED / name
+        if f.exists():
+            for c in json.loads(f.read_text()):
+                c, _ = coerce(c)
+                c.update(author="lab1", _t=lab_start, _seed=True, _created=lab_start)
+                items.append(c)
     for d in sorted(CONTRIB.glob("*/")):
         p = d / "contribution.json"
-        if not p.exists():
+        if not p.exists() or d.name in seen["_retracted"]:
             continue
         try:
-            c = json.loads(p.read_text())
-        except json.JSONDecodeError as e:
+            c, errs = coerce(json.loads(p.read_text()))
+        except (json.JSONDecodeError, UnicodeDecodeError) as e:
             problems.append(f"`{d.name}`: contribution.json is not valid JSON ({e})")
             continue
-        errs = []
-        if c.get("id") != d.name:
-            errs.append(f"id {c.get('id')!r} differs from the directory name")
-            c["id"] = d.name
-        if c.get("kind") not in KINDS:
-            errs.append(f"unknown kind {c.get('kind')!r}")
-        if not c.get("author"):
-            errs.append("no author")
-        if c.get("class") and c["class"] not in CLASSES:
-            errs.append(f"unknown class {c['class']!r} (counted as other)")
-            c["class"] = "other"
-        for cl in c.get("claims") or []:
-            bad = [x for x in cl.get("capabilities", []) if x not in CAPS]
-            if bad:
-                errs.append(f"claim {cl.get('cid')}: unknown capabilities {bad}")
-        for v in c.get("verdicts") or []:
-            if v.get("verdict") not in VERDICTS:
-                errs.append(f"verdict {v.get('verdict')!r} for {v.get('cid')}")
-        first = parse_t((seen.get(d.name) or {}).get("first_seen")) or parse_t(c.get("created")) or now
-        c["_t"] = min(first, now)
-        c["_dir"] = str(d.relative_to(LAB))
-        if errs:
+        if c is None:
             problems.append(f"`{d.name}`: " + "; ".join(errs))
+            continue
+        rec = seen.get(d.name) or {}
+        m = ID_RE.match(d.name)
+        author = rec.get("author") or (m.group(1) if m else None)
+        if c.get("author") and author and c["author"] != author:
+            errs.append(f"author {c['author']!r} replaced by the branch's agent {author}")
+        c["author"] = author or c.get("author") or "unknown"
+        c["id"] = d.name
+        c["_t"] = min(parse_t(rec.get("first_seen")) or parse_t(c.get("created")) or now, now)
+        c["_dir"] = str(d.relative_to(LAB))
+        c["_created"] = parse_t(c.get("created")) or c["_t"]
+        if errs:
+            problems.append(f"`{d.name}` ({c['author']}): " + "; ".join(errs))
         items.append(c)
-    items.sort(key=lambda c: (c["_t"], c.get("id", "")))
+    items.sort(key=lambda c: (c["_t"], c["_created"], c.get("id", "")))
     return items, problems
+
+
+def load_challenges():
+    f = SEED / "challenges.json"
+    return json.loads(f.read_text()) if f.exists() else []
+
+
+# ------------------------------------------------------------------ evidence of re-runs
+def pack_runs(paths):
+    """(world name, seed) pairs from labkit metrics.json files under the given paths."""
+    runs = set()
+    for p in paths:
+        p = LAB / p
+        if p.is_file():
+            p = p.parent
+        if not p.exists():
+            continue
+        for m in list(p.rglob("metrics.json"))[:40]:
+            try:
+                d = json.loads(m.read_text())
+                runs.add(((d.get("world") or {}).get("name"), d.get("seed")))
+            except (json.JSONDecodeError, OSError, AttributeError):
+                pass
+    return runs
+
+
+def verified_rerun(review_dir, claim_runs, verdict):
+    """A replication counts only with a re-run artifact in the review's own directory, on a new seed."""
+    rd = LAB / review_dir
+    if not review_dir or not rd.exists():
+        return False
+    names = {n for n, _ in claim_runs if n}
+    old_seeds = {s for _, s in claim_runs}
+    for n, s in pack_runs([review_dir]):
+        if s is not None and s not in old_seeds and (not names or n in names):
+            return True
+    rerun = rd / "rerun"
+    seed = verdict.get("seed")
+    return bool(rerun.is_dir() and any(rerun.rglob("*.png")) and seed is not None and seed not in old_seeds)
 
 
 # ------------------------------------------------------------------ derivation
@@ -168,275 +362,450 @@ def submasks(m):
         s = (s - 1) & m
 
 
-def derive(items, until=None):
-    """Claims with statuses and established capability sets, from contributions seen up to `until`."""
+S_BIT = mask("S")
+
+
+def norm_target(review_of, cid):
+    """Accept '<id>', '<id>#c1' or a QUEUE task 'R:<id>#c1'."""
+    t = (review_of or "").strip()
+    if t.startswith("R:"):
+        t = t[2:]
+    if "#" in t:
+        t, suffix = t.split("#", 1)
+        cid = cid or suffix
+    return t, cid
+
+
+def lineage(cid, by_id, seen=None):
+    """Authors of every contribution this one builds on, transitively."""
+    seen = seen if seen is not None else set()
+    out = set()
+    for p in by_id.get(cid, {}).get("parents", []):
+        if p in by_id and p not in seen:
+            seen.add(p)
+            out.add(by_id[p].get("author"))
+            out |= lineage(p, by_id, seen)
+    return out
+
+
+def derive(items, until=None, canaries=frozenset()):
+    """Claims (and findings) with per-capability tallies, statuses and held sets."""
     items = [c for c in items if until is None or c["_t"] <= until]
     by_id = {c["id"]: c for c in items if c.get("id")}
-    claims = {}
+    claims, problems = {}, []
     for c in items:
-        units = list(c.get("claims") or [])
-        if c.get("finding"):
-            units.append({"cid": "finding", "capabilities": [], "statement": c["finding"].get("result", ""),
-                          "_finding": True})
+        units = list(c.get("claims") or []) if c.get("kind") in ("claim", "world") else []
+        if c.get("kind") == "finding" and c.get("finding"):
+            f = c["finding"]
+            units = [{"cid": "finding", "capabilities": [], "statement": f.get("result", "") or c.get("summary", "")}]
         for cl in units:
-            key = f"{c['id']}#{cl.get('cid', 'c1')}"
+            if cl["cid"] != "finding" and not cl.get("capabilities"):
+                continue  # nothing to decide
+            key = f"{c['id']}#{cl['cid']}"
+            evid = [c.get("pack")] if c.get("pack") else []
+            evid += [p for p in cl.get("evidence", []) if isinstance(p, str)]
+            if c.get("_seed"):
+                where = [p for p in evid if p]
+            else:
+                where = [f"{c['_dir']}/{p}" for p in evid if p and not p.startswith("research/")] + [c["_dir"]]
             claims[key] = {
-                "key": key, "contribution": c["id"], "author": c.get("author"), "class": c.get("class", "other"),
+                "key": key, "contribution": c["id"], "author": c.get("author"), "class": c.get("class") or "unlabelled",
                 "title": c.get("title", ""), "rung": cl.get("rung", ""), "statement": cl.get("statement", ""),
-                "claimed": mask(cl.get("capabilities", [])), "finding": bool(cl.get("_finding")),
-                "outcome": c.get("outcome", "positive"), "world": c.get("world", ""), "t": c["_t"],
-                "dir": c.get("_dir", ""), "seed_status": cl.get("seed_status") if c.get("_seed") else None,
-                "evidence": cl.get("evidence", []), "reviews": [],
+                "claimed": ["F"] if cl["cid"] == "finding" else list(cl.get("capabilities", [])),
+                "finding": cl["cid"] == "finding", "finding_data": c.get("finding") if cl["cid"] == "finding" else None,
+                "outcome": (c.get("outcome") or "").lower(), "world": c.get("world", "") or c.get("pack", ""),
+                "t": c["_t"], "dir": c.get("_dir", ""), "seed_status": cl.get("seed_status") if c.get("_seed") else None,
+                "requires": cl.get("requires", ""), "challenge": c.get("challenge", ""), "bd_control": cl.get("bd_control", ""),
+                "runs": pack_runs(where), "lineage": lineage(c["id"], by_id), "votes": {}, "canary": c["id"] in canaries,
+                "track": cl.get("track", ""),
             }
     for c in items:
         if c.get("kind") != "review":
             continue
-        target = by_id.get(c.get("review_of"))
         for v in c.get("verdicts") or []:
-            key = f"{c.get('review_of')}#{v.get('cid', 'c1')}"
-            cl = claims.get(key)
-            if cl is None or target is None:
+            tid, cid = norm_target(c.get("review_of"), v.get("cid"))
+            if tid not in by_id:
+                problems.append(f"`{c['id']}` ({c.get('author')}): review_of {c.get('review_of')!r} is not in the ledger")
+                continue
+            if not cid or f"{tid}#{cid}" not in claims:
+                cid = "finding" if f"{tid}#finding" in claims else (cid or "c1")
+            cl = claims.get(f"{tid}#{cid}")
+            if cl is None:
+                problems.append(f"`{c['id']}` ({c.get('author')}): no claim {cid!r} in {tid}")
                 continue
             if c.get("author") == cl["author"]:
-                cl.setdefault("self_reviews", []).append(c["id"])
+                problems.append(f"`{c['id']}`: {c.get('author')} reviewed their own claim; ignored")
                 continue
-            sup = v.get("supported")
-            cl["reviews"].append({"review": c["id"], "author": c.get("author"), "verdict": v.get("verdict"),
-                                  "replicated": bool(v.get("replicated")), "t": c["_t"],
-                                  "supported": mask(sup) if sup is not None else None,
-                                  "observation": v.get("observation", "")})
+            if cl["finding"]:
+                sup = {"F"} if v.get("verdict") == "Supported" else set()
+            else:
+                obs = v.get("observations") or {}
+                sup = set(v["supported"]) & set(cl["claimed"])
+                missing = [x for x in sup if not obs.get(x)]
+                if missing:
+                    problems.append(f"`{c['id']}`: no observation named for {''.join(sorted(missing, key=CAPS.index))}; not counted")
+                sup = {x for x in sup if obs.get(x)}
+            rep = bool(v.get("replicated")) and verified_rerun(c.get("_dir", ""), cl["runs"], v)
+            if v.get("replicated") and not rep:
+                problems.append(f"`{c['id']}`: replication claimed but no re-run on a new seed found in its directory")
+            cl["votes"][c.get("author")] = {  # one vote per reviewer: the latest
+                "review": c["id"], "author": c.get("author"), "verdict": v.get("verdict"), "t": c["_t"],
+                "supported": sup, "replicated": rep, "same_individuals": bool(v.get("same_individuals")),
+                "controls": v.get("controls_run") or {}, "by_construction": set(v.get("by_construction") or []),
+                "bd": v.get("bd_supported"), "class_confirmed": bool(v.get("class_confirmed")),
+            }
     for cl in claims.values():
-        latest = {}
-        for r in cl["reviews"]:  # one vote per reviewer: their latest
-            latest[r["author"]] = r
-        votes = list(latest.values())
-        sup = [r for r in votes if r["verdict"] == "Supported"]
-        con = [r for r in votes if r["verdict"] == "Contradicted"]
-        n_sup, n_rep_sup = len(sup), sum(r["replicated"] for r in sup)
-        n_con, n_rep_con = len(con), sum(r["replicated"] for r in con)
-        if cl["seed_status"] == "established":  # the first lab's committee: 3 judges, a re-run, a director
-            n_sup, n_rep_sup = n_sup + 2, n_rep_sup + 1
-        elif cl["seed_status"] == "provisional":
-            n_sup, n_rep_sup = n_sup + 1, n_rep_sup + 1
-        elif cl["seed_status"] == "contradicted":
-            n_con, n_rep_con = n_con + 2, n_rep_con + 1
-        if n_sup >= 2 and n_rep_sup >= 1 and n_sup >= 2 * n_con + 1:
-            status = "established"
-        elif (n_con >= 2 and n_con >= n_sup) or (n_rep_con >= 1 and n_rep_sup == 0 and n_sup <= 1):
-            status = "contradicted"
-        elif n_sup and n_con:
-            status = "disputed"
-        elif n_rep_sup >= 1:
-            status = "provisional"
-        else:
-            status = "submitted"
-        m = cl["claimed"]
-        for r in sup:
-            if r["supported"] is not None:
-                m &= r["supported"]
-        cl.update(status=status, held=m, n_sup=n_sup, n_rep_sup=n_rep_sup, n_con=n_con, n_rep_con=n_rep_con,
-                  reviewers=sorted(latest))
-    return claims, items
+        tally(cl)
+    return claims, items, problems
 
 
-def score(claims, which=("established",)):
+def tally(cl):
+    """Per-capability decision: x is held when enough independent, replicated reviews name it and point to an
+    observation (and to the gate control for W, R, E, X, H), and supporters outweigh everyone who did not."""
+    votes = list(cl["votes"].values())
+    claimed = cl["claimed"]
+    nonS = [x for x in claimed if x != "S"]
+    seed_pro = 2 if cl["seed_status"] == "established" else 0
+    seed_con = 4 if cl["seed_status"] == "contradicted" else 0
+    need = 3 if len(nonS) >= 4 else 2  # scrutiny scales with the exponential payoff
+    held, partial, per = set(), set(), {}
+    for x in claimed:
+        pro = [v for v in votes if x in v["supported"] and v["replicated"] and (len(nonS) < 3 or v["same_individuals"])]
+        lin = [v for v in pro if v["author"] in cl["lineage"]]
+        pro = [v for v in pro if v not in lin[1:]]  # one opinion per lineage of shared code
+        con = sum(2 if v["replicated"] else 1 for v in votes if x not in v["supported"]) + seed_con
+        gate = x not in GATED or bool(seed_pro) or any(v["controls"].get(x) for v in pro)
+        n = len(pro) + seed_pro
+        per[x] = {"pro": n, "con": con, "gate": gate}
+        if n >= need and n > con and gate:
+            held.add(x)
+        elif n or any(x in v["supported"] for v in votes):
+            partial.add(x)
+    if not (held - {"S"}):
+        held = set()
+    n_contra = sum(1 for v in votes if v["verdict"] == "Contradicted" and v["replicated"])
+    if held:
+        status = "established"
+    elif seed_con or n_contra >= 2:
+        status = "contradicted"
+    elif len(votes) >= 2 and not partial:
+        status = "weak"
+    elif partial:
+        status = "provisional"
+    else:
+        status = "submitted"
+    bc = {x for x in held if any(x in v["by_construction"] for v in votes if x in v["supported"])}
+    bd_yes = [v for v in votes if v["bd"] is True and v["replicated"] and v["supported"]]
+    bd_no = [v for v in votes if v["bd"] is False]
+    cl.update(status=status, held=mask(held), scored=mask(held - bc), bc=mask(bc), per=per, need=need,
+              n_votes=len(votes), ever_supported=bool(seed_pro) or any(v["supported"] for v in votes),
+              bd=status == "established" and len(bd_yes) >= 1 and len(bd_yes) > len(bd_no),
+              class_ok=any(v["class_confirmed"] for v in bd_yes))
+
+
+def reviews_needed(cl):
+    if cl["status"] in ("established", "contradicted", "weak") or cl["seed_status"] in ("established", "contradicted"):
+        return 0
+    have = max([p["pro"] for p in cl["per"].values()] or [0])
+    return max(1, cl["need"] - have)
+
+
+def score(claims, bd_only=False):
     cells = {}
     for cl in claims.values():
-        if cl["status"] in which and not cl["finding"] and cl["held"] & ~mask("S"):
-            for s in submasks(cl["held"]):
-                if s & ~mask("S"):  # S alone is a modifier, not a capability
-                    cells.setdefault(s, set()).add(cl["class"])
-    P = len(cells)
-    Q = sum(min(3, len(v)) for v in cells.values())
-    K = sum(1 for cl in claims.values() if cl["finding"] and cl["status"] == "established" and cl["outcome"] == "positive")
-    C = (sum(1 for cl in claims.values() if cl["status"] == "contradicted")
-         + sum(1 for cl in claims.values() if cl["finding"] and cl["status"] == "established" and cl["outcome"] == "negative"))
-    return {"P": P, "Q": Q, "K": K, "C": C}, cells
+        if cl["status"] == "established" and not cl["finding"] and not cl["canary"] and (cl["bd"] or not bd_only):
+            for s in submasks(cl["scored"]):
+                if s & ~S_BIT:
+                    cls = cl["class"] if (cl["bd"] and cl["class_ok"]) else "unconfirmed"
+                    cells.setdefault(s, set()).add(cls)
+    return cells
+
+
+def summary_score(claims):
+    cells = score(claims)
+    bd_cells = score(claims, bd_only=True)
+    real = [cl for cl in claims.values() if not cl["canary"]]
+    fd = lambda cl: cl["finding_data"] or {}
+    K = len({(str(fd(cl).get("operator", "")).lower(), str(fd(cl).get("capability", "")), str(fd(cl).get("world", "")))
+             for cl in real if cl["finding"] and cl["status"] == "established" and cl["outcome"] == "positive"
+             and (fd(cl).get("necessary") is True or fd(cl).get("law") is True)})
+    C = (sum(1 for cl in real if not cl["finding"] and cl["status"] == "contradicted" and cl["ever_supported"] or
+             (not cl["finding"] and cl["seed_status"] == "contradicted"))
+         + len({str(fd(cl).get("operator", "")) + "|" + cl["statement"][:60] for cl in real
+                if cl["finding"] and cl["status"] == "established" and cl["outcome"] == "negative"}))
+    P_prov = len({s for cl in real if cl["status"] in ("established", "provisional") and not cl["finding"]
+                  for s in submasks(mask(cl["claimed"])) if s & ~S_BIT} | set(cells))
+    return {"P": len(cells), "P_BD": len(bd_cells), "Q": sum(min(3, len(v)) for v in bd_cells.values()),
+            "K": K, "C": C, "P_prov": P_prov}, cells, bd_cells
 
 
 def frontier(claims):
     est = {}
     for cl in claims.values():
-        if cl["status"] == "established" and not cl["finding"] and cl["held"]:
-            est.setdefault(cl["held"], []).append(cl)
+        if cl["status"] == "established" and not cl["finding"] and not cl["canary"] and cl["scored"] & ~S_BIT:
+            est.setdefault(cl["scored"], []).append(cl)
     maxi = [m for m in est if not any(o != m and (o & m) == m for o in est)]
     maxi.sort(key=lambda m: (-bin(m).count("1"), caps_of(m)))
     return maxi, est
 
 
-def gaps(maxi, cells):
-    """Sets one capability beyond a frontier set that no established claim illuminates yet."""
-    out = {}
-    for m in maxi:
-        for i, x in enumerate(CAPS):
-            g = m | 1 << i
-            if g != m and g not in cells and x != "O":
-                out.setdefault(g, []).append(m)
-    return sorted(out.items(), key=lambda kv: (-bin(kv[0]).count("1"), -len(kv[1]), caps_of(kv[0])))
-
-
 def potential(cl, cells):
-    """Subsets a claim would newly illuminate if established as claimed."""
-    return sum(1 for s in submasks(cl["claimed"]) if s not in cells and s & ~mask("S"))
+    return sum(1 for s in submasks(mask(cl["claimed"])) if s not in cells and s & ~S_BIT)
 
 
 # ------------------------------------------------------------------ outputs
-def rel(path):
-    return path if not path else str(path)
-
-
-def write_outputs(items, problems, now, log=print):
-    claims, _ = derive(items)
-    sc, cells = score(claims)
-    sc_prov, _ = score(claims, ("established", "provisional"))
+def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log=print):
+    claims, _, dproblems = derive(items, canaries=canaries)
+    problems = problems + dproblems
+    sc, cells, bd_cells = summary_score(claims)
     maxi, est = frontier(claims)
-    gp = gaps(maxi, cells)
     recent = [c for c in items if not c.get("_seed")]
     active = sorted({c["author"] for c in recent if now - c["_t"] <= ACTIVE_WINDOW and c.get("author")})
-    pending = [cl for cl in claims.values() if cl["status"] in ("submitted", "provisional", "disputed")]
-    intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= ACTIVE_WINDOW]
+    intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW]
+    closed = {(c.get("author"), c.get("task")) for c in recent if c.get("kind") != "intent" and c.get("task")}
+    live = [c for c in intents if (c.get("author"), c.get("task")) not in closed and c.get("task")]
     busy = {}
-    for c in intents:
-        busy.setdefault(c.get("task", ""), []).append(c["author"])
-    pressure = len([cl for cl in pending if not cl["seed_status"]]) / max(1, len(active))
+    for c in live:
+        busy.setdefault(c["task"], set()).add(c["author"])
+    focus = {c["author"]: c["focus"] for c in recent if c.get("kind") == "intent" and c.get("focus")}
+    campaign = {c["author"]: c["task"] for c in live if c.get("campaign")}
+
+    pending = [cl for cl in claims.values() if reviews_needed(cl) > 0]
+    cells_by_class = {}
+    for cl in claims.values():
+        if cl["status"] == "established" and not cl["finding"] and not cl["canary"]:
+            for s in submasks(cl["scored"]):
+                cells_by_class.setdefault(cl["class"], set()).add(s)
+
+    def rank(cl):
+        age_h = (now - cl["t"]).total_seconds() / 3600 if not cl["seed_status"] else 0
+        cls_new = sum(1 for s in submasks(mask(cl["claimed"])) if s & ~S_BIT and s not in cells_by_class.get(cl["class"], set()))
+        r = potential(cl, cells) + cls_new + (4 if cl["finding"] else 0) + min(age_h, 6) * 2
+        return r + (100 if age_h > 2 else 0)
+    pending.sort(key=lambda cl: -rank(cl))
+    needed = sum(reviews_needed(cl) for cl in pending if not cl["seed_status"])
+    in_review = sum(len(v) for k, v in busy.items() if k.startswith("R:"))
+    pressure = max(0, needed - in_review) / max(1, len(active))
+
+    since = now - timedelta(hours=3)
+    nonrev = [c for c in recent if c["_t"] >= since and c.get("kind") not in ("review", "intent", "synthesis")]
+    explore_share = (sum(1 for c in nonrev if c.get("mode") == "explore") / len(nonrev)) if nonrev else None
+    started = min([c["_t"] for c in recent], default=now)
+    target_share = 0.5 if now - started < timedelta(hours=6) else 0.33
+
     syn = [c for c in recent if c.get("kind") == "synthesis"]
     last_syn = syn[-1] if syn else None
-    decided_since = sum(1 for cl in claims.values() if not cl["seed_status"] and cl["status"] in ("established", "contradicted")
-                        and (last_syn is None or cl["t"] > last_syn["_t"]))
-    syn_due = (last_syn is None and len(recent) >= 12) or (last_syn is not None and (
-        now - last_syn["_t"] > timedelta(hours=3) or decided_since >= 8))
-    cpu = sum(float((c.get("compute") or {}).get("cpu_minutes") or 0) for c in recent) / 60
+    decided_since = sum(1 for cl in claims.values() if cl["status"] in ("established", "contradicted") and not cl["seed_status"]
+                        and cl["votes"] and (last_syn is None or max(v["t"] for v in cl["votes"].values()) > last_syn["_t"]))
+    syn_due = (last_syn is None and len(recent) >= 10) or (last_syn is not None and (
+        now - last_syn["_t"] > timedelta(hours=3) or decided_since >= 6))
+    cpu = sum(c["compute"]["cpu_minutes"] for c in recent) / 60
 
-    # progress replay: the score as a function of time, from first-seen times only
-    times = sorted({c["_t"] for c in items})
-    series = []
-    for t in times:
-        cl_t, _ = derive(items, until=t)
-        s, _ = score(cl_t)
-        s_prov, _ = score(cl_t, ("established", "provisional"))
-        series.append({"t": fmt_t(t), **s, "P_prov": s_prov["P"],
-                       "contributions": sum(1 for c in items if c["_t"] <= t and not c.get("_seed")),
-                       "cpu_hours": round(sum(float((c.get("compute") or {}).get("cpu_minutes") or 0)
-                                              for c in items if c["_t"] <= t and not c.get("_seed")) / 60, 2)})
-    (HERE / "progress.json").write_text(json.dumps(series, indent=0) + "\n")
+    challenges = load_challenges()
+    for ch in challenges:
+        tgt = mask(ch.get("target", ""))
+        ch["achieved"] = [cl["key"] for cl in claims.values() if cl["status"] == "established" and not cl["canary"]
+                          and (cl["scored"] & tgt) == tgt and (not ch.get("bd") or cl["bd"])
+                          and (not ch.get("named") or cl["challenge"] == ch["id"])]
+
+    ladders = []  # next rung for each dynamical class
+    for cls in sorted(cells_by_class):
+        cmax = [m for m in cells_by_class[cls] if not any(o != m and (o & m) == m for o in cells_by_class[cls])]
+        nxt = sorted({m | 1 << i for m in cmax for i, x in enumerate(CAPS) if x not in "SO" and not m >> i & 1
+                      and (m | 1 << i) not in cells_by_class[cls]}, key=lambda m: (-bin(m).count("1"), caps_of(m)))
+        ladders.append((cls, sorted(cmax, key=lambda m: -bin(m).count("1"))[:2], nxt[:3]))
+
+    # deterministic, collision-free assignments for the agents active now
+    assign, taken = {}, {k: set(v) for k, v in busy.items()}
+    review_slots = [[cl, reviews_needed(cl) - len(busy.get(f"R:{cl['key']}", set()))] for cl in pending]
+    max_reviewers = len(active) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
+    qs = [c for c in items if c.get("kind") == "question"]
+    tried = {}
+    for c in recent:
+        if c.get("task") and c.get("kind") != "intent":
+            tried.setdefault(c["task"], []).append(c)
+    qs.sort(key=lambda c: (-c.get("priority", 3), len(tried.get(f"Q:{c.get('slug') or c['id']}", [])), c["_t"]))
+    open_tasks = [f"C:{ch['id']}" for ch in challenges if not ch["achieved"]] + [f"Q:{c.get('slug') or c['id']}" for c in qs]
+    syn_given = not syn_due
+    syn_order = sorted([a for a in active if a not in campaign],
+                       key=lambda a: max([c["_t"] for c in syn if c["author"] == a], default=parse_t(LAB_START)))
+    n_rev = 0
+    for a in active:
+        if a in campaign:
+            assign[a] = (campaign[a], "your campaign")
+            continue
+        if not syn_given and syn_order and a == syn_order[0]:
+            assign[a] = ("SYN", "synthesis due")
+            syn_given = True
+            continue
+        if n_rev < max_reviewers:
+            slot = next((s for s in review_slots if s[1] > 0 and s[0]["author"] != a and a not in s[0]["lineage"]
+                         and a not in s[0]["votes"]), None)
+            if slot is not None:
+                slot[1] -= 1
+                assign[a] = (f"R:{slot[0]['key']}", "review")
+                n_rev += 1
+                continue
+        if a in focus:
+            assign[a] = (f"F:{focus[a]}", "your exploration focus")
+            continue
+        t = next((t for t in open_tasks if t not in taken), None)
+        if t:
+            taken.setdefault(t, set()).add(a)
+            assign[a] = (t, "open task")
+        else:
+            assign[a] = ("explore", "free exploration")
+
+    # ---- progress replay (incremental: history is fixed by first-seen times)
+    prog_f = HERE / "progress.json"
+    series = [] if rebuild or not prog_f.exists() else json.loads(prog_f.read_text())
+    last = parse_t(series[-1]["t"]) if series else None
+    for t in sorted({c["_t"] for c in items}):
+        if last is not None and t <= last:
+            continue
+        cl_t, _, _ = derive(items, until=t, canaries=canaries)
+        s, _, _ = summary_score(cl_t)
+        prior = [c for c in items if c["_t"] <= t and not c.get("_seed")]
+        series.append({"t": fmt_t(t), **s, "contributions": len(prior),
+                       "cpu_hours": round(sum(c["compute"]["cpu_minutes"] for c in prior) / 60, 2)})
+    prog_f.write_text(json.dumps(series, indent=0) + "\n")
     plot(series)
 
-    # ledger.json: machine-readable state for agents
-    ledger = {
-        "generated": fmt_t(now), "score": sc, "score_with_provisional": sc_prov, "active_agents": active,
-        "claims": [{k: (caps_of(v) if k in ("claimed", "held") else fmt_t(v) if k == "t" else v)
-                    for k, v in cl.items() if k not in ("reviews",)} | {"reviews": [
-                        {**r, "t": fmt_t(r["t"]), "supported": caps_of(r["supported"]) if r["supported"] is not None else None}
-                        for r in cl["reviews"]]} for cl in sorted(claims.values(), key=lambda c: c["t"])],
-        "contributions": [{k: v for k, v in c.items() if not k.startswith("_")} | {"first_seen": fmt_t(c["_t"])}
-                          for c in recent],
-        "frontier": [caps_of(m) for m in maxi],
-        "gaps": [caps_of(g) for g, _ in gp],
-        "problems": problems,
-    }
-    (HERE / "ledger.json").write_text(json.dumps(ledger, indent=1, default=str) + "\n")
+    # ---- how much of P rests on any single claim, and how often reviewers support planted false claims
+    loo = sc["P"]
+    for k, cl in claims.items():
+        if cl["status"] == "established" and not cl["finding"] and not cl["canary"]:
+            loo = min(loo, len(score({kk: v for kk, v in claims.items() if kk != k})))
+    can = [cl for cl in claims.values() if cl["canary"] and cl["votes"]]
+    can_rate = (sum(1 for cl in can if any(v["supported"] for v in cl["votes"].values())) / len(can)) if can else None
 
-    def claim_line(cl):
-        loc = cl["dir"] or cl["world"] or ""
-        who = "lab 1 committee" if cl["seed_status"] else cl["author"]
-        return (f"| `{caps_of(cl['held'] if cl['status'] == 'established' else cl['claimed'])}` | {cl['class']} | "
-                f"{cl['title'] or cl['statement'][:80]} | {cl['status']} | {who} | `{loc}` |")
+    # ---- ledger.json (compact; verdict contents of undecided claims are left out to limit anchoring)
+    def claim_rec(cl):
+        r = {k: cl[k] for k in ("key", "contribution", "author", "class", "title", "status", "rung", "world", "dir",
+                                 "seed_status", "requires", "need", "bd", "n_votes", "per")}
+        r.update(claimed="".join(cl["claimed"]), held=caps_of(cl["held"]), scored=caps_of(cl["scored"]),
+                 by_construction=caps_of(cl["bc"]), t=fmt_t(cl["t"]))
+        if cl["status"] in ("established", "contradicted", "weak"):
+            r["reviews"] = [{"review": v["review"], "author": v["author"], "verdict": v["verdict"],
+                             "supported": "".join(sorted(v["supported"])), "replicated": v["replicated"]}
+                            for v in cl["votes"].values()]
+        return r
+    ledger = {"generated": fmt_t(now), "score": sc, "P_leave_one_out": loo, "active_agents": active,
+              "claims": [claim_rec(cl) for cl in sorted(claims.values(), key=lambda c: c["t"]) if not cl["canary"]],
+              "contributions": [{"id": c["id"], "kind": c.get("kind"), "author": c.get("author"), "mode": c.get("mode"),
+                                 "class": c.get("class"), "task": c.get("task"), "title": c.get("title", ""),
+                                 "first_seen": fmt_t(c["_t"])} for c in recent],
+              "assignments": {a: t for a, (t, _) in assign.items()},
+              "frontier": [caps_of(m) for m in maxi], "problems": problems[-50:]}
+    (HERE / "ledger.json").write_text(json.dumps(ledger, separators=(",", ":"), default=str) + "\n")
 
-    # STATE.md
-    L = [f"# State of the field", "",
-         f"Generated {fmt_t(now)} from the ledger by `collective/build.py`. Do not edit by hand.", "",
-         f"**Score.** Reach P = **{sc['P']}** illuminated capability sets; breadth Q = **{sc['Q']}**; "
-         f"mechanisms K = **{sc['K']}**; corrections C = **{sc['C']}**. With provisional claims P would be "
-         f"{sc_prov['P']}. Definitions: [SCORE.md](SCORE.md).", "",
-         f"**Activity.** {len(recent)} contributions since the collective started; {len(active)} agents active in the "
-         f"last 90 minutes ({', '.join(active) or 'none'}); {cpu:.1f} CPU hours reported. "
-         f"{len(pending)} claims await review.", "",
+    def where(cl):
+        return f"`{cl['dir'] or cl['world'] or ''}`"
+
+    def who(cl):
+        return "lab 1" if cl["seed_status"] or cl["author"] == "lab1" else cl["author"]
+
+    def row(cl, s=None):
+        st = s or (caps_of(cl["scored"]) if cl["status"] == "established" else "".join(cl["claimed"]))
+        return (f"| `{st}` | {cl['class']} | {(cl['title'] or cl['statement'])[:90]} | "
+                f"{cl['status']}{' (BD)' if cl['bd'] else ''} | {who(cl)} | {where(cl)} |")
+
+    # ---- STATE.md
+    S = ["# State of the field", "",
+         f"Generated {fmt_t(now)} from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.", "",
+         f"**Score.** Reach P = **{sc['P']}** illuminated capability sets; beyond diffusion P_BD = **{sc['P_BD']}**; "
+         f"breadth Q = **{sc['Q']}**; mechanisms and laws K = **{sc['K']}**; corrections C = **{sc['C']}**. "
+         f"With provisional claims P would be {sc['P_prov']}; removing the single most important established claim leaves "
+         f"P = {loo}. Definitions: [SCORE.md](SCORE.md)." + (f" Canary false-support rate: {can_rate:.0%}." if can_rate is not None else ""), "",
+         f"**Activity.** {len(recent)} contributions since the collective started; {len(active)} agents active in the last "
+         f"90 minutes ({', '.join(active) or 'none'}); {cpu:.1f} CPU hours reported; {len(pending)} claims need reviews.", "",
          "![progress](progress.png)", ""]
     if last_syn:
-        L += [f"## Latest synthesis ({fmt_t(last_syn['_t'])}, {last_syn.get('author')})", "",
-              last_syn.get("summary", "").strip(), ""]
-        body = REPO / "research/alife" / last_syn.get("_dir", "") / "synthesis.md"
+        S += [f"## Latest synthesis ({fmt_t(last_syn['_t'])}, {last_syn.get('author')})", "", last_syn.get("summary", "").strip(), ""]
+        body = LAB / last_syn.get("_dir", "") / "synthesis.md"
         if body.exists():
-            L += [body.read_text().strip(), ""]
-    L += ["## Frontier", "",
-          "The largest established capability sets (codes in [SCORE.md](SCORE.md)). Each row is one organism-level result.", "",
+            S += [body.read_text().strip()[:6000], ""]
+    S += ["## Grand challenges", "", "| Challenge | Target | Status |", "|---|---|---|"]
+    S += [f"| {ch['title']} | `{ch.get('target', '')}`{' (BD)' if ch.get('bd') else ''} | "
+          f"{'achieved: ' + ', '.join(ch['achieved'][:2]) if ch['achieved'] else 'open'} |" for ch in challenges] or ["| none | | |"]
+    S += ["", "## Frontier", "", "The largest established capability sets, by-construction capabilities removed (codes: [SCORE.md](SCORE.md)).", "",
           "| Set | Class | Result | Status | By | Where |", "|---|---|---|---|---|---|"]
-    for m in maxi:
-        for cl in est[m][:2]:
-            L.append(claim_line(cl))
-    L += ["", "## Recently decided", "", "| Set | Class | Result | Status | By | Where |", "|---|---|---|---|---|---|"]
-    dec = sorted([cl for cl in claims.values() if not cl["seed_status"] and cl["status"] in ("established", "contradicted")],
-                 key=lambda c: max([r["t"] for r in c["reviews"]] or [c["t"]]), reverse=True)[:15]
-    L += [claim_line(cl) for cl in dec] or ["| | | nothing decided yet | | | |"]
-    mech = [cl for cl in claims.values() if cl["finding"] and cl["status"] == "established"]
-    L += ["", "## Established mechanisms and negative results", ""]
-    L += [f"- **{cl['title']}** ({cl['outcome']}): {cl['statement']} `{cl['dir']}`" for cl in mech] or ["- none yet"]
-    neg = [cl for cl in claims.values() if cl["status"] == "contradicted"]
-    L += ["", f"## Corrections ({len(neg)} contradicted claims)", ""]
-    L += [f"- `{caps_of(cl['claimed'])}` {cl['title'] or cl['statement'][:100]} ({'lab 1' if cl['seed_status'] else cl['author']})"
-          for cl in neg[-12:]] or ["- none"]
-    L += ["", "## Toolbox", "", "Reusable operators and trackers: [TOOLBOX.md](TOOLBOX.md). Published tools:", ""]
-    L += [f"- `{c['_dir']}`: {c.get('title', '')}" for c in recent if c.get("kind") == "tool"] or ["- none yet"]
+    for m in maxi[:20]:
+        S += [row(cl, caps_of(m)) for cl in est[m][:2]]
+    gal = [c for c in recent if c.get("kind") in ("sighting", "world") and now - c["_t"] <= timedelta(hours=6)]
+    S += ["", "## New dynamics, last 6 hours", ""]
+    for c in gal[-12:]:
+        imgs = [p for p in c.get("evidence", []) if str(p).endswith((".png", ".jpg", ".gif"))]
+        forks = sum(1 for o in recent if c["id"] in o.get("parents", []))
+        img = f" ![]({c['_dir'].replace('collective/', '', 1)}/{imgs[0]})" if imgs else ""
+        S.append(f"- **{c.get('title', c['id'])}** ({c.get('class', '?')}, {c['author']}, {forks} forks) "
+                 f"{c.get('summary', '')[:220]} `{c['_dir']}`{img}")
+    if not gal:
+        S.append("- none yet")
+    dec = sorted([cl for cl in claims.values() if not cl["seed_status"] and not cl["canary"] and cl["votes"]
+                  and cl["status"] in ("established", "contradicted", "weak")],
+                 key=lambda c: max(v["t"] for v in c["votes"].values()), reverse=True)[:15]
+    S += ["", "## Recently decided", "", "| Set | Class | Result | Status | By | Where |", "|---|---|---|---|---|---|"]
+    S += [row(cl) for cl in dec] or ["| | | nothing decided yet | | | |"]
+    mech = [cl for cl in claims.values() if cl["finding"] and cl["status"] == "established" and not cl["canary"]]
+    S += ["", "## Mechanisms, laws and negative results", ""]
+    S += [f"- **{cl['title']}** ({cl['outcome'] or 'outcome not stated'}): {cl['statement'][:200]} {where(cl)}" for cl in mech[-15:]] or ["- none yet"]
+    neg = [cl for cl in claims.values() if cl["status"] == "contradicted" and not cl["canary"]]
+    S += ["", f"## Corrections ({len(neg)} contradicted claims)", ""]
+    S += [f"- `{''.join(cl['claimed'])}` {(cl['title'] or cl['statement'])[:110]} ({who(cl)})" for cl in neg[-12:]] or ["- none"]
+    tools = [c for c in recent if c.get("kind") == "tool"]
+    S += ["", "## Toolbox", "", "Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently published tools:", ""]
+    S += [f"- `{c['_dir']}`: {c.get('title', '')}" for c in tools[-10:]] or ["- none yet"]
     if problems:
-        L += ["", "## Problems in contributions", ""] + [f"- {p}" for p in problems]
-    (HERE / "STATE.md").write_text("\n".join(L) + "\n")
+        S += ["", "## Problems in contributions (latest 10)", ""] + [f"- {p}" for p in problems[-10:]]
+    (HERE / "STATE.md").write_text("\n".join(S) + "\n")
 
-    # QUEUE.md
-    def needs(cl):
-        if cl["status"] == "disputed":
-            return "tie-break review with replication"
-        if cl["status"] == "provisional":
-            return "1 more independent Supported review"
-        return "2 independent reviews, at least 1 with a fresh-seed re-run"
-    Q = ["# Work queue", "", f"Generated {fmt_t(now)}. Pick by the rules in [PROTOCOL.md](PROTOCOL.md).", "",
-         f"**Review pressure: {pressure:.1f}** claims waiting per active agent. "
-         + ("High: take a review unless you authored every waiting claim." if pressure >= 0.5 else
-            "Low: push the frontier; review when you see a claim you can check quickly."), ""]
+    # ---- QUEUE.md
+    Q = ["# Work queue", "", f"Generated {fmt_t(now)}. Rules: [PROTOCOL.md](PROTOCOL.md).", "",
+         f"**Review pressure {pressure:.1f}** (reviews still needed per active agent). "
+         + (f"**Exploration share {explore_share:.0%}** of non-review work in the last 3 hours (target {target_share:.0%})"
+            + (": **exploration debt**, prefer new dynamics." if explore_share < target_share else ".")
+            if explore_share is not None else "No exploration measured yet."), ""]
     if syn_due:
-        Q += ["**Synthesis due** (task `SYN`): the state-of-the-field narrative is stale. The first agent to see this writes it.", ""]
-    Q += ["## Claims waiting for review", "", "Ranked by how many new capability sets each would add if it holds.", "",
+        Q += ["**Synthesis due** (task `SYN`), assigned below.", ""]
+    Q += ["## Assignments", "", "One distinct task per active agent. Take yours. If you are not listed, or cannot do it, take "
+          "the first open task nobody holds and publish an intent.", "", "| Agent | Task | Why |", "|---|---|---|"]
+    Q += [f"| {a} | `{t}` | {why} |" for a, (t, why) in assign.items()] or ["| (no active agents yet) | | |"]
+    Q += ["", "## Grand challenges", ""]
+    Q += [f"- `C:{ch['id']}` **{ch['title']}** (target `{ch.get('target', '')}`{', diffusion-tested' if ch.get('bd') else ''}). "
+          f"Route: {ch.get('route', '')}" for ch in challenges if not ch["achieved"]] or ["- none open"]
+    Q += ["", "## Claims and findings needing review", "",
           "| Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |", "|---|---|---|---|---|---|---|---|"]
-    for cl in sorted(pending, key=lambda c: (-potential(c, cells), c["t"]))[:25]:
+    for cl in pending[:30]:
         task = f"R:{cl['key']}"
-        Q.append(f"| `{task}` | `{caps_of(cl['claimed'])}` (+{potential(cl, cells)}) | {cl['class']} | "
-                 f"{cl['title'] or cl['statement'][:70]} | {cl['author'] if not cl['seed_status'] else 'lab 1'} | "
-                 f"{cl['status']} | {needs(cl)} | {', '.join(busy.get(task, [])) or '-'} |")
+        need = f"{reviews_needed(cl)} more replicated review(s)" + (f"; requires: {cl['requires'][:140]}" if cl["requires"] else "")
+        Q.append(f"| `{task}` | `{''.join(cl['claimed'])}` (+{potential(cl, cells)}) | {cl['class']} | "
+                 f"{(cl['title'] or cl['statement'])[:70]} | {who(cl)} | {cl['status']} | {need} | {', '.join(sorted(busy.get(task, []))) or '-'} |")
     if not pending:
         Q.append("| | | | nothing waiting | | | | |")
-    Q += ["", "## Frontier gaps", "", "Capability sets one step beyond an established result. Nobody has established these yet.", "",
-          "| Task | Target set | Missing | Extends |", "|---|---|---|---|"]
-    for g, ms in gp[:14]:
-        add = [x for x in caps_of(g) if not any(x in caps_of(m) for m in ms)]
-        ext = "; ".join(f"`{caps_of(m)}` ({est[m][0]['title'] or est[m][0]['statement'][:40]})" for m in ms[:2])
-        Q.append(f"| `G:{caps_of(g)}` | `{caps_of(g)}` | {', '.join(CAP_NAMES[x] for x in add)} | {ext} |")
-    qs = [c for c in items if c.get("kind") == "question"]
-    took = {}
-    for c in recent:
-        if c.get("task"):
-            took.setdefault(c["task"], []).append(c)
-    Q += ["", "## Open questions", "", "Highest priority first. Attempts are contributions that named the task.", ""]
-    for c in sorted(qs, key=lambda c: (-int(c.get("priority", 3)), c["_t"])):
+    Q += ["", "## Next rung for each class", "", "| Class | Has | Next |", "|---|---|---|"]
+    Q += [f"| {cls} | {', '.join('`' + caps_of(m) + '`' for m in has)} | {', '.join('`G:' + caps_of(m) + '`' for m in nxt)} |"
+          for cls, has, nxt in ladders if cls != "reaction-diffusion"]
+    rd = next((h for c, h, _ in ladders if c == "reaction-diffusion"), [])
+    Q += ["| reaction-diffusion (baseline, not a target) | " + ", ".join("`" + caps_of(m) + "`" for m in rd) + " | |"]
+    Q += ["", "## Open questions", "", "Highest priority first. Full text in `seed/questions.json` or the question's contribution.", ""]
+    for c in qs[:15]:
         task = f"Q:{c.get('slug') or c['id']}"
-        done = [a for a in took.get(task, []) if a.get("kind") != "intent"]
-        prog = f"; in progress: {', '.join(busy[task])}" if task in busy else ""
-        Q.append(f"- `{task}` (priority {c.get('priority', 3)}, target `{''.join(c.get('target', []))}`, "
-                 f"{c.get('class', 'any')}, {len(done)} attempts{prog}) **{c.get('title', '')}** "
-                 f"{c.get('experiment') or c.get('summary', '')}")
-    cov = {k: 0 for k in CLASSES}
-    for cl in claims.values():
-        if cl["status"] == "established" and not cl["finding"]:
-            cov[cl["class"]] = cov.get(cl["class"], 0) + 1
-    tries = {k: 0 for k in CLASSES}
-    for c in recent:
-        if c.get("class") in tries:
-            tries[c["class"]] += 1
-    Q += ["", "## Class coverage", "", "Established claims and new contributions per dynamical class. Thin classes are "
-          "where exploration pays most.", "", "| Class | Established | Contributions since start |", "|---|---|---|"]
-    Q += [f"| {k} | {cov[k]} | {tries[k]} |" for k in sorted(CLASSES, key=lambda k: (cov[k] + tries[k], k))]
+        att = len(tried.get(task, []))
+        Q.append(f"- `{task}` p{c.get('priority', 3)} `{''.join(c.get('target', []))}` {c.get('title', '')}"
+                 + (f" ({att} attempts)" if att else "") + (f"; in progress: {', '.join(sorted(busy[task]))}" if task in busy else ""))
+    unforked = [c for c in recent if c.get("kind") == "sighting" and now - c["_t"] <= timedelta(hours=12)
+                and not any(c["id"] in o.get("parents", []) for o in recent)]
+    if unforked:
+        Q += ["", "## Sightings nobody has forked yet", ""] + [f"- `{c['_dir']}` {c.get('title', '')} ({c.get('class', '?')})" for c in unforked[-10:]]
+    deferred = read_imported()["_deferred"]
+    if deferred:
+        Q += ["", "## Not imported: fix on your branch", ""] + [f"- `{k}`: {v}" for k, v in sorted(deferred.items())[-15:]]
     Q += ["", "## In progress", ""]
-    Q += [f"- `{c.get('task', '?')}` by {c['author']} since {fmt_t(c['_t'])}: {c.get('title', '')}" for c in intents] or ["- nothing announced"]
+    Q += [f"- `{c['task']}` by {c['author']} since {fmt_t(c['_t'])}{' (campaign)' if c.get('campaign') else ''}: {c.get('title', '')[:80]}"
+          for c in live] or ["- nothing announced"]
     (HERE / "QUEUE.md").write_text("\n".join(Q) + "\n")
-    log(f"SCORE P={sc['P']} Q={sc['Q']} K={sc['K']} C={sc['C']} P_prov={sc_prov['P']} "
+    log(f"SCORE P={sc['P']} P_BD={sc['P_BD']} Q={sc['Q']} K={sc['K']} C={sc['C']} P_prov={sc['P_prov']} "
         f"contributions={len(recent)} pending={len(pending)} active={len(active)}")
     return claims, sc
 
@@ -450,14 +819,15 @@ def plot(series):
         return
     t = [parse_t(s["t"]) for s in series]
     fig, ax = plt.subplots(1, 2, figsize=(10, 3.2))
-    for k, c in (("P", "#0d7480"), ("Q", "#b0561b"), ("P_prov", "#9aa5ab")):
-        ax[0].step(t, [s[k] for s in series], where="post", color=c, label={"P_prov": "P incl. provisional"}.get(k, k))
-    ax[0].set_title("reach P and breadth Q")
-    ax[0].legend(frameon=False, fontsize=8)
-    for k, c in (("K", "#1d7a45"), ("C", "#a33b3b")):
-        ax[1].step(t, [s[k] for s in series], where="post", color=c, label={"K": "mechanisms K", "C": "corrections C"}[k])
+    for k, c, lab in (("P", "#0d7480", "reach P"), ("P_BD", "#b0561b", "beyond diffusion P_BD"),
+                      ("Q", "#7a4fb0", "breadth Q"), ("P_prov", "#9aa5ab", "P incl. provisional")):
+        ax[0].step(t, [s.get(k, 0) for s in series], where="post", color=c, label=lab)
+    ax[0].set_title("capability reach")
+    ax[0].legend(frameon=False, fontsize=7)
+    for k, c, lab in (("K", "#1d7a45", "mechanisms and laws K"), ("C", "#a33b3b", "corrections C")):
+        ax[1].step(t, [s.get(k, 0) for s in series], where="post", color=c, label=lab)
     ax[1].set_title("knowledge")
-    ax[1].legend(frameon=False, fontsize=8)
+    ax[1].legend(frameon=False, fontsize=7)
     for a in ax:
         a.spines[["top", "right"]].set_visible(False)
         a.tick_params(labelsize=7)
@@ -468,26 +838,70 @@ def plot(series):
     plt.close(fig)
 
 
-def status_map(claims):
-    return {k: (v["status"], caps_of(v["held"])) for k, v in claims.items()}
+def check(path):
+    """Validate one contribution directory before pushing. Returns the number of problems."""
+    d = Path(path).resolve()
+    try:
+        c, errs = coerce(json.loads((d / "contribution.json").read_text()))
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"PROBLEM contribution.json: {e}")
+        return 1
+    if c is None:
+        print("PROBLEM " + "; ".join(errs))
+        return 1
+    if c.get("id") != d.name:
+        errs.append(f"id {c.get('id')!r} differs from the directory name {d.name!r}")
+    if not ID_RE.match(d.name):
+        errs.append("directory name must be <yyyymmddThhmm>-<agent id>-<slug>, e.g. 20261025T0712-c07-gated-lenia")
+    if c.get("kind") == "review":
+        items, _ = load(now_utc())
+        tid, _ = norm_target(c.get("review_of"), None)
+        if tid not in {x.get("id") for x in items}:
+            errs.append(f"review_of {c.get('review_of')!r} is not in the ledger (sync first)")
+        for v in c.get("verdicts", []):
+            if v.get("replicated") and not (any(d.rglob("metrics.json")) or (d / "rerun").is_dir()):
+                errs.append("replicated is true but there is no re-run pack (metrics.json) or rerun/ directory here")
+            for x in v.get("supported", []):
+                if not (v.get("observations") or {}).get(x):
+                    errs.append(f"no observation for supported capability {x}")
+    for cl in c.get("claims", []):
+        if len([x for x in cl["capabilities"] if x != "S"]) >= 3 and not cl.get("track"):
+            errs.append(f"claim {cl['cid']}: 3+ capabilities need a 'track' (one individual that shows all of them)")
+    errs += check_paths(c, lambda p: (LAB / p).exists())
+    for e in errs:
+        print("PROBLEM " + e)
+    print("OK" if not errs else f"{len(errs)} problem(s)")
+    return len(errs)
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--import-branches", action="store_true")
+    ap.add_argument("--check", metavar="DIR", help="validate one contribution directory and exit")
+    ap.add_argument("--write", action="store_true", help="rebuild STATE.md, QUEUE.md, ledger.json and progress")
+    ap.add_argument("--import-branches", action="store_true", help="librarian: import from agent branches, then rebuild")
+    ap.add_argument("--rebuild", action="store_true", help="recompute the whole progress history")
+    ap.add_argument("--canaries", help="JSON list of canary contribution ids (kept outside the repo)")
     ap.add_argument("--now", help="override the clock (UTC, e.g. 2026-10-25T07:30Z)")
     a = ap.parse_args()
+    if a.check:
+        sys.exit(1 if check(a.check) else 0)
+    if not (a.write or a.import_branches):
+        ap.error("nothing to do: use --check DIR (agents) or --write / --import-branches (librarian)")
     now = parse_t(a.now) if a.now else now_utc()
+    canaries = frozenset(json.loads(Path(a.canaries).read_text())) if a.canaries else frozenset()
     prev = {}
     if (HERE / "ledger.json").exists():
         try:
-            prev = {c["key"]: (c["status"], c["held"]) for c in json.loads((HERE / "ledger.json").read_text())["claims"]}
-        except (KeyError, json.JSONDecodeError):
+            prev = {c["key"]: (c["status"], c["scored"]) for c in json.loads((HERE / "ledger.json").read_text())["claims"]}
+        except (KeyError, json.JSONDecodeError, TypeError):
             prev = {}
     if a.import_branches:
         import_branches()
     items, problems = load(now)
-    claims, sc = write_outputs(items, problems, now)
-    for k, (st, held) in status_map(claims).items():
-        if prev.get(k, ("new", ""))[0] != st:
-            print(f"STATUS {k} {prev.get(k, ('new', ''))[0]} -> {st} `{held}`")
+    claims, sc = write_outputs(items, problems, now, canaries=canaries, rebuild=a.rebuild)
+    for k, cl in claims.items():
+        old = prev.get(k, ("new", ""))
+        if cl["canary"] or (old[0] == "new" and cl["seed_status"]):
+            continue
+        if old[0] != cl["status"] or old[1] != caps_of(cl["scored"]):
+            print(f"STATUS {k} {old[0]} -> {cl['status']} `{caps_of(cl['scored'])}`")

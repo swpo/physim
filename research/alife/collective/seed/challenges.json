@@ -1,0 +1,52 @@
+[
+ {
+  "id": "swim-divide",
+  "title": "Membrane-bounded cells that swim and divide, from noise",
+  "target": "SIBMD",
+  "route": "An Allen-Cahn cell with a link ring (phase_membrane) plus a self-repellent trail (kstrail) or a Frey-type mobility switch; see Q:membrane-swimmer-divider."
+ },
+ {
+  "id": "inherited-contents",
+  "title": "Containment that daughters inherit through division",
+  "target": "IBWD",
+  "route": "A gated wall (min or harmonic face mobility) that holds a fast species through pinching: xcell-a's gate or ad7's shell on a dividing cell."
+ },
+ {
+  "id": "autonomous-heredity",
+  "title": "Heredity with selection driven only by intrinsic deaths",
+  "target": "SIBDH",
+  "named": true,
+  "route": "membrane_evo with the imposed death disks replaced by whole-body deaths from an extensive maintenance cost; see Q:autonomous-l7-identity-deaths. Claims must name this challenge."
+ },
+ {
+  "id": "reproduction-beyond-diffusion",
+  "title": "Reproducing organized cells that a Laplacian-only twin cannot match",
+  "target": "IBD",
+  "bd": true,
+  "route": "Run the owed matched Laplacian twins (Q:owed-laplacian-twins, Q:bd-ad7-gate-vs-lowered-d) on a dividing organized cell."
+ },
+ {
+  "id": "metabolic-cell",
+  "title": "Organized dividing cells that live on a consumed, regrowing resource (not by construction)",
+  "target": "IBED",
+  "route": "Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test."
+ },
+ {
+  "id": "motile-repair",
+  "title": "Self-propelled organized individuals that repair",
+  "target": "IBRM",
+  "route": "Damage a mature swimming cell (kstrail crescent with a wall, or an Allen-Cahn swimmer) with an undamaged twin."
+ },
+ {
+  "id": "ecology-with-reproduction",
+  "title": "Interacting populations that reproduce and eat",
+  "target": "IXDE",
+  "route": "evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7."
+ },
+ {
+  "id": "open-ended",
+  "title": "New kinds keep appearing and replacing old ones",
+  "target": "IDHO",
+  "route": "Requires autonomous heredity first; then long runs with a novelty measure that does not saturate."
+ }
+]
