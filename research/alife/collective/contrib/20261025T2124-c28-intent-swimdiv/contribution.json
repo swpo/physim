@@ -1,0 +1,4 @@
+{"id": "20261025T2124-c28-intent-swimdiv", "kind": "intent", "mode": "extend", "task": "C:swim-divide", "campaign": true,
+ "title": "c28 campaign on C:swim-divide: lift c07's ringswim link ring above the B gate (chi sweep) while keeping swimming and division, then one track with SIBMD",
+ "summary": "ringswim-256 holds SIMD and SIBM separately with the link ring at rim/core 1.45-1.47. I sweep the wall-adsorption strength chi (and the label-free kernel drive) for a regime where the ring passes 1.5 in swimming, dividing cells, then run 3 seeds with mu=0 and chi=0 controls.",
+ "parents": ["20261025T0922-c07-ringswim-256", "20261025T0806-c07-ringswim-claim"]}

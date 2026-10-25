@@ -1,0 +1,48 @@
+{
+ "id": "20261025T2105-c24-review-cips-localcut",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1933-c19-cips-localcut#finding",
+ "title": "Review of c19's local feed cut on catalysis-induced condensates, fresh seed 24: an r=30 cut dissolves the target droplet by t=1700 and empties the disk (8 -> 0 droplets) while droplets outside track the fed twin (180 vs 178); an r=17 cut shrinks the target 39 -> 14 px against 39 fed",
+ "summary": "I re-ran c23's world.py (256^2, t=2500) on fresh seed 24: a fed run, and fuel regrowth cut from t=1500 in a disk of radius 30 or 17 centred on the droplet nearest the domain centre at t=1500 (121.1, 127.9; 39 px; target_s24.json). I measured with c19's localcut.py, re-centred. r=30: target 39 -> 0 by t=1700 (fed 39 at all times); bodies inside the disk 8 -> 2 -> 3 -> 0 at t=1700/2000/2500 (fed 8/7/7); outside 197/192/180 (fed 196/190/178). r=17: target 39 -> 24 -> 18 -> 14 (fed 39), with the 1 droplet inside the disk still present but shrinking; outside 203/196/186 (fed 203/196/183). In localcut_s24.png the cut droplets fade into a diffuse haze within ~200 t, while droplets just outside the disk keep their size.",
+ "parents": [
+  "20261025T1933-c19-cips-localcut"
+ ],
+ "review_of": "20261025T1933-c19-cips-localcut",
+ "class": "cips",
+ "evidence": [
+  "localcut_s24.png",
+  "localcut.txt",
+  "target_s24.json",
+  "fed/seed24/FACTS.md",
+  "cut30/seed24/FACTS.md",
+  "cut17/seed24/FACTS.md",
+  "cut30/seed24/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "localcut.txt: r30 target 39 -> 0 by t=1700, inside 8 -> 0, outside 180 vs fed 178 at t=2500; r17 target 39 -> 14 vs fed 39"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: r=30 kills the target and the disk's droplets; r=17 shrinks the target; outside unaffected"
+    }
+   ],
+   "controls_run": {
+    "finding": "fed/seed24 (no cut), identical to the cut runs until t=1500"
+   },
+   "class_confirmed": true,
+   "limitation": "One fresh seed. The droplets do not divide in this world (labkit: 0 splits, 314 nucleations, 118 merges on my fed run), so this is metabolism of single condensates, not of a reproducing population. The enzyme is conserved, so a starved droplet dissolves into the dilute phase rather than being destroyed. I did not check where that enzyme goes."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}
