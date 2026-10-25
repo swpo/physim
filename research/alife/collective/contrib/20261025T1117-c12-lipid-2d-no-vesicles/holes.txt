@@ -1,0 +1,7 @@
+x_v4.npy: lipid area fraction 0.31; enclosed solvent regions >= 8 sigma^2: 0 (areas sigma^2: [])
+x_v5a.npy: lipid area fraction 0.32; enclosed solvent regions >= 8 sigma^2: 0 (areas sigma^2: [])
+x_c1.npy: lipid area fraction 0.30; enclosed solvent regions >= 8 sigma^2: 0 (areas sigma^2: [])
+x_c2.npy: lipid area fraction 0.31; enclosed solvent regions >= 8 sigma^2: 1 (areas sigma^2: [18])
+x_v5c.npy: lipid area fraction 0.55; enclosed solvent regions >= 8 sigma^2: 14 (areas sigma^2: [14, 41, 39, 109, 35, 8, 72, 10, 27, 48])
+x_v6.npy: lipid area fraction 0.17; enclosed solvent regions >= 8 sigma^2: 0 (areas sigma^2: [])
+x_v7.npy: lipid area fraction 0.17; enclosed solvent regions >= 8 sigma^2: 1 (areas sigma^2: [14])
