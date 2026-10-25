@@ -1,0 +1,5 @@
+t=1600 cells=4 N=14392 Mrc=0.00 rimcore=1.72 rimout=63.13 area=84 y=0.999 (10s)
+t=3200 cells=3 N=15328 Mrc=0.00 rimcore=1.60 rimout=42.91 area=69 y=1.000 (21s)
+t=4800 cells=5 N=14718 Mrc=0.00 rimcore=1.68 rimout=44.87 area=137 y=1.002 (31s)
+t=6400 cells=7 N=14923 Mrc=0.00 rimcore=1.23 rimout=5.06 area=370 y=1.002 (41s)
+t=8000 cells=6 N=14540 Mrc=0.00 rimcore=1.36 rimout=33.21 area=282 y=1.003 (51s)

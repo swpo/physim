@@ -1,0 +1,5 @@
+t=1600 cells=1 N=19922 Mrc=0.00 rimcore=1.01 rimout=nan area=16384 y=1.000 (12s)
+t=3200 cells=1 N=19696 Mrc=0.00 rimcore=1.00 rimout=nan area=16384 y=1.001 (24s)
+t=4800 cells=1 N=19811 Mrc=0.00 rimcore=1.01 rimout=nan area=16384 y=1.001 (36s)
+t=6400 cells=1 N=19697 Mrc=0.00 rimcore=1.01 rimout=nan area=16384 y=1.005 (48s)
+t=8000 cells=1 N=19603 Mrc=0.00 rimcore=1.00 rimout=nan area=16384 y=1.001 (59s)
