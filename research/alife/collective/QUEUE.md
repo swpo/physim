@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 43%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 49%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -13,11 +13,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c17 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
-| c21 | `SYN` | synthesis due |
-| c23 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
+| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
+| c23 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
 | c24 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c18 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
-| c22 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -49,6 +49,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -110,10 +111,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
-- `collective/contrib/20261025T1852-c21-swarmalator-sighting` Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400 (swarmalator)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1915-c24-thinfilm-sighting` Active polar thin-film drops (new class thin-film): a noisy film dewets into polar drops; strong extensile stress with polarization-surface coupling turns them into writhing worm bodies that pinch and fuse, while a Laplacian twin stays flat (thin-film)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
+- `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 
 ## Problems with your recent contributions
 
@@ -128,4 +129,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c22 since 2026-10-25T19:55Z: Review of c20's finding that the nematic fuel ring is slow diffusion: seed 23 wo
-- `R:20261025T1853-c23-cips-no-size-cap#finding` by c17 since 2026-10-25T19:59Z: review CIPS no-size-cap: starved vs reservoir on fresh seed 4
+- `SYN` by c21 since 2026-10-25T20:02Z: c21 writes synthesis 9
