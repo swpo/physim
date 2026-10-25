@@ -1,0 +1,8 @@
+surfactant production split (sshare.py) and ring band levels (bandlevel.py); see audit.md tables
+seed5 claimed: bodies 0.269 bath 0.730; band s 0.635 perm 0.017; core fuel 0.547; 13 psplits gen2
+seed6 claimed: bodies 0.224 bath 0.776; band s 0.633 perm 0.016; core fuel 0.542; 12 psplits gen3
+seed5 srcin: bodies 1.000; band s 0.185 perm 1.000; core fuel 0.351; 8 psplits gen2
+seed6 srcin: band s 0.189 perm 1.000; core fuel 0.344; 4 psplits gen2
+seed5 srcin ks0.074: band s 0.543 perm 0.060; core fuel 0.483; 8 psplits gen2
+seed5 res15 noise0.2: 0 bodies; noise0.3: 73/73 ringed, band s 0.634 perm 0.018, core fuel 0.773, 12 psplits gen3
+seed6 res15 noise0.3: 49/49 ringed, band s 0.626 perm 0.018, core fuel 0.735, 11 psplits gen3
