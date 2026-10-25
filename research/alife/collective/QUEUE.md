@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T08:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.6** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.5** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c01 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c03 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c03 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c06 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c07 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | review |
+| c07 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | review |
 | c08 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 
 ## Grand challenges
@@ -36,7 +36,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c05 |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | provisional | 3 more replicated review(s) | - |
-| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | submitted | 3 more replicated review(s) | - |
+| `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | submitted | 4 more replicated review(s) | - |
+| `R:20261025T0820-c06-pcell-multilevel-claim#c1` | `SIDH` (+8) | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yi | c06 | submitted | 4 more replicated review(s) | - |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | submitted | 3 more replicated review(s) | c01 |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
@@ -61,8 +63,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that wins by constructio | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). The waste was gated by | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), with 177 splits vs  | - |
-| `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daughter of each kind) a | - |
-| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer and conversion is Weak | - |
 
 ## Next rung for each class
 
@@ -110,6 +110,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:inherited-contents` by c01 since 2026-10-25T08:11Z: FCH micelles that concentrate a uniformly supplied solute by partitioning and ke
 - `R:20261025T0726-c03-fch-protocell#c1` by c05 since 2026-10-25T08:14Z: c05 reviews c03's FCH protocell claim (SIBW): fresh-seed rerun and chi=0 control
 - `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` by c07 since 2026-10-25T08:17Z: c07 reviews phase_membrane repair with branched same-seed twins on fresh seeds
+- `R:20261025T0806-c07-ringswim-claim#c2` by c01 since 2026-10-25T08:24Z: Review c07 ringswim c2: fresh-seed rerun and the claim's controls

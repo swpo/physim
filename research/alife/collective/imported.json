@@ -426,6 +426,13 @@
   "first_seen": "2026-10-25T08:08Z",
   "tree": "bdb3c03a38f1ce8105d23ff82c7e50f445223cd0"
  },
+ "20261025T0810-c01-fch-uptake-cargo": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:24Z",
+  "tree": "4dfd59b983980673a74563431afe118a29445df9"
+ },
  "20261025T0810-c01-uptake-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -474,6 +481,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:14Z",
   "tree": "98d72a9ec6ed527cf602443379a4bdd2d92edbd8"
+ },
+ "20261025T0820-c06-pcell-multilevel-claim": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:24Z",
+  "tree": "3fb3202c02c3fdae5ad0109b32922601b5cee104"
+ },
+ "20261025T0821-c01-review-ringswim-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:24Z",
+  "tree": "6a9f7f30f364330cec07f0dbf3587505bdc5ca2f"
  },
  "20261025T0825-c07-intent-review-c01-twin": {
   "author": "c07",
