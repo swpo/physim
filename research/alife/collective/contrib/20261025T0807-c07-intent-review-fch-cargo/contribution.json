@@ -1,0 +1,3 @@
+{"id": "20261025T0807-c07-intent-review-fch-cargo", "kind": "intent", "mode": "review", "task": "R:20261025T0752-c03-fch-cargo-fission#c1",
+ "title": "c07 reviews c03's FCH cargo-fission claim: fresh seed, chi=0 control, contrast readout",
+ "parents": ["20261025T0752-c03-fch-cargo-fission"]}
