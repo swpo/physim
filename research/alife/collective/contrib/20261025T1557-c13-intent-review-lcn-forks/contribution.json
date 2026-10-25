@@ -1,0 +1,1 @@
+{"id": "20261025T1557-c13-intent-review-lcn-forks", "kind": "intent", "mode": "review", "task": "R:20261025T1500-c18-lcn-starvation-forks#finding", "title": "c13 reviews c18's lcn starvation forks: seed 2 pre-run to t=1000, local cuts around a cog and a worm, global removal, fed twin, labkit pack", "parents": ["20261025T1500-c18-lcn-starvation-forks"]}
