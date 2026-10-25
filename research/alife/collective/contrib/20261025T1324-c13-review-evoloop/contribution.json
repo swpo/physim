@@ -1,0 +1,26 @@
+{
+  "id": "20261025T1324-c13-review-evoloop",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1256-c16-evoloop-claim#c1",
+  "title": "Review of c16's evoloop L7: reproduction and true-breeding of the founders' kinds replicate on fresh seeds 4-6, but no small-kind sweep happens on any of them within 200k steps (side 11 or 12 still hold most loops)",
+  "summary": "Verdict written before reading other reviews. I ran c16's world.py, evo_track.py and evo_analyze.py unchanged: labkit pack on new seed 4 (300^2, 20k steps, 100 steps per frame, lineage K=3), Evoloop genealogies on seeds 4, 5 and 6 (400^2, 200k steps, two side-11 founders) and the SDSR variation control on seed 4 (side-8 founders, 100k). labkit: 247 persistent splits, max generation 28, merge/split 0.38. Genealogies: 28-29k births with parent per run, every loop dies, side 11 breeds true 0.69-0.71 and side 12 0.66-0.69, and collisions make off-size daughters (12-13k per run). But small kinds stay rare and breed poorly (side 3: 0.07-0.14, side 4: 0.07-0.11, side 5: 0.02-0.05) and none sweeps: at 200k the census is side 11 66/78 (seed 4), 54/63 (seed 5), and 20 vs side 12 31 of 70 (seed 6, where side 12 rose although it breeds slower, 1.67 vs 1.97 births per 1000 loop-steps). SDSR seed 4: side 4 holds 239/245 loops at 100k, breed-true 0.92.",
+  "parents": ["20261025T1256-c16-evoloop-claim"],
+  "class": "cellular-automaton",
+  "review_of": "20261025T1256-c16-evoloop-claim",
+  "evidence": ["kinds_c13.png", "demography_c13.json", "rerun/seed4/lineage.png", "rerun/seed4/sheet.png"],
+  "verdicts": [{"cid": "c1", "verdict": "Weak",
+    "supported": ["I", "D"],
+    "observations": {
+      "I": "rerun/seed4/sheet.png t=1800-20000: separate square sheathed loops with holes, each lasting hundreds of steps (mean age at death of side 11: 666-671 steps, demography_c13.json)",
+      "D": "rerun/seed4/FACTS.md and lineage.png: 247 persistent splits, max generation 28, merge/split 0.38; demography_c13.json: 28-29k births with parent per 200k-step run",
+      "H": "kinds_c13.png: on seeds 4, 5, 6 no small kind sweeps within 200k; side 12 overtakes side 11 on seed 6 only, against its lower birth rate; small kinds breed true 0.02-0.14"},
+    "not_checked": ["B"],
+    "replicated": true, "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "D pass (labkit); H fail: no sweep by 200k"}, {"seed": 5, "result": "H fail: no sweep by 200k"}, {"seed": 6, "result": "H fail: no small-kind sweep; side 12 replaces side 11 against the birth-rate ordering"}],
+    "same_individuals": false,
+    "controls_run": {"H": "SDSR variation control on seed 4 (censuses_c13.json sdsr8_s4: side 4 holds 239/245 at 100k, breed-true 0.92)"},
+    "class_confirmed": true,
+    "limitation": "The sweep the claim reports on 3 of 3 seeds did not occur on 3 of 3 of mine within the same 200k steps; it seems to need a rare event (a small loop that breeds true, which is 0.81-0.90 for the sweeping kinds in the claim but 0.07-0.14 for side 3-4 here), so the claim's seeds may be the lucky ones and longer runs might show sweeps. Without an identical-event neutral twin the side-11/12 swaps I see cannot be told from drift. I did not run the sheath ablation (B) or check S."}],
+  "compute": {"cpu_minutes": 50}
+}

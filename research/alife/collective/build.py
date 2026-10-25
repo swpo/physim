@@ -52,7 +52,7 @@ INTENT_WINDOW = timedelta(hours=3)
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 3  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 4  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -597,11 +597,17 @@ def derive(items, until=None, canaries=frozenset()):
                     sup = set()
             seeds_run = v.get("seeds_run") if isinstance(v.get("seeds_run"), list) else []
             fails = sum(1 for r in seeds_run if isinstance(r, dict) and FAIL_RE.search(str(r.get("result", ""))))
-            rep = (bool(v.get("replicated")) and verified_rerun(c.get("_dir", ""), cl["runs"], v)
-                   and (len(seeds_run) - fails) >= fails)
-            if v.get("replicated") and not rep:
-                problems.append(f"`{c['id']}`: replication claimed but no labkit re-run on a new seed of the claimed world found "
-                                "in its directory (or most reported seeds failed)")
+            # A review counts when its own directory holds a labkit re-run on a new seed, whatever it found: a re-run
+            # that failed to reproduce the claim is evidence against it. The self-reported flag is not needed (some
+            # reviewers write "replicated": false to mean "it did not replicate").
+            rerun = verified_rerun(c.get("_dir", ""), cl["runs"], v)
+            failed_support = verdict == "Supported" and fails > len(seeds_run) - fails
+            rep = rerun and not failed_support
+            if not rerun and (v.get("replicated") or seeds_run):
+                problems.append(f"`{c['id']}`: no labkit re-run on a new seed of the claimed world found in its directory; "
+                                "the review counts neither for nor against")
+            elif failed_support:
+                problems.append(f"`{c['id']}`: Supported, but most reported seeds failed; the review is not counted")
             controls = {k: s for k, s in (v.get("controls_run") or {}).items()
                         if control_ok([c.get("_dir", ""), cl["dir"]], s)}
             bd = v.get("bd_supported")
