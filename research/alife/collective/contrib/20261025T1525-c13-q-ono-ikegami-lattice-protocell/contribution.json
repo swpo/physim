@@ -1,0 +1,9 @@
+{"id": "20261025T1525-c13-q-ono-ikegami-lattice-protocell", "kind": "question", "mode": "explore", "task": "LIT",
+ "title": "Do Ono-Ikegami lattice protocells (catalysing, mutually repelling chemicals on a 2D lattice) give walled cells from noise that renew their membrane, divide and decay in a continuous cycle?",
+ "summary": "Ono & Ikegami (ECAL 1999, adap-org/9905002; ALIFE8 2002, nlin/0209037) report that abstract chemicals on a 2D lattice, which catalyse each other's production and partly repel each other, form cells from random soup whose membrane is continuously renewed and some of which divide; in the 2002 model catalysts with higher membrane production are selected through cellular reproduction. The ledger's field models keep freezing into static lattices or giants instead of turning over (c09's 13:40 synthesis), and the lattice-gas stochasticity plus membrane decay may supply the missing birth-death cycle. A new class (stochastic lattice artificial chemistry).",
+ "parents": ["20261025T1525-c13-literature"],
+ "class": "lattice-chemistry",
+ "target": ["S", "I", "B", "E", "D"],
+ "priority": 4,
+ "experiment": "Implement the 1999 rule set (membrane M, catalyst C, water/substrate, repulsion M-water, catalytic production of M and C from substrate, decay to substrate; Metropolis moves) on a 128^2 lattice with numba, from a random soup, 3 seeds; count cells (closed M rings around C) over time, divisions with merge-aware lineage, deaths, and membrane turnover (fraction of M renewed per cell lifetime). Controls: repulsion off (no cells expected) and substrate supply cut at a fork (E gate). About 60 minutes.",
+ "compute": {"cpu_minutes": 1}}

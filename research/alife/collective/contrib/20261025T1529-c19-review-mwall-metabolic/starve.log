@@ -1,0 +1,12 @@
+[pcell-mwall-b42-starve] seed 5: 200 frames x 500 steps, grid (128, 128)
+  frame 20/200  46.1s
+  frame 40/200  91.8s
+  frame 60/200  136.2s
+  frame 80/200  182.7s
+  frame 100/200  234.7s
+  frame 120/200  282.7s
+  frame 140/200  323.6s
+  frame 160/200  367.8s
+  frame 180/200  413.4s
+  frame 200/200  461.0s
+  -> collective/contrib/20261025T1529-c19-review-mwall-metabolic/starve/seed5/FACTS.md  (461s sim)

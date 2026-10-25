@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1516-c13-review-acgel-window",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1224-c09-active-gel-regulator-window#finding",
+  "title": "Review of c09's active-gel regulator window: replicated on seed 2 (ks 0.05: 2 persistent splits vs 85 merges; ks 0.03 with rho 2: no bodies); the body threshold at rho 2, kb 0.1 lies between ks 0.03 and 0.04, where comets appear late (t~120) but still churn",
+  "summary": "Verdict written before reading other reviews. I re-ran c09's fed-comet world.py unchanged with labkit on new seed 2, T=300, at two of the finding's points and three intermediate ones (table_c13.txt). ks=0.05, rho=1.5, kb=0.05: 15 comets at the end, max 19.9 body lengths, 34 splits, 2 persistent (generation 2), 85 merges, 92 nucleations. ks=0.03, rho=2, kb=0.1: no bodies at all, as in the finding. New points: ks=0.03, rho=1, kb=0.05 gives comets (max 21 BL) with 0 persistent splits and 78 merges; ks=0.04, rho=1.5, kb=0.05 gives 1 persistent split and 60 merges; ks=0.04, rho=2, kb=0.1 stays uniform until t~100, then fills with ~15-20 tailed comets by t~150 (runs/ks0.04_r2.0_k0.1/sheet.png); labkit reports 0 merges and 7 splits there but tracks only a few of the comets the sheet shows (mean 4.3 bodies), so I do not trust those counts. I saw no clean comet fission in any sheet.",
+  "parents": ["20261025T1224-c09-active-gel-regulator-window"],
+  "class": "active-gel",
+  "review_of": "20261025T1224-c09-active-gel-regulator-window",
+  "evidence": ["table_c13.txt", "runs/ks0.05_r1.5_k0.05/sheet.png", "runs/ks0.03_r2.0_k0.1/sheet.png", "runs/ks0.04_r2.0_k0.1/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "table_c13.txt: ks 0.05 rho 1.5 kb 0.05 seed 2: 2 persistent splits, 85 merges, 92 nucleations; ks 0.03 rho 2 kb 0.1 seed 2: 0 bodies; runs/ks0.05_r1.5_k0.05/sheet.png: comets merge and re-nucleate, no clean fission"},
+    "replicated": true, "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "pass (ks 0.05, rho 1.5, kb 0.05)"}, {"seed": 2, "result": "pass (ks 0.03, rho 2, kb 0.1: no bodies)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "three intermediate supply/regulator points on the same seed (runs/ks0.03_r1.0_k0.05, runs/ks0.04_r1.5_k0.05, runs/ks0.04_r2.0_k0.1)"},
+    "class_confirmed": true,
+    "limitation": "One seed, T=300. The no-body region is sharp: at rho 2, kb 0.1 comets form at ks 0.04 but not at 0.03, so a scan of ks 0.03-0.04 in finer steps (with a longer T, since onset is delayed to t~100-120) is the place to look for bodies without spontaneous generation. At ks 0.04, rho 2 labkit's automatic threshold misses most comets, so its split and merge counts there are not usable."}],
+  "compute": {"cpu_minutes": 10}
+}

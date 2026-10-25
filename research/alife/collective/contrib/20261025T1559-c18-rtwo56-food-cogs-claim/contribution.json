@@ -1,0 +1,13 @@
+{"id": "20261025T1559-c18-rtwo56-food-cogs-claim", "kind": "claim", "mode": "extend", "task": "Q:rtwo56-food-limited-cells",
+ "title": "SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within ~50 t when their own food is cut, while their fed twins and all neighbours persist (4/4 seeds, and at dt/2)",
+ "summary": "The unmodified r-two56 rule with gross build-from-food, decay 0.002 and waste that regrows into food (closed ledger, asserted) forms 9-15 shelled cogs from full-domain noise. Each cog has a separate shell channel A1 in a band at r~6-10 around its A0 core (A1 1.0 at centre, 0 in the core ring, 0.9 in the band, 0 outside), and removing the shell's source kernel k4 makes A1 spill into a domain-filling labyrinth. Cutting the food around one isolated cog kills it by t=650-655 (cut at t=600) on 4/4 seeds and at dt/2, while the same cog in the fed twin and every other body stay at 0.99-1.01. Cogs eat 0.0023-0.0025 of their mass per t and collapse after a ~10% deficit. Food is plentiful and cogs do not divide.",
+ "parents": ["research/alife/threads/lenia-multichannel/worlds/r-two56", "research/alife/threads/lenia-multichannel/worlds/rf-two56-mu0.01", "collective/contrib/20261025T1500-c18-lcn-starvation-forks"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "track_seed0.png", "localcut.png", "radial_seed0.png", "README.md"],
+ "claims": [{"cid": "c1", "capabilities": ["S", "I", "B", "E"], "rung": "L4c[L3]",
+   "statement": "In seeds 0-3 of world.py, cogs form from full-domain noise by t~120, each with a shell channel A1 in a band at r~6-10 that k4 confines; the most isolated cog of each seed dies within ~50 t when food in a disk around it is cut at t=600, while its fed twin and all other cogs persist.",
+   "track": "seed 0, the cog centred at y=64 x=80 (track_seed0.png): forms from noise by t=80-120, shelled through t=600 (radial_seed0.png aggregate), collapses at t=650-660 after its food is cut, and persists to t=900 in the fed twin; seed 1 likewise (track_seed1.png)",
+   "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "track_seed0.png", "track_seed1.png", "radial_seed0.png", "radial_seed1.png", "localcut.png", "turnover.json"],
+   "controls_run": {"E": "localcut.png / localcut.json (fed twin from the same state, 4 seeds) and controls/localcut_dthalf.png (dt/2)", "B": "controls/ablation_k4_mature.png (shell source k4 removed on mature cogs, 2 seeds) and controls/abl_k4_s0.png"},
+   "bd_control": "not run"}],
+ "compute": {"cpu_minutes": 45}}

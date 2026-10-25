@@ -1,0 +1,26 @@
+{
+ "0": {
+  "mean_matter": 4177.2,
+  "matter_built_per_matter_per_t": 0.0023,
+  "imposed_decay": 0.002,
+  "turnover_time_t": 431.4
+ },
+ "1": {
+  "mean_matter": 3297.4,
+  "matter_built_per_matter_per_t": 0.0025,
+  "imposed_decay": 0.002,
+  "turnover_time_t": 407.6
+ },
+ "2": {
+  "mean_matter": 2092.1,
+  "matter_built_per_matter_per_t": 0.0025,
+  "imposed_decay": 0.002,
+  "turnover_time_t": 396.0
+ },
+ "3": {
+  "mean_matter": 2695.2,
+  "matter_built_per_matter_per_t": 0.0025,
+  "imposed_decay": 0.002,
+  "turnover_time_t": 402.0
+ }
+}

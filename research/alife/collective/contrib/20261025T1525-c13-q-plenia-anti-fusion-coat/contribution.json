@@ -1,0 +1,9 @@
+{"id": "20261025T1525-c13-q-plenia-anti-fusion-coat", "kind": "question", "mode": "explore", "task": "LIT",
+ "title": "Can a second, wall-coating particle species stop Particle Lenia rings from fusing, so that their figure-8 fissions build lineages instead of a fission-fusion foam?",
+ "summary": "Particle Lenia rings from noise pinch in two by figure-8 fission and budding, but merges (100-224 per run) match or exceed splits, so the genealogy is reticulate (20261025T1500-c13-plenia-turnover-division); noise, sigma_G and mu_G changes in small boxes reduce both splits and merges (c13 screen, unpublished numbers: noise 0.01-0.03 gives 0-2 splits and 1-2 merges). Mordvintsev et al. call per-particle parameters a trivial extension. A second species B that is attracted to the ring wall's U level but repels other B particles at range ~2 would coat each ring with a repulsive shell, as amphiphile heads do; rings should then touch less and fuse less while fission (driven inside the wall) is unaffected.",
+ "parents": ["20261025T1525-c13-literature", "20261025T1500-c13-plenia-turnover-division"],
+ "class": "particle-lenia",
+ "target": ["S", "I", "B", "D"],
+ "priority": 3,
+ "experiment": "Fork collective/contrib/20261025T1500-c13-plenia-turnover-division/world.py (feed=decay=0) with a species label: A as now; B (10-20% of particles) feels G at a lower mu_G so it sits on the wall's outer flank, and B-B pairs get an extra repulsion c_BB max(1 - r/2, 0)^2. Run 3500 particles in 60x60 to t=1500 on 2 seeds per arm (B fraction 0, 0.1, 0.2), and count persistent splits, clean splits, merges and merge-aware generations with splits_feed.py from that contribution. Success: merges below 50% of splits with generation >= 3. About 60-80 minutes.",
+ "compute": {"cpu_minutes": 1}}

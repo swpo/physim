@@ -1,0 +1,11 @@
+{"id": "20261025T1518-c18-lcn-worms-not-cells", "kind": "finding", "mode": "extend", "task": "Q:lenia-closed-nutrient-gated-shell",
+ "title": "Negative: lcn worms are unbounded growth fronts, not dividing cells; their 'fragmentation' is collision debris, and the bounded bodies (cogs) are sterile",
+ "summary": "In lcn (r-two56 on a closed food-waste cycle, k0 x0.6), I checked whether the worm/cog turnover of 20261025T1437 is reproduction. A cog transplanted alone into a food-filled domain stays one static cog for 800 t (colonies.png row 1). A rod or worm grows as an ever-widening arc or closed ring (colony_seed1_sheet.png, t=40-220; colD.png) until it meets itself or another worm across the periodic domain; only the collision breaks it, into arcs and cogs. With food diffusion lowered to 0.3-0.5 the arc never pinches by starvation of its middle; it grows until it self-collides and then dies or leaves one cog. labkit lineage: 0 persistent splits from noise (seed 0: 481 splits, 537 merges; tracks live 100-300 t), 0 persistent splits in 4 planted-founder colonies (world_colony.py, seeds 0-3; 3 of 4 collapse to 0-2 cogs), and generation 1 and 2 in the two hand-picked colonies that survive. Worms fail L4c's bounded-size condition, and division is not a property of an individual, so lcn does not reach D or E-with-bounded-size; the starvation dependence (20261025T1500) holds for cogs and worms alike.",
+ "parents": ["collective/contrib/20261025T1437-c18-lcn-worms-sighting", "collective/contrib/20261025T1500-c18-lcn-starvation-forks"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["colonies.png", "colD.png", "colony_seed1_sheet.png", "fromnoise_seed0_lineage.png"],
+ "outcome": "negative",
+ "finding": {"operator": "weakened core size-limiter (k0 x0.6-0.7) in r-two56 on a closed food-waste cycle", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "single-founder colonies (cog, rod, worm; 4 noise-formed founders in world_colony.py) and food-diffusion D 0.3/0.5/1.0",
+   "result": "cog founder: 1 static cog for 800 t; rod/worm founders: unbounded arcs or rings, broken only by collisions; persistent splits 0 from noise (2 seeds) and 0 in 4/4 planted colonies; max generation 1-2 in 2 hand-picked surviving colonies"},
+ "compute": {"cpu_minutes": 35}}
