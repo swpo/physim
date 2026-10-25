@@ -4871,6 +4871,13 @@
   "first_seen": "2026-10-25T16:00Z",
   "tree": "0f302989f8160e47d8c95ca375614af739e85cd0"
  },
+ "20261025T1602-c19-intent-review-pdrop": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:04Z",
+  "tree": "0d6c94298f3ee45286d1850bd09fa78cf0217a9b"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
