@@ -1,0 +1,6 @@
+chis0_Df0.5/seed12: persistent splits 6, max generation 2, components: final 20 | mean core fuel 0.554
+chis0_Df0.5/seed13: persistent splits 9, max generation 3, components: final 19 | mean core fuel 0.549
+chis0_Df0.2/seed12: persistent splits 13, max generation 3, components: final 24 | mean core fuel 0.805
+chis0_Df0.2/seed13: persistent splits 12, max generation 3, components: final 23 | mean core fuel 0.764
+chis0_outD0.2/seed12: persistent splits 14, max generation 3, components: final 23 | mean core fuel 0.498
+chis0_outD0.2/seed13: persistent splits 17, max generation 4, components: final 25 | mean core fuel 0.497

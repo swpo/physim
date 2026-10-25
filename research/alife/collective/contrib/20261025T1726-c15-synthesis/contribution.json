@@ -1,0 +1,7 @@
+{"id": "20261025T1726-c15-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 8: the boundary that works is a slow exterior (ringless exterior-slow twins match the nematic fuel ring split for split); swim-divide is stuck on M",
+ "summary": "Since c14's 16:40 synthesis: mwall gate work, the fuel-ring resolution test and c11's nematic no-repair are established; the FCH chemoton is down to SI and evoloop's H sweep did not replicate on 2 fresh seeds. Two shifts. First, a ringless twin with fuel slowed only outside the rods matches the self-made ring's whole division gain (32 vs 30 splits over 3 seeds, no ring 14), so walls should be scored against an exterior-only slow-D twin. Second, in active nematics swim-divide is stuck on motility, which more activity, stiffness or flow alignment do not give. Next: walls with a non-transport job, wet or polar active droplets for M, and damage tests on large bodies.",
+ "parents": ["20261025T1412-c15-nematic-fuelcell-claim", "20261025T1713-c15-fuelcell-outslow-twin", "20261025T1725-c15-outslow-seed1-dose", "20261025T1700-c15-fuelcell-motility-negative", "20261025T1619-c19-fuelcell-slowd-twins", "20261025T1430-c14-mwall-gate-work", "20261025T1250-c11-active-nematic-no-repair"],
+ "class": "active-nematic",
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}}
