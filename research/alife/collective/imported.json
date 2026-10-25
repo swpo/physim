@@ -3548,6 +3548,13 @@
   "first_seen": "2026-10-25T12:46Z",
   "tree": "b6119737ab3d5557b9ae37990e8b0c75162a2419"
  },
+ "20261025T1245-c12-review-nematic-ringed": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:49Z",
+  "tree": "dbc37353f4f5f9531089743d4225b6f3836a1871"
+ },
  "20261025T1245-c13-review-ringswim": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
