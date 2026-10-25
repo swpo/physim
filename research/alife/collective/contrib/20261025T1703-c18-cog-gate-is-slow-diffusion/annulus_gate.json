@@ -1,0 +1,46 @@
+{
+ "0": {
+  "ungated, outside food cut": {
+   "cog_matter_end": 0.924,
+   "t_below_0.1": null,
+   "food_inside_end": 0.001
+  },
+  "gated b=8 (F and W), outside food cut": {
+   "cog_matter_end": 1.002,
+   "t_below_0.1": null,
+   "food_inside_end": 0.999
+  },
+  "ungated fed": {
+   "cog_matter_end": 1.001,
+   "t_below_0.1": null,
+   "food_inside_end": 1.426
+  },
+  "gated fed": {
+   "cog_matter_end": 1.001,
+   "t_below_0.1": null,
+   "food_inside_end": 1.41
+  }
+ },
+ "1": {
+  "ungated, outside food cut": {
+   "cog_matter_end": 0.944,
+   "t_below_0.1": null,
+   "food_inside_end": 0.0
+  },
+  "gated b=8 (F and W), outside food cut": {
+   "cog_matter_end": 0.994,
+   "t_below_0.1": null,
+   "food_inside_end": 1.001
+  },
+  "ungated fed": {
+   "cog_matter_end": 1.007,
+   "t_below_0.1": null,
+   "food_inside_end": 1.424
+  },
+  "gated fed": {
+   "cog_matter_end": 1.007,
+   "t_below_0.1": null,
+   "food_inside_end": 1.404
+  }
+ }
+}
