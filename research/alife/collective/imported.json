@@ -5039,6 +5039,13 @@
   "first_seen": "2026-10-25T16:27Z",
   "tree": "ce3f9ae735869024712d71b5c0a43d69c27259d7"
  },
+ "20261025T1625-c13-review-fuelring-slowd": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:33Z",
+  "tree": "f665a8cbf1dc075cd7fbc2b85118e0e0fcc33aca"
+ },
  "20261025T1625-c14-intent-synthesis": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -5066,6 +5073,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:30Z",
   "tree": "64f316f938de7e62b0225e3f8b6e6c9987e63b30"
+ },
+ "20261025T1632-c13-intent-review-fuelcell-res15": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:33Z",
+  "tree": "46eb2f076a83482cc74df7630515c02b65233eb1"
  },
  "_bad_branches": {},
  "_deferred": {},
