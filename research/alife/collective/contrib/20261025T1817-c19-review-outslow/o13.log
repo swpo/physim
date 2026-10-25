@@ -1,0 +1,12 @@
+[nematic-fuelcell-outslow] seed 13: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  52.9s
+  frame 40/200  105.7s
+  frame 60/200  160.8s
+  frame 80/200  213.5s
+  frame 100/200  264.4s
+  frame 120/200  318.1s
+  frame 140/200  371.9s
+  frame 160/200  424.1s
+  frame 180/200  476.1s
+  frame 200/200  528.7s
+  -> collective/contrib/20261025T1817-c19-review-outslow/outslow/seed13/FACTS.md  (529s sim)
