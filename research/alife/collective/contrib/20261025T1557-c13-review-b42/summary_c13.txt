@@ -1,0 +1,12 @@
+{"file": "g_b42_s7.json", "key": "ym", "minlife": 20, "n_death": 14, "death_pct_mean": 0.01, "n_split": 12, "split_pct_mean": 0.847, "death_pct_below_median": 14, "split_pct_above_median": 12}
+{"file": "g_b42_s7.json", "key": "ym", "minlife": 20, "by_birth_rank": {"low": {"death": 4, "split": 0, "other": 1}, "high": {"death": 1, "split": 9, "other": 14}}, "death_share_low": 0.8, "death_share_high": 0.042, "split_share_low": 0.0, "split_share_high": 0.375, "dying_cells_rank_birth_mid_death": [0.122, 0.075, 0.022], "n_dying": 5}
+{"file": "g_b42_s7.json", "key": "zm", "minlife": 20, "n_death": 14, "death_pct_mean": 0.548, "n_split": 12, "split_pct_mean": 0.596, "death_pct_below_median": 6, "split_pct_above_median": 7}
+{"file": "g_b42_s7.json", "key": "zm", "minlife": 20, "by_birth_rank": {"low": {"death": 3, "split": 4, "other": 6}, "high": {"death": 2, "split": 5, "other": 9}}, "death_share_low": 0.231, "death_share_high": 0.125, "split_share_low": 0.308, "split_share_high": 0.312, "dying_cells_rank_birth_mid_death": [0.473, 0.468, 0.475], "n_dying": 5}
+g_b42_s7.json largest share t>=20000: median 0.09 max 0.15; frac of time > 0.3: 0.00; cells median 27
+{"persistent_splits": 12, "max_generation_persistent": 4, "merges": 0, "deaths": 41, "splits_by_parent_kind": {"0": 12, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 41, "1": 0, "-1": 0}, "off_kind_daughters": 0, "conversions_of_pure_cells": 0, "final_cells": 29, "final_pure": {"0": 29, "1": 0, "-1": 0}, "world": "world.py", "seed": 7, "T": 100000, "params": {}, "particle_births": [13090770], "particle_deaths": [13106958], "flips": 0, "pflips": 0}
+500 23 1.0 1.001
+20500 26 1.006 0.997
+40500 26 1.012 0.972
+60500 27 1.06 0.963
+80500 28 1.092 0.983
+100000 29 1.134 0.972
