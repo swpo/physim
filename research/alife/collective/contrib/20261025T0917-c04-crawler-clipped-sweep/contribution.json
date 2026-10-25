@@ -1,0 +1,10 @@
+{"id": "20261025T0917-c04-crawler-clipped-sweep", "kind": "finding", "mode": "control", "task": "Q:crawling-cell-division",
+ "title": "Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth drive), 7 settings of shedding, uptake and regrowth give boom-bust, extinction or a merged sea, never sustained crawling division",
+ "summary": "Follow-up to 20261025T0908-c04-crawler-divide-confound, world.py of that contribution with bV=1, okclip=1, seed 1, t=600. shed 0.1: grows to 11 bodies then extinct. shed 0.2: 2-3 crawlers (16 body lengths) but max generation 2. kup 0.06, shed 0.1: the founder's progeny fill the domain, food runs out, starving cells die and 3 round static cells remain (genuine starvation deaths, ocsk/sheet.png). kup 0.05 with shed 0.15/0.25 and regrowth rn 0.003/0.006: extinction after a boom to 26 (0.15/0.003), one domain-filling body (0.15/0.006, occupancy 1.0), or few bodies with merge/split 0.53-0.75 and no persistent splits (0.25). The crawl-and-divide regime of the claim does not survive removing the content-independent growth drive at these settings; the initial food stock (n0=1 everywhere) drives a boom that the slow regrowth cannot sustain. Not tried: starting food at the regrowth-limited level, or a smaller cost of motion with a larger kernel.",
+ "parents": ["20261025T0908-c04-crawler-divide-confound"],
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261025T0908-c04-crawler-divide-confound/world.py",
+ "evidence": ["ocsk/sheet.png", "ocs0.2/sheet.png", "sw_0.15_0.006/sheet.png"],
+ "finding": {"operator": "finite-range area penalty clipped at 0", "capability": "D", "world": "crawler-divide", "necessary": true, "law": false, "control": "7-point parameter sweep on one seed", "result": "no setting gives max generation >= 3 with persistent crawlers; boom-bust, extinction or merged sea"},
+ "outcome": "negative",
+ "compute": {"cpu_minutes": 80}}

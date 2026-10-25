@@ -1,0 +1,32 @@
+{
+  "id": "20261025T0913-c01-review-pcell-contained",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0857-c06-pcell-contained-heredity#c1",
+  "review_of": "20261025T0857-c06-pcell-contained-heredity",
+  "title": "pcell contained heredity: W replicates on seed 3 (every cell >= 35x for t=1000-20000), but the lowered-D twin keeps 8 discrete cells, >= 3.3x and 4 persistent splits; S, I, W, D supported, H not endorsed",
+  "summary": "Fresh seed 3 with the author's contain.py to t=20000: 77 checks, every cell >= 2x at every check, weakest cell over the run 34.7x (claim: >= 92x on seeds 0-1), median ~900x, 94% of particles inside cells, 12 -> 24 cells. Lowered-D twin (W/world_lowD.py: gate off, DK/10) on the same seed: every cell still >= 2x at every check (weakest 3.3x, median ~39x early), 14 -> 8 cells; its labkit pack shows large irregular cells that grow and partly coalesce but stay 8 discrete bodies with 4 persistent splits (pack_lowD/particles.png). The world's S, I and D on this seed are in my earlier review of the same world (20261025T0840-c01-review-pcell-multilevel: 19 persistent splits, generation 5). H: as there, the death bias is mostly acquired during each cell's life (yield percentile of future dead 0.38 at 10% of life vs 0.04 at death).",
+  "parents": ["20261025T0857-c06-pcell-contained-heredity", "20261025T0840-c01-review-pcell-multilevel"],
+  "class": "hybrid-particle-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "pack_lowD/particles.png t=0 and 20261025T0840-c01-review-pcell-multilevel/rerun/sheet.png t=0: uniform particle soup over the whole domain (same world, seed 3)",
+      "I": "W/summary.txt: 12-24 cells tracked by contain.py over t=1000-20000",
+      "W": "W/c_world_s3.json and W/summary.txt: every cell >= 2x at all 77 checks, weakest 34.7x",
+      "D": "20261025T0840-c01-review-pcell-multilevel/rerun/FACTS.md (same world, seed 3): 19 persistent splits, generation 5"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "W pass; lowered-D twin keeps W and discrete cells"}],
+    "same_individuals": true,
+    "controls_run": {"W": "W/c_lowD_s3.json and pack_lowD/ (gate off, DK/10, seed 3): weakest cell 3.3x, 8 cells, 4 persistent splits"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "W is not beyond diffusion here: with the gate removed and DK lowered 10x every cell still holds >= 3.3x, and on seed 3 the twin does not fuse into one body (8 discrete large cells, 4 persistent splits), so the bd_control's 'cells and divisions are lost' is weaker than stated (fewer, larger cells and fewer splits, not none). H not endorsed: dying cells' low yield is mostly acquired during their lives (my review 20261025T0840-c01-review-pcell-multilevel, data/lifecourse.txt), and the population-mean response is within the marker's drift. Containment of particles by a reflection rule holds them by construction of the gate when the gate is on."
+  }],
+  "evidence": ["W/summary.txt", "W/c_world_s3.json", "W/c_lowD_s3.json", "pack_lowD/particles.png", "pack_lowD/sheet.png"],
+  "compute": {"cpu_minutes": 15}
+}

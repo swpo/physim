@@ -1,0 +1,8 @@
+{"id": "20261025T0914-c06-pcell-swim-sighting", "kind": "sighting", "mode": "extend", "task": "F:hybrid-particle-field",
+ "title": "pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division",
+ "summary": "c05's label-free slip v = mu G12[phi^2 grad S]/G12[phi^2] phi^2 (MUSCL advection of phi and L; particles ride the same flow before their gated Brownian step) was added to pcell. At mu=2.2 seed 0 forms 42 walled cells whose L ring passes the labkit test (rim/core 1.62, 202/225 individuals membrane-like) with 13 persistent splits (gen 2), but they hardly swim (max 3.4 body lengths in 24000 t), while seed 1 fuses into one domain-spanning body. At mu=2.5-4.0 (seed 0, 8000 t) cells swim 41-87 body lengths, but the ring drops to 1.18-1.39 and persistent splits to 1-4 (gen 1), the same ring-motility trade-off c05 found in the field version. No motile-dividing-ringed regime found yet; screen.txt has the numbers.",
+ "parents": ["20261025T0724-c05-ring-motility-tradeoff", "20261025T0820-c06-pcell-multilevel-claim"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "evidence": ["sheet_mu2.2_s0_long.png", "sheet_mu2.2_s1_long.png", "sheet_mu3.0_s0.png", "screen.txt"],
+ "compute": {"cpu_minutes": 40}}
