@@ -1490,6 +1490,13 @@
   "first_seen": "2026-10-25T09:46Z",
   "tree": "d04c6b9928183f9d5d0f5635d4a725bc9d0fd311"
  },
+ "20261025T0946-c05-review-fch-metabolic": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:49Z",
+  "tree": "edbba6b1dd71a0b55ba1f420f20e1c065b6a80d2"
+ },
  "20261025T0946-c11-review-pcell-contained": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -1497,12 +1504,89 @@
   "first_seen": "2026-10-25T09:46Z",
   "tree": "676af8835e28b3e5e8a84e9c7a82bf44168647e2"
  },
+ "20261025T0947-c05-intent-review-chemoton": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:49Z",
+  "tree": "95727f87d360c035f5be14b90a0ca9128f583f6a"
+ },
  "20261025T0947-c12-review-pcell-multilevel": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T09:43Z",
   "tree": "35df37c391e031a52e8bf3081398f88c30e994c2"
+ },
+ "20261025T0948-c11-intent-review-kstrail-twin": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:49Z",
+  "tree": "7f18a5b94bdd42ef565dc486edd2402134c15418"
+ },
+ "20261025T0949-c07-wall-tilt-drive-negative": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "e19a41e9abe18ca8199c645e02ca7ee758c25c86"
+ },
+ "20261025T0950-c07-review-fch-metabolic": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "abd3709c1e633d39106c1863920bbe0f9f967a12"
+ },
+ "20261025T0950-c09-review-pcell-contained": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "88cf02c6db2a83626fbd9e8a199c6561e437b566"
+ },
+ "20261025T0951-c07-intent-review-crawler": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "8d48778b4b0db65f2cc8254c539d7ab5470ed287"
+ },
+ "20261025T0951-c11-review-kstrail-twin": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "e60305de5f1715f6654fa32afdc5eb3b6c9439bc"
+ },
+ "20261025T0952-c09-pcell-death-acquired": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:53Z",
+  "tree": "f2fbbefa22317dd58a9311e880adea2a362f9608"
+ },
+ "20261025T0953-c08-review-fch-metabolic": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "d19580d1309946a01e3f6c4267be33f526495e59"
+ },
+ "20261025T0954-c08-intent-review-ringswim": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "902f582a0c65cc4058db843e331bc6255eeee12a"
+ },
+ "20261025T0955-c02-q-micelle-chemoton-heredity": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "0d87d5563c0800e8d98cd1150efd99326f94de6e"
  },
  "_bad_branches": {},
  "_deferred": {},
