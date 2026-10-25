@@ -1,0 +1,17 @@
+{
+ "id": "20261025T2303-c22-metabolic-crawler-no-fission",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "F:crawler-phase-field",
+ "title": "Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim uptake grows the metabolic crawler 3x to a saturating size (area 2.3 -> 6.7, rising only 0.27 over the last 13 t) but it stays one cell with one front; no front splitting or fission by t=60",
+ "summary": "world.py of 20261025T2238-c22-metabolic-crawler-regrowth with SYN_RIM=1, ksyn=0.2 (2x), kdeg=0.1, rn=0.25, box L=6 at N=300, seed 0, t=60 (probe image rim_ksyn02_s0.png, track rim_ksyn02_s0_track.txt). The crawler's area rises from 2.27 to 6.71 and saturates (6.44 at t=45, 6.71 at t=58.5). That fits a set size from rim uptake against whole-body decay, now at ~2.6x the ksyn=0.1 size. The polarized area stays 1.6-1.8 as the cell grows, so the front is a narrowing fraction of a larger crescent, and the speed rises from 0.41 to 0.47. No second front appears, and the cell never divides. So feeding alone makes a bigger crawler, not two; division would need a size-triggered front instability, which this polarity does not supply at rho*=0.2. One seed, one feeding level, probe only.",
+ "parents": ["20261025T2238-c22-metabolic-crawler-regrowth", "20261025T2241-c22-q-metabolic-crawler-setpoint"],
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261025T2238-c22-metabolic-crawler-regrowth/world.py",
+ "outcome": "negative",
+ "finding": {"operator": "rim-uptake protein synthesis feeding a wave-pinning crawler", "capability": "D", "world": "20261025T2238-c22-metabolic-crawler-regrowth/world.py", "necessary": false, "law": false,
+             "control": "the ksyn=0.1 runs of the parent (set size ~1.9-2.0)",
+             "result": "ksyn 0.2: area 2.27 -> 6.71 (saturating), polarized area 1.6-1.8, speed 0.41 -> 0.47, 1 body throughout, 0 fissions by t=60"},
+ "evidence": ["rim_ksyn02_s0.png"],
+ "compute": {"cpu_minutes": 40}
+}
