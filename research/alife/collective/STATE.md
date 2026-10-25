@@ -1,78 +1,74 @@
 # State of the field
 
-Generated 2026-10-25T09:14Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T09:33Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **8**; breadth Q = **8**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 90; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **54** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **0**; corrections C = **31**. With provisional claims P would be 102; removing the single most important established claim leaves P = 46. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 146 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 55.3 CPU hours reported; 41 claims need reviews.
+**Activity.** 182 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 65.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
-## Latest synthesis (2026-10-25T06:59Z, c02)
+## Latest synthesis (2026-10-25T09:30Z, c01)
 
-No collective claim is decided yet; the established frontier is lab 1's (SIBD phase_membrane, SIMD, SIMX, IBM x2, IBR, IXD), none diffusion-tested, and every L7 is low or Weak for lack of intrinsic deaths. New this session as sightings: fch-bilayer vesicles and open bilayers from noise (c02, c03), particle catalysts in Allen-Cahn cells with cell-level selection by division only (c06), label-free phoretic comet flocks (c05), a Ziebert-Aranson crawler control (c04), and two kstrail BD twins in progress (c01, c07). Most promising: intrinsic deaths via extensive maintenance or degrading membranes, a field chemoton on FCH vesicles for W/E/D, and the owed BD twins.
+Since synthesis 1, P rose 38 -> 54 and P_BD 0 -> 12. fch-bilayer is established up to SIBWD (C:inherited-contents met); phase_membrane's ring is the first diffusion-tested capability, while its division is not; kstrail swimming is matched by a Laplacian-only twin. Lessons: body-made cargoes pass W under a uniformly slow twin (law contrast-1 ~ Dc^-0.93), drift-made layers are the robust BD signal, and H on continuous traits must condition on the trait at birth.
 
-*Note: this synthesis cites claims that are not established: 20261025T0648-c06-pcell-yield-selection.*
+# Synthesis 2: what the beyond-diffusion controls showed (c01, ~3 h into the collective)
 
-# Synthesis 1: the field at the start of the collective (c02)
+Score at writing: P = 54, P_BD = 12, Q = 12, K = 0, C = 31 (STATE.md, 09:27Z). Synthesis 1 (c02,
+06:59Z) had P = 38 and P_BD = 0. Only established results are described as results below.
 
-Written about 50 minutes after the collective started. No claim has been decided by the
-collective yet; every "established" result below is a lab 1 result carried into the seeded
-ledger (P = 38, P_BD = 0). New work this session is sightings and one finding, not results.
+## Newly established
 
-## What is established (lab 1, seeded)
+- **fch-bilayer is the collective's first new class with decided claims.** c03's FCH micelles from
+  noise that grow a self-made shell layer, hold a self-made cargo inside it and divide, with each
+  daughter closing its own shell ring, are established as `SIBWD` (20261025T0816-c03-fch-gated-micelles):
+  the `C:inherited-contents` challenge is met. Also established: FCH vesicles trapping a membrane-made
+  solute (`SIBW`, 0726-c03) and fed micelles that divide and keep a partitioned cargo (`SID`, 0752-c03;
+  0810-c01 with a uniformly supplied solute).
+- **The first diffusion-tested results.** phase_membrane's L-link ring (lab 1, `SIBD`) fails in a
+  matched uniform-D twin (gate off, drift off, D_K, D_L lowered 10-1000x): the twin still forms walled
+  cells from noise and divides, but the rim is lost (1.16-1.69 vs 2.3 per cell), freezes at D = 0, or at
+  one lattice-locked setting (D x 0.001) matches at 1x and decays into hollow fragmenting arcs at 2x
+  (0731-c01, review 0748-c01). So `B` is beyond diffusion there, `I` and `D` are not.
+- **Mechanism findings (established).** kstrail's swimmers are matched by a conserved Laplacian-only
+  twin (taxis is not necessary for `S, I, M`; 0632-c01, replicated by c07), while swimfission's twin
+  swims but divides ~5x less, mostly by budding and de novo nucleation (0658-c01). In pcell, link yield
+  carried by catalyst particles is selected at the cell level only through differential division
+  (0648-c06), and a costly heritable yield erodes inside cells until they shrink and die (0711-c06).
 
-- **Largest sets.** `SIBD` (phase-field: autopoiesis/phase_membrane, walled Allen-Cahn cells
-  that form from noise and divide by central starvation, medium), `SIMD` and `SIMX`
-  (keller-segel: swimfission, evopursuit), `IBM` twice (xcell-a gated cargo; mcf-fastcell),
-  `IBR` (flow-lenia fl_cells), `IXD` (lenia mcfd-MIRd).
-- **Nothing is diffusion-tested.** No claim has an independent matched Laplacian-only control
-  that failed where the world succeeded, so every grand challenge with a BD target is open.
-- **Heredity is the weak point.** Every L7 in the ledger is low or Weak: membrane_evo's sweep
-  runs through imposed death disks, ad5's selection is colonization-only with 0 deaths, and the
-  particle sporecell lines were contradicted on purity or rings. 29 contradicted claims are on
-  record; read them before reusing sporecell, mca/mcg-MIRd, r-two56 repair or xcell-turn.
+## What changed in how claims should be tested
 
-## What is new this session (sightings and a finding, not yet claims)
-
-- **Membranes as physics, not as reaction fronts.** Two agents opened `fch-bilayer`
-  (functionalized Cahn-Hilliard). The Promislow benchmark reproduces (planted circle pearls,
-  then meanders; c02). From noise, bilayer vesicles nucleate at some parameters (c03, 4 rings on
-  one seed, an onion on the other), while at the benchmark parameters droplets pearl into micelle
-  chains that fuse into open bilayers (c02). This is the first class in the ledger whose boundary
-  is a material bilayer of the body field itself, with its own bending physics.
-- **Discrete catalysts inside field cells** (c06, `pcell`): Brownian particles behind a phi^2
-  gate inside self-made Allen-Cahn cells give walled dividing cells from noise. Its first finding:
-  link yield is selected at the cell level, but only through differential division with about 0
-  cell deaths, so it shares membrane_evo's weakness (no intrinsic deaths).
-- **Motility without labels** (c05): a label-free local phoretic slip turns phase_membrane-like
-  cells into comet swimmers that align into a polar flock on two seeds. Division and a ring are
-  the next steps toward `C:swim-divide`.
-- **Crawling positive control** (c04): the Ziebert-Aranson crawler moves 17.5 body lengths in
-  t=500 on 2 seeds; growth by uptake alone gives one giant crawler and no division.
-- **Diffusion twins in progress** (c01, c07): two independent matched RD twins of kstrail's
-  swimming crescents; the first BD verdict in the collective will likely come from here.
+1. **A gate is not a wall unless a uniformly slow twin fails.** In all three FCH containment claims
+   reviewed, a barrier-free cargo with its diffusivity lowered 10-100x still met the `W` threshold
+   (>= 2x in every body), because the cargo is made inside the body. The contrast follows a law in the
+   FCH micelles: contrast - 1 = 1.01 (Dc/0.1)^-0.93 (held-out points predicted, 0901-c01). A solute that
+   is *supplied uniformly* cannot be concentrated by any uniform D, which makes `W` diffusion-testable
+   (0810-c01).
+2. **Layers made by drift are the robust beyond-diffusion signal.** Both rims that survived their
+   twins (phase_membrane's L ring, the FCH shell q: rim/core 10.8 vs 0.49-0.94 in the no-drift twins at
+   any Dq) are made by adsorption drift toward an interface; production patterns alone peak in the core.
+3. **Selection measured at death can be acquired during life.** In pcell-multilevel the dying cells
+   sit at the 4th yield percentile at death but at the 38th at 10% of their lives (review 0840-c01): the
+   cell's "kind" is eroded by within-cell particle selection. `H` claims on continuous traits should
+   condition on the trait at birth.
 
 ## What looks most promising
 
-1. **Intrinsic deaths.** Both selection lines (membrane_evo, pcell) lack deaths that the
-   cells cause themselves. A maintenance cost that grows with body size (Q:extensive-
-   maintenance-death) or a degrading membrane (FCH with a chemostat bath) would supply them and
-   is the shortest route to `C:autonomous-heredity`.
-2. **Containment by a real membrane.** An FCH bilayer is a natural gate: a catalyst kept inside
-   a closed vesicle that makes membrane material (Q:field-chemoton) would test `W`, `E` and `D`
-   in one world, and its open-fragment control is built in (fragments cannot hold a catalyst).
-3. **The owed BD twins.** The kstrail twins now running, plus ad7 and xcell-a lowered-D twins,
-   decide whether any established result is beyond diffusion.
-4. **Reviews.** 15 seeded lab 1 claims still need replicated reviews; membrane_evo has two
-   reviewers assigned. Until reviews land, P stays at the lab 1 level.
+- **`C:swim-divide` and `C:motile-repair`:** ringswim (c07) has ringed, slowly swimming, dividing cells
+  (`SIBM` provisional) but a label-based drive and reticulate genealogy; NRCH droplets (c08) swim
+  robustly (`SIM`, reciprocal twin static) and could be given a fission route.
+- **`C:autonomous-heredity`:** pcell already has intrinsic starvation deaths and exact particle
+  genealogy; the open question is a heritable component that survives within-cell erosion (lower
+  mutation, larger cells, or a discrete trait).
+- **Beyond-diffusion for `D`:** no reproduction in the ledger has yet failed a matched twin; the
+  swimfission gap (rate, not existence) and FCH division (fourth-order, not Laplacian) are the closest.
 
 ## Grand challenges
 
 | Challenge | Target | Status |
 |---|---|---|
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | open |
-| Containment that daughters inherit through division | `IBWD` | open |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | open |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
@@ -86,7 +82,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SIBD` | phase-field | autopoiesis/phase_membrane (L6[L3], lab 1 medium) | established (BD) | lab 1 | `threads/autopoiesis/worlds/phase_membrane/world.py` |
+| `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBM` | physim-genome | fisim-beyond-laplacian/xcell-a (L4b[L3], lab 1 medium) | established | lab 1 | `threads/fisim-beyond-laplacian/worlds/xcell-a/world.py` |
@@ -96,7 +92,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise** (hybrid-particle-field, c06, 2 forks) phase_membrane with its catalyst field replaced by ~8000 discrete Brownian particles (mass 0.2, logistic duplication c S (1-K) phi, death 0.02, link production b S per particle, phi^2 Metropolis gate on steps into lower  `collective/contrib/20261025T0634-c06-pcell-sighting` ![](contrib/20261025T0634-c06-pcell-sighting/pack/seed0/sheet.png)
 - **Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division** (crawler-phase-field, c04, 4 forks) world.py implements the Ziebert-Aranson crawler (phase field u, actin polarization P with the gamma (grad u.P)P and sigma|P|^2 myosin terms, area constraint applied per connected body). With alpha=3, beta=1, gamma=0.5, s `collective/contrib/20261025T0641-c04-crawler-positive-control` ![](contrib/20261025T0641-c04-crawler-positive-control/pack/seed0/sheet.png)
 - **Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer)** (fch-bilayer, c03, 6 forks) One conserved amphiphile field under the FCH energy 1/2(lap u - W'(u))^2 - eta1/2|grad u|^2 - eta2 W(u), semi-implicit spectral, eta1=2.5, eta2=5, mean -1.3 white noise on 128^2 (dx 0.5). Seed 0: four hollow bilayer ring `collective/contrib/20261025T0745-c03-fch-vesicles` ![](contrib/20261025T0745-c03-fch-vesicles/pack/seed0/sheet.png)
 - **Label-free autophoretic slip turns Allen-Cahn protocells from noise into a polar flock of comet swimmers** (phase-field, c05, 2 forks) phase_swimdiv's per-body drift (ndimage labels) replaced by a label-free local slip v = mu G_12[phi^2 grad S]/G_12[phi^2] phi^2 (Gaussian sigma 12 px, MUSCL advection of phi, K, L), mu=2.2, no link ring (chi=0), from pha `collective/contrib/20261025T0648-c05-autophoretic-comet-flock` ![](contrib/20261025T0648-c05-autophoretic-comet-flock/pack/seed0/sheet.png)
@@ -107,16 +102,28 @@ The largest established capability sets, by-construction capabilities removed (c
 - **ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands** (phase-field, c07, 0 forks) phase_membrane (chi link ring, noise IC) plus phase_swimdiv's per-body phoretic drift (mu=1.5, now with a MUSCL face flux), or a label-free Gaussian-kernel-averaged drive. With the label drive, bounded walled cells (L ri `collective/contrib/20261025T0737-c07-ringswim-sighting` ![](contrib/20261025T0737-c07-ringswim-sighting/img/label_mu1.5_seed1_T20000.png)
 - **FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated** (fch-bilayer, c02, 1 forks) Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01  `collective/contrib/20261025T0740-c02-chemoton-interim` ![](contrib/20261025T0740-c02-chemoton-interim/planted_r002_maintained.png)
 - **Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle)** (cgle, c03, 0 forks) A_t = delta A + (beta + i D/2) lap A + (eps + i)|A|^2 A + (mu + i nu)|A|^4 A with delta=-0.1, D=1, nu=-0.1, integrating-factor Heun on 96^2 (L=40). At eps=0.8, mu=-0.3, beta=0.125, smoothed complex noise relaxes by t~40  `collective/contrib/20261025T0841-c03-cgle-solitons` ![](contrib/20261025T0841-c03-cgle-solitons/pack/seed0/sheet.png)
+- **pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division** (hybrid-particle-field, c06, 0 forks) c05's label-free slip v = mu G12[phi^2 grad S]/G12[phi^2] phi^2 (MUSCL advection of phi and L; particles ride the same flow before their gated Brownian step) was added to pcell. At mu=2.2 seed 0 forms 42 walled cells who `collective/contrib/20261025T0914-c06-pcell-swim-sighting` ![](contrib/20261025T0914-c06-pcell-swim-sighting/sheet_mu2.2_s0_long.png)
+- **Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops** (active-nematic, c11, 0 forks) A Cahn-Hilliard droplet phase carries its own Landau-de Gennes nematic order (ordered only inside droplets) whose extensile active stress -zeta Q drives a Brinkman-Stokes flow (after Giomi and DeSimone 2014); start is un `collective/contrib/20261025T0920-c11-active-nematic-rods` ![](contrib/20261025T0920-c11-active-nematic-rods/pack/seed0/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| | | nothing decided yet | | | |
+| `SIBW` | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their own membrane makes (S | established | c03 | `collective/contrib/20261025T0726-c03-fch-protocell` |
+| `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `` | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per  | established | c01 | `collective/contrib/20261025T0658-c01-swimfission-rd-twin` |
+| `` | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessar | established | c01 | `collective/contrib/20261025T0632-c01-kstrail-rd-twin` |
+| `` | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink a | established | c06 | `collective/contrib/20261025T0711-c06-pcell-cheater-erosion` |
+| `` | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but only by differential | established | c06 | `collective/contrib/20261025T0648-c06-pcell-yield-selection` |
+| `SID` | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every daughter holds it at | established | c03 | `collective/contrib/20261025T0752-c03-fch-cargo-fission` |
+| `SID` | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-170x and keep it throu | established (BD) | c01 | `collective/contrib/20261025T0810-c01-fch-uptake-cargo` |
 
 ## Mechanisms, laws and negative results
 
-- none yet
+- **pcell: particle-carried link yield is selected at the cell level, but only by differential division (colonization, ~0 cell deaths)** (positive): kind-1 particle share at t=16000: y2=0.7: 0.09, 0.12; y2=1.0: 0.56, 0.43; y2=1.3: 0.76, 0.66 (start 0.52, 0.42). Persistent cell splits by pure parent kind (high/low yield): y2=0.7 8/0, 6/0; neutral 1 `collective/contrib/20261025T0648-c06-pcell-yield-selection`
+- **kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessary for S+I+M** (negative): twin: top-10 tracks >=5 BL 10/10/10 on seeds 0-2 (median 7.0-7.5 BL, max speed 0.80-0.84, 8-10 bodies at t=600), 9/10 at dt/2; kstrail: 10/10/10 (median 8.0-10.2 BL, 0.46-0.61, 9-11 bodies); twin fh=0 `collective/contrib/20261025T0632-c01-kstrail-rd-twin`
+- **pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink and die (no stochastic correction at ~300 particles per cell)** (negative): mean yield at t=30000: real 0.52, 0.50 vs twin 1.06, 0.96; cell deaths real 39, 25 vs twin 2, 1; cells at end real 7, 13 vs twin 24, 24. muy=0.002 sy=0.1: 0.62 at t=40000; cy=0.2: 0.88 at t=40000 (see `collective/contrib/20261025T0711-c06-pcell-cheater-erosion`
+- **swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per run vs 10-15, births mostly by nucleation** (positive): clean fissions twin 3/2/1 vs swimfission 10/10/15; strict max generation 3/2/1 vs 3/3/3; late bodies 5.4/5.5/4.8 vs 10.7/12.5/11.7; labkit persistent splits 0/0 vs 3/6/8. Twin births are mostly buds,  `collective/contrib/20261025T0658-c01-swimfission-rd-twin`
 
 ## Corrections (29 contradicted claims)
 

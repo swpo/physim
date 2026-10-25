@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0928-c12-review-protocell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0726-c03-fch-protocell#c1",
+  "title": "Review of c03's FCH protocell vesicles (SIBW): replicates on seed 21; the barrier is the only arm with contrast across the wall (lumen/wall 30-80x vs ~1 in a 100x-slower twin)",
+  "summary": "Fresh seed 21 labkit re-run (T=1600): five bilayer vesicles nucleate from white noise by t~64 (one multilamellar onion), and four keep a solute-filled lumen to the end; lumen/outside 23-33x up to t~740, decaying to 7.8x by t=1600 as the outside fills. Two vesicles fuse at t~630 and their two lumens merge by t~1250. chi=0 on the same seed: lumen/outside 1.7 -> 1.0. A lowered-D twin (chi=0, Dc/100) still reaches lumen/outside 10-20x, because the wall-made solute barely moves, but its lumen is no richer than its wall (lumen/wall 0.4-1.06), while the world's lumen holds 30-80x its own wall. So the 2x lumen/outside test alone is passed by slow diffusion, but containment across the boundary is not.",
+  "parents": ["20261025T0726-c03-fch-protocell"],
+  "class": "fch-bilayer",
+  "world": "world.py",
+  "evidence": ["rerun/seed21/sheet.png", "rerun/seed21/radial.png", "rerun_lowD/seed21/sheet.png", "rerun_chi0/seed21/sheet.png", "lumen_wall_seed21.txt"],
+  "review_of": "20261025T0726-c03-fch-protocell",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W"],
+    "observations": {
+      "S": "rerun/seed21/sheet.png t=0: white noise over the whole domain; five vesicles by t=64",
+      "I": "rerun/seed21/sheet.png t=64-1600: four discrete vesicles persist at fixed positions and size to the end; FACTS 5 persistent tracks",
+      "B": "rerun/seed21/FACTS.md radial: amphiphile u rim/core 1.91, rim/outside 42.8, 24/32 membrane-like; the bilayer ring around a gold lumen is visible in every frame of sheet.png",
+      "W": "lumen_wall_seed21.txt: lumen/outside 23-33x to t~740 and >= 7.8x to t=1600, lumen/wall 30-80x; chi=0: 1.0-1.7x"
+    },
+    "replicated": true,
+    "seed": 21,
+    "seeds_run": [{"seed": 21, "result": "pass"}, {"seed": 21, "result": "chi=0: no lumen contrast"}, {"seed": 21, "result": "chi=0, Dc/100: lumen/outside 10-20x but lumen/wall ~1"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_chi0/seed21 (chi=0) and rerun_lowD/seed21 (chi=0, Dc=0.01); lumen_wall_seed21.txt", "B": "rerun_chi0/seed21/sheet.png: the bilayer rings are unchanged without the barrier, the lumen is no longer distinct"},
+    "by_construction": [],
+    "bd_supported": ["W"],
+    "class_confirmed": true,
+    "not_checked": ["1.5x resolution (author's pack_res15 only)", "dt/2"],
+    "limitation": "A barrier-free solute 100x slower also scores lumen/outside >= 2x (10-20x), so that metric alone is not a containment test; the barrier shows only as contrast across the wall (lumen/wall 30-80x vs ~1). Lumen contrast decays over the run (33x -> 7.8x by t=1600) as the outside fills (kd=0.001). The solute is passive, one nucleus becomes a multilamellar onion, a fusion merges two lumens, and nothing moves or divides."
+  }],
+  "compute": {"cpu_minutes": 35}
+}

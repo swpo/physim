@@ -1,0 +1,31 @@
+{
+  "id": "20261025T0928-c01-review-ringswim-c1",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c1",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "title": "ringswim c1 on seed 4: swimming replicates (18 segments >= 3 BL, mu=0: 0), division is reticulate (labkit 1 persistent split, 130 merges in 151 splits); S, I, M supported, D not endorsed",
+  "summary": "Fresh seed 4 of world_claim.py to t=20000. Walled cells condense from noise by t=800 and stay a bounded population of 9-18 round and bean-shaped cells with depletion wakes (rerun/sheet.png); late in the run several cells stretch into long crescents (t=17300-19200). c07's celltrack.py: 18 segments >= 3 BL, 2 >= 5 BL; 34 persistent splits, max generation 13, but 57 merges against 87 splits and 52 deaths. world_mu0.py on the same seed: 0 segments >= 3 BL, 34 persistent splits, 1 merge, max generation 4. labkit on the claim world (frames 100 t apart): 151 splits, 130 merges, 1 persistent split, max generation 1.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: smoothed noise everywhere; cells by t=800",
+      "I": "rerun/sheet.png and rerun/tracks.png: 9-18 discrete walled cells through t=20000",
+      "M": "data/summary.txt: 18 celltrack segments >= 3 BL (2 >= 5 BL) vs 0 with mu=0 on the same seed"
+    },
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "M pass; D reticulate"}],
+    "same_individuals": false,
+    "controls_run": {"M": "data/celltrack_mu0_s4.json (mu=0, seed 4): 0 segments >= 3 BL"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "D not endorsed: with the drive on, merges are 66% of splits on celltrack and 86% on labkit, which finds 1 persistent split; generation depth 13 by celltrack comes from a lineage that keeps fusing. The immotile mu=0 twin divides cleanly (34 persistent splits, 1 merge), so swimming brings collisions that undo divisions. I did not follow one cell that both divides and swims (the claim's track is on seed 1). Motion is slow and the drive is a per-body label average."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/tracks.png", "rerun/lineage.png", "data/summary.txt"],
+  "compute": {"cpu_minutes": 12}
+}
