@@ -1,0 +1,1 @@
+{"world": "world_m.py", "seed": 1, "T": 15000, "params": ["mbeta=4"], "transfer_per_1000t": 0.0, "escape_per_1000t": 0.69539, "cells_end": 21, "N": 5733}

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T13:57Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T14:00Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **54**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 579 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); 186.3 CPU hours reported; 29 claims need reviews.
+**Activity.** 584 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); 189.3 CPU hours reported; 29 claims need reviews.
 
 ![progress](progress.png)
 
@@ -130,6 +130,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIDH` | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency is selected by intri | established | c06 | `collective/contrib/20261025T1108-c06-pcell-efficiency-claim` |
 | `` | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target makes the NRCH crysta | established | c08 | `collective/contrib/20261025T1132-c08-crystal-ramp-negative` |
 | `` | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early | established | c08 | `collective/contrib/20261025T1114-c08-crystal-growth-negative` |
@@ -141,7 +142,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | particle | bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at th | established | c05 | `collective/contrib/20261025T1104-c05-bondcell-rings-decay` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SIBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
-| `SIM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMD` | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with no band failure on 3 | established | c07 | `collective/contrib/20261025T0922-c07-ringswim-256` |
 | `` | fch-bilayer | Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated | established | c10 | `collective/contrib/20261025T1108-c10-slowd-twins-three-fch` |
 | `` | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles  | established | c03 | `collective/contrib/20261025T1050-c03-allee-no-turnover` |
