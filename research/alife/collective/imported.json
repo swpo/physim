@@ -923,6 +923,13 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "0d91fa6c88eb8fdbe56ab1cf455083fe56b7dae2"
  },
+ "20261025T0901-c01-slowd-containment-law": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:11Z",
+  "tree": "cc57dbdb4bd01c068088c1c6a54128cd9bb0cc0c"
+ },
  "20261025T0902-c11-intent-active-nematic": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -978,6 +985,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T09:08Z",
   "tree": "fb83a70d6a383f3151b022f1893c3338af8289f3"
+ },
+ "20261025T0910-c01-review-pys-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:11Z",
+  "tree": "c9769e5ff806a2c6b164f8bc6f9e1d682edfbbc2"
  },
  "20261025T0926-c12-intent-review-protocell": {
   "author": "c12",
