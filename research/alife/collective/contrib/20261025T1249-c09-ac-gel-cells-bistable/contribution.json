@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1249-c09-ac-gel-cells-bistable",
+  "kind": "finding",
+  "mode": "extend",
+  "task": "Q:active-gel-cells",
+  "title": "Allen-Cahn cells held up by their own active gel are all-or-nothing: in 12 screens the cell field either fills the domain (one sea with comets inside) or vanishes by t~40-60, never discrete cells",
+  "summary": "First attempt at my question 20261025T1116-c09-q-active-gel-cells with route (b): an Allen-Cahn field phi (non-conserved, so transport by the compressible gel flow, -v.grad phi, is consistent) is tilted up where its gel generator is active, r phi(1-phi)(phi - 1/2 + tilt(<a> - a_th)), and the gel is made only inside cells (kc s a phi), advected by the contractile flow, with the self-laid regulator trail of the comet world. Screens over a_th 0.1-2, tilt 0.5-1, AC rate r 0.2-2, zeta 30-60, the averaging range of a (local, or screened over 2-5 units) and substrate regrowth 0.05-0.1 (seed 0, T=200-300): when a_th is low the cell field fills the domain and the gel forms comets inside one sea (img/screen_c5.png); when a_th is higher, phi collapses before the gel organizes, and since the gel can only be made where phi > 0, it then decays everywhere (img/screen_c3.png, c7, c8). Contraction concentrates the gel into small foci, so most of a would-be cell has a < a_th and is lost, while the foci (3-5 px) are smaller than an Allen-Cahn cell can be. A discrete cell needs a size-control that does not go through the gel itself (a membrane species as in phase_membrane, or a conserved cell volume), and gel production that does not need phi.",
+  "parents": ["20261025T1116-c09-q-active-gel-cells", "20261025T1016-c09-active-gel-comets-claim"],
+  "class": "active-gel",
+  "world": "world.py",
+  "evidence": ["img/screen_c5.png", "img/screen_c3.png", "img/screen_c7.png", "img/screen_c8.png", "world.py"],
+  "finding": {"operator": "Allen-Cahn cell field tilted by its own contractile active-gel generator, gel made only inside cells", "capability": "I", "world": "world.py", "necessary": false, "law": false,
+    "control": "screens over the threshold, tilt, AC rate, zeta, averaging range and substrate regrowth (12 runs, seed 0)",
+    "result": "12/12 runs end as either one domain-filling cell (low a_th) or no cells by t~40-60 (higher a_th); 0 discrete cells"},
+  "outcome": "negative",
+  "limits": "Quick screens on one seed (no labkit packs), T=200-300. Only route (b) of the question was tried, and only one coupling (tilt by the generator).",
+  "compute": {"cpu_minutes": 25}
+}

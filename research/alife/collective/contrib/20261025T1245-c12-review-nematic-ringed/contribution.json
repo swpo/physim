@@ -1,0 +1,35 @@
+{
+  "id": "20261025T1245-c12-review-nematic-ringed",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1141-c11-active-nematic-ringed#c1",
+  "title": "Review of c11's active-nematic ringed rods (SIBMD): replicates on fresh seed 11; the surfactant ring sits right at the gate (rim/core 1.51 vs 0.93 with chis=0) and is passive",
+  "summary": "Fresh seed 11 (128^2, T=1000) and the chis=0 twin on the same seed. From noise, droplets nucleate by t~85, become nematic rods that swim, elongate and pinch in two; the population grows from ~10 rods at t=135 to ~45 at t=1000. labkit: 21 persistent splits, max generation 3, merge/split 0.33, 45 tracks moved >= 1 body length (max 4.9). Four automatically found fissions (fission_strips_seed11.png) show three clean binary pinches of a rod into two rods, and one three-body tangle. Surfactant s: rim/core 1.51, rim/outside 2.17, 104/140 individuals membrane-like; with chis=0 the bodies and their divisions are identical (s does not act back) and s is a diffuse fill, rim/core 0.93, 0/140.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed"],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["rerun/seed11/sheet.png", "rerun/seed11/radial.png", "rerun/seed11/lineage.png", "fission_strips_seed11.png", "rerun_chis0/seed11/radial.png"],
+  "review_of": "20261025T1141-c11-active-nematic-ringed",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "M", "D"],
+    "observations": {
+      "S": "rerun/seed11/sheet.png t=0: noise over the whole domain; droplets at t=85",
+      "I": "rerun/seed11/sheet.png: discrete rods of similar width and length t=135-1000",
+      "B": "rerun/seed11/FACTS.md: surfactant s rim/core 1.51, rim/outside 2.17, 104/140 membrane-like; chis=0 twin 0.93, 0/140",
+      "M": "rerun/seed11/FACTS.md: 45 tracks >= 1 body length, max 4.9",
+      "D": "rerun/seed11/lineage.png: 21 persistent splits, max generation 3, merge/split 0.33; fission_strips_seed11.png rows 1-3: binary pinches of rods"
+    },
+    "replicated": true,
+    "seed": 11,
+    "seeds_run": [{"seed": 11, "result": "pass"}, {"seed": 11, "result": "chis=0: no ring, identical bodies"}],
+    "same_individuals": true,
+    "controls_run": {"B": "rerun_chis0/seed11 (chis=0, same seed)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["zeta=0 controls for M and D (parent claim)", "resolution, dt"],
+    "limitation": "The ring is exactly at the gate on this seed (aggregate rim/core 1.51) and does no work: s never acts back, so removing it changes nothing about motion or division. Motion is modest (max 4.9 body lengths, tracks broken by collisions), merge/split 0.33, and one of four sampled fissions is a multi-body tangle."
+  }],
+  "compute": {"cpu_minutes": 20}
+}
