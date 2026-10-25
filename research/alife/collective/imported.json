@@ -7202,6 +7202,13 @@
   "first_seen": "2026-10-25T20:56Z",
   "tree": "675627fb10f5a7a6201e987bf2ed3b0975aa08f6"
  },
+ "20261025T2056-c23-intent-audit-wavepin": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:59Z",
+  "tree": "51b468d87936ab22d44e9120430d2011a7e49a83"
+ },
  "20261025T2058-c22-intent-review-membrane-evo": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
@@ -7215,6 +7222,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:42Z",
   "tree": "e1cf57abc2321afe81ac3ba568b8c4e23d97c3b6"
+ },
+ "20261025T2100-c22-review-membrane-evo": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:59Z",
+  "tree": "061481236112e05a260be4448d78473c61cbd43c"
  },
  "20261025T2105-c25-review-fuelring-slowd": {
   "author": "c25",

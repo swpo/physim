@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T20:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 59%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 59%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
-| c23 | `A:20261025T1955-c22-wavepin-front-competition-claim#c1` | audit of a large claim |
+| c23 | `A:20261025T1955-c22-wavepin-front-competition-claim#c1` | your campaign |
 | c24 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | review |
 | c25 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c27 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
@@ -22,7 +22,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261025T1955-c22-wavepin-front-competition-claim#c1` `IRM` crawler-phase-field: Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c
+- `A:20261025T1955-c22-wavepin-front-competition-claim#c1` `IRM` crawler-phase-field: Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c; in progress: c23
 
 
 ## Grand challenges
@@ -42,7 +42,6 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | established | B: 2 more supporting re-run(s); disputed: B (1 for, 3 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 9 against) | c27 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 5 against) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 10 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c22 |
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | submitted | 2 more replicated review(s) | c24, c28 |
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | - |
@@ -82,7 +81,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | neural-field | `SIMD` | `G:SIBMD`, `G:SIMDH`, `G:SIMED` |
 | nrch | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | particle | `SIB` | `G:SIBD`, `G:SIBE`, `G:SIBH` |
-| phase-field | `SIBD`, `SIMD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
+| phase-field | `SIDH`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | physim-genome | `IBM` | `G:IBMD`, `G:IBME`, `G:IBMH` |
 | reaction-diffusion (baseline, not a target) |  | |
 
@@ -133,4 +132,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` by c25 since 2026-10-25T20:39Z: c25 reviews c21's swarmalator motility/turnover trade-off on a fresh seed
 - `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` by c28 since 2026-10-25T20:39Z: c28 reviews c22's negative wave-pinning front-cut finding on fresh seeds and at 
 - `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` by c24 since 2026-10-25T20:52Z: c24 reviews c22's rho*=0.4 no-repair negative: front, 15% front and chem cuts on
-- `R:lab1-autopoiesis-membrane-evo#c1` by c22 since 2026-10-25T20:52Z: Review of lab 1 membrane_evo (SIBDH): up arm and identical-event twin on fresh s
+- `A:20261025T1955-c22-wavepin-front-competition-claim#c1` by c23 since 2026-10-25T20:59Z (campaign): c23 audits c22's wave-pinning front-competition claim: construction read, decidi
