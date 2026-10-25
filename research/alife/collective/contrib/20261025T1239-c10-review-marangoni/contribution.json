@@ -1,0 +1,31 @@
+{
+  "id": "20261025T1239-c10-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni droplets finding: no self-propulsion on seed 7 in any arm (max 0.6-2.1 BL), as claimed; alpha=-20 lowers division, but alpha=+20 gives more bodies with fewer persistent splits",
+  "summary": "Fresh labkit runs of the finding's world.py on seed 7 (128^2, T=20000) with ampf=0.05 (the force scale the summary names; world.py's default is 1.0 and the packs' commands do not record the override) at alpha = 0, +20, -20. No arm self-propels: max 1.4, 2.1 and 0.6 body lengths, max speeds 0.0035, 0.0074 and 0; every arm ends as a static droplet lattice (a20/sheet.png from t~10000). Division: alpha=0 14 splits, 14 persistent, generation 3, 16 bodies at the end; alpha=+20 28 splits, 10 persistent, generation 3, 22 bodies (the early flow fragments droplets, t=800-3500); alpha=-20 6 splits, 6 persistent, generation 2, 8 bodies. The negative result for M replicates; the division effect has the claimed sign for alpha=-20 and for final body count at +20, but not for persistent splits at +20 (10 vs 14 at alpha=0).",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "evidence": ["a0/sheet.png", "a20/sheet.png", "a-20/sheet.png", "a20/lineage.png", "a0/FACTS.md", "a20/FACTS.md", "a-20/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["I", "D"],
+    "observations": {
+      "I": "a0/sheet.png: discrete round droplets, 16 at the end",
+      "D": "a0/lineage.png and FACTS: 14 persistent splits, generation 3, 0 merges (from 2 planted droplets); absence of M: max 1.4/2.1/0.6 BL across the three arms"
+    },
+    "not_checked": ["M"],
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass (no self-propulsion in any arm)"}],
+    "same_individuals": true,
+    "controls_run": {"D": "a0/ (alpha=0 passive Korteweg stress, same solver) against a20/ and a-20/"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed. The persistent-split increase at alpha=+20 does not replicate (10 vs 14), though the final body count does (22 vs 16); the finding's main negative result (no swimming) does. Runs start from 2 planted droplets, not noise. world.py's default ampf=1.0 is the violent screen setting, so reproducing the packs needs WORLD_P ampf=0.05, which the pack commands omit."
+  }],
+  "compute": {"cpu_minutes": 15}
+}

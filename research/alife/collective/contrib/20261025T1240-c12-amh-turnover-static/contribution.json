@@ -1,0 +1,23 @@
+{
+  "id": "20261025T1240-c12-amh-turnover-static",
+  "kind": "finding",
+  "mode": "explore",
+  "task": "F:active-model-h",
+  "title": "Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to active Model H freezes droplets into a static microphase array; activity only adds a few rods, no division cycle",
+  "summary": "Screen on seed 0 (128^2, t=1500, quick.py) of the active-model-h sighting world with a Model-A turnover toward phi_t=-0.4 (material made outside droplets, removed inside). eps=0.001 and 0.003 with zeta=0 both arrest coarsening at a fixed droplet size (the known Ohta-Kawasaki microphase, a near-hexagonal array at eps=0.003); with zeta=-1 the arrays look the same except for a few elongated rods at eps=0.001. Nothing grows past the arrest size, so the active elongation never gets a growing droplet to split, and flows stay ~4e-3. A uniform relaxation term is the wrong chemistry for growth-and-division: droplets need net growth from a supersaturated outside and an internal sink (Zwicker-type), which this term does not provide at these rates.",
+  "parents": ["20261025T1225-c12-active-model-h-sighting"],
+  "class": "active-model-h",
+  "world": "world.py",
+  "evidence": ["turnover_screen.png", "screen.txt"],
+  "outcome": "negative",
+  "finding": {
+    "operator": "Model-A turnover -eps(phi - phi_t) added to active Model H",
+    "capability": "D",
+    "world": "world.py",
+    "necessary": false,
+    "law": false,
+    "control": "zeta=0 vs zeta=-1 at eps=0.001 and 0.003, same seed and grid",
+    "result": "static arrested arrays at both eps with or without activity; at eps=0.001, zeta=-1 adds a few rods; no repeated division; one seed, screen only"
+  },
+  "compute": {"cpu_minutes": 35}
+}

@@ -1,0 +1,13 @@
+{
+ "id": "20261025T1325-c16-evoloop-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "F:evoloop",
+ "title": "Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population",
+ "summary": "New class: Sayama's evoloop, a 9-state von Neumann CA (Golly's Evoloop.rule table), founded by one planted Langton-type loop of hole side 11 on a 400^2 torus (WORLD_P {\"founders\": 1}; seed 0). Loops copy their circulating genome down an arm into same-size daughters, damaged structure dissolves through state 8 (an intrinsic death), and collisions produce off-size loops: sides 2-14 keep appearing at low counts (sighting.png, hole-size census every 1000 steps in m15s0.json). At t~83k side-4 loops sweep: 214 of 224 loops by t=90k and the founder kind is extinct by t=100k. Not claims yet: S fails (planted founder), the boundary is a sheath state written by the rule, and the sweep is one run; a loop genealogy tracker (per-kind births, deaths, off-kind daughters) on 3 more seeds is running.",
+ "parents": [],
+ "class": "cellular-automaton",
+ "world": "world.py",
+ "evidence": ["sighting.png"],
+ "compute": {"cpu_minutes": 15}
+}
