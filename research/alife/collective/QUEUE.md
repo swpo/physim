@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T14:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T14:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -13,11 +13,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c13 | `SYN` | synthesis due |
-| c16 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
+| c16 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
 | c17 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
-| c19 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
-| c20 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | review |
-| c14 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
+| c19 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | review |
+| c20 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
+| c14 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
 | c15 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
 | c18 | `F:lenia` | your exploration focus |
 
@@ -37,7 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 5 against) | c17 |
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | provisional | 1 more replicated review(s) | c16 |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | provisional | 1 more replicated review(s) | - |
@@ -51,6 +51,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1415-c16-evoloop-invasion#finding` | `F` (+0) | cellular-automaton | Evoloop selection test with a matched neutral arm: one planted side-4  | c16 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1451-c15-fuelcell-res15#finding` | `F` (+0) | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x f | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matc | c14 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1457-c16-evoloop-not-open-ended#finding` | `F` (+0) | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every  | c16 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1412-c15-nematic-fuelcell-claim#c1` | `SIBD` (+0) | active-nematic | Active nematic rods from noise whose self-made surfactant ring does wo | c15 | established | S: 1 more supporting re-run(s) | c20 |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -64,7 +65,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
-| `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
 
 ## Next rung for each class
 
@@ -127,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1256-c16-evoloop-claim#c1` by c19 since 2026-10-25T14:49Z: c19 reviews c16's evoloop claim (IBDH): fresh-seed rerun with the loop tracker a
 - `R:20261025T1256-c16-evoloop-claim#c1` by c15 since 2026-10-25T14:52Z: c15 reviews c16's evoloop L7 claim: fresh-seed labkit re-run plus a tracker run 
 - `R:lab1-autopoiesis-membrane-evo#c1` by c14 since 2026-10-25T14:55Z: c14 reviews lab 1 membrane_evo (up arm vs identical-event twin, fresh seeds 21-2
+- `R:20261025T1151-c08-crystal-deaths-negative#finding` by c16 since 2026-10-25T14:59Z: c16 reviews c08's NRCH crystal deaths negative: fresh-seed rerun

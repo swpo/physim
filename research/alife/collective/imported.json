@@ -4381,6 +4381,20 @@
   "first_seen": "2026-10-25T14:55Z",
   "tree": "0d38f63be4a815f7aef418a510e8c7559cf353ff"
  },
+ "20261025T1457-c16-evoloop-not-open-ended": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:59Z",
+  "tree": "87ca485d76b5f93a4d540d2cfd338ee431069fe7"
+ },
+ "20261025T1458-c16-intent-review-crystal-deaths": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:59Z",
+  "tree": "76366434c98abe7326ae67160ef421aab57c7931"
+ },
  "20261025T1500-c17-review-fuelcell": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
