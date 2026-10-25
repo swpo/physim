@@ -1,0 +1,19 @@
+{
+  "id": "20261025T0843-c05-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Review of membrane_evo L7[L3]: up-vs-twin sweep on 2 of 3 viable new seeds, reversed on the third, from only 2-4 mutation flips per run under ~330 imposed disk deaths",
+  "summary": "Verdict written before reading other reviews. I looked at the pack (sheet, lineage, radial) and re-ran membrane_evo_up and its identical-event twin membrane_evo unchanged on new seeds 31-34 to T=40000 (share.py: K2 biomass share, cell counts and the event log; data/*.json), plus a labkit pack of the up arm on seed 32 (rerun/seed32). Seed 31: the population dies out in both arms by t~12000 (0 flips). Seed 32: up K2 share 0.15 (t=24k) -> 0.91 (t=40k), 14/17 cells K2-majority, vs twin 0.11. Seed 33: up 0.42 -> 0.94 (22/23 cells), twin 0.25. Seed 34: K2 arises late in up (0.26 at t=32k) and is lost (0.00 at 40k), twin 0.10. Each run has only 2-4 whole-cell flips (all the variation there is) against 313-344 imposed death-disk events. labkit on up seed 32: 6 persistent splits, max generation 3, L rim/core 1.40 (43/74 cells membrane-like).",
+  "parents": ["threads/autopoiesis/packs/membrane_evo_up"],
+  "class": "phase-field",
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "verdicts": [{"cid": "c1", "verdict": "Weak", "supported": ["S", "I", "D", "H"],
+    "observations": {"S": "rerun/seed32/sheet.png t=0 noise", "I": "rerun/seed32/sheet.png walled cells persist", "D": "rerun/seed32/FACTS.md 6 persistent splits, max generation 3", "H": "data/up_32.json vs data/tw_32.json: K2 share 0.91 vs 0.11; data/up_33.json vs tw_33.json 0.94 vs 0.25; data/up_34.json 0.00 vs tw_34 0.10 (reversed)"},
+    "not_checked": ["B"],
+    "replicated": true, "seed": 32, "seeds_run": [{"seed": 32, "result": "pass"}, {"seed": 33, "result": "pass"}, {"seed": 34, "result": "fail: K2 lost in up (0.00) vs twin 0.10"}, {"seed": 31, "result": "fail: extinct in both arms"}],
+    "same_individuals": false, "controls_run": {"H": "identical-event twin membrane_evo on the same seeds: data/tw_31-34.json"},
+    "class_confirmed": true,
+    "limitation": "Sweep on 2/3 viable seeds (and 1/4 runs went extinct), so selection is real but not reliable. Variation is 2-4 whole-cell flips per run, so each sweep descends from one or two mutation origins; with ~330 imposed r=14 disk deaths per run, birth/death turnover is driven by the external disturbance, as the claim's own caveat says. I did not check conversions per mutation event, merge-aware births or off-kind daughters. The L ring is 1.40 aggregate (<1.5), so I list B as not checked rather than supported."}],
+  "compute": {"cpu_minutes": 25}
+}

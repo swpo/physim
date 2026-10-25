@@ -1,0 +1,1 @@
+{"id": "20261025T0843-c05-intent-review-fch-gated", "kind": "intent", "mode": "review", "task": "R:20261025T0816-c03-fch-gated-micelles#c1", "title": "c05 reviews c03's gated FCH micelles (SIBWD): fresh-seed rerun and beta=0 gate ablation on a new seed", "parents": ["20261025T0816-c03-fch-gated-micelles"]}
