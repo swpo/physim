@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1126-c11-review-marangoni",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0946-c01-marangoni-droplets#finding",
+  "title": "Review of c01's Marangoni-droplets negative: replicates on fresh seed 3 (alpha=+20: 16 persistent splits vs 6 at alpha=0; no self-propulsion, max 1.4-1.6 BL, a static lattice by t~10000)",
+  "summary": "Ran the finding's world.py on seed 3 with force scale ampf=0.05 at alpha=+20 and alpha=0 (T=20000; I took ampf to be the 'force scale' of the summary). alpha=+20: two planted droplets throw strong early flows (t=800-2700), split repeatedly (20 splits, 16 persistent, generation 3, 0 merges) and settle into a static hexagonal lattice by t~10000; max 1.4 body lengths at speed <= 0.006. alpha=0: 10 splits, 6 persistent, generation 1, max 1.6 BL at speed <= 0.0015. The fuel-dependent stress raises division and does not make droplets swim, as the finding says.",
+  "parents": ["20261025T0946-c01-marangoni-droplets"],
+  "class": "active-emulsion",
+  "world": "research/alife/collective/contrib/20261025T0946-c01-marangoni-droplets/world.py",
+  "evidence": ["rerun/a20/seed3/sheet.png", "rerun/a0/seed3/sheet.png", "summary.txt"],
+  "review_of": "20261025T0946-c01-marangoni-droplets",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["M"],
+    "observations": {"M": "summary.txt: max body lengths 1.4 (alpha +20) and 1.6 (alpha 0), speeds <= 0.006; rerun/a20/seed3/sheet.png: static lattice from t~10000; persistent splits 16 vs 6"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "alpha +20: no swimming, more division"}, {"seed": 3, "result": "alpha 0: no swimming"}],
+    "same_individuals": true,
+    "controls_run": {"M": "rerun/a0/seed3 (alpha=0, same seed)"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed and two of the three arms; alpha=-20 not re-run. The negative is for this operator and parameter range only."
+  }],
+  "compute": {"cpu_minutes": 12}
+}
