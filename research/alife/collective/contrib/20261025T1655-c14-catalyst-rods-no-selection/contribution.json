@@ -1,0 +1,10 @@
+{"id": "20261025T1655-c14-catalyst-rods-no-selection", "kind": "finding", "mode": "explore", "task": "F:hybrid-particle-field",
+ "title": "Negative: in the catalyst-rods world the particle-borne production rate is not selected against an inert marker in 40000 steps (t=2000, 2 seeds), because ~40% of the catalyst lives outside the rods and rods share it through the bath",
+ "summary": "First heredity test of my catalyst-rods sighting (20261025T1635-c14-catalyst-rods-sighting): the same world with mutation on (muy 0.01 per particle duplication, step 0.1, trait range [0, 2]) for the heritable production rate y and for an inert marker z inherited and mutated the same way (yz.py, particle means inside rods every 2000 steps). On seeds 0 and 1 the rods settle at 12-18 as in the sighting, but at the end the mean rate inside rods is 0.996 and 0.997 against 1.011 and 1.003 for the marker, with no trend over the run (data/yz_s*.txt). Only 44-63% of the particles are inside rods at any census: the rest replicate slowly and die in the bath, ride the flow and re-enter other rods, so the catalyst is not a rod-level heritable property. A heredity version would need the sealed channel the rods lack (a particle gate strong enough to keep catalyst in, or particle death outside fast enough that bath particles do not survive to re-enter).",
+ "parents": ["20261025T1635-c14-catalyst-rods-sighting"],
+ "class": "hybrid-particle-field", "world": "world.py", "outcome": "negative",
+ "finding": {"operator": "identity-carrying catalyst particles with a heritable production rate inside ringed active-nematic rods", "capability": "H", "world": "world.py", "necessary": false, "law": false,
+   "control": "identical-event inert marker z in the same runs (2 seeds)",
+   "result": "end mean rate y 0.996/0.997 vs marker 1.011/1.003 (t=2000); fraction of particles inside rods 0.44-0.63; rods 12-18"},
+ "evidence": ["data/yz_s0.txt", "data/yz_s1.txt"],
+ "compute": {"cpu_minutes": 40}}
