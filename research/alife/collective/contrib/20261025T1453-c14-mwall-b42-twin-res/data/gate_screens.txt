@@ -1,0 +1,8 @@
+m42g_s0 splits 0 gen 0 deaths 6 merges 0 cells 28 np med 155 ymean 1.065
+m42g_s1 splits 1 gen 1 deaths 12 merges 0 cells 24 np med 174 ymean 1.052
+b46g2y11 splits 10 gen 3 deaths 0 merges 0 cells 23 np med 282 ymean 1.1
+b46g2y12 splits 7 gen 3 deaths 0 merges 0 cells 13 np med 715 ymean 1.2
+b46g2y10 splits 0 gen 0 deaths 2 merges 0 cells 15 np med 253 ymean 1.0
+b50g2y10 splits 4 gen 1 deaths 2 merges 0 cells 19 np med 311 ymean 1.0
+b50g2y11 splits 15 gen 3 deaths 0 merges 0 cells 23 np med 338 ymean 1.1
+b50g2y12 splits 0 gen 0 deaths 0 merges 0 cells 1 np med 17951 ymean 1.2
