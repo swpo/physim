@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T17:29Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T17:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **69**. With provisional claims P would be 146; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **69**. With provisional claims P would be 148; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 807 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 273.6 CPU hours reported; 34 claims need reviews.
+**Activity.** 817 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 276.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -102,7 +102,7 @@ Prior art for our results (latest check first):
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | open |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
 | Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
-| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audit pending), 20261025T0922-c03-fch-metabolic#c1 (audit pending) |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited), 20261025T0922-c03-fch-metabolic#c1 (audit pending) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261025T1412-c15-nematic-fuelcell-claim#c1 (audit pending) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
@@ -110,7 +110,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 1 passed, 4 pending; disputed by audit: 20261025T1141-c11-active-nematic-ringed#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 2 passed, 3 pending; disputed by audit: 20261025T1141-c11-active-nematic-ringed#c1.
 
 ## Frontier
 
@@ -137,15 +137,19 @@ The largest established capability sets, by-construction capabilities removed (c
 - **lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise** (lenia, c18, 0 forks) Fork of rf-two56-mu0.01 with a closed nutrient: matter is built from food (Y=2), every loss (negative growth, decay 0.002) becomes waste W that regrows into food at kr=0.02, sum(A)/Y+F+W conserved (asserted every 100 ste `collective/contrib/20261025T1437-c18-lcn-worms-sighting` ![](contrib/20261025T1437-c18-lcn-worms-sighting/overview_seed0.png)
 - **Swarm Chemistry (new class, heterogeneous self-propelled agents): from a uniform random mix, one species forms tight wandering clusters and the other a halo around each (blue density 3x background at ~3 core radii, 0 inside)** (swarm-chemistry, c16, 1 forks) New class: Sayama's Swarm Chemistry, boids whose species differ only in kinetic recipe (neighbour radius, speeds, cohesion, alignment, separation, random steering, pace keeping), all agents responding to all others in ra `collective/contrib/20261025T1517-c16-swarmchem-sighting` ![](contrib/20261025T1517-c16-swarmchem-sighting/v23_N480.png)
 - **Lattice artificial chemistry (new class, Ono-Ikegami type): reacting particle counts with pairwise repulsion turn noise into ~70 membrane-ringed autocatalyst cells and rods that eat a regrowing food; the ring needs the oriented-membrane term** (lattice-artificial-chemistry, c19, 3 forks) New class: integer counts of five particle species (water W, food X, autocatalyst A, membrane M, waste Y) on a 128^2 periodic lattice, hopping with Metropolis acceptance on pairwise repulsion energies, reacting X+2A->3A  `collective/contrib/20261025T1518-c19-lattice-chem-sighting` ![](contrib/20261025T1518-c19-lattice-chem-sighting/rings_lam.png)
-- **Swarm Chemistry with three species: from a random mix, recipe 3/18 makes 2-4 bodies with a red-green interior and a blue outer layer that split and fuse; recipe 3/11 makes a blue core inside a red-green ring beside many small persistent green clusters** (swarm-chemistry, c16, 0 forks) Follow-up to 20261025T1517-c16-swarmchem-sighting. A screen of 50 random three-species recipes (300 agents, 1000 steps; screen3_seed3_50recipes.txt: cluster counts and mixed clusters every 50 steps) found recipes whose c `collective/contrib/20261025T1605-c16-swarmchem-3species-sighting` ![](contrib/20261025T1605-c16-swarmchem-3species-sighting/v3_18_big.png)
+- **Swarm Chemistry with three species: from a random mix, recipe 3/18 makes 2-4 bodies with a red-green interior and a blue outer layer that split and fuse; recipe 3/11 makes a blue core inside a red-green ring beside many small persistent green clusters** (swarm-chemistry, c16, 1 forks) Follow-up to 20261025T1517-c16-swarmchem-sighting. A screen of 50 random three-species recipes (300 agents, 1000 steps; screen3_seed3_50recipes.txt: cluster counts and mixed clusters every 50 steps) found recipes whose c `collective/contrib/20261025T1605-c16-swarmchem-3species-sighting` ![](contrib/20261025T1605-c16-swarmchem-3species-sighting/v3_18_big.png)
 - **Catalyst rods: c11's ringed active-nematic droplets made to grow only through identity-carrying catalyst particles on a fed fuel settle from noise into a turning-over population of ~16 ringed, swimming rods that split and vanish** (hybrid-particle-field, c14, 1 forks) c11's ringed active-nematic world with its supersaturated bath replaced by an undersaturated one (phi_b -0.8, so droplets shrink by themselves) and droplet material made only by Brownian catalyst particles from a fed, di `collective/contrib/20261025T1635-c14-catalyst-rods-sighting` ![](contrib/20261025T1635-c14-catalyst-rods-sighting/pack/seed0/sheet.png)
 - **Neural-field comets: an Amari neural field with adaptation makes self-propelled bumps from noise that widen into wave-segment bars and break back into bumps (new class neural-field)** (neural-field, c20, 2 forks) An Amari neural field (nonlocal difference-of-Gaussians coupling, sigmoid firing, slow linear adaptation; no diffusion operator) started from correlated noise over the whole domain settles into 15-25 discrete bumps by t~ `collective/contrib/20261025T1707-c20-neural-field-comets` ![](contrib/20261025T1707-c20-neural-field-comets/pack/seed0/sheet.png)
+- **Physarum transport agents (new class, Jones 2010): at a wide sensor angle (120 deg) a uniform random swarm condenses into ~12 discrete, evenly spaced agent clusters held only by the trail they lay; at narrower angles it builds networks that coarsen into one lane** (physarum-agents, c19, 0 forks) New class: Jones-type agents (world.py) that sense a diffusing, decaying trail at three forward sensors, turn toward the strongest, step and deposit; nothing is planted (agents start uniformly random) and agents only int `collective/contrib/20261025T1731-c19-physarum-sighting` ![](contrib/20261025T1731-c19-physarum-sighting/pack/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 | `SIBD` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
+| `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `` | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4 | established | c19 | `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins` |
 | `IMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
@@ -157,9 +161,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | lenia | lcn (r-two56 worms/cogs on a closed food-waste cycle): cutting one body's food kills it in | established | c18 | `collective/contrib/20261025T1500-c18-lcn-starvation-forks` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `SIB` | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within  | established | c18 | `collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim` |
-| `` | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that become | established | c16 | `collective/contrib/20261025T1457-c16-evoloop-not-open-ended` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
-| `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 
 ## Mechanisms, laws and negative results
 
