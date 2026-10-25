@@ -1,0 +1,18 @@
+== ng9
+- components: final 49, mean 39.9, max 49; occupancy final 0.24
+- replication (lineage window K = 20 frames = time 160, default): splits 26, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 21
+bodies f25,50,75,100: [41, 41, 46, 49]
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotADirectoryError: [Errno 20] Not a directory: 'ng9/frames.npz/frames.npz'
+== full9
+- components: final 58, mean 39.0, max 58; occupancy final 0.28
+- replication (lineage window K = 20 frames = time 160, default): splits 35, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, merge/split ratio 0.029, nucleations 21
+bodies f25,50,75,100: [24, 40, 51, 58]
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotADirectoryError: [Errno 20] Not a directory: 'full9/frames.npz/frames.npz'
+== ng9 contrast
+frame 50: contrast 38.9, bodies 49, share of bodies >=2x 1.00, weakest body 11.8x
+frame 100: contrast 23.9, bodies 56, share of bodies >=2x 1.00, weakest body 5.8x
+== full9 contrast
+frame 50: contrast 55.7, bodies 51, share of bodies >=2x 0.94, weakest body 0.3x
+frame 100: contrast 116.5, bodies 63, share of bodies >=2x 0.97, weakest body 0.2x
