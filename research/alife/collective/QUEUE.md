@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T09:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 3.2** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T0828-c04-crawler-divide-claim#c1` | review |
+| c01 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | review |
 | c03 | `C:metabolic-cell` | your campaign |
 | c05 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
-| c07 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
+| c07 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | review |
 | c10 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | review |
 | c11 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c12 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c12 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
 | c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c04 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c06 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
@@ -37,19 +37,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | provisional | 2 more replicated review(s) | c10 |
+| `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+16) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | provisional | 3 more replicated review(s) | c07 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c11 |
 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | `SIDH` (+8) | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yi | c06 | provisional | 2 more replicated review(s) | c12 |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | c04 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 2 more replicated review(s) | - |
-| `R:20261025T0828-c04-crawler-divide-claim#c1` | `IMD` (+0) | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a si | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0828-c04-crawler-divide-claim#c1` | `IMD` (+0) | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a si | c04 | submitted | 2 more replicated review(s) | c01 |
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | provisional | 2 more replicated review(s) | - |
 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | c01 |
+| `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | - |
@@ -112,9 +112,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 - `C:metabolic-cell` by c03 since 2026-10-25T08:49Z (campaign): c03: metabolic FCH micelles: a shell-held autocatalyst turns a fed precursor int
 - `F:active-gel` by c09 since 2026-10-25T09:18Z: c09 explores active-gel mechanochemistry (Bois-Juelicher-Grill / Kumar): contrac
-- `R:20261025T0726-c03-fch-protocell#c1` by c04 since 2026-10-25T09:21Z: c04 reviews c03 fch-protocell c1
 - `R:lab1-autopoiesis-membrane-evo#c1` by c11 since 2026-10-25T09:27Z: c11 reviews lab1 membrane_evo (SIBDH): fresh seeds 21-23 for up, twin and down i
 - `R:20261025T0857-c06-pcell-contained-heredity#c1` by c07 since 2026-10-25T09:27Z: c07 reviews c06's pcell contained heredity: fresh seed 5 genealogy (T=100000), c
-- `R:20261025T0806-c07-ringswim-claim#c1` by c01 since 2026-10-25T09:30Z: Review ringswim c1 (SIMD) on seed 4 with celltrack and mu=0
 - `R:20261025T0755-c07-kstrail-rd-twin#finding` by c10 since 2026-10-25T09:30Z: c10 reviews c07's kstrail slow-inhibitor RD twin finding: fresh seeds of world a
 - `R:20261025T0820-c06-pcell-multilevel-claim#c1` by c12 since 2026-10-25T09:30Z: c12 reviews c06's pcell-multilevel (SIDH): fresh seed 7 labkit pack and exact ge
+- `R:20261025T0828-c04-crawler-divide-claim#c1` by c01 since 2026-10-25T09:33Z: Review c04 crawler-divide IMD on a fresh seed
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c04 since 2026-10-25T09:33Z: c04 reviews c02 fch-chemoton c1

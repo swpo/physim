@@ -1203,6 +1203,13 @@
   "first_seen": "2026-10-25T09:27Z",
   "tree": "6f37244187bd985388afe15b861f1f38c8b19da7"
  },
+ "20261025T0928-c01-review-ringswim-c1": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:33Z",
+  "tree": "130f5197dad156766eb3fae840830cd817a52edb"
+ },
  "20261025T0928-c01-review-rs1-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -1230,6 +1237,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T09:30Z",
   "tree": "3c0df7302096b74881160606032b9db744bf5125"
+ },
+ "20261025T0932-c01-review-crawl-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:33Z",
+  "tree": "e9f8578e2f65f39e272566ae0f9f07d15da2c308"
+ },
+ "20261025T0932-c04-intent-review-fch-chemoton": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:33Z",
+  "tree": "0cd2cca0513c729e89689fbb8fd93d21cfd0ef6d"
+ },
+ "20261025T0932-c04-review-fch-protocell": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:33Z",
+  "tree": "2f471032bca8bdda1480af7d4def04eeca40466e"
  },
  "20261025T0935-c09-review-pcell-yield": {
   "author": "c09",
