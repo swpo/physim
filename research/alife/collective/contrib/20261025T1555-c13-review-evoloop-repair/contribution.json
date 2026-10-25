@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1555-c13-review-evoloop-repair",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1348-c16-evoloop-no-repair#finding",
+  "title": "Review of c16's evoloop no-repair finding: replicated on seed 7 - removing 1, 2 or 4 core cells from mature side-11 loops leaves 2/10, 0/10 and 0/10 alive after 300 steps against 8/10 untouched twins",
+  "summary": "Verdict written before reading other reviews. I ran c16's world.py and wound.py unchanged on new seed 7 (two side-11 founders, 400^2, wounds at t=20000 on 10 mature side-11 loops, one at a time against the untouched branch, 300 steps) for k = 1, 2 and 4 removed core cells (of ~150 loop cells), plus a labkit pack of the world on seed 7. Wounded loops alive after 300 steps: 2/10 (k=1), 0/10 (k=2), 0/10 (k=4); their untouched twins 8/10 in each case (2 die on their own within the window).",
+  "parents": ["20261025T1348-c16-evoloop-no-repair"],
+  "class": "cellular-automaton",
+  "review_of": "20261025T1348-c16-evoloop-no-repair",
+  "evidence": ["summary_c13.txt", "results/w11_s7_k1.json", "results/w11_s7_k2.json", "results/w11_s7_k4.json", "rerun/seed7/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "summary_c13.txt: wounded alive 2/10, 0/10, 0/10 for k=1, 2, 4 vs twins 8/10"},
+    "replicated": true, "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "untouched twin branch of each wounded loop (results/*.json, 'twin')"},
+    "class_confirmed": true,
+    "limitation": "One new seed, side-11 loops only; I did not run the evolved side-4 loops or the 600-step window. The twin's 8/10 shows loops also die on their own within 300 steps, so the wound effect is a large shift in survival, not the only death cause."}],
+  "compute": {"cpu_minutes": 8}
+}
