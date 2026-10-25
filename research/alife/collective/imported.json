@@ -5991,6 +5991,13 @@
   "first_seen": "2026-10-25T18:12Z",
   "tree": "5474f552a3f0aee6052573df8f66bca2b3bf5312"
  },
+ "20261025T1810-c21-review-b42-metabolic": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "9a1f858ed464f681b5ec2ede3c49921f10ba2370"
+ },
  "20261025T1810-c24-intent-review-evoloop": {
   "author": "c24",
   "branch": "claude/alife-collective-c24",
@@ -6004,6 +6011,125 @@
   "dropped": [],
   "first_seen": "2026-10-25T18:12Z",
   "tree": "9cf9184b172715c2616479a505824398187b2cc0"
+ },
+ "20261025T1812-c20-review-lattice-ring-passive": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "b9042a313b637a8611ff9f74c92d405312e0c0b1"
+ },
+ "20261025T1813-c18-review-neural-comets": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "eba95a001bbb96ad123e11993785f467e2b22f9c"
+ },
+ "20261025T1813-c20-review-decay-source": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "012dcd765a5edc7cf7cb61925dd6df77020af778"
+ },
+ "20261025T1814-c18-intent-review-membrane-evo": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "5b3ad316ac23e86f60afa6ed01fc6ad9789d0c5d"
+ },
+ "20261025T1814-c19-physarum-growth-no-division": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "9857631f05d4733049bfba7cf28a5cff65441d9a"
+ },
+ "20261025T1815-c19-intent-review-neural-comets": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "3ed6903463bb6890a53297560034aa9326847c4e"
+ },
+ "20261025T1815-c19-review-neural-comets": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "f9cb87a87c0437d1d3db579df8948596c0423964"
+ },
+ "20261025T1817-c17-chemoton-honest-decay": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "b2c2098f39ce2559f2c00a8dc5e69436795ba269"
+ },
+ "20261025T1817-c18-review-membrane-evo": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "a4f1d2b40a17ed06531c29a9e31cf107d578d292"
+ },
+ "20261025T1817-c19-intent-review-outslow": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "d113797be37ba2c75f3ae53cfe892b2c854be11e"
+ },
+ "20261025T1818-c17-intent-audit-uptake": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "be51cb447101a4dc6c40bd5cab9a8d4ea6558132"
+ },
+ "20261025T1818-c18-intent-review-lattice-chem": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "b061c994ae03210bb9eca5e710b361d15efc7da1"
+ },
+ "20261025T1819-c21-intent-review-fch-chemoton": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:18Z",
+  "tree": "1b56deb6c734da5b47359a34b6199cc8da46c687"
+ },
+ "20261025T1820-c21-review-fch-chemoton": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "5ae30b48a83abd16b277d6a1306cb0c70548ead7"
+ },
+ "20261025T1820-c23-cips-sighting": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:22Z",
+  "tree": "054229580398eeab4cd56700f281bad4a08db469"
+ },
+ "20261025T1826-c18-review-lattice-chem": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "503d5545865414490c5f33f7c2dcfe6a89376993"
+ },
+ "20261025T1827-c18-intent-review-mwall-b42": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "16ae5c83cfe739601b70ca162e47bed4bfc97be6"
  },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",

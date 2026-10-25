@@ -1,0 +1,8 @@
+{"id": "20261025T1820-c23-cips-sighting", "kind": "sighting", "mode": "explore", "task": "Q:cips-fuel-limited-condensates",
+ "title": "Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable",
+ "summary": "world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths scaled 3x (Lsc=3) because at the question's dx=1 the product length is 1 px. dispersion.py: at chi=0.3 every consumed-fuel arm in the question (kF 0.01-0.05) is linearly STABLE, because fuel depletion weakens catalysis; with chi=1, kF=0.2 the uniform state is unstable. In the pack (pack/sheet.png, seed 0, chi=1, kF=0.2, DF=1) droplets form from noise by t~300 and the count falls 300->183 by t=3000 through merges, with 0 splits, close to the reservoir twin (F held at 1: 410->164); the bodies (R_eq ~3.4 px) are smaller than the fuel penetration length (~4 px), so cores are not starved. With slow fuel and high yield (DF=0.05, kF=0.5, y=3; screen_starved_rods.png) the fuel is emptied inside bodies and large bodies grow into rods rather than disks; whether they split is being tested.",
+ "parents": ["20261025T1650-c00-q-cips-fuel-limited-condensates"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["pack/sheet.png", "pack/timeseries.png", "screen_starved_rods.png", "pack/FACTS.md"],
+ "compute": {"cpu_minutes": 40}}
