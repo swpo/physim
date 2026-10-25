@@ -1,0 +1,73 @@
+{
+ "id": "20261025T1832-c24-review-comets-metabolic",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1733-c20-neural-comets-metabolic-claim#c1",
+ "title": "Review of c20's neural-comet metabolism on fresh seed 24: the cut fork kills every comet, and slowing regrowth 2x or 4x lowers the surviving population in step (34 / 23 / 9 / 0 comets at t=1000), so the comets are resource-limited, not switched off",
+ "summary": "I re-ran the claimed world (world.py, fork off) on fresh seed 24. From correlated noise, 30-45 comets move up to 62 body lengths and divide (17 persistent splits, generation 3). The fork with regrowth stopped at t=500 (cut_t=500) kills every comet by t~650. As the E gate control I added a graded fork (world_graded.py: from t=500 the regrowth of r is slowed 2x or 4x instead of stopped). Comets at t=1000: fed 34, 2x 23, 4x 9, stopped 0. The population tracks the resource supply, and under 4x it crashes and partly recovers as r regrows. In the stopped arm comets die while mean r is still 0.65, but only 8% of the domain has r>0.8: they starve on the r they have depleted themselves. Correction to my literature note 20261025T1755: the cut does not zero the coupling at once; the comets deplete r themselves.",
+ "parents": [
+  "20261025T1733-c20-neural-comets-metabolic-claim"
+ ],
+ "review_of": "20261025T1733-c20-neural-comets-metabolic-claim",
+ "class": "neural-field",
+ "evidence": [
+  "graded_s24.png",
+  "fed/seed24/sheet.png",
+  "fed/seed24/FACTS.md",
+  "cut_all/seed24/FACTS.md",
+  "tr_x4/seed24/sheet.png",
+  "world_graded.py",
+  "graded.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "M",
+    "E",
+    "D"
+   ],
+   "observations": {
+    "S": "fed/seed24/sheet.png t=0: correlated noise over the whole domain",
+    "I": "fed/seed24/sheet.png t=40-1000: 30-45 discrete comets (white head, brown adaptation wake)",
+    "M": "fed/seed24/FACTS.md: 124 long-lived tracks moved >= 1 body length, max 62.1 body lengths",
+    "D": "fed/seed24/FACTS.md: 17 persistent splits, max generation 3, merge/split 0.23 (fewer than the claim's 25-29, generation 4-6)",
+    "E": "graded_s24.png: fork at t=500 (identical before). Comets at t=600/750/1000: fed 40/29/34, regrowth x1/2 32/24/23, x1/4 11/2/9, stopped 5/0/0. Every comet dies only in the stopped arm, and the steady count falls with the supply rate"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: fed run of world.py (S, I, M, D)"
+    },
+    {
+     "seed": 24,
+     "result": "pass: cut_t=500 fork, 0 comets by t~650"
+    },
+    {
+     "seed": 24,
+     "result": "pass: graded forks tr x2 and x4 give intermediate populations"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "E": "cut_all/seed24 (WORLD_P cut_t=500), tr_x2/seed24 and tr_x4/seed24 (world_graded.py, tr_fac 2 and 4 from t=500) against fed/seed24, all identical until t=500"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "dt/2",
+    "resolution"
+   ],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "r multiplies the whole coupling and the comets exist only because they deplete it (the kd=0 twin has no comets), so the resource is also the motility mechanism, like Gray-Scott's feed. The graded result shows resource limitation of a population, not a per-comet budget. D on my seed is weaker than claimed (17 persistent splits, generation 3). Under 4x-slowed regrowth a few comets swell into large bars (mean area up to ~200 px at t~900), so the bound on size is loose. One fresh seed; no dt/2 or grid variant."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 12
+ }
+}
