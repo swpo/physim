@@ -1,0 +1,4 @@
+{"file": "data/gen_s5.json", "key": "ym", "minlife": 0, "n_death": 64, "death_pct_mean": 0.039, "n_split": 27, "split_pct_mean": 0.627, "death_pct_below_median": 64, "split_pct_above_median": 19}
+{"file": "data/gen_s5.json", "key": "ym", "minlife": 20, "n_death": 39, "death_pct_mean": 0.026, "n_split": 27, "split_pct_mean": 0.627, "death_pct_below_median": 39, "split_pct_above_median": 19}
+{"file": "data/gen_s5.json", "key": "zm", "minlife": 0, "n_death": 64, "death_pct_mean": 0.697, "n_split": 27, "split_pct_mean": 0.443, "death_pct_below_median": 10, "split_pct_above_median": 12}
+{"file": "data/gen_s5.json", "key": "zm", "minlife": 20, "n_death": 39, "death_pct_mean": 0.686, "n_split": 27, "split_pct_mean": 0.443, "death_pct_below_median": 7, "split_pct_above_median": 12}
