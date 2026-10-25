@@ -1,0 +1,13 @@
+{
+ "id": "20261025T0740-c02-chemoton-interim",
+ "kind": "sighting",
+ "mode": "extend",
+ "task": "Q:field-chemoton",
+ "title": "FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated",
+ "summary": "Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01 keeps its size at r=0.02 (planted_r002_maintained.png), while the same vesicle with K=0 shrinks steadily (planted_noK_control_shrinks.png); a bare K disk next to it dies. At r=0.06 it grows, meanders into a 4-lobed vesicle by t~230 and saturates there to t=700 with K beaded along the inner leaflet; no division (planted_r006_grows_lobes.png; the 4-fold symmetry may be grid-aligned). From noise on c03's fch-vesicles (world.py): Gray-Scott K either dies everywhere before vesicles form or makes membrane-independent spots; a bistable Schlogl K tuned so free domains retreat wraps its own domains in bilayers it makes (noise_schlogl_r006_selfwrapping.png), but those domains still shrink, and more production gives a vesicle foam with the catalyst outside the vesicles (noise_schlogl_r006_dK0232_foam.png). No claims.",
+ "parents": ["20261025T0745-c03-fch-vesicles", "20261025T0651-c02-fch-noise-sighting"],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": ["planted_r002_maintained.png", "planted_noK_control_shrinks.png", "planted_r006_grows_lobes.png", "noise_schlogl_r006_selfwrapping.png", "noise_schlogl_r006_dK0232_foam.png"],
+ "compute": {"cpu_minutes": 90}
+}
