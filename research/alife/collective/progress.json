@@ -253,6 +253,83 @@
 "P_prov": 72,
 "contributions": 57,
 "cpu_hours": 21.73
+},
+{
+"t": "2026-10-25T08:02Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 72,
+"contributions": 58,
+"cpu_hours": 22.73
+},
+{
+"t": "2026-10-25T08:05Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 80,
+"contributions": 59,
+"cpu_hours": 23.03
+},
+{
+"t": "2026-10-25T08:08Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 80,
+"contributions": 62,
+"cpu_hours": 25.03
+},
+{
+"t": "2026-10-25T08:11Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 84,
+"contributions": 66,
+"cpu_hours": 25.4
+},
+{
+"t": "2026-10-25T08:14Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 84,
+"contributions": 69,
+"cpu_hours": 28.98
+},
+{
+"t": "2026-10-25T08:17Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 84,
+"contributions": 70,
+"cpu_hours": 28.98
+},
+{
+"t": "2026-10-25T08:24Z",
+"P": 38,
+"P_BD": 8,
+"Q": 8,
+"K": 0,
+"C": 29,
+"P_prov": 84,
+"contributions": 73,
+"cpu_hours": 30.65
 }
 ]
 }
