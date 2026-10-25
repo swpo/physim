@@ -1,0 +1,7 @@
+{"id": "20261025T1932-c18-fl-drive-bg-sighting", "kind": "sighting", "mode": "extend", "task": "F:lenia",
+ "title": "Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds)",
+ "summary": "Follow-up to 20261025T1926-c18-fl-drive-sighting: same world with a uniform background of matter (bg 0.02 per channel; WORLD_P {\"bg\":0.02}), still exactly conserved (drift 2e-11). labkit (2 seeds, t=600): 9-14 gliders that travel 11-13 body lengths, 6 and 2 persistent splits with max generation 3 and 2, but merges about equal splits (merge/split 0.94-0.96) and 7-8 nucleations from the background. Fork at t=200 removing food and its regrowth: bodies 11 -> 0 (seed 0) and 7 -> 0 (seed 1) by t=300-325, while fed twins keep 10-16 to t=500 (dfork_bg02_s*.png). So body matter is never made from the resource, yet the bodies need it; division exists but is reticulate and mixed with nucleation. Limits as before: the food scales the whole growth field, no boundary layer, no per-body fork, 2 seeds.",
+ "parents": ["collective/contrib/20261025T1926-c18-fl-drive-sighting"],
+ "class": "flow-lenia", "world": "world.py",
+ "evidence": ["dfork_bg02_s0.png", "pack/seed0/lineage.png", "pack/seed0/sheet.png"],
+ "compute": {"cpu_minutes": 8}}

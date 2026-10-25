@@ -1,0 +1,4 @@
+growth/seed2: splits 0, persistent splits 0, merges 5 | persistent (alive >= 50% of run): 7 | max body lengths 3.1 | max/min area ratio 4.56
+growth/seed3: splits 0, persistent splits 0, merges 5 | persistent (alive >= 50% of run): 8 | max body lengths 2.8 | max/min area ratio 3.67
+nogrowth/seed2: splits 0, persistent splits 0, merges 0 | persistent (alive >= 50% of run): 5 | max body lengths 2.8 | max/min area ratio 6.60
+nogrowth/seed3: splits 0, persistent splits 0, merges 0 | persistent (alive >= 50% of run): 5 | max body lengths 1.8 | max/min area ratio 5.00

@@ -1,0 +1,12 @@
+[pcell-mwall-b42] seed 10: 200 frames x 500 steps, grid (128, 128)
+  frame 20/200  49.1s
+  frame 40/200  97.2s
+  frame 60/200  146.8s
+  frame 80/200  196.4s
+  frame 100/200  248.0s
+  frame 120/200  296.9s
+  frame 140/200  348.6s
+  frame 160/200  401.7s
+  frame 180/200  454.7s
+  frame 200/200  513.2s
+  -> collective/contrib/20261025T1940-c21-audit-b42/rerun/FACTS.md  (513s sim)

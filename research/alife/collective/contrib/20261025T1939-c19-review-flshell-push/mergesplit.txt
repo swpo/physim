@@ -1,0 +1,4 @@
+g0 s3: persistent splits 2, max generation 2, merges 26, merge/split ratio 0.897
+g0 s4: persistent splits 9, max generation 6, merges 48, merge/split ratio 0.8
+g30 s3: persistent splits 13, max generation 6, merges 62, merge/split ratio 0.827
+g30 s4: persistent splits 7, max generation 5, merges 44, merge/split ratio 0.815

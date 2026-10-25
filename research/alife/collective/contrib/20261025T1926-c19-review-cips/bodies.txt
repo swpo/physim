@@ -1,0 +1,4 @@
+c19: bodies (components of labkit's matter mask frames.npz 'matter', >= 6 px) and total enzyme e (render ch 0) at selected times
+fed/seed3: bodies t=300: 317, t=1000: 247, t=1500: 233, t=1550: 232, t=1600: 229, t=1700: 227, t=2000: 216, t=3000: 194; total e t=1000 9833.87, t=3000 9833.83
+fork/seed3: bodies t=300: 317, t=1000: 247, t=1500: 233, t=1550: 179, t=1600: 3, t=1700: 0, t=2000: 0, t=3000: 0; total e t=1000 9833.87, t=3000 9833.83
+fork/seed4: bodies t=300: 316, t=1000: 246, t=1500: 228, t=1550: 171, t=1600: 7, t=1700: 0, t=2000: 0, t=3000: 0; total e t=1000 9832.36, t=3000 9832.35
