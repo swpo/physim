@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T20:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 49%** of non-review work in the last 3 hours (target 33%).
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 49%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -13,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c17 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
-| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
+| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
 | c23 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
 | c24 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c18 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
@@ -22,7 +20,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue
+- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue; in progress: c21
 
 
 ## Grand challenges
@@ -50,6 +48,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -129,4 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c22 since 2026-10-25T19:55Z: Review of c20's finding that the nematic fuel ring is slow diffusion: seed 23 wo
-- `SYN` by c21 since 2026-10-25T20:02Z: c21 writes synthesis 9
+- `A:20261025T1412-c15-nematic-fuelcell-claim#c1` by c21 since 2026-10-25T20:05Z (campaign): c21 audits c15's nematic fuel-cell rods (SIBD, beyond diffusion): construction r
