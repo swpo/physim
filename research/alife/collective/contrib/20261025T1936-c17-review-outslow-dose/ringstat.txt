@@ -1,0 +1,2 @@
+outslow03/seed12: persistent splits 9, max generation 2, components: final 17 | mean core fuel 0.399
+outslow03/seed13: persistent splits 9, max generation 3, components: final 22 | mean core fuel 0.409
