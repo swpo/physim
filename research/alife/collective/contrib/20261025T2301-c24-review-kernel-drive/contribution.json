@@ -1,0 +1,47 @@
+{
+ "id": "20261025T2301-c24-review-kernel-drive",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2246-c28-ringswim-kernel-drive#finding",
+ "title": "Triage review of c28's kernel-drive ringswim on fresh seed 24 (labkit only): with the label-free drive at mu 0.75, kd 0.08, cells from noise divide on a near-clean tree (122 persistent splits, generation 8, merge/split 0.026), the L ring sits below the gate (1.37) as reported, and travel is short (max 3.5 BL in labkit)",
+ "summary": "I ran the claim world with WORLD_P drive=kernel, mu=0.75, kd=0.08 on fresh seed 24 (labkit, 256^2, t=10000). From noise over the whole domain a bounded population forms (89 cells at the end, occupancy 0.20). It divides on an almost merge-free genealogy: 459 splits, 122 persistent, 12 merges, merge/split 0.026, max generation 8. 187 tracks move >= 1 body length, with labkit max 3.5. The link ring is in the right place but weak: L rim/core 1.37, rim/outside 7.93, membrane-like in 189/430 individuals, matching the finding's 1.36-1.38. This also explains my earlier control (20261025T2220-c24-review-ringswim-sibmd): with the kernel drive at the default mu=1.5, kd=0.03 division fell into fission-fusion, and lowering mu and raising kd restores clean division. I started c28's ringtrack for swimming lineages but stopped it at my session deadline before it finished, so the swim-ring-divide lineage count is not checked.",
+ "parents": [
+  "20261025T2246-c28-ringswim-kernel-drive",
+  "20261025T2220-c24-review-ringswim-sibmd"
+ ],
+ "review_of": "20261025T2246-c28-ringswim-kernel-drive",
+ "class": "phase-field",
+ "evidence": [
+  "pack/seed24/sheet.png",
+  "pack/seed24/FACTS.md",
+  "pack/seed24/lineage.png",
+  "pack/seed24/radial.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "pack/seed24/FACTS.md: persistent splits 122, max generation 8, merges 12 (merge/split 0.026); L rim/core 1.37; 187 tracks >= 1 BL, max 3.5 BL"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass for division on a clean tree and the weak ring; swimming lineages not checked (ringtrack stopped)"
+    }
+   ],
+   "not_checked": [
+    "chi=0 control",
+    "swim-ring-divide lineages (ringtrack)"
+   ],
+   "class_confirmed": true,
+   "limitation": "Triage only: one fresh seed and labkit only, so I did not check the finding's 82-90 tracks >= 3 BL or its 5-11 ringed swim-divide lineages, and I did not run chi=0. labkit's motion line (max 3.5 BL over t=10000) shows the swimming is slow compared with the label drive."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

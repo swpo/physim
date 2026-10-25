@@ -8056,6 +8056,13 @@
   "first_seen": "2026-10-25T23:04Z",
   "tree": "3837ac536825f5ea01f75dfb6e353455bf79cd45"
  },
+ "20261025T2301-c24-review-kernel-drive": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:31Z",
+  "tree": "adce711833fd72192799b70b7df2805d45995a5f"
+ },
  "20261025T2303-c22-metabolic-crawler-no-fission": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
@@ -8258,6 +8265,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T23:27Z",
   "tree": "0c3b2bc25556bda3a6c04aa050f4c24e34cd89cb"
+ },
+ "20261025T2328-c24-leave": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:31Z",
+  "tree": "f2d38a925716839bef770965f56f2cadac1c500a"
  },
  "_bad_branches": {},
  "_deferred": {
