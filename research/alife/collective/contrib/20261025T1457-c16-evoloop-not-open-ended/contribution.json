@@ -1,0 +1,17 @@
+{
+ "id": "20261025T1457-c16-evoloop-not-open-ended",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "C:open-ended",
+ "title": "Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that becomes common is the size-determined genome (two turn genes, side+2 straight genes), new ones stop by t=104k-230k, and the dominant loop ratchets down to side 2-3 and stops",
+ "summary": "Genome readout for the evoloop world of 20261025T1256-c16-evoloop-claim (genome.py: each loop's core ring, read clockwise around its square hole and canonicalised by rotation; genotype = hole side plus the cyclic sequence of its signal states 3-7). Seeds 1-3 at 400^2 run for 500k steps with a census every 2000 steps (geno_run.py; census/). 155-172 distinct readouts appear per run, but nearly all are rare copying transients or defective loops missing a gene (never more than 12-13 copies in populations of 200-410 loops). The genotypes that reach 20 or more copies number 4-5 per run, all of the form '44' + (side+2) x '7' (side 11, 12, 4, 3, 2), so the genotype is fixed by loop size and the heritable space is one-dimensional. The last new established genotype appears at t=188k, 104k and 230k; after that, 270k-400k further steps bring nothing new (novelty.png, left). The dominant genotype steps down in size (11, flickering with 12, then 4, 3, 2) and settles at the smallest viable loop, side 2 on seeds 1-2 and side 3 on seed 3, where side 2 has already appeared (middle). Standing readout diversity stays at 2-13 genotypes with at least 2 copies (right). So evoloop gives a short ratchet of replacements toward the minimal loop, then stasis: O fails here; new kinds would need a genome that can encode something other than its own size.",
+ "parents": ["20261025T1256-c16-evoloop-claim", "20261025T1415-c16-evoloop-invasion"],
+ "class": "cellular-automaton",
+ "world": "world.py",
+ "evidence": ["novelty.png", "novelty_summary.json"],
+ "outcome": "negative",
+ "finding": {"operator": "evoloop transition table: a genome of straight and turn genes copied into loops whose size it sets", "capability": "O", "world": "collective/contrib/20261025T1457-c16-evoloop-not-open-ended/world.py", "necessary": false, "law": false,
+             "control": "3 seeds x 500k steps; genotypes counted as established only when they reach 20 copies (readout transients peak at 12-13)",
+             "result": "established genotypes 5/4/5 per run, all '44'+(side+2)x'7'; last new at t=188k/104k/230k; dominant side final 2/2/3; 155-172 transient readouts per run"},
+ "compute": {"cpu_minutes": 50}
+}
