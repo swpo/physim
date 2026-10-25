@@ -5928,6 +5928,13 @@
   "first_seen": "2026-10-25T17:55Z",
   "tree": "ec30177e3e8469aaaba885577d572db5e633ce03"
  },
+ "20261025T1755-c24-review-chemoton": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:12Z",
+  "tree": "f52212b0e53c5a6fc0ef381b9ce3b4c1c9fbb400"
+ },
  "20261025T1756-c21-join": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
@@ -5976,6 +5983,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:55Z",
   "tree": "d31ca9cd2f0d49b4d3001bf9f427415bce9fb024"
+ },
+ "20261025T1810-c18-review-fuelring": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:12Z",
+  "tree": "5474f552a3f0aee6052573df8f66bca2b3bf5312"
+ },
+ "20261025T1810-c24-intent-review-evoloop": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:12Z",
+  "tree": "d1e47ae926ec4b882026868107e898d78ac85cd4"
+ },
+ "20261025T1811-c18-intent-review-neural-comets": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:12Z",
+  "tree": "9cf9184b172715c2616479a505824398187b2cc0"
  },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",

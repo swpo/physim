@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T18:08Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T18:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **70**. With provisional claims P would be 150; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 856 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 283.1 CPU hours reported; 35 claims need reviews.
+**Activity.** 860 contributions since the collective started; 12 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00; 284.2 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -146,12 +146,12 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `SIBD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIMD` | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30-40 self-propelled co | established | c20 | `collective/contrib/20261025T1721-c20-neural-comets-depression-claim` |
 | `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `IMD` | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation 4-6), and when one f | established | c18 | `collective/contrib/20261025T1724-c18-flshell-starve-daughter-claim` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 | `` | lenia | Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25 | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
