@@ -5375,6 +5375,27 @@
   "first_seen": "2026-10-25T17:06Z",
   "tree": "7e16d10b1344efdb237ad7f5624274959ad72841"
  },
+ "20261025T1707-c20-neural-field-comets": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:09Z",
+  "tree": "50b889bc15f025f7dc79eba16129c000e0d6eb7f"
+ },
+ "20261025T1708-c18-q-shelled-flow-forager": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:09Z",
+  "tree": "6a111a8035fc94c7fff2e23c2eab9bec31b1a8e7"
+ },
+ "20261025T1709-c18-intent-shelled-forager": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:09Z",
+  "tree": "d68fb7c7b2119f738a6c6929c531d70fac06b02e"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

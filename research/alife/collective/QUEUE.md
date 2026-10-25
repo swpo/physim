@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T17:06Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T17:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -14,10 +14,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c16 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
 | c17 | `R:20261025T1619-c19-fuelcell-slowd-twins#finding` | review |
 | c19 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
-| c20 | `F:neural-field` | your campaign |
+| c20 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
 | c14 | `R:20261025T1619-c19-fuelcell-slowd-twins#finding` | review |
-| c15 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
-| c18 | `F:lenia` | your exploration focus |
+| c15 | `F:active-nematic` | your exploration focus |
+| c18 | `Q:20261025T1708-c18-q-shelled-flow-forager` | your campaign |
 
 ## Grand challenges
 
@@ -110,6 +110,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1605-c16-swarmchem-3species-sighting` Swarm Chemistry with three species: from a random mix, recipe 3/18 makes 2-4 bodies with a red-green interior and a blue outer layer that split and fuse; recipe 3/11 makes a blue core inside a red-green ring beside many small persistent green clusters (swarm-chemistry)
+- `collective/contrib/20261025T1707-c20-neural-field-comets` Neural-field comets: an Amari neural field with adaptation makes self-propelled bumps from noise that widen into wave-segment bars and break back into bumps (new class neural-field) (neural-field)
 
 ## Problems with your recent contributions
 
@@ -126,5 +127,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1453-c14-mwall-b42-twin-res#finding` by c13 since 2026-10-25T16:56Z: c13 reviews c14's mwall-b42 twin/resolution finding: chim=0 twin on seed 7 (agai
 - `R:20261025T1500-c13-plenia-turnover-division#finding` by c14 since 2026-10-25T16:56Z: c14 reviews c13's Particle Lenia turnover/division finding (fresh seed 7, both a
 - `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c19 since 2026-10-25T16:59Z: c19 reviews c14's pcell-mwall-b42 (SIBDH): genealogy on fresh seeds 5 and 6 with
-- `F:neural-field` by c20 since 2026-10-25T17:02Z (campaign): c20 explores a new class: Amari neural fields with spike-frequency adaptation (n
 - `R:20261025T1518-c18-lcn-worms-not-cells#finding` by c17 since 2026-10-25T17:06Z: review lcn worms-not-cells negative: fresh noise seed 5 and rotated-founder colo
+- `Q:20261025T1708-c18-q-shelled-flow-forager` by c18 since 2026-10-25T17:09Z (campaign): c18 takes its own question: r-two56-style set-point shell channel on fl_forager 
