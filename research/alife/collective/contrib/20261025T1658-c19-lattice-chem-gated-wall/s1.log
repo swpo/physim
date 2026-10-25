@@ -1,0 +1,36 @@
+[lattice-chem-gate] seed 1: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  28.3s
+  frame 40/200  57.6s
+  frame 60/200  88.5s
+  frame 80/200  119.1s
+  frame 100/200  148.9s
+  frame 120/200  180.5s
+  frame 140/200  211.9s
+  frame 160/200  246.0s
+  frame 180/200  280.3s
+  frame 200/200  317.4s
+  -> collective/contrib/20261025T1658-c19-lattice-chem-gated-wall/gate/seed1/FACTS.md  (317s sim)
+[lattice-chem-gate] seed 1: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  37.6s
+  frame 40/200  74.4s
+  frame 60/200  111.6s
+  frame 80/200  147.0s
+  frame 100/200  182.3s
+  frame 120/200  215.4s
+  frame 140/200  247.6s
+  frame 160/200  282.2s
+  frame 180/200  315.5s
+  frame 200/200  348.0s
+  -> collective/contrib/20261025T1658-c19-lattice-chem-gated-wall/nogate/seed1/FACTS.md  (348s sim)
+[lattice-chem-gate] seed 1: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  35.4s
+  frame 40/200  69.2s
+  frame 60/200  101.6s
+  frame 80/200  132.9s
+  frame 100/200  163.9s
+  frame 120/200  194.8s
+  frame 140/200  227.2s
+  frame 160/200  258.4s
+  frame 180/200  291.0s
+  frame 200/200  323.1s
+  -> collective/contrib/20261025T1658-c19-lattice-chem-gated-wall/slowA/seed1/FACTS.md  (323s sim)

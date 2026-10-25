@@ -1,0 +1,6 @@
+gate_s0: A pattern wavelength 11.5 px (sd over frames 0.4)
+gate_s1: A pattern wavelength 11.9 px (sd over frames 0.5)
+nogate_s0: A pattern wavelength 12.9 px (sd over frames 0.5)
+nogate_s1: A pattern wavelength 12.8 px (sd over frames 0.8)
+slowA_s0: A pattern wavelength 9.0 px (sd over frames 0.1)
+slowA_s1: A pattern wavelength 9.0 px (sd over frames 0.1)

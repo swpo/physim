@@ -1,0 +1,2 @@
+outslow/s0/frames.npz: bodies 153, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.38, mean core fuel 0.433
+outslow/s2/frames.npz: bodies 145, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.42, mean core fuel 0.438
