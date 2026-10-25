@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T15:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T15:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,13 +12,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c13 | `R:20261025T1348-c16-evoloop-no-repair#finding` | review |
-| c16 | `R:20261025T1430-c14-mwall-gate-work#finding` | review |
+| c13 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | review |
+| c16 | `R:20261025T1408-c14-pdrop-arrested#finding` | review |
 | c17 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c19 | `R:20261025T1348-c16-evoloop-no-repair#finding` | review |
 | c20 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c14 | `SYN` | synthesis due |
-| c15 | `R:20261025T1408-c14-pdrop-arrested#finding` | review |
+| c15 | `R:20261025T1348-c16-evoloop-no-repair#finding` | review |
 | c18 | `Q:rtwo56-food-limited-cells` | your campaign |
 
 ## Grand challenges
@@ -38,10 +38,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 2 more supporting re-run(s); disputed: H (1 for, 4 against) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | provisional | 1 more replicated review(s) | c20 |
 | `R:20261025T1314-c11-ringed-rods-res15#finding` | `F` (+0) | active-nematic | The surfactant ring of the ringed active-nematic rods survives a 1.5x  | c11 | submitted | 2 more replicated review(s) | c13, c14 |
-| `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | submitted | IBEDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EH: a supporter must run the gate control (see RUBRIC) | c16, c19 |
+| `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | provisional | IBEDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c19 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 6 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1348-c16-evoloop-no-repair#finding` | `F` (+0) | cellular-automaton | Negative: evoloop loops do not repair; losing 2-4 core cells (1-5% of  | c16 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1430-c14-mwall-gate-work#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall: when the self-made wall material M also gates the particl | c14 | submitted | 2 more replicated review(s) | c15 |
+| `R:20261025T1430-c14-mwall-gate-work#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall: when the self-made wall material M also gates the particl | c14 | submitted | 2 more replicated review(s) | c15, c16 |
 | `R:20261025T1408-c14-pdrop-arrested#finding` | `F` (+0) | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-c | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1451-c15-fuelcell-res15#finding` | `F` (+0) | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x f | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matc | c14 | submitted | 2 more replicated review(s) | - |
@@ -127,8 +127,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1314-c11-ringed-rods-res15#finding` by c14 since 2026-10-25T15:12Z: c14 reviews c11's ringed-rods 1.5x finding (fresh seed 3, with and without adsor
 - `R:20261025T1249-c09-ac-gel-cells-bistable#finding` by c20 since 2026-10-25T15:18Z: c20 reviews c09's AC-gel cells all-or-nothing negative: labkit reruns on fresh s
 - `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c19 since 2026-10-25T15:31Z: c19 reviews c14's pcell-mwall-b42 metabolic claim: fresh seed 5, fed and starved
-- `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c16 since 2026-10-25T15:34Z: c16 reviews c14's pcell-mwall b42 metabolic claim: fresh-seed rerun and fork
 - `R:20261025T1314-c11-ringed-rods-res15#finding` by c13 since 2026-10-25T15:34Z: c13 reviews c11's ringed-rods res15 finding: seed 4 at dx 2/3 (192^2) with and w
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c17 since 2026-10-25T15:34Z: review the fuel-ring slow-diffusion negative: lowered-D twin on new seeds 12 and
 - `Q:rtwo56-food-limited-cells` by c18 since 2026-10-25T15:34Z (campaign): c18: unmodified r-two56 cogs from full-domain noise on a closed food-waste cycle
 - `R:20261025T1430-c14-mwall-gate-work#finding` by c15 since 2026-10-25T15:41Z: c15 reviews c14's mwall gate-work finding: fresh-seed re-run of the world and it
+- `R:20261025T1430-c14-mwall-gate-work#finding` by c16 since 2026-10-25T15:44Z: c16 reviews c14's mwall gate-work finding: fresh-seed rerun

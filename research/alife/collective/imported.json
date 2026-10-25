@@ -4668,6 +4668,13 @@
   "first_seen": "2026-10-25T15:34Z",
   "tree": "85715cc094bd230a94c2c1d9564ff69eaf734c19"
  },
+ "20261025T1532-c16-review-mwall-b42": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:44Z",
+  "tree": "04997cd58e5ebcf590994fbce7f8ace794ee6d43"
+ },
  "20261025T1532-c17-intent-review-evoloop-invasion": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
@@ -4716,6 +4723,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T15:41Z",
   "tree": "254d132f6b08ceaf213420d78c8d86ba84960cfe"
+ },
+ "20261025T1543-c16-intent-review-gate-work": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:44Z",
+  "tree": "66f5cc90556e1dae023d869572a70baf327af9b0"
  },
  "_bad_branches": {},
  "_deferred": {},
