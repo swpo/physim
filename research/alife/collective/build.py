@@ -447,7 +447,9 @@ def verified_rerun(review_dir, claim_runs, verdict):
         return False
     names = {n for n, _ in claim_runs if n}
     old_seeds = {s for _, s in claim_runs}
-    return any(s is not None and s not in old_seeds and (not names or n in names) for n, s in pack_runs([review_dir]))
+    def same_world(n):  # variants of the claimed world (e.g. pcell-y07 for pcell) count as the same world
+        return not names or (n and any(n == m or n.startswith(m) or m.startswith(n) for m in names))
+    return any(s is not None and s not in old_seeds and same_world(n) for n, s in pack_runs([review_dir]))
 
 
 # ------------------------------------------------------------------ derivation
@@ -812,7 +814,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     assign, taken = {}, {k: set(v) for k, v in busy.items()}
     review_slots = [[cl, min(2, reviews_needed(cl)) - len(busy.get(f"R:{cl['key']}", set()))]  # at most 2 at once
                     for cl in pending]
-    max_reviewers = len(active) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
+    max_reviewers = max(1, len(active) - max(1, len(active) // 4)) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
     qs = [c for c in items if c.get("kind") == "question"]
     tried = {}
     for c in recent:
@@ -824,7 +826,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     syn_order = sorted([a for a in active if a not in campaign],
                        key=lambda a: max([c["_t"] for c in syn if c["author"] == a], default=parse_t(LAB_START)))
     n_rev = 0
-    for a in active:
+    for a in sorted(active, key=lambda a: (a in focus, a)):  # agents without an exploration focus review first
         if a in campaign:
             assign[a] = (campaign[a], "your campaign")
             continue

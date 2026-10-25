@@ -1,0 +1,5 @@
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/scipy/ndimage/_measurements.py:810: RuntimeWarning: invalid value encountered in divide
+  return sum / np.asanyarray(count).astype(np.float64)
+{"candidates": [], "persistent_splits": 8, "max_generation": 4, "splits": 17, "merges": 22, "deaths": 12, "tracks_ge3BL": 11, "tracks_ge5BL": 6, "split_times": [1860, 2740, 2940, 3880, 4740, 4960, 5420, 7380], "gen_hist": {"0": 27, "1": 25, "2": 9, "3": 5, "4": 8}, "world": "world_claim.py", "seed": 7, "T": 20000, "params": {}}
+[{"id": 73, "life": 11180, "net": 894.8, "BL": 19.45, "size": 46.0, "speed": 0.08}, {"id": 62, "life": 2900, "net": 214.4, "BL": 11.36, "size": 18.9, "speed": 0.0739}, {"id": 3, "life": 4820, "net": 122.4, "BL": 7.67, "size": 16.0, "speed": 0.0254}, {"id": 58, "life": 2740, "net": 139.0, "BL": 7.5, "size": 18.5, "speed": 0.0507}, {"id": 30, "life": 2620, "net": 83.0, "BL": 5.34, "size": 15.5, "speed": 0.0317}]
+[]

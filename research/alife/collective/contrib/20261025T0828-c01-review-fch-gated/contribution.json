@@ -1,0 +1,37 @@
+{
+  "id": "20261025T0828-c01-review-fch-gated",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0816-c03-fch-gated-micelles#c1",
+  "review_of": "20261025T0816-c03-fch-gated-micelles",
+  "title": "FCH gated micelles SIBWD replicates on seed 3; the shell ring is beyond diffusion (Laplacian twins peak in the core at every D), the cargo containment is not",
+  "summary": "Fresh seed 3: ~34 micelles from white noise by t=16, 19 persistent splits (generation 2); shell q rim/core 10.8 with 244/247 cells membrane-like; cargo 30x at t=400 with every body >= 6.6x; fission strips show the ring pinching into a figure-8 and each daughter closing its own ring with cargo ~10x. Gate off (beta=0): 1.1x. Matched Laplacian-only controls: (1) for W, beta=0 with the cargo D lowered uniformly: Dc 0.02 keeps every body >= 2.7x (5.5x aggregate), Dc 0.1 ends at 2.0x; so W is met by slow diffusion alone. (2) For B, the adsorption drift removed so q only diffuses (chi_q=0) at Dq 0.5, 0.05 and 0.005: q peaks in the core (rim/core 0.94, 0.73, 0.49; 0-1/247 membrane-like), because q is made where amphiphile is densest; no uniform diffusivity makes a surface layer here.",
+  "parents": ["20261025T0816-c03-fch-gated-micelles"],
+  "class": "fch-bilayer",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise everywhere; micelles at t=16",
+      "I": "rerun/sheet.png: 34-55 discrete micelles to t=400; rerun/tracks.png",
+      "B": "rerun/FACTS.md: shell q rim/core 10.8, rim/outside 4.87, 244/247 membrane-like; fission_strips_seed3.png shell rows show a closed ring per body",
+      "W": "contrast.txt (rerun): every body >= 6.6x at t=400 (aggregate 30x); beta0 1.1x",
+      "D": "rerun/FACTS.md: 19 persistent splits, generation 2; fission_strips_seed3.png rows 1-3: figure-8 pinch, daughters with their own rings at ~10x cargo"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "W": "beta0/ (gate off, seed 3: 1.1x); lowD002/, lowD01/ (gate off, Dc x0.02 and x0.1: 5.5x and 2.0x)",
+      "B": "chiq0/, shell_lowD/, shell_lowD2/ (no adsorption drift, Dq 0.5 / 0.05 / 0.005: rim/core 0.94 / 0.73 / 0.49, 0-1/247 membrane-like); shell_controls.txt"
+    },
+    "by_construction": [],
+    "bd_supported": ["B"],
+    "class_confirmed": true,
+    "limitation": "W is not beyond diffusion: a gate-free cargo with D lowered 50x keeps every body >= 2.7x. The shell layer is a quasi-equilibrium adsorption set by a chosen potential of u, 2-3 px wide at dx 0.5 (I did not re-run the 1.5x arm). Shell and cargo are passive, so division is that of fed FCH micelles and comes in synchronized waves; the neck leaks cargo at fission (daughters ~10x vs parents 20-50x). Generation 2 on this seed."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "fission_strips_seed3.png", "contrast.txt", "shell_controls.txt", "chiq0/sheet.png", "shell_lowD2/sheet.png", "lowD002/sheet.png"],
+  "compute": {"cpu_minutes": 22}
+}

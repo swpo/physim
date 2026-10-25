@@ -1,0 +1,2 @@
+cut mean speed after frame 120 = 0.030 | 90th pct 0.052 | persistent splits after: 0 | bodies at end: 12
+K1/seed1 mean speed after frame 120 = 0.136 | 90th pct 0.404 | persistent splits after: 2 | bodies at end: 15

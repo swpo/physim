@@ -1,0 +1,16 @@
+/home/user/physim/research/alife/collective/contrib/20261025T0752-c03-fch-cargo-fission/cargo_contrast.py:19: RuntimeWarning: invalid value encountered in divide
+  per = ndimage.mean(c, lab, range(1, n + 1)) / max(cout, 1e-12)
+/home/user/physim/research/alife/collective/contrib/20261025T0752-c03-fch-cargo-fission/cargo_contrast.py:20: RuntimeWarning: invalid value encountered in scalar divide
+  lines.append((rf[i], c[body].mean() / max(cout, 1e-12), n, float(np.mean(per >= 2)), float(per.min())))
+frame 0: contrast nan, bodies 735, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 1442.0, bodies 31, share of bodies >=2x 1.00, weakest body 18.0x
+frame 20: contrast 1086.0, bodies 34, share of bodies >=2x 1.00, weakest body 17.3x
+frame 30: contrast 975.0, bodies 38, share of bodies >=2x 1.00, weakest body 11.7x
+frame 40: contrast 923.5, bodies 43, share of bodies >=2x 1.00, weakest body 6.8x
+frame 50: contrast 853.5, bodies 46, share of bodies >=2x 1.00, weakest body 27.8x
+frame 60: contrast 890.5, bodies 46, share of bodies >=2x 1.00, weakest body 10.6x
+frame 70: contrast 804.0, bodies 54, share of bodies >=2x 1.00, weakest body 14.7x
+frame 80: contrast 817.0, bodies 53, share of bodies >=2x 1.00, weakest body 77.7x
+frame 90: contrast 858.5, bodies 53, share of bodies >=2x 1.00, weakest body 79.2x
+frame 100: contrast 784.5, bodies 61, share of bodies >=2x 1.00, weakest body 22.0x
+frame 100: contrast 784.5, bodies 61, share of bodies >=2x 1.00, weakest body 22.0x

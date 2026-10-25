@@ -1,0 +1,20 @@
+{
+ "id": "20261025T0848-c02-fch-chemoton-claim",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "Q:field-chemoton",
+ "title": "FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persist on a fed precursor; without the catalyst, the bilayer gate or the feed, they decay",
+ "summary": "Weakly functionalized FCH (Promislow benchmark parameters) from a noisy bath, plus a fed precursor P, a Gray-Scott-like catalyst K whose mobility the bilayer gates (min face mobility, exp(-4(u+1))) and amphiphile made only by K (r K P) and decaying at kap=0.01. On 3 seeds bilayer vesicles and multilamellar vesicles form from noise by t~100-250 and persist to t=600 with K beaded along their bilayers (K rim/core 2.2-4.7, rim/outside 2.3-3.0 on seeds 0 and 2); total amphiphile settles at 4020, 2045 and 4030. Matched controls on 2 seeds each: no catalyst (K0=0) leaves 9 of 3700 at t=600, no gate (same K noise) loses all K by t~150 and leaves 35, and cutting the precursor feed at t=300 shrinks the vesicles to small rings or micelle clusters (about 350 left) while the fed twins hold about 4000 (totals.png, starve_fork.png). Limits: E holds largely by construction (amphiphile is made only by K from P and decays); seed 1's K sits on an open strip and its three K-free rings live on amphiphile shared through the bath; no division; no resolution test.",
+ "parents": ["20261025T0651-c02-fch-noise-sighting", "20261025T0740-c02-chemoton-interim", "20261025T0745-c03-fch-vesicles"],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "totals.png", "starve_fork.png", "channels_seed0_seed1.png", "channels_seed2.png"],
+ "claims": [{"cid": "c1", "capabilities": ["S", "I", "B", "E"], "rung": "L4c[L3]",
+   "statement": "From an unstructured noisy bath, FCH bilayer vesicles form and those that carry the gated catalyst on their bilayer persist for the rest of the run (t~150-600) at bounded size on the fed precursor; the catalyst forms a material layer on the bilayer, and the vesicles shrink and break up when the feed is cut at a fork while the fed twins keep their size.",
+   "track": "seed 0, track 3 (the multilamellar vesicle, FACTS top track #3: u and K both membrane-like at t=303) and seed 2, track 14 (the double-walled vesicle, u and K membrane-like at t=399)",
+   "evidence": ["pack/seed0/sheet.png", "pack/seed0/FACTS.md", "pack/seed2/FACTS.md", "channels_seed0_seed1.png", "channels_seed2.png", "starve_fork.png", "totals.png"],
+   "controls_run": {"B": "pack_nogate/seed0, pack_nogate/seed1: gate off, K dies by t~150 and the K layer and all bilayers vanish; pack_noK/seed0, pack_noK/seed1: no catalyst, all amphiphile decays (9 of 3700 left)",
+                    "E": "pack_starve/seed0, pack_starve/seed2: precursor feed cut at t=300, fed twins pack/seed0 and pack/seed2 (identical until t=300): vesicles shrink to rings and micelle clusters (amphiphile 4048 -> 367 on seed 2) while the twins hold 4030"},
+   "bd_control": "none run"}],
+ "compute": {"cpu_minutes": 180}
+}
