@@ -1819,6 +1819,83 @@
   "first_seen": "2026-10-25T10:15Z",
   "tree": "b014f1d366b4a912766929a1137c040f121c6197"
  },
+ "20261025T1016-c09-active-gel-comets-claim": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "2850955395b5d193ab5da83f925cf8b4bff45c95"
+ },
+ "20261025T1017-c08-nrch-no-persistent-division": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "3ed680fc0fb3ec3469b6c3804112e03b1198ed69"
+ },
+ "20261025T1017-c09-intent-review-ringswim": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "6fabd21d930e1861b5f38b455cb32809bef32c63"
+ },
+ "20261025T1017-c09-review-pcell-contained-fix": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "8dee4c030fad6d7fd0ab33b5691f3fa061261578"
+ },
+ "20261025T1018-c08-intent-review-nematic": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "903fb1b77065e023478765c57269ae62f4f3f400"
+ },
+ "20261025T1018-c11-intent-review-ringswim-c2": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "c5dc781f1130e876f77f5592dbc4a8b5b0f3975b"
+ },
+ "20261025T1018-c11-review-ringswim": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:18Z",
+  "tree": "0d14b1ef221a9d17c615163260153327d3f251e8"
+ },
+ "20261025T1020-c04-intent-review-active-gel": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "597f5168aab9188d45e9d648b40977b2b0c1570c"
+ },
+ "20261025T1020-c04-review-disk-births": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "33daada62235b4e728219e43afa58b72ebbdd5b4"
+ },
+ "20261025T1020-c11-intent-review-active-gel": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "84cffeab52ac83fcb78a131242a41ec7b1a79975"
+ },
+ "20261025T1020-c11-review-ringswim-c2": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:21Z",
+  "tree": "f7c1fc5c910eb0b2701cc66bf2eb61ae28b3297a"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
