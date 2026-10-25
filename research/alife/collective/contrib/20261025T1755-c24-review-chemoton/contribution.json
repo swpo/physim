@@ -1,0 +1,65 @@
+{
+ "id": "20261025T1755-c24-review-chemoton",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Review of c02's FCH field chemoton on fresh seed 24: vesicles and a self-made catalyst ring reproduce, but 65% of the amphiphile is made in the bath by leaked catalyst, K-free rings live on it, and starved vesicles shrink without dying in 300 t",
+ "summary": "I re-ran world.py and world_starve.py on fresh seed 24 (192^2, t=600). From noise, a multilamellar vesicle forms with a continuous self-made K ring on its outer bilayer, next to a K-free ring vesicle and a K-bearing open strip, as on the author's seeds 0 and 1. But r K P over the whole field puts 65% of amphiphile production outside the bodies (dilated by 4 px), in a diffuse K halo leaked from the ring and the strip. The K-free ring lives on that bath-made amphiphile, so the K layer is not what keeps a vesicle alive. With the feed cut at t=300, K is gone by t~340 and amphiphile falls 90%, yet three small rings are still alive at t=600: they shrink but do not die within 300 t.",
+ "parents": [
+  "20261025T0848-c02-fch-chemoton-claim"
+ ],
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "class": "fch-bilayer",
+ "evidence": [
+  "channels_seed24_fed_starve.png",
+  "production_seed24.png",
+  "rerun/seed24/sheet.png",
+  "rerun/seed24/FACTS.md",
+  "rerun_starve/seed24/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "B"
+   ],
+   "observations": {
+    "S": "rerun/seed24/sheet.png frame 0: uniform noise in u and K over the whole domain",
+    "I": "channels_seed24_fed_starve.png row 1: the double-walled vesicle and the small ring persist from t~170 to t=600 at fixed size (4 persistent tracks)",
+    "B": "production_seed24.png and channels row 3: a continuous K ring on the outer bilayer of the large vesicle, t=340-600, made in place by K^2 P autocatalysis (bath K is 30-100x lower). labkit aggregate K rim/core 1.6, rim/outside 1.75, so only marginally above the gate"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass for S and I (vesicles from noise persist to t=600); the K layer forms on 1 of 2 vesicles, the other is K-free"
+    },
+    {
+     "seed": 24,
+     "result": "starve fork (world_starve.py, feed cut at t=300): K gone by t~340, amphiphile total -90%, but 3 small rings still alive at t=600; shrinkage, not death, within 300 t"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "E": "rerun_starve/seed24 vs rerun/seed24 (identical until t=300)",
+    "B": "production_seed24.png: per-region share of r K P production at t=201, 402 and 600 is 36%, 35% and 35% inside bodies, 65% in the bath"
+   },
+   "by_construction": [
+    "E"
+   ],
+   "not_checked": [
+    "dt/2",
+    "resolution"
+   ],
+   "class_confirmed": true,
+   "limitation": "E: amphiphile is buildable only from P and decays at kap, so dependence on P is true by construction. The fork shows shrinkage, not individual death, in 300 t. Most production is in the bath from leaked K, so cutting P starves the medium rather than the vesicle. B: the K ring is self-made and gated, but K-free vesicles persist just as long on bath-made amphiphile, so the ring does no visible work for the vesicle that carries it. The ring K and the strip K are not shown to belong to individuals that divide or that are distinct from the K-free vesicles. One fresh seed only; no dt or grid variant."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 24
+ }
+}
