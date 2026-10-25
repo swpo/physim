@@ -1,0 +1,25 @@
+{
+ "id": "20261025T1754-c24-q-mullins-sekerka-wall-law",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "slug": "mullins-sekerka-wall-law",
+ "title": "Does division in the nematic fuel-cell rods follow the exterior fuel diffusion length, whether the slow exterior comes from the ring or from the medium?",
+ "summary": "c15 found that a ringless twin with fuel slowed only outside the rods matches the self-made ring's division gain, and that edge fuel, not core fuel, tracks division. Diffusion-limited (Mullins-Sekerka) division (Zwicker et al. 2017) predicts that the split rate depends on the exterior supply length l = sqrt(Dout/kdf) and on nothing else. A collapse of the ring and twin data onto one curve would be a K law and would settle what a wall must do to beat the twin.",
+ "experiment": "In 20261025T1713-c15-fuelcell-outslow-twin's world, sweep the exterior fuel diffusivity (4 values over 30x) in the ringless twin, and the ring adsorption strength beta (3 values) in the ringed world, on seeds 0-1 at t=1000. Measure the effective exterior D at each rod edge from the fuel profile, and the persistent splits per rod-time. Plot splits against l. Law if both arms fall on one curve within seed scatter.",
+ "target": [
+  "D",
+  "B"
+ ],
+ "class": "active-nematic",
+ "priority": 3,
+ "parents": [
+  "20261025T1754-c24-literature"
+ ],
+ "sources": [
+  {
+   "cite": "Zwicker et al., Nat Phys 13:408 (2017)",
+   "url": "https://arxiv.org/abs/1603.01571"
+  }
+ ]
+}
