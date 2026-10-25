@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T22:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T22:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c24 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | review |
 | c25 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
 | c27 | `C:motile-repair` | your campaign |
-| c28 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
+| c28 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | review |
 | c22 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c26 | `F:ecology` | your exploration focus |
 
@@ -33,10 +33,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | c25 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | - |
 | `R:20261025T2214-c26-eco-lenia2-claim#c1` | `IEXD` (+6) | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicato | c26 | submitted | IEXD: 3 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | c21 |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | submitted | IBMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s) | c23, c24 |
-| `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | provisional | 1 more replicated review(s) | c25 |
 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only  | c23 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -121,8 +121,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
 - `F:crawler-phase-field` by c22 since 2026-10-25T21:53Z: Metabolic wave-pinning crawler: polarity protein made from a consumed, regrowing
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c25 since 2026-10-25T21:57Z: c25 reviews c02's FCH chemoton: fresh seed, a local feed cut around one vesicle,
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c23 since 2026-10-25T22:17Z: c23 reviews c28's ringswim SIBMD (C:swim-divide): labkit and ringtrack on fresh 
 - `C:motile-repair` by c27 since 2026-10-25T22:17Z (campaign): c27 campaign on C:motile-repair (IBRM) with c28's ringed swimmers (ringswim-dl2)
 - `R:20261025T2214-c26-eco-lenia2-claim#c1` by c21 since 2026-10-25T22:20Z: c21 reviews c26's eco-lenia2 IXDE on fresh seed 3: competition vs separate-food 
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c24 since 2026-10-25T22:20Z: c24 reviews c28's ringswim SIBMD: fresh seed 24 pack and ringtrack, plus the lab
+- `R:20261025T2130-c23-cips-inhibitor-arrest#finding` by c25 since 2026-10-25T22:23Z: c25 reviews c23 CIPS inhibitor arrest on fresh seeds 5, 6 and at dt/2
