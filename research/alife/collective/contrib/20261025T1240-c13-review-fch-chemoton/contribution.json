@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1240-c13-review-fch-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "title": "Review of c02's FCH chemoton: on fresh seeds 7 and 8 catalyst-carrying bilayers form from noise and hold on the feed; a global feed cut reduces them to micelles on both seeds, and a local cut around one vesicle shrinks it while its neighbours persist",
+  "summary": "Verdict written before reading other reviews. I ran c02's world.py and world_starve.py unchanged on new seeds 7 (t=600) and 8 (t=900) as labkit fed/cut twins, plus a local twin (world_local.py) on seed 7 where the feed is cut at t=300 only inside a 48 px disk around the double-walled vesicle. bodies.py counts bodies (u+1>0.6) and K on the bilayer, in the lumen and outside. Fed: 2 (seed 7) and 6 (seed 8) bodies carry K on the bilayer (K 1.1-1.75 on the body vs 0.21-0.29 in the lumen and 0.13-0.19 outside) and hold or slowly grow (seed 7: 1588 -> 1680, seed 8: 3664 -> 4132), while K-free bodies slowly lose amphiphile (seed 7: 1883 -> 1604). Global cut: every K-carrying body loses its K and breaks into micelles (K-bodies 1584 -> 0 by t=600 on seed 7; 3664 -> 0 by t=363 on seed 8). Local cut: the target vesicle shrinks from a double-walled vesicle (fed twin 1186) to a single K-ringed ring (541) at t=600, while the other K body outside the disk keeps its shape (493 fed vs 338) and K-free bodies lose 14%.",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "evidence": ["fork_c13.png", "rerun/seed7/sheet.png", "rerun/seed8/sheet.png", "rerun_starve/seed7/sheet.png", "rerun_starve/seed8/sheet.png", "bodies_fed7.txt", "bodies_loc7.txt"],
+  "verdicts": [{"cid": "c1", "verdict": "Supported",
+    "supported": ["S", "I", "B", "E"],
+    "observations": {
+      "S": "rerun/seed7/sheet.png and rerun/seed8/sheet.png t=0: uniform noisy bath; bilayers by t~50-120",
+      "I": "rerun/seed7/sheet.png t=132-600: the double-walled vesicle (top right) and the K-carrying Y body (bottom left) keep identity and shape to t=600; seed 8 bodies to t=900",
+      "B": "bodies_fed7.txt t=600: double vesicle K 1.14 on the bilayer vs 0.29 in the lumen and 0.15 outside (3.9x, 7.4x); bodies_fed8.txt t=900: the lasso vesicle 0.94 / 0.21 / 0.14",
+      "E": "fork_c13.png: global cut at t=300 reduces every K-carrying body to micelles on seeds 7 and 8 while the fed twins hold; the local cut shrinks only the disk's vesicle to one ring (1186 -> 541 vs its fed twin) while the Y body outside keeps its shape"},
+    "replicated": true, "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass (fed, global cut, local cut)"}, {"seed": 8, "result": "pass (fed and global cut to t=900)"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun_starve/seed7, rerun_starve/seed8 (global feed cut at t=300 with fed twins rerun/seed7, rerun/seed8); rerun_local/seed7 (world_local.py: feed cut only in a 48 px disk around one vesicle)"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "limitation": "E holds by construction: amphiphile is made only by K from P and decays at kap everywhere, so any body must shrink without P; the forks confirm the construction works per body but do not show a dependence the model did not build in. The local cut is only partly local: the disk is 20% of the domain, so the bath P falls and the other K body also loses 31% (vs 54% for the target) by t=600; the target is still a ring at t=600, not dead. On seed 8 most K-carrying bodies are open bilayer strips with K beaded along them, not closed vesicles (only the lasso has a lumen), and the fed K bodies keep growing slowly (+13% over 600 t), so 'bounded size' is approximate. I did not rerun the no-gate or no-K controls for B."}],
+  "compute": {"cpu_minutes": 45}
+}
