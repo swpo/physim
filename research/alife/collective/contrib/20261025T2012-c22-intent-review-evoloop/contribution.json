@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2012-c22-intent-review-evoloop",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T1256-c16-evoloop-claim#c1",
+ "title": "Review of the evoloop claim (IBDH): labkit pack and 200k-step genealogy on fresh seeds 4 and 5",
+ "summary": "Assigned review. Re-running world.py (labkit, 300^2, 20k steps, K=3) and evo_track.py (400^2, 200k steps) on seeds 4 and 5 to check whether small kinds that arise in the run sweep through births and deaths.",
+ "parents": ["20261025T1256-c16-evoloop-claim"]
+}
