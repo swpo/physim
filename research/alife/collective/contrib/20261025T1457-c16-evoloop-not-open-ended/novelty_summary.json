@@ -1,0 +1,102 @@
+{
+ "seed1": {
+  "readout_genotypes_seen": 172,
+  "established_ge20": [
+   [
+    2000,
+    "11|447777777777777",
+    73
+   ],
+   [
+    8000,
+    "12|4477777777777777",
+    63
+   ],
+   [
+    186000,
+    "3|4477777",
+    184
+   ],
+   [
+    188000,
+    "2|447777",
+    359
+   ],
+   [
+    188000,
+    "4|44777777",
+    60
+   ]
+  ],
+  "established_matching_44_plus_(side+2)x7": 5,
+  "max_peak_of_nonrule_genotypes": 13,
+  "last_new_established_t": 188000,
+  "dominant_side_final": 2,
+  "loops_final": 328
+ },
+ "seed2": {
+  "readout_genotypes_seen": 161,
+  "established_ge20": [
+   [
+    2000,
+    "11|447777777777777",
+    61
+   ],
+   [
+    78000,
+    "4|44777777",
+    214
+   ],
+   [
+    98000,
+    "3|4477777",
+    310
+   ],
+   [
+    104000,
+    "2|447777",
+    335
+   ]
+  ],
+  "established_matching_44_plus_(side+2)x7": 4,
+  "max_peak_of_nonrule_genotypes": 12,
+  "last_new_established_t": 104000,
+  "dominant_side_final": 2,
+  "loops_final": 337
+ },
+ "seed3": {
+  "readout_genotypes_seen": 155,
+  "established_ge20": [
+   [
+    2000,
+    "11|447777777777777",
+    70
+   ],
+   [
+    12000,
+    "12|4477777777777777",
+    41
+   ],
+   [
+    180000,
+    "4|44777777",
+    226
+   ],
+   [
+    198000,
+    "2|447777",
+    28
+   ],
+   [
+    230000,
+    "3|4477777",
+    323
+   ]
+  ],
+  "established_matching_44_plus_(side+2)x7": 5,
+  "max_peak_of_nonrule_genotypes": 12,
+  "last_new_established_t": 230000,
+  "dominant_side_final": 3,
+  "loops_final": 260
+ }
+}
