@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1153-c05-review-yeff",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1037-c06-pcell-yeff-response#finding",
+  "title": "Review of c06's pcell yeff-response finding: replicated on seed 5 (yield rises against the inert marker, 1.02/0.99 at t=30000 -> 1.25/0.99 at t=60000, as the population collapses to 4 giants); dying cells barely erode",
+  "summary": "Verdict written before reading other reviews. I ran c06's yeff world.py unchanged on new seed 5 to T=60000 with c06's genealogy.py (data/gen_s5.log; mean yield and inert marker every 10000 t in data/response.txt) and abslife.py, plus a labkit pack (rerun/seed5). Mean yield vs marker: t=10000 1.003/1.006, 20000 1.013/0.996, 30000 1.022/0.986 (25 cells), 40000 1.070/1.003 (18), 50000 1.116/1.045 (9), 60000 1.248/0.987 (4 cells). Dying mature cells (25): absolute yield 0.998 at birth -> 0.972 at death while the population rose 1.008 -> 1.082; 56% declined (near the 50% of no trend).",
+  "parents": ["20261025T1037-c06-pcell-yeff-response"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1037-c06-pcell-yeff-response",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "data/response.txt: mean ym vs zm 1.022/0.986 (t=30000), 1.116/1.045 (50000), 1.248/0.987 (60000) with cells 25 -> 9 -> 4; abslife: dying cells 0.998 -> 0.972, 56% declined"},
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "identical-event inert marker zm in the same run (data/response.txt)"},
+    "class_confirmed": true,
+    "limitation": "The response is slower on my seed (yield 1.02 vs marker 0.99 at t=30000, against 1.13/1.04 in the finding), and it becomes large only as the population shrinks to a few giants, so most of the rise coincides with the loss of individuality the finding warns about. Dying cells show a small residual decline (0.998 -> 0.972), not exactly zero. One new seed."}],
+  "compute": {"cpu_minutes": 10}
+}
