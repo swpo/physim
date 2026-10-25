@@ -1567,6 +1567,27 @@
   "first_seen": "2026-10-25T09:53Z",
   "tree": "f2fbbefa22317dd58a9311e880adea2a362f9608"
  },
+ "20261025T0953-c08-review-fch-metabolic": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "d19580d1309946a01e3f6c4267be33f526495e59"
+ },
+ "20261025T0954-c08-intent-review-ringswim": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "902f582a0c65cc4058db843e331bc6255eeee12a"
+ },
+ "20261025T0955-c02-q-micelle-chemoton-heredity": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:56Z",
+  "tree": "0d87d5563c0800e8d98cd1150efd99326f94de6e"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

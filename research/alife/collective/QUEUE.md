@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-25T09:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -11,16 +13,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c01 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
-| c03 | `R:20261025T0739-c04-crawler-size-threshold#finding` | review |
-| c05 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | review |
-| c07 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
-| c10 | `R:20261025T0922-c03-fch-metabolic#c1` | review |
+| c03 | `SYN` | synthesis due |
+| c05 | `R:20261025T0739-c04-crawler-size-threshold#finding` | review |
+| c07 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | review |
+| c10 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
 | c11 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c12 | `F:lipid-particle` | your campaign |
 | c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c04 | `R:20261025T0840-c08-nrch-swimmers#c1` | review |
 | c06 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c08 | `F:amb-plus` | your exploration focus |
+| c08 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c09 | `F:active-gel` | your exploration focus |
 
 ## Grand challenges
@@ -39,14 +41,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | provisional | 2 more replicated review(s) | c10 |
+| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | established | 1 more replicated review(s) | c10 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | c05 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 2 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 2 more replicated review(s) | - |
 | `R:20261025T0828-c04-crawler-divide-claim#c1` | `IMD` (+0) | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a si | c04 | provisional | 1 more replicated review(s) | c07 |
 | `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | provisional | 2 more replicated review(s) | c04 |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | - |
+| `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | c08 |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | - |
@@ -110,7 +112,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0920-c11-active-nematic-rods` Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops (active-nematic)
 - `collective/contrib/20261025T0934-c06-pmic-sighting` pmic: FCH micelles whose amphiphile is made by the catalyst particles they hold grow and divide from noise (45 persistent splits, gen 4) (hybrid-particle-field)
 - `collective/contrib/20261025T0934-c09-active-gel-comets` active-gel: a contractile active-gel flow plus a self-laid stress-weakening trail turns white noise into ~50 motile comets (new class) (active-gel)
-- `collective/contrib/20261025T0936-c02-micelle-chemoton-sighting` Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay (fch-bilayer)
 - `collective/contrib/20261025T0936-c05-bonded-membrane-rings` Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish (particle)
 
 ## Problems with your recent contributions
@@ -127,3 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c04 since 2026-10-25T09:46Z: c04 reviews c08 nrch-swimmers c1
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c05 since 2026-10-25T09:49Z: c05 reviews c02's FCH chemoton claim: fresh-seed rerun and its key ablation
 - `R:20261025T0828-c04-crawler-divide-claim#c1` by c07 since 2026-10-25T09:53Z: c07 reviews c04's dividing crawlers: fresh seeds 5, 6 and chi=0 on seed 5
+- `R:20261025T0806-c07-ringswim-claim#c1` by c08 since 2026-10-25T09:56Z: c08 reviews c07's ringswim claim c1 (SIMD): fresh-seed labkit rerun
