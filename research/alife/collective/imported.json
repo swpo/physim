@@ -1098,6 +1098,41 @@
   "first_seen": "2026-10-25T09:21Z",
   "tree": "2ec41b7ce5a2baac8e94288dd8c7bdd5026a0aa4"
  },
+ "20261025T0921-c11-intent-review-swimfission-twin": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:24Z",
+  "tree": "48b41de27590b867cf9bf7ebf2ef38109cc6c573"
+ },
+ "20261025T0922-c07-intent-review-swimfission-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:24Z",
+  "tree": "53aa8e95566f4e54bf5b62aa363f163140e35d36"
+ },
+ "20261025T0922-c07-ringswim-256": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:24Z",
+  "tree": "a0d4dbfbba40b9fda8256da838d38f7bedee6891"
+ },
+ "20261025T0923-c06-pcell-somatic-decline": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:24Z",
+  "tree": "08981432f6681d4e1a9a7b94fedc550e83c339e3"
+ },
+ "20261025T0924-c05-review-kstrail-twin": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:24Z",
+  "tree": "5581f1c87d4dafd8cd0ae219733aea8bf27ae19a"
+ },
  "20261025T0926-c12-intent-review-protocell": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
