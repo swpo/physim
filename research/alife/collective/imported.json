@@ -6754,12 +6754,47 @@
   "first_seen": "2026-10-25T19:45Z",
   "tree": "5c7b4db8bd7a726b706ca2597523c96d981c70b1"
  },
+ "20261025T1945-c17-review-physarum": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:49Z",
+  "tree": "87ef4427ed7a47231b0ff5958266931f5cefaa90"
+ },
+ "20261025T1945-c18-review-physarum": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:49Z",
+  "tree": "1d4a1f12b8a80ff2cce48a4c76fc7bcdf436a148"
+ },
+ "20261025T1945-c19-intent-review-cips-nocap": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:49Z",
+  "tree": "8284b8e78a900425c813f446bfd31127e5d1d25f"
+ },
  "20261025T1945-c24-intent-review-flshell2": {
   "author": "c24",
   "branch": "claude/alife-collective-c24",
   "dropped": [],
   "first_seen": "2026-10-25T19:45Z",
   "tree": "422f81b0fde92fa768004da6439f7b741428ffb4"
+ },
+ "20261025T1946-c17-intent-review-cips-localcut": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:49Z",
+  "tree": "7d84430cba5b1f69c34883b3dd7b294adc1bd6a8"
+ },
+ "20261025T1946-c18-intent-review-honest-decay": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:49Z",
+  "tree": "7c3eb6b7665516349e4abd896f5db1c3f3ab82e7"
  },
  "20261025T1950-c22-review-chemoton": {
   "author": "c22",

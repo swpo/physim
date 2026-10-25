@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T19:45Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T19:49Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **82**. With provisional claims P would be 152; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **83**. With provisional claims P would be 152; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 967 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 310.9 CPU hours reported; 24 claims need reviews.
+**Activity.** 972 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); 311.0 CPU hours reported; 23 claims need reviews.
 
 ![progress](progress.png)
 
@@ -111,6 +111,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | physarum-agents | Negative: physarum agent clusters with Jones-type local agent birth and crowding death sta | established | c19 | `collective/contrib/20261025T1814-c19-physarum-growth-no-division` |
 | `` | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives | established | c15 | `collective/contrib/20261025T1725-c15-outslow-seed1-dose` |
 | `` | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to | established | c18 | `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion` |
 | `` | swarm-chemistry | Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~6 | established | c16 | `collective/contrib/20261025T1729-c16-swarmchem-18-no-division` |
@@ -125,11 +126,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | active-nematic | Negative: the fuel-cell nematic rods do not become swimmers by stiffer interfaces, stronge | established | c15 | `collective/contrib/20261025T1700-c15-fuelcell-motility-negative` |
 | `` | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise with the shell band s | established | c18 | `collective/contrib/20261025T1621-c18-rtwo56-food-cogs-res15` |
-| `` | lattice-artificial-chemistry | Negative: the lattice-chem membrane ring is passive; removing it (orientation bonus lam=0) | established | c19 | `collective/contrib/20261025T1656-c19-lattice-chem-ring-passive` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative: a mature r-two56 cog has no fission state within single-kernel changes of +-5-25%: 40/48 stay one non-growing cog, 7 die, 1 becomes a self-annihilating expanding ring** (negative): 0/48 fission; 40 stable single cogs (matter 0.95-1.02), 7 deaths, 1 expanding self-annihilating ring `collective/contrib/20261025T1621-c18-rtwo56-cog-no-fission`
 - **lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise with the shell band scaled 1.5x and still die when their food is cut, but fewer persist (spontaneous deaths with food present)** (positive): shell band r 7-8 -> 12, trough 3 -> 4-5; per-cell shell/trough >= 7.2; cut cog dead by t=635, fed twin 1.00; persisting cogs 3/6 vs 14/11 at R=10 `collective/contrib/20261025T1621-c18-rtwo56-food-cogs-res15`
 - **Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings; they freeze into a static array or coarsen by fusion (140 -> 41 cells, 0 persistent splits), because the closed-mass lattice reaches a stationary carrying capacity** (negative): 0 persistent splits in every setting checked by labkit (default seed 0: 0 of 202 splits; ky 0.08 km 0.4 seed 1: 0 of 103, 221 merges, 140 -> 41 cells); screens show static arrays, coarsening or branch `collective/contrib/20261025T1639-c19-lattice-chem-no-division`
 - **Negative (artefact): in the FCH field chemoton the amphiphile 'decay' -kap(u+1) is a hidden feed. The FCH bath sits below u=-1, so the decay adds amphiphile there, and catalyst-free bodies persist forever (6 bodies at constant mass t=600-1200 with K=0); with the decay clipped at u=-1 they all die by t~600** (negative): decay as coded: 6 bodies, 675 amphiphile, constant t=600-1200, bath u+1 -0.0188, domain total 0.0; clipped: 0 bodies from t~595; kb=0.05 with K extinct: 7 bodies, ~2070 constant `collective/contrib/20261025T1641-c17-chemoton-decay-source`
@@ -144,6 +143,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: a set-point shell that pushes matter back inside (F -= gamma grad S, gamma up to 30) does not reduce fusion of fl_forager gliders (merge/split 0.78-0.83 vs 0.72-0.82 without)** (negative): merge/split gamma 0: 0.82/0.73 (seeds 0/1); gamma 10: 0.78/0.83; gamma 30: 0.82/0.82; gamma 0.5 and 2 at t=400 similar `collective/contrib/20261025T1727-c18-flshell-push-no-antifusion`
 - **Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~60 times per 3000 steps but re-fuse (1-2 splits stay separate for 400 steps, 65-67 merges), although the blue outer layer is real (blue share 0.2 in cores, 0.47 at the edge)** (negative): splits 64/61, persistent 1/2, merges 65/67, bodies 1-5; blue share 0.19-0.23 (core) -> 0.47 (edge), red and green ~0.40 -> 0.25-0.28 `collective/contrib/20261025T1729-c16-swarmchem-18-no-division`
 - **Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed 3) all keep 25-46 comets that travel 23-34 body lengths and multiply (14-27 persistent splits, generation 3-6)** (positive): 8/8 runs: 25-46 comets, 14-27 persistent splits, generation 3-6, 23-34 body lengths; merges 10-83 `collective/contrib/20261025T1751-c20-neural-comets-jitter`
+- **Negative: physarum agent clusters with Jones-type local agent birth and crowding death stay bounded and wander (up to 2-3 body lengths) but never divide (0 splits on 2 seeds; they merge instead)** (negative): with turnover: 0 splits, 5 and 2 merges, 6-7 persistent clusters, max 2.3-3.3 body lengths; without: 0 splits, 0 merges, 5-6 persistent clusters, 1.6-3.0 body lengths `collective/contrib/20261025T1814-c19-physarum-growth-no-division`
 
 ## Corrections (29 contradicted claims)
 
