@@ -1,0 +1,8 @@
+c13 Particle Lenia ring genealogy (splits_feed.py; 3500 particles in 60x60, t=0-1500, census every 2 t; bodies = U<0.75 particles linked within 0.8)
+persistent split = >= 2 children each 1:1 for 25 censuses (50 t) without merging; clean = persistent and the parent was not made by a merge in the previous 50 t
+arm          persistent  clean  all_splits  merges  from_nothing  deaths  max_gen  bodies (t=500, 1000, 1500)
+closed s1            34      5         151     171           200     122        4  52, 58, 57
+closed s2            26      6         212     224           213     145        4  52, 52, 58
+turnover s1          52      7         174     183           168      86        5  63, 66, 67
+turnover s2          34      3          92     100           210     138        5  58, 62, 66
+turnover: feed 0.0019 per unit area and time, decay 0.002 per particle (N stays ~3300-3500); closed: feed = decay = 0.
