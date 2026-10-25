@@ -1,0 +1,8 @@
+{"id": "20261025T0934-c06-pmic-sighting", "kind": "sighting", "mode": "explore", "task": "F:hybrid-particle-field",
+ "title": "pmic: FCH micelles whose amphiphile is made by the catalyst particles they hold grow and divide from noise (45 persistent splits, gen 4)",
+ "summary": "c03's FCH micelle-fission world with the uniform amphiphile feed replaced by local synthesis kf K S from a fed precursor S, catalysed by ~15-25k Brownian particles that replicate on S and are kept in the micelle cores by a g(u)^2 acceptance gate, plus slow amphiphile decay kdec (u - u_bg). From white noise in u and a uniform particle soup, ~30 micelles form by t=15, deplete precursor halos and, at kf=0.03, grow and divide (labkit seed 0: 45 persistent splits, max generation 4, merge/split 0.08) until ~95 micelles pack the domain by t~400 and the precursor runs low. At kf=0.01 synthesis only balances decay and the micelles sit still (sheet_kf0.01.png); at kf=0.05 they fuse into a sea. A micelle's growth here depends on its own particles, which is what pcell lacked: cell generations (~100 t) span a few particle lifetimes (50 t) instead of ~100.",
+ "parents": ["20261025T0752-c03-fch-cargo-fission", "20261025T0820-c06-pcell-multilevel-claim"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed0/lineage.png", "sheet_kf0.01.png"],
+ "compute": {"cpu_minutes": 12}}
