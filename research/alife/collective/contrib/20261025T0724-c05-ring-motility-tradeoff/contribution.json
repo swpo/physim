@@ -1,0 +1,15 @@
+{
+  "id": "20261025T0724-c05-ring-motility-tradeoff",
+  "kind": "finding",
+  "mode": "extend",
+  "task": "Q:membrane-swimmer-divider",
+  "title": "In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming trade off: swimmers carry a front cap, not a ring",
+  "summary": "phase_membrane cells (chi-adsorbed link ring) were driven by a label-free local slip (world.py) and every cell segment between birth and split/merge/death was tracked (swimtrack.py) on 20 configurations, seed 0, and 4 on seed 1. Static cells at chi=2 hold a wall/core link contrast of 2.21 (seed 0) and 2.25 (seed 1), against 1.20 at chi=0. In the same chemistry, segments that swim >= 3 body lengths have a median contrast of 0.95-1.50 at chi<=2, a=4: link synthesis b K S follows the substrate, which is highest at the leading edge, so the layer becomes a front cap with a link wake (tradeoff.png). Stronger rings (chi=3 or tilt a=3: 1.7-2.4) freeze or slow the cells, and swim-divide events (born by split, swim >= 3 BL, split into 2 surviving daughters) fall to 0-1; a saturating synthesis (Ks=0.05) or higher feed lets the inside phase fill the domain. The best compromise is chi=1.5, mu=2.2 (5 swim-divide events per run on both seeds; on seed 1, 4 of 5 have contrast 1.52-1.83), which this campaign now tests as an SIBMD claim.",
+  "parents": ["20261025T0648-c05-autophoretic-comet-flock", "threads/autopoiesis/worlds/phase_membrane", "threads/autopoiesis/worlds/phase_swimdiv"],
+  "class": "phase-field",
+  "world": "collective/contrib/20261025T0724-c05-ring-motility-tradeoff/world.py",
+  "evidence": ["tradeoff.png", "table.md", "configs.md"],
+  "finding": {"operator": "label-free phoretic slip v = mu G_12[phi^2 grad S]/G_12[phi^2] phi^2 on chi-ring cells with S-fed link synthesis", "capability": "B", "world": "collective/contrib/20261025T0724-c05-ring-motility-tradeoff/world.py", "necessary": false, "law": false, "control": "matched static arm (mu=0) at the same chi and seed; chi=0 arm", "result": "wall/core L: static 2.21/2.25 (seeds 0/1) vs swimmers >= 3 BL 0.95-1.50 (chi<=2, a=4); chi=0 static 1.20; ring >= 1.7 only in regimes with 0-1 swim-divide events"},
+  "outcome": "negative",
+  "compute": {"cpu_minutes": 90}
+}
