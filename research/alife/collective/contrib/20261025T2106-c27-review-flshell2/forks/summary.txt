@@ -1,0 +1,4 @@
+starve-one-daughter forks on fresh seeds (dfork.py, RAD=9, 300 t after the fork); first dip only
+seed 11: fork t=150 starved m0=62.2; first <20%: 288.0; first <10%: None; min in first 150 t 0.19; fed twin same daughter min in first 150 t 0.72, end 1.38
+seed 12: fork t=150 starved m0=98.5; first <20%: 284.0; first <10%: 284.0; min in first 150 t 0.00; fed twin same daughter min in first 150 t 0.35, end 0.71
+seed 13: fork t=435 starved m0=114.5; first <20%: 691.0; first <10%: 691.0; min in first 150 t 0.47; fed twin same daughter min in first 150 t 0.80, end 0.91
