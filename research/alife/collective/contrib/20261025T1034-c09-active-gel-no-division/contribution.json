@@ -1,0 +1,17 @@
+{
+  "id": "20261025T1034-c09-active-gel-no-division",
+  "kind": "finding",
+  "mode": "extend",
+  "task": "F:active-gel",
+  "title": "active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist",
+  "summary": "I looked for division in the fed-comet world (contractile active-gel flow, generator made from a regrowing substrate, self-laid regulator trail). In 11 labkit runs (zeta 40-60, substrate regrowth ks 0.02-0.05, Da 3-4, 2-3 seeds each, T=200-300) the comets keep ~5 px bodies and swim (22-56 moving tracks per run), but there are 0 persistent splits; the 1-35 raw splits re-merge, and new comets come from nucleation (51-150 per run) in substrate-rich gaps, while collisions fuse comets (merges 37-149). When the uniform fed state is made linearly stable (ks=0.02 with zeta 40-50) no comet survives at all, so in this family comets exist only where the background also nucleates new ones: spontaneous generation, not reproduction. Division will need a growth-limited body that is larger than one contractile focus (e.g. a conserved generator pool per body, or a regulator that accumulates at the head centre faster than the comet escapes it).",
+  "parents": ["20261025T1016-c09-active-gel-comets-claim"],
+  "class": "active-gel",
+  "world": "world_z45.py",
+  "evidence": ["table.txt", "img/sheet_z45_ks05_s0.png", "img/lineage_z45_ks05_s0.png", "img/quick_zeta40-50_ks02.png"],
+  "finding": {"operator": "contractile active-gel advection of an autocatalytic, substrate-fed stress generator with a self-laid regulator trail", "capability": "D", "world": "world_z45.py", "necessary": false, "law": false,
+    "control": "parameter scan over zeta, ks, Da with labkit lineage (merge-aware persistent splits) on 2-3 seeds each",
+    "result": "0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90"},
+  "outcome": "negative",
+  "compute": {"cpu_minutes": 25}
+}
