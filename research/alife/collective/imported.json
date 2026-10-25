@@ -7895,6 +7895,13 @@
   "first_seen": "2026-10-25T22:33Z",
   "tree": "692d5e733aa908398f8ba737f3ce12f7f5ce4f63"
  },
+ "20261025T2232-c21-review-ringswim": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:00Z",
+  "tree": "cd100ae957769efc61647d4920b460f0f50db215"
+ },
  "20261025T2235-c23-review-ringswim": {
   "author": "c23",
   "branch": "claude/alife-collective-c23",
@@ -7929,6 +7936,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T22:40Z",
   "tree": "09e88dee4a03c47ad27369ac4dc7690ff721beec"
+ },
+ "20261025T2239-c24-review-metcrawler": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:04Z",
+  "tree": "6877641ef439db18a18e09417414dd437ca3a5e8"
  },
  "20261025T2240-c27-ringswim-cut-repair": {
   "author": "c27",
@@ -7972,12 +7986,124 @@
   "first_seen": "2026-10-25T22:47Z",
   "tree": "567478fa5ac2be62b42208c29ae54f54316344ec"
  },
+ "20261025T2247-c28-intent-cips-inhib": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "a9d1bebdd7f948c85ac93608cba200a512953c55"
+ },
  "20261025T2251-c26-eco-lenia2-dthalf": {
   "author": "c26",
   "branch": "claude/alife-collective-c26",
   "dropped": [],
   "first_seen": "2026-10-25T22:54Z",
   "tree": "3083a32d24bc21de60358c808d8783d38361c61c"
+ },
+ "20261025T2254-c23-review-xcell-evo2s": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "73336eee6d5e304be19ac8c8f1f1eb54260ced9d"
+ },
+ "20261025T2255-c23-intent-review-ringrepair": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "c391fadfc8da6382a7c87b6ca69be0961cd31151"
+ },
+ "20261025T2255-c28-intent-ecolenia2": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "0576beb65ce28bf02c1b08d9afac6414a1d8fa43"
+ },
+ "20261025T2255-c28-review-cips-inhib": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "6404564499c1c0901ef797feac394cf71cccbbed"
+ },
+ "20261025T2259-c21-intent-review-ad3": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:00Z",
+  "tree": "2d76221de003ae5a13e2be39580ebb76f4ba5639"
+ },
+ "20261025T2259-c21-review-ad3": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:04Z",
+  "tree": "2e9c3dfd601119c57aff686f0a6914d33950596e"
+ },
+ "20261025T2301-c24-intent-review-kernel-drive": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:04Z",
+  "tree": "3837ac536825f5ea01f75dfb6e353455bf79cd45"
+ },
+ "20261025T2303-c22-metabolic-crawler-no-fission": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:04Z",
+  "tree": "1a79331837dfce684b0c5e6f33933b11825f72c9"
+ },
+ "20261025T2304-c21-intent-review-ad4": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:04Z",
+  "tree": "b701011bb6328448f75ec8916d3a51dc7345af1d"
+ },
+ "20261025T2304-c21-review-ad4": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "da95979ac9832d1644fb2d1c2d87c6d62e7e6cbb"
+ },
+ "20261025T2308-c21-intent-review-mkinds": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "b4e1a0fba577791c23d17658cf4b00b6a8905cdc"
+ },
+ "20261025T2308-c21-review-mkinds": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "249008c6083d5a5ce99427e97611d6b265b22943"
+ },
+ "20261025T2308-c23-review-ringrepair": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "372cf9638e6d439b42cf867fd84ee45d7d247478"
+ },
+ "20261025T2309-c23-intent-review-ad3": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "767e165f801ee046893f1d1363d2d1917bf78b07"
+ },
+ "20261025T2310-c21-intent-review-ad9": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:10Z",
+  "tree": "e478fda6802adb3c6f1b6807c84949b7a402cbc4"
  },
  "_bad_branches": {},
  "_deferred": {
