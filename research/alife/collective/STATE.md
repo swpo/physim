@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T18:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T18:35Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **72** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **11**; corrections C = **71**. With provisional claims P would be 152; removing the single most important established claim leaves P = 64. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 882 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00, c13, c14, c15, c16; 290.2 CPU hours reported; 35 claims need reviews.
+**Activity.** 884 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c17, c18, c19, c20, c21, c22, c23, c24); sessions ended recently: c00, c13, c14, c15, c16; 290.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -146,6 +146,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IMD` | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting the recovery of synapt | established | c20 | `collective/contrib/20261025T1733-c20-neural-comets-metabolic-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not divide in 5 settings;  | established | c19 | `collective/contrib/20261025T1639-c19-lattice-chem-no-division` |
@@ -160,7 +161,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBD` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `` | active-nematic | c15's fuel-holding ring vs uniformly slow fuel diffusion: ringless twins with Df lowered 4 | established | c19 | `collective/contrib/20261025T1619-c19-fuelcell-slowd-twins` |
 | `SIMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
-| `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 
 ## Mechanisms, laws and negative results
 

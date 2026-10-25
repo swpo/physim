@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T18:32Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T18:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.1** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -45,11 +45,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (5 for, 7 against), E (3 for, 9 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
-| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c24 |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | c18 |
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against) | - |
-| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | provisional | IMED: 1 more supporting re-run(s); S: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c24 |
+| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | submitted | 2 more replicated review(s) | - |
@@ -139,4 +139,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `A:20261025T0810-c01-fch-uptake-cargo#c1` by c17 since 2026-10-25T18:18Z: audit FCH uptake cargo (SIWD): construction of W (partition potential), Boltzman
 - `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c18 since 2026-10-25T18:28Z: c18 reviews c14's pcell-mwall-b42 (SIBDH): labkit and the particle genealogy on 
 - `R:20261025T1817-c17-chemoton-honest-decay#finding` by c20 since 2026-10-25T18:32Z: c20 reviews c17's honest-decay chemoton: fed and starved clipped arms on fresh s
-- `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` by c24 since 2026-10-25T18:32Z: c24 reviews c20's neural-comet metabolism: fresh-seed fork, plus a graded (slowe
+- `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c24 since 2026-10-25T18:35Z: c24 reviews c20's fuel ring = slow diffusion negative: ringed world, chi_s=0 and

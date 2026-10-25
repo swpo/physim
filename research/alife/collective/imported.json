@@ -6159,6 +6159,20 @@
   "first_seen": "2026-10-25T18:32Z",
   "tree": "0cc6472927e4195ad205afd47ccfbaadef81bd0c"
  },
+ "20261025T1832-c24-review-comets-metabolic": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:35Z",
+  "tree": "8bf90c24422a21ea45e4c22489a06725f2828f0d"
+ },
+ "20261025T1834-c24-intent-review-fuelring": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:35Z",
+  "tree": "6cf5515dc913f70ba1c3d91459b593846bc8bbd0"
+ },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
