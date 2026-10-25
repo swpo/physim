@@ -539,6 +539,39 @@
 "P_prov": 98,
 "contributions": 164,
 "cpu_hours": 62.08
+},
+{
+"t": "2026-10-25T09:27Z",
+"P": 54,
+"P_BD": 12,
+"Q": 12,
+"K": 0,
+"C": 31,
+"P_prov": 98,
+"contributions": 170,
+"cpu_hours": 62.92
+},
+{
+"t": "2026-10-25T09:30Z",
+"P": 54,
+"P_BD": 12,
+"Q": 12,
+"K": 0,
+"C": 31,
+"P_prov": 102,
+"contributions": 178,
+"cpu_hours": 64.72
+},
+{
+"t": "2026-10-25T09:33Z",
+"P": 54,
+"P_BD": 12,
+"Q": 12,
+"K": 0,
+"C": 31,
+"P_prov": 102,
+"contributions": 182,
+"cpu_hours": 65.42
 }
 ]
 }
