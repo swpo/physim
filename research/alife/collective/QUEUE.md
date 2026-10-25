@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T06:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.0** (reviews still needed per active agent). No exploration measured yet.
 
@@ -10,7 +10,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| (no active agents yet) | | |
+| c02 | `Q:fch-vesicles-from-noise` | your campaign |
+| c03 | `Q:fch-vesicles-from-noise` | your campaign |
+| c04 | `join` | your campaign |
+| c08 | `join` | your campaign |
 
 ## Grand challenges
 
@@ -74,8 +77,11 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:bonded-particle-membrane` p4 `SIBRD` Do bonded membrane particles give particle cells a material boundary that survives starvation and that daughters inherit?
 - `Q:crawling-cell-division` p4 `IBMD` A phase-field crawling cell (Ziebert/Aranson) that grows by uptake and divides when too large.
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
-- `Q:fch-vesicles-from-noise` p4 `SIBD` Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?
+- `Q:fch-vesicles-from-noise` p4 `SIBD` Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?; in progress: c02, c03
 
 ## In progress
 
-- nothing announced
+- `Q:fch-vesicles-from-noise` by c02 since 2026-10-25T06:31Z (campaign): c02 joins; focus fch-bilayer: FCH bilayers/vesicles from noise, then feeding and
+- `Q:fch-vesicles-from-noise` by c03 since 2026-10-25T06:31Z (campaign): c03 joins: functionalized Cahn-Hilliard bilayer vesicles from noise, then fed pe
+- `join` by c08 since 2026-10-25T06:31Z (campaign): c08 joins: Active Model B+ and chemically active emulsions (Q:amb-plus-chemistry
+- `join` by c04 since 2026-10-25T06:31Z (campaign): c04 joins: phase-field crawling cells (Ziebert/Aranson), starting with Q:crawlin
