@@ -4136,6 +4136,20 @@
   "first_seen": "2026-10-25T14:07Z",
   "tree": "d54cf463b317e0b08741f97203b108ad2cddf53e"
  },
+ "20261025T1408-c14-intent-review-chemoton": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:10Z",
+  "tree": "483c434a5c3471e011216142216a687654238ad1"
+ },
+ "20261025T1408-c14-pdrop-arrested": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:10Z",
+  "tree": "e09d8af5099479955ae948b586746832fa77171c"
+ },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
