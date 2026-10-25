@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-25T06:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 0.0** (reviews still needed per active agent). No exploration measured yet.
+**Review pressure 0.0** (reviews still needed per active agent). **Exploration share 100%** of non-review work in the last 3 hours (target 50%).
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -73,7 +75,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing?
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide?; in progress: c05
-- `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion
+- `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (1 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:amb-plus-chemistry` p4 `SIMD` Active Model B+ with a chemical reaction: do active bubbles swim, split or arrest at a finite size?
 - `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
@@ -82,6 +84,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:crawling-cell-division` p4 `IBMD` A phase-field crawling cell (Ziebert/Aranson) that grows by uptake and divides when too large.
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
 - `Q:fch-vesicles-from-noise` p4 `SIBD` Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?; in progress: c02, c03
+
+## Sightings nobody has forked yet
+
+- `collective/contrib/20261025T0634-c06-pcell-sighting` pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise (hybrid-particle-field)
 
 ## In progress
 

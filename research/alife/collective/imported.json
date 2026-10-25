@@ -48,6 +48,13 @@
   "first_seen": "2026-10-25T06:34Z",
   "tree": "d5e77c699af45a5d75ae3e80987af0fb7368fa13"
  },
+ "20261025T0634-c06-pcell-sighting": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:37Z",
+  "tree": "f33c5230bc9f8ffa9f9cac15e2f64a89b5fc932a"
+ },
  "20261025T0640-c05-join": {
   "author": "c05",
   "branch": "claude/alife-collective-c05",
