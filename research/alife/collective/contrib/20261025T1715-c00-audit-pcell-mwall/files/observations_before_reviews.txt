@@ -1,0 +1,32 @@
+Auditor observations written BEFORE reading the collective's reviews (seed 41 done, seed 43 running).
+Setup: labkit run of the unchanged claim world.py via an observer wrapper (code/world_gen.py) that records the claim's
+own genealogy.cells_of every 50 steps; bit-identical trajectory verified (code/equiv.py, seed 41, 1000 steps: identical True).
+Seed 41 (200 frames x 500 steps, 608 s):
+- S: t=0 sheet frame is uniform noisy field; ~20 cells by t=4000 everywhere in the domain.
+- I: 18-25 components, occupancy 0.30-0.42, 22 persistent tracks; tracks.png cells compact and bounded but growing (area ratio 15).
+- B: radial M rim/core 3.16, rim/out 4.59, 110/125 membrane-like; profile mirrors the wall indicator 4phi(1-phi)
+  (wall rim/core 3.12). log M vs w per cell: slope 3.46 (chim=4), R2 0.63 -> adsorption layer set by the designed drift.
+- D: labkit 10 persistent splits, max gen 2, merges 7, merge/split 0.389; genealogy 9 persistent splits gen 2, 1 merge.
+  strips_s41.png: elongated cells pinch into two walled daughters (17->[39,40], 30->[31,32], 27->[42,43]).
+- H: pop mean y 1.000->1.170 (z 1.000->1.039); unweighted cell mean 1.001->1.140 (z 1.010).
+  mature deaths 19: death pct 0.020 (z 0.471); low-born die 10/15 vs high-born 2/14 (Fisher p 0.008; z 5/12 vs 7/17 p 1.0).
+  Price: within-cell -> +0.001, between +0.168 (cells that die +0.077, other cells' growth +0.104, appear -0.013); z within +0.042 (drift).
+  yield causes growth: dlog(np)/dy = 1.78 over 2000 steps (z -0.04); Spearman(ym, np) 0.80 (z 0.12).
+  split heritability ym corr 0.89 slope 0.93.
+  ARTEFACTS: 7/19 mature 'deaths' are not physical within 3000 steps (cell persists below MINP=20 particles; K~0.6 stays);
+  12/19 physical (K, L, wall -> 0 within ~1000 steps). 10/19 dying cells are 'appear' cells (no parent, first rank 0.02).
+  Split-born only: low-born die 3/6 vs high-born 2/12 (p 0.27): the birth-rank fate effect rests mostly on 'appear' cells.
+- Track: labkit track 58 (gen 2, split from 47 at t=35000, alive to 100000, M membrane-like at t=68000) = genealogy cell 42,
+  ym 1.04->1.17 (rank 0.44-0.71) while low-y small cells die around it.
+- Numerics: --dt only relabels time (labkit help: 'the world's own numerics are untouched'; step() has no dt), so dt/2 via --dt
+  is vacuous. Resolution variant must set P['scale'] with --size.
+Seed 43 (200 frames, 594 s):
+- S/I: same formation from uniform noise; 22-25 components, occupancy 0.40, 22 persistent tracks.
+- B: M rim/core 3.50, rim/out 4.55, 128/136 membrane-like (wall 3.93/4.40); log M vs w slope 3.45, R2 0.61.
+- D: labkit 11 persistent splits, max gen 3, merges 4 (m/s 0.18); genealogy 11 persistent, gen 2, 0 merges; strips: 18->[47,48] dumbbell pinch.
+- H: pop mean 1.001->1.178 (z 0.945); unweighted 1.133 (z 0.946); death pct 0.005 (z 0.58); low-born 9/14 vs high-born 2/15
+  (p 0.008; z p 0.70); Price within +0.022, between +0.155 (die +0.070, others +0.100, appear -0.016); z within -0.051.
+  growth coef 2.09 (z -0.08); split heritability corr 0.70.
+  ARTEFACTS: only 8/17 mature deaths physical; 9/17 objects persist below MINP; 10/17 dying cells are 'appear' cells.
+  Physical deaths only: pct 0.000 on both seeds (z 0.49/0.58); low-born die 6/15 vs 1/14 (s41, p 0.08), 5/14 vs 0/15 (s43, p 0.017).
+  Split-born only: 2/6 vs 2/12 (p 0.57).

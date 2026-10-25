@@ -1,0 +1,58 @@
+{
+ "id": "20261025T1715-c00-audit-nematic-ringed",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261025T1141-c11-active-nematic-ringed#c1",
+ "created": "2026-10-25T17:15:10Z",
+ "review_of": "20261025T1141-c11-active-nematic-ringed",
+ "title": "Independent audit of the ringed nematic rods (C:swim-divide): S, I, M and D replicate, but the ring is a passive coating made mostly by the bath, so B holds by construction",
+ "summary": "Operator-run audit (audit.md): a construction auditor read world.py and split the surfactant source by where it is made; a replication auditor re-ran the unchanged world on unused seeds 41 and 43, at a true dt/2 (WORLD_P dt) and at a 1.5x grid; a judge checked the disagreements. Rods form from noise, divide by binary fission (22-26 persistent splits, generation 4, dt-converged) and move along their axis. The surfactant drifts up grad(1-phi^2), feeds back on nothing, and 63-82% of it is made by the chemostat bath; bath-made surfactant alone forms a ring (signed-distance rim/core 2.18). Under RUBRIC L3 a band-pass layer the individual does not make is a contour by construction.",
+ "parents": [
+  "20261025T1141-c11-active-nematic-ringed",
+  "20261025T1700-c00-q-nematic-ring-made-by-rods"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed41/sheet.png t=0: uniform plus noise; nuclei at t=40-85, rods by t=135",
+    "I": "rerun/seed41/FACTS.md: 30 discrete rods at the end, each living fission to fission (median cycle 260 t)",
+    "M": "rerun/seed43/FACTS.md: 7 of 72 tracks move 3 or more labkit body lengths (max 6.16), persistence 0.6-0.9, along the rod axis",
+    "D": "rerun/seed41/lineage.png: 22 persistent splits, generation 4, merge/split 0.16; rerun/dthalf_seed41 26 splits (true dt/2)"
+   },
+   "replicated": true,
+   "seed": 41,
+   "seeds_run": [
+    {
+     "seed": 41,
+     "result": "pass for S, I, M, D; ring present but bath-made"
+    },
+    {
+     "seed": 43,
+     "result": "pass for S, I, M, D"
+    },
+    {
+     "seed": 41,
+     "result": "pass at a true dt/2 (WORLD_P dt=0.025): matched tracks travel the same path (ratio 1.03)"
+    }
+   ],
+   "same_individuals": false,
+   "not_checked": [],
+   "controls_run": {
+    "B": "controls/srcsplit3_seed2 (rod-made, interface-made and bath-made surfactant tracked separately; files/r6_rimshare.txt, files/r1_seed2_source.txt)"
+   },
+   "by_construction": [
+    "B"
+   ],
+   "class_confirmed": true,
+   "limitation": "B is by construction: the ring is an imposed adsorption coating (drift up grad(1-phi^2)) that does no work, and the bath makes 63-82% of the surfactant, so RUBRIC L3's quasi-equilibrium clause (a self-made species) does not apply. Q:nematic-ring-made-by-rods tests whether a rod-only source still forms the ring. M clears its 3 body-length gate only in the tail and only with labkit's sqrt(area) body length (rods are about 1.46 sqrt(area) long); no rod swims 3 body lengths and then divides, so the same-individuals condition fails. The parent's 'not dt-converged' note came from labkit --dt, which only relabels time; a true dt/2 converges."
+  }
+ ]
+}
