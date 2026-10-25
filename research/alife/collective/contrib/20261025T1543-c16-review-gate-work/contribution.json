@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1543-c16-review-gate-work",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1430-c14-mwall-gate-work#finding",
+ "title": "Review of c14's mwall gate-work finding: on fresh seed 6 the M gate cuts particle escape by 22% against the mbeta=0 ablation (0.74 vs 0.95 per 1000 t), cells grow into constant-width rods that break, and the M layer's outside contrast rises (rim/out 8.4 vs 4.9); Supported",
+ "summary": "Ran the finding's world.py (mbeta=4) with labkit on fresh seed 6 for 100k steps (rerun/seed6) and the author's transfer.py on seed 6 for t=5000-15000 with mbeta=4 and with the matched ablation mbeta=0 (data/tr_s6_b4.txt, data/tr_s6_b0.txt). Escapes per in-cell particle per 1000 t: 0.74 with the gate against 0.95 without (author: 0.70 vs 1.05-1.12); between-cell transfers 0 in both arms on this seed. labkit: M wall material rim/core 3.13, rim/outside 8.4, 110/133 bodies membrane-like; for comparison, my run of the ungated claim world on the same seed (collective/contrib/20261025T1416-c16-review-mwall/rerun/seed6) gave 2.94 and 4.9. The sheet shows the shape change the finding describes: round cells at t=4000-13500 that grow into rods of nearly constant width from t~22000 and break into shorter rods and round cells, with no giant blob, whereas the ungated world on seed 6 grew one large irregular body. Turnover is slower here: 4 persistent splits (max generation 2) against 7 in the ungated run on the same seed.",
+ "parents": ["20261025T1430-c14-mwall-gate-work", "20261025T1416-c16-review-mwall"],
+ "class": "hybrid-particle-field",
+ "review_of": "20261025T1430-c14-mwall-gate-work",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["S", "I", "B"],
+   "observations": {"S": "rerun/seed6/sheet.png t=0: noisy field; cells by t=4000", "I": "rerun/seed6/sheet.png: 20-25 discrete cells and rods", "B": "rerun/seed6/FACTS.md: M rim/core 3.13, rim/outside 8.4, 110/133 membrane-like; data/tr_s6_b4.txt vs data/tr_s6_b0.txt: escape 0.74 vs 0.95 per 1000 t", "finding": "rerun/seed6/sheet.png t=22000-100000: constant-width rods that break; 4 persistent splits vs 7 in research/alife/collective/contrib/20261025T1416-c16-review-mwall/rerun/seed6"},
+   "replicated": true, "seed": 6,
+   "seeds_run": [{"seed": 6, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"B": "data/tr_s6_b0.txt: matched ablation mbeta=0 on the same seed; ungated labkit run of the same seed in collective/contrib/20261025T1416-c16-review-mwall/rerun/seed6"},
+   "not_checked": ["selection statistics (death and split percentiles) with the gate", "the 1.5x resolution continuation"],
+   "limitation": "One fresh seed; the escape reduction is smaller than the author's (22% vs ~35%) and transfers were 0 in both arms here, so the transfer part is not tested on this seed."}],
+ "compute": {"cpu_minutes": 30}
+}
