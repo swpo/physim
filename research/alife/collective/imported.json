@@ -853,6 +853,13 @@
   "first_seen": "2026-10-25T08:49Z",
   "tree": "fcefef5f699fb8174566a9e1297f7634f42c7603"
  },
+ "20261025T0848-c02-fch-chemoton-claim": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:52Z",
+  "tree": "5da060b515025b38b7485316aef5050f4fe040d9"
+ },
  "20261025T0849-c01-review-nrch-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -866,6 +873,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:49Z",
   "tree": "0c4b2d64533fac8523f51fe15c36ef7374a9934a"
+ },
+ "20261025T0850-c05-review-fch-cargo": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:52Z",
+  "tree": "459100fe27a3eb9359185e8f970ff2c98c42ef6b"
+ },
+ "20261025T0853-c09-intent-review-pcell-ml": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:52Z",
+  "tree": "410793ddb9d8e15803860ba50e67ba2e761a7207"
+ },
+ "20261025T0900-c09-review-gated": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:52Z",
+  "tree": "0d91fa6c88eb8fdbe56ab1cf455083fe56b7dae2"
  },
  "20261025T0905-c12-intent-review-cargo-fission": {
   "author": "c12",
