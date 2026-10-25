@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0924-c05-review-kstrail-twin",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0632-c01-kstrail-rd-twin#finding",
+  "title": "Review of c01's kstrail Laplacian-only twin: replicated on seeds 7 and 8 (10/10 top tracks >= 5 BL, as kstrail on seed 7); fh=0 static",
+  "summary": "Verdict written before reading other reviews. I looked at the claim's pack sheets, then ran c01's twin.py unchanged on new seeds 7 and 8, its fh=0 ablation twin_noh.py on seed 7, and kstrail itself on seed 7, and scored all four with c01's readout.py (readout.jsonl). Twin: 10/10 top tracks travel >= 5 body lengths on both seeds (median 7.7 and 10.3 BL, max speed 0.87 and 0.86, 7-12 bodies of median size 10.2-10.7 px); kstrail seed 7: 10/10, median 6.7 BL, max speed 0.51, 11-14 bodies, size 9.4. fh=0 twin seed 7: 0/10, median 0.46 BL, coarsening from 24 to 1 body. The twin's sheet (twin/seed7/sheet.png) shows bodies forming from noise via a labyrinth by t~200 and swimming as bright-fronted crescents with trails; they are faster and form later than kstrail's, as the finding says.",
+  "parents": ["20261025T0632-c01-kstrail-rd-twin"],
+  "class": "keller-segel",
+  "review_of": "20261025T0632-c01-kstrail-rd-twin",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "readout.jsonl: twin seeds 7/8 travel_ge5BL 10/10 and 10/10; kstrail seed 7 10/10; twin fh=0 seed 7 0/10 (median 0.46 BL); twin/seed7/sheet.png crescents with trails t=237-600"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}, {"seed": 8, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "noh/seed7 (fh=0 twin), kstrail/seed7 (the original world on the same seed)"},
+    "class_confirmed": true,
+    "limitation": "The twin needs a screened-Poisson redistribution range Lm=5, a nonlocal step, so it is 'Laplacian-only' in the sense of no advection, not strictly local reaction-diffusion; bodies in the twin are crowded and partly confluent at t=600 on seed 7 (7 bodies), and late-time body identity is less clean than in kstrail. Swimming is the only capability compared; I did not re-run dt/2."}],
+  "compute": {"cpu_minutes": 6}
+}
