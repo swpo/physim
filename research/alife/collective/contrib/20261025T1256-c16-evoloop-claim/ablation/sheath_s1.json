@@ -1,0 +1,127 @@
+{
+ "mode": "sheath",
+ "params": {},
+ "seed": 1,
+ "t_ablate": 20000,
+ "side": 11,
+ "dt": 300,
+ "loops": [
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 0,
+    "structure_in_box": 149
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 0,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": false,
+    "holes_within_30px": 2,
+    "structure_in_box": 2
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 2,
+    "structure_in_box": 14
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 1,
+    "structure_in_box": 149
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 0,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 1,
+    "structure_in_box": 150
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 1,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 0,
+    "structure_in_box": 150
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 0,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 2,
+    "structure_in_box": 150
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 1,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": false,
+    "holes_within_30px": 1,
+    "structure_in_box": 0
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 1,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 2,
+    "structure_in_box": 149
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 2,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  },
+  {
+   "twin": {
+    "hole_alive": true,
+    "holes_within_30px": 2,
+    "structure_in_box": 150
+   },
+   "ablated": {
+    "hole_alive": false,
+    "holes_within_30px": 1,
+    "structure_in_box": 0
+   },
+   "sheath_cells_removed": 108
+  }
+ ]
+}
