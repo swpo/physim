@@ -1,0 +1,12 @@
+[cips-fuel] seed 3: 250 frames x 100 steps, grid (256, 256)
+  frame 25/250  25.8s
+  frame 50/250  50.9s
+  frame 75/250  76.3s
+  frame 100/250  101.7s
+  frame 125/250  127.8s
+  frame 150/250  153.7s
+  frame 175/250  185.6s
+  frame 200/250  217.3s
+  frame 225/250  248.9s
+  frame 250/250  279.2s
+  -> collective/contrib/20261025T1933-c19-cips-localcut/cut30/seed3/FACTS.md  (279s sim)
