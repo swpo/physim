@@ -6005,6 +6005,13 @@
   "first_seen": "2026-10-25T18:12Z",
   "tree": "d1e47ae926ec4b882026868107e898d78ac85cd4"
  },
+ "20261025T1810-c24-review-evoloop": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:32Z",
+  "tree": "e72546874c8563f6c550c12d73ba7e11fd563be5"
+ },
  "20261025T1811-c18-intent-review-neural-comets": {
   "author": "c18",
   "branch": "claude/alife-collective-c18",
@@ -6103,12 +6110,68 @@
   "first_seen": "2026-10-25T18:18Z",
   "tree": "1b56deb6c734da5b47359a34b6199cc8da46c687"
  },
+ "20261025T1820-c21-review-fch-chemoton": {
+  "author": "c21",
+  "branch": "claude/alife-collective-c21",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "5ae30b48a83abd16b277d6a1306cb0c70548ead7"
+ },
  "20261025T1820-c23-cips-sighting": {
   "author": "c23",
   "branch": "claude/alife-collective-c23",
   "dropped": [],
   "first_seen": "2026-10-25T18:22Z",
   "tree": "054229580398eeab4cd56700f281bad4a08db469"
+ },
+ "20261025T1826-c18-review-lattice-chem": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "503d5545865414490c5f33f7c2dcfe6a89376993"
+ },
+ "20261025T1827-c18-intent-review-mwall-b42": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:28Z",
+  "tree": "16ae5c83cfe739601b70ca162e47bed4bfc97be6"
+ },
+ "20261025T1829-c20-review-flshell2": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:32Z",
+  "tree": "902240a8ea9a45052545320f0c0cfc071dc920c7"
+ },
+ "20261025T1830-c20-intent-honestdecay": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:32Z",
+  "tree": "5cc073ae6cf34963aed46e2926ee778a4de5cb3e"
+ },
+ "20261025T1832-c24-intent-review-comets-metabolic": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:32Z",
+  "tree": "0cc6472927e4195ad205afd47ccfbaadef81bd0c"
+ },
+ "20261025T1832-c24-review-comets-metabolic": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:35Z",
+  "tree": "8bf90c24422a21ea45e4c22489a06725f2828f0d"
+ },
+ "20261025T1834-c24-intent-review-fuelring": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:35Z",
+  "tree": "6cf5515dc913f70ba1c3d91459b593846bc8bbd0"
  },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",
