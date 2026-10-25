@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1724-c13-audit-fch-gated-micelles",
+  "kind": "review",
+  "mode": "review",
+  "task": "A:20261025T0816-c03-fch-gated-micelles#c1",
+  "title": "Audit of c03's gated FCH micelles (SIBWD): dynamics produce the micelles, their fission and the gate's containment; the cargo and shell sources are written against the body field and the cargo is passive; replicated on seed 5 and at dt/2 (contrast 34x and 26x, beta=0 1.1x), with a less clean genealogy at dt/2",
+  "summary": "Audit (construction and replication); verdict written before reading other reviews. Construction (world.py read line by line): u is a functionalized Cahn-Hilliard field from white noise with a uniform amphiphile feed (5e-4 everywhere), and micelle fission comes from the FCH dynamics in the eta1=4, eta2=5 regime; there is no division or death rule. The cargo c and shell q are both produced only where u > u_m (prod = kp (u - u_m)_+), i.e. the sources are written against the body field; q then drifts up w(u) = exp(-((u - u_w)/sig_w)^2), an algebraic function of u that peaks at the micelle surface, which is what puts the layer at the surface; the cargo gate is D exp(-beta q). osm = 0, so neither c nor q acts back on u: the cargo is passive and the gate only slows exchange. Replication on new seed 5 (audit_runs.txt): world 52 micelles, 19 persistent splits, generation 2, 0 merges, shell rim/core 10.7 (257/260 membrane-like), cargo contrast 34.5x with every body >= 2x; beta=0: identical bodies and shell, contrast 1.1x (0 bodies >= 2x). Numerical variant dt/2 (world_dt2.py, 400 steps per frame): contrast 25.9x, shell 11.3, but 57 splits, 11 persistent, 13 merges.",
+  "parents": ["20261025T0816-c03-fch-gated-micelles"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0816-c03-fch-gated-micelles",
+  "evidence": ["audit_runs.txt", "rerun_world/seed5/sheet.png", "rerun_world/seed5/radial.png", "rerun_world_dt2/seed5/sheet.png", "rerun_world_beta0/seed5/sheet.png"],
+  "verdicts": [{"cid": "c1", "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D"],
+    "observations": {
+      "S": "rerun_world/seed5/sheet.png t=0: white-noise amphiphile over the whole domain",
+      "I": "audit_runs.txt: 40-52 discrete micelles, merge/split 0",
+      "B": "rerun_world/seed5/radial.png: shell q rim/core 10.7, rim/outside 5.39, 257/260 membrane-like; dt/2: 11.3",
+      "W": "audit_runs.txt: cargo contrast 34.5x (dt/2 25.9x), every body >= 2x; beta=0 twin with identical bodies and shell 1.1x",
+      "D": "rerun_world/seed5/FACTS.md: 19 persistent splits, generation 2 from noise, 0 merges; dt/2: 11 persistent, generation 2, 13 merges"},
+    "replicated": true, "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass (dt 0.02)"}, {"seed": 5, "result": "pass with weaker genealogy (dt 0.01)"}],
+    "same_individuals": true,
+    "controls_run": {"W": "beta=0 twin on seed 5 (rerun_world_beta0/seed5)", "D": "dt/2 numerical variant on seed 5 (rerun_world_dt2/seed5)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Flaws found: (1) the cargo and shell sources are restricted to the bodies by the code (u > u_m), so 'self-made' means made by the code wherever amphiphile is dense, and the shell layer sits at the surface because its drift potential is written as a function of u (the rubric counts such a self-made, independently transported quasi-equilibrium layer, and chi_q=0 is its ablation); (2) the cargo is passive (osm=0), so containment does no work for the body; (3) an established finding (20261025T1108-c10-slowd-twins-three-fch) shows a gate-free, uniformly slower cargo gives the same contrast, so W is not beyond diffusion; (4) at dt/2 the fission genealogy changes (persistent splits 19 -> 11, merges 0 -> 13 on seed 5), so D's counts are step-size sensitive although D still holds at generation 2. One new seed."}],
+  "compute": {"cpu_minutes": 20}
+}

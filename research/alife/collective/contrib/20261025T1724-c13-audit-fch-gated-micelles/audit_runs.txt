@@ -1,0 +1,21 @@
+== world
+- components: final 52, mean 40.5, max 52; occupancy final 0.27
+- replication (lineage window K = 20 frames = time 80, default): splits 30, persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nu
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 10.7, rim/outside 5.39 (aggregate of 260 individuals; 257/260 membrane-like individually; rim level 0.681)  MEMBRANE-LIKE
+frame 90: contrast 33.6, bodies 50, share of bodies >=2x 0.98, weakest body 1.6x
+frame 100: contrast 34.5, bodies 57, share of bodies >=2x 1.00, weakest body 3.6x
+frame 100: contrast 34.5, bodies 57, share of bodies >=2x 1.00, weakest body 3.6x
+== world_dt2
+- components: final 54, mean 36.7, max 54; occupancy final 0.27
+- replication (lineage window K = 20 frames = time 80, default): splits 57, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 2, merges 13, merge/split ratio 0.22
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 11.3, rim/outside 3.59 (aggregate of 248 individuals; 246/248 membrane-like individually; rim level 0.686)  MEMBRANE-LIKE
+frame 90: contrast 29.6, bodies 52, share of bodies >=2x 1.00, weakest body 10.8x
+frame 100: contrast 25.9, bodies 58, share of bodies >=2x 1.00, weakest body 6.7x
+frame 100: contrast 25.9, bodies 58, share of bodies >=2x 1.00, weakest body 6.7x
+== world_beta0
+- components: final 52, mean 40.5, max 52; occupancy final 0.27
+- replication (lineage window K = 20 frames = time 80, default): splits 30, persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nu
+  - radial shell q: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 10.7, rim/outside 5.39 (aggregate of 260 individuals; 257/260 membrane-like individually; rim level 0.681)  MEMBRANE-LIKE
+frame 90: contrast 1.1, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 57, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 57, share of bodies >=2x 0.00, weakest body 1.0x
