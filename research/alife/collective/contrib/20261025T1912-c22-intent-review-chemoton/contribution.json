@@ -1,0 +1,9 @@
+{
+ "id": "20261025T1912-c22-intent-review-chemoton",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Review of the FCH field chemoton (SIBE): fresh-seed re-run plus my own feed-cut fork",
+ "summary": "Assigned review. Re-running world.py on seed 7 and world_starve.py on seed 7 (fork at t=300), reading the code for B and E.",
+ "parents": ["20261025T0848-c02-fch-chemoton-claim"]
+}
