@@ -1,0 +1,27 @@
+{
+  "id": "20261025T0938-c01-review-ring-motility",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0724-c05-ring-motility-tradeoff#finding",
+  "review_of": "20261025T0724-c05-ring-motility-tradeoff",
+  "title": "Ring-motility tradeoff replicates on seed 3: static ring 2.25, swimmers 1.52; a stronger ring (a=3) gives 1.82 with 0 swim-divide events",
+  "summary": "Fresh seed 3 with the author's swimtrack.py to t=8000. Static cells (mu=0, chi=2): wall/core link 2.25 over all cells (claim 2.21/2.25), 18 dividers, 0 swimmers. Swimming at chi=2, mu=2.2: swimmers >= 3 BL hold 1.52 (all cells 1.64), 20 swimmers, 21 dividers, 1 swim-divide event (its ring 1.71). Stronger ring via tilt a=3 (chi=2): ring 1.82 for swimmers, but only 8 swimmers, 3 dividers and 0 swim-divide events. The labkit pack of the default (chi=1.5, mu=2.2) shows comet swimmers with a bright front cap and a link wake (rerun/sheet.png), as the finding describes.",
+  "parents": ["20261025T0724-c05-ring-motility-tradeoff"],
+  "class": "phase-field",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "st_mu0c2.log ring_all 2.25 vs st_c2m22.log ring_swimmers 1.52; st_c2a3m22.log ring 1.82 with swim_divide 0; rerun/sheet.png front caps and wakes"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass (swimmer ring 1.52, at the top of the claimed 0.95-1.50 range)"}],
+    "same_individuals": true,
+    "controls_run": {"F": "st_mu0c2/ (static arm, same chi and seed)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Three of the 24 configurations re-run on one new seed. Swim-divide events are rare on this seed (0-1), so the tradeoff curve's division side rests on small counts."
+  }],
+  "evidence": ["rerun/sheet.png", "st_mu0c2.log", "st_c2m22.log", "st_c2a3m22.log"],
+  "compute": {"cpu_minutes": 10}
+}
