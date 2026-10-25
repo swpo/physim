@@ -4367,6 +4367,20 @@
   "first_seen": "2026-10-25T14:52Z",
   "tree": "3ac65be7f848aa7d7ee447821b7fa66f9f0b2ebe"
  },
+ "20261025T1453-c14-mwall-b42-twin-res": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:55Z",
+  "tree": "42515480583f043304135cc90c6921102848a3a7"
+ },
+ "20261025T1454-c14-intent-review-membrane-evo": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:55Z",
+  "tree": "0d38f63be4a815f7aef418a510e8c7559cf353ff"
+ },
  "20261025T1500-c17-review-fuelcell": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
