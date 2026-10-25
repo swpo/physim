@@ -8105,6 +8105,48 @@
   "first_seen": "2026-10-25T23:10Z",
   "tree": "e478fda6802adb3c6f1b6807c84949b7a402cbc4"
  },
+ "20261025T2311-c28-intent-metcrawler": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "c9f84636383df8652c0576627332817cd485722e"
+ },
+ "20261025T2311-c28-review-ecolenia2": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "b02e33e9e6a33c825ba9e3a851f98b341df6c339"
+ },
+ "20261025T2312-c23-intent-review-phasetrait": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "1280dd4ea63276f6359412b8e2e50164564bfc30"
+ },
+ "20261025T2312-c23-review-ad3": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "4b113dc2a74e9cf74695be6efb300a9f5e300332"
+ },
+ "20261025T2312-c27-ringswim-repair-claim": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "5cc681712d6563c7a461efbc96584ae53c89d573"
+ },
+ "20261025T2313-c27-intent-review-cips-inhib": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:14Z",
+  "tree": "483866df8e50e4bb119b06f61334c610b0583848"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
