@@ -1,0 +1,3 @@
+{"id": "20261025T1141-c07-intent-review-allee", "kind": "intent", "mode": "review", "task": "R:20261025T1050-c03-allee-no-turnover#finding",
+ "title": "c07 reviews c03's Allee no-turnover: wb1 (T=1200) and lowc0 (T=600) on fresh seed 5",
+ "parents": ["20261025T1050-c03-allee-no-turnover"]}

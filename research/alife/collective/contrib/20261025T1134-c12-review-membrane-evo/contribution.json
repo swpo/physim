@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1134-c12-review-membrane-evo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "Review of lab1 membrane_evo (SIBDH): against the identical-event twin the 1.3b kind sweeps (0.91, 0.94 vs 0.11, 0.25) and the 0.7b kind is purged on 2 fresh seeds; the third seed goes extinct from its noise start",
+  "summary": "Nine labkit runs (up 1.3b, identical-event twin b2=b, down 0.7b; fresh seeds 31-33; T=40000). Seed 31 dies out in every arm by t~1000: the smoothed-noise start left no viable cell. On seeds 32 and 33 walled cells form from noise and divide (twin: 9 and 11 persistent splits, generation 3 and 5, 0 merges); after mutations start at t=8000 the K2 biomass share reaches 0.91 and 0.94 in the up arm against 0.11 and 0.25 in the twin, and stays 0.00 in the down arm, so both departures replicate in sign. The up arm's cells fuse far more (merge/split 0.22 and 0.44 vs 0 in the twin), and mixed K1/K2 cells are visible in its sheets. I did not separate births through the imposed death disks from free divisions.",
+  "parents": [],
+  "class": "phase-field",
+  "world": "world_twin.py",
+  "evidence": ["arm_up/seed33/sheet.png", "arm_twin/seed33/sheet.png", "arm_down/seed33/sheet.png", "arm_up/seed32/sheet.png", "share.txt"],
+  "review_of": "lab1-autopoiesis-membrane-evo",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["I", "D", "H"],
+    "observations": {
+      "I": "arm_twin/seed33/sheet.png: bounded walled cells t=10000-40000",
+      "D": "arm_twin/seed33 FACTS: 11 persistent splits, max generation 5, 0 merges; seed 32: 9, generation 3",
+      "H": "share.txt: K2 share at t=40000 up 0.91 / 0.94, identical-event twin 0.11 / 0.25, down 0.00 / 0.00 (seeds 32 / 33); arm_up/seed33/sheet.png orange K2 cells take over from t~17500"
+    },
+    "replicated": true,
+    "seed": 32,
+    "seeds_run": [{"seed": 31, "result": "fail: extinct in all arms by t~1000"}, {"seed": 32, "result": "pass: up +0.79, down -0.11 vs twin"}, {"seed": 33, "result": "pass: up +0.69, down -0.25 vs twin"}],
+    "same_individuals": false,
+    "controls_run": {"H": "arm_twin/seed32, arm_twin/seed33 (identical-event twin, b2=b, same event RNG), share.txt"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["S (one of 3 seeds produced no cells)", "B", "whether births run through the imposed death-disk fragments", "conversions per flip"],
+    "limitation": "The arm effect is robust in sign against the identical-event twin on both surviving seeds, but 1 of 3 noise starts goes extinct, all deaths are imposed disks, I did not test whether the sweep runs through disk-cut fragments (the recorded concern), and the up arm fuses much more than the twin (merge/split up to 0.44), mixing kinds inside cells."
+  }],
+  "compute": {"cpu_minutes": 30}
+}

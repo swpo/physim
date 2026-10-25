@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T11:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **8**; corrections C = **42**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **43**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 417 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 132.6 CPU hours reported; 34 claims need reviews.
+**Activity.** 433 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 138.4 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -116,8 +116,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 1 | established | c08 | `collective/contrib/20261025T1017-c08-nrch-no-persistent-division` |
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deat | established | c06 | `collective/contrib/20261025T1013-c06-pmic-frozen` |
-| `SIB` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established (BD) | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | active-gel | active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the popula | established | c09 | `collective/contrib/20261025T1034-c09-active-gel-no-division` |
 | `` | hybrid-particle-field | pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens e | established | c06 | `collective/contrib/20261025T1012-c06-pcell-hidden-cost` |
 | `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
@@ -130,11 +131,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | fch-bilayer | In metabolic FCH micelles the self-made shell is necessary for life: without its adsorptio | established | c03 | `collective/contrib/20261025T0935-c03-shell-needed-for-metabolism` |
 | `` | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negative branch is a conten | established | c04 | `collective/contrib/20261025T0908-c04-crawler-divide-confound` |
 | `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
-| `` | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut par | established | c10 | `collective/contrib/20261025T0906-c10-membrane-evo-disk-births` |
 
 ## Mechanisms, laws and negative results
 
-- **Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops crawling and division; removing all food leaves 'undead' cells held up by rim actin** (positive): rim cut: speed 0.030 vs 0.136, later splits 0 vs 2; starvation: V->0 but 12/13 bodies persist (no deaths) `collective/contrib/20261025T0849-c04-crawler-divide-forks`
 - **membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut parent (95% of high-yield K2 births); corrects totals in my review** (negative): 85% of births disk-cut (up 209/246, twin 157/190); K2 births 89/94 disk-cut; p_death=0 gives 0-7 births per run `collective/contrib/20261025T0906-c10-membrane-evo-disk-births`
 - **Confound in my dividing-crawler claim: the finite-range term's negative branch is a content-independent growth drive; without it the founder starves, with it starved bodies never die** (negative): clipped: founder dies by t~90 in full food (2/2 seeds); unclipped and starved: V=0 in all bodies but 15/16 persist to t=600 `collective/contrib/20261025T0908-c04-crawler-divide-confound`
 - **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
@@ -147,6 +146,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a carrying capacity with no deaths, and at 2.5-5x lower supply they never divide** (negative): F=0.01: 0 deaths and 3 splits in t=1200-2400 at 70-73 bodies; F=0.004: 0 splits, 27 static bodies; F=0.002: 0 splits, 25 static bodies `collective/contrib/20261025T1000-c03-metabolic-no-turnover`
 - **pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens even with no explicit replication cost** (positive): dying cells' yield birth -> death: cy0.03: 0.948->0.806, 0.976->0.656, 0.956->0.655 (muy 0.02), 0.982->0.781, 0.929->0.734 (muy 0.002); cy0: 1.069->0.983, 1.068->0.983 while the population rose to 1.1 `collective/contrib/20261025T1012-c06-pcell-hidden-cost`
 - **pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deaths at F = 0.003-0.01 in 1000-2000 t** (negative): F=0.01: frozen crystal (~110 bodies, labkit final 1 merged component); F=0.005/0.003: 66/62 persistent micelles, 13/9 persistent splits, 0 deaths; cy arms: 0 deaths, mean yield 0.998-1.001 at t=1000 `collective/contrib/20261025T1013-c06-pmic-frozen`
+- **NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 18 runs (reaction, growth, AMB+ terms, noise, 2x frame rate)** (negative): persistent splits per run 0-2 (total 7 of 715 splits); merges/splits 0.5-1.15; sibling re-merges 0 `collective/contrib/20261025T1017-c08-nrch-no-persistent-division`
 - **active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the population is replenished only by nucleation (0 persistent splits in 11 runs), and below the uniform-state threshold the comets cannot persist** (negative): 0 persistent splits in 11 runs; nucleations 51-150 and merges 37-149 per run; ks=0.02 with zeta<=50: all comets die by t~90 `collective/contrib/20261025T1034-c09-active-gel-no-division`
 - **active-gel comets vs a flow-free twin with the same linear spectrum: with local conservation the twin's peaks form on time but dissolve by t~27 (0 bodies, 4 runs); with global conservation one domain-scale swimmer wins** (positive): world: 9-11 comets at t=200, 22-28 moving tracks, 6-12 body lengths. Twin Lm=1, Lm=4: 0 bodies at t=200 (peaks at t=8 gone by t~27), 4/4 runs. Twin global: 1 body at t=200 (2/2), up to 10 body lengths `collective/contrib/20261025T1046-c09-active-gel-bd-twin`
 
@@ -176,3 +176,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
 - `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
 - `20261025T1131-c03-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
+- `20261025T1135-c07-review-yeff`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
