@@ -1,0 +1,10 @@
+y2=0.7 seed 5: kind-1 (low-yield) share of particles in cells, and mean particles per pure cell by kind
+t=0: cells 2, kind-1 share 0.47, pure kind-0 cells 0 (mean 0 particles), pure kind-1 cells 0 (mean 0)
+t=2000: cells 26, kind-1 share 0.33, pure kind-0 cells 4 (mean 201 particles), pure kind-1 cells 1 (mean 146)
+t=4000: cells 26, kind-1 share 0.36, pure kind-0 cells 5 (mean 182 particles), pure kind-1 cells 1 (mean 146)
+t=6000: cells 26, kind-1 share 0.33, pure kind-0 cells 7 (mean 277 particles), pure kind-1 cells 4 (mean 141)
+t=8000: cells 29, kind-1 share 0.30, pure kind-0 cells 7 (mean 293 particles), pure kind-1 cells 6 (mean 137)
+t=10000: cells 30, kind-1 share 0.27, pure kind-0 cells 8 (mean 286 particles), pure kind-1 cells 6 (mean 120)
+t=12000: cells 30, kind-1 share 0.18, pure kind-0 cells 16 (mean 259 particles), pure kind-1 cells 6 (mean 112)
+t=14000: cells 30, kind-1 share 0.13, pure kind-0 cells 21 (mean 271 particles), pure kind-1 cells 6 (mean 123)
+t=16000: cells 32, kind-1 share 0.09, pure kind-0 cells 23 (mean 263 particles), pure kind-1 cells 6 (mean 93)

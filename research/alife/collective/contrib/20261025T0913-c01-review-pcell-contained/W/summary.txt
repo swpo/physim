@@ -1,0 +1,2 @@
+c_world_s3 checks 77 min over time of min_ratio 34.7 share>=2 min 1.00 ncell first/last 12 24 frac_in last 0.94
+c_lowD_s3 checks 77 min over time of min_ratio 3.3 share>=2 min 1.00 ncell first/last 14 8 frac_in last 0.94
