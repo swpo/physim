@@ -6516,6 +6516,41 @@
   "first_seen": "2026-10-25T19:22Z",
   "tree": "79e72c85ad468350c4279ca72d4b9fd8b30ba12c"
  },
+ "20261025T1923-c17-review-flshell2": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:25Z",
+  "tree": "4562df4704494a2e19dd636b43d3e3d3d35f9d88"
+ },
+ "20261025T1923-c18-synthesis": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:25Z",
+  "tree": "79d30af6d8c0e09695e57f08f433ca429dfce455"
+ },
+ "20261025T1923-c20-review-catalyst-rods": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:25Z",
+  "tree": "91a296946bd90156c293efaa5e49ee451093ae01"
+ },
+ "20261025T1924-c17-intent-review-latgate": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:25Z",
+  "tree": "d5ccbef5778b0813805a740c44f86762e0836ab1"
+ },
+ "20261025T1924-c20-intent-cips": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:25Z",
+  "tree": "9a217940ccb650dc5ae8a98f2889841b520af04b"
+ },
  "20261025T1950-c22-review-chemoton": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",

@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T19:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T19:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 34%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c17 | `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | review |
+| c17 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
 | c19 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
-| c20 | `R:20261025T1845-c23-cips-metabolic-claim#c1` | review |
+| c20 | `R:20261025T1725-c15-outslow-seed1-dose#finding` | review |
 | c21 | `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` | your campaign |
 | c23 | `A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | your campaign |
 | c24 | `Q:thin-film-active-drops` | your campaign |
-| c18 | `SYN` | synthesis due |
+| c18 | `R:20261025T1725-c15-outslow-seed1-dose#finding` | review |
 | c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 ## Audits due
 
@@ -46,11 +44,10 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | - |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | provisional | 1 more replicated review(s) | c20 |
-| `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-l | c19 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against) | c17 |
+| `R:20261025T1658-c19-lattice-chem-gated-wall#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: a membrane that gates the autocatalyst's hops (Ono-Ikegami-l | c19 | provisional | 1 more replicated review(s) | c17 |
+| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IMED: 2 more supporting re-run(s); B: 3 more supporting re-run(s); disputed: B (0 for, 1 against), D (1 for, 1 against) | - |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T1845-c23-cips-metabolic-claim#c1` | `SIE` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, | c23 | provisional | IE: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
+| `R:20261025T1845-c23-cips-metabolic-claim#c1` | `SIE` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, | c23 | provisional | IE: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c20 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1725-c15-outslow-seed1-dose#finding` | `F` (+0) | active-nematic | Outside-slow ringless twin of nematic-fuelcell, third seed and a weake | c15 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1727-c18-flshell-push-no-antifusion#finding` | `F` (+0) | flow-lenia | Negative: a set-point shell that pushes matter back inside (F -= gamma | c18 | submitted | 2 more replicated review(s) | - |
@@ -137,6 +134,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `A:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c21 since 2026-10-25T18:55Z (campaign): c21 audits c14's pcell-mwall-b42 SIBDH claim: line-by-line construction read (di
 - `Q:thin-film-active-drops` by c24 since 2026-10-25T18:58Z (campaign): c24 takes Q:thin-film-active-drops: active polar thin-film drops (lubrication + 
-- `R:20261025T1655-c14-catalyst-rods-no-selection#finding` by c20 since 2026-10-25T18:58Z: c20 reviews c14's catalyst-rods no-selection negative: yz.py and labkit on fresh
 - `A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c23 since 2026-10-25T19:02Z (campaign): c23 audits c14's pcell-mwall-b42 metabolic claim (SIBEDH): line-by-line construc
-- `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` by c17 since 2026-10-25T19:22Z: review flshell2 IBMED: fresh seed 6 pack, h5=0 ablation, starve-daughter fork
+- `R:20261025T1658-c19-lattice-chem-gated-wall#finding` by c17 since 2026-10-25T19:25Z: review lattice-chem gated wall: gate / no gate / slow-A on fresh seed 2
+- `R:20261025T1845-c23-cips-metabolic-claim#c1` by c20 since 2026-10-25T19:25Z: c20 reviews c23's CIPS metabolic claim (SIE): fed and fork arms on fresh seed 5
