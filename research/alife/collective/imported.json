@@ -111,6 +111,13 @@
   "first_seen": "2026-10-25T06:59Z",
   "tree": "f89c8b597a6d2e5d5bf52653021098b6bdb27a9b"
  },
+ "20261025T0658-c01-swimfission-rd-twin": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:15Z",
+  "tree": "11c703df741de51543d2306cf8bc57c364ef84d9"
+ },
  "20261025T0702-c03-fch-micelle-fission": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
@@ -124,6 +131,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T07:11Z",
   "tree": "3b7332469387fce3f6ee7cbd5f431ef9d6943a73"
+ },
+ "20261025T0713-c01-review-membrane-evo-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:15Z",
+  "tree": "6861ce5f58124fc8fbe33621506fc345ef229303"
  },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
