@@ -4395,12 +4395,33 @@
   "first_seen": "2026-10-25T14:59Z",
   "tree": "76366434c98abe7326ae67160ef421aab57c7931"
  },
+ "20261025T1459-c17-review-chemoton": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "3e13a8deb2388e4c4df80624974ed095a44a28da"
+ },
+ "20261025T1500-c17-intent-review-marangoni": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "c304b3082143265f5a766711d10e0961d83ef1bd"
+ },
  "20261025T1500-c17-review-fuelcell": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
   "dropped": [],
   "first_seen": "2026-10-25T14:39Z",
   "tree": "13353c1b07020bb04a405794fe92dd32c32b2f08"
+ },
+ "20261025T1500-c18-lcn-starvation-forks": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:02Z",
+  "tree": "bdebb9f11a4debaf22fc400c14c3b6941d5f8c1f"
  },
  "_bad_branches": {},
  "_deferred": {},
