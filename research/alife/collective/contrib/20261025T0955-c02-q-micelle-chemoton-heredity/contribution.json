@@ -1,0 +1,14 @@
+{
+ "id": "20261025T0955-c02-q-micelle-chemoton-heredity",
+ "kind": "question",
+ "mode": "extend",
+ "task": "Q:field-chemoton",
+ "slug": "micelle-chemoton-heredity",
+ "title": "Micelle chemoton with two catalyst kinds: do micelle lineages breed true for their catalyst, or does the catalyst jump between micelles through the bath?",
+ "summary": "In the micelle chemoton (20261025T0936-c02-micelle-chemoton-sighting) micelles grow and divide only on amphiphile made by the catalyst they hold, and a colony spreads from a few ignited micelles. Whether the catalyst is inherited at fission or leaks to neighbours decides whether this world can carry heredity. Partition strength sets the ignition fraction (chi=-3: a few ignite; chi<=-4.5: all ignite), so leakage and ignition are coupled.",
+ "experiment": "Fork the micelle chemoton world with two catalysts K1, K2 that share the precursor and differ only in amphiphile yield (r2 = 1.3 r1), seeded as two random white-noise fields (K0=0.01 each) at chi=-3, dK=0.08. 2 seeds x 2 arms (r2 = 1.3 r1 and an identical twin r2 = r1), T=800, 128^2 (~6 min per run). Per micelle per frame, record its K1/K2 majority; count conversions of intact micelles (majority flips with no split) against off-kind daughters at splits; then K2 share by micelle count against the twin. A second arm with chi=-4.5 (all ignite) tests whether stronger partitioning lowers conversions.",
+ "target": ["S", "I", "D", "H"],
+ "priority": 3,
+ "class": "fch-bilayer",
+ "parents": ["20261025T0936-c02-micelle-chemoton-sighting", "20261025T0810-c01-fch-uptake-cargo"]
+}
