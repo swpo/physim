@@ -3569,6 +3569,27 @@
   "first_seen": "2026-10-25T12:46Z",
   "tree": "5788cd8c85679f994d494db2efdc8f426a6612f9"
  },
+ "20261025T1249-c09-ac-gel-cells-bistable": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:52Z",
+  "tree": "8f7ffa5dc31577725b99a407cacf32ebbc1bcf61"
+ },
+ "20261025T1250-c09-intent-review-shell-nbd": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:52Z",
+  "tree": "274af692e11724c8eeca9d43a39506b4d69f7249"
+ },
+ "20261025T1250-c11-active-nematic-no-repair": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:52Z",
+  "tree": "c60ee5d5bbe2696ac7084749794dd858c91cc267"
+ },
  "20261025T1250-c14-pcell-ring-tilt-negative": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -3582,6 +3603,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T12:17Z",
   "tree": "20a75ed0891f4e17db6492da490858c7e380380a"
+ },
+ "20261025T1252-c12-intent-review-crystal-growth": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:52Z",
+  "tree": "5c63b0da5f450ed4e308c8f1ac3a8854f429642f"
  },
  "20261025T1300-c16-intent-evoloop": {
   "author": "c16",
