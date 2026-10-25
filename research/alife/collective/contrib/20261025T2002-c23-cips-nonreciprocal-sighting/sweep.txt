@@ -1,0 +1,12 @@
+d {"e10":0.06,"e20":0.14} e1 tracks alive whole window 6 of 18 | net/D median 0.25 max 2.36 | path/D median 0.43 | D median 5.4 e2 tracks alive whole window 3 of 43 | net/D median 0.63 max 0.87 | path/D median 2.17 | D median 13.4 
+j {"De":0.02} e1 no full tracks of 0 e2 no full tracks of 0 
+g {"c12":0.5,"c21":-1.0} e1 tracks alive whole window 33 of 40 | net/D median 0.13 max 0.29 | path/D median 0.17 | D median 7.1 e2 tracks alive whole window 29 of 38 | net/D median 0.22 max 0.87 | path/D median 0.27 | D median 7.9 
+a {"c12":1.0,"c21":-0.5} e1 tracks alive whole window 17 of 45 | net/D median 0.24 max 1.80 | path/D median 0.59 | D median 5.8 e2 tracks alive whole window 13 of 41 | net/D median 0.24 max 1.29 | path/D median 0.63 | D median 8.9 
+e {"e10":0.14,"e20":0.06} e1 tracks alive whole window 31 of 53 | net/D median 0.15 max 0.86 | path/D median 0.27 | D median 7.3 e2 tracks alive whole window 3 of 20 | net/D median 0.15 max 0.31 | path/D median 0.47 | D median 8.4 
+h {"c12":1.0,"c21":-1.5} e1 tracks alive whole window 22 of 40 | net/D median 0.14 max 0.70 | path/D median 0.44 | D median 6.1 e2 tracks alive whole window 1 of 29 | net/D median 0.69 max 0.69 | path/D median 1.36 | D median 15.6 
+k {"kF":0.5} e1 tracks alive whole window 21 of 37 | net/D median 0.10 max 0.77 | path/D median 0.25 | D median 7.1 e2 tracks alive whole window 14 of 34 | net/D median 0.09 max 0.36 | path/D median 0.45 | D median 10.8 
+b {"c12":1.5,"c21":-1.0} e1 tracks alive whole window 10 of 31 | net/D median 0.20 max 0.60 | path/D median 0.52 | D median 8.4 e2 no full tracks of 21 
+c {"c11":0.6,"c12":1.0,"c21":-1.0} e1 no full tracks of 18 e2 no full tracks of 21 
+i {"c22":1.5} e1 tracks alive whole window 21 of 40 | net/D median 0.23 max 1.87 | path/D median 0.36 | D median 6.4 e2 tracks alive whole window 12 of 41 | net/D median 0.43 max 1.52 | path/D median 0.73 | D median 9.3 
+f {"c22":0.6} e1 tracks alive whole window 9 of 37 | net/D median 0.21 max 0.83 | path/D median 0.65 | D median 6.1 e2 no full tracks of 4 
+l {"DF":0.25} e1 tracks alive whole window 10 of 32 | net/D median 0.40 max 0.94 | path/D median 1.00 | D median 5.3 e2 no full tracks of 32 
