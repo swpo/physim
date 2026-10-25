@@ -1,0 +1,72 @@
+[membrane-evo-up] seed 21: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  11.5s
+  frame 32/160  23.1s
+  frame 48/160  34.0s
+  frame 64/160  45.0s
+  frame 80/160  55.3s
+  frame 96/160  65.4s
+  frame 112/160  75.3s
+  frame 128/160  85.6s
+  frame 144/160  95.8s
+  frame 160/160  106.6s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed21/FACTS.md  (107s sim)
+[membrane-evo-up] seed 22: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  11.5s
+  frame 32/160  23.4s
+  frame 48/160  34.4s
+  frame 64/160  45.0s
+  frame 80/160  55.7s
+  frame 96/160  65.9s
+  frame 112/160  76.7s
+  frame 128/160  87.4s
+  frame 144/160  97.8s
+  frame 160/160  108.2s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed22/FACTS.md  (108s sim)
+[membrane-evo-up] seed 23: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  10.9s
+  frame 32/160  22.7s
+  frame 48/160  33.5s
+  frame 64/160  44.2s
+  frame 80/160  55.7s
+  frame 96/160  65.8s
+  frame 112/160  76.3s
+  frame 128/160  87.0s
+  frame 144/160  97.1s
+  frame 160/160  106.9s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed23/FACTS.md  (107s sim)
+[membrane-evo-up] seed 24: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  10.7s
+  frame 32/160  22.3s
+  frame 48/160  33.1s
+  frame 64/160  43.1s
+  frame 80/160  53.6s
+  frame 96/160  63.9s
+  frame 112/160  74.3s
+  frame 128/160  84.8s
+  frame 144/160  94.8s
+  frame 160/160  105.4s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed24/FACTS.md  (105s sim)
+[membrane-evo-up] seed 25: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  10.4s
+  frame 32/160  21.7s
+  frame 48/160  33.0s
+  frame 64/160  43.2s
+  frame 80/160  53.2s
+  frame 96/160  63.3s
+  frame 112/160  73.0s
+  frame 128/160  83.6s
+  frame 144/160  93.9s
+  frame 160/160  103.8s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed25/FACTS.md  (104s sim)
+[membrane-evo-up] seed 26: 160 frames x 250 steps, grid (128, 128)
+  frame 16/160  10.9s
+  frame 32/160  22.4s
+  frame 48/160  32.8s
+  frame 64/160  43.0s
+  frame 80/160  53.5s
+  frame 96/160  63.6s
+  frame 112/160  74.1s
+  frame 128/160  84.8s
+  frame 144/160  95.0s
+  frame 160/160  105.4s
+  -> collective/contrib/20261025T1623-c19-review-membrane-evo/up/seed26/FACTS.md  (105s sim)
