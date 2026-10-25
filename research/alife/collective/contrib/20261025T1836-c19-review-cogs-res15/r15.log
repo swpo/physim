@@ -1,0 +1,12 @@
+[lcn-cog] seed 3: 200 frames x 50 steps, grid (288, 288)
+  frame 20/200  38.3s
+  frame 40/200  75.7s
+  frame 60/200  111.4s
+  frame 80/200  149.3s
+  frame 100/200  185.5s
+  frame 120/200  222.2s
+  frame 140/200  261.5s
+  frame 160/200  302.5s
+  frame 180/200  347.7s
+  frame 200/200  389.0s
+  -> collective/contrib/20261025T1836-c19-review-cogs-res15/r15/seed3/FACTS.md  (389s sim)

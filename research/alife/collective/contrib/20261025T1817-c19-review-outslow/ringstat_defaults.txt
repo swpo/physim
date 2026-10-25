@@ -1,0 +1,5 @@
+c15's world.py run with its defaults (chis 3, dout 0 = the ringed claim world)
+defaults s11: persistent splits 15, max generation 3, max body lengths 2.2
+defaults/seed11/frames.npz: bodies 95, membrane-like 95 (100%), median rim/core 3.23, median rim/outside 4.01, mean core fuel 0.580
+defaults s13: persistent splits 10, max generation 3, max body lengths 3.1
+defaults/seed13/frames.npz: bodies 77, membrane-like 77 (100%), median rim/core 3.14, median rim/outside 4.00, mean core fuel 0.640

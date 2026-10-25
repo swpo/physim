@@ -1,0 +1,10 @@
+m=8 base 24: skipped (population extinct or < 20 loops at t0)
+m=8 base 25: loops at t0 38; twin final side<=4 (invader side 4) 0.08 (loops 37); planted finals 0.94, 0.99, 0.99, 0.97
+m=8 base 26: loops at t0 173; twin final side<=4 (invader side 4) 1.00 (loops 230); planted finals 1.00, 1.00, 1.00, 0.99
+m=8 base 27: loops at t0 37; twin final side<=4 (invader side 4) 0.99 (loops 112); planted finals 0.99, 0.99, 0.14, 0.99
+m=8 base 28: loops at t0 49; twin final side<=4 (invader side 4) 0.13 (loops 93); planted finals 0.92, 0.13, 0.99, 0.95
+m=16 base 24: skipped (population extinct or < 20 loops at t0)
+m=16 base 25: loops at t0 38; twin final side 12 (invader side 12) 0.65 (loops 37); planted finals 0.00, 0.00, 0.00, 0.24
+m=16 base 26: loops at t0 173; twin final side 12 (invader side 12) 0.00 (loops 230); planted finals 0.00, 0.00, 0.00, 0.00
+m=16 base 27: loops at t0 37; twin final side 12 (invader side 12) 0.00 (loops 112); planted finals 0.00, 0.00, 0.00, 0.00
+m=16 base 28: loops at t0 49; twin final side 12 (invader side 12) 0.00 (loops 93); planted finals 0.00, 0.00, 0.00, 0.00
