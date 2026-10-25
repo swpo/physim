@@ -1,0 +1,12 @@
+== eps 0.001
+- run: 151 frames x 200 steps x dt 0.05 = time 1500; grid [128, 128]; wall 318s; status ok
+- components: final 80, mean 54.3, max 97; occupancy final 0.38
+- size of persistent tracks: max/min area ratio 12.71 (1 = constant size)
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.4
+- replication (lineage window K = 20 frames = time 200, default): splits 55, persistent splits 9 (0 more failed only because the siblings re-merged within K), max generation 4, merges 7, merge/split r
+== eps 0.003
+- run: 151 frames x 200 steps x dt 0.05 = time 1500; grid [128, 128]; wall 327s; status ok
+- components: final 90, mean 41.7, max 96; occupancy final 0.38
+- size of persistent tracks: max/min area ratio 1.65 (1 = constant size)
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.3
+- replication (lineage window K = 20 frames = time 200, default): splits 65, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 2, merges 2, merge/split r
