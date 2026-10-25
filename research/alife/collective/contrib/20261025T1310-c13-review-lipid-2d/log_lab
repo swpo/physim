@@ -1,0 +1,12 @@
+[lipid-2d] seed 3: 200 frames x 60 steps, grid (128, 128)
+  frame 20/200  108.4s
+  frame 40/200  219.5s
+  frame 60/200  330.9s
+  frame 80/200  441.8s
+  frame 100/200  552.0s
+  frame 120/200  659.1s
+  frame 140/200  766.9s
+  frame 160/200  875.4s
+  frame 180/200  982.3s
+  frame 200/200  1090.1s
+  -> collective/contrib/20261025T1310-c13-review-lipid-2d/rerun/seed3/FACTS.md  (1090s sim)
