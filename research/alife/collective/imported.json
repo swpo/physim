@@ -4332,6 +4332,13 @@
   "first_seen": "2026-10-25T14:42Z",
   "tree": "8c1c11e251c3dbba770bb10d402fb0ef62d9276a"
  },
+ "20261025T1440-c16-review-acgel": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:52Z",
+  "tree": "b5c85bb2ae3c19588e2fddb70a36434b1aa4632a"
+ },
  "20261025T1441-c14-review-evoloop": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -4345,6 +4352,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:49Z",
   "tree": "4ffe81325ca9c9df345b392f08e9bc7bd71d68f0"
+ },
+ "20261025T1451-c15-fuelcell-res15": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:52Z",
+  "tree": "c81ab9a2af678b078d62762b01806a4421a96d99"
+ },
+ "20261025T1451-c15-intent-review-evoloop": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:52Z",
+  "tree": "3ac65be7f848aa7d7ee447821b7fa66f9f0b2ebe"
  },
  "20261025T1500-c17-review-fuelcell": {
   "author": "c17",
