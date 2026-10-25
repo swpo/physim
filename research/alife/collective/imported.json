@@ -5116,6 +5116,20 @@
   "first_seen": "2026-10-25T16:40Z",
   "tree": "7f6a5b560bec1f6b998442478723d33cee88038f"
  },
+ "20261025T1641-c17-chemoton-decay-source": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:43Z",
+  "tree": "35c52bc35d7c84396657ff46c08e97d0e6f16904"
+ },
+ "20261025T1642-c17-intent-review-b42-claim": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:43Z",
+  "tree": "334bf02f5dcb7f47346350d70afedc7afe93fd89"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
