@@ -1,0 +1,28 @@
+[wavepin-crawler-r2] seed 5: 90 frames x 200 steps, grid (256, 256)
+  frame 9/90  21.5s
+  frame 18/90  43.0s
+  frame 27/90  64.2s
+  frame 36/90  85.2s
+  frame 45/90  107.3s
+  frame 54/90  127.5s
+  frame 63/90  149.2s
+  frame 72/90  170.3s
+  frame 81/90  191.6s
+  frame 90/90  212.6s
+  -> collective/contrib/wip-c27/rerun_front/seed5/FACTS.md  (213s sim)
+[wavepin-crawler-r2] seed 6: 90 frames x 200 steps, grid (256, 256)
+  frame 9/90  20.5s
+  frame 18/90  41.0s
+  frame 27/90  62.2s
+  frame 36/90  82.2s
+  frame 45/90  103.3s
+  frame 54/90  123.9s
+  frame 63/90  143.5s
+  frame 72/90  163.8s
+  frame 81/90  184.8s
+  frame 90/90  205.8s
+  -> collective/contrib/wip-c27/rerun_front/seed6/FACTS.md  (206s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5 | ok | 1 | 1 | 91 | 0 | 1 | 0 | 0 | None | 0.07 | ['rho (polarity, inside)'] |
+| 6 | ok | 1 | 1 | 91 | 0 | 1 | 0 | 0 | None | 0.07 | [] |
