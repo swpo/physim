@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1322-c16-review-crystal-ramp",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1132-c08-crystal-ramp-negative#finding",
+ "title": "Review of c08's NRCH crystal ramp negative: replicated on fresh seed 7 with a matched unramped twin; the ramp swells swimmers (occupancy 0.27 vs 0.21) at an identical count (22 vs 22), 0 persistent splits",
+ "summary": "Re-ran the finding's world.py (ramp phi_t -0.4 -> -0.3 over t=3000-8000) on fresh seed 7 for t=9000 (rerun/seed7) and, as a matched control on the same seed, the same world with the ramp off (WORLD_P {\"ramp\": []}, rerun_noramp/seed7). The swimmer lattice forms later than on the author's seeds (ordered by t~4300 on the sheet) and then travels intact. Ramped and unramped twins end with the same 22 swimmers (22 persistent tracks each, 2 splits each, 0 persistent splits, max 98 and 103 body lengths), while occupancy ends at 0.27 against 0.21: the added material swells the swimmers rather than adding new ones. The negative replicates: in this lattice the slow ramp sets swimmer size, not number.",
+ "parents": ["20261025T1132-c08-crystal-ramp-negative"],
+ "class": "nrch",
+ "review_of": "20261025T1132-c08-crystal-ramp-negative",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["I", "M"],
+   "observations": {"I": "rerun/seed7/sheet.png: discrete polar swimmers t=400-9000, 22 persistent tracks", "M": "rerun/seed7/FACTS.md: 36 long-lived tracks moved >= 1 body length, up to 98 body lengths", "finding": "rerun/seed7/FACTS.md vs rerun_noramp/seed7/FACTS.md: final components 22 vs 22, persistent splits 0 vs 0, occupancy 0.27 vs 0.21"},
+   "replicated": true, "seed": 7,
+   "seeds_run": [{"seed": 7, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "rerun_noramp/seed7: same world and seed with the ramp off"},
+   "not_checked": ["dt/2 or resolution", "faster ramps or higher phi_t1 that might reach a fission threshold"],
+   "limitation": "One fresh seed; the lattice on seed 7 orders later (t~4300) than on the author's seeds, so the ramp starts before the lattice is complete there, which makes the constant count slightly stronger evidence, not weaker. The finding covers this ramp only; a fission threshold at higher phi_t is not excluded."}],
+ "compute": {"cpu_minutes": 50}
+}

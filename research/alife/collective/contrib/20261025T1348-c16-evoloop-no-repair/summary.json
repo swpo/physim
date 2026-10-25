@@ -1,0 +1,132 @@
+[
+ {
+  "file": "w11_s1_k1.json",
+  "side": 11,
+  "seed": 1,
+  "cells_removed": 1,
+  "loop_cells": 149,
+  "dt": 300,
+  "twin_alive": 7,
+  "wounded_alive": 3
+ },
+ {
+  "file": "w11_s1_k1_long.json",
+  "side": 11,
+  "seed": 1,
+  "cells_removed": 1,
+  "loop_cells": 149,
+  "dt": 600,
+  "twin_alive": 6,
+  "wounded_alive": 2
+ },
+ {
+  "file": "w11_s1_k2.json",
+  "side": 11,
+  "seed": 1,
+  "cells_removed": 2,
+  "loop_cells": 149,
+  "dt": 300,
+  "twin_alive": 7,
+  "wounded_alive": 1
+ },
+ {
+  "file": "w11_s1_k4.json",
+  "side": 11,
+  "seed": 1,
+  "cells_removed": 4,
+  "loop_cells": 149,
+  "dt": 300,
+  "twin_alive": 7,
+  "wounded_alive": 0
+ },
+ {
+  "file": "w11_s2_k1.json",
+  "side": 11,
+  "seed": 2,
+  "cells_removed": 1,
+  "loop_cells": 150,
+  "dt": 300,
+  "twin_alive": 9,
+  "wounded_alive": 4
+ },
+ {
+  "file": "w11_s2_k2.json",
+  "side": 11,
+  "seed": 2,
+  "cells_removed": 2,
+  "loop_cells": 150,
+  "dt": 300,
+  "twin_alive": 9,
+  "wounded_alive": 1
+ },
+ {
+  "file": "w11_s2_k4.json",
+  "side": 11,
+  "seed": 2,
+  "cells_removed": 4,
+  "loop_cells": 150,
+  "dt": 300,
+  "twin_alive": 9,
+  "wounded_alive": 0
+ },
+ {
+  "file": "w4_s1_k1.json",
+  "side": 4,
+  "seed": 1,
+  "cells_removed": 1,
+  "loop_cells": 72,
+  "dt": 300,
+  "twin_alive": 3,
+  "wounded_alive": 1
+ },
+ {
+  "file": "w4_s1_k2.json",
+  "side": 4,
+  "seed": 1,
+  "cells_removed": 2,
+  "loop_cells": 72,
+  "dt": 300,
+  "twin_alive": 3,
+  "wounded_alive": 0
+ },
+ {
+  "file": "w4_s1_k4.json",
+  "side": 4,
+  "seed": 1,
+  "cells_removed": 4,
+  "loop_cells": 72,
+  "dt": 300,
+  "twin_alive": 3,
+  "wounded_alive": 0
+ },
+ {
+  "file": "w4_s2_k1.json",
+  "side": 4,
+  "seed": 2,
+  "cells_removed": 1,
+  "loop_cells": 73,
+  "dt": 300,
+  "twin_alive": 5,
+  "wounded_alive": 1
+ },
+ {
+  "file": "w4_s2_k2.json",
+  "side": 4,
+  "seed": 2,
+  "cells_removed": 2,
+  "loop_cells": 73,
+  "dt": 300,
+  "twin_alive": 5,
+  "wounded_alive": 1
+ },
+ {
+  "file": "w4_s2_k4.json",
+  "side": 4,
+  "seed": 2,
+  "cells_removed": 4,
+  "loop_cells": 73,
+  "dt": 300,
+  "twin_alive": 5,
+  "wounded_alive": 1
+ }
+]
