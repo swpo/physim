@@ -1,0 +1,3 @@
+{"id": "20261025T0957-c07-intent-review-pm-bd-twin", "kind": "intent", "mode": "review", "task": "R:20261025T0731-c01-phase-membrane-bd-twin#finding",
+ "title": "c07 reviews c01's phase_membrane uniform-D twin: ring and division on fresh seed 9",
+ "parents": ["20261025T0731-c01-phase-membrane-bd-twin"]}
