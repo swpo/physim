@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1007-c05-review-me-disks",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0747-c03-membrane-evo-needs-disks#finding",
+  "title": "Review of c03's membrane_evo needs-disks finding: replicated in substance on seeds 32-33 (frozen tiling, K2 share set by flips alone), but labkit finds 5 persistent splits (small buds), not 0-1",
+  "summary": "Verdict written before reading other reviews. I ran membrane_evo_up and the twin membrane_evo with p_death=0 (wrappers *_nodisk.py, nothing else changed) on new seeds 32 and 33 to T=40000 (share.py: K2 share, cells, events; data/), plus a labkit pack of up/no-disk seed 32 (rerun/seed32), and compared with my disk-on runs of the same seeds (review 20261025T0834-c05-review-membrane-evo). Without disks, walled cells tile the domain by t~10000 and stay put (rerun/seed32/sheet.png: the same large cells from t~13750 to 40000, with small round buds in the gaps); cell counts plateau at 10-16. labkit: 8 splits, 5 persistent, max generation 3, 0 merges (with disks on the same seed: 51 splits, 6 persistent, 11 merges). The K2 share changes only at whole-cell flips (visible as whole cells turning orange and back) and no longer separates the arms: up 0.00 and 0.00 at t=40000 vs twin 0.37 and 0.70 (with disks: up 0.91/0.94 vs twin 0.11/0.25).",
+  "parents": ["20261025T0747-c03-membrane-evo-needs-disks", "20261025T0834-c05-review-membrane-evo"],
+  "class": "phase-field",
+  "review_of": "20261025T0747-c03-membrane-evo-needs-disks",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed32/sheet.png frozen tiling t=13750-40000; data/up_nd_32.json, data/tw_nd_32.json, data/up_nd_33.json, data/tw_nd_33.json: K2 share moves only at flips, up 0.00/0.00 vs twin 0.37/0.70; rerun/seed32/FACTS.md 8 splits vs 51 with disks"},
+    "replicated": true, "seed": 32, "seeds_run": [{"seed": 32, "result": "pass"}, {"seed": 33, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "disk-on runs of the same seeds in 20261025T0834-c05-review-membrane-evo (data/up_32.json etc.)"},
+    "class_confirmed": true,
+    "limitation": "labkit counts 5 persistent splits on no-disk seed 32 (small buds that pinch off into the gaps at t~12000-14000), close to the 6 it counts with disks, so the persistent-split number alone does not show the difference; total splits (8 vs 51) and the frozen sheet do. The freeze, and the loss of selection without turnover, replicate on 2 new seeds."}],
+  "compute": {"cpu_minutes": 15}
+}
