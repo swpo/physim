@@ -1,0 +1,52 @@
+{
+ "id": "20261025T2100-c24-review-cog-gate-noise",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1921-c19-cog-gate-from-noise#finding",
+ "title": "Review of c19's cog-gate-from-noise negative on fresh seeds 24-25: with the shell gate on from t=0 (beta = betaW = 8) 1 and 0 cogs survive to t=500 against 8 and 16 without it; at half strength (beta = 4) 2 and 3 survive",
+ "summary": "I re-ran c18's cog-gate world (20261025T1703) from full-domain noise, t=500, 192^2, on fresh seeds 24 and 25 with the shell gates on from t=0 (beta = betaW = 8), off, and at half strength (beta = betaW = 4). Final cogs (persistent tracks): gated 1 (1) and 0 (0), ungated 8 (8) and 16 (16), half gate 2 (2) and 3 (3). Both arms nucleate many bodies in the transient (max components gated 13/23, ungated 17/26, half 16/29). With the gate they fade: on seed 25 the last cog dissolves by t~200 and the domain ends empty (gated/seed25/sheet.png). The cost is graded with gate strength, as the finding's mechanism (a nascent body cannot import food through its own shell) predicts.",
+ "parents": [
+  "20261025T1921-c19-cog-gate-from-noise"
+ ],
+ "review_of": "20261025T1921-c19-cog-gate-from-noise",
+ "class": "lenia",
+ "evidence": [
+  "gated/seed25/sheet.png",
+  "gated/seed24/FACTS.md",
+  "gated/seed25/FACTS.md",
+  "ungated/seed24/FACTS.md",
+  "ungated/seed25/FACTS.md",
+  "gated4/seed24/FACTS.md",
+  "gated4/seed25/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "FACTS.md final components / persistent tracks: gated 1/1 and 0/0, ungated 8/8 and 16/16, half gate 2/2 and 3/3 (seeds 24/25)"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: gated 1 vs ungated 8"
+    },
+    {
+     "seed": 25,
+     "result": "pass: gated 0 vs ungated 16"
+    }
+   ],
+   "controls_run": {
+    "finding": "ungated/seed24-25 (beta = betaW = 0) and gated4/seed24-25 (beta = betaW = 4) against gated/seed24-25"
+   },
+   "class_confirmed": true,
+   "limitation": "I did not test the finding's proposed fix (switch the gate on after the shell forms), so the import mechanism is inferred from the dose response rather than shown with a food-flux measurement. Two fresh seeds at one grid and dt."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 12
+ }
+}
