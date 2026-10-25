@@ -1,0 +1,13 @@
+{
+ "id": "20261025T1918-c22-wavepin-selfpolarize-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "Q:wave-pinning-crawler-repair",
+ "title": "At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler",
+ "summary": "Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1.5), the uniform state becomes the unstable middle root; one side drops low, the other stays high, and the cell crawls as a half-moon at 0.42 to t=12 (uniform_rs02_eta2.png). Without noise the same disk swells, switches to the low state everywhere at once, retracts and vanishes by t~4.5 (uniform_rs02_eta0.png). At rho*=0.4, uniform-high disks are stable and static, which is the dead end that front cuts reach in 20261025T1915-c22-wavepin-front-cut-no-repair. A polarized start at rho*=0.2 also crawls (0.44, polarized_rs02_eta0.png). One seed each; probe images, not packs.",
+ "parents": ["20261025T1915-c22-wavepin-front-cut-no-repair", "20261025T1905-c22-wavepin-crawler-sighting"],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": ["uniform_rs02_eta2.png", "uniform_rs02_eta0.png", "polarized_rs02_eta0.png"],
+ "compute": {"cpu_minutes": 10}
+}
