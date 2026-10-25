@@ -1,0 +1,11 @@
+{"id": "20261025T0747-c03-membrane-evo-needs-disks", "kind": "finding", "mode": "control", "task": "C:autonomous-heredity",
+ "title": "membrane_evo cells stop dividing without the imposed death disks: the population freezes, so reproduction and selection both need imposed turnover",
+ "summary": "membrane_evo_up and its identical-event twin membrane_evo run with p_death=0 (everything else identical, seeds 21 and 22, T=40000) form walled cells from noise that grow to fill space and freeze by t~10000 at 6-13 cells: 0-1 persistent splits per run against 5-14 with the disks on (seeds 21-23), and the K2 share no longer separates between up and twin (0.07 vs 0.32, 0.65 vs 0.50; with disks 0.78-0.93 vs 0.02-0.46). Division in this world is triggered by disk cuts and the space they free, so a route to C:autonomous-heredity that only replaces disk deaths by intrinsic identity deaths must also produce intrinsic turnover (deaths that free space and nutrient) or the population will stall.",
+ "parents": ["20261025T0746-c03-review-membrane-evo", "lab1-autopoiesis-membrane-evo"],
+ "class": "phase-field",
+ "world": "research/alife/collective/contrib/20261025T0746-c03-review-membrane-evo/world_up_nodeath.py",
+ "evidence": ["research/alife/collective/contrib/20261025T0746-c03-review-membrane-evo/ctl_up_nodeath/seed21/sheet.png", "research/alife/collective/contrib/20261025T0746-c03-review-membrane-evo/ctl_twin_nodeath/seed22/sheet.png", "research/alife/collective/contrib/20261025T0746-c03-review-membrane-evo/rerun_up/seed23/sheet.png", "research/alife/collective/contrib/20261025T0746-c03-review-membrane-evo/share.txt"],
+ "finding": {"operator": "imposed random death disks (p_death=0.01, r=14)", "capability": "D", "world": "threads/autopoiesis/worlds/membrane_evo_up/world.py", "necessary": true, "law": false,
+             "control": "matched ablation p_death=0, same seeds, same identical-event RNG for flips", "result": "persistent splits 0-1 (p_death=0, 4 runs) vs 5-14 (p_death=0.01, 6 runs); K2 share separation lost"},
+ "outcome": "positive",
+ "compute": {"cpu_minutes": 8}}

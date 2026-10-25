@@ -1,0 +1,352 @@
+[
+ {
+  "run": "chi0_s0",
+  "overrides": [
+   "chi=0"
+  ],
+  "ring_median_over_t": 1.14,
+  "ring_range": [
+   1.12,
+   1.22
+  ],
+  "cells_per_census": [
+   15,
+   21,
+   26,
+   31,
+   36,
+   39,
+   41
+  ],
+  "inradius_last": 4.242640687119285
+ },
+ {
+  "run": "orig_s0",
+  "overrides": [],
+  "ring_median_over_t": 2.33,
+  "ring_range": [
+   1.8,
+   2.69
+  ],
+  "cells_per_census": [
+   12,
+   11,
+   13,
+   18,
+   15,
+   21,
+   20
+  ],
+  "inradius_last": 7.807886552931954
+ },
+ {
+  "run": "orig_s1",
+  "overrides": [],
+  "ring_median_over_t": 2.29,
+  "ring_range": [
+   1.98,
+   2.5
+  ],
+  "cells_per_census": [
+   18,
+   19,
+   21,
+   19,
+   20,
+   18,
+   18
+  ],
+  "inradius_last": 5.743903072168841
+ },
+ {
+  "run": "orig_s5",
+  "overrides": [],
+  "ring_median_over_t": 2.37,
+  "ring_range": [
+   2.07,
+   2.61
+  ],
+  "cells_per_census": [
+   15,
+   15,
+   20,
+   17,
+   19,
+   16,
+   17
+  ],
+  "inradius_last": 7.0
+ },
+ {
+  "run": "orig_scale2_s5",
+  "overrides": [
+   "scale=2",
+   "dt=0.25"
+  ],
+  "ring_median_over_t": 2.45,
+  "ring_range": [
+   2.19,
+   2.53
+  ],
+  "cells_per_census": [
+   16,
+   14,
+   14,
+   12,
+   14,
+   8,
+   13
+  ],
+  "inradius_last": 16.76305461424021
+ },
+ {
+  "run": "twin_lam0001_s5",
+  "overrides": [
+   "lam=0.001"
+  ],
+  "ring_median_over_t": 1.93,
+  "ring_range": [
+   1.73,
+   2.0
+  ],
+  "cells_per_census": [
+   31,
+   31,
+   31,
+   30,
+   27,
+   26,
+   26
+  ],
+  "inradius_last": 4.0
+ },
+ {
+  "run": "twin_lam0001_s6",
+  "overrides": [
+   "lam=0.001"
+  ],
+  "ring_median_over_t": 1.93,
+  "ring_range": [
+   1.77,
+   2.08
+  ],
+  "cells_per_census": [
+   27,
+   25,
+   22,
+   22,
+   20,
+   19,
+   19
+  ],
+  "inradius_last": 4.0
+ },
+ {
+  "run": "twin_lam0001_scale2_s5",
+  "overrides": [
+   "lam=0.001",
+   "scale=2",
+   "dt=0.25"
+  ],
+  "ring_median_over_t": 2.93,
+  "ring_range": [
+   1.64,
+   3.44
+  ],
+  "cells_per_census": [
+   18,
+   17,
+   14,
+   10,
+   5,
+   5,
+   5
+  ],
+  "inradius_last": 7.615773105863909
+ },
+ {
+  "run": "twin_lam0001_scale2_s6",
+  "overrides": [
+   "lam=0.001",
+   "scale=2",
+   "dt=0.25"
+  ],
+  "ring_median_over_t": 1.92,
+  "ring_range": [
+   1.67,
+   2.77
+  ],
+  "cells_per_census": [
+   13,
+   12,
+   11,
+   13,
+   9,
+   9,
+   9
+  ],
+  "inradius_last": 7.211102550927978
+ },
+ {
+  "run": "twin_lam0003_s5",
+  "overrides": [
+   "lam=0.003"
+  ],
+  "ring_median_over_t": 1.69,
+  "ring_range": [
+   1.64,
+   1.86
+  ],
+  "cells_per_census": [
+   32,
+   31,
+   25,
+   26,
+   31,
+   29,
+   28
+  ],
+  "inradius_last": 4.0
+ },
+ {
+  "run": "twin_lam001_s0",
+  "overrides": [
+   "lam=0.01"
+  ],
+  "ring_median_over_t": 1.42,
+  "ring_range": [
+   1.4,
+   1.98
+  ],
+  "cells_per_census": [
+   27,
+   22,
+   18,
+   14,
+   13,
+   12,
+   11
+  ],
+  "inradius_last": 3.605551275463989
+ },
+ {
+  "run": "twin_lam003_s0",
+  "overrides": [
+   "lam=0.03"
+  ],
+  "ring_median_over_t": 1.32,
+  "ring_range": [
+   1.23,
+   1.54
+  ],
+  "cells_per_census": [
+   26,
+   25,
+   19,
+   19,
+   16,
+   13,
+   14
+  ],
+  "inradius_last": 3.605551275463989
+ },
+ {
+  "run": "twin_lam0_s0",
+  "overrides": [
+   "lam=0"
+  ],
+  "ring_median_over_t": 2.12,
+  "ring_range": [
+   1.98,
+   2.17
+  ],
+  "cells_per_census": [
+   19,
+   22,
+   24,
+   24,
+   24,
+   22,
+   24
+  ],
+  "inradius_last": 4.0
+ },
+ {
+  "run": "twin_lam0_s5",
+  "overrides": [
+   "lam=0"
+  ],
+  "ring_median_over_t": 2.01,
+  "ring_range": [
+   1.96,
+   2.04
+  ],
+  "cells_per_census": [
+   24,
+   27,
+   28,
+   25,
+   26,
+   26,
+   25
+  ],
+  "inradius_last": 4.0
+ },
+ {
+  "run": "twin_s0",
+  "overrides": [],
+  "ring_median_over_t": 1.19,
+  "ring_range": [
+   1.13,
+   1.41
+  ],
+  "cells_per_census": [
+   17,
+   22,
+   22,
+   30,
+   33,
+   34,
+   32
+  ],
+  "inradius_last": 3.605551275463989
+ },
+ {
+  "run": "twin_s1",
+  "overrides": [],
+  "ring_median_over_t": 1.16,
+  "ring_range": [
+   1.14,
+   1.59
+  ],
+  "cells_per_census": [
+   16,
+   20,
+   24,
+   29,
+   29,
+   31,
+   28
+  ],
+  "inradius_last": 3.605551275463989
+ },
+ {
+  "run": "twin_s5",
+  "overrides": [],
+  "ring_median_over_t": 1.16,
+  "ring_range": [
+   1.13,
+   1.31
+  ],
+  "cells_per_census": [
+   20,
+   22,
+   26,
+   24,
+   29,
+   29,
+   29
+  ],
+  "inradius_last": 3.605551275463989
+ }
+]
