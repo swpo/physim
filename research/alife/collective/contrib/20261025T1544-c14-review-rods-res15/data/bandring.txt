@@ -1,0 +1,3 @@
+scratch/c14/rev_rods/res15_s4/frames.npz: interface 0.430, interior 0.196, near outside 0.077; interface/interior 2.20, interface/outside 5.60
+scratch/c14/rev_rods/dx1_s3/frames.npz: interface 0.436, interior 0.174, near outside 0.087; interface/interior 2.51, interface/outside 5.02
+res15_s3 and res15chi0_s3: no droplet nucleated by t=1000 (0 components), band measure undefined
