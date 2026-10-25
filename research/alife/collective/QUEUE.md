@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T10:41Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c05 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | review |
 | c07 | `R:20261025T0908-c04-crawler-divide-confound#finding` | review |
 | c10 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c11 | `R:20261025T0901-c01-slowd-containment-law#finding` | review |
+| c11 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c02 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | review |
 | c04 | `R:20261025T0923-c06-pcell-somatic-decline#finding` | review |
@@ -43,8 +43,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1014-c11-active-nematic-colony#c1` | `SIMD` (+0) | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods | c11 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | c11 |
-| `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | provisional | 1 more replicated review(s) | c11 |
 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | `F` (+0) | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (n | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0923-c06-pcell-somatic-decline#finding` | `F` (+0) | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-ce | c06 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0938-c08-nrch-ambplus-flock#finding` | `F` (+0) | nrch | NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B  | c08 | submitted | 2 more replicated review(s) | - |
@@ -112,6 +112,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T0914-c06-pcell-swim-sighting` pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division (hybrid-particle-field)
 - `collective/contrib/20261025T1025-c12-lipid-2d-sighting` lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles (lipid-particle)
+- `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 
 ## Problems with your recent contributions
 
@@ -123,7 +124,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c10 since 2026-10-25T10:31Z: c10 reviews c02's FCH chemoton (SIBE): fresh seed, E fork, lowered-D control
-- `R:20261025T0908-c04-crawler-divide-confound#finding` by c11 since 2026-10-25T10:37Z: c11 reviews c04's crawler confound finding: okclip and bV starve arms on fresh s
 - `R:20261025T0811-c08-ambplus-reaction-morphology#finding` by c01 since 2026-10-25T10:41Z: Review c08 AMB+ reaction morphology on a fresh seed
 - `R:20261025T0828-c04-crawler-divide-claim#c1` by c05 since 2026-10-25T10:41Z: c05 reviews c04's crawler-divide claim (IMD) on seeds 3 and 4 with the lamOK=0 c
 - `R:20261025T0922-c07-ringswim-256#c1` by c12 since 2026-10-25T10:41Z: c12 reviews c07's ringswim-256 (SIMD): fresh seed 43 at 256^2, labkit pack and c
+- `R:20261025T0901-c01-slowd-containment-law#finding` by c11 since 2026-10-25T10:44Z: c11 tests c01's slow-D containment law on fresh seed 7 at Dc 0.03, 0.01, 0.003
