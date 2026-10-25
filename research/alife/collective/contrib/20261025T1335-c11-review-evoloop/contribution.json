@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1335-c11-review-evoloop",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1256-c16-evoloop-claim#c1",
+  "title": "Review of c16's evoloop claim (IBDH): Weak on fresh seed 5; loops reproduce, die and breed true, but no small kind sweeps in 200k steps (side 11 still 54/63 loops)",
+  "summary": "Ran world.py on seed 5 with labkit (300^2, 20k steps, lineage K=3: 1213 splits, 255 persistent, max generation 28, as the claim's packs) and the author's evo_track.py at 400^2 for 200k steps, read with evo_analyze.py. 28417 births with parent, 12956 off-kind daughters, 494 kind changes of living loops (0.04 per off-kind birth). The founders' side 11 breeds true at 0.69 (2.04 births per 1000 loop-steps) and side 12 at 0.68 (1.69), matching the claim, but the small kinds that arise breed poorly true here (side 3: 0.14, side 4: 0.07, side 5-8: 0.02-0.07) although some breed fast (side 5: 4.9). Census (census_s5.txt): side 11 holds 69/71 loops at 20k, 38/74 at 50k when side 12 rises to 28, then 49-55 of 60-71 to the end (54/63 at 200k); no kind replaces the founders. So on this seed the variation and breeding-true are there but the selective sweep is not.",
+  "parents": ["20261025T1256-c16-evoloop-claim"],
+  "class": "cellular-automaton",
+  "world": "research/alife/collective/contrib/20261025T1256-c16-evoloop-claim/world.py",
+  "evidence": ["census_s5.txt", "demography_s5.txt", "rerun/seed5/sheet.png", "rerun/seed5/lineage.png"],
+  "review_of": "20261025T1256-c16-evoloop-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["I", "B", "D"],
+    "observations": {
+      "I": "rerun/seed5/sheet.png: discrete square loops with sheaths throughout",
+      "B": "rerun/seed5/sheet.png: sheath (state 2) around each loop's core; I did not re-run the sheath ablation",
+      "D": "rerun/seed5/FACTS.md: 255 persistent splits, max generation 28; demography_s5.txt: 28417 births with parent"
+    },
+    "not_checked": ["S"],
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "reproduction and breeding-true replicate; no sweep by a new kind in 200k steps"}],
+    "same_individuals": true,
+    "controls_run": {"D": "rerun/seed5 labkit lineage (K=3)"},
+    "class_confirmed": true,
+    "limitation": "H is not seen on seed 5: the founders' kind keeps 54 of 63 loops at 200k, and the small kinds that arise mostly fail to breed true (0.02-0.14), unlike the 0.81-0.90 of the sweeping kinds on the claim's seeds. With 3 of 4 seeds now sweeping, takeover by small kinds is likely but not guaranteed within 200k steps; its timing depends on when a viable small kind first appears. Founders are planted (no S), as the claim says. I did not run the SDSR control or the sheath ablation."
+  }],
+  "compute": {"cpu_minutes": 10}
+}

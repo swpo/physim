@@ -1,0 +1,5 @@
+Seed 5, T=800 (100 frames x 400 steps, the author's command). labkit FACTS + cargo_contrast.py (c01) on each arm.
+arm                         final bodies  persistent splits  max gen  catalyst contrast t=80 / 400 / 800   share >= 2x at t=800
+gated (beta=8, Dc=1)         55            25                 3        3.4 / 61.3 / 194                    0.98
+no gate, Dc=0.01             49            20                 2        29.5 / 38.0 / 22.5                  1.00 (weakest 7.9x)
+no gate, Dc=1                0 (all dead by t~480)  0          0        1.1 / 1.0 / -                       0.00

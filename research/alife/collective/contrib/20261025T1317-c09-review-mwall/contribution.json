@@ -1,0 +1,34 @@
+{
+  "id": "20261025T1317-c09-review-mwall",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1345-c14-pcell-mwall-claim#c1",
+  "title": "Review of c14's pcell-mwall (SIBDH): the M wall layer replicates on fresh seed 11 (rim/core 3.15, 87/103 membrane-like; bm=0 gives none), but this seed is weak for I, D and H: one cell holds 37-49% of all particles for most of the run, 7 persistent splits, and only 5 dying cells with a birth rank",
+  "summary": "Fresh seed 11, T=100000 (labkit, c14's genealogy.py, deathsel.py, birthfate.py, and my lifesel.py). From a noisy start ~20 cells form by t=4000; each carries an M layer at its wall (labkit M rim/core 3.15, rim/outside 4.63, 87/103 individuals membrane-like); with bm=0 on the same seed M is flat and the L link layer stays below the gate (rim/core 1.31, 38/95). But from t~13500 several cells grow into large irregular bodies and the largest holds 40-49% of all particles in cells from t=20000 to t=80000 (data/largest_s11.txt; labkit area ratio 16.9, occupancy 0.40), so size is not bounded on this seed. Genealogy: 7 persistent splits (generation 3), 0 merges, 24 deaths. Selection: the 12 mature-cell deaths sit at yield percentile 0.047 (all below the median) against 0.37 for the inert marker; by birth rank 4/10 low-born and 1/8 high-born cells die (marker 3/8 and 2/10), but only 5 dying cells have a birth snapshot, and their birth rank is 0.35 (marker 0.39); my life-fraction readout puts all 12 dying cells at 0.44 at birth and 0.05 at death. The direction agrees with the claim's four seeds; the numbers on this seed are too small to add weight to H. Weak.",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim", "20261025T0952-c09-pcell-death-acquired"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T1345-c14-pcell-mwall-claim/world.py",
+  "evidence": ["rerun/seed11/sheet.png", "rerun/seed11/radial.png", "rerun/seed11/particles.png", "rerun/seed11/lineage.png", "bm0/seed11/radial.png", "data/selection_s11.txt", "data/largest_s11.txt", "data/gen_s11.log"],
+  "review_of": "20261025T1345-c14-pcell-mwall-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "B", "D", "H"],
+    "not_checked": [],
+    "observations": {
+      "S": "rerun/seed11/sheet.png t=0: noisy phi and uniform particle soup; ~20 cells by t=4000",
+      "B": "rerun/seed11/radial.png: M rim/core 3.15, rim/outside 4.63, 87/103 membrane-like; bm0/seed11: M flat, L 1.31 (38/95)",
+      "D": "data/gen_s11.log: 7 persistent splits, generation 3, 0 merges; labkit 6 persistent splits, generation 3, merge/split 0.25",
+      "H": "data/selection_s11.txt: 12/12 mature deaths below the yield median (percentile 0.047) vs marker 0.37; death share by birth rank low 4/10, high 1/8 (marker 3/8, 2/10); dying cells' birth rank 0.35 (n=5)"
+    },
+    "replicated": true,
+    "seed": 11,
+    "seeds_run": [{"seed": 11, "result": "pass for S and B; D and H in the claimed direction with small numbers; size unbounded (largest cell 40-49% of particles)"}],
+    "same_individuals": true,
+    "controls_run": {"B": "bm0/seed11 (bm=0, same seed: no M layer)", "H": "the claim's inert marker z on seed 11 (death percentile 0.37; birth-rank fate 3/8 vs 2/10)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "I is weak on this seed: one irregular cell holds 40-49% of all particles in cells for t=20000-80000, so individuals are not of bounded size (labkit area ratio 16.9). D and H rest on small numbers (7 splits, 5 dying cells with a birth rank). The marker's death percentile (0.37) is itself below 0.5 here. M is passive (no feedback), as the claim says. One fresh seed."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

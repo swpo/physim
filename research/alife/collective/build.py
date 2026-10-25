@@ -49,9 +49,10 @@ ID_RE = re.compile(r"^\d{8}T\d{4}-(c\d+)-[a-z0-9][a-z0-9-]*$")
 SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
+LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 3  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 4  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -113,7 +114,7 @@ def coerce(c):
         return None, ["the top level is not a JSON object"]
     c = dict(c)
     for k in ("id", "author", "review_of", "task", "title", "summary", "class", "kind", "mode", "world", "outcome",
-              "created", "slug", "experiment", "challenge", "focus", "pack"):
+              "created", "slug", "experiment", "challenge", "focus", "pack", "until"):
         if k in c and c[k] is not None and not isinstance(c[k], str):
             c[k] = text(c[k])
     for k in ("claims", "verdicts", "parents", "target", "evidence"):
@@ -596,11 +597,17 @@ def derive(items, until=None, canaries=frozenset()):
                     sup = set()
             seeds_run = v.get("seeds_run") if isinstance(v.get("seeds_run"), list) else []
             fails = sum(1 for r in seeds_run if isinstance(r, dict) and FAIL_RE.search(str(r.get("result", ""))))
-            rep = (bool(v.get("replicated")) and verified_rerun(c.get("_dir", ""), cl["runs"], v)
-                   and (len(seeds_run) - fails) >= fails)
-            if v.get("replicated") and not rep:
-                problems.append(f"`{c['id']}`: replication claimed but no labkit re-run on a new seed of the claimed world found "
-                                "in its directory (or most reported seeds failed)")
+            # A review counts when its own directory holds a labkit re-run on a new seed, whatever it found: a re-run
+            # that failed to reproduce the claim is evidence against it. The self-reported flag is not needed (some
+            # reviewers write "replicated": false to mean "it did not replicate").
+            rerun = verified_rerun(c.get("_dir", ""), cl["runs"], v)
+            failed_support = verdict == "Supported" and fails > len(seeds_run) - fails
+            rep = rerun and not failed_support
+            if not rerun and (v.get("replicated") or seeds_run):
+                problems.append(f"`{c['id']}`: no labkit re-run on a new seed of the claimed world found in its directory; "
+                                "the review counts neither for nor against")
+            elif failed_support:
+                problems.append(f"`{c['id']}`: Supported, but most reported seeds failed; the review is not counted")
             controls = {k: s for k, s in (v.get("controls_run") or {}).items()
                         if control_ok([c.get("_dir", ""), cl["dir"]], s)}
             bd = v.get("bd_supported")
@@ -770,14 +777,36 @@ def potential(cl, cells):
 
 
 # ------------------------------------------------------------------ outputs
+def departed(recent, now):
+    """Agents whose session has ended, so they hold no assignment and no task: the last thing they published is
+    a `leave` intent, or their lease (from their first contribution, or an intent's `until`) has run out and they
+    have published nothing since."""
+    last, end = {}, {}
+    for c in recent:  # time order
+        a = c.get("author")
+        if not a:
+            continue
+        last[a] = c
+        until = parse_t(c.get("until")) if c.get("kind") == "intent" else None
+        if until and until > c["_t"]:
+            end[a] = until
+        elif a not in end:
+            end[a] = c["_t"] + LEASE
+    return {a for a, c in last.items()
+            if (c.get("kind") == "intent" and c.get("task") == "leave") or (now > end[a] and c["_t"] <= end[a])}
+
+
 def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log=print):
     claims, _, dproblems = derive(items, canaries=canaries)
     problems = problems + dproblems
     sc, cells, bd_cells = summary_score(claims)
     maxi, est = frontier(claims)
     recent = [c for c in items if not c.get("_seed")]
-    active = sorted({c["author"] for c in recent if now - c["_t"] <= ACTIVE_WINDOW and c.get("author")})
-    intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW]
+    gone = departed(recent, now)
+    seen_recently = {c["author"] for c in recent if now - c["_t"] <= ACTIVE_WINDOW and c.get("author")}
+    active = sorted(seen_recently - gone)
+    left = sorted(seen_recently & gone)
+    intents = [c for c in recent if c.get("kind") == "intent" and now - c["_t"] <= INTENT_WINDOW and c.get("author") not in gone]
     closed = {(c.get("author"), c.get("task")) for c in recent if c.get("kind") != "intent" and c.get("task")}
     live = [c for c in intents if (c.get("author"), c.get("task")) not in closed
             and re.match(r"^(R|C|Q|G|F):|^SYN$", c.get("task") or "")]  # a join intent holds no task
@@ -941,8 +970,10 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
          f"breadth Q = **{sc['Q']}**; mechanisms and laws K = **{sc['K']}**; corrections C = **{sc['C']}**. "
          f"With provisional claims P would be {sc['P_prov']}; removing the single most important established claim leaves "
          f"P = {loo}. Definitions: [SCORE.md](SCORE.md)." + (f" Canary false-support rate: {can_rate:.0%}." if can_rate is not None else ""), "",
-         f"**Activity.** {len(recent)} contributions since the collective started; {len(active)} agents active in the last "
-         f"90 minutes ({', '.join(active) or 'none'}); {cpu:.1f} CPU hours reported; {len(pending)} claims need reviews.", "",
+         f"**Activity.** {len(recent)} contributions since the collective started; {len(active)} agents active (published in "
+         f"the last 90 minutes, session not ended: {', '.join(active) or 'none'})"
+         + (f"; sessions ended recently: {', '.join(left)}" if left else "")
+         + f"; {cpu:.1f} CPU hours reported; {len(pending)} claims need reviews.", "",
          "![progress](progress.png)", ""]
     if last_syn:
         S += [f"## Latest synthesis ({fmt_t(last_syn['_t'])}, {last_syn.get('author')})", "", last_syn.get("summary", "").strip(), ""]

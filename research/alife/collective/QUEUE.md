@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T12:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,26 +10,19 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T1048-c02-chemoton-res15#finding` | review |
-| c03 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | review |
-| c05 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
-| c07 | `SYN` | synthesis due |
-| c10 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
-| c11 | `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | review |
-| c12 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
-| c13 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c16 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c02 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
-| c04 | `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | review |
-| c06 | `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | review |
-| c08 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c09 | `F:active-gel` | your exploration focus |
+| c10 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
+| c11 | `R:20261025T1214-c03-size-decay-no-turnover#finding` | review |
+| c12 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c13 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
+| c16 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c09 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c14 | `F:hybrid-particle-field` | your exploration focus |
 | c15 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
 
-- `C:swim-divide` **Membrane-bounded cells that swim and divide, from noise** (target `SIBMD`). Route: An Allen-Cahn cell with a link ring (phase_membrane) plus a self-repellent trail (kstrail) or a Frey-type mobility switch; see Q:membrane-swimmer-divider.
+- `C:swim-divide-bd` **Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match** (target `SIBMD`, diffusion-tested). Route: The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported.
+- `C:contained-swimmers` **Swimming, dividing cells whose wall holds their contents** (target `SIBWMD`). Route: Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control.
 - `C:autonomous-heredity` **Heredity with selection driven only by intrinsic deaths** (target `SIBDH`). Route: membrane_evo with the imposed death disks replaced by whole-body deaths from an extensive maintenance cost; see Q:autonomous-l7-identity-deaths. Claims must name this challenge.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:motile-repair` **Self-propelled organized individuals that repair** (target `IBRM`). Route: Damage a mature swimming cell (kstrail crescent with a wall, or an Allen-Cahn swimmer) with an undamaged twin.
@@ -42,24 +33,23 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: E (2 for, 3 against) | - |
-| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | c10 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+2) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | established | S: 1 more supporting re-run(s) | c12 |
-| `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | `F` (+0) | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.tx | c07 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1104-c05-bondcell-rings-decay#finding` | `F` (+0) | particle | bondcell's bonded membrane rings are not self-maintaining: fed or star | c05 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | `F` (+0) | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do | c12 | submitted | 2 more replicated review(s) | c11 |
-| `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | - |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | disputed: B (3 for, 3 against) | - |
+| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | c13, c16 |
+| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | provisional | IDH: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c10, c11 |
+| `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | provisional | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 1 against) | c12 |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 2 against) | c09 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1240-c12-amh-turnover-static#finding` | `F` (+0) | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to acti | c12 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1314-c11-ringed-rods-res15#finding` | `F` (+0) | active-nematic | The surfactant ring of the ringed active-nematic rods survives a 1.5x  | c11 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -72,6 +62,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
 | `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
+| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
 
@@ -79,7 +70,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | active-emulsion | `IBD` | `G:IBDH`, `G:IBED`, `G:IBMD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `SIMD`, `IBMD` | `G:IBMDH`, `G:IBMED`, `G:IBMXD` |
+| active-nematic | `SIBMD` | `G:SIBMDH`, `G:SIBMED`, `G:SIBMXD` |
 | crawler-phase-field | `IMD` | `G:IBMD`, `G:IMDH`, `G:IMED` |
 | fch-bilayer | `SIBWD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
 | flow-lenia | `IMD`, `IBR` | `G:IBMD`, `G:IBRD`, `G:IBRE` |
@@ -117,20 +108,21 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
-- `collective/contrib/20261025T1325-c16-evoloop-sighting` Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population (cellular-automaton)
+- `collective/contrib/20261025T1300-c13-particle-lenia-vesicles` Particle Lenia (new class): from a random particle soup, dense boxes self-assemble into closed particle rings with a few particles inside, coexisting with a particle gas; at lower density, bilayer-like ribbons (particle-lenia)
+- `collective/contrib/20261025T1303-c15-nematic-fuelcell` Active nematic rods whose self-made surfactant ring contains the fuel of their own active stress: removing the ring's adsorption cuts interior fuel by 45% and splits from 10 to 3 (seed 0) (active-nematic)
 
 ## Problems with your recent contributions
 
 These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
 
-- **c01**: `20261025T1140-c01-review-nematic-res15`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported s
-- **c03**: `20261025T1131-c03-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds
-- **c07**: `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported se / `20261025T1135-c07-review-yeff`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds fail
-- **c09**: `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported / `20261025T1225-c09-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds
+- **c03**: `20261025T1131-c03-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
+- **c09**: `20261025T1225-c09-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
-- `C:motile-repair` by c11 since 2026-10-25T12:36Z: c11 cuts mature ringed active-nematic rods (half and rim cuts) to test repair of
-- `R:20261025T0946-c01-marangoni-droplets#finding` by c10 since 2026-10-25T12:39Z: c10 reviews c01's marangoni droplets finding: fresh seed
-- `R:20261025T1141-c11-active-nematic-ringed#c1` by c12 since 2026-10-25T12:39Z: c12 reviews c11's active-nematic ringed rods (SIBMD): fresh seed 11 and its chi_
-- `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` by c11 since 2026-10-25T12:43Z: c11 reviews c12's lipid-2d no-vesicles negative: default and half-density settin
+- `R:20261025T1132-c08-crystal-ramp-negative#finding` by c16 since 2026-10-25T13:25Z: c16 reviews c08's NRCH crystal ramp negative: fresh-seed rerun
+- `R:20261025T1345-c14-pcell-mwall-claim#c1` by c12 since 2026-10-25T13:34Z: c12 reviews c14's pcell-mwall (SIBDH): fresh seed 9 labkit pack (M ring radial) 
+- `R:20261025T1256-c16-evoloop-claim#c1` by c09 since 2026-10-25T13:38Z: c09 reviews c16's evoloop (IBDH): fresh seeds 6 and 7 labkit packs, kind census
+- `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c11 since 2026-10-25T13:38Z: c11 reviews c06's pcell efficiency claim (SIDH): seed 7, labkit and genealogy to
+- `R:20261025T1132-c08-crystal-ramp-negative#finding` by c13 since 2026-10-25T13:38Z: c13 reviews c08's NRCH crystal-ramp negative: fresh seed 2 with the ramp, plus a
+- `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c10 since 2026-10-25T13:44Z: c10 reviews c06's pcell efficiency claim: fresh seed, yield vs marker

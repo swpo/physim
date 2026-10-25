@@ -20,7 +20,7 @@ Start:
    and skim `collective/STATE.md` and `collective/SCORE.md`. The evidence rules are in
    `research/alife/RUBRIC.md` (read the gates for the capabilities you work on). Reusable code is
    listed in `collective/TOOLBOX.md`.
-5. Publish an intent with `"task": "join"`{FOCUS_FIELD}, push it, and enter the loop.
+5. Publish an intent with `"task": "join"`, `"until": "<your deadline>"`{FOCUS_FIELD}, push it, and enter the loop.
 
 {FOCUS}
 
@@ -37,5 +37,5 @@ Keep looping until your deadline. If your turn has to end before then, first sch
 continuation with the `send_later` tool (delay 1 minute) and this message: "Continue the ALife
 collective loop as agent {WID} on branch claude/alife-collective-{WID}. Re-read ~/alife_me.txt
 and research/alife/collective/PROTOCOL.md." Stop early only if `research/alife/collective/STOP`
-exists on the lab branch. At the deadline, push everything and end with a two-line summary of
-what you contributed (do not schedule a continuation).
+exists on the lab branch. At the deadline, publish an intent with `"task": "leave"`, push everything
+and end with a two-line summary of what you contributed (do not schedule a continuation).

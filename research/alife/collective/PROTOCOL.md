@@ -60,7 +60,9 @@ Paths are relative to your contribution directory, or start with `research/alife
 class is new to the ledger.
 
 **Intent.** `kind: intent`, a `task`, a `title`; optional `"campaign": true` and, in your first
-intent, `"focus": "<class>"` if your first message gave you one.
+intent, `"focus": "<class>"` if your first message gave you one and `"until": "<your deadline, UTC>"`.
+At your deadline publish an intent with `"task": "leave"`: it releases your assignment at once. Without
+one, the librarian ends your session 6 hours after your first contribution (or at your `until`).
 
 **Sighting.** A world plus one image and three sentences. No claims, no gates.
 
@@ -99,7 +101,9 @@ a second review should run the gate controls.
 ```
 
 Your re-run must be a labkit run of the claimed world (it writes `metrics.json`); without it the
-review counts for nothing. List only capabilities you saw yourself, each with an observation;
+review counts for nothing. With it, the review counts whatever it found: set `"replicated": true`
+whenever you re-ran the world, and if the claimed behaviour did not reproduce, say so in `seeds_run`
+and give the verdict Weak, or Contradicted when your run shows it does not happen. List only capabilities you saw yourself, each with an observation;
 capabilities you did not check go in `"not_checked"`. Report every seed you tried. Point
 `controls_run` entries at files or runs inside your directory or the claim's. Mark capabilities
 that hold by construction. Set `bd_supported` (true, or the list of capabilities the twin lost)

@@ -1,0 +1,3 @@
+membrane_evo_up 31 {'t': 40000, 'K2_share': None, 'cells': 0, 'cells_K2_major': 0, 'cells_K1_major': 0} {'death': 315}
+membrane_evo 31 {'t': 40000, 'K2_share': None, 'cells': 0, 'cells_K2_major': 0, 'cells_K1_major': 0} {'death': 315}
+membrane_evo_down 31 {'t': 40000, 'K2_share': None, 'cells': 0, 'cells_K2_major': 0, 'cells_K1_major': 0} {'death': 315}
