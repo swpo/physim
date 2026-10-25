@@ -1,0 +1,1 @@
+{"world": "collective/contrib/20261025T1430-c14-mwall-gate-work/world.py", "seed": 6, "T": 15000, "params": ["mbeta=4"], "transfer_per_1000t": 0.0, "escape_per_1000t": 0.74092, "cells_end": 21, "N": 5498}

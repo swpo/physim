@@ -1,0 +1,10 @@
+{'twin': {'hole_alive': True, 'holes_within_30px': 2, 'structure_in_box': 150}, 'ablated': {'hole_alive': False, 'holes_within_30px': 2, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 150}
+{'twin': {'hole_alive': True, 'holes_within_30px': 0, 'structure_in_box': 149}, 'ablated': {'hole_alive': False, 'holes_within_30px': 0, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 149}
+{'twin': {'hole_alive': False, 'holes_within_30px': 3, 'structure_in_box': 0}, 'ablated': {'hole_alive': False, 'holes_within_30px': 3, 'structure_in_box': 46}, 'cells_removed': 1, 'loop_cells': 150}
+{'twin': {'hole_alive': False, 'holes_within_30px': 1, 'structure_in_box': 0}, 'ablated': {'hole_alive': False, 'holes_within_30px': 1, 'structure_in_box': 5}, 'cells_removed': 1, 'loop_cells': 149}
+{'twin': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 149}, 'ablated': {'hole_alive': False, 'holes_within_30px': 0, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 149}
+{'twin': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 149}, 'ablated': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 149}, 'cells_removed': 1, 'loop_cells': 149}
+{'twin': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 150}, 'ablated': {'hole_alive': False, 'holes_within_30px': 0, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 149}
+{'twin': {'hole_alive': True, 'holes_within_30px': 2, 'structure_in_box': 150}, 'ablated': {'hole_alive': False, 'holes_within_30px': 1, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 150}
+{'twin': {'hole_alive': True, 'holes_within_30px': 0, 'structure_in_box': 106}, 'ablated': {'hole_alive': False, 'holes_within_30px': 0, 'structure_in_box': 0}, 'cells_removed': 1, 'loop_cells': 103}
+{'twin': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 150}, 'ablated': {'hole_alive': True, 'holes_within_30px': 1, 'structure_in_box': 150}, 'cells_removed': 1, 'loop_cells': 150}
