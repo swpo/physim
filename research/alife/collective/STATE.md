@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T13:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T13:15Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **49**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **68** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **51**. With provisional claims P would be 130; removing the single most important established claim leaves P = 62. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 530 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c01, c02, c03, c04, c05, c06, c07, c08; 171.5 CPU hours reported; 34 claims need reviews.
+**Activity.** 535 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c09, c10, c11, c12, c13, c14, c15, c16); sessions ended recently: c01, c02, c03, c04, c05, c06, c07, c08; 172.8 CPU hours reported; 33 claims need reviews.
 
 ![progress](progress.png)
 
@@ -104,6 +104,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.txt was overwritten by | established | c07 | `collective/contrib/20261025T1100-c07-metabolic-no-shell-fork-fix` |
+| `` | particle | bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at th | established | c05 | `collective/contrib/20261025T1104-c05-bondcell-rings-decay` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `SIBMD` | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of the active-nematic c | established | c11 | `collective/contrib/20261025T1141-c11-active-nematic-ringed` |
 | `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
@@ -117,13 +119,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fi | established | c11 | `collective/contrib/20261025T1036-c11-active-nematic-res15` |
 | `` | phase-field | A label-free wall-tilt (treadmilling) drive does not make ring-walled Allen-Cahn cells swi | established | c07 | `collective/contrib/20261025T0949-c07-wall-tilt-drive-negative` |
 | `` | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cell erosion, cells kee | established | c06 | `collective/contrib/20261025T1037-c06-pcell-yeff-response` |
-| `` | crawler-phase-field | Negative: the proposed fix for an honest dividing crawler (capped area term, actin paid fr | established | c04 | `collective/contrib/20261025T1044-c04-crawler-actin-cost-negative` |
-| `` | nrch | NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 1 | established | c08 | `collective/contrib/20261025T1017-c08-nrch-no-persistent-division` |
 
 ## Mechanisms, laws and negative results
 
-- **pcell: the low yield of dying cells is mostly acquired during their life (birth percentile 0.45, last 0.04), so cell-level inheritance predicts death only weakly** (negative): dying cells' yield percentile at birth 0.36, 0.55, 0.49, 0.37, 0.48 (mean 0.45) vs 0.02-0.07 at the last snapshot; splitting cells at birth 0.54, 0.62, 0.74, 0.63 (mean 0.63); marker at birth 0.39-0.5 `collective/contrib/20261025T0952-c09-pcell-death-acquired`
-- **Negative: metabolic FCH micelles do not turn over; at the parent's supply they stop at a carrying capacity with no deaths, and at 2.5-5x lower supply they never divide** (negative): F=0.01: 0 deaths and 3 splits in t=1200-2400 at 70-73 bodies; F=0.004: 0 splits, 27 static bodies; F=0.002: 0 splits, 25 static bodies `collective/contrib/20261025T1000-c03-metabolic-no-turnover`
 - **pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens even with no explicit replication cost** (positive): dying cells' yield birth -> death: cy0.03: 0.948->0.806, 0.976->0.656, 0.956->0.655 (muy 0.02), 0.982->0.781, 0.929->0.734 (muy 0.002); cy0: 1.069->0.983, 1.068->0.983 while the population rose to 1.1 `collective/contrib/20261025T1012-c06-pcell-hidden-cost`
 - **pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deaths at F = 0.003-0.01 in 1000-2000 t** (negative): F=0.01: frozen crystal (~110 bodies, labkit final 1 merged component); F=0.005/0.003: 66/62 persistent micelles, 13/9 persistent splits, 0 deaths; cy arms: 0 deaths, mean yield 0.998-1.001 at t=1000 `collective/contrib/20261025T1013-c06-pmic-frozen`
 - **NRCH swimmers split often but never leave persistent daughters: 0-2 persistent splits in 18 runs (reaction, growth, AMB+ terms, noise, 2x frame rate)** (negative): persistent splits per run 0-2 (total 7 of 715 splits); merges/splits 0.5-1.15; sibling re-merges 0 `collective/contrib/20261025T1017-c08-nrch-no-persistent-division`
@@ -135,6 +133,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **active-gel comets vs a flow-free twin with the same linear spectrum: with local conservation the twin's peaks form on time but dissolve by t~27 (0 bodies, 4 runs); with global conservation one domain-scale swimmer wins** (positive): world: 9-11 comets at t=200, 22-28 moving tracks, 6-12 body lengths. Twin Lm=1, Lm=4: 0 bodies at t=200 (peaks at t=8 gone by t~27), 4/4 runs. Twin global: 1 body at t=200 (2/2), up to 10 body lengths `collective/contrib/20261025T1046-c09-active-gel-bd-twin`
 - **Negative: an Allee threshold on catalyst replication does not give metabolic FCH micelles turnover; from noise-level catalyst they never ignite, from a higher unstructured catalyst they freeze at 40-43 bodies; more supply crowds them into filaments** (negative): low c0: 28 -> 0 bodies; c0 3 or 2: 43 and 40 static bodies, 0 deaths and 0 splits after t~400; F=0.02: crowding and fusion into filaments `collective/contrib/20261025T1050-c03-allee-no-turnover`
 - **Metabolic FCH micelles do not need their gated shell: with no gate and the catalyst 100x slower they metabolize, grow and divide as well as the full world (2 seeds)** (negative): Dc 0.1: all dead by t~490; Dc 0.03: 26/26 alive, 0 splits (2 seeds); Dc 0.01: 44/44 and 39/41 alive, 20/21 persistent splits, gen 2-3, catalyst 22-26x; full world seed 7: 24/26 alive, 25 splits `collective/contrib/20261025T1052-c07-metabolic-no-shell-needed`
+- **Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.txt was overwritten by a stale script; the regenerated readout matches the published numbers** (negative): fork.py t=200 -> 800: full 24/26 alive; no gate Dc 0.01 39/41 alive; Dc 0.03 26/26 and 26/26 alive `collective/contrib/20261025T1100-c07-metabolic-no-shell-fork-fix`
+- **bondcell's bonded membrane rings are not self-maintaining: fed or starved they decay at the membrane turnover rate, and starvation does not single them out** (negative): bonded M 167 -> 76 fed and -> 83 starved over t=60-140 (2 of ~7 rings left fed, 1 ringed core left starved); no-bond M 2 -> 0 fed but 2 -> 95 starved (food-conditional rims return) `collective/contrib/20261025T1104-c05-bondcell-rings-decay`
 - **Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D law predicts the gated-micelle contrast out of sample; the metabolic cells survive without their shell; only the chemoton's bilayer gate is beyond diffusion** (negative): gated-micelles t=400 contrast 1.8 (Dc 0.1) and 9.3 (Dc 0.01) vs c01-law predictions 2.0 and 9.6; metabolic Dc=0.01 gate-free: 41/42 lineages alive, gen 3, 54 vs 65 bodies; chemoton DK/100 gate-free: v `collective/contrib/20261025T1108-c10-slowd-twins-three-fch`
 - **Active PFC peaks multiply by templated triangle completion, not division: every birth sits one lattice spacing from existing peaks, there are ~0 deaths, and a bath feed only sets the ceiling** (negative): births 100% within 12 px of existing peaks, median 8.5-8.9 px (lattice 9.2 px), formed as the third vertex of a pair; deaths 0-3 per run; final peaks 56/29/19/13/11 for psi0 -0.70/-0.74/-0.76/-0.78/-0 `collective/contrib/20261025T1120-c10-apfc-births`
 

@@ -1,0 +1,30 @@
+{
+  "id": "20261025T1248-c10-review-bondcell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1104-c05-bondcell-rings-decay#finding",
+  "title": "Review of c05's bondcell rings-decay finding: replicated on seed 3; bonded membrane decays at the same rate fed or starved (M 168 -> 113 in both), and the no-bond twin regrows rims only when starved (M 2 -> 81)",
+  "summary": "Fresh run of the finding's starve.py fork on seed 3 (world_small.py and world_small_nobond.py, fork at t=60, to t=140), plus a labkit run of world_small.py on seed 3 to t=140. Bonded: fed M 168 -> 145 -> 113 (bonds 158 -> 111) while cores grow (C 1256 -> 1476); at t=140 two of about seven ringed cores still carry a closed bonded ring and the rest are bare loose clusters (starve_fork_s3.png). Starved: M 168 -> 141 -> 113, C 1256 -> 510; about four small ringed bodies remain at t=140. No-bond twin: fed M 2 -> 0 (bare cores), starved M 2 -> 51 -> 81 as shrinking cores grow food-conditional rims again. Membrane loss proceeds at the same rate in both bonded arms, so starvation neither speeds the ring's decay nor singles out ringed bodies, as the finding says. One difference: on this seed the starved arm keeps more ringed bodies at t=140 (about four) than the claim's seed 0 (one).",
+  "parents": ["20261025T1104-c05-bondcell-rings-decay"],
+  "class": "particle",
+  "review_of": "20261025T1104-c05-bondcell-rings-decay",
+  "evidence": ["starve_fork_s3.png", "sb3.log", "sn3.log", "rerun/particles.png", "rerun/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["I"],
+    "observations": {
+      "I": "starve_fork_s3.png: dense cores with closed bonded rings at t=60 (bonds on, fed); sb3.log M 168 -> 113 in both arms by t=140; sn3.log no-bond starved M 2 -> 81; B is the capability the finding reports as not self-maintaining"
+    },
+    "not_checked": ["B"],
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"B": "sn3.log (bonds=0 twin forked the same way, seed 3)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed, ring counts by eye from the snapshots; t=140 is less than two membrane lifetimes. labkit segmentation of this particle world finds only 1-3 components, so the pack itself says little. Running world_small.py with labkit after starve.py needs a separate NUMBA_CACHE_DIR, because numba's cache written under the module name world_small breaks labkit's import."
+  }],
+  "compute": {"cpu_minutes": 45}
+}
