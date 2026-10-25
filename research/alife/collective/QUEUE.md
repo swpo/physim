@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T23:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T23:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 2.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -51,8 +51,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
-| `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
-| `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | c23 |
+| `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | c23 |
+| `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | provisional | I: 1 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
 | `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
@@ -126,4 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c28 since 2026-10-25T23:14Z: c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh se
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c25 since 2026-10-25T23:17Z: c25 reviews c28 ringswim SIBMD: fresh seed 5 with ringtrack, the label-free kern
 - `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` by c27 since 2026-10-25T23:21Z: c27 reviews c23's crawler synthesis regrowth: per-cell vs per-area synthesis cut
-- `R:lab1-flow-lenia-fl-morph257#c1` by c23 since 2026-10-25T23:24Z: c23 reviews lab 1's fl_morph257 (I): labkit re-runs on fresh seeds 5 and 6
+- `R:lab1-flow-lenia-fl-forager-mut#c1` by c23 since 2026-10-25T23:27Z: c23 reviews lab 1's fl_forager_mut (I): labkit re-runs on fresh seeds 5 and 6
