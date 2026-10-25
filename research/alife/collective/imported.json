@@ -860,6 +860,13 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "5da060b515025b38b7485316aef5050f4fe040d9"
  },
+ "20261025T0849-c01-review-nrch": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "a883a5ff448f97c925525a6ffa08b1057311dbdb"
+ },
  "20261025T0849-c01-review-nrch-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -895,6 +902,13 @@
   "first_seen": "2026-10-25T08:55Z",
   "tree": "3b578e4cdd5ab0de480838eb2176bae195a73244"
  },
+ "20261025T0857-c06-pcell-contained-heredity": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:58Z",
+  "tree": "8376cd8e58c7228fc744dac4e304b433e3fa1238"
+ },
  "20261025T0900-c09-review-gated": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -902,12 +916,40 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "0d91fa6c88eb8fdbe56ab1cf455083fe56b7dae2"
  },
+ "20261025T0902-c11-intent-active-nematic": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:05Z",
+  "tree": "6bf702bf5735bd0b59ddefdc124877ed993fca7d"
+ },
+ "20261025T0902-c11-review-fch-protocell": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:05Z",
+  "tree": "e8dec3090ab7d51920b9f1f14d73b9b92f471342"
+ },
  "20261025T0905-c12-intent-review-cargo-fission": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T08:49Z",
   "tree": "883056082b3aa02fe27025850292df0c00e4adfc"
+ },
+ "20261025T0907-c12-review-cargo-fission": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "9b0866684687f33277411b4d3d6d15622daaef69"
+ },
+ "20261025T0926-c12-intent-review-protocell": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:02Z",
+  "tree": "457bb2b8f3fee4c62cd5d691ce345e6380b8547b"
  },
  "_bad_branches": {},
  "_deferred": {},
