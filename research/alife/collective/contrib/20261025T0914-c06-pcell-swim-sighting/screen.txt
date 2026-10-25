@@ -1,0 +1,28 @@
+== pack_long_s0
+- motion: 27 long-lived tracks moved >= 1 body length; max speed 0.00772/time; max body lengths 3.4
+- replication (lineage window K = 20 frames = time 3000, default): splits 31, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 2, merges 3, merge/split ratio 0.097, nucleations 1
+  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.62, rim/outside 14.8 (aggregate of 225 individuals; 202/225 membrane-like individually; rim level 0.846)  MEMBRANE-LIKE
+== pack_long_s1
+- motion: 13 long-lived tracks moved >= 1 body length; max speed 0.0111/time; max body lengths 5.5
+- replication (lineage window K = 20 frames = time 3000, default): splits 27, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 17, merge/split ratio 0.63, nucleations 25
+  - radial L link: peak at rho=0.55 (in the peak band 0.5-1.5), rim/core 1.16, rim/outside 4.42 (aggregate of 26 individuals; 1/26 membrane-like individually; rim level 0.819)
+== pack_swim
+- motion: 27 long-lived tracks moved >= 1 body length; max speed 0.0107/time; max body lengths 3.6
+- replication (lineage window K = 20 frames = time 1000, default): splits 37, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 2, merges 14, merge/split ratio 0.378, nucleations 5
+  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.61, rim/outside 11.5 (aggregate of 184 individuals; 159/184 membrane-like individually; rim level 0.751)  MEMBRANE-LIKE
+== pack_swim2.5
+- motion: 28 long-lived tracks moved >= 1 body length; max speed 0.0813/time; max body lengths 40.8
+- replication (lineage window K = 20 frames = time 1000, default): splits 30, persistent splits 3 (0 more failed only because the siblings re-merged within K), max generation 1, merges 10, merge/split ratio 0.333, nucleations 6
+  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.39, rim/outside 13 (aggregate of 152 individuals; 32/152 membrane-like individually; rim level 0.664)
+== pack_swim2.7
+- motion: 28 long-lived tracks moved >= 1 body length; max speed 0.0973/time; max body lengths 53.0
+- replication (lineage window K = 20 frames = time 1000, default): splits 30, persistent splits 4 (0 more failed only because the siblings re-merged within K), max generation 1, merges 18, merge/split ratio 0.6, nucleations 5
+  - radial L link: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.35, rim/outside 11 (aggregate of 147 individuals; 19/147 membrane-like individually; rim level 0.65)
+== pack_swim3.0
+- motion: 31 long-lived tracks moved >= 1 body length; max speed 0.094/time; max body lengths 61.7
+- replication (lineage window K = 20 frames = time 1000, default): splits 34, persistent splits 1 (0 more failed only because the siblings re-merged within K), max generation 1, merges 11, merge/split ratio 0.324, nucleations 2
+  - radial L link: peak at rho=0.65 (in the peak band 0.5-1.5), rim/core 1.25, rim/outside 10.4 (aggregate of 171 individuals; 4/171 membrane-like individually; rim level 0.65)
+== pack_swim4.0
+- motion: 34 long-lived tracks moved >= 1 body length; max speed 0.134/time; max body lengths 86.7
+- replication (lineage window K = 20 frames = time 1000, default): splits 30, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 17, merge/split ratio 0.567, nucleations 2
+  - radial L link: peak at rho=0.65 (in the peak band 0.5-1.5), rim/core 1.18, rim/outside 7.33 (aggregate of 150 individuals; 7/150 membrane-like individually; rim level 0.624)

@@ -1,0 +1,2 @@
+real_s3 mean yield in cells at t= [7850, 15250, 22650, 30000] [np.float64(0.841), np.float64(0.648), np.float64(0.557), np.float64(0.517)] cells [21, 22, 17, 7] deaths 28 persistent splits 11
+twin_s3 mean yield in cells at t= [7850, 15250, 22650, 30000] [np.float64(1.009), np.float64(0.979), np.float64(1.024), np.float64(1.03)] cells [22, 25, 25, 25] deaths 1 persistent splits 12

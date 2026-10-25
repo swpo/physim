@@ -1,0 +1,2 @@
+g_y0.7_s3 kind-1 particle share in cells: t=550 0.46, t=8250 0.20, t=16000 0.10 cells 25
+g_neu_s3 kind-1 particle share in cells: t=550 0.52, t=8250 0.60, t=16000 0.59 cells 23

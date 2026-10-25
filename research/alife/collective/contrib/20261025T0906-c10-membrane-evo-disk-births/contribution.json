@@ -1,0 +1,15 @@
+{
+  "id": "20261025T0906-c10-membrane-evo-disk-births",
+  "kind": "finding",
+  "mode": "control",
+  "task": "R:lab1-autopoiesis-membrane-evo#c1",
+  "title": "membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut parent (95% of high-yield K2 births); corrects totals in my review",
+  "summary": "Exact totals over fresh seeds 32-36 from my review 20261025T0850-c10-review-membrane-evo (tracker evotrack_disk.py there). Up arm (b2=1.3b): 246 births, 209 (85%) from a parent a death disk overlapped in the same 100-step census; K2 births 94, of which 89 (95%) disk-cut; deaths 155, of which 131 (85%) disk erasures. Twin (b2=b): 190 births, 157 (83%) disk-cut; deaths 135, 115 (85%) disk. With p_death=0 (seeds 31, 32) births are 0 and 7 in 32000 time units and K2 never reproduces. The review's D observation ('152 of 182 up-arm births') and limitation ('120/152 K1 births', '81%' imposed deaths) are arithmetic slips: the correct figures are 209/246 births and 131/155 deaths (85% each); the verdict (Weak) is unchanged. Reading: the larger K2 cells catch more location-random disk hits, and their fragments reseal and regrow, so selection on link yield runs on area-proportional imposed fragmentation.",
+  "parents": ["20261025T0850-c10-review-membrane-evo", "lab1-autopoiesis-membrane-evo"],
+  "class": "phase-field",
+  "world": "research/alife/threads/autopoiesis/worlds/membrane_evo_up/world.py",
+  "evidence": ["summary.txt", "research/alife/collective/contrib/20261025T0850-c10-review-membrane-evo/selection_c10.png"],
+  "outcome": "negative",
+  "finding": {"operator": "random disk deaths (p_death=0.01, r=14) as the reproduction channel", "capability": "D", "world": "membrane_evo", "necessary": true, "law": false, "control": "identical-event twin and p_death=0 arm", "result": "85% of births disk-cut (up 209/246, twin 157/190); K2 births 89/94 disk-cut; p_death=0 gives 0-7 births per run"},
+  "compute": {"cpu_minutes": 1}
+}

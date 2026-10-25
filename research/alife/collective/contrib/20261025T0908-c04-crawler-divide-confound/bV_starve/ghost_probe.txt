@@ -1,0 +1,8 @@
+nb 15 V [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+body 1 area(u>.2) 127.75 umax 0.857 umean 0.499 P max 0.000
+body 2 area(u>.2) 126.75 umax 0.857 umean 0.500 P max 0.000
+body 3 area(u>.2) 125.75 umax 0.859 umean 0.503 P max 0.000
+body 4 area(u>.2) 128.25 umax 0.858 umean 0.500 P max 0.000
+M at body1 max 71.98939671050863 V0 452.3893421169302
+
+[exited with code 0]
