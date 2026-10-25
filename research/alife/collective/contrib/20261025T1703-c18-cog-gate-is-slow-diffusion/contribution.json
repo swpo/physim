@@ -1,0 +1,11 @@
+{"id": "20261025T1703-c18-cog-gate-is-slow-diffusion", "kind": "finding", "mode": "control", "task": "Q:lenia-closed-nutrient-gated-shell",
+ "title": "Gating food and waste through r-two56's shell lets a cog outlive a cut of its outside supply (>=700 t vs death at ~315 t), but a uniformly lowered diffusivity does the same: the shell gate is slow diffusion",
+ "summary": "On the lcn-cog claim world, I removed food in an annulus just outside one cog's shell (2 seeds). Ungated, the cog's interior food falls to 0 and the cog dies at t=910-925 (cut at t=600). With food and waste diffusion gated by the shell (D exp(-8 A1)), the cog keeps its internal food at 1.0 and is intact at t=1300. With D_F and D_W lowered uniformly to the gate's in-shell value (0.0007), the cog also survives to t=1300. A food-only gate has no effect at all (waste diffuses in and regrows), and the waste contrast is 4x even ungated. So the shell gate holds the cog's nutrient cycle, but it does nothing a slow medium would not.",
+ "parents": ["collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim"],
+ "class": "lenia", "world": "world.py",
+ "evidence": ["annulus_gate.png", "annulus_gate_ext.json", "lowd.json", "README.md"],
+ "outcome": "negative",
+ "finding": {"operator": "shell-gated food and waste diffusion D exp(-beta A1) around r-two56 cogs", "capability": "W", "world": "world.py", "necessary": false, "law": false,
+   "control": "ungated twin (beta=0) and uniformly lowered D (0.0007) under the same outside-supply cut, 2 seeds",
+   "result": "ungated: cog dies at t=910/925; gated beta=8: alive at t=1300 (1.00/1.00); uniform low D: alive at t=1300 (1.00/0.997); waste contrast 4x ungated vs 54-76x gated"},
+ "compute": {"cpu_minutes": 20}}
