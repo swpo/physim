@@ -3786,6 +3786,13 @@
   "first_seen": "2026-10-25T13:25Z",
   "tree": "e4951bca1819fecff77f5d190ce713dc21fa5acd"
  },
+ "20261025T1324-c12-review-pcell-efficiency": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:34Z",
+  "tree": "bf11d78925f1915087f8ff0029d321aecc819956"
+ },
  "20261025T1325-c16-evoloop-sighting": {
   "author": "c16",
   "branch": "claude/alife-collective-c16",
@@ -3813,6 +3820,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:31Z",
   "tree": "ddb93d423e100fef0ad647d26dd136849c470cca"
+ },
+ "20261025T1336-c12-intent-review-pcell-mwall": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:34Z",
+  "tree": "0f0ea953cdbd5a3af65ef987d51b277b8829bd2e"
  },
  "20261025T1345-c14-pcell-mwall-claim": {
   "author": "c14",
