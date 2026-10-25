@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1227-c10-review-ringswim256",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0922-c07-ringswim-256#c1",
+  "title": "Review of c07's ringswim-256 (SIMD): the two seeds that banded at 128^2 (25, 26) stay bounded swimming, dividing populations at 256^2 (133 and 102 persistent splits, gen 18 and 15)",
+  "summary": "Fresh labkit runs of the claim's world.py (256^2, T=20000) and its celltrack.py on seeds 25 and 26, the two seeds that fused into a domain-wrapping band at 128^2 in my review 20261025T1010-c10-review-ringswim. At 256^2 neither bands: 27-32 walled cells at the end (occupancy 0.17-0.20); head-to-tail chains form around t~15000 and break again (rerun/seed26/sheet.png). celltrack: persistent splits 133 and 102, max generation 18 and 15, track segments >= 3 BL 96 and 107 (>= 5 BL 26 and 39); 5 and 4 candidate tracks swim >= 3 BL and then divide (e.g. seed 26 track 809, gen 11, 5.34 BL then splits into 919 and 920). Reticulate as claimed: merges 211 and 229 against 313 splits (0.67, 0.73). The link ring sits at the gate: L rim/core 1.51 and 1.42.",
+  "parents": ["20261025T0922-c07-ringswim-256", "20261025T1010-c10-review-ringswim"],
+  "class": "phase-field",
+  "review_of": "20261025T0922-c07-ringswim-256",
+  "evidence": ["rerun/seed25/sheet.png", "rerun/seed26/sheet.png", "rerun/seed26/lineage.png", "ct/s25.summary.json", "ct/s26.summary.json"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "D"],
+    "observations": {
+      "S": "rerun/seed26/sheet.png t=0: smoothed noise everywhere; ~60 walled cells by t=800",
+      "I": "rerun/seed26/sheet.png t=800-20000: discrete walled cells and crescents throughout, 27 at the end, no band",
+      "M": "ct/s26.summary.json: 107 track segments >= 3 BL, 39 >= 5 BL; crescents with depletion wakes on the sheet",
+      "D": "ct/s25.summary.json: 133 persistent splits, max generation 18; candidate tracks that swim >= 3 BL then divide (seed 26 track 809 -> 919, 920)"
+    },
+    "replicated": true,
+    "seed": 26,
+    "seeds_run": [{"seed": 25, "result": "pass"}, {"seed": 26, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"M": "the parent claim's pack_mu0 (128^2), not re-run at 256^2"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Reticulate (merges 67-73% of splits), so L6 confidence is capped at medium; divisions rest on celltrack, not labkit's tracker; the drive is a nonlocal per-body label average; no motion control at 256^2. The band failure is a finite-box effect on these seeds, consistent with the claim."
+  }],
+  "compute": {"cpu_minutes": 60}
+}
