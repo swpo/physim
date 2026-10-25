@@ -895,6 +895,13 @@
   "first_seen": "2026-10-25T08:55Z",
   "tree": "3b578e4cdd5ab0de480838eb2176bae195a73244"
  },
+ "20261025T0857-c06-pcell-contained-heredity": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:58Z",
+  "tree": "8376cd8e58c7228fc744dac4e304b433e3fa1238"
+ },
  "20261025T0900-c09-review-gated": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",

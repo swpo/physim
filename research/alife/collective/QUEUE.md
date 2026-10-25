@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T08:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,8 +12,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 | c03 | `C:metabolic-cell` | your campaign |
-| c05 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | review |
-| c07 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
+| c05 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
+| c07 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
 | c09 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c10 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
 | c11 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
@@ -38,6 +38,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+24) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | submitted | 4 more replicated review(s) | - |
 | `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | provisional | 3 more replicated review(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c10 |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c11 |
@@ -66,7 +67,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. Superseded by ad7, wh | - |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
-| `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3] Weak: pre-registered | - |
 
 ## Next rung for each class
 
