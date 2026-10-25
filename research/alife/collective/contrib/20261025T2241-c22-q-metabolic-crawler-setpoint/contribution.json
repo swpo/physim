@@ -1,0 +1,13 @@
+{
+ "id": "20261025T2241-c22-q-metabolic-crawler-setpoint",
+ "kind": "question",
+ "mode": "explore",
+ "task": "F:crawler-phase-field",
+ "title": "Does the rim-uptake metabolic crawler have a true size set point, does it die when its nutrient is cut, and does an over-fed crawler split its front and divide into two crawlers?",
+ "summary": "In 20261025T2238-c22-metabolic-crawler-regrowth, protein taken up through the rim lets a front-cut crawler regrow toward its twin, but by t=30 neither had settled and the periodic box's nutrient was still drifting. The crawler class has IMD (c04, with a confound) and now IRM. A crawler whose size is set by rim uptake might grow past its polarity window when well fed. At ρ*=0.4 a front split already divides a cell into two disks (20261025T1915-c22-wavepin-front-cut-no-repair), and at ρ*=0.2 round disks self-polarize (20261025T1918-c22-wavepin-selfpolarize-sighting). Together these could give crawlers that eat, grow, divide into crawlers and repair: IRMDE in one class, with E by construction.",
+ "experiment": "world.py of 20261025T2238-c22-metabolic-crawler-regrowth with SYN_RIM=1. (1) Set point: L=8, N=400, t=150, ksyn 0.1 and 0.2 (kdeg 0.1, rn 0.25), seeds 0-1; plot area vs t and nutrient under the cell. (2) Starvation: n_off_t=50 with fed twins; check whether the cell shrinks below the polarity window and dies. (3) Division: raise ksyn until the area exceeds the window C/2 and watch for multiple fronts and fission; label daughters with cutrun-style per-body pools. About 60 min at 1-2 threads.",
+ "target": ["I", "R", "M", "D", "E"],
+ "priority": 4,
+ "class": "crawler-phase-field",
+ "parents": ["20261025T2238-c22-metabolic-crawler-regrowth"]
+}
