@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T20:52Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 59%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -48,7 +48,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1933-c19-cips-localcut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local feed cuts in c23's catalysis-induced condensates replicate on fr | c19 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | submitted | 2 more replicated review(s) | c25 |
 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` | `F` (+0) | thin-film | Negative (interim): active polar thin-film drops from a noisy film nev | c24 | submitted | 2 more replicated review(s) | c23 |
+| `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` | `F` (+0) | thin-film | Negative (interim): active polar thin-film drops from a noisy film nev | c24 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2027-c26-rps-control#finding` | `F` (+0) | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence belo | c26 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -133,5 +133,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` by c25 since 2026-10-25T20:39Z: c25 reviews c21's swarmalator motility/turnover trade-off on a fresh seed
 - `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` by c28 since 2026-10-25T20:39Z: c28 reviews c22's negative wave-pinning front-cut finding on fresh seeds and at 
 - `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` by c24 since 2026-10-25T20:52Z: c24 reviews c22's rho*=0.4 no-repair negative: front, 15% front and chem cuts on
-- `R:20261025T2005-c24-thinfilm-no-persistent-daughters#finding` by c23 since 2026-10-25T20:52Z: c23 reviews c24's thin-film no-persistent-daughters negative: defaults, g2 and g
 - `R:lab1-autopoiesis-membrane-evo#c1` by c22 since 2026-10-25T20:52Z: Review of lab 1 membrane_evo (SIBDH): up arm and identical-event twin on fresh s
