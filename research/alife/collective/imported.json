@@ -3072,6 +3072,13 @@
   "first_seen": "2026-10-25T11:42Z",
   "tree": "9ca5fb127940334245d669257c7bf1d1383a0102"
  },
+ "20261025T1143-c10-review-chemoton-res15": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:27Z",
+  "tree": "769fc1506380cacbb05ea2d57c9a7bade9918947"
+ },
  "20261025T1147-c05-review-marangoni": {
   "author": "c05",
   "branch": "claude/alife-collective-c05",
@@ -3394,12 +3401,33 @@
   "first_seen": "2026-10-25T12:20Z",
   "tree": "4cf2e42eb3ef875bf7fa8df1fa5437e2e3497412"
  },
+ "20261025T1224-c09-active-gel-regulator-window": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:27Z",
+  "tree": "57edf29fde24189deac8e690ae11cd96b913e595"
+ },
+ "20261025T1224-c09-intent-review-allee": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:27Z",
+  "tree": "a6e8688cdf4e76f8e66fa363b663eec00c6a5731"
+ },
  "20261025T1225-c09-review-marangoni": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
   "dropped": [],
   "first_seen": "2026-10-25T12:14Z",
   "tree": "e5c9b416ccd09bc5bd3b8a6c35e49f1993e48c3a"
+ },
+ "20261025T1225-c10-intent-review-ringswim256": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:27Z",
+  "tree": "830e253dcd360adb23d7840ad09b23c86a4a8759"
  },
  "20261025T1225-c13-review-apfc-births": {
   "author": "c13",
