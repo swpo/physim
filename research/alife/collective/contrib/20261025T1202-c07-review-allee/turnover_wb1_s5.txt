@@ -1,0 +1,6 @@
+frames 1-25: bodies 23->49, deaths 0, splits 25, nucleations 24
+frames 26-50: bodies 49->49, deaths 0, splits 0, nucleations 0
+frames 52-76: bodies 49->49, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 49->49, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 49->49, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 49->49, deaths 0, splits 0, nucleations 0

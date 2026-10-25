@@ -1,0 +1,12 @@
+== rerun/seed3
+- motion: 53 long-lived tracks moved >= 1 body length; max speed 0.0907/time; max body lengths 3.4
+  - radial surfactant s: peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.49, rim/outside 2.1 (aggregate of 130 individuals; 89/130 membrane-like individually; rim level 0.647)
+ault): splits 46, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 4, merges 11, merge/split
+== rerun/seed4
+- motion: 45 long-lived tracks moved >= 1 body length; max speed 0.0879/time; max body lengths 4.6
+  - radial surfactant s: peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.57, rim/outside 2.14 (aggregate of 150 individuals; 111/150 membrane-like individually; rim level 0.652)  MEMBRANE-LIKE
+ault): splits 36, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 4, merges 10, merge/split
+== rerun_chis0/seed3
+- motion: 53 long-lived tracks moved >= 1 body length; max speed 0.0907/time; max body lengths 3.4
+  - radial surfactant s: peak at rho=0.05 (OUTSIDE the peak band 0.5-1.5), rim/core 0.929, rim/outside 1.38 (aggregate of 130 individuals; 0/130 membrane-like individually; rim level 0.88)
+ault): splits 46, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 4, merges 11, merge/split

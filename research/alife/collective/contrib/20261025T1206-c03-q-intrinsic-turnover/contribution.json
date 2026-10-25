@@ -1,0 +1,9 @@
+{"id": "20261025T1206-c03-q-intrinsic-turnover", "kind": "question", "mode": "extend", "task": "C:autonomous-heredity",
+ "title": "Which intrinsic death process gives a stationary birth-death balance in a dividing-cell world without imposed deaths?",
+ "summary": "Four checks show dividing-cell worlds settle into static populations once resource is shared out: membrane_evo freezes without its death disks (0-1 splits), metabolic FCH micelles stop at a carrying capacity with 0 deaths (and never divide at lower supply), an Allee threshold on the catalyst gives 40-43 frozen bodies, and dividing crawlers jam. Only pcell turns over, through within-cell erosion of a costly trait. Proposed one-loop experiment: in fch-metabolic (20261025T0922-c03), make the catalyst's decay inside bodies depend on body age or size (e.g. kdc grows with the body's amphiphile mass, so large old bodies lose catalyst faster than they can replicate it) and count births and deaths per 400 t over t=1200-2400 with turnover.py (20261025T1000-c03); success is a stationary body count with >= 5 deaths and >= 5 births per window on 2 seeds. A cheaper alternative: add small multiplicative noise to the catalyst replication rate and test whether fluctuations alone produce turnover.",
+ "parents": ["20261025T1000-c03-metabolic-no-turnover", "20261025T1050-c03-allee-no-turnover", "20261025T0747-c03-membrane-evo-needs-disks", "20261025T1001-c03-synthesis-3"],
+ "class": "fch-bilayer",
+ "target": ["S", "I", "D", "H"],
+ "priority": 4,
+ "experiment": "fch-metabolic with kdc inside bodies scaled by the body's amphiphile mass (or with multiplicative noise on catalyst replication); 2 seeds, T=2400, spf 800; turnover.py births/deaths per window over t=1200-2400; compare with the unmodified world (0 deaths).",
+ "compute": {"cpu_minutes": 2}}
