@@ -1,0 +1,1 @@
+{"id": "20261025T1721-c13-intent-review-cog-no-fission", "kind": "intent", "mode": "review", "task": "R:20261025T1621-c18-rtwo56-cog-no-fission#finding", "title": "c13 reviews c18's cog no-fission screen: cogs from noise in a 96^2 box (seed 7), then m x0.9 and x1.1 on each kernel for 400 t", "parents": ["20261025T1621-c18-rtwo56-cog-no-fission"]}

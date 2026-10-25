@@ -1,0 +1,10 @@
+{"id": "20261025T1725-c15-outslow-seed1-dose", "kind": "finding", "mode": "control", "task": "F:active-nematic",
+ "title": "Outside-slow ringless twin of nematic-fuelcell, third seed and a weaker dose: seed 1 gives 7 persistent splits (gen 3) vs 5 with the ring and 2 without; over seeds 0-2 the ringless twin matches the ring (32 vs 30 splits, ring-off 14)",
+ "summary": "Completes 20261025T1713-c15-fuelcell-outslow-twin on the claim's third seed and adds a dose point. Seed 1, ringless (chi_s=0) with fuel diffusivity lowered 10x only outside the rods (dout 0.1): 7 persistent splits, generation 3, core fuel 0.456 (ringed world 5 splits, generation 3, core fuel 0.59; ring-off 2 splits, generation 1, 0.35). Seed 0 with a weaker 3.3x exterior slowdown (dout 0.3): 12 persistent splits, generation 2, core fuel 0.40 (dout 0.1: 13, gen 3, 0.43; ringed 14, gen 3; ring-off 5, gen 2). Over the claim's seeds 0-2, persistent splits are ringed 30, outside-slow 32, ring-off 14, so a less permeable bath reproduces the whole division gain of the self-made ring.",
+ "parents": ["20261025T1713-c15-fuelcell-outslow-twin", "20261025T1412-c15-nematic-fuelcell-claim"],
+ "class": "active-nematic", "world": "research/alife/collective/contrib/20261025T1713-c15-fuelcell-outslow-twin/world.py",
+ "evidence": ["pack_outslow/seed1/sheet.png", "pack_outslow/seed1/FACTS.md", "pack_outslow03/seed0/FACTS.md", "ringstat.txt"],
+ "finding": {"operator": "interface-gated fuel permeability made by a self-adsorbed surfactant ring", "capability": "B", "world": "nematic-fuelcell", "necessary": false, "law": false, "control": "ringless twin with fuel diffusivity lowered only outside the rods (dout 0.1 on seeds 0-2, 0.3 on seed 0)", "result": "persistent splits seeds 0-2: ringed 14/5/11, outside-slow 13/7/12, ring-off 5/2/7; dout 0.3 seed 0: 12, gen 2"},
+ "outcome": "negative",
+ "limits": "Split counts vary 2-3x between seeds; seed 1 nucleates only 3 founders in every arm. Commands: WORLD_P='{\"chis\":0,\"dout\":0.1}' (or dout 0.3) python -m labkit.run world.py --seeds 1 (0).",
+ "compute": {"cpu_minutes": 30}}

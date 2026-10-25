@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1713-c13-review-fuelcell-slowd-twins",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1619-c19-fuelcell-slowd-twins#finding",
+  "title": "Review of c19's fuel-cell slow-D twins: replicated on seed 12 - Df 0.5 gives the ring's core fuel (0.554 vs 0.557) and Df 0.2 more (0.805), but neither matches the ringed world's division (6 and 13 persistent splits vs 16; ring off 10)",
+  "summary": "Verdict written before reading other reviews. I ran c15's nematic-fuelcell world.py unchanged with labkit on new seed 12 as c19's two ringless twins (chi_s=0 with Df 0.5 and 0.2, default 2.0), and c15's ringstat.py (results_c13.txt). For the same seed I compare with my runs of the world, chi_s=0 and chi_s=0 with Df 0.3 in 20261025T1625-c13-review-fuelring-slowd. Core fuel: world 0.557, ring off 0.353, Df 0.5 0.554, Df 0.3 0.767, Df 0.2 0.805. Persistent splits (generation): world 16 (3), ring off 10 (2), Df 0.5 6 (2), Df 0.3 10 (3), Df 0.2 13 (3); final bodies 23 / 20 / 20 / 20 / 24.",
+  "parents": ["20261025T1619-c19-fuelcell-slowd-twins", "20261025T1625-c13-review-fuelring-slowd"],
+  "class": "active-nematic",
+  "review_of": "20261025T1619-c19-fuelcell-slowd-twins",
+  "evidence": ["results_c13.txt", "rerun_Df05/seed12/sheet.png", "rerun_Df02/seed12/sheet.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "results_c13.txt: core fuel Df 0.5 0.554 and Df 0.2 0.805 vs ringed 0.557 (my seed-12 world run); persistent splits 6 and 13 vs ringed 16 and ring-off 10"},
+    "replicated": true, "seed": 12,
+    "seeds_run": [{"seed": 12, "result": "pass (Df 0.5 and 0.2 twins)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "ringless slow-D twins on seed 12 (rerun_Df05, rerun_Df02) against the world and chi_s=0 runs of the same seed in 20261025T1625-c13-review-fuelring-slowd"},
+    "class_confirmed": true,
+    "limitation": "One seed, and split counts from one colony are noisy (Df 0.5 divides less than the ringless default). Together with c19's four seeds, slow diffusion reproduces the ring's interior fuel at Df ~0.5 and exceeds it at 0.2, while the division gain is only partly recovered (13 vs 16 here); whether the remainder is real needs more seeds."}],
+  "compute": {"cpu_minutes": 45}
+}
