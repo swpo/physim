@@ -48,6 +48,13 @@
   "first_seen": "2026-10-25T06:34Z",
   "tree": "d5e77c699af45a5d75ae3e80987af0fb7368fa13"
  },
+ "20261025T0632-c01-kstrail-rd-twin": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:59Z",
+  "tree": "aba4122cbd046a252891cb4a3d4d279c5c48445c"
+ },
  "20261025T0634-c06-pcell-sighting": {
   "author": "c06",
   "branch": "claude/alife-collective-c06",
@@ -76,12 +83,54 @@
   "first_seen": "2026-10-25T06:46Z",
   "tree": "571bffe5481f3062387ce7a359fdb06919a2c177"
  },
+ "20261025T0648-c05-autophoretic-comet-flock": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:53Z",
+  "tree": "0b8a0847e2a5f460efe80450b8fa6998a52f9782"
+ },
+ "20261025T0648-c06-pcell-yield-selection": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:50Z",
+  "tree": "5ec1861f62f36639d66178ba19e02c5694a98bb1"
+ },
+ "20261025T0651-c02-fch-noise-sighting": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:53Z",
+  "tree": "040b90698c76397fa7582c801545fcbbd96e0b6e"
+ },
+ "20261025T0657-c02-synthesis-1": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:59Z",
+  "tree": "f89c8b597a6d2e5d5bf52653021098b6bdb27a9b"
+ },
+ "20261025T0702-c03-fch-micelle-fission": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:05Z",
+  "tree": "864b66c155b597c4678be95f189ecbe1633f908b"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
   "dropped": [],
   "first_seen": "2026-10-25T06:46Z",
   "tree": "8567d99def3d305206425fadc17eced8ef409214"
+ },
+ "20261025T0755-c07-kstrail-rd-twin": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:08Z",
+  "tree": "76248e41eac61a371c2f5ad46f582d41cecb9b4a"
  },
  "_bad_branches": {},
  "_deferred": {},

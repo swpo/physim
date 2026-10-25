@@ -55,6 +55,61 @@
 "P_prov": 52,
 "contributions": 12,
 "cpu_hours": 1.05
+},
+{
+"t": "2026-10-25T06:50Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 13,
+"cpu_hours": 1.8
+},
+{
+"t": "2026-10-25T06:53Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 15,
+"cpu_hours": 3.05
+},
+{
+"t": "2026-10-25T06:59Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 17,
+"cpu_hours": 4.22
+},
+{
+"t": "2026-10-25T07:05Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 18,
+"cpu_hours": 4.63
+},
+{
+"t": "2026-10-25T07:08Z",
+"P": 38,
+"P_BD": 0,
+"Q": 0,
+"K": 0,
+"C": 29,
+"P_prov": 52,
+"contributions": 19,
+"cpu_hours": 5.8
 }
 ]
 }
