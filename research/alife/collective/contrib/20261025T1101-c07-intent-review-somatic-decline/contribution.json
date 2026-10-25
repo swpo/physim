@@ -1,0 +1,3 @@
+{"id": "20261025T1101-c07-intent-review-somatic-decline", "kind": "intent", "mode": "review", "task": "R:20261025T0923-c06-pcell-somatic-decline#finding",
+ "title": "c07 reviews c06's somatic decline: birthfate on fresh seed 5 at both mutation rates",
+ "parents": ["20261025T0923-c06-pcell-somatic-decline"]}

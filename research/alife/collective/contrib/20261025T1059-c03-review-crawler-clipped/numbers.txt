@@ -1,0 +1,12 @@
+== ocs0.1 seed 3
+- components: final 0, mean 4.0, max 10; occupancy final 0.00
+- motion: 1 long-lived tracks moved >= 1 body length; max speed 3.47/time; max body lengths 4.4
+- replication (lineage window K = 20 frames = time 50, default): splits 21, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 10, merge/split ratio 0.476, nucleations 0
+== ocs0.2 seed 3
+- components: final 2, mean 1.9, max 4; occupancy final 0.04
+- motion: 5 long-lived tracks moved >= 1 body length; max speed 2.79/time; max body lengths 18.8
+- replication (lineage window K = 20 frames = time 50, default): splits 4, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 0
+== ocsk seed 3
+- components: final 1, mean 5.1, max 17; occupancy final 0.01
+- motion: 2 long-lived tracks moved >= 1 body length; max speed 3.64/time; max body lengths 2.4
+- replication (lineage window K = 20 frames = time 50, default): splits 17, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 1, merge/split ratio 0.059, nucleations 0
