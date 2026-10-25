@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1345-c10-review-pcell-eff",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1108-c06-pcell-efficiency-claim#c1",
+  "title": "Review of c06's pcell efficiency claim (SIDH): replicated on seed 5; dying cells sit at yield percentile 0.06 vs 0.46 for the inert marker, were born low (rank 0.30 vs 0.50), and mean yield rises to 1.17 while the marker ends at 0.97",
+  "summary": "Fresh labkit run of the claim's world.py on seed 5 (128^2, T=100000) and the claim's genealogy.py, deathsel.py and birthfate.py on the same seed (minlife 20). Cells form from the noisy soup by t~4000; genealogy: 11 persistent splits, generation 3, 0 merges, 34 deaths, 0 off-kind daughters and 0 conversions; labkit's tracker sees 3 persistent splits, generation 1 (merge/split 0.4). Mean cell yield rises 1.00 -> 1.17 (t=87000) while the identical-event marker stays at 0.97-1.01. Dying cells (n=18) are at yield percentile 0.057 among the living (marker 0.457); 18/18 below the median (marker 9/18). Dying cells born after the founders (n=15) had birth rank 0.295 in yield (marker 0.503), and low-born cells died more often than high-born ones (0.73 vs 0.57; marker 0.70 vs 0.67). Splits are not selected (percentile 0.64). As on the claim's seed 0, a giant body covering about a quarter of the domain persists from t~17500 to ~65000, and the population falls from ~22 to 11 cells as cells grow.",
+  "parents": ["20261025T1108-c06-pcell-efficiency-claim"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1108-c06-pcell-efficiency-claim",
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "rerun/FACTS.md", "data/summary.txt", "data/gen_s5.json.gz"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: unstructured soup everywhere; ~25 walled cells by t=4000",
+      "I": "rerun/sheet.png t=4000-100000: discrete walled cells, 11-23 at a time",
+      "D": "genealogy on seed 5: 11 persistent splits, generation 3, 0 merges (labkit: 3 persistent, generation 1)",
+      "H": "deathsel/birthfate on data/gen_s5.json.gz: death percentile 0.057 (yield) vs 0.457 (marker); birth rank of dying cells 0.295 vs 0.503; data/summary.txt mean yield 1.00 -> 1.17 vs marker 0.97"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "the identical-event inert marker zm in the same run (data/gen_s5.json.gz), analysed with the claim's deathsel.py and birthfate.py"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Kinds are yield ranks of a continuous, capped trait, not discrete breeding types. Most of the death signal is rank at death (0.06); rank at birth (0.30) is the part that is not built within a life, and it rests on 15 dying cells. Divisions are few and labkit sees only generation 1 on this seed; the giant body and the fall to 11 cells show that higher yield also makes bigger, fewer cells. One fresh seed; no dt or resolution test."
+  }],
+  "compute": {"cpu_minutes": 40}
+}
