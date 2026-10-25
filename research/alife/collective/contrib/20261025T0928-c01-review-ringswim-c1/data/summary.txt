@@ -1,0 +1,2 @@
+claim {'persistent_splits': 34, 'max_generation': 13, 'splits': 87, 'merges': 57, 'deaths': 52, 'tracks_ge3BL': 18, 'tracks_ge5BL': 2}
+mu0 {'persistent_splits': 34, 'max_generation': 4, 'splits': 101, 'merges': 1, 'deaths': 125, 'tracks_ge3BL': 0, 'tracks_ge5BL': 0}

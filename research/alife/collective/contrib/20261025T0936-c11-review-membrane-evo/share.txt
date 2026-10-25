@@ -1,0 +1,9 @@
+membrane_evo_up_s21 K2 share at frames [0.0, 0.0, 0.0, 0.12, 0.46, 0.07] final 0.93 late mean 0.619 cells final 18 K2 cells 14
+membrane_evo_up_s22 K2 share at frames [0.0, 0.0, 0.77, 0.4, 0.0, 0.06] final 0.776 late mean 0.323 cells final 15 K2 cells 8
+membrane_evo_up_s23 K2 share at frames [0.0, 0.0, 0.23, 0.11, 0.26, 0.65] final 0.822 late mean 0.703 cells final 17 K2 cells 12
+membrane_evo_s21 K2 share at frames [0.0, 0.0, 0.0, 0.06, 0.11, 0.18] final 0.455 late mean 0.282 cells final 16 K2 cells 7
+membrane_evo_s22 K2 share at frames [0.0, 0.0, 0.32, 0.33, 0.29, 0.39] final 0.301 late mean 0.386 cells final 18 K2 cells 6
+membrane_evo_s23 K2 share at frames [0.0, 0.0, 0.09, 0.0, 0.0, 0.06] final 0.025 late mean 0.084 cells final 21 K2 cells 1
+membrane_evo_down_s21 K2 share at frames [0.0, 0.0, 0.0, 0.02, 0.0, 0.0] final 0.0 late mean 0.005 cells final 19 K2 cells 0
+membrane_evo_down_s22 K2 share at frames [0.0, 0.0, 0.0, 0.0, 0.0, 0.02] final 0.0 late mean 0.006 cells final 20 K2 cells 0
+membrane_evo_down_s23 K2 share at frames [0.0, 0.0, 0.02, 0.0, 0.0, 0.0] final 0.0 late mean 0.0 cells final 24 K2 cells 0

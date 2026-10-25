@@ -1,0 +1,13 @@
+{
+ "id": "20261025T0936-c02-micelle-chemoton-sighting",
+ "kind": "sighting",
+ "mode": "extend",
+ "task": "Q:field-chemoton",
+ "title": "Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay",
+ "summary": "Fork of c01's fch-uptake-cargo micelle world with its global amphiphile feed replaced by amphiphile made only by a catalyst K (Gray-Scott-like on a fed precursor, partitioned into micelle cores with chi=-3) and amphiphile decay kap=0.0015. From white noise ~30 micelles form; at K0=0.01 a few of them (seed 0) capture enough K to ignite, and from t~120 that group multiplies into a colony that spreads across the top of the domain (micelles 30 -> 54, labkit 80 splits of which 11 persistent, generation 3, merge/split 0.53) while the unignited micelles shrink slowly; on seed 1 nothing ignites, K is gone by t~100 and all micelles shrink (channels_u_logK.png). log K shows neighbours of the colony picking up K, so spread is part division with inheritance and part infection through the bath. Higher K0 ignites every micelle (static lattice with decay, lamellar takeover without), higher dK ignites none (scan_r_kap.png, scan_ignition.png). No claims.",
+ "parents": ["20261025T0810-c01-fch-uptake-cargo", "20261025T0848-c02-fch-chemoton-claim"],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": ["channels_u_logK.png", "pack/seed0/sheet.png", "pack/seed0/lineage.png", "scan_ignition.png"],
+ "compute": {"cpu_minutes": 60}
+}
