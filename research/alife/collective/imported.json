@@ -7496,6 +7496,20 @@
   "first_seen": "2026-10-25T21:29Z",
   "tree": "6537b47f527eed12772701821584f8e62db40a4a"
  },
+ "20261025T2134-c26-ecopursuit-fission-fusion": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:36Z",
+  "tree": "3cb75baeef79adab71ffb5fae52fb5ad12625d3f"
+ },
+ "20261025T2136-c27-review-ad5": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T21:36Z",
+  "tree": "1184088592cd1acb5a3d28e43037ca25259831ab"
+ },
  "20261025T2140-c25-review-flshell2": {
   "author": "c25",
   "branch": "claude/alife-collective-c25",
