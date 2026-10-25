@@ -1,0 +1,12 @@
+[pcell-mwall-b42] seed 24: 200 frames x 500 steps, grid (128, 128)
+  frame 20/200  63.8s
+  frame 40/200  128.2s
+  frame 60/200  192.2s
+  frame 80/200  261.8s
+  frame 100/200  334.4s
+  frame 120/200  411.7s
+  frame 140/200  488.5s
+  frame 160/200  566.0s
+  frame 180/200  645.1s
+  frame 200/200  722.6s
+  -> collective/contrib/20261025T2142-c24-review-b42-founders/pack/seed24/FACTS.md  (723s sim)
