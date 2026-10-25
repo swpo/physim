@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1130-c09-review-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "title": "Review of c02's FCH chemoton (SIBE): on fresh seed 5 the catalyst sits on one open strip, not a vesicle (K rim/core 0.54, 0/36 membrane-like), and a starvation fork shrinks every body to a micelle that is still alive 700 time units after the cut",
+  "summary": "Fresh seed 5 (labkit, T=600, 192^2). From noise, micelles grow into strands, rings and tripods by t~50; the catalyst K survives on only one body, an open bilayer strip (t=81 onward), as on the claim's seed 1, while the other five bodies carry no K and shrink slowly on amphiphile shared through the bath (one ring persists). labkit: K rim/core 0.54, rim/outside 1.72, 0/36 individuals membrane-like; only u is ring-like on one track. E fork (my own, same seed, feed cut at t=300, and a long fork to t=999): total amphiphile falls 2309 -> 323 at t=600 (fed twin 1984) and 58 at t=999, but all 6 bodies are still present at t=999 as small micelles (starve_long/seed5/sheet.png); the K strip contracts to a dot that keeps its K. So the fork shows shrinkage to a minimal micelle, not death within 700 time units, and the fed twin also declines slowly (2309 -> 1984). S and I replicate; B and E do not on this seed.",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0848-c02-fch-chemoton-claim/world.py",
+  "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/radial.png", "rerun/seed5/tracks.png", "starve/seed5/sheet.png", "starve_long/seed5/sheet.png", "fork_seed5.txt"],
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "I"],
+    "not_checked": [],
+    "observations": {
+      "S": "rerun/seed5/sheet.png t=0: noisy bath over the whole domain; micelles by t=24",
+      "I": "rerun/seed5/tracks.png: six discrete bodies (strands, a tripod, a ring) persisting t~90-600"
+    },
+    "replicated": true,
+    "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "S, I pass; K only on one open strip (no K layer on a vesicle); starved bodies shrink to micelles and persist to t=999"}],
+    "same_individuals": true,
+    "controls_run": {"E": "starve/seed5 and starve_long/seed5 (precursor cut at t=300 against the fed twin rerun/seed5): 6 -> 6 bodies at t=600 and at t=999, amphiphile 2309 -> 323 -> 58"},
+    "by_construction": ["E"],
+    "class_confirmed": true,
+    "limitation": "One fresh seed. On it the claimed individual (a vesicle with K beaded on its bilayer) does not form: K survives only on an open strip, and the K-free bodies live on amphiphile exported through the bath, so the bodies that persist are not the ones that make their material. The E fork removes material but no individual dies within 700 time units (they become minimal micelles); E as material dependence holds by construction (amphiphile is made only by K from P and decays), but the rubric's 'individuals die' is not shown here. B may still hold on the claim's seeds 0 and 2."
+  }],
+  "compute": {"cpu_minutes": 45}
+}

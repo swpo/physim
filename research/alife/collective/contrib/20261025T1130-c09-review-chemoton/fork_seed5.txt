@@ -1,0 +1,18 @@
+seed 5, precursor feed cut at t=300 (starve) vs fed twin (rerun); labkit series (frame = 3 time units)
+totals entry example: [3641.99951171875, 18432.0, 18524.20703125]
+t=270: fed comps 6 occ 0.060 totals [ 2439.2 32524.   1551.3] | starved comps 6 occ 0.060 totals [ 2439.2 32524.   1551.3]
+t=300: fed comps 6 occ 0.058 totals [ 2308.9 32505.   1555.1] | starved comps 6 occ 0.058 totals [ 2308.9 32505.   1555.1]
+t=330: fed comps 6 occ 0.057 totals [ 2217.5 32475.6  1564.5] | starved comps 6 occ 0.053 totals [ 2053.5 29512.7   771.9]
+t=360: fed comps 6 occ 0.055 totals [ 2149.7 32469.2  1564.9] | starved comps 6 occ 0.047 totals [ 1699.9 27672.7   509.7]
+t=420: fed comps 6 occ 0.054 totals [ 2081.  32484.8  1545.1] | starved comps 6 occ 0.037 totals [ 1093.9 25338.8   353.1]
+t=480: fed comps 6 occ 0.053 totals [ 2034.4 32576.9  1508.3] | starved comps 6 occ 0.029 totals [  695.3 23226.4   320.4]
+t=540: fed comps 6 occ 0.052 totals [ 1999.8 32680.6  1467.1] | starved comps 6 occ 0.025 totals [  476.5 21744.1   229.6]
+t=600: fed comps 6 occ 0.052 totals [ 1984.5 32839.9  1391.7] | starved comps 6 occ 0.023 totals [  323.1 20336.7   214.6]
+long starved fork (same seed, feed cut at t=300), to t=999:
+t=300: comps 6 occ 0.058 totals [ 2308.9 32505.   1555.1]
+t=450: comps 6 occ 0.031 totals [  869.8 24266.3   334.6]
+t=600: comps 6 occ 0.023 totals [  323.1 20336.7   214.6]
+t=750: comps 6 occ 0.019 totals [  145.9 17286.1   176.1]
+t=840: comps 6 occ 0.015 totals [   99.3 15731.8   160. ]
+t=900: comps 6 occ 0.015 totals [   79.8 14790.8   147.1]
+t=999: comps 6 occ 0.014 totals [   58.  13396.5   129.4]
