@@ -1,0 +1,12 @@
+{"id": "20261025T0648-c06-pcell-yield-selection", "kind": "finding", "mode": "extend", "task": "Q:particle-catalysts-in-phase-cells",
+ "title": "pcell: particle-carried link yield is selected at the cell level, but only by differential division (colonization, ~0 cell deaths)",
+ "summary": "In pcell (phase_membrane with catalyst particles), two particle kinds that differ only in link yield were seeded 50/50 per particle. Cells purify by within-cell drift (70-95% of cells >=95% one kind by t=16000; neutral arm too), and since a particle cannot be overwritten, cell kind changes only through internal drift of still-mixed cells (1 pure-to-pure change in 4 genealogies, 0 off-kind daughters among pure parents in 3 of 4 runs, 1 in the fourth). Low-yield particles (y=0.7) fall from 0.52 to 0.09 and 0.42 to 0.12 of all particles (2 seeds); high-yield (1.3) rise 0.52->0.76 and 0.42->0.66; the neutral arm drifts 0.52->0.56 and 0.42->0.43. In the y=0.7 genealogy every persistent cell split came from a pure high-yield cell (8/0 and 6/0 against pure low-yield cells; neutral arm 1/4 and 1/0), and low-yield cells stay small and never divide (kinds_y0.7_s0.png). There were only 0-1 cell deaths per run, so this is colonization-phase selection with kinds assigned at seeding: heredity of a cell phenotype through particles, not L7. Gate ablation (phi^2 reflection off) kills all cells by t~1100 on 2 seeds. Cells exist only in a narrow window: F=0.0045 or dK=0.03 die out, F>=0.008 or particle mass m>=0.5 give one sea.",
+ "parents": ["20261025T0634-c06-pcell-sighting", "research/alife/threads/autopoiesis/worlds/phase_membrane"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "identity-carrying catalyst particles reflected by a phi^2 acceptance gate inside an Allen-Cahn cell", "capability": "H", "world": "world.py", "necessary": false, "law": false,
+   "control": "neutral arm (equal yields, same seeds, kinds seeded identically); gate-off ablation for containment (pack_gate0)",
+   "result": "kind-1 particle share at t=16000: y2=0.7: 0.09, 0.12; y2=1.0: 0.56, 0.43; y2=1.3: 0.76, 0.66 (start 0.52, 0.42). Persistent cell splits by pure parent kind (high/low yield): y2=0.7 8/0, 6/0; neutral 1/4, 1/0. Cell deaths 0-1 per run. Gate off: 0 cells after t~1100, 2 seeds."},
+ "outcome": "positive",
+ "evidence": ["selection_ts.png", "kinds_y0.7_s0.png", "pack_gate0/seed0/sheet.png", "data/g_y0.7_s0_summary.json"],
+ "compute": {"cpu_minutes": 45}}
