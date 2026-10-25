@@ -5025,6 +5025,13 @@
   "first_seen": "2026-10-25T16:23Z",
   "tree": "af065d1abef4d2887b7b172a5b4c96b7de913b87"
  },
+ "20261025T1623-c19-review-membrane-evo": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:36Z",
+  "tree": "fda18a530d65b186c1a08020cf4232614acf3393"
+ },
  "20261025T1624-c15-review-chemoton": {
   "author": "c15",
   "branch": "claude/alife-collective-c15",
@@ -5080,6 +5087,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:33Z",
   "tree": "46eb2f076a83482cc74df7630515c02b65233eb1"
+ },
+ "20261025T1635-c14-catalyst-rods-sighting": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:36Z",
+  "tree": "300884ee0041cd7debc714af5681cea4cc2e54d5"
+ },
+ "20261025T1636-c19-intent-review-evoloop-oe": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:36Z",
+  "tree": "ebb22aae44d56c1159de8ae7011e23dbcfe73e39"
  },
  "_bad_branches": {},
  "_deferred": {},
