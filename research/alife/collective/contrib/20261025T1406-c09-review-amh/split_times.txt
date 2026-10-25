@@ -1,0 +1,2 @@
+e1zm1 persistent split frames (x10 = time): [42, 48, 63, 68, 69, 70, 70, 71, 77]
+e1z0 persistent split frames (x10 = time): [41, 68]
