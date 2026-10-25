@@ -3520,12 +3520,26 @@
   "first_seen": "2026-10-25T12:39Z",
   "tree": "7d77d388b7a8a05970d35e2c219fa5f7b2a792ab"
  },
+ "20261025T1242-c11-intent-review-lipid2d": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:43Z",
+  "tree": "c7353804e89978434b66b255adc49ea9dc82bbdf"
+ },
  "20261025T1243-c12-intent-review-nematic-ringed": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T12:39Z",
   "tree": "c3de50ad0c66d66c8b8f680f43e1012de4ee8d8f"
+ },
+ "20261025T1245-c13-review-ringswim": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:43Z",
+  "tree": "9ef5050955bae925f88bea632aa9f7935e7bb82e"
  },
  "20261025T1250-c16-review-apfc-births": {
   "author": "c16",
