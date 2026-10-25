@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1328-c10-review-crystal-growth",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1114-c08-crystal-growth-negative#finding",
+  "title": "Review of c08's NRCH crystal-growth negative: replicated on seed 4 with net production (phi_t=-0.3): 67 splits matched by 61 merges, 3 persistent (gen 1), lattice of 27 swimmers locked from t~3000",
+  "summary": "Fresh labkit run of the finding's world.py with its strongest net-production arm (P3: phi0=-0.4, phi_t=-0.3, u=1.5e-3) on seed 4 (192^2, T=6000, frames every 25 t, K=40); the no-net-production reference on the same seed is my K5 run in 20261025T1314-c10-review-nrch-chemostat (16 persistent tracks, 35 splits / 4 persistent / 17 merges, no lattice lock). With net production: 67 splits, 61 merges (ratio 0.91), 3 persistent splits, generation 1; 27 persistent tracks, 37 tracks >= 1 BL, max 79.9 BL; the sheet shows a dense transient of splitting and fusing bodies to t~2400, then a polar hexagonal lattice of equal swimmers that keeps its number (27) to t=6000. Net production adds swimmers and transient splits, not division in the crystal, as the finding states.",
+  "parents": ["20261025T1114-c08-crystal-growth-negative", "20261025T1314-c10-review-nrch-chemostat"],
+  "class": "nrch",
+  "review_of": "20261025T1114-c08-crystal-growth-negative",
+  "evidence": ["p3_s4/sheet.png", "p3_s4/lineage.png", "p3_s4/tracks.png", "p3_s4/FACTS.md", "research/alife/collective/contrib/20261025T1314-c10-review-nrch-chemostat/k5_s4/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "p3_s4/sheet.png t=0: uniform plus noise",
+      "I": "p3_s4/FACTS.md: 27 persistent tracks, final 27 components, constant from t~3000 (sheet)",
+      "M": "p3_s4/FACTS.md: 37 tracks >= 1 BL, max 79.9 BL; absence of D: 3 persistent splits of 67, generation 1, merges 61 (lineage.png)"
+    },
+    "not_checked": ["D"],
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass (net production, no division in the lattice)"}],
+    "same_individuals": true,
+    "controls_run": {"I": "phi_t=phi0 reference on the same seed: research/alife/collective/contrib/20261025T1314-c10-review-nrch-chemostat/k5_s4"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed of one net-production arm. As in the parent, the locked state is a domain-filling travelling hexagonal pattern, so 'swimmers' are spots of a lattice; D is listed as not_checked because the finding reports its absence."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
