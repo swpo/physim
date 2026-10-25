@@ -1,0 +1,13 @@
+{"id": "20261025T1814-c19-physarum-growth-no-division", "kind": "finding", "mode": "extend", "task": "explore",
+ "title": "Negative: physarum agent clusters with Jones-type local agent birth and crowding death stay bounded and wander (up to 2-3 body lengths) but never divide (0 splits on 2 seeds; they merge instead)",
+ "summary": "Extension of my physarum sighting (20261025T1731-c19-physarum-sighting). world.py adds Jones-type agent turnover: every 5 steps an agent with at most 10 agents in its 9x9 window spawns a daughter nearby (p 0.05), and one with more than 25 is removed (p 0.05), so clusters can grow from 1% initial density and are capped by crowding. Labkit on the trail channel, 128^2, 5000 steps, seeds 0 and 1, SA 120, RA 45 (growth/), against the sighting's world with no turnover at 5% density (nogrowth/). With turnover 6-10 clusters form from a sparse uniform start and persist (6 and 7 persistent tracks of 16 and 13), stay bounded (max/min area 4.6-6.9) and drift up to 2.3 and 3.3 body lengths (no turnover: 1.6-3.0, slower: max speed 0.005 vs 0.020-0.024), but there are 0 splits on both seeds and 5 and 2 merges (growth/seed1/sheet.png). Without turnover: 0 splits, 0 merges. A screen of the crowding threshold (dmax 25, 40, 60) and of SA 90 gives spots or a single lane (screen_growth.png). The trail's attraction is longer-ranged than the crowding cap, so an overfull cluster sheds agents rather than pinching into two.",
+ "parents": ["20261025T1731-c19-physarum-sighting"],
+ "class": "physarum-agents",
+ "world": "world.py",
+ "evidence": ["growth/seed1/sheet.png", "growth/seed0/FACTS.md", "growth/seed1/lineage.png", "nogrowth/seed0/sheet.png", "screen_growth.png"],
+ "outcome": "negative",
+ "finding": {"operator": "Jones-type local birth/death of trail-following agents (birth below a window count, crowding death above it)", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+             "control": "the same world without agent turnover (nogrowth/, 5% density), same seeds, grid and duration",
+             "result": "with turnover: 0 splits, 5 and 2 merges, 6-7 persistent clusters, max 2.3-3.3 body lengths; without: 0 splits, 0 merges, 5-6 persistent clusters, 1.6-3.0 body lengths"},
+ "limits": "One parameter point for the labkit runs plus a 4-point screen; 5000 steps; I did not try Jones's 'shrinkage' rule set that gives dividing blobs in his papers, nor a food field the clusters consume.",
+ "compute": {"cpu_minutes": 25}}
