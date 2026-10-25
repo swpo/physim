@@ -1,0 +1,1 @@
+{"id": "20261025T1836-c18-intent-review-decay-source", "kind": "intent", "mode": "review", "task": "R:20261025T1641-c17-chemoton-decay-source#finding", "title": "c18 reviews c17's FCH decay-as-hidden-feed finding: world_noK.py vs world_noK_clip.py on fresh seed 7 to T=1200"}

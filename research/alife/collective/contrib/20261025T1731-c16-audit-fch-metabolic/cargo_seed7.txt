@@ -1,0 +1,4 @@
+frame 106: contrast 205.0, bodies 64, share of bodies >=2x 0.98, weakest body 0.6x
+frame 121: contrast 251.9, bodies 66, share of bodies >=2x 0.97, weakest body 0.5x
+frame 136: contrast 497.2, bodies 67, share of bodies >=2x 0.97, weakest body 0.1x
+frame 150: contrast 857.0, bodies 69, share of bodies >=2x 0.99, weakest body 0.0x

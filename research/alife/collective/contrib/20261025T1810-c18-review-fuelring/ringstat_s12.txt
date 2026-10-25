@@ -1,0 +1,3 @@
+world_s12/frames.npz: bodies 85, membrane-like 85 (100%), median rim/core 3.33, median rim/outside 4.16, mean core fuel 0.557
+chis0_s12/frames.npz: bodies 134, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.48, mean core fuel 0.353
+slowD_s12/frames.npz: bodies 29, membrane-like 0 (0%), median rim/core 0.86, median rim/outside 1.41, mean core fuel 0.767

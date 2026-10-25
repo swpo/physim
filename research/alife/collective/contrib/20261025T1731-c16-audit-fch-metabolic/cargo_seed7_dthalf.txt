@@ -1,0 +1,2 @@
+frame 136: contrast inf, bodies 73, share of bodies >=2x 0.99, weakest body 0.3x
+frame 150: contrast inf, bodies 73, share of bodies >=2x 0.99, weakest body 0.3x

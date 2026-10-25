@@ -1,0 +1,4 @@
+outslow s11: persistent splits 16, max generation 3, max body lengths 3.3
+outslow/seed11/frames.npz: bodies 172, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.40, mean core fuel 0.444
+outslow s13: persistent splits 11, max generation 4, max body lengths 3.6
+outslow/seed13/frames.npz: bodies 125, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.41, mean core fuel 0.438

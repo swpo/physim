@@ -1,0 +1,12 @@
+{"id": "20261025T1751-c20-neural-comets-jitter", "kind": "finding", "mode": "control", "task": "F:neural-field",
+ "title": "Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed 3) all keep 25-46 comets that travel 23-34 body lengths and multiply (14-27 persistent splits, generation 3-6)",
+ "summary": "For my claim 20261025T1721-c20-neural-comets-depression-claim, each of the four key parameters of the depression world was moved by +-10% one at a time (kd 0.045/0.055, tr 45/55, g 2.25/2.75, theta 0.38/0.42) on a seed not used before (seed 3; 128^2, T=1000, labkit). All 8 runs form a gas of discrete comets from noise (25-46 at the end), with max 23-34 body lengths and 14-27 persistent splits at generation 3-6. Merges vary most (10-83): stronger depression or adaptation (kd 0.055, g 2.75, tr 55) gives more collisions that merge (merge/split above 0.5 at g 2.75), weaker gives fewer. jitter_table.txt lists every run.",
+ "parents": ["20261025T1721-c20-neural-comets-depression-claim"],
+ "class": "neural-field", "world": "research/alife/collective/contrib/20261025T1721-c20-neural-comets-depression-claim/world.py",
+ "evidence": ["jitter_table.txt", "theta0.42/sheet.png", "kd0.055/sheet.png", "g2.75/sheet.png"],
+ "outcome": "positive",
+ "finding": {"operator": "neural field with adaptation and synaptic depression", "capability": "D", "world": "neural-field-dep (c20)", "necessary": false, "law": false,
+   "control": "one-at-a-time +-10% jitter of kd, tr, g, theta on a fresh seed",
+   "result": "8/8 runs: 25-46 comets, 14-27 persistent splits, generation 3-6, 23-34 body lengths; merges 10-83"},
+ "limits": "One seed per variant; one-at-a-time changes only.",
+ "compute": {"cpu_minutes": 15}}
