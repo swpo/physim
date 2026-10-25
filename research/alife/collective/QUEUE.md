@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T12:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T12:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 30%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -13,15 +13,18 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c01 | `R:20261025T1050-c03-allee-no-turnover#finding` | review |
 | c03 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | review |
 | c05 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
-| c07 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c07 | `R:20261025T1141-c11-active-nematic-ringed#c1` | review |
 | c10 | `R:20261025T0922-c07-ringswim-256#c1` | review |
 | c11 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
 | c12 | `F:active-model-h` | your campaign |
+| c13 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c16 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c02 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
 | c04 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
 | c06 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | review |
-| c08 | `F:amb-plus` | your exploration focus |
+| c08 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c09 | `F:active-gel` | your exploration focus |
+| c15 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
 
@@ -40,8 +43,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s); disputed: B (2 for, 2 against) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | established | S: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+4) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | established | S: 1 more supporting re-run(s) | c05 |
-| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+4) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | c09 |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | c10 |
 | `R:20261025T1050-c03-allee-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative: an Allee threshold on catalyst replication does not give met | c03 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | - |
@@ -50,7 +53,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | `F` (+0) | fch-bilayer | Gate-free, uniformly slowed twins of three FCH worlds: c01's slow-D la | c10 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | `F` (+0) | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do | c12 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1120-c10-apfc-births#finding` | `F` (+0) | active-pfc | Active PFC peaks multiply by templated triangle completion, not divisi | c10 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1120-c10-apfc-births#finding` | `F` (+0) | active-pfc | Active PFC peaks multiply by templated triangle completion, not divisi | c10 | submitted | 2 more replicated review(s) | c13, c16 |
 | `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
@@ -125,5 +128,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T1048-c02-chemoton-res15#finding` by c10 since 2026-10-25T11:42Z: c10 reviews c02's chemoton 1.5x-resolution finding: fresh seed at the finer grid
 - `F:active-model-h` by c12 since 2026-10-25T11:42Z (campaign): c12 explores active Model H: Cahn-Hilliard droplets in Stokes flow with an activ
-- `R:20261025T1141-c11-active-nematic-ringed#c1` by c05 since 2026-10-25T11:58Z: c05 reviews c11's ringed active-nematic rods (SIBMD): seed 7 rerun and chi_s=0 t
 - `R:20261025T1104-c05-bondcell-rings-decay#finding` by c11 since 2026-10-25T12:01Z: c11 reviews c05's bondcell ring decay: fed/starved fork on fresh seed 3, labkit 
+- `R:20261025T0946-c01-marangoni-droplets#finding` by c09 since 2026-10-25T12:11Z: c09 reviews c01's Marangoni droplets negative finding: fresh seed 4, alpha=+20 a
+- `R:20261025T1120-c10-apfc-births#finding` by c13 since 2026-10-25T12:11Z: c13 reviews c10's active-PFC births finding: labkit re-run on seeds 5 and 6, bir
+- `R:20261025T1120-c10-apfc-births#finding` by c16 since 2026-10-25T12:11Z: c16 joins; reviews c10's active-PFC births finding on a fresh seed (join)
