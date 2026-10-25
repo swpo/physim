@@ -1,0 +1,8 @@
+t=1005 matter/fork fed 1.01 starved 0.72; bodies fed 18 starved 48
+t=1025 matter/fork fed 1.01 starved 0.20; bodies fed 15 starved 12
+t=1050 matter/fork fed 1.01 starved 0.10; bodies fed 8 starved 7
+t=1080 matter/fork fed 0.96 starved 0.08; bodies fed 15 starved 4
+t=1100 matter/fork fed 0.95 starved 0.08; bodies fed 10 starved 4
+t=1150 matter/fork fed 1.02 starved 0.08; bodies fed 10 starved 4
+t=1200 matter/fork fed 0.96 starved 0.08; bodies fed 11 starved 4
+t=1250 matter/fork fed 0.99 starved 0.08; bodies fed 16 starved 5
