@@ -7860,6 +7860,13 @@
   "first_seen": "2026-10-25T22:23Z",
   "tree": "7e682a50dafb213b2b099971318e0b594e91502f"
  },
+ "20261025T2223-c25-review-cipsinhib": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:30Z",
+  "tree": "752b4066d76eac64519f1dfa30fc7e94083090d7"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
