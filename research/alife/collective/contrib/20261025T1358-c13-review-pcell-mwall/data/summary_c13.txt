@@ -1,0 +1,9 @@
+c13 rerun of c14's pcell-mwall, seed 5, T=100000 (genealogy.py, deathsel.py, birthfate.py, abslife.py unchanged; minlife 20)
+genealogy: persistent splits 12, max generation 2, merges 0, deaths 35, final cells 21
+yield ym: mature deaths 17 at mean percentile 0.025 (17/17 below median); splits 11 at 0.464
+marker zm: mature deaths 17 at mean percentile 0.549 (6/17 below median); splits 11 at 0.429
+by birth rank (ym): low-born death share 0.50 vs high-born 0.167; dying cells' rank at birth/mid/death 0.205/0.147/0.031
+by birth rank (zm): 0.429 vs 0.333; dying cells' rank 0.458/0.501/0.507
+dying cells' absolute yield: 0.996 at birth -> 0.936 at death (population 1.063 -> 1.104); 71% declined
+population mean ym / zm: t=500 1.000/1.000, 25500 1.065/0.988, 50500 1.091/0.989, 75500 1.124/0.961, 100000 1.139/0.946 (21-24 cells throughout)
+labkit rerun/seed5: 21 persistent tracks, 8 persistent splits, max generation 2, merge/split 0.16; M rim/core 3.28, rim/out 3.88, 120/131 membrane-like

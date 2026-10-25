@@ -1,0 +1,9 @@
+shell_s0/frames.npz: bodies 96, membrane-like 96 (100%), median rim/core 3.28, median rim/outside 4.01, mean core fuel 0.576
+shell_s1/frames.npz: bodies 28, membrane-like 28 (100%), median rim/core 3.17, median rim/outside 4.65, mean core fuel 0.593
+shell_s2/frames.npz: bodies 62, membrane-like 62 (100%), median rim/core 3.24, median rim/outside 4.07, mean core fuel 0.583
+chis0_s0/frames.npz: bodies 123, membrane-like 0 (0%), median rim/core 0.87, median rim/outside 1.46, mean core fuel 0.353
+chis0_s1/frames.npz: bodies 68, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.47, mean core fuel 0.348
+chis0_s2/frames.npz: bodies 138, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.47, mean core fuel 0.351
+beta0_s0/frames.npz: bodies 122, membrane-like 122 (100%), median rim/core 3.46, median rim/outside 5.07, mean core fuel 0.347
+dt2_s0/frames.npz: bodies 90, membrane-like 90 (100%), median rim/core 3.25, median rim/outside 3.96, mean core fuel 0.564
+chis0_z81_s0/frames.npz: bodies 129, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.35, mean core fuel 0.275

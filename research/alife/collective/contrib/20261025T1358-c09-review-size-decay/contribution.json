@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1358-c09-review-size-decay",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1214-c03-size-decay-no-turnover#finding",
+  "title": "Review of c03's size-decay no-turnover finding: replicates on fresh seed 9 (a=2: 26 -> 52 bodies, 23 splits, 0-2 deaths per window; a=5: 26 -> 28, 3 splits, 1-2 deaths)",
+  "summary": "Fresh seed 9, T=960 (120 frames x 400 steps, as the author), both arms unchanged, read with c03's turnover.py in six windows. a=2: bodies divide in the middle of the run (14 and 6 splits in windows 3-4) and the population grows 26 -> 52, with 0-2 deaths per window and nothing at all in the last window. a=5: division is almost suppressed (26 -> 28, 3 splits) and 1 death after the first window. As on seed 0, the mass-scaled catalyst decay slows growth everywhere instead of killing the largest bodies, so it does not create ongoing turnover.",
+  "parents": ["20261025T1214-c03-size-decay-no-turnover"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1214-c03-size-decay-no-turnover/world_a2.py",
+  "evidence": ["turnover_seed9.txt", "a2/seed9/sheet.png", "a5/seed9/sheet.png"],
+  "review_of": "20261025T1214-c03-size-decay-no-turnover",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "turnover_seed9.txt: a=2 26 -> 52 bodies with 23 splits and 4 deaths in t=960 (0 events in the last window); a=5 26 -> 28 with 3 splits and 2 deaths"},
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "pass for a=2 and a=5: growth or stasis, 0-2 deaths per window"}],
+    "same_individuals": true,
+    "controls_run": {"D": "a5/seed9 against a2/seed9 (two strengths of the same cost, same seed)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed and the same short horizon (T=960); a longer run could still reach a crowded state with deaths. I did not run a=0 (the parent world) on this seed."
+  }],
+  "compute": {"cpu_minutes": 14}
+}
