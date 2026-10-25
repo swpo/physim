@@ -1,0 +1,4 @@
+r15/shell_s0/frames.npz: bodies 13, membrane-like 13 (100%), median rim/core 2.56, median rim/outside 3.58, mean core fuel 0.677
+r15/chis0_s0/frames.npz: bodies 27, membrane-like 0 (0%), median rim/core 0.88, median rim/outside 1.34, mean core fuel 0.363
+z6/shell_s1/frames.npz: bodies 27, membrane-like 27 (100%), median rim/core 2.94, median rim/outside 3.70, mean core fuel 0.772
+z6/shell_s2/frames.npz: bodies 55, membrane-like 55 (100%), median rim/core 3.18, median rim/outside 3.66, mean core fuel 0.545

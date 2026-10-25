@@ -1,0 +1,1 @@
+{"frames": 751, "t_end": 1500, "persistent_splits": 52, "clean_splits_not_from_merge": 7, "all_splits": 174, "merges": 183, "births_from_nothing": 168, "deaths": 86, "max_generation": 5, "gen_hist_final": {"0": 23, "1": 13, "2": 10, "3": 6, "4": 9, "5": 6}, "bodies_every_100t": [0, 40, 60, 58, 63, 63, 61, 62, 64, 65, 66, 61, 63, 59, 65, 67]}
