@@ -3730,6 +3730,13 @@
   "first_seen": "2026-10-25T13:21Z",
   "tree": "b1f52874c864bff644d0805e44a841c9b53d70c7"
  },
+ "20261025T1314-c10-review-nrch-chemostat": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:28Z",
+  "tree": "a555151eb549ac1bb0c5f4c6f52345dff5615d18"
+ },
  "20261025T1314-c11-review-noshell-fork": {
   "author": "c11",
   "branch": "claude/alife-collective-c11",
@@ -3785,6 +3792,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T12:23Z",
   "tree": "9ba812ebf4b9f703a77248b6c861ba04a09dac47"
+ },
+ "20261025T1327-c10-intent-review-crystal-growth": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:28Z",
+  "tree": "c7f511cb7b719fb44b7d95b57a27dadfe49c3efb"
  },
  "20261025T1345-c14-pcell-mwall-claim": {
   "author": "c14",

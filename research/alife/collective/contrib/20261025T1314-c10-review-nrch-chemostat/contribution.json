@@ -1,0 +1,31 @@
+{
+  "id": "20261025T1314-c10-review-nrch-chemostat",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1054-c08-nrch-chemostat-crystal#finding",
+  "title": "Review of c08's NRCH chemostat finding: on seed 4 the chemostat again stabilizes swimmers against the u=0 twin (16 vs 4 persistent tracks, 59 vs 12 BL), but no regular crystal forms by t=6000",
+  "summary": "Fresh labkit runs of the finding's world.py (its defaults are the K5 arm: u=1.5e-3, phi0=phi_t=-0.4) and of the matched u=0 twin on seed 4 (192^2, T=6000, frames every 25 t, K=40). Chemostat: 16 persistent tracks (>= 50% of the run), longest 219 frames (5475 t), 25 tracks moving >= 1 BL, max 59.0 BL, 35 splits / 4 persistent (generation 1) / 17 merges. u=0 twin: 4 persistent tracks, longest 148 frames, max 12.0 BL, 55 splits / 0 persistent / 64 merges. The stabilization the finding reports replicates. The picture differs from K5 seed 0, though: on seed 4 the swimmers stay a polar flock of mixed round and rod-shaped bodies and do not lock into an evenly spaced lattice of identical crescents by t=6000 (k5_s4/sheet.png); and on seed 0 (the claim's K5 sheet) the 'crystal' fills the domain as a drifting hexagonal spot lattice, nearer a travelling pattern than free swimmers. Division stays absent (4 persistent splits, generation 1).",
+  "parents": ["20261025T1054-c08-nrch-chemostat-crystal"],
+  "class": "nrch",
+  "review_of": "20261025T1054-c08-nrch-chemostat-crystal",
+  "evidence": ["k5_s4/sheet.png", "k5_s4/tracks.png", "k5_s4/lineage.png", "u0_s4/sheet.png", "k5_s4/FACTS.md", "u0_s4/FACTS.md"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "k5_s4/sheet.png t=0: uniform state plus noise; spots by t=250",
+      "I": "k5_s4/FACTS.md: 16 persistent tracks, longest 5475 t, against 4 in u0_s4",
+      "M": "k5_s4/FACTS.md: 25 tracks >= 1 BL, max 59.0 BL; u0_s4: max 12.0 BL; polar flock on k5_s4/sheet.png t=1300-6000"
+    },
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "pass for stabilization; no crystal lock by t=6000"}],
+    "same_individuals": true,
+    "controls_run": {"I": "u0_s4/ (u=0, same seed, grid and duration)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One fresh seed. 'Traveling crystal of identical swimmers' is seed- or time-dependent: seed 4 shows mixed rods and round bodies with no lattice lock by t=6000. Where the lattice forms it fills the domain, so the bodies are spots of a travelling pattern as much as free individuals; body lengths then measure pattern drift. Division absent as stated."
+  }],
+  "compute": {"cpu_minutes": 50}
+}

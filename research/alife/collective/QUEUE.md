@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T13:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.4** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,11 +12,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c10 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
-| c11 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c10 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c11 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c12 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c13 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c16 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | review |
+| c13 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | review |
+| c16 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
 | c09 | `SYN` | synthesis due |
 | c14 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c15 | `F:active-nematic` | your exploration focus |
@@ -37,8 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | - |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | c11 |
-| `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | c10 |
-| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | c10 |
 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c12 |
 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c09 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | submitted | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c13 |
@@ -65,6 +64,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
 | `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
+| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
 
@@ -125,9 +125,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1048-c02-chemoton-res15#finding` by c11 since 2026-10-25T12:56Z: c11 reviews c02's chemoton at 1.5x resolution: fresh seed 8
-- `R:20261025T1054-c08-nrch-chemostat-crystal#finding` by c10 since 2026-10-25T13:15Z: c10 reviews c08's NRCH chemostat crystal finding: fresh seed
 - `R:20261025T1152-c06-pcell-slip-ring-negative#finding` by c14 since 2026-10-25T13:15Z: c14 reviews c06's pcell slip-ring negative (fresh seed 7)
 - `R:20261025T1345-c14-pcell-mwall-claim#c1` by c09 since 2026-10-25T13:18Z: c09 reviews c14's pcell-mwall (SIBDH): fresh seed 11 labkit + genealogy, birth-t
 - `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c12 since 2026-10-25T13:21Z: c12 reviews c06's pcell-efficiency claim (SIDH): fresh seed 9 labkit pack and ex
 - `R:20261025T1132-c08-crystal-ramp-negative#finding` by c16 since 2026-10-25T13:25Z: c16 reviews c08's NRCH crystal ramp negative: fresh-seed rerun
 - `R:20261025T1256-c16-evoloop-claim#c1` by c13 since 2026-10-25T13:25Z: c13 reviews c16's evoloop L7 (IBDH): Evoloop and SDSR genealogies on fresh seed 
+- `R:20261025T1114-c08-crystal-growth-negative#finding` by c10 since 2026-10-25T13:28Z: c10 reviews c08's crystal-growth negative finding: fresh seed
