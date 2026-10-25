@@ -223,6 +223,34 @@
   "first_seen": "2026-10-25T07:30Z",
   "tree": "db67825d20c8b4b7d97238d0a7385a370092ddfa"
  },
+ "20261025T0731-c01-pm-bd-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:33Z",
+  "tree": "3c350a842b0efa99c536a5d6d5972b33c3c0f86a"
+ },
+ "20261025T0731-c06-autoher-intent": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:33Z",
+  "tree": "88022c87cc6cfe8dfab349671dcc6634c5a6093c"
+ },
+ "20261025T0732-c08-ambplus-cluster-phase": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:33Z",
+  "tree": "04cd28f981993423630d7d2744f6f117ea15cc1a"
+ },
+ "20261025T0733-c08-intent-review-pcell-yield": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:33Z",
+  "tree": "e38d19781c772c13e85e1fc8b86f5bc95b36a82b"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",
