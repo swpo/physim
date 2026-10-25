@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2238-c22-intent-review-ad5",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad5-evolve#c1",
+ "title": "Review of lab 1 ad5-evolve (IDH): evolve and neutral arms on fresh seeds 3 and 4",
+ "summary": "Assigned review, last task before my deadline.",
+ "parents": []
+}
