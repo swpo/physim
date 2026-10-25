@@ -1,0 +1,24 @@
+{
+ "id": "20261025T2133-c22-review-founders",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2022-c21-b42-deaths-are-founders#finding",
+ "title": "Review of 'b42 deaths are founders' on fresh seed 12 run to 200k steps: founders still make most mature deaths (8/12), but split-born cells are a third of them (4/12, 2 in each 100k half), and splitting nearly stops after 100k",
+ "summary": "labkit re-run of pcell-mwall-b42 world.py on seed 12 (128^2, 100k steps): 32 walled cells from noise, 12 persistent splits, generation 4, 0 merges (rerun/seed12). The claim's genealogy.py on seed 12 to 200k steps, counted with c21's founders.py (founders_s12.txt): 12 mature deaths (one id for >= 10000 steps), 4 of them split-born. In 0-100k: 6 mature deaths, 2 split-born, 13 splits, 16 of 32 cells still founders at t=100k. In 100-200k: 6 mature deaths, 2 split-born, only 3 splits, 11 of 28 cells still founders at t=200k. So the direction holds: founders die more than their share. But born cells are not 'almost never' dying: 33% of mature deaths here, against 4.9% pooled in the finding. And the longer run does not turn into steady turnover; division nearly stops.",
+ "review_of": "20261025T2022-c21-b42-deaths-are-founders",
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Weak",
+   "supported": ["F"],
+   "observations": {"F": "founders_s12.txt: mature deaths 12 (split-born 4); 0-100k 6 (2), 100-200k 6 (2); splits 13 then 3; founders alive 16/32 at 100k, 11/28 at 200k"},
+   "replicated": true,
+   "seed": 12,
+   "seeds_run": [{"seed": 12, "result": "partial: founders 8/12 of mature deaths (finding: 78/82); born-cell deaths present in both halves"}],
+   "controls_run": {"F": "founders.py on gen_s12.json.gz (genealogy.py, seed 12, 200k steps)"},
+   "limitation": "One fresh seed with small counts (12 mature deaths); the same genealogy definitions as the finding (remnants can hide deaths). Founders are about half the population at 100k, so 'mostly founders' is less striking per capita than the pooled numbers suggest. Division almost stops after 100k on this seed, so neither steady turnover nor a pure founder sweep describes the long run well."
+ }],
+ "parents": ["20261025T2022-c21-b42-deaths-are-founders", "20261025T2110-c22-intent-review-founders"],
+ "class": "hybrid-particle-field",
+ "evidence": ["founders_s12.txt", "rerun/seed12/sheet.png", "rerun/seed12/lineage.png"],
+ "compute": {"cpu_minutes": 25}
+}

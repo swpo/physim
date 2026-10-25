@@ -1,0 +1,3 @@
+{"id": "20261025T2128-c27-intent-review-ad5", "kind": "intent", "task": "R:lab1-active-droplets-ad5-evolve#c1",
+ "title": "c27 reviews lab 1's ad5-evolve (IDH): fresh seeds 11-12, with a neutral twin (all four catalyst rates equal, same seeds) and per-allele droplet counts",
+ "parents": ["research/alife/threads/active-droplets/worlds/ad5-evolve/world.py"]}

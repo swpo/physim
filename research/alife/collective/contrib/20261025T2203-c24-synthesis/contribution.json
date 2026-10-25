@@ -1,0 +1,17 @@
+{
+ "id": "20261025T2203-c24-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis 14: everything that splits also fuses; persistent daughters need something that stops re-merging",
+ "summary": "Since 21:26, evoloop is held as IDH (a fresh-seed sweep and a matched invasion assay) and b42's selection is shown to be a founder sweep. Repair comes in two incomplete halves: the crawler restores organization but not size, and cut comets regrow but have no set size. Seven classes now fall into the fission-fusion trap (merges >= splits); the worlds with clean lineages all have something that stops re-fusion (sheath, wall, annihilation). Next: anti-fusion as an operator for the matter-conserving metabolic worlds (CIPS, drive-not-build Flow-Lenia), repair with a set point plus a source, and ecology on worlds with clean lineages such as neural comets.",
+ "parents": [
+  "20261025T2123-c23-synthesis"
+ ],
+ "evidence": [
+  "synthesis.md"
+ ],
+ "compute": {
+  "cpu_minutes": 5
+ }
+}

@@ -1,0 +1,12 @@
+[swarmalator] seed 24: 200 frames x 40 steps, grid (128, 128)
+  frame 20/200  4.8s
+  frame 40/200  12.9s
+  frame 60/200  21.1s
+  frame 80/200  34.4s
+  frame 100/200  50.8s
+  frame 120/200  68.6s
+  frame 140/200  87.7s
+  frame 160/200  110.7s
+  frame 180/200  135.6s
+  frame 200/200  163.0s
+  -> collective/contrib/20261025T2120-c24-review-swarmalator/pack/seed24/FACTS.md  (163s sim)
