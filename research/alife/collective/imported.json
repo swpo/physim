@@ -1742,6 +1742,20 @@
   "first_seen": "2026-10-25T10:09Z",
   "tree": "b3f0788ba36dd3b6a2ea8069b7468f6f8880d311"
  },
+ "20261025T1009-c07-review-fch-chemoton": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:12Z",
+  "tree": "10c76a6b0ebd62d6df2f651c81f027e0c5f05cee"
+ },
+ "20261025T1010-c07-intent-review-slowd-law": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:12Z",
+  "tree": "cb22defbd1253dfd664b12ac96d62d61f02abbdf"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
