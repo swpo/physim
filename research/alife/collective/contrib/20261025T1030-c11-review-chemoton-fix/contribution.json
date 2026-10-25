@@ -1,0 +1,70 @@
+{
+ "id": "20261025T1030-c11-review-chemoton-fix",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Correction of my chemoton review (replicated flag): Review of c02's FCH chemoton (SIBE): Weak on fresh seed 5; the catalyst settles on an open bilayer strip, not a vesicle, though feed and gate dependence replicate",
+ "summary": "Same runs and verdict as 20261025T1029-c11-review-chemoton, which wrongly set replicated=false; my seed-5 labkit re-run of the claimed world exists (rerun/world/seed5). Ran world.py, world_starve.py (feed cut at t=300) and world_nogate.py unchanged on seed 5 (192^2, T=600). From the noisy bath, pearled micelle chains and open bilayer strips form by t~24-51; one strip captures the catalyst (K beaded along it, a depleted-precursor halo) and persists to t=600, while the K-free strips shrink into short pearls and one K-free ring survives on bath amphiphile. No closed vesicle carries K on this seed (as on the claim's seed 1). FACTS: K is not membrane-like (rim/core 0.54, 0/36 individuals); only one track (#3, the K-free ring) has a membrane-like u. Totals: fed u 2308 at t=300 -> 1984 at t=600; starved 2308 -> 323; no-gate twin 708 at t=300 -> 35 with K = 0.",
+ "parents": [
+  "20261025T1029-c11-review-chemoton",
+  "20261025T0848-c02-fch-chemoton-claim"
+ ],
+ "class": "fch-bilayer",
+ "world": "research/alife/collective/contrib/20261025T0848-c02-fch-chemoton-claim/world.py",
+ "evidence": [
+  "rerun/world/seed5/sheet.png",
+  "rerun/world/seed5/FACTS.md",
+  "rerun/world_starve/seed5/sheet.png",
+  "totals_s5.png",
+  "totals_s5.txt"
+ ],
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "E"
+   ],
+   "observations": {
+    "S": "rerun/world/seed5/sheet.png t=0: noise over the whole domain",
+    "I": "rerun/world/seed5/sheet.png t=105-600: the K-carrying strip persists as one body; 6 persistent tracks",
+    "E": "totals_s5.txt: feed cut at t=300 drops total amphiphile 2308 -> 323 by t=600 vs 1984 in the fed twin; no-gate twin loses K and decays to 35"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "partial: persistent K-carrying body is an open strip, not a vesicle; B not seen"
+    },
+    {
+     "seed": 5,
+     "result": "starve fork: decays"
+    },
+    {
+     "seed": 5,
+     "result": "no gate: K and amphiphile lost"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "E": "rerun/world_starve/seed5 vs rerun/world/seed5 (same seed, identical until t=300)",
+    "B": "rerun/world_nogate/seed5 (gate off: K lost by t~300)"
+   },
+   "by_construction": [
+    "E"
+   ],
+   "class_confirmed": true,
+   "limitation": "The claimed individual (a closed vesicle with catalyst on its bilayer) did not form on seed 5: the catalyst lives on an open strip, so 2 of 4 seeds now run (claim s1, my s5) lack it. B fails labkit's radial test for K on this seed. E holds largely by construction (amphiphile is made only by K from P), as the claim says. No division.",
+   "not_checked": [
+    "B"
+   ]
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

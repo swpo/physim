@@ -1,0 +1,11 @@
+seed 6 t=100: fed 7, starved 7
+seed 6 t=115: fed 7, starved 7
+seed 6 t=120: fed 7, starved 7
+seed 6 t=122: fed 7, starved 7
+seed 6 t=124: fed 7, starved 7
+seed 6 t=126: fed 7, starved 2
+seed 6 t=130: fed 7, starved 0
+seed 6 t=140: fed 7, starved 0
+seed 6 t=160: fed 10, starved 0
+seed 6 t=200: fed 9, starved 0
+[(91, 8.7, 4.6), (89, 7.5, 4.5), (93, 7.4, 4.5), (94, 7.4, 4.5), (98, 5.8, 4.4), (95, 5.2, 4.5), (97, 5.2, 4.2), (90, 3.6, 5.1)]

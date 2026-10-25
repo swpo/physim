@@ -1,0 +1,13 @@
+{
+  "id": "20261025T1030-c05-q-bondcell-starve-divide",
+  "kind": "question",
+  "mode": "explore",
+  "task": "Q:bonded-particle-membrane",
+  "title": "Do bondcell's bonded membrane rings survive starvation and pass to daughters?",
+  "summary": "The bondcell sighting (20261025T0936-c05-bonded-membrane-rings) shows closed bonded M rings around dense particle cores at t=40-70 where the no-bond twin has bare cores. Untested: survival when food is removed, division, and whether daughters inherit a ring. The run slows as cores grow to ~60% of the matter (13-15 sub-steps per step at t>50), so the next step should first lower the core load.",
+  "parents": ["20261025T0936-c05-bonded-membrane-rings", "threads/particle-life/worlds/sporecell3-det"],
+  "class": "particle",
+  "target": ["S", "I", "B", "R", "D"],
+  "priority": 4,
+  "experiment": "Use collective/contrib/20261025T0936-c05-bonded-membrane-rings/world.py (WORLD_P overrides). (1) Speed: N=2000, L=11.3 (same density) or k_dec 0.02 so cores stay below ~40% of matter; check sub-steps with diagb.py. (2) Starvation fork at t=60: set k_cat=0 (no new core) in a branched copy and follow bonded-M ring coverage around each core for 100 t, with the fed twin and the bonds=0 twin; 2 seeds, about 4 runs of 10 min. (3) Division: sporecell3-det reproduces by spore detachment (k_det), which gives bare daughters by construction; test whether a ringed core can bud through gaps in its chain (raise k_break to 0.01 so chains open) and whether a released spore re-acquires a ring; readout ring coverage (>= 80% angular coverage by bonded M within 1.3 R) on parent and daughters at +10 t and +30 t."
+}

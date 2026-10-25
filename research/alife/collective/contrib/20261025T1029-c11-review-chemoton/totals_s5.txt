@@ -1,0 +1,20 @@
+{
+ "full_s5": {
+  "u_total_t0": 3642.0,
+  "u_total_t300": 2308.0,
+  "u_total_end": 1984.0,
+  "K_total_end": 1392.0
+ },
+ "starved_s5": {
+  "u_total_t0": 3642.0,
+  "u_total_t300": 2308.0,
+  "u_total_end": 323.0,
+  "K_total_end": 214.625
+ },
+ "nogate_s5": {
+  "u_total_t0": 3642.0,
+  "u_total_t300": 708.5,
+  "u_total_end": 35.28125,
+  "K_total_end": 0.0
+ }
+}

@@ -1,0 +1,10 @@
+ 5, "final_pure": {"0": 5, "1": 0, "-1": 0}, "world": "collective/contrib/20261025T0755-c06-pcell-cost-balance/world.py", "seed": 3, "T": 100000, "params": {"ytrait": "1", "muy": "0.02", "sy": "0.05", "cy": "0"}, "particle_births": [24640169], "particle_deaths": [24649279], "flips": 0, "pflips": 0}
+
+{"file": "collective/contrib/20261025T1030-c01-review-pcell-cost/data/real_cy0_s3.json", "key": "ym", "n_death": 48, "death_pct_mean": 0.075, "n_split": 13, "split_pct_mean": 0.45, "death_pct_below_median": 48, "split_pct_above_median": 5}
+{"file": "collective/contrib/20261025T1030-c01-review-pcell-cost/data/real_cy0_s3.json", "n_daughters": 26, "parent_daughter_r": 0.869, "mean_abs_diff": 0.0113, "living_sd_mid": 0.1491}
+mean yield t= [25350, 50250, 100000] [np.float64(1.132), np.float64(1.316), np.float64(1.518)] cells [24, 11, 5]
+"final_pure": {"0": 28, "1": 0, "-1": 0}, "world": "collective/contrib/20261025T0755-c06-pcell-cost-balance/world.py", "seed": 3, "T": 100000, "params": {"ytrait": "1", "muy": "0.02", "sy": "0.05", "cy": "0.03"}, "particle_births": [16865389], "particle_deaths": [16880090], "flips": 0, "pflips": 0}
+
+{"file": "collective/contrib/20261025T1030-c01-review-pcell-cost/data/real_cy003_s3.json", "key": "ym", "n_death": 37, "death_pct_mean": 0.022, "n_split": 26, "split_pct_mean": 0.64, "death_pct_below_median": 37, "split_pct_above_median": 19}
+{"file": "collective/contrib/20261025T1030-c01-review-pcell-cost/data/real_cy003_s3.json", "n_daughters": 52, "parent_daughter_r": 0.951, "mean_abs_diff": 0.0148, "living_sd_mid": 0.118}
+mean yield t= [25350, 50250, 100000] [np.float64(1.004), np.float64(1.03), np.float64(1.094)] cells [26, 29, 28]

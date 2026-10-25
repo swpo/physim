@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1018-c11-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c1",
+  "title": "Review of c07's ringswim c1 (SIMD): replicates on fresh seed 8 (23 persistent splits, 33 segments >= 3 BL; mu=0 gives 0), with the same reticulate genealogy",
+  "summary": "Ran world_claim.py unchanged on seed 8 (labkit, T=20000) and the author's celltrack.py on world_claim.py and world_mu0.py for the same seed. From noise, 5-10 walled cells form by t=800 and move as crescents with a wake through t=20000 (sheet). celltrack: 23 persistent splits, max generation 13, 75 splits vs 55 merges, 33 track segments >= 3 BL and 11 >= 5 BL (best 10.5 BL at 0.05 px/t). mu=0 on the same seed: 0 segments >= 3 BL (best 1.7 BL), 37 persistent splits, 0 merges. labkit's coarse tracker finds 139 splits and 122 merges, 0 persistent splits; L link rim/core 1.44 (27/47 membrane-like).",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "world": "research/alife/collective/contrib/20261025T0806-c07-ringswim-claim/world_claim.py",
+  "evidence": ["rerun/seed8/sheet.png", "rerun/seed8/FACTS.md", "celltrack_summary.txt", "celltrack_claim_s8.json", "celltrack_mu0_s8.json"],
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "M", "D"],
+    "observations": {
+      "S": "rerun/seed8/sheet.png t=0: noise over the whole domain; cells everywhere by t=800",
+      "I": "rerun/seed8/sheet.png: discrete walled cells and crescents throughout t=800-20000",
+      "M": "celltrack_claim_s8.json: 33 segments >= 3 BL, 11 >= 5 BL (best 10.5 BL); celltrack_mu0_s8.json: 0 >= 3 BL (best 1.7)",
+      "D": "celltrack_claim_s8.json: 23 persistent splits, max generation 13; sheet t=5200-6900 and t=11300 show pinching bodies"
+    },
+    "replicated": true,
+    "seed": 8,
+    "seeds_run": [{"seed": 8, "result": "pass (claimed world)"}, {"seed": 8, "result": "mu=0 control: no swimming, divides without merges"}],
+    "same_individuals": true,
+    "controls_run": {"M": "celltrack_mu0_s8.json (world_mu0.py, same seed)"},
+    "class_confirmed": true,
+    "limitation": "Genealogy is reticulate (55 merges per 75 splits; labkit's 100-t tracker sees 0 persistent splits), so D rests on celltrack.py's 400-t persistence rule. The mu=0 twin divides more cleanly (37 persistent splits, 0 merges): swimming is what makes the genealogy reticulate, so division and swimming coexist in one world rather than reinforcing each other. The drive is a per-body label average (nonlocal). I did not run dt or resolution checks or the track-level strip."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
