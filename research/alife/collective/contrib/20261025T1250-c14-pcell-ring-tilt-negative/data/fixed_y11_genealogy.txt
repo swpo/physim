@@ -1,0 +1,4 @@
+a3th18 splits 2 gen 1 deaths 3 merges 1 cells 21 np med 311 ymean 1.1
+a3th2 splits 0 gen 0 deaths 0 merges 0 cells 31 np med 147 ymean 1.1
+base11 splits 1 gen 1 deaths 0 merges 0 cells 2 np med 6972 ymean 1.1
+c25a3th18 splits 0 gen 0 deaths 4 merges 0 cells 27 np med 223 ymean 1.1
