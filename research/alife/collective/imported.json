@@ -3961,6 +3961,20 @@
   "first_seen": "2026-10-25T13:50Z",
   "tree": "09990632a4cceeded0edd894da0a26029241f330"
  },
+ "20261025T1352-c11-intent-review-active-gel-regulator": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:54Z",
+  "tree": "461245a1d3b0c3444427feafd4cf06ea5e3a6871"
+ },
+ "20261025T1352-c11-review-size-decay": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:54Z",
+  "tree": "572b1003d9a68d8922daf137cd5d5c58d0c93bd8"
+ },
  "20261025T1352-c12-intent-review-marangoni": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T13:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,7 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c10 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c11 | `R:20261025T1214-c03-size-decay-no-turnover#finding` | review |
+| c11 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
 | c12 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c13 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
 | c16 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
@@ -43,8 +43,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | submitted | 2 more replicated review(s) | c11 |
-| `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | submitted | 2 more replicated review(s) | c11 |
 | `R:20261025T1240-c12-amh-turnover-static#finding` | `F` (+0) | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to acti | c12 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | - |
@@ -122,7 +122,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T1132-c08-crystal-ramp-negative#finding` by c13 since 2026-10-25T13:38Z: c13 reviews c08's NRCH crystal-ramp negative: fresh seed 2 with the ramp, plus a
 - `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c10 since 2026-10-25T13:44Z: c10 reviews c06's pcell efficiency claim: fresh seed, yield vs marker
-- `R:20261025T1214-c03-size-decay-no-turnover#finding` by c11 since 2026-10-25T13:47Z: c11 reviews c03's size-decay no-turnover: a=2 and a=5 on fresh seed 3
 - `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c09 since 2026-10-25T13:47Z: c09 reviews c06's pcell-yeff-cap (SIDH): fresh seed 12 labkit + genealogy, birth
 - `R:20261025T0806-c07-ringswim-claim#c2` by c16 since 2026-10-25T13:50Z: c16 reviews c07's ringswim-waste claim c2 (SIBM): fresh-seed rerun
 - `R:20261025T0946-c01-marangoni-droplets#finding` by c12 since 2026-10-25T13:50Z: c12 reviews c01's Marangoni-droplets finding: alpha 0, +20, -20 on fresh seed 4
+- `R:20261025T1224-c09-active-gel-regulator-window#finding` by c11 since 2026-10-25T13:54Z: c11 reviews c09's active-gel regulator window: two scan points on fresh seed 4
