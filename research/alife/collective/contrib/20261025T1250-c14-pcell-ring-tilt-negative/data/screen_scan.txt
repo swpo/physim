@@ -1,0 +1,78 @@
+== out_chi3.txt
+t=1600 cells=1 N=16322 rimcore=1.77 rimout=923.71 area=125 y=1.000 (11s)
+t=3200 cells=2 N=16205 rimcore=1.80 rimout=26.59 area=113 y=0.998 (23s)
+t=4800 cells=2 N=15784 rimcore=1.58 rimout=15529.57 area=159 y=0.999 (33s)
+t=6400 cells=3 N=15225 rimcore=1.51 rimout=23.36 area=256 y=1.005 (43s)
+t=8000 cells=4 N=15501 rimcore=1.27 rimout=5.91 area=433 y=1.012 (53s)
+== out_chi4.txt
+/home/user/physim/research/alife/scratch/c14/screen.py:20: RuntimeWarning: Mean of empty slice
+  rc.append(L[rim].mean() / max(L[core].mean(), 1e-9)); ro.append(L[rim].mean() / max(L[out].mean(), 1e-9)); ar.append(m.sum())
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+t=1600 cells=1 N=19811 rimcore=0.99 rimout=nan area=16384 y=0.999 (13s)
+t=3200 cells=1 N=19775 rimcore=1.02 rimout=nan area=16384 y=1.000 (26s)
+t=4800 cells=1 N=20043 rimcore=0.99 rimout=nan area=16384 y=0.999 (38s)
+t=6400 cells=1 N=19813 rimcore=0.99 rimout=nan area=16384 y=0.999 (49s)
+t=8000 cells=1 N=20053 rimcore=1.00 rimout=nan area=16384 y=1.002 (62s)
+== out_dL005.txt
+/home/user/physim/research/alife/scratch/c14/screen.py:20: RuntimeWarning: Mean of empty slice
+  rc.append(L[rim].mean() / max(L[core].mean(), 1e-9)); ro.append(L[rim].mean() / max(L[out].mean(), 1e-9)); ar.append(m.sum())
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+t=1600 cells=1 N=23517 rimcore=0.99 rimout=nan area=16384 y=1.000 (14s)
+t=3200 cells=1 N=23968 rimcore=1.01 rimout=nan area=16384 y=1.000 (29s)
+t=4800 cells=1 N=23838 rimcore=1.00 rimout=nan area=16384 y=0.997 (42s)
+t=6400 cells=1 N=24037 rimcore=1.00 rimout=nan area=16384 y=0.998 (55s)
+t=8000 cells=1 N=23963 rimcore=1.01 rimout=nan area=16384 y=0.999 (69s)
+== out_chi3a3.txt
+t=1600 cells=15 N=10539 rimcore=1.43 rimout=17.24 area=210 y=1.000 (9s)
+t=3200 cells=15 N=11052 rimcore=1.51 rimout=7.94 area=185 y=1.000 (18s)
+t=4800 cells=16 N=11066 rimcore=1.66 rimout=62.35 area=191 y=0.999 (27s)
+t=6400 cells=16 N=10987 rimcore=1.69 rimout=54.09 area=172 y=1.002 (36s)
+t=8000 cells=17 N=11182 rimcore=1.61 rimout=71.85 area=160 y=1.013 (44s)
+== out_chi3th2.txt
+t=1600 cells=21 N=3396 rimcore=1.45 rimout=26.87 area=42 y=0.999 (6s)
+t=3200 cells=21 N=3809 rimcore=1.52 rimout=44.66 area=50 y=1.007 (12s)
+t=4800 cells=21 N=3968 rimcore=1.52 rimout=46.22 area=46 y=1.007 (18s)
+t=6400 cells=22 N=4244 rimcore=1.55 rimout=57.20 area=52 y=1.006 (24s)
+t=8000 cells=23 N=4201 rimcore=1.54 rimout=83.19 area=55 y=1.008 (30s)
+== out_L_chi3a3s0.txt
+t=4000 cells=15 N=11129 rimcore=1.58 rimout=15.48 area=196 y=0.997 (23s)
+t=8000 cells=17 N=11182 rimcore=1.61 rimout=71.85 area=160 y=1.013 (45s)
+t=12000 cells=16 N=11577 rimcore=1.61 rimout=24.40 area=194 y=1.013 (67s)
+t=16000 cells=16 N=11902 rimcore=1.54 rimout=34.58 area=212 y=1.025 (91s)
+t=20000 cells=16 N=11989 rimcore=1.51 rimout=25.03 area=230 y=1.031 (115s)
+== out_L_chi3a3s1.txt
+t=4000 cells=14 N=11932 rimcore=1.60 rimout=14.00 area=248 y=1.003 (25s)
+t=8000 cells=13 N=12694 rimcore=1.59 rimout=77.63 area=218 y=1.012 (48s)
+t=12000 cells=14 N=12738 rimcore=1.51 rimout=23.87 area=190 y=1.022 (70s)
+t=16000 cells=13 N=13074 rimcore=1.52 rimout=43.78 area=178 y=1.040 (94s)
+t=20000 cells=13 N=13815 rimcore=1.35 rimout=6.55 area=219 y=1.076 (120s)
+== out_L_chi35a3.txt
+t=4000 cells=9 N=14559 rimcore=1.35 rimout=3.15 area=372 y=0.997 (27s)
+t=8000 cells=9 N=14890 rimcore=1.30 rimout=3.04 area=396 y=1.003 (53s)
+t=12000 cells=9 N=15713 rimcore=1.29 rimout=1.67 area=434 y=1.013 (79s)
+t=16000 cells=8 N=16247 rimcore=1.02 rimout=1.16 area=652 y=1.021 (106s)
+t=20000 cells=5 N=16812 rimcore=0.91 rimout=0.91 area=1297 y=1.014 (133s)
+== out_L_chi3a25.txt
+t=4000 cells=27 N=7769 rimcore=1.79 rimout=84.82 area=103 y=1.009 (21s)
+t=8000 cells=28 N=8492 rimcore=1.60 rimout=41.32 area=66 y=1.037 (39s)
+t=12000 cells=24 N=9936 rimcore=1.76 rimout=79.21 area=92 y=1.090 (59s)
+t=16000 cells=12 N=14472 rimcore=1.48 rimout=9.39 area=98 y=1.152 (81s)
+t=20000 cells=4 N=17858 rimcore=0.84 rimout=0.86 area=3189 y=1.166 (109s)
+== out_Y_a3.txt
+/home/user/physim/research/alife/scratch/c14/screen.py:20: RuntimeWarning: Mean of empty slice
+  rc.append(L[rim].mean() / max(L[core].mean(), 1e-9)); ro.append(L[rim].mean() / max(L[out].mean(), 1e-9)); ar.append(m.sum())
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+t=4000 cells=1 N=19813 rimcore=1.01 rimout=nan area=16384 y=1.200 (28s)
+t=8000 cells=1 N=19623 rimcore=1.01 rimout=nan area=16384 y=1.200 (56s)
+t=12000 cells=1 N=19800 rimcore=1.00 rimout=nan area=16384 y=1.200 (85s)
+t=16000 cells=1 N=20042 rimcore=1.00 rimout=nan area=16384 y=1.200 (112s)
+t=20000 cells=1 N=19929 rimcore=1.01 rimout=nan area=16384 y=1.200 (141s)
+== out_Y_a3th18.txt
+t=4000 cells=5 N=13839 rimcore=1.20 rimout=5.36 area=406 y=1.200 (25s)
+t=8000 cells=4 N=14404 rimcore=1.05 rimout=2.23 area=734 y=1.200 (49s)
+t=12000 cells=4 N=14377 rimcore=1.08 rimout=1.46 area=743 y=1.200 (74s)
+t=16000 cells=4 N=14447 rimcore=1.04 rimout=1.39 area=796 y=1.200 (98s)
+t=20000 cells=5 N=14777 rimcore=0.92 rimout=1.03 area=1015 y=1.200 (122s)
