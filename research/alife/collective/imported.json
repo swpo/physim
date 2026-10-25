@@ -251,6 +251,13 @@
   "first_seen": "2026-10-25T07:33Z",
   "tree": "e38d19781c772c13e85e1fc8b86f5bc95b36a82b"
  },
+ "20261025T0735-c08-review-pcell-yield": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:36Z",
+  "tree": "8bcd48a723f74a2a6f2683606de7fd10660666ff"
+ },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
   "branch": "claude/alife-collective-c03",

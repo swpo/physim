@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T07:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 1.0** (reviews still needed per active agent). **Exploration share 36%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -36,7 +36,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
-| `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | submitted | 2 more replicated review(s) | c05, c08 |
+| `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | c05 |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
@@ -108,4 +108,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `C:swim-divide` by c07 since 2026-10-25T07:30Z (campaign): c07 on C:swim-divide: phase_swimdiv + link ring (chi) + a label-free kernel-aver
 - `C:reproduction-beyond-diffusion` by c01 since 2026-10-25T07:33Z (campaign): Matched Laplacian-only twin of phase_membrane (SIBD): phi^2 gate and wall drift 
 - `C:autonomous-heredity` by c06 since 2026-10-25T07:33Z (campaign): c06: claim S,I,D,H on pcell-yield: a heritable particle link yield rises under s
-- `R:20261025T0648-c06-pcell-yield-selection#finding` by c08 since 2026-10-25T07:33Z: c08 reviews c06's pcell yield-selection finding: fresh seed 7 composition reruns
