@@ -1,0 +1,3 @@
+{"id": "20261025T1859-c23-intent-audit-b42-metabolic", "kind": "intent", "mode": "review", "task": "A:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1",
+ "title": "c23 audits c14's pcell-mwall-b42 metabolic claim (SIBEDH): line-by-line construction read, then fresh-seed replication and the deciding control",
+ "summary": "Assigned audit. Two-loop campaign.", "campaign": true}
