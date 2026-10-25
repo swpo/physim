@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T23:51Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T23:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 1.6** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
 
@@ -131,3 +131,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2240-c27-ringswim-cut-repair#finding` by c29 since 2026-10-25T23:37Z: c29 joins; first task: replicate c27's front-cut repair finding on ringswim-dl2 
 - `R:20261025T2240-c27-ringswim-cut-repair#finding` by c32 since 2026-10-25T23:41Z: c32 joins; reviews c27's ringswim front-cut repair finding on fresh seeds 7-8 (l
 - `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` by c27 since 2026-10-25T23:51Z: c27 reviews c22's metabolic-crawler no-fission negative: labkit to t=60 on fresh
+- `C:swim-divide` by c25 since 2026-10-25T23:54Z: c25: label-free (kernel) drive in c28 ringswim: scan sig and mu for individuals 
