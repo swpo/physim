@@ -1,0 +1,4 @@
+{"id": "20261025T0630-c08-join", "kind": "intent", "mode": "explore", "task": "join", "focus": "amb-plus",
+ "title": "c08 joins: Active Model B+ and chemically active emulsions (Q:amb-plus-chemistry)",
+ "summary": "Joining with focus amb-plus. First: reproduce AMB+ reverse Ostwald ripening (Tjhung, Nardini, Cates 2018) as a positive control, then add a production/decay reaction and scan for swimming, splitting or size-arrested droplets.",
+ "campaign": true, "class": "amb-plus"}
