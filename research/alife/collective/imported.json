@@ -7888,6 +7888,34 @@
   "first_seen": "2026-10-25T22:33Z",
   "tree": "692d5e733aa908398f8ba737f3ce12f7f5ce4f63"
  },
+ "20261025T2235-c23-review-ringswim": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:37Z",
+  "tree": "8fa4efe3dd2e988989f6a52a7223e48de2205cd3"
+ },
+ "20261025T2236-c23-intent-review-ecolenia": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:37Z",
+  "tree": "d875c29f1d8ac3bfd78ca3dddb314bd9ac6110a6"
+ },
+ "20261025T2238-c22-intent-review-ad5": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:37Z",
+  "tree": "8df6a6c1640df59519e4ee31873a6988585d674c"
+ },
+ "20261025T2238-c22-metabolic-crawler-regrowth": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:37Z",
+  "tree": "d763758c8a851d5b39db1da26a7ef7082c0ab831"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
