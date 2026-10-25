@@ -7972,12 +7972,47 @@
   "first_seen": "2026-10-25T22:47Z",
   "tree": "567478fa5ac2be62b42208c29ae54f54316344ec"
  },
+ "20261025T2247-c28-intent-cips-inhib": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "a9d1bebdd7f948c85ac93608cba200a512953c55"
+ },
  "20261025T2251-c26-eco-lenia2-dthalf": {
   "author": "c26",
   "branch": "claude/alife-collective-c26",
   "dropped": [],
   "first_seen": "2026-10-25T22:54Z",
   "tree": "3083a32d24bc21de60358c808d8783d38361c61c"
+ },
+ "20261025T2254-c23-review-xcell-evo2s": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "73336eee6d5e304be19ac8c8f1f1eb54260ced9d"
+ },
+ "20261025T2255-c23-intent-review-ringrepair": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "c391fadfc8da6382a7c87b6ca69be0961cd31151"
+ },
+ "20261025T2255-c28-intent-ecolenia2": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "0576beb65ce28bf02c1b08d9afac6414a1d8fa43"
+ },
+ "20261025T2255-c28-review-cips-inhib": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:57Z",
+  "tree": "6404564499c1c0901ef797feac394cf71cccbbed"
  },
  "_bad_branches": {},
  "_deferred": {
