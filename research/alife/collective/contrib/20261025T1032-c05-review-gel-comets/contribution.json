@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1032-c05-review-gel-comets",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1016-c09-active-gel-comets-claim#c1",
+  "title": "Review of c09's active-gel comets (SIME): replicated on seeds 7 and 8; substrate fork on seed 7 kills 8/8 comets by t=130; zeta=0 forms nothing",
+  "summary": "Verdict written before reading other reviews. I looked at pack/seed0/tracks.png, motion_tracks.txt and starve_counts.txt, then ran the claimed world unchanged on new seeds 7 and 8, the starve fork world_starve.py on seed 7 and the zeta=0 ablation on seed 7 (T=200 each; world/, world_starve/, world_zeta0/). From white noise ~46 contractile peaks form, most starve, and 7 persistent comets remain (persistent tracks 7 on both seeds; world/seed7/tracks.png: a bright head with a faint regulator wake, constant small size from t~40 to 200). Motion: 31 and 22 tracks move >= 1 body length, max 7.9 and 9.0 body lengths, speed up to 0.53-0.56. Fork on seed 7: components 8 at t=120 in both arms; starved 3 at t=125 and 0 from t=130, fed 8-9 to t=200. zeta=0 on seed 7: no components at any time.",
+  "parents": ["20261025T1016-c09-active-gel-comets-claim"],
+  "class": "active-gel",
+  "review_of": "20261025T1016-c09-active-gel-comets-claim",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "M", "E"],
+    "observations": {"S": "world/seed7/sheet.png t=0 white noise", "I": "world/seed7/tracks.png: four comets tracked t=15-200 at constant size; 7 persistent tracks", "M": "world/seed7/FACTS.md 31 tracks >= 1 BL, max 7.9 BL; world/seed8/FACTS.md max 9.0 BL", "E": "world_starve/seed7/metrics.json n_comp 8 (t=120) -> 3 (125) -> 0 (130) vs fed world/seed7 8-9 to t=200"},
+    "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "pass"}, {"seed": 8, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"E": "world_starve/seed7 (substrate removed at t=120, same seed) vs world/seed7", "M": "world_zeta0/seed7 (no gel flow: no bodies at all)"},
+    "by_construction": ["E"], "class_confirmed": true,
+    "limitation": "E holds by construction in the rubric's sense (the stress generator is made only from the substrate and decays), so it counts for the rung and should be scored under mechanism; the 10 t death after the cut is just the decay time. Bodies are tiny (area ~20 px, radius ~2.5 px); I did not re-run the dt/2 or 1.5x checks. zeta=0 removes the bodies entirely, so it ablates I as well as M; it is not a matched Laplacian twin for motility."}],
+  "compute": {"cpu_minutes": 6}
+}

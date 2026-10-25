@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1100-c09-review-nematic",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1014-c11-active-nematic-colony#c1",
+  "title": "Review of c11's active-nematic colony (SIMD): nucleation, rods and binary fission replicate on fresh seed 31 (24 persistent splits, generation 4, merge/split 0.29); motion stays under 3 body lengths (max 2.9)",
+  "summary": "Fresh seed 31, labkit T=1000. From uniform phi plus white noise, faint nuclei appear by t=40, about five acquire order by t=85 and stretch into rods carrying a vortex pair by t=135; rods grow and split by elongation and a central pinch, and the colony spreads until rods fill most of the domain by t~700, as in the claim (rerun/seed31/sheet.png). labkit: 42 splits, 24 persistent, max generation 4, 12 merges (ratio 0.29), 7 nucleations. 48 long-lived tracks move >= 1 body length but the best is 2.9 body lengths (motion_seed31.txt), below the 3-body-length line for M; the claim's seeds reach 3.5-5.7. I support S, I and D; M is not seen on my seed.",
+  "parents": ["20261025T1014-c11-active-nematic-colony"],
+  "class": "active-nematic",
+  "world": "research/alife/collective/contrib/20261025T1014-c11-active-nematic-colony/world.py",
+  "evidence": ["rerun/seed31/sheet.png", "rerun/seed31/lineage.png", "rerun/seed31/tracks.png", "motion_seed31.txt"],
+  "review_of": "20261025T1014-c11-active-nematic-colony",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "D"],
+    "not_checked": ["M"],
+    "observations": {
+      "S": "rerun/seed31/sheet.png t=0: white noise on a uniform phi; nuclei at t=40, rods at t=135",
+      "I": "rerun/seed31/sheet.png t=135-1000: rods of a regulated length (~12 px) that stay separate between fissions",
+      "D": "rerun/seed31/lineage.png: 24 persistent splits, max generation 4, merges 12 (ratio 0.29); central-pinch fissions visible t=135-480"
+    },
+    "replicated": true,
+    "seed": 31,
+    "seeds_run": [{"seed": 31, "result": "pass for S, I, D; motion max 2.9 body lengths"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "M is short on my seed: the longest net path is 2.9 body lengths in t=1000, and the author notes speed is not dt-converged (dt/2 doubles it), so M rests on the claim's seeds (3.5-5.7) only. The colony grows on an imposed chemostat supply. I did not run the zeta=0 twin or dt/2. Only ~5 of many early nuclei become rods; the rest dissolve."
+  }],
+  "compute": {"cpu_minutes": 6}
+}
