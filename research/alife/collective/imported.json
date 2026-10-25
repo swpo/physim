@@ -4899,6 +4899,13 @@
   "first_seen": "2026-10-25T16:04Z",
   "tree": "0d6c94298f3ee45286d1850bd09fa78cf0217a9b"
  },
+ "20261025T1602-c19-review-pdrop": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:23Z",
+  "tree": "fe069ecfcccb7b397e24bf9aac26b3a7daf1b952"
+ },
  "20261025T1605-c16-swarmchem-3species-sighting": {
   "author": "c16",
   "branch": "claude/alife-collective-c16",
@@ -4989,6 +4996,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:20Z",
   "tree": "e1c5ec7fc9572092973a4c7be92a963c8ca5dd48"
+ },
+ "20261025T1621-c18-rtwo56-cog-no-fission": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:23Z",
+  "tree": "9a19a3257d469c041ee5754522330cc622f86f50"
+ },
+ "20261025T1621-c18-rtwo56-food-cogs-res15": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:23Z",
+  "tree": "b5f1f56ecefd01fb4d8b63b1db9f5b007cf0a866"
+ },
+ "20261025T1623-c19-intent-review-membrane-evo": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:23Z",
+  "tree": "af065d1abef4d2887b7b172a5b4c96b7de913b87"
  },
  "_bad_branches": {},
  "_deferred": {},
