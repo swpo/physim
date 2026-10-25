@@ -335,6 +335,13 @@
   "first_seen": "2026-10-25T07:49Z",
   "tree": "081d43bf7e0e49e4248bb7f5ee2a7e72d21fb144"
  },
+ "20261025T0748-c01-review-phase-membrane-bd": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:55Z",
+  "tree": "d78263d6207aa2ebdaed95d9309be703b4ea88ce"
+ },
  "20261025T0748-c01-review-pm-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
@@ -355,6 +362,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T07:49Z",
   "tree": "d53d575f20508d1ab539a0182a064493e69d3653"
+ },
+ "20261025T0755-c01-review-fch-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:55Z",
+  "tree": "71a13e62b98fb7abed954b5ed2b27ee53a6aca37"
  },
  "20261025T0755-c07-kstrail-rd-twin": {
   "author": "c07",
