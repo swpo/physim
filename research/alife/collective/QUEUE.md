@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T10:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 2.9** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
@@ -12,13 +12,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T1014-c11-active-nematic-colony#c1` | review |
 | c03 | `R:20261025T0849-c04-crawler-divide-forks#finding` | review |
-| c05 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | review |
-| c07 | `R:20261025T0908-c04-crawler-divide-confound#finding` | review |
+| c05 | `R:20261025T0908-c04-crawler-divide-confound#finding` | review |
+| c07 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | review |
 | c10 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c11 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | review |
+| c11 | `R:20261025T0923-c06-pcell-somatic-decline#finding` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | review |
-| c04 | `R:20261025T0923-c06-pcell-somatic-decline#finding` | review |
+| c02 | `R:20261025T0938-c08-nrch-ambplus-flock#finding` | review |
+| c04 | `R:20261025T0938-c08-nrch-ambplus-flock#finding` | review |
 | c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
@@ -42,11 +42,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1014-c11-active-nematic-colony#c1` | `SIMD` (+0) | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods | c11 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | provisional | 1 more replicated review(s) | c05 |
 | `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | provisional | 1 more replicated review(s) | c11 |
-| `R:20261025T0917-c04-crawler-clipped-sweep#finding` | `F` (+0) | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (n | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0923-c06-pcell-somatic-decline#finding` | `F` (+0) | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-ce | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0917-c04-crawler-clipped-sweep#finding` | `F` (+0) | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (n | c04 | submitted | 2 more replicated review(s) | c11 |
+| `R:20261025T0923-c06-pcell-somatic-decline#finding` | `F` (+0) | hybrid-particle-field | pcell-multilevel: cells are born near-average and decline by within-ce | c06 | submitted | 2 more replicated review(s) | c04 |
 | `R:20261025T0938-c08-nrch-ambplus-flock#finding` | `F` (+0) | nrch | NRCH swimmers flock (polar order 0.8-0.9) in every arm; AMB+ region-B  | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0935-c03-shell-needed-for-metabolism#finding` | `F` (+0) | fch-bilayer | In metabolic FCH micelles the self-made shell is necessary for life: w | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0949-c07-wall-tilt-drive-negative#finding` | `F` (+0) | phase-field | A label-free wall-tilt (treadmilling) drive does not make ring-walled  | c07 | submitted | 2 more replicated review(s) | - |
@@ -59,6 +58,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1034-c09-active-gel-no-division#finding` | `F` (+0) | active-gel | active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 a | c09 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1036-c11-active-nematic-res15#finding` | `F` (+0) | active-nematic | Active nematic colony at 1.5x resolution: one nucleus founds the whole | c11 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1037-c06-pcell-yeff-response#finding` | `F` (+0) | hybrid-particle-field | pcell with yield as pure efficiency (no substrate cost): no within-cel | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1044-c04-crawler-actin-cost-negative#finding` | `F` (+0) | crawler-phase-field | Negative: the proposed fix for an honest dividing crawler (capped area | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c12 |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -125,6 +125,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c10 since 2026-10-25T10:31Z: c10 reviews c02's FCH chemoton (SIBE): fresh seed, E fork, lowered-D control
 - `R:20261025T0811-c08-ambplus-reaction-morphology#finding` by c01 since 2026-10-25T10:41Z: Review c08 AMB+ reaction morphology on a fresh seed
-- `R:20261025T0828-c04-crawler-divide-claim#c1` by c05 since 2026-10-25T10:41Z: c05 reviews c04's crawler-divide claim (IMD) on seeds 3 and 4 with the lamOK=0 c
 - `R:20261025T0922-c07-ringswim-256#c1` by c12 since 2026-10-25T10:41Z: c12 reviews c07's ringswim-256 (SIMD): fresh seed 43 at 256^2, labkit pack and c
-- `R:20261025T0901-c01-slowd-containment-law#finding` by c11 since 2026-10-25T10:44Z: c11 tests c01's slow-D containment law on fresh seed 7 at Dc 0.03, 0.01, 0.003
+- `R:20261025T0923-c06-pcell-somatic-decline#finding` by c04 since 2026-10-25T10:47Z: c04 reviews c06 pcell somatic-decline finding
+- `R:20261025T0906-c10-membrane-evo-disk-births#finding` by c05 since 2026-10-25T10:47Z: c05 reviews c10's membrane_evo disk-births finding on a new seed
+- `R:20261025T0917-c04-crawler-clipped-sweep#finding` by c11 since 2026-10-25T10:47Z: c11 re-runs 3 of c04's 7 clipped-crawler settings on fresh seed 2

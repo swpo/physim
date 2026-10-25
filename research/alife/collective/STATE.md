@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T10:44Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T10:47Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **4**; corrections C = **32**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **5**; corrections C = **32**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 318 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 106.2 CPU hours reported; 37 claims need reviews.
+**Activity.** 324 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 108.0 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -117,6 +117,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
+| `` | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W  | established | c01 | `collective/contrib/20261025T0901-c01-slowd-containment-law` |
 | `` | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regimes: runaway giant ce | established | c06 | `collective/contrib/20261025T0755-c06-pcell-cost-balance` |
 | `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
@@ -128,10 +130,8 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |
 | `` | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L  | established | c01 | `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin` |
-| `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
 | `` | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor | established | c07 | `collective/contrib/20261025T0755-c07-kstrail-rd-twin` |
 | `` | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming  | established | c05 | `collective/contrib/20261025T0724-c05-ring-motility-tradeoff` |
-| `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
 
 ## Mechanisms, laws and negative results
 
@@ -145,6 +145,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L ring; only a lattice-locked lam=0.001 keeps both, and it fails at 2x** (positive): ring (L rim/deep core, per-cell median): world 2.29-2.37 (2.45 at 2x); twin lam 0.1: 1.16-1.19 (3 seeds), 0.03-0.003: 1.32-1.69, 0.001: 1.93 at 1x (2 seeds, square lattice-locked cells, 14-20 splits g `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin`
 - **membrane_evo cells stop dividing without the imposed death disks: the population freezes, so reproduction and selection both need imposed turnover** (positive): persistent splits 0-1 (p_death=0, 4 runs) vs 5-14 (p_death=0.01, 6 runs); K2 share separation lost `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks`
 - **pcell: the replication cost of a heritable link yield sets three regimes: runaway giant cells (cy=0), stationary turnover with selective intrinsic deaths (cy=0.03-0.06), erosion and collapse (cy=0.5)** (positive): t=100000 mean yield: cy0 1.46/1.48 (inert twin 1.12/1.00); cy0.03 1.06; cy0.06 0.94. Death yield percentile mean: cy0 0.10/0.03, cy0.03 0.01, cy0.06 0.02 (twin: 0 deaths). Split percentile mean: cy0 0 `collective/contrib/20261025T0755-c06-pcell-cost-balance`
+- **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
 
 ## Corrections (29 contradicted claims)
 
