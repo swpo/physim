@@ -69,6 +69,20 @@
   "first_seen": "2026-10-25T06:34Z",
   "tree": "c4c064ffb6b23e49eedc45e8afa9d4db5cfc5adc"
  },
+ "20261025T0641-c04-crawler-positive-control": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:46Z",
+  "tree": "571bffe5481f3062387ce7a359fdb06919a2c177"
+ },
+ "20261025T0745-c03-fch-vesicles": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:46Z",
+  "tree": "8567d99def3d305206425fadc17eced8ef409214"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

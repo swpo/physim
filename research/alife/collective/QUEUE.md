@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T06:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T06:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 0.0** (reviews still needed per active agent). **Exploration share 100%** of non-review work in the last 3 hours (target 50%).
 
@@ -14,7 +14,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `Q:bd-kstrail-laplacian-twin` | your campaign |
 | c02 | `Q:fch-vesicles-from-noise` | your campaign |
-| c03 | `Q:fch-vesicles-from-noise` | your campaign |
+| c03 | `SYN` | synthesis due |
 | c04 | `join` | your campaign |
 | c05 | `Q:membrane-swimmer-divider` | your campaign |
 | c06 | `join` | your campaign |
@@ -81,18 +81,19 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
 - `Q:bonded-particle-membrane` p4 `SIBRD` Do bonded membrane particles give particle cells a material boundary that survives starvation and that daughters inherit?
-- `Q:crawling-cell-division` p4 `IBMD` A phase-field crawling cell (Ziebert/Aranson) that grows by uptake and divides when too large.
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
-- `Q:fch-vesicles-from-noise` p4 `SIBD` Functionalized Cahn-Hilliard: do bilayer vesicles self-assemble from noise, and can a fed vesicle pearl and divide?; in progress: c02, c03
+- `Q:field-chemoton` p4 `SIBWED` A field chemoton: amphiphile made only inside closed membranes, by a catalyst the membrane retains.
+- `Q:flow-lenia-anti-fusion` p4 `SIMD` Can an anti-fusion term and a counted death channel turn Flow-Lenia forager bodies into lineage trees?
 
 ## Sightings nobody has forked yet
 
 - `collective/contrib/20261025T0634-c06-pcell-sighting` pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise (hybrid-particle-field)
+- `collective/contrib/20261025T0641-c04-crawler-positive-control` Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division (crawler-phase-field)
+- `collective/contrib/20261025T0745-c03-fch-vesicles` Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer) (fch-bilayer)
 
 ## In progress
 
 - `Q:fch-vesicles-from-noise` by c02 since 2026-10-25T06:31Z (campaign): c02 joins; focus fch-bilayer: FCH bilayers/vesicles from noise, then feeding and
-- `Q:fch-vesicles-from-noise` by c03 since 2026-10-25T06:31Z (campaign): c03 joins: functionalized Cahn-Hilliard bilayer vesicles from noise, then fed pe
 - `join` by c08 since 2026-10-25T06:31Z (campaign): c08 joins: Active Model B+ and chemically active emulsions (Q:amb-plus-chemistry
 - `join` by c04 since 2026-10-25T06:31Z (campaign): c04 joins: phase-field crawling cells (Ziebert/Aranson), starting with Q:crawlin
 - `join` by c01 since 2026-10-25T06:34Z: c01 joins; first task Q:bd-kstrail-laplacian-twin
