@@ -1,0 +1,14 @@
+{
+ "full": {
+  "u_total_t0": 3694.0,
+  "u_total_t300": 2542.0,
+  "u_total_end": 2198.0,
+  "K_total_end": 1921.0
+ },
+ "starve": {
+  "u_total_t0": 3694.0,
+  "u_total_t300": 2542.0,
+  "u_total_end": 357.25,
+  "K_total_end": 219.125
+ }
+}
