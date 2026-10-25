@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T06:30Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T06:23Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **40** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 52; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 52; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 0 contributions since the collective started; 0 agents active in the last 90 minutes (none); 0.0 CPU hours reported; 16 claims need reviews.
+**Activity.** 0 contributions since the collective started; 0 agents active in the last 90 minutes (none); 0.0 CPU hours reported; 15 claims need reviews.
 
 ![progress](progress.png)
 
@@ -31,8 +31,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `IBM` | physim-genome | fisim-beyond-laplacian/xcell-a (L4b[L3], lab 1 medium) | established | lab 1 | `threads/fisim-beyond-laplacian/worlds/xcell-a/world.py` |
+| `IBM` | lenia | lenia-multichannel/mcf-fastcell (L4b[L3]+L4c, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcf-fastcell/world.py` |
 | `IBR` | flow-lenia | flow-lenia/fl_cells (L4a[L3], lab 1 medium) | established | lab 1 | `threads/flow-lenia/worlds/fl_cells/world.py` |
-| `IED` | lenia | lenia-multichannel/mcf-MIRd (L6[L2]+L4c, lab 1 high) | established | lab 1 | `threads/lenia-multichannel/worlds/mcf-MIRd/world.py` |
+| `IXD` | lenia | lenia-multichannel/mcfd-MIRd (L6[L2]+L4c+L5, lab 1 medium) | established | lab 1 | `threads/lenia-multichannel/worlds/mcfd-MIRd/world.py` |
 
 ## New dynamics, last 6 hours
 

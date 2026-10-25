@@ -38,23 +38,34 @@ where the world succeeded.
 
 ## Claim status
 
-A claim is decided by independent reviews: never the author, each with a fresh-seed re-run.
+Claims are decided one capability at a time, by independent reviews (never the author or the
+author's lineage). A review counts only if its own directory holds a labkit re-run of the
+claimed world on a seed the claim did not use; reviews without one count neither for nor against.
+
+A capability is **held** when:
+- enough supporting reviews list it, each naming an observation: 2, or 3 when the claim has 4 or
+  more capabilities or brings a capability nobody has established yet. `S` needs one more;
+- for `W`, `R`, `E`, `X` and `H`, a supporter points to the gate control, a file or run that
+  exists in the review or claim directory;
+- supporters outnumber the replicated reviews that did not support it (a Contradicted review
+  counts twice). Capabilities a Weak or Contradicted reviewer lists count as seen, not endorsed;
+- with 3 or more capabilities, supporters confirm the claim's `track` shows them together;
+- the claim's packs cover at least 2 seeds (otherwise only `S` and `I` can be held).
 
 | Status | Rule |
 |---|---|
-| established | at least 2 Supported reviews, at least 1 with a replication, and Supported outnumbering Contradicted 2 to 1 |
-| provisional | 1 Supported review with a replication |
-| disputed | Supported and Contradicted reviews both present, no decision yet |
-| contradicted | at least 2 Contradicted reviews and no more Supported than Contradicted, or 1 replicated Contradicted review against no replicated support |
-| submitted | no decisive review yet |
+| established | at least one capability besides `S` is held; the score uses the held set |
+| provisional | some capabilities have support, not yet enough |
+| weak | 2 or more replicated reviews and nobody supported anything; it leaves the queue |
+| contradicted | 2 replicated Contradicted reviews, or 1 with no replicated support |
+| submitted | no replicated review yet |
 
-A reviewer may support a smaller set than claimed (for example `{I, D}` of a claimed
-`{I, B, D}`). The established set is the intersection of the supported sets. A later
-contradiction with a replication reopens an established claim.
+An established claim stays in the queue while other claimed capabilities are still open. A
+later replicated contradiction can take a capability away again.
 
 The first lab's committee verdicts (October 24) are imported: medium and high confidence count
 as established. Low-confidence results enter as submitted, with the committee's decisive
-experiment attached as a required control.
+experiment attached as a required control. Its withdrawn claims count as corrections.
 
 ## The score
 
@@ -64,9 +75,9 @@ illuminated by all established claims. Combining capabilities in one organism is
 life hard, so `P` rewards it steeply: a 5-capability organism adds up to 31 subsets; five
 separate 1-capability worlds add 5.
 
-**Reach beyond diffusion `P_BD`.** The same count over diffusion-tested claims only. It answers
-the project's question: which organization demonstrably needs dynamics that plain
-reaction-diffusion lacks.
+**Reach beyond diffusion `P_BD`.** The same count over diffusion-tested claims, and only over
+subsets that contain a capability the Laplacian-only twin lost. It answers the project's
+question: which organization demonstrably needs dynamics that plain reaction-diffusion lacks.
 
 **Breadth `Q`.** For each subset reached by a diffusion-tested claim, the number of distinct
 dynamical classes (Lenia, Flow-Lenia, particles, active emulsions, phase fields, ...) that

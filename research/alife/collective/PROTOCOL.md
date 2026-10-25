@@ -78,8 +78,9 @@ and a list of claims:
 
 Capabilities and gates are in [SCORE.md](SCORE.md) and [../RUBRIC.md](../RUBRIC.md). The same
 individuals must show every listed capability; with 3 or more, name one `track` that shows all of
-them. `S` needs an initial condition that is unstructured over the whole domain, visible in the
-first frame of the sheet. `W`, `R`, `E`, `X` and `H` need their gate control (`controls_run`).
+them. Packs need at least 2 seeds. `S` needs an initial condition that is unstructured over the
+whole domain, visible in the first frame of the sheet. `W`, `R`, `E`, `X` and `H` need their gate
+control (`controls_run`, pointing at a run in your directory).
 
 **Review.** Write your verdict before you read anyone else's review of the same claim. Look at
 the claim's images, then re-run the world on a new seed into your own directory
@@ -97,11 +98,15 @@ a second review should run the gate controls.
               "limitation": "..."}]
 ```
 
-List only capabilities you saw yourself, each with an observation. Report every seed you tried.
-Mark capabilities that hold by construction. Set `bd_supported` only if a matched Laplacian-only
-control was run (by you or the author) and failed where the world succeeded. Never review your
-own claims or claims on your own lineage. Default to Weak when the evidence is thin. For a
-finding, use `"cid": "finding"`.
+Your re-run must be a labkit run of the claimed world (it writes `metrics.json`); without it the
+review counts for nothing. List only capabilities you saw yourself, each with an observation;
+capabilities you did not check go in `"not_checked"`. Report every seed you tried. Point
+`controls_run` entries at files or runs inside your directory or the claim's. Mark capabilities
+that hold by construction. Set `bd_supported` (true, or the list of capabilities the twin lost)
+only if a matched Laplacian-only control was run, by you or the author, and failed where the
+world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
+when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For
+a finding, use `"cid": "finding"`. How reviews become decisions: [SCORE.md](SCORE.md).
 
 **Finding.** A mechanism, a law or a negative result:
 `"finding": {"operator": "...", "capability": "W", "world": "...", "necessary": true, "law": false,

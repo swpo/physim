@@ -25,7 +25,8 @@
      "threads/active-droplets/packs/ad5-evolve"
     ],
     "spontaneity_basis": "No S: init() plants P['seeds']=6 disks of radius r0=6 (phi=0.9, catalyst allele a0=0.9) on a noise background; the dividing droplets descend from planted founders.",
-    "caveats": "Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an off-kind daughter. The trait is fitness itself (catalysis rate). Line closed in r2 in favour of ad7; unchanged since r1."
+    "caveats": "Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an off-kind daughter. The trait is fitness itself (catalysis rate). Line closed in r2 in favour of ad7; unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -57,7 +58,8 @@
      "threads/autopoiesis/packs/membrane_evo_up"
     ],
     "spontaneity_basis": "S: the note says 'phase_membrane cells from noise'; world.py P sets IC='noise' (smoothed Gaussian phi, random K and L everywhere, 'no planted structure'); K2 starts at zero and arises only by in-run whole-cell flips.",
-    "caveats": "Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that reseal and regrow (30/38 on s4, 43/43 on s11 disk-associated; 0 spontaneous on s11), and disk deaths act as a size refuge (K1 19-31 vs K2 0-8). Sweep through births in 8/10 seeds, by counts in 7/10; batch 1 reverses the count sign (fewer K2 in 5/5). Births not merge-aware, no researcher birth strips, selected lineage reaches only gen 2 with 3 persistent splits. [L3] bracket borderline (skeptic rim/core about 2.0 vs labkit 1.33-1.43); cells are axis-faceted (anisotropy 0.20-0.24) with no resolution test; down arm is near-lethal. The report's mechanism ('larger cells divide more') was contradicted in review. Skeptic dissents (L7 Weak). Pack is the up arm; twin and down arms are membrane_evo_twin and membrane_evo_down."
+    "caveats": "Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that reseal and regrow (30/38 on s4, 43/43 on s11 disk-associated; 0 spontaneous on s11), and disk deaths act as a size refuge (K1 19-31 vs K2 0-8). Sweep through births in 8/10 seeds, by counts in 7/10; batch 1 reverses the count sign (fewer K2 in 5/5). Births not merge-aware, no researcher birth strips, selected lineage reaches only gen 2 with 3 persistent splits. [L3] bracket borderline (skeptic rim/core about 2.0 vs labkit 1.33-1.43); cells are axis-faceted (anisotropy 0.20-0.24) with no resolution test; down arm is near-lethal. The report's mechanism ('larger cells divide more') was contradicted in review. Skeptic dissents (L7 Weak). Pack is the up arm; twin and down arms are membrane_evo_twin and membrane_evo_down.",
+    "by_construction": []
    }
   ]
  },
@@ -86,7 +88,8 @@
      "threads/active-droplets/packs/ad1-fuel"
     ],
     "spontaneity_basis": "No S: the note says 'Planted disks' and 'Uniform starts go extinct'; init() plants P['seeds']=2 disks (soup=0 by default).",
-    "caveats": "Mechanism is Gray-Scott mitosis in a Cahn-Hilliard body; Laplacian-only twins also divide (no beyond-diffusion credit). L4c Weak, so metabolism is not claimed. Uniform starts go extinct. Unchanged since r1."
+    "caveats": "Mechanism is Gray-Scott mitosis in a Cahn-Hilliard body; Laplacian-only twins also divide (no beyond-diffusion credit). L4c Weak, so metabolism is not claimed. Uniform starts go extinct. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -116,7 +119,8 @@
      "threads/autopoiesis/packs/phase_protocell_noise"
     ],
     "spontaneity_basis": "S: the note says 'Walled droplets form from noise'; META mutation is 'unstructured initial condition: smoothed Gaussian noise phi ... uniform random K and L everywhere', and P sets IC='noise'.",
-    "caveats": "L3 Weak: the wall 4phi(1-phi) is a contour and L is a filled disk, so no boundary is claimed. L4a Weak (near-Supported; one seed). Close to Gray-Scott mitosis and Zwicker droplets. Unchanged since r1."
+    "caveats": "L3 Weak: the wall 4phi(1-phi) is a contour and L is a filled disk, so no boundary is claimed. L4a Weak (near-Supported; one seed). Close to Gray-Scott mitosis and Zwicker droplets. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -146,7 +150,10 @@
      "threads/lenia-multichannel/packs/mcf-MIRd"
     ],
     "spontaneity_basis": "No S: the note says 'Chan's planted replicator'; init() places N_SEED=1 copy of the CELLS creature (with 5% jitter) rather than taking the noise branch.",
-    "caveats": "Replication itself is Chan's prior result; the lab's contribution is the build-from-food metabolism. L5 Weak and L3 Weak, so neither interaction nor boundary is claimed. Unchanged since r1."
+    "caveats": "Replication itself is Chan's prior result; the lab's contribution is the build-from-food metabolism. L5 Weak and L3 Weak, so neither interaction nor boundary is claimed. Unchanged since r1.",
+    "by_construction": [
+     "E"
+    ]
    }
   ]
  },
@@ -176,7 +183,8 @@
      "threads/active-droplets/packs/ad7t-thick"
     ],
     "spontaneity_basis": "No S: the note says 'the founders are planted and the deaths imposed'; ad7t-thick init() plants P['seeds']=6 disks (r0=6) of the ancestor allele allele0=3 (kp=4).",
-    "caveats": "Family row: ad7-gated is the family root; the pack and showcase are ad7t-thick (ancestor kp=4, 4x dilution), with ad7-gated-d4 and neutral arms ad7tn-neutral / ad7n-neutral-d4; ad9-ledger is the harmonic-gate variant that reproduces the interior kp optimum on 3 seeds plus judge seed 11. Gen>=3 in only 4/9 runs, no birth strips, imposed deaths, shell about 2 px wide (grid-set) and dx=0.5 untested with the harmonic gate; ablations are 1 seed each. L7[L3] Weak (r2 patch-flip contagion; r3 fecundity selection with no response) and L4c Weak (no test in 3 sprints), so heredity and metabolism are not claimed. Beyond-diffusion rests on one R-arm seed."
+    "caveats": "Family row: ad7-gated is the family root; the pack and showcase are ad7t-thick (ancestor kp=4, 4x dilution), with ad7-gated-d4 and neutral arms ad7tn-neutral / ad7n-neutral-d4; ad9-ledger is the harmonic-gate variant that reproduces the interior kp optimum on 3 seeds plus judge seed 11. Gen>=3 in only 4/9 runs, no birth strips, imposed deaths, shell about 2 px wide (grid-set) and dx=0.5 untested with the harmonic gate; ablations are 1 seed each. L7[L3] Weak (r2 patch-flip contagion; r3 fecundity selection with no response) and L4c Weak (no test in 3 sprints), so heredity and metabolism are not claimed. Beyond-diffusion rests on one R-arm seed.",
+    "by_construction": []
    }
   ]
  },
@@ -207,7 +215,8 @@
      "threads/autopoiesis/packs/phase_membrane"
     ],
     "spontaneity_basis": "S: the note says 'Forms from noise'; P sets IC='noise' (inherited unstructured initial condition from phase_protocell_noise).",
-    "caveats": "The ring does work (cells about 2x larger, about 3x fewer divisions vs chi=0) but is not needed for viability; L builds the body through a(L-theta), so the ring acts as a growth front. Repair is claimed separately (phase_membrane_damage_mature, L4a[L3] low). Division-axis histograms were never delivered."
+    "caveats": "The ring does work (cells about 2x larger, about 3x fewer divisions vs chi=0) but is not needed for viability; L builds the body through a(L-theta), so the ring acts as a growth front. Repair is claimed separately (phase_membrane_damage_mature, L4a[L3] low). Division-axis histograms were never delivered.",
+    "by_construction": []
    }
   ]
  },
@@ -237,7 +246,8 @@
      "threads/autopoiesis/packs/phase_membrane_chi0"
     ],
     "spontaneity_basis": "S: the note says 'Noise gives about 42 small round cells'; P sets IC='noise'.",
-    "caveats": "Control world for phase_membrane; in effect it is phase_protocell_noise. The population ends in a near-hexagonal frozen lattice. No birth strips."
+    "caveats": "Control world for phase_membrane; in effect it is phase_protocell_noise. The population ends in a near-hexagonal frozen lattice. No birth strips.",
+    "by_construction": []
    }
   ]
  },
@@ -286,7 +296,8 @@
      "threads/autopoiesis/packs/phase_swimdiv"
     ],
     "spontaneity_basis": "No S: P sets IC='spots' with nspots=1, so the run starts from one planted round cell (REPORT_r1: '1 cell -> 4'); the note says nothing about formation from noise.",
-    "caveats": "Propulsion is a hand-coded per-body rigid drift up the self-generated depletion gradient (a designed, nonlocal operator); headings cluster on lattice diagonals in some seeds. Labkit tracks break for moving cells, so pack persistent splits read only 1-4. L3 Weak, so no boundary is claimed. Unchanged since r1."
+    "caveats": "Propulsion is a hand-coded per-body rigid drift up the self-generated depletion gradient (a designed, nonlocal operator); headings cluster on lattice diagonals in some seeds. Labkit tracks break for moving cells, so pack persistent splits read only 1-4. L3 Weak, so no boundary is claimed. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -315,7 +326,8 @@
      "threads/autopoiesis/packs/motile_trait"
     ],
     "spontaneity_basis": "No S: P sets IC='spots', so init() plants nspots=4 catalyst-loaded disks (K0=0.5, R0=6) as founders; the pack command (labkit.run, seed 1) uses the defaults, and NOTEBOOK section 14 starts all runs from mu=tag=1.5 founders.",
-    "caveats": "The population freezes into a lattice by about t=25k. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations, but there are no per-cell births or deaths by mu and dt/2 matches only the endpoint. Motility is not claimed here; L4b[L2] is credited only on motile_trait_tox (row 25). Pack is one seed."
+    "caveats": "The population freezes into a lattice by about t=25k. L7[L2] Weak: mu ends below the neutral tag in 5/5 dense populations, but there are no per-cell births or deaths by mu and dt/2 matches only the endpoint. Motility is not claimed here; L4b[L2] is credited only on motile_trait_tox (row 25). Pack is one seed.",
+    "by_construction": []
    }
   ]
  },
@@ -344,7 +356,8 @@
      "threads/autopoiesis/packs/phase_kinds"
     ],
     "spontaneity_basis": "No S: P sets IC='spots', so init() plants 4 catalyst-loaded disks as founders; the pack command (seeds 0-2) uses the defaults.",
-    "caveats": "L7 Weak (contagion): the K2 sweep is carried mostly by conversion of living cells (45 intact cells converted against 8 mutations), and the committee note says K2 still sweeps with mutation off. Catalyst leaks between cells through the phi^2 mobility (the leaky channel later sealed in membrane_evo). The parasite variant (phase_kinds_parasite, b2=0) drives the population extinct."
+    "caveats": "L7 Weak (contagion): the K2 sweep is carried mostly by conversion of living cells (45 intact cells converted against 8 mutations), and the committee note says K2 still sweeps with mutation off. Catalyst leaks between cells through the phi^2 mobility (the leaky channel later sealed in membrane_evo). The parasite variant (phase_kinds_parasite, b2=0) drives the population extinct.",
+    "by_construction": []
    }
   ]
  },
@@ -375,7 +388,8 @@
      "threads/chemotaxis-motility/packs/swimfission"
     ],
     "spontaneity_basis": "S: init() sets rho to a uniform 0.05 plus 0.02 Gaussian noise over the whole domain (lightly smoothed) with no planted bodies; REPORT_r2 reports the fissions 'From noise on 3 seeds', and the r2 review credits L6 as meeting 'the bar of gen >= 2 from noise' (labkit lineage from noise reaches gen 2/2/3).",
-    "caveats": "Genealogy is reticulate (merges 56/56/45 exceed splits 45/39/31). The 'strict' strips are byte-identical to the r2 founder-fission strips, so deepest-generation strips are not shown; 6/47 events have a daughter heavier than its parent. No resolution change. Fission is promoted by a designed cut of the attractant range (Da 4 -> 2), and the Da 4 control still divides rarely. L4c Weak, so metabolism is not claimed."
+    "caveats": "Genealogy is reticulate (merges 56/56/45 exceed splits 45/39/31). The 'strict' strips are byte-identical to the r2 founder-fission strips, so deepest-generation strips are not shown; 6/47 events have a daughter heavier than its parent. No resolution change. Fission is promoted by a designed cut of the attractant range (Da 4 -> 2), and the Da 4 control still divides rarely. L4c Weak, so metabolism is not claimed.",
+    "by_construction": []
    }
   ]
  },
@@ -422,7 +436,8 @@
      "threads/flow-lenia/packs/fl_forager"
     ],
     "spontaneity_basis": "No S: init() fills one central 12x12 patch with uniform random A values in an otherwise empty 128x128 domain (uniform food 0.1). A localized noise seed counts as planted for S (collective/SCORE.md; coordinator ruling), even though no creature morphology is planted.",
-    "caveats": "Self-organizes from a localized noise seed (one 12x12 noise patch in an otherwise empty domain), which counts as planted for S; every forager descends from it by fission (0 nucleations). Fission-fusion: merges are about 80% of splits, so lineages are reticulate, and chains reach only 2 generations. At 2x resolution crescents become ring-in-halo bodies. The rule (rule_seed 202) was picked from a motion search. L4c, L5 and L3 Weak, so metabolism, interaction and boundary are not claimed. The thread's best PhySim candidate (exact food+matter ledger)."
+    "caveats": "Self-organizes from a localized noise seed (one 12x12 noise patch in an otherwise empty domain), which counts as planted for S; every forager descends from it by fission (0 nucleations). Fission-fusion: merges are about 80% of splits, so lineages are reticulate, and chains reach only 2 generations. At 2x resolution crescents become ring-in-halo bodies. The rule (rule_seed 202) was picked from a motion search. L4c, L5 and L3 Weak, so metabolism, interaction and boundary are not claimed. The thread's best PhySim candidate (exact food+matter ledger).",
+    "by_construction": []
    }
   ]
  },
@@ -451,7 +466,8 @@
      "threads/lenia-multichannel/packs/mca-MIRd-branch"
     ],
     "spontaneity_basis": "No S: init() plants one MIRd+ creature (CELLS template, 5% jitter); the branch assay (worlds/mca-MIRd-branch) restarts from saved neutral-arm states of those planted runs.",
-    "caveats": "Branch assay world is threads/lenia-multichannel/worlds/mca-MIRd-branch/world.py. L7 Weak on four counts: only 47% pure allele-1 divisions (bar 90%), 7-15 gross living-cell conversions per S run against 1 mutation, imposed variation, and isolated founders only (the contact founder was lost in both arms). The ledger is not merge-aware, labkit reads gen <=1 with merge/split 0.56-0.66, the 12 points are pseudo-replicates from 2 runs, and S raises population size (27.5 vs 18.1). The seed-0 S sheet sets into a static allele-1 lattice by t~350-500 (candidate self-dormancy, Weak). The per-body retry B5 was coded but not reported."
+    "caveats": "Branch assay world is threads/lenia-multichannel/worlds/mca-MIRd-branch/world.py. L7 Weak on four counts: only 47% pure allele-1 divisions (bar 90%), 7-15 gross living-cell conversions per S run against 1 mutation, imposed variation, and isolated founders only (the contact founder was lost in both arms). The ledger is not merge-aware, labkit reads gen <=1 with merge/split 0.56-0.66, the 12 points are pseudo-replicates from 2 runs, and S raises population size (27.5 vs 18.1). The seed-0 S sheet sets into a static allele-1 lattice by t~350-500 (candidate self-dormancy, Weak). The per-body retry B5 was coded but not reported.",
+    "by_construction": []
    }
   ]
  },
@@ -501,7 +517,10 @@
      "threads/lenia-multichannel/packs/mcfd-MIRd"
     ],
     "spontaneity_basis": "No S: the note says 'Planted MIRd+'; CELLS is set (N_SEED=1), so init() takes the planted-creature branch rather than the noise-patch branch.",
-    "caveats": "labkit lineage reads gen 0 (tracker failure), so division rests on a judge's dense rerun of seed 2. The L4c ablation evidence (norefill extinct) came from the parent mcf-MIRd without decay (r1 rubric issue). The boom-bust cycle is intermittent, not regular: damped at 192^2 and extinct at dt/2 in 1/2 seeds. L5 is generic consumer-resource ecology (the r1 skeptic rated it Weak). The replicator itself is Chan's. L3 Weak (1-2 px halo dots). Showcase movie threads/lenia-multichannel/movies/showcase.mp4 (seed 2, 128^2, t 0-1400)."
+    "caveats": "labkit lineage reads gen 0 (tracker failure), so division rests on a judge's dense rerun of seed 2. The L4c ablation evidence (norefill extinct) came from the parent mcf-MIRd without decay (r1 rubric issue). The boom-bust cycle is intermittent, not regular: damped at 192^2 and extinct at dt/2 in 1/2 seeds. L5 is generic consumer-resource ecology (the r1 skeptic rated it Weak). The replicator itself is Chan's. L3 Weak (1-2 px halo dots). Showcase movie threads/lenia-multichannel/movies/showcase.mp4 (seed 2, 128^2, t 0-1400).",
+    "by_construction": [
+     "E"
+    ]
    }
   ]
  },
@@ -530,7 +549,8 @@
      "threads/lenia-multichannel/packs/mcg-MIRd"
     ],
     "spontaneity_basis": "No S: init() plants one MIRd+ creature per G_INIT entry (G_INIT=[0.0]); r2 review notes 'the founder is planted'.",
-    "caveats": "The trait blends at contacts. labkit reads gen 0 and merges are 74% of splits, so the genealogy is reticulate. L7 Weak for the main world (the purifying-selection signal is confounded: 29 of 34 harmful neutral cell-samples come from one seed). The eco-evolutionary freeze is Weak (no Jensen control); r3's mca branch lattice is a second instance."
+    "caveats": "The trait blends at contacts. labkit reads gen 0 and merges are 74% of splits, so the genealogy is reticulate. L7 Weak for the main world (the purifying-selection signal is confounded: 29 of 34 harmful neutral cell-samples come from one seed). The eco-evolutionary freeze is Weak (no Jensen control); r3's mca branch lattice is a second instance.",
+    "by_construction": []
    }
   ]
  },
@@ -579,7 +599,8 @@
      "threads/active-droplets/packs/ad3-membrane"
     ],
     "spontaneity_basis": "No S: ad3-membrane's init() plants P['seeds']=2 disks (phi=0.9, r0=6); 'forms from psi=0 in 9/9 runs' refers to the shell, not the individuals. The ad3s-soup variant starts from 8 random blobs (radius 1.5-6, random amplitude), which are localized seeds of droplet material and count as planted; REPORT_r1 reports that uniform or noisy starts go extinct in all 4 tested.",
-    "caveats": "The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. Superseded by ad7, where the same shell does work. Family row: ad3s-soup (worlds/ad3s-soup) is the unstructured-start variant (r1: 8-12 persistent splits, gen 2-3). L4a Weak, L5 Not tested."
+    "caveats": "The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. Superseded by ad7, where the same shell does work. Family row: ad3s-soup (worlds/ad3s-soup) is the unstructured-start variant (r1: 8-12 persistent splits, gen 2-3). L4a Weak, L5 Not tested.",
+    "by_construction": []
    }
   ]
  },
@@ -610,7 +631,8 @@
      "threads/autopoiesis/runs/mk"
     ],
     "spontaneity_basis": "S: P sets IC='noise' (smoothed random phi, K and L fields over the whole domain, 'no planted structure'), the docstring and NOTEBOOK section 16 say 'phase_membrane (chi=2, noise IC)', no runs/mk arm overrides IC, and the r2 review says 'In the kinds sheet, cells form from noise and multiply'.",
-    "caveats": "Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' rerun on seed 11 (r2). The committee rates this world's own L6 Weak (no merge-aware lineage, no birth strips) and says the base cells' L6[L3] 'is not re-shown here'; it is documented by phase_membrane (row 6). Source of the infection law. L5[L3] Weak (parasite collapse, metrics only). Superseded by membrane_evo (arm E), which sealed the catalyst channel."
+    "caveats": "Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' rerun on seed 11 (r2). The committee rates this world's own L6 Weak (no merge-aware lineage, no birth strips) and says the base cells' L6[L3] 'is not re-shown here'; it is documented by phase_membrane (row 6). Source of the infection law. L5[L3] Weak (parasite collapse, metrics only). Superseded by membrane_evo (arm E), which sealed the catalyst channel.",
+    "by_construction": []
    }
   ]
  },
@@ -658,7 +680,8 @@
      "threads/autopoiesis/packs/phase_trait"
     ],
     "spontaneity_basis": "No S: phase_trait init() uses the default IC='spots' (nspots=4 planted catalyst/membrane disks of radius R0=6); the noise IC branch exists but is not the default and the pack (labkit defaults) uses the planted spots, so the cells descend from planted founders.",
-    "caveats": "L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the population is frozen after about 12k. Unchanged since r1."
+    "caveats": "L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the population is frozen after about 12k. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -688,7 +711,8 @@
      "threads/chemotaxis-motility/packs/swimevo"
     ],
     "spontaneity_basis": "swimevo init() starts from a near-uniform density rho0=0.05 plus Gaussian noise (sd 0.02, smoothed), with growth switched on only at t_on=150; bodies condense from noise as in its kstrail/swimfission lineage, with no planted bodies.",
-    "caveats": "L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that wins by construction. Superseded by evopursuit. Unchanged since r2."
+    "caveats": "L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that wins by construction. Superseded by evopursuit. Unchanged since r2.",
+    "by_construction": []
    }
   ]
  },
@@ -718,7 +742,8 @@
      "threads/fisim-beyond-laplacian/packs/xcell-evo2-S"
     ],
     "spontaneity_basis": "No S: the note says bodies are planted; xcell-evo2-S init() pokes SOUP_N=10 dressed founder bodies (META: 'Only bodies (+ v, w dress) are planted').",
-    "caveats": "Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier rests on the band ring plus the r3 gate ablation and the skeptic dissents (Weak). The gate keeps the mark in one daughter in 1 of 4 seeds (retention, not heredity). Beyond-diffusion 1."
+    "caveats": "Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier rests on the band ring plus the r3 gate ablation and the skeptic dissents (Weak). The gate keeps the mark in one daughter in 1 of 4 seeds (retention, not heredity). Beyond-diffusion 1.",
+    "by_construction": []
    }
   ]
  },
@@ -768,7 +793,8 @@
      "threads/chemotaxis-motility/packs/evopursuit"
     ],
     "spontaneity_basis": "evopursuit init() seeds prey and predator densities as rho0 plus Gaussian noise (smoothed), with no planted bodies; the r3 review scores spontaneity 3 and the showcase runs 'from noise to the B sweep'.",
-    "caveats": "L6 Weak and L7 Weak (both near-Supported): 23 clean B fission events (strict gen 3/2/4) vs 28 A->B conversions, net conversion +5 against ~90 B bodies gained, 158 B deaths replaced mostly by unclassified splits; preytrack credits near-contacts as daughters, about half of random birth strips involve a second body, no identical-event twin. B beats A mainly by retention under consumption (5.8-6.2x) with a smaller chase gain (1.7-2.8x); partner abundance unmatched; prey-alone arms still declining at t=1500. No resolution change. Beyond-diffusion 1. Family row covers arms_*, preytrack_*, _neutral, _nopred, _dthalf, _cost*."
+    "caveats": "L6 Weak and L7 Weak (both near-Supported): 23 clean B fission events (strict gen 3/2/4) vs 28 A->B conversions, net conversion +5 against ~90 B bodies gained, 158 B deaths replaced mostly by unclassified splits; preytrack credits near-contacts as daughters, about half of random birth strips involve a second body, no identical-event twin. B beats A mainly by retention under consumption (5.8-6.2x) with a smaller chase gain (1.7-2.8x); partner abundance unmatched; prey-alone arms still declining at t=1500. No resolution change. Beyond-diffusion 1. Family row covers arms_*, preytrack_*, _neutral, _nopred, _dthalf, _cost*.",
+    "by_construction": []
    }
   ]
  },
@@ -836,7 +862,8 @@
      "threads/particle-life/screens/P_half_types.png"
     ],
     "spontaneity_basis": "sporecell2 init() places all N=4000 particles uniformly at random with ~0.5% random catalyst cores and no planted cells, so cells self-assemble from a random soup (the r3 review records the same route, 'founders form from ~20 random catalysts', for sporecell3-det); only the kind labels are planted (half/half).",
-    "caveats": "sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where the r3 control shows the reproduction it rests on vanishes. Kinds are planted, the arms are not event-matched, there is no invasion test (a mutant predator never invades), and there is no pack (screen only). Unchanged since r2."
+    "caveats": "sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where the r3 control shows the reproduction it rests on vanishes. Kinds are planted, the arms are not event-matched, there is no invasion test (a mutant predator never invades), and there is no pack (screen only). Unchanged since r2.",
+    "by_construction": []
    }
   ]
  },
@@ -866,7 +893,8 @@
      "threads/chemotaxis-motility/packs/kstrail"
     ],
     "spontaneity_basis": "Note: 'Spontaneous crescent swimmers (spot -> ring -> crescent)'; r3 review: 'Noise -> spot -> ring -> crescent'; init() is rho0=0.05 plus smoothed Gaussian noise.",
-    "caveats": "L3 Weak. The swimmer phase coarsens away by t=1800. Known drift-bifurcation physics (spots with a slow inhibitor). No Laplacian-only control, so beyond-diffusion is unshown. Unchanged since r1."
+    "caveats": "L3 Weak. The swimmer phase coarsens away by t=1800. Known drift-bifurcation physics (spots with a slow inhibitor). No Laplacian-only control, so beyond-diffusion is unshown. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -896,7 +924,8 @@
      "threads/chemotaxis-motility/packs/pursuit"
     ],
     "spontaneity_basis": "pursuit init() seeds both species as rho0 (and qfrac*rho0) plus smoothed Gaussian noise with no planted bodies; the r1 review says of kstrail/toxforage/pursuit that 'the bodies form spontaneously'.",
-    "caveats": "L5 Weak: species are conserved, so the interaction cannot change populations. Non-reciprocal chaser-fleer pairs and pursuit-evasion are known results. Unchanged since r1."
+    "caveats": "L5 Weak: species are conserved, so the interaction cannot change populations. Non-reciprocal chaser-fleer pairs and pursuit-evasion are known results. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -925,7 +954,8 @@
      "threads/autopoiesis/packs/motile_trait_tox"
     ],
     "spontaneity_basis": "No S: motile_trait_tox init() uses the default IC='spots' (nspots=4 planted disks); the pack was run with defaults, so the swimmers descend from planted founders.",
-    "caveats": "Propulsion is a designed per-body drift. L3 Weak: L fills the body (wall/core 0.90), so the bracket is [L2] (r2). L6 Weak and L7[L2] Weak: mu-tag is +0.08..+1.33 in 5/5 surviving seeds, but populations are 2-8 cells, the sign reverses at kd 0.018, and seed 11 reads -0.36. Unchanged since r2."
+    "caveats": "Propulsion is a designed per-body drift. L3 Weak: L fills the body (wall/core 0.90), so the bracket is [L2] (r2). L6 Weak and L7[L2] Weak: mu-tag is +0.08..+1.33 in 5/5 surviving seeds, but populations are 2-8 cells, the sign reverses at kd 0.018, and seed 11 reads -0.36. Unchanged since r2.",
+    "by_construction": []
    }
   ]
  },
@@ -955,7 +985,8 @@
      "threads/chemotaxis-motility/packs/toxforage"
     ],
     "spontaneity_basis": "toxforage init() is rho0=0.05 plus smoothed Gaussian noise with uniform nutrient n=1 and no planted bodies; the r1 review says of kstrail/toxforage/pursuit that 'the bodies form spontaneously'.",
-    "caveats": "L4c Weak (near-Supported): the n=0 starvation fork was run on 1 seed only, and with r=0 residual food sustains ~4 swimmers. L4a Weak. Unchanged since r1."
+    "caveats": "L4c Weak (near-Supported): the n=0 starvation fork was run on 1 seed only, and with r=0 residual food sustains ~4 swimmers. L4a Weak. Unchanged since r1.",
+    "by_construction": []
    }
   ]
  },
@@ -985,7 +1016,8 @@
      "threads/chemotaxis-motility/packs/ecology"
     ],
     "spontaneity_basis": "init() starts both species as uniform density rho0 plus Gaussian noise (smoothed at 1 px) everywhere, with kinetics off until t_on=150 'while swimmers condense from the noise'; r1 biologist: 'the bodies form spontaneously'.",
-    "caveats": "Moved from L5[L2] low (r1, provisional) to L4b[L2]: the matched decomposition L5 was provisional on ran in evopursuit, not here, so L5 is Weak; in r1 the matched seed-11 rerun reversed the sign of the prey effect and the 'predation' label was withdrawn. Superseded by evopursuit. Swimmers churn through collisions (L2 rests on body lifetime between collisions). Known drift-bifurcation and chaser-fleer physics; no Laplacian-only control."
+    "caveats": "Moved from L5[L2] low (r1, provisional) to L4b[L2]: the matched decomposition L5 was provisional on ran in evopursuit, not here, so L5 is Weak; in r1 the matched seed-11 rerun reversed the sign of the prey effect and the 'predation' label was withdrawn. Superseded by evopursuit. Swimmers churn through collisions (L2 rests on body lifetime between collisions). Known drift-bifurcation and chaser-fleer physics; no Laplacian-only control.",
+    "by_construction": []
    }
   ]
  },
@@ -1032,7 +1064,8 @@
      "threads/fisim-beyond-laplacian/packs/xcell-a"
     ],
     "spontaneity_basis": "No S: init() pokes SOUP_N=8 activator bumps (amplitude 2.0) at random, separated positions plus 0.01 noise, i.e. planted founders (each poke paired with an offset polarity poke).",
-    "caveats": "Unchanged since r1. The body is exactly m4 (K=0), so the compartment is passive and never feeds back on the glider; m is a band function of the body field, and L3 passes only because the gate ablation shows containment. Part of m is a trailing wake. The gate-off control keeps D=4 rather than a lowered uniform D. L4a Weak (one cell, 29.6% erased). Biologist dissent: L3 Weak."
+    "caveats": "Unchanged since r1. The body is exactly m4 (K=0), so the compartment is passive and never feeds back on the glider; m is a band function of the body field, and L3 passes only because the gate ablation shows containment. Part of m is a trailing wake. The gate-off control keeps D=4 rather than a lowered uniform D. L4a Weak (one cell, 29.6% erased). Biologist dissent: L3 Weak.",
+    "by_construction": []
    }
   ]
  },
@@ -1061,7 +1094,8 @@
      "threads/flow-lenia/packs/fl_forager_gene2_S"
     ],
     "spontaneity_basis": "init() fills one 12x12 uniform-noise patch at the centre of an otherwise empty 128^2 domain (~0.9% of the grid; CFG n_patches=1, patch=12). Matter is zero everywhere else (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, so S is not credited, although no structured body is planted.",
-    "caveats": "L6, L5 and L3 Weak; the label 'infection' is rejected (high g wins 92/139 inter-kind fusions vs 27/78 in its twin; fusion never ablated). labkit: 0 persistent splits at K=t160, merge/split 0.90, gen 0; the audit's pgen 3-7 used a t=40 window. S_s1 and S_s3 end as 1-2 static giants, so the glider regime does not hold in every seed. The S_body arm is L2 only (sheets), with gigantism in 3/5 seeds and sigma sub-body for the giants; its within-body excess shrinks to +0.05 (suggestive). Trait = uptake rate (positive control). No Flow-Lenia resolution test. Self-organizes from a localized noise seed (one 12x12 patch in an empty 128^2 domain), so S is not credited. The pack holds S seed 0 only; the other seeds and the N twins are in the r3 audit."
+    "caveats": "L6, L5 and L3 Weak; the label 'infection' is rejected (high g wins 92/139 inter-kind fusions vs 27/78 in its twin; fusion never ablated). labkit: 0 persistent splits at K=t160, merge/split 0.90, gen 0; the audit's pgen 3-7 used a t=40 window. S_s1 and S_s3 end as 1-2 static giants, so the glider regime does not hold in every seed. The S_body arm is L2 only (sheets), with gigantism in 3/5 seeds and sigma sub-body for the giants; its within-body excess shrinks to +0.05 (suggestive). Trait = uptake rate (positive control). No Flow-Lenia resolution test. Self-organizes from a localized noise seed (one 12x12 patch in an empty 128^2 domain), so S is not credited. The pack holds S seed 0 only; the other seeds and the N twins are in the r3 audit.",
+    "by_construction": []
    }
   ]
  },
@@ -1126,7 +1160,8 @@
      "threads/flow-lenia/packs/fl_forager_gene"
     ],
     "spontaneity_basis": "init() fills one 12x12 uniform-noise patch at the centre of an otherwise empty 128^2 domain (~0.9% of the grid; CFG n_patches=1, patch=12). Matter is zero everywhere else (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, so S is not credited, although no structured body is planted.",
-    "caveats": "L7 was Weak (low) in r2 and became Contradicted in r3; superseded by fl_forager_gene2. The pack holds seed 3 only. No Flow-Lenia resolution test. Self-organizes from a localized noise seed (one 12x12 patch in an empty 128^2 domain), so S is not credited."
+    "caveats": "L7 was Weak (low) in r2 and became Contradicted in r3; superseded by fl_forager_gene2. The pack holds seed 3 only. No Flow-Lenia resolution test. Self-organizes from a localized noise seed (one 12x12 patch in an empty 128^2 domain), so S is not credited.",
+    "by_construction": []
    }
   ]
  },
@@ -1174,7 +1209,8 @@
      "threads/flow-lenia/packs/fl_predator"
     ],
     "spontaneity_basis": "init() places 2 prey and 2 predator 12x12 uniform-noise patches at random positions in an otherwise empty 128^2 domain (~3.5% of the grid), species assigned by channel. Matter is zero everywhere else (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, so S is not credited, although no structured body is planted.",
-    "caveats": "L5 Weak (the r2 'near-Supported' qualifier withdrawn): chase and flee are imposed sigma-12 blurred-field sensing; engulfment repeats (seed 0 #355/#395/#497; skeptic seed 12 t=304/536/800) and coexistence survives the early predator crash in 4/5 seeds, but seed 12 is truncated at t=880, seed 11 loses its predators at t~704, and only 1 of 9 parameter points coexists. Matched arms exist only on seed 11, and the prey-only arm is not mass-matched (the +274 prey gap is about the 277 units of predator mass), so the predators' effect on prey is ~0 or positive there, a sign flip. L4c Weak (by construction). No resolution test. Showcase: movies/showcase.mp4 (192^2, seed 0). Self-organizes from a localized noise seed (four 12x12 patches in an empty 128^2 domain), so S is not credited."
+    "caveats": "L5 Weak (the r2 'near-Supported' qualifier withdrawn): chase and flee are imposed sigma-12 blurred-field sensing; engulfment repeats (seed 0 #355/#395/#497; skeptic seed 12 t=304/536/800) and coexistence survives the early predator crash in 4/5 seeds, but seed 12 is truncated at t=880, seed 11 loses its predators at t~704, and only 1 of 9 parameter points coexists. Matched arms exist only on seed 11, and the prey-only arm is not mass-matched (the +274 prey gap is about the 277 units of predator mass), so the predators' effect on prey is ~0 or positive there, a sign flip. L4c Weak (by construction). No resolution test. Showcase: movies/showcase.mp4 (192^2, seed 0). Self-organizes from a localized noise seed (four 12x12 patches in an empty 128^2 domain), so S is not credited.",
+    "by_construction": []
    }
   ]
  },
@@ -1240,7 +1276,8 @@
      "threads/flow-lenia/packs/fl_cells_damage"
     ],
     "spontaneity_basis": "No S: init() places 6 random 16x16 noise patches and each condenses into exactly one cell; the committee: 'Static, one cell per planted patch'.",
-    "caveats": "Unchanged since r1. Repaired cells end smaller with a hollow core (generic re-condensation). Static, one cell per planted patch, no motility or reproduction; close to the Particle Lenia control. The r1 review called the beaded crown numerical. Self-organizes from a localized noise seed (six 16x16 patches in an empty 128^2 domain, ~9% of the grid), so S is not credited."
+    "caveats": "Unchanged since r1. Repaired cells end smaller with a hollow core (generic re-condensation). Static, one cell per planted patch, no motility or reproduction; close to the Particle Lenia control. The r1 review called the beaded crown numerical. Self-organizes from a localized noise seed (six 16x16 patches in an empty 128^2 domain, ~9% of the grid), so S is not credited.",
+    "by_construction": []
    }
   ]
  },
@@ -1271,7 +1308,10 @@
      "threads/lenia-multichannel/packs/mcf-fastcell"
     ],
     "spontaneity_basis": "No S: note says 'Planted Chan fast cell gliders ... Spontaneity 0'; init() stamps N_SEED=4 copies of the CELLS creature at random positions and rotations.",
-    "caveats": "Unchanged since r1 (judged under rubric v1). Planted known creatures (Chan), so novelty is low. No dt/R test. r1 noted baseline attrition without food and a judge seed 11 travelling only 5.3 BL."
+    "caveats": "Unchanged since r1 (judged under rubric v1). Planted known creatures (Chan), so novelty is low. No dt/R test. r1 noted baseline attrition without food and a judge seed 11 travelling only 5.3 BL.",
+    "by_construction": [
+     "E"
+    ]
    }
   ]
  },
@@ -1300,7 +1340,8 @@
      "threads/lenia-multichannel/packs/r-two-s1-60"
     ],
     "spontaneity_basis": "Not credited S (localized seed): world.py has CELLS=None, N_SEED=0, so init() fills one random-noise square of side 0.6 x 192 px (~115x115, ~36% of the area) at a random offset and leaves the rest of the domain exactly zero. The C-gliders do form from that noise (r1: they peel off a jammed crowd of ~45 bodies), but the initial condition is not unstructured over the whole domain.",
-    "caveats": "Unchanged since r1. The known single-channel C-glider class: the second channel is dead by t~2-6 and the constant-k5 ablation keeps the glider, so the multichannel graph adds nothing. Grid-aligned bricks (numerical artefact). L5 Weak (r1). The r-two-s1-* line was stopped in r1. Self-organizes from a localized noise seed (one 0.6-side noise square, ~36% of the 192^2 grid), so S is not credited."
+    "caveats": "Unchanged since r1. The known single-channel C-glider class: the second channel is dead by t~2-6 and the constant-k5 ablation keeps the glider, so the multichannel graph adds nothing. Grid-aligned bricks (numerical artefact). L5 Weak (r1). The r-two-s1-* line was stopped in r1. Self-organizes from a localized noise seed (one 0.6-side noise square, ~36% of the 192^2 grid), so S is not credited.",
+    "by_construction": []
    }
   ]
  },
@@ -1331,7 +1372,10 @@
      "threads/autopoiesis/packs/phase_membrane_damage_mature"
     ],
     "spontaneity_basis": "The pack runs phase_membrane with its default IC='noise' (init(): 'smoothed random fields everywhere, no planted structure': Gaussian-noise phi, uniform random K and L); the cut cells are noise-formed cells damaged at t=6000.",
-    "caveats": "Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branched twin on seed 11 (34-35% cuts): one target reaches 0.98 of its twin, the other 0.81-0.87. damage.png compares the target with a different cell. The cells grow continuously, so 'mature' is ill-defined. Repair is automatic (curvature flow). Undamaged twins: threads/autopoiesis/packs/phase_membrane_mature_ctl."
+    "caveats": "Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branched twin on seed 11 (34-35% cuts): one target reaches 0.98 of its twin, the other 0.81-0.87. damage.png compares the target with a different cell. The cells grow continuously, so 'mature' is ill-defined. Repair is automatic (curvature flow). Undamaged twins: threads/autopoiesis/packs/phase_membrane_mature_ctl.",
+    "by_construction": [
+     "R"
+    ]
    }
   ]
  },
@@ -1360,7 +1404,8 @@
      "threads/fisim-beyond-laplacian/packs/xcell-her"
     ],
     "spontaneity_basis": "Not spontaneous: init() calls the xcell-div base init, which pokes SOUP_N=10 planted bodies at spaced random points, then pokes the h marker into a random half of them; r1 report: 'Kinds are assigned at seeding (half the cells get an h poke)'.",
-    "caveats": "L6 Weak (one counted generation from planted founders, max gen 2/2/1). Planted-kind heredity is Supported but regime-conditional: in r3 the same planted cell-filling marker in sister genome xcell-evo2-N under free-space, faster fission fails (skeptic, seed 11). kb -10% breaks heredity. No resolved Laplacian twin in this regime, so beyond-diffusion stays 1; untested candidate variables are the waste channel and division speed. Thread's showcase world."
+    "caveats": "L6 Weak (one counted generation from planted founders, max gen 2/2/1). Planted-kind heredity is Supported but regime-conditional: in r3 the same planted cell-filling marker in sister genome xcell-evo2-N under free-space, faster fission fails (skeptic, seed 11). kb -10% breaks heredity. No resolved Laplacian twin in this regime, so beyond-diffusion stays 1; untested candidate variables are the waste channel and division speed. Thread's showcase world.",
+    "by_construction": []
    }
   ]
  },
@@ -1408,7 +1453,8 @@
      "threads/fisim-beyond-laplacian/packs/xcell-div"
     ],
     "spontaneity_basis": "Not credited: init() pokes SOUP_N=8 planted bodies and the packs use planted pokes. The note records a single-seed noise screen (screens/cellpop_noise_a1.0_s4.0.png, smoothed noise on u) forming ~26 ringed cells in the same genome, but that is not the packed world's init and was not replicated or judge-verified.",
-    "caveats": "L6 Weak (max gen 2 from planted founders). Division does not need the membrane gate (still 8 splits with the gate off), so the gate modulates but does not cause division. Population saturates by t~200, so no turnover. Single-seed noise screen (~26 ringed cells) is an open lead for S, not credited."
+    "caveats": "L6 Weak (max gen 2 from planted founders). Division does not need the membrane gate (still 8 splits with the gate off), so the gate modulates but does not cause division. Population saturates by t~200, so no turnover. Single-seed noise screen (~26 ringed cells) is an open lead for S, not credited.",
+    "by_construction": []
    }
   ]
  },
@@ -1437,7 +1483,8 @@
      "threads/lenia-multichannel/packs/r-two56"
     ],
     "spontaneity_basis": "Not credited S (localized seed): world.py has CELLS=None, N_SEED=0, so init() fills one random-noise square of side 0.6 x 192 px (~36% of the area) at a random offset and leaves the rest of the domain exactly zero. The cells do form from that noise in 6 seeds (3 pack seeds plus 3 judge seeds, r1), but the initial condition is not unstructured over the whole domain.",
-    "caveats": "Self-organizes from a localized noise seed (one random square covering 0.6 of the grid side; rest of the domain empty), so S is not credited. Static fixed points with no turnover, division or motility. Narrow parameter island (1/5 jitter draws keep the behaviour). The r3 food variant is a separate row (rf-two56-mu0.01)."
+    "caveats": "Self-organizes from a localized noise seed (one random square covering 0.6 of the grid side; rest of the domain empty), so S is not credited. Static fixed points with no turnover, division or motility. Narrow parameter island (1/5 jitter draws keep the behaviour). The r3 food variant is a separate row (rf-two56-mu0.01).",
+    "by_construction": []
    }
   ]
  },
@@ -1485,7 +1532,8 @@
      "threads/lenia-multichannel/screens/rf-two56_food_decay.png"
     ],
     "spontaneity_basis": "Not credited S (localized seed): world.py has CELLS=None, N_SEED=0, so init() fills one random-noise square of side 0.6 x 192 px (~36% of the area) at a random offset with the rest of the matter field zero. Cells form from that noise in 4/4 seeds (3 researcher seeds plus skeptic seed 11), but the initial condition is not unstructured over the whole domain.",
-    "caveats": "Self-organizes from a localized noise seed (one random square covering 0.6 of the grid side; rest of the matter field empty), so S is not credited. L4c Not tested (no food-limited fork, no local cut, no flux budget), so metabolism is not credited even though survivors sit in shallow food wells (F ~0.7 at centre vs 0.9 at 2.5 R). Static fixed points with attrition; decay 0.03 leaves <=1 cell. labkit's band test fails (A1 rim/core 1.24) only because of a central A1 dot. One unlabelled researcher screen, no researcher pack (the r3 review cites a skeptic judge pack judge-scratch/lenia-multichannel-r3-skeptic/rf-two56-mu0.01, which is not present in the repository), and no resolution check on the fed variant."
+    "caveats": "Self-organizes from a localized noise seed (one random square covering 0.6 of the grid side; rest of the matter field empty), so S is not credited. L4c Not tested (no food-limited fork, no local cut, no flux budget), so metabolism is not credited even though survivors sit in shallow food wells (F ~0.7 at centre vs 0.9 at 2.5 R). Static fixed points with attrition; decay 0.03 leaves <=1 cell. labkit's band test fails (A1 rim/core 1.24) only because of a central A1 dot. One unlabelled researcher screen, no researcher pack (the r3 review cites a skeptic judge pack judge-scratch/lenia-multichannel-r3-skeptic/rf-two56-mu0.01, which is not present in the repository), and no resolution check on the fed variant.",
+    "by_construction": []
    }
   ]
  },
@@ -1515,7 +1563,8 @@
      "threads/particle-life/packs/plife-m2"
     ],
     "spontaneity_basis": "r3 review: 'Concentric type shells form from random types in 3 seeds'; init() places all particles at uniform random positions with random types.",
-    "caveats": "Literature calibration, not a new result. 3 seeds, short run, no dt check. Movers at 8.9-13.2 body lengths were never examined, so L4b is an open lead (non-reciprocal line), not a capability."
+    "caveats": "Literature calibration, not a new result. 3 seeds, short run, no dt check. Movers at 8.9-13.2 body lengths were never examined, so L4b is an open lead (non-reciprocal line), not a capability.",
+    "by_construction": []
    }
   ]
  },
@@ -1544,7 +1593,8 @@
      "threads/active-droplets/screens/ad9_landscape.png"
     ],
     "spontaneity_basis": "Not spontaneous: init() plants P['seeds']=6 catalyst-loaded disks (r0=6) on a near-uniform phi background; the r3 review notes every birth at t<=650 is a planted overlapping disk separating.",
-    "caveats": "Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3] Weak: pre-registered pass fails and mean kp never enters 0.5-1.5; post hoc exposure-normalised births show a fecundity edge for kp=1.5 mutants in S (1.34, 1.61 per 1e4 droplet-time vs 0.44, 0.57 in N) that uniform Moran kills absorb at N=6. L6 and L4c Weak. Corrected divisions by t=6000 for kp 0/0.25/0.5/1/1.5/2.5/4 are 0.33/3.67/5.67/5.67/5.33/0.67/0; the 0.5-1.5 plateau is a ceiling set by the first round of divisions. 0 conversions and 0 off-kind daughters in 12/12 runs, but merges and parent ids are not logged. Shell FWHM is 1.9-2.6 px with no dx=0.5 check."
+    "caveats": "Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3] Weak: pre-registered pass fails and mean kp never enters 0.5-1.5; post hoc exposure-normalised births show a fecundity edge for kp=1.5 mutants in S (1.34, 1.61 per 1e4 droplet-time vs 0.44, 0.57 in N) that uniform Moran kills absorb at N=6. L6 and L4c Weak. Corrected divisions by t=6000 for kp 0/0.25/0.5/1/1.5/2.5/4 are 0.33/3.67/5.67/5.67/5.33/0.67/0; the 0.5-1.5 plateau is a ceiling set by the first round of divisions. 0 conversions and 0 off-kind daughters in 12/12 runs, but merges and parent ids are not logged. Shell FWHM is 1.9-2.6 px with no dx=0.5 check.",
+    "by_construction": []
    }
   ]
  },
@@ -1590,7 +1640,8 @@
      "threads/active-droplets/packs/ad4-protocell"
     ],
     "spontaneity_basis": "Not spontaneous: init() plants P['seeds']=6 disks alternating catalyst kind A/B, with soup=0 (no random blobs); the note says 'Two planted catalyst kinds'.",
-    "caveats": "L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5."
+    "caveats": "L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5.",
+    "by_construction": []
    }
   ]
  },
@@ -1619,7 +1670,8 @@
      "threads/fisim-beyond-laplacian/packs/xcell-turn"
     ],
     "spontaneity_basis": "Not spontaneous: init() pokes SOUP_N=8 planted bodies, and every founder was planted with waste q=1.2 (r1 biologist).",
-    "caveats": "RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). The waste was gated by cargo through a channel-index bug, every founder was planted with q=1.2, and gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors. With m-gated waste as documented the world goes extinct by t~32. Superseded by xcell-evo2."
+    "caveats": "RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). The waste was gated by cargo through a channel-index bug, every founder was planted with q=1.2, and gen 5/6/4 is colonization of a box emptied by poisoned founders, by 2 survivors. With m-gated waste as documented the world goes extinct by t~32. Superseded by xcell-evo2.",
+    "by_construction": []
    }
   ]
  },
@@ -1685,7 +1737,8 @@
      "threads/particle-life/packs/sporecell3-det"
     ],
     "spontaneity_basis": "Note and r3 review: 'founders form from ~20 random catalysts' on both pack seeds, reproduced by the skeptic on seed 23 to t=50 (spontaneity modifier 3). init() places all N=4000 particles at uniform random positions over the whole box and makes each one a catalyst independently with p=frac_C=0.005 (~20; all kind 0, seed_kind1=0), the rest food: a random field everywhere, with no planted bodies.",
-    "caveats": "L6[L2] Weak (borderline): strict re-audit gives seed 0 gen 1 and seed 1 one genuine 2-deep chain; colonization only, every parent-size birth before t~90, 1 qualifying birth (<=37 particles) per seed after t=100, adults sterile because release needs <60 neighbours, release is a written teleport (d_det=1.5 > rmax), merge/(births+fragments) 0.78 and 0.64. L4c Weak, L5 Not tested. dt/2 runs at a fixed active dx_max (~5,200 clips); seed-0 deaths differ 44%, seed-1 births 20%. Numerical validity 1, beyond-diffusion 1."
+    "caveats": "L6[L2] Weak (borderline): strict re-audit gives seed 0 gen 1 and seed 1 one genuine 2-deep chain; colonization only, every parent-size birth before t~90, 1 qualifying birth (<=37 particles) per seed after t=100, adults sterile because release needs <60 neighbours, release is a written teleport (d_det=1.5 > rmax), merge/(births+fragments) 0.78 and 0.64. L4c Weak, L5 Not tested. dt/2 runs at a fixed active dx_max (~5,200 clips); seed-0 deaths differ 44%, seed-1 births 20%. Numerical validity 1, beyond-diffusion 1.",
+    "by_construction": []
    }
   ]
  },
@@ -1733,7 +1786,8 @@
      "threads/particle-life/packs/sporecell2-sel"
     ],
     "spontaneity_basis": "init() scatters N=4000 particles uniformly at random and makes ~0.5% of them (about 20) catalyst cores (frac_C=0.005) at random; no bodies or templates are planted. r2 consensus scored spontaneity 3 for this world, and the founders it selects among form from that scatter (r2: rings sit on founders at t=16-70). Per the coordinator's S ruling this is a random particle soup over the whole box (every particle's position and type drawn i.i.d.; the ~20 catalysts are single particles inside that soup, not placed clusters), so S stands.",
-    "caveats": "Numerical validity 0 (dt=0.02 map, integrator overshoot). L7[L2] Weak: the kind mix is fixed during colonization, and the takeover fails at a 1.2x advantage, at dt 0.015 and 0.01, and on seed 11. L6[L2] Weak. The converged r3 twin (sporecell3-det) does not rescue it."
+    "caveats": "Numerical validity 0 (dt=0.02 map, integrator overshoot). L7[L2] Weak: the kind mix is fixed during colonization, and the takeover fails at a 1.2x advantage, at dt 0.015 and 0.01, and on seed 11. L6[L2] Weak. The converged r3 twin (sporecell3-det) does not rescue it.",
+    "by_construction": []
    }
   ]
  },
@@ -1782,7 +1836,8 @@
      "threads/particle-life/packs/sporecell"
     ],
     "spontaneity_basis": "Note: 'Ringed founders from ~20 random catalysts'. The r1 headline calls sporecell 'a spontaneous, reproducible L2 world'. init() scatters N=4000 particles uniformly at random and makes ~0.5% of them (about 20) catalyst cores (frac_C=0.005) at random; no bodies or templates are planted. Per the coordinator's S ruling this is a random particle soup over the whole box (every particle's position and type drawn i.i.d.; the ~20 catalysts are single particles inside that soup, not placed clusters), so S stands.",
-    "caveats": "Numerical validity 0: free spores are 127/40/6 at dt 0.02/0.01/0.005, so the spore bursts are integrator overshoot, as r3's step-safe control confirms. The cell count depends on the step: 24/14/5 cells at t=200 at dt 0.02/0.01/0.005 (r2), so the ~40-cell figure is a dt=0.02 number. The membrane rings are lost population-wide at depletion. L3, L4a (sporecell_damage), L4c and L6[L2] Weak. Family row: sporecell_damage is the damage protocol on the same world (packs/sporecell_damage)."
+    "caveats": "Numerical validity 0: free spores are 127/40/6 at dt 0.02/0.01/0.005, so the spore bursts are integrator overshoot, as r3's step-safe control confirms. The cell count depends on the step: 24/14/5 cells at t=200 at dt 0.02/0.01/0.005 (r2), so the ~40-cell figure is a dt=0.02 number. The membrane rings are lost population-wide at depletion. L3, L4a (sporecell_damage), L4c and L6[L2] Weak. Family row: sporecell_damage is the damage protocol on the same world (packs/sporecell_damage).",
+    "by_construction": []
    }
   ]
  },
@@ -1827,7 +1882,8 @@
      "threads/flow-lenia/packs/fl_cells_food"
     ],
     "spontaneity_basis": "S is not credited. init() writes uniform random matter into 2 16x16 noise patches at random positions in an otherwise empty 128x128 domain (about 3% of the grid); matter is zero elsewhere (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, even though no structured body is planted.",
-    "caveats": "One seed. L3 Weak: the binucleate cell and the morula are not credited as bounded individuals. The individuals self-organize from a localized noise seed (2 16x16 noise patches at random positions in an otherwise empty 128x128 domain (about 3% of the grid)), so S is withheld."
+    "caveats": "One seed. L3 Weak: the binucleate cell and the morula are not credited as bounded individuals. The individuals self-organize from a localized noise seed (2 16x16 noise patches at random positions in an otherwise empty 128x128 domain (about 3% of the grid)), so S is withheld.",
+    "by_construction": []
    }
   ]
  },
@@ -1876,7 +1932,8 @@
      "threads/particle-life/screens/gate5_s1_types.png"
     ],
     "spontaneity_basis": "FINAL.md showcase: 'From 15 scattered seed particles, cells nucleate and coat themselves in thick orange membrane rings'. r2 consensus spontaneity 3. init() scatters N=4000 particles uniformly at random and makes ~0.5% of them (about 20) catalyst cores (frac_C=0.005) at random; no bodies or templates are planted. Per the coordinator's S ruling this is a random particle soup over the whole box (every particle's position and type drawn i.i.d.; the ~20 catalysts are single particles inside that soup, not placed clusters), so S stands.",
-    "caveats": "dt=0.02 map only: the burst is integrator overshoot, and the world was never rerun at the step-safe step. No pack; the pack field is a screenshot. L3, L4a (D_gate breaks three L4a rules, one seed) and L6[L2] Weak. The world path is sporecell2 run with the override gate_beta=1 (its default is 0)."
+    "caveats": "dt=0.02 map only: the burst is integrator overshoot, and the world was never rerun at the step-safe step. No pack; the pack field is a screenshot. L3, L4a (D_gate breaks three L4a rules, one seed) and L6[L2] Weak. The world path is sporecell2 run with the override gate_beta=1 (its default is 0).",
+    "by_construction": []
    }
   ]
  },
@@ -1925,7 +1982,8 @@
      "threads/particle-life/packs/sporecell-gene"
     ],
     "spontaneity_basis": "init() scatters N=4000 particles uniformly at random and makes ~0.5% of them (about 20) catalyst cores (frac_C=0.005) at random; no bodies or templates are planted. seed_kind1=0, so the second kind arises only by mutation. The cells form from the random catalyst scatter, as in sporecell. Per the coordinator's S ruling this is a random particle soup over the whole box (every particle's position and type drawn i.i.d.; the ~20 catalysts are single particles inside that soup, not placed clusters), so S stands.",
-    "caveats": "L6[L2] Weak: the 'gen 9' lineage is a ratchet staircase of individuals that live 10-60 t. The selection evidence is at mu=0.01, while the pack runs at mu=0.002. The world runs on the same unconverged dt=0.02 integrator as sporecell and was not rerun step-safe."
+    "caveats": "L6[L2] Weak: the 'gen 9' lineage is a ratchet staircase of individuals that live 10-60 t. The selection evidence is at mu=0.01, while the pack runs at mu=0.002. The world runs on the same unconverged dt=0.02 integrator as sporecell and was not rerun step-safe.",
+    "by_construction": []
    }
   ]
  },
@@ -1989,7 +2047,8 @@
      "threads/flow-lenia/packs/fl_morph257"
     ],
     "spontaneity_basis": "S is not credited. init() writes uniform random matter into 1 20x20 noise patch at the centre of an otherwise empty 128x128 domain (about 2.4% of the grid); matter is zero elsewhere (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, even though no structured body is planted.",
-    "caveats": "One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daughter of each kind) are Weak. The individuals self-organize from a localized noise seed (1 20x20 noise patch at the centre of an otherwise empty 128x128 domain (about 2.4% of the grid)), so S is withheld."
+    "caveats": "One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daughter of each kind) are Weak. The individuals self-organize from a localized noise seed (1 20x20 noise patch at the centre of an otherwise empty 128x128 domain (about 2.4% of the grid)), so S is withheld.",
+    "by_construction": []
    }
   ]
  },
@@ -2017,7 +2076,8 @@
      "threads/flow-lenia/packs/fl_forager_mut"
     ],
     "spontaneity_basis": "S is not credited. init() writes uniform random matter into 2 12x12 noise patches at random positions in an otherwise empty 128x128 domain (about 1.8% of the grid); matter is zero elsewhere (only food is uniform). Under the coordinator's ruling a localized noise seed counts as planted for S, even though no structured body is planted.",
-    "caveats": "L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), with 177 splits vs 169 merges and gen 0. One pair. Motility (L4b in the ancestor world fl_forager, same rule_seed 202) is not credited at this row's rung. The individuals self-organize from a localized noise seed (2 12x12 noise patches at random positions in an otherwise empty 128x128 domain (about 1.8% of the grid)), so S is withheld."
+    "caveats": "L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), with 177 splits vs 169 merges and gen 0. One pair. Motility (L4b in the ancestor world fl_forager, same rule_seed 202) is not credited at this row's rung. The individuals self-organize from a localized noise seed (2 12x12 noise patches at random positions in an otherwise empty 128x128 domain (about 1.8% of the grid)), so S is withheld.",
+    "by_construction": []
    }
   ]
  },
@@ -2062,7 +2122,8 @@
      "threads/particle-life/screens/R0_s0_lin2.png"
     ],
     "spontaneity_basis": "S is not credited: the committee calls this row's L2 itself Weak (one seed, lineage plot only), so no individuals are claimed. init() is the same uniform-random catalyst scatter as sporecell3-det.",
-    "caveats": "The leaderboard rung reads L2 (low), but the note says L2 is Weak (one seed, lineage plot only, no pack), so I is withheld under the Weak rule. The r3 review rates the row medium as a negative. sporecell3/world.py defaults to k_det=0, which matches this control."
+    "caveats": "The leaderboard rung reads L2 (low), but the note says L2 is Weak (one seed, lineage plot only, no pack), so I is withheld under the Weak rule. The r3 review rates the row medium as a negative. sporecell3/world.py defaults to k_det=0, which matches this control.",
+    "by_construction": []
    }
   ]
  },
@@ -2110,7 +2171,8 @@
      "threads/particle-life/screens/TW_sel_s0_lin2.png"
     ],
     "spontaneity_basis": "r3 on sporecell3-det: 'founders form from ~20 random catalysts in both pack seeds'. The skeptic's seed 23 forms founders from noise. Spontaneity modifier 3. init() scatters N=4000 particles uniformly at random and makes ~0.5% of them (about 20) catalyst cores (frac_C=0.005) at random; no bodies or templates are planted. seed_kind1=0, so kind 1 arises by mutation. Per the coordinator's S ruling this is a random particle soup over the whole box (every particle's position and type drawn i.i.d.; the ~20 catalysts are single particles inside that soup, not placed clusters), so S stands.",
-    "caveats": "L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer and conversion is Weak. Heredity is leaky (seed-1 kind-1 #33 has kind-0 daughter #42). The ledger and JSONs are not in the branch, and the pack is a lineage-plot screenshot. The key carries a '-twin' suffix to keep it distinct from the sporecell3-det row."
+    "caveats": "L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer and conversion is Weak. Heredity is leaky (seed-1 kind-1 #33 has kind-0 daughter #42). The ledger and JSONs are not in the branch, and the pack is a lineage-plot screenshot. The key carries a '-twin' suffix to keep it distinct from the sporecell3-det row.",
+    "by_construction": []
    }
   ]
  },
