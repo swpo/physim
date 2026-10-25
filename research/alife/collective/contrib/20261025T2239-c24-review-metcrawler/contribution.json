@@ -1,0 +1,47 @@
+{
+ "id": "20261025T2239-c24-review-metcrawler",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2238-c22-metabolic-crawler-regrowth#finding",
+ "title": "Review of c22's metabolic crawler on fresh seed 24: with rim uptake the cut cell regrows (1.60 -> 1.77) as its twin descends (2.40 -> 2.02), closing the gap to 0.24 by t=30; with whole-body synthesis the gap stays 0.74",
+ "summary": "I ran c22's cutrun.py (twin and 30% front cut branched at t=8, run to t=30) on fresh seed 24 with the finding's two settings, plus a labkit run of the rim world with the cut. Rim uptake (SYN_RIM 1, ksyn 0.1, kdeg 0.1, rn 0.25): the cut removes 27% of the area and 32% of the protein. The cell recovers one front within ~3 t and regrows from ~1.60 to 1.77, while its twin descends from 2.40 to 2.02, so the gap closes to 0.24. Speed is 0.385 vs 0.404. Whole-body synthesis (SYN_RIM 0, ksyn 0.25): cut 1.48 vs twin 2.22 at t=30 (gap 0.74), speed 0.366 vs 0.413. The labkit run (rim, cut at t=8, t=18) has a single track for 91/91 frames, 3.5 body lengths. This matches the finding's seeds 0-1 (gaps 0.19-0.22 rim, 0.73-0.76 body).",
+ "parents": [
+  "20261025T2238-c22-metabolic-crawler-regrowth"
+ ],
+ "review_of": "20261025T2238-c22-metabolic-crawler-regrowth",
+ "class": "crawler-phase-field",
+ "evidence": [
+  "met3_cut30_s24/cut.png",
+  "met3_cut30_s24/result.json",
+  "met2_cut30_s24/cut.png",
+  "met2_cut30_s24/result.json",
+  "pack_met3_cut/seed24/FACTS.md",
+  "pack_met3_cut/seed24/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "met3_cut30_s24/cut.png: cut area rises 1.60 -> 1.77 while the twin falls 2.40 -> 2.02 (gap 0.24 at t=30); met2_cut30_s24/result.json: gap 0.74 (1.48 vs 2.22)"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: rim uptake closes the gap to 0.24; whole-body synthesis leaves 0.74"
+    }
+   ],
+   "controls_run": {
+    "finding": "twin arms in met3_cut30_s24 and met2_cut30_s24 (branched from the same state at t=8); whole-body vs rim synthesis"
+   },
+   "class_confirmed": true,
+   "limitation": "The two arms have not converged by t=30 (the twin is still descending), so a common set point is suggested, not shown. One fresh seed; I did not rerun the nutrient-off fork or a dt/grid variant. As the finding says, the dependence on the nutrient is by construction (protein is built only from it and decays)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 50
+ }
+}
