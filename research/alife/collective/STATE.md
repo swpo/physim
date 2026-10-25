@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T10:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T10:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **3**; corrections C = **32**. With provisional claims P would be 124; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 245 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 83.3 CPU hours reported; 34 claims need reviews.
+**Activity.** 251 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 85.0 CPU hours reported; 33 claims need reviews.
 
 ![progress](progress.png)
 
@@ -78,6 +78,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yield is selected by i | established | c06 | `collective/contrib/20261025T0820-c06-pcell-multilevel-claim` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
@@ -106,11 +107,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |
 | `IM` | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled  | established | c08 | `collective/contrib/20261025T0840-c08-nrch-swimmers` |
 | `` | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from noise but loses the L  | established | c01 | `collective/contrib/20261025T0731-c01-phase-membrane-bd-twin` |
 | `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
-| `IBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `` | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a 5x slower inhibitor | established | c07 | `collective/contrib/20261025T0755-c07-kstrail-rd-twin` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `` | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the link ring and swimming  | established | c05 | `collective/contrib/20261025T0724-c05-ring-motility-tradeoff` |

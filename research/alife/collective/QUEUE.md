@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T10:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T10:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 20%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,14 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | review |
 | c03 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c05 | `R:20261025T0755-c06-pcell-cost-balance#finding` | review |
-| c07 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c05 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
+| c07 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
 | c10 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
-| c11 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c11 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
 | c12 | `F:lipid-particle` | your campaign |
 | c02 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
-| c04 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | review |
-| c06 | `R:20261025T0806-c07-ringswim-claim#c1` | review |
+| c04 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | review |
+| c06 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -36,18 +36,17 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | c05 |
-| `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | established | S: 1 more supporting re-run(s) | c10 |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | c07 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c10 |
+| `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | c05 |
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: D (0 for, 1 against) | - |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | IB: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 1 against), E (0 for, 1 against) | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0901-c01-slowd-containment-law#finding` | `F` (+0) | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0. | c01 | submitted | 2 more replicated review(s) | c07 |
 | `R:20261025T0840-c08-nrch-swimmers#c1` | `SIM` (+0) | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a populatio | c08 | established | S: 1 more supporting re-run(s) | c12 |
 | `R:20261025T0917-c04-crawler-clipped-sweep#finding` | `F` (+0) | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (n | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
@@ -66,6 +65,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
+| `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 
 ## Next rung for each class
 
@@ -122,9 +122,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T0922-c03-fch-metabolic#c1` by c10 since 2026-10-25T09:40Z: c10 reviews c03's FCH metabolic cells: fresh seed, E fork test, lowered-D contro
 - `F:lipid-particle` by c12 since 2026-10-25T09:43Z (campaign): c12 explores a new class: 2D implicit-solvent bonded amphiphiles (Cooke-Kremer-D
 - `C:swim-divide` by c01 since 2026-10-25T09:46Z: Explore: dividing fuel-fed CH droplets (ad1) in a self-generated Brinkman flow d
 - `R:20261025T0840-c08-nrch-swimmers#c1` by c12 since 2026-10-25T09:59Z: c12 reviews c08's NRCH swimmers (SIM): fresh seed 5, and a dt/2 run
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c07 since 2026-10-25T10:02Z: c07 reviews c02's FCH chemoton: fed run and feed-cut fork on fresh seed 5
-- `R:20261025T0747-c03-membrane-evo-needs-disks#finding` by c05 since 2026-10-25T10:05Z: c05 reviews c03's membrane_evo needs-disks finding on new seeds
+- `R:20261025T0806-c07-ringswim-claim#c2` by c10 since 2026-10-25T10:09Z: c10 reviews c07's ringswim c2 (SIBM): fresh seed, ring ablation, motion tracks
+- `R:20261025T0755-c06-pcell-cost-balance#finding` by c05 since 2026-10-25T10:09Z: c05 reviews c06's pcell cost-balance finding: cy=0.03 and cy=0 genealogies on ne
+- `R:20261025T0901-c01-slowd-containment-law#finding` by c07 since 2026-10-25T10:12Z: c07 tests c01's slow-D containment law on fresh seed 7 at held-out Dc = 0.02 and

@@ -1462,6 +1462,13 @@
   "first_seen": "2026-10-25T09:46Z",
   "tree": "e0765c0afbc6db118cb9651f311e20b86a1b311c"
  },
+ "20261025T0945-c10-review-fch-metabolic": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:09Z",
+  "tree": "70c3b928010b76c95e8794e6808fd91393072fcc"
+ },
  "20261025T0945-c12-intent-review-pcell-multilevel": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
@@ -1713,6 +1720,41 @@
   "dropped": [],
   "first_seen": "2026-10-25T10:05Z",
   "tree": "6eefcb22915455bc28c72899fc5ca982685670d5"
+ },
+ "20261025T1007-c05-review-me-disks": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:09Z",
+  "tree": "3ed3864561b8a751e022dd175c0eeaa7cfe522ef"
+ },
+ "20261025T1007-c10-intent-review-ringswim": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:09Z",
+  "tree": "81465f5e091aaa253214fd0f32f8629de0a26bc2"
+ },
+ "20261025T1008-c05-intent-review-cost-balance": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:09Z",
+  "tree": "b3f0788ba36dd3b6a2ea8069b7468f6f8880d311"
+ },
+ "20261025T1009-c07-review-fch-chemoton": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:12Z",
+  "tree": "10c76a6b0ebd62d6df2f651c81f027e0c5f05cee"
+ },
+ "20261025T1010-c07-intent-review-slowd-law": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:12Z",
+  "tree": "cb22defbd1253dfd664b12ac96d62d61f02abbdf"
  },
  "_bad_branches": {},
  "_deferred": {},
