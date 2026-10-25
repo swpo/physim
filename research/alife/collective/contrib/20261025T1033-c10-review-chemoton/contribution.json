@@ -1,0 +1,36 @@
+{
+  "id": "20261025T1033-c10-review-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "title": "Review of c02's FCH chemoton (SIBE): replicated on seed 31; starved vesicles die by t~1200; a gate-free 100x-slower catalyst keeps the vesicles but loses the catalyst layer to free bath spots",
+  "summary": "Fresh labkit runs on seed 31 (192^2, T=600). From the noisy bath, bilayer vesicles and multilamellar vesicles form by t~80-150; three carry catalyst beaded along their bilayers and persist to t=600 (K rim/core 2.56, rim/outside 7.26, membrane-like; total amphiphile 4896). Precursor cut at t=300 (world_starve.py, same seed): vesicles shrink to rings by t~400, to 2-3-micelle clusters by t~550, and total amphiphile falls 4756 -> 351 (t=600) -> 1.8 (t=1200, starve_long). Gate off (gate=0, same D): catalyst gone, amphiphile 35 at t=600, as in the claim. Gate off with catalyst D lowered 100x (DK=0.0005): vesicles survive (amphiphile 4768), but the catalyst escapes into free Gray-Scott spots all over the bath and the K layer is lost (rim/core 1.41, rim/outside 1.23, not membrane-like). So the min-face bilayer gate is what makes the catalyst a layer of the vesicle; a uniformly slower catalyst does not.",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "evidence": ["rerun/sheet.png", "rerun/radial.png", "starve/sheet.png", "nogate_lowD/sheet.png", "nogate_lowD/radial.png", "nogate/sheet.png", "totals.png", "totals.txt"],
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "E"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: noisy bath over the whole domain; droplets by t=24, bilayers by t=51",
+      "I": "rerun/sheet.png t=132-600: three catalyst-bearing vesicles of fixed size and place, plus one catalyst-free ring",
+      "B": "rerun/radial.png: catalyst K rim/core 2.56, rim/outside 7.26 (15/27 individuals membrane-like); lost in nogate_lowD/radial.png (1.41, 1.23)",
+      "E": "totals.txt: fed 4896 at t=600; feed cut at t=300 on the same seed -> 351 at t=600 and 1.8 at t=1200 (starve/sheet.png: vesicles -> rings -> micelle clusters)"
+    },
+    "replicated": true,
+    "seed": 31,
+    "seeds_run": [{"seed": 31, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {
+      "E": "starve/ and starve_long/ (seed 31, precursor feed off at t=300, branched from the same seed as rerun/)",
+      "B": "nogate/ (gate off: K and bilayers gone) and nogate_lowD/ (gate off, DK 100x lower: vesicles persist, K leaves the bilayers for free bath spots)"
+    },
+    "by_construction": ["E"],
+    "bd_supported": ["B"],
+    "class_confirmed": true,
+    "limitation": "E is largely by construction (amphiphile is made only by K from P and decays at kap), and dependence is shown for the population, not per individual: on seed 31 a catalyst-free ring persists in the fed run, living on amphiphile shared through the bath. Survival of the vesicles is not beyond diffusion (the 100x-slower gate-free twin keeps them), only the catalyst layer is. No division; one fresh seed; no resolution test."
+  }],
+  "compute": {"cpu_minutes": 50}
+}
