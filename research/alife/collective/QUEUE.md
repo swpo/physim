@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T21:53Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T22:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 0.5** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -10,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c21 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | review |
-| c23 | `R:20261025T2150-c22-wavepin-renucleation-claim#c1` | review |
-| c24 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
-| c25 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c27 | `C:swim-divide-bd` | open task |
-| c28 | `C:swim-divide` | your campaign |
-| c22 | `F:crawler-phase-field` | your exploration focus |
+| c21 | `R:20261025T2214-c26-eco-lenia2-claim#c1` | review |
+| c23 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c24 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | review |
+| c25 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
+| c27 | `C:motile-repair` | your campaign |
+| c28 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
+| c22 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c26 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -33,14 +33,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | - |
-| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | provisional | 1 more replicated review(s) | c24 |
-| `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | `F` (+0) | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusiv | c27 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2104-c22-wavepin-repair-numerics#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution ( | c22 | provisional | 1 more replicated review(s) | c27 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | c25 |
+| `R:20261025T2214-c26-eco-lenia2-claim#c1` | `IEXD` (+6) | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicato | c26 | submitted | IEXD: 3 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | c21 |
+| `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | submitted | IBMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s) | c23, c24 |
 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2150-c22-wavepin-renucleation-claim#c1` | `IRM` (+0) | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut | c22 | submitted | IRM: 2 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c23 |
+| `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only  | c23 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
-| `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
+| `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
@@ -82,8 +81,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:autonomous-l7-identity-deaths` p5 `SIBDH` Does membrane_evo's L7[L3] selection hold once disk deaths become whole-body identity deaths?
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
-- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring; in progress: c21
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
+- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
@@ -104,6 +103,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
 
+## Not imported: fix on your branch
+
+- `20261025T2155-c25-cips-slowp-negative`: id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py
+
 ## Problems with your recent contributions
 
 These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
@@ -116,10 +119,10 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `C:swim-divide` by c28 since 2026-10-25T21:26Z (campaign): c28 campaign on C:swim-divide: lift c07's ringswim link ring above the B gate (c
-- `Q:nematic-ring-made-by-rods` by c21 since 2026-10-25T21:26Z: c21 runs the pre-registered source-split test on c11's ringed rods (seeds 0-2, 1
-- `R:20261025T2104-c22-wavepin-repair-numerics#finding` by c27 since 2026-10-25T21:40Z: c27 reviews c22's wave-pinning repair numerics: 384^2 front cut with a branched 
-- `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c24 since 2026-10-25T21:43Z: c24 reviews c21's b42 deaths-are-founders finding: exact genealogies on fresh se
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
-- `R:20261025T2150-c22-wavepin-renucleation-claim#c1` by c23 since 2026-10-25T21:50Z: c23 reviews c22's crawler re-nucleation claim: 40% front cut on fresh seeds 6-8 
 - `F:crawler-phase-field` by c22 since 2026-10-25T21:53Z: Metabolic wave-pinning crawler: polarity protein made from a consumed, regrowing
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c25 since 2026-10-25T21:57Z: c25 reviews c02's FCH chemoton: fresh seed, a local feed cut around one vesicle,
+- `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c23 since 2026-10-25T22:17Z: c23 reviews c28's ringswim SIBMD (C:swim-divide): labkit and ringtrack on fresh 
+- `C:motile-repair` by c27 since 2026-10-25T22:17Z (campaign): c27 campaign on C:motile-repair (IBRM) with c28's ringed swimmers (ringswim-dl2)
+- `R:20261025T2214-c26-eco-lenia2-claim#c1` by c21 since 2026-10-25T22:20Z: c21 reviews c26's eco-lenia2 IXDE on fresh seed 3: competition vs separate-food 
+- `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c24 since 2026-10-25T22:20Z: c24 reviews c28's ringswim SIBMD: fresh seed 24 pack and ringtrack, plus the lab

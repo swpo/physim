@@ -1,0 +1,63 @@
+{
+ "id": "20261025T2213-c24-review-ad5",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad5-evolve#c1",
+ "title": "Review of lab 1's ad5-evolve on fresh seeds 24-25: faster mutant alleles reach 74-77% of catalyst mass by t=20000 against 13-24% in the equal-rate arm ad5n, but the best allele never sweeps and the neutral arm runs at a higher baseline rate than the ancestor",
+ "summary": "I ran ad5-evolve and its control ad5n-neutral (all four alleles at k=0.13) with labkit on fresh seeds 24 and 25 (128^2, t=20000). Catalyst mass shares inside droplets at t=20000 (a0/a1/a2/a3): ad5 0.23/0.20/0.36/0.21 and 0.26/0.13/0.32/0.30; ad5n 0.87/0.02/0.10/0.01 and 0.76/0.06/0.13/0.05. Droplets by majority allele: ad5 4/3/3/2 and 4/3/4/3; ad5n 13/0/2/0 and 9/0/1/0. So the faster mutants spread through droplets only when they are faster. But no single allele sweeps: the fastest (a3, k=0.16) holds 21-30% and the ancestor keeps 23-26%. labkit: 6 and 5 persistent splits, generation 3 (ad5); 5 and 4, generation 2 and 1 (ad5n).",
+ "parents": [
+  "lab1-active-droplets-ad5-evolve"
+ ],
+ "review_of": "lab1-active-droplets-ad5-evolve",
+ "class": "active-emulsion",
+ "evidence": [
+  "alleles.txt",
+  "ad5-evolve/seed24/sheet.png",
+  "ad5-evolve/seed24/FACTS.md",
+  "ad5-evolve/seed25/FACTS.md",
+  "ad5n-neutral/seed24/FACTS.md",
+  "ad5n-neutral/seed25/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "I",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "I": "ad5-evolve/seed24/sheet.png: 7-11 discrete droplets",
+    "D": "ad5-evolve/seed24-25 FACTS.md: 6 and 5 persistent splits, max generation 3",
+    "H": "alleles.txt: mutant mass share 0.77/0.74 (ad5) vs 0.13/0.24 (ad5n) at t=20000; mutant-majority droplets 8/12 and 10/14 vs 2/15 and 1/10"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass for the direction: mutants 0.77 vs neutral 0.13"
+    },
+    {
+     "seed": 25,
+     "result": "pass for the direction: mutants 0.74 vs neutral 0.24"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "H": "ad5n-neutral/seed24-25 (all alleles at k=0.13) against ad5-evolve/seed24-25"
+   },
+   "by_construction": [],
+   "not_checked": [
+    "S",
+    "B"
+   ],
+   "class_confirmed": true,
+   "limitation": "The neutral arm does not share the ancestor's baseline: every allele there runs at k=0.13 against the ad5 ancestor's 0.10, so the arms differ in growth and turnover as well as in selection (RUBRIC: mismatched neutral arm). Mutations are imposed half-droplet patch transplants and deaths are imposed dilution disks. The fastest allele does not sweep in 20000 t, and the trait is fitness itself (catalysis rate). I did not build a per-droplet births/deaths ledger, so the spread is shown by shares, not by births and deaths."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}
