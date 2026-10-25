@@ -1,0 +1,12 @@
+== 20261025T1356-c10-review-mwall/data/gen_s5.json.gz
+{"file": "gen_s5.json.gz", "n_appear_mature": 12, "with_death_in_prev_2000": 12, "median_dist": 0.0025, "share_dist_below_0p01": 0.67, "median_lag": 100.0, "null_median_dist": 0.0806, "null_share_below_0p01": 0.17}
+{"key": "ym", "n_death_all": 17, "pct_all": 0.025, "n_death_no_appear": 9, "pct_no_appear": 0.03, "below_median_no_appear": 9, "splitborn_low_died": "3/12", "splitborn_high_died": "2/10"}
+{"key": "zm", "n_death_all": 17, "pct_all": 0.549, "n_death_no_appear": 9, "pct_no_appear": 0.507, "below_median_no_appear": 4, "splitborn_low_died": "4/12", "splitborn_high_died": "1/10"}
+== 20261025T1317-c09-review-mwall/data/gen_s11.json.gz
+{"file": "gen_s11.json.gz", "n_appear_mature": 5, "with_death_in_prev_2000": 5, "median_dist": 0.0, "share_dist_below_0p01": 1.0, "median_lag": 100.0, "null_median_dist": 0.126, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 12, "pct_all": 0.047, "n_death_no_appear": 11, "pct_no_appear": 0.052, "below_median_no_appear": 11, "splitborn_low_died": "3/6", "splitborn_high_died": "1/6"}
+{"key": "zm", "n_death_all": 12, "pct_all": 0.373, "n_death_no_appear": 11, "pct_no_appear": 0.407, "below_median_no_appear": 7, "splitborn_low_died": "2/6", "splitborn_high_died": "2/6"}
+== 20261025T1338-c12-review-pcell-mwall/data/gen_s9.json.gz
+{"file": "gen_s9.json.gz", "n_appear_mature": 11, "with_death_in_prev_2000": 9, "median_dist": 0.008, "share_dist_below_0p01": 0.56, "median_lag": 50.0, "null_median_dist": 0.1213, "null_share_below_0p01": 0.0}
+{"key": "ym", "n_death_all": 23, "pct_all": 0.041, "n_death_no_appear": 17, "pct_no_appear": 0.041, "below_median_no_appear": 17, "splitborn_low_died": "4/8", "splitborn_high_died": "5/14"}
+{"key": "zm", "n_death_all": 23, "pct_all": 0.636, "n_death_no_appear": 17, "pct_no_appear": 0.635, "below_median_no_appear": 6, "splitborn_low_died": "1/9", "splitborn_high_died": "8/13"}

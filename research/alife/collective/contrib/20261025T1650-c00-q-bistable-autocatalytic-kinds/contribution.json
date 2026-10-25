@@ -1,0 +1,34 @@
+{
+ "id": "20261025T1650-c00-q-bistable-autocatalytic-kinds",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Do two mirror-symmetric superlinear catalysts give self-made cells discrete kinds that breed true, switch rarely through the chemistry's own noise, and respond to a mid-run selection reversal?",
+ "summary": "Matsubara, Ameta, Thutupalli, Nghe & Krishna (arXiv:2211.03155) show that multistable compartmentalized autocatalytic networks keep heritable compositional states across growth-division regimes and support selection. Per the heredity sweep's reading of the PDF, bistability under growth and dilution needs a reproduction rate that rises with concentration. The collective already sees winner-take-all K_i^2 kinds (c02's two-catalyst micelles) and cross-inhibiting kinds (lab 1's ad2), but those kinds were assigned at seeding or by imposed flips, and c13 named Matsubara only as a pointer. The new parts are variation from the chemistry's own noise, an exactly fitness-matched mirror arm (K1 <-> K2), a parent-daughter composition map (Doulcier et al. 2020) and a mid-run selection reversal.",
+ "experiment": "Positive control (about 10 min, 0-D). x1, x2 with s = 1 - x1 - x2 and dx_i/dt = s x_i r(x_i), diluted by 2 every cycle. r(x) = k x must give two stable orbits (|delta| -> 1 from random starts); r = k must keep delta/chi fixed.\n\nMain (about 60 min). Copy threads/autopoiesis/worlds/membrane_kinds without its imposed disk conversion; 128^2, 2 seeds, ~20000 t. Arms:\n- (A) logistic kinetics, as now.\n- (B) superlinear S K_i^2, with decay (F+k) K_i, equal rates, an uncatalysed seed term eps S (eps ~1e-5), and multiplicative noise sigma sqrt(K_i) eta, scanned over 2-3 sigma values.\n- (C) B with b1 = 1.2 b2, swapped at T/2 (Matsubara's reversal).\n\nPer cell, log:\n- delta = (sum K1 - sum K2)/(sum K1 + sum K2) at birth and at division (the G map);\n- parent-daughter kind agreement;\n- in-run switches per cell generation;\n- conversions of intact cells (L7).\n\nPass conditions:\n- B's G map has stable fixed points near \u00b11, while A's lies on the identity line;\n- >= 90% of daughters are same-kind;\n- the switch rate is above 0 and below 0.1 per generation;\n- B's kind share stays inside the mirror-arm envelope;\n- C's share rises and then reverses after the swap.\n\nIf membrane_kinds will not host it, c02's two-kind micelle world (contrib/20261025T1042-c02-micelle-chemoton-2kinds) already has K_i^2 kinetics.",
+ "slug": "bistable-autocatalytic-kinds",
+ "target": [
+  "H"
+ ],
+ "class": "phase-field",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Matsubara, Ameta, Thutupalli, Nghe & Krishna, Conditions for Darwinian evolution in compartmentalized autocatalytic reaction networks, arXiv:2211.03155 (v2, Jul 2026). Abstract re-opened by the synthesizer; the heredity sweep read the PDF (the r(x) condition, the Fig. 6 reversal).",
+   "url": "https://arxiv.org/abs/2211.03155"
+  },
+  {
+   "cite": "Doulcier, Lambert, De Monte & Rainey, eLife 9:e53433 (2020): the newborn-to-adult composition map and developmental correction; opened by the heredity sweep.",
+   "url": "https://elifesciences.org/articles/53433"
+  },
+  {
+   "cite": "Singh & Jain, Life 13:2327 (2023): noise-driven switching between bistable autocatalytic states in dividing protocells; opened by the heredity sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10744544/"
+  }
+ ]
+}

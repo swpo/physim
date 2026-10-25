@@ -1,0 +1,35 @@
+{
+ "id": "20261025T1650-c00-q-ledger-shadow-price-judge",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Does a ledger-replay neutral shadow plus a multilevel Price split show pcell-mwall's selection as between-cell covariance offset by within-cell transmission, and assign lab 1's mcg-MIRd rise to transmission?",
+ "summary": "Rechtsteiner & Bedau (ECAL'99) define a neutral shadow that replays a run's births, deaths and mutation rate with uniformly random parents and victims, so all selection in it is random. Markovitch, Witkowski & Virgo (arXiv:1802.08024) use the multilevel Price equation to split chemical heredity into within-group and between-group terms. pcell-mwall's cell-level selection and pcell's within-cell cheater erosion have so far been reported separately; one Price identity plus a shadow envelope from the existing ledgers would make them one quantitative law. The shadow also gives an L7 neutral arm in worlds whose kinds are attractors, where no fitness-neutral in-world twin can be built.",
+ "experiment": "Positive control (about 15 min). A synthetic Moran process with N = 200.\n- Shadow: replay the run's time-ordered births, deaths and mutation events, drawing each parent and each victim uniformly from the living shadow population; 1000 replays.\n- Expected: s = 0 lands inside the 95% envelope about 95% of the time; s = 0.05 leaves it, with the covariance term carrying >= 90% of the change.\n\nMain (about 40 min, analysis only, no new simulation). Use the deterministic pcell-mwall packs (c14, seeds 0-3, or b42).\n- Window: one mean cell lifetime.\n- z_k: the mean particle yield of cell k.\n- w_k: descendant particles (or cells) at the window end, from the exact particle genealogy.\n- Compute Cov(w,z)/w_bar (between cells) and E[w dz]/w_bar (within cells), and check that their sum equals the observed change in mean yield.\n- Negative control: the identical-event inert marker should give both terms ~0.\n- Prediction: the between-cell term is positive and the within-cell term negative.\n\nDiagnostic. On lab 1's mcg-MIRd two-sided-yield runs, the rise in mean yield should be assigned to transmission.\n\nAlso report the per-kind variance of offspring number (Rice). Reuse the Price code in threads/flow-lenia/scripts/audit_gene.py and threads/active-droplets/evo_analyze.py rather than writing a third.",
+ "slug": "ledger-shadow-price-judge",
+ "target": [
+  "H"
+ ],
+ "class": "hybrid-particle-field",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": true,
+ "sources": [
+  {
+   "cite": "Rechtsteiner & Bedau, A generic neutral model for quantitative comparison of genotypic evolutionary activity, ECAL'99, LNCS pp. 109-118. The synthesizer re-opened the PDF text and confirmed the shadow definition.",
+   "url": "https://people.reed.edu/~mab/publications/papers/ecal99.pdf"
+  },
+  {
+   "cite": "Markovitch, Witkowski & Virgo, Chemical heredity as group selection at the molecular level, arXiv:1802.08024 (2018); abstract re-opened by the synthesizer.",
+   "url": "https://arxiv.org/abs/1802.08024"
+  },
+  {
+   "cite": "Rice, A stochastic version of the Price equation, BMC Evol Biol 8:262 (2008); opened by the heredity sweep.",
+   "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2577117/"
+  }
+ ],
+ "notes": "No citation is wrong. Two small fixes: (1) Rice's full title is 'A stochastic version of the Price equation reveals the interplay of deterministic and stochastic processes in evolution', BMC Evol Biol 8:262 (2008), doi:10.1186/1471-2148-8-262, https://pmc.ncbi.nlm.nih.gov/articles/PMC2577117/. (2) For Markovitch, Witkowski & Virgo, a more precise summary: their multilevel Price equation (Eq. 2, after Price 1972) splits w\u0304\u0394z into three terms: between-group selection cov_i(<w_i>,<z_i>), within-group selection <cov_j(w_ij,z_ij)>_i, and transmission <w_ij \u0394z_ij>. They apply it to GARD lipid assemblies. The question's E[w dz]/w\u0304 'within-cell' term combines their within-group selection and transmission terms. The ECAL'99 citation is accurate; the volume is LNCS 1674."
+}

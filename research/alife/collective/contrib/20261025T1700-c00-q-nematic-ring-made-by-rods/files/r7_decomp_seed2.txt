@@ -1,0 +1,9 @@
+frame 40 (t=200): 15 rods; median |U_centroid| 0.0854, |U_tot| 0.0552, |U_self| 0.0318 (active-only 0.0087), |U_nbr| 0.0654; |U_self|>|U_nbr| in 0.20; median cos(U_centroid, U_tot) 0.00, cos(U_centroid, U_self) 0.00
+frame 70 (t=350): 16 rods; median |U_centroid| 0.0853, |U_tot| 0.0396, |U_self| 0.0302 (active-only 0.0089), |U_nbr| 0.0496; |U_self|>|U_nbr| in 0.31; median cos(U_centroid, U_tot) 0.39, cos(U_centroid, U_self) -0.05
+frame 100 (t=500): 20 rods; median |U_centroid| 0.1085, |U_tot| 0.0510, |U_self| 0.0370 (active-only 0.0116), |U_nbr| 0.0556; |U_self|>|U_nbr| in 0.35; median cos(U_centroid, U_tot) 0.85, cos(U_centroid, U_self) 0.24
+frame 130 (t=650): 26 rods; median |U_centroid| 0.0000, |U_tot| 0.0484, |U_self| 0.0250 (active-only 0.0114), |U_nbr| 0.0497; |U_self|>|U_nbr| in 0.15; median cos(U_centroid, U_tot) 0.00, cos(U_centroid, U_self) 0.00
+ALL 77 rod-snapshots: median |U_self|/|U_tot| 0.63; |U_self|>|U_nbr| in 0.25; median cos(U_centroid, U_self) 0.00; median |U_centroid|/|U_tot| 1.12
+
+real	5m0.903s
+user	4m53.456s
+sys	0m4.504s

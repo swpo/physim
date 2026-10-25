@@ -1,0 +1,34 @@
+pack /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/nematic-ringed/construction/r4_res15_seed0: T=121 frames, dt_frame=5.0, tracks 13, persistent splits 1, max gen 1
+check vs metrics.json: tracks 13 persistent splits 1
+
+A. motion: 10 tracks >= 5 frames; 3 live >= 20 frames (= K)
+  median rod long axis L = 34.2 px, width 5.9 px, sqrt(area) 14.2 px (L/sqrtA = 2.41)
+  tracks with bl_sqrtA >= 1: 3 (long-lived 2)
+  tracks with bl_sqrtA >= 3: 0 (long-lived 0)
+  tracks with bl_L >= 1: 0 (long-lived 0)
+  tracks with bl_L >= 2: 0 (long-lived 0)
+  tracks with bl_L >= 3: 0 (long-lived 0)
+  top 10 by net displacement:
+   #2 f41-108 (split) net 27.7 px path 28.0 persist 0.99 | sqrtA 14.8 -> 1.87 BL | L 36.5 W 5.9 -> 0.76 L | speed 0.0826 px/t (0.0551 phys) | axis-align 1.00
+   #1 f41-102 (split) net 26.0 px path 26.1 persist 1.00 | sqrtA 14.2 -> 1.83 BL | L 34.2 W 5.9 -> 0.76 L | speed 0.0854 px/t (0.0569 phys) | axis-align 1.00
+   #6 f104-120 (split) net 14.4 px path 14.5 persist 0.99 | sqrtA 9.8 -> 1.47 BL | L 14.8 W 6.3 -> 0.97 L | speed 0.1801 px/t (0.1201 phys) | axis-align 0.16
+   #8 f105-120 (split) net 9.0 px path 9.2 persist 0.98 | sqrtA 9.1 -> 0.98 BL | L 13.4 W 5.9 -> 0.67 L | speed 0.1196 px/t (0.0798 phys) | axis-align 0.08
+   #4 f103-120 (split) net 7.9 px path 8.0 persist 0.99 | sqrtA 8.2 -> 0.97 BL | L 10.6 W 6.0 -> 0.75 L | speed 0.0932 px/t (0.0621 phys) | axis-align 0.43
+   #7 f105-120 (split) net 5.5 px path 5.6 persist 0.98 | sqrtA 9.0 -> 0.62 BL | L 13.2 W 5.7 -> 0.42 L | speed 0.0739 px/t (0.0493 phys) | axis-align 0.99
+   #11 f111-120 (split) net 5.2 px path 5.3 persist 0.98 | sqrtA 9.3 -> 0.56 BL | L 14.0 W 6.1 -> 0.37 L | speed 0.1152 px/t (0.0768 phys) | axis-align 0.10
+   #10 f109-120 (split) net 4.3 px path 4.4 persist 0.98 | sqrtA 9.1 -> 0.47 BL | L 13.5 W 6.0 -> 0.32 L | speed 0.0778 px/t (0.0519 phys) | axis-align 0.50
+   #12 f111-120 (split) net 3.8 px path 3.8 persist 0.98 | sqrtA 14.4 -> 0.26 BL | L 38.6 W 6.2 -> 0.10 L | speed 0.0836 px/t (0.0557 phys) | axis-align 0.89
+   #0 f19-40 (nucleation) net 0.1 px path 0.9 persist 0.15 | sqrtA 10.0 -> 0.01 BL | L 11.2 W 6.4 -> 0.01 L | speed 0.0013 px/t (0.0008 phys) | axis-align nan
+  median persistence (net/path) of long-lived tracks: 0.99; median axis alignment 1.00 (random isotropic = 0.64)
+
+B. surfactant s vs signed distance d (px) to phi=0, render frames >= 20 (100 frames):
+  -3.25:0.213 -2.75:0.251 -2.25:0.302 -1.75:0.350 -1.25:0.405 -0.75:0.471 -0.25:0.543 +0.25:0.000 +0.75:0.510 +1.25:0.000 +1.75:0.352 +2.25:0.247 +2.75:0.234 +3.25:0.189 +3.75:0.166 +4.25:0.000 +4.75:0.139
+  per component (area >= 12, with core pixels d<=-1.5): n=251; rim/core median 1.59 (IQR 1.55-1.71); rim/out median 2.51; both >= 1.5: 0.86
+  aggregate means: rim 0.530 core 0.327 out 0.206 -> rim/core 1.62, rim/out 2.58
+  eta^2 of s given phi (48 phi bins, pixels within -3<=d<=4): 0.940
+
+C. track 2: frames 41-108 (t=205-540), birth split from [0], children [9, 10] (child births: ['split', 'split'])
+  persistent splits involving it: [(41, 0, [1, 2])]
+  generation 1
+  net 27.7 px, path 28.0, sqrtA 14.79 -> 1.87 BL; long axis 36.5 -> 0.76 L; persist 0.99
+  own ring at 67 render frames: rim/core median 1.56 (min 1.44), rim/out median 2.92 (min 2.25); frames with both >= 1.5: 0.88

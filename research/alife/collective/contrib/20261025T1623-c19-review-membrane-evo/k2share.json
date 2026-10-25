@@ -1,0 +1,134 @@
+{
+ "up/21": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.095,
+   0.65,
+   0.931
+  ],
+  "biomass_end": 2210.8,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.47, rim/outside 4.35 (aggregate of 70 individuals; 49/70 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 45, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 3, merges 11, merge/split ratio 0.244, nucleations 0"
+ },
+ "up/22": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.245,
+   0.389,
+   0.0,
+   0.776
+  ],
+  "biomass_end": 2150.0,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.44, rim/outside 4 (aggregate of 67 individuals; 50/67 membrane-l",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 44, persistent splits 7 (0 more failed only because the siblings re-merged within K), max generation 4, merges 4, merge/split ratio 0.091, nucleations 0"
+ },
+ "up/23": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.098,
+   0.539,
+   0.823
+  ],
+  "biomass_end": 2351.7,
+  "L_radial": "peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.3, rim/outside 3.6 (aggregate of 74 individuals; 38/74 membrane-",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 58, persistent splits 5 (0 more failed only because the siblings re-merged within K), max generation 3, merges 18, merge/split ratio 0.31, nucleations 0"
+ },
+ "up/24": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.404,
+   0.761,
+   0.651
+  ],
+  "biomass_end": 1990.3,
+  "L_radial": "peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.48, rim/outside 3.77 (aggregate of 67 individuals; 46/67 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 54, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 4, merges 18, merge/split ratio 0.333, nucleations 2"
+ },
+ "up/25": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.553,
+   0.68,
+   0.968,
+   0.982
+  ],
+  "biomass_end": 2299.7,
+  "L_radial": "peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.32, rim/outside 2.6 (aggregate of 70 individuals; 37/70 membrane",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 65, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 3, merges 36, merge/split ratio 0.554, nucleations 1"
+ },
+ "up/26": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.611,
+   0.932,
+   0.967
+  ],
+  "biomass_end": 2327.9,
+  "L_radial": "peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.31, rim/outside 2.59 (aggregate of 64 individuals; 33/64 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 71, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 2, merges 33, merge/split ratio 0.465, nucleations 0"
+ },
+ "twin/21": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.04,
+   0.086,
+   0.455
+  ],
+  "biomass_end": 1480.0,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.51, rim/outside 5.63 (aggregate of 78 individuals; 57/78 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 38, persistent splits 14 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, merge/split ratio 0.026, nucleations 1"
+ },
+ "twin/22": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.207,
+   0.294,
+   0.347,
+   0.301
+  ],
+  "biomass_end": 1686.2,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.54, rim/outside 5.78 (aggregate of 80 individuals; 63/80 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 39, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 4, merges 4, merge/split ratio 0.103, nucleations 0"
+ },
+ "twin/23": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.0,
+   0.154,
+   0.025
+  ],
+  "biomass_end": 1731.1,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.4, rim/outside 5.66 (aggregate of 69 individuals; 47/69 membrane",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 39, persistent splits 10 (0 more failed only because the siblings re-merged within K), max generation 4, merges 0, merge/split ratio 0, nucleations 0"
+ },
+ "twin/24": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.161,
+   0.391,
+   0.478
+  ],
+  "biomass_end": 1669.0,
+  "L_radial": "peak at rho=0.85 (in the peak band 0.5-1.5), rim/core 1.5, rim/outside 6.33 (aggregate of 76 individuals; 56/76 membrane",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 39, persistent splits 17 (0 more failed only because the siblings re-merged within K), max generation 5, merges 1, merge/split ratio 0.026, nucleations 1"
+ },
+ "twin/25": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.387,
+   0.101,
+   0.165,
+   0.28
+  ],
+  "biomass_end": 1766.3,
+  "L_radial": "peak at rho=0.95 (in the peak band 0.5-1.5), rim/core 1.43, rim/outside 5.72 (aggregate of 74 individuals; 50/74 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 32, persistent splits 12 (0 more failed only because the siblings re-merged within K), max generation 3, merges 1, merge/split ratio 0.031, nucleations 0"
+ },
+ "twin/26": {
+  "K2_share_t10k_20k_30k_40k": [
+   0.0,
+   0.264,
+   0.395,
+   0.351
+  ],
+  "biomass_end": 1753.6,
+  "L_radial": "peak at rho=0.75 (in the peak band 0.5-1.5), rim/core 1.43, rim/outside 5.58 (aggregate of 75 individuals; 53/75 membran",
+  "replication": "replication (lineage window K = 20 frames = time 5000, default): splits 38, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 4, merges 2, merge/split ratio 0.053, nucleations 0"
+ }
+}
