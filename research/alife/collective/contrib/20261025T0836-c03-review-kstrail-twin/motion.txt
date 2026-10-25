@@ -1,0 +1,12 @@
+kstrail seed7: - motion: 27 long-lived tracks moved >= 1 body length; max speed 0.507/time; max body lengths 11.9
+   - replication (lineage window K = 20 frames = time 60, default): splits 33, persistent splits 5 (0 more failed only because the siblings re-merged within K), ma
+kstrail seed8: - motion: 23 long-lived tracks moved >= 1 body length; max speed 0.502/time; max body lengths 13.0
+   - replication (lineage window K = 20 frames = time 60, default): splits 15, persistent splits 3 (0 more failed only because the siblings re-merged within K), ma
+twin_kh05 seed7: - motion: 2 long-lived tracks moved >= 1 body length; max speed 0.117/time; max body lengths 1.5
+   - replication (lineage window K = 20 frames = time 60, default): splits 21, persistent splits 14 (0 more failed only because the siblings re-merged within K), m
+twin_kh05 seed8: - motion: 1 long-lived tracks moved >= 1 body length; max speed 0.117/time; max body lengths 1.1
+   - replication (lineage window K = 20 frames = time 60, default): splits 27, persistent splits 20 (0 more failed only because the siblings re-merged within K), m
+twin_kh01 seed7: - motion: 8 long-lived tracks moved >= 1 body length; max speed 0.236/time; max body lengths 1.8
+   - replication (lineage window K = 20 frames = time 60, default): splits 22, persistent splits 9 (0 more failed only because the siblings re-merged within K), ma
+twin_kh01 seed8: - motion: 7 long-lived tracks moved >= 1 body length; max speed 0.261/time; max body lengths 2.3
+   - replication (lineage window K = 20 frames = time 60, default): splits 27, persistent splits 11 (0 more failed only because the siblings re-merged within K), m

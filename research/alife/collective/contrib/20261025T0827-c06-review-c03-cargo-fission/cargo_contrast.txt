@@ -1,0 +1,26 @@
+== rerun
+frame 0: contrast nan, bodies 757, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 1221.0, bodies 34, share of bodies >=2x 1.00, weakest body 16.1x
+frame 20: contrast 1021.0, bodies 34, share of bodies >=2x 1.00, weakest body 10.4x
+frame 30: contrast 997.0, bodies 34, share of bodies >=2x 1.00, weakest body 10.0x
+frame 40: contrast 853.0, bodies 39, share of bodies >=2x 1.00, weakest body 353.8x
+frame 50: contrast 752.0, bodies 50, share of bodies >=2x 1.00, weakest body 8.2x
+frame 60: contrast 783.5, bodies 49, share of bodies >=2x 1.00, weakest body 92.0x
+frame 70: contrast 829.0, bodies 50, share of bodies >=2x 1.00, weakest body 11.8x
+frame 80: contrast 868.0, bodies 50, share of bodies >=2x 1.00, weakest body 14.4x
+frame 90: contrast 904.0, bodies 50, share of bodies >=2x 1.00, weakest body 18.5x
+frame 100: contrast 843.5, bodies 57, share of bodies >=2x 1.00, weakest body 59.3x
+frame 100: contrast 843.5, bodies 57, share of bodies >=2x 1.00, weakest body 59.3x
+== rerun_chi0
+frame 0: contrast nan, bodies 757, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 2.0, bodies 34, share of bodies >=2x 0.53, weakest body 1.6x
+frame 20: contrast 1.5, bodies 34, share of bodies >=2x 0.00, weakest body 1.2x
+frame 30: contrast 1.3, bodies 34, share of bodies >=2x 0.00, weakest body 1.1x
+frame 40: contrast 1.2, bodies 39, share of bodies >=2x 0.00, weakest body 1.0x
+frame 50: contrast 1.2, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 60: contrast 1.1, bodies 49, share of bodies >=2x 0.00, weakest body 1.1x
+frame 70: contrast 1.1, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 80: contrast 1.1, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 90: contrast 1.1, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 57, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 57, share of bodies >=2x 0.00, weakest body 1.0x
