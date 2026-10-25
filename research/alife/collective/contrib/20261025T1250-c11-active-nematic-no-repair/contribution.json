@@ -1,0 +1,16 @@
+{
+  "id": "20261025T1250-c11-active-nematic-no-repair",
+  "kind": "finding",
+  "mode": "control",
+  "task": "C:motile-repair",
+  "title": "Negative: ringed active-nematic rods do not repair; every cut rod (6/6 cuts of 20-40%, half, rim or core) vanishes within 5-20 t while its undamaged comparator persists",
+  "summary": "My ringed active-nematic world (20261025T1141-c11-active-nematic-ringed) with a damage hook that resets the cut region to the bath (phi=-1, Q=0, s=0), cut with labkit --damage on mature compact rods. 40% half cut (seeds 0, 2), 40% rim cut (seed 2), 20% half cut (seeds 0, 1) and 20% core cut (seed 0, a 4 px disk inside the rod): in all 6 the target (19-26 px, 0.56-0.65x the median body) is never seen again after 5-20 t, with no piece left, while labkit's undamaged comparator of similar size keeps 0.73-1.23 of its area to t=1000 (or divides). The rest of the colony is unaffected. These rods sit close to their minimum viable size under the chemostat (which dissolves small droplets, the Ohta-Kawasaki effect that also keeps them apart), so any loss of material or of nematic order tips them below it; repair would need a body well above its dissolution threshold.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed", "20261025T1014-c11-active-nematic-colony"],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["dmg20_core/seed0/damage.png", "dmg_half/seed0/damage.png", "dmg20_half/seed1/FACTS.md", "dmg_rim/seed2/FACTS.md"],
+  "outcome": "negative",
+  "finding": {"operator": "active-nematic rods on a chemostatted (Ohta-Kawasaki-like) droplet field", "capability": "R", "world": "collective/contrib/20261025T1141-c11-active-nematic-ringed/world.py", "necessary": false, "law": false, "control": "labkit damage with undamaged comparator, 6 cuts on 3 seeds (40% half x2, 40% rim, 20% half x2, 20% core)", "result": "6/6 targets gone within 5-20 t, 0 pieces; comparators persist (area 0.73-1.23 of pre-cut at t=1000 or until they divide or merge)"},
+  "limits": "The targets chosen by labkit's mature-compact rule are among the smaller bodies (0.56-0.65x median), which are the most fragile; a cut on a rod just before division (the largest bodies) was not tried. The erase also removes Q, so loss of order and loss of material are not separated. Comparators are single bodies, not population averages.",
+  "compute": {"cpu_minutes": 40}
+}
