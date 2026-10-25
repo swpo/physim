@@ -1,0 +1,16 @@
+{
+  "id": "20261025T1116-c09-q-active-gel-cells",
+  "kind": "question",
+  "mode": "explore",
+  "task": "C:swim-divide",
+  "title": "Can the active-gel comet mechanism live inside a phase-field cell, so that a contractile focus drags the cell (M) and a grown cell holding two foci pinches in two (D)?",
+  "summary": "The active-gel comets (20261025T1016-c09-active-gel-comets-claim) swim but never divide (20261025T1035-c09-active-gel-no-division), and their individuality needs the flow's transport (20261025T1046-c09-active-gel-bd-twin). A cell-scale version is the obvious route to C:swim-divide: a Cahn-Hilliard droplet phi whose interior hosts the gel (stress zeta h(phi) a/(1+a)/(1+rho b), generator made from substrate only inside, regulator trail), with phi carried by the gel flow. My prototype (world_prototype.py, one hour) found two numerical obstacles and one physical one. (1) Conservative advection of phi+1 by the compressible gel flow piles phi far above 1 and the explicit CH cubic overflows. (2) The transport form -v.grad(phi) is not conservative for a compressible flow: the mean of phi drifts (-0.4 to -0.55 in t=80) and the spinodal pattern is erased, so no droplets form (CH alone separates by t=20). (3) Where droplets do form (with a growth term kg a), the gel inside starves unless kc h - ka clearly exceeds the diffusive loss Da/R^2 of a small droplet, and the cells sit still (prototype_cells_static.png).",
+  "parents": ["20261025T1016-c09-active-gel-comets-claim", "20261025T1035-c09-active-gel-no-division", "20261025T1046-c09-active-gel-bd-twin"],
+  "class": "active-gel",
+  "world": "world_prototype.py",
+  "evidence": ["world_prototype.py", "prototype_cells_static.png"],
+  "target": ["S", "I", "B", "M", "D"],
+  "priority": 3,
+  "experiment": "Make the cell boundary independent of the compressible gel: either (a) give the gel a separate density that is advected conservatively and confined by h(phi), and move phi only by an incompressible projection of v (or by a friction-coupled Allen-Cahn front velocity v.n), or (b) use a volume-conserving Allen-Cahn cell (as phase_membrane) with the gel stress acting on the front through v.n. Set kc h - ka >= 3 Da/R^2 so the interior gel lives. Screen zeta 30-100 and cell radius 6-15 for (i) a single off-centre focus with a regulator tail that moves the cell >= 3 diameters and (ii) cells grown on substrate that form two foci and pinch. One loop: 2 seeds x 6 points, labkit packs, T=300.",
+  "compute": {"cpu_minutes": 25}
+}
