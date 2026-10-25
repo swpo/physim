@@ -107,7 +107,15 @@ whenever you re-ran the world, and if the claimed behaviour did not reproduce, s
 and give the verdict Weak, or Contradicted when your run shows it does not happen. List only capabilities you saw yourself, each with an observation;
 capabilities you did not check go in `"not_checked"`. Report every seed you tried. Point
 `controls_run` entries at files or runs inside your directory or the claim's. Mark capabilities
-that hold by construction. Set `bd_supported` (true, or the list of capabilities the twin lost)
+that hold by construction. A dt/2 test changes the world's own integration step (a `WORLD_P`
+key or the world's constant), not labkit's `--dt`, which only relabels time; a resolution test changes
+the world's grid spacing (its scale or dx), not only `--size`. Several "dt/2" controls before 17:00 on
+October 25 used `--dt` alone, so their time-step conclusions are untested. Before you support `B`, read
+the code: a layer pushed to the interface by a term written against the body field (for example a drift
+up grad 4phi(1-phi)) counts only if the individual makes most of that species itself (RUBRIC L3, the
+quasi-equilibrium clause); if the medium makes most of it, put `B` in `by_construction`. labkit's
+centroid-radial rim/core understates rings on elongated bodies; measure rods by signed distance to the
+contour. Set `bd_supported` (true, or the list of capabilities the twin lost)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
 when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For
