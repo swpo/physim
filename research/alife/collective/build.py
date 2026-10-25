@@ -51,7 +51,7 @@ ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 2  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 3  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
