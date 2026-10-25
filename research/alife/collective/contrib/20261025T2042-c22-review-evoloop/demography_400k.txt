@@ -1,0 +1,27 @@
+trk400_s4.json window (200000, 400000) births_with_parent 246975 off-kind 36652 conversions of living 3802 per off-kind birth 0.1
+   {'kind': 2, 'births_by_parents': 13490, 'on_kind': 12217, 'breed_true': 0.906, 'deaths': 37645, 'mean_kids_at_death': 0.36, 'mean_age_at_death': 34, 'births_per_1000_loop_steps': 10.48}
+   {'kind': 3, 'births_by_parents': 201314, 'on_kind': 173042, 'breed_true': 0.86, 'deaths': 174721, 'mean_kids_at_death': 1.14, 'mean_age_at_death': 238, 'births_per_1000_loop_steps': 4.83}
+   {'kind': 4, 'births_by_parents': 28150, 'on_kind': 22746, 'breed_true': 0.808, 'deaths': 28988, 'mean_kids_at_death': 1.02, 'mean_age_at_death': 253, 'births_per_1000_loop_steps': 3.84}
+   {'kind': 5, 'births_by_parents': 406, 'on_kind': 175, 'breed_true': 0.431, 'deaths': 1691, 'mean_kids_at_death': 0.29, 'mean_age_at_death': 96, 'births_per_1000_loop_steps': 2.5}
+   {'kind': 6, 'births_by_parents': 131, 'on_kind': 13, 'breed_true': 0.099, 'deaths': 379, 'mean_kids_at_death': 0.44, 'mean_age_at_death': 126, 'births_per_1000_loop_steps': 2.73}
+   {'kind': 7, 'births_by_parents': 215, 'on_kind': 9, 'breed_true': 0.042, 'deaths': 214, 'mean_kids_at_death': 1.07, 'mean_age_at_death': 266, 'births_per_1000_loop_steps': 3.77}
+   {'kind': 8, 'births_by_parents': 50, 'on_kind': 0, 'breed_true': 0.0, 'deaths': 383, 'mean_kids_at_death': 0.16, 'mean_age_at_death': 74, 'births_per_1000_loop_steps': 1.78}
+   {'kind': 9, 'births_by_parents': 100, 'on_kind': 7, 'breed_true': 0.07, 'deaths': 152, 'mean_kids_at_death': 0.66, 'mean_age_at_death': 289, 'births_per_1000_loop_steps': 2.28}
+   {'kind': 10, 'births_by_parents': 89, 'on_kind': 16, 'breed_true': 0.18, 'deaths': 165, 'mean_kids_at_death': 0.54, 'mean_age_at_death': 256, 'births_per_1000_loop_steps': 2.1}
+   {'kind': 11, 'births_by_parents': 2934, 'on_kind': 2060, 'breed_true': 0.702, 'deaths': 2262, 'mean_kids_at_death': 1.32, 'mean_age_at_death': 659, 'births_per_1000_loop_steps': 1.97}
+   {'kind': 12, 'births_by_parents': 80, 'on_kind': 36, 'breed_true': 0.45, 'deaths': 113, 'mean_kids_at_death': 0.72, 'mean_age_at_death': 436, 'births_per_1000_loop_steps': 1.62}
+  top conversions [[3, 4, 1572], [4, 3, 973], [2, 3, 381], [3, 2, 329], [4, 5, 126]]
+trk400_s5.json window (250000, 400000) births_with_parent 65270 off-kind 12927 conversions of living 1675 per off-kind birth 0.13
+   {'kind': 2, 'births_by_parents': 690, 'on_kind': 524, 'breed_true': 0.759, 'deaths': 4575, 'mean_kids_at_death': 0.15, 'mean_age_at_death': 60, 'births_per_1000_loop_steps': 2.52}
+   {'kind': 3, 'births_by_parents': 1922, 'on_kind': 538, 'breed_true': 0.28, 'deaths': 4067, 'mean_kids_at_death': 0.47, 'mean_age_at_death': 128, 'births_per_1000_loop_steps': 3.7}
+   {'kind': 4, 'births_by_parents': 51780, 'on_kind': 44927, 'breed_true': 0.868, 'deaths': 45516, 'mean_kids_at_death': 1.13, 'mean_age_at_death': 313, 'births_per_1000_loop_steps': 3.63}
+   {'kind': 5, 'births_by_parents': 1019, 'on_kind': 406, 'breed_true': 0.398, 'deaths': 2112, 'mean_kids_at_death': 0.55, 'mean_age_at_death': 169, 'births_per_1000_loop_steps': 2.85}
+   {'kind': 6, 'births_by_parents': 449, 'on_kind': 25, 'breed_true': 0.056, 'deaths': 411, 'mean_kids_at_death': 1.14, 'mean_age_at_death': 321, 'births_per_1000_loop_steps': 3.41}
+   {'kind': 7, 'births_by_parents': 383, 'on_kind': 25, 'breed_true': 0.065, 'deaths': 329, 'mean_kids_at_death': 1.18, 'mean_age_at_death': 369, 'births_per_1000_loop_steps': 3.15}
+   {'kind': 8, 'births_by_parents': 285, 'on_kind': 22, 'breed_true': 0.077, 'deaths': 489, 'mean_kids_at_death': 0.61, 'mean_age_at_death': 219, 'births_per_1000_loop_steps': 2.67}
+   {'kind': 9, 'births_by_parents': 165, 'on_kind': 4, 'breed_true': 0.024, 'deaths': 273, 'mean_kids_at_death': 0.6, 'mean_age_at_death': 330, 'births_per_1000_loop_steps': 1.83}
+   {'kind': 10, 'births_by_parents': 268, 'on_kind': 36, 'breed_true': 0.134, 'deaths': 353, 'mean_kids_at_death': 0.75, 'mean_age_at_death': 353, 'births_per_1000_loop_steps': 2.15}
+   {'kind': 11, 'births_by_parents': 1672, 'on_kind': 957, 'breed_true': 0.572, 'deaths': 1351, 'mean_kids_at_death': 1.25, 'mean_age_at_death': 599, 'births_per_1000_loop_steps': 2.07}
+   {'kind': 12, 'births_by_parents': 6344, 'on_kind': 4721, 'breed_true': 0.744, 'deaths': 5203, 'mean_kids_at_death': 1.22, 'mean_age_at_death': 715, 'births_per_1000_loop_steps': 1.7}
+   {'kind': 13, 'births_by_parents': 259, 'on_kind': 157, 'breed_true': 0.606, 'deaths': 358, 'mean_kids_at_death': 0.75, 'mean_age_at_death': 518, 'births_per_1000_loop_steps': 1.4}
+  top conversions [[4, 3, 412], [4, 5, 236], [5, 4, 223], [3, 4, 207], [4, 6, 52]]

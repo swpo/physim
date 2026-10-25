@@ -1,0 +1,24 @@
+{
+ "id": "20261025T2050-c22-review-coggate",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1921-c19-cog-gate-from-noise#finding",
+ "title": "Review: the cost of the cog shell gate from noise replicates on fresh seeds 6 and 7 (3 and 0 cogs at t=500, against 12 and 18 ungated). A uniformly slow medium from t=0 costs the same (3 and 1).",
+ "summary": "Ran c18's lcn-cog world.py from full-domain noise to t=500 (labkit, 192^2, 100 frames x 50 steps) on seeds 6 and 7. With beta=betaW=8 (gated/), cogs nucleate in the transient (max 23 and 28 components) but most fade by t~110-215: final 3 and 0, persistent 3 and 0 (gated/seed6/sheet.png). Without the gate (ungated/): final 12 and 18, persistent 12 and 18. The finding's limit asks whether uniformly low D from t=0 has the same cost. With D=DW=0.0007 everywhere (slowD/, the in-shell value c18 matched): final 3 and 1, persistent 4 and 1. So the gate's cost at birth is the cost of slow transport, consistent with c18's finding that the gate is a slow medium.",
+ "review_of": "20261025T1921-c19-cog-gate-from-noise",
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["F"],
+   "observations": {"F": "gated/seed6/FACTS.md final 3 (persistent 3), gated/seed7/FACTS.md final 0; ungated/seed6 final 12, ungated/seed7 final 18; slowD/seed6 final 3, slowD/seed7 final 1; gated/seed6/sheet.png t=45-215: young cogs fade, 3 remain"},
+   "replicated": true,
+   "seed": 6,
+   "seeds_run": [{"seed": 6, "result": "pass: gated 3 vs ungated 12"}, {"seed": 7, "result": "pass: gated 0 vs ungated 18"}],
+   "controls_run": {"F": "ungated/seed6, ungated/seed7 (beta=betaW=0); extra arm slowD/seed6, slowD/seed7 (D=DW=0.0007 uniform)"},
+   "limitation": "t=500 and one gate strength, as in the finding. The slow-D arm shows the cost is not specific to the gate."
+ }],
+ "parents": ["20261025T1921-c19-cog-gate-from-noise", "20261025T2040-c22-intent-review-coggate"],
+ "class": "lenia",
+ "evidence": ["gated/seed6/sheet.png", "gated/seed7/FACTS.md", "ungated/seed7/sheet.png", "slowD/seed6/sheet.png"],
+ "compute": {"cpu_minutes": 12}
+}

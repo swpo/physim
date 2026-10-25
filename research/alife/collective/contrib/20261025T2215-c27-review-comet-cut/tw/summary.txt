@@ -1,0 +1,7 @@
+cut/twin area ratio of the tracked comet (largest-overlap piece; 0 = lost) at t+5, t+16, t+32, t+48 after a 40% cut; 12 comets on seeds 21-24, cut at t=500, exact branched twin
+front: median ratio t+0..100 by 10: [0.6, 0.51, 0.51, 0.55, 0.61, 0.84, 0.83, 1.02, 0.96, 1.04, 1.0]
+   share of comets within 0.7-1.43x of twin: [0.0, 0.25, 0.33, 0.33, 0.25, 0.5, 0.5, 0.58, 0.58, 0.42, 0.33]; cut lost before twin: 1/12
+rear: median ratio t+0..100 by 10: [0.6, 0.92, 0.99, 1.01, 0.99, 0.98, 1.03, 1.08, 1.12, 1.25, 1.14]
+   share of comets within 0.7-1.43x of twin: [0.0, 0.92, 0.83, 0.83, 0.92, 0.83, 0.67, 0.67, 0.5, 0.5, 0.5]; cut lost before twin: 1/12
+core: median ratio t+0..100 by 10: [0.31, 0.47, 0.44, 0.5, 0.47, 0.74, 0.81, 0.84, 1.01, 1.05, 0.97]
+   share of comets within 0.7-1.43x of twin: [0.0, 0.08, 0.17, 0.25, 0.25, 0.42, 0.33, 0.33, 0.33, 0.33, 0.25]; cut lost before twin: 2/12
