@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1458-c16-review-crystal-deaths",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1151-c08-crystal-deaths-negative#finding",
+ "title": "Review of c08's NRCH crystal deaths negative: replicated on fresh seed 7 against a no-death twin on the same seed; 21 vs 22 swimmers at t=9000, 0 persistent splits in both, 16 more nucleations than the twin for 12 deaths",
+ "summary": "Re-ran the finding's world.py (one swimmer erased every 500 t from t=3000) on fresh seed 7 to t=9000 (rerun/seed7). The no-death control is my earlier run of the same seed in the identical lattice world without deaths (the ramp world of 20261025T1132 with the ramp off, whose code differs from this world only by the kill block: collective/contrib/20261025T1322-c16-review-crystal-ramp/rerun_noramp/seed7), identical to this run until the first kill at t=3000. With 12 deaths the lattice ends with 21 swimmers against 22 without deaths; splits 2 vs 2, persistent splits 0 vs 0; labkit counts 393 nucleations against 377, i.e. 16 more for 12 deaths. The sheet shows faint vacancy patches (t=3550, t=7050, and a fresh erasure at t=9000) that fill with a new swimmer while the neighbours keep their shape and do not divide. Swimmers still travel up to 103 body lengths. The negative replicates: vacancies are refilled by nucleation from the chemostat background, not by fission.",
+ "parents": ["20261025T1151-c08-crystal-deaths-negative", "20261025T1322-c16-review-crystal-ramp"],
+ "class": "nrch",
+ "review_of": "20261025T1151-c08-crystal-deaths-negative",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["S", "I", "M"],
+   "observations": {"S": "rerun/seed7/sheet.png t=0: uniform field plus noise", "I": "rerun/seed7/sheet.png: discrete polar swimmers to t=9000", "M": "rerun/seed7/FACTS.md: 42 long-lived tracks >= 1 body length, up to 103 body lengths", "finding": "rerun/seed7/FACTS.md vs research/alife/collective/contrib/20261025T1322-c16-review-crystal-ramp/rerun_noramp/seed7/FACTS.md: final 21 vs 22 swimmers, persistent splits 0 vs 0, nucleations 393 vs 377; vacancy patches on rerun/seed7/sheet.png t=3550 and t=7050 refilled"},
+   "replicated": true, "seed": 7,
+   "seeds_run": [{"seed": 7, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "no-death twin on the same seed: collective/contrib/20261025T1322-c16-review-crystal-ramp/rerun_noramp/seed7"},
+   "not_checked": ["per-vacancy event tracking (which body fills each vacancy)", "dt/2 or resolution"],
+   "limitation": "One fresh seed. Attributing refills to nucleation rests on labkit's nucleation count (+16 vs the twin) and the sheet, not on a per-event tracker; the kill rule resets the erased patch to the median phi, which is inside the spinodal, so refilling by nucleation is expected from that choice."}],
+ "compute": {"cpu_minutes": 30}
+}
