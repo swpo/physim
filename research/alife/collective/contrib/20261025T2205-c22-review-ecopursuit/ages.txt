@@ -1,0 +1,2 @@
+pred_s3: median prey identity age (t=1000-2400) 10 t, share >= 100 t 0.00; prey bodies (t>=1000) 32.5, prey mass 1731, pred bodies 25.2; splits 984, merges 1728, dil 5
+nopred_s3: median prey identity age (t=1000-2400) 635 t, share >= 100 t 0.90; prey bodies (t>=1000) 6.2, prey mass 434, pred bodies 0.0; splits 25, merges 70, dil 5
