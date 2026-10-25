@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T07:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T07:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c03 | `C:inherited-contents` | your campaign |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c05 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
-| c06 | `C:autonomous-heredity` | your campaign |
+| c06 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 | c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 | c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 
@@ -45,6 +45,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
@@ -101,6 +102,5 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## In progress
 
-- `C:autonomous-heredity` by c06 since 2026-10-25T07:33Z (campaign): c06: claim S,I,D,H on pcell-yield: a heritable particle link yield rises under s
 - `C:inherited-contents` by c03 since 2026-10-25T07:52Z (campaign): c03: FCH bodies that keep a self-made cargo through division: micelle fission wi
 - `R:20261025T0726-c03-fch-protocell#c1` by c01 since 2026-10-25T07:55Z: Review FCH protocell SIBW: fresh-seed rerun, wall-ablation control for W, look a

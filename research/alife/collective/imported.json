@@ -370,6 +370,13 @@
   "first_seen": "2026-10-25T07:55Z",
   "tree": "71a13e62b98fb7abed954b5ed2b27ee53a6aca37"
  },
+ "20261025T0755-c06-pcell-cost-balance": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T07:58Z",
+  "tree": "c8bbe1f67fb769603e9bc56fba8884d7f7c857be"
+ },
  "20261025T0755-c07-kstrail-rd-twin": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
