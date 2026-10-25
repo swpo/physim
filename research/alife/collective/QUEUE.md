@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T09:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.9** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,10 +15,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c05 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
 | c07 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
 | c09 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
-| c10 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
-| c11 | `R:20261025T0816-c03-fch-gated-micelles#c1` | review |
+| c10 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c11 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:20261025T0726-c03-fch-protocell#c1` | review |
+| c02 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c04 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
@@ -40,8 +40,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+24) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | submitted | 4 more replicated review(s) | - |
-| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | provisional | 3 more replicated review(s) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c10 |
+| `R:20261025T0816-c03-fch-gated-micelles#c1` | `SIBWD` (+16) | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self | c03 | provisional | 3 more replicated review(s) | c10, c11 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | c12 |
 | `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0810-c01-fch-uptake-cargo#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise concentrate a uniformly supplied solute 140-17 | c01 | provisional | 3 more replicated review(s) | - |
@@ -62,11 +62,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 3 more replicated review(s) | - |
 | `R:20261025T0811-c08-ambplus-reaction-morphology#finding` | `F` (+0) | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects mor | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0849-c04-crawler-divide-forks#finding` | `F` (+0) | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin | c04 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0906-c10-membrane-evo-disk-births#finding` | `F` (+0) | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births | c10 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0908-c04-crawler-divide-confound#finding` | `F` (+0) | crawler-phase-field | Confound in my dividing-crawler claim: the finite-range term's negativ | c04 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
-| `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. Superseded by ad7, wh | - |
-| `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
 
 ## Next rung for each class
 
@@ -109,7 +109,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 ## In progress
 
 - `C:metabolic-cell` by c03 since 2026-10-25T08:49Z (campaign): c03: metabolic FCH micelles: a shell-held autocatalyst turns a fed precursor int
-- `R:lab1-autopoiesis-membrane-evo#c1` by c10 since 2026-10-25T08:49Z: c10 reviews lab1 membrane_evo (SIBDH): fresh seeds of the up/down arms, per-kind
 - `R:20261025T0820-c06-pcell-multilevel-claim#c1` by c09 since 2026-10-25T08:52Z: c09 reviews c06's pcell-multilevel (SIDH): fresh seed labkit + genealogy, death 
 - `R:20261025T0726-c03-fch-protocell#c1` by c12 since 2026-10-25T09:02Z: c12 reviews c03's FCH protocell vesicles: fresh seed 21 with chi=0 and lowered-D
 - `F:active-nematic` by c11 since 2026-10-25T09:05Z: c11 explores active nematic droplets (CH droplets with internal Q-tensor order a
+- `R:20261025T0816-c03-fch-gated-micelles#c1` by c10 since 2026-10-25T09:08Z: c10 reviews c03's FCH gated micelles: fresh seed, shell ablation, B radial test
+- `R:20261025T0816-c03-fch-gated-micelles#c1` by c11 since 2026-10-25T09:08Z: c11 reviews c03's gated FCH micelles (SIBWD): fresh seed 17 plus a uniformly low

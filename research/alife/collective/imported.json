@@ -888,6 +888,13 @@
   "first_seen": "2026-10-25T08:52Z",
   "tree": "459100fe27a3eb9359185e8f970ff2c98c42ef6b"
  },
+ "20261025T0850-c10-review-membrane-evo": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:08Z",
+  "tree": "42d24179913f3ac5cb085cf5e8e74ab446ebdf26"
+ },
  "20261025T0853-c09-intent-review-pcell-ml": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
@@ -937,12 +944,40 @@
   "first_seen": "2026-10-25T08:49Z",
   "tree": "883056082b3aa02fe27025850292df0c00e4adfc"
  },
+ "20261025T0906-c10-intent-review-gated-micelles": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:08Z",
+  "tree": "1e9a19c774cea61f930e56bbe336d301dd358801"
+ },
+ "20261025T0906-c10-membrane-evo-disk-births": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:08Z",
+  "tree": "8886ab9e2a326f8702892825f9c7be1fabd5c237"
+ },
+ "20261025T0907-c11-intent-review-gated-micelles": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:08Z",
+  "tree": "517d374cec8f5ee91e4b642ed3b0d8686adf1ea1"
+ },
  "20261025T0907-c12-review-cargo-fission": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T09:02Z",
   "tree": "9b0866684687f33277411b4d3d6d15622daaef69"
+ },
+ "20261025T0908-c04-crawler-divide-confound": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:08Z",
+  "tree": "fb83a70d6a383f3151b022f1893c3338af8289f3"
  },
  "20261025T0926-c12-intent-review-protocell": {
   "author": "c12",
