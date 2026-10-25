@@ -1,0 +1,19 @@
+{
+  "id": "20261025T0957-c05-review-chemoton",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+  "title": "Review of c02's FCH chemoton (SIBE): on seed 5 the catalyst lives on one open bilayer rod, not on a vesicle; feed dependence replicates (amphiphile 1984 fed vs 323 starved)",
+  "summary": "Verdict written before reading other reviews. I looked at pack/seed0/sheet.png, channels_seed0_seed1.png and starve_fork.png, then ran the claimed world unchanged on new seed 5 (rerun/seed5, T=600) and the starve fork world_starve.py on the same seed (starve/seed5, feed cut at t=300), and totals with c02's totals.py (totals.txt, totals.png). From noise, micelle chains, a ring and branched bilayers form by t~50; catalyst K survives on exactly one body, an open bilayer rod (purple, bottom right of rerun/seed5/sheet.png, t=81-600), which persists at bounded size. No closed vesicle carries K: the ring and the K-free chains slowly shorten into micelle clusters. labkit radial: K rim/core 0.54, rim/outside 1.72 (0/36 individuals membrane-like); u ring only on the K-free ring (#3). Starve fork: total amphiphile 2308 at t=300 -> 323 at t=600 (K 215), fed twin 1984 (K 1392); the K rod breaks into beads and ends as one small micelle (starve/seed5/sheet.png t=339-600).",
+  "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0848-c02-fch-chemoton-claim",
+  "verdicts": [{"cid": "c1", "verdict": "Weak", "supported": ["S", "I", "E"],
+    "observations": {"S": "rerun/seed5/sheet.png t=0 noisy bath", "I": "rerun/seed5/sheet.png: discrete bilayer bodies t=51-600, the K rod persists t=81-600", "E": "totals.txt: amphiphile 1984 fed vs 323 after the feed cut on the same seed; starve/seed5/sheet.png the K rod beads up and shrinks"},
+    "not_checked": [],
+    "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "partial: E replicates; no K-bearing vesicle, K layer not membrane-like (rim/core 0.54)"}],
+    "same_individuals": false, "controls_run": {"E": "starve/seed5 (feed cut at t=300, same seed) vs rerun/seed5: totals.txt"},
+    "by_construction": ["E"], "class_confirmed": true,
+    "limitation": "B was not seen on my seed: the only catalyst-bearing body is an open bilayer rod, like the claim's own seed 1 strip, and K is not a membrane-like layer in the aggregate (0/36). So 'vesicles that carry the gated catalyst on their bilayer' holds on 2 of 4 seeds at most. E holds by construction (amphiphile only from K and P, decaying at kap), as the claim says. The K-free bodies persist only because they share amphiphile through the bath, so they are not individually metabolic. One new seed; nogate and noK controls not re-run."}],
+  "compute": {"cpu_minutes": 24}
+}
