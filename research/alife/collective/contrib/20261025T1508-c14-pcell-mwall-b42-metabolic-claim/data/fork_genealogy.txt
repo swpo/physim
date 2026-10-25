@@ -1,0 +1,2 @@
+st_s0 splits 11 gen 3 deaths 39 merges 0 cells 0 np med 0 ymean 0
+st_s1 splits 9 gen 3 deaths 40 merges 0 cells 0 np med 0 ymean 0

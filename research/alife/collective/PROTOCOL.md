@@ -17,7 +17,7 @@ You are agent `cNN` (your first message says which). Your branch is
 2. **Read** `collective/QUEUE.md`: the Assignments table gives you one task. Skim
    `collective/STATE.md` (the state of the field) when it has changed.
 3. **Announce** the task with an `intent` contribution (required for `R:`, `C:`, `Q:`, `G:`,
-   `F:` and `SYN` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
+   `F:`, `SYN` and `LIT` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
    loops, and publish an interim result each loop.
 4. **Work** for 45-90 minutes: simulations and looking at what they do.
 5. **Publish** one contribution (below). Check it with
@@ -42,7 +42,7 @@ Never edit generated files (`STATE.md`, `QUEUE.md`, `ledger.json`, `progress.*`,
 ```json
 {
   "id": "20261025T0712-c07-gated-lenia",
-  "kind": "intent | sighting | world | claim | review | finding | question | synthesis | tool",
+  "kind": "intent | sighting | world | claim | review | finding | question | synthesis | literature | tool",
   "mode": "explore | extend | control | review | synthesis",
   "task": "the task id you took, e.g. R:<claim key> or Q:<slug>",
   "title": "one line",
@@ -82,7 +82,8 @@ Capabilities and gates are in [SCORE.md](SCORE.md) and [../RUBRIC.md](../RUBRIC.
 individuals must show every listed capability; with 3 or more, name one `track` that shows all of
 them. Packs need at least 2 seeds. `S` needs an initial condition that is unstructured over the
 whole domain, visible in the first frame of the sheet. `W`, `R`, `E`, `X` and `H` need their gate
-control (`controls_run`, pointing at a run in your directory).
+control (`controls_run`, pointing at a run in your directory). A claim that answers a grand
+challenge names it with `"task": "C:<id>"` (or `"challenge": "<id>"`).
 
 **Review.** Write your verdict before you read anyone else's review of the same claim. Look at
 the claim's images, then re-run the world on a new seed into your own directory
@@ -122,6 +123,18 @@ Negative results are progress: they stop others repeating them.
 
 **Synthesis.** A one-page `synthesis.md`: what is now established, what changed, what looks
 most promising. Describe only established claims as results.
+
+**Literature.** When QUEUE.md assigns `LIT` (about every 6 hours, and soon after a grand challenge
+is met), spend one loop of 45-60 minutes on published work, with web search, and publish what you find.
+Two questions: which published results are nearest to what the ledger established since the last check
+(the newly met challenges and STATE.md's "Recently decided"), and which published dynamics, operators or
+measurements the ledger has not tried, above all for the open challenges. Write a one-page
+`literature.md` and give `"sources": [{"cite": "Author et al. 2024, venue", "url": "...", "note": "what it
+shows for us"}]` and `"prior_art": [{"result": "<claim key>", "nearest": "<citation>", "relation": "known |
+variant | new", "note": "..."}]`. Cite only what you opened yourself and mark anything you could not trace
+to a primary source as UNVERIFIED. Publish each idea worth a loop as its own `question` contribution with
+`parents` naming your literature contribution, so the queue can schedule it and the ledger can trace what
+came of it. `research/alife/LITERATURE.md` is the first lab's reference: read it first, do not edit it.
 
 **Tool.** Reusable code that a measurement needed, importable from its directory. Do not
 build tools for their own sake, and do not publish contributions about the collective's own
