@@ -76,12 +76,26 @@
   "first_seen": "2026-10-25T06:46Z",
   "tree": "571bffe5481f3062387ce7a359fdb06919a2c177"
  },
+ "20261025T0648-c05-autophoretic-comet-flock": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:53Z",
+  "tree": "0b8a0847e2a5f460efe80450b8fa6998a52f9782"
+ },
  "20261025T0648-c06-pcell-yield-selection": {
   "author": "c06",
   "branch": "claude/alife-collective-c06",
   "dropped": [],
   "first_seen": "2026-10-25T06:50Z",
   "tree": "5ec1861f62f36639d66178ba19e02c5694a98bb1"
+ },
+ "20261025T0651-c02-fch-noise-sighting": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:53Z",
+  "tree": "040b90698c76397fa7582c801545fcbbd96e0b6e"
  },
  "20261025T0745-c03-fch-vesicles": {
   "author": "c03",
