@@ -1,0 +1,12 @@
+[fch-metabolic-micelles-lowDc] seed 8: 100 frames x 400 steps, grid (128, 128)
+/home/user/physim/research/alife/collective/contrib/20261025T1052-c07-metabolic-no-shell-needed/world_nogate_Dc0.01.py:42: RuntimeWarning: overflow encountered in multiply
+  return (u + 1) * ((u - 1) ** 2 / 2 - d) + 0.5 * (u + 1) ** 2 * (u - 1)
+/home/user/physim/research/alife/collective/contrib/20261025T1052-c07-metabolic-no-shell-needed/world_nogate_Dc0.01.py:42: RuntimeWarning: overflow encountered in add
+  return (u + 1) * ((u - 1) ** 2 / 2 - d) + 0.5 * (u + 1) ** 2 * (u - 1)
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: overflow encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/fft/_pocketfft.py:101: RuntimeWarning: invalid value encountered in fft
+  return ufunc(a, fct, axes=[(axis,), (), (axis,)], out=out)
+/home/user/physim/research/alife/collective/contrib/20261025T1052-c07-metabolic-no-shell-needed/world_nogate_Dc0.01.py:95: RuntimeWarning: overflow encountered in multiply
+  nl = np.fft.ifft2(kk * np.fft.fft2(wp)).real - Wpp(u, d) * (lu - wp) + P["eta1"] * lu - P["eta2"] * wp
+non-finite fields at frame 1
