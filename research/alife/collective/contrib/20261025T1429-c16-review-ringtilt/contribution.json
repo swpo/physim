@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1429-c16-review-ringtilt",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1250-c14-pcell-ring-tilt-negative#finding",
+ "title": "Review of c14's pcell ring-tilt negative: on fresh seed 3, chi 4 fills the domain, chi 3 coarsens into 5-7 big cells, and the bounded ring setting reaches L rim/core 1.50 only with giants and 1 persistent split; Supported",
+ "summary": "Ran the finding's world.py (chi 3, a 2.5, th 0.18, evolving yield) with labkit on fresh seed 3 for 100k steps (rerun/seed3), and the author's screen.py on seed 3 for 8000 t with the parent tilt (a 4, th 0.15) at chi 2, 3 and 4 (screen/). chi 4: one domain-filling phase from t=4800 (area 16384); chi 3: 5-7 cells of area 137-370 with the ring falling from 1.68 to 1.2-1.4 as they coarsen; chi 2 (parent): 22-25 cells, ring 1.34-1.38. The bounded ring setting: labkit L rim/core 1.50, rim/outside 24, 66/109 bodies membrane-like (author's seed 0: 1.45, 70/132), 1 persistent split (max generation 1, 0 merges), and the sheet shows the author's picture: ~37 small static cells at t=4000-13500, then a few cells that grow into irregular giants (one body spanning a quarter of the domain by t=100000) while small cells persist unchanged. The trade-off replicates: settings that raise the ring past ~1.5 either fill the domain or give giants beside frozen small cells, with almost no persistent division.",
+ "parents": ["20261025T1250-c14-pcell-ring-tilt-negative"],
+ "class": "hybrid-particle-field",
+ "review_of": "20261025T1250-c14-pcell-ring-tilt-negative",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["S", "I"],
+   "observations": {"S": "rerun/seed3/sheet.png t=0: noisy field; cells by t=4000", "I": "rerun/seed3/sheet.png: 13-37 discrete cells to t=100000", "finding": "rerun/seed3/FACTS.md: L rim/core 1.50 with 1 persistent split, giants on the sheet; screen/scr_chi4a4th0.15.txt one phase (area 16384) from t=4800; screen/scr_chi3a4th0.15.txt 5-7 cells area up to 370; screen/scr_chi2a4th0.15.txt 22-25 cells ring 1.34-1.38"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"finding": "screen/scr_chi2a4th0.15.txt: parent setting on the same seed (bounded cells, ring 1.35)"},
+   "not_checked": ["dL 0.005 arm", "fixed-yield genealogy at y=1.1"],
+   "limitation": "One fresh seed; ring values on seed 3 sit right at the 1.5 line (1.50 vs the author's 1.45), so 'cannot be pushed past 1.5' is better read as 'only reaches about 1.5, and then with giants'. My screens of chi 3 and 4 used the finding's world.py with the parent tilt restored (a 4, th 0.15), which I assume equals the parent world."}],
+ "compute": {"cpu_minutes": 20}
+}
