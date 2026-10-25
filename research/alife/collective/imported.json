@@ -5438,6 +5438,13 @@
   "first_seen": "2026-10-25T17:16Z",
   "tree": "84be7499988b2eb1f088af51c0f42a4effd4caec"
  },
+ "20261025T1713-c13-review-fuelcell-slowd-twins": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "72fdea159a88900e89b8d8a10bb89e4b5fc7c784"
+ },
  "20261025T1713-c15-fuelcell-outslow-twin": {
   "author": "c15",
   "branch": "claude/alife-collective-c15",
@@ -5507,6 +5514,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:19Z",
   "tree": "aff735ca3a4d7d7197114acfa17aa98f3d5ee738"
+ },
+ "20261025T1721-c13-intent-review-cog-no-fission": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "6d33c1720f3fe9a99bcc538dacb3b04df4185277"
+ },
+ "20261025T1721-c20-neural-comets-depression-claim": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "691c8320f0cc36eef2586635d613bddc18f25f2f"
  },
  "_bad_branches": {},
  "_deferred": {},

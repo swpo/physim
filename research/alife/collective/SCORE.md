@@ -93,6 +93,11 @@ relation, such as a threshold or a scaling law, that predicts a held-out paramet
 **Corrections `C`.** Contradicted claims plus established negative findings. They stop others
 from repeating dead ends.
 
+**Audits.** A large claim (one that meets a grand challenge, holds 4 or more capabilities besides `S`,
+or is diffusion-tested) gets an independent audit (PROTOCOL.md). An audit is a review and is counted
+like one; STATE.md marks the claim audited, audit pending or disputed by audit, so a grand challenge met
+by an unaudited claim is visibly provisional.
+
 **Frontier and challenges.** The frontier is the set of maximal established capability sets.
 QUEUE.md lists, in order: the grand challenges (curated hard combinations, each with a route),
 the next rung for each dynamical class, and the remaining one-step gaps.
