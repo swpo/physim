@@ -1,0 +1,34 @@
+{
+ "id": "20261025T1950-c22-review-chemoton",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Review of the FCH field chemoton: vesicles from noise and individual deaths at the feed fork both replicate on seed 7. But E is by construction, and catalyst-free vesicles live as well as catalyst-bearing ones on amphiphile shared through the bath.",
+ "summary": "Re-ran world.py on seed 7 (labkit, 200 frames to t=600) and world_starve.py on seed 7 (feed cut at t=300; identical to the fed run until then). From the noisy start, one K-bearing double vesicle (catalyst beaded along its bilayer), one K-bearing three-armed micelle and several K-free rings and arcs form by t~80 and persist to t=600 (rerun/seed7/sheet.png). Per-body catalyst content (kcontent.txt): two K-free vesicles (lumens of 147 and 124 px, K 3-10, about 0.5% of the K vesicle's 1400-1500) persist from t=252 to t=600 and grow slightly (650->674 and 628->634 px). So in the fed world, carrying the catalyst is not what keeps a vesicle alive. After the feed cut, the catalyst itself dies first (the K vesicle's K is 160 at t=453 and 0 at t=600). Every vesicle then shrinks to a small ring and loses its lumen by t~500-600, ending as micelles (rerun_starve/seed7/sheet.png), while the fed twin keeps all of them. Code: amphiphile is made only by r K P and decays at kap=0.01 everywhere, and the claim's totals.png decays on the noK slope after the cut, so E is true by construction. B: the vesicles are closed FCH bilayers with a lumen. The K layer sits in the bilayer because the gate exp(-4(u+1)) is written against the body field, but K is made there by its own autocatalysis (the claim's nogate run loses all K), so it counts under the quasi-equilibrium clause.",
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["S", "I", "B", "E"],
+   "observations": {
+     "S": "rerun/seed7/sheet.png t=0: uniform noise over the whole domain",
+     "I": "rerun/seed7/sheet.png t=81-600: the K-bearing double vesicle (top right) and the K-bearing three-armed body (bottom left) persist; kcontent.txt",
+     "B": "rerun/seed7/sheet.png t=132-600: closed bilayer double vesicle with lumen (lumen 332-420 px, kcontent.txt) and catalyst beads in its bilayer; labkit marks u+1 membrane-like on tracks #1 and #3 and K on #9 (rerun/seed7/FACTS.md)",
+     "E": "rerun_starve/seed7/sheet.png t=363-600 against rerun/seed7/sheet.png: after the cut the K vesicle loses its catalyst, shrinks to a ring and breaks into micelles; the fed twin keeps it (kcontent.txt: lumens 37/24/37 px at t=453, none at t=600)"
+   },
+   "replicated": true,
+   "seed": 7,
+   "seeds_run": [{"seed": 7, "result": "pass: vesicles from noise with catalyst in the bilayer; fork kills every vesicle while the fed twin keeps them"}],
+   "same_individuals": true,
+   "controls_run": {"E": "rerun_starve/seed7 (feed cut at t=300) with rerun/seed7 as the fed twin"},
+   "by_construction": ["E"],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "not_checked": ["the noK and nogate ablations (not re-run)", "resolution or dt/2"],
+   "limitation": "E is by construction: amphiphile can only be made from P by K and decays at an imposed kap, and the starved runs follow that decay. Metabolism is a property of the bath, not of the individual: in the fed run, vesicles with almost no catalyst (about 0.5% of the K vesicle's) persist and grow on amphiphile made elsewhere, so an individual's survival does not depend on its own catalyst or its own consumption. After the cut every vesicle dies, catalyst or not. One fresh seed; no resolution test; no division."
+ }],
+ "parents": ["20261025T0848-c02-fch-chemoton-claim", "20261025T1912-c22-intent-review-chemoton"],
+ "class": "fch-bilayer",
+ "evidence": ["rerun/seed7/sheet.png", "rerun_starve/seed7/sheet.png", "kcontent.txt"],
+ "compute": {"cpu_minutes": 50}
+}

@@ -1,0 +1,3 @@
+fed left half at t~500/750/1000: 15 19 18  right half: 23 16 22
+cut_all left half at t~500/750/1000: 15 0 0  right half: 22 0 0
+cut_left left half at t~500/750/1000: 15 0 0  right half: 23 12 11

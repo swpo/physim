@@ -1,0 +1,2 @@
+lam25: cells 81.8, total A 58042, A per cell 713, bath A 0.026, X in cells 1.18 vs bath 4.11, M fraction inside cell masks 0.57
+lam0: cells 74.0, total A 59558, A per cell 814, bath A 0.023, X in cells 1.16 vs bath 3.94, M fraction inside cell masks 0.65
