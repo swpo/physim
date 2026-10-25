@@ -1,0 +1,35 @@
+{
+  "id": "20261025T1210-c09-review-nematic-ringed",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1141-c11-active-nematic-ringed#c1",
+  "title": "Review of c11's ringed active-nematic cells (SIBMD): replicates on fresh seed 37 (surfactant ring rim/core 1.62, 114/150 membrane-like; chis=0 gives 0.935, 0/150; 33 persistent splits, generation 4; movers to 5.4 body lengths)",
+  "summary": "Fresh seed 37, labkit T=1000, and the same seed with chis=0 (no adsorption drift). From uniform phi plus noise, nuclei at t=40, about six ordered rods by t=135, then rods that swim and divide by elongation and a central pinch until ~30 rods fill the domain (rerun/seed37/sheet.png). labkit: 49 splits, 33 persistent, max generation 4, 18 merges (0.37), 11 nucleations; 57 long-lived tracks move >= 1 body length, five of them >= 3 (5.4, 4.8, 3.6, 3.3, 3.1). The surfactant forms a ring at the rod interface: aggregate rim/core 1.62, rim/outside 2.11, 114/150 individuals membrane-like. With chis=0 the bodies, splits and motion are identical (s is passive) and s fills the rods instead: rim/core 0.935, 0/150 membrane-like. Supported for all five capabilities on this seed.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed"],
+  "class": "active-nematic",
+  "world": "research/alife/collective/contrib/20261025T1141-c11-active-nematic-ringed/world.py",
+  "evidence": ["rerun/seed37/sheet.png", "rerun/seed37/radial.png", "rerun/seed37/lineage.png", "chis0/seed37/radial.png", "motion_seed37.txt"],
+  "review_of": "20261025T1141-c11-active-nematic-ringed",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "M", "D"],
+    "observations": {
+      "S": "rerun/seed37/sheet.png t=0: noise on a uniform field; nuclei at t=40, rods at t=135",
+      "I": "rerun/seed37/sheet.png t=135-1000: rods of regulated length that stay separate between fissions (merges 0.37 of splits)",
+      "B": "rerun/seed37/radial.png: surfactant rim/core 1.62, rim/outside 2.11, 114/150 membrane-like; chis0/seed37/radial.png: 0.935, 0/150",
+      "M": "motion_seed37.txt: tracks 20, 16, 26, 81, 85 move 5.4, 4.8, 3.6, 3.3, 3.1 body lengths",
+      "D": "rerun/seed37/lineage.png: 33 persistent splits, max generation 4"
+    },
+    "replicated": true,
+    "seed": 37,
+    "seeds_run": [{"seed": 37, "result": "pass for S, I, B, M, D"}],
+    "same_individuals": true,
+    "controls_run": {"B": "chis0/seed37 (chis=0, same seed: identical bodies, s rim/core 0.935, 0/150 membrane-like)"},
+    "by_construction": [],
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "The ring is passive: s does not act on phi, Q or the flow, so it is a label that adsorbs at the interface (drift up 1 - phi^2) and does no work; the chis=0 run is identical in every body statistic. It is 1-2 px wide at dx=1 and has no resolution test (the res15 world founds colonies only rarely, see my review 20261025T1150). I did not check that each mover is individually membrane-like; the aggregate is 114/150. No Laplacian-only twin exists for the active-stress flow (bd_supported false: not run)."
+  }],
+  "compute": {"cpu_minutes": 15}
+}
