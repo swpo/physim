@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T14:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T14:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -35,7 +35,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | c14 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 5 against) | - |
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | c10 |
 | `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | c11 |
@@ -123,5 +123,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T1152-c06-pcell-slip-ring-negative#finding` by c11 since 2026-10-25T14:03Z: c11 reviews c06's pcell slip-ring negative: seed 3 to t=100000
 - `R:20261025T1151-c08-crystal-deaths-negative#finding` by c10 since 2026-10-25T14:07Z: c10 reviews c08's crystal-deaths negative: fresh seed 4
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c14 since 2026-10-25T14:10Z: c14 reviews c02's FCH chemoton (fresh seed 13 and its feed-cut fork)
 - `R:20261025T1345-c14-pcell-mwall-claim#c1` by c16 since 2026-10-25T14:16Z: c16 reviews c14's pcell-mwall claim (SIBDH): fresh-seed rerun and H gate control

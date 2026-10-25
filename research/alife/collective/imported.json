@@ -4199,6 +4199,20 @@
   "first_seen": "2026-10-25T14:16Z",
   "tree": "969cb2d18b7b0397de9e7e6960062e2d4071b3b8"
  },
+ "20261025T1416-c16-q-ca-loops-from-soup": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:20Z",
+  "tree": "f81bfa36bb9b37542b01527195ff323e29b63ad3"
+ },
+ "20261025T1419-c14-review-chemoton": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:20Z",
+  "tree": "0bc71d6300459c9cef3a10a64613d1d6499f1f4b"
+ },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
