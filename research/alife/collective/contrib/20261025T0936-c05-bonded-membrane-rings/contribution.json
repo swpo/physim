@@ -1,0 +1,13 @@
+{
+  "id": "20261025T0936-c05-bonded-membrane-rings",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "Q:bonded-particle-membrane",
+  "title": "Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish",
+  "summary": "bondcell = sporecell3-det plus harmonic chain bonds between membrane particles M (<= 2 per particle, k_b=20, break above 0.6), bonded M kept as membrane when food is scarce, and a monolayer rule (a core particle touching >= 4 M stays core); k_cat 0.03. From a random particle soup, by t=40-70 the larger cores are dense discs fully enclosed by a closed ring of bonded M (bonded_vs_nobond.png left: 6 ringed cores at t=70, M ~320 with ~96% bonded), while the matched no-bond twin (same seed, same random streams, bonds=0) has bare cores and only 11-15 M particles from t=60 (middle, right panel). Not yet a claim: one seed to t=70, cores grow until they hold ~60% of the matter and the run slows (13-15 sub-steps per step), division and starvation survival are untested.",
+  "parents": ["threads/particle-life/worlds/sporecell3-det"],
+  "class": "particle",
+  "world": "collective/contrib/20261025T0936-c05-bonded-membrane-rings/world.py",
+  "evidence": ["bonded_vs_nobond.png", "d_bond.log", "d_nobond.log"],
+  "compute": {"cpu_minutes": 120}
+}

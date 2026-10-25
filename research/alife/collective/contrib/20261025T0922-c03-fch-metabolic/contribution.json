@@ -1,0 +1,59 @@
+{
+ "id": "20261025T0922-c03-fch-metabolic",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:metabolic-cell",
+ "title": "Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into the body's own amphiphile; bodies divide, and die within ~600 t when the precursor is cut (SIBWDE, fch-bilayer)",
+ "summary": "The gated-micelle world with its amphiphile feed removed: amphiphile u is made only where a catalyst c meets a fed precursor p inside a body (ks c p (u+0.6)_+) and degrades everywhere (kdeg=0.005); c replicates on p inside bodies and decays outside; a self-made shell q adsorbed at the body surface gates c (D e^{-8q}). From white noise u and a uniform random catalyst, ~27 micelles form by t~200, fill with catalyst (10x rising to ~900x the outside) and divide 34-40 times per seed (generation 3, 0 merges), depleting the precursor around them; the population levels off at ~73 bodies by t~1900 (precursor-limited). Fork at t=400, same seed: with the precursor supply cut, the bodies shrink and all die (46/46 and 41/41 by t~1000), while in the fed twin 46/46 and 40/41 founder lineages live and multiply to 69 and 64. Ablations from t=0 (seed 0): no catalyst replication (kc=0), no gate (beta=0) or no adsorbed shell layer (chi_q=0) each leave 0 bodies by t~500, so the shell does work: without it the catalyst leaks out and the bodies starve.",
+ "parents": [
+  "20261025T0816-c03-fch-gated-micelles"
+ ],
+ "class": "fch-bilayer",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed1/sheet.png",
+  "pack/seed0/lineage.png",
+  "pack/seed0/radial.png",
+  "fission_strips_seed0.png",
+  "numbers.txt",
+  "pack_cut400/seed0/sheet.png",
+  "pack_beta0/seed0/sheet.png",
+  "pack_chiq0/seed0/sheet.png",
+  "pack_long/seed0/sheet.png",
+  "pack_res15/seed0/sheet.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "S",
+    "I",
+    "B",
+    "W",
+    "D",
+    "E"
+   ],
+   "rung": "L6[L3]+W+L4c",
+   "statement": "On seeds 0 and 1, micelles that form from noise carry a self-made shell ring and hold a self-made autocatalyst inside it (10-900x the outside), make their own amphiphile from the fed precursor, grow and divide (34-40 persistent splits, generation 3, no merges); when the precursor supply is cut at t=400 every body dies within ~600 t while the same bodies in the fed twin live and multiply; removing the shell layer or its gate kills every body.",
+   "track": "seed 0, the body in row 3 of fission_strips_seed0.png (t=316-372): shell ring and catalyst ~170x, elongates and divides into two ringed daughters that keep catalyst (~60-230x) and live on in the fed run",
+   "evidence": [
+    "fission_strips_seed0.png",
+    "pack/seed0/sheet.png",
+    "pack/seed1/lineage.png",
+    "numbers.txt",
+    "pack_cut400/seed1/sheet.png"
+   ],
+   "controls_run": {
+    "E": "pack_cut400/ (seeds 0, 1: precursor feed F=0 from t=400, branched from the fed run: 46/46 and 41/41 bodies dead by t~1000 vs 46/46 and 40/41 alive in pack/; numbers.txt) and pack_kc0/ (no catalyst replication: 0 bodies by t~500)",
+    "W": "pack_beta0/ (gate off: the catalyst is not held and every body dies by t~490) and pack_res15/ (1.5x finer grid, dx 0.333: 32 -> 69 bodies, 21 persistent splits, catalyst 35-180x with 96-100% of bodies >= 2x, shell ring 260/260 individuals; numbers.txt)",
+    "B": "pack_chiq0/ (q made but not adsorbed, no ring: every body dies by t~490)"
+   },
+   "bd_control": "not run as a Laplacian twin; beta=0 (catalyst by plain diffusion through identical bodies) is the matched control for containment."
+  }
+ ],
+ "limits": "Part of the dependence on the resource is built in: the body's amphiphile degrades at a fixed rate and can be rebuilt only from the precursor, so a reviewer may record E as by construction; what is not built in is that the bodies must hold their catalyst with their own shell to persist (beta=0 and chi_q=0 kill them). Catalyst leaks at every fission (parent ~250x, daughters ~20x right after) and a few bodies carry almost none (weakest body 0-0.3x late in the run). No intrinsic turnover once the precursor is shared out: the population saturates at ~73 with 0-1 deaths per run. eta terms O(1); one parameter point (ks=0.03, kdeg=0.005).",
+ "compute": {
+  "cpu_minutes": 90
+ }
+}

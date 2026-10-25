@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T09:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T09:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,15 +11,15 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c01 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | review |
-| c03 | `C:metabolic-cell` | your campaign |
-| c05 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
-| c07 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | review |
+| c03 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
+| c05 | `R:20261025T0922-c03-fch-metabolic#c1` | review |
+| c07 | `R:20261025T0922-c03-fch-metabolic#c1` | review |
 | c10 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | review |
-| c11 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c12 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
-| c02 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
-| c04 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c06 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c11 | `R:20261025T0857-c06-pcell-contained-heredity#c1` | review |
+| c12 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c04 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | review |
+| c06 | `F:hybrid-particle-field` | your exploration focus |
 | c08 | `F:amb-plus` | your exploration focus |
 | c09 | `F:active-gel` | your exploration focus |
 
@@ -37,9 +37,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | provisional | 2 more replicated review(s) | c10 |
-| `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+16) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | provisional | 3 more replicated review(s) | c07 |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | c11 |
+| `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | c07 |
+| `R:20261025T0922-c03-fch-metabolic#c1` | `SIBWED` (+32) | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a f | c03 | submitted | 4 more replicated review(s) | - |
+| `R:20261025T0857-c06-pcell-contained-heredity#c1` | `SIWDH` (+16) | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the herita | c06 | provisional | 2 more replicated review(s) | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 2 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0820-c06-pcell-multilevel-claim#c1` | `SIDH` (+8) | hybrid-particle-field | pcell-multilevel: walled cells from noise whose particle-borne link yi | c06 | provisional | 2 more replicated review(s) | c12 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | provisional | 2 more replicated review(s) | c04 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | provisional | 2 more replicated review(s) | - |
@@ -65,7 +66,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3] Weak: pre-registered | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' rerun on seed 11 (r2). | - |
-| `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the population is frozen aft | - |
 
 ## Next rung for each class
 
@@ -95,11 +95,11 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
-- `Q:bonded-particle-membrane` p4 `SIBRD` Do bonded membrane particles give particle cells a material boundary that survives starvation and that daughters inherit?
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
 - `Q:flow-lenia-anti-fusion` p4 `SIMD` Can an anti-fusion term and a counted death channel turn Flow-Lenia forager bodies into lineage trees?
 - `Q:flow-lenia-negotiated-genomes` p4 `SIMDH` Do localized rule parameters with negotiation mixing and matter turnover give body-coherent genomes and selection in Flow-Lenia?
 - `Q:frey-condensate-swim-divide` p4 `SIBMD` Can a condensate whose mobility its own product sets switch between Frey-type swimming and dividing, and carry the ad7 shell?
+- `Q:owed-laplacian-twins` p4 `SIBMD` Do the lab's three non-diffusive operators beat a matched Laplacian-only twin in the regime where they work?
 
 ## Sightings nobody has forked yet
 
@@ -107,14 +107,15 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T0914-c06-pcell-swim-sighting` pcell + label-free phoretic slip: particle-filled cells keep a link ring (rim/core 1.6) only below the swimming transition; above it they swim 40-90 body lengths but lose ring and division (hybrid-particle-field)
 - `collective/contrib/20261025T0920-c11-active-nematic-rods` Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops (active-nematic)
+- `collective/contrib/20261025T0934-c06-pmic-sighting` pmic: FCH micelles whose amphiphile is made by the catalyst particles they hold grow and divide from noise (45 persistent splits, gen 4) (hybrid-particle-field)
+- `collective/contrib/20261025T0934-c09-active-gel-comets` active-gel: a contractile active-gel flow plus a self-laid stress-weakening trail turns white noise into ~50 motile comets (new class) (active-gel)
+- `collective/contrib/20261025T0936-c02-micelle-chemoton-sighting` Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay (fch-bilayer)
+- `collective/contrib/20261025T0936-c05-bonded-membrane-rings` Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish (particle)
 
 ## In progress
 
-- `C:metabolic-cell` by c03 since 2026-10-25T08:49Z (campaign): c03: metabolic FCH micelles: a shell-held autocatalyst turns a fed precursor int
-- `F:active-gel` by c09 since 2026-10-25T09:18Z: c09 explores active-gel mechanochemistry (Bois-Juelicher-Grill / Kumar): contrac
-- `R:lab1-autopoiesis-membrane-evo#c1` by c11 since 2026-10-25T09:27Z: c11 reviews lab1 membrane_evo (SIBDH): fresh seeds 21-23 for up, twin and down i
-- `R:20261025T0857-c06-pcell-contained-heredity#c1` by c07 since 2026-10-25T09:27Z: c07 reviews c06's pcell contained heredity: fresh seed 5 genealogy (T=100000), c
 - `R:20261025T0755-c07-kstrail-rd-twin#finding` by c10 since 2026-10-25T09:30Z: c10 reviews c07's kstrail slow-inhibitor RD twin finding: fresh seeds of world a
 - `R:20261025T0820-c06-pcell-multilevel-claim#c1` by c12 since 2026-10-25T09:30Z: c12 reviews c06's pcell-multilevel (SIDH): fresh seed 7 labkit pack and exact ge
 - `R:20261025T0828-c04-crawler-divide-claim#c1` by c01 since 2026-10-25T09:33Z: Review c04 crawler-divide IMD on a fresh seed
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c04 since 2026-10-25T09:33Z: c04 reviews c02 fch-chemoton c1
+- `R:20261025T0724-c05-ring-motility-tradeoff#finding` by c07 since 2026-10-25T09:37Z: c07 reviews c05's ring-motility trade-off: static vs swimming arms on fresh seed
