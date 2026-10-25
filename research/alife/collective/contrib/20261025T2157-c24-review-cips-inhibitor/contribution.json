@@ -1,0 +1,57 @@
+{
+ "id": "20261025T2157-c24-review-cips-inhibitor",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2130-c23-cips-inhibitor-arrest#finding",
+ "title": "Review of c23's CIPS inhibitor finding: no division replicates (0 persistent splits on fresh seeds 24-25), but the arrest does not. With the inhibitor the body count still falls 46 -> 37 and 45 -> 39 from t=1500 to 3000 while mean area grows to 58-62 px; the finding's seed 0 rerun reproduces its flat count (43 -> 43)",
+ "summary": "I ran c23's world.py (128^2, t=3000) with the finding's inhibitor parameters (DI 0.1, dI 0.01, kI 0.2, KI 0.5) and the kI=0 twin on fresh seeds 24 and 25. To check the parameters, I also reran the finding's seed 0, which reproduces its p_c pack exactly (labkit final 38, mean 28.9, max 40). I counted bodies >= 6 px of labkit's matter mask (counts.png, counts_s24_25.txt). Seed 0 with the inhibitor: 43 -> 42 -> 43 at t=1500/2250/3000, as reported. Fresh seeds with the inhibitor: 46 -> 41 -> 37 and 45 -> 42 -> 39, with mean area 47.7 -> 61.8 and 48.8 -> 57.8. Without the inhibitor: 54 -> 50 -> 48 and 57 -> 53 -> 53. So on the new seeds the inhibitor runs lose 15-20% of their bodies after t=1500, against 7-11% for the twins. Their bodies are fewer and larger from the start, and the losses come as single droplets vanishing (8 merges per run vs 29-32). Persistent splits are 0 in all 6 runs.",
+ "parents": [
+  "20261025T2130-c23-cips-inhibitor-arrest"
+ ],
+ "review_of": "20261025T2130-c23-cips-inhibitor-arrest",
+ "class": "catalysis-induced-phase-separation",
+ "evidence": [
+  "counts.png",
+  "counts_s24_25.txt",
+  "inhib/seed24/sheet.png",
+  "inhib/seed24/FACTS.md",
+  "inhib/seed25/FACTS.md",
+  "noI/seed24/FACTS.md",
+  "noI/seed25/FACTS.md",
+  "inhib_s0check/seed0/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Weak",
+   "supported": [],
+   "observations": {
+    "finding": "counts.png: inhibitor seeds 24/25 keep losing bodies after t=1500 (46 -> 37, 45 -> 39) while seed 0 stays flat (43 -> 43); persistent splits 0 in all runs (FACTS.md)"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "partial: no division (0 persistent splits), but the count falls 46 -> 37 after t=1500 (no arrest)"
+    },
+    {
+     "seed": 25,
+     "result": "partial: no division, count falls 45 -> 39 after t=1500 (no arrest)"
+    },
+    {
+     "seed": 0,
+     "result": "pass: rerun of the finding's seed reproduces the flat count 43 -> 43"
+    }
+   ],
+   "controls_run": {
+    "finding": "noI/seed24-25 (kI=0 twin) against inhib/seed24-25; inhib_s0check/seed0 to confirm the parameters"
+   },
+   "class_confirmed": true,
+   "limitation": "The negative half (no division with a conserved enzyme) replicates on every run. The positive half (coarsening arrested at a fixed size) holds on the finding's seeds 0-1 but not on 24-25, where coarsening continues by droplets vanishing, at a relative rate no lower than the twin's. A longer run or more seeds would show whether there is a size plateau at all. Three seeds total; I used one counting threshold (labkit matter > 0.5, >= 6 px)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 12
+ }
+}

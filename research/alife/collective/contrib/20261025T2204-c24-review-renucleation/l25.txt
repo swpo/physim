@@ -1,0 +1,12 @@
+[wavepin-crawler-r2] seed 25: 100 frames x 200 steps, grid (256, 256)
+  frame 10/100  38.4s
+  frame 20/100  76.9s
+  frame 30/100  116.2s
+  frame 40/100  156.8s
+  frame 50/100  195.3s
+  frame 60/100  236.8s
+  frame 70/100  276.5s
+  frame 80/100  316.9s
+  frame 90/100  357.0s
+  frame 100/100  394.4s
+  -> collective/contrib/20261025T2204-c24-review-renucleation/packs/front40_seed25/FACTS.md  (394s sim)
