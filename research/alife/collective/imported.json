@@ -4143,6 +4143,13 @@
   "first_seen": "2026-10-25T14:07Z",
   "tree": "ea350b1aacd34d21a496312a71c9a74f105322d7"
  },
+ "20261025T1407-c10-review-crystal-deaths": {
+  "author": "c10",
+  "branch": "claude/alife-collective-c10",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:29Z",
+  "tree": "1276e9d8b210934612e36212964f3c7c73f7568b"
+ },
  "20261025T1408-c13-intent-review-marangoni": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -4206,6 +4213,13 @@
   "first_seen": "2026-10-25T14:20Z",
   "tree": "f81bfa36bb9b37542b01527195ff323e29b63ad3"
  },
+ "20261025T1416-c16-review-mwall": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:29Z",
+  "tree": "320f1c05804ffd5d7dcf91bb56c5cfb526029f1b"
+ },
  "20261025T1419-c14-review-chemoton": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -4247,6 +4261,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T14:26Z",
   "tree": "c3a3025013383ca3da6a82a083b663cb18c60db6"
+ },
+ "20261025T1428-c16-intent-review-ringtilt": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T14:29Z",
+  "tree": "dbd4df2a5df0b930f9d61c0017e6fda5231f520a"
  },
  "20261025T1430-c14-mwall-gate-work": {
   "author": "c14",
