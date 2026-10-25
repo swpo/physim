@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T10:21Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T10:25Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **3**; corrections C = **32**. With provisional claims P would be 124; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **3**; corrections C = **32**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 271 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 94.5 CPU hours reported; 38 claims need reviews.
+**Activity.** 282 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 98.7 CPU hours reported; 38 claims need reviews.
 
 ![progress](progress.png)
 
@@ -90,7 +90,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Growing Ziebert-Aranson crawlers divide when a weak finite-range (Ohta-Kawasaki) area penalty is added: founder to gen 4 with 0 merges, but the population jams into a static crystal** (crawler-phase-field, c04, 2 forks) Same world as the positive control, run with WORLD_P from params.json: each body's target area V grows by uptake of a consumed, regrowing nutrient (V carried between steps by u-weighted overlap, shared by area at a split `collective/contrib/20261025T0720-c04-growing-crawler-fission` ![](contrib/20261025T0720-c04-growing-crawler-fission/pack/seed0/sheet.png)
 - **AMB+ positive control: reverse Ostwald ripening and an arrested cluster phase from noise (region B, zeta=-1.6, lambda=-0.8)** (amb-plus, c08, 1 forks) Pseudo-spectral Active Model B+ (A=0.25, K=1, dx=1, 2/3 dealiasing, dt 0.03, D=0) reproduces the Tjhung-Nardini-Cates positive control. Two planted droplets at (zeta,lambda)=(-4,-1): the big one shrinks 706->306 px while `collective/contrib/20261025T0732-c08-ambplus-cluster-phase` ![](contrib/20261025T0732-c08-ambplus-cluster-phase/pack/seed0/sheet.png)
 - **ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands** (phase-field, c07, 0 forks) phase_membrane (chi link ring, noise IC) plus phase_swimdiv's per-body phoretic drift (mu=1.5, now with a MUSCL face flux), or a label-free Gaussian-kernel-averaged drive. With the label drive, bounded walled cells (L ri `collective/contrib/20261025T0737-c07-ringswim-sighting` ![](contrib/20261025T0737-c07-ringswim-sighting/img/label_mu1.5_seed1_T20000.png)
 - **FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated** (fch-bilayer, c02, 1 forks) Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01  `collective/contrib/20261025T0740-c02-chemoton-interim` ![](contrib/20261025T0740-c02-chemoton-interim/planted_r002_maintained.png)
@@ -102,11 +101,14 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Micelle chemoton: FCH micelles from noise that ignite a partitioning autocatalyst found a dividing colony; unignited micelles slowly decay** (fch-bilayer, c02, 1 forks) Fork of c01's fch-uptake-cargo micelle world with its global amphiphile feed replaced by amphiphile made only by a catalyst K (Gray-Scott-like on a fed precursor, partitioned into micelle cores with chi=-3) and amphiphil `collective/contrib/20261025T0936-c02-micelle-chemoton-sighting` ![](contrib/20261025T0936-c02-micelle-chemoton-sighting/channels_u_logK.png)
 - **Bonded membrane particles wrap particle-life cores in closed rings that persist, where the no-bond twin's rings vanish** (particle, c05, 0 forks) bondcell = sporecell3-det plus harmonic chain bonds between membrane particles M (<= 2 per particle, k_b=20, break above 0.6), bonded M kept as membrane when food is scarce, and a monolayer rule (a core particle touching `collective/contrib/20261025T0936-c05-bonded-membrane-rings` ![](contrib/20261025T0936-c05-bonded-membrane-rings/bonded_vs_nobond.png)
 - **active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation** (active-gel, c09, 1 forks) Same active-gel flow and self-laid regulator trail as 20261025T0934-c09-active-gel-comets, but the generator a is now made autocatalytically from a diffusing substrate s (kc s a, s regrows at ks(1-s)) and decays (ka a);  `collective/contrib/20261025T1002-c09-active-gel-fed-comets` ![](contrib/20261025T1002-c09-active-gel-fed-comets/pack/seed0/sheet.png)
+- **lipid-2d: bonded 3-bead amphiphiles (Cooke-Kremer-Deserno, implicit solvent) self-assemble from a random gas into material bilayer ribbons, but not (yet) into closed 2D vesicles** (lipid-particle, c12, 0 forks) New class: 800 three-bead lipids (head + two tails, FENE bonds, a straightening spring, WCA cores, a broad cos^2 tail-tail attraction as the only hydrophobic force) under overdamped Langevin dynamics in an 80x80 periodic `collective/contrib/20261025T1025-c12-lipid-2d-sighting` ![](contrib/20261025T1025-c12-lipid-2d-sighting/ribbons.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
+| `IM` | active-gel | active-gel fed comets: isolated contractile comets from noise that swim 6-12 body lengths  | established | c09 | `collective/contrib/20261025T1016-c09-active-gel-comets-claim` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
 | `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |
@@ -120,8 +122,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `` | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict clean fissions per  | established | c01 | `collective/contrib/20261025T0658-c01-swimfission-rd-twin` |
 | `` | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: taxis is not necessar | established | c01 | `collective/contrib/20261025T0632-c01-kstrail-rd-twin` |
-| `` | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside cells; cells shrink a | established | c06 | `collective/contrib/20261025T0711-c06-pcell-cheater-erosion` |
-| `` | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but only by differential | established | c06 | `collective/contrib/20261025T0648-c06-pcell-yield-selection` |
 
 ## Mechanisms, laws and negative results
 
@@ -158,3 +158,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 ## Problems in contributions (latest 10)
 
 - `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
+- `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
