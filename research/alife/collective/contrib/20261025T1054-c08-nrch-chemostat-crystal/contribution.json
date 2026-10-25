@@ -1,0 +1,13 @@
+{"id": "20261025T1054-c08-nrch-chemostat-crystal", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "A strong chemostat turns NRCH's chaotic swimmer flock into a traveling crystal of identical, persistent swimmers (16-25 swimmers, 57-91 body lengths, no late merges); division still absent",
+ "summary": "NRCH world (20261025T0840-c08-nrch-swimmers) plus a near-linear Li-Cates chemostat on phi, g = -u (phi + 10)(phi - phi_t) (effective rate u(phi_t+10) ~ 0.01-0.015, the Ohta-Kawasaki strength of c11's nematic colony), phi_t = phi0, 192^2, T=6000, frames every 25 t. Without the chemostat (u=0) or with a weak one (u=2e-4), 5-9 swimmers collide, merge and break up, 0-5 tracks persist for half the run and the best swims 13-26 body lengths. With u=1e-3 at phi0=-0.5 nothing phase-separates (0 bodies, 2 seeds; u=2e-3 likewise). At phi0=-0.45 and -0.4 the chemostat gives 16-25 swimmers that, after a transient of splits and fusions (t<3000), lock into a polar traveling lattice of equal, evenly spaced crescents moving in unison with no further merges (packs/K3s0/sheet.png, packs/K5s0/sheet.png): 9-25 tracks persist for >= 50% of the run, the longest 5100-5800 t, and swimmers travel 57-91 body lengths (ctable.md). Adding the AMB+ region-B terms (K6) keeps the same picture. Persistent splits remain 0-3 per run, all in the early transient, so the chemostat stabilizes swimmers but does not make them divide.",
+ "parents": ["20261025T0840-c08-nrch-swimmers", "20261025T1017-c08-nrch-no-persistent-division", "20261025T1014-c11-active-nematic-colony"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "Model-A chemostat (effective Ohta-Kawasaki repulsion) on the phase-separating field of NRCH",
+   "capability": "I", "world": "world.py", "necessary": false, "law": false,
+   "control": "u=0 and u=2e-4 runs on the same grid, coupling and duration (pack_s0/s1, N1s0, R1s0 in ctable.md); phi0 scan at fixed u",
+   "result": "persistent tracks u=0: 0-5, u=1e-3..1.5e-3 at phi0 -0.45/-0.4: 9-25; max body lengths 13-26 vs 57-91; late merges none in the lattice; u>=1e-3 at phi0=-0.5: no bodies; persistent splits 0-3 everywhere"},
+ "outcome": "positive",
+ "evidence": ["ctable.md", "packs/K5s0/sheet.png", "packs/K3s0/sheet.png", "packs/K3s1/sheet.png", "packs/K5s0/tracks.png", "packs/K3s0/lineage.png"],
+ "compute": {"cpu_minutes": 130}}
