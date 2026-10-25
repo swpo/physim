@@ -1,0 +1,5 @@
+tw_s21.log: births 44, disk-cut parent 36 (82%); K2 births 7, disk 7; deaths 34, disk 23 (68%)
+tw_s22.log: births 38, disk-cut parent 33 (87%); K2 births 9, disk 7; deaths 25, disk 18 (72%)
+up_s21.log: births 37, disk-cut parent 29 (78%); K2 births 10, disk 10; deaths 28, disk 24 (86%)
+up_s22.log: births 48, disk-cut parent 33 (69%); K2 births 4, disk 4; deaths 39, disk 33 (85%)
+TOTAL: births 131/167 disk-cut (78%); K2 births 28/30 (93%); deaths 98/126 disk (78%)

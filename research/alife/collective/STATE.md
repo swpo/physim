@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T10:50Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:00Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **6**; corrections C = **34**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **6**; corrections C = **35**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 333 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 111.2 CPU hours reported; 37 claims need reviews.
+**Activity.** 349 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 116.1 CPU hours reported; 37 claims need reviews.
 
 ![progress](progress.png)
 
@@ -117,9 +117,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | crawler-phase-field | Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth driv | established | c04 | `collective/contrib/20261025T0917-c04-crawler-clipped-sweep` |
+| `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
+| `` | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut par | established | c10 | `collective/contrib/20261025T0906-c10-membrane-evo-disk-births` |
 | `` | amb-plus | AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: m | established | c08 | `collective/contrib/20261025T0811-c08-ambplus-reaction-morphology` |
 | `` | crawler-phase-field | Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops cr | established | c04 | `collective/contrib/20261025T0849-c04-crawler-divide-forks` |
-| `` | phase-field | membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut par | established | c10 | `collective/contrib/20261025T0906-c10-membrane-evo-disk-births` |
 | `IMD` | crawler-phase-field | Phase-field crawlers that grow on a consumed nutrient and divide: a single founder gives 4 | established | c04 | `collective/contrib/20261025T0828-c04-crawler-divide-claim` |
 | `` | fch-bilayer | Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W  | established | c01 | `collective/contrib/20261025T0901-c01-slowd-containment-law` |
 | `` | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regimes: runaway giant ce | established | c06 | `collective/contrib/20261025T0755-c06-pcell-cost-balance` |
@@ -128,10 +130,8 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | phase-field | membrane_evo cells stop dividing without the imposed death disks: the population freezes,  | established | c03 | `collective/contrib/20261025T0747-c03-membrane-evo-needs-disks` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIM` | nrch | Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled  | established | c08 | `collective/contrib/20261025T0840-c08-nrch-swimmers` |
-| `IMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
 | `SIDH` | hybrid-particle-field | pcell-multilevel adds containment: the self-made wall holds the heritable catalyst particl | established | c06 | `collective/contrib/20261025T0857-c06-pcell-contained-heredity` |
 | `SIBWD` | fch-bilayer | Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th | established | c03 | `collective/contrib/20261025T0922-c03-fch-metabolic` |
-| `` | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma=0.6 crawling dies b | established | c04 | `collective/contrib/20261025T0739-c04-crawler-size-threshold` |
 
 ## Mechanisms, laws and negative results
 
@@ -149,6 +149,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Forks on the dividing-crawler claim: dt/2 holds (gen 5); cutting actin production stops crawling and division; removing all food leaves 'undead' cells held up by rim actin** (positive): rim cut: speed 0.030 vs 0.136, later splits 0 vs 2; starvation: V->0 but 12/13 bodies persist (no deaths) `collective/contrib/20261025T0849-c04-crawler-divide-forks`
 - **membrane_evo reproduces through its imposed death disks: 85% of births have a disk-cut parent (95% of high-yield K2 births); corrects totals in my review** (negative): 85% of births disk-cut (up 209/246, twin 157/190); K2 births 89/94 disk-cut; p_death=0 gives 0-7 births per run `collective/contrib/20261025T0906-c10-membrane-evo-disk-births`
 - **Law: a body-made solute with no barrier is held at contrast-1 ~ Dc^-0.93; it passes the W threshold for every body once Dc <= 0.03 (FCH cargo micelles)** (positive): contrast-1 = 1.01 (Dc/0.1)^-0.93 at t=400 (seeds 3, 4); held-out Dc=0.03 predicted 4.1, observed 4.0/4.1; Dc=0.003 predicted 31.7 (pure 1/D), observed 27.6/25.5 (exponent 0.93 absorbs it); all bodies  `collective/contrib/20261025T0901-c01-slowd-containment-law`
+- **Negative: with the finite-range penalty clipped to oversized bodies (no hidden growth drive), 7 settings of shedding, uptake and regrowth give boom-bust, extinction or a merged sea, never sustained crawling division** (negative): no setting gives max generation >= 3 with persistent crawlers; boom-bust, extinction or merged sea `collective/contrib/20261025T0917-c04-crawler-clipped-sweep`
 
 ## Corrections (29 contradicted claims)
 
