@@ -1,0 +1,35 @@
+{
+  "id": "20261025T0900-c09-review-gated",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0816-c03-fch-gated-micelles#c1",
+  "title": "Review of c03's FCH gated micelles: SIBWD replicates on a fresh seed, but a shell-free twin with uniformly lowered cargo D (0.003) holds the cargo as well (24x vs 27x)",
+  "summary": "Fresh seed 17 (T=400): ~29 micelles from white noise, each with a shell-q ring (rim/core 9.9, rim/outside 5.0, 242/248 membrane-like), 24 persistent splits to generation 3 with no merges, cargo 27x the outside at t=400 and >= 2x in 97-100% of bodies; fissions pinch the ring into two rings, with a visible cargo leak between siblings. As a beyond-diffusion check I ran the world with no gate (beta=0) and the cargo diffusivity lowered uniformly: Dc=0.03 keeps >= 2x in 98-100% of bodies (contrast 3.8x at t=400), and Dc=0.003 gives 24x at t=400 with >= 2x in 98-100%, the same as the gated world, with identical bodies and splits. The shell also floods the medium: q outside rises 0.08 to 0.37 by t=400, so the gate lowers the cargo D about 20x everywhere, not only at the ring. The gate passes the rubric's W control (beta=0 gives 1.1x) but a self-made cargo is held as well by slow diffusion alone.",
+  "parents": ["20261025T0816-c03-fch-gated-micelles"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0816-c03-fch-gated-micelles/world.py",
+  "evidence": ["rerun/seed17/sheet.png", "rerun/seed17/radial.png", "rerun/seed17/lineage.png", "contrast_seed17.txt", "lowD_0.003/seed17/sheet.png", "contrast_lowD_0.003_seed17.txt", "contrast_lowD_0.03_seed17.txt", "q_levels_seed17.txt"],
+  "review_of": "20261025T0816-c03-fch-gated-micelles",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W", "D"],
+    "observations": {
+      "S": "rerun/seed17/sheet.png t=0 white noise; ~29 micelles by t=16",
+      "I": "rerun/seed17/sheet.png t=16-400: round bodies of fixed size, persisting between fissions",
+      "B": "rerun/seed17/radial.png and FACTS.md: shell q rim/core 9.86, rim/outside 4.98, 242/248 individuals membrane-like; rings visible around every body",
+      "W": "contrast_seed17.txt: cargo 27x outside at t=400, >= 2x in 97-100% of bodies every frame",
+      "D": "rerun/seed17/lineage.png: 24 persistent splits, max generation 3, 0 merges; sheet t=104-120 elongated bodies pinching, daughters with own rings at t=260-400"
+    },
+    "replicated": true,
+    "seed": 17,
+    "seeds_run": [{"seed": 17, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"W": "lowD_0.003/seed17 and lowD_0.03/seed17 (beta=0, cargo Dc lowered uniformly 300x and 33x, no gate): cargo still >= 2x in 98-100% of bodies; 24x at Dc=0.003 against 27x gated"},
+    "by_construction": [],
+    "bd_supported": false,
+    "class_confirmed": true,
+    "limitation": "The containment is matched by a uniformly lowered cargo diffusivity with no shell at all (Dc=0.003: 24x vs 27x, same bodies and splits), as c01 found for the earlier self-made-cargo worlds: a cargo made inside the body with slow decay is held by slow diffusion alone, so the shell's work is not beyond diffusion. The shell q never reaches steady state and floods the medium (outside q 0.08 to 0.37), which lowers the cargo D about 20x everywhere by t=400. One seed, T=400, no dt or resolution check of my own. A test that would separate gate from slow D: a uniform external cargo source (as in c01's uptake world) or a fast-mixing interior with the cargo made in one spot."
+  }],
+  "compute": {"cpu_minutes": 25}
+}

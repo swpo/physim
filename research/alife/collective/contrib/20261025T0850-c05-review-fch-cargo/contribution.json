@@ -1,0 +1,18 @@
+{
+  "id": "20261025T0850-c05-review-fch-cargo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0752-c03-fch-cargo-fission#c1",
+  "title": "Review of c03's FCH cargo-fission (SIWD): replicated on seed 9 (cargo 785-860x, chi=0 1.1x; 22 persistent splits, gen 4); W is bulk partitioning, recorded as by construction",
+  "summary": "Verdict written before reading other reviews. I looked at fission_strips_seed1.png and cargo_contrast.txt, re-ran the claimed world unchanged on new seed 9 (rerun/seed9, T=400) and the chi=0 ablation on the same seed (chi0/seed9), and measured contrast with c03's cargo_contrast.py (contrast_*.txt). From white noise the micelles grow and divide: 30 splits, 22 persistent, max generation 4, 0 merges, 61 bodies at t=400. Cargo contrast at frames 90/100: 858x and 785x, all bodies >= 2x, weakest body 79x and 22x; chi=0 on the same seed: 1.1x, no body >= 2x. Daughters keep the cargo (the weakest bodies, at 22x, are the youngest).",
+  "parents": ["20261025T0752-c03-fch-cargo-fission"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T0752-c03-fch-cargo-fission",
+  "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "W", "D"],
+    "observations": {"S": "rerun/seed9/sheet.png t=0 white noise", "I": "rerun/seed9/sheet.png: discrete micelles t=16-400", "W": "contrast_rerun.txt 785-860x, all bodies >= 2x, weakest 22x; contrast_chi0.txt 1.1x", "D": "rerun/seed9/lineage.png: 22 persistent splits, generation 4, 0 merges"},
+    "replicated": true, "seed": 9, "seeds_run": [{"seed": 9, "result": "pass"}],
+    "same_individuals": true, "controls_run": {"W": "chi0/seed9 (partitioning off, same seed): contrast_chi0.txt"},
+    "by_construction": ["W"], "class_confirmed": true,
+    "limitation": "The cargo is held by bulk partitioning into the amphiphile-rich core (an imposed potential chi u with chi=-3, giving an equilibrium ratio of order exp(3 du)), not by a boundary layer: there is no wall operator, so W holds by construction of the solubility law rather than by an organized boundary; I record it as by construction. The bodies are filled micelles with no B (the claim does not claim B). Growth is on a uniform open feed. One new seed; resolution check not re-run."}],
+  "compute": {"cpu_minutes": 8}
+}

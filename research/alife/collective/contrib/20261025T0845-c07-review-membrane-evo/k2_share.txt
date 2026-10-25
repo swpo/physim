@@ -1,0 +1,6 @@
+membrane_evo seed21 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.0, 0.0570068359375, 0.094970703125, 0.455078125] K1+K2 final 1480.0 cells 13
+membrane_evo seed22 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.2060546875, 0.330078125, 0.347900390625, 0.301025390625] K1+K2 final 1687.0 cells 15
+membrane_evo_down seed21 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.0, 0.0200042724609375, 0.0, 0.0] K1+K2 final 1583.0 cells 15
+membrane_evo_down seed22 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.0229949951171875, 0.0, 0.0, 0.0] K1+K2 final 1690.0 cells 14
+membrane_evo_up seed21 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.0, 0.1199951171875, 0.65185546875, 0.93017578125] K1+K2 final 2212.0 cells 12
+membrane_evo_up seed22 frames [0, 40, 81, 121, 160] K2 share [0.0, 0.2449951171875, 0.404052734375, 0.0, 0.77587890625] K1+K2 final 2150.0 cells 12
