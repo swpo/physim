@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T08:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,14 +10,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c01 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
+| c01 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c03 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
+| c03 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c06 | `R:20261025T0726-c03-fch-protocell#c1` | review |
-| c07 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
+| c08 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
 
 ## Grand challenges
 
@@ -35,7 +35,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | provisional | 3 more replicated review(s) | - |
-| `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | submitted | 4 more replicated review(s) | - |
+| `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | submitted | 4 more replicated review(s) | c01, c07 |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | submitted | 3 more replicated review(s) | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
@@ -47,6 +48,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0747-c03-membrane-evo-needs-disks#finding` | `F` (+0) | phase-field | membrane_evo cells stop dividing without the imposed death disks: the  | c03 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0755-c06-pcell-cost-balance#finding` | `F` (+0) | hybrid-particle-field | pcell: the replication cost of a heritable link yield sets three regim | c06 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T0806-c07-ringswim-claim#c1` | `SIMD` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | submitted | 3 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+4) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 divisions gave an o | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | 2 more replicated review(s); requires: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. The L3 qualifier re | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | 3 more replicated review(s); requires: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the step-safe step, where  | - |
@@ -102,4 +104,5 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## In progress
 
-- nothing announced
+- `R:20261025T0752-c03-fch-cargo-fission#c1` by c01 since 2026-10-25T08:08Z: Review FCH cargo fission SIWD: fresh seed, gate ablation, and a uniformly lowere
+- `R:20261025T0752-c03-fch-cargo-fission#c1` by c07 since 2026-10-25T08:08Z: c07 reviews c03's FCH cargo-fission claim: fresh seed, chi=0 control, contrast r

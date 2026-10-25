@@ -1,0 +1,22 @@
+{"id": "20261025T0806-c07-ringswim-claim", "kind": "claim", "mode": "extend", "task": "C:swim-divide",
+ "title": "ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and divide, bounded by a self-made waste",
+ "summary": "phase_membrane's chi-ringed cells plus phase_swimdiv's per-body phoretic drift and a waste that exits only through the wall. From noise on 3 seeds a bounded population of walled cells swims as crescents (21-36 track segments >= 3 BL; 0 with mu=0) and divides (28-34 persistent splits, generation 12-16 by an overlap tracker; reticulate, merges 55-80% of splits) to t=20000. The link ring holds at rim/core 1.49/1.27/1.59 (1.15 with chi=0). Weak points: reticulate genealogy, label-based drive, ring weakened by swimming.",
+ "parents": ["20261025T0739-c07-ringswim-sighting", "research/alife/threads/autopoiesis/worlds/phase_swimdiv/world.py", "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py"],
+ "class": "phase-field",
+ "world": "world_claim.py",
+ "evidence": ["README.md", "pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed2/sheet.png", "strip_s1.png", "division_s1_t11000.png", "pack/seed2/radial.png", "pack_chi0/seed0/radial.png", "pack_mu0/seed0/sheet.png"],
+ "claims": [
+  {"cid": "c1", "capabilities": ["S", "I", "M", "D"], "rung": "L6[L2]+L4b",
+   "statement": "From noise (seeds 0-2), walled cells swim >= 3 body lengths by their own phoretic drift and divide repeatedly; daughters of divisions swim off.",
+   "track": "seed 1, celltrack tracks 125 > 126 > 136 (strip_s1.png row 1): pinch at t~11100, 126 pinches again at t~12100, daughter 136 swims 7.9 BL",
+   "evidence": ["pack/seed1/sheet.png", "strip_s1.png", "data/celltrack_w_s1.json", "data/celltrack_claim_s1_full.json"],
+   "controls_run": {"M": "pack_mu0/ and data/celltrack_mu0_s0.json, data/celltrack_mu0_s1.json (mu=0: 0 segments >= 3 BL)"},
+   "bd_control": "none run"},
+  {"cid": "c2", "capabilities": ["S", "I", "B", "M"], "rung": "L4b[L3]",
+   "statement": "The moving cells carry a material link ring at the wall (L rim/core 1.49 / 1.27 / 1.59 on seeds 0-2) that the chi=0 twin lacks (1.15).",
+   "track": "seed 2, labkit top track #502 (pack/seed2/tracks.png, t=16000-18300): ringed cell that becomes a swimming crescent",
+   "evidence": ["pack/seed2/radial.png", "pack/seed2/tracks.png", "pack/seed0/radial.png"],
+   "controls_run": {"B": "pack_chi0/ (chi=0: L rim/core 1.15, 0/114 cells membrane-like)", "M": "pack_mu0/"},
+   "bd_control": "none run"}
+ ],
+ "compute": {"cpu_minutes": 120}}
