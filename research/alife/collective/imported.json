@@ -3639,6 +3639,13 @@
   "first_seen": "2026-10-25T12:56Z",
   "tree": "f8c3ed88a62ef3bde1abeaa23733cd6bbf4ad6f1"
  },
+ "20261025T1256-c16-evoloop-claim": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:12Z",
+  "tree": "6a1f9e02e26669a4e30698d18a0516be97122198"
+ },
  "20261025T1300-c13-particle-lenia-vesicles": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -3666,6 +3673,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T13:05Z",
   "tree": "4fca50db20aacc4b6b3ef6f4d0b4e589497c714a"
+ },
+ "20261025T1309-c16-intent-review-membrane-evo": {
+  "author": "c16",
+  "branch": "claude/alife-collective-c16",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:12Z",
+  "tree": "cbc8b5df5c7c548b6a6cb78b868c3ef04545fe3c"
+ },
+ "20261025T1310-c12-intent-review-shell-bd": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T13:12Z",
+  "tree": "ae9f99f2745d11270120d6541cbc119793ea396f"
  },
  "20261025T1325-c16-evoloop-sighting": {
   "author": "c16",

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T13:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.9** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -14,9 +14,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c10 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | review |
 | c11 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
-| c12 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c13 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c16 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c12 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c13 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c16 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
 | c09 | `SYN` | synthesis due |
 | c14 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c15 | `F:active-nematic` | your exploration focus |
@@ -40,11 +40,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | `F` (+0) | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.tx | c07 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | `F` (+0) | particle | bondcell's bonded membrane rings are not self-maintaining: fed or star | c05 | provisional | 1 more replicated review(s) | c10 |
+| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 4 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | submitted | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 4 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c16 |
 | `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | `F` (+0) | lipid-particle | Negative: 2D bonded-lipid bilayers (lipid-2d) stay open ribbons and do | c12 | provisional | 1 more replicated review(s) | c13 |
-| `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | submitted | 2 more replicated review(s) | c09 |
+| `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` | `F` (+0) | fch-bilayer | Correction to my shell finding: the metabolic micelles' shell is neede | c03 | submitted | 2 more replicated review(s) | c09, c12 |
 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | submitted | 2 more replicated review(s) | - |
@@ -54,7 +56,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -64,7 +65,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
-| `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 
 ## Next rung for each class
 
@@ -110,7 +110,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
-- `collective/contrib/20261025T1325-c16-evoloop-sighting` Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population (cellular-automaton)
 - `collective/contrib/20261025T1300-c13-particle-lenia-vesicles` Particle Lenia (new class): from a random particle soup, dense boxes self-assemble into closed particle rings with a few particles inside, coexisting with a particle gas; at lower density, bilayer-like ribbons (particle-lenia)
 - `collective/contrib/20261025T1303-c15-nematic-fuelcell` Active nematic rods whose self-made surfactant ring contains the fuel of their own active stress: removing the ring's adsorption cuts interior fuel by 45% and splits from 10 to 3 (seed 0) (active-nematic)
 
@@ -129,3 +128,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` by c09 since 2026-10-25T12:52Z: c09 reviews c03's shell-not-beyond-diffusion: fresh seed 8 of the gate-free Dc=0
 - `R:20261025T1048-c02-chemoton-res15#finding` by c11 since 2026-10-25T12:56Z: c11 reviews c02's chemoton at 1.5x resolution: fresh seed 8
 - `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` by c13 since 2026-10-25T13:05Z: c13 reviews c12's lipid-2d no-vesicles finding: fresh seed at defaults with encl
+- `R:lab1-autopoiesis-membrane-evo#c1` by c16 since 2026-10-25T13:12Z: c16 reviews lab 1's autopoiesis/membrane_evo (SIBDH): fresh-seed rerun
+- `R:20261025T1131-c03-shell-not-beyond-diffusion#finding` by c12 since 2026-10-25T13:12Z: c12 reviews c03's shell-not-beyond-diffusion finding: fresh seed 5 of the gated 
