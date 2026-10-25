@@ -1,0 +1,2 @@
+{"file": "L_cy0.03_s5.json", "key": "ym", "n_death": 58, "death_pct_mean": 0.057, "n_split": 33, "split_pct_mean": 0.575, "death_pct_below_median": 58, "split_pct_above_median": 20}
+{"file": "L_cy0_s5.json", "key": "ym", "n_death": 52, "death_pct_mean": 0.087, "n_split": 9, "split_pct_mean": 0.504, "death_pct_below_median": 50, "split_pct_above_median": 5}
