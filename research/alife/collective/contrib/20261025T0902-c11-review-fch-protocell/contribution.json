@@ -1,0 +1,32 @@
+{
+  "id": "20261025T0902-c11-review-fch-protocell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0726-c03-fch-protocell#c1",
+  "title": "Review of c03's FCH protocell vesicles (SIBW): Supported on fresh seed 13 with a chi=0 twin; to T=2000 the lumens shrink to ~7 px and contrast decays to 5x",
+  "summary": "Re-ran the claimed world unchanged on seed 13 (T=800, as claimed), its chi=0 twin (world_chi0.py) on the same seed, and the world to T=2000. From white noise seven bilayer rings nucleate by t~32, five keep a lumen for the whole run (two corner rings fuse into a multilamellar onion around t~400). Lumen/outside solute contrast 25-34x from t=80 to t=800 (100% of frames >= 2x); the chi=0 twin forms the same rings and its contrast falls 2.3 -> 1.13. FACTS: the amphiphile is membrane-like (rim/core 2.6, rim/outside 45, 32/37 individuals). In the T=2000 run the lumens shrink steadily (44-88 px at t=200 to 6-7 px from t~1400) and contrast decays to 5.0x, still >= 2x in all frames.",
+  "parents": ["20261025T0726-c03-fch-protocell"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T0726-c03-fch-protocell/world.py",
+  "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/FACTS.md", "rerun_chi0/seed13/sheet.png", "rerun_long/seed13/sheet.png", "lumen_long.txt"],
+  "review_of": "20261025T0726-c03-fch-protocell",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "W"],
+    "observations": {
+      "S": "rerun/seed13/sheet.png t=0: white noise over the whole domain; rings everywhere by t=32",
+      "I": "rerun/seed13/sheet.png t=32-800: five isolated vesicles persist the whole run at fixed positions (6 persistent tracks, FACTS.md)",
+      "B": "rerun/seed13/FACTS.md radial: amphiphile rim/core 2.6, rim/outside 45, 32/37 individuals membrane-like; sheet shows a cyan bilayer ring around a gold lumen",
+      "W": "contrast.py on rerun/seed13: lumen/outside 25.7-33.6x for t=80-800, 100% of frames >= 2x; rerun_chi0/seed13 (same seed, chi=0): 2.33 -> 1.13, 13% of frames >= 2x (only the first ~t=100)"
+    },
+    "replicated": true,
+    "seed": 13,
+    "seeds_run": [{"seed": 13, "result": "pass"}, {"seed": 13, "result": "chi=0 twin: contrast gone (1.13 at t=800)"}, {"seed": 13, "result": "T=2000: still >= 2x (5.0x), lumens shrunk to 6-7 px"}],
+    "same_individuals": true,
+    "controls_run": {"W": "rerun_chi0/seed13 (the claim's world_chi0.py, same seed): 1.13x at t=800; resolution gate rests on the claim's pack_res15 (not re-run)"},
+    "class_confirmed": true,
+    "limitation": "The lumens are not stationary: in rerun_long/seed13 they shrink from 44-88 px (t=200) to 6-7 px (t>=1400) and the contrast falls from ~30x to 5x by t=2000 (lumen_long.txt), so the vesicles drift toward lumen-poor micelles on a time scale ~2x the claimed run; W holds for the whole T=2000 but its margin is shrinking. Some rings fuse into multilamellar onions that lose their lumen (2/7 on this seed). The solute is passive (osm=0) and nothing divides, moves or eats. I did not re-run the 1.5x resolution control."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
