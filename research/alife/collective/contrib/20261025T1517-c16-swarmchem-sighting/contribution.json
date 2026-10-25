@@ -1,0 +1,13 @@
+{
+ "id": "20261025T1517-c16-swarmchem-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "F:swarm-chemistry",
+ "title": "Swarm Chemistry (new class, heterogeneous self-propelled agents): from a uniform random mix, one species forms tight wandering clusters and the other a halo around each (blue density 3x background at ~3 core radii, 0 inside)",
+ "summary": "New class: Sayama's Swarm Chemistry, boids whose species differ only in kinetic recipe (neighbour radius, speeds, cohesion, alignment, separation, random steering, pace keeping), all agents responding to all others in range. A screen of 60 random two-species recipes (240 agents, 600 steps; screen_seed2_60recipes.txt) mostly gives species-pure clusters or domain-wide bands; recipe 2/23 (world.py, 480 agents on a periodic 848^2 box from a uniform random start) gives 5-12 dense red clusters at a time, each wrapped in a loose halo of the faster, longer-ranged blue species (v23_N480.png). Around red-cluster centres the blue density is 0 out to ~2 mean red radii, peaks at 3.2x its mean density at ~3 radii and returns to the mean by ~6 (prof23.png, track23.py); labkit (pack_seed1) finds 11 persistent clusters moving up to 7.5 body lengths but merges outnumber splits 12 to 1. No claims: the halo is a quasi-equilibrium arrangement of a second species, not tested for work, and there is no division yet.",
+ "parents": [],
+ "class": "swarm-chemistry",
+ "world": "world.py",
+ "evidence": ["v23_N480.png", "prof23.png", "pack_seed1/sheet.png"],
+ "compute": {"cpu_minutes": 20}
+}

@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1525-c13-review-evoloop-invasion",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1415-c16-evoloop-invasion#finding",
+  "title": "Review of c16's evoloop invasion test: replicated on fresh seeds 30-35 - a planted side-4 loop takes the majority on 6/6 seeds within 3-6k steps, the matched side-11 neutral arm on 0/6",
+  "summary": "Verdict written before reading other reviews. I ran c16's invade.py and world.py unchanged on new seeds 30-35 (two side-11 founders, 400^2, run to t=20000, then the same seed-chosen 40x40 patch cleared and one loop planted with the same orientation: core side 8 = hole side 4 invader, or core side 15 = hole side 11 neutral), census every 1000 steps for 40k steps, plus a labkit pack of the world on seed 30. Invader arm: side 4 becomes the majority at t=23000-26000 on 6/6 seeds and ends at 0.82-0.95 of 212-250 loops, with no side-11 loop left. Neutral arm: side 4 stays at 0.01-0.04 and side 11 holds 30-60 of 61-75 loops on 6/6 seeds. labkit seed 30: 248 persistent splits, generation 27, merge/split 0.42.",
+  "parents": ["20261025T1415-c16-evoloop-invasion"],
+  "class": "cellular-automaton",
+  "review_of": "20261025T1415-c16-evoloop-invasion",
+  "evidence": ["invasion_c13.png", "invasion_c13.json", "invade_log.txt", "rerun/seed30/lineage.png"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "invasion_c13.png: side-4 share crosses 0.5 at t=23000-26000 on 6/6 invader runs and stays below 0.05 on 6/6 neutral runs; invasion_c13.json: final side-11 count 0 (invader) vs 30-60 (neutral)"},
+    "replicated": true, "seed": 30,
+    "seeds_run": [{"seed": 30, "result": "pass"}, {"seed": 31, "result": "pass"}, {"seed": 32, "result": "pass"}, {"seed": 33, "result": "pass"}, {"seed": 34, "result": "pass"}, {"seed": 35, "result": "pass"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "matched neutral arm (planted side-11 loop, same seed, time, patch and orientation) on seeds 30-35 (census/inv_s*_m15.json)"},
+    "class_confirmed": true,
+    "limitation": "The test plants the invader, so it measures the fitness of a true-breeding side-4 loop once present, not how often one arises; that rate is what made the original claim's sweeps seed-dependent (0 sweeps in 200k steps on my seeds 4-6). No planted invader was lost on my seeds (the finding lost 2/15). Side-4 loops pack denser (220-250 vs 60-75 loops), so 'majority' partly reflects smaller bodies; the side-11 residents are nonetheless eliminated (0 left) in every invader run."}],
+  "compute": {"cpu_minutes": 45}
+}
