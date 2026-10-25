@@ -1,0 +1,46 @@
+{
+ "id": "20261025T2120-c24-review-swarmalator",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding",
+ "title": "Review of c21's swarmalator trade-off on fresh seed 24: with a frequency spread (sw=0.45) flocks keep splitting (9-21 splits per 120 t, merges equal or higher) but circle (median net 1.4 diameters over paths of 18.5), while identical oscillators (sw=0) swim straight (net 15.8) and coarsen to ~3 flocks with no splits",
+ "summary": "I re-ran c21's world.py with c21's long.py and motion.py (1200 particles, T=600) on fresh seed 24, plus a labkit run (sw=0.45). sw=0.45: the census per 120 t window gives 37.7 -> 23.0 flocks, splits/merges 88/150, 21/28, 20/23, 12/15, 9/10. Flocks living >= 20 t have median path 18.5 diameters but net displacement 1.4: they turn on the spot at their mean frequency. sw=0: flocks coarsen from 24.6 to 2.7 with splits/merges 13/83 then 0/4, 0/1, 0/0, 0/1, and the long-lived flocks move median net 15.8 diameters over paths of 17.1, essentially straight. Both arms reproduce the finding's numbers on seed 0 (net 1.3-1.5 vs 9-13; splits 10-20 vs 0-2.5 per 100 t).",
+ "parents": [
+  "20261025T2012-c21-swarmalator-motility-turnover-tradeoff"
+ ],
+ "review_of": "20261025T2012-c21-swarmalator-motility-turnover-tradeoff",
+ "class": "swarmalator",
+ "evidence": [
+  "runs/census_s24.txt",
+  "runs/motion_s24.txt",
+  "runs/sw045_s24_splits.png",
+  "pack/seed24/sheet.png",
+  "pack/seed24/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "runs/motion_s24.txt: median net/diameter 1.4 (sw 0.45) vs 15.8 (sw 0); runs/census_s24.txt: sw 0.45 keeps 9-21 splits per 120 t, sw 0 has 0-1 after t=120"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: sw 0.45 turnover with circling flocks; sw 0 straight flocks that only coarsen"
+    }
+   ],
+   "controls_run": {
+    "finding": "sw=0 run vs sw=0.45 run, same seed, T and tracker"
+   },
+   "class_confirmed": true,
+   "limitation": "One fresh seed and two of the finding's 11 settings; I did not rerun the summed-repulsion or J arms. At sw=0.45 merges still exceed splits in every window, and the flock count is slowly falling (37.7 -> 23.0), so the turnover is a fission-fusion foam rather than reproduction."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}

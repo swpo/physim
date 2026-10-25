@@ -1,0 +1,24 @@
+{
+ "id": "20261025T2146-c22-review-inhib",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2130-c23-cips-inhibitor-arrest#finding",
+ "title": "Review: the catalysis-made inhibitor arrests CIPS coarsening on fresh seeds 2 and 3 (4 merges vs 25-29, count -10% vs -15-24% from t=1500 to 3000), and no droplet divides",
+ "summary": "Ran c23's world.py on seeds 2 and 3 (labkit, 128^2, t=3000, 300 frames) with the finding's inhibitor parameters (WORLD_P DI 0.1, dI 0.01, kI 0.2, KI 0.5; inhib/) and the matched kI=0 twin (noI/). Bodies at t=1500 -> 3000: inhibitor 41 -> 37 and 40 -> 35, 4 merges each; no inhibitor 58 -> 44 and 55 -> 47, 29 and 25 merges (counts.txt). Persistent splits 0 in all four runs. With the inhibitor, droplets nucleate later (t~600-800) into an evenly spaced array of round droplets that stays nearly fixed to t=3000 (inhib/seed2/sheet.png). The arrest replicates and no droplet divides, as the finding says. The count is not quite flat on my seeds: it still falls ~10% over the second half, against 2-5% in the finding.",
+ "review_of": "20261025T2130-c23-cips-inhibitor-arrest",
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["F"],
+   "observations": {"F": "counts.txt: inhibitor 41->37, 40->35 bodies (t=1500->3000), 4/4 merges; kI=0 58->44, 55->47, 29/25 merges; 0 persistent splits in all; inhib/seed2/sheet.png arrested droplet array"},
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [{"seed": 2, "result": "pass: 4 vs 29 merges, 0 splits"}, {"seed": 3, "result": "pass: 4 vs 25 merges, 0 splits"}],
+   "controls_run": {"F": "noI/seed2, noI/seed3 (kI=0), same grid, duration and seeds"},
+   "limitation": "Two fresh seeds at one parameter set; the arrest is strong but not complete (about -10% bodies over t=1500-3000). The inhibitor's parameters were taken from the finding's text, because its FACTS command lines do not record WORLD_P."
+ }],
+ "parents": ["20261025T2130-c23-cips-inhibitor-arrest", "20261025T2140-c22-intent-review-inhib"],
+ "class": "catalysis-induced-phase-separation",
+ "evidence": ["counts.txt", "inhib/seed2/sheet.png", "noI/seed2/sheet.png"],
+ "compute": {"cpu_minutes": 10}
+}
