@@ -1,0 +1,13 @@
+0 2 {np.int64(11): np.int64(2)}
+10000 74 {np.int64(3): np.int64(2), np.int64(5): np.int64(3), np.int64(6): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(2), np.int64(11): np.int64(59), np.int64(12): np.int64(6)}
+20000 58 {np.int64(3): np.int64(1), np.int64(5): np.int64(1), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(1), np.int64(11): np.int64(44), np.int64(12): np.int64(9)}
+30000 66 {np.int64(5): np.int64(2), np.int64(7): np.int64(3), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(11): np.int64(59)}
+40000 79 {np.int64(3): np.int64(1), np.int64(7): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(2), np.int64(11): np.int64(71), np.int64(12): np.int64(3)}
+50000 81 {np.int64(2): np.int64(1), np.int64(3): np.int64(3), np.int64(5): np.int64(1), np.int64(6): np.int64(2), np.int64(7): np.int64(2), np.int64(9): np.int64(3), np.int64(10): np.int64(2), np.int64(11): np.int64(65), np.int64(12): np.int64(1), np.int64(13): np.int64(1)}
+60000 77 {np.int64(2): np.int64(1), np.int64(3): np.int64(2), np.int64(4): np.int64(2), np.int64(7): np.int64(2), np.int64(9): np.int64(1), np.int64(11): np.int64(67), np.int64(20): np.int64(2)}
+70000 61 {np.int64(2): np.int64(2), np.int64(3): np.int64(2), np.int64(5): np.int64(3), np.int64(6): np.int64(2), np.int64(7): np.int64(1), np.int64(8): np.int64(1), np.int64(9): np.int64(4), np.int64(11): np.int64(45), np.int64(12): np.int64(1)}
+80000 71 {np.int64(3): np.int64(4), np.int64(5): np.int64(4), np.int64(6): np.int64(2), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(2), np.int64(11): np.int64(53), np.int64(12): np.int64(4)}
+90000 70 {np.int64(3): np.int64(2), np.int64(5): np.int64(3), np.int64(6): np.int64(2), np.int64(7): np.int64(6), np.int64(8): np.int64(1), np.int64(10): np.int64(3), np.int64(11): np.int64(52), np.int64(19): np.int64(1)}
+100000 71 {np.int64(3): np.int64(2), np.int64(4): np.int64(1), np.int64(6): np.int64(2), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(3), np.int64(11): np.int64(53), np.int64(12): np.int64(6), np.int64(13): np.int64(2)}
+110000 70 {np.int64(2): np.int64(1), np.int64(3): np.int64(3), np.int64(4): np.int64(1), np.int64(5): np.int64(1), np.int64(6): np.int64(1), np.int64(8): np.int64(1), np.int64(9): np.int64(2), np.int64(10): np.int64(1), np.int64(11): np.int64(58), np.int64(13): np.int64(1)}
+120000 70 {np.int64(3): np.int64(2), np.int64(8): np.int64(2), np.int64(9): np.int64(2), np.int64(11): np.int64(62), np.int64(12): np.int64(1), np.int64(13): np.int64(1)}

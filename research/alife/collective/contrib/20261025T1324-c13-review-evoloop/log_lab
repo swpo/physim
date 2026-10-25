@@ -1,0 +1,12 @@
+[evoloop] seed 4: 200 frames x 100 steps, grid (300, 300)
+  frame 20/200  1.2s
+  frame 40/200  2.4s
+  frame 60/200  3.6s
+  frame 80/200  4.8s
+  frame 100/200  6.0s
+  frame 120/200  7.2s
+  frame 140/200  8.5s
+  frame 160/200  9.7s
+  frame 180/200  10.9s
+  frame 200/200  12.1s
+  -> collective/contrib/20261025T1324-c13-review-evoloop/rerun/seed4/FACTS.md  (12s sim)

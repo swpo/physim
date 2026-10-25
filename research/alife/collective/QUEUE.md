@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T13:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T13:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,13 +10,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c10 | `R:20261025T1108-c06-pcell-efficiency-claim#c1` | review |
+| c10 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
 | c11 | `R:20261025T1214-c03-size-decay-no-turnover#finding` | review |
-| c12 | `R:20261025T1345-c14-pcell-mwall-claim#c1` | review |
-| c13 | `R:20261025T1132-c08-crystal-ramp-negative#finding` | review |
-| c16 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
-| c09 | `SYN` | synthesis due |
-| c14 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c12 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c13 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
+| c16 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
+| c09 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c14 | `F:hybrid-particle-field` | your exploration focus |
 | c15 | `F:active-nematic` | your exploration focus |
 
 ## Grand challenges
@@ -36,15 +34,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 4 against), E (2 for, 4 against) | - |
-| `R:20261025T1114-c08-crystal-growth-negative#finding` | `F` (+0) | nrch | NRCH chemostat crystal replicates on seed 1; net production (phi_t > p | c08 | provisional | 1 more replicated review(s) | c10 |
-| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | submitted | IDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c12 |
-| `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | submitted | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c09 |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | submitted | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c11, c13 |
+| `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+0) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | disputed: B (3 for, 3 against) | - |
+| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | provisional | 1 more replicated review(s) | c13 |
+| `R:20261025T1108-c06-pcell-efficiency-claim#c1` | `SIDH` (+0) | hybrid-particle-field | pcell-yeff-cap: cells from noise whose particle-borne link efficiency  | c06 | established | S: 1 more supporting re-run(s) | c09, c10 |
+| `R:20261025T1345-c14-pcell-mwall-claim#c1` | `SIBDH` (+8) | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells fro | c14 | provisional | IBDH: 3 more supporting re-run(s); S: 4 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 1 against) | c12 |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+4) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
-| `R:20261025T1132-c08-crystal-ramp-negative#finding` | `F` (+0) | nrch | Arm A of Q nrch-turnover, negative: a slowly rising chemostat target m | c08 | submitted | 2 more replicated review(s) | c16 |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | submitted | 2 more replicated review(s) | - |
-| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | submitted | 2 more replicated review(s) | c14 |
-| `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1152-c06-pcell-slip-ring-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap  | c06 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1214-c03-size-decay-no-turnover#finding` | `F` (+0) | fch-bilayer | Negative (first test of my turnover question): catalyst decay that ris | c03 | submitted | 2 more replicated review(s) | c11 |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1240-c12-amh-turnover-static#finding` | `F` (+0) | active-model-h | Negative: adding uniform chemical turnover (-eps(phi - phi_t)) to acti | c12 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | submitted | 2 more replicated review(s) | - |
@@ -116,17 +115,13 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 These were imported but parts did not count. Fix them with a new contribution that names the old one in `parents`.
 
-- **c01**: `20261025T1140-c01-review-nematic-res15`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported s
-- **c03**: `20261025T1131-c03-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds
-- **c07**: `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported se / `20261025T1135-c07-review-yeff`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds fail
-- **c09**: `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported / `20261025T1225-c09-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds
+- **c03**: `20261025T1131-c03-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
+- **c09**: `20261025T1225-c09-review-marangoni`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
-- `R:20261025T1152-c06-pcell-slip-ring-negative#finding` by c14 since 2026-10-25T13:15Z: c14 reviews c06's pcell slip-ring negative (fresh seed 7)
-- `R:20261025T1345-c14-pcell-mwall-claim#c1` by c09 since 2026-10-25T13:18Z: c09 reviews c14's pcell-mwall (SIBDH): fresh seed 11 labkit + genealogy, birth-t
-- `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c12 since 2026-10-25T13:21Z: c12 reviews c06's pcell-efficiency claim (SIDH): fresh seed 9 labkit pack and ex
-- `R:20261025T1132-c08-crystal-ramp-negative#finding` by c16 since 2026-10-25T13:25Z: c16 reviews c08's NRCH crystal ramp negative: fresh-seed rerun
-- `R:20261025T1256-c16-evoloop-claim#c1` by c13 since 2026-10-25T13:25Z: c13 reviews c16's evoloop L7 (IBDH): Evoloop and SDSR genealogies on fresh seed 
-- `R:20261025T1114-c08-crystal-growth-negative#finding` by c10 since 2026-10-25T13:28Z: c10 reviews c08's crystal-growth negative finding: fresh seed
-- `R:20261025T1256-c16-evoloop-claim#c1` by c11 since 2026-10-25T13:31Z: c11 reviews c16's evoloop claim (IBDH): seed 5 labkit pack and loop genealogy to
+- `R:20261025T1345-c14-pcell-mwall-claim#c1` by c12 since 2026-10-25T13:34Z: c12 reviews c14's pcell-mwall (SIBDH): fresh seed 9 labkit pack (M ring radial) 
+- `R:20261025T1132-c08-crystal-ramp-negative#finding` by c13 since 2026-10-25T13:38Z: c13 reviews c08's NRCH crystal-ramp negative: fresh seed 2 with the ramp, plus a
+- `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c10 since 2026-10-25T13:44Z: c10 reviews c06's pcell efficiency claim: fresh seed, yield vs marker
+- `R:20261025T1214-c03-size-decay-no-turnover#finding` by c11 since 2026-10-25T13:47Z: c11 reviews c03's size-decay no-turnover: a=2 and a=5 on fresh seed 3
+- `R:20261025T1108-c06-pcell-efficiency-claim#c1` by c09 since 2026-10-25T13:47Z: c09 reviews c06's pcell-yeff-cap (SIDH): fresh seed 12 labkit + genealogy, birth

@@ -1,0 +1,11 @@
+{
+  "id": "20261025T1335-c09-synthesis",
+  "kind": "synthesis",
+  "mode": "synthesis",
+  "task": "SYN",
+  "title": "Where the field stands at 13:40Z: SIBMD reached by active-nematic rods; FCH containment is matched by slow diffusion; swimmers rarely divide; turnover without giants is the gap",
+  "summary": "One page across all foci. Established since the last whole-field synthesis: c11's ringed active-nematic rods (SIBMD, passive ring), c07's walled swimming-dividing cells, c03's IBWD micelles and c06's SIDH pcell lines (H with intrinsic deaths, mostly acquired within a lifetime). The controls show that slow diffusion reproduces the FCH shells' containment and metabolic rescue, that adsorbed rings are passive labels, that three swimmer families do not divide, and that the active-gel comets need their flow. Next: gate-controlled reviews of the new L7 candidates (pcell-mwall, evoloop), a flow-free spectral twin for the SIBMD rods, c15's working ring, and turnover without giants.",
+  "parents": ["20261025T1141-c11-active-nematic-ringed", "20261025T1108-c10-slowd-twins-three-fch", "20261025T0952-c09-pcell-death-acquired", "20261025T1046-c09-active-gel-bd-twin", "20261025T1034-c09-active-gel-no-division", "20261025T1131-c03-shell-not-beyond-diffusion"],
+  "evidence": ["synthesis.md"],
+  "compute": {"cpu_minutes": 2}
+}
