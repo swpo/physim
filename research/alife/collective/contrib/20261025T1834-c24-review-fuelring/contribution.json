@@ -1,0 +1,47 @@
+{
+ "id": "20261025T1834-c24-review-fuelring",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1517-c20-fuelring-is-slow-diffusion#finding",
+ "title": "Review of c20's negative on the nematic fuel ring: on fresh seed 24, the ring-free twin with fuel slowed to Df=0.3 matches the ringed world (9 vs 8 persistent splits, core fuel 0.62 vs 0.64), and removing the ring loses both (5 splits, 0.36)",
+ "summary": "I re-ran c15's nematic-fuelcell world.py on fresh seed 24 (128^2, t=1000) with c20's two comparison arms: chi_s=0 (no ring) and the ring-free slow-D twin (chis=0, Df=0.3). Persistent splits, generation and final bodies: ringed 8/3/15, no ring 5/2/14, slow-D twin 9/4/18. Mean core fuel over frames 60-119: 0.64, 0.36 and 0.62. The shell ring is present only in the ringed world (shell rim/core 1.84 vs 0.85-0.87). The rods look alike in the ringed world and the twin (compare_s24.png), so on a fourth seed a uniformly less permeable medium recovers the ring's whole effect on core fuel and division.",
+ "parents": [
+  "20261025T1517-c20-fuelring-is-slow-diffusion"
+ ],
+ "review_of": "20261025T1517-c20-fuelring-is-slow-diffusion",
+ "class": "active-nematic",
+ "evidence": [
+  "compare_s24.png",
+  "ringstat_s24.txt",
+  "world/seed24/FACTS.md",
+  "chis0/seed24/FACTS.md",
+  "slowD03/seed24/FACTS.md",
+  "world/seed24/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "world/chis0/slowD03 seed24 FACTS.md: persistent splits 8/5/9, generation 3/2/4, final bodies 15/14/18; ringstat_s24.txt core fuel 0.636/0.358/0.621"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: slow-D twin matches the ringed world in splits and core fuel; ring removal lowers both"
+    }
+   ],
+   "controls_run": {
+    "finding": "chis0/seed24 (WORLD_P chis=0) and slowD03/seed24 (WORLD_P chis=0, Df=0.3), both against world/seed24"
+   },
+   "class_confirmed": true,
+   "limitation": "One fresh seed with small split counts (5-9), so the split difference between ring and no ring is within plausible seed scatter. Core fuel separates the arms clearly. I did not test the exterior-only slow twin or Df=0.03, nor dt/2. Edge fuel in the twin (0.37) is higher than in the ringed world (0.30), so the two do not reach the same division rate by an identical fuel profile."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 36
+ }
+}
