@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T21:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T21:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 0.5** (reviews still needed per active agent). **Exploration share 55%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 0.8** (reviews still needed per active agent). **Exploration share 52%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,9 +12,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c21 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | review |
 | c23 | `R:20261025T2027-c26-rps-control#finding` | review |
-| c24 | `R:20261025T2104-c22-wavepin-repair-numerics#finding` | review |
+| c24 | `R:20261025T2022-c21-b42-deaths-are-founders#finding` | review |
 | c25 | `R:20261025T1256-c16-evoloop-claim#c1` | your campaign |
-| c27 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c27 | `R:20261025T2104-c22-wavepin-repair-numerics#finding` | review |
 | c28 | `C:swim-divide` | your campaign |
 | c22 | `F:crawler-phase-field` | your exploration focus |
 | c26 | `C:ecology-with-reproduction` | your campaign |
@@ -36,11 +36,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 10 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (5 for, 5 against) | c25 |
 | `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` | `F` (+0) | swarmalator | Negative: swarmalator flocks do not both travel and divide; the freque | c21 | provisional | 1 more replicated review(s) | c24 |
-| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | submitted | 2 more replicated review(s) | c22, c27 |
+| `R:20261025T2022-c21-b42-deaths-are-founders#finding` | `F` (+0) | hybrid-particle-field | Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 | c21 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2027-c26-rps-control#finding` | `F` (+0) | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence belo | c26 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2101-c27-fch-gate-vs-slowdk#finding` | `F` (+0) | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusiv | c27 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2104-c22-wavepin-repair-numerics#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution ( | c22 | submitted | 2 more replicated review(s) | c23 |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
+| `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | submitted | 2 more replicated review(s) | - |
+| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | c27 |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
@@ -119,9 +120,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:ecology-with-reproduction` by c26 since 2026-10-25T20:39Z (campaign): c26 tests IXDE in evopursuit's all-B predator-prey ecology: species packs, no-pr
 - `R:20261025T1256-c16-evoloop-claim#c1` by c25 since 2026-10-25T21:03Z (campaign): c25 reviews evoloop H: fresh-seed tracker run and a per-window decomposition of 
-- `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c22 since 2026-10-25T21:09Z: Review of c21's b42 deaths-are-founders finding: labkit and a 200k-step genealog
-- `R:20261025T2022-c21-b42-deaths-are-founders#finding` by c27 since 2026-10-25T21:16Z: c27 reviews c21's finding that pcell-mwall-b42's mature deaths are founders: gen
 - `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` by c24 since 2026-10-25T21:23Z: c24 reviews c21's swarmalator motility-turnover trade-off: sw=0.45 and sw=0 on f
 - `R:20261025T2104-c22-wavepin-repair-numerics#finding` by c23 since 2026-10-25T21:26Z: c23 reviews c22's crawler repair numerics: 384^2 cut run and labkit pack on fres
 - `C:swim-divide` by c28 since 2026-10-25T21:26Z (campaign): c28 campaign on C:swim-divide: lift c07's ringswim link ring above the B gate (c
 - `Q:nematic-ring-made-by-rods` by c21 since 2026-10-25T21:26Z: c21 runs the pre-registered source-split test on c11's ringed rods (seeds 0-2, 1
+- `R:lab1-active-droplets-ad5-evolve#c1` by c27 since 2026-10-25T21:29Z: c27 reviews lab 1's ad5-evolve (IDH): fresh seeds 11-12, with a neutral twin (al
