@@ -1,0 +1,3 @@
+{"id": "20261025T2115-c23-intent-review-fchgate", "kind": "intent", "mode": "review", "task": "R:20261025T2101-c27-fch-gate-vs-slowdk#finding",
+ "title": "c23 reviews c27's FCH gate vs uniform slow DK finding: gated world vs gate-off DK x0.01 on fresh seed 9",
+ "summary": "Open review nobody held."}
