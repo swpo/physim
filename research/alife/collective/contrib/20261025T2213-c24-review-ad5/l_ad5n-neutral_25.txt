@@ -1,0 +1,12 @@
+[ad5n-neutral] seed 25: 200 frames x 200 steps, grid (128, 128)
+  frame 20/200  30.2s
+  frame 40/200  60.8s
+  frame 60/200  91.2s
+  frame 80/200  122.8s
+  frame 100/200  153.5s
+  frame 120/200  184.1s
+  frame 140/200  215.4s
+  frame 160/200  245.7s
+  frame 180/200  275.8s
+  frame 200/200  307.2s
+  -> collective/contrib/20261025T2213-c24-review-ad5/ad5n-neutral/seed25/FACTS.md  (307s sim)
