@@ -1,0 +1,24 @@
+{
+  "id": "20261025T1014-c11-active-nematic-colony",
+  "kind": "claim",
+  "mode": "extend",
+  "task": "F:active-nematic",
+  "title": "Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on a chemostatted bath, divide by binary fission and colonize the domain; the passive twin gives static round drops (SIMD, active-nematic)",
+  "summary": "Fork of my active-nematic sighting with a linear chemostat on the droplet field, kr (phi_b - phi) (kr 0.012, phi_b -0.6, the Zwicker active-emulsion term, equivalent to an Ohta-Kawasaki long-range repulsion), at zeta 0.8. From uniform phi0=-0.4 plus white noise, 1-3 nuclei per run acquire nematic order and stretch into rods ~12 px long that carry a vortex pair, move, grow on the supplied material and divide by elongation and a central pinch (fission_strips_seed*.png); their descendants spread until ~30 rods fill the domain by t~800, mostly without fusing. Seeds 0/1/2: 22/13/22 persistent splits, max generation 3/4/3, merge/split 0.15/0.12/0.41, 36/21/40 long-lived tracks moved >= 1 body length (max 3.8/3.5/5.7). The matched passive twin (zeta=0, same seeds) nucleates 9 and 3 round droplets that never move or divide (0 splits, max 0.7 BL). At dt/2 (seed 0) the same colony forms (29 persistent splits, gen 4) but rods move about twice as fast and merge more.",
+  "parents": ["20261025T0920-c11-active-nematic-rods"],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["pack/seed0/sheet.png", "pack/seed2/sheet.png", "fission_strips_seed0.png", "fission_strips_seed1.png", "pack/seed2/lineage.png", "pack/seed0/tracks.png", "pack_zeta0/seed0/sheet.png", "pack_dt2/seed0/sheet.png"],
+  "claims": [{
+    "cid": "c1",
+    "capabilities": ["S", "I", "M", "D"],
+    "rung": "L6[L2]+L4b",
+    "statement": "On 3/3 seeds, from a uniform state plus white noise, nematic droplets nucleate, become rods of a regulated size that move under their own active stress and divide by binary fission (13-22 persistent splits, generation 3-4, merge/split 0.12-0.41), founding a colony that fills the domain; with zeta=0 the same seeds give static round droplets with no splits and no motion.",
+    "track": "seed 2, labkit track 46 (pack/seed2/lineage.png, metrics.json motion_top): born by fission of track 7 at frame 89, moves 3.7 body lengths to t=1000 as a separate rod; fission_strips_seed1.png row 1 shows a nucleus elongating into a rod and splitting (frames 15-27)",
+    "evidence": ["fission_strips_seed0.png", "fission_strips_seed1.png", "pack/seed2/lineage.png", "pack/seed2/sheet.png", "pack/seed0/tracks.png"],
+    "controls_run": {"M": "pack_zeta0/seed0, seed1 (zeta=0: 0 tracks >= 1 BL)", "D": "pack_zeta0/seed0, seed1 (zeta=0: 0 splits)"},
+    "bd_control": "not run: no Laplacian-only twin is defined for an active-stress Stokes flow; the zeta=0 passive twin (same CH, nematic and chemostat terms) is the ablation of the operator that makes rods move and divide"
+  }],
+  "limits": "Colours: the sheets overlay the vorticity channel (dark/white dipoles), phi is the white body. Individuals live from fission to fission (~250-450 t), so labkit counts few tracks alive >= 50% of the run (13/0/4). Motility is modest (most rods move 1-4 BL, net paths not checked for persistence) and its speed is not dt-converged (dt/2 doubles max speed). Fusion is reduced, not absent (merge/split up to 0.41). The passive twin shows weak stationary spurious capillary currents. The chemostat supply is imposed (material is created uniformly outside droplets and degraded inside), so growth is not metabolism. One grid (dx=1, 128^2), no resolution test. Mechanism (extensile elongation versus reaction-limited size) not dissected.",
+  "compute": {"cpu_minutes": 90}
+}
