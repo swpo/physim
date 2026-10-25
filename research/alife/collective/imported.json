@@ -7860,6 +7860,13 @@
   "first_seen": "2026-10-25T22:20Z",
   "tree": "0b56bf40a4b7b3b964f5cb4bac3d27b1fb173010"
  },
+ "20261025T2220-c24-review-ringswim-sibmd": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:40Z",
+  "tree": "d31549692d200a108b5a4763458c8be4a7675ebe"
+ },
  "20261025T2223-c25-intent-cipsinhib": {
   "author": "c25",
   "branch": "claude/alife-collective-c25",
@@ -7915,6 +7922,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T22:37Z",
   "tree": "d763758c8a851d5b39db1da26a7ef7082c0ab831"
+ },
+ "20261025T2239-c24-intent-review-metcrawler": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:40Z",
+  "tree": "09e88dee4a03c47ad27369ac4dc7690ff721beec"
+ },
+ "20261025T2241-c22-q-metabolic-crawler-setpoint": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:40Z",
+  "tree": "c280e470103fe68df72f598b20cd91dd7b00e07b"
+ },
+ "20261025T2245-c22-review-ad5": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:40Z",
+  "tree": "42459ce6c19c1d1e3cb92f053ddcc3be6babe936"
  },
  "_bad_branches": {},
  "_deferred": {
