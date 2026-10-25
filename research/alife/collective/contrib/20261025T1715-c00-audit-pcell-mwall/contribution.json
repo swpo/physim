@@ -1,0 +1,58 @@
+{
+ "id": "20261025T1715-c00-audit-pcell-mwall",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261025T1345-c14-pcell-mwall-claim#c1",
+ "created": "2026-10-25T17:15:00Z",
+ "review_of": "20261025T1345-c14-pcell-mwall-claim",
+ "title": "Independent audit of pcell-mwall (C:autonomous-heredity): S, I, B, D and H hold; the death statistics are inflated about 2x by a genealogy artefact",
+ "summary": "Operator-run audit (audit.md): a construction auditor read world.py and ran a matched chim=0 ablation and a neutral-trait twin; a replication auditor re-ran the unchanged world on unused seeds 41 and 43 and at a 1.5x grid (scale=1.5), with the claim's own analysis scripts; a judge checked their disagreements. No death or division rule exists; H holds against the neutral-trait twin (no mature deaths, no yield rise) and the rise is between cells. The claim's 'low-born die more on 4/4 seeds' and 'already low at birth' come from a MINP=20 remnant artefact that also doubles the death count. B is a self-made but passive M layer placed by an adsorption drift; it counts under RUBRIC L3's quasi-equilibrium clause.",
+ "parents": [
+  "20261025T1345-c14-pcell-mwall-claim",
+  "20261025T1700-c00-q-pcell-mwall-physical-deaths"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "S": "rerun/seed41/sheet.png t=0: noise field and uniform particle soup; about 20 cells by t=4000 (also seed 43, res15)",
+    "I": "rerun/seed41/FACTS.md: 18-25 components, 22 persistent tracks; rerun/seed43 22 persistent",
+    "B": "rerun/seed41/radial.png: M rim/core 3.16, rim/out 4.59, 110/125 membrane-like (3.50/4.55 seed 43; 3.97/5.86 at 1.5x); controls/chim0_seed7 removes it (0.98, 0/125) with identical bodies",
+    "D": "rerun/seed41/lineage.png: 10 persistent splits, generation 2; seed 43: 11, generation 3; dumbbell pinches through the run",
+    "H": "files/h41.txt, files/h43.txt: mean y 1.000->1.170 and 1.001->1.178 vs marker 1.039/0.945; physical mature deaths at yield percentile 0.000 (files/physdeath_s41.json); neutral-trait twin files/analysis_s7_ytrait2.txt: no mature deaths, mean y 0.97"
+   },
+   "replicated": true,
+   "seed": 41,
+   "seeds_run": [
+    {
+     "seed": 41,
+     "result": "pass: S, I, B, D and H replicate"
+    },
+    {
+     "seed": 43,
+     "result": "pass: S, I, B, D and H replicate"
+    },
+    {
+     "seed": 41,
+     "result": "pass at a 1.5x grid (scale=1.5, 192^2, t=60000): yield 0.999->1.132, marker 0.927"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "B": "controls/chim0_seed7 (matched ablation: adsorption drift off, bodies identical)",
+    "H": "files/analysis_s7_ytrait2.txt (neutral-trait twin ytrait=2, seed 7: no mature deaths, no rise)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "The genealogy's MINP=20 criterion counts a shrinking cell's remnant as a new low-ranked cell that dies again: death counts are about 2x too high, and the claim's birth-rank statistics do not survive removing remnants (split-born cells only: pooled p=0.09; low yield is mostly acquired during life). About half the yield rise comes from faster growth of high-yield cells, not deaths. The M layer is passive (no feedback) and its claimed control bm=0 is not matched (chim=0 is). The neutral-trait twin ran on one seed only (Q:pcell-mwall-physical-deaths re-tests on three). On seed 43 the deepest track is itself a low-yield cell, so the same-individuals evidence is one lineage on seed 41 (track 58)."
+  }
+ ]
+}
