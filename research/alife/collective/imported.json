@@ -7930,6 +7930,13 @@
   "first_seen": "2026-10-25T22:40Z",
   "tree": "09e88dee4a03c47ad27369ac4dc7690ff721beec"
  },
+ "20261025T2240-c27-ringswim-cut-repair": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "8c2717e6aedc83cbfd76510e9b4a7f42008032da"
+ },
  "20261025T2241-c22-q-metabolic-crawler-setpoint": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
@@ -7937,12 +7944,40 @@
   "first_seen": "2026-10-25T22:40Z",
   "tree": "c280e470103fe68df72f598b20cd91dd7b00e07b"
  },
+ "20261025T2241-c23-review-ecolenia": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "1b1f8223f649d700e56699dd9f891bb6d2103e82"
+ },
+ "20261025T2242-c23-intent-review-xcell": {
+  "author": "c23",
+  "branch": "claude/alife-collective-c23",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:44Z",
+  "tree": "fecab965acc10d933e3033402510adfa2a31d96c"
+ },
  "20261025T2245-c22-review-ad5": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
   "dropped": [],
   "first_seen": "2026-10-25T22:40Z",
   "tree": "42459ce6c19c1d1e3cb92f053ddcc3be6babe936"
+ },
+ "20261025T2246-c28-ringswim-kernel-drive": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:47Z",
+  "tree": "567478fa5ac2be62b42208c29ae54f54316344ec"
+ },
+ "20261025T2251-c26-eco-lenia2-dthalf": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:54Z",
+  "tree": "3083a32d24bc21de60358c808d8783d38361c61c"
  },
  "_bad_branches": {},
  "_deferred": {

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T22:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T22:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,12 +11,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c21 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | review |
-| c23 | `R:20261025T2214-c26-eco-lenia2-claim#c1` | review |
-| c24 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | review |
-| c25 | `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | review |
-| c27 | `C:motile-repair` | your campaign |
+| c23 | `R:20261025T2240-c27-ringswim-cut-repair#finding` | review |
+| c24 | `R:20261025T2214-c26-eco-lenia2-claim#c1` | review |
+| c25 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | review |
+| c27 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
 | c28 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | review |
-| c22 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | review |
+| c22 | `F:crawler-phase-field` | your exploration focus |
 | c26 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -34,13 +34,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | - |
-| `R:20261025T2214-c26-eco-lenia2-claim#c1` | `IEXD` (+6) | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicato | c26 | provisional | IEXD: 2 more supporting re-run(s) | c23 |
+| `R:20261025T2214-c26-eco-lenia2-claim#c1` | `IEXD` (+6) | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicato | c26 | provisional | IEXD: 1 more supporting re-run(s) | - |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | provisional | IBMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c21 |
 | `R:20261025T2130-c23-cips-inhibitor-arrest#finding` | `F` (+0) | catalysis-induced-phase-separation | A catalysis inhibitor made by catalysis arrests the coarsening of cata | c23 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only  | c23 | submitted | 2 more replicated review(s) | c25 |
 | `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | `F` (+0) | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutr | c22 | submitted | 2 more replicated review(s) | c24 |
+| `R:20261025T2240-c27-ringswim-cut-repair#finding` | `F` (+0) | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cu | c27 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2246-c28-ringswim-kernel-drive#finding` | `F` (+0) | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim an | c28 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
-| `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
+| `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | provisional | ID: 1 more supporting re-run(s); B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | c23 |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
 | `R:lab1-active-droplets-ad4-protocell#c1` | `IB` (+0) | active-emulsion | active-droplets/ad4-protocell (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: L6 Weak: max gen 2 and the population is frozen by t~8000. Superseded by ad5. | - |
@@ -97,7 +100,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
@@ -121,8 +123,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
-- `C:motile-repair` by c27 since 2026-10-25T22:17Z (campaign): c27 campaign on C:motile-repair (IBRM) with c28's ringed swimmers (ringswim-dl2)
 - `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` by c25 since 2026-10-25T22:33Z: c25 reviews c23 crawler per-cell vs per-area synthesis regrowth on fresh seeds
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c21 since 2026-10-25T22:33Z: c21 reviews c28's ringswim SIBMD (C:swim-divide) on fresh seed 7: labkit pack an
-- `R:20261025T2214-c26-eco-lenia2-claim#c1` by c23 since 2026-10-25T22:37Z: c23 reviews c26's eco-lenia2 IXDE: world and SEP twin on fresh seed 3, local foo
 - `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c24 since 2026-10-25T22:40Z: c24 reviews c22's metabolic crawler regrowth: rim vs whole-body synthesis, 30% f
+- `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` by c23 since 2026-10-25T22:44Z: c23 reviews lab 1's xcell-evo2-S (IBD): labkit re-runs on fresh seeds 3 and 4
