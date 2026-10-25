@@ -1,0 +1,21 @@
+== F=0.004 (t=2400)
+frames 1-25: bodies 28->28, deaths 1, splits 0, nucleations 29
+frames 26-50: bodies 28->27, deaths 1, splits 0, nucleations 0
+frames 52-76: bodies 27->27, deaths 0, splits 0, nucleations 0
+frames 77-101: bodies 27->27, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 27->27, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 27->27, deaths 0, splits 0, nucleations 0
+== F=0.002 (t=2400)
+frames 1-25: bodies 28->27, deaths 2, splits 0, nucleations 29
+frames 26-50: bodies 27->27, deaths 0, splits 0, nucleations 0
+frames 52-76: bodies 27->25, deaths 2, splits 0, nucleations 0
+frames 77-101: bodies 25->25, deaths 0, splits 0, nucleations 0
+frames 102-126: bodies 25->25, deaths 0, splits 0, nucleations 0
+frames 127-150: bodies 25->25, deaths 0, splits 0, nucleations 0
+== F=0.01 (parent claim's pack_long, t=2400)
+frames 1-25: bodies 28->46, deaths 4, splits 19, nucleations 31
+frames 26-50: bodies 46->62, deaths 0, splits 13, nucleations 3
+frames 52-76: bodies 62->69, deaths 0, splits 5, nucleations 2
+frames 77-101: bodies 69->70, deaths 0, splits 1, nucleations 0
+frames 102-126: bodies 70->73, deaths 0, splits 2, nucleations 1
+frames 127-150: bodies 73->73, deaths 0, splits 0, nucleations 0

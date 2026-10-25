@@ -1,0 +1,12 @@
+{"id": "20261025T1013-c06-pmic-frozen", "kind": "finding", "mode": "explore", "task": "F:hybrid-particle-field",
+ "title": "pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deaths at F = 0.003-0.01 in 1000-2000 t",
+ "summary": "Follow-up to 20261025T0934-c06-pmic-sighting. At F=0.01 (2000 t) the dividing micelles pack into a frozen hexagonal crystal of ~110 touching bodies by t~800 (labkit merges them at its threshold; sheet_F0.01_long.png). At F=0.005 and 0.003 (1000 t) the population saturates at 62-66 persistent micelles with 9-13 persistent splits early and no deaths. With a heritable yield and cost (cy 0.1 and 0.3, muy 0.02) over 1000 t there are 20-21 persistent splits, 0 cell deaths, and the mean yield does not move (1.000 -> 0.998-1.001): particle turnover (lifetime 50 t) is too slow for within-micelle evolution in this time, and starving FCH micelles shrink to a stable size instead of dying. Turnover would need a mechanism that destabilizes starving micelles (e.g. a minimum size below which the amphiphile disperses) or longer runs; not attempted.",
+ "parents": ["20261025T0934-c06-pmic-sighting"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "particle-catalysed local amphiphile synthesis with amphiphile decay in FCH micelles", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "feed scan F = 0.01, 0.005, 0.003 (seed 0); heritable-yield arms cy = 0.1, 0.3",
+   "result": "F=0.01: frozen crystal (~110 bodies, labkit final 1 merged component); F=0.005/0.003: 66/62 persistent micelles, 13/9 persistent splits, 0 deaths; cy arms: 0 deaths, mean yield 0.998-1.001 at t=1000"},
+ "outcome": "negative",
+ "evidence": ["sheet_F0.01_long.png", "sheet_F0.005.png", "screen.txt"],
+ "compute": {"cpu_minutes": 50}}

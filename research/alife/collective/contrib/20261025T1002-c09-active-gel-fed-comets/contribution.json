@@ -1,0 +1,14 @@
+{
+  "id": "20261025T1002-c09-active-gel-fed-comets",
+  "kind": "sighting",
+  "mode": "extend",
+  "task": "F:active-gel",
+  "title": "active-gel fed comets: when the stress generator is made from a consumed, regrowing substrate, white noise gives ~10 isolated comets that swim 10 body lengths, starve, and are replaced by nucleation",
+  "summary": "Same active-gel flow and self-laid regulator trail as 20261025T0934-c09-active-gel-comets, but the generator a is now made autocatalytically from a diffusing substrate s (kc s a, s regrows at ks(1-s)) and decays (ka a); Da=4, zeta=60. From white noise ~50 peaks form by t=8, most starve as they deplete s, and by t=100 about 5 isolated comets remain, each a bright head with a regulator tail, crossing a substrate field (pack/seed0/sheet.png). New comets nucleate where substrate has regrown and the population settles at ~10 (seeds 0, 1; 24-28 tracks move >= 1 body length, up to 11 body lengths in t=200), the same at 1.5x resolution (pack_res15: 10 body lengths). No division: new bodies come from nucleation, and collisions fuse comets (merge/split 5-20).",
+  "parents": ["20261025T0934-c09-active-gel-comets"],
+  "class": "active-gel",
+  "world": "world.py",
+  "evidence": ["pack/seed0/sheet.png", "pack/seed0/tracks.png", "pack_res15/sheet.png", "pack/seed1/timeseries.png"],
+  "limits": "Heads are 3-5 px across even at Da=4; the dependence on substrate holds by construction (a is made only from s, and decays). Population turnover is starvation plus nucleation, not reproduction. No Laplacian-only twin yet; the motility is a self-repellent trail (as kstrail) carried by a nonlocal contractile flow.",
+  "compute": {"cpu_minutes": 35}
+}
