@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1118-c02-review-c08-nrch-flock",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0938-c08-nrch-ambplus-flock#finding",
+ "title": "Review of c08 NRCH+AMB+ flock finding: replicated on seed 3 (plain vs full arm); Supported",
+ "summary": "Re-ran world.py on seed 3 with its defaults (AMB+ region-B terms plus reaction) and with lam=zeta=u=0 (plain NRCH, WORLD_P), 192^2, 120 frames x 1000 steps (T=6000), and the author's arms.py measures (arms3.py). Late-time droplet count 20.0 (full) vs 7.0 (plain), CV of area 0.53 vs 0.78, polar order 0.89 vs 0.81: both arms flock and AMB+ plus reaction roughly triples the swimmer number, as in the finding (19.5/21.3 vs 10.6/8.9). Droplets nucleate at t~1550-1800 and swim as polar crescents (max 23.5 body lengths in the full arm, sheet.png). Reproduction fails as reported: 44 and 8 splits, 0 persistent, max generation 0.",
+ "parents": ["20261025T0938-c08-nrch-ambplus-flock"],
+ "class": "nrch",
+ "review_of": "20261025T0938-c08-nrch-ambplus-flock",
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["M"],
+   "observations": {"M": "both/seed3/sheet.png t=1800-6000 polar swimmers; arms_seed3.txt: polar order 0.89 (full) and 0.81 (plain), droplets 20.0 vs 7.0, 0 persistent splits in both (FACTS.md)"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {"M": "plain/seed3: lam=zeta=u=0 matched arm on the same seed, grid, dt and T"},
+   "by_construction": [],
+   "limitation": "Only the two extreme arms of the 2x2 rerun and one seed; I did not rerun the static sub-threshold or reciprocal twins, so the claim that alignment comes from NRCH itself rests on the author's arms_ctrl.png; the plain arm's late polar order is close to the full arm's (0.81 vs 0.89)."}],
+ "compute": {"cpu_minutes": 40}
+}

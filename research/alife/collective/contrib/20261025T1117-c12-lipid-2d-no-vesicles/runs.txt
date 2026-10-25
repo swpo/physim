@@ -1,0 +1,12 @@
+All runs: world.py of 20261025T1025-c12-lipid-2d-sighting (N=800, bh=1.3, dt=0.006, 50 steps per frame), seed 0,
+from a uniform random gas; overrides via WORLD_P; final configurations scored by holes.py (holes.txt).
+tag  overrides                                   frames  t      result
+v4   kT=0.55 (defaults)                          12000   3600   open bilayer ribbons, 0 enclosures
+v5a  kT=0.6, wc=1.8                               8000   2400   longer, curving ribbons, 0
+v5c  N=1400 (1.75x density)                       8000   2400   jammed short bilayers; 14 'enclosures' are packing gaps
+v6   L=110 (half density), kT=0.6, wc=1.8        20000   6000   long ribbons, 0
+v7   L=110, kT=0.7, wc=2.0                       20000   6000   ribbons, 1 enclosure of 14 sigma^2
+c1   fa=0.3, kcat=0.02                            6000   1800   active 30% -> 83%, ribbons, 0
+c2   kT=0.6, wc=1.8, fa=0.05, kcat=0.02          20000   6000   active 5% -> 83%, long branched ribbons, 1 of 18 sigma^2
+Earlier failures (before the fixes in the published world): kT=1 stays a gas; kT<=0.5 or b_HH<=0.95 freezes into
+disordered clusters; intramolecular WCA with b_HH>=1.6 fought the FENE bonds.
