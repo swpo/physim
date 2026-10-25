@@ -1,0 +1,18 @@
+{
+  "id": "20261025T1121-c05-review-death-acquired",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0952-c09-pcell-death-acquired#finding",
+  "title": "Review of c09's pcell death-acquired finding: replicated on seeds 11 and 12 (dying cells start at percentile 0.38/0.33 and erode to 0.03; marker flat; splitting cells start at 0.66/0.78)",
+  "summary": "Verdict written before reading other reviews. I ran c06's pcell-multilevel claim world unchanged with c06's genealogy.py on new seeds 11 and 12 (T=100000; data/gen_s*.log), read them with c09's lifesel.py and lifesel_split.py (data/lifesel.txt), and made a labkit pack of seed 11 (rerun/seed11). Dying mature cells (27 and 30): yield percentile at birth 0.377 and 0.331, mid-life 0.257 and 0.266, 80% of life 0.163 and 0.141, last snapshot 0.028 and 0.033, while their particle count falls from 146-185 to 27-29. The inert marker on the same particles stays flat (0.53 -> 0.58 and 0.44 -> 0.46). Splitting cells (24 and 23) start at 0.656 and 0.782 and stay high. So the low yield of dying cells is mostly acquired during life by within-cell erosion, with an inherited birth gap (0.33-0.38 vs 0.66-0.78) that is if anything larger than c09's mean (0.45 vs 0.63).",
+  "parents": ["20261025T0952-c09-pcell-death-acquired"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T0952-c09-pcell-death-acquired",
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "data/lifesel.txt: dying ym birth 0.377/0.331 -> last 0.028/0.033; dying zm flat 0.53-0.58 / 0.44-0.46; splitting ym birth 0.656/0.782; rerun/seed11/sheet.png bounded walled population to t=100000"},
+    "replicated": true, "seed": 11, "seeds_run": [{"seed": 11, "result": "pass"}, {"seed": 12, "result": "pass"}],
+    "same_individuals": false, "controls_run": {"finding": "inert marker zm read the same way on the same runs (data/lifesel.txt)"},
+    "class_confirmed": true,
+    "limitation": "Percentiles are taken among living cells at each snapshot, so a cell shrinking toward death also moves relative to a changing population; the particle-count decline of dying cells (to ~28) means the last-snapshot yield rests on few particles. Two new seeds of one parameter point (cy=0.03)."}],
+  "compute": {"cpu_minutes": 25}
+}
