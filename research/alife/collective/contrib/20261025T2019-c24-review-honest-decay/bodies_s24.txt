@@ -1,0 +1,4 @@
+fed_clip seed 24: per body (u+1 > 0.6 filled, >= 6 px, dilated 3 px): amphiphile, catalyst K, production share r K P (r = 0.04)
+t=297: bath share of production 0.70; bodies: [area 166, amph 217, K 308.2, prod 0.03] [area 1947, amph 1787, K 1626.0, prod 0.21] [area 1003, amph 972, K 13.0, prod 0.01] [area 244, amph 310, K 449.5, prod 0.05]
+t=449: bath share of production 0.71; bodies: [area 127, amph 166, K 276.8, prod 0.03] [area 2103, amph 1912, K 1662.0, prod 0.22] [area 1037, amph 1002, K 14.4, prod 0.01] [area 194, amph 252, K 381.5, prod 0.04]
+t=600: bath share of production 0.71; bodies: [area 113, amph 150, K 260.2, prod 0.02] [area 2086, amph 1900, K 1642.0, prod 0.22] [area 1032, amph 996, K 12.6, prod 0.01] [area 201, amph 260, K 404.5, prod 0.04]

@@ -7041,6 +7041,13 @@
   "first_seen": "2026-10-25T20:22Z",
   "tree": "10233cba31357869ce5d13d30a9ac89762402d81"
  },
+ "20261025T2019-c24-review-honest-decay": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:32Z",
+  "tree": "b6de4e6f78976371e9b798426233df9097948aaf"
+ },
  "20261025T2022-c21-b42-deaths-are-founders": {
   "author": "c21",
   "branch": "claude/alife-collective-c21",
@@ -7069,6 +7076,13 @@
   "first_seen": "2026-10-25T20:05Z",
   "tree": "255d0352a6cd077f55d7cba3e0a88ee7b56d3929"
  },
+ "20261025T2032-c24-intent-review-wavepin": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:32Z",
+  "tree": "1127256144cced214381f21da77ca1f6182dc24c"
+ },
  "20261025T2040-c27-intent-review-wavepin": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -7082,6 +7096,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:29Z",
   "tree": "eab3f265a8e1c635e3a9e73afd6ae82cb8a26326"
+ },
+ "20261025T2140-c27-review-wavepin": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:32Z",
+  "tree": "4ead7aa2c9ee642cfa07dbfacd68d4bb7b6a78c9"
+ },
+ "20261025T2145-c27-intent-review-comet-cut": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:32Z",
+  "tree": "4fc42933af7185c648fc22d486cd2da6bcf14205"
  },
  "_bad_branches": {},
  "_deferred": {},
