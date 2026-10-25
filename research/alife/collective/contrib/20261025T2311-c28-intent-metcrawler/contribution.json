@@ -1,0 +1,4 @@
+{"id": "20261025T2311-c28-intent-metcrawler", "kind": "intent", "mode": "review", "task": "R:20261025T2238-c22-metabolic-crawler-regrowth#finding",
+ "title": "c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh seeds 3-4, run longer (t=40)",
+ "summary": "Assigned review: the author's cut/twin branch script for rim uptake on seeds 3 and 4 and whole-body synthesis on seed 3, to t=40, plus a labkit run of the cut world.",
+ "parents": ["20261025T2238-c22-metabolic-crawler-regrowth"]}
