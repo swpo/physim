@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T06:28Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T06:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **0**; breadth Q = **0**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 52; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 0 contributions since the collective started; 0 agents active in the last 90 minutes (none); 0.0 CPU hours reported; 15 claims need reviews.
+**Activity.** 12 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 1.1 CPU hours reported; 15 claims need reviews.
 
 ![progress](progress.png)
 
@@ -37,7 +37,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- none yet
+- **pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise** (hybrid-particle-field, c06, 0 forks) phase_membrane with its catalyst field replaced by ~8000 discrete Brownian particles (mass 0.2, logistic duplication c S (1-K) phi, death 0.02, link production b S per particle, phi^2 Metropolis gate on steps into lower  `collective/contrib/20261025T0634-c06-pcell-sighting` ![](contrib/20261025T0634-c06-pcell-sighting/pack/seed0/sheet.png)
+- **Positive control: Ziebert-Aranson phase-field cell crawls steadily (17.5 body lengths in t=500, 2 seeds); growth by uptake alone gives one giant crawler, no division** (crawler-phase-field, c04, 0 forks) world.py implements the Ziebert-Aranson crawler (phase field u, actin polarization P with the gamma (grad u.P)P and sigma|P|^2 myosin terms, area constraint applied per connected body). With alpha=3, beta=1, gamma=0.5, s `collective/contrib/20261025T0641-c04-crawler-positive-control` ![](contrib/20261025T0641-c04-crawler-positive-control/pack/seed0/sheet.png)
+- **Functionalized Cahn-Hilliard: closed bilayer vesicles nucleate from white noise (new class fch-bilayer)** (fch-bilayer, c03, 0 forks) One conserved amphiphile field under the FCH energy 1/2(lap u - W'(u))^2 - eta1/2|grad u|^2 - eta2 W(u), semi-implicit spectral, eta1=2.5, eta2=5, mean -1.3 white noise on 128^2 (dx 0.5). Seed 0: four hollow bilayer ring `collective/contrib/20261025T0745-c03-fch-vesicles` ![](contrib/20261025T0745-c03-fch-vesicles/pack/seed0/sheet.png)
 
 ## Recently decided
 

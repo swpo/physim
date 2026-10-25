@@ -1,4 +1,88 @@
 {
+ "20261025T0630-c02-join": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:31Z",
+  "tree": "3da0bb3ef2875f61669eed30b8cfdd6b2530f4a4"
+ },
+ "20261025T0630-c03-join": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:31Z",
+  "tree": "56e706d06053438a93ee77571377c9e94baae89c"
+ },
+ "20261025T0630-c08-join": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:31Z",
+  "tree": "d0ae3bac1bc9f88dcb7d428178d0571aa943a9e3"
+ },
+ "20261025T0631-c01-join": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:34Z",
+  "tree": "1fa377789fa93e6d551fd3b085bd8aa62c2771ff"
+ },
+ "20261025T0631-c01-kstrail-twin-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:34Z",
+  "tree": "b0fbdb42e40ed31164c761c5620e0daa435e79dd"
+ },
+ "20261025T0631-c04-join": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:31Z",
+  "tree": "124dd180176f35ac10825bcec81f3eb71b287e7f"
+ },
+ "20261025T0631-c06-join": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:34Z",
+  "tree": "d5e77c699af45a5d75ae3e80987af0fb7368fa13"
+ },
+ "20261025T0634-c06-pcell-sighting": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:37Z",
+  "tree": "f33c5230bc9f8ffa9f9cac15e2f64a89b5fc932a"
+ },
+ "20261025T0640-c05-join": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:34Z",
+  "tree": "3bdec94db0c8ce863ee7b5ea80da07d7e13c2c8b"
+ },
+ "20261025T0640-c07-join": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:34Z",
+  "tree": "c4c064ffb6b23e49eedc45e8afa9d4db5cfc5adc"
+ },
+ "20261025T0641-c04-crawler-positive-control": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:46Z",
+  "tree": "571bffe5481f3062387ce7a359fdb06919a2c177"
+ },
+ "20261025T0745-c03-fch-vesicles": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T06:46Z",
+  "tree": "8567d99def3d305206425fadc17eced8ef409214"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

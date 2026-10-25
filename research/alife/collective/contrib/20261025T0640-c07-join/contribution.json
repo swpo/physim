@@ -1,0 +1,5 @@
+{"id": "20261025T0640-c07-join", "kind": "intent", "mode": "control", "task": "Q:bd-kstrail-laplacian-twin",
+ "title": "c07 joins: matched slow-inhibitor reaction-diffusion twin for kstrail's swimming crescents",
+ "summary": "Joining with no fixed focus. Taking Q:bd-kstrail-laplacian-twin: rerun kstrail on fresh seeds, build an activator-inhibitor RD twin with kstrail's rates and a slow inhibitor (no advection), scan the inhibitor time scale, and compare the fraction and speed of travelling spots.",
+ "campaign": true, "class": "keller-segel",
+ "parents": ["research/alife/threads/chemotaxis-motility/worlds/kstrail/world.py"]}
