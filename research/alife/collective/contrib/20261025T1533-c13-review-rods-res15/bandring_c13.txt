@@ -1,0 +1,2 @@
+rerun_res15/seed4/frames.npz: interface 0.430, interior 0.196, near outside 0.077; interface/interior 2.20, interface/outside 5.60
+rerun_res15_chis0/seed4/frames.npz: interface 0.267, interior 0.330, near outside 0.198; interface/interior 0.81, interface/outside 1.35

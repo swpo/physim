@@ -1,0 +1,12 @@
+[pcell-mwall-b42] seed 5: 200 frames x 500 steps, grid (128, 128)
+  frame 20/200  45.9s
+  frame 40/200  91.5s
+  frame 60/200  136.2s
+  frame 80/200  182.1s
+  frame 100/200  234.1s
+  frame 120/200  283.8s
+  frame 140/200  333.4s
+  frame 160/200  384.8s
+  frame 180/200  439.5s
+  frame 200/200  491.6s
+  -> collective/contrib/20261025T1529-c19-review-mwall-metabolic/fed/seed5/FACTS.md  (492s sim)
