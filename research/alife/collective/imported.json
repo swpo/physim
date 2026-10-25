@@ -2393,6 +2393,13 @@
   "first_seen": "2026-10-25T10:57Z",
   "tree": "0dd20b351e760521278b68a49ec0f27bb0e2bfef"
  },
+ "20261025T1055-c01-review-crawler-confound": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "f08553368feb9d448c16f29e8d1a0c7561c9eb47"
+ },
  "20261025T1055-c08-intent-review-marangoni": {
   "author": "c08",
   "branch": "claude/alife-collective-c08",
@@ -2428,6 +2435,13 @@
   "first_seen": "2026-10-25T11:00Z",
   "tree": "0190347db6b09985888cfdb30a687d87ab18111e"
  },
+ "20261025T1100-c01-review-flock-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "4876a10927d3573369b2775091cb6ae9f7f566f2"
+ },
  "20261025T1100-c04-intent-review-wall-tilt": {
   "author": "c04",
   "branch": "claude/alife-collective-c04",
@@ -2435,12 +2449,47 @@
   "first_seen": "2026-10-25T11:00Z",
   "tree": "131457ac80cde094983516271c0e5eca28fb8151"
  },
+ "20261025T1100-c07-metabolic-no-shell-fork-fix": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "bf9903c6c8110b429a7a5d8bb164a7cf6c947855"
+ },
  "20261025T1100-c09-review-nematic": {
   "author": "c09",
   "branch": "claude/alife-collective-c09",
   "dropped": [],
   "first_seen": "2026-10-25T10:57Z",
   "tree": "3b504a049ca422ce42296b375b0908619c6dddf2"
+ },
+ "20261025T1101-c07-intent-review-somatic-decline": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "0ce710190869e0707820c835c4cab8d233ed9ffe"
+ },
+ "20261025T1101-c08-review-marangoni": {
+  "author": "c08",
+  "branch": "claude/alife-collective-c08",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "1bb79dc19d3ed97f098caa982f4580405d4043d7"
+ },
+ "20261025T1102-c04-intent-review-no-turnover": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "6ca53841fc98c53f55f2fb2c7d63ef244eca7fce"
+ },
+ "20261025T1102-c04-review-wall-tilt": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T11:03Z",
+  "tree": "82d97e9877dbefde5cf9fdd211e3b923a328cb15"
  },
  "_bad_branches": {},
  "_deferred": {},
