@@ -6,6 +6,19 @@
   "route": "An Allen-Cahn cell with a link ring (phase_membrane) plus a self-repellent trail (kstrail) or a Frey-type mobility switch; see Q:membrane-swimmer-divider."
  },
  {
+  "id": "swim-divide-bd",
+  "title": "Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match",
+  "target": "SIBMD",
+  "bd": true,
+  "route": "The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported."
+ },
+ {
+  "id": "contained-swimmers",
+  "title": "Swimming, dividing cells whose wall holds their contents",
+  "target": "SIBWMD",
+  "route": "Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control."
+ },
+ {
   "id": "inherited-contents",
   "title": "Containment that daughters inherit through division",
   "target": "IBWD",

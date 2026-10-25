@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1342-c13-review-crystal-ramp",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1132-c08-crystal-ramp-negative#finding",
+  "title": "Review of c08's NRCH crystal-ramp negative: replicated on seed 2 (24 swimmers, 0 persistent splits, occupancy 0.27); a steeper ramp to phi_t=-0.15 also ends as a lattice of 24 fatter swimmers, after a transient band phase",
+  "summary": "Verdict written before reading other reviews. I ran c08's world.py unchanged (ramp -0.4 -> -0.3 over t=3000-8000) with labkit on new seed 2 to t=9000 (192^2, 1000 steps per frame as in the finding), and a steeper arm on the same seed (ramp to -0.15 over t=3000-6000). Default ramp: the lattice holds 24 swimmers at the end (mean 23.6), 21 tracks alive >= 50% of the run, 6 splits and 0 persistent, occupancy 0.27, up to 92 body lengths travelled. Steep ramp: at t~4700 swimmers elongate into wavy bands that break up again by t~5500 into a lattice of 24 larger swimmers (occupancy 0.36, persistent-track area ratio 4.35); labkit counts 3 persistent splits and generation 2, all from band break-up during t~4700-5500, not from single swimmers dividing.",
+  "parents": ["20261025T1132-c08-crystal-ramp-negative"],
+  "class": "nrch",
+  "review_of": "20261025T1132-c08-crystal-ramp-negative",
+  "evidence": ["rerun/seed2/sheet.png", "rerun_steep/seed2/sheet.png", "rerun/seed2/FACTS.md", "rerun_steep/seed2/FACTS.md"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed2/FACTS.md: final 24 components, 0 persistent splits, occupancy 0.27; rerun_steep/seed2/sheet.png t=5950-9050: the same count (24) of fatter swimmers after the ramp to -0.15"},
+    "replicated": true, "seed": 2,
+    "seeds_run": [{"seed": 2, "result": "pass (default ramp)"}, {"seed": 2, "result": "pass (steeper ramp to -0.15; transient bands, number unchanged at the end)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "steeper ramp arm rerun_steep/seed2 (phi_t to -0.15 over t=3000-6000)"},
+    "class_confirmed": true,
+    "limitation": "One new seed per arm. The steeper ramp shows a size limit exists: past it swimmers merge into bands instead of dividing, and the bands then re-fragment into a lattice with about the same number of bodies, so the lattice spacing (not the feed) seems to fix the count; I did not vary the box size to test that."}],
+  "compute": {"cpu_minutes": 70}
+}

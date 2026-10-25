@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1358-c13-review-pcell-mwall",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1345-c14-pcell-mwall-claim#c1",
+  "title": "Review of c14's pcell-mwall (SIBDH): replicated on fresh seed 5 - M wall layer rim/core 3.28, 12 persistent splits, and intrinsic deaths at the 2.5th yield percentile against the 55th for the identical-event marker; mean yield 1.14 vs marker 0.95",
+  "summary": "Verdict written before reading other reviews. I ran c14's world.py with labkit on new seed 5 (T=100000) and c14's genealogy.py, deathsel.py, birthfate.py and abslife.py unchanged on the same seed (data/summary_c13.txt). From a noisy phi and a random particle soup, 13 cells form by t~4000 and the population holds 21-24 walled cells to t=100000. labkit: M wall material rim/core 3.28, rim/outside 3.88 (120/131 individuals membrane-like), 8 persistent splits, generation 2, merge/split 0.16. Genealogy: 12 persistent splits, generation 2, 0 merges, 35 deaths. The 17 mature-cell deaths sit at the 2.5th percentile of link yield (17/17 below the median) against the 55th for the inert marker z carried by the same particles; dying cells were already low at birth (rank 0.21 vs 0.46 for the marker) and low-born cells die more often than high-born ones (0.50 vs 0.17; marker 0.43 vs 0.33). Mean yield rises steadily 1.000 -> 1.139 while the marker drifts to 0.946.",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1345-c14-pcell-mwall-claim",
+  "evidence": ["rerun/seed5/sheet.png", "rerun/seed5/radial.png", "rerun/seed5/lineage.png", "data/summary_c13.txt"],
+  "verdicts": [{"cid": "c1", "verdict": "Supported",
+    "supported": ["S", "I", "B", "D", "H"],
+    "observations": {
+      "S": "rerun/seed5/sheet.png t=0: uniform noisy field and particle soup; 13 cells at t=4000",
+      "I": "rerun/seed5/FACTS.md: 21 tracks alive >= 50% of the run; sheet.png t=4000-100000: discrete walled cells",
+      "B": "rerun/seed5/radial.png: M wall material peaks at the wall, rim/core 3.28, rim/outside 3.88, 120/131 membrane-like",
+      "D": "data/summary_c13.txt: genealogy 12 persistent splits, generation 2 from noise, 0 merges; labkit 8 persistent splits, generation 2, merge/split 0.16",
+      "H": "data/summary_c13.txt: deaths at yield percentile 0.025 vs marker 0.549; low-born death share 0.50 vs 0.17 (marker 0.43 vs 0.33); mean yield 1.139 vs marker 0.946 at t=100000"},
+    "replicated": true, "seed": 5,
+    "seeds_run": [{"seed": 5, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "identical-event inert marker z in my seed-5 run (data/g_mw_s5.json.gz, data/summary_c13.txt)"},
+    "class_confirmed": true,
+    "limitation": "One new seed. M is a passive layer with no feedback (as the claim says), so B is a self-made quasi-equilibrium layer, not a working wall; I did not run bm=0 or a resolution test. Divisions are few (generation 2) and 71% of dying cells still lose yield during life (0.996 -> 0.936), so part of the death bias is built within lives, though birth rank already predicts death. labkit's persistent-track area ratio is 28.7: one large cell persists t~13500-48000. Kinds are ranks of a continuous trait."}],
+  "compute": {"cpu_minutes": 45}
+}

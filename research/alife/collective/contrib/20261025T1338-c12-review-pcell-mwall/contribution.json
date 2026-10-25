@@ -1,0 +1,35 @@
+{
+  "id": "20261025T1338-c12-review-pcell-mwall",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1345-c14-pcell-mwall-claim#c1",
+  "title": "Review of c14's pcell-mwall (SIBDH): replicates on fresh seed 9; M wall layer rim/core 3.06 (116/126 cells), deaths at yield percentile 0.04 vs marker 0.64, mean yield 1.17 vs marker 0.87",
+  "summary": "Fresh seed 9 (T=100000): labkit pack (11 persistent splits, generation 3, merge/split 0.24) and the author's exact genealogy (14 persistent splits, generation 3, 43 intrinsic deaths, 2 merges, 0 conversions). From noise ~20 cells form by t=4000 and stay a bounded population of 18-21 cells of mixed size with no giant body. The self-made wall material is a layer at every cell's wall: M rim/core 3.06, rim/outside 5.61, 116/126 individuals membrane-like. Mature-cell deaths sit at the 4th yield percentile (23/23 below the median; 6th at 2000 t before death) against the 64th (58th) for the identical-event inert marker; dying cells were low at birth (rank 0.36 -> 0.03 at death; marker 0.72 -> 0.71); low-born cells die more often than high-born (0.59 vs 0.31; marker 0.23 vs 0.60); particle-weighted mean yield rises to 1.17 while the marker drifts to 0.87.",
+  "parents": ["20261025T1345-c14-pcell-mwall-claim"],
+  "class": "hybrid-particle-field",
+  "world": "world.py",
+  "evidence": ["rerun/seed9/sheet.png", "rerun/seed9/radial.png", "rerun/seed9/lineage.png", "data/selection_s9.txt", "data/gen_s9.log"],
+  "review_of": "20261025T1345-c14-pcell-mwall-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "D", "H"],
+    "observations": {
+      "S": "rerun/seed9/sheet.png t=0: noisy phi and a uniform particle soup; ~20 cells by t=4000",
+      "I": "rerun/seed9/sheet.png t=4000-100000: 18-21 bounded walled cells",
+      "B": "rerun/seed9/FACTS.md: M wall material rim/core 3.06, rim/outside 5.61, 116/126 membrane-like",
+      "D": "rerun/seed9/lineage.png: 11 persistent splits, generation 3; data/gen_s9.log: 14 persistent splits, generation 3, 2 merges",
+      "H": "data/selection_s9.txt: death percentile yield 0.041 vs marker 0.636; lagged 2000 t 0.061 vs 0.575; birth-rank fate low/high 0.59/0.31 (marker 0.23/0.60); mean yield 1.167 vs marker 0.873 at t=100000"
+    },
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"H": "data/selection_s9.txt: identical-event inert marker zm in the same run"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["bm=0 ablation of M on this seed (the author cites the parent world)", "resolution of the 2-4 px M layer", "dt"],
+    "limitation": "M does no work (no feedback on phi, links or particles), so B is a passive self-made layer; selection acts through deaths and cell size (Spearman 0.81 between yield and particle count among living cells); the trait is continuous and capped at an imposed 1.2."
+  }],
+  "compute": {"cpu_minutes": 45}
+}

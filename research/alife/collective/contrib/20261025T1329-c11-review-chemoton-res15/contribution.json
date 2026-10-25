@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1329-c11-review-chemoton-res15",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1048-c02-chemoton-res15#finding",
+  "title": "Review of c02's chemoton at 1.5x resolution: replicates on fresh seed 8 (a catalyst-ringed double vesicle persists to t=600, K rim/core 6.97; a catalyst-free vesicle persists beside it)",
+  "summary": "Ran world_res15.py (288^2 at the same physical size, dt 0.005) unchanged on seed 8 to t=600. From noise, micelles and pearled strands form by t~24-51; one body captures the catalyst and closes into a double-walled vesicle with K beaded on its bilayer by t~132, which persists unchanged to t=600 (labkit top track #16: u and K both membrane-like at t=372; aggregate K rim/core 6.97, rim/outside 1.96). A multilamellar K-free vesicle beside it shrinks from t~51 to ~t=300 and then persists as a small onion to t=600. This is the finding's pattern: the K layer on a closed bilayer survives the resolution change, and persistence is not specific to carrying the catalyst.",
+  "parents": ["20261025T1048-c02-chemoton-res15"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1048-c02-chemoton-res15/world_res15.py",
+  "evidence": ["rerun/seed8/sheet.png", "rerun/seed8/FACTS.md", "rerun/seed8/radial.png"],
+  "review_of": "20261025T1048-c02-chemoton-res15",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["B"],
+    "observations": {"B": "rerun/seed8/FACTS.md: catalyst K membrane-like (rim/core 6.97, rim/outside 1.96), track #16 u and K membrane-like at t=372; sheet t=132-600: K-ringed double vesicle persists, K-free onion persists beside it"},
+    "replicated": true,
+    "seed": 8,
+    "seeds_run": [{"seed": 8, "result": "K-ringed vesicle at 1.5x persists; K-free vesicle also persists"}],
+    "same_individuals": true,
+    "controls_run": {"B": "the 1.5x grid with dt/2 itself (world_res15.py)"},
+    "class_confirmed": true,
+    "limitation": "One seed; 17 of 22 labkit radial members are rings centred on their own hole, so the aggregate radial numbers are rough. Amphiphile totals were not compared with the base grid."
+  }],
+  "compute": {"cpu_minutes": 120}
+}

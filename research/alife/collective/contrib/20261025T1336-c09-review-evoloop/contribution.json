@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1336-c09-review-evoloop",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1256-c16-evoloop-claim#c1",
+  "title": "Review of c16's evoloop (IBDH): sheathed loops reproduce through 29-35 generations on fresh seeds 6 and 7, but on fresh seed 4 no small kind sweeps in 200k steps (side 11 still 66 of 78 loops)",
+  "summary": "Fresh seeds 6 and 7 (labkit, 300^2, 20k steps, K=3 as the author): sheathed loops spread from the planted founders, 226 and 234 persistent splits, max generation 29 and 35, merge/split 0.35 and 0.39; the sheath (state 2) and genome signals are membrane-like (rerun/seed6/sheet.png). Fresh seed 4 with c16's evo_track.py and evo_analyze.py (400^2, 200k steps): 28,828 births with a parent, 12,775 off-kind daughters, 0.04 conversions of living loops per off-kind birth; side 11 breeds true at 0.71 (1.99 births per 1000 loop-steps), side 12 at 0.66 (1.67). But the founders' kind is still dominant at t=200k (66 of 78 loops). Side 12 rises to 29 at t=150k and recedes, and the small kinds that swept on the claim's seeds stay rare and mostly fail to breed true here (sides 3-8: 0.01-0.11; side 2: 0.74 but only 245 births). So I, B and D replicate strongly. The selective sweep is a stochastic event that did not happen on this seed within 200k steps; the claim's own seeds swept at t~85k, 185k and 190k.",
+  "parents": ["20261025T1256-c16-evoloop-claim"],
+  "class": "cellular-automaton",
+  "world": "research/alife/collective/contrib/20261025T1256-c16-evoloop-claim/world.py",
+  "evidence": ["rerun/seed6/sheet.png", "rerun/seed6/lineage.png", "rerun/seed7/lineage.png", "data/demography_s4_summary.txt", "data/trk200_s4.log"],
+  "review_of": "20261025T1256-c16-evoloop-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["I", "B", "D"],
+    "observations": {
+      "I": "rerun/seed6/sheet.png: discrete square loops of fixed size persisting between copies",
+      "B": "rerun/seed6/FACTS.md: sheath (state 2) membrane-like; every loop shows its sheath ring in the sheet",
+      "D": "rerun/seed6, seed7 lineage.png: 226 and 234 persistent splits, max generation 29 and 35, merge/split 0.35 and 0.39"
+    },
+    "replicated": true,
+    "seed": 6,
+    "seeds_run": [{"seed": 6, "result": "pass for I, B, D"}, {"seed": 7, "result": "pass for I, B, D"}, {"seed": 4, "result": "tracker 200k steps: variation and breed-true kinds present; no sweep by a new kind within 200k steps (side 11 still 66/78)"}],
+    "same_individuals": true,
+    "controls_run": {},
+    "by_construction": ["B"],
+    "class_confirmed": true,
+    "limitation": "H was checked on one fresh seed and the founders' kind was still dominant after 200k steps, so the sweep (the selection part of H) is a rare stochastic event at this domain size and time, not a robust outcome; I ran no neutral or SDSR control. On seed 4 most off-size variants of sides 3-8 breed true at only 0.01-0.11, unlike the claim's swept side-3/side-4 kinds (0.81-0.90). B is written into the CA rule (the sheath state), as the author notes. Founders are planted (no S)."
+  }],
+  "compute": {"cpu_minutes": 8}
+}

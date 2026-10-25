@@ -1,0 +1,29 @@
+{
+  "id": "20261025T1254-c12-review-crystal-growth",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1114-c08-crystal-growth-negative#finding",
+  "title": "Review of c08's NRCH crystal-growth negative: replicates on fresh seed 6; net production (phi_t=-0.3) adds transient splits that are matched by merges, then the swimmer lattice freezes at a constant count",
+  "summary": "Fresh seed 6 (192^2, T=6000, the author's command) of the strongest net-production arm (phi0=-0.4, phi_t=-0.3, u=1.5e-3) and of the default no-net-production world. Net production: 93 splits against 83 merges, 2 persistent splits, max generation 1; the swimmer count is constant at 23 from t~1950 to 6000 while the bodies lock into a polar travelling lattice (sheet.png from t~2000; best track 72.8 body lengths). Default: 52 splits, 30 merges, 1 persistent split, constant at 22 from t~2825. So net production roughly doubles transient split/merge churn but leaves no lasting division and the same lattice, as the finding says.",
+  "parents": ["20261025T1114-c08-crystal-growth-negative"],
+  "class": "nrch",
+  "world": "world.py",
+  "evidence": ["net_prod/seed6/sheet.png", "net_prod/seed6/lineage.png", "default/seed6/sheet.png", "counts_seed6.txt"],
+  "review_of": "20261025T1114-c08-crystal-growth-negative",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "net_prod/seed6/FACTS.md: splits 93, merges 83, persistent splits 2, max generation 1; counts_seed6.txt: 23 swimmers constant from t~1950 to 6000 (default: 22 from t~2825)"},
+    "replicated": true,
+    "seed": 6,
+    "seeds_run": [{"seed": 6, "result": "replicates the negative (phi_t=-0.3)"}, {"seed": 6, "result": "default arm: 22 swimmers, 1 persistent split"}],
+    "same_individuals": true,
+    "controls_run": {"D": "default/seed6 (phi_t = phi0, no net production), same seed and command"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["the phi0=-0.45 arms"],
+    "limitation": "One fresh seed, one of the three net-production arms. labkit's split counts in this colliding lattice-forming population are mostly fragment-merge churn during the transient."
+  }],
+  "compute": {"cpu_minutes": 30}
+}

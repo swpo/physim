@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1352-c11-review-size-decay",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1214-c03-size-decay-no-turnover#finding",
+  "title": "Review of c03's size-decay no-turnover negative: replicates on fresh seed 3 (a=2: 24 -> 53 bodies, 28 splits, 3 deaths; a=5: 24 -> 29, splits only in the first window, 0 deaths)",
+  "summary": "Ran world_a2.py and world_a5.py unchanged on seed 3 (T=960) and counted with the finding's turnover.py in six windows. a=2: micelles form by t~40, divide in waves (3, 0, 14, 3, 2, 6 splits) and grow to 53 bodies with 3 deaths in all; the sheet shows dividing pairs at t=376 and t=920 and no body dissolving. a=5: 3 splits in the first window, then none, 29 static bodies and 0 deaths. The mass-dependent catalyst decay slows or stops growth across the board instead of killing large bodies, as the finding says.",
+  "parents": ["20261025T1214-c03-size-decay-no-turnover"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1214-c03-size-decay-no-turnover/world_a2.py",
+  "evidence": ["turnover_s3.txt", "rerun/a2/seed3/sheet.png", "rerun/a5/seed3/sheet.png"],
+  "review_of": "20261025T1214-c03-size-decay-no-turnover",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["D"],
+    "observations": {"D": "turnover_s3.txt: a=2 splits 3/0/14/3/2/6, deaths 0/0/2/0/0/1, 24 -> 53 bodies; a=5 splits 3/0/0/0/0/0, deaths 0, 24 -> 29"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "a=2: growth, ~no deaths"}, {"seed": 3, "result": "a=5: frozen, no deaths"}],
+    "same_individuals": true,
+    "controls_run": {"D": "rerun/a2/seed3 vs rerun/a5/seed3 (two strengths, same seed)"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed and the same short T=960 as the finding; at a=2 the population is still growing at the end, so a later turnover regime is not excluded."
+  }],
+  "compute": {"cpu_minutes": 15}
+}
