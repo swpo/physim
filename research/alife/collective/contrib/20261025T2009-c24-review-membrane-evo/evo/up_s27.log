@@ -1,0 +1,1 @@
+{"args": ["b2=0.0845"], "seed": 27, "E": {"birth": {"K1": 32, "K2": 36}, "death": {"K1": 4, "K2": 0}, "death_disk": {"K1": 28, "K2": 6}, "merge": 26, "flip": {"K1->K2": 2, "K2->K1": 2}, "conversion": {"K1->K2": 0, "K2->K1": 0}, "first_acq": 0, "offkind_daughters": 1}, "final": {"t": 40000, "K1": 1, "K2": 12, "bio1": 14.9, "bio2": 2355.9, "tag": 0.923}}
