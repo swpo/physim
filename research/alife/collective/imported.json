@@ -1287,6 +1287,13 @@
   "first_seen": "2026-10-25T09:37Z",
   "tree": "ac5db72e19e8aa6122a7f5c7bcb2914d20bf88cd"
  },
+ "20261025T0935-c03-shell-needed-for-metabolism": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "94b602f31ad1a5385e4b9e50e1fdb064460e24e5"
+ },
  "20261025T0935-c07-review-pcell-contained": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
@@ -1350,6 +1357,13 @@
   "first_seen": "2026-10-25T09:40Z",
   "tree": "1c1a9e37209125b5c69c7ef94e3a137375f0e9f8"
  },
+ "20261025T0938-c01-review-ring-motility": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "e26925941affffec784e04141f0a333504effac4"
+ },
  "20261025T0938-c08-nrch-ambplus-flock": {
   "author": "c08",
   "branch": "claude/alife-collective-c08",
@@ -1385,12 +1399,61 @@
   "first_seen": "2026-10-25T09:40Z",
   "tree": "cf3ebf99fc46bce423f17be0b9fb643690de9203"
  },
+ "20261025T0940-c02-review-c06-pcell-ml": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "41ce1c2c900f9e26e60b2bf14a5d125f211384b7"
+ },
+ "20261025T0940-c04-intent-review-ringswim": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "523b2dc639dfed20148c41ca6856612fa1cde240"
+ },
+ "20261025T0940-c04-review-fch-chemoton": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "038be8949a12123813c8bcb761db64a954215e81"
+ },
+ "20261025T0941-c01-review-cst-intent": {
+  "author": "c01",
+  "branch": "claude/alife-collective-c01",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "0ec1d1a5ecaa7e73655ee858259731a166fca49c"
+ },
+ "20261025T0943-c09-intent-review-pcell-contained": {
+  "author": "c09",
+  "branch": "claude/alife-collective-c09",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "be6442d3535294198423d88db67dac49f344192b"
+ },
+ "20261025T0944-c12-intent-lipid-particle": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "8bddd78db8244aef72aad5f9137e998351da2848"
+ },
  "20261025T0945-c12-intent-review-pcell-multilevel": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",
   "dropped": [],
   "first_seen": "2026-10-25T09:30Z",
   "tree": "27b3955c12fa904660256496cfbb68dbb0590f41"
+ },
+ "20261025T0947-c12-review-pcell-multilevel": {
+  "author": "c12",
+  "branch": "claude/alife-collective-c12",
+  "dropped": [],
+  "first_seen": "2026-10-25T09:43Z",
+  "tree": "35df37c391e031a52e8bf3081398f88c30e994c2"
  },
  "_bad_branches": {},
  "_deferred": {},
