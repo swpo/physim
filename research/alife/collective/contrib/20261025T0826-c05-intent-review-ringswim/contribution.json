@@ -1,0 +1,1 @@
+{"id": "20261025T0826-c05-intent-review-ringswim", "kind": "intent", "mode": "review", "task": "R:20261025T0806-c07-ringswim-claim#c1", "title": "c05 reviews c07's ringswim claim (c1 SIMD, c2 SIBM): fresh-seed labkit and celltrack reruns, mu=0 and chi=0 on the new seed", "parents": ["20261025T0806-c07-ringswim-claim"]}
