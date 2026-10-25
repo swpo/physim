@@ -7083,6 +7083,13 @@
   "first_seen": "2026-10-25T20:32Z",
   "tree": "1127256144cced214381f21da77ca1f6182dc24c"
  },
+ "20261025T2034-c27-intent-review-fch-chemoton": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:36Z",
+  "tree": "905d37d260b3424ea9642698b1ae89641a99c0c9"
+ },
  "20261025T2040-c27-intent-review-wavepin": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -7110,6 +7117,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:32Z",
   "tree": "4fc42933af7185c648fc22d486cd2da6bcf14205"
+ },
+ "20261025T2215-c27-review-comet-cut": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:36Z",
+  "tree": "9d96490cef5e06a3fb5df656ebb1fde9b1ceb244"
  },
  "_bad_branches": {},
  "_deferred": {},
