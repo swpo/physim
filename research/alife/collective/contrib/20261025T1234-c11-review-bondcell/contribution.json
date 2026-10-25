@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1234-c11-review-bondcell",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1104-c05-bondcell-rings-decay#finding",
+  "title": "Review of c05's bondcell ring-decay finding: replicates on fresh seed 3 (membrane M 168 -> 113 in both the fed and the starved arm by t=140), with slower decay than seed 0",
+  "summary": "Ran the finding's starve.py with world_small.py (bonded) on seed 3: fork at t=60 (F 576, C 1256, M 168, bonds 158), run to t=140. Fed: M 168 -> 145 (t=100) -> 113 (t=140), bonds 158 -> 111, core 1256 -> 1476. Starved (k_cat = k_cat1 = 0): M 168 -> 141 -> 113, bonds -> 107, core 1256 -> 510. The ring material decays at the same rate whether or not the cells are fed, so starvation does not single out the ringed cells and nothing renews the rings, as the finding says; the loss is ~33% over 80 t here vs ~50% on seed 0. A labkit run of world_small.py on seed 3 (T=200) shows dense cores with M rims (membrane-like M for top track #7) appearing and dissolving, at most 3 bodies at a time and 0 splits.",
+  "parents": ["20261025T1104-c05-bondcell-rings-decay"],
+  "class": "particle",
+  "world": "research/alife/collective/contrib/20261025T1104-c05-bondcell-rings-decay/world_small.py",
+  "evidence": ["sb3.log", "rerun/seed3/particles.png", "rerun/seed3/FACTS.md"],
+  "review_of": "20261025T1104-c05-bondcell-rings-decay",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["B"],
+    "observations": {"B": "sb3.log: M 168 -> 113 in both arms between t=60 and t=140; rerun/seed3/particles.png: ringed cores appear and dissolve within ~50 t"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "fed and starved rings decay alike"}],
+    "same_individuals": true,
+    "controls_run": {"B": "sb3.log fed vs starved arms from the same t=60 state"},
+    "class_confirmed": true,
+    "limitation": "Bonded arm only; I did not run the no-bond twin. One fresh seed; decay is slower than on seed 0, so the rate depends on the run. I did not inspect per-ring snapshots of the fork."
+  }],
+  "compute": {"cpu_minutes": 45}
+}
