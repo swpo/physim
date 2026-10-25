@@ -1,0 +1,19 @@
+== pack_long
+- components: final 1, mean 52.5, max 112; occupancy final 0.78
+- tracks: 666; persistent (alive >= 50% of run): 4; longest 83 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 1.28 (1 = constant size)
+- replication (lineage window K = 20 frames = time 250, default): splits 225, persistent splits 24 (0 more failed only because the siblings re-merged within K), max generation 2, merges 160, merge/split ratio 0.711, nucleations 23
+== pack_F0.005
+- components: final 66, mean 62.6, max 66; occupancy final 0.31
+- tracks: 110; persistent (alive >= 50% of run): 66; longest 100 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 1.23 (1 = constant size)
+- replication (lineage window K = 20 frames = time 200, default): splits 41, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 23
+== pack_F0.003
+- components: final 62, mean 59.4, max 62; occupancy final 0.20
+- tracks: 102; persistent (alive >= 50% of run): 62; longest 100 frames; alive start-to-end: 0
+- size of persistent tracks: max/min area ratio 1.72 (1 = constant size)
+- replication (lineage window K = 20 frames = time 200, default): splits 37, persistent splits 9 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 23
+== genealogy cy=0.1 F=0.005 muy=0.02 (t=1000)
+{"persistent_splits": 21, "max_generation_persistent": 2, "merges": 0, "deaths": 0, "splits_by_parent_kind": {"0": 21, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 0, "1": 0, "-1": 0}, "off_kind_daughters": 0, "conversions_of_pure_cells": 0, "final_cells": 66, "final_pure": {"0": 66, "1": 0, "-1": 0}, "world": "collective/work/pmic/world.py", "seed": 0, "T": 50000, "params": {"ytrait": "1", "muy": "0
+== genealogy cy=0.3 F=0.005 muy=0.02 (t=1000)
+{"persistent_splits": 20, "max_generation_persistent": 2, "merges": 0, "deaths": 0, "splits_by_parent_kind": {"0": 20, "1": 0, "-1": 0}, "deaths_by_kind": {"0": 0, "1": 0, "-1": 0}, "off_kind_daughters": 0, "conversions_of_pure_cells": 0, "final_cells": 65, "final_pure": {"0": 65, "1": 0, "-1": 0}, "world": "collective/work/pmic/world.py", "seed": 0, "T": 50000, "params": {"ytrait": "1", "muy": "0
