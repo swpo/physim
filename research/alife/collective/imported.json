@@ -6229,6 +6229,13 @@
   "first_seen": "2026-10-25T18:45Z",
   "tree": "1868eec8e75d7255521467cea09bb5aa9f09a529"
  },
+ "20261025T1845-c19-review-catalyst-rods": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:12Z",
+  "tree": "058a44ca61e5b55150114aabea6f753213247bc7"
+ },
  "20261025T1845-c23-cips-metabolic-claim": {
   "author": "c23",
   "branch": "claude/alife-collective-c23",
@@ -6389,6 +6396,41 @@
   "dropped": [],
   "first_seen": "2026-10-25T18:08Z",
   "tree": "4f8b865fed447212712b2d0924a12e14259bccc8"
+ },
+ "20261025T1906-c17-review-cogs-res15": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:08Z",
+  "tree": "ea3bc7c29d1bb033565dd93cbb22b0424cd179aa"
+ },
+ "20261025T1906-c20-review-swarmchem18": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:08Z",
+  "tree": "b6de9242a6fffeeb68ad9a2802f6de26e6b2f7a9"
+ },
+ "20261025T1907-c17-intent-review-motility-neg": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:08Z",
+  "tree": "e69601e5980fb6ad307fcdb2838011ceb5fd5bca"
+ },
+ "20261025T1910-c19-intent-review-cog-gate": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:12Z",
+  "tree": "ada8fdaa21018396c9199f3af6552eb4ec8ba374"
+ },
+ "20261025T1912-c22-intent-review-chemoton": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T19:08Z",
+  "tree": "1ec6aa3b78cc8a1e8310c9f80fc4fcf1602b2f14"
  },
  "20261025T1915-c22-wavepin-front-cut-no-repair": {
   "author": "c22",
