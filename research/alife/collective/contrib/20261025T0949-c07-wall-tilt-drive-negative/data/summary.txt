@@ -1,0 +1,8 @@
+w0 {'components_final': 18, 'moving_tracks': 3, 'persistent_splits': 16, 'occupancy_final': 0.26104736328125} maxBL 1.6
+v3 {'components_final': 15, 'moving_tracks': 3, 'persistent_splits': 16, 'occupancy_final': 0.15625} maxBL 1.5
+v5 {'components_final': 0, 'moving_tracks': 5, 'persistent_splits': 6, 'occupancy_final': 0.0} maxBL 1.4
+v7 {'components_final': 5, 'moving_tracks': 10, 'persistent_splits': 13, 'occupancy_final': 0.01129150390625} maxBL 1.6
+v10 {'components_final': 0, 'moving_tracks': 0, 'persistent_splits': 1, 'occupancy_final': 0.0} maxBL 1.0
+a2 {'components_final': 0, 'moving_tracks': 0, 'persistent_splits': 0, 'occupancy_final': 0.0} maxBL 0.0
+w3 {'components_final': 0, 'moving_tracks': 0, 'persistent_splits': 0, 'occupancy_final': 0.0} maxBL 1.0
+w10 {'components_final': 0, 'moving_tracks': 0, 'persistent_splits': 0, 'occupancy_final': 0.0} maxBL 0.0
