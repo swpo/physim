@@ -1,0 +1,3 @@
+{"id": "20261025T1134-c09-intent-review-nematic-res15", "kind": "intent", "mode": "review", "task": "R:20261025T1036-c11-active-nematic-res15#finding",
+ "title": "c09 reviews c11's active-nematic res15 finding: fresh seed 12 at 1.5x resolution",
+ "parents": ["20261025T1036-c11-active-nematic-res15"]}
