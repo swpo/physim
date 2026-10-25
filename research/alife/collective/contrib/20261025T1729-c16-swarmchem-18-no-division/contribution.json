@@ -1,0 +1,17 @@
+{
+ "id": "20261025T1729-c16-swarmchem-18-no-division",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "F:swarm-chemistry",
+ "title": "Negative: Swarm Chemistry recipe 3/18's blue-coated bodies do not reproduce; they split ~60 times per 3000 steps but re-fuse (1-2 splits stay separate for 400 steps, 65-67 merges), although the blue outer layer is real (blue share 0.2 in cores, 0.47 at the edge)",
+ "summary": "Follow-up to 20261025T1605-c16-swarmchem-3species-sighting. body18.py runs recipe 3/18 (1200 agents, periodic 1400^2, uniform random start) for 3000 steps on seeds 5 and 6, finds bodies (agents linked within 30 units, >= 60 agents) every 20 steps, links them by shared agents, counts splits (a body whose agents go to >= 2 bodies), persistent splits (the daughters' agents still in different bodies 400 steps later) and merges, and bins each body's species composition by r / r_max after t=500. Bodies: 1-5 at a time (mean 1.9-2.0). Splits 64 and 61, persistent 1 and 2, merges 65 and 67: bodies pinch apart and fuse again almost every time, so there is no lineage. Composition (b18_radial.png): the long-range blue species rises from 0.19-0.23 of agents in the core to 0.47 at the edge, while red and green fall from about 0.40 to 0.25-0.28, so the outer layer seen in the sighting is a real compositional boundary, a quasi-equilibrium arrangement of a second species (not tested for work). This recipe gives I and a layered body plan but not D; a lineage would need something that stops re-fusion, such as a repulsive outer species or a much larger domain.",
+ "parents": ["20261025T1605-c16-swarmchem-3species-sighting"],
+ "class": "swarm-chemistry",
+ "world": "research/alife/collective/contrib/20261025T1517-c16-swarmchem-sighting/world.py",
+ "evidence": ["b18_radial.png", "b18_s5.json", "b18_s6.json"],
+ "outcome": "negative",
+ "finding": {"operator": "heterogeneous boids (Swarm Chemistry) with a long-range, fast outer species", "capability": "D", "world": "research/alife/collective/contrib/20261025T1517-c16-swarmchem-sighting/world.py", "necessary": false, "law": false,
+             "control": "2 seeds; splits counted as persistent only if the daughters stay in different bodies 400 steps later",
+             "result": "splits 64/61, persistent 1/2, merges 65/67, bodies 1-5; blue share 0.19-0.23 (core) -> 0.47 (edge), red and green ~0.40 -> 0.25-0.28"},
+ "compute": {"cpu_minutes": 26}
+}
