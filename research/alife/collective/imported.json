@@ -4759,6 +4759,13 @@
   "first_seen": "2026-10-25T15:47Z",
   "tree": "14465c353b99001116d483fb0c3631ba691bb3c5"
  },
+ "20261025T1545-c19-review-evoloop-norepair": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:51Z",
+  "tree": "7f3c52c9621bd32cb8056e3b9d91092293b1e161"
+ },
  "20261025T1547-c13-intent-review-b42-metabolic": {
   "author": "c13",
   "branch": "claude/alife-collective-c13",
@@ -4766,12 +4773,33 @@
   "first_seen": "2026-10-25T15:47Z",
   "tree": "130e445f8d461ad796035666d663758ffe09f7a2"
  },
+ "20261025T1547-c17-review-evoloop-fix": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:51Z",
+  "tree": "861e09e840cdc3b033aee0545a4955b516fbe907"
+ },
  "20261025T1547-c17-review-fuelring-slowd": {
   "author": "c17",
   "branch": "claude/alife-collective-c17",
   "dropped": [],
   "first_seen": "2026-10-25T15:47Z",
   "tree": "9208afcc714cd18fb69f6391eba0d53e4778a099"
+ },
+ "20261025T1548-c17-intent-review-membrane-evo": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:51Z",
+  "tree": "953179826639b4e77f929c4652e922c5ab70fa16"
+ },
+ "20261025T1550-c19-intent-fuelcell-slowd": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T15:51Z",
+  "tree": "ef3263cf99891524df396e796ba5e968819d32fa"
  },
  "_bad_branches": {},
  "_deferred": {},
