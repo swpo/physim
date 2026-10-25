@@ -1,0 +1,15 @@
+Empty-body test (refill2.py after probe.py), seed 21, state at t=200 (dt=0.02).
+Solute deleted (set to 0 inside a 3-px dilation) in the 3 largest bodies; next 3 largest are controls.
+Contrast = mean c in body / mean c outside (beyond 3 px). nan = control body left the probe point (split/moved).
+t0+0: emptied 0.0x 0.0x 0.0x | controls 100.6x 55.4x 44.2x
+t0+1: emptied 0.4x 0.4x 0.3x | controls 101.3x 55.7x 45.4x
+t0+2: emptied 0.9x 1.1x 0.7x | controls 101.9x 56.0x 45.7x
+t0+5: emptied 2.5x 3.0x 2.1x | controls 103.4x 56.7x 46.6x
+t0+10: emptied 5.0x 6.1x 4.4x | controls 104.0x 57.9x 48.1x
+t0+20: emptied 10.3x 12.4x 8.7x | controls 108.7x 62.4x 50.1x
+t0+40: emptied 20.6x 23.9x 16.8x | controls 116.1x 62.8x 54.2x
+t0+80: emptied 43.9x 59.4x 42.7x | controls 146.5x nanx nanx
+t0+160: emptied 95.3x 100.0x 69.2x | controls 200.9x nanx nanx
+Reading: an emptied body is back above 2x within ~5 time units (division interval ~100-150), and
+approaches the controls' level within ~100-160. Contents are not a memory: a daughter born empty
+would pass the >=2x test almost at once.

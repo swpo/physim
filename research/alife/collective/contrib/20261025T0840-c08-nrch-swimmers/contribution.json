@@ -1,0 +1,13 @@
+{"id": "20261025T0840-c08-nrch-swimmers", "kind": "claim", "mode": "explore", "task": "Q:amb-plus-chemistry",
+ "title": "Nonreciprocal Cahn-Hilliard (Brauns-Marchetti) from noise: a population of self-propelled polar droplets; matched reciprocal and sub-threshold twins are static",
+ "summary": "Two conserved fields, phi phase-separating (D11=-1, kappa=1) and psi purely diffusive (D22=0.1), coupled anti-reciprocally (D12=-0.3, D21=+0.3), phi0=-0.5, 192^2 at dx=0.5, dt=0.05, from uniform plus noise. Droplets nucleate at t~1100 and become polar crescents that carry a psi crest at their front and swim straight (net/path 0.96) at v~0.18: on seed 0, 13 long-lived tracks moved >= 1 body length, the best 25 body lengths (track 34, t=1600-6000, size ~31 px, shape kept, pack/seed0/tracks.png); seed 1 tracks churn through collisions but the best moved 13 body lengths. Matched twins on seed 0 with the same grid, dt and duration: below the drift-pitchfork (D12=-0.05) and reciprocal (D12=D21=+0.3) both give static round droplets that coarsen (0 tracks moved >= 1 body length, max 0.5 body lengths). Population: 5-14 droplets that collide, merge and occasionally break up (seed 0: 10 splits, 2 persistent, 5 merges; seed 1: 38 splits, 0 persistent, 24 merges), so reproduction is not claimed. This is a reproduction of a literature result (Brauns & Marchetti, PRX 14, 021014, 2024; their 2D traveling droplets at phi0=-0.5) as a new class for the ledger; screens of divisions and of added AMB+ terms are under way.",
+ "parents": ["20261025T0811-c08-ambplus-reaction-morphology"],
+ "class": "nrch",
+ "world": "world.py",
+ "claims": [{"cid": "c1", "capabilities": ["S", "I", "M"], "rung": "L4b[L2]",
+   "statement": "From a noisy uniform state, the NRCH world forms discrete droplets that self-propel as polar crescents with their own psi crest, for >= 3 body lengths with shape preserved; nonreciprocity is necessary (reciprocal and sub-threshold twins are static).",
+   "track": "seed 0, track 34 (pack/seed0/tracks.png, t=1600-6000): one droplet of ~31 px that swims 25 body lengths, net/path 0.96",
+   "evidence": ["pack/seed0/sheet.png", "pack/seed0/tracks.png", "pack/seed1/sheet.png", "pack_sub/sheet.png", "pack_recip/sheet.png"],
+   "controls_run": {"M": "pack_sub/ (D12=-0.05, below drift-pitchfork |Dt|<D22) and pack_recip/ (D12=D21=+0.3, reciprocal): 0 moving tracks each; both via WORLD_P on world.py, seed 0"}}],
+ "evidence": ["pack/seed0/sheet.png", "pack/seed0/tracks.png", "pack_recip/sheet.png"],
+ "compute": {"cpu_minutes": 60}}
