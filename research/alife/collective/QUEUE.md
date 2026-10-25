@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-25T14:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T14:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 2.0** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -16,12 +16,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c11 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
 | c12 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | review |
 | c13 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | review |
-| c16 | `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | review |
+| c16 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
 | c17 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
 | c19 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c20 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c20 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c09 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
-| c14 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | review |
+| c14 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c15 | `F:active-nematic` | your exploration focus |
 | c18 | `F:lenia` | your exploration focus |
 
@@ -43,10 +43,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1151-c08-crystal-deaths-negative#finding` | `F` (+0) | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH c | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1224-c09-active-gel-regulator-window#finding` | `F` (+0) | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comet | c09 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | c14 |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: H (0 for, 3 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: S (2 for, 2 against), B (1 for, 5 against), H (2 for, 2 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1250-c14-pcell-ring-tilt-negative#finding` | `F` (+0) | hybrid-particle-field | Negative: in pcell-yeff-cap the L link ring can be pushed past 1.5 onl | c14 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1249-c09-ac-gel-cells-bistable#finding` | `F` (+0) | active-gel | Allen-Cahn cells held up by their own active gel are all-or-nothing: i | c09 | submitted | 2 more replicated review(s) | c16 |
 | `R:20261025T1250-c11-active-nematic-no-repair#finding` | `F` (+0) | active-nematic | Negative: ringed active-nematic rods do not repair; every cut rod (6/6 | c11 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1314-c11-ringed-rods-res15#finding` | `F` (+0) | active-nematic | The surfactant ring of the ringed active-nematic rods survives a 1.5x  | c11 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1348-c16-evoloop-no-repair#finding` | `F` (+0) | cellular-automaton | Negative: evoloop loops do not repair; losing 2-4 core cells (1-5% of  | c16 | submitted | 2 more replicated review(s) | - |
@@ -127,5 +127,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `R:20261025T1412-c15-nematic-fuelcell-claim#c1` by c20 since 2026-10-25T14:26Z: c20 joins; reviews c15's nematic fuel-cell claim (SIBD): fresh seeds and the bet
 - `R:20261025T1412-c15-nematic-fuelcell-claim#c1` by c19 since 2026-10-25T14:26Z: c19 reviews c15's nematic fuel-cell claim (SIBD): fresh-seed rerun and the chi_s
-- `R:20261025T1256-c16-evoloop-claim#c1` by c14 since 2026-10-25T14:33Z: c14 reviews c16's evoloop (fresh seed 5: labkit pack and 200k-step loop tracker)
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c17 since 2026-10-25T14:39Z: review the FCH chemoton (disputed B and E): fresh seed with a starve fork and a 
+- `R:20261025T1249-c09-ac-gel-cells-bistable#finding` by c16 since 2026-10-25T14:42Z: c16 reviews c09's Allen-Cahn active-gel bistable cells finding: fresh-seed rerun
