@@ -1,0 +1,34 @@
+{
+  "id": "20261025T1037-c12-review-ringswim-c2",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "title": "Review of c07's ringswim c2 (SIBM): the link ring is real and chi-dependent, but just under the 1.5 gate in labkit's aggregate on 2 fresh seeds, and weakest on the fastest cells",
+  "summary": "Fresh seeds 31 and 32 (world_claim.py, T=20000) and the chi=0 twin on seed 31. From noise, walled cells form by t=800 and move as kidney-shaped crescents with a visible link ring, colliding, fusing and pinching. labkit's aggregate L rim/core is 1.40 and 1.42 (33/56 and 24/38 cells membrane-like) against 1.12 (0/143) with chi=0. A per-cell readout (ring_vs_speed.py) gives median rim/core 1.73 and 1.70, >= 1.5 in 79-83% of cell-frames, but the ring weakens with speed: the fastest third of cell-frames (~0.33 body lengths per 100 t) sit at 1.54-1.59, >= 1.5 in 61-66%, the slowest at 1.84-1.88; chi=0 gives 1.03-1.07 at every speed. So moving cells do carry the ring, thinly.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "world": "world_claim.py",
+  "evidence": ["rerun/seed31/sheet.png", "rerun/seed31/radial.png", "rerun/seed32/radial.png", "rerun_chi0/seed31/radial.png", "ring_vs_speed.txt"],
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "verdicts": [{
+    "cid": "c2",
+    "verdict": "Weak",
+    "supported": ["S", "I", "B", "M"],
+    "observations": {
+      "S": "rerun/seed31/sheet.png t=0: noise over the whole domain; cells by t=800",
+      "I": "rerun/seed31/sheet.png: bounded walled cells of similar size throughout t=800-20000",
+      "B": "ring_vs_speed.txt: per-cell L rim/core median 1.73 / 1.70, chi=0 1.05; labkit aggregate 1.40 / 1.42 vs 1.12",
+      "M": "rerun/seed31/sheet.png: crescents displaced between frames; ring_vs_speed.txt fastest third ~0.33 body lengths per 100 t; labkit max 5.2 body lengths per track"
+    },
+    "replicated": true,
+    "seed": 31,
+    "seeds_run": [{"seed": 31, "result": "partial: B 1.40 aggregate"}, {"seed": 32, "result": "partial: B 1.42 aggregate"}, {"seed": 31, "result": "chi=0: no ring"}],
+    "same_individuals": true,
+    "controls_run": {"B": "rerun_chi0/seed31 (chi=0: L rim/core 1.05-1.12, 0/143 membrane-like)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "not_checked": ["mu=0 control for M (author's pack_mu0)", "resolution, dt"],
+    "limitation": "The ring is real (chi=0 removes it) but thin: labkit's aggregate rim/core is below the 1.5 gate on both fresh seeds (and 1.27 on the author's seed 1), and moving reduces it, so the fastest cells hold >= 1.5 in only 61-66% of frames. labkit tracks break at collisions (max 5.2 body lengths), and the drive is a per-body averaged gradient (label-based)."
+  }],
+  "compute": {"cpu_minutes": 20}
+}
