@@ -1,0 +1,33 @@
+{
+  "id": "20261025T0920-c09-review-pcell-ml",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0820-c06-pcell-multilevel-claim#c1",
+  "title": "Review of c06's pcell-multilevel (SIDH): replicates on seed 7 (24/24 mature deaths below the yield median, marker 0.60), but dying cells are near-median at birth: most of the death differential is acquired during the cell's life",
+  "summary": "Fresh seed 7 (labkit, T=100000) forms ~25 walled cells from an unstructured start, 22 persistent splits to generation 4 (merge/split 0.06); c06's genealogy on the same seed gives 30 splits, 46 deaths, 0 merges, 0 flips. The selection readout replicates: the 24 mature-cell deaths sit at yield percentile 0.016 (24/24 below median) while the inert marker sits at 0.60, and splitting cells sit at 0.69; parent-daughter r = 0.89. I added one analysis (lifesel.py): the dying cell's yield percentile read at fractions of its life. At birth, dying cells are at 0.37 on seed 7 and 0.36, 0.55, 0.50 on c06's seeds 0-2; the percentile falls through life to ~0.25 at mid-life and ~0.02-0.05 at the last snapshot, while the marker stays flat. Splitting cells are at 0.54-0.74 at birth. So what dies is mainly cells whose yield eroded during their life (low-yield particles replicate faster inside, then the cell starves), with a modest inherited component; I rate H Weak.",
+  "parents": ["20261025T0820-c06-pcell-multilevel-claim"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T0820-c06-pcell-multilevel-claim/world.py",
+  "evidence": ["rerun/seed7/sheet.png", "rerun/seed7/lineage.png", "data/selection_s7.txt", "data/lifesel_claim_seeds.txt", "data/gen_s7.log", "lifesel.py"],
+  "review_of": "20261025T0820-c06-pcell-multilevel-claim",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Weak",
+    "supported": ["S", "I", "D", "H"],
+    "observations": {
+      "S": "rerun/seed7/sheet.png t=0: near-uniform pale field (noisy phi, uniform particle soup); ~20 cells by t=4000",
+      "I": "rerun/seed7/sheet.png t=4000-100000: discrete walled cells, most of fixed size; a few large irregular cells (t=52000-96000) that later split",
+      "D": "rerun/seed7/lineage.png: 22 persistent splits, max generation 4, merge/split 0.06; data/gen_s7.log: 30 splits, 0 merges, 46 deaths",
+      "H": "data/selection_s7.txt: 24/24 mature deaths below the living median (mean percentile 0.016) against the identical-event marker at 0.60; splits at 0.69; parent-daughter r 0.89 (mean |change| 0.019 vs SD 0.098). But the dying cells' birth percentile is 0.37 (lifesel.py), and 0.36-0.55 on the claim's seeds (data/lifesel_claim_seeds.txt)"
+    },
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "pass for S, I, D and the last-snapshot differential; H weak by the birth-time readout"}],
+    "same_individuals": true,
+    "controls_run": {"H": "the claim's own inert marker z, re-read on seed 7 (death percentile 0.60) and through life (flat at 0.47-0.62); lifesel.py birth/mid/late-life readout on seeds 0, 1, 2 and 7"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "The cell-level trait is not fixed at birth: inside a cell, low-yield particles replicate faster (the cost term), so a cell's yield erodes during its life, and the cells that die are those that eroded most. At birth, cells that will die are at percentile 0.36-0.55 (mean ~0.44 over 4 seeds) and cells that will split at 0.54-0.74, so inheritance predicts fate only modestly; the last-snapshot readout (0.02-0.05) mostly measures erosion before death. This is real multilevel selection (cheaters win inside, lose between cells), but the L7 rule that kinds change only at mutation or birth is strained, and the mean yield does not move beyond the marker's drift. No dt or resolution test; one fresh seed."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
