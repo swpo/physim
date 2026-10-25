@@ -1,0 +1,8 @@
+== sw045_s24
+(255, 519, 29, np.float32(0.64), np.float32(1.3), np.float32(187.4), np.float32(0.94))
+(289, 460, 17, np.float32(0.61), np.float32(1.4), np.float32(182.8), np.float32(0.97))
+median path/diam over tracks >= 20 t: 18.5, median net/diam 1.4
+== sw0_s24
+(130, 115, 40, np.float32(0.61), np.float32(45.9), np.float32(46.4), np.float32(0.99))
+(69, 134, 115, np.float32(0.77), np.float32(40.0), np.float32(45.8), np.float32(0.97))
+median path/diam over tracks >= 20 t: 17.1, median net/diam 15.8
