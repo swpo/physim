@@ -1,0 +1,33 @@
+{
+  "id": "20261025T1030-c09-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "title": "Review of c07's ringswim c2 (SIBM): on fresh seed 23 the swimming cells themselves keep the link ring (median L rim/core 1.79, >= 1.5 in 91% of checks); labkit's aggregate is marginal (1.47 to t=20000, 1.62 to t=10000), chi=0 gives 1.13",
+  "summary": "Fresh seed 23. labkit to t=20000: walled cells from noise, L link ring rim/core 1.47, rim/outside 5.24, 35/58 individuals membrane-like (a run to t=10000 gave 1.62 and 59/77); the chi=0 twin on the same seed gives 1.13 and 1/129. c07's celltrack on seed 23: 28 tracks move >= 3 body lengths, 8 >= 5 (up to 10.2). Since the disputed point is whether the moving cells carry the ring, I measured it directly (ringmove.py): for the 28 movers, at every 100-step check of their lives, L rim/core has median 1.79 and is >= 1.5 in 91% of 446 cell-checks (rim/outside median 14.9, always >= 1.5); all other cells give 1.85 and 84%. Swimming crescents keep the ring on their convex front and thin it at the back (sheet t=2200-9600). Supported, with the labkit aggregate sitting near the 1.5 line.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "world": "research/alife/collective/contrib/20261025T0806-c07-ringswim-claim/world_claim.py",
+  "evidence": ["rerun/seed23/sheet.png", "rerun/seed23/radial.png", "rerun/seed23/tracks.png", "chi0/seed23/radial.png", "data/ringmove_s23.txt", "data/celltrack_s23.log", "ringmove.py"],
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "verdicts": [{
+    "cid": "c2",
+    "verdict": "Supported",
+    "supported": ["S", "I", "B", "M"],
+    "observations": {
+      "S": "rerun/seed23/sheet.png t=0: noise over the whole domain; ~25 cells by t=400",
+      "I": "rerun/seed23/tracks.png: round walled cells persisting 1000-2000 time units at constant size between events",
+      "B": "data/ringmove_s23.txt: movers L rim/core median 1.79 (>= 1.5 in 91% of 446 checks), rim/outside 14.9; rerun/seed23/radial.png aggregate 1.47 / 5.24 (35/58 membrane-like); chi0/seed23: 1.13, 1/129",
+      "M": "data/celltrack_s23.log: 28 tracks >= 3 body lengths, 8 >= 5, top 10.2; crescents with the ring on the leading edge, sheet t=2200-9600"
+    },
+    "replicated": true,
+    "seed": 23,
+    "seeds_run": [{"seed": 23, "result": "pass (labkit to t=20000, celltrack, ringmove on the movers)"}],
+    "same_individuals": true,
+    "controls_run": {"B": "chi0/seed23 (chi=0 twin, same seed: L rim/core 1.13, 1/129 membrane-like)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "labkit's aggregate L rim/core sits at the 1.5 line (1.47 on my t=20000 run, 1.27-1.59 on the claim's seeds) because crescents thin the ring at the back; the per-cell measure that shows the ring on swimming cells is my own definition (rim = inner 2.5 px, core = inner half by distance). The genealogy is reticulate (merges ~0.9 of splits in labkit), which matters for c1, not c2. M uses c07's celltrack body-length convention (net / sqrt(area)); labkit's own max is 4.2 body lengths."
+  }],
+  "compute": {"cpu_minutes": 20}
+}
