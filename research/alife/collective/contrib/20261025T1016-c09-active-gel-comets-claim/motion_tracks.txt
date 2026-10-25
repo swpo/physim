@@ -1,0 +1,15 @@
+seed 0: motion_top (labkit): [{'id': 89, 'net': 54.01722923588082, 'path': 60.799481152451655, 'size': 4.880127299374531, 'speed': 0.3034675799768585, 'body_lengths': 11.068815611183753}, {'id': 88, 'net': 45.34786216377918, 'path': 51.39297705577735, 'size': 4.817791102892602, 'speed': 0.2533400120881519, 'body_lengths': 9.412583732937762}, {'id': 101, 'net': 36.30218283417844, 'path': 37.92983432014721, 'size': 4.3714271125
+  track 88 frames 21-200 (birth merge): median area 21 px (diameter 5.2 px), path 50 px = 9.6 body lengths, net 45 px
+  track 89 frames 22-200 (birth merge): median area 21 px (diameter 5.2 px), path 59 px = 11.5 body lengths, net 54 px
+  track 99 frames 56-200 (birth merge): median area 21 px (diameter 5.2 px), path 41 px = 7.9 body lengths, net 36 px
+  track 100 frames 68-200 (birth merge): median area 21 px (diameter 5.2 px), path 31 px = 6.0 body lengths, net 25 px
+seed 1: motion_top (labkit): [{'id': 102, 'net': 38.5013362527947, 'path': 47.41938663533848, 'size': 4.351202235458006, 'speed': 0.21629964186963316, 'body_lengths': 8.848436402023973}, {'id': 107, 'net': 38.76511515840151, 'path': 50.652308562396556, 'size': 4.463726637164229, 'speed': 0.22537857650233434, 'body_lengths': 8.684473380526878}, {'id': 110, 'net': 38.531213656831916, 'path': 41.922713657340935, 'size': 4.577799
+  track 99 frames 20-200 (birth merge): median area 18 px (diameter 4.8 px), path 43 px = 8.9 body lengths, net 25 px
+  track 102 frames 22-200 (birth merge): median area 19 px (diameter 4.9 px), path 46 px = 9.4 body lengths, net 38 px
+  track 107 frames 28-200 (birth merge): median area 21 px (diameter 5.2 px), path 49 px = 9.5 body lengths, net 39 px
+  track 109 frames 40-200 (birth merge): median area 20 px (diameter 5.0 px), path 35 px = 7.0 body lengths, net 24 px
+seed 2: motion_top (labkit): [{'id': 93, 'net': 56.33834288240453, 'path': 58.47299789962716, 'size': 4.666125509748669, 'speed': 0.32193338789945447, 'body_lengths': 12.073902162447206}, {'id': 95, 'net': 35.86567374949432, 'path': 53.89678672556062, 'size': 4.725815626252608, 'speed': 0.20731603323407122, 'body_lengths': 7.589308721706191}, {'id': 100, 'net': 31.31057117056657, 'path': 32.326712187616124, 'size': 4.39412486
+  track 85 frames 18-200 (birth merge): median area 21 px (diameter 5.2 px), path 56 px = 10.9 body lengths, net 15 px
+  track 87 frames 20-200 (birth merge): median area 21 px (diameter 5.2 px), path 56 px = 10.8 body lengths, net 29 px
+  track 93 frames 25-200 (birth merge): median area 22 px (diameter 5.3 px), path 57 px = 10.8 body lengths, net 56 px
+  track 95 frames 27-200 (birth merge): median area 20 px (diameter 5.0 px), path 52 px = 10.3 body lengths, net 35 px
