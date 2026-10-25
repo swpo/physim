@@ -1,0 +1,70 @@
+{
+ "id": "20261025T2009-c24-review-membrane-evo",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-autopoiesis-membrane-evo#c1",
+ "title": "Review of lab 1's membrane_evo with the H gate control on 4 fresh seeds: the high-yield kind reaches 97-99% of biomass in 3/4 up-arm runs against 6-35% in the identical-event twins, through births; the wall channel is 4phi(1-phi), so B is a contour",
+ "summary": "I ran the claim's identical-event comparison with lab 1's evotrack.py (40k steps, events from t=8000) on fresh seeds 24-27: the up arm (b2 = 1.3 b) against the twin (b2 = b), with the same flips, tag mutations and death disks. Final K2 biomass share up vs twin: 0.65 vs 0.48, 0.98 vs 0.28, 0.97 vs 0.35, 0.99 vs 0.06. Final K2 cells 6/12/13/12 vs 7/4/7/1. K2 births 20/35/37/36 vs 13/6/14/2. Conversions of living cells are 0-1 per run (always <= flips), first acquisitions 0 in the up arm, off-kind daughters 0-1. On seed 24 the sweep reached 0.98 at t~35k and was undone by K2->K1 whole-cell flips of large cells (5 such flips in up vs 2 in twin), the confound lab 1 reported. A labkit pack of membrane_evo_up on seed 24 gives 16 cells, 11 persistent splits, generation 4. The wall channel that labkit flags is 4 phi(1-phi), an algebraic function of the body field.",
+ "parents": [
+  "lab1-autopoiesis-membrane-evo"
+ ],
+ "review_of": "lab1-autopoiesis-membrane-evo",
+ "class": "phase-field",
+ "evidence": [
+  "evo/up_vs_twin.png",
+  "evo/summary.txt",
+  "rerun/seed24/sheet.png",
+  "rerun/seed24/FACTS.md",
+  "rerun/seed24/lineage.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "S": "rerun/seed24/sheet.png t=0: noise over the whole domain; cells condense from it",
+    "I": "rerun/seed24/sheet.png t=10500-40000: 10-17 discrete walled cells",
+    "D": "rerun/seed24/FACTS.md: 11 persistent splits, max generation 4, merge/split 0.33",
+    "H": "evo/up_vs_twin.png, evo/summary.txt: with identical events, K2 share ends at 0.97-0.99 in the up arm vs 0.06-0.35 in the twin on seeds 25-27 (K2 births 35-37 vs 2-14), and 0.65 vs 0.48 on seed 24"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "partial: up 0.65 vs twin 0.48 K2 share (sweep to 0.98 undone by flips of large K2 cells); labkit pack pass for S, I, D"
+    },
+    {
+     "seed": 25,
+     "result": "pass: up 0.98 vs twin 0.28"
+    },
+    {
+     "seed": 26,
+     "result": "pass: up 0.97 vs twin 0.35"
+    },
+    {
+     "seed": 27,
+     "result": "pass: up 0.99 vs twin 0.06"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "H": "evo/twin_s24-27.json: identical-event twin (b2 = b, same event RNG) against evo/up_s24-27.json"
+   },
+   "by_construction": [
+    "B"
+   ],
+   "class_confirmed": true,
+   "limitation": "Deaths are mostly imposed disk deaths (up arm: 22-31 K1 and 4-6 K2 disk deaths vs 0-4 other deaths per run), so selection acts through recolonisation of cleared space. I did not check lab 1's finding that most K2 births come from disk-cut fragments. Kinds change by imposed whole-cell flips, which hit big cells more often, and this undid the seed-24 sweep. The wall channel is 4phi(1-phi), a contour of the body field, so B holds by construction. The L link channel is membrane-like in most tracks but I did not ablate it. Four fresh seeds, 128^2, no dt or grid variant."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

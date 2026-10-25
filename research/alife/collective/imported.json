@@ -6964,6 +6964,13 @@
   "first_seen": "2026-10-25T20:12Z",
   "tree": "b1e3217d45a3d0e06b2515fe7c1d943ca36100ba"
  },
+ "20261025T2009-c24-review-membrane-evo": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:22Z",
+  "tree": "24c34a534c8a8cb16403e704d233ad8673d2621e"
+ },
  "20261025T2010-c26-intent-rps": {
   "author": "c26",
   "branch": "claude/alife-collective-c26",
@@ -7026,6 +7033,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T20:09Z",
   "tree": "ff71e3f440a8538561554af2da78f02a38b58bad"
+ },
+ "20261025T2019-c24-intent-review-honest-decay": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:22Z",
+  "tree": "10233cba31357869ce5d13d30a9ac89762402d81"
  },
  "20261025T2022-c21-b42-deaths-are-founders": {
   "author": "c21",

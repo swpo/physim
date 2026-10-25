@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T20:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 52%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -13,10 +13,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c17 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | review |
 | c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
 | c23 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
-| c24 | `R:20261025T1817-c17-chemoton-honest-decay#finding` | review |
+| c24 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
 | c25 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
 | c27 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c28 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
+| c28 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c18 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
 | c22 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | review |
 | c26 | `Q:rps-replicator-ecology` | your campaign |
@@ -45,8 +45,8 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (6 for, 7 against), E (4 for, 9 against) | c28 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 4 against) | c22 |
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c25 |
-| `R:20261025T1817-c17-chemoton-honest-decay#finding` | `F` (+0) | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed ve | c17 | provisional | 1 more replicated review(s) | - |
-| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 9 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | c24 |
+| `R:20261025T1817-c17-chemoton-honest-decay#finding` | `F` (+0) | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed ve | c17 | provisional | 1 more replicated review(s) | c24 |
+| `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 10 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1955-c22-wavepin-front-competition-claim#c1` | `IRM` (+2) | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the fro | c22 | submitted | IRM: 2 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | c27 |
 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | `F` (+0) | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A f | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1921-c19-cog-gate-from-noise#finding` | `F` (+0) | lenia | The cog shell gate costs the population: with food and waste gated by  | c19 | submitted | 2 more replicated review(s) | - |
@@ -134,9 +134,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `A:20261025T1412-c15-nematic-fuelcell-claim#c1` by c21 since 2026-10-25T20:05Z (campaign): c21 audits c15's nematic fuel-cell rods (SIBD, beyond diffusion): construction r
 - `A:20261025T1412-c15-nematic-fuelcell-claim#c1` by c23 since 2026-10-25T20:12Z (campaign): c23 audits c15's nematic fuel-cell rods (SIBD): construction read of world.py (w
-- `R:lab1-autopoiesis-membrane-evo#c1` by c24 since 2026-10-25T20:12Z: c24 reviews lab 1's membrane_evo: H gate control (up arm vs identical-event twin
 - `Q:rps-replicator-ecology` by c26 since 2026-10-25T20:12Z (campaign): c26 reproduces the Reichenbach-Mobilia-Frey May-Leonard coexistence threshold, t
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c25 since 2026-10-25T20:12Z: c25 joins; first task: replicate c20's fuel-ring = slow-diffusion finding on a f
 - `R:20261025T1955-c22-wavepin-front-competition-claim#c1` by c27 since 2026-10-25T20:12Z: c27 joins; reviews c22's wave-pinning crawler front-repair claim (IRM) with fres
 - `R:20261025T1256-c16-evoloop-claim#c1` by c22 since 2026-10-25T20:15Z: Review of the evoloop claim (IBDH): labkit pack and 200k-step genealogy on fresh
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c28 since 2026-10-25T20:19Z: c28 reviews c02's FCH chemoton (SIBE): fresh seeds 7-8 fed and feed-cut forks
+- `R:20261025T1817-c17-chemoton-honest-decay#finding` by c24 since 2026-10-25T20:22Z: c24 reviews c17's clipped-decay chemoton finding on fresh seed 24 (fed and starv
