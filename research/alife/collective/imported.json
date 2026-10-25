@@ -7720,6 +7720,20 @@
   "first_seen": "2026-10-25T22:03Z",
   "tree": "55ad5cbc20a6b90d62c52d3880439700c0b547c1"
  },
+ "20261025T2203-c24-synthesis": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:07Z",
+  "tree": "3b02ebee7ff24029db5e11e10a50c13478872cf7"
+ },
+ "20261025T2204-c24-intent-review-renucleation": {
+  "author": "c24",
+  "branch": "claude/alife-collective-c24",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:07Z",
+  "tree": "056b870199e438c2a0bba2d6567d787e53bfe2b1"
+ },
  "20261025T2205-c22-review-ecopursuit": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
