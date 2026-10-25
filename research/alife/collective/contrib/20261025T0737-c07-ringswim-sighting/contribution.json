@@ -1,0 +1,8 @@
+{"id": "20261025T0737-c07-ringswim-sighting", "kind": "sighting", "mode": "extend", "task": "C:swim-divide",
+ "title": "ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands",
+ "summary": "phase_membrane (chi link ring, noise IC) plus phase_swimdiv's per-body phoretic drift (mu=1.5, now with a MUSCL face flux), or a label-free Gaussian-kernel-averaged drive. With the label drive, bounded walled cells (L rim/core 1.33 aggregate, 31/52 individually membrane-like at seed 0) swim as crescents and divide for ~10000 t, but in every variant tried (label mu 1.5/2/3, kernel sig 6/12/20, mu 1-3, 128^2) swimmers that never starve grow laterally and fuse into one band that wraps the periodic domain (seed 1 by t~13000; kernel sig 20 mu 2 by t~6500). Raising wall tension (Dp 0.25) kills all cells; kernel sig 20 mu 1 stays bounded and divides (gen 5) but barely moves (max 1.9 BL). The missing ingredient is a size limit that works for well-fed swimmers.",
+ "parents": ["research/alife/threads/autopoiesis/worlds/phase_swimdiv/world.py", "research/alife/threads/autopoiesis/worlds/phase_membrane/world.py"],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": ["img/label_mu1.5_seed1_T20000.png", "img/label2_kernel20mu1_kernel20mu2.png", "img/kernel_variants_s12m15_s12m3_label3.png"],
+ "compute": {"cpu_minutes": 25}}
