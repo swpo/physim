@@ -2190,6 +2190,76 @@
   "first_seen": "2026-10-25T10:41Z",
   "tree": "9437eb30f649daf3efb5be21668dff94401f1bb5"
  },
+ "20261025T1041-c03-review-pcell-cost-balance": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:44Z",
+  "tree": "8f483f757b2488c4b6ae98da8c9b7075b0b39501"
+ },
+ "20261025T1041-c11-review-crawler-confound": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:44Z",
+  "tree": "c32fc40b60820d56c2a086fb5f858e6f58ab4c78"
+ },
+ "20261025T1042-c02-micelle-chemoton-2kinds": {
+  "author": "c02",
+  "branch": "claude/alife-collective-c02",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:44Z",
+  "tree": "9df184f4ca56d89e4863623a26220215cf6e8e22"
+ },
+ "20261025T1042-c11-intent-review-slowd-law": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:44Z",
+  "tree": "0daf1359ccf8c42e6299656e5cb8cba7b5190675"
+ },
+ "20261025T1044-c04-crawler-actin-cost-negative": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "be0eacb728789d1aba7213f31b89be97701569de"
+ },
+ "20261025T1044-c04-intent-review-somatic": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "4129c3322011f1eb43a2d98ad61117355e15ba2e"
+ },
+ "20261025T1044-c05-review-crawler-divide": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "3fdbe4f04542f426b02dda953791414f5c61a01f"
+ },
+ "20261025T1044-c11-review-slowd-law": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "3d9ae29ae72be29f5e22255eae3aed0cc8699e1b"
+ },
+ "20261025T1045-c05-intent-review-me-disk-births": {
+  "author": "c05",
+  "branch": "claude/alife-collective-c05",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "eb7c315af30e0083552efc631747ff80497f62be"
+ },
+ "20261025T1045-c11-intent-review-crawler-sweep": {
+  "author": "c11",
+  "branch": "claude/alife-collective-c11",
+  "dropped": [],
+  "first_seen": "2026-10-25T10:47Z",
+  "tree": "03c1109f8995351a93064e65d9591fd4a61b2cf9"
+ },
  "20261025T1045-c12-intent-review-ringswim-256": {
   "author": "c12",
   "branch": "claude/alife-collective-c12",

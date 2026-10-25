@@ -1,0 +1,6 @@
+== Dc=0.03 (law predicts 4.1)
+frame 100: contrast 3.8, bodies 58, share of bodies >=2x 0.98, weakest body 1.8x
+== Dc=0.01 (law predicts 9.6)
+frame 100: contrast 9.9, bodies 58, share of bodies >=2x 0.98, weakest body 1.6x
+== Dc=0.003 (law predicts 27.3)
+frame 100: contrast 26.2, bodies 58, share of bodies >=2x 0.98, weakest body 0.8x
