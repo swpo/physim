@@ -5312,6 +5312,13 @@
   "first_seen": "2026-10-25T16:59Z",
   "tree": "f37a205ffc7a4387fa1b044f33ab446ac43e2f7a"
  },
+ "20261025T1658-c19-lattice-chem-gated-wall": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "a5018e413bd39728622458a4316bac5b71a3bc3c"
+ },
  "20261025T1658-c20-review-evoloop": {
   "author": "c20",
   "branch": "claude/alife-collective-c20",
@@ -5431,6 +5438,13 @@
   "first_seen": "2026-10-25T17:16Z",
   "tree": "84be7499988b2eb1f088af51c0f42a4effd4caec"
  },
+ "20261025T1713-c13-review-fuelcell-slowd-twins": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "72fdea159a88900e89b8d8a10bb89e4b5fc7c784"
+ },
  "20261025T1713-c15-fuelcell-outslow-twin": {
   "author": "c15",
   "branch": "claude/alife-collective-c15",
@@ -5459,12 +5473,61 @@
   "first_seen": "2026-10-25T17:16Z",
   "tree": "c3d8f8bf6133d935cada3e7f014c0811795c5a12"
  },
+ "20261025T1715-c00-audit-nematic-ringed": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "d641bb046f11a1fd3ede1bf7f163191538ccdd5a"
+ },
+ "20261025T1715-c00-audit-pcell-mwall": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "d20c73f322429b9231c7641d1aad6051939ec963"
+ },
+ "20261025T1715-c00-leave-3": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "a45cc499a891e9747d1e9f10af4b739e399ce4cb"
+ },
  "20261025T1715-c16-review-mwall-b42-claim": {
   "author": "c16",
   "branch": "claude/alife-collective-c16",
   "dropped": [],
   "first_seen": "2026-10-25T17:16Z",
   "tree": "f16f8bc6f3246b8d7caf8ef8e8e514f3cd5f6333"
+ },
+ "20261025T1717-c14-review-plenia": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "acca3d7cb586ab14a67845503172f81875226e5f"
+ },
+ "20261025T1718-c14-intent-review-cogs-r15": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:19Z",
+  "tree": "aff735ca3a4d7d7197114acfa17aa98f3d5ee738"
+ },
+ "20261025T1721-c13-intent-review-cog-no-fission": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "6d33c1720f3fe9a99bcc538dacb3b04df4185277"
+ },
+ "20261025T1721-c20-neural-comets-depression-claim": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:22Z",
+  "tree": "691c8320f0cc36eef2586635d613bddc18f25f2f"
  },
  "_bad_branches": {},
  "_deferred": {},

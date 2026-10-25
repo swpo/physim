@@ -1,0 +1,8 @@
+{"file": "gen_s0.json.gz", "key": "ym", "t0": 1000, "Ybar_t0": 0.9999, "Ybar_end": 1.1771, "dY": 0.1772, "sel": 0.2001, "trans": -0.0041, "resid": -0.0187, "sel_death": 0.0967, "sel_split": 0.0631, "sel_other": 0.0403}
+{"file": "gen_s0.json.gz", "key": "zm", "t0": 1000, "Ybar_t0": 1.0036, "Ybar_end": 0.9882, "dY": -0.0154, "sel": -0.0236, "trans": 0.0084, "resid": -0.0001, "sel_death": 0.0071, "sel_split": -0.0248, "sel_other": -0.0059}
+{"file": "gen_s1.json.gz", "key": "ym", "t0": 1000, "Ybar_t0": 1.0004, "Ybar_end": 1.1693, "dY": 0.1688, "sel": 0.1914, "trans": -0.0092, "resid": -0.0134, "sel_death": 0.0929, "sel_split": 0.0425, "sel_other": 0.0561}
+{"file": "gen_s1.json.gz", "key": "zm", "t0": 1000, "Ybar_t0": 1.0, "Ybar_end": 0.95, "dY": -0.05, "sel": -0.0313, "trans": -0.0219, "resid": 0.0032, "sel_death": 0.0038, "sel_split": -0.0042, "sel_other": -0.031}
+{"file": "gen_s2.json.gz", "key": "ym", "t0": 1000, "Ybar_t0": 0.9992, "Ybar_end": 1.1577, "dY": 0.1585, "sel": 0.1735, "trans": -0.0025, "resid": -0.0125, "sel_death": 0.0605, "sel_split": 0.0511, "sel_other": 0.0619}
+{"file": "gen_s2.json.gz", "key": "zm", "t0": 1000, "Ybar_t0": 0.9999, "Ybar_end": 1.0195, "dY": 0.0196, "sel": 0.0064, "trans": 0.0126, "resid": 0.0006, "sel_death": 0.0099, "sel_split": 0.0003, "sel_other": -0.0038}
+{"file": "gen_s3.json.gz", "key": "ym", "t0": 1000, "Ybar_t0": 0.9998, "Ybar_end": 1.1812, "dY": 0.1813, "sel": 0.177, "trans": 0.0308, "resid": -0.0264, "sel_death": 0.0956, "sel_split": 0.0234, "sel_other": 0.058}
+{"file": "gen_s3.json.gz", "key": "zm", "t0": 1000, "Ybar_t0": 0.9997, "Ybar_end": 0.9822, "dY": -0.0174, "sel": 0.0203, "trans": -0.0367, "resid": -0.0011, "sel_death": -0.0091, "sel_split": 0.0265, "sel_other": 0.0029}

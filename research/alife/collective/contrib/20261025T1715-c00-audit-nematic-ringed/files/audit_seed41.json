@@ -1,0 +1,2172 @@
+{
+ "summary": {
+  "pack": "base/seed41",
+  "check_persistent_splits": 22,
+  "labkit_persistent_splits": 22,
+  "max_generation": 4,
+  "splits": 38,
+  "merges": 6,
+  "n_tracks_life_ge_K": 55,
+  "n_ge1BL": 34,
+  "n_ge3BL": 3,
+  "n_ge3_rodlengths": 2,
+  "n_ge2_rodlengths": 3,
+  "max_BL": 4.161529163881184,
+  "max_rod_lengths": 3.136133957270741,
+  "median_persistence_ge1BL": 0.780279802048994,
+  "median_speed_ge1BL": 0.03741236874776363,
+  "median_long_axis": 9.913629516517144,
+  "median_short_axis": 3.782983124448767,
+  "median_sqrt_area": 6.239136900909667,
+  "median_ring_frac_frames": 0.6818181818181818,
+  "n_tracks_ring_frac_ge_0.5": 37,
+  "median_raw_iface_over_interior": 2.2999167156423983,
+  "median_raw_iface_over_out": 3.428162127045965,
+  "all_together_born_ge3BL_ring": [
+   52,
+   53
+  ],
+  "all_together_and_divides": [],
+  "global_raw_s": [
+   {
+    "frame": 34,
+    "s_iface": 0.47890031337738037,
+    "s_interior": 0.2193128764629364,
+    "s_far_out": 0.20791922509670258,
+    "n_interior_px": 54,
+    "n_iface_px": 509,
+    "phi_max": 0.6357421875
+   },
+   {
+    "frame": 67,
+    "s_iface": 0.5045604705810547,
+    "s_interior": 0.2242487072944641,
+    "s_far_out": 0.18153159320354462,
+    "n_interior_px": 66,
+    "n_iface_px": 812,
+    "phi_max": 0.6171875
+   },
+   {
+    "frame": 101,
+    "s_iface": 0.5024973154067993,
+    "s_interior": 0.21506367623806,
+    "s_far_out": 0.17161881923675537,
+    "n_interior_px": 126,
+    "n_iface_px": 983,
+    "phi_max": 0.837890625
+   },
+   {
+    "frame": 133,
+    "s_iface": 0.49181070923805237,
+    "s_interior": 0.21249805390834808,
+    "s_far_out": 0.1665714532136917,
+    "n_interior_px": 88,
+    "n_iface_px": 1097,
+    "phi_max": 0.6396484375
+   },
+   {
+    "frame": 166,
+    "s_iface": 0.4965033531188965,
+    "s_interior": 0.21434450149536133,
+    "s_far_out": 0.16213183104991913,
+    "n_interior_px": 89,
+    "n_iface_px": 1204,
+    "phi_max": 0.68603515625
+   },
+   {
+    "frame": 200,
+    "s_iface": 0.5033459663391113,
+    "s_interior": 0.20980240404605865,
+    "s_far_out": 0.157709538936615,
+    "n_interior_px": 149,
+    "n_iface_px": 1278,
+    "phi_max": 0.8486328125
+   }
+  ]
+ },
+ "tracks": [
+  {
+   "id": 5,
+   "start": 18,
+   "end": 37,
+   "life_frames": 20,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [
+    16,
+    17
+   ],
+   "gen": 0,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": true,
+   "split_frame": 38,
+   "net": 1.3993320330115386,
+   "path": 3.3189399616672057,
+   "persistence": 0.42162017064888724,
+   "body_lengths_labkit": 0.21204434574059222,
+   "speed": 0.01472981087380567,
+   "sqrt_area": 6.599242380758567,
+   "long_axis": 11.048626448020785,
+   "short_axis": 4.129019961798012,
+   "rod_lengths": 0.12665212636111978,
+   "ring_frac_frames": 0.4166666666666667,
+   "n_render_frames": 12,
+   "raw_iface_over_interior_med": 2.24521408583528,
+   "raw_iface_over_out_med": 3.490490289601955,
+   "area_first": 12.0,
+   "area_max": 62.0,
+   "area_last": 62.0
+  },
+  {
+   "id": 6,
+   "start": 28,
+   "end": 53,
+   "life_frames": 26,
+   "birth": "split",
+   "parents": [
+    0
+   ],
+   "children": [
+    18,
+    19
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 54,
+   "net": 7.376647188460528,
+   "path": 7.668438358944787,
+   "persistence": 0.9619490753102421,
+   "body_lengths_labkit": 1.0368543207514416,
+   "speed": 0.05901317750768423,
+   "sqrt_area": 7.1144490029365315,
+   "long_axis": 13.64368711673853,
+   "short_axis": 3.7352227561159244,
+   "rod_lengths": 0.5406637608546895,
+   "ring_frac_frames": 0.4,
+   "n_render_frames": 15,
+   "raw_iface_over_interior_med": 2.157364748908438,
+   "raw_iface_over_out_med": 3.353248953573133,
+   "area_first": 35.0,
+   "area_max": 68.0,
+   "area_last": 67.0
+  },
+  {
+   "id": 7,
+   "start": 28,
+   "end": 109,
+   "life_frames": 82,
+   "birth": "split",
+   "parents": [
+    0
+   ],
+   "children": [
+    41,
+    42
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 110,
+   "net": 15.561547924691068,
+   "path": 21.28690184695541,
+   "persistence": 0.7310386469845438,
+   "body_lengths_labkit": 2.4941827967298154,
+   "speed": 0.038423575122693995,
+   "sqrt_area": 6.239136900909667,
+   "long_axis": 10.26308507094981,
+   "short_axis": 3.7533291917369263,
+   "rod_lengths": 1.5162641464152753,
+   "ring_frac_frames": 0.7142857142857143,
+   "n_render_frames": 49,
+   "raw_iface_over_interior_med": 2.343923234646055,
+   "raw_iface_over_out_med": 3.3803117295635983,
+   "area_first": 33.0,
+   "area_max": 54.0,
+   "area_last": 51.0
+  },
+  {
+   "id": 8,
+   "start": 32,
+   "end": 79,
+   "life_frames": 48,
+   "birth": "split",
+   "parents": [
+    1
+   ],
+   "children": [
+    20,
+    21
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.898041260344509,
+   "path": 8.830833816926523,
+   "persistence": 0.667891773598935,
+   "body_lengths_labkit": 0.7041130338908028,
+   "speed": 0.02509804791635961,
+   "sqrt_area": 8.376554582086042,
+   "long_axis": 18.645564447672577,
+   "short_axis": 4.729795555323269,
+   "rod_lengths": 0.31632409289066754,
+   "ring_frac_frames": 0.3103448275862069,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.182887473866068,
+   "raw_iface_over_out_med": 3.755862542515947,
+   "area_first": 32.0,
+   "area_max": 114.0,
+   "area_last": 114.0
+  },
+  {
+   "id": 9,
+   "start": 32,
+   "end": 124,
+   "life_frames": 93,
+   "birth": "split",
+   "parents": [
+    1
+   ],
+   "children": [
+    54
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.60051442889418,
+   "path": 30.721304083634116,
+   "persistence": 0.1823006736187899,
+   "body_lengths_labkit": 0.8974188174366556,
+   "speed": 0.01217503136716126,
+   "sqrt_area": 6.2406919936125504,
+   "long_axis": 9.913629516517144,
+   "short_axis": 3.754918101504775,
+   "rod_lengths": 0.5649307773266227,
+   "ring_frac_frames": 0.7142857142857143,
+   "n_render_frames": 56,
+   "raw_iface_over_interior_med": 2.221115468732317,
+   "raw_iface_over_out_med": 3.250779233076715,
+   "area_first": 32.0,
+   "area_max": 49.0,
+   "area_last": 32.0
+  },
+  {
+   "id": 10,
+   "start": 34,
+   "end": 200,
+   "life_frames": 167,
+   "birth": "split",
+   "parents": [
+    2
+   ],
+   "children": [],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 10.85441545569889,
+   "path": 29.332447481548535,
+   "persistence": 0.3700480657990377,
+   "body_lengths_labkit": 1.9542348269555592,
+   "speed": 0.013077608982769747,
+   "sqrt_area": 5.554304583041661,
+   "long_axis": 7.784271388868658,
+   "short_axis": 3.7494723712936877,
+   "rod_lengths": 1.394403523908541,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 100,
+   "raw_iface_over_interior_med": 2.306102799729039,
+   "raw_iface_over_out_med": 3.247583896742598,
+   "area_first": 35.0,
+   "area_max": 41.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 11,
+   "start": 34,
+   "end": 103,
+   "life_frames": 70,
+   "birth": "split",
+   "parents": [
+    2
+   ],
+   "children": [
+    37,
+    38
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 104,
+   "net": 11.840107861116667,
+   "path": 18.036120589026865,
+   "persistence": 0.6564664392585711,
+   "body_lengths_labkit": 1.6307654271625196,
+   "speed": 0.03431915322062802,
+   "sqrt_area": 7.26046043404175,
+   "long_axis": 13.094560131280229,
+   "short_axis": 4.161115682717592,
+   "rod_lengths": 0.9042005032939647,
+   "ring_frac_frames": 0.40476190476190477,
+   "n_render_frames": 42,
+   "raw_iface_over_interior_med": 2.2155526853880643,
+   "raw_iface_over_out_med": 3.659112883960577,
+   "area_first": 33.0,
+   "area_max": 67.0,
+   "area_last": 63.0
+  },
+  {
+   "id": 12,
+   "start": 35,
+   "end": 121,
+   "life_frames": 87,
+   "birth": "split",
+   "parents": [
+    4
+   ],
+   "children": [
+    52,
+    53
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 122,
+   "net": 8.703751166542729,
+   "path": 20.417746410505604,
+   "persistence": 0.4262836353998579,
+   "body_lengths_labkit": 1.2400523204185572,
+   "speed": 0.020241281782657508,
+   "sqrt_area": 7.018858013672307,
+   "long_axis": 12.268703729986433,
+   "short_axis": 4.151969509352464,
+   "rod_lengths": 0.7094271210795922,
+   "ring_frac_frames": 0.4230769230769231,
+   "n_render_frames": 52,
+   "raw_iface_over_interior_med": 2.1596528964271235,
+   "raw_iface_over_out_med": 3.4421521882380928,
+   "area_first": 32.0,
+   "area_max": 78.0,
+   "area_last": 69.0
+  },
+  {
+   "id": 13,
+   "start": 35,
+   "end": 98,
+   "life_frames": 64,
+   "birth": "split",
+   "parents": [
+    4
+   ],
+   "children": [
+    31,
+    32
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 99,
+   "net": 6.000516657376546,
+   "path": 17.709681912656492,
+   "persistence": 0.3388269019720894,
+   "body_lengths_labkit": 0.8021885746759871,
+   "speed": 0.019049259229766812,
+   "sqrt_area": 7.480182150188591,
+   "long_axis": 14.189740068862163,
+   "short_axis": 4.178733449919092,
+   "rod_lengths": 0.42287713716081565,
+   "ring_frac_frames": 0.34210526315789475,
+   "n_render_frames": 38,
+   "raw_iface_over_interior_med": 2.231872550908044,
+   "raw_iface_over_out_med": 3.9471048266346482,
+   "area_first": 33.0,
+   "area_max": 72.0,
+   "area_last": 60.0
+  },
+  {
+   "id": 14,
+   "start": 35,
+   "end": 82,
+   "life_frames": 48,
+   "birth": "split",
+   "parents": [
+    3
+   ],
+   "children": [
+    24,
+    25
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 13.152840920007112,
+   "path": 14.36817890742608,
+   "persistence": 0.9154146120222076,
+   "body_lengths_labkit": 1.5737053072036267,
+   "speed": 0.05596953582981749,
+   "sqrt_area": 8.357880512825407,
+   "long_axis": 18.39673233472044,
+   "short_axis": 4.848139599449939,
+   "rod_lengths": 0.7149552801387206,
+   "ring_frac_frames": 0.2413793103448276,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.197902384508018,
+   "raw_iface_over_out_med": 3.8684819582152277,
+   "area_first": 36.0,
+   "area_max": 106.0,
+   "area_last": 103.0
+  },
+  {
+   "id": 15,
+   "start": 35,
+   "end": 84,
+   "life_frames": 50,
+   "birth": "split",
+   "parents": [
+    3
+   ],
+   "children": [
+    28,
+    29
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 85,
+   "net": 9.154784164613657,
+   "path": 12.115159064461707,
+   "persistence": 0.7556470464732125,
+   "body_lengths_labkit": 1.0992426425791677,
+   "speed": 0.03736646597801493,
+   "sqrt_area": 8.328265125462805,
+   "long_axis": 17.85472363794945,
+   "short_axis": 5.0591655277494505,
+   "rod_lengths": 0.5127373769681629,
+   "ring_frac_frames": 0.26666666666666666,
+   "n_render_frames": 30,
+   "raw_iface_over_interior_med": 2.217747750834264,
+   "raw_iface_over_out_med": 3.871462814910449,
+   "area_first": 35.0,
+   "area_max": 102.0,
+   "area_last": 102.0
+  },
+  {
+   "id": 16,
+   "start": 38,
+   "end": 112,
+   "life_frames": 75,
+   "birth": "split",
+   "parents": [
+    5
+   ],
+   "children": [
+    43,
+    44
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 11.465025754578079,
+   "path": 17.31371505997566,
+   "persistence": 0.6621932794240057,
+   "body_lengths_labkit": 1.5508389757753533,
+   "speed": 0.030986556093454267,
+   "sqrt_area": 7.392789279651716,
+   "long_axis": 14.113760974594266,
+   "short_axis": 4.241423026777305,
+   "rod_lengths": 0.8123295962866247,
+   "ring_frac_frames": 0.3181818181818182,
+   "n_render_frames": 44,
+   "raw_iface_over_interior_med": 2.2677752431697673,
+   "raw_iface_over_out_med": 3.9581698331486463,
+   "area_first": 31.0,
+   "area_max": 76.0,
+   "area_last": 62.0
+  },
+  {
+   "id": 17,
+   "start": 38,
+   "end": 90,
+   "life_frames": 53,
+   "birth": "split",
+   "parents": [
+    5
+   ],
+   "children": [
+    30
+   ],
+   "gen": 1,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 8.04417457493676,
+   "path": 10.472507186420208,
+   "persistence": 0.7681230895088534,
+   "body_lengths_labkit": 1.4304820572441066,
+   "speed": 0.030939132980526,
+   "sqrt_area": 5.6234012403023454,
+   "long_axis": 7.702810829077034,
+   "short_axis": 3.9171210027655894,
+   "rod_lengths": 1.0443167764903591,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 31,
+   "raw_iface_over_interior_med": 2.3914036940151173,
+   "raw_iface_over_out_med": 3.3711809541163062,
+   "area_first": 31.0,
+   "area_max": 37.0,
+   "area_last": 27.0
+  },
+  {
+   "id": 18,
+   "start": 54,
+   "end": 90,
+   "life_frames": 37,
+   "birth": "split",
+   "parents": [
+    6
+   ],
+   "children": [
+    30
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.907028542202528,
+   "path": 7.045877108418686,
+   "persistence": 0.8383666719285497,
+   "body_lengths_labkit": 1.0558826450190166,
+   "speed": 0.03281682523445849,
+   "sqrt_area": 5.594398743144548,
+   "long_axis": 7.705487821882033,
+   "short_axis": 3.8994768690615405,
+   "rod_lengths": 0.7666002047823315,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 22,
+   "raw_iface_over_interior_med": 2.4252027286425912,
+   "raw_iface_over_out_med": 3.541564198027892,
+   "area_first": 31.0,
+   "area_max": 35.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 19,
+   "start": 54,
+   "end": 102,
+   "life_frames": 49,
+   "birth": "split",
+   "parents": [
+    6
+   ],
+   "children": [
+    35,
+    36
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 103,
+   "net": 10.081644461880861,
+   "path": 14.266342877207428,
+   "persistence": 0.7066733604158474,
+   "body_lengths_labkit": 1.3193817991613968,
+   "speed": 0.04200685192450359,
+   "sqrt_area": 7.641188068752189,
+   "long_axis": 13.959703059383957,
+   "short_axis": 4.527234904981018,
+   "rod_lengths": 0.7221961970819862,
+   "ring_frac_frames": 0.41379310344827586,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.1778967495320605,
+   "raw_iface_over_out_med": 3.579439197087157,
+   "area_first": 35.0,
+   "area_max": 82.0,
+   "area_last": 79.0
+  },
+  {
+   "id": 21,
+   "start": 80,
+   "end": 113,
+   "life_frames": 34,
+   "birth": "split",
+   "parents": [
+    8
+   ],
+   "children": [
+    45,
+    46
+   ],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": true,
+   "split_frame": 114,
+   "net": 7.891163531703169,
+   "path": 9.734699116100183,
+   "persistence": 0.8106222326534985,
+   "body_lengths_labkit": 1.202979811368849,
+   "speed": 0.04782523352547375,
+   "sqrt_area": 6.559680766981415,
+   "long_axis": 11.792745976260768,
+   "short_axis": 3.6654998599016144,
+   "rod_lengths": 0.669154033130907,
+   "ring_frac_frames": 0.5,
+   "n_render_frames": 20,
+   "raw_iface_over_interior_med": 2.2870473781786576,
+   "raw_iface_over_out_med": 3.244844315181706,
+   "area_first": 35.0,
+   "area_max": 57.0,
+   "area_last": 57.0
+  },
+  {
+   "id": 22,
+   "start": 81,
+   "end": 114,
+   "life_frames": 34,
+   "birth": "split",
+   "parents": [
+    20
+   ],
+   "children": [
+    47,
+    48
+   ],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": true,
+   "split_frame": 115,
+   "net": 9.24106976767324,
+   "path": 11.473117903483333,
+   "persistence": 0.8054540923760206,
+   "body_lengths_labkit": 1.3297657141952857,
+   "speed": 0.05600648344044388,
+   "sqrt_area": 6.9493969268605476,
+   "long_axis": 13.51804419001798,
+   "short_axis": 3.68808113447569,
+   "rod_lengths": 0.6836099688516367,
+   "ring_frac_frames": 0.23809523809523808,
+   "n_render_frames": 21,
+   "raw_iface_over_interior_med": 2.1743618977105252,
+   "raw_iface_over_out_med": 3.307473794568415,
+   "area_first": 39.0,
+   "area_max": 63.0,
+   "area_last": 63.0
+  },
+  {
+   "id": 23,
+   "start": 81,
+   "end": 124,
+   "life_frames": 44,
+   "birth": "split",
+   "parents": [
+    20
+   ],
+   "children": [
+    54
+   ],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 3.4155689470302564,
+   "path": 6.522246306051057,
+   "persistence": 0.5236798469051129,
+   "body_lengths_labkit": 0.6163987086512404,
+   "speed": 0.015886367195489564,
+   "sqrt_area": 5.541168239148262,
+   "long_axis": 7.4895639514301235,
+   "short_axis": 3.9054710873828475,
+   "rod_lengths": 0.45604376558905774,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 27,
+   "raw_iface_over_interior_med": 2.365205298402256,
+   "raw_iface_over_out_med": 3.4734715945139514,
+   "area_first": 33.0,
+   "area_max": 34.0,
+   "area_last": 23.0
+  },
+  {
+   "id": 25,
+   "start": 83,
+   "end": 198,
+   "life_frames": 116,
+   "birth": "split",
+   "parents": [
+    14
+   ],
+   "children": [],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 21.538506122569586,
+   "path": 27.18010304426336,
+   "persistence": 0.7924365145891347,
+   "body_lengths_labkit": 3.8172879273439584,
+   "speed": 0.037458271517512326,
+   "sqrt_area": 5.642358274387734,
+   "long_axis": 8.091450707502648,
+   "short_axis": 3.704093389733977,
+   "rod_lengths": 2.6618843642708474,
+   "ring_frac_frames": 0.9710144927536232,
+   "n_render_frames": 69,
+   "raw_iface_over_interior_med": 2.3014365273383866,
+   "raw_iface_over_out_med": 3.1983271554942956,
+   "area_first": 26.0,
+   "area_max": 39.0,
+   "area_last": 7.0
+  },
+  {
+   "id": 26,
+   "start": 85,
+   "end": 181,
+   "life_frames": 97,
+   "birth": "split",
+   "parents": [
+    24
+   ],
+   "children": [
+    77
+   ],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 13.401446206408506,
+   "path": 21.914191513598034,
+   "persistence": 0.6115418950360427,
+   "body_lengths_labkit": 2.356194104229469,
+   "speed": 0.02791967959668439,
+   "sqrt_area": 5.687751353911097,
+   "long_axis": 8.182687249752277,
+   "short_axis": 3.7671110579242404,
+   "rod_lengths": 1.6377805722458991,
+   "ring_frac_frames": 0.9473684210526315,
+   "n_render_frames": 57,
+   "raw_iface_over_interior_med": 2.3411335546765857,
+   "raw_iface_over_out_med": 3.349528948696252,
+   "area_first": 34.0,
+   "area_max": 44.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 27,
+   "start": 85,
+   "end": 155,
+   "life_frames": 71,
+   "birth": "split",
+   "parents": [
+    24
+   ],
+   "children": [],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 7.23564409068018,
+   "path": 25.62418837614648,
+   "persistence": 0.28237554237682044,
+   "body_lengths_labkit": 1.3371469134527272,
+   "speed": 0.0206732688305148,
+   "sqrt_area": 5.41125587464177,
+   "long_axis": 7.403967638861691,
+   "short_axis": 3.7063787963122317,
+   "rod_lengths": 0.977265763926625,
+   "ring_frac_frames": 0.9761904761904762,
+   "n_render_frames": 42,
+   "raw_iface_over_interior_med": 2.3480608814741037,
+   "raw_iface_over_out_med": 3.174301516673241,
+   "area_first": 39.0,
+   "area_max": 41.0,
+   "area_last": 6.0
+  },
+  {
+   "id": 28,
+   "start": 85,
+   "end": 107,
+   "life_frames": 23,
+   "birth": "split",
+   "parents": [
+    15
+   ],
+   "children": [
+    39,
+    40
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 4.010441251287232,
+   "path": 8.719983055632813,
+   "persistence": 0.4599138812198291,
+   "body_lengths_labkit": 0.5006254202929564,
+   "speed": 0.03645855682988393,
+   "sqrt_area": 8.010862191017784,
+   "long_axis": 13.784376793382972,
+   "short_axis": 5.282530366715093,
+   "rod_lengths": 0.2909410640321728,
+   "ring_frac_frames": 0.23076923076923078,
+   "n_render_frames": 13,
+   "raw_iface_over_interior_med": 2.2749567771425174,
+   "raw_iface_over_out_med": 3.856611462627917,
+   "area_first": 62.0,
+   "area_max": 73.0,
+   "area_last": 71.0
+  },
+  {
+   "id": 29,
+   "start": 85,
+   "end": 190,
+   "life_frames": 106,
+   "birth": "split",
+   "parents": [
+    15
+   ],
+   "children": [
+    86,
+    87
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 2.3117912921974,
+   "path": 29.01487128020313,
+   "persistence": 0.07967608299454139,
+   "body_lengths_labkit": 0.3567171407992521,
+   "speed": 0.004403411985137905,
+   "sqrt_area": 6.48074069840786,
+   "long_axis": 10.772128471121427,
+   "short_axis": 3.837224177680538,
+   "rod_lengths": 0.2146085890448661,
+   "ring_frac_frames": 0.6507936507936508,
+   "n_render_frames": 63,
+   "raw_iface_over_interior_med": 2.2999167156423983,
+   "raw_iface_over_out_med": 3.3585716342258953,
+   "area_first": 35.0,
+   "area_max": 52.0,
+   "area_last": 52.0
+  },
+  {
+   "id": 31,
+   "start": 99,
+   "end": 200,
+   "life_frames": 102,
+   "birth": "split",
+   "parents": [
+    13
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 11.504557842662356,
+   "path": 16.31094648616222,
+   "persistence": 0.7053274224412741,
+   "body_lengths_labkit": 2.306344661264493,
+   "speed": 0.02278130265873734,
+   "sqrt_area": 4.988221420624437,
+   "long_axis": 6.226985765274128,
+   "short_axis": 3.769252059044219,
+   "rod_lengths": 1.8475323818499039,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 61,
+   "raw_iface_over_interior_med": 2.3453376306534377,
+   "raw_iface_over_out_med": 3.639902279435642,
+   "area_first": 26.0,
+   "area_max": 32.0,
+   "area_last": 29.0
+  },
+  {
+   "id": 32,
+   "start": 99,
+   "end": 189,
+   "life_frames": 91,
+   "birth": "split",
+   "parents": [
+    13
+   ],
+   "children": [
+    82,
+    83
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 14.29399495880138,
+   "path": 26.09569768864078,
+   "persistence": 0.5477529334279276,
+   "body_lengths_labkit": 2.110056458252337,
+   "speed": 0.03176443324178084,
+   "sqrt_area": 6.774223932681137,
+   "long_axis": 11.49664236066372,
+   "short_axis": 4.094274155601496,
+   "rod_lengths": 1.2433190935563,
+   "ring_frac_frames": 0.5370370370370371,
+   "n_render_frames": 54,
+   "raw_iface_over_interior_med": 2.2508463192749435,
+   "raw_iface_over_out_med": 3.7333277842383046,
+   "area_first": 29.0,
+   "area_max": 71.0,
+   "area_last": 67.0
+  },
+  {
+   "id": 33,
+   "start": 100,
+   "end": 200,
+   "life_frames": 101,
+   "birth": "split",
+   "parents": [
+    30
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 8.885654236837398,
+   "path": 21.21996108024607,
+   "persistence": 0.4187403644726364,
+   "body_lengths_labkit": 1.473263809650213,
+   "speed": 0.017771308473674797,
+   "sqrt_area": 6.031271642345615,
+   "long_axis": 9.703861824887197,
+   "short_axis": 3.5739333983534043,
+   "rod_lengths": 0.915682271366296,
+   "ring_frac_frames": 0.6,
+   "n_render_frames": 60,
+   "raw_iface_over_interior_med": 2.183404327283033,
+   "raw_iface_over_out_med": 3.0888073089784385,
+   "area_first": 32.0,
+   "area_max": 43.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 34,
+   "start": 100,
+   "end": 200,
+   "life_frames": 101,
+   "birth": "split",
+   "parents": [
+    30
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 3.5685640051080476,
+   "path": 17.74800444494188,
+   "persistence": 0.20106846469294615,
+   "body_lengths_labkit": 0.6417534105355295,
+   "speed": 0.007137128010216095,
+   "sqrt_area": 5.560646732099417,
+   "long_axis": 7.69835962313343,
+   "short_axis": 3.8136593206099936,
+   "rod_lengths": 0.4635486233176972,
+   "ring_frac_frames": 0.9833333333333333,
+   "n_render_frames": 60,
+   "raw_iface_over_interior_med": 2.3747901634184894,
+   "raw_iface_over_out_med": 3.380873934167586,
+   "area_first": 31.0,
+   "area_max": 38.0,
+   "area_last": 38.0
+  },
+  {
+   "id": 35,
+   "start": 103,
+   "end": 189,
+   "life_frames": 87,
+   "birth": "split",
+   "parents": [
+    19
+   ],
+   "children": [
+    80,
+    81
+   ],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 6.326311489739561,
+   "path": 21.4011022059276,
+   "persistence": 0.2956068070170387,
+   "body_lengths_labkit": 1.001573651564531,
+   "speed": 0.014712352301719911,
+   "sqrt_area": 6.316371721497867,
+   "long_axis": 10.542615781289701,
+   "short_axis": 3.6571320553344595,
+   "rod_lengths": 0.6000703830037188,
+   "ring_frac_frames": 0.6346153846153846,
+   "n_render_frames": 52,
+   "raw_iface_over_interior_med": 2.1693436937937483,
+   "raw_iface_over_out_med": 3.1738363240136698,
+   "area_first": 33.0,
+   "area_max": 62.0,
+   "area_last": 62.0
+  },
+  {
+   "id": 36,
+   "start": 103,
+   "end": 158,
+   "life_frames": 56,
+   "birth": "split",
+   "parents": [
+    19
+   ],
+   "children": [
+    64
+   ],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 19.346327660939682,
+   "path": 21.071387267209648,
+   "persistence": 0.9181326039717173,
+   "body_lengths_labkit": 2.883980250989709,
+   "speed": 0.07035028240341702,
+   "sqrt_area": 6.708203932499369,
+   "long_axis": 10.900453011250836,
+   "short_axis": 4.0855745943905335,
+   "rod_lengths": 1.7748186833126558,
+   "ring_frac_frames": 0.5,
+   "n_render_frames": 34,
+   "raw_iface_over_interior_med": 2.2037553003676,
+   "raw_iface_over_out_med": 3.534753540504467,
+   "area_first": 38.0,
+   "area_max": 53.0,
+   "area_last": 32.0
+  },
+  {
+   "id": 37,
+   "start": 104,
+   "end": 200,
+   "life_frames": 97,
+   "birth": "split",
+   "parents": [
+    11
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.038338724792016,
+   "path": 17.72555345653692,
+   "persistence": 0.2842415463723617,
+   "body_lengths_labkit": 0.8581043316730692,
+   "speed": 0.010496539009983367,
+   "sqrt_area": 5.871475692202405,
+   "long_axis": 8.830071438701573,
+   "short_axis": 3.723408832027274,
+   "rod_lengths": 0.5705886707449882,
+   "ring_frac_frames": 0.9482758620689655,
+   "n_render_frames": 58,
+   "raw_iface_over_interior_med": 2.2770127011531693,
+   "raw_iface_over_out_med": 3.235309163048356,
+   "area_first": 30.0,
+   "area_max": 42.0,
+   "area_last": 37.0
+  },
+  {
+   "id": 38,
+   "start": 104,
+   "end": 151,
+   "life_frames": 48,
+   "birth": "split",
+   "parents": [
+    11
+   ],
+   "children": [
+    62,
+    63
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 152,
+   "net": 10.901683262858382,
+   "path": 13.54288826535567,
+   "persistence": 0.804974762344174,
+   "body_lengths_labkit": 1.658878305408455,
+   "speed": 0.04639014154407822,
+   "sqrt_area": 6.5717197140474575,
+   "long_axis": 11.799343588490057,
+   "short_axis": 3.782983124448767,
+   "rod_lengths": 0.9239228590218088,
+   "ring_frac_frames": 0.4827586206896552,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.2455048800888804,
+   "raw_iface_over_out_med": 3.2830105900285766,
+   "area_first": 31.0,
+   "area_max": 62.0,
+   "area_last": 62.0
+  },
+  {
+   "id": 41,
+   "start": 110,
+   "end": 200,
+   "life_frames": 91,
+   "birth": "split",
+   "parents": [
+    7
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.247062017028987,
+   "path": 18.394984296534748,
+   "persistence": 0.2852441694129323,
+   "body_lengths_labkit": 0.9597374493073106,
+   "speed": 0.01166013781561997,
+   "sqrt_area": 5.467184823115996,
+   "long_axis": 7.429014239455061,
+   "short_axis": 3.8600933985324257,
+   "rod_lengths": 0.7062931699823843,
+   "ring_frac_frames": 0.9259259259259259,
+   "n_render_frames": 54,
+   "raw_iface_over_interior_med": 2.363065747571481,
+   "raw_iface_over_out_med": 3.430209623182167,
+   "area_first": 28.0,
+   "area_max": 51.0,
+   "area_last": 42.0
+  },
+  {
+   "id": 42,
+   "start": 110,
+   "end": 163,
+   "life_frames": 54,
+   "birth": "split",
+   "parents": [
+    7
+   ],
+   "children": [
+    65,
+    66
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 164,
+   "net": 3.7269050997410464,
+   "path": 9.248413867967896,
+   "persistence": 0.4029777595322882,
+   "body_lengths_labkit": 0.5827031370728943,
+   "speed": 0.014063792829211497,
+   "sqrt_area": 6.395889883933854,
+   "long_axis": 11.325393446331248,
+   "short_axis": 3.6916264152240337,
+   "rod_lengths": 0.3290751104941384,
+   "ring_frac_frames": 0.4375,
+   "n_render_frames": 32,
+   "raw_iface_over_interior_med": 2.2476219116844116,
+   "raw_iface_over_out_med": 3.428162127045965,
+   "area_first": 22.0,
+   "area_max": 59.0,
+   "area_last": 59.0
+  },
+  {
+   "id": 45,
+   "start": 114,
+   "end": 141,
+   "life_frames": 28,
+   "birth": "split",
+   "parents": [
+    21
+   ],
+   "children": [
+    59
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 9.591667650276635,
+   "path": 10.774426134369056,
+   "persistence": 0.8902253846894387,
+   "body_lengths_labkit": 1.9666905147333176,
+   "speed": 0.07104939000204916,
+   "sqrt_area": 4.877060004317589,
+   "long_axis": 5.991231665758306,
+   "short_axis": 3.729681253670472,
+   "rod_lengths": 1.600950887126583,
+   "ring_frac_frames": 0.9411764705882353,
+   "n_render_frames": 17,
+   "raw_iface_over_interior_med": 2.4242604791062154,
+   "raw_iface_over_out_med": 3.8021462558596437,
+   "area_first": 25.0,
+   "area_max": 30.0,
+   "area_last": 10.0
+  },
+  {
+   "id": 46,
+   "start": 114,
+   "end": 163,
+   "life_frames": 50,
+   "birth": "split",
+   "parents": [
+    21
+   ],
+   "children": [
+    67,
+    68
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 3.7171107618705936,
+   "path": 10.374591019470902,
+   "persistence": 0.35828985980212297,
+   "body_lengths_labkit": 0.5705816685875372,
+   "speed": 0.0151718806606963,
+   "sqrt_area": 6.514598989960932,
+   "long_axis": 11.242263103109279,
+   "short_axis": 3.776350067691537,
+   "rod_lengths": 0.33063723271540857,
+   "ring_frac_frames": 0.5333333333333333,
+   "n_render_frames": 30,
+   "raw_iface_over_interior_med": 2.3214216034467197,
+   "raw_iface_over_out_med": 3.4838371841969256,
+   "area_first": 29.0,
+   "area_max": 58.0,
+   "area_last": 58.0
+  },
+  {
+   "id": 47,
+   "start": 115,
+   "end": 188,
+   "life_frames": 74,
+   "birth": "split",
+   "parents": [
+    22
+   ],
+   "children": [
+    78,
+    79
+   ],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 9.254973233449638,
+   "path": 13.291490615146841,
+   "persistence": 0.6963081494338016,
+   "body_lengths_labkit": 1.527658019039716,
+   "speed": 0.025356091050546953,
+   "sqrt_area": 6.058275555197428,
+   "long_axis": 9.79430197758248,
+   "short_axis": 3.6834413171313156,
+   "rod_lengths": 0.9449344378632316,
+   "ring_frac_frames": 0.7272727272727273,
+   "n_render_frames": 44,
+   "raw_iface_over_interior_med": 2.2463550202285294,
+   "raw_iface_over_out_med": 3.0667173160865886,
+   "area_first": 29.0,
+   "area_max": 56.0,
+   "area_last": 55.0
+  },
+  {
+   "id": 48,
+   "start": 115,
+   "end": 200,
+   "life_frames": 86,
+   "birth": "split",
+   "parents": [
+    22
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 6.072486914881637,
+   "path": 18.4791310144481,
+   "persistence": 0.32861322916828717,
+   "body_lengths_labkit": 1.0717231452200777,
+   "speed": 0.014288204505603851,
+   "sqrt_area": 5.666096642556558,
+   "long_axis": 8.086368224211881,
+   "short_axis": 3.754218875373187,
+   "rod_lengths": 0.750953548800763,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 51,
+   "raw_iface_over_interior_med": 2.3032296156921364,
+   "raw_iface_over_out_med": 3.2911505827655945,
+   "area_first": 31.0,
+   "area_max": 36.0,
+   "area_last": 34.0
+  },
+  {
+   "id": 51,
+   "start": 121,
+   "end": 179,
+   "life_frames": 59,
+   "birth": "split",
+   "parents": [
+    49
+   ],
+   "children": [
+    75,
+    76
+   ],
+   "gen": 1,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": true,
+   "split_frame": 180,
+   "net": 7.945140464690543,
+   "path": 13.403545177784135,
+   "persistence": 0.5927641052651734,
+   "body_lengths_labkit": 1.163965788246424,
+   "speed": 0.027397036085139805,
+   "sqrt_area": 6.825922673088456,
+   "long_axis": 12.291289428342841,
+   "short_axis": 3.8544397387604654,
+   "rod_lengths": 0.6464041475070641,
+   "ring_frac_frames": 0.45714285714285713,
+   "n_render_frames": 35,
+   "raw_iface_over_interior_med": 2.1629335998922725,
+   "raw_iface_over_out_med": 3.4343053237727252,
+   "area_first": 35.0,
+   "area_max": 64.0,
+   "area_last": 60.0
+  },
+  {
+   "id": 52,
+   "start": 122,
+   "end": 200,
+   "life_frames": 79,
+   "birth": "split",
+   "parents": [
+    12
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 18.28913145866849,
+   "path": 21.438087972113752,
+   "persistence": 0.8531139289314716,
+   "body_lengths_labkit": 3.762135801753098,
+   "speed": 0.04689520886838074,
+   "sqrt_area": 4.861369291918179,
+   "long_axis": 5.831744341234974,
+   "short_axis": 3.7709601389721255,
+   "rod_lengths": 3.136133957270741,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 47,
+   "raw_iface_over_interior_med": 2.435153106873404,
+   "raw_iface_over_out_med": 3.612745466986655,
+   "area_first": 21.0,
+   "area_max": 31.0,
+   "area_last": 18.0
+  },
+  {
+   "id": 53,
+   "start": 122,
+   "end": 200,
+   "life_frames": 79,
+   "birth": "split",
+   "parents": [
+    12
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 22.17451009384276,
+   "path": 25.275711305387222,
+   "persistence": 0.8773050865285251,
+   "body_lengths_labkit": 4.161529163881184,
+   "speed": 0.056857718189340406,
+   "sqrt_area": 5.328452407903362,
+   "long_axis": 7.103645082763638,
+   "short_axis": 3.7615808874488943,
+   "rod_lengths": 3.121567847983739,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 47,
+   "raw_iface_over_interior_med": 2.377517282837391,
+   "raw_iface_over_out_med": 3.2152735829621806,
+   "area_first": 39.0,
+   "area_max": 41.0,
+   "area_last": 18.0
+  },
+  {
+   "id": 55,
+   "start": 127,
+   "end": 158,
+   "life_frames": 32,
+   "birth": "split",
+   "parents": [
+    39
+   ],
+   "children": [
+    64
+   ],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 10.518726591560231,
+   "path": 12.296684628536054,
+   "persistence": 0.8554115933940567,
+   "body_lengths_labkit": 1.8182073983137357,
+   "speed": 0.06786275220361439,
+   "sqrt_area": 5.785218232703067,
+   "long_axis": 8.057622205660781,
+   "short_axis": 3.945089809416063,
+   "rod_lengths": 1.305438046495954,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 19,
+   "raw_iface_over_interior_med": 2.4237155237085632,
+   "raw_iface_over_out_med": 3.6927975758254656,
+   "area_first": 31.0,
+   "area_max": 38.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 56,
+   "start": 127,
+   "end": 173,
+   "life_frames": 47,
+   "birth": "split",
+   "parents": [
+    39
+   ],
+   "children": [
+    71,
+    72
+   ],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": true,
+   "split_frame": 174,
+   "net": 13.224785325518026,
+   "path": 15.387091111997936,
+   "persistence": 0.8594727378462149,
+   "body_lengths_labkit": 2.0882470793707952,
+   "speed": 0.05749906663268707,
+   "sqrt_area": 6.33296004872314,
+   "long_axis": 10.713775949373256,
+   "short_axis": 3.7197391469090073,
+   "rod_lengths": 1.2343720260728115,
+   "ring_frac_frames": 0.6071428571428571,
+   "n_render_frames": 28,
+   "raw_iface_over_interior_med": 2.317641275818792,
+   "raw_iface_over_out_med": 3.2535323128495826,
+   "area_first": 29.0,
+   "area_max": 62.0,
+   "area_last": 61.0
+  },
+  {
+   "id": 62,
+   "start": 152,
+   "end": 200,
+   "life_frames": 49,
+   "birth": "split",
+   "parents": [
+    38
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 8.455708198634236,
+   "path": 9.65022137977105,
+   "persistence": 0.8762190903059724,
+   "body_lengths_labkit": 1.4769821845660722,
+   "speed": 0.035232117494309316,
+   "sqrt_area": 5.724989974146823,
+   "long_axis": 8.287368079262254,
+   "short_axis": 3.8139509177161828,
+   "rod_lengths": 1.0203128565983721,
+   "ring_frac_frames": 0.9310344827586207,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.302230335989266,
+   "raw_iface_over_out_med": 3.376023148477378,
+   "area_first": 29.0,
+   "area_max": 40.0,
+   "area_last": 39.0
+  },
+  {
+   "id": 63,
+   "start": 152,
+   "end": 200,
+   "life_frames": 49,
+   "birth": "split",
+   "parents": [
+    38
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 4.868253190348968,
+   "path": 7.541858707375444,
+   "persistence": 0.6454977982533848,
+   "body_lengths_labkit": 0.7230975963086823,
+   "speed": 0.0202843882931207,
+   "sqrt_area": 6.732498095970388,
+   "long_axis": 12.367729380156177,
+   "short_axis": 3.6434179551395394,
+   "rod_lengths": 0.39362546193483194,
+   "ring_frac_frames": 0.41379310344827586,
+   "n_render_frames": 29,
+   "raw_iface_over_interior_med": 2.1770296635455892,
+   "raw_iface_over_out_med": 3.24071511136785,
+   "area_first": 31.0,
+   "area_max": 64.0,
+   "area_last": 64.0
+  },
+  {
+   "id": 64,
+   "start": 159,
+   "end": 178,
+   "life_frames": 20,
+   "birth": "merge",
+   "parents": [
+    36,
+    55
+   ],
+   "children": [
+    73,
+    74
+   ],
+   "gen": 3,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": true,
+   "split_frame": 179,
+   "net": 3.554542740403971,
+   "path": 6.633673935756841,
+   "persistence": 0.535833201153326,
+   "body_lengths_labkit": 0.4388658834066177,
+   "speed": 0.03741623937267338,
+   "sqrt_area": 8.099382692526634,
+   "long_axis": 14.553402965240819,
+   "short_axis": 5.050695516691786,
+   "rod_lengths": 0.24424134677598086,
+   "ring_frac_frames": 0.4166666666666667,
+   "n_render_frames": 12,
+   "raw_iface_over_interior_med": 2.479121299918239,
+   "raw_iface_over_out_med": 3.9311195313877336,
+   "area_first": 67.0,
+   "area_max": 72.0,
+   "area_last": 63.0
+  },
+  {
+   "id": 65,
+   "start": 164,
+   "end": 188,
+   "life_frames": 25,
+   "birth": "split",
+   "parents": [
+    42
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 7.5856245122551735,
+   "path": 7.986210115701763,
+   "persistence": 0.9498403375765191,
+   "body_lengths_labkit": 1.5970620638712427,
+   "speed": 0.06321353760212645,
+   "sqrt_area": 4.749736834815167,
+   "long_axis": 5.745057733873892,
+   "short_axis": 3.5769221023721247,
+   "rod_lengths": 1.320373939417348,
+   "ring_frac_frames": 0.9333333333333333,
+   "n_render_frames": 15,
+   "raw_iface_over_interior_med": 2.316694314182312,
+   "raw_iface_over_out_med": 3.6431928091714436,
+   "area_first": 26.0,
+   "area_max": 28.0,
+   "area_last": 10.0
+  },
+  {
+   "id": 66,
+   "start": 164,
+   "end": 200,
+   "life_frames": 37,
+   "birth": "split",
+   "parents": [
+    42
+   ],
+   "children": [],
+   "gen": 3,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 2.975693718228228,
+   "path": 4.398656687541442,
+   "persistence": 0.6765005613319288,
+   "body_lengths_labkit": 0.49857601846323596,
+   "speed": 0.0165316317679346,
+   "sqrt_area": 5.968385177049285,
+   "long_axis": 9.409081040738696,
+   "short_axis": 3.6556809348853294,
+   "rod_lengths": 0.3162576350808654,
+   "ring_frac_frames": 0.6818181818181818,
+   "n_render_frames": 22,
+   "raw_iface_over_interior_med": 2.265617603290728,
+   "raw_iface_over_out_med": 3.2465489135126666,
+   "area_first": 29.0,
+   "area_max": 44.0,
+   "area_last": 44.0
+  },
+  {
+   "id": 67,
+   "start": 164,
+   "end": 200,
+   "life_frames": 37,
+   "birth": "split",
+   "parents": [
+    46
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 3.5015937921217875,
+   "path": 7.48546207791394,
+   "persistence": 0.46778592365771715,
+   "body_lengths_labkit": 0.6427845886884139,
+   "speed": 0.01945329884512104,
+   "sqrt_area": 5.44753849694297,
+   "long_axis": 7.235162818296245,
+   "short_axis": 3.8599224307705593,
+   "rod_lengths": 0.4839689002252961,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 22,
+   "raw_iface_over_interior_med": 2.426763930650316,
+   "raw_iface_over_out_med": 3.5548964763571895,
+   "area_first": 27.0,
+   "area_max": 33.0,
+   "area_last": 28.0
+  },
+  {
+   "id": 69,
+   "start": 168,
+   "end": 190,
+   "life_frames": 23,
+   "birth": "split",
+   "parents": [
+    61
+   ],
+   "children": [
+    84,
+    85
+   ],
+   "gen": 2,
+   "born_by_persistent_split": false,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 0.778525538840996,
+   "path": 5.193054786462883,
+   "persistence": 0.1499166811932036,
+   "body_lengths_labkit": 0.1095773193698057,
+   "speed": 0.007077504898554509,
+   "sqrt_area": 7.104805477250254,
+   "long_axis": 13.810401012335367,
+   "short_axis": 3.761323778787008,
+   "rod_lengths": 0.05637240643089376,
+   "ring_frac_frames": 0.14285714285714285,
+   "n_render_frames": 14,
+   "raw_iface_over_interior_med": 2.1119069371564216,
+   "raw_iface_over_out_med": 3.631127108813933,
+   "area_first": 39.0,
+   "area_max": 64.0,
+   "area_last": 62.0
+  },
+  {
+   "id": 71,
+   "start": 174,
+   "end": 200,
+   "life_frames": 27,
+   "birth": "split",
+   "parents": [
+    56
+   ],
+   "children": [],
+   "gen": 4,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 10.106087164592385,
+   "path": 10.808382287052098,
+   "persistence": 0.935023104863618,
+   "body_lengths_labkit": 1.8986031810874786,
+   "speed": 0.07773913203532604,
+   "sqrt_area": 5.32290647422377,
+   "long_axis": 7.019650892036076,
+   "short_axis": 3.8169545644526566,
+   "rod_lengths": 1.4396851524422574,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 16,
+   "raw_iface_over_interior_med": 2.4116574592141484,
+   "raw_iface_over_out_med": 3.414801200797026,
+   "area_first": 29.0,
+   "area_max": 33.0,
+   "area_last": 25.0
+  },
+  {
+   "id": 72,
+   "start": 174,
+   "end": 200,
+   "life_frames": 27,
+   "birth": "split",
+   "parents": [
+    56
+   ],
+   "children": [],
+   "gen": 4,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.00695218272056,
+   "path": 6.5171226962014,
+   "persistence": 0.7682764950303812,
+   "body_lengths_labkit": 0.8285464644385525,
+   "speed": 0.03851501679015815,
+   "sqrt_area": 6.043055395949843,
+   "long_axis": 9.11755903455168,
+   "short_axis": 3.895639324599407,
+   "rod_lengths": 0.549154895926238,
+   "ring_frac_frames": 0.875,
+   "n_render_frames": 16,
+   "raw_iface_over_interior_med": 2.444704261272366,
+   "raw_iface_over_out_med": 3.331594870327674,
+   "area_first": 30.0,
+   "area_max": 43.0,
+   "area_last": 39.0
+  },
+  {
+   "id": 73,
+   "start": 179,
+   "end": 200,
+   "life_frames": 22,
+   "birth": "split",
+   "parents": [
+    64
+   ],
+   "children": [],
+   "gen": 4,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 3.7974848095132234,
+   "path": 4.239675490953998,
+   "persistence": 0.8957017624617127,
+   "body_lengths_labkit": 0.6056187771757023,
+   "speed": 0.036166521995364034,
+   "sqrt_area": 6.270421183475782,
+   "long_axis": 10.18687561638476,
+   "short_axis": 3.7070157098874903,
+   "rod_lengths": 0.372782092617807,
+   "ring_frac_frames": 0.6153846153846154,
+   "n_render_frames": 13,
+   "raw_iface_over_interior_med": 2.283032407285897,
+   "raw_iface_over_out_med": 3.218766360980012,
+   "area_first": 36.0,
+   "area_max": 45.0,
+   "area_last": 43.0
+  },
+  {
+   "id": 74,
+   "start": 179,
+   "end": 200,
+   "life_frames": 22,
+   "birth": "split",
+   "parents": [
+    64
+   ],
+   "children": [],
+   "gen": 4,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 5.512563092267587,
+   "path": 5.764580197840392,
+   "persistence": 0.9562817938299792,
+   "body_lengths_labkit": 1.2425702898478819,
+   "speed": 0.052500600878738916,
+   "sqrt_area": 4.436419522747841,
+   "long_axis": 4.9303918698044304,
+   "short_axis": 3.716836830616923,
+   "rod_lengths": 1.1180780834133268,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 13,
+   "raw_iface_over_interior_med": 2.3414466173163033,
+   "raw_iface_over_out_med": 4.323848732424919,
+   "area_first": 26.0,
+   "area_max": 26.0,
+   "area_last": 17.0
+  },
+  {
+   "id": 75,
+   "start": 180,
+   "end": 200,
+   "life_frames": 21,
+   "birth": "split",
+   "parents": [
+    51
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 4.271597004117009,
+   "path": 6.064144000849095,
+   "persistence": 0.7044023036918161,
+   "body_lengths_labkit": 0.7608007392012699,
+   "speed": 0.04271597004117009,
+   "sqrt_area": 5.6146068004633705,
+   "long_axis": 7.393880612374405,
+   "short_axis": 4.068747309279824,
+   "rod_lengths": 0.5777205811205635,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 13,
+   "raw_iface_over_interior_med": 2.4010581071127945,
+   "raw_iface_over_out_med": 3.4429251305221613,
+   "area_first": 32.0,
+   "area_max": 40.0,
+   "area_last": 40.0
+  },
+  {
+   "id": 76,
+   "start": 180,
+   "end": 200,
+   "life_frames": 21,
+   "birth": "split",
+   "parents": [
+    51
+   ],
+   "children": [],
+   "gen": 2,
+   "born_by_persistent_split": true,
+   "parent_of_persistent_split": false,
+   "split_frame": null,
+   "net": 4.942584493647496,
+   "path": 5.32563303834895,
+   "persistence": 0.9280745515240746,
+   "body_lengths_labkit": 0.8441069993833541,
+   "speed": 0.049425844936474964,
+   "sqrt_area": 5.855400437691199,
+   "long_axis": 8.187590071604438,
+   "short_axis": 3.955706312285094,
+   "rod_lengths": 0.6036678009551287,
+   "ring_frac_frames": 1.0,
+   "n_render_frames": 13,
+   "raw_iface_over_interior_med": 2.415075701057809,
+   "raw_iface_over_out_med": 3.3154736362721366,
+   "area_first": 27.0,
+   "area_max": 44.0,
+   "area_last": 44.0
+  }
+ ],
+ "daughters": [
+  {
+   "frame": 28,
+   "parent": 0,
+   "parent_area_last5": 70.4,
+   "child_area_first5": [
+    36.4,
+    33.6
+   ],
+   "children_later_split": [
+    true,
+    true
+   ]
+  },
+  {
+   "frame": 32,
+   "parent": 1,
+   "parent_area_last5": 65.0,
+   "child_area_first5": [
+    34.4,
+    34.0
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 34,
+   "parent": 2,
+   "parent_area_last5": 63.2,
+   "child_area_first5": [
+    34.6,
+    33.4
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 35,
+   "parent": 4,
+   "parent_area_last5": 63.2,
+   "child_area_first5": [
+    32.0,
+    34.2
+   ],
+   "children_later_split": [
+    true,
+    true
+   ]
+  },
+  {
+   "frame": 35,
+   "parent": 3,
+   "parent_area_last5": 65.6,
+   "child_area_first5": [
+    36.4,
+    35.8
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 38,
+   "parent": 5,
+   "parent_area_last5": 59.4,
+   "child_area_first5": [
+    32.4,
+    31.8
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 54,
+   "parent": 6,
+   "parent_area_last5": 65.4,
+   "child_area_first5": [
+    30.8,
+    35.6
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 85,
+   "parent": 15,
+   "parent_area_last5": 99.2,
+   "child_area_first5": [
+    63.4,
+    33.8
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 99,
+   "parent": 13,
+   "parent_area_last5": 62.0,
+   "child_area_first5": [
+    24.6,
+    25.4
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 100,
+   "parent": 30,
+   "parent_area_last5": 66.2,
+   "child_area_first5": [
+    31.8,
+    31.0
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 103,
+   "parent": 19,
+   "parent_area_last5": 79.4,
+   "child_area_first5": [
+    34.4,
+    39.2
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 104,
+   "parent": 11,
+   "parent_area_last5": 65.2,
+   "child_area_first5": [
+    30.8,
+    30.4
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 110,
+   "parent": 7,
+   "parent_area_last5": 51.4,
+   "child_area_first5": [
+    27.0,
+    25.6
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 114,
+   "parent": 21,
+   "parent_area_last5": 54.8,
+   "child_area_first5": [
+    26.2,
+    29.2
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 115,
+   "parent": 22,
+   "parent_area_last5": 59.8,
+   "child_area_first5": [
+    29.0,
+    30.4
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 122,
+   "parent": 12,
+   "parent_area_last5": 72.4,
+   "child_area_first5": [
+    21.2,
+    39.2
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 127,
+   "parent": 39,
+   "parent_area_last5": 62.0,
+   "child_area_first5": [
+    30.2,
+    26.4
+   ],
+   "children_later_split": [
+    false,
+    true
+   ]
+  },
+  {
+   "frame": 152,
+   "parent": 38,
+   "parent_area_last5": 60.6,
+   "child_area_first5": [
+    30.2,
+    32.6
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 164,
+   "parent": 42,
+   "parent_area_last5": 56.8,
+   "child_area_first5": [
+    26.4,
+    28.2
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 174,
+   "parent": 56,
+   "parent_area_last5": 59.0,
+   "child_area_first5": [
+    28.2,
+    30.6
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 179,
+   "parent": 64,
+   "parent_area_last5": 66.2,
+   "child_area_first5": [
+    36.2,
+    21.0
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  },
+  {
+   "frame": 180,
+   "parent": 51,
+   "parent_area_last5": 62.0,
+   "child_area_first5": [
+    30.8,
+    28.0
+   ],
+   "children_later_split": [
+    false,
+    false
+   ]
+  }
+ ]
+}
