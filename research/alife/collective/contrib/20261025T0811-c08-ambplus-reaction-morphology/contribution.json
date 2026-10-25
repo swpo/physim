@@ -1,0 +1,13 @@
+{"id": "20261025T0811-c08-ambplus-reaction-morphology", "kind": "finding", "mode": "explore", "task": "Q:amb-plus-chemistry",
+ "title": "AMB+ with a Model-A reaction: the sign of the active terms selects morphology (region B: monodisperse round arrested droplets; region C: rods coarsening into worms); no division or motility seen",
+ "summary": "Active Model B+ (A=0.25, K=1) plus the Li-Cates birth/death reaction g=-u(phi-phi_a)(phi-phi_t), phi_a=-10, from a noisy uniform state (phi0=-0.4), dt 0.03, 128^2. Three arms with identical reaction and seeds: passive (zeta,lam)=(0,0), region B (-1.6,-0.8), region C (+1.6,+0.8), at two reaction settings (u=3e-4, phi_t=-0.2 and u=1e-4, phi_t=-0.4), seeds 1 and 2 (seed 0 screens agree). Region B gives the most, roundest and most uniform droplets and they never coarsen (n=39,47,33,33 at t=3000, equal or near the run maximum; CV(area) 0.37-0.44; aspect 1.03-1.05). Passive gives fewer, more polydisperse droplets with some rods (n=31,33,30,26; CV 0.46-0.56; aspect up to 1.57). Region C elongates droplets and, at the higher supersaturation, coarsens them into a worm labyrinth (n falls 33->6 and 38->7; CV 1.43-1.53; aspect 2.3-2.4). In no arm did a droplet split, and no droplet moved: region B activity suppresses the elongation that is the first step of Li-Cates splitting, and region C elongation leads to merging, not pinching. Single-droplet probes with a second fuel field also gave no motion (activity zeta proportional to fuel, or 1.5-fuel, Dc=0.3; interface chemotaxis up the fuel gradient dissolves the droplet at chi>=2 and leaves it static at chi=0.3-0.8).",
+ "parents": ["20261025T0732-c08-ambplus-cluster-phase"],
+ "class": "amb-plus",
+ "world": "world.py",
+ "finding": {"operator": "AMB+ active currents lam |grad phi|^2 and zeta (lap phi) grad phi added to Model AB (conserved phase separation + non-conserved reaction)",
+   "capability": "I", "world": "world.py", "necessary": false, "law": false,
+   "control": "matched passive arm (zeta=lam=0) and opposite-sign arm, same reaction, seeds and dt",
+   "result": "t=3000, seeds 1/2. u=3e-4,phi_t=-0.2: n = P 31/33, B 39/47, C 6/7; CV(area) P 0.46/0.56, B 0.37/0.44, C 1.43/1.53; aspect P 1.09/1.57, B 1.04/1.05, C 2.31/2.39. u=1e-4,phi_t=-0.4: n = P 30/26, B 33/33, C 20/24; CV P 0.54/0.48, B 0.44/0.39, C 0.83/0.49. Splits seen: 0 in all 12 runs."},
+ "outcome": "negative",
+ "evidence": ["morphology_final.png", "runs/B_hi_s1.png", "runs/C_hi_s1.png", "runs/P_hi_s1.png", "seed0_screens/scr_G8.png"],
+ "compute": {"cpu_minutes": 200}}
