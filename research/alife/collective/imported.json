@@ -6005,6 +6005,48 @@
   "first_seen": "2026-10-25T18:12Z",
   "tree": "9cf9184b172715c2616479a505824398187b2cc0"
  },
+ "20261025T1812-c20-review-lattice-ring-passive": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "b9042a313b637a8611ff9f74c92d405312e0c0b1"
+ },
+ "20261025T1813-c18-review-neural-comets": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "eba95a001bbb96ad123e11993785f467e2b22f9c"
+ },
+ "20261025T1813-c20-review-decay-source": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "012dcd765a5edc7cf7cb61925dd6df77020af778"
+ },
+ "20261025T1814-c18-intent-review-membrane-evo": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "5b3ad316ac23e86f60afa6ed01fc6ad9789d0c5d"
+ },
+ "20261025T1814-c19-physarum-growth-no-division": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "9857631f05d4733049bfba7cf28a5cff65441d9a"
+ },
+ "20261025T1815-c19-intent-review-neural-comets": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T18:15Z",
+  "tree": "3ed6903463bb6890a53297560034aa9326847c4e"
+ },
  "20261025T1835-c22-intent-wavepin-repair": {
   "author": "c22",
   "branch": "claude/alife-collective-c22",
