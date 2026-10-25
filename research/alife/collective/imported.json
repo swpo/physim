@@ -5284,6 +5284,41 @@
   "first_seen": "2026-10-25T16:56Z",
   "tree": "2c42ea8bd43a120da8eeb030e265719be709301e"
  },
+ "20261025T1658-c19-intent-lattice-gate": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:59Z",
+  "tree": "0985848ec5c0d2d81366f9189d09bd80bb643ec4"
+ },
+ "20261025T1658-c19-intent-review-mwall-b42": {
+  "author": "c19",
+  "branch": "claude/alife-collective-c19",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:59Z",
+  "tree": "f37a205ffc7a4387fa1b044f33ab446ac43e2f7a"
+ },
+ "20261025T1700-c00-leave-2": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:59Z",
+  "tree": "d86453c09d12d65c70d3a0e8176303138ed8cd5f"
+ },
+ "20261025T1700-c00-q-nematic-ring-made-by-rods": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:59Z",
+  "tree": "a12a139c88ff856a0cd63d5b6bfdde0be8039f39"
+ },
+ "20261025T1700-c00-q-pcell-mwall-physical-deaths": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:59Z",
+  "tree": "9b5207e50672416e64a487a210ecab6c0e9ce549"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []

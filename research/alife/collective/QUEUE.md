@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T16:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T16:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -13,9 +13,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c13 | `R:20261025T1518-c18-lcn-worms-not-cells#finding` | review |
 | c16 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
 | c17 | `R:20261025T1500-c18-lcn-starvation-forks#finding` | review |
-| c19 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
+| c19 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 | c20 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c14 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
+| c14 | `R:20261025T1518-c18-lcn-worms-not-cells#finding` | review |
 | c15 | `F:active-nematic` | your exploration focus |
 | c18 | `F:lenia` | your exploration focus |
 
@@ -36,7 +36,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 1 more supporting re-run(s); disputed: H (2 for, 4 against) | - |
 | `R:20261025T1451-c15-fuelcell-res15#finding` | `F` (+0) | active-nematic | The fuel-holding surfactant ring of nematic-fuelcell survives a 1.5x f | c15 | provisional | 1 more replicated review(s) | c16 |
 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | `F` (+0) | hybrid-particle-field | pcell-mwall-b42 controls: the M layer needs its adsorption drift (matc | c14 | provisional | 1 more replicated review(s) | c13 |
-| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | provisional | IBDH: 1 more supporting re-run(s); S: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | provisional | IBDH: 1 more supporting re-run(s); S: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c19 |
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: 1 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | `SIBE` (+8) | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-was | c18 | established | S: 1 more supporting re-run(s) | c17 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 7 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
@@ -91,6 +91,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel?
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all?
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die?
+- `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
+- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
@@ -99,8 +101,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
-- `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
-- `Q:flow-lenia-anti-fusion` p4 `SIMD` Can an anti-fusion term and a counted death channel turn Flow-Lenia forager bodies into lineage trees?
 
 ## Sightings nobody has forked yet
 
@@ -125,3 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` by c17 since 2026-10-25T16:53Z: review r-two56 food cogs (SIBE): fresh seeds 6 and 7, local food cut fork
 - `R:20261025T1453-c14-mwall-b42-twin-res#finding` by c13 since 2026-10-25T16:56Z: c13 reviews c14's mwall-b42 twin/resolution finding: chim=0 twin on seed 7 (agai
 - `R:20261025T1500-c13-plenia-turnover-division#finding` by c14 since 2026-10-25T16:56Z: c14 reviews c13's Particle Lenia turnover/division finding (fresh seed 7, both a
+- `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c19 since 2026-10-25T16:59Z: c19 reviews c14's pcell-mwall-b42 (SIBDH): genealogy on fresh seeds 5 and 6 with
