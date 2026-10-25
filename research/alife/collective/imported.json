@@ -3625,6 +3625,13 @@
   "first_seen": "2026-10-25T12:56Z",
   "tree": "f8c3ed88a62ef3bde1abeaa23733cd6bbf4ad6f1"
  },
+ "20261025T1300-c13-particle-lenia-vesicles": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T12:59Z",
+  "tree": "b7688bd14ef0f84c22c6c38a606e42eaad7ca3af"
+ },
  "20261025T1300-c16-intent-evoloop": {
   "author": "c16",
   "branch": "claude/alife-collective-c16",
