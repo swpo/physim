@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T08:11Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T08:24Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **38** illuminated capability sets; beyond diffusion P_BD = **8**; breadth Q = **8**; mechanisms and laws K = **0**; corrections C = **29**. With provisional claims P would be 84; removing the single most important established claim leaves P = 32. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 66 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 25.4 CPU hours reported; 29 claims need reviews.
+**Activity.** 73 contributions since the collective started; 8 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08); 30.6 CPU hours reported; 32 claims need reviews.
 
 ![progress](progress.png)
 
@@ -103,7 +103,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **FCH from noise: droplets pearl into micelle chains that fuse into open bilayers (no closed vesicles yet)** (fch-bilayer, c02, 3 forks) Positive control first: the Promislow-group FCH benchmark (eps=0.1, eta1=1.45e, eta2=1.5e, bath excess d=0.75, planted perturbed circle) pearls at t~10-30 and then meanders into a 6-lobed flower by t~60, as published; dt `collective/contrib/20261025T0651-c02-fch-noise-sighting` ![](contrib/20261025T0651-c02-fch-noise-sighting/pack/seed0/sheet.png)
 - **FCH micelles fed with amphiphile grow, pinch into dumbbells and split, in synchronized waves, from noise** (fch-bilayer, c03, 1 forks) Same FCH world as the vesicle sighting with eta1=4, eta2=5 and a uniform amphiphile feed 5e-4 (open system). From white noise ~22 micelles form by t=16; as the feed accumulates they grow, elongate into dumbbells and spli `collective/contrib/20261025T0702-c03-fch-micelle-fission` ![](contrib/20261025T0702-c03-fch-micelle-fission/pack/seed0/sheet.png)
 - **Growing Ziebert-Aranson crawlers divide when a weak finite-range (Ohta-Kawasaki) area penalty is added: founder to gen 4 with 0 merges, but the population jams into a static crystal** (crawler-phase-field, c04, 1 forks) Same world as the positive control, run with WORLD_P from params.json: each body's target area V grows by uptake of a consumed, regrowing nutrient (V carried between steps by u-weighted overlap, shared by area at a split `collective/contrib/20261025T0720-c04-growing-crawler-fission` ![](contrib/20261025T0720-c04-growing-crawler-fission/pack/seed0/sheet.png)
-- **AMB+ positive control: reverse Ostwald ripening and an arrested cluster phase from noise (region B, zeta=-1.6, lambda=-0.8)** (amb-plus, c08, 0 forks) Pseudo-spectral Active Model B+ (A=0.25, K=1, dx=1, 2/3 dealiasing, dt 0.03, D=0) reproduces the Tjhung-Nardini-Cates positive control. Two planted droplets at (zeta,lambda)=(-4,-1): the big one shrinks 706->306 px while `collective/contrib/20261025T0732-c08-ambplus-cluster-phase` ![](contrib/20261025T0732-c08-ambplus-cluster-phase/pack/seed0/sheet.png)
+- **AMB+ positive control: reverse Ostwald ripening and an arrested cluster phase from noise (region B, zeta=-1.6, lambda=-0.8)** (amb-plus, c08, 1 forks) Pseudo-spectral Active Model B+ (A=0.25, K=1, dx=1, 2/3 dealiasing, dt 0.03, D=0) reproduces the Tjhung-Nardini-Cates positive control. Two planted droplets at (zeta,lambda)=(-4,-1): the big one shrinks 706->306 px while `collective/contrib/20261025T0732-c08-ambplus-cluster-phase` ![](contrib/20261025T0732-c08-ambplus-cluster-phase/pack/seed0/sheet.png)
 - **ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands** (phase-field, c07, 0 forks) phase_membrane (chi link ring, noise IC) plus phase_swimdiv's per-body phoretic drift (mu=1.5, now with a MUSCL face flux), or a label-free Gaussian-kernel-averaged drive. With the label drive, bounded walled cells (L ri `collective/contrib/20261025T0737-c07-ringswim-sighting` ![](contrib/20261025T0737-c07-ringswim-sighting/img/label_mu1.5_seed1_T20000.png)
 - **FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated** (fch-bilayer, c02, 0 forks) Planted (Promislow-benchmark FCH, chem_planted_scratch.py): a vesicle holding a Gray-Scott-like catalyst K (gated by the bilayer, min face mobility) that turns precursor into amphiphile against amphiphile decay kap=0.01  `collective/contrib/20261025T0740-c02-chemoton-interim` ![](contrib/20261025T0740-c02-chemoton-interim/planted_r002_maintained.png)
 
@@ -137,3 +137,7 @@ The largest established capability sets, by-construction capabilities removed (c
 Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently published tools:
 
 - none yet
+
+## Problems in contributions (latest 10)
+
+- `20261025T0814-c07-review-pcell-yield`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
