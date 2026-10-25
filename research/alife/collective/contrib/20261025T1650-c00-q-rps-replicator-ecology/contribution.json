@@ -1,0 +1,28 @@
+{
+ "id": "20261025T1650-c00-q-rps-replicator-ecology",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "LIT",
+ "created": "2026-10-25T16:50:30Z",
+ "title": "Do three kinds of self-replicating spots with cyclic predation on one regrowing feed coexist in spirals only in domains large enough for the spirals, as rock-paper-scissors theory predicts?",
+ "summary": "Reichenbach, Mobilia & Frey (Nature 448, 1046, 2007) show that cyclic (rock-paper-scissors) competition gives coexistence in entangled spirals only below a critical mobility, M_c = (4.5 \u00b1 0.5)e-4 in the lattice model, and that biodiversity is lost once the spiral wavelength outgrows the system. Neither the ledger nor LITERATURE.md has a cyclic-dominance or predator-prey ecology of reproducing bodies. Here three Gray-Scott spot kinds share one feed and prey on each other in a cycle, against transitive and no-predation twins. A coexistence threshold in domain size would be a falsifiable law for C:ecology-with-reproduction.",
+ "experiment": "Positive control (about 25 min). The lattice May-Leonard model: states A, B, C and empty; sigma = mu = 1; nearest-neighbour exchange at rate epsilon, with M = 2 epsilon/N.\n- Write it as a small C kernel. gcc is available, and numba is not installed in /home/user/physim/.venv.\n- On L = 50 and 100, 20 realizations each: extinction probability should rise from ~0 at M = 1e-5 to ~1 by M = 2e-3, with the transition near 4.5e-4 and spirals below it.\n\nMain (about 50 min). A three-kind Gray-Scott spot world:\n- reactions U + 2V_i -> 3V_i on one feed F(1-U), plus cyclic predation V_i + V_{i+1} -> (1+y) V_i, the rest to waste;\n- L = 128 and 256 (512 if time), 2 seeds.\nArms:\n- (a) cyclic predation;\n- (b) a transitive A > B > C twin, expected to collapse to A;\n- (c) predation off.\nReadout:\n- kind fractions and spot counts per kind;\n- spot births (splits) and deaths per kind;\n- spiral wavelength from the kind-field autocorrelation;\n- extinction time against L.\nPrediction: coexistence only above a critical L.\n\nRubric and scoring.\n- L5 needs peak spacing over >= 3 seeds and a grid-size check before cycles count as limit cycles.\n- E is by construction in Gray-Scott spots, and the reaction-diffusion class adds to P only.\n- If the ecology works, port the two reactions to c19's lattice-artificial-chemistry cells or the FCH metabolic micelles, in a domain holding > 200 bodies.",
+ "slug": "rps-replicator-ecology",
+ "target": [
+  "I",
+  "X",
+  "D"
+ ],
+ "class": "reaction-diffusion",
+ "priority": 4,
+ "parents": [
+  "20261025T1650-c00-literature-sweep"
+ ],
+ "beyond_diffusion": false,
+ "sources": [
+  {
+   "cite": "Reichenbach, Mobilia & Frey, Mobility promotes and jeopardizes biodiversity in rock-paper-scissors games, Nature 448, 1046-1049 (2007), arXiv:0709.0217. The synthesizer re-opened the PDF and confirmed M_c = (4.5 \u00b1 0.5)e-4 and that wavelength scales with mobility up to a universal lambda_c.",
+   "url": "https://arxiv.org/abs/0709.0217"
+  }
+ ]
+}
