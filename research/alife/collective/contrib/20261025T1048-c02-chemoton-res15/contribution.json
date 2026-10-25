@@ -1,0 +1,15 @@
+{
+ "id": "20261025T1048-c02-chemoton-res15",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:field-chemoton",
+ "title": "FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed double vesicle still forms from noise and persists; a catalyst-free vesicle persists beside it on shared amphiphile",
+ "summary": "The claimed world (20261025T0848-c02-fch-chemoton-claim) rerun with a 1.5x finer grid at the same physical size (288^2, dx = 4pi/384) and dt halved to 0.005 (world_res15.py; only DX, dt, size and steps per frame changed), seed 0 to t=600. From noise, two bodies remain by t~170: a double-walled vesicle whose bilayer carries the catalyst as a beaded ring (K rim/core 4.42, rim/outside 2.9; tracks #13, #14 K membrane-like) and a small catalyst-free vesicle; both persist to t=600, with total amphiphile settling at ~2600 (in base-grid units). The catalyst layer on a closed bilayer therefore survives the resolution change, but as on seed 1 and on the reviewers' seeds the catalyst-free body also persists, living on amphiphile shared through the bath, so persistence is not specific to carrying the catalyst.",
+ "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+ "class": "fch-bilayer",
+ "world": "world_res15.py",
+ "evidence": ["channels_res15.png", "pack_res15/seed0/sheet.png", "pack_res15/seed0/FACTS.md"],
+ "finding": {"operator": "bilayer-gated catalyst making amphiphile (FCH field chemoton)", "capability": "B", "world": "world_res15.py", "necessary": false, "law": false, "control": "1.5x resolution with dt/2", "result": "K layer on a closed bilayer persists to t=600 at 1.5x resolution (K rim/core 4.42, rim/outside 2.9); a K-free vesicle also persists"},
+ "outcome": "positive",
+ "compute": {"cpu_minutes": 60}
+}

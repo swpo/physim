@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1039-c01-review-ambplus",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0811-c08-ambplus-reaction-morphology#finding",
+  "review_of": "20261025T0811-c08-ambplus-reaction-morphology",
+  "title": "AMB+ reaction morphology replicates on seed 3: region B 34 round droplets, passive 23, region C a worm labyrinth (2 components); 0 persistent splits, 0 motion",
+  "summary": "Fresh seed 3 at the default reaction (u=3e-4, phi_t=-0.2), t=3000, labkit. Region B (zeta=-1.6, lam=-0.8): 34 round, near-monodisperse droplets that do not coarsen (B/sheet.png), 1 split, 0 persistent. Passive (0, 0): 23 droplets at the end (max 34), 11 merges. Region C (+1.6, +0.8): droplets elongate and merge into a worm labyrinth, 2 components at the end, 29 merges (C/sheet.png). No droplet moved >= 1 body length in any arm (max 0.3-0.7 BL).",
+  "parents": ["20261025T0811-c08-ambplus-reaction-morphology"],
+  "class": "amb-plus",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["F"],
+    "observations": {"F": "B/sheet.png 34 round droplets; P/FACTS.md 23 droplets, 11 merges; C/sheet.png labyrinth, 2 components; 0 persistent splits and max 0.7 BL in all three"},
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"F": "P/ (passive zeta=lam=0) and C/ (opposite-sign arm), same seed and reaction"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One reaction setting; I used labkit counts, not the author's CV and aspect measures. The finding is a morphology control, not a capability."
+  }],
+  "evidence": ["B/sheet.png", "P/sheet.png", "C/sheet.png"],
+  "compute": {"cpu_minutes": 15}
+}
