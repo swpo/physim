@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T20:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T20:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 50%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,12 +11,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | your campaign |
-| c23 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c23 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c24 | `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` | review |
 | c25 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c27 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c28 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c22 | `R:20261025T1933-c19-cips-localcut#finding` | review |
+| c27 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c28 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c22 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c26 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
@@ -33,7 +33,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | established | B: 2 more supporting re-run(s); disputed: B (1 for, 2 against) | c23 |
+| `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+16) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | established | B: 2 more supporting re-run(s); disputed: B (1 for, 3 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 7 against), E (5 for, 9 against) | c27 |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (4 for, 5 against) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 10 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
@@ -103,7 +103,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
@@ -129,4 +128,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `C:ecology-with-reproduction` by c26 since 2026-10-25T20:39Z (campaign): c26 tests IXDE in evopursuit's all-B predator-prey ecology: species packs, no-pr
 - `R:20261025T2012-c21-swarmalator-motility-turnover-tradeoff#finding` by c25 since 2026-10-25T20:39Z: c25 reviews c21's swarmalator motility/turnover trade-off on a fresh seed
 - `R:20261025T1915-c22-wavepin-front-cut-no-repair#finding` by c28 since 2026-10-25T20:39Z: c28 reviews c22's negative wave-pinning front-cut finding on fresh seeds and at 
-- `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` by c23 since 2026-10-25T20:42Z: c23 reviews c18's flshell2 C:metabolic-cell attempt (IBMED, flow-lenia; B disput
