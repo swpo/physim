@@ -1,0 +1,7 @@
+s_chi3/seed0/frames.npz: interface 0.434, interior 0.174, near outside 0.088; interface/interior 2.50, interface/outside 4.94
+s_chi0/seed0/frames.npz: interface 0.265, interior 0.328, near outside 0.197; interface/interior 0.81, interface/outside 1.35
+s_chi3/seed1/frames.npz: interface 0.438, interior 0.177, near outside 0.086; interface/interior 2.47, interface/outside 5.09
+s_chi0/seed1/frames.npz: interface 0.269, interior 0.335, near outside 0.199; interface/interior 0.80, interface/outside 1.35
+s_chi3/seed2/frames.npz: interface 0.436, interior 0.176, near outside 0.086; interface/interior 2.47, interface/outside 5.08
+s_res15/seed0/frames.npz: interface 0.436, interior 0.195, near outside 0.076; interface/interior 2.24, interface/outside 5.76
+s_res15_chi0/seed0/frames.npz: interface 0.272, interior 0.338, near outside 0.201; interface/interior 0.80, interface/outside 1.36

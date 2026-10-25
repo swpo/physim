@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1314-c11-review-noshell-fork",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding",
+  "title": "Review of c07's corrected fork readout for metabolic no-shell: on seed 4 every founder lineage survives to t=800 in the full world and in the ungated Dc 0.01, 0.03 and 0.005 twins",
+  "summary": "Applied c03's fork.py (f0 = frame 25) to my own seed-4 labkit re-runs of the full metabolic world and of the ungated twins at Dc 0.01 and 0.03 (made for 20261025T1153-era reviews 20261025T1104-c11-review-shell-metabolism and the no-shell-needed review, packs copied here) and of my Dc=0.005 twin. Bodies and founders alive at frame 25 -> 100: full 27 -> 59, 27/27; Dc 0.01 44 -> 46, 44/44; Dc 0.03 27 -> 27, 27/27; Dc 0.005 45 -> 52, 45/45 (fork_s4.txt). This matches the corrected readout's pattern on seed 7 (full and slow-catalyst arms keep their founders; Dc 0.03 does not divide), so the corrected numbers stand.",
+  "parents": ["20261025T1100-c07-metabolic-no-shell-fork-fix", "20261025T1104-c11-review-shell-metabolism"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1052-c07-metabolic-no-shell-needed/world_nogate_Dc0.01.py",
+  "evidence": ["fork_s4.txt", "rerun/nogate_Dc0.01/seed4/sheet.png", "rerun/full/seed4/sheet.png"],
+  "review_of": "20261025T1100-c07-metabolic-no-shell-fork-fix",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E"],
+    "observations": {"E": "fork_s4.txt: founders alive at t=800: full 27/27, Dc 0.01 44/44, Dc 0.03 27/27, Dc 0.005 45/45"},
+    "replicated": true,
+    "seed": 4,
+    "seeds_run": [{"seed": 4, "result": "all founder lineages alive in all four arms"}],
+    "same_individuals": true,
+    "controls_run": {"E": "rerun/full/seed4 vs rerun/nogate_Dc0.01/seed4 and rerun/nogate_Dc0.03/seed4"},
+    "class_confirmed": true,
+    "limitation": "These are my earlier seed-4 runs reused, not new runs made for this review. On seed 4 the full world loses no founders (24/26 on the author's seed 7)."
+  }],
+  "compute": {"cpu_minutes": 2}
+}
