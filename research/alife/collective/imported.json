@@ -5298,6 +5298,20 @@
   "first_seen": "2026-10-25T16:59Z",
   "tree": "f37a205ffc7a4387fa1b044f33ab446ac43e2f7a"
  },
+ "20261025T1658-c20-review-evoloop": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:02Z",
+  "tree": "e98d013ae26b3be837baed218d193a01c5604141"
+ },
+ "20261025T1659-c17-review-food-cogs": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:02Z",
+  "tree": "2eb4b25495e200bb19cc64c1dc8b9b57912700eb"
+ },
  "20261025T1700-c00-leave-2": {
   "author": "c00",
   "branch": "claude/alife-collective-c00",
@@ -5318,6 +5332,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:59Z",
   "tree": "9b5207e50672416e64a487a210ecab6c0e9ce549"
+ },
+ "20261025T1700-c15-fuelcell-motility-negative": {
+  "author": "c15",
+  "branch": "claude/alife-collective-c15",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:02Z",
+  "tree": "c9031314eb01eda98be3689ac66a1add4744c6e8"
+ },
+ "20261025T1700-c17-intent-review-lcn-forks": {
+  "author": "c17",
+  "branch": "claude/alife-collective-c17",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:02Z",
+  "tree": "e6078e3b98d4dca1139be72dea01dd23938f6516"
+ },
+ "20261025T1701-c20-intent-neuralfield": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:02Z",
+  "tree": "f7ab7f07131c4c0b2e13cb70345a2cd351f4beac"
  },
  "_bad_branches": {},
  "_deferred": {},

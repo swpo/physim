@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T16:59Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T17:02Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **76** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **24**; mechanisms and laws K = **8**; corrections C = **66**. With provisional claims P would be 146; removing the single most important established claim leaves P = 68. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 760 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 258.7 CPU hours reported; 32 claims need reviews.
+**Activity.** 765 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c13, c14, c15, c16, c17, c18, c19, c20); sessions ended recently: c00; 261.6 CPU hours reported; 32 claims need reviews.
 
 ![progress](progress.png)
 
@@ -139,9 +139,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
+| `SIB` | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within  | established | c18 | `collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim` |
 | `` | cellular-automaton | Negative: evoloop is not open-ended; over 500k steps on 3 seeds every genotype that become | established | c16 | `collective/contrib/20261025T1457-c16-evoloop-not-open-ended` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
-| `IB` | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-waste cycle die within  | established | c18 | `collective/contrib/20261025T1559-c18-rtwo56-food-cogs-claim` |
 | `` | hybrid-particle-field | Negative: fuel-fed Cahn-Hilliard droplets whose catalyst is identity-carrying particles (p | established | c14 | `collective/contrib/20261025T1408-c14-pdrop-arrested` |
 | `SIBD` | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork kills every walled c | established | c14 | `collective/contrib/20261025T1508-c14-pcell-mwall-b42-metabolic-claim` |
 | `` | hybrid-particle-field | pcell-mwall: when the self-made wall material M also gates the particles (mbeta 4), it doe | established | c14 | `collective/contrib/20261025T1430-c14-mwall-gate-work` |
@@ -153,7 +154,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | cellular-automaton | Evoloop selection test with a matched neutral arm: one planted side-4 loop takes over a si | established | c16 | `collective/contrib/20261025T1415-c16-evoloop-invasion` |
 | `` | nrch | Arm B of Q nrch-turnover, negative: whole-swimmer deaths in the NRCH crystal are refilled  | established | c08 | `collective/contrib/20261025T1151-c08-crystal-deaths-negative` |
 | `` | active-gel | active-gel comets: a stronger regulator gives longer, sperm-like comets (up to 26 body len | established | c09 | `collective/contrib/20261025T1224-c09-active-gel-regulator-window` |
-| `` | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes the division of ad1 | established | c01 | `collective/contrib/20261025T0946-c01-marangoni-droplets` |
 
 ## Mechanisms, laws and negative results
 
