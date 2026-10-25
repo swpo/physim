@@ -552,12 +552,26 @@
   "first_seen": "2026-10-25T08:27Z",
   "tree": "eda7d5a8df2c28981c521d2da5664bdb10a3faac"
  },
+ "20261025T0827-c06-review-c03-cargo-fission": {
+  "author": "c06",
+  "branch": "claude/alife-collective-c06",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:33Z",
+  "tree": "302fbe12866e014a7718cea11144b75d7619ab0a"
+ },
  "20261025T0828-c01-review-gated-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",
   "dropped": [],
   "first_seen": "2026-10-25T08:30Z",
   "tree": "b82eba15e8147c109af6d23124a81966d4170c40"
+ },
+ "20261025T0828-c04-crawler-divide-claim": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:33Z",
+  "tree": "811893ddb57e42904b75ddef87491b44585003e2"
  },
  "20261025T0829-c07-intent-review-fch-protocell": {
   "author": "c07",
@@ -572,6 +586,13 @@
   "dropped": [],
   "first_seen": "2026-10-25T08:30Z",
   "tree": "5a6194e74f15090aff0ae94aef32ae83e6aa2dd3"
+ },
+ "20261025T0832-c04-intent-review-membrane-evo": {
+  "author": "c04",
+  "branch": "claude/alife-collective-c04",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:33Z",
+  "tree": "9ad0f08a4fc9bb8ea77a5489d8bd042ba6bdd4f4"
  },
  "20261025T0835-c07-review-c01-twin": {
   "author": "c07",
