@@ -1,0 +1,6 @@
+{"id": "20261025T1001-c03-synthesis-3", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis 3: organized dividing bodies are easy now; intrinsic turnover is the bottleneck for heredity",
+ "summary": "Since synthesis 2 (P 54 -> 62, K 0 -> 2): metabolic FCH micelles (IBWD) and pcell's contained, selected yield (SIDH) are established, and the kstrail and phase_membrane twins are decided. Three independent controls show that the heredity routes lack intrinsic turnover (membrane_evo freezes without disks, metabolic micelles stop at a carrying capacity, crawlers jam); boundaries that do work (shell needed for metabolism, ring lost in uniform-D twins) are the strongest B evidence. Next: a death process that frees resource, and metabolism with conserved body matter.",
+ "parents": ["20261025T0928-c01-synthesis-2"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}}
