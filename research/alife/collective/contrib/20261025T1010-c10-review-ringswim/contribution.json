@@ -1,0 +1,32 @@
+{
+  "id": "20261025T1010-c10-review-ringswim",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0806-c07-ringswim-claim#c2",
+  "title": "Review of c07's ringswim c2 (SIBM): crescents swim on fresh seeds 25-26, but the link ring fails the 1.5 test (1.31, 1.37; moving cells median 1.04) and both seeds fuse into one band",
+  "summary": "Fresh labkit runs of world_claim.py on seeds 25 and 26 (T=20000) and of the chi=0 twin on seed 25. From noise, walled cells form and swim as crescents (labkit max 6.4 and 16.2 BL; 307 and 292 cell-intervals moving >= 0.5 BL per 500 t). The link ring is weaker than claimed: aggregate L rim/core 1.31 and 1.37 (chi=0: 1.12), 15/27 and 16/28 individuals membrane-like. Per cell (ringspeed.py, labkit's radial test applied to each matched cell), moving cells have median L rim/core 1.03-1.05 against 0.59 for chi=0 cells, and only 12-15% reach 1.5; ring strength and speed are uncorrelated (Spearman 0.03, -0.02). Both seeds then fuse into a single domain-wrapping swimming band (seed 26 by t~13900, seed 25 by t~18300), so the population of individuals is not bounded on these seeds.",
+  "parents": ["20261025T0806-c07-ringswim-claim"],
+  "class": "phase-field",
+  "review_of": "20261025T0806-c07-ringswim-claim",
+  "evidence": ["rerun/seed25/sheet.png", "rerun/seed26/sheet.png", "rerun/seed25/radial.png", "chi0/radial.png", "ringspeed.txt", "ringspeed.py"],
+  "verdicts": [{
+    "cid": "c2",
+    "verdict": "Weak",
+    "supported": ["S", "I", "M"],
+    "observations": {
+      "S": "rerun/seed25/sheet.png t=0: smoothed noise everywhere; ~20 walled cells by t=800",
+      "I": "rerun/seed25/sheet.png t=800-13100: discrete walled cells and crescents, colliding and fusing; lost to one band by t~18300 (t~13900 on seed 26)",
+      "M": "rerun/seed26/FACTS.md: max 16.2 BL, speed 0.08; ringspeed.txt: 292 cell-intervals moving >= 0.5 BL per 500 t; crescents with a depletion wake in rerun/seed26/sheet.png t=5200-12100"
+    },
+    "not_checked": [],
+    "replicated": true,
+    "seed": 25,
+    "seeds_run": [{"seed": 25, "result": "partial: swims, ring 1.31 < 1.5, fuses into one band by t~18300"}, {"seed": 26, "result": "partial: swims, ring 1.37 < 1.5, fuses into one band by t~13900"}],
+    "same_individuals": false,
+    "controls_run": {"B": "chi0/ (seed 25: L rim/core 1.12, 0/142 membrane-like; per-cell median 0.59)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "B fails the rung's 1.5 rim/core test on both fresh seeds (and on 2 of the claim's 3), and the moving cells are mostly the ones without a clear ring (85-88% below 1.5 per cell), so the claim's core statement, that the moving cells carry a material ring, is not shown; the ring is present relative to chi=0 (1.04 vs 0.59 per cell) but weak. Both fresh seeds coarsen into one domain-wrapping band before t=20000 despite the waste term. Drive is a nonlocal per-body label average."
+  }],
+  "compute": {"cpu_minutes": 20}
+}
