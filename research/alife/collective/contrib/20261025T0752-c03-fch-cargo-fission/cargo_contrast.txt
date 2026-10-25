@@ -1,0 +1,48 @@
+== pack/seed0
+frame 10: contrast 1257.0, bodies 33, share of bodies >=2x 1.00, weakest body 68.5x
+frame 30: contrast 925.5, bodies 38, share of bodies >=2x 1.00, weakest body 36.4x
+frame 50: contrast 815.0, bodies 44, share of bodies >=2x 1.00, weakest body 34.1x
+frame 70: contrast 910.5, bodies 44, share of bodies >=2x 1.00, weakest body 29.3x
+frame 90: contrast 801.0, bodies 56, share of bodies >=2x 1.00, weakest body 103.7x
+frame 100: contrast 842.0, bodies 56, share of bodies >=2x 1.00, weakest body 161.4x
+ts 27, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, mer
+== pack/seed1
+frame 10: contrast 1427.0, bodies 30, share of bodies >=2x 1.00, weakest body 199.5x
+frame 30: contrast 1042.0, bodies 31, share of bodies >=2x 1.00, weakest body 733.9x
+frame 50: contrast 867.0, bodies 41, share of bodies >=2x 1.00, weakest body 680.2x
+frame 70: contrast 936.5, bodies 41, share of bodies >=2x 1.00, weakest body 629.6x
+frame 90: contrast 851.0, bodies 51, share of bodies >=2x 1.00, weakest body 277.6x
+frame 100: contrast 821.0, bodies 55, share of bodies >=2x 1.00, weakest body 289.5x
+ts 35, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, mer
+== pack/seed2
+frame 10: contrast 1271.0, bodies 33, share of bodies >=2x 1.00, weakest body 1032.4x
+frame 30: contrast 988.5, bodies 33, share of bodies >=2x 1.00, weakest body 926.2x
+frame 50: contrast 793.0, bodies 48, share of bodies >=2x 1.00, weakest body 13.7x
+frame 70: contrast 852.0, bodies 48, share of bodies >=2x 1.00, weakest body 15.0x
+frame 90: contrast 861.0, bodies 52, share of bodies >=2x 1.00, weakest body 26.1x
+frame 100: contrast 759.5, bodies 62, share of bodies >=2x 1.00, weakest body 21.6x
+ts 39, persistent splits 18 (0 more failed only because the siblings re-merged within K), max generation 2, merges 1, mer
+== pack_res15/seed0
+frame 10: contrast 1187.0, bodies 35, share of bodies >=2x 1.00, weakest body 38.4x
+frame 30: contrast 1033.0, bodies 35, share of bodies >=2x 1.00, weakest body 33.2x
+frame 50: contrast 849.0, bodies 46, share of bodies >=2x 1.00, weakest body 15.3x
+frame 70: contrast 789.5, bodies 54, share of bodies >=2x 1.00, weakest body 6.7x
+frame 90: contrast 842.0, bodies 54, share of bodies >=2x 1.00, weakest body 11.0x
+frame 100: contrast 787.5, bodies 60, share of bodies >=2x 1.00, weakest body 7.5x
+ts 25, persistent splits 19 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, mer
+== pack_chi0/seed0
+frame 10: contrast 2.0, bodies 33, share of bodies >=2x 0.33, weakest body 1.6x
+frame 30: contrast 1.3, bodies 38, share of bodies >=2x 0.00, weakest body 1.2x
+frame 50: contrast 1.2, bodies 44, share of bodies >=2x 0.00, weakest body 1.0x
+frame 70: contrast 1.1, bodies 44, share of bodies >=2x 0.00, weakest body 1.0x
+frame 90: contrast 1.1, bodies 56, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 56, share of bodies >=2x 0.00, weakest body 1.0x
+ts 27, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, mer
+== pack_chi0/seed1
+frame 10: contrast 2.3, bodies 30, share of bodies >=2x 0.97, weakest body 1.8x
+frame 30: contrast 1.4, bodies 31, share of bodies >=2x 0.00, weakest body 1.1x
+frame 50: contrast 1.2, bodies 41, share of bodies >=2x 0.00, weakest body 1.1x
+frame 70: contrast 1.2, bodies 41, share of bodies >=2x 0.00, weakest body 1.1x
+frame 90: contrast 1.1, bodies 51, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 55, share of bodies >=2x 0.00, weakest body 1.0x
+ts 35, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 0, mer

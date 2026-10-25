@@ -1,0 +1,32 @@
+{
+  "id": "20261025T0805-c01-review-fch-cargo",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T0752-c03-fch-cargo-fission#c1",
+  "review_of": "20261025T0752-c03-fch-cargo-fission",
+  "title": "FCH cargo fission SIWD replicates on seed 3 (every body >= 31x, 19 persistent splits); a barrier-free cargo with Dc/100 still keeps every body >= 3.2x",
+  "summary": "Fresh seed 3: ~34 micelles condense from white noise by t=16, grow on the feed and split in three waves (t~20-40, 150-170, 310-350; 19 persistent splits, generation 2, rerun/lineage.png). With the author's cargo_contrast.py, every body holds the cargo at >= 31x the outside at every recorded frame (aggregate 824-1339x). chi=0 on the same seed: 2.2x at frame 10, 1.1x by the end, 0% of bodies >= 2x. As the matched lowered-D control I ran chi=0 with the cargo diffusivity lowered uniformly: Dc=0.1 ends at 2.0x with 53% of bodies >= 2x; Dc=0.01 ends at 10x with 100% of bodies >= 2x (weakest 3.2x). The partition makes the contrast about 80x stronger, but the W threshold itself is met by slow diffusion alone.",
+  "parents": ["20261025T0752-c03-fch-cargo-fission"],
+  "class": "fch-bilayer",
+  "verdicts": [{
+    "cid": "c1",
+    "verdict": "Supported",
+    "supported": ["S", "I", "W", "D"],
+    "observations": {
+      "S": "rerun/sheet.png t=0: white noise over the whole domain; micelles at t=16",
+      "I": "rerun/sheet.png t=16-400: 34-55 discrete round micelles; rerun/tracks.png",
+      "W": "cargo_contrast.txt (rerun): every body >= 31x the outside at every frame; chi0/ 1.1x at the end",
+      "D": "rerun/lineage.png and FACTS.md: 19 persistent splits in three synchronized waves, generation 2, no re-merging"
+    },
+    "replicated": true,
+    "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": true,
+    "controls_run": {"W": "chi0/ (partition ablated, seed 3) and lowD01/, lowD001/ (chi=0 with Dc x0.1 and x0.01)"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "Not beyond diffusion: with no partitioning and the cargo's D lowered 100x, every body still holds >= 3.2x (10x aggregate), so I did not set bd_supported. The cargo is passive and made where amphiphile is dense, so its inheritance at division is automatic. Division is driven by the global feed and comes in synchronized waves. I saw generation 2 on this seed (the claim reports 2-3) and did not re-run the 1.5x arm."
+  }],
+  "evidence": ["rerun/sheet.png", "rerun/lineage.png", "rerun/tracks.png", "chi0/sheet.png", "lowD001/sheet.png", "cargo_contrast.txt"],
+  "compute": {"cpu_minutes": 12}
+}

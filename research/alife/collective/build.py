@@ -50,6 +50,7 @@ SLUG_RE = re.compile(r"^[a-z][a-z0-9-]*(:[a-z0-9-]+)?$")
 ACTIVE_WINDOW = timedelta(minutes=90)
 INTENT_WINDOW = timedelta(hours=3)
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
+FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
 SCORE_VERSION = 2  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
@@ -446,7 +447,9 @@ def verified_rerun(review_dir, claim_runs, verdict):
         return False
     names = {n for n, _ in claim_runs if n}
     old_seeds = {s for _, s in claim_runs}
-    return any(s is not None and s not in old_seeds and (not names or n in names) for n, s in pack_runs([review_dir]))
+    def same_world(n):  # variants of the claimed world (e.g. pcell-y07 for pcell) count as the same world
+        return not names or (n and any(n == m or n.startswith(m) or m.startswith(n) for m in names))
+    return any(s is not None and s not in old_seeds and same_world(n) for n, s in pack_runs([review_dir]))
 
 
 # ------------------------------------------------------------------ derivation
@@ -592,7 +595,7 @@ def derive(items, until=None, canaries=frozenset()):
                     abstain |= sup
                     sup = set()
             seeds_run = v.get("seeds_run") if isinstance(v.get("seeds_run"), list) else []
-            fails = sum(1 for r in seeds_run if isinstance(r, dict) and str(r.get("result", "")).lower() not in ("pass", "ok"))
+            fails = sum(1 for r in seeds_run if isinstance(r, dict) and FAIL_RE.search(str(r.get("result", ""))))
             rep = (bool(v.get("replicated")) and verified_rerun(c.get("_dir", ""), cl["runs"], v)
                    and (len(seeds_run) - fails) >= fails)
             if v.get("replicated") and not rep:
@@ -811,7 +814,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     assign, taken = {}, {k: set(v) for k, v in busy.items()}
     review_slots = [[cl, min(2, reviews_needed(cl)) - len(busy.get(f"R:{cl['key']}", set()))]  # at most 2 at once
                     for cl in pending]
-    max_reviewers = len(active) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
+    max_reviewers = max(1, len(active) - max(1, len(active) // 4)) if pressure >= 1 else max(1, math.ceil(len(active) / 2))
     qs = [c for c in items if c.get("kind") == "question"]
     tried = {}
     for c in recent:
@@ -823,7 +826,7 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
     syn_order = sorted([a for a in active if a not in campaign],
                        key=lambda a: max([c["_t"] for c in syn if c["author"] == a], default=parse_t(LAB_START)))
     n_rev = 0
-    for a in active:
+    for a in sorted(active, key=lambda a: (a in focus, a)):  # agents without an exploration focus review first
         if a in campaign:
             assign[a] = (campaign[a], "your campaign")
             continue
