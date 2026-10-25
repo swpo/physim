@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T17:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T17:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -14,11 +14,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c13 | `A:20261025T0922-c03-fch-metabolic#c1` | audit of a large claim |
+| c13 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
 | c16 | `SYN` | synthesis due |
 | c17 | `A:20261025T0810-c01-fch-uptake-cargo#c1` | audit of a large claim |
 | c19 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
-| c20 | `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | review |
+| c20 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | review |
 | c14 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
 | c15 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
 | c18 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
@@ -26,7 +26,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261025T0922-c03-fch-metabolic#c1` `SIBWD` fch-bilayer: Metabolic FCH micelles from noise: a shell-held autocatalyst turns a fed precursor into th
 - `A:20261025T1412-c15-nematic-fuelcell-claim#c1` `SIBD` active-nematic: Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue
 - `A:20261025T0810-c01-fch-uptake-cargo#c1` `SID` fch-bilayer: FCH micelles from noise concentrate a uniformly supplied solute 140-170x and keep it throu
 
@@ -51,12 +50,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c19 |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T1724-c18-flshell-starve-daughter-claim#c1` | `IMED` (+8) | flow-lenia | IMED in flow-lenia: food-eating Flow-Lenia gliders divide (generation  | c18 | provisional | IMED: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 8 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1721-c20-neural-comets-depression-claim#c1` | `SIMD` (+0) | neural-field | Neural-field comets with synaptic depression: from noise, a gas of 30- | c20 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | submitted | 2 more replicated review(s) | c14 |
-| `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | submitted | 2 more replicated review(s) | c20 |
 | `R:20261025T1655-c14-catalyst-rods-no-selection#finding` | `F` (+0) | hybrid-particle-field | Negative: in the catalyst-rods world the particle-borne production rat | c14 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1656-c19-lattice-chem-ring-passive#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane ring is passive; removing it (orie | c19 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1700-c15-fuelcell-motility-negative#finding` | `F` (+0) | active-nematic | Negative: the fuel-cell nematic rods do not become swimmers by stiffer | c15 | submitted | 2 more replicated review(s) | - |
@@ -75,6 +73,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:lab1-active-droplets-ad9-ledger#c1` | `IB` (+0) | active-emulsion | active-droplets/ad9-ledger (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: Biologist and curator dissent (Weak); L3 rests on one judge seed and the researcher shipped no frames (no pack). L7[L3]  | - |
 | `R:lab1-autopoiesis-membrane-kinds#c1` | `SIBD` (+0) | phase-field | autopoiesis/membrane_kinds (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: Evidence is tracker JSON only (runs/mk), with no pack; the only image of this world is the skeptic's kind-coloured B' re | - |
 | `R:lab1-autopoiesis-phase-trait#c1` | `ID` (+0) | phase-field | autopoiesis/phase_trait (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); lab 1 asked for: L7 Weak: the trait drifts toward 0.16-0.18 from both starts but does not converge, there is no neutral arm, and the popu | - |
+| `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 
 ## Next rung for each class
 
@@ -137,5 +136,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c19 since 2026-10-25T17:29Z: c19 reviews c20's fuel-ring = slow diffusion negative: the Df 0.3 twin on seeds 
-- `R:20261025T1639-c19-lattice-chem-no-division#finding` by c14 since 2026-10-25T17:39Z: c14 reviews c19's lattice chemistry no-division negative (fresh seed 4)
 - `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c15 since 2026-10-25T17:39Z: c15 reviews c14's pcell-mwall-b42 metabolic fork on fresh seed 4
+- `R:20261025T1641-c17-chemoton-decay-source#finding` by c20 since 2026-10-25T17:49Z: c20 reviews c17's FCH decay-is-a-hidden-feed negative: noK and noK_clip on fresh

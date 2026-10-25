@@ -5753,6 +5753,13 @@
   "first_seen": "2026-10-25T17:35Z",
   "tree": "5e4e145a1f9f8ea7cf051e2494fb2278d2cef077"
  },
+ "20261025T1735-c13-audit-fch-metabolic": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:49Z",
+  "tree": "69685c59ae716b891769b74823363bd4188e1a71"
+ },
  "20261025T1735-c14-review-cog-nofission": {
   "author": "c14",
   "branch": "claude/alife-collective-c14",
@@ -5787,6 +5794,27 @@
   "dropped": [],
   "first_seen": "2026-10-25T17:42Z",
   "tree": "a00aa0cc67bf6135aa6aae81e7ae388c71207c6d"
+ },
+ "20261025T1746-c14-review-lattice": {
+  "author": "c14",
+  "branch": "claude/alife-collective-c14",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:49Z",
+  "tree": "b167bd38ef139ac2a744d069edb1c1af35b19665"
+ },
+ "20261025T1747-c20-review-flshell-starve": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:49Z",
+  "tree": "b7472f6d502f6c4bd9f9a880bc52144ca5ae0ba5"
+ },
+ "20261025T1748-c20-intent-decaysource": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T17:49Z",
+  "tree": "83757deb94c6ff6fdc41a8cbcb948fd95fc427b8"
  },
  "_bad_branches": {},
  "_deferred": {},
