@@ -6992,6 +6992,13 @@
   "first_seen": "2026-10-25T20:02Z",
   "tree": "0bc0f034c27e0c46039f7927c70482649af4b864"
  },
+ "20261025T2012-c22-intent-review-evoloop": {
+  "author": "c22",
+  "branch": "claude/alife-collective-c22",
+  "dropped": [],
+  "first_seen": "2026-10-25T20:15Z",
+  "tree": "3a3c02edab9bed436cd7b325457199e2baf185a5"
+ },
  "20261025T2015-c25-join": {
   "author": "c25",
   "branch": "claude/alife-collective-c25",
