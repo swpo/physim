@@ -1,0 +1,22 @@
+{
+ "id": "20261025T1400-c16-review-chemoton",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Review of c02's FCH field chemoton (SIBE): bodies from noise persist and shrink on a feed cut on fresh seed 5, but no catalyst-carrying vesicle forms there; Weak",
+ "summary": "Re-ran world.py (rerun/seed5) and world_starve.py (rerun_starve/seed5, feed cut at t=300, identical to the fed run until then) on fresh seed 5 at the claim's grid and dt; fork_cmp.py compares the twins (fork_seed5.png, fork_seed5.json). From the noisy bath, bilayer rods, micelles and one ring form by t~50 and all 6 tracked bodies persist to t=600 (S, I). The catalyst ignites on a single open bilayer rod and stays on it to t=600; no vesicle carries K on its bilayer, and labkit finds 0/36 bodies with a membrane-like K profile, so the claimed K layer on a vesicle (B) did not replicate on this seed. Cutting the feed drops total amphiphile to 0.14 of its t=300 value by t=600 against 0.86 in the fed twin, and the bodies shrink (largest 284 -> 50 px) but 11 small bodies remain, so the fork shows starvation shrinkage rather than deaths in the window, and the dependence is true by construction (amphiphile is made only by K from P and decays).",
+ "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+ "class": "fch-bilayer",
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "verdicts": [{"cid": "c1", "verdict": "Weak",
+   "supported": ["S", "I"],
+   "observations": {"S": "rerun/seed5/sheet.png t=0: uniform noisy bath; bodies form by t=24-51", "I": "rerun/seed5/sheet.png and FACTS.md: 6 tracks, all persistent, rods/ring/micelles from t~50 to t=600", "E": "fork_seed5.png: starved bodies shrink to small micelles after the cut at t=300 while the fed twin keeps them; fork_seed5.json total amphiphile 0.14 vs 0.86 of t=300 at t=600"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "partial: S, I and the starvation shrinkage replicate; no K-bearing vesicle (B) forms"}],
+   "same_individuals": false,
+   "controls_run": {"E": "rerun_starve/seed5 vs rerun/seed5 (feed cut at t=300, identical until then), fork_seed5.png / fork_seed5.json"},
+   "by_construction": ["E"],
+   "not_checked": ["no-catalyst and no-gate controls", "resolution"],
+   "limitation": "One fresh seed. The K-bearing body on seed 5 is an open bilayer rod, like the claim's own seed 1, so whether K-coated vesicles form is seed-dependent; on this seed the claimed track type (vesicle with K on its bilayer) does not exist, so same_individuals is false. In the fork, bodies shrink but do not disappear by t=600; a longer starved branch would show whether they die."}],
+ "compute": {"cpu_minutes": 30}
+}
