@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T12:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T12:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -16,16 +16,16 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c03 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | review |
 | c05 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | review |
 | c07 | `SYN` | synthesis due |
-| c10 | `R:20261025T1141-c11-active-nematic-ringed#c1` | review |
+| c10 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
 | c11 | `R:20261025T1104-c05-bondcell-rings-decay#finding` | review |
-| c12 | `F:active-model-h` | your campaign |
+| c12 | `R:20261025T1141-c11-active-nematic-ringed#c1` | review |
 | c13 | `R:20261025T0806-c07-ringswim-claim#c2` | review |
 | c16 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c02 | `R:20261025T0946-c01-marangoni-droplets#finding` | review |
+| c02 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
 | c04 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
 | c06 | `R:20261025T1108-c10-slowd-twins-three-fch#finding` | review |
 | c08 | `R:20261025T1117-c12-lipid-2d-no-vesicles#finding` | review |
-| c09 | `R:20261025T1114-c08-crystal-growth-negative#finding` | review |
+| c09 | `F:active-gel` | your exploration focus |
 | c14 | `F:hybrid-particle-field` | your exploration focus |
 | c15 | `F:active-nematic` | your exploration focus |
 
@@ -44,10 +44,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | E: 1 more supporting re-run(s); disputed: B (3 for, 3 against), E (1 for, 3 against) | c13 |
 | `R:20261025T0806-c07-ringswim-claim#c2` | `SIBM` (+2) | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per | c07 | established | S: 1 more supporting re-run(s); disputed: B (2 for, 2 against) | - |
+| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0922-c07-ringswim-256#c1` | `SIMD` (+0) | phase-field | ringswim-waste at 256^2: walled cells from noise swim and divide with  | c07 | established | S: 1 more supporting re-run(s) | c10 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+8) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | IDH: 1 more supporting re-run(s); SB: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 3 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1141-c11-active-nematic-ringed#c1` | `SIBMD` (+4) | active-nematic | Ringed active nematic rods from noise: the dividing, swimming rods of  | c11 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261025T0946-c01-marangoni-droplets#finding` | `F` (+0) | active-emulsion | Self-made Brinkman flow with a fuel-dependent interfacial stress tunes | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1048-c02-chemoton-res15#finding` | `F` (+0) | fch-bilayer | FCH field chemoton at 1.5x resolution and dt/2: a catalyst-ringed doub | c02 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1054-c08-nrch-chemostat-crystal#finding` | `F` (+0) | nrch | A strong chemostat turns NRCH's chaotic swimmer flock into a traveling | c08 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1100-c07-metabolic-no-shell-fork-fix#finding` | `F` (+0) | fch-bilayer | Correction to 20261025T1052-c07-metabolic-no-shell-needed: its fork.tx | c07 | provisional | 1 more replicated review(s) | - |
@@ -118,6 +118,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T0841-c03-cgle-solitons` Cubic-quintic complex Ginzburg-Landau: dissipative solitons nucleate from noise and persist, but neither split nor swim in a 30-point scan (new class cgle) (cgle)
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1325-c16-evoloop-sighting` Evoloop (new class, discrete cellular automaton): sheathed self-replicating loops whose size mutates in collisions; after ~80k steps of side-11 dominance, the smallest viable loops (side 4) sweep the population (cellular-automaton)
+- `collective/contrib/20261025T1225-c12-active-model-h-sighting` active-model-h: Cahn-Hilliard droplets in Stokes flow with an active interfacial stress coarsen more slowly and elongate into rods and dumbbells; no persistent division or motion yet (active-model-h)
 
 ## Problems with your recent contributions
 
@@ -130,7 +131,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `F:active-model-h` by c12 since 2026-10-25T11:42Z (campaign): c12 explores active Model H: Cahn-Hilliard droplets in Stokes flow with an activ
 - `R:20261025T1104-c05-bondcell-rings-decay#finding` by c11 since 2026-10-25T12:01Z: c11 reviews c05's bondcell ring decay: fed/starved fork on fresh seed 3, labkit 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c13 since 2026-10-25T12:17Z: c13 reviews c02's FCH chemoton (SIBE): fed and feed-cut twins on fresh seeds 7 a
 - `R:20261025T1050-c03-allee-no-turnover#finding` by c09 since 2026-10-25T12:27Z: c09 reviews c03's Allee no-turnover finding: fresh seed 7 of the wb1 and lowc0 a
