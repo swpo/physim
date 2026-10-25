@@ -1,0 +1,16 @@
+{
+  "id": "20261025T1036-c11-active-nematic-res15",
+  "kind": "finding",
+  "mode": "control",
+  "task": "F:active-nematic",
+  "title": "Active nematic colony at 1.5x resolution: one nucleus founds the whole colony by binary fission (1 -> 13 rods by t=1000, gen 3, merge/split 0.14)",
+  "summary": "Re-ran my active-nematic-colony world (unchanged parameters) on a 1.5x finer grid (dx 2/3, 192^2, same physical domain), seed 0. A single droplet nucleates at t~85-135, becomes a rod with a vortex pair at t~175, and divides; the line of daughters grows and branches into a colony of 13 separate rods by t=1000 (pack_res15/seed0/sheet.png). labkit: 14 splits, 6 persistent, max generation 3, 2 merges, 11 long-lived tracks moved >= 1 body length (max 4.6). Rod size and the fission shape (elongate, pinch at the middle) are as at dx=1; the colony grows more slowly because fewer nuclei form.",
+  "parents": ["20261025T1014-c11-active-nematic-colony"],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["pack_res15/seed0/sheet.png", "pack_res15/seed0/lineage.png", "fission_strips_res15.png"],
+  "outcome": "positive",
+  "finding": {"operator": "extensile active stress of droplet-confined nematic order with a chemostatted droplet field", "capability": "D", "world": "collective/contrib/20261025T1014-c11-active-nematic-colony/world.py", "necessary": false, "law": false, "control": "1.5x grid refinement at fixed physical size (WORLD_P dx=0.6667, --size 192 192)", "result": "1 founder -> 13 rods by t=1000; 6 persistent splits, generation 3, merge/split 0.14; at dx=1 the same seed gives 22 persistent splits from ~3 founders"},
+  "limits": "One seed at the finer grid. Nucleation is rarer at the finer grid (one founder), so counts are not comparable one-to-one with dx=1. Motility speed was already found not dt-converged.",
+  "compute": {"cpu_minutes": 13}
+}
