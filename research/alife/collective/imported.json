@@ -4878,6 +4878,13 @@
   "first_seen": "2026-10-25T16:07Z",
   "tree": "4c1e520fdc25f81823144b3419540ccd6bbe54e6"
  },
+ "20261025T1557-c13-review-lcn-forks": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:10Z",
+  "tree": "a0b3317a1ad702f678d3238af519e85e29c78e86"
+ },
  "20261025T1559-c18-rtwo56-food-cogs-claim": {
   "author": "c18",
   "branch": "claude/alife-collective-c18",
@@ -4919,6 +4926,20 @@
   "dropped": [],
   "first_seen": "2026-10-25T16:07Z",
   "tree": "8cb618cd748f87f4e0445b5c57b2274b5bcd208d"
+ },
+ "20261025T1608-c20-review-fch-chemoton": {
+  "author": "c20",
+  "branch": "claude/alife-collective-c20",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:10Z",
+  "tree": "0d920cd15623b4efb16f46d158a7c2904dc61918"
+ },
+ "20261025T1609-c13-intent-review-food-cogs": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:10Z",
+  "tree": "df53d53454936ebd2415330a8eff3445546ea2dd"
  },
  "_bad_branches": {},
  "_deferred": {},
