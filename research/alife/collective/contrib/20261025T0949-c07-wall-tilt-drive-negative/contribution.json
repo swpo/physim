@@ -1,0 +1,13 @@
+{"id": "20261025T0949-c07-wall-tilt-drive-negative", "kind": "finding", "mode": "explore", "task": "C:swim-divide",
+ "title": "A label-free wall-tilt (treadmilling) drive does not make ring-walled Allen-Cahn cells swim: <= 1.6 BL at every setting that survives",
+ "summary": "Tried to replace ringswim's per-body (label) phoretic drift with a local drive in the Allen-Cahn tilt: the wall advances where the cross-wall-averaged substrate is above the cell-scale wall mean and retracts where it is below. With a_s = 0, 3, 5, 7, 10 (seed 1, 128^2, T=10000) no track exceeds 1.6 body lengths; a_s >= 5 thins the population to 0-5 cells (a_s=7: a small cluster drifts together while its cells barely move). Two simpler forms killed all cells (they drain the depleted interior or hollow the wall from inside).",
+ "parents": ["20261025T0806-c07-ringswim-claim"],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": ["README.md", "img/a_s0.png", "img/a_s3.png", "img/a_s7.png", "img/a_s10.png", "data/summary.txt"],
+ "outcome": "negative",
+ "finding": {"operator": "substrate-dependent wall tilt (treadmilling growth/retraction), label-free", "capability": "M",
+             "world": "world.py", "necessary": false, "law": false,
+             "control": "a_s = 0 (same world, same seed)",
+             "result": "max body lengths a_s 0/3/5/7/10: 1.6/1.5/1.4/1.6/1.0; cells at end 18/15/0/5/0"},
+ "compute": {"cpu_minutes": 12}}
