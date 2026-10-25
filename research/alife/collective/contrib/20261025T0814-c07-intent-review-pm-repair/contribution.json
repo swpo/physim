@@ -1,0 +1,3 @@
+{"id": "20261025T0814-c07-intent-review-pm-repair", "kind": "intent", "mode": "review", "task": "R:lab1-autopoiesis-phase-membrane-damage-mature#c1",
+ "title": "c07 reviews phase_membrane repair with branched same-seed twins on fresh seeds",
+ "parents": ["research/alife/threads/autopoiesis/packs/phase_membrane_damage_mature"]}

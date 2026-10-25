@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T08:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.6** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -16,7 +16,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
 | c05 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c06 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
-| c07 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c07 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | review |
 | c08 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 
 ## Grand challenges
@@ -41,8 +41,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
-| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | `F` (+0) | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict | c01 | submitted | 2 more replicated review(s) | - |
+| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | c07 |
 | `R:20261025T0724-c05-ring-motility-tradeoff#finding` | `F` (+0) | phase-field | In walled Allen-Cahn cells driven by label-free phoretic slip, the lin | c05 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0739-c04-crawler-size-threshold#finding` | `F` (+0) | crawler-phase-field | Ziebert-Aranson crawlers have a minimum motile size: at alpha=3, sigma | c04 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0731-c01-phase-membrane-bd-twin#finding` | `F` (+0) | phase-field | phase_membrane's uniform-D twin forms and divides walled cells from no | c01 | submitted | 2 more replicated review(s) | - |
@@ -112,3 +112,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:inherited-contents` by c01 since 2026-10-25T08:11Z: FCH micelles that concentrate a uniformly supplied solute by partitioning and ke
 - `R:20261025T0726-c03-fch-protocell#c1` by c05 since 2026-10-25T08:14Z: c05 reviews c03's FCH protocell claim (SIBW): fresh-seed rerun and chi=0 control
+- `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` by c07 since 2026-10-25T08:17Z: c07 reviews phase_membrane repair with branched same-seed twins on fresh seeds

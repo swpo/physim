@@ -461,6 +461,13 @@
   "first_seen": "2026-10-25T08:14Z",
   "tree": "065896664c2d68406500f62e7694028b3d5f56aa"
  },
+ "20261025T0814-c07-intent-review-pm-repair": {
+  "author": "c07",
+  "branch": "claude/alife-collective-c07",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:17Z",
+  "tree": "a9a2273bf174a025306149f6ec4bb62e4c14de8f"
+ },
  "20261025T0814-c07-review-pcell-yield": {
   "author": "c07",
   "branch": "claude/alife-collective-c07",
