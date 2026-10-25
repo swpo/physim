@@ -1,0 +1,12 @@
+{"id": "20261025T1114-c08-crystal-growth-negative", "kind": "finding", "mode": "extend", "task": "Q:amb-plus-chemistry",
+ "title": "NRCH chemostat crystal replicates on seed 1; net production (phi_t > phi0) only adds early splits, then the lattice freezes the swimmer number (no division in the crystal)",
+ "summary": "Follow-up to 20261025T1054-c08-nrch-chemostat-crystal (world.py = its defaults: Dt=-0.3, u=1.5e-3, phi_t=phi0=-0.4). Seed 1 replicates the traveling crystal: 20 swimmers at t=6000, 17 tracks persist >= 50% of the run, best 71.5 body lengths, lattice locked from t~4400 (packs/K5s1/sheet.png). To push swimmers to grow and divide inside the lattice, I set the chemostat target above the mean (net production): phi0=-0.45 with phi_t=-0.4 or -0.35 (u=1e-3), and phi0=-0.4 with phi_t=-0.3 (u=1.5e-3). These raise the number of swimmers (14, 18, 25) and the split count in the transient (27, 54, 157 splits), but almost all splits are matched by merges (21, 43, 140) before t~2500, persistent splits stay 0-3 (generation <= 1), and once the polar lattice forms the swimmer number is constant to t=6000. The chemostat sets a lattice spacing; the swimmer count follows it and there is no division-death turnover inside the crystal.",
+ "parents": ["20261025T1054-c08-nrch-chemostat-crystal"],
+ "class": "nrch",
+ "world": "world.py",
+ "finding": {"operator": "Model-A chemostat with net production on NRCH swimmers", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "phi_t = phi0 (no net production) on the same seed: K3s0 and K5s0 in the parent; seed 1 replicate of the parent's world",
+   "result": "net production: final swimmers 14/18/25, splits 27/54/157, merges 21/43/140, persistent splits 1/0/3, lattice frozen after t~2500-4000; seed 1 crystal: 17 persistent tracks, 71.5 body lengths"},
+ "outcome": "negative",
+ "evidence": ["packs/K5s1/sheet.png", "packs/P3s0/sheet.png", "packs/P3s0/lineage.png", "packs/P2s0/sheet.png"],
+ "compute": {"cpu_minutes": 60}}
