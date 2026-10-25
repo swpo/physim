@@ -1,0 +1,122 @@
+{
+ "50": {
+  "up": {
+   "final_share": 0.0,
+   "mean_last_quarter": 0.0,
+   "final_K_total": 0.0
+  },
+  "twin": {
+   "final_share": 0.0,
+   "mean_last_quarter": 0.0,
+   "final_K_total": 0.0
+  }
+ },
+ "51": {
+  "up": {
+   "final_share": 0.967,
+   "mean_last_quarter": 0.992,
+   "final_K_total": 2213.5
+  },
+  "twin": {
+   "final_share": 0.652,
+   "mean_last_quarter": 0.655,
+   "final_K_total": 1653.8
+  }
+ },
+ "52": {
+  "up": {
+   "final_share": 1.0,
+   "mean_last_quarter": 0.98,
+   "final_K_total": 2271.8
+  },
+  "twin": {
+   "final_share": 0.448,
+   "mean_last_quarter": 0.442,
+   "final_K_total": 1619.9
+  }
+ },
+ "53": {
+  "up": {
+   "final_share": 0.998,
+   "mean_last_quarter": 0.945,
+   "final_K_total": 2467.4
+  },
+  "twin": {
+   "final_share": 0.0,
+   "mean_last_quarter": 0.0,
+   "final_K_total": 1811.9
+  }
+ },
+ "54": {
+  "up": {
+   "final_share": 0.771,
+   "mean_last_quarter": 0.614,
+   "final_K_total": 2109.3
+  },
+  "twin": {
+   "final_share": 0.089,
+   "mean_last_quarter": 0.102,
+   "final_K_total": 1613.6
+  }
+ },
+ "55": {
+  "up": {
+   "final_share": 0.958,
+   "mean_last_quarter": 0.937,
+   "final_K_total": 2354.6
+  },
+  "twin": {
+   "final_share": 0.304,
+   "mean_last_quarter": 0.303,
+   "final_K_total": 1815.2
+  }
+ },
+ "56": {
+  "up": {
+   "final_share": 0.714,
+   "mean_last_quarter": 0.769,
+   "final_K_total": 2078.7
+  },
+  "twin": {
+   "final_share": 0.229,
+   "mean_last_quarter": 0.106,
+   "final_K_total": 1683.6
+  }
+ },
+ "57": {
+  "up": {
+   "final_share": 0.909,
+   "mean_last_quarter": 0.948,
+   "final_K_total": 2130.7
+  },
+  "twin": {
+   "final_share": 0.337,
+   "mean_last_quarter": 0.297,
+   "final_K_total": 1719.2
+  }
+ },
+ "58": {
+  "up": {
+   "final_share": 0.824,
+   "mean_last_quarter": 0.724,
+   "final_K_total": 2088.5
+  },
+  "twin": {
+   "final_share": 0.143,
+   "mean_last_quarter": 0.062,
+   "final_K_total": 1630.0
+  }
+ },
+ "59": {
+  "up": {
+   "final_share": 0.653,
+   "mean_last_quarter": 0.331,
+   "final_K_total": 1946.1
+  },
+  "twin": {
+   "final_share": 0.206,
+   "mean_last_quarter": 0.148,
+   "final_K_total": 1607.0
+  }
+ }
+}

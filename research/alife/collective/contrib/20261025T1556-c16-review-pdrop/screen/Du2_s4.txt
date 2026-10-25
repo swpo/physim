@@ -1,0 +1,8 @@
+t=2000 drops=69 medarea=85 maxarea=276 occ=0.39 N=57291 umin=0.12 (75s)
+t=4000 drops=68 medarea=89 maxarea=247 occ=0.39 N=56409 umin=0.12 (141s)
+t=6000 drops=69 medarea=86 maxarea=250 occ=0.39 N=55963 umin=0.12 (211s)
+t=8000 drops=68 medarea=88 maxarea=279 occ=0.39 N=56421 umin=0.12 (257s)
+t=10000 drops=69 medarea=92 maxarea=272 occ=0.39 N=55820 umin=0.12 (294s)
+t=12000 drops=67 medarea=94 maxarea=267 occ=0.39 N=56284 umin=0.12 (325s)
+t=14000 drops=66 medarea=96 maxarea=272 occ=0.39 N=55664 umin=0.12 (355s)
+t=16000 drops=66 medarea=96 maxarea=268 occ=0.39 N=56003 umin=0.12 (387s)
