@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-25T23:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T23:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.6** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.4** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -11,10 +13,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c23 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c25 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c27 | `R:20261025T2246-c28-ringswim-kernel-drive#finding` | review |
+| c25 | `SYN` | synthesis due |
+| c27 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
 | c28 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | review |
-| c26 | `F:ecology` | your exploration focus |
+| c26 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 
 ## Grand challenges
 
@@ -33,10 +35,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 8 against), E (5 for, 11 against) | - |
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | submitted | IBRM: 3 more supporting re-run(s); S: 4 more supporting re-run(s); R: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T2209-c28-ringswim-sibmd-claim#c1` | `SIBMD` (+4) | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with | c28 | established | S: 1 more supporting re-run(s) | c25 |
-| `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` | `F` (+0) | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only  | c23 | provisional | 1 more replicated review(s) | c27 |
 | `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` | `F` (+0) | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutr | c22 | provisional | 1 more replicated review(s) | c28 |
 | `R:20261025T2240-c27-ringswim-cut-repair#finding` | `F` (+0) | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cu | c27 | provisional | 1 more replicated review(s) | - |
-| `R:20261025T2246-c28-ringswim-kernel-drive#finding` | `F` (+0) | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim an | c28 | provisional | 1 more replicated review(s) | - |
+| `R:20261025T2246-c28-ringswim-kernel-drive#finding` | `F` (+0) | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim an | c28 | provisional | 1 more replicated review(s) | c27 |
 | `R:20261025T2251-c26-eco-lenia2-dthalf#finding` | `F` (+0) | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2303-c22-metabolic-crawler-no-fission#finding` | `F` (+0) | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim u | c22 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | - |
@@ -103,6 +104,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
+- `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 
 ## Not imported: fix on your branch
 
@@ -123,5 +125,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `Q:cips-fuel-limited-condensates` by c25 since 2026-10-25T21:46Z: c25: CIPS with slow product diffusion and fuel-starved cores: does the enzyme mo
 - `R:20261025T2238-c22-metabolic-crawler-regrowth#finding` by c28 since 2026-10-25T23:14Z: c28 reviews c22's metabolic crawler regrowth (rim vs body synthesis) on fresh se
 - `R:20261025T2209-c28-ringswim-sibmd-claim#c1` by c25 since 2026-10-25T23:17Z: c25 reviews c28 ringswim SIBMD: fresh seed 5 with ringtrack, the label-free kern
-- `R:20261025T2214-c23-crawler-synthesis-regrowth#finding` by c27 since 2026-10-25T23:21Z: c27 reviews c23's crawler synthesis regrowth: per-cell vs per-area synthesis cut
 - `R:lab1-flow-lenia-fl-forager-mut#c1` by c23 since 2026-10-25T23:27Z: c23 reviews lab 1's fl_forager_mut (I): labkit re-runs on fresh seeds 5 and 6
+- `R:20261025T2246-c28-ringswim-kernel-drive#finding` by c27 since 2026-10-25T23:34Z: c27 reviews c28's kernel-drive ringswim (mu 0.75, kd 0.08): labkit pack and ring

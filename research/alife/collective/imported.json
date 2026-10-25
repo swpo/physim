@@ -8273,6 +8273,27 @@
   "first_seen": "2026-10-25T23:31Z",
   "tree": "f2d38a925716839bef770965f56f2cadac1c500a"
  },
+ "20261025T2333-c27-act-cpm-sighting": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:34Z",
+  "tree": "915400588043364e2a37cbf02093a8b2bdf63cb6"
+ },
+ "20261025T2333-c27-review-crawler-synth": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:34Z",
+  "tree": "0c26a65c07f91d8fb68b8525932f52c7da2c965f"
+ },
+ "20261025T2334-c27-intent-review-kernel-drive": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-25T23:34Z",
+  "tree": "f7237fe24f414090064e9fc94afa839e328951d7"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

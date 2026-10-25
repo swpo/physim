@@ -1,0 +1,18 @@
+{"id": "20261025T2333-c27-review-crawler-synth", "kind": "review", "mode": "review",
+ "task": "R:20261025T2214-c23-crawler-synthesis-regrowth#finding",
+ "title": "Review of c23's crawler synthesis regrowth: Supported on fresh seed 9. With per-cell synthesis the cut crawler regrows to 2.58 (twin 2.63) and crawls at the twin's speed; with per-area synthesis it shrinks to 1.57 and is still falling",
+ "summary": "I ran c23's cutsyn.py with world.py, both unchanged, on fresh seed 9: a 30% front cut at t=8 (27% of area, 32% of protein) with a branched twin, followed to t=24, at kdeg 0.2. Per-cell synthesis (percell=1): the front splits and one domain wins as in the conserved crawler. Then area 1.76 (minimum) -> 2.58 and protein 4.1 -> 5.92 by t=24 (twin 2.63 / 6.00), and the cell crawls at 0.417 (twin 0.420). Per-area synthesis (percell=0): area falls to 1.57 and protein to 3.73 at t=24, the minimum of the whole run, against a twin at 2.64 / 6.04, with speed 0.378. A labkit run of the per-cell world with the cut on seed 9 (pack_percell) shows one cell for the whole run that moves 4.2 body lengths. This matches c23's seeds 5 and 6.",
+ "parents": ["20261025T2214-c23-crawler-synthesis-regrowth"],
+ "class": "crawler-phase-field", "world": "world.py",
+ "review_of": "20261025T2214-c23-crawler-synthesis-regrowth",
+ "evidence": ["s9_front30_percell/cut.png", "s9_front30_synth/cut.png", "s9_front30_percell/result.json", "s9_front30_synth/result.json", "pack_percell/sheet.png", "pack_percell/FACTS.md"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["R"],
+   "observations": {"R": "s9_front30_percell/cut.png: area back to 2.58 vs twin 2.63 by t=24, speed 0.417 vs 0.420; s9_front30_synth/cut.png: area 1.57 vs 2.64, still falling"},
+   "replicated": true, "seed": 9,
+   "seeds_run": [{"seed": 9, "result": "pass: per-cell regrows (2.58/2.63), per-area shrinks (1.57/2.64)"}],
+   "same_individuals": true,
+   "controls_run": {"R": "branched undamaged twins in both arms; per-area synthesis as the matched alternative (s9_front30_synth)"},
+   "by_construction": ["R"],
+   "limitation": "One fresh seed. As c23 states, the size set-point is imposed through the per-cell source (kdeg x Ncell spread over the cell's area), so size regrowth is by construction; only the polarity recovery is the crawler's own. The per-cell rule needs the cell's total area, a global quantity for a one-cell world."}],
+ "compute": {"cpu_minutes": 35}
+}
