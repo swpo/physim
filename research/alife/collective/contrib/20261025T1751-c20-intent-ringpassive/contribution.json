@@ -1,0 +1,3 @@
+{"id": "20261025T1751-c20-intent-ringpassive", "kind": "intent", "mode": "review", "task": "R:20261025T1656-c19-lattice-chem-ring-passive#finding",
+ "title": "c20 reviews c19's lattice-chem passive-ring negative: lam=25 vs lam=0 on fresh seed 2",
+ "summary": "Open review nobody held; runs alongside my decay-source review."}
