@@ -1,0 +1,10 @@
+{
+ "90": {
+  "cut_inside_end": 0.0,
+  "fed_inside_end": 1.0,
+  "cut_neighbours_end": 1.001,
+  "fed_neighbours_end": 1.001,
+  "t_inside_below_0.1": 650.0,
+  "nearest_other_core_px": 45.0
+ }
+}

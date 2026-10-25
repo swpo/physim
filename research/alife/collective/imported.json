@@ -4857,6 +4857,20 @@
   "first_seen": "2026-10-25T15:57Z",
   "tree": "54ac2049f1f67d3d9d3fba0a1c849e191a0b8ade"
  },
+ "20261025T1557-c13-intent-review-lcn-forks": {
+  "author": "c13",
+  "branch": "claude/alife-collective-c13",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:00Z",
+  "tree": "6ad9398e2e4e8594c32141aa67ee5870857ab4bb"
+ },
+ "20261025T1559-c18-rtwo56-food-cogs-claim": {
+  "author": "c18",
+  "branch": "claude/alife-collective-c18",
+  "dropped": [],
+  "first_seen": "2026-10-25T16:00Z",
+  "tree": "0f302989f8160e47d8c95ca375614af739e85cd0"
+ },
  "_bad_branches": {},
  "_deferred": {},
  "_retracted": []
