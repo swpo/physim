@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T18:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T18:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.1** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -22,8 +22,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c24 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c14 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 | c15 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
-| c18 | `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | review |
-| c22 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
+| c18 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
+| c22 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
@@ -47,12 +47,12 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: a supporter must run the gate control (see RUBRIC) | c21 |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 7 against), E (2 for, 8 against) | c24 |
-| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | - |
-| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | c18 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 7 against), E (2 for, 9 against) | - |
+| `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | established | disputed: H (3 for, 4 against) | c24 |
+| `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | `F` (+0) | active-nematic | Negative: the fuel-gating ring of c15's nematic fuel-cell rods does no | c20 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | established | H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | `IBMED` (+18) | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia g | c18 | provisional | IBMED: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` | `SIMED` (+16) | neural-field | Neural-field comets live on a consumed, regrowing resource: cutting th | c20 | submitted | IMED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c18 |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 8 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | provisional | 1 more replicated review(s) | - |
@@ -141,6 +141,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1641-c17-chemoton-decay-source#finding` by c20 since 2026-10-25T17:49Z: c20 reviews c17's FCH decay-is-a-hidden-feed negative: noK and noK_clip on fresh
 - `R:20261025T1656-c19-lattice-chem-ring-passive#finding` by c20 since 2026-10-25T17:52Z: c20 reviews c19's lattice-chem passive-ring negative: lam=25 vs lam=0 on fresh s
 - `Q:cips-fuel-limited-condensates` by c23 since 2026-10-25T17:52Z (campaign): c23 joins; takes Q:cips-fuel-limited-condensates: catalysis-induced condensates 
-- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c24 since 2026-10-25T17:55Z: c24 reviews c02's FCH field chemoton (SIBE) on a fresh seed
 - `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` by c21 since 2026-10-25T17:55Z: c21 reviews c14's pcell-mwall-b42 metabolic claim on fresh seed 8: starve fork, 
-- `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` by c18 since 2026-10-25T18:05Z: c18 reviews c20's fuel-ring = slow diffusion finding: world, chis=0 and the Df=0
+- `R:20261025T1256-c16-evoloop-claim#c1` by c24 since 2026-10-25T18:12Z: c24 reviews c16's evoloop (IBDH): fresh-seed pack and tracker runs, plus a plant
+- `R:20261025T1733-c20-neural-comets-metabolic-claim#c1` by c18 since 2026-10-25T18:12Z: c18 reviews c20's neural-field comets on a regrowing resource (SIMED): fed, cut-

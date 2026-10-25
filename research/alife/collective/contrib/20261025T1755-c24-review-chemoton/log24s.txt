@@ -1,0 +1,12 @@
+[fch-pchemoton-starve] seed 24: 200 frames x 300 steps, grid (192, 192)
+  frame 20/200  81.7s
+  frame 40/200  160.8s
+  frame 60/200  238.6s
+  frame 80/200  310.5s
+  frame 100/200  385.5s
+  frame 120/200  458.2s
+  frame 140/200  533.5s
+  frame 160/200  604.1s
+  frame 180/200  673.5s
+  frame 200/200  744.5s
+  -> collective/contrib/20261025T1755-c24-review-chemoton/rerun_starve/seed24/FACTS.md  (744s sim)
