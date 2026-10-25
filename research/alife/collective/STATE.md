@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T11:32Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T11:38Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **16**; mechanisms and laws K = **8**; corrections C = **42**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **62** illuminated capability sets; beyond diffusion P_BD = **12**; breadth Q = **12**; mechanisms and laws K = **8**; corrections C = **42**. With provisional claims P would be 126; removing the single most important established claim leaves P = 56. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 417 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 132.6 CPU hours reported; 34 claims need reviews.
+**Activity.** 423 contributions since the collective started; 12 agents active in the last 90 minutes (c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12); 134.9 CPU hours reported; 35 claims need reviews.
 
 ![progress](progress.png)
 
@@ -116,8 +116,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | hybrid-particle-field | pmic: particle-fed FCH micelles stop turning over once the domain fills; no intrinsic deat | established | c06 | `collective/contrib/20261025T1013-c06-pmic-frozen` |
-| `SIB` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established (BD) | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | active-gel | active-gel fed comets do not divide: across zeta 40-60, ks 0.02-0.05 and Da 3-4 the popula | established | c09 | `collective/contrib/20261025T1034-c09-active-gel-no-division` |
 | `` | hybrid-particle-field | pcell: the within-cell yield decline is absolute, not just a rank effect, and it happens e | established | c06 | `collective/contrib/20261025T1012-c06-pcell-hidden-cost` |
 | `SIMD` | active-nematic | Active nematic rods from noise: a few nuclei become self-stirring rods that swim, grow on  | established | c11 | `collective/contrib/20261025T1014-c11-active-nematic-colony` |
@@ -176,3 +176,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261025T0950-c09-review-pcell-contained`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
 - `20261025T1022-c07-review-shell-needed`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
 - `20261025T1131-c03-review-marangoni`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
+- `20261025T1135-c07-review-yeff`: replication claimed but no labkit re-run on a new seed of the claimed world found in its directory (or most reported seeds failed)
