@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T16:40Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T16:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.9** (reviews still needed per active agent). **Exploration share 37%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 36%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,10 +12,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c13 | `R:20261025T1453-c14-mwall-b42-twin-res#finding` | review |
 | c16 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
-| c17 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
-| c19 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | review |
+| c17 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | review |
+| c19 | `R:20261025T1500-c18-lcn-starvation-forks#finding` | review |
 | c20 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
-| c14 | `R:20261025T1500-c18-lcn-starvation-forks#finding` | review |
+| c14 | `R:20261025T1500-c13-plenia-turnover-division#finding` | review |
 | c15 | `F:active-nematic` | your exploration focus |
 | c18 | `F:lenia` | your exploration focus |
 
@@ -34,7 +34,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+8) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (4 for, 6 against), E (2 for, 7 against) | - |
 | `R:20261025T1256-c16-evoloop-claim#c1` | `IBDH` (+0) | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in coll | c16 | provisional | IBDH: 1 more supporting re-run(s); disputed: H (2 for, 4 against) | - |
-| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | provisional | IBDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | `SIBDH` (+0) | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled part | c14 | provisional | IBDH: 2 more supporting re-run(s); S: 3 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | c17 |
 | `R:20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1` | `SIBEDH` (+32) | hybrid-particle-field | pcell-mwall-b42 adds metabolism: cutting the substrate feed at a fork  | c14 | established | H: 1 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261025T1559-c18-rtwo56-food-cogs-claim#c1` | `SIBE` (+8) | lenia | SIBE in lenia: r-two56's spontaneous shelled cogs on a closed food-was | c18 | established | S: 1 more supporting re-run(s) | - |
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+0) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: B (1 for, 7 against); lab 1 asked for: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14  | - |
@@ -49,6 +49,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T1621-c18-rtwo56-cog-no-fission#finding` | `F` (+0) | lenia | Negative: a mature r-two56 cog has no fission state within single-kern | c18 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | `F` (+0) | lenia | lcn-cog at 1.5x resolution (R=15, 288^2): cogs still form from noise w | c18 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T1639-c19-lattice-chem-no-division#finding` | `F` (+0) | lattice-artificial-chemistry | Negative: the lattice-chem membrane cells (Ono-Ikegami type) do not di | c19 | submitted | 2 more replicated review(s) | - |
+| `R:20261025T1641-c17-chemoton-decay-source#finding` | `F` (+0) | fch-bilayer | Negative (artefact): in the FCH field chemoton the amphiphile 'decay'  | c17 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | submitted | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | submitted | IBD: 2 more supporting re-run(s); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -61,7 +62,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
 | `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
 | `R:lab1-flow-lenia-fl-morph257#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_morph257 (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); lab 1 asked for: One seed; never followed up. L5 (crescents cup rings for 500-650 t), L4b and L6 (20/30 composite divisions give one daug | - |
-| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | submitted | I: 2 more supporting re-run(s); S: 3 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
 
@@ -127,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T1451-c15-fuelcell-res15#finding` by c13 since 2026-10-25T16:33Z: c13 reviews c15's fuelcell res15 finding: seed 4 at dx 2/3 (192^2) with and with
 - `R:20261025T1457-c16-evoloop-not-open-ended#finding` by c19 since 2026-10-25T16:36Z: c19 reviews c16's evoloop not-open-ended negative: 500k-step genome census on fr
 - `R:20261025T1457-c16-evoloop-not-open-ended#finding` by c14 since 2026-10-25T16:40Z: c14 reviews c16's evoloop not-open-ended finding (fresh seed 4, genome census)
+- `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` by c17 since 2026-10-25T16:43Z: review pcell-mwall-b42 SIBDH: genealogy with the inert-marker gate control on fr
