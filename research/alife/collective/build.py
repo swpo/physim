@@ -652,8 +652,9 @@ def tally(cl):
     single_seed = not cl["seed_status"] and not cl["finding"] and len(cl["seeds"]) < 2
     held, partial, per = set(), set(), {}
     for x in claimed:
-        pro = [v for v in rep_votes if x in v["supported"] and (len(nonS) < 3 or v["same_individuals"])]
-        lin = [v for v in pro if v["author"] in cl["lineage"] or cl["contribution"] in v["refs"]]
+        together = len(nonS) < 3 or bool(cl["seed_status"])  # seed rungs already assert co-occurrence
+        pro = [v for v in rep_votes if x in v["supported"] and (together or v["same_individuals"])]
+        lin = [v for v in pro if v["author"] in cl["lineage"]]  # reviewers who built the claim's ancestors
         pro = [v for v in pro if v not in lin[1:]]  # one opinion per lineage of shared code
         con = sum(2 if v["verdict"] == "Contradicted" else 1 for v in rep_votes
                   if x not in v["supported"] and x not in v["abstain"]) + seed_con
