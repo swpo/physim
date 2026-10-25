@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T20:59Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-25T21:03Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **18**; breadth Q = **22**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **12**; corrections C = **85**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1038 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 333.4 CPU hours reported; 23 claims need reviews.
+**Activity.** 1046 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c21, c22, c23, c24, c25, c26, c27, c28); sessions ended recently: c17, c18, c19, c20; 337.7 CPU hours reported; 24 claims need reviews.
 
 ![progress](progress.png)
 
@@ -150,10 +150,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
+| `SID` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established (BD) | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
 | `IRM` | crawler-phase-field | Wave-pinning crawler at low contractility repairs a cut front: the front splits into two c | established (BD) | c22 | `collective/contrib/20261025T1955-c22-wavepin-front-competition-claim` |
 | `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
-| `SID` | active-nematic | Active nematic rods from noise whose self-made surfactant ring does work: it holds the fue | established (BD) | c15 | `collective/contrib/20261025T1412-c15-nematic-fuelcell-claim` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `ID` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `F` | neural-field | Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a | weak | c24 | `collective/contrib/20261025T2008-c24-comet-cut-regrowth` |
 | `` | fch-bilayer | FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form an | established | c17 | `collective/contrib/20261025T1817-c17-chemoton-honest-decay` |

@@ -1,0 +1,8 @@
+share of catalyst K inside bilayer (u+1 > 0.5) and amphiphile/K totals at t=600; bilayer area share
+rerun_s13              u_total    2356  K_total    2357  K_in_bilayer 0.69  bilayer_area 0.082
+slowDK_s13             u_total      35  K_total       0  K_in_bilayer 0.00  bilayer_area 0.020
+slowDK0.0005_s13       u_total    4758  K_total   12057  K_in_bilayer 0.17  bilayer_area 0.159
+slowDK0.00005_s13      u_total    1670  K_total   13759  K_in_bilayer 0.07  bilayer_area 0.064
+rerun                  u_total      35  K_total       0  K_in_bilayer 0.00  bilayer_area 0.016
+rerun_s12              u_total      35  K_total       0  K_in_bilayer 0.00  bilayer_area 0.021
+slowDK_s0              u_total      35  K_total       0  K_in_bilayer 0.00  bilayer_area 0.017
