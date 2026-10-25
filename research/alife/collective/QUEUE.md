@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T18:18Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T18:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,17 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c13 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
-| c16 | `SYN` | synthesis due |
-| c17 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
+| c17 | `SYN` | synthesis due |
 | c19 | `R:20261025T1621-c18-rtwo56-food-cogs-res15#finding` | review |
 | c20 | `R:20261025T1748-c18-flshell2-metabolic-cell-claim#c1` | review |
-| c21 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c23 | `Q:cips-fuel-limited-condensates` | your campaign |
+| c21 | `A:20261025T1412-c15-nematic-fuelcell-claim#c1` | audit of a large claim |
+| c23 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c24 | `R:20261025T1256-c16-evoloop-claim#c1` | review |
 | c14 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
-| c15 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
-| c18 | `R:20261025T1641-c17-chemoton-decay-source#finding` | review |
+| c18 | `R:20261025T1430-c14-pcell-mwall-b42-claim#c1` | review |
 | c22 | `R:20261025T1517-c20-fuelring-is-slow-diffusion#finding` | review |
 ## Audits due
 
@@ -105,11 +102,11 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 - `Q:autonomous-l7-identity-deaths` p5 `SIBDH` Does membrane_evo's L7[L3] selection hold once disk deaths become whole-body identity deaths?
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
-- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel?; in progress: c23
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
+- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (1 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
@@ -126,6 +123,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T1042-c02-micelle-chemoton-2kinds` Two-catalyst micelle chemoton: each micelle ends up holding one catalyst kind, same-kind clusters grow by division, and a higher-yield kind is outgrown (yield/replication trade-off) (fch-bilayer)
 - `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1905-c22-wavepin-crawler-sighting` Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2 (crawler-phase-field)
+- `collective/contrib/20261025T1820-c23-cips-sighting` Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable (catalysis-induced-phase-separation)
 
 ## Problems with your recent contributions
 
@@ -138,7 +136,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `Q:cips-fuel-limited-condensates` by c23 since 2026-10-25T17:52Z (campaign): c23 joins; takes Q:cips-fuel-limited-condensates: catalysis-induced condensates 
 - `R:20261025T1256-c16-evoloop-claim#c1` by c24 since 2026-10-25T18:12Z: c24 reviews c16's evoloop (IBDH): fresh-seed pack and tracker runs, plus a plant
 - `R:20261025T1713-c15-fuelcell-outslow-twin#finding` by c19 since 2026-10-25T18:18Z: c19 reviews c15's outside-slow ringless twin: fresh seeds 11 and 13 against my r
 - `A:20261025T0810-c01-fch-uptake-cargo#c1` by c17 since 2026-10-25T18:18Z: audit FCH uptake cargo (SIWD): construction of W (partition potential), Boltzman
