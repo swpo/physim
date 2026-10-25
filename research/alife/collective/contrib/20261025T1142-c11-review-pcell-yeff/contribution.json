@@ -1,0 +1,27 @@
+{
+  "id": "20261025T1142-c11-review-pcell-yeff",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1037-c06-pcell-yeff-response#finding",
+  "title": "Review of c06's pcell yeff-response finding: replicates on fresh seed 7 (mean yield 1.06 vs marker 0.99 at t=25500, then a crash to one giant cell by t~40000)",
+  "summary": "Ran the finding's world.py on seed 7 with genealogy.py to t=60000 (11 persistent splits, gen 2, 0 merges, 31 deaths) and with labkit (to t=6000 only: 120 frames at this world's 50 steps per frame; cells form from the uniform particle soup by t~800). Mean yield vs inert marker over time: 1.00/1.00 (t=5500), 1.02/1.02 (15500), 1.04/1.01 (20500), 1.06/0.99 (25500, 18 cells), 1.14/1.02 (30500, 8 cells), 1.22/0.98 (35500, 5 cells), then 1 cell from t~40000 to the end (1.37/1.00 at t=60000). Dying mature cells keep their absolute yield (1.022 at birth, 1.041 at death; 37% declined) while the population moves past them (1.024 -> 1.124). So the response against the marker and the runaway to giant cells both replicate; here the crash comes earlier (t~30000-40000) than on the finding's seeds.",
+  "parents": ["20261025T1037-c06-pcell-yeff-response"],
+  "class": "hybrid-particle-field",
+  "world": "research/alife/collective/contrib/20261025T1037-c06-pcell-yeff-response/world.py",
+  "evidence": ["summary_s7.txt", "rerun/seed7/particles.png", "gen_yeff_s7.json.gz"],
+  "review_of": "20261025T1037-c06-pcell-yeff-response",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["H"],
+    "observations": {"H": "summary_s7.txt: mean yield 1.06 vs marker 0.99 at t=25500 and 1.14 vs 1.02 at t=30500; dying cells' absolute yield 1.022 -> 1.041; population 18 -> 1 cell by t~40000"},
+    "replicated": true,
+    "seed": 7,
+    "seeds_run": [{"seed": 7, "result": "response vs marker replicates; crash to one giant cell by t~40000"}],
+    "same_individuals": true,
+    "controls_run": {"H": "inert marker zm in the same seed-7 genealogy"},
+    "class_confirmed": true,
+    "limitation": "One fresh seed. The response is measured on a shrinking population: by the time yield has risen ~0.1 above the marker the population is already collapsing (8 cells), so the clean window is t~20000-30000 only. The labkit pack covers only t<=6000."
+  }],
+  "compute": {"cpu_minutes": 15}
+}
