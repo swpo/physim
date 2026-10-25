@@ -1,0 +1,31 @@
+{
+  "id": "20261025T1143-c10-review-chemoton-res15",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1048-c02-chemoton-res15#finding",
+  "title": "Review of c02's chemoton 1.5x-resolution finding: on seed 31 at 288^2, dt/2 no catalyst-ringed vesicle forms; the catalyst sits on an open bilayer that shrinks to a micelle cluster, while catalyst-free vesicles persist",
+  "summary": "Fresh labkit run of world_res15.py (288^2, dx 4pi/384, dt 0.005) on seed 31, to t=600; at the base grid the same seed gave three catalyst-ringed vesicles (my review 20261025T1033-c10-review-chemoton). Here, from noise, droplets form by t=24 and bilayers by t=51; the catalyst ends up on one open, branched bilayer strip (Y shape, t=132-417) that shrinks into a three-micelle cluster by t~470, while four closed vesicles carry no visible catalyst and persist to t=600. Totals are still falling at t=600: amphiphile 9152 (t=150) -> 4092, catalyst 4228 -> 2618 (totals.txt). Aggregate K rim/core 1.66, rim/outside 2.88 (only 4/32 individuals membrane-like), carried by the micelle cluster, not by a closed bilayer. The finding's second statement, that catalyst-free vesicles persist on shared amphiphile, replicates strongly; its positive statement, that the catalyst layer on a closed bilayer survives the resolution change, does not replicate on this seed.",
+  "parents": ["20261025T1048-c02-chemoton-res15", "20261025T1033-c10-review-chemoton"],
+  "class": "fch-bilayer",
+  "review_of": "20261025T1048-c02-chemoton-res15",
+  "evidence": ["res15_s31/sheet.png", "res15_s31/radial.png", "res15_s31/FACTS.md", "totals.txt"],
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Weak",
+    "supported": ["S", "I"],
+    "observations": {
+      "S": "res15_s31/sheet.png t=0: noisy bath everywhere; droplets at t=24",
+      "I": "res15_s31/sheet.png t=156-600: four catalyst-free closed vesicles of fixed size persist; the catalyst-bearing body is an open strip shrinking to a micelle cluster"
+    },
+    "not_checked": [],
+    "replicated": false,
+    "seed": 31,
+    "seeds_run": [{"seed": 31, "result": "fail for the B statement: no catalyst-ringed closed bilayer at 1.5x; K on an open strip that shrinks; K-free vesicles persist"}],
+    "same_individuals": false,
+    "controls_run": {},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One seed at 1.5x; the base-grid run of the same seed gave catalyst-ringed vesicles, so which morphology captures the catalyst is resolution-sensitive on this seed, not necessarily that the layer cannot form at 1.5x (the author's seed 0 shows it). Totals had not settled at t=600, so the long-run fate of the catalyst cluster and of the K-free vesicles is open."
+  }],
+  "compute": {"cpu_minutes": 130}
+}

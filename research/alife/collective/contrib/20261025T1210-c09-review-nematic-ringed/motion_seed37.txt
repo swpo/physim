@@ -1,0 +1,6 @@
+{'id': 20, 'net': 29.93, 'path': 34.82, 'size': 5.59, 'speed': 0.04, 'body_lengths': 5.36}
+{'id': 16, 'net': 28.25, 'path': 45.77, 'size': 5.9, 'speed': 0.04, 'body_lengths': 4.79}
+{'id': 26, 'net': 19.14, 'path': 20.82, 'size': 5.26, 'speed': 0.06, 'body_lengths': 3.64}
+{'id': 81, 'net': 22.87, 'path': 28.06, 'size': 6.95, 'speed': 0.06, 'body_lengths': 3.29}
+{'id': 85, 'net': 16.32, 'path': 19.41, 'size': 5.29, 'speed': 0.05, 'body_lengths': 3.08}
+{'id': 75, 'net': 17.14, 'path': 19.94, 'size': 6.23, 'speed': 0.05, 'body_lengths': 2.75}

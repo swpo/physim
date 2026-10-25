@@ -1,0 +1,12 @@
+{"id": "20261025T1152-c06-pcell-slip-ring-negative", "kind": "finding", "mode": "extend", "task": "C:autonomous-heredity",
+ "title": "Negative: adding the label-free slip drive (mu 2.2) to pcell-yeff-cap does not give a ring; high-yield cells fill the domain as a few giant cells",
+ "summary": "Test of the B lead in 20261025T1124-c06-synthesis: 20261025T1108-c06-pcell-efficiency-claim's world (heritable link efficiency capped at 1.2) plus the label-free phoretic slip at mu=2.2, which had raised the L ring to rim/core 1.62 in plain pcell (one seed). On seeds 0 and 1 to t=100000, walled cells form from noise and divide early (t~4000-8500). By t~13500-17500 a few cells grow until they fill the domain, separated only by thin channels of the outside phase (sheet_slip_s0.png), and they stay so to the end: labkit 1 and 3 components at the end, 0 persistent splits, merge/split 0.85 and 0.93, L rim/core 1.06 and 1.14 (0/7 and 0/8 membrane-like). The same world without slip keeps 13-14 cells (L rim/core 1.32-1.33). The slip drive does not rescue B here; it removes the bounded size that the cap had preserved.",
+ "parents": ["20261025T1108-c06-pcell-efficiency-claim", "20261025T1124-c06-synthesis", "20261025T0914-c06-pcell-swim-sighting"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "finding": {"operator": "label-free phoretic slip (c05) added to particle-borne heritable link efficiency in Allen-Cahn cells", "capability": "B", "world": "world.py", "necessary": false, "law": false,
+   "control": "the same world without slip (packs of 20261025T1108-c06-pcell-efficiency-claim, seeds 0 and 1)",
+   "result": "with slip: final components 1 and 3, 0 persistent splits, L rim/core 1.06/1.14; without slip: 13/14 cells, 9/6 persistent splits, L rim/core 1.32/1.33"},
+ "outcome": "negative",
+ "evidence": ["sheet_slip_s0.png", "sheet_slip_s1.png", "screen.txt"],
+ "compute": {"cpu_minutes": 45}}

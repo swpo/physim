@@ -1,0 +1,14 @@
+== a_age=2 (kdc x (1 + a G_4[(u+0.6)_+])), seed 0, t=960
+frames 1-20: bodies 28->27, deaths 1, splits 0, nucleations 28
+frames 21-40: bodies 27->29, deaths 0, splits 0, nucleations 2
+frames 41-61: bodies 29->38, deaths 2, splits 11, nucleations 0
+frames 62-81: bodies 38->45, deaths 0, splits 6, nucleations 1
+frames 82-101: bodies 45->45, deaths 1, splits 0, nucleations 1
+frames 102-120: bodies 45->49, deaths 0, splits 4, nucleations 0
+== a_age=5 (kdc x (1 + a G_4[(u+0.6)_+])), seed 0, t=960
+frames 1-20: bodies 28->27, deaths 1, splits 0, nucleations 28
+frames 21-40: bodies 27->28, deaths 0, splits 0, nucleations 1
+frames 41-61: bodies 28->29, deaths 0, splits 0, nucleations 1
+frames 62-81: bodies 29->29, deaths 0, splits 0, nucleations 0
+frames 82-101: bodies 29->29, deaths 0, splits 0, nucleations 0
+frames 102-120: bodies 30->30, deaths 0, splits 1, nucleations 0

@@ -1,0 +1,12 @@
+== wb1
+frames 1-30: bodies 21->41, deaths 0, splits 18, nucleations 23
+frames 32-61: bodies 41->41, deaths 0, splits 0, nucleations 0
+frames 62-91: bodies 41->41, deaths 0, splits 0, nucleations 0
+frames 92-121: bodies 41->41, deaths 0, splits 0, nucleations 0
+frames 122-150: bodies 41->41, deaths 0, splits 0, nucleations 0
+== lowc0
+frames 1-30: bodies 21->0, deaths 24, splits 3, nucleations 21
+frames 32-61: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 62-91: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 92-121: bodies 0->0, deaths 0, splits 0, nucleations 0
+frames 122-150: bodies 0->0, deaths 0, splits 0, nucleations 0
