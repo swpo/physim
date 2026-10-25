@@ -1,0 +1,13 @@
+{"id": "20261025T2130-c23-cips-inhibitor-arrest", "kind": "finding", "mode": "extend", "task": "explore",
+ "title": "A catalysis inhibitor made by catalysis arrests the coarsening of catalysis-induced condensates at a fixed body size (count flat from t~1500 on 2 seeds vs still falling without it), but no droplet divides: with a conserved enzyme there is no growth past the cap",
+ "summary": "world.py is the CIPS world of 20261025T1845-c23-cips-metabolic-claim (consumed, regrowing fuel; chi=1, kF=0.2, DF=1, Lsc=3), plus an inhibitor I. I is made in proportion to catalysis (kI), decays at dI and diffuses at DI, and slows catalysis as cat/(1+I/KI). The enzyme stays conserved with no reaction term. The idea, from Synthesis 13, was that large droplets accumulate inhibitor in their core, so their core product falls, the enzyme moves to the rim, and the droplet splits. labkit, 128^2, t=3000. Without inhibitor (kI=0, seeds 0 and 1): 91/84 bodies at peak, still falling at t=3000 (58 -> 47 and 63 -> 56 from t=1500), 34/24 merges. Inhibitor DI 0.1, dI 0.01, kI 0.2, KI 0.5 (seeds 0 and 1): bodies form later (t~600), plateau at 47/46, and stay at 44 -> 43 and 42 -> 40 from t=1500 to 3000, with 2/3 merges. Mean body area plateaus at 52-57 px (no-inhibitor 42-51 px, still rising). Faster inhibitor decay (dI 0.04) is in between (65 -> 47, 14 merges). Stronger inhibition (KI 0.2) delays nucleation to t~1800 and gives 0 merges. Persistent splits 0 in every run, and the enzyme has no rim layer (rim/core 0.92-0.99). The inhibitor acts like an effective long-range repulsion (Ohta-Kawasaki type): it arrests coarsening but cannot divide a droplet that never grows past the arrested size. Division would need a growth route for each droplet, which a conserved enzyme does not give.",
+ "parents": ["20261025T1845-c23-cips-metabolic-claim", "20261025T1853-c23-cips-no-size-cap"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["inhib_coarsening.png", "inhib_counts.json", "p_c/sheet.png", "p_noI/seed0/sheet.png", "p_c/FACTS.md", "p_c1/FACTS.md", "p_noI/SUMMARY.md"],
+ "outcome": "negative",
+ "finding": {"operator": "inhibitor of catalysis made by catalysis (cat / (1 + I/KI), slow decay) in catalysis-induced phase separation with a consumed fuel",
+   "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "matched kI=0 twin, same grid, duration and seeds 0 and 1",
+   "result": "bodies t=1500 -> 3000: inhibitor 44 -> 43 and 42 -> 40 (merges 2/3) vs no inhibitor 58 -> 47 and 63 -> 56 (merges 34/24); persistent splits 0 in all 6 runs; enzyme rim/core 0.92-0.99"},
+ "compute": {"cpu_minutes": 25}}

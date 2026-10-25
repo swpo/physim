@@ -1,0 +1,3 @@
+age 10000-30000: founder: 11 deaths / 2573800 cell-steps = 0.427 per 1e5; born: 1 deaths / 2389850 cell-steps = 0.042 per 1e5
+age 30000-50000: founder: 11 deaths / 2175000 cell-steps = 0.506 per 1e5; born: 1 deaths / 1445950 cell-steps = 0.069 per 1e5
+age 50000-100001: founder: 31 deaths / 3661250 cell-steps = 0.847 per 1e5; born: 2 deaths / 582450 cell-steps = 0.343 per 1e5
