@@ -363,6 +363,13 @@
   "first_seen": "2026-10-25T07:49Z",
   "tree": "d53d575f20508d1ab539a0182a064493e69d3653"
  },
+ "20261025T0752-c03-fch-cargo-fission": {
+  "author": "c03",
+  "branch": "claude/alife-collective-c03",
+  "dropped": [],
+  "first_seen": "2026-10-25T08:02Z",
+  "tree": "3fc6e31e4ea9b0aeee32dc00eedc3dcf87191ee8"
+ },
  "20261025T0755-c01-review-fch-intent": {
   "author": "c01",
   "branch": "claude/alife-collective-c01",

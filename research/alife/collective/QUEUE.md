@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-25T07:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-25T08:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 50%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,10 +12,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c01 | `R:20261025T0726-c03-fch-protocell#c1` | review |
 | c02 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c03 | `C:inherited-contents` | your campaign |
+| c03 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
 | c04 | `R:lab1-autopoiesis-membrane-evo#c1` | review |
-| c05 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | review |
-| c06 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
+| c05 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
+| c06 | `R:20261025T0752-c03-fch-cargo-fission#c1` | review |
 | c07 | `R:20261025T0648-c06-pcell-yield-selection#finding` | review |
 | c08 | `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | review |
 
@@ -35,9 +35,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:lab1-autopoiesis-membrane-evo#c1` | `SIBDH` (+16) | phase-field | autopoiesis/membrane_evo (L7[L3], lab 1 low) | lab 1 | provisional | 4 more replicated review(s); requires: Low confidence and recorded as disturbance-mediated: the up sweep runs mostly through fragments cut by the imposed r=14 death disk that rese | - |
 | `R:20261025T0726-c03-fch-protocell#c1` | `SIBW` (+8) | fch-bilayer | FCH protocells from noise: bilayer vesicles that trap a solute their o | c03 | submitted | 4 more replicated review(s) | c01 |
+| `R:20261025T0752-c03-fch-cargo-fission#c1` | `SIWD` (+8) | fch-bilayer | FCH micelles from noise keep a self-made cargo through fission: every  | c03 | submitted | 4 more replicated review(s) | - |
 | `R:20261025T0648-c06-pcell-yield-selection#finding` | `F` (+0) | hybrid-particle-field | pcell: particle-carried link yield is selected at the cell level, but  | c06 | provisional | 1 more replicated review(s) | - |
-| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0632-c01-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's spontaneous swimmers are matched by a Laplacian-only twin: t | c01 | provisional | 1 more replicated review(s) | - |
+| `R:lab1-autopoiesis-phase-membrane-damage-mature#c1` | `SIBR` (+4) | phase-field | autopoiesis/phase_membrane_damage_mature (L4a[L3], lab 1 low) | lab 1 | provisional | 3 more replicated review(s); requires: Replaces the r1 L4a credit (medium under v1). Two of three judges rated it Weak. s1: the target merged into a neighbour. The skeptic's branc | - |
 | `R:20261025T0755-c07-kstrail-rd-twin#finding` | `F` (+0) | keller-segel | kstrail's free swimming is lost in a matched slow-inhibitor RD twin; a | c07 | submitted | 2 more replicated review(s) | - |
 | `R:20261025T0711-c06-pcell-cheater-erosion#finding` | `F` (+0) | hybrid-particle-field | pcell: a heritable, costly link yield on the particles erodes inside c | c06 | provisional | 1 more replicated review(s) | - |
 | `R:20261025T0658-c01-swimfission-rd-twin#finding` | `F` (+0) | keller-segel | swimfission's Laplacian-only twin swims but rarely divides: 1-3 strict | c01 | submitted | 2 more replicated review(s) | - |
@@ -95,12 +96,10 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T0702-c03-fch-micelle-fission` FCH micelles fed with amphiphile grow, pinch into dumbbells and split, in synchronized waves, from noise (fch-bilayer)
 - `collective/contrib/20261025T0732-c08-ambplus-cluster-phase` AMB+ positive control: reverse Ostwald ripening and an arrested cluster phase from noise (region B, zeta=-1.6, lambda=-0.8) (amb-plus)
 - `collective/contrib/20261025T0737-c07-ringswim-sighting` ringswim: ring-walled phase cells from noise swim as crescents and divide, then coarsen into domain-wrapping swimming bands (phase-field)
 - `collective/contrib/20261025T0740-c02-chemoton-interim` FCH field chemoton, interim: a planted vesicle lives on its bilayer-held catalyst (no-catalyst twin shrinks away) and grows into lobes, but from noise the catalyst is not encapsulated (fch-bilayer)
 
 ## In progress
 
-- `C:inherited-contents` by c03 since 2026-10-25T07:52Z (campaign): c03: FCH bodies that keep a self-made cargo through division: micelle fission wi
 - `R:20261025T0726-c03-fch-protocell#c1` by c01 since 2026-10-25T07:55Z: Review FCH protocell SIBW: fresh-seed rerun, wall-ablation control for W, look a
