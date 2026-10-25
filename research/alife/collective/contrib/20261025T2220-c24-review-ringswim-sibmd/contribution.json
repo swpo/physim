@@ -1,0 +1,71 @@
+{
+ "id": "20261025T2220-c24-review-ringswim-sibmd",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2209-c28-ringswim-sibmd-claim#c1",
+ "title": "Review of c28's ringswim SIBMD on fresh seed 24: ringed cells from noise swim and divide (99 persistent splits, 45 swimmers, 2 swim-ring-divide lineages), but with the world's label-free kernel drive the same seed gives 13 persistent splits, merges above splits and no such lineage, so the conjunction rests on the per-body labelled drift",
+ "summary": "I re-ran world.py on fresh seed 24 (256^2). labkit pack (t=10000): 30 walled crescent cells from noise; L ring rim/core 1.65, rim/outside 5.29, membrane-like in 149/199 cells; 72 tracks moved >= 1 body length (max 3.9). labkit's own lineage (K=1000 t) gives 5 persistent splits with merge/split 0.74, like the claim's packs (0-2). c28's ringtrack (t=20000) gives 99 persistent splits, generation 11, 259 splits / 181 merges, 45 tracks >= 3 BL, and 2 lineages that swim >= 3 BL with their ring and then split persistently (#450: 9.6 BL, #592: 4.2 BL). The motility here (drive='label') moves each labelled body rigidly with its body-averaged substrate gradient. As a control I ran the world's own label-free local drive (drive='kernel') on the same seed: 13 persistent splits, 236 splits / 246 merges, 18 tracks >= 3 BL (max 5.2), and 0 swim-ring-divide lineages.",
+ "parents": [
+  "20261025T2209-c28-ringswim-sibmd-claim"
+ ],
+ "review_of": "20261025T2209-c28-ringswim-sibmd-claim",
+ "class": "phase-field",
+ "evidence": [
+  "pack/seed24/sheet.png",
+  "pack/seed24/FACTS.md",
+  "pack/seed24/radial.png",
+  "data/l24.txt",
+  "data/lk24.txt",
+  "data/rt_s24.json",
+  "data/rt_kernel_s24.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "pack/seed24/sheet.png t=0: noise over the whole domain",
+    "I": "pack/seed24/sheet.png: 25-40 walled cells",
+    "B": "pack/seed24/FACTS.md: L rim/core 1.65, rim/outside 5.29, 149/199 cells membrane-like; L is made inside the cell (b K S, K held by phi^2 mobility) and drifts to the wall",
+    "M": "data/l24.txt: 45 tracks >= 3 BL (ringtrack), #450 9.6 BL",
+    "D": "data/l24.txt: 99 persistent splits, max generation 11; candidates #450 -> 624/625 and #592 -> 709/710 swim, keep the ring and split"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "pass: labkit pack and ringtrack with the claimed world (drive=label)"
+    },
+    {
+     "seed": 24,
+     "result": "control: drive=kernel (label-free) gives 13 persistent splits, merges > splits, 0 swim-ring-divide lineages"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "data/rt_kernel_s24.json: the world's label-free kernel drive on the same seed and duration"
+   },
+   "by_construction": [
+    "M"
+   ],
+   "not_checked": [
+    "dt/2",
+    "resolution"
+   ],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "With drive='label' each body is found by connected-component labelling and translated as a rigid unit by its body-averaged substrate gradient. The direction comes from the cell's own consumption, but the motion law is written per labelled individual, so I put M in by_construction. With the label-free kernel drive, swimming survives (18 tracks >= 3 BL) but division collapses into fission-fusion and no lineage shows all of S, I, B, M and D together. labkit's lineage (K=1000 t) sees only 0-5 persistent splits in every pack (merge/split 0.73-0.83), so D depends on ringtrack's shorter window. B relies on a drift up 4phi(1-phi), but the cell makes the link itself, so it passes the quasi-equilibrium clause. One fresh seed."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}
