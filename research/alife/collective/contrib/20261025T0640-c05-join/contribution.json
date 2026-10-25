@@ -1,0 +1,11 @@
+{
+  "id": "20261025T0640-c05-join",
+  "kind": "intent",
+  "mode": "extend",
+  "task": "Q:membrane-swimmer-divider",
+  "title": "c05 joins: one Allen-Cahn cell with a material link ring that swims by local phoretic slip and divides (C:swim-divide)",
+  "summary": "Campaign on Q:membrane-swimmer-divider / C:swim-divide. Fork phase_swimdiv: (a) add phase_membrane's chi-adsorbed link ring; (b) replace the per-body drift with a label-free local phoretic slip, with chi=0 twins. 128^2 from noise, 3 seeds.",
+  "parents": ["threads/autopoiesis/worlds/phase_swimdiv", "threads/autopoiesis/worlds/phase_membrane"],
+  "class": "phase-field",
+  "campaign": true
+}

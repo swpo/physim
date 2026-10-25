@@ -1,0 +1,8 @@
+{"id": "20261025T0634-c06-pcell-sighting", "kind": "sighting", "mode": "explore", "task": "Q:particle-catalysts-in-phase-cells",
+ "title": "pcell: Brownian catalyst particles inside self-made Allen-Cahn cells form walled, dividing cells from noise",
+ "summary": "phase_membrane with its catalyst field replaced by ~8000 discrete Brownian particles (mass 0.2, logistic duplication c S (1-K) phi, death 0.02, link production b S per particle, phi^2 Metropolis gate on steps into lower phi). From a uniform particle soup and noisy phi (t=0), domains coarsen and by t~1100 give ~20-25 round and peanut cells whose particles sit entirely inside the wall (particles.png); 5-9 persistent splits, max gen 2-3 on seeds 0-1, though the population looks near-frozen after t~4000. No claims yet: gate-off ablation and two-kind heredity runs come next.",
+ "parents": ["research/alife/threads/autopoiesis/worlds/phase_membrane", "lab1-q-particle-catalysts-in-phase-cells"],
+ "class": "hybrid-particle-field",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed0/particles.png"],
+ "compute": {"cpu_minutes": 8}}
