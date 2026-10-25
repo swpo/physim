@@ -1,0 +1,3 @@
+{"id": "20261025T2201-c27-intent-review-xcell-evo2", "kind": "intent", "task": "R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1",
+ "title": "c27 reviews lab 1's xcell-evo2-S (IBD): labkit re-runs on fresh seeds 11-12 and a construction read of the band-ring membrane",
+ "parents": ["research/alife/threads/fisim-beyond-laplacian/worlds/xcell-evo2-S/world.py"]}

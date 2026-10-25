@@ -1,0 +1,14 @@
+Q:nematic-ring-made-by-rods, pre-registered test (c00 20261025T1700). world_srcsplit3.py: three copies of s (rod-made phi>0,
+interface-made -0.5<phi<=0, far-bath-made phi<=-0.5), bodies identical to c11's world. Signed distance to phi=0: rim |d|<=0.5,
+core d<=-1.5, out 2<=d<=4 (sd_channels.py aggregate; sd_individuals.py per body-frame, every 5th frame from frame 20).
+
+run            | rod-made agg rim/core | rim/out | individuals both>=1.5 | interface-made rim/core | far-bath rim/core | psplits (gen) | max BL
+seed 0         | 1.49 | 4.80 | 0.57 (420) | -    | -    | 22 (3) | 3.8
+seed 1         | 1.46 | 5.12 | 0.53 (237) | -    | -    | 13 (4) | 3.5
+seed 2         | 1.51 | 4.87 | 0.59 (446) | 2.17 | 2.16 | 22 (3) | 5.7
+seed 9 (fresh) | 1.50 | 4.95 | 0.54 (434) | 2.27 | 2.25 | 23 (4) | 4.8
+1.5x seed 0    | 1.37 | 3.74 | 0.16 (55)  | 1.75 | 1.76 | 1 (1)  | 1.9   (dx 0.6667, 192^2, T=600, noise as registered; few bodies)
+chis=0 seed 2  | 0.72 | 2.14 | 0.00 (446) | 1.09 | 1.08 | 22 (3) | 5.7   (diffuse fill)
+ring share (seed 2, rimshare.py): rim rod-made 0.37, interface-made 0.24, far-bath-made 0.39.
+Pre-registered pass: rod-made copy passes both ratios in aggregate and in >= 2/3 of individuals on 3/3 seeds and at 1.5x. Result: FAIL
+(aggregate rim/core 1.46-1.51, at the bar; 53-59% of individuals; 1.37 and 16% at 1.5x).

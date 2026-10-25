@@ -1,0 +1,25 @@
+{
+ "candidates": [],
+ "persistent_splits": 2,
+ "max_generation": 2,
+ "splits": 6,
+ "merges": 0,
+ "deaths": 10,
+ "tracks_ge3BL": 17,
+ "tracks_ge5BL": 13,
+ "split_times": [
+  3320,
+  9820
+ ],
+ "gen_hist": {
+  "0": 24,
+  "1": 4,
+  "2": 2
+ },
+ "world": "world.py",
+ "seed": 0,
+ "T": 12000,
+ "params": {
+  "chi": "0"
+ }
+}
