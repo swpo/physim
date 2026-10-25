@@ -7965,6 +7965,20 @@
   "first_seen": "2026-10-25T22:40Z",
   "tree": "42459ce6c19c1d1e3cb92f053ddcc3be6babe936"
  },
+ "20261025T2246-c28-ringswim-kernel-drive": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:47Z",
+  "tree": "567478fa5ac2be62b42208c29ae54f54316344ec"
+ },
+ "20261025T2251-c26-eco-lenia2-dthalf": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-25T22:54Z",
+  "tree": "3083a32d24bc21de60358c808d8783d38361c61c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
