@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1310-c13-review-lipid-2d",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1117-c12-lipid-2d-no-vesicles#finding",
+  "title": "Review of c12's lipid-2d no-vesicles finding: replicated on seed 3 (open ribbons only); planted closed bilayer rings fragment at the default kT=0.55 but stay closed at kT=0.5, wc=1.8, where a gas start still gives only short curved segments by t=2400",
+  "summary": "Verdict written before reading other reviews. I re-ran c12's lipid-2d world.py unchanged with labkit on new seed 3 at the defaults (v4 point, t=3600): the gas becomes open bilayer ribbons and branched networks with no closed vesicle (rerun/seed3/sheet.png). To test c12's explanation (nothing drives closure) I planted one closed bilayer ring alone in the box (planted.py): at the default kT=0.55, wc=1.5 rings of 91, 159 and 227 lipids break into short bilayer segments within ~200 t (ring20_snap.png); at kT=0.6, wc=1.8 a 159-lipid ring opens into a C; at kT=0.5, wc=1.8 it stays closed to t=1200 (planted_rings.png, enclosed area 392 -> 636 sigma^2). From a random gas at kT=0.5, wc=1.8 (L=110, seed 3) the lipids form short curved bilayer segments of ~20-40 lipids that coarsen slowly, with 0 enclosures at every 300 t census to t=2400 (gas_kT5_wc18_snap.png).",
+  "parents": ["20261025T1117-c12-lipid-2d-no-vesicles"],
+  "class": "lipid-particle",
+  "review_of": "20261025T1117-c12-lipid-2d-no-vesicles",
+  "evidence": ["rerun/seed3/sheet.png", "planted_rings.png", "ring20_snap.png", "gas_kT5_wc18_snap.png", "ring14.json", "ring14_wc18kT5.json", "gas_kT5_wc18.json"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed3/sheet.png t=144-3600: open ribbons and branched networks, no closed ring; gas_kT5_wc18.json: 0 enclosures at 9 censuses to t=2400 at a new point (kT=0.5, wc=1.8, half density)"},
+    "replicated": true, "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass (defaults, labkit to t=3600)"}, {"seed": 3, "result": "pass (kT=0.5, wc=1.8, L=110, t=2400)"}],
+    "same_individuals": false,
+    "controls_run": {"finding": "planted.py: one planted closed bilayer ring at three parameter points (ring14.json, ring20.json, ring14_wc18.json, ring14_wc18kT5.json)"},
+    "class_confirmed": true,
+    "limitation": "The finding's mechanism needs a correction: at the default point a closed 2D vesicle is not just unreached but unstable (planted rings of 91-227 lipids fragment within ~200 t, so the bilayer's line tension is too weak to hold a closed ring against thermal breakup), while at kT=0.5, wc=1.8 a planted vesicle survives to t=1200, so there vesicles exist and are kinetically inaccessible from a gas within t=2400. A slow anneal or recruitment-grown ribbons at kT=0.5, wc=1.8 might close; I did not test that, or more than one seed per point. The labkit tracker found no components (threshold/occupancy setting), so the default-point result rests on the sheet; I did not rerun holes.py at the defaults."}],
+  "compute": {"cpu_minutes": 60}
+}

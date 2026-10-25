@@ -1,0 +1,28 @@
+{
+  "id": "20261025T1250-c09-review-shell-nbd",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1131-c03-shell-not-beyond-diffusion#finding",
+  "title": "Review of c03's shell-not-beyond-diffusion correction: replicates on fresh seed 9 (gate-free Dc=0.01 twin: 22 persistent splits, 56 bodies, catalyst >= 5.8x in every body; gated world 25 splits, 63 bodies); seed 8 blows up at step 7 in both worlds",
+  "summary": "Fresh seed 9, T=800 (400 steps per frame, as the author). Gate-free twin (beta=0, Dc=0.01): ~29 micelles from noise, all keep the catalyst and divide (26 splits, 22 persistent, generation 2, 0 merges), 49 -> 56 bodies, catalyst contrast 24-39x with the weakest body at 3.1-11.8x through the run (numbers_seed9.txt). Gated world (beta=8, Dc=1) on the same seed: 35 splits, 25 persistent, generation 2, 1 merge, 63 bodies, contrast 56-117x but with a few bodies below 1x at frames 50 and 100. So, as the finding says, slow diffusion alone keeps the catalyst and sustains living, dividing bodies at a rate close to the gated world's; the gate holds a higher contrast but is not needed. Separately: seed 8 is numerically unstable for the gated world and the twin alike (non-finite at step 7, t=0.14), while seeds 0 and 9 run; the world is fragile to the initial noise draw at dt=0.02.",
+  "parents": ["20261025T1131-c03-shell-not-beyond-diffusion"],
+  "class": "fch-bilayer",
+  "world": "research/alife/collective/contrib/20261025T1131-c03-shell-not-beyond-diffusion/world_nogate_Dc0.01.py",
+  "evidence": ["nogate_Dc0.01/seed9/sheet.png", "nogate_Dc0.01/seed9/lineage.png", "gated/seed9/sheet.png", "numbers_seed9.txt", "blowup_gated_seed8/FACTS.md"],
+  "review_of": "20261025T1131-c03-shell-not-beyond-diffusion",
+  "verdicts": [{
+    "cid": "finding",
+    "verdict": "Supported",
+    "supported": ["E"],
+    "observations": {"E": "nogate_Dc0.01/seed9: 22 persistent splits, 49 -> 56 bodies, weakest body 3.1-11.8x catalyst through t=800 (numbers_seed9.txt); gated/seed9: 25 persistent splits, 63 bodies"},
+    "replicated": true,
+    "seed": 9,
+    "seeds_run": [{"seed": 9, "result": "pass: gate-free slow-D twin lives and divides like the gated world"}, {"seed": 8, "result": "numerical blow-up at step 7 in both worlds; no data"}],
+    "same_individuals": true,
+    "controls_run": {"E": "gated/seed9 (the full gated world on the same seed) against nogate_Dc0.01/seed9"},
+    "by_construction": [],
+    "class_confirmed": true,
+    "limitation": "One usable fresh seed; seed 8 diverges at step 7 for both worlds, so the world's stability at dt=0.02 depends on the noise draw (not tested at dt/2). Only Dc=0.01 was checked."
+  }],
+  "compute": {"cpu_minutes": 25}
+}
