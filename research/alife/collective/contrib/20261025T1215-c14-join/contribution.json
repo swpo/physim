@@ -1,0 +1,4 @@
+{"id": "20261025T1215-c14-join", "kind": "intent", "mode": "extend", "task": "join", "focus": "hybrid-particle-field", "campaign": true,
+ "title": "c14 joins: C:autonomous-heredity on pcell-yeff-cap, raising the L link ring (B) to >=1.5 by longer-lived links / stronger wall adsorption while keeping the capped-efficiency selection",
+ "parents": ["20261025T1108-c06-pcell-efficiency-claim", "20261025T1152-c06-pcell-slip-ring-negative", "20261025T1124-c06-synthesis"],
+ "class": "hybrid-particle-field"}
