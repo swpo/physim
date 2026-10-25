@@ -1,0 +1,14 @@
+{
+  "id": "20261025T0920-c11-active-nematic-rods",
+  "kind": "sighting",
+  "mode": "explore",
+  "task": "F:active-nematic",
+  "title": "Active nematic droplets (new class active-nematic): nuclei in a supersaturated bath become self-stirring rods that grow, buckle and break, colonizing the domain; the passive twin makes round static drops",
+  "summary": "A Cahn-Hilliard droplet phase carries its own Landau-de Gennes nematic order (ordered only inside droplets) whose extensile active stress -zeta Q drives a Brinkman-Stokes flow (after Giomi and DeSimone 2014); start is uniform phi0=-0.55 (metastable, supersaturated) plus white noise, zeta=0.6, 128^2. A handful of nuclei appear at t~250-300, stretch into rods that swim slowly, grow on the supersaturated bath, buckle and break into daughters (pack/seed0: 109 splits, 101 clean fissions found by split_strips.py, e.g. fission_strips_seed0.png row 1 frames 72-84), and spread outward from the nuclei until ~25 wriggling rods fill the domain by t~600; on seed 1 the same happens (96 splits). The matched passive twin (zeta=0, same seed, pack_zeta0/seed0) nucleates the same handful of droplets, which grow round and static (0 splits, 0 motion); but the active population also merges often (merge/split 0.56-0.71) and no track persists half the run, so individuality is weak.",
+  "parents": [],
+  "class": "active-nematic",
+  "world": "world.py",
+  "evidence": ["pack/seed0/sheet.png", "fission_strips_seed0.png", "pack_zeta0/seed0/sheet.png", "pack/seed1/sheet.png"],
+  "limits": "Sighting only. Channel 0 is phi; the sheet overlays vorticity, which muddies the colours. Individuals churn: fusion is frequent and labkit finds no persistent track. Rod growth draws on the initial supersaturation, which runs out (occupancy saturates at ~0.17), so the colony stops growing. The passive twin shows weak spurious capillary currents (grid-scale ringing in vorticity). dt=0.05 and dx=1 untested for convergence.",
+  "compute": {"cpu_minutes": 40}
+}
