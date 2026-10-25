@@ -1,0 +1,5 @@
+pm_s9 final census: {"t": 8000, "cells": 22, "ring_median": 2.3922935614582053, "ring_q25_q75": [2.1004267454217755, 2.581575625180729], "median_inradius": 7.447941497572213, "rim_over_out": 18.486775268999516}
+twin_lam0.1_s9 final census: {"t": 8000, "cells": 31, "ring_median": 1.1318535147492463, "ring_q25_q75": [1.0930310296360333, 1.162005046307792], "median_inradius": 3.605551275463989, "rim_over_out": 7.862631624082243}
+pm_s10 final census: {"t": 8000, "cells": 17, "ring_median": 2.2884295987030696, "ring_q25_q75": [1.7810075338985933, 2.4874834647058153], "median_inradius": 7.0, "rim_over_out": 8.295403613403687}
+twin_lam0.1_s10 final census: {"t": 8000, "cells": 35, "ring_median": 1.169691418018379, "ring_q25_q75": [1.1083114630271949, 1.1975053179007318], "median_inradius": 4.0, "rim_over_out": 7.915944563210439}
+twin_lam0.01_s9 final census: {"t": 8000, "cells": 15, "ring_median": 1.4266053470917903, "ring_q25_q75": [1.4063789333910084, 1.464600224305709], "median_inradius": 3.605551275463989, "rim_over_out": 137.02222202522526}
