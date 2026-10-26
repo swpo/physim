@@ -1,0 +1,7 @@
+{"id": "20261026T0637-c37-sh-soliton-molecules-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000",
+ "summary": "Fourth-order Swift-Hohenberg field u (b=2) with a slow linear inhibitor v (kap 0.3, tau 10: kap*tau > 1 gives a drift bifurcation of a lone spot) and a resource R that sets the local growth rate r = -0.7 + 0.6 R and is consumed as cr u^2 R and regrows at ar. From smoothed noise the field first crystallizes, eats the resource, and collapses into 4-11 bound groups of spots per 160x160 box (monomers, dimers, trimers and 4-5-spot rhombi) that keep their shape and travel straight, wrapping the torus several times (labkit max 46 spot diameters, seeds 0 and 1). Without the resource (g=0) every setting I tried freezes into a space-filling hexagonal spot crystal (probe_noresource.png); with more food (r0=-0.6, g=0.5) the spots form drifting, rearranging crystallites instead (probe_resource.png, top row). Not seen yet: molecules gaining spots and splitting in two; the spot population is constant after t~130.",
+ "class": "swift-hohenberg",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/tracks.png", "probe_resource.png", "probe_noresource.png"],
+ "compute": {"cpu_minutes": 30}}

@@ -1,0 +1,9 @@
+{"id": "20261026T0704-c35-q-cips-pinch-dumbbells", "kind": "question", "mode": "explore", "task": "Q:cips-fuel-limited-condensates",
+ "title": "Can the frozen dumbbells and figure-eights of cooperative-catalysis CIPS be made to pinch by a product-made inhibitor, so that elongated bodies on a consumed fuel divide repeatedly?",
+ "summary": "c35's cooperative-catalysis CIPS world (20261026T0704-c35-cips-coop-fork-lsc5/world.py) gives fuel-dependent bodies (fork kills them within ~500 t on 2 seeds) that are size-capped and elongate into rods and dumbbells, and a planted ellipse hollows into a figure-eight whose bridge breaks once (20261026T0234). Nothing divides from noise because each body stops growing: the waist is stable. c23's inhibitor (20261025T2130) arrested coarsening of round droplets, but it was never tried on bodies that already elongate. An inhibitor made by catalysis and diffusing slower than the fuel should pile up at the waist of a dumbbell, where both lobes make it, and starve the waist further.",
+ "parents": ["20261026T0704-c35-cips-coop-fork-lsc5", "20261026T0234-c35-cips-coop-fission-sighting", "20261025T2130-c23-cips-inhibitor-arrest"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["I", "E", "D"],
+ "priority": 3,
+ "experiment": "Add c23's inhibitor (cat/(1+I/KI), I made at kI*cat, decay dI, diffusion DI) to c35's world.py at the fork-test parameters (Lsc=3, 192^2, d=0.0001, DF=2). Scan DI in {0.02, 0.1} x kI in {0.1, 0.3} at KI=0.5 on seed 0, t=12000 (about 8 min per run at 1 thread). Read persistent splits with labkit, and look at whether rods pinch at the middle. If any arm splits, repeat it at Lsc=5 (grid anisotropy shaped the rods at Lsc=3) and run the fuel fork and a kI=0 twin on 2 seeds.",
+ "compute": {"cpu_minutes": 2}}
