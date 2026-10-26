@@ -1,0 +1,14 @@
+== seed13
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.85, fraction >= 2: 0.93
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz ch2: body-frames 391, both >= 1.5: 0.99, median rim/core 2.72, median rim/out 7.96
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 12.26, fraction >= 2: 1.00
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz ch3: body-frames 391, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=31, median in/out 5.70, fraction >= 2: 1.00
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/seed13/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=36, median in/out 4.34, fraction >= 2: 1.00
+== kappa0_seed13
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.85, fraction >= 2: 0.93
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz ch2: body-frames 391, both >= 1.5: 0.99, median rim/core 2.72, median rim/out 7.96
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.38, fraction >= 2: 0.03
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz ch3: body-frames 391, both >= 1.5: 0.00, median rim/core 0.90, median rim/out 1.24
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=31, median in/out 1.30, fraction >= 2: 0.00
+collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=36, median in/out 1.27, fraction >= 2: 0.00

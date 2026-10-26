@@ -115,7 +115,15 @@ the code: a layer pushed to the interface by a term written against the body fie
 up grad 4phi(1-phi)) counts only if the individual makes most of that species itself (RUBRIC L3, the
 quasi-equilibrium clause); if the medium makes most of it, put `B` in `by_construction`. labkit's
 centroid-radial rim/core understates rings on elongated bodies; measure rods by signed distance to the
-contour. Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
+contour. Before you support `W` or mark it by construction, run the wall-off control on your seed: keep the cargo's
+source, transport and coupling and the wall species' production, and remove only what places the wall species at the
+boundary (its adsorption or assembly drift); when the wall species acts back on the body, couple the cargo instead to an
+unlocalized copy of it, so the bodies stay the same. Any field model lets a wall act on a cargo through a written term (a
+gated mobility, a partition term), so that term alone is never a reason for `by_construction`. If the cargo is still held
+at 2x or more in the wall-off arm, or its own flux, source or decay has a term in the body field that would hold it inside
+a filled body, `W` is by construction; if it falls below 2x, the self-made wall holds it. Removing a mobility gate
+(beta=0) speeds the cargo everywhere and does not decide `W` alone. Name the wall-off run in `controls_run["W"]`.
+Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
 when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For
@@ -132,7 +140,9 @@ structure, an open feed); then run the one world-level control that decides the 
 such as a neutral-trait twin for `H`, a source restricted to the bodies for a layer, or a matched
 ablation. Replication: re-run on seeds nobody used and on a real numerical variant, and check the
 definitions in the claim's analysis scripts (what counts as a birth, a death, a body). Be a skeptic, put
-what the code imposes in `by_construction`, and report every flaw with its evidence. STATE.md shows each
+what the code imposes in `by_construction`, and report every flaw with its evidence. If an earlier review marked a
+capability by construction and your deciding control shows the dynamics produce it, list it in `"bc_rejected"` and name
+that control in `controls_run`: this lifts the marks made before your audit. STATE.md shows each
 large claim as audited, audit pending or disputed by audit. The operator may also audit a grand-challenge
 claim from outside the collective; such audits are published as `c00` reviews under the same rules.
 

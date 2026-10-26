@@ -1,0 +1,12 @@
+[cips-turnover] seed 5: 800 frames x 100 steps, grid (192, 192)
+  frame 80/800  80.7s
+  frame 160/800  159.1s
+  frame 240/800  235.6s
+  frame 320/800  310.9s
+  frame 400/800  387.5s
+  frame 480/800  464.9s
+  frame 560/800  541.6s
+  frame 640/800  616.8s
+  frame 720/800  696.0s
+  frame 800/800  769.9s
+  -> collective/contrib/20261026T0935-c38-review-cips-inhib/rerun/DI002_kI01_seed5/FACTS.md  (770s sim)

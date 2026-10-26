@@ -1,0 +1,41 @@
+== rerun/seed21
+- motion: 46 long-lived tracks moved >= 1 body length; max speed 0.102/time; max body lengths 4.0
+- replication (lineage window K = 20 frames = time 100, default): splits 43, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 5, merges 14, merge/split ratio 0.326, nucleations 11
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.77, fraction >= 2: 0.91
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz ch2: body-frames 476, both >= 1.5: 1.00, median rim/core 2.73, median rim/out 8.04
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 12.61, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz ch3: body-frames 476, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=27, median in/out 6.47, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed21/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=44, median in/out 4.51, fraction >= 2: 1.00
+s inside(d -3..-1) 0.137, near out(2..4) 0.065, far bath(8..14) 0.011, rim(0) 0.394
+cargo in/out (pooled means) 12.46; Boltzmann exp(kappa (s_out - s_in)) 0.24
+== rerun/seed22
+- motion: 41 long-lived tracks moved >= 1 body length; max speed 0.0926/time; max body lengths 3.7
+- replication (lineage window K = 20 frames = time 100, default): splits 33, persistent splits 24 (0 more failed only because the siblings re-merged within K), max generation 4, merges 9, merge/split ratio 0.273, nucleations 8
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.75, fraction >= 2: 0.93
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz ch2: body-frames 418, both >= 1.5: 1.00, median rim/core 2.65, median rim/out 7.87
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 13.04, fraction >= 2: 0.99
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz ch3: body-frames 418, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=34, median in/out 5.62, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/rerun/seed22/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=38, median in/out 4.10, fraction >= 2: 0.92
+s inside(d -3..-1) 0.135, near out(2..4) 0.064, far bath(8..14) 0.011, rim(0) 0.389
+cargo in/out (pooled means) 12.78; Boltzmann exp(kappa (s_out - s_in)) 0.24
+== chis0/seed21
+- motion: 46 long-lived tracks moved >= 1 body length; max speed 0.102/time; max body lengths 4.0
+- replication (lineage window K = 20 frames = time 100, default): splits 43, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 5, merges 14, merge/split ratio 0.326, nucleations 11
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.81, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz ch2: body-frames 476, both >= 1.5: 0.00, median rim/core 0.75, median rim/out 2.10
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.25, fraction >= 2: 0.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz ch3: body-frames 476, both >= 1.5: 0.00, median rim/core 1.54, median rim/out 0.40
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=27, median in/out 0.35, fraction >= 2: 0.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/chis0/seed21/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=44, median in/out 0.33, fraction >= 2: 0.00
+s inside(d -3..-1) 0.249, near out(2..4) 0.086, far bath(8..14) 0.018, rim(0) 0.191
+cargo in/out (pooled means) 0.29; Boltzmann exp(kappa (s_out - s_in)) 0.04
+== res15/seed22 (dx 0.6667, 192^2, noise_area, T=600)
+- replication (lineage window K = 20 frames = time 100, default): splits 30, persistent splits 17 (0 more failed only because the siblings re-merged within K), max generation 2, merges 7, merge/split ratio 0.233, nucleations 11
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 3.91, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz ch2: body-frames 442, both >= 1.5: 1.00, median rim/core 2.80, median rim/out 8.37
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 8.26, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz ch3: body-frames 442, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.08
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=47, median in/out 8.77, fraction >= 2: 1.00
+collective/contrib/20261026T0812-c39-audit-nematic-cargo/res15/seed22/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=47, median in/out 7.47, fraction >= 2: 1.00

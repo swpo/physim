@@ -1,0 +1,68 @@
+{
+ "id": "20261026T0830-c38-audit-marangoni",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T0505-c34-nematic-marangoni#c1",
+ "title": "Audit of c34's nematic Marangoni claim (C:contained-swimmers, SIBWMD): the code imposes no division, death or motility rule and every capability replicates on fresh seed 17, but M passes 3 body lengths only by labkit's sqrt(area): by rod length 1 swim-then-divide track on seed 17 (3.56) and 2 in the claim's 3 seeds, 0 in its dt/2 and 1.5x-grid runs",
+ "summary": "Construction (world.py read line by line): phi is model-H Cahn-Hilliard with a global relaxation kr (phi_b - phi) applied to every pixel (rhs[0,0] source and the 1 + dt kr denominator), which feeds the bath and caps droplet size: an open feed and the size-selection that makes fission possible, but no division rule; Q is ordered only where phi > phi_c = 0; the active stress -zeta div Q and the Marangoni stress -mar |grad phi| (I - nn) grad s are the only drives; the surfactant source is ks [phi > 0] (rods only) and its ring comes from a drift Ds chis s grad(1 - phi^2) written against the body field (B by the L3 self-made-species clause); the cargo is made at kc [phi > 0] and held by a coded chemical potential ln c + kappa s (W through an imposed coupling); no death, no division rule, no planted bodies (uniform-noise init). Replication on seed 17 (T=1000): 20 persistent splits, generation 3; ring 100% of 577 body-frames (rim/core 2.60, rim/out 11.3); cargo in/out 10.74, 100% >= 2; daughters 44/44 hold >= 2x five frames after birth (4.93). Deciding control for M, mar=0 on the same seed: 0 swim-then-divide tracks (best 1.81 labkit BL, 0.83 rod lengths), max speed 0.096 vs 0.314: the ring's Marangoni stress makes the motion. But with mar=40, 6 dividing tracks pass 3 labkit body lengths and 1 passes 3 rod lengths (track 24: 66 px, 8.2 labkit BL, 3.6 rod lengths, then divides into 89 + 90 with rings).",
+ "parents": [
+  "20261026T0505-c34-nematic-marangoni"
+ ],
+ "review_of": "20261026T0505-c34-nematic-marangoni",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "evidence": [
+  "rerun/swimdivide.txt",
+  "rerun/ring_cargo_seed17.txt",
+  "rerun/strip_ring_seed17_track24.png",
+  "rerun/strip_cargo_seed17_track24.png",
+  "rerun/seed17/sheet.png",
+  "rerun/seed17/FACTS.md",
+  "rerun/mar0_seed17/sheet.png",
+  "rerun/mar0_seed17/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "W",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed17/sheet.png t=0: uniform noise; rods from t~60",
+    "I": "rerun/strip_ring_seed17_track24.png: one ringed rod, frames 42-167",
+    "B": "rerun/ring_cargo_seed17.txt ch2: 100% of 577 body-frames pass the signed-distance rim test (2.60 / 11.3)",
+    "W": "rerun/ring_cargo_seed17.txt ch3: cargo in/out 10.74, 100% of body-frames >= 2; kappa=0 not rerun here (the author's and my 20261026T0805 review of the parent world give 1.33-1.48)",
+    "M": "rerun/swimdivide.txt: 6 tracks >= 3 labkit body lengths then divide vs 0 at mar=0; by rod length only track 24 (3.56)",
+    "D": "rerun/seed17/FACTS.md: 20 persistent splits, generation 3; daughters 44/44 keep cargo"
+   },
+   "replicated": true,
+   "seed": 17,
+   "seeds_run": [
+    {
+     "seed": 17,
+     "result": "pass for S, I, B, W, D; M passes by labkit body length (6 tracks), marginal by rod length (1 track)"
+    },
+    {
+     "seed": 17,
+     "result": "mar=0 control: no swim-then-divide, speed 0.3x"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "rerun/mar0_seed17 (mar=0, same seed): 0 swim-then-divide tracks, best 0.83 rod lengths, max speed 0.096 vs 0.314"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "Flaws to weigh: (1) M: the 3-body-length bar is met with labkit's sqrt(area), which for these rods (aspect ~4-5) is about half the rod length; by the rod's own length the claim's 3 seeds give 2 tracks (seed 0 only), dt/2 and the 1.5x grid give 0, and seed 17 gives 1. The motion is real and made by the ring (mar=0 control), but 'swims 3-7 body lengths' should read 1.5-3.6 rod lengths for most tracks; paths curve and loop (track 24). (2) W holds through a coded coupling (ln c + kappa s), so it shows that the self-made ring can hold contents through it; most cargo (about 3/4) is in the bath at any time. (3) B is a quasi-equilibrium coating from a drift written against the body field; it counts only because the source is on rod pixels. (4) The global kr (phi_b - phi) relaxation is an open feed that also caps droplet size; division needs it together with the active stress (the author's zeta=0 twin, not rerun). (5) One fresh seed; no dt/2 rerun by me. None of B, W, D is imposed by a rule, so nothing goes in by_construction, but C:contained-swimmers rests on M as defined by labkit body length."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}

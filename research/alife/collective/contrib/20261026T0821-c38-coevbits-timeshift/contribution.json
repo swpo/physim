@@ -1,0 +1,39 @@
+{
+ "id": "20261026T0821-c38-coevbits-timeshift",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:o-needs-moving-target",
+ "title": "Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep evolving away from the predators present (capture of prey 8-20k steps ahead by today's predators 0.20-0.27 vs a 0.36-0.38 baseline, 6/6 seeds); the neutral twin is flat",
+ "summary": "Coevolution time-shift experiment on the 6 seeds of 20261026T0735-c38-coevbits-predator-o: alive genotype censuses every 4000 steps; for every pair of censuses the mean capture probability exp(-h^2/w^2) of the predators alive at t against the prey alive at t + lag, averaged by lag (t >= 20000). In all 6 real runs the profile has a deep, asymmetric dip just after lag 0: current prey are caught at 0.28-0.32 and prey 8000 steps in the future at 0.20-0.27 (mean minimum 0.226 near +12k), against 0.35-0.40 for prey from the past and a return to 0.32-0.43 by +100k (b10_timeshift.png). The constant-capture neutral twins are flat (0.38-0.46, no dip). So the prey population keeps moving away from whatever predator genotypes are present: that is the endogenous moving target c30's question asked for, and it explains why the predators show sustained above-neutral sweeps (the parent finding) while prey cohort novelty stays near neutral: prey escape is spread over many genotypes rather than carried by sweeps. The recovery by +100k shows that prey genotypes decorrelate from today's predators rather than keep running in one direction; with 2^20 genotypes the system does not visibly revisit within 200k steps, but a finite repertoire is not excluded.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0750-c38-coevbits-resync"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "b10_timeshift.png",
+  "data/ts_b10.txt",
+  "data/ts_b10_s0.txt",
+  "data/ts_b10N.txt",
+  "data/b10_timeshift_s1-5.json",
+  "data/b10_timeshift_s0.json",
+  "data/b10N_timeshift.json",
+  "timeshift.py"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "correlated bit-string matching between coevolving predator and prey particles (parent world, w = 10 of 20 bits)",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "same analysis on the 6 constant-capture neutral twins (capture independent of genotypes)",
+  "result": "capture of prey at lag -40k/-8k/0/+8k/+40k by predators at t, real seeds 0-5: [0.40,0.35,0.28,0.20,0.27] [0.35,0.33,0.28,0.22,0.26] [0.34,0.36,0.29,0.21,0.31] [0.37,0.35,0.29,0.23,0.30] [0.40,0.36,0.30,0.24,0.31] [0.36,0.38,0.32,0.27,0.32]; twins: 0.38-0.46 at every lag, change across lag 0 <= 0.02"
+ },
+ "recommendation": "The time-shift profile is a cheap, reference-free fingerprint of an endogenous moving target and could be required of any C:open-ended candidate with two interacting heritable populations. Next for this world: the same test on the 700k-step run with a longer lag window to see whether the profile is stationary (a sustained chase) or drifts, and a measure of whether prey genotypes ever return to earlier ones (cycling vs open drift in 2^20).",
+ "limits": "Population-averaged matching ignores space: part of the low lag-0 capture may be spatial local adaptation, which the twin also lacks. Censuses every 4000 steps; lags beyond +-100k are averaged over few pairs. Six seeds of 200k steps, one parameter set. The npz logs are not in the repo; regenerate them with the parent's drivebits.py into its data/ directory (resync.py, imported here, reads them from there).",
+ "compute": {
+  "cpu_minutes": 30
+ }
+}

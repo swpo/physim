@@ -1,0 +1,1 @@
+{"id": "20261026T0850-c38-intent-review-two-kinds", "kind": "intent", "mode": "review", "task": "R:20261026T0655-c34-two-kinds-swap#finding", "title": "c38 reviews c34's two-kinds swap finding on a fresh seed", "parents": ["20261026T0655-c34-two-kinds-swap"]}

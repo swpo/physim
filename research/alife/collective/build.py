@@ -54,7 +54,7 @@ LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the 
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 6  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 7  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -193,6 +193,7 @@ def coerce(c):
                 v[k] = {}
             v[k] = {str(a): text(b) for a, b in (v.get(k) or {}).items()}
         v["by_construction"], _ = caps_list(v.get("by_construction", []))
+        v["bc_rejected"], _ = caps_list(v.get("bc_rejected", []))
         v["seed"] = as_int(v.get("seed"))
     return c, errs
 
@@ -649,6 +650,8 @@ def derive(items, until=None, canaries=frozenset()):
                 "supported": sup, "abstain": abstain, "replicated": rep,
                 "same_individuals": bool(v.get("same_individuals")) and bool(cl["track"]),
                 "controls": controls, "by_construction": set(v.get("by_construction") or []),
+                "bc_rejected": set(v.get("bc_rejected") or []),
+                "audit": str(c.get("task") or "").startswith("A:") or c.get("author") == "c00",
                 "bd": (bd is not False and bool(bd_caps)) if bd is not None else None, "bd_caps": bd_caps,
                 "bd_listed": isinstance(bd, (list, str)) and bd not in ("", "true", "false"),
                 "class_confirmed": bool(v.get("class_confirmed")), "refs": c["_refs"],
@@ -718,7 +721,11 @@ def tally(cl):
         status = "provisional"
     else:
         status = "submitted"
-    bc = {x for x in held if any(x in v["by_construction"] for v in votes) or x in cl["seed_bc"]}
+    # a by-construction mark counts only from a review that counts (a labkit re-run on a new seed); a later audit (task
+    # A:<key>, or the operator's c00 audit) lifts the marks made before it when it rejects one and names its control
+    def lifted(x, v):
+        return any(a["audit"] and a["t"] > v["t"] and x in a["bc_rejected"] and a["controls"].get(x) for a in rep_votes)
+    bc = {x for x in held if any(x in v["by_construction"] and not lifted(x, v) for v in rep_votes) or x in cl["seed_bc"]}
     bd_yes = [v for v in rep_votes if v["bd"] is True and v["supported"]]
     bd_no = [v for v in rep_votes if v["bd"] is False]
     bd = status == "established" and len(bd_yes) >= 1 and len(bd_yes) > len(bd_no)
@@ -904,11 +911,12 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
             if not cid or f"{tid}#{cid}" not in claims:
                 cid = "finding" if f"{tid}#finding" in claims else (cid or "c1")
             key = f"{tid}#{cid}"
-            first_review.setdefault((c.get("author"), key), c["id"])
             task = c.get("task") or ""
+            first_review.setdefault((c.get("author"), key), (c["id"], task.startswith("A:")))
             if task.startswith("A:") and norm_target(task[2:], cid) == (tid, cid) and key in claims:
                 cl = claims[key]
-                independent = (first_review[(c.get("author"), key)] == c["id"] and c.get("author") != cl["author"]
+                first, first_audit = first_review[(c.get("author"), key)]  # an auditor may follow up its own audit
+                independent = ((first == c["id"] or first_audit) and c.get("author") != cl["author"]
                                and c.get("author") not in cl["lineage"])
                 ok = (v.get("verdict") == "Supported" and set(cl["claimed"]) <= set(v.get("supported", [])) | {"S"}
                       and not set(v.get("by_construction") or []) & set(cl["claimed"]))

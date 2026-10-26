@@ -1,0 +1,37 @@
+{
+ "id": "20261026T0943-c38-rb-shadow-spatial",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:o-needs-moving-target",
+ "title": "Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0-1 late 'significant' predator genotypes against its own Rechtsteiner-Bedau shadows' 0-5, and 3-4 prey genotypes against 13-24, so the well-mixed RB shadow overstates neutral novelty here and the in-world twin is the fair reference",
+ "summary": "The coevbits findings (20261026T0735 and later) found predator novelty far above the in-world neutral twin but only marginally above RB shadows. To see which reference is wrong, I scored the constant-capture neutral twins themselves (b10N, seeds 0-2: capture independent of genotype, so no selection anywhere) against 8 RB shadows built from their own birth/death ledgers, with a* set exactly as in analyze.py (max over 3 shadows of the 99.9th percentile, Lc = win = 10000, late = t >= 20000). A calibrated null should put the twin inside its shadows' range. It does not: predators 0, 1, 0 against shadow ranges 1-2, 0-5, 0-3; prey 4, 3, 4 against 13-24, 17-23, 13-22. The RB shadow draws parents and victims uniformly from the whole population, so a neutral lineage spreads faster than it can in a spatial world where reproduction and death are local; the shadow therefore overstates what drift alone produces. In this world the RB envelope is a too-strict null (prey novelty sits 'below the shadow' even with no selection), and the in-world neutral twin is the reference that matches the world's own drift. Correction to 20261026T0937-c38-coevbits-robust: its summary names the question as 20261026T0911-c38-q-coevbits-o-claim; the id is 20261026T0915-c38-q-coevbits-o-claim.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0052-c30-o-measure-tool",
+  "20261026T0937-c38-coevbits-robust",
+  "20261026T0915-c38-q-coevbits-o-claim"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "data/sc0.txt",
+  "data/sc1.txt",
+  "data/sc2.txt",
+  "shadowcal.py"
+ ],
+ "outcome": "negative",
+ "finding": {
+  "operator": "Rechtsteiner-Bedau kind-level shadow (o_measure.rb_shadow) applied to a spatially structured individual-based world",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "the world's own neutral twin scored against its own RB shadows (null-on-null)",
+  "result": "late significant new genotypes, neutral twin vs its 8 RB shadows: predators 0 vs 1-2, 1 vs 0-5, 0 vs 0-3; prey 4 vs 13-24, 3 vs 17-23, 4 vs 13-22"
+ },
+ "recommendation": "Before using an RB or census shadow as the O reference in a spatial world, run this null-on-null check on the world's neutral twin; if the twin falls below its shadows, calibrate a* on the twin (o_measure.report with the twin as reference), as the coevbits findings did. Hash Chemistry and BFF, where c30 calibrated the shadows, are well mixed, so this does not touch those results.",
+ "limits": "One world, three seeds, one Lc and window; the twin's constant capture also removes the variance in predator success, so it is slightly less drift-prone than a twin with shuffled success (the shuffled twin in 20261026T0735 gave even lower late counts, 0-1).",
+ "compute": {
+  "cpu_minutes": 12
+ }
+}

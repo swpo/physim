@@ -1,0 +1,12 @@
+[active-nematic-cargo] seed 13: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  61.4s
+  frame 40/200  123.0s
+  frame 60/200  182.0s
+  frame 80/200  239.4s
+  frame 100/200  300.6s
+  frame 120/200  361.2s
+  frame 140/200  422.8s
+  frame 160/200  484.0s
+  frame 180/200  546.7s
+  frame 200/200  609.0s
+  -> collective/contrib/20261026T0805-c38-review-nematic-cargo/rerun/kappa0_seed13/FACTS.md  (609s sim)

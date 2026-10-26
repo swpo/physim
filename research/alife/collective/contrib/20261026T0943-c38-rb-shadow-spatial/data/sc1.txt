@@ -1,0 +1,2 @@
+b10N 1 pred a* 286 twin itself late 1 its RB shadows [0, 1, 2, 2, 2, 2, 3, 5]
+b10N 1 prey a* 4461 twin itself late 3 its RB shadows [17, 18, 18, 18, 19, 20, 22, 23]

@@ -1,0 +1,35 @@
+{
+ "id": "20261026T0950-c38-coevbits-bigbox",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:coevbits-o-robustness",
+ "title": "Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, initial populations scaled) predators again beat their neutral twin (19, 27, 21 vs 3, 3, 3 late significant new genotypes), prey stay neutral (38-45 vs 41-46), and the time-shift dip is present on 3/3 seeds",
+ "summary": "Same world as 20261026T0735-c38-coevbits-predator-o (nb 20, w 10) with the box enlarged 1.5x per side at the same food-cell size (L 192, G 96, Np0 2250, Nq0 68; run_bigbox.sh), 3 seeds x 200k steps, each with its constant-capture twin. Populations: 980-1627 prey and 416-526 predators at the end (about 2x the L=128 runs). Late significant new genotypes (a* = 99.9th percentile of the twin's early activity, Lc = win = 10000): predators 19, 27, 21 vs 3, 3, 3; prey 45, 38, 42 vs 43, 41, 46. Time-shift capture of prey at lag -40k/-8k/0/+8k/+40k by predators at t: 0.39/0.39/0.33/0.28/0.35, 0.41/0.40/0.34/0.29/0.34, 0.37/0.39/0.33/0.29/0.36. The predator excess (about 7x the twin, against 6-8x at L=128) and the prey-led chase do not depend on box size over this range.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0937-c38-coevbits-robust",
+  "20261026T0915-c38-q-coevbits-o-claim"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "data/tc_big.txt",
+  "data/ts_big.txt",
+  "data/big_vs_bigN_twincal_lc10000.json",
+  "run_bigbox.sh"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "correlated bit-string matching between coevolving predator and prey particles, larger box",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "constant-capture neutral twin per seed; a* from the twin",
+  "result": "predators real/twin 19/3, 27/3, 21/3; prey 45/43, 38/41, 42/46; time-shift dip present in 3/3 (lag 0 0.33-0.34 vs +8k 0.28-0.29)"
+ },
+ "limits": "Three seeds, 200k steps; the twin's realised capture is matched on average only; no figure beyond the text tables (the profiles are in big_timeshift.json); the parent's drivebits.py and timeshift2.py (20261026T0937) regenerate everything.",
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

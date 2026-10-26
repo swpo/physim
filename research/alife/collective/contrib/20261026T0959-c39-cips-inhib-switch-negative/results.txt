@@ -1,0 +1,3 @@
+switch8000_s3 n_comp every 500 t: [0, 0, 0, 0, 0, 1, 1, 3, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 6, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] persistent splits 0
+switch8000_weak_s3 n_comp every 500 t: [0, 0, 0, 0, 0, 1, 1, 3, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9] persistent splits 0
+inhib_DI002_kI01/seed3 n_comp every 500 t: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] persistent splits 0
