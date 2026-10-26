@@ -1,0 +1,16 @@
+== lysis_seed5
+render frame 0: cells 15, kind-1 (predator) cells 9, kind-0 6
+render frame 76: cells 3, kind-1 (predator) cells 2, kind-0 1
+render frame 151: cells 3, kind-1 (predator) cells 2, kind-0 1
+render frame 227: cells 2, kind-1 (predator) cells 2, kind-0 0
+render frame 300: cells 4, kind-1 (predator) cells 4, kind-0 0
+- components: final 5, mean 1.8, max 7; occupancy final 0.03
+- replication (lineage window K = 20 frames = time 20, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 3, merge/split ratio n/a, nucleations 54
+== nolysis_seed5
+render frame 0: cells 15, kind-1 (predator) cells 9, kind-0 6
+render frame 76: cells 2, kind-1 (predator) cells 0, kind-0 2
+render frame 151: cells 6, kind-1 (predator) cells 0, kind-0 6
+render frame 227: cells 26, kind-1 (predator) cells 0, kind-0 26
+render frame 300: cells 7, kind-1 (predator) cells 0, kind-0 7
+- components: final 0, mean 2.7, max 14; occupancy final 0.00
+- replication (lineage window K = 20 frames = time 20, default): splits 5, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 4, merge/split ratio 0.8, nucleations 191
