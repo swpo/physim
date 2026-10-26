@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T01:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T01:30Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 33%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 0.8** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -10,12 +12,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c25 | `R:20261026T0115-c30-complex-hash-contests#finding` | review |
-| c27 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | review |
-| c28 | `R:20261026T0117-c26-predator-persistence-sizes#finding` | review |
-| c29 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c32 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | review |
-| c26 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c25 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c27 | `SYN` | synthesis due |
+| c28 | `R:lab1-particle-life-sporecell2-lysis#c1` | review |
+| c29 | `R:lab1-particle-life-sporecell2-lysis#c1` | review |
+| c32 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c26 | `F:ecology` | your exploration focus |
 | c30 | `F:hash-chemistry` | your exploration focus |
 | c31 | `F:crawler-phase-field` | your exploration focus |
 
@@ -33,16 +35,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBR: 1 more supporting re-run(s); SM: 2 more supporting re-run(s); disputed: M (1 for, 1 against) | c32 |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBR: 1 more supporting re-run(s); SM: 2 more supporting re-run(s); disputed: M (1 for, 1 against) | c29, c32 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 13 against) | - |
-| `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | provisional | 1 more replicated review(s) | c27 |
-| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | c29 |
-| `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0115-c30-complex-hash-contests#finding` | `F` (+0) | hash-chemistry | Complex Hash Chemistry (explicit multiset complexes that contest a nei | c30 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0055-c27-frey-no-division#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stron | c27 | provisional | 1 more replicated review(s) | c28 |
-| `R:20261026T0101-c31-layer-holds-cargo#finding` | `F` (+0) | crawler-phase-field | Interim (C:contained-swimmers): the crawler's self-made layer sweeps a | c31 | provisional | 1 more replicated review(s) | c26 |
-| `R:20261026T0117-c26-predator-persistence-sizes#finding` | `F` (+0) | lenia | Lenia specialist predator persistence vs arena size, five sizes x 2 se | c26 | submitted | 2 more replicated review(s) | - |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
+| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | c27 |
+| `R:20261026T0117-c26-predator-persistence-sizes#finding` | `F` (+0) | lenia | Lenia specialist predator persistence vs arena size, five sizes x 2 se | c26 | submitted | 2 more replicated review(s) | c25, c28 |
+| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | c26 |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
@@ -124,8 +122,9 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0003-c26-lenia-predator-arena#finding` by c27 since 2026-10-26T01:06Z: c27 reviews c26's Lenia predator arena on fresh seed 3 at 160^2: specialist pred
-- `R:20261025T2347-c25-ringswim-local-drive#finding` by c29 since 2026-10-26T01:06Z: c29 reviews c25 local-drive finding: kernel drive mu 0.75 at kd 0.03 and kd 0.08
-- `R:20261026T0055-c27-frey-no-division#finding` by c28 since 2026-10-26T01:19Z: c28 reviews c27's Frey-condensate no-division probe on fresh seed 4 (chi=-2 at m
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c32 since 2026-10-26T01:19Z: c32 reviews c27's SIBRM motile-repair claim: branched front cuts on fresh seeds 
-- `R:20261026T0101-c31-layer-holds-cargo#finding` by c26 since 2026-10-26T01:23Z: c26 reviews c31's layer-holds-cargo finding on a fresh seed
+- `R:20261026T0117-c26-predator-persistence-sizes#finding` by c28 since 2026-10-26T01:26Z: c28 reviews c26's predator persistence vs arena size on fresh seed 5 (192^2 and 
+- `R:20261026T0015-c25-ringswim-kernel-window#finding` by c27 since 2026-10-26T01:26Z: c27 reviews c25's kd window: kernel drive mu 0.75 at kd 0.03 on fresh seed 9, co
+- `R:lab1-active-droplets-ad5-evolve#c1` by c26 since 2026-10-26T01:26Z: c26 triage-reviews lab 1's ad5-evolve on a fresh seed
+- `R:20261026T0117-c26-predator-persistence-sizes#finding` by c25 since 2026-10-26T01:30Z: c25 reviews c26 predator persistence vs arena size at 192^2 on fresh seeds 3 and
+- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c29 since 2026-10-26T01:30Z: c29 reviews c27 SIBRM ringswim repair: S-kept front cuts on fresh seeds 12 and 1
