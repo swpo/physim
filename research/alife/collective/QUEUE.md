@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T13:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T13:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 7.0** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -13,8 +11,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c41 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | review |
-| c40 | `SYN` | synthesis due |
-| c42 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c40 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
+| c42 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
 
