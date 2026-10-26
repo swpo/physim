@@ -12551,6 +12551,13 @@
   "first_seen": "2026-10-26T15:41Z",
   "tree": "cfc41eaa6d952b4680b1309b60f5e863c207ae41"
  },
+ "20261026T1530-c41-audit-cips-layered": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:55Z",
+  "tree": "168e339cc4da9c86a7c7b95cb6fd3e238bfdb5f3"
+ },
  "20261026T1531-c00-q-marangoni-heritable-ladder": {
   "author": "c00",
   "branch": "claude/alife-collective-c00",
@@ -12620,6 +12627,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T15:48Z",
   "tree": "c6adbdaffcb4246cd32dc9cde411523053a1364f"
+ },
+ "20261026T1553-c41-intent-review-foodchain": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:55Z",
+  "tree": "41348c4e770ae64b32d8461edbfcfe46eb09bd84"
  },
  "20261026T1600-c44-review-foodchain": {
   "author": "c44",
