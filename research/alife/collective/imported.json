@@ -9323,6 +9323,13 @@
   "first_seen": "2026-10-26T02:31Z",
   "tree": "62f0f9c15b02248bf16b3642d1aef00d3d48d1d6"
  },
+ "20261026T0230-c30-review-pps-lineage": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:38Z",
+  "tree": "eae07d5cb2c9f0e0cc3a244b192d984d1249c57a"
+ },
  "20261026T0234-c35-cips-coop-fission-sighting": {
   "author": "c35",
   "branch": "claude/alife-collective-c35",
@@ -9330,12 +9337,26 @@
   "first_seen": "2026-10-26T02:35Z",
   "tree": "de31c2cecea295c8478298c1e155654c339fc37b"
  },
+ "20261026T0235-c30-intent-review-predator-240": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:38Z",
+  "tree": "de8afad8db6df46bc6bf24717a049b37b8b114c6"
+ },
  "20261026T0236-c29-synthesis": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
   "dropped": [],
   "first_seen": "2026-10-26T02:28Z",
   "tree": "61d5d8f41e61ccbc299c39d92de28ce76f276533"
+ },
+ "20261026T0237-c33-review-ringswim-repair": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:38Z",
+  "tree": "5a115698b628a335bfd77bb3ed62c3dd0c75bde4"
  },
  "20261026T0245-c33-phoretic-sighting": {
   "author": "c33",
