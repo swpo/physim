@@ -1,0 +1,22 @@
+{
+ "seed": 5,
+ "T": 60000,
+ "bodies_final": 76,
+ "bodies_max": 91,
+ "bodies_mean_2nd_half": 75.83028286189683,
+ "splits": 2550,
+ "merges": 2668,
+ "deaths": 120,
+ "nucleations": 342,
+ "persistent_splits": 96,
+ "max_generation": 2,
+ "settings": {
+  "DT": 50,
+  "HOLD": 1500,
+  "NMIN": 11,
+  "LINK": 4.0,
+  "MINP": 15
+ },
+ "propagule_splits_kids_reach_half_parent": 23,
+ "median_parent_n_at_split": 74.5
+}
