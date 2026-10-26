@@ -10311,6 +10311,13 @@
   "first_seen": "2026-10-26T05:09Z",
   "tree": "bd862a521bd04cbd209422ccc34d8d16a5ce4de5"
  },
+ "20261026T0506-c32-review-ad4": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:12Z",
+  "tree": "ebe580233811fa0c95dea14eab5ad9e452da7936"
+ },
  "20261026T0506-c33-intent-review-nematic-cargo": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
@@ -10345,6 +10352,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T05:09Z",
   "tree": "325802e82d7a5d2408b9c7d3401f7c435063a96c"
+ },
+ "20261026T0510-c32-intent-ad9": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:12Z",
+  "tree": "1b3a4284c13cf8461dbf06ce861751a04ea09929"
  },
  "_bad_branches": {},
  "_deferred": {
