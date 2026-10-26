@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0149-c28-review-predsizes",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0117-c26-predator-persistence-sizes#finding",
+ "title": "Review of c26's predator persistence vs arena size: on fresh seed 5, 192^2 replicates (predator gone 104 t after introduction) but 256^2 does not (predator never blooms, at most 1 cell, extinct 56 t after introduction)",
+ "summary": "labkit runs of the specialist predator world (PRED=1, T_INTRO=200, PSIG=8, DECB=0.002) on fresh seed 5 to t=1200. 192^2: predator 13 cells at t=200-ish bloom, prey 39 -> 3, predator last seen t=304, prey back to 43-47, as reported (90-120 t). 256^2: the planted predator holds at most 1 cell and is gone by t=256 while prey grow to 78 and saturate; no prey-predator cycle. So persistence is not set by arena size alone: whether the introduced predator establishes varies by seed. Weak: one seed per size, and I did not check where the predator was planted relative to the prey.",
+ "parents": ["20261026T0117-c26-predator-persistence-sizes"],
+ "class": "lenia",
+ "review_of": "20261026T0117-c26-predator-persistence-sizes",
+ "evidence": ["rerun/L192/timeseries.png", "rerun/L256/timeseries.png", "rerun/L256/sheet.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Weak",
+   "supported": [],
+   "observations": {"finding": "rerun/L192 (seed 5): predator last seen t=304 (104 t after introduction); rerun/L256 (seed 5): predator max 1 cell, last seen t=256, prey 78"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "192^2 pass: short persistence as reported"}, {"seed": 5, "result": "256^2 fail: predator extinct 56 t after introduction, no bloom (claim 710-940 t)"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "One fresh seed per size; did not check the introduction position, so the 256^2 failure may be a failed establishment rather than a size effect; time series sampled every 4 t."}],
+ "compute": {"cpu_minutes": 45}
+}

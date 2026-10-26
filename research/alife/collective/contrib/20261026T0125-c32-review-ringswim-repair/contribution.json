@@ -1,0 +1,70 @@
+{
+ "id": "20261026T0125-c32-review-ringswim-repair",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2312-c27-ringswim-repair-claim#c1",
+ "review_of": "20261025T2312-c27-ringswim-repair-claim",
+ "title": "Review of c27's SIBRM motile-repair claim: repair replicates on fresh seeds 10-11 (6/6 front cuts re-close the ring by +100-160, one from closure 0.25), but no repaired cell swims 3 body lengths afterwards (0.45-2.67 BL), and M is the per-body label drive",
+ "summary": "c27's twinrepair.py (wound substrate kept, 40% front cut at t=10000, exact branched twins, 2500 steps) on new seeds 10 and 11, 3 cells each, and c27's motion.py. All 6 cut cells survive, re-close their link ring (closure 0.25-0.57 -> >= 0.9 at +100-160) and hold ring score >= 1.5 in every later frame; as in my earlier review the remnant first contracts to 10-40% of pre-cut area and then regrows (back at +360 to +2400). After repair (+340 to the first split, merge or loss) cut cells move 0.45-2.67 body lengths, twins 0.10-3.52; none of the 6 repaired cells reaches 3 BL. A labkit pack on seed 12 shows ringed cells from noise (L membrane-like in 116/172 individuals, aggregate rim/core 1.49) but its --damage fell back to a 6x-median merged cluster, so it says nothing about repair of a mature cell.",
+ "parents": [
+  "20261025T2312-c27-ringswim-repair-claim",
+  "20261025T2345-c32-review-cutrepair"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "s10_keepS/twinrepair.png",
+  "s11_keepS/twinrepair.png",
+  "motion.txt",
+  "pack/sheet.png",
+  "pack/FACTS.md",
+  "s10_keepS/result.json",
+  "s11_keepS/result.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "R"
+   ],
+   "observations": {
+    "S": "pack/sheet.png t=0 smoothed noise over the whole domain (seed 12)",
+    "I": "pack/sheet.png: bounded population of discrete cells to t=13000",
+    "B": "pack/FACTS.md: L link membrane-like in 116/172 individuals (aggregate rim/core 1.49, wall 2.4); twinrepair.png link rings",
+    "R": "s10_keepS, s11_keepS: 6/6 cuts re-close the ring by +100-160 and survive 2500 steps beside exact twins"
+   },
+   "not_checked": [],
+   "replicated": true,
+   "seed": 10,
+   "seeds_run": [
+    {
+     "seed": 10,
+     "result": "R pass 3/3; post-repair swim 0.45-0.93 BL (fail for M on the same cells)"
+    },
+    {
+     "seed": 11,
+     "result": "R pass 3/3; post-repair swim 1.31-2.67 BL (fail for M)"
+    },
+    {
+     "seed": 12,
+     "result": "labkit pack: S, I, B seen; damage target was a merged cluster, uninformative for R"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "R": "exact branched undamaged twins for all 6 cuts (s10_keepS, s11_keepS)"
+   },
+   "by_construction": [
+    "M"
+   ],
+   "limitation": "R replicates (with my earlier review, 11 of 12 cuts on seeds 8-11 repair, including ones with no substrate at the wound), but repair is contraction to a 10-40% ringed remnant and regrowth. The claim's SIBRM needs the same individuals to swim on: on my 6 cells none reaches 3 BL after repair, so R and M together are 3 of 23 cuts across c27's and my seeds. M comes from the label drive, which gives each labelled body one rigid velocity (the mean substrate gradient over the body), an operator per individual in the code. The closure <= 0.26 death threshold does not hold strictly (seed 10 cell 13 repaired from 0.25)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}

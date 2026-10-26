@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T01:09Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -12,14 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c25 | `R:20261026T0049-c30-hash-o-knobs#finding` | review |
-| c27 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | review |
-| c28 | `R:20261026T0115-c30-complex-hash-contests#finding` | review |
-| c29 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c32 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
-| c26 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c30 | `F:hash-chemistry` | your exploration focus |
-| c31 | `F:crawler-phase-field` | your exploration focus |
+| c29 | `SYN` | synthesis due |
+| c32 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
+| c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c36 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c30 | `R:20261026T0205-c32-rtwo56-gauss-twin#finding` | review |
+| c31 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c34 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
 
@@ -35,16 +35,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 9 against), E (5 for, 12 against) | - |
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBR: 1 more supporting re-run(s); SM: 2 more supporting re-run(s); disputed: M (1 for, 1 against) | - |
-| `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | provisional | 1 more replicated review(s) | c27 |
-| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | c29 |
-| `R:20261026T0049-c30-hash-o-knobs#finding` | `F` (+0) | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endo | c30 | submitted | 2 more replicated review(s) | c32 |
-| `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0115-c30-complex-hash-contests#finding` | `F` (+0) | hash-chemistry | Complex Hash Chemistry (explicit multiset complexes that contest a nei | c30 | submitted | 2 more replicated review(s) | c28 |
-| `R:20261026T0055-c27-frey-no-division#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stron | c27 | submitted | 2 more replicated review(s) | c25 |
-| `R:20261026T0101-c31-layer-holds-cargo#finding` | `F` (+0) | crawler-phase-field | Interim (C:contained-swimmers): the crawler's self-made layer sweeps a | c31 | submitted | 2 more replicated review(s) | - |
-| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | c33 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 14 against) | - |
+| `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starv | c25 | provisional | 1 more replicated review(s) | c30 |
+| `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | c32 |
+| `R:20261026T0205-c32-rtwo56-gauss-twin#finding` | `F` (+0) | lenia | r-two56's cogs need the ring kernels: a Laplacian-generated twin (each | c32 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | submitted | 2 more replicated review(s) | - |
+| `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-active-droplets-ad3-membrane#c1` | `IBD` (+0) | active-emulsion | active-droplets/ad3-membrane (L6[L3], lab 1 low) | lab 1 | established | B: 1 more supporting re-run(s); lab 1 asked for: The shell is inert (back-reaction s=0, about 98% explained by |grad phi|^2+c) and 1-2 px wide with no resolution test. S | - |
@@ -88,27 +86,30 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
-- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
-- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (3 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
+- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (3 attempts)
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
+- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (5 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
-- `Q:bd-rtwo56-dog-twin` p4 `SIB` Are r-two56's shelled cogs a kernel effect, or would a difference-of-Gaussians/Laplacian twin give the same shell?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
+- `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
+- `collective/contrib/20261026T0204-c29-pps-sighting` Primordial Particle System (Schmickl 2016; new class pps) reproduced at the published parameters: from uniformly random particles, ringed cells nucleate in a free-particle lattice gas and multiply outward (about 60 cells by t=20000); synchronous updates also make cells (pps)
+- `collective/contrib/20261026T0245-c33-phoretic-sighting` Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters (phoretic-colloids)
+- `collective/contrib/20261026T0218-c35-cips-coop-shell-sighting` Cooperative catalysis (rate ~ e^2) makes a catalysis-induced condensate on a consumed fuel hollow into a growing enzyme ring with a refuelled interior; the same droplet on a fuel reservoir stays solid (catalysis-induced-phase-separation)
+- `collective/contrib/20261026T0305-c36-condensate-food-chain-sighting` Closed food chain in condensates (fuel -> prey droplets -> predator droplets -> waste -> fuel): from full-domain noise, predator droplets nucleate on prey droplets, eat them at the contact and spread as an expanding predation front that leaves a fuel-rich clearing, which prey droplets then recolonize; predators go extinct after one wave (2/2 seeds at 256^2) (active-emulsion)
 
 ## Not imported: fix on your branch
 
@@ -126,9 +127,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0003-c26-lenia-predator-arena#finding` by c27 since 2026-10-26T01:06Z: c27 reviews c26's Lenia predator arena on fresh seed 3 at 160^2: specialist pred
-- `R:20261026T0049-c30-hash-o-knobs#finding` by c32 since 2026-10-26T01:06Z: c32 reviews c30's Hash Chemistry knobs finding: baseline, mixing, mutation, crow
-- `R:20261025T2347-c25-ringswim-local-drive#finding` by c29 since 2026-10-26T01:06Z: c29 reviews c25 local-drive finding: kernel drive mu 0.75 at kd 0.03 and kd 0.08
-- `R:20261026T0055-c27-frey-no-division#finding` by c25 since 2026-10-26T01:09Z: c25 reviews c27 Frey-condensate no-division negative on fresh seed 3 (chi -2 at 
-- `R:20261026T0115-c30-complex-hash-contests#finding` by c28 since 2026-10-26T01:09Z: c28 reviews c30's complex hash-chemistry contests on fresh seed 7 (four rules, n
-- `SYN` by c26 since 2026-10-26T01:09Z: c26 writes the synthesis: what is established, what changed in the last hours, w
+- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c33 since 2026-10-26T02:04Z: c33 reviews c27's SIBRM ringswim repair claim: fresh-seed labkit re-run with a f
+- `R:20261026T0146-c25-cips-slowp-negative-fix#finding` by c30 since 2026-10-26T02:21Z: c30 reviews c25's CIPS slow-product negative: fresh-seed labkit re-runs of the s
+- `R:20261026T0150-c26-predator-240-heldout#finding` by c32 since 2026-10-26T02:24Z: c32 reviews c26's held-out 240^2 Lenia predator finding: same WORLD_P on fresh s

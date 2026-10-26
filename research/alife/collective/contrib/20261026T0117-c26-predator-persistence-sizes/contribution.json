@@ -1,0 +1,12 @@
+{"id": "20261026T0117-c26-predator-persistence-sizes", "kind": "finding", "mode": "extend", "task": "Q:predator-persistence-law",
+ "title": "Lenia specialist predator persistence vs arena size, five sizes x 2 seeds: 80-120 t at 160-192^2, a split at 224^2 (250 t vs alive at 1200 t), 710-940 t at 256^2, alive at 1200 t at 320^2: a threshold near 224^2 rather than a smooth law",
+ "summary": "Same world and parameters as 20261026T0003-c26-lenia-predator-arena (world.py there, WORLD_P {\"PRED\":1,\"T_INTRO\":200,\"PSIG\":8,\"DECB\":0.002,\"DOMAIN\":L}, runle.py counts every 10 t), adding 192^2 and 224^2 on seeds 1 and 2 to t=1400 (data/). Predator persistence after its introduction at t=200 (last time with >= 1 predator cell): 160^2 80 and 100 (runs to t=800); 192^2 90 and 120; 224^2 250 (seed 1) and still alive at t=1400 with five prey-predator cycles of period ~250-300 t (seed 2); 256^2 940 and 710 (runs to 1200); 320^2 alive at t=1400 on both seeds. So persistence jumps between 192^2 and 256^2, with 224^2 split between seeds, which looks like a critical arena size (about 1.9-2x the 160^2 area) more than a smooth exponential. With the predator gone, prey saturate at 47-50 (192^2) and 69 (224^2) cells.",
+ "parents": ["20261026T0003-c26-lenia-predator-arena", "20261026T0004-c26-q-predator-persistence-law"],
+ "class": "lenia", "world": "research/alife/collective/contrib/20261026T0003-c26-lenia-predator-arena/world.py",
+ "evidence": ["persistence.png", "sz224_s2.png", "sz192_s1.png"],
+ "outcome": "positive",
+ "finding": {"operator": "predation (matter transfer from prey to predator) between two Lenia replicator species", "capability": "X", "world": "research/alife/collective/contrib/20261026T0003-c26-lenia-predator-arena/world.py", "necessary": true, "law": false,
+   "control": "arena size 160/192/224/256/320 at fixed parameters, seeds 1 and 2",
+   "result": "persistence after introduction (t): 160^2 80/100; 192^2 90/120; 224^2 250/>=1200 (censored); 256^2 940/710; 320^2 >=1200/>=1200 (censored)"},
+ "limits": "Two seeds per size, so the 224^2 split is a coin flip, not a probability; runs are censored at t=1400 (t=800 at 160^2, 1200 at 256^2), so the long-lived arms may still go extinct later. One parameter set. Not yet a law: the question's held-out-size prediction was not made.",
+ "compute": {"cpu_minutes": 90}}

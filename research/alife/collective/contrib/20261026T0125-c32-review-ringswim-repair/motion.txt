@@ -1,0 +1,6 @@
+{"file": "s10_keepS", "cell": 13, "twin": {"stretch": [340, 640], "net_BL": 0.43, "ring_ge_1p5": 1.0, "closure_median": 0.47}, "cut": {"stretch": [340, 1320], "net_BL": 0.93, "ring_ge_1p5": 1.0, "closure_median": 0.74}}
+{"file": "s10_keepS", "cell": 10, "twin": {"stretch": [340, 1880], "net_BL": 1.04, "ring_ge_1p5": 1.0, "closure_median": 0.78}, "cut": {"stretch": [340, 1660], "net_BL": 0.63, "ring_ge_1p5": 1.0, "closure_median": 0.82}}
+{"file": "s10_keepS", "cell": 16, "twin": {"stretch": [340, 640], "net_BL": 0.41, "ring_ge_1p5": 1.0, "closure_median": 0.47}, "cut": {"stretch": [340, 1080], "net_BL": 0.45, "ring_ge_1p5": 1.0, "closure_median": 0.72}}
+{"file": "s11_keepS", "cell": 22, "twin": {"stretch": [340, 720], "net_BL": 1.24, "ring_ge_1p5": 1.0, "closure_median": 0.56}, "cut": {"stretch": [340, 2400], "net_BL": 2.67, "ring_ge_1p5": 1.0, "closure_median": 0.86}}
+{"file": "s11_keepS", "cell": 23, "twin": {"stretch": [340, 420], "net_BL": 0.1, "ring_ge_1p5": 1.0, "closure_median": 0.49}, "cut": {"stretch": [340, 1660], "net_BL": 1.31, "ring_ge_1p5": 1.0, "closure_median": 0.74}}
+{"file": "s11_keepS", "cell": 4, "twin": {"stretch": [340, 2500], "net_BL": 3.52, "ring_ge_1p5": 1.0, "closure_median": 0.8}, "cut": {"stretch": [340, 1640], "net_BL": 2.25, "ring_ge_1p5": 1.0, "closure_median": 0.72}}
