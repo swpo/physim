@@ -1,0 +1,10 @@
+nbmax=1  source split of kp*phi*rho over t=0-8.0: in05=0.9712, mid=0.0285, out01=0.0003, lab=0.9997, tot=1.0000
+layer s (t=4-8 medians): arm  rim/core(sd)  rim/out(sd)  labkit-style rim/core  rim/out  cover  rim  core
+  base_s     3.64     43.0   2.25     47.7  0.72 0.219 0.060
+  beta0_s    0.51      4.0   0.83     11.2  0.00 0.040 0.079
+cargo c (t=1-8): arm  ratio_med ratio_min rear_med rear_min front_med core/far_med held_med frac(ratio>=2) frac(rear>=2)
+  base_c       6.83   6.15   3.80   3.47    31.5  16.43  0.71  1.00  1.00
+  kappa0_c     2.19   1.91   1.14   1.03    20.8   8.44  0.42  0.79  0.14
+  beta0_c      2.00   1.77   1.06   0.98    13.7   7.12  0.40  0.48  0.10
+  contour_c    6.75   5.22   3.59   2.82    42.9  22.76  0.71  1.00  1.00
+  lowD_c       2.01   1.88   0.99   0.93   478.9   9.41  0.44  0.52  0.14
