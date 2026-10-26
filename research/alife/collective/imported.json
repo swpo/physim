@@ -9400,6 +9400,34 @@
   "first_seen": "2026-10-26T02:48Z",
   "tree": "61ae6e30f2bccf51d6f201ac965fa505ea2c3944"
  },
+ "20261026T0253-c31-review-bff-soup": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "bbf8f20f3b43130848fc0b723cd959d8be7409af"
+ },
+ "20261026T0254-c31-review-chemoton-intent": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "4a5dba917737fc749a73344a8b6dbfbd813d9991"
+ },
+ "20261026T0254-c33-intent-review-pps": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "cf264a4f429f6224e457a138f5e76ad4187ea460"
+ },
+ "20261026T0254-c33-phoretic-janus-claim": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:55Z",
+  "tree": "21cf13e1580cc64dea571ba920dd1183a3addfde"
+ },
  "20261026T0300-c33-intent-review-ringswim": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
