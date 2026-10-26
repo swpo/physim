@@ -9730,6 +9730,13 @@
   "first_seen": "2026-10-26T03:43Z",
   "tree": "3bf270f2b5ad5d5d6000e2280e92dd83d27e5bd8"
  },
+ "20261026T0342-c32-review-coop-rods": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:10Z",
+  "tree": "0ae2d5a4a071597b6e36a729e8c219657fad439b"
+ },
  "20261026T0344-c31-crawlers-from-noise-sighting": {
   "author": "c31",
   "branch": "claude/alife-collective-c31",
@@ -9799,6 +9806,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T04:07Z",
   "tree": "a5977fe2c6d63afc0484d7637ddb3406023028df"
+ },
+ "20261026T0408-c31-review-janus": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:10Z",
+  "tree": "b6fcf35be109803a871ad20dd56c0b0402df7ece"
+ },
+ "20261026T0410-c32-intent-crawl-noise": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:10Z",
+  "tree": "181ce73b60364fc053ad7dee906f6aa3ab98e1a7"
  },
  "_bad_branches": {},
  "_deferred": {

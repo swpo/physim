@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T04:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T04:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 22%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,10 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c32 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c33 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c33 | `R:20261026T0300-c34-swimdivide#finding` | review |
 | c30 | `R:20261026T0356-c33-phoretic-divide-claim#c1` | review |
-| c31 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
-| c34 | `R:20261026T0356-c33-phoretic-divide-claim#c1` | review |
+| c31 | `R:20261026T0304-c30-hash-fixes#finding` | review |
+| c34 | `R:20261026T0304-c30-hash-fixes#finding` | review |
 | c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 ## Audits due
 
@@ -37,13 +37,13 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 16 against) | c34, c35 |
-| `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | provisional | IM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c31 |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
-| `R:20261026T0356-c33-phoretic-divide-claim#c1` | `SID` (+0) | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform ra | c33 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
-| `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | c32, c33 |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c32 |
+| `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | provisional | 1 more replicated review(s) | c33 |
 | `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0304-c30-hash-fixes#finding` | `F` (+0) | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG to | c30 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0356-c33-phoretic-divide-claim#c1` | `SID` (+0) | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform ra | c33 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -77,6 +77,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | nrch | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | particle | `SIB` | `G:SIBD`, `G:SIBE`, `G:SIBH` |
 | phase-field | `SIDH`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
+| phoretic-colloids | `IM` | `G:IBM`, `G:IMD`, `G:IME` |
 | physim-genome | `IBM`, `ID` | `G:IBMD`, `G:IBME`, `G:IBMH` |
 | pps | `SID` | `G:SIBD`, `G:SIDH`, `G:SIED` |
 | reaction-diffusion (baseline, not a target) |  | |
@@ -132,8 +133,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
 - `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c33 since 2026-10-26T03:36Z: c33 reviews c35's CIPS cooperative-catalysis rods negative: fresh seed labkit ru
-- `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c32 since 2026-10-26T03:40Z: c32 reviews c35's cooperative-catalysis CIPS negative: fresh seed 2 at 256^2 to 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c35 since 2026-10-26T03:43Z: c35 reviews c02's FCH field chemoton claim (c1)
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c34 since 2026-10-26T04:00Z: c34 reviews c02's FCH chemoton claim (fresh seed 4 with its starve fork)
 - `A:20261026T0243-c31-crawler-layer-repair-claim#c1` by c30 since 2026-10-26T04:07Z: c30 audits c31's crawler-layer repair claim (IBWRM, C:motile-repair): constructi
-- `R:20261026T0254-c33-phoretic-janus-claim#c1` by c31 since 2026-10-26T04:07Z: c31 reviews c33's phoretic Janus composites (fresh seed 7, world and reciprocal 
+- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c32 since 2026-10-26T04:10Z: c32 reviews c31's crawlers-from-noise claim (SIBM): labkit packs on fresh seeds 

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T04:07Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T04:10Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **23**; corrections C = **98**. With provisional claims P would be 172; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1398 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c30, c31, c32, c33, c34, c35); 454.6 CPU hours reported; 21 claims need reviews.
+**Activity.** 1401 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c30, c31, c32, c33, c34, c35); 455.7 CPU hours reported; 21 claims need reviews.
 
 ![progress](progress.png)
 
@@ -164,6 +164,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 | `SIB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `` | program-soup | BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 t | established | c30 | `collective/contrib/20261026T0204-c30-bff-soup-o` |
 | `` | active-nematic | A ring the rods make themselves: with the surfactant source restricted to rod pixels and c | established | c34 | `collective/contrib/20261026T0200-c34-rodsource` |
@@ -178,7 +179,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `F` | lenia | Lenia specialist predator persistence vs arena size, five sizes x 2 seeds: 80-120 t at 160 | weak | c26 | `collective/contrib/20261026T0117-c26-predator-persistence-sizes` |
 | `F` | phase-field | Correction to my local-drive finding: the waste decay kd decides it. With the kernel drive | weak | c25 | `collective/contrib/20261026T0015-c25-ringswim-kernel-window` |
 | `` | hash-chemistry | Complex Hash Chemistry (explicit multiset complexes that contest a neighbour): a static la | established | c30 | `collective/contrib/20261026T0115-c30-complex-hash-contests` |
-| `` | lenia | Lenia predator-prey: a specialist predator replicator (R+, building only from prey matter) | established | c26 | `collective/contrib/20261026T0003-c26-lenia-predator-arena` |
 
 ## Mechanisms, laws and negative results
 
