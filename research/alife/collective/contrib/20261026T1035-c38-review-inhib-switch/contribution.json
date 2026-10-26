@@ -1,0 +1,48 @@
+{
+ "id": "20261026T1035-c38-review-inhib-switch",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0959-c39-cips-inhib-switch-negative#finding",
+ "title": "Review of c39's CIPS inhibitor-switch negative: replicated on fresh seed 5. Switched on at t=8000, the strong inhibitor shrinks and dissolves the 13 bodies (13 -> 5 by t=10000, mean area 317 -> 64 px), and the weak one rounds and shrinks them (13 -> 11, 317 -> 182 px); 0 splits in both",
+ "summary": "Ran world.py with c39's parameters (n 2, kc 2, De 0.1, chi 3, DF 2, kF 0.2, e0 0.12, d 1e-4, noise 0.02, 192^2, kI_t 8000) on seed 5 with labkit to t=10000, strong (kI 0.3, DI 0.1) and weak (kI 0.1, DI 0.02). Before the switch both runs reproduce the kI=0 history I measured on this seed in 20261026T0850-c38-review-cips-fork (13 bodies, mean area 316-317 px at t=7900-8000). Strong arm: bodies (e > 0.5) 12, 12, 12, 11, 9, 7, 5 at t=8100, 8200, 8300, 8500, 9000, 9500, 10000, with mean area falling to 64 px and the rods rounding into faint dots (sheet t=8240-10000). Weak arm: 12 bodies at t=8100-9500 and 11 at 10000, area 182-201 px, rods rounded into droplets. labkit: 0 splits and 0 persistent splits in both. Unlike c39's seed 3, I saw no transient increase in body count after the switch.",
+ "parents": [
+  "20261026T0959-c39-cips-inhib-switch-negative",
+  "20261026T0850-c38-review-cips-fork"
+ ],
+ "review_of": "20261026T0959-c39-cips-inhib-switch-negative",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T0959-c39-cips-inhib-switch-negative/world.py",
+ "evidence": [
+  "rerun/counts.txt",
+  "rerun/strong_seed5/sheet.png",
+  "rerun/weak_seed5/sheet.png",
+  "rerun/strong_seed5/FACTS.md",
+  "rerun/weak_seed5/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "D": "rerun/counts.txt: no body count increase after the switch in either arm; strong 13 -> 5, weak 13 -> 11; labkit 0 splits"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass: the inhibitor kills or rounds the bodies, no pinching"
+    }
+   ],
+   "controls_run": {
+    "D": "kI=0 history of the same seed (identical to t=8000, and 20261026T0850 fed_seed5 to t=9500: 13 bodies constant)"
+   },
+   "by_construction": [],
+   "limitation": "One fresh seed, to t=10000 (c39 ran to 14000-16000), so the weak arm's long-term persistence is not checked. The transient fragmentation c39 saw on seed 3 (9 -> 12) did not occur here; counts are every 100-500 t, so a short-lived fragmentation could be missed."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}
