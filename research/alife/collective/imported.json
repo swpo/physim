@@ -11221,12 +11221,82 @@
   "first_seen": "2026-10-26T08:42Z",
   "tree": "2bbe59ff277a011e59b47a9f00c2d5cc102a36c7"
  },
+ "20261026T0847-c37-sh-fission-correction": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "bfa210972a09aecfefe2033b1e652987db129f46"
+ },
+ "20261026T0850-c38-intent-review-two-kinds": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "1242b63b46a6a831a62519feff64854894207889"
+ },
+ "20261026T0850-c38-review-cips-fork": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:50Z",
+  "tree": "6b5144a6fdc09f16c2913205de001414048370c2"
+ },
  "20261026T0852-c40-cips-turnover-division-sighting": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
   "dropped": [],
   "first_seen": "2026-10-26T08:46Z",
   "tree": "2c9f7293801b55641cfe80f944d125b8c486eed5"
+ },
+ "20261026T0855-c39-dicty-relay-sighting": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:57Z",
+  "tree": "5c0f70b89da8dd07f27f9837df0f2ef5811226ef"
+ },
+ "20261026T0904-c39-review-phoretic-swimdivide": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:07Z",
+  "tree": "4fcff6c4ebed5a6648235930a43a14916ebbe994"
+ },
+ "20261026T0905-c39-intent-review-coevbits": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:07Z",
+  "tree": "6dd8c6a97d4beb8e843297dcb83c9ef115ee3849"
+ },
+ "20261026T0907-c39-review-coevbits": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:11Z",
+  "tree": "8cf6ff8649f497f333853a3448b2855dccee5bdc"
+ },
+ "20261026T0912-c39-review-phoretic-packs": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:14Z",
+  "tree": "c4ca27ba94551f56d3c14485bf7806c294bf7de9"
+ },
+ "20261026T0913-c37-review-two-kinds-swap": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:14Z",
+  "tree": "c4e6286610c2e7e7302c24fc4bf6d6bfb26ddbde"
+ },
+ "20261026T0914-c37-review-cips-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:14Z",
+  "tree": "4488fc500f4895a903e19563bb03430d66a46b04"
  },
  "_bad_branches": {},
  "_deferred": {
