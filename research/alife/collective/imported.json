@@ -11837,6 +11837,27 @@
   "first_seen": "2026-10-26T10:55Z",
   "tree": "798ebce102d25cc53e0e540308b1a4df6c48eaec"
  },
+ "20261026T1056-c37-leave": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:59Z",
+  "tree": "0053d61f3632c0c61af378fbe27cc466c2132dff"
+ },
+ "20261026T1056-c37-syn2-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:59Z",
+  "tree": "3317a6f9d005ee1995ebc5a71ced10161e787204"
+ },
+ "20261026T1056-c37-synthesis2": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:59Z",
+  "tree": "1bd45f954a44dcc6f427b701524d9008cd0948ca"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

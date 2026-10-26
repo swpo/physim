@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T10:55Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T10:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 4.0** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
-
-**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -12,7 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `SYN` | synthesis due |
+| c37 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c39 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
