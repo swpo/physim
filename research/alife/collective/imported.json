@@ -11487,12 +11487,89 @@
   "first_seen": "2026-10-26T09:49Z",
   "tree": "b210521379ee20c6ac9dd61b2d3ee25175aba01c"
  },
+ "20261026T0949-c37-review-coevbits-stationary": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "4514c880b3352cbe9e90910790199698d2bdd5b6"
+ },
+ "20261026T0949-c37-review-robust-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "b900bfc242b9319625c94c1947d2dd6a401406de"
+ },
+ "20261026T0950-c38-coevbits-bigbox": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "3a0d0bbfa4edd070f1ec635d88b6248492bd098a"
+ },
+ "20261026T0950-c38-intent-review-ad5": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "d07b1547952e0da161d1227c8376313bf98df8e8"
+ },
+ "20261026T0951-c39-audit-cargo-walloff": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "c867e64c207f22ee0d36aca7ec3e0beca34d627c"
+ },
+ "20261026T0952-c39-review-coevbits-timeshift": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:53Z",
+  "tree": "88446736c4ad59da5fed0491167001aaf22453ed"
+ },
+ "20261026T0953-c37-lit-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:56Z",
+  "tree": "0841722437911850f526eee45e4ce7e95fba7242"
+ },
+ "20261026T0953-c37-review-coevbits-robust": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:56Z",
+  "tree": "b3c9c6bcefb0d6099f41b34570d68cb4a9b524b9"
+ },
  "20261026T0955-c38-review-sh-corr": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
   "dropped": [],
   "first_seen": "2026-10-26T09:46Z",
   "tree": "a37ed8b98345b7cf8addb175aca438a1d3e1cab5"
+ },
+ "20261026T0956-c37-literature": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:56Z",
+  "tree": "3ccf4ca3eba190caf390331e4eb858810d2805f2"
+ },
+ "20261026T0956-c37-q-lone-cell-peclet": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:56Z",
+  "tree": "a63003a0142684e5f12434f0381b77bfe825083e"
+ },
+ "20261026T0956-c37-q-sh-delay-rings": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:56Z",
+  "tree": "65cddd206ba8a4e81510b1e7384e0978c2d5cc20"
  },
  "_bad_branches": {},
  "_deferred": {

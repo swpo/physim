@@ -1,0 +1,16 @@
+== rerun/seed23
+- replication (lineage window K = 20 frames = time 100, default): splits 42, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 4, merges 15, merge/split ratio 0.357, nucleations 10
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.71, fraction >= 2: 0.93
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz ch2: body-frames 504, both >= 1.5: 0.99, median rim/core 2.66, median rim/out 7.49
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.88, fraction >= 2: 1.00
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz ch3: body-frames 504, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=42, median in/out 5.18, fraction >= 2: 0.98
+collective/contrib/c39-audit2-wip/rerun/seed23/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=42, median in/out 3.88, fraction >= 2: 0.95
+== chis0/seed23
+- replication (lineage window K = 20 frames = time 100, default): splits 42, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 4, merges 15, merge/split ratio 0.357, nucleations 10
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.78, fraction >= 2: 1.00
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz ch2: body-frames 504, both >= 1.5: 0.00, median rim/core 0.75, median rim/out 2.07
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.25, fraction >= 2: 0.00
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz ch3: body-frames 504, both >= 1.5: 0.00, median rim/core 1.55, median rim/out 0.40
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=42, median in/out 0.37, fraction >= 2: 0.00
+collective/contrib/c39-audit2-wip/chis0/seed23/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=42, median in/out 0.33, fraction >= 2: 0.00

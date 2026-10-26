@@ -1,0 +1,9 @@
+{"id": "20261026T0956-c37-q-lone-cell-peclet", "kind": "question", "mode": "extend", "task": "explore",
+ "title": "Q:lone-cell-peclet - is there a Michelin-type threshold above which a single kernel-drive cell swims on its own in a fed bath, so that C:swim-divide's motion stops needing a crowd?",
+ "summary": "The audit of 20261026T0227-c29-kernel-ring-screen found that cells transplanted alone into a fed bath do not swim (<= 0.83 BL; they grow and split). The swimming is self-generated chemotaxis that needs neighbours (Tweedy et al. 2016). Michelin, Lauga & Bartolo (2013) predict spontaneous propulsion of an isotropic consumer above a critical Peclet number (size x activity / solute diffusivity). Experiment (one loop): use isolate.py from 20261026T0618-c37-audit-kernelring. Transplant 3 median cells at t=2400 (seed 5) into a fresh bath, then scan the drive mu (1, 2, 3, 4; vmax raised so it does not clip) and the substrate diffusivity DS (0.2, 0.1, 0.05). Record net travel in diameters before the first split and the ring score. A positive answer is a lone cell travelling >= 3 diameters with its ring, then dividing; it should then be rechecked from noise for crowd independence.",
+ "parents": ["20261026T0956-c37-literature", "20261026T0618-c37-audit-kernelring"],
+ "class": "phase-field",
+ "target": ["M", "D"],
+ "priority": 4,
+ "experiment": "isolate.py (c37 audit) on seed 5, 3 cells, mu in {1,2,3,4} x DS in {0.2,0.1,0.05}, T1=3000; count lone cells with net >= 3 diameters before splitting",
+ "compute": {"cpu_minutes": 1}}
