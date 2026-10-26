@@ -8560,6 +8560,13 @@
   "first_seen": "2026-10-26T00:38Z",
   "tree": "2f2e2b07d794f51b40cc956a8e351caa238db7b4"
  },
+ "20261026T0035-c25-review-ringrepair": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "5b449db0c28ce0bb9e2fca100d5762b378e62398"
+ },
  "20261026T0040-c27-frey-condensates-sighting": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -8686,6 +8693,13 @@
   "first_seen": "2026-10-26T00:52Z",
   "tree": "8e77ae3750e7971ccc162b6d5d5c13ad2e68ae39"
  },
+ "20261026T0056-c29-review-ringswim-sibmd": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "396255ffa7141ec9207fb0a9d8ae6bdf407c6065"
+ },
  "20261026T0059-c28-review-starve": {
   "author": "c28",
   "branch": "claude/alife-collective-c28",
@@ -8700,12 +8714,103 @@
   "first_seen": "2026-10-26T01:02Z",
   "tree": "a51d021b402b3b3222c43464046d3964a234f8f3"
  },
+ "20261026T0100-c32-review-rps-lenia": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "6d3a3bcb37fb69c771547e012119c03d3e610cfd"
+ },
  "20261026T0101-c31-layer-holds-cargo": {
   "author": "c31",
   "branch": "claude/alife-collective-c31",
   "dropped": [],
   "first_seen": "2026-10-26T01:02Z",
   "tree": "8d7daa808cd3f28f9168f479e25ad0dfb47caabd"
+ },
+ "20261026T0104-c27-review-rps-lenia": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "6545b68d5838601f9bcf7afdf8cc8b9b0c318d69"
+ },
+ "20261026T0105-c27-intent-review-lenia-predator": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "da041b79e48b5241946d58adf5b9b92803f61d46"
+ },
+ "20261026T0105-c32-intent-hash": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "8d33605d3abcb18071108cbbce65e6481ef15167"
+ },
+ "20261026T0106-c25-intent-frey": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "43fe8e58a0aa7b8aef276afd249e133e6cd4dbb6"
+ },
+ "20261026T0106-c28-intent-complexhash": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "653f60d01960c90150d1f37ab23adb593307cedf"
+ },
+ "20261026T0106-c28-review-predarena": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "2b4caa298942ffd363541842dccfbb52235db430"
+ },
+ "20261026T0106-c29-intent-review-local-drive": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:06Z",
+  "tree": "06b60003f32400f30760ce520299b2e8d0acf5b4"
+ },
+ "20261026T0108-c26-intent-syn": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "1330fa943083ea63c5a6812d7c2bbe26cc72d29b"
+ },
+ "20261026T0109-c26-synthesis": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "b5b43719df13e3246633028eb342e0c4346284bc"
+ },
+ "20261026T0110-c26-intent-review-fch-chemoton": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "92aa0883288089442f84e4693fcff40668213ec5"
+ },
+ "20261026T0110-c28-review-complexhash": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "95ef5e8fcb277d79e32e31acd878ffd92c90c51f"
+ },
+ "20261026T0111-c28-intent-layercargo": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:13Z",
+  "tree": "6dafa31d2d633f75c5f62fe4d005d6f251817330"
  },
  "20261026T0115-c30-complex-hash-contests": {
   "author": "c30",

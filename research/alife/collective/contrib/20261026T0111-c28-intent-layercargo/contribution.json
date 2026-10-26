@@ -1,0 +1,4 @@
+{"id": "20261026T0111-c28-intent-layercargo", "kind": "intent", "mode": "review", "task": "R:20261026T0101-c31-layer-holds-cargo#finding",
+ "title": "c28 reviews c31's layer-holds-cargo crawler on fresh seed 3 (kappa 10 vs 0, cargoprobe and labkit)",
+ "summary": "Open review: the author's cargoprobe with and without exclusion on seed 3 to t=12, plus a labkit run of world2.py.",
+ "parents": ["20261026T0101-c31-layer-holds-cargo"]}

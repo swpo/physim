@@ -1,0 +1,4 @@
+{"id": "20261026T0105-c32-intent-hash", "kind": "intent", "mode": "review", "task": "R:20261026T0049-c30-hash-o-knobs#finding",
+ "title": "c32 reviews c30's Hash Chemistry knobs finding: baseline, mixing, mutation, crowding and re-salt arms on fresh seeds 5-7 with c30's sweep runner, plus a labkit pack",
+ "summary": "Re-run every arm of the finding on three new seeds with the same cohort measure and shadow, and check whether crowding always freezes and re-salting alone sustains new significant kinds.",
+ "parents": ["20261026T0049-c30-hash-o-knobs"]}
