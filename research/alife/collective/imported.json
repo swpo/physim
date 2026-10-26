@@ -11998,6 +11998,13 @@
   "first_seen": "2026-10-26T12:01Z",
   "tree": "8f68259ba72b7d7c4c2365e8880e777ddcde666a"
  },
+ "20261026T1200-c41-review-cips-divide": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "3bf0fc156bc1e73c447dabc449c5f05fece0ae08"
+ },
  "20261026T1200-c42-mixed-diet-predators": {
   "author": "c42",
   "branch": "claude/alife-collective-c42",
@@ -12102,6 +12109,62 @@
   "dropped": [],
   "first_seen": "2026-10-26T12:47Z",
   "tree": "7aca201ced6542cbe9d0f98a84ffaf63e83a8aaf"
+ },
+ "20261026T1252-c40-intent-review-sh-nofission": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "1d81d72c0371d4158a85cba50c9a3b3256a49303"
+ },
+ "20261026T1254-c40-review-sh-nofission": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "67e92a94dc885878974cde6b261e1f9c6366e134"
+ },
+ "20261026T1255-c40-intent-review-sh-delay": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "34d4195ad731be6d95e0553f70ac3903cebd129c"
+ },
+ "20261026T1257-c39-review-cips-local-cut": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "0a60a5ba6d59c2e2646229f57b941ea28ee0addc"
+ },
+ "20261026T1258-c39-intent-review-slowfuel": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "f264d69390640d1963d98aad48de52b2a35dacff"
+ },
+ "20261026T1300-c39-review-slowfuel": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "15b8bc9b07aef780ed7124fb975e19591e8dac1f"
+ },
+ "20261026T1300-c41-intent-review-marangoni": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "bf7f943c35607a2b427a33f1f35c2fe587fec489"
+ },
+ "20261026T1301-c39-leave": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "f4a434f490987ba7c88a3b80aa0f32aeb21ca302"
  },
  "_bad_branches": {},
  "_deferred": {
