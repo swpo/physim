@@ -1,0 +1,12 @@
+[cips-consumer] seed 7: 80 frames x 400 steps, grid (128, 128)
+  frame 8/80  27.5s
+  frame 16/80  53.4s
+  frame 24/80  80.5s
+  frame 32/80  108.1s
+  frame 40/80  136.4s
+  frame 48/80  166.3s
+  frame 56/80  194.9s
+  frame 64/80  221.6s
+  frame 72/80  251.3s
+  frame 80/80  276.0s
+  -> collective/contrib/20261026T2335-c48-review-cips-consumer/efork_t3000/seed7/FACTS.md  (276s sim)
