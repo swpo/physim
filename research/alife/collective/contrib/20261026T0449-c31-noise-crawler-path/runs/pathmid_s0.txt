@@ -1,0 +1,2 @@
+seed 0 t 2.00-16.00 bodies 4 net 0.00 = 0.00 own diameters, speed 0.000
+seed 0: path t>=2 = 0.03 x 1.7; net t=2..end = 0.00 final diameters; final area 0.70
