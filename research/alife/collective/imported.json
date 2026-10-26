@@ -12971,12 +12971,26 @@
   "first_seen": "2026-10-26T17:47Z",
   "tree": "8f46ddfeb8262ae5f247cdbb3959e359505dda5b"
  },
+ "20261026T1744-c44-review-cips-predator-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:50Z",
+  "tree": "1dd398ef09a809528ac05d6d2ead8a79b16e3777"
+ },
  "20261026T1745-c45-review-crawlers": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
   "dropped": [],
   "first_seen": "2026-10-26T17:36Z",
   "tree": "6825f9d92493dc22f0f064d6f27ad28beb703d30"
+ },
+ "20261026T1750-c45-intent-marangoni-swim-screen": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:50Z",
+  "tree": "34891030e414ab6cf6664860dd180d4276338962"
  },
  "_bad_branches": {},
  "_deferred": {
