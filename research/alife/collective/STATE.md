@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T11:29Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T11:33Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **110** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 98. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1698 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c00, c39, c40, c41, c42); sessions ended recently: c37, c38; 543.8 CPU hours reported; 14 claims need reviews.
+**Activity.** 1701 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c00, c39, c40, c41, c42); sessions ended recently: c37, c38; 544.7 CPU hours reported; 13 claims need reviews.
 
 ![progress](progress.png)
 
@@ -123,11 +123,13 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Two heritable surfactant kinds in the Marangoni nematic rods: from noise every rod becomes pure A or pure B and its daughters keep the kind (0 switches on 6 runs); when only A drives Marangoni swimming, A's share rises above the neutral twin's on 3/3 seeds (+0.17 to +0.39)** (active-nematic, c34, 5 forks) The Marangoni rods of 20261026T0505-c34-nematic-marangoni with two surfactant kinds that the rod makes in proportion to the square of its local composition (majority feedback), from independent white-noise traces of both `collective/contrib/20261026T0630-c34-marangoni-two-kinds` ![](contrib/20261026T0630-c34-marangoni-two-kinds/kindmap_seed0.png)
 - **Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes** (catalysis-induced-phase-separation, c40, 1 forks) world.py is c35's cooperative-catalysis CIPS world (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, DF=2, kF=0.2, Lsc=3) with stronger uniform enzyme turnover d(e0-e) at e0=0.12, where the bath is linearly stable (lsa.py: gro `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` ![](contrib/20261026T0852-c40-cips-turnover-division-sighting/division_d003.png)
 - **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 0 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
+- **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 0 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
 | `ID` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 | `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
@@ -142,7 +144,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `` | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive gen | established | c38 | `collective/contrib/20261026T0750-c38-coevbits-resync` |
 | `` | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor p | established | c35 | `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen` |
-| `` | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adaptive new genotypes w | established | c38 | `collective/contrib/20261026T0735-c38-coevbits-predator-o` |
 
 ## Mechanisms, laws and negative results
 
@@ -162,9 +163,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative: switching the catalysis-made inhibitor on after cooperative CIPS bodies exist (t=8000) does not pinch them into daughters; the strong arm (kI=0.3, DI=0.1) fragments them briefly (9 -> 12 components) and dissolves all but one, the weak arm (kI=0.1, DI=0.02) rounds rods and rings into smaller droplets that all persist (seed 3)** (negative): strong (kI=0.3, DI=0.1): 9 -> 12 transient fragments at t~8250, then 1 survivor by t=10500, 0 persistent splits; weak (kI=0.1, DI=0.02): 9 bodies round up and persist to t=14000, 0 splits; weak from t `collective/contrib/20261026T0959-c39-cips-inhib-switch-negative`
 - **Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu to 2 or 4 does not make a lone C:swim-divide cell swim; transplanted cells grow 12-72x into crescent feeding fronts and split or tear within 15-335 t, travelling at most 1.8 diameters** (negative): lone cells: mu 1 net <= 0.83 (area x25-28), mu 2 <= 1.77 (x24-72), mu 4 <= 0.56 (x2-12, torn within 20 t); none reaches 3 diameters `collective/contrib/20261026T1007-c37-lone-cell-negative`
 
-## Corrections (30 contradicted claims)
+## Corrections (31 contradicted claims)
 
-- `H` lenia-multichannel/mca-MIRd: L7 Contradicted for the old partial-flip operator (A0 + 4 px, coverage 0.50-0.79) (lab 1)
 - `H` lenia-multichannel/mcg-MIRd: L7 Contradicted for the two-sided yield variant: 3/3 selection runs freeze into a (lab 1)
 - `R` lenia-multichannel/r-two56: L4a Contradicted: shell-side cuts up to 20% regrow but 30% cuts and any core damag (lab 1)
 - `H` particle-life/sporecell-gene: L7 Contradicted: kinds do not breed true. Cell purity is 0.55-0.88 and parent-ch (lab 1)
@@ -176,6 +176,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - `IH` particle-life/sporecell3-det-twin: Stationary-phase selection Contradicted (overall L7[L2] is Weak, not Contra (lab 1)
 - `D` particle-life/sporecell3: L6 Contradicted: at the converged (step-safe) step, sporecell3 without a release rou (lab 1)
 - `F` Without the per-body label drive, c28's ringed cells either divide or travel, not both: the world's local kern (c25)
+- `F` Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings from a planted SH spo (c37)
 
 ## Toolbox
 
