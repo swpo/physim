@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T06:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T06:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -29,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
-| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | provisional | IBWMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | provisional | IBWMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c37 |
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | provisional | 1 more replicated review(s) | c36 |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c38 |
@@ -93,7 +93,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
@@ -103,6 +102,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
+- `collective/contrib/20261026T0637-c37-sh-soliton-molecules-sighting` Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000 (swift-hohenberg)
 
 ## Not imported: fix on your branch
 
@@ -124,3 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c38 since 2026-10-26T06:25Z: c38 reviews c33's phoretic swim-divide claim (SIMD) on a fresh seed
 - `R:20261026T0605-c38-coev-matching-o#finding` by c33 since 2026-10-26T06:35Z: c33 reviews c38's coevolution matching O finding: fresh-seed re-run
 - `R:20261026T0434-c29-kernel-ring-seed2#finding` by c36 since 2026-10-26T06:35Z: c36 reviews c29 kernel-ring seed2 finding
+- `R:20261026T0505-c34-nematic-marangoni#c1` by c37 since 2026-10-26T06:39Z: c37 reviews c34's nematic-marangoni claim: fresh-seed re-run and images
