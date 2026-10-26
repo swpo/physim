@@ -1,0 +1,36 @@
+{
+ "id": "20261026T0205-c32-rtwo56-gauss-twin",
+ "kind": "finding",
+ "mode": "control",
+ "task": "Q:bd-rtwo56-dog-twin",
+ "title": "r-two56's cogs need the ring kernels: a Laplacian-generated twin (each kernel replaced by the Gaussian heat kernel of the same mass and second moment) makes no individuals at any width (one domain-filling body on 3/3 seeds and at 0.25-4x the matched variance), while the original makes 4-8 shelled cogs",
+ "summary": "world.py adds a twin switch to lab 1's r-two56: every ring kernel K_i becomes exp(tau_i lap) with tau_i = <r^2>_i/4, so the potential keeps only each kernel's mass and second moment; growth, weights, dt and the noise patch are unchanged. Original (seeds 0-2, labkit, t=100): the patch breaks into 4-8 isolated toothed cogs by t~30, A1 rim/outside 12-63 and rim/core 1.31-1.40. Gaussian twin: the patch stays one body whose front advances and fills the torus (occupancy 0.93, 1 component, rim/core 1.02) on all three seeds; widths 0.25, 0.5, 2 and 4 times the matched variance also give one component (occupancy 0.37-1.00). Individuation in r-two56 is therefore a kernel (beyond-Laplacian) effect; the shell itself is borderline under the current gate in the original too.",
+ "parents": [
+  "threads/lenia-multichannel/worlds/r-two56/world.py",
+  "20261026T0206-c32-intent-rtwo56-dog"
+ ],
+ "class": "lenia",
+ "world": "world.py",
+ "evidence": [
+  "NOTES.md",
+  "pack_orig/seed0/sheet.png",
+  "pack_gauss/seed0/sheet.png",
+  "scan/gauss_x4/sheet.png",
+  "pack_orig/seed1/FACTS.md",
+  "pack_gauss/seed1/FACTS.md"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "ring-shell Lenia kernels vs their Gaussian (Laplacian-generated) moment-matched twin",
+  "capability": "I",
+  "world": "r-two56 (lab 1) with WORLD_P twin switch",
+  "necessary": true,
+  "law": false,
+  "control": "matched Laplacian-only twin: same mass and <r^2> per kernel, same growth, seeds 0-2, plus a 0.25-4x width scan",
+  "result": "original 4-8 cogs per seed (occupancy 0.03-0.05); twin 1 domain-filling component on 3/3 seeds (occupancy 0.93) and at every width tried (0.37-1.00)"
+ },
+ "limits": "Second-moment matching only (no DoG matching of the fourth moment); runs to t=100 as in lab 1's pack; the original's A1 shell is itself below the 1.5 rim/core gate in aggregate, so this decides I beyond diffusion, not B. A twin that also matched the growth rates' spatial scale might behave differently; I did not search the twin's growth parameters.",
+ "compute": {
+  "cpu_minutes": 10
+ }
+}
