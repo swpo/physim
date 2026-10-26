@@ -1,10 +1,12 @@
 # Work queue
 
-Generated 2026-10-26T14:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T14:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 5.5** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm; 2026-10-26T09:29Z: wall-off rule for W; by-construction marks count only from counted reviews; audits can lift them. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
+
+**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -12,15 +14,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c41 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
+| c41 | `LIT` | literature check due |
 | c43 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | your campaign |
-| c42 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c42 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | review |
 | c44 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
-- `C:swim-divide-bd` **Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match** (target `SIBMD`, diffusion-tested). Route: The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported.
-- `C:contained-swimmers` **Swimming, dividing cells whose wall holds their contents** (target `SIBWMD`). Route: Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:ecology-with-reproduction` **Interacting populations that reproduce and eat** (target `IXDE`). Route: evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7.
 - `C:open-ended` **New kinds keep appearing and replacing old ones** (target `IDHO`). Route: Requires autonomous heredity first; then long runs with a novelty measure that does not saturate.
@@ -29,13 +29,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | M: 1 more supporting re-run(s) | c42 |
+| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c43 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c43 |
-| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1312-c42-both-divide-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the  | c42 | submitted | 2 more replicated review(s) | - |
@@ -55,7 +54,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `SIBWD`, `SIMD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
+| active-nematic | `SIBWMD` | `G:SIBWMDH`, `G:SIBWMED`, `G:SIBWMXD` |
 | catalysis-induced-phase-separation | `SIED` | `G:SIBED`, `G:SIEDH`, `G:SIEXD` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
@@ -118,4 +117,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c43 since 2026-10-26T13:47Z (campaign): Review c40's CIPS SIBED claim: fresh-seed rerun, fuel fork (E gate), s-layer rin
-- `R:20261026T0505-c34-nematic-marangoni#c1` by c42 since 2026-10-26T14:01Z: Review c34's nematic-Marangoni SIBWMD claim (fresh seed, M)
