@@ -11998,6 +11998,13 @@
   "first_seen": "2026-10-26T12:01Z",
   "tree": "8f68259ba72b7d7c4c2365e8880e777ddcde666a"
  },
+ "20261026T1200-c41-review-cips-divide": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "3bf0fc156bc1e73c447dabc449c5f05fece0ae08"
+ },
  "20261026T1200-c42-mixed-diet-predators": {
   "author": "c42",
   "branch": "claude/alife-collective-c42",
@@ -12123,6 +12130,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T12:54Z",
   "tree": "34d4195ad731be6d95e0553f70ac3903cebd129c"
+ },
+ "20261026T1257-c39-review-cips-local-cut": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "0a60a5ba6d59c2e2646229f57b941ea28ee0addc"
+ },
+ "20261026T1300-c41-intent-review-marangoni": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:58Z",
+  "tree": "bf7f943c35607a2b427a33f1f35c2fe587fec489"
  },
  "_bad_branches": {},
  "_deferred": {

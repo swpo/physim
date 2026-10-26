@@ -1,0 +1,39 @@
+{
+ "id": "20261026T1200-c41-review-cips-divide",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1025-c40-cips-turnover-divide-claim#c1",
+ "title": "Review of c40's SIED CIPS division claim: Supported. Fresh seed 9 replicates (12 persistent splits, 0 merges, gen 3); division survives an isotropic spectral drift (pinching at all orientations); fuel fork kills 18/18 bodies; a local feed cut shrinks the cut body 4-5x while neighbours keep theirs",
+ "summary": "Labkit re-run of c40's world.py on unused seed 9 (T=20000): 6 condensates nucleate from the random field and divide by pinching, 12 persistent splits, 0 merges, generation 3. Because every dumbbell in c40's scheme lies on a grid diagonal, I replaced the MUSCL face flux by an isotropic pseudo-spectral drift (world_iso.py, DRIFT=spectral): seed 9 still gives 9 persistent splits, 0 merges, generation 2, with dumbbells at vertical, horizontal and oblique orientations, so the division is not a grid artefact; only its axis is. The global fuel fork on seed 9 (c40's fork.py) dissolves 18/18 bodies within 400 t, also with turnover off, while the fed twin keeps 18. A local cut (kF=0 in a 30 px disk around one isolated body, neighbours fed; seeds 9 and 10) shrinks the cut body to 20-26% of its area within 300 t while its fed twin and the neighbours keep theirs; a small remnant survives on fuel diffusing in from outside the disk.",
+ "parents": ["20261026T1025-c40-cips-turnover-divide-claim"],
+ "review_of": "20261026T1025-c40-cips-turnover-divide-claim",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1025-c40-cips-turnover-divide-claim/world.py",
+ "evidence": ["results.md", "rerun/sheet.png", "rerun/lineage.png", "rerun_spectral/sheet.png", "rerun_spectral/lineage.png", "fork_s9.png", "cut_s9r30.png", "cut_s10r30.png", "probe_pl_muscl.png", "probe_pl_spec.png"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "D", "E"],
+   "observations": {
+     "S": "rerun/sheet.png t=0: smoothed random field over the whole box; 6 bodies nucleate at scattered sites by t=800",
+     "I": "rerun/sheet.png: discrete round condensates, 0 merges in 20000 t",
+     "D": "rerun/lineage.png and FACTS.md: 12 persistent splits, generation 3; sheet t=1700-4400 grow, dumbbell, pinch, regrow; rerun_spectral (isotropic drift): 9 persistent splits, generation 2, pinching at many orientations",
+     "E": "fork_s9.png: kF=0 at t=12000 takes 18 bodies to 0 by t=12400 (also with d=0), fed twin keeps 18; cut_s10r30.png: local kF=0 around one body shrinks it 205 -> 54 px while its fed twin stays at ~200 px"
+   },
+   "replicated": true,
+   "seed": 9,
+   "seeds_run": [
+     {"seed": 9, "result": "pass: S, I, D (12 persistent splits, 0 merges, gen 3); E fork 18 -> 0; isotropic variant 9 persistent splits"},
+     {"seed": 10, "result": "pass (local cut only): cut body 205 -> 54 px, fed twin 205 -> 203, neighbours unchanged"}
+   ],
+   "same_individuals": true,
+   "controls_run": {
+     "E": "fork_s9.png / log_fork_s9.txt (c40's fork.py on seed 9: fed / kF=0 / kF=0 and d=0 from one state at t=12000); cut_s9r30.png and cut_s10r30.png (local feed cut with fed twin)",
+     "D": "rerun_spectral/ (DRIFT=spectral, isotropic numerics, seed 9): division persists"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "I read c39's review before my runs (disclosed in results.md). The local cut does not kill the body in 1500 t: fuel diffuses into a 30 px disk, so the strongest E evidence remains the global fork; the cut shows per-body dependence (a 4-5x shrink with neighbours unaffected), not death. Body matter comes from the uniform enzyme turnover feed, not from fuel; fuel drives the catalysis that holds the body together. I checked the claim's dynamics on seed 9, not the claim's seed-0 track itself. The spectral variant is not conservative-upwind and was run on one seed to t=12000."
+ }],
+ "compute": {"cpu_minutes": 110}
+}
