@@ -1,0 +1,8 @@
+cut_s6           cut  t_end 19.75  area min/end 0.00/0.00  polarity min(t 8-11) 0.000 end 0.000  speed last 2 t 0.000  DEAD at t=9.00
+cut_s6           twin t_end 19.75  area min/end 2.60/2.60  polarity min(t 8-11) 0.339 end 0.353  speed last 2 t 0.421  alive
+cut_s7           cut  t_end 13.75  area min/end 1.04/1.57  polarity min(t 8-11) 0.001 end 0.375  speed last 2 t 0.006  alive
+cut_s7           twin t_end 13.75  area min/end 2.60/2.62  polarity min(t 8-11) 0.357 end 0.365  speed last 2 t 0.418  alive
+cut_s8           cut  t_end 13.75  area min/end 1.15/1.36  polarity min(t 8-11) 0.099 end 0.175  speed last 2 t 0.353  alive
+cut_s8           twin t_end 13.75  area min/end 2.60/2.61  polarity min(t 8-11) 0.346 end 0.359  speed last 2 t 0.422  alive
+cut_s9           cut  t_end 13.75  area min/end 1.06/1.33  polarity min(t 8-11) 0.000 end 0.150  speed last 2 t 0.353  alive
+cut_s9           twin t_end 13.75  area min/end 2.60/2.63  polarity min(t 8-11) 0.352 end 0.367  speed last 2 t 0.421  alive

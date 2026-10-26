@@ -1,0 +1,49 @@
+c34 nematic cargo world (world.py): ring s made only on rods (chis 5), cargo c made on rods, Dc=1, kcd=0.005, excluded by s (kappa=20). Signed distance (sd_individuals.py, c21's + cargo in/out: inside d<=-1, outside 2<=d<=4 px).
+== pack/seed0
+pack/seed0/frames.npz ch2: body-frames 420, both >= 1.5: 0.99, median rim/core 2.74, median rim/out 7.81
+pack/seed0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 12.13, fraction >= 2: 1.00
+- replication (lineage window K = 20 frames = time 100, default): splits 33, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 5, merge/split 
+   cargo held on phi>0, mean over the second half: 0.21
+== pack/seed1
+pack/seed1/frames.npz ch2: body-frames 237, both >= 1.5: 1.00, median rim/core 2.69, median rim/out 8.07
+pack/seed1/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 14.13, fraction >= 2: 1.00
+- replication (lineage window K = 20 frames = time 100, default): splits 25, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 4, merges 3, merge/split 
+   cargo held on phi>0, mean over the second half: 0.243
+== pack/seed2
+pack/seed2/frames.npz ch2: body-frames 446, both >= 1.5: 0.99, median rim/core 2.76, median rim/out 7.94
+pack/seed2/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 13.17, fraction >= 2: 1.00
+- replication (lineage window K = 20 frames = time 100, default): splits 44, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 18, merge/split
+   cargo held on phi>0, mean over the second half: 0.229
+== pack_kappa0/seed0
+pack_kappa0/seed0/frames.npz ch2: body-frames 420, both >= 1.5: 0.99, median rim/core 2.74, median rim/out 7.81
+pack_kappa0/seed0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.40, fraction >= 2: 0.04
+- replication (lineage window K = 20 frames = time 100, default): splits 33, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 5, merge/split 
+   cargo held on phi>0, mean over the second half: 0.097
+== pack_kappa0/seed1
+pack_kappa0/seed1/frames.npz ch2: body-frames 237, both >= 1.5: 1.00, median rim/core 2.69, median rim/out 8.07
+pack_kappa0/seed1/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.48, fraction >= 2: 0.04
+- replication (lineage window K = 20 frames = time 100, default): splits 25, persistent splits 13 (0 more failed only because the siblings re-merged within K), max generation 4, merges 3, merge/split 
+   cargo held on phi>0, mean over the second half: 0.099
+== res15
+res15/frames.npz ch2: body-frames 347, both >= 1.5: 1.00, median rim/core 2.79, median rim/out 8.54
+res15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 9.28, fraction >= 2: 1.00
+- replication (lineage window K = 20 frames = time 100, default): splits 24, persistent splits 15 (0 more failed only because the siblings re-merged within K), max generation 3, merges 4, merge/split 
+   cargo held on phi>0, mean over the second half: 0.299
+== dthalf
+dthalf/frames.npz ch2: body-frames 328, both >= 1.5: 1.00, median rim/core 2.86, median rim/out 8.15
+dthalf/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 15.01, fraction >= 2: 1.00
+- replication (lineage window K = 20 frames = time 200, default): splits 21, persistent splits 11 (0 more failed only because the siblings re-merged within K), max generation 3, merges 4, merge/split 
+   cargo held on phi>0, mean over the second half: 0.276
+
+== inheritance (inherit.py): daughters born by a split, cargo in/out 5 frames after birth
+pack/seed0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=29, median in/out 5.51, fraction >= 2: 0.97
+pack/seed0/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=26, median in/out 4.52, fraction >= 2: 0.96
+pack/seed1/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=25, median in/out 5.56, fraction >= 2: 1.00
+pack/seed1/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=23, median in/out 5.06, fraction >= 2: 1.00
+pack/seed2/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=43, median in/out 5.50, fraction >= 2: 1.00
+pack/seed2/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=46, median in/out 4.56, fraction >= 2: 0.98
+pack_kappa0/seed0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=29, median in/out 1.29, fraction >= 2: 0.00
+pack_kappa0/seed0/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=26, median in/out 1.26, fraction >= 2: 0.00
+pack_kappa0/seed1/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=25, median in/out 1.33, fraction >= 2: 0.00
+pack_kappa0/seed1/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=23, median in/out 1.32, fraction >= 2: 0.00
+res15 = dx 0.6667, 192^2, T=600, noise_area; dthalf = WORLD_P dt 0.025 with --spf 200 (same T=600); compare seed-0 T=600 at dt 0.05: in/out 14.60 (scratch run, same world)

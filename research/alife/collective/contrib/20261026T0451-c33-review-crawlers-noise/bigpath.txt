@@ -1,0 +1,2 @@
+largest body from frame 20 (t=4.0) for 61 frames: net 276 px = 2.2 body lengths (sqrt area 125 px), area 10419 -> 16409
+largest body from frame 40 (t=8.0) for 41 frames: net 190 px = 1.5 body lengths (sqrt area 128 px), area 16320 -> 16409
