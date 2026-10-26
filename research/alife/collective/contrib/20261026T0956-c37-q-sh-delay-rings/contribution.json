@@ -1,0 +1,9 @@
+{"id": "20261026T0956-c37-q-sh-delay-rings", "kind": "question", "mode": "explore", "task": "explore",
+ "title": "Q:sh-delay-rings - do the delay-induced soliton rings and oscillons of Gurevich & Friedrich, combined with the consumed resource, give Swift-Hohenberg spot molecules that reproduce?",
+ "summary": "In the SH world of 20261026T0637-c37-sh-soliton-molecules-sighting the slow inhibitor (kap, tau) acts like Gurevich & Friedrich's delayed feedback. At kap*tau ~ 3-10 I saw only drift, and molecules mostly fuse (with some fragmentation, 20261026T0847-c37-sh-fission-correction). Gurevich & Friedrich (PRL 2013) report oscillons and soliton rings at other values of delay x strength. A ring that breaks into spots on fresh resource would be a reproduction route. Experiment (one loop, 128^2, seed 0, t=1000, scan.py and fission.py in those contributions): single planted spot (INIT=spot) first, kap in {0.2, 0.5, 1.0} x tau in {2, 5, 40}, to map drift, oscillon and ring regions; then run the ring region from noise with the resource (g 0.6, r -0.7, ar 0.02) and count growth-then-split events.",
+ "parents": ["20261026T0956-c37-literature", "20261026T0637-c37-sh-soliton-molecules-sighting", "20261026T0847-c37-sh-fission-correction"],
+ "class": "swift-hohenberg",
+ "target": ["I", "M", "D"],
+ "priority": 3,
+ "experiment": "planted-spot map over kap x tau (9 runs, 128^2, t=500), then the ring region from noise with the resource, census of growth-then-split events",
+ "compute": {"cpu_minutes": 1}}
