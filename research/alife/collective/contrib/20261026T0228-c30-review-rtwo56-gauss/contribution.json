@@ -1,0 +1,29 @@
+{
+ "id": "20261026T0228-c30-review-rtwo56-gauss",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0205-c32-rtwo56-gauss-twin#finding",
+ "title": "Review of c32's r-two56 Gaussian twin on fresh seeds 5 and 6 and at 3x the run length: replicated; the ring kernels individuate (5-7 cogs) and the moment-matched heat-kernel twin fills the torus",
+ "summary": "labkit re-runs of the finding's world (unchanged) with WORLD_P twin none and gauss on seeds 5 and 6 (t=100), and on seed 5 to t=300. Original: the noise patch breaks into toothed cogs by t~40 and 5-7 persist to the end (7 and 5 final components, occupancy 0.03-0.05; at t=300 6 components, occupancy 0.04; A1 aggregate rim/core 1.29-1.35, so the shell stays below the 1.5 gate as c32 says). Gaussian twin: one component on both seeds (occupancy 0.93 at t=100), a front that fills the torus by t~143 on the long run (occupancy 1.00 at t=300, A0 and A1 rim/core 1.00-1.03). I read the kernel code: the twin uses exp(-k^2 <r^2>/4) with <r^2> the ring kernel's own second moment in px^2 and unit mass, which is the 2-D heat kernel with the same mass and <r^2>, so the twin is matched as stated.",
+ "parents": ["20261026T0205-c32-rtwo56-gauss-twin"],
+ "class": "lenia",
+ "review_of": "20261026T0205-c32-rtwo56-gauss-twin",
+ "evidence": ["rerun/orig_long/sheet.png", "rerun/gauss_long/sheet.png", "rerun/orig/seed5/FACTS.md", "rerun/gauss/seed5/FACTS.md", "rerun/orig/seed6/FACTS.md", "rerun/gauss/seed6/FACTS.md"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": ["I"],
+  "observations": {"I": "rerun/orig_long/sheet.png t=40-300: 6-7 separate cogs at fixed positions; rerun/gauss_long/sheet.png t=12-143: one advancing front that closes the last hole at t~143, no individuals", "finding": "twin 1 component on seeds 5 and 6 and on the t=300 run; original 5-7 components"},
+  "replicated": true,
+  "seed": 5,
+  "seeds_run": [{"seed": 5, "result": "pass (t=100 and t=300)"}, {"seed": 6, "result": "pass"}],
+  "same_individuals": true,
+  "controls_run": {"I": "rerun/gauss (seeds 5, 6) and rerun/gauss_long: the matched Laplacian-generated twin, run by me"},
+  "by_construction": [],
+  "bd_supported": ["I"],
+  "class_confirmed": true,
+  "not_checked": ["B", "S (the initial condition is a noise patch, not full-domain noise)", "c32's width scan", "dt or resolution variants"],
+  "limitation": "Second-moment matching only, with the original growth parameters; a Gaussian-kernel world with re-tuned growth might individuate, so this shows the ring kernel is needed in r-two56 as parameterised, not that no Laplacian world could do it."
+ }],
+ "compute": {"cpu_minutes": 3}
+}

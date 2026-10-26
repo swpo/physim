@@ -1,0 +1,14 @@
+pack3/frames.npz ch2: body-frames 435, both >= 1.5: 1.00, median rim/core 2.67, median rim/out 7.93
+pack3/frames.npz: 109 tracks, 25 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 31, "start": 80, "end": 159, "birth": "split", "children": [87, 88], "net": 11.4, "bl_labkit": 1.69, "bl_rod": 0.83}
+   {"id": 11, "start": 32, "end": 71, "birth": "split", "children": [20, 21], "net": 13.0, "bl_labkit": 1.62, "bl_rod": 0.69}
+- motion: 53 long-lived tracks moved >= 1 body length; max speed 0.0907/time; max body lengths 3.4
+- replication (lineage window K = 20 frames = time 100, default): splits 46, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 4, merges 11, merge/split
+pack4_dthalf/frames.npz ch2: body-frames 527, both >= 1.5: 1.00, median rim/core 2.77, median rim/out 7.76
+pack4_dthalf/frames.npz: 109 tracks, 28 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 55, "start": 95, "end": 130, "birth": "split", "children": [66, 67], "net": 12.3, "bl_labkit": 1.88, "bl_rod": 0.93}
+   {"id": 30, "start": 49, "end": 94, "birth": "split", "children": [54, 55], "net": 11.1, "bl_labkit": 1.74, "bl_rod": 0.92}
+- motion: 55 long-lived tracks moved >= 1 body length; max speed 0.107/time; max body lengths 4.7
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 4, merges 16, merge/split

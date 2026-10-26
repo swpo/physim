@@ -1,0 +1,26 @@
+L0.npz t=800 splits 129 merges 190 persistent by generation {1: 11, 2: 8, 3: 6, 4: 5, 5: 7, 6: 5, 7: 6, 8: 6, 9: 4, 10: 5} max generation 10
+  persistent splits whose two daughters both carry B (>= 5%): 61 of 63
+  parents that travelled >= 3 cluster diameters (net) between their own birth and the split: 13 of 63 ; max 6.26
+    t=678 gen 7 parent 351 -> [233, 117], B share [0.35, 0.23], parent travel 6.3 diameters (track 332)
+    t=370 gen 3 parent 104 -> [82, 21], B share [0.2, 0.14], parent travel 5.5 diameters (track 232)
+    t=664 gen 10 parent 46 -> [31, 17], B share [0.29, 0.24], parent travel 5.3 diameters (track 364)
+    t=778 gen 7 parent 360 -> [210, 148], B share [0.19, 0.16], parent travel 5.2 diameters (track 333)
+    t=648 gen 2 parent 131 -> [96, 36], B share [0.19, 0.06], parent travel 5.0 diameters (track 316)
+  median daughter sizes 39.0 80.0
+strip collective/contrib/20261026T0356-c33-phoretic-divide-claim/deep_splits_seed0.png
+L1.npz t=800 splits 126 merges 184 persistent by generation {1: 13, 2: 10, 3: 8, 4: 8, 5: 7, 6: 5, 7: 4} max generation 7
+  persistent splits whose two daughters both carry B (>= 5%): 52 of 55
+  parents that travelled >= 3 cluster diameters (net) between their own birth and the split: 17 of 55 ; max 8.94
+    t=453 gen 2 parent 230 -> [125, 105], B share [0.17, 0.17], parent travel 8.9 diameters (track 211)
+    t=410 gen 1 parent 382 -> [238, 141], B share [0.25, 0.14], parent travel 7.7 diameters (track 40)
+    t=378 gen 1 parent 42 -> [27, 15], B share [0.3, 0.13], parent travel 7.0 diameters (track 103)
+    t=550 gen 4 parent 325 -> [254, 74], B share [0.21, 0.15], parent travel 6.6 diameters (track 219)
+    t=668 gen 3 parent 142 -> [70, 67], B share [0.27, 0.3], parent travel 5.3 diameters (track 294)
+  median daughter sizes 44.0 73.0
+strip collective/contrib/20261026T0356-c33-phoretic-divide-claim/deep_splits_seed1.png
+h0.npz t=400 splits 6 merges 51 persistent by generation {1: 1} max generation 1
+  persistent splits whose two daughters both carry B (>= 5%): 1 of 1
+  parents that travelled >= 3 cluster diameters (net) between their own birth and the split: 0 of 1 ; max 0.94
+    t=160 gen 1 parent 54 -> [36, 18], B share [0.31, 0.17], parent travel 0.9 diameters (track 28)
+  median daughter sizes 18.0 36.0
+h2.npz t=400 splits 49 merges 89 persistent by generation {1: 9, 2: 5, 3: 4, 4: 2, 5: 3} max generation 5

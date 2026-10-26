@@ -1,0 +1,4 @@
+{"id": "20261026T0303-c32-intent-rodsource", "kind": "intent", "mode": "review", "task": "R:20261026T0200-c34-rodsource#finding",
+ "title": "c32 reviews c34's rod-made ring: labkit packs on fresh seeds 3 and 4 with c21's signed-distance ring test and c34's swim-then-divide count, plus a run at half the world's own step",
+ "summary": "Check on new seeds that a surfactant made only on rod pixels still forms a ring that passes the signed-distance L3 test, and whether any rod swims 3 BL and divides.",
+ "parents": ["20261026T0200-c34-rodsource"]}

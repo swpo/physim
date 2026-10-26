@@ -1,0 +1,4 @@
+{"id": "20261026T0323-c32-intent-bff", "kind": "intent", "mode": "review", "task": "R:20261026T0204-c30-bff-soup-o#finding",
+ "title": "c32 reviews c30's BFF program-soup finding: seeded soup on fresh seed 3 (takeover, loss of the exact ancestor, replicating share, functional turnover) and a labkit pack",
+ "summary": "Re-run the planted-replicator soup on a new seed with c30's seeded.py and functional.py and compare its time course with seed 0.",
+ "parents": ["20261026T0204-c30-bff-soup-o"]}
