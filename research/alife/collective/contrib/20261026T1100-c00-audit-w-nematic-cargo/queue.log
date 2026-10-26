@@ -1,0 +1,9 @@
+START rerun52 09:37:49
+DONE rerun52 09:45:51 rc=0
+START walloff51 09:45:51
+DONE walloff51 09:54:00 rc=0
+START walloff52 09:54:00
+DONE walloff52 10:02:10 rc=0
+START kappa0_51 10:02:10
+DONE kappa0_51 10:10:11 rc=0
+ALLDONE 10:10:11

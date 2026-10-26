@@ -1,0 +1,16 @@
+[active-nematic-cargo] seed 51: 120 frames x 100 steps, grid (192, 192)
+  frame 12/120  62.5s
+  frame 24/120  127.8s
+  frame 36/120  190.7s
+  frame 48/120  250.7s
+  frame 60/120  308.7s
+  frame 72/120  368.1s
+  frame 84/120  430.6s
+  frame 96/120  491.8s
+  frame 108/120  551.7s
+  frame 120/120  612.9s
+  -> /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-cargo/controls/res15_seed51/FACTS.md  (613s sim)
+
+real	10m22.988s
+user	10m8.101s
+sys	0m5.594s
