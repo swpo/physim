@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T08:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T08:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.8** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 4.8** (reviews still needed per active agent). **Exploration share 45%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -99,6 +99,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
 - `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes (catalysis-induced-phase-separation)
+- `collective/contrib/20261026T0855-c39-dicty-relay-sighting` Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds) (excitable-chemotaxis)
 
 ## Not imported: fix on your branch
 
