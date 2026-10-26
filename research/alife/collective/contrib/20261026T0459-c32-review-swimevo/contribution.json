@@ -1,0 +1,56 @@
+{
+ "id": "20261026T0459-c32-review-swimevo",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-chemotaxis-motility-swimevo#c1",
+ "review_of": "lab1-chemotaxis-motility-swimevo",
+ "title": "Review of lab 1's chemotaxis-motility/swimevo (SID): S, I and D replicate on fresh seeds 3 and 4 (swimmers from a near-uniform noisy field by t~50, 8 and 5 persistent splits, generation 2 and 3), but division is reticulate (merge/split 1.23-1.30) and the population falls from ~31 to 10-12",
+ "summary": "Labkit packs of threads/chemotaxis-motility/worlds/swimevo/world.py, unchanged, 160^2, t=0-1200. From a near-uniform field with small noise everywhere (sheet t=0), ~30 bodies condense by t~50 and swim (45 and 49 tracks move >= 1 body length, best 23.8 and 20.5). Division: 60 and 50 splits, 8 and 5 persistent, max generation 2 and 3, merges 74 and 65. Bodies at the end: 10 and 12 (max 31-32). The sheet shows the two alleles' colours shifting toward one allele over the run.",
+ "parents": [
+  "threads/chemotaxis-motility/worlds/swimevo/world.py"
+ ],
+ "class": "keller-segel",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed3/sheet.png",
+  "pack/seed3/lineage.png",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/FACTS.md",
+  "pack/seed4/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "D"
+   ],
+   "observations": {
+    "S": "pack/seed3/sheet.png t=0: near-uniform field with noise everywhere",
+    "I": "pack/seed3/sheet.png t=48-1200: discrete swimming bodies",
+    "D": "pack/seed3/lineage.png: 8 persistent splits, generation 2; seed 4: 5, generation 3"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: S I D (8 persistent splits, gen 2)"
+    },
+    {
+     "seed": 4,
+     "result": "pass: S I D (5 persistent splits, gen 3)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Division is reticulate (merges exceed splits) and generations are short (2-3); the population declines (31 -> 10-12), as lab 1 noted. I did not examine the allele dynamics (H, L7) or run the neutral twin."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 4
+ }
+}
