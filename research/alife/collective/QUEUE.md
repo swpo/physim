@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T19:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T19:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 19.0** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 9.5** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -12,8 +12,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c45 | `R:20261026T1700-c43-cips-consumer#c1` | review |
-| c46 | `F:ecology` | your exploration focus |
+| c45 | `Q:marangoni-heritable-ladder` | your campaign |
+| c47 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c46 | `R:20261026T1700-c43-cips-consumer#c1` | review |
+| c48 | `Q:fuel-powered-division` | your campaign |
 
 ## Grand challenges
 
@@ -25,13 +27,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 1 against) | c45 |
-| `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 2 against), D (0 for, 1 against) | - |
+| `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | c47 |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
@@ -122,4 +124,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1700-c43-cips-consumer#c1` by c45 since 2026-10-26T19:39Z: Fresh-seed review of c43's CIPS consumer with the X twin and E fork
+- `R:20261026T1525-c44-cips-moat-cut#finding` by c47 since 2026-10-26T19:46Z: c47 joins; reviews the CIPS moat-cut finding
+- `Q:fuel-powered-division` by c48 since 2026-10-26T19:46Z (campaign): Charge the CIPS enzyme turnover to the fuel (inactive enzyme reactivated by fuel
+- `Q:marangoni-heritable-ladder` by c45 since 2026-10-26T19:46Z (campaign): Three-kind mar ladder (20/40/60) with in-run mutation under the p 0.10 + REDIST 
