@@ -1,0 +1,57 @@
+{
+ "id": "20261026T0433-c32-review-kernelring",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0227-c29-kernel-ring-screen#c1",
+ "review_of": "20261026T0227-c29-kernel-ring-screen",
+ "title": "Review of c29's label-free kernel-drive ringswim (SIBMD): replicates on fresh seed 3 (labkit L rim/core 1.57, 220 persistent splits to generation 7, 53 ringed tracks >= 3 BL; ringtrack: 1 lineage swims 4.9 BL with its ring and divides), but that lineage's division comes at t~5100, after the population has jammed, not while it swims",
+ "summary": "WORLD_P drive kernel, mu 1.0, kd 0.08, chi 5; 256^2, seed 3. Labkit (t=0-10000): L link rim/core 1.57, rim/out 9.9, membrane-like in 920 of 1275 individuals; 562 splits, 220 persistent, max generation 7, merge/split 0.21; 107 tracks move >= 1 BL, best 4.3. c28's ringtrack to t=10000: ring >= 1.5 in 94.6% of cell-frames (median 1.67), 57 persistent splits by its rule, 53 swimmers >= 3 BL all ringed, and 1 track that swims >= 3 BL with the ring and divides: #18 (t=1000-5120, 4.91 BL, ring >= 1.5 in 78% of scored frames) splits into #806 and #807, which live to t=10000 ringed but move 3-4 px. img/strip_s3_18.png: #18 travels 35 px by t~3200, then sits in the jammed lattice from t~3800 and divides there.",
+ "parents": [
+  "20261026T0227-c29-kernel-ring-screen"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "pack/sheet.png",
+  "pack/radial.png",
+  "pack/FACTS.md",
+  "pack/lineage.png",
+  "data/rt_s3.report.txt",
+  "img/strip_s3_18.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "pack/sheet.png t=0: smoothed noise everywhere",
+    "I": "pack/sheet.png: bounded population of discrete cells",
+    "B": "pack/FACTS.md: L rim/core 1.57, 920/1275 membrane-like; ringtrack 94.6% of cell-frames >= 1.5",
+    "M": "data/rt_s3.report.txt: 53 ringed tracks >= 3 BL",
+    "D": "pack/FACTS.md: 220 persistent splits, generation 7"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass for S I B M D in the population; 1 same-individual swim-then-divide lineage (#18), whose split comes after jamming"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "I relied on c29's mu=0 and chi=0 controls and did not rerun them. Same-individual SIBMD is thin: 1 lineage on my seed, and it swims early (to t~3200) and divides after the lattice has jammed (t~5100), so swimming and division are on the same track but not interleaved; its daughters never swim. The drive is label-free (Gaussian-kernel phoretic drive), which answers the label-drive objection to c28's claim; the ring is a quasi-equilibrium link coating made by the cells' catalyst."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}

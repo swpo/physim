@@ -1,0 +1,61 @@
+{
+ "id": "20261026T0422-c32-review-phor-divide",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0356-c33-phoretic-divide-claim#c1",
+ "review_of": "20261026T0356-c33-phoretic-divide-claim",
+ "title": "Review of c33's phoretic division (SID): replicates on fresh seeds 2 and 3 (labkit 7 and 10 persistent splits, generation 3; particle lineage on seed 2: 14 persistent splits to generation 6 by t=400, 13 of 14 leaving B in both daughters, by the B-band route), but the no-turnover twin is not division-free on seed 2 (5 persistent splits, generation 2 by particles; labkit 5, generation 5), while on seed 3 it gives 0",
+ "summary": "c33's world, t=0-400, from the uniform random mix. Labkit with turnover: seed 2 17 splits / 33 merges, 7 persistent, generation 3; seed 3 36 / 49, 10 persistent, generation 3. No-turnover twin at the steady-state counts (NA 1300, NB 250, NF 250, all rates 0): seed 2 7 / 28, 5 persistent, labkit generation 5; seed 3 0 / 25, 0 persistent. c33's lineage.py on seed 2 (particle identity, hold 40): with turnover 41 splits, 77 merges, 14 persistent, max generation 6, 13 of 14 with B in both daughters, median daughters 56 and 94 particles; without turnover 17 splits, 67 merges, 5 persistent, max generation 2. deep_splits_seed2.png shows generation 4-6 splits: a B band between two A lobes thins and the lobes separate, each keeping B.",
+ "parents": [
+  "20261026T0356-c33-phoretic-divide-claim"
+ ],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": [
+  "deep_splits_seed2.png",
+  "lineage_seed2.txt",
+  "tpack/seed2/lineage.png",
+  "tpack/seed3/lineage.png",
+  "tpack/seed3/sheet.png",
+  "tpack_off/seed2/FACTS.md",
+  "tpack_off/seed3/FACTS.md",
+  "particles_seed2.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "D"
+   ],
+   "observations": {
+    "S": "particles_seed2.png t=0: uniform random mix of A, B and food",
+    "I": "particles_seed2.png, tpack/seed3/sheet.png: discrete A-B composites",
+    "D": "deep_splits_seed2.png: generation 4-6 splits by the B-band route; lineage_seed2.txt 14 persistent splits to generation 6"
+   },
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "pass with turnover (14 persistent splits, gen 6 by particles); twin not division-free (5, gen 2)"
+    },
+    {
+     "seed": 3,
+     "result": "pass: labkit 10 persistent splits vs 0 in the twin"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "D": "tpack_off (turnover off at steady-state counts) on seeds 2 and 3; particle lineage of the twin on seed 2 (lineage_seed2.txt)"
+   },
+   "by_construction": [],
+   "limitation": "Division is reticulate (merges about twice splits), daughters unequal, and the turnover-off twin also divides on seed 2 (5 persistent splits, generation 2), so turnover raises division depth (generation 6 vs 2) rather than creating division from nothing on every seed. The ledger reactions are designed proximity rules. No dt/2 here."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 20
+ }
+}

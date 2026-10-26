@@ -1,0 +1,4 @@
+{"id": "20261026T0455-c32-intent-nowall", "kind": "intent", "mode": "review", "task": "R:20261026T0441-c33-phoretic-no-wall#finding",
+ "title": "c32 reviews c33's phoretic no-wall negative: the nucleus variant on fresh seed 2 with labkit radial profiles",
+ "summary": "Check on a new seed that the nucleus variant gives B cores and no A rim.",
+ "parents": ["20261026T0441-c33-phoretic-no-wall"]}

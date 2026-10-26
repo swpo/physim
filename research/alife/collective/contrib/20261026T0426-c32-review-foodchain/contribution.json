@@ -1,0 +1,56 @@
+{
+ "id": "20261026T0426-c32-review-foodchain",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0413-c36-food-chain-predation-claim#c1",
+ "review_of": "20261026T0413-c36-food-chain-predation-claim",
+ "title": "Review of c36's condensate food chain: replicates on fresh seed 3 (prey 55 persistent splits, generation 3, with predators vs 8, generation 1, in the predator-free twin; predators eat prey at contact and die out by t~4800), an epidemic followed by recovery as the claim says",
+ "summary": "c36's world unchanged, 256^2, t=0-10000, seed 3, with predator material (pack) and without (pack_nopred, pred_on 0). With predators: from noise, ~200 prey droplets and many small predator droplets by t=400; predators clear patches of prey (magenta waste regions, t=900-3900) and are gone by t~4800 (predator components final 0, no persistent predator splits); prey refill the cleared space and end at 181 droplets; prey 134 splits, 55 persistent, max generation 3, merge/split 0.37. Predator-free twin: a frozen emulsion of 223 droplets, 86 splits, 8 persistent, generation 1.",
+ "parents": [
+  "20261026T0413-c36-food-chain-predation-claim"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "pack/sheet.png",
+  "pack/FACTS.md",
+  "pack/lineage.png",
+  "pack_nopred/sheet.png",
+  "pack_nopred/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "D",
+    "X"
+   ],
+   "observations": {
+    "S": "pack/sheet.png t=0: noise over the whole domain",
+    "I": "pack/sheet.png: ~180-220 discrete prey droplets",
+    "D": "pack/FACTS.md: prey 55 persistent splits, generation 3, vs 8 and generation 1 in pack_nopred",
+    "X": "pack/sheet.png t=900-3900: predator droplets consume prey at contact and the prey count falls locally; the predator-free twin stays frozen"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: prey division raised by predation (55 vs 8 persistent splits); predators extinct by t~4800"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "pack_nopred (pred_on 0, seed 3)"
+   },
+   "by_construction": [],
+   "limitation": "As the claim says, predators do not persist (extinct by t~4800 on my seed, earlier than c36's seeds), so X is a one-off epidemic, and prey division is the known fuel-starvation route of chemically active droplets, here mostly in the recovery after predation. One seed; labkit's predator counts in the twin are threshold noise (no predator material)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

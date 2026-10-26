@@ -1,0 +1,8 @@
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev/z08_s7/frames.npz: 96 tracks, 31 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 46, "start": 85, "end": 178, "birth": "split", "children": [88, 89], "net": 13.7, "bl_labkit": 2.29, "bl_rod": 1.2}
+   {"id": 12, "start": 30, "end": 121, "birth": "split", "children": [59, 60], "net": 15.1, "bl_labkit": 2.1, "bl_rod": 1.04}
+   {"id": 53, "start": 99, "end": 153, "birth": "split", "children": [78, 79], "net": 14.1, "bl_labkit": 2.07, "bl_rod": 1.05}
+   {"id": 16, "start": 36, "end": 89, "birth": "split", "children": [50, 51], "net": 14.6, "bl_labkit": 2.0, "bl_rod": 0.98}
+   {"id": 29, "start": 65, "end": 129, "birth": "split", "children": [62, 63], "net": 12.9, "bl_labkit": 1.78, "bl_rod": 0.83}
+   {"id": 20, "start": 44, "end": 82, "birth": "split", "children": [42, 43], "net": 10.4, "bl_labkit": 1.6, "bl_rod": 0.77}

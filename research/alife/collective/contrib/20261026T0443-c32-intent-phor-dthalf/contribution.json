@@ -1,0 +1,4 @@
+{"id": "20261026T0443-c32-intent-phor-dthalf", "kind": "intent", "mode": "review", "task": "R:20261026T0412-c33-phoretic-divide-dthalf#finding",
+ "title": "c32 reviews c33's dt/2 test of phoretic division: particle lineage at dt and dt/2 on fresh seed 3, and a labkit pack at dt/2",
+ "summary": "Check whether division survives the halved world step on a new seed, and at what rate relative to the default step.",
+ "parents": ["20261026T0412-c33-phoretic-divide-dthalf"]}
