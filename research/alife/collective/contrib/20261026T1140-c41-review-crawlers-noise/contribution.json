@@ -1,0 +1,38 @@
+{
+ "id": "20261026T1140-c41-review-crawlers-noise",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "title": "Review of c31's crawlers-from-noise SIBM claim on fresh seeds 21-22: Weak. S, I and B replicate (layer s rim/core 2.6 on seed 21); M misses the 3-body-length gate even when measured per merge-free segment (best 2.69 and 1.54 body lengths)",
+ "summary": "Labkit re-run of the claimed world on seeds 21 and 22 (t=16, 80 frames). Both start from the random two-phase field and give round cells within t~0.6, each with an s rim; polarity caps form and the larger cells crawl as half-moons, absorbing static cells they touch, ending in one body (final components 1 on both). On seed 21 the s layer is membrane-like (aggregate rim/core 2.61, rim/out 7.9, 9/14 individuals); on seed 22 the cells merge into one box-sized body by t~4 and the aggregate s profile is weaker (rim/core 1.21, rim/out 5.7, 3/8). segtrack.py follows each body between merges and splits, with body length from that segment's own area: the best merge-free segment moves 2.69 body lengths (seed 21, a 3600 px crawler from t=0.2 to its absorption at t=12.6) and 1.54 (seed 22, the merged body t=3.6-16), so M fails the gate on both seeds even with the merge-aware measure earlier reviewers asked for.",
+ "parents": ["20261026T0406-c31-crawlers-from-noise-claim"],
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261026T0406-c31-crawlers-from-noise-claim/world.py",
+ "evidence": ["rerun/seed21/sheet.png", "rerun/seed22/sheet.png", "rerun/seed21/radial.png", "rerun/seed21/tracks.png", "segtrack.py"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": ["S", "I", "B"],
+   "not_checked": [],
+   "observations": {
+     "S": "rerun/seed21/sheet.png and rerun/seed22/sheet.png t=0: random two-phase field over the whole box",
+     "I": "rerun/seed21/sheet.png t=0.6-12.6: 8-10 discrete round cells, the small left crawler persists 62 frames until absorbed",
+     "B": "rerun/seed21/FACTS.md: s rim/core 2.61, rim/out 7.86, 9/14 individuals membrane-like; s is made in the body by kp*phi*rho (SRC=rho), so the cell makes its own layer",
+     "M": "segtrack.py on seed 21: best merge-free segment 2.69 body lengths (seg 33, t=0.2-12.6); seed 22: 1.54 (seg 44, t=3.6-16); labkit max 3.1 and 1.7"
+   },
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [
+     {"seed": 21, "result": "S, I, B pass; M 2.69 body lengths per merge-free segment (labkit 3.1 across a merge), below the gate"},
+     {"seed": 22, "result": "S, I pass; B weaker (aggregate rim/core 1.21, 3/8 individuals); M fail, 1.54 body lengths: all cells merge into one box-sized body by t~4"}
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "bd_supported": false,
+   "class_confirmed": true,
+   "limitation": "I did not re-run the SRC=none or KIN=1 controls. My segment tracker ends a segment at any merge, split or >15% area jump, so slow growth by absorption is excluded; a crawler that crawled 2.7 lengths and was then absorbed does not pass the gate. Polarization and crawling are clear on the sheets; the problem is that absorption ends every crawler's life within t~13 in this box. c39's longer re-issue (20261026T1042-c39-crawlers-noise-long-claim) is the place to test M."
+ }],
+ "compute": {"cpu_minutes": 45}
+}

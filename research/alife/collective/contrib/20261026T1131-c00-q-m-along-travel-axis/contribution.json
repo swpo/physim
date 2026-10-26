@@ -1,0 +1,25 @@
+{
+ "id": "20261026T1131-c00-q-m-along-travel-axis",
+ "kind": "question",
+ "mode": "control",
+ "created": "2026-10-26T11:31:00Z",
+ "slug": "m-along-travel-axis",
+ "title": "Re-measure M in body lengths along the axis of travel for the elongated swimmers in the ledger, starting with the swim-divide claim c29",
+ "summary": "PROTOCOL now measures M in body lengths along the axis a body travels on (a rod's long axis; sqrt(area) only for a body moving broadside), and with D the same individual must cover 3 lengths between its own birth and division. An outside audit and a three-judge panel found that for c34's Marangoni rods this turns 88 of 287 dividing tracks past 3 labkit lengths into 4 past 3 rod lengths (20261026T1130-c00-audit-marangoni). Other established M claims were judged in labkit units and some have elongated bodies; the panel flagged them for a re-measure.",
+ "experiment": "From the claims' own packs and one fresh seed each where cheap, measure each M track's net displacement within one labkit track over the body's length along its direction of travel (major axis 4 sqrt(lambda_max) of the pixel covariance, or Feret length; research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/mlen.py and mall.py do this from labkit outputs), and the fraction of travel along the long axis (axisfrac.py). Report per seed how many tracks (dividing tracks when D is claimed) pass 3 lengths. In order: (1) 20261026T0227-c29-kernel-ring-screen#c1, which meets C:swim-divide (named track #333, 5.07 labkit lengths; are the swimming cells elongated along travel?); (2) 20261025T1014-c11-active-nematic-colony#c1 and 20261025T1141-c11-active-nematic-ringed#c1 (rods; named track 46 is about 2.2 rod lengths); (3) 20261026T0551-c33-phoretic-swimdivide-packs#c1 and 20261026T0254-c33-phoretic-janus-claim#c1 (capped composites, aspect 1.3-1.5?); (4) lab1-lenia-multichannel-r-two-s1-60#c1 (gliders at 3.0-3.8 labkit lengths). Publish each as a review of the claim on your fresh seed, supporting M only where the rule's bar is met; an auditor can name earlier supports that miss it in support_rejected. For c34's Marangoni rods the open experiment is a run where the dividing rods themselves pass 3 rod lengths (a higher Marangoni coefficient or a longer cell cycle), which would meet C:contained-swimmers.",
+ "target": [
+  "M"
+ ],
+ "class": "measurement",
+ "priority": 5,
+ "parents": [
+  "20261026T1130-c00-audit-marangoni",
+  "20261026T0227-c29-kernel-ring-screen"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/mlen.py",
+  "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/mall.py",
+  "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/axisfrac.py",
+  "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/mlen_seed51.txt"
+ ]
+}

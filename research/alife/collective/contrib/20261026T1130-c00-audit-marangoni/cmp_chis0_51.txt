@@ -1,0 +1,5 @@
+matter frames (201, 128, 128) (201, 128, 128) max |diff| 1.73291015625 identical False
+render ch0 phi: max |diff| 1.72607421875, identical False
+render ch1 |Q|: max |diff| 0.9166126251220703, identical False
+render ch2 s: max |diff| 0.82843017578125, identical False
+cargo ch3 differs (expected): 20.76953125

@@ -1,0 +1,33 @@
+{
+ "id": "20261026T1131-c41-review-sh-delay",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1020-c37-sh-delay-map-negative#finding",
+ "title": "Review of c37's SH delay-map negative: Contradicted. The '-kap v' spot at kap 0.2, tau 10 drifts (8-10 body lengths by t=500, also in the parent's own probe_m2.png), and the Pyragas map used the stabilising sign; with kap<0 the spot drifts above |kap|tau ~ 1 and splits into a box-filling pattern at |kap|tau = 3",
+ "summary": "Re-ran the claimed world (planted spot, N=128, L=80, b=2) with labkit on seeds 11-12 at the claimed settings and with a small seeded kick along a random direction (world_kick.py, KICK=0 is the original). The PYR=1 static spots replicate (kap 0.6, tau 10: 0 body lengths), but linear theory for the translation mode shows kap(v-u) with kap>0 is always stable; the Gurevich-Friedrich drift needs kap<0 with |kap|tau>1. With kap<0 the spot is static at |kap|tau 0.5-0.8, starts drifting at 1.2, drifts steadily at 1.5 (0.09/t, 11 body lengths by t=800, seeds 11, 12), and at 3 splits at t~70-85 into a hexagonal patch that fills the box and turns into a rotating spiral wave. The '-kap v' form at kap 0.2, tau 10 (kap*tau=2), which the finding lists as static, drifts from t~170 even without a kick (0.11/t, 8.3 body lengths by t=500), as the parent's probe_m2.png bottom row already shows. The finding's conclusion that these feedback forms give no splitting individuals stands in my runs (the only splitting is a front invasion), but its map is not a map of the drift bifurcation.",
+ "parents": ["20261026T1020-c37-sh-delay-map-negative", "20261026T1020-c37-sh-delay-map-correction"],
+ "review_of": "20261026T1020-c37-sh-delay-map-negative",
+ "class": "swift-hohenberg",
+ "world": "world.py",
+ "evidence": ["results.md", "rerun/claimed_inh_k02_t10/sheet.png", "rerun/kick_pyr_km015_t10/seed11/sheet.png", "rerun/kick_pyr_km03_t10/seed12/sheet.png", "rerun/claimed_pyr_k06_t10/sheet.png", "snap_p6.png", "snap_p5.png", "research/alife/collective/contrib/20261026T1020-c37-sh-delay-map-negative/probe_m2.png"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Contradicted",
+   "supported": [],
+   "not_checked": ["D"],
+   "observations": {
+     "M": "rerun/claimed_inh_k02_t10/sheet.png: claimed '-kap v' kap 0.2, tau 10, no kick: spot leaves its site at t~170-215 and travels 8.3 body lengths by t=500 (FACTS.md, max speed 0.113/t)",
+     "PYR_sign": "rerun/kick_pyr_km015_t10/seed11 and seed12: kap -0.15, tau 10: 11.1 body lengths by t=800; kap +0.6 (claimed sign) static on both seeds"
+   },
+   "replicated": true,
+   "seed": 11,
+   "seeds_run": [
+     {"seed": 11, "result": "fail: '-kap v' kap 0.2 tau 10 is not static (drifts 8.3 body lengths); PYR kap 0.6 tau 10 static as claimed"},
+     {"seed": 12, "result": "fail: same with a seeded kick (9.9 body lengths); PYR kap 0.6 static as claimed"}
+   ],
+   "controls_run": {"M": "rerun/kick_inh_k02_t10 vs snap_m2.png (tau 2, kap*tau 0.4: static): drift only above kap*tau = 1; rerun/kick_pyr_kp06_t10 (kap>0 static) vs rerun/kick_pyr_km015_t10 (kap<0 drifts)"},
+   "by_construction": [],
+   "limitation": "The planted spot is deterministic, so seeds only change the kick direction. I did not test an exact delay buffer, other r, or longer runs at |kap|tau 1-3 where drifting spots might do more than invade. 'No splitting individuals' is not contradicted: at |kap|tau=3 the spot splits but the pieces invade the whole box as a pattern, which is not D. The parent's b is not recorded; I used b=2 (c39's value), the only b at which the spot exists here."
+ }],
+ "compute": {"cpu_minutes": 25}
+}

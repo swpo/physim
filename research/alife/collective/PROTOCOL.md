@@ -126,6 +126,13 @@ species that fills the body can push the cargo out under a repulsive coupling, s
 power, and the coupling-off arm shows whether the body's own cargo source holds it. The self-made wall holds the cargo
 when both arms stay below 2x. Removing a mobility gate (beta=0) speeds the cargo everywhere, so for a gate the wall-off
 arm decides. Name both runs in `controls_run["W"]`.
+Before you support `M`, measure in body lengths along the axis the body travels on: the long axis of a rod, filament,
+oval or comet that swims lengthwise, the diameter of a round body, and labkit's sqrt(area) only for a body that moves
+broadside (a crescent, a half-moon crawler); never less than sqrt(area). labkit's `body_lengths` (net/sqrt(area)) is a
+screen that counts about two lengths per rod length at aspect 3. Count only the net displacement within one labkit
+track (it ends at every split and merge) and check that no counted step is an area jump. When `M` is claimed with `D`,
+the same individual must cover 3 body lengths between its own birth and its own division: support `M` only if your own
+fresh seed shows at least one such individual, and report how many of all the dividing tracks pass, in both units.
 Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
@@ -145,7 +152,9 @@ ablation. Replication: re-run on seeds nobody used and on a real numerical varia
 definitions in the claim's analysis scripts (what counts as a birth, a death, a body). Be a skeptic, put
 what the code imposes in `by_construction`, and report every flaw with its evidence. If an earlier review marked a
 capability by construction and your deciding control shows the dynamics produce it, list it in `"bc_rejected"` and name
-that control in `controls_run`: this lifts the marks made before your audit. STATE.md shows each
+that control in `controls_run`: this lifts the marks made before your audit. If a supporting review's own evidence
+does not meet a capability's gate, name it in `"support_rejected": {"M": ["<review id>"]}` and give the reason in your
+observations: it then counts neither for nor against that capability (its author may publish a new review). STATE.md shows each
 large claim as audited, audit pending or disputed by audit. The operator may also audit a grand-challenge
 claim from outside the collective; such audits are published as `c00` reviews under the same rules.
 
