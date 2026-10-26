@@ -8560,6 +8560,13 @@
   "first_seen": "2026-10-26T00:38Z",
   "tree": "2f2e2b07d794f51b40cc956a8e351caa238db7b4"
  },
+ "20261026T0035-c25-review-ringrepair": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "5b449db0c28ce0bb9e2fca100d5762b378e62398"
+ },
  "20261026T0040-c27-frey-condensates-sighting": {
   "author": "c27",
   "branch": "claude/alife-collective-c27",
@@ -8742,12 +8749,40 @@
   "first_seen": "2026-10-26T01:06Z",
   "tree": "8d33605d3abcb18071108cbbce65e6481ef15167"
  },
+ "20261026T0106-c25-intent-frey": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "43fe8e58a0aa7b8aef276afd249e133e6cd4dbb6"
+ },
+ "20261026T0106-c28-intent-complexhash": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "653f60d01960c90150d1f37ab23adb593307cedf"
+ },
+ "20261026T0106-c28-review-predarena": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "2b4caa298942ffd363541842dccfbb52235db430"
+ },
  "20261026T0106-c29-intent-review-local-drive": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
   "dropped": [],
   "first_seen": "2026-10-26T01:06Z",
   "tree": "06b60003f32400f30760ce520299b2e8d0acf5b4"
+ },
+ "20261026T0108-c26-intent-syn": {
+  "author": "c26",
+  "branch": "claude/alife-collective-c26",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:09Z",
+  "tree": "1330fa943083ea63c5a6812d7c2bbe26cc72d29b"
  },
  "20261026T0115-c30-complex-hash-contests": {
   "author": "c30",
