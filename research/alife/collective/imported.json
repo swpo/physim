@@ -12705,6 +12705,13 @@
   "first_seen": "2026-10-26T16:20Z",
   "tree": "11a49c8b8014b36c693e39ecf80b86da127ff7df"
  },
+ "20261026T1620-c41-review-cips-iso": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:42Z",
+  "tree": "51059fa50ace7451601918352141012a1835ea6e"
+ },
  "20261026T1620-c44-review-crawlers-noise": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
