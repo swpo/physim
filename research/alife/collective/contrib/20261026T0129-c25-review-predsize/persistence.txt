@@ -1,0 +1,2 @@
+seed 3: predator cells >=1 from t=200.0 to t=340.0 -> persistence after introduction 140 t; max predator cells 25; prey cells at t=200 40, min after 5, at t=500 47
+seed 4: predator cells >=1 from t=200.0 to t=460.0 -> persistence after introduction 260 t; max predator cells 22; prey cells at t=200 39, min after 16, at t=500 40
