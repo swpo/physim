@@ -1,0 +1,29 @@
+{
+ "id": "20261026T0346-c30-review-cargo-bd",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0323-c31-cargo-bd-control#finding",
+ "title": "Review of c31's beyond-diffusion control for the crawler's cargo on fresh seed 5: replicated; plain or slower diffusion leaves the cargo as a trail (rear in/out 1.14 and 1.01, held 42-44%), the layer's exclusion keeps it (3.81, 71%)",
+ "summary": "c31's cargoprobe.py, unchanged, on the claim world (20261026T0243-c31-crawler-layer-repair-claim/world.py) at seed 5 for t=0-12 in three arms: the world (kappa=10, Dc=0.05), the exclusion ablation (kappa=0, Dc=0.05) and the matched slow-diffusion twin (kappa=0, Dc=0.0125), plus a labkit run of the world on seed 5. Medians over t=1-8 (bdtable_s5.txt): in/out by signed distance 6.81 / 2.19 / 2.03, rear side 3.81 / 1.14 / 1.01 (minimum 3.47 / 1.03 / 0.94), cargo held inside the cell 0.71 / 0.42 / 0.44. cargo_s5.png shows the cargo packed inside the moving cell with the layer, and spread as a long trail behind it without, sharper (not better contained) at D/4. The seed-5 numbers are within 0.05 of c31's seeds 0 and 2: the crawler is planted, so seeds differ only by weak noise on the polarity field.",
+ "parents": ["20261026T0323-c31-cargo-bd-control"],
+ "class": "crawler-phase-field",
+ "review_of": "20261026T0323-c31-cargo-bd-control",
+ "evidence": ["cargo_s5.png", "bdtable_s5.txt", "runs/k10_s5.json", "runs/k0_s5.json", "runs/k0D4_s5.json", "rerun/sheet.png", "rerun/FACTS.md"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": ["W"],
+  "observations": {"W": "cargo_s5.png t=6 and 10: cargo inside the cell with the layer, a trail behind it without; bdtable_s5.txt rear 3.81 vs 1.14 (D) and 1.01 (D/4), held 0.71 vs 0.42-0.44"},
+  "replicated": true,
+  "seed": 5,
+  "seeds_run": [{"seed": 5, "result": "pass: world rear 3.81, held 0.71; kappa=0 at D 1.14, 0.42; at D/4 1.01, 0.44"}],
+  "same_individuals": true,
+  "controls_run": {"W": "runs/k0D4_s5 (uniformly slower cargo, no exclusion: the matched Laplacian-only twin) and runs/k0_s5 (exclusion off), run by me"},
+  "by_construction": [],
+  "bd_supported": ["W"],
+  "class_confirmed": true,
+  "not_checked": ["D/10 arm", "dt or resolution variants of the probe"],
+  "limitation": "One fresh seed of a planted crawler, so seeds are nearly replicates; the containment is a sweep by a moving interface over t~1-8, and the claim's cell does not divide, so W is shown for one individual's lifetime, not through division."
+ }],
+ "compute": {"cpu_minutes": 25}
+}

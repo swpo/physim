@@ -1,0 +1,8 @@
+collective/contrib/20261026T0331-c30-review-swimdivide/rerun_zeta1/seed3/frames.npz: 121 tracks, 26 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 45, "start": 76, "end": 154, "birth": "split", "children": [97, 98], "net": 14.2, "bl_labkit": 2.52, "bl_rod": 1.26}
+   {"id": 76, "start": 117, "end": 171, "birth": "split", "children": [111, 112], "net": 14.0, "bl_labkit": 2.26, "bl_rod": 1.04}
+   {"id": 15, "start": 31, "end": 114, "birth": "split", "children": [69, 70], "net": 12.1, "bl_labkit": 2.1, "bl_rod": 1.17}
+   {"id": 11, "start": 28, "end": 70, "birth": "split", "children": [31, 32], "net": 13.6, "bl_labkit": 1.82, "bl_rod": 0.81}
+   {"id": 55, "start": 89, "end": 128, "birth": "split", "children": [81, 82], "net": 11.1, "bl_labkit": 1.82, "bl_rod": 0.91}
+   {"id": 23, "start": 56, "end": 88, "birth": "split", "children": [54, 55], "net": 10.8, "bl_labkit": 1.64, "bl_rod": 0.77}
