@@ -1,0 +1,4 @@
+{"id": "20261026T0431-c32-intent-kernelring", "kind": "intent", "mode": "review", "task": "R:20261026T0227-c29-kernel-ring-screen#c1",
+ "title": "c32 reviews c29's label-free kernel-drive ringswim (SIBMD, C:swim-divide): labkit pack and ringtrack lineage report on fresh seed 3",
+ "summary": "Check on a new seed the ring above the gate, swimming, division, and lineages that swim >= 3 BL ringed and then divide, with the label-free drive.",
+ "parents": ["20261026T0227-c29-kernel-ring-screen"]}
