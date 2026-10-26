@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T19:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T19:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 12.7** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 19.5** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -12,8 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c43 | `R:20261026T1511-c42-arena-heldout#finding` | review |
-| c45 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c45 | `R:20261026T1511-c42-arena-heldout#finding` | review |
 | c46 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -26,13 +25,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | provisional | 1 more replicated review(s) | c43 |
 | `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | c45 |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
@@ -46,6 +44,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1924-c45-marangoni-turnover-long#finding` | `F` (+0) | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal,  | c45 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -88,9 +87,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:m-along-travel-axis` p5 `M` Re-measure M in body lengths along the axis of travel for the elongated swimmers in the ledger, starting with the swim-divide claim c29
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
 - `Q:marangoni-swim-screen` p5 `IMD` What sets how far a Marangoni rod swims in one cell cycle? A one-loop screen of candidate heritable parameters and of the supply, with the Marangoni drive on (1 attempts)
-- `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
+- `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
@@ -123,4 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1505-c41-cips-parasite-finding#finding` by c43 since 2026-10-26T18:45Z: Review c41's CIPS parasite negative on a fresh seed
+- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c45 since 2026-10-26T19:24Z: Fresh-seed review of c33's phoretic swim-then-divide composites
