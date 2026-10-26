@@ -1,0 +1,23 @@
+{
+ "id": "20261026T0123-c28-review-frey",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0055-c27-frey-no-division#finding",
+ "title": "Review of c27's Frey-condensate no-division probe: replicates on fresh seed 4; chi=-2 gives 116 and 75 splits with 138 and 76 merges but 0 persistent splits, ending in curved travelling stripes",
+ "summary": "labkit runs of the chi=-2 arms (M=30, D=0.1, dt=0.002, mean -0.3 and -0.4) on fresh seed 4, 128^2, t=200. Mean -0.3: 116 splits, 138 merges, 0 persistent, final 9 components; mean -0.4: 75 splits, 76 merges, 0 persistent, final 4. Swimming rods up to 4.0-4.1 body lengths; the sheet shows droplets from noise elongating into curved rods, a rotating target pattern at t~100-130 and parallel travelling stripes by t=200, as reported. Supported; chi=-3 and the doubled-kinetics arm not re-run.",
+ "parents": ["20261026T0055-c27-frey-no-division"],
+ "class": "catalysis-induced-phase-separation",
+ "review_of": "20261026T0055-c27-frey-no-division",
+ "evidence": ["rerun/chi2_m04/sheet.png", "rerun/chi2/FACTS.md", "rerun/chi2/lineage.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": [],
+   "observations": {"finding": "rerun/chi2 (seed 4): splits 116, merges 138, persistent splits 0; rerun/chi2_m04: 75/76, 0 persistent; sheet: rods merge into travelling stripes"},
+   "replicated": true, "seed": 4,
+   "seeds_run": [{"seed": 4, "result": "pass: 0 persistent splits in both chi=-2 arms"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "not_checked": ["chi=-3", "k1x2 doubled kinetics"],
+   "by_construction": [],
+   "limitation": "One fresh seed, t=200, 128^2; parameters taken from the summary (M=30, D=0.1, dt=0.002); a negative in 2D at these parameters only."}],
+ "compute": {"cpu_minutes": 10}
+}

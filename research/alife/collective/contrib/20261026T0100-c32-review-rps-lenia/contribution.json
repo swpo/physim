@@ -1,0 +1,55 @@
+{
+ "id": "20261026T0100-c32-review-rps-lenia",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2349-c26-rps-lenia#finding",
+ "review_of": "20261025T2349-c26-rps-lenia",
+ "title": "Review of c26's rock-paper-scissors Lenia: replicates on fresh seed 3 (cyclic 20/21/20 cells per kind with turnover 0.53; transitive 35/25/6 with the doubly-eaten kind at 3 by t=800, turnover 0.19; no predation 26/18/24, static, 0.14); labkit pack of the cyclic world on seed 4: all three kinds divide to generation 4-5",
+ "summary": "c26's three matched arms with its own counter (runr.py) on new seed 3, t=0-800. Means over t>=400 (cells per kind 0/1/2) and turnover: cyclic 19.8/21.0/20.1 (minima 15-17), 0.526; transitive 35.2/24.6/5.7 (kind 2 ends at 3), 0.186; none 25.5/18.1/23.5, 0.137. The images show the same picture as c26's: a mixed, shifting mosaic in the cyclic arm, red saturating and blue squeezed in the transitive arm, a frozen tiling without predation. A labkit pack of the cyclic world (seed 4, t=0-400) tracks all three kinds: 9-17 persistent splits each, max generation 4-5.",
+ "parents": [
+  "20261025T2349-c26-rps-lenia"
+ ],
+ "class": "lenia",
+ "world": "world.py",
+ "evidence": [
+  "arms/t_cyclic_s3.png",
+  "arms/t_transitive_s3.png",
+  "arms/t_none_s3.png",
+  "rerun_cyclic/FACTS.md",
+  "rerun_cyclic/sheet.png",
+  "arms/t_cyclic_s3_turnover.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "X"
+   ],
+   "observations": {
+    "X": "arms/t_transitive_s3.png: kind 2 (blue) held at 3-9 cells while kinds 0 and 1 grow; arms/t_cyclic_s3.png: all three kinds at 15-23 cells from t=400 to 800 with a shifting mosaic; arms/t_none_s3.png: static tiling"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: all three arms as claimed"
+    },
+    {
+     "seed": 4,
+     "result": "pass: labkit cyclic pack, three kinds coexist and divide to t=400"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "matched transitive and no-predation twins on seed 3 (arms/)"
+   },
+   "by_construction": [],
+   "limitation": "One new seed for the three-arm comparison, one domain size, world step unchanged. Coexistence alone does not separate cyclic from no predation (both keep all three kinds); what separates them is the transitive arm's suppression of the doubly-eaten kind and the higher turnover. Part of the cyclic turnover is predation converting pixels from prey to predator, which the coded transfer does directly. Predation is a coded matter transfer and founders are planted, as the finding says."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}
