@@ -1,0 +1,10 @@
+{"id": "20261026T1020-c37-sh-delay-map-correction", "kind": "finding", "mode": "explore", "task": "Q:sh-delay-rings",
+ "title": "Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at start, the planted spot died for kap*tau >= 3, not >= 6 (survived at 1.5, died at 3, 5, 6, 12, 15, 20)",
+ "summary": "In my first, superseded v=0 runs of the low-pass Pyragas form (r=-0.4; same probe_p1/probe_p2 layout before I reran with v=u), the spot survived at kap 0.3, tau 5 and kap 0.15, tau 10 (kap*tau 1.5). It died at kap 0.6, tau 5 (3), kap 1.0, tau 5 (5), kap 0.3, tau 20 (6), kap 1.5, tau 10 (15), kap 0.6, tau 20 (12) and kap 1.0, tau 20 (20). The parent summary said 'kap*tau >= 6'; the threshold lies between 1.5 and 3. The main result (static spots with the v=u start) is unchanged. The v=0 images were overwritten by the reruns, so this rests on the run log in this session.",
+ "parents": ["20261026T1020-c37-sh-delay-map-negative"],
+ "class": "swift-hohenberg",
+ "world": "research/alife/collective/contrib/20261026T1020-c37-sh-delay-map-negative/world.py",
+ "evidence": ["research/alife/collective/contrib/20261026T1020-c37-sh-delay-map-negative/probe_p1.png"],
+ "outcome": "negative",
+ "finding": {"operator": "low-pass Pyragas feedback started from v=0", "capability": "D", "world": "research/alife/collective/contrib/20261026T1020-c37-sh-delay-map-negative/world.py", "necessary": false, "law": false, "control": "same map with v=u start", "result": "v=0 start kills the spot for kap*tau in {3, 5, 6, 12, 15, 20}, keeps it at 1.5"},
+ "compute": {"cpu_minutes": 0}}
