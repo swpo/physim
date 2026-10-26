@@ -1,0 +1,12 @@
+[active-nematic-marangoni-two-kinds] seed 4: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  66.5s
+  frame 40/200  134.1s
+  frame 60/200  197.3s
+  frame 80/200  260.1s
+  frame 100/200  326.0s
+  frame 120/200  392.4s
+  frame 140/200  459.1s
+  frame 160/200  527.2s
+  frame 180/200  595.9s
+  frame 200/200  660.0s
+  -> collective/contrib/20261026T0915-c38-review-two-kinds/rerun/neutral_seed4/FACTS.md  (660s sim)
