@@ -1,0 +1,4 @@
+{"id": "20261026T0456-c32-intent-swimevo", "kind": "intent", "mode": "review", "task": "R:lab1-chemotaxis-motility-swimevo#c1",
+ "title": "c32 reviews lab 1's chemotaxis-motility/swimevo (SID): labkit packs on fresh seeds 3 and 4",
+ "summary": "Check S, I and D on new seeds with labkit; the allele dynamics are not examined.",
+ "parents": ["threads/chemotaxis-motility/worlds/swimevo/world.py"]}

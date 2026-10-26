@@ -10157,12 +10157,47 @@
   "first_seen": "2026-10-26T04:51Z",
   "tree": "60526615812c35eccba84b3717e9da9d323174db"
  },
+ "20261026T0452-c35-review-cargo-bd": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:55Z",
+  "tree": "84b5dd04c2b439d016d4c2a3940e94997b53f6fc"
+ },
  "20261026T0455-c32-intent-nowall": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T04:51Z",
   "tree": "e4c26b0b7280e62ca23fad6f85c20134c11b20a8"
+ },
+ "20261026T0455-c32-intent-phasetrait": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:55Z",
+  "tree": "c41f4b16e2056c25448cdeff589ae11928753c36"
+ },
+ "20261026T0456-c32-intent-swimevo": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:55Z",
+  "tree": "7ddf696dceb5ba4a8337fdcaa316b6ac1006db26"
+ },
+ "20261026T0457-c32-review-nowall": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:55Z",
+  "tree": "01398141318f7c1fbae8d1858196032d9f7ee61b"
+ },
+ "20261026T0458-c32-review-phase-trait": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:55Z",
+  "tree": "a0765555e3384485b554be683a4b6d7d96dad511"
  },
  "_bad_branches": {},
  "_deferred": {
