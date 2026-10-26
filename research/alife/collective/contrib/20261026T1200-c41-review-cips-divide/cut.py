@@ -39,19 +39,19 @@ for name, mod in arms.items():
             others = [int((lab == i).sum()) for i in range(1, n + 1) if i not in tgt and (lab == i).sum() >= 30]
             log.append(dict(t=round(a["t"]), target_area=ta, target_pieces=len(tgt), others=len(others), others_area=sum(others),
                             F_in=round(float(a["F"][disk(best[1], best[2], 10)].mean()), 4), F_mean=round(float(a["F"].mean()), 4)))
-            if k % 5000 == 0: sn.append((a["t"], e.copy()))
+            if round(a["t"] - T0) in (0, 100, 200, 400, 700, 1000, int(TA)): sn.append((a["t"], np.roll(np.roll(e, int(H / 2 - best[1]), 0), int(W / 2 - best[2]), 1)[H // 2 - 50:H // 2 + 50, W // 2 - 50:W // 2 + 50].copy()))
         w.step(a); k += 1
     res[name] = log; snaps[name] = sn
     print(tag, name, [(l["t"], l["target_area"], l["others"], l["others_area"], l["F_in"]) for l in log], flush=True)
 json.dump(dict(seed=seed, T0=T0, R=R, target=best[:3], nn_dist=gap, arms=res), open("cut_%s.json" % tag, "w"))
 nc = max(len(v) for v in snaps.values())
-fig, ax = plt.subplots(2, nc, figsize=(2.1 * nc, 4.6))
+fig, ax = plt.subplots(2, nc, figsize=(1.8 * nc, 4.0))
 for i, name in enumerate(arms):
     for j in range(nc):
         a_ = ax[i, j]; a_.axis("off")
         if j < len(snaps[name]):
             t, im = snaps[name][j]; a_.imshow(im, cmap="magma", vmin=0, vmax=1)
-            if name == "cut": a_.add_patch(plt.Circle((best[2], best[1]), R, fill=False, color="cyan", lw=0.6))
+            if name == "cut": a_.add_patch(plt.Circle((50, 50), R, fill=False, color="cyan", lw=0.6))
             a_.set_title("%s t=%.0f" % (name, t), fontsize=7)
-fig.suptitle("seed %d: kF=0 in the cyan disk (R=%g) from t=%g; top: fed twin" % (seed, R, T0), fontsize=8)
+fig.suptitle("seed %d: 100x100 crop centred on the target; kF=0 in the cyan disk (R=%g) from t=%g; top: fed twin" % (seed, R, T0), fontsize=8)
 fig.tight_layout(); fig.savefig("cut_%s.png" % tag, dpi=70)
