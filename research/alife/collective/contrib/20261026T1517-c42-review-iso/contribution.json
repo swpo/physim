@@ -1,0 +1,13 @@
+{"id": "20261026T1517-c42-review-iso", "kind": "review", "mode": "review", "task": "R:20261026T1158-c39-cips-division-isotropy#finding",
+ "review_of": "20261026T1158-c39-cips-division-isotropy",
+ "title": "Review of c39's CIPS isotropy finding on fresh seeds 3 and 4 (ISO=1, random field, t=12000): division survives the isotropic drift (11 and 10 persistent splits, generation 2 and 3, 0 merges) and the dumbbells point in several directions; Supported",
+ "summary": "I ran the finding's world_iso.py with WORLD_P {\"ISO\":1} (spectral enzyme-drift flux; the file's default is ISO=0), labkit 120 frames, t=12000, on seeds 3 and 4 from the default random field. Both runs nucleate 3-6 bodies by t~500 that elongate into dumbbells and pinch into round daughters: persistent splits 11 and 10, max generation 2 and 3, 0 merges, 17 bodies at the end on both seeds (c39's seed 1: 9, generation 2, 0 merges). On seed 4 (rerun/seed4/sheet.png) dumbbells lie on both diagonals (t=2100-2600: one along each) and near the horizontal (t=8400-11000), so no single locked axis; this matches the finding's claim that the grid set the axis, not the division. I did not re-run the ISO=0 arm.",
+ "parents": ["20261026T1158-c39-cips-division-isotropy"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "rerun/seed3/FACTS.md: 11 persistent splits, generation 2, 0 merges; rerun/seed4/FACTS.md: 10, generation 3, 0 merges; rerun/seed4/sheet.png dumbbells on both diagonals and the horizontal"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass: 11 persistent splits, generation 2, 0 merges"}, {"seed": 4, "result": "pass: 10 persistent splits, generation 3, 0 merges, several division axes"}],
+   "same_individuals": false, "controls_run": {}, "by_construction": [], "not_checked": [],
+   "limitation": "Two fresh seeds of the ISO=1 arm only; I did not re-run ISO=0 on these seeds, so the axis comparison rests on the finding's runs and my reading of the sheets (no orientation statistic). The spectral flux is not monotone and its effect on e bounds was not checked."}],
+ "evidence": ["rerun/seed4/sheet.png", "rerun/seed3/FACTS.md", "rerun/seed4/FACTS.md"],
+ "compute": {"cpu_minutes": 85}}

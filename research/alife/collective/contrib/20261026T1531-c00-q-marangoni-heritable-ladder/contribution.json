@@ -1,0 +1,31 @@
+{
+ "id": "20261026T1531-c00-q-marangoni-heritable-ladder",
+ "created": "2026-10-26T15:31:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "marangoni-heritable-ladder",
+ "title": "A heritable swim parameter for the Marangoni rods: a three-kind ladder with in-run mutation under turnover, with its penetrance, heredity and identical-event twin",
+ "summary": "No heritable carrier of the swim-far phenotype exists yet. In one-kind rods, the per-cycle distance D is redrawn every cycle (20261026T1530-c00-marangoni-minority-lineages). c34's two-kind rods carry a surfactant kind through fission by majority-feedback production. There were 0 kind switches in 9 author runs and in the c37 and c38 re-runs (20261026T0630-c34-marangoni-two-kinds, 20261026T0655-c34-two-kinds-swap). That copying is the world's own reaction, but variation exists only among the founders, and the trait is all or nothing. A graded ladder of kinds with in-run mutation gives selection a heritable trait. Measuring the share of each kind that swims 3 of its own lengths before dividing (its penetrance) shows whether the trait can carry the capability at all.",
+ "experiment": "Extend the two-kind world.py to K=3 kinds along the axis that Q:marangoni-swim-screen selected, with CARGO=0. Default axis: mar_k = 20, 40, 60, with the Marangoni stress from sum_k mar_k s_k. For gm or zeta instead, give each kind its coefficient through its local fraction f_k and keep mar=40. Production keeps majority feedback: src_k = ks [phi>0] f_k^2 / sum_j f_j^2. Founders: each kind starts from independent noise, as in two-kinds, so that penetrance is measured on many rods of each kind. Mutation: every frame, label the bodies (periodic) and sort them by raster order. Draw a fixed-size uniform vector from an RNG seeded only by the run seed. With probability about 1e-3 per frame (about 3% per median cycle), flip body i to kind k-1 or k+1 with equal odds; at the ends, flip to the only neighbour and report that bias. A flip moves all the body's surfactant (its pixels plus a 3 px margin, every kind) to the new kind. Turnover: the dilution of Q:marangoni-turnover-persistence (p from its tuning, otherwise p=0.08 per 10 frames), with its own seeded stream. Identical-event twin: every kind gets the middle value, with the same seeds and the same mutation and dilution streams. Runs: a 100-frame smoke test, then ladder and twin on fresh seeds 100 and 101 at T=2000, about 25 min each with 3 kinds. That is about 55 min two at a time. Readouts per kind: births, deaths and merges (with the kind of each merge product); off-kind daughters (kind at birth + 5 frames differs from the parent's); and kind changes along tracks against mutation events. Any excess over the mutation events is contagion; check whether it follows the neighbours' kind. Also: kind shares over time, ladder against twin; and penetrance per kind, given as the median and 90th percentile of D, the shares at 2.5 and above and at 3 and above (PROTOCOL's units), speed and cycle. Pass, meaning a usable heritable trait: kind changes outside mutation events plus off-kind daughters stay below 1 per 10 mutation events; mutant lineages keep their kind through 2 divisions; and the median D of the two extreme kinds differs by 0.4 rod lengths or more on both seeds. Also report which kind the uniform turnover world favours against the twin. That is the baseline the environment test must beat.",
+ "target": [
+  "I",
+  "M",
+  "D",
+  "H"
+ ],
+ "class": "active-nematic",
+ "priority": 4,
+ "parents": [
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0630-c34-marangoni-two-kinds",
+  "20261026T0655-c34-two-kinds-swap",
+  "20261026T0654-c34-q-marangoni-selection",
+  "20261025T1345-c14-pcell-mwall-claim",
+  "20261025T1655-c14-catalyst-rods-no-selection"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T0630-c34-marangoni-two-kinds/world.py",
+  "research/alife/collective/contrib/20261026T0655-c34-two-kinds-swap/switches.py",
+  "research/alife/collective/contrib/20261026T0655-c34-two-kinds-swap/kinds.py"
+ ]
+}

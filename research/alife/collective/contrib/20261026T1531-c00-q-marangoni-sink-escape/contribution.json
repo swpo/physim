@@ -1,0 +1,27 @@
+{
+ "id": "20261026T1531-c00-q-marangoni-sink-escape",
+ "created": "2026-10-26T15:31:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "marangoni-sink-escape",
+ "title": "Does an environment that kills the rods that stay put select for swimming distance? Growing sink discs against discs that allow no escape, in the Marangoni rods",
+ "summary": "In a uniform bath, speed pays only through growth. Faster rods grow and divide sooner, so selection favours speed but not the distance a rod covers per cycle (20261026T1530-c00-marangoni-minority-lineages). An environment where survival depends on getting away rewards displacement itself. Sink discs open at random times and places and grow at 0.08 px/t. A mar=40 rod (0.16-0.18 px/t) can outrun them; a mar=0 rod (0.04-0.06 px/t) cannot. The discs only lower the supply, so bodies die by dissolving through the world's own dynamics, and the discs also supply the turnover that a saturated domain lacks. The matched control runs the same disc process but removes the bodies inside each disc as soon as it opens, so moving cannot change survival. Long cycles add exposure to the discs before a rod divides, so the screen must report the net selection on D, not only on speed.",
+ "experiment": "Fork world.py of 20261026T0505-c34-nematic-marangoni (CARGO=0) so that the chemostat target is a field. phi_b(x,t) is -0.6 outside discs and lower inside; add kr phi_b(x,t) in real space instead of only at k=0. Discs open as a Poisson process from an RNG seeded only by the run seed: about one per 200 t on 128^2, with uniform centres. Each grows from radius 0 at 0.08 px/t to 24 px and then closes. First tune the inside value (start at -1.2) on a 100-frame run of seed 0 at mar=0. Aim for 80% or more of the bodies inside a disc's final radius to dissolve before the disc closes. Arm S: growing discs. Arm I, the control: the same disc stream and phi_b field, but when each disc opens, every body whose centroid lies within its final 24 px radius is removed and set to bath, as in Q:marangoni-turnover-persistence. Runs: S and I at mar=40 on fresh seeds 90 and 91, and S at mar=0 on seed 90, all at T=1600 (about 17 min each). That is 5 runs, about 55 min two at a time. Readouts: deaths (dissolved or removed), births and maximum generation. For each disc, the bodies inside its final radius at opening and the share that leave before dissolving, at mar=40 and at mar=0. Per dividing track: D, speed, straightness and cycle, plus the rear-tip advance from mlength/mtips.py of 20261026T1130-c00-audit-marangoni, so that displacement made by dissolving on one side is not counted as swimming. In S and in I: the selection gradients on D, on speed and on straightness, from a joint regression of descendants alive two median cycles after birth on the standardized traits. Pass: on both seeds, the escape share at mar=40 is at least twice that at mar=0; the gradient on D at fixed speed is positive in S and larger than in I; and the passers translate (rear tip advancing at least 2/3 of the net displacement) as often in S as in I. If S fails because exposure over long cycles outweighs escape, publish that as a negative.",
+ "target": [
+  "I",
+  "M",
+  "D"
+ ],
+ "class": "active-nematic",
+ "priority": 4,
+ "parents": [
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0505-c34-nematic-marangoni",
+  "20261026T1130-c00-audit-marangoni",
+  "20261026T0655-c34-two-kinds-swap"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+  "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/mtips.py"
+ ]
+}

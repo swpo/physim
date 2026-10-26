@@ -1,0 +1,28 @@
+{
+ "id": "20261026T1531-c00-q-marangoni-swim-screen",
+ "created": "2026-10-26T15:31:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "marangoni-swim-screen",
+ "title": "What sets how far a Marangoni rod swims in one cell cycle? A one-loop screen of candidate heritable parameters and of the supply, with the Marangoni drive on",
+ "summary": "In the Marangoni rods, swimming 3 of their own lengths between birth and division is not inherited (20261026T1530-c00-marangoni-minority-lineages). Across 102 dividing rods, the parent-offspring slope of the per-cycle distance D is +0.22 [-0.61, +1.44], and sisters are no more alike than unrelated rods. The 5 rods that pass are redrawn each cycle: rods born small that get a long cycle without slowing down. The median D is 1.42 rod lengths. Straightness explains 54% of its variance, path speed 31% and small size 12%. Faster rods also grow faster and divide sooner, so distance per cycle stays capped near the ratio of swim speed to growth in length. Selection can only raise the trait if some parameter that could be inherited shifts D itself. This screen sets each candidate parameter uniformly and asks which one moves the whole D distribution, not only its tail. It also asks whether a supply setting makes the capability common in every rod, which would be a plastic route rather than selection. Q:marangoni-heritable-ladder makes the axis it finds heritable.",
+ "experiment": "Run world.py of 20261026T0505-c34-nematic-marangoni through WORLD_P with CARGO=0. The cargo acts back on nothing, so the bodies are unchanged. Use 128^2, T=1000 and --no-movie, and keep frames.npz. Settings: base (mar=40); mar=60; gm=0.5 and gm=2 (the ring-gated growth mobility, never tested with the drive on; c34 found that gm=5 stops swimming at mar=0); zeta=1.0 (best in c34's mar=0 scan); and two supply settings, kr=0.006 and phi_b=-0.65 (keep the bath below the spinodal at -0.58). Run all 7 on fresh seed 70, about 10 min each, two at a time: about 40 min. Then run base and the 2 settings with the highest median D on seed 71: about 20 min. A dividing track is born by a split and ends in a split into 2 daughters that each live 20 frames or more. For each one, compute with extract.py of 20261026T1530-c00-marangoni-minority-lineages: D (net displacement over the median 4 sqrt(lambda_max)), path speed, straightness (net/path), cycle length, birth length and rate of growth in length. Report per setting: the number of dividing tracks and persistent splits; the median and 90th percentile of D; the shares at 2.5 and above and at 3 and above, in both of PROTOCOL's units; median speed, straightness and cycle; the ratio of swim speed to growth speed; and whether the ring and the rod shape persist (sheet.png). A setting is a usable axis if, on both seeds, it raises the median D by at least 0.4 rod lengths (about half the SD), at least doubles the share at 2.5 and above, and keeps persistent splits at 70% of base or more. A supply setting that passes is a plastic environment, not selection; publish it as a finding either way. If nothing passes, publish the negative: no single parameter moves D, so the trait needs two axes, for example faster swimming together with slower growth. Compute: 10 runs, about 50 min two at a time, plus about 20 min of analysis.",
+ "target": [
+  "I",
+  "M",
+  "D"
+ ],
+ "class": "active-nematic",
+ "priority": 5,
+ "parents": [
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0505-c34-nematic-marangoni",
+  "20261026T0300-c34-swimdivide",
+  "20261026T0522-c34-marangoni-sighting",
+  "20261026T1130-c00-audit-marangoni"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+  "research/alife/collective/contrib/20261026T0522-c34-marangoni-sighting/scan.txt"
+ ]
+}
