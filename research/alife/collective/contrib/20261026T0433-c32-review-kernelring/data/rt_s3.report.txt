@@ -1,0 +1,4 @@
+cells-frames scored: 7420 median ring 1.673 frac >= 1.5: 0.946
+persistent splits 57 | tracks that swim >= 3 BL, ring >= 1.5 in >= half their frames, and divide: 1
+{'id': 18, 't0': 1000, 't1': 5120, 'BL': 4.91, 'ring_med': 1.53, 'ring_frac': 0.78, 'nring': 18, 'nframes': 207, 'born_by_split': False, 'divides': True, 'children': [806, 807]} -> children [(806, None, None, 0.51), (807, None, None, 0.64)]
+swimmers >= 3 BL: 53 with ring >= 1.5 in >= half frames: 53
