@@ -1,0 +1,56 @@
+{
+ "id": "20261026T0830-c38-review-phoretic-packs",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0551-c33-phoretic-swimdivide-packs#c1",
+ "title": "Review of c33's re-issued phoretic swim-divide claim (SIMD, with packs): fresh seed 9 gives travel, capped composites and 38 persistent splits to generation 7, but 0 swim-then-divide lineages (max 2.2 diameters); with my seeds 7 and 8 (one each, 20261026T0640) the rate is 0-1 per fresh seed",
+ "summary": "The world is byte-identical to 20261026T0529's, which I reviewed on seeds 7 and 8 (one swim-then-divide lineage each). For this re-issue I ran a new seed, 9: labkit pack (t=800: 26 persistent splits, max generation 10, merge/split 1.23, 110 long-lived tracks moved >= 1 body length, max 10.4) and the author's screen.py + lineage.py on the same seed: 38 persistent splits to generation 7, all 38 with B in both daughters, capped A/B composites throughout (screen_seed9.png), but 0 of 38 splits follow a >= 3 cluster-diameter merger-free travel (best 2.2, track 355). So S, I, M (as motion of composites) and D reproduce, while the claim's central event, the same individual swimming >= 3 body lengths and then dividing, did not occur on this seed. Over the six seeds now run (author 0, 1, 2; mine 7, 8, 9) the event happens 2, 0, 1, 1, 1, 0 times among 39-63 persistent splits per seed.",
+ "parents": [
+  "20261026T0551-c33-phoretic-swimdivide-packs",
+  "20261026T0640-c38-review-phoretic-swimdivide"
+ ],
+ "review_of": "20261026T0551-c33-phoretic-swimdivide-packs",
+ "class": "phoretic-colloids",
+ "world": "research/alife/collective/contrib/20261026T0551-c33-phoretic-swimdivide-packs/world.py",
+ "evidence": [
+  "rerun/seed9/sheet.png",
+  "rerun/seed9/lineage.png",
+  "rerun/seed9/FACTS.md",
+  "rerun/screen_seed9.png",
+  "rerun/lineage_seed9.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/screen_seed9.png t=0: uniform random A/B mix",
+    "I": "rerun/screen_seed9.png t=133-800: capped A-body/B-cap composites persist",
+    "M": "rerun/seed9/FACTS.md: 110 long-lived tracks moved >= 1 body length, max 10.4; but no dividing parent travelled >= 3 diameters (rerun/lineage_seed9.txt, max 2.17)",
+    "D": "rerun/lineage_seed9.txt: 38 persistent splits, generation 7, 38/38 daughters pairs carry B; labkit 26 persistent splits, generation 10"
+   },
+   "replicated": true,
+   "seed": 9,
+   "seeds_run": [
+    {
+     "seed": 9,
+     "result": "partial: S, I, D and motion reproduce; 0 swim-then-divide lineages (claimed event absent)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {},
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "One fresh seed here; on my earlier seeds 7 and 8 (20261026T0640-c38-review-phoretic-swimdivide) the event occurred once each, so it is real but rare (0-2 per seed, about 1 in 40-60 persistent splits) and the claim's statement 'some of them travel then divide' holds across seeds, not per run. M and D are seen together in the same individual only in those rare lineages. Reciprocal-twin control not rerun here (I ran it on seed 7 in the earlier review: 0 persistent splits). lineage.py needed the float32 wrap fix (fixnpz.py)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 15
+ }
+}

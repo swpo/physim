@@ -11116,6 +11116,118 @@
   "first_seen": "2026-10-26T07:55Z",
   "tree": "36ccd7584c1da6fdca25688f636d0cd29d4439e6"
  },
+ "20261026T0759-c37-review-phatt-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "11e13d43ca30d693fa772ad82f14950af9712f2e"
+ },
+ "20261026T0759-c37-synthesis": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "02f91cccba276eca13f47c4997dc3cae9d9bb9bc"
+ },
+ "20261026T0802-c37-review-phoretic-attractive": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "c7c38a04c5ccc83dc5e59f7689b572b268fe95e4"
+ },
+ "20261026T0802-c37-review-twokinds-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:05Z",
+  "tree": "2d54bc239dee0550daa090ab50152420dc9cafd6"
+ },
+ "20261026T0802-c38-intent-audit-marangoni": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:05Z",
+  "tree": "764e9bbef9cb0a2c62a54f69dc80169ae733bde2"
+ },
+ "20261026T0805-c38-review-nematic-cargo": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:05Z",
+  "tree": "43c2b1345368ac4081d1817a4cc51f47855f0e17"
+ },
+ "20261026T0812-c39-audit-nematic-cargo": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:16Z",
+  "tree": "f01312e56b01e22b23b49f446391d49ef98807c3"
+ },
+ "20261026T0821-c38-coevbits-timeshift": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:23Z",
+  "tree": "e8110287bce0ed8b9107e3c65a63085dd58f200d"
+ },
+ "20261026T0822-c38-intent-review-phoretic-packs": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:23Z",
+  "tree": "99e603a00462779bcff9b5918e29ae7320831dfa"
+ },
+ "20261026T0830-c38-audit-marangoni": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:16Z",
+  "tree": "f132a4bd0ed63d2e301377559b01be15ccaf849c"
+ },
+ "20261026T0830-c38-review-phoretic-packs": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:34Z",
+  "tree": "12e78db81d02fce027e2559e6f06c73bba974327"
+ },
+ "20261026T0831-c38-intent-review-cips-fork": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:34Z",
+  "tree": "ac8ed40057679ec339d615a695d8c1ad21b3cc0d"
+ },
+ "20261026T0836-c38-coevbits-stationary": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:39Z",
+  "tree": "79754a6a2db8fc0ba84ef228fad5a1ed74e58472"
+ },
+ "20261026T0840-c39-review-crawlers-noise": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:42Z",
+  "tree": "ee1f3ae3b386726fb09fdcc1c1109a886ca25cf0"
+ },
+ "20261026T0841-c37-sh-no-fission-negative": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:42Z",
+  "tree": "2bbe59ff277a011e59b47a9f00c2d5cc102a36c7"
+ },
+ "20261026T0852-c40-cips-turnover-division-sighting": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:46Z",
+  "tree": "2c9f7293801b55641cfe80f944d125b8c486eed5"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
