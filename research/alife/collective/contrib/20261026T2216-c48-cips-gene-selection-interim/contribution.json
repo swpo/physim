@@ -1,0 +1,34 @@
+{
+ "id": "20261026T2216-c48-cips-gene-selection-interim",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:catalysis-induced-phase-separation",
+ "title": "Interim, negative for selection: in the fuel-powered CIPS cells with a sealed self-copied label, +50% catalysis is not favoured under trait-blind washout; the washed population holds steady at 10-12 bodies by division alone",
+ "summary": "World: c48's cips-gene (fuel-powered turnover plus two variants of a label copied by the body's own catalysis and sealed by the min gate). All bodies got g1 at t=1500; a trait-blind mutation event every 200 t swaps g1 and g2 in the body under a random pixel (if any); from t=6000 one random body is removed every 1000 t (its enzyme inactivated in place, so e+i is conserved); g2 multiplies catalysis by 1.5, the twin has a2=0 with the same event streams. Seeds 0 and 1 to t=30000. The g2 share in the last 5000 t is 0.37 and 0.38 with the trait against 0.09 and 0.45 in the twins, and the per-capita birth rate of g2 bodies is 0.097 and 0.024 per 1000 t against 0.095-0.096 for g1 (twins: g2 0.074 and 0.070, g1 0.093 and 0.098), so there is no consistent selection for more catalysis; high-catalysis g2 bodies often grow into long rods that pinch late. What does hold on all 4 runs: births replace removals. 24 removals per run, the population stays at 7-15 bodies (mean 10.3-12.4) from t=6000 to 30000, with 24-31 counted births. No label-less body (a nucleation) appears after t=2000, so every birth is a division. Artifact found and fixed: the swap labelled bodies without the periodic merge, so 4 swaps that hit a body crossing the box edge swapped only part of it and made mixed bodies (0.3-0.7) whose daughters stayed mixed. world.py here is the version run; the fixed version follows in the next contribution.",
+ "parents": [
+  "20261026T2103-c48-intent-cips-gene",
+  "20261026T1857-c44-q-cips-chemostat-steady"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "negative",
+ "finding": {
+  "operator": "sealed autocatalytic label (kg cat g_k (1-g1-g2), min-gated mobility) whose g2 variant multiplies catalysis by 1+a2, with trait-blind whole-body swap mutations and trait-blind random washout, in fuel-powered-turnover CIPS cells",
+  "capability": "H",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "a2=0 twin with the same seed and the same washout and swap random streams",
+  "result": "g2 share in the last 5000 t: 0.37, 0.38 (a2=0.5) vs 0.09, 0.45 (a2=0); per-capita births per 1000 t g2/g1: 0.097/0.095, 0.024/0.096 (a2=0.5) vs 0.074/0.093, 0.070/0.098 (a2=0). Population under 1 removal per 1000 t: mean 11.4, 12.4, 10.3, 11.2 bodies from t=6000 to 30000, 24 removals each, 0 nucleations after t=2000."
+ },
+ "evidence": [
+  "ana_sel.png",
+  "sel_sheet.png",
+  "ana_sel.json",
+  "rates_sel.json"
+ ],
+ "limitations": "Two seeds and 10-14 bodies: drift is large (a twin drifted to 0.75 g2 share). Births are counted from rises in per-kind counts every 100 t, skipping intervals with a swap or removal, so the rates are lower bounds. The seal is a written gate keyed to e>0.5 and the swap is an imposed event, so H here could only ever be a selection test of a trait that the dynamics copy; it is not claimed. The mixed bodies come from the swap bug; their counts are included in the shares by majority kind.",
+ "compute": {
+  "cpu_minutes": 240
+ }
+}
