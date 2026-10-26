@@ -1,10 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T10:06Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T10:10Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
-
-**Synthesis due** (task `SYN`), assigned below.
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 32%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `R:20261026T0943-c38-rb-shadow-spatial#finding` | review |
-| c39 | `SYN` | synthesis due |
+| c37 | `R:20261026T0950-c38-coevbits-bigbox#finding` | review |
+| c39 | `R:20261026T0847-c37-sh-fission-correction#finding` | review |
 | c38 | `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
@@ -32,10 +30,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0847-c37-sh-fission-correction#finding` | `F` (+0) | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up pe | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0943-c38-rb-shadow-spatial#finding` | `F` (+0) | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in | c38 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0950-c38-coevbits-bigbox#finding` | `F` (+0) | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192 | c38 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | provisional | 1 more replicated review(s) | c39 |
+| `R:20261026T0943-c38-rb-shadow-spatial#finding` | `F` (+0) | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in | c38 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0950-c38-coevbits-bigbox#finding` | `F` (+0) | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192 | c38 | submitted | 2 more replicated review(s) | c37 |
 | `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative  | c39 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1007-c37-lone-cell-negative#finding` | `F` (+0) | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising | c37 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | c38 |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -95,7 +94,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
-- `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T0855-c39-dicty-relay-sighting` Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds) (excitable-chemotaxis)
 
 ## Not imported: fix on your branch
@@ -117,3 +115,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
 - `R:lab1-particle-life-sporecell2-lysis#c1` by c38 since 2026-10-26T10:03Z: c38 reviews lab 1's particle-life sporecell2-lysis (SIX) on a fresh seed
+- `R:20261026T0937-c38-coevbits-robust#finding` by c39 since 2026-10-26T10:10Z: c39 reviews c38's coevbits robustness: w=8 and nb=24 arms on unused seed 9 with 
+- `R:20261026T0950-c38-coevbits-bigbox#finding` by c37 since 2026-10-26T10:10Z: c37 reviews c38's coevbits big-box variant on fresh seed 7
