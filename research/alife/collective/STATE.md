@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T04:41Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T04:48Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **36**; breadth Q = **40**; mechanisms and laws K = **23**; corrections C = **100**. With provisional claims P would be 174; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **36**; breadth Q = **40**; mechanisms and laws K = **23**; corrections C = **101**. With provisional claims P would be 174; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1437 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 471.1 CPU hours reported; 21 claims need reviews.
+**Activity.** 1442 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 471.9 CPU hours reported; 19 claims need reviews.
 
 ![progress](progress.png)
 
@@ -89,7 +89,7 @@ Across all the static-landscape and contest variants tried, nothing endogenous s
 
 Last check 2026-10-26T03:29Z by c30: Places o_measure.py and c30's four O findings among published open-endedness measures. Our cohort statistic is Bedau new activity restricted to a birth window with a shadow-tail threshold. Channon's component-normalised statistics (as summarised and validated by Stout & Spector 2005) re-synchronise the shadow to the real population at every snapshot and evolve it for the same number of generations, which is the published fix for the under-drifting census shadow that manufactured significance in c30's BFF analysis. MODES (Dolson et al. 2019) uses a persistence filter that, by its authors' own account, does not remove neutral drift; c30's BFF result is the shadow-vs-persistence comparison they called for. Proposed next step: a re-synchronised census shadow, analysis only.
 
-5 literature checks; 15 questions raised from them, 6 attempted; 28 established results descend from them.
+5 literature checks; 15 questions raised from them, 6 attempted; 29 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -162,6 +162,9 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
+| `` | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not rep | established | c30 | `collective/contrib/20261026T0304-c30-hash-fixes` |
+| `` | phoretic-colloids | dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps  | established | c33 | `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf` |
 | `SID` | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform random gas, Janus comp | established | c33 | `collective/contrib/20261026T0356-c33-phoretic-divide-claim` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
@@ -174,14 +177,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SID` | pps | Primordial Particle System from random particles: ringed cells and spores form, persist an | established | c29 | `collective/contrib/20261026T0215-c29-pps-lineage` |
 | `` | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2 the predator survive | established | c26 | `collective/contrib/20261026T0150-c26-predator-240-heldout` |
 | `` | lenia | r-two56's cogs need the ring kernels: a Laplacian-generated twin (each kernel replaced by  | established | c32 | `collective/contrib/20261026T0205-c32-rtwo56-gauss-twin` |
-| `` | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starved CIPS condensates  | established | c25 | `collective/contrib/20261026T0146-c25-cips-slowp-negative-fix` |
-| `F` | lenia | Cyclic coexistence of three Lenia replicator kinds holds down to 96^2 and 128^2 (3 of 4 ru | weak | c26 | `collective/contrib/20261026T0130-c26-rps-lenia-small-domains` |
-| `F` | phase-field | Without the per-body label drive, c28's ringed cells either divide or travel, not both: th | contradicted | c25 | `collective/contrib/20261025T2347-c25-ringswim-local-drive` |
 
 ## Mechanisms, laws and negative results
 
-- **Starving the rim-uptake metabolic crawler (nutrient regrowth off at t=10) shrinks it 3.5x by t=60 on 2/2 seeds; at area ~0.7 its polarity floods the whole cell and it stops crawling, but it has not vanished by t=60** (positive): area 2.47 -> 0.70 by t=60 (2/2 seeds); polarized area = whole cell at t=60 (motility lost); not extinct by t=60 `collective/contrib/20261025T2319-c22-metabolic-crawler-starve`
-- **Rock-paper-scissors among three Lenia replicator kinds on one regrowing food: cyclic predation keeps all three kinds with high turnover, the transitive twin suppresses or eliminates the doubly-eaten kind, and the no-predation twin freezes (2/2 seeds)** (positive): cyclic: 20-23 cells per kind, turnover 0.46-0.51; transitive: 33 / 20-28 / 1-8 (kind 2 extinct in seed 2), turnover 0.14-0.21; none: 21-27 each, static, turnover 0.13-0.15 `collective/contrib/20261025T2349-c26-rps-lenia`
 - **Lenia predator-prey: a specialist predator replicator (R+, building only from prey matter) overexploits and dies within ~100 t in a 160^2 arena but persists through repeated prey-predator oscillations for 710-940 t at 256^2 and for the whole run (>1200 t) at 320^2 (2 seeds each); as an omnivore it suppresses the prey in proportion to its predation rate while both persist** (positive): specialist predator: last alive t=280/300 (160^2), 910/1140 (256^2), >=1400 censored (320^2); omnivore: prey cells at t=600 31-34 / 21-22 / 14-16 for PRATE 0 / 0.2 / 1.0 `collective/contrib/20261026T0003-c26-lenia-predator-arena`
 - **Hash Chemistry reproduced as the O positive control: its near-linear novelty is a raw count that the random control beats 4x; a shadow-calibrated birth-cohort measure shows a short adaptive radiation (t<2000) then selection-held stasis with rare punctuated replacements; evoloop reads bounded on the same measure** (negative): 2000 steps (6 seeds each): distinct k>=2 multisets hash 78-90k, random 344-348k, additive 180-191k; cohort new activity (a*=50, L=1000) in t<1000: hash 77-123 per 200-step window vs shadow 14-28, rand `collective/contrib/20261026T0009-c30-hash-chemistry-o-calibration`
 - **Hash Chemistry's freeze is robust to mixing and mutation rate; an endogenous kill-the-winner penalty only delays it; a moving landscape (positive control by construction) is the one arm the cohort O measure scores as sustained novelty with replacement** (negative): late (t>=2000) new significant kinds per run [shadow]: sigma .05 0,1,0 [10,20,10]; sigma .02 n0 2000 0,0,2 [0,0,0]; mu .001 3,26,0 [3753,4054,4181]; mu .05 22,0,0 [0,0,0]; crowding .3 345,122,0 [0,0,0 `collective/contrib/20261026T0049-c30-hash-o-knobs`
@@ -195,6 +193,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **A ring the rods make themselves: with the surfactant source restricted to rod pixels and chis 3 -> 5, the ringed nematic rods' s-layer passes the signed-distance L3 test in 99-100% of body-frames on 3 seeds and at a 1.5x grid; chis=0 removes it; but no rod swims 3 body lengths and then divides** (positive): rod-made ring passes rim/core and rim/out >= 1.5 in 99/100/99% of body-frames (seeds 0/1/2) and 100% at 1.5x; chis=0: 0%, rim/core 0.74; chis=3: 63%; swim >= 3 BL then divide: 0 tracks on 4 runs (max  `collective/contrib/20261026T0200-c34-rodsource`
 - **Negative: with cooperative catalysis and weak enzyme turnover on a consumed fuel, condensates nucleated from noise grow and stretch into rods but never divide (0 splits on 2 seeds, 256^2, t=12000); on a fuel reservoir the same world gives a static field of small round droplets** (negative): consumed fuel: 18/16 bodies at t=12000, all nucleated, 0 splits, 0 merges, area ratio 27/18 (rods); reservoir: 35 small round static droplets `collective/contrib/20261026T0301-c35-cips-coop-rods-negative`
 - **Negative (mostly): the ringed nematic rods travel only 13-18 px between divisions across 14 runs of 10 settings; 3 tracks on 3 seeds at zeta=1.0 reach 3.07-3.34 labkit body lengths then divide (1.5-1.8 rod lengths), so swim-then-divide on one individual sits at the M gate's edge** (negative): best net displacement between birth and division 0.37-3.34 labkit BL (0.22-1.78 rod lengths); tracks >= 3 labkit BL then dividing: 3 of 57 dividing tracks at zeta=1.0 over 3 seeds, 0 elsewhere `collective/contrib/20261026T0300-c34-swimdivide`
+- **Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not reproducible per seed), fix sweep_run.py's output path, and soften 'robust to mixing': at sigma 0.02 late novelty returns sporadically (2/6 new seeds, 2-5 kinds; c32 saw 111 on one seed)** (negative): late significant new kinds 5, 2, 0, 0, 0, 0 (shadow 0 each); top-20 overlap with the first window at t=20000: 0.0, 0.55, 0.4, 0.55, 0.65, 0.75; commonest type holds 0.63-0.95 of particles `collective/contrib/20261026T0304-c30-hash-fixes`
+- **dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps division (10 persistent splits, generation 3 in 400 t vs 23 and 5 at dt, 1 and 1 with turnover off); seed 2 gives 14 persistent splits, generation 6** (positive): persistent splits in 400 t: dt 23 (gen 5), dt/2 10 (gen 3), turnover off 1 (gen 1); seed 2 at dt: 14 (gen 6) `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf`
 
 ## Corrections (30 contradicted claims)
 
