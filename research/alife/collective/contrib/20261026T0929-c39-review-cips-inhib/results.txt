@@ -1,0 +1,10 @@
+== inhib_DI01_kI03 seed 3
+- run: 121 frames x 1000 steps x dt 0.1 = time 12000; grid [192, 192]; wall 753s; status ok
+- components: final 0, mean 0.0, max 0; occupancy final 0.00
+- replication (lineage window K = 20 frames = time 2000, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 0, merge/split ratio n/a, nucleations 0
+n_comp every 1000 t: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+== twin_kI0 seed 3
+- run: 121 frames x 1000 steps x dt 0.1 = time 12000; grid [192, 192]; wall 763s; status ok
+- components: final 9, mean 6.4, max 9; occupancy final 0.11
+- replication (lineage window K = 20 frames = time 2000, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 0, merge/split ratio n/a, nucleations 9
+n_comp every 1000 t: [0, 0, 0, 1, 9, 9, 9, 9, 9, 9, 9, 9, 9]
