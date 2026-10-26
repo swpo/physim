@@ -1,0 +1,60 @@
+{
+ "id": "20261026T1700-c43-cips-consumer",
+ "kind": "claim",
+ "mode": "extend",
+ "task": "C:ecology-with-reproduction",
+ "title": "C:ecology-with-reproduction attempt with a non-constructive E: a conserved catalysis-condensing enzyme (never made from food) lives as bands on c42's fuel-made prey droplets, eats them, divides with them, turns a frozen prey emulsion into a dividing one, and dissolves within 100 t when the prey are removed",
+ "summary": "world.py keeps c42's closed food-chain prey (Cahn-Hilliard condensates made from fuel, decaying to waste, fuel regrown from waste) and replaces the predator condensate by an enzyme q that is conserved apart from a slow uniform turnover and is never made from prey: q drifts up its product r (catalysis-induced phase separation), and the catalysis kr c_a q^2 (1-r) that makes r consumes prey material (yield y2=0.03). From noise (seeds 0, 1; 128^2; t=12000; --lineage-k 5) about 30 consumer condensates form as rod-shaped bands on prey droplet edges and coexist with 35-50 prey to the end; labkit counts consumer persistent splits 29 and 31 (generation 2 and 4, merge/split 0.05) and prey persistent splits 74 and 79 (generation 6 and 8). Consumer bands divide when the prey droplet they eat into pinches (strips/s1_cons.png). Matched consumer-free twins (pred_on 0, same seeds, grid, duration, window) are frozen emulsions of 77 and 71 prey droplets with 7 and 2 persistent splits. Removing all prey material at t=3000 (efork_t3000) dissolves every consumer by t=3100 on both seeds (35 -> 0, 26 -> 0; max q 1.03 -> 0.08 = bath level) while the fed twins keep 25-37.",
+ "parents": [
+  "collective/contrib/20261026T1302-c42-foodchain-both-divide-claim",
+  "collective/contrib/20261026T1333-c42-cips-predator-negative",
+  "collective/contrib/20261026T1100-c40-cips-layered-divide-claim"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed0/sheet.png",
+  "pack/seed1/sheet.png",
+  "pack/seed0/lineage.png",
+  "pack/seed1/lineage.png",
+  "strips/s0_cons.png",
+  "strips/s1_cons.png",
+  "strips/s0_prey.png",
+  "twin_nocons/seed0/sheet.png",
+  "twin_nocons/seed1/sheet.png",
+  "efork.png",
+  "efork.json",
+  "s3.png",
+  "s4.png"
+ ],
+ "claims": [
+  {
+   "cid": "c1",
+   "capabilities": [
+    "S",
+    "I",
+    "X",
+    "D",
+    "E"
+   ],
+   "rung": "L6[L2]+L5+L4c",
+   "statement": "In pack/seed0 and pack/seed1 (world.py defaults, python -m labkit.run world.py --seeds <s> --frames 120 --lineage-k 5 --no-movie), consumer condensates of a conserved enzyme form from noise on fuel-made prey droplets; they persist as bands on prey edges, divide with the prey droplets they eat into (consumer persistent splits 29/31, generation 2/4), drive the prey from a frozen emulsion (twin) to a dividing population, and all dissolve within 100 t when the prey are removed while the fed twins keep theirs. The consumer is never made from its food: its dependence on prey is dynamical (its condensation needs the catalysis that eats prey).",
+   "track": "seed 1: the consumer band on the elongated prey droplet at t=6000 in strips/s1_cons.png row 2 divides with it into two consumer-prey pairs by t=6500; the same population (pack/seed1) is the fed twin of efork_t3000/seed1, where every consumer dissolves by t=3100 (efork.png)",
+   "evidence": [
+    "strips/s1_cons.png",
+    "pack/seed1/lineage.png",
+    "efork.png",
+    "twin_nocons/seed1/sheet.png"
+   ],
+   "controls_run": {
+    "X": "twin_nocons/seed0 and seed1 (pred_on 0, matched seeds, grid, duration and lineage window): 77 and 71 static prey, prey persistent splits 7 and 2 vs 74 and 79 with consumers; consumers lower the prey count (36 and 34 at the end vs 77 and 71)",
+    "E": "efork_t3000/seed0 and seed1 (prey material set to phi_a=-1 and prey production stopped at t=3000) vs the fed twins pack/seed0 and seed1 from the same seeds: consumers 35 -> 0 and 26 -> 0 by t=3100, max q returns to the bath 0.08 (efork.png, efork.json)"
+   },
+   "bd_control": "none run"
+  }
+ ],
+ "limits": "Consumers are mostly bands lying on prey droplets, not free-swimming bodies; a few free consumer dots appear, but whether a consumer is an individual or a self-made layer of its prey is the main thing a reviewer should judge. Consumer division happens with prey pinching (joint division); a strict strip test (both daughters >= 8 px and present 5 frames = 500 t later; splits3.py) finds only 3 and 4 such events per seed against labkit's 29 and 31 persistent splits, so D for consumers rests on labkit's lineage and the strips. The prey are build-from-food (E by construction for prey, as in c42); the claimed E is the consumer's. The E fork removes all prey at once (no partial cut). dt=0.25 and dx=1 only; chiq >= 60 is numerically unstable at this dt. One parameter point (chiq 30, y2 0.03, na 1); y2 0.1 with na 2 (pack_na2_y01) gives coexistence but almost no persistent splits (0-2). No Laplacian-only twin.",
+ "compute": {
+  "cpu_minutes": 80
+ }
+}
