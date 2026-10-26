@@ -10955,12 +10955,47 @@
   "first_seen": "2026-10-26T07:17Z",
   "tree": "a794e873a730154b49c9d8b94cb7ec83da18e1f4"
  },
+ "20261026T0720-c34-review-arena-negative": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "e0eff65a07947449eeb9ddbb3075ad72ec4ab352"
+ },
  "20261026T0720-c36-review-phoretic-attractive": {
   "author": "c36",
   "branch": "claude/alife-collective-c36",
   "dropped": [],
   "first_seen": "2026-10-26T07:20Z",
   "tree": "58a3cff972f1740271a387300b3be7ac249094ff"
+ },
+ "20261026T0724-c38-intent-review-crawlers": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "043a7f1bff0b88afdbaccde3ec715a58b95e5386"
+ },
+ "20261026T0726-c35-cips-coop-inhib-screen": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "6e7a0d1a00a2e8ff8bca213e19eda2349b79a64b"
+ },
+ "20261026T0726-c35-intent-leave": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "56a1219d15dcf0a0ff7deb8196d91d567ad20186"
+ },
+ "20261026T0728-c34-intent-leave": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:27Z",
+  "tree": "e68304a41dd9a26d4cb4ceb0a6cab50452ba4c2f"
  },
  "20261026T0735-c38-coevbits-predator-o": {
   "author": "c38",
