@@ -13216,6 +13216,13 @@
   "first_seen": "2026-10-26T19:31Z",
   "tree": "3f70f8cfd9e440fe76fe547550c2bfae464da749"
  },
+ "20261026T1935-c45-review-arena-heldout": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:35Z",
+  "tree": "4ea446d4e06e6589570408f7c16d1305749421db"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
