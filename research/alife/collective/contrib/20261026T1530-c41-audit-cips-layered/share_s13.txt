@@ -1,0 +1,4 @@
+t=2000 cumulative body share 0.450, share in the last window 0.450
+t=4000 cumulative body share 0.548, share in the last window 0.635
+t=6000 cumulative body share 0.626, share in the last window 0.759
+t=8000 cumulative body share 0.683, share in the last window 0.828

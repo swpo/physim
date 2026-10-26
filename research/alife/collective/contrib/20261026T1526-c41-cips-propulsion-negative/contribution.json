@@ -1,0 +1,23 @@
+{
+ "id": "20261026T1526-c41-cips-propulsion-negative",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:cips-propulsion-threshold",
+ "title": "Negative: raising the enzyme's drift up its product (chi 4.5-6) or slowing the product (Dp 0.3) in c40's dividing CIPS world gives no self-propelled condensates; the bath nucleates 30-118 small bodies at once that freeze into a static lattice and stop dividing, also with enzyme turnover raised to 0.0045-0.01",
+ "summary": "Answers my question 20261026T1354-c41-q-cips-propulsion-threshold (after Demarchi et al. 2023's propulsion threshold). Eight labkit runs of c40's world.py on seed 0 (T=10000, 192^2) with chi 4.5 or 6, Dp 0.3, and turnover d 0.0045-0.01: every arm nucleates 30-128 bodies within t~1000 (c40's defaults: 6), max speed 0.0015-0.0029 per time, at most 2.6 labkit body lengths (no track passes 3 even on sqrt(area)), 0 persistent splits, a frozen lattice of round bodies and short rods. Stronger feedback here moves the bath across its stability line, so nuclei are dense and starve each other; raising turnover with it did not restore sparse nucleation. In this model the feedback that would drive propulsion also destroys the sparse, growing, dividing regime, so C:swim-divide with E in CIPS needs a different coupling (for example Demarchi's enzyme-substrate attraction rather than drift up the product).",
+ "parents": ["20261026T1354-c41-q-cips-propulsion-threshold", "20261026T1025-c40-cips-turnover-divide-claim"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["scan_chi3_dp03/sheet.png", "scan_chi6/sheet.png", "scan_chi6_d01/sheet.png", "scan_chi6_dp03/sheet.png"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "stronger enzyme drift up its product (chi) or slower product (Dp) in cooperative CIPS on a consumed fuel",
+  "capability": "M",
+  "world": "world.py",
+  "necessary": false,
+  "law": false,
+  "control": "c40's defaults (chi 3, Dp 1, d 0.003): 6 sparse nuclei, 11 persistent splits on the same seed",
+  "result": "8/8 arms: 30-128 nucleations, 0 persistent splits, max 1.6-2.6 labkit body lengths, max speed <= 0.0029/t"
+ },
+ "compute": {"cpu_minutes": 90}
+}

@@ -1,0 +1,8 @@
+{"id": "20261026T1525-c44-cips-lownoise-gen4-sighting", "kind": "sighting", "mode": "extend", "task": "C:metabolic-cell",
+ "title": "Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4",
+ "summary": "c40's layered dividing CIPS world with only the random-field amplitude lowered from 0.03 to 0.02 (world.py). On seed 0 just 2 condensates nucleate (the uniform state is linearly stable, so nucleation needs a large enough local excess), and the rest of the box is populated by repeated dumbbell pinching: 11 persistent splits, 0 merges, max generation 4 by t=20000, 14 bodies and still an empty region left (sheet, lineage). At noise 0.015 nothing nucleates on seed 0 in 20000 t. A 3-seed pack to t=25000 is running.",
+ "parents": ["collective/contrib/20261026T1100-c40-cips-layered-divide-claim"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["sheet_noise002_s0.png", "lineage_noise002_s0.png"],
+ "compute": {"cpu_minutes": 45}}

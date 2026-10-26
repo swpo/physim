@@ -1,0 +1,17 @@
+passer s61 #20 D 3.23 front -5.6 (trailing) cycle 52 born 32 cos_parent -1.00
+passer s62 #19 D 3.16 front -6.4 (trailing) cycle 75 born 42 cos_parent +0.22
+passer s62 #30 D 4.67 front -5.6 (trailing) cycle 104 born 46 cos_parent +0.42
+passer s63 #11 D 4.18 front +1.4 (leading) cycle 32 born 40 cos_parent +0.30
+passer s64 #15 D 4.45 front -5.6 (trailing) cycle 63 born 65 cos_parent -0.68
+pooled median cycle 31.5
+D>=3: long cycle 5/51, short 0/51, Fisher p 0.056
+s51: claim-style dividing 27, >=3 by net/L4mean 0; split-born only 18, >=3 by median L4 0
+s52: claim-style dividing 26, >=3 by net/L4mean 0; split-born only 16, >=3 by median L4 0
+r15s51: claim-style dividing 11, >=3 by net/L4mean 0; split-born only 7, >=3 by median L4 0
+s61: claim-style dividing 25, >=3 by net/L4mean 1; split-born only 15, >=3 by median L4 1
+s62: claim-style dividing 23, >=3 by net/L4mean 2; split-born only 14, >=3 by median L4 2
+s63: claim-style dividing 20, >=3 by net/L4mean 1; split-born only 13, >=3 by median L4 1
+s64: claim-style dividing 24, >=3 by net/L4mean 1; split-born only 19, >=3 by median L4 1
+pooled claim-style: 156 5
+new seeds 5 61 old 0 41 Fisher p 0.08042274815716866
+daughters of passers: 10 divide 1 fates ['run-end', 'vanishes', 'run-end', 'run-end', 'run-end', 'run-end', 'divides', 'merges', 'run-end', 'merges'] whole-life D>=3: 2 born frames [72, 72, 84, 84, 117, 117, 128, 128, 150, 150]
