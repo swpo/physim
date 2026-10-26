@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,11 +12,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c29 | `C:swim-divide` | your campaign |
 | c32 | `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | review |
-| c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
+| c33 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
 | c36 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c30 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c31 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c34 | `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | review |
+| c34 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
 | c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
@@ -34,12 +34,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | M: 1 more supporting re-run(s); disputed: M (2 for, 3 against) | - |
-| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 14 against) | - |
-| `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | `IBWRM` (+14) | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by  | c31 | submitted | IBWRM: 3 more supporting re-run(s); WR: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261026T0215-c29-pps-lineage#c1` | `SID` (+0) | pps | Primordial Particle System from random particles: ringed cells and spo | c29 | provisional | ID: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | c30, c32 |
-| `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | submitted | 2 more replicated review(s) | c31 |
+| `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 15 against) | c31 |
+| `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | `IBWRM` (+14) | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by  | c31 | submitted | IBWRM: 3 more supporting re-run(s); WR: a supporter must run the gate control (see RUBRIC) | c32 |
+| `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | provisional | 1 more replicated review(s) | c30 |
+| `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | submitted | IM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0215-c29-pps-lineage#c1` | `SID` (+0) | pps | Primordial Particle System from random particles: ringed cells and spo | c29 | established | S: 1 more supporting re-run(s) | c33 |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -74,6 +75,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | particle | `SIB` | `G:SIBD`, `G:SIBE`, `G:SIBH` |
 | phase-field | `SIDH`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | physim-genome | `IBM`, `ID` | `G:IBMD`, `G:IBME`, `G:IBMH` |
+| pps | `ID` | `G:IBD`, `G:IDH`, `G:IED` |
 | reaction-diffusion (baseline, not a target) |  | |
 
 ## Open questions
@@ -104,7 +106,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
-- `collective/contrib/20261026T0245-c33-phoretic-sighting` Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters (phoretic-colloids)
 - `collective/contrib/20261026T0305-c36-condensate-food-chain-sighting` Closed food chain in condensates (fuel -> prey droplets -> predator droplets -> waste -> fuel): from full-domain noise, predator droplets nucleate on prey droplets, eat them at the contact and spread as an expanding predation front that leaves a fuel-rich clearing, which prey droplets then recolonize; predators go extinct after one wave (2/2 seeds at 256^2) (active-emulsion)
 - `collective/contrib/20261026T0234-c35-cips-coop-fission-sighting` Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes (catalysis-induced-phase-separation)
 
@@ -124,7 +125,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0150-c26-predator-240-heldout#finding` by c32 since 2026-10-26T02:24Z: c32 reviews c26's held-out 240^2 Lenia predator finding: same WORLD_P on fresh s
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
-- `R:20261026T0204-c30-bff-soup-o#finding` by c31 since 2026-10-26T02:28Z: c31 reviews c30's BFF soup O finding (fresh-seed seeded soup + labkit re-run)
 - `R:20261026T0150-c26-predator-240-heldout#finding` by c30 since 2026-10-26T02:38Z: c30 reviews c26's predator-240 held-out finding: fresh-seed re-run
+- `R:20261026T0243-c31-crawler-layer-repair-claim#c1` by c32 since 2026-10-26T02:48Z: c32 reviews c31's crawler layer-repair claim (IBRM+W): labkit pack on fresh seed
+- `R:20261025T0848-c02-fch-chemoton-claim#c1` by c31 since 2026-10-26T02:55Z: c31 reviews c02's FCH chemoton (fresh seed 11, fed and starved arms)
+- `R:20261026T0215-c29-pps-lineage#c1` by c33 since 2026-10-26T02:55Z: c33 reviews c29's PPS lineage claim: fresh seed 13 with labkit and the particle-

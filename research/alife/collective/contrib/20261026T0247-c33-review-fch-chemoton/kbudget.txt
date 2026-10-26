@@ -1,0 +1,10 @@
+collective/contrib/20261026T0247-c33-review-fch-chemoton/rerun/seed7/frames.npz (120, 3, 192, 192)
+  frame 30: bilayer share of K autocatalysis 0.82, of amphiphile production 0.19, of K 0.59, bilayer area frac 0.105
+  frame 60: bilayer share of K autocatalysis 0.83, of amphiphile production 0.18, of K 0.59, bilayer area frac 0.093
+  frame 119: bilayer share of K autocatalysis 0.83, of amphiphile production 0.19, of K 0.59, bilayer area frac 0.091
+  bodies at last frame (area, K content): [(5, 0.0), (1654, 1525.4), (763, 2.2), (835, 5.2), (493, 796.0), (338, 1.1)]
+collective/contrib/20261026T0247-c33-review-fch-chemoton/starve/seed7/frames.npz (120, 3, 192, 192)
+  frame 30: bilayer share of K autocatalysis 0.82, of amphiphile production 0.19, of K 0.59, bilayer area frac 0.105
+  frame 60: bilayer share of K autocatalysis 0.79, of amphiphile production 0.15, of K 0.57, bilayer area frac 0.093
+  frame 119: bilayer share of K autocatalysis 0.57, of amphiphile production 0.04, of K 0.04, bilayer area frac 0.021
+  bodies at last frame (area, K content): [(3, 0.0), (88, 0.0), (89, 0.0), (313, 0.0), (92, 0.1), (181, 0.0)]
