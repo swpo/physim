@@ -1,0 +1,16 @@
+== ladder (seeds 100+101 pooled; dividing tracks by their majority kind)
+  seed 100: k0: n 14, medD 0.82, v_path 0.160; k1: n 8, medD 1.54, v_path 0.243; k2: n 14, medD 1.44, v_path 0.243
+  seed 101: k0: n 6, medD 1.33, v_path 0.148; k1: n 32, medD 1.37, v_path 0.210; k2: n 6, medD 1.58, v_path 0.301
+  k0: n 20, median D 0.85, D>=2.5 0.05, D>=3 0.05, median v_path 0.153, median cycle 235
+  k1: n 40, median D 1.39, D>=2.5 0.12, D>=3 0.05, median v_path 0.216, median cycle 170
+  k2: n 20, median D 1.48, D>=2.5 0.05, D>=3 0.05, median v_path 0.252, median cycle 258
+  k2 vs k0: D Mann-Whitney one-sided p 0.010; v_path p 0.0000
+  Spearman(kind, v_path) +0.52 (p 0.0000); Spearman(kind, D) +0.26 (p 0.022)
+== twin (seeds 100+101 pooled; dividing tracks by their majority kind)
+  seed 100: k0: n 7, medD 1.18, v_path 0.210; k1: n 6, medD 1.59, v_path 0.244; k2: n 26, medD 1.14, v_path 0.200
+  seed 101: k0: n 19, medD 1.46, v_path 0.241; k1: n 10, medD 0.82, v_path 0.201; k2: n 16, medD 1.33, v_path 0.190
+  k0: n 26, median D 1.45, D>=2.5 0.12, D>=3 0.00, median v_path 0.237, median cycle 150
+  k1: n 16, median D 1.23, D>=2.5 0.00, D>=3 0.00, median v_path 0.224, median cycle 178
+  k2: n 42, median D 1.19, D>=2.5 0.05, D>=3 0.00, median v_path 0.199, median cycle 200
+  k2 vs k0: D Mann-Whitney one-sided p 0.792; v_path p 0.9687
+  Spearman(kind, v_path) -0.20 (p 0.0617); Spearman(kind, D) -0.07 (p 0.501)

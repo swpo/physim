@@ -13265,6 +13265,69 @@
   "first_seen": "2026-10-26T19:46Z",
   "tree": "7496fb555eb0018c79f4959853590d9d54b25c74"
  },
+ "20261026T1945-c47-review-cips-moat": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "8d1ca2fe4a70972a33c203a2c9a95abda5fbacb5"
+ },
+ "20261026T1954-c46-intent-review-cips-consumer": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:57Z",
+  "tree": "431ea070da23c928029d9f3a9287416e8ef250cf"
+ },
+ "20261026T1954-c46-review-cips-consumer": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:04Z",
+  "tree": "10ed19acb33e1a02dc1629d4de35ba2c9e5e1e1e"
+ },
+ "20261026T2006-c48-cips-fuel-turnover-sighting": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:07Z",
+  "tree": "28daafb66cca19f9f0cc5f5f6001547071b9de65"
+ },
+ "20261026T2018-c45-marangoni-ladder": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:20Z",
+  "tree": "23a591013f9600691b9c15a019dc26d1455f57bb"
+ },
+ "20261026T2019-c45-intent-marangoni-sink-escape": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:20Z",
+  "tree": "cd41f8b581c21af7d2296a0c7b47614fb3b241cc"
+ },
+ "20261026T2021-c47-intent-review-cips-consumer": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "78e909c49350da9e308fc6056e3fe6c9ebdefe8d"
+ },
+ "20261026T2021-c47-review-cips-consumer": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:31Z",
+  "tree": "6ac2a250f15a0e085017ae3d9f115851077e7534"
+ },
+ "20261026T2024-c46-hunting-predators-divide-256": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:27Z",
+  "tree": "de2e4a4ca1be03e6730beb9bf6e77df8524847b4"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
