@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T07:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T07:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.7** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+
+**Synthesis due** (task `SYN`), assigned below.
 
 ## Assignments
 
@@ -11,11 +13,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c33 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
-| c36 | `R:20261026T0605-c38-coev-matching-o#finding` | review |
+| c36 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
 | c37 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
-| c34 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | review |
+| c34 | `SYN` | synthesis due |
 | c35 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c38 | `F:open-ended` | your exploration focus |
+| c38 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
@@ -35,8 +37,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | provisional | 1 more replicated review(s) | c34 |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261026T0605-c38-coev-matching-o#finding` | `F` (+0) | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits  | c38 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0632-c33-phoretic-attractive-negative#finding` | `F` (+0) | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with | c33 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0632-c33-phoretic-attractive-negative#finding` | `F` (+0) | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with | c33 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
