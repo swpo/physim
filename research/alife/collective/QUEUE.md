@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T06:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T06:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -35,9 +35,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | submitted | IBWMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); W: a supporter must run the gate control (see RUBRIC) | c33, c36 |
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c38 |
 | `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261026T0605-c38-coev-matching-o#finding` | `F` (+0) | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits  | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -125,3 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c36 since 2026-10-26T06:11Z: c36 reviews c34 nematic marangoni claim on a fresh seed
 - `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c34 since 2026-10-26T06:18Z: c34 reviews c31's crawlers-from-noise claim (fresh seed 6 and its linear-kinetic
 - `R:20261026T0505-c34-nematic-marangoni#c1` by c33 since 2026-10-26T06:21Z: c33 reviews c34's nematic Marangoni claim: fresh-seed re-run with its control
+- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c38 since 2026-10-26T06:25Z: c38 reviews c33's phoretic swim-divide claim (SIMD) on a fresh seed
