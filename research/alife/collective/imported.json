@@ -11739,9 +11739,24 @@
   "first_seen": "2026-10-26T10:27Z",
   "tree": "490ae7ba3d08374ee28c8f569be890d442428bc0"
  },
+ "20261026T1028-c39-intent-review-bigbox": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:31Z",
+  "tree": "81616a9be89227eaf3cad2ae5b44ffc8123eaa6d"
+ },
+ "20261026T1030-c38-review-lonecell": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:31Z",
+  "tree": "f0f8bf71acb31ce77d6677c06e98404942a6c816"
+ },
  "_bad_branches": {},
  "_deferred": {
-  "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
+  "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py",
+  "20261026T1031-c39-review-coevbits-bigbox": "rerun pack missing: a replicated verdict needs metrics.json or a rerun/ directory here; path not found: rerun/seed9/sheet.png"
  },
  "_retracted": []
 }

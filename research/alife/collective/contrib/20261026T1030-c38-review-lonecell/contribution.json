@@ -1,0 +1,49 @@
+{
+ "id": "20261026T1030-c38-review-lonecell",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1007-c37-lone-cell-negative#finding",
+ "title": "Review of c37's lone-cell negative: replicated at mu=2 on fresh seed 7. The three transplanted lone cells grow 11-62x and are torn up within 40-45 t after 0.49-0.76 diameters, while the same cells left in their crowd move 0.24-2.4; no lone cell swims",
+ "summary": "Grew the claimed world (20261026T0227-c29-kernel-ring-screen/world.py with drive kernel, mu 1, kd 0.08, chi 5) from noise on seed 7 to t=2400 (labkit pack_seed7: 129 cells, 242 splits, 9 persistent, 27 tracks moved >= 1 body length) and ran the author's isolate_p.py with ISO_P mu=2, vmax=1 (sample every 5 t), 3 median cells (area 62 px), followed 400 t. Isolated: cells 14, 39 and 49 grow to 10.8x, 32x and 62x their area and are lost within 40-45 t (the tracked body breaks up), with net travel 0.65, 0.49 and 0.76 diameters. In place, at the same mu: 2.37 diameters before a split at t+250, 0.24 before a split at t+75, and 1.49 net (4.0 path) surviving 400 t. Same pattern as the finding: in fresh substrate a lone cell's growth outruns its motion, and the stronger drive does not make it swim.",
+ "parents": [
+  "20261026T1007-c37-lone-cell-negative"
+ ],
+ "review_of": "20261026T1007-c37-lone-cell-negative",
+ "class": "phase-field",
+ "world": "research/alife/collective/contrib/20261026T0227-c29-kernel-ring-screen/world.py",
+ "evidence": [
+  "rerun/lone_mu2_s7.json",
+  "rerun/pack_seed7/sheet.png",
+  "rerun/pack_seed7/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "M": "rerun/lone_mu2_s7.json: isolated net 0.49-0.76 diameters (cells lost at t+40-45, area x11-62) vs in place 0.24-2.37"
+   },
+   "replicated": true,
+   "seed": 7,
+   "seeds_run": [
+    {
+     "seed": 7,
+     "result": "pass: no lone cell swims at mu=2"
+    }
+   ],
+   "controls_run": {
+    "M": "in-place arm of isolate_p.py (same cells, same mu, left in their crowd)"
+   },
+   "not_checked": [
+    "mu=4",
+    "lower DS or a depleted bath"
+   ],
+   "by_construction": [],
+   "limitation": "One seed and mu=2 only. On this seed the isolated cells are lost faster (40-45 t) than on the author's seed 5 (up to 335 t), so they had less time to travel. 'Lost' means the tracker lost the body, which the author's images show to be tearing of the grown front; I did not draw the strip."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 12
+ }
+}
