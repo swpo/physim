@@ -1,1 +1,12 @@
 [cips-turnover-divide] seed 0: 100 frames x 1000 steps, grid (192, 192)
+  frame 10/100  64.2s
+  frame 20/100  127.0s
+  frame 30/100  187.3s
+  frame 40/100  247.0s
+  frame 50/100  302.2s
+  frame 60/100  361.1s
+  frame 70/100  419.0s
+  frame 80/100  476.5s
+  frame 90/100  537.5s
+  frame 100/100  598.1s
+  -> collective/contrib/20261026T1505-c41-cips-propulsion-wip/scan_chi6_dp03/FACTS.md  (598s sim)
