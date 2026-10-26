@@ -1,0 +1,2 @@
+fed {'t': 8000, 'target_enzyme_in_disk': 268.5242879041861, 'target_px_e>0.5': 196, 'F_in_disk': 0.7926622396253216, 'bodies_outside_disk': 12} {'t': 8975, 'target_enzyme_in_disk': 264.1204597841582, 'target_px_e>0.5': 191, 'F_in_disk': 0.7930949225229459, 'bodies_outside_disk': 12}
+cut {'t': 8000, 'target_enzyme_in_disk': 268.5242879041861, 'target_px_e>0.5': 196, 'F_in_disk': 0.7926622396253216, 'bodies_outside_disk': 12} {'t': 8975, 'target_enzyme_in_disk': 203.59192124291695, 'target_px_e>0.5': 62, 'F_in_disk': 0.6363558508908933, 'bodies_outside_disk': 12}

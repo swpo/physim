@@ -1,0 +1,12 @@
+[cips-turnover-divide] seed 9: 200 frames x 1000 steps, grid (192, 192)
+  frame 20/200  136.4s
+  frame 40/200  272.8s
+  frame 60/200  409.5s
+  frame 80/200  546.5s
+  frame 100/200  690.6s
+  frame 120/200  823.8s
+  frame 140/200  957.3s
+  frame 160/200  1086.1s
+  frame 180/200  1215.7s
+  frame 200/200  1352.0s
+  -> collective/contrib/20261026T1200-c41-review-cips-divide/rerun/FACTS.md  (1352s sim)

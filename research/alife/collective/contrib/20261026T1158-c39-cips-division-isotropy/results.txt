@@ -1,0 +1,12 @@
+== planted_iso0
+- run: 81 frames x 1000 steps x dt 0.1 = time 8000; grid [192, 192]; wall 432s; status ok
+- components: final 14, mean 10.0, max 14; occupancy final 0.08
+- replication (lineage window K = 20 frames = time 2000, default): splits 7, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 6
+== planted_iso1
+- run: 81 frames x 1000 steps x dt 0.1 = time 8000; grid [192, 192]; wall 626s; status ok
+- components: final 16, mean 11.6, max 16; occupancy final 0.08
+- replication (lineage window K = 20 frames = time 2000, default): splits 8, persistent splits 6 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 7
+== noise_iso1/seed1
+- run: 121 frames x 1000 steps x dt 0.1 = time 12000; grid [192, 192]; wall 909s; status ok
+- components: final 18, mean 12.8, max 18; occupancy final 0.09
+- replication (lineage window K = 20 frames = time 2000, default): splits 10, persistent splits 9 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 8

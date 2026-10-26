@@ -1,0 +1,32 @@
+== rerun/seed4 (c40 world, T=12000)
+- components: final 14, mean 7.1, max 14; occupancy final 0.07
+- replication (lineage window K = 20 frames = time 2000, default): splits 11, persistent splits 8 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 3
+  - radial s: peak at rho=1.05 (in the peak band 0.5-1.5), rim/core 4.46, rim/outside 17.9 (aggregate of 50 individuals; 46/50 membrane-like individually; rim level 0.539)  MEMBRANE-LIKE
+frame 5: bodies 3, layer pass 3/3, median rim/core 5.52 rim/out 24.05, catalysis share on bodies 0.26
+frame 15: bodies 3, layer pass 3/3, median rim/core 4.89 rim/out 25.78, catalysis share on bodies 0.32
+frame 25: bodies 3, layer pass 3/3, median rim/core 7.55 rim/out 27.42, catalysis share on bodies 0.36
+frame 35: bodies 5, layer pass 5/5, median rim/core 6.58 rim/out 24.89, catalysis share on bodies 0.43
+frame 45: bodies 6, layer pass 6/6, median rim/core 5.59 rim/out 25.69, catalysis share on bodies 0.48
+frame 55: bodies 6, layer pass 6/6, median rim/core 6.53 rim/out 26.72, catalysis share on bodies 0.51
+frame 66: bodies 7, layer pass 7/7, median rim/core 7.43 rim/out 27.23, catalysis share on bodies 0.57
+frame 76: bodies 10, layer pass 10/10, median rim/core 6.30 rim/out 25.03, catalysis share on bodies 0.64
+frame 86: bodies 12, layer pass 12/12, median rim/core 6.00 rim/out 25.93, catalysis share on bodies 0.69
+frame 96: bodies 13, layer pass 13/13, median rim/core 6.57 rim/out 26.75, catalysis share on bodies 0.73
+frame 106: bodies 13, layer pass 13/13, median rim/core 7.55 rim/out 27.11, catalysis share on bodies 0.77
+frame 116: bodies 13, layer pass 13/13, median rim/core 7.17 rim/out 26.40, catalysis share on bodies 0.79
+== bodysrc/seed4 (s made only on e>0.5)
+- components: final 14, mean 7.1, max 14; occupancy final 0.07
+- replication (lineage window K = 20 frames = time 2000, default): splits 11, persistent splits 8 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 3
+  - radial s: peak at rho=1.05 (in the peak band 0.5-1.5), rim/core 4.03, rim/outside 15 (aggregate of 50 individuals; 46/50 membrane-like individually; rim level 0.544)  MEMBRANE-LIKE
+frame 5: bodies 3, layer pass 3/3, median rim/core 5.13 rim/out 27.49, catalysis share on bodies 0.26
+frame 15: bodies 3, layer pass 3/3, median rim/core 4.60 rim/out 28.31, catalysis share on bodies 0.32
+frame 25: bodies 3, layer pass 3/3, median rim/core 7.20 rim/out 30.31, catalysis share on bodies 0.36
+frame 35: bodies 5, layer pass 5/5, median rim/core 6.17 rim/out 26.79, catalysis share on bodies 0.43
+frame 45: bodies 6, layer pass 6/6, median rim/core 5.26 rim/out 27.58, catalysis share on bodies 0.48
+frame 55: bodies 6, layer pass 6/6, median rim/core 6.18 rim/out 28.93, catalysis share on bodies 0.51
+frame 66: bodies 7, layer pass 7/7, median rim/core 7.02 rim/out 29.60, catalysis share on bodies 0.57
+frame 76: bodies 10, layer pass 10/10, median rim/core 5.93 rim/out 26.95, catalysis share on bodies 0.64
+frame 86: bodies 12, layer pass 12/12, median rim/core 5.67 rim/out 27.91, catalysis share on bodies 0.69
+frame 96: bodies 13, layer pass 13/13, median rim/core 6.22 rim/out 28.66, catalysis share on bodies 0.73
+frame 106: bodies 13, layer pass 13/13, median rim/core 7.21 rim/out 28.99, catalysis share on bodies 0.77
+frame 116: bodies 13, layer pass 13/13, median rim/core 6.79 rim/out 27.79, catalysis share on bodies 0.79

@@ -1,0 +1,60 @@
+{
+"seed": 0,
+"params": "{\"chi_s\":0}",
+"rows": [
+{
+"t": 1000,
+"bodies": 6,
+"pass": 0,
+"rim_core_min": 0.6490414624940631,
+"rim_core_median": 0.6526060222384186,
+"rim_out_min": 2.400369548213967,
+"rim_out_median": 2.433632275850923
+},
+{
+"t": 2000,
+"bodies": 6,
+"pass": 0,
+"rim_core_min": 0.6573915595781972,
+"rim_core_median": 0.6619685359846473,
+"rim_out_min": 2.398089887910979,
+"rim_out_median": 2.425274351702864
+},
+{
+"t": 3000,
+"bodies": 6,
+"pass": 0,
+"rim_core_min": 0.6592164378766154,
+"rim_core_median": 0.7072693401523271,
+"rim_out_min": 2.3876405755291192,
+"rim_out_median": 2.4084470812803405
+},
+{
+"t": 4000,
+"bodies": 10,
+"pass": 0,
+"rim_core_min": 0.6579934109282036,
+"rim_core_median": 0.6666293797185981,
+"rim_out_min": 2.22617069538931,
+"rim_out_median": 2.3232507196318974
+},
+{
+"t": 5000,
+"bodies": 11,
+"pass": 0,
+"rim_core_min": 0.655398038701261,
+"rim_core_median": 0.6603577030797042,
+"rim_out_min": 2.2381691981143486,
+"rim_out_median": 2.4158902925083234
+},
+{
+"t": 6000,
+"bodies": 11,
+"pass": 0,
+"rim_core_min": 0.6530886860876601,
+"rim_core_median": 0.6610154859481117,
+"rim_out_min": 2.4101116874070843,
+"rim_out_median": 2.4424661905284966
+}
+]
+}

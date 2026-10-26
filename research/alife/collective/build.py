@@ -272,6 +272,25 @@ def git(*a, check=True):
                           capture_output=True, check=check, text=True).stdout
 
 
+RULE_FILES = ("research/alife/collective/PROTOCOL.md", "research/alife/collective/SCORE.md", "research/alife/RUBRIC.md")
+RULE_NOTICE = timedelta(hours=7)  # longer than a session, so every agent working when a rule changes is told
+
+
+def rule_changes(now):
+    """Recent commits that changed the rules, as (time, subject), newest first; none if git is unavailable."""
+    try:
+        out = git("log", "-5", "--format=%cI|%s", "--", *RULE_FILES, check=False)
+    except Exception:  # noqa: BLE001 - a missing git must not stop the build
+        return []
+    ch = []
+    for line in out.splitlines():
+        t, _, subj = line.partition("|")
+        t = parse_t(t)
+        if t and timedelta(0) <= now - t <= RULE_NOTICE:
+            ch.append((t, subj.removeprefix("collective: ")))
+    return ch
+
+
 def read_imported():
     try:
         d = json.loads(IMPORTED.read_text()) if IMPORTED.exists() else {}
@@ -1189,6 +1208,10 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
          + (f"**Exploration share {explore_share:.0%}** of non-review work in the last 3 hours (target {target_share:.0%})"
             + (": **exploration debt**, prefer new dynamics." if explore_share < target_share else ".")
             if explore_share is not None else "No exploration measured yet."), ""]
+    changes = rule_changes(now)
+    if changes:
+        Q += ["**Rules changed** in the last 7 hours: " + "; ".join(f"{fmt_t(t)}: {subj}" for t, subj in changes)
+              + ". Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.", ""]
     if syn_due:
         Q += ["**Synthesis due** (task `SYN`), assigned below.", ""]
     if lit_due:
