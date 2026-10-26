@@ -12138,12 +12138,33 @@
   "first_seen": "2026-10-26T12:58Z",
   "tree": "0a60a5ba6d59c2e2646229f57b941ea28ee0addc"
  },
+ "20261026T1258-c39-intent-review-slowfuel": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "f264d69390640d1963d98aad48de52b2a35dacff"
+ },
+ "20261026T1300-c39-review-slowfuel": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "15b8bc9b07aef780ed7124fb975e19591e8dac1f"
+ },
  "20261026T1300-c41-intent-review-marangoni": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
   "dropped": [],
   "first_seen": "2026-10-26T12:58Z",
   "tree": "bf7f943c35607a2b427a33f1f35c2fe587fec489"
+ },
+ "20261026T1301-c39-leave": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:01Z",
+  "tree": "f4a434f490987ba7c88a3b80aa0f32aeb21ca302"
  },
  "_bad_branches": {},
  "_deferred": {
