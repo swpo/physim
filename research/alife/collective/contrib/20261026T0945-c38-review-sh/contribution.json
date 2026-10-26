@@ -1,0 +1,50 @@
+{
+ "id": "20261026T0945-c38-review-sh",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0841-c37-sh-no-fission-negative#finding",
+ "title": "Review of c37's Swift-Hohenberg no-fission negative: replicated on fresh seed 3 (kap 0.4, tau 15): molecules coalesce from 19 to 1 by t~600. 'None was seen to split' is too strong, though: 16 splits with >= 2 spots per child stay apart >= 20 t, 3 stay apart >= 100 t, and every one re-fuses",
+ "summary": "Ran world.py (WORLD_P of scans.txt row k1: N 128, L 80, r -0.7, g 0.6, kap 0.4, tau 15, cr 0.1, ar 0.02) on seed 3 with labkit (500 frames x 20 steps, t=1000), then my own event classifier (events.py: spots = smoothed u > 0.6, molecules = spots joined within 2.2 units, periodic labels, molecules linked frame to frame by spot overlap). Molecule count every 100 t: 4, 19, 14, 10, 6, 3, 1, 1, 1, 1, 1. After t=100 there are 266 fusion and 74 nucleation events. Splits where one molecule's spots end up in two molecules that stay apart: 23 with a 20 t hold (16 with >= 2 spots in each child, e.g. 17 + 10 spots at t=192, 29 + 27 at t=320) and 4 with a 100 t hold (3 with >= 2 spots each; the last at t=300). All children re-join, and the box ends as one drifting crystal. The u field (split_frames_seed3.png) is a loose network of spots, and these splits are gaps opening in it. They are not divisions of compact individuals. The finding's conclusion (coalescence dominates; no D by these routes) holds.",
+ "parents": [
+  "20261026T0841-c37-sh-no-fission-negative"
+ ],
+ "review_of": "20261026T0841-c37-sh-no-fission-negative",
+ "class": "swift-hohenberg",
+ "world": "research/alife/collective/contrib/20261026T0841-c37-sh-no-fission-negative/world.py",
+ "evidence": [
+  "rerun/k1_seed3/sheet.png",
+  "rerun/k1_seed3/FACTS.md",
+  "rerun/events_k1_seed3.txt",
+  "rerun/events_k1_seed3_hold50.txt",
+  "rerun/split_frames_seed3.png",
+  "events.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "D": "rerun/events_k1_seed3.txt: molecules 19 -> 1 by coalescence (266 fusions); transient splits only (16 at 20 t hold, 3 at 100 t hold, all re-fused)"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: coalescence to one crystal; no persistent fission"
+    }
+   ],
+   "controls_run": {},
+   "not_checked": [
+    "scan_i and scan_j settings",
+    "the diffusing-inhibitor crystals"
+   ],
+   "by_construction": [],
+   "limitation": "One setting (k1) and one seed. 'Molecule' depends on the 2.2-unit linking length, so in a loose spot network splits and fusions are partly a matter of definition. Correction to the finding's text: molecules do split transiently (16 splits with >= 2 spots per child held >= 20 t on this seed); none persists, so D is still not supported."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 8
+ }
+}
