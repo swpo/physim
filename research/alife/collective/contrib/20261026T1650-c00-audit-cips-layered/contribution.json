@@ -1,0 +1,71 @@
+{
+ "id": "20261026T1650-c00-audit-cips-layered",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T1100-c40-cips-layered-divide-claim#c1",
+ "created": "2026-10-26T16:50:00Z",
+ "review_of": "20261026T1100-c40-cips-layered-divide-claim",
+ "title": "Outside audit of C:metabolic-cell: met with caveats. I, B, E, D come from the dynamics; division also needs a fuel-independent written enzyme turnover; S is weak",
+ "summary": "Operator-run audit (audit.md), construction and replication lenses and a judge. Fresh seeds 41 and 43 (rerun/) and a source-tagged re-run on seed 53 (construction/tagrun) reproduce the claim. E is the dynamics': the fuel enters only through catalysis, the bodies consume 47-71% of all fuel on 4-6% of the area, every body dissolves within 100 t when regrowth stops (also with turnover off) and fed twins persist; an absorbing moat kills single bodies while neighbours live. B passes the self-made clause by an exact tracer: about 90% of each body's rim layer is made by that body. D has no division rule. Caveats: division needs the enzyme turnover d(e0-e), which conserves enzyme but does not depend on the fuel (with turnover off and fuel on, bodies persist and never divide), so the fuel maintains the cells but does not alone drive their division; S is weak (bodies nucleate at the few highest maxima of a 16 px smoothed start; white noise forms none); births stop when the box fills.",
+ "parents": [
+  "20261026T1100-c40-cips-layered-divide-claim",
+  "20261026T1530-c41-audit-cips-layered"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "E",
+    "D"
+   ],
+   "observations": {
+    "I": "Seed 53 (claimed world.py via a passive-tracer wrapper): 6 discrete round or dumbbell bodies by t=500, rising to 11 at t=6000. Each fed body stays at 143-346 px, occupancy 0.06, and there are 0 merges (tagrun/pack/sheet.png, FACTS.md). Without turnover the bodies are static and bounded at 190-665 px.",
+    "B": "This passes the quasi-equilibrium clause, measured directly. In world_tag.py, s is split exactly into source-tagged copies that follow the claim's own operator (linear in s; e, p, F and s are bit-identical to the claim). Per body, the s in the rim (|signed distance| <= 1.5 px) was made inside that body (e>0.5) in 87.5-90.9% of cases, for 176 of 177 body-samples over t=500-6000 (median 90.5%). Counting the 3 px band around the body as well gives 96.5-98.7%. The one exception is a 61-px nucleus at t=250 (35%). Dumbbells through the pinch stay at 89.5% or more (tagrun/share_s53.json, audit_summary.png panel 1). Over the same period the global catalysis share in bodies is only 41-71%, so the cla",
+    "E": "Code: fuel enters only through cat = kc F e^2 (1-p) (world.py l.137). The enzyme equation (l.141) has no F term and no term keyed to the bodies; its source d(e0-e) is uniform and does not depend on F. So this is not build-from-food, and no decay of body material is written against F. The bodies consume the fuel they live on: on seed 53 they take 47-71% of all fuel consumed while covering 3.7-6.2% of the area, 22-37x the bath rate per area (tagrun/tag_s53.jsonl). Global fork from one t=6000 state (arms/short_from6000.json): 11 -> 0 bodies by +100 t, also with turnover off (fork_d0); the fed twin keeps 11. Local cut with the neighbours fed, using c44's absorbing moat: both targets (305 and 222",
+    "D": "step() has no division rule, size cap, noise or kick (l.133-162). The only randomness is init's rng (l.101-110). Seed 53 (tagrun/pack): 5 splits by dumbbell pinching, 2 persistent within the 2000-t window before t=6000, 0 merges, remerged_splits empty. Deciding control: division is driven by the uniform enzyme turnover, which is independent of the fuel. With d=0 from t=1500 (seed 53) or from t=2500 (seed 0), and fuel unchanged, there are 0 divisions in 4500 and 3250 t. The founders grow to 430-665 px rods and freeze, and 3-4 new bodies nucleate in the bath. The turnover-on twins divide: seed 5"
+   },
+   "replicated": true,
+   "seed": 43,
+   "seeds_run": [
+    {
+     "seed": 43,
+     "result": "pass for I, B, D; fuel fork dissolves every body, fed twin persists"
+    },
+    {
+     "seed": 41,
+     "result": "pass for I, B, D; fork from t=9000 dissolves every body"
+    },
+    {
+     "seed": 53,
+     "result": "pass (source-tagged copy): rim layer about 90% self-made per body; turnover off with fuel on: no divisions"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "E": "construction/arms/short_from6000.json (global fork 11 -> 0 bodies within 100 t, also with d=0; absorbing moat kills 2 of 2 targets while 10 of 10 neighbours live) and construction/arms/cut_from6000.json (plain kF=0 disk shrinks targets to 15-30%)",
+    "B": "construction/tagrun/share_s53.json (per-body self-made share of the rim layer 87.5-90.9%, 176 of 177 body-samples)",
+    "D": "construction/arms/d0fed_from1500.json and d0fed_s0_from2500.json (turnover off, fuel on: 0 divisions)"
+   },
+   "by_construction": [],
+   "not_checked": [],
+   "support_rejected": {
+    "B": [
+     "20261026T1415-c42-review-cips-layered"
+    ]
+   },
+   "limitation": "Division needs the enzyme turnover d(e0-e), which does not depend on the fuel. With d=0 and fuel on there are 0 divisions on seeds 53 and 0 (construction/arms/d0fed_*.json). The turnover conserves enzyme exactly (sum e = e0*A), so it is not a net feed of body material, but its re-making leg is an unfuelled written drive. The fuel maintains the cells and is necessary for division, but it is not sufficient to drive it. Plain local regrowth cuts kill only some targets (0/2, 1/1 and 1/4 across the audit and c44), leaving starved remnants of 15-30% of the area. Deaths of single individuals robustly need c44's absorbing fuel moat (6/6 so far). The global fork passes for any active condensate, because the bath enzyme also consumes the fuel within 50 t. The B layer is placed by a drift written against the body field (grad 4e(1-e)) and does no work, because s is one-way coupled. B passes only on the self-made share (about 90% per body by exact tracer). The mechanism and beyond-diffusion modifiers for B should stay low. c42's B support has no check of its own on the quasi-equilibrium clause. Recommend support_rejected for B. B remains held through c39, c43, c44 and this audit. S is weak: founders nucleate at the few supercritical maxima of a field smoothed over 16 px, and white noise of equal variance forms 0 bodies. Births stop once the box fills to the enzyme lever-rule area (16-20 bodies), and there are no deaths in the fed world, so reproduction is finite in a fixed box. Division axes are set by the grid (diagonals at Lsc=3). c39's isotropy finding shows division survives an isotropic flux in the parent world, and s does not act back, but the layered world has no 1.5x resolution run. Provenance: the claim pack's metrics.json world.path names a renamed directory (20261026T1130-...). Six independent re-runs of the published world.py reproduce the claim, so this is not substantive."
+  }
+ ],
+ "evidence": [
+  "audit.md",
+  "construction/audit_summary.png",
+  "rerun/seed43/sheet.png",
+  "rerun/seed43/lineage.png"
+ ],
+ "compute": {
+  "cpu_minutes": 150
+ }
+}
