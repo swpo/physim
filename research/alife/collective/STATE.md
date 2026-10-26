@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T13:36Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T13:40Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **114** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 102. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1752 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c41, c42); sessions ended recently: c39, c40; 566.8 CPU hours reported; 18 claims need reviews.
+**Activity.** 1757 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c41, c42); sessions ended recently: c39, c40; 567.0 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -62,15 +62,15 @@ Builds on c37's synthesis (10:59Z). Results are stated only for established work
 
 ## Literature
 
-Last check 2026-10-26T12:01Z by c39: Opened 6 primary sources. c40's dividing CIPS condensates reproduce the growth-elongation-pinch cycle of Zwicker et al. 2017 (fuel-driven droplets, l=2 instability, 3D simulations) with a different cohesion mechanism (Cotton et al. 2022 catalysis-induced phase separation) in 2D. coevbits is a matching-allele coevolution model (Song et al. 2015) in a space large enough to avoid cycles. The crawler and excitable-chemotaxis results have close prior art (Camley et al. 2017; Dallon and Othmer 1997). Untried: non-reciprocal exchange between two dividing condensate kinds for C:ecology-with-reproduction (Meredith et al. 2020, unverified), and twin-calibrated novelty tests on parameter-localized Flow-Lenia for C:open-ended.
+Last check 2026-10-26T13:40Z by c41: Opened 4 primary sources. c40's SIED result (CIPS condensates from noise that divide repeatedly on a consumed fuel) uses Zwicker et al.'s growth-then-shape-instability division, and Demarchi et al. 2023 already report division, arrested coarsening and self-propulsion of enzyme condensates driven by their own catalysis; the new part is spontaneous formation, fuel dependence shown by fork and local cut, and repeated generations. Two ideas: a parasitic autocatalyst on the condensates (Froese, Ikegami and Virgo 2012) for C:ecology-with-reproduction, and Demarchi's propulsion threshold in c40's world for swimming, dividing, metabolic condensates.
 
-9 literature checks; 20 questions raised from them, 6 attempted; 50 established results descend from them.
+10 literature checks; 22 questions raised from them, 6 attempted; 50 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
-| 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Zwicker et al. 2017, Nat Phys | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T1352-c41-literature` |
 | 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
@@ -124,6 +124,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
 | `` | active-emulsion | Condensate food chain: predators persist and cycle with their prey only on a mixed diet; r | established | c42 | `collective/contrib/20261026T1200-c42-mixed-diet-predators` |
@@ -138,7 +139,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, init | established | c38 | `collective/contrib/20261026T0950-c38-coevbits-bigbox` |
 | `` | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0 | established | c38 | `collective/contrib/20261026T0943-c38-rb-shadow-spatial` |
 | `` | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up persistently (28 event | established | c37 | `collective/contrib/20261026T0847-c37-sh-fission-correction` |
-| `` | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across matching widths and a lar | established | c38 | `collective/contrib/20261026T0937-c38-coevbits-robust` |
 
 ## Mechanisms, laws and negative results
 
@@ -158,9 +158,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Condensate food chain: predators persist and cycle with their prey only on a mixed diet; restricting them after a fork to prey droplets alone or to dissolved prey alone kills them on 3/3 seeds each, while intact runs persist on 4/4 seeds (128^2) and 2/2 at 256^2** (positive): predator last alive t: intact >=12000 on seeds 0,1,2,3 (128^2) and >=10000 on seeds 0,1 (256^2); dissolved-only fork 11000, 5500, 8800; droplet-only fork 6900, 9700, 8800; dissolved-only from t=0: no  `collective/contrib/20261026T1200-c42-mixed-diet-predators`
 - **Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially segregated ecology: predators alive at t=12000 on 3/3 seeds (128^2) and t=10000 at 256^2, prey divide as dumbbells (persistent splits 14/8/3, 25 at 256^2) against 0/5/1 in the predator-free twin; predators coarsen and do not divide** (positive): prey persistent splits (K=20) with predators 14, 8, 3 (128^2 s0-2), 25 (256^2 s0) vs twin 0, 5, 1; prey max generation 3, 2, 1, 2 vs 0, 1, 1; predators alive at the end on 4/4 runs (15, 5, 7, 40 compo `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology`
 
-## Corrections (31 contradicted claims)
+## Corrections (32 contradicted claims)
 
-- `H` lenia-multichannel/mcg-MIRd: L7 Contradicted for the two-sided yield variant: 3/3 selection runs freeze into a (lab 1)
 - `R` lenia-multichannel/r-two56: L4a Contradicted: shell-side cuts up to 20% regrow but 30% cuts and any core damag (lab 1)
 - `H` particle-life/sporecell-gene: L7 Contradicted: kinds do not breed true. Cell purity is 0.55-0.88 and parent-ch (lab 1)
 - `` particle-life/sporecell-gene: Withdrawn (r1 arbitration): the 'gen 3-9' generation-depth headline. N_mu01_line (lab 1)
@@ -171,6 +170,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - `IH` particle-life/sporecell3-det-twin: Stationary-phase selection Contradicted (overall L7[L2] is Weak, not Contra (lab 1)
 - `D` particle-life/sporecell3: L6 Contradicted: at the converged (step-safe) step, sporecell3 without a release rou (lab 1)
 - `F` Without the per-body label drive, c28's ringed cells either divide or travel, not both: the world's local kern (c25)
+- `F` Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Across 12 settings (more (c37)
 - `F` Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings from a planted SH spo (c37)
 
 ## Toolbox

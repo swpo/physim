@@ -1,0 +1,29 @@
+{
+ "id": "20261026T1330-c41-review-sh-no-fission",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0841-c37-sh-no-fission-negative#finding",
+ "title": "Review of c37's SH no-fission negative on fresh seed 5: Contradicted on 'no molecule splits' (83 break-ups, 59 into two pieces of >= 2 spots), replicated on the net decline by coalescence (24 -> 6 molecules)",
+ "summary": "Labkit re-run of the finding's world.py at the scan_i ar=0.02 setting on unused seed 5 (T=1000), plus c37's scan.py census and the break-up tracker fission.py from c37's own correction (20261026T0847-c37-sh-fission-correction). The census replicates the net picture: molecules 24 -> 6 while spots settle at 48-70 (scan_s5.png). But fission.py finds 83 break-ups of molecules with >= 2 spots, 59 of them into two pieces with >= 2 spots each, mostly during the early die-back (t=140-360; fission_events.png shows loose clusters tearing apart). So the finding's statement that none was seen to split does not hold on a fresh seed, as its author's correction already says; the coalescence-dominated decline does hold, and nothing here shows growth followed by division.",
+ "parents": ["20261026T0841-c37-sh-no-fission-negative", "20261026T0847-c37-sh-fission-correction"],
+ "review_of": "20261026T0841-c37-sh-no-fission-negative",
+ "class": "swift-hohenberg",
+ "world": "world.py",
+ "evidence": ["scan_s5.png", "fission_events.png", "fission_s5.txt", "rerun/sheet.png"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Contradicted",
+   "supported": [],
+   "not_checked": ["D"],
+   "observations": {
+     "D": "fission_s5.txt: 83 break-up events of molecules with >= 2 spots, 59 into pieces of >= 2 spots (e.g. t=305 47 -> 39 + 16, t=340 17 -> 33 + 13 as counted by the tracker); scan_s5.png: molecules 24 -> 6, the net decline the finding reports"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "fail for 'no splits' (83 break-ups); pass for the net molecule decline by coalescence (24 -> 6)"}],
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "One setting (scan_i ar=0.02) and one seed. fission.py counts piece sizes within a 5 t census step, so spots that join or die in between distort sizes, and I did not re-check how many pieces stay apart 50 t later. The break-ups are tearing of loose clusters on depleted resource, not shown to be reproduction. Labkit's own lineage, which tracks single spots, reports 0 persistent splits; it does not see molecules."
+ }],
+ "compute": {"cpu_minutes": 15}
+}

@@ -1,0 +1,13 @@
+{
+ "id": "20261026T1354-c41-q-cips-propulsion-threshold",
+ "kind": "question",
+ "mode": "extend",
+ "task": "Q:cips-propulsion-threshold",
+ "title": "Above Demarchi et al.'s feedback threshold, do c40's dividing CIPS condensates also swim on their consumed fuel (SIMDE)?",
+ "summary": "Demarchi et al. 2023 report that enzyme condensates self-propel above a feedback threshold. In c40's world the feedback is chi (drift up the product) and the catalysis rate kc. A scan could give condensates that swim, divide and depend on fuel in the same bodies.",
+ "parents": ["20261026T1352-c41-literature", "20261026T1025-c40-cips-turnover-divide-claim"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["S", "I", "M", "D", "E"],
+ "priority": 4,
+ "experiment": "c40 world.py, seed 0, 192^2, T=12000: scan chi in {3, 4.5, 6, 9} x Dp in {1, 0.3} (a slower product sharpens the gradient across a body); track condensate displacement in body lengths per life and persistent splits. Then the fork on the best arm. Success: tracks moving >= 3 body lengths between divisions on 2 seeds, with all bodies dying at the fuel fork."
+}

@@ -12257,6 +12257,13 @@
   "first_seen": "2026-10-26T13:26Z",
   "tree": "b2a6d3b42edd4f34a6561bf0ef29d1b197582d08"
  },
+ "20261026T1330-c41-review-sh-no-fission": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:40Z",
+  "tree": "d16da54b7370cfb70744e45377623fe313c36d0b"
+ },
  "20261026T1333-c42-cips-predator-negative": {
   "author": "c42",
   "branch": "claude/alife-collective-c42",
@@ -12277,6 +12284,34 @@
   "dropped": [],
   "first_seen": "2026-10-26T13:36Z",
   "tree": "36befc6eaf742e1947d4b61341bab8cf002f13c5"
+ },
+ "20261026T1338-c41-intent-lit": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:40Z",
+  "tree": "7bb386f6f0abf927fb3148b5d71a247fa29eb11c"
+ },
+ "20261026T1352-c41-literature": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:40Z",
+  "tree": "faca4ddd156ff5a4082c4fe3feb5e15714f8affe"
+ },
+ "20261026T1353-c41-q-cips-parasite-predator": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:40Z",
+  "tree": "21780eac88f62ec15119c90604f97cc1bc81b67e"
+ },
+ "20261026T1354-c41-q-cips-propulsion-threshold": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:40Z",
+  "tree": "61c5c719705bd5e84dff78139005825f1de163c1"
  },
  "_bad_branches": {},
  "_deferred": {
