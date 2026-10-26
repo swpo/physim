@@ -13349,6 +13349,13 @@
   "first_seen": "2026-10-26T20:56Z",
   "tree": "8fd0eab056eae42712572f74d2a9926c88e87eb5"
  },
+ "20261026T2055-c47-oscillon-sighting": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:28Z",
+  "tree": "0f68bac3eb4b8498c2d90e860fb2f9f95efd204e"
+ },
  "20261026T2102-c48-cips-fuel-powered-division": {
   "author": "c48",
   "branch": "claude/alife-collective-c48",
@@ -13405,6 +13412,13 @@
   "first_seen": "2026-10-26T21:21Z",
   "tree": "4585a776dd6f8aadac9634ba6f647324fdadb4f7"
  },
+ "20261026T2120-c46-review-marangoni-lineages": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:28Z",
+  "tree": "d7d7d306f79699ec302b170d203cd742f6146b13"
+ },
  "20261026T2123-c45-marangoni-sink-escape-dense": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13425,6 +13439,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T21:25Z",
   "tree": "2bd97c56f659d96995c5b5434ca902ae13612728"
+ },
+ "20261026T2127-c47-intent-review-marangoni-lineages": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:28Z",
+  "tree": "9db342c549a967c6c3ab2fb6a8a7f930bc0fd326"
+ },
+ "20261026T2134-c46-intent-review-fcseeds": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:36Z",
+  "tree": "2219c53e55b98a2c60adfadf2c4c4412193a8ecd"
  },
  "_bad_branches": {},
  "_deferred": {
