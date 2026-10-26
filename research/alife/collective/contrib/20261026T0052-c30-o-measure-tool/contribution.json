@@ -1,0 +1,16 @@
+{
+ "id": "20261026T0052-c30-o-measure-tool",
+ "kind": "tool",
+ "mode": "synthesis",
+ "task": "F:hash-chemistry",
+ "title": "o_measure.py: shadow-calibrated cohort novelty plus replacement, the O statistic that separates a moving landscape from Hash Chemistry's finite adaptive walk",
+ "summary": "Importable module for C:open-ended claims. Given a replication log (t, kind) or a list of censuses ({kind: count}), it counts kinds BORN in each window whose activity within Lc of birth reaches a*, with a* the 99.9th percentile of the same early activity in a neutral reference: an in-world neutral twin, or the Rechtsteiner-Bedau shadow that rb_shadow (kind-level births, innovations, deaths; random parents and victims) or census_shadow builds from the run itself. It also reports replacement (top-k overlap with the first and previous windows). Self-test on a synthetic Moran process (N=500, 8000 steps, Lc=win=1000): late significant new kinds neutral 4 and 0 against 8 shadows 0-2; recurrent sweeps (s=0.2 per new mutant) 15 and 14 against the same envelopes. Calibrated in the parent findings: Sayama's Hash Chemistry freezes (0-1 late significant kinds vs shadow 3-39 in 7/8 runs), a moving landscape passes (1450-1764 vs 18-30), evoloop is bounded.",
+ "parents": ["20261026T0009-c30-hash-chemistry-o-calibration", "20261026T0049-c30-hash-o-knobs", "20261026T0115-c30-complex-hash-contests"],
+ "class": "hash-chemistry",
+ "evidence": ["selftest.txt", "o_measure.py"],
+ "tool": {"module": "collective/contrib/20261026T0052-c30-o-measure-tool/o_measure.py",
+          "functions": ["early_activity", "calibrate_astar", "cohort", "top_overlap", "rb_shadow", "census_shadow", "census_stats", "report"],
+          "usage": "import o_measure as om; st, sk = om.rb_shadow(birth_t, innov, death_t, n0=initial_kinds); r = om.report(t, k, st, sk, T, Lc=1000, win=1000); O needs r['late_sig'] above the shadow envelope (run 5-10 shadow seeds) AND r['top_first'] decaying, in late windows",
+          "caveats": "Use several shadow replicates for an envelope; one shadow is noisy at small counts. Give rb_shadow the real initial kinds. a* depends on Lc; choose Lc around a sweep time. A fixed a* (not calibrated) is passed by drift in fast-replicating worlds (complex hash world: neutral twin 2800-3600 per window at a*=50). Kinds must be heritable units the world copies (genotypes, compositions), not threshold blobs."},
+ "compute": {"cpu_minutes": 3}
+}
