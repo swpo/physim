@@ -1,0 +1,51 @@
+{
+ "id": "20261026T0935-c38-review-cips-inhib",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0726-c35-cips-coop-inhib-screen#finding",
+ "title": "Review of c35's CIPS inhibitor-screen negative: replicated on fresh seed 5 at two corners of the screen (DI 0.1/kI 0.3 and DI 0.02/kI 0.1): 0 bodies to t=8000, max e stays at e0 = 0.12, while the kI=0 run on the same seed has 12 bodies by t=4000",
+ "summary": "Ran world.py with the finding's parameters (kc 2, De 0.1, chi 3, DF 2, kF 0.2, e0 0.12, d 1e-4, n 2, noise 0.02; 192^2, labkit) on seed 5 for the strongest and weakest inhibitor arms to t=8000. In both, the noisy start relaxes: early product patches (sheet t=340-1750) fade, the enzyme field never exceeds 0.121 after t=1000 and no body forms (counts.txt). The kI=0 control on the same seed and parameters (my run in 20261026T0850-c38-review-cips-fork, fed_seed5) nucleates bodies from t~2900 and holds 12-13 from t=4000. So a catalysis-made inhibitor present from t=0 suppresses nucleation, as reported.",
+ "parents": [
+  "20261026T0726-c35-cips-coop-inhib-screen",
+  "20261026T0850-c38-review-cips-fork"
+ ],
+ "review_of": "20261026T0726-c35-cips-coop-inhib-screen",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T0726-c35-cips-coop-inhib-screen/world.py",
+ "evidence": [
+  "rerun/counts.txt",
+  "rerun/DI002_kI01_seed5/sheet.png",
+  "rerun/DI01_kI03_seed5/sheet.png",
+  "research/alife/collective/contrib/20261026T0850-c38-review-cips-fork/rerun/counts.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "I": "rerun/counts.txt: 0 bodies at every 1000 t to t=8000 in both arms; control 12 bodies at t=4000 (20261026T0850 rerun/counts.txt)"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass: no nucleation in both inhibitor arms"
+    }
+   ],
+   "controls_run": {
+    "I": "kI=0 run of the same parameters and seed: research/alife/collective/contrib/20261026T0850-c38-review-cips-fork/rerun/fed_seed5"
+   },
+   "not_checked": [
+    "the two middle arms (DI 0.02/kI 0.3, DI 0.1/kI 0.1)",
+    "t beyond 8000"
+   ],
+   "by_construction": [],
+   "limitation": "Two of four arms, one seed, to t=8000 (the finding ran to 12000); the kI=0 control comes from the sibling world file of 20261026T0704, which this world extends with an inhibitor term that vanishes at kI=0 (read in world.py, cat/(1+I/KI) with I made at kI*cat). A negative screen: it says nothing about the pinch test the question asks for."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

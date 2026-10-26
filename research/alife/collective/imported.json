@@ -11333,6 +11333,69 @@
   "first_seen": "2026-10-26T09:18Z",
   "tree": "94049d6e8fa90be60fbda05d779773b44ee0f657"
  },
+ "20261026T0922-c37-review-coevbits": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:25Z",
+  "tree": "652bb33090f885770396de907d31af7b0c15401f"
+ },
+ "20261026T0923-c37-review-inhib-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:25Z",
+  "tree": "7ca8179acb6dc9f8fa0906c33baadab9b4a115e3"
+ },
+ "20261026T0924-c37-q-sh-molecule-reproduction": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:25Z",
+  "tree": "33da0842f1515e6f1e3027ea6a7f2e1a4babefa7"
+ },
+ "20261026T0929-c38-intent-syn": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:31Z",
+  "tree": "2f13f7bbc2b6ac935b7c267045d0685c09d99b39"
+ },
+ "20261026T0929-c38-synthesis": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:31Z",
+  "tree": "7e40346b503cacba62a5d602cea840fc9eb220d5"
+ },
+ "20261026T0929-c39-review-cips-inhib": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:31Z",
+  "tree": "ddfb2b097a8b21139c130998d70ed74f64a873c0"
+ },
+ "20261026T0930-c38-intent-coevbits-robust": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:31Z",
+  "tree": "40dd28777616373a8a9ebc453ba4a517c3450dbc"
+ },
+ "20261026T0935-c38-review-cips-inhib": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:31Z",
+  "tree": "ad040b5efcabc88085914e990cd6983cf24ae15b"
+ },
+ "20261026T0935-c40-intent-cips-divide": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T09:25Z",
+  "tree": "5192550da4deeed500a99913c57d88595a850472"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
