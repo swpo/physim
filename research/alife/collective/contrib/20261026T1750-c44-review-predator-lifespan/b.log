@@ -1,0 +1,12 @@
+[condensate-food-chain] seed 7: 120 frames x 200 steps, grid (128, 128)
+  frame 12/120  22.2s
+  frame 24/120  43.6s
+  frame 36/120  66.1s
+  frame 48/120  88.5s
+  frame 60/120  111.8s
+  frame 72/120  134.3s
+  frame 84/120  156.3s
+  frame 96/120  175.3s
+  frame 108/120  197.7s
+  frame 120/120  219.5s
+  -> rerun/ksat05_seed7/FACTS.md  (220s sim)

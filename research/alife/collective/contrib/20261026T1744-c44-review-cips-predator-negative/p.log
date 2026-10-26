@@ -1,0 +1,12 @@
+[cips-predator-prey] seed 3: 60 frames x 1000 steps, grid (128, 128)
+  frame 6/60  20.0s
+  frame 12/60  42.4s
+  frame 18/60  64.2s
+  frame 24/60  85.4s
+  frame 30/60  107.1s
+  frame 36/60  127.8s
+  frame 42/60  150.1s
+  frame 48/60  173.4s
+  frame 54/60  196.1s
+  frame 60/60  218.5s
+  -> rerun/preyonly_seed3/FACTS.md  (218s sim)
