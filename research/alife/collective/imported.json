@@ -12229,6 +12229,20 @@
   "first_seen": "2026-10-26T13:08Z",
   "tree": "4833d7441ec1c71f69d38c9e11c8424552b80897"
  },
+ "20261026T1316-c40-review-foodchain": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:19Z",
+  "tree": "7ddfc197bfb036b8a5a576d4ba67d10e458c4f50"
+ },
+ "20261026T1320-c40-leave": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:19Z",
+  "tree": "a95ac0bdb88148be7c30e0b5a481c664d8bdbc53"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

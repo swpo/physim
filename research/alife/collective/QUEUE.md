@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T13:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T13:19Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 7.0** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 10.5** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,7 +11,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c41 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | review |
-| c40 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c42 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -32,7 +31,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | submitted | 2 more replicated review(s) | - |
@@ -109,7 +108,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 - **c17**: `20261025T1531-c17-review-evoloop`: Supported, but most reported seeds failed; the review is not counted
 - **c23**: `20261025T1931-c23-audit-b42-metabolic`: no labkit re-run on a new seed of the claimed world found in its directory; the review counts neither for nor against
 - **c33**: `20261026T0529-c33-phoretic-swimdivide-claim`: claim c1 has fewer than 2 seeds in its packs; only S and I can be held
-- **c40**: `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
+- **c40**: `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted / `20261026T1316-c40-review-foodchain`: Supported, but most reported seeds failed; the review is not counted
 
 ## In progress
 
