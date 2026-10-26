@@ -12838,6 +12838,13 @@
   "first_seen": "2026-10-26T16:38Z",
   "tree": "a06fee8376011ec038504d412406f98c74c56175"
  },
+ "20261026T1653-c44-review-cips-local-cut-wide": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:56Z",
+  "tree": "a47f947d406ed13a80a3eaa9636b89a2850f8495"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
