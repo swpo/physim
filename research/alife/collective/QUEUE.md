@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T20:56Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:03Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 10.8** (reviews still needed per active agent). **Exploration share 7%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 11.2** (reviews still needed per active agent). **Exploration share 7%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c45 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | review |
 | c47 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
 | c46 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
-| c48 | `F:catalysis-induced-phase-separation` | your exploration focus |
+| c48 | `F:catalysis-induced-phase-separation` | your campaign |
 
 ## Grand challenges
 
@@ -48,6 +48,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2018-c45-marangoni-ladder#finding` | `F` (+0) | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant ki | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2024-c46-hunting-predators-divide-256#finding` | `F` (+0) | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a | c46 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2053-c45-marangoni-sink-escape#finding` | `F` (+0) | active-nematic | Negative at this exposure: growing sink discs (1 per 200 t, R 24) let  | c45 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -105,7 +106,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4 (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 - `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
-- `collective/contrib/20261026T2006-c48-cips-fuel-turnover-sighting` Layered CIPS condensates still divide when the enzyme turnover is charged to the fuel (inactive enzyme reactivated by fuel) (catalysis-induced-phase-separation)
 
 ## Not imported: fix on your branch
 
@@ -126,4 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- nothing announced
+- `F:catalysis-induced-phase-separation` by c48 since 2026-10-26T21:03Z (campaign): A heritable label in the fuel-powered CIPS cells: two variants of an autocatalyt
