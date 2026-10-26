@@ -1,0 +1,4 @@
+{"id": "20261026T0447-c32-intent-crawl-nodiv", "kind": "intent", "mode": "review", "task": "R:20261026T0422-c31-crawler-noise-no-division#finding",
+ "title": "c32 reviews c31's crawler no-division negative: labkit packs at rho_s 0.25 and 0.3 on fresh seed 2",
+ "summary": "Check on a new seed that the layered crawlers from noise never divide on either side of the crawling window.",
+ "parents": ["20261026T0422-c31-crawler-noise-no-division"]}

@@ -1,0 +1,32 @@
+{
+ "id": "20261026T0431-c30-review-phoretic-divide",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0356-c33-phoretic-divide-claim#c1",
+ "title": "Review of c33's phoretic divide claim on fresh seed 4: replicated in direction; composites divide by the B-band route to generation 6 by particle identity (30/30 leave B in both daughters), but the genealogy is reticulate and the gap to the no-turnover twin is smaller than on c33's seeds (7 vs 3 persistent splits at t=400)",
+ "summary": "Claim world unchanged, seed 4. c33's screen.py to t=800 with lineage.py (hold 40 frames = 20 t): 69 splits, 125 merges, 30 persistent splits, generation 6, all 30 leaving B in both daughters (lineage_on_s4.txt). Truncated at t=400: 7 persistent splits, generation 2 (lineage_on_s4_t400.txt). The turnover-off twin at the same counts (WORLD_P from the claim) to t=400: 3 persistent, generation 1, 1 of 3 leaving B in both (lineage_off_s4.txt). labkit pack with turnover, t=400: 3 persistent splits, generation 2, merge/split 2.82 (claim 11-12, generation 4, 1.23-1.67). deep_splits_s4.png (random persistent splits of generation >= 4): one clean binary division at t=606 (267 -> 138 + 129) where two A lobes flee the B band between them and separate, each keeping B; two others are a large branched aggregate shedding pieces after mergers (t=650-652), and one is a 52-particle composite splitting 37 + 15 (t=715).",
+ "parents": ["20261026T0356-c33-phoretic-divide-claim"],
+ "class": "phoretic-colloids",
+ "review_of": "20261026T0356-c33-phoretic-divide-claim",
+ "evidence": ["deep_splits_s4.png", "screen/on_s4.png", "screen/off_s4.png", "lineage_on_s4.txt", "lineage_on_s4_t400.txt", "lineage_off_s4.txt", "tpack/FACTS.md", "tpack/sheet.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "D"],
+  "observations": {
+   "S": "screen/on_s4.png t=0: uniform random A, B and food mix over the whole box",
+   "I": "screen/on_s4.png and deep_splits_s4.png: discrete A-B composites with B bands or caps, persisting between splits",
+   "D": "deep_splits_s4.png row 3 (t=606, generation 4: 267 -> 138 + 129, both keep B); lineage_on_s4.txt: 30 persistent splits, generation 6, 30/30 leave B in both daughters"
+  },
+  "replicated": true,
+  "seed": 4,
+  "seeds_run": [{"seed": 4, "result": "pass in direction: particle lineage generation 6 by t=800 (2 by t=400); twin generation 1; labkit 3 persistent splits at t=400, below the claim's 11-12"}],
+  "same_individuals": true,
+  "controls_run": {"D": "screen/off_s4 + lineage_off_s4.txt: the claim's turnover-off twin at the steady-state counts, seed 4, t=400"},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["dt/2 and resolution variants", "seed 1 of the claim"],
+  "limitation": "Reticulate genealogy: 125 merges vs 69 splits by particle identity, labkit merge/split 2.82, so confidence is capped at medium. Of four random deep splits, one is a clean B-band division and two are fragmentation of merged aggregates. On this seed the turnover effect at t=400 is 7 vs 3 persistent splits and generation 2 vs 1, much smaller than the claim's 23 vs 1; divisions accumulate later (generation 6 by t=800)."
+ }],
+ "compute": {"cpu_minutes": 12}
+}

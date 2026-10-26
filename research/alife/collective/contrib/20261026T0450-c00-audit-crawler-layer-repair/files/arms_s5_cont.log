@@ -1,0 +1,17 @@
+t=8.00 nb=1 pol=0.349 s rc=3.60 | c in/out/rear/held base 6.15/3.47/0.60 k0 1.91/1.04/0.27 cont 5.22/2.82/0.53 | 0s
+t=8.50 nb=1 pol=0.368 s rc=3.61 | c in/out/rear/held base 5.91/3.36/0.58 k0 1.88/1.03/0.26 cont 5.04/2.74/0.51 | 30s
+t=9.00 nb=1 pol=0.362 s rc=3.63 | c in/out/rear/held base 5.82/3.36/0.57 k0 1.86/1.03/0.25 cont 4.97/2.76/0.50 | 61s
+t=9.50 nb=1 pol=0.357 s rc=3.61 | c in/out/rear/held base 5.67/3.28/0.55 k0 1.83/1.03/0.24 cont 4.83/2.70/0.48 | 90s
+t=10.00 nb=1 pol=0.359 s rc=3.61 | c in/out/rear/held base 5.55/3.25/0.54 k0 1.82/1.03/0.23 cont 4.73/2.67/0.46 | 119s
+t=10.50 nb=1 pol=0.362 s rc=3.63 | c in/out/rear/held base 5.44/3.20/0.53 k0 1.80/1.02/0.23 cont 4.63/2.64/0.45 | 150s
+t=11.00 nb=1 pol=0.371 s rc=3.66 | c in/out/rear/held base 5.35/3.15/0.52 k0 1.78/1.01/0.22 cont 4.55/2.61/0.44 | 179s
+t=11.50 nb=1 pol=0.368 s rc=3.67 | c in/out/rear/held base 5.29/3.10/0.51 k0 1.76/1.00/0.21 cont 4.49/2.57/0.43 | 211s
+t=12.00 nb=1 pol=0.368 s rc=3.66 | c in/out/rear/held base 5.23/3.11/0.50 k0 1.75/1.00/0.21 cont 4.45/2.57/0.41 | 240s
+t=12.50 nb=1 pol=0.365 s rc=3.64 | c in/out/rear/held base 5.12/3.06/0.49 k0 1.72/1.00/0.20 cont 4.35/2.53/0.40 | 270s
+t=13.00 nb=1 pol=0.361 s rc=3.58 | c in/out/rear/held base 5.02/3.04/0.48 k0 1.71/1.00/0.20 cont 4.28/2.52/0.39 | 299s
+t=13.50 nb=1 pol=0.351 s rc=3.54 | c in/out/rear/held base 4.95/3.06/0.47 k0 1.70/1.02/0.19 cont 4.20/2.54/0.38 | 327s
+t=14.00 nb=1 pol=0.357 s rc=3.55 | c in/out/rear/held base 4.81/3.03/0.46 k0 1.70/1.03/0.19 cont 4.07/2.51/0.38 | 356s
+t=14.50 nb=1 pol=0.366 s rc=3.63 | c in/out/rear/held base 4.78/3.06/0.45 k0 1.69/1.03/0.19 cont 4.02/2.53/0.37 | 384s
+t=15.00 nb=1 pol=0.366 s rc=3.65 | c in/out/rear/held base 4.68/3.05/0.45 k0 1.67/1.04/0.19 cont 3.92/2.52/0.36 | 414s
+t=15.50 nb=1 pol=0.366 s rc=3.68 | c in/out/rear/held base 4.58/3.06/0.44 k0 1.66/1.05/0.19 cont 3.81/2.52/0.36 | 443s
+t=16.00 nb=1 pol=0.374 s rc=3.68 | c in/out/rear/held base 4.48/3.05/0.43 k0 1.65/1.05/0.19 cont 3.71/2.52/0.35 | 473s

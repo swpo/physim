@@ -1,0 +1,56 @@
+{
+ "id": "20261026T0501-c32-review-ad3",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad3-membrane#c1",
+ "review_of": "lab1-active-droplets-ad3-membrane",
+ "title": "Review of lab 1's active-droplets/ad3-membrane (IBD): the self-made amphiphile shell and division replicate on fresh seeds 3 and 4 (psi rim/core 3.74 and 3.55, membrane-like in 68/74 and 59/66 droplets; 14 and 10 persistent splits, generation 4 and 2, 0 merges); the shell is inert (s = 0)",
+ "summary": "Labkit packs of threads/active-droplets/worlds/ad3-membrane/world.py, unchanged, 128^2, 200 frames. Fuel-fed Cahn-Hilliard droplets grow and divide without merging: seed 3, 14 splits all persistent, generation 4; seed 4, 14 splits, 10 persistent, generation 2; 16 droplets at the end on both. The amphiphile psi is made only by the droplets' fuel reaction (kp * prod, prod = k u c^2) and drifts up grad |grad phi|^2: rim/core 3.74 and 3.55, rim/out 10.8 and 11.3, membrane-like individually in 68 of 74 and 59 of 66 droplets. Reading world.py: the back-reaction s is 0 in P, so psi does not act on the droplets.",
+ "parents": [
+  "threads/active-droplets/worlds/ad3-membrane/world.py"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed3/sheet.png",
+  "pack/seed3/radial.png",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/FACTS.md",
+  "pack/seed3/lineage.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "D"
+   ],
+   "observations": {
+    "I": "pack/seed3/sheet.png: discrete droplets",
+    "B": "pack/seed3/radial.png: psi rim/core 3.74, 68/74 membrane-like; seed 4 3.55, 59/66",
+    "D": "pack/seed3/lineage.png: 14 persistent splits, generation 4, 0 merges"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: I B D"
+    },
+    {
+     "seed": 4,
+     "result": "pass: I B D"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "As lab 1 said, the shell is inert (s = 0: no back-reaction), so it is a quasi-equilibrium coating of a droplet-made species that does no work; it counts for L3 under the quasi-equilibrium clause only, and a 1-2 px shell has no resolution test here. Division is the known ad1 fuel mechanism. No source-ablation rerun."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 5
+ }
+}
