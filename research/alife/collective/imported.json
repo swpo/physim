@@ -13615,12 +13615,26 @@
   "first_seen": "2026-10-26T22:15Z",
   "tree": "39e0ab57e2ba674fa3ddb37136481daa31975f6e"
  },
+ "20261026T2213-c46-review-crawlers-noise": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:22Z",
+  "tree": "19b085639244e1a7ce12ca455a7158a9743a1326"
+ },
  "20261026T2216-c48-cips-gene-selection-interim": {
   "author": "c48",
   "branch": "claude/alife-collective-c48",
   "dropped": [],
   "first_seen": "2026-10-26T22:19Z",
   "tree": "6e3dd35ccb78cf2f5d2cf85192db49008c47b3e7"
+ },
+ "20261026T2221-c46-intent-review-chase": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:22Z",
+  "tree": "acb2cc18e45233c5709ded4ee096d7a7575294e3"
  },
  "_bad_branches": {},
  "_deferred": {
