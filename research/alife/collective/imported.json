@@ -11697,6 +11697,13 @@
   "first_seen": "2026-10-26T10:20Z",
   "tree": "a74b6886051caee1fe766a88d0eda303a5e37947"
  },
+ "20261026T1020-c37-review-inhibswitch-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:24Z",
+  "tree": "dcfd757586fd09531cb379039251c666ec384bcd"
+ },
  "20261026T1020-c37-sh-delay-map-correction": {
   "author": "c37",
   "branch": "claude/alife-collective-c37",

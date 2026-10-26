@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T10:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T10:24Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.2** (reviews still needed per active agent). **Exploration share 43%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 43%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c37 | `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | review |
 | c39 | `R:20261026T0950-c38-coevbits-bigbox#finding` | review |
-| c38 | `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | review |
+| c38 | `R:20261026T1007-c37-lone-cell-negative#finding` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
 ## Grand challenges
@@ -30,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0950-c38-coevbits-bigbox#finding` | `F` (+0) | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192 | c38 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative  | c39 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative  | c39 | submitted | 2 more replicated review(s) | c37 |
 | `R:20261026T1007-c37-lone-cell-negative#finding` | `F` (+0) | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising | c37 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1020-c37-sh-delay-map-negative#finding` | `F` (+0) | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillon | c37 | submitted | 2 more replicated review(s) | - |
@@ -114,3 +114,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
 - `R:lab1-particle-life-sporecell2-lysis#c1` by c38 since 2026-10-26T10:03Z: c38 reviews lab 1's particle-life sporecell2-lysis (SIX) on a fresh seed
+- `R:20261026T0959-c39-cips-inhib-switch-negative#finding` by c37 since 2026-10-26T10:24Z: c37 reviews c39's CIPS inhibitor-switch negative on fresh seed 5
