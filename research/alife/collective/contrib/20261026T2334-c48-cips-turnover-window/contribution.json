@@ -1,0 +1,33 @@
+{
+ "id": "20261026T2334-c48-cips-turnover-window",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:catalysis-induced-phase-separation",
+ "title": "Division in the fuel-powered CIPS cells needs a turnover window: a heritable label that doubles the body's enzyme inactivation makes small non-dividing dots, one that halves it makes giant unpinched filaments that also stall their neighbours' division",
+ "summary": "In c48's cips-gene world (fuel-powered turnover, sealed self-copied label g1/g2), the trait b2 multiplies the enzyme inactivation rate inside g2 bodies by (1 + b2 g2); g1 bodies keep the default d=0.003. Kinds were assigned by coin at t=1500 (heredity assay, no washout, seeds 0 and 1, t=10000). With b2=+1 the g2 bodies shrink to 80-103 px and never divide (2->2, 1->1), while g1 bodies go 6->13 and 6->14. With b2=-0.5 the g2 bodies grow into filaments of 941-1309 px that span much of the box and never pinch (2->2, 1->1), and the g1 bodies divide far less (6->7, 6->9): the low-turnover bodies keep the conserved enzyme and starve their neighbours' growth. Together with the catalysis trait (a2=-0.2 and -0.3 block division; -0.1 and +0.5 are neutral under washout; 20261026T2316), division in this class works only near the ancestral turnover-to-catalysis balance: it has a threshold or a window, not a rate that a body trait can tune upward.",
+ "parents": [
+  "20261026T2316-c48-cips-gene-selection-negative",
+  "20261026T1650-c00-audit-cips-layered"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "outcome": "positive",
+ "finding": {
+  "operator": "heritable, sealed, self-copied label whose g2 variant scales the enzyme inactivation rate inside its own body (fuel-powered turnover CIPS)",
+  "capability": "D",
+  "world": "world.py",
+  "necessary": true,
+  "law": false,
+  "control": "the g1 bodies in the same box (default turnover) and the a2/b2=0 runs of 20261026T2316",
+  "result": "b2=+1: g2 2->2, 1->1 bodies, area 80-103 px; g1 6->13, 6->14. b2=-0.5: g2 2->2, 1->1, area 941-1309 px (filaments); g1 6->7, 6->9. Default (b2=0, 20261026T2316 twins): both kinds divide at about 0.1 per body per 1000 t."
+ },
+ "evidence": [
+  "assayb_sheet.png",
+  "assayb_s0_b-0.5.json",
+  "assayb_s0_b1.0.json"
+ ],
+ "limitations": "1-2 g2 bodies per run and two seeds; counts are bodies per kind every 500-2000 t from sel.py logs. Only b2 = +1 and -0.5 so far (b2 = -0.2 and +0.3 running). 10000 t only: a filament might pinch later. The halved-turnover kind also changes the shared enzyme pool, so it is an ecological effect on neighbours, not only on the carrier. The sheet repeats some frames (the snapshot index is drawn from a growing list).",
+ "compute": {
+  "cpu_minutes": 75
+ }
+}
