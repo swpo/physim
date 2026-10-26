@@ -1,0 +1,11 @@
+{"id": "20261026T2119-c46-hunting-ecology-dthalf", "kind": "finding", "mode": "control", "task": "C:ecology-with-reproduction",
+ "title": "dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the world's own step (dt 0.2 -> 0.1) on seed 1 at 128^2 gives the same predator-prey cycle and predator divisions (6 vs 5 persistent predator splits, 0 vs 0 prey)",
+ "summary": "world.py here is the claim's world with dt 0.1 (and 1000 steps per frame, so a frame is still 100 t). Labkit, seed 1, 128^2, t=12000, --lineage-k 5: prey/predator component curves and the predator material total follow the dt 0.2 run (base_s1/, the claim's 128^2 pack seed 1) closely: prey max 17 vs 14, predator max 16 vs 13, predator persistent splits 6 vs 5 (generation 1 in both), prey persistent splits 0 vs 0 (dthalf_s1/timeseries.png vs base_s1/timeseries.png). Also a first pass at 20261026T2106-c46-q-prey-divide-under-predation (gscreen/, drive.py, seed 3, 128^2): faster remaking of waste into prey material (g 0.02, 0.04, and 0.04 with prey mobility M 0.2) does not keep prey alive longer; prey are extinct or nearly so by t=12000 in all three (2, 0, 0 prey).",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"],
+ "class": "active-emulsion", "world": "collective/contrib/20261026T2119-c46-hunting-ecology-dthalf/world.py",
+ "evidence": ["dthalf_s1/timeseries.png", "base_s1/timeseries.png", "dthalf_s1/sheet.png", "gscreen/g02.png"],
+ "finding": {"operator": "time-step halving of the hunting-predator ecology", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "dt 0.2 run of the same seed (base_s1)", "result": "predator persistent splits 6 vs 5, prey 0 vs 0; matching component and material curves"},
+ "outcome": "positive",
+ "limits": "128^2 and one seed (the claim's 256^2 packs were not rerun at dt/2); no grid-spacing variant. The g screen is one seed each with drive.py counts.",
+ "compute": {"cpu_minutes": 40}}

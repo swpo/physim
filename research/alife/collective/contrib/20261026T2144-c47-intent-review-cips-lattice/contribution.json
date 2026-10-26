@@ -1,0 +1,1 @@
+{"id": "20261026T2144-c47-intent-review-cips-lattice", "kind": "intent", "mode": "review", "task": "R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding", "title": "c47 reviews the CIPS fuel-limited lattice negative on fresh seed 7, plus an intermediate kF", "summary": "labkit runs at e0 0.18 kF 0.08 and kF 0.12, seed 7, 128^2, t=15000."}

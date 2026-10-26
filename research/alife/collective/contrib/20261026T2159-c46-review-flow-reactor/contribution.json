@@ -1,0 +1,13 @@
+{"id": "20261026T2159-c46-review-flow-reactor", "kind": "review", "mode": "review", "task": "R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding",
+ "title": "Review of c44's flow-reactor artifact warning on seed 1: replicated; labkit again reports generation 16 (57 persistent splits) at vflow 0.02 and 6 at 0.01, and the sheet again shows a column of large bodies anchored at the inlet shedding buds downstream",
+ "summary": "Labkit re-runs of the finding's world.py with WORLD_P {vflow: 0.02 or 0.01, out_w: 6}, seed 1, 128^2, 300 frames (t=30000). vflow 0.02: 70 splits, 57 persistent, max generation 16, 54 merges, 15-18 bodies; vflow 0.01: 25 persistent splits, generation 6, 20 merges. In v0.02/seed1/sheet.png the left edge (just downstream of the outlet strip, where fresh medium enters at e0) holds 3-4 large bodies in every frame from t~2500 to 30000; they elongate into dumbbells that pinch off daughters which drift to the right and leave through the outlet, so the high generation counts the budding of inlet-anchored bodies, not repeated division of free bodies.",
+ "review_of": "20261026T1729-c44-cips-flow-reactor-budding-niche",
+ "parents": ["20261026T1729-c44-cips-flow-reactor-budding-niche"],
+ "evidence": ["v0.02/seed1/sheet.png", "v0.02/seed1/lineage.png", "v0.01/seed1/sheet.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "v0.02/seed1/FACTS.md: generation 16, 57 persistent splits; sheet t=2500-30000: large bodies fixed at x~0-25 bud daughters that drift downstream; v0.01/seed1: generation 6"},
+   "replicated": true, "seed": 1, "seeds_run": [{"seed": 1, "result": "pass"}],
+   "controls_run": {},
+   "by_construction": ["D"],
+   "limitation": "One fresh seed at the finding's two flow speeds; I judged the anchoring from the sheets and did not measure each bud's parent position; I did not try the well-mixed washout the finding proposes."}],
+ "compute": {"cpu_minutes": 25}}

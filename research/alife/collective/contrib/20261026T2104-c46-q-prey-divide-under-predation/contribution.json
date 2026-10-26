@@ -1,0 +1,7 @@
+{"id": "20261026T2104-c46-q-prey-divide-under-predation", "kind": "question", "mode": "extend", "task": "C:ecology-with-reproduction",
+ "title": "Can the fuel-driven prey of the hunting-predator ecology divide repeatedly while being hunted? (the missing half of D in 20261026T2103-c46-hunting-ecology-claim)",
+ "summary": "In c46's hunting ecology the predators divide after meals (19 persistent splits per 256^2 seed) and the populations cycle, but the prey divide only 2 times per seed with predators (13 in the predator-free twin): new prey mostly nucleate from the bath that predator waste refills, and prey dumbbells take thousands of t to pinch, so most are eaten first. Prey grow only when the bath is supersaturated, so the rate at which waste is remade into prey material (g) and the prey's shape mobility (M) should set how often they divide.",
+ "parents": ["20261026T2103-c46-hunting-ecology-claim"],
+ "target": ["D", "X"], "priority": 4,
+ "experiment": "world.py of 20261026T2103-c46-hunting-ecology-claim; scan g in {0.01, 0.02, 0.04} x M in {0.1, 0.2} at 128^2 seed 3 (t=12000, drive.py counts and splits3.py on labkit frames), keeping chiF 0.5, ne 2, kq 0.0015, Mb 0.005; take the setting with the most strict prey splits that keeps predators alive, then labkit 256^2 seeds 2 and 3 with --lineage-k 5 and report prey and predator persistent splits and generations against the predator-free twin. A predator handling time (eat / (1 + c_a/Ksat)) is a second lever if prey are still eaten before they split.",
+ "compute": {"cpu_minutes": 5}}

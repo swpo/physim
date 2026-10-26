@@ -1,0 +1,12 @@
+[cips-consumer] seed 3: 30 frames x 1000 steps, grid (128, 128)
+  frame 3/30  18.8s
+  frame 6/30  38.7s
+  frame 9/30  58.2s
+  frame 12/30  78.0s
+  frame 15/30  97.7s
+  frame 18/30  117.2s
+  frame 21/30  137.2s
+  frame 24/30  156.8s
+  frame 27/30  176.6s
+  frame 30/30  196.7s
+  -> collective/contrib/20261026T2226-c47-review-chasing-consumer/rerun_chih10/seed3/FACTS.md  (197s sim)

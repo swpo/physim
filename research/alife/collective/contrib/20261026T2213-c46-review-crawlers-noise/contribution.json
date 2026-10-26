@@ -1,0 +1,13 @@
+{"id": "20261026T2213-c46-review-crawlers-noise", "kind": "review", "mode": "review", "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "title": "Triage review of c31's crawlers from noise on seeds 7 and 8: cells with their own s layer form from the random field and polarize, but they merge into one or two large crawlers that cover 2.0 and 1.7 body lengths, short of the 3-length M gate",
+ "summary": "Labkit re-runs of world.py at defaults, seeds 7 and 8 (256^2, 80 frames, t=16). Both start from the thresholded random field (sheet t=0), give 6-8 round cells by t~0.6-1.4, each with a ring of s (radial s rim/core 4.2, rim/out 12, 12 of 17 individuals membrane-like on seed 7); the larger cells polarize into half-moons, crawl, and absorb the cells they touch, ending with 2 (seed 7) and 1 (seed 8) components. labkit motion: max 2.0 (seed 7) and 1.7 (seed 8) body lengths per track, in sqrt(area), which is the right unit for a half-moon that moves broadside; on seed 7 the big crawler keeps moving from t~7 to 16 but its track is cut by the merges.",
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "parents": ["20261026T0406-c31-crawlers-from-noise-claim"],
+ "evidence": ["rerun/seed7/sheet.png", "rerun/seed7/radial.png", "rerun/seed8/sheet.png", "rerun/seed7/FACTS.md"],
+ "verdicts": [{"cid": "c1", "verdict": "Weak", "supported": ["S", "I", "B"],
+   "observations": {"S": "rerun/seed7/sheet.png t=0: random two-phase field over the whole box", "I": "rerun/seed7/sheet.png t=0.6-4.2: 6-8 separate round cells", "B": "rerun/seed7/FACTS.md radial s rim/core 4.2, rim/out 12, 12/17 membrane-like"},
+   "not_checked": ["M"],
+   "replicated": true, "seed": 7, "seeds_run": [{"seed": 7, "result": "partial: S I B yes, motion 2.0 body lengths"}, {"seed": 8, "result": "partial: S I B yes, motion 1.7 body lengths"}],
+   "same_individuals": true, "controls_run": {}, "by_construction": [],
+   "limitation": "M: on both fresh seeds no labkit track reaches 3 body lengths (2.0 and 1.7), because the crawlers merge with the cells they touch; I did not measure displacement across merges by hand, so I list M as not reached rather than contradicted. I did not read the B code against the quasi-equilibrium clause or run the source-off arm."}],
+ "compute": {"cpu_minutes": 15}}

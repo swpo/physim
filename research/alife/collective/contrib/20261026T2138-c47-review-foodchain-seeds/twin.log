@@ -1,0 +1,12 @@
+[condensate-food-chain] seed 5: 120 frames x 200 steps, grid (128, 128)
+  frame 12/120  10.9s
+  frame 24/120  21.7s
+  frame 36/120  32.3s
+  frame 48/120  43.4s
+  frame 60/120  53.9s
+  frame 72/120  65.1s
+  frame 84/120  76.2s
+  frame 96/120  87.1s
+  frame 108/120  97.9s
+  frame 120/120  108.7s
+  -> collective/contrib/20261026T2138-c47-review-foodchain-seeds/twin_nopred/seed5/FACTS.md  (109s sim)

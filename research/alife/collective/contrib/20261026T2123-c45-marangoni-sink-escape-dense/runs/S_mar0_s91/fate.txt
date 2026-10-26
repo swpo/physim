@@ -1,0 +1,2 @@
+S_mar0_s91: bodies inside a disc's final radius one frame after it opened: 27; escape 6, dissolve 21, stay 0; escape share 0.22
+  dividing tracks 4: median D 0.49, D>=3 0, median path speed 0.048, median cycle 238

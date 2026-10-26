@@ -1,0 +1,12 @@
+{"id": "20261026T2227-c46-review-phoretic-swimdivide", "kind": "review", "mode": "review", "task": "R:20261026T0529-c33-phoretic-swimdivide-claim#c1",
+ "title": "Triage review of c33's phoretic swim-divide claim on seed 5: replicated as a minority, 2 of 46 persistent splits come from capped composites that travelled 5.3 and 4.9 diameters first, both daughters keeping B",
+ "summary": "Labkit re-run of world.py at defaults on seed 5 (rerun/seed5, 1600 frames, t=800: 25 persistent splits, generation 7, max 10.1 body lengths, merge/split 1.26) and the claim's own screen.py + lineage.py on the same seed (s5.png, swimdivide_s5.txt): 97 splits, 172 merges, 46 persistent splits to generation 7, 41 of 46 with B in both daughters; 2 of 46 parents travelled >= 3 cluster diameters since birth or last merge before dividing: track 317 (5.3 diameters, 47 -> 27 + 19 particles, B share 0.26/0.21, t=670) and track 34 (4.9 diameters, 66 -> 45 + 20, B share 0.36/0.10, t=202). Janus composites (A body with a B cap) form from the random gas by t~133 (s5.png).",
+ "review_of": "20261026T0529-c33-phoretic-swimdivide-claim",
+ "parents": ["20261026T0529-c33-phoretic-swimdivide-claim"],
+ "evidence": ["s5.png", "swimdivide_s5.txt", "rerun/seed5/sheet.png", "rerun/seed5/lineage.png"],
+ "verdicts": [{"cid": "c1", "verdict": "Supported", "supported": ["S", "I", "M", "D"],
+   "observations": {"S": "s5.png t=0: uniform random particle mix", "I": "s5.png t=133-800: 10-20 separate Janus composites", "M": "swimdivide_s5.txt: track 317 travels 5.3 and track 34 4.9 cluster diameters before dividing (2 of 46 dividing parents)", "D": "swimdivide_s5.txt: 46 persistent splits to generation 7, 41 of 46 with B in both daughters; tracks 317 and 34 divide into two capped composites"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass, 2 of 46 swim-then-divide"}],
+   "same_individuals": true, "controls_run": {}, "by_construction": [],
+   "limitation": "Swim-then-divide is a minority (2 of 46 here, 3 of 132 in the claim); distance is in cluster diameters from lineage.py, measured since birth or last merge, and I did not check each counted step for area jumps; track 34's second daughter carries only 10% B; no reciprocal-twin re-run."}],
+ "compute": {"cpu_minutes": 10}}
