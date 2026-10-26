@@ -1,0 +1,32 @@
+== seed21
+- components: final 33, mean 24.9, max 34; occupancy final 0.09
+- motion: 60 long-lived tracks moved >= 1 body length; max speed 0.327/time; max body lengths 8.5
+- replication (lineage window K = 20 frames = time 100, default): splits 46, persistent splits 29 (0 more failed only because the siblings re-merged within K), max generation 4, merges 19, merge/split ratio 0.413, nucleations 11
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed21/frames.npz: 122 tracks, 26 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 1
+   {"id": 34, "start": 51, "end": 98, "birth": "split", "children": [65, 66], "net": 57.7, "bl_labkit": 8.47, "bl_rod": 4.4}
+   {"id": 11, "start": 25, "end": 91, "birth": "split", "children": [52, 53], "net": 44.4, "bl_labkit": 5.35, "bl_rod": 2.34}
+   {"id": 17, "start": 30, "end": 49, "birth": "split", "children": [31, 32], "net": 31.1, "bl_labkit": 4.43, "bl_rod": 2.15}
+   {"id": 59, "start": 95, "end": 131, "birth": "split", "children": [81, 82], "net": 34.3, "bl_labkit": 4.15, "bl_rod": 1.83}
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed21/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.27, fraction >= 2: 1.00
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed21/frames.npz ch2: body-frames 592, both >= 1.5: 1.00, median rim/core 2.53, median rim/out 11.01
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed21/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.09, fraction >= 2: 1.00
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed21/frames.npz ch3: body-frames 592, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+life phase 0.5: mean px/frame 0.795
+life phase 0.75: mean px/frame 0.722
+== seed22
+- components: final 33, mean 23.4, max 34; occupancy final 0.09
+- motion: 59 long-lived tracks moved >= 1 body length; max speed 0.277/time; max body lengths 9.2
+- replication (lineage window K = 20 frames = time 100, default): splits 39, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 4, merges 13, merge/split ratio 0.333, nucleations 8
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed22/frames.npz: 99 tracks, 25 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 0
+   {"id": 21, "start": 41, "end": 169, "birth": "split", "children": [88, 89], "net": 43.7, "bl_labkit": 5.66, "bl_rod": 2.63}
+   {"id": 32, "start": 57, "end": 113, "birth": "split", "children": [64, 65], "net": 38.4, "bl_labkit": 5.28, "bl_rod": 2.69}
+   {"id": 18, "start": 40, "end": 63, "birth": "split", "children": [37, 38], "net": 31.7, "bl_labkit": 4.41, "bl_rod": 2.09}
+   {"id": 10, "start": 27, "end": 45, "birth": "split", "children": [24, 25], "net": 24.1, "bl_labkit": 3.37, "bl_rod": 1.48}
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed22/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.36, fraction >= 2: 1.00
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed22/frames.npz ch2: body-frames 561, both >= 1.5: 1.00, median rim/core 2.53, median rim/out 11.16
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed22/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.30, fraction >= 2: 1.00
+collective/contrib/20261026T1400-c42-review-marangoni/rerun/seed22/frames.npz ch3: body-frames 561, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+life phase 0.5: mean px/frame 0.742
+life phase 0.75: mean px/frame 0.590

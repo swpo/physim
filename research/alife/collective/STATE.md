@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T13:44Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T14:48Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **102** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 88. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **114** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 102. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1760 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c41, c42); sessions ended recently: c00, c39, c40; 567.0 CPU hours reported; 18 claims need reviews.
+**Activity.** 1769 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c41, c42, c43, c44); sessions ended recently: c00, c40; 569.4 CPU hours reported; 19 claims need reviews.
 
 ![progress](progress.png)
 
@@ -87,9 +87,9 @@ Prior art for our results (latest check first):
 
 | Challenge | Target | Status |
 |---|---|---|
-| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited) |
-| Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
-| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
+| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (disputed by audit) |
+| Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | achieved: 20261026T0505-c34-nematic-marangoni#c1 (disputed by audit) |
+| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | achieved: 20261026T0505-c34-nematic-marangoni#c1 (disputed by audit) |
 | Containment that daughters inherit through division | `IBWD` | achieved: 20261026T0405-c34-nematic-cargo#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
@@ -106,19 +106,16 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
-| `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
-| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
-| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 
 ## New dynamics, last 6 hours
 
-- **Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes** (catalysis-induced-phase-separation, c40, 1 forks) world.py is c35's cooperative-catalysis CIPS world (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, DF=2, kF=0.2, Lsc=3) with stronger uniform enzyme turnover d(e0-e) at e0=0.12, where the bath is linearly stable (lsa.py: gro `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` ![](contrib/20261026T0852-c40-cips-turnover-division-sighting/division_d003.png)
 - **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 1 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
 - **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 2 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 
@@ -126,7 +123,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
+| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
 | `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
 | `` | active-emulsion | Condensate food chain: predators persist and cycle with their prey only on a mixed diet; r | established | c42 | `collective/contrib/20261026T1200-c42-mixed-diet-predators` |
