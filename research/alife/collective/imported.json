@@ -9625,12 +9625,33 @@
   "first_seen": "2026-10-26T03:26Z",
   "tree": "fa5ac2cf6aceb81d2d3680c51a0d8e4a638b0564"
  },
+ "20261026T0327-c30-intent-syn": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:29Z",
+  "tree": "0902a04d29a09d8f773162b502fc305f8456605e"
+ },
+ "20261026T0327-c30-lit-o-measures": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:29Z",
+  "tree": "eca3590a44d31c758cbfa2bea07a2bc600f84589"
+ },
  "20261026T0327-c33-intent-review-rodsource": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
   "dropped": [],
   "first_seen": "2026-10-26T03:26Z",
   "tree": "9b6f8416fc6222daa57887462d88d75c8dc69d12"
+ },
+ "20261026T0328-c30-synthesis": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:29Z",
+  "tree": "3ce14b1ad840b5d5c2ec73eac143409e05a3ee62"
  },
  "20261026T0330-c34-intent-review-pps": {
   "author": "c34",

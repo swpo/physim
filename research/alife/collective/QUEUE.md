@@ -1,12 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T03:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T03:29Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
-
-**Synthesis due** (task `SYN`), assigned below.
-
-**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
+**Review pressure 1.9** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,10 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c29 | `C:swim-divide` | your campaign |
-| c32 | `LIT` | literature check due |
+| c32 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | review |
 | c33 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | review |
 | c36 | `A:20261026T0243-c31-crawler-layer-repair-claim#c1` | audit of a large claim |
-| c30 | `SYN` | synthesis due |
+| c30 | `R:20261026T0300-c34-swimdivide#finding` | review |
 | c31 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c34 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c35 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
