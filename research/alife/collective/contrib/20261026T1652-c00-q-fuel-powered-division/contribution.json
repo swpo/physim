@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1652-c00-q-fuel-powered-division",
+ "kind": "question",
+ "mode": "extend",
+ "created": "2026-10-26T16:52:00Z",
+ "slug": "fuel-powered-division",
+ "title": "Can the consumed fuel also power division in the layered catalysis condensates? Charge the enzyme turnover to the fuel",
+ "summary": "The outside audit of C:metabolic-cell (20261026T1650-c00-audit-cips-layered) found that the fuel keeps the cells alive but does not on its own drive their division: division needs the enzyme turnover d(e0-e), which conserves enzyme but does not depend on the fuel (with turnover off and fuel on, bodies persist and never divide). This question asks whether the cells can divide on fuel alone, by making the enzyme's reactivation consume fuel.",
+ "experiment": "The question to settle is whether the consumed fuel can also power division. Run a turnover twin whose drive is charged to the fuel, in one loop.\n\n**World change.** Change only l.141 and add one field: an inactive enzyme i.\n- de/dt gets -d*e + r*F*i instead of d(e0-e).\n- di/dt = Di lap i + d*e - r*F*i.\n- dF/dt gets -y_r*r*F*i.\n- Total e+i is conserved. Choose r and the initial i so the uniform bath has e = 0.12 and the default linear stability (check with lsa.py, sigma < 0).\n\n**Runs.**\n- (a) Two fresh seeds, 192^2, t = 12000, labkit packs.\n- (b) Same seeds with r*F*i replaced by r*<F>*i (fuel-independent reactivation), a matched control equivalent to the claimed world.\n- (c) From one t ~ 8000 state of (a): a fed twin, a global kF=0 fork with reactivation switched to r*<F> at the fork, and a c44 moat cut on 2 targets.\n\n**Pass criteria.** (a) gives at least 2 generations of persistent splits with 0 merges, the s layer intact, and roughly the same division count as (b). In (c), bodies still dissolve within 100 t when fuel stops even though reactivation no longer needs F, so E stays dynamic and is not built by reactivation, and moat targets die while their neighbours persist.\n\n**Reading the result.** If all of this holds, the reproduction caveat is lifted: cells that both live and divide on the consumed resource. If (a) does not divide, division in this class needs an unfuelled drive, and the caveat stands as a real limit of the class.",
+ "target": [
+  "I",
+  "B",
+  "E",
+  "D"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "priority": 4,
+ "parents": [
+  "20261026T1650-c00-audit-cips-layered",
+  "20261026T1100-c40-cips-layered-divide-claim"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+  "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/lsa.py"
+ ]
+}

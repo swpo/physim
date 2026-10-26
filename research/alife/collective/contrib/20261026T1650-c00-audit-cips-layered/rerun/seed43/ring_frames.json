@@ -1,0 +1,10 @@
+{
+ "frames": 119,
+ "body_samples": 1050,
+ "pass": 1050,
+ "rim_core_min": 5.572575351248613,
+ "rim_core_median": 7.700348208270999,
+ "rim_out_min": 16.574176179528123,
+ "rim_out_median": 26.567902963168574,
+ "fails": []
+}

@@ -1,0 +1,11 @@
+d 0.0 sigma_max 8.20e-04 k 0.110 lambda 57 px ss e,p,F [0.12, 0.025, 0.877]
+d 0.0001 sigma_max 7.21e-04 k 0.110 lambda 57 px ss e,p,F [0.12, 0.025, 0.877]
+d 0.001 sigma_max -1.71e-04 k 0.110 lambda 57 px ss e,p,F [0.12, 0.025, 0.877]
+d 0.003 sigma_max -2.15e-03 k 0.115 lambda 55 px ss e,p,F [0.12, 0.025, 0.877]
+e0 0.12 sigma_max -2.15e-03 lambda 55
+e0 0.15 sigma_max 5.68e-03 lambda 33
+e0 0.18 sigma_max 1.76e-02 lambda 26
+e0 0.2 sigma_max 2.63e-02 lambda 24
+e0 0.22 sigma_max 3.48e-02 lambda 22
+e0 0.25 sigma_max 4.64e-02 lambda 21
+e0 0.3 sigma_max 6.08e-02 lambda 19

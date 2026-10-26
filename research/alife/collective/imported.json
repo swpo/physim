@@ -12726,6 +12726,34 @@
   "first_seen": "2026-10-26T16:28Z",
   "tree": "9f659c8fe3f3698ab159f131102e312eb9983fa2"
  },
+ "20261026T1650-c00-audit-cips-layered": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:38Z",
+  "tree": "f65900f16c20b33c42000c85ea7abfd339300a19"
+ },
+ "20261026T1651-c00-leave-8": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:38Z",
+  "tree": "948148d39709e4698d59898588654fff79c040d5"
+ },
+ "20261026T1652-c00-q-fuel-powered-division": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:38Z",
+  "tree": "2ebfdb1636564806503530164be05f409c660841"
+ },
+ "20261026T1653-c00-leave-9": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:38Z",
+  "tree": "a06fee8376011ec038504d412406f98c74c56175"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

@@ -1,0 +1,6 @@
+saved /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/cips-layered/construction/arms/state_s0_t2500.npz 2500.0999999988217
+d0_fed {'t': 2500.1, 'n': 6, 'area': 1634, 'mean_F': 0.8423469523104902, 'max_e': 0.975876833640908, 'mean_e': 0.11999999999998597} {'t': 5750.1, 'n': 9, 'area': 4185, 'mean_F': 0.7804769384612259, 'max_e': 0.9838994774233679, 'mean_e': 0.11999999999992338}
+
+real	9m26.165s
+user	7m33.631s
+sys	1m47.250s
