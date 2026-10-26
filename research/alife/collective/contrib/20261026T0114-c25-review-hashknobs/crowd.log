@@ -1,0 +1,3 @@
+crowd03n 5 35s pop=1525 late_cohort=198 sh=0 ov_end=0.05 top=[0.44, 0.42, 0.33, 0.33, 0.39]
+crowd03n 6 21s pop=1254 late_cohort=12 sh=0 ov_end=0.3 top=[0.39, 0.43, 0.39, 0.4, 0.38]
+crowd03n 7 27s pop=1591 late_cohort=70 sh=0 ov_end=0.4 top=[0.51, 0.43, 0.51, 0.37, 0.47]
