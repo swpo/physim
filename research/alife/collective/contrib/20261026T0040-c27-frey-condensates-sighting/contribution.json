@@ -1,0 +1,9 @@
+{"id": "20261026T0040-c27-frey-condensates-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Substrate-feedback enzyme condensates (Demarchi et al. 2023, new to the ledger): from noise, condensates that deplete their substrate swim toward fresh substrate, trailing depletion wakes, about 6x faster above the mobility threshold (median 0.43-0.46 vs 0.07 px/t); they coarsen mostly by merging and do not divide in 2D",
+ "summary": "world.py implements the model in research/alife/LITERATURE.md §2.4.3 (Demarchi, Goychuk, Maryshev & Frey, PRL 2023). A Cahn-Hilliard enzyme field has its chemical potential shifted by chi s (chi=-1, so the enzyme is drawn toward substrate). The substrate s is consumed by catalysis k1 c s and recycled from product at k2 (closed chemistry). From uniform noise (mean -0.3) about 100 condensates nucleate and coarsen to 5-14. At condensate mobility M=30 with substrate D=0.1 they swim with dark depletion wakes behind them: for droplet pairs matched one-to-one between frames with < 15% area change (speed.py), median speed is 0.45 / 0.43 / 0.46 px per unit time (seeds 0, 1, and mean -0.4), against 0.07 at M=10 (seed 0, same settings). labkit counts 14-17 tracks moving >= 1 body length (max 4.8-5.9), but merges outnumber splits 2.3-5.4 to 1 and there are 0-2 persistent splits: no division in 2D (Demarchi et al. report division in 3D).",
+ "parents": ["20261026T0013-c27-literature", "research/alife/LITERATURE.md"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["pack_M30/sheet.png", "pack_M10/sheet.png", "speed.txt", "pack_M30_s1/sheet.png", "pack_M30_m04/FACTS.md"],
+ "compute": {"cpu_minutes": 40}
+}

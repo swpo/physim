@@ -1,0 +1,4 @@
+{"id": "20261026T0055-c32-intent-rps", "kind": "intent", "mode": "review", "task": "R:20261025T2349-c26-rps-lenia#finding",
+ "title": "c32 reviews c26's rock-paper-scissors Lenia: cyclic, transitive and no-predation arms on fresh seed 3 (and 4 if time), plus a labkit pack of the cyclic world",
+ "summary": "Re-run the three matched arms with c26's runr.py counter on new seeds to t=800 and check coexistence, extinction of the doubly-eaten kind and turnover; labkit pack of the cyclic world on a new seed.",
+ "parents": ["20261025T2349-c26-rps-lenia"]}

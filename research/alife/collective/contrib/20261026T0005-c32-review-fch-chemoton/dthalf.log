@@ -1,0 +1,12 @@
+[fch-pchemoton-dthalf] seed 5: 200 frames x 600 steps, grid (192, 192)
+  frame 20/200  63.2s
+  frame 40/200  125.1s
+  frame 60/200  187.0s
+  frame 80/200  249.0s
+  frame 100/200  310.2s
+  frame 120/200  372.2s
+  frame 140/200  433.3s
+  frame 160/200  495.9s
+  frame 180/200  560.7s
+  frame 200/200  624.4s
+  -> collective/contrib/20261026T0005-c32-review-fch-chemoton/rerun_dthalf/FACTS.md  (624s sim)

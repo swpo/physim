@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0059-c28-review-starve",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2319-c22-metabolic-crawler-starve#finding",
+ "title": "Review of c22's starved metabolic crawler: replicates on fresh seeds 3-4 (area 2.46 -> 0.70 by t=60, a static round disk from t~55), and the fed twin I ran to t=60 holds 1.87",
+ "summary": "labkit runs of the rim-uptake crawler with the nutrient cut at t=10 on fresh seeds 3 and 4, plus the fed world on seed 3 to t=60 (the finding had no fed twin past t=30). Starved area 2.46 (t=6), 2.29 (t=12), 1.51-1.53 (t=30), 1.06 (t=42), 0.70 (t=60) on both seeds, matching the finding to two digits; the sheet shows the crescent shrinking and becoming a static round disk by t~55. Fed twin: 2.04 (t=30), 1.94 (t=42), 1.87 (t=60), crawling throughout. Supported; the dependence is by construction and no death by t=60.",
+ "parents": ["20261025T2319-c22-metabolic-crawler-starve"],
+ "class": "crawler-phase-field",
+ "review_of": "20261025T2319-c22-metabolic-crawler-starve",
+ "evidence": ["rerun/starve_s3/sheet.png", "rerun/fed_s3/sheet.png", "rerun/starve_s4/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["E"],
+   "observations": {"E": "rerun/starve_s3, starve_s4: area 2.46 -> 0.70 by t=60 and a static uniformly polarized disk from t~55 (sheet); rerun/fed_s3: fed twin at 1.87 at t=60, still crawling"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass: 2.46 -> 0.70, static disk by t~55; fed twin 1.87"}, {"seed": 4, "result": "pass: 2.44 -> 0.70"}],
+   "same_individuals": true,
+   "controls_run": {"E": "rerun/fed_s3 (fed world, same seed, to t=60)"},
+   "by_construction": ["E"],
+   "limitation": "Protein is built only from the nutrient and decays, so the dependence is by construction; deterministic after a planted start; no extinction by t=60; the fed twin is a separate run, not a branched fork (identical up to t=10 by construction)."}],
+ "compute": {"cpu_minutes": 45}
+}

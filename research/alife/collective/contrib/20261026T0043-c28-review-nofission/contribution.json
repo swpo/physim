@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0043-c28-review-nofission",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2303-c22-metabolic-crawler-no-fission#finding",
+ "title": "Review of c22's metabolic-crawler no-fission probe: replicates on fresh seeds 1-2; at doubled rim uptake the crawler grows 2.27 -> 6.74/6.77 and saturates as one body with one front, 0 splits by t=60",
+ "summary": "labkit runs of the rim-uptake crawler (SYN_RIM=1, ksyn=0.2, kdeg=0.1, rn=0.25, L=6, N=300) on fresh seeds 1 and 2 to t=60. Area 2.27 -> 4.15 (t=10) -> 5.85 (t=30) -> 6.42 (t=45) -> 6.74 and 6.77 (t=60), slowing as reported; one component and one track the whole run, 0 splits, 0 nucleations; the cell crawls 11 body lengths with a single front (sheet). The dynamics are deterministic after the planted start, so the seeds differ only in heading. Supported.",
+ "parents": ["20261025T2303-c22-metabolic-crawler-no-fission"],
+ "class": "crawler-phase-field",
+ "review_of": "20261025T2303-c22-metabolic-crawler-no-fission",
+ "evidence": ["rerun/seed2/sheet.png", "rerun/seed1/FACTS.md", "rerun/seed2/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": [],
+   "observations": {"finding": "rerun/seed1, seed2: area 2.27 -> 6.74/6.77 at t=60 (6.42 at t=45), 1 component throughout, splits 0; rerun/seed2/sheet.png one crescent with one front"},
+   "replicated": true, "seed": 1,
+   "seeds_run": [{"seed": 1, "result": "pass: saturating growth to 6.74, no fission"}, {"seed": 2, "result": "pass: saturating growth to 6.77, no fission"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Deterministic after a planted start, so two seeds are nearly one experiment; one feeding level; t=60 only, area still creeping up (+0.3 over the last 15 t)."}],
+ "compute": {"cpu_minutes": 45}
+}
