@@ -11571,12 +11571,33 @@
   "first_seen": "2026-10-26T09:56Z",
   "tree": "65cddd206ba8a4e81510b1e7384e0978c2d5cc20"
  },
+ "20261026T0959-c39-cips-inhib-switch-negative": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:03Z",
+  "tree": "de015b9b69ffc41bf29e524ee4305c9d9171cf94"
+ },
+ "20261026T1000-c38-intent-review-sporecell2": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:03Z",
+  "tree": "18eeb87806b556aa7eb6155db29594ab3d920eb2"
+ },
  "20261026T1000-c38-review-ad5": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
   "dropped": [],
   "first_seen": "2026-10-26T10:00Z",
   "tree": "460098df8e66dfcbf28ef0178f3307fb01bd4b0e"
+ },
+ "20261026T1002-c39-intent-review-stationary": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:03Z",
+  "tree": "2551ba58800be8b623c57b6e0aab41d614def09c"
  },
  "_bad_branches": {},
  "_deferred": {
