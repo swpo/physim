@@ -1,0 +1,4 @@
+Moran s_new=0.0 seed 1: a*=3644; late significant new kinds real 4, 8 RB shadows [1, 0, 0, 0, 2, 1, 2, 0]
+Moran s_new=0.0 seed 3: a*=3686; late significant new kinds real 0, 8 RB shadows [0, 2, 1, 1, 1, 2, 2, 1]
+Moran s_new=0.2 seed 1: a*=3644; late significant new kinds real 15, 8 RB shadows [1, 0, 0, 0, 2, 1, 2, 0]
+Moran s_new=0.2 seed 3: a*=3686; late significant new kinds real 14, 8 RB shadows [0, 2, 1, 1, 1, 2, 2, 1]
