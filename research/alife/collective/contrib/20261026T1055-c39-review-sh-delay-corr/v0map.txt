@@ -1,0 +1,10 @@
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.3, 'tau': 5} n 1 umax 1.81 frac 0.003
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.15, 'tau': 10} n 1 umax 1.81 frac 0.003
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.6, 'tau': 5} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 1.0, 'tau': 5} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.3, 'tau': 20} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 1.5, 'tau': 10} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.6, 'tau': 20} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 1.0, 'tau': 20} n 0 umax 0.00 frac 0.000
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 1, 'kap': 0.2, 'tau': 10} n 1 umax 1.81 frac 0.003
+{'N': 128, 'L': 80, 'r': -0.4, 'b': 2, 'PYR': 1, 'INIT': 'spot', 'V0': 0, 'kap': 0.6, 'tau': 5} n 1 umax 1.81 frac 0.003
