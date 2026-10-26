@@ -1,0 +1,4 @@
+{"id": "20261026T0122-c32-intent-ringrepair", "kind": "intent", "mode": "review", "task": "R:20261025T2312-c27-ringswim-repair-claim#c1",
+ "title": "c32 reviews c27's SIBRM motile-repair claim: branched front cuts on fresh seeds 10 and 11 with post-repair swimming (c27's motion.py), and a labkit damage pack on seed 12",
+ "summary": "Re-run c27's twinrepair (wound substrate kept, 3 cells per seed, 2500 steps) and motion analysis on seeds nobody used, and a labkit pack with --damage on a third new seed; read the drive code for M.",
+ "parents": ["20261025T2312-c27-ringswim-repair-claim", "20261025T2345-c32-review-cutrepair"]}
