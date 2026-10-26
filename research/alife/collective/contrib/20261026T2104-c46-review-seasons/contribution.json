@@ -1,0 +1,13 @@
+{"id": "20261026T2104-c46-review-seasons", "kind": "review", "mode": "review", "task": "R:20261026T1526-c44-cips-seasons-negative#finding",
+ "title": "Review of c44's seasons negative on seed 5: replicated (mild seasons: no deaths; 50 t famines: synchronous shrink and regrowth), and a 70 t famine in the unscanned gap also kills no body selectively: all 6 drop below threshold together and all 6 return in place, 7 times",
+ "summary": "Labkit re-runs of the finding's world.py on a new seed (5), 128x128, T=20000, season_T 2000 from t=6000: lo25 (kF x0.25 for half of each season) keeps 6 bodies throughout, 0 deaths, 2 persistent splits; p025 (kF=0 for 50 t per season) keeps 6-7 bodies before and after every famine with a dip to 2 inside famines; p035 (kF=0 for 70 t, inside the 50-100 t gap the finding did not scan) takes all 6 bodies below threshold at the end of every famine (components 0 at t=8000, 10000, ..., 20000) and all 6 regrow within ~300 t at the same places (p035/seed5/timeseries.png; counts 6 before and 6 after each of 7 famines). No selective death at any famine length tried.",
+ "review_of": "20261026T1526-c44-cips-seasons-negative",
+ "parents": ["20261026T1526-c44-cips-seasons-negative"],
+ "evidence": ["lo25/seed5/timeseries.png", "p025/seed5/timeseries.png", "p035/seed5/timeseries.png", "p035/seed5/sheet.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["D"],
+   "observations": {"D": "lo25/seed5/metrics.json: 6 bodies before and after every season, 0 deaths; p025: 6-7 before and after each 50 t famine; p035 (70 t): 6 -> 0 -> 6 at every famine, the same sites (p035/seed5/timeseries.png), so seasons give no selective deaths and no continued births"},
+   "replicated": true, "seed": 5, "seeds_run": [{"seed": 5, "result": "pass"}],
+   "controls_run": {"D": "lo25/, p025/ and p035/ arms on seed 5; the no-season world is the finding's control"},
+   "by_construction": [],
+   "limitation": "One fresh seed and one period (2000 t); body counts from labkit at 100 t frames, so the minimum inside a famine is sampled coarsely; I did not scan famines of 80-100 t, where c40's 100 t fork kills every body, so a narrow window of partial death may still exist there."}],
+ "compute": {"cpu_minutes": 35}}

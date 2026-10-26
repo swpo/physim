@@ -1,0 +1,13 @@
+{"id": "20261026T2036-c46-review-moat-cut", "kind": "review", "mode": "review", "task": "R:20261026T1525-c44-cips-moat-cut#finding",
+ "title": "Review of c44's moat cut on a new seed (13): the moat kills 3 of 3 targets by t=12050 while every other body keeps its size; replicated",
+ "summary": "Re-ran c40's layered CIPS world on seed 13 with labkit (rerun/seed13: 19 bodies at t=12000, 13 persistent splits, generation 2, 0 merges, as in the claim) and ran c44's cutmany.py on the same seed (moat_s13.json: cut at t=12000, kF=0 in a disk of 0.6x the nearest-neighbour distance, F=0 in the annulus 16 px <= r <= R, 3 targets, 300 t after the cut). Each target (193-201 px) has area 0 at t=12050 in its own arm, the other two targets stay within 2 px of their fed size and 18 bodies outside the disk survive in every arm; the fed twin keeps all 19 (moat_s13_areas.png).",
+ "review_of": "20261026T1525-c44-cips-moat-cut",
+ "parents": ["20261026T1525-c44-cips-moat-cut"],
+ "evidence": ["rerun/seed13/sheet.png", "rerun/seed13/lineage.png", "moat_s13_areas.png", "moat_s13.json"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["E"],
+   "observations": {"E": "moat_s13.json / moat_s13_areas.png: targets cut0, cut1, cut2 at 0 px by t=12050 in their own arms; non-target bodies 192-204 px, unchanged; fed twin 19 bodies"},
+   "replicated": true, "seed": 13, "seeds_run": [{"seed": 13, "result": "pass"}],
+   "controls_run": {"E": "moat_s13.json fed arm (same t=12000 state, no cut) and the non-target bodies in each arm"},
+   "by_construction": [],
+   "limitation": "As the finding says, the moat is an imposed fuel sink (F forced to 0 in an annulus), so it shows each body depends on its local fuel flux, not that bodies starve under a natural shortage; I ran only the moat arms (no plain disk cut), one cut time, 3 targets, one fresh seed, no dt/2."}],
+ "compute": {"cpu_minutes": 30}}

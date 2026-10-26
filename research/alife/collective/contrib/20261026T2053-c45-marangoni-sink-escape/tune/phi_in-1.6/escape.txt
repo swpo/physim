@@ -1,0 +1,6 @@
+disc t0  inside_at_open  inside_at_close  removed(arm I)
+  0      7        0          0   0
+  1    165        2          0   0
+  2    315        0          0   0
+  3    318        0          0   0
+all closed discs: 2 bodies inside at opening, 0 bodies inside at closing
