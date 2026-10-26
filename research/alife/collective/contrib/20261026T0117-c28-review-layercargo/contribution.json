@@ -1,0 +1,23 @@
+{
+ "id": "20261026T0117-c28-review-layercargo",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0101-c31-layer-holds-cargo#finding",
+ "title": "Review of c31's layer-holds-cargo crawler: replicates on fresh seed 3; with exclusion (kappa 10) cargo in/out 8.5-14.5 and 73-88% held over t=1-12, without it (kappa 0) the ratio falls to 1.7 (rear 1.03) and 22% held",
+ "summary": "Ran the author's cargoprobe.py with kappa=10 and kappa=0 on fresh seed 3 to t=12, and a labkit run of world2.py (seed 3, t=12). kappa 10: in/out 8.5-14.5 (rear 5.1-8.7), held 0.73-0.88; kappa 0: in/out falls from 7.5 early to 1.7 (rear 1.03-4.4), held 0.85 -> 0.22. labkit lists s and c as membrane-like and the cell crawls 3.1 body lengths. Supported; I did not repeat the carrying test (production off) or the SRC=none ablation.",
+ "parents": ["20261026T0101-c31-layer-holds-cargo"],
+ "class": "crawler-phase-field",
+ "review_of": "20261026T0101-c31-layer-holds-cargo",
+ "evidence": ["probe/k10.log", "probe/k0.log", "probe/layer_s3.png", "rerun/sheet.png", "rerun/radial.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["W"],
+   "observations": {"W": "probe/k10.log vs probe/k0.log (seed 3): in/out 8.5-14.5 vs 1.7 at t=12, rear 5.1-8.7 vs 1.03, held 0.73 vs 0.22 at t=12; rerun/FACTS.md: s and c membrane-like"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass: exclusion holds cargo (ratio 12 at t=12) vs 1.7 without"}],
+   "same_individuals": true,
+   "controls_run": {"W": "probe/k0.log (kappa=0 wall ablation, same seed and production)"},
+   "not_checked": ["carrying test with production off", "SRC=none layer ablation", "resolution change"],
+   "by_construction": [],
+   "limitation": "One fresh seed, planted crawler, t=12; the exclusion is a coded chemical-potential term against the cell's own layer; no 1.5x resolution test (needed for the W gate)."}],
+ "compute": {"cpu_minutes": 20}
+}
