@@ -1,0 +1,6 @@
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.30, fraction >= 2: 1.00
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz ch2: body-frames 577, both >= 1.5: 1.00, median rim/core 2.60, median rim/out 11.30
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.74, fraction >= 2: 1.00
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz ch3: body-frames 577, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=44, median in/out 4.93, fraction >= 2: 1.00
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=32, median in/out 4.37, fraction >= 2: 1.00

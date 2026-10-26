@@ -1,0 +1,26 @@
+{
+ "b10L_prey": {
+  "n": 323,
+  "frac_revisit_le1": 0.006191950464396285,
+  "frac_le3": 0.13003095975232198,
+  "median_min_dist": 5.0
+ },
+ "b10L_pred": {
+  "n": 323,
+  "frac_revisit_le1": 0.0,
+  "frac_le3": 0.14860681114551083,
+  "median_min_dist": 5.0
+ },
+ "b10LN_prey": {
+  "n": 323,
+  "frac_revisit_le1": 0.0,
+  "frac_le3": 0.09907120743034056,
+  "median_min_dist": 5.0
+ },
+ "b10LN_pred": {
+  "n": 323,
+  "frac_revisit_le1": 0.19504643962848298,
+  "frac_le3": 0.739938080495356,
+  "median_min_dist": 3.0
+ }
+}

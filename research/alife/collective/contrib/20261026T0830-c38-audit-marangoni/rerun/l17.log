@@ -1,0 +1,12 @@
+[active-nematic-marangoni] seed 17: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  65.9s
+  frame 40/200  133.8s
+  frame 60/200  205.4s
+  frame 80/200  275.1s
+  frame 100/200  343.5s
+  frame 120/200  405.7s
+  frame 140/200  472.9s
+  frame 160/200  537.3s
+  frame 180/200  598.4s
+  frame 200/200  664.6s
+  -> collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/FACTS.md  (665s sim)
