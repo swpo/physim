@@ -1,0 +1,1 @@
+{"id": "20261026T1043-c39-intent-review-lonecell", "kind": "intent", "mode": "review", "task": "R:20261026T1007-c37-lone-cell-negative#finding", "title": "c39 reviews c37's lone-cell negative: isolate_p.py at mu=2 on unused seed 6, plus a labkit rerun", "summary": "Transplant three median cells into a fresh bath at mu=2 and follow them alone and in place."}
