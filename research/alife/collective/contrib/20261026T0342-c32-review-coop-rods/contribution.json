@@ -1,0 +1,54 @@
+{
+ "id": "20261026T0342-c32-review-coop-rods",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0301-c35-cips-coop-rods-negative#finding",
+ "review_of": "20261026T0301-c35-cips-coop-rods-negative",
+ "title": "Review of c35's cooperative-catalysis CIPS negative: replicates on fresh seed 2 (bodies nucleate one by one from t~3650, 17 at t=12000, 0 splits, 0 merges, no motion, rods along the grid diagonals); at 1.5x resolution the negative holds (8 bodies, 0 splits) but most bodies stay round, so the diagonal rods are at least partly grid anisotropy",
+ "summary": "WORLD_P as stated in the finding (n 2, kc 2, De 0.1, chi 3, DF 2, kF 0.2, d 0.0003, e0 0.12, noise 0.02; the exact WORLD_P is not recorded in c35's FACTS, so I used the summary's values), 256^2, t=0-12000. Seed 2 at Lsc 3: quiet until t~3650, then bodies nucleate one by one, grow (one hollows into a ring at t~5750), and by t~7000 every elongated body is a rod along one of the two grid diagonals; at t=12000 17 bodies, 0 splits, 0 merges, max 0.3 body lengths of motion. Same seed with Lsc 4.5 and the world's dt halved (dt 0.05, 1000 steps per frame; every length 1.5x more pixels, physical box 2/3 the side): first body at t~4150, 8 bodies at t=12000, 0 splits, 0 merges; 5 of 8 stay round, 2 are short rods (one off the diagonal) and the ring opens into a hook as in c35's seed 0.",
+ "parents": [
+  "20261026T0301-c35-cips-coop-rods-negative"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "pack_s2/sheet.png",
+  "pack_s2/FACTS.md",
+  "pack_s2_res15/sheet.png",
+  "pack_s2_res15/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "pack_s2/sheet.png: nucleation from t~3650, diagonal rods, no division to t=12000; pack_s2_res15/sheet.png: mostly round static bodies, no division"
+   },
+   "not_checked": [
+    "D"
+   ],
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "pass: 0 splits at Lsc 3"
+    },
+    {
+     "seed": 2,
+     "result": "pass at Lsc 4.5 and dt/2: 0 splits; rods mostly absent"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "resolution": "pack_s2_res15: Lsc 3 -> 4.5 with the world dt halved"
+   },
+   "by_construction": [],
+   "limitation": "The no-division result is robust to a new seed and a 1.5x resolution continuation. The rod elongation and its diagonal orientation are weaker at 1.5x (5 of 8 bodies round), so the 'stretch into rods' part should be read as partly a grid effect of the dimension-split drift, as c35 suspected. One seed; reservoir twin not re-run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}
