@@ -1,0 +1,5 @@
+matter shapes (201, 128, 128) (201, 128, 128); bitwise identical: True; max |dphi| 0
+render ch0 phi: identical True, max |diff| 0
+render ch1 |Q|: identical True, max |diff| 0
+render ch2 s: identical False, max |diff| 1.14
+render ch3 c: identical False, max |diff| 19.8

@@ -1,0 +1,32 @@
+{
+ "label": "far",
+ "frames": "/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-cargo/controls/walloff_seed51/frames.npz",
+ "n_bodyframes": 2462,
+ "median_in_out": 0.17485000395874073,
+ "share_ge2": 0.002843216896831844,
+ "q25_q75": [
+  0.15733866257765178,
+  0.21625822531673447
+ ],
+ "median_in_out_core15": 0.1701729277861755,
+ "share_ge2_core15": 0.0028501628664495114,
+ "median_in_out_out36": 0.21756271162891316,
+ "share_ge2_out36": 0.0004060089321965083,
+ "share_lt1": 0.9898456539398862,
+ "ring_bodyframes": 2457,
+ "ring_both_ge15": 0.0,
+ "ring_median_rc": 0.7464465441380927,
+ "ring_median_ro": 2.011553032223957,
+ "n_tracks_ge10": 73,
+ "tracks_majority_ge2": 0.0,
+ "tracks_median_share_ge2": 0.0,
+ "n_daughters": 87,
+ "daughters_median": 0.17618905661275933,
+ "daughters_share_ge2": 0.0,
+ "n_daughters_ge12": 75,
+ "daughters_ge12_share_ge2": 0.0,
+ "cargo_on_body_frac_2nd_half": 0.0164196869983207,
+ "occupancy_2nd_half": 0.06682230631510416,
+ "n_tracks": 125,
+ "n_split_events": 50
+}

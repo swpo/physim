@@ -1,0 +1,5 @@
+rerun/seed51 far band 6-10: median 9.95 >=2x 1.0 daughters 11.65 1.0
+rerun/seed52 far band 6-10: median 9.28 >=2x 0.998 daughters 10.04 1.0
+controls/walloff_seed51 far band 6-10: median 0.17 >=2x 0.003 daughters 0.18 0.0
+controls/walloff_seed52 far band 6-10: median 0.17 >=2x 0.002 daughters 0.16 0.0
+controls/kappa0_seed51 far band 6-10: median 1.65 >=2x 0.253 daughters 1.88 0.46

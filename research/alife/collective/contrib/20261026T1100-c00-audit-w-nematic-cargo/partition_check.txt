@@ -1,0 +1,4 @@
+rerun/seed51/frames.npz: body-frames 2463; Boltzmann in/out (coupling alone, no source): median 0.227, share > 1: 0.00; median s inside 0.129, ring(p90) 0.436, outside 0.040; median barrier kappa*(s_ring - s_in) 6.09
+rerun/seed52/frames.npz: body-frames 2922; Boltzmann in/out (coupling alone, no source): median 0.234, share > 1: 0.00; median s inside 0.129, ring(p90) 0.436, outside 0.041; median barrier kappa*(s_ring - s_in) 6.12
+controls/walloff_seed51/frames.npz: body-frames 2463; Boltzmann in/out (coupling alone, no source): median 0.0486, share > 1: 0.00; median s inside 0.221, ring(p90) 0.205, outside 0.074; median barrier kappa*(s_ring - s_in) -0.34
+controls/walloff_seed52/frames.npz: body-frames 2922; Boltzmann in/out (coupling alone, no source): median 0.0497, share > 1: 0.00; median s inside 0.220, ring(p90) 0.202, outside 0.074; median barrier kappa*(s_ring - s_in) -0.36

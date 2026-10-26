@@ -1,0 +1,7 @@
+seed51 exit 0 wall 211s
+walloff_seed51 exit 0 wall 212s
+seed52 exit 0 wall 212s
+walloff_seed52 exit 0 wall 221s
+homgate_seed51 exit 0 wall 235s
+betaoff_seed51 exit 0 wall 216s
+smoothgate_seed51 exit 0 wall 305s
