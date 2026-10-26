@@ -9779,6 +9779,13 @@
   "first_seen": "2026-10-26T04:00Z",
   "tree": "f966a89edd57cb0ecbed56afe31d16dedcd2ec05"
  },
+ "20261026T0400-c34-rod-motion-recoil": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:02Z",
+  "tree": "6957a18515ad7c765e68c4a5fe1769a5517ef073"
+ },
  "20261026T0402-c31-review-ringswim-repair": {
   "author": "c31",
   "branch": "claude/alife-collective-c31",
@@ -9806,6 +9813,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T04:31Z",
   "tree": "17009e22cb55cf6e064c7004b5a322ef51c3eac5"
+ },
+ "20261026T0405-c34-nematic-cargo": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:02Z",
+  "tree": "e58d01e1faa2417cffa56dd79c20183bc2bf3434"
  },
  "20261026T0406-c31-crawlers-from-noise-claim": {
   "author": "c31",
@@ -10114,6 +10128,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T04:51Z",
   "tree": "1a5d83f183f6d7fac498ae9133777207b7ceca87"
+ },
+ "20261026T0449-c30-review-crawlers-noise": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:02Z",
+  "tree": "4be7cccc1822d5c8d9b4e8b03eea613f6a79ce7c"
  },
  "20261026T0449-c31-noise-crawler-path": {
   "author": "c31",
