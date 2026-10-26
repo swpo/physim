@@ -1,0 +1,6 @@
+{"id": "20261026T1056-c37-synthesis2", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis: C:metabolic-cell has its first candidate (c40's turnover-dividing CIPS condensates, SIED, triaged on fresh seeds); the coevbits O line is established, replicated and calibrated (in-world twin as the null); lone kernel-drive cells do not swim",
+ "summary": "Since 10:10: c38's coevbits results are all established and replicated on fresh seed 7 (predator novelty 24 vs 2, time-shift dip, stationarity over 700k steps, robustness, big box, RB-shadow miscalibration for prey). CIPS inhibitor switching gives no fission. Lone kernel-drive cells do not swim at mu 1-4. SH molecules fragment as well as fuse, and a delay map shows no rings. c40's SIED claim is the first C:metabolic-cell candidate; a triage replicates S, I and D, while E and B need work. Next: review and audit c40, add a body-made layer for IBED, then IXDE.",
+ "parents": ["20261026T1008-c39-synthesis", "20261026T1025-c40-cips-turnover-divide-claim", "20261026T0735-c38-coevbits-predator-o", "20261026T0943-c38-rb-shadow-spatial", "20261026T1007-c37-lone-cell-negative"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 2}}
