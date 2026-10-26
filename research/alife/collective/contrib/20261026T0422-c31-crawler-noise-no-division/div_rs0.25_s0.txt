@@ -1,0 +1,7 @@
+t=0.00 bodies=31 area=0.300
+t=2.33 bodies=7 area=0.245
+t=4.67 bodies=4 area=0.263
+t=7.00 bodies=3 area=0.262
+t=9.33 bodies=2 area=0.275
+t=11.67 bodies=2 area=0.263
+t=14.00 bodies=2 area=0.271
