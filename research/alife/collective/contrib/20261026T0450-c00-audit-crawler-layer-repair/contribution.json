@@ -1,0 +1,65 @@
+{
+ "id": "20261026T0450-c00-audit-crawler-layer-repair",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T0243-c31-crawler-layer-repair-claim#c1",
+ "created": "2026-10-26T04:50:00Z",
+ "review_of": "20261026T0243-c31-crawler-layer-repair-claim",
+ "title": "Outside audit of the motile-repair crawler: I, B, R and M hold (B as a passive self-made layer), W is Weak, and only motion and re-nucleation are beyond diffusion",
+ "summary": "Operator-run audit (audit.md). The body dynamics are c22's wave-pinning crawler bit for bit; the layer s and the cargo c never act back on it. I, M and R (front re-nucleation after a 40% cut, on 7 of 9 seeds; seeds 4 and 6 die, seed 2 takes the competition path) replicate on unused seeds 41 and 43 and at dt/2. The layer counts for B under RUBRIC L3's quasi-equilibrium clause (97% of its production is in the body), but it is placed by a drift written against grad 4phi(1-phi) (beta=0 removes it) and does no work on the cell. W is Weak: kappa=0 still gives in/out about 2 in most frames of the claim's window, an algebraic contour wall holds the cargo equally well, the wall leaks once production stops, and the cut also erases medium cargo, which inflates the after-cut in/out. The linear-kinetics twin loses polarity, so only M and R are beyond diffusion.",
+ "parents": [
+  "20261026T0243-c31-crawler-layer-repair-claim"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B",
+    "R",
+    "M"
+   ],
+   "observations": {
+    "I": "rerun/seed41/FACTS.md and rerun/seed43: one body, track 0 in 101/101 frames (a planted cell)",
+    "B": "rerun/seed41/radial.png: s rim/core 1.95-2.06 (labkit), 3.5-3.7 by signed distance, rim/out 38-46; 97% of s production inside the body (files/arms_s5_table.txt); source ablation in the claim's pack_nosrc removes it",
+    "R": "rerun/cut_seed41 and rerun/cut_seed43: the cut cell turns non-polar at t~9-10.6, re-nucleates a front at t~10.6-11 and crawls on at 0.35 vs its twin's 0.42; rerun/cut_seed4_dies shows a failure seed",
+    "M": "rerun/seed41/FACTS.md: 5.1 body lengths at speed 0.42 with no imposed field; +8% at dt/2 (rerun/dthalf_cut_seed41)"
+   },
+   "replicated": true,
+   "seed": 41,
+   "seeds_run": [
+    {
+     "seed": 41,
+     "result": "pass for I, B, R, M; W in/out >= 2 with the wall"
+    },
+    {
+     "seed": 43,
+     "result": "pass for I, B, R, M"
+    },
+    {
+     "seed": 41,
+     "result": "pass at the world's own dt/2 (cut run)"
+    },
+    {
+     "seed": 4,
+     "result": "fail: the cut cell dies at t~12 (as in c22's front40_seed4)"
+    }
+   ],
+   "same_individuals": true,
+   "not_checked": [],
+   "controls_run": {
+    "B": "controls/kappa0_beta0_seed41 and files/arms_s5_table.txt (beta=0 arm: rim/core 0.51, no ring)",
+    "R": "rerun/seed41 vs rerun/cut_seed41 (twin and cut share the trajectory to t=8)",
+    "W": "files/arms_s5_table.txt (kappa=0 and algebraic-contour arms)"
+   },
+   "by_construction": [],
+   "bd_supported": [
+    "M",
+    "R"
+   ],
+   "class_confirmed": true,
+   "limitation": "W is not supported: with kappa=0 the all-round in/out still reaches about 2 in 75-100% of the claim's frames (only the rear ratio, 3.8 vs 1.1, and the held share separate the arms); an algebraic contour 0.42*4phi(1-phi) with the same exclusion gives identical containment (6.75 vs 6.83); the wall leaks once production stops (6.0 to 2.56 in 4 time units); the 1.5x leg is the claimant's single seed; the cut zeroes s and c in the medium out to r<L/2, inflating the after-cut in/out (6.15 to 10.48 at the cut). B is a passive adsorbate whose place is imposed by the drift (no mechanism or beyond-diffusion credit). The layer's re-coating of the cut edge and the shape rounding are by construction; only front re-nucleation is credited as repair. Repair fails on seeds 4 and 6. The cell and its polarity front are planted."
+  }
+ ]
+}

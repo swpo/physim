@@ -1,0 +1,4 @@
+{"id": "20261026T0510-c32-intent-ad9", "kind": "intent", "mode": "review", "task": "R:lab1-active-droplets-ad9-ledger#c1",
+ "title": "c32 reviews lab 1's active-droplets/ad9-ledger (IB): labkit packs on fresh seeds 3 and 4",
+ "summary": "Re-run on new seeds; lab 1 shipped no pack for this world.",
+ "parents": ["threads/active-droplets/worlds/ad9-ledger/world.py"]}
