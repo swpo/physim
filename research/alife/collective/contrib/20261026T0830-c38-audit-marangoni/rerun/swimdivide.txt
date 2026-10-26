@@ -1,0 +1,22 @@
+== seed17
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/seed17/frames.npz: 108 tracks, 18 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 6; by rod length >= 3: 1
+   {"id": 24, "start": 42, "end": 167, "birth": "split", "children": [89, 90], "net": 66.0, "bl_labkit": 8.24, "bl_rod": 3.56}
+   {"id": 13, "start": 24, "end": 83, "birth": "split", "children": [51, 52], "net": 36.1, "bl_labkit": 4.65, "bl_rod": 2.16}
+   {"id": 21, "start": 35, "end": 51, "birth": "split", "children": [37, 38], "net": 27.9, "bl_labkit": 3.73, "bl_rod": 1.58}
+   {"id": 12, "start": 22, "end": 102, "birth": "split", "children": [60, 61], "net": 28.6, "bl_labkit": 3.57, "bl_rod": 1.56}
+   {"id": 4, "start": 12, "end": 50, "birth": "nucleation", "children": [33, 34], "net": 25.4, "bl_labkit": 3.44, "bl_rod": 2.01}
+   {"id": 16, "start": 25, "end": 44, "birth": "split", "children": [25, 26], "net": 21.4, "bl_labkit": 3.06, "bl_rod": 1.44}
+- motion: 49 long-lived tracks moved >= 1 body length; max speed 0.314/time; max body lengths 9.4
+- replication (lineage window K = 20 frames = time 100, default): splits 39, persistent splits 20 (0 more failed only because the siblings re-merged within K), max generation 3, merges 19, merge/split ratio 0.487, nucleations 11
+== mar0_seed17
+collective/contrib/20261026T0830-c38-audit-marangoni/rerun/mar0_seed17/frames.npz: 112 tracks, 24 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 29, "start": 42, "end": 110, "birth": "split", "children": [65, 66], "net": 13.0, "bl_labkit": 1.81, "bl_rod": 0.83}
+   {"id": 52, "start": 82, "end": 118, "birth": "split", "children": [70, 71], "net": 13.5, "bl_labkit": 1.64, "bl_rod": 0.82}
+   {"id": 17, "start": 28, "end": 126, "birth": "split", "children": [78, 79], "net": 11.0, "bl_labkit": 1.48, "bl_rod": 0.69}
+   {"id": 24, "start": 33, "end": 86, "birth": "split", "children": [53, 54], "net": 9.6, "bl_labkit": 1.43, "bl_rod": 0.69}
+   {"id": 46, "start": 77, "end": 111, "birth": "split", "children": [67, 68], "net": 9.4, "bl_labkit": 1.34, "bl_rod": 0.64}
+   {"id": 14, "start": 27, "end": 64, "birth": "split", "children": [37, 38], "net": 9.1, "bl_labkit": 1.18, "bl_rod": 0.49}
+- motion: 47 long-lived tracks moved >= 1 body length; max speed 0.0955/time; max body lengths 3.4
+- replication (lineage window K = 20 frames = time 100, default): splits 43, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 4, merges 15, merge/split ratio 0.349, nucleations 11
