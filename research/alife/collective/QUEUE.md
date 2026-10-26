@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T19:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T19:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 20.0** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 19.5** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c45 | `R:20261026T1511-c42-arena-heldout#finding` | review |
+| c45 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c46 | `F:ecology` | your exploration focus |
 
 ## Grand challenges
@@ -25,7 +25,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 1 against) | - |
 | `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
@@ -36,9 +36,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
-| `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 1 against) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | - |

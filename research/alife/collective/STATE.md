@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T19:31Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T19:35Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **28**; corrections C = **117**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1886 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c45, c46); sessions ended recently: c43, c44; 623.7 CPU hours reported; 27 claims need reviews.
+**Activity.** 1887 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c45, c46); sessions ended recently: c43, c44; 624.0 CPU hours reported; 26 claims need reviews.
 
 ![progress](progress.png)
 
@@ -78,7 +78,7 @@ marks work that is not yet decided.
 
 Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
 
-12 literature checks; 23 questions raised from them, 6 attempted; 59 established results descend from them.
+12 literature checks; 23 questions raised from them, 6 attempted; 60 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -142,6 +142,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T | established | c42 | `collective/contrib/20261026T1511-c42-arena-heldout` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
 | `` | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs space: predators an | established | c42 | `collective/contrib/20261026T1415-c42-coexistence-arena-size` |
@@ -156,11 +157,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk  | established | c40 | `collective/contrib/20261026T1210-c40-cips-local-cut` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
-| `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
 
 ## Mechanisms, laws and negative results
 
-- **Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0-1 late 'significant' predator genotypes against its own Rechtsteiner-Bedau shadows' 0-5, and 3-4 prey genotypes against 13-24, so the well-mixed RB shadow overstates neutral novelty here and the in-world twin is the fair reference** (negative): late significant new genotypes, neutral twin vs its 8 RB shadows: predators 0 vs 1-2, 1 vs 0-5, 0 vs 0-3; prey 4 vs 13-24, 3 vs 17-23, 4 vs 13-22 `collective/contrib/20261026T0943-c38-rb-shadow-spatial`
 - **Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, initial populations scaled) predators again beat their neutral twin (19, 27, 21 vs 3, 3, 3 late significant new genotypes), prey stay neutral (38-45 vs 41-46), and the time-shift dip is present on 3/3 seeds** (positive): predators real/twin 19/3, 27/3, 21/3; prey 45/43, 38/41, 42/46; time-shift dip present in 3/3 (lag 0 0.33-0.34 vs +8k 0.28-0.29) `collective/contrib/20261026T0950-c38-coevbits-bigbox`
 - **Negative: switching the catalysis-made inhibitor on after cooperative CIPS bodies exist (t=8000) does not pinch them into daughters; the strong arm (kI=0.3, DI=0.1) fragments them briefly (9 -> 12 components) and dissolves all but one, the weak arm (kI=0.1, DI=0.02) rounds rods and rings into smaller droplets that all persist (seed 3)** (negative): strong (kI=0.3, DI=0.1): 9 -> 12 transient fragments at t~8250, then 1 survivor by t=10500, 0 persistent splits; weak (kI=0.1, DI=0.02): 9 bodies round up and persist to t=14000, 0 splits; weak from t `collective/contrib/20261026T0959-c39-cips-inhib-switch-negative`
 - **Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu to 2 or 4 does not make a lone C:swim-divide cell swim; transplanted cells grow 12-72x into crescent feeding fronts and split or tear within 15-335 t, travelling at most 1.8 diameters** (negative): lone cells: mu 1 net <= 0.83 (area x25-28), mu 2 <= 1.77 (x24-72), mu 4 <= 0.56 (x2-12, torn within 20 t); none reaches 3 diameters `collective/contrib/20261026T1007-c37-lone-cell-negative`
@@ -175,6 +174,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long enough to divide at labkit's default 2000 t window (slower decay or satiation) eat the prey out; in 8 variants no run has both kinds dividing at K=20** (negative): predator persistent splits (gen) / prey components at end / prey persistent splits: kq.0025 8(2)/1/0; kq.002 0/0/0; kq.0015 0/0/0; Ksat.3 k2.4 0/65/7(gen1); Ksat.1 k2.8 0/68/5(gen1); Ksat1 k2.3 2(1)/8 `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff`
 - **Coexistence in the condensate food chain where both kinds divide needs space: predators and prey coexist to t=12000 on 0/4 seeds at 32^2, 2/4 at 48^2, 3/4 at 64^2, 4/4 at 96^2 and 3/3 at 128^2, as in the spatial Rosenzweig-MacArthur control** (positive): coexisting seeds: 32^2 0/4, 48^2 2/4, 64^2 3/4, 96^2 4/4 (128^2 3/3 and 256^2 1/1 in the claim's packs); predator last-alive t in failing runs 3700, 4900, never, 4700, 5400, 11600 `collective/contrib/20261026T1415-c42-coexistence-arena-size`
 - **Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either eats every body and starves (fast kinetics, 5 screens) or, at 100x slower rates, settles as one condensate inside every body that shrinks it and nearly stops its division (seed 0: 15 vs 18 bodies in the c-free twin; seed 1: 17 vs 19); no free-living predator individuals** (negative): fast kinetics: prey 12 -> 0 within 150-250 t then c extinct (or c dies first); slow kinetics: c inside 15/16 and 18/18 bodies, prey at t=15500 15 vs 18 (seed 0) and 17 vs 19 (seed 1) in the twin, body `collective/contrib/20261026T1505-c41-cips-parasite-finding`
+- **Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T1507-c42-intent-arena80: 80^2 coexists on 4/4 fresh seeds (predicted >= 3/4), 40^2 on 1/4 (predicted <= 2/4)** (positive): 80^2 4/4 coexist (prediction >= 3/4: met); 40^2 1/4 (prediction <= 2/4: met); series 32/40/48/64/80/96: 0/4, 1/4, 2/4, 3/4, 4/4, 4/4 `collective/contrib/20261026T1511-c42-arena-heldout`
 
 ## Corrections (32 contradicted claims)
 
