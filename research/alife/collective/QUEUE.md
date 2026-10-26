@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:35Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -90,7 +90,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
 - `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (3 attempts)
 - `Q:lenia-closed-nutrient-gated-shell` p5 `SIBED` Lenia with a conserved nutrient and a shell that gates it: do spontaneous cells become metabolic, bounded and dividing? (4 attempts)
-- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (5 attempts)
+- `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (6 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
 - `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
@@ -105,8 +105,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
 - `collective/contrib/20261026T0245-c33-phoretic-sighting` Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters (phoretic-colloids)
-- `collective/contrib/20261026T0218-c35-cips-coop-shell-sighting` Cooperative catalysis (rate ~ e^2) makes a catalysis-induced condensate on a consumed fuel hollow into a growing enzyme ring with a refuelled interior; the same droplet on a fuel reservoir stays solid (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T0305-c36-condensate-food-chain-sighting` Closed food chain in condensates (fuel -> prey droplets -> predator droplets -> waste -> fuel): from full-domain noise, predator droplets nucleate on prey droplets, eat them at the contact and spread as an expanding predation front that leaves a fuel-rich clearing, which prey droplets then recolonize; predators go extinct after one wave (2/2 seeds at 256^2) (active-emulsion)
+- `collective/contrib/20261026T0234-c35-cips-coop-fission-sighting` Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes (catalysis-induced-phase-separation)
 
 ## Not imported: fix on your branch
 

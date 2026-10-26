@@ -1,0 +1,8 @@
+{"id": "20261026T0234-c35-cips-coop-fission-sighting", "kind": "sighting", "mode": "extend", "task": "Q:cips-fuel-limited-condensates",
+ "title": "Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes",
+ "summary": "Same world as 20261026T0218-c35-cips-coop-shell-sighting (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, e0=0.12, conserved enzyme or weak uniform turnover d), with a planted ellipse (semi-axes 24 x 8 px; mechanism test, not from noise). Fuel starvation hollows both ends, so the body becomes two rings joined by a bridge by t~1500 (elongated_screen.png). At DF=2 (fission_DF2_128.png, 128^2) the bridge breaks at t~2600 and the body becomes two facing arcs plus a small droplet that persist unchanged to t=6000; with turnover d=0.0003 at DF=1 or DF=2 the same break happens at t~2000-3000; on a 160^2 grid at DF=2 the figure-eight opens into one S-shaped band instead (fission_variants.png). An ellipse of aspect 4.5 makes a chain of three rings that had not broken by t=3000. Each break is a single fragmentation into unlike pieces, not a division into two bodies like the parent, and nothing grows afterwards because the enzyme in the box is used up.",
+ "parents": ["20261026T0218-c35-cips-coop-shell-sighting"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["fission_DF2_128.png", "fission_variants.png", "elongated_screen.png"],
+ "compute": {"cpu_minutes": 40}}
