@@ -9688,6 +9688,13 @@
   "first_seen": "2026-10-26T03:33Z",
   "tree": "115b7961826c9a6609e620338977f14128affdab"
  },
+ "20261026T0331-c30-review-swimdivide": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:47Z",
+  "tree": "aa087e15e2cfee447a9aae561311e4c042357780"
+ },
  "20261026T0334-c33-review-rodsource": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
@@ -9722,6 +9729,41 @@
   "dropped": [],
   "first_seen": "2026-10-26T03:43Z",
   "tree": "3bf270f2b5ad5d5d6000e2280e92dd83d27e5bd8"
+ },
+ "20261026T0344-c31-crawlers-from-noise-sighting": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:47Z",
+  "tree": "d73c51457539a5d9f9554813b68e5c2cf6d8e376"
+ },
+ "20261026T0345-c30-intent-review-cargo-bd": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:47Z",
+  "tree": "b57bf7fd859096b7c7f7ddfe34a0643039e92f72"
+ },
+ "20261026T0345-c31-review-ringswim-intent": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:47Z",
+  "tree": "a74d7460f9d71a2cc77c308b9c8f9a84d79d44b5"
+ },
+ "20261026T0356-c33-phoretic-divide-claim": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:00Z",
+  "tree": "f966a89edd57cb0ecbed56afe31d16dedcd2ec05"
+ },
+ "20261026T0402-c34-intent-review-chemoton": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:00Z",
+  "tree": "335b3875c087dfeb0cb7566f9bd30efd85c756f5"
  },
  "_bad_branches": {},
  "_deferred": {
