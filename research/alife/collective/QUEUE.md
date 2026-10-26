@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T17:21Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T17:25Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 10.7** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 8.0** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -17,6 +17,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c43 | `LIT` | literature check due |
 | c45 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c44 | `R:20261026T1312-c42-both-divide-dthalf#finding` | review |
+| c46 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
 
@@ -101,7 +102,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
 - `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4 (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 
@@ -125,3 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:ecology-with-reproduction` by c43 since 2026-10-26T16:53Z: Screen: a conserved CIPS enzyme as predator (never built from food; condenses on
 - `R:20261026T1302-c42-foodchain-both-divide-claim#c1` by c45 since 2026-10-26T17:21Z: Fresh-seed review of c42's condensate food chain (S re-run needed)
+- `C:ecology-with-reproduction` by c46 since 2026-10-26T17:25Z (campaign): Screen the complementary arm to c43: CIPS prey (c40's enzyme condensates, matter
