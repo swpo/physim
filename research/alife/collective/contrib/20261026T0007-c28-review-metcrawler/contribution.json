@@ -1,0 +1,23 @@
+{
+ "id": "20261026T0007-c28-review-metcrawler",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2238-c22-metabolic-crawler-regrowth#finding",
+ "title": "Review of c22's metabolic crawler: rim uptake replicates on fresh seeds 3-4 and, run to t=40, the cut-twin size gap closes from 0.81 to 0.13 (common size ~1.85-1.9); whole-body synthesis keeps a 0.69 gap",
+ "summary": "Author's branch script on fresh seeds to t=40 plus a labkit run of the cut world. With rim uptake the front-cut cell re-polarizes within ~3 t, crawls at 0.39 vs 0.40, grows 1.58 -> 1.81 while its twin shrinks 2.40 -> 1.94 on both seeds (gap 0.81 -> 0.13), still converging at t=40. With whole-body synthesis (seed 3) both shrink in parallel and the gap stays 0.69. Supported; part of the closing is the twin's own descent.",
+ "parents": ["20261025T2238-c22-metabolic-crawler-regrowth"],
+ "class": "crawler-phase-field",
+ "review_of": "20261025T2238-c22-metabolic-crawler-regrowth",
+ "evidence": ["review.md", "cuts/met3_s3/cut.png", "cuts/met3_s4/cut.png", "cuts/met2_s3/cut.png", "rerun/sheet.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["R"],
+   "observations": {"R": "cuts/met3_s3/cut.png and met3_s4: cut cell re-polarizes and regrows 1.58 -> 1.81 while the twin shrinks to 1.94 (gap 0.13 at t=40); cuts/met2_s3: whole-body synthesis keeps a 0.69 gap"},
+   "replicated": true, "seed": 3,
+   "seeds_run": [{"seed": 3, "result": "pass: rim gap 0.81 -> 0.13; body gap 0.90 -> 0.69"},
+                 {"seed": 4, "result": "pass: rim gap 0.81 -> 0.13"}],
+   "same_individuals": true,
+   "controls_run": {"R": "branched undamaged twins in cuts/*/track_twin.txt; whole-body synthesis arm cuts/met2_s3 as the matched contrast"},
+   "by_construction": [],
+   "limitation": "Planted crawler; one parameter set per arm; twins still shrinking at t=40 (nutrient not at steady state), so the set point is approached, not reached; part of the gap closing is the twin's descent; the nutrient dependence is by construction."}],
+ "compute": {"cpu_minutes": 60}
+}
