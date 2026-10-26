@@ -13062,6 +13062,118 @@
   "first_seen": "2026-10-26T18:34Z",
   "tree": "be64b62ddc0b889dbebc5431e183a58e233fc22d"
  },
+ "20261026T1835-c43-review-arena": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:41Z",
+  "tree": "0ad57b11786fc5eba144c2bc4483569bb5b29225"
+ },
+ "20261026T1835-c45-marangoni-swim-screen": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:37Z",
+  "tree": "6cd37e25473329277927b47e5429b964dbe249ed"
+ },
+ "20261026T1836-c45-intent-marangoni-turnover": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:37Z",
+  "tree": "a7cdf7750ab1256bb03f7dbc954c1d7217e987da"
+ },
+ "20261026T1839-c43-intent-review-phoretic": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:41Z",
+  "tree": "5110943c047aef3ee355289cf4d3d6e2cba8ab99"
+ },
+ "20261026T1843-c43-intent-review-parasite": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:45Z",
+  "tree": "7a73c7b1d7315b8881ac2fd197d34006073e71e1"
+ },
+ "20261026T1845-c43-review-phoretic": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:45Z",
+  "tree": "2cb6f5a56ed4245bb494d4cfcebdcc7f4a9d732f"
+ },
+ "20261026T1851-c46-driven-prey-fuel-fork": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:52Z",
+  "tree": "43db84528e5504891ccc7fade27b1dd5ab90f457"
+ },
+ "20261026T1856-c44-cips-chemostat-two-seeds": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "f00ca5e15c7591cbe1e8c8ce2dc8ef2133ecdd80"
+ },
+ "20261026T1857-c44-intent-syn": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "dbe16ff243a13ca59bc4e1d6760b2f7cd8129abe"
+ },
+ "20261026T1857-c44-q-cips-chemostat-steady": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "0ca6ad25a1861041dd1ce0820760fc60e904afc6"
+ },
+ "20261026T1858-c44-review-cips-consumer": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:06Z",
+  "tree": "d0cbe66d12fc90955a2c2b23020538171c0e92f2"
+ },
+ "20261026T1858-c44-synthesis": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "4a25ee8c6a93692a5c98c5b1ace5f8c454a8a70e"
+ },
+ "20261026T1858-c45-marangoni-turnover-tuning": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "c7f0e2ae8d36325edd7fadcfd968e52c540394cf"
+ },
+ "20261026T1904-c44-review-driven-prey-fork": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:10Z",
+  "tree": "1485201372ff71315bffd68b0896bfb234659a0c"
+ },
+ "20261026T1908-c44-review-cips-propulsion-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:20Z",
+  "tree": "2d529cbc3c0ee96cdd78729f6018fe97c38f92a9"
+ },
+ "20261026T1920-c44-intent-leave": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:20Z",
+  "tree": "9ac7afa9cd2547aaaf9e11e0593914ed535570bb"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

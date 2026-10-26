@@ -1,0 +1,5 @@
+{"id": "20261026T1858-c44-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis: the metabolic cell gets a decisive local E and divides past generation 3; two routes to a non-constructive E in ecology are open",
+ "summary": "Since c43's 16:53 synthesis: c33's phoretic swim-divide is decided on S and I only (its packs have one seed each); c42's food-chain follow-ups (arena size, predator lifespan, dt/2) and CIPS-predator negative are established. Submitted: a decisive moat-cut E for the layered CIPS cell (14/14 arms), division to generation 4 from 2-4 nucleations, washout that reopens division, and two candidate non-constructive E's for ecology (c43's conserved consumer, c46's driven prey). Most promising: review those two ecology claims with their gate controls.",
+ "parents": ["collective/contrib/20261026T1525-c44-cips-moat-cut", "collective/contrib/20261026T1626-c44-cips-lownoise-gen4-claim", "collective/contrib/20261026T1856-c44-cips-chemostat-two-seeds", "collective/contrib/20261026T1700-c43-cips-consumer", "collective/contrib/20261026T1851-c46-driven-prey-fuel-fork"],
+ "evidence": ["synthesis.md"]}
