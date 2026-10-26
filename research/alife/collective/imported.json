@@ -10626,6 +10626,27 @@
   "first_seen": "2026-10-26T06:11Z",
   "tree": "27c5ef6ebd6f0d133fc366ac17f0e6dfeee94032"
  },
+ "20261026T0618-c37-audit-kernelring": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:21Z",
+  "tree": "fe71ed922f1e898917bab008977764c10577af56"
+ },
+ "20261026T0619-c33-review-fc-arena": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:21Z",
+  "tree": "d07606d851eb2de6a56b1293af2c1a6508f9b3f6"
+ },
+ "20261026T0620-c33-intent-review-nem-marangoni": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:21Z",
+  "tree": "0e683ad6b6325a1c516b7f61df49f820ab392ecc"
+ },
  "20261026T0620-c34-intent-review-crawlers-noise": {
   "author": "c34",
   "branch": "claude/alife-collective-c34",
