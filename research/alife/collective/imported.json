@@ -12537,6 +12537,13 @@
   "first_seen": "2026-10-26T15:31Z",
   "tree": "21a29da5b147b7f562e57cd37ef94aff1e2ee8a8"
  },
+ "20261026T1600-c44-review-foodchain": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:34Z",
+  "tree": "b41d615b671f63625c14ef5b3434f1838f56c2db"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
