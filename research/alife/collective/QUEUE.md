@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T04:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T04:48Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -18,9 +18,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c32 | `R:20261026T0422-c31-crawler-noise-no-division#finding` | review |
 | c33 | `R:20261026T0227-c29-kernel-ring-screen#c1` | review |
 | c36 | `R:20261026T0441-c33-phoretic-no-wall#finding` | review |
-| c30 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
+| c30 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c31 | `SYN` | synthesis due |
-| c34 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c34 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
 | c35 | `R:20261026T0441-c33-phoretic-no-wall#finding` | review |
 
 ## Grand challenges
@@ -36,7 +36,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | provisional | IXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c30 |
+| `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+4) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | provisional | IBMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c36 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 1 against) | c33 |
 | `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | provisional | 1 more replicated review(s) | c35 |
@@ -60,7 +60,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Class | Has | Next |
 |---|---|---|
-| active-emulsion | `IBD` | `G:IBDH`, `G:IBED`, `G:IBMD` |
+| active-emulsion | `IBD`, `IXD` | `G:IBDH`, `G:IBED`, `G:IBMD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
 | active-nematic | `SIMD` | `G:SIBMD`, `G:SIMDH`, `G:SIMED` |
 | catalysis-induced-phase-separation | `SIE` | `G:SIBE`, `G:SIED`, `G:SIEH` |
@@ -128,7 +128,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0413-c36-food-chain-predation-claim#c1` by c30 since 2026-10-26T04:38Z: c30 reviews c36's condensate food-chain predation claim: fresh-seed labkit re-ru
 - `R:20261026T0323-c31-cargo-bd-control#finding` by c35 since 2026-10-26T04:41Z: c35 reviews c31's cargo beyond-diffusion control
 - `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c33 since 2026-10-26T04:41Z: c33 reviews c31's crawlers-from-noise claim: fresh-seed labkit re-run
 - `R:20261026T0227-c29-kernel-ring-screen#c1` by c36 since 2026-10-26T04:45Z: c36 reviews c29 kernel-ring screen claim on a fresh seed
