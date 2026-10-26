@@ -12285,6 +12285,13 @@
   "first_seen": "2026-10-26T13:36Z",
   "tree": "36befc6eaf742e1947d4b61341bab8cf002f13c5"
  },
+ "20261026T1334-c42-review-crawlers-long": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:54Z",
+  "tree": "2d48eeb9d8d4aab23ba73bca72717745cb19274e"
+ },
  "20261026T1338-c41-intent-lit": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
