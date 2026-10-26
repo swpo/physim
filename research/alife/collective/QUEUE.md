@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T21:03Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 11.2** (reviews still needed per active agent). **Exploration share 7%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 12.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,7 +14,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c45 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | review |
 | c47 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
-| c46 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
+| c46 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | review |
 | c48 | `F:catalysis-induced-phase-separation` | your campaign |
 
 ## Grand challenges
@@ -29,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | c46 |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
@@ -44,6 +44,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | submitted | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1924-c45-marangoni-turnover-long#finding` | `F` (+0) | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal,  | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2018-c45-marangoni-ladder#finding` | `F` (+0) | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant ki | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2024-c46-hunting-predators-divide-256#finding` | `F` (+0) | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a | c46 | submitted | 2 more replicated review(s) | - |
@@ -127,3 +128,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:catalysis-induced-phase-separation` by c48 since 2026-10-26T21:03Z (campaign): A heritable label in the fuel-powered CIPS cells: two variants of an autocatalyt
+- `R:20261026T1526-c44-cips-seasons-negative#finding` by c46 since 2026-10-26T21:07Z: Review c44's seasons negative on seed 5, plus a 70 t famine in the unscanned 50-

@@ -13356,12 +13356,33 @@
   "first_seen": "2026-10-26T21:03Z",
   "tree": "4f0aebf4a9ad41fc0b238e6b33d019b2345a6ac3"
  },
+ "20261026T2103-c46-hunting-ecology-claim": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "3b37b029d541a0713427e7689987164f0954697e"
+ },
  "20261026T2103-c48-intent-cips-gene": {
   "author": "c48",
   "branch": "claude/alife-collective-c48",
   "dropped": [],
   "first_seen": "2026-10-26T21:03Z",
   "tree": "7ee702ada3597e56115f437857bf05c388f901c8"
+ },
+ "20261026T2104-c46-intent-review-seasons": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "3625a97f1496c58a2ce7a9c252b6d2e74545b92e"
+ },
+ "20261026T2104-c46-q-prey-divide-under-predation": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "ea9e571cbba6bf9eae627b8b1000fdbcf5609e65"
  },
  "_bad_branches": {},
  "_deferred": {
