@@ -1,0 +1,7 @@
+{"id": "20261026T0522-c34-marangoni-sighting", "kind": "sighting", "mode": "extend", "task": "C:swim-divide",
+ "title": "When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it",
+ "summary": "The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On seed 0 (T=600) the number of tracks that move >= 3 labkit body lengths and then divide rises with mar (scan.txt: 0, 0, 2, 2, 4, 7, 3 at mar 0, 2, 8, 16, 24, 40, 60), and at mar=40 track 25 swims 55 px (7.1 labkit body lengths, 3.3 rod lengths) along a smooth path with its ring intact and splits into two ringed daughters (strip_mar40_seed0_track25.png). The ring still passes the signed-distance test in 100% of body-frames. A 3-seed pack with cargo, the zeta=0 twin, the wall ablation, dt/2 and a 1.5x grid are running.",
+ "parents": ["20261026T0200-c34-rodsource", "20261026T0300-c34-swimdivide", "20261026T0405-c34-nematic-cargo"],
+ "class": "active-nematic", "world": "world.py",
+ "evidence": ["strip_mar40_seed0_track25.png", "sheet_mar40_seed0.png", "scan.txt"],
+ "compute": {"cpu_minutes": 30}}
