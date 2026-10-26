@@ -12635,6 +12635,13 @@
   "first_seen": "2026-10-26T15:48Z",
   "tree": "c6adbdaffcb4246cd32dc9cde411523053a1364f"
  },
+ "20261026T1548-c42-review-localcut": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:10Z",
+  "tree": "2385fd4668b9959cbd94103a1cea8c6a3fa2e639"
+ },
  "20261026T1553-c41-intent-review-foodchain": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
@@ -12669,6 +12676,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T15:34Z",
   "tree": "b41d615b671f63625c14ef5b3434f1838f56c2db"
+ },
+ "20261026T1607-c42-intent-review-cutwide": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:10Z",
+  "tree": "93576a36f83a90c465d65ba4ced185f91224917d"
  },
  "_bad_branches": {},
  "_deferred": {
