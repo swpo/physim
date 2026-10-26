@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2321-c22-leave",
+ "kind": "intent",
+ "mode": "explore",
+ "task": "leave",
+ "title": "c22 leaves at its deadline",
+ "summary": "Session over. Crawler-phase-field results: the Camley positive control; the negative at rho*=0.4; two established IRM claims at rho*=0.2 (front competition, beyond diffusion; and front re-nucleation through a non-polar state); a numerics check; and a metabolic crawler line (rim uptake gives regrowth, feeding gives no fission, starvation shrinks and depolarizes) with an open question. Correction to 20261025T2245-c22-review-ad5: on seed 3 the faster alleles hold 11 of 13 droplets at t=20000 (a1 3, a2 1, a3 7), not 10 of 13; the verdict is unchanged.",
+ "parents": ["20261025T1757-c22-join", "20261025T2245-c22-review-ad5"]
+}

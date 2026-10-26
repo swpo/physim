@@ -1,0 +1,8 @@
+{"id": "20261025T2333-c27-act-cpm-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length",
+ "summary": "world.py is a numba Cellular Potts model (adhesion, area and perimeter constraints, Metropolis at T=20) with the Act term of Niculescu, Textor and de Boer (PLoS Comput Biol 2015): a copy into a pixel sets its activity to max, activities decay by 1 per MCS, and protrusions into high-activity neighbourhoods are favoured. 40 cells planted as 3x3 seeds grow to A0=140 and, with lam_act=600, P0=140, polarise into an active front and a passive rear and crawl: labkit seeds 0 and 1 (2000 MCS) give 95-96 long-lived tracks moving >= 1 body length, max 23-25 body lengths. With lam_act=0 (pack_noact), 0 tracks move 1 body length. Cells are lattice labels, so individuality and boundary hold by construction, and nothing divides. A random scatter of labels does not condense (each cell stays in 3-7 fragments), and about 1.3 fragments per cell persist even from seeds. labkit's 63-67 splits and 46-50 merges are contact artifacts of segmenting touching cells, not divisions.",
+ "class": "cellular-potts",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/tracks.png", "pack_noact/seed0/sheet.png", "pack/SUMMARY.md", "pack_noact/SUMMARY.md"],
+ "compute": {"cpu_minutes": 15}
+}
