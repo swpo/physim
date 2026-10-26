@@ -1,0 +1,23 @@
+== seed 15
+- motion: 36 long-lived tracks moved >= 1 body length; max speed 0.079/time; max body lengths 4.2
+- replication (lineage window K = 20 frames = time 100, default): splits 35, persistent splits 21 (0 more failed only because the siblings re-merged within K), max generation 4, merges 8, merge/split ratio 0.229, nucleations 9
+rerun/seed15/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.76, fraction >= 2: 0.92
+rerun/seed15/frames.npz ch2: body-frames 407, both >= 1.5: 0.99, median rim/core 2.71, median rim/out 7.87
+rerun/seed15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 12.90, fraction >= 2: 0.99
+rerun/seed15/frames.npz ch3: body-frames 407, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+rerun/seed15/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=21, median in/out 6.56, fraction >= 2: 1.00
+rerun/seed15/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=38, median in/out 4.93, fraction >= 2: 0.97
+== seed 16
+- motion: 27 long-lived tracks moved >= 1 body length; max speed 0.0729/time; max body lengths 3.7
+- replication (lineage window K = 20 frames = time 100, default): splits 26, persistent splits 16 (0 more failed only because the siblings re-merged within K), max generation 4, merges 8, merge/split ratio 0.308, nucleations 3
+rerun/seed16/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.87, fraction >= 2: 0.94
+rerun/seed16/frames.npz ch2: body-frames 277, both >= 1.5: 0.99, median rim/core 2.59, median rim/out 7.94
+rerun/seed16/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 13.21, fraction >= 2: 1.00
+rerun/seed16/frames.npz ch3: body-frames 277, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.12
+rerun/seed16/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=30, median in/out 6.60, fraction >= 2: 1.00
+rerun/seed16/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=19, median in/out 4.13, fraction >= 2: 0.89
+== kappa0 seed 15
+ctl_kappa0/seed15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.41, fraction >= 2: 0.04
+ctl_kappa0/seed15/frames.npz ch3: body-frames 407, both >= 1.5: 0.00, median rim/core 0.89, median rim/out 1.25
+ctl_kappa0/seed15/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=21, median in/out 1.28, fraction >= 2: 0.00
+ctl_kappa0/seed15/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=38, median in/out 1.27, fraction >= 2: 0.00
