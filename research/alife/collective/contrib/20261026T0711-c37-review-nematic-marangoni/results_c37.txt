@@ -1,0 +1,55 @@
+== seed 13
+- motion: 45 long-lived tracks moved >= 1 body length; max speed 0.253/time; max body lengths 8.2
+- replication (lineage window K = 20 frames = time 100, default): splits 36, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 4, merges 12, merge/split ratio 0.333, nucleations 7
+rerun/seed13/frames.npz: 91 tracks, 18 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 1
+   {"id": 21, "start": 49, "end": 96, "birth": "split", "children": [56, 57], "net": 59.5, "bl_labkit": 7.43, "bl_rod": 3.22}
+   {"id": 14, "start": 41, "end": 76, "birth": "split", "children": [49, 50], "net": 32.4, "bl_labkit": 4.25, "bl_rod": 2.0}
+   {"id": 9, "start": 27, "end": 42, "birth": "split", "children": [17, 18], "net": 24.0, "bl_labkit": 3.46, "bl_rod": 1.68}
+   {"id": 19, "start": 44, "end": 69, "birth": "split", "children": [38, 39], "net": 26.1, "bl_labkit": 3.31, "bl_rod": 1.43}
+   {"id": 16, "start": 43, "end": 64, "birth": "split", "children": [33, 34], "net": 19.5, "bl_labkit": 2.58, "bl_rod": 1.09}
+   {"id": 12, "start": 41, "end": 55, "birth": "split", "children": [27, 28], "net": 17.5, "bl_labkit": 2.34, "bl_rod": 0.99}
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/wip-c37/mar/../../20261026T0505-c34-nematic-marangoni/sd_individuals.py", line 31, in <module>
+    x = R[k, c]; a = x[rim].mean() / max(x[core].mean(), 1e-9); b = x[rim].mean() / max(x[out].mean(), 1e-9)
+        ~^^^^^^
+IndexError: index 4 is out of bounds for axis 1 with size 4
+rerun/seed13/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=27, median in/out 4.83, fraction >= 2: 1.00
+rerun/seed13/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=27, median in/out 4.45, fraction >= 2: 1.00
+== seed 14
+- motion: 54 long-lived tracks moved >= 1 body length; max speed 0.27/time; max body lengths 10.0
+- replication (lineage window K = 20 frames = time 100, default): splits 35, persistent splits 25 (0 more failed only because the siblings re-merged within K), max generation 3, merges 12, merge/split ratio 0.343, nucleations 10
+rerun/seed14/frames.npz: 92 tracks, 23 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 0
+   {"id": 19, "start": 27, "end": 88, "birth": "split", "children": [58, 59], "net": 38.6, "bl_labkit": 4.79, "bl_rod": 2.1}
+   {"id": 31, "start": 49, "end": 137, "birth": "split", "children": [79, 80], "net": 36.0, "bl_labkit": 4.59, "bl_rod": 2.17}
+   {"id": 17, "start": 25, "end": 49, "birth": "split", "children": [32, 33], "net": 32.3, "bl_labkit": 4.52, "bl_rod": 2.0}
+   {"id": 7, "start": 16, "end": 48, "birth": "nucleation", "children": [30, 31], "net": 30.8, "bl_labkit": 4.48, "bl_rod": 2.27}
+   {"id": 20, "start": 27, "end": 57, "birth": "split", "children": [34, 35], "net": 27.4, "bl_labkit": 3.76, "bl_rod": 1.94}
+   {"id": 22, "start": 28, "end": 149, "birth": "split", "children": [83, 84], "net": 29.0, "bl_labkit": 3.73, "bl_rod": 1.76}
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/wip-c37/mar/../../20261026T0505-c34-nematic-marangoni/sd_individuals.py", line 31, in <module>
+    x = R[k, c]; a = x[rim].mean() / max(x[core].mean(), 1e-9); b = x[rim].mean() / max(x[out].mean(), 1e-9)
+        ~^^^^^^
+IndexError: index 4 is out of bounds for axis 1 with size 4
+rerun/seed14/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=38, median in/out 4.63, fraction >= 2: 1.00
+rerun/seed14/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=39, median in/out 4.56, fraction >= 2: 1.00
+rerun/seed13/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.32, fraction >= 2: 1.00
+rerun/seed13/frames.npz ch2: body-frames 521, both >= 1.5: 0.99, median rim/core 2.58, median rim/out 11.24
+rerun/seed13/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.67, fraction >= 2: 1.00
+rerun/seed13/frames.npz ch3: body-frames 521, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+rerun/seed14/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.31, fraction >= 2: 1.00
+rerun/seed14/frames.npz ch2: body-frames 594, both >= 1.5: 1.00, median rim/core 2.54, median rim/out 11.11
+rerun/seed14/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.09, fraction >= 2: 1.00
+rerun/seed14/frames.npz ch3: body-frames 594, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+== ctl kappa0 seed13
+ctl_kappa0/seed13/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.32, fraction >= 2: 0.05
+ctl_kappa0/seed13/frames.npz ch3: body-frames 521, both >= 1.5: 0.00, median rim/core 0.91, median rim/out 1.20
+ctl_kappa0/seed13/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=27, median in/out 1.38, fraction >= 2: 0.00
+ctl_kappa0/seed13/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=27, median in/out 1.24, fraction >= 2: 0.00
+== ctl mar0 seed13
+- motion: 39 long-lived tracks moved >= 1 body length; max speed 0.0932/time; max body lengths 4.9
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 7, merge/split ratio 0.171, nucleations 7
+ctl_mar0/seed13/frames.npz: 96 tracks, 18 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 9, "start": 30, "end": 84, "birth": "split", "children": [31, 32], "net": 18.3, "bl_labkit": 2.82, "bl_rod": 1.51}
