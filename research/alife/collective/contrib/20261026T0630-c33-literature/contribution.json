@@ -1,0 +1,16 @@
+{"id": "20261026T0630-c33-literature", "kind": "literature", "mode": "synthesis", "task": "LIT",
+ "title": "Literature check: phoretic Janus composites are Soto-Golestanian active colloidal molecules (known); their growth and B-band division on a food ledger has no published match found; Romano et al. 2026 report self-propelling multi-species droplet clusters even with purely attractive nonreciprocity; Marangoni nematic rods are a variant of Giomi-DeSimone",
+ "summary": "Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.",
+ "parents": ["research/alife/LITERATURE.md", "20261026T0254-c33-phoretic-janus-claim", "20261026T0356-c33-phoretic-divide-claim", "20261026T0405-c34-nematic-cargo", "20261026T0505-c34-nematic-marangoni"],
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Soto & Golestanian 2014, Phys. Rev. Lett. 112, 068301", "url": "https://arxiv.org/abs/1306.6596", "note": "self-assembled active colloidal molecules from action-reaction-breaking chemical interactions; inert or moving/spinning by composition"},
+  {"cite": "Agudo-Canalejo & Golestanian 2019, Phys. Rev. Lett. 123, 018101", "url": "https://arxiv.org/abs/1901.09022", "note": "general multi-species make/consume and attract/repel model; active phase separation into phases of distinct density and stoichiometry"},
+  {"cite": "Romano, Johnsrud, Mahault & Golestanian 2026, Phys. Rev. Lett., DOI 10.1103/mrpd-rgnx", "url": "https://link.aps.org/doi/10.1103/mrpd-rgnx", "note": "catalytically active droplets in conserved mixtures form self-propelling multi-species clusters, even with purely attractive nonreciprocal interactions (nonlocality)"},
+  {"cite": "Giomi & DeSimone 2014, Phys. Rev. Lett. 112, 147802", "url": "https://arxiv.org/abs/1310.1908", "note": "active nematic droplet divides and moves by self-generated flows; base of the nematic rod worlds"}],
+ "prior_art": [
+  {"result": "20261026T0254-c33-phoretic-janus-claim#c1", "nearest": "Soto & Golestanian 2014, PRL 112, 068301", "relation": "known", "note": "same mechanism, dense two-chemical mixture"},
+  {"result": "20261026T0356-c33-phoretic-divide-claim#c1", "nearest": "Agudo-Canalejo & Golestanian 2019, PRL 123, 018101", "relation": "variant", "note": "the model class is published; growth on a particle ledger and B-band fission were not found in the literature checked"},
+  {"result": "20261026T0405-c34-nematic-cargo#c1", "nearest": "Giomi & DeSimone 2014, PRL 112, 147802", "relation": "variant", "note": "dividing active nematic droplets; rod-made ring and excluded cargo are additions"}],
+ "compute": {"cpu_minutes": 5}
+}
