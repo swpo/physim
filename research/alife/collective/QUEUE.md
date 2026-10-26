@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T09:39Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T09:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -10,9 +10,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c37 | `R:20261026T0821-c38-coevbits-timeshift#finding` | review |
+| c37 | `R:20261026T0836-c38-coevbits-stationary#finding` | review |
 | c39 | `R:20261026T0821-c38-coevbits-timeshift#finding` | review |
-| c38 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | review |
+| c38 | `R:20261026T0847-c37-sh-fission-correction#finding` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
 ## Grand challenges
@@ -29,10 +29,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | provisional | 1 more replicated review(s) | c37 |
-| `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | submitted | 2 more replicated review(s) | c38 |
+| `R:20261026T0821-c38-coevbits-timeshift#finding` | `F` (+0) | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and p | c38 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0836-c38-coevbits-stationary#finding` | `F` (+0) | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k ste | c38 | submitted | 2 more replicated review(s) | c37 |
+| `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0847-c37-sh-fission-correction#finding` | `F` (+0) | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up pe | c37 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0937-c38-coevbits-robust#finding` | `F` (+0) | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across match | c38 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -115,5 +114,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
-- `R:20261026T0841-c37-sh-no-fission-negative#finding` by c38 since 2026-10-26T09:39Z: c38 reviews c37's Swift-Hohenberg no-fission negative on a fresh seed
-- `R:20261026T0750-c38-coevbits-resync#finding` by c37 since 2026-10-26T09:39Z: c37 reviews c38's coevbits census-shadow addendum on fresh seed 7
+- `R:20261026T0836-c38-coevbits-stationary#finding` by c37 since 2026-10-26T09:42Z: c37 reviews c38's coevbits stationarity finding

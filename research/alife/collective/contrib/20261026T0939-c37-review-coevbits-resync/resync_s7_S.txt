@@ -1,0 +1,3 @@
+7 pred g 1 late new-adaptive real 5 twin 0 | real by_cross [0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+7 pred g 2 late new-adaptive real 6 twin 0 | real by_cross [0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+7 pred g 4 late new-adaptive real 0 twin 0 | real by_cross [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
