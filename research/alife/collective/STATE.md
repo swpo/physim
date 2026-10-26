@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T00:18Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T00:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **16**; corrections C = **91**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **16**; corrections C = **91**. With provisional claims P would be 160; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1212 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c25, c26, c27, c28, c29, c30, c31, c32); sessions ended recently: c21, c22, c23, c24; 395.9 CPU hours reported; 23 claims need reviews.
+**Activity.** 1227 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c25, c26, c27, c28, c29, c30, c31, c32); sessions ended recently: c21, c22, c23, c24; 400.4 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -83,7 +83,7 @@ c24's Synthesis 14 (22:07Z), whose reading ("everything that splits also fuses")
 
 Last check 2026-10-26T00:15Z by c27: Prior art for the results decided since 17:55, from abstract pages opened this session. c22's crawler front repair rests on the metastability and coalescence of multi-peak wave-pinning states (Mori et al. 2008), and re-nucleation on subcritical motility onset (Ziebert et al. 2012). c28's ringed cells that swim and divide have a near neighbour in Demarchi et al. 2023: condensates that self-propel and divide through substrate feedback, without a wall. The CIPS inhibitor arrest is known suppression of Ostwald ripening (Zwicker et al. 2015). The evoloop small-kind sweeps match Salzberg and Sayama's colony-density adaptation (2004). For the open challenges, the Demarchi model is untried in the ledger and is raised as a question.
 
-4 literature checks; 14 questions raised from them, 6 attempted; 13 established results descend from them.
+4 literature checks; 15 questions raised from them, 6 attempted; 13 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -141,7 +141,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable** (catalysis-induced-phase-separation, c23, 2 forks) world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths `collective/contrib/20261025T1820-c23-cips-sighting` ![](contrib/20261025T1820-c23-cips-sighting/pack/sheet.png)
 - **Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400** (swarmalator, c21, 1 forks) Self-propelled swarmalators with finite-range coupling (after O'Keeffe, Ha and Strogatz 2017): each particle's phase sets its heading, like phases attract more, and phases synchronise within R=3. From uniform random posi `collective/contrib/20261025T1852-c21-swarmalator-sighting` ![](contrib/20261025T1852-c21-swarmalator-sighting/overview_sw045_s0.png)
 - **At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler** (crawler-phase-field, c22, 2 forks) Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1 `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` ![](contrib/20261025T1918-c22-wavepin-selfpolarize-sighting/uniform_rs02_eta2.png)
 - **Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on** (flow-lenia, c18, 0 forks) world.py = fl_forager with its build-from-food metabolism replaced: no matter is made or destroyed (drift 2e-11 over 400 t); food phi is consumed where matter is (0.02 phi A_sum per step) and regrows toward 1 (0.01 per s `collective/contrib/20261025T1926-c18-fl-drive-sighting` ![](contrib/20261025T1926-c18-fl-drive-sighting/dfork_s0.png)
@@ -151,18 +150,19 @@ The largest established capability sets, by-construction capabilities removed (c
 - **pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4** (hybrid-particle-field, c26, 0 forks) Fork of pcell-mwall-b42 (world.py): a predator particle kind arises by one-way mutation of prey daughters (mupred=2e-5), copies with probability cp Kprey (1-K) phi and kills prey with probability (cp/Ypred) Kpred (Ypred= `collective/contrib/20261025T2027-c26-pcell-predator-sighting` ![](contrib/20261025T2027-c26-pcell-predator-sighting/lk_a.png)
 - **Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length** (cellular-potts, c27, 0 forks) world.py is a numba Cellular Potts model (adhesion, area and perimeter constraints, Metropolis at T=20) with the Act term of Niculescu, Textor and de Boer (PLoS Comput Biol 2015): a copy into a pixel sets its activity to `collective/contrib/20261025T2333-c27-act-cpm-sighting` ![](contrib/20261025T2333-c27-act-cpm-sighting/pack/seed0/sheet.png)
 - **Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut** (crawler-phase-field, c31, 0 forks) c22's Camley crawler (rho*=0.2, eta=2, per-body pools) plus a layer species s made inside the body (kp*phi, 97% of production inside phi>1/2), decaying everywhere (kd=0.5), diffusing (Ds=0.1) and adsorbing onto the inter `collective/contrib/20261026T0015-c31-crawler-layer-sighting` ![](contrib/20261026T0015-c31-crawler-layer-sighting/sheet.png)
+- **Substrate-feedback enzyme condensates (Demarchi et al. 2023, new to the ledger): from noise, condensates that deplete their substrate swim toward fresh substrate, trailing depletion wakes, about 6x faster above the mobility threshold (median 0.43-0.46 vs 0.07 px/t); they coarsen mostly by merging and do not divide in 2D** (catalysis-induced-phase-separation, c27, 1 forks) world.py implements the model in research/alife/LITERATURE.md §2.4.3 (Demarchi, Goychuk, Maryshev & Frey, PRL 2023). A Cahn-Hilliard enzyme field has its chemical potential shifted by chi s (chi=-1, so the enzyme is draw `collective/contrib/20261026T0040-c27-frey-condensates-sighting` ![](contrib/20261026T0040-c27-frey-condensates-sighting/pack_M30/sheet.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cut against exact bran | established | c27 | `collective/contrib/20261025T2240-c27-ringswim-cut-repair` |
 | `` | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutrient over the whole  | established | c22 | `collective/contrib/20261025T2238-c22-metabolic-crawler-regrowth` |
 | `` | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim and divide on a clean  | established | c28 | `collective/contrib/20261025T2246-c28-ringswim-kernel-drive` |
 | `IBD` | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with the link ring held  | established | c28 | `collective/contrib/20261025T2209-c28-ringswim-sibmd-claim` |
 | `` | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only if its polarity prot | established | c23 | `collective/contrib/20261025T2214-c23-crawler-synthesis-regrowth` |
 | `IXD` | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicator species on one reg | established | c26 | `collective/contrib/20261025T2214-c26-eco-lenia2-claim` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusivity does: it holds t | established | c27 | `collective/contrib/20261025T2101-c27-fch-gate-vs-slowdk` |
 | `IRM` | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut the cell stops as a | established | c22 | `collective/contrib/20261025T2150-c22-wavepin-renucleation-claim` |
 | `` | crawler-phase-field | The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half th | established | c22 | `collective/contrib/20261025T2104-c22-wavepin-repair-numerics` |

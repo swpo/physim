@@ -1,0 +1,128 @@
+[
+ {
+  "run": "s11_keepS",
+  "seed": 11,
+  "cell": 22,
+  "area": 251,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.5,
+  "closure_after_cut": 0.398,
+  "closure_ge_0.9_at": 100,
+  "area_back_at": 360,
+  "cut_lost_at": null,
+  "twin_lost_at": null,
+  "cut_ring_ge_1.5_2nd_half": 1.0,
+  "swim_after_repair_BL": 3.09,
+  "twin_swim_BL": 1.24,
+  "stretch": [
+   340,
+   2000
+  ]
+ },
+ {
+  "run": "s11_keepS",
+  "seed": 11,
+  "cell": 23,
+  "area": 335,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.47,
+  "closure_after_cut": 0.558,
+  "closure_ge_0.9_at": 120,
+  "area_back_at": null,
+  "cut_lost_at": null,
+  "twin_lost_at": null,
+  "cut_ring_ge_1.5_2nd_half": 1.0,
+  "swim_after_repair_BL": 1.31,
+  "twin_swim_BL": 0.1,
+  "stretch": [
+   340,
+   1660
+  ]
+ },
+ {
+  "run": "s11_keepS",
+  "seed": 11,
+  "cell": 4,
+  "area": 337,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.41,
+  "closure_after_cut": 0.573,
+  "closure_ge_0.9_at": 140,
+  "area_back_at": 360,
+  "cut_lost_at": null,
+  "twin_lost_at": null,
+  "cut_ring_ge_1.5_2nd_half": 1.0,
+  "swim_after_repair_BL": 2.25,
+  "twin_swim_BL": 3.06,
+  "stretch": [
+   340,
+   1640
+  ]
+ },
+ {
+  "run": "s12_keepS",
+  "seed": 12,
+  "cell": 15,
+  "area": 292,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.49,
+  "closure_after_cut": 0.378,
+  "closure_ge_0.9_at": 120,
+  "area_back_at": 360,
+  "cut_lost_at": null,
+  "twin_lost_at": 1300,
+  "cut_ring_ge_1.5_2nd_half": 1.0,
+  "swim_after_repair_BL": 0.13,
+  "twin_swim_BL": 0.0,
+  "stretch": [
+   340,
+   480
+  ]
+ },
+ {
+  "run": "s12_keepS",
+  "seed": 12,
+  "cell": 39,
+  "area": 299,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.52,
+  "closure_after_cut": 0.186,
+  "closure_ge_0.9_at": null,
+  "area_back_at": null,
+  "cut_lost_at": 60,
+  "twin_lost_at": 640,
+  "cut_ring_ge_1.5_2nd_half": null,
+  "swim_after_repair_BL": 0.0,
+  "twin_swim_BL": 0.44,
+  "stretch": [
+   340,
+   360
+  ]
+ },
+ {
+  "run": "s12_keepS",
+  "seed": 12,
+  "cell": 28,
+  "area": 280,
+  "wound_S": "kept",
+  "erased_frac": 0.4,
+  "erased_L_frac": 0.4,
+  "closure_after_cut": 0.4,
+  "closure_ge_0.9_at": 100,
+  "area_back_at": 420,
+  "cut_lost_at": null,
+  "twin_lost_at": null,
+  "cut_ring_ge_1.5_2nd_half": 1.0,
+  "swim_after_repair_BL": 0.16,
+  "twin_swim_BL": 0.36,
+  "stretch": [
+   340,
+   420
+  ]
+ }
+]
