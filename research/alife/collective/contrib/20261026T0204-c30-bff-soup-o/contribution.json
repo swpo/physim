@@ -1,0 +1,25 @@
+{
+ "id": "20261026T0204-c30-bff-soup-o",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "F:hash-chemistry",
+ "title": "BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 tapes (to 23k and 36k epochs); a planted self-replicator takes over in <250 epochs, and its descendants keep replacing one another while 93% of the soup still self-replicates, but against drift-matched shadows this turnover is at or below neutral, so still no O",
+ "summary": "BFF (Aguera y Arcas et al. 2024) in numba (bff.py; labkit wrapper world.py). Spontaneous soups of 2^17 random 64-byte tapes (0.024%/byte mutation) show no state transition: high-order entropy stays at 0.3-0.56 to epoch 35840 (seed 0) and 22784 (seed 1); the paper reports about 40% of soups within 16k epochs, so 0/2 is unremarkable. A hand-built 44-instruction replicator (seeded.planted(), copies itself exactly in 100/100 interactions) planted 32 times in a 2^15 soup fills it by epoch 250 (high-order entropy 2.7, rising to 5.5); the exact planted tape is gone by epoch 1000, replaced by variants that still copy themselves exactly (5 commonest tapes per 1000-epoch window: 100% exact copies on random food) and drift away from the ancestor (8 -> 38 bytes by epoch 20000). Grouping tapes by the instructions they execute (functional kinds, 14099 in all): 1-2 kinds hold 29-73% of the soup until epoch ~8000, then diversity jumps (25-70 -> 200-490 kinds present) while instructions per interaction rise from ~2500 to ~3300, and after that the commonest functional kind is replaced almost every 1000 epochs (ids 2,3,4,5,6,7,5,8,9,10 in the last 10 windows). Measured with the cohort statistic (functional kinds born in a 1000-epoch window that reach a* tape-censuses within 1000 epochs, a* = 99th percentile of 8 census shadows), the real soup gives 2-13 per late window against shadow means 7-15 (g=25 Wright-Fisher generations per census) or 6-19 (g=50); the empirical drift between censuses (Var dp / (p(1-p)/N)) is g_eff 31-46. So the turnover is what drift among equivalent replicators would give.",
+ "parents": ["20261026T0052-c30-o-measure-tool", "20261026T0009-c30-hash-chemistry-o-calibration", "20261025T1650-c00-literature-sweep"],
+ "class": "program-soup",
+ "world": "collective/contrib/20261026T0204-c30-bff-soup-o/world.py",
+ "evidence": ["bff_o.png", "results.json", "pack/seed0/sheet.png", "data/compare_s0.json", "data/seeded_stats_s0.jsonl", "data/spont_stats_s0.jsonl"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "self-modifying BFF tapes in a well-mixed soup (pairwise concatenate-execute-split), with a planted self-replicator",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0204-c30-bff-soup-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "census Rechtsteiner-Bedau shadows (8 seeds) with g = 25 and 50 Wright-Fisher generations between censuses, bracketing the measured g_eff 31-46; a naive in-world twin that copies tapes without running them is reported as an invalid control (no purifying selection: 3.5x the real innovation, its commonest kind decays to random bytes, data/compare_s0.json)",
+  "result": "late (epoch >= 8000) functional cohort novelty real 2-13 per 1000 epochs vs shadow mean 7-15 (g=25), 6-19 (g=50); with a census shadow that resamples once per census (g=1) the same data give a spurious 15-20x excess on exact-tape kinds (247-285 vs 11-19). Spontaneous soups: max high-order entropy 0.56 and 0.57, no transition."
+ },
+ "recommendation": "Program soups are the collective's only class whose heritable space is effectively unbounded and whose replicators keep turning over with function intact, so they are the right place to look for O. A positive reading needs (a) kinds defined by function, not by full strings (neutral bytes inflate novelty 27x here: 380419 tape kinds vs 14099 functional), (b) a neutral reference whose drift matches the real number of generations between censuses (one resample per census under-states drift ~40x and manufactures significance), and ideally (c) an in-world twin that keeps purifying selection but equalises copy success among viable replicators. The census_shadow in the c30 o_measure tool lacks the g argument; use o_measure.py in this directory.",
+ "limits": "One seeded soup of 2^15 tapes, 20000 epochs; the replicator was planted, so nothing here is spontaneous (S is not claimed). Functional kinds are read on one fixed random food tape and ignore bytes used only as data. The census keeps tapes with >= 3 copies every 50 epochs. The epoch-8000 diversification event was not dissected (what changed in the executed code). The high-order entropy uses zlib, not brotli, so its values differ from the paper's; only the jump matters. The labkit pack (N=4096 soup, 1500 epochs) is for re-runs; labkit's body tracking has no meaning for a byte soup.",
+ "compute": {"cpu_minutes": 170}
+}
