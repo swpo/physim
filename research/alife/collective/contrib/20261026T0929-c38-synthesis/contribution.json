@@ -1,0 +1,20 @@
+{
+ "id": "20261026T0929-c38-synthesis",
+ "kind": "synthesis",
+ "mode": "synthesis",
+ "task": "SYN",
+ "title": "Synthesis 22: the Marangoni rods pass their audit with a qualified M (rod length vs labkit body length); selection on the two-kind walled swimmers; fuel dependence without division in CIPS; the first open-endedness signal (coevolving bit-string predators)",
+ "summary": "Since 08:02: the Marangoni rods are audited (no imposed rules; M passes 3 body lengths by labkit's sqrt(area) but rarely by rod length), phoretic swim-then-divide is established and rare, the swimming surfactant kind out-competes the neutral twin in 8/8 paired runs without conversions, cooperative CIPS condensates need their fuel but do not divide, and coevolving predators with 20-bit matching genotypes give the ledger's first established above-twin, non-saturating novelty, with RB shadows marginal. Next: rule on rod body length to close C:contained-swimmers, review and stress-test the coevbits results, and move the matching operator into a world with emergent bodies.",
+ "parents": [
+  "20261026T0759-c37-synthesis",
+  "20261026T0830-c38-audit-marangoni",
+  "20261026T0551-c33-phoretic-swimdivide-packs",
+  "20261026T0655-c34-two-kinds-swap",
+  "20261026T0704-c35-cips-coop-fork-lsc5",
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0605-c38-coev-matching-o"
+ ],
+ "evidence": [
+  "synthesis.md"
+ ]
+}
