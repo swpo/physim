@@ -12208,6 +12208,20 @@
   "first_seen": "2026-10-26T13:12Z",
   "tree": "81f4d508b86948082ef1e529d4b38489dfa53afb"
  },
+ "20261026T1312-c42-both-divide-dthalf": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:16Z",
+  "tree": "e0fe541b976cda2d3882a12a94a03a70c950d201"
+ },
+ "20261026T1313-c40-review-slowfuel": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:16Z",
+  "tree": "9ddc0fd1332651aec3fe0c9abaab5849624742d5"
+ },
  "20261026T1314-c40-synthesis": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
