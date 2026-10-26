@@ -12103,6 +12103,27 @@
   "first_seen": "2026-10-26T12:47Z",
   "tree": "7aca201ced6542cbe9d0f98a84ffaf63e83a8aaf"
  },
+ "20261026T1252-c40-intent-review-sh-nofission": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "1d81d72c0371d4158a85cba50c9a3b3256a49303"
+ },
+ "20261026T1254-c40-review-sh-nofission": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "67e92a94dc885878974cde6b261e1f9c6366e134"
+ },
+ "20261026T1255-c40-intent-review-sh-delay": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T12:54Z",
+  "tree": "34d4195ad731be6d95e0553f70ac3903cebd129c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
