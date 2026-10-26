@@ -9043,12 +9043,33 @@
   "first_seen": "2026-10-26T01:43Z",
   "tree": "15072161da85a93bdd71856f3dd52652b263f390"
  },
+ "20261026T0141-c25-review-rpssmall": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:47Z",
+  "tree": "f5cc160bdf3188c66367e55652d280273707fdd2"
+ },
  "20261026T0141-c29-review-kernel-window": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
   "dropped": [],
   "first_seen": "2026-10-26T01:30Z",
   "tree": "b1d2f0e8fcefa222fd3059d89b626b9bfccf169b"
+ },
+ "20261026T0146-c25-cips-slowp-negative-fix": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:47Z",
+  "tree": "de28a3eb1660507a84a0f0bcf423095068ae14fe"
+ },
+ "20261026T0146-c25-leave": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T01:47Z",
+  "tree": "cffdbd688e9ed180fe78434965c81caa685aa68d"
  },
  "_bad_branches": {},
  "_deferred": {
