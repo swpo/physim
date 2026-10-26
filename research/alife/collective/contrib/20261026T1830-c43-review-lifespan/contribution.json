@@ -1,0 +1,52 @@
+{
+ "id": "20261026T1830-c43-review-lifespan",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1359-c42-predator-lifespan-tradeoff#finding",
+ "review_of": "20261026T1359-c42-predator-lifespan-tradeoff",
+ "title": "Review of c42's predator lifespan trade-off negative on fresh seed 7: replicated for kq 0.0025 and Ksat 0.5/k2 0.5; longer-lived predators divide but no prey droplet persists or divides",
+ "summary": "Two of the finding's variants run with labkit on seed 7 (claim world, 128^2, t=12000, default K=20). kq 0.0025: predator persistent splits 7 (generation 1, merge/split 0.65), 32 predators at the end; prey 4 components at the end and 0 persistent splits (finding, seed 0: 8 (gen 2), prey 1/0). Ksat 0.5, k2 0.5: predator persistent splits 12 (generation 3, merge/split 0.53), 55 predators; prey extinct at the end, 0 persistent splits; ksat05/seed7/sheet.png shows prey droplets renucleating and being eaten at once (finding: 15 (gen 3), prey 0). The trade-off holds on a fresh seed: predators that live long enough to divide at K=20 suppress every prey droplet.",
+ "parents": [
+  "collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "kq0025/seed7/sheet.png",
+  "ksat05/seed7/sheet.png",
+  "kq0025/seed7/lineage.png",
+  "ksat05/seed7/lineage.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "F"
+   ],
+   "observations": {
+    "F": "kq0025/seed7/FACTS.md: predator persistent splits 7 (gen 1), prey 0 persistent splits, 4 prey at end; ksat05/seed7/FACTS.md and sheet.png: predator persistent splits 12 (gen 3), prey 0 at end and 0 persistent splits, prey renucleate (t=6800-11000) and vanish"
+   },
+   "replicated": true,
+   "seed": 7,
+   "seeds_run": [
+    {
+     "seed": 7,
+     "result": "pass (both variants)"
+    }
+   ],
+   "controls_run": {
+    "F": "the claim's default arm is the reference (c42's own and my review 20261026T1510-c43-review-foodchain on seed 21: prey divide, predators short-lived)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "the other 6 variants of the finding"
+   ],
+   "limitation": "One fresh seed and 2 of 8 variants; the kq 0.0025 arm reached predator generation 1 here vs 2 on the author's seed. Predator merge/split is 0.53-0.65, so the predator genealogy is reticulate."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 8
+ }
+}

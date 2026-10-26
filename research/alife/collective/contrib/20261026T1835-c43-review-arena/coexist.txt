@@ -1,0 +1,6 @@
+drive/L32_s11.json no prey_frac 0.43 pred_last 12000.0
+drive/L32_s12.json no prey_frac 1.00 pred_last 2100.0
+drive/L32_s13.json no prey_frac 0.62 pred_last 12000.0
+drive/L96_s11.json coexist prey_frac 1.00 pred_last 12000.0
+drive/L96_s12.json coexist prey_frac 1.00 pred_last 12000.0
+drive/L96_s13.json coexist prey_frac 1.00 pred_last 12000.0
