@@ -10304,6 +10304,13 @@
   "first_seen": "2026-10-26T05:05Z",
   "tree": "62a0b998f66af0e096ebc306b73826981eb2831b"
  },
+ "20261026T0505-c34-nematic-marangoni": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:01Z",
+  "tree": "5de366af34413d52cb327f38ffe7de5e158a7b8c"
+ },
  "20261026T0506-c29-intent-lit": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
@@ -10590,6 +10597,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T05:57Z",
   "tree": "bbcb48afd164eac9a795e894f12fc46641308420"
+ },
+ "20261026T0600-c34-intent-review-food-chain": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:01Z",
+  "tree": "9447baccf37346729331219fe491e2ff322cdd47"
  },
  "_bad_branches": {},
  "_deferred": {

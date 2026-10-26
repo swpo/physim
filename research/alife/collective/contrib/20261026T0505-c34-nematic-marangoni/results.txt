@@ -1,0 +1,121 @@
+c34 Marangoni nematic rods (world.py, mar=40, kappa=20, cargo on). Tools: swimdivide.py, sd_individuals.py (signed distance; cargo inside d<=-1 vs outside 2<=d<=4), inherit.py, speedstats.py (mean frame step by life quarter).
+
+== pack/seed0
+- motion: 50 long-lived tracks moved >= 1 body length; max speed 0.385/time; max body lengths 10.8
+- replication (lineage window K = 20 frames = time 100, default): splits 34, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 12, merge/split ratio 0.3
+pack/seed0/frames.npz: 89 tracks, 22 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 2
+   {"id": 25, "start": 49, "end": 78, "birth": "split", "children": [35, 36], "net": 54.7, "bl_labkit": 7.09, "bl_rod": 3.33}
+   {"id": 19, "start": 40, "end": 63, "birth": "split", "children": [29, 30], "net": 44.3, "bl_labkit": 5.99, "bl_rod": 3.08}
+pack/seed0/frames.npz ch2: body-frames 522, both >= 1.5: 1.00, median rim/core 2.56, median rim/out 11.26
+pack/seed0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.83, fraction >= 2: 1.00
+pack/seed0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=30, median in/out 5.05, fraction >= 2: 1.00
+life phase 0: mean px/frame 0.804;life phase 0.25: mean px/frame 0.799;life phase 0.5: mean px/frame 0.758;life phase 0.75: mean px/frame 0.714;
+
+== pack/seed1
+- motion: 54 long-lived tracks moved >= 1 body length; max speed 0.333/time; max body lengths 7.0
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 28 (0 more failed only because the siblings re-merged within K), max generation 5, merges 14, merge/split ratio 0.3
+pack/seed1/frames.npz: 99 tracks, 20 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 6; by rod length >= 3: 0
+   {"id": 39, "start": 90, "end": 151, "birth": "split", "children": [79, 80], "net": 56.0, "bl_labkit": 7.02, "bl_rod": 2.98}
+   {"id": 15, "start": 64, "end": 80, "birth": "split", "children": [26, 27], "net": 32.6, "bl_labkit": 4.47, "bl_rod": 1.99}
+pack/seed1/frames.npz ch2: body-frames 423, both >= 1.5: 1.00, median rim/core 2.45, median rim/out 11.27
+pack/seed1/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.54, fraction >= 2: 1.00
+pack/seed1/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=27, median in/out 4.11, fraction >= 2: 1.00
+life phase 0: mean px/frame 0.793;life phase 0.25: mean px/frame 0.849;life phase 0.5: mean px/frame 0.828;life phase 0.75: mean px/frame 0.784;
+
+== pack/seed2
+- motion: 61 long-lived tracks moved >= 1 body length; max speed 0.249/time; max body lengths 14.2
+- replication (lineage window K = 20 frames = time 100, default): splits 38, persistent splits 26 (0 more failed only because the siblings re-merged within K), max generation 4, merges 12, merge/split ratio 0.3
+pack/seed2/frames.npz: 98 tracks, 23 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 0
+   {"id": 4, "start": 13, "end": 50, "birth": "nucleation", "children": [26, 27], "net": 41.0, "bl_labkit": 5.43, "bl_rod": 2.41}
+   {"id": 28, "start": 52, "end": 122, "birth": "split", "children": [75, 76], "net": 40.7, "bl_labkit": 5.24, "bl_rod": 2.32}
+pack/seed2/frames.npz ch2: body-frames 549, both >= 1.5: 1.00, median rim/core 2.56, median rim/out 11.19
+pack/seed2/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.39, fraction >= 2: 1.00
+pack/seed2/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=45, median in/out 4.57, fraction >= 2: 1.00
+life phase 0: mean px/frame 0.794;life phase 0.25: mean px/frame 0.678;life phase 0.5: mean px/frame 0.746;life phase 0.75: mean px/frame 0.789;
+
+== res15
+- motion: 35 long-lived tracks moved >= 1 body length; max speed 0.32/time; max body lengths 6.5
+- replication (lineage window K = 20 frames = time 100, default): splits 24, persistent splits 21 (0 more failed only because the siblings re-merged within K), max generation 3, merges 2, merge/split ratio 0.08
+res15/frames.npz: 58 tracks, 17 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 0
+   {"id": 14, "start": 33, "end": 67, "birth": "split", "children": [40, 41], "net": 49.3, "bl_labkit": 4.12, "bl_rod": 2.07}
+   {"id": 20, "start": 42, "end": 76, "birth": "split", "children": [44, 45], "net": 50.1, "bl_labkit": 4.02, "bl_rod": 1.86}
+res15/frames.npz ch2: body-frames 431, both >= 1.5: 1.00, median rim/core 3.19, median rim/out 12.55
+res15/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 18.61, fraction >= 2: 1.00
+res15/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=42, median in/out 15.21, fraction >= 2: 1.00
+life phase 0: mean px/frame 1.217;life phase 0.25: mean px/frame 1.077;life phase 0.5: mean px/frame 1.235;life phase 0.75: mean px/frame 1.264;
+
+== dthalf
+- motion: 40 long-lived tracks moved >= 1 body length; max speed 0.224/time; max body lengths 5.9
+- replication (lineage window K = 20 frames = time 200, default): splits 34, persistent splits 16 (0 more failed only because the siblings re-merged within K), max generation 3, merges 12, merge/split ratio 0.3
+dthalf/frames.npz: 89 tracks, 14 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 0
+   {"id": 21, "start": 49, "end": 68, "birth": "split", "children": [37, 38], "net": 42.5, "bl_labkit": 5.9, "bl_rod": 2.72}
+   {"id": 5, "start": 18, "end": 51, "birth": "nucleation", "children": [24, 25], "net": 28.5, "bl_labkit": 4.01, "bl_rod": 2.01}
+dthalf/frames.npz ch2: body-frames 404, both >= 1.5: 1.00, median rim/core 2.43, median rim/out 11.11
+dthalf/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.51, fraction >= 2: 1.00
+dthalf/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=50, median in/out 4.49, fraction >= 2: 1.00
+life phase 0: mean px/frame 0.814;life phase 0.25: mean px/frame 0.920;life phase 0.5: mean px/frame 0.977;life phase 0.75: mean px/frame 1.012;
+
+== ablate_kappa0
+- motion: 50 long-lived tracks moved >= 1 body length; max speed 0.385/time; max body lengths 10.8
+- replication (lineage window K = 20 frames = time 100, default): splits 34, persistent splits 22 (0 more failed only because the siblings re-merged within K), max generation 3, merges 12, merge/split ratio 0.3
+ablate_kappa0/frames.npz: 89 tracks, 22 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 2
+   {"id": 25, "start": 49, "end": 78, "birth": "split", "children": [35, 36], "net": 54.7, "bl_labkit": 7.09, "bl_rod": 3.33}
+   {"id": 19, "start": 40, "end": 63, "birth": "split", "children": [29, 30], "net": 44.3, "bl_labkit": 5.99, "bl_rod": 3.08}
+ablate_kappa0/frames.npz ch2: body-frames 522, both >= 1.5: 1.00, median rim/core 2.56, median rim/out 11.26
+ablate_kappa0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.33, fraction >= 2: 0.05
+ablate_kappa0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=30, median in/out 1.40, fraction >= 2: 0.00
+life phase 0: mean px/frame 0.804;life phase 0.25: mean px/frame 0.799;life phase 0.5: mean px/frame 0.758;life phase 0.75: mean px/frame 0.714;
+
+== twin_zeta0
+- motion: 17 long-lived tracks moved >= 1 body length; max speed 0.155/time; max body lengths 4.5
+- replication (lineage window K = 20 frames = time 100, default): splits 15, persistent splits 8 (0 more failed only because the siblings re-merged within K), max generation 2, merges 10, merge/split ratio 0.66
+twin_zeta0/frames.npz: 50 tracks, 8 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 2; by rod length >= 3: 0
+   {"id": 3, "start": 16, "end": 74, "birth": "nucleation", "children": [13, 14], "net": 42.9, "bl_labkit": 4.53, "bl_rod": 1.89}
+   {"id": 8, "start": 27, "end": 97, "birth": "nucleation", "children": [19, 20], "net": 31.5, "bl_labkit": 3.25, "bl_rod": 1.57}
+twin_zeta0/frames.npz ch2: body-frames 313, both >= 1.5: 1.00, median rim/core 2.56, median rim/out 14.01
+twin_zeta0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 23.32, fraction >= 2: 1.00
+twin_zeta0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=16, median in/out 11.78, fraction >= 2: 1.00
+life phase 0: mean px/frame 0.657;life phase 0.25: mean px/frame 0.539;life phase 0.5: mean px/frame 0.362;life phase 0.75: mean px/frame 0.448;
+
+== twin_passive/seed0
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.7
+- replication (lineage window K = 20 frames = time 100, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 0, merge/split ratio n/a, n
+twin_passive/seed0/frames.npz: 9 tracks, 0 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+twin_passive/seed0/frames.npz ch2: body-frames 188, both >= 1.5: 0.99, median rim/core 9.92, median rim/out 16.77
+twin_passive/seed0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 85.41, fraction >= 2: 1.00
+twin_passive/seed0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=0, median in/out nan, fraction >= 2: nan
+life phase 0: mean px/frame 0.040;life phase 0.25: mean px/frame 0.029;life phase 0.5: mean px/frame 0.022;life phase 0.75: mean px/frame 0.019;
+
+== twin_passive/seed1
+- motion: 0 long-lived tracks moved >= 1 body length; max speed 0/time; max body lengths 0.7
+- replication (lineage window K = 20 frames = time 100, default): splits 0, persistent splits 0 (0 more failed only because the siblings re-merged within K), max generation 0, merges 0, merge/split ratio n/a, n
+twin_passive/seed1/frames.npz: 3 tracks, 0 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+twin_passive/seed1/frames.npz ch2: body-frames 63, both >= 1.5: 1.00, median rim/core 9.22, median rim/out 16.79
+twin_passive/seed1/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 122.17, fraction >= 2: 1.00
+twin_passive/seed1/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=0, median in/out nan, fraction >= 2: nan
+life phase 0: mean px/frame 0.043;life phase 0.25: mean px/frame 0.028;life phase 0.5: mean px/frame 0.019;life phase 0.75: mean px/frame 0.014;
+
+== mar=0 reference (same world otherwise): 20261026T0405-c34-nematic-cargo/pack seeds 0-2
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+life phase 0: mean px/frame 0.275;life phase 0.25: mean px/frame 0.222;life phase 0.5: mean px/frame 0.218;life phase 0.75: mean px/frame 0.228;
+
+== mar scan, seed 0, T=600, CARGO=0 (from 20261026T0522-c34-marangoni-sighting/scan.txt):
+seed 0, T=600, CARGO=0, swimdivide.py (tracks ending in a split with 2 children living >= 20 frames; net displacement over life):
+mar=0: tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0 | best 1.3 labkit BL, 0.6 rod lengths
+mar=2: tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0 | best 1.99 labkit BL, 1.07 rod lengths
+mar=8: tracks that move >= 3 labkit body lengths, then divide: 2; by rod length >= 3: 0 | best 3.63 labkit BL, 1.71 rod lengths
+mar=16: tracks that move >= 3 labkit body lengths, then divide: 2; by rod length >= 3: 0 | best 4.6 labkit BL, 2.18 rod lengths
+mar=24: tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 0 | best 4.73 labkit BL, 2.14 rod lengths
+mar=40: tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 2 | best 7.09 labkit BL, 3.33 rod lengths
+mar=60: tracks that move >= 3 labkit body lengths, then divide: 3; by rod length >= 3: 0 | best 6.52 labkit BL, 2.77 rod lengths
