@@ -1,1 +1,5 @@
 [cips-turnover-divide] seed 9: 120 frames x 1000 steps, grid (192, 192)
+  frame 12/120  114.2s
+  frame 24/120  227.8s
+  frame 36/120  348.3s
+  frame 48/120  461.2s

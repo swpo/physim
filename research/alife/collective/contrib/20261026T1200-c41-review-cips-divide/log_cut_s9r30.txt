@@ -1,0 +1,1 @@
+s9r30 T0 8000.0 bodies 12 target (7, np.float64(104.75490539621829), np.float64(11.531517949714175), 269) nearest neighbour dist 47.4
