@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T12:08Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T12:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 4.2** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -28,7 +28,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | M: 1 more supporting re-run(s) | - |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | c42 |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+12) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c39 |
@@ -114,5 +114,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1025-c40-cips-turnover-divide-claim#c1` by c41 since 2026-10-26T11:54Z: c41 reviews c40's SIED CIPS division claim: fresh seed 9, a local fuel cut on on
-- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c42 since 2026-10-26T12:01Z: Review c31's SIBM crawlers from noise (fresh seed re-run)
 - `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c39 since 2026-10-26T12:08Z: c39 reviews c40's layered CIPS division claim (C:metabolic-cell): seed 4 pack, f
