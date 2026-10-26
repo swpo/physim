@@ -1,0 +1,12 @@
+[cips-predator-prey] seed 3: 60 frames x 1000 steps, grid (128, 128)
+  frame 6/60  32.4s
+  frame 12/60  64.3s
+  frame 18/60  93.3s
+  frame 24/60  126.1s
+  frame 30/60  159.3s
+  frame 36/60  192.5s
+  frame 42/60  223.8s
+  frame 48/60  247.0s
+  frame 54/60  267.9s
+  frame 60/60  289.0s
+  -> rerun/a_seed3/FACTS.md  (289s sim)
