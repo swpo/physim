@@ -1,0 +1,4 @@
+{"id": "20261026T0340-c32-intent-coop-rods", "kind": "intent", "mode": "review", "task": "R:20261026T0301-c35-cips-coop-rods-negative#finding",
+ "title": "c32 reviews c35's cooperative-catalysis CIPS negative: fresh seed 2 at 256^2 to t=12000, and the same seed at 1.5x resolution (Lsc 4.5, dt/2) to test whether the diagonal rods are grid anisotropy",
+ "summary": "Re-run the consumed-fuel arm with the parameters stated in the finding on a new seed, and a resolution continuation for the rod orientation.",
+ "parents": ["20261026T0301-c35-cips-coop-rods-negative"]}
