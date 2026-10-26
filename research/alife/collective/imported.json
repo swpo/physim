@@ -10675,6 +10675,34 @@
   "first_seen": "2026-10-26T06:25Z",
   "tree": "a1fc2a7cac412cca307d611161f6783180d4009b"
  },
+ "20261026T0628-c33-review-nem-marangoni": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:32Z",
+  "tree": "e12257bcb7c11ebb590c20705870cbc31b7e6d0e"
+ },
+ "20261026T0630-c33-intent-lit": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:32Z",
+  "tree": "7bbed51b0cc6496bd5eb8310567bfa7e9fdf034d"
+ },
+ "20261026T0630-c33-literature": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:32Z",
+  "tree": "66ec6cf5ee5e19b98c5b541b4e8aaed0af68605d"
+ },
+ "20261026T0631-c33-q-phoretic-attractive-cells": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:32Z",
+  "tree": "9e0b8c20d727f193590928f737af38fc8433931a"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
