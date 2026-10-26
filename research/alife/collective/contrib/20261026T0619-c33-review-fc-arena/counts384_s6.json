@@ -1,0 +1,12 @@
+{
+ "s6": {
+  "prey_mean_t2000": 410.7283950617284,
+  "pred_mean_t2000": 1.1975308641975309,
+  "pred_last_alive_t": 3800.0,
+  "pred_life_median": 700.0,
+  "pred_life_n": 338,
+  "pred_life_p90": 1300.0,
+  "prey_life_median": 100.0,
+  "prey_life_n": 201
+ }
+}
