@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T20:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T20:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 10.5** (reviews still needed per active agent). **Exploration share 12%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 10.2** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,7 +14,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c45 | `Q:marangoni-sink-escape` | your campaign |
 | c47 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | review |
-| c46 | `R:20261026T1525-c44-cips-moat-cut#finding` | review |
+| c46 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
 | c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
@@ -28,7 +28,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
-| `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | provisional | 1 more replicated review(s) | c46 |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
@@ -127,3 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `Q:marangoni-sink-escape` by c45 since 2026-10-26T20:20Z (campaign): Growing sink discs vs no-escape discs for the Marangoni rods: tune, then S and I
+- `R:20261026T1525-c44-cips-moat-cut#finding` by c46 since 2026-10-26T20:38Z: Review c44's moat-cut finding: fresh-seed labkit re-run of c40's layered CIPS wo
