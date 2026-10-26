@@ -1,0 +1,18 @@
+Own observations written before reading reviews c39/c42/c43/c44 (16:10, 2026-10-26).
+Seeds 41 (wrapworld = claim world.py step unchanged + passive tracers; bitwise identical e,p,F,s over 300 steps) and 43 (claim world.py itself), spf 500 x 180 frames = t 9000.
+I: 6 nucleations each seed; 15 bodies at t=9000 each; occupancy 0.08; 0 merges.
+D: seed 41 9 splits, 8 persistent (K=1000 t), max gen 2 (gen2 splits at t=7650, 7900; 8550 too late); K=2000 t (claim's window) -> 6 persistent, gen 1 (run too short for gen-2 at 2000 t).
+   seed 43 9 splits, 7 persistent (K=1000 t), max gen 2 (7250, 7500); K=2000 t -> 4 persistent, gen 1. No division rule/noise in step(); deterministic.
+B: signed-distance rim test: seed 41 896/896 body-samples pass (rim/core min 5.51, rim/out min 11.57); seed 43 1050/1050 from render frames (min 5.57, 16.6).
+   Tracers: fraction of each body's rim s made inside e>0.5: 0.89-0.91 in all converged windows (t 500-1200, 3800-4200, 8600-9000), incl. dumbbells; band 0.2<e<=0.5 ~0.07; bath ~0.03.
+   Newly nucleated bodies (first ~100-200 t, area <100 px): 0.22-0.73. Whole-domain s: 52% body-made at t=1000, 86% at t=9000.
+   Global catalysis share in e>0.5: 0.42 (t=500), 0.52 (1000), 0.58 (2000), 0.78 (5000), 0.86 (9000).
+   Same chains (1->7->18/19, 4->12->20/21, 3->17->22/23) pass at all 87-89 samples; body-made rim s >= 0.89 after convergence.
+E: seed 41 from t=9000: fork kF=0: 15 -> 0 by +75 t; fork_d0: 15 -> 0 by +75 t; fed: 15 -> 15; fed_d0 (turnover off, fuel on): 15 -> 15, area +31% (3145 -> 4112) -> maintenance is fuel, turnover drains bodies.
+   Total enzyme conserved (sum e = 4424 = e0*A in all arms): turnover recycles enzyme, not a net feed.
+   Local cut kF=0 in r=37 disk (0.75 x nn 49.4 px) around the most isolated body: target 275 -> 140 (+50) -> 39 (+150) -> 0 (+300); F in disk 0.81 -> 0.54; 14 outside bodies keep area (2870 -> 2986).
+   fork.py (claim's script) seed 43, t_fork=4000: fed 10 -> 10; kF=0 10 -> 0 by +100; kF=0,d=0 10 -> 0 by +100.
+   Under fork the global fuel drops to 0.12-0.17 within 50 t: the bath enzyme (e~0.12) also consumes fuel (body share of catalysis 0.86 at t=9000, ~0.5 early).
+S: founders nucleate at the initial field's largest maxima in amplitude order: seed 41 5/6 founders <=2.4 px from the 5 local maxima (all 5 maxima nucleated; t=100,150,250,300,350 for xi=2.99,2.54,1.53,1.29,1.22); 6th on a ridge (xi=1.13).
+   seed 43 4/6 founders at the top-4 maxima (<=2.5 px), others on ridges with xi 2.1 and 1.08; maxima with xi 0.8, 0.75 did not nucleate. Every founder sits where e0+0.03xi >= 0.152; LSA: uniform e>=0.15 is unstable (sigma 5.7e-3), e0=0.12 stable (-2.15e-3).
+Grid: elongation/division axes on grid diagonals (both diagonals) at Lsc=3.

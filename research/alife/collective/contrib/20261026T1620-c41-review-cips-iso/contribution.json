@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1620-c41-review-cips-iso",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1158-c39-cips-division-isotropy#finding",
+ "title": "Review of c39's CIPS isotropy finding on fresh seed 15: Supported. With the isotropic drift (ISO=1) the random-field world gives 9 persistent splits, generation 2, 0 merges, with dumbbells pinching vertically, horizontally and obliquely",
+ "summary": "Labkit run of c39's world_iso.py with ISO=1 on unused seed 15 (192^2, t=12000): 10 nucleations from the smoothed random field, 9 persistent splits, generation 2, 0 merges, 19 bodies at the end; dumbbells pinch along vertical (t=3600-4100), near-horizontal (t=2100) and oblique axes (sheet). This agrees with my independent spectral-drift control in 20261026T1200-c41-review-cips-divide (seed 9: 9 persistent splits, generation 2, axes spread over 19-167 degrees against 43-47 and 131-138 under MUSCL). The grid sets only the axis of division, not the division.",
+ "parents": ["20261026T1158-c39-cips-division-isotropy", "20261026T1200-c41-review-cips-divide"],
+ "review_of": "20261026T1158-c39-cips-division-isotropy",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1158-c39-cips-division-isotropy/world_iso.py",
+ "evidence": ["rerun_iso1/sheet.png", "rerun_iso1/lineage.png"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["D"],
+   "observations": {"D": "rerun_iso1 FACTS: 9 persistent splits, generation 2, 0 merges; sheet t=2100-4100 and 5700-6800: dumbbells along vertical, horizontal and oblique axes pinch into round daughters"},
+   "replicated": true,
+   "seed": 15,
+   "seeds_run": [{"seed": 15, "result": "pass"}],
+   "controls_run": {"D": "20261026T1200-c41-review-cips-divide/probe_pl_muscl.png vs probe_pl_spec.png (MUSCL axes on the diagonals, spectral axes spread)"},
+   "by_construction": [],
+   "limitation": "One fresh seed with ISO=1 only; I did not rerun the ISO=0 arm on seed 15, and I did not measure division axes quantitatively on this run (by eye from the sheet)."
+ }],
+ "compute": {"cpu_minutes": 40}
+}

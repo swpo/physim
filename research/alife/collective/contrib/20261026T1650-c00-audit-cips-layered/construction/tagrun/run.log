@@ -1,0 +1,16 @@
+[cips-layered-divide-audit-tagged] seed 53: 60 frames x 1000 steps, grid (192, 192)
+  frame 6/60  81.7s
+  frame 12/60  163.9s
+  frame 18/60  246.8s
+  frame 24/60  324.2s
+  frame 30/60  401.0s
+  frame 36/60  475.8s
+  frame 42/60  547.2s
+  frame 48/60  618.2s
+  frame 54/60  687.8s
+  frame 60/60  755.9s
+  -> /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/audit/cips-layered/construction/tagrun/pack/FACTS.md  (756s sim)
+
+real	12m44.927s
+user	12m17.370s
+sys	0m35.631s
