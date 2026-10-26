@@ -1,0 +1,12 @@
+[cips-consumer] seed 21: 80 frames x 400 steps, grid (128, 128)
+  frame 8/80  19.4s
+  frame 16/80  38.2s
+  frame 24/80  57.1s
+  frame 32/80  76.5s
+  frame 40/80  95.2s
+  frame 48/80  114.8s
+  frame 56/80  134.8s
+  frame 64/80  154.4s
+  frame 72/80  174.4s
+  frame 80/80  194.5s
+  -> collective/contrib/20261026T2021-c47-review-cips-consumer/efork_t3000/seed21/FACTS.md  (194s sim)
