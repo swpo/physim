@@ -1,0 +1,15 @@
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: 26 tracks end in a split with 2 children living >= 20 frames
+  >= 3 labkit body lengths: 7; >= 3 rod lengths (all-frame mean major axis): 0; >= 2 rod lengths: 2
+  id birth life_frames net bl_labkit bl_rod rodlen max_step straightness n_parents
+   20 split 81 43.5 5.57 2.58 16.9 2.88 0.6 1
+   10 split 26 32.7 4.77 2.3 14.2 2.2 0.89 1
+   24 split 23 29.0 4.13 1.93 15.0 1.8 0.97 1
+   26 split 24 28.1 4.09 1.95 14.4 1.82 0.95 1
+   19 split 21 24.9 3.54 1.62 15.3 1.7 0.99 1
+   15 split 19 24.1 3.42 1.61 15.0 1.62 1.0 1
+   12 split 38 25.2 3.18 1.3 19.4 2.42 0.54 1
+   11 split 18 18.3 2.69 1.29 14.3 1.54 1.0 1
+   44 split 47 20.0 2.57 1.15 17.3 2.22 0.47 1
+   18 split 49 13.8 1.88 0.88 15.7 1.26 0.6 1
+   39 split 52 13.8 1.86 0.89 15.5 1.54 0.39 1
+   9 split 22 12.0 1.72 0.79 15.2 1.43 0.84 1

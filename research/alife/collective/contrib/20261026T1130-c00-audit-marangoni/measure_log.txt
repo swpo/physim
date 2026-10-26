@@ -1,0 +1,164 @@
+##### unchanged_51 (rerun/seed51)
+unchanged_51[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 2773, median in/out 9.271, share >= 2 1.0, q10-q90 [6.856, 12.617]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 78, 'share': 1.0, 'median': 10.068}; all split-born {'n': 86, 'ge2': 86, 'share': 1.0}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.279  5.103  2.346  0.104  0.014  0.112  0.227  0.226  0.290  0.276  0.253  0.259  0.235  0.209
+unchanged_51[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 2773, median in/out 10.605, share >= 2 1.0, q10-q90 [7.871, 14.199]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 78, 'share': 1.0, 'median': 11.242}; all split-born {'n': 86, 'ge2': 86, 'share': 1.0}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.279  5.103  2.346  0.104  0.014  0.112  0.227  0.226  0.290  0.276  0.253  0.259  0.235  0.209
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.29, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz ch2: body-frames 557, both >= 1.5: 1.00, median rim/core 2.58, median rim/out 11.15
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.47, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz ch3: body-frames 557, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=52, median in/out 4.55, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=49, median in/out 4.62, fraction >= 2: 1.00
+-- claim's swimdivide.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed51/frames.npz: 120 tracks, 27 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 10; by rod length >= 3: 0
+   {"id": 8, "start": 24, "end": 53, "birth": "split", "children": [32, 33], "net": 37.3, "bl_labkit": 4.93, "bl_rod": 2.24}
+   {"id": 54, "start": 84, "end": 101, "birth": "split", "children": [65, 66], "net": 36.6, "bl_labkit": 4.75, "bl_rod": 2.0}
+   {"id": 9, "start": 24, "end": 52, "birth": "split", "children": [30, 31], "net": 35.3, "bl_labkit": 4.63, "bl_rod": 2.06}
+   {"id": 28, "start": 53, "end": 136, "birth": "split", "children": [91, 92], "net": 31.8, "bl_labkit": 4.38, "bl_rod": 2.21}
+   {"id": 14, "start": 27, "end": 48, "birth": "split", "children": [26, 27], "net": 26.1, "bl_labkit": 3.9, "bl_rod": 1.89}
+   {"id": 11, "start": 25, "end": 47, "birth": "split", "children": [24, 25], "net": 27.2, "bl_labkit": 3.86, "bl_rod": 1.87}
+##### walloff_51 (controls/walloff_seed51)
+walloff_51[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 2773, median in/out 0.168, share >= 2 0.004, q10-q90 [0.137, 0.342]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 0, 'share': 0.0, 'median': 0.221}; all split-born {'n': 86, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.041  0.050  0.051  0.061  0.094  0.142  0.188  0.245  0.297  0.335  0.363  0.379  0.380  0.368
+walloff_51[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 2773, median in/out 0.222, share >= 2 0.001, q10-q90 [0.183, 0.393]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 0, 'share': 0.0, 'median': 0.281}; all split-born {'n': 86, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.041  0.050  0.051  0.061  0.094  0.142  0.188  0.245  0.297  0.335  0.363  0.379  0.380  0.368
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.29, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz ch2: body-frames 557, both >= 1.5: 1.00, median rim/core 2.58, median rim/out 11.15
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.22, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz ch3: body-frames 557, both >= 1.5: 0.00, median rim/core 1.49, median rim/out 0.34
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=52, median in/out 0.36, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=49, median in/out 0.30, fraction >= 2: 0.00
+-- claim's swimdivide.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed51/frames.npz: 120 tracks, 27 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 10; by rod length >= 3: 0
+   {"id": 8, "start": 24, "end": 53, "birth": "split", "children": [32, 33], "net": 37.3, "bl_labkit": 4.93, "bl_rod": 2.24}
+   {"id": 54, "start": 84, "end": 101, "birth": "split", "children": [65, 66], "net": 36.6, "bl_labkit": 4.75, "bl_rod": 2.0}
+   {"id": 9, "start": 24, "end": 52, "birth": "split", "children": [30, 31], "net": 35.3, "bl_labkit": 4.63, "bl_rod": 2.06}
+   {"id": 28, "start": 53, "end": 136, "birth": "split", "children": [91, 92], "net": 31.8, "bl_labkit": 4.38, "bl_rod": 2.21}
+   {"id": 14, "start": 27, "end": 48, "birth": "split", "children": [26, 27], "net": 26.1, "bl_labkit": 3.9, "bl_rod": 1.89}
+   {"id": 11, "start": 25, "end": 47, "birth": "split", "children": [24, 25], "net": 27.2, "bl_labkit": 3.86, "bl_rod": 1.87}
+##### unchanged_52 (rerun/seed52)
+unchanged_52[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 3014, median in/out 9.0, share >= 2 1.0, q10-q90 [6.771, 12.875]; daughters(>=12 fr) 5 fr after birth {'n': 65, 'ge2': 65, 'share': 1.0, 'median': 9.871}; all split-born {'n': 69, 'ge2': 69, 'share': 1.0}; tracks majority>=2 {'n': 85, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.092  0.067  0.184  0.441  0.388  0.133  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.013
+  cargo:   0.000  0.000  0.896  4.601  2.365  0.103  0.014  0.112  0.232  0.229  0.298  0.283  0.259  0.265  0.240  0.213
+unchanged_52[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 3014, median in/out 10.346, share >= 2 1.0, q10-q90 [7.789, 14.204]; daughters(>=12 fr) 5 fr after birth {'n': 65, 'ge2': 65, 'share': 1.0, 'median': 10.627}; all split-born {'n': 69, 'ge2': 69, 'share': 1.0}; tracks majority>=2 {'n': 85, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.092  0.067  0.184  0.441  0.388  0.133  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.013
+  cargo:   0.000  0.000  0.896  4.601  2.365  0.103  0.014  0.112  0.232  0.229  0.298  0.283  0.259  0.265  0.240  0.213
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.16, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz ch2: body-frames 591, both >= 1.5: 1.00, median rim/core 2.60, median rim/out 11.06
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 10.32, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz ch3: body-frames 591, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.10
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=35, median in/out 4.34, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=32, median in/out 4.70, fraction >= 2: 1.00
+-- claim's swimdivide.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/rerun/seed52/frames.npz: 101 tracks, 26 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 7; by rod length >= 3: 0
+   {"id": 20, "start": 25, "end": 105, "birth": "split", "children": [73, 74], "net": 43.5, "bl_labkit": 5.57, "bl_rod": 2.6}
+   {"id": 10, "start": 21, "end": 46, "birth": "split", "children": [37, 38], "net": 32.7, "bl_labkit": 4.77, "bl_rod": 2.31}
+   {"id": 24, "start": 30, "end": 52, "birth": "split", "children": [39, 40], "net": 29.0, "bl_labkit": 4.13, "bl_rod": 1.97}
+   {"id": 26, "start": 33, "end": 56, "birth": "split", "children": [41, 42], "net": 28.1, "bl_labkit": 4.09, "bl_rod": 2.05}
+   {"id": 19, "start": 25, "end": 45, "birth": "split", "children": [35, 36], "net": 24.9, "bl_labkit": 3.54, "bl_rod": 1.72}
+   {"id": 15, "start": 22, "end": 40, "birth": "split", "children": [31, 32], "net": 24.1, "bl_labkit": 3.42, "bl_rod": 1.59}
+##### walloff_52 (controls/walloff_seed52)
+walloff_52[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 3014, median in/out 0.166, share >= 2 0.005, q10-q90 [0.139, 0.339]; daughters(>=12 fr) 5 fr after birth {'n': 65, 'ge2': 0, 'share': 0.0, 'median': 0.247}; all split-born {'n': 69, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 85, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.092  0.067  0.184  0.441  0.388  0.133  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.013
+  cargo:   0.000  0.000  0.047  0.050  0.052  0.062  0.096  0.146  0.194  0.252  0.305  0.343  0.371  0.386  0.386  0.373
+walloff_52[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 3014, median in/out 0.218, share >= 2 0.002, q10-q90 [0.185, 0.386]; daughters(>=12 fr) 5 fr after birth {'n': 65, 'ge2': 0, 'share': 0.0, 'median': 0.306}; all split-born {'n': 69, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 85, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.092  0.067  0.184  0.441  0.388  0.133  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.013
+  cargo:   0.000  0.000  0.047  0.050  0.052  0.062  0.096  0.146  0.194  0.252  0.305  0.343  0.371  0.386  0.386  0.373
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.16, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz ch2: body-frames 591, both >= 1.5: 1.00, median rim/core 2.60, median rim/out 11.06
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.22, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz ch3: body-frames 591, both >= 1.5: 0.00, median rim/core 1.51, median rim/out 0.34
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=35, median in/out 0.37, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/walloff_seed52/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=32, median in/out 0.31, fraction >= 2: 0.00
+##### chis0_51 (controls/chis0_seed51)
+chis0_51[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 3031, median in/out 0.196, share >= 2 0.003, q10-q90 [0.16, 0.363]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 0, 'share': 0.0, 'median': 0.332}; all split-born {'n': 79, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 103, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.313  0.257  0.224  0.188  0.135  0.103  0.085  0.070  0.058  0.050  0.043  0.036  0.030  0.025
+  cargo:   0.000  0.000  0.048  0.048  0.050  0.062  0.101  0.147  0.183  0.219  0.245  0.261  0.270  0.272  0.265  0.250
+chis0_51[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 3031, median in/out 0.23, share >= 2 0.001, q10-q90 [0.193, 0.401]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 0, 'share': 0.0, 'median': 0.373}; all split-born {'n': 79, 'ge2': 0, 'share': 0.0}; tracks majority>=2 {'n': 103, 'share_tracks_majority_ge2': 0.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.313  0.257  0.224  0.188  0.135  0.103  0.085  0.070  0.058  0.050  0.043  0.036  0.030  0.025
+  cargo:   0.000  0.000  0.048  0.048  0.050  0.062  0.101  0.147  0.183  0.219  0.245  0.261  0.270  0.272  0.265  0.250
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.91, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz ch2: body-frames 595, both >= 1.5: 0.00, median rim/core 0.73, median rim/out 2.11
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 0.23, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz ch3: body-frames 595, both >= 1.5: 0.00, median rim/core 1.64, median rim/out 0.39
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=55, median in/out 0.42, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=65, median in/out 0.35, fraction >= 2: 0.00
+-- claim's swimdivide.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/chis0_seed51/frames.npz: 148 tracks, 21 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 47, "start": 58, "end": 83, "birth": "split", "children": [83, 84], "net": 17.4, "bl_labkit": 2.69, "bl_rod": 1.63}
+   {"id": 67, "start": 69, "end": 149, "birth": "split", "children": [118, 119], "net": 11.7, "bl_labkit": 2.06, "bl_rod": 1.27}
+   {"id": 23, "start": 37, "end": 64, "birth": "split", "children": [60, 61], "net": 12.1, "bl_labkit": 2.05, "bl_rod": 1.49}
+   {"id": 59, "start": 64, "end": 80, "birth": "split", "children": [79, 80], "net": 12.1, "bl_labkit": 1.98, "bl_rod": 1.11}
+   {"id": 75, "start": 78, "end": 113, "birth": "split", "children": [103, 104], "net": 11.1, "bl_labkit": 1.86, "bl_rod": 1.0}
+   {"id": 39, "start": 43, "end": 57, "birth": "split", "children": [46, 47], "net": 10.9, "bl_labkit": 1.76, "bl_rod": 0.99}
+##### kappa0_51 (controls/kappa0_seed51)
+kappa0_51[own 1.5|3-6] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 2773, median in/out 1.389, share >= 2 0.106, q10-q90 [1.297, 2.053]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 16, 'share': 0.205, 'median': 1.486}; all split-born {'n': 86, 'ge2': 16, 'share': 0.186}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 0.2}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.133  0.388  0.395  0.376  0.340  0.314  0.298  0.283  0.269  0.259  0.246  0.233  0.215  0.194
+kappa0_51[own 1|2-4] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 2773, median in/out 1.319, share >= 2 0.062, q10-q90 [1.246, 1.759]; daughters(>=12 fr) 5 fr after birth {'n': 78, 'ge2': 13, 'share': 0.167, 'median': 1.384}; all split-born {'n': 86, 'ge2': 13, 'share': 0.151}; tracks majority>=2 {'n': 100, 'share_tracks_majority_ge2': 0.12}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.052  0.068  0.186  0.444  0.390  0.132  0.048  0.036  0.019  0.017  0.018  0.013  0.013  0.012
+  cargo:   0.000  0.000  0.133  0.388  0.395  0.376  0.340  0.314  0.298  0.283  0.269  0.259  0.246  0.233  0.215  0.194
+-- claim's sd_individuals.py (ch2 ring, ch3 cargo):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 4.29, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz ch2: body-frames 557, both >= 1.5: 1.00, median rim/core 2.58, median rim/out 11.15
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.32, fraction >= 2: 0.05
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz ch3: body-frames 557, both >= 1.5: 0.00, median rim/core 0.91, median rim/out 1.21
+-- claim's inherit.py (ch3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=52, median in/out 1.27, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/kappa0_seed51/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=49, median in/out 1.23, fraction >= 2: 0.00
+##### res15_unchanged_51 (controls/res15_seed51)
+res15_51[own 1.5|3-6 world units] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz: bands inside d<=-1.5, outside 3.0<=d<=6.0; body-frames 1582, median in/out 24.133, share >= 2 1.0, q10-q90 [15.953, 36.155]; daughters(>=12 fr) 5 fr after birth {'n': 37, 'ge2': 37, 'share': 1.0, 'median': 20.625}; all split-born {'n': 43, 'ge2': 43, 'share': 1.0}; tracks majority>=2 {'n': 52, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.047  0.116  0.216  0.440  0.409  0.157  0.056  0.026  0.018  0.014  0.012  0.010  0.009  0.008
+  cargo:   0.000  0.000  3.301  4.187  1.619  0.034  0.006  0.037  0.088  0.120  0.117  0.114  0.105  0.098  0.089  0.080
+res15_51[own 1|2-4 world units] /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz: bands inside d<=-1.0, outside 2.0<=d<=4.0; body-frames 1582, median in/out 15.46, share >= 2 1.0, q10-q90 [9.265, 24.908]; daughters(>=12 fr) 5 fr after birth {'n': 37, 'ge2': 37, 'share': 1.0, 'median': 13.373}; all split-born {'n': 43, 'ge2': 43, 'share': 1.0}; tracks majority>=2 {'n': 52, 'share_tracks_majority_ge2': 1.0}
+  d:        -5.5   -4.5   -3.5   -2.5   -1.5   -0.5    0.5    1.5    2.5    3.5    4.5    5.5    6.5    7.5    8.5    9.5
+  ring:    0.000  0.000  0.047  0.116  0.216  0.440  0.409  0.157  0.056  0.026  0.018  0.014  0.012  0.010  0.009  0.008
+  cargo:   0.000  0.000  3.301  4.187  1.619  0.034  0.006  0.037  0.088  0.120  0.117  0.114  0.105  0.098  0.089  0.080
+-- claim's sd_individuals.py (dx=2/3):
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 5.41, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz ch2: body-frames 333, both >= 1.5: 1.00, median rim/core 3.09, median rim/out 12.40
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 15.72, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz ch3: body-frames 333, both >= 1.5: 0.00, median rim/core 0.00, median rim/out 0.09
+-- claim's inherit.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=37, median in/out 14.15, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=37, median in/out 18.75, fraction >= 2: 1.00
+-- claim's swimdivide.py:
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-marangoni/controls/res15_seed51/frames.npz: 63 tracks, 11 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 4; by rod length >= 3: 0
+   {"id": 16, "start": 37, "end": 79, "birth": "split", "children": [44, 45], "net": 53.6, "bl_labkit": 4.52, "bl_rod": 2.3}
+   {"id": 25, "start": 45, "end": 61, "birth": "split", "children": [32, 33], "net": 36.9, "bl_labkit": 3.28, "bl_rod": 1.47}
+   {"id": 17, "start": 37, "end": 52, "birth": "split", "children": [30, 31], "net": 37.9, "bl_labkit": 3.22, "bl_rod": 1.4}
+   {"id": 10, "start": 26, "end": 44, "birth": "split", "children": [22, 23], "net": 33.5, "bl_labkit": 3.11, "bl_rod": 1.47}
+   {"id": 11, "start": 26, "end": 45, "birth": "split", "children": [26, 27], "net": 32.3, "bl_labkit": 2.92, "bl_rod": 1.37}
+   {"id": 5, "start": 16, "end": 44, "birth": "nucleation", "children": [20, 21], "net": 28.1, "bl_labkit": 2.64, "bl_rod": 1.27}

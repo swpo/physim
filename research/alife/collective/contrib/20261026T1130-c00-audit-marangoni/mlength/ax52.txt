@@ -1,0 +1,2 @@
+seed52: tracks with labkit BL >= 0: n=26, path fraction along the long axis: median 0.86, min 0.60
+seed52: tracks with labkit BL >= 3: n=7, path fraction along the long axis: median 0.98, min 0.93

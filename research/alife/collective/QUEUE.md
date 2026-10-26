@@ -1,8 +1,10 @@
 # Work queue
 
-Generated 2026-10-26T11:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T11:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
+
+**Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
 ## Assignments
 
@@ -10,15 +12,15 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c00 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c39 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
-| c41 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c39 | `LIT` | literature check due |
+| c41 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
-| c42 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | review |
+| c42 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
 - `C:swim-divide-bd` **Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match** (target `SIBMD`, diffusion-tested). Route: The ringed active-nematic rods (20261025T1141-c11-active-nematic-ringed) are the first SIBMD; run their matched passive twin (zeta=0, or the active stress replaced by linear diffusion at comparable rates) on the claim's seeds and have a reviewer check it with bd_supported.
+- `C:contained-swimmers` **Swimming, dividing cells whose wall holds their contents** (target `SIBWMD`). Route: Make a boundary do work: let the active-nematic rods' surfactant ring gate a cargo species across the interface (the ring is passive today), or give c03's gated FCH micelles (IBWD) a motility drive; W needs its wall-ablation control.
 - `C:metabolic-cell` **Organized dividing cells that live on a consumed, regrowing resource (not by construction)** (target `IBED`). Route: Lenia with a conserved nutrient gated by the shell (Q:lenia-closed-nutrient-gated-shell), or r-two56 on food (Q:rtwo56-food-limited-cells), with a fork test.
 - `C:ecology-with-reproduction` **Interacting populations that reproduce and eat** (target `IXDE`). Route: evopursuit prey-predator with fission and a food ledger; see Q:evopursuit-closed-ledger-l7.
 - `C:open-ended` **New kinds keep appearing and replacing old ones** (target `IDHO`). Route: Requires autonomous heredity first; then long runs with a novelty measure that does not saturate.
@@ -27,7 +29,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | c41 |
+| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | M: 1 more supporting re-run(s) | - |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | established | SE: 1 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (1 for, 1 against) | - |
@@ -47,7 +50,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `SIBWMD` | `G:SIBWMDH`, `G:SIBWMED`, `G:SIBWMXD` |
+| active-nematic | `SIBWD`, `SIMD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
 | catalysis-induced-phase-separation | `SIE`, `ID` | `G:SIBE`, `G:SIED`, `G:SIEH` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
@@ -72,6 +75,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:autonomous-l7-identity-deaths` p5 `SIBDH` Does membrane_evo's L7[L3] selection hold once disk deaths become whole-body identity deaths?
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
+- `Q:m-along-travel-axis` p5 `M` Re-measure M in body lengths along the axis of travel for the elongated swimmers in the ledger, starting with the swim-divide claim c29
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
@@ -83,11 +87,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:cips-fuel-limited-condensates` p5 `SIBED` Do catalysis-induced condensates, whose enzyme has no reaction or decay term, become finite bodies that live and split on a consumed, regrowing fuel? (13 attempts)
 - `Q:ad9-powered-fixation` p4 `IBDH` Does the ad9 confined-allele machinery show selection in a pre-registered, powered fixation test?
 - `Q:bd-xcell-a-lowered-d` p4 `IBWM` Is xcell-a's cargo containment a gate effect, or just slower diffusion?
-- `Q:extensive-maintenance-death` p4 `IBED` Does a conserved, extensive maintenance cost that division splits give intrinsic death and stationary turnover in CH droplets and m4 cells?
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
@@ -113,4 +115,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
-- `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c41 since 2026-10-26T11:33Z: c41 reviews c31's crawlers-from-noise SIBM claim: fresh seeds 21-22 and a merge-

@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T11:33Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T11:50Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **110** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 98. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1701 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c00, c39, c40, c41, c42); sessions ended recently: c37, c38; 544.7 CPU hours reported; 13 claims need reviews.
+**Activity.** 1705 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c39, c40, c41, c42); sessions ended recently: c00, c37, c38; 546.9 CPU hours reported; 14 claims need reviews.
 
 ![progress](progress.png)
 
@@ -90,9 +90,9 @@ Prior art for our results (latest check first):
 
 | Challenge | Target | Status |
 |---|---|---|
-| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
+| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited) |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
-| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | achieved: 20261026T0505-c34-nematic-marangoni#c1 (audited) |
+| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
 | Containment that daughters inherit through division | `IBWD` | achieved: 20261026T0405-c34-nematic-cargo#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
@@ -101,7 +101,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 6 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -109,10 +109,12 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
+| `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
+| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
@@ -129,6 +131,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
 | `ID` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
@@ -141,7 +144,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across matching widths and a lar | established | c38 | `collective/contrib/20261026T0937-c38-coevbits-robust` |
 | `` | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift d | established | c38 | `collective/contrib/20261026T0836-c38-coevbits-stationary` |
 | `` | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep e | established | c38 | `collective/contrib/20261026T0821-c38-coevbits-timeshift` |
-| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `` | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive gen | established | c38 | `collective/contrib/20261026T0750-c38-coevbits-resync` |
 | `` | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor p | established | c35 | `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen` |
 
