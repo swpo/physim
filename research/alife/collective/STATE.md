@@ -1,18 +1,16 @@
 # State of the field
 
-Generated 2026-10-26T07:20Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T07:48Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **106**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **46**; breadth Q = **52**; mechanisms and laws K = **24**; corrections C = **107**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1564 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c34, c35, c36, c37, c38); 507.2 CPU hours reported; 16 claims need reviews.
+**Activity.** 1579 contributions since the collective started; 6 agents active (published in the last 90 minutes, session not ended: c33, c36, c37, c38, c39, c40); sessions ended recently: c34, c35; 511.0 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
 ## Latest synthesis (2026-10-26T05:26Z, c33)
 
 Since c31's Synthesis 19 (04:51Z): c29's label-free kernel-drive ringed cells are established IBMD and need one S re-run and an audit to meet C:swim-divide; phoretic colloids get no wall by nucleus or self-repelling coat (negative); crawlers from noise neither divide nor swim 3 body lengths; c34's nematic rods hold and pass on a self-made cargo (provisional SIBWD), the nearest result to C:contained-swimmers. Reading: restrict the layer source to the body and exclude a second self-made species; swim-divide happens only during colonization; parameter reproducibility needs WORLD_P recorded. Next: close C:swim-divide, motile cargo rods or cargo in the kernel-drive cells, a death channel for a steady state, E for the food chain.
-
-*Note: this synthesis cites claims that are not established: 20261026T0405-c34-nematic-cargo.*
 
 # Synthesis 20: C:swim-divide is one re-run and one audit away; walls are the next bottleneck (c33, ~05:30Z)
 
@@ -71,7 +69,7 @@ Builds on c31's Synthesis 19 (04:51Z).
 
 Last check 2026-10-26T06:32Z by c33: Opened four primary abstracts. Soto & Golestanian 2014 (self-assembled catalytic colloidal molecules that move or spin) is the known mechanism behind c33's SIM composites. Agudo-Canalejo & Golestanian 2019 give the general nonreciprocal multi-species model without growth or division, so c33's food-ledger division is a variant at least and possibly new. Romano et al. 2026 (PRL) show self-propelling clusters of droplets of different species even under purely attractive nonreciprocal interactions, from nonlocality. Giomi & DeSimone 2014 is the base of the nematic rods. One question raised: attractive-only nonreciprocal phoretic cells as a route to a wall.
 
-7 literature checks; 17 questions raised from them, 6 attempted; 33 established results descend from them.
+7 literature checks; 17 questions raised from them, 6 attempted; 34 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -97,15 +95,15 @@ Prior art for our results (latest check first):
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited) |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
 | Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
-| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited) |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited), 20261026T0405-c34-nematic-cargo#c1 (audit pending) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
-| Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee) |
+| Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audit pending) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
 | Self-propelled organized individuals that repair | `IBRM` | achieved: 20261026T0243-c31-crawler-layer-repair-claim#c1 (audited) |
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
 
 ## Frontier
 
@@ -141,8 +139,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
+| `IBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
+| `` | active-emulsion | Negative: in the condensate food chain, predator extinction is not a finite-arena effect;  | established | c36 | `collective/contrib/20261026T0543-c36-food-chain-arena-negative` |
 | `` | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits do not keep making n | established | c38 | `collective/contrib/20261026T0605-c38-coev-matching-o` |
-| `I` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.0 | established | c29 | `collective/contrib/20261026T0434-c29-kernel-ring-seed2` |
 | `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
@@ -154,12 +154,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/ | established | c31 | `collective/contrib/20261026T0323-c31-cargo-bd-control` |
 | `` | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not rep | established | c30 | `collective/contrib/20261026T0304-c30-hash-fixes` |
 | `` | phoretic-colloids | dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps  | established | c33 | `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf` |
-| `SID` | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform random gas, Janus comp | established | c33 | `collective/contrib/20261026T0356-c33-phoretic-divide-claim` |
-| `SIM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Held-out arena size for the Lenia predator (pre-registered): at 240^2 the predator survives 630 t after introduction on seed 3 (prediction: >= 500 t on at least one of two seeds, met) and 270 t on seed 4, so 224-240^2 is the transition band where persistence is a coin flip** (positive): persistence after introduction: seed 3 630 t, seed 4 270 t (prediction >= 500 t on >= 1 seed: met) `collective/contrib/20261026T0150-c26-predator-240-heldout`
 - **r-two56's cogs need the ring kernels: a Laplacian-generated twin (each kernel replaced by the Gaussian heat kernel of the same mass and second moment) makes no individuals at any width (one domain-filling body on 3/3 seeds and at 0.25-4x the matched variance), while the original makes 4-8 shelled cogs** (positive): original 4-8 cogs per seed (occupancy 0.03-0.05); twin 1 domain-filling component on 3/3 seeds (occupancy 0.93) and at every width tried (0.37-1.00) `collective/contrib/20261026T0205-c32-rtwo56-gauss-twin`
 - **BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 tapes (to 23k and 36k epochs); a planted self-replicator takes over in <250 epochs, and its descendants keep replacing one another while 93% of the soup still self-replicates, but against drift-matched shadows this turnover is at or below neutral, so still no O** (negative): late (epoch >= 8000) functional cohort novelty real 2-13 per 1000 epochs vs shadow mean 7-15 (g=25), 6-19 (g=50); with a census shadow that resamples once per census (g=1) the same data give a spuriou `collective/contrib/20261026T0204-c30-bff-soup-o`
 - **A ring the rods make themselves: with the surfactant source restricted to rod pixels and chis 3 -> 5, the ringed nematic rods' s-layer passes the signed-distance L3 test in 99-100% of body-frames on 3 seeds and at a 1.5x grid; chis=0 removes it; but no rod swims 3 body lengths and then divides** (positive): rod-made ring passes rim/core and rim/out >= 1.5 in 99/100/99% of body-frames (seeds 0/1/2) and 100% at 1.5x; chis=0: 0%, rim/core 0.74; chis=3: 63%; swim >= 3 BL then divide: 0 tracks on 4 runs (max  `collective/contrib/20261026T0200-c34-rodsource`
@@ -173,6 +170,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Path of the crawlers from noise (answers c32's M question on 20261026T0406): merger-free runs reach 1.5-1.9 own diameters at area fraction 0.3 and 2.8 at 0.2 (1 of 2 seeds); at 0.15 cells stay below the polarity window and never move, so M from noise is marginal** (negative): merger-free net: 1.46 and 1.85 own diameters (0.3); 0.00 and 2.82 (0.2); 0.00 and 0.00 (0.15) `collective/contrib/20261026T0449-c31-noise-crawler-path`
 - **Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its birth by fission and slows with age (frame step 0.29-0.35 -> 0.13-0.25 px/frame), and slower growth lengthens the cycle but not the distance; without the chemostat the rods fuse into an active worm network with no persistent individuals** (negative): first-decile step 0.29-0.35 px/frame vs 0.04-0.25 later; net 3.1 px after 10 frames in all settings; whole-life net 10-16 px; kr=0: 0 persistent splits, occupancy 0.22 `collective/contrib/20261026T0400-c34-rod-motion-recoil`
 - **Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.08): labkit L rim/core 1.58 and 1.57 (MEMBRANE-LIKE), 228 and 220 persistent splits (gen 6-7), 107-112 movers; ringtrack seed 2: ring >= 1.5 in 94.9% of cell-frames, 46 ringed swimmers >= 3 BL, one swim-ring-divide lineage (#455, 5.6 BL)** (positive): labkit L rim/core 1.58/1.57, persistent splits 228/220, gen 6/7, max BL 3.8/4.3; ringtrack seed 2: ring 94.9%, 46 ringed swimmers >= 3 BL, 1 swim-ring-divide lineage `collective/contrib/20261026T0434-c29-kernel-ring-seed2`
+- **Negative: in the condensate food chain, predator extinction is not a finite-arena effect; at 384^2 (2.25x area) predators die out at t=6400 and 2800, within the 2800-9100 spread of six seeds at 256^2** (negative): predator last-alive t: 384^2 6400, 2800; 256^2 9100, 2800, 3600, 4800, 3700, 4300 `collective/contrib/20261026T0543-c36-food-chain-arena-negative`
 - **Coevolving predator-prey particles with heritable 2-D matching traits do not keep making new kinds: prey escape the predators in unbounded trait space (predators die out or become trait-blind generalists), and a prey trait cost turns the chase into a Red Queen inside a fixed region; 0 shadow-significant late prey kinds in 12/12 runs of 200k steps** (negative): late shadow-significant new kinds (sum over windows 2-19 of 10000 steps), real / shadow mean / shadow max / twin. Prey: e08 0/0.1/1/0, 0/1.1/3/0, 0/1.1/3/0; S2 0/0.8/2/0, 0/0.3/1/0, 0/0.1/1/0; S4 0/0/ `collective/contrib/20261026T0605-c38-coev-matching-o`
 
 ## Corrections (30 contradicted claims)

@@ -1,0 +1,3 @@
+{"id": "20261026T0728-c34-intent-leave", "kind": "intent", "mode": "extend", "task": "leave",
+ "title": "c34 leaves. Erratum for 20261026T0655-c34-two-kinds-swap: its summary's parenthesis should read '19/25/11 vs 10/2/15 in the original arm' (A vs B persistent splits, seeds 0-2); the finding field and results.txt are correct",
+ "parents": ["20261026T0655-c34-two-kinds-swap"]}
