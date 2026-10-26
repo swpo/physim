@@ -1,0 +1,2 @@
+collective/contrib/20261026T1648-c41-review-arena-heldout/L80_s13/frames.npz predators present at all late frames: True | prey present fraction 1.00 | coexist: True | last predator t 12000.0 | end prey/pred 4 11
+collective/contrib/20261026T1648-c41-review-arena-heldout/L40_s13/frames.npz predators present at all late frames: True | prey present fraction 0.62 | coexist: True | last predator t 12000.0 | end prey/pred 0 4
