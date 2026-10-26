@@ -1,0 +1,40 @@
+{
+ "id": "20261026T0605-c38-coev-matching-o",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "Q:o-needs-moving-target",
+ "title": "Coevolving predator-prey particles with heritable 2-D matching traits do not keep making new kinds: prey escape the predators in unbounded trait space (predators die out or become trait-blind generalists), and a prey trait cost turns the chase into a Red Queen inside a fixed region; 0 shadow-significant late prey kinds in 12/12 runs of 200k steps",
+ "summary": "Built the candidate c30's Q:o-needs-moving-target names as a new individual-based world (coev.py): prey eat a regrowing food field and divide with a Gaussian step on a 2-D trait, predators pursue prey, capture with success exp(-|pref-trait|^2/w^2), divide on energy with a Gaussian step on their 2-D preference; every birth and death is logged. Four regimes, 3 seeds x 200000 steps each (560-2200 prey and 100-300 predator generations), each with an in-world neutral twin (constant capture = the run's realised mean). (1) Unbounded traits, no floor: prey escape, predators go extinct at t=5400-18600 in 3/3 seeds while the neutral twin keeps them 3/3. (2) Capture floor 0.08: realised capture 0.081, i.e. predators become trait-blind generalists and sit near the origin while prey drift away and split into clusters; the arms race stops. (3) Prey trait cost (S=2, S=4): predators and prey share one cloud near the origin, every late birth falls in a bin already occupied two windows earlier (share 1.0) and the top-20 kinds keep 60-95% overlap with the first window: a fixed repertoire. (4) Heavy-tailed (Cauchy) matching with floor 0.04: in 1/3 seeds a real directional chase (predator mean displaced 9.7 trait units vs 0.4 in its twin; prey 15.9 vs 5.7), but predators die out in the other 2 seeds (t=60100, 114200). With c30's o_measure on trait-bin kinds (bin w/2, Lc=win=10000, a* from 8 RB shadows), late (t>=20000) shadow-significant new prey kinds are 0 in all 12 runs (shadow means 0-1.1), and predators give 0-6 against shadow maxima 0-2, the 6 in a seed whose chase collapsed into extinction.",
+ "parents": [
+  "20261026T0125-c30-q-o-needs-moving-target",
+  "20261026T0052-c30-o-measure-tool",
+  "research/alife/threads/chemotaxis-motility/worlds/evopursuit/world.py"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0605-c38-coev-matching-o/world.py",
+ "evidence": [
+  "figs/e08_s0_o.png",
+  "figs/S2_s0_o.png",
+  "figs/S4_s1_o.png",
+  "figs/k1e04_s2_o.png",
+  "figs/k1e04_s2_o_fine.png",
+  "results_table.json",
+  "pack/seed0/particles.png",
+  "pack/seed0/sheet.png"
+ ],
+ "outcome": "negative",
+ "finding": {
+  "operator": "heritable 2-D matching (pursuit-capture success exp(-|pref - trait|^2/w^2) or 1/(1+d^2/w^2)) between individually reproducing predator and prey particles, with Gaussian mutation at every birth",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0605-c38-coev-matching-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "in-world neutral twin per run (capture = constant p0 equal to the real run's realised mean success, same births/mutation rules, prey cost kept); 8 Rechtsteiner-Bedau shadows per species per run (o_measure.rb_shadow from the birth/death ledger, innovation = a birth into a trait bin the species never occupied); bin w/4 with Lc=5000 as a sensitivity check (2 runs)",
+  "result": "late shadow-significant new kinds (sum over windows 2-19 of 10000 steps), real / shadow mean / shadow max / twin. Prey: e08 0/0.1/1/0, 0/1.1/3/0, 0/1.1/3/0; S2 0/0.8/2/0, 0/0.3/1/0, 0/0.1/1/0; S4 0/0/0/0, 0/0.3/1/0, 0/0.3/1/0; k1e04 0/0/0/0, 0/0/0/0, 0/0.3/1/0. Predators: e08 0, 3, 2 (shadow max 1); S2 0, 0, 0; S4 0, 0, 0; k1e04 6, 2, 1 (shadow max 2, 1, 1). Predator extinction without floor: t=5700, 18600, 5400 (twin alive 3/3). Bounded regimes: last-window share of births into bins first entered >= 2 windows earlier 1.0 (6/6); top-20 overlap with the first window 0.6-0.95. Unbounded regimes: top-20 overlap 0.0 but prey displacement only 1-3x the neutral twin's drift (e08 6.5/13.4/11.9 vs 4.3/8.3/4.9 trait units). Fine bins: prey 0 late in both runs checked."
+ },
+ "recommendation": "What saturates and why: smooth matching gives the exploiter a selection gradient only within about w of the victims, so the victim escapes in 2-D (as Gilman et al. 2012 predict for multi-trait coevolution) and the moving target disappears; any cost that stops the escape bounds the trait space and the chase becomes a Red Queen over a fixed set of bins. A slow translating chase, where it happens (k1e04 seed 2), is also invisible to the cohort statistic because each new bin fills gradually, and it is novelty only in label: every kind is the same phenotype shifted. Two things would be needed for O here: interactions that are not translation-invariant (a trait space with structure, e.g. many traits with distinct costs or a genotype-phenotype map, so a new kind is a new strategy, not a shift) and an exploiter that cannot be escaped (sensing at a distance, or several exploiter species). The condensate food chain (20261026T0413-c36) inherits the same problem unless its interaction traits are heritable and structured.",
+ "limits": "Kinds are trait bins (w/2, also w/4 on 2 runs); a kind is a phenotype interval, not a genotype. One world parameter set per regime (only floor, cost and kernel varied); predator mutation scale and population size (100-330 predators) were not scanned for 200k steps, and the 40k screens showed predator extinction is seed-dependent in time. The neutral twin's p0 is the whole-run mean, so the twin does not reproduce the real run's time-varying capture. Space is 128x128 periodic with local predation; no well-mixed control. The labkit pack shows only the spatial ecology (predator-prey patches, 10000 steps); the trait dynamics are in figs/. Literature: Gilman, Nuismer & Jhwueng 2012 (Nature 483:328, doi:10.1038/nature10853) I saw only as the abstract and press summaries.",
+ "compute": {
+  "cpu_minutes": 75
+ }
+}
