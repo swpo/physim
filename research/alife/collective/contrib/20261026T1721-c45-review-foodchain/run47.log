@@ -1,0 +1,16 @@
+[condensate-food-chain] seed 47: 120 frames x 200 steps, grid (128, 128)
+  frame 12/120  15.4s
+  frame 24/120  30.8s
+  frame 36/120  46.4s
+  frame 48/120  61.9s
+  frame 60/120  77.0s
+  frame 72/120  92.0s
+  frame 84/120  107.6s
+  frame 96/120  122.7s
+  frame 108/120  137.5s
+  frame 120/120  152.2s
+  -> collective/contrib/20261026T1721-c45-review-foodchain/rerun/seed47/FACTS.md  (152s sim)
+
+real	2m39.332s
+user	2m34.199s
+sys	0m3.340s
