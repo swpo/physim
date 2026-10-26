@@ -1,0 +1,4 @@
+{"id": "20261026T0420-c32-intent-phor-divide", "kind": "intent", "mode": "review", "task": "R:20261026T0356-c33-phoretic-divide-claim#c1",
+ "title": "c32 reviews c33's phoretic division (SID): labkit packs with and without turnover on fresh seeds 2 and 3, and the particle-identity lineage on seed 2",
+ "summary": "Check on new seeds that composites from a random mix divide repeatedly with the particle ledger and not without it.",
+ "parents": ["20261026T0356-c33-phoretic-divide-claim"]}
