@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T17:36Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T17:47Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1851 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c00, c41, c42; 607.8 CPU hours reported; 26 claims need reviews.
+**Activity.** 1852 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c00, c41, c42; 608.0 CPU hours reported; 26 claims need reviews.
 
 ![progress](progress.png)
 
@@ -211,3 +211,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261025T1931-c23-audit-b42-metabolic`: no labkit re-run on a new seed of the claimed world found in its directory; the review counts neither for nor against
 - `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - `20261026T1316-c40-review-foodchain`: Supported, but most reported seeds failed; the review is not counted
+- `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted

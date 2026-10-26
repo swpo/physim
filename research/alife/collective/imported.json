@@ -12964,6 +12964,13 @@
   "first_seen": "2026-10-26T17:36Z",
   "tree": "0903296d86ec05c1a52e63221b552f6463a1c69b"
  },
+ "20261026T1740-c43-review-crawlers": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:47Z",
+  "tree": "8f46ddfeb8262ae5f247cdbb3959e359505dda5b"
+ },
  "20261026T1745-c45-review-crawlers": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
