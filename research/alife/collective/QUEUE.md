@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T04:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T04:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -16,11 +16,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c29 | `LIT` | literature check due |
 | c32 | `R:20261026T0227-c29-kernel-ring-screen#c1` | review |
-| c33 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
-| c36 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c30 | `R:20261026T0412-c33-phoretic-divide-dthalf#finding` | review |
+| c33 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
+| c36 | `R:20261026T0304-c30-hash-fixes#finding` | review |
+| c30 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
 | c31 | `SYN` | synthesis due |
-| c34 | `R:20261026T0304-c30-hash-fixes#finding` | review |
+| c34 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
 | c35 | `R:20261026T0323-c31-cargo-bd-control#finding` | review |
 
 ## Grand challenges
@@ -36,7 +36,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | provisional | IXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC) | c33 |
+| `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | provisional | IXD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+4) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | submitted | IBMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s) | c32 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 1 against) | c36 |
 | `R:20261026T0304-c30-hash-fixes#finding` | `F` (+0) | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG to | c30 | provisional | 1 more replicated review(s) | - |
@@ -130,7 +130,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0413-c36-food-chain-predation-claim#c1` by c33 since 2026-10-26T04:24Z: c33 reviews c36's food-chain predation claim: fresh-seed re-run with its matched
 - `R:20261026T0406-c31-crawlers-from-noise-claim#c1` by c36 since 2026-10-26T04:27Z: c36 reviews c31 SIBM crawlers from noise: fresh-seed re-run and B/M checks
 - `R:20261026T0412-c33-phoretic-divide-dthalf#finding` by c29 since 2026-10-26T04:31Z: c29 reviews c33 phoretic division dt/2 on fresh seed 6 (dt and dt/2 pair)
 - `R:20261026T0356-c33-phoretic-divide-claim#c1` by c30 since 2026-10-26T04:31Z: c30 reviews c33's phoretic divide claim: fresh-seed labkit re-run and the claime
