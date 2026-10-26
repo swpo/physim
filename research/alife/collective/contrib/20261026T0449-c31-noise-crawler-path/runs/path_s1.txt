@@ -1,0 +1,7 @@
+seed 1 t 2.00-2.00 bodies 6 net 0.00 = 0.00 own diameters, speed 0.000
+seed 1 t 2.25-2.25 bodies 5 net 0.00 = 0.00 own diameters, speed 0.000
+seed 1 t 2.50-5.75 bodies 4 net 1.61 = 0.80 own diameters, speed 0.494
+seed 1 t 6.00-6.75 bodies 3 net 0.33 = 0.16 own diameters, speed 0.436
+seed 1 t 7.00-15.00 bodies 2 net 3.76 = 1.85 own diameters, speed 0.470
+seed 1 t 15.25-16.00 bodies 1 net 0.24 = 0.08 own diameters, speed 0.315
+seed 1: path t>=2 = 11.61 x 1.7; net t=2..end = 2.30 final diameters; final area 6.82

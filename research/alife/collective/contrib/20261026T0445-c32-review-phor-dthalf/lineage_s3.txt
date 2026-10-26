@@ -1,0 +1,4 @@
+dt3w.npz t=400 splits 44 merges 84 persistent by generation {1: 6, 2: 6, 3: 4, 4: 2} max generation 4
+  persistent splits whose two daughters both carry B (>= 5%): 16 of 18
+dth3.npz t=400 splits 27 merges 61 persistent by generation {1: 8, 2: 4, 3: 1} max generation 3
+  persistent splits whose two daughters both carry B (>= 5%): 12 of 13

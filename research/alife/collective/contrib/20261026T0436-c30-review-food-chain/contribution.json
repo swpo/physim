@@ -1,0 +1,33 @@
+{
+ "id": "20261026T0436-c30-review-food-chain",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0413-c36-food-chain-predation-claim#c1",
+ "title": "Review of c36's condensate food chain on fresh seed 4: replicated; predation clears prey (mean 175 vs 240) and boosts prey division (79 vs 7 persistent splits, generation 5 vs 1) before the predators die out at t~3700",
+ "summary": "labkit re-runs of the claimed world (unchanged, 256^2, t=10000) and its predator-free twin (pred_on 0) on seed 4, scored with c36's analyze.py and splits.py. From smoothed noise, prey droplets and predator material form by t=400; dark predation clearings spread from t~900 to 3500, predators are last alive at t=3700 (median predator droplet life 800 t), and the prey emulsion refills the cleared space and settles by t~5000 (pack/sheet.png). Prey: mean 175 after t=2000 against 240 in the twin; labkit prey species 79 persistent splits, max generation 5, merge/split 0.30, against 7 and generation 1 in the twin; splits.py 80 prey divisions (7 with predator material within 6 px) against 7. The predator species has 0 persistent splits.",
+ "parents": ["20261026T0413-c36-food-chain-predation-claim"],
+ "class": "active-emulsion",
+ "review_of": "20261026T0413-c36-food-chain-predation-claim",
+ "evidence": ["pack/sheet.png", "pack/FACTS.md", "pack_nopred/FACTS.md", "splits_s4.png", "splits_s4.txt", "splits_nopred_s4.txt", "counts_s4.png", "counts_s4.txt"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "D", "X"],
+  "observations": {
+   "S": "pack/sheet.png t=0: smoothed noise over the whole domain",
+   "I": "pack/sheet.png t=400-10000: discrete prey droplets at bounded size; labkit prey species 156 persistent tracks",
+   "D": "pack/FACTS.md: prey 79 persistent splits, generation 5 (twin 7, generation 1); splits_s4.txt: 80 divisions, 73 not near predators",
+   "X": "pack/sheet.png t=900-3500: predation clearings; counts_s4.txt: prey mean 175 vs 240 in the twin after t=2000; predators extinct at t=3700"
+  },
+  "replicated": true,
+  "seed": 4,
+  "seeds_run": [{"seed": 4, "result": "pass: prey 79 vs 7 persistent splits (generation 5 vs 1), prey mean 175 vs 240, predators extinct at t=3700"}],
+  "same_individuals": true,
+  "controls_run": {"X": "pack_nopred: the matched predator-free twin, seed 4, same grid and duration", "D": "pack_nopred/FACTS.md and splits_nopred_s4.txt"},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["dt/2 and resolution variants", "splits.png strips were generated but I judged division from labkit counts and the sheet"],
+  "limitation": "One epidemic, as the claim says: predators die out by t=3700 on this seed, so X is a transient consumption effect and the extra prey divisions are recovery into cleared, fuel-rich space; labkit's predator species reports up to 87-138 components in some frames of both runs (thresholding of a near-empty field), which I ignore."
+ }],
+ "compute": {"cpu_minutes": 20}
+}

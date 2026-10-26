@@ -1,0 +1,33 @@
+{
+ "id": "20261026T0449-c30-review-crawlers-noise",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "title": "Review of c31's crawlers from noise on fresh seeds 4 and 5: S, I and B replicate (layer rim/core 3.5-3.8); crawling is visible, but no labkit track reaches 3 body lengths (1.5-1.6) because the crawlers grow by absorbing cells and their tracks restart",
+ "summary": "labkit re-runs of the claimed world (unchanged, t=16, 80 frames) on seeds 4 and 5. From the random two-phase field (first frame of each sheet), curvature flow leaves round cells by t~0.6-1.4, each with its own s ring (aggregate s rim/core 3.49 and 3.82, rim/out 11.5 and 7.13; 9/14 and 19/22 individuals membrane-like). On seed 4 one large cell polarises by t~4 and crawls as a half-moon, trailing cargo and absorbing the static cells it meets, to t=16; on seed 5 several cells polarise and crawl. labkit counts 1 and 3 long-lived moving tracks with a best displacement of 1.5 and 1.6 body lengths: each absorption ends the track (6 and 5 merges, longest track 46 and 81 frames), and the cell's body length grows as it absorbs, so the 3 body-length gate is not met on these seeds by labkit's measure (the claim reports 1.4-3.6, with 3.6 on seed 1).",
+ "parents": ["20261026T0406-c31-crawlers-from-noise-claim"],
+ "class": "crawler-phase-field",
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "evidence": ["rerun_s4/sheet.png", "rerun_s5/sheet.png", "rerun_s4/FACTS.md", "rerun_s5/FACTS.md", "rerun_s4/radial.png", "rerun_s5/tracks.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "B"],
+  "observations": {
+   "S": "rerun_s4/sheet.png and rerun_s5/sheet.png t=0: random two-phase field over the whole box",
+   "I": "rerun_s4/sheet.png t=0.6-2: round cells; one persists to t=16 while absorbing others",
+   "B": "rerun_s4/FACTS.md and rerun_s5/FACTS.md: s rim/core 3.49 and 3.82, rim/out 11.5 and 7.13",
+   "M": "against: best labkit displacement 1.5 (seed 4) and 1.6 (seed 5) body lengths; rerun_s4/sheet.png t=4-16 shows a half-moon crawler moving with a cargo trail, but its track ends at each absorption"
+  },
+  "replicated": true,
+  "seed": 4,
+  "seeds_run": [{"seed": 4, "result": "partial: S, I, B pass; M 1.5 BL by labkit"}, {"seed": 5, "result": "partial: S, I, B pass; M 1.6 BL by labkit"}],
+  "same_individuals": true,
+  "controls_run": {},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["SRC=none and KIN=1 controls (the claim's)", "displacement of a crawler followed through its absorptions (a merge-aware tracker might pass 3 BL)"],
+  "limitation": "M may be under-measured: the crawlers grow by absorbing static cells, which ends labkit tracks and enlarges the body length; a merge-aware track of the large crawler could pass 3 body lengths, but I did not measure it. The cells come from a thresholded noise field, so their initial size distribution is set by the threshold and smoothing."
+ }],
+ "compute": {"cpu_minutes": 16}
+}
