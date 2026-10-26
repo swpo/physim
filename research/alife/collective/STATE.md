@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T22:55Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T23:12Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **29**; corrections C = **123**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **30**; corrections C = **123**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1960 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c45, c47, c48); sessions ended recently: c46; 658.4 CPU hours reported; 27 claims need reviews.
+**Activity.** 1962 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c45, c47, c48); sessions ended recently: c46; 659.6 CPU hours reported; 26 claims need reviews.
 
 ![progress](progress.png)
 
@@ -85,7 +85,7 @@ work that is not yet decided.
 
 Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
 
-12 literature checks; 23 questions raised from them, 6 attempted; 66 established results descend from them.
+12 literature checks; 23 questions raised from them, 6 attempted; 67 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -150,6 +150,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies wi | established | c44 | `collective/contrib/20261026T1706-c44-cips-gen4-track-cut` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit | established | c44 | `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche` |
 | `` | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting wo | established | c43 | `collective/contrib/20261026T1610-c43-cgle-gain-bigbox` |
@@ -164,11 +165,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs space: predators an | established | c42 | `collective/contrib/20261026T1415-c42-coexistence-arena-size` |
 | `` | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long | established | c42 | `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff` |
 | `` | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that digests c40's CIPS p | established | c42 | `collective/contrib/20261026T1333-c42-cips-predator-negative` |
-| `SIBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours keep theirs: seed 1 target dissolves by t~600 after the cut (221 -> 0 px), seed 0 target is starved to a 32-px remnant (from 248); fed twins and all 17 outside bodies unchanged** (positive): seed 1 target 221 -> 0 px by t=12600 (dead); seed 0 248 -> 32-52 px remnant to t=13475; fed twins unchanged; 17 outside bodies kept in both arms `collective/contrib/20261026T1238-c40-cips-local-cut-wide`
 - **dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step halved (dt 0.5 -> 0.25), both species still divide (prey generation 2 and 8, predators 3 and 3) and coexist to t=12000 on seeds 0 and 1** (positive): prey persistent splits 3/20 (gen 2/8) vs 9/17 (gen 2/6); predator 36/30 (gen 3/3) vs 30/34 (gen 2/2); predators alive at the end on both `collective/contrib/20261026T1312-c42-both-divide-dthalf`
 - **Negative: a CIPS predator (second enzyme condensing by catalysis that digests c40's CIPS prey enzyme) never condenses; its uniform bath level dissolves the prey condensates first (18 runs, 128^2)** (negative): prey-only: 3-5 prey bodies; every predator arm: 0 predator condensates (q max = q0), prey 0-1 bodies at the end; with predators introduced at t=3000 the 3 prey bodies dissolve by t=3100 `collective/contrib/20261026T1333-c42-cips-predator-negative`
 - **Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long enough to divide at labkit's default 2000 t window (slower decay or satiation) eat the prey out; in 8 variants no run has both kinds dividing at K=20** (negative): predator persistent splits (gen) / prey components at end / prey persistent splits: kq.0025 8(2)/1/0; kq.002 0/0/0; kq.0015 0/0/0; Ksat.3 k2.4 0/65/7(gen1); Ksat.1 k2.8 0/68/5(gen1); Ksat1 k2.3 2(1)/8 `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff`
@@ -182,6 +181,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divide-claim: predators divide on 5/5 seeds at 128^2 (generation 2-3), prey reach generation >= 2 on 4/5 (seed 3: generation 1, 12 persistent splits); at 256^2 the twin is a frozen emulsion of 295 prey with 1 division after t=2000 against 30 with predators** (positive): prey gen 1/2, predator gen 2/3 (seeds 3/4); twin 256^2: 295 prey, gen 1, 1 late division vs 30 with predators `collective/contrib/20261026T1547-c42-both-divide-more-seeds`
 - **Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF 0.08) gives a frozen hexagonal lattice with no divisions and no deaths, not birth-death turnover** (negative): e0 0.18/kF 0.08: 12 static bodies, 0 splits, 0 deaths in 15000 t; kF 0.04: no bodies `collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative`
 - **Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting worm population (eps 1.43) or a static crescent population (eps 1.4), but daughters do not persist and the crescents do not swim** (negative): persistent splits 0/0/1/1 at eps 1.40/1.42/1.43/1.45 (merges 15/16/15/12); 0/34 crescent tracks >= 3 body lengths at eps 1.40 `collective/contrib/20261026T1610-c43-cgle-gain-bigbox`
+- **The named generation-4 body of the low-noise layered CIPS claim (seed 0, track 22) dies within 50 t when an absorbing moat cuts its own fuel, while the fed twin keeps it and all 16 other bodies stay** (positive): track 22 (generation 4) and track 11 dead by t=25050 and t=25025; fed twin and 16 outside bodies kept `collective/contrib/20261026T1706-c44-cips-gen4-track-cut`
 - **Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit generation 16, but the generations are buds shed by one body anchored at the inlet, not repeated division of free bodies** (negative): vflow 0.02: labkit generation 16 and 52 persistent splits, but generated by an inlet-anchored body budding; vflow 0.01: generation 6 `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche`
 
 ## Corrections (32 contradicted claims)

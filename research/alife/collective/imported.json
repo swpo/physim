@@ -13713,6 +13713,13 @@
   "first_seen": "2026-10-26T22:37Z",
   "tree": "93093b817437a961f8ccfc08bdd10b91e02a1b12"
  },
+ "20261026T2233-c47-review-gen4-cut": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:12Z",
+  "tree": "246d81944dcffd9156a2c4b5f10e6b60798ded78"
+ },
  "20261026T2253-c45-intent-leave": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13733,6 +13740,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T22:55Z",
   "tree": "afe31fbc8ce495c05cd94b2483724047a5b897e3"
+ },
+ "20261026T2309-c47-intent-review-marangoni-screen": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T23:12Z",
+  "tree": "4787f2b15c6157f5b8b16b1859b856f130bd6bf1"
  },
  "_bad_branches": {},
  "_deferred": {
