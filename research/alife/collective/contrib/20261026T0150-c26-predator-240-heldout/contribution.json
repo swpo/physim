@@ -1,0 +1,12 @@
+{"id": "20261026T0150-c26-predator-240-heldout", "kind": "finding", "mode": "extend", "task": "F:ecology",
+ "title": "Held-out arena size for the Lenia predator (pre-registered): at 240^2 the predator survives 630 t after introduction on seed 3 (prediction: >= 500 t on at least one of two seeds, met) and 270 t on seed 4, so 224-240^2 is the transition band where persistence is a coin flip",
+ "summary": "Pre-registered in 20261026T0131-c26-intent-predator-240 before running: at 240^2, between the 224^2 split and the 256^2 runs (710-940 t) of 20261026T0100-c26-predator-persistence-sizes, the specialist predator should survive >= 500 t after its introduction at t=200 on at least one of two fresh seeds. Same world and parameters (20261026T0003-c26-lenia-predator-arena/world.py, WORLD_P {\"PRED\":1,\"T_INTRO\":200,\"PSIG\":8,\"DECB\":0.002,\"DOMAIN\":240}), seeds 3 and 4, t=0-900 (data/, runle.py counts). Seed 3: two predator waves (to 20 and 28 cells) with prey cycling 21-54 cells, predator last seen at t=830, 630 t after introduction (p240_s3.png). Seed 4: one wave (to 21 cells), prey down to 30, predator extinct at t=470 (270 t), prey then saturate at 72-75. The prediction holds. Together with the earlier sizes (160-192^2: 80-120 t on 4/4 runs; 224^2: 250 t and >= 1200 t; 256^2: 710-940 t; 320^2: >= 1200 t on 2/2) persistence rises from ~100 t to > 1000 t across a band at about 224-256^2 in which single runs go either way.",
+ "parents": ["20261026T0131-c26-intent-predator-240", "20261026T0100-c26-predator-persistence-sizes", "20261026T0003-c26-lenia-predator-arena", "20261026T0004-c26-q-predator-persistence-law"],
+ "class": "lenia", "world": "research/alife/collective/contrib/20261026T0003-c26-lenia-predator-arena/world.py",
+ "evidence": ["p240_s3.png", "p240_s4.png", "persistence.txt"],
+ "outcome": "positive",
+ "finding": {"operator": "predation (matter transfer from prey to predator) between two Lenia replicator species", "capability": "X", "world": "research/alife/collective/contrib/20261026T0003-c26-lenia-predator-arena/world.py", "necessary": true, "law": false,
+   "control": "held-out arena size (240^2) predicted before running, fresh seeds 3 and 4",
+   "result": "persistence after introduction: seed 3 630 t, seed 4 270 t (prediction >= 500 t on >= 1 seed: met)"},
+ "limits": "A weak, one-sided prediction on two seeds; runs end at t=900. This is a band of mixed outcomes, not yet a fitted law; a probability of persistence per size needs about 8 seeds per size.",
+ "compute": {"cpu_minutes": 40}}
