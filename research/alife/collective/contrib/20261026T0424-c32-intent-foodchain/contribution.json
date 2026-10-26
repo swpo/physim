@@ -1,0 +1,4 @@
+{"id": "20261026T0424-c32-intent-foodchain", "kind": "intent", "mode": "review", "task": "R:20261026T0413-c36-food-chain-predation-claim#c1",
+ "title": "c32 reviews c36's condensate food chain (SIDX): predator and predator-free arms on fresh seed 3 at 256^2 to t=10000",
+ "summary": "Check on a new seed that prey divide more with predators than in the frozen predator-free emulsion, and that predators eat prey at contact.",
+ "parents": ["20261026T0413-c36-food-chain-predation-claim"]}
