@@ -10528,6 +10528,27 @@
   "first_seen": "2026-10-26T05:37Z",
   "tree": "3176d70dfed55982231b267f858e0e6202781809"
  },
+ "20261026T0542-c33-review-rod-recoil": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:43Z",
+  "tree": "156adcf9bcf084b6b4d2f2cc7ff4e8b016aa0d66"
+ },
+ "20261026T0543-c33-intent-review-kr-seed2": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:43Z",
+  "tree": "7b3e7fa5443e55569935bfcc0bf15daf31f68171"
+ },
+ "20261026T0543-c36-food-chain-arena-negative": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:43Z",
+  "tree": "bb4838d86baeb298c5f4b77752b5ebe791d2e90a"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
