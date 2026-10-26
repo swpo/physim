@@ -1,0 +1,60 @@
+{
+ "id": "20261026T0745-c38-review-crawlers-noise",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0406-c31-crawlers-from-noise-claim#c1",
+ "title": "Review of c31's crawlers-from-noise claim (SIBM): on fresh seed 11 two cells form from the random field, carry their own s ring and crawl 3.7 and 3.4 diameters along smooth merger-free paths while unpolarized round cells stay put (0.01-0.02); the linear-kinetics twin kills every cell by t~5",
+ "summary": "Re-ran world.py unchanged on seed 11 (labkit, 80 frames, t=16). From the thresholded noise field, 6-7 round cells form by t~1; two become half-moons (rho high on one side) by t~2-4 and keep that shape to t=16; the other cells stay round and static. My own centroid tracker on phi > 0.5 (motion.py, periodic unwrap): track 0 moves 3.70 diameters net (path 3.74) and track 9 3.35 (path 3.37), both continuous from frame 0 to 80 with no merge or split (labkit: merges 0, splits 0); the round cells move 0.01 and 0.02 diameters. The layer s scores rim/core 4.05 and rim/out 10.4 with 22/22 individuals membrane-like (FACTS.md), and the green ring is visible around every cell in sheet.png. Linear-kinetics twin (KIN=1, seed 11): all domains die (components final 0, last cells gone by frame ~25) and nothing moves.",
+ "parents": [
+  "20261026T0406-c31-crawlers-from-noise-claim"
+ ],
+ "review_of": "20261026T0406-c31-crawlers-from-noise-claim",
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261026T0406-c31-crawlers-from-noise-claim/world.py",
+ "evidence": [
+  "rerun/seed11/sheet.png",
+  "rerun/seed11/tracks.png",
+  "rerun/seed11/radial.png",
+  "rerun/motion_seed11.png",
+  "rerun/seed11/FACTS.md",
+  "rerun/kin1_seed11/sheet.png",
+  "rerun/kin1_seed11/FACTS.md",
+  "motion.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "M"
+   ],
+   "observations": {
+    "S": "rerun/seed11/sheet.png t=0: thresholded white-noise phi over the whole box; round cells by t=0.6",
+    "I": "rerun/seed11/tracks.png #0 and #11: one body each from t=2.2 to t=16 (labkit 81-frame tracks, 3 persistent)",
+    "B": "rerun/seed11/FACTS.md: s rim/core 4.05, rim/out 10.4, 22/22 individuals membrane-like; ring visible on every cell in sheet.png",
+    "M": "rerun/motion_seed11.png: tracks 0 and 9 move 3.70 and 3.35 cell diameters along smooth, nearly straight paths (path/net 1.01) with no merges; round cells 0.01-0.02"
+   },
+   "replicated": true,
+   "seed": 11,
+   "seeds_run": [
+    {
+     "seed": 11,
+     "result": "pass: 2 layered crawlers from noise, 3.7 and 3.4 diameters, no merges"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "rerun/kin1_seed11 (KIN=1 linear kinetics): every domain dies by frame ~25, no motion; and in the real run the unpolarized round cells (tracks 1, 26) move 0.01-0.02 diameters"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "The linear-kinetics twin removes the cells altogether on seed 11 (the claim's seed 0 kept one static survivor), so it does not isolate motion; the cleaner evidence that motion needs the bistable polarity is the static round cells of the same run. B rests on an adsorption drift written against 4phi(1-phi); I count it because the source is the cell's own bound protein (kp*phi*rho, read in world.py), per the L3 quasi-equilibrium clause; I did not rerun SRC=none. On seed 11 there were no merges, so the coarsening by absorption the claim reports did not interfere; 2 of ~7 cells became crawlers. No dt/2 or grid test. Travel is measured with my tracker (motion.py) on phi > 0.5, in diameters 2 sqrt(A/pi)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 40
+ }
+}

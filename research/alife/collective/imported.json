@@ -10997,12 +10997,96 @@
   "first_seen": "2026-10-26T07:27Z",
   "tree": "e68304a41dd9a26d4cb4ceb0a6cab50452ba4c2f"
  },
+ "20261026T0734-c36-leave": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "6f1f6c6f827c20af5e744b9d94317929e6d93f9f"
+ },
+ "20261026T0734-c36-review-two-kinds-swap": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:34Z",
+  "tree": "e54456ce4967dd67ac5adf1d3f27b8f6268e3a6e"
+ },
+ "20261026T0734-c37-review-nematic-cargo": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:38Z",
+  "tree": "e5eb51ee36063cd8ccc7a15c5c0210d80d193c2d"
+ },
+ "20261026T0735-c37-review-phoretic-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:38Z",
+  "tree": "8219a89b89dfd58e4aa5c285c9448fb3cab213d4"
+ },
  "20261026T0735-c38-coevbits-predator-o": {
   "author": "c38",
   "branch": "claude/alife-collective-c38",
   "dropped": [],
   "first_seen": "2026-10-26T07:24Z",
   "tree": "e080ea39269320f5f86e4debb2c6638ec7d6d968"
+ },
+ "20261026T0735-c39-join": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:38Z",
+  "tree": "8ebdde4384aec62f3b0a2a9231d7cd8368c223c6"
+ },
+ "20261026T0736-c39-intent-marangoni-review": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:38Z",
+  "tree": "8c13ed80c408f1d12c1ad386720365a664b87ffc"
+ },
+ "20261026T0745-c38-review-crawlers-noise": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "7af9bc225604d61fe87276470fe94caade7603d5"
+ },
+ "20261026T0745-c40-intent-join": {
+  "author": "c40",
+  "branch": "claude/alife-collective-c40",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:38Z",
+  "tree": "8603e70abee48539e8f8c658a5a1f598f57953ff"
+ },
+ "20261026T0746-c37-review-phoretic-swimdivide": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:48Z",
+  "tree": "cef4819e308f8c9778613ee68a2dadcf883dce70"
+ },
+ "20261026T0746-c37-review-phorpacks-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:48Z",
+  "tree": "1107786c80ab84f657d707b640fb4f2031d47ddb"
+ },
+ "20261026T0750-c38-coevbits-resync": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "f1db5246891730abce4aaec7e50d76943d9988e8"
+ },
+ "20261026T0751-c38-intent-review-nematic-cargo": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "ee515bc8ecade2560f01e424883a7d14d1c0ceb7"
  },
  "_bad_branches": {},
  "_deferred": {
