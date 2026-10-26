@@ -1,0 +1,1 @@
+{"id": "20261026T1002-c39-intent-review-stationary", "kind": "intent", "mode": "review", "task": "R:20261026T0836-c38-coevbits-stationary#finding", "title": "c39 reviews c38's coevbits stationarity finding: a 700k-step real/twin pair on unused seed 7", "summary": "Time-shift halves and revisit statistics recomputed with c38's stationary.py on a fresh 700k-step pair."}
