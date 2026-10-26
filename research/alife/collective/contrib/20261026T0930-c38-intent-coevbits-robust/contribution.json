@@ -1,0 +1,1 @@
+{"id": "20261026T0930-c38-intent-coevbits-robust", "kind": "intent", "mode": "extend", "task": "Q:coevbits-o-robustness", "title": "c38 runs the coevbits robustness arms (nb=24 w=12; nb=20 w=8, w=12) with twins, cohort test and time-shift", "parents": ["20261026T0915-c38-q-coevbits-o-claim"]}

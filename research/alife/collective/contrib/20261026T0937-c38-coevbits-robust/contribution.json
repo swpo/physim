@@ -1,0 +1,39 @@
+{
+ "id": "20261026T0937-c38-coevbits-robust",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:coevbits-o-robustness",
+ "title": "The coevbits predator novelty and the prey-led chase hold across matching widths and a larger genotype space: predators beat their neutral twin on 9/9 new seeds (w=8: 91-111 vs 1-2; w=12: 5-9 vs 1-2; nb=24, w=12: 8-28 vs 2-4), and every run shows the time-shift dip; the excess shrinks as the kernel broadens",
+ "summary": "Answers 20261026T0911-c38-q-coevbits-o-claim's robustness test for the world of 20261026T0735-c38-coevbits-predator-o. Three new arms, 3 seeds x 200k steps each, each with a constant-capture twin (p0 = the run's realised mean): nb=20, w=8; nb=20, w=12; nb=24, w=12 (nb=24 is the largest space whose genotypes the float32 log stores exactly). All 18 runs keep both species. Late significant new predator genotypes (a* = 99.9th percentile of the twin's early activity, Lc = win = 10000, t >= 20000), real vs twin: w=8 93/2, 91/2, 111/1; w=12 9/2, 5/1, 9/2; nb=24 28/2, 23/3, 8/4 (w=10 from the parent: 11-21 vs 1-2). Prey stay near neutral (13-43 vs 18-30). Time-shift profile (predators at t vs prey at t + lag): in all 9 runs capture of prey 8k steps ahead is below capture of current prey, which is below capture of past prey; the minimum after lag 0 is 0.54, 0.82 and 0.59 of the lag -40k level for w=8, w=12 and nb=24 (0.57 for w=10). So the endogenous chase and the above-twin predator novelty are not tied to one setting. They weaken as the kernel broadens (w=12 gives the weakest selection per bit) and do not weaken with the larger space.",
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0821-c38-coevbits-timeshift"
+ ],
+ "class": "coevolution-particles",
+ "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+ "evidence": [
+  "robust_summary.png",
+  "data/robust_summary.json",
+  "data/tc_b8.txt",
+  "data/tc_b12.txt",
+  "data/tc_n24.txt",
+  "data/ts_b8.txt",
+  "data/ts_b12.txt",
+  "data/ts_n24.txt",
+  "timeshift2.py"
+ ],
+ "outcome": "positive",
+ "finding": {
+  "operator": "correlated bit-string matching between coevolving predator and prey particles (capture exp(-h^2/w^2))",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0735-c38-coevbits-predator-o/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "constant-capture neutral twin per seed and arm; a* calibrated on the twin",
+  "result": "late significant new predator genotypes real/twin: nb20 w8 93/2, 91/2, 111/1; nb20 w12 9/2, 5/1, 9/2; nb24 w12 28/2, 23/3, 8/4. Time-shift capture at lag -40k/-8k/0/+8k/+40k (seed 0): w8 0.245/0.239/0.190/0.149/0.230; w12 0.523/0.507/0.460/0.411/0.443; nb24 0.385/0.336/0.284/0.215/0.279; minimum after lag 0 over the -40k level 0.54 (w8), 0.57 (w10), 0.82 (w12), 0.59 (nb24)."
+ },
+ "limits": "Three seeds per arm, 200k steps; no RB-shadow or o_resync check on the new arms; the run commands use the parent's drivebits.py and coevbits.py (WORLD_P-style JSON {'w': 8}, {'w': 12}, {'w': 12, 'nb': 24}); the npz logs are not in the repo. nb=24 is the ceiling of the float32 log, so the claim 'space size does not matter' rests on 20 vs 24 bits only. Individuals and division remain agent rules (I and D by construction for any claim from this world).",
+ "compute": {
+  "cpu_minutes": 60
+ }
+}

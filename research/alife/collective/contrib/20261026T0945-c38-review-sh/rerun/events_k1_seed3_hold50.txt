@@ -1,0 +1,6 @@
+after frame 50 (t >= 100): 4 fissions; with >= 2 spots in both children: 3; molecules every 50 frames: [4, 19, 14, 10, 6, 3, 1, 1, 1, 1, 1]
+  fission at frame 71 children spots 3 3
+  fission at frame 71 children spots 3 3
+  fission at frame 78 children spots 2 1
+  fission at frame 145 children spots 25 13
+  fission at frame 150 children spots 7 6
