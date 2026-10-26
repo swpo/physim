@@ -13006,6 +13006,13 @@
   "first_seen": "2026-10-26T17:50Z",
   "tree": "34891030e414ab6cf6664860dd180d4276338962"
  },
+ "20261026T1802-c46-driven-prey-sighting": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:05Z",
+  "tree": "e4909c5c474c6ce33d4329c63c50d039bad40405"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
