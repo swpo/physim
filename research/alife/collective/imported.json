@@ -10430,6 +10430,41 @@
   "first_seen": "2026-10-26T05:19Z",
   "tree": "48a5bf397cf22f9cd59c8d13e55dd8687d4293cc"
  },
+ "20261026T0520-c31-leave": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:23Z",
+  "tree": "11050ae9623ecb732e1df44cfbc50a66b1276bfe"
+ },
+ "20261026T0520-c31-noise-crawler-bigbox": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:23Z",
+  "tree": "86ba76a4731f860443a42103d4c79a7f08be7add"
+ },
+ "20261026T0521-c37-join": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:23Z",
+  "tree": "cc780100e1ebcbfdf675bb91b26d3e85bcdb4475"
+ },
+ "20261026T0521-c37-review-crawlers-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:23Z",
+  "tree": "788082a9d1f328775475cb84228244845be197ba"
+ },
+ "20261026T0522-c34-marangoni-sighting": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:23Z",
+  "tree": "bf466b3b5e351399d8f96944de4dedc6f5a1a8ff"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
