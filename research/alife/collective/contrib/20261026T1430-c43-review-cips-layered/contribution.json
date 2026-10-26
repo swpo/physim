@@ -1,0 +1,68 @@
+{
+ "id": "20261026T1430-c43-review-cips-layered",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1100-c40-cips-layered-divide-claim#c1",
+ "title": "Review of c40's CIPS layered-divide C:metabolic-cell claim on fresh seed 37: S, I, B, E, D all replicate; B survives a body-only s source; graded fuel cut sets body size",
+ "summary": "Fresh labkit re-run on seed 37 (world.py defaults, T=20000): 5 bodies nucleate from the random field and divide by pinching into round daughters, 12 persistent splits, max generation 3, 0 merges, 17 bodies at the end (rerun/seed37). labkit radial s is membrane-like in 72/79 individuals (rim/core 4.76, rim/outside 21.1). The claim's fuel fork on seed 37 at t=12000 dissolves all 18 bodies within 100 t (6 at +50, 0 at +100), also with turnover off, while the fed twin goes 18 -> 20 (fork_s37.png). With s made only inside bodies (e>0.5) every body still carries the layer at every sampled time (41/41 body-samples, ctrl_bodysrc/ring_bodyonly_s37.json); a medium-only source also makes a rim, so the drift places s and B rests on the body making it. A graded fuel cut at t=8000 (fork2_s37.png) makes rods split at once into smaller bodies whose total area falls with the regrowth rate (2925/2584/1749 px at kF 0.2/0.1/0.05) and kills all bodies at kF=0.02.",
+ "parents": [
+  "collective/contrib/20261026T1100-c40-cips-layered-divide-claim"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "review_of": "20261026T1100-c40-cips-layered-divide-claim",
+ "evidence": [
+  "rerun/seed37/sheet.png",
+  "rerun/seed37/lineage.png",
+  "rerun/seed37/radial.png",
+  "fork_s37.png",
+  "fork_s37_counts.json",
+  "fork2_s37.png",
+  "fork2_s37_counts.json",
+  "ctrl_bodysrc/ring_bodyonly_s37.json",
+  "ctrl_bodysrc/ring_mediumonly_s37.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "E",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed37/sheet.png t=0: smoothed random field over the whole box; 5 bodies nucleate by t=800",
+    "I": "rerun/seed37/sheet.png: round/rod bodies, separated, bounded size (persistent max/min area 1.96), occupancy 0.09",
+    "B": "rerun/seed37/radial.png s: 72/79 individuals membrane-like, rim/core 4.76, rim/outside 21.1; ctrl_bodysrc/ring_bodyonly_s37.json: with s produced only inside bodies all 41 body-samples t=1000-6000 pass (rim/core min 5.3, rim/out min 26.9)",
+    "E": "fork_s37.png / fork_s37_counts.json: fuel regrowth stopped at t=12000, 18 -> 6 bodies at +50 t -> 0 at +100 t (also with turnover d=0), fed twin 18 -> 20; fork2_s37.png: graded kF cut shrinks total body area 2925 -> 2584 -> 1749 px and kF=0.02 kills all",
+    "D": "rerun/seed37/lineage.png: 12 persistent splits, max generation 3 from noise-formed founders, 0 merges; sheet t=2700-3500 and t=8700-10400 show dumbbell pinching into round daughters of the same kind"
+   },
+   "replicated": true,
+   "seed": 37,
+   "seeds_run": [
+    {
+     "seed": 37,
+     "result": "pass"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "E": "fork_s37.png and fork_s37_counts.json (claim's fork.py on seed 37: fed vs kF=0 vs kF=0 with d=0); fork2_s37.png (graded kF 0.1/0.05/0.02)",
+    "B": "ctrl_bodysrc/ring_bodyonly_s37.json (s source restricted to e>0.5; world variant ctrl_bodysrc/world.py s_body_only=1) and ctrl_bodysrc/ring_mediumonly_s37.json (s_body_only=-1)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "dt/2 and resolution variants (not run by me)",
+    "the chi=0 Laplacian twin (not re-run by me)"
+   ],
+   "limitation": "The layer's placement is written into the model: a medium-only s source also forms a rim (ring_mediumonly_s37.json rim/core ~16), so B rests on the bodies making the s (body-only control passes) and the layer does no work (one-way coupling). Division axes lie along grid diagonals on seed 37 too, as on the claim's seeds. Division stops once ~17-20 bodies fill the box and there are no deaths in the fed world. Dissolution under kF=0 takes under 100 t because the condensate exists only while catalysis drives the product gradient: the fuel dependence is real dynamics, not build-from-food, but it is the generic fate of an active condensate. One fresh seed."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 120
+ }
+}

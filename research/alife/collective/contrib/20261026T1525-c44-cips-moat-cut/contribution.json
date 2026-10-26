@@ -1,0 +1,37 @@
+{
+ "id": "20261026T1525-c44-cips-moat-cut",
+ "kind": "finding",
+ "mode": "control",
+ "task": "C:metabolic-cell",
+ "title": "Decisive local fuel cut for the layered dividing CIPS condensates: an absorbing fuel moat around one body kills it within 25-50 t on 12 of 12 targets (seeds 0, 1, 9), while every neighbour keeps its size",
+ "summary": "World unchanged (20261026T1100-c40-cips-layered-divide-claim/world.py). From one t=12000 state per seed I branched a fed twin and one arm per target for the 4 bodies with the farthest nearest neighbours: kF=0 in a disk of radius 0.6x the nearest-neighbour distance (26-27 px) and the fuel set to 0 every step in the annulus 16 px <= r <= that radius (an absorbing moat that stops fuel diffusing in). Every target (196-258 px) is gone (e>0.5 area 0) at t=12025-12050 on seeds 0, 1 and 9; the other three targets in each arm stay within 10% of their fed size, and 14-15 bodies outside the cut survive in every arm. Without the moat (kF=0 disk only, 0.75x nn, seed 9; and c40's 20261026T1238 finding) fuel diffuses into the disk (mean F there only falls 0.82 -> 0.64) and only 1 of 4 targets dies; 3 persist as remnants of 21-29% of fed size for 3000 t. So each body depends on its own fuel supply, and the dependence is produced by the dynamics: the enzyme's only source is a uniform turnover that does not depend on F or on the body; the body is held only by its drift up the product, which needs catalysis on the fuel.",
+ "parents": [
+  "collective/contrib/20261026T1100-c40-cips-layered-divide-claim",
+  "collective/contrib/20261026T1238-c40-cips-local-cut-wide",
+  "collective/contrib/20261026T1501-c44-review-cips-layered"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+ "evidence": [
+  "moat_s0.png",
+  "moat_s0.json",
+  "moat_s1.png",
+  "moat_s1.json",
+  "research/alife/collective/contrib/20261026T1501-c44-review-cips-layered/moat_s9.png",
+  "research/alife/collective/contrib/20261026T1501-c44-review-cips-layered/cut_s9.png"
+ ],
+ "finding": {
+  "operator": "local fuel cut with an absorbing moat (kF=0 in a disk around one body plus F=0 in an annulus 16 px <= r <= 0.6x nearest-neighbour distance) in cooperative CIPS on a consumed, regrowing fuel",
+  "capability": "E",
+  "world": "research/alife/collective/contrib/20261026T1100-c40-cips-layered-divide-claim/world.py",
+  "necessary": true,
+  "law": false,
+  "control": "fed twin and the other targets/bodies in each arm, branched from the same t=12000 state; plain kF=0 disk (no moat) on seed 9 for comparison",
+  "result": "targets dead (area 0) at t=12025-12050 in 12/12 arms on seeds 0, 1, 9; other targets within 10% of fed size; 14-15 outside bodies kept in every arm. Without the moat: 1/4 dead, 3/4 remnants at 21-29% of fed size for 3000 t"
+ },
+ "outcome": "positive",
+ "limits": "The moat is an imposed fuel sink (it takes fuel from the medium, not only stops regrowth); it is a per-individual supply ablation in the sense of RUBRIC L4c, not a natural starvation. Targets were chosen as the 4 bodies with the farthest nearest neighbours; the moat's outer radius (0.6x nn) leaves 5-10 px of fed medium before each neighbour's edge. One cut time (t=12000), one moat geometry. Body counts here use e>0.5 with periodic merging and min area 10 px, so they differ from labkit's 19 at t=12000.",
+ "compute": {
+  "cpu_minutes": 70
+ }
+}
