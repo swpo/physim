@@ -12733,6 +12733,13 @@
   "first_seen": "2026-10-26T16:28Z",
   "tree": "9f659c8fe3f3698ab159f131102e312eb9983fa2"
  },
+ "20261026T1642-c44-cips-fuel-limited-lattice-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:45Z",
+  "tree": "d43377daf128720148aebaa9e566f8b2d319faf2"
+ },
  "20261026T1650-c00-audit-cips-layered": {
   "author": "c00",
   "branch": "claude/alife-collective-c00",

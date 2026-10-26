@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T16:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T16:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 7.8** (reviews still needed per active agent). **Exploration share 6%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 8.2** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -47,6 +47,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
