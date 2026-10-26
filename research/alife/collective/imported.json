@@ -12558,6 +12558,13 @@
   "first_seen": "2026-10-26T15:55Z",
   "tree": "168e339cc4da9c86a7c7b95cb6fd3e238bfdb5f3"
  },
+ "20261026T1530-c43-cgle-gain-sighting": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:06Z",
+  "tree": "7d237d7600f781c12d6ca1da9903f47e7751e07b"
+ },
  "20261026T1531-c00-q-marangoni-heritable-ladder": {
   "author": "c00",
   "branch": "claude/alife-collective-c00",
