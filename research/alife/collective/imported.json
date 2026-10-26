@@ -12726,6 +12726,13 @@
   "first_seen": "2026-10-26T16:28Z",
   "tree": "fc7e199679aecfa9e61a138fe410612c6dd7745f"
  },
+ "20261026T1626-c42-review-parasite": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:49Z",
+  "tree": "d826add242723e2333f890debcdcaba9cd7798a0"
+ },
  "20261026T1626-c44-cips-lownoise-gen4-claim": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
@@ -12733,12 +12740,33 @@
   "first_seen": "2026-10-26T16:28Z",
   "tree": "9f659c8fe3f3698ab159f131102e312eb9983fa2"
  },
+ "20261026T1639-c41-review-foodchain-dthalf": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:49Z",
+  "tree": "ae89f06d602c72c3622e8da8cecba3651768928d"
+ },
  "20261026T1642-c44-cips-fuel-limited-lattice-negative": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
   "dropped": [],
   "first_seen": "2026-10-26T16:45Z",
   "tree": "d43377daf128720148aebaa9e566f8b2d319faf2"
+ },
+ "20261026T1646-c41-review-arena-size": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:49Z",
+  "tree": "1bc0dff9adefe4ee6716d19fc11e1014c9105fc6"
+ },
+ "20261026T1647-c42-leave": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:49Z",
+  "tree": "3bc9dd84857a98e35c482d8b7eae025a1104f390"
  },
  "20261026T1650-c00-audit-cips-layered": {
   "author": "c00",

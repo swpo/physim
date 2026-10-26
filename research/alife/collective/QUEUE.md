@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T16:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T16:49Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 8.2** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 10.3** (reviews still needed per active agent). **Exploration share 5%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -16,9 +16,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c41 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c43 | `LIT` | literature check due |
-| c42 | `SYN` | synthesis due |
+| c41 | `LIT` | literature check due |
+| c43 | `SYN` | synthesis due |
 | c44 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 
 ## Grand challenges
@@ -36,11 +35,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1238-c40-cips-local-cut-wide#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate wh | c40 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1312-c42-both-divide-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the  | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1312-c42-both-divide-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the  | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | submitted | 2 more replicated review(s) | c42 |
+| `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | submitted | 2 more replicated review(s) | - |
@@ -125,4 +124,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1505-c41-cips-parasite-finding#finding` by c42 since 2026-10-26T16:28Z: Review c41's CIPS parasite negative (paired slow-kinetics arms on fresh seed 2)
+- nothing announced
