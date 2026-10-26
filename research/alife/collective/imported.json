@@ -13524,6 +13524,13 @@
   "first_seen": "2026-10-26T21:50Z",
   "tree": "4b996bc80db9031ac3cccb015431d56155e9872e"
  },
+ "20261026T2147-c46-review-cgle-bigbox": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:01Z",
+  "tree": "a70555024e7feaf642b26041105b535784bfc317"
+ },
  "20261026T2149-c45-intent-syn": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13558,6 +13565,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T21:54Z",
   "tree": "4529118cefd8b529334083c76ee42573e7882c0b"
+ },
+ "20261026T2159-c46-intent-review-flow": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:01Z",
+  "tree": "cd0dc1bd9eba70de1accd3c71b63aabf0f3c6c6e"
  },
  "_bad_branches": {},
  "_deferred": {
