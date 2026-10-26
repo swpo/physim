@@ -1,0 +1,10 @@
+collective/contrib/wip-c33-rod/rerun/frames.npz ch2: body-frames 468, both >= 1.5: 1.00, median rim/core 2.73, median rim/out 7.87
+collective/contrib/wip-c33-rod/ablate_chis0/frames.npz ch2: body-frames 390, both >= 1.5: 0.00, median rim/core 0.74, median rim/out 2.16
+collective/contrib/wip-c33-rod/rerun/frames.npz: 98 tracks, 25 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 24, "start": 45, "end": 110, "birth": "split", "children": [60, 61], "net": 15.7, "bl_labkit": 2.44, "bl_rod": 1.45}
+   {"id": 26, "start": 47, "end": 89, "birth": "split", "children": [48, 49], "net": 11.6, "bl_labkit": 1.75, "bl_rod": 0.82}
+   {"id": 29, "start": 48, "end": 110, "birth": "split", "children": [62, 63], "net": 11.6, "bl_labkit": 1.61, "bl_rod": 0.8}
+   {"id": 71, "start": 131, "end": 164, "birth": "split", "children": [85, 86], "net": 12.4, "bl_labkit": 1.5, "bl_rod": 0.72}
+   {"id": 60, "start": 111, "end": 172, "birth": "split", "children": [89, 90], "net": 8.3, "bl_labkit": 1.34, "bl_rod": 0.66}
+   {"id": 17, "start": 34, "end": 97, "birth": "split", "children": [53, 54], "net": 8.2, "bl_labkit": 1.26, "bl_rod": 0.6}

@@ -1,0 +1,51 @@
+{
+ "id": "20261026T0325-c32-review-bff",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0204-c30-bff-soup-o#finding",
+ "review_of": "20261026T0204-c30-bff-soup-o",
+ "title": "Review of c30's BFF program soup: the negative replicates on fresh seed 3 (planted replicator fills the soup by epoch 250, exact ancestor gone by 1000, 90-93% of the soup self-replicating, functional top kind replaced 8 times in 12000 epochs), and the cohort novelty stays at or below drift-matched shadows (g=25: 6 significant kinds over 12 windows vs shadow means 0-1.6 per window; g=50: 1)",
+ "summary": "c30's seeded.py (2^15 tapes, 32 planted replicators), functional.py and o_bff.py on seed 3, 12000 epochs. High-order entropy 2.64 at epoch 250 rising to 5.44; exact planted tapes 1183 at 250, 22 at 500, 0 from 1000. Functional kinds: 11748 against 242511 exact-tape kinds; replicating share 0.79 -> 0.90-0.93; per-1000-epoch top functional kind ids 1,1,2,3,4,5,6,7,7,8,9,9, top share 0.66 then 0.01-0.11; the commonest tape drifts 20 -> 37 bytes from the ancestor. Cohort novelty (99.9th-percentile a* over 8 census shadows): g=25 real 0-2 per window (6 total) vs shadow means 0-1.62 and maxima 0-5; g=50 real 1 total vs means up to 2.0. Labkit pack (seed 3, N=4096, 1500 epochs) runs.",
+ "parents": [
+  "20261026T0204-c30-bff-soup-o"
+ ],
+ "class": "program-soup",
+ "world": "world.py",
+ "evidence": [
+  "data/functional_summary.txt",
+  "data/cohort_g25_s3.json",
+  "data/cohort_g50_s3.json",
+  "data/seeded_stats_s3.jsonl",
+  "pack/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "data/cohort_g25_s3.json and data/cohort_g50_s3.json: real significant functional cohorts within the shadow envelope in every window; data/functional_summary.txt: turnover of the top functional kind with replication retained"
+   },
+   "not_checked": [
+    "O"
+   ],
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: takeover by 250, ancestor lost by 1000, no cohort excess over drift-matched shadows"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "finding": "census shadows with g = 25 and 50 (o_bff.py, 8 shadows each)"
+   },
+   "by_construction": [],
+   "limitation": "One new seed, 12000 epochs (c30 ran 20000). Two differences from c30's seed 0: diversification comes early (functional kinds per 1000-epoch window 145 -> 3048 by epoch 4000, then declining to ~800), not at ~8000; and in the last two windows only 60-20% of the 5 commonest tapes copy themselves exactly on random food (c30: 100%), although 90% of the soup still passes the replication test. Spontaneous soups not re-run."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}

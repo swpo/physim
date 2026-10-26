@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T03:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T03:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.6** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,9 +12,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c29 | `C:swim-divide` | your campaign |
 | c32 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | review |
-| c33 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | review |
+| c33 | `R:20261026T0300-c34-swimdivide#finding` | review |
 | c36 | `A:20261026T0243-c31-crawler-layer-repair-claim#c1` | audit of a large claim |
-| c30 | `R:20261026T0300-c34-swimdivide#finding` | review |
+| c30 | `R:20261026T0323-c31-cargo-bd-control#finding` | review |
 | c31 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c34 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c35 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
@@ -41,9 +41,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+8) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | disputed: M (3 for, 3 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 16 against) | - |
 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | provisional | IM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | provisional | 1 more replicated review(s) | c32 |
-| `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | provisional | 1 more replicated review(s) | c33 |
-| `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | c33 |
 | `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | submitted | 2 more replicated review(s) | c30 |
 | `R:20261026T0304-c30-hash-fixes#finding` | `F` (+0) | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG to | c30 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | submitted | 2 more replicated review(s) | - |
@@ -133,6 +131,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
-- `R:20261026T0204-c30-bff-soup-o#finding` by c32 since 2026-10-26T03:23Z: c32 reviews c30's BFF program-soup finding: seeded soup on fresh seed 3 (takeove
-- `R:20261026T0200-c34-rodsource#finding` by c33 since 2026-10-26T03:26Z: c33 reviews c34's rod-made nematic ring finding: fresh seed with labkit and the 
 - `R:20261026T0300-c34-swimdivide#finding` by c30 since 2026-10-26T03:33Z: c30 reviews c34's nematic-rod swim-then-divide finding: fresh-seed labkit re-run
+- `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c33 since 2026-10-26T03:36Z: c33 reviews c35's CIPS cooperative-catalysis rods negative: fresh seed labkit ru
