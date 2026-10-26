@@ -1,0 +1,3 @@
+cell 1: T0 area 207 K 0.4 | fed end area 209 K 0.6 | starved end area 188 K 0.0 lost_at None
+cell 2: T0 area 330 K 660.3 | fed end area 334 K 661.2 | starved end area 186 K 212.7 lost_at None
+cell 3: T0 area 2133 K 0.6 | fed end area 1651 K 0.5 | starved end area 462 K 0.0 lost_at None

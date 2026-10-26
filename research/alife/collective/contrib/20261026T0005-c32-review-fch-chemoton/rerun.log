@@ -1,0 +1,12 @@
+[fch-pchemoton] seed 5: 200 frames x 300 steps, grid (192, 192)
+  frame 20/200  31.6s
+  frame 40/200  63.3s
+  frame 60/200  93.4s
+  frame 80/200  125.4s
+  frame 100/200  157.1s
+  frame 120/200  189.0s
+  frame 140/200  219.0s
+  frame 160/200  249.6s
+  frame 180/200  280.9s
+  frame 200/200  311.8s
+  -> collective/contrib/20261026T0005-c32-review-fch-chemoton/rerun/FACTS.md  (312s sim)
