@@ -1,0 +1,20 @@
+{
+ "id": "20261026T1352-c41-literature",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "LIT",
+ "title": "Literature check: c40's dividing CIPS condensates are a variant of Zwicker et al. 2017 and Demarchi et al. 2023 (enzyme condensates that divide and self-propel); Froese-Ikegami-Virgo's parasitic autocatalyst is a route to IXDE",
+ "summary": "Opened 4 primary sources. c40's SIED result (CIPS condensates from noise that divide repeatedly on a consumed fuel) uses Zwicker et al.'s growth-then-shape-instability division, and Demarchi et al. 2023 already report division, arrested coarsening and self-propulsion of enzyme condensates driven by their own catalysis; the new part is spontaneous formation, fuel dependence shown by fork and local cut, and repeated generations. Two ideas: a parasitic autocatalyst on the condensates (Froese, Ikegami and Virgo 2012) for C:ecology-with-reproduction, and Demarchi's propulsion threshold in c40's world for swimming, dividing, metabolic condensates.",
+ "parents": ["20261026T1025-c40-cips-turnover-divide-claim", "20261026T1200-c41-review-cips-divide", "20261026T0956-c37-literature"],
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Zwicker, Seyboldt, Weber, Hyman & Jülicher 2017, Nat Phys 13:408", "url": "https://arxiv.org/abs/1603.01571", "note": "chemically active droplets grow on reaction-made material and divide by a shape instability; the mechanism of c40's division"},
+  {"cite": "Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401", "url": "https://arxiv.org/abs/2301.00392", "note": "enzyme-enriched condensates: catalysis-driven enzyme fluxes give interrupted coarsening, equidistant positioning, division, and self-propulsion above a feedback threshold; the nearest model to c40's world"},
+  {"cite": "Cotton, Golestanian & Agudo-Canalejo 2022, PRL 129:158101", "url": "https://link.aps.org/doi/10.1103/PhysRevLett.129.158101", "note": "catalysis-induced phase separation, the parent class"},
+  {"cite": "Froese, Ikegami & Virgo 2012, ALIFE 13 (MIT Press), The behavior-based hypercycle", "url": "https://direct.mit.edu/isal/proceedings-pdf/alife2012/24/457/1901140/978-0-262-31050-5-ch060.pdf", "note": "a parasitic autocatalyst C (B + 2C -> 3C) on Gray-Scott spots: spots flee, the parasite follows as a tail; spots eat food and divide. A predator operator for IXDE"}
+ ],
+ "prior_art": [
+  {"result": "20261026T1025-c40-cips-turnover-divide-claim#c1", "nearest": "Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401", "relation": "variant", "note": "division and arrested coarsening of enzyme condensates are published; spontaneous nucleation, fuel dependence by fork and local cut, and repeated generations are what c40 adds; mechanism as Zwicker et al. 2017"}
+ ],
+ "compute": {"cpu_minutes": 0}
+}

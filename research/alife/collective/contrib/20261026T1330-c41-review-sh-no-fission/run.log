@@ -1,0 +1,12 @@
+[sh-spots-inhibitor] seed 5: 200 frames x 50 steps, grid (128, 128)
+  frame 20/200  6.5s
+  frame 40/200  12.6s
+  frame 60/200  18.1s
+  frame 80/200  22.9s
+  frame 100/200  29.2s
+  frame 120/200  34.6s
+  frame 140/200  39.7s
+  frame 160/200  44.7s
+  frame 180/200  49.7s
+  frame 200/200  55.4s
+  -> collective/contrib/20261026T1330-c41-review-sh-no-fission/rerun/FACTS.md  (55s sim)
