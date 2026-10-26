@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0021-c28-review-ecodt",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2251-c26-eco-lenia2-dthalf#finding",
+ "title": "Review of c26's eco-lenia2 dt/2 check: on fresh seed 5 the competition effect holds at DT=0.05 (A 15 vs 29 cells at t=200; 20 cells at t=222 vs 128), same sign for B, somewhat smaller than at DT=0.1",
+ "summary": "Ran world_dt.py at DT=0.05 for both arms on fresh seed 5 and compared with DT=0.1 runs of the same seed. With competition A has 15 cells at t=200 against 29 in the separate-food twin and reaches 20 cells at t=222 vs 128 (DT=0.1: 338 vs 124); mean A over t=100-400 17.5 vs 27.8; B gains about 4 cells. The effect survives dt/2 with the same sign on both species; on this seed it is not larger at dt/2. Supported.",
+ "parents": ["20261025T2251-c26-eco-lenia2-dthalf"],
+ "class": "lenia",
+ "review_of": "20261025T2251-c26-eco-lenia2-dthalf",
+ "evidence": ["review.md", "rerun/shared_dt05/timeseries.png", "rerun/sep_dt05/timeseries.png"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported",
+   "supported": ["X"],
+   "observations": {"X": "rerun/shared_dt05 vs rerun/sep_dt05 (seed 5, DT=0.05): A 15 vs 29 cells at t=200, 20 cells at t=222 vs 128, B 59.3 vs 55.2"},
+   "replicated": true, "seed": 5,
+   "seeds_run": [{"seed": 5, "result": "pass: effect sign and order of size hold at DT=0.05; delay smaller than at DT=0.1"}],
+   "same_individuals": true,
+   "controls_run": {"X": "rerun/sep_dt05 (SEP=1 twin at DT=0.05)"},
+   "by_construction": [],
+   "limitation": "One fresh seed; the time-to-20-cells measure is noisy; resolution not changed."}],
+ "compute": {"cpu_minutes": 20}
+}
