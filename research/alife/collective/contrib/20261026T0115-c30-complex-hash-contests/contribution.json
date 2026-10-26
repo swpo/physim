@@ -1,0 +1,25 @@
+{
+ "id": "20261026T0115-c30-complex-hash-contests",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "F:hash-chemistry",
+ "title": "Complex Hash Chemistry (explicit multiset complexes that contest a neighbour): a static landscape freezes, an uncorrelated zero-sum hash tournament churns 100x below the neutral twin's success rate, and a correlated non-transitive contest sits at the neutral rate; none shows O",
+ "summary": "Particles bound into explicit complexes (1-16 types, kind = composition), moving in the unit square; each complex contests one random neighbour within R, the winner copies itself (density-limited) with type, insert and delete mutations, the loser dies with p=0.5. Four contest rules in the same code, 3 seeds x 20000 steps each, ~2000 complexes: neutral (P=1/2, the in-world twin), transitive (f_A/(f_A+f_B), Sayama's hash fitness), zero-sum hash (P(A beats B)=h(A,B)=1-h(B,A); a resident ties itself) and a correlated feature contest (hashed attack/vulnerability vectors averaged over members; antisymmetric logistic). A kind is significant if its replications within 1000 steps of birth reach the neutral twin's 99.9th percentile (a* 467-629), so the twin gives 1 per 1000 births. Transitive: the commonest kind holds 50-90% of complexes all run, size collapses to 1.05, late significant kinds 0-7 per window (finite adaptive walk, as in Sayama's world). Zero-sum hash: complete turnover (top kind 1-2%) but late significant kinds 0-7 per window out of ~142k births, about 0.01-0.05 per 1000, so 20-100x below neutral: every mutation re-randomises all interactions, no kind keeps an edge. Correlated feature contest: 40-230 per window, 0.6-2 per 1000 births, at the neutral rate; the population mean phenotype stays at the origin (sd 0.07 over time), a mixed equilibrium with no chase. Fixed-threshold counts (a*=50) mislead here: the neutral twin passes them at 2800-3600 per window.",
+ "parents": ["20261026T0049-c30-hash-o-knobs", "20261026T0009-c30-hash-chemistry-o-calibration"],
+ "class": "hash-chemistry",
+ "world": "collective/contrib/20261026T0115-c30-complex-hash-contests/world.py",
+ "evidence": ["contests.png", "calibrated.json", "runs/zs_s0.json", "runs/feat_s0.json", "runs/tr_s0.json", "runs/neu_s0.json"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "explicit multiset complexes with pairwise contests: transitive hash fitness, uncorrelated zero-sum hash, correlated antisymmetric feature contest",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0115-c30-complex-hash-contests/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "in-world neutral twin (P = 1/2, same seed, same events otherwise) sets the significance threshold per seed",
+  "result": "late (t>=2000) significant kinds per 1000 births, 3 seeds: neutral 1 (by construction); zero-sum 0.00-0.05; feature 0.6-2; transitive frozen (top kind 0.5-0.9 of complexes, mean size 1.05). Mean size: zero-sum 13-15 of a cap of 16, neutral and feature drift 3-13, transitive 1.05."
+ },
+ "recommendation": "Neither uncorrelated non-transitivity (hash tournament) nor a smooth skew-symmetric game gives sustained adaptive novelty here; the first destroys heritability of advantage, the second settles into a mixed equilibrium. Candidates for an endogenous O positive control in the collective's worlds should have heritable, correlated advantages AND a mechanism that keeps the equilibrium moving (spatial pursuit, resource depletion by the winner, or growth of the phenotype space itself). Always set the significance threshold from an in-world neutral twin; fixed thresholds are passed by drift.",
+ "limits": "One parameter set per rule (sigma 0.05, dmax 30, pdie 0.5, D 3, beta 3), 3 seeds; per-birth normalisation is noisy for the transitive arm (2700-3800 births per window); the size cap of 16 binds in the zero-sum arm; the feature arm's mean phenotype is a population average and could hide local chases.",
+ "compute": {"cpu_minutes": 25}
+}
