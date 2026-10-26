@@ -1,0 +1,33 @@
+{
+ "id": "20261026T0305-c30-review-ringswim-repair",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2312-c27-ringswim-repair-claim#c1",
+ "title": "Review of c27's ringswim repair claim on fresh seeds 11 and 12: 4/4 front-cut cells re-close their link ring by +120 against exact twins; seed 11 cell 22 then swims 3.99 body lengths with the ring held; one cell below the claimed 0.26 closure threshold also recovered",
+ "summary": "c27's twinrepair.py, unchanged, at T0=10000 for 2000 steps: seed 11 with the wound substrate kept (KEEP_S, as seeds 3-8) and seed 12 with the wound reset to bath (world.damage, as seeds 0-1), 2 cells each; plus a labkit run of seed 11 with --damage 200:0.4:half. All 4 cut cells (40% of area, 47-52% of their links erased) re-close their ring from closure 0.19-0.56 to >= 0.9 at +120 and keep a ring score >= 1.5 in every frame of the second half. Seed 11 cell 22 (251 px): after the cut it rounds into a compact ringed cell by +320 and moves 3.99 body lengths by +2000 (its twin 1.2), ending at 174 px (69% of its pre-cut area; twin 253). Seed 11 cell 23 ends at 222 px, the same as its twin. Seed 12 cell 15 repairs and is then lost at +1440, as its twin is at +1300. Seed 12 cell 39 was left with closure 0.19, below the 0.26 that c27 found lethal, yet re-closed by +120 and ended at 544 px (larger than its 299 px start, so it probably absorbed a neighbour), while its twin was lost at +640. labkit's generic damage follow-up cannot separate repair from merging here: the cut cell merged with another at t=11050 and the comparator at 10050.",
+ "parents": ["20261025T2312-c27-ringswim-repair-claim"],
+ "class": "phase-field",
+ "review_of": "20261025T2312-c27-ringswim-repair-claim",
+ "evidence": ["tr/s11_keepS/twinrepair.png", "tr/s12/twinrepair.png", "tr/s11_keepS/result.json", "tr/s12/result.json", "rerun/seed11/sheet.png", "rerun/seed11/FACTS.md", "rerun/seed11/damage.png"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "B", "R", "M"],
+  "observations": {
+   "S": "rerun/seed11/sheet.png t=0: smoothed noise over the whole domain; cells by t=600",
+   "I": "rerun/seed11/sheet.png t=600-14000: discrete ringed cells at bounded size",
+   "B": "tr/s11_keepS/result.json: ring score >= 1.5 in 100% of second-half frames for both cut cells (median 1.90 and 2.07)",
+   "R": "tr/s11_keepS/twinrepair.png row 2 (cell 22): closure 0.40 -> >= 0.9 at +120, compact ringed cell at +320; 4/4 cuts re-close by +120 (result.json)",
+   "M": "tr/s11_keepS/result.json cell 22: net displacement 3.99 body lengths after the cut with the ring held (twin 1.2)"
+  },
+  "replicated": true,
+  "seed": 11,
+  "seeds_run": [{"seed": 11, "result": "pass: 2/2 cuts repair (wound substrate kept); cell 22 swims 3.99 BL after repair"}, {"seed": 12, "result": "pass: 2/2 re-close (wound reset to bath); one is lost at +1440 like its twin; one recovers from closure 0.19, apparently by absorbing a neighbour"}],
+  "same_individuals": true,
+  "controls_run": {"R": "tr/s11_keepS, tr/s12: c27's exact branched undamaged twins, run by me on fresh seeds"},
+  "by_construction": [],
+  "not_checked": ["links-only erasure control", "mu=0 and chi=0 controls (c28's, not re-run)", "dt or resolution variants"],
+  "limitation": "4 cuts on 2 seeds. Area recovery is partial (cell 22 ends at 69% of its pre-cut area, while cell 23 matches its twin), and the cells' areas swing through divisions and mergers in both arms, so 'regains pre-cut area' is not a clean test. The 0.26 closure threshold for death is contradicted once (cell 39, closure 0.19, recovered, probably via a merger). Curvature flow of the phase field helps the shape repair by construction; the ring re-closure is the cell's own chemistry."
+ }],
+ "compute": {"cpu_minutes": 30}
+}

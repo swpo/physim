@@ -1,0 +1,32 @@
+{
+ "id": "20261026T0317-c30-review-phoretic-janus",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0254-c33-phoretic-janus-claim#c1",
+ "title": "Review of c33's phoretic Janus composites on fresh seeds 4 and 5: replicated; capped A bodies travel 8.4-8.9 body lengths (labkit) and 5/21 composites move >= 3 diameters, against 2.5-3.2 and 0/23 in the reciprocal twin",
+ "summary": "labkit re-runs of the claimed world (unchanged, 400 frames, t=200) and of its reciprocal twin (WORLD_P mu [[1,1],[1,0.5]]: A drawn to B instead of fleeing it) on seeds 4 and 5, plus c33's screen.py, clusters.py and moverstrip.py on seed 4. From a uniform random gas, clusters form by t~33 and A bodies with a B cap on one side are common from t~66 (screen/janus_s4.png). labkit: 39 and 38 long-lived tracks move >= 1 body length, the best 8.4 and 8.9 body lengths; twin 17 and 19, the best 2.5 and 3.2. Particle-identity tracking (composites_s4.txt): 5 of 21 composites (B share 0.1-0.6, alive >= 50 t) move >= 3 cluster diameters net (best 6.4, 4.7, 4.2), against 0 of 23 in the twin (best 1.5). The top mover (mover_s4.png) is an A body carrying a B cap on one side from t=60 to t=164 while travelling 6.9 diameters, but its particle count swings between 19 and 47 and it ends in a merger at t~185.",
+ "parents": ["20261026T0254-c33-phoretic-janus-claim"],
+ "class": "phoretic-colloids",
+ "review_of": "20261026T0254-c33-phoretic-janus-claim",
+ "evidence": ["screen/janus_s4.png", "screen/recip_s4.png", "mover_s4.png", "composites_s4.txt", "rerun/seed4/tracks.png", "rerun/seed4/FACTS.md", "rerun_recip/seed4/FACTS.md"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["S", "I", "M"],
+  "observations": {
+   "S": "screen/janus_s4.png t=0: uniform random A and B gas over the whole box",
+   "I": "screen/janus_s4.png t=66-200: discrete A clusters with B caps; 21 composites alive >= 50 t (composites_s4.txt)",
+   "M": "mover_s4.png: capped A body moving 6.9 diameters net from t=60 to t=164; labkit best tracks 8.4 (seed 4) and 8.9 (seed 5) body lengths vs 2.5 and 3.2 in the reciprocal twin"
+  },
+  "replicated": true,
+  "seed": 4,
+  "seeds_run": [{"seed": 4, "result": "pass: best 8.4 BL (labkit), 5/21 composites >= 3 diameters; twin 2.5 BL, 0/23"}, {"seed": 5, "result": "pass: best 8.9 BL (labkit); twin 3.2 BL"}],
+  "same_individuals": true,
+  "controls_run": {"M": "rerun_recip/seed4, rerun_recip/seed5, screen/recip_s4.png: the matched reciprocal twin (mu_A2 = +1), same seeds, box and duration"},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["dt/2 (the claim ran it)", "B (not claimed)"],
+  "limitation": "Composites exchange particles (the top mover holds 19-47) and merge, so an individual's identity is a cluster label that persists over ~100 t rather than a fixed set of particles; the twin's best labkit track reaches 3.2 body lengths on seed 5, so the gap is 2.8x rather than a qualitative absence at the track level (it is qualitative at the composite level: 0/23)."
+ }],
+ "compute": {"cpu_minutes": 10}
+}
