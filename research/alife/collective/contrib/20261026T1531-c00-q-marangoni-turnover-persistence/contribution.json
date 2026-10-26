@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1531-c00-q-marangoni-turnover-persistence",
+ "created": "2026-10-26T15:31:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "marangoni-turnover-persistence",
+ "title": "Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations",
+ "summary": "In the Marangoni rods, the chemostat term kr (phi_b - phi) pins the domain's mean phi at phi_b, so the total body area saturates (the lever rule, as c40 found for CIPS). Bodies level off at 28-33 by frame 100. Later splits are balanced by merges, and only 4 of 145 rods born after frame 100 divide again (20261026T1530-c00-marangoni-minority-lineages). A run therefore spans about 2 generations. That is too few to tell whether the minority that swims 3 of its own lengths before dividing persists by being redrawn every cycle, and too few for any selection. A trait-blind dilution, like serial transfer in experimental evolution, frees material so that the remaining rods keep dividing. This question builds that turnover and measures how the minority persists over many generations. It also gives the uniform-world baseline that the environment and heredity tests need.",
+ "experiment": "Fork world.py of 20261026T0505-c34-nematic-marangoni (CARGO=0) and add a dilution step every 10 frames. Label the bodies (phi > 0, merged across periodic edges) and sort them by raster order. Draw a fixed-size vector of 256 uniforms from an RNG seeded only by the run seed. Remove body i if u_i < p: inside the body dilated by 2 px, set phi to the mean bath phi outside bodies and set Q and s to 0. The kr term then restores the mean, so the survivors grow. Nothing reads a body's kind, speed or size. Tune p on seed 80 with two 150-frame runs at p=0.05 and p=0.10, in parallel (about 8 min). Aim for a body count of 12-20 (about half the plateau) with at least 5 persistent splits per 20 frames. Then run T=2000 (400 frames, about 21 min) at mar=40 on fresh seeds 81 and 82, and at mar=0 on seed 81 as the floor: 3 runs, about 45 min two at a time. Readouts per 20 frames: births, removals, other deaths (bodies that shrink and vanish), merges and maximum generation. Per birth cohort, one median cycle wide: the median D and the share of dividing tracks with D of 3 or more, in both of PROTOCOL's units. With the scout's methods (extract.py and analyze.py of 20261026T1530-c00-marangoni-minority-lineages, with the time-matched and time-and-place-matched nulls), on 100 or more parent-offspring pairs: parent-offspring and grandparent-grandchild regressions of D, speed, straightness and cycle; and the selection differentials on early speed and on D at fixed speed, measured as descendants alive two median cycles after birth. Pass: births continue at a steady count for 8 or more generations. Then report how the minority persists. A steady prevalence per cohort, with a parent-offspring slope of D whose 95% interval excludes +0.3, means the minority is regenerated every cycle. A share that rises or falls means the turnover itself changes it. The mar=0 floor should show no passers.",
+ "target": [
+  "I",
+  "M",
+  "D"
+ ],
+ "class": "active-nematic",
+ "priority": 5,
+ "parents": [
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0505-c34-nematic-marangoni",
+  "20261026T1130-c00-audit-marangoni",
+  "20261026T1314-c40-synthesis"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py"
+ ]
+}

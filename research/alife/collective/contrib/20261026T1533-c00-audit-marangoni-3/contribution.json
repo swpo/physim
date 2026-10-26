@@ -1,0 +1,83 @@
+{
+ "id": "20261026T1533-c00-audit-marangoni-3",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T0505-c34-nematic-marangoni#c1",
+ "created": "2026-10-26T15:33:00Z",
+ "review_of": "20261026T0505-c34-nematic-marangoni",
+ "title": "Outside audit of the Marangoni rods, third version: M supported as a minority trait (about 5% of dividing rods, on fresh seeds 61-64), with S, I, B, W, D",
+ "summary": "Under the ruling that a minority capability is acceptable when it replicates, this audit supports M: each of fresh seeds 61-64 has a rod that swims 3.2-4.7 of its own lengths and then divides into lasting daughters (5 of 61 dividing tracks). The minority is not inherited and appears on about half the runs at 128^2 (20261026T1530-c00-marangoni-minority-lineages); how it persists and whether an environment can make it spread are now open questions (Q:marangoni-*). S, I, B, W and D stand as in 20261026T1130-c00-audit-marangoni.",
+ "parents": [
+  "20261026T1345-c00-audit-marangoni-2",
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0505-c34-nematic-marangoni"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "W",
+    "M",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed61-64/sheet.png at t=0: uniform noise over the whole domain; rods by frame 30",
+    "I": "rerun/seed61-64/FACTS.md: discrete rods, 13-19 split-born dividing tracks per seed",
+    "B": "Claim's sd_individuals.py ch2 on rerun seeds 51/52: 100% of 557/591 body-frames have rim/core and rim/out >= 1.5 (rim/core 2.58/2.60, rim/out 11.15/11.06); 12.4 at 1.5x grid. Caveat: the ring is placed by a drift written against phi and counts only through the rod-only source. chis0 removes the rim (rim/core 0.73).",
+    "D": "rerun/seed61-64/lineage.png: repeated binary fission into lasting daughters; 13-19 dividing tracks per seed",
+    "W": "w_table.txt: rerun/seed51 and rerun/seed52 cargo in/out 9.27 and 9.00, 100% of body-frames >= 2x, 78/78 and 65/65 daughters >= 2x five frames after birth; controls/res15_seed51 (dx 2/3, T=500): 15-24x",
+    "M": "rerun/seed62 track 30 swims 4.67 of its own lengths between its birth by fission and its fission into two lasting daughters; also seed 61 #20 (3.23), seed 62 #19 (3.16), seed 63 #11 (4.18), seed 64 #15 (4.45); a minority: 5 of 61 dividing tracks on seeds 61-64 (files in 20261026T1530-c00-marangoni-minority-lineages); mar=0 removes it"
+   },
+   "replicated": true,
+   "seed": 62,
+   "seeds_run": [
+    {
+     "seed": 61,
+     "result": "pass: 1 of 15 dividing tracks swims >= 3 own lengths"
+    },
+    {
+     "seed": 62,
+     "result": "pass: 2 of 14"
+    },
+    {
+     "seed": 63,
+     "result": "pass: 1 of 13"
+    },
+    {
+     "seed": 64,
+     "result": "pass: 1 of 19"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "W": "controls/walloff_seed51 (cargo coupled to an unadsorbed surfactant copy, bodies bitwise identical): in/out 0.17; controls/kappa0_seed51: 1.39x (w_table.txt); seed 52 in 20261026T1130-c00-audit-marangoni",
+    "M": "research/alife/collective/contrib/20261026T1130-c00-audit-marangoni/mlength/: dividing tracks past 3 rod lengths 0 and 0 on seeds 51 and 52"
+   },
+   "by_construction": [],
+   "bc_rejected": [
+    "W"
+   ],
+   "support_rejected": {
+    "M": [
+     "20261026T0632-c36-review-nematic-marangoni",
+     "20261026T0946-c39-review-marangoni-walloff",
+     "20261026T1300-c41-review-nematic-marangoni"
+    ]
+   },
+   "not_checked": [],
+   "limitation": "M is a minority trait: about 5% of dividing rods on these seeds, absent on seeds 51, 52 and the 1.5x grid, and not inherited (parent-offspring slope of per-cycle distance +0.22 [-0.61, +1.44]). The claim's statement should give the prevalence, not describe swimming-then-dividing as typical. B and W were measured on seeds 51-52 by 20261026T1130-c00-audit-marangoni, not re-measured on 61-64. The ring is placed by a drift written against phi and counts for B through the rod-only source; most cargo is in the bath; D needs the global relaxation feed."
+  }
+ ],
+ "evidence": [
+  "audit.md",
+  "rerun/seed62/lineage.png",
+  "rerun/seed62/sheet.png"
+ ],
+ "compute": {
+  "cpu_minutes": 40
+ }
+}
