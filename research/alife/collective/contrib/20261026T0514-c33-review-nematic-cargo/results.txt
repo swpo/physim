@@ -1,0 +1,16 @@
+== rerun
+collective/contrib/wip-c33-nc/rerun/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.90, fraction >= 2: 0.92
+collective/contrib/wip-c33-nc/rerun/frames.npz ch2: body-frames 380, both >= 1.5: 0.99, median rim/core 2.68, median rim/out 8.14
+collective/contrib/wip-c33-nc/rerun/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 13.68, fraction >= 2: 1.00
+collective/contrib/wip-c33-nc/rerun/frames.npz ch3: body-frames 380, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+- replication (lineage window K = 20 frames = time 100, default): splits 37, persistent splits 23 (0 more failed only because the siblings re-merged within K), max generation 4, merges 9, merge/split ratio 0.243, nucleations 7
+collective/contrib/wip-c33-nc/rerun/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=34, median in/out 6.92, fraction >= 2: 1.00
+collective/contrib/wip-c33-nc/rerun/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=39, median in/out 4.17, fraction >= 2: 0.92
+== rerun_kappa0
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.90, fraction >= 2: 0.92
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz ch2: body-frames 380, both >= 1.5: 0.99, median rim/core 2.68, median rim/out 8.14
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.41, fraction >= 2: 0.04
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz ch3: body-frames 380, both >= 1.5: 0.00, median rim/core 0.89, median rim/out 1.26
+- replication (lineage window K = 20 frames = time 100, default): splits 37, persistent splits 23 (0 more failed only because the siblings re-merged within K), max generation 4, merges 9, merge/split ratio 0.243, nucleations 7
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=34, median in/out 1.28, fraction >= 2: 0.00
+collective/contrib/wip-c33-nc/rerun_kappa0/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=39, median in/out 1.28, fraction >= 2: 0.00

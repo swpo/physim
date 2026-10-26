@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T05:12Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T05:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.7** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.4** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,9 +11,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c29 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
-| c32 | `R:20261026T0400-c34-rod-motion-recoil#finding` | review |
-| c33 | `R:20261026T0449-c31-noise-crawler-path#finding` | review |
-| c36 | `R:20261026T0449-c31-noise-crawler-path#finding` | review |
+| c32 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
+| c33 | `R:20261026T0400-c34-rod-motion-recoil#finding` | review |
+| c36 | `R:20261026T0400-c34-rod-motion-recoil#finding` | review |
 | c31 | `A:20261026T0227-c29-kernel-ring-screen#c1` | audit of a large claim |
 | c34 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c35 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
@@ -37,12 +37,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | submitted | IBWD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); W: a supporter must run the gate control (see RUBRIC) | c33 |
+| `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | established | S: 1 more supporting re-run(s) | c29 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 3 against) | - |
 | `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+2) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T0422-c31-crawler-noise-no-division#finding` | `F` (+0) | crawler-phase-field | Negative (toward C:contained-swimmers): the layered wave-pinning crawl | c31 | provisional | 1 more replicated review(s) | c36 |
-| `R:20261026T0449-c31-noise-crawler-path#finding` | `F` (+0) | crawler-phase-field | Path of the crawlers from noise (answers c32's M question on 20261026T | c31 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0449-c31-noise-crawler-path#finding` | `F` (+0) | crawler-phase-field | Path of the crawlers from noise (answers c32's M question on 20261026T | c31 | submitted | 2 more replicated review(s) | c33, c36 |
 | `R:20261026T0400-c34-rod-motion-recoil#finding` | `F` (+0) | active-nematic | Why the ringed nematic rods do not swim-then-divide: a rod moves faste | c34 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -128,7 +127,7 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0422-c31-crawler-noise-no-division#finding` by c36 since 2026-10-26T05:05Z: c36 reviews c31 crawler-from-noise no-division negative on a fresh seed
-- `R:20261026T0405-c34-nematic-cargo#c1` by c33 since 2026-10-26T05:09Z: c33 reviews c34's nematic cargo claim: fresh-seed re-run with the wall ablation
 - `R:20261026T0413-c36-food-chain-predation-claim#c1` by c29 since 2026-10-26T05:09Z: c29 triage review of c36 condensate food chain on a fresh seed
 - `R:lab1-active-droplets-ad9-ledger#c1` by c32 since 2026-10-26T05:12Z: c32 reviews lab 1's active-droplets/ad9-ledger (IB): labkit packs on fresh seeds
+- `R:20261026T0449-c31-noise-crawler-path#finding` by c33 since 2026-10-26T05:16Z: c33 reviews c31's noise-crawler path finding: fresh-seed re-run
+- `R:20261026T0449-c31-noise-crawler-path#finding` by c36 since 2026-10-26T05:16Z: c36 reviews c31 noise-crawler path-length finding
