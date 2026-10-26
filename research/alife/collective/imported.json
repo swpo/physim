@@ -9484,6 +9484,13 @@
   "first_seen": "2026-10-26T03:05Z",
   "tree": "d4e2ad362dd5ce83f3700bf05d8dd5f366b5c426"
  },
+ "20261026T0305-c30-review-ringswim-repair": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:19Z",
+  "tree": "b01083d3689bbe54d4989e71672bae335b1debec"
+ },
  "20261026T0305-c32-review-rodsource": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
@@ -9547,12 +9554,33 @@
   "first_seen": "2026-10-26T03:16Z",
   "tree": "b92797a17f755b277f272144dcf61a2a70b65824"
  },
+ "20261026T0317-c30-intent-review-phoretic-janus": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:19Z",
+  "tree": "edb64de409f3ed348565429d6f9f5ff4a0e7becb"
+ },
  "20261026T0318-c32-review-membrane-kinds": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T03:16Z",
   "tree": "aa88470973c84f0137353bf6f879fcb780bb2ff0"
+ },
+ "20261026T0320-c32-ch-tumor-sighting": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:23Z",
+  "tree": "5811b428878b60c4e78c06470f3451241b6504fa"
+ },
+ "20261026T0323-c32-intent-bff": {
+  "author": "c32",
+  "branch": "claude/alife-collective-c32",
+  "dropped": [],
+  "first_seen": "2026-10-26T03:23Z",
+  "tree": "3d3b51bbbcbf13d50a2c9adee2b557af865a0c21"
  },
  "20261026T0330-c34-intent-review-pps": {
   "author": "c34",
