@@ -1,0 +1,53 @@
+{
+ "id": "20261026T1850-c43-review-parasite",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1505-c41-cips-parasite-finding#finding",
+ "review_of": "20261026T1505-c41-cips-parasite-finding",
+ "title": "Review of c41's CIPS parasite negative on fresh seed 4: replicated; the slow parasite settles in 12/12 bodies as a passenger, prey stop dividing (12 -> 11 vs 12 -> 19 in the twin), no free predator spots",
+ "summary": "labkit rerun of world_base.py on seed 4 (rerun/seed4, t=10000) and the finding's pred.py on the same seed: checkpoint at t=8000, then the slow-kinetics arm (kp 0.02, kd 0.003, Dc 0.05, chic 3, order 1, c0 0.02) and the matched c-free twin (kp 0) for 10400 t. Parasite arm: predator spots equal the prey count within 650 t (12/12) and stay with them; prey 12 -> 11 by t=18400 and bodies shrink to small dots (pred_s4_pred.png). Twin: c decays to 0 and prey 12 -> 19. No predator spot ever exists outside a body.",
+ "parents": [
+  "collective/contrib/20261026T1505-c41-cips-parasite-finding"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world_base.py",
+ "evidence": [
+  "rerun/seed4/sheet.png",
+  "pred_s4_pred.png",
+  "pred_s4_twin.png",
+  "pred_s4_pred.json",
+  "pred_s4_twin.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "F"
+   ],
+   "observations": {
+    "F": "pred_s4_pred.json: (t, prey, predator spots) 8650: 12/12, 13250: 12/12, 18400: 11/11; pred_s4_twin.json: prey 12 -> 19, c 0; pred_s4_pred.png: every body carries c and shrinks"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [
+    {
+     "seed": 4,
+     "result": "pass"
+    }
+   ],
+   "controls_run": {
+    "F": "pred_s4_twin (kp 0 from the same t=8000 checkpoint)"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "the fast-kinetics screens (screen1-4)"
+   ],
+   "limitation": "One fresh seed and only the slow-kinetics setting; the branch ran 10400 t (pred.py's TA is a duration). Spots are counted at c>0.3 with >= 20 px, as in pred.py."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 35
+ }
+}

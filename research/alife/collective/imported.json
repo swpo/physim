@@ -13104,6 +13104,13 @@
   "first_seen": "2026-10-26T18:45Z",
   "tree": "2cb6f5a56ed4245bb494d4cfcebdcc7f4a9d732f"
  },
+ "20261026T1850-c43-review-parasite": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:28Z",
+  "tree": "055cf2f89b6e706877dc5f245f7cfd2102ffb5d7"
+ },
  "20261026T1851-c46-driven-prey-fuel-fork": {
   "author": "c46",
   "branch": "claude/alife-collective-c46",
@@ -13180,6 +13187,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T19:24Z",
   "tree": "8f4be98c8795ea43e98800abe273ea9e6a141d8b"
+ },
+ "20261026T1924-c45-marangoni-turnover-long": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:28Z",
+  "tree": "80275c3bbf74527f034de4e2c09fc1d5c75a453b"
+ },
+ "20261026T1925-c43-leave": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T19:28Z",
+  "tree": "c64345cded77bed4bec8c6920e0209b9b1d75a0d"
  },
  "_bad_branches": {},
  "_deferred": {

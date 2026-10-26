@@ -1,0 +1,40 @@
+{"step": 1000, "frame": 10, "n": 5, "removed": [], "areas": []}
+{"step": 2000, "frame": 20, "n": 10, "removed": [], "areas": []}
+{"step": 3000, "frame": 30, "n": 17, "removed": [9, 15], "areas": [35, 41]}
+{"step": 4000, "frame": 40, "n": 18, "removed": [], "areas": []}
+{"step": 5000, "frame": 50, "n": 21, "removed": [5, 7], "areas": [51, 47]}
+{"step": 6000, "frame": 60, "n": 22, "removed": [4, 10, 15, 22], "areas": [62, 63, 59, 39]}
+{"step": 7000, "frame": 70, "n": 19, "removed": [1, 7], "areas": [115, 49]}
+{"step": 8000, "frame": 80, "n": 21, "removed": [7, 14], "areas": [39, 35]}
+{"step": 9000, "frame": 90, "n": 23, "removed": [1, 8], "areas": [65, 82]}
+{"step": 10000, "frame": 100, "n": 19, "removed": [], "areas": []}
+{"step": 11000, "frame": 110, "n": 20, "removed": [3], "areas": [37]}
+{"step": 12000, "frame": 120, "n": 20, "removed": [9, 12, 16, 20], "areas": [68, 48, 79, 58]}
+{"step": 13000, "frame": 130, "n": 18, "removed": [4, 10], "areas": [43, 81]}
+{"step": 14000, "frame": 140, "n": 22, "removed": [4, 15], "areas": [54, 42]}
+{"step": 15000, "frame": 150, "n": 25, "removed": [3, 6, 11, 19, 20, 22], "areas": [46, 43, 78, 71, 34, 80]}
+{"step": 16000, "frame": 160, "n": 20, "removed": [8, 20], "areas": [57, 65]}
+{"step": 17000, "frame": 170, "n": 20, "removed": [1, 4], "areas": [189, 59]}
+{"step": 18000, "frame": 180, "n": 22, "removed": [5, 7], "areas": [30, 66]}
+{"step": 19000, "frame": 190, "n": 22, "removed": [7, 10, 16], "areas": [74, 57, 32]}
+{"step": 20000, "frame": 200, "n": 19, "removed": [], "areas": []}
+{"step": 21000, "frame": 210, "n": 26, "removed": [6, 15, 16, 25], "areas": [78, 55, 63, 66]}
+{"step": 22000, "frame": 220, "n": 24, "removed": [8, 15, 20], "areas": [39, 70, 68]}
+{"step": 23000, "frame": 230, "n": 23, "removed": [14], "areas": [16]}
+{"step": 24000, "frame": 240, "n": 25, "removed": [10], "areas": [27]}
+{"step": 25000, "frame": 250, "n": 24, "removed": [14, 15, 23], "areas": [33, 55, 45]}
+{"step": 26000, "frame": 260, "n": 23, "removed": [], "areas": []}
+{"step": 27000, "frame": 270, "n": 29, "removed": [15], "areas": [42]}
+{"step": 28000, "frame": 280, "n": 28, "removed": [15, 16, 17, 19], "areas": [52, 29, 54, 61]}
+{"step": 29000, "frame": 290, "n": 29, "removed": [25], "areas": [42]}
+{"step": 30000, "frame": 300, "n": 27, "removed": [2, 11], "areas": [30, 36]}
+{"step": 31000, "frame": 310, "n": 26, "removed": [12, 21, 25], "areas": [41, 52, 54]}
+{"step": 32000, "frame": 320, "n": 24, "removed": [4], "areas": [53]}
+{"step": 33000, "frame": 330, "n": 24, "removed": [3, 5, 9, 16], "areas": [89, 50, 69, 78]}
+{"step": 34000, "frame": 340, "n": 22, "removed": [8, 15, 17, 21], "areas": [86, 44, 87, 93]}
+{"step": 35000, "frame": 350, "n": 22, "removed": [17], "areas": [35]}
+{"step": 36000, "frame": 360, "n": 26, "removed": [17, 20, 22], "areas": [44, 32, 43]}
+{"step": 37000, "frame": 370, "n": 24, "removed": [6, 24], "areas": [50, 29]}
+{"step": 38000, "frame": 380, "n": 26, "removed": [5, 7, 9, 14, 16, 22], "areas": [65, 44, 61, 32, 71, 38]}
+{"step": 39000, "frame": 390, "n": 23, "removed": [3, 5, 8, 17], "areas": [48, 37, 71, 38]}
+{"step": 40000, "frame": 400, "n": 21, "removed": [5, 8, 10, 19], "areas": [85, 46, 44, 59]}
