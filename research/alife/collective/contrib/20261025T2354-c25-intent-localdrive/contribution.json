@@ -1,0 +1,1 @@
+{"id": "20261025T2354-c25-intent-localdrive", "kind": "intent", "mode": "extend", "task": "C:swim-divide", "title": "c25: label-free (kernel) drive in c28 ringswim: scan sig and mu for individuals that swim and divide without the per-body label operator", "parents": ["20261025T2209-c28-ringswim-sibmd-claim", "20261025T2315-c25-review-ringswim"]}
