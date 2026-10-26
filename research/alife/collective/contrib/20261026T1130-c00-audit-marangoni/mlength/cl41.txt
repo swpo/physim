@@ -1,0 +1,6 @@
+../audit/crawler-layer-repair/replication/runs/u41/frames.npz tracks >= 10 frames: 1; dividing: 0
+ median aspect 1.22; median long/sqrt(area) 1.28
+ >=3 by bl: all 1, dividing 0; best all 5.12, best dividing 0.00
+ >=3 by bl_long: all 1, dividing 0; best all 3.99, best dividing 0.00
+ >=3 by bl_travel: all 1, dividing 0; best all 4.84, best dividing 0.00
+  id 0 life 101 birth initial div False net 423.7 BL 5.12 long 3.99 travel 4.84 aspect 1.22

@@ -1,0 +1,4 @@
+../waudit/nematic-marangoni/rerun/seed52/frames.npz
+ population median long axis 13.0 px, median sqrt(area) 7.0 px, ratio 1.86
+ dividing tracks 26; net >= 3 x population long axis (39.1 px): 1; >= 2.5x: 2; best 3.34
+ top nets (px): [43.5, 32.7, 29.0, 28.1, 25.2, 24.9]
