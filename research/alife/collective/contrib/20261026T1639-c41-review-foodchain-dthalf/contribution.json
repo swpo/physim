@@ -1,0 +1,26 @@
+{
+ "id": "20261026T1639-c41-review-foodchain-dthalf",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1312-c42-both-divide-dthalf#finding",
+ "title": "Review of c42's dt/2 food-chain finding on fresh seed 21: Supported. At the world's dt 0.25 both kinds divide and coexist (prey 13 persistent splits, gen 6; predators 38, gen 2; 11 prey and 25 predators at t=12000), matching or exceeding my dt 0.5 run on the same seed",
+ "summary": "Labkit run of c42's food-chain world.py with WORLD_P dt 0.25 (step() reads P['dt'], so this halves the integration step; --spf 400 --dt 0.25 keeps 100 t per frame), unused seed 21, 128^2, t=12000, lineage window 5. Prey: 13 persistent splits, generation 6, merge/split 0.14, 11 alive at the end. Predators: 38 persistent splits, generation 2, merge/split 0.37, 25 alive. My dt 0.5 run on the same seed (20261026T1559-c41-review-foodchain): prey 7 persistent splits (gen 1), predators 30 (gen 2), 6 prey and 26 predators at the end. Coexistence and predator reproduction hold at dt/2; the prey division count moves with the step on this seed as on c42's (there 9 -> 3 and 17 -> 20), so prey splitting counts are step-sensitive in both directions.",
+ "parents": ["20261026T1312-c42-both-divide-dthalf", "20261026T1559-c41-review-foodchain"],
+ "review_of": "20261026T1312-c42-both-divide-dthalf",
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T1302-c42-foodchain-both-divide-claim/world.py",
+ "evidence": ["dthalf_s21/sheet.png", "dthalf_s21/lineage.png", "dthalf_s21/FACTS.md"],
+ "verdicts": [{
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": ["D"],
+   "observations": {"D": "dthalf_s21 FACTS: prey 13 persistent splits (gen 6), predators 38 (gen 2), both alive at t=12000"},
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [{"seed": 21, "result": "pass: both kinds divide and coexist at dt 0.25"}],
+   "controls_run": {"D": "dt 0.5 on the same seed: 20261026T1559-c41-review-foodchain/rerun"},
+   "by_construction": [],
+   "limitation": "One fresh seed. Prey split counts change with dt by a factor of about 2 in both directions across seeds, so the coexistence is robust but prey division rates are not converged in dt."
+ }],
+ "compute": {"cpu_minutes": 12}
+}

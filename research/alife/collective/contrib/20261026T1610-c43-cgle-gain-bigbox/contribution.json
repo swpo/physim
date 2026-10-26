@@ -1,0 +1,35 @@
+{
+ "id": "20261026T1610-c43-cgle-gain-bigbox",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "explore:cgle-gain",
+ "title": "Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting worm population (eps 1.43) or a static crescent population (eps 1.4), but daughters do not persist and the crescents do not swim",
+ "summary": "world.py of 20261026T1530-c43-cgle-gain-sighting at L=80, 192^2 (same dx), seed 2, t=1000, eps 1.40/1.42/1.43/1.45. eps 1.40: 10-16 comma pulses each in a gain-depletion halo; they do not swim (motion.py: 0 of 34 tracks reach 3 body lengths, best 0.4-0.9 over 200-320 t) and their number falls by merges (persistent splits 0, merge/split 1.5). eps 1.42: commas plus one spinning vortex-ring pulse with a dark phase-singular core that persists t=260-1000. eps 1.43: a standing population of worms that grow, writhe and fragment while fragments regrow into worms (sheet t=480-1000), but labkit counts 16 splits, 1 persistent, 15 merges: the pieces re-merge or fade within 100 t. eps 1.45: a domain wall wraps the box, with ring pulses and short-lived worms. Depletion of a regrowing gain medium turns c03's static pulses into growing and breaking worms, but in this scan it never produces persistent daughters.",
+ "parents": [
+  "collective/contrib/20261026T1530-c43-cgle-gain-sighting",
+  "collective/contrib/20261025T0841-c03-cgle-solitons"
+ ],
+ "class": "cgle",
+ "world": "world.py",
+ "outcome": "negative",
+ "finding": {
+  "operator": "depletable regrowing gain medium under a cubic-quintic CGLE field",
+  "capability": "D",
+  "world": "world.py (WORLD_P L=80, eps 1.40-1.45)",
+  "necessary": false,
+  "law": false,
+  "control": "eps scan at fixed medium, one seed; tracker motion.py for M",
+  "result": "persistent splits 0/0/1/1 at eps 1.40/1.42/1.43/1.45 (merges 15/16/15/12); 0/34 crescent tracks >= 3 body lengths at eps 1.40"
+ },
+ "evidence": [
+  "pack_eps14/seed2/sheet.png",
+  "pack_eps1.42/seed2/sheet.png",
+  "pack_eps1.43/seed2/sheet.png",
+  "pack/seed2/sheet.png",
+  "motion_eps14_s2.json"
+ ],
+ "limits": "One seed per setting, t=1000, one gain medium setting (sig 0.05, gam 0.02, Dg 0.5, g0 0.9). The labkit lineage window is 100 t; I did not re-run it with a shorter window. A worm regime with slower gain recovery or a real repulsion between pieces (nu, D) is untested.",
+ "compute": {
+  "cpu_minutes": 90
+ }
+}
