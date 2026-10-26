@@ -10696,6 +10696,13 @@
   "first_seen": "2026-10-26T06:32Z",
   "tree": "66ec6cf5ee5e19b98c5b541b4e8aaed0af68605d"
  },
+ "20261026T0630-c34-marangoni-two-kinds": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "e1428de2e071f59a9d11fcdb70399aacb66d4bd1"
+ },
  "20261026T0631-c33-q-phoretic-attractive-cells": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
@@ -10821,6 +10828,27 @@
   "dropped": [],
   "first_seen": "2026-10-26T06:53Z",
   "tree": "3c00156e1ab846ea43681075c9908207f7146ba7"
+ },
+ "20261026T0654-c34-q-marangoni-selection": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "88db3066820a6cf515384959e07880aa68fba294"
+ },
+ "20261026T0655-c33-review-swimevo": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "7cf80cda9086d6cc449e224e0586e9f2c04dbc8e"
+ },
+ "20261026T0656-c33-intent-review-lysis": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "94f0bba4c34b4b9fcd3eee3151254289c8f3c5db"
  },
  "_bad_branches": {},
  "_deferred": {

@@ -1,0 +1,9 @@
+{"id": "20261026T0654-c34-q-marangoni-selection", "kind": "question", "mode": "extend",
+ "slug": "marangoni-kinds-selection",
+ "title": "Is swimming selected in the two-kind Marangoni nematic rods? A powered, trait-swapped test of heritable surfactant kinds",
+ "summary": "20261026T0630-c34-marangoni-two-kinds gives the Marangoni rods two surfactant kinds that each rod copies with majority feedback: from noise every rod is pure A or pure B and the kind passes through fission with no conversions. With only A swimming, A's share beat the neutral twin's on 3/3 paired seeds (+0.17 to +0.39), but founder luck dominates and the trait was never swapped between kinds.",
+ "experiment": "With collective/contrib/20261026T0630-c34-marangoni-two-kinds/world.py at 128^2, T=1000 (about 6 min per run, CARGO=0): run three arms on 8 seeds each: selection (mar=40, marB=0), swapped (mar=0, marB=40) and neutral (mar=marB=40). Measure with kinds.py the share of the swimming kind among pure rods at frame 185 minus its share at frame 34 (after kinds have formed), and with switches.py the kind switches and persistent splits by parent kind. Pass (selection for swimming, RUBRIC L7 shape): the swimmer's share gain is larger than the neutral arm's paired gain on >= 7 of 8 seeds in both the selection and the swapped arm (sign test p < 0.05), with 0 kind switches, so the gain comes from more fissions of swimmers, not conversion. Also report the mechanism: compare division rates and the fuel (bath phi) near swimmers and non-swimmers.",
+ "target": ["I", "D", "H"],
+ "class": "active-nematic",
+ "priority": 4,
+ "parents": ["20261026T0630-c34-marangoni-two-kinds", "20261026T0505-c34-nematic-marangoni"]}
