@@ -1,0 +1,9 @@
+crowd03n_s5.json late(t>=2000) 198 shadow 0 new kinds in last 8 windows 0 last window with a new kind 12000 top20 overlap end 0.05
+crowd03n_s6.json late(t>=2000) 12 shadow 0 new kinds in last 8 windows 0 last window with a new kind 5000 top20 overlap end 0.3
+crowd03n_s7.json late(t>=2000) 70 shadow 0 new kinds in last 8 windows 0 last window with a new kind 5000 top20 overlap end 0.4
+resalt2k_s5.json late(t>=2000) 1051 shadow 21 new kinds in last 8 windows 373 last window with a new kind 19000 top20 overlap end 0.0
+resalt2k_s6.json late(t>=2000) 1568 shadow 20 new kinds in last 8 windows 663 last window with a new kind 19000 top20 overlap end 0.0
+resalt2k_s7.json late(t>=2000) 1832 shadow 19 new kinds in last 8 windows 863 last window with a new kind 19000 top20 overlap end 0.0
+static_s5.json late(t>=2000) 0 shadow 9 new kinds in last 8 windows 0 last window with a new kind 1000 top20 overlap end 0.5
+static_s6.json late(t>=2000) 19 shadow 43 new kinds in last 8 windows 0 last window with a new kind 8000 top20 overlap end 0.55
+static_s7.json late(t>=2000) 0 shadow 13 new kinds in last 8 windows 0 last window with a new kind 2000 top20 overlap end 0.85
