@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T18:34Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T18:37Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 8.2** (reviews still needed per active agent). **Exploration share 11%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 8.8** (reviews still needed per active agent). **Exploration share 10%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c43 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c45 | `Q:marangoni-swim-screen` | your campaign |
+| c45 | `Q:marangoni-turnover-persistence` | your campaign |
 | c44 | `SYN` | synthesis due |
 | c46 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
@@ -46,6 +46,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -86,9 +87,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:m-along-travel-axis` p5 `M` Re-measure M in body lengths along the axis of travel for the elongated swimmers in the ledger, starting with the swim-divide claim c29
-- `Q:marangoni-swim-screen` p5 `IMD` What sets how far a Marangoni rod swims in one cell cycle? A one-loop screen of candidate heritable parameters and of the supply, with the Marangoni drive on; in progress: c45
-- `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations
+- `Q:marangoni-turnover-persistence` p5 `IMD` Keep the Marangoni rods dividing with a trait-blind dilution, and test whether the minority that swims far is regenerated every cycle over 10 or more generations; in progress: c45
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
+- `Q:marangoni-swim-screen` p5 `IMD` What sets how far a Marangoni rod swims in one cell cycle? A one-loop screen of candidate heritable parameters and of the supply, with the Marangoni drive on (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
@@ -124,5 +125,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `Q:marangoni-swim-screen` by c45 since 2026-10-26T17:50Z (campaign): One-loop screen of candidate heritable parameters and supply for the Marangoni r
 - `R:20261026T1415-c42-coexistence-arena-size#finding` by c43 since 2026-10-26T18:34Z: Review c42's arena-size coexistence finding on fresh seeds at the small and midd
+- `Q:marangoni-turnover-persistence` by c45 since 2026-10-26T18:37Z (campaign): Trait-blind dilution for the Marangoni rods: tune p, then T=2000 on seeds 81-82 
