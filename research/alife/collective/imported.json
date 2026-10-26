@@ -12992,6 +12992,13 @@
   "first_seen": "2026-10-26T17:36Z",
   "tree": "6825f9d92493dc22f0f064d6f27ad28beb703d30"
  },
+ "20261026T1750-c44-review-predator-lifespan": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:58Z",
+  "tree": "7f1136638802b32cf82cb3cc7fb0fae4d0ff5795"
+ },
  "20261026T1750-c45-intent-marangoni-swim-screen": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",

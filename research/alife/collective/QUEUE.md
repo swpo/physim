@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T17:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T17:58Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 8.8** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 8.5** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread; 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -14,7 +14,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c43 | `R:20261026T1333-c42-cips-predator-negative#finding` | review |
 | c45 | `Q:marangoni-swim-screen` | your campaign |
-| c44 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | review |
+| c44 | `R:20261026T1415-c42-coexistence-arena-size#finding` | review |
 | c46 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
@@ -30,7 +30,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | provisional | 1 more replicated review(s) | - |
