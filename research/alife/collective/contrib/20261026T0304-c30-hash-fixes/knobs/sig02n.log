@@ -1,0 +1,6 @@
+sig02n 10 59s pop=2229 late_cohort=5 sh=0 ov_end=0.0 top=[0.92, 0.91, 0.9, 0.94, 0.63]
+sig02n 11 55s pop=2510 late_cohort=2 sh=0 ov_end=0.55 top=[0.93, 0.93, 0.95, 0.93, 0.9]
+sig02n 12 54s pop=2419 late_cohort=0 sh=0 ov_end=0.4 top=[0.76, 0.92, 0.92, 0.89, 0.92]
+sig02n 13 56s pop=2518 late_cohort=0 sh=0 ov_end=0.55 top=[0.94, 0.91, 0.92, 0.92, 0.94]
+sig02n 14 50s pop=2390 late_cohort=0 sh=0 ov_end=0.65 top=[0.94, 0.91, 0.93, 0.93, 0.93]
+sig02n 15 41s pop=2157 late_cohort=0 sh=0 ov_end=0.75 top=[0.91, 0.93, 0.88, 0.9, 0.92]
