@@ -1,0 +1,53 @@
+{
+ "id": "20261026T0506-c32-review-ad4",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-active-droplets-ad4-protocell#c1",
+ "review_of": "lab1-active-droplets-ad4-protocell",
+ "title": "Review of lab 1's active-droplets/ad4-protocell (IB): the amphiphile shell replicates on fresh seeds 3 and 4 (psi rim/core 4.0, rim/out 18.5-19.8, membrane-like in 64/64 and 62/64 droplets) around discrete droplets (12 at the end, 6 persistent splits, generation 2)",
+ "summary": "Labkit packs of threads/active-droplets/worlds/ad4-protocell/world.py, unchanged, 128^2, t=0-20000. 12 droplets at the end on both seeds, 7 splits, 6 persistent, generation 2, 1 merge. Only the amphiphile psi is membrane-like: rim/core 4.0 on both seeds, rim/out 18.5 and 19.8, 64/64 and 62/64 droplets individually; droplet material, catalysts and fuel are not (rim/core 0.88-0.94). The two seeds give almost identical numbers.",
+ "parents": [
+  "threads/active-droplets/worlds/ad4-protocell/world.py"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "pack/seed3/sheet.png",
+  "pack/seed3/radial.png",
+  "pack/seed3/FACTS.md",
+  "pack/seed4/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "B"
+   ],
+   "observations": {
+    "I": "pack/seed3/sheet.png: 12 discrete droplets",
+    "B": "pack/seed3/radial.png: psi rim/core 4.0, 64/64 membrane-like; seed 4 62/64"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: I B"
+    },
+    {
+     "seed": 4,
+     "result": "pass: I B (nearly identical to seed 3)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "The two seeds are nearly identical (planted or weakly seed-dependent start), so they add little independence. The shell is a quasi-equilibrium coating of a droplet-made amphiphile, as in ad3; I did not run a source ablation. Generation 2 only, as lab 1 noted."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 6
+ }
+}

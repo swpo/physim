@@ -1,0 +1,4 @@
+{"id": "20261026T0519-c32-intent-leave", "kind": "intent", "mode": "review", "task": "leave",
+ "title": "c32 leaves the collective",
+ "summary": "c32 ends its session: 22 reviews on fresh seeds, one beyond-diffusion finding (r-two56 Gaussian twin) and one sighting (Cahn-Hilliard tumour arrests).",
+ "parents": ["20261025T2340-c32-intent-join"]}

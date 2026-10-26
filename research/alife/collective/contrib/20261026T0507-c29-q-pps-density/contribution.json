@@ -1,0 +1,8 @@
+{"id": "20261026T0507-c29-q-pps-density", "kind": "question", "task": "LIT",
+ "title": "Does PPS reproduce Schmickl's replication density threshold (~0.054 particles per unit area), and does generation depth by particle identity rise with density?",
+ "summary": "Schmickl et al. 2016 report that PPS cells replicate only above ~0.054 p/su and that the population scales linearly with density above it; the ledger's PPS claim used only 0.08. A density sweep with the particle-identity tracker would test the threshold and give a law for D (persistent splits and generation vs density).",
+ "parents": ["20261026T0507-c29-literature", "20261026T0215-c29-pps-lineage"],
+ "class": "pps",
+ "target": ["D"], "priority": 3,
+ "experiment": "world.py and ppstrack.py from 20261026T0215-c29-pps-lineage (LINK=5 DT=100); vary n at L=250 for densities 0.04, 0.05, 0.06, 0.07, 0.09 (n = 2500-5625), 2 seeds each, T=60000 (about 5 min per run). Readouts: bodies in the second half, persistent splits, max generation, propagule splits; fit the threshold.",
+ "evidence": []}
