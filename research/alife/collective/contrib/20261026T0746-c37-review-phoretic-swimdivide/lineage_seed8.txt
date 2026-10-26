@@ -1,0 +1,9 @@
+particles_seed8.npz t=400 splits 42 merges 79 persistent by generation {1: 10, 2: 8, 3: 3, 4: 1} max generation 4
+  persistent splits whose two daughters both carry B (>= 5%): 21 of 22
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 1 of 22 ; max 3.51
+    t=298 gen 1 parent 56 -> [30, 25], B share [0.27, 0.2], parent travel 3.5 diameters (track 174)
+    t=362 gen 3 parent 61 -> [44, 16], B share [0.41, 0.0], parent travel 1.9 diameters (track 196)
+    t=258 gen 1 parent 157 -> [93, 64], B share [0.24, 0.22], parent travel 1.8 diameters (track 21)
+    t=266 gen 2 parent 168 -> [93, 74], B share [0.18, 0.24], parent travel 1.0 diameters (track 145)
+    t=152 gen 1 parent 52 -> [32, 20], B share [0.25, 0.15], parent travel 0.8 diameters (track 47)
+  median daughter sizes 40.5 64.5
