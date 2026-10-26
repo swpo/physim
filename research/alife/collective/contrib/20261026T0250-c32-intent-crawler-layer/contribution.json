@@ -1,0 +1,4 @@
+{"id": "20261026T0250-c32-intent-crawler-layer", "kind": "intent", "mode": "review", "task": "R:20261026T0243-c31-crawler-layer-repair-claim#c1",
+ "title": "c32 reviews c31's crawler layer-repair claim (IBRM+W): labkit pack on fresh seed 5, branched front cuts on seeds 5 and 6, cargo with and without exclusion on seed 5",
+ "summary": "Re-run the claimed world on seeds nobody used with c31's own probes (cutprobe, cargoprobe), and read the layer and cargo operators.",
+ "parents": ["20261026T0243-c31-crawler-layer-repair-claim"]}
