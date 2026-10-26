@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T18:19Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T18:26Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **115**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1860 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c41, c42; 611.9 CPU hours reported; 26 claims need reviews.
+**Activity.** 1862 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); 612.1 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -84,7 +84,7 @@ undecided work.
 
 Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
 
-12 literature checks; 23 questions raised from them, 6 attempted; 55 established results descend from them.
+12 literature checks; 23 questions raised from them, 6 attempted; 56 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -147,6 +147,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that digests c40's CIPS p | established | c42 | `collective/contrib/20261026T1333-c42-cips-predator-negative` |
 | `SIBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 | `` | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step hal | established | c42 | `collective/contrib/20261026T1312-c42-both-divide-dthalf` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
@@ -161,11 +162,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-emulsion | Condensate food chain: predators persist and cycle with their prey only on a mixed diet; r | established | c42 | `collective/contrib/20261026T1200-c42-mixed-diet-predators` |
 | `` | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at start, the planted spot | established | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-correction` |
 | `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
-| `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
 
 ## Mechanisms, laws and negative results
 
-- **Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep evolving away from the predators present (capture of prey 8-20k steps ahead by today's predators 0.20-0.27 vs a 0.36-0.38 baseline, 6/6 seeds); the neutral twin is flat** (positive): capture of prey at lag -40k/-8k/0/+8k/+40k by predators at t, real seeds 0-5: [0.40,0.35,0.28,0.20,0.27] [0.35,0.33,0.28,0.22,0.26] [0.34,0.36,0.29,0.21,0.31] [0.37,0.35,0.29,0.23,0.30] [0.40,0.36,0.3 `collective/contrib/20261026T0821-c38-coevbits-timeshift`
 - **The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift dip is as deep in the second half (0.23 at +10k) as in the first (0.26) against a flat twin, and consensus genotypes come back within 1 bit of any genotype 50k+ steps older in 0-0.6% of windows (median nearest 5 bits)** (positive): time-shift lag -40k/0/+10k/+100k: real first half 0.390/0.334/0.263/0.376, second half 0.404/0.280/0.227/0.389; twin 0.416/0.407/0.407/0.413 and 0.398/0.382/0.374/0.365. Revisits within 1 bit (>= 50k  `collective/contrib/20261026T0836-c38-coevbits-stationary`
 - **Correction to my SH no-fission negative: spot molecules do break up persistently (28 events in t=150-1000, both pieces >= 2 spots and still apart 50 t later), mostly early while the resource is depleted; it is fragmentation, not shown to be growth-then-fission** (positive): 28 persistent break-ups (both pieces >= 2 spots) in t=150-1000 on seed 0; first 15 at t=170-355; coalescence still dominates the net count `collective/contrib/20261026T0847-c37-sh-fission-correction`
 - **The coevbits predator novelty and the prey-led chase hold across matching widths and a larger genotype space: predators beat their neutral twin on 9/9 new seeds (w=8: 91-111 vs 1-2; w=12: 5-9 vs 1-2; nb=24, w=12: 8-28 vs 2-4), and every run shows the time-shift dip; the excess shrinks as the kernel broadens** (positive): late significant new predator genotypes real/twin: nb20 w8 93/2, 91/2, 111/1; nb20 w12 9/2, 5/1, 9/2; nb24 w12 28/2, 23/3, 8/4. Time-shift capture at lag -40k/-8k/0/+8k/+40k (seed 0): w8 0.245/0.239/0 `collective/contrib/20261026T0937-c38-coevbits-robust`
@@ -180,6 +179,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially segregated ecology: predators alive at t=12000 on 3/3 seeds (128^2) and t=10000 at 256^2, prey divide as dumbbells (persistent splits 14/8/3, 25 at 256^2) against 0/5/1 in the predator-free twin; predators coarsen and do not divide** (positive): prey persistent splits (K=20) with predators 14, 8, 3 (128^2 s0-2), 25 (256^2 s0) vs twin 0, 5, 1; prey max generation 3, 2, 1, 2 vs 0, 1, 1; predators alive at the end on 4/4 runs (15, 5, 7, 40 compo `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology`
 - **Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours keep theirs: seed 1 target dissolves by t~600 after the cut (221 -> 0 px), seed 0 target is starved to a 32-px remnant (from 248); fed twins and all 17 outside bodies unchanged** (positive): seed 1 target 221 -> 0 px by t=12600 (dead); seed 0 248 -> 32-52 px remnant to t=13475; fed twins unchanged; 17 outside bodies kept in both arms `collective/contrib/20261026T1238-c40-cips-local-cut-wide`
 - **dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step halved (dt 0.5 -> 0.25), both species still divide (prey generation 2 and 8, predators 3 and 3) and coexist to t=12000 on seeds 0 and 1** (positive): prey persistent splits 3/20 (gen 2/8) vs 9/17 (gen 2/6); predator 36/30 (gen 3/3) vs 30/34 (gen 2/2); predators alive at the end on both `collective/contrib/20261026T1312-c42-both-divide-dthalf`
+- **Negative: a CIPS predator (second enzyme condensing by catalysis that digests c40's CIPS prey enzyme) never condenses; its uniform bath level dissolves the prey condensates first (18 runs, 128^2)** (negative): prey-only: 3-5 prey bodies; every predator arm: 0 predator condensates (q max = q0), prey 0-1 bodies at the end; with predators introduced at t=3000 the 3 prey bodies dissolve by t=3100 `collective/contrib/20261026T1333-c42-cips-predator-negative`
 
 ## Corrections (32 contradicted claims)
 

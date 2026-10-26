@@ -13027,12 +13027,26 @@
   "first_seen": "2026-10-26T18:16Z",
   "tree": "26ec8b59c7dd94a2dd1c68bb26710be273f198da"
  },
+ "20261026T1815-c43-review-cips-predator": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:26Z",
+  "tree": "7d34930b6f41ab209915a3051e8af8692d6f29de"
+ },
  "20261026T1819-c44-cips-chemostat-sighting": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
   "dropped": [],
   "first_seen": "2026-10-26T18:19Z",
   "tree": "9c1202da63bd46c9ee285d3a3ee7f08dd3f6fdfe"
+ },
+ "20261026T1826-c43-intent-review-lifespan": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:26Z",
+  "tree": "7471f69f6c507ddce89f58bb7bee368c8bee787e"
  },
  "_bad_branches": {},
  "_deferred": {
