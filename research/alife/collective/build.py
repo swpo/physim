@@ -54,7 +54,7 @@ LIT_EVERY = timedelta(hours=6)  # a literature check is due this long after the 
 LEASE = timedelta(hours=6, minutes=10)  # a session lasts 6 h (WORKER_PROMPT.md) unless an intent gives "until"
 MAX_FILE_MB, MAX_CONTRIB_MB, MAX_MOVIE_MB = 15, 10, 3
 FAIL_RE = re.compile(r"\bfail|contradict|did ?n[o']t|does ?n[o']t|not (replicat|reproduc|seen|observed|found)", re.I)
-SCORE_VERSION = 4  # bump when scoring rules change: the progress history is then replayed
+SCORE_VERSION = 5  # bump when scoring rules change: the progress history is then replayed
 DROP_EXT = (".npz", ".npy", ".pkl", ".pickle", ".h5")
 
 
@@ -721,7 +721,11 @@ def tally(cl):
     bd_yes = [v for v in rep_votes if v["bd"] is True and v["supported"]]
     bd_no = [v for v in rep_votes if v["bd"] is False]
     bd = status == "established" and len(bd_yes) >= 1 and len(bd_yes) > len(bd_no)
-    bd_mask = mask(set().union(*[v["bd_caps"] for v in bd_yes]) & (held - bc)) if bd else 0
+    # a capability counts as beyond diffusion when more of the reviewers who judged the twin say the twin lost it
+    # than say it did not (one reviewer listing every capability must not outvote one who names fewer)
+    bd_judges = [v for v in rep_votes if v["bd"] is not None]
+    lost = {x for x in held - bc if sum(x in v["bd_caps"] for v in bd_yes) > sum(x not in v["bd_caps"] for v in bd_judges)}
+    bd_mask = mask(lost) if bd else 0
     cl.update(status=status, held=mask(held), scored=mask(held - bc), bc=mask(bc), per=per, need=need,
               n_votes=len(votes), ever_supported=bool(seed_pro) or any(v["supported"] for v in rep_votes),
               bd=bd and bool(bd_mask), bd_mask=bd_mask, class_ok=any(v["class_confirmed"] for v in bd_yes))

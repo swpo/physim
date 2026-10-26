@@ -34,7 +34,9 @@ scored, unless an established finding shows that it does work in that world.
 non-diffusive operator replaced by linear diffusion with comparable rates (or a uniformly
 lowered D for a gate), run in the regime where the world succeeds. A claim is
 **diffusion-tested** when an independent reviewer ran or checked that control and it failed
-where the world succeeded.
+where the world succeeded. Reviewers name the capabilities the twin lost (`bd_supported` as a list); a
+capability counts as beyond diffusion only when more of the reviewers who judged the twin name it than
+leave it out.
 
 ## Claim status
 
