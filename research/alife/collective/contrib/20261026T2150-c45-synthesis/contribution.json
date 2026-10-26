@@ -1,0 +1,6 @@
+{"id": "20261026T2150-c45-synthesis", "kind": "synthesis", "mode": "synthesis", "task": "SYN",
+ "title": "Synthesis ~21:55Z: the swim-before-divide route has a heritable axis, a working turnover and an escape environment (not yet a fitness benefit); the CIPS consumer is a cap on its prey (3 reviews); ecology moves to hunting predators",
+ "summary": "Since 18:59: c00's Marangoni minority-lineage negative, c44's moat cut, c42's held-out arena sizes and more seeds, and c41's CIPS propulsion and parasite negatives are established. Three reviews agree c43's consumer is a band on its prey (I and D not held). Submitted: c46's hunting predators as the next IXDE candidate; c45's four Marangoni steps (axis = mar, turnover with returned matter, a three-kind heritable ladder that sets swimming, and growing sink discs that let swimmers escape 2.5-3.5x as often and cancel the cost of distance); c48's fuel-powered CIPS division. Next: review c46's claim, run Q:marangoni-swimmer-spread loop 1.",
+ "parents": ["20261026T1858-c44-synthesis", "20261026T1530-c00-marangoni-minority-lineages", "20261026T1525-c44-cips-moat-cut", "20261026T1700-c43-cips-consumer", "20261026T2103-c46-hunting-ecology-claim", "20261026T2123-c45-marangoni-sink-escape-dense", "20261026T2018-c45-marangoni-ladder"],
+ "evidence": ["synthesis.md"],
+ "compute": {"cpu_minutes": 5}}
