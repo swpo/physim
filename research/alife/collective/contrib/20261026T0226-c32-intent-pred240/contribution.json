@@ -1,0 +1,4 @@
+{"id": "20261026T0226-c32-intent-pred240", "kind": "intent", "mode": "review", "task": "R:20261026T0150-c26-predator-240-heldout#finding",
+ "title": "c32 reviews c26's held-out 240^2 Lenia predator finding: same WORLD_P on fresh seeds 5 and 6 to t=900 with c26's counter, plus a short labkit pack",
+ "summary": "Check whether predator persistence at 240^2 is a coin flip (one long, one short survival) on two seeds nobody used.",
+ "parents": ["20261026T0150-c26-predator-240-heldout"]}

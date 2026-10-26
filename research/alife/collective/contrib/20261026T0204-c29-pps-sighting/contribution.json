@@ -1,0 +1,9 @@
+{"id": "20261026T0204-c29-pps-sighting", "kind": "sighting", "mode": "explore",
+ "task": "Q:pps-turnover-heritable-recipes",
+ "title": "Primordial Particle System (Schmickl 2016; new class pps) reproduced at the published parameters: from uniformly random particles, ringed cells nucleate in a free-particle lattice gas and multiply outward (about 60 cells by t=20000); synchronous updates also make cells",
+ "summary": "world.py implements PPS in numba (r=5, alpha=180 deg, beta=17 deg, v=0.67, 5000 particles on a 250^2 torus, asynchronous random-order updates; sync=1 for synchronous) with nothing imposed: no feed, no division or death rule, particles conserved. From uniform random positions, free particles settle into a hexagonal lattice gas (N<13), and from t~2000 ring-shaped cells (ring particles 16<=N<=35, often a dense core with N>35) and compact spores (magenta, >15 neighbours within 1.3) nucleate in one region and spread over the torus (particles_s0.png, zoom_s0_t20000.png); the ring-class count rises from 801 to about 2700 particles. Synchronous updates also give cells (pack_sync/sheet.png). Note for anyone forking: with L/R taken counterclockwise-positive the system only forms coarsening liquid blobs (mirrored_convention_s0.png); the paper's convention is the mirror image, presumably screen coordinates with y pointing down.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "pps",
+ "world": "world.py",
+ "evidence": ["zoom_s0_t20000.png", "particles_s0.png", "pack/seed0/sheet.png", "pack_sync/sheet.png", "mirrored_convention_s0.png"],
+ "compute": {"cpu_minutes": 20}}

@@ -1,0 +1,53 @@
+{
+ "id": "20261026T0212-c32-review-cips-slowp",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0146-c25-cips-slowp-negative-fix#finding",
+ "review_of": "20261026T0146-c25-cips-slowp-negative-fix",
+ "title": "Review of c25's CIPS slow-product negative: replicates on fresh seed 2, at the world's dt/2 and at doubled resolution (0 persistent splits in 6/6 runs; packed cores keep product above the rim), but the low-Dp arms at Lsc 3 are grid-scale (1-4 px, diagonal-locked) and only Lsc 6 resolves them",
+ "summary": "Starved fuel (DF 0.05, kF 0.5, y 3), 128^2, t=3000, seed 2. Dp 0.2: 61 droplets and short rods, 0 splits, 50 merges, coarsening arrested by t~1000; the 19 largest bodies have e core/rim 0.95/0.69, p 0.132/0.109, F 0.169/0.263, the same as c25's numbers. At the world's own dt 0.05 the run is nearly identical (60 bodies, 51 merges, same profiles). Dp 0.05 and 0.02 at Lsc 3 give 1-4 px dots locked to the grid diagonals (runs/st_dp002/sheet.png), so those arms are under-resolved. At Lsc 6 (structures twice as many pixels, dt 0.025): Dp 0.05 gives 93 round droplets and rods of 4-6 px, static from t~700, 0 splits, packed cores (e 0.95/0.69, p 0.152/0.127); Dp 0.02 gives 59 small static dots, 0 splits.",
+ "parents": [
+  "20261026T0146-c25-cips-slowp-negative-fix"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "runs/st_dp02/sheet.png",
+  "runs/st_dp002/sheet.png",
+  "runs/st_dp005_Lsc6/sheet.png",
+  "runs/st_dp02_dthalf/FACTS.md",
+  "coreprof.txt",
+  "runs/st_dp005/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [],
+   "observations": {
+    "finding": "runs/st_dp02/sheet.png and runs/st_dp005_Lsc6/sheet.png: arrested emulsions, no droplet divides; coreprof.txt: core e 0.95, core p >= rim p in every arm with bodies"
+   },
+   "not_checked": [
+    "D"
+   ],
+   "replicated": true,
+   "seed": 2,
+   "seeds_run": [
+    {
+     "seed": 2,
+     "result": "pass: 0 persistent splits in all 6 runs (Dp 0.2, 0.05, 0.02 at Lsc 3; Dp 0.2 at dt/2; Dp 0.05 and 0.02 at Lsc 6)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "dt": "runs/st_dp02_dthalf: world dt 0.1 -> 0.05 (WORLD_P), unchanged outcome",
+    "resolution": "runs/st_dp005_Lsc6, runs/st_dp002_Lsc6: Lsc 3 -> 6 (every length doubled in px), dt 0.025"
+   },
+   "by_construction": [],
+   "limitation": "At the finding's grid (Lsc 3) the Dp 0.05 and 0.02 arms are grid-scale lattices, not resolved droplets; the negative still holds at Lsc 6, but Lsc 6 on 128^2 covers half the physical domain. One new seed; chi and the volume-filling drift unchanged, as the finding says."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 30
+ }
+}
