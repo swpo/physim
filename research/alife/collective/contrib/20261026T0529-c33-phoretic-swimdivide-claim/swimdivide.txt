@@ -1,0 +1,27 @@
+L0.npz t=800 splits 129 merges 190 persistent by generation {1: 11, 2: 8, 3: 6, 4: 5, 5: 7, 6: 5, 7: 6, 8: 6, 9: 4, 10: 5} max generation 10
+  persistent splits whose two daughters both carry B (>= 5%): 61 of 63
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 2 of 63 ; max 5.29
+    t=664 gen 10 parent 46 -> [31, 17], B share [0.29, 0.24], parent travel 5.3 diameters (track 364)
+    t=537 gen 5 parent 109 -> [61, 47], B share [0.23, 0.23], parent travel 4.5 diameters (track 286)
+    t=562 gen 9 parent 110 -> [90, 22], B share [0.4, 0.18], parent travel 1.6 diameters (track 326)
+L1.npz t=800 splits 126 merges 184 persistent by generation {1: 13, 2: 10, 3: 8, 4: 8, 5: 7, 6: 5, 7: 4} max generation 7
+  persistent splits whose two daughters both carry B (>= 5%): 52 of 55
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 0 of 55 ; max 1.91
+    t=313 gen 2 parent 76 -> [39, 36], B share [0.26, 0.39], parent travel 1.9 diameters (track 212)
+    t=607 gen 5 parent 72 -> [37, 34], B share [0.27, 0.26], parent travel 1.9 diameters (track 332)
+    t=618 gen 6 parent 68 -> [51, 15], B share [0.25, 0.0], parent travel 1.8 diameters (track 335)
+dd2.npz t=400 splits 41 merges 77 persistent by generation {1: 6, 2: 2, 3: 2, 4: 1, 5: 2, 6: 1} max generation 6
+  persistent splits whose two daughters both carry B (>= 5%): 13 of 14
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 1 of 14 ; max 6.39
+    t=298 gen 2 parent 33 -> [16, 13], B share [0.19, 0.23], parent travel 6.4 diameters (track 177)
+    t=163 gen 1 parent 63 -> [39, 23], B share [0.41, 0.13], parent travel 1.8 diameters (track 63)
+    t=289 gen 2 parent 201 -> [135, 65], B share [0.28, 0.2], parent travel 0.8 diameters (track 175)
+== reciprocal turnover twin (mu_A2=+1), seed 0, t=400
+rec_t0.npz t=400 splits 2 merges 41 persistent by generation {} max generation 0
+  persistent splits whose two daughters both carry B (>= 5%): 0 of 0
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 0 of 0 ; max None
+rec_t0.npz tracks>=20fr: 24  B rim/core frac (median): [0.47 0.36]
+  composites (fB 0.1-0.6, life>=50): 16  moving >=3 BL: 0
+== non-reciprocal, seed 0, t=400 (h2 = same world, 800 frames)
+h2.npz tracks>=20fr: 59  B rim/core frac (median): [0.14 0.2 ]
+  composites (fB 0.1-0.6, life>=50): 19  moving >=3 BL: 10
