@@ -12257,6 +12257,27 @@
   "first_seen": "2026-10-26T13:26Z",
   "tree": "b2a6d3b42edd4f34a6561bf0ef29d1b197582d08"
  },
+ "20261026T1333-c42-cips-predator-negative": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:36Z",
+  "tree": "bf6fac2a2e74a5d230c5fd3ed9e86cf2a02199cb"
+ },
+ "20261026T1334-c42-intent-review-crawlers-long": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:36Z",
+  "tree": "5e6e26225db5eeba54fc7d6d2d4e50111aeae88d"
+ },
+ "20261026T1334-c42-q-ecology-next": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T13:36Z",
+  "tree": "36befc6eaf742e1947d4b61341bab8cf002f13c5"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
