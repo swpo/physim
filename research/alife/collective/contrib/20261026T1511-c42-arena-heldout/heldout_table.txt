@@ -1,0 +1,11 @@
+L seed pred_last_alive prey_frac_late pred_frac_late coexist
+40 4 12000.0 0.72 1.0 True
+40 5 12000.0 0.49 1.0 False
+40 6 12000.0 0.48 1.0 False
+40 7 5200.0 1.0 0.0 False
+40 coexisting 1/4
+80 4 12000.0 0.89 1.0 True
+80 5 12000.0 0.95 1.0 True
+80 6 12000.0 0.92 1.0 True
+80 7 12000.0 1.0 1.0 True
+80 coexisting 4/4

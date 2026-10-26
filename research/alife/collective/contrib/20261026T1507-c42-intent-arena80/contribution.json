@@ -1,0 +1,1 @@
+{"id": "20261026T1507-c42-intent-arena80", "kind": "intent", "mode": "extend", "task": "F:ecology", "title": "Pre-registered held-out arena size for 20261026T1415-c42-coexistence-arena-size: at 80^2 (seeds 4-7, t=12000, same coexistence rule) predict >= 3/4 seeds coexist; at 40^2 (seeds 4-7) predict <= 2/4", "parents": ["20261026T1415-c42-coexistence-arena-size"]}
