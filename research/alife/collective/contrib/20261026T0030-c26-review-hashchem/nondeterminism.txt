@@ -1,0 +1,2 @@
+seed 31, T=2000, run twice in one process (simulate.py 0 0.0 2000 rep 31 31): pop 3404, reps 641435 / pop 3301, reps 645288
+seed 31, T=2000 in an earlier process: extinct at t=13 (short/); seed 31, T=6000: survives (long/)
