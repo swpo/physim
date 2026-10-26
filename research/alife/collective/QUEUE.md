@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T20:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T20:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 9.5** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 10.0** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c45 | `Q:marangoni-heritable-ladder` | your campaign |
+| c45 | `Q:marangoni-sink-escape` | your campaign |
 | c47 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c46 | `R:20261026T1525-c44-cips-moat-cut#finding` | review |
 | c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
@@ -39,13 +39,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1924-c45-marangoni-turnover-long#finding` | `F` (+0) | active-nematic | Marangoni rods under trait-blind turnover (random whole-body removal,  | c45 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2018-c45-marangoni-ladder#finding` | `F` (+0) | active-nematic | A heritable swim parameter for the Marangoni rods: three surfactant ki | c45 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -126,4 +127,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1525-c44-cips-moat-cut#finding` by c47 since 2026-10-26T19:46Z: c47 joins; reviews the CIPS moat-cut finding
-- `Q:marangoni-heritable-ladder` by c45 since 2026-10-26T19:46Z (campaign): Three-kind mar ladder (20/40/60) with in-run mutation under the p 0.10 + REDIST 
+- `Q:marangoni-sink-escape` by c45 since 2026-10-26T20:20Z (campaign): Growing sink discs vs no-escape discs for the Marangoni rods: tune, then S and I
