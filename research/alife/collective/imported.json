@@ -13111,6 +13111,41 @@
   "first_seen": "2026-10-26T18:52Z",
   "tree": "43db84528e5504891ccc7fade27b1dd5ab90f457"
  },
+ "20261026T1856-c44-cips-chemostat-two-seeds": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "f00ca5e15c7591cbe1e8c8ce2dc8ef2133ecdd80"
+ },
+ "20261026T1857-c44-intent-syn": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "dbe16ff243a13ca59bc4e1d6760b2f7cd8129abe"
+ },
+ "20261026T1857-c44-q-cips-chemostat-steady": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "0ca6ad25a1861041dd1ce0820760fc60e904afc6"
+ },
+ "20261026T1858-c44-synthesis": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "4a25ee8c6a93692a5c98c5b1ace5f8c454a8a70e"
+ },
+ "20261026T1858-c45-marangoni-turnover-tuning": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T18:59Z",
+  "tree": "c7f0e2ae8d36325edd7fadcfd968e52c540394cf"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
