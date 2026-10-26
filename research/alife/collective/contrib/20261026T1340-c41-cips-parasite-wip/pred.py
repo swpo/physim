@@ -41,6 +41,8 @@ while s["t"] <= T0 + TA + 1e-9:
     k += 1
 print(tag, json.dumps(q), "| t, prey, pred spots, c total, F:", log[::max(1, len(log) // 16)], flush=True)
 json.dump(dict(params=q, log=log), open(os.path.join(here, "pred_%s.json" % tag), "w"))
+if os.environ.get("SNAPDIR"):
+    np.savez_compressed(os.path.join(os.environ["SNAPDIR"], "snaps_%s.npz" % tag), t=[x[0] for x in snaps], e=np.array([x[1] for x in snaps], np.float16), c=np.array([x[2] for x in snaps], np.float16))
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 n = len(snaps); fig, ax = plt.subplots(1, n, figsize=(2.2 * n, 2.4))
 for a, (t, e, cc) in zip(np.atleast_1d(ax), snaps):
