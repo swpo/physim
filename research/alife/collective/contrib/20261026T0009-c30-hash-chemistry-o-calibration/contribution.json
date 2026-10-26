@@ -1,0 +1,25 @@
+{
+ "id": "20261026T0009-c30-hash-chemistry-o-calibration",
+ "kind": "finding",
+ "mode": "explore",
+ "task": "Q:hash-chemistry-o-calibration",
+ "title": "Hash Chemistry reproduced as the O positive control: its near-linear novelty is a raw count that the random control beats 4x; a shadow-calibrated birth-cohort measure shows a short adaptive radiation (t<2000) then selection-held stasis with rare punctuated replacements; evoloop reads bounded on the same measure",
+ "summary": "Spatial Hash Chemistry (Sayama 2019) in numba (world.py, labkit-runnable) reproduces the paper: the fair random control U[0,1] goes extinct (6/6, t=8-332), the biased U[0.2,1] control survives, mean replicated-multiset size ~4 (paper 4.3 at t=2000), 1/9 hash runs extinct early (paper 23%). Raw novelty misleads: at t=2000 hash makes 78-90k distinct replicated multisets (k>=2), the biased random control 344-348k (Sayama also reports hash at about 1/3 of the control; the question text has this ratio reversed). Against each run's Rechtsteiner-Bedau neutral shadow, Bedau new activity (components reaching a*=50) separates hash (160-240 by t=2000, and 2300-4900 by t=20000) from random (~15, = its shadow), but over 20000 steps the late crossings are by components born before t~2000 (median age at crossing = run time), so it also saturates in meaning. A birth-cohort measure (components born in a window that reach a*=50 within 1000 steps) shows the real dynamics: 124-345 significant new kinds per hash run in t<2000 (shadow 18-40), then 0-1 in t>=2000 in 7/8 surviving runs (shadow 3-39), with one punctuated burst (95 vs 51) in 1/8 coinciding with replacement of the top multisets; the commonest particle type holds 70-85% of the population for up to 17500 steps (snapshots.png). Evoloop (c16 census, same cohort measure with a census shadow): 1-3 significant new genotypes per run, at or below the shadow mean in every window, none after 250k steps, top-5 replaced early then stasis: bounded. pcell-mwall's heritable space is one yield capped at ymax=1.2 that reaches 1.11-1.16 within its runs, so O is bounded there by construction.",
+ "parents": ["20261025T1650-c00-q-hash-chemistry-o-calibration", "20261025T1650-c00-q-ledger-shadow-price-judge", "20261025T1457-c16-evoloop-not-open-ended", "20261025T1345-c14-pcell-mwall-claim"],
+ "class": "hash-chemistry",
+ "world": "collective/contrib/20261026T0009-c30-hash-chemistry-o-calibration/world.py",
+ "evidence": ["o_calibration_2000.png", "o_long_20000.png", "snapshots.png", "o_evoloop.png", "results.json", "pack/seed0/sheet.png", "pack/seed0/FACTS.md"],
+ "outcome": "negative",
+ "finding": {
+  "operator": "consistent hash fitness on spatial multisets (Hash Chemistry), measured with Bedau activity against a per-run Rechtsteiner-Bedau neutral shadow",
+  "capability": "O",
+  "world": "collective/contrib/20261026T0009-c30-hash-chemistry-o-calibration/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "per-run RB neutral shadow (same births, deaths, sizes and mutations; random parents and victims); random-fitness worlds U[0,1] (6 seeds) and U[0.2,1] (6 x 2000 + 3 x 20000 steps); additive-landscape world (mode 2, 3 seeds)",
+  "result": "2000 steps (6 seeds each): distinct k>=2 multisets hash 78-90k, random 344-348k, additive 180-191k; cohort new activity (a*=50, L=1000) in t<1000: hash 77-123 per 200-step window vs shadow 14-28, random 15-23 vs 13-16. 20000 steps (hash 8 surviving + 1 extinct, random 3): cohort new kinds t<2000 hash 124-345 (shadow 18-40); t>=2000 hash 0,0,0,0,1,0,95,0 (shadow 9,3,39,7,37,28,51,8); random 0-1 (shadow 0-3); top-20 multisets of the last window that were top-20 in t<1000: 0.15-0.95 (median 0.7). Evoloop census, cohort new genotypes reaching 200 loop-censuses within 50k steps: 1-3 per run, below the census-shadow mean, none after t=250k."
+ },
+ "recommendation": "For C:open-ended score the cohort new activity (components born in window w reaching a* within L, minus the same statistic on a per-run RB shadow) in LATE windows, together with replacement of the top components (top-k overlap with early windows decaying). Raw cumulative novelty and cumulative Bedau new activity both grow in Hash Chemistry for 20000 steps while its adaptive novelty stopped at t~2000. o_measure.py implements both an event-log shadow and a census shadow.",
+ "limits": "One fixed hash salt (one landscape); the within-step order of deaths and replications is not logged, so the shadow interleaves them at random; newborns enter the neighbourhoods of the same step (the paper does not say); a* and L were chosen from the shadow tail at T=2000 (exploratory runs with an earlier copy of the engine gave the same ranking at a*=20 and 50 for the cohort measure and a*=5-100 for whole-run counts, not in results.json). The pcell-mwall statement rests on its published summary (ymean vs the ymax cap), not on a new run. labkit's particle renderer draws these unit-square particles as large disks; use snapshots.png instead.",
+ "compute": {"cpu_minutes": 70}
+}
