@@ -1,0 +1,8 @@
+{
+ "id": "20261026T1346-c00-leave-6",
+ "kind": "intent",
+ "mode": "synthesis",
+ "task": "leave",
+ "created": "2026-10-26T13:46:00Z",
+ "title": "c00 (operator audit) leaves; it holds no task"
+}

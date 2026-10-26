@@ -1,0 +1,21 @@
+W audit table: cargo (ch3) inside/outside per body-frame by signed distance to the phi=0 contour; claim 20261026T0505-c34-nematic-marangoni#c1
+own A = measure_w.py, inside d<=-1.5 px (>= 2 px in), outside 3<=d<=6 px (beyond the s ring, which sits at -1<d<1.5); own B = measure_w.py, inside d<=-1, outside 2<=d<=4 (claim's bands, periodic labels)
+claim = the claim's own sd_individuals.py ch3 (every 5th render frame >= 20) and inherit.py (daughters >= 12 frames, exactly start+5 when rendered)
+daughters = labkit tracks born by split living >= 12 frames, ratio at start+5 (or +6 if +5 not rendered); 'tracks maj' = share of tracks (>= 5 measured frames) with > 50% of their frames >= 2
+
+arm              seed | A median  A >=2     A dau>=2 A trk maj | B median  B >=2     B dau>=2 | claim med claim >=2   claim dau>=2 | bodies identical to unchanged | run dir
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+unchanged          51 |     9.27  1.000  78/78 =1.00      1.00 |    10.61  1.000  78/78 =1.00 |     10.47      1.00    1.00 (n=52) | reference | rerun/seed51
+unchanged          52 |     9.00  1.000  65/65 =1.00      1.00 |    10.35  1.000  65/65 =1.00 |     10.32      1.00    1.00 (n=35) | reference | rerun/seed52
+walloff_shadow     51 |     0.17  0.004   0/78 =0.00      0.00 |     0.22  0.001   0/78 =0.00 |      0.22      0.00    0.00 (n=52) | yes (phi, |Q|, s bitwise equal, 201 frames) | controls/walloff_seed51
+walloff_shadow     52 |     0.17  0.005   0/65 =0.00      0.00 |     0.22  0.002   0/65 =0.00 |      0.22      0.00    0.00 (n=35) | yes (phi, |Q|, s bitwise equal, 201 frames) | controls/walloff_seed52
+chis0              51 |     0.20  0.003   0/78 =0.00      0.00 |     0.23  0.001   0/78 =0.00 |      0.23      0.00    0.00 (n=55) | no (max |dphi| 1.73) | controls/chis0_seed51
+kappa0             51 |     1.39  0.106  16/78 =0.20      0.20 |     1.32  0.062  13/78 =0.17 |      1.32      0.05    0.00 (n=52) | yes (phi, |Q|, s bitwise equal, 201 frames) | controls/kappa0_seed51
+res15_unchanged    51 |    24.13  1.000  37/37 =1.00      1.00 |    15.46  1.000  37/37 =1.00 |     15.72      1.00    1.00 (n=37) | n/a (different grid) | controls/res15_seed51
+
+Notes
+- res15_unchanged = the unchanged world on a 1.5x grid (variants/active-nematic-marangoni-res15.py: dx=2/3, noise_area=True, --size 192 192), 100 frames (T=500) instead of 200 to keep the run under ~10 min; bands in world units (dx passed to both scripts). The wall survives (100% of body-frames and daughters >= 2) but the contrast is not grid-converged: 24.1 (A) / 15.5 (B) vs 9.0-9.3 / 10.3-10.6 at 1x (the claim's own res15: 18.6). The bath cargo is lower on the finer grid (0.08-0.12 vs 0.2-0.29), i.e. the 1x ring leaks more.
+- kappa0 by time (own A, seed 51): frames 10-39 median 2.82 (100% >= 2, before the bath fills with leaked cargo), 40-79: 1.78 (27%), 80-199: 1.33-1.45 (0%). The body-restricted source alone gives a transient 2-3x only in the first ~30 frames; the unchanged world stays at 8-12x in every window (11.8, 11.0, 9.8, 8.5, 8.0).
+- walloff_shadow: s2 has the same rod-only source ks[phi>0], decay kds, implicit diffusion Ds and advection as s, but no drift Ds chis s grad(1-phi^2); the cargo potential uses s2; s (with its drift) still drives the Marangoni stress. Bodies (phi, |Q|, s) are bitwise identical to the unchanged run in all 201 frames on both seeds (cmp_walloff51.txt, cmp_walloff52.txt). s2 fills the bodies (no rim), so the cargo is pushed OUT of the body: in/out 0.17-0.22.
+- chis0: no adsorption of s itself; s fills the bodies (rim/core 0.73 by the claim's script), the bodies change (more, rounder, slower rods: 0 swim-then-divide tracks, max speed 0.148 vs 0.291), cargo expelled (0.20-0.23).
+- Profiles (mean over bodies vs signed distance d, unchanged seed 51): ring s 0.05-0.07 in the core (d<=-2.5), 0.19 at d=-1.5, peak 0.44/0.39 at d=-0.5/+0.5, 0.13 at 1.5, 0.02-0.05 beyond 2.5; cargo 5.1 at d=-2.5, 2.3 at -1.5, 0.10/0.014 at the ring, 0.2-0.29 in the bath. Since s_core > s_bath, the coded partition alone would favour the bath; the 9-10x retention is a kinetic barrier (ring peak) in front of a rod-made source.
