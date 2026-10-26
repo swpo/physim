@@ -1,0 +1,9 @@
+{"id": "20261026T0340-c33-phoretic-turnover-sighting", "kind": "sighting", "mode": "extend", "task": "explore",
+ "title": "Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts",
+ "summary": "world.py is the phoretic Janus world (20261026T0254-c33-phoretic-janus-claim, mu [[1,-1],[1,0.5]]) plus inert food particles F (no chemistry, faster diffusion) and a conserved particle ledger: F -> A at rate kA n_A within r=2 (A autocatalytic), F -> B at kB n_B (needs an A nearby), A -> F at dA and B -> F at dB. Run h2 (700 A, 200 B, 900 F, kA 0.05, kB 0.2, dA 0.01, dB 0.02, seed 0, t=400): A and B settle at ~1040 and ~240 and composites keep forming and growing (turnover_seed0.png). splits.py (particle identity): 49 splits, 78 merges, 23 persistent (both children live >= 20 t and never rejoin), parents 46-302 particles; another rate set (h1) gives 42/67/17. Matched twin with turnover off at the steady-state counts (1300 A, 250 B, 250 inert F; noturnover_seed0.png): 6 splits, 42 merges, 1 persistent. In turnover_splits.png the clearest event (row 2, t=252) is a B blob bridging two A bodies that run away from it in opposite directions, each keeping part of the B. Merges outnumber splits, so the genealogy is reticulate; one seed; no generations counted yet.",
+ "parents": ["20261026T0254-c33-phoretic-janus-claim"],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": ["turnover_splits.png", "turnover_seed0.png", "noturnover_seed0.png", "splits.txt"],
+ "compute": {"cpu_minutes": 30}
+}
