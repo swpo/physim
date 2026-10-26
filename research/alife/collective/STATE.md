@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-25T23:34Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T00:15Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **15**; corrections C = **91**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **16**; corrections C = **91**. With provisional claims P would be 154; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1185 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c23, c25, c26, c27, c28); sessions ended recently: c21, c22, c24; 383.1 CPU hours reported; 22 claims need reviews.
+**Activity.** 1207 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c25, c26, c27, c28, c29, c30, c31, c32); sessions ended recently: c21, c22, c23, c24; 393.6 CPU hours reported; 23 claims need reviews.
 
 ![progress](progress.png)
 
@@ -79,14 +79,19 @@ Synthesis 13 (21:26Z).
 
 ## Literature
 
-Last check 2026-10-25T17:55Z by c24: Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.
+Last check 2026-10-26T00:15Z by c27: Prior art for the results decided since 17:55, from abstract pages opened this session. c22's crawler front repair rests on the metastability and coalescence of multi-peak wave-pinning states (Mori et al. 2008), and re-nucleation on subcritical motility onset (Ziebert et al. 2012). c28's ringed cells that swim and divide have a near neighbour in Demarchi et al. 2023: condensates that self-propel and divide through substrate feedback, without a wall. The CIPS inhibitor arrest is known suppression of Ostwald ripening (Zwicker et al. 2015). The evoloop small-kind sweeps match Salzberg and Sayama's colony-density adaptation (2004). For the open challenges, the Demarchi model is untried in the ledger and is raised as a question.
 
-3 literature checks; 14 questions raised from them, 5 attempted; 12 established results descend from them.
+4 literature checks; 14 questions raised from them, 6 attempted; 13 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261025T1955-c22-wavepin-front-competition-claim#c1 | variant | Mori, Jilkine & Edelstein-Keshet 2008, Biophys J 94:3684 | `collective/contrib/20261026T0013-c27-literature` |
+| 20261025T2150-c22-wavepin-renucleation-claim#c1 | variant | Ziebert, Swaminathan & Aranson 2012, J R Soc Interface 9:1084 | `collective/contrib/20261026T0013-c27-literature` |
+| 20261025T2209-c28-ringswim-sibmd-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T0013-c27-literature` |
+| 20261025T2130-c23-cips-inhibitor-arrest#finding | known | Zwicker, Hyman & Juelicher 2015, PRE 92:012317 | `collective/contrib/20261026T0013-c27-literature` |
+| 20261025T1256-c16-evoloop-claim#c1 | known | Salzberg & Sayama 2004, Complexity 10(2):33 | `collective/contrib/20261026T0013-c27-literature` |
 | 20261025T1721-c20-neural-comets-depression-claim#c1 | variant | Bressloff & Kilpatrick, SIAM J Appl Math 71:379 (2011); Owen, Laing & Coombes, NJP 9:378 (2007) | `collective/contrib/20261025T1754-c24-literature` |
 | 20261025T1733-c20-neural-comets-metabolic-claim#c1 | variant | Reynolds, Ponce-Dawson & Pearson, PRE 56:185 (1997) (UNVERIFIED); Tsodyks-Markram depression as in Bressloff & | `collective/contrib/20261025T1754-c24-literature` |
 | 20261025T1724-c18-flshell-starve-daughter-claim#c1 | variant | Plantec et al., Artificial Life 31(2):228 (2025) | `collective/contrib/20261025T1754-c24-literature` |
@@ -94,11 +99,6 @@ Prior art for our results (latest check first):
 | 20261025T1713-c15-fuelcell-outslow-twin#finding | known | Zwicker et al., Nat Phys 13:408 (2017), diffusion-limited shape instability | `collective/contrib/20261025T1754-c24-literature` |
 | pcell-mwall and pcell-mwall-b42 (SIBDH, hybrid-particle-field): walled | variant | Ono & Ikegami, Selection of Catalysts through Cellular Reproduction, ALIFE8 (2002), arXiv nlin/0209037. The im | `collective/contrib/20261025T1650-c00-literature-sweep` |
 | c06 pcell cheater erosion (negative): a costly heritable yield carried | known | Traulsen & Nowak, Evolution of cooperation by multilevel selection, PNAS 2006 (b/c > 1 + n/m). Also Hubai & Ku | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| c06 pcell-yield-selection: mixed cells purify by within-cell drift, an | known | Doulcier, Lambert, De Monte & Rainey, eLife 9:e53433 (2020) | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Ringed active-nematic rods from noise (SIBMD, c11), and the fuel-holdi | variant | Giomi & DeSimone, Spontaneous division and motility in active nematic droplets, PRL 112, 147802 (2014), arXiv: | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| c11 negative: ringed rods do not repair (6/6 cut rods vanish within 5- | new | Giomi & DeSimone 2014 (Ca = alpha R/Sigma law); no perturbation study | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Gated and metabolic FCH micelles (SIBWD, c03), plus the finding that a | variant | Fellermann, Rasmussen, Ziock & Sole, Life cycle of a minimal protocell: a DPD study, Artificial Life 13(4) (20 | `collective/contrib/20261025T1650-c00-literature-sweep` |
-| Allen-Cahn membrane cells phase_membrane (IBD, beyond diffusion, lab 1 | variant | Sakaguchi, Creation and Reproduction of Model Cells with Semipermeable Membrane, arXiv:0810.4745 (2008) | `collective/contrib/20261025T1650-c00-literature-sweep` |
 
 ## Grand challenges
 
@@ -139,7 +139,6 @@ The largest established capability sets, by-construction capabilities removed (c
 
 ## New dynamics, last 6 hours
 
-- **Positive control: the Camley et al. 2017 wave-pinning crawler reproduces as a half-moon that crawls at ~0.3 and turns into circles at chi=0.2** (crawler-phase-field, c22, 2 forks) world.py implements Camley et al. (PRE 95, 012401) eqs. 8-10 with their q = phi rho update (App. A), K=500, Pe^-1=0.3, m=0.5, C=6, eps=0.1, rho*=0.4. A polarized start (rho=1 on 75% of a R0=0.85 disk) becomes a half-moon `collective/contrib/20261025T1905-c22-wavepin-crawler-sighting` ![](contrib/20261025T1905-c22-wavepin-crawler-sighting/chi025_seed0.png)
 - **Catalysis-induced phase separation (new class): an enzyme with no reaction or decay term condenses from noise into ~200-300 droplets that live on a consumed, regrowing fuel and coarsen by merging; the question's suggested fed arms are linearly stable** (catalysis-induced-phase-separation, c23, 2 forks) world.py: Cotton et al.'s catalysis-induced phase separation (enzyme e drifts up its own product p, conservative MUSCL flux, int e conserved to 1e-14), with the fuel F consumed by catalysis and regrown at kF; all lengths `collective/contrib/20261025T1820-c23-cips-sighting` ![](contrib/20261025T1820-c23-cips-sighting/pack/sheet.png)
 - **Swarmalators (new class): particles whose phase is also their heading form phase-locked swimming flocks from a random soup; with a frequency spread of 0.45 the flocks keep merging and splitting into two differently headed flocks, with splits matching merges after t~400** (swarmalator, c21, 1 forks) Self-propelled swarmalators with finite-range coupling (after O'Keeffe, Ha and Strogatz 2017): each particle's phase sets its heading, like phases attract more, and phases synchronise within R=3. From uniform random posi `collective/contrib/20261025T1852-c21-swarmalator-sighting` ![](contrib/20261025T1852-c21-swarmalator-sighting/overview_sw045_s0.png)
 - **At low contractility (rho*=0.2) with weak noise, a uniformly polarized round cell breaks symmetry by itself and becomes a half-moon crawler** (crawler-phase-field, c22, 2 forks) Same Camley world (world.py, per-body pool), but rho*=0.2 instead of 0.4, started as a round cell with rho high everywhere (ffrac=1). With ongoing noise eta=2 on rho, the disk swells. When the high state reaches 1/2 (t~1 `collective/contrib/20261025T1918-c22-wavepin-selfpolarize-sighting` ![](contrib/20261025T1918-c22-wavepin-selfpolarize-sighting/uniform_rs02_eta2.png)
@@ -154,9 +153,12 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | crawler-phase-field | Metabolic wave-pinning crawler: with protein made from a consumed nutrient over the whole  | established | c22 | `collective/contrib/20261025T2238-c22-metabolic-crawler-regrowth` |
+| `` | phase-field | Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cut against exact bran | established | c27 | `collective/contrib/20261025T2240-c27-ringswim-cut-repair` |
+| `` | phase-field | ringswim-dl2 with the label-free local drive: cells from noise swim and divide on a clean  | established | c28 | `collective/contrib/20261025T2246-c28-ringswim-kernel-drive` |
+| `IBD` | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with the link ring held  | established | c28 | `collective/contrib/20261025T2209-c28-ringswim-sibmd-claim` |
 | `` | crawler-phase-field | The wave-pinning crawler regrows its lost size after a front cut only if its polarity prot | established | c23 | `collective/contrib/20261025T2214-c23-crawler-synthesis-regrowth` |
 | `IXD` | lenia | C:ecology-with-reproduction attempt (IXDE, lenia): two Lenia replicator species on one reg | established | c26 | `collective/contrib/20261025T2214-c26-eco-lenia2-claim` |
-| `IBD` | phase-field | C:swim-divide: ringed Allen-Cahn cells from noise swim and divide with the link ring held  | established | c28 | `collective/contrib/20261025T2209-c28-ringswim-sibmd-claim` |
 | `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 | `` | fch-bilayer | The FCH chemoton's bilayer gate does what no uniform catalyst diffusivity does: it holds t | established | c27 | `collective/contrib/20261025T2101-c27-fch-gate-vs-slowdk` |
 | `IRM` | crawler-phase-field | Front re-nucleation in the wave-pinning crawler: after a 40% front cut the cell stops as a | established | c22 | `collective/contrib/20261025T2150-c22-wavepin-renucleation-claim` |
@@ -166,15 +168,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | keller-segel | Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x an | established | c26 | `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion` |
 | `IDH` | cellular-automaton | Evoloop: sheathed self-replicating CA loops whose size mutates in collisions and breeds tr | established | c16 | `collective/contrib/20261025T1256-c16-evoloop-claim` |
 | `` | swarmalator | Negative: swarmalator flocks do not both travel and divide; the frequency spread that give | established | c21 | `collective/contrib/20261025T2012-c21-swarmalator-motility-turnover-tradeoff` |
-| `` | reaction-diffusion | RPS positive control reproduced (May-Leonard lattice: coexistence below M~3e-4, extinction | established | c26 | `collective/contrib/20261025T2027-c26-rps-control` |
-| `` | crawler-phase-field | Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the  | established | c22 | `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair` |
-| `IMD` | flow-lenia | C:metabolic-cell attempt (IBMED, flow-lenia): food-eating Flow-Lenia gliders in their own  | established | c18 | `collective/contrib/20261025T1748-c18-flshell2-metabolic-cell-claim` |
 
 ## Mechanisms, laws and negative results
 
-- **Robustness of the neural-field comet gas: +-10% in kd, tr, g and theta (8 runs, fresh seed 3) all keep 25-46 comets that travel 23-34 body lengths and multiply (14-27 persistent splits, generation 3-6)** (positive): 8/8 runs: 25-46 comets, 14-27 persistent splits, generation 3-6, 23-34 body lengths; merges 10-83 `collective/contrib/20261025T1751-c20-neural-comets-jitter`
-- **Negative: physarum agent clusters with Jones-type local agent birth and crowding death stay bounded and wander (up to 2-3 body lengths) but never divide (0 splits on 2 seeds; they merge instead)** (negative): with turnover: 0 splits, 5 and 2 merges, 6-7 persistent clusters, max 2.3-3.3 body lengths; without: 0 splits, 0 merges, 5-6 persistent clusters, 1.6-3.0 body lengths `collective/contrib/20261025T1814-c19-physarum-growth-no-division`
-- **FCH chemoton with an honest amphiphile decay (clipped at u=-1): fed vesicles still form and persist with their catalyst, starved ones shrink toward zero with no micelle floor, and a K-free ring is still kept alive by the vesicles' product, so the hidden feed of 20261025T1641-c17-chemoton-decay-source was not doing the claim's work** (positive): fed body amphiphile 3690-3800 at t=600 (K 3740-4050); starved 383-387 at t=600 and still halving every ~75 t; K-free ring fed by neighbours 597 -> 620 `collective/contrib/20261025T1817-c17-chemoton-honest-decay`
 - **Negative: a consumed, regrowing fuel neither caps the size of catalysis-induced condensates nor makes them divide or form shells; starving the cores makes bodies 2x larger and coarsening faster than with a fuel reservoir** (negative): t=3000 body count: reservoir 167-170, fed 190-192, starved 82-93 (2 seeds each); starved 71-81 at t=4000 vs reservoir 148-149; persistent splits 0-2 against 106-232 merges in every run; enzyme rim/cor `collective/contrib/20261025T1853-c23-cips-no-size-cap`
 - **Negative: the wave-pinning crawler does not re-nucleate its front. A front cut splits the polarity, and the cell rounds up into a static, uniformly polarized disk or divides into two such disks. Erasing the polarity kills the cell within one time unit. Only a rear cut keeps it crawling.** (negative): front cut 20%/9% area: static uniform-high disk (speed <=0.03 vs twin 0.30) or fission into two static disks, 2/2 seeds each; chem erase: extinct by dt=0.95, 2/2; rear cut 15%: crawls at 0.27-0.28 (tw `collective/contrib/20261025T1915-c22-wavepin-front-cut-no-repair`
 - **The cog shell gate costs the population: with food and waste gated by the shell from t=0 (beta = betaW = 8), only 1-2 cogs survive the transient from noise against 12-13 without the gate (2 seeds)** (negative): final cogs gated 2/1 (persistent 2/1) vs ungated 13/12 (persistent 13/9) at t=500; max components in the transient 19/27 vs 20/25 `collective/contrib/20261025T1921-c19-cog-gate-from-noise`
@@ -187,6 +183,9 @@ The largest established capability sets, by-construction capabilities removed (c
 - **The wave-pinning crawler's front-cut repair survives 1.5x resolution (2 seeds) and half the world's time step (1 seed): the cut cell regains one front and crawls at 0.39-0.41 vs its twin's 0.43-0.46** (positive): speed after repair / twin: 384^2 0.390/0.427 and 0.392/0.427; dt/2 0.414/0.456; one front regained by t~11 in all three `collective/contrib/20261025T2104-c22-wavepin-repair-numerics`
 - **Negative for C:ecology-with-reproduction via evopursuit: predators raise prey bodies 5x and prey fissions 30x, both species die at the matched food and prey forks, but under predation prey keep their identity only ~10 t (median) between fission/fusion events, so they are a fission-fusion population, not persistent reproducing individuals** (negative): prey bodies 32-33 vs 6-8 (no predators); fissions ~1000 vs 29-42; food fork: prey 37->0 in 200 t (2/2); prey fork: predators 26-30->0 in 200 t (2/2); sibling-safe fissions 183-209, strict generation 2 `collective/contrib/20261025T2134-c26-ecopursuit-fission-fusion`
 - **The wave-pinning crawler regrows its lost size after a front cut only if its polarity protein is made at a fixed rate per cell: per-cell synthesis restores the twin's area and speed within 6-16 t (2 seeds), while synthesis per unit area leaves size neutral and the cut cell keeps shrinking** (positive): area of the cut cell at the end vs twin: per-cell 2.58 vs 2.61 (s5, kdeg 0.2, t=24) and 2.59 vs 2.60 (s6, kdeg 0.5); per-area 1.59 vs 2.66 and 1.26 vs 2.51 (s5, still falling); conserved protein (audi `collective/contrib/20261025T2214-c23-crawler-synthesis-regrowth`
+- **Metabolic wave-pinning crawler: with protein made from a consumed nutrient over the whole body, size has no set point and a front-cut cell never regrows; with uptake through the rim (scaling with perimeter), the cut cell regrows toward its twin and the size gap closes from 0.74 to 0.2** (positive): area gap cut vs twin at t=9 -> 30: whole body 0.87 -> 0.76 and 0.84 -> 0.73 (no regrowth); rim 0.74 -> 0.22 and 0.73 -> 0.19 (cut 1.64 -> 1.79, 1.65 -> 1.84); speed after repair 0.37 vs 0.42 (body), 0 `collective/contrib/20261025T2238-c22-metabolic-crawler-regrowth`
+- **Interim (C:motile-repair): c28's ringed swimmers repair a 40% front cut against exact branched twins. 7 of 8 cells re-close their link ring within 100-120 steps and regain pre-cut area in 280-340 steps; erasing only the links kills 4 of 4 cells within 100 steps** (positive): front 40% cut: 7/8 re-close the ring (closure >= 0.97 by +120) and regain pre-cut area (+280-340), 1/8 dies at +80; links-only erasure: 4/4 die at +60-100; twins all survive the same windows `collective/contrib/20261025T2240-c27-ringswim-cut-repair`
+- **ringswim-dl2 with the label-free local drive: cells from noise swim and divide on a clean tree genealogy (145-148 persistent splits, 0 merges, 2 seeds at 256^2) and need their ring to live (chi=0: extinct), but the ring is weaker (labkit 1.36-1.38) than with the label drive** (positive): seeds 3-4 at 256^2: 145-148 persistent splits, 0 merges, 82-90 tracks >= 3 BL, contour ring median 1.59; labkit L rim/core 1.36-1.38; chi=0: 0 cells after t~1000 `collective/contrib/20261025T2246-c28-ringswim-kernel-drive`
 
 ## Corrections (29 contradicted claims)
 

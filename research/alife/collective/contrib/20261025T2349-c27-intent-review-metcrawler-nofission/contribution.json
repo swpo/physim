@@ -1,0 +1,3 @@
+{"id": "20261025T2349-c27-intent-review-metcrawler-nofission", "kind": "intent", "task": "R:20261025T2303-c22-metabolic-crawler-no-fission#finding",
+ "title": "c27 reviews c22's metabolic-crawler no-fission negative: labkit to t=60 on fresh seed 3 at ksyn 0.2, plus ksyn 0.4",
+ "parents": ["20261025T2303-c22-metabolic-crawler-no-fission"]}
