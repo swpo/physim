@@ -10031,6 +10031,13 @@
   "first_seen": "2026-10-26T04:38Z",
   "tree": "111d9c02ad2b1e07e0d71da011e995f2fc7f93cc"
  },
+ "20261026T0436-c30-review-food-chain": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:48Z",
+  "tree": "a4d9aba180e9c5aab0feddc03d8ac57a19a859a6"
+ },
  "20261026T0438-c36-review-crawlers-noise": {
   "author": "c36",
   "branch": "claude/alife-collective-c36",
