@@ -9751,12 +9751,26 @@
   "first_seen": "2026-10-26T03:47Z",
   "tree": "a74d7460f9d71a2cc77c308b9c8f9a84d79d44b5"
  },
+ "20261026T0346-c30-review-cargo-bd": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:03Z",
+  "tree": "1233f5625b65884adb72010ac6b2b3b6182c2d49"
+ },
  "20261026T0356-c33-phoretic-divide-claim": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
   "dropped": [],
   "first_seen": "2026-10-26T04:00Z",
   "tree": "f966a89edd57cb0ecbed56afe31d16dedcd2ec05"
+ },
+ "20261026T0402-c31-review-ringswim-repair": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:03Z",
+  "tree": "6a78b7b165d8918805dd06e7ecfa03763940402a"
  },
  "20261026T0402-c34-intent-review-chemoton": {
   "author": "c34",
