@@ -1,0 +1,40 @@
+{
+ "id": "20261026T1300-c41-review-nematic-marangoni",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0505-c34-nematic-marangoni#c1",
+ "title": "Review of c34's Marangoni nematic rods (SIBWMD) on fresh seed 31: Supported, with my own passive twin (zeta=0, mar=0: 0 splits, 0 motion), mar=0 (0 swim-then-divide tracks) and two wall-off arms on the same seed",
+ "summary": "Labkit re-run of c34's world.py on unused seed 31 (T=1000): rods form from uniform noise and divide by fission (26 persistent splits, generation 4); 7 tracks swim >= 3 labkit body lengths and then divide (best 5.7, track 16); the self-made surfactant ring passes on 100% of body-frames by signed distance and holds the cargo (in/out 10.1, all body-frames >= 2, all daughters >= 2x). Same seed controls: mar=0 gives 0 swim-then-divide tracks (best 2.39) with division intact; kappa=0 leaves the bodies identical and drops the cargo to 1.33; chis=0 (adsorption off, the protocol's wall-off) removes the ring and the cargo falls to 0.24; the passive twin (zeta=0, mar=0) makes 7 static ringed droplets with 0 splits and 0 tracks moving one body length. Caveat: by rod length no track reaches 3.",
+ "parents": ["20261026T0505-c34-nematic-marangoni"],
+ "review_of": "20261026T0505-c34-nematic-marangoni",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "evidence": ["results.md", "rerun/sheet.png", "rerun/lineage.png", "strip_ring_seed31_track16.png", "strip_cargo_seed31_track16.png", "twin_passive/sheet.png", "ctl_mar0/sheet.png", "ctl_chis0/sheet.png", "ctl_kappa0/sheet.png"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "B", "W", "M", "D"],
+   "observations": {
+     "S": "rerun/sheet.png t=0: uniform noise over the whole box; rods nucleate at t~85-135",
+     "I": "rerun/sheet.png: discrete rods throughout; 95 tracks",
+     "B": "sd_individuals.py ch2 on rerun: 532 body-frames, 100% pass rim/core and rim/out >= 1.5 (medians 2.59, 11.2); strip_ring_seed31_track16.png",
+     "W": "sd_individuals.py ch3: cargo in/out 10.1, 100% of body-frames >= 2; inherit.py: 36/36 daughters >= 2x five frames after birth",
+     "M": "swimdivide.py: 7 tracks swim >= 3 labkit body lengths then divide; track 16 net 41 px = 5.7 BL",
+     "D": "rerun FACTS: 26 persistent splits, generation 4; track 16 -> 42, 43"
+   },
+   "replicated": true,
+   "seed": 31,
+   "seeds_run": [{"seed": 31, "result": "pass"}],
+   "same_individuals": true,
+   "controls_run": {
+     "W": "ctl_chis0/ (adsorption off, the wall-off: ring gone, cargo in/out 0.24, 0% daughters >= 2x); ctl_kappa0/ (same bodies, cargo 1.33)",
+     "M": "ctl_mar0/ (seed 31: 0 swim-then-divide tracks, best 2.39 BL, max speed 0.119 vs 0.315)",
+     "D": "twin_passive/ (seed 31: 0 splits)"
+   },
+   "by_construction": [],
+   "bd_supported": ["M", "D"],
+   "class_confirmed": true,
+   "limitation": "One fresh seed. M passes on labkit's sqrt(area) body length; by rod length the best track is 2.84 and none reaches 3, as on two of c34's three seeds. In the chis=0 wall-off the diffuse surfactant fills the body and expels the cargo, and the Marangoni drive changes the bodies, so it shows the ring is what holds the cargo in, not a matched-body comparison; the kappa=0 arm is the matched-body one. The passive twin removes both non-diffusive stresses (zeta and mar); it loses M and D, while B and W (ring and cargo) persist in it, so only M and D are beyond diffusion."
+ }],
+ "compute": {"cpu_minutes": 60}
+}
