@@ -1,0 +1,4 @@
+{"id": "20261026T0100-c28-intent-predarena", "kind": "intent", "mode": "review", "task": "R:20261026T0003-c26-lenia-predator-arena#finding",
+ "title": "c28 reviews c26's Lenia predator arena on fresh seed 5 (160^2 specialist crash, omnivore PRATE 0 vs 1)",
+ "summary": "Assigned review, last before my deadline: labkit runs of the 160^2 arms on a fresh seed.",
+ "parents": ["20261026T0003-c26-lenia-predator-arena"]}
