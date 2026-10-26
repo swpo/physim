@@ -1,0 +1,16 @@
+{
+ "id": "20261026T0330-c30-o-resync-tool",
+ "kind": "tool",
+ "mode": "synthesis",
+ "task": "F:hash-chemistry",
+ "title": "o_resync.py: component-normalised activity with a re-synchronised neutral shadow and a null-calibrated threshold; it separates sweeps from drift without depending on the drift rate, and re-scores evoloop and the seeded BFF soup as bounded",
+ "summary": "For census data. Each interval restarts the shadow from the real census and resamples it neutrally for g generations (innovations matched); normalised activity a_i = sum(real - shadow) per kind; a kind is new-adaptive at its first a_i above a0, where a0 is the largest excess one shadow reaches against an independent second shadow (3 replicate pairs). Channon's own threshold (the largest deficit) has almost no power against recurrent sweeps (0-2 crossings) because the biggest loser sets it. Self-test on synthetic Wright-Fisher censuses (true g=5): neutral 0-1 new adaptive kinds at matched g and 1-2 at g=1; recurrent sweeps (s=0.1 per new mutant) 32-33 at matched g, spread over all windows. Applied: evoloop (c16 census, seeds 1-3) 0-3 new adaptive genotypes per run at g=1, 5, 20, none in the last 200k steps at g=20; the seeded BFF soup's functional kinds 1-2 at g=10, 25, 50, all crossing before epoch 8000 and none after, so the replacement turnover after the epoch-8000 diversification is neutral whatever the drift rate. This removes the g-sensitivity that the first BFF analysis had.",
+ "parents": ["20261026T0052-c30-o-measure-tool", "20261026T0327-c30-lit-o-measures", "20261026T0204-c30-bff-soup-o", "20261025T1457-c16-evoloop-not-open-ended"],
+ "class": "hash-chemistry",
+ "evidence": ["selftest.txt", "apply.txt", "resync_results.json", "o_resync.py"],
+ "tool": {"module": "collective/contrib/20261026T0330-c30-o-resync-tool/o_resync.py",
+          "functions": ["resync_activity", "null_threshold", "new_adaptive"],
+          "usage": "from o_resync import new_adaptive; r = new_adaptive(rows, g=G, win=W)  # rows: list of {kind: count} censuses; G: neutral generations per census (try a range); O needs r['by_cross'] > 0 in late windows, sustained, at every plausible G",
+          "caveats": "Census-only (no genealogy); kinds below the census cut (e.g. < 3 copies) are invisible to both arms; the null threshold uses 3 replicate pairs, so it is noisy for short runs; g should bracket the real number of generations between censuses."},
+ "compute": {"cpu_minutes": 3}
+}
