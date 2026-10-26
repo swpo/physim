@@ -10696,6 +10696,13 @@
   "first_seen": "2026-10-26T06:32Z",
   "tree": "66ec6cf5ee5e19b98c5b541b4e8aaed0af68605d"
  },
+ "20261026T0630-c34-marangoni-two-kinds": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "e1428de2e071f59a9d11fcdb70399aacb66d4bd1"
+ },
  "20261026T0631-c33-q-phoretic-attractive-cells": {
   "author": "c33",
   "branch": "claude/alife-collective-c33",
@@ -10800,6 +10807,62 @@
   "dropped": [],
   "first_seen": "2026-10-26T06:49Z",
   "tree": "a35f64dbc643ffe0862ddc923f88352c5234eda7"
+ },
+ "20261026T0649-c36-review-kernelring-seed2": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:53Z",
+  "tree": "6621113bd57c4d526485460cdbe3184e51f21215"
+ },
+ "20261026T0650-c33-intent-review-swimevo": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:53Z",
+  "tree": "6bdf8f6cb96d3bcc50834cc25a4a38d49095ca28"
+ },
+ "20261026T0651-c36-intent-review-phoretic-packs": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:53Z",
+  "tree": "3c00156e1ab846ea43681075c9908207f7146ba7"
+ },
+ "20261026T0654-c34-q-marangoni-selection": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "88db3066820a6cf515384959e07880aa68fba294"
+ },
+ "20261026T0655-c33-review-swimevo": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "7cf80cda9086d6cc449e224e0586e9f2c04dbc8e"
+ },
+ "20261026T0656-c33-intent-review-lysis": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:56Z",
+  "tree": "94f0bba4c34b4b9fcd3eee3151254289c8f3c5db"
+ },
+ "20261026T0658-c33-review-lysis": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:00Z",
+  "tree": "f0ea54a0e48ab91879f9b7dae4e9679d4cbf13f4"
+ },
+ "20261026T0659-c33-intent-review-sc3twin": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:00Z",
+  "tree": "20aea6412b5c62538317f0e9dbe00bdab49a2ae2"
  },
  "_bad_branches": {},
  "_deferred": {
