@@ -1,0 +1,9 @@
+sc_s4.npz t=800 splits 69 merges 125 persistent by generation {1: 9, 2: 5, 3: 4, 4: 5, 5: 4, 6: 3} max generation 6
+  persistent splits whose two daughters both carry B (>= 5%): 30 of 30
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 2 of 30 ; max 4.06
+    t=730 gen 5 parent 124 -> [67, 57], B share [0.18, 0.18], parent travel 4.1 diameters (track 304)
+    t=724 gen 5 parent 133 -> [85, 46], B share [0.2, 0.17], parent travel 3.3 diameters (track 303)
+    t=151 gen 1 parent 63 -> [42, 21], B share [0.36, 0.1], parent travel 1.9 diameters (track 16)
+    t=510 gen 3 parent 196 -> [109, 88], B share [0.22, 0.24], parent travel 1.1 diameters (track 263)
+    t=282 gen 1 parent 114 -> [85, 31], B share [0.26, 0.1], parent travel 0.7 diameters (track 9)
+  median daughter sizes 56.5 114.5
