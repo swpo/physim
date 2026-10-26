@@ -1,0 +1,27 @@
+{
+ "id": "20261026T0235-c30-review-predator-240",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0150-c26-predator-240-heldout#finding",
+ "title": "Review of c26's held-out 240^2 predator test on fresh seeds 5 and 6: replicated, persistence 370 t and >= 700 t, one of two seeds >= 500 t again",
+ "summary": "Same world and WORLD_P as the finding (PRED 1, T_INTRO 200, PSIG 8, DECB 0.002, DOMAIN 240), c26's own counter runle.py on seeds 5 and 6 to t=900, plus a labkit run of seed 5 (300 frames x 30 steps). Seed 5: one predator wave to 21 cells, prey down to 22, predator last seen at t=570 (370 t after introduction), prey back to 71 cells by t=900; labkit agrees (species B: 0 components at the end, mean 5.1, max 34; species A: 69 final, 62 persistent splits). Seed 6: predator waves to 25 cells cycling with prey between 24 and 57 cells; 7 predator cells remain at t=900, so persistence is >= 700 t (data/p240_s6.png). So on a fresh pair the same split appears, one run below and one above 500 t, as the finding's band reading says.",
+ "parents": ["20261026T0150-c26-predator-240-heldout"],
+ "class": "lenia",
+ "review_of": "20261026T0150-c26-predator-240-heldout",
+ "evidence": ["data/p240_s5.png", "data/p240_s6.png", "data/p240_s5.txt", "data/p240_s6.txt", "rerun/seed5/FACTS.md", "rerun/seed5/sheet.png"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": [],
+  "observations": {"finding": "data/p240_s6.png: predator waves to t=900 (>= 700 t); data/p240_s5.png and rerun/seed5/FACTS.md: predator extinct at t=570 (370 t), prey recover to 69-71 cells"},
+  "replicated": true,
+  "seed": 5,
+  "seeds_run": [{"seed": 5, "result": "370 t (below 500)"}, {"seed": 6, "result": ">= 700 t (above 500; alive at the end)"}],
+  "same_individuals": false,
+  "controls_run": {},
+  "by_construction": [],
+  "not_checked": ["X (the interaction itself; reviewed elsewhere)", "dt and resolution variants"],
+  "limitation": "Two more seeds at one size; the claim is a band of mixed outcomes, and four runs at 240^2 (two here, two in the finding) give 2 above and 2 below 500 t, which supports 'coin flip' but cannot fix the probability."
+ }],
+ "compute": {"cpu_minutes": 75}
+}
