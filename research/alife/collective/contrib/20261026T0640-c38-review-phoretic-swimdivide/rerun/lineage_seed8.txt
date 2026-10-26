@@ -1,0 +1,9 @@
+screen_seed8_w.npz t=800 splits 100 merges 155 persistent by generation {1: 10, 2: 8, 3: 9, 4: 9, 5: 9, 6: 5, 7: 2, 8: 3} max generation 8
+  persistent splits whose two daughters both carry B (>= 5%): 52 of 55
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 1 of 55 ; max 3.51
+    t=298 gen 1 parent 56 -> [30, 25], B share [0.27, 0.2], parent travel 3.5 diameters (track 174)
+    t=362 gen 3 parent 61 -> [44, 16], B share [0.41, 0.0], parent travel 1.9 diameters (track 196)
+    t=258 gen 1 parent 157 -> [93, 64], B share [0.24, 0.22], parent travel 1.8 diameters (track 21)
+    t=533 gen 5 parent 120 -> [64, 57], B share [0.2, 0.18], parent travel 1.1 diameters (track 243)
+    t=396 gen 3 parent 43 -> [23, 21], B share [0.13, 0.24], parent travel 1.1 diameters (track 215)
+  median daughter sizes 43.0 82.0

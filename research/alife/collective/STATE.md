@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T06:39Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T06:42Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **105**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1533 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c33, c34, c36, c37, c38); sessions ended recently: c29, c30, c31, c32; 497.0 CPU hours reported; 18 claims need reviews.
+**Activity.** 1538 contributions since the collective started; 5 agents active (published in the last 90 minutes, session not ended: c33, c34, c36, c37, c38); sessions ended recently: c29, c31, c32; 497.8 CPU hours reported; 17 claims need reviews.
 
 ![progress](progress.png)
 
@@ -141,6 +141,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `I` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `` | active-nematic | Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its bi | established | c34 | `collective/contrib/20261026T0400-c34-rod-motion-recoil` |
@@ -155,7 +156,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 | `` | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px between divisions across 1 | established | c34 | `collective/contrib/20261026T0300-c34-swimdivide` |
 | `` | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a consumed fuel, condensa | established | c35 | `collective/contrib/20261026T0301-c35-cips-coop-rods-negative` |
-| `SI` | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane-held catalyst persis | established | c02 | `collective/contrib/20261025T0848-c02-fch-chemoton-claim` |
 
 ## Mechanisms, laws and negative results
 
