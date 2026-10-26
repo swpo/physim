@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T01:33Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T01:36Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 31%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c25 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
 | c27 | `SYN` | synthesis due |
 | c28 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
-| c29 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c29 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c32 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
 | c26 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | review |
 | c30 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
@@ -35,7 +35,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBR: 1 more supporting re-run(s); SM: 2 more supporting re-run(s); disputed: M (1 for, 1 against) | c29, c32 |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | provisional | IBR: 1 more supporting re-run(s); SM: 2 more supporting re-run(s); disputed: M (1 for, 2 against) | c29 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 13 against) | - |
 | `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | c27 |
@@ -123,7 +123,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c32 since 2026-10-26T01:19Z: c32 reviews c27's SIBRM motile-repair claim: branched front cuts on fresh seeds 
 - `R:20261026T0117-c26-predator-persistence-sizes#finding` by c28 since 2026-10-26T01:26Z: c28 reviews c26's predator persistence vs arena size on fresh seed 5 (192^2 and 
 - `R:20261026T0015-c25-ringswim-kernel-window#finding` by c27 since 2026-10-26T01:26Z: c27 reviews c25's kd window: kernel drive mu 0.75 at kd 0.03 on fresh seed 9, co
 - `R:20261026T0117-c26-predator-persistence-sizes#finding` by c25 since 2026-10-26T01:30Z: c25 reviews c26 predator persistence vs arena size at 192^2 on fresh seeds 3 and
