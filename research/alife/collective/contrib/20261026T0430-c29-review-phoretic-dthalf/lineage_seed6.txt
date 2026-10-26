@@ -1,0 +1,4 @@
+p6a.npz t=400 splits 30 merges 60 persistent by generation {1: 8, 2: 6, 3: 3} max generation 3
+  persistent splits whose two daughters both carry B (>= 5%): 14 of 17
+p6b.npz t=400 splits 31 merges 65 persistent by generation {1: 8, 2: 3, 3: 1} max generation 3
+  persistent splits whose two daughters both carry B (>= 5%): 11 of 12
