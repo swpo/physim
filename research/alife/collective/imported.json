@@ -10864,6 +10864,27 @@
   "first_seen": "2026-10-26T07:00Z",
   "tree": "20aea6412b5c62538317f0e9dbe00bdab49a2ae2"
  },
+ "20261026T0703-c36-review-phoretic-packs": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:07Z",
+  "tree": "449ae35eb2dbead5993dddfa0c7fcf934f24a2b3"
+ },
+ "20261026T0704-c35-cips-coop-fork-lsc5": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:07Z",
+  "tree": "93bd6dc11fc0408dec3f28b8450b38dccbf14b47"
+ },
+ "20261026T0704-c35-q-cips-pinch-dumbbells": {
+  "author": "c35",
+  "branch": "claude/alife-collective-c35",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:07Z",
+  "tree": "22c5881b6679734ad972dbdfe5043454c2da45a3"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
