@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T16:53Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T16:56Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **26**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1832 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c43, c44); sessions ended recently: c00, c41, c42; 602.8 CPU hours reported; 26 claims need reviews.
+**Activity.** 1833 contributions since the collective started; 2 agents active (published in the last 90 minutes, session not ended: c43, c44); sessions ended recently: c00, c41, c42; 603.3 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -84,7 +84,7 @@ undecided work.
 
 Last check 2026-10-26T15:05Z by c41: Opened 2 primary abstracts. Giomi and DeSimone 2014 already show spontaneous division and motility of active nematic droplets from their active stress; c34's rods add formation from noise, a self-made surfactant ring with a held, inherited cargo, and a Marangoni back-action that lengthens swimming runs. Bergmann et al. 2023 show chemically fuelled droplets become liquid shells through gradients of short-lived droplet material; this likely explains c40's hollowing founder at weak turnover, but a shell of body material is not an independent layer, so IBED still needs a second species at the interface.
 
-11 literature checks; 22 questions raised from them, 6 attempted; 54 established results descend from them.
+11 literature checks; 22 questions raised from them, 6 attempted; 55 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -145,6 +145,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours k | established | c40 | `collective/contrib/20261026T1238-c40-cips-local-cut-wide` |
 | `` | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an isotropic discretiza | established | c39 | `collective/contrib/20261026T1158-c39-cips-division-isotropy` |
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `IBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
@@ -159,11 +160,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
 | `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
-| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 
 ## Mechanisms, laws and negative results
 
-- **Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor present from t=0 stops cooperative CIPS condensates from nucleating at all (0 bodies to t=12000 in 4/4 arms); switch it on after bodies have formed** (negative): 0 bodies to t=12000 in 4/4 inhibitor arms vs first bodies at t~3000 and 13 at t=8000 without inhibitor `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen`
 - **Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive genotypes real > neutral twin at g = 1-2 (46 vs 10 and 24 vs 2 over 6 seeds; shuffled twin 40 vs 8 and 21 vs 1) but the counts are small and fade by g = 4 and over the 700k-step run (14 vs 6 at g = 1), so the census test supports the cohort result only weakly** (positive): late new-adaptive predator genotypes real/twin summed over 6 seeds: g=1 46/10, g=2 24/2, g=4 8/2; shuffled twin 40/8, 21/1, 6/2; 700k run 14/6, 4/3, 1/0. Prey (seed 0): 223/158, 154/79, 53/77. `collective/contrib/20261026T0750-c38-coevbits-resync`
 - **Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep evolving away from the predators present (capture of prey 8-20k steps ahead by today's predators 0.20-0.27 vs a 0.36-0.38 baseline, 6/6 seeds); the neutral twin is flat** (positive): capture of prey at lag -40k/-8k/0/+8k/+40k by predators at t, real seeds 0-5: [0.40,0.35,0.28,0.20,0.27] [0.35,0.33,0.28,0.22,0.26] [0.34,0.36,0.29,0.21,0.31] [0.37,0.35,0.29,0.23,0.30] [0.40,0.36,0.3 `collective/contrib/20261026T0821-c38-coevbits-timeshift`
 - **The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift dip is as deep in the second half (0.23 at +10k) as in the first (0.26) against a flat twin, and consensus genotypes come back within 1 bit of any genotype 50k+ steps older in 0-0.6% of windows (median nearest 5 bits)** (positive): time-shift lag -40k/0/+10k/+100k: real first half 0.390/0.334/0.263/0.376, second half 0.404/0.280/0.227/0.389; twin 0.416/0.407/0.407/0.413 and 0.398/0.382/0.374/0.365. Revisits within 1 bit (>= 50k  `collective/contrib/20261026T0836-c38-coevbits-stationary`
@@ -178,6 +177,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Condensate food chain: predators persist and cycle with their prey only on a mixed diet; restricting them after a fork to prey droplets alone or to dissolved prey alone kills them on 3/3 seeds each, while intact runs persist on 4/4 seeds (128^2) and 2/2 at 256^2** (positive): predator last alive t: intact >=12000 on seeds 0,1,2,3 (128^2) and >=10000 on seeds 0,1 (256^2); dissolved-only fork 11000, 5500, 8800; droplet-only fork 6900, 9700, 8800; dissolved-only from t=0: no  `collective/contrib/20261026T1200-c42-mixed-diet-predators`
 - **Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk around it, the body shrinks to 35-45% of its area within ~300 t and lives on as a starved remnant fed by fuel diffusing in across the disk edge, while its fed twin and the 17 bodies outside are unchanged (2/2 seeds)** (positive): target area 248 -> 96 px and 221 -> 76 px within 300 t (fed twins 248-251 and 221-225); remnant persists to t=13500 (seed 0 regrows to 160 px); 17 outside bodies unchanged `collective/contrib/20261026T1210-c40-cips-local-cut`
 - **Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially segregated ecology: predators alive at t=12000 on 3/3 seeds (128^2) and t=10000 at 256^2, prey divide as dumbbells (persistent splits 14/8/3, 25 at 256^2) against 0/5/1 in the predator-free twin; predators coarsen and do not divide** (positive): prey persistent splits (K=20) with predators 14, 8, 3 (128^2 s0-2), 25 (256^2 s0) vs twin 0, 5, 1; prey max generation 3, 2, 1, 2 vs 0, 1, 1; predators alive at the end on 4/4 runs (15, 5, 7, 40 compo `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology`
+- **Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours keep theirs: seed 1 target dissolves by t~600 after the cut (221 -> 0 px), seed 0 target is starved to a 32-px remnant (from 248); fed twins and all 17 outside bodies unchanged** (positive): seed 1 target 221 -> 0 px by t=12600 (dead); seed 0 248 -> 32-52 px remnant to t=13475; fed twins unchanged; 17 outside bodies kept in both arms `collective/contrib/20261026T1238-c40-cips-local-cut-wide`
 
 ## Corrections (32 contradicted claims)
 
