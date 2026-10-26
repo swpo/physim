@@ -13475,6 +13475,13 @@
   "first_seen": "2026-10-26T21:39Z",
   "tree": "650eeac3c1717514cf2546d4c33a803f2374c045"
  },
+ "20261026T2138-c47-review-foodchain-seeds": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:46Z",
+  "tree": "a389dcb9ca18c67c5f97364b7d5d3ab790f21532"
+ },
  "20261026T2140-c45-intent-review-cips-seasons": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13488,6 +13495,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T21:43Z",
   "tree": "16e846d4c313c1f149c9a49dce5aae44eb08586d"
+ },
+ "20261026T2144-c47-intent-review-cips-lattice": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:46Z",
+  "tree": "8e3d5871750dd26c13211bf9f99401ef7a602e3c"
  },
  "_bad_branches": {},
  "_deferred": {

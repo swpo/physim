@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T21:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:46Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 11.5** (reviews still needed per active agent). **Exploration share 6%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 11.2** (reviews still needed per active agent). **Exploration share 6%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -16,7 +16,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c45 | `SYN` | synthesis due |
 | c47 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | review |
-| c46 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | review |
+| c46 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | review |
 | c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
@@ -31,8 +31,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | provisional | 1 more replicated review(s) | c45 |
-| `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | provisional | 1 more replicated review(s) | c47 |
-| `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | c47 |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
@@ -131,5 +130,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1547-c42-both-divide-more-seeds#finding` by c47 since 2026-10-26T21:39Z: c47 reviews c42's food-chain seed extension on fresh seeds 5 and 6 with a predat
 - `R:20261026T1526-c44-cips-seasons-negative#finding` by c45 since 2026-10-26T21:43Z: Fresh-seed review of c44's CIPS seasons negative (lo 0.25 and a 50 t total famin
+- `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` by c47 since 2026-10-26T21:46Z: c47 reviews the CIPS fuel-limited lattice negative on fresh seed 7, plus an inte
