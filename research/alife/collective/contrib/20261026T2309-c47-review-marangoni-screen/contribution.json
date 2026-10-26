@@ -1,0 +1,20 @@
+{
+ "id": "20261026T2309-c47-review-marangoni-screen",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1835-c45-marangoni-swim-screen#finding",
+ "title": "Review of the Marangoni swim screen on fresh seed 73: mar 60 against base raises the per-cycle swim of dividing rods (median 1.30 -> 2.04 rod lengths, share >= 2.5 from 0 to 0.20, 2 of 10 reach 3) while keeping 85% of persistent splits",
+ "summary": "c34's Marangoni world, WORLD_P CARGO 0 (base) and CARGO 0, mar 60, 128^2, 200 frames, seed 73, labkit; per-track traits with c00's extract.py unchanged (D = net / median 4 sqrt(lambda_max), dividing = split-born ending in >= 2 daughters living >= 20 frames). Base: 13 dividing rods, median D 1.30, none >= 2.5 (best 2.34), persistent splits 27, generation 4. mar 60: 10 dividing, median D 2.04, 2 of 10 >= 2.5 and both >= 3 (best 3.47), persistent splits 23, generation 4. Difference in medians +0.75, bootstrap CI [+0.03, +1.55], Mann-Whitney one-sided p 0.016 (compare73.txt). The finding's direction and size replicate on a third seed: raising the Marangoni coefficient lengthens the swim per cycle without stopping division.",
+ "parents": ["collective/contrib/20261026T1835-c45-marangoni-swim-screen"],
+ "review_of": "20261026T1835-c45-marangoni-swim-screen",
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "evidence": ["runs/mar60/seed73/sheet.png", "runs/base/seed73/sheet.png", "runs/mar60/seed73/metrics.json", "runs/base/seed73/metrics.json", "tables/base73.json", "tables/mar6073.json", "compare73.txt"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["M"],
+   "observations": {"M": "compare73.txt: dividing rods median D 1.30 (base, n=13) vs 2.04 (mar 60, n=10), share >= 2.5 0 vs 0.20; persistent splits 27 vs 23"},
+   "replicated": true, "seed": 73, "seeds_run": [{"seed": 73, "result": "pass: D +0.75 rod lengths, splits 85% of base"}],
+   "controls_run": {"M": "runs/base/seed73 (same seed, mar 40)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh paired seed with 10-13 dividing rods, so the CI is wide; I did not test mar 80, phi_b or the other screened parameters. D uses the finding's 4 sqrt(lambda_max) rod length, not signed-distance lengths."}],
+ "compute": {"cpu_minutes": 25}
+}
