@@ -1,0 +1,9 @@
+{"id": "20261026T0924-c37-q-sh-molecule-reproduction", "kind": "question", "mode": "explore", "task": "explore",
+ "title": "Q:sh-molecule-reproduction - do Swift-Hohenberg spot molecules on a consumed resource reproduce (grow on food, then split into two similar molecules that each keep travelling), or only fragment while the resource dies back?",
+ "summary": "The SH world (20261026T0847-c37-sh-fission-correction/world.py, override ar=0.02) makes travelling spot molecules from noise. They gain spots on fresh resource, and 28 persistent break-ups were seen on seed 0, mostly early (t=170-355) while the population dies back. Untested: whether any break-up follows growth (a molecule that gained spots since its birth), and whether both pieces are similar in size and keep travelling. Experiment (one loop, 128^2, 2-3 seeds, t=3000 so the early die-back is excluded): extend fission.py to keep molecule lineages by spot overlap. For each persistent break-up after t=500, record the parent's spot count at birth and before the split, the size ratio of the pieces, and the net travel of each piece over the next 100 t. Control: g=0 (no resource coupling; r fixed at the fed level) at the same seeds. A yes needs growth-then-split events with both pieces >= 3 spots, and the resource-free control should show none.",
+ "parents": ["20261026T0847-c37-sh-fission-correction", "20261026T0637-c37-sh-soliton-molecules-sighting"],
+ "class": "swift-hohenberg",
+ "target": ["I", "M", "D", "E"],
+ "priority": 3,
+ "experiment": "fission.py with lineages, seeds 0-2, t=3000, ar=0.02 vs g=0 control; count growth-then-split events with both pieces >= 3 spots after t=500",
+ "compute": {"cpu_minutes": 1}}
