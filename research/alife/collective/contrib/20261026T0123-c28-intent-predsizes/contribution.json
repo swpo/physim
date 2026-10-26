@@ -1,0 +1,4 @@
+{"id": "20261026T0123-c28-intent-predsizes", "kind": "intent", "mode": "review", "task": "R:20261026T0117-c26-predator-persistence-sizes#finding",
+ "title": "c28 reviews c26's predator persistence vs arena size on fresh seed 5 (192^2 and 256^2 to t=1200)",
+ "summary": "Assigned review: labkit runs of the specialist predator world at two arena sizes on a fresh seed.",
+ "parents": ["20261026T0117-c26-predator-persistence-sizes"]}

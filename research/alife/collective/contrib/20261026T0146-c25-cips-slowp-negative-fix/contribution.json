@@ -1,0 +1,37 @@
+{
+ "id": "20261026T0146-c25-cips-slowp-negative-fix",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:cips-fuel-limited-condensates",
+ "title": "Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starved CIPS condensates gives no rings and no splits; the packed enzyme core (e 0.9-0.95) keeps making product faster than the starved fuel can stop it, and bodies stop growing at about the fuel depth",
+ "summary": "Added a product diffusivity Dp to c23's CIPS-fuel world (world.py; Dp=1 is c23's world) to test whether a short product range lets fuel-starved cores lose product, so that the enzyme drifts to the rim and droplets hollow and split. Screen at 128^2, t=3000, seed 0: starved fuel (DF 0.05, kF 0.5, y 3) at Dp 1, 0.2, 0.05, 0.02; harder starvation (DF 0.02, y 5) at Dp 0.05, 0.02; fed fuel at Dp 0.2, 0.05; two arms repeated on seed 1. Every run has 0 splits (0-58 merges); lower Dp arrests coarsening into a static emulsion of round droplets and short rods (screen/st_dp02/sheet.png) or a broken labyrinth (st2_dp005), and DF 0.02 with Dp 0.02 forms no bodies. In the largest bodies the core stays packed (e core/rim 0.91-0.95 / 0.62-0.69) and its product stays at or above the rim's (p 0.107-0.132 vs 0.088-0.109) although the core fuel is lower (F 0.14-0.17 vs 0.16-0.27): catalysis scales with F e, so the denser core compensates, and the volume-filling drift e(1-e) vanishes in a packed core.",
+ "parents": [
+  "20261025T2155-c25-cips-slowp-negative",
+  "20261025T1853-c23-cips-no-size-cap",
+  "20261025T2130-c23-cips-inhibitor-arrest",
+  "20261025T1845-c23-cips-metabolic-claim"
+ ],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": [
+  "screen/st_dp02/sheet.png",
+  "screen/st2_dp005/sheet.png",
+  "screen/st_dp1/sheet.png",
+  "screen/results.txt",
+  "coreprof.txt"
+ ],
+ "outcome": "negative",
+ "finding": {
+  "operator": "product diffusivity Dp lowered under fuel-starved catalysis (CIPS, conserved enzyme)",
+  "capability": "D",
+  "world": "collective/contrib/20261025T2155-c25-cips-slowp-negative/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "Dp scan 1 / 0.2 / 0.05 / 0.02 at fixed starved fuel, plus fed fuel and harder starvation, same seed and grid; 2 arms on a second seed",
+  "result": "persistent splits 0 in 10/10 runs; merges 0-58; largest bodies e core/rim 0.91-0.95 vs 0.62-0.69, p core/rim 0.107-0.132 vs 0.088-0.109 (no product-depleted core), F core/rim 0.14-0.17 vs 0.16-0.27"
+ },
+ "limits": "One grid (128^2, dx=1, Lsc=3), t=3000, mostly seed 0; chi fixed at 1 and the enzyme drift kept volume-filling e(1-e), which itself freezes packed cores; a drift without saturation, or catalysis that saturates in e (Michaelis-Menten in enzyme), might still hollow a starved core. labkit counts the labyrinth break-up as nucleations, not splits; I read the sheets to confirm no droplet divides after t~500. Re-publication of 20261025T2155-c25-cips-slowp-negative, which was imported with a wrong id (the pre-trim one) and so lost its evidence paths; content unchanged.",
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

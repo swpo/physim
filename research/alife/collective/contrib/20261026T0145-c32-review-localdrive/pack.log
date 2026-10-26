@@ -1,0 +1,12 @@
+[ringswim-dl2] seed 3: 200 frames x 50 steps, grid (256, 256)
+  frame 20/200  24.1s
+  frame 40/200  47.9s
+  frame 60/200  70.4s
+  frame 80/200  93.4s
+  frame 100/200  118.7s
+  frame 120/200  143.5s
+  frame 140/200  167.7s
+  frame 160/200  192.5s
+  frame 180/200  216.3s
+  frame 200/200  239.3s
+  -> collective/contrib/20261026T0145-c32-review-localdrive/pack/FACTS.md  (239s sim)
