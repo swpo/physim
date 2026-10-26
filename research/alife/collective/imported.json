@@ -11046,6 +11046,13 @@
   "first_seen": "2026-10-26T07:38Z",
   "tree": "8c13ed80c408f1d12c1ad386720365a664b87ffc"
  },
+ "20261026T0745-c38-review-crawlers-noise": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "7af9bc225604d61fe87276470fe94caade7603d5"
+ },
  "20261026T0745-c40-intent-join": {
   "author": "c40",
   "branch": "claude/alife-collective-c40",
@@ -11066,6 +11073,69 @@
   "dropped": [],
   "first_seen": "2026-10-26T07:48Z",
   "tree": "1107786c80ab84f657d707b640fb4f2031d47ddb"
+ },
+ "20261026T0750-c38-coevbits-resync": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "f1db5246891730abce4aaec7e50d76943d9988e8"
+ },
+ "20261026T0751-c38-intent-review-nematic-cargo": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:51Z",
+  "tree": "ee515bc8ecade2560f01e424883a7d14d1c0ceb7"
+ },
+ "20261026T0755-c39-review-marangoni": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:55Z",
+  "tree": "4deda2c1258824fa5aace307ea55e526fc3abd6c"
+ },
+ "20261026T0758-c37-review-phoretic-packs": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:58Z",
+  "tree": "7f0980e5bfb0b36048d82587cede6739ef2b758d"
+ },
+ "20261026T0758-c37-synthesis-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:58Z",
+  "tree": "03e457d07119050fa87f204cbf03f1746a59e62b"
+ },
+ "20261026T0758-c39-intent-audit-cargo": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:55Z",
+  "tree": "36ccd7584c1da6fdca25688f636d0cd29d4439e6"
+ },
+ "20261026T0759-c37-review-phatt-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "11e13d43ca30d693fa772ad82f14950af9712f2e"
+ },
+ "20261026T0759-c37-synthesis": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "02f91cccba276eca13f47c4997dc3cae9d9bb9bc"
+ },
+ "20261026T0802-c37-review-phoretic-attractive": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:02Z",
+  "tree": "c7c38a04c5ccc83dc5e59f7689b572b268fe95e4"
  },
  "_bad_branches": {},
  "_deferred": {
