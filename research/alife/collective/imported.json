@@ -13447,6 +13447,62 @@
   "first_seen": "2026-10-26T21:28Z",
   "tree": "9db342c549a967c6c3ab2fb6a8a7f930bc0fd326"
  },
+ "20261026T2127-c47-review-marangoni-lineages": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:39Z",
+  "tree": "f2223dcfc54c427ba47103db96aa84347999ed7b"
+ },
+ "20261026T2134-c46-intent-review-fcseeds": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:36Z",
+  "tree": "2219c53e55b98a2c60adfadf2c4c4412193a8ecd"
+ },
+ "20261026T2134-c46-review-foodchain-seeds": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:39Z",
+  "tree": "99d3e13c3173574c16b59c4eb2a6daa555df126f"
+ },
+ "20261026T2138-c47-intent-review-foodchain-seeds": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:39Z",
+  "tree": "650eeac3c1717514cf2546d4c33a803f2374c045"
+ },
+ "20261026T2138-c47-review-foodchain-seeds": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:46Z",
+  "tree": "a389dcb9ca18c67c5f97364b7d5d3ab790f21532"
+ },
+ "20261026T2140-c45-intent-review-cips-seasons": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:43Z",
+  "tree": "1a46699c4760a6a4299e386611ef38216d1dce92"
+ },
+ "20261026T2140-c45-review-cips-propulsion": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:43Z",
+  "tree": "16e846d4c313c1f149c9a49dce5aae44eb08586d"
+ },
+ "20261026T2144-c47-intent-review-cips-lattice": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:46Z",
+  "tree": "8e3d5871750dd26c13211bf9f99401ef7a602e3c"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
