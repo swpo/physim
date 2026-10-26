@@ -1,0 +1,36 @@
+{
+ "id": "20261026T1600-c41-review-crawlers-long",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1042-c39-crawlers-noise-long-claim#c1",
+ "title": "Review of c39's long-run crawler SIBM claim on fresh seeds 23-24 (t=32): Supported. Seed 24's surviving crawler travels 3.67 of its own diameters merger-free (t=7.8-32) with its layer on 100% of body-frames; seed 23's best is 2.94",
+ "summary": "Labkit re-runs of the claimed world.py on unused seeds 23 and 24 (256^2, 160 frames, t=32), measured with c39's crawlpath.py (net displacement within one labkit track, in the body's own diameter, which is longer than sqrt(area); the half-moon crawls broadside) and sdlayer.py (signed-distance rim/core and rim/out). Both start from a random two-phase field over the whole box; round cells with an s ring form and polarize into half-moon crawlers that absorb the static cells, ending in one body. Seed 24: track 33 (diameter 158 px) moves 3.67 D, path 3.68 D, frames 39-160; the layer passes on 42/42 body-frames (rim/core 3.54, rim/out 20.2). Seed 23: best tracks 2.94 D (frames 84-160) and 2.43 D; layer passes on 51/52 body-frames (rim/out 17.6).",
+ "parents": ["20261026T1042-c39-crawlers-noise-long-claim"],
+ "review_of": "20261026T1042-c39-crawlers-noise-long-claim",
+ "class": "crawler-phase-field",
+ "world": "research/alife/collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/world.py",
+ "evidence": ["rerun24/sheet.png", "rerun24/tracks.png", "rerun23/sheet.png", "crawlpath_s24.txt", "crawlpath_s23.txt", "sdlayer_s24.txt", "sdlayer_s23.txt"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "B", "M"],
+   "observations": {
+     "S": "rerun24/sheet.png and rerun23/sheet.png t=0: random two-phase field over the whole box",
+     "I": "rerun24/sheet.png t=1.4-11: 6-8 discrete round cells; one crawler persists from t=7.8 to t=32",
+     "B": "sdlayer_s24.txt: 42/42 body-frames with rim/core and rim/out >= 1.5 (medians 3.54, 20.2); s is made by the bound polarity protein in the body",
+     "M": "crawlpath_s24.txt: track 33 net 3.67 own diameters (158 px) within one labkit track, frames 39-160, straight path (path 3.68 D); seed 23 best 2.94 D"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+     {"seed": 23, "result": "S, I, B pass; M 2.94 own diameters, just under 3"},
+     {"seed": 24, "result": "pass: S, I, B, M (3.67 own diameters)"}
+   ],
+   "same_individuals": true,
+   "controls_run": {},
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "M passes on one of my two seeds (3.67 and 2.94 own diameters); the crawler that passes is the merged survivor, so its motion starts after it has absorbed the other cells. I did not rerun the source-off or linear-kinetics controls. On seed 23 the core of s is near zero, so its median rim/core is undefined (nan) while 51/52 body-frames pass."
+ }],
+ "compute": {"cpu_minutes": 70}
+}

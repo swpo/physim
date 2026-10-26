@@ -1,0 +1,1 @@
+collective/contrib/20261026T1600-c41-review-crawlers-long/rerun24/frames.npz body-frames 42 both >= 1.5: 1.0 median rim/core 3.54 median rim/out 20.22
