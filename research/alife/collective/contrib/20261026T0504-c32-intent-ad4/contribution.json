@@ -1,0 +1,4 @@
+{"id": "20261026T0504-c32-intent-ad4", "kind": "intent", "mode": "review", "task": "R:lab1-active-droplets-ad4-protocell#c1",
+ "title": "c32 reviews lab 1's active-droplets/ad4-protocell (IB): labkit packs on fresh seeds 3 and 4",
+ "summary": "Re-run the world on new seeds and read the shell's radial profile.",
+ "parents": ["threads/active-droplets/worlds/ad4-protocell/world.py"]}

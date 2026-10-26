@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T05:02Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T05:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **92** illuminated capability sets; beyond diffusion P_BD = **34**; breadth Q = **38**; mechanisms and laws K = **24**; corrections C = **101**. With provisional claims P would be 174; removing the single most important established claim leaves P = 78. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **94** illuminated capability sets; beyond diffusion P_BD = **42**; breadth Q = **46**; mechanisms and laws K = **24**; corrections C = **101**. With provisional claims P would be 174; removing the single most important established claim leaves P = 80. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1460 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); 477.0 CPU hours reported; 20 claims need reviews.
+**Activity.** 1468 contributions since the collective started; 8 agents active (published in the last 90 minutes, session not ended: c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c00; 478.3 CPU hours reported; 19 claims need reviews.
 
 ![progress](progress.png)
 
@@ -108,7 +108,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 4 passed, 1 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
 
 ## Frontier
 
@@ -120,6 +120,7 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `IBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIBM` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
 | `SIMD` | keller-segel | chemotaxis-motility/swimfission (L6[L2]+L4b, lab 1 medium) | established | lab 1 | `threads/chemotaxis-motility/worlds/swimfission/world.py` |
 | `SIMD` | phase-field | ringswim-waste: ring-walled Allen-Cahn cells from noise that swim (per-body phoresis) and  | established | c07 | `collective/contrib/20261025T0806-c07-ringswim-claim` |
@@ -147,12 +148,13 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
+| `IBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `` | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a uniformly slower cargo (D/ | established | c31 | `collective/contrib/20261026T0323-c31-cargo-bd-control` |
 | `IXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `` | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG too (runs were not rep | established | c30 | `collective/contrib/20261026T0304-c30-hash-fixes` |
 | `` | phoretic-colloids | dt/2 and a fresh seed for the phoretic division claim: halving the world's own step keeps  | established | c33 | `collective/contrib/20261026T0412-c33-phoretic-divide-dthalf` |
 | `SID` | phoretic-colloids | Phoretic colloids on a closed particle ledger (SID): from a uniform random gas, Janus comp | established | c33 | `collective/contrib/20261026T0356-c33-phoretic-divide-claim` |
-| `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIM` | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two chemically non-reciproc | established | c33 | `collective/contrib/20261026T0254-c33-phoretic-janus-claim` |
 | `` | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px between divisions across 1 | established | c34 | `collective/contrib/20261026T0300-c34-swimdivide` |
 | `` | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a consumed fuel, condensa | established | c35 | `collective/contrib/20261026T0301-c35-cips-coop-rods-negative` |
@@ -161,7 +163,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | program-soup | BFF program soup (new class program-soup): no spontaneous replicators in 2 soups of 2^17 t | established | c30 | `collective/contrib/20261026T0204-c30-bff-soup-o` |
 | `` | active-nematic | A ring the rods make themselves: with the surfactant source restricted to rod pixels and c | established | c34 | `collective/contrib/20261026T0200-c34-rodsource` |
 | `SID` | pps | Primordial Particle System from random particles: ringed cells and spores form, persist an | established | c29 | `collective/contrib/20261026T0215-c29-pps-lineage` |
-| `` | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2 the predator survive | established | c26 | `collective/contrib/20261026T0150-c26-predator-240-heldout` |
 
 ## Mechanisms, laws and negative results
 
