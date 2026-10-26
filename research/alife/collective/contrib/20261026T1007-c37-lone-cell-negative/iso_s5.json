@@ -1,0 +1,68 @@
+[
+ {
+  "cell": 2,
+  "area": 71,
+  "isolated": {
+   "tag": "isolated",
+   "event": "splits t+750",
+   "t_followed": 700,
+   "net_BL": 0.8257874059641247,
+   "path_BL": 0.8660092578539337,
+   "BL_px": 26.745204733413697,
+   "area_ratio": 25.295774647887324
+  },
+  "inplace": {
+   "tag": "inplace",
+   "event": "splits t+200",
+   "t_followed": 150,
+   "net_BL": 0.23101810114194243,
+   "path_BL": 0.29055778183616676,
+   "BL_px": 10.852403323135505,
+   "area_ratio": 1.5070422535211268
+  }
+ },
+ {
+  "cell": 40,
+  "area": 72,
+  "isolated": {
+   "tag": "isolated",
+   "event": "splits t+50",
+   "t_followed": 0,
+   "net_BL": 0.0,
+   "path_BL": 0.0,
+   "BL_px": 9.574614729634384,
+   "area_ratio": 1.0
+  },
+  "inplace": {
+   "tag": "inplace",
+   "event": "splits t+50",
+   "t_followed": 0,
+   "net_BL": 0.0,
+   "path_BL": 0.0,
+   "BL_px": 9.574614729634384,
+   "area_ratio": 1.0
+  }
+ },
+ {
+  "cell": 67,
+  "area": 71,
+  "isolated": {
+   "tag": "isolated",
+   "event": "splits t+800",
+   "t_followed": 750,
+   "net_BL": 0.7808999131501666,
+   "path_BL": 0.8818814278460638,
+   "BL_px": 27.30351174194334,
+   "area_ratio": 27.82857142857143
+  },
+  "inplace": {
+   "tag": "inplace",
+   "event": "merges t+400",
+   "t_followed": 350,
+   "net_BL": 0.9508862461238461,
+   "path_BL": 1.2059659854137283,
+   "BL_px": 8.462843753216344,
+   "area_ratio": 4.444444444444445
+  }
+ }
+]
