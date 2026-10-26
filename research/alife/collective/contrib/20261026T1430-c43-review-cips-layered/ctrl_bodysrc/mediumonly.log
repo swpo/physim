@@ -1,0 +1,4 @@
+{'t': 1000, 'bodies': 5, 'pass': 5, 'rim_core_min': 15.585341169016727, 'rim_core_median': 16.605081687013524, 'rim_out_min': 15.370737152519004, 'rim_out_median': 16.976770883265964}
+{'t': 2000, 'bodies': 5, 'pass': 5, 'rim_core_min': 15.104992440950706, 'rim_core_median': 16.367975097330092, 'rim_out_min': 16.06322287109201, 'rim_out_median': 16.361147200229972}
+{'t': 3000, 'bodies': 5, 'pass': 5, 'rim_core_min': 15.199966175558991, 'rim_core_median': 15.96665783983313, 'rim_out_min': 15.617032280480917, 'rim_out_median': 17.110554456640894}
+{'t': 4000, 'bodies': 8, 'pass': 8, 'rim_core_min': 16.594367928661352, 'rim_core_median': 16.96449612500022, 'rim_out_min': 17.25968816484175, 'rim_out_median': 17.735577833668884}
