@@ -1,0 +1,27 @@
+label: kappa0_51
+frames: /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-cargo/controls/kappa0_seed51/frames.npz
+n_bodyframes: 2463
+median_in_out: 1.3640987768115505
+share_ge2: 0.04506699147381242
+q25_q75: [1.3169372242590813, 1.499662614174942]
+median_in_out_core15: 1.3772726920002791
+share_ge2_core15: 0.05128205128205128
+median_in_out_out36: 1.4268839315729718
+share_ge2_out36: 0.08038976857490865
+share_lt1: 0.0
+ring_bodyframes: 2457
+ring_both_ge15: 1.0
+ring_median_rc: 3.6219504413485053
+ring_median_ro: 7.325728451611685
+n_tracks_ge10: 73
+tracks_majority_ge2: 0.0410958904109589
+tracks_median_share_ge2: 0.0
+n_daughters: 87
+daughters_median: 1.4002284881373293
+daughters_share_ge2: 0.09195402298850575
+n_daughters_ge12: 75
+daughters_ge12_share_ge2: 0.09333333333333334
+cargo_on_body_frac_2nd_half: 0.09944381370506908
+occupancy_2nd_half: 0.06682230631510416
+n_tracks: 125
+n_split_events: 50

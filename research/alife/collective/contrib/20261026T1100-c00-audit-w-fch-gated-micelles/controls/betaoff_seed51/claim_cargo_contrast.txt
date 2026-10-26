@@ -1,0 +1,12 @@
+frame 0: contrast nan, bodies 724, share of bodies >=2x 0.00, weakest body nanx
+frame 10: contrast 2.1, bodies 32, share of bodies >=2x 0.59, weakest body 1.8x
+frame 20: contrast 1.6, bodies 32, share of bodies >=2x 0.00, weakest body 1.3x
+frame 30: contrast 1.3, bodies 41, share of bodies >=2x 0.00, weakest body 1.1x
+frame 40: contrast 1.3, bodies 48, share of bodies >=2x 0.00, weakest body 1.1x
+frame 50: contrast 1.2, bodies 48, share of bodies >=2x 0.00, weakest body 1.0x
+frame 60: contrast 1.2, bodies 49, share of bodies >=2x 0.00, weakest body 1.0x
+frame 70: contrast 1.2, bodies 50, share of bodies >=2x 0.00, weakest body 1.0x
+frame 80: contrast 1.1, bodies 55, share of bodies >=2x 0.00, weakest body 1.0x
+frame 90: contrast 1.1, bodies 61, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 61, share of bodies >=2x 0.00, weakest body 1.0x
+frame 100: contrast 1.1, bodies 61, share of bodies >=2x 0.00, weakest body 1.0x

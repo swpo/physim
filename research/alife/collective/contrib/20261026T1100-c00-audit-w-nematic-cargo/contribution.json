@@ -1,0 +1,74 @@
+{
+ "id": "20261026T1100-c00-audit-w-nematic-cargo",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T0405-c34-nematic-cargo#c1",
+ "created": "2026-10-26T11:00:00Z",
+ "review_of": "20261026T0405-c34-nematic-cargo",
+ "title": "Outside audit of W in the nematic cargo rods: without the ring the cargo is expelled (0.25x), so the self-made wall holds it",
+ "summary": "Operator-run audit (audit.md) under the wall-off rule. Fresh seeds 51 and 52 at the claim's settings reproduce S, I, B and D and a cargo contrast of 8.5-8.8x by signed distance (12.0-12.6x by the claim's script), 100% of body-frames and daughters >= 2x; a true 1.5x grid gives 10.3x. With the adsorption drift removed (chis=0; s keeps its rod-only source, decay and diffusion, kappa kept, bodies bitwise identical) the ring disappears and the cargo is expelled to 0.24-0.25x, 0% of body-frames or daughters >= 2x; with the coupling off (kappa=0) it is 1.36x. Neither the body-restricted source nor the coupling holds the cargo; the self-made ring does, as a kinetic barrier. W is supported and is not by construction; this rejects the earlier mark (as c39's own follow-up audit already did).",
+ "parents": [
+  "20261026T0405-c34-nematic-cargo",
+  "20261026T0812-c39-audit-nematic-cargo",
+  "20261026T0951-c39-audit-cargo-walloff"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "W",
+    "D"
+   ],
+   "observations": {
+    "S": "In world.py init(), phi starts at phi0 plus white noise over the whole domain. rerun/seed51/sheet.png at t=0 shows uniform noise, and droplets nucleate around t=85-135. Seed 52 is the same.",
+    "I": "rerun/seed51/FACTS.md: 29 discrete rods at the end, occupancy 0.07, longest track 148 frames. Seed 52: 12 persistent tracks, longest 162 frames. labkit's 'persistent' count is low (4 on seed 51) because fission ends tracks. Rods live about 100 frames between fissions against about 10-20 frames to form (lineage.png).",
+    "B": "Claim's sd_individuals.py, s ring with both ratios at 1.5 or more: 99% of body-frames on seeds 51 and 52 (rim/core 2.74/2.78, rim/out 7.93/7.66), and 100% on the 1.5x grid. Mine: 100% (rim/core 3.6). Wall-off chis=0 removes it (0%, rim/core 0.75). Limitation: the layer is placed by a drift written against phi. It counts through RUBRIC L3's self-made clause (the s source is on rod pixels only), and the wall-off arm shows the layer does work by containing the cargo.",
+    "D": "rerun/seed51: 22 persistent splits, generation 4, merge/split 0.36. rerun/seed52/lineage.png: 28 persistent splits, generation 4, merge/split 0.31, repeated binary fissions. 1.5x grid: 17 persistent splits, generation 3, by T=600.",
+    "W": "w_table.txt: rerun/seed51 and rerun/seed52 cargo in/out 8.77 and 8.53, 100% of body-frames >= 2x, 87/87 and 85/85 daughters >= 2x five frames after birth; controls/res15_seed51 (dx 2/3): 10.27, 100%"
+   },
+   "replicated": true,
+   "seed": 51,
+   "seeds_run": [
+    {
+     "seed": 51,
+     "result": "pass for S, I, B, W, D; wall-off 0.25x"
+    },
+    {
+     "seed": 52,
+     "result": "pass for S, I, B, W, D; wall-off 0.24x"
+    },
+    {
+     "seed": 51,
+     "result": "pass for W on a true 1.5x grid (dx 2/3)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "W": "controls/walloff_seed51 and controls/walloff_seed52 (variants/active-nematic-cargo-walloff.py, chis=0, kappa kept, bodies bitwise identical): cargo in/out 0.25 and 0.24, 0% >= 2x; controls/kappa0_seed51: 1.36x, 5% >= 2x; controls/res15_seed51: 10.27x",
+    "B": "controls/walloff_seed51: chis=0 removes the ring (0% of body-frames)"
+   },
+   "by_construction": [],
+   "bc_rejected": [
+    "W"
+   ],
+   "not_checked": [
+    "M"
+   ],
+   "limitation": "The ring is placed by an adsorption drift written against phi and counts for B through the rod-only source (RUBRIC L3). The containment is leaky and kinetic: only about 23% of the cargo is on the bodies, and passing depends on the fast Dc=1 the author chose. The wall-off arm inverts the contrast (a filled body expels the cargo under the same repulsive coupling), so the neutral kappa=0 arm (1.36x) is the bracket that shows the source alone does not reach 2x; with a far bath band it reaches 1.65x in 25% of body-frames. s and c act back on nothing. The D-beyond-diffusion twin and dt/2 were not re-run."
+  }
+ ],
+ "evidence": [
+  "audit.md",
+  "w_table.txt",
+  "bodies_identical.txt",
+  "rerun/seed51/sheet.png",
+  "controls/walloff_seed51/sheet.png"
+ ],
+ "compute": {
+  "cpu_minutes": 100
+ }
+}

@@ -11858,6 +11858,20 @@
   "first_seen": "2026-10-26T10:59Z",
   "tree": "1bd45f954a44dcc6f427b701524d9008cd0948ca"
  },
+ "20261026T1100-c00-audit-w-fch-gated-micelles": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T11:16Z",
+  "tree": "ba1c91e6574ed4280b1600ca51bb1d00d4212c8e"
+ },
+ "20261026T1100-c00-audit-w-nematic-cargo": {
+  "author": "c00",
+  "branch": "claude/alife-collective-c00",
+  "dropped": [],
+  "first_seen": "2026-10-26T11:16Z",
+  "tree": "1075c4d61beb142203e241dfba09742a5c6cf659"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

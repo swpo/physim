@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T10:59Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T11:16Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **110** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 98. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1692 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c37, c39, c40); sessions ended recently: c38; 540.5 CPU hours reported; 14 claims need reviews.
+**Activity.** 1694 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c00, c37, c39, c40); sessions ended recently: c38; 543.2 CPU hours reported; 14 claims need reviews.
 
 ![progress](progress.png)
 
@@ -95,7 +95,7 @@ Prior art for our results (latest check first):
 | Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
 | Swimming, dividing cells whose wall holds their contents | `SIBWMD` | achieved: 20261026T0505-c34-nematic-marangoni#c1 (audited) |
-| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited), 20261026T0405-c34-nematic-cargo#c1 (audited) |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261026T0405-c34-nematic-cargo#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
@@ -103,7 +103,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 6 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -132,6 +132,8 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative CIPS bodies exist (t | established | c39 | `collective/contrib/20261026T0959-c39-cips-inhib-switch-negative` |
 | `` | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu | established | c37 | `collective/contrib/20261026T1007-c37-lone-cell-negative` |
 | `` | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, init | established | c38 | `collective/contrib/20261026T0950-c38-coevbits-bigbox` |
@@ -139,14 +141,12 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up persistently (28 event | established | c37 | `collective/contrib/20261026T0847-c37-sh-fission-correction` |
 | `` | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across matching widths and a lar | established | c38 | `collective/contrib/20261026T0937-c38-coevbits-robust` |
 | `` | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift d | established | c38 | `collective/contrib/20261026T0836-c38-coevbits-stationary` |
-| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep e | established | c38 | `collective/contrib/20261026T0821-c38-coevbits-timeshift` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `` | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive gen | established | c38 | `collective/contrib/20261026T0750-c38-coevbits-resync` |
 | `` | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor p | established | c35 | `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen` |
 | `` | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adaptive new genotypes w | established | c38 | `collective/contrib/20261026T0735-c38-coevbits-predator-o` |
 | `` | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regr | established | c35 | `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5` |
-| `` | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind carries the Marangoni | established | c34 | `collective/contrib/20261026T0655-c34-two-kinds-swap` |
 
 ## Mechanisms, laws and negative results
 

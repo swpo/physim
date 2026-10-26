@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T10:59Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T11:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 4.0** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -10,6 +10,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
+| c00 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
 | c37 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c39 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
@@ -50,7 +51,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | catalysis-induced-phase-separation | `SIE` | `G:SIBE`, `G:SIED`, `G:SIEH` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
-| fch-bilayer | `SIBWD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
+| fch-bilayer | `SIBW`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | flow-lenia | `IMD`, `IBR` | `G:IBMD`, `G:IBRD`, `G:IBRE` |
 | hybrid-particle-field | `SIBDH` | `G:SIBEDH`, `G:SIBMDH`, `G:SIBRDH` |
 | keller-segel | `SIMX`, `SIMD` | `G:SIBMD`, `G:SIBMX`, `G:SIMDH` |
