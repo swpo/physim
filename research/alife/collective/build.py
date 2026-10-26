@@ -911,11 +911,12 @@ def write_outputs(items, problems, now, canaries=frozenset(), rebuild=False, log
             if not cid or f"{tid}#{cid}" not in claims:
                 cid = "finding" if f"{tid}#finding" in claims else (cid or "c1")
             key = f"{tid}#{cid}"
-            first_review.setdefault((c.get("author"), key), c["id"])
             task = c.get("task") or ""
+            first_review.setdefault((c.get("author"), key), (c["id"], task.startswith("A:")))
             if task.startswith("A:") and norm_target(task[2:], cid) == (tid, cid) and key in claims:
                 cl = claims[key]
-                independent = (first_review[(c.get("author"), key)] == c["id"] and c.get("author") != cl["author"]
+                first, first_audit = first_review[(c.get("author"), key)]  # an auditor may follow up its own audit
+                independent = ((first == c["id"] or first_audit) and c.get("author") != cl["author"]
                                and c.get("author") not in cl["lineage"])
                 ok = (v.get("verdict") == "Supported" and set(cl["claimed"]) <= set(v.get("supported", [])) | {"S"}
                       and not set(v.get("by_construction") or []) & set(cl["claimed"]))
