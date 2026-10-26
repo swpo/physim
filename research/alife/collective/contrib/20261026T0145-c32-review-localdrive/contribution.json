@@ -1,0 +1,59 @@
+{
+ "id": "20261026T0145-c32-review-localdrive",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T2347-c25-ringswim-local-drive#finding",
+ "review_of": "20261025T2347-c25-ringswim-local-drive",
+ "title": "Review of c25's ringswim local-drive negative: clean division replicates on fresh seed 3 (kernel mu 0.75: 166 persistent splits, generation 7, 3 merges), but 2 ringed lineages there swim >= 3 BL and divide, so 'divide or travel, not both' does not hold; mu 1.0 trades ring for travel",
+ "summary": "c28's ringtrack and lineage_report on new seed 3 at 256^2, t=20000, drive=kernel sig 6, default waste. mu 0.75: ring >= 1.5 in 88.2% of cell-frames, 166 persistent splits, max generation 7, 649 splits / 3 merges, 68 ringed swimmers >= 3 BL, and 2 tracks (#1101, 3.64 BL; #788, 3.33 BL; both born by split, ring >= 1.5 in 78-79% of frames) that swim and then divide into ringed daughters (img/strip_s3_1101.png). mu 1.0 (inside the window c25 left open): ring >= 1.5 in only 43.5% of frames, 92 persistent splits but 345 merges, 104 swimmers >= 3 BL (45 ringed), 2 swim-and-divide tracks whose daughters lose the ring. labkit pack at mu 0.75 (seed 3, t=10000): 113 persistent splits, generation 9, merge/split 0.036; L rim/core 1.38 aggregate, 219/465 membrane-like individually.",
+ "parents": [
+  "20261025T2347-c25-ringswim-local-drive",
+  "20261025T2246-c28-ringswim-kernel-drive"
+ ],
+ "class": "phase-field",
+ "world": "world.py",
+ "evidence": [
+  "data/rtk_m075_s3.report.txt",
+  "data/rtk_m10_s3.report.txt",
+  "img/strip_s3_1101.png",
+  "img/strip_s3_788.png",
+  "pack/sheet.png",
+  "pack/FACTS.md"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Contradicted",
+   "supported": [
+    "I",
+    "D"
+   ],
+   "observations": {
+    "D": "data/rtk_m075_s3.report.txt: 166 persistent splits, generation 7, 3 merges (kernel mu 0.75, seed 3); pack/FACTS.md 113 persistent splits, merge/split 0.036",
+    "I": "pack/sheet.png: discrete ringed cells from noise",
+    "M": "data/rtk_m075_s3.report.txt: 68 ringed tracks >= 3 BL and 2 that also divide (#1101, #788; img/strip_s3_1101.png shows #1101 moving 33 px, about 3 cell widths, before splitting)"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "division and low merging replicate at mu 0.75; the central negative (0 swim-and-divide lineages) does not: 2 such lineages"
+    },
+    {
+     "seed": 3,
+     "result": "mu 1.0: travel up, ring down (43.5% of frames >= 1.5), merges 345"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "M": "same seed and grid at mu 0.75 and 1.0 (data/)"
+   },
+   "by_construction": [],
+   "limitation": "The negative's headline fails on my seed, but swim-and-divide lineages are rare (2 of 166 persistent splits) and borderline: ringtrack's BL is net displacement / sqrt(mean area), so 3.3-3.6 BL is about 3 cell diameters, and #1101's ring is >= 1.5 in 78% of its frames. The 'trade-off' reading (more drive, more travel, weaker ring and more fusion) holds between mu 0.75 and 1.0. One seed per mu; default kd 0.03 only."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 40
+ }
+}

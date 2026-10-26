@@ -1,0 +1,20 @@
+0 2 {np.int64(11): np.int64(2)}
+10000 35 {np.int64(2): np.int64(1), np.int64(3): np.int64(1), np.int64(5): np.int64(1), np.int64(6): np.int64(1), np.int64(11): np.int64(31)}
+20000 41 {np.int64(2): np.int64(1), np.int64(7): np.int64(1), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(11): np.int64(37)}
+30000 36 {np.int64(4): np.int64(2), np.int64(7): np.int64(6), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(11): np.int64(24), np.int64(12): np.int64(2)}
+40000 44 {np.int64(2): np.int64(1), np.int64(3): np.int64(1), np.int64(5): np.int64(2), np.int64(6): np.int64(1), np.int64(7): np.int64(1), np.int64(8): np.int64(4), np.int64(9): np.int64(1), np.int64(11): np.int64(27), np.int64(12): np.int64(6)}
+0 2 {np.int64(11): np.int64(2)}
+10000 44 {np.int64(2): np.int64(1), np.int64(3): np.int64(1), np.int64(5): np.int64(2), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(11): np.int64(36), np.int64(12): np.int64(1), np.int64(13): np.int64(1)}
+20000 35 {np.int64(10): np.int64(1), np.int64(11): np.int64(33), np.int64(12): np.int64(1)}
+30000 47 {np.int64(2): np.int64(1), np.int64(4): np.int64(1), np.int64(5): np.int64(2), np.int64(7): np.int64(2), np.int64(8): np.int64(1), np.int64(11): np.int64(31), np.int64(12): np.int64(9)}
+40000 34 {np.int64(5): np.int64(1), np.int64(9): np.int64(1), np.int64(10): np.int64(2), np.int64(11): np.int64(23), np.int64(12): np.int64(6), np.int64(13): np.int64(1)}
+0 2 {np.int64(11): np.int64(2)}
+10000 37 {np.int64(3): np.int64(1), np.int64(5): np.int64(1), np.int64(7): np.int64(1), np.int64(11): np.int64(34)}
+20000 44 {np.int64(5): np.int64(1), np.int64(7): np.int64(1), np.int64(11): np.int64(41), np.int64(13): np.int64(1)}
+30000 45 {np.int64(4): np.int64(1), np.int64(7): np.int64(4), np.int64(8): np.int64(1), np.int64(9): np.int64(1), np.int64(11): np.int64(37), np.int64(13): np.int64(1)}
+40000 33 {np.int64(11): np.int64(26), np.int64(12): np.int64(6), np.int64(13): np.int64(1)}
+0 2 {np.int64(11): np.int64(2)}
+10000 0 {}
+20000 0 {}
+30000 0 {}
+40000 0 {}

@@ -1,0 +1,21 @@
+{
+  "id": "20261025T1730-c13-review-pdrop",
+  "kind": "review",
+  "mode": "review",
+  "task": "R:20261025T1408-c14-pdrop-arrested#finding",
+  "title": "Review of c14's pdrop-arrested negative: replicated on seed 3 at the pack's settings - ~100 droplets from a uniform soup freeze into a static emulsion (99 at t=10000, 2 persistent splits, 25 merges, generation 1)",
+  "summary": "Verdict written before reading other reviews. I ran c14's pdrop world.py unchanged with labkit on new seed 3 at the pack's settings (128^2, 80 frames x 250 steps, dt 0.5, t=10000). From a uniform soup, droplets appear by t~375, coarsen slightly by merging until t~2000, and then sit as a static emulsion of 97-107 droplets to t=10000 (sheet.png); labkit: 100 tracks alive for >= 50% of the run, 9 splits, 2 persistent, generation 1, 25 merges.",
+  "parents": ["20261025T1408-c14-pdrop-arrested"],
+  "class": "hybrid-particle-field",
+  "review_of": "20261025T1408-c14-pdrop-arrested",
+  "evidence": ["rerun/seed3/sheet.png", "rerun/seed3/FACTS.md"],
+  "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": [],
+    "observations": {"finding": "rerun/seed3/FACTS.md: final 99 droplets (mean 97.9), 2 persistent splits, generation 1, 25 merges; sheet.png t=2625-10000: unchanged droplet lattice"},
+    "replicated": true, "seed": 3,
+    "seeds_run": [{"seed": 3, "result": "pass"}],
+    "same_individuals": false,
+    "controls_run": {},
+    "class_confirmed": true,
+    "limitation": "One seed at the default settings only; I did not rerun the 11-setting screen."}],
+  "compute": {"cpu_minutes": 8}
+}

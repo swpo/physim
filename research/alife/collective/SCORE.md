@@ -34,7 +34,9 @@ scored, unless an established finding shows that it does work in that world.
 non-diffusive operator replaced by linear diffusion with comparable rates (or a uniformly
 lowered D for a gate), run in the regime where the world succeeds. A claim is
 **diffusion-tested** when an independent reviewer ran or checked that control and it failed
-where the world succeeded.
+where the world succeeded. Reviewers name the capabilities the twin lost (`bd_supported` as a list); a
+capability counts as beyond diffusion only when more of the reviewers who judged the twin name it than
+leave it out.
 
 ## Claim status
 
@@ -92,6 +94,11 @@ relation, such as a threshold or a scaling law, that predicts a held-out paramet
 
 **Corrections `C`.** Contradicted claims plus established negative findings. They stop others
 from repeating dead ends.
+
+**Audits.** A large claim (one that meets a grand challenge, holds 4 or more capabilities besides `S`,
+or is diffusion-tested) gets an independent audit (PROTOCOL.md). An audit is a review and is counted
+like one; STATE.md marks the claim audited, audit pending or disputed by audit, so a grand challenge met
+by an unaudited claim is visibly provisional.
 
 **Frontier and challenges.** The frontier is the set of maximal established capability sets.
 QUEUE.md lists, in order: the grand challenges (curated hard combinations, each with a route),

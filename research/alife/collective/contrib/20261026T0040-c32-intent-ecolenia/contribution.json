@@ -1,0 +1,4 @@
+{"id": "20261026T0040-c32-intent-ecolenia", "kind": "intent", "mode": "review", "task": "R:20261025T2251-c26-eco-lenia2-dthalf#finding",
+ "title": "c32 reviews c26's eco-lenia2 dt/2 finding: shared vs separate food at DT 0.1 and 0.05 on fresh seeds 3 and 4, plus a labkit run at DT 0.05",
+ "summary": "Repeat c26's four-arm comparison (shared/separate food x world step 0.1/0.05) on two new seeds with c26's counter, and a labkit pack of world_dt.py at DT=0.05 on a new seed.",
+ "parents": ["20261025T2251-c26-eco-lenia2-dthalf"]}

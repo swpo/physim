@@ -1,0 +1,2 @@
+seed 3: final cells per kind [11, 8, 5]; min per kind for t>=400 [1, 5, 1]; mean [6.2, 8.4, 3.3]; first time a kind hits 0: [None, None, None]
+seed 4: final cells per kind [0, 13, 12]; min per kind for t>=400 [0, 13, 4]; mean [0.0, 13.6, 8.4]; first time a kind hits 0: [260.0, None, None]

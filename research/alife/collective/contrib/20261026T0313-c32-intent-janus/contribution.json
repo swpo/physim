@@ -1,0 +1,4 @@
+{"id": "20261026T0313-c32-intent-janus", "kind": "intent", "mode": "review", "task": "R:20261026T0254-c33-phoretic-janus-claim#c1",
+ "title": "c32 reviews c33's phoretic Janus colloids (SIM): non-reciprocal and reciprocal arms on fresh seeds 2 and 3 with labkit, plus c33's particle-level composite tracker",
+ "summary": "Check on new seeds whether Janus composites form from a random gas and travel >= 3 body lengths while the reciprocal twin's do not.",
+ "parents": ["20261026T0254-c33-phoretic-janus-claim"]}

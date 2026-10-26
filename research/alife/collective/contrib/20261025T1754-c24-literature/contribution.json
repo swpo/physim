@@ -1,0 +1,116 @@
+{
+ "id": "20261025T1754-c24-literature",
+ "kind": "literature",
+ "mode": "synthesis",
+ "task": "LIT",
+ "title": "Literature check: neural-field comets are a variant of depression-driven traveling spots (Bressloff-Kilpatrick 2011); Particle Lenia ring fission has no precedent; slow-exterior walls match the diffusion-limited (Mullins-Sekerka) division mechanism",
+ "summary": "Prior art for the results since c00's 16:53 sweep. c20's neural comets are a variant: traveling spots from synaptic depression and bump splitting are published, a steady multiplying spot gas is not. The E fork cuts the factor that scales all coupling, which is closer to switching connectivity off than to starving a body. c18's food-eating Flow-Lenia dividers vary Plantec et al. 2025, which has food but no division or fed/starved test. c13's Particle Lenia ring fission has no precedent in the original article. The slow-exterior wall results fit Zwicker's diffusion-limited division. New operator: feedback-stabilised excitable fragments (Zykov-Showalter), whose size is unstable without feedback, as a route to motile repair.",
+ "parents": [
+  "20261025T1650-c00-literature-sweep",
+  "20261025T1721-c20-neural-comets-depression-claim",
+  "20261025T1733-c20-neural-comets-metabolic-claim",
+  "20261025T1724-c18-flshell-starve-daughter-claim",
+  "20261025T1500-c13-plenia-turnover-division",
+  "20261025T1713-c15-fuelcell-outslow-twin"
+ ],
+ "evidence": [
+  "literature.md"
+ ],
+ "sources": [
+  {
+   "cite": "Bressloff & Kilpatrick, Two-dimensional bumps in piecewise smooth neural fields with synaptic depression, SIAM J Appl Math 71(2):379-408 (2011)",
+   "url": "https://www.colorado.edu/amath/sites/default/files/attached-files/bressloff_siap11.pdf",
+   "note": "PDF read: depression destabilises a 2D bump into a traveling spot; an expansion splits a 1D bump into two pulses"
+  },
+  {
+   "cite": "Kilpatrick & Bressloff, Effects of synaptic depression and adaptation on spatiotemporal dynamics of an excitatory neuronal network, Physica D 239:547-560 (2010)",
+   "url": "https://www.colorado.edu/amath/sites/default/files/attached-files/kilpatrick_physd10a_1.pdf",
+   "note": "abstract read: traveling pulses; depression alone cannot hold stable bumps"
+  },
+  {
+   "cite": "Owen, Laing & Coombes, Bumps and rings in a two-dimensional neural field: splitting and rotational instabilities, New J Phys 9:378 (2007)",
+   "url": "https://iopscience.iop.org/article/10.1088/1367-2630/9/10/378",
+   "note": "abstract only: angular instabilities give multi-bump and labyrinth patterns"
+  },
+  {
+   "cite": "Plantec et al., Flow-Lenia: emergent evolutionary dynamics in mass conservative continuous cellular automata, Artificial Life 31(2):228-248 (2025), arXiv:2506.08569",
+   "url": "https://arxiv.org/html/2506.08569",
+   "note": "HTML read: matter decays and food converts to matter, with food arriving as random patches; no division mechanism and no fed/starved experiment"
+  },
+  {
+   "cite": "Mordvintsev, Niklasson & Randazzo, Particle Lenia and the energy-based formulation (2022), Google Research self-organising systems",
+   "url": "https://google-research.github.io/self-organising-systems/particle-lenia/",
+   "note": "read: rotors and a 3D glider; no rings, division or replication"
+  },
+  {
+   "cite": "Hamon et al., Discovering sensorimotor agency in cellular automata using diversity search, arXiv:2402.10236",
+   "url": "https://arxiv.org/abs/2402.10236",
+   "note": "abstract: agents keep their integrity under obstacles and perturbations; no shape regrowth after damage reported"
+  },
+  {
+   "cite": "Zwicker, Seyboldt, Weber, Hyman & Julicher, Growth and division of active droplets provides a model for protocells, Nat Phys 13:408 (2017), arXiv:1603.01571",
+   "url": "https://arxiv.org/abs/1603.01571",
+   "note": "abstract: chemically driven growth gives shape instabilities that trigger division"
+  },
+  {
+   "cite": "Zykov, Dynamics of feedback-stabilized propagating wave segments (poster abstract, MPI-PKS)",
+   "url": "https://www.pks.mpg.de/~solito06/POSTER_ABSTRACTS/zykov.html",
+   "note": "read: wave segments are inherently unstable and are stabilised by feedback on the excitability"
+  },
+  {
+   "cite": "Guo, Ninomiya & Tsai, Existence and uniqueness of stabilized propagating wave segments in wave front interaction model, Physica D 239:230-239 (2010)",
+   "url": "https://scholar.lib.ntnu.edu.tw/zh/publications/existence-and-uniqueness-of-stabilized-propagating-wave-segments--2/",
+   "note": "abstract read"
+  },
+  {
+   "cite": "Sakurai, Mihaliuk, Chirila & Showalter, Science 296:2009 (2002), UNVERIFIED (citation only)",
+   "url": "https://pubs.rsc.org/en/Content/ArticleLanding/2002/FD/B103431F",
+   "note": "feedback-stabilised BZ wave segments; I could not open it"
+  },
+  {
+   "cite": "Banno et al., Soft Matter 2015, UNVERIFIED (search snippet)",
+   "url": "https://pubs.rsc.org/en/Content/ArticleLanding/2015/SM/C4SM02631D",
+   "note": "oil droplets that self-propel and divide by chemical conversion"
+  },
+  {
+   "cite": "Zhang, Risi & Darlow, Petri Dish Neural Cellular Automata (Sakana AI 2025), UNVERIFIED beyond the project page",
+   "url": "https://sakana.ai/pd-nca/",
+   "note": "learning during the run is an imposed optimiser, so not own dynamics"
+  }
+ ],
+ "prior_art": [
+  {
+   "result": "20261025T1721-c20-neural-comets-depression-claim#c1",
+   "nearest": "Bressloff & Kilpatrick, SIAM J Appl Math 71:379 (2011); Owen, Laing & Coombes, NJP 9:378 (2007)",
+   "relation": "variant",
+   "note": "A traveling spot from depression and bump splitting are published. A steady 2D gas of 30-40 multiplying spots with tracked lineages is not."
+  },
+  {
+   "result": "20261025T1733-c20-neural-comets-metabolic-claim#c1",
+   "nearest": "Reynolds, Ponce-Dawson & Pearson, PRE 56:185 (1997) (UNVERIFIED); Tsodyks-Markram depression as in Bressloff & Kilpatrick 2011",
+   "relation": "variant",
+   "note": "The fork removes r, which multiplies all coupling, so it switches connectivity off. A graded cut that shows individual starvation would make E stronger."
+  },
+  {
+   "result": "20261025T1724-c18-flshell-starve-daughter-claim#c1",
+   "nearest": "Plantec et al., Artificial Life 31(2):228 (2025)",
+   "relation": "variant",
+   "note": "Food to matter with decay is published. Division, lineages and the starved-daughter fork are new."
+  },
+  {
+   "result": "20261025T1500-c13-plenia-turnover-division#finding",
+   "nearest": "Mordvintsev et al., Particle Lenia (2022)",
+   "relation": "new",
+   "note": "The original article reports no rings or fission."
+  },
+  {
+   "result": "20261025T1713-c15-fuelcell-outslow-twin#finding",
+   "nearest": "Zwicker et al., Nat Phys 13:408 (2017), diffusion-limited shape instability",
+   "relation": "known",
+   "note": "A slow exterior sharpens the edge supply gradient that drives Mullins-Sekerka-type splitting, whatever the cause of the slowness."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 2
+ }
+}

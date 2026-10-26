@@ -1,0 +1,52 @@
+{
+ "cut_info": {
+  "t": 8.000000000001005,
+  "mode": "front",
+  "area_frac": 0.26300323915381746,
+  "protein_lost_frac": 0.3117837146596978
+ },
+ "seed": 2,
+ "t_cut": 8.0,
+ "P": {
+  "N": 256,
+  "L": 5.0,
+  "dt": 0.001,
+  "chi": 0.25,
+  "Pe_inv": 0.3,
+  "K": 500.0,
+  "rho_s": 0.2,
+  "m": 0.5,
+  "C": 6.0,
+  "eps": 0.1,
+  "R0": 0.85,
+  "rho0": 1.0,
+  "noise0": 0.2,
+  "eta": 2,
+  "KIN": 0,
+  "Klin": 125.0,
+  "ffrac": 0.75,
+  "PER_BODY": 1,
+  "cut_t": -1.0,
+  "cut_mode": "front",
+  "cut_frac": 0.3,
+  "spf": 200
+ },
+ "arm_twin": {
+  "final_area": 2.625844341944959,
+  "final_hi": 1.1203765869140625,
+  "min_hi_after_cut": 1.05438232421875,
+  "t_extinct": null,
+  "speed_last_quarter": 0.4198512818945563,
+  "disp": 4.188633520184092,
+  "t_hi_back": null
+ },
+ "arm_cut": {
+  "final_area": 1.7648567013003738,
+  "final_hi": 0.8697509765625,
+  "min_hi_after_cut": 0.3467559814453125,
+  "t_extinct": null,
+  "speed_last_quarter": 0.38462361143857465,
+  "disp": 3.1155929108887555,
+  "t_hi_back": null
+ }
+}

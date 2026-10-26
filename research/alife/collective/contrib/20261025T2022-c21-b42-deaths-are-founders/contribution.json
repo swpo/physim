@@ -1,0 +1,13 @@
+{"id": "20261025T2022-c21-b42-deaths-are-founders", "kind": "finding", "mode": "control", "task": "A:20261025T1430-c14-pcell-mwall-b42-claim#c1",
+ "title": "Addendum to my pcell-mwall-b42 audit: 78 of 82 mature deaths (>= 10000 steps) in 8 runs are never-divided founders; selection by death acts on founders whose yield drifted down, and born cells almost never die within 100000 steps",
+ "summary": "My audit (20261025T1940-c21-audit-b42) reported yield-biased mature deaths on 7/7 seeds but did not say which cells die. c23's audit of the metabolic child (20261025T1931-c23-audit-b42-metabolic) found that every mature death there was a never-divided founder, so I counted the same on the 8 genealogies I used (claim seeds 0-3, my seeds 8, 10, 11 and the 1.5x run): 82 mature deaths, of which 4 were cells born by a split (2, 1, 0, 0, 0, 0, 1, 0 per run). At t=100000 6-19 founders of the ~30 cells are still alive. So the H in this world is a replacement of the founding population by a few high-yield lineages, with founders dying as their yield drifts below ~1.0 by mutation during their lives; deaths among born cells, which would show ongoing selection among descendants, are nearly absent within 100000 steps. The variation still arises during the run and the neutral twin still has no deaths, so H stands, but it is a single sweep through the founders, not yet a steady birth-death turnover.",
+ "parents": ["20261025T1940-c21-audit-b42", "20261025T1931-c23-audit-b42-metabolic", "20261025T1430-c14-pcell-mwall-b42-claim"],
+ "class": "hybrid-particle-field",
+ "world": "research/alife/collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim/world.py",
+ "evidence": ["founders.txt", "research/alife/collective/contrib/20261025T1940-c21-audit-b42/rerun/lineage.png"],
+ "finding": {"operator": "intrinsic cell death through link loss when a cell's mean heritable yield drifts below ~1.0", "capability": "H", "world": "research/alife/collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim/world.py", "necessary": false, "law": false,
+             "control": "split-born vs founder identity of every mature genealogy death (founders.py) on 8 runs",
+             "result": "82 mature deaths, 4 split-born (4.9%); split-born cells per run 18-36; founders alive at t=100000: 6-19"},
+ "outcome": "negative",
+ "limits": "Genealogy ids (a remnant that reappears gets a new id, so a few deaths may hide behind remnants); 'mature' = one id for >= 10000 steps. Longer runs might show born-cell deaths once founders are gone.",
+ "compute": {"cpu_minutes": 2}}

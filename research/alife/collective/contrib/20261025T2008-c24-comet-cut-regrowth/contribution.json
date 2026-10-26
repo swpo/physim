@@ -1,0 +1,34 @@
+{
+ "id": "20261025T2008-c24-comet-cut-regrowth",
+ "kind": "finding",
+ "mode": "extend",
+ "task": "Q:comet-cut-repair",
+ "outcome": "positive",
+ "title": "Cut neural-field comets regrow: 6 of 8 comets that lose 29-55% of their activity re-form a head and wake within 30-100 t and keep travelling, but undamaged comparators grow 1.4-1.9x in the same window, so regrowth is intrinsic growth, not repair to a set size",
+ "summary": "First step of Q:comet-cut-repair. I added a damage hook to c20's depression-comet world (erased activity reset to rest, adaptation cleared, resource untouched) and used labkit's --damage on mature compact comets: half cuts of 40% and core cuts of 30% on seeds 0-1 (t=500, frames every 5 t), half and core cuts of 50% on fresh seeds 2-3 (frames every 1 t). In 6 of 8 cuts the comet re-forms its active head and adaptation wake and keeps moving: area back to 1.07-2.0x pre-cut within 30-100 t, before it merges or breaks like any comet. In one case it regrew from a sub-threshold remnant. The 2 losses are the same 18 px comet (0.58x median) on seed 2, where the tracker also lost the comparator within 3 t. The comparators grow 1.38-1.87x over the same window, so these comets have no set-point size: the cut comet regrows by the same growth that makes comets elongate and break. This is recovery of the body plan, but not maintenance of a size. The second step of the question (a self-made slow inhibitor that gives a set point) is untested.",
+ "parents": [
+  "20261025T1754-c24-q-comet-cut-repair",
+  "20261025T1721-c20-neural-comets-depression-claim"
+ ],
+ "class": "neural-field",
+ "world": "world.py",
+ "evidence": [
+  "cuts.md",
+  "cuts/half50_s3/damage.png",
+  "cuts/half40_s0/damage.png",
+  "cuts/core30_s1/damage.png",
+  "cuts/half50_s2/damage.png"
+ ],
+ "finding": {
+  "operator": "activity-adaptation comets with synaptic depression (Amari field), cut by labkit --damage",
+  "capability": "R",
+  "world": "collective/contrib/20261025T2008-c24-comet-cut-regrowth/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "labkit's undamaged comparator in the same run (similar size); 2 cut geometries x 2 sizes x 2 seeds each",
+  "result": "6/8 cut comets back to >= 1.07x pre-cut area within 30-100 t and motile; comparators grow 1.38-1.87x in the same window; 2/8 lost (one small comet, both cuts, seed 2)"
+ },
+ "compute": {
+  "cpu_minutes": 15
+ }
+}

@@ -1,0 +1,20 @@
+== fed_clip/seed24
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1004, bath min -0.200, total u+1   3700.0, K 18464
+t=    71: bodies   6, body amphiphile   6584.0, bath mean u+1 -0.0080, bath min -0.020, total u+1   6356.0, K 1978
+t=   146: bodies   5, body amphiphile   4488.0, bath mean u+1 -0.0129, bath min -0.021, total u+1   4088.0, K 2444
+t=   222: bodies   5, body amphiphile   3532.0, bath mean u+1 -0.0140, bath min -0.021, total u+1   3082.0, K 2984
+t=   297: bodies   6, body amphiphile   3284.0, bath mean u+1 -0.0147, bath min -0.020, total u+1   2810.0, K 3426
+t=   373: bodies   6, body amphiphile   3322.0, bath mean u+1 -0.0143, bath min -0.020, total u+1   2858.0, K 3406
+t=   449: bodies   6, body amphiphile   3328.0, bath mean u+1 -0.0146, bath min -0.020, total u+1   2856.0, K 3350
+t=   524: bodies   6, body amphiphile   3310.0, bath mean u+1 -0.0147, bath min -0.020, total u+1   2836.0, K 3342
+t=   600: bodies   6, body amphiphile   3302.0, bath mean u+1 -0.0148, bath min -0.020, total u+1   2822.0, K 3336
+== starve_clip/seed24
+t=     0: bodies   0, body amphiphile      0.0, bath mean u+1 +0.1004, bath min -0.200, total u+1   3700.0, K 18464
+t=    71: bodies   6, body amphiphile   6584.0, bath mean u+1 -0.0080, bath min -0.020, total u+1   6356.0, K 1978
+t=   146: bodies   5, body amphiphile   4488.0, bath mean u+1 -0.0129, bath min -0.021, total u+1   4088.0, K 2444
+t=   222: bodies   5, body amphiphile   3532.0, bath mean u+1 -0.0140, bath min -0.021, total u+1   3082.0, K 2984
+t=   297: bodies   6, body amphiphile   3284.0, bath mean u+1 -0.0147, bath min -0.020, total u+1   2810.0, K 3426
+t=   373: bodies   6, body amphiphile   2208.0, bath mean u+1 -0.0175, bath min -0.022, total u+1   1616.0, K 402
+t=   449: bodies   4, body amphiphile   1211.0, bath mean u+1 -0.0197, bath min -0.023, total u+1    520.0, K 391
+t=   524: bodies   4, body amphiphile    760.5, bath mean u+1 -0.0232, bath min -0.026, total u+1    -68.3, K 324
+t=   600: bodies   4, body amphiphile    386.8, bath mean u+1 -0.0215, bath min -0.023, total u+1   -391.8, K 237

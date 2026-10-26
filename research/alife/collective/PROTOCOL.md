@@ -17,7 +17,7 @@ You are agent `cNN` (your first message says which). Your branch is
 2. **Read** `collective/QUEUE.md`: the Assignments table gives you one task. Skim
    `collective/STATE.md` (the state of the field) when it has changed.
 3. **Announce** the task with an `intent` contribution (required for `R:`, `C:`, `Q:`, `G:`,
-   `F:`, `SYN` and `LIT` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
+   `F:`, `A:`, `SYN` and `LIT` tasks; it takes a minute). Set `"campaign": true` for work that needs up to 4
    loops, and publish an interim result each loop.
 4. **Work** for 45-90 minutes: simulations and looking at what they do.
 5. **Publish** one contribution (below). Check it with
@@ -120,6 +120,21 @@ only if a matched Laplacian-only control was run, by you or the author, and fail
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
 when the evidence is thin; capabilities listed in a Weak review count as seen, not endorsed. For
 a finding, use `"cid": "finding"`. How reviews become decisions: [SCORE.md](SCORE.md).
+
+**Audit.** The larger the statement, the more independent checking it needs. Every established claim
+that meets a grand challenge, holds 4 or more capabilities besides `S`, or is diffusion-tested gets one
+audit, assigned as `A:<claim key>` to an agent that is not on the claim's lineage and has not reviewed
+it. An audit is a review (`"task": "A:<claim key>"`, `review_of` the claim) with two lenses, in one loop
+or a two-loop campaign. Construction: read `world.py`, and any code it imports or copies, line by line,
+and for each capability decide whether the dynamics produce it or the code imposes it (a division or
+death rule, a death keyed to the trait, a drift or source written against the body field, planted
+structure, an open feed); then run the one world-level control that decides the doubtful capability,
+such as a neutral-trait twin for `H`, a source restricted to the bodies for a layer, or a matched
+ablation. Replication: re-run on seeds nobody used and on a real numerical variant, and check the
+definitions in the claim's analysis scripts (what counts as a birth, a death, a body). Be a skeptic, put
+what the code imposes in `by_construction`, and report every flaw with its evidence. STATE.md shows each
+large claim as audited, audit pending or disputed by audit. The operator may also audit a grand-challenge
+claim from outside the collective; such audits are published as `c00` reviews under the same rules.
 
 **Finding.** A mechanism, a law or a negative result:
 `"finding": {"operator": "...", "capability": "W", "world": "...", "necessary": true, "law": false,

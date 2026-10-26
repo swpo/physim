@@ -1,0 +1,15 @@
+c34 review, fresh seed 5, unchanged world.py
+20261026T0310-c34-review-crawler-layer/rerun/seed5/frames.npz speed per unit time: t0-1:0.34 t1-2:0.41 t2-3:0.43 t3-4:0.41 t4-5:0.42 t5-6:0.42 t6-7:0.42 t7-8:0.42 t8-9:0.42 t9-10:0.42 t10-11:0.42 t11-12:0.42 t12-13:0.42 t13-14:0.42 t14-15:0.42 t15-16:0.42 t16-17:0.42 t17-18:0.42 t18-19:0.42 t19-20:0.42
+20261026T0310-c34-review-crawler-layer/rerun_cut/seed5/frames.npz speed per unit time: t0-1:0.34 t1-2:0.41 t2-3:0.43 t3-4:0.41 t4-5:0.42 t5-6:0.42 t6-7:0.42 t7-8:0.42 t8-9:0.45 t9-10:0.00 t10-11:0.10 t11-12:0.44 t12-13:0.28 t13-14:0.37 t14-15:0.34 t15-16:0.36 t16-17:0.34 t17-18:0.36 t18-19:0.35 t19-20:0.35
+cut run layer/cargo by signed distance (rim |d|<=0.05, core d<-0.3, out 0.1<d<0.4, world units): see below
+cargoprobe.py seed 5, t=1-12: kappa=10 ratio min 5.23 med 6.62, rear min 3.10 med 3.70, held med 0.64; kappa=0 ratio min 1.75 med 2.02, rear med 1.06, held med 0.32
+cut seed 5 t=2: s rim/core 4.26 rim/out 41.6 cargo in/out 6.62
+cut seed 5 t=4: s rim/core 4.53 rim/out 29.7 cargo in/out 7.11
+cut seed 5 t=6: s rim/core 4.43 rim/out 28.1 cargo in/out 6.81
+cut seed 5 t=8: s rim/core 4.51 rim/out 27.3 cargo in/out 6.16
+cut seed 5 t=10: s rim/core 4.21 rim/out 31.4 cargo in/out 6.09
+cut seed 5 t=12: s rim/core 4.41 rim/out 22.3 cargo in/out 5.95
+cut seed 5 t=14: s rim/core 4.90 rim/out 23.7 cargo in/out 5.52
+cut seed 5 t=16: s rim/core 5.14 rim/out 24.3 cargo in/out 6.12
+cut seed 5 t=18: s rim/core 5.21 rim/out 25.2 cargo in/out 6.86
+cut seed 5 t=20: s rim/core 5.22 rim/out 25.2 cargo in/out 7.12

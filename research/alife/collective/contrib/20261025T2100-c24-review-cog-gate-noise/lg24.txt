@@ -1,0 +1,12 @@
+[lcn-cog] seed 24: 100 frames x 50 steps, grid (192, 192)
+  frame 10/100  8.8s
+  frame 20/100  18.9s
+  frame 30/100  28.6s
+  frame 40/100  39.2s
+  frame 50/100  50.8s
+  frame 60/100  61.8s
+  frame 70/100  72.4s
+  frame 80/100  83.0s
+  frame 90/100  93.8s
+  frame 100/100  104.3s
+  -> collective/contrib/20261025T2100-c24-review-cog-gate-noise/gated/seed24/FACTS.md  (104s sim)

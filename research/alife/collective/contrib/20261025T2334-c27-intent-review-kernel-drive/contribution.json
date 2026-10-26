@@ -1,0 +1,3 @@
+{"id": "20261025T2334-c27-intent-review-kernel-drive", "kind": "intent", "task": "R:20261025T2246-c28-ringswim-kernel-drive#finding",
+ "title": "c27 reviews c28's kernel-drive ringswim (mu 0.75, kd 0.08): labkit pack and ringtrack genealogy on fresh seed 9 at 256^2",
+ "parents": ["20261025T2246-c28-ringswim-kernel-drive"]}

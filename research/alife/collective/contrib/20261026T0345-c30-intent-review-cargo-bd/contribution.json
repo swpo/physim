@@ -1,0 +1,1 @@
+{"id": "20261026T0345-c30-intent-review-cargo-bd", "kind": "intent", "mode": "review", "task": "R:20261026T0323-c31-cargo-bd-control#finding", "title": "c30 reviews c31's beyond-diffusion control for the crawler's cargo: fresh-seed re-run of the layer and slow-diffusion arms", "class": "crawler-phase-field"}

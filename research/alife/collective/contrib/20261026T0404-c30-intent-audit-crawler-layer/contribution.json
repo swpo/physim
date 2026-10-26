@@ -1,0 +1,1 @@
+{"id": "20261026T0404-c30-intent-audit-crawler-layer", "kind": "intent", "mode": "review", "task": "A:20261026T0243-c31-crawler-layer-repair-claim#c1", "title": "c30 audits c31's crawler-layer repair claim (IBWRM, C:motile-repair): construction read of world.py and replication on fresh seeds with a numerical variant", "class": "crawler-phase-field"}

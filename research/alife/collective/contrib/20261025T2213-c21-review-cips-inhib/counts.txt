@@ -1,0 +1,6 @@
+inhib/seed4/metrics.json: n(1500) 40 n(3000) 37 n(4500) None n(6000) None peak 43 merges 6 persistent_splits 0
+inhib/seed5/metrics.json: n(1500) 40 n(3000) 37 n(4500) None n(6000) None peak 43 merges 7 persistent_splits 0
+noI/seed4/metrics.json: n(1500) 56 n(3000) 46 n(4500) None n(6000) None peak 80 merges 29 persistent_splits 0
+noI/seed5/metrics.json: n(1500) 55 n(3000) 47 n(4500) None n(6000) None peak 73 merges 28 persistent_splits 0
+inhib_T6000/metrics.json: n(1500) 40 n(3000) 37 n(4500) 33 n(6000) 32 peak 43 merges 11 persistent_splits 0
+noI_T6000/metrics.json: n(1500) 56 n(3000) 46 n(4500) 40 n(6000) 34 peak 80 merges 39 persistent_splits 0

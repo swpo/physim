@@ -1,0 +1,13 @@
+cells-frames scored: 28650 median ring 1.588 frac >= 1.5: 0.876
+persistent splits 145 | tracks that swim >= 3 BL, ring >= 1.5 in >= half their frames, and divide: 11
+{'id': 173, 't0': 2800, 't1': 5660, 'BL': 4.03, 'ring_med': 1.55, 'ring_frac': 0.82, 'nring': 66, 'nframes': 144, 'born_by_split': False, 'divides': True, 'children': [464, 465]} -> children [(464, 1.55, 0.93, 1.05), (465, 1.62, 0.91, 0.55)]
+{'id': 975, 't0': 10840, 't1': 13380, 'BL': 3.95, 'ring_med': 1.58, 'ring_frac': 0.91, 'nring': 64, 'nframes': 128, 'born_by_split': True, 'divides': True, 'children': [1203, 1204]} -> children [(1203, 1.48, 0.42, 2.38), (1204, 1.6, 0.87, 1.6)]
+{'id': 935, 't0': 10380, 't1': 14060, 'BL': 3.59, 'ring_med': 1.57, 'ring_frac': 0.89, 'nring': 57, 'nframes': 185, 'born_by_split': False, 'divides': True, 'children': [1281, 1282]} -> children [(1281, 1.56, 0.83, 0.95), (1282, 1.56, 0.78, 2.25)]
+{'id': 1109, 't0': 12180, 't1': 14680, 'BL': 3.54, 'ring_med': 1.6, 'ring_frac': 0.91, 'nring': 55, 'nframes': 126, 'born_by_split': False, 'divides': True, 'children': [1340, 1342]} -> children [(1340, 1.55, 1.0, 0.71), (1342, 1.58, 0.85, 2.01)]
+{'id': 1331, 't0': 14600, 't1': 16120, 'BL': 3.48, 'ring_med': 1.56, 'ring_frac': 0.71, 'nring': 35, 'nframes': 77, 'born_by_split': False, 'divides': True, 'children': [1488, 1489]} -> children [(1488, 1.61, 0.89, 3.19), (1489, 1.49, 0.39, 2.15)]
+{'id': 1436, 't0': 15720, 't1': 17140, 'BL': 3.42, 'ring_med': 1.62, 'ring_frac': 0.8, 'nring': 35, 'nframes': 72, 'born_by_split': False, 'divides': True, 'children': [1581, 1585]} -> children [(1581, 1.61, 0.9, 1.48), (1585, 1.56, 0.84, 2.12)]
+{'id': 1423, 't0': 15600, 't1': 17340, 'BL': 3.3, 'ring_med': 1.6, 'ring_frac': 0.93, 'nring': 40, 'nframes': 88, 'born_by_split': True, 'divides': True, 'children': [1598, 1599]} -> children [(1598, 1.59, 0.89, 0.98), (1599, 1.56, 0.89, 2.99)]
+{'id': 68, 't0': 1800, 't1': 5400, 'BL': 3.26, 'ring_med': 1.58, 'ring_frac': 0.8, 'nring': 75, 'nframes': 181, 'born_by_split': True, 'divides': True, 'children': [446, 447]} -> children [(446, 1.6, 0.92, 0.9), (447, 1.57, 0.89, 0.65)]
+{'id': 994, 't0': 11040, 't1': 14020, 'BL': 3.16, 'ring_med': 1.58, 'ring_frac': 0.94, 'nring': 53, 'nframes': 150, 'born_by_split': False, 'divides': True, 'children': [1272, 1273]} -> children [(1272, 1.56, 0.79, 2.29), (1273, 1.65, 0.92, 1.23)]
+{'id': 444, 't0': 5400, 't1': 6680, 'BL': 3.0, 'ring_med': 1.55, 'ring_frac': 0.88, 'nring': 32, 'nframes': 65, 'born_by_split': False, 'divides': True, 'children': [584, 585]} -> children [(584, 1.63, 0.91, 1.86), (585, 1.55, 0.9, 1.71)]
+swimmers >= 3 BL: 89 with ring >= 1.5 in >= half frames: 88

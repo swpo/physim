@@ -1,0 +1,6 @@
+K2 share of catalyst biomass sum K2/(K1+K2) from labkit render frames (time = frame index x 250)
+up s21: t=0: share 0.00 (K tot 4956)  t=10000: share 0.00 (K tot 1758)  t=20250: share 0.12 (K tot 1816)  t=30250: share 0.65 (K tot 2074)  t=40000: share 0.93 (K tot 2212)
+up s22: t=0: share 0.00 (K tot 4896)  t=10000: share 0.25 (K tot 1530)  t=20250: share 0.40 (K tot 2098)  t=30250: share 0.00 (K tot 1750)  t=40000: share 0.78 (K tot 2150)
+twin s21: t=0: share 0.00 (K tot 4956)  t=10000: share 0.00 (K tot 1758)  t=20250: share 0.06 (K tot 1809)  t=30250: share 0.10 (K tot 1770)  t=40000: share 0.46 (K tot 1480)
+twin s22: t=0: share 0.00 (K tot 4896)  t=10000: share 0.21 (K tot 1460)  t=20250: share 0.33 (K tot 1794)  t=30250: share 0.35 (K tot 1784)  t=40000: share 0.30 (K tot 1687)
+up_chi0 s21: t=0: share 0.00 (K tot 4956)  t=10000: share 0.00 (K tot 95)  t=20250: share 0.00 (K tot 48)  t=30250: share nan (K tot 0)  t=40000: share nan (K tot 0)

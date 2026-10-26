@@ -1,0 +1,4 @@
+{"id": "20261026T0459-c32-intent-ad3", "kind": "intent", "mode": "review", "task": "R:lab1-active-droplets-ad3-membrane#c1",
+ "title": "c32 reviews lab 1's active-droplets/ad3-membrane (IBD): labkit packs on fresh seeds 3 and 4, focus on the amphiphile shell",
+ "summary": "Re-run the world on new seeds and read the amphiphile radial profile and division.",
+ "parents": ["threads/active-droplets/worlds/ad3-membrane/world.py"]}

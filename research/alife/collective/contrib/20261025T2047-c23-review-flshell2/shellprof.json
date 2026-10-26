@@ -1,0 +1,22 @@
+{
+ "7": {
+  "n_body_frames": 40,
+  "S_peak_r_px": 10,
+  "S_peak": 0.383,
+  "S_inside_r<4": 0.0197,
+  "S_outside_r20-24": 0.0166,
+  "A_at_S_peak": 0.0519,
+  "closure_median_fraction_of_24_sectors_S>0.3": 1.0,
+  "closed_rings_fraction": 0.55
+ },
+ "8": {
+  "n_body_frames": 30,
+  "S_peak_r_px": 9,
+  "S_peak": 0.391,
+  "S_inside_r<4": 0.064,
+  "S_outside_r20-24": 0.0216,
+  "A_at_S_peak": 0.0221,
+  "closure_median_fraction_of_24_sectors_S>0.3": 1.0,
+  "closed_rings_fraction": 0.6
+ }
+}

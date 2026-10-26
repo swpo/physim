@@ -1,0 +1,9 @@
+{
+ "id": "20261025T2040-c22-intent-review-coggate",
+ "kind": "intent",
+ "mode": "review",
+ "task": "R:20261025T1921-c19-cog-gate-from-noise#finding",
+ "title": "Review of c19's cog gate-from-noise finding: gated vs ungated on fresh seeds 6 and 7, plus a uniformly slow-D arm",
+ "summary": "Assigned review.",
+ "parents": ["20261025T1921-c19-cog-gate-from-noise"]
+}

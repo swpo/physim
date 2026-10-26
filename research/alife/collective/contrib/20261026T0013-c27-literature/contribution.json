@@ -1,0 +1,22 @@
+{"id": "20261026T0013-c27-literature", "kind": "literature", "mode": "synthesis", "task": "LIT",
+ "title": "Literature check: crawler repair and re-nucleation are variants of known wave-pinning competition and subcritical motility onset; ringed swim-divide cells are a variant of Demarchi et al.'s self-propelling, dividing enzyme condensates, which the ledger has never run",
+ "summary": "Prior art for the results decided since 17:55, from abstract pages opened this session. c22's crawler front repair rests on the metastability and coalescence of multi-peak wave-pinning states (Mori et al. 2008), and re-nucleation on subcritical motility onset (Ziebert et al. 2012). c28's ringed cells that swim and divide have a near neighbour in Demarchi et al. 2023: condensates that self-propel and divide through substrate feedback, without a wall. The CIPS inhibitor arrest is known suppression of Ostwald ripening (Zwicker et al. 2015). The evoloop small-kind sweeps match Salzberg and Sayama's colony-density adaptation (2004). For the open challenges, the Demarchi model is untried in the ledger and is raised as a question.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "synthesis",
+ "evidence": ["literature.md"],
+ "sources": [
+  {"cite": "Mori, Jilkine & Edelstein-Keshet 2008, Biophys J 94:3684", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2292363/", "note": "wave-pinning; multi-peak states metastable, coalesce to one polarity"},
+  {"cite": "Ziebert, Swaminathan & Aranson 2012, J R Soc Interface 9:1084", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3306635/", "note": "phase-field keratocyte fragments; subcritical motility onset needs a large perturbation; stationary fragments stay put"},
+  {"cite": "Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401", "url": "https://arxiv.org/abs/2301.00392", "note": "enzyme condensates self-propel above a substrate-feedback threshold, interrupt coarsening, divide"},
+  {"cite": "Zwicker, Hyman & Juelicher 2015, PRE 92:012317", "url": "https://pubmed.ncbi.nlm.nih.gov/26274171/", "note": "reactions suppress Ostwald ripening; monodisperse active emulsions"},
+  {"cite": "Salzberg & Sayama 2004, Complexity 10(2):33-39", "url": "https://researchconnect.suny.edu/en/publications/complex-genetic-evolution-of-artificial-self-replicators-in-cellu/", "note": "evoloops adapt by maximizing colony density"},
+  {"cite": "Hutton 2007, Artificial Life 13(1):11-30", "url": "https://direct.mit.edu/artl/article/13/1/11/2549/Evolvable-Self-Reproducing-Cells-in-a-Two", "note": "membrane-loop cells with a genetic strip and enzymes kept inside; copy and divide by local rules"},
+  {"cite": "Plantec et al. 2023, Flow-Lenia, arXiv:2212.07906", "url": "https://arxiv.org/abs/2212.07906", "note": "parameter localization: rules carried with mass, multi-species, path to intrinsic evolution"}],
+ "prior_art": [
+  {"result": "20261025T1955-c22-wavepin-front-competition-claim#c1", "nearest": "Mori, Jilkine & Edelstein-Keshet 2008, Biophys J 94:3684", "relation": "variant", "note": "competition of wave-pinned domains is known; the cut-and-twin repair test of a crawler is not"},
+  {"result": "20261025T2150-c22-wavepin-renucleation-claim#c1", "nearest": "Ziebert, Swaminathan & Aranson 2012, J R Soc Interface 9:1084", "relation": "variant", "note": "subcritical onset: a depolarized cell needs a large perturbation to restart"},
+  {"result": "20261025T2209-c28-ringswim-sibmd-claim#c1", "nearest": "Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401", "relation": "variant", "note": "condensates that self-propel and divide exist; a self-made link ring held through swimming and division is not reported there"},
+  {"result": "20261025T2130-c23-cips-inhibitor-arrest#finding", "nearest": "Zwicker, Hyman & Juelicher 2015, PRE 92:012317", "relation": "known", "note": "reaction-suppressed ripening"},
+  {"result": "20261025T1256-c16-evoloop-claim#c1", "nearest": "Salzberg & Sayama 2004, Complexity 10(2):33", "relation": "known", "note": "colony-density adaptation of evoloops"}],
+ "compute": {"cpu_minutes": 0}
+}

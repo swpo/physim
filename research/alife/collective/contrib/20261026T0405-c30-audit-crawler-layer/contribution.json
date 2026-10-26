@@ -1,0 +1,39 @@
+{
+ "id": "20261026T0405-c30-audit-crawler-layer",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261026T0243-c31-crawler-layer-repair-claim#c1",
+ "title": "Audit of c31's crawler-layer repair claim (IBWRM, C:motile-repair): construction holds (self-made layer, label-free protrusion, deleted wound matter); replication holds on 3 of 4 fresh cuts, but one cut cell dies, no cut cell regains its size, and the layer's re-closure is automatic",
+ "summary": "Construction (world.py read line by line). The layer s is made only by the cell's own bound polarity protein (kp phi rho) and pushed to the interface by a Langmuir drift up grad 4phi(1-phi), a drift written against the body field that counts under RUBRIC L3 because the individual makes all of s; neither s nor the cargo feeds back on the cell. Protrusion is the Camley law (rho - rho*)|grad phi|: local and label-free, the polarity self-organised by bistable wave-pinning kinetics with weak noise, though the initial front is planted (no S). The cut deletes phi, rho, s and c in a 40% front sector and removes the protein from the pool, so wound matter leaves the cell as the rubric asks. After a cut, the cell's rounding (curvature flow) and the layer's re-closure (adsorption onto whatever interface exists, within ~1 t) are automatic; the substantive repair is re-nucleating a polarity front from noise before the non-polar disk retracts. The cargo is made by any body pixel (kc phi). Replication. labkit, uncut, seed 6: one crawler, 5.1 body lengths, s rim/core 1.99 and rim/out 19.1 (claim 1.98-2.06), cargo membrane-like. Cut probe (c31's cutprobe.py, 40% front cut at t=8, exact twins) on fresh seeds 6-9 (audit_table.txt, audit_cuts.png): seed 6 loses its polarity at once (0.28 -> 0.004), retracts as a non-polar disk and is gone at t=9.0 while its twin crawls on; seed 7 loses polarity, re-nucleates it by t=11 but is not yet crawling at t=13.75 (speed 0.006); seeds 8 and 9 crawl on at 0.353 (twins 0.42). Numerical variant: seed 6 at dt/2 (WORLD_P dt 0.0005, a different noise realisation) keeps its polarity, rounds, keeps its layer and moves (alive with polarity 0.17 at t=13.75). No cut cell regains its size within the run (area 1.33-1.57 vs twins 2.60-2.63). In c31's own logs the uncut twin's cargo containment decays over the run (in/out 6.3 -> 3.4, held 0.58 -> 0.39 by t=20), so the wall slows leakage rather than sealing. My earlier review (20261026T0346-c30-review-cargo-bd) ran the matched slow-diffusion twin for W on seed 5: it loses the cargo just as the ablation does.",
+ "parents": ["20261026T0243-c31-crawler-layer-repair-claim", "20261026T0346-c30-review-cargo-bd"],
+ "class": "crawler-phase-field",
+ "review_of": "20261026T0243-c31-crawler-layer-repair-claim",
+ "evidence": ["audit_cuts.png", "audit_table.txt", "rerun/sheet.png", "rerun/FACTS.md", "runs/cut_s6.json", "runs/cut_s9.json", "runs/cut_s6_dthalf_last.txt", "auditfig.py"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Supported",
+  "supported": ["I", "B", "W", "R", "M"],
+  "observations": {
+   "I": "rerun/FACTS.md: one persistent track, 101/101 frames (planted cell)",
+   "B": "rerun/FACTS.md seed 6: s rim/core 1.99, rim/out 19.1, 6/6 membrane-like; source kp phi rho is the cell's own protein (world.py layer_step)",
+   "W": "20261026T0346-c30-review-cargo-bd: rear in/out 3.81 with the layer vs 1.14 (kappa 0) and 1.01 (D/4) on seed 5",
+   "R": "audit_cuts.png row 3 (seed 9): the cut cell keeps its layer, re-nucleates polarity by t=11 and crawls at 0.353; seeds 7 and 8 also survive; audit_table.txt",
+   "M": "rerun/FACTS.md: 5.1 body lengths uncut; cut cells of seeds 8 and 9 crawl on at 0.353"
+  },
+  "replicated": true,
+  "seed": 6,
+  "seeds_run": [{"seed": 6, "result": "fail: the cut cell dies at t=9.0 (polarity lost at once); the uncut labkit run passes B and M"},
+                {"seed": 7, "result": "partial: survives and re-polarises by t=11, not yet crawling at t=13.75"},
+                {"seed": 8, "result": "pass: keeps polarity, crawls on at 0.353"},
+                {"seed": 9, "result": "pass: re-polarises by t=11, crawls on at 0.353"},
+                {"seed": 6, "result": "pass at dt/2 (different noise realisation): survives, keeps its layer, moves"}],
+  "same_individuals": true,
+  "controls_run": {"R": "runs/cut_s6..s9: c31's exact branched twins on 4 fresh seeds; runs/cut_s6_dthalf: dt/2 variant", "W": "20261026T0346-c30-review-cargo-bd/runs/k0D4_s5: matched slow-diffusion twin"},
+  "by_construction": [],
+  "bd_supported": ["W"],
+  "class_confirmed": true,
+  "not_checked": ["1.5x resolution of the cut test", "rear cuts and other cut fractions", "the linear-kinetics M control (c22's, not re-run)"],
+  "limitation": "Survival after a 40% front cut is stochastic: 3/4 fresh seeds (6/7 with c31's), and the dying cell is the one whose polarity collapses before it re-nucleates, so the claim's 3/3 overstates it. No cut cell regains its size. The visible parts of repair, the cell's rounding and the layer's re-closure, follow automatically from curvature flow and adsorption onto any interface; what the cell does is re-nucleate its front. I leave R out of by_construction because re-nucleation is dynamic, but a reader should weigh R as polarity repair. The cargo wall leaks steadily (held 0.58 -> 0.39 in 12 t). No S: the cell is planted."
+ }],
+ "compute": {"cpu_minutes": 75}
+}

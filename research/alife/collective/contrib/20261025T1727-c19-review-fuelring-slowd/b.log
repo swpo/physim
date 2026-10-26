@@ -1,0 +1,36 @@
+[nematic-fuelcell] seed 13: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  51.6s
+  frame 40/200  105.3s
+  frame 60/200  159.8s
+  frame 80/200  215.8s
+  frame 100/200  269.9s
+  frame 120/200  326.0s
+  frame 140/200  379.7s
+  frame 160/200  434.5s
+  frame 180/200  485.8s
+  frame 200/200  538.5s
+  -> collective/contrib/20261025T1727-c19-review-fuelring-slowd/world/seed13/FACTS.md  (538s sim)
+[nematic-fuelcell] seed 1: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  54.5s
+  frame 40/200  108.8s
+  frame 60/200  166.2s
+  frame 80/200  219.5s
+  frame 100/200  268.9s
+  frame 120/200  319.5s
+  frame 140/200  368.5s
+  frame 160/200  417.5s
+  frame 180/200  467.7s
+  frame 200/200  517.7s
+  -> collective/contrib/20261025T1727-c19-review-fuelring-slowd/slowD03/seed1/FACTS.md  (518s sim)
+[nematic-fuelcell] seed 2: 200 frames x 100 steps, grid (128, 128)
+  frame 20/200  50.5s
+  frame 40/200  99.7s
+  frame 60/200  147.7s
+  frame 80/200  197.7s
+  frame 100/200  248.7s
+  frame 120/200  298.4s
+  frame 140/200  347.6s
+  frame 160/200  394.9s
+  frame 180/200  442.4s
+  frame 200/200  489.8s
+  -> collective/contrib/20261025T1727-c19-review-fuelring-slowd/slowD03/seed2/FACTS.md  (490s sim)

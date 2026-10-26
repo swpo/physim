@@ -1,0 +1,2 @@
+k10_s5 ratio_med 6.81 rear_med 3.81 rear_min 3.47 held_med 0.71
+k0D4_s5 ratio_med 2.03 rear_med 1.01 rear_min 0.94 held_med 0.44

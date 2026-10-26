@@ -1,0 +1,34 @@
+{
+ "id": "20261025T2042-c22-review-evoloop",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1256-c16-evoloop-claim#c1",
+ "title": "Review of evoloop (IBDH): replication and generations reproduce on fresh seed 4. On fresh seeds 4 and 5 the founders hold for the claim's whole 200k-step window, but small true-breeding kinds sweep later (seed 4 at ~225k, seed 5 at ~335k) through births and deaths. H is seen, not endorsed: there is still no neutral arm.",
+ "summary": "labkit re-run of world.py on seed 4 (300^2, 20k steps, K=3): a colony of sheathed loops, 247 persistent splits, max generation 28, merge/split 0.38 (rerun/seed4). Genealogy with the claim's evo_track.py on seeds 4 and 5 (400^2, two side-11 founders): through 200k steps the founders' side 11 holds both runs (66/78 and 54/63 loops at t=200k). Side-12 phases rise to about half the population (seed 5 at 30-70k, seed 4 at 140-185k) and are displaced again. Small kinds keep arising but breed true only 2-15% before t=200k (demography_s4s5.txt), so the claim's '3 of 3 seeds by 200k' does not carry over. Run on to 400k (kinds_s4s5_400k.png), both sweep. Seed 4: side 4, then side 3, from ~225k (side 3 = 292/308 at 400k; in 200-400k, side 3 breeds true 0.86 at 4.83 births per 1000 loop-steps, side 4 0.81 at 3.84, the founders' side 11 0.70 at 1.97). Seed 5: a side-12 phase (49/78 at 300k), then side 4 from ~335k (231/248 at 390k; breed-true 0.87, 3.63 vs side 12's 1.70). Deaths are intrinsic dissolutions (175k side-3 deaths on seed 4). Conversions of living loops are 0.10-0.13 per off-kind birth, mostly 3<->4, so the sweeps are carried by births, not contagion. This is the claim's pattern (side 4 then 3, and a side-12 phase before the small sweep), with seed-dependent timing.",
+ "review_of": "20261025T1256-c16-evoloop-claim",
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["I", "B", "D"],
+   "seen_not_endorsed": ["H"],
+   "observations": {
+     "I": "rerun/seed4/sheet.png: discrete square loops persisting hundreds of steps (mean age at death of side 11 about 660 steps, demography_s4s5.txt)",
+     "B": "rerun/seed4/sheet.png: each loop is a sheath ring around a signal-carrying core ring, the sheath channel separate from the genome-signal channel",
+     "D": "rerun/seed4/FACTS.md: 247 persistent splits, max generation 28; demography_s4s5.txt: 28.8k and 28.4k births with a parent in 200k steps",
+     "H": "kinds_s4s5_400k.png, demography_400k.txt, census_s4s5.txt: in-run small kinds that breed true (0.81-0.87) and reproduce about twice as fast per loop-time replace the founders through births and deaths on 2/2 fresh seeds, but only after 200k steps"
+   },
+   "replicated": true,
+   "seed": 4,
+   "seeds_run": [{"seed": 4, "result": "pass for I, B, D (labkit); no sweep by 200k; small-kind sweep at ~225k"}, {"seed": 5, "result": "no sweep by 200k; side-12 phase then small-kind sweep at ~335k"}],
+   "same_individuals": true,
+   "controls_run": {},
+   "bd_supported": false,
+   "class_confirmed": true,
+   "not_checked": ["the sheath and core ablations", "the SDSR variation control"],
+   "limitation": "H is not endorsed because its gate is unmet. There is no neutral arm with the ancestor's baseline fitness: SDSR switches variation off, it is not a neutral twin. The sweeps also raise the population 4-5x (small loops pack more densely), so drift strength changes during the sweep. The timing is strongly seed-dependent: 0/2 fresh seeds swept within the claim's 200k window, 2/2 by 400k. Founders are planted (no S)."
+ }],
+ "parents": ["20261025T1256-c16-evoloop-claim", "20261025T2012-c22-intent-review-evoloop"],
+ "class": "cellular-automaton",
+ "evidence": ["rerun/seed4/sheet.png", "rerun/seed4/lineage.png", "kinds_s4s5_400k.png", "kinds_s4s5_200k.png", "demography_400k.txt", "census_s4s5.txt"],
+ "compute": {"cpu_minutes": 45}
+}

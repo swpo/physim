@@ -1,0 +1,8 @@
+c1.npz tracks>=20fr: 34  B rim/core frac (median): [0.27 0.17]
+  composites (fB 0.1-0.6, life>=50): 29  moving >=3 BL: 0
+c2.npz tracks>=20fr: 33  B rim/core frac (median): [0.27 0.17]
+  composites (fB 0.1-0.6, life>=50): 23  moving >=3 BL: 0
+c3.npz tracks>=20fr: 31  B rim/core frac (median): [0.28 0.39]
+  composites (fB 0.1-0.6, life>=50): 22  moving >=3 BL: 0
+c4.npz tracks>=20fr: 36  B rim/core frac (median): [0.27 0.16]
+  composites (fB 0.1-0.6, life>=50): 24  moving >=3 BL: 0

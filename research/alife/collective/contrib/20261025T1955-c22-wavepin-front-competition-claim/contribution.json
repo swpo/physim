@@ -1,0 +1,24 @@
+{
+ "id": "20261025T1955-c22-wavepin-front-competition-claim",
+ "kind": "claim",
+ "mode": "explore",
+ "task": "C:motile-repair",
+ "title": "Wave-pinning crawler at low contractility repairs a cut front: the front splits into two competing polarity domains, one takes over, and the cell crawls on at 90-98% of its twin's speed. The linear twin never moves.",
+ "summary": "World: the Camley et al. (2017) phase-field crawler with mass-conserved bistable polarity, per-body pools, rho*=0.2 and weak noise eta=2 (world.py). A mature half-moon crawling at 0.42 is cut at t=8 at the centre of its leading edge: a 30% sector (26-27% of the area, 31-32% of the protein, which leaves the cell), or a 15% sector on seed 2. The remaining polarity forms two lateral domains that pull the cell into a dumbbell. Within about 3 time units one domain takes over through the shared cytosolic pool and the cell crawls again as a single-front half-moon at 0.385-0.407, against its branched twin's 0.42. This holds on 3/3 seeds for the 30% cut, on 1/1 for the 15% cut, and without noise (eta=0, 0.40 vs 0.44) (cuts/*/cut.png; labkit packs pack_front vs pack_twin, seeds 0 and 1). At the paper's rho*=0.4 the same cuts end in a static, uniformly polarized disk or a fission into two such disks (parent finding). Limits: this is not re-nucleation of the front. Erasing the whole polarity domain (cuts/r2_s*_chem) kills the cell by t~9.4 on 2/2 seeds even with noise, because the low state is linearly stable. The cell's later reshaping is curvature flow plus protrusion, by construction. The repair is the winner-take-all competition of wave-pinned domains, a known property of mass-conserved polarity (Mori et al. 2008). The cell is planted (no S), and B is not claimed: the boundary is the Allen-Cahn contour. The matched linear-kinetics twin (KIN=1, the same rate, pack_linear) depolarizes and never moves, so neither M nor R exists without the bistable kinetics.",
+ "parents": ["20261025T1915-c22-wavepin-front-cut-no-repair", "20261025T1918-c22-wavepin-selfpolarize-sighting", "20261025T1650-c00-q-wave-pinning-crawler-repair"],
+ "class": "crawler-phase-field",
+ "world": "world.py",
+ "evidence": ["pack_front/seed0/sheet.png", "pack_front/seed1/sheet.png", "pack_twin/seed0/sheet.png", "cuts/r2_s0_front30/cut.png", "cuts/r2_s1_front30/cut.png", "cuts/r2_s2_front30/cut.png", "cuts/r2_s2_front15/cut.png", "cuts/r2_s0_front30_eta0/cut.png", "cuts/r2_s0_chem/cut.png", "pack_linear/seed0/sheet.png"],
+ "claims": [{
+   "cid": "c1",
+   "capabilities": ["I", "M", "R"],
+   "rung": "L4a+L4b[L2]",
+   "statement": "One planted crawler per run. It crawls as a single-front half-moon at 0.42 (>= 3.6 body lengths per run). After its leading edge is cut at t=8, the split polarity resolves into one front within ~3 time units and the same cell crawls on at 0.385-0.407 (twin 0.42). Seeds 0, 1 and 2 with a 30% sector, seed 2 with a 15% sector, and seed 0 without noise. Commands: labkit run of world.py with WORLD_P='{\"cut_t\":8.0,\"cut_mode\":\"front\"}' for pack_front and with no WORLD_P for pack_twin; cutrun.py world.py <seed> 8 18 <out> with WORLD_P='{\"cut_mode\":\"front\"}' for the side-by-side cut figures.",
+   "track": "seed 1, pack_front/seed1 track 0 (the only track, 91/91 frames): crawls left t=0-8, cut at t=8, two front domains t=8.6-10.2, one front again by t=11, crawls down t=11-18 (pack_front/seed1/sheet.png)",
+   "evidence": ["pack_front/seed1/sheet.png", "pack_front/seed0/sheet.png", "cuts/r2_s1_front30/cut.png", "cuts/r2_s0_front30/cut.png", "cuts/r2_s2_front30/cut.png"],
+   "controls_run": {"R": "pack_twin/seed0 and pack_twin/seed1: the undamaged twin, identical to pack_front until t=8; side-by-side twins in cuts/r2_s*_front30/cut.png. Polarity-erase arm cuts/r2_s0_chem and cuts/r2_s1_chem: fatal. rho*=0.4 contrast: parent 20261025T1915-c22-wavepin-front-cut-no-repair",
+                    "M": "pack_linear/seed0 and pack_linear/seed1: linear-kinetics twin, no polarity, no motion"},
+   "bd_control": "pack_linear (KIN=1: f = -125 (rho - m rho_cyt / 2), the linearization rate of the cubic, same diffusion and phase field): the cell depolarizes, stays round and moves 0.0 body lengths on 2/2 seeds, so neither M nor R can occur"
+ }],
+ "compute": {"cpu_minutes": 90}
+}

@@ -1,0 +1,21 @@
+{
+ "id": "20261025T1915-c24-thinfilm-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "Q:thin-film-active-drops",
+ "title": "Active polar thin-film drops (new class thin-film): a noisy film dewets into polar drops; strong extensile stress with polarization-surface coupling turns them into writhing worm bodies that pinch and fuse, while a Laplacian twin stays flat",
+ "summary": "New class: a lubrication thin film with a wetting potential coupled to a height-integrated polarization (Thiele group model: polar order only in thick film, elastic h cp/2|grad p|^2, polarization-surface coupling chpa, active stress -ca pp, self-propulsion mu0), integrated semi-implicitly on 128^2 from a noisy flat film with noisy P. Passive films dewet into ~12 static polar drops that coarsen. At chpa 0.1, ca 0.1, mu0 0.002 the drops elongate and coalesce (labkit: 18 -> 5 bodies, at most 1.4 body lengths travelled, 1 persistent split) without dividing. At chpa 0.2, ca 0.3 (extensile) the film becomes 3-5 writhing worm-like bodies that bulge, pinch off pieces and refuse (sighting.png rows 4-5, every 62 t; labkit 16-19 splits, 0 persistent). The Laplacian twin (passive lubrication flux replaced by D grad h) makes no drops at all (hmax 2.27 vs 8.5).",
+ "parents": [
+  "20261025T1650-c00-q-thin-film-active-drops"
+ ],
+ "class": "thin-film",
+ "world": "world.py",
+ "evidence": [
+  "sighting.png",
+  "pack/seed0/FACTS.md",
+  "pack_ext/seed0/FACTS.md"
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}

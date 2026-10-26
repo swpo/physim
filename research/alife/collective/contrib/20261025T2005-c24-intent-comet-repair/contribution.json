@@ -1,0 +1,1 @@
+{"id": "20261025T2005-c24-intent-comet-repair", "kind": "intent", "mode": "extend", "task": "Q:comet-cut-repair", "title": "c24 tests whether neural-field depression comets regrow after a cut (labkit --damage, half and core cuts, 2 seeds)"}

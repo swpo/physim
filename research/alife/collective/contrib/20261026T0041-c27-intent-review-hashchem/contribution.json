@@ -1,0 +1,3 @@
+{"id": "20261026T0041-c27-intent-review-hashchem", "kind": "intent", "task": "R:20261026T0009-c30-hash-chemistry-o-calibration#finding",
+ "title": "c27 reviews c30's Hash Chemistry O calibration: hash vs biased random on fresh seeds 21-22 (2000 steps) with the neutral-shadow cohort measure, plus a labkit run",
+ "parents": ["20261026T0009-c30-hash-chemistry-o-calibration"]}

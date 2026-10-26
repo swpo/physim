@@ -1,0 +1,86 @@
+{
+ "id": "20261025T1810-c24-review-evoloop",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T1256-c16-evoloop-claim#c1",
+ "title": "Review of c16's evoloop: the small-kind sweep replicates on fresh seed 24 (400^2, side 4 at ~130k), and a single planted side-4 loop sweeps a side-11 population in 7/8 runs against 2/8 for a planted side-12 loop and 0/2 for unplanted twins",
+ "summary": "I re-ran world.py on fresh seeds. labkit seed 25 (300^2, 20k steps) gives 230 persistent splits, generation 29 and merge/split 0.35. On seed 24 at 300^2 both founders collide and die before t~1000, so founding can fail. The claim's tracker on fresh seed 24 (400^2, 200k steps) replicates the sweep: side 4 (breed-true 0.81, 4.25 births per 1000 loop-steps) replaces the founders' side 11 (0.70, 1.98) at t~130k, with 0.06 conversions of living loops per off-kind birth. As the H gate control I ran a matched invasion assay (invade.py). From side-11 populations at t=30k on bases whose unplanted twin stays side 11 (bases 25 and 28), one planted side-4 loop leads to a side<=4 sweep (>90% of loops by t=90k) in 7/8 runs, one planted side-12 loop (the same planting perturbation, a large kind) in 2/8, and the unplanted twins in 0/2.",
+ "parents": [
+  "20261025T1256-c16-evoloop-claim"
+ ],
+ "review_of": "20261025T1256-c16-evoloop-claim",
+ "class": "cellular-automaton",
+ "evidence": [
+  "kinds_s24.png",
+  "demography_s24.json",
+  "invasion.png",
+  "invasion_summary.txt",
+  "rerun/seed25/sheet.png",
+  "rerun/seed25/lineage.png",
+  "rerun/seed25/FACTS.md",
+  "invade.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "I",
+    "D",
+    "H"
+   ],
+   "observations": {
+    "I": "rerun/seed25/sheet.png: discrete square sheathed loops through t=20000",
+    "D": "rerun/seed25/FACTS.md: 230 persistent splits, max generation 29, merge/split 0.353 (K=3 frames, as in the claim)",
+    "H": "kinds_s24.png and demography_s24.json (fresh seed 24, 400^2): side 4 arises during the run and sweeps from t~130k to 229/241 loops at t=200k. Breed-true side 4 0.81 vs side 11 0.70; births per 1000 loop-steps 4.25 vs 1.98; 49k side-4 deaths, so the sweep runs through births and deaths, not colonization only. invasion.png: planted side-4 7/8, planted side-12 2/8, unplanted 0/2 on bases 25 and 28"
+   },
+   "replicated": true,
+   "seed": 24,
+   "seeds_run": [
+    {
+     "seed": 24,
+     "result": "labkit 300^2: fail, both founders collide and dissolve before t~1000 (0 components)"
+    },
+    {
+     "seed": 25,
+     "result": "pass for I and D (labkit 300^2, 20k steps)"
+    },
+    {
+     "seed": 24,
+     "result": "pass for H: evo_track.py 400^2, 200k steps, side-4 sweep at t~130k"
+    },
+    {
+     "seed": 25,
+     "result": "invasion base: side-4 planted 4/4 sweep, side-12 planted 2/4, twin no sweep"
+    },
+    {
+     "seed": 28,
+     "result": "invasion base: side-4 planted 3/4 sweep, side-12 planted 0/4, twin no sweep"
+    },
+    {
+     "seed": 26,
+     "result": "invasion base uninformative: already side-4 dominated at t0=30k"
+    },
+    {
+     "seed": 27,
+     "result": "invasion base uninformative: the unplanted twin itself swept to side 4 by t~36k (a de novo sweep on a fresh seed)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "H": "invade.py, invasion_summary.txt: matched planting arms from the same t=30k state, with side-4 invader, side-12 invader and unplanted twin; 4 planting positions per base"
+   },
+   "by_construction": [
+    "B"
+   ],
+   "not_checked": [
+    "S"
+   ],
+   "class_confirmed": true,
+   "limitation": "Planted founders, so no S. The sheath is written into the rule table, so B holds by construction. The invasion assay is not an identical-event neutral twin: the side-12 arm controls for the planting perturbation, not for a neutral kind with the ancestor's fitness, and with ~40 loops the 2/8 sweeps in that arm show that perturbation alone sometimes triggers a de novo small-kind sweep. Small loops also pack more densely (loops rise from ~40 to ~100-240 after a sweep), so part of the advantage may be space use rather than per-loop fecundity. Only 2 informative bases at 300^2; the sweep timing is highly variable (30k-200k+)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 45
+ }
+}

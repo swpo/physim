@@ -1,0 +1,3 @@
+fork t 190.0 bodies 4 pair dist 18.0 masses 43.7 87.9
+fed starved-daughter mass t0 43.8 end 91.2; sister t0 88.0 end 118.6; ledger drift 7.07e-12
+cut starved-daughter mass t0 43.6 end 101.3; sister t0 88.0 end 173.7; ledger drift 9.70e-12

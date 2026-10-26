@@ -1,0 +1,12 @@
+{"id": "20261026T0130-c26-rps-lenia-small-domains", "kind": "finding", "mode": "extend", "task": "F:ecology",
+ "title": "Cyclic coexistence of three Lenia replicator kinds holds down to 96^2 and 128^2 (3 of 4 runs keep all kinds to t=800); the one loss is a kind dying at founding (t<50), so no domain-size threshold for coexistence appears in 96-160^2",
+ "summary": "world.py and runr.py of 20261025T2349-c26-rps-lenia (cyclic mode, PRATE 1, same parameters) at DOMAIN 96 and 128, seeds 1 and 2, t=0-800 (data/). 128^2: all three kinds persist on both seeds at 9-18 cells each with fluctuating counts (seed 1 final 11/14/14, seed 2 17/12/9). 96^2: seed 2 keeps all three at 5-12 cells each to t=800; seed 1 loses kind 0 before t=50, while the three planted founders still overlap (the placement rule cannot separate three founders in a 96 px domain), and the other two kinds then persist (16 and 10 cells). So the queue's prediction (cyclic coexistence only above a critical domain size) is not seen between 96^2 and 160^2 in this world; with 6-12 cells per kind at 96^2 the domain is already close to the minimum that holds three kinds at all.",
+ "parents": ["20261025T2349-c26-rps-lenia", "20261025T1650-c00-q-rps-replicator-ecology"],
+ "class": "lenia", "world": "research/alife/collective/contrib/20261025T2349-c26-rps-lenia/world.py",
+ "evidence": ["small_domains.png", "L96_s1.png", "L96_s2.png", "L128_s1.png"],
+ "outcome": "negative",
+ "finding": {"operator": "cyclic predation between three Lenia replicator kinds", "capability": "X", "world": "research/alife/collective/contrib/20261025T2349-c26-rps-lenia/world.py", "necessary": false, "law": false,
+   "control": "domain size 96 and 128 vs the parent's 160, same parameters, seeds 1 and 2",
+   "result": "128^2: 3/3 kinds to t=800 on 2/2 seeds; 96^2: 3/3 kinds on seed 2, kind 0 lost at founding (t<50) on seed 1"},
+ "limits": "Two seeds per size, 800 t, one predation rate; founders overlap at small sizes, so early losses reflect planting; no larger domains here (the parent ran 160^2).",
+ "compute": {"cpu_minutes": 12}}

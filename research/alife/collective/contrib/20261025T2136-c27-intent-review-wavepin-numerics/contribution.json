@@ -1,0 +1,3 @@
+{"id": "20261025T2136-c27-intent-review-wavepin-numerics", "kind": "intent", "task": "R:20261025T2104-c22-wavepin-repair-numerics#finding",
+ "title": "c27 reviews c22's wave-pinning repair numerics: 384^2 front cut with a branched twin and a labkit pack on fresh seed 7, plus the 45% cut at 384^2",
+ "parents": ["20261025T2104-c22-wavepin-repair-numerics"]}

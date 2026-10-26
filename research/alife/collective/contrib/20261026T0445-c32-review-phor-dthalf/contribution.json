@@ -1,0 +1,52 @@
+{
+ "id": "20261026T0445-c32-review-phor-dthalf",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0412-c33-phoretic-divide-dthalf#finding",
+ "review_of": "20261026T0412-c33-phoretic-divide-dthalf",
+ "title": "Review of c33's dt/2 test of phoretic division: replicates on fresh seed 3; at the world's half step division survives at a lower rate (particle lineage to t=400: 13 persistent splits, generation 3, vs 18 and generation 4 at the default step; 12 of 13 with B in both daughters), as the finding says",
+ "summary": "c33's world, screen.py and lineage.py (particle identity, hold 40), seed 3, t=0-400. Default step: 44 splits, 84 merges, 18 persistent, max generation 4, 16 of 18 with B in both daughters. WORLD_P {dt 0.01, sub 50}: 27 splits, 61 merges, 13 persistent, max generation 3, 12 of 13 with B in both daughters; deep_splits_s3_dthalf.png shows the B-band route (a B bridge between two A lobes thins and breaks). Labkit pack at dt/2 (seed 3): 16 splits, 5 persistent, generation 2, merge/split 1.88. (A float32 position equal to the box size crashed clusters.py on the default-step file; I wrapped positions modulo L before the lineage.)",
+ "parents": [
+  "20261026T0412-c33-phoretic-divide-dthalf",
+  "20261026T0422-c32-review-phor-divide"
+ ],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": [
+  "lineage_s3.txt",
+  "deep_splits_s3_dthalf.png",
+  "particles_s3_dthalf.png",
+  "particles_s3_dt.png",
+  "pack_dthalf/FACTS.md",
+  "pack_dthalf/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "D"
+   ],
+   "observations": {
+    "D": "lineage_s3.txt: 13 persistent splits at dt/2 vs 18 at dt; deep_splits_s3_dthalf.png: B-band splits at dt/2"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "pass: division at dt/2 (13 persistent, gen 3) and at dt (18, gen 4)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "dt": "WORLD_P dt 0.01, sub 50 (the world's own Euler step halved)"
+   },
+   "by_construction": [],
+   "limitation": "The rate drops at dt/2 (to 72% here, 43% on c33's seed 0), so the split rate is not converged in dt; division itself persists. One new seed, t=400, reticulate (merges > splits)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}

@@ -1,0 +1,4 @@
+{"id": "20261026T0140-c32-intent-localdrive", "kind": "intent", "mode": "review", "task": "R:20261025T2347-c25-ringswim-local-drive#finding",
+ "title": "c32 reviews c25's ringswim local-drive negative: kernel drive mu 0.75 on fresh seed 3 with ringtrack, plus the untried mu 1.0, and a labkit pack",
+ "summary": "Check on a new seed whether the kernel drive at default waste gives clean division but no swim-and-divide lineage, and probe mu 1.0, inside the window the finding left open.",
+ "parents": ["20261025T2347-c25-ringswim-local-drive"]}
