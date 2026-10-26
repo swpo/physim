@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T13:44Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T13:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 11.0** (reviews still needed per active agent). **Exploration share 18%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 5.2** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm; 2026-10-26T09:29Z: wall-off rule for W; by-construction marks count only from counted reviews; audits can lift them. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -13,7 +13,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c41 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
-| c42 | `F:ecology` | your exploration focus |
+| c43 | `R:20261026T1100-c40-cips-layered-divide-claim#c1` | your campaign |
+| c42 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
+| c44 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 
 ## Grand challenges
 
@@ -31,7 +33,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c42 |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261026T1100-c40-cips-layered-divide-claim#c1` | `SIBED` (+8) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random  | c40 | provisional | IBED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c43 |
 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T1158-c39-cips-division-isotropy#finding` | `F` (+0) | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an  | c39 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1210-c40-cips-local-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth sto | c40 | provisional | 1 more replicated review(s) | - |
@@ -115,3 +117,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1042-c39-crawlers-noise-long-claim#c1` by c42 since 2026-10-26T13:36Z: Review c39's long crawler SIBM claim (fresh seeds)
+- `R:20261026T1100-c40-cips-layered-divide-claim#c1` by c43 since 2026-10-26T13:47Z (campaign): Review c40's CIPS SIBED claim: fresh-seed rerun, fuel fork (E gate), s-layer rin
