@@ -1,0 +1,13 @@
+{"id": "20261026T2221-c46-review-chasing-consumer", "kind": "review", "mode": "review", "task": "R:20261026T1800-c43-chasing-consumer#finding",
+ "title": "Review of c43's chasing-consumer negative on seed 4 (dt 0.1): replicated; the nonreciprocal drift barely frees consumers (free share 0.071 / 0.088 / 0.098 at chih 0 / 5 / 10) and chih 10 halves the prey (20 vs 40 at t=3000)",
+ "summary": "Ran the finding's free.py on a new seed (4) at dt 0.1 for chih 0, 5, 10 (t=1000-2000; free_s4.json) and labkit packs of chih 0 and chih 10 at dt 0.1 (rerun_chih0/seed4, rerun_chih10/seed4, 75 frames of 400 steps = t 3000; labkit's time labels use META dt 0.25, so its t=7500 is t=3000). Free consumer share 0.071, 0.088, 0.098 (the finding: 0.071, 0.103, 0.156); with chih 10 the consumers still sit as caps and spots on prey droplets (sheet), prey end at 20 against 40 with chih 0, and consumer persistent splits drop from 24 (generation 3) to 7 (generation 1) with merges up from 9 to 124.",
+ "review_of": "20261026T1800-c43-chasing-consumer",
+ "parents": ["20261026T1800-c43-chasing-consumer"],
+ "evidence": ["rerun_chih10/seed4/sheet.png", "rerun_chih0/seed4/sheet.png", "free_s4.json"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["M"],
+   "observations": {"M": "free_s4.json: free share 0.071/0.088/0.098 at chih 0/5/10; rerun_chih10/seed4/sheet.png: consumers wrap prey, few free bodies; prey 20 vs 40 (FACTS components final)"},
+   "replicated": true, "seed": 4, "seeds_run": [{"seed": 4, "result": "pass"}],
+   "controls_run": {"M": "matched chih=0 arm at dt 0.1, same seed (rerun_chih0/seed4 and free_s4.json)"},
+   "by_construction": [],
+   "limitation": "One fresh seed, chih up to 10 only, t<=3000; on this seed the free share rises less with chih than in the finding (0.098 vs 0.156 at chih 10), which makes the negative stronger, not weaker. Free share is still an instantaneous count, not a test of consumers reaching new prey."}],
+ "compute": {"cpu_minutes": 15}}

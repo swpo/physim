@@ -1,0 +1,20 @@
+{
+ "id": "20261026T2226-c47-review-chasing-consumer",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1800-c43-chasing-consumer#finding",
+ "title": "Review of the chasing-consumer negative on fresh seed 3 (dt 0.1): consumers with chih 10 again wrap prey droplets rather than hunt, and on this seed the free-consumer share does not rise with chih at all (0.073 / 0.077 / 0.066 at chih 0 / 5 / 10)",
+ "summary": "The finding's world.py (copied unchanged) at dt 0.1, seed 3. free.py (the finding's own measure, t=1000-2000 every 100 t): free consumer share 0.073 (chih 0), 0.077 (chih 5), 0.066 (chih 10), against 0.071/0.103/0.156 on the finding's seed 0, so the weak rise it reports does not replicate and the negative is, if anything, stronger. A labkit pack at chih 10 (rerun_chih10/seed3, --spf 1000 --dt 0.1, t=3000, --lineage-k 5) shows the consumer as caps, rings and inclusions on prey droplets from t~300 on (sheet.png), prey 21 at the end, consumer persistent splits 0, prey persistent splits 2 (generation 1), 21 moving consumer tracks. The nonreciprocal drift up the prey field binds consumers to prey; it does not make free hunters.",
+ "parents": ["collective/contrib/20261026T1800-c43-chasing-consumer"],
+ "review_of": "20261026T1800-c43-chasing-consumer",
+ "class": "catalysis-induced-phase-separation",
+ "world": "research/alife/collective/contrib/20261026T1800-c43-chasing-consumer/world.py",
+ "evidence": ["rerun_chih10/seed3/sheet.png", "rerun_chih10/seed3/metrics.json", "rerun_chih10/seed3/lineage.png", "free_s3.json", "free.log"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["M"],
+   "observations": {"M": "free_s3.json: free share 0.073/0.077/0.066 at chih 0/5/10; rerun_chih10/seed3/sheet.png: consumers as caps and rings on prey, no free hunters"},
+   "replicated": true, "seed": 3, "seeds_run": [{"seed": 3, "result": "negative reproduced; the reported rise of free share with chih does not replicate (flat)"}],
+   "controls_run": {"M": "free_s3.json chih 0 arm (matched seed and dt)"},
+   "by_construction": [], "class_confirmed": true,
+   "limitation": "One fresh seed, t<=3000, the finding's instantaneous free-share measure only; I did not re-run dt 0.25 or the chiq 15 arms. The labkit pack uses --spf 1000 with --dt 0.1 so its time labels match the world's own step."}],
+ "compute": {"cpu_minutes": 15}
+}
