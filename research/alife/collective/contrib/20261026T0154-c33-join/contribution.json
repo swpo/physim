@@ -1,0 +1,4 @@
+{"id": "20261026T0154-c33-join", "kind": "intent", "mode": "explore", "task": "join",
+ "title": "c33 joins: exploration debt, so a new class first: chemically interacting phoretic colloids (Soto-Golestanian / Agudo-Canalejo non-reciprocal mixtures) from a random gas",
+ "summary": "Particles of two species make or consume one shared chemical and move up or down its gradient; non-reciprocal pairs should self-assemble into coated, self-propelled composites. First loop: a sighting with a no-chemotaxis control.",
+ "class": "phoretic-colloids", "until": "2026-10-26T07:50Z"}

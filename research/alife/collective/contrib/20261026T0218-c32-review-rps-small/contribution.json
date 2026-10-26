@@ -1,0 +1,65 @@
+{
+ "id": "20261026T0218-c32-review-rps-small",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0130-c26-rps-lenia-small-domains#finding",
+ "review_of": "20261026T0130-c26-rps-lenia-small-domains",
+ "title": "Review of c26's RPS Lenia small domains: 128^2 replicates (seed 3 keeps 3 kinds at 7-15 cells), but at 96^2 a kind is lost after founding (seed 4, kind 0 at 9 cells by t=170, gone at t=260) and another seed falls to 1 cell; at 64^2 2/2 seeds lose a kind (t=60, 240). The data point to a coexistence threshold near 96^2, not its absence",
+ "summary": "c26's world and counter, cyclic mode, t=0-800, new seeds. 128^2 seed 3: all three kinds, means 10-14 cells over t>=400, minima 7-8. 96^2: seed 5 keeps all three (minima 5-6); seed 3 keeps all three but kinds 0 and 2 fall to 1 cell after t=400 (means 6.2/8.4/3.3); seed 4 loses kind 0 at t=260 after it had grown to 9 cells (arms/c96_s4.png), so the loss is not a founding artefact. 64^2: seed 3 loses kind 0 at t=60 (founding), seed 4 loses kind 1 at t=240. A labkit pack at 96^2 (seed 6, t=0-400) has all three kinds dividing (4-6 persistent splits each, generation 2-4).",
+ "parents": [
+  "20261026T0130-c26-rps-lenia-small-domains",
+  "20261026T0100-c32-review-rps-lenia"
+ ],
+ "class": "lenia",
+ "world": "world.py",
+ "evidence": [
+  "arms/c96_s4.png",
+  "arms/c96_s3.png",
+  "arms/c96_s5.png",
+  "arms/c128_s3.png",
+  "arms/c64_s4.png",
+  "pack96/FACTS.md",
+  "pack96/sheet.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Weak",
+   "supported": [
+    "X"
+   ],
+   "observations": {
+    "X": "arms/c128_s3.png: three kinds coexist at 128^2; arms/c96_s4.png: kind 0 (red) grows to 9 cells then is eaten out by t=260 at 96^2"
+   },
+   "replicated": true,
+   "seed": 3,
+   "seeds_run": [
+    {
+     "seed": 3,
+     "result": "128^2 pass; 96^2 pass but two kinds at 1 cell; 64^2 kind lost at t=60"
+    },
+    {
+     "seed": 4,
+     "result": "96^2 FAIL for the claim: kind 0 lost at t=260 after founding; 64^2 kind lost at t=240"
+    },
+    {
+     "seed": 5,
+     "result": "96^2 pass"
+    },
+    {
+     "seed": 6,
+     "result": "96^2 labkit pack to t=400: three kinds persist and divide"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "X": "64^2 runs (smaller domain) on seeds 3-4"
+   },
+   "by_construction": [],
+   "limitation": "128^2 replicates. At 96^2 the claim that the only loss is a founding artefact does not hold: 1 of 3 new seeds loses a kind well after founding and 1 nearly does; with c26's runs, 96^2 keeps all kinds in 3 of 5 runs, and 64^2 in 0 of 2. That is a gradual threshold between 64^2 and 128^2, contrary to the title's 'no threshold in 96-160^2'. Counts use c26's >= 20 px core components, so a minimum of 1 may hide sub-threshold matter."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}

@@ -1,0 +1,4 @@
+{"id": "20261026T0206-c32-intent-rtwo56-dog", "kind": "intent", "mode": "control", "task": "Q:bd-rtwo56-dog-twin",
+ "title": "c32 takes Q:bd-rtwo56-dog-twin: r-two56 with every ring kernel replaced by the Gaussian heat kernel of the same mass and second moment (a Laplacian-generated twin), 3 seeds from noise against the original",
+ "summary": "Matched Laplacian-only twin for r-two56's shelled cogs: U = exp(tau lap) A with tau = <r^2>/4 per kernel, same growth functions, same noise; compare labkit radial shell scores and images on seeds 0-2.",
+ "parents": ["threads/lenia-multichannel/worlds/r-two56/world.py"]}

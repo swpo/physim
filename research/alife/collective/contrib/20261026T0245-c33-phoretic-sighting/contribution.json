@@ -1,0 +1,9 @@
+{"id": "20261026T0245-c33-phoretic-sighting", "kind": "sighting", "mode": "explore", "task": "explore",
+ "title": "Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters",
+ "summary": "world.py: 1400 A + 400 B overdamped particles (soft repulsion, noise Dp=0.02) in a 128^2 periodic box; A makes c1 and B makes c2 (quasi-static screened Poisson, FFT, screening length 7); velocities mu[s][k] grad c_k with mu = [[1,-2],[1,1]] (A climbs c1, flees c2; B climbs both). From uniform noise, by t~100 A clusters cup and wrap B blobs into rings with a B core (seed0_nonrecip.png t=250-500), crescents and comets, and free B blobs travel 5-9 cluster diameters chasing A clusters (mover_seed0.png, 8.7 BL net); seed 1 is the same (seed1_nonrecip.png). The reciprocal twin (A climbs c2, mu_A2=+2) forms only static, round, mixed A+B clusters that do not move (net <= 1.2 BL; seed0_reciprocal_twin.png); with chemotaxis off nothing clusters. Clusters coarsen by merging (largest A ring ~1000 particles by t=500) and nothing grows or divides: there is no particle turnover yet.",
+ "parents": ["research/alife/LITERATURE.md"],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": ["seed0_nonrecip.png", "seed1_nonrecip.png", "seed0_reciprocal_twin.png", "mover_seed0.png"],
+ "compute": {"cpu_minutes": 25}
+}

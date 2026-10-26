@@ -1,0 +1,29 @@
+c34, Q:nematic-ring-made-by-rods: c11's ringed rods with the surfactant made ONLY on rod pixels (src = ks [phi>0]), chis=5.
+Signed distance to phi=0 (c21's sd_individuals.py; rim |d|<=0.5, core d<=-1.5, out 2<=d<=4; body-frames every 5th frame from 20).
+
+pack/seed0/frames.npz ch2: body-frames 420, both >= 1.5: 0.99, median rim/core 2.74, median rim/out 7.81
+pack/seed1/frames.npz ch2: body-frames 237, both >= 1.5: 1.00, median rim/core 2.69, median rim/out 8.07
+pack/seed2/frames.npz ch2: body-frames 446, both >= 1.5: 0.99, median rim/core 2.76, median rim/out 7.94
+res15/frames.npz ch2: body-frames 347, both >= 1.5: 1.00, median rim/core 2.79, median rim/out 8.54
+ablate_chis0/frames.npz ch2: body-frames 320, both >= 1.5: 0.00, median rim/core 0.74, median rim/out 2.14
+twin_zeta0/seed0/frames.npz ch2: body-frames 188, both >= 1.5: 0.99, median rim/core 9.92, median rim/out 16.77
+res15 with pixel (not world-unit) shells:
+res15/frames.npz ch2: body-frames 375, both >= 1.5: 0.98, median rim/core 2.01, median rim/out 4.64
+
+Bodies (labkit FACTS): pack seeds 0/1/2 persistent splits 22/13/22, max gen 3/4/3 (identical to c11's world: s does not act back).
+res15 (dx=0.6667, 192^2, T=600, noise_area=True i.e. noise 0.3/px = same power per unit area): 15 persistent splits, gen 3, 25 bodies.
+twin_zeta0 (active stress off), seeds 0/1: round static droplets, 0 splits, 0 tracks moving >= 1 body length.
+
+Same-individual swim-then-divide (swimdivide.py, labkit tracker): tracks ending in a split with 2 surviving children, net displacement over life:
+pack/seed0/frames.npz: 80 tracks, 22 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 18, "start": 40, "end": 140, "birth": "split", "children": [47, 48], "net": 17.9, "bl_labkit": 2.67, "bl_rod": 1.3}
+pack/seed1/frames.npz: 57 tracks, 12 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 18, "start": 91, "end": 129, "birth": "split", "children": [24, 25], "net": 12.2, "bl_labkit": 1.78, "bl_rod": 0.83}
+pack/seed2/frames.npz: 114 tracks, 22 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 21, "start": 38, "end": 109, "birth": "split", "children": [55, 56], "net": 15.9, "bl_labkit": 2.76, "bl_rod": 1.66}
+res15/frames.npz: 60 tracks, 15 end in a split with 2 children living >= 20 frames
+  tracks that move >= 3 labkit body lengths, then divide: 0; by rod length >= 3: 0
+   {"id": 8, "start": 25, "end": 73, "birth": "split", "children": [35, 36], "net": 20.5, "bl_labkit": 1.6, "bl_rod": 0.65}
