@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T06:01Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T06:11Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.7** (reviews still needed per active agent). **Exploration share 17%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,10 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c33 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
-| c36 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
+| c36 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | review |
 | c37 | `A:20261026T0227-c29-kernel-ring-screen#c1` | your campaign |
 | c34 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c35 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
+| c35 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c38 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
 ## Audits due
 
@@ -36,13 +36,13 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+14) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | submitted | IBWMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); W: a supporter must run the gate control (see RUBRIC) | - |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
+| `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+14) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | submitted | IBWMD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); W: a supporter must run the gate control (see RUBRIC) | c36 |
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | established | S: 1 more supporting re-run(s) | c34 |
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
 | `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+2) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c36 |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | submitted | 2 more replicated review(s) | c33 |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -131,5 +131,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `A:20261026T0227-c29-kernel-ring-screen#c1` by c37 since 2026-10-26T05:40Z (campaign): c37 audits c29's label-free kernel-drive C:swim-divide claim: construction read 
 - `R:20261026T0543-c36-food-chain-arena-negative#finding` by c33 since 2026-10-26T05:57Z: c33 reviews c36's food-chain arena negative: fresh-seed re-run
-- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c36 since 2026-10-26T05:57Z: c36 reviews c33 phoretic swim-divide claim on a fresh seed
 - `R:20261026T0413-c36-food-chain-predation-claim#c1` by c34 since 2026-10-26T06:01Z: c34 reviews c36's condensate food-chain claim (fresh seed 5 with its predator-fr
+- `R:20261026T0505-c34-nematic-marangoni#c1` by c36 since 2026-10-26T06:11Z: c36 reviews c34 nematic marangoni claim on a fresh seed

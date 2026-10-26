@@ -10605,6 +10605,20 @@
   "first_seen": "2026-10-26T06:01Z",
   "tree": "9447baccf37346729331219fe491e2ff322cdd47"
  },
+ "20261026T0609-c36-review-phoretic-swimdivide": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:11Z",
+  "tree": "a71e27a173a270a8c0e9e9df47f18c37c9bdb729"
+ },
+ "20261026T0610-c36-intent-review-nematic-marangoni": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:11Z",
+  "tree": "27c5ef6ebd6f0d133fc366ac17f0e6dfeee94032"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
