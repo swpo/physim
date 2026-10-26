@@ -1,0 +1,10 @@
+40 30 pred_last_alive 12000.0 prey_frac_late 0.57 pred_frac_late 1.00 coexist True final prey/pred 3 5
+40 31 pred_last_alive 12000.0 prey_frac_late 0.67 pred_frac_late 0.98 coexist False final prey/pred 2 2
+40 32 pred_last_alive 11800.0 prey_frac_late 0.79 pred_frac_late 0.85 coexist False final prey/pred 6 0
+40 33 pred_last_alive 12000.0 prey_frac_late 0.70 pred_frac_late 0.98 coexist False final prey/pred 0 6
+80 30 pred_last_alive 12000.0 prey_frac_late 0.98 pred_frac_late 1.00 coexist True final prey/pred 3 12
+80 31 pred_last_alive 12000.0 prey_frac_late 1.00 pred_frac_late 1.00 coexist True final prey/pred 9 6
+80 32 pred_last_alive 12000.0 prey_frac_late 1.00 pred_frac_late 1.00 coexist True final prey/pred 4 9
+80 33 pred_last_alive 12000.0 prey_frac_late 1.00 pred_frac_late 1.00 coexist True final prey/pred 2 11
+40 coexisting 1/4
+80 coexisting 4/4

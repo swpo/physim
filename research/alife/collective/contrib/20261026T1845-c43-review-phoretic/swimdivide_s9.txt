@@ -1,0 +1,8 @@
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 0 of 11 ; max 0.69
+    t=198 gen 1 parent 206 -> [143, 62], B share [0.32, 0.29], parent travel 0.7 diameters (track 4)
+    t=302 gen 1 parent 79 -> [51, 28], B share [0.27, 0.25], parent travel 0.2 diameters (track 169)
+    t=357 gen 1 parent 35 -> [26, 211], B share [0.19, 0.19], parent travel 0.1 diameters (track 254)
+    t=208 gen 1 parent 68 -> [35, 31], B share [0.34, 0.23], parent travel 0.1 diameters (track 0)
+    t=345 gen 3 parent 172 -> [92, 80], B share [0.29, 0.34], parent travel 0.0 diameters (track 215)
+  median daughter sizes 28.0 66.0
+strip strip_s9.png

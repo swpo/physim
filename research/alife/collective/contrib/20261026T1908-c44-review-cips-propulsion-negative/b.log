@@ -1,0 +1,12 @@
+[cips-turnover-divide] seed 3: 100 frames x 1000 steps, grid (192, 192)
+  frame 10/100  60.8s
+  frame 20/100  123.6s
+  frame 30/100  186.3s
+  frame 40/100  248.4s
+  frame 50/100  316.1s
+  frame 60/100  383.0s
+  frame 70/100  444.3s
+  frame 80/100  506.5s
+  frame 90/100  570.5s
+  frame 100/100  629.3s
+  -> rerun/chi45_seed3/FACTS.md  (629s sim)

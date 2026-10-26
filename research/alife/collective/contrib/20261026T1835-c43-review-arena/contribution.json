@@ -1,0 +1,66 @@
+{
+ "id": "20261026T1835-c43-review-arena",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1415-c42-coexistence-arena-size#finding",
+ "review_of": "20261026T1415-c42-coexistence-arena-size",
+ "title": "Review of c42's arena-size coexistence finding on fresh seeds 10-13: 0/4 coexist at 32^2, 4/4 at 96^2",
+ "summary": "The food-chain claim world unchanged. labkit on seed 10 at 32^2 and 96^2 (t=12000, --lineage-k 5): at 32^2 the predators are gone by the end (0 components, 0 persistent splits) and 4 prey remain; at 96^2 13 predators and 3 prey remain, prey persistent splits 12 (generation 7) and predator persistent splits 12. c42's drive.py on seeds 11-13 scored with the finding's rule (coexist.py: predators at every count from t=6000, prey at >= 50%): 32^2 0/3 (seed 12 loses its predators at t=2100, seeds 11 and 13 have gaps in the predator record or prey below half), 96^2 3/3 (prey present at 100% of late counts). Together 0/4 at 32^2 and 4/4 at 96^2, as in the finding (0/4 and 4/4).",
+ "parents": [
+  "collective/contrib/20261026T1415-c42-coexistence-arena-size"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "evidence": [
+  "rerun_L32/seed10/sheet.png",
+  "rerun_L96/seed10/sheet.png",
+  "drive/L32_s12.png",
+  "drive/L96_s11.png",
+  "coexist.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "F"
+   ],
+   "observations": {
+    "F": "coexist.txt: L32 seeds 11-13 'no' (pred_last 12000/2100/12000, prey_frac 0.43/1.00/0.62), L96 seeds 11-13 'coexist' (prey_frac 1.00); rerun_L32/seed10 predators 0 at the end; rerun_L96/seed10 13 predators, 3 prey; drive/L32_s12.png: predators vanish by t=2100 and the prey freeze into a static lattice"
+   },
+   "replicated": true,
+   "seed": 10,
+   "seeds_run": [
+    {
+     "seed": 10,
+     "result": "pass"
+    },
+    {
+     "seed": 11,
+     "result": "pass"
+    },
+    {
+     "seed": 12,
+     "result": "pass"
+    },
+    {
+     "seed": 13,
+     "result": "pass"
+    }
+   ],
+   "controls_run": {
+    "F": "two arena sizes at fixed parameters, same seeds"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "48^2 and 64^2",
+    "longer runs"
+   ],
+   "limitation": "Only the two extreme sizes; the intermediate sizes (48, 64) where the finding saw 2/4 and 3/4 were not re-run. The coexistence rule is the author's (predator gaps of one count fail a run)."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}

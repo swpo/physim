@@ -1,0 +1,36 @@
+s9.npz t=800 splits 70 merges 125 persistent by generation {1: 9, 2: 6, 3: 7, 4: 7, 5: 3, 6: 3, 7: 3} max generation 7
+  persistent splits whose two daughters both carry B (>= 5%): 38 of 38
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 0 of 38 ; max 2.17
+    t=772 gen 7 parent 90 -> [44, 39], B share [0.27, 0.26], parent travel 2.2 diameters (track 355)
+    t=438 gen 4 parent 109 -> [82, 29], B share [0.28, 0.21], parent travel 1.2 diameters (track 266)
+    t=435 gen 1 parent 313 -> [190, 123], B share [0.22, 0.15], parent travel 0.9 diameters (track 12)
+    t=442 gen 4 parent 99 -> [57, 40], B share [0.28, 0.25], parent travel 0.9 diameters (track 219)
+    t=646 gen 4 parent 198 -> [104, 95], B share [0.15, 0.24], parent travel 0.7 diameters (track 312)
+  median daughter sizes 58.0 104.5
+Traceback (most recent call last):
+  File "/home/user/physim/research/alife/collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim/lineage.py", line 16, in <module>
+    kp = SP[f] != 2; lab = -np.ones(len(kp), int); lab[kp], _ = clusters(X[f][kp], L); labs.append(lab)
+                                                                ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/physim/research/alife/collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim/clusters.py", line 9, in clusters
+    t = cKDTree(x, boxsize=L); p = t.query_pairs(rl, output_type="ndarray"); n = len(x)
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "scipy/spatial/_ckdtree.pyx", line 613, in scipy.spatial._ckdtree.cKDTree.__init__
+ValueError: Some input data are greater than the size of the periodic box.
+s11.npz t=800 splits 54 merges 117 persistent by generation {1: 9, 2: 11, 3: 8, 4: 3, 5: 2, 6: 1} max generation 6
+  persistent splits whose two daughters both carry B (>= 5%): 32 of 34
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 3 of 34 ; max 4.46
+    t=412 gen 3 parent 84 -> [65, 19], B share [0.38, 0.0], parent travel 4.5 diameters (track 258)
+    t=604 gen 2 parent 106 -> [70, 36], B share [0.23, 0.14], parent travel 4.0 diameters (track 302)
+    t=267 gen 2 parent 49 -> [28, 22], B share [0.32, 0.41], parent travel 3.4 diameters (track 191)
+    t=458 gen 4 parent 107 -> [83, 24], B share [0.42, 0.08], parent travel 1.0 diameters (track 295)
+    t=707 gen 4 parent 140 -> [84, 54], B share [0.2, 0.11], parent travel 0.9 diameters (track 349)
+  median daughter sizes 46.0 89.0
+s10w.npz t=800 splits 68 merges 122 persistent by generation {1: 6, 2: 6, 3: 4, 4: 7, 5: 6, 6: 4, 7: 1, 8: 1, 9: 1} max generation 9
+  persistent splits whose two daughters both carry B (>= 5%): 33 of 36
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 1 of 36 ; max 4.1
+    t=357 gen 3 parent 97 -> [59, 39], B share [0.2, 0.21], parent travel 4.1 diameters (track 147)
+    t=664 gen 4 parent 196 -> [150, 44], B share [0.17, 0.11], parent travel 1.8 diameters (track 274)
+    t=683 gen 5 parent 195 -> [117, 78], B share [0.27, 0.28], parent travel 1.6 diameters (track 285)
+    t=760 gen 4 parent 205 -> [112, 91], B share [0.18, 0.13], parent travel 1.4 diameters (track 306)
+    t=780 gen 4 parent 170 -> [126, 46], B share [0.21, 0.07], parent travel 1.4 diameters (track 307)
+  median daughter sizes 65.0 103.5

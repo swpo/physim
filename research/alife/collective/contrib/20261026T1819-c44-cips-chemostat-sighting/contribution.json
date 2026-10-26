@@ -1,0 +1,8 @@
+{"id": "20261026T1819-c44-cips-chemostat-sighting", "kind": "sighting", "mode": "extend", "task": "C:metabolic-cell",
+ "title": "Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4)",
+ "summary": "world.py = the layered dividing CIPS world (20261026T1626-c44-cips-lownoise-gen4-claim code, run with noise 0.03 as in c40) plus an imposed, well-mixed washout: from t=12000, every wash_T time units one randomly chosen body (e>0.5 component, dilated 3 px) is replaced by bath medium. 192x192, seed 0, t=30000. wash_T 800: the population stays at 8-13 bodies through 22 removals and keeps dividing by pinching (17 persistent splits in all, about 10 after t=12000, generation 4, 0 merges); without washout c40's seed 0 has no births after t~16600. wash_T 400: removals outpace division and the population goes extinct (ts_wash400_s0.png). The deaths are imposed (a chemostat's dilution); the births are the bodies' own division into the freed space and enzyme.",
+ "parents": ["collective/contrib/20261026T1626-c44-cips-lownoise-gen4-claim", "collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["sheet_wash800_s0.png", "lineage_wash800_s0.png", "ts_wash800_s0.png", "ts_wash400_s0.png"],
+ "compute": {"cpu_minutes": 70}}
