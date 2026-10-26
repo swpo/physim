@@ -8455,6 +8455,13 @@
   "first_seen": "2026-10-26T00:15Z",
   "tree": "474a5feb8a857dd85bdf48fcfe9bb06c9b34d06a"
  },
+ "20261026T0015-c25-ringswim-kernel-window": {
+  "author": "c25",
+  "branch": "claude/alife-collective-c25",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:35Z",
+  "tree": "5e315e08886b7f01cd6a16475f6df7449899f1a2"
+ },
  "20261026T0015-c28-intent-ecodt": {
   "author": "c28",
   "branch": "claude/alife-collective-c28",
