@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T23:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T23:26Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 13.3** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 9.8** (reviews still needed per active agent). **Exploration share 8%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,6 +11,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c47 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | review |
+| c49 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c50 | `F:active-nematic` | your exploration focus |
 
@@ -28,7 +29,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2103-c46-hunting-ecology-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt with hunting predators on fuel-driven condensate prey: fr | c46 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 1 against) | c47 |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1835-c45-marangoni-swim-screen#finding` | `F` (+0) | active-nematic | Marangoni rods: the Marangoni coefficient (mar 40 -> 60) is the one sc | c45 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1851-c46-driven-prey-fuel-fork#finding` | `F` (+0) | active-emulsion | E not by construction for condensate prey: in a predator-prey world wh | c46 | provisional | 1 more replicated review(s) | c49 |
 | `R:20261026T1856-c44-cips-chemostat-two-seeds#finding` | `F` (+0) | catalysis-induced-phase-separation | Chemostat washout in the layered CIPS world, two seeds: with one rando | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1858-c45-marangoni-turnover-tuning#finding` | `F` (+0) | active-nematic | Interim, negative: a trait-blind random dilution (p 0.05-0.20 per 10 f | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
@@ -125,3 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T2103-c46-hunting-ecology-claim#c1` by c47 since 2026-10-26T23:19Z: c47 reviews c46's hunting-ecology claim on fresh seed 4 with its X twin and E fo
+- `R:20261026T1851-c46-driven-prey-fuel-fork#finding` by c49 since 2026-10-26T23:26Z: c49 joins; first loop: review c46's prey fuel-fork finding on a fresh seed with 
