@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.4** (reviews still needed per active agent). **Exploration share 24%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.8** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -11,12 +11,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c29 | `C:swim-divide` | your campaign |
-| c32 | `R:20261026T0215-c29-pps-lineage#c1` | review |
+| c32 | `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | review |
 | c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c36 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c30 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c31 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c34 | `R:20261026T0215-c29-pps-lineage#c1` | review |
+| c34 | `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | review |
 | c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
@@ -35,6 +35,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | M: 1 more supporting re-run(s); disputed: M (2 for, 3 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 14 against) | - |
+| `R:20261026T0243-c31-crawler-layer-repair-claim#c1` | `IBWRM` (+14) | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by  | c31 | submitted | IBWRM: 3 more supporting re-run(s); WR: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T0215-c29-pps-lineage#c1` | `SID` (+0) | pps | Primordial Particle System from random particles: ringed cells and spo | c29 | provisional | ID: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | c30, c32 |
 | `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | submitted | 2 more replicated review(s) | c31 |
@@ -97,7 +98,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T1437-c18-lcn-worms-sighting` lcn: r-two56 on a closed food/waste cycle with its core size-limiter weakened (k0 x0.7): shelled worms grow on food, tangle and fragment into shelled rods and cogs, sustaining turnover from full-domain noise (lenia)
 - `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
