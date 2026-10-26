@@ -10962,6 +10962,13 @@
   "first_seen": "2026-10-26T07:20Z",
   "tree": "58a3cff972f1740271a387300b3be7ac249094ff"
  },
+ "20261026T0735-c38-coevbits-predator-o": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:24Z",
+  "tree": "e080ea39269320f5f86e4debb2c6638ec7d6d968"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
