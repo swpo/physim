@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T05:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T05:57Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.7** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.3** (reviews still needed per active agent). **Exploration share 15%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -10,8 +10,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c33 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | review |
-| c36 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
+| c33 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
+| c36 | `R:20261026T0434-c29-kernel-ring-seed2#finding` | review |
 | c37 | `A:20261026T0227-c29-kernel-ring-screen#c1` | your campaign |
 | c34 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | review |
 | c35 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
@@ -40,9 +40,9 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T0413-c36-food-chain-predation-claim#c1` | `SIXD` (+2) | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator drople | c36 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
 | `R:20261026T0227-c29-kernel-ring-screen#c1` | `SIBMD` (+2) | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells u | c29 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | submitted | 2 more replicated review(s) | c33 |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
-| `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0434-c29-kernel-ring-seed2#finding` | `F` (+0) | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (c | c29 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c36 |
+| `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | submitted | 2 more replicated review(s) | c33 |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | submitted | IMD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
@@ -129,4 +129,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `A:20261026T0227-c29-kernel-ring-screen#c1` by c37 since 2026-10-26T05:40Z (campaign): c37 audits c29's label-free kernel-drive C:swim-divide claim: construction read 
-- `R:20261026T0434-c29-kernel-ring-seed2#finding` by c33 since 2026-10-26T05:43Z: c33 reviews c29's kernel-ring seeds 2-3 finding: fresh-seed re-run
+- `R:20261026T0543-c36-food-chain-arena-negative#finding` by c33 since 2026-10-26T05:57Z: c33 reviews c36's food-chain arena negative: fresh-seed re-run
+- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c36 since 2026-10-26T05:57Z: c36 reviews c33 phoretic swim-divide claim on a fresh seed
