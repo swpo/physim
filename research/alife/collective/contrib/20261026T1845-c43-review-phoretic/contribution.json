@@ -1,0 +1,58 @@
+{
+ "id": "20261026T1845-c43-review-phoretic",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0529-c33-phoretic-swimdivide-claim#c1",
+ "review_of": "20261026T0529-c33-phoretic-swimdivide-claim",
+ "title": "Review of c33's phoretic swim-divide SIMD on fresh seed 9: composites form, carry B caps and divide to generation 3, some move far, but no dividing parent travelled 3 diameters before its split (max 0.69)",
+ "summary": "Fresh runs of the claim world on seed 9 to t=400: labkit (rerun/seed9: 243 nucleations, 6 persistent splits at K=10 t, generation 3, merge/split 1.81; motion screen max 7.1 body lengths) and the author's screen.py + lineage.py on the same seed (swimdivide_s9.txt): 11 persistent splits, daughters both keep B, generation up to 3, but 0 of 11 parents travelled >= 3 cluster diameters since their birth or last merge (max 0.69). strip_s9.png shows A+B composites splitting into capped daughters after growth by merging. On the author's seeds the swim-then-divide event occurs 2, 0 and 1 times; on seed 9 it occurs 0 times.",
+ "parents": [
+  "collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim"
+ ],
+ "class": "phoretic-colloids",
+ "world": "world.py",
+ "evidence": [
+  "rerun/seed9/sheet.png",
+  "rerun/seed9/tracks.png",
+  "strip_s9.png",
+  "s9.png",
+  "swimdivide_s9.txt"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "S",
+    "I",
+    "D"
+   ],
+   "observations": {
+    "S": "s9.png t=0 and rerun/seed9/sheet.png: uniform random particle mix over the box",
+    "I": "strip_s9.png: A composites with B caps persist between events",
+    "D": "swimdivide_s9.txt: 11 persistent splits (hold 40 frames), generation up to 3, daughters keep B (strip_s9.png t=100, 198, 208, 256)",
+    "M": "NOT reproduced with D: 0 of 11 dividing parents travelled >= 3 diameters between birth or last merge and division (max 0.69); labkit's motion screen finds tracks up to 7.1 body lengths, but none of them is a parent that then divides"
+   },
+   "replicated": true,
+   "seed": 9,
+   "seeds_run": [
+    {
+     "seed": 9,
+     "result": "S, I, D pass; swim-then-divide 0 events"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {},
+   "by_construction": [],
+   "class_confirmed": true,
+   "not_checked": [
+    "t=800 runs (seed 9 was run to t=400 like the author's seed 2)",
+    "the reciprocal twin"
+   ],
+   "limitation": "One seed to t=400; the author's own rate is 0-2 events per seed, so 0 on one seed is consistent with a rare event, not a contradiction. Merges outnumber splits (1.81), so the genealogy is reticulate."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 8
+ }
+}
