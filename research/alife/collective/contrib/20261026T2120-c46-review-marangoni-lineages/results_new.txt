@@ -1,0 +1,156 @@
+====================================================================================================
+Data: s71 (201 frames, grid 128, dx 1.000), s72 (201 frames, grid 128, dx 1.000)
+Dividing track = born by a split, ends in a split into >= 2 split-born daughters living >= 20 frames (labkit tracker).
+D = net displacement over the cycle / median 4 sqrt(lambda_max) of the track (rod lengths). vnet = net/life, vpath = path/life (units/time; 1 frame = 5 time).
+Traits detrended in time within run (leave-one-out kernel, bandwidth 15 frames).
+dividing tracks: 29; per run: s71 14, s72 15
+D: median 1.21, IQR 0.63-1.63, max 3.00; >=3: 0, >=2.5: 1, >=2: 1 of 29
+per run: s71: n=14, >=3 0, best 1.93; s72: n=15, >=3 0, best 3.00
+  top: s72 #37 D 3.00 (L4mean 2.79, Feret 3.25) frames 67-121 cycle 55 vnet 0.176 straight 0.72 A_birth 32 | parent #22 (split) D 1.47 vnet 0.324 div True | kids D [0.12, 2.56] fates ['run-end', 'run-end']
+  top: s71 #13 D 1.93 (L4mean 1.79, Feret 2.13) frames 45-61 cycle 17 vnet 0.353 straight 0.99 A_birth 37 | parent #6 (split) D 1.21 vnet 0.180 div False | kids D [2.08, 1.79] fates ['run-end', 'split-other']
+  top: s72 #18 D 1.90 (L4mean 1.75, Feret 2.04) frames 48-64 cycle 17 vnet 0.357 straight 0.99 A_birth 37 | parent #12 (split) D 1.49 vnet 0.219 div False | kids D [2.52, 1.25] fates ['split-other', 'merges']
+  top: s72 #40 D 1.85 (L4mean 1.75, Feret 2.03) frames 69-88 cycle 20 vnet 0.379 straight 0.94 A_birth 46 | parent #4 (split) D 0.80 vnet 0.075 div True | kids D [0.55, 2.86] fates ['run-end', 'run-end']
+  top: s72 #32 D 1.84 (L4mean 1.82, Feret 2.01) frames 65-88 cycle 24 vnet 0.304 straight 0.86 A_birth 40 | parent #19 (split) D 1.56 vnet 0.370 div True | kids D [0.65, 0.79] fates ['merges', 'merges']
+  top: s71 #11 D 1.75 (L4mean 1.60, Feret 1.92) frames 43-59 cycle 17 vnet 0.337 straight 1.00 A_birth 34 | parent #5 (split) D 1.23 vnet 0.190 div False | kids D [2.66, 1.61] fates ['merges', 'divides']
+  top: s71 #14 D 1.66 (L4mean 1.59, Feret 1.79) frames 45-59 cycle 15 vnet 0.391 straight 1.00 A_birth 42 | parent #9 (split) D 1.73 vnet 0.261 div False | kids D [0.71, 0.81] fates ['merges', 'merges']
+  top: s72 #17 D 1.63 (L4mean 1.52, Feret 1.72) frames 48-75 cycle 28 vnet 0.158 straight 0.88 A_birth 28 | parent #12 (split) D 1.49 vnet 0.219 div False | kids D [3.04, 1.36] fates ['run-end', 'merges']
+cycle (frames): median 24, IQR 17-50, range 10-138
+parents of dividing tracks: {'nucleation': 5, 'split': 13, 'split/div': 7, 'merge': 4}
+
+====================================================================================================
+(1) HERITABILITY
+Parent-offspring regressions (cluster bootstrap over parents; null = parent replaced by a random other track of the same run ending within +-8 frames):
+  D on D, both dividing tracks: n=7 offspring of 6 parents; slope +0.399 [-3.697, +1.761], r +0.271 [-0.724, +0.954], Spearman +0.252
+      null, time-matched: slope -0.287 (-1.826..+2.230), P(null >= obs) 0.159; space+time-matched (+-12 fr, <= 40 units; 3/7 pairs have one, median 1 candidates): observed on that subset -1.683, null -0.782 (-1.116..-0.448), P(null >= obs) 1.000
+  vnet on vnet, both dividing tracks: n=7 offspring of 6 parents; slope +0.047 [-0.276, +1.457], r +0.081 [-0.362, +0.973], Spearman +0.360
+      null, time-matched: slope -0.310 (-2.097..+0.368), P(null >= obs) 0.209; space+time-matched (+-12 fr, <= 40 units; 3/7 pairs have one, median 1 candidates): observed on that subset +0.507, null -0.844 (-1.396..-0.325), P(null >= obs) 0.000
+  child D on parent whole-life vnet (parent: any track >=10 fr ending in a split): n=25 offspring of 17 parents; slope +1.459 [-0.540, +4.042], r +0.243 [-0.103, +0.538], Spearman +0.185
+      null, time-matched: slope +0.570 (-1.361..+2.589), P(null >= obs) 0.243; space+time-matched (+-12 fr, <= 40 units; 18/25 pairs have one, median 1 candidates): observed on that subset +1.438, null +2.419 (+2.026..+2.734), P(null >= obs) 1.000
+  broad: child whole-life vnet on parent whole-life vnet (child split-born >=16 fr, any fate): n=110 offspring of 59 parents; slope +0.094 [-0.048, +0.207], r +0.135 [-0.060, +0.299], Spearman +0.073
+      null, time-matched: slope +0.015 (-0.080..+0.105), P(null >= obs) 0.045; space+time-matched (+-12 fr, <= 40 units; 85/110 pairs have one, median 1 candidates): observed on that subset +0.131, null -0.010 (-0.048..+0.031), P(null >= obs) 0.000
+  broad: child whole-life vpath on parent whole-life vpath: n=110 offspring of 59 parents; slope +0.111 [-0.042, +0.246], r +0.158 [-0.062, +0.339], Spearman +0.091
+      null, time-matched: slope +0.035 (-0.061..+0.126), P(null >= obs) 0.045; space+time-matched (+-12 fr, <= 40 units; 85/110 pairs have one, median 1 candidates): observed on that subset +0.159, null -0.034 (-0.081..+0.014), P(null >= obs) 0.000
+  carry-over: child early speed (first 15 fr) on parent late speed (last 15 fr): n=110 offspring of 59 parents; slope +0.057 [-0.085, +0.188], r +0.062 [-0.091, +0.206], Spearman +0.003
+      null, time-matched: slope -0.019 (-0.130..+0.096), P(null >= obs) 0.099; space+time-matched (+-12 fr, <= 40 units; 85/110 pairs have one, median 1 candidates): observed on that subset +0.050, null +0.008 (-0.056..+0.077), P(null >= obs) 0.108
+  broad vnet, leading-side daughters only: n=51 offspring of 51 parents; slope +0.227 [-0.036, +0.448], r +0.292 [-0.034, +0.572], Spearman +0.276
+      null, time-matched: slope +0.039 (-0.115..+0.189), P(null >= obs) 0.006; space+time-matched (+-12 fr, <= 40 units; 39/51 pairs have one, median 1 candidates): observed on that subset +0.311, null -0.053 (-0.140..+0.031), P(null >= obs) 0.000
+  broad vnet, trailing-side daughters only: n=59 offspring of 59 parents; slope -0.033 [-0.156, +0.087], r -0.064 [-0.293, +0.158], Spearman -0.099
+      null, time-matched: slope -0.004 (-0.089..+0.080), P(null >= obs) 0.742; space+time-matched (+-12 fr, <= 40 units; 46/59 pairs have one, median 1 candidates): observed on that subset -0.038, null +0.027 (+0.007..+0.047), P(null >= obs) 1.000
+  carry-over, leading-side daughters only: n=51 offspring of 51 parents; slope +0.323 [+0.044, +0.615], r +0.335 [+0.046, +0.578], Spearman +0.275
+      null, time-matched: slope +0.081 (-0.088..+0.263), P(null >= obs) 0.003; space+time-matched (+-12 fr, <= 40 units; 39/51 pairs have one, median 1 candidates): observed on that subset +0.339, null -0.029 (-0.155..+0.115), P(null >= obs) 0.000
+Sister-sister intraclass correlation (double-entry; bootstrap over pairs; null = unrelated pairs born within +-3 frames, same run):
+  D, both sisters dividing: n=8 pairs; ICC -0.065 [-0.602, +0.381]; null time-matched +0.071 (-0.055..+0.173); space+time-matched (+-6 fr, <=40 units; 1 pairs): observed on subset +nan, null +nan (+nan..+nan)
+  vnet, both sisters dividing: n=8 pairs; ICC -0.722 [-0.903, -0.570]; null time-matched +0.152 (-0.553..+0.767); space+time-matched (+-6 fr, <=40 units; 1 pairs): observed on subset +nan, null +nan (+nan..+nan)
+  early speed, sisters any fate (>=16 fr): n=56 pairs; ICC -0.496 [-0.635, -0.343]; null time-matched +0.033 (-0.223..+0.300); space+time-matched (+-6 fr, <=40 units; 32 pairs): observed on subset -0.533, null -0.062 (-0.356..+0.263)
+  whole-life vnet, sisters any fate: n=56 pairs; ICC -0.221 [-0.431, -0.003]; null time-matched +0.052 (-0.176..+0.278); space+time-matched (+-6 fr, <=40 units; 32 pairs): observed on subset -0.137, null +0.047 (-0.295..+0.351)
+  whole-life vpath, sisters any fate: n=56 pairs; ICC -0.082 [-0.287, +0.085]; null time-matched +0.022 (-0.235..+0.261); space+time-matched (+-6 fr, <=40 units; 32 pairs): observed on subset -0.159, null +0.136 (-0.131..+0.385)
+Top-quartile parents (top 25% of their run's detrended values):
+  D -> D (dividing parents and children): children of top-quartile parents n=2 (2 parents): mean minus population -0.100 [-0.835, +0.635]; minus children of other parents (n=5) -0.457 [-1.832, +0.732]; population SD 0.657; children in top quartile: 1/2 vs 2/5
+  parent vnet -> child D: children of top-quartile parents n=10 (8 parents): mean minus population +0.138 [-0.299, +0.735]; minus children of other parents (n=15) +0.161 [-0.372, +0.821]; population SD 0.657; children in top quartile: 3/10 vs 5/15
+  parent vnet -> child vnet (broad): children of top-quartile parents n=30 (16 parents): mean minus population +0.008 [-0.026, +0.038]; minus children of other parents (n=80) +0.008 [-0.027, +0.041]; population SD 0.075; children in top quartile: 9/30 vs 20/80
+  parent late speed -> child early speed (broad): children of top-quartile parents n=27 (15 parents): mean minus population +0.018 [-0.017, +0.051]; minus children of other parents (n=83) +0.016 [-0.021, +0.052]; population SD 0.099; children in top quartile: 7/27 vs 23/83
+Lineages (grandparent -> parent -> child):
+  all three dividing tracks: 0 chains
+  broad (vnet, grandparent and parent: tracks ending in a split; child: split-born >=16 fr): 71 chains; r(GP, C) -0.034 [-0.221, +0.175]; r(P, C) +0.106; r(GP, P) +0.113
+  leading-daughter lines (P leading daughter of GP, C leading daughter of P): 18 chains; r(GP, C) -0.041 [-0.436, +0.374]; r(P, C) +0.291; r(GP, P) +0.317
+  trailing-daughter lines (P trailing daughter of GP, C trailing daughter of P): 18 chains; r(GP, C) +0.147 [-0.271, +0.699]; r(P, C) -0.470; r(GP, P) -0.312
+  D by generation (split ancestors): gen 1: median 0.65 (n=9), gen 2: median 1.50 (n=16), gen 3: median 1.84 (n=3), gen 4: median 1.21 (n=1)
+Carry-over at fission (direction, side):
+  cos(parent travel, daughter travel), split-born >=16 fr: mean +0.13, share > 0 0.58 (n=125)
+  early speed, daughter on parent's leading side minus trailing side: +0.073 [+0.040, +0.107] (n=56 vs 69; SD 0.100)
+  cos(parent, daughter): leading +0.49, trailing -0.16
+  fates leading: {'split-other': 10, 'divides': 13, 'merges': 10, 'run-end': 22, 'vanishes': 1}; trailing: {'split-other': 10, 'divides': 11, 'merges': 15, 'run-end': 30, 'vanishes': 3}
+  sister pairs split leading/trailing: 56; leading sister faster in 34 (binomial p 0.141)
+Determinants of daughter early speed (split-born >=16 fr; Spearman with detrended early speed):
+  front        rho +0.386 [+0.224, +0.539] n=125
+  A_birth      rho +0.219 [+0.056, +0.379] n=128
+  L_birth      rho +0.240 [+0.071, +0.395] n=128
+  crowd_birth  rho -0.092 [-0.247, +0.057] n=128
+  cos_parent   rho +0.079 [-0.104, +0.261] n=125
+  parent late speed rho +0.003 [-0.184, +0.195] n=110
+  dividing tracks: D of leading-side daughters median 1.56 (n=17) vs trailing 0.80 (n=11); Mann-Whitney p 0.221
+Does swimming feed growth? early speed vs relative area gain over the same first 15 frames (split-born living >= 30 fr, so no division in the window):
+  Spearman(detrended early speed, detrended log area gain) +0.226 [+0.014, +0.421] n=91
+  dividing tracks with cycle >= 22 fr: Spearman(early speed, log area gain over the first 15 fr) -0.221 [-0.787, +0.391] n=16
+
+====================================================================================================
+(2) DETERMINANTS of D among dividing tracks (Spearman; values centred on their run mean, time not removed)
+  D vs n              rho -0.115 [-0.542, +0.330] n=29
+  D vs A_birth        rho -0.110 [-0.535, +0.331] n=29
+  D vs L_birth        rho -0.137 [-0.578, +0.322] n=29
+  D vs L4med          rho -0.392 [-0.724, -0.003] n=29
+  D vs A_end          rho -0.107 [-0.442, +0.263] n=29
+  D vs ring_s         rho -0.638 [-0.813, -0.347] n=29
+  D vs ring_contrast  rho +0.270 [-0.136, +0.608] n=29
+  D vs ring_pol_rl    rho -0.711 [-0.817, -0.508] n=29
+  D vs crowd          rho -0.348 [-0.671, +0.050] n=29
+  D vs crowd_birth    rho +0.027 [-0.323, +0.370] n=29
+  D vs nnd            rho +0.162 [-0.212, +0.509] n=29
+  D vs ncomp_birth    rho -0.186 [-0.561, +0.227] n=29
+  D vs start          rho -0.180 [-0.584, +0.233] n=29
+  D vs cy             rho +0.517 [+0.188, +0.746] n=29
+  D vs cx             rho +0.214 [-0.175, +0.541] n=29
+  D vs straight       rho +0.539 [+0.210, +0.762] n=29
+  D vs vpath          rho +0.701 [+0.473, +0.840] n=29
+  D vs vnet           rho +0.721 [+0.493, +0.861] n=29
+  D vs cos_axis       rho +0.285 [-0.111, +0.603] n=29
+Decomposition: log D = log straightness + log path speed + log (cycle-1) - log rod length (+const), run-centred;
+share_k = cov(log D, component_k) / var(log D), shares sum to 1:
+  straight : +0.561 [+0.105, +1.130]
+  vpath    : +0.442 [+0.306, +0.637]
+  cycle    : -0.136 [-0.659, +0.279]
+  -L       : +0.132 [+0.019, +0.244]
+  n=29; Spearman(cycle, path speed) -0.473, (cycle, straightness) -0.816, (cycle, net speed) -0.720, (cycle, D) -0.121
+  cycle > median (24 fr): n=14, median D 0.80, >=2: 1, >=2.5: 1, >=3: 0; cycle <= median: n=15, median D 1.56, >=2: 0, >=2.5: 0, >=3: 0
+  top D tracks, within-run percentiles:
+   s72 #37 D 3.00: cycle 55 (pct 87), vpath pct 60, straight 0.72 (pct 40), A_birth pct 40, L4med pct 33, crowd pct 80, ring_pol pct 47, born frame 67
+   s71 #13 D 1.93: cycle 17 (pct 29), vpath pct 93, straight 0.99 (pct 86), A_birth pct 43, L4med pct 21, crowd pct 50, ring_pol pct 21, born frame 45
+   s72 #18 D 1.90: cycle 17 (pct 33), vpath pct 87, straight 0.99 (pct 87), A_birth pct 53, L4med pct 27, crowd pct 20, ring_pol pct 7, born frame 48
+   s72 #40 D 1.85: cycle 20 (pct 47), vpath pct 100, straight 0.94 (pct 73), A_birth pct 80, L4med pct 73, crowd pct 40, ring_pol pct 20, born frame 69
+  multiple regression of D (z) on standardised run-centred predictors, n=29, R^2=0.67:
+    n            beta -0.232 [-1.030, +1.075]
+    A_birth      beta -1.254 [-2.346, -0.167]
+    ring_s       beta +0.281 [-0.756, +1.943]
+    ring_pol_rl  beta -0.792 [-1.650, -0.318]
+    crowd        beta -0.106 [-0.388, +0.424]
+    start        beta +0.816 [+0.050, +1.957]
+  ring polarity (s-weighted band centroid along travel / rod length; negative = surfactant at the rear): median -0.019, share negative 1.00; within-track frame correlation polarity vs speed median -0.33
+
+====================================================================================================
+(3) FITNESS
+  dividing tracks: Spearman(net speed detrended, cycle) -0.689 [-0.800, -0.497] n=29
+  dividing tracks: Spearman(path speed detrended, cycle) -0.501 [-0.719, -0.211]
+  dividing tracks: Spearman(D detrended, cycle) -0.142 [-0.511, +0.269]
+  Fates of split-born tracks (>=16 fr) by early-speed quartile (first 15 fr; quartiles of detrended early speed within run):
+   quartile     divides      merges split-other    vanishes     run-end   P(divide|resolved)  P(merge|resolved)
+   Q1                11           8           4           2           7   0.44 (11/25)        0.32 (8/25)
+   Q2                 2           8           2           2          17   0.14 (2/14)        0.57 (8/14)
+   Q3                 3           7           7           0          15   0.18 (3/17)        0.41 (7/17)
+   Q4                 9           3           7           0          14   0.47 (9/19)        0.16 (3/19)
+  point-biserial r(early speed, divides) among resolved: +0.100 [-0.174, +0.350] n=75
+  point-biserial r(early speed, merges) among resolved: -0.186 [-0.357, +0.018] n=75
+  same, only tracks living >= 30 fr (speed window ends >= 15 fr before the fate): r(early speed, divides) -0.331 n=44; r(early speed, merges) +0.295
+  Spearman(early speed, log growth A_end/A_birth): -0.054; (early speed, A_birth): +0.219; n=128
+  living split-descendants 40 fr after birth vs early speed: Spearman +0.266 [+0.062, +0.440] n=118; by quartile: Q1 0.94 (zero 0.16, n=31), Q2 0.88 (zero 0.15, n=26), Q3 1.19 (zero 0.13, n=31), Q4 1.40 (zero 0.10, n=30)
+  living split-descendants 60 fr after birth vs early speed: Spearman -0.004 [-0.209, +0.196] n=107; by quartile: Q1 1.17 (zero 0.23, n=30), Q2 0.77 (zero 0.32, n=22), Q3 1.21 (zero 0.21, n=28), Q4 1.22 (zero 0.26, n=27)
+  split-born tracks (>=20 fr) with whole-life D >= 3: 8 (dividing among them: 0); fates {'run-end': 7, 'merges': 1}; median life 130 fr vs dividing 24; growth A_end/A_birth 1.38 vs dividing 2.07; vnet 0.099 vs dividing 0.158; born frame median 72 vs dividing 53
+   family of s72 #37 (D 3.00): parent split D 1.47; sister(s) #38 D 4.06 run-end; daughters #91 D 0.12 life 79 run-end, #92 D 2.56 life 79 run-end
+   family of s71 #13 (D 1.93): parent split D 1.21; sister(s) #15 D 1.54 divides; daughters #28 D 2.08 life 139 run-end, #29 D 1.79 life 92 split-other
+   family of s72 #18 (D 1.90): parent split D 1.49; sister(s) #17 D 1.63 divides; daughters #35 D 2.52 life 26 split-other, #36 D 1.25 life 104 merges
+   family of s72 #40 (D 1.85): parent split D 0.80; sister(s) #41 D 0.58 divides; daughters #55 D 0.55 life 112 run-end, #57 D 2.86 life 112 run-end
+   family of s72 #32 (D 1.84): parent split D 1.56; sister(s) #31 D 4.15 run-end; daughters #56 D 0.65 life 32 merges, #58 D 0.79 life 32 merges
+   family of s71 #11 (D 1.75): parent split D 1.23; sister(s) #10 D 1.98 split-other; daughters #24 D 2.66 life 48 merges, #25 D 1.61 life 50 divides
+
+====================================================================================================
+(4) PERSISTENCE OVER TIME (runs of 200 frames; by the frame of division)
+  divides in frames   0- 59: n=  4, median D 1.64, >=2:  0 (0.00), >=2.5: 0, >=3: 0, median cycle 18, median vnet 0.296, median straight 1.00
+  divides in frames  60- 99: n= 14, median D 1.50, >=2:  0 (0.00), >=2.5: 0, >=3: 0, median cycle 22, median vnet 0.181, median straight 0.87
+  divides in frames 100-139: n=  7, median D 1.21, >=2:  1 (0.14), >=2.5: 1, >=3: 0, median cycle 55, median vnet 0.102, median straight 0.72
+  divides in frames 140-180: n=  4, median D 0.41, >=2:  0 (0.00), >=2.5: 0, >=3: 0, median cycle 58, median vnet 0.063, median straight 0.38
+  halves by division frame (<100 vs >=100): n 18 vs 11; median D 1.55 -> 0.72, difference -0.831 [-1.269, +0.186]; Mann-Whitney p 0.092
+  fraction >= 2.0: 0.000 (0/18) -> 0.091 (1/11); Fisher p 0.379
+  fraction >= 2.5: 0.000 (0/18) -> 0.091 (1/11); Fisher p 0.379
+  fraction >= 3.0: 0.000 (0/18) -> 0.000 (0/11); Fisher p 1.000
+  per run (halves by division frame): s71: 1.02 (n=9) -> 1.21 (n=5); s72: 1.62 (n=9) -> 0.43 (n=6)
+  early speed of all split-born (>=16 fr), born before/after frame 100: median 0.109 (n=77) -> 0.101 (n=51); Mann-Whitney p 0.0832
+  fates of those born before frame 100: {'split-other': 20, 'divides': 23, 'merges': 19, 'run-end': 13, 'vanishes': 2}; after: {'run-end': 40, 'merges': 7, 'vanishes': 2, 'divides': 2}

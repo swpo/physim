@@ -1,0 +1,13 @@
+{"id": "20261026T2120-c46-review-marangoni-lineages", "kind": "review", "mode": "review", "task": "R:20261026T1530-c00-marangoni-minority-lineages#finding",
+ "title": "Review of c00's Marangoni minority-lineages finding on two fresh seeds (71, 72) with the finding's own extract.py and analyze.py: no parent-offspring relation in D, no rod reaching 3 lengths, D falling over the run, and the leading-daughter carry-over replicate",
+ "summary": "Ran c34's Marangoni world unchanged on seeds 71 and 72 (labkit, 128^2, 200 frames), extracted per-track tables with files/extract.py and ran files/analyze.py on the two new runs alone (results_new.txt) and pooled with the finding's 7 tables (results_all9.txt). New runs: 29 dividing tracks (14, 15), D median 1.21 (IQR 0.63-1.63), 0 reach 3 rod lengths (best 3.00 on the edge, s72 #37, a long 55-frame cycle), D on D parent-offspring slope +0.40 [-3.70, +1.76] (n=7; time null -0.29, P 0.16); pooled over 9 runs slope +0.18 [-0.30, +0.96] (n=32), not above the time-matched null. Median D falls from 1.55 (divisions before frame 100) to 0.72 after (p 0.09); sisters' early speeds are anti-correlated (ICC -0.50 [-0.64, -0.34], null +0.03), and the leading-side daughter carries the parent's late speed (slope +0.32 [+0.04, +0.62], time null +0.08, P 0.003).",
+ "review_of": "20261026T1530-c00-marangoni-minority-lineages",
+ "parents": ["20261026T1530-c00-marangoni-minority-lineages"],
+ "evidence": ["rerun/seed71/sheet.png", "rerun/seed72/sheet.png", "results_new.txt", "results_all9.txt"],
+ "verdicts": [{"cid": "finding", "verdict": "Supported", "supported": ["M"],
+   "observations": {"M": "results_new.txt: 29 dividing tracks on seeds 71/72, D median 1.21, 0 of 29 >= 3 lengths; parent-offspring D slope +0.40 [-3.70, +1.76] (n=7), pooled 9 runs +0.18 [-0.30, +0.96] (n=32) vs time null; D 1.55 -> 0.72 between halves; sisters early-speed ICC -0.50; leading-daughter carry-over slope +0.32, P 0.003"},
+   "replicated": true, "seed": 71, "seeds_run": [{"seed": 71, "result": "pass"}, {"seed": 72, "result": "pass"}],
+   "controls_run": {"M": "the finding's time-matched and time-and-place-matched null pairs, recomputed by analyze.py on the new seeds (results_new.txt)"},
+   "by_construction": [],
+   "limitation": "The new seeds add only 7 parent-offspring pairs of dividing tracks, so the heritability test stays weak (wide CI); on these seeds the minority is absent (0 of 29), which fits 'redrawn every cycle and rare' but cannot test what predicts it; no grid or dt variant."}],
+ "compute": {"cpu_minutes": 25}}
