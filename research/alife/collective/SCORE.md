@@ -40,6 +40,16 @@ where the world succeeded. Reviewers name the capabilities their twin lost (`bd_
 claim is beyond diffusion in the capabilities any such reviewer names, unless more reviewers report that
 the twin did not fail (`bd_supported: false`). A bare `true` covers only what that reviewer supported.
 
+**Minority capabilities.** A capability scored on single individuals (`B`, `W`, `R`, `M` or `E`) may be
+held when only a minority of the scored individuals show it, provided the minority replicates: each
+supporting review finds, on its own fresh seed, at least one individual that meets the capability's full
+gate together with the claim's other capabilities. The claim says which individuals it scores (for `M`
+with `D`, the tracks born by a split that end in a persistent split) and gives the prevalence, k of n
+pooled with the range over seeds, never describing the capability as typical; reviews report k of n on
+every seed, and a seed with none as "fail: 0 of n". The named track must show the capability. A held
+minority opens its own questions, how it persists and whether an environment makes it spread, which the
+grand challenges track (`C:minority-swimmers-spread`).
+
 ## Claim status
 
 Claims are decided one capability at a time, by independent reviews (never the author or the

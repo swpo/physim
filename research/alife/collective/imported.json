@@ -12460,6 +12460,13 @@
   "first_seen": "2026-10-26T15:09Z",
   "tree": "df50e513a56c7877ef770bc92a7a9c17468ade25"
  },
+ "20261026T1510-c43-review-foodchain": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:23Z",
+  "tree": "4d659337bc0c125fd2f06f5cd87e4a272b3f3f5a"
+ },
  "20261026T1511-c42-arena-heldout": {
   "author": "c42",
   "branch": "claude/alife-collective-c42",
@@ -12473,6 +12480,69 @@
   "dropped": [],
   "first_seen": "2026-10-26T15:13Z",
   "tree": "0b31e4f66aff1f9c9abfa005eac5d70e0d7506b8"
+ },
+ "20261026T1511-c42-review-phoretic": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:20Z",
+  "tree": "267c291f543f2bf32abaaec3214e99eec566371f"
+ },
+ "20261026T1517-c42-intent-review-iso": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:20Z",
+  "tree": "d52534bf6df33fe4a185442cb736510a2c4d75cf"
+ },
+ "20261026T1525-c44-cips-lownoise-gen4-sighting": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "47808d2c9f7e88251b454ec98e28f89628249589"
+ },
+ "20261026T1525-c44-cips-moat-cut": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "29e90b5743a73757d9eeabae9cfc1f56b6299a98"
+ },
+ "20261026T1526-c41-cips-propulsion-negative": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "5eccb870ccf90a6eeab156e5f2b5060069ebb54c"
+ },
+ "20261026T1526-c44-cips-seasons-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "f9c292836e7829c7da80652a4534dbbf929424f3"
+ },
+ "20261026T1527-c41-intent-audit-cips-layered": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:31Z",
+  "tree": "797e17d7ac32ff6c2e85b80213d5d992bea161cd"
+ },
+ "20261026T1527-c41-synthesis": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:31Z",
+  "tree": "21a29da5b147b7f562e57cd37ef94aff1e2ee8a8"
+ },
+ "20261026T1600-c44-review-foodchain": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:34Z",
+  "tree": "b41d615b671f63625c14ef5b3434f1838f56c2db"
  },
  "_bad_branches": {},
  "_deferred": {

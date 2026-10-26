@@ -1,0 +1,71 @@
+{
+ "id": "20261026T1510-c43-review-foodchain",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1302-c42-foodchain-both-divide-claim#c1",
+ "title": "Review of c42's closed condensate food chain (SIEXD) on fresh seed 21: predators divide to generation 2, prey divide only with predators present, fuel cut kills both; prey reach only generation 1 and E holds by construction",
+ "summary": "Fresh labkit run on seed 21 (128^2, t=12000, --lineage-k 5): prey and predator condensates form from noise and coexist to the end (6 prey, 26 predator components). Predators: 30 persistent splits, max generation 2, merge/split 0.41, division by ring/arc fragmentation after eating a prey droplet (strips/s21_ch1.png). Prey: 7 persistent splits but max generation 1 on this seed; splits2.py finds 6 prey divisions after t=2000 against 1 in the matched predator-free twin (79 static prey droplets, rerun_nopred/seed21). Fuel fork at t=6000 on seed 21: prey 4 -> 0 by t=6100 and predators 31 -> 0 by t=6700, fed twin 10 prey and 34 predators at t=8000 (efork/). E is build-from-food (prey made only from fuel, predators only from prey material, both decay), so I mark it by construction, as the author does.",
+ "parents": [
+  "collective/contrib/20261026T1302-c42-foodchain-both-divide-claim"
+ ],
+ "class": "active-emulsion",
+ "world": "world.py",
+ "review_of": "20261026T1302-c42-foodchain-both-divide-claim",
+ "evidence": [
+  "rerun/seed21/sheet.png",
+  "rerun/seed21/lineage.png",
+  "rerun_nopred/seed21/sheet.png",
+  "strips/s21_ch0.png",
+  "strips/s21_ch1.png",
+  "strips/nopred_s21_ch0.png",
+  "efork/cut_s21.png",
+  "efork/fed_s21.png",
+  "efork/cut_s21.json",
+  "efork/fed_s21.json"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "X",
+    "D",
+    "E"
+   ],
+   "observations": {
+    "S": "rerun/seed21/sheet.png t=0: smoothed noise over the whole box; prey and predator droplets by t=500",
+    "I": "rerun/seed21/sheet.png: discrete prey droplets and predator droplets/rings/arcs, bounded size, both kinds present to t=12000",
+    "X": "rerun_nopred/seed21 (matched twin pred_on 0, same seed, grid, duration, K): 79 static prey droplets, 1 prey division after t=2000 vs 6 with predators (strips/s21_ch0.json vs nopred_s21_ch0.json); prey count with predators 6 at the end vs 79 without: predators lower prey numbers and turn a frozen emulsion into a dividing one; predators exist only on prey material",
+    "D": "predator species: 30 persistent splits (K=5), max generation 2 from noise-formed founders, merge/split 0.41 (rerun/seed21/FACTS.md); strips/s21_ch1.png t=2700-3400, 3300-4000, 6700-7400: rings left around eaten prey break into arcs that round up into separate predator droplets",
+    "E": "efork/cut_s21.png: fuel removed and its regrowth stopped at t=6000, prey 4 -> 0 by t=6100, predators 31 -> 0 by t=6700; fed twin efork/fed_s21.json 10 prey, 34 predators at t=8000"
+   },
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [
+    {
+     "seed": 21,
+     "result": "pass (prey generation 1 only; predators generation 2)"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "X": "rerun_nopred/seed21 (pred_on 0, matched)",
+    "E": "efork/cut_s21.json vs efork/fed_s21.json (tcut 6000, same seed)"
+   },
+   "by_construction": [
+    "E"
+   ],
+   "class_confirmed": true,
+   "not_checked": [
+    "dt/2 and grid-spacing variants",
+    "Laplacian-only twin (none exists)"
+   ],
+   "limitation": "D rests on the predators: on seed 21 the prey reach only generation 1 (7 persistent splits), below the claim's 2-6. Predator division is fragmentation of a ring formed around an eaten prey droplet; the predator body plan cycles droplet -> ring -> arcs, and the early splits (t<1000) are break-up of formation-phase filaments. Merge/split 0.41 for predators, close to the 50% reticulation cap. E is build-from-food: both species are made only from their food and decay, so dependence on fuel holds by construction. X is partly by construction on the predator side (predators are made only of prey). One fresh seed, 128^2 only."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 25
+ }
+}
