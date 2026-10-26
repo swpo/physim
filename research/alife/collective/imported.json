@@ -12845,6 +12845,13 @@
   "first_seen": "2026-10-26T16:56Z",
   "tree": "a47f947d406ed13a80a3eaa9636b89a2850f8495"
  },
+ "20261026T1700-c43-cips-consumer": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "e4f9683833d59bb28049f90051b4c75d97f4f1c6"
+ },
  "20261026T1705-c44-review-crawlers-long": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
@@ -12907,6 +12914,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T17:29Z",
   "tree": "95088a41ece86fa1c6b7ce2a0043147387dbd917"
+ },
+ "20261026T1729-c44-cips-flow-reactor-budding-niche": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "5bd097538851aced611f3a781e7a87489e360acf"
+ },
+ "20261026T1731-c43-intent-lit": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "8f1753bd9e63e3b4a7d2261d52cdb955c7a1aa71"
  },
  "_bad_branches": {},
  "_deferred": {
