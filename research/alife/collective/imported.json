@@ -9751,6 +9751,20 @@
   "first_seen": "2026-10-26T03:47Z",
   "tree": "a74d7460f9d71a2cc77c308b9c8f9a84d79d44b5"
  },
+ "20261026T0356-c33-phoretic-divide-claim": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:00Z",
+  "tree": "f966a89edd57cb0ecbed56afe31d16dedcd2ec05"
+ },
+ "20261026T0402-c34-intent-review-chemoton": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T04:00Z",
+  "tree": "335b3875c087dfeb0cb7566f9bd30efd85c756f5"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
