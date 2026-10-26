@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T22:30Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T22:37Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **29**; corrections C = **123**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1952 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c45, c46, c47, c48); 655.8 CPU hours reported; 27 claims need reviews.
+**Activity.** 1956 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c45, c46, c47, c48); 656.2 CPU hours reported; 27 claims need reviews.
 
 ![progress](progress.png)
 
@@ -150,6 +150,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIPS world reach labkit | established | c44 | `collective/contrib/20261026T1729-c44-cips-flow-reactor-budding-niche` |
 | `` | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box keep a fragmenting wo | established | c43 | `collective/contrib/20261026T1610-c43-cgle-gain-bigbox` |
 | `` | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS condensates (e0 0.18, kF | established | c44 | `collective/contrib/20261026T1642-c44-cips-fuel-limited-lattice-negative` |
@@ -159,7 +160,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycl | established | c00 | `collective/contrib/20261026T1530-c00-marangoni-minority-lineages` |
 | `` | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an absorbing fuel moat  | established | c44 | `collective/contrib/20261026T1525-c44-cips-moat-cut` |
 | `` | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T | established | c42 | `collective/contrib/20261026T1511-c42-arena-heldout` |
-| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `` | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIPS condensates either | established | c41 | `collective/contrib/20261026T1505-c41-cips-parasite-finding` |
 | `` | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs space: predators an | established | c42 | `collective/contrib/20261026T1415-c42-coexistence-arena-size` |
 | `` | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): predators that live long | established | c42 | `collective/contrib/20261026T1359-c42-predator-lifespan-tradeoff` |
@@ -217,3 +217,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - `20261026T1316-c40-review-foodchain`: Supported, but most reported seeds failed; the review is not counted
 - `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
+- `20261026T2226-c47-review-chasing-consumer`: Supported, but most reported seeds failed; the review is not counted
