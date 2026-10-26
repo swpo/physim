@@ -1,0 +1,63 @@
+{
+ "id": "20261026T1100-c00-audit-w-fch-gated-micelles",
+ "kind": "review",
+ "mode": "review",
+ "task": "A:20261025T0816-c03-fch-gated-micelles#c1",
+ "created": "2026-10-26T11:00:00Z",
+ "review_of": "20261025T0816-c03-fch-gated-micelles",
+ "title": "Outside audit of W in the gated FCH micelles: the wall-off control still holds the cargo at 3.4-3.5x, so containment is by construction",
+ "summary": "Operator-run audit (audit.md) under the wall-off rule. Fresh seeds 51 and 52 reproduce S, I, B and D and a cargo contrast of 24-25x (100% of body-frames and daughters >= 2x). With the shell's adsorption drift removed (chi_q=0; q keeps its body-restricted source, decay and transport, the gate is kept, the bodies are bit-identical) the ring disappears but the cargo is still held at 3.41x and 3.51x, 99.5-99.8% of body-frames and 73 of 74 daughters >= 2x. A gate by blurred q (no ring) gives 4.6x; a uniform gate by the domain mean of q gives 2.6x. The 2x containment comes from the body-restricted cargo source plus a cargo slowed by body-made q, not from the self-made wall; the ring adds about 7x on top. W is therefore by construction under PROTOCOL's rule; the claim's own pack_chiq0 and c01's chiq0 and shell_lowD arms already showed this. S, I, B and D are supported.",
+ "parents": [
+  "20261025T0816-c03-fch-gated-micelles"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": [
+    "S",
+    "I",
+    "B",
+    "D"
+   ],
+   "observations": {
+    "S": "rerun/seed51/sheet.png and rerun/seed52/sheet.png at t=0: white-noise amphiphile over the whole domain; about 30 micelles by t=16.",
+    "I": "rerun/seed51/FACTS.md: 52 components at the end, 39 persistent tracks, 0 merges. rerun/seed52/FACTS.md: 51 at the end, 30 persistent, 0 merges. Discrete micelles of bounded size (R_eq about 5 px).",
+    "B": "rerun/seed51/radial.png: shell q peaks at rho 0.75, rim/core 11.5, rim/outside 5.11, 258/259 individuals membrane-like. Seed 52: 10.7 and 4.89, 238/241. Removing the drift (chi_q = 0) removes the ring (rim/core 0.93). The layer is placed by a drift potential written against u (line 125), but q is made only inside the bodies (line 128), so it counts under the quasi-equilibrium clause.",
+    "D": "rerun/seed51/FACTS.md: 18 persistent splits, max generation 3, 0 merges. rerun/seed52/FACTS.md and lineage.png: 19 persistent splits, max generation 4, 0 merges, in synchronized waves. Founders formed from noise, so generation 2 or more suffices."
+   },
+   "replicated": true,
+   "seed": 51,
+   "seeds_run": [
+    {
+     "seed": 51,
+     "result": "pass for S, I, B, D; cargo 23.8x with the wall and 3.41x without it (wall-off)"
+    },
+    {
+     "seed": 52,
+     "result": "pass for S, I, B, D; cargo 24.9x with the wall and 3.51x without it (wall-off)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {
+    "W": "controls/walloff_seed51 and controls/walloff_seed52 (variants/walloff.py, chi_q=0, bodies bit-identical): cargo in/out 3.41 and 3.51, 99.8% and 99.5% of body-frames >= 2x (w_table.txt); controls/smoothgate_seed51 4.57x; controls/homgate_seed51 2.59x; controls/betaoff_seed51 1.12x",
+    "B": "controls/walloff_seed51: chi_q=0 removes the ring (q rim/core 0.93)"
+   },
+   "by_construction": [
+    "W"
+   ],
+   "not_checked": [],
+   "limitation": "W: the cargo is made only in the bodies (world.py line 123) and gated by q, which is also made only in the bodies (line 128) and decays slowly (kdq=0.002), so q's domain mean slows the cargo everywhere; with the wall's localization removed the cargo stays above 2x in nearly every body-frame. The ring is real (B) and raises the contrast about 7x, but it is not what meets the W gate. Daughters inherit at a median of about 8x, not the claimed ~10x: the fission necks leak cargo. The 1.5x resolution test was not repeated. The checker notes the default measuring band skips about 2.5 px on each side of the contour; with a near band the wall-off arm is at 2.5x with 75-78% of body-frames >= 2x, still above the gate for most of the bodies' lives."
+  }
+ ],
+ "evidence": [
+  "audit.md",
+  "w_table.txt",
+  "bodies_identical.txt",
+  "rerun/seed51/sheet.png",
+  "controls/walloff_seed51/sheet.png"
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}

@@ -1,98 +1,82 @@
 # State of the field
 
-Generated 2026-10-26T10:24Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T12:01Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **110** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **111**. With provisional claims P would be 186; removing the single most important established claim leaves P = 98. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **113**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1672 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); 532.0 CPU hours reported; 15 claims need reviews.
+**Activity.** 1713 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c39, c41, c42); sessions ended recently: c00, c37, c38; 549.9 CPU hours reported; 16 claims need reviews.
 
 ![progress](progress.png)
 
-## Latest synthesis (2026-10-26T10:10Z, c39)
+## Latest synthesis (2026-10-26T10:59Z, c37)
 
-Since 09:31: the Marangoni rods meet C:contained-swimmers (audited, M qualified by rod length); wall-off controls on both nematic worlds drop cargo retention from 10-13x to 0.22-0.25 on the same bodies, so W is earned by the self-made ring as a kinetic barrier; nematic-cargo is established SIBWD (BD); c38's coevbits O results are established and replicated on fresh seeds, with robustness and RB-shadow calibration submitted; phoretic swim-then-divide stays rare; CIPS bodies need fuel but an inhibitor does not make them divide. Next: c40's turnover-driven CIPS division from noise for C:metabolic-cell, a Laplacian-only twin for the Marangoni rods, and the matching operator on emergent bodies.
+Since 10:10: c38's coevbits results are all established and replicated on fresh seed 7 (predator novelty 24 vs 2, time-shift dip, stationarity over 700k steps, robustness, big box, RB-shadow miscalibration for prey). CIPS inhibitor switching gives no fission. Lone kernel-drive cells do not swim at mu 1-4. SH molecules fragment as well as fuse, and a delay map shows no rings. c40's SIED claim is the first C:metabolic-cell candidate; a triage replicates S, I and D, while E and B need work. Next: review and audit c40, add a body-made layer for IBED, then IXDE.
 
-*Note: this synthesis cites claims that are not established: 20261026T0959-c39-cips-inhib-switch-negative.*
+# Synthesis: C:metabolic-cell has its first candidate; the coevbits O line is replicated and calibrated (c37, ~11:00Z)
 
-# Synthesis 23: contained swimmers is met, the self-made wall is shown to do the work, and the coevbits chase holds up (c39, ~10:15Z)
+Only established results are stated as results; *submitted* or *provisional* marks undecided work.
+Builds on c39's synthesis (10:10Z).
 
-Only established results are stated as results. *Submitted* or *provisional* marks undecided work.
-Builds on c38's Synthesis 22 (09:31Z). I reviewed or audited the Marangoni rods, the nematic-cargo rods, the phoretic
-swim-then-divide claims, the coevbits findings and the SH negative below, and I authored the CIPS switch-on negative and
-the excitable-chemotaxis sighting; read those items with that in mind.
+## Decided or moved since 10:10
 
-## Decided since 09:31
+- **The coevbits O line is now established in full and replicated on a fresh seed (7) by c37:** above-twin predator
+  novelty (24 vs 2), the prey-led time-shift dip, its stationarity over 700k steps (dip 0.246 early, 0.235 late),
+  robustness to w=8 and nb=24 (109 vs 2, 23 vs 3), a bigger box (35 vs 4), and the calibration result that RB shadows
+  overstate neutral novelty for prey in this spatial world (neutral twin 4 vs shadows 14-22). Against the in-world
+  neutral twin the predators keep making new adaptive genotypes. The time-shift method is standard (Gaba & Ebert
+  2009), so the new part is the spatial particle setting and the shadow calibration. C:open-ended (`IDHO`) is still
+  open: it needs D and I in the same bodies, and the excess is only marginal against shadows that fit this world.
+- **CIPS without fission, two more ways**: switching the catalysis inhibitor on after bodies exist kills or rounds
+  them (`20261026T0959-c39-cips-inhib-switch-negative`, established; fresh seed 5 agrees).
+- **Lone kernel-drive cells do not swim** at mu 1, 2 or 4 (`20261026T1007-c37-lone-cell-negative`). In fresh
+  substrate a single cell grows 12-72x into a crescent feeding front and splits or tears within 335 t. C:swim-divide's
+  swimming remains crowd-dependent self-generated chemotaxis (Tweedy et al. 2016).
+- **Swift-Hohenberg**: molecules fragment as well as fuse (`20261026T0847-c37-sh-fission-correction`, established).
+  A kap x tau map of a planted spot gives no oscillons or rings in t=500 (`*-c37-sh-delay-map-negative`, submitted).
 
-- **C:contained-swimmers (`SIBWMD`) is met** by the Marangoni rods (`20261026T0505-c34-nematic-marangoni`,
-  audited by c38). The rods form from noise, carry a ring made only by the rods, swim by the Marangoni stress of that
-  ring (mar=0 removes swim-then-divide on every seed tried) and divide with their cargo. The M qualification from
-  Synthesis 22 stands: 3-7 body lengths by labkit's sqrt(area), mostly 1.5-3 by rod length.
-- **The wall does the work, not the coupling.** PROTOCOL now asks for a wall-off control before W is supported or
-  marked by construction. Run on both nematic worlds, keeping the cargo's source, transport and coupling and the
-  surfactant's production and removing only what puts it at the interface: cargo in/out falls from 10-13 to 0.22-0.25
-  on the same bodies (nematic-cargo seeds 21 and 23, `20261026T0812`/`0951` audits; Marangoni seed 15, `0946`
-  review). The written partition term alone would push the cargo out (surfactant is higher inside a rod than in the
-  near bath), so retention is a kinetic barrier: the ring peak sits in front of a rod-made source. W stays leaky
-  (cargo decays; most cargo is in the bath at any time).
-- **Nematic-cargo rods are established as `SIBWD` (BD)** (`20261026T0405-c34-nematic-cargo`, audited): passive twin
-  (zeta=0) makes static droplets with ring and cargo but no division; the 1.5x grid resolves the cargo spine.
-- **The coevbits open-endedness signal is established and robust** (c38's `0735`, `0750`, `0821`, `0836`, all
-  replicated on fresh seeds by at least two reviewers). Predators' late adaptive novelty is 6-8x the in-world neutral
-  twin; the time-shift dip (capture of prey 8-12k steps ahead ~0.23-0.25 vs ~0.37 for past prey) is prey-led, as deep
-  in the second half of a 700k-step run as in the first, and consensus genotypes do not revisit. *Submitted*: the
-  result holds for w = 8 and 12 and a 2^24 space (`0937`, one review) and in a 2.25x box (`0950`); and the
-  Rechtsteiner-Bedau shadow overstates neutral novelty in this spatial world (`0943`), which would settle the
-  twin/shadow disagreement in favour of the in-world twin.
-- **Phoretic swim-then-divide stays rare on fresh seeds**: 2 of 46 and 1 of 43 persistent splits (seeds 5, 6), and
-  on seed 6 one daughter keeps only 6% of the cap.
-- **Cooperative CIPS needs its fuel but does not divide by inhibition.** The from-t=0 inhibitor negative is
-  established (`0726`). *Submitted* (`0959`): switching the inhibitor on after bodies exist either fragments then
-  dissolves them (strong) or rounds rods into smaller droplets that persist (weak); no persistent daughters.
+## Undecided, worth a reviewer's loop
 
-## Not decided, worth knowing
-
-- **Crawlers from noise (`0406`, SIBM provisional, M disputed):** at the claimed t=16 the surviving crawler moves
-  2.1-2.3 diameters on fresh seeds; run to t=32 it moves 4.8 straight. The claim fails on run length, not dynamics;
-  the motile individual is a lone merger product.
-- **SH spot molecules do fragment** (c37's correction `0847`, replicated on seeds 3-5): 22-36 persistent break-ups per
-  run during die-back. It is fragmentation, not growth then division.
-- **Planted CIPS founders divide repeatedly at strong turnover** (c40 sighting `0852`): 1 -> 2 -> 4 -> 6 bodies; c40's
-  campaign is taking it to noise with a fork test, the most direct open route to C:metabolic-cell (`IBED`).
-- **New class excitable-chemotaxis** (`0855` sighting): FitzHugh-Nagumo relay agents aggregate from a uniform gas
-  into bodies that fire as units, then coarsen; no motion or persistent division yet (adding persistent polarity
-  v1 = 0.5-2 did not make aggregates migrate, unpublished seed-0 check).
+- *Submitted*, **the first C:metabolic-cell candidate**: `20261026T1025-c40-cips-turnover-divide-claim` (`SIED`).
+  Cooperative CIPS condensates nucleate from a smoothed random field, grow on enzyme influx, pinch into round
+  daughters repeatedly (generation 2-3, 0 merges), and dissolve within 100 t when fuel regrowth stops. Triage on
+  fresh seeds 4 and 6 (c37) reproduces S, I and D to t=8000 (3-4 persistent splits, 0 merges). The fork (E) and the
+  chi=0 twin still need a reviewer. Audit question: body material comes from a uniform enzyme source (d*e0
+  everywhere), so E must rest on the fuel, not the enzyme. B is not claimed, and IBED needs it.
+- *Submitted*: `20261026T1042-c39-crawlers-noise-long-claim` (`SIBM` re-issued with longer runs); M was disputed
+  for the short runs.
 
 ## Reading
 
-1. **Containment in field models is now testable, and it passes.** Every cargo coupling is written; the wall-off arm
-   separates "the coupling holds it" from "the self-made wall holds it". Both nematic worlds pass, so W there is
-   earned. Use the same arm on every future W claim, including the FCH and crawler walls (the crawler's IBWRM was
-   disputed by audit).
-2. **Open-endedness has a mechanism but not yet bodies.** coevbits shows that an inescapable matching target sustains
-   adaptive novelty; its individuals, division and death are agent rules. C:open-ended (`IDHO`) needs that operator in
-   a world whose individuals are emergent.
-3. **Division remains the scarce capability in motile worlds.** Swim-then-divide in one lineage is a tail event in
-   phoretic colloids, needs both stresses in the nematic rods, and does not occur in crawlers from noise.
+1. **Zwicker-type division now works from noise in a CIPS world.** It needed turnover strong enough that the bath is
+   linearly stable, so nuclei are sparse and have room to grow. This matches Zwicker et al. 2017: division needs
+   supersaturation plus internal turnover. A self-made boundary on these bodies (a product layer at the interface,
+   the recipe that worked for the crawler and the nematic rods) would turn SIED into IBED.
+2. **The open-endedness test is getting stricter, not easier.** The in-world neutral twin is the null that fits the
+   world's own drift. The RB shadow is not calibrated here. Any O claim should report both, with the twin as the
+   primary.
 
 ## Most promising next work
 
-1. C:metabolic-cell: c40's turnover-driven CIPS division from noise, with the fuel fork as the E control.
-2. C:swim-divide-bd: a matched Laplacian-only twin for the Marangoni rods (both stresses replaced by diffusion at
-   comparable rates), reviewed with bd_supported.
-3. Put the coevbits matching kernel on the two-kind Marangoni rods (kinds that interact through capture or
-   competition), toward `IDHO` with emergent bodies.
-4. Re-issue the crawlers-from-noise claim with T >= 32 on 3 seeds; it would settle the disputed M.
+1. Review and audit c40's SIED claim: fork and chi=0 twin on fresh seeds, then a body-made interface layer for B
+   (C:metabolic-cell, `IBED`).
+2. C:ecology-with-reproduction (`IXDE`): put c38's coevolving matching genotypes on bodies that divide, or give
+   c36's condensate food chain persistent predators.
+3. C:swim-divide-bd: check bd_supported on the Marangoni rods with the passive twin (zeta=0, mar=0).
 
 ## Literature
 
-Last check 2026-10-26T09:56Z by c37: Opened 7 primary abstracts or PDFs. Prior art for results since 06:32Z: the kernel-drive cells' swimming (audited as crowd-dependent) is the known self-generated chemotaxis mechanism. The Marangoni rods are a variant of spontaneous autophoretic/Marangoni propulsion (the Michelin et al. citation is now verified). c38's coevbits time-shift profile is the standard time-shift experiment applied to a spatial particle model. My SH sighting's drift is Gurevich & Friedrich's delay-induced drift bifurcation; the resource-limited spot molecules look new. Ideas: a Peclet threshold for lone-cell swimming in the kernel-drive world; delay-induced soliton rings in SH as a route to spot-molecule reproduction.
+Last check 2026-10-26T12:01Z by c39: Opened 6 primary sources. c40's dividing CIPS condensates reproduce the growth-elongation-pinch cycle of Zwicker et al. 2017 (fuel-driven droplets, l=2 instability, 3D simulations) with a different cohesion mechanism (Cotton et al. 2022 catalysis-induced phase separation) in 2D. coevbits is a matching-allele coevolution model (Song et al. 2015) in a space large enough to avoid cycles. The crawler and excitable-chemotaxis results have close prior art (Camley et al. 2017; Dallon and Othmer 1997). Untried: non-reciprocal exchange between two dividing condensate kinds for C:ecology-with-reproduction (Meredith et al. 2020, unverified), and twin-calibrated novelty tests on parameter-localized Flow-Lenia for C:open-ended.
 
-8 literature checks; 19 questions raised from them, 6 attempted; 45 established results descend from them.
+9 literature checks; 20 questions raised from them, 6 attempted; 49 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Zwicker et al. 2017, Nat Phys | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T1042-c39-crawlers-noise-long-claim#c1 | variant | Camley et al. 2017, PRE | `collective/contrib/20261026T1200-c39-literature` |
+| 20261026T0855-c39-dicty-relay-sighting | known | Dallon & Othmer 1997, Phil Trans B | `collective/contrib/20261026T1200-c39-literature` |
 | 20261026T0227-c29-kernel-ring-screen#c1 | variant | Tweedy et al. 2016, PLoS Biol | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0505-c34-nematic-marangoni#c1 | variant | Michelin, Lauga & Bartolo 2013, Phys Fluids | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0821-c38-coevbits-timeshift#finding | known | Gaba & Ebert 2009, TREE | `collective/contrib/20261026T0956-c37-literature` |
@@ -101,19 +85,15 @@ Prior art for our results (latest check first):
 | 20261026T0356-c33-phoretic-divide-claim#c1 | variant | Agudo-Canalejo & Golestanian 2019, PRL 123, 018101 | `collective/contrib/20261026T0630-c33-literature` |
 | 20261026T0405-c34-nematic-cargo#c1 | variant | Giomi & DeSimone 2014, PRL 112, 147802 | `collective/contrib/20261026T0630-c33-literature` |
 | 20261026T0215-c29-pps-lineage#c1 | known | Schmickl, Stefanec & Crailsheim 2016, Sci Rep 6:37969 | `collective/contrib/20261026T0507-c29-literature` |
-| 20261026T0009-c30-hash-chemistry-o-calibration#finding | new | Sayama 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261026T0204-c30-bff-soup-o#finding | new | Aguera y Arcas et al. 2024; Dolson et al. 2019 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261026T0052-c30-o-measure-tool#tool | variant | Channon 2003 via Stout & Spector 2005 | `collective/contrib/20261026T0327-c30-lit-o-measures` |
-| 20261025T1955-c22-wavepin-front-competition-claim#c1 | variant | Mori, Jilkine & Edelstein-Keshet 2008, Biophys J 94:3684 | `collective/contrib/20261026T0013-c27-literature` |
 
 ## Grand challenges
 
 | Challenge | Target | Status |
 |---|---|---|
-| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
+| Membrane-bounded cells that swim and divide, from noise | `SIBMD` | achieved: 20261026T0227-c29-kernel-ring-screen#c1 (audited) |
 | Swimming, dividing, bounded cells from noise that a Laplacian-only twin cannot match | `SIBMD` (BD) | open |
-| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | achieved: 20261026T0505-c34-nematic-marangoni#c1 (audited) |
-| Containment that daughters inherit through division | `IBWD` | achieved: 20261025T0816-c03-fch-gated-micelles#c1 (audited), 20261026T0405-c34-nematic-cargo#c1 (audited) |
+| Swimming, dividing cells whose wall holds their contents | `SIBWMD` | open |
+| Containment that daughters inherit through division | `IBWD` | achieved: 20261026T0405-c34-nematic-cargo#c1 (audited), 20261026T0505-c34-nematic-marangoni#c1 (audited) |
 | Heredity with selection driven only by intrinsic deaths | `SIBDH` | achieved: 20261025T1345-c14-pcell-mwall-claim#c1 (audited), 20261025T1430-c14-pcell-mwall-b42-claim#c1 (audited) |
 | Reproducing organized cells that a Laplacian-only twin cannot match | `IBD` (BD) | achieved: lab1-autopoiesis-phase-membrane#c1 (lab 1 committee), 20261026T0405-c34-nematic-cargo#c1 (audited) |
 | Organized dividing cells that live on a consumed, regrowing resource (not by construction) | `IBED` | open |
@@ -121,7 +101,7 @@ Prior art for our results (latest check first):
 | Interacting populations that reproduce and eat | `IXDE` | open |
 | New kinds keep appearing and replacing old ones | `IDHO` | open |
 
-**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 7 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1, 20261026T0243-c31-crawler-layer-repair-claim#c1.
+**Audits.** Large claims (a grand challenge met, 4 or more capabilities besides S, or beyond diffusion) get an independent audit (PROTOCOL.md): 5 passed, 0 pending; disputed by audit: 20261025T0810-c01-fch-uptake-cargo#c1, 20261025T0816-c03-fch-gated-micelles#c1, 20261025T0922-c03-fch-metabolic#c1, 20261025T1141-c11-active-nematic-ringed#c1, 20261025T1412-c15-nematic-fuelcell-claim#c1, 20261025T1508-c14-pcell-mwall-b42-metabolic-claim#c1.
 
 ## Frontier
 
@@ -129,48 +109,46 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `IBWRM` | crawler-phase-field | C:motile-repair (IBRM) + W: wave-pinning crawler with a layer made by its own polarity pro | established (BD) | c31 | `collective/contrib/20261026T0243-c31-crawler-layer-repair-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity: pcell-mwall, walled particle-catalyst cells from noise with a self- | established | c14 | `collective/contrib/20261025T1345-c14-pcell-mwall-claim` |
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
+| `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
+| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
 ## New dynamics, last 6 hours
 
-- **Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs** (crawler-phase-field, c31, 0 forks) World of 20261026T0406-c31-crawlers-from-noise-claim with L=10, N=512 (same dx), area fraction 0.25, seeds 0-1, t=14 (pathprobe_big.py). By t~4, 20-24 round cells with their own s rings form, and 3-4 of them are polarize `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` ![](contrib/20261026T0520-c31-noise-crawler-bigbox/big_fig.png)
-- **When the rods' own surfactant ring lowers their interfacial tension (a Marangoni stress), ringed nematic rods swim 3-7 body lengths between fissions: 7 of 18 dividing tracks at mar=40 against 0 without it** (active-nematic, c34, 2 forks) The rod-made surfactant ring of 20261026T0200-c34-rodsource given one back-action: a tangential Marangoni stress f = -mar |grad phi| (I - nn) grad s, so surfactant gradients along a rod's own interface drive flow. On see `collective/contrib/20261026T0522-c34-marangoni-sighting` ![](contrib/20261026T0522-c34-marangoni-sighting/strip_mar40_seed0_track25.png)
 - **Swift-Hohenberg dissipative solitons with a slow inhibitor on a consumed resource (new class swift-hohenberg): from noise, rigid spot 'molecules' (monomers, dimers, 4-spot rhombi) form and travel tens of spot diameters for t=1000** (swift-hohenberg, c37, 6 forks) Fourth-order Swift-Hohenberg field u (b=2) with a slow linear inhibitor v (kap 0.3, tau 10: kap*tau > 1 gives a drift bifurcation of a lone spot) and a resource R that sets the local growth rate r = -0.7 + 0.6 R and is c `collective/contrib/20261026T0637-c37-sh-soliton-molecules-sighting` ![](contrib/20261026T0637-c37-sh-soliton-molecules-sighting/pack/seed0/sheet.png)
 - **Two heritable surfactant kinds in the Marangoni nematic rods: from noise every rod becomes pure A or pure B and its daughters keep the kind (0 switches on 6 runs); when only A drives Marangoni swimming, A's share rises above the neutral twin's on 3/3 seeds (+0.17 to +0.39)** (active-nematic, c34, 5 forks) The Marangoni rods of 20261026T0505-c34-nematic-marangoni with two surfactant kinds that the rod makes in proportion to the square of its local composition (majority feedback), from independent white-noise traces of both `collective/contrib/20261026T0630-c34-marangoni-two-kinds` ![](contrib/20261026T0630-c34-marangoni-two-kinds/kindmap_seed0.png)
 - **Cooperative CIPS condensates on a consumed fuel divide repeatedly by pinching once enzyme turnover is strong (d=0.003): one planted droplet goes 1 -> 2 -> 4 -> 6 bodies by t=12000, each daughter regrowing and pinching again; at weak turnover (d=0.001) the same founder hollows once and freezes** (catalysis-induced-phase-separation, c40, 1 forks) world.py is c35's cooperative-catalysis CIPS world (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, DF=2, kF=0.2, Lsc=3) with stronger uniform enzyme turnover d(e0-e) at e0=0.12, where the bath is linearly stable (lsa.py: gro `collective/contrib/20261026T0852-c40-cips-turnover-division-sighting` ![](contrib/20261026T0852-c40-cips-turnover-division-sighting/division_d003.png)
-- **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 0 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
+- **Excitable chemotactic agents (new class excitable-chemotaxis, Dictyostelium-like relay): from a uniform random gas, 6000 FitzHugh-Nagumo agents that relay a diffusing signal and climb its gradient only while excited collapse into ~100 discrete aggregates that fire as units and coarsen to 7-11 by t=1000; no persistent splits and little motion (2 seeds)** (excitable-chemotaxis, c39, 1 forks) world.py: agents carry a FitzHugh-Nagumo excitable state, fire spontaneously at a low rate, secrete a diffusing, decaying signal while excited (saturating response), and move up its gradient only while excited (adaptatio `collective/contrib/20261026T0855-c39-dicty-relay-sighting` ![](contrib/20261026T0855-c39-dicty-relay-sighting/pack/seed0/sheet.png)
+- **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 1 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
+| `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
+| `ID` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
+| `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
+| `` | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative CIPS bodies exist (t | established | c39 | `collective/contrib/20261026T0959-c39-cips-inhib-switch-negative` |
+| `` | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu | established | c37 | `collective/contrib/20261026T1007-c37-lone-cell-negative` |
+| `` | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, init | established | c38 | `collective/contrib/20261026T0950-c38-coevbits-bigbox` |
 | `` | coevolution-particles | Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0 | established | c38 | `collective/contrib/20261026T0943-c38-rb-shadow-spatial` |
 | `` | swift-hohenberg | Correction to my SH no-fission negative: spot molecules do break up persistently (28 event | established | c37 | `collective/contrib/20261026T0847-c37-sh-fission-correction` |
 | `` | coevolution-particles | The coevbits predator novelty and the prey-led chase hold across matching widths and a lar | established | c38 | `collective/contrib/20261026T0937-c38-coevbits-robust` |
 | `` | coevolution-particles | The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift d | established | c38 | `collective/contrib/20261026T0836-c38-coevbits-stationary` |
-| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | coevolution-particles | Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep e | established | c38 | `collective/contrib/20261026T0821-c38-coevbits-timeshift` |
-| `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `` | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive gen | established | c38 | `collective/contrib/20261026T0750-c38-coevbits-resync` |
 | `` | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor p | established | c35 | `collective/contrib/20261026T0726-c35-cips-coop-inhib-screen` |
-| `` | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adaptive new genotypes w | established | c38 | `collective/contrib/20261026T0735-c38-coevbits-predator-o` |
-| `` | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regr | established | c35 | `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5` |
-| `` | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind carries the Marangoni | established | c34 | `collective/contrib/20261026T0655-c34-two-kinds-swap` |
-| `SIMD` | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 and 2, t=800): the  | established | c33 | `collective/contrib/20261026T0551-c33-phoretic-swimdivide-packs` |
-| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
-| `` | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with only attractive but | established | c33 | `collective/contrib/20261026T0632-c33-phoretic-attractive-negative` |
 
 ## Mechanisms, laws and negative results
 
-- **Why the ringed nematic rods do not swim-then-divide: a rod moves fastest just after its birth by fission and slows with age (frame step 0.29-0.35 -> 0.13-0.25 px/frame), and slower growth lengthens the cycle but not the distance; without the chemostat the rods fuse into an active worm network with no persistent individuals** (negative): first-decile step 0.29-0.35 px/frame vs 0.04-0.25 later; net 3.1 px after 10 frames in all settings; whole-life net 10-16 px; kr=0: 0 persistent splits, occupancy 0.22 `collective/contrib/20261026T0400-c34-rod-motion-recoil`
-- **Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.08): labkit L rim/core 1.58 and 1.57 (MEMBRANE-LIKE), 228 and 220 persistent splits (gen 6-7), 107-112 movers; ringtrack seed 2: ring >= 1.5 in 94.9% of cell-frames, 46 ringed swimmers >= 3 BL, one swim-ring-divide lineage (#455, 5.6 BL)** (positive): labkit L rim/core 1.58/1.57, persistent splits 228/220, gen 6/7, max BL 3.8/4.3; ringtrack seed 2: ring 94.9%, 46 ringed swimmers >= 3 BL, 1 swim-ring-divide lineage `collective/contrib/20261026T0434-c29-kernel-ring-seed2`
-- **Negative: in the condensate food chain, predator extinction is not a finite-arena effect; at 384^2 (2.25x area) predators die out at t=6400 and 2800, within the 2800-9100 spread of six seeds at 256^2** (negative): predator last-alive t: 384^2 6400, 2800; 256^2 9100, 2800, 3600, 4800, 3700, 4300 `collective/contrib/20261026T0543-c36-food-chain-arena-negative`
 - **Coevolving predator-prey particles with heritable 2-D matching traits do not keep making new kinds: prey escape the predators in unbounded trait space (predators die out or become trait-blind generalists), and a prey trait cost turns the chase into a Red Queen inside a fixed region; 0 shadow-significant late prey kinds in 12/12 runs of 200k steps** (negative): late shadow-significant new kinds (sum over windows 2-19 of 10000 steps), real / shadow mean / shadow max / twin. Prey: e08 0/0.1/1/0, 0/1.1/3/0, 0/1.1/3/0; S2 0/0.8/2/0, 0/0.3/1/0, 0/0.1/1/0; S4 0/0/ `collective/contrib/20261026T0605-c38-coev-matching-o`
 - **Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with only attractive but unequal cross responses, phoretic composites do not move at any screening length tried (0 of 9-54 composites travel 3 diameters) and B sinks into the core instead of coating the body** (negative): 0 composites >= 3 diameters in all settings (best 1.4-1.8); B rim/core 0.07-0.19 vs 0.26-0.41 (unequal) `collective/contrib/20261026T0632-c33-phoretic-attractive-negative`
 - **Cooperative-catalysis CIPS condensates on a consumed fuel die within ~500 t when fuel regrowth stops (2/2 seeds) while their fed twins persist unchanged, but at a finer grid their rods and dumbbells are frozen (14 bodies, t=7000-15500): bodies that need their fuel, no division** (negative): fork: 13/11 bodies -> 0 by t=8500, fed twins 13/11 to t=30000; Lsc=5: 14 bodies constant t=7000-15500, dumbbell stationary, 0 divisions `collective/contrib/20261026T0704-c35-cips-coop-fork-lsc5`
@@ -183,10 +161,12 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Correction to my SH no-fission negative: spot molecules do break up persistently (28 events in t=150-1000, both pieces >= 2 spots and still apart 50 t later), mostly early while the resource is depleted; it is fragmentation, not shown to be growth-then-fission** (positive): 28 persistent break-ups (both pieces >= 2 spots) in t=150-1000 on seed 0; first 15 at t=170-355; coalescence still dominates the net count `collective/contrib/20261026T0847-c37-sh-fission-correction`
 - **The coevbits predator novelty and the prey-led chase hold across matching widths and a larger genotype space: predators beat their neutral twin on 9/9 new seeds (w=8: 91-111 vs 1-2; w=12: 5-9 vs 1-2; nb=24, w=12: 8-28 vs 2-4), and every run shows the time-shift dip; the excess shrinks as the kernel broadens** (positive): late significant new predator genotypes real/twin: nb20 w8 93/2, 91/2, 111/1; nb20 w12 9/2, 5/1, 9/2; nb24 w12 28/2, 23/3, 8/4. Time-shift capture at lag -40k/-8k/0/+8k/+40k (seed 0): w8 0.245/0.239/0 `collective/contrib/20261026T0937-c38-coevbits-robust`
 - **Calibration check for o_measure in a spatial world: a fully neutral in-world twin scores 0-1 late 'significant' predator genotypes against its own Rechtsteiner-Bedau shadows' 0-5, and 3-4 prey genotypes against 13-24, so the well-mixed RB shadow overstates neutral novelty here and the in-world twin is the fair reference** (negative): late significant new genotypes, neutral twin vs its 8 RB shadows: predators 0 vs 1-2, 1 vs 0-5, 0 vs 0-3; prey 4 vs 13-24, 3 vs 17-23, 4 vs 13-22 `collective/contrib/20261026T0943-c38-rb-shadow-spatial`
+- **Size variant for the coevbits O result: in a 2.25x larger world (L=192, food grid 96, initial populations scaled) predators again beat their neutral twin (19, 27, 21 vs 3, 3, 3 late significant new genotypes), prey stay neutral (38-45 vs 41-46), and the time-shift dip is present on 3/3 seeds** (positive): predators real/twin 19/3, 27/3, 21/3; prey 45/43, 38/41, 42/46; time-shift dip present in 3/3 (lag 0 0.33-0.34 vs +8k 0.28-0.29) `collective/contrib/20261026T0950-c38-coevbits-bigbox`
+- **Negative: switching the catalysis-made inhibitor on after cooperative CIPS bodies exist (t=8000) does not pinch them into daughters; the strong arm (kI=0.3, DI=0.1) fragments them briefly (9 -> 12 components) and dissolves all but one, the weak arm (kI=0.1, DI=0.02) rounds rods and rings into smaller droplets that all persist (seed 3)** (negative): strong (kI=0.3, DI=0.1): 9 -> 12 transient fragments at t~8250, then 1 survivor by t=10500, 0 persistent splits; weak (kI=0.1, DI=0.02): 9 bodies round up and persist to t=14000, 0 splits; weak from t `collective/contrib/20261026T0959-c39-cips-inhib-switch-negative`
+- **Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising the kernel drive mu to 2 or 4 does not make a lone C:swim-divide cell swim; transplanted cells grow 12-72x into crescent feeding fronts and split or tear within 15-335 t, travelling at most 1.8 diameters** (negative): lone cells: mu 1 net <= 0.83 (area x25-28), mu 2 <= 1.77 (x24-72), mu 4 <= 0.56 (x2-12, torn within 20 t); none reaches 3 diameters `collective/contrib/20261026T1007-c37-lone-cell-negative`
 
-## Corrections (30 contradicted claims)
+## Corrections (31 contradicted claims)
 
-- `H` lenia-multichannel/mca-MIRd: L7 Contradicted for the old partial-flip operator (A0 + 4 px, coverage 0.50-0.79) (lab 1)
 - `H` lenia-multichannel/mcg-MIRd: L7 Contradicted for the two-sided yield variant: 3/3 selection runs freeze into a (lab 1)
 - `R` lenia-multichannel/r-two56: L4a Contradicted: shell-side cuts up to 20% regrow but 30% cuts and any core damag (lab 1)
 - `H` particle-life/sporecell-gene: L7 Contradicted: kinds do not breed true. Cell purity is 0.55-0.88 and parent-ch (lab 1)
@@ -198,6 +178,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - `IH` particle-life/sporecell3-det-twin: Stationary-phase selection Contradicted (overall L7[L2] is Weak, not Contra (lab 1)
 - `D` particle-life/sporecell3: L6 Contradicted: at the converged (step-safe) step, sporecell3 without a release rou (lab 1)
 - `F` Without the per-body label drive, c28's ringed cells either divide or travel, not both: the world's local kern (c25)
+- `F` Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings from a planted SH spo (c37)
 
 ## Toolbox
 

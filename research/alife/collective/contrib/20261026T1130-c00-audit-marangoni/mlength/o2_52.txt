@@ -1,0 +1,13 @@
+== seed52: grid 128x128, 201 frames, 101 tracks, 26 dividing tracks (2 split children >= 20 frames)
+  passing >= 3: {'bl_lab': 7, 'bl_lab_corr': 7, 'bl_4lam': np.int64(0), 'bl_12lam': np.int64(0), 'bl_2pilam': np.int64(0), 'bl_feret': np.int64(0), 'bl_feret_max': np.int64(0), 'bl_ext_u': np.int64(0), 'bl_r2': np.int64(1), 'bl_feret_corr': np.int64(0), 'bl_feret_rear': np.int64(0)}
+  best: {'bl_lab': 5.57, 'bl_4lam': np.float64(2.58), 'bl_12lam': np.float64(2.97), 'bl_2pilam': np.float64(2.91), 'bl_feret': np.float64(2.78), 'bl_ext_u': np.float64(2.99), 'bl_r2': np.float64(3.27), 'bl_feret_rear': np.float64(2.31)}
+  median over dividing tracks: sqrt(area) 7.04, feret 13.9, 4sqrt(lam) 15.2, aspect 3.25, feret/sqrt(area) 1.96
+  tracks with any low-overlap link (centroid fallback, possible swap): 0
+  births of the >=3 labkit tracks: ['split', 'split', 'split', 'split', 'split', 'split', 'split']
+   id 20 life 81 net 43.5 | lab 5.57 4lam 2.58 2pilam 2.91 feret 2.78 ext_u 2.99 r2 3.27 rear 2.31 | feret 15.6 (birth 9.5 div 23.1) ext12u 13.3 size 7.81 straight 0.60
+   id 10 life 26 net 32.7 | lab 4.77 4lam 2.30 2pilam 2.60 feret 2.47 ext_u 2.51 r2 2.75 rear 1.91 | feret 13.2 (birth 8.7 div 21.7) ext12u 11.9 size 6.85 straight 0.89
+   id 24 life 23 net 29.0 | lab 4.13 4lam 1.93 2pilam 2.18 feret 2.11 ext_u 2.15 r2 2.31 rear 1.59 | feret 13.7 (birth 8.6 div 21.8) ext12u 12.5 size 7.01 straight 0.97
+   id 26 life 24 net 28.1 | lab 4.09 4lam 1.95 2pilam 2.20 feret 2.10 ext_u 2.22 r2 2.45 rear 1.76 | feret 13.4 (birth 8.8 div 20.2) ext12u 11.5 size 6.87 straight 0.95
+   id 19 life 21 net 24.9 | lab 3.54 4lam 1.62 2pilam 1.83 feret 1.76 ext_u 1.78 r2 1.91 rear 1.26 | feret 14.1 (birth 9.3 div 21.0) ext12u 13.0 size 7.01 straight 0.99
+   id 15 life 19 net 24.1 | lab 3.42 4lam 1.61 2pilam 1.81 feret 1.77 ext_u 1.78 r2 1.89 rear 1.22 | feret 13.6 (birth 8.3 div 21.1) ext12u 12.7 size 7.05 straight 1.00
+   id 12 life 38 net 25.2 | lab 3.18 4lam 1.30 2pilam 1.46 feret 1.45 ext_u 1.71 r2 1.82 rear 0.81 | feret 17.4 (birth 9.4 div 28.2) ext12u 13.8 size 7.92 straight 0.54

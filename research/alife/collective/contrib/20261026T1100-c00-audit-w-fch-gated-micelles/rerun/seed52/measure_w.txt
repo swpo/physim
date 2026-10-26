@@ -1,0 +1,21 @@
+== unchanged_seed52: body-frames 3704 (frames >= 5); median in/out 24.85 (p10 6.41, p90 73.84); share >= 2x 0.998; t>=120: median 32.02, share 0.998; tracks >=2x most of life [72, 72]; daughters >=2x at +5: 38/38 (median 8.508113307381972); persistent splits 19, max gen 4; median q in/out 0.150/0.238; small-body fallback 0.00
+   frame   5: median   4.94  share>=2 1.00  bodies 25
+   frame  10: median   5.29  share>=2 1.00  bodies 28
+   frame  15: median   7.64  share>=2 1.00  bodies 28
+   frame  20: median  11.07  share>=2 1.00  bodies 28
+   frame  25: median  15.62  share>=2 1.00  bodies 29
+   frame  30: median  19.22  share>=2 1.00  bodies 35
+   frame  35: median  23.00  share>=2 1.00  bodies 36
+   frame  40: median  27.33  share>=2 1.00  bodies 36
+   frame  45: median  32.46  share>=2 1.00  bodies 36
+   frame  50: median  38.82  share>=2 1.00  bodies 36
+   frame  55: median  38.09  share>=2 1.00  bodies 37
+   frame  60: median  35.98  share>=2 1.00  bodies 41
+   frame  65: median  39.43  share>=2 1.00  bodies 43
+   frame  70: median  37.61  share>=2 1.00  bodies 44
+   frame  75: median  37.77  share>=2 1.00  bodies 45
+   frame  80: median  39.94  share>=2 1.00  bodies 45
+   frame  85: median  42.03  share>=2 0.98  bodies 47
+   frame  90: median  37.74  share>=2 1.00  bodies 50
+   frame  95: median  40.90  share>=2 1.00  bodies 50
+   frame 100: median  43.87  share>=2 1.00  bodies 51

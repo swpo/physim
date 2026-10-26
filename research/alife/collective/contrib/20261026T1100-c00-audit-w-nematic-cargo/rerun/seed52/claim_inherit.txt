@@ -1,0 +1,2 @@
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-cargo/rerun/seed52/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=58, median in/out 5.05, fraction >= 2: 1.00
+/tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/nematic-cargo/rerun/seed52/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=42, median in/out 4.43, fraction >= 2: 0.95

@@ -1,0 +1,12 @@
+[fch-gated-micelles] seed 52: 100 frames x 200 steps, grid (128, 128)
+  frame 10/100  20.6s
+  frame 20/100  40.6s
+  frame 30/100  61.0s
+  frame 40/100  81.6s
+  frame 50/100  103.1s
+  frame 60/100  124.2s
+  frame 70/100  145.5s
+  frame 80/100  166.0s
+  frame 90/100  186.1s
+  frame 100/100  206.8s
+  -> /tmp/claude-0/-home-user-physim/a7c2ec48-e3a6-5436-88da-a7523dbbe428/scratchpad/waudit/fch-gated-micelles/rerun/seed52/FACTS.md  (207s sim)

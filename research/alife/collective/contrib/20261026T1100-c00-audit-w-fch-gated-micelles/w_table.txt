@@ -1,0 +1,22 @@
+W audit, fch-gated-micelles#c1. 100 frames x 200 steps, 128x128, dt 0.02 (claim settings). Body-frames = labkit components
+>= 12 px at frames 5..100. in/out = mean c in the body interior beyond ~2 px of the contour / mean c in the 2.5-5.5 px band
+outside the contour assigned to this body (measure_w.py). claim-def = the claim's own cargo_contrast.py definition (whole body
+u+1.6>0.8 vs beyond a 3-px dilation) applied to all frames >= 5; claim-script = its own printout (11 frames).
+daughters = surviving children of labkit persistent splits, measured 5 frames after the split.
+
+arm                                        seed  n_bf med in/out share>=2  t>=120 med/share  daughters>=2 @+5 dau med    q in/out  claim-def med/share  claim-script contrast f10..f100
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+unchanged                                    51  3903      23.79    1.000    30.82/1.000       36/36  (1.00)   7.89 0.146/0.232       19.55/0.984  10.2-35.8x, bodies>=2x 0.95-1.00
+unchanged                                    52  3704      24.85    0.998    32.02/0.998       38/38  (1.00)   8.51 0.150/0.238       21.08/0.999  10.0-30.6x, bodies>=2x 1.00-1.00
+walloff (chi_q=0)                            51  3903       3.41    0.998     3.95/0.997       36/36  (1.00)   2.37 0.462/0.373        3.37/0.977  2.5-7.1x, bodies>=2x 0.83-1.00
+walloff (chi_q=0)                            52  3704       3.51    0.995     4.01/0.994       37/38  (0.97)   2.65 0.467/0.374        3.39/0.991  2.4-6.7x, bodies>=2x 0.90-1.00
+homgate (gate by domain-mean q)              51  3903       2.59    0.760     2.93/0.843       15/36  (0.42)   1.96 0.146/0.232        2.88/0.959  2.1-6.0x, bodies>=2x 0.68-1.00
+smoothgate (gate by q blurred sigma 4px)     51  3903       4.57    1.000     5.54/1.000       36/36  (1.00)   2.65 0.146/0.232        4.11/0.988  2.8-9.5x, bodies>=2x 0.93-1.00
+betaoff (beta=0)                             51  3903       1.12    0.020     1.11/0.000        0/36  (0.00)   1.18 0.146/0.232        1.19/0.046  1.1-1.6x, bodies>=2x 0.00-0.59
+
+bodies identical to the unchanged run (u channel, every frame; labkit lineage summary): see bodies_identical.txt
+band sensitivity (measure_w.py with W_DIN/W_DOUT0/W_DOUT1): median in/out, share of body-frames >= 2x, daughters >= 2x at +5
+  rerun/seed51               default (in>=2.5, out 2.5-5.5): 23.79 / 1.000 / 36/36 | near (in>=1.5, out 1.5-3.5): 18.52 / 1.000 / 36/36 | far (in>=3.5, out 4-8): 28.41 / 1.000 / 35/35
+  controls/walloff_seed51    default (in>=2.5, out 2.5-5.5): 3.41 / 0.998 / 36/36 | near (in>=1.5, out 1.5-3.5): 2.47 / 0.748 / 3/36 | far (in>=3.5, out 4-8): 4.63 / 1.000 / 35/35
+  controls/walloff_seed52    default (in>=2.5, out 2.5-5.5): 3.51 / 0.995 / 37/38 | near (in>=1.5, out 1.5-3.5): 2.51 / 0.776 / 17/38 | far (in>=3.5, out 4-8): 4.76 / 1.000 / 37/37
+  controls/homgate_seed51    default (in>=2.5, out 2.5-5.5): 2.59 / 0.760 / 15/36 | near (in>=1.5, out 1.5-3.5): 1.98 / 0.491 / 1/36 | far (in>=3.5, out 4-8): 3.43 / 0.975 / 33/35

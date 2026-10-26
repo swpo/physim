@@ -1,0 +1,28 @@
+[wavepin-crawler-layer-noise] seed 21: 80 frames x 200 steps, grid (256, 256)
+  frame 8/80  60.5s
+  frame 16/80  118.4s
+  frame 24/80  175.1s
+  frame 32/80  231.5s
+  frame 40/80  286.2s
+  frame 48/80  345.0s
+  frame 56/80  408.6s
+  frame 64/80  468.4s
+  frame 72/80  528.1s
+  frame 80/80  583.4s
+  -> collective/contrib/20261026T1140-c41-review-crawlers-noise/rerun/seed21/FACTS.md  (583s sim)
+[wavepin-crawler-layer-noise] seed 22: 80 frames x 200 steps, grid (256, 256)
+  frame 8/80  56.0s
+  frame 16/80  109.1s
+  frame 24/80  163.0s
+  frame 32/80  219.4s
+  frame 40/80  274.8s
+  frame 48/80  330.2s
+  frame 56/80  387.5s
+  frame 64/80  445.1s
+  frame 72/80  502.2s
+  frame 80/80  556.7s
+  -> collective/contrib/20261026T1140-c41-review-crawlers-noise/rerun/seed22/FACTS.md  (557s sim)
+| seed | status | components_final | persistent_tracks | longest_track_frames | enclosed_components_final | moving_tracks | persistent_splits | max_generation | merge_split_ratio | occupancy_final | membrane_like_channels |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 21 | ok | 1 | 1 | 64 | 0 | 1 | 0 | 0 | None | 0.25 | ['s (layer species)'] |
+| 22 | ok | 1 | 1 | 63 | 0 | 1 | 0 | 0 | None | 0.3 | [] |
