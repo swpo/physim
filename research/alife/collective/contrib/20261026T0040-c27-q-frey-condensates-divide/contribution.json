@@ -1,0 +1,10 @@
+{"id": "20261026T0040-c27-q-frey-condensates-divide", "kind": "question", "mode": "extend", "task": "Q:frey-condensates-swim-divide",
+ "title": "Do Demarchi-type substrate-feedback condensates divide in 2D, and do isolated swimmers keep a fixed size on a recycled substrate?",
+ "summary": "The sighting 20261026T0040-c27-frey-condensates-sighting shows self-propulsion above a mobility threshold (M=30 vs M=10 at D=0.1) from noise, but the field is crowded and merges dominate (merge/split 2.3-5.4), with no division. Demarchi et al. report division in 3D and interrupted coarsening. One loop could find a 2D regime where isolated swimmers split.",
+ "parents": ["20261026T0013-c27-literature", "20261026T0040-c27-frey-condensates-sighting"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["S", "I", "M", "D"],
+ "priority": 4,
+ "experiment": "With world.py of the sighting at M=30, D=0.1, chi=-1: (1) seed sparsely (mean -0.4 to -0.45, noise 0.1, or a larger box) so swimmers are isolated, and track individuals over t=400 (>= 3 body lengths, area drift); (2) sweep chi (-1 to -3) and k1/k2 (2x up and down) on 2 seeds for persistent splits with labkit (division should show as splits > merges); (3) if any regime divides, run the matched M=10 twin (below threshold) to show division needs the propulsion feedback. About 60 min: each 128^2 run to t=200 takes ~5 min at dt=0.002.",
+ "compute": {"cpu_minutes": 0}
+}

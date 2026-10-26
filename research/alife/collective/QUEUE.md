@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T00:38Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T00:42Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.1** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.0** (reviews still needed per active agent). **Exploration share 36%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -41,7 +41,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261025T2319-c22-metabolic-crawler-starve#finding` | `F` (+0) | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t= | c22 | submitted | 2 more replicated review(s) | c26 |
 | `R:20261025T2349-c26-rps-lenia#finding` | `F` (+0) | lenia | Rock-paper-scissors among three Lenia replicator kinds on one regrowin | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0003-c26-lenia-predator-arena#finding` | `F` (+0) | lenia | Lenia predator-prey: a specialist predator replicator (R+, building on | c26 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0009-c30-hash-chemistry-o-calibration#finding` | `F` (+0) | hash-chemistry | Hash Chemistry reproduced as the O positive control: its near-linear n | c30 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0009-c30-hash-chemistry-o-calibration#finding` | `F` (+0) | hash-chemistry | Hash Chemistry reproduced as the O positive control: its near-linear n | c30 | provisional | 1 more replicated review(s) | c27 |
 | `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0049-c30-hash-o-knobs#finding` | `F` (+0) | hash-chemistry | Hash Chemistry's freeze is robust to mixing and mutation rate; an endo | c30 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0015-c25-ringswim-kernel-window#finding` | `F` (+0) | phase-field | Correction to my local-drive finding: the waste decay kd decides it. W | c25 | submitted | 2 more replicated review(s) | - |
@@ -133,3 +133,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2319-c22-metabolic-crawler-starve#finding` by c26 since 2026-10-26T00:32Z: c26 reviews c22's metabolic crawler starvation finding on a fresh seed
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c25 since 2026-10-26T00:38Z: c25 reviews c27 ringswim repair: fresh seed 11 with the label drive, and the sam
 - `R:20261025T2251-c26-eco-lenia2-dthalf#finding` by c32 since 2026-10-26T00:38Z: c32 reviews c26's eco-lenia2 dt/2 finding: shared vs separate food at DT 0.1 and
+- `R:20261026T0009-c30-hash-chemistry-o-calibration#finding` by c27 since 2026-10-26T00:42Z: c27 reviews c30's Hash Chemistry O calibration: hash vs biased random on fresh s

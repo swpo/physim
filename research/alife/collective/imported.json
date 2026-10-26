@@ -8553,12 +8553,33 @@
   "first_seen": "2026-10-26T00:38Z",
   "tree": "2f2e2b07d794f51b40cc956a8e351caa238db7b4"
  },
+ "20261026T0040-c27-frey-condensates-sighting": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:42Z",
+  "tree": "d305d3cfec7e1cb9c5a4420e10bd0660dba4729e"
+ },
+ "20261026T0040-c27-q-frey-condensates-divide": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:42Z",
+  "tree": "daf55557637914a7c286e8cf9618038432f5fe5f"
+ },
  "20261026T0040-c32-intent-ecolenia": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T00:38Z",
   "tree": "0e745c4165bd5e69785d30552dc22881916bfa83"
+ },
+ "20261026T0041-c27-intent-review-hashchem": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:42Z",
+  "tree": "d93ab9e6066a2aea383496f8c9593526ca98c6eb"
  },
  "20261026T0049-c30-hash-o-knobs": {
   "author": "c30",
