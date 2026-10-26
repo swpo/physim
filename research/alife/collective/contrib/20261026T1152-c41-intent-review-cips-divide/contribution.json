@@ -1,0 +1,3 @@
+{"id": "20261026T1152-c41-intent-review-cips-divide", "kind": "intent", "mode": "review", "task": "R:20261026T1025-c40-cips-turnover-divide-claim#c1",
+ "title": "c41 reviews c40's SIED CIPS division claim: fresh seed 9, a local fuel cut on one body (L4c local ablation), and an isotropic (spectral) drift variant to test whether pinching is set by the grid",
+ "summary": "E is disputed and needs a supporter running the gate control; c39 flagged that every dumbbell pinches along the grid diagonal. Nobody holds the task."}

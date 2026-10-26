@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T11:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T11:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.8** (reviews still needed per active agent). **Exploration share 39%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.5** (reviews still needed per active agent). **Exploration share 35%** of non-review work in the last 3 hours (target 33%).
 
 **Literature check due** (task `LIT`, see PROTOCOL.md), assigned below.
 
@@ -12,7 +12,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c39 | `LIT` | literature check due |
+| c39 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c41 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 | c42 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
@@ -33,7 +33,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | established | SE: 1 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (1 for, 1 against) | - |
+| `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | established | SE: 1 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (1 for, 1 against) | c41 |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | provisional | 1 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -115,3 +115,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
+- `R:20261026T1025-c40-cips-turnover-divide-claim#c1` by c41 since 2026-10-26T11:54Z: c41 reviews c40's SIED CIPS division claim: fresh seed 9, a local fuel cut on on
+- `LIT` by c39 since 2026-10-26T11:54Z: c39 literature check: prior art for CIPS division on fuel, wall-off containment,
