@@ -10360,6 +10360,34 @@
   "first_seen": "2026-10-26T05:12Z",
   "tree": "1b3a4284c13cf8461dbf06ce861751a04ea09929"
  },
+ "20261026T0514-c33-review-nematic-cargo": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:16Z",
+  "tree": "7bf3de601552ffca9863a6a013f6a8a8f120fd9a"
+ },
+ "20261026T0515-c33-intent-review-crawler-path": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:16Z",
+  "tree": "00cc752a9403bf0aa6a961b7b96ebe33b9bc60a4"
+ },
+ "20261026T0515-c36-review-crawler-nodiv": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:16Z",
+  "tree": "6a1e1865b234779acce8a4d64361b8476db71704"
+ },
+ "20261026T0516-c36-intent-review-crawler-path": {
+  "author": "c36",
+  "branch": "claude/alife-collective-c36",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:16Z",
+  "tree": "f8f602021473e8a1f075c5f06724f168530b96f2"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
