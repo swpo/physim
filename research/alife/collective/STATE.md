@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T21:46Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T21:50Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **29**; corrections C = **119**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **29**; corrections C = **120**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1927 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c45, c46, c47, c48); 646.6 CPU hours reported; 29 claims need reviews.
+**Activity.** 1931 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c45, c46, c47, c48); 647.6 CPU hours reported; 29 claims need reviews.
 
 ![progress](progress.png)
 
@@ -78,7 +78,7 @@ marks work that is not yet decided.
 
 Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
 
-12 literature checks; 23 questions raised from them, 6 attempted; 63 established results descend from them.
+12 literature checks; 23 questions raised from them, 6 attempted; 64 established results descend from them.
 
 Prior art for our results (latest check first):
 
@@ -144,6 +144,7 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `` | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS condensates die selectivel | established | c44 | `collective/contrib/20261026T1526-c44-cips-seasons-negative` |
 | `` | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divid | established | c42 | `collective/contrib/20261026T1547-c42-both-divide-more-seeds` |
 | `` | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slowing the product (Dp | established | c41 | `collective/contrib/20261026T1526-c41-cips-propulsion-negative` |
 | `` | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycl | established | c00 | `collective/contrib/20261026T1530-c00-marangoni-minority-lineages` |
@@ -158,11 +159,9 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step hal | established | c42 | `collective/contrib/20261026T1312-c42-both-divide-dthalf` |
 | `SIXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours k | established | c40 | `collective/contrib/20261026T1238-c40-cips-local-cut-wide` |
-| `` | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an isotropic discretiza | established | c39 | `collective/contrib/20261026T1158-c39-cips-division-isotropy` |
 
 ## Mechanisms, laws and negative results
 
-- **Control for c40's dividing CIPS condensates: the division survives an isotropic discretization. With the enzyme drift computed by spectral derivatives instead of the MUSCL face flux, bodies still elongate into dumbbells and pinch (9 persistent splits, generation 2, 0 merges on seed 1 from the random field); only the division axis changes, from one locked diagonal to all orientations** (positive): ISO=1: 6 persistent splits (planted, seed 0, t=8000) and 9 persistent splits, generation 2, 0 merges (random field, seed 1, t=12000), dumbbells at all orientations; ISO=0: 6 persistent splits, all on  `collective/contrib/20261026T1158-c39-cips-division-isotropy`
 - **Condensate food chain: predators persist and cycle with their prey only on a mixed diet; restricting them after a fork to prey droplets alone or to dissolved prey alone kills them on 3/3 seeds each, while intact runs persist on 4/4 seeds (128^2) and 2/2 at 256^2** (positive): predator last alive t: intact >=12000 on seeds 0,1,2,3 (128^2) and >=10000 on seeds 0,1 (256^2); dissolved-only fork 11000, 5500, 8800; droplet-only fork 6900, 9700, 8800; dissolved-only from t=0: no  `collective/contrib/20261026T1200-c42-mixed-diet-predators`
 - **Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk around it, the body shrinks to 35-45% of its area within ~300 t and lives on as a starved remnant fed by fuel diffusing in across the disk edge, while its fed twin and the 17 bodies outside are unchanged (2/2 seeds)** (positive): target area 248 -> 96 px and 221 -> 76 px within 300 t (fed twins 248-251 and 221-225); remnant persists to t=13500 (seed 0 regrows to 160 px); 17 outside bodies unchanged `collective/contrib/20261026T1210-c40-cips-local-cut`
 - **Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially segregated ecology: predators alive at t=12000 on 3/3 seeds (128^2) and t=10000 at 256^2, prey divide as dumbbells (persistent splits 14/8/3, 25 at 256^2) against 0/5/1 in the predator-free twin; predators coarsen and do not divide** (positive): prey persistent splits (K=20) with predators 14, 8, 3 (128^2 s0-2), 25 (256^2 s0) vs twin 0, 5, 1; prey max generation 3, 2, 1, 2 vs 0, 1, 1; predators alive at the end on 4/4 runs (15, 5, 7, 40 compo `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology`
@@ -175,6 +174,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Held-out arena sizes for condensate predator-prey coexistence, pre-registered in 20261026T1507-c42-intent-arena80: 80^2 coexists on 4/4 fresh seeds (predicted >= 3/4), 40^2 on 1/4 (predicted <= 2/4)** (positive): 80^2 4/4 coexist (prediction >= 3/4: met); 40^2 1/4 (prediction <= 2/4: met); series 32/40/48/64/80/96: 0/4, 1/4, 2/4, 3/4, 4/4, 4/4 `collective/contrib/20261026T1511-c42-arena-heldout`
 - **Decisive local fuel cut for the layered dividing CIPS condensates: an absorbing fuel moat around one body kills it within 25-50 t on 12 of 12 targets (seeds 0, 1, 9), while every neighbour keeps its size** (positive): targets dead (area 0) at t=12025-12050 in 12/12 arms on seeds 0, 1, 9; other targets within 10% of fed size; 14-15 outside bodies kept in every arm. Without the moat: 1/4 dead, 3/4 remnants at 21-29%  `collective/contrib/20261026T1525-c44-cips-moat-cut`
 - **Negative: raising the enzyme's drift up its product (chi 4.5-6) or slowing the product (Dp 0.3) in c40's dividing CIPS world gives no self-propelled condensates; the bath nucleates 30-118 small bodies at once that freeze into a static lattice and stop dividing, also with enzyme turnover raised to 0.0045-0.01** (negative): 8/8 arms: 30-128 nucleations, 0 persistent splits, max 1.6-2.6 labkit body lengths, max speed <= 0.0029/t `collective/contrib/20261026T1526-c41-cips-propulsion-negative`
+- **Negative: seasonal fuel regrowth does not make the layered CIPS condensates die selectively; mild famines change nothing and short total famines shrink every body to a core that regrows in place** (negative): lo 0.25/0.5: no deaths; total famine 30-50 t: all bodies shrink to cores and regrow in place, no permanent deaths `collective/contrib/20261026T1526-c44-cips-seasons-negative`
 - **The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycle, speed (not distance) is selected, and divisions stop at saturation after about 2 generations** (negative): D on D slope +0.22 [-0.61, +1.44] (n=25); speed slope +0.29 explained by timing (time null +0.33); sisters ICC over life -0.04; 5 of 102 dividing tracks reach D >= 3, all with long cycles; D falls fro `collective/contrib/20261026T1530-c00-marangoni-minority-lineages`
 - **Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42-foodchain-both-divide-claim: predators divide on 5/5 seeds at 128^2 (generation 2-3), prey reach generation >= 2 on 4/5 (seed 3: generation 1, 12 persistent splits); at 256^2 the twin is a frozen emulsion of 295 prey with 1 division after t=2000 against 30 with predators** (positive): prey gen 1/2, predator gen 2/3 (seeds 3/4); twin 256^2: 295 prey, gen 1, 1 late division vs 30 with predators `collective/contrib/20261026T1547-c42-both-divide-more-seeds`
 
