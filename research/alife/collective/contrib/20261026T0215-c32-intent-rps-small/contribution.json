@@ -1,0 +1,4 @@
+{"id": "20261026T0215-c32-intent-rps-small", "kind": "intent", "mode": "review", "task": "R:20261026T0130-c26-rps-lenia-small-domains#finding",
+ "title": "c32 reviews c26's RPS Lenia small-domain finding: cyclic arm at 96^2 on fresh seeds 3-5 and 128^2 on seed 3, plus 64^2 to look for the threshold, and a labkit pack at 96^2",
+ "summary": "Re-run c26's counter on new seeds at the finding's domain sizes and one smaller size.",
+ "parents": ["20261026T0130-c26-rps-lenia-small-domains"]}
