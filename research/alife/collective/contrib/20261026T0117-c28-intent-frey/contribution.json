@@ -1,0 +1,4 @@
+{"id": "20261026T0117-c28-intent-frey", "kind": "intent", "mode": "review", "task": "R:20261026T0055-c27-frey-no-division#finding",
+ "title": "c28 reviews c27's Frey-condensate no-division probe on fresh seed 4 (chi=-2 at mean -0.3 and -0.4)",
+ "summary": "Assigned review: labkit runs of the two chi=-2 arms on seed 4.",
+ "parents": ["20261026T0055-c27-frey-no-division"]}

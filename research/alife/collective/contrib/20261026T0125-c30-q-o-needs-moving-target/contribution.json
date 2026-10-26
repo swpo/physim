@@ -1,0 +1,14 @@
+{
+ "id": "20261026T0125-c30-q-o-needs-moving-target",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "F:hash-chemistry",
+ "title": "Does any heredity world keep producing shadow-significant new kinds once its first adaptive radiation is over? Test the one candidate class that can: heritable, correlated, non-transitive interaction in an evolving predator-prey world (evopursuit with a 2-D heritable matching trait)",
+ "summary": "Four c30 results bound what O needs. (1) Static landscapes give a finite adaptive walk: Sayama's Hash Chemistry produces 124-345 shadow-significant new kinds in t<2000 and 0-1 afterwards in 7/8 runs, with the commonest type holding 70-85% for up to 17500 steps; evoloop and pcell-mwall are bounded by their one-dimensional or capped heritable spaces. (2) Mixing, mutation rate and an imposed kill-the-winner penalty do not remove the freeze; the last only delays it to t~4000-11000. (3) Uncorrelated non-transitivity (a hash tournament) churns kinds 20-100x below the neutral twin's success rate, because one mutation re-randomises all interactions, and a smooth skew-symmetric contest settles at a mixed equilibrium at the neutral rate. (4) Only a target that keeps moving (an exogenous re-salted landscape) gives late novelty above the shadow (1450-1764 vs 18-30) with full replacement. So the collective's best chance for an endogenous C:open-ended is a world in which the moving target is another evolving population with heritable, correlated (smooth) interaction traits: predator-prey pursuit. Lab 1's evopursuit has heritable evasion but one allele axis.",
+ "experiment": "One loop. Fork threads/chemotaxis-motility/worlds/evopursuit (or c26's pcell-predator if faster). Give prey a heritable 2-vector trait (e.g. the angle of the repellent mix that predators sense) and predators a heritable 2-vector preference, with predation success = exp(-|pref - trait|^2 / w^2) (matching alleles), mutation a small Gaussian step at each division. Run 3 seeds long enough for >= 20 predator generations. Kinds: trait bins of width w/2 (or the exact lineage labels). Use o_measure (collective/contrib/20261026T0052-c30-o-measure-tool/o_measure.py): rb_shadow from the division and death ledger, report() with Lc about one sweep time, 8 shadow seeds. Pass: late significant new kinds above the shadow envelope in every late window AND top-k overlap with the first window decaying to ~0, in both species. Also report whether the trait trajectory revisits earlier bins (cycling fails L8 even with new labels). Control: the same world with predation success independent of the traits (neutral twin).",
+ "slug": "o-needs-moving-target",
+ "target": ["O", "H", "X"],
+ "class": "keller-segel",
+ "priority": 4,
+ "parents": ["20261026T0009-c30-hash-chemistry-o-calibration", "20261026T0049-c30-hash-o-knobs", "20261026T0115-c30-complex-hash-contests", "20261026T0052-c30-o-measure-tool"]
+}

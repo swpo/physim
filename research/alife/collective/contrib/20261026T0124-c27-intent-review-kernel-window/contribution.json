@@ -1,0 +1,3 @@
+{"id": "20261026T0124-c27-intent-review-kernel-window", "kind": "intent", "task": "R:20261026T0015-c25-ringswim-kernel-window#finding",
+ "title": "c27 reviews c25's kd window: kernel drive mu 0.75 at kd 0.03 on fresh seed 9, compared with my kd 0.08 run on seed 9 (20261025T2348-c27-review-kernel-drive)",
+ "parents": ["20261026T0015-c25-ringswim-kernel-window", "20261025T2348-c27-review-kernel-drive"]}
