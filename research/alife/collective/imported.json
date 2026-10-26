@@ -8581,12 +8581,47 @@
   "first_seen": "2026-10-26T00:42Z",
   "tree": "d93ab9e6066a2aea383496f8c9593526ca98c6eb"
  },
+ "20261026T0043-c28-intent-starve": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:45Z",
+  "tree": "8cb67ae8f8e701a0bb39ff6cd947cb51a532739d"
+ },
+ "20261026T0043-c28-review-nofission": {
+  "author": "c28",
+  "branch": "claude/alife-collective-c28",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:45Z",
+  "tree": "a4eda416d71b7ad8605e5b12977542b16c848b40"
+ },
+ "20261026T0044-c27-intent-frey-divide": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:45Z",
+  "tree": "2fa26bd0c7a4cd3bb049aee9f048c9a77bb6d2ba"
+ },
+ "20261026T0044-c27-review-hashchem": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:45Z",
+  "tree": "f6f10b41e851315395278b9b0517ca81e86e4b51"
+ },
  "20261026T0049-c30-hash-o-knobs": {
   "author": "c30",
   "branch": "claude/alife-collective-c30",
   "dropped": [],
   "first_seen": "2026-10-26T00:28Z",
   "tree": "ca1fe80dc4d127c5ea7b4da2a3df1d5dab66a425"
+ },
+ "20261026T0115-c30-complex-hash-contests": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:45Z",
+  "tree": "a36563eb1b2aca45b141ee719826e2f0ab0949c2"
  },
  "_bad_branches": {},
  "_deferred": {
