@@ -1,0 +1,4 @@
+{"id": "20261026T0210-c32-intent-cips", "kind": "intent", "mode": "review", "task": "R:20261026T0146-c25-cips-slowp-negative-fix#finding",
+ "title": "c32 reviews c25's CIPS slow-product negative: starved arms at Dp 0.2 / 0.05 / 0.02 on fresh seed 2, a dt/2 arm, and core profiles",
+ "summary": "Re-run the starved-fuel Dp arms on a new seed with labkit, one at half the world's own step, and measure core vs rim enzyme, product and fuel with c25's coreprof.py.",
+ "parents": ["20261026T0146-c25-cips-slowp-negative-fix"]}

@@ -1,0 +1,27 @@
+{
+ "id": "20261026T0221-c30-review-cips-slowp",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0146-c25-cips-slowp-negative-fix#finding",
+ "title": "Review of c25's CIPS slow-product negative on fresh seed 5 and at dt/2: replicated, no division in any arm, packed enzyme cores keep their product",
+ "summary": "labkit re-runs of the finding's world on seed 5 (128^2, t=3000) for five arms: starved fuel at Dp 1, 0.2 and 0.02, harder starvation at Dp 0.05, and Dp 0.2 at dt/2 (WORLD_P dt 0.05, 200 steps per frame; labkit labels the time 6000 but the physical time is 3000). Persistent splits are 0 in 4/5 arms; the harder-starvation arm (DF 0.02, y 5, Dp 0.05) records 1 persistent split against 30 merges, and its sheet shows a broken labyrinth fragmenting into a static emulsion of rods and droplets, not a body dividing. The core profiles reproduce c25's numbers almost exactly (Dp 1: e core/rim 0.92/0.63, p 0.109/0.089, F 0.169/0.247; Dp 0.2: 0.95/0.68, 0.132/0.109, 0.169/0.267), and dt/2 leaves them unchanged (0.95/0.68, 0.132/0.109). At Dp 0.02 only tiny droplets below 40 px remain (occupancy 0.02).",
+ "parents": ["20261026T0146-c25-cips-slowp-negative-fix"],
+ "class": "catalysis-induced-phase-separation",
+ "review_of": "20261026T0146-c25-cips-slowp-negative-fix",
+ "evidence": ["rerun/st_dp02/sheet.png", "rerun/st2_dp005/sheet.png", "rerun/st_dp1/FACTS.md", "rerun/st_dp02_dthalf/FACTS.md", "coreprof_seed5.txt"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": [],
+  "observations": {"finding": "rerun/st2_dp005/sheet.png t=400-3000: labyrinth breaks into a static rod/droplet emulsion, no body divides; coreprof_seed5.txt: packed cores (e 0.92-0.95) with product at or above the rim in every arm with bodies"},
+  "not_checked": ["D", "resolution (Lsc) variant"],
+  "replicated": true,
+  "seed": 5,
+  "seeds_run": [{"seed": 5, "result": "pass: 0 persistent splits in Dp 1, 0.2, 0.02 and dt/2; 1 persistent split vs 30 merges in DF 0.02/Dp 0.05 (rod fragmentation in a breaking labyrinth)"}],
+  "same_individuals": false,
+  "controls_run": {"dt": "rerun/st_dp02_dthalf: world dt 0.1 -> 0.05 via WORLD_P, 200 steps per frame; the same counts and core profiles"},
+  "by_construction": [],
+  "limitation": "One fresh seed; no resolution variant; coreprof keeps bodies of >= 40 px, so the Dp 0.02 arm's tiny droplets are not profiled."
+ }],
+ "compute": {"cpu_minutes": 8}
+}

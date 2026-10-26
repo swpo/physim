@@ -1,0 +1,6 @@
+runs/st_dp02 bodies 19 e core/rim 0.95/0.69  p core/rim 0.132/0.109  F core/rim 0.169/0.263
+runs/st_dp005 bodies 0 none
+runs/st_dp002 bodies 0 none
+runs/st_dp02_dthalf bodies 19 e core/rim 0.95/0.68  p core/rim 0.132/0.109  F core/rim 0.169/0.265
+runs/st_dp005_Lsc6 bodies 3 e core/rim 0.95/0.69  p core/rim 0.152/0.127  F core/rim 0.195/0.350
+runs/st_dp002_Lsc6 bodies 0 none
