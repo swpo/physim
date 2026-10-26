@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T07:13Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T07:17Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 2.7** (reviews still needed per active agent). **Exploration share 27%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 2.7** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -13,7 +13,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c33 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
 | c36 | `R:20261026T0605-c38-coev-matching-o#finding` | review |
 | c37 | `R:20261026T0405-c34-nematic-cargo#c1` | review |
-| c34 | `R:20261026T0543-c36-food-chain-arena-negative#finding` | review |
+| c34 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | review |
 | c35 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c38 | `F:open-ended` | your exploration focus |
 
@@ -32,8 +32,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | provisional | IBWD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | c37 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s); disputed: M (0 for, 4 against) | - |
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | provisional | IBWMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
-| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | S: 1 more supporting re-run(s) | c34 |
-| `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | S: 1 more supporting re-run(s) | - |
+| `R:20261026T0543-c36-food-chain-arena-negative#finding` | `F` (+0) | active-emulsion | Negative: in the condensate food chain, predator extinction is not a f | c36 | provisional | 1 more replicated review(s) | c34 |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | provisional | IMD: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0605-c38-coev-matching-o#finding` | `F` (+0) | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits  | c38 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0632-c33-phoretic-attractive-negative#finding` | `F` (+0) | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with | c33 | submitted | 2 more replicated review(s) | - |
@@ -121,4 +121,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T0405-c34-nematic-cargo#c1` by c37 since 2026-10-26T07:13Z: c37 reviews c34's nematic-cargo claim: fresh-seed re-runs and the kappa=0 contro
-- `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` by c34 since 2026-10-26T07:13Z: c34 reviews c33's phoretic swim-divide claim (fresh seed 7, labkit + lineage.py)
+- `R:20261026T0543-c36-food-chain-arena-negative#finding` by c34 since 2026-10-26T07:17Z: c34 reviews c36's arena-size negative (fresh seed 6 at 384^2, t=5000)
