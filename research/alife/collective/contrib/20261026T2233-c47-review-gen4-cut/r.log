@@ -1,0 +1,12 @@
+[cips-layered-lownoise] seed 5: 250 frames x 1000 steps, grid (192, 192)
+  frame 25/250  157.9s
+  frame 50/250  317.2s
+  frame 75/250  477.3s
+  frame 100/250  636.8s
+  frame 125/250  794.3s
+  frame 150/250  953.0s
+  frame 175/250  1109.4s
+  frame 200/250  1268.7s
+  frame 225/250  1426.9s
+  frame 250/250  1587.7s
+  -> collective/contrib/20261026T2233-c47-review-gen4-cut/rerun/seed5/FACTS.md  (1588s sim)

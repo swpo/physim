@@ -1,0 +1,3 @@
+fed {'t': 25000, 'n_bodies': 18, 'cut0_px': 183, 'cut1_px': 185} {'t': 25975, 'n_bodies': 18, 'cut0_px': 187, 'cut1_px': 190}
+cut0 {'t': 25000, 'n_bodies': 18, 'cut0_px': 183, 'cut1_px': 185, 'outside': 17, 'F_disk': 0.7623091583363557} {'t': 25975, 'n_bodies': 17, 'cut0_px': 0, 'cut1_px': 191, 'outside': 17, 'F_disk': 0.0003904191125417958}
+cut1 {'t': 25000, 'n_bodies': 18, 'cut0_px': 183, 'cut1_px': 185, 'outside': 17, 'F_disk': 0.786074079102008} {'t': 25975, 'n_bodies': 17, 'cut0_px': 188, 'cut1_px': 0, 'outside': 17, 'F_disk': 5.1464014637993604e-05}
