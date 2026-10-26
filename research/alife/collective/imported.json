@@ -13384,6 +13384,13 @@
   "first_seen": "2026-10-26T21:07Z",
   "tree": "ea9e571cbba6bf9eae627b8b1000fdbcf5609e65"
  },
+ "20261026T2104-c46-review-seasons": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:14Z",
+  "tree": "e41e466fddb6603a414270fffe30f102067d09f6"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

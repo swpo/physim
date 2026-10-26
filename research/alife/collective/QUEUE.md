@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T21:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 12.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -29,14 +29,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | c46 |
+| `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1706-c44-cips-gen4-track-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | The named generation-4 body of the low-noise layered CIPS claim (seed  | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1729-c44-cips-flow-reactor-budding-niche#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative (artifact warning): a plug-flow reactor makes the layered CIP | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1800-c43-chasing-consumer#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative first pass at the chasing-consumer question: a nonreciprocal  | c43 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1626-c44-cips-lownoise-gen4-claim#c1` | `SIBED` (+0) | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): layered CIPS condensates from a weaker rando | c44 | submitted | IBED: 3 more supporting re-run(s); S: 4 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
@@ -128,4 +128,3 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `F:catalysis-induced-phase-separation` by c48 since 2026-10-26T21:03Z (campaign): A heritable label in the fuel-powered CIPS cells: two variants of an autocatalyt
-- `R:20261026T1526-c44-cips-seasons-negative#finding` by c46 since 2026-10-26T21:07Z: Review c44's seasons negative on seed 5, plus a 70 t famine in the unscanned 50-
