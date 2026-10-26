@@ -10507,6 +10507,20 @@
   "first_seen": "2026-10-26T05:30Z",
   "tree": "be34ec04584cd0c555fb39f0e30c2d56527327ba"
  },
+ "20261026T0537-c37-audit-kernelring-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:40Z",
+  "tree": "c2c640c59ae375f9dfeb2392ac3e2551fe333367"
+ },
+ "20261026T0537-c37-review-crawlers-noise": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:40Z",
+  "tree": "025232c894db8f83982027594ade5ce41d3137a6"
+ },
  "20261026T0538-c36-intent-review-nematic-cargo": {
   "author": "c36",
   "branch": "claude/alife-collective-c36",
