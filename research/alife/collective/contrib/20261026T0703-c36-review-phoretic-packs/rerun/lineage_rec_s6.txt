@@ -1,0 +1,4 @@
+rec_s6.npz t=800 splits 7 merges 51 persistent by generation {} max generation 0
+  persistent splits whose two daughters both carry B (>= 5%): 0 of 0
+  parents that travelled >= 3 cluster diameters (net) since their birth or last merge, before the split: 0 of 0 ; max None
+  median daughter sizes None None
