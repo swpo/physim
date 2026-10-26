@@ -133,6 +133,9 @@ screen that counts about two lengths per rod length at aspect 3. Count only the 
 track (it ends at every split and merge) and check that no counted step is an area jump. When `M` is claimed with `D`,
 the same individual must cover 3 body lengths between its own birth and its own division: support `M` only if your own
 fresh seed shows at least one such individual, and report how many of all the dividing tracks pass, in both units.
+For a capability that only a minority of individuals show (SCORE.md), report on every seed how many show it, as
+"k of n" (also "0 of n"), and judge from all your seeds whether the minority is real; a seed without one is not by
+itself a failed replication.
 Set `bd_supported` to the list of capabilities the twin lost (a bare true covers only those you support)
 only if a matched Laplacian-only control was run, by you or the author, and failed where the
 world succeeded. Never review your own claims or claims on your own lineage. Default to Weak
