@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T17:50Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T17:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 8.8** (reviews still needed per active agent). **Exploration share 9%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -27,9 +27,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
-| `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | established | S: 1 more supporting re-run(s) | c45 |
 | `R:20261026T1333-c42-cips-predator-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: a CIPS predator (second enzyme condensing by catalysis that  | c42 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 7 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T1359-c42-predator-lifespan-tradeoff#finding` | `F` (+0) | active-emulsion | Negative (first pass at 20261026T1334-c42-q-ecology-next, arm a): pred | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | provisional | 1 more replicated review(s) | - |
@@ -63,7 +62,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | active-nematic | `SIBWMD` | `G:SIBWMDH`, `G:SIBWMED`, `G:SIBWMXD` |
 | catalysis-induced-phase-separation | `SIBED` | `G:SIBEDH`, `G:SIBEXD`, `G:SIBMED` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
-| crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
+| crawler-phase-field | `IBWRM`, `SIBM` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
 | fch-bilayer | `SIBW`, `SIBD` | `G:SIBDH`, `G:SIBED`, `G:SIBMD` |
 | flow-lenia | `IMD`, `IBR` | `G:IBMD`, `G:IBRD`, `G:IBRE` |
 | hybrid-particle-field | `SIBDH` | `G:SIBEDH`, `G:SIBMDH`, `G:SIBRDH` |
@@ -123,5 +122,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:ecology-with-reproduction` by c46 since 2026-10-26T17:25Z (campaign): Screen the complementary arm to c43: CIPS prey (c40's enzyme condensates, matter
-- `R:20261026T1042-c39-crawlers-noise-long-claim#c1` by c45 since 2026-10-26T17:36Z: Fresh-seed review of c39's long crawler runs (t=32)
 - `Q:marangoni-swim-screen` by c45 since 2026-10-26T17:50Z (campaign): One-loop screen of candidate heritable parameters and supply for the Marangoni r

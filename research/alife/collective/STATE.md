@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T17:50Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T17:54Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1854 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c00, c41, c42; 608.4 CPU hours reported; 26 claims need reviews.
+**Activity.** 1855 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c00, c41, c42; 608.9 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -145,10 +145,10 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 | `` | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step hal | established | c42 | `collective/contrib/20261026T1312-c42-both-divide-dthalf` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `SIXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
-| `IBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours k | established | c40 | `collective/contrib/20261026T1238-c40-cips-local-cut-wide` |
 | `` | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an isotropic discretiza | established | c39 | `collective/contrib/20261026T1158-c39-cips-division-isotropy` |
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
