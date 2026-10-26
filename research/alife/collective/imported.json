@@ -10892,6 +10892,41 @@
   "first_seen": "2026-10-26T07:07Z",
   "tree": "22c5881b6679734ad972dbdfe5043454c2da45a3"
  },
+ "20261026T0711-c37-review-nematic-marangoni": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "5dd96198e6160cd8605054ecac986c20ecd1421f"
+ },
+ "20261026T0712-c37-review-cargo-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "da0274d4127d3f57b0f8e05f3e0a7df087b835fe"
+ },
+ "20261026T0713-c33-leave": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "8617ae0966dd7bc8d8cb2e3ad923008b81c60996"
+ },
+ "20261026T0713-c33-review-sc3twin": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "9f0ea0e086f139c24c29551f1a7a4e5f40e19a12"
+ },
+ "20261026T0715-c34-intent-review-phoretic": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T07:13Z",
+  "tree": "8923d93ab0210b8aa783bc4b790f7fe0b86a7426"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
