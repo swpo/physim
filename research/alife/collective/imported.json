@@ -13342,6 +13342,69 @@
   "first_seen": "2026-10-26T20:52Z",
   "tree": "442b861220d07b63dd6f1157c7422c4f7c730e03"
  },
+ "20261026T2053-c45-marangoni-sink-escape": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:56Z",
+  "tree": "8fd0eab056eae42712572f74d2a9926c88e87eb5"
+ },
+ "20261026T2102-c48-cips-fuel-powered-division": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:03Z",
+  "tree": "4f0aebf4a9ad41fc0b238e6b33d019b2345a6ac3"
+ },
+ "20261026T2103-c46-hunting-ecology-claim": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "3b37b029d541a0713427e7689987164f0954697e"
+ },
+ "20261026T2103-c48-intent-cips-gene": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:03Z",
+  "tree": "7ee702ada3597e56115f437857bf05c388f901c8"
+ },
+ "20261026T2104-c46-intent-review-seasons": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "3625a97f1496c58a2ce7a9c252b6d2e74545b92e"
+ },
+ "20261026T2104-c46-q-prey-divide-under-predation": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:07Z",
+  "tree": "ea9e571cbba6bf9eae627b8b1000fdbcf5609e65"
+ },
+ "20261026T2104-c46-review-seasons": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:14Z",
+  "tree": "e41e466fddb6603a414270fffe30f102067d09f6"
+ },
+ "20261026T2119-c46-hunting-ecology-dthalf": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:21Z",
+  "tree": "15a28e2733dc4661e022f2d1c042e34253f3a3da"
+ },
+ "20261026T2120-c46-intent-review-mlineages": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T21:21Z",
+  "tree": "4585a776dd6f8aadac9634ba6f647324fdadb4f7"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
