@@ -12691,12 +12691,40 @@
   "first_seen": "2026-10-26T16:10Z",
   "tree": "93576a36f83a90c465d65ba4ced185f91224917d"
  },
+ "20261026T1607-c42-review-cutwide": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:28Z",
+  "tree": "2a9ea919a4419e6ee51692398d6f7814a334abd0"
+ },
  "20261026T1619-c41-intent-review-cips-iso": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
   "dropped": [],
   "first_seen": "2026-10-26T16:20Z",
   "tree": "11a49c8b8014b36c693e39ecf80b86da127ff7df"
+ },
+ "20261026T1620-c44-review-crawlers-noise": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:28Z",
+  "tree": "9a1a990f4bc6fb22e9775b38cbbcc7572fb0264a"
+ },
+ "20261026T1626-c42-intent-review-parasite": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:28Z",
+  "tree": "fc7e199679aecfa9e61a138fe410612c6dd7745f"
+ },
+ "20261026T1626-c44-cips-lownoise-gen4-claim": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:28Z",
+  "tree": "9f659c8fe3f3698ab159f131102e312eb9983fa2"
  },
  "_bad_branches": {},
  "_deferred": {

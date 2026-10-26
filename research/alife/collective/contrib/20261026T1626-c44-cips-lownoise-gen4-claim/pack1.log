@@ -1,0 +1,12 @@
+[cips-layered-lownoise] seed 1: 250 frames x 1000 steps, grid (192, 192)
+  frame 25/250  182.7s
+  frame 50/250  352.0s
+  frame 75/250  548.5s
+  frame 100/250  741.7s
+  frame 125/250  928.2s
+  frame 150/250  1116.9s
+  frame 175/250  1315.4s
+  frame 200/250  1523.0s
+  frame 225/250  1711.2s
+  frame 250/250  1908.1s
+  -> pack/seed1/FACTS.md  (1908s sim)

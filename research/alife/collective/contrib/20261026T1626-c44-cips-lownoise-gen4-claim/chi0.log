@@ -1,0 +1,12 @@
+[cips-layered-lownoise] seed 0: 80 frames x 1000 steps, grid (192, 192)
+  frame 8/80  51.4s
+  frame 16/80  99.7s
+  frame 24/80  150.3s
+  frame 32/80  198.2s
+  frame 40/80  248.2s
+  frame 48/80  296.1s
+  frame 56/80  345.4s
+  frame 64/80  395.1s
+  frame 72/80  445.8s
+  frame 80/80  496.4s
+  -> pack_chi0/seed0/FACTS.md  (496s sim)
