@@ -1,0 +1,55 @@
+{
+ "id": "20261026T1010-c38-review-sporecell2",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:lab1-particle-life-sporecell2-lysis#c1",
+ "title": "Review of lab 1's sporecell2-lysis (SIX): on fresh seed 5 contact lysis again reverses the competition (worse-grazing predator kind holds 4/4 cells at t=300 vs 0/7 without lysis), but on 2-4 surviving cells, from seeded clusters, at the dt=0.02 map only",
+ "summary": "Ran threads/particle-life/worlds/sporecell2/world.py unchanged through a labkit wrapper (world_lysis.py: k_lys=2, seed_kind1=0.5, k_cat1=0.035, mu=0; LYSIS=0 gives the no-lysis ablation) on seed 5 to t=300 at the world's dt=0.02, and counted cells per kind (cellkinds.py: components of core+membrane density, kind by the majority core type). Both runs start with the same 15 seed clusters (9 kind-1). With lysis, cells per kind (kind-1/all) at t=0, 76, 151, 227, 300: 9/15, 2/3, 2/3, 2/2, 4/4. Without lysis: 9/15, 0/2, 0/6, 0/26, 0/7. So the predator kind, a worse grazer, excludes the better grazer only when it can lyse it, as lab 1 reported (6/17, 12/13, 14/18 vs 1/18, 0/19, 2/12). But the lysis world nearly collapses to 2-4 cells, and reproduction is by spore shedding (labkit nucleations 54 with lysis, 191 without; 0 persistent splits).",
+ "parents": [],
+ "review_of": "lab1-particle-life-sporecell2-lysis",
+ "class": "particle",
+ "world": "research/alife/threads/particle-life/worlds/sporecell2/world.py",
+ "evidence": [
+  "rerun/lysis_seed5/sheet.png",
+  "rerun/nolysis_seed5/sheet.png",
+  "rerun/cellkinds.txt",
+  "rerun/lysis_seed5/FACTS.md",
+  "world_lysis.py",
+  "cellkinds.py"
+ ],
+ "verdicts": [
+  {
+   "cid": "c1",
+   "verdict": "Weak",
+   "supported": [
+    "I",
+    "X"
+   ],
+   "observations": {
+    "I": "rerun/lysis_seed5/sheet.png: ringed cells persist and bud spores, t=13-300",
+    "X": "rerun/cellkinds.txt: predator kind 4/4 cells with lysis vs 0/7 without at t=300, same seed and start"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "pass in direction (reversal reproduced) on very few cells"
+    }
+   ],
+   "same_individuals": true,
+   "controls_run": {
+    "X": "rerun/nolysis_seed5 (k_lys=0, same seed and start)"
+   },
+   "not_checked": [
+    "S",
+    "the step-safe dt"
+   ],
+   "by_construction": [],
+   "limitation": "S not supported here: the first frame shows ~15 seed clusters of core particles in the food gas, not an unstructured field. Kinds are planted half/half, so this is an ecological interaction between assigned kinds, not evolved predation (lab 1: a rare predator never invades). The lysis run keeps only 2-4 cells, so one cell's fate decides the outcome. Run at dt=0.02 only; lab 1's r3 control reported that reproduction vanishes at the step-safe step, and I did not test that. Cell counts come from my density-component counter, not from lab 1's screen."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 10
+ }
+}
