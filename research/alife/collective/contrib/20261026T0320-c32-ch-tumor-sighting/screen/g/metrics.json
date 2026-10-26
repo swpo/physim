@@ -1,0 +1,559 @@
+{
+ "world": {
+  "name": "ch-tumor",
+  "family": "ch-tumor",
+  "parent": null,
+  "mutation": "Cahn-Hilliard tissue with nutrient-limited proliferation and apoptosis (new class)",
+  "size": [
+   192,
+   192
+  ],
+  "steps_per_frame": 100,
+  "dt": 0.05,
+  "channels": [
+   "phi (tissue)",
+   "sigma (nutrient)"
+  ],
+  "matter": [
+   0
+  ],
+  "threshold": null,
+  "smooth": 1.0,
+  "periodic": true,
+  "domain": null,
+  "lineage_k": null,
+  "radial_channels": null,
+  "species": null,
+  "path": "/home/user/physim/research/alife/collective/contrib/20261026T0320-c32-ch-tumor-sighting/world.py"
+ },
+ "seed": 0,
+ "steps_per_frame": 100,
+ "dt": 0.05,
+ "status": "non-finite fields at frame 3",
+ "wall_seconds": 1.3119821548461914,
+ "damage": null,
+ "summary": {
+  "frames": 3,
+  "time": 10.0,
+  "dt": 0.05,
+  "grid": [
+   192,
+   192
+  ],
+  "threshold_rel": 0.35,
+  "matter_range": [
+   0.20622962713241577,
+   1.8533263206481934
+  ],
+  "min_area": 6,
+  "components_final": 1,
+  "components_mean": 0.6666666666666666,
+  "components_max": 1,
+  "occupancy_final": 1.0,
+  "occupancy_max": 1.0,
+  "tracks": 1,
+  "persistent_tracks": 1,
+  "longest_track_frames": 2,
+  "alive_at_end_from_start": 0,
+  "persistent_area_ratio_max": 1.0,
+  "enclosed_components_mean": 0.0,
+  "enclosed_components_final": 0,
+  "holes_final_by_threshold": {
+   "0.2": 0,
+   "0.35": 0,
+   "0.5": 0
+  },
+  "holes_mean_by_threshold": {
+   "0.2": 0.0,
+   "0.35": 0.0,
+   "0.5": 0.0
+  },
+  "K_frames": 20,
+  "K_source": "default",
+  "splits": 0,
+  "persistent_splits": 0,
+  "remerged_splits": 0,
+  "max_generation": 0,
+  "merges": 0,
+  "merge_split_ratio": null,
+  "nucleations": 1,
+  "moving_tracks": 0,
+  "max_speed": 0.0,
+  "max_body_lengths": 0.0,
+  "channel_total_drift": [
+   5.1696,
+   -0.8847
+  ],
+  "tda_matter_final": {
+   "H0": [
+    3,
+    1,
+    1
+   ],
+   "H1": [
+    3,
+    0,
+    0
+   ]
+  },
+  "membrane_like_channels": []
+ },
+ "warnings": [
+  "RUN FAILED: non-finite fields at frame 3 (only 3 frames analysed)",
+  "matter fills >80% of the domain at some point: components may be one connected sea",
+  "a channel total changed by more than 50% (not conserved; may be fine if the model is open)",
+  "fewer than 30 recorded frames: tracking statistics are weak",
+  "lineage window K=20 frames is more than half the run: late splits cannot count as persistent",
+  "radial: for 1 of 1 aggregate members less than half of the outside band (rho 1.6-2.2) was sampled (window capped on this grid, or an open boundary): their rim/outside is unreliable, and the aggregate outside level comes mostly from the smaller members"
+ ],
+ "structure": [],
+ "radial": {
+  "rho": [
+   0.05,
+   0.15,
+   0.25,
+   0.35,
+   0.45,
+   0.55,
+   0.65,
+   0.75,
+   0.85,
+   0.95,
+   1.05,
+   1.15,
+   1.25,
+   1.35,
+   1.45,
+   1.55,
+   1.65,
+   1.75,
+   1.85,
+   1.95,
+   2.05,
+   2.15,
+   2.25,
+   2.35,
+   2.45
+  ],
+  "channels": [
+   "phi (tissue)",
+   "sigma (nutrient)"
+  ],
+  "channel_index": [
+   0,
+   1
+  ],
+  "bands": {
+   "core": [
+    0.0,
+    0.4
+   ],
+   "rim": [
+    0.6,
+    1.3
+   ],
+   "outside": [
+    1.6,
+    2.2
+   ],
+   "peak": [
+    0.5,
+    1.5
+   ]
+  },
+  "eps": 0.01,
+  "cap": 999.0,
+  "membrane_ratio": 1.5,
+  "aggregate": {
+   "n_individuals": 1,
+   "frames": [
+    2
+   ],
+   "min_area": 12,
+   "mean": [
+    [
+     0.9994,
+     0.9992,
+     0.9992,
+     0.9991,
+     0.9991,
+     0.999,
+     0.999,
+     0.9988,
+     0.9988,
+     0.9985,
+     0.9981,
+     0.9978,
+     0.9976,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     0.0004,
+     0.0004,
+     0.0003,
+     0.0004,
+     0.0004,
+     0.0004,
+     0.0004,
+     0.0004,
+     0.0005,
+     0.0005,
+     0.0005,
+     0.0007,
+     0.0008,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   ],
+   "std": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   ],
+   "scores": {
+    "phi (tissue)": {
+     "rho_peak": 0.05,
+     "peak_in_rim": false,
+     "flat": false,
+     "rim_max": 0.999,
+     "core_mean": 0.9992,
+     "outside_mean": null,
+     "rim_core": 1.0,
+     "rim_outside": null,
+     "membrane_like": false
+    },
+    "sigma (nutrient)": {
+     "rho_peak": 1.25,
+     "peak_in_rim": true,
+     "flat": false,
+     "rim_max": 0.0008,
+     "core_mean": 0.0004,
+     "outside_mean": null,
+     "rim_core": 1.038,
+     "rim_outside": null,
+     "membrane_like": false
+    }
+   },
+   "n_membrane_like_individually": {
+    "phi (tissue)": 0,
+    "sigma (nutrient)": 0
+   },
+   "n_ring": 0,
+   "n_outside_truncated": 1
+  },
+  "tracks": [
+   {
+    "track": 0,
+    "frame": 2,
+    "area": 36864.0,
+    "R_eq": 108.32,
+    "profile": [
+     [
+      0.9994,
+      0.9992,
+      0.9992,
+      0.9991,
+      0.9991,
+      0.999,
+      0.999,
+      0.9988,
+      0.9988,
+      0.9985,
+      0.9981,
+      0.9978,
+      0.9976,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     [
+      0.0004,
+      0.0004,
+      0.0003,
+      0.0004,
+      0.0004,
+      0.0004,
+      0.0004,
+      0.0004,
+      0.0005,
+      0.0005,
+      0.0005,
+      0.0007,
+      0.0008,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ]
+    ],
+    "scores": {
+     "phi (tissue)": {
+      "rho_peak": 0.05,
+      "peak_in_rim": false,
+      "flat": false,
+      "rim_max": 0.999,
+      "core_mean": 0.9992,
+      "outside_mean": null,
+      "rim_core": 1.0,
+      "rim_outside": null,
+      "membrane_like": false
+     },
+     "sigma (nutrient)": {
+      "rho_peak": 1.25,
+      "peak_in_rim": true,
+      "flat": false,
+      "rim_max": 0.0008,
+      "core_mean": 0.0004,
+      "outside_mean": null,
+      "rim_core": 1.038,
+      "rim_outside": null,
+      "membrane_like": false
+     }
+    },
+    "ring": false,
+    "outside_coverage": 0.0,
+    "damaged": false
+   }
+  ],
+  "membrane_like": [],
+  "n_damaged_excluded": 0
+ },
+ "species": {},
+ "top_tracks": [
+  {
+   "id": 0,
+   "start": 1,
+   "end": 2,
+   "birth": "nucleation",
+   "parents": [],
+   "children": [],
+   "area": [
+    36864.0,
+    36864.0
+   ],
+   "cy": [
+    71.0,
+    71.21
+   ],
+   "cx": [
+    150.18,
+    149.88
+   ]
+  }
+ ],
+ "persistent_splits": [],
+ "remerged_splits": [],
+ "motion_top": [],
+ "tda_matter": {
+  "0": {
+   "H0": [
+    546,
+    121,
+    1
+   ],
+   "H1": [
+    593,
+    151,
+    0
+   ]
+  },
+  "1": {
+   "H0": [
+    21,
+    8,
+    1
+   ],
+   "H1": [
+    28,
+    16,
+    0
+   ]
+  },
+  "2": {
+   "H0": [
+    3,
+    1,
+    1
+   ],
+   "H1": [
+    3,
+    0,
+    0
+   ]
+  }
+ },
+ "tda_channels": {
+  "0": [
+   {
+    "H0": [
+     2316,
+     540,
+     5
+    ],
+    "H1": [
+     4378,
+     1259,
+     0
+    ]
+   },
+   {
+    "H0": [
+     0,
+     0,
+     0
+    ],
+    "H1": [
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "2": [
+   {
+    "H0": [
+     2,
+     1,
+     1
+    ],
+    "H1": [
+     1,
+     0,
+     0
+    ]
+   },
+   {
+    "H0": [
+     31,
+     21,
+     5
+    ],
+    "H1": [
+     27,
+     6,
+     0
+    ]
+   }
+  ]
+ },
+ "series": {
+  "n_comp": [
+   0,
+   1,
+   1
+  ],
+  "n_enclosed": [
+   0,
+   0,
+   0
+  ],
+  "occupancy": [
+   0.0,
+   1.0,
+   1.0
+  ],
+  "totals": [
+   [
+    11063.58203125,
+    36864.0
+   ],
+   [
+    55894.0234375,
+    12073.859375
+   ],
+   [
+    68257.6171875,
+    4251.14453125
+   ]
+  ]
+ }
+}
