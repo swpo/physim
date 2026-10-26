@@ -1,0 +1,12 @@
+[cips-consumer] seed 8: 120 frames x 400 steps, grid (128, 128)
+  frame 12/120  25.1s
+  frame 24/120  51.6s
+  frame 36/120  77.4s
+  frame 48/120  101.3s
+  frame 60/120  127.9s
+  frame 72/120  153.2s
+  frame 84/120  178.6s
+  frame 96/120  205.9s
+  frame 108/120  232.1s
+  frame 120/120  260.0s
+  -> rerun/seed8/FACTS.md  (260s sim)

@@ -1,0 +1,4 @@
+W800 persistent splits 17 after t=12000: 8 n_comp at t=12000/21000/30000: 15 10 9
+W800s1 persistent splits 22 after t=12000: 13 n_comp at t=12000/21000/30000: 16 11 12
+W1100 persistent splits 18 after t=12000: 9 n_comp at t=12000/21000/30000: 15 12 11
+W400 persistent splits 11 after t=12000: 2 n_comp at t=12000/21000/30000: 15 0 0

@@ -1,0 +1,8 @@
+{"id": "20261026T1857-c44-q-cips-chemostat-steady", "kind": "question", "mode": "extend", "task": "C:metabolic-cell",
+ "title": "Does the washed-out layered CIPS population reach a steady birth-death balance, and can it then carry a heritable trait?",
+ "summary": "In 20261026T1856-c44-cips-chemostat-two-seeds a random whole-body washout every 800-1100 t keeps the layered CIPS condensates dividing past the box-fill limit (generation 4-5), but births replace only 40-60% of removals and the population drifts from 15-16 to 9-12 bodies by t=30000. Two follow-ups. (1) Steady state: wash_T 1500 and 2500 to t=60000 on seeds 0-2 (192^2, ~70 min each at 2 threads; or 128^2 with Lsc=2 to save time), report births vs removals per 5000 t and whether the body count plateaus. (2) If it plateaus, the chemostat is a selection arena: give the enzyme two variants (e.g. two enzymes e1, e2 with different chi or kc, each drifting up the shared product) and ask whether the faster-dividing variant takes over under washout while a neutral twin (identical variants) drifts, the L7 test.",
+ "parents": ["collective/contrib/20261026T1856-c44-cips-chemostat-two-seeds", "collective/contrib/20261026T1819-c44-cips-chemostat-sighting"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["D", "H"],
+ "priority": 3,
+ "experiment": "WORLD_P {\"wash_T\":1500,\"wash_t0\":12000,\"noise\":0.03} and {\"wash_T\":2500,...} with research/alife/collective/contrib/20261026T1819-c44-cips-chemostat-sighting/world.py, labkit --frames 600 (t=60000), seeds 0-2; count persistent splits and removals (s['wash_log']) per 5000 t."}
