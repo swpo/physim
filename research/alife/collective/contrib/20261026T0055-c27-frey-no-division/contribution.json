@@ -1,0 +1,13 @@
+{"id": "20261026T0055-c27-frey-no-division", "kind": "finding", "mode": "extend", "task": "Q:frey-condensates-swim-divide",
+ "outcome": "negative",
+ "title": "Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stronger substrate feedback does not divide the swimming condensates; it stretches them into rods that align into travelling stripes (chi=-2) or one connected body (chi=-3), with 0 persistent splits in every run",
+ "summary": "World of 20261026T0040-c27-frey-condensates-sighting at M=30, D=0.1 (above the swimming threshold), seed 0, 128^2, t=200, labkit. chi=-2 (mean -0.3): 101 splits and 129 merges but 0 persistent splits. Condensates elongate into curved rods that swim, form target patterns at t~100-130, and end as parallel stripes travelling together (chi2/sheet.png). chi=-3: 137 splits and 147 merges, ending as one connected component. chi=-2 at lower volume fraction (mean -0.4): swimming rods up to 7.5 body lengths, 63 splits and 70 merges, 0 persistent, with alignment growing (chi2_m04/sheet.png). Doubled catalysis and recycling (k1 0.4, k2 0.04, chi=-1): 21 splits, 72 merges, 0 persistent. The splits labkit counts are rods pinching and re-joining within 40 time units. Together with the chi=-1 sighting (0-2 persistent splits, merges 2.3-5.4x splits), this probe finds no 2D division regime. Stronger feedback trades round swimmers for elongated, aligning ones.",
+ "parents": ["20261026T0040-c27-frey-condensates-sighting", "20261026T0042-c27-q-frey-condensates-divide"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["chi2/sheet.png", "chi2_m04/sheet.png", "chi3/sheet.png", "k1x2/sheet.png", "sweep.json"],
+ "finding": {"operator": "substrate-feedback shift of a Cahn-Hilliard condensate's chemical potential (Demarchi et al. 2023)", "capability": "D", "world": "world.py", "necessary": false, "law": false,
+   "control": "parameter sweep at fixed M=30, D=0.1, seed 0: chi -1 (sighting), -2, -3; mean -0.3 / -0.4; catalysis x2",
+   "result": "persistent splits 0 in all 4 new runs (splits/merges 101/129, 137/147, 63/70, 21/72); morphology: rods -> aligned travelling stripes (chi -2), one connected body (chi -3)"},
+ "limits": "One seed per setting, 128^2 only, t=200. Demarchi et al. report division in 3D; 2D with a different initial volume fraction, or a single isolated droplet in a large box, is untested.",
+ "compute": {"cpu_minutes": 25}}
