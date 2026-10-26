@@ -1,0 +1,14 @@
+def0.npz tracks>=20fr: 42  B rim/core frac (median): [0.17 0.23]
+  composites (fB 0.1-0.6, life>=50): 23  moving >=3 BL: 7
+  id 11 life 120 n 25 fB 0.24 net 4.9 BL path 5.4 BL
+  id 31 life 80 n 25 fB 0.20 net 4.0 BL path 5.1 BL
+  id 20 life 120 n 30 fB 0.26 net 3.9 BL path 6.0 BL
+  id 12 life 120 n 63 fB 0.24 net 3.8 BL path 4.1 BL
+  id 18 life 120 n 95 fB 0.19 net 3.8 BL path 5.1 BL
+rec0.npz tracks>=20fr: 30  B rim/core frac (median): [0.24 0.19]
+  composites (fB 0.1-0.6, life>=50): 23  moving >=3 BL: 0
+  id 18 life 48 n 23 fB 0.17 net 1.3 BL path 1.5 BL
+  id 23 life 21 n 14 fB 0.36 net 1.2 BL path 1.3 BL
+  id 29 life 118 n 42 fB 0.26 net 1.1 BL path 1.5 BL
+  id 17 life 28 n 21 fB 0.24 net 1.1 BL path 1.2 BL
+  id 13 life 68 n 35 fB 0.26 net 1.1 BL path 1.3 BL

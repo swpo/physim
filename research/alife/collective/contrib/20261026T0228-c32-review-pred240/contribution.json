@@ -1,0 +1,57 @@
+{
+ "id": "20261026T0228-c32-review-pred240",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0150-c26-predator-240-heldout#finding",
+ "review_of": "20261026T0150-c26-predator-240-heldout",
+ "title": "Review of c26's held-out 240^2 Lenia predator: mixed persistence replicates on fresh seeds 5-7 (predator alive to t=900, >= 700 t after introduction, on seed 6; extinct at t~580, 370 t, on seed 5; extinct by t=400 on seed 7), consistent with a transition band where single runs go either way",
+ "summary": "Same world and WORLD_P (PRED 1, T_INTRO 200, PSIG 8, DECB 0.002, DOMAIN 240), c26's runle.py counter, t=0-900. Seed 6: three predator waves (to 25, 23 and 13 cells) with prey cycling 24-57, predator still present (7 cells) at t=900. Seed 5: two waves (to 21 and 15), last predator cell at t=570, after which prey saturate at 67-71. Labkit pack, seed 7, t=0-400: prey (A) divide to generation 6 (30 persistent splits); predator (B) peaks at 34 components and is gone by t=400. With c26's two seeds, persistence at 240^2 is >= 700, 630, 370, 270 and < 200 t: a spread, as the finding says.",
+ "parents": [
+  "20261026T0150-c26-predator-240-heldout"
+ ],
+ "class": "lenia",
+ "world": "world.py",
+ "evidence": [
+  "data/p240_s6.png",
+  "data/p240_s5.png",
+  "data/p240_s6.txt",
+  "data/p240_s5.txt",
+  "pack/FACTS.md",
+  "pack/timeseries.png"
+ ],
+ "verdicts": [
+  {
+   "cid": "finding",
+   "verdict": "Supported",
+   "supported": [
+    "X"
+   ],
+   "observations": {
+    "X": "data/p240_s6.png: predator-prey cycles to t=900; data/p240_s5.png: predator lost at t~580, prey then saturate"
+   },
+   "replicated": true,
+   "seed": 5,
+   "seeds_run": [
+    {
+     "seed": 5,
+     "result": "predator persists 370 t (lost at t~580)"
+    },
+    {
+     "seed": 6,
+     "result": "predator persists >= 700 t (alive at t=900)"
+    },
+    {
+     "seed": 7,
+     "result": "labkit pack to t=400: predator lost before t=400 (< 200 t)"
+    }
+   ],
+   "same_individuals": false,
+   "controls_run": {},
+   "by_construction": [],
+   "limitation": "Supports the reading (a band of mixed outcomes at 240^2) and the pre-registered prediction (one of my two runle seeds also passes 500 t). With five runs at 240^2 the persistence times spread from < 200 to >= 700 t; this is not yet a probability per size, and the predation transfer is coded."
+  }
+ ],
+ "compute": {
+  "cpu_minutes": 60
+ }
+}
