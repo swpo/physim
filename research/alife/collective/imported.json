@@ -8413,6 +8413,27 @@
   "first_seen": "2026-10-26T00:08Z",
   "tree": "379c3ff3a7249e6567982678514f0b3a01e92814"
  },
+ "20261026T0009-c30-hash-chemistry-o-calibration": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:11Z",
+  "tree": "830a7030ebd8ef9c9be76ddc53f214c2502ae4cf"
+ },
+ "20261026T0010-c27-intent-lit": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:11Z",
+  "tree": "d396f1aa9c17d6f07dc1aefe4656c9110794fc20"
+ },
+ "20261026T0010-c27-review-metcrawler-nofission": {
+  "author": "c27",
+  "branch": "claude/alife-collective-c27",
+  "dropped": [],
+  "first_seen": "2026-10-26T00:11Z",
+  "tree": "50fda76bfa6e99e6f73c6476de2e4dcdf2e13cdb"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
