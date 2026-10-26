@@ -1,0 +1,99 @@
+c34 two-kind Marangoni rods. selection: kind A mar=40, kind B marB=0; neutral twin: marA = marB = 40 (same seeds, same founders). kinds.py: share of pure rods that are A; switches.py: kind switches along labkit tracks, persistent splits by parent kind.
+
+== sel
+     0    0    0   0    0  0.00
+    17    5    1   2    2  0.33
+    34   14    6   8    0  0.43
+    50   16    5  11    0  0.31
+    67   20    8  12    0  0.40
+    84   24   11  13    0  0.46
+   101   25   13  12    0  0.52
+   118   28   16  12    0  0.57
+   134   28   16  12    0  0.57
+   151   27   17  10    0  0.63
+   168   33   23  10    0  0.70
+   185   33   23  10    0  0.70
+sel/frames.npz: 96 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 19, 'B': 10}; merges by kinds of the merging tracks: {'AA': 4, 'BB': 6, 'AB': 1}
+
+== neutral
+     0    0    0   0    0  0.00
+    17    5    1   2    2  0.33
+    34   13    6   7    0  0.46
+    50   17    7  10    0  0.41
+    67   22    7  15    0  0.32
+    84   23    8  15    0  0.35
+   101   28   11  17    0  0.39
+   118   32   13  19    0  0.41
+   134   32   12  19    1  0.39
+   151   31   11  19    1  0.37
+   168   32    9  21    2  0.30
+   185   34   10  22    2  0.31
+neutral/frames.npz: 88 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 8, 'B': 15}; merges by kinds of the merging tracks: {'AA': 4, 'BB': 3, 'AB': 4}
+
+== sel_s12/seed1
+     0    0    0   0    0  0.00
+    17    2    1   1    0  0.50
+    34    5    3   2    0  0.60
+    50    8    6   2    0  0.75
+    67   13   10   3    0  0.77
+    84   18   15   3    0  0.83
+   101   23   20   3    0  0.87
+   118   28   24   4    0  0.86
+   134   28   25   3    0  0.89
+   151   31   28   2    1  0.93
+   168   25   23   2    0  0.92
+   185   31   29   1    1  0.97
+sel_s12/seed1/frames.npz: 78 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 25, 'B': 2}; merges by kinds of the merging tracks: {'AA': 6, 'BB': 0, 'AB': 2}
+
+== neutral_s12/seed1
+     0    0    0   0    0  0.00
+    17    2    1   1    0  0.50
+    34    4    2   2    0  0.50
+    50    6    4   2    0  0.67
+    67   12    9   3    0  0.75
+    84   17   13   4    0  0.76
+   101   23   15   8    0  0.65
+   118   27   19   8    0  0.70
+   134   30   20   9    1  0.69
+   151   33   24   8    1  0.75
+   168   35   25  10    0  0.71
+   185   31   22   8    1  0.73
+neutral_s12/seed1/frames.npz: 82 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 19, 'B': 5}; merges by kinds of the merging tracks: {'AA': 6, 'BB': 1, 'AB': 3}
+
+== sel_s12/seed2
+     0    0    0   0    0  0.00
+    17    6    1   5    0  0.17
+    34   12    2  10    0  0.17
+    50   17    3  14    0  0.18
+    67   18    3  14    1  0.18
+    84   20    5  14    1  0.26
+   101   21    4  17    0  0.19
+   118   26    7  19    0  0.27
+   134   27    8  19    0  0.30
+   151   30    9  21    0  0.30
+   168   32   11  21    0  0.34
+   185   32   12  20    0  0.38
+sel_s12/seed2/frames.npz: 99 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 11, 'B': 15}; merges by kinds of the merging tracks: {'AA': 3, 'BB': 7, 'AB': 0}
+
+== neutral_s12/seed2
+     0    0    0   0    0  0.00
+    17    6    1   5    0  0.17
+    34   12    2  10    0  0.17
+    50   17    3  14    0  0.18
+    67   27    4  23    0  0.15
+    84   29    5  24    0  0.17
+   101   29    3  25    1  0.11
+   118   31    4  26    1  0.13
+   134   28    4  23    1  0.15
+   151   30    6  24    0  0.20
+   168   32    6  26    0  0.19
+   185   33    7  26    0  0.21
+neutral_s12/seed2/frames.npz: 106 tracks with a pure kind; kind switches along a track: 0 []
+  persistent splits by parent kind: {'A': 4, 'B': 16}; merges by kinds of the merging tracks: {'AA': 1, 'BB': 14, 'AB': 2}
+
+summary (share of A among pure rods, frame 17 -> 185): seed 0 sel 0.33->0.70, neutral 0.33->0.31; seed 1 sel 0.50->0.97, neutral 0.50->0.73; seed 2 sel 0.17->0.38, neutral 0.17->0.21. Paired difference at frame 185: +0.39, +0.24, +0.17.
