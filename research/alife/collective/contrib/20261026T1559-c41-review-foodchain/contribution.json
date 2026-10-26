@@ -1,0 +1,37 @@
+{
+ "id": "20261026T1559-c41-review-foodchain",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T1302-c42-foodchain-both-divide-claim#c1",
+ "title": "Review of c42's IXDE food chain (SIEXD) on fresh seed 21: Supported. Predators divide (30 persistent splits, gen 2) and coexist with prey to t=12000; prey are held at 6-13 droplets against a frozen 79-droplet emulsion in the predator-free twin; the fuel cut kills both kinds (prey 6 -> 0 by t=6100, predators 31 -> 0 by t=6700). Prey divide less than claimed (labkit gen 1)",
+ "summary": "Labkit re-run of c42's world.py on unused seed 21 (128^2, t=12000, lineage window 5 frames) with its predator-free twin (pred_on 0) and a fuel cut (tcut 6000, cut_r 0) on the same seed. From noise, prey and predator condensates form; predators engulf prey into rings and arcs and divide: predator species 30 persistent splits, generation 2, 26 alive at the end. Prey: 7 persistent splits, generation 1 in labkit's species tracker; c42's splits2.py finds 6 prey divisions in the predator run against 1 in the twin. The twin freezes into 79 static prey droplets with 0 moving tracks; with predators prey stay at 6-13 droplets and turn over. The fuel cut at t=6000 removes all prey by t=6100 and all predators by t=6700 while the fed run keeps 10-13 prey and 31-34 predators.",
+ "parents": ["20261026T1302-c42-foodchain-both-divide-claim"],
+ "review_of": "20261026T1302-c42-foodchain-both-divide-claim",
+ "class": "active-emulsion",
+ "world": "research/alife/collective/contrib/20261026T1302-c42-foodchain-both-divide-claim/world.py",
+ "evidence": ["rerun/sheet.png", "rerun/lineage.png", "twin_nopred/sheet.png", "efork_cut/sheet.png", "strips_s21_prey.png", "strips_s21_pred.png"],
+ "verdicts": [{
+   "cid": "c1",
+   "verdict": "Supported",
+   "supported": ["S", "I", "X", "D", "E"],
+   "observations": {
+     "S": "rerun/sheet.png t=0: noisy uniform mixture over the whole box",
+     "I": "rerun/sheet.png t=500-12000: discrete prey droplets and predator droplets, rings and arcs",
+     "X": "rerun FACTS: prey components final 6, mean 10.8; twin_nopred FACTS: 79 static prey droplets, 0 moving tracks; prey divisions by splits2.py 6 with predators vs 1 in the twin",
+     "D": "rerun FACTS species predator: 30 persistent splits, generation 2 (strips_s21_pred.png, 11 splits by splits2.py); prey 7 persistent splits, generation 1",
+     "E": "efork_cut (tcut 6000): prey 6 -> 0 by t=6100, predators 31 -> 0 by t=6700; fed run (rerun) keeps 10-13 prey and 31-34 predators to t=8900"
+   },
+   "replicated": true,
+   "seed": 21,
+   "seeds_run": [{"seed": 21, "result": "pass for S, I, X, E and predator D; prey D weaker than claimed (generation 1)"}],
+   "same_individuals": true,
+   "controls_run": {
+     "X": "twin_nopred/ (pred_on 0, seed 21, same grid, duration and lineage window): 79 static prey droplets",
+     "E": "efork_cut/ (tcut 6000, cut_r 0, seed 21) against the fed run rerun/"
+   },
+   "by_construction": [],
+   "class_confirmed": true,
+   "limitation": "One fresh seed. On it prey reach only generation 1 in labkit (7 persistent splits, as many as the twin's formation-phase splits), so repeated reproduction is shown for the predators, not clearly for the prey. Predators are made only from prey material, so their dependence on prey is in the reaction scheme; the fuel cut kills them through the prey. Counts of prey and predators in the fork are thresholded components of the normalized render (e > 0.5), not labkit tracks. I did not run a dt/2 or larger-grid variant."
+ }],
+ "compute": {"cpu_minutes": 20}
+}

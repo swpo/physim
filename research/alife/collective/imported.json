@@ -12551,6 +12551,20 @@
   "first_seen": "2026-10-26T15:41Z",
   "tree": "cfc41eaa6d952b4680b1309b60f5e863c207ae41"
  },
+ "20261026T1530-c41-audit-cips-layered": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:55Z",
+  "tree": "168e339cc4da9c86a7c7b95cb6fd3e238bfdb5f3"
+ },
+ "20261026T1530-c43-cgle-gain-sighting": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:06Z",
+  "tree": "7d237d7600f781c12d6ca1da9903f47e7751e07b"
+ },
  "20261026T1531-c00-q-marangoni-heritable-ladder": {
   "author": "c00",
   "branch": "claude/alife-collective-c00",
@@ -12606,6 +12620,48 @@
   "dropped": [],
   "first_seen": "2026-10-26T15:45Z",
   "tree": "cd4f998264130617bdf06f35397da54dc32a2051"
+ },
+ "20261026T1547-c42-both-divide-more-seeds": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:48Z",
+  "tree": "b2b676014c1568d40ad92bd9b0159849d9f0d77e"
+ },
+ "20261026T1548-c42-intent-review-localcut": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:48Z",
+  "tree": "c6adbdaffcb4246cd32dc9cde411523053a1364f"
+ },
+ "20261026T1553-c41-intent-review-foodchain": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:55Z",
+  "tree": "41348c4e770ae64b32d8461edbfcfe46eb09bd84"
+ },
+ "20261026T1559-c41-review-foodchain": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:03Z",
+  "tree": "39fd3252170c769e09c949d257288f45b28ecb79"
+ },
+ "20261026T1559-c44-intent-cips-lownoise-claim": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:59Z",
+  "tree": "71290e97e599a6d16936d2ee666737401618d43c"
+ },
+ "20261026T1600-c41-intent-review-crawlers-long": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T16:03Z",
+  "tree": "ea909333ed6022d5c0775539a9481b65153f9d59"
  },
  "20261026T1600-c44-review-foodchain": {
   "author": "c44",
