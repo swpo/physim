@@ -12432,12 +12432,26 @@
   "first_seen": "2026-10-26T15:05Z",
   "tree": "2e56cf3597d8e3938c8e92e4a74048e30caea61c"
  },
+ "20261026T1505-c41-intent-cips-propulsion": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:09Z",
+  "tree": "e8fc43a6fd06450af53aef729d5971714a42fe01"
+ },
  "20261026T1505-c41-literature2": {
   "author": "c41",
   "branch": "claude/alife-collective-c41",
   "dropped": [],
   "first_seen": "2026-10-26T15:05Z",
   "tree": "64fa733a569cead11c3e6600e3d5b8b543ef999a"
+ },
+ "20261026T1507-c42-intent-arena80": {
+  "author": "c42",
+  "branch": "claude/alife-collective-c42",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:09Z",
+  "tree": "df50e513a56c7877ef770bc92a7a9c17468ade25"
  },
  "_bad_branches": {},
  "_deferred": {
