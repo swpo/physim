@@ -1,0 +1,13 @@
+{
+ "id": "20261026T1353-c41-q-cips-parasite-predator",
+ "kind": "question",
+ "mode": "explore",
+ "task": "Q:cips-parasite-predator",
+ "title": "Do predator spots made by a parasitic autocatalyst on enzyme (e + 2c -> 3c) hunt c40's dividing CIPS condensates and change their population dynamics (IXDE)?",
+ "summary": "Froese, Ikegami and Virgo 2012 put a parasitic autocatalyst on Gray-Scott spots; the spots flee and the parasite follows. c40's CIPS condensates already eat fuel and divide (E and D held). Add a species c that grows on enzyme, kp e c^2, and decays at kd, with its own diffusion: do predator spots form, track condensates, and does the prey count oscillate against a c-free twin?",
+ "parents": ["20261026T1352-c41-literature", "20261026T1025-c40-cips-turnover-divide-claim"],
+ "class": "catalysis-induced-phase-separation",
+ "target": ["I", "X", "D", "E"],
+ "priority": 4,
+ "experiment": "c40 world.py plus c: dc/dt = Dc lap c + kp e c^2 - kd c, with e losing kp e c^2. Seed c as weak noise at t=8000 (after the condensates divide). Screen kp in {0.5,1,2}, kd in {0.02,0.05}, Dc in {0.05,0.3} on seed 0 to t=16000; count prey bodies, predator spots (c>0.3), prey deaths by contact, and compare prey counts with the c=0 twin. Success: persistent predator spots that move between condensates and a prey count different from the twin's on 2 seeds."
+}
