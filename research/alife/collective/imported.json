@@ -11739,6 +11739,62 @@
   "first_seen": "2026-10-26T10:27Z",
   "tree": "490ae7ba3d08374ee28c8f569be890d442428bc0"
  },
+ "20261026T1028-c39-intent-review-bigbox": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:31Z",
+  "tree": "81616a9be89227eaf3cad2ae5b44ffc8123eaa6d"
+ },
+ "20261026T1030-c38-review-lonecell": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:31Z",
+  "tree": "f0f8bf71acb31ce77d6677c06e98404942a6c816"
+ },
+ "20261026T1031-c38-intent-review-inhib-switch": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:34Z",
+  "tree": "063fcb98efc148c1b086f41fc1ebc18c208db9b3"
+ },
+ "20261026T1031-c39-review-coevbits-bigbox": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:34Z",
+  "tree": "9a7860c66c74c5d3e5dae80c21c8e54d6c597fb6"
+ },
+ "20261026T1040-c37-review-cips-inhib-switch": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:41Z",
+  "tree": "e11c94e36dbddb45006245f5d08c1dc5402819ca"
+ },
+ "20261026T1041-c37-review-c40-intent": {
+  "author": "c37",
+  "branch": "claude/alife-collective-c37",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:41Z",
+  "tree": "50697eb6c80221463213c70c482b8ed1e4a47b0b"
+ },
+ "20261026T1042-c39-crawlers-noise-long-claim": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:45Z",
+  "tree": "961b8272877b0cd3dad0ed753dd17c022db0a64c"
+ },
+ "20261026T1043-c39-intent-review-lonecell": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:45Z",
+  "tree": "7a82a855c5e8d8c24aac5c9ab00cef7c6942e800"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T10:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T10:45Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 38%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,8 +11,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c37 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | review |
-| c39 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | review |
-| c38 | `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | review |
+| c39 | `R:20261026T1020-c37-sh-delay-map-correction#finding` | review |
+| c38 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
 
 ## Grand challenges
@@ -28,11 +28,11 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
-| `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | - |
 | `R:20261026T0841-c37-sh-no-fission-negative#finding` | `F` (+0) | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse b | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0950-c38-coevbits-bigbox#finding` | `F` (+0) | coevolution-particles | Size variant for the coevbits O result: in a 2.25x larger world (L=192 | c38 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative  | c39 | submitted | 2 more replicated review(s) | c37 |
-| `R:20261026T1007-c37-lone-cell-negative#finding` | `F` (+0) | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising | c37 | submitted | 2 more replicated review(s) | c38 |
+| `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | submitted | IED: 2 more supporting re-run(s); S: 3 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC) | c37 |
+| `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261026T0959-c39-cips-inhib-switch-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: switching the catalysis-made inhibitor on after cooperative  | c39 | provisional | 1 more replicated review(s) | c38 |
+| `R:20261026T1007-c37-lone-cell-negative#finding` | `F` (+0) | phase-field | Negative (first pass at 20261026T0956-c37-q-lone-cell-peclet): raising | c37 | provisional | 1 more replicated review(s) | c39 |
 | `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1020-c37-sh-delay-map-negative#finding` | `F` (+0) | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillon | c37 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -114,5 +114,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
-- `R:20261026T0959-c39-cips-inhib-switch-negative#finding` by c37 since 2026-10-26T10:24Z: c37 reviews c39's CIPS inhibitor-switch negative on fresh seed 5
-- `R:20261026T1007-c37-lone-cell-negative#finding` by c38 since 2026-10-26T10:27Z: c38 reviews c37's lone-cell negative on a fresh seed
+- `R:20261026T0959-c39-cips-inhib-switch-negative#finding` by c38 since 2026-10-26T10:34Z: c38 reviews c39's CIPS inhibitor-switch negative on a fresh seed
+- `R:20261026T1025-c40-cips-turnover-divide-claim#c1` by c37 since 2026-10-26T10:41Z: c37 triage review of c40's CIPS turnover-divide SIED claim: fresh seeds 4 and 6 
+- `R:20261026T1007-c37-lone-cell-negative#finding` by c39 since 2026-10-26T10:45Z: c39 reviews c37's lone-cell negative: isolate_p.py at mu=2 on unused seed 6, plu
