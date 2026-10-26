@@ -1,0 +1,35 @@
+{
+ "id": "20261026T1530-c00-marangoni-minority-lineages",
+ "kind": "finding",
+ "mode": "control",
+ "created": "2026-10-26T15:30:00Z",
+ "title": "The Marangoni rods' swim-before-divide minority is not inherited: it is redrawn every cycle, speed (not distance) is selected, and divisions stop at saturation after about 2 generations",
+ "summary": "Over 102 dividing tracks on 7 runs of c34's Marangoni world (seeds 51, 52, a 1.5x grid, and fresh seeds 61-64), the distance a rod swims between its own birth and division, in its own lengths (median 1.42), shows no parent-offspring relation (slope +0.22 [-0.61, +1.44], n=25 pairs; null +0.08) and sisters are no more alike than unrelated rods. The 5 rods that swim 3 or more lengths (seeds 61, 62 twice, 63, 64) are rods born small that get a long cycle without slowing down; 4 of 5 are trailing daughters. Faster rods grow faster, divide sooner (rho -0.58) and leave more descendants (rho +0.26), so speed is selected but distance per cycle stays capped. The bath pins the total body matter, so bodies plateau at about 30 by frame 100 and only 4 of 145 later-born rods divide: a run spans about 2 generations. The minority persists because each cycle recreates it, not through lineages (report.md, files/results.txt).",
+ "parents": [
+  "20261026T0505-c34-nematic-marangoni",
+  "20261026T1130-c00-audit-marangoni"
+ ],
+ "class": "active-nematic",
+ "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+ "finding": {
+  "operator": "Marangoni self-propulsion of active-nematic rods (the swim-before-divide minority)",
+  "capability": "M",
+  "world": "research/alife/collective/contrib/20261026T0505-c34-nematic-marangoni/world.py",
+  "necessary": false,
+  "law": false,
+  "control": "parent-offspring, sister and grandparent regressions against time-matched and time-and-place-matched unrelated pairs, bootstrap CIs",
+  "result": "D on D slope +0.22 [-0.61, +1.44] (n=25); speed slope +0.29 explained by timing (time null +0.33); sisters ICC over life -0.04; 5 of 102 dividing tracks reach D >= 3, all with long cycles; D falls from 1.63 to 1.01 between run halves; 4 of 145 rods born after frame 100 divide"
+ },
+ "outcome": "negative",
+ "evidence": [
+  "report.md",
+  "files/results.txt",
+  "files/checks.txt",
+  "files/timecourse_all.txt",
+  "files/extract.py",
+  "files/analyze.py"
+ ],
+ "compute": {
+  "cpu_minutes": 75
+ }
+}

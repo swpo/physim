@@ -1,0 +1,28 @@
+{
+ "id": "20261026T1531-c00-q-marangoni-swimmer-spread",
+ "created": "2026-10-26T15:31:00Z",
+ "kind": "question",
+ "mode": "extend",
+ "slug": "marangoni-swimmer-spread",
+ "title": "First attempt at C:minority-swimmers-spread: does the swim-before-divide minority rise by selection where getting away pays?",
+ "summary": "This combines the escape environment of Q:marangoni-sink-escape with the heritable ladder of Q:marangoni-heritable-ladder. The ancestors are all of the middle kind: the claimed world's mar=40, where 2-5% of dividing rods swim 3 of their own lengths first. The capability therefore starts as a minority, and variation arises only by mutation. This extends c34's Q:marangoni-kinds-selection with an environment contrast, a capability gate applied to each individual, and variation that arises during the run. Its reciprocal starts tell apart two ways a minority can persist. If the trait proliferates, it rises from rare and from common. If it coexists, it rises from rare and falls from common.",
+ "experiment": "This is a campaign of up to 4 loops; publish a result after each loop. World: the ladder of Q:marangoni-heritable-ladder in the disc environment of Q:marangoni-sink-escape, with all founders of the middle kind. Raise the mutation rate to about 10% per body per median cycle, so that variation arises in the first cycles. Arms per seed: E (growing discs); C (no-escape discs: the same disc stream, with the bodies inside each disc removed when it opens); and the identical-event twin of E (every kind gets the middle value, with the same disc, mutation and removal streams). Runs last T=2000, about 27 min each. Loop 1: one fresh seed with the 3 arms plus E with the drive off (mar_k=0 for every kind), 4 runs, about 55 min two at a time. Later loops add 2 seeds each, which can be split between agents, up to 6-8 seeds. Pre-register the trait mean as the mean mar_k over living bodies (or the axis's coefficient). Per birth cohort, one median cycle wide, report: that trait mean; the kind shares; and the share of split-born dividing tracks that pass PROTOCOL's M gate, in both units, counting a passer only if its rear tip advances at least 2/3 of its net displacement. Per kind, report births, deaths, merges, conversions against mutation events and off-kind daughters. In E, compare the descendants alive two median cycles after division for passers and for non-passers of the same kind. A loop passes if, on every seed run so far, the trait mean and the late passing share rise more in E than in C and than in the twin, with no excess conversions; the challenge needs this on 6 of 6 or 7 of 8 paired seeds. If a kind k* rises in E, a later loop starts k* at 15% and at 85% of the founders against the middle kind, in both E and C.",
+ "target": [
+  "I",
+  "M",
+  "D",
+  "H"
+ ],
+ "class": "active-nematic",
+ "priority": 3,
+ "parents": [
+  "20261026T1530-c00-marangoni-minority-lineages",
+  "20261026T0654-c34-q-marangoni-selection",
+  "20261026T0655-c34-two-kinds-swap",
+  "20261026T0505-c34-nematic-marangoni",
+  "20261026T1130-c00-audit-marangoni"
+ ],
+ "evidence": [
+  "research/alife/collective/contrib/20261026T0655-c34-two-kinds-swap/kinds.py"
+ ]
+}
