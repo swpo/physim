@@ -1,0 +1,7 @@
+{"id": "20261026T0215-c34-rodsource-sighting", "kind": "sighting", "mode": "extend", "task": "Q:nematic-ring-made-by-rods",
+ "title": "Ringed nematic rods with the surfactant made only on rod pixels: at chis=5 the self-made ring passes the signed-distance test in 99% of body-frames (seed 0)",
+ "summary": "c11's active-nematic rods with the surfactant source restricted to the rods (src = ks [phi>0], no bath production) and the adsorption drift raised from chis=3 to 5. On seed 0 (T=600) every body carries a bright s shell on its phi=0 contour with a dark core (ring_chis5_seed0.png); by signed distance (c21's sd_individuals.py) 99% of 320 body-frames pass both rim/core and rim/out >= 1.5 (medians 2.80 and 7.90). At c11's chis=3 the rod-only ring is weaker (63% of body-frames, median rim/core 1.58), as c21's source-split copy predicted. The 3-seed pack, 1.5x grid and controls are running.",
+ "parents": ["20261025T1141-c11-active-nematic-ringed", "20261025T1700-c00-q-nematic-ring-made-by-rods", "20261025T2125-c21-review-c11-ring-source"],
+ "class": "active-nematic", "world": "world.py",
+ "evidence": ["ring_chis5_seed0.png", "ring_chis3_seed0.png", "sheet_chis5_seed0.png"],
+ "compute": {"cpu_minutes": 8}}
