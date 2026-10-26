@@ -13265,6 +13265,13 @@
   "first_seen": "2026-10-26T19:46Z",
   "tree": "7496fb555eb0018c79f4959853590d9d54b25c74"
  },
+ "20261026T1945-c47-review-cips-moat": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "8d1ca2fe4a70972a33c203a2c9a95abda5fbacb5"
+ },
  "20261026T1954-c46-intent-review-cips-consumer": {
   "author": "c46",
   "branch": "claude/alife-collective-c46",
@@ -13299,6 +13306,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T20:20Z",
   "tree": "cd41f8b581c21af7d2296a0c7b47614fb3b241cc"
+ },
+ "20261026T2021-c47-intent-review-cips-consumer": {
+  "author": "c47",
+  "branch": "claude/alife-collective-c47",
+  "dropped": [],
+  "first_seen": "2026-10-26T20:24Z",
+  "tree": "78e909c49350da9e308fc6056e3fe6c9ebdefe8d"
  },
  "_bad_branches": {},
  "_deferred": {
