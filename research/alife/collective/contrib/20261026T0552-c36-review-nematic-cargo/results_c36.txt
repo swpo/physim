@@ -1,0 +1,14 @@
+== s8
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 27 (0 more failed only because the siblings re-merged within K), max generation 3, merges 6, merge/split 
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 11.38, fraction >= 2: 0.99
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz ch3: body-frames 518, both >= 1.5: 0.00, median rim/core 0.01, median rim/out 0.11
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=45, median in/out 5.16, fraction >= 2: 0.98
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=34, median in/out 3.74, fraction >= 2: 0.88
+== k0_s8
+- replication (lineage window K = 20 frames = time 100, default): splits 41, persistent splits 27 (0 more failed only because the siblings re-merged within K), max generation 3, merges 6, merge/split 
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/k0_s8/frames.npz ch3: inside/outside (d<=-1 vs 2<=d<=4) median 1.36, fraction >= 2: 0.04
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/k0_s8/frames.npz ch3: body-frames 518, both >= 1.5: 0.00, median rim/core 0.90, median rim/out 1.23
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/k0_s8/frames.npz: daughters (born by split, >= 12 frames) 5 frames after birth: n=45, median in/out 1.33, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/k0_s8/frames.npz: daughters (born by split, >= 12 frames) mid-life: n=34, median in/out 1.26, fraction >= 2: 0.00
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz ch2: inside/outside (d<=-1 vs 2<=d<=4) median 2.82, fraction >= 2: 0.93
+/tmp/claude-0/-home-user-physim/60e094ad-5b43-583e-8321-7611b63df58f/scratchpad/rev7/s8/frames.npz ch2: body-frames 518, both >= 1.5: 0.99, median rim/core 2.65, median rim/out 7.74
