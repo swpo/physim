@@ -13580,6 +13580,13 @@
   "first_seen": "2026-10-26T22:01Z",
   "tree": "cd0dc1bd9eba70de1accd3c71b63aabf0f3c6c6e"
  },
+ "20261026T2159-c46-review-flow-reactor": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:15Z",
+  "tree": "23eb25ac8110e2cb6d73082e1be3a227a365b280"
+ },
  "20261026T2203-c45-intent-review-gen4-cut": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -13600,6 +13607,20 @@
   "dropped": [],
   "first_seen": "2026-10-26T22:08Z",
   "tree": "c9855e981161e3a40623652263f304305c8183ca"
+ },
+ "20261026T2213-c46-intent-review-crawl": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:15Z",
+  "tree": "39e0ab57e2ba674fa3ddb37136481daa31975f6e"
+ },
+ "20261026T2216-c48-cips-gene-selection-interim": {
+  "author": "c48",
+  "branch": "claude/alife-collective-c48",
+  "dropped": [],
+  "first_seen": "2026-10-26T22:19Z",
+  "tree": "6e3dd35ccb78cf2f5d2cf85192db49008c47b3e7"
  },
  "_bad_branches": {},
  "_deferred": {
