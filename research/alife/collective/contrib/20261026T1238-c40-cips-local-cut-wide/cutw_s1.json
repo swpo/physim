@@ -1,0 +1,856 @@
+{
+"seed": 1,
+"t_cut": 12000.0,
+"target_centroid": [
+8.307692307692308,
+96.49321266968326
+],
+"nearest_other_body": 48.39229461017158,
+"cut_radius": 36.29422095762869,
+"arms": {
+"fed": [
+{
+"t": 12000,
+"target_enzyme_in_disk": 375.8673879570354,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8275419231034954,
+"bodies_outside_disk": 17
+},
+{
+"t": 12025,
+"target_enzyme_in_disk": 375.6886625797549,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8275203852815807,
+"bodies_outside_disk": 17
+},
+{
+"t": 12050,
+"target_enzyme_in_disk": 375.51250504741853,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8274991822689847,
+"bodies_outside_disk": 17
+},
+{
+"t": 12075,
+"target_enzyme_in_disk": 375.3388974384928,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8274783592275707,
+"bodies_outside_disk": 17
+},
+{
+"t": 12100,
+"target_enzyme_in_disk": 375.1678181917607,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8274579235658034,
+"bodies_outside_disk": 17
+},
+{
+"t": 12125,
+"target_enzyme_in_disk": 374.9992428843593,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8274379030025933,
+"bodies_outside_disk": 17
+},
+{
+"t": 12150,
+"target_enzyme_in_disk": 374.8331433277828,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8274183100600289,
+"bodies_outside_disk": 17
+},
+{
+"t": 12175,
+"target_enzyme_in_disk": 374.6695057235295,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8273991993828972,
+"bodies_outside_disk": 17
+},
+{
+"t": 12200,
+"target_enzyme_in_disk": 374.50832201449737,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8273806116875448,
+"bodies_outside_disk": 17
+},
+{
+"t": 12225,
+"target_enzyme_in_disk": 374.34956776532033,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8273625676844428,
+"bodies_outside_disk": 17
+},
+{
+"t": 12250,
+"target_enzyme_in_disk": 374.1932179123012,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8273450678134412,
+"bodies_outside_disk": 17
+},
+{
+"t": 12275,
+"target_enzyme_in_disk": 374.0392495436848,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8273281128450826,
+"bodies_outside_disk": 17
+},
+{
+"t": 12300,
+"target_enzyme_in_disk": 373.8876298544262,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8273116979146555,
+"bodies_outside_disk": 17
+},
+{
+"t": 12325,
+"target_enzyme_in_disk": 373.7383125902834,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8272958296378164,
+"bodies_outside_disk": 17
+},
+{
+"t": 12350,
+"target_enzyme_in_disk": 373.5912521453207,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8272805150470667,
+"bodies_outside_disk": 17
+},
+{
+"t": 12375,
+"target_enzyme_in_disk": 373.44640438881635,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8272657593606767,
+"bodies_outside_disk": 17
+},
+{
+"t": 12400,
+"target_enzyme_in_disk": 373.3037199359488,
+"target_px_e>0.5": 224,
+"F_in_disk": 0.8272515255640029,
+"bodies_outside_disk": 17
+},
+{
+"t": 12425,
+"target_enzyme_in_disk": 373.1631517739233,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8272378123229429,
+"bodies_outside_disk": 17
+},
+{
+"t": 12450,
+"target_enzyme_in_disk": 373.0246678457722,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8272246365725021,
+"bodies_outside_disk": 17
+},
+{
+"t": 12475,
+"target_enzyme_in_disk": 372.8882335908382,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8272119864810031,
+"bodies_outside_disk": 17
+},
+{
+"t": 12500,
+"target_enzyme_in_disk": 372.7538185354224,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8271998543393906,
+"bodies_outside_disk": 17
+},
+{
+"t": 12525,
+"target_enzyme_in_disk": 372.62139766703757,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8271882198024285,
+"bodies_outside_disk": 17
+},
+{
+"t": 12550,
+"target_enzyme_in_disk": 372.4909458818922,
+"target_px_e>0.5": 224,
+"F_in_disk": 0.8271770691881987,
+"bodies_outside_disk": 17
+},
+{
+"t": 12575,
+"target_enzyme_in_disk": 372.3624319865965,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8271663608066815,
+"bodies_outside_disk": 17
+},
+{
+"t": 12600,
+"target_enzyme_in_disk": 372.2358190478403,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8271560199641848,
+"bodies_outside_disk": 17
+},
+{
+"t": 12625,
+"target_enzyme_in_disk": 372.11106684380263,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8271460576601627,
+"bodies_outside_disk": 17
+},
+{
+"t": 12650,
+"target_enzyme_in_disk": 371.98813926927807,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8271365089983905,
+"bodies_outside_disk": 17
+},
+{
+"t": 12675,
+"target_enzyme_in_disk": 371.86700495098273,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8271273744329647,
+"bodies_outside_disk": 17
+},
+{
+"t": 12700,
+"target_enzyme_in_disk": 371.7476331804198,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8271186580962179,
+"bodies_outside_disk": 17
+},
+{
+"t": 12725,
+"target_enzyme_in_disk": 371.63000226373833,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8271103746511627,
+"bodies_outside_disk": 17
+},
+{
+"t": 12750,
+"target_enzyme_in_disk": 371.5140932295517,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.827102526499596,
+"bodies_outside_disk": 17
+},
+{
+"t": 12775,
+"target_enzyme_in_disk": 371.39988042179596,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.827095103711923,
+"bodies_outside_disk": 17
+},
+{
+"t": 12800,
+"target_enzyme_in_disk": 371.28733563561036,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270881009546917,
+"bodies_outside_disk": 17
+},
+{
+"t": 12825,
+"target_enzyme_in_disk": 371.17643413190126,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8270815328833374,
+"bodies_outside_disk": 17
+},
+{
+"t": 12850,
+"target_enzyme_in_disk": 371.06715071857377,
+"target_px_e>0.5": 224,
+"F_in_disk": 0.827075423970792,
+"bodies_outside_disk": 17
+},
+{
+"t": 12875,
+"target_enzyme_in_disk": 370.9594604320956,
+"target_px_e>0.5": 224,
+"F_in_disk": 0.8270697715535249,
+"bodies_outside_disk": 17
+},
+{
+"t": 12900,
+"target_enzyme_in_disk": 370.8533402690523,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.827064584699822,
+"bodies_outside_disk": 17
+},
+{
+"t": 12925,
+"target_enzyme_in_disk": 370.74876259912696,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8270598560046865,
+"bodies_outside_disk": 17
+},
+{
+"t": 12950,
+"target_enzyme_in_disk": 370.645694754688,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8270555733791197,
+"bodies_outside_disk": 17
+},
+{
+"t": 12975,
+"target_enzyme_in_disk": 370.544096456891,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8270517240130997,
+"bodies_outside_disk": 17
+},
+{
+"t": 13000,
+"target_enzyme_in_disk": 370.4439272942708,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.8270482913384082,
+"bodies_outside_disk": 17
+},
+{
+"t": 13025,
+"target_enzyme_in_disk": 370.3451557669825,
+"target_px_e>0.5": 226,
+"F_in_disk": 0.827045283138792,
+"bodies_outside_disk": 17
+},
+{
+"t": 13050,
+"target_enzyme_in_disk": 370.24777102980266,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8270427209746177,
+"bodies_outside_disk": 17
+},
+{
+"t": 13075,
+"target_enzyme_in_disk": 370.1517551019918,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.8270406111164265,
+"bodies_outside_disk": 17
+},
+{
+"t": 13100,
+"target_enzyme_in_disk": 370.0570918070008,
+"target_px_e>0.5": 225,
+"F_in_disk": 0.827038947417185,
+"bodies_outside_disk": 17
+},
+{
+"t": 13125,
+"target_enzyme_in_disk": 369.9637622846501,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8270377201250861,
+"bodies_outside_disk": 17
+},
+{
+"t": 13150,
+"target_enzyme_in_disk": 369.87174473602744,
+"target_px_e>0.5": 224,
+"F_in_disk": 0.8270369205008368,
+"bodies_outside_disk": 17
+},
+{
+"t": 13175,
+"target_enzyme_in_disk": 369.7810174245975,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8270365334753395,
+"bodies_outside_disk": 17
+},
+{
+"t": 13200,
+"target_enzyme_in_disk": 369.6915562685581,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.827036538651545,
+"bodies_outside_disk": 17
+},
+{
+"t": 13225,
+"target_enzyme_in_disk": 369.603339023955,
+"target_px_e>0.5": 220,
+"F_in_disk": 0.827036919972376,
+"bodies_outside_disk": 17
+},
+{
+"t": 13250,
+"target_enzyme_in_disk": 369.5163438648346,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8270376619810541,
+"bodies_outside_disk": 17
+},
+{
+"t": 13275,
+"target_enzyme_in_disk": 369.43054619863335,
+"target_px_e>0.5": 220,
+"F_in_disk": 0.8270387467232739,
+"bodies_outside_disk": 17
+},
+{
+"t": 13300,
+"target_enzyme_in_disk": 369.34592181863866,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8270401510181598,
+"bodies_outside_disk": 17
+},
+{
+"t": 13325,
+"target_enzyme_in_disk": 369.26244412698173,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270418840491865,
+"bodies_outside_disk": 17
+},
+{
+"t": 13350,
+"target_enzyme_in_disk": 369.1800878564401,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270439786704852,
+"bodies_outside_disk": 17
+},
+{
+"t": 13375,
+"target_enzyme_in_disk": 369.09883264214665,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270464872527267,
+"bodies_outside_disk": 17
+},
+{
+"t": 13400,
+"target_enzyme_in_disk": 369.0186597628774,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8270493281369176,
+"bodies_outside_disk": 17
+},
+{
+"t": 13425,
+"target_enzyme_in_disk": 368.93951303087664,
+"target_px_e>0.5": 223,
+"F_in_disk": 0.8270523267433969,
+"bodies_outside_disk": 17
+},
+{
+"t": 13450,
+"target_enzyme_in_disk": 368.8613463680308,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270554894270213,
+"bodies_outside_disk": 17
+},
+{
+"t": 13475,
+"target_enzyme_in_disk": 368.7841232230147,
+"target_px_e>0.5": 222,
+"F_in_disk": 0.8270588062648828,
+"bodies_outside_disk": 17
+}
+],
+"cut": [
+{
+"t": 12000,
+"target_enzyme_in_disk": 375.8673879570354,
+"target_px_e>0.5": 221,
+"F_in_disk": 0.8275419231034954,
+"bodies_outside_disk": 17
+},
+{
+"t": 12025,
+"target_enzyme_in_disk": 375.9915807656496,
+"target_px_e>0.5": 190,
+"F_in_disk": 0.5654911041379214,
+"bodies_outside_disk": 17
+},
+{
+"t": 12050,
+"target_enzyme_in_disk": 376.24074362161747,
+"target_px_e>0.5": 144,
+"F_in_disk": 0.5506058817109796,
+"bodies_outside_disk": 17
+},
+{
+"t": 12075,
+"target_enzyme_in_disk": 375.8737561018968,
+"target_px_e>0.5": 110,
+"F_in_disk": 0.556243476156677,
+"bodies_outside_disk": 17
+},
+{
+"t": 12100,
+"target_enzyme_in_disk": 374.5696923785185,
+"target_px_e>0.5": 90,
+"F_in_disk": 0.5628449079384494,
+"bodies_outside_disk": 17
+},
+{
+"t": 12125,
+"target_enzyme_in_disk": 372.397396037509,
+"target_px_e>0.5": 75,
+"F_in_disk": 0.5686439543772408,
+"bodies_outside_disk": 17
+},
+{
+"t": 12150,
+"target_enzyme_in_disk": 369.5884001174358,
+"target_px_e>0.5": 68,
+"F_in_disk": 0.5736440402800342,
+"bodies_outside_disk": 17
+},
+{
+"t": 12175,
+"target_enzyme_in_disk": 366.38383569124653,
+"target_px_e>0.5": 63,
+"F_in_disk": 0.5780634230988234,
+"bodies_outside_disk": 17
+},
+{
+"t": 12200,
+"target_enzyme_in_disk": 362.98278865570904,
+"target_px_e>0.5": 58,
+"F_in_disk": 0.582084522086789,
+"bodies_outside_disk": 17
+},
+{
+"t": 12225,
+"target_enzyme_in_disk": 359.53405107475277,
+"target_px_e>0.5": 56,
+"F_in_disk": 0.5858127785172024,
+"bodies_outside_disk": 17
+},
+{
+"t": 12250,
+"target_enzyme_in_disk": 356.14122214549485,
+"target_px_e>0.5": 49,
+"F_in_disk": 0.5893024978360101,
+"bodies_outside_disk": 17
+},
+{
+"t": 12275,
+"target_enzyme_in_disk": 352.87180691493444,
+"target_px_e>0.5": 45,
+"F_in_disk": 0.59258354598743,
+"bodies_outside_disk": 17
+},
+{
+"t": 12300,
+"target_enzyme_in_disk": 349.7666605229448,
+"target_px_e>0.5": 43,
+"F_in_disk": 0.5956761869702886,
+"bodies_outside_disk": 17
+},
+{
+"t": 12325,
+"target_enzyme_in_disk": 346.8477683191783,
+"target_px_e>0.5": 41,
+"F_in_disk": 0.5986005868596799,
+"bodies_outside_disk": 17
+},
+{
+"t": 12350,
+"target_enzyme_in_disk": 344.12426881979025,
+"target_px_e>0.5": 40,
+"F_in_disk": 0.6013771979547285,
+"bodies_outside_disk": 17
+},
+{
+"t": 12375,
+"target_enzyme_in_disk": 341.59674595713443,
+"target_px_e>0.5": 38,
+"F_in_disk": 0.6040275544949871,
+"bodies_outside_disk": 17
+},
+{
+"t": 12400,
+"target_enzyme_in_disk": 339.2602117201132,
+"target_px_e>0.5": 35,
+"F_in_disk": 0.6065753409299195,
+"bodies_outside_disk": 17
+},
+{
+"t": 12425,
+"target_enzyme_in_disk": 337.10614417639437,
+"target_px_e>0.5": 33,
+"F_in_disk": 0.6090478881010944,
+"bodies_outside_disk": 17
+},
+{
+"t": 12450,
+"target_enzyme_in_disk": 335.12386114454455,
+"target_px_e>0.5": 30,
+"F_in_disk": 0.6114784505091558,
+"bodies_outside_disk": 17
+},
+{
+"t": 12475,
+"target_enzyme_in_disk": 333.3014576928887,
+"target_px_e>0.5": 28,
+"F_in_disk": 0.6139099096481101,
+"bodies_outside_disk": 17
+},
+{
+"t": 12500,
+"target_enzyme_in_disk": 331.6264803890185,
+"target_px_e>0.5": 26,
+"F_in_disk": 0.616397668025125,
+"bodies_outside_disk": 17
+},
+{
+"t": 12525,
+"target_enzyme_in_disk": 330.08632327926216,
+"target_px_e>0.5": 22,
+"F_in_disk": 0.6190281747017243,
+"bodies_outside_disk": 17
+},
+{
+"t": 12550,
+"target_enzyme_in_disk": 328.6684659731323,
+"target_px_e>0.5": 17,
+"F_in_disk": 0.621943088028121,
+"bodies_outside_disk": 17
+},
+{
+"t": 12575,
+"target_enzyme_in_disk": 327.3606419759791,
+"target_px_e>0.5": 13,
+"F_in_disk": 0.625374932001148,
+"bodies_outside_disk": 17
+},
+{
+"t": 12600,
+"target_enzyme_in_disk": 326.15099578451435,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6296914249284086,
+"bodies_outside_disk": 17
+},
+{
+"t": 12625,
+"target_enzyme_in_disk": 325.0280190534859,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6350988613571448,
+"bodies_outside_disk": 17
+},
+{
+"t": 12650,
+"target_enzyme_in_disk": 323.97897452466026,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6407768597663017,
+"bodies_outside_disk": 17
+},
+{
+"t": 12675,
+"target_enzyme_in_disk": 322.9850090495602,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6454711383035557,
+"bodies_outside_disk": 17
+},
+{
+"t": 12700,
+"target_enzyme_in_disk": 322.0168376345937,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6489647336198192,
+"bodies_outside_disk": 17
+},
+{
+"t": 12725,
+"target_enzyme_in_disk": 321.041388536794,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6516211226834818,
+"bodies_outside_disk": 17
+},
+{
+"t": 12750,
+"target_enzyme_in_disk": 320.03768289864905,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6537626599149556,
+"bodies_outside_disk": 17
+},
+{
+"t": 12775,
+"target_enzyme_in_disk": 319.00445924947076,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6555719802028772,
+"bodies_outside_disk": 17
+},
+{
+"t": 12800,
+"target_enzyme_in_disk": 317.9553184979793,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6571431028354474,
+"bodies_outside_disk": 17
+},
+{
+"t": 12825,
+"target_enzyme_in_disk": 316.9099792879271,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6585266640774048,
+"bodies_outside_disk": 17
+},
+{
+"t": 12850,
+"target_enzyme_in_disk": 315.887740027524,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6597535139993997,
+"bodies_outside_disk": 17
+},
+{
+"t": 12875,
+"target_enzyme_in_disk": 314.90425432076006,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6608453459536369,
+"bodies_outside_disk": 17
+},
+{
+"t": 12900,
+"target_enzyme_in_disk": 313.97061792673986,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6618191862597269,
+"bodies_outside_disk": 17
+},
+{
+"t": 12925,
+"target_enzyme_in_disk": 313.09368008912884,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6626892829502301,
+"bodies_outside_disk": 17
+},
+{
+"t": 12950,
+"target_enzyme_in_disk": 312.2768060546648,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6634679315253679,
+"bodies_outside_disk": 17
+},
+{
+"t": 12975,
+"target_enzyme_in_disk": 311.52072318253414,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6641658678366796,
+"bodies_outside_disk": 17
+},
+{
+"t": 13000,
+"target_enzyme_in_disk": 310.8242773299228,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6647924963847928,
+"bodies_outside_disk": 17
+},
+{
+"t": 13025,
+"target_enzyme_in_disk": 310.1850614396701,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.665356072640087,
+"bodies_outside_disk": 17
+},
+{
+"t": 13050,
+"target_enzyme_in_disk": 309.59987709894597,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6658638322722176,
+"bodies_outside_disk": 17
+},
+{
+"t": 13075,
+"target_enzyme_in_disk": 309.06510293317154,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6663221728076387,
+"bodies_outside_disk": 17
+},
+{
+"t": 13100,
+"target_enzyme_in_disk": 308.57695930022714,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6667367625893638,
+"bodies_outside_disk": 17
+},
+{
+"t": 13125,
+"target_enzyme_in_disk": 308.1316418858412,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.667112518045464,
+"bodies_outside_disk": 17
+},
+{
+"t": 13150,
+"target_enzyme_in_disk": 307.725444274216,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6674537393684267,
+"bodies_outside_disk": 17
+},
+{
+"t": 13175,
+"target_enzyme_in_disk": 307.3548343865437,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6677642122038219,
+"bodies_outside_disk": 17
+},
+{
+"t": 13200,
+"target_enzyme_in_disk": 307.0164929049044,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6680472634743677,
+"bodies_outside_disk": 17
+},
+{
+"t": 13225,
+"target_enzyme_in_disk": 306.7073298261501,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6683058236918146,
+"bodies_outside_disk": 17
+},
+{
+"t": 13250,
+"target_enzyme_in_disk": 306.4244954459006,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.668542483927352,
+"bodies_outside_disk": 17
+},
+{
+"t": 13275,
+"target_enzyme_in_disk": 306.16537870492397,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6687595176717697,
+"bodies_outside_disk": 17
+},
+{
+"t": 13300,
+"target_enzyme_in_disk": 305.92759187541634,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6689589218607777,
+"bodies_outside_disk": 17
+},
+{
+"t": 13325,
+"target_enzyme_in_disk": 305.70895870106204,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6691424605215879,
+"bodies_outside_disk": 17
+},
+{
+"t": 13350,
+"target_enzyme_in_disk": 305.5075233548149,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6693117655043358,
+"bodies_outside_disk": 17
+},
+{
+"t": 13375,
+"target_enzyme_in_disk": 305.32154689944525,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6694683879264167,
+"bodies_outside_disk": 17
+},
+{
+"t": 13400,
+"target_enzyme_in_disk": 305.14944939323647,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6696136453162742,
+"bodies_outside_disk": 17
+},
+{
+"t": 13425,
+"target_enzyme_in_disk": 304.98980690609676,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.669748665988199,
+"bodies_outside_disk": 17
+},
+{
+"t": 13450,
+"target_enzyme_in_disk": 304.8413349694653,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6698744495493222,
+"bodies_outside_disk": 17
+},
+{
+"t": 13475,
+"target_enzyme_in_disk": 304.7028897624208,
+"target_px_e>0.5": 0,
+"F_in_disk": 0.6699918839607751,
+"bodies_outside_disk": 17
+}
+]
+}
+}
