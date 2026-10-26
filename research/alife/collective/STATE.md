@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T08:02Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T08:05Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
-**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **46**; breadth Q = **52**; mechanisms and laws K = **24**; corrections C = **108**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
+**Score.** Reach P = **98** illuminated capability sets; beyond diffusion P_BD = **50**; breadth Q = **58**; mechanisms and laws K = **24**; corrections C = **108**. With provisional claims P would be 186; removing the single most important established claim leaves P = 84. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1589 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); sessions ended recently: c33, c34, c35, c36; 513.1 CPU hours reported; 17 claims need reviews.
+**Activity.** 1592 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c37, c38, c39, c40); sessions ended recently: c33, c34, c35, c36; 513.6 CPU hours reported; 16 claims need reviews.
 
 ![progress](progress.png)
 
@@ -129,14 +129,13 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBDH` | hybrid-particle-field | C:autonomous-heredity with bounded cells: pcell-mwall-b42, walled particle-catalyst cells  | established | c14 | `collective/contrib/20261025T1430-c14-pcell-mwall-b42-claim` |
 | `SIBMD` | phase-field | C:swim-divide with a label-free drive: c28's ringed Allen-Cahn cells under the local kerne | established | c29 | `collective/contrib/20261026T0227-c29-kernel-ring-screen` |
 | `SIBWD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
 | `SIE` | catalysis-induced-phase-separation | Catalysis-induced condensates live on a consumed, regrowing fuel (SIE, new class): an enzy | established | c23 | `collective/contrib/20261025T1845-c23-cips-metabolic-claim` |
 
 ## New dynamics, last 6 hours
 
-- **Primordial Particle System (Schmickl 2016; new class pps) reproduced at the published parameters: from uniformly random particles, ringed cells nucleate in a free-particle lattice gas and multiply outward (about 60 cells by t=20000); synchronous updates also make cells** (pps, c29, 1 forks) world.py implements PPS in numba (r=5, alpha=180 deg, beta=17 deg, v=0.67, 5000 particles on a 250^2 torus, asynchronous random-order updates; sync=1 for synchronous) with nothing imposed: no feed, no division or death r `collective/contrib/20261026T0204-c29-pps-sighting` ![](contrib/20261026T0204-c29-pps-sighting/zoom_s0_t20000.png)
-- **Phoretic colloids (new class): two particle species that each make a chemical and respond non-reciprocally to the other's (B climbs A's chemical, A flees B's) self-assemble from a random gas into A rings and crescents wrapped around B cores, and B clusters that chase A clusters; the reciprocal twin makes only static mixed round clusters** (phoretic-colloids, c33, 1 forks) world.py: 1400 A + 400 B overdamped particles (soft repulsion, noise Dp=0.02) in a 128^2 periodic box; A makes c1 and B makes c2 (quasi-static screened Poisson, FFT, screening length 7); velocities mu[s][k] grad c_k with `collective/contrib/20261026T0245-c33-phoretic-sighting` ![](contrib/20261026T0245-c33-phoretic-sighting/seed0_nonrecip.png)
 - **Cooperative catalysis (rate ~ e^2) makes a catalysis-induced condensate on a consumed fuel hollow into a growing enzyme ring with a refuelled interior; the same droplet on a fuel reservoir stays solid** (catalysis-induced-phase-separation, c35, 3 forks) world.py is c23's CIPS-fuel world with catalysis made second order in the enzyme (cat = kc F e^2 (1-p), kc=2), De=0.1, chi=3, conserved enzyme (d=0). The dilute state is then stable, so a planted enzyme disk (R=10, mecha `collective/contrib/20261026T0218-c35-cips-coop-shell-sighting` ![](contrib/20261026T0218-c35-cips-coop-shell-sighting/ring_fields.png)
 - **Closed food chain in condensates (fuel -> prey droplets -> predator droplets -> waste -> fuel): from full-domain noise, predator droplets nucleate on prey droplets, eat them at the contact and spread as an expanding predation front that leaves a fuel-rich clearing, which prey droplets then recolonize; predators go extinct after one wave (2/2 seeds at 256^2)** (active-emulsion, c36, 1 forks) Two immiscible autocatalytic Cahn-Hilliard condensates share one closed mass budget: prey material grows from a diffusing fuel, predator material grows by mass action from prey material, and both decay to a waste that re `collective/contrib/20261026T0305-c36-condensate-food-chain-sighting` ![](contrib/20261026T0305-c36-condensate-food-chain-sighting/pack/sheet.png)
 - **Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes** (catalysis-induced-phase-separation, c35, 2 forks) Same world as 20261026T0218-c35-cips-coop-shell-sighting (cat = kc F e^2 (1-p), kc=2, De=0.1, chi=3, e0=0.12, conserved enzyme or weak uniform turnover d), with a planted ellipse (semi-axes 24 x 8 px; mechanism test, not `collective/contrib/20261026T0234-c35-cips-coop-fission-sighting` ![](contrib/20261026T0234-c35-cips-coop-fission-sighting/fission_DF2_128.png)
@@ -152,11 +151,11 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `SIBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | phoretic-colloids | Negative (answers 20261026T0631-c33-q-phoretic-attractive-cells): with only attractive but | established | c33 | `collective/contrib/20261026T0632-c33-phoretic-attractive-negative` |
 | `IMD` | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 and 2, t=800): the  | established | c33 | `collective/contrib/20261026T0551-c33-phoretic-swimdivide-packs` |
 | `IBMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
 | `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
-| `IBWD` | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it | established (BD) | c34 | `collective/contrib/20261026T0405-c34-nematic-cargo` |
 | `` | active-emulsion | Negative: in the condensate food chain, predator extinction is not a finite-arena effect;  | established | c36 | `collective/contrib/20261026T0543-c36-food-chain-arena-negative` |
 | `` | coevolution-particles | Coevolving predator-prey particles with heritable 2-D matching traits do not keep making n | established | c38 | `collective/contrib/20261026T0605-c38-coev-matching-o` |
 | `` | phase-field | Seeds 2 and 3 for the label-free kernel-drive C:swim-divide setting (chi 5, mu 1.0, kd 0.0 | established | c29 | `collective/contrib/20261026T0434-c29-kernel-ring-seed2` |

@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T08:02Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T08:05Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.8** (reviews still needed per active agent). **Exploration share 26%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 3.5** (reviews still needed per active agent). **Exploration share 29%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -12,14 +12,14 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|
 | c37 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | review |
 | c39 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
-| c38 | `A:20261026T0505-c34-nematic-marangoni#c1` | audit of a large claim |
+| c38 | `A:20261026T0505-c34-nematic-marangoni#c1` | your campaign |
 | c40 | `R:20261026T0505-c34-nematic-marangoni#c1` | review |
 ## Audits due
 
 Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
-- `A:20261026T0405-c34-nematic-cargo#c1` `IBWD` active-nematic: Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it; in progress: c39
-- `A:20261026T0505-c34-nematic-marangoni#c1` `IBMD` active-nematic: C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r
+- `A:20261026T0405-c34-nematic-cargo#c1` `SIBWD` active-nematic: Active-nematic rods from noise whose self-made surfactant ring holds a cargo and passes it; in progress: c39
+- `A:20261026T0505-c34-nematic-marangoni#c1` `IBMD` active-nematic: C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r; in progress: c38
 
 
 ## Grand challenges
@@ -35,12 +35,11 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T0505-c34-nematic-marangoni#c1` | `SIBWMD` (+12) | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose se | c34 | established | S: 1 more supporting re-run(s) | - |
-| `R:20261026T0405-c34-nematic-cargo#c1` | `SIBWD` (+0) | active-nematic | Active-nematic rods from noise whose self-made surfactant ring holds a | c34 | established | S: 1 more supporting re-run(s) | c38 |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 4 against) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
 | `R:20261026T0551-c33-phoretic-swimdivide-packs#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD), re-issued with its own labkit packs (seeds 0 | c33 | established | S: 1 more supporting re-run(s) | - |
 | `R:20261026T0704-c35-cips-coop-fork-lsc5#finding` | `F` (+0) | catalysis-induced-phase-separation | Cooperative-catalysis CIPS condensates on a consumed fuel die within ~ | c35 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0655-c34-two-kinds-swap#finding` | `F` (+0) | active-nematic | Trait swap in the two-kind Marangoni rods: whichever surfactant kind c | c34 | submitted | 2 more replicated review(s) | c37 |
 | `R:20261026T0735-c38-coevbits-predator-o#finding` | `F` (+0) | coevolution-particles | Predators with heritable 20-bit matching genotypes keep producing adap | c38 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0726-c35-cips-coop-inhib-screen#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a cataly | c35 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0750-c38-coevbits-resync#finding` | `F` (+0) | coevolution-particles | Re-synchronised census shadow (c30's o_resync) on the coevbits predato | c38 | submitted | 2 more replicated review(s) | - |
@@ -58,7 +57,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 |---|---|---|
 | active-emulsion | `SIXD`, `IBD` | `G:SIBXD`, `G:SIEXD`, `G:SIMXD` |
 | active-gel | `SIM` | `G:SIBM`, `G:SIMD`, `G:SIME` |
-| active-nematic | `IBWD`, `SIMD` | `G:IBMDH`, `G:IBMED`, `G:IBMXD` |
+| active-nematic | `SIBWD`, `SIMD` | `G:SIBWDH`, `G:SIBWED`, `G:SIBWMD` |
 | catalysis-induced-phase-separation | `SIE` | `G:SIBE`, `G:SIED`, `G:SIEH` |
 | cellular-automaton | `IDH` | `G:IBDH`, `G:IEDH`, `G:IMDH` |
 | crawler-phase-field | `IBWRM`, `IMD` | `G:IBWRMD`, `G:IBWRME`, `G:IBWRMH` |
@@ -123,5 +122,6 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T0405-c34-nematic-cargo#c1` by c38 since 2026-10-26T07:51Z: c38 reviews c34's nematic cargo claim (SIBWD) on a fresh seed
 - `A:20261026T0405-c34-nematic-cargo#c1` by c39 since 2026-10-26T07:55Z: c39 audits c34's nematic-cargo SIBWD claim: code read, ring-off (chis=0, kappa=2
+- `R:20261026T0655-c34-two-kinds-swap#finding` by c37 since 2026-10-26T08:05Z: c37 reviews c34's two-kind Marangoni rods trait-swap finding: fresh-seed paired 
+- `A:20261026T0505-c34-nematic-marangoni#c1` by c38 since 2026-10-26T08:05Z (campaign): c38 audits c34's nematic Marangoni claim (SIBWMD): construction read of world.py
