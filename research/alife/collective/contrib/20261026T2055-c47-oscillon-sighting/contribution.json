@@ -1,0 +1,14 @@
+{
+ "id": "20261026T2055-c47-oscillon-sighting",
+ "kind": "sighting",
+ "mode": "explore",
+ "task": "explore",
+ "title": "New class parametric-oscillon: a damped wave field, pumped parametrically below resonance from a consumed, regrowing energy, condenses from noise into a gas of discrete oscillons that sit in their own depletion halos, fuse in pairs and slowly coarsen; no replication yet",
+ "summary": "world.py is a second-order-in-time (inertial) field u_tt + g u_t = lap u - (1 + h E cos(2 Om t)) u + u^3 - 0.3 u^5 with detuned pumping (Om 0.9, h 0.48) drawn from an energy E that the oscillation consumes (k u^2 E) and that regrows and diffuses. From a random field (pack/seed0/sheet.png t=0) about 110 oscillons (envelope A ~1.3, radius ~3 px) form by t=300 on a quiet background, each in a dark pocket of depleted E. Neighbours attract and fuse into short rods (zoom_s2_575.png, zoom_s2_665.png) that collapse or leave one oscillon; some bound pairs breathe, rod -> two dots -> rod (zoom_s0_1660.png). Counts fall 111 -> 60 by t=3000 on seed 0 with no nucleation (births_s0.json; labkit 0 nucleations, merge/split 2.9) and settle near 55-60 on both labkit seeds, so I, S and a local supply dependence look plausible but nothing divides. Below h~0.4 everything decays; with weaker uptake (k 0.02) or faster regrowth the field turns into an extended turbulent oscillation instead of discrete oscillons.",
+ "parents": [],
+ "class": "parametric-oscillon",
+ "world": "world.py",
+ "evidence": ["pack/seed0/sheet.png", "pack/seed1/sheet.png", "pack/seed0/lineage.png", "zoom_s2_575.png", "zoom_s2_665.png", "zoom_s0_1660.png", "births_s0.json", "births_s2.json"],
+ "limits": "births.py's 'split' label is a peak-jitter artifact (it counted rods' moving peaks); the zooms show fusion, not division. One parameter point explored beyond a 12-run scan. dt 0.02 and dx 1 only.",
+ "compute": {"cpu_minutes": 90}
+}

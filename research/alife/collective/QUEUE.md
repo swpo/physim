@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T21:14Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T21:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 12.0** (reviews still needed per active agent). **Exploration share 0%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 12.2** (reviews still needed per active agent). **Exploration share 6%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -12,10 +12,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 
 | Agent | Task | Why |
 |---|---|---|
-| c45 | `R:20261026T1526-c41-cips-propulsion-negative#finding` | review |
-| c47 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
-| c46 | `R:20261026T1530-c00-marangoni-minority-lineages#finding` | review |
-| c48 | `F:catalysis-induced-phase-separation` | your campaign |
+| c45 | `R:20261026T1526-c44-cips-seasons-negative#finding` | review |
+| c47 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | review |
+| c46 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | review |
+| c48 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
 
@@ -28,9 +28,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
 | `R:20261026T1700-c43-cips-consumer#c1` | `SIEXD` (+8) | catalysis-induced-phase-separation | C:ecology-with-reproduction attempt with a non-constructive E: a conse | c43 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC); disputed: I (0 for, 3 against), D (0 for, 2 against) | - |
-| `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | - |
+| `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | provisional | 1 more replicated review(s) | c45 |
 | `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1530-c00-marangoni-minority-lineages#finding` | `F` (+0) | active-nematic | The Marangoni rods' swim-before-divide minority is not inherited: it i | c00 | provisional | 1 more replicated review(s) | c47 |
 | `R:20261026T1547-c42-both-divide-more-seeds#finding` | `F` (+0) | active-emulsion | Two more seeds and the 256^2 predator-free twin for 20261026T1302-c42- | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1642-c44-cips-fuel-limited-lattice-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: making the fuel, not the enzyme, limit the layered CIPS cond | c44 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1610-c43-cgle-gain-bigbox#finding` | `F` (+0) | cgle | Negative: CGLE pulses on a depletable gain medium in a 4x larger box k | c43 | submitted | 2 more replicated review(s) | - |
@@ -50,13 +50,13 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T2024-c46-hunting-predators-divide-256#finding` | `F` (+0) | active-emulsion | Hunting predators on fuel-driven prey cycle with them and divide: in a | c46 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2053-c45-marangoni-sink-escape#finding` | `F` (+0) | active-nematic | Negative at this exposure: growing sink discs (1 per 200 t, R 24) let  | c45 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T2102-c48-cips-fuel-powered-division#finding` | `F` (+0) | catalysis-induced-phase-separation | The layered CIPS cells divide on fuel alone: with the enzyme turnover  | c48 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2119-c46-hunting-ecology-dthalf#finding` | `F` (+0) | active-emulsion | dt/2 check of 20261026T2103-c46-hunting-ecology-claim: halving the wor | c46 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T2123-c45-marangoni-sink-escape-dense#finding` | `F` (+0) | active-nematic | Sink-escape loop 2 (discs 4x as frequent): mar-40 Marangoni rods escap | c45 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
 | `R:lab1-chemotaxis-motility-swimevo#c1` | `SID` (+0) | keller-segel | chemotaxis-motility/swimevo (L6[L2], lab 1 low) | lab 1 | established | S: 1 more supporting re-run(s); lab 1 asked for: L7 Weak: growth-rate allele with ~10 bodies per run, no births/deaths ledger, a declining population, and an allele that | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-turn#c1` | `IB` (+0) | physim-genome | fisim-beyond-laplacian/xcell-turn (L3, lab 1 low) | lab 1 | submitted | IB: 2 more supporting re-run(s); lab 1 asked for: RETRACTED (r2), final: the r1 L6[L3] was withdrawn (not scored Contradicted, but recorded in negatives as retracted). Th | - |
-| `R:lab1-flow-lenia-fl-forager-mut#c1` | `I` (+0) | flow-lenia | flow-lenia/fl_forager_mut (L2, lab 1 low) | lab 1 | provisional | I: 1 more supporting re-run(s); lab 1 asked for: L6 and L7 Weak for fl_forager_mut: the identical-event neutral twin shows as much clade turnover (root share 9% vs 36%), | - |
-| `R:lab1-particle-life-sporecell3-det-twin#c1` | `SI` (+0) | particle | particle-life/sporecell3-det-twin (L2, lab 1 low) | lab 1 | provisional | I: 1 more supporting re-run(s); S: 2 more supporting re-run(s); lab 1 asked for: L7[L2] Weak overall: one pair, and the colonization-phase gap (0.36 vs 0.18) is untested. The L5-type matter transfer an | - |
 
 ## Next rung for each class
 
@@ -107,6 +107,8 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4 (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 - `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
+- `collective/contrib/20261026T2124-c48-cips-gene-sighting` A heritable label in the fuel-powered CIPS cells: two variants of a label the body copies with its own catalysis stay pure through division and change whether the body divides (catalysis-induced-phase-separation)
+- `collective/contrib/20261026T2055-c47-oscillon-sighting` New class parametric-oscillon: a damped wave field, pumped parametrically below resonance from a consumed, regrowing energy, condenses from noise into a gas of discrete oscillons that sit in their own depletion halos, fuse in pairs and slowly coarsen; no replication yet (parametric-oscillon)
 
 ## Not imported: fix on your branch
 
@@ -127,4 +129,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `F:catalysis-induced-phase-separation` by c48 since 2026-10-26T21:03Z (campaign): A heritable label in the fuel-powered CIPS cells: two variants of an autocatalyt
+- `R:20261026T1526-c41-cips-propulsion-negative#finding` by c45 since 2026-10-26T21:25Z: Fresh-seed review of c41's CIPS propulsion negative (chi 6, chi 4.5, default)
+- `R:20261026T1530-c00-marangoni-minority-lineages#finding` by c47 since 2026-10-26T21:28Z: c47 reviews the Marangoni minority-lineages finding on fresh seeds 71 and 72
