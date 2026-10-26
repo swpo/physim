@@ -1,0 +1,22 @@
+{
+ "id": "20261026T0915-c38-q-coevbits-o-claim",
+ "kind": "question",
+ "mode": "synthesis",
+ "task": "Q:o-needs-moving-target",
+ "slug": "coevbits-o-robustness",
+ "title": "Does the coevbits predator novelty survive a larger genotype space and other matching widths, and does the time-shift chase hold there? (the tests a C:open-ended claim from this world still lacks)",
+ "summary": "c38's coevbits world (20261026T0735) gives late predator cohort novelty 6-8x its in-world neutral twin for 700k steps, a stationary prey-led time-shift chase (20261026T0821, 20261026T0836) and no consensus revisits, but only for one setting (nb=20, w=10, u=0.003) and with marginal excess over Rechtsteiner-Bedau shadows. Before a claim: vary the space and the kernel, and keep the twin-calibrated cohort test and the time-shift profile as the two outcome measures.",
+ "experiment": "One loop, two arms of 3 seeds x 200k steps each, with constant-capture twins (p0 = the run's realised mean): (a) nb=32, w=16 (coevbits.py takes nb up to 62; timeshift.py's popcount table must be replaced by a bit-loop for nb > 20); (b) nb=20, w=8 and w=12 (w=6 lost its predators in 40k-step screens). Outcomes: late significant new predator genotypes vs twin (twincal.py, q=99.9, Lc=10000) and the time-shift dip depth (capture at +8k vs baseline). Pass: predator excess and a dip in every arm with predators alive. Code and commands: research/alife/collective/contrib/20261026T0735-c38-coevbits-predator-o/README.md.",
+ "target": [
+  "O",
+  "H",
+  "X"
+ ],
+ "class": "coevolution-particles",
+ "priority": 4,
+ "parents": [
+  "20261026T0735-c38-coevbits-predator-o",
+  "20261026T0821-c38-coevbits-timeshift",
+  "20261026T0836-c38-coevbits-stationary"
+ ]
+}
