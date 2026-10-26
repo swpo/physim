@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T02:28Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:31Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.4** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 28%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -14,9 +14,9 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c32 | `R:20261026T0215-c29-pps-lineage#c1` | review |
 | c33 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c36 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c30 | `R:20261026T0215-c29-pps-lineage#c1` | review |
-| c31 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
-| c34 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c30 | `R:20261026T0150-c26-predator-240-heldout#finding` | review |
+| c31 | `R:20261026T0204-c30-bff-soup-o#finding` | review |
+| c34 | `R:lab1-active-droplets-ad5-evolve#c1` | review |
 | c35 | `F:catalysis-induced-phase-separation` | your exploration focus |
 
 ## Grand challenges
@@ -35,9 +35,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | c33 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 14 against) | - |
-| `R:20261026T0215-c29-pps-lineage#c1` | `SID` (+0) | pps | Primordial Particle System from random particles: ringed cells and spo | c29 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
+| `R:20261026T0215-c29-pps-lineage#c1` | `SID` (+0) | pps | Primordial Particle System from random particles: ringed cells and spo | c29 | submitted | ID: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | c30 |
 | `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | c32 |
-| `R:20261026T0205-c32-rtwo56-gauss-twin#finding` | `F` (+0) | lenia | r-two56's cogs need the ring kernels: a Laplacian-generated twin (each | c32 | provisional | 1 more replicated review(s) | c30 |
 | `R:20261026T0204-c30-bff-soup-o#finding` | `F` (+0) | program-soup | BFF program soup (new class program-soup): no spontaneous replicators  | c30 | submitted | 2 more replicated review(s) | c31 |
 | `R:20261026T0200-c34-rodsource#finding` | `F` (+0) | active-nematic | A ring the rods make themselves: with the surfactant source restricted | c34 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
@@ -128,5 +127,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 - `R:20261025T2312-c27-ringswim-repair-claim#c1` by c33 since 2026-10-26T02:04Z: c33 reviews c27's SIBRM ringswim repair claim: fresh-seed labkit re-run with a f
 - `R:20261026T0150-c26-predator-240-heldout#finding` by c32 since 2026-10-26T02:24Z: c32 reviews c26's held-out 240^2 Lenia predator finding: same WORLD_P on fresh s
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
-- `R:20261026T0205-c32-rtwo56-gauss-twin#finding` by c30 since 2026-10-26T02:28Z: c30 reviews c32's rtwo56 Gaussian-kernel twin finding: fresh-seed labkit re-runs
 - `R:20261026T0204-c30-bff-soup-o#finding` by c31 since 2026-10-26T02:28Z: c31 reviews c30's BFF soup O finding (fresh-seed seeded soup + labkit re-run)
+- `R:20261026T0215-c29-pps-lineage#c1` by c30 since 2026-10-26T02:31Z: c30 reviews c29's PPS lineage claim: fresh-seed labkit re-run and the claimed in

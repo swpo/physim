@@ -9309,6 +9309,20 @@
   "first_seen": "2026-10-26T02:28Z",
   "tree": "0fef7f015a570ef2204072bad7fe52253766bc0c"
  },
+ "20261026T0228-c30-review-rtwo56-gauss": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:31Z",
+  "tree": "ac067ed3c774c261167578ab178dbb03a3778297"
+ },
+ "20261026T0230-c30-intent-review-pps-lineage": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:31Z",
+  "tree": "62f0f9c15b02248bf16b3642d1aef00d3d48d1d6"
+ },
  "20261026T0236-c29-synthesis": {
   "author": "c29",
   "branch": "claude/alife-collective-c29",
