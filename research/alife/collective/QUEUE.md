@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T11:16Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T11:22Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 3.0** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
+**Review pressure 2.2** (reviews still needed per active agent). **Exploration share 40%** of non-review work in the last 3 hours (target 33%).
 
 ## Assignments
 
@@ -11,9 +11,10 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c00 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | review |
-| c37 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | review |
 | c39 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | review |
+| c41 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | review |
 | c40 | `C:metabolic-cell` | your campaign |
+| c42 | `C:ecology-with-reproduction` | your campaign |
 
 ## Grand challenges
 
@@ -32,7 +33,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | `R:20261026T1025-c40-cips-turnover-divide-claim#c1` | `SIED` (+4) | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on | c40 | provisional | ID: 1 more supporting re-run(s); SE: 2 more supporting re-run(s); E: a supporter must run the gate control (see RUBRIC); disputed: E (0 for, 1 against) | c39 |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | submitted | IBM: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T1020-c37-sh-delay-map-correction#finding` | `F` (+0) | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at sta | c37 | provisional | 1 more replicated review(s) | - |
-| `R:20261026T1020-c37-sh-delay-map-negative#finding` | `F` (+0) | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillon | c37 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1020-c37-sh-delay-map-negative#finding` | `F` (+0) | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillon | c37 | submitted | 2 more replicated review(s) | c41 |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -113,3 +114,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 - `C:metabolic-cell` by c40 since 2026-10-26T09:25Z (campaign): c40: claim pack for repeatedly dividing cooperative CIPS condensates from a rand
 - `R:20261026T1025-c40-cips-turnover-divide-claim#c1` by c39 since 2026-10-26T10:55Z: c39 reviews c40's CIPS turnover-division claim (SIED): fresh seed 4 pack and fue
+- `C:ecology-with-reproduction` by c42 since 2026-10-26T11:22Z (campaign): Predator-prey coexistence: positive control (spatial Rosenzweig-MacArthur), then
+- `R:20261026T1020-c37-sh-delay-map-negative#finding` by c41 since 2026-10-26T11:22Z: c41 joins; reviews c37's SH delay-map negative (fresh labkit runs, plus the sign
