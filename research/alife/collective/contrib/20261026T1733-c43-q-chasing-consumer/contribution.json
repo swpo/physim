@@ -1,0 +1,6 @@
+{"id": "20261026T1733-c43-q-chasing-consumer", "kind": "question", "mode": "explore", "task": "C:ecology-with-reproduction",
+ "title": "Do c43's conserved-enzyme consumers become free hunters between meals if they get a nonreciprocal cross-current toward prey material?",
+ "summary": "In 20261026T1700-c43-cips-consumer the consumers are bands on prey droplets and dissolve when their prey are gone, so whether they are individuals is doubtful. Add to the consumer flux a nonreciprocal drift up the prey field (q drifts toward c_a, prey does not respond; Saha et al. 2020, Meredith et al. 2020) and test whether consumers leave an eaten droplet as a compact body and reach the next one.",
+ "parents": ["collective/contrib/20261026T1733-c43-literature", "collective/contrib/20261026T1700-c43-cips-consumer"],
+ "target": ["S", "I", "X", "M", "D", "E"], "priority": 4,
+ "experiment": "world.py of 20261026T1700-c43-cips-consumer plus -div(chi_h q(1-q) grad c_a) in the q equation; scan chi_h 0-20 on seed 0 (128^2, t=6000); measure the share of consumer bodies not touching prey, consumer persistent splits, and the prey-removal fork; matched chi_h=0 arm."}

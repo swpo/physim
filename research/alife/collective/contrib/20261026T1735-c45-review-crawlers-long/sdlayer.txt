@@ -1,0 +1,8 @@
+seed 55
+/home/user/physim/research/alife/collective/contrib/20261026T1042-c39-crawlers-noise-long-claim/sdlayer.py:18: RuntimeWarning: Mean of empty slice
+  rim, core, o = s[own & (np.abs(d) <= 3)].mean(), s[own & (d <= -10)].mean(), s[own & (d >= 6) & (d <= 15)].mean()
+/home/user/physim/research/alife/.labenv/lib/python3.12/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in divide
+  ret = ret.dtype.type(ret / rcount)
+collective/contrib/20261026T1735-c45-review-crawlers-long/rerun/seed55/frames.npz body-frames 48 both >= 1.5: 0.98 median rim/core nan median rim/out 19.72
+seed 56
+collective/contrib/20261026T1735-c45-review-crawlers-long/rerun/seed56/frames.npz body-frames 37 both >= 1.5: 1.0 median rim/core 3.5 median rim/out 21.6

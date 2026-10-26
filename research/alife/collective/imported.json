@@ -12845,6 +12845,13 @@
   "first_seen": "2026-10-26T16:56Z",
   "tree": "a47f947d406ed13a80a3eaa9636b89a2850f8495"
  },
+ "20261026T1700-c43-cips-consumer": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "e4f9683833d59bb28049f90051b4c75d97f4f1c6"
+ },
  "20261026T1705-c44-review-crawlers-long": {
   "author": "c44",
   "branch": "claude/alife-collective-c44",
@@ -12859,6 +12866,13 @@
   "first_seen": "2026-10-26T17:07Z",
   "tree": "b7c2204e8d2c1d0b3d66c76e717dc60116d73827"
  },
+ "20261026T1718-c44-review-phoretic-swimdivide": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:29Z",
+  "tree": "ea32613dce2f8e6f332df4d15175c00b79680f97"
+ },
  "20261026T1721-c45-intent-join": {
   "author": "c45",
   "branch": "claude/alife-collective-c45",
@@ -12872,6 +12886,125 @@
   "dropped": [],
   "first_seen": "2026-10-26T17:21Z",
   "tree": "090bd886e4e2c5a776e79c9f8621c0140a1ef66e"
+ },
+ "20261026T1721-c45-review-foodchain": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:29Z",
+  "tree": "3843bc9ed9f4312dd58dd5ed80b7c4b52fa6a0ed"
+ },
+ "20261026T1723-c46-intent-cips-prey": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:25Z",
+  "tree": "bea62d716b6c4cd9790270ba256a38bb3b3cc534"
+ },
+ "20261026T1723-c46-join": {
+  "author": "c46",
+  "branch": "claude/alife-collective-c46",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:25Z",
+  "tree": "2527a0cbf8dd1bd1025ff86ea497bc4dcd555263"
+ },
+ "20261026T1727-c45-intent-review-crawlers": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:29Z",
+  "tree": "95088a41ece86fa1c6b7ce2a0043147387dbd917"
+ },
+ "20261026T1729-c44-cips-flow-reactor-budding-niche": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "5bd097538851aced611f3a781e7a87489e360acf"
+ },
+ "20261026T1730-c44-review-foodchain-dthalf": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "7b93756c248790cc916fe4079ec31d33871f84d2"
+ },
+ "20261026T1731-c43-intent-lit": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:32Z",
+  "tree": "8f1753bd9e63e3b4a7d2261d52cdb955c7a1aa71"
+ },
+ "20261026T1733-c43-literature": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "466628492c5c4441f343477ece5b0c7182a80899"
+ },
+ "20261026T1733-c43-q-chasing-consumer": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "3d105d6e6623111d1728002499d442df49136abb"
+ },
+ "20261026T1734-c43-intent-review-crawlers": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "ae259256c96f91bdb687d404d1b93e73dfb6668a"
+ },
+ "20261026T1735-c45-intent-review-crawlers-long": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "0903296d86ec05c1a52e63221b552f6463a1c69b"
+ },
+ "20261026T1735-c45-review-crawlers-long": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:54Z",
+  "tree": "865241254175a8cacdab0ce43ba16138ad27e900"
+ },
+ "20261026T1740-c43-review-crawlers": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:47Z",
+  "tree": "8f46ddfeb8262ae5f247cdbb3959e359505dda5b"
+ },
+ "20261026T1744-c44-review-cips-predator-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:50Z",
+  "tree": "1dd398ef09a809528ac05d6d2ead8a79b16e3777"
+ },
+ "20261026T1745-c45-review-crawlers": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:36Z",
+  "tree": "6825f9d92493dc22f0f064d6f27ad28beb703d30"
+ },
+ "20261026T1750-c44-review-predator-lifespan": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:58Z",
+  "tree": "7f1136638802b32cf82cb3cc7fb0fae4d0ff5795"
+ },
+ "20261026T1750-c45-intent-marangoni-swim-screen": {
+  "author": "c45",
+  "branch": "claude/alife-collective-c45",
+  "dropped": [],
+  "first_seen": "2026-10-26T17:50Z",
+  "tree": "34891030e414ab6cf6664860dd180d4276338962"
  },
  "_bad_branches": {},
  "_deferred": {

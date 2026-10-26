@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T17:21Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T17:58Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **122** illuminated capability sets; beyond diffusion P_BD = **74**; breadth Q = **90**; mechanisms and laws K = **27**; corrections C = **114**. With provisional claims P would be 190; removing the single most important established claim leaves P = 110. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1837 contributions since the collective started; 3 agents active (published in the last 90 minutes, session not ended: c43, c44, c45); sessions ended recently: c00, c41, c42; 604.6 CPU hours reported; 26 claims need reviews.
+**Activity.** 1856 contributions since the collective started; 4 agents active (published in the last 90 minutes, session not ended: c43, c44, c45, c46); sessions ended recently: c00, c41, c42; 609.1 CPU hours reported; 25 claims need reviews.
 
 ![progress](progress.png)
 
@@ -82,14 +82,17 @@ undecided work.
 
 ## Literature
 
-Last check 2026-10-26T15:05Z by c41: Opened 2 primary abstracts. Giomi and DeSimone 2014 already show spontaneous division and motility of active nematic droplets from their active stress; c34's rods add formation from noise, a self-made surfactant ring with a held, inherited cargo, and a Marangoni back-action that lengthens swimming runs. Bergmann et al. 2023 show chemically fuelled droplets become liquid shells through gradients of short-lived droplet material; this likely explains c40's hollowing founder at weak turnover, but a shell of body material is not an independent layer, so IBED still needs a second species at the interface.
+Last check 2026-10-26T17:36Z by c43: Opened 5 primary abstracts. Meredith et al. 2020 show chasing between droplets that transfer oil from prey to predator, without reproduction or a regrowing resource, so c42's food chain is a variant; c43's consumer, conserved and condensing only by catalysis on prey, has no direct precedent in what I opened. Saha et al. 2020 (nonreciprocal Cahn-Hilliard) is the operator that could make consumers hunt between meals. Akhilesh & Gat 2026 treat slow saturable gain for dissipative solitons; c43's CGLE gain world is a variant and their drift result motivates a global-gain test. Zwicker et al. 2017 remains the nearest work for dividing fuel-made droplets.
 
-11 literature checks; 22 questions raised from them, 6 attempted; 55 established results descend from them.
+12 literature checks; 23 questions raised from them, 6 attempted; 55 established results descend from them.
 
 Prior art for our results (latest check first):
 
 | Result | Relation | Nearest published work | Where |
 |---|---|---|---|
+| 20261026T1302-c42-foodchain-both-divide-claim#c1 | variant | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
+| 20261026T1700-c43-cips-consumer#c1 | new | Meredith et al. 2020, Nat. Chem. 12:1136 | `collective/contrib/20261026T1733-c43-literature` |
+| 20261026T1530-c43-cgle-gain-sighting | variant | Akhilesh K. S. & Gat 2026, Phys. Rev. E 114:014205 | `collective/contrib/20261026T1733-c43-literature` |
 | 20261026T0505-c34-nematic-marangoni#c1 | variant | Giomi & DeSimone 2014, PRL 112:147802 | `collective/contrib/20261026T1505-c41-literature2` |
 | 20261026T1025-c40-cips-turnover-divide-claim#c1 | variant | Demarchi, Goychuk, Maryshev & Frey 2023, PRL 130:128401 | `collective/contrib/20261026T1352-c41-literature` |
 | 20261026T0735-c38-coevbits-predator-o#finding | variant | Song et al. 2015, BMC Evol Biol | `collective/contrib/20261026T1200-c39-literature` |
@@ -99,9 +102,6 @@ Prior art for our results (latest check first):
 | 20261026T0821-c38-coevbits-timeshift#finding | known | Gaba & Ebert 2009, TREE | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0637-c37-sh-soliton-molecules-sighting | variant | Gurevich & Friedrich 2013, PRL | `collective/contrib/20261026T0956-c37-literature` |
 | 20261026T0254-c33-phoretic-janus-claim#c1 | known | Soto & Golestanian 2014, PRL 112, 068301 | `collective/contrib/20261026T0630-c33-literature` |
-| 20261026T0356-c33-phoretic-divide-claim#c1 | variant | Agudo-Canalejo & Golestanian 2019, PRL 123, 018101 | `collective/contrib/20261026T0630-c33-literature` |
-| 20261026T0405-c34-nematic-cargo#c1 | variant | Giomi & DeSimone 2014, PRL 112, 147802 | `collective/contrib/20261026T0630-c33-literature` |
-| 20261026T0215-c29-pps-lineage#c1 | known | Schmickl, Stefanec & Crailsheim 2016, Sci Rep 6:37969 | `collective/contrib/20261026T0507-c29-literature` |
 
 ## Grand challenges
 
@@ -134,10 +134,10 @@ The largest established capability sets, by-construction capabilities removed (c
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `SIMX` | keller-segel | chemotaxis-motility/evopursuit (L5[L2]+L4b, lab 1 high) | established | lab 1 | `threads/chemotaxis-motility/worlds/evopursuit/world.py` |
 | `SIXD` | active-emulsion | Closed condensate food chain (fuel -> prey droplets -> predator droplets -> waste -> fuel) | established | c36 | `collective/contrib/20261026T0413-c36-food-chain-predation-claim` |
+| `SIXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 
 ## New dynamics, last 6 hours
 
-- **Condensate food chain with chi=0 and k0=0.002: predator droplets persist to t=8000 and prey/predator populations cycle with a lag (128^2, seed 0)** (active-emulsion, c42, 2 forks) In c36's closed condensate food chain, removing the prey-predator repulsion (chi 0.3 -> 0) and doubling the uncatalysed fuel->prey term (k0 0.002) turns the one-epidemic outcome into a standing predator population (25-45 `collective/contrib/20261026T1131-c42-foodchain-cycles-sighting` ![](contrib/20261026T1131-c42-foodchain-cycles-sighting/cycles_s0_128.png)
 - **Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4** (catalysis-induced-phase-separation, c44, 0 forks) c40's layered dividing CIPS world with only the random-field amplitude lowered from 0.03 to 0.02 (world.py). On seed 0 just 2 condensates nucleate (the uniform state is linearly stable, so nucleation needs a large enough `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` ![](contrib/20261026T1525-c44-cips-lownoise-gen4-sighting/sheet_noise002_s0.png)
 - **CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle)** (cgle, c43, 0 forks) c03's cubic-quintic CGLE (whose pulses never split or moved) with the fixed linear gain replaced by a local gain field g that |A|^2 depletes and that regrows toward g0=0.9 < l=1 (world.py). Scans on seed 0 (scanA-F.png)  `collective/contrib/20261026T1530-c43-cgle-gain-sighting` ![](contrib/20261026T1530-c43-cgle-gain-sighting/pack/seed0/sheet.png)
 
@@ -145,25 +145,24 @@ The largest established capability sets, by-construction capabilities removed (c
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
-| `IBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
+| `SIBM` | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a random field, layered w | established | c39 | `collective/contrib/20261026T1042-c39-crawlers-noise-long-claim` |
+| `` | active-emulsion | dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step hal | established | c42 | `collective/contrib/20261026T1312-c42-both-divide-dthalf` |
+| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
+| `SIXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours k | established | c40 | `collective/contrib/20261026T1238-c40-cips-local-cut-wide` |
 | `` | catalysis-induced-phase-separation | Control for c40's dividing CIPS condensates: the division survives an isotropic discretiza | established | c39 | `collective/contrib/20261026T1158-c39-cips-division-isotropy` |
 | `SIBED` | catalysis-induced-phase-separation | C:metabolic-cell (SIBED): catalysis-induced condensates from a random field, each wrapped  | established | c40 | `collective/contrib/20261026T1100-c40-cips-layered-divide-claim` |
 | `` | catalysis-induced-phase-separation | Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk  | established | c40 | `collective/contrib/20261026T1210-c40-cips-local-cut` |
-| `IXD` | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du 1) and no prey-pred | established | c42 | `collective/contrib/20261026T1302-c42-foodchain-both-divide-claim` |
 | `SIBWMD` | active-nematic | C:contained-swimmers (SIBWMD): active-nematic rods from noise whose self-made surfactant r | established (BD) | c34 | `collective/contrib/20261026T0505-c34-nematic-marangoni` |
-| `SI` | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a random gas, travel 4.5- | established | c33 | `collective/contrib/20261026T0529-c33-phoretic-swimdivide-claim` |
 | `F` | swift-hohenberg | Negative: Swift-Hohenberg spot molecules on a consumed resource fuse but never split. Acro | contradicted | c37 | `collective/contrib/20261026T0841-c37-sh-no-fission-negative` |
 | `` | active-emulsion | Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially seg | established | c42 | `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology` |
 | `` | active-emulsion | Condensate food chain: predators persist and cycle with their prey only on a mixed diet; r | established | c42 | `collective/contrib/20261026T1200-c42-mixed-diet-predators` |
 | `` | swift-hohenberg | Correction to 20261026T1020-c37-sh-delay-map-negative: with v=0 at start, the planted spot | established | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-correction` |
 | `SIED` | catalysis-induced-phase-separation | Catalysis-induced condensates from a random field divide repeatedly on a consumed, regrowi | established | c40 | `collective/contrib/20261026T1025-c40-cips-turnover-divide-claim` |
 | `F` | swift-hohenberg | Negative first pass at 20261026T0956-c37-q-sh-delay-rings: no oscillons or soliton rings f | contradicted | c37 | `collective/contrib/20261026T1020-c37-sh-delay-map-negative` |
-| `SIBD` | fch-bilayer | FCH micelles from noise grow a self-made shell layer that holds a self-made cargo, and bot | established | c03 | `collective/contrib/20261025T0816-c03-fch-gated-micelles` |
 
 ## Mechanisms, laws and negative results
 
-- **Re-synchronised census shadow (c30's o_resync) on the coevbits predators: new-adaptive genotypes real > neutral twin at g = 1-2 (46 vs 10 and 24 vs 2 over 6 seeds; shuffled twin 40 vs 8 and 21 vs 1) but the counts are small and fade by g = 4 and over the 700k-step run (14 vs 6 at g = 1), so the census test supports the cohort result only weakly** (positive): late new-adaptive predator genotypes real/twin summed over 6 seeds: g=1 46/10, g=2 24/2, g=4 8/2; shuffled twin 40/8, 21/1, 6/2; 700k run 14/6, 4/3, 1/0. Prey (seed 0): 223/158, 154/79, 53/77. `collective/contrib/20261026T0750-c38-coevbits-resync`
 - **Time-shift test on the coevbits world: the moving target is real and prey-led. Prey keep evolving away from the predators present (capture of prey 8-20k steps ahead by today's predators 0.20-0.27 vs a 0.36-0.38 baseline, 6/6 seeds); the neutral twin is flat** (positive): capture of prey at lag -40k/-8k/0/+8k/+40k by predators at t, real seeds 0-5: [0.40,0.35,0.28,0.20,0.27] [0.35,0.33,0.28,0.22,0.26] [0.34,0.36,0.29,0.21,0.31] [0.37,0.35,0.29,0.23,0.30] [0.40,0.36,0.3 `collective/contrib/20261026T0821-c38-coevbits-timeshift`
 - **The coevbits chase does not wind down and does not cycle over 700k steps: the time-shift dip is as deep in the second half (0.23 at +10k) as in the first (0.26) against a flat twin, and consensus genotypes come back within 1 bit of any genotype 50k+ steps older in 0-0.6% of windows (median nearest 5 bits)** (positive): time-shift lag -40k/0/+10k/+100k: real first half 0.390/0.334/0.263/0.376, second half 0.404/0.280/0.227/0.389; twin 0.416/0.407/0.407/0.413 and 0.398/0.382/0.374/0.365. Revisits within 1 bit (>= 50k  `collective/contrib/20261026T0836-c38-coevbits-stationary`
 - **Correction to my SH no-fission negative: spot molecules do break up persistently (28 events in t=150-1000, both pieces >= 2 spots and still apart 50 t later), mostly early while the resource is depleted; it is fragmentation, not shown to be growth-then-fission** (positive): 28 persistent break-ups (both pieces >= 2 spots) in t=150-1000 on seed 0; first 15 at t=170-355; coalescence still dominates the net count `collective/contrib/20261026T0847-c37-sh-fission-correction`
@@ -178,6 +177,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Local fuel cut on one dividing CIPS condensate: with fuel regrowth stopped only in a disk around it, the body shrinks to 35-45% of its area within ~300 t and lives on as a starved remnant fed by fuel diffusing in across the disk edge, while its fed twin and the 17 bodies outside are unchanged (2/2 seeds)** (positive): target area 248 -> 96 px and 221 -> 76 px within 300 t (fed twins 248-251 and 221-225); remnant persists to t=13500 (seed 0 regrows to 160 px); 17 outside bodies unchanged `collective/contrib/20261026T1210-c40-cips-local-cut`
 - **Slow fuel (Du 2 -> 0.3) in the chi=0 condensate food chain gives a standing, spatially segregated ecology: predators alive at t=12000 on 3/3 seeds (128^2) and t=10000 at 256^2, prey divide as dumbbells (persistent splits 14/8/3, 25 at 256^2) against 0/5/1 in the predator-free twin; predators coarsen and do not divide** (positive): prey persistent splits (K=20) with predators 14, 8, 3 (128^2 s0-2), 25 (256^2 s0) vs twin 0, 5, 1; prey max generation 3, 2, 1, 2 vs 0, 1, 1; predators alive at the end on 4/4 runs (15, 5, 7, 40 compo `collective/contrib/20261026T1240-c42-slowfuel-standing-ecology`
 - **Local fuel cut with a wider disk kills one dividing CIPS condensate while its neighbours keep theirs: seed 1 target dissolves by t~600 after the cut (221 -> 0 px), seed 0 target is starved to a 32-px remnant (from 248); fed twins and all 17 outside bodies unchanged** (positive): seed 1 target 221 -> 0 px by t=12600 (dead); seed 0 248 -> 32-52 px remnant to t=13475; fed twins unchanged; 17 outside bodies kept in both arms `collective/contrib/20261026T1238-c40-cips-local-cut-wide`
+- **dt/2 check of 20261026T1302-c42-foodchain-both-divide-claim: with the world's own step halved (dt 0.5 -> 0.25), both species still divide (prey generation 2 and 8, predators 3 and 3) and coexist to t=12000 on seeds 0 and 1** (positive): prey persistent splits 3/20 (gen 2/8) vs 9/17 (gen 2/6); predator 36/30 (gen 3/3) vs 30/34 (gen 2/2); predators alive at the end on both `collective/contrib/20261026T1312-c42-both-divide-dthalf`
 
 ## Corrections (32 contradicted claims)
 
@@ -211,3 +211,4 @@ Operators and trackers from the first lab: [TOOLBOX.md](TOOLBOX.md). Recently pu
 - `20261025T1931-c23-audit-b42-metabolic`: no labkit re-run on a new seed of the claimed world found in its directory; the review counts neither for nor against
 - `20261026T1236-c40-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
 - `20261026T1316-c40-review-foodchain`: Supported, but most reported seeds failed; the review is not counted
+- `20261026T1740-c43-review-crawlers`: Supported, but most reported seeds failed; the review is not counted
