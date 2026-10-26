@@ -1,0 +1,6 @@
+track 30 frames 91-160 birth merge diameter 161.7px: net 2.09 D, path 2.12 D, max excursion 2.09 D
+track 29 frames 51-90 birth merge diameter 155.8px: net 1.25 D, path 1.26 D, max excursion 1.25 D
+track 28 frames 38-50 birth merge diameter 152.9px: net 0.47 D, path 0.48 D, max excursion 0.47 D
+track 0 frames 0-10 birth initial diameter 90.1px: net 0.39 D, path 0.40 D, max excursion 0.39 D
+track 26 frames 24-33 birth merge diameter 126.7px: net 0.36 D, path 0.36 D, max excursion 0.36 D
+track 12 frames 0-29 birth initial diameter 28.2px: net 0.07 D, path 0.09 D, max excursion 0.07 D
