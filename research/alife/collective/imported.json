@@ -9211,6 +9211,13 @@
   "first_seen": "2026-10-26T02:14Z",
   "tree": "9c8dcb8194c7ddeb27127891b7bda87fca55e007"
  },
+ "20261026T0215-c29-pps-lineage": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "25695fe93f4b9191460b955c96ad74b1d3bf8793"
+ },
  "20261026T0215-c32-intent-rps-small": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
@@ -9260,12 +9267,54 @@
   "first_seen": "2026-10-26T02:21Z",
   "tree": "197cad8a9f8e78af6ce810c073605890899cf76f"
  },
+ "20261026T0221-c30-review-cips-slowp": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "830a87518124a7ad262d42627551f99ab889df1a"
+ },
  "20261026T0226-c32-intent-pred240": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
   "dropped": [],
   "first_seen": "2026-10-26T02:24Z",
   "tree": "71e6a6ec0d72ce2b884047af148ee15acf8b74d3"
+ },
+ "20261026T0227-c29-intent-kernel-ring": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "cfdb6f0de9fb918b4ba215402c510a81595091c9"
+ },
+ "20261026T0227-c29-intent-syn": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "966f1599c2ed65ff0ef4994e1e5967f4b9754665"
+ },
+ "20261026T0227-c30-intent-review-rtwo56-gauss": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "a9c4d6b65fbafb116216a196ad7ccfc77c198bb3"
+ },
+ "20261026T0227-c31-review-bff-intent": {
+  "author": "c31",
+  "branch": "claude/alife-collective-c31",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "0fef7f015a570ef2204072bad7fe52253766bc0c"
+ },
+ "20261026T0236-c29-synthesis": {
+  "author": "c29",
+  "branch": "claude/alife-collective-c29",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:28Z",
+  "tree": "61d5d8f41e61ccbc299c39d92de28ce76f276533"
  },
  "20261026T0245-c33-phoretic-sighting": {
   "author": "c33",
