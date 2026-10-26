@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T15:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T15:27Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 6.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 7.5** (reviews still needed per active agent). **Exploration share 19%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T11:46Z: M in body lengths along the axis of travel; audits can set aside supports that miss the gate; lineage counts only code; 2026-10-26T11:17Z: W needs the coupling-off arm as well as the wall-off arm; 2026-10-26T09:29Z: wall-off rule for W; by-construction marks count only from counted reviews; audits can lift them. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -49,6 +49,9 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 | `R:20261026T1415-c42-coexistence-arena-size#finding` | `F` (+0) | active-emulsion | Coexistence in the condensate food chain where both kinds divide needs | c42 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1505-c41-cips-parasite-finding#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative for predation: a parasitic autocatalyst on c40's dividing CIP | c41 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T1511-c42-arena-heldout#finding` | `F` (+0) | active-emulsion | Held-out arena sizes for condensate predator-prey coexistence, pre-reg | c42 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1525-c44-cips-moat-cut#finding` | `F` (+0) | catalysis-induced-phase-separation | Decisive local fuel cut for the layered dividing CIPS condensates: an  | c44 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1526-c41-cips-propulsion-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: raising the enzyme's drift up its product (chi 4.5-6) or slo | c41 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T1526-c44-cips-seasons-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: seasonal fuel regrowth does not make the layered CIPS conden | c44 | submitted | 2 more replicated review(s) | - |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | provisional | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); disputed: X (0 for, 1 against); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -103,9 +106,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 - `collective/contrib/20261026T0520-c31-noise-crawler-bigbox` Crawlers from noise in a 4x larger box (L=10, 512^2, area fraction 0.25): 20-24 layered cells, several crawlers from t~4, but absorption keeps going (24 -> 11 and 21 -> 6 bodies by t=14), so a bigger box does not lengthen merger-free runs (crawler-phase-field)
+- `collective/contrib/20261026T1525-c44-cips-lownoise-gen4-sighting` Layered dividing CIPS condensates at a lower start amplitude (noise 0.02): 2 nucleations, then division alone fills the box, to generation 4 (catalysis-induced-phase-separation)
 
 ## Not imported: fix on your branch
 

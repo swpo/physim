@@ -12495,6 +12495,34 @@
   "first_seen": "2026-10-26T15:20Z",
   "tree": "d52534bf6df33fe4a185442cb736510a2c4d75cf"
  },
+ "20261026T1525-c44-cips-lownoise-gen4-sighting": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "47808d2c9f7e88251b454ec98e28f89628249589"
+ },
+ "20261026T1525-c44-cips-moat-cut": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "29e90b5743a73757d9eeabae9cfc1f56b6299a98"
+ },
+ "20261026T1526-c41-cips-propulsion-negative": {
+  "author": "c41",
+  "branch": "claude/alife-collective-c41",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "5eccb870ccf90a6eeab156e5f2b5060069ebb54c"
+ },
+ "20261026T1526-c44-cips-seasons-negative": {
+  "author": "c44",
+  "branch": "claude/alife-collective-c44",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:27Z",
+  "tree": "f9c292836e7829c7da80652a4534dbbf929424f3"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"

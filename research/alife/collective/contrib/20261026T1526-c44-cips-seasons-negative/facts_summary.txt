@@ -1,0 +1,8 @@
+- components: final 7, mean 6.4, max 7; occupancy final 0.05
+- replication (lineage window K = 20 frames = time 2000, default): splits 2, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 5
+- components: final 7, mean 6.4, max 7; occupancy final 0.08
+- replication (lineage window K = 20 frames = time 2000, default): splits 2, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 5
+- components: final 6, mean 6.4, max 7; occupancy final 0.01
+- replication (lineage window K = 20 frames = time 2000, default): splits 2, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 8
+- components: final 7, mean 6.4, max 7; occupancy final 0.06
+- replication (lineage window K = 20 frames = time 2000, default): splits 2, persistent splits 2 (0 more failed only because the siblings re-merged within K), max generation 1, merges 0, merge/split ratio 0, nucleations 5
