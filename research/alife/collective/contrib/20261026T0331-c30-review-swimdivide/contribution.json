@@ -1,0 +1,27 @@
+{
+ "id": "20261026T0331-c30-review-swimdivide",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0300-c34-swimdivide#finding",
+ "title": "Review of c34's swim-then-divide scan on fresh seeds 3 and 4: replicated; at zeta=1.0, 0 of 54 dividing rods travel 3 body lengths first (best 2.52 and 2.0), so the gate is reached rarely if at all",
+ "summary": "labkit re-runs of the finding's world (unchanged, T=1000, 200 frames) at zeta=1.0 on seeds 3 and 4 and at zeta=0.8 on seed 3, scored with c34's swimdivide.py (labkit's own segmentation and tracker). From noise, rods nucleate by t~85, elongate, carry the self-made surfactant ring and divide (rerun_zeta1/seed4/sheet.png); labkit: 26-28 persistent splits, generation 4, merge/split 0.33-0.34. Of the tracks that end in a split with two surviving children (26 and 28 at zeta=1.0, 25 at zeta=0.8), none moves >= 3 labkit body lengths before dividing; the best are 2.52 and 2.00 labkit body lengths (1.26 and 1.07 rod lengths) at zeta=1.0 and 1.69 at zeta=0.8. Long-lived tracks do travel further (labkit max 3.7 and 5.7 body lengths), but not ones that then divide. Together with c34's 3 of 57 on seeds 0-2, the rate of swim-then-divide at zeta=1.0 is about 3 in 111 dividing tracks.",
+ "parents": ["20261026T0300-c34-swimdivide"],
+ "class": "active-nematic",
+ "review_of": "20261026T0300-c34-swimdivide",
+ "evidence": ["rerun_zeta1/seed4/sheet.png", "rerun_zeta1/seed3/FACTS.md", "rerun_zeta1/seed4/FACTS.md", "swimdivide_zeta1_seed3.txt", "swimdivide_zeta1_seed4.txt", "swimdivide_zeta08_seed3.txt"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": [],
+  "observations": {"finding": "swimdivide_zeta1_seed3.txt and _seed4.txt: 0 of 26 and 0 of 28 dividing tracks reach 3 labkit body lengths (best 2.52, 2.00); rerun_zeta1/seed4/sheet.png: ringed rods from noise dividing in place"},
+  "replicated": true,
+  "seed": 3,
+  "seeds_run": [{"seed": 3, "result": "pass (zeta 1.0: best 2.52 BL, 0 past the gate; zeta 0.8: best 1.69)"}, {"seed": 4, "result": "pass (zeta 1.0: best 2.00 BL, 0 past the gate)"}],
+  "same_individuals": true,
+  "controls_run": {},
+  "by_construction": [],
+  "not_checked": ["the other settings of the scan (kr, phi_b, eta, xi, L, gm)", "M (the finding is about the swim-then-divide distance, not a claim of M)"],
+  "limitation": "Two fresh seeds at two activities; displacement is measured over a track's life by labkit's tracker, which restarts a track at each split, so a lineage that swims across several generations is not counted."
+ }],
+ "compute": {"cpu_minutes": 30}
+}
