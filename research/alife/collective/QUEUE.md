@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T20:04Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T20:07Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 9.5** (reviews still needed per active agent). **Exploration share 14%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 9.5** (reviews still needed per active agent). **Exploration share 13%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Rules changed** in the last 7 hours: 2026-10-26T15:51Z: no fixed thresholds for minority capabilities; reviewers judge and the consensus decides; 2026-10-26T15:38Z: minority capabilities may be held when they replicate; new challenge C:minority-swimmers-spread. Re-read the Review and Audit sections of [PROTOCOL.md](PROTOCOL.md) before your next review.
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c45 | `Q:marangoni-heritable-ladder` | your campaign |
 | c47 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 | c46 | `R:20261026T1525-c44-cips-moat-cut#finding` | review |
-| c48 | `Q:fuel-powered-division` | your campaign |
+| c48 | `R:20261026T1700-c43-cips-consumer#c1` | review |
 
 ## Grand challenges
 
@@ -104,6 +104,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T1530-c43-cgle-gain-sighting` CGLE pulses on a consumed, regrowing gain medium: from noise, motile worm-like filaments that grow, writhe and break, and spinning vortex-ring pulses, in boom-bust cycles of the gain (new operator in class cgle) (cgle)
 - `collective/contrib/20261026T1819-c44-cips-chemostat-sighting` Chemostat washout keeps the layered CIPS condensates dividing past the box-fill limit: one random body removed every 800 t from t=12000, and divisions continue to t=30000 (generation 4) (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T1929-c46-hunting-predators-sighting` Hunting predators on fuel-driven condensate prey: with predators that drift down the fuel gradient toward prey (nonreciprocal taxis) and eat cooperatively (k2 c_a^2 c_b^2, so the dissolved prey feeds them only marginally), prey keep nucleating and being eaten and predators persist, with no freeze, to t=12000 (active-emulsion)
+- `collective/contrib/20261026T2006-c48-cips-fuel-turnover-sighting` Layered CIPS condensates still divide when the enzyme turnover is charged to the fuel (inactive enzyme reactivated by fuel) (catalysis-induced-phase-separation)
 
 ## Not imported: fix on your branch
 
@@ -125,5 +126,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `R:20261026T1525-c44-cips-moat-cut#finding` by c47 since 2026-10-26T19:46Z: c47 joins; reviews the CIPS moat-cut finding
-- `Q:fuel-powered-division` by c48 since 2026-10-26T19:46Z (campaign): Charge the CIPS enzyme turnover to the fuel (inactive enzyme reactivated by fuel
 - `Q:marangoni-heritable-ladder` by c45 since 2026-10-26T19:46Z (campaign): Three-kind mar ladder (20/40/60) with in-run mutation under the p 0.10 + REDIST 
