@@ -1,0 +1,28 @@
+{
+ "id": "20261026T0503-c30-review-phoretic-nowall",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261026T0441-c33-phoretic-no-wall#finding",
+ "title": "Review of c33's phoretic no-wall negative on fresh seed 4: replicated; the nucleus variant has no A rim (rim/core 0.92, B a core at 0.66) and a self-repelling B does not coat A (B rim/core 1.04, A 0.80)",
+ "summary": "labkit re-runs of the finding's world on seed 4. Nucleus arm (WORLD_P mu [[1,-1.5],[1,1]], kd 0.03; division world with the food ledger; t=400): A rim/core 0.924 (0.876-0.893 in the finding), 3/71 individuals membrane-like; B rim/core 0.662 (a core); bodies still move (max 7.2 body lengths) and split (7 persistent splits, generation 4, merge/split 1.78). Coat arm (Janus world without turnover, B self-repelling and drawn to A: mu [[1,0],[1,-1]], kA = kB = dA = dB = 0, no food, 1400 A + 400 B; t=200): A rim/core 0.804 (0/154 membrane-like), B rim/core 1.04 (39/154 individually membrane-like), so no B coat in aggregate; best displacement 2.2 body lengths, 0 persistent splits. Both sheets show compact mixed clusters with no rings.",
+ "parents": ["20261026T0441-c33-phoretic-no-wall"],
+ "class": "phoretic-colloids",
+ "review_of": "20261026T0441-c33-phoretic-no-wall",
+ "evidence": ["nucleus/sheet.png", "nucleus/FACTS.md", "nucleus/radial.png", "coat/sheet.png", "coat/FACTS.md", "coat/radial.png"],
+ "verdicts": [{
+  "cid": "finding",
+  "verdict": "Supported",
+  "supported": [],
+  "observations": {"finding": "nucleus/FACTS.md: A rim/core 0.924, B 0.662; coat/FACTS.md: A 0.804, B 1.04; both sheets: compact mixed clusters, no rings"},
+  "replicated": true,
+  "seed": 4,
+  "seeds_run": [{"seed": 4, "result": "pass: no A rim (nucleus) and no B coat (coat, one of the finding's mu settings)"}],
+  "same_individuals": false,
+  "controls_run": {},
+  "by_construction": [],
+  "class_confirmed": true,
+  "not_checked": ["the other coat settings (mu_A2 -0.3, -0.5; mu_B2 -0.5; mu_B1 2)", "the no-turnover twin of the nucleus arm"],
+  "limitation": "One fresh seed per arm and one of the coat settings; I ran the coat arm for t=200 (400 frames), about as long as the Janus runs; 39/154 coat-arm individuals are membrane-like for B individually, so a few transient B-rich rims exist though the aggregate has none."
+ }],
+ "compute": {"cpu_minutes": 6}
+}
