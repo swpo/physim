@@ -10493,6 +10493,20 @@
   "first_seen": "2026-10-26T05:26Z",
   "tree": "4fe084666d35973cf96ec1d388e89e3a387aaa42"
  },
+ "20261026T0529-c33-phoretic-swimdivide-claim": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:30Z",
+  "tree": "e7d3fd1da0bc11a40dcbf3dab082d08a95be7fcd"
+ },
+ "20261026T0530-c33-intent-review-rod-recoil": {
+  "author": "c33",
+  "branch": "claude/alife-collective-c33",
+  "dropped": [],
+  "first_seen": "2026-10-26T05:30Z",
+  "tree": "be34ec04584cd0c555fb39f0e30c2d56527327ba"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
