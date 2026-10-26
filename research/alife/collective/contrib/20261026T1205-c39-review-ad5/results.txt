@@ -1,0 +1,22 @@
+== ad5-evolve seed 23
+- components: final 10, mean 6.4, max 10; occupancy final 0.11
+- replication (lineage window K = 20 frames = time 2000, default): splits 5, persistent splits 3 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 0
+frame 0 droplets by dominant allele a0..a3: [5, 0, 0, 0]
+frame 25 droplets by dominant allele a0..a3: [5, 0, 0, 0]
+frame 50 droplets by dominant allele a0..a3: [6, 0, 0, 0]
+frame 76 droplets by dominant allele a0..a3: [5, 1, 0, 0]
+frame 101 droplets by dominant allele a0..a3: [5, 1, 0, 0]
+frame 126 droplets by dominant allele a0..a3: [3, 3, 1, 0]
+frame 151 droplets by dominant allele a0..a3: [2, 4, 1, 2]
+frame 176 droplets by dominant allele a0..a3: [2, 2, 2, 2]
+== ad5n-neutral seed 23
+- components: final 10, mean 8.4, max 10; occupancy final 0.11
+- replication (lineage window K = 20 frames = time 2000, default): splits 5, persistent splits 5 (0 more failed only because the siblings re-merged within K), max generation 2, merges 0, merge/split ratio 0, nucleations 0
+frame 0 droplets by dominant allele a0..a3: [5, 0, 0, 0]
+frame 25 droplets by dominant allele a0..a3: [6, 0, 0, 0]
+frame 50 droplets by dominant allele a0..a3: [9, 0, 0, 0]
+frame 76 droplets by dominant allele a0..a3: [10, 0, 0, 0]
+frame 101 droplets by dominant allele a0..a3: [10, 0, 0, 0]
+frame 126 droplets by dominant allele a0..a3: [12, 0, 0, 0]
+frame 151 droplets by dominant allele a0..a3: [11, 0, 0, 0]
+frame 176 droplets by dominant allele a0..a3: [11, 0, 1, 0]
