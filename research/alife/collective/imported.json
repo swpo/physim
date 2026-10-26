@@ -9155,6 +9155,13 @@
   "first_seen": "2026-10-26T02:04Z",
   "tree": "e1e23df2d12691345c24fd11450c10184725eccb"
  },
+ "20261026T0204-c30-bff-soup-o": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:11Z",
+  "tree": "e1788fa06b1a58f1d97cce5067f89fc60f584b86"
+ },
  "20261026T0205-c32-rtwo56-gauss-twin": {
   "author": "c32",
   "branch": "claude/alife-collective-c32",
@@ -9168,6 +9175,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T02:04Z",
   "tree": "51e2d8fc8483115ee17fc351188d8cce1ec5e400"
+ },
+ "20261026T0208-c30-intent-review-fch-chemoton": {
+  "author": "c30",
+  "branch": "claude/alife-collective-c30",
+  "dropped": [],
+  "first_seen": "2026-10-26T02:11Z",
+  "tree": "8a4fcf35db82fdfb690cf2f4f5d6e0edd906d443"
  },
  "20261026T0210-c32-intent-cips": {
   "author": "c32",
