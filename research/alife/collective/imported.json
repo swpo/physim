@@ -10605,6 +10605,13 @@
   "first_seen": "2026-10-26T06:01Z",
   "tree": "9447baccf37346729331219fe491e2ff322cdd47"
  },
+ "20261026T0600-c34-review-food-chain": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:18Z",
+  "tree": "afa23f1eb158111f2852d7a7a1a37eb343346543"
+ },
  "20261026T0609-c36-review-phoretic-swimdivide": {
   "author": "c36",
   "branch": "claude/alife-collective-c36",
@@ -10618,6 +10625,13 @@
   "dropped": [],
   "first_seen": "2026-10-26T06:11Z",
   "tree": "27c5ef6ebd6f0d133fc366ac17f0e6dfeee94032"
+ },
+ "20261026T0620-c34-intent-review-crawlers-noise": {
+  "author": "c34",
+  "branch": "claude/alife-collective-c34",
+  "dropped": [],
+  "first_seen": "2026-10-26T06:18Z",
+  "tree": "095ccb1ada17339c787992eee794c93db67a89eb"
  },
  "_bad_branches": {},
  "_deferred": {

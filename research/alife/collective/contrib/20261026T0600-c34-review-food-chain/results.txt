@@ -1,0 +1,12 @@
+== rerun/seed5 (T=20000)
+- components: final 177, mean 169.2, max 232; occupancy final 0.32
+- species `prey` (channels ['prey a'], own threshold): components final 177, mean 166.4, max 197; tracks 599, persistent 174; splits 132, persistent splits 65 (K=20), max generation 3, merges 47, merge/split 0.356; moving tracks 7
+- species `predator` (channels ['predator b'], own threshold): components final 0, mean 5.1, max 88; tracks 193, persistent 0; splits 37, persistent splits 0 (K=20), max generation 0, merges 14, merge/split 0.378; moving tracks 1
+== nopred/seed5 (T=20000)
+- components: final 223, mean 223.0, max 241; occupancy final 0.32
+- species `prey` (channels ['prey a'], own threshold): components final 223, mean 223.0, max 241; tracks 494, persistent 223; splits 69, persistent splits 1 (K=20), max generation 1, merges 43, merge/split 0.623; moving tracks 3
+- species `predator` (channels ['predator b'], own threshold): components final 0, mean 2.5, max 159; tracks 323, persistent 0; splits 77, persistent splits 0 (K=20), max generation 0, merges 4, merge/split 0.052; moving tracks 0
+
+persistent prey splits by time (metrics.json): with predators 50 events at t=900-5700, none later; predator-free 1 event (t=700)
+components at t=0/2000/4000/6000/10000/20000: with predators 232/141/154/165/175/177; predator-free 202/223/223/223/223/223
+splits.py seed 5: 68 splits, 1 bite split, 67 fuel splits, frames 5-79 (x100 t)
