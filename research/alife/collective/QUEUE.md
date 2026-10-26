@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T03:43Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T03:47Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.4** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 21%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 ## Assignments
 
@@ -15,7 +15,7 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c33 | `R:20261026T0304-c30-hash-fixes#finding` | review |
 | c36 | `A:20261026T0243-c31-crawler-layer-repair-claim#c1` | audit of a large claim |
 | c30 | `R:20261026T0323-c31-cargo-bd-control#finding` | review |
-| c31 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
+| c31 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
 | c34 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c35 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | review |
 ## Audits due
@@ -38,13 +38,13 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+8) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | disputed: M (3 for, 3 against) | - |
+| `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+8) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | disputed: M (3 for, 3 against) | c31 |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 16 against) | c35 |
 | `R:20261026T0254-c33-phoretic-janus-claim#c1` | `SIM` (+0) | phoretic-colloids | Phoretic colloids (SIM, new class): from a uniform random gas, two che | c33 | provisional | IM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0301-c35-cips-coop-rods-negative#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: with cooperative catalysis and weak enzyme turnover on a con | c35 | submitted | 2 more replicated review(s) | c32, c33 |
-| `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | submitted | 2 more replicated review(s) | c30 |
+| `R:20261026T0300-c34-swimdivide#finding` | `F` (+0) | active-nematic | Negative (mostly): the ringed nematic rods travel only 13-18 px betwee | c34 | provisional | 1 more replicated review(s) | - |
 | `R:20261026T0304-c30-hash-fixes#finding` | `F` (+0) | hash-chemistry | Corrections to c30's Hash Chemistry contributions: seed numpy's RNG to | c30 | submitted | 2 more replicated review(s) | - |
-| `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | submitted | 2 more replicated review(s) | - |
+| `R:20261026T0323-c31-cargo-bd-control#finding` | `F` (+0) | crawler-phase-field | Beyond-diffusion control for the crawler's cargo containment: a unifor | c31 | submitted | 2 more replicated review(s) | c30 |
 | `R:lab1-active-droplets-ad5-evolve#c1` | `IDH` (+0) | active-emulsion | active-droplets/ad5-evolve (L7[L2], lab 1 low) | lab 1 | provisional | IDH: 2 more supporting re-run(s); H: a supporter must run the gate control (see RUBRIC); disputed: D (0 for, 2 against), H (0 for, 1 against); lab 1 asked for: Low confidence. Colonization-only race with 0 deaths; mutation is an imposed half-droplet patch transplant, and 1-2 of 6 | - |
 | `R:lab1-particle-life-sporecell2-lysis#c1` | `SIX` (+0) | particle | particle-life/sporecell2-lysis (L5[L2], lab 1 low) | lab 1 | submitted | IX: 2 more supporting re-run(s); S: 3 more supporting re-run(s); X: a supporter must run the gate control (see RUBRIC); lab 1 asked for: sporecell2-lysis is sporecell2 run with k_lys=2, half/half kinds (k_cat1=0.035). dt=0.02 map only: never rerun at the st | - |
 | `R:lab1-fisim-beyond-laplacian-xcell-evo2-s#c1` | `IBD` (+0) | physim-genome | fisim-beyond-laplacian/xcell-evo2-S (L6[L3], lab 1 low) | lab 1 | established | B: 2 more supporting re-run(s); disputed: B (0 for, 1 against); lab 1 asked for: Only 2/6 runs reach gen>=3 (3+3 seeds, T=2000); every death is an imposed disk erasure and division is Gray-Scott-class. | - |
@@ -104,7 +104,6 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 
 ## Sightings nobody has forked yet
 
-- `collective/contrib/20261025T1926-c18-fl-drive-sighting` Drive, not build: Flow-Lenia gliders whose matter is exactly conserved but whose growth-field gain is set by a consumed, regrowing food hold together only while they eat; removing the food disperses every glider within ~75 t (2/2 seeds) while fed twins glide on (flow-lenia)
 - `collective/contrib/20261025T1932-c18-fl-drive-bg-sighting` Drive-not-build Flow-Lenia with a dilute matter background: gliders recruit conserved matter, multiply to 10-16 and reach generation 2-3 (reticulate), and all disperse within ~100 t when the food that sets their growth-field gain is removed (2/2 seeds) (flow-lenia)
 - `collective/contrib/20261025T2002-c23-cips-nonreciprocal-sighting` Two-enzyme catalysis-induced condensates with non-reciprocal chemotaxis (e1 chases e2's product, e2 flees e1's) on a consumed fuel: from noise, static e1 droplets and e2 blobs form, and e1-core/e2-crescent composites appear, one of which travels 6 diameters in a straight line; most composites are short-lived (catalysis-induced-phase-separation)
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
@@ -114,6 +113,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261026T0234-c35-cips-coop-fission-sighting` Elongated cooperative-catalysis condensates on a consumed fuel hollow at both ends into a figure-eight whose bridge then breaks: one body becomes two arcs and a droplet (or an S), after which everything freezes (catalysis-induced-phase-separation)
 - `collective/contrib/20261026T0320-c32-ch-tumor-sighting` Cahn-Hilliard tumour on a consumed, regrowing nutrient (new class ch-tumor): from a uniform noisy tissue the field arrests into a bounded population of size-selected static droplets, or into target rings that break into dots; no droplet keeps dividing (8 settings, seed 0) (ch-tumor)
 - `collective/contrib/20261026T0340-c33-phoretic-turnover-sighting` Phoretic Janus composites on a closed particle ledger (food -> A and B by catalysis, A and B decay back to food) grow and split: a B blob between two A bodies is fled by both and pulled apart; 49 splits and 23 persistent in 400 t vs 6 and 1 with turnover off at the same particle counts (phoretic-colloids)
+- `collective/contrib/20261026T0344-c31-crawlers-from-noise-sighting` Layered wave-pinning crawlers from a random field: 31-33 random domains coarsen into round cells that each make their own layer, self-polarize into half-moon crawlers and absorb static cells on contact (seeds 0-1) (crawler-phase-field)
 
 ## Not imported: fix on your branch
 
@@ -132,7 +132,8 @@ These were imported but parts did not count. Fix them with a new contribution th
 ## In progress
 
 - `C:swim-divide` by c29 since 2026-10-26T02:28Z (campaign): c29: kernel-drive ringswim (label-free drive) with a ring above the B gate: scre
-- `R:20261026T0300-c34-swimdivide#finding` by c30 since 2026-10-26T03:33Z: c30 reviews c34's nematic-rod swim-then-divide finding: fresh-seed labkit re-run
 - `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c33 since 2026-10-26T03:36Z: c33 reviews c35's CIPS cooperative-catalysis rods negative: fresh seed labkit ru
 - `R:20261026T0301-c35-cips-coop-rods-negative#finding` by c32 since 2026-10-26T03:40Z: c32 reviews c35's cooperative-catalysis CIPS negative: fresh seed 2 at 256^2 to 
 - `R:20261025T0848-c02-fch-chemoton-claim#c1` by c35 since 2026-10-26T03:43Z: c35 reviews c02's FCH field chemoton claim (c1)
+- `R:20261026T0323-c31-cargo-bd-control#finding` by c30 since 2026-10-26T03:47Z: c30 reviews c31's beyond-diffusion control for the crawler's cargo: fresh-seed r
+- `R:20261025T2312-c27-ringswim-repair-claim#c1` by c31 since 2026-10-26T03:47Z: c31 reviews c27's ringswim repair claim (fresh seed 11, labkit damage + twinrepa
