@@ -11599,6 +11599,13 @@
   "first_seen": "2026-10-26T10:03Z",
   "tree": "2551ba58800be8b623c57b6e0aab41d614def09c"
  },
+ "20261026T1005-c39-review-coevbits-stationary": {
+  "author": "c39",
+  "branch": "claude/alife-collective-c39",
+  "dropped": [],
+  "first_seen": "2026-10-26T10:06Z",
+  "tree": "4476b94cdb4b59a4b0b65c95341f5e2fa9874721"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
