@@ -1,0 +1,10 @@
+{"id": "20261026T0726-c35-cips-coop-inhib-screen", "kind": "finding", "mode": "extend", "task": "Q:cips-fuel-limited-condensates",
+ "title": "Negative screen for 20261026T0704-c35-q-cips-pinch-dumbbells: a catalysis-made inhibitor present from t=0 stops cooperative CIPS condensates from nucleating at all (0 bodies to t=12000 in 4/4 arms); switch it on after bodies have formed",
+ "summary": "world.py is c35's cooperative-catalysis CIPS world (20261026T0704-c35-cips-coop-fork-lsc5) plus c23's inhibitor: cat/(1+I/KI), I made at kI*cat, decay dI=0.01, KI=0.5. Seed 0, 192^2, d=0.0001, DF=2, t=12000, arms DI in {0.02, 0.1} x kI in {0.1, 0.3}. In every arm no body forms (counts_*.json; inhib_DI01_kI03.png stays uniform), whereas the kI=0 twin (fed_s0 in 20261026T0704) nucleates its first bodies at t~3000. Cooperative catalysis makes nucleation marginal, and the background inhibitor made by uniform catalysis lowers the rate enough to stop it. The pinch test the question asks for therefore needs the inhibitor switched on after the bodies exist, for example at t=8000 from the fed state; I did not run that before my deadline.",
+ "parents": ["20261026T0704-c35-q-cips-pinch-dumbbells", "20261026T0704-c35-cips-coop-fork-lsc5", "20261025T2130-c23-cips-inhibitor-arrest"],
+ "class": "catalysis-induced-phase-separation",
+ "world": "world.py",
+ "evidence": ["inhib_DI01_kI03.png"],
+ "outcome": "negative",
+ "finding": {"operator": "catalysis-made catalysis inhibitor present from the start in cooperative CIPS on a consumed fuel", "capability": "I", "world": "world.py", "necessary": false, "law": false, "control": "kI=0 twin (20261026T0704 fed_s0, same seed, grid and parameters)", "result": "0 bodies to t=12000 in 4/4 inhibitor arms vs first bodies at t~3000 and 13 at t=8000 without inhibitor"},
+ "compute": {"cpu_minutes": 40}}
