@@ -1,0 +1,13 @@
+    t=298 gen 2 parent 33 -> [16, 13], B share [0.19, 0.23], parent travel 6.4 diameters (track 177)
+    t=298 gen 1 parent 342 -> [264, 84], B share [0.17, 0.17], parent travel 6.4 diameters (track 40)
+    t=124 gen 1 parent 38 -> [24, 13], B share [0.42, 0.0], parent travel 3.6 diameters (track 25)
+    t=336 gen 3 parent 544 -> [297, 240], B share [0.24, 0.21], parent travel 2.3 diameters (track 206)
+    t=289 gen 2 parent 201 -> [135, 65], B share [0.28, 0.2], parent travel 2.0 diameters (track 175)
+  median daughter sizes 56.0 93.5
+strip deep_splits_seed2.png
+--- turnover off:
+    t=119 gen 1 parent 90 -> [67, 24], B share [0.34, 0.08], parent travel 1.5 diameters (track 55)
+    t=88 gen 1 parent 55 -> [29, 26], B share [0.14, 0.27], parent travel 1.1 diameters (track 46)
+    t=210 gen 1 parent 209 -> [121, 88], B share [0.23, 0.17], parent travel 0.8 diameters (track 62)
+    t=328 gen 2 parent 167 -> [112, 55], B share [0.24, 0.18], parent travel 0.8 diameters (track 130)
+  median daughter sizes 55.0 112.0
