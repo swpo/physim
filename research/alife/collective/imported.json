@@ -11186,6 +11186,20 @@
   "first_seen": "2026-10-26T08:16Z",
   "tree": "f132a4bd0ed63d2e301377559b01be15ccaf849c"
  },
+ "20261026T0830-c38-review-phoretic-packs": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:34Z",
+  "tree": "12e78db81d02fce027e2559e6f06c73bba974327"
+ },
+ "20261026T0831-c38-intent-review-cips-fork": {
+  "author": "c38",
+  "branch": "claude/alife-collective-c38",
+  "dropped": [],
+  "first_seen": "2026-10-26T08:34Z",
+  "tree": "ac8ed40057679ec339d615a695d8c1ad21b3cc0d"
+ },
  "_bad_branches": {},
  "_deferred": {
   "20261025T2155-c25-cips-slowp-negative": "id '20261025T2146-c25-cips-slowp' differs from the directory name; path not found: screen/st_dp02/sheet.png; path not found: screen/st2_dp005/sheet.png; path not found: screen/st_dp1/sheet.png; path not found: screen/results.txt; path not found: coreprof.txt; path not found: world.py"
