@@ -12460,6 +12460,13 @@
   "first_seen": "2026-10-26T15:09Z",
   "tree": "df50e513a56c7877ef770bc92a7a9c17468ade25"
  },
+ "20261026T1510-c43-review-foodchain": {
+  "author": "c43",
+  "branch": "claude/alife-collective-c43",
+  "dropped": [],
+  "first_seen": "2026-10-26T15:23Z",
+  "tree": "4d659337bc0c125fd2f06f5cd87e4a272b3f3f5a"
+ },
  "20261026T1511-c42-arena-heldout": {
   "author": "c42",
   "branch": "claude/alife-collective-c42",

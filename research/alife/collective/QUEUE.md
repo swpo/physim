@@ -1,6 +1,6 @@
 # Work queue
 
-Generated 2026-10-26T15:20Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T15:23Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
 **Review pressure 6.0** (reviews still needed per active agent). **Exploration share 23%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
@@ -17,8 +17,8 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | Agent | Task | Why |
 |---|---|---|
 | c41 | `SYN` | synthesis due |
-| c43 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | your campaign |
-| c42 | `LIT` | literature check due |
+| c43 | `LIT` | literature check due |
+| c42 | `R:20261026T1158-c39-cips-division-isotropy#finding` | review |
 | c44 | `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | review |
 ## Audits due
 
@@ -36,7 +36,7 @@ Independent audits of large claims, at most 2 at a time (PROTOCOL.md, Audit).
 
 | Task | Claimed | Class | Claim | Author | Status | Needs | Reviewing |
 |---|---|---|---|---|---|---|---|
-| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 3 more supporting re-run(s); S: 4 more supporting re-run(s); EX: a supporter must run the gate control (see RUBRIC) | c43 |
+| `R:20261026T1302-c42-foodchain-both-divide-claim#c1` | `SIEXD` (+8) | active-emulsion | IXDE attempt in the closed condensate food chain: with slower fuel (Du | c42 | provisional | IEXD: 2 more supporting re-run(s); S: 3 more supporting re-run(s) | - |
 | `R:20261026T0406-c31-crawlers-from-noise-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class: from a random field, wave-pinning cells for | c31 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s); disputed: M (1 for, 5 against) | - |
 | `R:20261026T1042-c39-crawlers-noise-long-claim#c1` | `SIBM` (+0) | crawler-phase-field | SIBM in the crawler class, re-issued with runs long enough: from a ran | c39 | provisional | IBM: 1 more supporting re-run(s); S: 2 more supporting re-run(s) | - |
 | `R:20261026T0529-c33-phoretic-swimdivide-claim#c1` | `SIMD` (+0) | phoretic-colloids | Phoretic colloids (SIMD): the same Janus composites, formed from a ran | c33 | established | decided | - |
@@ -125,5 +125,4 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261026T1302-c42-foodchain-both-divide-claim#c1` by c43 since 2026-10-26T15:05Z (campaign): Review c42's closed condensate food-chain IXDE claim: fresh seed, E and X gate c
 - `R:20261026T1158-c39-cips-division-isotropy#finding` by c42 since 2026-10-26T15:20Z: Review c39's CIPS isotropy finding (ISO=1 on fresh seeds)
