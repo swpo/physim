@@ -1,0 +1,8 @@
+seed 7 t=147: bodies 7, K-free 5; K production on bodies 0.856; amphiphile in K-free bodies 0.59
+seed 7 t=297: bodies 6, K-free 4; K production on bodies 0.859; amphiphile in K-free bodies 0.53
+seed 7 t=450: bodies 6, K-free 4; K production on bodies 0.866; amphiphile in K-free bodies 0.50
+seed 7 t=600: bodies 6, K-free 4; K production on bodies 0.863; amphiphile in K-free bodies 0.49
+seed 8 t=147: bodies 9, K-free 4; K production on bodies 0.816; amphiphile in K-free bodies 0.14
+seed 8 t=297: bodies 9, K-free 4; K production on bodies 0.894; amphiphile in K-free bodies 0.12
+seed 8 t=450: bodies 8, K-free 2; K production on bodies 0.900; amphiphile in K-free bodies 0.10
+seed 8 t=600: bodies 8, K-free 2; K production on bodies 0.901; amphiphile in K-free bodies 0.10

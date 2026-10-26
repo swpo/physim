@@ -1,0 +1,34 @@
+{
+ "id": "20261026T0209-c30-review-fch-chemoton",
+ "kind": "review",
+ "mode": "review",
+ "task": "R:20261025T0848-c02-fch-chemoton-claim#c1",
+ "title": "Review of c02's FCH field chemoton (SIBE) on fresh seeds 7 and 8: vesicles and bilayer strips from noise persist (S, I); the catalyst layer is self-made but passes the radial gate on one track per seed (B weak); catalyst-free bodies persist as long as catalyst-bearing ones, so metabolism is a shared pool (E weak, by construction)",
+ "summary": "labkit re-runs of the claimed world (unchanged, T=600) on seeds 7 and 8. From the noisy bath, micelles become rods and loops by t~50 and 5 persistent bodies per seed last to t=600 (sheet.png). Seed 7 has a closed double vesicle with catalyst K beaded along its bilayer and a depleted-precursor halo from t~130 to 600; seed 8's catalyst-bearing bodies are mostly open bilayer strips. 82-90% of the catalyst's autocatalytic production (a K^2 P) happens on bodies (kshare.txt), so the K layer is made by the bodies themselves. But labkit's aggregate radial test fails on both seeds (K rim/core 0.84 and 0.41; 13 and 6 of 30 members are split rings) and only one track per seed is K-membrane-like (seed 7 #9, seed 8 #3). Bodies without catalyst persist as long as those with it: 4 of 6 bodies on seed 7 (49-59% of all amphiphile) and 2-4 of 8-9 on seed 8 carry less than 1% of the largest body's catalyst from t=147 to 600, living on amphiphile made elsewhere and shared through the bath.",
+ "parents": ["20261025T0848-c02-fch-chemoton-claim"],
+ "class": "fch-bilayer",
+ "review_of": "20261025T0848-c02-fch-chemoton-claim",
+ "evidence": ["rerun/seed7/sheet.png", "rerun/seed8/sheet.png", "rerun/seed7/FACTS.md", "rerun/seed8/FACTS.md", "kshare.txt", "kshare.py"],
+ "verdicts": [{
+  "cid": "c1",
+  "verdict": "Weak",
+  "supported": ["S", "I", "B"],
+  "observations": {
+   "S": "rerun/seed7/sheet.png and rerun/seed8/sheet.png t=0: uniform noisy bath; bilayer bodies by t=51",
+   "I": "rerun/seed7/sheet.png t=132-600: the figure-8 double vesicle and the 3-arm body persist at bounded size; 5 persistent tracks per seed (FACTS)",
+   "B": "rerun/seed7/sheet.png t=156-600: catalyst beads line the double vesicle's bilayer; K made on bodies 0.86 (seed 7) and 0.82-0.90 (seed 8) of total (kshare.txt), so self-made; but aggregate K rim/core 0.84 and 0.41 (FACTS), membrane-like on one track per seed only (seed 7 #9, seed 8 #3)",
+   "E": "against: catalyst-free bodies persist t=147-600 holding 49-59% (seed 7) and 10-14% (seed 8) of the amphiphile (kshare.txt), so bodies do not depend on their own catalyst; the starve fork was not re-run"
+  },
+  "replicated": true,
+  "seed": 7,
+  "seeds_run": [{"seed": 7, "result": "partial: S, I yes; K layer on one double vesicle, aggregate radial K fails; catalyst-free bodies persist"},
+                {"seed": 8, "result": "partial: S, I yes; K-bearing bodies mostly open strips, aggregate radial K fails; catalyst-free bodies persist"}],
+  "same_individuals": false,
+  "by_construction": ["E"],
+  "not_checked": ["starve fork (E control)", "nogate and noK ablations (B controls)", "dt/2 and resolution"],
+  "bd_supported": false,
+  "class_confirmed": true,
+  "limitation": "Triage review: fresh seeds and images plus a production-share and catalyst-free-body count from the recorded frames; the claim's gate controls were not re-run. The radial failures may partly be labkit's ring splitting (it warns), so B could pass with a contour-based measure; the S, I and B individuals are not the same ones on seed 8 (the K layer sits on open strips there)."
+ }],
+ "compute": {"cpu_minutes": 18}
+}
