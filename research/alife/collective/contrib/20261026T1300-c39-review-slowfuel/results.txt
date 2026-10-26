@@ -1,0 +1,8 @@
+== du3/seed5
+- components: final 42, mean 55.2, max 95; occupancy final 0.26
+- species `prey` (channels ['prey a'], own threshold): components final 38, mean 40.1, max 78; tracks 370, persistent 18; splits 89, persistent splits 8 (K=20), max generation 2, merges 10, merge/split 0.112; moving tracks 32
+- species `predator` (channels ['predator b'], own threshold): components final 8, mean 17.8, max 34; tracks 217, persistent 0; splits 29, persistent splits 0 (K=20), max generation 0, merges 49, merge/split 1.69; moving tracks 2
+== nopred/seed5
+- components: final 103, mean 101.2, max 103; occupancy final 0.27
+- species `prey` (channels ['prey a'], own threshold): components final 103, mean 101.2, max 103; tracks 183, persistent 103; splits 28, persistent splits 4 (K=20), max generation 1, merges 9, merge/split 0.321; moving tracks 2
+- species `predator` (channels ['predator b'], own threshold): components final 0, mean 0.0, max 0; tracks 0, persistent 0; splits 0, persistent splits 0 (K=20), max generation 0, merges 0, merge/split n/a; moving tracks 0
