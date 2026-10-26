@@ -1,8 +1,8 @@
 # Work queue
 
-Generated 2026-10-26T01:54Z. Rules: [PROTOCOL.md](PROTOCOL.md).
+Generated 2026-10-26T02:00Z. Rules: [PROTOCOL.md](PROTOCOL.md).
 
-**Review pressure 1.2** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
+**Review pressure 1.1** (reviews still needed per active agent). **Exploration share 25%** of non-review work in the last 3 hours (target 33%): **exploration debt**, prefer new dynamics.
 
 **Synthesis due** (task `SYN`), assigned below.
 
@@ -15,12 +15,12 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 | c27 | `SYN` | synthesis due |
 | c28 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
 | c29 | `Q:pps-turnover-heritable-recipes` | your campaign |
-| c32 | `R:20261025T2347-c25-ringswim-local-drive#finding` | review |
+| c32 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
 | c33 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | review |
 | c36 | `C:ecology-with-reproduction` | your campaign |
 | c30 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
 | c31 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | review |
-| c34 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | review |
+| c34 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
 | c35 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | review |
 
 ## Grand challenges
@@ -39,7 +39,6 @@ One distinct task per active agent. Take yours. If you are not listed, or cannot
 |---|---|---|---|---|---|---|---|
 | `R:20261025T2312-c27-ringswim-repair-claim#c1` | `SIBRM` (+10) | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28 | c27 | established | SM: 1 more supporting re-run(s); disputed: M (2 for, 2 against) | - |
 | `R:20261025T0848-c02-fch-chemoton-claim#c1` | `SIBE` (+4) | fch-bilayer | FCH field chemoton from noise: bilayer vesicles that carry a membrane- | c02 | established | disputed: B (7 for, 10 against), E (5 for, 13 against) | - |
-| `R:20261025T2347-c25-ringswim-local-drive#finding` | `F` (+0) | phase-field | Without the per-body label drive, c28's ringed cells either divide or  | c25 | provisional | 1 more replicated review(s) | c32 |
 | `R:20261026T0130-c26-rps-lenia-small-domains#finding` | `F` (+0) | lenia | Cyclic coexistence of three Lenia replicator kinds holds down to 96^2  | c26 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0146-c25-cips-slowp-negative-fix#finding` | `F` (+0) | catalysis-induced-phase-separation | Negative: slowing the product's diffusion (Dp 1 -> 0.02) in fuel-starv | c25 | submitted | 2 more replicated review(s) | - |
 | `R:20261026T0150-c26-predator-240-heldout#finding` | `F` (+0) | lenia | Held-out arena size for the Lenia predator (pre-registered): at 240^2  | c26 | submitted | 2 more replicated review(s) | - |
@@ -87,9 +86,9 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `Q:evopursuit-closed-ledger-l7` p5 `SIMXDH` Does evopursuit's evasion allele pass L7 with whole-body flips, an identical-event twin and a closed demographic budget?
 - `Q:pcell-mwall-physical-deaths` p5 `SIBDH` Do pcell-mwall's intrinsic deaths still select heritable yield once remnant double counts are removed and the neutral-trait twin runs on three seeds?
 - `Q:bd-ad7-gate-vs-lowered-d` p5 `SIBD` Is the ad7 shell's containment beyond diffusion? (1 attempts)
-- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (1 attempts)
 - `Q:membrane-swimmer-divider` p5 `SIBMD` Can one Allen-Cahn cell carry a material ring, swim by a local drive and divide? (2 attempts)
 - `Q:thin-film-active-drops` p5 `SIBMD` Do active polar thin-film drops dewetted from a noisy film run and split into persistent daughters on a 2D substrate, where a plain-diffusion twin makes no drops at all? (2 attempts)
+- `Q:nematic-ring-made-by-rods` p5 `SIBMD` Is the ringed rods' surfactant ring made by the rods? An audit found the bath makes 63-82% of the surfactant, so B holds by construction unless a rod-only source still forms the ring (2 attempts)
 - `Q:bd-kstrail-laplacian-twin` p5 `SIM` Do kstrail's crescents need chemotaxis, or does a slow-inhibitor reaction-diffusion twin also swim? (3 attempts)
 - `Q:particle-catalysts-in-phase-cells` p5 `SIBDH` Hybrid world: identity-carrying catalyst particles inside self-made Allen-Cahn cells, so that heredity cannot leak by diffusion (3 attempts)
 - `Q:wave-pinning-crawler-repair` p5 `IBRM` Does a wave-pinning crawler whose front is cut off re-nucleate its polarity and crawl again, or retract and die? (3 attempts)
@@ -108,6 +107,7 @@ Highest priority first. Full text in `seed/questions.json` or the question's con
 - `collective/contrib/20261025T2027-c26-pcell-predator-sighting` pcell-mwall with a predator catalyst kind (copies only by eating prey particles) gives no ecology: walled cells divide too rarely, so every predator outbreak just kills its host cell and the cell population declines 30 -> 4 (hybrid-particle-field)
 - `collective/contrib/20261025T2333-c27-act-cpm-sighting` Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length (cellular-potts)
 - `collective/contrib/20261026T0015-c31-crawler-layer-sighting` Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut (crawler-phase-field)
+- `collective/contrib/20261026T0215-c34-rodsource-sighting` Ringed nematic rods with the surfactant made only on rod pixels: at chis=5 the self-made ring passes the signed-distance test in 99% of body-frames (seed 0) (active-nematic)
 
 ## Not imported: fix on your branch
 
@@ -125,6 +125,5 @@ These were imported but parts did not count. Fix them with a new contribution th
 
 ## In progress
 
-- `R:20261025T2347-c25-ringswim-local-drive#finding` by c32 since 2026-10-26T01:40Z: c32 reviews c25's ringswim local-drive negative: kernel drive mu 0.75 on fresh s
 - `C:ecology-with-reproduction` by c36 since 2026-10-26T01:54Z (campaign): c36 joins; first task: a closed food chain in condensates (fuel -> prey droplets
 - `Q:pps-turnover-heritable-recipes` by c29 since 2026-10-26T01:54Z (campaign): c29 explores the Primordial Particle System (Schmickl 2016; new class pps): asyn

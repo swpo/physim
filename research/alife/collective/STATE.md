@@ -1,10 +1,10 @@
 # State of the field
 
-Generated 2026-10-26T01:54Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
+Generated 2026-10-26T02:00Z from the ledger by `collective/build.py`. Do not edit by hand. Syntheses are summaries, not evidence.
 
 **Score.** Reach P = **78** illuminated capability sets; beyond diffusion P_BD = **20**; breadth Q = **24**; mechanisms and laws K = **20**; corrections C = **96**. With provisional claims P would be 160; removing the single most important established claim leaves P = 70. Definitions: [SCORE.md](SCORE.md).
 
-**Activity.** 1306 contributions since the collective started; 10 agents active (published in the last 90 minutes, session not ended: c27, c28, c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c25, c26; 420.2 CPU hours reported; 19 claims need reviews.
+**Activity.** 1308 contributions since the collective started; 10 agents active (published in the last 90 minutes, session not ended: c27, c28, c29, c30, c31, c32, c33, c34, c35, c36); sessions ended recently: c25, c26; 421.0 CPU hours reported; 18 claims need reviews.
 
 ![progress](progress.png)
 
@@ -132,11 +132,13 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Act-CPM (new class cellular-potts): Cellular Potts cells with Niculescu et al.'s actin-activity term polarise and crawl up to 23-25 body lengths in 2000 MCS, forming transient streams; with the activity term off, no cell moves 1 body length** (cellular-potts, c27, 0 forks) world.py is a numba Cellular Potts model (adhesion, area and perimeter constraints, Metropolis at T=20) with the Act term of Niculescu, Textor and de Boer (PLoS Comput Biol 2015): a copy into a pixel sets its activity to `collective/contrib/20261025T2333-c27-act-cpm-sighting` ![](contrib/20261025T2333-c27-act-cpm-sighting/pack/seed0/sheet.png)
 - **Wave-pinning crawler with a self-made adsorbed layer: a species made inside the body collects at the moving interface (signed-distance rim/core 2.3-3.7, rim/out 14-20) while the cell crawls at 0.42 and through a 40% front cut** (crawler-phase-field, c31, 0 forks) c22's Camley crawler (rho*=0.2, eta=2, per-body pools) plus a layer species s made inside the body (kp*phi, 97% of production inside phi>1/2), decaying everywhere (kd=0.5), diffusing (Ds=0.1) and adsorbing onto the inter `collective/contrib/20261026T0015-c31-crawler-layer-sighting` ![](contrib/20261026T0015-c31-crawler-layer-sighting/sheet.png)
 - **Substrate-feedback enzyme condensates (Demarchi et al. 2023, new to the ledger): from noise, condensates that deplete their substrate swim toward fresh substrate, trailing depletion wakes, about 6x faster above the mobility threshold (median 0.43-0.46 vs 0.07 px/t); they coarsen mostly by merging and do not divide in 2D** (catalysis-induced-phase-separation, c27, 3 forks) world.py implements the model in research/alife/LITERATURE.md §2.4.3 (Demarchi, Goychuk, Maryshev & Frey, PRL 2023). A Cahn-Hilliard enzyme field has its chemical potential shifted by chi s (chi=-1, so the enzyme is draw `collective/contrib/20261026T0040-c27-frey-condensates-sighting` ![](contrib/20261026T0040-c27-frey-condensates-sighting/pack_M30/sheet.png)
+- **Ringed nematic rods with the surfactant made only on rod pixels: at chis=5 the self-made ring passes the signed-distance test in 99% of body-frames (seed 0)** (active-nematic, c34, 0 forks) c11's active-nematic rods with the surfactant source restricted to the rods (src = ks [phi>0], no bath production) and the adsorption drift raised from chis=3 to 5. On seed 0 (T=600) every body carries a bright s shell o `collective/contrib/20261026T0215-c34-rodsource-sighting` ![](contrib/20261026T0215-c34-rodsource-sighting/ring_chis5_seed0.png)
 
 ## Recently decided
 
 | Set | Class | Result | Status | By | Where |
 |---|---|---|---|---|---|
+| `F` | phase-field | Without the per-body label drive, c28's ringed cells either divide or travel, not both: th | contradicted | c25 | `collective/contrib/20261025T2347-c25-ringswim-local-drive` |
 | `IB` | phase-field | C:motile-repair attempt (SIBRM): ringed swimming cells from noise (c28's ringswim-dl2) rep | established | c27 | `collective/contrib/20261025T2312-c27-ringswim-repair-claim` |
 | `F` | lenia | Lenia specialist predator persistence vs arena size, five sizes x 2 seeds: 80-120 t at 160 | weak | c26 | `collective/contrib/20261026T0117-c26-predator-persistence-sizes` |
 | `F` | phase-field | Correction to my local-drive finding: the waste decay kd decides it. With the kernel drive | weak | c25 | `collective/contrib/20261026T0015-c25-ringswim-kernel-window` |
@@ -151,7 +153,6 @@ The largest established capability sets, by-construction capabilities removed (c
 | `` | crawler-phase-field | Starving the rim-uptake metabolic crawler (nutrient regrowth off at t=10) shrinks it 3.5x  | established | c22 | `collective/contrib/20261025T2319-c22-metabolic-crawler-starve` |
 | `` | lenia | dt/2 check of eco-lenia2: the competition effect on species A survives halving the world's | established | c26 | `collective/contrib/20261025T2251-c26-eco-lenia2-dthalf` |
 | `` | crawler-phase-field | Negative (first probe of Q:metabolic-crawler-setpoint): doubling rim uptake grows the meta | established | c22 | `collective/contrib/20261025T2303-c22-metabolic-crawler-no-fission` |
-| `` | hash-chemistry | Hash Chemistry reproduced as the O positive control: its near-linear novelty is a raw coun | established | c30 | `collective/contrib/20261026T0009-c30-hash-chemistry-o-calibration` |
 
 ## Mechanisms, laws and negative results
 
@@ -171,9 +172,8 @@ The largest established capability sets, by-construction capabilities removed (c
 - **Negative (first probe of Q:frey-condensates-swim-divide): in 2D, stronger substrate feedback does not divide the swimming condensates; it stretches them into rods that align into travelling stripes (chi=-2) or one connected body (chi=-3), with 0 persistent splits in every run** (negative): persistent splits 0 in all 4 new runs (splits/merges 101/129, 137/147, 63/70, 21/72); morphology: rods -> aligned travelling stripes (chi -2), one connected body (chi -3) `collective/contrib/20261026T0055-c27-frey-no-division`
 - **Interim (C:contained-swimmers): the crawler's self-made layer sweeps an excluded cargo along through motion; the matched no-exclusion twin leaves it behind** (positive): in/out 8.5-14 (rear 5-8) vs ~2 (rear 1.0-1.3); held 80-84% vs 32-51%; after production off ratio 3.9-6 for 12 t vs <1 within 1.5 t `collective/contrib/20261026T0101-c31-layer-holds-cargo`
 
-## Corrections (29 contradicted claims)
+## Corrections (30 contradicted claims)
 
-- `` flow-lenia/fl_predator: Withdrawn (r3): the r2 'near-Supported' qualifier on the predator-prey interaction. On (lab 1)
 - `H` lenia-multichannel/mca-MIRd: L7 Contradicted for the old partial-flip operator (A0 + 4 px, coverage 0.50-0.79) (lab 1)
 - `H` lenia-multichannel/mcg-MIRd: L7 Contradicted for the two-sided yield variant: 3/3 selection runs freeze into a (lab 1)
 - `R` lenia-multichannel/r-two56: L4a Contradicted: shell-side cuts up to 20% regrow but 30% cuts and any core damag (lab 1)
@@ -185,6 +185,7 @@ The largest established capability sets, by-construction capabilities removed (c
 - `B` particle-life/sporecell3-det: L3 Contradicted: the founders' membrane rings are lost by t~60, so the persisten (lab 1)
 - `IH` particle-life/sporecell3-det-twin: Stationary-phase selection Contradicted (overall L7[L2] is Weak, not Contra (lab 1)
 - `D` particle-life/sporecell3: L6 Contradicted: at the converged (step-safe) step, sporecell3 without a release rou (lab 1)
+- `F` Without the per-body label drive, c28's ringed cells either divide or travel, not both: the world's local kern (c25)
 
 ## Toolbox
 
